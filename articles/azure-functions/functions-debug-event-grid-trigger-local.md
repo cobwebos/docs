@@ -1,27 +1,22 @@
 ---
 title: Azure 函数事件网格本地调试
 description: 了解如何在本地调试事件网格事件触发的 Azure 函数
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: azure functions, 函数, 无服务器体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: e28abbe8d44094d8599545479f4611a84e9d9bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085692"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227070"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure 函数事件网格触发器本地调试
 
 本文演示如何调试一个用于处理存储帐户所引发 Azure 事件网格事件的本地函数。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 创建或使用现有的函数应用
 - 创建或使用现有的存储帐户

@@ -1,176 +1,181 @@
 ---
-title: 如何使用 Azure IoT 中心设备预配服务中的自定义分配策略 | Microsoft Docs
+title: Custom allocation policies with Azure IoT Hub Device Provisioning Service
 description: 如何使用 Azure IoT 中心设备预配服务中的自定义分配策略
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 1e672e7bd43dcd05d048d22205939749c1d96579
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 2a17cc6c9f2211de31d4551bd12e6c832d4eee38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348065"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228735"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
-
 自定义分配策略让你能够对设备分配到 IoT 中心的方式进行更多地控制。 它是通过使用 [Azure 函数](../azure-functions/functions-overview.md)中的自定义代码将设备分配到 IoT 中心来实现的。 设备预配服务将调用 Azure 函数代码，提供有关设备和注册的所有相关信息。 将执行函数代码并返回用于预配设备的 IoT 中心信息。
 
-当设备预配服务提供的策略不能满足你的方案的要求时，通过使用自定义分配策略，可以定义你自己的分配策略。
+By using custom allocation policies, you define your own allocation policies when the policies provided by the Device Provisioning Service don't meet the requirements of your scenario.
 
-例如，你可能想要检查设备在预配过程中所使用的证书，并根据证书属性将该设备分配到 IoT 中心。 你可能在数据库中存储了你的设备的信息，并需要查询数据库以确定应将该设备分配到哪个 IoT 中心。
-
+For example, maybe you want to examine the certificate a device is using during provisioning and assign the device to an IoT hub based on a certificate property. Or, maybe you have information stored in a database for your devices and need to query the database to determine which IoT hub a device should be assigned to.
 
 本文演示使用 C# 编写的 Azure 函数的自定义分配策略。 创建了两个新的 IoT 中心，分别表示 Contoso 烤箱分区和 Contoso 热泵分区。 请求预配的设备必须具有含以下后缀之一的注册 ID 才能被接受进行预配：
 
-- **-contoso-tstrsd-007**：Contoso 烤箱分区
-- **-contoso-hpsd-088**：Contoso 热泵分区
+* -contoso-tstrsd-007：Contoso 烤箱分区
+* -contoso-hpsd-088：Contoso 热泵分区
 
-将基于注册 ID 上这些所需的后缀之一对设备进行预配。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中包含的预配示例对这些设备进行模拟。 
+将基于注册 ID 上这些所需的后缀之一对设备进行预配。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中包含的预配示例对这些设备进行模拟。
 
-你将在本文中执行以下步骤：
+You perform the following steps in this article:
 
 * 使用 Azure CLI 创建两个 Contoso 分区 IoT 中心（Contoso 烤箱分区和 Contoso 热泵分区）
 * 使用 Azure 函数为自定义分配策略创建新的组注册
 * 为两个设备模拟创建设备密钥。
 * 为 Azure IoT C SDK 设置开发环境
-* 模拟设备，以确保其根据自定义分配策略的示例代码进行预配。
-
+* Simulate the devices and verify that they are provisioned according to the example code in the custom allocation policy
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 * 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-two-divisional-iot-hubs"></a>创建两个分区 IoT 中心
+## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>Create the provisioning service and two divisional IoT hubs
 
-在本部分，将使用 Azure Cloud Shell 创建表示 Contoso 烤箱分区和 Contoso 热泵分区的两个新的 IoT 中心。
+In this section, you use the Azure Cloud Shell to create a provisioning service and two IoT hubs representing the **Contoso Toasters Division** and the **Contoso Heat Pumps division**.
 
-1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+> [!TIP]
+> The commands used in this article create the provisioning service and other resources in the West US location. We recommend that you create your resources in the region nearest you that supports Device Provisioning Service. 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 In commands, locations can be specified either in one word or multi-word format; for example: westus, West US, WEST US, etc. The value is not case sensitive. 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+>
 
-    以下示例在“eastus”区域创建名为“contoso-us-resource-group”的资源组。 建议对本文中创建的所有资源使用该组。 此方法使你能够在完成后更为轻松地进行清理。
+1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-    ```azurecli-interactive 
-    az group create --name contoso-us-resource-group --location eastus
-    ```
-
-2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
-
-    以下示例在“eastus”位置创建名为“contoso-toasters-hub-1098”的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
+    The following example creates a resource group named *contoso-us-resource-group* in the *westus* region. 建议对本文中创建的所有资源使用该组。 This approach will make clean up easier after you're finished.
 
     ```azurecli-interactive 
-    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
+    az group create --name contoso-us-resource-group --location westus
     ```
-    
+
+2. Use the Azure Cloud Shell to create a device provisioning service with the [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) command. The provisioning service will be added to *contoso-us-resource-group*.
+
+    The following example creates a provisioning service named *contoso-provisioning-service-1098* in the *westus* location. You must use a unique service name. Make up your own suffix in the service name in place of **1098**.
+
+    ```azurecli-interactive 
+    az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
+    ```
+
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
 
-    以下示例在“eastus”位置创建名为“contoso-heatpumps-hub-1098”的 IoT 中心。 必须使用你自己的唯一中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
+    The following example creates an IoT hub named *contoso-toasters-hub-1098* in the *westus* location. You must use a unique hub name. 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
     ```azurecli-interactive 
-    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
+    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
-    
-    此命令可能同样需要花费几分钟时间完成。
 
+    此命令可能需要花费几分钟时间完成。
 
+4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
 
+    The following example creates an IoT hub named *contoso-heatpumps-hub-1098* in the *westus* location. You must use a unique hub name. 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
-## <a name="create-the-enrollment"></a>创建注册
+    ```azurecli-interactive 
+    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
+    ```
 
-在本部分中，将创建一个使用自定义分配策略的新注册组。 为简单起见，本文将在注册中使用[对称密钥证明](concepts-symmetric-key-attestation.md)。 对于更安全的解决方案，请考虑使用具有信任链的 [X.509 证书证明](concepts-security.md#x509-certificates)。
+    此命令可能需要花费几分钟时间完成。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并打开你的设备预配服务实例。
+## <a name="create-the-custom-allocation-function"></a>Create the custom allocation function
 
-2. 选择“管理注册”选项卡，然后单击页面顶部的“添加注册组”按钮。 
+In this section, you create an Azure function that implements your custom allocation policy. This function decides which divisional IoT hub a device should be registered to based on whether its registration ID contains the string **-contoso-tstrsd-007** or **-contoso-hpsd-088**. It also sets the initial state of the device twin based on whether the device is a toaster or a heat pump.
 
-3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 From your home page, select **+ Create a resource**.
 
-    **组名称**：输入 **contoso-custom-allocated-devices**。
+2. In the *Search the Marketplace* search box, type "Function App". From the drop-down list select **Function App**, and then select **Create**.
 
-    **证明类型**：选择“对称密钥”。
+3. On **Function App** create page, under the **Basics** tab, enter the following settings for your new function app and select **Review + create**:
 
-    **自动生成密钥**：此复选框应已处于选中状态。
+    **Resource Group**: Select the **contoso-us-resource-group** to keep all resources created in this article together.
 
-    **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。
+    **Function App name**: Enter a unique function app name. This example uses **contoso-function-app-1098**.
 
-    ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+    **Publish**: Verify that **Code** is selected.
 
+    **Runtime Stack**: Select **.NET Core** from the drop-down.
 
-4. 在“添加注册组”上，单击“链接新的 IoT 中心”以链接这两个新的分区 IoT 中心。 
+    **Region**: Select the same region as your resource group. This example uses **West US**.
 
-    必须为这两个分区 IoT 中心执行此步骤。
+    > [!NOTE]
+    > By default, Application Insights is enabled. Application Insights is not necessary for this article, but it might help you understand and investigate any issues you encounter with the custom allocation. If you prefer, you can disable Application Insights by selecting the **Monitoring** tab and then selecting **No** for **Enable Application Insights**.
 
-    **订阅**：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
+    ![Create an Azure Function App to host the custom allocation function](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-    **IoT 中心**：选择你创建的分区中心之一。
+4. On the **Summary** page, select **Create** to create the function app. Deployment may take several minutes. When it completes, select **Go to resource**.
 
-    **访问策略**：选择“iothubowner”。
+5. On the left pane of the function app **Overview** page, select **+** next to **Functions** to add a new function.
 
-    ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    ![Add a function to the Function App](./media/how-to-use-custom-allocation-policies/create-function.png)
 
+6. On the **Azure Functions for .NET - getting started** page, for the **CHOOSE A DEPLOYMENT ENVIRONMENT** step, select the **In-portal** tile, then select **Continue**.
 
-5. 在“添加注册组”上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
+    ![Select the portal development environment](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-    ![为注册创建分区中心组](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+7. On the next page, for the **CREATE A FUNCTION** step, select the **Webhook + API** tile, then select **Create**. A function named **HttpTrigger1** is created, and the portal displays the contents of the **run.csx** code file.
 
+8. Reference required Nuget packages. To create the initial device twin, the custom allocation function uses classes that are defined in two Nuget packages that must be loaded into the hosting environment. With Azure Functions, Nuget packages are referenced using a *function.host* file. In this step, you save and upload a *function.host* file.
 
-6. 在“添加注册组”上，向下滚动到“选择 Azure 函数”部分，然后单击“创建新的函数应用”。
+    1. Copy the following lines into your favorite editor and save the file on your computer as *function.host*.
 
-7. 在打开的“函数应用”创建页上，为新函数输入以下设置，然后单击“创建”。
+        ```xml
+        <Project Sdk="Microsoft.NET.Sdk">  
+            <PropertyGroup>  
+                <TargetFramework>netstandard2.0</TargetFramework>  
+            </PropertyGroup>  
+            <ItemGroup>  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+            </ItemGroup>  
+        </Project>
+        ```
 
-    **应用名称**：输入唯一函数应用名称。 contoso-function-app-1098 作为示例显示。
+    2. On the **HttpTrigger1** function, expand the **View Files** tab on the right side of the window.
 
-    **资源组**：选择“使用现有”和“contoso-us-resource-group”以将本文中创建的所有资源保留在一起。
+        ![Open view files](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    **Application Insights**：对于此练习，可以关闭该功能。
+    3. Select **Upload**, browse to the **function.proj** file, and select **Open** to upload the file.
 
-    ![创建函数应用](./media/how-to-use-custom-allocation-policies/function-app-create.png)
+        ![Select upload file](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
-
-8. 回到你的“添加注册组”页，确保新函数应用处于选中状态。 可能需要重新选择订阅，以刷新函数应用列表。
-
-    选中新函数应用后，单击“创建新函数”。
-
-    ![创建函数应用](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
-
-    将会打开新函数应用。
-
-9. 在函数应用上，单击以创建新函数
-
-    ![创建函数应用](./media/how-to-use-custom-allocation-policies/new-function.png)
-
-    对于新函数，使用默认设置创建新的 Webhook + API（使用 CSharp 语言）。 单击“创建此函数”。
-
-    这将创建一个名为 HttpTriggerCSharp1 的新 C# 函数。
-
-10. 将新 C# 函数的代码替换为以下代码，然后单击“保存”：    
+9. Replace the code for the **HttpTrigger1** function with the following code and select **Save**:
 
     ```csharp
     #r "Newtonsoft.Json"
+
     using System.Net;
-    using System.Text;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    using Microsoft.Azure.Devices.Shared;               // For TwinCollection
+    using Microsoft.Azure.Devices.Provisioning.Service; // For TwinState
+
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        // Just some diagnostic logging
-        log.Info("C# HTTP trigger function processed a request.");
-        log.Info("Request.Content:...");    
-        log.Info(req.Content.ReadAsStringAsync().Result);
+        log.LogInformation("C# HTTP trigger function processed a request.");
 
         // Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+
+        log.LogInformation("Request.Body:...");
+        log.LogInformation(requestBody);
 
         // Get registration ID of the device
         string regId = data?.deviceRuntimeContext?.registrationId;
@@ -182,7 +187,7 @@ ms.locfileid: "68348065"
         if (regId == null)
         {
             message = "Registration ID not provided for the device.";
-            log.Info("Registration ID : NULL");
+            log.LogInformation("Registration ID : NULL");
             fail = true;
         }
         else
@@ -193,7 +198,7 @@ ms.locfileid: "68348065"
             if (hubs == null)
             {
                 message = "No hub group defined for the enrollment.";
-                log.Info("linkedHubs : NULL");
+                log.LogInformation("linkedHubs : NULL");
                 fail = true;
             }
             else
@@ -211,8 +216,23 @@ ms.locfileid: "68348065"
                     if (obj.iotHubHostName == null)
                     {
                         message = "No toasters hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "toaster";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "ready";
+                        properties["darknessSetting"] = "medium";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // This is a Contoso Heat pump Model 008
@@ -228,8 +248,23 @@ ms.locfileid: "68348065"
                     if (obj.iotHubHostName == null)
                     {
                         message = "No heat pumps hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "heatpump";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "on";
+                        properties["temperatureSetting"] = "65";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // Unrecognized device.
@@ -237,59 +272,82 @@ ms.locfileid: "68348065"
                 {
                     fail = true;
                     message = "Unrecognized device registration.";
-                    log.Info("Unknown device registration");
+                    log.LogInformation("Unknown device registration");
                 }
             }
         }
 
-        return (fail)
-            ? req.CreateResponse(HttpStatusCode.BadRequest, message)
-            : new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(obj, Formatting.Indented), Encoding.UTF8, "application/json")
-            };
-    }    
+        log.LogInformation("\nResponse");
+        log.LogInformation((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message);
 
-    public class DeviceTwinObj
-    {
-        public string deviceId {get; set;}
+        return (fail)
+            ? new BadRequestObjectResult(message) 
+            : (ActionResult)new OkObjectResult(obj);
     }
 
     public class ResponseObj
     {
         public string iotHubHostName {get; set;}
-        public string IoTHub {get; set;}
-        public DeviceTwinObj initialTwin {get; set;}
-        public string[] linkedHubs {get; set;}
-        public string enrollment {get; set;}
+        public TwinState initialTwin {get; set;}
     }
     ```
 
+## <a name="create-the-enrollment"></a>创建注册
 
-11. 返回到你的“添加注册组”页，并确保新函数处于选中状态。 可能需要重新选择函数应用，以刷新函数列表。
+In this section, you'll create a new enrollment group that uses the custom allocation policy. 为简单起见，本文将在注册中使用[对称密钥证明](concepts-symmetric-key-attestation.md)。 对于更安全的解决方案，请考虑使用具有信任链的 [X.509 证书证明](concepts-security.md#x509-certificates)。
 
-    选中新函数后，单击“保存”以保存注册组。
+1. Still on the [Azure portal](https://portal.azure.com), open your provisioning service.
 
-    ![最后，保存注册组](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+2. Select **Manage enrollments** on the left pane, and then select the **Add enrollment group** button at the top of the page.
 
+3. On **Add Enrollment Group**, enter the following information, and select the **Save** button.
 
-12. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
+    组名称：输入 contoso-custom-allocated-devices。
 
+    证明类型：选择“对称密钥”。
+
+    自动生成密钥：此复选框应已处于选中状态。
+
+    选择要如何将设备分配到中心：选择“自定义(使用 Azure 函数)”。
+
+    ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+
+4. On **Add Enrollment Group**, select **Link a new IoT hub** to link both of your new divisional IoT hubs.
+
+    Execute this step for both of your divisional IoT hubs.
+
+    订阅：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
+
+    IoT 中心：选择你创建的分区中心之一。
+
+    访问策略：选择“iothubowner”。
+
+    ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+
+5. 在“添加注册组”上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
+
+    ![为注册创建分区中心组](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+
+6. On **Add Enrollment Group**, scroll down to the **Select Azure Function** section, select the Function app you created in the previous section. Then select the function you created and select Save to save the enrollment group.
+
+    ![Select the function and save the enrollment group](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+
+7. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
-在本部分中，你将创建两个唯一的设备密钥。 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
+In this section, you create two unique device keys. 一个密钥将用于模拟的烤箱设备。 另一个密钥将用于模拟的热泵设备。
 
-为了生成设备密钥，将使用前面记录的“主密钥”来计算每个设备的设备注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
+To generate the device key, you use the **Primary Key** you noted earlier to compute the [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the device registration ID for each device and convert the result into Base64 format. 有关使用注册组创建派生设备密钥的详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)的组注册部分。
 
 对于本文中的示例，使用以下两个设备注册 ID 并计算这两个设备的设备密钥。 这两个注册 ID 都具有有效的后缀，以与自定义分配策略的示例代码结合使用：
 
-- breakroom499-contoso-tstrsd-007
-- mainbuilding167-contoso-hpsd-088
+* breakroom499-contoso-tstrsd-007
+* mainbuilding167-contoso-hpsd-088
 
-#### <a name="linux-workstations"></a>Linux 工作站
+### <a name="linux-workstations"></a>Linux 工作站
 
-如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
+If you're using a Linux workstation, you can use openssl to generate your derived device keys as shown in the following example.
 
 1. 将“键”值替换为前面记录的“主键”。
 
@@ -311,10 +369,9 @@ ms.locfileid: "68348065"
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
+### <a name="windows-based-workstations"></a>基于 Windows 的工作站
 
-#### <a name="windows-based-workstations"></a>基于 Windows 的工作站
-
-如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
+If you're using a Windows-based workstation, you can use PowerShell to generate your derived device key as shown in the following example.
 
 1. 将“键”值替换为前面记录的“主键”。
 
@@ -339,29 +396,25 @@ ms.locfileid: "68348065"
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
 
-
 模拟设备将使用含有每个注册 ID 的派生的设备密钥，以执行对称密钥证明。
-
-
-
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>准备 Azure IoT C SDK 开发环境
 
-在本部分，你将准备一个用于生成 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的开发环境。 SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动顺序期间进行预配。
+In this section, you prepare the development environment used to build the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动顺序期间进行预配。
 
 本部分面向基于 Windows 的工作站。 对于 Linux 示例，请参阅[如何进行多租户预配](how-to-provision-multitenant.md)中的 VM 的设置。
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负载）。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
-    
+
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    应该预料到此操作需要几分钟才能完成。
 
+    应该预料到此操作需要几分钟才能完成。
 
 3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 
 
@@ -376,8 +429,8 @@ ms.locfileid: "68348065"
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
-    
-    如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
+
+    If `cmake` doesn't find your C++ compiler, you might get build errors while running the command. If that happens, try running the command in the [Visual Studio command prompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     生成成功后，最后的几个输出行如下所示：
 
@@ -395,23 +448,20 @@ ms.locfileid: "68348065"
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
-
 ## <a name="simulate-the-devices"></a>模拟设备
 
-在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample 的预配示例。 
+In this section, you update a provisioning sample named **prov\_dev\_client\_sample** located in the Azure IoT C SDK you set up previously.
 
 此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将导致烤箱设备被识别，且使用自定义分配策略将其配置到 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。 
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
 2. 在 Visual Studio 中，打开较早前通过运行 CMake 生成的 azure_iot_sdks.sln 解决方案文件。 解决方案文件应位于以下位置：
 
     ```
-    \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
+    azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
 3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
@@ -431,10 +481,9 @@ ms.locfileid: "68348065"
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。
 
-
-#### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
+### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
 
 1. 若要模拟烤箱设备，请在 **prov\_dev\_client\_sample.c** 中找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
@@ -443,21 +492,21 @@ ms.locfileid: "68348065"
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    取消注释该函数调用，并将占位符值（包括尖括号）替换为烤箱注册 ID 以及之前生成的派生设备密钥。 下面显示的密钥值 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** 仅作为示例提供。
+    Uncomment the function call and replace the placeholder values (including the angle brackets) with the toaster registration ID and derived device key you generated previously. 下面显示的密钥值 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** 仅作为示例提供。
 
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
     ```
-   
-    保存该文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+    保存文件。
 
-    以下输出是模拟烤箱设备成功启动并连接到预配服务实例以通过自定义分配策略分配到烤箱 IoT 中心的一个示例：
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 In the prompt to rebuild the project, select **Yes**, to rebuild the project before running.
+
+    The following output is an example of the simulated toaster device successfully booting up and connecting to the provisioning service instance to be assigned to the toasters IoT hub by the custom allocation policy:
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -470,8 +519,7 @@ ms.locfileid: "68348065"
     Press enter key to exit:
     ```
 
-
-#### <a name="simulate-the-contoso-heat-pump-device"></a>模拟 Contoso 热泵设备
+### <a name="simulate-the-contoso-heat-pump-device"></a>模拟 Contoso 热泵设备
 
 1. 若要模拟热泵设备，请使用热泵注册 ID 和之前生成的派生设备密钥更新 **prov\_dev\_client\_sample.c** 中的 `prov_dev_set_symmetric_key_info()` 调用。 下面显示的密钥值 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** 也仅作为示例提供。
 
@@ -479,15 +527,15 @@ ms.locfileid: "68348065"
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
-   
-    保存该文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+    保存文件。
 
-    以下输出是模拟热泵设备成功启动并连接到预配服务实例以通过自定义分配策略分配到 Contoso 热泵 IoT 中心的一个示例：
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 In the prompt to rebuild the project, select **Yes** to rebuild the project before running.
+
+    The following output is an example of the simulated heat pump device successfully booting up and connecting to the provisioning service instance to be assigned to the Contoso heat pumps IoT hub by the custom allocation policy:
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -500,54 +548,40 @@ ms.locfileid: "68348065"
     Press enter key to exit:
     ```
 
-
 ## <a name="troubleshooting-custom-allocation-policies"></a>自定义分配策略疑难解答
 
-下表显示了预期方案和你可能遇到的结果错误代码。 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
+The following table shows expected scenarios and the results error codes you might receive. 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
 
-
-| 应用场景 | 预配服务的注册结果 | 预配 SDK 结果 |
+| 场景 | 预配服务的注册结果 | 预配 SDK 结果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 返回 200 OK，其中“iotHubHostName”被设置为有效的 IoT 中心主机名 | 结果状态：已分配  | SDK 返回 PROV_DEVICE_RESULT_OK 和中心信息 |
-| Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：已失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Webhook 返回 401 未授权 | 结果状态：已失败<br><br>错误代码：CustomAllocationUnauthorizedAccess (400209) | SDK 返回 PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook 返回 401 未授权 | 结果状态：失败<br><br>错误代码：CustomAllocationUnauthorizedAccess (400209) | SDK 返回 PROV_DEVICE_RESULT_UNAUTHORIZED |
 | 创建了个人注册，以禁用设备 | 结果状态：已禁用 | SDK 返回 PROV_DEVICE_RESULT_DISABLED |
 | Webhook 返回错误代码 > = 429 | DPS 业务流程将多次重试。 重试策略当前：<br><br>&nbsp;&nbsp;- 重试计数：10<br>&nbsp;&nbsp;- 初始时间间隔：1 秒<br>&nbsp;&nbsp;- 增量：9 秒 | SDK 将忽略错误并在指定时间提交另一个获取状态消息 |
-| Webhook 返回任何其他状态代码 | 结果状态：已失败<br><br>错误代码：CustomAllocationFailed (400207) | SDK 返回 PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
-
+| Webhook 返回任何其他状态代码 | 结果状态：失败<br><br>错误代码：CustomAllocationFailed (400207) | SDK 返回 PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用本文中创建的资源，则可以保留它们。 如果不打算继续使用这些资源，请使用以下步骤删除本文创建的所有资源，以避免不必要的费用。
+If you plan to continue working with the resources created in this article, you can leave them. If you don't plan to continue using the resources, use the following steps to delete all of the resources created in this article to avoid unnecessary charges.
 
 此处的步骤假定你按照名为 contoso-us-resource-group 的同一资源组的指示创建了本文中的所有资源。
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
+> 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不要意外删除错误的资源组或资源。 如果在现有的包含要保留资源的资源组中创建了 IoT 中心，则只删除 IoT 中心资源本身，而不要删除资源组。
 >
 
 若要按名称删除资源组：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。
 
 2. 在“按名称筛选...”文本框中，键入包含资源的资源组名称“contoso-us-resource-group”。 
 
-3. 在结果列表中的资源组右侧，单击“...”，然后单击“删除资源组”。
+3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”。
 
-4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后单击“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
+4. You'll be asked to confirm the deletion of the resource group. 再次键入资源组的名称进行确认，然后选择“删除”。 片刻之后，将会删除该资源组及其包含的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
-- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
-
-
-
-
-
-
-
-
-
-
-
+* To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
+* To learn more Deprovisioning, see [How to deprovision devices that were previously autoprovisioned](how-to-unprovision-devices.md) 

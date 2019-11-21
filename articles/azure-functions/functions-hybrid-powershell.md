@@ -1,27 +1,25 @@
 ---
-title: 使用 PowerShell 功能管理远程本地资源
-description: 了解如何在 Azure 中继中配置混合连接，以便将 PowerShell 函数应用连接到本地资源，然后可以使用这些资源来远程管理本地资源。
+title: Manage remote on-premises resources by using PowerShell functions
+description: Learn how to configure Hybrid Connections in Azure Relay to connect a PowerShell function app to on-premises resources, which can then be used to remotely manage the on-premises resource.
 author: eamono
-manager: gailey777
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
-ms.openlocfilehash: 2a3cf79883d79eb82c361731eb6a632c2df3c9be
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299428"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226939"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中通过 PowerShell 管理混合环境
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Managing hybrid environments with PowerShell in Azure Functions and App Service Hybrid Connections
 
-使用 Azure App Service 混合连接功能可以访问其他网络中的资源。 可以在[混合连接](../app-service/app-service-hybrid-connections.md)文档中了解有关此功能的详细信息。 本文介绍如何使用此功能来运行面向本地服务器的 PowerShell 函数。 然后，可以使用此服务器通过 Azure PowerShell 功能管理本地环境中的所有资源。
+The Azure App Service Hybrid Connections feature enables access to resources in other networks. You can learn more about this capability in the [Hybrid Connections](../app-service/app-service-hybrid-connections.md) documentation. This article describes how to use this capability to run PowerShell functions that target an on-premises server. This server can then be used to manage all resources in the on-premises environment from an Azure PowerShell function.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>为 PowerShell 远程处理配置本地服务器
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Configure an on-premises server for PowerShell remoting
 
-以下脚本启用 PowerShell 远程处理，并创建新的防火墙规则和 WinRM https 侦听器。 出于测试目的，使用自签名证书。 在生产环境中，我们建议使用签名证书。
+The following script enables PowerShell remoting, and it creates a new firewall rule and a WinRM https listener. For testing purposes, a self-signed certificate is used. In a production environment, we recommend that you use a signed certificate.
 
 ```powershell
 # For configuration of WinRM, see
@@ -48,98 +46,98 @@ $Cmd = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=
 cmd.exe /C $Cmd
 ```
 
-## <a name="create-a-powershell-function-app-in-the-portal"></a>在门户中创建 PowerShell 函数应用
+## <a name="create-a-powershell-function-app-in-the-portal"></a>Create a PowerShell function app in the portal
 
-应用服务混合连接功能仅在基本、标准和隔离定价计划中提供。 通过 PowerShell 创建 function app 时，请创建或选择其中一个计划。
+The App Service Hybrid Connections feature is available only in Basic, Standard, and Isolated pricing plans. When you create the function app with PowerShell, create or select one of these plans.
 
-1. 在[Azure 门户](https://portal.azure.com)中，在左侧菜单中选择 " **+ 创建资源**"，然后选择 "**函数应用**"。
+1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource** in the menu on the left, and then select **Function app**.
 
-1. 对于 "**托管计划**"，请选择 "**应用服务计划**"，然后选择 "**应用服务计划/位置**"。
+1. For **Hosting plan**, select **App Service plan**, and then select **App Service plan/Location**.
 
-1. 选择 "**新建**"，键入**应用服务计划**名称，选择附近或附近的[区域](https://azure.microsoft.com/regions/)中的某个**位置**或函数访问的其他服务，然后选择 "**定价层**"。
+1. Select **Create new**, type an **App Service plan** name, choose a **Location** in a [region](https://azure.microsoft.com/regions/) near you or near other services your functions access, and then select **Pricing tier**.
 
-1. 选择 "S1 标准" 计划，然后选择 "**应用**"。
+1. Choose the S1 Standard plan, and then select **Apply**.
 
-1. 选择 **"确定"** 以创建计划，然后配置以下屏幕截图后面的表中指定的其余**Function App**设置：
+1. Select **OK** to create the plan, and then configure the remaining **Function App** settings as specified in the table immediately after the following screenshot:
 
-    ![PowerShell Core 函数应用](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![PowerShell Core function app](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
     | 设置      | 建议的值  | 描述                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
-    | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 |
-    | **资源组** |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 你还可以使用建议的值。 |
-    | **OS** | 首选操作系统 | 选择 "窗口"。 |
-    | **运行时堆栈** | 首选语言 | 选择 "PowerShell Core"。 |
-    | **存储** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称的长度必须为3到24个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
-    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称的 Application Insights 资源。 通过展开此设置，你可以更改**新的资源名称**，或在要存储数据的[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)区域中选择其他**位置**。 |
+    | 订阅 | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
+    | **资源组** |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 You can also use the suggested value. |
+    | **OS** | Preferred OS | Select Windows. |
+    | **运行时堆栈** | 首选语言 | Choose PowerShell Core. |
+    | **存储** |  全局唯一名称 |  创建函数应用使用的存储帐户。 Storage account names must be from 3 to 24 characters in length and can contain numbers and lowercase letters only. 也可以使用现有帐户。
+    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称的 Application Insights 资源。 By expanding this setting, you can change the **New resource name** or choose a different **Location** in an [Azure geography](https://azure.microsoft.com/global-infrastructure/geographies/) region where you want to store your data. |
 
-1. 验证设置后，选择 "**创建**"。
+1. After your settings are validated, select **Create**.
 
-1. 选择门户右上角的**通知**图标，并等待 "部署已成功" 消息。
+1. Select the **Notification** icon in the upper-right corner of the portal, and wait for the "Deployment succeeded" message.
 
 1. 选择“转到资源”，查看新的函数应用。 还可选择“固定到仪表板”。 固定可以更轻松地从仪表板返回此函数应用资源。
 
-## <a name="create-a-hybrid-connection-for-the-function-app"></a>为 function app 创建混合连接
+## <a name="create-a-hybrid-connection-for-the-function-app"></a>Create a hybrid connection for the function app
 
-混合连接是通过 function app 的 "网络" 部分配置的：
+Hybrid connections are configured from the networking section of the function app:
 
-1. 在函数应用中选择 "**平台功能**" 选项卡，然后选择 "**网络**"。 
-   ![平台网络应用概述](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. 选择 "**配置混合连接终结点**"。
+1. Select the **Platform features** tab in the function app, and then select **Networking**. 
+   ![App Overview for platform networking](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. Select **Configure your hybrid connections endpoints**.
    ![网络](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. 选择 "**添加混合连接**"。
-   ![混合连接](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
-1. 输入有关混合连接的信息，如以下屏幕截图所示。 你可以选择使**终结点主机**设置与本地服务器的主机名匹配，以便在以后运行远程命令时更容易记住服务器。 端口与之前在服务器上定义的默认 Windows 远程管理服务端口匹配。
-  ![添加混合连接](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+1. Select **Add hybrid connection**.
+   ![Hybrid Connection](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Enter information about the hybrid connection as shown right after the following screenshot. You have the option of making the **Endpoint Host** setting match the host name of the on-premises server to make it easier to remember the server later when you're running remote commands. The port matches the default Windows remote management service port that was defined on the server earlier.
+  ![Add Hybrid Connection](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **混合连接名称**：ContosoHybridOnPremisesServer
+    **Hybrid connection name**: ContosoHybridOnPremisesServer
     
-    **终结点主机**： finance1
+    **Endpoint Host**: finance1
     
-    **终结点端口**：5986
+    **Endpoint Port**: 5986
     
-    **服务总线命名空间**：新建
+    **Servicebus namespace**: Create New
     
-    **位置**：选取可用位置
+    **Location**: Pick an available location
     
-    **名称**： contosopowershellhybrid
+    **Name**: contosopowershellhybrid
 
-5. 选择 **"确定"** 以创建混合连接。
+5. Select **OK** to create the hybrid connection.
 
-## <a name="download-and-install-the-hybrid-connection"></a>下载并安装混合连接
+## <a name="download-and-install-the-hybrid-connection"></a>Download and install the hybrid connection
 
-1. 选择 "**下载连接管理器**" 以在计算机上本地保存 .msi 文件。
-![下载安装程序](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. 将本地计算机中的 .msi 文件复制到本地服务器。
-1. 运行混合连接管理器安装程序以在本地服务器上安装服务。
-![安装混合连接](./media/functions-hybrid-powershell/hybrid-installation.png)  
-1. 在门户中打开 "混合连接"，并将网关连接字符串复制到剪贴板。
-![复制混合连接字符串](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. 在本地服务器上打开混合连接管理器 UI。
-![打开混合连接 UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. 选择 "**手动输入**" 按钮，然后从剪贴板中粘贴连接字符串。
-![粘贴连接](./media/functions-hybrid-powershell/enter-manual-connection.png)  
-1. 如果不显示为 "已连接"，请从 PowerShell 重新启动混合连接管理器。
+1. Select **Download connection manager** to save the .msi file locally on your computer.
+![Download installer](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
+1. Copy the .msi file from your local computer to the on-premises server.
+1. Run the Hybrid Connection Manager installer to install the service on the on-premises server.
+![Install Hybrid Connection](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. From the portal, open the hybrid connection and then copy the gateway connection string to the clipboard.
+![Copy hybrid connection string](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Open the Hybrid Connection Manager UI on the on-premises server.
+![Open Hybrid Connection UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. Select the **Enter Manually** button and paste the connection string from the clipboard.
+![Paste connection](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+1. Restart the Hybrid Connection Manager from PowerShell if it doesn't show as connected.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
-## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>为管理员帐户的密码创建应用设置
+## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Create an app setting for the password of an administrator account
 
-1. 在函数应用中选择 "**平台功能**" 选项卡。
-1. 在 "**常规设置**" 下，选择 "**配置**"。
-![选择平台配置](./media/functions-hybrid-powershell/select-configuration.png)  
-1. 展开 "**新应用程序设置**"，为密码创建新的设置。
-1. 将该设置命名为_ContosoUserPassword_，然后输入密码。
-1. 选择 **"确定"** ，然后单击 "保存" 以在函数应用程序中存储密码。
-![为密码添加应用程序设置](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Select the **Platform features** tab in the function app.
+1. Under **General Settings**, select **Configuration**.
+![Select Platform configuration](./media/functions-hybrid-powershell/select-configuration.png)  
+1. Expand **New application setting** to create a new setting for the password.
+1. Name the setting _ContosoUserPassword_, and enter the password.
+1. Select **OK** and then save to store the password in the function application.
+![Add app setting for password](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>创建用于测试的函数 http 触发器
+## <a name="create-a-function-http-trigger-to-test"></a>Create a function http trigger to test
 
-1. 从 function app 创建新的 HTTP 触发器函数。
-![创建新的 HTTP 触发器](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. 将模板中的 PowerShell 代码替换为以下代码：
+1. Create a new HTTP trigger function from the function app.
+![Create new HTTP trigger](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. Replace the PowerShell code from the template with the following code:
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -174,12 +172,12 @@ cmd.exe /C $Cmd
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. 选择 "**保存**并**运行**" 以测试该函数。
-![测试函数应用](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. Select **Save** and **Run** to test the function.
+![Test the function app](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>管理本地的其他系统
+## <a name="managing-other-systems-on-premises"></a>Managing other systems on-premises
 
-可以使用连接的本地服务器连接到本地环境中的其他服务器和管理系统。 这样，你便可以使用 PowerShell 函数管理 Azure 中的数据中心操作。 以下脚本将注册在提供的凭据下运行的 PowerShell 配置会话。 对于远程服务器上的管理员，这些凭据必须是。 然后，可以使用此配置访问本地服务器或数据中心上的其他终结点。
+You can use the connected on-premises server to connect to other servers and management systems in the local environment. This lets you manage your datacenter operations from Azure by using your PowerShell functions. The following script registers a PowerShell configuration session that runs under the provided credentials. These credentials must be for an administrator on the remote servers. You can then use this configuration to access other endpoints on the local server or datacenter.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -246,15 +244,15 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-将此脚本中的以下变量替换为你的环境中的合适值：
+Replace the following variables in this script with the applicable values from your environment:
 * $HybridEndpoint
 * $RemoteServer
 
-在上述两种情况下，你可以使用 Azure Functions 和混合连接中的 PowerShell 连接和管理本地环境。 建议[在函数中](./functions-reference-powershell.md)详细了解[混合连接](../app-service/app-service-hybrid-connections.md)和 PowerShell。
+In the two preceding scenarios, you can connect and manage your on-premises environments by using PowerShell in Azure Functions and Hybrid Connections. We encourage you to learn more about [Hybrid Connections](../app-service/app-service-hybrid-connections.md) and [PowerShell in functions](./functions-reference-powershell.md).
 
-还可以通过 Azure Functions 使用 Azure[虚拟网络](./functions-create-vnet.md)连接到本地环境。
+You can also use Azure [virtual networks](./functions-create-vnet.md) to connect to your on-premises environment through Azure Functions.
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [了解有关使用 PowerShell 函数的详细信息](functions-reference-powershell.md)
+> [Learn more about working with PowerShell functions](functions-reference-powershell.md)

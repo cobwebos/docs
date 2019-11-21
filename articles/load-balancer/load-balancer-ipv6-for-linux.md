@@ -1,7 +1,7 @@
 ---
 title: 为 Linux VM 配置 DHCPv6
-titlesuffix: Azure Load Balancer
-description: 本文介绍如何为 Linux Vm 配置 DHCPv6。
+titleSuffix: Azure Load Balancer
+description: In this article, learn how to configure DHCPv6 for Linux VMs.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077035"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225323"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
@@ -54,9 +54,9 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-从 Ubuntu 17.10 开始，默认网络配置机制是[NETPLAN]( https://netplan.io)。  在安装/实例化时，NETPLAN 从 YAML 配置文件中的以下位置读取网络配置：/{lib、etc、run}/netplan/*. YAML。
+Beginning with Ubuntu 17.10, the default network configuration mechanism is [NETPLAN]( https://netplan.io).  At install/instantiation time, NETPLAN reads network configuration from YAML configuration files at this location: /{lib,etc,run}/netplan/*.yaml.
 
-请在配置中为每个以太网接口包含*dhcp6： true*语句。  例如：
+Please include a *dhcp6:true* statement for each ethernet interface in your configuration.  例如：
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置�
             eno1:
               dhcp6: true
 
-在早期启动过程中，netplan "网络呈现器" 将配置写入/run，以将设备的控制移交给指定的网络守护程序，以获取有关 NETPLAN 的参考信息，请参阅 https://netplan.io/reference。
+During early boot, the netplan “network renderer” writes configuration to /run to hand off control of devices to the specified networking daemon For reference information about NETPLAN, see https://netplan.io/reference.
  
 ## <a name="debian"></a>Debian
 
@@ -125,7 +125,7 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换  *参数*`#BOOTPROTO='dhcp4'`：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数：
 
         BOOTPROTO='dhcp'
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Functions 中支持的语言
 description: 了解支持哪些语言 (GA) 以及哪些语言是实验性的或处于预览状态。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/02/2018
-ms.author: glenga
-ms.openlocfilehash: eac67c43915edb0aed273df40e7b08ca846062bf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3b61dd83e481d42dd15f089247d016c6b71ff0de
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802453"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230281"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -26,7 +22,7 @@ ms.locfileid: "72802453"
 * **预览** - 尚不支持，但将来应达到 GA 状态。
 * **实验性** - 不支持，将来可能会弃用；不保证最终达到预览或 GA 状态。
 
-## <a name="languages-by-runtime-version"></a>语言运行时版本 
+## <a name="languages-by-runtime-version"></a>Languages by runtime version 
 
 [这两个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
 
@@ -42,16 +38,16 @@ ms.locfileid: "72802453"
 
 ### <a name="language-extensibility"></a>语言扩展性
 
-从版本2.x 开始，运行时旨在提供[语言扩展性](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)。 2\.x 运行时中的 JavaScript 和 Java 语言是使用此扩展性生成的。
+Starting with version 2.x, the runtime is designed to offer [language extensibility](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). 2\.x 运行时中的 JavaScript 和 Java 语言是使用此扩展性生成的。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何以支持的语言开发函数的详细信息，请参阅以下资源：
+To learn more about how to develop functions in the supported languages, see the following resources:
 
-+ [C#类库开发人员参考](functions-dotnet-class-library.md)
-+ [C#脚本开发人员参考](functions-reference-csharp.md)
-+ [Java 开发人员参考](functions-reference-java.md)
-+ [JavaScript 开发人员参考](functions-reference-node.md)
-+ [PowerShell 开发人员参考](functions-reference-powershell.md)
-+ [Python 开发人员参考](functions-reference-python.md)
-+ [TypeScript 开发人员参考](functions-reference-node.md#typescript)
++ [C# class library developer reference](functions-dotnet-class-library.md)
++ [C# script developer reference](functions-reference-csharp.md)
++ [Java developer reference](functions-reference-java.md)
++ [JavaScript developer reference](functions-reference-node.md)
++ [PowerShell developer reference](functions-reference-powershell.md)
++ [Python developer reference](functions-reference-python.md)
++ [TypeScript developer reference](functions-reference-node.md#typescript)

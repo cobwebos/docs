@@ -1,6 +1,6 @@
 ---
-title: 为多租户应用程序选择适当的联合身份验证协议
-description: 独立软件供应商与 Azure Active Directory 集成的指南
+title: Choose right federation protocol for multi-tenant application
+description: Guidance for independent software vendors on integrating with Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,55 +12,55 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ede458e7d4c1cb1a8d7e3f2e2c9df54d5925d6d8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c05ad3eace1219e19e0bfb117d3ec8de68a756f9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175983"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232294"
 ---
-# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>为多租户应用程序选择适当的联合身份验证协议
+# <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Choose the right federation protocol for your multi-tenant application
 
-当你开发软件即服务（SaaS）应用程序时，必须选择最能满足你和你的客户需求的联合身份验证协议。 此决定基于开发平台，并且你希望将与客户的 Office 365 和 Azure AD 生态系统内可用的数据集成。
+When you develop your software as a service (SaaS) application, you must select the federation protocol that best meets your and your customers’ needs. This decision is based on your development platform, and your desire to integrate with data available within your customers’ Office 365 and Azure AD ecosystem.
 
-请参阅[适用于 SSO 集成](what-is-single-sign-on.md)Azure Active Directory 的协议的完整列表。
-下表比较 
-* 开放式身份验证2.0 （OAuth 2.0）
-* Open ID Connect （OIDC）
+See the complete list of [protocols available for SSO integrations](what-is-single-sign-on.md) with Azure Active Directory.
+The following table compares 
+* Open Authentication 2.0 (OAuth 2.0)
+* Open ID Connect (OIDC)
 * 安全断言标记语言 (SAML)
-* Web Services 联合身份验证（WSFed）
+* Web Services Federation (WSFed)
 
-| 功能| OAuth/OIDC| SAML/WSFed |
+| 功能| OAuth / OIDC| SAML / WSFed |
 | - |-|-|
-| 基于 Web 的单一登录| √| √ |
-| 基于 Web 的单一注销| √| √ |
-| 基于移动设备的单一登录| √| √ |
-| 基于移动的单一登录| √| √ |
-| 移动应用程序的条件性访问策略| √| X |
-| 移动应用程序的无缝 MFA 体验| √| X |
-| 访问 Microsoft Graph| √| X |
+| Web-based Single sign-on| √| √ |
+| Web-based Single sign-out| √| √ |
+| Mobile-based Single sign-on| √| √* |
+| Mobile-based Single sign-out| √| √* |
+| Conditional Access policies for mobile applications| √| X |
+| Seamless MFA experience for mobile applications| √| X |
+| Access Microsoft Graph| √| X |
 
-\* 但 Microsoft 不提供示例或指导。
+*Possible, but Microsoft doesn't provide samples or guidance.
 
-## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 和 Open ID Connect
+## <a name="oauth-20-and-open-id-connect"></a>OAuth 2.0 and Open ID Connect
 
-OAuth 2.0 是一种[行业标准](https://oauth.net/2/)的授权协议。 OIDC （OpenID Connect）是在 Oath 2.0 协议基础之上构建的[行业标准](https://openid.net/connect/)标识身份验证层。
+OAuth 2.0 is an [industry-standard](https://oauth.net/2/) protocol for authorization. OIDC (OpenID Connect) is an [industry standard](https://openid.net/connect/) identity authentication layer built on top of the Oath 2.0 protocol.
 
 ### <a name="benefits"></a>优势
 
-Microsoft 建议使用 OIDC/OAuth 2.0，因为它们具有内置于协议的身份验证和授权。 对于 SAML，还必须实现授权。
+Microsoft recommends using OIDC/OAuth 2.0 as they have authentication and authorization built in to the protocols. With SAML, you must additionally implement authorization.
 
-利用这些协议中的固有授权，应用程序可以通过 Microsoft Graph API 访问丰富的用户和组织数据并与之集成。
+The authorization inherent in these protocols enables your application to access and integrate with rich user and organizational data through the Microsoft Graph API.
 
-使用 OAuth 2.0 和 OIDC 可简化客户在为应用程序采用 SSO 时的最终用户体验。 您可以轻松地定义必要的权限集，然后这些权限集会自动代表管理员或最终用户同意。
+Using OAuth 2.0 and OIDC simplifies your customers’ end-user experience when adopting SSO for your application. You can easily define the permission sets necessary, which are then automatically represented to the administrator or end user consenting.
 
-此外，使用这些协议，你的客户可以使用条件性访问和 MFA 策略来控制对应用程序的访问。 Microsoft[跨多个技术平台](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples)提供库和代码示例，以帮助你进行开发。  
+Additionally, using these protocols enables your customers to use Conditional Access and MFA policies to control access to the applications. Microsoft provides libraries and [code samples across multiple technology platforms](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples) to aid your development.  
 
 ### <a name="implementation"></a>实现
 
-向 Microsoft 标识注册应用程序，这是一个 OAuth 2.0 提供程序。 然后，你还可以向要与之集成的任何其他标识提供程序注册基于 OAuth 2.0 的应用程序。 
+You register your application with Microsoft Identity, which is an OAuth 2.0 provider. You could then also register your OAuth 2.0-based application with any other Identity Provider that you wish to integrate with. 
 
-有关如何注册应用程序并为 SSO 实现 web 应用程序实现这些协议的信息，请参阅[使用 OpenID connect 和 Azure Active Directory 向 web 应用程序授予访问权限](../develop/sample-v2-code.md)。  有关如何在移动应用中为 SSO 实现这些协议的信息，请参阅以下内容： 
+For information on how to register your application and implement these protocols for SSO to web apps, see [Authorize access to web applications using OpenID Connect and Azure Active Directory](../develop/sample-v2-code.md).  For information on how to implement these protocols for SSO in mobile apps, see the following: 
 
 * [Android](../develop/quickstart-v2-android.md)
 
@@ -68,34 +68,34 @@ Microsoft 建议使用 OIDC/OAuth 2.0，因为它们具有内置于协议的身�
 
 * [通用 Windows 平台](../develop/quickstart-v2-uwp.md)
 
-## <a name="saml-20-and-wsfed"></a>SAML 2.0 和 WSFed
+## <a name="saml-20-and-wsfed"></a>SAML 2.0 and WSFed
 
-安全断言标记语言（SAML）通常用于 web 应用程序。 有关概述，请参阅[Azure 如何使用 SAML 协议](../develop/active-directory-saml-protocol-reference.md)。 
+Security Assertion Markup Language (SAML) is usually used for web applications. See [How Azure uses the SAML protocol](../develop/active-directory-saml-protocol-reference.md) for an overview. 
 
-Web Services 联合身份验证（WSFed）是一种[行业标准](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)，通常用于使用 .net 平台开发的 web 应用程序。
+Web Services Federation (WSFed) is an [industry standard](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html) generally used for web applications that are developed using the .Net platform.
 
 ### <a name="benefits"></a>优势
 
-SAML 2.0 是一种成熟的标准，大多数技术平台支持 SAML 2.0 的开源库。 可以为客户提供管理界面来配置 SAML SSO。 它们可以配置 SAML SSO for Microsoft Azure AD 和任何其他支持 SAML 2 的标识提供者
+SAML 2.0 is a mature standard and most technology platforms support open-source libraries for SAML 2.0. You can provide your customers an administration interface to configure SAML SSO. They can configure SAML SSO for Microsoft Azure AD,  and any other identity provider that supports SAML 2
 
 ### <a name="trade-offs"></a>权衡
 
-将 SAML 2.0 或 WSFed 协议用于移动应用程序时，某些条件访问策略（包括多重身份验证（MFA））将具有降级的体验。 此外，如果你想要访问 Microsoft Graph，则需要通过 OAuth 2.0 实现授权才能生成所需的令牌。 
+When using SAML 2.0 or WSFed protocols for mobile applications, certain Conditional Access policies including Multi-factor Authentication (MFA) will have a degraded experience. Additionally, if you want to access the Microsoft Graph, you will need to implement authorization through OAuth 2.0 to generate necessary tokens. 
 
 ### <a name="implementation"></a>实现
 
-Microsoft 不提供 SAML 实现的库或推荐特定的库。 有许多开源库可用。
+Microsoft does not provide libraries for SAML implementation or recommend specific libraries. There are many open-source libraries available.
 
-## <a name="sso-and-using-microsoft-graph-rest-api"></a>SSO 和使用 Microsoft Graph Rest API 
+## <a name="sso-and-using-microsoft-graph-rest-api"></a>SSO and Using Microsoft Graph Rest API 
 
-Microsoft Graph 是跨所有 Microsoft 365 的数据结构，包括 Office 365、Windows 10 和企业移动性和安全性，以及 Dynamics 365 等其他产品。 这包括诸如用户、组、日历、邮件、文件等实体的核心架构，这些架构可提高用户的工作效率。 Microsoft Graph 为开发人员提供了三个接口，这是基于 REST 的 API、Microsoft Graph 数据连接和连接器，使开发人员能够将他们自己的数据添加到 Microsoft Graph 中。  
+Microsoft Graph is the data fabric across all of Microsoft 365, including Office 365, Windows 10 and Enterprise Mobility and Security, and additional products such as Dynamics 365. This includes the core schemas of the entities such as Users, Groups, Calendar, Mail, Files, and more, that drive user productivity. Microsoft Graph offers three interfaces for developers a REST based API, Microsoft Graph data connect, and Connectors that allow developers to add their own data into the Microsoft Graph.  
 
-使用任何上述 SSO 协议，你的应用程序都可通过 Microsoft Graph REST API 访问丰富的数据。 这样，你的客户就可以在 Microsoft 365 投资中获得更多价值。 例如，你的应用程序可以调用 Microsoft Graph API，以便与你的客户的 Office 365 实例和应用程序中的用户 Microsoft Office 和 SharePoint 项相集成。 
+Using any of the above protocols for SSO enables your application’s access to the rich data available through the Microsoft Graph REST API. This  enables your customers  to get more value from their investment in Microsoft 365. For example,  your application can call the Microsoft Graph API to integrate with your customers’ Office 365 instance and surface users’ Microsoft Office and SharePoint items within your application. 
 
-如果你使用 Open ID Connect 进行身份验证，则你的开发体验是无缝的，因为你将使用 OAuth2 （开放 ID Connect 的基础）来获取令牌，以用于调用 Microsoft Graph Api。 如果你的应用程序使用的是 SAML 或 WSFed，则必须在应用程序中添加其他代码，以使这些 OAuth2 获取调用 Microsoft Graph Api 所需的令牌。 
+If you are using Open ID Connect  to authenticate, then your development experience is seamless  because you will use OAuth2, the foundation of Open ID Connect, to acquire tokens can be used for invoking Microsoft Graph APIs. If your application is using SAML or WSFed, you must add additional code within your application to get these OAuth2 to acquire the tokens  required to  invoking Microsoft Graph APIs. 
 
 ## <a name="next-steps"></a>后续步骤
 
-[为多租户应用程序启用 SSO](isv-sso-content.md)
+[Enable SSO for your multi-tenant application](isv-sso-content.md)
 
-[为多租户应用程序创建文档](isv-create-sso-documentation.md)
+[Create documentation for your multi-tenant application](isv-create-sso-documentation.md)

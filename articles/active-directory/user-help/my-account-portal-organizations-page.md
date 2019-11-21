@@ -1,6 +1,6 @@
 ---
-title: 在我的帐户门户中管理你的组织-Azure AD
-description: 如何从 "我的帐户" 门户的 "组织" 页查看和离开你的组织。
+title: Manage your organizations from the My Account portal - Azure AD
+description: How to view and leave organizations connected to your work or school account from the Organizations page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820419"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231846"
 ---
-# <a name="manage-your-organizations-from-the-my-account-portal"></a>通过 "我的帐户" 门户管理你的组织
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Manage organizations connected to your work or school account from the Organizations page
 
-你可以通过 "**我的帐户**" 门户的 "**组织**" 页管理你的组织。
+You can manage your organizations from the **Organizations** page of the **My Account** portal.
 
 “组织”页中显示了两种类型的组织：
 
@@ -30,15 +30,15 @@ ms.locfileid: "73820419"
 - **其他组织。** 其他组织是之前使用工作或学校帐户登录到的任何组。 可以随时离开其中任何组织。
 
     >[!NOTE]
-    > 如果没有分配的本组织，你将看到一个标题，其中显示了组织，其中显示了关联组织的列表。
+    > If you don't have an assigned Home organization, you'll just see a single heading that says Organizations with the list of your associated organizations.
 
 ## <a name="view-your-organizations"></a>查看组织
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
 2. 从左侧导航窗格中选择“组织”，或从“组织”块中选择“管理组织”链接。
 
-    !["我的帐户" 页，显示突出显示的组织链接](media/my-account-portal/my-account-portal-organizations.png)
+    ![My Account page, showing highlighted Organizations links](media/my-account-portal/my-account-portal-organizations.png)
 
 3. 查看**本组织**的信息。
 
@@ -51,20 +51,20 @@ ms.locfileid: "73820419"
 可以离开不是本组织的任何组织。
 
 >[!Important]
->如果错误地离开了某个组织，则无法撤销该操作。 您必须等待该组织的管理员再次邀请您。
+>如果错误地离开了某个组织，则无法撤销该操作。 You'll have to wait for the administrator of that organization to invite you again.
 
-1. 选择要离开的组织旁边的 "**离开组织**"，然后选择 "**离开**" 以确认你要离开。
+1. Select **Leave organization** next to the organization you want to leave, and then select **Leave** to confirm you want to leave.
 
     ![突出显示“离开组织”链接的“组织”页](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-查看组织后，可以：
+After viewing your organizations, you can:
 
-- 查看或管理你的[安全信息](user-help-security-info-overview.md)。
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- 查看或管理已连接的[设备](my-account-portal-devices-page.md)。
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- 查看[登录活动](my-account-portal-sign-ins-page.md)。
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- 查看组织如何[使用与隐私相关的数据](my-account-portal-privacy-page.md)。
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

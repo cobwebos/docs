@@ -1,32 +1,32 @@
 ---
-title: Azure Database for MySQL 中的连接体系结构
-description: 描述 Azure Database for MySQL 服务器的连接体系结构。
+title: Connectivity architecture in Azure Database for MySQL
+description: Describes the connectivity architecture for your Azure Database for MySQL server.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: 664d3d4333f8c34a8c5dc6648da2beccc4d7a6a2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498449"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213152"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
-本文介绍 Azure Database for MySQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MySQL 实例。
+# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectivity architecture in Azure Database for MySQL
+This article explains the Azure Database for MySQL connectivity architecture as well as how the traffic is directed to your Azure Database for MySQL instance from clients both within and outside Azure.
 
 ## <a name="connectivity-architecture"></a>连接体系结构
-可以通过网关连接到 Azure Database for MySQL，该网关负责将传入连接路由到服务器在群集中的物理位置。 下图演示了流量流。
+Connection to your Azure Database for MySQL is established through a gateway that is responsible for routing incoming connections to the physical location of your server in our clusters. The following diagram illustrates the traffic flow.
 
-![连接体系结构概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Overview of the connectivity architecture](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-客户端在连接到数据库时，会获得一个用于连接到网关的连接字符串。 该网关有一个公共 IP 地址，用于侦听端口 3306。 在数据库群集中，流量转发到相应的 Azure Database for MySQL。 因此，为了通过某种方式（例如，通过公司网络）连接到服务器，必须打开客户端防火墙，使出站流量能够访问我们的网关。 下面是一个按区域分类的可供我们的网关使用的 IP 地址的完整列表。
+As client connect to the database, they get a connection string which connects to the gateway. This gateway has a public IP address that listens to port 3306. Inside the database cluster, traffic is forwarded to appropriate Azure Database for MySQL. Therefore, in order to connect to your server, such as from corporate networks, it is necessary to open up the client side firewall to allow outbound traffic to be able to reach our gateways. Below you can find a complete list of the IP addresses used by our gateways per region.
 
-## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Azure Database for MySQL 网关 IP 地址
-下表列出了所有数据区域的 Azure Database for MySQL 网关的主要 IP 和次要 IP。 主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是主 IP 地址故障时使用的故障转移 IP 地址。 如前所述，客户应该允许到这两个 IP 地址的出站流量。 第二个 IP 地址不侦听任何服务，除非 Azure Database for MySQL 激活该地址，使之接受连接。
+## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Azure Database for MySQL gateway IP addresses
+The following table lists the primary and secondary IPs of the Azure Database for MySQL gateway for all data regions. The primary IP address is the current IP address of the gateway and the second IP address is a failover IP address in case of failure of the primary. As mentioned, customers should allow outbound to both the IP addresses. The second IP address does not listen in on any services until it is activated by Azure Database for MySQL to accept connections.
 
-| **区域名称** | **主 IP 地址** | **次要 IP 地址** |
+| **Region Name** | **Primary IP Address** | **Secondary IP Address** |
 |:----------------|:-------------|:------------------------|
 | 澳大利亚东部 | 13.75.149.87 | 40.79.161.1 |
 | 澳大利亚东南部 | 191.239.192.109 | 13.73.109.251 |
@@ -38,7 +38,7 @@ ms.locfileid: "73498449"
 | 中国东部 2 | 40.73.82.1 | |
 | 中国北部 1 | 139.219.15.17 | |
 | 中国北部 2 | 40.73.50.0 | |
-| 东亚 | 191.234.2.139 | 52.175.33.150 |
+| 亚洲东部 | 191.234.2.139 | 52.175.33.150 |
 | 美国东部 1 | 191.238.6.43 | 40.121.158.30 |
 | 美国东部 2 | 191.239.224.107 | 40.79.84.180 * |
 | 法国中部 | 40.79.137.0 | 40.79.129.1 |
@@ -53,7 +53,7 @@ ms.locfileid: "73498449"
 | 美国中北部 | 23.98.55.75 | 23.96.178.199 |
 | 北欧 | 191.235.193.75 | 40.113.93.91 |
 | 美国中南部 | 23.98.162.75 | 13.66.62.124 |
-| 东南亚 | 23.100.117.95 | 104.43.15.0 |
+| 亚洲东南部 | 23.100.117.95 | 104.43.15.0 |
 | 南非北部 | 102.133.152.0 | |
 | 南非西部 | 102.133.24.0 | |
 | 阿拉伯联合酋长国北部 | 65.52.248.0 | |
@@ -65,10 +65,17 @@ ms.locfileid: "73498449"
 ||||
 
 > [!NOTE]
-> *美国东部 2* 还有第三个 IP 地址，即 `52.167.104.0`。
+> *East US 2* has also a tertiary IP address of `52.167.104.0`.
+
+## <a name="connection-redirection"></a>Connection redirection
+
+Azure Database for MySQL supports an additional connection policy, **redirection**, that helps to reduce network latency between client applications and MySQL servers. With this feature, after the initial TCP session is established to the Azure Database for MySQL server, the server returns the backend address of the node hosting the MySQL server to the client. Thereafter, all subsequent packets flow directly to the server, bypassing the gateway. As packets flow directly to the server, latency and throughput have improved performance.
+
+This feature is supported in Azure Database for MySQL servers with engine versions 5.6, 5.7, and 8.0.
+
+Preview support for redirection is available in the [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) extension, developed by Microsoft, and is available on [PECL](https://pecl.php.net/package/mysqlnd_azure). See the [configuring redirection](./howto-redirection.md) article for more information on how to use redirection in your applications. 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)
-* [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-cli.md)
-
+* [Create and manage Azure Database for MySQL firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)

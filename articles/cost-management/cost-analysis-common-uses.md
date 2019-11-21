@@ -1,116 +1,116 @@
 ---
-title: 常见成本分析在 Azure 成本管理中使用
-description: 本文介绍如何在 Azure 成本管理中获取常见成本分析任务的结果。
+title: Common cost analysis uses in Azure Cost Management
+description: This article explains how you can get results for common cost analysis tasks in Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 10/16/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: cc133a75506dcbe552d380e2a6de219a47aca3d8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600184"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219489"
 ---
-# <a name="common-cost-analysis-uses"></a>常见成本分析使用
+# <a name="common-cost-analysis-uses"></a>Common cost analysis uses
 
-Azure 成本管理用户通常需要对许多其他人提出的问题的解答。 本文逐步讲解如何在成本管理中获取常见成本分析任务的结果。
+Azure Cost Management users often want answers to questions that many others ask. This article walks you through getting results for common cost analysis tasks in Cost Management.
 
-## <a name="view-cost-breakdown-by-azure-service"></a>查看 Azure 服务的成本细分
+## <a name="view-cost-breakdown-by-azure-service"></a>View cost breakdown by Azure service
 
-通过 Azure 服务查看成本，可帮助你更好地了解你的基础结构中最大开销的部分。 例如，VM 计算成本可能较小。 不过，由于从 Vm 发出的信息量，您可能会产生大量的网络成本。 了解 Azure 服务的主要成本驱动因素至关重要，这样您就可以根据需要调整服务使用。
+Viewing costs by an Azure service can help you to better understand the parts of your infrastructure that cost the most. For example, VM compute costs might be small. Yet you might accrue significant networking costs because of the amount of information emitting from the VMs. Understanding the primary cost drivers of your Azure services is essential so that you can adjust service usage, as needed.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 选择 "**按服务成本**"，然后按**服务层**分组。
-1. 将视图更改为 "**表**"。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Cost by service** and then group by **Service tier**.
+1. Change the view to **Table**.
 
-![Azure 服务的成本细分](./media/cost-analysis-common-uses/breakdown-by-service.png)
+![Cost breakdown by Azure service](./media/cost-analysis-common-uses/breakdown-by-service.png)
 
-## <a name="view-cost-breakdown-by-azure-resource"></a>查看 Azure 资源的成本细分
+## <a name="view-cost-breakdown-by-azure-resource"></a>View cost breakdown by Azure resource
 
-服务是用 Azure 资源生成的。 查看基于资源的成本可帮助您快速确定主要的成本贡献者。 如果服务的资源太昂贵，可以考虑进行更改以降低成本。
+Your services are built with Azure resources. Reviewing costs based on resources can help you quickly identify your primary cost contributors. If a service has resources that are too expensive, consider making changes to reduce your costs.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 选择 "**按资源成本**"。
-1. 将视图更改为 "**表**"。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Cost by resource**.
+1. Change the view to **Table**.
 
-![查看 Azure 资源的成本细分](./media/cost-analysis-common-uses/cost-by-resource.png)
+![View cost breakdown by Azure resource](./media/cost-analysis-common-uses/cost-by-resource.png)
 
-## <a name="view-cost-breakdown-by-selected-dimensions"></a>查看所选维度的成本细分
+## <a name="view-cost-breakdown-by-selected-dimensions"></a>View cost breakdown by selected dimensions
 
-维度使你可以基于费用中显示的各种元数据值来组织成本。 例如，可以按位置对成本进行分组。
+Dimensions allow you to organize your costs based on various metadata values shown in your charges. For example, you could group your costs by location.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 选择 "**分组依据**" 筛选器。  
-    按项 ![Select 分组 ](./media/cost-analysis-common-uses/group-by.png)
-1. （可选）保存该视图供以后使用。
-1. 单击图形下方的饼图以查看更详细的数据。  
-    ![查看所选维度的成本细分](./media/cost-analysis-common-uses/drill-down.png)
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select the **Group by** filter.  
+    ![Select a Group by item](./media/cost-analysis-common-uses/group-by.png)
+1. Optionally, you save the view for later use.
+1. Click a pie chart below the graph to view more detailed data.  
+    ![View cost breakdown by selected dimensions](./media/cost-analysis-common-uses/drill-down.png)
 
-## <a name="view-costs-per-day-or-by-month"></a>查看每日或每月的成本
+## <a name="view-costs-per-day-or-by-month"></a>View costs per day or by month
 
-查看每日和每月成本可帮助您更好地了解您的成本是在一周还是一年中。 如果你在节假日期间有更多的客户流量，这会导致 Azure 成本的相应增加？ 星期五是否比 Monday 更昂贵？
+Looking at daily and monthly costs can help you to better understand if there’s a time of the week or year where your costs are higher. If you have more customer traffic in a holiday period, does that lead to a corresponding increase in your Azure costs? Is Friday a more costly day than Monday?
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 将**粒度**设置为**每月**或**每日**。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Set the **Granularity** to **Monthly** or **Daily**.
 
-![查看每日成本](./media/cost-analysis-common-uses/daily-granularity.png)
+![View costs per day](./media/cost-analysis-common-uses/daily-granularity.png)
 
-## <a name="view-costs-for-a-specific-tag"></a>查看特定标记的成本
+## <a name="view-costs-for-a-specific-tag"></a>View costs for a specific tag
 
-许多 Azure 用户会将标记应用到其资源，如成本中心或开发环境（生产和测试），以更好地分类费用。 标记在成本分析中显示为维度。 您可以使用该维度深入了解自定义标记分类。
+Many Azure users apply tags to their resources such as a cost center or development environment (production and test) to better categorize charges. Tags appear as a dimension in cost analysis. You can use the dimension to gain insights into your custom tagging categorizations.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 为标记选择 "**分组依据**"。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select **Group by** for your tag.
 
-![查看特定标记的成本](./media/cost-analysis-common-uses/tag.png)
+![View costs for a specific tag](./media/cost-analysis-common-uses/tag.png)
 
 ## <a name="download-your-usage-details"></a>下载使用情况详细信息
 
-"使用情况详细信息" 报告文件（CSV 格式）提供了向发票计费的所有费用的明细。 您可以使用报表将它与您的发票进行比较和更好地了解。 发票上的每个计费费用对应于使用情况报表中的细分费。
+Your usage details report file, in CSV format, provides a breakdown of all the charges that accrued towards an invoice. You can use the report to compare it to, and better understand, your invoice. Each billed charge on your invoice corresponds to broken-down charges in the usage report.
 
-1. 在 Azure 门户中，导航到计费帐户或订阅的 "**使用情况和费用**" 选项卡。 例如：**成本管理 + 计费** > **计费** > **用量和费用**。
-1. 选择要从其下载的行项目，然后单击下载符号。  
-    ![下载用量和费用](./media/cost-analysis-common-uses/download1.png)
-1.  选择要下载的使用情况文件。  
-    ![选择要下载的使用情况文件](./media/cost-analysis-common-uses/download2.png)
+1. In the Azure portal, navigate to the **Usage and Charges** tab for a billing account or subscription. For example: **Cost Management + Billing** > **Billing** > **Usage + charges**.
+1. Select the line item to download from and then click the download symbol.  
+    ![Download usage and charges](./media/cost-analysis-common-uses/download1.png)
+1.  Select the usage file to download.  
+    ![Choose a usage file to download](./media/cost-analysis-common-uses/download2.png)
 
-## <a name="view-monthly-ea-cost-breakdown"></a>查看每月 EA 成本细分
+## <a name="view-monthly-ea-cost-breakdown"></a>View monthly EA cost breakdown
 
-你的 EA 注册为你的整个组织累算费用。 了解成本如何随时间推移而开票，有助于您与相应的利益干系人合作，确保成本是管理的。
+Your EA enrollment accrues costs for your entire organization. Understanding how costs accrue and are invoiced over time helps you to engage the appropriate stakeholders to ensure that costs are managed responsibly.
 
-1. 在 Azure 门户中，导航到 "**成本管理 + 计费** > **概述**"。
-1. 单击 "当前月**细目**" 并查看你的货币承诺刻录。  
-    ![EA 成本概述-细目汇总 ](./media/cost-analysis-common-uses/breakdown1.png)
-1.  单击 "**使用情况和费用**" 选项卡，然后查看所选 timespan 中的上个月细目。  
-    ![Usage 和收费 "选项卡 ](./media/cost-analysis-common-uses/breakdown2.png)
+1. In the Azure portal, navigate to **Cost Management + Billing** > **Overview**.
+1. Click **Breakdown** for the current month and view your monetary commitment burn down.  
+    ![EA costs overview - breakdown summary](./media/cost-analysis-common-uses/breakdown1.png)
+1.  Click the **Usage and Charges** tab and view the prior month’s breakdown in the chosen timespan.  
+    ![Usage and charges tab](./media/cost-analysis-common-uses/breakdown2.png)
 
-## <a name="view-enrollment-monthly-cost-by-term"></a>按字词查看每月注册成本
+## <a name="view-enrollment-monthly-cost-by-term"></a>View enrollment monthly cost by term
 
-使用注册的每月费用的图形视图来了解给定期间的成本趋势和开票金额。
+Use a graphical view of your enrollment’s monthly costs to understand the cost trends and invoiced amounts for a given period.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 选择注册并设置注册术语。
-1. 将粒度设置为 "每月"，然后将 "视图" 设置为 "**列（堆积）** "。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select your enrollment and set the enrollment term.
+1. Set the granularity to monthly and then set the view to **Column     (stacked)** .
 
-您可以对数据进行分组和筛选，以便进行更详细的分析。
+You can group by and filter your data for a more detailed analysis.
 
-![每月注册成本（按条款）](./media/cost-analysis-common-uses/enrollment-term1.png)
+![Monthly enrollment cost by term](./media/cost-analysis-common-uses/enrollment-term1.png)
 
-## <a name="view-ea-enrollment-accumulated-costs"></a>查看 EA 注册累计成本
+## <a name="view-ea-enrollment-accumulated-costs"></a>View EA enrollment accumulated costs
 
-查看一段时间内的净累计费用，以了解你的组织在给定时间段内的总支出。
+View the net accumulated charges over time to understand overall expenditures for your organization for a given period.
 
-1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
-1. 选择注册，然后查看当前累计成本。
+1. In the Azure portal, navigate to cost analysis for your scope. For example: **Cost Management + Billing** > **Cost Management** > **Cost analysis**.
+1. Select your enrollment and then view your current accumulated costs.
 
-![注册累计成本](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+![Enrollment accumulated costs](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
 
 ## <a name="next-steps"></a>后续步骤
 - 如果尚未完成有关成本管理的第一个快速入门，请阅读[开始分析成本](quick-acm-cost-analysis.md)。
-- 阅读[成本管理文档](index.yml)。
+- Read the [Cost Management documentation](index.yml).

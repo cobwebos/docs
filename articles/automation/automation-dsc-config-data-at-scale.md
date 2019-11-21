@@ -1,7 +1,7 @@
 ---
-title: 大规模的配置数据-Azure 自动化
-description: 了解如何在 Azure 自动化中的状态配置的规模上配置数据。
-keywords: dsc，powershell，配置，安装程序
+title: Configuration data at scale - Azure Automation
+description: Learn how to configure data at scale for state configuration in Azure Automation.
+keywords: dsc,powershell,configuration,setup
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,47 +10,47 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f6bb89370c85389d6c41306ed224d27d710cd7c8
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 3e742f18e86c22b2d798eec5f6b715dfb298670a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559522"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231703"
 ---
 # <a name="configuration-data-at-scale"></a>大规模配置数据
 
-> 适用于：Windows PowerShell 5.1
+> Applies To: Windows PowerShell 5.1
 
-管理成百上千的服务器可能是一项挑战。
-客户提供的反馈是最困难的方面是实际管理[配置数据](/powershell/dsc/configurations/configdata)。
-跨逻辑构造（如位置、类型和环境）组织信息。
+Managing hundreds or thousands of servers can be a challenge.
+Customers have provided feedback that the most difficult aspect is actually managing [configuration data](/powershell/scripting/dsc/configurations/configdata).
+Organizing information across logical constructs like location, type, and environment.
 
 > [!NOTE]
-> 本文引用由开源社区维护的解决方案。
-> 支持仅以 GitHub 协作形式提供，不适用于 Microsoft。
+> This article refers to a solution that is maintained by the Open Source community.
+> Support is only available in the form of GitHub collaboration, not from Microsoft.
 
-## <a name="community-project-datum"></a>社区项目：选取
+## <a name="community-project-datum"></a>Community project: Datum
 
-[已创建](https://github.com/gaelcolas/Datum)一个社区维护解决方案，用于解决这一难题。
-基准是从其他配置管理平台中获得极佳创意，并为 PowerShell DSC 实现了相同类型的解决方案。
-信息根据逻辑创意[组织到文本文件中](https://github.com/gaelcolas/Datum#3-intended-usage)。
-示例如下：
+A community maintained solution named [Datum](https://github.com/gaelcolas/Datum) has been created to resolve this challenge.
+Datum builds on great ideas from other configuration management platforms and implements the same type of solution for PowerShell DSC.
+Information is [organized in to text files](https://github.com/gaelcolas/Datum#3-intended-usage) based on logical ideas.
+Examples would be:
 
-- 应全局应用的设置
-- 应该应用于位置中所有服务器的设置
-- 应该应用于所有数据库服务器的设置
-- 单个服务器设置
+- Settings that should apply globally
+- Settings that should apply to all servers in a location
+- Settings that should apply to all database servers
+- Individual server settings
 
-此信息按你喜欢的文件格式（JSON、Yaml 或 PSD1）进行组织。
-然后，通过将每个文件中[的信息合并](https://github.com/gaelcolas/Datum#datum-tree)到服务器或服务器角色的单一视图中，提供 cmdlet 以生成配置数据文件。
+This information is organized in the file format you prefer (JSON, Yaml, or PSD1).
+Then cmdlets are provided to generate configuration data files by [consolidating the information](https://github.com/gaelcolas/Datum#datum-tree) from each file in to single view of a server or server role.
 
-生成数据文件后，可以将其与[DSC 配置脚本](/powershell/dsc/configurations/write-compile-apply-configuration)一起使用，以生成 mof 文件并[将 mof 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
+Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
 
-若要试用基准，请访问[PowerShell 库](https://www.powershellgallery.com/packages/datum/)并下载解决方案，或者单击 "项目网站" 查看[文档](https://github.com/gaelcolas/Datum#2-getting-started--concepts)。
+To try out Datum, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/datum/) and download the solution or click "Project Site" to view the [documentation](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Windows PowerShell Desired State Configuration 概述](/powershell/dsc/overview/overview)
-- [DSC 资源](/powershell/dsc/resources/resources)
-- [配置本地 Configuration Manager](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
+- [DSC Resources](/powershell/scripting/dsc/resources/resources)
+- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)

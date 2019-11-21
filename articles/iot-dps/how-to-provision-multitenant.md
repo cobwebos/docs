@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure IoT 中心设备预配服务中预配多租户的设备 | Microsoft 文档
+title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
 description: 如何使用你的设备预配服务实例来预配多租户的设备
 author: wesmc7777
 ms.author: wesmc
@@ -7,21 +7,20 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116094"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228791"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
 由预配服务定义的分配策略支持各种不同的分配方案。 两个常见的方案是：
 
-* **地理位置/GeoLatency**：当设备在两位置之间移动时，通过将设备预配到距离每个位置最近的 IoT 中心来改善网络延迟。 在此方案中，为注册选择跨越区域的一组 IoT 中心。 为这些注册选择“最低延迟”分配策略。 此策略会使设备预配服务评估设备延迟，并从一组 IoT 中心确定最接近的 IoT 中心。 
+* 地理位置/GeoLatency：当设备在两位置之间移动时，通过将设备预配到距离每个位置最近的 IoT 中心来改善网络延迟。 在此方案中，为注册选择跨越区域的一组 IoT 中心。 为这些注册选择“最低延迟”分配策略。 此策略会使设备预配服务评估设备延迟，并从一组 IoT 中心确定最接近的 IoT 中心。 
 
-* **多租户**：IoT 解决方案中使用的设备可能需要被分配到一个特定 IoT 中心或一组 IoT 中心。 解决方案可能要求特定租户的所有设备与一组特定的 IoT 中心进行通信。 在某些情况下，租户可能拥有 IoT 中心并要求设备被分配到其 IoT 中心。
+* 多租户：IoT 解决方案中使用的设备可能需要被分配到一个特定 IoT 中心或一组 IoT 中心。 解决方案可能要求特定租户的所有设备与一组特定的 IoT 中心进行通信。 在某些情况下，租户可能拥有 IoT 中心并要求设备被分配到其 IoT 中心。
 
 通常会将这两种方案结合使用。 例如，多租户 IoT 解决方案通常使用跨区域分散的一组 IoT 中心来分配租户设备。 这些租户设备可被分配到基于地理位置具有最低延迟的组中的 IoT 中心。
 
@@ -92,24 +91,24 @@ ms.locfileid: "66116094"
 
 3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
 
-    **组名称**：输入 **contoso-us-devices**。
+    组名称：输入 contoso-us-devices。
 
-    **证明类型**：选择“对称密钥”。
+    证明类型：选择“对称密钥”。
 
-    **自动生成密钥**：此复选框应已处于选中状态。
+    自动生成密钥：此复选框应已处于选中状态。
 
-    **选择要如何将设备分配到中心**：选择“最低延迟”。
+    选择要如何将设备分配到中心：选择“最低延迟”。
 
     ![为对称密钥证明添加多租户注册组](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
 4. 在“添加注册组”上，单击“链接新的 IoT 中心”，以链接这两个区域中心。
 
-    **订阅**：如果你有多个订阅，请选择你在其中创建了区域 IoT 中心的订阅。
+    订阅：如果你有多个订阅，请选择创建区域 IoT 中心的订阅。
 
-    **IoT 中心**：选择你创建的区域中心之一。
+    IoT 中心：选择你创建的区域中心之一。
 
-    **访问策略**：选择“iothubowner”。
+    访问策略：选择“iothubowner”。
 
     ![使用预配服务链接区域 IoT 中心](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
@@ -130,11 +129,11 @@ ms.locfileid: "66116094"
 
 1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国东部区域 VM：
 
-    **--name**：为“美国东部”区域设备 VM 输入一个唯一名称。 
+    --name：为美国东部区域设备 VM 输入一个唯一名称。 
 
-    **--admin-username**：使用你自己的管理员用户名称。
+    --admin-username：使用你自己的管理员用户名称。
 
-    **--admin-password**：使用你自己的管理员密码。
+    --admin-password：使用你自己的管理员密码。
 
     ```azurecli-interactive
     az vm create \
@@ -151,11 +150,11 @@ ms.locfileid: "66116094"
 
 1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国西部区域 VM：
 
-    **--name**：为“美国西部”区域设备 VM 输入一个唯一名称。 
+    --name：为美国西部区域设备 VM 输入一个唯一名称。 
 
-    **--admin-username**：使用你自己的管理员用户名称。
+    --admin-username：使用你自己的管理员用户名称。
 
-    **--admin-password**：使用你自己的管理员密码。
+    --admin-password：使用你自己的管理员密码。
 
     ```azurecli-interactive
     az vm create \
@@ -193,7 +192,7 @@ ms.locfileid: "66116094"
 在这一部分，你将克隆每个 VM 上的 Azure IoT C SDK。 SDK 包含将从每个区域模拟租户的设备预配的示例。
 
 
-1. 对于每个 VM，使用以下命令安装 Cmake  、g++  、gcc  和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)：
+1. 对于每个 VM，使用以下命令安装 Cmake 、g++ 、gcc 和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)：
 
     ```bash
     sudo apt-get update
@@ -300,7 +299,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别，并基于延迟被分配到最邻近的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。 
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -420,8 +419,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
-- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
+- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
 
 
 

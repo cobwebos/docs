@@ -1,6 +1,6 @@
 ---
 title: 创建具有区域前端的负载均衡器 - Azure PowerShell
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure PowerShell 创建带有区域性前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: a2c637ddbf5b7f5883016afe4a6d58ad9752cfc5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1d05b130a98ce816d070bc3ad16e25b867d7dc8a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275120"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215117"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>使用 Azure PowerShell 创建具有区域性前端的标准负载均衡器
 

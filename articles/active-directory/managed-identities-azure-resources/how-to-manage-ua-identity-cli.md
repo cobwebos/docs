@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure CLI 管理用户分配的托管标识
+title: Manage user-assigned managed identity - Azure CLI - Azure AD
 description: 分步说明如何使用 Azure CLI 创建、列出和删除用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e7f220e48a856e55315ab9e4f865caaf27c99
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 760de0d0bd1f11a34aa5c3998c923d1c7c80185d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389030"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232268"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
 

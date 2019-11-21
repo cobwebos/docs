@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心设备预配服务中的安全性概念 | Microsoft Docs
+title: Azure IoT Hub Device Provisioning Service - Security concepts
 description: 介绍安全性预配概念，特定于使用设备预配服务和 IoT 中心的设备
 author: nberdy
 ms.author: nberdy
@@ -7,17 +7,16 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775111"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228828"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
-IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。 本文概述了设备预配中涉及的安全性概念  。 本文涉及设备部署准备工作中提及的所有角色。
+IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。 本文概述了设备预配中涉及的安全性概念。 本文涉及设备部署准备工作中提及的所有角色。
 
 ## <a name="attestation-mechanism"></a>证明机制
 
@@ -27,9 +26,9 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 > IoT 中心将该服务中类似的概念称为“身份验证方案”。
 
 设备预配服务支持以下证明形式：
-* 基于标准 X.509 证书身份验证流的 X.509 证书  。
-* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌  。 此证明形式不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
-* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的对“称密钥”  ，包括哈希签名和嵌入的过期。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于标准 X.509 证书身份验证流的 X.509 证书。
+* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 此证明形式不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的对“称密钥”，包括哈希签名和嵌入的过期。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬件安全模块
@@ -79,7 +78,7 @@ TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供
 
 分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。
 
-与[单个注册](./concepts-service.md#individual-enrollment)条目配合使用的页证书有一个要求：必须将“所有者名称”  设置为“单个注册”条目的注册 ID。 与[注册组](./concepts-service.md#enrollment-group)条目配合使用的页证书应该将“所有者名称”  设置为所需的设备 ID，该 ID 将显示在注册组中经身份验证的设备的“注册记录”中。 
+Leaf certificates used with an [Individual enrollment](./concepts-service.md#individual-enrollment) entry have a requirement that the **Subject Name** must be set to the registration ID of the Individual Enrollment entry. Leaf certificates used with an [Enrollment group](./concepts-service.md#enrollment-group) entry should have the **Subject Name** set to the desired device ID which will be shown in the **Registration Records** for the authenticated device in the enrollment group.
 
 有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 
@@ -104,4 +103,4 @@ TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供
 - *设备 4*：根证书 -> 证书 A -> 设备 4 证书
 - *设备 5*：根证书 -> 证书 A -> 设备 5 证书
 
-最开始，可为根证书创建单个启用的组注册条目，让五台设备均获得访问权限。 如果之后证书 B 出现安全风险，可以为证书 B 创建一个禁用的注册组条目，以防止设备 4 和设备 5 进行注册   。 如果之后设备 3  出现安全风险，可为其证书创建一个禁用的单个注册条目。 这会撤消设备 3 的访问权限，但仍允许设备 1 和设备 2 进行注册    。
+最开始，可为根证书创建单个启用的组注册条目，让五台设备均获得访问权限。 如果之后证书 B 出现安全风险，可以为证书 B 创建一个禁用的注册组条目，以防止设备 4 和设备 5 进行注册。 如果之后设备 3出现安全风险，可为其证书创建一个禁用的单个注册条目。 这会撤消设备 3 的访问权限，但仍允许设备 1 和设备 2 进行注册。

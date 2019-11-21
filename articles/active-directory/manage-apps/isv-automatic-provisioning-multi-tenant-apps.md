@@ -1,6 +1,6 @@
 ---
-title: 为 Azure Active Directory 多租户应用程序启用自动用户预配
-description: 用于启用自动预配的独立软件供应商指南
+title: Enable automatic user provisioning for multi-tenant applications - Azure AD
+description: A guide for independent software vendors for enabling automated provisioning
 services: active-directory
 documentationcenter: azure
 author: BarbaraSelden
@@ -15,108 +15,108 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429447"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232314"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>为多租户应用程序启用自动用户预配
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Enable automatic user provisioning for your multi-tenant application
 
-自动用户预配是在目标系统中自动创建、维护和删除用户标识的过程，如软件即服务应用程序。
+Automatic user provisioning is the process of automating the creation, maintenance, and removal of user identities in target systems like your software-as-a-service applications.
 
-## <a name="why-enable-automatic-user-provisioning"></a>为什么要启用自动用户预配？
+## <a name="why-enable-automatic-user-provisioning"></a>Why enable automatic user provisioning?
 
-需要用户记录的应用程序在用户首次登录之前，应用程序需要用户预配。 作为服务提供商，你可以受益于你的客户。
+Applications that require that a user record is present in the application before a user’s first sign in require user provisioning. There are benefits to you as a service provider, and benefits to your customers.
 
-### <a name="benefits-to-you-as-the-service-provider"></a>作为服务提供商的权益
+### <a name="benefits-to-you-as-the-service-provider"></a>Benefits to you as the service provider
 
-* 使用 Microsoft 标识平台提高应用程序的安全性。
+* Increase the security of your application by using the Microsoft identity platform.
 
-* 减少实际和感知的客户工作量以采用你的应用程序。
+* Reduce actual and perceived customer effort to adopt your application.
 
-* 通过使用系统进行跨域标识管理（SCIM）的预配，降低与多个标识提供者（Idp）集成的成本以实现自动用户预配。
+* Reduce your costs in integrating with multiple identity providers (IdPs) for automatic user provisioning by using System for Cross-Domain Identity Management (SCIM)-based provisioning.
 
-* 通过提供丰富的日志来帮助客户解决用户预配问题，降低支持成本。
+* Reduce support costs by providing rich logs to help customers troubleshoot user provisioning issues.
 
-* 提高应用程序在[Azure AD 应用库](https://azuremarketplace.microsoft.com/marketplace/apps)中的可见性。
+* Increase the visibility of your application in the [Azure AD app gallery](https://azuremarketplace.microsoft.com/marketplace/apps).
 
-* 获取应用教程页面中的优先顺序列表。
+* Get a prioritized listing in the App Tutorials page.
 
-### <a name="benefits-to-your-customers"></a>向你的客户带来的好处
+### <a name="benefits-to-your-customers"></a>Benefits to your customers
 
-* 通过为更改角色或将组织留给应用程序的用户自动删除对应用程序的访问权限，提高安全性。
+* Increase security by automatically removing access to your application for users who change roles or leave the organization to your application.
 
-* 通过避免人为错误和与手动预配相关的重复工作，简化应用程序的用户管理。
+* Simplify user management for your application by avoiding human error and repetitive work associated with manual provisioning.
 
-* 降低托管和维护定制开发的预配解决方案的成本。
+* Reduce the costs of hosting and maintaining custom-developed provisioning solutions.
 
-## <a name="choose-a-provisioning-method"></a>选择设置方法
+## <a name="choose-a-provisioning-method"></a>Choose a provisioning method
 
-Azure AD 提供了多个集成路径，以便为应用程序启用自动用户预配。
+Azure AD provides several integration paths to enable automatic user provisioning for your application.
 
-* [Azure AD 预配服务](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)可管理用户对应用程序（出站预配）和从应用程序到 Azure AD （入站预配）的 Azure AD 的设置和取消预配。 服务将连接到应用程序提供的跨域标识管理（SCIM）用户管理 API 终结点的系统。
+* The [Azure AD Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) manages the provisioning and deprovisioning of users from Azure AD to your application (outbound provisioning) and from your application to Azure AD (inbound provisioning). The service connects to the System for Cross-Domain Identity Management (SCIM) user management API endpoints provided by your application.
 
-* 使用[Microsoft Graph](https://docs.microsoft.com/graph/)时，应用程序通过查询 Microsoft Graph API 来管理用户和组对 Azure AD 到应用程序的入站和出站预配。
+* When using the [Microsoft Graph](https://docs.microsoft.com/graph/), your application manages inbound and outbound provisioning of users and groups from Azure AD to your application by querying the Microsoft Graph API.
 
-* 如果你的应用程序使用 SAML 进行联合身份验证，则可以启用安全断言标记语言实时（SAML JIT）用户预配。 它使用在 SAML 令牌中发送的声明信息来预配用户。
+* The Security Assertion Markup Language Just in Time (SAML JIT) user provisioning can be enabled if your application is using SAML for federation. It uses claims information sent in the SAML token to provision users.
 
-若要帮助确定要用于应用程序的集成选项，请参阅高级比较表，然后查看每个选项的详细信息。
+To help determine which integration option to use for your application, refer to the high-level comparison table, and then see the more detailed information on each option.
 
-| 自动预配启用或增强的功能| Azure AD 预配服务（SCIM 2.0）| Microsoft Graph API （OData 4.0）| SAML JIT |
+| Capabilities enabled or enhanced by Automatic Provisioning| Azure AD Provisioning Service (SCIM 2.0)| Microsoft Graph API (OData v4.0)| SAML JIT |
 |---|---|---|---|
-| Azure AD 中的用户和组管理| √| √| 仅用户 |
-| 管理从本地 Active Directory 同步的用户和组| √| √| 仅用户 * |
-| 在设置访问 O365 数据（团队、SharePoint、电子邮件、日历、文档等）期间访问用户和组之外的数据| X +| √| X |
-| 基于业务规则创建、读取和更新用户| √| √| √ |
-| 基于业务规则删除用户| √| √| X |
-| 从 Azure 门户管理所有应用程序的自动用户预配| √| X| √ |
-| 支持多个标识提供程序| √| X| √ |
-| 支持来宾帐户（B2B）| √| √| √ |
-| 支持非企业帐户（B2C）| X| √| √ |
+| User and group management in Azure AD| √| √| User only |
+| Manage users and groups synced from on-premises Active Directory| √*| √*| User only* |
+| Access data beyond users and groups during provisioning Access to O365 data (Teams, SharePoint, Email, Calendar, Documents, etc.)| X+| √| X |
+| Create, read, and update users based on business rules| √| √| √ |
+| Delete users based on business rules| √| √| X |
+| Manage automatic user provisioning for all applications from the Azure portal| √| X| √ |
+| Support multiple identity providers| √| X| √ |
+| Support guest accounts (B2B)| √| √| √ |
+| Support non-enterprise accounts (B2C)| X| √| √ |
 
-<sup>*</sup> –将用户从 AD 同步到 Azure AD 需要 Azure AD Connect 设置。  
-<sup>+</sup >–使用 SCIM 进行设置不会阻止你将应用程序与 MIcrosoft Graph 集成，以实现其他目的。
+<sup>*</sup> – Azure AD Connect setup is required to sync users from AD to Azure AD.  
+<sup>+</sup >– Using SCIM for provisioning does not preclude you from integrating your application with MIcrosoft Graph for other purposes.
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD 预配服务（SCIM）
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD Provisioning Service (SCIM)
 
-Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标识提供者（idp）和应用程序（例如，可宽比、g Suite、Dropbox）支持的预配的行业标准。 如果除了 Azure AD 之外还需要支持 Idp，则建议使用 Azure AD 预配服务，因为任何符合 SCIM 的 IdP 都可以连接到 SCIM 终结点。 生成简单的/User 终结点，你可以启用预配，而不必维护自己的同步引擎。 
+The Azure AD provisioning services uses [SCIM](https://aka.ms/SCIMOverview), an industry standard for provisioning supported by many identity providers (IdPs) as well as applications (e.g. Slack, G Suite, Dropbox). We recommend you use the Azure AD provisioning service if you want to support IdPs in addition to Azure AD, as any SCIM-compliant IdP can connect to your SCIM endpoint. Building a simple /User endpoint, you can enable provisioning without having to maintain your own sync engine. 
 
-有关 Azure AD 预配服务用户 SCIM 的详细信息，请参阅： 
+For more information on how the Azure AD Provisioning Service users SCIM, see: 
 
-* [了解有关 SCIM 标准的详细信息](https://aka.ms/SCIMOverview)
+* [Learn more about the SCIM standard](https://aka.ms/SCIMOverview)
 
-* [使用系统进行跨域标识管理（SCIM）以自动将用户和组从 Azure Active Directory 设置到应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Using System for Cross-Domain Identity Management (SCIM) to automatically provision users and groups from Azure Active Directory to applications](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [了解 Azure AD SCIM 实现](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Understand the Azure AD SCIM implementation](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-## <a name="microsoft-graph-for-provisioning"></a>用于预配的 Microsoft Graph
+## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph for Provisioning
 
-使用用于预配的 Microsoft Graph 时，可以访问图形中提供的所有丰富的用户数据。 除了用户和组的详细信息外，还可以获取其他信息，如用户的角色、经理和直接下属、拥有和注册的设备，以及[Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)中提供的数百个其他数据片段。 
+When you use Microsoft Graph for provisioning, you have access to all the rich user data available in Graph. In addition to the details of users and groups, you can also fetch additional information like the user’s roles, manager and direct reports, owned and registered devices, and hundreds of other data pieces available in the [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0). 
 
-15000000多家组织和90% 的财富500公司使用 Azure AD，同时订阅 Office 365、Microsoft Azure、企业移动性套件或 Microsoft 365 等 Microsoft 云服务。 你可以使用 Microsoft Graph 将你的应用与管理工作流（如员工加入（和终止）、配置文件维护等）集成。 
+More than 15 million organizations, and 90% of fortune 500 companies use Azure AD while subscribing to Microsoft cloud services like Office 365, Microsoft Azure, Enterprise Mobility Suite, or Microsoft 365. You can use Microsoft Graph to integrate your app with administrative workflows, such as employee onboarding (and termination), profile maintenance, and more. 
 
-详细了解如何使用 Microsoft Graph 进行预配：
+Learn more about using Microsoft Graph for provisioning:
 
-* [Microsoft Graph 主页](https://developer.microsoft.com/graph)
+* [Microsoft Graph Home page](https://developer.microsoft.com/graph)
 
 * [Microsoft Graph 概述](https://docs.microsoft.com/graph/overview)
 
-* [Microsoft Graph 身份验证概述](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph Auth Overview](https://docs.microsoft.com/graph/auth/)
 
-* [Microsoft Graph 入门](https://developer.microsoft.com/graph/get-started)
+* [Getting started with Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
-## <a name="using-saml-jit-for-provisioning"></a>使用 SAML JIT 进行预配
+## <a name="using-saml-jit-for-provisioning"></a>Using SAML JIT for provisioning
 
-如果只想在首次登录应用程序时预配用户，而不需要自动取消对用户的设置，则 SAML JIT 是一个选项。 应用程序必须支持 SAML 2.0 作为联合身份验证协议，才能使用 SAML JIT。
+If you want to provision users only upon first sign in to your application, and do not need to automatically deprovision users, SAML JIT is an option. Your application must support SAML 2.0 as a federation protocol to use SAML JIT.
 
-SAML JIT 使用 SAML 令牌中的声明信息来创建和更新应用程序中的用户信息。 客户可根据需要在 Azure AD 应用程序中配置这些必需的声明。 有时需要从应用程序端启用 JIT 预配，以便客户可以使用此功能。 SAML JIT 对创建和更新用户很有用，但它不能删除或停用应用程序中的用户。
+SAML JIT uses the claims information in the SAML token to create and update user information in the application. Customers can configure these required claims in the Azure AD application as needed. Sometimes the JIT provisioning needs to be enabled from the application side so that customer can use this feature. SAML JIT is useful for creating and updating users, but it can't delete or deactivate the users in the application.
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为应用程序启用单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Enable Single Sign-on for your application](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)并与 microsoft 合作，以便在 microsoft 网站上创建文档。
+* [Submit your application listing](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) and partner with Microsoft to create documentation on Microsoft’s site.
 
-* [加入 Microsoft 合作伙伴网络（免费）并创建你的走向市场计划](https://partner.microsoft.com/en-us/explore/commercial)。
+* [Join the Microsoft Partner Network (free) and create your go to market plan](https://partner.microsoft.com/en-us/explore/commercial).

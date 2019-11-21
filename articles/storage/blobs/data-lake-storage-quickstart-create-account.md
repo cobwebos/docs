@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467921"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227956"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
 Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introduction.md)，该命名空间提供了一个适合与 Hadoop 分布式文件系统 (HDFS) 配合使用的基于本机目录的容器。 可以通过 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)从 HDFS 访问 Data Lake Storage Gen2 数据。
 
-本文演示如何使用 Azure 门户、Azure PowerShell 或通过 Azure CLI 创建帐户。
+This article demonstrates how to create an account using the Azure portal, Azure PowerShell, or via the Azure CLI.
 
 ## <a name="prerequisites"></a>必备组件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
 |           | 先决条件 |
 |-----------|--------------|
-|门户     | 无         |
-|PowerShell | 本文需要 PowerShell 模块 Az. Storage **0.7**或更高版本。 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以下的版本，则必须升级 powershell 模块。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
+|门户     | None         |
+|PowerShell | This article requires the PowerShell module Az.Storage version **0.7** or later. 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以下的版本，则必须升级 powershell 模块。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
 |CLI        | 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令： <ul><li>可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令 </li><li>可以安装 CLI 并在本地运行 CLI 命令</li></ul>|
 
 使用命令行时，可以运行 Azure Cloud shell，也可以在本地安装 CLI。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与你的帐户一起使用。 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮：
+Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮：
 
 [![Cloud Shell](./media/data-lake-storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-此按钮会启动交互式 shell，可用于运行本文中的步骤：
+The button launches an interactive shell that you can use to run the steps in this article:
 
-[![屏幕截图，显示门户中的 Cloud Shell 窗口](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![显示门户中 Cloud Shell 窗口的屏幕截图](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
-也可在本地安装和使用 Azure CLI。 本文要求运行 Azure CLI 版本2.0.38 或更高版本。 运行 `az --version` 即可查找版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+也可在本地安装和使用 Azure CLI。 This article requires that you are running the Azure CLI version 2.0.38 or later. 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>创建启用了 Azure Data Lake Storage Gen2 的存储帐户
 
-Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
+Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 The storage account provides a unique namespace for your Azure Storage data that is accessible from anywhere in the world over HTTP or HTTPS. Data in your Azure storage account is durable and highly available, secure, and massively scalable.
 
 > [!NOTE]
 > 必须将新的存储帐户创建为 **StorageV2(常规用途 v2 )** 类型才能利用 Data Lake Storage Gen2 功能。  
@@ -62,7 +62,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 This article shows how to create a new resource group.
 
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
@@ -70,16 +70,16 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 > 分层命名空间目前在所有公共区域中提供。
 
 1. 选择要在其中创建存储帐户的订阅。
-2. 在 Azure 门户中，选择 "**创建资源**" 按钮，然后选择 "**存储帐户**"。
-3. 在“资源组”字段下，选择“新建”。 输入新资源组的名称。
+2. In the Azure portal, choose the **Create a resource** button, then choose **Storage account**.
+3. 在“资源组”字段下，选择“新建”。 Enter a name for your new resource group.
    
    资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。
 
 4. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 5. 选择一个位置。
-6. 确保**StorageV2 （常规用途 v2）** 在 "**帐户类型**" 下拉列表中显示为 "已选中"。
-7. 根据需要更改每个字段中的值： "**性能**"、"**复制**"、"**访问层**"。 若要了解有关这些选项的详细信息，请参阅[Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services)。
-8. 选择 "**高级**" 选项卡。
+6. Make sure that **StorageV2 (general purpose v2)** appears as selected in the **Account kind** drop-down list.
+7. Optionally change the values in each of these fields: **Performance**, **Replication**, **Access tier**. To learn more about these options, see [Introduction to Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
+8. Choose the **Advanced** tab.
 10. 在“Data Lake Storage Gen2”部分中，将“分层命名空间”设置为“已启用”。
 11. 单击“查看 + 创建”以创建存储帐户。
 
@@ -95,7 +95,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ## <a name="create-an-account-using-powershell"></a>使用 PowerShell 创建帐户
 
-首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) 模块。
+首先，安装最新版本的 [PowerShellGet](/powershell/scripting/gallery/installing-psget) 模块。
 
 然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
 
@@ -212,6 +212,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建具有 Data Lake Storage Gen2 功能的存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请参阅以下主题。
+In this article, you've created a storage account with Data Lake Storage Gen2 capabilities. 若要了解如何通过存储帐户上传和下载 Blob，请参阅以下主题。
 
 * [AzCopy V10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

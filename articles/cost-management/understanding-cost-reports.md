@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d847b78ba9623f3543a3cb1e45b5187605deb550
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969074"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229769"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
@@ -66,15 +66,15 @@ ms.locfileid: "65969074"
     ![用于分组的第二个标记列表示例](./media/understanding-cost-reports/groups-tags02.png)
 
     在成本分摊报表中，基于标记的组类别中的组可能包括：
-      - 标记
+      - Tags
       - 资源组标记
       - Cloudyn 成本实体标记
       - 用于成本分摊目的的订阅标记类别
 
    示例可能包括：
    - 成本中心
-   - 系
-   - 应用程序
+   - 部门
+   - Application
    - 环境
    - 成本代码
 
@@ -111,7 +111,7 @@ ms.locfileid: "65969074"
        - 全部预付
        - 无需预付
        - 部分预付
-       - 按需
+       - 点播
        - 预留
        - 现付
      - **费用类型**
@@ -191,7 +191,7 @@ ms.locfileid: "65969074"
 
 ### <a name="save-a-report-to-cloud-provider-storage"></a>将报表保存到云提供商存储
 
-若要将报表保存到云服务提供商，必须已配置存储帐户。 查看任何报表时，单击“操作”，然后选择“计划报表”。 为报表命名，然后添加自己的 URL 或使用自动创建的 URL。 选择“保存到存储”，然后选择存储帐户或添加一个新存储帐户。 输入将添加到报表文件名中的前缀。 选择 CSV 或 JSON 文件格式，然后保存该报表。
+若要将报表保存到云服务提供商，必须已配置存储帐户。 查看任何报表时，单击“操作”，然后选择“计划报表”。 为报表命名，然后添加自己的 URL 或使用自动创建的 URL。 选择“保存到存储”，然后选择存储帐户或添加一个新存储帐户。 输入将添加到报表文件名中的前缀。 Select a CSV or JSON file format and then save the report.
 
 ### <a name="schedule-a-report"></a>计划报表
 

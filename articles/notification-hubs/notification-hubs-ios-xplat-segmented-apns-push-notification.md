@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 07/28/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 07/28/2019
-ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213223"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228167"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
 
@@ -33,7 +33,7 @@ ms.locfileid: "71213223"
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标记时，已注册该标记的设备会接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
-在本教程中，会执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 向应用中添加类别选择
@@ -41,9 +41,9 @@ ms.locfileid: "71213223"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心][get-started]将通知推送到 iOS 应用。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心][get-started]将通知推送到 iOS 应用。
+This topic builds on the app you created in [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started]. Before starting this tutorial, you must have already completed [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -61,6 +61,7 @@ ms.locfileid: "71213223"
      ![Xcode 接口生成器][3]
 
 2. 在助手编辑器中，为所有开关创建插座并称它们为“WorldSwitch”、“PoliticsSwitch”、“BusinessSwitch”、“TechnologySwitch”、“ScienceSwitch”、“SportsSwitch”
+
 3. 为名为 `subscribe` 的按钮创建一个操作；`ViewController.h` 应包含以下代码：
 
     ```objc
@@ -176,7 +177,7 @@ ms.locfileid: "71213223"
 
     此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. 完成[通知中心入门][get-started]教程后，中`AppDelegate.m`已提供了以下方法。 否则，请添加这些方法。
+10. The following methods should already be present in `AppDelegate.m` from completing the [Get started with Notification Hubs][get-started] tutorial. 否则，请添加这些方法。
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -252,7 +253,7 @@ ms.locfileid: "71213223"
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
 
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，请更新`SendNotificationRESTAPI` [通知中心入门][get-started]教程中定义的方法。
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 To do so, you update the `SendNotificationRESTAPI` method that you defined in the [Get started with Notification Hubs][get-started] tutorial.
 
 1. 在 `ViewController.m` 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
 

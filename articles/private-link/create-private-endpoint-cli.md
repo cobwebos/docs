@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure CLI 创建 Azure 专用终结点 |Microsoft Docs
-description: 了解 Azure 专用终结点
+title: Create an Azure private endpoint using Azure CLI| Microsoft Docs
+description: Learn about Azure private endpoint
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.author: allensu
+ms.openlocfilehash: 467b2426ccd69a27adc9df7ee3ff0304886b8f4a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053508"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224866"
 ---
-# <a name="create-a-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建专用终结点
-专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 在本快速入门中，你将了解如何在虚拟网络上创建虚拟机，以及如何在 SQL 数据库服务器上创建使用 Azure CLI 的专用终结点。 然后，你可以访问 VM，并安全地访问专用链接资源（本示例中为 Azure SQL 数据库的私有服务器）。 
+# <a name="create-a-private-endpoint-using-azure-cli"></a>Create a private endpoint using Azure CLI
+Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link Resources. In this Quickstart, you will learn how to create a VM on a virtual network, a SQL Database Server with a Private Endpoint using Azure CLI. Then, you can access the VM to and securely access the private link resource (a private Azure SQL Database server in this example). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -23,14 +23,14 @@ ms.locfileid: "73053508"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建资源组之前，必须先创建资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westcentralus* " 位置创建名为 " *myResourceGroup* " 的资源组：
+Before you can create any resource, you have to create a resource group to host the Virtual Network. 使用 [az group create](/cli/azure/group) 创建资源组。 This example creates a resource group named *myResourceGroup* in the *westcentralus* location:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus
 ```
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-使用[az Network vnet create](/cli/azure/network/vnet)创建虚拟网络。 此示例将创建一个名为*myVirtualNetwork*的默认虚拟网络，其中包含一个名为*mySubnet*的子网：
+Create a Virtual Network with [az network vnet create](/cli/azure/network/vnet). This example creates a default Virtual Network named *myVirtualNetwork* with one subnet named *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -38,8 +38,8 @@ az network vnet create \
  --resource-group myResourceGroup \
  --subnet-name mySubnet
 ```
-## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点网络策略。 使用[az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)更新名为*mySubnet*的子网配置：
+## <a name="disable-subnet-private-endpoint-policies"></a>Disable subnet private endpoint policies 
+Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint network policies. Update a subnet configuration named *mySubnet* with [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,17 +49,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>创建 VM 
-使用 az VM create 创建 VM。 出现提示时，提供要用作 VM 的登录凭据的密码。 此示例创建名为*myVm*的 VM： 
+Create a VM with az vm create. When prompted, provide a password to be used as the sign-in credentials for the VM. This example creates a VM named *myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
- 请注意 VM 的公共 IP 地址。 在下一步中，此地址将用于从 Internet 连接到 VM。
+ Note the public IP address of the VM. 在下一步中，此地址将用于从 Internet 连接到 VM。
 
-## <a name="create-a-sql-database-server"></a>创建 SQL 数据库服务器 
-使用 az sql server create 命令创建 SQL 数据库服务器。 请记住，你的 SQL Server 名称必须在 Azure 中是唯一的，因此请将占位符值替换为你自己的唯一值： 
+## <a name="create-a-sql-database-server"></a>Create a SQL Database Server 
+Create a SQL Database Server with the az sql server create command. Remember that the name of your SQL Server must be unique across Azure, so replace the placeholder value in brackets with your own unique value: 
 
 ```azurecli-interactive
 # Create a logical server in the resource group 
@@ -81,10 +81,10 @@ az sql db create \
     --capacity 1 
 ```
 
-请注意，SQL Server ID 类似于 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` 你将在下一步中使用 SQL Server ID。 
+Note the SQL Server ID is similar to ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` You will use the SQL Server ID in the next step. 
 
-## <a name="create-the-private-endpoint"></a>创建专用终结点 
-为虚拟网络中的 SQL 数据库服务器创建专用终结点： 
+## <a name="create-the-private-endpoint"></a>Create the Private Endpoint 
+Create a private endpoint for the SQL Database server in your Virtual Network: 
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
@@ -95,8 +95,8 @@ az network private-endpoint create \
     --group-ids sqlServer \  
     --connection-name myConnection  
  ```
-## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
-为 SQL 数据库服务器域创建专用 DNS 区域，并使用虚拟网络创建关联链接。 
+## <a name="configure-the-private-dns-zone"></a>Configure the Private DNS Zone 
+Create a Private DNS Zone for SQL Database server domain and create an association link with the Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.database.windows.net" 
@@ -121,7 +121,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-从 internet 连接到 VM *myVm* ，如下所示：
+Connect to the VM *myVm* from the internet as follows:
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
@@ -144,12 +144,12 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
+## <a name="access-sql-database-server-privately-from-the-vm"></a>Access SQL Database Server privately from the VM
 
-在本部分中，将使用专用终结点从 VM 连接到 SQL 数据库服务器。
+In this section, you will connect to the SQL Database Server from the VM using the Private Endpoint.
 
- 1. 在*myVM*的远程桌面中，打开 PowerShell。
- 2. 输入 nslookup myserver.database.windows.net  您将收到类似于下面的消息： 
+ 1. In the Remote Desktop of *myVM*, open PowerShell.
+ 2. Enter nslookup myserver.database.windows.net  You'll receive a message similar to this: 
 
 ```
       Server:  UnKnown 
@@ -159,24 +159,24 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
       Address:  10.0.0.5 
       Aliases:  myserver.database.windows.net 
 ```
- 3. 安装 SQL Server Management Studio 
- 4. 在 "连接到服务器" 中，输入或选择以下信息：服务器类型：选择数据库引擎。
- 服务器名称：选择 myserver.database.windows.net Username：输入创建过程中提供的用户名。
- 密码：输入创建过程中提供的密码。
- 记住密码：选择 "是"。
+ 3. Install SQL Server Management Studio 
+ 4. In Connect to server, enter or select this information: Server type: Select Database Engine.
+ Server name: Select myserver.database.windows.net Username: Enter a username provided during creation.
+ Password: Enter a password provided during creation.
+ Remember password: Select Yes.
  
  5. 选择“连接”。
- 6. 浏览左侧菜单中的**数据库**。
- 7. 同时创建或查询来自*mydatabase*的信息
- 8. 关闭与*myVm*的远程桌面连接。
+ 6. Browse **Databases** from left menu.
+ 7. (Optionally) Create or query information from *mydatabase*
+ 8. Close the remote desktop connection to *myVm*.
 
 ## <a name="clean-up-resources"></a>清理资源 
-如果不再需要资源组和所有资源，可以使用 az group delete 删除资源组及其所有资源： 
+When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure 专用链接](private-link-overview.md)的详细信息
+- Learn more about [Azure Private Link](private-link-overview.md)
  

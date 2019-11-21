@@ -1,6 +1,6 @@
 ---
-title: 使用双因素验证登录-Azure AD
-description: 了解如何使用各种双因素验证方法登录到你的工作或学校帐户。
+title: Sign-in using authentication with a work or school account - Azure AD
+description: Learn how to sign in to your work or school account using the various two-factor verification methods.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,14 +14,14 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 86c7be7f786a4fcecc39ea9af552a0dc03f2fcac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820427"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233235"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>使用双因素验证登录到你的工作或学校帐户
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Sign in to your work or school account using your two-factor verification method
 
 > [!NOTE]
 > 本文的目的是了解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
@@ -72,7 +72,7 @@ ms.locfileid: "73820427"
 
    ![输入验证码](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. 在手机上打开 Microsoft Authenticator 应用，并在登录框中输入验证码。
+3. 打开手机上的 Microsoft Authenticator 应用，并在登录框中输入该代码。
 
 ## <a name="signing-in-with-an-alternate-method"></a>使用替代方法登录
 有时，没有设为首选验证方法的手机或设备。 由于会有这种情况，因此我们建议为帐户设置备用方法。 以下部分介绍当主要方法不可用时如何使用替代方法进行登录。

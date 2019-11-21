@@ -5,19 +5,19 @@ metadata:
   title: 应用程序管理文档
   description: 了解如何使用 Azure AD 企业到企业 (B2B) 协作以安全地将公司的应用程序和服务与来自任何组织的来宾用户和外部合作伙伴共享，同时保持对自己公司数据的控制。
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 08/27/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: a1822b3bd6ec7950bc3c0ab9304ea2f60a7127e4
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
+  ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70125161"
+  ms.lasthandoff: 11/21/2019
+  ms.locfileid: "74272702"
 landingContent:
 - title: 关于 B2B 协作
   linkLists:

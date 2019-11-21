@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 中的 Cloudyn 预算
+title: Manage Cloudyn budgets in Azure
 description: 本文介绍了如何在 Cloudyn 中快速创建和管理预算。
 services: cost-management
 keywords: ''
@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: ad0566f0b93593140d217767f8d97f410dfcbb3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9d7d0e049d3c35aab56145beb94c8e41e56c5785
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259239"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219104"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>使用 Cloudyn 管理 Azure 预算
 
@@ -54,7 +54,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 ## <a name="view-budget-in-reports"></a>在报告中查看预算
 
-完成后，预算会显示在大多数成本报告中，具体显示在“成本”&gt;“成本分析”下，以及在“一段时间内的成本与预算”报告中。 还可以使用“操作”根据预算阈值安排生成报告。
+When completed, your budget is shown in most Cost reports under **Costs** &gt; **Cost Analysis** and in the Cost vs. Budget Over Time report. 还可以使用“操作”根据预算阈值安排生成报告。
 
 下面是“成本分析”报告示例。 其中按工作负载和使用情况类型显示了自年初以来的总预算和成本。
 
@@ -64,7 +64,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 另一种报告查看方法是，查看累计成本与预算。 若要查看累计成本，请选择“显示/隐藏字段”下的“累计成本”和“总预算”。 下面的示例展示了自年初以来的累计成本。
 
-![示例累计成本和总预算，显示在一段时间内的成本与预算报表](./media/manage-budgets/accumulated-budget.png)
+![Example accumulated cost and total budget shown in the Cost vs. Budget Over Time report](./media/manage-budgets/accumulated-budget.png)
 
 累计成本未来可能会超过预算。 如果将图表视图更改为“折线图”类型，就可以更容易地发现这一点。
 
@@ -79,7 +79,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 接下来举例说明。
 
-在“一段时间内的成本与预算”报告中，单击“操作”，再选择“安排生成报告”。 在“阈值”选项卡上，选择阈值指标。 例如，“成本百分比与预算”。 选择警报类型，并输入预算百分比值。 如果只要收到一次通知，请选择“连续警报数”，再键入“1”。 单击“保存”。
+In the Cost vs. Budget Over Time report, click **Actions** and then select **Schedule report**. 在“阈值”选项卡上，选择阈值指标。 例如，“成本百分比与预算”。 选择警报类型，并输入预算百分比值。 如果只要收到一次通知，请选择“连续警报数”，再键入“1”。 单击“保存”。
 
 ![对“保存或计划此报表”框创建预算警报](./media/manage-budgets/budget-alert.png)
 

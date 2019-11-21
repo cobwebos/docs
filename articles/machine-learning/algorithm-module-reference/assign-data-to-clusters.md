@@ -1,52 +1,51 @@
 ---
-title: 将数据分配到群集：模块引用
+title: 'Assign Data to Cluster: Module Reference'
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的 "将数据分配到群集" 模块来评分聚类分析模型。
+description: Learn how to use the Assign Data to Cluster module in Azure Machine Learning to score clustering model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 75a547a26057ad05444753253666dceea160d714
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493867"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214562"
 ---
-# <a name="module-assign-data-to-clusters"></a>模块：向群集分配数据
+# <a name="module-assign-data-to-clusters"></a>Module: Assign Data to Clusters
 
-本文介绍如何在 Azure 机器学习设计器（预览版）中使用 "*将数据分配到群集*" 模块。 该模块通过使用*K 平均值聚类分析*算法训练的聚类分析模型来生成预测。
+This article describes how to use the *Assign Data to Clusters* module in Azure Machine Learning designer (preview). The module generates predictions through a clustering model that was trained with the *K-means clustering* algorithm.
 
-"将数据分配到群集" 模块将返回一个数据集，其中包含每个新数据点的可能分配。 
+The Assign Data to Clusters module returns a dataset that contains the probable assignments for each new data point. 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>如何使用向群集分配数据
+## <a name="how-to-use-assign-data-to-clusters"></a>How to use Assign Data to Clusters
   
-1. 在 Azure 机器学习设计器中，找到先前训练的聚类分析模型。 您可以使用以下方法之一创建和定型聚类分析模型：  
+1. In Azure Machine Learning designer, locate a previously trained clustering model. You can create and train a clustering model by using either of the following methods:  
   
-    - 使用[k 平均值聚类分析](k-means-clustering.md)模块配置 k 平均值聚类分析算法，并使用数据集和定型聚类分析模型模块（本文）来训练模型。  
+    - Configure the K-means clustering algorithm by using the [K-Means Clustering](k-means-clustering.md) module, and train the model by using a dataset and the Train Clustering Model module (this article).  
   
-    - 您还可以从工作区的 "**已保存的模型**" 组中添加现有的已定型聚类分析模型。
+    - You can also add an existing trained clustering model from the **Saved Models** group in your workspace.
 
-2. 将训练的模型附加到向**群集分配数据**的左侧输入端口。  
+2. Attach the trained model to the left input port of **Assign Data to Clusters**.  
 
-3. 附加新的数据集作为输入。 
+3. Attach a new dataset as input. 
 
-   在此数据集中，标签是可选的。 通常情况下，聚类分析是一种无人监督的学习方法。 你不会提前知道这些类别。 但输入列必须与在定型聚类分析模型中使用的列相同，否则会发生错误。
+   In this dataset, labels are optional. Generally, clustering is an unsupervised learning method. You are not expected to know the categories in advance. However, the input columns must be the same as the columns that were used in training the clustering model, or an error occurs.
 
     > [!TIP]
-    > 若要减少从分类预测写入设计器的列数，请使用["选择数据集中的列](select-columns-in-dataset.md)"，然后选择列的子集。 
+    > To reduce the number of columns that are written to the designer from the cluster predictions, use [Select columns in the dataset](select-columns-in-dataset.md), and select a subset of the columns. 
     
-4. 如果希望结果包含完整的输入数据集（包括显示结果的列（群集分配）），请选中 "**检查是否仅显示结果**" 复选框。
+4. Leave the **Check for append or uncheck for result only** check box selected if you want the results to contain the full input dataset, including a column that displays the results (cluster assignments).
   
-    如果清除此复选框，则仅返回结果。 将预测创建为 web 服务的一部分时，此选项可能非常有用。
+    If you clear this check box, only the results are returned. This option might be useful when you create predictions as part of a web service.
   
 5.  运行管道。  
   
 ### <a name="results"></a>结果
 
-+  若要查看数据集中的值，请右键单击该模块，选择 "**结果数据集**"，然后选择 "**可视化**"。
++  To view the values in the dataset, right-click the module, select **Result datasets**, and then select **Visualize**.
 

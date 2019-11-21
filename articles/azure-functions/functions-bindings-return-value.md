@@ -1,29 +1,25 @@
 ---
-title: 使用 Azure 函数的返回值
-description: 了解如何管理 Azure 函数的返回值
-services: functions
-documentationcenter: na
+title: Using return value from an Azure Function
+description: Learn to manage return values for Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 30c9caf267482d7c3731d4848cfb26cc8120b1ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074398"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231073"
 ---
-# <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
+# <a name="using-the-azure-function-return-value"></a>Using the Azure Function return value
 
-本文解释了返回值在函数内如何工作。
+This article explains how return values work inside a function.
 
-在支持返回值的语言中，可以将函数[输出绑定](./functions-triggers-bindings.md#binding-direction)绑定到返回值：
+In languages that have a return value, you can bind a function [output binding](./functions-triggers-bindings.md#binding-direction) to the return value:
 
 * 在 C# 类库，请将输出绑定特性应用到方法返回值。
-* 在其他语言中，请将 `name`function.json*中的* 属性设置为 `$return`。
+* 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
@@ -55,7 +51,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 下面是 *function.json* 文件中的输出绑定：
 
@@ -161,4 +157,4 @@ def main(input: azure.functions.InputStream) -> str:
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [处理 Azure Functions 绑定错误](./functions-bindings-errors.md)
+> [Handle Azure Functions binding errors](./functions-bindings-errors.md)

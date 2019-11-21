@@ -1,149 +1,149 @@
 ---
-title: 从企业协议迁移到 Microsoft 客户协议 Api-Azure |Microsoft Docs
-description: 本文可帮助你了解将 Microsoft 企业协议（EA）迁移到 Microsoft 客户协议的后果。
+title: Migrate from Enterprise Agreement to Microsoft Customer Agreement APIs - Azure | Microsoft Docs
+description: This article helps you understand the consequences of migrating a Microsoft Enterprise Agreement (EA) to a Microsoft Customer Agreement.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8ecb00800d017c771375189c4719ba05b1934e76
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152079"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230065"
 ---
-# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 Api
+# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrate from Enterprise Agreement to Microsoft Customer Agreement APIs
 
-本文可帮助你了解企业协议（EA）与 Microsoft 客户协议（MCA）帐户之间的数据结构、API 和其他系统集成差异。 Azure 成本管理支持两种帐户类型的 Api。 继续之前，请查看 Microsoft 客户协议的[设置计费帐户](../billing/mca-setup-account.md)。
+This article helps you understand the data structure, API, and other system integration differences between Enterprise Agreement (EA) and Microsoft Customer Agreement (MCA) accounts. Azure Cost Management supports APIs for both account types. Review the [Setup billing account for](../billing/mca-setup-account.md) Microsoft Customer Agreement article before continuing.
 
-具有现有 EA 帐户的组织应与设置 MCA 帐户一起查看本文。 以前，续订 EA 帐户需要执行一些最少的工作才能从旧注册迁移到新注册。 但是，迁移到 MCA 帐户需要额外的工作。 额外的工作是因为基础计费子系统发生了变化，这会影响所有与成本相关的 Api 和服务产品。
+Organizations with an existing EA account should review this article in conjunction with setting up an MCA account. Previously, renewing an EA account required some minimal work to move from an old enrollment to a new one. However, migrating to an MCA account requires additional effort. Additional effort is because of changes in the underlying billing subsystem, which affect all cost-related APIs and service offerings.
 
-## <a name="mca-apis-and-integration"></a>MCA Api 和集成
+## <a name="mca-apis-and-integration"></a>MCA APIs and integration
 
-MCA Api 和新的集成使你能够：
+MCA APIs and new integration allow you to:
 
-- 通过本机 Azure Api 提供完整的 API 可用性。
-- 在单个帐单帐户中配置多张发票。
-- 使用 Azure 服务使用情况、第三方 Marketplace 使用和 Marketplace 购买来访问组合 API。
-- 使用 Azure 成本管理查看计费配置文件（与注册相同）的成本。
-- 访问新的 Api 以显示成本，在成本超出预定义阈值时获得通知，并自动导出原始数据。
+- Have complete API availability through native Azure APIs.
+- Configure multiple invoices in a single billing account.
+- Access a combined API with Azure service usage, third-party Marketplace usage, and Marketplace purchases.
+- View costs across billing profiles (the same as enrollments) using Azure Cost Management.
+- Access new APIs to show costs, get notified when costs exceed predefined thresholds, and export raw data automatically.
 
-## <a name="migration-checklist"></a>迁移核对清单
+## <a name="migration-checklist"></a>Migration checklist
 
-以下各项可帮助你过渡到 MCA Api。
+The following items help you transition to MCA APIs.
 
-- 熟悉新的[Microsoft 客户协议计费帐户](../billing/billing-mca-overview.md)。
-- 确定要使用的 Api，并查看以下部分中所替换的 Api。
-- 熟悉[Azure 资源管理器 REST api](/rest/api/azure)。
-- 如果尚未使用 Azure 资源管理器 Api，请在[Azure AD 中注册客户端应用](/rest/api/azure/#register-your-client-application-with-azure-ad)。
-- 更新任何编程代码以[使用 Azure AD 身份验证](/rest/api/azure/#create-the-request)。
-- 更新任何编程代码，将 EA API 调用替换为 MCA API calls。
-- 更新错误处理以使用新的错误代码。
-- 查看其他集成产品，如 Cloudyn 和 Power BI，以了解其他所需的操作。
+- Familiarize yourself with the new [Microsoft Customer Agreement billing account](../billing/billing-mca-overview.md).
+- Determine which APIs you use and see which ones are replaced in the following section.
+- Familiarize yourself with [Azure Resource Manager REST APIs](/rest/api/azure).
+- If you're not already using Azure Resource Manager APIs, [register your client app with Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
+- Update any programming code to [use Azure AD authentication](/rest/api/azure/#create-the-request).
+- Update any programming code to replace EA API calls with MCA API calls.
+- Update error handling to use new error codes.
+- Review additional integration offerings, like Cloudyn and Power BI, for other needed action.
 
-## <a name="ea-apis-replaced-with-mca-apis"></a>将 EA Api 替换为 MCA Api
+## <a name="ea-apis-replaced-with-mca-apis"></a>EA APIs replaced with MCA APIs
 
-EA Api 使用 API 密钥进行身份验证和授权。 MCA Api 使用 Azure AD 身份验证。
+EA APIs use an API key for authentication and authorization. MCA APIs use Azure AD authentication.
 
-| 目的 | EA API | MCA API |
+| 用途 | EA API | MCA API |
 | --- | --- | --- |
-| 余额和信用额度 | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | BillingAccounts/billingProfiles/availableBalanceussae |
-| 用法（JSON） | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [UsageDetails/](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| 使用情况（CSV） | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [UsageDetails/下载](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Marketplace 使用（CSV） | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [UsageDetails/下载](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| 计费周期 | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | BillingAccounts/billingProfiles/发票 |
-| 价目表 | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | BillingAccounts/billingProfiles/价目表/default/下载 format = json|csv billingAccounts///.../billingProfiles/.../发票/.。。 /pricesheet/default/download 格式 = json|csv billingAccounts/。/billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
-| 预订购买 | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | BillingAccounts/billingProfiles/事务 |
-| 预留建议 | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [ReservationRecommendations/](/rest/api/consumption/reservationrecommendations/list) |
-| 预订使用情况 | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft. reservationDetails](/rest/api/consumption/reservationsdetails)/[reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Balance and credits | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
+| Usage (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Usage (CSV) | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Marketplace Usage (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| 计费周期 | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| 价目表 | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
+| 预留项购买 | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
+| 预留建议 | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Reservation usage | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
-<sup>1</sup> Azure 服务和第三方 Marketplace 使用适用于使用[情况详细信息 API](/rest/api/consumption/usagedetails)。
+<sup>1</sup> Azure service and third-party Marketplace usage are available with the [Usage Details API](/rest/api/consumption/usagedetails).
 
-以下 Api 适用于 MCA 计费帐户：
+The following APIs are available to MCA billing accounts:
 
-| 目的 | Microsoft 客户协议（MCA） API |
+| 用途 | Microsoft Customer Agreement (MCA) API |
 | --- | --- |
-| 计费帐户<sup>2</sup> | Microsoft. 计费/billingAccounts |
-| 计费配置文件<sup>2</sup> | BillingAccounts/billingProfiles |
-| 发票部分<sup>2</sup> | BillingAccounts/invoiceSections |
-| 发票 | BillingAccounts/billingProfiles/发票 |
-| 计费订阅 | {scope}/billingSubscriptions |
+| Billing accounts<sup>2</sup> | Microsoft.Billing/billingAccounts |
+| Billing profiles<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
+| Invoice sections<sup>2</sup> | Microsoft.Billing/billingAccounts/invoiceSections |
+| 发票 | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| Billing subscriptions | {scope}/billingSubscriptions |
 
-<sup>2</sup> api 返回对象列表，这些对象是范围，其中 Azure 门户和 api 中的成本管理经验。 有关成本管理范围的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
+<sup>2</sup> APIs return lists of objects, which are scopes, where Cost Management experiences in the Azure portal and APIs operate. For more information about Cost Management scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-如果你使用任何现有的 EA Api，则需要对其进行更新以支持 MCA 计费帐户。 下表显示了其他集成更改：
+If you use any existing EA APIs, you need to update them to support MCA billing accounts. The following table shows other integration changes:
 
-| 目的 | 旧产品 | 新产品 |
+| 用途 | Old offering | New offering |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft 消费税 Insights](/power-bi/desktop-connect-azure-consumption-insights)内容包和连接器 | [Microsoft Azure 使用见解 Power BI 应用](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)和[Azure 使用见解连接器](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) content pack and connector | [Microsoft Azure Consumption Insights Power BI app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) and [Azure Consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
-## <a name="apis-to-get-balance-and-credits"></a>用于获取平衡和信用额度的 Api
+## <a name="apis-to-get-balance-and-credits"></a>APIs to get balance and credits
 
-[获取余额汇总](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)API 提供每月摘要：
+The [Get Balance Summary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) API gives you a monthly summary of:
 
 - 余额
-- 新购买
-- Azure Marketplace 服务费用
+- New purchases
+- Azure Marketplace service charges
 - 调整
-- 服务超额费用
+- Service overage charges
 
-所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-获取余额汇总 API 替换为 billingAccounts/billingProfiles/availableBalance API。
+The Get Balance Summary API is replaced by the Microsoft.Billing/billingAccounts/billingProfiles/availableBalance API.
 
-使用可用的平衡 API 获取可用余额：
+To get available balances with the Available Balance API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
-## <a name="apis-to-get-cost-and-usage"></a>用于获取成本和使用量的 Api
+## <a name="apis-to-get-cost-and-usage"></a>APIs to get cost and usage
 
-使用以下 Api 从 Azure 服务使用情况、第三方 Marketplace 使用情况和其他 Marketplace 购买成本中获取成本的每日细分。 为 Azure 服务和第三方 Marketplace 使用合并了以下单独的 Api。 旧的 Api 将替换为[usageDetails/](/rest/api/consumption/usagedetails) API。 它添加了 "Marketplace 购买"，后者之前仅在 "余额汇总" 中显示。
+Get a daily breakdown of costs from Azure service usage, third-party Marketplace usage, and other Marketplace purchases with the following APIs. The following separate APIs were merged for Azure services and third-party Marketplace usage. The old APIs are replaced by the [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails) API. It adds Marketplace purchases, which were previously only shown in the balance summary to date.
 
-- [获取使用情况详细信息/下载](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [获取使用情况详细信息/提交](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [获取使用情况详细信息/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [获取使用情况详细信息/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [获取 marketplace 商店费用/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
-- [获取 marketplace 商店费用/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Get usage detail/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Get usage detail/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Get usage detail/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Get usage detail/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Get marketplace store charge/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Get marketplace store charge/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
 
-所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-前面的所有 Api 均替换为使用情况/使用情况详细信息 API。
+All the preceding APIs are replaced by the Consumption/Usage Details API.
 
-使用使用情况详细信息 API 获取使用情况详细信息：
+To get usage details with the Usage Details API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
-使用情况详细信息 API 与所有成本管理 Api 一样，可用于多个作用域。 对于开票成本，如以往在注册级别接收的，请使用计费配置文件范围。  有关成本管理范围的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
+The Usage Details API, as with all Cost Management APIs, is available at multiple scopes. For invoiced costs, as you would traditionally receive at an enrollment level, use the billing profile scope.  For more information about Cost Management scopes, see [Understand and work with scopes](understand-work-scopes.md).
 
-| 类型 | ID 格式 |
+| Type | ID format |
 | --- | --- |
 | 计费帐户 | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | 计费配置文件 | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| 订阅 | `/subscriptions/{subscriptionId}` |
-| 资源组 | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
+| Subscription | `/subscriptions/{subscriptionId}` |
+| Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
-使用以下 querystring 参数更新任何编程代码。
+Use the following querystring parameters to update any programming code.
 
-| 旧参数 | 新参数 |
+| Old parameters | New parameters |
 | --- | --- |
 | `billingPeriod={billingPeriod}` | 不支持 |
 | `endTime=yyyy-MM-dd` | `endDate=yyyy-MM-dd` |
 | `startTime=yyyy-MM-dd` | `startDate=yyyy-MM-dd` |
 
-还会更改响应的正文。
+The body of the response also changed.
 
-旧响应正文：
+Old response body:
 
 ```
 {
@@ -153,7 +153,7 @@ EA Api 使用 API 密钥进行身份验证和授权。 MCA Api 使用 Azure AD �
 }
 ```
 
-新响应正文：
+New response body:
 
 ```
 {
@@ -168,144 +168,144 @@ EA Api 使用 API 密钥进行身份验证和授权。 MCA Api 使用 Azure AD �
 }
 ```
 
-包含已从数据更改为_值_的使用记录数组的属性名称。 每条记录都有一个简单的详细属性列表。 但是，现在每个记录现在都位于名为_properties_的嵌套属性中，但标记除外。 新结构与其他 Azure Api 一致。 某些属性名称已更改。 下表显示了相应的属性。
+The property name containing the array of usage records changed from data to _values_. Each record used to have a flat list of detailed properties. However, each record now all details are now in a nested property named _properties_, except for tags. The new structure is consistent with other Azure APIs. Some property names have changed. The following table shows corresponding properties.
 
-| 旧属性 | 新属性 | 说明 |
+| Old property | New property | 说明 |
 | --- | --- | --- |
-| accountId | 不适用 | 不跟踪订阅创建者。 使用 invoiceSectionId （与 departmentId 相同）。 |
-| AccountNameAccountOwnerId 和 AccountOwnerEmail | 不适用 | 不跟踪订阅创建者。 使用 invoiceSectionName （与 departmentName 相同）。 |
+| AccountId | N/A | The subscription creator isn't tracked. Use invoiceSectionId (same as departmentId). |
+| AccountNameAccountOwnerId and AccountOwnerEmail | N/A | The subscription creator isn't tracked. Use invoiceSectionName (same as departmentName). |
 | AdditionalInfo | additionalInfo | &nbsp;  |
-| ChargesBilledSeparately | isAzureCreditEligible | 请注意，这些属性为相对。 如果 isAzureCreditEnabled 为 true，则 ChargesBilledSeparately 将为 false。 |
+| ChargesBilledSeparately | isAzureCreditEligible | Note that these properties are opposites. If isAzureCreditEnabled is true, ChargesBilledSeparately would be false. |
 | ConsumedQuantity | quantity | &nbsp; |
-| ConsumedService | consumedService | 确切的字符串值可能不同。 |
-| ConsumedServiceId | 无 | &nbsp; |
+| ConsumedService | consumedService | Exact string values might differ. |
+| ConsumedServiceId | None | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
-| 日期和 usageStartDate | 日期 | &nbsp;  |
-| 日期 | 无 | 分析日开始日期。 |
-| DepartmentId | invoiceSectionId | 精确值不同。 |
-| DepartmentName | invoiceSectionName | 确切的字符串值可能不同。 如果需要，请配置发票部分以匹配部门。 |
-| ExtendedCost 和成本 | costInBillingCurrency | &nbsp;  |
+| Date and usageStartDate | date | &nbsp;  |
+| 天 | None | Parses day from date. |
+| DepartmentId | invoiceSectionId | Exact values differ. |
+| DepartmentName | invoiceSectionName | Exact string values might differ. Configure invoice sections to match departments, if needed. |
+| ExtendedCost and Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| 为周期性费用 | 无 | &nbsp;  |
-| 位置 | location | &nbsp;  |
-| 计量类别 | meterCategory | 确切的字符串值可能不同。 |
-| 计量 ID | meterId | 确切的字符串值不同。 |
-| 计量名称 | meterName | 确切的字符串值可能不同。 |
-| MeterRegion | meterRegion | 确切的字符串值可能不同。 |
-| MeterSubCategory | meterSubCategory | 确切的字符串值可能不同。 |
-| 月份 | 无 | 分析月份开始日期。 |
-| 产品名称 | 无 | 使用 publisherName 和 productOrderName。 |
-| OfferId | 无 | &nbsp;  |
-| 订单编号 | 无 | &nbsp;  |
-| PartNumber | 无 | 使用 meterId 和 productOrderName 可唯一标识价格。 |
+| Is Recurring Charge | None | &nbsp;  |
+| Location | 位置 | &nbsp;  |
+| MeterCategory | meterCategory | Exact string values might differ. |
+| 计量 ID | meterId | Exact string values differ. |
+| MeterName | meterName | Exact string values might differ. |
+| MeterRegion | meterRegion | Exact string values might differ. |
+| MeterSubCategory | meterSubCategory | Exact string values might differ. |
+| 月 | None | Parses month from date. |
+| 产品/服务名称 | None | Use publisherName and productOrderName. |
+| OfferId | None | &nbsp;  |
+| 订单编号 | None | &nbsp;  |
+| PartNumber | None | Use meterId and productOrderName to uniquely identify prices. |
 | 计划名称 | productOrderName | &nbsp;  |
-| 产品 | 产品 |   |
-| ProductId | productId | 确切的字符串值不同。 |
+| Products | Products |   |
+| ProductId | productId | Exact string values differ. |
 | 发布者名称 | publisherName | &nbsp;  |
 | resourceGroup | resourceGroupName | &nbsp;  |
-| ResourceGuid | meterId | 确切的字符串值不同。 |
+| ResourceGuid | meterId | Exact string values differ. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | 无 | &nbsp;  |
+| ResourceLocationId | None | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
-| ServiceAdministratorId | 不适用 | &nbsp;  |
+| ServiceAdministratorId | N/A | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
-| ServiceName | meterCategory | 确切的字符串值可能不同。 |
-| ServiceTier | meterSubCategory | 确切的字符串值可能不同。 |
-| StoreServiceIdentifier | 不适用 | &nbsp;  |
+| ServiceName | meterCategory | Exact string values might differ. |
+| ServiceTier | meterSubCategory | Exact string values might differ. |
+| StoreServiceIdentifier | N/A | &nbsp;  |
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| 标记 | 标记 | Tags 属性应用于根对象，而不是嵌套属性属性。 |
-| UnitOfMeasure | unitOfMeasure | 确切的字符串值不同。 |
-| usageEndDate | 日期 | &nbsp;  |
-| 年龄 | 无 | 从日期分析年份。 |
-| 新西兰 | billingCurrency | 用于收费的货币。 |
-| 新西兰 | billingProfileId | 计费配置文件的唯一 ID （与注册相同）。 |
-| 新西兰 | billingProfileName | 计费配置文件的名称（与注册的名称相同）。 |
-| 新西兰 | chargeType | 用于区分 Azure 服务使用情况、Marketplace 使用情况和购买情况。 |
-| 新西兰 | invoiceId | 发票的唯一 ID。 对于当前的、开月为空。 |
-| 新西兰 | publisherType | 购买的出版商类型。 空以供使用。 |
-| 新西兰 | serviceFamily | 购买类型。 空以供使用。 |
-| 新西兰 | servicePeriodEndDate | 已购买服务的结束日期。 |
-| 新西兰 | servicePeriodStartDate | 购买的服务的开始日期。 |
+| Tags | 标记 | The tags property applies to root object, not to the nested properties property. |
+| UnitOfMeasure | unitOfMeasure | Exact string values differ. |
+| usageEndDate | date | &nbsp;  |
+| 年 | None | Parses year from date. |
+| (new) | billingCurrency | Currency used for the charge. |
+| (new) | billingProfileId | Unique ID for the billing profile (same as enrollment). |
+| (new) | billingProfileName | Name of the billing profile (same as enrollment). |
+| (new) | chargeType | Use to differentiate Azure service usage, Marketplace usage, and purchases. |
+| (new) | invoiceId | Unique ID for the invoice. Empty for the current, open month. |
+| (new) | publisherType | Type of publisher for purchases. Empty for usage. |
+| (new) | serviceFamily | Type of purchase. Empty for usage. |
+| (new) | servicePeriodEndDate | End date for the purchased service. |
+| (new) | servicePeriodStartDate | Start date for the purchased service. |
 
-## <a name="billing-periods-api-replaced-by-invoices-api"></a>计费周期 API 替换为发票 API
+## <a name="billing-periods-api-replaced-by-invoices-api"></a>Billing Periods API replaced by Invoices API
 
-MCA 计费帐户不使用计费期间。 相反，他们使用发票将成本范围限制为特定的计费周期。 [计费周期 api](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)替换为发票 api。 所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。
+MCA billing accounts don't use billing periods. Instead, they use invoices to scope costs to specific billing periods. The [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) is replaced by the Invoices API. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-若要通过发票 API 获取发票：
+To get invoices with the Invoices API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
-## <a name="price-sheet-apis"></a>价目表 Api
+## <a name="price-sheet-apis"></a>Price Sheet APIs
 
-本部分讨论现有的价目表 Api，并提供移动到 Microsoft 客户协议的价目表 API 的建议。 它还讨论了 Microsoft 客户协议的价目表，并说明了价目表中的字段。 [企业获取价格表](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)和[企业获取计费周期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)Api 由 Microsoft 客户协议（billingAccounts/billingProfiles/价目表）的价目表 api 替代。 新的 API 支持 JSON 和 CSV 格式（采用异步 REST 格式）。 所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。
+This section discusses existing Price Sheet APIs and provides recommendations to move to the Price Sheet API for Microsoft Customer Agreements. It also discusses the Price Sheet API for Microsoft Customer Agreements and explains fields in the price sheets. The [Enterprise Get price sheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) and [Enterprise Get billing periods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) APIs are replaced by the Price Sheet API for Microsoft Customer Agreements (Microsoft.Billing/billingAccounts/billingProfiles/pricesheet). The new API supports both JSON and CSV formats, in asynchronous REST formats. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request).
 
-### <a name="billing-enterprise-apis"></a>计费企业 Api
+### <a name="billing-enterprise-apis"></a>Billing Enterprise APIs
 
-你使用了计费企业 Api 与企业注册以获取价格和计费周期信息。 Azure Active Directory web 令牌使用身份验证和授权。
+You used Billing Enterprise APIs with Enterprise enrollments to get price and billing period information. Authentication and authorization used Azure Active Directory web tokens.
 
-若要获取具有价目表和计费周期 Api 的指定企业注册的适用价格：
+To get applicable prices for the specified Enterprise Enrollment with the Price Sheet and Billing Period APIs:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
 
-### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>适用于 Microsoft 客户协议的价目表 API
+### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Price Sheet API for Microsoft Customer Agreements
 
-使用 Microsoft 客户协议的价目表 API 查看所有 Azure 消耗和 Marketplace 消耗服务的价格。 为计费配置文件显示的价格适用于属于计费配置文件的所有订阅。
+Use the Price Sheet API for Microsoft Customer Agreements to view prices for all Azure Consumption and Marketplace consumption services. The prices shown for the billing profile apply to all subscriptions that belong to the billing profile.
 
-使用价目表 API 以 CSV 格式查看所有 Azure 消耗服务价目表数据：
+Use the Price Sheet API to view all Azure Consumption services Price Sheet data in CSV format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
-使用价目表 API 以 JSON 格式查看所有 Azure 消耗服务价目表数据：
+Use the Price Sheet API to view all Azure Consumption services Price Sheet data in JSON format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-使用 API 将返回整个帐户的价目表。 不过，您也可以获取 PDF 格式的价目表的精简版本。 该摘要包括针对特定发票计费的 Azure 消耗和 Marketplace 消耗服务。 发票由 {invoiceId} 标识，这与发票摘要 PDF 文件中显示的**发票编号**相同。 下面是一个示例。
+Using the API returns the price sheet for the entire account. However, you can also get a condensed version of the price sheet in PDF format. The summary includes Azure Consumption and Marketplace consumption services that are billed for a specific invoice. The invoice is identified by the {invoiceId}, which is the same as the **Invoice Number** shown in the Invoice Summary PDF files. Here's an example.
 
-![显示与 InvoiceId 相对应的发票号的示例图像](./media/migrate-cost-management-api/invoicesummary.png)
+![Example image showing the Invoice Number that corresponds to the InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
 
-用 CSV 格式的价目表 API 查看发票信息：
+To view invoice information with the Price Sheet API in CSV format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-若要以 JSON 格式查看带有价目表 API 的发票信息：
+To view invoice information with the Price Sheet API in JSON Format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-你还可以查看当前打开的计费周期或服务期间内任何 Azure 消耗或 Marketplace 消耗服务的预计价格。
+You can also see estimated prices for any Azure Consumption or Marketplace consumption service in the current open billing cycle or service period.
 
-使用 CSV 格式的价目表 API 查看消耗服务的预计价格：
+To view estimated prices for consumption services with the Price Sheet API in CSV format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-使用 JSON 格式的价目表 API 查看消耗服务的估计价格：
+To view estimated prices for consumption services with the Price Sheet API in JSON format:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-Microsoft 客户协议价目表的 Api 是*异步 REST api*。 Api 的响应已从较旧的同步 Api 更改。 还更改了 API 响应的正文。
+The Microsoft Customer Agreement Price Sheet APIs are *asynchronous REST APIs*. The responses for the APIs changed from the older synchronous APIs. The body of the API response also changed.
 
-#### <a name="old-response-body"></a>旧响应正文
+#### <a name="old-response-body"></a>Old response body
 
-下面是同步 REST API 响应的一个示例：
+Here's an example of the synchronous REST API response:
 
 ```
 [
@@ -324,9 +324,9 @@ Microsoft 客户协议价目表的 Api 是*异步 REST api*。 Api 的响应已�
     ]
 ```
 
-#### <a name="new-response-body"></a>新响应正文
+#### <a name="new-response-body"></a>New response body
 
-Api 支持[AZURE REST 异步](../azure-resource-manager/resource-manager-async-operations.md)格式。 使用 GET 调用 API，会收到以下响应：
+The APIs support the [Azure REST asynchronous](../azure-resource-manager/resource-manager-async-operations.md) format. Call the API using GET and you receive the following response:
 
 ```
 No Response Body
@@ -334,7 +334,7 @@ No Response Body
 HTTP Status 202 Accepted
 ```
 
-以下标头随输出位置一起发送：
+The following headers are sent with the location of the output:
 
 ```
 Location:https://management.azure.com/providers/Microsoft.Consumption/operationresults/{operationId}?sessiontoken=XZDFSnvdkbkdsb==
@@ -347,7 +347,7 @@ OData-EntityId: {operationId}
 
 ```
 
-对位置进行另一个 GET 调用。 在操作达到完成或失败状态之前，对 GET 调用的响应是相同的。 完成后，对获取调用位置的响应会返回下载 URL。 就像在同一时间执行操作一样。 下面是一个示例：
+Make another GET call to the location. The response to the GET call is the same until the operation reaches a completion or failure state. When completed, the response to the GET call location returns the download URL. Just as if the operation was executed at the same time. 下面是一个示例：
 
 ```
 HTTP Status 200
@@ -363,155 +363,155 @@ HTTP Status 200
 }
 ```
 
-客户端还可以发出 `Azure-AsyncOperation`的 GET 调用。 终结点返回操作的状态。
+The client can also make a GET call for the `Azure-AsyncOperation`. The endpoint returns the status for the operation.
 
-下表显示了旧企业获取价目表 API 中的字段。 它包括 Microsoft 客户协议新价目表中的相应字段：
+The following table shows fields in the older Enterprise Get price sheet API. It includes corresponding fields in the new price sheet for Microsoft Customer Agreements:
 
-| 旧属性 | 新属性 | 说明 |
+| Old property | New property | 说明 |
 | --- | --- | --- |
-| billingPeriodId  | _不适用_ | 不适用。 对于 Microsoft 客户协议，发票和相关价目表取代了 billingPeriodId 的概念。 |
+| billingPeriodId  | _Not applicable_ | 不适用。 For Microsoft Customer Agreements, the invoice and associated price sheet replaced the concept of billingPeriodId. |
 | meterId  | meterId | &nbsp;  |
-| unitOfMeasure  | unitOfMeasure | 确切的字符串值可能不同。 |
-| includedQuantity  | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 |
-| partNumber  | _不适用_ | 相反，请使用 productOrderName （与 offerId）和 meterid 的组合。 |
-| unitPrice  | unitPrice | 单价适用于在 Microsoft 客户协议中使用的服务。 |
-| currencyCode  | pricingCurrency | Microsoft 客户协议的价格表示形式为定价货币和计费货币。 CurrencyCode 对应于 Microsoft 客户协议中的 pricingCurrency。 |
-| offerId | productOrderName | 可以不使用 OfferId，而是使用 productOrderName，但不能与 OfferId 相同。 但是，productOrderName 和计量确定了与传统注册中的 meterId 和 Offerid 相关的 Microsoft 客户协议中的定价。 |
+| unitOfMeasure  | unitOfMeasure | Exact string values might differ. |
+| includedQuantity  | includedQuantity | Not applicable for services in Microsoft Customer Agreements. |
+| partNumber  | _Not applicable_ | Instead, use a combination of productOrderName (same as offerId) and meterid. |
+| unitPrice  | unitPrice | Unit price is applicable for services consumed in Microsoft Customer Agreements. |
+| currencyCode  | pricingCurrency | Microsoft Customer Agreements have price representations in pricing currency and billing currency. The currencyCode corresponds to the pricingCurrency in Microsoft Customer Agreements. |
+| offerId | productOrderName | Instead of OfferId, you can use productOrderName but isn't the same as OfferId. However, productOrderName and meter determine pricing in Microsoft Customer Agreements related to meterId and Offerid in legacy enrollments. |
 
-## <a name="consumption-price-sheet-api-operations"></a>消耗价目表 API 操作
+## <a name="consumption-price-sheet-api-operations"></a>Consumption Price Sheet API operations
 
-对于企业协议，你使用了消耗价目表 API [get](/rest/api/consumption/pricesheet/get) ，并按订阅者或计费周期为范围[获取计费期间](/rest/api/consumption/pricesheet/getbybillingperiod)操作。 API 使用 Azure 资源管理身份验证。
+For Enterprise Agreements, you used the Consumption Price Sheet API [Get](/rest/api/consumption/pricesheet/get) and [Get By Billing Period](/rest/api/consumption/pricesheet/getbybillingperiod) operations for a scope by subscriptionId or a billing period. The API uses Azure Resource Management authentication.
 
-使用价目表 API 获取范围的价目表信息：
+To get the Price Sheet information for a scope with the Price Sheet API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-使用价目表 API 按计费周期获取价目表信息：
+To get Price Sheet information by billing period with the Price Sheet API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-请使用以下 Microsoft 客户协议，而不是上述 API 终结点：
+Instead of the above API endpoints, use the following ones for Microsoft Customer Agreements:
 
-**适用于 Microsoft 客户协议的价目表 API （异步 REST API）**
+**Price Sheet API for Microsoft Customer Agreements (asynchronous REST API)**
 
-此 API 适用于 Microsoft 客户协议，它提供了其他属性。
+This API is for Microsoft Customer Agreements and it provides additional attributes.
 
-**计费帐户中计费配置文件范围的价目表**
+**Price Sheet for a Billing Profile scope in a Billing Account**
 
-此 API 是现有的 API。 已对其进行了更新，以便为计费帐户中的计费配置文件提供价目表。
+This API is the existing API. It was updated to provide the price sheet for a billing profile in a billing account.
 
-## <a name="price-sheet-for-a-scope-by-billing-account"></a>按计费帐户的作用域的价目表
+## <a name="price-sheet-for-a-scope-by-billing-account"></a>Price Sheet for a scope by billing account
 
-当你获取计费帐户中注册范围内的价目表时，将使用 Azure 资源管理器身份验证。
+Azure Resource Manager authentication is used when you get the Price Sheet at the enrollment scope in a billing account.
 
-若要在帐单帐户中获取注册帐户的价目表，请执行以下操作：
+To get the Price Sheet at the enrollment account in a billing account:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-对于 Microsoft 客户协议，请使用以下部分中的信息。 它提供用于 Microsoft 客户协议的字段属性。
+For a Microsoft Customer Agreement, use the information in the following section. It provides the field properties used for Microsoft Customer agreements.
 
-### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>计费帐户中计费配置文件范围的价目表
+### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Price Sheet for a billing profile scope in a billing account
 
-按计费帐户 API 更新的价目表以 CSV 格式获取价目表。 若要获取 MCA 计费配置文件范围的价目表：
+The updated Price Sheet by billing account API gets the Price Sheet in CSV format. To get the Price Sheet at the billing profile scope for an MCA:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-在 EA 的注册范围内，API 响应和属性完全相同。 属性与相同的 MCA 属性相对应。
+At the EA's enrollment scope, the API response and properties are identical. The properties correspond to the same MCA properties.
 
-下表中提供了[Azure 资源管理器价目表 api](/rest/api/consumption/pricesheet)的旧属性和相同的新属性。
+The older properties for [Azure Resource Manager Price Sheet APIs](/rest/api/consumption/pricesheet) and the same new properties are in the following table.
 
-| 旧 Azure 资源管理器价目表 API 属性  | 新的 Microsoft 客户协议价目表的 API 属性   | 说明 |
+| Old Azure Resource Manager Price Sheet API Property  | New Microsoft Customer Agreement Price Sheet API property   | 描述 |
 | --- | --- | --- |
-| 测定仪 ID | _meterId_ | 计量器的唯一标识符。 与 meterId 相同。 |
-| 计量名称 | meterName | 计量的名称。 计量表示可部署的 Azure 服务资源。 |
-| 计量类别  | 服务 | 计量的分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值不同。 |
-| 计量子类别 | meterSubCategory | 计量 subclassification 类别的名称。 基于服务中高级功能集差异分类。 例如，基本 SQL DB 与标准 SQL DB。 |
-| 计量区域 | meterRegion | &nbsp;  |
-| 计价单位 | _不适用_ | 可以从 unitOfMeasure 分析。 |
+| 测定仪 ID | _meterId_ | 计量的唯一标识符。 Same as meterId. |
+| Meter name | meterName | 计量的名称。 Meter represents the Azure service deployable resource. |
+| Meter category  | 服务 | 计量的分类类别的名称。 Same as the service in the Microsoft Customer Agreement Price Sheet. Exact string values differ. |
+| Meter subcategory | meterSubCategory | 计量子分类类别的名称。 Based on the classification of high-level feature set differentiation in the service. For example, Basic SQL DB vs Standard SQL DB. |
+| Meter region | meterRegion | &nbsp;  |
+| 计价单位 | _Not applicable_ | Can be parsed from unitOfMeasure. |
 | 计量单位 | unitOfMeasure | &nbsp;  |
-| 商品编号 | _不适用_ | 使用 productOrderName 和 MeterId 来唯一确定计费配置文件的价格，而不是 partNumber。 字段在 MCA 发票上列出，而不是在 MCA 发票中列出。 |
-| 单位价格 | unitPrice | Microsoft 客户协议单价。 |
-| 货币代码 | pricingCurrency | Microsoft 客户协议以定价货币和计费币种表示价格。 货币代码与 Microsoft 客户协议中的 pricingCurrency 相同。 |
-| 包括的量 | includedQuantity | 不适用于 Microsoft 客户协议中的服务。 显示值为零的值。 |
-|  产品 ID  | productOrderName | 使用 productOrderName 而不是 OfferId。 不同于 OfferId，但 productOrderName 和计量确定了 Microsoft 客户协议中的定价。 与传统注册中的 meterId 和 Offerid 相关。 |
+| Part number | _Not applicable_ | Instead of partNumber, use productOrderName and MeterId to uniquely identify the price for a billing profile. Fields are listed on the MCA invoice instead of the partNumber in MCA invoices. |
+| 单价 | unitPrice | Microsoft Customer Agreement unit price. |
+| Currency code | pricingCurrency | Microsoft Customer Agreements represent prices in pricing currency and billing currency. Currency code is the same as the pricingCurrency in Microsoft Customer Agreements. |
+| 包括的量 | includedQuantity | Not applicable to services in Microsoft Customer Agreements. Show with values of zero. |
+|  Offer Id  | productOrderName | Instead of OfferId, use productOrderName. Not the same as OfferId, however the productOrderName and meter determine pricing in Microsoft Customer Agreements. Related to meterId and Offerid in legacy enrollments. |
 
-Microsoft 客户协议的价格定义方式不同于企业协议。 企业注册中的服务价格对于 product、PartNumber、计量和产品/服务是唯一的。 Microsoft 客户协议中未使用 PartNumber。
+The price for Microsoft Customer Agreements is defined differently than Enterprise agreements. The price for services in the Enterprise enrollment is unique for product, PartNumber, meter, and offer. The PartNumber isn't used in Microsoft Customer Agreements.
 
-Microsoft 客户协议中的 Azure 消耗服务价格对于 productOrderName 和 meterId 是唯一的。 它们表示服务指示器和产品计划。
+The Azure Consumption service price that's part of a Microsoft Customer Agreement is unique for productOrderName and meterId. They represent the service meter and the product plan.
 
-若要在价目表和使用情况详细信息 API 中的使用情况之间进行协调，可以使用 productOrderName 和 meterId。
+To reconcile between the price sheet and the usage in the Usage Details API, you can use the productOrderName and meterId.
 
-具有帐单配置文件所有者、参与者、读者和发票管理器权限的用户可以下载价目表。
+Users that have billing profile owner, contributor, reader, and invoice manager rights can download the price sheet.
 
-价目表包括价格基于使用情况的服务价格。 服务包括 Azure 消耗和 Marketplace 消耗。 每个服务期间结束时的最新价格会锁定，并应用于单个服务期间的使用情况。 对于 Azure 消耗服务，服务期间通常为日历月份。
+The price sheet includes prices for services whose price is based on usage. The services include Azure consumption and Marketplace consumption. The latest price at the end of each service period is locked and applied to usage in a single service period. For Azure consumption services, the service period is usually a calendar month.
 
-### <a name="retired-price-sheet-api-fields"></a>淘汰价目表 API 字段
+### <a name="retired-price-sheet-api-fields"></a>Retired Price Sheet API fields
 
-以下字段在 Microsoft 客户协议价目表的 Api 中不可用或具有相同的字段。
+The following fields are either not available in Microsoft Customer Agreement Price Sheet APIs or have the same fields.
 
-|停用字段| 说明|
+|Retired field| 描述|
 |---|---|
-| billingPeriodId | 不适用。 对应于 MCA 的 InvoiceId。 |
-| offerId | 不适用。 对应于 MCA 中的 productOrderName。 |
-| meterCategory  | 不适用。 对应于 MCA 中的服务。 |
-| 单位 | 不适用。 可以从 unitOfMeasure 分析。 |
-| currencyCode | 与 MCA 中的 pricingCurrency 相同。 |
-| meterLocation | 与 MCA 中的 meterRegion 相同。 |
-| partNumber partnumber | 不适用，因为 MCA 发票中未列出部件编号。 使用 meterId 和 productOrderName 组合来唯一标识价格，而不是 partnumber。 |
+| billingPeriodId | No applicable. Corresponds to InvoiceId for MCA. |
+| offerId | 不适用。 Corresponds to productOrderName in MCA. |
+| meterCategory  | 不适用。 Corresponds to Service in MCA. |
+| 单位 | 不适用。 Can be parsed from unitOfMeasure. |
+| currencyCode | Same as the pricingCurrency in MCA. |
+| meterLocation | Same as the meterRegion in MCA. |
+| partNumber partnumber | Not applicable because part number isn't listed in MCA invoices. Instead of partnumber, use the meterId and productOrderName combination to uniquely identify prices. |
 | totalIncludedQuantity | 不适用。 |
 | pretaxStandardRate  | 不适用。 |
 
-## <a name="reservation-instance-charge-api-replaced"></a>已替换预订实例费用 API
+## <a name="reservation-instance-charge-api-replaced"></a>Reservation Instance Charge API replaced
 
-可以通过预订[实例费用 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges)获取预订购买的计费交易。 新的 API 包括所有购买，包括第三方 Marketplace 产品/服务。 所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。 保留实例费用 API 被事务 API 替换。
+You can get billing transactions for reservation purchases with the [Reserved Instance Charge API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). The new API includes all purchases, including third-party Marketplace offerings. All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The Reserved Instance Charge API is replaced by the Transactions API.
 
-若要获取预留购买事务和事务 API：
+To get reservation purchase transactions with the Transactions API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
-## <a name="recommendations-apis-replaced"></a>替换建议 Api
+## <a name="recommendations-apis-replaced"></a>Recommendations APIs replaced
 
-保留实例购买建议 Api 提供过去7、30或60天的虚拟机使用情况。 Api 还提供预订购买建议。 这些权限包括：
+Reserved Instance Purchase Recommendations APIs provide virtual machine usage over the last 7, 30, or 60 days. APIs also provide reservation purchase recommendations. 这些权限包括：
 
-- [共享保留实例建议 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
-- [单个保留实例建议 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
+- [Shared Reserved Instance Recommendation API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
+- [Single Reserved Instance Recommendations API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
 
-所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。 前面列出的预订建议 Api 被替换为[reservationRecommendations/](/rest/api/consumption/reservationrecommendations/list) api。
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The reservation recommendations APIs listed previously are replaced by the [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) API.
 
-若要获取预订建议 API 的预订建议：
+To get reservation recommendations with the Reservation Recommendations API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
-## <a name="reservation-usage-apis-replaced"></a>保留使用情况 Api 已替换
+## <a name="reservation-usage-apis-replaced"></a>Reservation Usage APIs replaced
 
-你可以使用预留实例使用量 API 获取注册中的保留使用情况。 如果注册中有多个预订实例，还可以使用此 API 来获取所有保留实例购买的使用情况。
+You can get reservation usage in an enrollment with the Reserved Instance Usage API. If there's more than one reserved instance in an enrollment, you can also get the usage of all the reserved instance purchases using this API.
 
 这些权限包括：
 
-- [预留实例使用量详细信息](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
-- [预留实例使用量摘要](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
+- [Reserved Instance Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
+- [Reserved Instance Usage Summary](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
-所有消耗 Api 都替换为使用 Azure AD 进行身份验证和授权的本机 Azure Api。 有关调用 Azure REST Api 的详细信息，请参阅[REST](/rest/api/azure/#create-the-request)入门。 前面列出的预订建议 Api 被替换为[reservationDetails/](/rest/api/consumption/reservationsdetails)和[reservationSummaries](/rest/api/consumption/reservationssummaries) api。
+All Consumption APIs are replaced by native Azure APIs that use Azure AD for authentication and authorization. For more information about calling Azure REST APIs, see [Getting started with REST](/rest/api/azure/#create-the-request). The reservation recommendations APIs listed previously are replaced by the [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) and [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) APIs.
 
-若要获取预订详细信息 API 的保留详细信息：
+To get reservation details with the Reservation Details API:
 
 | 方法 | 请求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
-若要获取预订摘要 API 的保留摘要：
+To get reservation summaries with the Reservation Summaries API:
 
 | 方法 | 请求 URI |
 | --- | --- |
@@ -519,32 +519,32 @@ Microsoft 客户协议中的 Azure 消耗服务价格对于 productOrderName 和
 
 
 
-## <a name="move-from-cloudyn-to-cost-management"></a>从 Cloudyn 转到成本管理
+## <a name="move-from-cloudyn-to-cost-management"></a>Move from Cloudyn to Cost Management
 
-使用[Cloudyn](https://cloudyn.com)的组织应开始使用[Azure 成本管理](https://azure.microsoft.com/services/cost-management/)，以满足任何成本管理需求。 成本管理在 Azure 门户中提供，无需任何载入和8小时的延迟。 有关详细信息，请参阅[成本管理文档](index.yml)。
+Organizations using [Cloudyn](https://cloudyn.com) should start using [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) for any cost management needs. Cost Management is available in the Azure portal with no onboarding and an eight-hour latency. For more information, see the [Cost Management documentation](index.yml).
 
-通过 Azure 成本管理，可以：
+With Azure Cost Management, you can:
 
-- 根据预定义的预算，查看一段时间内的成本。 分析每日成本模式，确定并停止支出异常。 按标记、资源组、服务和位置降低成本。
-- 创建预算以设置对使用情况和成本的限制，并在达到重要阈值时获得通知。 设置自动化，使操作组触发自定义事件，并强制实施硬性限制。
-- 使用 Azure 顾问提供的建议优化成本和使用情况。 发现使用保留、缩小的虚拟机的购买优化，并删除未使用的资源以保留在预算内。
-- 计划每日将一个 CSV 文件发布到存储帐户的成本和使用情况数据导出。 自动与外部系统集成，使计费数据保持同步和最新。
+- View costs over time against a predefined budget. Analyze daily cost patterns to identify and stop spending anomalies. Break down costs by tags, resource group, service, and location.
+- Create budgets to set limits on usage and costs and get notified when important thresholds are approached. Set up automation with action groups to trigger custom events and enforce hard limits on your terms.
+- Optimize cost and usage with recommendations from Azure Advisor. Discover purchase optimizations with reservations, downsize underused virtual machines, and delete unused resources to stay within budgets.
+- Schedule a cost and usage data export to publish a CSV file to your storage account daily. Automate integration with external systems to keep billing data in sync and up to date.
 
 ## <a name="power-bi-integration"></a>Power BI 集成
 
-如果使用 Power BI 进行成本报表，则需要过渡到以下各项：
+If you use Power BI for cost reporting, you need to transition to the following:
 
-- Microsoft Azure 使用见解 Power BI 应用
-- Azure 使用见解桌面连接器
+- Microsoft Azure Consumption Insights Power BI app
+- Azure Consumption Insights desktop connector
 
 
-对于希望获得最大灵活性的组织，建议使用连接器。 不过，Power BI 应用也可用于快速设置。
+The connector is recommended for organizations wanting the most flexibility. However, the Power BI app is also available for quick set-up.
 
-- 安装[Microsoft Azure 使用见解 Power BI 应用](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
-- [连接 Azure 使用见解连接器](/power-bi/desktop-connect-azure-consumption-insights)
+- Install the [Microsoft Azure Consumption Insights Power BI app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
+- [Connect with the Azure Consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights)
 
-旧的使用情况见解内容包和连接器在注册级别工作。 它至少需要读取访问权限。 新的消耗见解 Power BI 应用和新的 Azure 使用见解连接器可用于计费配置文件用户。 需要额外选项来查看成本或查看计费配置文件成本的团队应在 Azure 门户的[成本分析](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis)中使用。
+The older Consumption Insights content pack and connector worked at an enrollment level. It required at least read access. The new Consumption Insights Power BI app and the new Azure Consumption Insights connector are available for billing profile users. Teams that need additional options for reviewing costs or to view costs across billing profiles should use in [Cost analysis](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) the Azure portal.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[成本管理文档](index.yml)，了解如何监视和控制 Azure 支出。 或者，如果你想要使用成本管理优化资源使用。
+- Read the [Cost Management documentation](index.yml) to learn how to monitor and control Azure spending. Or, if you want to optimize resource use with Cost Management.

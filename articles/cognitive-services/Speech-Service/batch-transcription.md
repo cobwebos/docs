@@ -1,5 +1,5 @@
 ---
-title: 如何使用批操作-语音服务
+title: How to use Batch Transcription - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5418b378c2c3cff09dbccbaa7b7240c61bbb583e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515884"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221533"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="subscription-key"></a>订阅密钥
 
@@ -65,7 +65,7 @@ Batch 听录 API 支持以下格式：
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
+  "locale": "<locale to use, for example en-US>",
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
@@ -82,31 +82,31 @@ Batch 听录 API 支持以下格式：
 
 ### <a name="configuration-properties"></a>配置属性
 
-使用以下可选属性来配置脚本:
+Use these optional properties to configure transcription:
 
 | 参数 | 描述 |
 |-----------|-------------|
-| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 |
+| `ProfanityFilterMode` | 指定如何处理识别结果中的亵渎内容。 接受的值为 `None`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置为 `masked`。 |
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
- | `AddSentiment` | 指定应将情绪添加到查询文本中。 接受`true`的值允许每个查询文本的情绪`false`和 (默认值) 禁用。 |
- | `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道, 该输入应为包含两个声音的 mono 通道。 接受`true`的值使 diarization 和`false` (默认值) 可以禁用它。 还需要`AddWordLevelTimestamps`将设置为 true。|
+ | `AddSentiment` | Specifies sentiment should be added to the utterance. Accepted values are `true` which enables sentiment per utterance and `false` (the default value) to disable it. |
+ | `AddDiarization` | Specifies that diarization analysis should be carried out on the input which is expected to be mono channel containing two voices. Accepted values are `true` which enables diarization and `false` (the default value) to disable it. It also requires `AddWordLevelTimestamps` to be set to true.|
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 
-批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview), 用于读取音频并将转录写入存储。
+Batch transcription supports [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) for reading audio and writing transcriptions to storage.
 
-## <a name="webhooks"></a>Webhooks
+## <a name="webhooks"></a>Webhook
 
-轮询脚本状态可能不是最高性能, 也可能是最佳的用户体验。 若要轮询状态, 可以注册回调, 这会在长时间运行的脚本任务完成时通知客户端。
+Polling for transcription status may not be the most performant, or provide the best user experience. To poll for status, you can register callbacks, which will notify the client when long-running transcription tasks have completed.
 
-有关更多详细信息, 请参阅[webhook](webhooks.md)。
+For more details, see [Webhooks](webhooks.md).
 
-## <a name="speaker-separation-diarization"></a>演讲者分离 (Diarization)
+## <a name="speaker-separation-diarization"></a>Speaker Separation (Diarization)
 
-Diarization 是将扬声器分离成一片音频的过程。 批处理管道支持 Diarization, 并且能够识别 mono 通道录制上的两个扬声器。
+Diarization is the process of separating speakers in a piece of audio. Our Batch pipeline supports Diarization and is capable of recognizing two speakers on mono channel recordings.
 
-若要请求为 diarization 处理音频脚本请求, 只需在 HTTP 请求中添加相关参数, 如下所示。
+To request that your audio transcription request is processed for diarization, you simply have to add the relevant parameter in the HTTP request as shown below.
 
  ```json
 {
@@ -122,30 +122,30 @@ Diarization 是将扬声器分离成一片音频的过程。 批处理管道支�
 }
 ```
 
-由于上述请求中的参数指示, Word 级别时间戳还必须 "打开"。
+Word level timestamps would also have to be 'turned on' as the parameters in the above request indicate.
 
-对应的音频将包含由号码标识的扬声器 (当前仅支持两个语音, 因此扬声器将标识为 "演讲者 1" 和 "音箱 2"), 后接脚本输出。
+The corresponding audio will contain the speakers identified by a number (currently we support only two voices, so the speakers will be identified as 'Speaker 1 'and 'Speaker 2') followed by the transcription output.
 
-另请注意, Diarization 不能用于立体声录音。 此外, 所有 JSON 输出都将包含发言人标记。 如果未使用 diarization, 则会显示 "演讲者:JSON 输出中的 Null "。
+Also note that Diarization is not available in Stereo recordings. Furthermore, all JSON output will contain the Speaker tag. If diarization is not used, it will show 'Speaker: Null' in the JSON output.
 
 > [!NOTE]
-> Diarization 在所有区域和所有区域设置中都可用!
+> Diarization is available in all regions and for all locales!
 
 ## <a name="sentiment"></a>情绪
 
-情绪是批处理脚本中的一项新功能, 是呼叫中心域中的一项重要功能。 客户可以使用其`AddSentiment`请求的参数
+Sentiment is a new feature in Batch Transcription API and is an important feature in the call center domain. Customers can use the `AddSentiment` parameters to their requests to
 
-1.  获取有关客户满意度的见解
-2.  深入了解代理的性能 (执行调用的团队)
-3.  找出调用负方向的确切时间点
-4.  确定在对正调用负
-5.  确定用户喜欢的内容及其对产品或服务不喜欢的内容
+1.  Get insights on customer satisfaction
+2.  Get insight on the performance of the agents (team taking the calls)
+3.  Pinpoint the exact point in time when a call took a turn in a negative direction
+4.  Pinpoint what went well when turning negative calls to positive
+5.  Identify what customers like and what they dislike about a product or a service
 
-情绪按每个音频段评分, 其中音频段定义为查询文本 (偏移) 开始与字节流结束的检测无声之间的时间间隔。 该段内的整个文本用于计算情绪。 我们不会为整个调用或每个通道的整个语音计算任何聚合情绪值。 这些聚合将留给域所有者进一步应用。
+Sentiment is scored per audio segment where an audio segment is defined as the time lapse between the start of the utterance (offset) and the detection silence of end of byte stream. The entire text within that segment is used to calculate sentiment. We DO NOT calculate any aggregate sentiment values for the entire call or the entire speech of each channel. These aggregations are left to the domain owner to further apply.
 
-情绪应用于词法窗体。
+Sentiment is applied on the lexical form.
 
-JSON 输出示例如下所示:
+A JSON output sample looks like below:
 
 ```json
 {
@@ -180,11 +180,11 @@ JSON 输出示例如下所示:
   ]
 }
 ```
-此功能使用的是情绪模型, 该模型当前为 Beta 版本。
+The feature uses a Sentiment model, which is currently in Beta.
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
-`samples/batch`子目录中的[GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整的示例。
+Complete samples are available in the [GitHub sample repository](https://aka.ms/csspeech/samples) inside the `samples/batch` subdirectory.
 
 如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。
 

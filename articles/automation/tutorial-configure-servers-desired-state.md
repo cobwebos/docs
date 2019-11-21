@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 72e5018dc1212e57dc190c05cc54158d37ca7fe1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432059"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231496"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
 
@@ -65,7 +65,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> 在更高级的方案中，若要导入提供 DSC 资源的多个模块，请确保配置中的每个模块都有唯一的 @no__t 0 行。
+> In more advanced scenarios where you require multiple modules to be imported that provide DSC Resources, make sure each module has a unique `Import-DscResource` line in your configuration.
 
 调用 `Import-AzureRmAutomationDscConfiguration` cmdlet，将配置上传到自动化帐户：
 
@@ -134,16 +134,16 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 默认情况下，每隔 30 分钟会检查一次 DSC 节点是否符合节点配置。
 有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
-## <a name="working-with-partial-configurations"></a>使用部分配置
+## <a name="working-with-partial-configurations"></a>Working with Partial Configurations
 
-Azure 自动化状态配置支持使用[部分配置](/powershell/dsc/pull-server/partialconfigs)。
-在此方案中，DSC 配置为独立管理多个配置，并且每个配置都是从 Azure 自动化检索的。
-但是，每个自动化帐户只能有一个配置分配给一个节点。
-这意味着，如果使用节点的两个配置，则需要两个自动化帐户。
+Azure Automation State Configuration supports usage of [partial configurations](/powershell/scripting/dsc/pull-server/partialconfigs).
+In this scenario, DSC is configured to manage multiple configurations independently, and each configuration is retrieved from Azure Automation.
+However, only one configuration can be assigned to a node per automation account.
+This means if you are using two configurations for a node you will require two automation accounts.
 
-有关如何从请求服务注册部分配置的详细信息，请参阅[部分配置](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
+For details about how to register a partial configuration from pull service, see the documentation for [partial configurations](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
 
-若要详细了解团队如何协同工作以协作管理使用配置作为代码的服务器，请参阅[了解 DSC 在 CI/CD 管道中的角色](/powershell/dsc/overview/authoringadvanced)。
+For more information about how teams can work together to collaboratively manage servers using configuration as code see [Understanding DSC's role in a CI/CD Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>检查托管节点的符合性状态
 
@@ -160,26 +160,26 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>正在从服务中删除节点
+## <a name="removing-nodes-from-service"></a>Removing nodes from service
 
-将节点添加到 Azure 自动化状态配置时，本地 Configuration Manager 中的设置将设置为注册到服务，并使用请求配置和所需模块来配置计算机。
-如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 来执行此操作。
+When you add a node to Azure Automation State Configuration, the settings in Local Configuration Manager are set to register with the service and pull configurations and required modules to configure the machine.
+If you choose to remove the node from the service, you can do so using either the Azure portal or the Az cmdlets.
 
 > [!NOTE]
-> 从服务中注销节点仅设置本地 Configuration Manager 设置，使节点不再连接到服务。
-> 这不会影响当前应用到节点的配置。
-> 若要删除当前配置，请使用[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1)或删除本地配置文件（这是适用于 Linux 节点的唯一选项）。
+> Unregistering a node from the service only sets the Local Configuration Manager settings so the node is no longer connecting to the service.
+> This does not effect the configuration that is currently applied to the node.
+> To remove the current configuration, use the [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) or delete the local configuration file (this is the only option for Linux nodes).
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure Automation 中，单击目录中的**状态配置（DSC）** 。
-接下来，单击 "**节点**" 以查看已向服务注册的节点的列表。
-单击要删除的节点的名称。
-在打开的节点视图中，单击 "**注销**"。
+From Azure Automation, click on **State configuration (DSC)** in the table of contents.
+Next click **Nodes** to view the list of nodes that are registered with the service.
+Click on the name of the node you wish to remove.
+In the Node view that opens, click **Unregister**.
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 从 Azure 自动化状态配置服务中注销节点，请遵循 cmdlet [AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0)的文档。
+To unregister a node from Azure Automation State Configuration service using PowerShell, follow the documentation for the cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>后续步骤
 

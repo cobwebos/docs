@@ -9,33 +9,41 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 5736667acfa510d89e549afd4d0f5c61a833dd1c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 628547e8254bb0055cf1f09af50e79b68311a759
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932733"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221739"
 ---
-<a name="train-your-app"></a>
-
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
-[测试](luis-concept-test.md)应用程序是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
+[Testing](luis-concept-test.md) an app is an iterative process. 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新，然后重新进行训练和测试。 
+
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
+<a name="train-your-app"></a>
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
+## <a name="train-before-testing"></a>Train before testing
+
+In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
+
 ## <a name="test-an-utterance"></a>测试陈述
 
-1. 在“我的应用”页面选择应用的名字以访问应用。 
+The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
+
+1. 在“我的应用”页面上选择应用名称以访问应用。 
 
 1. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
 
-    ![训练和测试应用页](./media/luis-how-to-interactive-test/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
 
 1. 在文本框中输入陈述，然后按 Enter。 虽然在“测试”中可键入任意数量的测试陈述，但一次只能键入一个。
 
@@ -91,28 +99,29 @@ ms.locfileid: "68932733"
 
 如果有多个 LUIS 终结点，请使用测试的“已发布”窗格上的“其他设置”链接来更改用于测试的终结点。 如果不确定要使用哪个终结点，请选择默认的“Starter_Key”。 
 
-![突出显示了“其他设置”链接的测试面板](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
+<!--
+###  View Bing Spell Check corrections in test panel
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>在测试面板中查看必应拼写检查更正
+Requirements to view the spelling corrections: 
 
-查看拼写检查的要求： 
+* Published app
+* Bing Spell Check [service key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). The service key is not stored and needs to be reset for each browser session. 
 
-* 已发布的应用
-* 必应拼写检查[服务密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。 密钥服务不会存储，需对每个浏览器会话重置。 
+Use the following procedure to include the [Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) service  in the Test pane results. 
 
-按照以下流程，将[必应拼写检查 v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 服务包括在“测试”窗格结果中。 
+1. In the **Test** pane, enter an utterance. When the utterance is predicted, select **[Inspect](#inspect-score)** underneath the utterance you entered. 
 
-1. 在“测试”窗格中输入一个陈述。 预测陈述后，选择输入的陈述下方的“[检查](#inspect-score)”。 
+1. When the **Inspect** panel opens, select **[Compare with Published](#compare-with-published-version)**. 
 
-1. “检查”面板打开后，选择“[与已发布版本进行比较](#compare-with-published-version)”。 
+1. When the **Published** panel opens, select **[Additional Settings](#additional-settings-in-test-panel)**.
 
-1. “已发布”面板打开后，选择“[其他设置](#additional-settings-in-test-panel)”。
+1. In the pop-up dialog, check **Enable Bing Spell Check** and enter the key, then select **Done**. 
+    ![Enter Bing Spell Check service key](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-1. 在弹出对话框中, 选中 "**启用必应拼写检查**并输入密钥, 然后选择"**完成**"。 
-    ![输入必应拼写检查服务密钥](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. 输入一个拼写不正确的查询，例如 `book flite to seattle`，并按 Enter。 在发送至 LUIS 的查询中，拼写不正确的 `flite` 单词会被替换，生成的 JSON 将原始查询显示为 `query`，并将查询中更正的拼写显示为 `alteredQuery`。
+1. Enter a query with an incorrect spelling such as `book flite to seattle` and select enter. The incorrect spelling of the word `flite` is replaced in the query sent to LUIS and the resulting JSON shows both the original query, as `query`, and the corrected spelling in the query, as `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -124,6 +133,7 @@ ms.locfileid: "68932733"
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+-->
 
 ## <a name="batch-testing"></a>批处理测试
 请参阅批处理测试[概念](luis-concept-batch-test.md)并了解陈述批量测试的[方法](luis-how-to-batch-test.md)。

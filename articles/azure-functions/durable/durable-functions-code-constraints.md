@@ -1,78 +1,75 @@
 ---
-title: 持久性业务流程协调程序代码约束 - Azure Functions
-description: 适用于 Azure Durable Functions 的业务流程函数重播和代码约束。
+title: Durable orchestrator code constraints - Azure Functions
+description: Orchestration function replay and code constraints for Azure Durable Functions.
 author: cgillum
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5fc4a7e4256e405ff1a91b88b2b001048cc832fc
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614991"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232981"
 ---
-# <a name="orchestrator-function-code-constraints"></a>业务流程协调程序函数代码约束
+# <a name="orchestrator-function-code-constraints"></a>Orchestrator function code constraints
 
-Durable Functions 是[Azure Functions](../functions-overview.md)的扩展，可让你构建有状态的应用程序。 您可以使用业务流程协调程序[函数](durable-functions-orchestrations.md)在 function app 中协调其他持久函数的执行。 业务流程协调程序函数带有状态且可靠，可以长时间运行。
+Durable Functions is an extension of [Azure Functions](../functions-overview.md) that lets you build stateful apps. You can use an [orchestrator function](durable-functions-orchestrations.md) to orchestrate the execution of other durable functions within a function app. Orchestrator functions are stateful, reliable, and potentially long-running.
 
 ## <a name="orchestrator-code-constraints"></a>业务流程协调程序代码约束
 
-业务流程协调程序函数使用[事件源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)来确保可靠执行并保持本地变量状态。 业务流程协调程序代码的[重播行为](durable-functions-orchestrations.md#reliability)针对可在业务流程协调程序函数中编写的代码类型创建约束。 例如，业务流程协调程序函数必须是*确定性*的：业务流程协调程序函数将多次重播，每次必须生成相同的结果。
+Orchestrator functions use [event sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) to ensure reliable execution and to maintain local variable state. The [replay behavior](durable-functions-orchestrations.md#reliability) of orchestrator code creates constraints on the type of code that you can write in an orchestrator function. For example, orchestrator functions must be *deterministic*: an orchestrator function will be replayed multiple times, and it must produce the same result each time.
 
-### <a name="using-deterministic-apis"></a>使用确定性 API
+### <a name="using-deterministic-apis"></a>Using deterministic APIs
 
-本节提供一些简单的指导原则，可帮助确保您的代码是确定性的。
+This section provides some simple guidelines that help ensure your code is deterministic.
 
-业务流程协调程序函数可以在其目标语言中调用任何 API。 但是，业务流程协调程序函数只调用确定性 Api，这一点很重要。 *确定性 api*是在给定相同输入的情况下始终返回相同值的 api，无论调用的时间或频率如何。
+Orchestrator functions can call any API in their target languages. However, it's important that orchestrator functions call only deterministic APIs. A *deterministic API* is an API that always returns the same value given the same input, no matter when or how often it's called.
 
-下表显示了应避免的 Api 示例，因为它们*不*是确定性的。 这些限制仅适用于业务流程协调程序函数。 其他函数类型没有此类限制。
+The following table shows examples of APIs that you should avoid because they are *not* deterministic. These restrictions apply only to orchestrator functions. Other function types don't have such restrictions.
 
-| API 类别 | 原因 | 解决方法 |
+| API category | 原因 | 解决方法 |
 | ------------ | ------ | ---------- |
-| 日期和时间  | 返回当前日期或时间的 Api 是不确定性的，因为每次重播返回的值不同。 | 在 .NET 中使用`CurrentUtcDateTime` API，或使用 JavaScript 中可安全重播的 `currentUtcDateTime` API。 |
-| Guid 和 Uuid  | 返回随机 GUID 或 UUID 的 Api 是不确定性的，因为每次重播生成的值不同。 | 使用 .NET 中的 `NewGuid` 或 JavaScript 中的 `newGuid` 来安全地生成随机 Guid。 |
-| 随机数 | 返回随机数的 Api 是不确定性的，因为每次重播生成的值不同。 | 使用活动函数将随机数返回给业务流程。 就重播来说，活动函数的返回值始终是安全的。 |
-| 绑定 | 输入和输出绑定通常执行 i/o 操作，并且不具有确定性。 业务流程协调程序函数不能直接使用甚至是[业务流程客户端](durable-functions-bindings.md#orchestration-client)[绑定。](durable-functions-bindings.md#entity-client) | 在客户端或活动函数中使用输入和输出绑定。 |
-| 网络 | 网络调用涉及外部系统并且具有不确定性。 | 使用活动函数进行网络调用。 如果需要从业务流程协调程序函数发出 HTTP 调用，还可以使用[持久 HTTP api](durable-functions-http-features.md#consuming-http-apis)。 |
-| 阻止 API | 阻止 Api （如 .NET 中的 `Thread.Sleep` 和类似的 Api）可能会导致 orchestrator 函数的性能和规模出现问题，应避免这样做。 在 Azure Functions 消耗计划中，它们甚至会导致不必要的运行时费用。 | 当 Api 可用时，使用替代项来阻止 Api。 例如，使用 `CreateTimer` 在业务流程执行中引入延迟。 [持久计时器](durable-functions-timers.md)延迟不计入业务流程协调程序函数的执行时间。 |
-| 异步 API | 除了使用 `IDurableOrchestrationContext` API 或 `context.df` 对象的 API 以外，Orchestrator 代码决不能启动任何异步操作。 例如，不能在 .NET 中使用 `Task.Run`、`Task.Delay`和 `HttpClient.SendAsync`，也不能在 JavaScript 中使用 `setTimeout` 和 `setInterval`。 持久任务框架在单个线程上运行 orchestrator 代码。 它不能与其他异步 Api 调用的任何其他线程交互。 | 业务流程协调程序函数只应进行持久的异步调用。 活动函数应进行任何其他异步 API 调用。 |
-| 异步 JavaScript 函数 | 不能将 JavaScript orchestrator 函数声明为 `async`，因为 node.js 运行时不保证异步函数是确定性的。 | 将 JavaScript orchestrator 函数声明为同步生成器函数。 |
-| 线程 API | 持久任务框架在单个线程上运行 orchestrator 代码，不能与任何其他线程交互。 向业务流程的执行引入新线程可能会导致不确定的执行或死锁。 | 业务流程协调程序函数应该几乎不会使用线程 Api。 如果需要此类 Api，请将其使用限制为仅活动函数。 |
-| 静态变量 | 避免在 orchestrator 函数中使用非常量静态变量，因为它们的值可能会随时间而变化，从而导致不确定的运行时行为。 | 使用常量，或将静态变量限制为活动函数。 |
-| 环境变量 | 请勿在 orchestrator 函数中使用环境变量。 它们的值可能会随时间而变化，从而导致不确定的运行时行为。 | 环境变量只能在客户端函数或活动函数内引用。 |
-| 无限循环 | 请避免在业务流程协调程序函数中出现无限循环。 由于持久任务框架会在业务流程函数进行过程中保存执行历史记录，因此无限循环可能会导致 orchestrator 实例耗尽内存。 | 对于无限循环方案，请使用 .NET 中的 `ContinueAsNew` Api 或 JavaScript 中的 `continueAsNew` 来重新启动函数执行，并放弃以前的执行历史记录。 |
+| 日期和时间  | APIs that return the current date or time are nondeterministic because the returned value is different for each replay. | Use the`CurrentUtcDateTime` API in .NET or the `currentUtcDateTime` API in JavaScript, which are safe for replay. |
+| GUIDs and UUIDs  | APIs that return a random GUID or UUID are nondeterministic because the generated value is different for each replay. | Use `NewGuid` in .NET or `newGuid` in JavaScript to safely generate random GUIDs. |
+| Random numbers | APIs that return random numbers are nondeterministic because the generated value is different for each replay. | Use an activity function to return random numbers to an orchestration. The return values of activity functions are always safe for replay. |
+| 绑定 | Input and output bindings typically do I/O and are nondeterministic. An orchestrator function must not directly use even the [orchestration client](durable-functions-bindings.md#orchestration-client) and [entity client](durable-functions-bindings.md#entity-client) bindings. | Use input and output bindings inside client or activity functions. |
+| 网络 | Network calls involve external systems and are nondeterministic. | Use activity functions to make network calls. If you need to make an HTTP call from your orchestrator function, you also can use the [durable HTTP APIs](durable-functions-http-features.md#consuming-http-apis). |
+| Blocking APIs | Blocking APIs like `Thread.Sleep` in .NET and similar APIs can cause performance and scale problems for orchestrator functions and should be avoided. In the Azure Functions Consumption plan, they can even result in unnecessary runtime charges. | Use alternatives to blocking APIs when they're available. For example, use  `CreateTimer` to introduce delays in orchestration execution. [Durable timer](durable-functions-timers.md) delays don't count towards the execution time of an orchestrator function. |
+| Async APIs | Orchestrator code must never start any async operation except by using the `IDurableOrchestrationContext` API or the `context.df` object's API. For example, you can't use `Task.Run`, `Task.Delay`, and `HttpClient.SendAsync` in .NET or `setTimeout` and `setInterval` in JavaScript. The Durable Task Framework runs orchestrator code on a single thread. It can't interact with any other threads that might be called by other async APIs. | An orchestrator function should make only durable async calls. Activity functions should make any other async API calls. |
+| Async JavaScript functions | You can't declare JavaScript orchestrator functions as `async` because the node.js runtime doesn't guarantee that asynchronous functions are deterministic. | Declare JavaScript orchestrator functions as synchronous generator functions. |
+| Threading APIs | The Durable Task Framework runs orchestrator code on a single thread and can't interact with any other threads. Introducing new threads into an orchestration's execution can result in nondeterministic execution or deadlocks. | Orchestrator functions should almost never use threading APIs. If such APIs are necessary, limit their use to only activity functions. |
+| 静态变量 | Avoid using nonconstant static variables in orchestrator functions because their values can change over time, resulting in nondeterministic runtime behavior. | Use constants, or limit the use of static variables to activity functions. |
+| 环境变量 | Don't use environment variables in orchestrator functions. Their values can change over time, resulting in nondeterministic runtime behavior. | Environment variables must be referenced only from within client functions or activity functions. |
+| Infinite loops | 请避免在业务流程协调程序函数中出现无限循环。 Because the Durable Task Framework saves execution history as the orchestration function progresses, an infinite loop can cause an orchestrator instance to run out of memory. | For infinite loop scenarios, use APIs like `ContinueAsNew` in .NET or `continueAsNew` in JavaScript to restart the function execution and to discard previous execution history. |
 
-尽管应用这些约束的方法最初可能会很困难，但实际上它们是很容易的。
+Although applying these constraints might seem difficult at first, in practice they're easy to follow.
 
-持久任务框架尝试检测前面规则的冲突。 如果发现冲突，框架将引发**NonDeterministicOrchestrationException**异常。 但是，此检测行为不会捕获所有冲突，因此不应依赖于它。
+The Durable Task Framework attempts to detect violations of the preceding rules. If it finds a violation, the framework throws a **NonDeterministicOrchestrationException** exception. However, this detection behavior won't catch all violations, and you shouldn't depend on it.
 
 ## <a name="versioning"></a>版本控制
 
-持久的业务流程可能会持续运行数天、月、年甚至[永久](durable-functions-eternal-orchestrations.md)。 对影响未完成业务流程的 Durable Functions 应用进行的任何代码更新都可能会破坏业务流程的重播行为。 这就是为什么在更新代码时进行仔细规划非常重要的原因。 有关如何对代码进行版本管理的更详细说明，请参阅[版本管理一文](durable-functions-versioning.md)。
+A durable orchestration might run continuously for days, months, years, or even [eternally](durable-functions-eternal-orchestrations.md). Any code updates made to Durable Functions apps that affect unfinished orchestrations might break the orchestrations' replay behavior. That's why it's important to plan carefully when making updates to code. For a more detailed description of how to version your code, see the [versioning article](durable-functions-versioning.md).
 
 ## <a name="durable-tasks"></a>持久任务
 
 > [!NOTE]
-> 本部分介绍 Durable Task Framework 的内部实现详细信息。 无需知道此信息，即可使用持久性函数。 本部分旨在帮助读者了解重播行为。
+> 本部分介绍 Durable Task Framework 的内部实现详细信息。 You can use durable functions without knowing this information. 本部分旨在帮助读者了解重播行为。
 
-可在业务流程协调程序函数中安全等待的任务有时称为*持久任务*。 持久任务框架创建和管理这些任务。 例如， **CallActivityAsync**、 **WaitForExternalEvent**和**CreateTimer**在 .net orchestrator 函数中返回的任务。
+Tasks that can safely wait in orchestrator functions are occasionally referred to as *durable tasks*. The Durable Task Framework creates and manages these tasks. Examples are the tasks returned by **CallActivityAsync**, **WaitForExternalEvent**, and **CreateTimer** in .NET orchestrator functions.
 
-这些持久任务由 .NET 中的 `TaskCompletionSource` 对象列表在内部进行管理。 在重播过程中，将在执行 orchestrator 代码的过程中创建这些任务。 完成后，调度程序会枚举相应的历史记录事件。
+These durable tasks are internally managed by a list of `TaskCompletionSource` objects in .NET. During replay, these tasks are created as part of orchestrator code execution. They're finished as the dispatcher enumerates the corresponding history events.
 
-使用单个线程以同步方式执行任务，直到重播所有历史记录。 在历史记录重播结束时未完成的持久任务会执行相应的操作。例如，消息可能会排队以调用活动函数。
+The tasks are executed synchronously using a single thread until all the history has been replayed. Durable tasks that aren't finished by the end of history replay have appropriate actions carried out. For example, a message might be enqueued to call an activity function.
 
-本部分对运行时行为的说明应有助于了解协调器函数无法在非持久任务中使用 `await` 或 `yield` 的原因。 有两个原因：调度程序线程无法等待任务完成，并且该任务的任何回调都可能会损坏 orchestrator 函数的跟踪状态。 某些运行时检查已准备就绪，可帮助检测这些冲突。
+This section's description of runtime behavior should help you understand why an orchestrator function can't use `await` or `yield` in a nondurable task. There are two reasons: the dispatcher thread can't wait for the task to finish, and any callback by that task might potentially corrupt the tracking state of the orchestrator function. Some runtime checks are in place to help detect these violations.
 
-若要了解有关持久任务框架如何执行业务流程协调程序函数的详细信息，请参阅[GitHub 上的持久任务源代码](https://github.com/Azure/durabletask)。 具体而言，请参阅[TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs)和[TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)。
+To learn more about how the Durable Task Framework executes orchestrator functions, consult the [Durable Task source code on GitHub](https://github.com/Azure/durabletask). In particular, see [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) and [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs).
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何调用子业务流程](durable-functions-sub-orchestrations.md)
+> [Learn how to invoke sub-orchestrations](durable-functions-sub-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [了解如何处理版本控制](durable-functions-versioning.md)

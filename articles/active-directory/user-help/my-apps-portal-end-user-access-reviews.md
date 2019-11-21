@@ -1,6 +1,6 @@
 ---
-title: 从 "我的应用" 门户执行访问评审-Azure AD
-description: 了解如何查看和管理组织的应用和组的安全访问权限。
+title: Manage your organization's access to apps & groups - Azure AD
+description: Learn how to perform an access review to manage security access for your organization's apps and groups from the My Apps portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf803027aac7c62ea500d1af104ae3234fadf8b5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 232f4b6fde84b7e1cd706b62e0ba9a0998b4171e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804045"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231844"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>从 "我的应用" 门户执行访问评审
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Perform an access review from the My Apps portal
 
 可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
@@ -31,51 +31,51 @@ ms.locfileid: "73804045"
 
 ## <a name="manage-access-reviews"></a>管理访问评审
 
-如果管理员已授予你执行自己的访问评审的权限，则可以在 "**我的应用**" 门户页上的 "**访问评审**" 磁贴中管理组或应用的访问权限。
+If your administrator has given you permission to perform your own access reviews, you can manage your groups or apps access from the **Access reviews** tile on the **My Apps** portal page.
 
 >[!Note]
->如果看不到 "**访问评审**" 磁贴，这意味着无权执行访问评审，或者没有任何等待审批的挂起评审。 如果你认为你应该有权访问磁贴，请与支持人员联系以获得帮助。
+>If you don't see the **Access reviews** tile it either means that you don't have permission to perform access reviews, or that you don't have any pending reviews waiting for your approval. If you think you should have access to the tile, contact your Help desk for assistance.
 
-### <a name="to-perform-your-access-reviews"></a>执行访问评审
+### <a name="to-perform-your-access-reviews"></a>To perform your access reviews
 
 1. 登录到工作或学校帐户。
 
-2. 打开 web 浏览器并中转到 https://myapps.microsoft.com，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com。
+2. Open your web browser and go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-    !["我的应用" 门户中的 "应用" 页](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Apps page in the My Apps portal](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. 选择 "**访问评审**" 磁贴，查看等待批准的访问评审的列表。
+3. Select the **Access reviews** tile to see a list of access reviews waiting for your approval.
 
-    ![针对组织的待定访问评审的 "访问评审" 页](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Access reviews page with pending access reviews for the organization](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. 选择 "**开始检查**" 开始访问评审。
+4. Select **Begin review** to start your access review.
 
-5. 查看访问权限并确定是否仍有必要。
+5. Review your access and determine whether it's still necessary.
 
-    !["访问评审" 页，其中显示了查看详细信息](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
+    ![Access review page, showing the review details](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >如果你是管理员，并且允许审查你的组织对组和应用的访问权限，你将看到不同的页面。 有关查看组织的组或应用的详细信息，请参阅[在 Azure AD 访问评审中查看对组或应用程序的访问权限](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review)。
+    >If you're an administrator, and allowed to review your organization's access to groups and apps, you'll see a different page. For more information about reviewing groups or apps for your organization, see [Review access to groups or applications in Azure AD Access Reviews](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. 选择 **"是"** 以保留访问权限，或选择 "**否**" 以删除访问权限。
+6. Select **Yes** to keep your access or **No** to remove your access.
 
-    如果选择 **"是"** ，则可能需要在 "**原因**" 框中指定理由。
+    If you select **Yes**, you might need to specify a justification in the **Reason** box.
 
-    !["访问评审" 页，显示 "原因" 框和示例文本](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+    ![Access review page, showing the Reason box with sample text](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
 7. 选择“提交”。
 
-    你的访问评审已完成，你将返回到 "**我的应用**" 门户。
+    Your access review is complete and you return to the **My Apps** portal.
 
     >[!Note]
-    >你可以随时更改你的访问权限，直到访问评审期间结束。 如果删除对应用或组的访问权限，则不会立即删除它。 当访问评审期间结束或管理员关闭评审时，将发生删除。
+    >You can change your access at any time until your access review period ends. If you remove your access to an app or group, it's not removed immediately. The removal happens when the access review period ends or when an administrator closes the review.
 
 ## <a name="next-steps"></a>后续步骤
 
-- [访问和使用 "我的应用" 门户上的应用](my-apps-portal-end-user-access.md)。
+- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
 
-- [更改你的配置文件信息](my-apps-portal-end-user-update-profile.md)。
+- [Change your profile information](my-apps-portal-end-user-update-profile.md).
 
-- [查看和更新组相关的信息](my-apps-portal-end-user-groups.md)。
+- [View and update your groups-related information](my-apps-portal-end-user-groups.md).

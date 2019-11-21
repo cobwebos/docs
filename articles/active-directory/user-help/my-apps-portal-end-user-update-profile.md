@@ -1,6 +1,6 @@
 ---
-title: 在 "我的应用" 门户上更新配置文件和帐户-Azure AD
-description: 了解如何更新配置文件和工作或学校帐户信息，包括更改密码、启用密码重置、更新安全验证方法、查看组织的使用条款声明和注销使用工作或学校帐户登录的任何位置。
+title: Update profile & account info from the My Apps portal - Azure AD
+description: Learn how to update your profile and your work or school account information, including changing your password, turning on password reset, updating your security verification methods, viewing your organization's terms of use statement, and signing out of everywhere you've signed in using your work or school account.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820381"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233171"
 ---
-# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>更新 "我的应用" 门户中的配置文件和帐户信息
+# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Update your profile and work or school account information on the My Apps portal
 
 可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
@@ -29,115 +29,115 @@ ms.locfileid: "73820381"
 >[!Important]
 >此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
-## <a name="view-your-organization-related-profile-information"></a>查看与组织相关的个人资料信息
+## <a name="view-your-organization-related-profile-information"></a>View your organization-related profile information
 
-根据你的组织在 "**我的应用**" 门户的 "**个人资料**" 页上选择包含的内容，你可能会看到与你的特定工作相关的详细信息以及你的设备和活动，以及你所属的任何其他组织。
+Depending on what your organization has chosen to include on your **Profile** page of the **My Apps** portal, you might see your specific work-related details, along with your devices and activity, and any additional organizations to which you belong.
 
-### <a name="to-view-your-profile-information"></a>查看您的个人资料信息
+### <a name="to-view-your-profile-information"></a>To view your profile information
 
-1. 登录到你的工作或学校帐户，请[中转到 "**我的应用**" 门户](my-apps-portal-end-user-access.md)。
+1. Sign in to your work or school account, [go to the **My Apps** portal](my-apps-portal-end-user-access.md).
 
-2. 从 "**应用**" 页中，选择右上角的个人资料图片，其中显示你的姓名和组织，然后选择 "**配置文件**"。
+2. From the **Apps** page, select your profile picture from the upper-right corner, where it says your name and your organization, and then select **Profile**.
 
-    此时将显示 "**配置文件**" 页，其中显示了您的个人资料信息
+    The **Profile** page appears, showing your profile information.
 
-    !["配置文件" 页，其中显示了所有可用信息](media/my-apps-portal/my-apps-portal-profile-page.png)
+    ![Profile page, showing all of the available information](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-3. 从 "**配置文件**" 页，您可以：
+3. From the **Profile** page, you can:
 
-    - **查看与组织相关的详细信息。** 查看照片、姓名、标题、关联的电子邮件地址和办公室信息。 此信息由你的组织管理，你将无法对其进行更改。 如果出现错误，请与支持人员联系。
+    - **Review your organization-related details.** View your photo, name, title, associated email addresses, and office information. This information is managed by your organization and you won't be able to change it. If you see an error, contact your Helpdesk.
 
-    - **查看设备 & 活动**。 请确保每个设备都熟悉并正确地连接到您的组织。 如果无法识别设备，请选择 "**禁用设备**" 以删除与帐户的关联。 禁用设备后，该设备将从此页中删除。
+    - **Review your Devices & activity**. Make sure each device is familiar and properly connected to your organization. If you don’t recognize a device, select **Disable device** to remove the association with your account. After you disable a device, it’s removed from this page.
 
-    - **查看组织。** 确保仍与每个指定的组织一起工作。 如果你不能再与组织合作，我们强烈建议你选择 "**登录以离开组织**"。 离开组织后，它将从此页中删除。
+    - **Review your Organizations.** Make sure that you still work with each of the specified organizations. If you no longer work with an organization, we highly recommend that you select **Sign in to leave organization**. After you leave the organization, it’s removed from this page.
 
-## <a name="manage-your-work-or-school-account-information"></a>管理你的工作或学校帐户信息
+## <a name="manage-your-work-or-school-account-information"></a>Manage your work or school account information
 
-从 "**我的应用**" 门户的 "**配置文件**" 页中更新和管理你的工作或学校帐户信息。 此页可帮助你：
+Update and manage your work or school account information from the **Profile** page of the **My Apps** portal. This page helps you to:
 
-- 更改工作或学校帐户密码。
+- Change your work or school account password.
 
-- 启用密码重置（如果管理员已启用此功能）。
+- Turn on password reset (if your administrator has turned on this feature).
 
-- 提供额外的安全验证信息。
+- Provide additional security verification information.
 
-- 查看组织的使用条款。
+- Review your organization’s terms of use.
 
-- 从所有位置注销。
+- Sign out of everywhere.
 
-## <a name="change-your-password"></a>请更改密码。
+## <a name="change-your-password"></a>更改密码
 
-如果要更改工作或学校帐户的密码，可以从 "**配置文件**" 页的 "**管理帐户**" 区域中选择 "**更改密码**"。
+If you want to change the password for your work or school account, you can select **Change password** from the **Manage account** area of the **Profile** page.
 
-### <a name="to-change-your-password"></a>更改密码
+### <a name="to-change-your-password"></a>To change your password
 
-1. 从 "**配置文件**" 页的 "**管理帐户**" 区域中，选择 "**更改密码**"。
+1. From the **Manage account** area of the **Profile** page, select **Change password**.
 
-2. 在 "**更改密码**" 页上，确保用户 ID 正确，然后在框中键入旧密码和新密码。
+2. On the **Change password** page, make sure your User ID is correct, and then type your old password and your new password into the boxes.
 
-    ![更改密码页](media/my-apps-portal/my-apps-portal-change-password-page.png)
+    ![Change password page](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
 3. 选择“提交”。
 
-    你的密码已更改。 你将需要登录到以前使用工作或学校帐户登录的任何应用。
+    Your password is changed. You’ll be required to sign-in to any apps you’ve previously signed in to using your work or school account.
 
-## <a name="set-up-and-use-password-reset"></a>设置和使用密码重置
+## <a name="set-up-and-use-password-reset"></a>Set up and use password reset
 
-如果你忘记了密码，从未获得公司支持或已被锁定，则可以重置你自己的密码。
+If you forgot your password, never got one from your company support, or have been locked out of your account, you can reset your own password.
 
 >[!Important]
->你的管理员必须启用此功能，并且你必须注册才能参加。 有关如何注册和重置密码的详细信息，请参阅[注册自助服务密码重置](active-directory-passwords-reset-register.md)并重[置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
+>Your administrator must turn on this feature and you must register to participate. For details about how to register and how to reset your password, see [Register for self-service password reset](active-directory-passwords-reset-register.md) and [Reset your work or school password](active-directory-passwords-update-your-own-password.md).
 
-## <a name="change-your-security-verification-information"></a>更改安全验证信息
+## <a name="change-your-security-verification-information"></a>Change your security verification information
 
-如果你的组织要求你使用双重验证，则可以从 "**其他安全验证**" 页添加、更新和删除相关的安全信息。
+If your organization requires you to use two-factor verification, you can add, update, and delete your associated security information from the **Additional security verification** page.
 
-双重验证要求你使用两个验证信息（如密码和 PIN），然后才能转到你的帐户或你的组织信息。 有关双重验证的详细信息，请参阅[设置我的帐户进行双重验证](multi-factor-authentication-end-user-first-time.md)。
+Two-factor verification requires you to use two pieces of verification info, like a password and a PIN, before you can get to your account or to your organization’s information. For more information about two-factor verification, see [Set up my account for two-step verification](multi-factor-authentication-end-user-first-time.md).
 
-### <a name="to-change-your-security-information"></a>更改安全信息
+### <a name="to-change-your-security-information"></a>To change your security information
 
-1. 从 "**配置文件**" 页的 "**管理帐户**" 区域中，选择 "**其他安全性验证**"。
+1. From the **Manage account** area of the **Profile** page, select **Additional security verification**.
 
-    !["其他安全性验证" 页](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
+    ![Additional security verification page](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-2. 在 "**其他安全性验证**" 页上，你可以添加、更改或删除以下信息：
+2. On the **Additional security verification** page, you can add, change, or delete the following information:
 
-    - **默认验证选项。** 选择要用于双因素验证的默认辅助方法。 输入用户名和密码后，无论何时需要双重验证，都将自动使用此方法。
+    - **Default verification option.** Select the default secondary method to use for two-factor verification. This method is automatically used any time two-factor verification is required after you enter your username and password.
 
-    - **添加、更新或移除验证方法。** 你可以添加新的、更新现有的或删除不再适用的旧信息。
+    - **Add, update, or remove verification methods.** You can add new, update existing, or delete old information that no longer applies.
 
-    - **设置 Microsoft Authenticator 应用。** 您可以选择将 Microsoft Authenticator 应用程序设置为使用您的验证方法。 有关 Microsoft Authenticator 应用的详细信息，请参阅[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)
+    - **Set up the Microsoft Authenticator app.** You can choose to set up the Microsoft Authenticator app to work as your verification method. For more information about the Microsoft Authenticator app, see [What is the Microsoft Authenticator app?](user-help-auth-app-overview.md)
 
 3. 选择“保存”以保存更改。
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>查看组织的使用条款声明
+## <a name="review-your-organizations-terms-of-use-statement"></a>Review your organization’s terms of use statement
 
-您可以选择查看组织的使用条款声明（如果可用）。
+You can choose to review your organization’s terms of use statement, if it’s available.
 
-1. 从 "**配置文件**" 页的 "**管理帐户**" 区域中，选择 "**查看使用条款**"。
+1. From the **Manage account** area of the **Profile** page, select **Review terms of use**.
 
-2. 查看组织的使用条款，然后选择 "**接受**" 以确认你已阅读并理解你的组织的使用条款。
+2. Review your organization's terms of use and select **Accept** to confirm that you've read and understood the terms of use for your organization.
 
-    !["我的应用" 门户中的使用条款页面](media/my-apps-portal/my-apps-portal-tou-page.png)
+    ![Terms of use page from the My Apps portal](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-    如果你的组织没有使用条款，你可以选择 "**完成**" 以返回到 "**配置文件**" 页。
+    If your organization doesn't have a terms of use, you can select **Done** to return to the **Profile** page.
 
-## <a name="sign-out-of-everywhere"></a>从任何位置注销
+## <a name="sign-out-of-everywhere"></a>Sign out of everywhere
 
-你可以选择使用你的工作或学校帐户从你当前登录的任何位置注销。 这包括所有应用和设备。
+You can choose to sign out of everywhere you’re currently signed in to using your work or school account. This includes all apps and devices.
 
-### <a name="to-sign-out-of-everywhere"></a>从任何位置注销
+### <a name="to-sign-out-of-everywhere"></a>To sign out of everywhere
 
-1. 从 "**配置文件**" 页的 "**管理帐户**" 区域中 **，选择 "注销"** 。
+1. From the **Manage account** area of the **Profile** page, select **Sign out everywhere**.
 
-2. 在 "在**任何位置**注销" 确认框中，选择 **"是"** 以确认你想要注销所有会话和设备。 如果改变主意，请选择 "**否**"。
+2. In the **Sign out everywhere** confirmation box, select **Yes** to confirm that you want to sign out of all your sessions and devices. Select **No** if you change your mind.
 
 ## <a name="next-steps"></a>后续步骤
 
-在**配置文件**页上完成更新后，可以：
+After you finish your updates on the **Profile** page, you can:
 
-- [访问和使用 "我的应用" 门户上的应用](my-apps-portal-end-user-access.md)。
+- [Access and use apps on the My Apps portal](my-apps-portal-end-user-access.md).
 
-- [查看和更新组相关的信息](my-apps-portal-end-user-groups.md)。
+- [View and update your groups-related information](my-apps-portal-end-user-groups.md).
 
-- [执行你自己的访问评审](my-apps-portal-end-user-access-reviews.md)。
+- [Perform your own access reviews](my-apps-portal-end-user-access-reviews.md).

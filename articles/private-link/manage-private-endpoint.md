@@ -1,85 +1,85 @@
 ---
-title: 管理 Azure 中的专用终结点连接
-description: 了解如何管理 Azure 中的专用终结点连接
+title: Manage a Private Endpoint connection in Azure
+description: Learn how to manage private endpoint connections in Azure
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104630"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232539"
 ---
-# <a name="manage-a-private-endpoint-connection"></a>管理专用终结点连接
-Azure 专用链接适用于审批调用流模型，其中，专用链接服务使用者可以请求连接到服务提供商以使用该服务。 然后，服务提供商可以决定是否允许使用者进行连接。 通过 Azure 专用链接，服务提供商可以管理其资源上的专用终结点连接。 本文提供了有关如何管理专用终结点连接的说明。
+# <a name="manage-a-private-endpoint-connection"></a>Manage a Private Endpoint connection
+Azure Private Link works on an approval call flow model wherein the Private Link service consumer can request a connection to the service provider for consuming the service. The service provider can then decide whether to allow the consumer to connect or not. Azure Private Link enables the service providers to manage the private endpoint connection on their resources. This article provides instructions about how to manage the Private Endpoint connections.
 
-![管理专用终结点](media/manage-private-endpoint/manage-private-endpoint.png)
+![Manage Private Endpoints](media/manage-private-endpoint/manage-private-endpoint.png)
 
-专用链接服务使用者可以选择两种连接批准方法：
-- **自动**：如果服务使用者具有对服务提供者资源的 RBAC 权限，则使用者可以选择自动批准方法。 在这种情况下，当请求到达服务提供商资源时，服务提供商不需要执行任何操作，并且将自动批准连接。 
-- **手动**：相反，如果服务使用者没有对服务提供者资源的 RBAC 权限，则使用者可以选择手动批准方法。 在这种情况下，连接请求在服务资源上显示为**挂起**。 在建立连接之前，服务提供商必须手动批准请求。 在手动情况下，服务使用者还可以使用请求指定消息，以便向服务提供商提供更多上下文。 服务提供程序有以下选项可供选择用于所有专用终结点连接：**已批准**、**拒绝**、**删除**。
+There are two connection approval methods that a Private Link service consumer can choose from:
+- **Automatic**: If the service consumer has RBAC permissions on the service provider resource, the consumer can choose the automatic approval method. In this case, when the request reaches the service provider resource, no action is required from the service provider and the connection is automatically approved. 
+- **Manual**: On the contrary, if the service consumer doesn’t have RBAC permissions on the service provider resource, the consumer can choose the manual approval method. In this case, the connection request appears on the service resources as **Pending**. The service provider has to manually approve the request before connections can be established. In manual cases, service consumer can also specify a message with the request to provide more context to the service provider. The service provider has following options to choose from for all Private Endpoint connections: **Approved**, **Reject**, **Remove**.
 
-下表显示了不同的服务提供程序操作以及专用终结点的生成的连接状态。  服务提供商还可以在以后无需用户干预的情况下更改专用终结点连接的连接状态。 操作将更新使用者端上终结点的状态。 
+The below table shows the various service provider actions and the resulting connection states for Private Endpoints.  The service provider can also change the connection state of private endpoint connection at a later time without consumer intervention. The action will update the state of the endpoint on the consumer side. 
 
 
-|服务提供商操作   |服务使用者专用终结点状态   |描述   |
+|Service Provider Action   |Service Consumer Private Endpoint State   |描述   |
 |---------|---------|---------|
-|None    |    待处理     |    手动创建连接，并等待专用链接资源所有者批准。       |
-|批准    |  已审批       |  连接已自动或已手动批准，并已准备好使用。     |
-|拒绝     | 已拒绝        | 专用链接资源所有者拒绝了连接。        |
-|Remove    |  已断开       | 连接已被专用链接资源所有者删除，专用终结点将变为信息性，应删除进行清理。        |
+|None    |    Pending     |    Connection is created manually and is pending for approval by the Private Link resource owner.       |
+|审批    |  已批准       |  Connection was automatically or manually approved and is ready to be used.     |
+|拒绝     | 已拒绝        | Connection was rejected by the private link resource owner.        |
+|移除    |  Disconnected       | Connection was removed by the private link resource owner, the private endpoint becomes informative and should be deleted for clean up.        |
 |   |         |         |
    
-## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>管理 Azure PaaS 资源上的专用终结点连接
-门户是管理 Azure PaaS 资源上的专用终结点连接的首选方法。 目前，我们没有 PowerShell/CLI 支持来管理 Azure PaaS 资源上的连接。
+## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Manage Private Endpoint Connections on Azure PaaS resources
+Portal is the preferred method for managing private endpoint connections on Azure PaaS resources. Currently, we don’t have PowerShell/CLI support for managing connections on Azure PaaS resources.
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 导航到 "专用链接中心"。
-3. 在 "**资源**" 下，选择要管理专用终结点连接的资源类型。
-4. 对于每种资源类型，可以查看与其关联的专用终结点连接数。 你可以根据需要筛选资源。
-5. 选择专用终结点连接。  在列出的连接下，选择要管理的连接。 
-6. 可以通过从顶部的选项中进行选择来更改连接的状态。
+2. Navigate to Private Link Center.
+3. Under **Resources**, select the resource type you want to manage the private endpoint connections.
+4. For each of your resource type, you can view the number of Private Endpoint Connections associated with it. You can filter the resources as needed.
+5. Select the private endpoint connections.  Under the connections listed, select the connection that you want to manage. 
+6. You can change the state of the connection by selecting from the options at the top.
 
-## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>在客户/合作伙伴拥有的专用链接服务上管理专用终结点连接
+## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>Manage Private Endpoint connections on a customer/partner owned Private Link service
 
-Azure PowerShell 和 Azure CLI 是在 Microsoft 合作伙伴服务或客户拥有的服务上管理专用终结点连接的首选方法。 目前，我们没有任何门户支持来管理专用链接服务上的连接。  
+Azure PowerShell and Azure CLI are the preferred methods for managing Private Endpoint connections on Microsoft Partner Services or customer owned services. Currently, we don’t have any portal support for managing connections on a Private Link service.  
  
 ### <a name="powershell"></a>PowerShell 
   
-使用以下 PowerShell 命令管理专用终结点连接。  
-#### <a name="get-private-link-connection-states"></a>获取专用链接连接状态 
-`Get-AzPrivateLinkService`使用 cmdlet 可获取专用终结点连接及其状态。  
+Use the following PowerShell commands to manage private endpoint connections.  
+#### <a name="get-private-link-connection-states"></a>Get Private Link connection states 
+Use the `Get-AzPrivateLinkService` cmdlet to get the Private Endpoint connections and their states.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
-#### <a name="approve-a-private-endpoint-connection"></a>批准专用终结点连接 
+#### <a name="approve-a-private-endpoint-connection"></a>Approve a Private Endpoint connection 
  
-`Approve-AzPrivateEndpointConnection`使用 cmdlet 批准专用终结点连接。 
+Use the `Approve-AzPrivateEndpointConnection` cmdlet to approve a Private Endpoint connection. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
 ```
  
-#### <a name="deny-private-endpoint-connection"></a>拒绝专用终结点连接 
+#### <a name="deny-private-endpoint-connection"></a>Deny Private Endpoint connection 
  
-`Deny-AzPrivateEndpointConnection`使用 cmdlet 拒绝专用终结点连接。 
+Use the `Deny-AzPrivateEndpointConnection` cmdlet to reject a Private Endpoint connection. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
-#### <a name="remove-private-endpoint-connection"></a>删除专用终结点连接 
+#### <a name="remove-private-endpoint-connection"></a>Remove Private Endpoint Connection 
  
-`Remove-AzPrivateEndpointConnection`使用 cmdlet 删除专用终结点连接。 
+Use the `Remove-AzPrivateEndpointConnection` cmdlet to remove a Private Endpoint connection. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-`az network private-link-service update`用于管理专用终结点连接。 连接状态在```azurecli connection-status```参数中指定。 
+Use `az network private-link-service update` for managing your Private Endpoint connections. The connection state is specified in the ```azurecli connection-status``` parameter. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```
@@ -87,5 +87,5 @@ az network private-link-service connection update -g myResourceGroup -n myPrivat
    
 
 ## <a name="next-steps"></a>后续步骤
-- [了解专用终结点](private-endpoint-overview.md)
+- [Learn about Private Endpoints](private-endpoint-overview.md)
  

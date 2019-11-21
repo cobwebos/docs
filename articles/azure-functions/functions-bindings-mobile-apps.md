@@ -1,21 +1,16 @@
 ---
 title: Azure Functions 的移动应用绑定
 description: 了解如何在 Azure Functions 中使用 Azure 移动应用绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 37192a25bff794ac019fd29b47e0e8ad161790c9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097327"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231120"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
@@ -28,7 +23,7 @@ ms.locfileid: "70097327"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet 包 1.x 版中提供了移动应用绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub 存储库中提供了此包的源代码。
 
@@ -137,13 +132,13 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件和 `MobileTable` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `MobileTable` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-| **type**|| 必须设置为“mobileTable”|
-| **direction**||必须设置为“in”|
-| **名称**|| 函数签名中的输入参数的名称。|
+| 类型|| 必须设置为“mobileTable”|
+| direction||必须设置为“in”|
+| name|| 函数签名中的输入参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
 | **id**| **Id** | 要检索的记录的标识符。 可以是静态的，也可以基于调用函数的触发器。 例如，如果对函数使用队列触发器，则 `"id": "{queueTrigger}"` 会使用队列消息的字符串值作为记录 ID 进行检索。|
 |**连接**|**Connection**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.azurewebsites.net`。
@@ -162,7 +157,7 @@ module.exports = function (context, myQueueItem) {
 
 在 C# 函数和 F# 函数中，函数成功退出后，对输入记录（输入参数）所做的任何更改都会自动发回到表。 不能修改 JavaScript 函数中的记录。
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 使用移动应用输出绑定将新记录写入移动应用表。  
 
@@ -297,11 +292,11 @@ public static object Run(
 
 下表解释了在 function.json 文件和 `MobileTable` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-| **type**|| 必须设置为“mobileTable”|
-| **direction**||必须设置为“out”|
-| **名称**|| 函数签名中的输出参数的名称。|
+| 类型|| 必须设置为“mobileTable”|
+| direction||必须设置为“out”|
+| name|| 函数签名中的输出参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
 |**连接**|**MobileAppUriSetting**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKeySetting**|包含移动应用 API 密钥的应用设置的名称。 若要[在 Node.js 移动应用后端中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在 .NET 移动应用后端中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |

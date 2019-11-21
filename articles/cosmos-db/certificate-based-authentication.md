@@ -1,58 +1,58 @@
 ---
-title: 使用 Azure Cosmos DB 进行 Azure Active Directory 基于证书的身份验证
-description: 了解如何为基于证书的身份验证配置 Azure AD 标识，以便从 Azure Cosmos DB 访问密钥。
+title: Azure Active Directory certificate-based authentication with Azure Cosmos DB
+description: Learn how to configure an Azure AD identity for certificate-based authentication to access keys from Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 258250b10dc85754b253e59e6b0e764f5e56cc25
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882845"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220510"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>为基于证书的身份验证配置 Azure AD 标识以从 Azure Cosmos DB 帐户访问密钥
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Certificate-based authentication for an Azure AD identity to access keys from an Azure Cosmos DB account
 
-借助基于证书的身份验证，可以结合客户端证书使用 Azure Active Directory (Azure AD) 对客户端应用程序进行身份验证。 可以在需要标识的计算机（例如本地计算机，或 Azure 中的虚拟机）上执行基于证书的身份验证。 然后，无需在应用程序中直接提供密钥，应用程序就能读取 Azure Cosmos DB 密钥。 本文介绍如何创建一个示例 Azure AD 应用程序，将其配置为使用基于证书的身份验证，使用新应用程序标识登录到 Azure，然后从 Azure Cosmos 帐户检索密钥。 本文使用 Azure PowerShell 设置标识，并提供一个可以执行身份验证并从 Azure Cosmos 帐户访问密钥的 C# 示例应用。  
+Certificate-based authentication enables your client application to be authenticated by using Azure Active Directory (Azure AD) with a client certificate. You can perform certificate-based authentication on a machine where you need an identity, such as an on-premises machine or virtual machine in Azure. Your application can then read Azure Cosmos DB keys without having the keys directly in the application. This article describes how to create a sample Azure AD application, configure it for certificate-based authentication, sign into Azure using the new application identity, and then it retrieves the keys from your Azure Cosmos account. This article uses Azure PowerShell to set up the identities and provides a C# sample app that authenticates and accesses keys from your Azure Cosmos account.  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+* Install the [latest version](/powershell/azure/install-az-ps) of Azure PowerShell.
 
 * 如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-## <a name="register-an-app-in-azure-ad"></a>在 Azure AD 中注册应用
+## <a name="register-an-app-in-azure-ad"></a>Register an app in Azure AD
 
-此步骤在 Azure AD 帐户中注册一个示例 Web 应用程序。 稍后将使用此应用程序从 Azure Cosmos DB 帐户读取密钥。 使用以下步骤注册应用程序： 
+In this step, you will register a sample web application in your Azure AD account. This application is later used to read the keys from your Azure Cosmos DB account. Use the following steps to register an application: 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后选择“新建注册”。 
+1. Open the Azure **Active Directory** pane, go to App registrations pane, and select **New registration**. 
 
-   ![在 Active Directory 中新建应用程序注册](./media/certificate-based-authentication/new-app-registration.png)
+   ![New application registration in Active Directory](./media/certificate-based-authentication/new-app-registration.png)
 
-1. 在“注册应用程序”表单中填写以下详细信息：  
+1. Fill the **Register an application** form with the following details:  
 
-   * **名称**-提供应用程序的名称，可以是任意名称，如 "sampleapp.exe"。
-   * **受支持的帐户类型**–选择 **"仅此组织目录中的帐户" （默认目录）** ，以允许当前目录中的资源访问此应用程序。 
-   * **重定向 URL** -选择类型为 " **Web** " 的应用程序并提供托管应用程序的 url，可以是任何 url。 在此示例中，你可以提供测试 URL （如`https://sampleApp.com` ），即使应用不存在也是如此。
+   * **Name** – Provide a name for your application, it can be any name such as "sampleApp".
+   * **Supported account types** – Choose **Accounts in this organizational directory only (Default Directory)** to allow resources in your current directory to access this application. 
+   * **Redirect URL** – Choose application of type **Web** and provide a URL where your application is hosted, it can be any URL. For this example, you can provide a test URL such as `https://sampleApp.com` it’s okay even if the app doesn’t exist.
 
-   ![注册示例 Web 应用程序](./media/certificate-based-authentication/register-sample-web-app.png)
+   ![Registering a sample web application](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. 填写表单后，选择“注册”。
+1. Select **Register** after you fill the form.
 
-1. 注册应用后，记下“应用程序(客户端) ID”和“对象 ID”，在后面的步骤中需要用到这些详细信息。 
+1. After the app is registered, make a note of the **Application(client) ID** and **Object ID**, you will use these details in the next steps. 
 
-   ![获取应用程序 ID 和对象 ID](./media/certificate-based-authentication/get-app-object-ids.png)
+   ![Get the application and object IDs](./media/certificate-based-authentication/get-app-object-ids.png)
 
-## <a name="install-the-azuread-module"></a>安装 AzureAD 模块
+## <a name="install-the-azuread-module"></a>Install the AzureAD module
 
-此步骤安装 Azure AD PowerShell 模块。 获取在上一步骤中注册的应用程序的 ID，以及将自签名证书关联到该应用程序时，需要使用此模块。 
+In this step, you will install the Azure AD PowerShell module. This module is required to get the ID of the application you registered in the previous step and associate a self-signed certificate to that application. 
 
-1. 使用管理员权限打开 Windows PowerShell ISE。 如果尚未执行此操作，请安装 AZ PowerShell 模块并连接到你的订阅。 如果你有多个订阅，可按以下命令中所示设置当前订阅的上下文：
+1. Open Windows PowerShell ISE with administrator rights. If you haven’t already done, install the AZ PowerShell module and connect to your subscription. If you have multiple subscriptions, you can set the context of current subscription as shown in the following commands:
 
    ```powershell
 
@@ -64,16 +64,16 @@ ms.locfileid: "70882845"
    Set-AzContext $context 
    ```
 
-1. 安装并导入 [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) 模块
+1. Install and import the [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) module
 
    ```powershell
    Install-Module AzureAD
    Import-Module AzureAD 
    ```
 
-## <a name="sign-into-your-azure-ad"></a>登录到 Azure AD
+## <a name="sign-into-your-azure-ad"></a>Sign into your Azure AD
 
-登录到注册了该应用程序的 Azure AD。 使用 Connect-AzureAD 登录到你的帐户，在弹出窗口中输入你的 Azure 帐户凭据。 
+Sign into your Azure AD where you have registered the application. Use the Connect-AzureAD command to sign into your account, enter your Azure account credentials in the pop-up window. 
 
 ```powershell
 Connect-AzureAD 
@@ -81,16 +81,16 @@ Connect-AzureAD
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-打开 Windows PowerShell ISE 的另一个实例，然后运行以下命令以创建自签名证书并读取与该证书关联的密钥：
+Open another instance of Windows PowerShell ISE, and run the following commands to create a self-signed certificate and read the key associated with the certificate:
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "Cert:\CurrentUser\My" -Subject "CN=sampleAppCert" -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData()) 
 ```
 
-## <a name="create-the-certificate-based-credential"></a>创建基于证书的凭据 
+## <a name="create-the-certificate-based-credential"></a>Create the certificate-based credential 
 
-接下来运行以下命令，以获取应用程序的对象 ID 并创建基于证书的凭据。 此示例将证书设置为一年后过期，但你可将其设置为任何所需的结束日期。
+Next run the following commands to get the object ID of your application and create the certificate-based credential. In this example, we set the certificate to expire after a year, you can set it to any required end date.
 
 ```powershell
 $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
@@ -98,34 +98,34 @@ $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
 New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyIdentifier "Key1" -Type AsymmetricX509Cert -Usage Verify -Value $keyValue -EndDate "2020-01-01"
 ```
 
-以上命令将生成以下屏幕截图所示的输出：
+The above command results in the output similar to the screenshot below:
 
-![创建基于证书的凭据后的输出](./media/certificate-based-authentication/certificate-based-credential-output.png)
+![Certificate-based credential creation output](./media/certificate-based-authentication/certificate-based-credential-output.png)
 
-## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>将 Azure Cosmos 帐户配置为使用新标识
+## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Configure your Azure Cosmos account to use the new identity
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“访问控制(IAM)”边栏选项卡。
+1. Navigate to your Azure Cosmos account, open the **Access control (IAM)** blade.
 
-1. 依次选择“添加”、“添加角色分配”。 添加上一步骤中创建的具有“参与者”角色的 sampleApp，如以下屏幕截图所示：
+1. Select **Add** and **Add role assignment**. Add the sampleApp you created in the previous step with **Contributor** role as shown in the following screenshot:
 
-   ![将 Azure Cosmos 帐户配置为使用新标识](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   ![Configure Azure Cosmos account to use the new identity](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
-1. 填写表单后，选择“保存”
+1. Select **Save** after you fill out the form
 
 
-## <a name="access-the-keys-from-powershell"></a>从 PowerShell 访问密钥
+## <a name="access-the-keys-from-powershell"></a>Access the keys from PowerShell
 
-在此步骤中，你将使用上述应用程序以及创建的证书登录到 Azure，然后访问 Azure Cosmos 帐户的密钥。 
+In this step, you will sign into Azure by using the application and the certificate you created and access your Azure Cosmos account's keys. 
 
-1. 首先，请清除登录到帐户时所用的 Azure 帐户凭据。 可使用以下命令清除凭据：
+1. Initially clear the Azure account's credentials you have used to sign into your account. You can clear credentials by using the following command:
 
    ```powershell
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. 接下来，请验证是否可以使用应用程序的凭据登录 Azure 门户，并访问 Azure Cosmos DB 密钥：
+1. Next validate that you can sign into Azure portal by using the application’s credentials and access the Azure Cosmos DB keys:
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
@@ -133,14 +133,14 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
    Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
    ```
 
-以上命令将显示 Azure Cosmos 帐户的主要和辅助主密钥。 可以查看 Azure Cosmos 帐户的活动日志，以验证获取密钥的请求是否成功，以及“sampleApp”应用程序是否发起了该事件。 
+The previous command will display the primary and secondary master keys of your Azure Cosmos account. You can view the Activity log of your Azure Cosmos account to validate that the get keys request succeeded and the event is initiated by the "sampleApp" application. 
  
-![验证 Azure AD 中的获取密钥调用](./media/certificate-based-authentication/activity-log-validate-results.png)
+![Validate the get keys call in the Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 
-## <a name="access-the-keys-from-a-c-application"></a>从 C# 应用程序访问密钥 
+## <a name="access-the-keys-from-a-c-application"></a>Access the keys from a C# application 
 
-还可以通过从 C# 应用程序访问密钥来验证此方案。 以下 C# 控制台应用程序可以使用 Active Directory 中注册的应用访问 Azure Cosmos DB 密钥。 在运行该代码之前，请务必更新 tenantId、clientID、certName、资源组名称、订阅 ID 和 Azure Cosmos 帐户名称详细信息。 
+You can also validate this scenario by accessing keys from a C# application. The following C# console application, that can access Azure Cosmos DB keys by using the app registered in Active Directory. Make sure to update the tenantId, clientID, certName, resource group name, subscription ID, Azure Cosmos account name details before you run the code. 
 
 ```csharp
 using System;
@@ -222,15 +222,15 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-此脚本将输出以下屏幕截图所示的主要和辅助主密钥：
+This script outputs the primary and secondary master keys as shown in the following screenshot:
 
-![C# 应用程序输出](./media/certificate-based-authentication/csharp-application-output.png)
+![csharp application output](./media/certificate-based-authentication/csharp-application-output.png)
 
-与在前一部分中一样，你可以查看 Azure Cosmos 帐户的活动日志，以验证“sampleApp”应用程序是否发起了获取密钥的请求事件。 
+Similar to the previous section, you can view the Activity log of your Azure Cosmos account to validate that the get keys request event is initiated by the "sampleApp" application. 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure Key Vault 保护 Azure Cosmos 密钥](access-secrets-from-keyvault.md)
 
-* [Azure Cosmos DB 的安全控制](cosmos-db-security-controls.md)
+* [Security controls for Azure Cosmos DB](cosmos-db-security-controls.md)

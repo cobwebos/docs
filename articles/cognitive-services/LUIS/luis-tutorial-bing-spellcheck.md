@@ -1,5 +1,5 @@
 ---
-title: 更正拼写错误的单词-LUIS
+title: Correct misspelled words - LUIS
 titleSuffix: Azure Cognitive Services
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 238b76040559148c48aa67b99e856a5987b71a7e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123156"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225450"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
@@ -26,6 +26,7 @@ ms.locfileid: "74123156"
 
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>为必应拼写检查 V7 创建第一个密钥
+
 [第一个必应拼写检查 API v7 密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免费的。 
 
 ![创建免费密钥](./media/luis-tutorial-bing-spellcheck/free-key.png)
@@ -61,9 +62,10 @@ ms.locfileid: "74123156"
 
 10. 复制第一个密钥。 您只需要两个密钥中的一个即可。 
 
-## <a name="using-the-key-in-luis-test-panel"></a>在 LUIS 测试面板中使用该密钥
-LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)。 该密钥不会保存到 LUIS 中，它实际上是会话变量。 每次希望测试面板将必应拼写检查 API v7 服务应用于表述时，都需要设置该密钥。 请参阅测试面板中的[说明](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)来设置密钥。
-
+<!--
+## Using the key in LUIS test panel
+There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
+-->
 ## <a name="adding-the-key-to-the-endpoint-url"></a>将密钥添加到终结点 URL
 终结点查询需要在要应用拼写更正的每个查询的查询字符串参数中传递的密钥。 可使用调用 LUIS 的聊天机器人或直接调用 LUIS 终结点 API。 无论如何调用终结点，每个调用都必须包含拼写更正所需的信息，以确保正常工作。
 
@@ -74,7 +76,7 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>将拼写错误的表述发送到 LUIS
 1. 在 Web 浏览器中，复制上面的字符串，并将 `region`、`appId`、`luisKey` 和 `bingKey` 替换为你自己的值。 如果终结点区域与你的发布[区域](luis-reference-regions.md)不同，请务必使用终结点区域。
 
-2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `mountain` 的 `n` 才是正确的拼写。 
+2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。 
 
 3. 按 Enter，将查询发送到 LUIS。
 
@@ -94,15 +96,15 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼写错误
 
-如果不想使用必应拼写检查 API v7 服务，则需要添加正确且不正确的拼写。 
+If you don't want to use the Bing Spell Check API v7 service, you need to add the correct and incorrect spelling. 
 
-两种解决方案是：
+Two solutions are:
 
-* 标签示例最谈话，其中包含所有不同的拼写，以便 LUIS 可以了解正确的拼写和打字错误。 使用此选项比使用拼写检查器需要更多标记操作。
-* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。 
+* Label example utterances that have the all the different spellings so that LUIS can learn proper spelling as well as typos. 使用此选项比使用拼写检查器需要更多标记操作。
+* Create a phrase list with all variations of the word. With this solution, you do not need to label the word variations in the example utterances. 
 
 ## <a name="publishing-page"></a>发布页面
 [发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
 
 > [!div class="nextstepaction"]
-> [详细了解示例表述](luis-how-to-add-example-utterances.md)
+> [详细了解示例陈述](luis-how-to-add-example-utterances.md)

@@ -1,20 +1,14 @@
 ---
 title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035843"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230329"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -33,8 +27,8 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“平台功能”。 
-4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。  
+3. 选择“平台功能”。
+4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。
 
 ## <a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
@@ -43,7 +37,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 查找函数应用可用的出站 IP 地址：
 
 1. 登录到 [Azure 资源浏览器](https://resources.azure.com)。
-2. 选择“订阅”> {你的订阅} >“提供程序”>“Microsoft.Web”>“站点”。 
+2. 选择“订阅”> {你的订阅} >“提供程序”>“Microsoft.Web”>“站点”。
 3. 在 JSON 面板中，找到其 `id` 属性以函数应用名称结尾的站点。
 4. 参阅 `outboundIpAddresses` 和 `possibleOutboundIpAddresses`。 
 
@@ -84,7 +78,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- 有关此文件何时更新以及 IP 地址何时更改的信息，请展开[下载中心页](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的“详细信息”部分。 
+ 有关此文件何时更新以及 IP 地址何时更改的信息，请展开[下载中心页](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的“详细信息”部分。
 
 ## <a name="inbound-ip-address-changes"></a>入站 IP 地址更改
 
@@ -92,7 +86,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
-- 删除 SSL 绑定（例如，在[证书续订](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)期间）。
+- 删除 SSL 绑定（例如，在[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间）。
 
 在[消耗计划](functions-scale.md#consumption-plan)中运行函数应用时，如果未执行上面所列的操作，入站 IP 地址也可能会更改。
 
@@ -123,8 +117,8 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“概述”选项卡。 
-4. 应用服务计划层显示在“应用服务计划/定价层”下面。  应用服务环境定价层为“隔离”。 
+3. 选择“概述”选项卡。
+4. 应用服务计划层显示在“应用服务计划/定价层”下面。 应用服务环境定价层为“隔离”。
  
 或者，可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：
 

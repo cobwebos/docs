@@ -1,63 +1,61 @@
 ---
-title: 训练聚类模型：模块引用
+title: 'Train Clustering Model: Module Reference'
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的 "定型聚类分析模型" 模块来定型聚类分析模型。
+description: Learn how to use the Train Clustering Model module in Azure Machine Learning to train clustering models.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490388"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232579"
 ---
 # <a name="train-clustering-model"></a>训练聚类模型
 
-本文介绍 Azure 机器学习设计器（预览版）中的模块。
+This article describes a module in Azure Machine Learning designer (preview).
 
-使用此模块可以定型聚类分析模型。
+Use this module to train a clustering model.
 
-该模块采用了一个已使用[K 平均值聚类分析](k-means-clustering.md)模块进行配置的未训练的聚类模型，并使用标签或未标记的数据集训练该模型。 该模块创建一个可用于预测的定型模型，以及针对定型数据中每个事例的一组群集分配。
+The module takes an untrained clustering model that you have already configured using the [K-Means Clustering](k-means-clustering.md) module, and trains the model using a labeled or unlabeled data set. The module creates both a trained model that you can use for prediction, and a set of cluster assignments for each case in the training data.
 
 > [!NOTE]
-> 聚类分析模型不能使用[训练模型](train-model.md)模块定型，后者是用于定型机器学习模型的通用模块。 这是因为[训练模型](train-model.md)仅适用于监督学习算法。 K 平均值和其他聚类分析算法允许无人监督学习，这意味着该算法可以从未标记的数据中进行学习。  
+> A clustering model cannnot be trained using the [Train Model](train-model.md) module, which is the generic module for training machine learning models. That is because [Train Model](train-model.md) works only with supervised learning algorithms. K-means and other clustering algorithms allow unsupervised learning, meaning that the algorithm can learn from unlabeled data.  
   
-## <a name="how-to-use-train-clustering-model"></a>如何使用定型聚类模型  
+## <a name="how-to-use-train-clustering-model"></a>How to use Train Clustering Model  
 
-1.  在设计器中将 "**训练聚类模型**" 模块添加到管道。 可以在 "**训练**" 类别的 "**机器学习模块**" 下找到该模块。  
+1.  Add the **Train Clustering Model** module to your pipeline in the designer. You can find the module under **Machine Learning Modules**, in the **Train** category.  
   
-2. 添加[K 平均值聚类分析](k-means-clustering.md)模块或另一个创建兼容的聚类分析模型的自定义模块，并设置聚类分析模型的参数。  
+2. Add the [K-Means Clustering](k-means-clustering.md) module, or another custom module that creates a compatible clustering model, and set the parameters of the clustering model.  
     
-3.  将定型数据集附加到**定型聚类分析模型**的右侧输入。
+3.  Attach a training dataset to the right-hand input of **Train Clustering Model**.
   
-5.  在 "**列集**" 中，选择要在生成群集中使用的数据集中的列。 请确保选择可提供良好功能的列：例如，避免使用 Id 或其他具有唯一值的列或具有相同值的列。
+5.  In **Column Set**, select the columns from the dataset to use in building clusters. Be sure to select columns that make good features: for example, avoid using IDs or other columns that have unique values, or columns that have all the same values.
 
-    如果标签可用，可以将其用作一项功能，或将其保留。  
+    If a label is available, you can either use it as a feature, or leave it out.  
   
-6. 如果要将定型数据与新的群集标签一起输出，请选择选项 "**仅检查追加或取消选中结果**"。
+6. Select the option, **Check for append or uncheck for result only**, if you want to output the training data together with the new cluster label.
 
-    如果取消选择此选项，则仅输出群集分配。 
+    If you deselect this option, only the cluster assignments are output. 
 
-7. 运行管道，或单击 "**训练聚类模型**" 模块并选择 "**运行所选项**"。  
+7. Run the pipeline, or click the **Train Clustering Model** module and select **Run Selected**.  
   
 ### <a name="results"></a>结果
 
-完成训练后：
+After training has completed:
 
 
-+  若要查看数据集中的值，请右键单击该模块，选择 "**结果数据集**"，然后单击 "**可视化**"。
++  To view the values in the dataset, right-click the module, select **Result datasets**, and click **Visualize**.
 
-+ 若要保存训练的模型以供以后重复使用，请右键单击该模块，选择 "**定型模型**"，然后单击 "**另存为定型模型**"。
++ To save the trained model for later reuse, right-click the module, select **Trained model**, and click **Save As Trained Model**.
 
-+ 若要从模型中生成评分，请使用 "[将数据分配给群集](assign-data-to-clusters.md)"。
-
-
++ To generate scores from the model, use [Assign Data to Clusters](assign-data-to-clusters.md).
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习[的模块集](module-reference.md)。 
+See the [set of modules available](module-reference.md) to Azure Machine Learning. 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Microsoft 标识平台在无浏览器设备上登录用户 |Microsoft
-description: 使用 device authorization grant 构建嵌入和无浏览器的身份验证流。
+title: Use Microsoft identity platform to sign in users on browser-less devices | Azure
+description: Build embedded and browser-less authentication flows using the device authorization grant.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,26 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90922a48f213ecd506f08f616fe8c28ab44776a2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893895"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207605"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 device authorization grant flow
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft identity platform and the OAuth 2.0 device authorization grant flow
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Microsoft 标识平台支持[设备授权授予](https://tools.ietf.org/html/rfc8628)，这允许用户登录到输入设备（例如智能电视、IoT 设备或打印机）。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
+The Microsoft identity platform supports the [device authorization grant](https://tools.ietf.org/html/rfc8628), which allows users to sign in to input-constrained devices such as a smart TV, IoT device, or printer.  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
+
+This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
 
 > [!NOTE]
-> Microsoft 标识平台终结点并不支持所有 Azure Active Directory 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[microsoft 标识平台限制](active-directory-v2-limitations.md)。
+> The Microsoft identity platform endpoint doesn't support all Azure Active Directory scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md).
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -41,11 +43,11 @@ Microsoft 标识平台支持[设备授权授予](https://tools.ietf.org/html/rfc
 
 ## <a name="device-authorization-request"></a>设备授权请求
 
-客户端必须首先向身份验证服务器核实用于启动身份验证的设备和用户代码。 客户端从 `/devicecode` 终结点收集此请求。 在此请求中，客户端应包含需要从用户获取的权限。 从发送此请求的那一刻起，用户只有 15 分钟的时间（通常是 `expires_in` 的值）完成登录，因此，仅在用户指出他们已准备好登录时才发出此请求。
+The client must first check with the authentication server for a device and user code that's used to initiate authentication. 客户端从 `/devicecode` 终结点收集此请求。 在此请求中，客户端应包含需要从用户获取的权限。 从发送此请求的那一刻起，用户只有 15 分钟的时间（通常是 `expires_in` 的值）完成登录，因此，仅在用户指出他们已准备好登录时才发出此请求。
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！
-> [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Try running this request in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -60,8 +62,8 @@ scope=user.read%20openid%20profile
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 需要 | 可以是/common、/consumers 或/organizations。  它还可以是要从 GUID 或友好名称格式请求权限的目录租户。  |
-| `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
+| `tenant` | 需要 | Can be /common, /consumers, or /organizations.  It can also be the directory tenant that you want to request permission from in GUID or friendly name format.  |
+| `client_id` | 需要 | The **Application (client) ID** that the [Azure portal – App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) experience assigned to your app. |
 | `scope` | 推荐 | 希望用户同意的[范围](v2-permissions-and-consent.md)的空格分隔列表。  |
 
 ### <a name="device-authorization-response"></a>设备授权响应
@@ -70,21 +72,21 @@ scope=user.read%20openid%20profile
 
 | 参数 | 格式 | 描述 |
 | ---              | --- | --- |
-|`device_code`     | 字符串 | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数来请求授权服务器的访问令牌。 |
-|`user_code`       | 字符串 | 显示给用户的简短字符串，用于标识辅助设备上的会话。|
+|`device_code`     | 字符串 | 一个长字符串，用于验证客户端与授权服务器之间的会话。 The client uses this parameter to request the access token from the authorization server. |
+|`user_code`       | 字符串 | A short string shown to the user that's used to identify the session on a secondary device.|
 |`verification_uri`| URI | 用户在登录时应使用 `user_code` 转到的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 过期之前的秒数。 |
 |`interval`        | int | 在发出下一个轮询请求之前客户端应等待的秒数。 |
 | `message`        | 字符串 | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
 
 > [!NOTE]
-> 此时不包括或支持 `verification_uri_complete` 响应字段。  我们提到这样做的原因是，如果您阅读了[标准版](https://tools.ietf.org/html/rfc8628)，则会看到 `verification_uri_complete` 作为设备代码流标准的可选部分列出。
+> The `verification_uri_complete` response field is not included or supported at this time.  We mention this because if you read the [standard](https://tools.ietf.org/html/rfc8628) you see that `verification_uri_complete` is listed as an optional part of the device code flow standard.
 
 ## <a name="authenticating-the-user"></a>对用户进行身份验证
 
-接收到 `user_code` 并 `verification_uri`之后，客户端会向用户显示这些用户，指示他们使用移动电话或 PC 浏览器登录。
+After receiving the `user_code` and `verification_uri`, the client displays these to the user, instructing them to sign in using their mobile phone or PC browser.
 
-如果用户使用个人帐户（在/common 或/consumers 上）进行身份验证，则系统会要求再次登录，以便将身份验证状态传输到设备。  还将要求他们提供许可，以确保他们知道所授予的权限。  这不适用于用于身份验证的工作或学校帐户。 
+If the user authenticates with a personal account (on /common or /consumers), they will be asked to sign in again in order to transfer authentication state to the device.  They will also be asked to provide consent, to ensure they are aware of the permissions being granted.  This does not apply to work or school accounts used to authenticate. 
 
 尽管用户是在 `verification_uri` 中进行身份验证，但客户端应使用 `device_code` 来轮询所请求令牌的 `/token` 终结点。
 
@@ -99,21 +101,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | 参数 | 需要 | 描述|
 | -------- | -------- | ---------- |
-| `tenant`  | 需要 | 初始请求中使用的同一个租户或租户别名。 | 
+| `tenant`  | 需要 | The same tenant or tenant alias used in the initial request. | 
 | `grant_type` | 需要 | 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | 需要 | 必须与初始请求中使用的 `client_id` 匹配。 |
 | `device_code`| 需要 | 设备授权请求中返回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>预期错误
 
-设备代码流是一种轮询协议，因此客户端必须在用户完成身份验证之前接收到错误。  
+The device code flow is a polling protocol so your client must expect to receive errors before the user has finished authenticating.  
 
 | 错误 | 描述 | 客户端操作 |
 | ------ | ----------- | -------------|
-| `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
+| `authorization_pending` | The user hasn't finished authenticating, but hasn't canceled the flow. | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
-| `bad_verification_code`| 无法识别发送到 `/token` 终结点的 `device_code`。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
-| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询并还原到未经过身份验证的状态。 |   
+| `bad_verification_code`| The `device_code` sent to the `/token` endpoint wasn't recognized. | 验证客户端是否在请求中发送了正确的 `device_code`。 |
+| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | Stop polling and revert to an unauthenticated state. |   
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -139,4 +141,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `id_token`   | JWT | 如果原始 `scope` 参数包含 `openid` 范围，则颁发。  |
 | `refresh_token` | 不透明字符串 | 如果原始 `scope` 参数包含 `offline_access`，则颁发。  |
 
-可以使用刷新令牌获取新的访问令牌，并使用[OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中所述的相同流来刷新令牌。  
+You can use the refresh token to acquire new access tokens and refresh tokens using the same flow documented in the [OAuth Code flow documentation](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  

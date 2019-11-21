@@ -1,6 +1,6 @@
 ---
-title: 排查 SSIS Integration Runtime 中的包执行问题 | Microsoft Docs
-description: 本文提供有关排查 SSIS Integration Runtime 中的 SSIS 包执行问题的指导
+title: 'Troubleshoot package execution in the SSIS integration runtime '
+description: This article provides troubleshooting guidance for SSIS package execution in the SSIS integration runtime
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,183 +12,183 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936968"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217542"
 ---
-# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
+# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Troubleshoot package execution in the SSIS integration runtime
 
-本文描述了在执行 SSIS Integration Runtime 中的 SQL Server Integration Services (SSIS) 包时可能遇到的最常见错误， 并描述了潜在的原因，以及解决这些错误的操作。
+This article includes the most common errors that you might find when you're executing SQL Server Integration Services (SSIS) packages in the SSIS integration runtime. It describes the potential causes and actions to solve the errors.
 
-## <a name="where-to-find-logs-for-troubleshooting"></a>在何处可以找到用于故障排除的日志
+## <a name="where-to-find-logs-for-troubleshooting"></a>Where to find logs for troubleshooting
 
-使用 Azure 数据工厂门户检查 SSIS 包执行活动的输出。 输出包括执行结果、错误消息和操作 ID。 有关详细信息，请参阅[监视管道](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)。
+Use the Azure Data Factory portal to check the output of the SSIS package execution activity. The output includes the execution result, error messages, and operation ID. For details, see [Monitor the pipeline](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-使用 SSIS 目录 (SSISDB) 检查执行活动的详细日志。 有关详细信息，请参阅[监视正在运行的包和其他操作](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)。
+Use the SSIS catalog (SSISDB) to check the detail logs for the execution. For details, see [Monitor Running Packages and Other Operations](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
-## <a name="common-errors-causes-and-solutions"></a>常见错误、原因和解决方法
+## <a name="common-errors-causes-and-solutions"></a>常见错误、原因和解决方案
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>错误消息：“连接已超时”或“服务在处理请求时遇到错误。 请重试。”
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Error message: "Connection Timeout Expired" or "The service has encountered an error processing your request. Please try again."
 
-下面是可能的原因和建议的操作：
-* 数据源或目标过载。 检查数据源或目标的负载，并查看它是否有足够的容量。 例如，如果使用的是 Azure SQL 数据库，而该数据库可能会超时，请考虑纵向扩展。
-* SSIS Integration Runtime 与数据源或目标之间的网络不稳定，当连接跨区域或者是在本地与 Azure 之间建立的时尤其如此。 执行以下步骤，在 SSIS 包中应用重试模式：
-  * 确保 SSIS 包在失败时可以重新运行，且不产生负面影响（例如数据丢失或数据重复）。
-  * 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-  * 对于 ADO.NET 和 OLE DB 源或目标组件，请在 SSIS 包或 SSIS 活动的连接管理器中设置 **ConnectRetryCount** 和 **ConnectRetryInterval**。
+Here are potential causes and recommended actions:
+* The data source or destination is overloaded. Check the load on your data source or destination and see whether it has enough capacity. For example, if you used Azure SQL Database, consider scaling up if the database is likely to time out.
+* The network between the SSIS integration runtime and the data source or destination is unstable, especially when the connection is cross-region or between on-premises and Azure. Apply the retry pattern in the SSIS package by following these steps:
+  * Make sure your SSIS packages can rerun on failure without side effects (for example, data loss or data duplication).
+  * Configure **Retry** and **Retry interval** of **Execute SSIS Package** activity on the **General** tab. ![Set properties on the General tab](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * For an ADO.NET and OLE DB source or destination component, set **ConnectRetryCount** and **ConnectRetryInterval** in Connection Manager in the SSIS package or SSIS activity.
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>错误消息：“ADO NET 源无法获取连接 '...'”， 同时显示“在与 SQL Server 建立连接时出现网络相关或特定于实例的错误。 找不到或无法访问服务器。”
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Error message: "ADO NET Source has failed to acquire the connection '...'" with "A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible."
 
 此问题通常意味着无法从 SSIS 集成运行时访问数据源或目标。 原因可能各不相同。 请尝试以下操作：
-* 确保正确传递数据源或目标的名称/IP。
-* 确保已正确设置防火墙。
-* 确保在数据源或目标为本地源或目标的情况下正确配置虚拟网络：
-  * 可以通过在同一虚拟网络中预配 Azure VM，来验证问题是否与虚拟网络配置有关。 然后检查是否可以从 Azure VM 访问数据源或目标
-  * 若要更详细地了解如何将虚拟网络与 SSIS Integration Runtime 配合使用，可参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
+* Make sure you're passing the data source or destination name/IP correctly.
+* Make sure the firewall is set properly.
+* Make sure your virtual network is configured properly if your data source or destination is on-premises:
+  * You can verify whether the issue is from virtual network configuration by provisioning an Azure VM in the same virtual network. Then check whether the data source or destination can be accessed from the Azure VM.
+  * You can find more details about using a virtual network with an SSIS integration runtime in [Join an Azure-SSIS integration runtime to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md).
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>错误消息：“ADO NET 源无法获取连接 '...'”， 并显示“无法创建托管的连接管理器。”
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Error message: "ADO NET Source has failed to acquire the connection '...'" with "Could not create a managed connection manager."
 
-潜在的原因是在包中使用的 ADO.NET 提供程序未安装在 SSIS Integration Runtime 中。 可以使用自定义安装程序来安装该提供程序。 在[自定义 Azure SSIS Integration Runtime 的安装](how-to-configure-azure-ssis-ir-custom-setup.md)中可以找到有关自定义安装的更多详细信息
+The potential cause is that the ADO.NET provider used in the package isn't installed in the SSIS integration runtime. You can install the provider by using a custom setup. You can find more details about custom setup in [Customize setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-### <a name="error-message-the-connection--is-not-found"></a>错误消息：“找不到连接 '...'”
+### <a name="error-message-the-connection--is-not-found"></a>Error message: "The connection '...' is not found"
 
 旧版 SQL Server Management Studio (SSMS) 中的某个已知问题可能导致此错误。 如果此包包含的自定义组件（例如 SSIS Azure Feature Pack 或合作伙伴组件）未安装在使用 SSMS 来执行部署的计算机上，则 SSMS 会删除该组件，导致此错误。 请将 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 升级到已解决了此问题的最新版本。
 
-### <a name="error-messagessis-executor-exit-code--1073741819"></a>错误消息：“SSIS 执行程序退出代码: -1073741819。”
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Error message：“SSIS Executor exit code: -1073741819.”
 
 * 可能的原因和建议的操作：
-  * 出现此错误的原因可能是，以多线程并行执行多个 Excel 源或目标时，Excel 源和目标遭到限制。 可通过以下方式解决此限制：将 Excel 组件更改为按顺序执行，或将其分隔到不同的包中，并在将 ExecuteOutOfProcess 属性设置为 True 的情况下，通过“执行包任务”来触发执行。
+  * This error may be because of the limitation for Excel source and destination when multiple Excel sources or destinations are executing in parallel in multi-thread. You can workaround this limitation by change your Excel components to execute in sequence, or separate them into different packages and trigger through "Execute Package Task" with ExecuteOutOfProcess property set as True.
 
-### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>错误消息：“磁盘上没有足够的空间”
+### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Error message: "There is not enough space on the disk"
 
-此错误表示 SSIS Integration Runtime 节点中的本地磁盘空间已用尽。 请检查你的包或自定义安装是否占用了大量的磁盘空间：
-* 如果包占用了磁盘，包执行完成后会释放磁盘空间。
-* 如果自定义安装占用了磁盘，则你需要停止 SSIS Integration Runtime，修改脚本，然后再次启动 Integration Runtime。 为自定义安装指定的整个 Azure Blob 容器将复制到 SSIS Integration Runtime 节点，因此，请检查该容器中是否包含任何不必要的内容。
+This error means the local disk is used up in the SSIS integration runtime node. Check whether your package or custom setup is consuming a lot of disk space:
+* If the disk is consumed by your package, it will be freed up after the package execution finishes.
+* If the disk is consumed by your custom setup, you'll need to stop the SSIS integration runtime, modify your script, and start the integration runtime again. The whole Azure blob container that you specified for custom setup will be copied to the SSIS integration runtime node, so check whether there's any unnecessary content under that container.
 
-### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>错误消息：“无法从主节点检索资源。 Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException:代码: 300004。 说明: 加载文件 "***" 失败。”
-
-* 可能的原因和建议的操作：
-  * 如果 SSIS 活动正在从文件系统（包文件或项目文件）执行包，而使用你在 SSIS 活动中提供的包访问凭据无法访问项目、包或配置文件，则会出现此错误
-    * 如果使用 Azure 文件：
-      * 文件路径\\应以\\ \<存储帐户名称\>开头。\\file.core.windows.net\<文件共享路径\>
-      * 域应是“Azure”
-      * 用户名应是 \<存储帐户名称\>
-      * 密码应是 \<存储访问密钥\>
-    * 如果使用本地文件，请检查是否正确配置了 VNet、包访问凭据和权限，使 Azure SSIS Integration Runtime 能够访问你的本地文件共享
-
-### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>错误消息：“连接中指定的文件名 '...' 无效”
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Error message: "Failed to retrieve resource from master. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code:300004. Description:Load file "***" failed."
 
 * 可能的原因和建议的操作：
-  * 指定的文件名无效
-  * 确保在连接管理器中使用 FQDN（完全限定的域名）而不是短时间
+  * If the SSIS Activity is executing package from file system (package file or project file), this error will occur if the project, package or configuration file is not accessible with the package access credential you provided in the SSIS Activity
+    * If you are using Azure File:
+      * The file path should start with \\\\\<storage account name\>.file.core.windows.net\\\<file share path\>
+      * The domain should be "Azure"
+      * The username should be \<storage account name\>
+      * The password should be \<storage access key\>
+    * If your are using on-premises file, please check if VNet, package access credential and permission are configured properly so that your Azure-SSIS integration runtime can access your on-premises file share
 
-### <a name="error-message-cannot-open-file-"></a>错误消息：“无法打开文件 '...'”
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Error message: "The file name '...' specified in the connection was not valid"
 
-当包执行在 SSIS Integration Runtime 中的本地磁盘内找不到文件时，将发生此错误。 请尝试以下操作：
-* 不要在 SSIS Integration Runtime 中执行的包内使用绝对路径。 改用当前执行工作目录 (.) 或临时文件夹 (%TEMP%)。
-* 如果需要在 SSIS Integration Runtime 节点上保留某些文件，请根据[自定义安装](how-to-configure-azure-ssis-ir-custom-setup.md)中所述准备文件。 执行完成后，系统会清理工作目录中的所有文件。
-* 改用 Azure 文件来存储 SSIS Integration Runtime 节点中的文件。 有关详细信息，请参阅[使用 Azure文件共享](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)。
+* 可能的原因和建议的操作：
+  * An invalid file name is specified
+  * Make sure you are using FQDN (Fully Qualified Domain Name) instead of short time in your connection manager
 
-### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>错误消息：“数据库 'SSISDB' 已达到大小配额”
+### <a name="error-message-cannot-open-file-"></a>Error message: "Cannot open file '...'"
+
+This error occurs when package execution can't find a file in the local disk in the SSIS integration runtime. 请尝试以下操作：
+* Don't use the absolute path in the package that's being executed in the SSIS integration runtime. Use the current execution working directory (.) or the temp folder (%TEMP%) instead.
+* If you need to persist some files on SSIS integration runtime nodes, prepare the files as described in [Customize setup](how-to-configure-azure-ssis-ir-custom-setup.md). All the files in the working directory will be cleaned up after the execution is finished.
+* Use Azure Files instead of storing the file in the SSIS integration runtime node. For details, see [Use Azure file shares](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+
+### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Error message: "The database 'SSISDB' has reached its size quota"
 
 可能的原因是，在 Azure SQL 数据库中创建的 SSISDB 数据库或者在创建 SSIS 集成运行时时的托管实例已达到其配额。 请尝试以下操作：
 * 考虑增加数据库的 DTU。 可以在 [Azure SQL 数据库服务器的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到详细信息。
 * 检查包是否会生成许多日志。 如果是，则可配置一项弹性作业来清理这些日志。 有关详细信息，请参阅[使用 Azure 弹性数据库作业清理 SSISDB 日志](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md)。
 
-### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>错误消息：“数据库的请求限制是 ...，现已达到该限制。”
+### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Error message: "The request limit for the database is ... and has been reached."
 
-如果在 SSIS Integration Runtime 中同时运行许多的包，可能会发生此错误，因为 SSISDB 已达到请求限制。 请考虑增加 SSISDB 的 DTC 来解决此问题。 可以在 [Azure SQL 数据库服务器的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到详细信息。
+If many packages are running in parallel in the SSIS integration runtime, this error might occur because SSISDB has hit its request limit. Consider increasing the DTC of SSISDB to resolve this issue. 可以在 [Azure SQL 数据库服务器的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)中找到详细信息。
 
-### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>错误消息：“SSIS 操作失败并出现意外的操作状态: ...”
+### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Error message: "SSIS Operation failed with unexpected operation status: ..."
 
-该错误主要是由某个暂时性问题导致的，因此请尝试重新运行包执行。 执行以下步骤，在 SSIS 包中应用重试模式：
+The error is mostly caused by a transient problem, so try to rerun the package execution. Apply the retry pattern in the SSIS package by following these steps:
 
-* 确保 SSIS 包在失败时可以重新运行，且不产生负面影响（例如数据丢失或数据重复）。
-* 在“常规”选项卡上配置“执行 SSIS 包”活动的“重试”和“重试间隔”。![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-* 对于 ADO.NET 和 OLE DB 源或目标组件，请在 SSIS 包或 SSIS 活动的连接管理器中设置 **ConnectRetryCount** 和 **ConnectRetryInterval**。
+* Make sure your SSIS packages can rerun on failure without side effects (for example, data loss or data duplication).
+* Configure **Retry** and **Retry interval** of **Execute SSIS Package** activity on the **General** tab. ![Set properties on the General tab](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* For an ADO.NET and OLE DB source or destination component, set **ConnectRetryCount** and **ConnectRetryInterval** in Connection Manager in the SSIS package or SSIS activity.
 
-### <a name="error-message-there-is-no-active-worker"></a>错误消息：“没有任何活动的辅助角色。”
+### <a name="error-message-there-is-no-active-worker"></a>Error message: "There is no active worker."
 
-此错误通常表示 SSIS Integration Runtime 处于不正常状态。 请在 Azure 门户中检查状态和详细错误。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)。
+This error usually means the SSIS integration runtime has an unhealthy status. Check the Azure portal for the status and detailed errors. For more information, see [Azure-SSIS integration runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
 
-### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>错误消息：“集成运行时无法升级，最终将会停止工作，因为我们无法访问你为自定义安装提供的 Azure Blob 容器。”
+### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Error message: "Your integration runtime cannot be upgraded and will eventually stop working, since we cannot access the Azure Blob container you provided for custom setup."
 
-当 SSIS Integration Runtime 无法访问针对自定义安装配置的存储时，将发生此错误。 请检查提供的共享访问签名 (SAS) URI 是否有效且未过期。
+This error occurs when the SSIS integration runtime can't access the storage configured for custom setup. Check whether the shared access signature (SAS) URI that you provided is valid and hasn't expired.
 
-### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>错误消息：“Microsoft OLE DB Provider for Analysis Services。 ‘Hresult:0x80004005 说明:’COM 错误:COM 错误: mscorlib；某个调用的目标引发了异常”
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Error message: "Microsoft OLE DB Provider for Analysis Services. 'Hresult: 0x80004005 Description:' COM error: COM error: mscorlib; Exception has been thrown by the target of an invocation"
 
-一种潜在原因是为 Azure Analysis Services 身份验证配置了已启用 Azure 多重身份验证的用户名或密码。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
+One potential cause is that the username or password with Azure Multi-Factor Authentication enabled is configured for Azure Analysis Services authentication. This authentication isn't supported in the SSIS integration runtime. Try to use a service principal for Azure Analysis Services authentication:
 
-1. 请根据[使用服务主体进行自动化](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)中所述准备服务主体。
-2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。
+1. Prepare a service principal as described in [Automation with service principals](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
+2. In Connection Manager, configure **Use a specific user name and password**: set **AppID** as the username and **clientSecret** as the password.
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>错误消息：使用托管标识时发生错误“ADONET 源无法获取连接 {GUID} 并出现以下错误消息:用户 'NT AUTHORITY\ANONYMOUS LOGON' 登录失败”
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Error message: "ADONET Source has failed to acquire the connection {GUID} with the following error message: Login failed for user 'NT AUTHORITY\ANONYMOUS LOGON'" when using a managed identity
 
-如果参数 *ConnectUsingManagedIdentity* 为 **True**，请确保不要将连接管理器的身份验证方法配置为“Active Directory密码身份验证”。 可将其配置为“SQL 身份验证”，设置了 *ConnectUsingManagedIdentity* 时会忽略此配置。
+Make sure you don't configure the authentication method of Connection Manager as **Active Directory Password Authentication** when the parameter *ConnectUsingManagedIdentity* is **True**. You can configure it as **SQL Authentication** instead, which is ignored if *ConnectUsingManagedIdentity* is set.
 
-### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>错误消息："0xC020801F ...，OData Source [...]：无法从运行时连接管理器获取托管连接 "
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Error message: "0xC020801F at ..., OData Source [...]: Cannot acquire a managed connection from the run-time connection manager"
 
-一个可能的原因是，无法在 SSIS 集成运行时中启用传输层安全性（TLS），这是 OData 源所必需的。 可以通过使用 "自定义安装" 在 SSIS 集成运行时中启用 TLS。 有关详细信息，请参阅[无法从 SSIS 连接 Project Online Odata](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis)和[自定义 Azure ssis 集成运行时的设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
+One potential cause is that the Transport Layer Security (TLS) is not enable in SSIS integration runtime which is required by your OData source. You can enable TLS in SSIS integration runtime by using Customize setup. More detail can be found at [Can't connect Project Online Odata from SSIS](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) and [Customize setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>错误消息："请求暂存任务，操作 guid 。失败，因为错误：未能调度暂存操作，错误消息如下：Microsoft.sqlserver.management.integrationservices. AisAgentCore. AisAgentException：未能加载数据代理。 "
+### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Error message: "Request staging task with operation guid ... fail since error: Failed to dispatch staging operation with error message: Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException: Failed to load data proxy."
 
-确保你的 Azure SSIS 集成运行时配置了自承载集成运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md)。
+Make sure your Azure-SSIS integration runtime is configured with Self-Hosted integration runtime. More detail can be found at [Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md).
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2010，ErrorMessage：自承载 Integration Runtime 。处于脱机状态 "
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Error message: "Staging task status: Failed. Staging task error: ErrorCode: 2010, ErrorMessage: The Self-hosted Integration Runtime ... is offline"
 
-请确保已安装并启动了自承载集成运行时。 有关详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md)
+Make sure your Self-Hosted integration runtime is installed and started. More detail can be found at [Create and configure a self-hosted integration runtime](create-self-hosted-integration-runtime.md)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:请求的 OLE DB 提供程序 。未注册。 如果未安装64位驱动程序，请在32位模式下运行包 ... "
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Error message: "Staging task error: ErrorCode: 2906, ErrorMessage: Package execution failed., Output: {"OperationErrorMessages": "Error: The requested OLE DB provider ... is not registered. If the 64-bit driver is not installed, run the package in 32-bit mode..."
 
-请确保包中 OLE DB 连接器使用的相应提供程序正确安装在自承载集成运行时计算机上。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+Make sure the corresponding provider used by your OLE DB connectors in your package are installed on Self-Hosted integration runtime machine properly. More detail can be found at [Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:FileLoadException：无法加载文件或程序集 "Windowsazure.storage，Version = ...，Culture = 中立，PublicKeyToken = 31bf3856ad364e35" 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配。..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Error message: "Staging task error: ErrorCode: 2906, ErrorMessage: Package execution failed., Output: {"OperationErrorMessages": "Error: System.IO.FileLoadException: Could not load file or assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.'..."
 
-一个可能的原因是您的自承载集成运行时未正确安装或升级。 建议下载并重新安装最新的自承载集成运行时。 有关详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md#installation-best-practices)
+One potential cause is your Self-Hosted integration runtime is not installed or upgraded properly. Suggest to download and reinstall the latest Self-hosted integration runtime. More detail can be found at [Create and configure a self-hosted integration runtime](create-self-hosted-integration-runtime.md#installation-best-practices)
 
-### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>错误消息："请求元数据时必须建立连接。 如果正在脱机工作，请取消选中 "SSIS" 菜单上的 "脱机工作"，以启用连接 "
-
-* 可能的原因和建议的操作：
-  * 如果在执行日志中还有一条警告消息 "该组件不支持使用连接管理器和 ConnectByProxy 值设置 true"，这意味着在尚未支持 "ConnectByProxy" 的组件上使用了连接管理器。 可在[将自承载 IR 配置为 ADF 中 Azure-SSIS IR 的代理中](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)找到支持的组件
-  * 可在[SSMS 报表](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 "SSIS 包执行" 活动中指定的日志文件夹中找到执行日志。
-  * vNet 还可用于作为替代方法访问本地数据。 在[将 AZURE SSIS 集成运行时加入到虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)中可以找到更多详细信息
-
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"："SSIS 执行程序退出代码：-1. \ n"、"LogLocation"： "...\\SSISTelemetryExecutionLog...\\"，" effectiveIntegrationRuntime "：" . "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"\\
-
-请确保在C++自承载集成运行时计算机上安装了 Visual 运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
-
-### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>意外触发多个包执行
+### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Error message: "A connection is required when requesting metadata. If you are working offline, uncheck Work Offline on the SSIS menu to enable the connection"
 
 * 可能的原因和建议的操作：
-  * ADF 存储过程活动或查找活动用于触发 SSIS 包的执行。 T-sql 命令可能会遇到暂时性问题，并触发重新运行，这将导致多个包执行。
-  * 使用 ExecuteSSISPackage 活动，以确保不会重新运行包执行，除非用户在活动中设置了重试计数。 详细信息可在[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-  * 优化 t-sql 命令，以便能够通过检查是否已触发执行来重新运行
+  * If there is also a warning message "The component does not support using connection manager with ConnectByProxy value setting true“ in the execution log, this means a connection manager is used on a component which hasn't supported "ConnectByProxy" yet. The supported components can be found at [Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)
+  * Execution log can be found in [SSMS report](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) or in the log folder you specified in SSIS package execution activity.
+  * vNet can also be used to access on-premises data as an alternative. More detail can be found at [Join an Azure-SSIS integration runtime to a virtual network](join-azure-ssis-integration-runtime-virtual-network.md)
 
-### <a name="package-execution-takes-too-long"></a>包执行时间太长
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Error message: "Staging task status: Failed. Staging task error: ErrorCode: 2906, ErrorMessage: Package execution failed., Output: {"OperationErrorMessages": "SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
 
-下面是可能的原因和建议的操作：
+Make sure Visual C++ runtime is installed on Self-Hosted integration runtime machine. More detail can be found at [Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 
-* 在 SSIS Integration Runtime 中计划了过多的包执行。 所有这些执行将在队列中等待发生。
-  * 使用以下公式确定最大值：
+### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Multiple Package executions are triggered unexpectedly
 
-    每个 IR 的最大并行执行计数 = 节点计数 * 每个节点的最大并行执行数
-  * 若要了解如何设置节点计数以及每个节点的最大并行执行数，请参阅[在 Azure 数据工厂中创建 Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md)。
-* SSIS Integration Runtime 已停止或处于不正常状态。 若要了解如何检查 SSIS Integration Runtime 状态和错误，请参阅 [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。
+* 可能的原因和建议的操作：
+  * ADF stored procedure activity or Lookup activity are used to trigger SSIS package execution. The t-sql command may hit transient issue and trigger the rerun which would cause multiple package executions.
+  * Use ExecuteSSISPackage activity instead which ensures package execution won’t rerun unless user set retry count in activity. Detail can be found at [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Refine your t-sql command to be able to rerun by checking if an execution has already been triggered
 
-我们还建议在“常规”选项卡上设置超时：![在“常规”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)。
+### <a name="package-execution-takes-too-long"></a>Package execution takes too long
 
-### <a name="poor-performance-in-package-execution"></a>包的执行性能不佳
+Here are potential causes and recommended actions:
+
+* Too many package executions have been scheduled on the SSIS integration runtime. All these executions will be waiting in a queue for their turn.
+  * Determine the maximum by using this formula:
+
+    Max Parallel Execution Count per IR = Node Count * Max Parallel Execution per Node
+  * To learn how to set the node count and maximum parallel execution per node, see [Create an Azure-SSIS integration runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md).
+* The SSIS integration runtime is stopped or has an unhealthy status. To learn how to check the SSIS integration runtime status and errors, see [Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+
+We also recommend that you set a timeout on the **General** tab: ![Set properties on the General tab](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png).
+
+### <a name="poor-performance-in-package-execution"></a>Poor performance in package execution
 
 请尝试以下操作：
 
-* 确保 SSIS Integration Runtime 与数据源和目标位于同一区域。
+* Make sure the SSIS integration runtime is in the same region as the data source and destination.
 
-* 将包执行的日志记录级别设置为“性能”，以收集执行中每个组件的持续时间信息。 有关详细信息，请参阅 [Integration Services (SSIS) 日志记录](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging)。
+* Set the logging level of package execution to **Performance** to collect duration information for each component in the execution. For details, see [Integration Services (SSIS) logging](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
 
-* 在 Azure 门户中检查 IR 节点性能：
-  * 有关如何监视 SSIS Integration Runtime 的信息，请参阅 [Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。
-  * 可以查看 Azure 门户中数据工厂的指标来查找 SSIS Integration Runtime 的 CPU/内存历史记录。
-    ![监视 SSIS Integration Runtime 的指标](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)
+* Check IR node performance in the Azure portal:
+  * For information about how to monitor the SSIS integration runtime, see [Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+  * You can find CPU/memory history for the SSIS integration runtime by viewing the metrics of the data factory in the Azure portal.
+    ![Monitor metrics of the SSIS integration runtime](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)

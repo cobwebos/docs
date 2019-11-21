@@ -1,75 +1,71 @@
 ---
 title: Azure Functions 的连续部署
-description: 使用 Azure App Service 的持续部署功能发布函数。
-author: ggailey777
-manager: gwallace
+description: Use the continuous deployment features of Azure App Service to publish your functions.
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: glenga
-ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091183"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230901"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 
-通过使用[源代码管理集成](functions-deployment-technologies.md#source-control)，你可以使用 Azure Functions 连续部署代码。 源代码管理集成启用了一个工作流，其中代码更新会触发到 Azure 的部署。 如果你不熟悉 Azure Functions，请通过查看[Azure Functions 概述](functions-overview.md)开始。
+You can use Azure Functions to deploy your code continuously by using [source control integration](functions-deployment-technologies.md#source-control). Source control integration enables a workflow in which a code update triggers deployment to Azure. If you're new to Azure Functions, get started by reviewing the [Azure Functions overview](functions-overview.md).
 
-对于您集成多个和频繁发布的项目，持续部署是一个不错的选择。 当你使用连续部署时，你可以为你的代码维护一个真实来源，使团队可以轻松地进行协作。 你可以从以下源代码位置 Azure Functions 中配置连续部署：
+Continuous deployment is a good option for projects where you integrate multiple and frequent contributions. When you use continuous deployment, you maintain a single source of truth for your code, which allows teams to easily collaborate. You can configure continuous deployment in Azure Functions from the following source code locations:
 
 * [Azure Repos](https://azure.microsoft.com/services/devops/repos/)
 * [GitHub](https://github.com)
 * [Bitbucket](https://bitbucket.org/)
 
-Azure 中函数的部署单位是 function app。 函数应用中的所有函数同时部署。 启用连续部署后，将 Azure 门户中的函数代码访问配置为*只读*，因为诚实源设置为其他位置。
+The unit of deployment for functions in Azure is the function app. All functions in a function app are deployed at the same time. After you enable continuous deployment, access to function code in the Azure portal is configured as *read-only* because the source of truth is set to be elsewhere.
 
-## <a name="requirements-for-continuous-deployment"></a>连续部署的要求
+## <a name="requirements-for-continuous-deployment"></a>Requirements for continuous deployment
 
-若要成功进行连续部署，你的目录结构必须与 Azure Functions 需要的基本文件夹结构兼容。
+For continuous deployment to succeed, your directory structure must be compatible with the basic folder structure that Azure Functions expects.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 >[!NOTE]  
-> 对于在消耗计划中运行的 Linux 应用，尚不支持连续部署。 
+> Continuous deployment is not yet supported for Linux apps running on a Consumption plan. 
 
-## <a name="credentials"></a>设置连续部署
+## <a name="credentials"></a>Set up continuous deployment
 
-若要为现有函数应用配置连续部署，请完成以下步骤。 这些步骤演示了与 GitHub 存储库的集成，但类似的步骤适用于 Azure Repos 或其他源代码存储库。
+To configure continuous deployment for an existing function app, complete these steps. The steps demonstrate integration with a GitHub repository, but similar steps apply for Azure Repos or other source code repositories.
 
-1. 在[Azure 门户](https://portal.azure.com)的函数应用的 "**部署中心** > 选择"**平台功能**"。
+1. In your function app in the [Azure portal](https://portal.azure.com), select **Platform features** > **Deployment Center**.
 
-    ![打开部署中心](./media/functions-continuous-deployment/platform-features.png)
+    ![Open Deployment Center](./media/functions-continuous-deployment/platform-features.png)
 
-2. 在**部署中心**中，选择 " **GitHub**"，并选择 "**授权**"。 如果已授权 GitHub，请选择 "**继续**"。 
+2. In **Deployment Center**, select **GitHub**, and then select **Authorize**. If you've already authorized GitHub, select **Continue**. 
 
-    ![Azure App Service 部署中心](./media/functions-continuous-deployment/github.png)
+    ![Azure App Service Deployment Center](./media/functions-continuous-deployment/github.png)
 
-3. 在 GitHub 中，选择 "**授权 AzureAppService** " 按钮。 
+3. In GitHub, select the **Authorize AzureAppService** button. 
 
-    ![授权 Azure App Service](./media/functions-continuous-deployment/authorize.png)
+    ![Authorize Azure App Service](./media/functions-continuous-deployment/authorize.png)
     
-    在 Azure 门户的**部署中心**中，选择 "**继续**"。
+    In **Deployment Center** in the Azure portal, select **Continue**.
 
-4. 选择以下生成提供程序之一：
+4. Select one of the following build providers:
 
-    * **应用服务生成服务**：在不需要生成或需要泛型生成时最好。
-    * **Azure Pipelines （预览版）** ：当需要更好地控制生成时，最好这样做。 此提供程序当前处于预览阶段。
+    * **App Service build service**: Best when you don't need a build or if you need a generic build.
+    * **Azure Pipelines (Preview)** : Best when you need more control over the build. This provider currently is in preview.
 
-    ![选择生成提供程序](./media/functions-continuous-deployment/build.png)
+    ![Select a build provider](./media/functions-continuous-deployment/build.png)
 
-5. 配置特定于指定的源代码管理选项的信息。 对于 GitHub，必须输入或选择 "**组织**"、"**存储库**" 和 "**分支**" 的值。 这些值基于您的代码的位置。 然后选择“继续”。
+5. Configure information specific to the source control option you specified. For GitHub, you must enter or select values for **Organization**, **Repository**, and **Branch**. The values are based on the location of your code. 然后选择“继续”。
 
     ![配置 GitHub](./media/functions-continuous-deployment/github-specifics.png)
 
-6. 查看所有详细信息，然后选择 "**完成**" 以完成部署配置。
+6. Review all details, and then select **Finish** to complete your deployment configuration.
 
-    ![摘要](./media/functions-continuous-deployment/summary.png)
+    ![总结](./media/functions-continuous-deployment/summary.png)
 
-完成此过程后，指定源中的所有代码都将部署到你的应用。 此时，部署源中的更改会触发将这些更改部署到 Azure 中的函数应用。
+When the process is finished, all code from the specified source is deployed to your app. At that point, changes in the deployment source trigger a deployment of those changes to your function app in Azure.
 
 ## <a name="deployment-scenarios"></a>部署方案
 
@@ -77,12 +73,12 @@ Azure 中函数的部署单位是 function app。 函数应用中的所有函数
 
 ### <a name="move-existing-functions-to-continuous-deployment"></a>将现有函数移至连续部署
 
-如果已在[Azure 门户](https://portal.azure.com)中编写函数，并且想要在切换到连续部署之前下载应用程序的内容，请转到 function app 的 "**概述**" 选项卡。 选择 "**下载应用内容**" 按钮。
+If you've already written functions in the [Azure portal](https://portal.azure.com) and you want to download the contents of your app before you switch to continuous deployment, go to the **Overview** tab of your function app. Select the **Download app content** button.
 
-![下载应用内容](./media/functions-continuous-deployment/download.png)
+![Download app content](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> 配置持续集成后，不能再在函数门户中编辑源文件。
+> After you configure continuous integration, you can no longer edit your source files in the Functions portal.
 
 ## <a name="next-steps"></a>后续步骤
 

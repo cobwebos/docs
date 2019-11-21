@@ -1,186 +1,186 @@
 ---
-title: 管理 Azure 成本管理中的 AWS 成本和使用情况
-description: 本文将帮助你了解如何在成本管理中使用成本分析和预算来管理你的 AWS 成本和使用情况。
+title: Manage AWS costs and usage in Azure Cost Management
+description: This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 04f607d7f592112013bcc6cf4cbd61d42a8116a8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338899"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230163"
 ---
-# <a name="manage-aws-costs-and-usage-in-azure"></a>管理 Azure 中的 AWS 成本和使用情况
+# <a name="manage-aws-costs-and-usage-in-azure"></a>Manage AWS costs and usage in Azure
 
-为 Azure 成本管理设置并配置 AWS 成本和使用情况报告集成后，便可以开始管理 AWS 成本和使用情况。 本文将帮助你了解如何在成本管理中使用成本分析和预算来管理你的 AWS 成本和使用情况。
+After you've set up and configured AWS Cost and Usage report integration for Azure Cost Management, you're ready to start managing your AWS costs and usage. This article helps you understand how to use cost analysis and budgets in Cost Management to manage your AWS costs and usage.
 
-如果尚未配置集成，请参阅[设置和配置 AWS 使用情况报表集成](aws-integration-set-up-configure.md)。
+If you haven't already configured the integration, see [Set up and configure AWS Usage report integration](aws-integration-set-up-configure.md).
 
-_开始之前_:如果不熟悉成本分析，请参阅[利用成本分析快速入门探索和分析成本](quick-acm-cost-analysis.md)。 如果不熟悉 Azure 中的预算，请参阅[创建和管理 azure 预算](tutorial-acm-create-budgets.md)教程。
+_Before you begin_: If you're unfamiliar with cost analysis, see the [Explore and analyze costs with Cost analysis](quick-acm-cost-analysis.md) quickstart. And, if you're unfamiliar with budgets in Azure, see the [Create and manage Azure budgets](tutorial-acm-create-budgets.md) tutorial.
 
-## <a name="view-aws-costs-in-cost-analysis"></a>查看成本分析中的 AWS 成本
+## <a name="view-aws-costs-in-cost-analysis"></a>View AWS costs in cost analysis
 
-AWS 成本在以下范围内可用于成本分析：
+AWS costs are available in Cost Analysis in the following scopes:
 
-- 管理组下的 AWS 链接帐户
-- AWS 链接帐户成本
-- AWS 合并帐户成本
+- AWS linked accounts under a management group
+- AWS linked account costs
+- AWS consolidated account costs
 
-下一部分介绍如何使用作用域，以便查看每个作用域的成本和使用情况数据。
+The next sections describe how to use the scopes so that you see cost and usage data for each one.
 
-### <a name="view-aws-linked-accounts-under-a-management-group"></a>查看管理组下的 AWS 链接帐户
+### <a name="view-aws-linked-accounts-under-a-management-group"></a>View AWS linked accounts under a management group
 
-使用管理组范围查看成本是查看来自不同订阅和链接帐户的聚合成本的唯一方法。 使用管理组可提供跨云视图。
+Viewing costs by using the management group scope is the only way to see aggregated costs coming from different subscriptions and linked accounts. Using a management group provides a cross-cloud view.
 
-在 "成本分析" 中，打开 "作用域选取器" 并选择包含 AWS 链接帐户的管理组。 下面是 Azure 门户中的示例图像：
+In cost analysis, open the scope picker and select the management group that holds your AWS linked accounts. Here's an example image in the Azure portal:
 
-!["选择作用域" 视图的示例](./media/aws-integration-manage/select-scope01.png)
-
-
-
-下面是一个示例，显示了按提供程序（Azure 和 AWS）分组的成本分析中的管理组成本。
-
-![显示成本分析中每个季度的 Azure 和 AWS 成本的示例](./media/aws-integration-manage/cost-analysis-aws-azure.png)
-
-### <a name="view-aws-linked-account-costs"></a>查看 AWS 链接帐户成本
-
-若要查看 AWS 链接帐户成本，请打开作用域选取器并选择 "AWS" 链接帐户。 请注意，链接的帐户与 AWS 连接器中定义的管理组相关联。
-
-下面是一个示例，演示如何选择 AWS 链接的帐户范围。
-
-!["选择作用域" 视图的示例](./media/aws-integration-manage/select-scope02.png)
+![Example of the Select scope view](./media/aws-integration-manage/select-scope01.png)
 
 
 
-### <a name="view-aws-consolidated-account-costs"></a>查看 AWS 合并帐户成本
+Here's an example showing the management group cost in cost analysis, grouped by Provider (Azure and AWS).
 
-若要查看 AWS 合并帐户成本，请打开作用域选取器并选择 "AWS" 合并帐户。 下面是一个示例，演示如何选择 AWS 合并帐户范围。
+![Example showing Azure and AWS costs for a quarter in cost analysis](./media/aws-integration-manage/cost-analysis-aws-azure.png)
 
-!["选择作用域" 视图的示例](./media/aws-integration-manage/select-scope03.png)
+### <a name="view-aws-linked-account-costs"></a>View AWS linked account costs
+
+To view AWS link account costs, open the scope picker and select the AWS linked account. Note that linked accounts are associated to a management group, as defined in the AWS connector.
+
+Here's an example that shows selecting an AWS linked account scope.
+
+![Example of the Select scope view](./media/aws-integration-manage/select-scope02.png)
 
 
 
-此作用域提供与 AWS 合并帐户关联的所有 AWS 链接帐户的聚合视图。 下面是一个示例，显示了按服务名称分组的 AWS 合并帐户的成本。
+### <a name="view-aws-consolidated-account-costs"></a>View AWS consolidated account costs
 
-![显示成本分析中 AWS 合并成本的示例](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+To view AWS consolidated account costs, open the scope picker and select the AWS consolidated account. Here's an example that shows selecting an AWS consolidated account scope.
 
-### <a name="dimensions-available-for-filtering-and-grouping"></a>可用于筛选和分组的维度
+![Example of the Select scope view](./media/aws-integration-manage/select-scope03.png)
 
-下表描述了在成本分析中可用于分组和筛选的维度。
 
-| 维度 | Amazon 当前标头 | 范围 | 注释 |
+
+This scope provides an aggregated view of all AWS linked accounts associated with the AWS consolidated account. Here's an example showing costs for an AWS consolidated account, grouped by service name.
+
+![Example showing AWS consolidated costs in cost analysis](./media/aws-integration-manage/cost-analysis-aws-consolidated.png)
+
+### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimensions available for filtering and grouping
+
+The following table describes dimensions available to group and filter by in cost analysis.
+
+| 维度 | Amazon CUR header | 范围 | 注释 |
 | --- | --- | --- | --- |
-| 可用性区域 | lineitem/AvailabilityZone | All |   |
-| Location | 产品/区域 | All |   |
-| 计数 |   | All |   |
-| 计量类别 | lineItem/ProductCode | All |   |
-| 计量子类别 | lineitem/UsageType | All |   |
-| 操作 | lineItem/Operation | All |   |
-| Resource | lineItem/ResourceId | All |   |
-| 资源类型 | product/instanceType | All | 如果 product/instanceType 为 null，则使用 lineItem/UsageType。 |
-| ResourceGuid | 不可用 | All | Azure 计量器 GUID。 |
-| 服务名 | product/ProductName | All | 如果 product/ProductName 为 null，则使用 lineItem/ProductCode。 |
+| 可用性区域 | lineitem/AvailabilityZone | 所有 |   |
+| Location | product/Region | 所有 |   |
+| 计量 |   | 所有 |   |
+| Meter category | lineItem/ProductCode | 所有 |   |
+| Meter subcategory | lineitem/UsageType | 所有 |   |
+| Operation | lineItem/Operation | 所有 |   |
+| 资源 | lineItem/ResourceId | 所有 |   |
+| 资源类型 | product/instanceType | 所有 | If product/instanceType is null, lineItem/UsageType is used. |
+| ResourceGuid | N/A | 所有 | Azure meter GUID. |
+| 服务名称 | product/ProductName | 所有 | If product/ProductName is null, lineItem/ProductCode is used. |
 | 服务层 |   |   |   |
-| 订阅 ID | lineItem/UsageAccountId | 合并的帐户和管理组 |   |
-| 订阅名称 | 不可用 | 合并的帐户和管理组 | 帐户名称是使用 AWS 组织 API 收集的。 |
-| 标记 | resourceTags/\* | All | 将从用户定义的标记中删除_用户：_ 前缀以允许跨云标记。 _Aws：_ 前缀保持不变。 |
-| 结算帐户 ID | bill/PayerAccountId | 管理组 |   |
-| 计费帐户名 | 不可用 | 管理组 | 帐户名称是使用 AWS 组织 API 收集的。 |
-| 提供商 | 不可用 | 管理组 | AWS 或 Azure。 |
+| 订阅 ID | lineItem/UsageAccountId | Consolidated account and management group |   |
+| 订阅名称 | N/A | Consolidated account and management group | Account names are collected using the AWS Organization API. |
+| 标记 | resourceTags/\* | 所有 | The _user:_ prefix is removed from user-defined tags to allow cross-cloud tags. The _aws:_ prefix is left intact. |
+| Billing account ID | bill/PayerAccountId | 管理组 |   |
+| Billing account name | N/A | 管理组 | Account names are collected using the AWS Organization API. |
+| 提供商 | N/A | 管理组 | Either AWS or Azure. |
 
-## <a name="set-budgets-on-aws-scopes"></a>在 AWS 范围上设置预算
+## <a name="set-budgets-on-aws-scopes"></a>Set budgets on AWS scopes
 
-使用预算在你的组织中主动管理成本和促进责任。 预算在 AWS 合并帐户和 AWS 链接帐户范围内设置。 下面是 "成本管理" 中显示的 AWS 合并帐户的预算示例：
+Use budgets to proactively manage costs and drive accountability in your organization. Budgets are set on the AWS consolidated account and AWS linked account scopes. Here's an example of budgets for an AWS consolidated account shown in Cost Management:
 
-![显示 AWS 合并帐户预算的示例](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
+![Example showing budgets for an AWS consolidated account](./media/aws-integration-manage/budgets-aws-consolidated-account01.png)
 
-## <a name="aws-data-collection-process"></a>AWS 数据收集过程
+## <a name="aws-data-collection-process"></a>AWS data collection process
 
-设置 AWS 连接器后，将启动数据收集和发现进程。 收集所有使用数据可能需要几个小时。 持续时间取决于：
+After setting up the AWS connector, data collection and discovery processes start. It might take few hours to collect all usage data. The duration depends on:
 
-- 处理 AWS S3 存储桶中的当前文件所需的时间。
-- 创建 AWS 合并帐户和 AWS 链接帐户范围所需的时间。
-- AWS 在 S3 存储桶中写入成本和使用情况报表文件的时间和频率
+- The time needed to process the CUR files that are in the AWS S3 bucket.
+- The time needed to create the AWS Consolidated account and AWS Linked account scopes.
+- The time and frequency of AWS are writing the Cost and Usage Report files in the S3 bucket
 
-## <a name="aws-integration-pricing"></a>AWS 集成定价
+## <a name="aws-integration-pricing"></a>AWS integration pricing
 
-每个 AWS 连接器获取90免费试用期。 公共预览期间，不收取任何费用。
+Each AWS connector gets 90 free trial days. During Public Preview, there is no charge.
 
-定价为 AWS 每月费用的 1%。 每个月都会根据上个月的开票成本收费。
+The list price is 1% of your AWS monthly costs. Each month you are charged based on your invoiced costs from the previous month.
 
-访问 AWS Api 可能会产生额外的成本。
+Accessing AWS APIs may incur additional costs.
 
-## <a name="aws-integration-limitations"></a>AWS 集成限制
+## <a name="aws-integration-limitations"></a>AWS integration limitations
 
-- 成本管理不支持包含多种货币类型的成本报表。 如果选择具有多个货币的作用域，将显示一条错误消息。
-- 云连接器不支持 AWS GovCloud （US）、AWS Gov 或 AWS 中国。
-- 成本管理只显示 AWS 的_使用成本_。 目前尚不支持税、支持、退款、RI、信用额度或其他任何费用类型。
+- Cost Management doesn't support cost reports that contain multiple currency types. An error message is shown if you select a scope that has multiple currencies.
+- Cloud connectors don't support AWS GovCloud (US), AWS Gov, or AWS China.
+- Cost Management shows AWS _usage costs_ only. Tax, support, refunds, RI, credits or any other charge types aren't supported yet.
 
-## <a name="troubleshooting-aws-integration"></a>AWS 集成故障排除
+## <a name="troubleshooting-aws-integration"></a>Troubleshooting AWS integration
 
-使用以下故障排除信息来解决常见问题。
+Use the following troubleshooting information to resolve common problems.
 
-### <a name="no-permission-to-aws-linked-accounts"></a>无权 AWS 链接的帐户
+### <a name="no-permission-to-aws-linked-accounts"></a>No permission to AWS Linked accounts
 
-**错误代码：** _未经许可_
+**Error code:** _Unauthorized_
 
-可以通过两种方式获取访问 AWS 链接帐户成本的权限：
+There are two ways to get permissions to access AWS linked accounts costs:
 
-- 获取对具有 AWS 链接帐户的管理组的访问权限。
-- 让用户授予你 AWS 链接帐户的权限。
+- Get access to the management group that has the AWS Linked accounts.
+- Have someone give you permission to the AWS linked account.
 
-默认情况下，AWS 连接器创建者是连接器创建的所有对象的所有者。 包括 AWS 合并帐户和 AWS 链接帐户。
+By default, the AWS connector creator is the owner of all the objects that the connector created. Including, the AWS consolidated account and the AWS linked account.
 
-为了能够验证连接器设置，你至少需要一个参与者角色，读取者无法验证连接器设置
+In order to be able to Verify the connector settings you will need at least a contributor role, reader can not Verify connector settings
 
-### <a name="collection-failed-with-assumerole"></a>收集失败，出现 AssumeRole
+### <a name="collection-failed-with-assumerole"></a>Collection failed with AssumeRole
 
-**错误代码：** _FailedToAssumeRole_
+**Error code:** _FailedToAssumeRole_
 
-此错误表示成本管理无法调用 AWS AssumeRole API。 出现此问题的原因可能是角色定义有问题。 验证是否满足以下条件：
+This error means that Cost Management is unable to call the AWS AssumeRole API. This problem can happen because of an issue with the role definition. Verify that the following conditions are true:
 
-- 外部 ID 与角色定义和连接器定义中的 ID 相同。
-- 角色类型设置为**属于你或第三方的其他 AWS 帐户。**
-- "**需要 MFA** " 选项已清除。
-- AWS 角色中受信任的 AWS 帐户为_432263259397_。
+- The external ID is the same as the one in the role definition and the connector definition.
+- The role type is set to **Another AWS account Belonging to you or 3rd party.**
+- The **Require MFA** choice is cleared.
+- The trusted AWS account in the AWS Role is _432263259397_.
 
-### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>收集失败，拒绝访问-当前报表定义
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Collection failed with Access Denied - CUR report definitions
 
-**错误代码：** _AccessDeniedReportDefinitions_ 
+**Error code:** _AccessDeniedReportDefinitions_ 
 
-此错误表示成本管理无法查看成本和使用情况报告定义。 此权限用来验证 Azure 成本管理是否按预期定义了当前的。 请参阅[在 AWS 中创建成本和使用情况报表](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)。
+This error means that Cost Management is unable to see the Cost and Usage report definitions. This permission is used to validate that the CUR is defined as expected by Azure Cost Management. See [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
-### <a name="collection-failed-with-access-denied---list-reports"></a>收集失败，拒绝访问-列表报告
+### <a name="collection-failed-with-access-denied---list-reports"></a>Collection failed with Access Denied - List reports
 
-**错误代码：** _AccessDeniedListReports_ 
+**Error code:** _AccessDeniedListReports_ 
 
-此错误表示成本管理无法列出当前所在的 S3 存储桶中的对象。 AWS IAM 策略要求对 bucket 和 bucket 中的对象具有权限。 请参阅[在 AWS 中创建角色和策略](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)。
+This error means that Cost Management is unable to list the object in the S3 bucket where the CUR is located. AWS IAM policy requires a permission on the bucket and on the objects in the bucket. See [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
 
-### <a name="collection-failed-with-access-denied---download-report"></a>收集失败，拒绝访问-下载报表 
+### <a name="collection-failed-with-access-denied---download-report"></a>Collection failed with Access Denied - Download report 
 
-**错误代码：** _AccessDeniedDownloadReport_ 
+**Error code:** _AccessDeniedDownloadReport_ 
 
-此错误表示成本管理无法访问和下载 Amazon S3 存储桶中存储的当前文件。 确保附加到该角色的 AWS JSON 策略类似于在[AWS 中创建角色和策略](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)部分底部显示的示例。
+This error means that Cost Management is unable to access and download the CUR files stored in the Amazon S3 bucket. Make sure that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
 
-### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>收集失败，因为找不到成本和使用情况报告
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Collection failed since we did not find the Cost and Usage Report
 
-**错误代码：** _FailedToFindReport_
+**Error code:** _FailedToFindReport_
 
-此错误表示成本管理找不到连接器中定义的成本和使用情况报告。 请确保它未被删除，并且附加到该角色的 AWS JSON 策略类似于在[AWS 中创建角色和策略](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)部分底部显示的示例。
+This error means that Cost Management can't find the Cost and Usage report that was defined in the connector. Make sure it isn't deleted and that the AWS JSON policy attached to the role resembles the example shown at the bottom of the [Create a role and policy in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) section.
 
-### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>由于成本和使用情况报告定义不匹配，无法创建或验证连接器
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Unable to create or verify connector due to Cost and Usage Report definitions mismatch
 
-**错误代码：** _ReportIsNotValid_
+**Error code:** _ReportIsNotValid_
 
-此错误与 AWS 成本和使用情况报告的定义有关，我们需要此报表的特定设置，请参阅在[AWS 中创建成本和使用情况报表中](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)的要求。
+This error relates to the definition of AWS Cost and Usage Report, we require specific settings for this report, see the requirements in [Create a Cost and Usage report in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果尚未配置具有管理组的 Azure 环境，请参阅[管理组的初始设置](../governance/management-groups/overview.md#initial-setup-of-management-groups)。
+- If you haven't already configured your Azure environment with management groups, see [Initial setup of management groups](../governance/management-groups/overview.md#initial-setup-of-management-groups).

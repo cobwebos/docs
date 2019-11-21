@@ -1,22 +1,16 @@
 ---
 title: 如何排查 Azure Functions 运行时无法访问的问题。
 description: 了解如何排查存储帐户无效的问题。
-services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
-ms.service: azure-functions
-ms.workload: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: d5959acc7719e2b02d529bca8261bc09d5b93634
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 212f10bd33479e5a9f7244d5b2090c0324f937c2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085332"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226757"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>如何排查“Azure Functions 运行时无法访问”的问题
 
@@ -29,7 +23,7 @@ ms.locfileid: "70085332"
 ### <a name="summary"></a>总结
 当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，Function App 无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 我们将通过四种最常见的错误事例来说明如何识别以及如何解决每种事例。
 
 1. 存储帐户已删除
@@ -54,7 +48,7 @@ ms.locfileid: "70085332"
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
-* 必填
+* 需要
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -65,7 +59,7 @@ ms.locfileid: "70085332"
 ### <a name="guidance"></a>指南
 
 * 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，Function 将中断。
-* 在自动部署过程中，请勿修改这些设置。
+* Do not modify these settings as part of automated deployments.
 * 必须在创建时提供这些设置并使其有效。 不包含这些设置的自动部署将导致应用程序无法运行，即使事后添加了这些设置也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效

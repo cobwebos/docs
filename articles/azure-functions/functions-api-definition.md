@@ -1,26 +1,22 @@
 ---
-title: Azure Functions 中的 OpenAPI 元数据 | Microsoft Docs
+title: OpenAPI metadata in Azure Functions
 description: Azure Functions 中的 OpenAPI 支持概述
-services: functions
 author: alexkarcher-msft
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 00dedd069914384a1883a54bfb433857286fb49c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097578"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227418"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
 Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一项预览版功能，可用于在 Function App 中编写 OpenAPI 2.0 定义。 随后可使用 Function App 托管该文件。
 
 > [!IMPORTANT]
-> OpenAPI 预览功能目前仅在 1.x 运行时可用。 若要了解如何创建 1.x 函数应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
+> OpenAPI 预览功能目前仅在 1.x 运行时可用。 要了解如何创建 1.x 功能应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
 
 通过 [OpenAPI 元数据](https://swagger.io/)，大量其他软件可使用托管 REST API 的函数。 此软件包括 Microsoft 产品/服务（如 PowerApps 和 [Azure 应用服务的 API 应用功能](../app-service/overview.md)）、第三方开发人员工具（如 [Postman](https://www.getpostman.com/docs/importing_swagger)，以及[更多大量的程序包](https://swagger.io/tools/)。
 
@@ -44,7 +40,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="templates"></a>可用模板
 
-|姓名| 描述 |
+|名称| 描述 |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 
@@ -56,7 +52,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 |:----|:-----|:-----|
 |[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” > “应用服务设置” > “概述” > “URL”|*不存在*
 |[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法”|绑定：路由
-|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”|绑定：方法
+|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”|绑定︰方法
 |[安全性](https://swagger.io/specification/#security-scheme-object-112)|密钥|*不存在*|
 |operationID*|路由 + 允许的动作|路由 + 允许的动作|
 

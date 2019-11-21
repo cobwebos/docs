@@ -1,29 +1,23 @@
 ---
-title: 使用 Azure Functions 执行数据库清理任务 | Microsoft Docs
+title: Use Azure Functions to perform a database clean up task
 description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: glenga
-ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815979"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230380"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例需要[启用公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
+This article shows you how to use Azure Functions to create a scheduled job that connects to an Azure SQL Database or Azure SQL Managed Instance. 该函数代码用于清除数据库表中的行。 The new C# function is created based on a pre-defined timer trigger template in Visual Studio 2019. 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 For Azure SQL Managed Instance you need to [enable public endpoint](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) to be able to connect from Azure Functions. 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 + 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 
@@ -39,7 +33,7 @@ ms.locfileid: "71815979"
 
 1. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
 
-1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。 对于 Azure SQL 托管实例为公用终结点复制连接字符串。
+1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。 For Azure SQL Managed Instance copy connection string for public endpoint.
 
     ![复制 ADO.NET 连接字符串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -49,7 +43,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 但前提是必须已将应用发布到 Azure。 若尚未执行此操作，[请将函数应用发布到 Azure ](functions-develop-vs.md#publish-to-azure)。
 
-1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “管理应用程序设置...”。选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`然后选择“确认”。
+1. In Solution Explorer, right-click the function app project and choose **Publish** > **Manage application settings...** . Select **Add setting**, in **New app setting name**, type `sqldb_connection`, and select **OK**.
 
     ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -63,7 +57,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
 
-1. 在 Visual Studio 2019 中打开本地函数应用项目。
+1. Open your local function app project in Visual Studio 2019.
 
 1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“管理 NuGet 包”。
 

@@ -1,6 +1,6 @@
 ---
-title: 访问和使用 "我的应用" 门户上的应用-Azure Active Directory |Microsoft Docs
-description: 了解如何访问 "我的应用" 门户。
+title: Locate & use apps on the My Apps portal - Azure AD
+description: Learn how to find the My Apps portal and then how to access your organization's cloud-based apps.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68383136"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233182"
 ---
-# <a name="access-and-use-apps-on-the-my-apps-portal"></a>访问和使用 "我的应用" 门户上的应用
+# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>Locate and use your organization's cloud-based apps on the My Apps portal
 
 可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
@@ -31,135 +31,135 @@ ms.locfileid: "68383136"
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
-可以从以下任何 web 浏览器转到 "**我的应用**" 门户：
+You can get to the **My Apps** portal from any of the following web browsers:
 
 - Google Chrome
 
-- Mozilla Firefox，版本26.0 或更高版本
+- Mozilla Firefox, version 26.0 or later
 
 - Microsoft Edge
 
-- Internet Explorer 第11版（有限支持）
+- Internet Explorer, version 11 (limited support)
 
-## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>下载并安装 "我的应用" 安全登录扩展
+## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Download and install the My Apps Secure Sign-in Extension
 
-如果系统提示，请下载并安装 "我的应用" 安全登录扩展。 此扩展可帮助你启动组织的任何需要你使用单一登录过程的云应用。 如果你的组织已为你设置了单一登录，则会自动安装该扩展，并且你可以跳过此部分。
+Download and install the My Apps Secure Sign-in Extension, if you're prompted. This extension helps you start any of your organization's cloud apps that require you to use a single sign-on process. If your organization has already set you up for single sign-on, the extension is installed automatically and you can skip this section.
 
-此扩展可帮助你：
+This extension helps you:
 
-- 直接从登录页登录到应用。
+- Sign in directly to apps from the sign-in page.
 
-- 使用 "**快速搜索**" 功能启动任何应用。
+- Start any apps using the **Quick search** feature.
 
-- 请参阅**最近使用**的部分中最近使用过的应用。
+- See the last apps you used in the **Recently Used** section.
 
-- 远程使用[应用程序代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)时使用内部公司 url。
+- Use internal company URLs while remote with [Application Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
 
-### <a name="to-download-and-install-the-extension"></a>下载并安装扩展
+### <a name="to-download-and-install-the-extension"></a>To download and install the extension
 
-基于你使用的浏览器下载并安装扩展：
+Download and install the extension, based on the browser you're using:
 
-- **Google Chrome。** 从 Chrome Web 应用商店中转到 "[我的应用安全登录扩展](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)功能"，然后选择 "**添加到 Chrome**"。
+- **Google Chrome.** From the Chrome Web Store, go to the [My Apps Secure Sign-in Extension](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) feature, and then select **Add to Chrome**.
 
-- **Mozilla Firefox**在 " **Firefox 外接程序**" 页上，中转到 "[我的应用安全登录扩展](https://addons.mozilla.org/firefox/addon/access-panel-extension/)功能"，然后选择 "**添加到 Firefox**"。
+- **Mozilla Firefox** From the **Firefox Add-ons** page, go to the [My Apps Secure Sign-in Extension](https://addons.mozilla.org/firefox/addon/access-panel-extension/) feature, and then select **Add to Firefox**.
 
-- **Microsoft Edge**在 Microsoft Store 中，转到 "[我的应用安全登录扩展](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)功能"，然后选择 "**获取**"。
+- **Microsoft Edge** From the Microsoft Store, go to the [My Apps Secure Sign-in Extension](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) feature, and then select **Get**.
 
-将在**地址**栏的右侧添加一个图标，让用户登录并自定义扩展。
+An icon is added to the right of your **Address** bar, letting you sign-in and customize the extension.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>使用扩展更改 "我的应用" 门户
-你可以选择要在 "**最近使用**" 部分中查看的应用数，并决定是否允许你的组织的内部 url 重定向。
+#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>To change your My Apps portal using the extension
+You can choose how many apps to view in the **Recently Used** section and decide whether to allow your organization's internal URLs to redirect.
 
-1. 选择 "新的我的应用" "**安全登录扩展**" 图标 ![Extension 在**地址**栏右侧 ](media/my-apps-portal/my-apps-portal-extension-icon.png)，然后选择 "**登录以开始**"。
+1. Select the new **My Apps Secure Sign-in Extension** icon ![Extension icon](media/my-apps-portal/my-apps-portal-extension-icon.png) to the right of your **Address** bar, and then select **Sign in to get started**.
 
-2. 右键单击 "**设置**" 图标 ![Settings "图标 ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)，然后选择"**设置**"。
+2. Right-click the **Settings** icon ![Settings icon](media/my-apps-portal/my-apps-portal-extension-settings-icon.png), and then select **Settings**.
 
-3. 在 "**设置**" 框中，选择你想要在门户上看到的最近应用的数量，以及是否允许你的组织的内部 url 重定向以便可以远程使用它们。
+3. In the **Settings** box, select the number of recent apps you want to see on the portal, and whether to allow your organization's internal URLs to redirect so you can use them remotely.
 
-    ![扩展的 "设置" 页，其中显示了可用的自定义](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
+    ![Settings page of the extension, showing the available customizations](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-## <a name="access-and-use-the-my-apps-portal-by-device"></a>通过设备访问和使用 "我的应用" 门户
-你可以从 Intune 管理的浏览器中访问和使用 "我的应用" 门户，也可以从 iOS 或 Android 移动设备访问和。
+## <a name="access-and-use-the-my-apps-portal-by-device"></a>Access and use the My Apps portal by device
+You can access and use the My Apps portal on your computer, from an Intune-managed browser, or from an iOS or Android mobile device.
 
-!["我的应用" 门户中的 "应用" 页](media/my-apps-portal/my-apps-portal-apps-page.png)
+![Apps page in the My Apps portal](media/my-apps-portal/my-apps-portal-apps-page.png)
 
-### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>在你的计算机上访问和使用 "我的应用" 门户
-如果你有权访问并使用组织的基于云的应用，可以通过 "**我的应用**" 门户获取这些应用。
+### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Access and use the My Apps portal on your computer
+If you have permission to access and use your organization's cloud-based apps, you can get to them through the **My Apps** portal.
 
 1. 登录到工作或学校帐户。
 
-2. 打开 web 浏览器并中转到 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. Open your web browser and go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-3. 从 "**应用**" 页中，选择要开始使用的应用。
+3. From the **Apps** page, select the app you want to start using.
 
-    此时会打开应用程序的新页面，可以在其中登录（如有必要）或开始使用应用。
+    A new page opens for the app, where you can sign-in (if necessary) or begin using the app.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>在 Intune 托管的浏览器中访问和使用 "我的应用" 门户
+### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Access and use the My Apps portal on an Intune-managed browser
 
-通过 iOS 和 Android 设备上的 Intune Managed Browser 查看和使用组织的应用。
+View and use your organization's apps from an Intune Managed Browser on your iOS and Android devices.
 
-1. 在移动设备上，从[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)和[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)下载并安装 Intune Managed Browser 应用。
+1. On your mobile device, download and install the Intune Managed Browser app from the [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) and the [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. 打开 Intune Managed Browser 应用，中转到 https://myapps.microsoft.com ，或者使用你的组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. Open the Intune Managed Browser app, go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-3. 从 "**应用**" 页中，选择要开始使用的应用。
+3. From the **Apps** page, select the app you want to start using.
 
-    此时会打开应用程序的新页面，可以在其中登录（如有必要）或开始使用应用。
+    A new page opens for the app, where you can sign-in (if necessary) or begin using the app.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>在 iOS 设备上访问和使用 "我的应用" 门户
+### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Access and use the My Apps portal on an iOS device
 
-查看并使用 iPhone 或 iPad 设备上的 **"我的应用**" 门户，运行 iOS 版本7或更高版本。 你还可以安装 "[我的应用" 移动应用](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)，以便在 iOS 设备上访问你的组织的应用。 
+View and use the **My Apps** portal from an iPhone or iPad device, running iOS version 7 or later. You can also install the [My Apps mobile app](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) to access your organization's apps on your iOS devices. 
 
-1. 在移动设备上，启动 web 浏览器应用，如 Safari。
+1. On your mobile device, start a web browser app, such as Safari.
 
-2. 请参阅 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. Go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-3. 从 "**应用**" 页中，选择要开始使用的应用。
+3. From the **Apps** page, select the app you want to start using.
 
-    此时会打开应用程序的新页面，可以在其中登录（如有必要）或开始使用应用。
+    A new page opens for the app, where you can sign-in (if necessary) or begin using the app.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>在 Android 设备上访问和使用 "我的应用" 门户
+### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Access and use the My Apps portal on an Android device
 
-查看并使用 Android 设备上的 "**我的应用**" 门户。
+View and use the **My Apps** portal on an Android device.
 
-1. 在移动设备上，启动 web 浏览器应用，如 Google Chrome。
+1. On your mobile device, start a web browser app, such as Google Chrome.
 
-2. 请参阅 https://myapps.microsoft.com ，或使用组织提供的链接。 例如，你可能会被定向到组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+2. Go to https://myapps.microsoft.com, or use the link provided by your organization. For example, you might be directed to a customized page for your organization, such as https://myapps.microsoft.com/contoso.com.
 
-    此时将显示 "**应用**" 页，其中显示组织所拥有的所有基于云的应用程序，并可供你使用。
+    The **Apps** page appears, showing all the cloud-based apps owned by your organization and available for you to use.
 
-3. 从 "**应用**" 页中，选择要开始使用的应用。
+3. From the **Apps** page, select the app you want to start using.
 
-    此时会打开应用程序的新页面，可以在其中登录（如有必要）或开始使用应用。
+    A new page opens for the app, where you can sign-in (if necessary) or begin using the app.
 
-## <a name="add-a-new-app-to-the-my-apps-portal"></a>将新应用添加到 "我的应用" 门户
+## <a name="add-a-new-app-to-the-my-apps-portal"></a>Add a new app to the My Apps portal
 
-如果管理员已授予你权限，则可以将新应用添加到 "**应用**" 页。
+If your administrator has given you permission, you can add a new app to the **Apps** page.
 
-1. 从 "**应用**" 页中，选择 "**添加应用**"。
+1. From the **Apps** page, select **Add App**.
 
-    此时将显示 "**添加应用**" 页。
+    The **Add apps** page appears.
 
-    !["我的应用" 门户中的 "添加应用" 页](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    ![Add apps page, in the My Apps portal](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-2. 从提供的列表中选择要添加的应用，然后选择 "**添加**"。
+2. Select the app you want to add from the provided list, and then select **Add**.
 
-3. 应用将添加到 "**应用**" 页上的列表中。
+3. The app is added to the list on the **Apps** page.
 
-    某些应用可能需要在添加之前获得管理员批准。 在这种情况下，该应用程序不会添加到 "**应用**" 页中，直到管理员批准。
+    Some apps might require administrator approval before being added. In this situation, the app isn't added to the **Apps** page until the administrator approves it.
 
 ## <a name="next-steps"></a>后续步骤
 
-转到 "**应用**" 页后，可以：
+After you get to the **Apps** page, you can:
 
-- [更改你的个人资料信息](my-apps-portal-end-user-update-profile.md)
+- [Change your profile information](my-apps-portal-end-user-update-profile.md)
 
-- [查看和更新组相关信息](my-apps-portal-end-user-groups.md)
+- [View and update your groups-related information](my-apps-portal-end-user-groups.md)
 
 - [执行自己的访问评审](my-apps-portal-end-user-access-reviews.md)

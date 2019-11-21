@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 7c562e6f0a1358d16b9abef08a5e582e4ff84472
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8662de2195696c94f27e31289d5b5f7ea97b507d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002042"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219115"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -50,7 +50,7 @@ ms.locfileid: "66002042"
 
 #### <a name="visibility"></a>可见性
 
-如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向  。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
+如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
 
 #### <a name="accountability"></a>问责制
 
@@ -93,9 +93,9 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 #### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)
 
-- 无最低限额或承诺使用量
+- 无最低限额或承诺
 - 有竞争力的定价
-- 只需为使用的服务付费
+- 只为自己使用的东西付费
 - 随时可以取消
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)

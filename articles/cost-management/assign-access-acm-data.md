@@ -1,5 +1,5 @@
 ---
-title: 分配对 Azure 成本管理数据的访问权限
+title: Assign access to Azure Cost Management data
 description: 本文介绍如何分配不同访问范围的 Azure 成本管理数据访问权限。
 services: cost-management
 keywords: ''
@@ -7,23 +7,23 @@ author: bandersmsft
 ms.author: banders
 ms.date: 10/14/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375130"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219854"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
-具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于具有其他 Azure 帐户类型的用户，通过使用 Azure 基于角色的访问控制，可以更简单地定义用户对成本管理数据的访问级别。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
+具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 For users with other Azure account types, defining a user's level of access to Cost Management data is simpler by using Azure role-based access control. 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
 
 用户所选的范围将用于整个成本管理，以提供数据整合并控制对成本信息的访问。 使用范围时，用户不要多选它们。 而应选择一个子范围要汇总到的较大范围，然后筛选到要查看的范围。 理解数据整合很重要，因为有些人不应该访问子范围汇总到的父范围。
 
-观看[如何使用 Azure 成本管理来分配访问](https://www.youtube.com/watch?v=J997ckmwTa8)视频，了解如何通过 azure 基于角色的访问控制分配访问权限，以查看成本和费用。
+Watch the [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) video to learn about assigning access to view costs and charges with Azure role-based access control.
 
 >[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
@@ -64,7 +64,7 @@ ms.locfileid: "72375130"
 - 管理组
 - Resource group
 
-将客户加入 Microsoft 客户协议后，将提供各种范围。 然后，如果客户的 CSP 合作伙伴启用了成本管理功能，则他们可以使用这些功能。 有关详细信息，请参阅[合作伙伴的 Azure 成本管理入门](get-started-partners.md)。
+Various scopes are available after partners onboard customers to a Microsoft Customer Agreement. CSP customers can then use Cost Management features when enabled by their CSP partner. For more information, see [Get started with Azure Cost Management for partners](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>启动对 EA 门户中的成本的访问
 
@@ -131,7 +131,7 @@ ms.locfileid: "72375130"
 
 ## <a name="assign-management-group-scope-access"></a>分配管理组范围的访问权限
 
-查看管理组作用域的访问权限至少需要成本管理读者（或读者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
+Access to view the management group scope requires at least the Cost Management Reader (or Reader) permission. 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在侧栏中选择“所有服务”，搜索“管理组”，然后选择“管理组”。
@@ -173,11 +173,11 @@ ms.locfileid: "72375130"
 8. 若要分配访问权限，请搜索用户并选择用户。
 9. 单击“保存”。
 
-## <a name="cross-tenant-authentication-issues"></a>跨租户身份验证问题
+## <a name="cross-tenant-authentication-issues"></a>Cross-tenant authentication issues
 
-目前，Azure 成本管理对跨租户身份验证的支持有限。 在某些情况下，尝试跨租户进行身份验证时，可能会在成本分析中收到 "**拒绝访问**" 错误。 如果将基于角色的访问控制（RBAC）配置到其他租户的订阅，然后尝试查看成本数据，则可能出现此问题。
+Currently, Azure Cost Management has limited support for cross-tenant authentication. In some circumstances when you try to authenticate across tenants, you may receive an **Access denied** error in cost analysis. This issue might occur if you configure role-based access control (RBAC) to another tenant's subscription and then try to view cost data.
 
-*若要解决此问题*：在配置跨租户 RBAC 后，请等待一小时。 然后，尝试查看成本分析中的成本或授予对这两个租户中用户的成本管理访问权限。  
+*To work around the problem*: After you configure cross-tenant RBAC, wait an hour. Then, try to view costs in cost analysis or grant Cost Management access to users in both tenants.  
 
 
 ## <a name="next-steps"></a>后续步骤

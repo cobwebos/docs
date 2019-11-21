@@ -1,31 +1,31 @@
 ---
-title: 用于管理组和预览组写回的 PowerShell 示例-Azure Active Directory |Microsoft Docs
+title: PowerShell V2 examples for managing groups - Azure AD  | Microsoft Docs
 description: 本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组
 keywords: Azure AD, Azure Active Directory, PowerShell, 组, 组管理
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381841"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233115"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> * [PowerShell](groups-settings-v2-cmdlets.md)
+> - [Azure 门户](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -170,7 +170,7 @@ ms.locfileid: "68381841"
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-现在, 如果再次找到该组, 将会看到 "说明" 属性已更新, 以反映新值:
+Now, if we find the group again, we see the Description property is updated to reflect the new value:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -284,7 +284,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
--ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是要作为组所有者添加的用户或服务主体的 ObjectID。
+The -ObjectId parameter is the ObjectID of the group to which we want to add an owner, and the -RefObjectId is the ObjectID of the user or service principal we want to add as an owner of the group.
 
 若要检索组的所有者，请使用 Get-AzureADGroupOwner cmdlet：
 
@@ -292,7 +292,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-该 cmdlet 将返回指定组的所有者（用户和服务主体）的列表：
+The cmdlet returns the list of owners (users and service principals) for the specified group:
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -308,7 +308,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 
 ## <a name="reserved-aliases"></a>保留的别名
 
-创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 Groups with the following highly privileged email aliases can only be created by an Azure AD global administrator. 
   
 * abuse
 * admin
@@ -317,20 +317,20 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 * majordomo
 * postmaster
 * root
-* secure
-* security
+* 安全
+* 安全性
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>组写回到本地 (预览)
+## <a name="group-writeback-to-on-premises-preview"></a>Group writeback to on-premises (preview)
 
-如今, 许多组仍在本地 Active Directory 管理。 为了应答将云组同步回本地的请求, Office 365 组写回功能 Azure AD 现在可供预览。
+Today, many groups are still managed in on-premises Active Directory. To answer requests to sync cloud groups back to on-premises, Office 365 groups writeback feature for Azure AD is now available for preview.
 
-Office 365 组在云中创建和管理。 使用写回功能, 可以将 Office 365 组作为分发组写入到安装了 Exchange 的 Active Directory 林。 然后, 具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
+Office 365 groups are created and managed in the cloud. The writeback capability allows you to write back Office 365 groups as distribution groups to an Active Directory forest with Exchange installed. Users with on-premises Exchange mailboxes can then send and receive emails from these groups. The group writeback feature doesn't support Azure AD security groups or distribution groups.
 
-有关更多详细信息, 请参阅[Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
+For more details, please refer to documentation for the [Azure AD Connect sync service](../hybrid/how-to-connect-syncservice-features.md).
 
-Office 365 组写回是 Azure Active Directory (Azure AD) 的公共预览功能, 适用于任何付费的 Azure AD 许可计划。 有关预览的一些法律信息, 请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Office 365 group writeback is a public preview feature of Azure Active Directory (Azure AD) and is available with any paid Azure AD license plan. For some legal information about previews, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="next-steps"></a>后续步骤
 
