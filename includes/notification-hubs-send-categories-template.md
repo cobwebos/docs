@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/30/2018
-ms.author: spelluru
+ms.date: 11/07/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 299f92484000cb5c59291a5af87f24d89a771fee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296743"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228158"
 ---
 本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。
 
@@ -45,12 +45,15 @@ ms.locfileid: "72296743"
         // Define the notification hub.
         NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
 
+        // Apple requires the apns-push-type header for all requests
+        var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
+
         // Create an array of breaking news categories.
         var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
 
         // Send the notification as a template notification. All template registrations that contain
         // "messageParam" and the proper tags will receive the notifications.
-        // This includes APNS, GCM, WNS, and MPNS template registrations.
+        // This includes APNS, GCM/FCM, WNS, and MPNS template registrations.
 
         Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
