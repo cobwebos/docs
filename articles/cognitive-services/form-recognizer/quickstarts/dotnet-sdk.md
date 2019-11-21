@@ -1,6 +1,6 @@
 ---
 title: 快速入门：适用于 .NET 的表单识别器客户端库 | Microsoft Docs
-description: 适用于 .NET 的表单识别器客户端库入门。
+description: 开始使用适用于 .NET 的表单识别器客户端库来训练、提取、分析和获取结构化数据输出。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264438"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904603"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>快速入门：适用于 .NET 的表单识别器客户端库
 
@@ -43,7 +43,7 @@ ms.locfileid: "72264438"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-获取试用订阅或资源的密钥后，请为该密钥创建名为 `FORM_RECOGNIZER_KEY` 的[环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+获取试用订阅或资源的密钥后，请为该密钥和终结点[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FORM_RECOGNIZER_KEY` 和 `FORM_RECOGNIZER_ENDPOINT`。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -120,7 +120,6 @@ dotnet add package Microsoft.Azure.CognitiveServices.FormRecognizer --version 0.
 
 在定义任何方法之前，请将以下变量定义添加到 **Program** 类的顶部。 你需要自行填写一些变量。 
 
-* 可在 Azure 门户中的“概述”部分找到服务的“终结点”值。  
 * 若要检索训练数据的 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。  确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 * 如果需要示例表单进行分析，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件之一。 本指南仅使用 PDF 格式。
 

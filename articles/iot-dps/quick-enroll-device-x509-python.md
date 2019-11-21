@@ -1,21 +1,21 @@
 ---
-title: 本快速入门展示了如何使用 Python 将 X.509 设备注册到 Azure 设备预配服务 | Microsoft Docs
+title: 快速入门：如何使用 Python 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册。 在本快速入门中，将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500764"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904727"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 
@@ -65,7 +65,7 @@ ms.locfileid: "59500764"
 
 1. 使用文本编辑器，新建一个 **EnrollmentGroup.py** 文件。
 
-1. 在 **EnrollmentGroup.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户**的**设备预配服务**的“共享访问策略”下。 将证书占位符替换为此前在[准备测试证书](quick-enroll-device-x509-python.md#prepare-test-certificates)中创建的证书。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
+1. 在 **EnrollmentGroup.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户**的**设备预配服务**的“共享访问策略”  下。 将证书占位符替换为此前在[准备测试证书](quick-enroll-device-x509-python.md#prepare-test-certificates)中创建的证书。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -131,7 +131,7 @@ ms.locfileid: "59500764"
 
 3. 观察成功注册后的输出。
 
-4. 在 Azure 门户中导航到预配服务。 单击“管理注册”。 请注意，X.509 设备组显示在“注册组”选项卡下，带有此前创建的名称 `registrationid`。 
+4. 在 Azure 门户中导航到预配服务。 单击“管理注册”。  请注意，X.509 设备组显示在“注册组”选项卡下，带有此前创建的名称 `registrationid`。  
 
     ![验证是否已在门户中成功注册 X.509](./media/quick-enroll-device-x509-python/1.png)  
 
@@ -140,8 +140,8 @@ ms.locfileid: "59500764"
 如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
 
 1. 关闭计算机上的 Java 示例输出窗口。
-1. 关闭计算机上的“X509 证书生成器”窗口。
-1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“注册组”选项卡。选择通过本快速入门注册的 X.509 设备的“组名称”，然后单击边栏选项卡顶部的“删除”按钮。  
+1. 关闭计算机上的“X509 证书生成器”  窗口。
+1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“注册组”选项卡。    选择通过本快速入门注册的 X.509 设备的“组名称”，然后单击边栏选项卡顶部的“删除”按钮。   
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,20 +1,20 @@
 ---
-title: 本快速入门介绍如何使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
+title: 快速入门：本快速入门介绍如何使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 本快速入门使用单独注册。 在本快速入门中，我们将使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 X.509 设备。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: dbbdfb9ead31d11c760e6cbb0280ed1c4e5f3b24
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901231"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904764"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -141,7 +141,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。     
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

@@ -1,5 +1,5 @@
 ---
-title: 查找可用房间 - Azure 数字孪生 | Microsoft Docs
+title: 快速入门：查找可用房间 - Azure 数字孪生
 description: 在本快速入门中，请运行两个 .NET Core 示例应用程序，将模拟的移动和二氧化碳遥测数据发送到 Azure 数字孪生中的空间。 目标是在云中进行计算处理以后，通过管理 API 查找空气清新的可用房间。
 ms.author: alinast
 author: alinamstanciu
@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 10/03/2019
-ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.date: 11/12/2019
+ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958907"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123192"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -59,6 +59,8 @@ ms.locfileid: "71958907"
     - **租户**：输入 Azure AD 租户的目录 ID，此 ID 也记录在上一部分。
     - **BaseUrl**：数字孪生实例的管理 API URL 采用 `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` 格式。 请将此 URL 中的占位符替换为上一部分的实例的值。
 
+    保存更新的文件。
+
 ## <a name="provision-graph"></a>预配图形
 
 此步骤为数字孪生空间图预配以下项：
@@ -81,23 +83,25 @@ ms.locfileid: "71958907"
 
 1. 预配步骤可能需要数分钟。 此外还会在数字孪生实例中预配 IoT 中心， 并且会一直循环下去，直至 IoT 中心的状态为 `Running`。
 
-    [![预配示例](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
+    [![预配示例 - Status=Running](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
 1. 在执行结束时，请复制设备的 `ConnectionString`，以便在设备模拟器示例中使用。 仅复制下图所示的字符串。
 
-    [![复制连接字符串](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![复制连接字符串](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
 
     >[!TIP]
     > 可以使用 [Azure 数字孪生图形查看器](https://github.com/Azure/azure-digital-twins-graph-viewer)查看和修改空间图。
 
+将控制台窗口保持打开状态，以便以后再次使用。
+
 ## <a name="send-sensor-data"></a>发送传感器数据
 
-请通过以下步骤生成并运行传感器模拟器应用程序。
+请通过以下步骤生成并运行传感器模拟器设备应用程序。
 
-1. 打开新的命令提示符窗口。 转到 digital-twins-samples-csharp-master 文件夹中的已下载项目。
+1. 打开新的命令提示符窗口。 转到下载在 `digital-twins-samples-csharp-master` 文件夹中的项目。
 1. 运行 `cd device-connectivity`。
 1. 运行 `dotnet restore`。
-1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。
+1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。 保存更新的文件。
 1. 运行 `dotnet run`，开始发送传感器数据。 可以看到数据会被发送到数字孪生，如下图所示。
 
      [![设备连接性](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
@@ -111,25 +115,25 @@ ms.locfileid: "71958907"
 
 传感器示例模拟两个传感器的随机数据值。 这两个传感器是移动传感器和二氧化碳传感器。 在示例中，空气清新的可用空间按定义是指房间没有被占用， 且二氧化碳水平低于 1,000 ppm。 如果不满足条件，则表明空间不可用或者空气质量差。
 
-1. 打开用于运行上述预配步骤的命令提示符窗口。
+1. 打开用于运行早期预配步骤的命令提示符窗口。
 1. 运行 `dotnet run GetAvailableAndFreshSpaces`。
 1. 并排查看此命令提示符窗口和传感器数据命令提示符窗口。
 
-    一个命令提示符窗口每五秒钟向数字孪生发送一次模拟的移动和二氧化碳数据。 另一命令以实时方式读取图形，根据随机的模拟数据来找出空气清新的可用房间。 它会根据上一次发送的传感器数据以近实时方式显示这其中的一个条件：
-   - 房间可用且空气清新。
-   - 房间已占用或空气质量差。
+    传感器数据命令提示符窗口每五秒钟向数字孪生发送一次模拟的移动和二氧化碳数据。 另一命令提示符以实时方式读取图形，根据随机的模拟数据来找出空气清新的可用房间。 它会根据上一次发送的传感器数据以近实时方式显示这其中的一个条件：
+   - `Room is available and air is fresh`
+   - `Room is not available or air quality is poor`
 
      [![获取空气清新的可用空间](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
-若要了解本快速入门中的情况以及所调用的 API，请打开 [Visual Studio Code](https://code.visualstudio.com/Download)，其中的代码工作区项目位于 digital-twins-samples-csharp 中。 请使用以下命令：
+若要了解本快速入门中的情况以及所调用的 API，请打开 [Visual Studio Code](https://code.visualstudio.com/Download)，其中的代码工作区项目位于 `digital-twins-samples-csharp` 中。 请使用以下命令：
 
-```plaintext
+```cmd
 <path>\occupancy-quickstart\src>code ..\..\digital-twins-samples.code-workspace
 ```
 
 这些教程会详细探讨代码， 并介绍如何修改配置数据以及调用哪些 API。 有关管理 API 的详细信息，请转到数字孪生 Swagger 页：
 
-```plaintext
+```URL
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
@@ -153,11 +157,11 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。  然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”   。
 
     > [!TIP]
-    > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
+    > 如果之前在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门通过一个简单的方案介绍了如何查找具有良好工作条件的房间。 若要深入分析此方案，请参阅以下教程：
+本快速入门通过简单的方案和示例应用程序演示如何使用数字孪生来查找具有良好工作条件的会议室。 若要深入分析此方案，请参阅以下教程：
 
 >[!div class="nextstepaction"]
 >[教程：部署 Azure 数字孪生并配置空间图](tutorial-facilities-setup.md)

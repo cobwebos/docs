@@ -168,6 +168,8 @@
           href: howto-configure-ssl.md
         - name: Web 应用
           href: howto-connect-webapp.md
+        - name: 通过重定向进行连接
+          href: howto-redirection.md
     - name: 配置服务器参数
       items:
         - name: Azure 门户

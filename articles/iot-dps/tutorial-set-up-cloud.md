@@ -1,22 +1,21 @@
 ---
-title: 在门户中针对 Azure IoT 中心设备预配服务设置云 | Microsoft Docs
-description: Azure 门户中的 IoT 中心自动设备预配
+title: 教程：在门户中针对 Azure IoT 中心设备预配服务设置云
+description: 教程：通过 IoT 中心设备预配服务 (DPS) 在 [Azure 门户](https://portal.azure.com)中设置云资源以进行设备预配
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e91627f934357cd67965ea8880db37ff9bfb3fb2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826200"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112792"
 ---
-# <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教程：通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
 本教程演示如何利用 IoT 中心设备预配服务来设置云资源以进行自动设备预配。 本教程介绍如何执行下列操作：
 
@@ -48,7 +47,7 @@ ms.locfileid: "73826200"
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名称** | 任何唯一名称 | -- | 
    | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)（命名规则和限制）。 |
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |   
 
    ![在门户中输入有关设备预配服务的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)

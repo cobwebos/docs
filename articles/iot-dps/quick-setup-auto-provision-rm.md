@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs
+title: 快速入门：使用 Azure 资源管理器模板设置设备预配
 description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126471"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903357"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以编程方式设置预配设备所需的 Azure 云资源。 这些步骤演示了如何创建 IoT 中心和新的 IoT 中心设备预配服务，然后使用 Azure 资源管理器模板将这两项服务链接到一起。 本快速入门使用 [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) 执行创建资源组和部署模板所需的编程步骤，但你也可以使用 [Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、.NET、Ruby 或其他编程语言，轻松执行这些步骤和部署模板。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "62126471"
 
     按照说明使用代码进行身份验证，并通过 Web 浏览器登录 Azure 帐户。
 
-2. 如果有多个 Azure 订阅，登录 Azure 可获得与凭据关联的所有 Azure 帐户的访问权限。 使用以下[命令，列出可供使用的 Azure 帐户][lnk-az-account-command]：
+2. 如果有多个 Azure 订阅，登录 Azure 可获得与凭据关联的所有 Azure 帐户的访问权限。 使用[以下命令列出可供使用的 Azure 帐户][lnk-az-account-command]：
     
     ```azurecli
     az account list 

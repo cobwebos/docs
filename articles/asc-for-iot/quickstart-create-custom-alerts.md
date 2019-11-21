@@ -1,6 +1,6 @@
 ---
-title: 为适用于 IoT 的 Azure 安全中心创建自定义警报 | Microsoft Docs
-description: 为适用于 IoT 的 Azure 安全中心创建并分配自定义设备警报。
+title: 快速入门：为适用于 IoT 的 Azure 安全中心创建自定义警报
+description: 在本快速入门中，为适用于 IoT 的 Azure 安全中心创建并分配自定义设备警报。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597005"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904126"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入门：创建自定义警报
 

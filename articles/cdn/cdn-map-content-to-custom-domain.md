@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 81db1a7dc01b3d60ee6384f2026ed5ce692ff140
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666095"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837415"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
@@ -66,7 +66,7 @@ ms.locfileid: "67666095"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源                    | Type  | 目标                     |
+    | 源                    | 类型  | 目标                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
@@ -145,7 +145,7 @@ ms.locfileid: "67666095"
  
 1. 确保在终结点缓存了公共内容。 例如，如果 CDN 终结点与某个存储帐户相关联，则 Azure CDN 会将内容缓存在公共容器中。 若要测试自定义域，请验证容器是否已设置为允许公共访问，并至少包含一个文件。
 
-2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 [www.contoso.com](www.contoso.com)，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//www.contoso.com/my-public-container/my-file.jpg。 验证结果是否与直接在 *&lt;终结点主机名&gt;* .azureedge.net 上访问 CDN 终结点时的结果相同。
+2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 `www.contoso.com`，则缓存的文件的 URL 应类似于：`http://www.contoso.com/my-public-container/my-file.jpg`。 验证结果是否与直接在 *&lt;终结点主机名&gt;* .azureedge.net 上访问 CDN 终结点时的结果相同。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>映射永久自定义域
@@ -160,7 +160,7 @@ ms.locfileid: "67666095"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源          | Type  | 目标           |
+    | 源          | 类型  | 目标           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

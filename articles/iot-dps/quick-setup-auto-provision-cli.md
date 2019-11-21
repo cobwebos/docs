@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure CLI 设置设备预配服务 | Microsoft Docs
+title: 快速入门：使用 Azure CLI 设置设备预配服务
 description: Azure 快速入门 - 使用 Azure CLI 设置 Azure IoT 中心设备预配服务
 author: wesmc7777
 ms.author: wesmc
-ms.date: 02/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "60363710"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904702"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>使用 Azure CLI 设置 IoT 中心设备预配服务
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 IoT 中心设备预配服务
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门详述了如何使用 Azure CLI 创建 IoT 中心和 IoT 中心设备预配服务并将两个服务链接到一起。 
 
@@ -137,4 +137,3 @@ az group delete --name my-sample-resource-group
 
 > [!div class="nextstepaction"]
 > [创建模拟设备快速入门](./quick-create-simulated-device.md)
-

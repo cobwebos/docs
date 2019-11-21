@@ -5,19 +5,19 @@ author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 11/13/2019
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695473"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091823"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>快速入门：通过 Azure Dev Spaces 在 Kubernetes 上使用 Visual Studio 和 .NET Core 进行调试和循环访问
 
@@ -52,7 +52,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-在 Azure 门户中导航到你的 AKS 群集，然后单击“Dev Spaces”。  将“启用 Dev Spaces”更改为“是”，然后单击“保存”。   
+在 Azure 门户中导航到你的 AKS 群集，然后单击“Dev Spaces”。  将“使用 Dev Spaces”更改为“是”，然后单击“保存”。   
 
 ![在 Azure 门户中启用 Dev Spaces](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
@@ -60,11 +60,11 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 
 1. 打开 Visual Studio。
 1. 创建新项目。
-1. 选择“ASP.NET Core Web 应用程序”，并将项目命名为 *webfrontend*。 
-1. 单击“确定”。 
+1. 选择“ASP.NET Core Web 应用程序”，然后单击“下一步”   。
+1. 为项目“webfrontend”命名并单击“创建”   。
 1. 出现提示时，请为模板选择“Web 应用程序(模型-视图-控制器)”。 
-1. 选择顶部的“.NET Core”和“ASP.NET Core 2.0”。  
-1. 单击“确定”。 
+1. 选择顶部的“.NET Core”和“ASP.NET Core 2.1”。  
+1. 单击“创建”。 
 
 ## <a name="connect-your-project-to-your-dev-space"></a>将项目连接到开发空间
 
@@ -93,12 +93,12 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-在上面的示例中，公共 URL 为 http://webfrontend.1234567890abcdef1234.eus.azds.io/ 。 导航到服务的公共 URL，并与开发空间中运行的服务交互。
+在上面的示例中，公共 URL 为 http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ 。 导航到服务的公共 URL，并与开发空间中运行的服务交互。
 
 此过程可能已禁用了对你的服务的公共访问。 若要启用公共访问，可以更新 [values.yaml  中的入口值][ingress-update]。
 

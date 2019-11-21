@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 人体跟踪 SDK 下载
-description: 人体跟踪 SDK 的下载链接
+description: 了解如何在 Windows 或 Linux 中下载每个版本的 Azure Kinect 传感器 SDK。
 author: qm13
 ms.author: quentinm
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 7f3e2762a0a2214c24f30e230e615922b9926100
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5bc586eb90edc20a63a555971f496a8113253b59
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299013"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932220"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 

@@ -1,22 +1,23 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建 Azure DNS 区域和记录
+title: 快速入门：创建 DNS 区域和记录 - Azure 门户
+titleSuffix: Azure DNS
 description: 使用此分步快速入门指南了解如何使用 Azure 门户创建 Azure DNS 区域和记录。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119065"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082923"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure DNS 区域和记录
 
-可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.xyz 域名，则可配置 Azure DNS 来托管 contoso.xyz 域，并将 www.contoso.xyz 解析为 Web 服务器或 Web 应用的 IP 地址。
+可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.xyz 域名，则可配置 Azure DNS 来托管 contoso.xyz 域，并将 www.contoso.xyz 解析为 Web 服务器或 Web 应用的 IP 地址    。
 
 在本快速入门中，你将创建一个测试域，然后创建一个地址记录来将 *www* 解析为 IP 地址 *10.10.10.10*。
 
@@ -37,14 +38,14 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 **创建 DNS 区域：**
 
-1. 在左上角，选择“创建资源”，然后依次选择“网络”和“DNS 区域”。
+1. 在左上角，选择“创建资源”  ，然后依次选择“网络”和“DNS 区域”。  
 
-1. 在“创建 DNS 区域”页上，键入或选择以下值：
+1. 在“创建 DNS 区域”  页上，键入或选择以下值：
 
-   - **名称**：对于本快速入门示例，键入 contoso.xyz。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
-   - **资源组**：选择“新建”，输入 MyResourceGroup，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
+   - **名称**：对于本快速入门示例，键入 contoso.xyz  。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
+   - **资源组**：选择“新建”，输入 MyResourceGroup，然后选择“确定”    。 资源组名称在 Azure 订阅中必须唯一。 
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
    ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
 
@@ -56,17 +57,17 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 **创建“A”记录：**
 
-1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
+1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域    。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。 
 
-1. 在“DNS 区域”页面顶部，选择“+ 记录集”。
+1. 在“DNS 区域”  页面顶部，选择“+ 记录集”  。
 
-1. 在“添加记录集”页上，键入或选择以下值：
+1. 在“添加记录集”  页上，键入或选择以下值：
 
-   - **名称**：键入 www。 记录名称是你要解析为指定 IP 地址的主机名。
-   - **类型**：选择 A。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
-   - **TTL**：键入 1。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
-   - **TTL 单位**：选择“小时”。 这是用于 **TTL** 值的时间单位。 
-   - **IP 地址**：对于本快速入门示例，键入 10.10.10.10。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
+   - **名称**：键入 www  。 记录名称是你要解析为指定 IP 地址的主机名。
+   - **类型**：选择 A  。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
+   - **TTL**：键入 1  。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
+   - **TTL 单位**：选择“小时”  。 这是用于 **TTL** 值的时间单位。 
+   - **IP 地址**：对于本快速入门示例，键入 10.10.10.10  。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
 
 因为本快速入门仅用于快速测试目的，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实生产域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
 
@@ -76,9 +77,9 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 **测试 DNS 名称解析：**
 
-1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
+1. 在 Azure 门户中，在“所有资源”下，打开 MyResourceGroup 资源组中的 contoso.xyz DNS 区域    。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。 
 
-1. 在“概述”页面上从名称服务器列表中复制其中一个名称服务器名称。 
+1. 在“概述”页面上从名称服务器列表中复制其中一个名称服务器名称。  
 
    ![区域](./media/dns-getstarted-portal/viewzonens500.png)
 
@@ -98,11 +99,11 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样。 此结果表明名称解析正常工作。 
+主机名 www\.contoso.xyz 解析为 10.10.10.10，正如你配置的那样   。 此结果表明名称解析正常工作。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要你在本快速入门中创建的资源时，通过删除 MyResourceGroup 资源组将它们删除。 打开 MyResourceGroup 资源组，并选择“删除资源组”。
+当不再需要你在本快速入门中创建的资源时，通过删除 MyResourceGroup 资源组将它们删除  。 打开 MyResourceGroup 资源组，并选择“删除资源组”   。
 
 ## <a name="next-steps"></a>后续步骤
 

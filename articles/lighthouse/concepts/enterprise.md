@@ -1,22 +1,18 @@
 ---
 title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: fbd87cc801824729025feb7aefa411ac38048949
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ae2241048e6ae481e319154beedab74c23c91163
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266674"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132501"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
-Azure Lighthouse 的最常见应用场景包括：服务提供商使用 Azure Lighthouse 来管理其客户的 Azure Active Directory (Azure AD) 租户中的资源。 但是，Azure Lighthouse 的功能还可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
+Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure Lighthouse](../overview.md) 来管理其客户的 Azure Active Directory (Azure AD) 租户中的资源。 但是，Azure Lighthouse 的功能还可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
 
 ## <a name="single-vs-multiple-tenants"></a>单个租户与多个租户
 

@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 通过单元 Magic 将外部包与 Jupyter 配合使用
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: 通过脚本操作将外部包与 Jupyter 配合使用
+                - name: 使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: 使用 Apache Zeppelin 笔记本
                   href: ./spark/apache-spark-zeppelin-notebook.md

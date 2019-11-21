@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建流量管理器配置文件以实现应用程序的高可用性
+title: 快速入门：创建配置文件以实现应用程序的高可用性 - Azure PowerShell - Azure 流量管理器
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以生成高度可用的 Web 应用程序。
 services: traffic-manager
 author: asudbring
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
 ms.author: allensu
-ms.openlocfilehash: ce05d594555095c061e43df2464b906138811448
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b1a0040c3cf6d517b19445be689dcc786334325
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051106"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038857"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 

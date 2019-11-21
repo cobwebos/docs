@@ -1,5 +1,5 @@
 ---
-title: 快速入门：自定义语音助手（预览版），Java（Windows、Linux）- 语音服务
+title: 快速入门：Java（Windows、Linux）的自定义语音助手 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何在 Java 控制台应用程序中使用认知服务语音 SDK。 其中将会介绍将客户端应用程序连接到事先创建的某个 Bot Framework 机器人。该机器人配置为使用 Direct Line 语音通道，可以实现语音助手体验。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 2fbe2e38ae1f41c2559b5ef5c6f66d19f3c41dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111707"
 ---
-# <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java"></a>快速入门：使用语音 SDK 创建语音助手，Java
+# <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>快速入门：使用语音 SDK 创建语音助手，Java（预览版）
 
 我们还提供了有关[语音转文本](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)、[文本转语音](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)和[语音翻译](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)的快速入门。
 
@@ -27,24 +27,25 @@ ms.locfileid: "73506201"
 
 本快速入门需要：
 
-* 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本。
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-* 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)中创建它。
-* 使用 Bot Framework 4.2 或更高版本创建的且预先配置的机器人。 该机器人需要订阅新的“Direct Line 语音”通道，以接收语音输入。
+- 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本。
+- [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
+- [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+- 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)中创建它。
+- 使用 Bot Framework 4.2 或更高版本创建的且预先配置的机器人。 该机器人需要订阅新的“Direct Line 语音”通道，以接收语音输入。
 
-    > [!NOTE]
-    > 请参阅[语音助手支持的区域列表](regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
+  > [!NOTE]
+  > 请参阅[语音助手支持的区域列表](regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
 
 如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项：
 
-```console
+```sh
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ 可再发行程序包：
-* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+
+- [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="optional-get-started-fast"></a>可选：快速入门
 
@@ -54,177 +55,176 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-此外，若要启用日志记录，请更新 *pom.xml* 文件以包含以下依赖项：
+此外，若要启用日志记录，请更新 _pom.xml_ 文件以包含以下依赖项：
 
-   ```xml
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-simple</artifactId>
-        <version>1.7.5</version>
-    </dependency>
-   ```
+```xml
+ <dependency>
+     <groupId>org.slf4j</groupId>
+     <artifactId>slf4j-simple</artifactId>
+     <version>1.7.5</version>
+ </dependency>
+```
 
 ## <a name="add-sample-code"></a>添加示例代码
 
 1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 *speechsdk.quickstart*，在“名称”字段内输入 *Main*。   
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 _speechsdk.quickstart_，在“名称”字段内输入 _Main_。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
 1. 打开新建的 `Main` 类，将 `Main.java` 文件的内容替换为以下起始代码：
 
-    ```java
-    package speechsdk.quickstart;
+   ```java
+   package speechsdk.quickstart;
 
-    import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
-    import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
-    import org.slf4j.Logger;
-    import org.slf4j.LoggerFactory;
+   import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
+   import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
+   import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+   import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
+   import org.slf4j.Logger;
+   import org.slf4j.LoggerFactory;
 
-    import javax.sound.sampled.AudioFormat;
-    import javax.sound.sampled.AudioSystem;
-    import javax.sound.sampled.DataLine;
-    import javax.sound.sampled.SourceDataLine;
-    import java.io.InputStream;
+   import javax.sound.sampled.AudioFormat;
+   import javax.sound.sampled.AudioSystem;
+   import javax.sound.sampled.DataLine;
+   import javax.sound.sampled.SourceDataLine;
+   import java.io.InputStream;
 
-    public class Main {
-        final Logger log = LoggerFactory.getLogger(Main.class);
+   public class Main {
+       final Logger log = LoggerFactory.getLogger(Main.class);
 
-        public static void main(String[] args) {
-            // New code will go here
-        }
+       public static void main(String[] args) {
+           // New code will go here
+       }
 
-        private void playAudioStream(PullAudioOutputStream audio) {
-            ActivityAudioStream stream = new ActivityAudioStream(audio);
-            final ActivityAudioStream.ActivityAudioFormat audioFormat = stream.getActivityAudioFormat();
-            final AudioFormat format = new AudioFormat(
-                    AudioFormat.Encoding.PCM_SIGNED,
-                    audioFormat.getSamplesPerSecond(),
-                    audioFormat.getBitsPerSample(),
-                    audioFormat.getChannels(),
-                    audioFormat.getFrameSize(),
-                    audioFormat.getSamplesPerSecond(),
-                    false);
-            try {
-                int bufferSize = format.getFrameSize();
-                final byte[] data = new byte[bufferSize];
+       private void playAudioStream(PullAudioOutputStream audio) {
+           ActivityAudioStream stream = new ActivityAudioStream(audio);
+           final ActivityAudioStream.ActivityAudioFormat audioFormat = stream.getActivityAudioFormat();
+           final AudioFormat format = new AudioFormat(
+                   AudioFormat.Encoding.PCM_SIGNED,
+                   audioFormat.getSamplesPerSecond(),
+                   audioFormat.getBitsPerSample(),
+                   audioFormat.getChannels(),
+                   audioFormat.getFrameSize(),
+                   audioFormat.getSamplesPerSecond(),
+                   false);
+           try {
+               int bufferSize = format.getFrameSize();
+               final byte[] data = new byte[bufferSize];
 
-                SourceDataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-                SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
-                line.open(format);
+               SourceDataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+               SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
+               line.open(format);
 
-                if (line != null) {
-                    line.start();
-                    int nBytesRead = 0;
-                    while (nBytesRead != -1) {
-                        nBytesRead = stream.read(data);
-                        if (nBytesRead != -1) {
-                            line.write(data, 0, nBytesRead);
-                        }
-                    }
-                    line.drain();
-                    line.stop();
-                    line.close();
-                }
-                stream.close();
+               if (line != null) {
+                   line.start();
+                   int nBytesRead = 0;
+                   while (nBytesRead != -1) {
+                       nBytesRead = stream.read(data);
+                       if (nBytesRead != -1) {
+                           line.write(data, 0, nBytesRead);
+                       }
+                   }
+                   line.drain();
+                   line.stop();
+                   line.close();
+               }
+               stream.close();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
 
-    }
-    ```
+   }
+   ```
 
 1. 在 `main` 方法中，首先配置 `DialogServiceConfig` 并使用它来创建 `DialogServiceConnector` 实例。 此实例会连接到 Direct Line 语音通道以便与机器人交互。 `AudioConfig` 实例还用于指定音频输入的源。 在此示例中，对 `AudioConfig.fromDefaultMicrophoneInput()` 使用了默认麦克风。
 
-    * 将字符串 `YourSubscriptionKey` 替换为可从[此网站](get-started.md)获取的订阅密钥。
-    * 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)。
+   - 将字符串 `YourSubscriptionKey` 替换为可从[此网站](get-started.md)获取的订阅密钥。
+   - 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)。
 
-    > [!NOTE]
-    > 请参阅[语音助手支持的区域列表](regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
+   > [!NOTE]
+   > 请参阅[语音助手支持的区域列表](regions.md#voice-assistants)，确保你的资源部署在其中一个区域中。
 
-    ```java
-    final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region
-    final BotFrameworkConfig botConfig = BotFrameworkConfig.fromSubscription(subscriptionKey, region);
+   ```java
+   final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
+   final String region = "YourServiceRegion"; // Your speech subscription service region
+   final BotFrameworkConfig botConfig = BotFrameworkConfig.fromSubscription(subscriptionKey, region);
 
-    // Configure audio input from a microphone.
-    final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
+   // Configure audio input from a microphone.
+   final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance.
-    final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
-    ```
+   // Create a DialogServiceConnector instance.
+   final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
+   ```
 
 1. 连接器 `DialogServiceConnector` 依赖于多个事件来传达其机器人活动、语音识别结果和其他信息。 接下来请添加这些事件侦听器。
 
-    ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
-    connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
-        log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
-    });
+   ```java
+   // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
+   connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
+       log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
+   });
 
-    // Recognized will provide the final recognized text once audio capture is completed.
-    connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
-        log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
-    });
+   // Recognized will provide the final recognized text once audio capture is completed.
+   connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
+       log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
+   });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn.
-    connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
-        log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
-    });
+   // SessionStarted will notify when audio begins flowing to the service for a turn.
+   connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
+       log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
+   });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
-    connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
-        log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
-    });
+   // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
+   connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
+       log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
+   });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition.
-    connector.canceled.addEventListener((o, canceledEventArgs) -> {
-        log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
-        connector.disconnectAsync();
-    });
+   // Canceled will be signaled when a turn is aborted or experiences an error condition.
+   connector.canceled.addEventListener((o, canceledEventArgs) -> {
+       log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
+       connector.disconnectAsync();
+   });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
-    connector.activityReceived.addEventListener((o, activityEventArgs) -> {
-        final String act = activityEventArgs.getActivity().serialize();
-            log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
-            if (activityEventArgs.hasAudio()) {
-                playAudioStream(activityEventArgs.getAudio());
-            }
-        });
-    ```
+   // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
+   connector.activityReceived.addEventListener((o, activityEventArgs) -> {
+       final String act = activityEventArgs.getActivity().serialize();
+           log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
+           if (activityEventArgs.hasAudio()) {
+               playAudioStream(activityEventArgs.getAudio());
+           }
+       });
+   ```
 
 1. 调用 `connectAsync()` 方法将 `DialogServiceConnector` 连接到 Direct Line 语音。 若要测试机器人，可以调用 `listenOnceAsync` 方法以从麦克风发送音频输入。 此外，还可以使用 `sendActivityAsync` 方法以序列化字符串的形式发送自定义活动。 这些自定义活动可以提供机器人在聊天中使用的其他数据。
 
-    ```java
-    connector.connectAsync();
-    // Start listening.
-    System.out.println("Say something ...");
-    connector.listenOnceAsync();
+   ```java
+   connector.connectAsync();
+   // Start listening.
+   System.out.println("Say something ...");
+   connector.listenOnceAsync();
 
-    // connector.sendActivityAsync(...)
-    ```
+   // connector.sendActivityAsync(...)
+   ```
 
 1. 保存对 `Main` 文件的更改。
 
 1. 为支持响应播放，请添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 `ActivityAudioStream` 是一个专用类，用于处理来自 Direct Line 语音通道的音频响应。 它提供访问器来提取处理播放所需的音频格式信息。 为此，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段中输入 *speechsdk.quickstart*，在“名称”字段中输入 *ActivityAudioStream*。   
+1. 在“新建 Java 类”窗口中，在“包”字段中输入 _speechsdk.quickstart_，在“名称”字段中输入 _ActivityAudioStream_。   
 
 1. 打开新建的 `ActivityAudioStream` 类，将其内容替换为以下代码：
 
-    ```java
-    package com.speechsdk.quickstart;
+   ```java
+   package com.speechsdk.quickstart;
 
-    import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
+   import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
 
-    import java.io.IOException;
-    import java.io.InputStream;
-
+   import java.io.IOException;
+   import java.io.InputStream;
 
     public final class ActivityAudioStream extends InputStream {
         /**
@@ -455,7 +455,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
         }
     }
 
-    ```
+   ```
 
 1. 保存对 `ActivityAudioStream` 文件的更改。
 

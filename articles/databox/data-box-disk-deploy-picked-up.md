@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128689"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092083"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ ms.locfileid: "71128689"
     - 转至“概述”>“下载发货标签”  并获取退件发货标签。
     - 将标签粘贴在设备上。 请确保该标签是可见的。
 
-2. 请求取件：
-    - 请在办公时间（周一至周五，上午 9 点到下午 5 点）拨打 **SingPost** 热线，电话为 **6845 6485**。  
-    - 请注明“Microsoft Azure 取件”  和服务请求编号（退还发货标签上的跟踪编号），以便安排收件。 
-    - 你将会收到有关该取件安排的口头确认。 
-    - 如果快递员未前来收件，请致电 **SingPost**（电话为 **6845 6485**），要求另作安排。 
+2. 若要请求分拣，请使用以下模板和跟踪号（跟踪号可在送达的包裹中提供的退货标签上找到），向 SingPost 客户服务发送电子邮件。
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > 对于在工作日内的以下时间收到的预订请求：
+   > - 如果在下午 3 点之前收到，分拣将在下一个工作日的上午 9 点到下午 1 点进行。
+   > - 如果在下午 3 点之后收到，分拣将在下一个工作日的下午 2 点到下午 6 点进行。
+
+   如果遇到任何问题，请访问 Data Box Operations Asia，网址为 adbo@microsoft.com。 提供主题标头中的作业名称和遇到的问题。
+
 3. 转交给快递员。 
 
 

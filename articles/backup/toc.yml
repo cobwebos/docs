@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: 还原已加密 VM 的密钥和机密
               href: backup-azure-restore-key-secret.md
+    - name: 恢复服务保管库的诊断事件
+      items:
+        - name: 使用恢复服务保管库的诊断设置
+          href: backup-azure-diagnostic-events.md
+        - name: 资源特定诊断事件的 Log Analytics 数据模型
+          href: backup-azure-log-analytics-new-data-model.md
     - name: 配置 Azure 备份报表
       items:
         - name: 配置 Azure 备份报表

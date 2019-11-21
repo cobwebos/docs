@@ -1,23 +1,23 @@
 ---
-title: 使用 Node.js 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
+title: 快速入门：使用 Node.js 将 TPM 设备注册到 Azure 设备预配
 description: Azure 快速入门 - 使用 Node.js 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/21/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 202b308c3add7facdbb28dc634f70e5090dd2a9c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 02d5ec3b7ddd960e15b75fd3aa6691a187b5911a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092061"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903484"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>使用 Node.js 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>快速入门：使用 Node.js 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -71,8 +71,8 @@ ms.locfileid: "55092061"
 ## <a name="run-the-individual-enrollment-sample"></a>运行单个注册示例
   
 1. 若要运行示例，需要适用于预配服务的连接字符串。 
-    1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。 
-    2. 单击“共享访问策略”，然后单击需要用来打开其属性的访问策略。 在“访问策略”窗口中，复制并记下主密钥连接字符串。 
+    1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。 
+    2. 单击“共享访问策略”，然后单击需要用来打开其属性的访问策略。  在“访问策略”窗口中，复制并记下主密钥连接字符串。  
 
        ![从门户获取预配服务连接字符串](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
@@ -93,7 +93,7 @@ ms.locfileid: "55092061"
 
     ![命令输出中的注册属性](./media/quick-enroll-device-tpm-node/output.png) 
 
-4. 验证是否已创建单个注册。 在 Azure 门户的设备预配服务摘要边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击新的注册项 (*first*)，验证认可密钥和该项的其他属性。
+4. 验证是否已创建单个注册。 在 Azure 门户的设备预配服务摘要边栏选项卡上，选择“管理注册”  。 选择“单个注册”选项卡，单击新的注册项  (*first*)，验证认可密钥和该项的其他属性。
 
     ![门户中的注册属性](./media/quick-enroll-device-tpm-node/verify-enrollment-portal.png) 
  
@@ -104,7 +104,7 @@ ms.locfileid: "55092061"
 
 1. 关闭计算机上的 Node.js 示例输出窗口。
 1. 如果已创建模拟的 TPM 设备，请关闭 TPM 模拟器窗口。
-2. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“单个注册”选项卡。选择通过本快速入门创建的注册项的“注册 ID”，然后单击边栏选项卡顶部的“删除”按钮。 
+2. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“单个注册”选项卡。    选择通过本快速入门创建的注册项的“注册 ID”，然后单击边栏选项卡顶部的“删除”按钮。  
  
 ## <a name="next-steps"></a>后续步骤
 本快速入门介绍了如何以编程方式为 TPM 设备创建单个注册项，以及如何选择性地在计算机上创建 TPM 模拟设备，并使用 Azure IoT 中心设备预配服务将其预配到 IoT 中心。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。 

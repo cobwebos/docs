@@ -1,26 +1,23 @@
 ---
-title: Terraform 和 Azure 提供程序部署槽位
+title: 教程 - 结合使用 Azure 部署槽位和 Terraform 来预配基础结构
 description: 有关使用 Terraform 和 Azure 提供程序部署槽位的教程
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 虚拟机, Azure, 部署槽位
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169823"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838064"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>教程：结合使用 Azure 部署槽位和 Terraform 来预配基础结构
 
 可以使用 [Azure 部署槽位](/azure/app-service/deploy-staging-slots)交换应用的不同版本。 该功能有助于最大程度地降低中断部署造成的影响。 
 
-本文将会通过 GitHub 和 Azure 演练两个应用的部署，以演示部署槽位的示例用法。 一个应用托管在生产槽位中。 另一个应用托管在过渡槽位中。 （名称“生产”和“过渡”是任意给出的，可以使用任何名称，只要能表示场景即可。）配置部署槽位后，可根据需要使用 Terraform 在两个槽位之间交换。
+本文将会通过 GitHub 和 Azure 演练两个应用的部署，以演示部署槽位的示例用法。 一个应用托管在生产槽位中。 另一个应用托管在过渡槽位中。 （名称“生产”和“暂存”是任意名称。 它们可以是适用于你的情形的任何内容。）配置部署槽位后，可根据需要使用 Terraform 在两个槽位之间交换。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,13 +61,11 @@ ms.locfileid: "71169823"
     cd deploy
     ```
 
-1. 使用 [vi 编辑器](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)创建名为 `deploy.tf` 的文件。 此文件将包含 [Terraform 配置](https://www.terraform.io/docs/configuration/index.html)。
+1. 在 Cloud Shell 中，创建名为 `deploy.tf` 的文件。
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
@@ -85,8 +80,8 @@ ms.locfileid: "71169823"
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,27 +90,21 @@ ms.locfileid: "71169823"
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 
-1. 按 Esc 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 1. 创建该文件后，请验证其内容。
 
@@ -207,7 +196,7 @@ ms.locfileid: "71169823"
 
 1. 在“部署选项”选项卡上，选择“确定”。  
 
-现已部署生产槽位。 若要部署过渡槽位，请执行本部分前面所述的所有步骤，但要做出以下修改：
+现在，已部署生产槽位。 若要部署暂存槽位，请执行前面的步骤，并进行以下修改：
 
 - 在步骤 3 中，选择“slotAppServiceSlotOne”资源。 
 
@@ -219,8 +208,6 @@ ms.locfileid: "71169823"
 
 在前面的部分中，我们设置了要从 GitHub 中不同分支部署的两个槽位 - **slotAppService** 和 **slotAppServiceSlotOne**。 让我们预览 Web 应用，以验证是否已成功部署这些应用。
 
-执行以下步骤 2 次。 执行步骤 3 时，第一次请选择“slotAppService”，第二次请选择“slotAppServiceSlotOne”。  
-
 1. 在 Azure 门户的主菜单中，选择“资源组”。 
 
 1. 选择“slotDemoResourceGroup”。 
@@ -231,14 +218,11 @@ ms.locfileid: "71169823"
 
     ![在概述选项卡上选择“URL”以呈现应用](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Azure 可能需要花费几分钟时间从 GitHub 生成和部署站点。
->
->
+1. 根据所选的应用，会看到以下结果：
+    - **slotAppService** Web 应用 - 蓝色页面，其标题为“槽位演示应用 1”。  
+    - **slotAppServiceSlotOne** Web 应用 - 绿色页面，其标题为“槽位演示应用 2”。 
 
-对于 **slotAppService** Web 应用，将会看到一个蓝色页面，其标题为“槽位演示应用 1”。  对于 **slotAppServiceSlotOne** Web 应用，将会看到一个绿色页面，其标题为“槽位演示应用 2”。 
-
-![预览应用以测试是否已正确部署这些应用](./media/terraform-slot-walkthru/app-preview.png)
+    ![预览应用以测试是否已正确部署这些应用](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>交换两个部署槽位
 
@@ -256,13 +240,11 @@ ms.locfileid: "71169823"
     cd clouddrive/swap
     ```
 
-1. 使用 vi 编辑器创建名为 `swap.tf` 的文件。
+1. 在 Cloud Shell 中，创建名为 `swap.tf` 的文件。
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
@@ -278,13 +260,7 @@ ms.locfileid: "71169823"
     }
     ```
 
-1. 按 Esc 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 1. 初始化 Terraform。
 
@@ -304,7 +280,7 @@ ms.locfileid: "71169823"
     terraform apply
     ```
 
-1. 在 Terraform 完成交换槽位后，请返回到呈现 **slotAppService** Web 应用的浏览器，并刷新页面。 
+1. 在 Terraform 交换槽后，返回到浏览器。 刷新页面。 
 
 **slotAppServiceSlotOne** 过渡槽位中的 Web 应用现已交换到生产槽位，并以绿色呈现。 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 交换应用后，会看到原始配置。
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"] 
+> [详细了解如何在 Azure 中使用 Terraform](/azure/terraform)

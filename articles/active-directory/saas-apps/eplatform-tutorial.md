@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121568"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ePlatform 集成
 
@@ -67,10 +67,10 @@ ms.locfileid: "71121568"
 若要配置和测试 ePlatform 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 ePlatform SSO](#configure-eplatform-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 ePlatform 测试用户](#create-eplatform-test-user)** - 在 ePlatform 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    * **[创建 ePlatform 测试用户](#create-eplatform-test-user)** - 在 ePlatform 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -84,6 +84,16 @@ ms.locfileid: "71121568"
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在基本 SAML 配置  部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
+
+1. ePlatform 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述属性，ePlatform 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+
+    | Name | 源属性 |
+    | ---------------| --------------- |
+    | upn | user.userprincipalname |
 
 1. 在“SAML 签名证书”  部分中，单击“编辑”  按钮以打开“SAML 签名证书”  对话框。
 
@@ -135,7 +145,7 @@ ms.locfileid: "71121568"
 
 在本部分中，将在 ePlatform 中创建名为 B.Simon 的用户。 在  [ePlatform 支持团队](https://help.eplatform.co/hc/en-us)的配合下，将用户添加到 ePlatform 平台。 使用单一登录前，必须先创建并激活用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

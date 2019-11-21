@@ -1,5 +1,5 @@
 ---
-title: 创建 IoT 即插即用预览版设备 | Microsoft Docs
+title: 创建 IoT 即插即用预览版设备 (Windows) | Microsoft Docs
 description: 使用设备功能模型生成设备代码。 然后运行设备代码，并查看设备是否可连接到 IoT 中心。
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 019dbe8b977932c6a806f7efca8c0724597718d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818046"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931915"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>快速入门：使用设备功能模型创建 IoT 即插即用预览设备 (Windows)
 
@@ -48,42 +48,34 @@ _设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常�
 
 ## <a name="prepare-an-iot-hub"></a>准备 IoT 中心
 
-Azure 订阅中还需要有一个 Azure IoT 中心才能完成本快速入门。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+Azure 订阅中还需要有一个 Azure IoT 中心才能完成本快速入门。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 如果你没有 IoT 中心，请遵照[此处的说明创建一个](../iot-hub/iot-hub-create-using-cli.md)。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 在公共预览版期间，IoT 即插即用功能仅适用于在美国中部、欧洲北部和日本东部区域中创建的 IoT 中心    。
 
-添加适用于 Azure CLI 的 Microsoft Azure IoT 扩展：
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例：
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-运行以下命令，在 IoT 中心创建设备标识。 将 **YourIoTHubName** 和 **YourDevice** 占位符替换为实际名称。 如果你没有 IoT 中心，请遵照[此处的说明创建一个](../iot-hub/iot-hub-create-using-cli.md)：
+运行以下命令，在 IoT 中心创建设备标识。 将 **YourIoTHubName** 和 **YourDevice** 占位符替换为实际名称。
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name [YourIoTHubName] --device-id [YourDevice]
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
 运行以下命令，获取刚注册设备的设备连接字符串： 
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name [YourIoTHubName] --device-id [YourDevice] --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 运行以下命令，获取中心的 IoT 中心连接字符串： 
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
+az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
-
-记下如下所示的设备连接字符串：
-
-```json
-HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
-```
-
-稍后会在快速入门中用到此值。
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
@@ -116,9 +108,9 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 在本快速入门中，你将使用现有的示例设备功能模型和关联的接口。
 
-1. 在本地驱动器上创建 `pnp_app` 目录。
+1. 在本地驱动器上创建 `pnp_app` 目录。 使用此文件夹来存储设备模型文件和设备代码存根。
 
-1. 下载[设备功能模型](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)和[接口示例](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)，并将文件保存到 `pnp_app` 文件夹中。
+1. 下载[设备功能模型和接口示例文件](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json)和[接口示例](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)，并将文件保存到 `pnp_app` 文件夹中。
 
     > [!TIP]
     > 若要从 GitHub 下载某个文件，请导航到该文件，右键单击“原始”，然后选择“链接另存为”。  
@@ -133,14 +125,14 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 现已获得一个 DCM 及其关联的接口，接下来可以生成用于实现该模型的设备代码。 若要在 VS Code 中生成 C 代码存根：
 
-1. 打开包含 DCM 文件的文件夹后，按 **Ctrl+Shift+P** 打开命令面板，输入“IoT 即插即用”，然后选择“生成设备代码存根”。  
+1. 在 VS 代码中打开 `pnp_app` 文件夹后，按 Ctrl+Shift+P 打开命令面板，输入“IoT 即插即用”，然后选择“生成设备代码存根”    。
 
     > [!NOTE]
     > 首次使用 IoT 即插即用 CodeGen CLI 时，需要花费几秒钟时间来自动下载并安装。
 
-1. 选择用于生成设备代码存根的 DCM 文件。
+1. 选择用于生成设备代码存根的 SampleDevice.capabilitymodel.json 文件  。
 
-1. 输入项目名称 **sample_device**，它将成为设备应用程序的名称。
+1. 输入项目名称 sample_device  。 这将是设备应用程序的名称。
 
 1. 选择“ANSI C”作为语言。 
 
@@ -153,9 +145,9 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 1. 会在与 DCM 文件相同的位置创建名为“sample_device”的新文件夹，其中包含生成的设备代码存根文件  。 VS Code 会打开新窗口以显示这些内容。
     ![设备代码](media/quickstart-create-pnp-device/device-code.png)
 
-## <a name="build-the-code"></a>生成代码
+## <a name="build-and-run-the-code"></a>生成并运行代码
 
-将生成设备代码存根与设备 SDK 一起生成。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
+使用设备 SDK 源代码来生成生成的设备代码存根。 生成的应用程序将模拟连接到 IoT 中心的设备。 应用程序将发送遥测数据和属性，并接收命令。
 
 1. 在 `sample_device` 文件夹中创建 `cmake` 子目录，并导航到该文件夹：
 
@@ -167,7 +159,7 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 1. 运行以下命令，构建生成的代码存根（将占位符替换为 Vcpkg 存储库的目录）：
 
     ```cmd\sh
-    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
     ```
@@ -187,7 +179,7 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 1. 成功完成生成后，运行应用程序并将 IoT 中心设备连接字符串作为参数传递。
 
     ```cmd\sh
-    .\Debug\sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "<device connection string>"
     ```
 
 1. 设备应用程序将开始向 IoT 中心发送数据。
@@ -200,7 +192,7 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 若要使用“Azure IoT 资源管理器”验证设备代码，需将文件发布到模型存储库。 
 
-1. 在 VS Code 中打开包含 DCM 文件的文件夹后，按“Ctrl+Shift+P”打开命令面板，然后键入并选择“IoT 即插即用  **：** 将文件提交到模型存储库”。
+1. 在 VS Code 中打开 `pnp_app` 文件夹后，按“Ctrl+Shift+P”打开命令面板，然后键入并选择“IoT 即插即用:   将文件提交到模型存储库”。
 
 1. 选择 `SampleDevice.capabilitymodel.json` 和 `EnvironmentalSensor.interface.json` 文件。
 
@@ -216,9 +208,9 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 ### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>使用 Azure IoT 资源管理器验证代码
 
-1. 打开 Azure IoT 资源管理器，此时会看到“应用配置”页。 
+1. 打开 Azure IoT 资源管理器。 你会看到“应用配置”页面  。
 
-1. 输入 IoT 中心连接字符串，然后单击“连接”。 
+1. 输入 IoT 中心连接字符串，然后选择“连接”。  
 
 1. 连接后，将看到设备概述页。
 
@@ -236,19 +228,19 @@ HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={
 
 1. 展开属性“名称”，更新为新名称，然后选择“更新可写属性”   。
 
-1. 若要查看“报告的属性”列中显示的新名称，请单击页面顶部的“刷新”按钮。  
+1. 若要查看“报告的属性”列中显示的新名称，请选择页面顶部的“刷新”按钮。  
 
 1. 选择“命令”页查看设备支持的所有命令。 
 
 1. 展开 **blink** 命令并设置新的闪烁时间间隔。 选择“发送命令”以调用设备上的命令  。
 
-1. 转到模拟设备，验证该命令是否按预期方式执行。
+1. 转到模拟设备命令提示符并通读打印的确认消息，以验证命令是否按预期执行。
 
 ## <a name="next-steps"></a>后续步骤
 
 本快速入门已介绍如何使用 DCM 创建 IoT 即插即用设备。
 
-若要详细了解 IoT 即插即用，请继续学习以下教程：
+若要详细了解 DCM 以及如何创建自己的模型，请继续学习教程：
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio Code 创建和测试设备功能模型](tutorial-pnp-visual-studio-code.md)
+> [教程：使用 Visual Studio Code 创建和测试设备功能模型](tutorial-pnp-visual-studio-code.md)

@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f57d36f6f24aab44d13ea07d8706bf40b7dcf552
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2ec6e1d00d331a7bb8dd7182dd4b0c91dd3d25a7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72937336"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049086"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>比较 Azure IoT Central 和 Azure IoT 选项
 
 Microsoft Azure IoT Central 和 Azure IoT 提供用于生成 IoT 解决方案的多个选项。 这些选项可满足不同的客户要求：
 
-* [Azure IoT Central](overview-iot-central.md) 是一种服务型软件 (SaaS) 解决方案，此解决方案使用基于模型的方法，用于生成企业级 IoT 解决方案而不需云解决方案开发经验。
+* [Azure IoT Central](overview-iot-central.md) 是一种 IoT 应用程序平台，它使用基于模型的方法，不需云解决方案开发经验，即可帮助你生成企业级 IoT 解决方案。
 
 * [Azure IoT 解决方案加速器](https://docs.microsoft.com/azure/iot-accelerators/)是基于 Azure 平台即服务 (PaaS) 的企业级[解决方案加速器](../../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)集合，用于加速自定义 IoT 解决方案的开发。
 
@@ -42,7 +42,7 @@ Azure IoT 中心是核心的 Azure PaaS，可供 Azure IoT Central 和 Azure IoT
 |     | Azure IoT Central | Azure IoT 解决方案加速器 |
 | --- | ----------- | --------- |
 | 主要用途                      | 缩短不需深层服务自定义的直观 IoT 解决方案的面市时间。                                                    | 加速开发需要最大灵活性的自定义 IoT 解决方案。                                                                                                                             |
-| 访问基础 PaaS 服务 | SaaS。 因为这是完全托管的解决方案，基础服务不公开。                                                                                            | 有权访问基础 Azure 服务，根据需要对其进行管理或替换。                                                                                                                    |
+| 访问基础 PaaS 服务 | 因为这是完全托管的解决方案，基础服务不公开。                                                                                            | 有权访问基础 Azure 服务，根据需要对其进行管理或替换。                                                                                                                    |
 | 灵活性                        | 中。 可以根据内置的基于浏览器的用户体验来自定义解决方案模型和 UI 的各个方面。 基础结构不可自定义，因为未公开各种不同的组件。 | 高。 微服务的代码是开源的，可以任意修改。 此外还可以自定义部署基础结构。                                               |
 | 技能级别                        | 低。 需要建模技能才能自定义解决方案。 不需编码技能。                                                                          | 中-高。 需要 Java 或 .NET 技能才能自定义解决方案后端。 需要 JavaScript 技能才能自定义可视化效果。                                                                       |
 | 入门体验             | 应用程序模板和设备模板提供预建的模型。 可以在数分钟内部署。                                                                                                  | 预配置解决方案可实现常见的 IoT 方案。 可以在数分钟内部署。                                                                                                                            |

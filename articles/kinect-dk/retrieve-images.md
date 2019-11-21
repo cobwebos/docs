@@ -1,18 +1,18 @@
 ---
 title: 检索 Azure Kinect 图像数据
-description: 使用 Kinect 传感器 SDK 检索图像
+description: 了解如何使用 Kinect 传感器 SDK 检索 Azure Kinect 图像数据。
 author: cdedmonds
 ms.author: cedmonds
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 检索, 传感器, 相机, sdk, 深度, rgb, 图像, 颜色, 捕获, 分辨率, 缓冲区
-ms.openlocfilehash: 127788e565532aab121d2d11bfc7b92b6fdece57
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099437"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931697"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>检索 Azure Kinect 图像数据
 

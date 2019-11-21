@@ -1,18 +1,19 @@
 ---
-title: 快速入门 - 使用 Azure CLI 创建 Azure DNS 区域和记录
+title: 快速入门：创建 Azure DNS 区域和记录 - Azure CLI
+titleSuffix: Azure DNS
 description: 快速入门 - 了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure CLI 创建和管理你的第一个 DNS 区域和记录的分步指南。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: b5d842c2d6ff84a0f17c4e8be0bfade018edc48b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 14d47a82ec6b5ec0ede626748216889a6943bfa6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959977"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072161"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure DNS 区域和记录
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: be478a3f77996276f248d9b385954af813ac0397
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a121cc7bcb9fba3a01c1e71c7b9e6fc67dce0572
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562486"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092164"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity iOS 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "68562486"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 安装了 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
+- 配备最新版 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>、<a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1+</a>，且安装了 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
 - 通过 HomeBrew 安装的 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
 - 支持开发人员的 <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 兼容</a> iOS 设备。
 
@@ -68,7 +68,19 @@ ms.locfileid: "68562486"
 
 ## <a name="troubleshooting"></a>故障排除
 
+### <a name="rendering-issues"></a>呈现问题
+
 运行应用时，如果没看到作为背景的照相机（例如，你看到的是空白、蓝色或其他纹理），则可能需要重新导入 Unity 中的资产。 停止应用。 在 Unity 中的顶部菜单中，选择“资产”->“重新导入全部”  。 然后再次运行应用。
+
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>macOS Catalina (10.15) 上的 CocoaPods 问题
+
+如果最近更新到 macOS Catalina (10.15) 并事先安装了 CocoaPods，则 CocoaPods 可能处于损坏状态，无法正确配置 pod 和 `.xcworkspace` 项目文件。 若要解决此问题，需要通过运行以下命令重新安装 CocoaPods：
+
+```shell
+brew update
+brew install cocoapods --build-from-source
+brew link --overwrite cocoapods
+```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

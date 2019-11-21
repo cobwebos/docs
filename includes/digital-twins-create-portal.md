@@ -7,20 +7,30 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 11/12/2019
 ms.custom: include file
-ms.openlocfilehash: 7b2df437833f270a6e102257693426f4cc65b9d2
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 4ed5be09d952d4d64c269e3eaf698ad7a74fffdd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949742"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014128"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在左窗格中，选择“创建资源”  。 搜索“数字孪生”，选择“数字孪生”。   选择“创建”，启动部署过程。 
+1. 依次选择主侧栏和“+ 创建资源”  。 
+
+   [![展开主侧栏，然后选择“+ 创建资源”](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+
+1. 搜索“数字孪生”  ，然后选择“数字孪生”  。 
 
    [![用于创建新数字孪生实例的选项](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+
+   或者，选择“物联网”  ，然后选择“数字孪生（预览版）”  。
+
+1. 选择“创建”，启动部署过程。 
+
+   [![创建并确认资源的部署](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
 
 1. 在“数字孪生”窗格中，输入以下信息： 
    * **资源名称**：为数字孪生实例创建一个唯一名称。
@@ -32,10 +42,18 @@ ms.locfileid: "71949742"
 
 1. 查看数字孪生信息，然后选择“创建”  。 创建数字孪生实例可能需要数分钟。 可在“通知”窗格中监视进度。 
 
-1. 打开数字孪生实例的“概览”窗格。  记下“管理 API”下的链接。 
+1. 打开数字孪生实例的“概览”窗格。  记下“管理 API”下的链接。  管理 API URL 的格式为：  
+   
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger
+   ```
+   
+   此 URL 将引导你到适用于实例的 Azure 数字孪生 REST API 文档。 阅读[如何使用 Azure 数字孪生 Swagger](../articles/digital-twins/how-to-use-swagger.md)，了解如何阅读和使用此 API 文档。 复制管理 API URL 并将其修改成此格式：  
+    
+   ```URL
+   https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/
+   ```
+    
+   应用程序将使用此修改过的 URL 作为基 URL 来访问实例。 将此修改过的 URL 复制到一个临时文件。 下一部分将需要此 URL。
 
-   **管理 API** URL 的格式为：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger`。 此 URL 将引导你到适用于实例的 Azure 数字孪生 REST API 文档。 阅读[如何使用 Azure 数字孪生 Swagger](../articles/digital-twins/how-to-use-swagger.md)，了解如何阅读和使用此 API 文档。
-
-    将**管理 API** URL 修改成此格式：`https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`。 应用程序将使用此修改过的 URL 作为基 URL 来访问实例。 将此修改过的 URL 复制到一个临时文件。 下一部分将需要此 URL。
-
-    [![管理 API](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)
+   [![管理 API 概述](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

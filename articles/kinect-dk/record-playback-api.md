@@ -1,20 +1,20 @@
 ---
-title: Azure Kinect 录制和播放 API
-description: 使用录制和播放 API
+title: Azure Kinect 播放 API
+description: 了解如何使用 Azure Kinect 传感器 SDK 打开使用播放 API 的记录文件。
 author: xthexder
 ms.author: jawirth
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
-ms.openlocfilehash: 47933e2331d64cac74dd40c99ea7d70ab7c80cd0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452873"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931698"
 ---
-# <a name="the-azure-kinect-record-and-playback-api"></a>Azure Kinect 录制和播放 API
+# <a name="the-azure-kinect-playback-api"></a>Azure Kinect 播放 API
 
 传感器 SDK 提供一个 API 用于将设备数据记录到 Matroska (.mkv) 文件。 Matroska 容器格式可存储视频篇目、IMU 样本和设备校准结果。 可以使用随附的 [k4arecorder](record-sensor-streams-file.md) 命令行实用工具生成录制内容。 还可以直接使用录制 API 录制内容以及自定义录制的内容。
 

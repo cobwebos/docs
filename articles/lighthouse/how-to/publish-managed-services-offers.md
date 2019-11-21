@@ -1,18 +1,14 @@
 ---
 title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布将客户载入到 Azure 委派资源管理的托管服务产品。
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615467"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131289"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -81,10 +77,10 @@ ms.locfileid: "73615467"
 
 对于每个授权，你需要提供以下信息  。 然后，可根据需要多次选择“新授权”，以添加更多用户和角色定义  。
 
-  - **Azure AD 对象 ID**：要将客户资源特定权限（如角色定义所述）授予到的用户、用户组或应用程序的 Azure AD 标识符。
-  - **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
-  - **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限  。 有关这些角色的说明，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)和 [Azure 委派的资源管理的角色支持](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-  - **可分配角色**：仅当在“角色定义”  中为此授权选择了“用户访问管理员”时，才需要此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
+- **Azure AD 对象 ID**：要将客户资源特定权限（如角色定义所述）授予到的用户、用户组或应用程序的 Azure AD 标识符。
+- **Azure AD 对象显示名称**：一个易记名称，可帮助客户了解此授权的目的。 在委派资源时，客户将看到此名称。
+- **角色定义**：从列表中选择一个可用的 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限  。 有关这些角色的说明，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)和 [Azure 委派的资源管理的角色支持](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+- **可分配角色**：仅当在“角色定义”  中为此授权选择了“用户访问管理员”时，才需要此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的   。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]
 > 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。 有关其他建议，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
@@ -141,64 +137,19 @@ ms.locfileid: "73615467"
 
 完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程  。 有关此过程的详细信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)。
 
+你可以随时[发布产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer)的更新版本。 例如，你可能想要向以前发布的产品/服务添加新的角色定义。 当你执行此操作时，已添加该产品/服务的客户会在 Azure 门户中的[服务提供程序  ](view-manage-service-providers.md)页面上看到一个图标，他们可通过图标知道更新可用。 每个客户都可以[查看更改](view-manage-service-providers.md#update-service-provider-offers)并决定是否要更新到新版本。 
+
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 
-当客户添加你的产品/服务时，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”  ](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注  。 如果客户租户中的用户无法执行此委托，可能是因为他们不具有订阅的所有者角色。 若要查找可以委托订阅的用户，用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”  ，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
+客户添加你的产品/服务后，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”  ](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注  。
 
-在加入订阅（或订阅中的资源组）之前，订阅必须通过手动注册 **Microsoft.ManagedServices** 资源提供程序来获得加入授权。 客户租户中具有“参与者”或“所有者”角色的用户可以按照 [Azure 资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)中所述的步骤来执行此操作。
+> [!IMPORTANT]
+> 委托必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”  ，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
 
-然后，客户可通过以下方式之一确认订阅已准备好进行加入。
+在客户委托订阅（或订阅中的一个或多个资源组）后，将为该订阅注册 Microsoft.ManagedServices  资源提供程序，租户中的用户将能够根据产品/服务中的授权访问委托的资源。
 
-### <a name="azure-portal"></a>Azure 门户
-
-1. 在 Azure 门户中，选择订阅。
-1. 选择“资源提供程序”  。
-1. 确认 Microsoft.ManagedServices 显示为“已注册”   。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-这应会返回如下结果：
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-这应会返回如下结果：
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> 此时，如果订阅使用 Azure Databricks，则无法委托订阅（或订阅中的资源组）。 同样，如果已委托订阅（或订阅中的资源组），则当前无法在该订阅中创建 Databricks 工作区。
 
 ## <a name="next-steps"></a>后续步骤
 

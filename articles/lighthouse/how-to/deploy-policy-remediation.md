@@ -1,22 +1,18 @@
 ---
 title: 部署可修正的策略
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
 ms.date: 10/11/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 3bc85d202b9ba230130716aad34ce233037a3346
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 662daeb305856fb36bfb84f98e80bedf48b22756
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301953"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132488"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
-服务提供商可以通过 Azure Lighthouse 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[补救任务](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)的策略（即，具有 [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) 或 [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) 效果的策略），需在客户租户中创建[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
+服务提供商可以通过 [Azure Lighthouse](../overview.md) 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[补救任务](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)的策略（即，具有 [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) 或 [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) 效果的策略），需在客户租户中创建[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>创建一个可以在客户租户中将角色分配给托管标识的用户
 

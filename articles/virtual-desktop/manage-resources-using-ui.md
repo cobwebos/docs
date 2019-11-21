@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300916"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904911"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>教程：部署管理工具
 
@@ -103,9 +103,14 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 1. 选择具有模板中提供的名称（例如 Apr3UX）的 Azure 应用服务资源，然后导航到与它关联的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用 Windows 虚拟桌面凭据登录。
 3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。 
+4. 选择“默认租户组”时，将在窗口右侧显示一个菜单。 在此菜单上，找到租户组的名称并将其选中。
 
 > [!NOTE]
 > 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。
+
+## <a name="report-issues"></a>报告问题
+
+如果在管理工具或其他 Windows 虚拟桌面工具中遇到任何问题，请按照[远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的说明在 GitHub 上报告这些问题。
 
 ## <a name="next-steps"></a>后续步骤
 

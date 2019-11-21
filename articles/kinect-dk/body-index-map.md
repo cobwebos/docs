@@ -1,6 +1,6 @@
 ---
 title: Azure Kinect 人体索引映射
-description: 使用人体索引映射
+description: 了解如何在 Azure Kinect DK 中查询正文跟踪索引映射。
 author: qm13
 ms.author: quentinm
 ms.reviewer: yijwan
@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 索引, 分段, 映射
-ms.openlocfilehash: b873ad7f811c0552e4241751c1624677ef59f6b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e8ada12f9bca5d21476f32a020456fdac4e654f0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876644"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932221"
 ---
 # <a name="azure-kinect-body-tracking-index-map"></a>Azure Kinect 人体跟踪索引映射
 

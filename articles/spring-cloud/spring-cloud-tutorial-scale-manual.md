@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607516"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132906"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>教程：在 Azure Spring Cloud 中缩放应用程序
 
@@ -31,11 +31,13 @@ ms.locfileid: "73607516"
 
 1. 导航到 Azure Spring Cloud 的“概览”页。 
 
+1. 选择包含服务的资源组。
+
 1. 在左侧菜单中转到“设置”标题下的“应用”选项卡。  
 
 1. 选择要缩放的应用程序。 在此示例中，我们将缩放名为“account-service”的应用程序。 此时会转到应用程序的“概览”页。 
 
-1. 在左侧菜单中转到“设置”标题下的“缩放”选项卡。   此时会看到一个窗体，其中的行对应于我们此前提到的缩放属性。
+1. 在左侧菜单中转到“设置”标题下的“缩放”选项卡。   你应会看到以下部分中所示的缩放属性的选项。
 
 ## <a name="scale-your-application"></a>缩放应用程序
 
@@ -45,9 +47,11 @@ ms.locfileid: "73607516"
 
 * **内存/GB**：允许的最大内存量是每个应用程序实例 8GB。  一个应用程序的总内存量将是此处设置的值乘以应用程序实例数。
 
-* **实例计数**：可以在“标准”层中横向扩展到 20 个实例。 此值更改微服务应用程序的单独运行实例的数目。
+* **应用实例计数**：可以在“标准”层中横向扩展到 20 个实例。 此值更改微服务应用程序的单独运行实例的数目。
 
-确保单击“保存”按钮，应用缩放设置。 
+确保单击“保存”按钮，以应用缩放设置。 
+
+![Azure 门户中的缩放服务](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 数秒钟后，所做的更改会显示在“概览”页中，更多详细信息在“应用程序实例”选项卡中提供。   缩放不需任何代码更改或重新部署。
 

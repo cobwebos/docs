@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329733"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082823"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
@@ -91,7 +91,7 @@ curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow54
 
 ## <a name="next-steps"></a>后续步骤
 
-现已更新 HTTP 触发的函数，使其将数据写入存储队列。 若要详细了解如何使用 Python 开发 Azure Functions，请参阅 [Azure Functions Python 开发人员指南](functions-reference-python.md)及 [Azure Functions 触发器和绑定](functions-triggers-bindings.md)。 有关 Python 中完整 Function 项目的示例，请参阅 [Python Functions 示例](/samples/browse/?products=azure-functions&languages=python)。 
+现已更新 HTTP 触发的函数，使其将数据写入存储队列。 若要详细了解如何使用 Python 开发 Azure Functions，请参阅 [Azure Functions Python 开发人员指南](functions-reference-python.md)及 [Azure Functions 触发器和绑定](functions-triggers-bindings.md)。 有关 Python 中完整 Function 项目的示例，请参阅 [Python Functions 示例](/samples/browse/?products=azure-functions&languages=python)。 若要了解有关定价的详细信息，请参阅[功能定价页](https://azure.microsoft.com/pricing/details/functions/)和[估算消耗计划成本](functions-consumption-costs.md)文章。
 
 接下来，应为函数应用启用 Application Insights 监视：
 

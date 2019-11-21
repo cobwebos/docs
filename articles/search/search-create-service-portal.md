@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在门户中创建 Azure 认知搜索服务
+title: 快速入门：在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 门户中预配 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792441"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112114"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
 Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 认知搜索可以与其他 Azure 服务轻松集成，但它也可以作为单独的组件使用，或与网络服务器上的应用或在其他云平台上运行的软件集成。
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建 Azure 认知搜索资源。
+本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建资源。
 
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -37,24 +37,26 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 2. 单击左上角的加号（“+ 创建资源”）。
 3. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源   。
 
-![导航到 Azure 认知搜索资源](./media/search-create-service-portal/find-search3.png "Azure 认知搜索的导航路径")
+![在门户中创建资源](./media/search-create-service-portal/find-search3.png "在门户中创建资源")
 
-## <a name="select-a-subscription"></a>选择一个订阅
+## <a name="choose-a-subscription"></a>选择订阅
 
-如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 认知搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过[*索引器*](search-indexer-overview.md)编制索引，但仅限于同一订阅中的服务。
+第一步是设置订阅 ID 和资源组。 如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 认知搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过[*索引器*](search-indexer-overview.md)编制索引，但仅限于同一订阅中的服务。
 
 ## <a name="set-a-resource-group"></a>设置资源组
 
-资源组是必需的，它用于全方面地管理所有资源，包括成本管理。 一个资源组可以包含一个服务，也可以包含同时使用的多个服务。 例如，如果使用 Azure 认知搜索为 Azure Cosmos DB 数据库编制索引，则可以将这两个服务纳入同一个资源组进行管理。 
+资源组是必需的，它用于全方面地管理所有资源，包括成本。 一个资源组可以包含一个服务，也可以包含同时使用的多个服务。 例如，如果使用 Azure 认知搜索为 Azure Cosmos DB 数据库编制索引，则可以将这两个服务纳入同一个资源组进行管理。 
 
 若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 认知搜索资源的资源组。 
 
-使用该服务时，可以跟踪当前成本和预计的汇总成本（如屏幕截图中所示），或者向下滚动以查看各个资源的费用。
+![创建新的资源组](./media/search-create-service-portal/new-resource-group.png "创建新的资源组")
+
+经过一段时间以后，可以跟踪当前成本和预计的汇总成本（如屏幕截图中所示），或者向下滚动以查看各个资源的费用。 以下屏幕截图显示了在将多个资源合并到一个组时，最终可以看到的成本信息的种类。
 
 ![在资源组级别管理成本](./media/search-create-service-portal/resource-group-cost-management.png "在资源组级别管理成本")
 
 > [!TIP]
-> 删除资源组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
+> 资源组可以简化清理，因为删除组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。
 
 ## <a name="name-the-service"></a>为服务命名
 
@@ -77,7 +79,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 为多个服务选择同一位置可以最大程度地减少或避免带宽费用。 例如，在为另一 Azure 服务（Azure 存储、Azure Cosmos DB、Azure SQL 数据库）提供的数据编制索引时，在同一区域中创建 Azure 认知搜索服务可以避免带宽费用（当服务位于同一区域时，出站数据不会产生费用）。
 
-此外，如果你使用的是认知搜索 AI 扩充，请在认知服务资源所在的区域中创建服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
+此外，如果你使用的是 AI 扩充，请在认知服务所在的相同区域中创建你的服务。 *将 Azure 认知搜索和认知服务归置在同一区域中是 AI 扩充的必要条件*。
 
 > [!Note]
 > 印度中部目前无法提供新服务。 对于已在印度中部的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 对此区域的限制是临时的，仅限于新服务。 如果该限制不再适用，我们将删除此说明。
@@ -104,9 +106,9 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 除非使用门户访问新服务，否则以编程方式访问新服务需要提供 URL 终结点和身份验证 API 密钥。
 
-1. 在服务概览页的右侧找到并复制 URL 终结点。
+1. 在“概览”  页的右侧找到并复制 URL 终结点。
 
-2. 在左侧导航窗格中，选择“密钥”  ，然后复制任一管理员密钥（它们是相同的）。 在服务上创建、更新和删除对象需要管理员 API 密钥。
+2. 在“密钥”  页上，复制其中一个管理密钥（它们等同）。 在服务上创建、更新和删除对象需要管理员 API 密钥。 相反，查询键提供索引内容的读取访问权限。
 
    ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/get-url-key.png "URL 终结点和其他服务详细信息")
 
@@ -151,7 +153,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="next-steps"></a>后续步骤
 
-预配 Azure 认知搜索服务后，可以继续在门户中创建第一个索引。
+预配服务后，可以继续在门户中创建第一个索引。
 
 > [!div class="nextstepaction"]
 > [快速入门：在门户中创建 Azure 认知搜索索引](search-get-started-portal.md)

@@ -112,14 +112,6 @@
               items:
                 - name: SQL 数据库审核入门
                   href: sql-database-auditing.md
-        - name: 网络安全
-          items:
-            - name: 虚拟网络终结点
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: 虚拟网络终结点 - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: 专用链接
-              href: sql-database-private-endpoint-overview.md
         - name: 安全管理
           items:
             - name: 高级数据安全
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: 单一数据库安全性
           items:
+            - name: 网络访问控件
+              href: sql-database-networkaccess-overview.md
+            - name: 基于 IP 的防火墙
+              href: sql-database-firewall-configure.md
+            - name: VNet 防火墙规则
+              items:
+                - name: vNet 终结点
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: vNet 终结点 - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: 专用链接
+              href: sql-database-private-endpoint-overview.md
             - name: 审核日志格式
               href: sql-database-audit-log-format.md
             - name: 条件性访问
               href: sql-database-conditional-access.md
-            - name: 服务器级别 IP 防火墙规则
-              items:
-                - name: 创建和管理
-                  href: sql-database-firewall-configure.md
         - name: 托管实例安全性
           items:
             - name: 保护公共终结点

@@ -1,24 +1,20 @@
 ---
 title: 云解决方案提供商计划注意事项
 description: 对于 CSP 合作伙伴，Azure 委派资源管理通过启用细化权限来帮助提高安全性和控制力。
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
-ms.date: 10/17/2019
+ms.date: 10/23/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3ea32418cdf6808ad311d343d28ba2778740dbe4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550291"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132520"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 和云解决方案提供商计划
 
 如果你是 [CSP（云解决方案提供商）](https://docs.microsoft.com/partner-center/csp-overview)合作伙伴，则已经可以使用[代表客户管理 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 功能，通过 CSP 计划访问为客户创建的 Azure 订阅。 通过这一访问权限，可直接支持、配置和管理客户的订阅。
 
-通过 Azure Lighthouse，可以将 Azure 委派资源管理与 AOBO 一起使用。 这通过为用户启用更细粒度的权限，有助于提高安全性并减少不必要的访问。 它还可以提高效率和可伸缩性，因为你的用户可以使用租户中的单个登录名来处理多个客户订阅。
+通过 [Azure Lighthouse](../overview.md)，可以将 Azure 委派资源管理与 AOBO 一起使用。 这通过为用户启用更细粒度的权限，有助于提高安全性并减少不必要的访问。 它还可以提高效率和可伸缩性，因为你的用户可以使用租户中的单个登录名来处理多个客户订阅。
 
 > [!TIP]
 > 为了帮助保护客户资源，请务必查看并遵循我们的[建议安全做法](recommended-security-practices.md)以及[合作伙伴安全要求](https://docs.microsoft.com/partner-center/partner-security-requirements)。
@@ -36,6 +32,11 @@ ms.locfileid: "72550291"
 按照[将订阅加入到 Azure 委派资源管理](../how-to/onboard-customer.md)中所述的步骤，加入通过 CSP 计划创建的订阅。 租户中具有管理员代理角色的任何用户都可以执行此加入过程。
 
 ![使用 AOBO 和 Azure 委派资源管理进行租户管理](../media/csp-2.jpg)
+
+> [!NOTE]
+> [Azure 门户中的“我的客户”页](../how-to/view-manage-customers.md)现在包含“云解决方案提供程序(预览版)”部分，该部分显示了已[签署 Microsoft 客户协议 (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) 并且处于 Azure 计划下的 CSP 客户的帐单信息和资源   。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
+>
+> 无论是否已载入 Azure 委托资源管理，CSP 客户都可能出现在此部分中。 如果已载入，则它们也会显示在“客户”  部分中，如[查看和管理客户和委托的资源](../how-to/view-manage-customers.md)中所述。
 
 ## <a name="next-steps"></a>后续步骤
 

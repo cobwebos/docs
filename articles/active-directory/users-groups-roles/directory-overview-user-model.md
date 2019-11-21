@@ -1,12 +1,12 @@
 ---
-title: 用户、组、许可和角色概述 - Azure Active Directory | Microsoft Docs
+title: 用户、组、许可和角色概述 - Azure AD | Microsoft Docs
 description: Azure Active Directory 中分配的用户和许可证、管理员角色与组成员身份之间的关系
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/28/2019
+ms.date: 11/08/2019
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083896"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027741"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 

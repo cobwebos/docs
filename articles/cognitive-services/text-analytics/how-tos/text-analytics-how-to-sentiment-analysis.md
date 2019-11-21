@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 认知服务中的文本分析 REST API 进行情绪分析
+title: 文本分析 REST API 执行情绪分析
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本分析 REST API 检测情绪。
+description: 本文介绍如何通过 Azure 认知服务文本分析 REST API 检测文本中的情绪。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494446"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031464"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>示例：使用文本分析检测情绪
 
@@ -36,7 +36,7 @@ ms.locfileid: "73494446"
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
 
-[下一版本的情绪分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9)现在为公共预览版， 在 API 的文本分类和计分的准确度和细节方面有了显著改进。
+[下一版本的情绪分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)现在为公共预览版， 在 API 的文本分类和计分的准确度和细节方面有了显著改进。
 
 > [!NOTE]
 > * 情绪分析 v3 的请求格式和[数据限制](../overview.md#data-limits)与上一版本相同。

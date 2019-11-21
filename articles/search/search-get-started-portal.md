@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719976"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890009"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ ms.locfileid: "73719976"
 
 3. 继续转到下一页。
 
-   ![认知搜索的下一页按钮](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>步骤 2 - 跳过认知技能
+### <a name="step-2---skip-the-enrich-content-page"></a>步骤 2 - 跳过“充实内容”页面
 
 该向导支持创建 [AI 扩充管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
 
@@ -104,7 +102,6 @@ ms.locfileid: "73719976"
 
 2. 继续转到下一页。
 
-   ![下一页可创建索引器](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 
@@ -127,6 +124,8 @@ ms.locfileid: "73719976"
 ## <a name="view-the-index"></a>查看索引
 
 主服务页提供指向 Azure 认知搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的**索引**。 
+
+等待门户页刷新。 几分钟后，应该会看到具有文档计数和存储大小的索引。
 
    ![服务仪表板上的索引列表](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ ms.locfileid: "73719976"
 
    ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. 在“索引”下拉列表中，  选择 *hotels-sample*。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。  对于以下查询，请使用正式版 (2019-05-06)。
+2. 在“索引”下拉列表中，  选择“hotels-sample-index”  。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。  对于以下查询，请使用正式版 (2019-05-06)。
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
 

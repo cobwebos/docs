@@ -1,25 +1,25 @@
 ---
-title: Office 365 组的过期策略快速入门 - Azure Active Directory | Microsoft Docs
+title: 组过期策略快速入门  - Azure AD | Microsoft Docs
 description: Office 365 组的过期 - Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606179"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026898"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>快速入门：将 Azure Active Directory 中的 Office 365 组设置为过期
 
@@ -27,9 +27,13 @@ ms.locfileid: "65606179"
 
 过期策略很简单：
 
-* 系统通知组所有者续订要过期的组
-* 未续订的组会被删除
-* 已删除的 Office 365 组可以由组所有者或 Azure AD 管理员在 30 天内还原
+- 具有用户活动的组在快要过期时自动续订
+- 系统通知组所有者续订要过期的组
+- 未续订的组会被删除
+- 已删除的 Office 365 组可以由组所有者或 Azure AD 管理员在 30 天内还原
+
+> [!NOTE]
+> 现在，组使用 Azure AD 智能，根据是否在最近使用而自动续订。 此续订决策基于 Office 365 服务（如 Outlook、SharePoint、Teams、Yammer 等）中组的用户活动。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 

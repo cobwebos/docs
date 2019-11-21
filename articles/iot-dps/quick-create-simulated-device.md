@@ -1,20 +1,20 @@
 ---
-title: 使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
+title: 快速入门：使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心
 description: 本快速入门使用单独注册。 在本快速入门中，请使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 TPM 设备。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3df1bd879c10411800596ce7157be4554fcffaf6
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908675"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903496"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -145,7 +145,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 在本部分，我们将示例代码配置为使用[高级消息队列协议 (AMQP)](https://wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) 向设备预配服务实例发送设备的启动序列。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。     
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。  
 
     ![从门户中提取设备预配服务终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
@@ -220,4 +220,3 @@ Azure IoT 设备预配服务支持两类注册：
 
 > [!div class="nextstepaction"]
 > [Azure 快速入门 - 将 TPM 设备注册到 Azure IoT 中心设备预配服务](quick-enroll-device-tpm-java.md)
-

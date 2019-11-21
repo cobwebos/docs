@@ -14,33 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
-ms.custom: aaddev
-ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.custom: aaddev, scenarios:getting-started, languages:Java
+ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832130"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-本快速入门介绍如何将 Java Web 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。 
+本快速入门介绍如何将 Java Web 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+完成本快速入门后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
 
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
 ## <a name="prerequisites"></a>先决条件
 
 若要运行此示例，需要：
+
 - [Java 开发工具包 (JDK)](https://openjdk.java.net/) 8 或更高版本以及 [Maven](https://maven.apache.org/)。
+- 一个 Azure Active Directory (Azure AD) 租户。 有关如何获取 Azure AD 租户的详细信息，请参阅[如何获取 Azure AD 租户](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > 可以使用两个选项来启动快速入门应用程序：“快速”（选项 1）和“手动”（选项 2）
-> 
+>
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
 > 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)。
@@ -48,88 +50,111 @@ ms.locfileid: "72240193"
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
-> 
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
+>
 > 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+>
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](/azure/active-directory/develop/)页。
 > 1. 选择“新注册”。 
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
-> 1. 找到应用程序的“应用程序(客户端) ID”值。  复制此值，以后将需要它。
-> 1. 找到应用程序的“目录(租户) ID”值。  复制此值，以后将需要它。
-> 1. 选择“身份验证”菜单，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/users`。 
+> 1. 在“概述”  页上，找到应用程序的“应用程序(客户端) ID”  和“目录(租户) ID”  值。 复制这些值，供以后使用。
+> 1. 从菜单选择“身份验证”，然后添加以下信息  ：
+>    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me`。 
 >    - 选择“保存”。 
-> 1. 在左侧菜单中选择“证书和机密”，然后在“客户端机密”部分单击“新建客户端机密”：   
->     
->    - 键入（实例应用机密）的密钥说明。
+> 1. 在菜单中选择“证书和密码”，然后在“客户端密码”部分中单击“新建客户端密码”：   
+>
+>    - 键入（实例应用密码的）密钥说明。
 >    - 选择密钥持续时间“1 年”。 
->    - 单击“添加”时，将显示密钥值。  
->    - 复制密钥的值，稍后将需要它。
+>    - 选择“添加”  时，将显示密钥值。
+>    - 复制密钥的值供以后使用。 该密钥值将不会再次显示，也无法通过其他任何方式检索，因此，该值一旦在 Azure 门户中显示，请立即记下来。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+>
 > 若要正常运行本快速入门中的代码示例，需要：
-> 1. 添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/users` 作为回复 URL。
+>
+> 1. 添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me` 作为回复 URL。
 > 1. 创建客户端机密。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [执行此更改]()
+> > [为我进行这些更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-aspnet-webapp/green-check.png) 应用程序已使用这些属性进行配置。
 
 #### <a name="step-2-download-the-code-sample"></a>步骤 2：下载代码示例
- 
+
  [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
- 
- #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例 
- 
+
+#### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例
+
  1. 将 zip 文件解压缩到某个本地文件夹。
  1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
- 1. 打开 *src/main/resources/* 中的 **application.properties** 文件。
- 1. 替换应用程序属性。
-   1. 查找 `aad.clientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”  值更新 `Enter_the_Application_Id_here` 的值。 
-   1. 找到 `aad.authority`，并使用已注册的应用程序的“目录(租户) ID”值更新 `Enter_the_Tenant_Name_Here` 的值。 
-   1. 找到 `aad.secretKey`，并使用在已注册应用程序的“证书和机密”中创建的“客户端机密”更新 `Enter_the_Client_Secret_Here` 的值。  
+
+ 1. 打开可在 src/main/resources/ 文件夹中找到的 application.properties 文件，将字段“aad.clientId”、“aad.authority”和“aad.secretKey”的值替换为相应的“应用程序 ID”、“租户 ID”和“客户端密码”值，如下所示       ：
+
+    ```file
+    aad.clientId=Enter_the_Application_Id_here
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
+    aad.secretKey=Enter_the_Client_Secret_Here
+    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    ```
 
 > [!div renderon="docs"]
 > 其中：
 >
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 > - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
+> - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值  。
 
 #### <a name="step-4-run-the-code-sample"></a>步骤 4：运行代码示例
-1. 运行代码示例，然后打开浏览器并导航到 *http://localhost:8080* 。
-1. 首页包含一个“登录”按钮。  单击“登录”按钮重定向到 Azure Active Directory。  系统将提示用户输入其凭据。  
-1. 在 Azure Active Directory 中成功完成身份验证后，用户将重定向到 *http://localhost:8080/msal4jsamples/secure/aad* 。 他们将正式登录到应用程序，页面上应会显示已登录帐户的信息。 页面上还包含以下按钮： 
+
+若要运行该项目，可以：
+
+使用嵌入的 spring boot 服务器直接从 IDE 中运行它，或使用 [maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) 将其打包到 WAR 文件，然后将其部署到 J2EE 容器解决方案，如 [Apache Tomcat](http://tomcat.apache.org/)。
+
+##### <a name="running-from-ide"></a>从 IDE 运行
+
+如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 http://localhost:8080
+
+1. 在前面的页面上，选择“登录”  按钮以重定向到 Azure Active Directory 并提示用户输入其凭据。
+
+1. 用户通过身份验证后，会重定向到 http://localhost:8080/msal4jsamples/secure/aad  。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。
-    - *显示用户*：获取 Microsoft Graph 的令牌，然后使用请求中附加的令牌来调用 Microsoft Graph，以获取租户中的所有用户。
+    - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含该令牌的请求调用 Microsoft Graph，这将返回有关已登录用户的基本信息。
+
+> [!IMPORTANT]
+> 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 有关如何使用证书的详细信息，请参阅[用于应用程序身份验证的证书凭据](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)。
 
 ## <a name="more-information"></a>详细信息
 
 ### <a name="getting-msal"></a>获取 MSAL
-MSAL4J 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序中的 pom.xml 或 build.gradle 文件进行以下更改来管理依赖项。 
+
+MSAL4J 是一个 Java 库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。
+
+可以使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序的 pom.xml (Maven) 或 build.gradle (Gradle) 文件进行以下更改来管理依赖项。
 
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
-    <version>0.5.0-preview</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 ```
 
-
 ### <a name="msal-initialization"></a>MSAL 初始化
-可以通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL4J 的引用： 
+
+通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL4J 的引用：
 
 ```Java
 import com.microsoft.aad.msal4j.*;
@@ -140,12 +165,12 @@ import com.microsoft.aad.msal4j.*;
 了解有关权限和许可的详细信息：
 
 > [!div class="nextstepaction"]
-> [权限和许可](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+> [权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
 若要详细了解此方案的授权流，请查看 Oauth 2.0 授权代码流：
 
 > [!div class="nextstepaction"]
-> [授权代码 Oauth 流](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [授权代码 Oauth 流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 
 帮助我们改进 Microsoft 标识平台。 通过完成简短的两问题调查，告诉我们你的想法。
 

@@ -1,18 +1,18 @@
 ---
 title: 关于 Azure Kinect DK
-description: Azure Kinect DK 概述
+description: 概述 Azure Kinect 开发者工具包 (DK) 工具和集成服务。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概述, 开发人员工具包, DK, 设备, 深度, 人体跟踪, 语音, 认知服务, SDK, 固件
-ms.openlocfilehash: e3b8464a1828f0c1588d353f5c4d74966c90f549
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 44842a79b18b91d419ed5839a01781a7f11c4c06
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800240"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931769"
 ---
 # <a name="about-azure-kinect-dk"></a>关于 Azure Kinect DK
 

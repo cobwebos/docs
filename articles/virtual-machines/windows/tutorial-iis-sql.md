@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中创建运行 SQL、IIS、.NET 堆栈的 VM | Microsoft Docs
+title: 教程 - 在 Azure 中创建运行 SQL、IIS、.NET 堆栈的 VM
 description: 本教程介绍如何在 Azure 中的 Windows 虚拟机上安装 Azure SQL、IIS、.NET 堆栈。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8b2cf6f5475966426ee75cf73ce7bd84abc9ba42
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101612"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064665"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows VM 中安装 SQL、IIS、.NET 堆栈
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：捕获 Azure 数字孪生空间的事件 | Microsoft Docs
+title: 教程：捕获 Azure 数字孪生空间的事件
 description: 了解如何使用本教程中的步骤将 Azure 数字孪生与逻辑应用集成，以便从空间接收通知。
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: 26976956722d77e2dfb8c17734c207b2667c0126
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949175"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129238"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -38,7 +38,7 @@ ms.locfileid: "71949175"
 - 一个正在运行的数字孪生实例。
 - 在工作计算机上下载并解压缩的[数字孪生 C# 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
 - 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。
-- 用于发送通知电子邮件的 Office 365 帐户。
+- 用于发送通知电子邮件的 [Office 365](https://products.office.com/home) 帐户。
 
 > [!TIP]
 > 如果要预配新实例，请使用唯一的数字孪生实例名称。
@@ -63,7 +63,7 @@ ms.locfileid: "71949175"
 
 1. 从资源组浏览到事件网格主题，选择“概览”，将“主题终结点”的值复制到某个临时文件。   下一部分将需要此 URL。 
 
-1. 选择“访问密钥”，  将 **YOUR_KEY_1** 和 **YOUR_KEY_2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
+1. 选择“访问密钥”，  将**密钥 1** 和**密钥 2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
 
     [![事件网格密钥](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ ms.locfileid: "71949175"
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. 将占位符 `<Primary connection string for your Event Grid>` 替换为 **YOUR_KEY_1** 的值。
+1. 将占位符 `<Primary connection string for your Event Grid>` 替换为密钥 1 的值  。
 
-1. 将占位符 `<Secondary connection string for your Event Grid>` 替换为 **YOUR_KEY_2** 的值。
+1. 将占位符 `<Secondary connection string for your Event Grid>` 替换为密钥 2 的值  。
 
 1. 将**路径**的占位符替换为事件网格主题的路径。 从**主题终结点** URL 中删除 **https://** 以及尾随的资源路径即可获取此路径。 它看起来应该类似于此格式：*yourEventGridName.yourLocation.eventgrid.azure.net*。
 
@@ -178,7 +178,7 @@ ms.locfileid: "71949175"
 
    a. 选择“添加操作”，然后选择“Office 365 Outlook”。  
 
-   b. 从“操作”列表中选择“发送电子邮件”。   选择“登录”，  使用电子邮件帐户凭据。 如果系统提示，请选择“允许访问”。 
+   b. 从“操作”列表中选择“发送电子邮件 (V2)”。   选择“登录”，  使用电子邮件帐户凭据。 如果系统提示，请选择“允许访问”。 
 
    c. 在“收件人”框中，输入用于接收通知的电子邮件 ID。  在“主题”中  输入文本“有关空间中空气质量差的数字孪生通知”，  然后从**分析 JSON** 的“动态内容”列表中选择“TopologyObjectId”。  
 

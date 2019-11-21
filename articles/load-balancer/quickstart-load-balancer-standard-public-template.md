@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建标准负载均衡器 - Azure 资源管理器模板
-titlesuffix: Azure Load Balancer
+title: 快速入门：创建标准负载均衡器 - Azure 模板
+titleSuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure 资源管理器模板创建标准负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161387"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048747"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建标准负载均衡器以对 VM 进行负载均衡
 

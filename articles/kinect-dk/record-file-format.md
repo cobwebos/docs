@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Kinect 传感器 SDK 录制文件格式
-description: 录制文件格式详细信息
+description: 了解如何使用 Azure Kinect 传感器 SDK 录制的文件格式。
 author: xthexder
 ms.author: jawirth
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
-ms.openlocfilehash: 8accae3a8382087d5ab78028bec9cb4639de7e6f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490054"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932207"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>使用 Azure Kinect 传感器 SDK 录制文件格式
 
@@ -47,7 +47,7 @@ ffmpeg -i output.mkv -map 0:1 -vsync 0 depth%04d.png
 如果在不使用播放 API 的情况下从文件中提取 IMU 数据，则数据将采用二进制格式。
 下面是 IMU 数据的结构。 所有字段均为小字节序。
 
-| 字段                        | Type     |
+| 字段                        | 类型     |
 |------------------------------|----------|
 | 加速度传感器时间戳 (µs) | uint64   |
 | 加速度传感器数据 (x, y, z) | float[3] |

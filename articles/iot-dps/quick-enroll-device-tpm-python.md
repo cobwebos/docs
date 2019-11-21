@@ -1,23 +1,23 @@
 ---
-title: 使用 Python 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
+title: 快速入门：使用 Python 将 TPM 设备注册到 Azure 设备预配服务
 description: Azure 快速入门 - 使用 Python 预配服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6e38d5f3a959d363347c8b266b7bbaf165f34937
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 49e7961200a2ab523997350fffa6606d65f60c8c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249058"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903404"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 以下步骤演示了如何借助示例 Python 应用程序，使用 [Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) 在 Azure IoT 中心设备预配服务中以编程方式为 TPM 设备创建单个注册。 虽然 Python 服务 SDK 在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机来演示注册过程。
@@ -54,7 +54,7 @@ ms.locfileid: "51249058"
 
 1. 使用文本编辑器，新建一个 **TpmEnrollment.py** 文件。
 
-1. 在 **TpmEnrollment.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户**的**设备预配服务**的“共享访问策略”下。 将 `endorsementKey` 替换为此前在[准备环境](quick-enroll-device-tpm-python.md#prepareenvironment)中记下的值。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
+1. 在 **TpmEnrollment.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户**的**设备预配服务**的“共享访问策略”  下。 将 `endorsementKey` 替换为此前在[准备环境](quick-enroll-device-tpm-python.md#prepareenvironment)中记下的值。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -99,7 +99,7 @@ ms.locfileid: "51249058"
 
 1. 观察成功注册后的输出。
 
-1. 在 Azure 门户中导航到预配服务。 单击“管理注册”。 请注意，TPM 设备显示在“单个注册”选项卡下，使用的名称 `registrationid` 是以前创建的。 
+1. 在 Azure 门户中导航到预配服务。 单击“管理注册”。  请注意，TPM 设备显示在“单个注册”选项卡下，  使用的名称 `registrationid` 是以前创建的。 
 
     ![验证是否已在门户中成功完成 TPM 注册](./media/quick-enroll-device-tpm-python/1.png)  
 
@@ -109,7 +109,7 @@ ms.locfileid: "51249058"
 
 1. 关闭计算机上的 Python 示例输出窗口。
 1. 如果已创建模拟的 TPM 设备，请关闭 TPM 模拟器窗口。
-1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“单个注册”选项卡。选择通过本快速入门创建的注册项的“注册 ID”，然后单击边栏选项卡顶部的“删除”按钮。  
+1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“单个注册”选项卡。    选择通过本快速入门创建的注册项的“注册 ID”，然后单击边栏选项卡顶部的“删除”按钮。   
 
 
 ## <a name="next-steps"></a>后续步骤

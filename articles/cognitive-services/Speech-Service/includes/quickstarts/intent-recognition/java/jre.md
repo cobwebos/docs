@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 441c938e9ab74eafecaf0f9188c0884696eccfae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2aa8311c9284d9aff3c50fcec30bc8ab9df6b11b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506113"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125414"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
+>
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
@@ -44,13 +45,13 @@ ms.locfileid: "73506113"
 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
 
 > [!NOTE]
-> 请务必使用 LUIS 终结点密钥，而非初学者或创作密钥，因为仅终结点密钥对于语音转意向的识别有效。 有关如何获取正确密钥的说明，请参阅[创建 LUIS 应用程序和获取终结点密钥](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)。
+> 请务必使用 LUIS 终结点密钥（而非初学者密钥或创作密钥），因为只有终结点密钥对于语音转意向的识别有效。 有关如何获取正确密钥的说明，请参阅[创建 LUIS 应用程序并获取终结点密钥](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-## <a name="initialize-a-intentrecognizer"></a>初始化 IntentRecognizer
+## <a name="initialize-an-intentrecognizer"></a>初始化 IntentRecognizer
 
-现在，创建 `IntentRecognizer`。 将此代码插入语音配置下。
+现在，让我们创建 `IntentRecognizer`。 将此代码插入语音配置下。
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=30)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>添加 LanguageUnderstandingModel 和意向
@@ -60,7 +61,7 @@ ms.locfileid: "73506113"
 
 ## <a name="recognize-an-intent"></a>识别意向
 
-在 `IntentRecognizer` 对象中，我们将调用 `recognizeOnceAsync()` 方法。 此方法告知语音服务你要发送单个短语进行识别，并在识别该短语后停止识别语音。
+在 `IntentRecognizer` 对象中，我们将调用 `recognizeOnceAsync()` 方法。 此方法是告知语音服务你要发送单个需识别的短语，在确定该短语后会停止识别语音。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=41)]
 
@@ -76,7 +77,8 @@ ms.locfileid: "73506113"
 
 ## <a name="check-your-code"></a>查看代码
 
-此时，代码应如下所示：（我们已向此版本添加了一些注释）[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
+此时，代码应如下所示：  
+（我们已向此版本添加了一些注释）[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 

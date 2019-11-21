@@ -2,13 +2,13 @@
 title: Azure 管理概述 - Azure 治理
 description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
 ms.date: 12/06/2018
-ms.topic: article
-ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
-ms.translationtype: MT
+ms.topic: overview
+ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013911"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132840"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 中的管理服务概述
 
@@ -18,7 +18,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 下图说明了维护任何应用程序或资源所需的不同管理方面。 可将这些不同的区域视为一个生命周期。 每个区域都需要在资源的整个生存期内保持连续。 此资源生命周期始于其初始部署，贯穿其持续操作，在其停用时结束。
 
-![Azure 中的管理规则](../monitoring/media/management-overview/management-capabilities.png)
+![Azure 中的管理原则](../monitoring/media/management-overview/management-capabilities.png)
 
 没有一个 Azure 服务完全满足特定管理区域的要求。 但搭配多个服务就能实现这一点。 某些服务（如 Application Insight）可为 Web 应用程序提供有针对性的监视功能。 其他服务（例如 Azure Monitor 日志）可为其他服务存储管理数据。 可使用此功能分析由不同服务收集的不同类型的数据。
 
@@ -36,7 +36,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 ## <a name="govern"></a>治理
 
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。 它涉及规划计划和设置战略优先级。
-Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md)，可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
+Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 [Azure 成本管理](../cost-management/overview-cost-mgt.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。
 
 ## <a name="secure"></a>安全
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91ec337a3237e1bde54b42463d97a803f113c7c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 064af4f54f3d3069c7e04a66cc7248dbfaa7ba0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813138"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008551"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>快速入门：在 Azure 门户中将来宾用户添加到目录
 
@@ -37,35 +37,39 @@ ms.locfileid: "65813138"
 ## <a name="add-a-new-guest-user-in-azure-ad"></a>在 Azure AD 中添加新的来宾用户
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“用户”。
+2. 在左窗格中选择“Azure Active Directory”  。
+3.  在“管理”下，选择“用户”   。
 
     ![显示在何处选择“用户”选项的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
-4.  选择“新来宾用户”。
+4.  选择“新来宾用户”。 
 
     ![显示选择“新来宾用户”选项的位置的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
-5.  在“用户名”下，输入外部用户的电子邮件地址。 在“包含带邀请的个人消息”下，键入欢迎消息。 
+5. 在“新建用户”页上，选择“邀请用户”，然后添加来宾用户的信息   。 
 
-    ![显示在何处输入来宾用户邀请消息的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+   - **名称。** 来宾用户的姓氏和名字。
+   - **电子邮件地址(必填)** 。 来宾用户的电子邮件地址。
+   - **个人消息(可选)** 包含发送给来宾用户的个人欢迎消息。
+   - **组**：可以将来宾用户添加到一个或多个现有组，也可以稍后进行。
+   - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 
 
-6. 选择“邀请”，以自动向来宾用户发送邀请。 右上角会显示一则通知，其中的消息显示“已成功邀请用户”。 
+6. 选择“邀请”，以自动向来宾用户发送邀请。  右上角会显示一则通知，其中的消息显示“已成功邀请用户”  。 
 7.  发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
 ## <a name="assign-an-app-to-the-guest-user"></a>向来宾用户分配应用
 向测试租户添加 Salesforce 应用，并向应用分配测试来宾用户。
 1.  以 Azure AD 管理员身份登录到 Azure 门户。
-2.  在左窗格中，选择“企业应用程序”。
-3.  选择“新建应用程序”。
-4. 在“从库中添加”下，搜索 Salesforce，然后将其选中。
+2.  在左窗格中，选择“企业应用程序”  。
+3.  选择“新建应用程序”  。
+4. 在“从库中添加”下，搜索 Salesforce，然后将其选中   。
 
     ![显示“从库添加”搜索框的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. 选择 **添加** 。
-6. 在“管理”下，选择“单一登录”，再在“单一登录模式”下选择“基于密码的登录”，然后单击“保存”。
-7. 在“管理”下，选择“用户和组” > “添加用户” > “用户和组”。
-8. 使用搜索框搜索测试用户（如必需），再选择列表中的测试用户。 然后单击“选择”。
-9. 选择“分配”。 
+6. 在“管理”下，选择“单一登录”，再在“单一登录模式”下选择“基于密码的登录”，然后单击“保存”      。
+7. 在“管理”下，选择“用户和组” > “添加用户” > “用户和组”     。
+8. 使用搜索框搜索测试用户（如必需），再选择列表中的测试用户。 然后单击“选择”  。
+9. 选择“分配”。  
 
 ## <a name="accept-the-invitation"></a>接受邀请
 现在作为来宾用户登录以查看邀请。
@@ -74,21 +78,21 @@ ms.locfileid: "65813138"
 
     ![显示企业间邀请电子邮件的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
-3.  在电子邮件正文中，选择“入门”。 浏览器中随即打开一个“查看权限”页面。 
+3.  在电子邮件正文中，选择“入门”  。 浏览器中随即打开一个“查看权限”页面  。 
 
     ![显示“查看权限”页的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
-4. 选择“接受”。 随即打开访问面板，其中列出来宾用户可访问的应用程序。
+4. 选择“接受”  。 随即打开访问面板，其中列出来宾用户可访问的应用程序。
 
 ## <a name="clean-up-resources"></a>清理资源
 不再需要测试来宾用户和测试应用时，请将其删除。
 1.  以 Azure AD 管理员身份登录到 Azure 门户。
-2.  在左窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“企业应用程序”。
-4.  打开 Salesforce 应用程序，然后选择“删除”。
-5.  在左窗格中选择“Azure Active Directory”。
-6.  在“管理”下，选择“用户”。
-7.  选择测试用户，然后选择“删除用户”。
+2.  在左窗格中选择“Azure Active Directory”  。
+3.  在“管理”下，选择“企业应用程序”   。
+4.  打开 Salesforce 应用程序，然后选择“删除”   。
+5.  在左窗格中选择“Azure Active Directory”  。
+6.  在“管理”下，选择“用户”   。
+7.  选择测试用户，然后选择“删除用户”  。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你在 Azure 门户中创建了一个来宾用户，还发送了一个应用共享邀请。 然后，你以来宾用户的视角查看了兑换过程，并已验证确定来宾用户的访问面板上显示有应用。 要详细了解如何添加来宾用户进行协作，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)。

@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 传感器 SDK 下载
-description: 传感器 SDK 的下载链接和安装说明。
+description: 了解如何在 Windows 和 Linux 中下载和安装 Azure Kinect 传感器 SDK。
 author: Brent-A
 ms.author: brenta
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装
-ms.openlocfilehash: 51d39ac03c3dd1e940b2b717274679db8e1acb88
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: fd24ba7e6232bb2e326bb161c5fec34b57a5b589
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249206"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931696"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 531199303f7b00083bcd7139ac00ac36bde5c583
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004080"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837520"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
@@ -33,7 +33,7 @@ Jenkins 支持这样一个模型：其中的 Jenkins 服务器将工作委托给
 
 ## <a name="connect-to-jenkins"></a>连接到 Jenkins
 
-导航到虚拟机（例如，Web 浏览器中的 http://jenkins2517454.eastus.cloudapp.azure.com/)。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
+在 Web 浏览器中导航到虚拟机（例如 `http://jenkins2517454.eastus.cloudapp.azure.com/`。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -55,7 +55,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-在下一页选择“安装建议的插件”，然后创建用于访问 Jenkins 仪表板的 Jenkins 管理员用户。
+在下一页选择“安装建议的插件”，然后创建用于访问 Jenkins 仪表板的 Jenkins 管理员用户。 
 
 ![Jenkins 已准备就绪！](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
@@ -63,25 +63,25 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 
 ## <a name="create-your-first-job"></a>创建第一个作业
 
-从 Jenkins 控制台选择“创建新作业”，将其命名为“mySampleApp”并选择“自由格式项目”，然后选择“确定”。
+从 Jenkins 控制台选择“创建新作业”，将其命名为“mySampleApp”并选择“自由格式项目”，然后选择“确定”。    
 
 ![创建新的作业](./media/install-jenkins-solution-template/jenkins-new-job.png) 
 
-选择“源代码管理”选项卡，启用“Git”，然后在“存储库 URL”字段中输入以下 URL：`https://github.com/spring-guides/gs-spring-boot.git`
+选择“源代码管理”选项卡，启用“Git”，然后在“存储库 URL”字段中输入以下 URL：    `https://github.com/spring-guides/gs-spring-boot.git`
 
 ![定义 Git 存储库](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。 选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 `complete`，并输入 `build` 作为“任务”。
+依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。    选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 `complete`，并输入 `build` 作为“任务”。   
 
 ![使用要生成的 Gradle 包装器](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-选择“高级”，然后在“根生成脚本”字段中输入 `complete`。 选择“保存”。
+选择“高级”，然后在“根生成脚本”字段中输入 `complete`。   选择“保存”。 
 
 ![在 Gradle 包装器生成步骤中设置高级设置](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
 ## <a name="build-the-code"></a>生成代码
 
-选择“立即生成”，编译代码并打包示例应用。 生成完成后，选择项目的 Workspace 链接。
+选择“立即生成”  ，编译代码并打包示例应用。 生成完成后，选择项目的  Workspace 链接。
 
 ![浏览到要从生成中获取 JAR 文件的工作区](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
 

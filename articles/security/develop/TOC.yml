@@ -62,6 +62,8 @@
               href: threat-modeling-tool-releases-71604081.md
             - name: Threat Modeling Tool 更新版 7.1.60702.1 - 2019 年 7 月 2 日
               href: threat-modeling-tool-releases-71607021.md
+            - name: Threat Modeling Tool 更新版 7.1.61015.1 - 2019/10/16
+              href: threat-modeling-tool-releases-71610151.md
         - name: 缓解措施
           href: threat-modeling-tool-mitigations.md
           items:

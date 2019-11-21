@@ -1,6 +1,6 @@
 ---
-title: 快速入门：Azure 时序见解资源管理器 | Microsoft Docs
-description: 此快速入门说明如何在 Web 浏览器中开始使用 Azure 时序见解资源管理器，使大量 IoT 数据可视化。 在演示环境中浏览关键功能。
+title: 快速入门：Azure 时序见解资源管理器 - Azure 时序见解 | Microsoft Docs
+description: 了解如何开始使用 Azure 时序见解资源管理器。 可视化大量 IoT 数据和浏览环境的主要功能。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990905"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006420"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
 

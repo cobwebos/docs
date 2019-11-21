@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 741c6c1f937988dcce41603417a1bc7dc95091cb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747084"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073981"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 
@@ -106,18 +106,18 @@ ms.locfileid: "73747084"
 
 ## <a name="start-a-backup-job"></a>启动备份作业
 
-备份会根据备份策略中指定的计划来运行。 还可以运行临时备份：
+备份会根据备份策略中指定的计划来运行。 你还可以运行按需备份：
 
 - 第一个初始备份作业会创建一个完整恢复点。
 - 初始备份之后，每个备份作业都会创建增量恢复点。
 - 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
-若要运行临时备份，可使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)。
+若要运行按需备份，可使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem)。
 
 - 使用 [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) 指定保管库中保存备份数据的容器。
 - 要备份的每个 VM 被视为一个项。 若要启动备份作业，请使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 获取有关 VM 的信息。
 
-运行临时备份作业，如下所示：
+运行按需备份作业，如下所示：
 
 1. 指定容器，获取 VM 信息，并运行备份。
 

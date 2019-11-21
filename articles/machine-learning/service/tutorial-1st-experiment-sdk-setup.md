@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582492"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049136"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 在顶部栏上，选择用来运行笔记本的笔记本 VM。 这些 VM 中已预先配置了运行 Azure 机器学习所需的一切设置。 可以选择任何工作区用户创建的 VM。 
 
-1. 如果未找到任何 VM，请选择“+ 添加计算”来创建 VM  。
+1. 如果未找到任何 VM，请选择“+ 添加 VM”来创建 VM。  
 
     1. 创建 VM 时请提供其名称。  该名称必须包含 2 到 16 个字符。 有效字符为字母、数字和 - 字符。该名称必须在整个 Azure 订阅中唯一。
 

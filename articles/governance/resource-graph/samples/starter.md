@@ -1,17 +1,14 @@
 ---
 title: 初学者查询示例
 description: 使用 Azure 资源图来运行一些初学者查询，包括计算资源数、对资源进行排序或按特定标记排序。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: ca7fc2ba3e952f93f85c677eb8a8a7322901c7d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622502"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076119"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 
@@ -253,7 +250,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ---
 
 > [!NOTE]
-> 请注意，虽然 `=~` 允许不区分大小写的匹配，但在查询中使用属性（例如 properties.storageProfile.osDisk.osType）要求大小写正确  。 如果属性的大小写不正确，它仍可返回值，但分组或汇总可能不正确。
+> 请注意，虽然 `=~` 允许不区分大小写的匹配，但在查询中使用属性（例如 properties.storageProfile.osDisk.osType）要求大小写正确  。 如果属性的大小写不正确，则会返回 null 值或不正确值，但分组或汇总可能不正确。
 
 ## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" /> 显示包含存储的资源
 

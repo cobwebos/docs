@@ -1,6 +1,6 @@
 ---
-title: 为适用于 IoT 的 Azure 安全中心创建安全模块孪生 | Microsoft Docs
-description: 了解如何创建适用于 IoT 的 Azure 安全中心模块孪生以用于适用于 IoT 的 Azure 安全中心。
+title: 快速入门：为适用于 IoT 的 Azure 安全中心创建安全模块孪生
+description: 在本快速入门中，了解如何创建适用于 IoT 的 Azure 安全中心模块孪生以用于适用于 IoT 的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597083"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904165"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 

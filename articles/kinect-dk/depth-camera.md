@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect DK 深度相机
-description: Azure Kinect DK 深度相机的概念
+description: 了解 Azure Kinect DK 中的深度照相机的操作原则和主要功能。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度相机, tof, 原理, 性能, 失效
-ms.openlocfilehash: ec3e2aed0c0ec191e5b69dfd2db767f13eb16ecd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453016"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932219"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK 深度相机
 

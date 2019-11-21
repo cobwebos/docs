@@ -1,5 +1,5 @@
 ---
-title: 通过专用连接将本地网络扩展到 Azure - ExpressRoute 概述：Azure | Microsoft Docs
+title: Azure ExpressRoute 概述：通过专用连接进行连接
 description: 此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123336"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083409"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述
 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Office 365 等 Microsoft 云服务建立连接。

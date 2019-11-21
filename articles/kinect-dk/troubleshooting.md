@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 已知问题和故障排除
-description: Azure Kinect 设备的已知问题和故障排除
+description: 了解在 Azure Kinect DK 中使用传感器 SDK 时可能会遇到的一些已知问题及其故障排除提示。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 9209b3ad3b3978294d54272cadb3ab8bcc260078
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79e57f21445ab8074fc15a2757d37f55d29f2316
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172690"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932203"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 

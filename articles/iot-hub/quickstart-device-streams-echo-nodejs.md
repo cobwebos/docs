@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure IoT 中心设备流（预览版）使用 Node.js 与设备应用进行通信 | Microsoft Docs
+title: 通过 Azure IoT 中心设备流使用 Node.js 与设备应用进行通信
 description: 在本快速入门中，你将运行一个 Node.js 服务端应用程序，以便通过设备流与 IoT 设备通信。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900844"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083733"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 

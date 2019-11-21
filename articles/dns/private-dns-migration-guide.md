@@ -1,22 +1,29 @@
 ---
 title: 将旧的 Azure DNS 专用区域迁移到新的资源模型
+titleSuffix: Azure DNS
 description: 本指南将分步说明如何将旧的 DNS 专用区域迁移到最新的资源模型
 services: dns
-author: rohinkoul
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: rohink
-ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960557"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076728"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>将旧的 Azure DNS 专用区域迁移到新的资源模型
 
-当前的 Azure DNS 专用区域版本提供了新的功能，并删除了初始公共预览版的一些局限和限制。 但是，使用预览 API 创建的专用 DNS 区域不具有这些优势。 要获得新版本的优势，必须将旧的 DNS 专用区域资源迁移到新的资源模型。 迁移过程很简单，我们提供了一个 PowerShell 脚本来自动执行此过程。 本指南将分步说明如何将 Azure DNS 专用区域迁移到新的资源模型。
+在公开预览期间，通过将“zoneType”属性设置为“Private”，使用“dnszones”资源创建专用 DNS 区域。 此类区域将在 2019 年 12 月 31 日之后不受支持，并且必须迁移到使用“privateDnsZones”资源类型而非“dnszones”的 GA 资源模型。 迁移过程很简单，我们提供了一个 PowerShell 脚本来自动执行此过程。 本指南将分步说明如何将 Azure DNS 专用区域迁移到新的资源模型。
+
+若要查找需要迁移的 dnszones 资源，在 Azure CLI 中执行以下命令。
+```azurecli
+az account set --subscription <SubscriptionId>
+az network dns zone list --query "[?zoneType=='Private']"
+```
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +32,7 @@ ms.locfileid: "71960557"
 确保已安装 Azure PowerShell 的 Az.PrivateDns 模块。 要安装此模块，打开提升的 PowerShell 窗口（管理模式），并输入以下命令
 
 ```powershell
-Install-Module -Name Az.PrivateDns -AllowPrerelease
+Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
@@ -44,6 +51,9 @@ install-script PrivateDnsMigrationScript
 ![安装脚本](./media/private-dns-migration-guide/install-migration-script.png)
 
 你还可以在 https://www.powershellgallery.com/packages/PrivateDnsMigrationScript 网站上手动获取最新版 PowerShell 脚本
+
+>[!IMPORTANT]
+>迁移脚本不得在 Azure 云 shell 中运行，并且必须在连接到 Internet 的 VM 或本地计算机上执行。
 
 ## <a name="running-the-script"></a>运行脚本
 

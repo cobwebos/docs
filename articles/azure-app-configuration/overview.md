@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687048"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129700"
 ---
 # <a name="what-is-azure-app-configuration"></a>什么是 Azure 应用程序配置？
 
@@ -30,7 +30,7 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 
 基于云的应用程序通常在多个区域中的多个虚拟机或容器上运行，并且使用多个外部服务。 创建可靠且可伸缩的分发式应用程序是一项挑战。
 
-各种编程方法可帮助开发人员应对应用程序构建日益复杂的问题。 例如，12 要素应用描述了很多经过良好测试的架构模式和云应用程序的最佳配用做法。 本指南中的一个关键建议是将配置从代码中分离出来。 在本例中，应用程序的配置设置应保留在其可执行文件的外部，并从其运行时环境或外部源进行读取。
+各种编程方法可帮助开发人员应对应用程序构建日益复杂的问题。 例如，[十二要素应用](https://12factor.net/)描述了很多经过良好测试的架构模式和云应用程序的最佳配用做法。 本指南中的一个关键建议是将配置从代码中分离出来。 在本例中，应用程序的配置设置应保留在其可执行文件的外部，并从其运行时环境或外部源进行读取。
 
 当应用程序可使用应用程序配置时，可参见以下示例，了解使用它可让哪些类型的应用程序受益：
 

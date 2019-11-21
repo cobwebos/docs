@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279881"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73987376"
 ---
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -26,7 +26,7 @@ ms.locfileid: "71279881"
 可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
 1. 在 Azure 门户的左上角单击“创建资源”。 
 2. 从“新建”页中选择“数据库”，并从“数据库”页中选择“用于 PostgreSQL 的 Azure 数据库”。    
-3. 对于部署选项，请单击“Hyperscale (Citus)服务器组 - 预览版”下的“创建”按钮   。
+3. 对于部署选项，请单击“Hyperscale (Citus) 服务器组”下的“创建”按钮   。
 4. 使用以下信息填写“新服务器详细信息”窗体：
    - 资源组：单击此字段的文本框下的“新建”链接  。 输入一个名称，例如 **myresourcegroup**。
    - 服务器组名称：输入新服务器组的唯一名称，该名称也将用于服务器子域。
@@ -38,7 +38,7 @@ ms.locfileid: "71279881"
    > 登录到服务器及其数据库时需要使用在此处指定的服务器管理员密码。 请牢记或记录此信息，以后会使用到它。
 
 5. 单击“配置服务器组”  。 保留该部分的设置不变，单击“保存”  。
-6. 单击屏幕底部的“下一步:  网络 >”。
+6. 单击页面底部的“下一步:  网络 >”。
 
 7. 在“网络”  选项卡中，单击“公共终结点”  单选按钮。
    ![已选择公共终结点](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)

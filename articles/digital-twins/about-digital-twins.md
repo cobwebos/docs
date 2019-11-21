@@ -1,5 +1,5 @@
 ---
-title: Azure 数字孪生概述 | Microsoft Docs
+title: 概述 - Azure 数字孪生 | Microsoft Docs
 description: 详细了解 Azure 数字孪生，一种适用于空间智能的 Azure IoT 解决方案。
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: 93adf946ac630d2839f761b01a02d02f6ca92b64
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 07065e891ec46f51636fad005ffeece976c9f2fa
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718237"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005958"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
 

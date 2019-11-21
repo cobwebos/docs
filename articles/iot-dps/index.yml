@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure IoT 中心设备预配服务文档
 metadata:
-  title: Azure IoT 中心设备预配服务文档 - 教程和 API 参考
+  title: Azure IoT 中心设备预配服务文档
   description: Azure IoT 中心设备预配服务 - 教程、快速入门、操作指南和 API 参考
   author: nberdy
   ms.service: iot-dps
@@ -11,7 +11,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: IoT 中心设备预配服务是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触实时预配至合适的 IoT 中心，方便客户采用安全且可缩放的方式预配数百万台设备。 使用快速入门、 教程和示例，了解如何将设备预配到 IoT 中心。
+  description: IoT 中心设备预配服务 (DPS) 是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触、近实时地预配至合适的 IoT 中心，方便客户采用安全且可缩放的方式预配数百万台设备。 使用快速入门、 教程和示例，了解如何将设备预配到 IoT 中心。
 sections:
   - title: 5 分钟快速入门
     items:

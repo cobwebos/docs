@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Android 上运行语音设备 SDK - 语音服务
+title: 快速入门：在 Android 上运行语音设备 SDK
 titleSuffix: Azure Cognitive Services
 description: Android 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3eb6ec28879a7c53feb270e33857cd67dc06b0b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491318"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111688"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -29,46 +29,47 @@ ms.locfileid: "73491318"
 
 开始使用语音设备 SDK 之前，需要：
 
-* 按[开发工具包](get-speech-devices-sdk.md)中提供的说明启动设备。
+- 按[开发工具包](get-speech-devices-sdk.md)中提供的说明启动设备。
 
-* 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
-   > [!NOTE]
-   > Android-Sample-Release.zip 文件包含 Android 示例应用，本快速入门假设该应用提取到 C:\SDSDK\Android-Sample-Release
+- 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
 
-* 获取[语音服务的 Azure 订阅密钥](get-started.md)
+  > [!NOTE]
+  > Android-Sample-Release.zip 文件包含 Android 示例应用，本快速入门假设该应用提取到 C:\SDSDK\Android-Sample-Release
 
-* 如果计划使用对话听录，则必须使用[圆形麦克风设备](get-speech-devices-sdk.md)，该功能目前仅适用于“centralus”区域的“en-US”和“eastasia”区域的“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
+- 获取[语音服务的 Azure 订阅密钥](get-started.md)
 
-* 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
+- 如果计划使用对话听录，则必须使用[圆形麦克风设备](get-speech-devices-sdk.md)，该功能目前仅适用于“centralus”区域的“en-US”和“eastasia”区域的“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
-    可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。 
+- 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
-* 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
+  可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。 
+
+- 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 
 ## <a name="set-up-the-device"></a>设置设备
 
 1. 在计算机上启动 Vysor。
 
-    ![Vysor](media/speech-devices-sdk/qsg-3.png)
+   ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
 1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
 
 1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。  
 
-    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+   ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
-    > [!NOTE]
-    > 如果你的公司有关于将设备连接到 Wi-Fi 系统的政策，则你需要获取 MAC 地址并联系 IT 部门来了解如何将它连接到公司的 Wi-Fi。
-    >
-    > 若要查找开发工具包的 MAC 地址，请在开发工具包的桌面上选择文件夹图标。
-    >
-    >  ![Vysor 文件夹](media/speech-devices-sdk/qsg-10.png)
-    >
-    > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
-    >
-    > ![Vysor MAC 地址](media/speech-devices-sdk/qsg-11.png)
-    >
-    > 某些公司可能会限制设备可以连接到其 Wi-Fi 系统的时长。 在一定的天数后，可能需要延长开发工具包在 Wi-Fi 系统中的注册。
+   > [!NOTE]
+   > 如果你的公司有关于将设备连接到 Wi-Fi 系统的政策，则你需要获取 MAC 地址并联系 IT 部门来了解如何将它连接到公司的 Wi-Fi。
+   >
+   > 若要查找开发工具包的 MAC 地址，请在开发工具包的桌面上选择文件夹图标。
+   >
+   > ![Vysor 文件夹](media/speech-devices-sdk/qsg-10.png)
+   >
+   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
+   >
+   > ![Vysor MAC 地址](media/speech-devices-sdk/qsg-11.png)
+   >
+   > 某些公司可能会限制设备可以连接到其 Wi-Fi 系统的时长。 在一定的天数后，可能需要延长开发工具包在 Wi-Fi 系统中的注册。
 
 ## <a name="run-the-sample-application"></a>运行示例应用程序
 
@@ -95,22 +96,22 @@ ms.locfileid: "73491318"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    如果使用的是对话听录，conversation.java 中还需要语音密钥和区域信息：
+   如果使用的是对话听录，conversation.java 中还需要语音密钥和区域信息：
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，C:\SDSDK\Android-Sample-Release\keyword\Computer 包含用于关键字“Computer”的文件。
 
    > [!TIP]
    > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
 
-    若要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
+   若要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
 
-   * 将该关键字包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\”文件夹中。
-   * 使用关键字和包名称更新 `MainActivity.java`：
+   - 将该关键字包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\”文件夹中。
+   - 使用关键字和包名称更新 `MainActivity.java`：
 
      ```java
      private static final String Keyword = "Machine";
@@ -126,20 +127,20 @@ ms.locfileid: "73491318"
 
    此表列出了支持的值：
 
-   |变量|含义|可用值|
-   |--------|-------|----------------|
-   |`DeviceGeometry`|物理麦克风配置|环形开发工具包：`Circular6+1` |
-   |||线性开发工具包：`Linear4`|
-   |`SelectedGeometry`|软件麦克风配置|使用所有麦克风的环形开发工具包：`Circular6+1`|
-   |||使用四个麦克风的环形开发工具包：`Circular3+1`|
-   |||使用所有麦克风的线性开发工具包：`Linear4`|
-   |||使用两个麦克风的线性开发工具包：`Linear2`|
+   | 变量 | 含义 | 可用值 |
+   | -------- | ------- | ---------------- |
+   | `DeviceGeometry` | 物理麦克风配置 | 环形开发工具包：`Circular6+1` |
+   |          |         | 线性开发工具包：`Linear4` |
+   | `SelectedGeometry` | 软件麦克风配置 | 使用所有麦克风的环形开发工具包：`Circular6+1` |
+   |          |         | 使用四个麦克风的环形开发工具包：`Circular3+1` |
+   |          |         | 使用所有麦克风的线性开发工具包：`Linear4` |
+   |          |         | 使用两个麦克风的线性开发工具包：`Linear2` |
 
 1. 若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。   此时会显示“选择部署目标”对话框。 
 
 1. 选择设备，然后选择“确定”，将应用程序部署到设备。 
 
-    ![“选择部署目标”对话框](media/speech-devices-sdk/qsg-7.png)
+   ![“选择部署目标”对话框](media/speech-devices-sdk/qsg-7.png)
 
 1. 语音设备 SDK 示例应用程序将会启动，并显示以下选项：
 
@@ -153,17 +154,16 @@ ms.locfileid: "73491318"
 
 ## <a name="troubleshooting"></a>故障排除
 
-   如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
+如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
 
-   ```powershell
-    adb devices
-   ```
+```powershell
+ adb devices
+```
 
-   > [!NOTE]
-   > 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 必须在每个调用 adb 的命令中指定到 adb.exe 的完整安装路径。
-   >
-   > 如果看到 `no devices/emulators found` 错误，请检查 USB 电缆是否已连接，并确保使用了高品质的电缆。
-   >
+> [!NOTE]
+> 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 必须在每个调用 adb 的命令中指定到 adb.exe 的完整安装路径。
+>
+> 如果看到 `no devices/emulators found` 错误，请检查 USB 电缆是否已连接，并确保使用了高品质的电缆。
 
 ## <a name="next-steps"></a>后续步骤
 

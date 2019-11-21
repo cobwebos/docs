@@ -1,20 +1,20 @@
 ---
-title: 本快速入门介绍如何通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心 | Microsoft 文档
+title: 快速入门：如何通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心
 description: 在本快速入门中，你将使用 C 设备 SDK 创建一个将对称密钥和 Azure IoT 中心设备预配服务结合使用的模拟设备
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 31e71e942d7bd3f7a9739eeb83bd3ed250bb2c61
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909019"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904862"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -104,7 +104,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
    - **自动生成密钥**：选中此框。
 
-   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，`symm-key-device-007`。
+   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，`symm-key-device-007` 。
 
    - **IoT 中心设备 ID：** 输入设备标识符。 例如：device-007  。
 
@@ -124,7 +124,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。     
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

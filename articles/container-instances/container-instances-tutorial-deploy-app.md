@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325630"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846595"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
@@ -37,7 +37,9 @@ ms.locfileid: "68325630"
 
 ### <a name="get-registry-credentials"></a>获取注册表凭据
 
-部署托管在专用容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 正如[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)中所示，对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”  权限的 Azure Active Directory 服务主体。 有关用于创建具有必要权限的服务主体的示例脚本，请参阅该文章。 请记下服务主体 ID 和服务主体密码。 部署容器时将使用这些凭据。
+部署托管在专用 Azure 容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 
+
+ 对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 请参阅[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)，获取示例脚本以创建具有必要权限的服务主体。 请记下服务主体 ID 和服务主体密码   。 部署容器时将使用这些凭据访问注册表。
 
 还需要容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
 

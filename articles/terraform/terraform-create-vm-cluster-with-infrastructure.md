@@ -1,33 +1,32 @@
 ---
-title: 使用 Terraform 和 HCL 创建 VM 群集
-description: 在 Azure 中使用 Terraform 和 HashiCorp 配置语言 (HCL) 创建 Linux 虚拟机群集与负载均衡器
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 虚拟机, 网络, 模块
+title: 教程 - 使用 Terraform 和 HCL 创建 Azure VM 群集
+description: 使用 Terraform 和 HCL 在 Azure 中创建具有负载均衡器的 Linux 虚拟机群集
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7fee1518c36407f4e6607cc9204f9615b024f56f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173459"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837725"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>教程：使用 Terraform 和 HCL 创建 Azure VM 群集
 
-本教程演示如何使用 [HashiCorp 配置语言](https://www.terraform.io/docs/configuration/syntax.html) (HCL) 创建小型计算群集。 此配置会在[可用性集](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)中创建一个负载均衡器、两个 Linux VM，以及所有必要的网络资源。
+在本教程中，你将了解如何使用 [HCL](https://www.terraform.io/docs/configuration/syntax.html) 创建小型计算群集。 
 
-本教程介绍以下操作：
+你将了解如何执行以下任务：
 
 > [!div class="checklist"]
-> * 设置 Azure 身份验证
-> * 创建 Terraform 配置文件
-> * 初始化 Terraform
-> * 创建 Terraform 执行计划
-> * 应用 Terraform 执行计划
+> * 设置 Azure 身份验证。
+> * 创建 Terraform 配置文件。
+> * 使用 Terraform 配置文件创建负载平衡器。
+> * 使用 Terraform 配置文件在可用性集内部署两个 Linux VM。
+> * 初始化 Terraform。
+> * 创建 Terraform 执行计划。
+> * 应用 Terraform 执行计划以创建 Azure 资源。
 
 ## <a name="1-set-up-azure-authentication"></a>1.设置 Azure 身份验证
 
@@ -53,10 +52,10 @@ ms.locfileid: "71173459"
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
@@ -88,60 +87,60 @@ ms.locfileid: "71173459"
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ ms.locfileid: "71173459"
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ ms.locfileid: "71173459"
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ ms.locfileid: "71173459"
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -237,11 +236,14 @@ ms.locfileid: "71173459"
 
 [terraform plan 命令](https://www.terraform.io/docs/commands/plan.html)用于创建执行计划。 若要生成执行计划，Terraform 将在当前目录中聚合所有 `.tf` 文件。 
 
-如果在协作环境中工作，其中配置可能在创建执行计划和应用执行计划期间发生更改，则应该用 [terraform plan 命令的 -out 参数](https://www.terraform.io/docs/commands/plan.html#out-path)将执行计划保存到文件。 相反，如果在单用户环境中工作，则可以忽略 `-out` 参数。
+[-out 参数](https://www.terraform.io/docs/commands/plan.html#out-path)会将执行计划保存到输出文件中。 此功能解决了多开发环境中常见的并发问题。 输出文件解决的一个问题是以下情形：
 
-如果 Terraform 变量文件的名称不是 `terraform.tfvars` 并且不遵循 `*.auto.tfvars` 模式，则运行 `terraform plan` 命令时需要使用 [terraform plan 命令的 -var-file 参数](https://www.terraform.io/docs/commands/plan.html#var-file-foo)指定文件名称。
+1. 开发人员 1 创建配置文件。
+1. 开发人员 2 修改配置文件。
+1. 开发人员 1 应用（运行）配置文件。
+1. 开发人员 1 会收到意外的结果，因为不知道开发人员 2 修改了配置。
 
-处理 `terraform plan` 命令时，Terraform 会执行刷新，然后确定需要执行哪些操作才能达到配置文件中指定的所需状态。
+开发人员 1 指定输出文件可阻止开发人员 2 影响开发人员 1。 
 
 如果不需要保存执行计划，请运行以下命令：
 
@@ -249,11 +251,25 @@ ms.locfileid: "71173459"
   terraform plan
   ```
 
-如果需要保存执行计划，请运行以下命令（用所需输出路径替换 &lt;路径> 占位符）：
+如果需要保存执行计划，请运行以下命令。 将占位符替换为你的环境的相应值。
 
   ```bash
   terraform plan -out=<path>
   ```
+
+另一个有用的参数为 [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo)。
+
+默认情况下，Terraform 尝试查找变量文件，如下所示：
+- 名为 `terraform.tfvars` 的文件
+- 使用以下模式命名的文件：`*.auto.tfvars`
+
+但是，变量文件不需要遵循上述两个约定中的任何一个。 在这种情况下，请用 `-var-file` 参数指定变量文件名。 以下示例对此进行了说明：
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terraform 确定在配置文件中指定状态所需的操作。
 
 ![创建 Terraform 执行计划](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
@@ -267,7 +283,7 @@ ms.locfileid: "71173459"
   terraform apply
   ```
 
-如果需要应用上次保存的执行计划，请运行以下命令（使用包含所保存执行计划的路径替换 &lt;路径> 占位符）：
+如果需要应用以前保存的执行计划，请运行以下命令。 将占位符替换为你的环境的相应值：
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ ms.locfileid: "71173459"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览 [Azure Terraform 模块](https://registry.terraform.io/modules/Azure)列表
-- [使用 Terraform 创建虚拟机规模集](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [使用 Terraform 创建 Azure 虚拟机规模集](terraform-create-vm-scaleset-network-disks-hcl.md)

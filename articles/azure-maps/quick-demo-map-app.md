@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
+title: 快速入门：使用 Azure Maps 执行交互式地图搜索
 description: Azure 快速入门 - 使用 Azure Maps 创建演示版交互式地图搜索
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 092da53c3179d939ebf0472219338b8d8392fda6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554277"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903183"
 ---
-# <a name="create-an-interactive-search-map-by-using-azure-maps"></a>使用 Azure Maps 创建交互式搜索地图
+# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
 本文演示 Azure Maps 功能如何创建地图，为用户提供交互式搜索体验。 本文演示如何完成以下基本步骤：
 * 创建自己的 Azure Maps 帐户。

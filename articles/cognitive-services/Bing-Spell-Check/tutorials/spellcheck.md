@@ -1,7 +1,7 @@
 ---
 title: 教程：使用必应拼写检查 API 获取拼写检查结果
 titleSuffix: Azure Cognitive Services
-description: 演示如何使用必应拼写检查。
+description: 本教程介绍如何生成使用户能够查询必应拼写检查 API 并显示结果的网页。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 73466b80915d5eb7228eef397d5aad68d27faa15
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4ef45d0d67d44ee1bcf0f06f41425ca5366ce46d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996852"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111449"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>教程：生成网页拼写检查客户端
 

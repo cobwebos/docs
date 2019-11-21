@@ -1,18 +1,14 @@
 ---
 title: 查看和管理服务提供商
 description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a7d39d95e35e30a16ce11db5b942024b6890438
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286595"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132178"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 
@@ -50,6 +46,12 @@ ms.locfileid: "72286595"
 客户通过选择“添加产品/服务”，可以从“提供商产品/服务”页面中添加新的服务提供商产品/服务   。 服务提供商必须已为此客户发布了产品/服务。 然后，客户可以从“专用产品/服务”屏幕中选择该产品/服务，然后选择“创建”   。
 
 如果客户想要删除服务提高商产品/服务，他们可以选择该产品/服务所在的行中的垃圾桶图标。 确认删除后，该服务提供商将无法再访问之前为该产品/服务委派的客户资源。
+
+## <a name="update-service-provider-offers"></a>更新服务提供商提供的服务
+
+在客户添加了产品/服务后，服务提供商可以将同一产品/服务的更新版本发布到 Azure Marketplace。 例如，他们可能要添加新的角色定义。 如果发布了产品/服务的新版本，则“提供商产品/服务”  页面将在该产品/服务的行中显示“更新”图标。 客户可以选择此图标来查看当前版本的产品/服务和新版本的产品/服务之间的差异。 
+
+查看更改后，客户可以选择是否更新为新版本。 完成此操作后，在新版本中指定的授权和其他设置将适用于已为该产品/服务委派的所有订阅和/或资源组。
 
 ## <a name="view-delegations"></a>查看委派
 

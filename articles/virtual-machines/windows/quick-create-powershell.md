@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建 Windows VM | Microsoft Docs
+title: 快速入门 - 使用 Azure PowerShell 创建 Windows VM
 description: 本快速入门介绍了如何使用 Azure PowerShell 创建 Windows 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0a8e6ab04cbb1c5a3ef9be299a08380912aad7ef
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088799"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073445"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机
 

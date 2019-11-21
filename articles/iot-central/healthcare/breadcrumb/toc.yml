@@ -10,6 +10,6 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: 医疗保健业用 IoT Central
+            - name: 医疗保健业用 IoT Central（预览功能）
               tocHref: /azure/iot-central/
               topicHref: /azure/iot-central/healthcare/index/

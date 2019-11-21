@@ -1,5 +1,5 @@
 ---
-title: 双重验证和工作或学校帐户概述 - Azure Active Directory | Microsoft Docs
+title: 安全验证和工作或学校帐户 - Azure AD
 description: 了解如何设置安全验证方法，以便将双重验证与工作或学校帐户配合使用。
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8cda4b04a4555ed7747bb9444c2a5ec2e266573
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616002"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028471"
 ---
-# <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>双重验证和工作或学校帐户概述
+# <a name="two-factor-verification-and-your-work-or-school-account"></a>双重验证和工作或学校帐户
 
 假设 IT 部门的某位同事或者你的老板向你发送了一封电子邮件，指出组织已对你的帐户添加了附加的安全验证。 这意味着什么？ 这意味着组织要采取额外的措施来确保使用你帐户登录的是你本人。 这种额外的验证也称双重验证，是使用用户名、密码和移动设备或电话的组合来实现的。
 

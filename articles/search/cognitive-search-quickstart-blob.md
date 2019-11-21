@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中创建认知技能集
+title: 快速入门：在 Azure 门户中创建技能集
 titleSuffix: Azure Cognitive Search
 description: 使用“导入数据”向导将认知技能添加到索引管道。 认知技能包括光学字符识别 (OCR) 和自然语言处理。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 14d2751f55f3df26277b1210b9201eed61409c6b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2280b718fe949384bb67b1b606ab143ddca8e077
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792083"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113350"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
 

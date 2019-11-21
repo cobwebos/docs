@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Windows 上运行语音设备 SDK - 语音服务
+title: 快速入门：在 Windows 上运行语音设备 SDK
 titleSuffix: Azure Cognitive Services
 description: Windows 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468737"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111669"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>快速入门：在 Windows 上运行语音设备 SDK 示例应用
 
-本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](conversation-transcription-service.md)设备。 目前，只有 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) 才受支持。
+本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](conversation-transcription-service.md)设备。 对于对话听录，仅支持 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 对于其他语音，支持使用提供麦克风阵列几何的线性麦克风阵列。
 
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Windows 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
@@ -32,7 +32,7 @@ ms.locfileid: "73468737"
 本快速入门需要：
 
 * 操作系统：64 位 Windows
-* [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+* 麦克风阵列，如 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * 仅限 [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
@@ -65,6 +65,29 @@ ms.locfileid: "73468737"
 
    ![包资源管理器的屏幕截图](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. 打开 pom.xml 文件并对其进行编辑。
+
+    在文件末尾，在结束标记 `</project>` 之前，创建 `repositories` 和 `dependencies` 元素（如此处所示），并确保 `version` 与当前版本匹配：
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
+1. 将 Windows-x64  的内容复制到 Java 项目位置，如 **C:\SDSDK\JRE-Sample-Release**
+
 1. 将 `kws.table`、`participants.properties`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` 复制到项目文件夹 **target\classes**
 
 ## <a name="configure-the-sample-application"></a>配置示例应用程序
@@ -82,30 +105,28 @@ ms.locfileid: "73468737"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    如果使用的是对话听录，`Cts.java` 中还需要语音密钥和区域信息：
+   如果使用的是对话听录，`Cts.java` 中还需要语音密钥和区域信息：
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`C:\SDSDK\JRE-Sample-Release\keyword\Computer` 包含用于关键字“Computer”的文件。
 
-   > [!TIP]
-   > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
+    > [!TIP]
+    > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
 
-    要使用新的关键字，请更新 `FunctionsList.java` 中的下面两行，并将关键字包复制到应用。 例如，要使用关键字包 `kws-machine.zip` 中的关键字“Machine”，请执行以下操作：
+    要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
-   * 将该关键字包复制到项目文件夹“target/classes”中  。
-
-   * 使用关键字和包名称更新 `FunctionsList.java`：
+   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中  。
+   * 使用关键字名称更新 `FunctionsList.java`：
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
-## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 获取示例应用程序
+## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 运行示例应用程序
 
 1. 从 Eclipse 菜单栏中，依次选择“运行”   > “运行方式”   >   “Java 应用程序”。 然后选择“FunctionsList”和“确定”。  
 
@@ -121,23 +142,23 @@ ms.locfileid: "73468737"
 
 ## <a name="create-and-run-a-standalone-application"></a>创建并运行独立应用程序
 
-1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。 
+1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。
 
 1. 此时将显示“导出”  窗口。 展开“Java”  ，选择“可运行的 JAR 文件”  ，然后选择“下一步”  。
 
-   ![“导出”窗口的屏幕截图](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![“导出”窗口的屏幕截图](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. 此时将显示“可运行的 JAR 文件导出”  窗口。 为应用程序选择“导出目标”  ，然后选择“完成”  。
- 
+
    ![“可运行的 JAR 文件导出”的屏幕截图](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. 请将 `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` 放入上面选择的目标文件夹中，因为该应用程序需要这些文件。
+1. 请将 `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll` 和 `Microsoft.CognitiveServices.Speech.extension.pma.dll` 放入上面选择的目标文件夹中，因为该应用程序需要这些文件。
 
 1. 运行独立的应用程序
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

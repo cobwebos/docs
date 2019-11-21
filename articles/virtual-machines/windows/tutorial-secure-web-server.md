@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中使用 SSL 证书保护 Windows Web 服务器 | Microsoft Docs
+title: 教程 - 在 Azure 中使用 SSL 证书保护 Windows Web 服务器
 description: 本教程介绍如何通过 Azure PowerShell 使用 Azure Key Vault 中存储的 SSL 证书来保护运行 IIS Web 服务器的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf4c21616da0b27fb253bbbd24a6bf4e9acd0bf3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6fd60993582fb4d7c052ffff2f492739153229e6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067753"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Windows 虚拟机上的 Web 服务器
 

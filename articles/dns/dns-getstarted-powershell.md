@@ -1,18 +1,19 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建 Azure DNS 区域和记录
+title: 快速入门：创建 Azure DNS 区域和记录 - Azure PowerShell
+titleSuffix: Azure DNS
 description: 了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure PowerShell 创建和管理你的第一个 DNS 区域和记录的分步快速入门。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730313"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072173"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure DNS 区域和记录
 

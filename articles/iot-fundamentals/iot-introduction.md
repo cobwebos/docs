@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935234"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048651"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -105,7 +105,7 @@ IoT 解决方案的主要部分如下：设备、后端服务以及二者之间�
 
 Azure 中有多项 IoT 相关服务，确定需要使用哪一项服务可能并不容易。 某些服务（例如 IoT Central 和 IoT 解决方案加速器）提供模板，可以让你快速创建自己的解决方案并入门。 也可使用其他可用服务完整地开发自己的解决方案 -- 这完全取决于你需要多少帮助和多少控制。 下面是一个列表，列出了可用的服务及其功能。
 
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md)：这是一个 SaaS 解决方案，用于连接、监视和管理 IoT 设备。 若要开始，请针对设备类型选择一个模板，然后创建一个供设备操作员使用的基本的 IoT Central 应用程序并对其进行测试。 此 IoT Central 应用程序也可用于监视设备并预配新设备。 此服务适用于不需深层服务自定义的直观解决方案。 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md)：这是一个 IoT 应用程序平台，可简化 IoT 解决方案的创建，并有助于减轻 IoT 管理、运营和开发的负担以及降低相关成本。 若要开始，请针对设备类型选择一个模板，然后创建一个供设备操作员使用的基本的 IoT Central 应用程序并对其进行测试。 此 IoT Central 应用程序也可用于监视设备并预配新设备。 此服务适用于不需深层服务自定义的直观解决方案。
 
 2. [**IoT 解决方案加速器**](/azure/iot-suite)：这是 PaaS 解决方案的集合，可以用于加快 IoT 解决方案的开发。 可以从提供的 IoT 解决方案着手，然后根据要求对该解决方案进行完整的自定义。 需要 Java 或 .NET 技能才能自定义后端，需要 JavaScript 技能才能自定义可视化效果。 
 

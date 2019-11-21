@@ -211,10 +211,14 @@
           href: batch-task-fail-event.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/'
     - name: Batch 社区
       href: 'https://github.com/Azure/Batch'
+    - name: Batch 反馈
+      href: 'https://feedback.azure.com/forums/269742-batch'
+    - name: Batch 论坛
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 博客

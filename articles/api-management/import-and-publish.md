@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072102"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108535"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
 
@@ -75,7 +75,7 @@ ms.locfileid: "70072102"
 > [!TIP]
 > 如果在导入自己的 API 定义时遇到问题，请[查看已知问题和限制的列表](api-management-api-import-restrictions.md)。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
+## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API
 
 ![测试 API 映射](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -88,23 +88,6 @@ ms.locfileid: "70072102"
 
     后端以“200 正常”和某些数据做出响应  。
 
-## <a name="call-operation"> </a>从开发人员门户调用操作
-
-此外，也可以从**开发人员门户**调用操作来测试 API。
-
-1. 导航到**开发人员门户**。
-
-    ![开发人员门户](./media/api-management-get-started/developer-portal.png)
-
-2. 选择“API”，单击“演示会议 API”，然后单击“GetSpeakers”。   
-
-    该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
-
-3. 按“试用”  。
-4. 按“发送”。 
-
-    调用操作后，开发人员门户将显示响应。  
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
@@ -112,7 +95,6 @@ ms.locfileid: "70072102"
 > [!div class="checklist"]
 > * 导入第一个 API
 > * 在 Azure 门户中测试 API
-> * 在开发人员门户中测试 API
 
 转到下一教程：
 

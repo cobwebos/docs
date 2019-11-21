@@ -1,19 +1,19 @@
 ---
-title: Azure VPN 网关 | Microsoft Docs
+title: 关于 Azure VPN 网关
 description: 了解什么是 VPN 网关，以及可以通过什么方式将 VPN 网关用于连接到 Azure 虚拟网络。 包括 IPsec/IKE 站点到站点跨界解决方案和 VNet 到 VNet 解决方案，以及点到站点 VPN。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495681"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075448"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -53,7 +53,10 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 
 ## <a name="gwsku"></a>网关 SKU
 
-创建虚拟网络网关时，需指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。 有关网关 SKU 的详细信息（包括支持的功能、生产和开发测试以及配置步骤），请参阅 [VPN 网关设置 - 网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 一文。 有关旧版 SKU 的信息，请参阅[使用旧版 SKU](vpn-gateway-about-skus-legacy.md)。
+创建虚拟网络网关时，需指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。
+
+* 有关网关 SKU 的详细信息（包括支持的功能、生产和开发测试以及配置步骤），请参阅 [VPN 网关设置 - 网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) 一文。
+* 有关旧版 SKU 的信息，请参阅[使用旧版 SKU](vpn-gateway-about-skus-legacy.md)。
 
 ### <a name="benchmark"></a>按隧道、连接和吞吐量列出的网关 SKU
 
@@ -92,7 +95,6 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。
 
 与 S2S 连接不同，P2S 连接不需本地面向公众的 IP 地址或 VPN 设备。 可以通过同一 VPN 网关将 P2S 连接与 S2S 连接结合使用，前提是这两种连接的所有配置要求都兼容。 有关点到站点连接的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
-
 
 ![Azure VPN 网关点到站点连接示例](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

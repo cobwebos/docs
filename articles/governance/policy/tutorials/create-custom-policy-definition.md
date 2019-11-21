@@ -1,14 +1,14 @@
 ---
 title: 创建自定义策略定义
-description: 创建 Azure Policy 的自定义策略定义以强制实施自定义业务规则。
+description: 创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959268"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128799"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 

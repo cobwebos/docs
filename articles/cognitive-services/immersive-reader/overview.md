@@ -1,7 +1,7 @@
 ---
 title: 什么是沉浸式阅读器 API？
 titleSuffix: Azure Cognitive Services
-description: 了解沉浸式阅读器 API。
+description: 沉浸式阅读器 API 是一种工具，可用于使人们适应学习差异或为新读者和语言学习人员提供帮助。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688334"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904366"
 ---
 # <a name="what-is-immersive-reader"></a>什么是沉浸式阅读器？
 

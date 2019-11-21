@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948301"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 G Suite 集成
 
@@ -250,7 +250,9 @@ ms.locfileid: "71948301"
 
 ### <a name="create-g-suite-test-user"></a>创建 G Suite 测试用户
 
-本部分的目的是在 G Suite 中创建名为“B.Simon”的用户。 G Suite 支持在默认情况下启用的自动预配。 在此部分中无需进行任何操作。 尝试访问 G Suite 时，如果 G Suite 中没有用户，系统会创建一个新用户。
+本部分的目标是[在 G Suite 中创建一个名为 B.Simon 的用户](https://support.google.com/a/answer/33310?hl=en)。 在 G Suite 中手动创建用户后，该用户现在可以使用其 Office 365 登录凭据登录。
+
+G Suite 还支持自动用户预配。 若要配置自动用户预配，你必须首先[为自动用户预配配置 G Suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)。
 
 > [!NOTE]
 > 如果在测试单一登录前尚未启用 Azure AD 中的预配，请确保用户已存在于 G Suite 中。

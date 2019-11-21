@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473700"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106610"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -171,13 +171,40 @@ ms.locfileid: "73473700"
 若要添加从客户端访问资源 API 的权限，请执行以下操作：
 
 1. 在应用的“概览”页中，选择“API 权限”部分。  
-1. 选择“添加权限”  按钮。
+1. 在“已配置权限”部分下，选择“添加权限”按钮。  
 1. 默认情况下，此视图允许从“Microsoft API”进行选择。  选择感兴趣的 API 部分。
     * **Microsoft API** - 用于选择 Microsoft API（例如 Microsoft Graph）的权限。
     * **组织使用的 API** - 用于选择由组织公开的 API 或组织已与之集成的 API 的权限。
     * **我的 API** - 用于选择你已经公开的 API 的权限。
 1. 选择 API 后，会看到“请求 API 权限”页。  如果 API 公开委托的权限和应用程序权限，请选择应用程序需要哪种类型的权限。
 1. 完成后，请选择“添加权限”  。 此时会返回到“API 权限”页，其中的权限已保存并添加到表。 
+
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>了解 API 权限和管理员同意 UI
+
+### <a name="configured-permissions"></a>已配置权限
+
+此部分显示已在应用程序对象上显式配置的权限（这些权限是应用程序所需的资源访问列表的一部分）。 可以在此表中添加或删除权限。 作为管理员，你还可以为此部分中的一组 API 权限或单个权限授予/撤销管理员同意。
+
+### <a name="other-permissions-granted"></a>授予的其他权限
+
+如果你的应用程序已在租户中注册，则你可能会看到一个名为“为租户授予的其他权限”的附加部分  。 此部分显示已为租户授予但尚未在应用程序对象上显式配置的权限（例如，动态请求和同意的权限）。 仅当至少有一个应用的权限时，才会显示此部分。
+
+可以将此部分中显示的一组 API 权限或单个权限添加到“已配置权限”部分  。 作为管理员，你还可以撤销此部分中各个 API 或权限的管理员同意。
+
+### <a name="admin-consent-button"></a>管理员同意按钮
+
+如果你的应用程序已在租户中注册，你将看到“为租户授予管理员同意”按钮  。 如果你不是管理员，或者没有为应用程序配置任何权限，则将禁用此按钮。
+通过此按钮，管理员可以轻松地向为应用程序配置的权限授予管理员同意。 单击“管理员同意”按钮将启动一个新窗口，其中包含显示了所有已配置权限的同意提示。
+
+> [!NOTE]
+> 为应用程序配置的权限与在同意提示下显示的权限之间存在延迟。 如果在同意提示中看不到所有配置的权限，请将其关闭并重新启动。
+
+如果你具有已授予但尚未配置的权限，则在单击“管理员同意”按钮时，系统将提示你决定如何处理这些权限。 可以将它们添加到已配置的权限，也可以将其删除。
+
+同意提示提供“接受”或“取消”选项   。 如果选择“接受”  ，则将授予管理员同意。 如果选择“取消”  ，则不授予管理员同意，你将看到一条错误，指出同意已被拒绝。
+
+> [!NOTE]
+> 授予管理员同意（在同意提示中选择“接受”  ）与在 UI 中反映的管理员同意状态之间存在延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 titleSuffix: Azure Cognitive Services
-description: 开始使用必应拼写检查 API 检查拼写和语法。
+description: 此简单的 PHP 应用程序将向必应拼写检查 API 发送请求并返回一系列建议的更正。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423495"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110787"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 
-根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Python 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 PHP 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 

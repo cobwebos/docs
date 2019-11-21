@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 C# 通过 .NET SDK 创建搜索索引
+title: 快速入门：通过 .NET 在 C# 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 介绍如何使用 C# 和 Azure 认知搜索 .NET SDK 创建索引、加载数据和运行查询。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792819"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112024"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]

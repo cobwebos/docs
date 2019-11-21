@@ -11,19 +11,20 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506161"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125416"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+>
+> * [创建 Azure 语音资源](../../../../get-started.md)
 > * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md)
 > * [创建空示例项目](../../../../quickstarts/create-project.md)
@@ -34,7 +35,7 @@ ms.locfileid: "73506161"
 
 ## <a name="start-with-some-boilerplate-code"></a>从一些样板代码开始
 
-让我们添加一些代码作为项目的主干。
+添加一些代码作为项目的框架。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-7)]
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
@@ -44,11 +45,11 @@ ms.locfileid: "73506161"
 此示例使用 LUIS 密钥和区域构造 `SpeechConfig` 对象。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。
 
 > [!NOTE]
-> 请务必使用 LUIS 终结点密钥，而不是使用初学者密钥或创作密钥，因为仅终结点密钥对语音到意向的识别有效。 有关如何获取正确密钥的说明，请参阅[创建 LUIS 应用程序并获取终结点密钥](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)。
+> 请务必使用 LUIS 终结点密钥（而非初学者密钥或创作密钥），因为只有终结点密钥对于语音转意向的识别有效。 有关如何获取正确密钥的说明，请参阅[创建 LUIS 应用程序并获取终结点密钥](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>初始化 IntentRecognizer
+## <a name="initialize-an-intentrecognizer"></a>初始化 IntentRecognizer
 
 现在，让我们创建 `IntentRecognizer`。 将此代码插入语音配置下。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
@@ -65,13 +66,14 @@ ms.locfileid: "73506161"
 
 ## <a name="display-the-recognition-results-or-errors"></a>显示识别结果（或错误）
 
-如果语音服务返回了识别结果，则需执行一些操作。 我们会简单地将结果输出到控制台。
+语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到控制台。
 
 在 using 语句中对 `recognize_once()` 的调用下面，添加以下代码：[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>检查代码
 
-此时，代码应如下所示：（我们已向此版本添加了一些注释）[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+此时，代码应如下所示：  
+（我们已向此版本添加了一些注释）[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 

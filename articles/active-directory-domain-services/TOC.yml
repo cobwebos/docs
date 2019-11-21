@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: 创建高级托管域
       href: tutorial-create-instance-advanced.md
+    - name: 创建林信任（预览版）
+      href: tutorial-create-forest-trust.md
 - name: 示例
   items:
     - name: 使用 Azure PowerShell 创建托管域
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: 常见部署方案
       href: scenarios.md
+    - name: 林和信任
+      items:
+        - name: 资源林
+          href: concepts-resource-forest.md
+        - name: 林信任
+          href: concepts-forest-trust.md
     - name: Azure AD DS 同步的工作原理
       href: synchronization.md
     - name: 密码哈希同步的工作原理

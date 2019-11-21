@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 248b66a928d373678d3058be488e226ee51bbcae
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845730"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092131"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "68845730"
   - 若要生成 NDK 示例，还需要在 Android Studio 中安装 NDK 和 CMake 3.6 或更高版本的 SDK Tools。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
   - 你的计算机可能需要其他设备驱动程序才能与 Android 设备通信。 有关其他信息和说明，请参阅[此处](https://developer.android.com/studio/run/device.html)。
-- 你的应用必须以 ARCore **1.8** 为目标。
+- 你的应用必须以 ARCore **1.11.0** 为目标。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "68845730"
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其置于 `Android\NDK\libraries\include` 中。
+从[此处](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h)下载 `arcore_c_api.h` 并将其置于 `Android\NDK\libraries\include` 中。
 
 在新克隆的存储库中，通过运行以下命令初始化子模块：
 

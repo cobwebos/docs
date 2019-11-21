@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490978"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090422"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>快速入门：在 Linux 上运行语音设备 SDK 示例应用
 
@@ -80,11 +80,34 @@ ms.locfileid: "73490978"
 
    ![包资源管理器的屏幕截图](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. 打开 pom.xml 文件并对其进行编辑。
+
+    在文件末尾，在结束标记 `</project>` 之前，创建 `repositories` 和 `dependencies` 元素（如此处所示），并确保 `version` 与当前版本匹配：
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. 在“包资源管理器”  中，右键单击你的项目。 选择“属性”  ，然后依次选择“运行/调试设置”   > “新建...”  > **Java 应用程序**。 
 
 1. 此时将显示“编辑配置”  窗口。 在“名称”  字段中，输入 **Main**，并对“Main 类”使用“搜索”   ，以查找和选择 **com.microsoft.cognitiveservices.speech.samples.FunctionsList**。
 
    ![“编辑启动配置”的屏幕截图](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
+
+1. 从 **Linux-arm** 或 **Linux-x64** 中将目标体系结构的音频二进制文件复制到 Java 项目位置，例如 /home/wcaltest/JRE-Sample-Release 
 
 1. 同样从“编辑配置”  窗口中，选择“环境”  页和“新建”  。 此时将显示“新环境变量”  窗口。 在“名称”  字段中输入 **LD_LIBRARY_PATH**，并在“值”  字段中输入包含 *.so 文件的文件夹，例如 **/home/wcaltest/JRE-Sample-Release**
 
@@ -118,15 +141,14 @@ ms.locfileid: "73490978"
    > [!TIP]
    > 还可以[创建自定义关键字](speech-devices-sdk-create-kws.md)。
 
-    若要使用新的关键字，请更新 `FunctionsList.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 `kws-machine.zip` 中的关键字“Machine”，请执行以下操作：
+    要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
-   * 将该关键字包复制到项目文件夹 **target/classes** 中。
+   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中  。
 
-   * 使用关键字和包名称更新 `FunctionsList.java`：
+   * 使用关键字名称更新 `FunctionsList.java`：
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 运行示例应用程序

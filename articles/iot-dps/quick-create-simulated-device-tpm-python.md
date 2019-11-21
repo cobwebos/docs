@@ -1,23 +1,23 @@
 ---
-title: 使用 Python 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
+title: 快速入门：使用 Python 将模拟的 TPM 设备预配到 Azure IoT 中心
 description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。本快速入门使用单个注册。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 05/21/2018
+ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: df12acad5fa9287f43cc256bfcc89fa6775c3e3b
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 423b04c15bcc2d73a33d7ecde736724168d28025
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001311"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904838"
 ---
-# <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 

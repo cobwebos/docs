@@ -1,18 +1,18 @@
 ---
 title: 关于 Azure Kinect 传感器 SDK
-description: Azure Kinect 传感器 SDK
+description: 概述 Azure Kinect 传感器软件开发工具包 (SDK) 及其功能和工具。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载
-ms.openlocfilehash: 237404547569776b027b19cbfd7a1dde5c4fa79b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 17c1b33120eacb5d0c6d3c02e692d1488ef474e6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452652"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932226"
 ---
 # <a name="about-azure-kinect-sensor-sdk"></a>关于 Azure Kinect 传感器 SDK
 

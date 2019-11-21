@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 6742e1a5924fdcd1fe00f49ac790209a907d1bac
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646725"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132792"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>教程：为服务设置 Spring Cloud 配置服务器
 
@@ -95,7 +95,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 | `password`      | `no`     | 用于访问 `Git` 存储库服务器的密码，如果 `Git` 存储库服务器支持 `Http Basic Authentication`，则此属性是必需的  。 |
 
 > [!NOTE]
-> 某些 `Git` 存储库服务器（例如 GitHub）支持使用“个人令牌”或“访问令牌”作为 `HTTP Basic Authentication` 的密码。 也可以在此处使用这种令牌作为密码；“个人令牌”或“访问令牌”不会过期。 但对于 BitBucket 和 Azure DevOps 之类的 Git 存储库服务器，令牌将在一到两个小时后过期，导致该选项不可继续用于 Azure Spring Cloud。
+> 许多 `Git` 存储库服务器都支持对 `HTTP Basic Authentication` 使用令牌，而不支持使用密码。 某些存储库（如 GitHub）允许令牌无限期保留。 但是，某些 Git 存储库服务器（包括 Azure DevOps）会在数小时内强制令牌过期。 导致令牌过期的存储库不应在 Azure Spring Cloud 中使用基于令牌的身份验证。
 
 ### <a name="git-repositories-with-pattern"></a>带模式的 Git 存储库
 
@@ -125,9 +125,11 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 导航到 Azure Spring Cloud 的“概述”页。 
+1. 导航到 Azure Spring Cloud 的“概览”页。 
 
-1. 在左侧菜单中转到“设置”标题下的“配置服务器”选项卡。  
+1. 选择要配置的服务。
+
+1. 在服务页上的左侧菜单中，选择“设置”标题下的“配置服务器”选项卡。  
 
 ![窗口屏幕截图](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 

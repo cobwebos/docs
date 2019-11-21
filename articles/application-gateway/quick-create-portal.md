@@ -1,19 +1,20 @@
 ---
-title: 快速入门 - 使用 Azure 应用程序网关定向 Web 流量 - Azure 门户 | Microsoft Docs
+title: 快速入门：使用门户定向 Web 流量
+titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure 门户创建 Azure 应用程序网关，以便将 Web 流量定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f5a20f80ea8eafa73cbef394dcfdde75087326b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469701"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074573"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -65,7 +66,7 @@ ms.locfileid: "73469701"
 
 1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”    。 <br>可以根据用例将前端 IP 配置为公共或专用。 本示例将选择公共前端 IP。
    > [!NOTE]
-   > 对于应用程序网关 v2 SKU，只能选择**公共**前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
+   > 对于应用程序网关 v2 SKU，只能选择**公共**前端 IP 配置。 目前仅尚未为此 v2 SKU 启用专用前端 IP 配置。 可以同时具备公共和专用前端 IP 配置。
 
 2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定”     。 
 

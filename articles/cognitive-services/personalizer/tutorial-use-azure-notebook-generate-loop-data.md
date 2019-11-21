@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467243"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007608"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -589,7 +589,7 @@ createChart(count,rewards)
 1. 输入评估名称的所需数据，以及循环评估的日期范围。 该日期范围应仅包括你要重点评估的日期。 
     ![在 Azure 门户中，打开个性化体验创建服务资源的“评估”页。 选择“创建评估”。 输入评估名称和日期范围。](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    运行此脱机评估的目的是确定是否有适用于此循环中使用的特征和操作的更好学习策略。 若要找出更好的学习策略，请确保已启用“优化策略”。 
+    运行此脱机评估的目的是确定是否有适用于此循环中使用的特征和操作的更好学习策略。 若要找出更好的学习策略，请确保已启用“优化发现”。 
 
 1. 选择“确定”开始评估。  
 1. 此“评估”页将列出新的评估及其当前状态。  此评估可能需要一段时间，具体取决于现有的数据量。 在几分钟后，可以返回此页查看结果。 

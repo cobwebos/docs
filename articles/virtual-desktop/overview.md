@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607488"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119993"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -73,11 +73,9 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
 
 * 一个 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可通过以下方式满足此要求：
-  * Azure AD Connect
-  * Azure AD 域服务
-     >[!NOTE]
-     >如果使用 Azure AD 域服务，用户必须源自 Azure Active Directory。 目前不支持通过源自 Windows Server AD 的用户使用 Azure AD 域服务。
+* 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可以通过以下方式之一对其进行配置：
+  * Azure AD Connect（适用于混合组织）
+  * Azure AD 域服务（适用于混合或云组织）
 * 一个包含虚拟网络的 Azure 订阅，该虚拟网络包含或已连接到 Windows Server Active Directory
   
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
@@ -100,7 +98,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 >[!NOTE]
 >若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure AD 等其他服务的 URL。
 
-Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国（美国东部 2 区域）。 这可能会导致将数据传输到美国。
+Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
 
 为获得最佳性能，请确保网络满足以下要求：
 
@@ -117,14 +115,16 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 
 ## <a name="supported-virtual-machine-os-images"></a>受支持的虚拟机 OS 映像
 
-Windows 虚拟桌面目前支持以下 OS 映像：
+Windows 虚拟桌面目前支持以下 x64 操作系统映像：
 
-* Windows 10 Enterprise 多会话
-* Windows 10 Enterprise
+* Windows 10 Enterprise 多会话版本 1809 或更高版本
+* Windows 10 Enterprise 版本 1809 或更高版本
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
+
+Windows 虚拟桌面不支持 x86（32 位）操作系统映像。
 
 可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
 

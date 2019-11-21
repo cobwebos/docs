@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a1d2fa083c0083423767484b20e296a3080e4ebe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206838"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092119"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>快速入门：使用 Azure 空间定位点在 Swift 或 Objective-C 中创建 iOS 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "67206838"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 开发人员启用已安装 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10+</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
+- 开发人员启用已安装最新版本的 <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> 和 <a href="https://cocoapods.org" target="_blank">CocoaPods</a> 的 macOS 计算机。
 - 通过 HomeBrew 安装的 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后运行 `brew install git`。
 - 支持开发人员的 <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 兼容</a> iOS 设备。
 
@@ -67,6 +67,9 @@ cd ./iOS/Objective-C/
 运行 `pod install --repo-update` 以安装项目的 CocoaPods。
 
 现在打开 Xcode 中的 `.xcworkspace`。
+
+> [!NOTE]
+> 如果在升级到 macOS Catalina (10.15) 后遇到 CocoaPod 问题，请参阅[此处](#cocoapods-issues-on-macos-catalina-1015)的故障排除相关步骤。
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
@@ -118,6 +121,18 @@ open ./SampleObjC.xcworkspace
 > 如果看到 `library not found for -lPods-SampleObjC` 错误，则可能是打开了 `.xcodeproj` 文件而不是 `.xcworkspace`。 请打开 `.xcworkspace` 然后重试。
 
 在 Xcode 中，按“停止”来停止应用  。
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>macOS Catalina (10.15) 上的 CocoaPods 问题
+
+如果最近更新到 macOS Catalina (10.15) 并事先安装了 CocoaPods，则 CocoaPods 可能处于损坏状态，无法正确配置 pod 和 `.xcworkspace` 项目文件。 若要解决此问题，需要通过运行以下命令重新安装 CocoaPods：
+
+```shell
+brew update
+brew install cocoapods --build-from-source
+brew link --overwrite cocoapods
+```
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

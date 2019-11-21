@@ -1,17 +1,14 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048287"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
 
@@ -54,7 +51,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 |资源  | 层次结构选项| Description  |
 |---------|---------|---------|
 |资源组 | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。 |
-|Azure 资源管理器模板 | 订阅、资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
+|Azure 资源管理器模板 | 订阅、资源组 | 模板（包括嵌套模板和链接模板）用于构成复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
 |策略分配 | 订阅、资源组 | 将蓝图分配到订阅后，允许将策略或计划分配给该订阅。 该策略或计划必须位于蓝图定义位置的范围内。 若策略或计划具有参数，则在创建蓝图时或在蓝图分配期间分配这些参数。 |
 |角色分配 | 订阅、资源组 | 将现有用户或组添加到内置角色，以确保始终为正确的人员提供正确的资源访问权限。 可为整个订阅定义角色分配，也可将其嵌套到蓝图所包含的特定资源组。 |
 
@@ -117,7 +114,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 > [!NOTE]
-> 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则只有创建蓝图分配的用户才需要“所有者”  权限。
+> 如果使用系统分配的托管标识，则 Azure 蓝图的服务主体需要在分配的订阅上具有**所有者**角色才能启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。 如果使用用户分配的托管标识，则仅创建蓝图分配的用户需要 `Microsoft.Blueprint/blueprintAssignments/write` 的权限，该权限包括在“所有者”和“蓝图运算符”内置角色中   。
 
 ## <a name="naming-limits"></a>命名限制
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 .NET 应用 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上快速创建 .NET 应用
 description: 在本快速入门中，请使用 Service Fabric Reliable Services 示例应用程序创建用于 Azure 的 .NET 应用程序。
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225201"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013214"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 投票应用程序由以下两个服务组成：
 
 * Web 前端服务 (VotingWeb) - ASP.NET Core Web 前端服务，可提供网页服务，并公开用于与后端服务进行通信的 Web API。
-* 后端服务 (VotingData) - ASP.NET Core Web 服务，可公开用于将投票结果存储到磁盘上保留的可靠字典中的 API。
+* 后端服务 (VotingData) - ASP.NET Core Web 服务，可公开用于将投票结果存储在可靠字典中并保留在磁盘上的API。
 
 ![应用程序关系图](./media/service-fabric-quickstart-dotnet/application-diagram.png)
 
@@ -123,7 +123,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
-此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以将“应用程序调试模式”  作为 Visual Studio 中“投票”  项目的属性进行更改。
+此应用程序应该正常运行，不过，你可以使用调试程序来了解应用程序关键部分的运行情况。 在 Visual Studio 中调试应用程序时，使用的是本地 Service Fabric 开发群集。 可以根据自己的方案调整调试体验。 在此应用程序中，数据将使用可靠的字典存储到后端服务中。 停止调试程序时，Visual Studio 会默认删除应用程序。 删除应用程序后，后端服务中的数据也会随之一起删除。 若要跨调试会话保留数据，可以在 Visual Studio 中更改“应用程序调试模式” （“Voting” 项目属性）。  
 
 若要查看代码，请完成以下步骤：
 
