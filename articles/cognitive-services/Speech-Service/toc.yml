@@ -468,6 +468,8 @@
   items:
     - name: 支持
       href: support.md
+    - name: 区域
+      href: regions.md
     - name: 定价和限制
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 合规性
