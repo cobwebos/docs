@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 资源管理器创建和删除用户分配的托管标识
+title: Create & delete a user-assigned managed identity using Azure Resource Manager
 description: 分步说明如何使用 Azure 资源管理器创建和删除用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cccf129ff4ed9389422ec900a4a23f489cf3c7a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b2eeb5b184d54f406be721ac73d75aaef192ac6a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443477"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224620"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure 资源管理器创建、列出和删除用户分配的托管标识
 
@@ -48,7 +48,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 使用本地 [JSON 编辑器（例如 VS Code）](../../azure-resource-manager/resource-manager-create-first-template.md)，然后使用 PowerShell 或 CLI 进行上传和部署。
 - 使用 Visual Studio [Azure 资源组项目](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)同时创建和部署模板。 
 
-## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
+## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配托管标识 
 
 若要创建用户分配的托管标识，你的帐户需要[托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 

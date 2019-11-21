@@ -1,21 +1,16 @@
 ---
 title: Azure Functions 的事件网格触发器
 description: 了解如何处理 Azure Functions 中的事件网格事件。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: ff21a1325e341f119fc8615ca03b41b8068aca19
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8820818528835df6379c894eb06c154f4120f507
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991419"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227304"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -526,14 +521,14 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `Content-Type: application/json` 标头。
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
-* 发布到事件网格触发器函数的 URL。
-  * 对于2.x，请使用以下模式：
+* Post to the URL of your Event Grid trigger function.
+  * For 2.x use the following pattern:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 对于1.x 使用：
+  * For 1.x use:
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -553,7 +548,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
 
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作：
+在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 You can do that with a tool like [ngrok](https://ngrok.com/):
 
 1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
 1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。

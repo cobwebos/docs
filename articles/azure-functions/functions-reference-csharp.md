@@ -2,18 +2,15 @@
 title: Azure Functions C# 脚本开发人员参考
 description: '了解如何使用 C # 脚本开发 Azure Functions。'
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 8bbfef9d9873669120f792bce3e50e457791d4b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3b05b0a4a56332cce1068f53a23a7d118a2e6bfc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787202"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230421"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -373,7 +370,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 1.x C#函数中使用 NuGet 包，请将*函数 proj*文件上传到函数应用文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+To use NuGet packages in a 2.x C# function, upload a *function.proj* file to the function's folder in the function app's file system. 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -390,9 +387,9 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> 在 node.js C#函数中，NuGet 包使用*项目 json*文件而不是*函数 proj*文件进行引用。
+> In 1.x C# functions, NuGet packages are referenced with a *project.json* file instead of a *function.proj* file.
 
-对于1.x 函数，请改用*项目 json*文件。 下面是一个示例*项目 json*文件：
+For 1.x functions, use a *project.json* file instead. Here is an example *project.json* file:
 
 ```json
 {
@@ -406,11 +403,11 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>使用函数 proj 文件
+### <a name="using-a-functionproj-file"></a>Using a function.proj file
 
 1. 在 Azure 门户中打开函数。 日志选项卡显示包安装输出。
-2. 若要上载*函数 proj*文件，请使用 Azure Functions 开发人员参考 "主题中的[如何更新函数应用文件](functions-reference.md#fileupdate)中所述的方法之一。
-3. 上载*函数 proj*文件后，会在函数的流式处理日志中看到类似于以下示例的输出：
+2. To upload a *function.proj* file, use one of the methods described in the [How to update function app files](functions-reference.md#fileupdate) in the Azure Functions developer reference topic.
+3. After the *function.proj* file is uploaded, you see output like the following example in your function's streaming log:
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -462,7 +459,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但只能将[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)用于 `T`。
+`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 For example, the Mobile Apps table output binding supports [six output types](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), but you can only use [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) for `T`.
 
 ### <a name="single-attribute-example"></a>单属性示例
 

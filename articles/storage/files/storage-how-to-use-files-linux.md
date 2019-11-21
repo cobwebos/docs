@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091999"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209410"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
 
-在 Linux 上装载 Azure 文件共享的建议方法是使用 SMB 3.0。 默认情况下，Azure 文件要求在传输过程中加密，这仅受 SMB 3.0 的支持。 Azure 文件还支持 SMB 2.1，该功能不支持传输中的加密，但出于安全原因，你可能不会从其他 Azure 区域或本地装载 SMB 2.1 的 Azure 文件共享。 除非你的应用程序特别需要 SMB 2.1，否则很少需要使用它，因为最近发布的最常见 Linux 发行版支持 SMB 3.0：  
+The recommended way to mount an Azure file share on Linux is using SMB 3.0. By default, Azure Files requires encryption in transit, which is only supported by SMB 3.0. Azure Files also supports SMB 2.1, which does not support encryption in transit, but you may not mount Azure file shares with SMB 2.1 from another Azure region or on-premises for security reasons. Unless your application specifically requires SMB 2.1, there is little reason to use it since most popular, recently released Linux distributions support SMB 3.0:  
 
 | | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
 | --- | :---: | :---: |
@@ -28,16 +28,16 @@ ms.locfileid: "74091999"
 | openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
-如果你使用的是上表中未列出的 Linux 分发版，则可以通过检查 Linux 内核版本来查看 Linux 发行版是否支持使用加密的 SMB 3.0。 已将包含加密的 SMB 3.0 添加到 Linux 内核版本4.11。 `uname` 命令将返回正在使用的 Linux 内核版本：
+If you're using a Linux distribution not listed in the above table, you can check to see if your Linux distribution supports SMB 3.0 with encryption by checking the Linux kernel version. SMB 3.0 with encryption was added to Linux kernel version 4.11. The `uname` command will return the version of the Linux kernel in use:
 
 ```bash
 uname -r
 ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 <a id="smb-client-reqs"></a>
 
-* <a id="install-cifs-utils"></a>**确保安装了 utils 包。**  
+* <a id="install-cifs-utils"></a>**Ensure the cifs-utils package is installed.**  
     可在所选的 Linux 分发版上使用包管理器安装 cifs-utils 包。 
 
     在 **Ubuntu** 和**基于 Debian** 的分发版上，请使用 `apt` 包管理器：
@@ -47,13 +47,13 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    在**Fedora**上， **Red Hat Enterprise Linux 8 +** 和**CentOS 8 +** ，请使用 `dnf` 程序包管理器：
+    On **Fedora**, **Red Hat Enterprise Linux 8+** , and **CentOS 8 +** , use the `dnf` package manager:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    在较旧版本的**Red Hat Enterprise Linux**和**CentOS**上，使用 `yum` 程序包管理器：
+    On older versions of **Red Hat Enterprise Linux** and **CentOS**, use the `yum` package manager:
 
     ```bash
     sudo yum install cifs-utils 
@@ -67,9 +67,9 @@ uname -r
 
     在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令行接口（CLI）。** 有关如何安装 Azure CLI 的详细信息，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)并选择操作系统。 如果更愿意使用 PowerShell 6 + 中的 Azure PowerShell 模块，则可以使用以下说明来获取 Azure CLI。
+* **The most recent version of the Azure Command Line Interface (CLI).** For more information on how to install the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) and select your operating system. If you prefer to use the Azure PowerShell module in PowerShell 6+, you may, however the instructions below are presented for the Azure CLI.
 
-* **确保已打开端口 445**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 **< 资源组 >** 并 **< 存储帐户 >**
+* **确保已打开端口 445**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  Replace **<your-resource-group>** and **<your-storage-account>**
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -85,21 +85,21 @@ uname -r
     nc -zvw3 $fileHost 445
     ```
 
-    如果连接成功，则会看到类似于以下输出的内容：
+    If the connection was successful, you should see something similar to the following output:
 
     ```
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
-    如果无法在公司网络上打开端口445，或 ISP 阻止其执行此操作，则可以使用 VPN 连接或 ExpressRoute 来解决端口445。 有关详细信息，请参阅[直接 Azure 文件共享访问的网络注意事项](storage-files-networking-overview.md)。
+    If you are unable to open up port 445 on your corporate network or are blocked from doing so by an ISP, you may use a VPN connection or ExpressRoute to work around port 445. For more information, see [Networking considerations for direct Azure file share access](storage-files-networking-overview.md)..
 
-## <a name="mounting-azure-file-share"></a>装载 Azure 文件共享
-若要将 Azure 文件共享与 Linux 分发一起使用，必须创建一个目录用作 Azure 文件共享的装入点。 可以在 Linux 系统上的任何位置创建装入点，但在/mnt。下创建它通常是一种常见约定。 在装入点之后，使用 `mount` 命令访问 Azure 文件共享。
+## <a name="mounting-azure-file-share"></a>Mounting Azure file share
+To use an Azure file share with your Linux distribution, you must create a directory to serve as the mount point for the Azure file share. A mount point can be created anywhere on your Linux system, but it's common convention to create this under /mnt. After the mount point, you use the `mount` command to access the Azure file share.
 
-如果需要，可以将同一个 Azure 文件共享装载到多个装入点。
+You can mount the same Azure file share to multiple mount points if desired.
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 按需装载 Azure 文件共享
-1. 为**装入点创建一个文件夹**：将 `<your-resource-group>`、`<your-storage-account>`和 `<your-file-share>` 替换为适用于你的环境的相应信息：
+1. **Create a folder for the mount point**: Replace `<your-resource-group>`, `<your-storage-account>`, and `<your-file-share>` with the appropriate information for your environment:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,14 +111,14 @@ uname -r
     sudo mkdir -p $mntPath
     ```
 
-1. **使用 mount 命令装载 Azure 文件共享**。 在下面的示例中，本地 Linux 文件和文件夹权限默认为0755，这意味着所有者的读取、写入和执行（基于文件/目录 Linux 所有者），对所有者组中的用户进行读取和执行，并读取和执行系统中的其他用户。 你可以使用 "`uid`" 和 "`gid` 装载选项" 来设置装载的用户 ID 和组 ID。 还可以根据需要使用 `dir_mode` 和 `file_mode` 设置自定义权限。 有关如何设置权限的详细信息，请参阅维基百科上的[UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
+1. **Use the mount command to mount the Azure file share**. In the example below, the local Linux file and folder permissions default 0755, which means read, write, and execute for the owner (based on the file/directory Linux owner), read and execute for users in owner group, and read and execute for others on the system. You can use the `uid` and `gid` mount options to set the user ID and group ID for the mount. You can also use `dir_mode` and `file_mode` to set custom permissions as desired. For more information on how to set permissions, see [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) on Wikipedia. 
 
     ```bash
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShare
+    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
     storageAccountKey=$(az storage account keys list \
         --resource-group $resourceGroupName \
@@ -129,12 +129,12 @@ uname -r
     ```
 
     > [!Note]  
-    > 上述 mount 命令装载 SMB 3.0。 如果 Linux 发行版不支持使用加密的 SMB 3.0，或者它仅支持 SMB 2.1，则只能从存储帐户所在的同一区域内的 Azure VM 进行装载。 若要在不支持使用加密的 SMB 3.0 的 Linux 分发版上装载 Azure 文件共享，需要为[存储帐户禁用传输加密](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    > The above mount command mounts with SMB 3.0. If your Linux distribution does not support SMB 3.0 with encryption or if it only supports SMB 2.1, you may only mount from an Azure VM within the same region as the storage account. To mount your Azure file share on a Linux distribution that does not support SMB 3.0 with encryption, you will need to [disable encryption in transit for the storage account](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 使用完 Azure 文件共享后，可以使用 `sudo umount $mntPath` 卸载共享。
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 为 Azure 文件共享创建持久装入点
-1. **为装入点创建一个文件夹**：可在文件系统上的任何位置创建装入点的文件夹，但在/mnt。下创建该文件夹是常见约定。 例如，以下命令将创建一个新目录，将 `<your-resource-group>`、`<your-storage-account>`和 `<your-file-share>` 替换为适用于您的环境的相应信息：
+1. **Create a folder for the mount point**: A folder for a mount point can be created anywhere on the file system, but it's common convention to create this under /mnt. For example, the following command creates a new directory, replace `<your-resource-group>`, `<your-storage-account>`, and `<your-file-share>` with the appropriate information for your environment:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -173,7 +173,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在下面的示例中，本地 Linux 文件和文件夹权限默认为0755，这意味着所有者的读取、写入和执行（基于文件/目录的 Linux 所有者），对所有者组中的用户进行读取和执行，并读取和执行系统中的其他用户。 你可以使用 "`uid`" 和 "`gid` 装载选项" 来设置装载的用户 ID 和组 ID。 还可以根据需要使用 `dir_mode` 和 `file_mode` 设置自定义权限。 有关如何设置权限的详细信息，请参阅维基百科上的[UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+1. **Use the following command to append the following line to `/etc/fstab`** : In the example below, the local Linux file and folder permissions default 0755, which means read, write, and execute for the owner (based on the file/directory Linux owner), read and execute for users in owner group, and read and execute for others on the system. You can use the `uid` and `gid` mount options to set the user ID and group ID for the mount. You can also use `dir_mode` and `file_mode` to set custom permissions as desired. For more information on how to set permissions, see [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) on Wikipedia.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -192,81 +192,81 @@ uname -r
     ```
     
     > [!Note]  
-    > 上述 mount 命令装载 SMB 3.0。 如果 Linux 发行版不支持使用加密的 SMB 3.0，或者它仅支持 SMB 2.1，则只能从存储帐户所在的同一区域内的 Azure VM 进行装载。 若要在不支持使用加密的 SMB 3.0 的 Linux 分发版上装载 Azure 文件共享，需要为[存储帐户禁用传输加密](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    > The above mount command mounts with SMB 3.0. If your Linux distribution does not support SMB 3.0 with encryption or if it only supports SMB 2.1, you may only mount from an Azure VM within the same region as the storage account. To mount your Azure file share on a Linux distribution that does not support SMB 3.0 with encryption, you will need to [disable encryption in transit for the storage account](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="securing-linux"></a>保护 Linux
-若要在 Linux 上装载 Azure 文件共享，必须可以访问端口445。 许多组织因 SMB 1 中固有的安全风险而阻止端口 445。 SMB 1 （也称为 CIFS （通用 Internet 文件系统））是许多 Linux 发行版中包含的传统文件系统协议。 SMB 1 是过时且效率不高的协议，而且最重要的是，它是不安全的协议。 好消息是，Azure 文件不支持 SMB 1，从 Linux 内核版本4.18 开始，Linux 使你可以禁用 SMB 1。 我们始终[强烈建议](https://aka.ms/stopusingsmb1)在生产环境中使用 smb 文件共享之前，在 Linux 客户端上禁用 smb 1。
+## <a name="securing-linux"></a>Securing Linux
+In order to mount an Azure file share on Linux, port 445 must be accessible. 许多组织因 SMB 1 中固有的安全风险而阻止端口 445。 SMB 1, also known as CIFS (Common Internet File System), is a legacy file system protocol included with many Linux distributions. SMB 1 是过时且效率不高的协议，而且最重要的是，它是不安全的协议。 The good news is that Azure Files does not support SMB 1, and starting with Linux kernel version 4.18, Linux makes it possible to disable SMB 1. We always [strongly recommend](https://aka.ms/stopusingsmb1) disabling the SMB 1 on your Linux clients before using SMB file shares in production.
 
-从 Linux 内核4.18 开始，作为旧原因被称为 `cifs` 的 SMB 内核模块公开了新的模块参数（通常称为*parm* ），称为 `disable_legacy_dialects`。 尽管在 Linux 内核4.18 中引入，但某些供应商已将此更改向后移植到它们支持的旧内核。 为方便起见，下表详细介绍了常见 Linux 发行版上此模块参数的可用性。
+Starting with Linux kernel 4.18, the SMB kernel module, called `cifs` for legacy reasons, exposes a new module parameter (often referred to as *parm* by various external documentation), called `disable_legacy_dialects`. Although introduced in Linux kernel 4.18, some vendors have backported this change to older kernels that they support. For convenience, the following table details the availability of this module parameter on common Linux distributions.
 
-| 分发 | 可以禁用 SMB 1 |
+| 分配 | Can disable SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | 否 |
+| Ubuntu 14.04-16.04 | No |
 | Ubuntu 18.04 | 是 |
-| Ubuntu 19.04 + | 是 |
-| Debian 8-9 | 否 |
-| Debian 10 + | 是 |
-| Fedora 29 + | 是 |
-| CentOS 7 | 否 | 
-| CentOS 8 + | 是 |
-| Red Hat Enterprise Linux 1.x-7. x | 否 |
-| Red Hat Enterprise Linux 8 + | 是 |
-| openSUSE Leap 15。0 | 否 |
-| openSUSE Leap 15.1 + | 是 |
+| Ubuntu 19.04+ | 是 |
+| Debian 8-9 | No |
+| Debian 10+ | 是 |
+| Fedora 29+ | 是 |
+| CentOS 7 | No | 
+| CentOS 8+ | 是 |
+| Red Hat Enterprise Linux 6.x-7.x | No |
+| Red Hat Enterprise Linux 8+ | 是 |
+| openSUSE Leap 15.0 | No |
+| openSUSE Leap 15.1+ | 是 |
 | openSUSE Tumbleweed | 是 |
-| SUSE Linux Enterprise 11. x-12. x | 否 |
-| SUSE Linux Enterprise 15 | 否 |
-| SUSE Linux Enterprise 15。1 | 否 |
+| SUSE Linux Enterprise 11.x-12.x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15.1 | No |
 
-可以通过以下命令查看 Linux 发行版是否支持 `disable_legacy_dialects` module 参数。
+You can check to see if your Linux distribution supports the `disable_legacy_dialects` module parameter via the following command.
 
 ```bash
 sudo modinfo -p cifs | grep disable_legacy_dialects
 ```
 
-此命令应输出以下消息：
+This command should output the following message:
 
 ```Output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
-禁用 SMB 1 之前，必须检查以确保系统中当前未加载 SMB 模块（如果已安装 SMB 共享，则会自动发生此情况）。 你可以通过以下命令来执行此操作，如果未加载 SMB，此命令应输出 nothing：
+Before disabling SMB 1, you must check to make sure that the SMB module is not currently loaded on your system (this happens automatically if you have mounted an SMB share). You can do this with the following command, which should output nothing if SMB is not loaded:
 
 ```bash
 lsmod | grep cifs
 ```
 
-若要卸载该模块，请首先卸载所有 SMB 共享（使用上面所述的 `umount` 命令）。 可以通过以下命令标识系统上所有已装载的 SMB 共享：
+To unload the module, first unmount all SMB shares (using the `umount` command as described above). You can identify all the mounted SMB shares on your system with the following command:
 
 ```bash
 mount | grep cifs
 ```
 
-卸载所有 SMB 文件共享后，可以安全地卸载模块。 为此，可以使用 `modprobe` 命令：
+Once you have unmounted all SMB file shares, it's safe to unload the module. 为此，可以使用 `modprobe` 命令：
 
 ```bash
 sudo modprobe -r cifs
 ```
 
-你可以使用 `modprobe` 命令，手动加载已卸载的 SMB 1 的模块：
+You can manually load the module with SMB 1 unloaded using the `modprobe` command:
 
 ```bash
 sudo modprobe cifs disable_legacy_dialects=Y
 ```
 
-最后，你可以通过查看 `/sys/module/cifs/parameters`中的加载参数来检查是否已使用参数加载 SMB 模块：
+Finally, you can check the SMB module has been loaded with the parameter by looking at the loaded parameters in `/sys/module/cifs/parameters`:
 
 ```bash
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-若要在 Ubuntu 和基于 Debian 的分发上永久禁用 SMB 1，则必须创建一个新文件（如果还没有其他模块的自定义选项），并在该设置中调用 `/etc/modprobe.d/local.conf`。 可以通过以下命令执行此操作：
+To persistently disable SMB 1 on Ubuntu and Debian-based distributions, you must create a new file (if you don't already have custom options for other modules) called `/etc/modprobe.d/local.conf` with the setting. You can do this with the following command:
 
 ```bash
 echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
 ```
 
-可以通过加载 SMB 模块来验证此操作是否正常工作：
+You can verify that this has worked by loading the SMB module:
 
 ```bash
 sudo modprobe cifs

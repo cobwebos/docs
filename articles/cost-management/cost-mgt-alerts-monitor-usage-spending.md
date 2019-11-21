@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002091"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230118"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -35,21 +35,21 @@ ms.locfileid: "66002091"
 
 当部门支出达到配额的固定阈值时，部门支出配额警报会通知你。 支出配额在 EA 门户中配置。 阈值在达到后会生成一封给部门所有者的电子邮件并显示在成本警报中。 例如，配额的 50% 或 75%。
 
-## <a name="supported-alert-features-by-offer-categories"></a>支持的产品/服务类别的警报功能
+## <a name="supported-alert-features-by-offer-categories"></a>Supported alert features by offer categories
 
-为警报类型的支持取决于有 (Microsoft 产品/服务) 的 Azure 帐户的类型。 下表显示了支持的警报功能的各种 Microsoft 产品。 您可以查看 Microsoft 产品/服务的完整列表[了解成本管理数据](understand-cost-mgt-data.md)。
+Support for alert types depends on the type of Azure account that you have (Microsoft offer). The following table shows the alert features that are supported by various Microsoft offers. You can view the full list of Microsoft offers at [Understand Cost Management data](understand-cost-mgt-data.md).
 
-| 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/付 As-You-进行 |
+| 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/Pay-As-You-Go |
 |---|---|---|---|
-| 预算 | ✔ | ✔ | ✔ |
+| Budget | ✔ | ✔ | ✔ |
 | 额度 | ✔ |✘ | ✘ |
-| 部门支出配额 | ✔ | ✘ | ✘ |
+| Department spending quota | ✔ | ✘ | ✘ |
 
 
 
 ## <a name="view-cost-alerts"></a>查看成本警报
 
-若要查看成本警报，可在 Azure 门户并选择中打开所需的范围**预算**菜单中。 使用**作用域**药丸切换到不同的作用域。 选择**成本警报**菜单中。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+To view cost alerts, open the desired scope in the Azure portal and select **Budgets** in the menu. Use the **Scope** pill to switch to a different scope. Select **Cost alerts** in the menu. 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在成本管理中显示的警报的示例图像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "66002091"
 
 所有警报都显示警报类型。 预算警报会显示其生成原因以及其适用的预算的名称。 每个警报会显示其生成日期、状态以及适用范围（订阅或管理组）。
 
-可能的状态包括“活动”和“已消除”。   状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
+可能的状态包括“活动”和“已消除”。 状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
 
 从列表中选择一个警报，查看其详细信息。 警报详细信息显示有关警报的详细信息。 预算警报包括一个预算链接。 如果提供了预算警报的建议，则也会显示该建议的链接。 预算、信用额度和部门支出配额警报在成本分析中有一个分析链接，用于浏览警报范围的成本。 以下示例显示某个部门的支出，其中包含警报详细信息。
 

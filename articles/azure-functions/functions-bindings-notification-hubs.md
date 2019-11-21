@@ -1,21 +1,16 @@
 ---
 title: 适用于 Azure Functions 的 通知中心绑定
 description: 了解如何在 Azure Functions 中使用 Azure 通知中心绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Functions, 事件处理, 动态计算, 无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8bc7f879a2c2e8b1e0e2d82216241704a466ad60
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991380"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231140"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -26,7 +21,7 @@ ms.locfileid: "72991380"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> Google 已不[推荐 Google Cloud Messaging 使用 Firebase 云消息传送（FCM）](https://developers.google.com/cloud-messaging/faq)。 此输出绑定不支持 FCM。 若要使用 FCM 发送通知，请直接在函数中使用[FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) ，或使用[模板通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
+> Google has [deprecated Google Cloud Messaging (GCM) in favor of Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). This output binding doesn't support FCM. To send notifications using FCM, use the [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) directly in your function or use [template notifications](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 ## <a name="packages---functions-1x"></a>包 - Functions 2.x
 

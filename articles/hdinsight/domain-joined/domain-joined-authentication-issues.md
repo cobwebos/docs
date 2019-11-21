@@ -1,32 +1,32 @@
 ---
-title: Azure HDInsight 中的身份验证问题
-description: Azure HDInsight 中的身份验证问题
+title: Authentication issues in Azure HDInsight
+description: Authentication issues in Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 2ffc3ced360e1fdf00f69ea5826e6c6af7806f71
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901406"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215992"
 ---
-# <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 中的身份验证问题
+# <a name="authentication-issues-in-azure-hdinsight"></a>Authentication issues in Azure HDInsight
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
+This article describes troubleshooting steps and possible resolutions for issues when interacting with Azure HDInsight clusters.
 
-在 Azure Data Lake （Gen1 或 Gen2）支持的安全群集上，当域用户通过 HDI Gateway 登录到群集服务（如登录到 Apache Ambari 门户）时，HDI 网关将首先尝试从 Azure Active Directory （Azure AD）获取 OAuth 令牌，然后从 Azure AD DS 获取 Kerberos 票证。 在以下任一阶段，身份验证可能会失败。 本文旨在调试其中一些问题。
+On secure clusters backed by Azure Data Lake (Gen1 or Gen2), when domain users sign in to the cluster services through HDI Gateway (like signing in to the Apache Ambari portal), HDI Gateway will try to obtain an OAuth token from Azure Active Directory (Azure AD) first, and then get a Kerberos ticket from Azure AD DS. Authentication can fail in either of these stages. This article is aimed at debugging some of those issues.
 
-如果身份验证失败，系统会提示你输入凭据。 如果取消此对话框，则将打印错误消息。 下面是一些常见的错误消息：
+When the authentication fails, you will get prompted for credentials. If you cancel this dialog, the error message will be printed. Here are some of the common error messages:
 
-## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant 或 unauthorized_client，50126
+## <a name="invalid_grant-or-unauthorized_client-50126"></a>invalid_grant or unauthorized_client, 50126
 
 ### <a name="issue"></a>问题
 
-联合用户登录失败，错误代码为50126（云用户的登录成功）。 错误消息类似于：
+Sign in fails for federated users with error code 50126 (sign in succeeds for cloud users). Error message is similar to:
 
 ```
 Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_description":"AADSTS70002: Error validating credentials. AADSTS50126: Invalid username or password\r\nTrace ID: 09cc9b95-4354-46b7-91f1-efd92665ae00\r\n Correlation ID: 4209bedf-f195-4486-b486-95a15b70fbe4\r\nTimestamp: 2019-01-28 17:49:58Z","error_codes":[70002,50126], "timestamp":"2019-01-28 17:49:58Z","trace_id":"09cc9b95-4354-46b7-91f1-efd92665ae00","correlation_id":"4209bedf-f195-4486-b486-95a15b70fbe4"}
@@ -34,19 +34,19 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>原因
 
-Azure AD 错误代码50126表示租户尚未设置 `AllowCloudPasswordValidation` 策略。
+Azure AD error code 50126 means the `AllowCloudPasswordValidation` policy has not been set by the tenant.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-Azure AD 租户的公司管理员应该允许 Azure AD 为支持 ADFS 的用户使用密码哈希。  应用 `AllowCloudPasswordValidationPolicy`，如[使用 HDInsight 中的企业安全性套餐](../domain-joined/apache-domain-joined-architecture.md)一文中所示。
+The Company Administrator of the Azure AD tenant should enable Azure AD to use password hashes for ADFS backed users.  Apply the `AllowCloudPasswordValidationPolicy` as shown in the article [Use Enterprise Security Package in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant 或 unauthorized_client，50034
+## <a name="invalid_grant-or-unauthorized_client-50034"></a>invalid_grant or unauthorized_client, 50034
 
 ### <a name="issue"></a>问题
 
-登录失败，错误代码为50034。 错误消息类似于：
+Sign in fails with error code 50034. Error message is similar to:
 
 ```
 {"error":"invalid_grant","error_description":"AADSTS50034: The user account Microsoft.AzureAD.Telemetry.Diagnostics.PII does not exist in the 0c349e3f-1ac3-4610-8599-9db831cbaf62 directory. To sign into this application, the account must be added to the directory.\r\nTrace ID: bbb819b2-4c6f-4745-854d-0b72006d6800\r\nCorrelation ID: b009c737-ee52-43b2-83fd-706061a72b41\r\nTimestamp: 2019-04-29 15:52:16Z", "error_codes":[50034],"timestamp":"2019-04-29 15:52:16Z","trace_id":"bbb819b2-4c6f-4745-854d-0b72006d6800", "correlation_id":"b009c737-ee52-43b2-83fd-706061a72b41"}
@@ -54,19 +54,19 @@ Azure AD 租户的公司管理员应该允许 Azure AD 为支持 ADFS 的用户�
 
 ### <a name="cause"></a>原因
 
-用户名不正确（不存在）。 用户使用的用户名与 Azure 门户中使用的用户名相同。
+User name is incorrect (does not exist). The user is not using the same username that is used in Azure portal.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-使用该门户中的相同用户名。
+Use the same user name that works in that portal.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant 或 unauthorized_client，50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
 
 ### <a name="issue"></a>问题
 
-用户帐户被锁定，错误代码50053。 错误消息类似于：
+User account is locked out, error code 50053. Error message is similar to:
 
 ```
 {"error":"unauthorized_client","error_description":"AADSTS50053: You've tried to sign in too many times with an incorrect user ID or password.\r\nTrace ID: 844ac5d8-8160-4dee-90ce-6d8c9443d400\r\nCorrelation ID: 23fe8867-0e8f-4e56-8764-0cdc7c61c325\r\nTimestamp: 2019-06-06 09:47:23Z","error_codes":[50053],"timestamp":"2019-06-06 09:47:23Z","trace_id":"844ac5d8-8160-4dee-90ce-6d8c9443d400","correlation_id":"23fe8867-0e8f-4e56-8764-0cdc7c61c325"}
@@ -74,19 +74,19 @@ Azure AD 租户的公司管理员应该允许 Azure AD 为支持 ADFS 的用户�
 
 ### <a name="cause"></a>原因
 
-使用错误的密码尝试登录的次数过多。
+Too many sign in attempts with an incorrect password.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-等待30分钟，停止任何可能尝试进行身份验证的应用程序。
+Wait for 30 minutes or so, stop any applications that might be trying to authenticate.
 
 ---
 
-## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant 或 unauthorized_client，50053
+## <a name="invalid_grant-or-unauthorized_client-50053"></a>invalid_grant or unauthorized_client, 50053
 
 ### <a name="issue"></a>问题
 
-密码已过期，错误代码50053。 错误消息类似于：
+Password expired, error code 50053. Error message is similar to:
 
 ```
 {"error":"user_password_expired","error_description":"AADSTS50055: Password is expired.\r\nTrace ID: 241a7a47-e59f-42d8-9263-fbb7c1d51e00\r\nCorrelation ID: c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a\r\nTimestamp: 2019-06-06 17:29:37Z","error_codes":[50055],"timestamp":"2019-06-06 17:29:37Z","trace_id":"241a7a47-e59f-42d8-9263-fbb7c1d51e00","correlation_id":"c7fe4a42-67e4-4acd-9fb6-f4fb6db76d6a","suberror":"user_password_expired","password_change_url":"https://portal.microsoftonline.com/ChangePassword.aspx"}
@@ -94,11 +94,11 @@ Azure AD 租户的公司管理员应该允许 Azure AD 为支持 ADFS 的用户�
 
 ### <a name="cause"></a>原因
 
-密码已过期。
+Password is expired.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-更改 "Azure 门户中的密码（在本地系统上），然后等待30分钟以便同步同步。
+Change the password in the Azure portal (on your on-premises system) and then wait for 30 minutes for sync to catch up.
 
 ---
 
@@ -106,109 +106,109 @@ Azure AD 租户的公司管理员应该允许 Azure AD 为支持 ADFS 的用户�
 
 ### <a name="issue"></a>问题
 
-`interaction_required`收到错误消息。
+Receive error message `interaction_required`.
 
 ### <a name="cause"></a>原因
 
-条件访问策略或 MFA 正在应用于用户。 由于目前尚不支持交互式身份验证，因此需要从 MFA/条件访问中免除用户或群集。 如果选择免除群集（基于 IP 地址的免除策略），请确保为该 vnet 启用 AD `ServiceEndpoints`。
+条件访问策略或 MFA 正在应用于用户。 由于目前尚不支持交互式身份验证，因此需要从 MFA/条件访问中免除用户或群集。 If you choose to exempt the cluster (IP address based exemption policy), then make sure that the AD `ServiceEndpoints` are enabled for that vnet.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-按照[使用 Azure Active Directory 域服务配置包含企业安全性套餐的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)中所述，使用条件访问策略并免除 MFA 中的 HDInisght 群集。
+Use conditional access policy and exempt the HDInisght clusters from MFA as shown in [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
 ---
 
-## <a name="sign-in-denied"></a>已拒绝登录
+## <a name="sign-in-denied"></a>Sign in denied
 
 ### <a name="issue"></a>问题
 
-拒绝登录。
+Sign in is denied.
 
 ### <a name="cause"></a>原因
 
-若要转到此阶段，OAuth 身份验证不是问题，但 Kerberos 身份验证为。 如果此群集由 ADLS 提供支持，则在尝试 Kerberos 身份验证之前，OAuth 登录已成功。 在 WASB 群集上，不会尝试 OAuth 登录。 Kerberos 失败的原因有很多，例如密码哈希不同步、用户帐户在 Azure AD DS 中被锁定等。 仅当用户更改密码时，才会同步密码哈希。 创建 Azure AD DS 实例时，它将开始同步在创建后更改的密码。 它不会在开始之前设置以追溯方式同步密码。
+To get to this stage, your OAuth authentication is not an issue, but Kerberos authentication is. If this cluster is backed by ADLS, OAuth sign in has succeeded before Kerberos auth is attempted. On WASB clusters, OAuth sign in is not attempted. There could be many reasons for Kerberos failure - like password hashes are out of sync, user account locked out in Azure AD DS, and so on. Password hashes sync only when the user changes password. When you create the Azure AD DS instance, it will start syncing passwords that are changed after the creation. It won't retroactively sync passwords that were set before its inception.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-如果你认为密码可能不同步，请尝试更改密码并等待几分钟进行同步。
+If you think passwords may not be in sync, try changing the password and wait for a few minutes to sync.
 
-尝试通过 SSH 连接到，你将需要尝试使用同一用户凭据（从已加入域的计算机）进行身份验证（kinit）。 使用本地用户通过 SSH 连接到头/边缘节点，然后运行 kinit。
+Try to SSH into a You will need to try to authenticate (kinit) using the same user credentials, from a machine that is joined to the domain. SSH into the head / edge node with a local user and then run kinit.
 
 ---
 
-## <a name="kinit-fails"></a>kinit 失败
+## <a name="kinit-fails"></a>kinit fails
 
 ### <a name="issue"></a>问题
 
-Kinit 失败。
+Kinit fails.
 
 ### <a name="cause"></a>原因
 
-多种多样。
+Varies.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-要使 kinit 成功，需要知道 `sAMAccountName` （这是没有领域的短帐户名）。 `sAMAccountName` 通常是帐户前缀（如 `bob@contoso.com`中的 bob）。 对于某些用户，可能会有所不同。 你将需要能够浏览/搜索目录以了解 `sAMAccountName`。
+For kinit to succeed, you need to know your `sAMAccountName` (this is the short account name without the realm). `sAMAccountName` is usually the account prefix (like bob in `bob@contoso.com`). For some users, it could be different. You will need the ability to browse / search the directory to learn your `sAMAccountName`.
 
-查找 `sAMAccountName`的方法：
+Ways to find `sAMAccountName`:
 
-* 如果可以使用本地 Ambari 管理员登录到 Ambari，请查看用户列表。
+* If you can sign in to Ambari using the local Ambari admin, look at the list of users.
 
-* 如果已[加入域的 windows 计算机](../../active-directory-domain-services/manage-domain.md)，则可以使用标准的 windows AD 工具进行浏览。 这需要域中有一个工作帐户。
+* If you have a [domain joined windows machine](../../active-directory-domain-services/manage-domain.md), you can use the standard Windows AD tools to browse. This requires a working account in the domain.
 
-* 在头节点中，可以使用 SAMBA 命令搜索。 这需要有效的 Kerberos 会话（成功 kinit）。 net ads 搜索 "（userPrincipalName = bob *）"
+* From the head node, you can use SAMBA commands to search. This requires a valid Kerberos session (successful kinit). net ads search "(userPrincipalName=bob*)"
 
-    搜索/浏览结果应显示 `sAMAccountName` 特性。 此外，还可以查看 `pwdLastSet`、`badPasswordTime`、`userPrincipalName` 等其他属性，以查看这些属性是否与预期相符。
+    The search / browse results should show you the `sAMAccountName` attribute. Also, you could look at other attributes like `pwdLastSet`, `badPasswordTime`, `userPrincipalName` etc. to see if those properties match what you expect.
 
 ---
 
-## <a name="kinit-fails-with-preauthentication-failure"></a>kinit 失败，预身份验证失败
+## <a name="kinit-fails-with-preauthentication-failure"></a>kinit fails with Preauthentication failure
 
 ### <a name="issue"></a>问题
 
-Kinit 失败，`Preauthentication` 失败。
+Kinit fails with `Preauthentication` failure.
 
 ### <a name="cause"></a>原因
 
-用户名或密码不正确。
+Incorrect username or password.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-请检查用户名和密码。 还要检查前面介绍的其他属性。 若要启用详细调试，请在尝试 kinit 之前从会话运行 `export KRB5_TRACE=/tmp/krb.log`。
+Check your username and password. Also check for other properties described above. To enable verbose debugging, run `export KRB5_TRACE=/tmp/krb.log` from the session before trying kinit.
 
 ---
 
-## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>作业/HDFS 命令因 TokenNotFoundException 而失败
+## <a name="job--hdfs-command-fails-due-to-tokennotfoundexception"></a>Job / HDFS command fails due to TokenNotFoundException
 
 ### <a name="issue"></a>问题
 
-由于 `TokenNotFoundException`，作业/HDFS 命令失败。
+Job / HDFS command fails due to `TokenNotFoundException`.
 
 ### <a name="cause"></a>原因
 
-找不到所需的 OAuth 访问令牌，无法成功完成该作业/命令。 在发出存储请求之前，ADLS/ABFS 驱动程序将尝试从凭据服务检索 OAuth 访问令牌。 当使用同一用户登录到 Ambari 门户时，将注册此令牌。
+The required OAuth access token was not found for the job / command to succeed. The ADLS / ABFS driver will try to retrieve the OAuth access token from the credential service before making storage requests. This token gets registered when you sign in to the Ambari portal using the same user.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-确保你已成功登录到 Ambari 门户，并通过使用其标识的用户名来运行作业。
+Ensure that you have successfully logged in to the Ambari portal once through the username whose identity is used to run the job.
 
 ---
 
-## <a name="error-fetching-access-token"></a>获取访问令牌时出错
+## <a name="error-fetching-access-token"></a>Error fetching access token
 
 ### <a name="issue"></a>问题
 
-用户收到 `Error fetching access token`的错误消息。
+User receives error message `Error fetching access token`.
 
 ### <a name="cause"></a>原因
 
-当用户尝试使用 Acl 访问 ADLS Gen2 并且 Kerberos 令牌已过期时，会发生此错误。
+This error occurs intermittently when users try to access the ADLS Gen2 using ACLs and the Kerberos token has expired.
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
-* Azure Data Lake Storage Gen1，请清除浏览器缓存，并再次登录到 Ambari。
+* For Azure Data Lake Storage Gen1, clean browser cache and log into Ambari again.
 
-* 对于 Azure Data Lake Storage Gen2，请为用户尝试登录的用户运行 `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>`
+* For Azure Data Lake Storage Gen2, Run `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` for the user the user is trying to login as
 
 ---
 
@@ -216,8 +216,8 @@ Kinit 失败，`Preauthentication` 失败。
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
+* Get answers from Azure experts through [Azure Community Support](https://azure.microsoft.com/support/community/).
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* Connect with [@AzureSupport](https://twitter.com/azuresupport) - the official Microsoft Azure account for improving customer experience. Connecting the Azure community to the right resources: answers, support, and experts.
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* If you need more help, you can submit a support request from the [Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Select **Support** from the menu bar or open the **Help + support** hub. For more detailed information, review [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Access to Subscription Management and billing support is included with your Microsoft Azure subscription, and Technical Support is provided through one of the [Azure Support Plans](https://azure.microsoft.com/support/plans/).

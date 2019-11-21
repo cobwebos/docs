@@ -1,81 +1,79 @@
 ---
-title: 使用 GitHub 操作在 Azure Functions 中进行代码更新
-description: 了解如何在 GitHub 中使用 GitHub 操作来定义用于生成和部署 Azure Functions 项目的工作流。
+title: Use GitHub Actions to make code updates in Azure Functions
+description: Learn how to use GitHub Actions to define a workflow to build and deploy Azure Functions projects in GitHub.
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091379"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226915"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
+# <a name="continuous-delivery-by-using-github-action"></a>Continuous delivery by using GitHub Action
 
-[GitHub 操作](https://github.com/features/actions)允许您定义一个工作流，以便自动生成函数代码并将其部署到 Azure 中的函数应用。 
+[GitHub Actions](https://github.com/features/actions) lets you define a workflow to automatically build and deploy your functions code to function app in Azure. 
 
-在 GitHub 操作中，[工作流](https://help.github.com/articles/about-github-actions#workflow)是在 github 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 上生成和部署函数应用项目。 
+In GitHub Actions, a [workflow](https://help.github.com/articles/about-github-actions#workflow) is an automated process that you define in your GitHub repository. This process tells GitHub how to build and deploy your functions app project on GitHub. 
 
-工作流是由存储库中 `/.github/workflows/` 路径中的 YAML （docker-compose.override.yml）文件定义的。 此定义包含组成工作流的各种步骤和参数。 
+A workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow. 
 
-对于 Azure Functions 工作流，文件包含三个部分： 
+For an Azure Functions workflow, the file has three sections: 
 
 | 部分 | 任务 |
 | ------- | ----- |
-| **身份验证** | <ol><li>定义服务主体。</li><li>下载发布配置文件。</li><li>创建 GitHub 机密。</li></ol>|
-| **生成** | <ol><li>设置环境。</li><li>生成函数应用。</li></ol> |
-| **部署** | <ol><li>部署函数应用。</li></ol>|
+| **身份验证** | <ol><li>Define a service principal.</li><li>Download publishing profile.</li><li>Create a GitHub secret.</li></ol>|
+| **生成** | <ol><li>Set up the environment.</li><li>生成函数应用。</li></ol> |
+| **部署** | <ol><li>Deploy the function app.</li></ol>|
 
 > [!NOTE]
-> 如果决定使用发布配置文件进行身份验证，则不需要创建服务主体。
+> You do not need to create a service principal if you decide to use publishing profile for authentication.
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-你可以使用[Azure CLI](/cli/azure/)中的[az ad sp 创建-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令来创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com)或通过选择 "**试用**" 按钮来运行此命令。
+You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) by using the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). You can run this command using [Azure Cloud Shell](https://shell.azure.com) in the Azure portal or by selecting the **Try it** button.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-在此示例中，将资源中的占位符替换为你的订阅 ID、资源组和函数应用名称。 输出是提供对函数应用程序的访问权限的角色分配凭据。 复制此 JSON 对象，该对象可用于从 GitHub 进行身份验证。
+In this example, replace the placeholders in the resource with your subscription ID, resource group, and function app name. The output is the role assignment credentials that provides access to your function app. Copy this JSON object, which you can use to authenticate from GitHub.
 
 > [!IMPORTANT]
-> 授予最小访问权限始终是一种很好的做法。 这就是上一个示例中的作用域仅限于特定的函数应用，而不是整个资源组。
+> It is always a good practice to grant minimum access. This is why the scope in the previous example is limited to the specific function app and not the entire resource group.
 
-## <a name="download-the-publishing-profile"></a>下载发布配置文件
+## <a name="download-the-publishing-profile"></a>Download the publishing profile
 
-可以通过转到应用的 "**概述**" 页，然后单击 "**获取发布配置文件**"，下载 functionapp 的发布配置文件。
+You can download the publishing profile of your functionapp, by going to the **Overview** page of your app and clicking **Get publish profile**.
 
    ![下载发布配置文件](media/functions-how-to-github-actions/get-publish-profile.png)
 
-复制该文件的内容。
+Copy the content of the file.
 
-## <a name="configure-the-github-secret"></a>配置 GitHub 机密
+## <a name="configure-the-github-secret"></a>Configure the GitHub secret
 
-1. 在[GitHub](https://github.com)中，浏览存储库，选择 "**设置**" > **机密** > **添加新机密**。
+1. In [GitHub](https://github.com), browse your repository, select **Settings** > **Secrets** > **Add a new secret**.
 
-   ![添加机密](media/functions-how-to-github-actions/add-secret.png)
+   ![Add Secret](media/functions-how-to-github-actions/add-secret.png)
 
-1. 如果你随后选择 "**添加密钥**"，请将 `AZURE_CREDENTIALS` 用于值 **，并将**复制的命令输出用于**值**。 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为**名称**，并使用文件内容作为**值**。
+1. Use `AZURE_CREDENTIALS` for the **Name** and the copied command output for **Value**, if you then select **Add secret**. If you are using publishing profile, use `SCM_CREDENTIALS` for the **Name** and the file content for **Value**.
 
-GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
+GitHub can now authenticate to your function app in Azure.
 
 ## <a name="set-up-the-environment"></a>设置环境 
 
-可以使用一个 "发布" 设置操作来设置环境。
+Setting up the environment can be done using one of the publish setup actions.
 
-|语言 | 设置操作 |
+|语言 | Setup Action |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**    | `actions/setup-java` |
 |**JavaScript**     | `actions/setup-node` |
 |**Python**   | `actions/setup-python` |
 
-以下示例显示了为各种受支持的语言设置环境的工作流部分：
+The following examples show the part of the workflow that sets up the environment for the various supported languages:
 
 **JavaScript**
 
@@ -131,11 +129,11 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-function-app"></a>生成函数应用
+## <a name="build-the-function-app"></a>Build the function app
 
-这取决于语言和 Azure Functions 支持的语言，此部分应为每种语言的标准生成步骤。
+This depends on the language and for languages supported by Azure Functions, this section should be the standard build steps of each language.
 
-下面的示例以各种支持的语言显示了生成函数应用的工作流部分。：
+The following examples show the part of the workflow that builds the function app, in the various supported languages.:
 
 **JavaScript**
 
@@ -195,15 +193,15 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 ## <a name="deploy-the-function-app"></a>部署函数应用
 
-若要将代码部署到 function app，需要使用 `Azure/functions-action` 操作。 此操作有两个参数：
+To deploy your code to a function app, you will need to use the `Azure/functions-action` action. This action has two parameters:
 
 |参数 |说明  |
 |---------|---------|
-|**_应用名称_** | 必需函数应用的名称。 |
-|_**槽名称**_ | 可有可无要部署到的[部署槽](functions-deployment-slots.md)的名称。 必须已在 function app 中定义槽。 |
+|**_app-name_** | (Mandatory) The name of your function app. |
+|_**slot-name**_ | (Optional) The name of the [deployment slot](functions-deployment-slots.md) you want to deploy to. The slot must already be defined in your function app. |
 
 
-下面的示例使用 `functions-action`的版本1：
+The following example uses version 1 of the `functions-action`:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -215,7 +213,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看完整的 yaml，请参阅[Azure GitHub 操作工作流](https://aka.ms/functions-actions-samples)中的一个文件 `functionapp` 名称中包含。 您可以使用这些示例作为工作流的起点。
+To view a complete workflow .yaml, see one of the files in the [Azure GitHub Actions workflow samples repo](https://aka.ms/functions-actions-samples) that have `functionapp` in the name. You can use these samples a starting point for your workflow.
 
 > [!div class="nextstepaction"]
-> [了解有关 GitHub 操作的详细信息](https://help.github.com/en/articles/about-github-actions)
+> [Learn more about GitHub Actions](https://help.github.com/en/articles/about-github-actions)

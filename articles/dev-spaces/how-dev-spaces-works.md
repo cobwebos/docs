@@ -1,5 +1,5 @@
 ---
-title: Azure 开发人员空间如何工作，是配置
+title: How Azure Dev Spaces works and is configured
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,146 +7,146 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
-description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
-keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
-ms.translationtype: MT
+description: Describes the processes that power Azure Dev Spaces and how they are configured in the azds.yaml configuration file
+keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: 74a95af18556a7f95f8784ee67ad8d8240bb2df0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670823"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229082"
 ---
-# <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
+# <a name="how-azure-dev-spaces-works-and-is-configured"></a>How Azure Dev Spaces works and is configured
 
-开发 Kubernetes 应用程序可能具有挑战性。 您需要 Docker 和 Kubernetes 配置文件。 您需要找出如何进行本地测试应用程序和与其他从属服务进行交互。 您可能需要处理开发和测试多个服务在一次并使用一组开发人员。
+Developing a Kubernetes application can be challenging. You need Docker and Kubernetes configuration files. You need to figure out how to test your application locally and interact with other dependent services. You might need to handle developing and testing on multiple services at once and with a team of developers.
 
-Azure 开发人员空间可帮助你开发、 部署和调试 Kubernetes 应用程序在 Azure Kubernetes 服务 (AKS) 中的直接。 Azure 开发人员空间还允许团队共享开发空间。 跨团队共享开发空间允许各个团队成员，而无需复制或模拟依赖项或在群集中的其他应用程序开发中隔离。
+Azure Dev Spaces helps you develop, deploy, and debug Kubernetes applications directly in Azure Kubernetes Service (AKS). Azure Dev Spaces also allows a team to share a dev space. Sharing a dev space across a team allows individual team members to develop in isolation without having to replicate or mock up dependencies or other applications in the cluster.
 
-Azure 开发人员空间创建并部署、 运行和调试 Kubernetes 应用程序在 AKS 中的为使用配置文件。 此配置文件位于应用程序的代码，可以添加到版本控制系统。
+Azure Dev Spaces creates and uses a configuration file for deploying, running, and debugging your Kubernetes applications in AKS. This configuration file resides with your application's code and can be added to your version control system.
 
-本文介绍了进程该 power Azure 开发空间以及如何在 Azure 开发人员空格配置文件中配置这些进程。 若要获取 Azure 开发人员空间快速运行并看到它在实践中，请完成快速入门教程之一：
+This article describes the processes that power Azure Dev Spaces and how those processes are configured in the Azure Dev Spaces configuration file. To get Azure Dev Spaces running quickly and see it in practice, complete one of the quickstarts:
 
-* [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
-* [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
-* [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-## <a name="how-azure-dev-spaces-works"></a>Azure 开发人员空间的工作原理
+## <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 工作原理
 
-Azure 开发人员空间的两个与交互的不同组件： 在控制器和客户端工具。
+Azure Dev Spaces has two distinct components that you interact with: the controller and the client-side tooling.
 
-![Azure 开发人员空间组件](media/how-dev-spaces-works/components.svg)
+![Azure Dev Spaces components](media/how-dev-spaces-works/components.svg)
 
-控制器可以执行以下操作：
+The controller performs the following actions:
 
-* 管理适用于开发人员空间创建和选择。
-* 安装应用程序的 Helm 图表，并创建 Kubernetes 对象。
-* 生成应用程序的容器映像。
-* 将部署到 AKS 应用程序。
-* 执行增量生成并重新启动你的源代码更改时。
-* 管理日志和 HTTP 跟踪。
-* 将转发 stdout 和 stderr 到客户端工具。
-* 允许团队成员创建子开发空间派生自父开发空间。
-* 配置的应用程序内空格和跨父和子空间的路由。
+* Manages dev space creation and selection.
+* Installs your application's Helm chart and creates Kubernetes objects.
+* Builds your application's container image.
+* Deploys your application to AKS.
+* Does incremental builds and restarts when your source code changes.
+* Manages logs and HTTP traces.
+* Forwards stdout and stderr to the client-side tooling.
+* Allows team members to create child dev spaces derived from a parent dev space.
+* Configures routing for applications within a space as well as across parent and child spaces.
 
-在控制器驻留在 AKS 之外。 它的客户端工具与 AKS 群集之间驱动的行为和通信。 使用 Azure CLI，当你准备将群集使用 Azure 开发人员空间时，已启用控制器。 一旦启用，你可以与它使用客户端工具进行交互。
+The controller resides outside AKS. It drives the behavior and communication between the client-side tooling and the AKS cluster. The controller is enabled using the Azure CLI when you prepare your cluster to use Azure Dev Spaces. Once it is enabled, you can interact with it using the client-side tooling.
 
-客户端工具允许用户：
-* 生成 Dockerfile、 Helm chart 和应用程序的 Azure 开发人员空格配置文件。
-* 创建父级和子级开发空间。
-* 告诉控制器以生成并启动应用程序。
+The client-side tooling allows the user to:
+* Generate a Dockerfile, Helm chart, and Azure Dev Spaces configuration file for the application.
+* Create parent and child dev spaces.
+* Tell the controller to build and start your application.
 
-在你的应用程序运行时，客户端还工具：
-* 接收并显示 stdout 和 stderr 的在 AKS 中运行的应用程序。
-* 使用[端口转发](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)以允许对使用 http 的应用程序的 web 访问：\//localhost。
-* 将调试器附加到在 AKS 中运行的应用程序。
-* 同步源的代码与你的开发空间时为增量生成，实现快速迭代检测到更改。
+While your application is running, the client-side tooling also:
+* Receives and displays stdout and stderr from your application running in AKS.
+* Uses [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to allow web access to your application using http:\//localhost.
+* Attaches a debugger to your running application in AKS.
+* Syncs source code to your dev space when a change is detected for incremental builds, allowing for rapid iteration.
 
-可以使用客户端从命令行工具的一部分`azds`命令。 此外可以使用客户端工具：
+You can use the client-side tooling from the command line as part of the `azds` command. You can also use the client-side tooling with:
 
-* 使用 visual Studio Code [Azure 开发人员空间扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。
-* Visual Studio 中的使用[适用于 Kubernetes 的 Visual Studio 工具](https://aka.ms/get-vsk8stools)。
+* Visual Studio Code using the [Azure Dev Spaces extension](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
+* Visual Studio with [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
-下面是用于设置和使用 Azure 开发人员空间的基本流程：
-1. 为 Azure 开发人员空间准备你的 AKS 群集
-1. 准备您的代码用于在 Azure 开发人员空间上运行
-1. 适用于开发人员空间上运行代码
-1. 适用于开发人员空间上调试代码
-1. 共享开发空间
+Here's the basic flow for setting up and using Azure Dev Spaces:
+1. Prepare your AKS cluster for Azure Dev Spaces
+1. Prepare your code for running on Azure Dev Spaces
+1. Run your code on a dev space
+1. Debug your code on a dev space
+1. Share a dev space
 
-我们将介绍 Azure 开发人员空间中的每个工作原理的更多详细信息下面各节。
+We'll cover more details of how Azure Dev Spaces works in each of the below sections.
 
-## <a name="prepare-your-aks-cluster"></a>准备在 AKS 群集
+## <a name="prepare-your-aks-cluster"></a>Prepare your AKS cluster
 
-准备在 AKS 群集的过程包括：
-* 验证你的 AKS 群集位于区域[支持的 Azure 开发人员空格][supported-regions]。
-* 验证运行 Kubernetes 1.10.3 或更高版本。
-* 使用在群集上启用 Azure 开发人员空格 `az aks use-dev-spaces`
+Preparing your AKS cluster involves:
+* Verifying your AKS cluster is in a region [supported by Azure Dev Spaces][supported-regions].
+* Verifying you are running Kubernetes 1.10.3 or later.
+* Enabling Azure Dev Spaces on your cluster using `az aks use-dev-spaces`
 
-有关如何创建和配置 Azure 开发人员空间 AKS 群集的详细信息，请参阅入门指南：
-* [开始使用 Java 的 Azure 开发人员空格](get-started-java.md)
-* [开始在 Azure 开发人员使用.NET Core 和 Visual Studio 的空格](get-started-netcore-visualstudio.md)
-* [开始在 Azure 开发人员使用.NET Core 的空格](get-started-netcore.md)
-* [开始在 Azure 开发人员与 Node.js 配合使用的空间](get-started-nodejs.md)
+For more information on how to create and configure an AKS cluster for Azure Dev Spaces, see one of the getting started guides:
+* [Get Started on Azure Dev Spaces with Java](get-started-java.md)
+* [Get Started on Azure Dev Spaces with .NET Core and Visual Studio](get-started-netcore-visualstudio.md)
+* [Get Started on Azure Dev Spaces with .NET Core](get-started-netcore.md)
+* [Get Started on Azure Dev Spaces with Node.js](get-started-nodejs.md)
 
-在 AKS 群集上启用 Azure 开发人员空格时，它将为群集控制器安装。 控制器是单独的 Azure 资源，在群集外部并执行以下操作在群集中的资源：
+When Azure Dev Spaces is enabled on your AKS cluster, it installs the controller for your cluster. The controller is a separate Azure resource outside of your cluster and does the following to resources in your cluster:
 
-* 创建或指定要用作开发空间的 Kubernetes 命名空间。
-* 删除名为任何 Kubernetes 命名空间*azds*，如果它存在，并且还创建一个新。
-* 部署 Kubernetes webhook 配置。
-* 将 webhook 许可 server 部署。
+* Creates or designates a Kubernetes namespace to use as a dev space.
+* Removes any Kubernetes namespace named *azds*, if it exists, and creates a new one.
+* Deploys a Kubernetes webhook configuration.
+* Deploys a webhook admission server.
     
 
-它还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
+It also uses the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure 开发人员空间准备群集](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces prepare cluster](media/how-dev-spaces-works/prepare-cluster.svg)
 
-若要使用 Azure 开发人员空格，必须至少一个适用于开发人员空间。 Azure 开发人员空间为开发人员空间使用 AKS 群集中的 Kubernetes 命名空间。 安装控制器时，它会提示您创建新的 Kubernetes 命名空间或选择现有的命名空间用作第一个适用于开发人员空间。 命名空间指定为开发人员空间时，会添加控制器*azds.io/space=true*到该命名空间，以将其标识为开发人员空格的标签。 默认情况下，准备你的群集后，创建或指定的初始开发空间处于选中状态。 选择一个空格后，它可供 Azure 开发人员空间用于创建新的工作负荷。
+In order to use Azure Dev Spaces, there must be at least one dev space. Azure Dev Spaces uses Kubernetes namespaces within your AKS cluster for dev spaces. When a controller is being installed, it prompts you to create a new Kubernetes namespace or choose an existing namespace to use as your first dev space. When a namespace is designated as a dev space, the controller adds the *azds.io/space=true* label to that namespace to identify it as a dev space. The initial dev space you create or designate is selected by default after you prepare your cluster. When a space is selected, it is used by Azure Dev Spaces for creating new workloads.
 
-默认情况下，控制器创建名为开发人员空格*默认*通过升级现有*默认*Kubernetes 命名空间。 客户端工具可用于创建新的开发空间和删除现有的开发空间。 由于在 Kubernetes 中，限制*默认*不能删除适用于开发人员的空间。 在控制器还会删除任何现有 Kubernetes 命名的命名空间*azds*以避免与冲突`azds`由客户端工具的命令。
+By default, the controller creates a dev space named *default* by upgrading the existing *default* Kubernetes namespace. You can use the client-side tooling to create new dev spaces and remove existing dev spaces. Due to a limitation in Kubernetes, the *default* dev space cannot be removed. The controller also removes any existing Kubernetes namespaces named *azds* to avoid conflicts with the `azds` command used by the client-side tooling.
 
-Kubernetes webhook 许可服务器用于检测部署过程将插入三个容器的 pod: devspaces 代理容器、 devspaces 代理初始化容器和 devspaces 生成容器。 **所有这三个这些容器在 AKS 群集上运行具有根访问权限。** 他们还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
+The Kubernetes webhook admission server is used to inject pods with three containers during deployment for instrumentation: a devspaces-proxy container, a devspaces-proxy-init container, and a devspaces-build container. **All three of these containers run with root access on your AKS cluster.** They also use the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure 开发人员空格 Kubernetes webhook 许可服务器](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure Dev Spaces Kubernetes webhook admission server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-Devspaces 代理容器是处理所有 TCP 流量传入和传出的应用程序容器的挎斗容器，可帮助执行路由。 如果要使用某些空格，devspaces 代理容器重新确定 HTTP 消息。 例如，它可以帮助将父和子空间中的应用程序之间的 HTTP 消息路由。 所有非 HTTP 流量将通过 devspaces 代理未修改的形式传递。 Devspaces 代理容器还记录所有入站和出站 HTTP 消息，并将其发送到客户端作为跟踪工具。 这些跟踪可查看由开发人员若要检查的应用程序的行为。
+The devspaces-proxy container is a sidecar container that handles all TCP traffic into and out of the application container and helps perform routing. The devspaces-proxy container reroutes HTTP messages if certain spaces are being used. For example, it can help route HTTP messages between applications in parent and child spaces. All non-HTTP traffic passes through devspaces-proxy unmodified. The devspaces-proxy container also logs all inbound and outbound HTTP messages and sends them to the client-side tooling as traces. These traces can then be viewed by the developer to inspect the behavior of the application.
 
-Devspaces 代理初始化容器是[init 容器](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)，它将额外的路由规则基于空间层次结构添加到应用程序的容器。 它通过更新应用程序容器添加路由规则 */etc/resolv.conf*文件和 iptables 配置开始之前。 的最新更新 */etc/resolv.conf*允许父空间中的服务的 DNS 解析。 Iptables 配置更新确保为所有 TCP 流量和出应用程序的容器将但路由 devspaces 代理。 除了 Kubernetes 添加的规则会从 devspaces 代理初始化的所有更新。
+The devspaces-proxy-init container is an [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that adds additional routing rules based on the space hierarchy to your application's container. It adds routing rules by updating the application container's */etc/resolv.conf* file and iptables configuration before it starts. The updates to */etc/resolv.conf* allow for DNS resolution of services in parent spaces. The iptables configuration updates ensure all TCP traffic into and out of the application's container are routed though devspaces-proxy. All updates from devspaces-proxy-init happen in addition to the rules that Kubernetes adds.
 
-Devspaces 生成容器是一个 init 容器，并且具有项目源代码和装载的 Docker 套接字。 项目源代码和对 Docker 允许直接由 pod 生成应用程序容器。
+The devspaces-build container is an init container and has the project source code and Docker socket mounted. The project source code and access to Docker allows the application container to be built directly by the pod.
 
 > [!NOTE]
-> Azure 开发人员空间使用同一个节点生成应用程序的容器并运行它。 因此，Azure 开发人员空间不需要用于构建和运行你的应用程序的外部容器注册表。
+> Azure Dev Spaces uses the same node to build your application's container and run it. As a result, Azure Dev Spaces does not need an external container registry for building and running your application.
 
-Kubernetes webhook 许可服务器侦听在 AKS 群集中创建任何新 pod。 如果该 pod 部署到任何命名空间*azds.io/space=true*标签，将插入该 pod 使用更多的容器。 如果使用客户端工具运行应用程序的容器，只被注入 devspaces 生成容器。
+The Kubernetes webhook admission server listens for any new pod that's created in the AKS cluster. If that pod is deployed to any namespace with the *azds.io/space=true* label, it injects that pod with the additional containers. The devspaces-build container is only injected if the application's container is run using the client-side tooling.
 
-一旦你已准备好在 AKS 群集，可以使用客户端工具来准备和运行你的代码在你开发的空间。
+Once you have prepared your AKS cluster, you can use the client-side tooling to prepare and run your code in your dev space.
 
-## <a name="prepare-your-code"></a>准备您的代码
+## <a name="prepare-your-code"></a>Prepare your code
 
-若要在开发人员空间中运行你的应用程序，它需要容器化，并需要定义如何应部署到 Kubernetes。 若要容器化应用程序，需要一个 Dockerfile。 若要定义如何将你的应用程序部署到 Kubernetes，需要[Helm 图表](https://docs.helm.sh/)。 若要帮助您创建的 Dockerfile 和 Helm 图表为应用程序，客户端工具提供`prep`命令：
+In order to run your application in a dev space, it needs to be containerized, and you need to define how it should be deployed to Kubernetes. To containerize your application, you need a Dockerfile. To define how your application is deployed to Kubernetes, you need a [Helm chart](https://docs.helm.sh/). To assist in creating both the Dockerfile and Helm chart for your application, the client-side tools provide the `prep` command:
 
 ```cmd
 azds prep --public
 ```
 
-`prep`命令将看看在项目中的文件，然后尝试创建 Dockerfile 和 Helm 图表在 Kubernetes 中运行你的应用程序。 目前，`prep`命令将生成具有以下语言版本的 Dockerfile 和 Helm 图表：
+The `prep` command will look at the files in your project and try to create the Dockerfile and Helm chart for running your application in Kubernetes. Currently, the `prep` command will generate a Dockerfile and Helm chart with the following languages:
 
 * Java
 * Node.js
 * .NET Core
 
-您*必须*运行`prep`命令从包含源代码的目录。 运行`prep`从正确的目录的命令允许客户端工具，以便标识语言，并创建相应的 Dockerfile，可用于容器化应用程序。 您还可以运行`prep`命令包含的目录*pom.xml* Java 项目的文件。
+You *must* run the `prep` command from a directory that contains source code. Running the `prep` command from the correct directory allows the client-side tooling to identify the language and create an appropriate Dockerfile to containerize your application. You can also run the `prep` command from a directory that contains a *pom.xml* file for Java projects.
 
-如果您运行`prep`不包含源的代码，客户端工具的目录中的命令将不会生成 Dockerfile。 它还将显示错误消息，指出：*由于不支持的语言，无法生成 Dockerfile*。 如果客户端工具无法识别项目类型，也会发生此错误。
+If you run the `prep` command from directory that does not contain source code, the client-side tooling will not generate a Dockerfile. It will also display an error saying: *Dockerfile could not be generated due to unsupported language*. This error also occurs if the client-side tooling does not recognize the project type.
 
-在运行时`prep`命令时，您可以指定`--public`标志。 此标记指示要创建此服务的可访问 internet 的终结点的控制器。 如果未指定此标志，该服务才可从群集内访问或使用 localhost 隧道的客户端工具创建。 可以启用或禁用此行为： 运行后`prep`命令更新生成的 Helm 图表。
+When you run the `prep` command, you have the option of specifying the `--public` flag. This flag tells the controller to create an internet-accessible endpoint for this service. If you do not specify this flag, the service is only accessible from within the cluster or using the localhost tunnel created by the client-side tooling. You can enable or disable this behavior after running the `prep` command by updating the generated Helm chart.
 
-`prep`命令将不替换您项目中有任何现有 Dockerfile 或 Helm 图表。 如果已有的 Dockerfile 或 Helm 图表作为生成的文件使用相同的命名约定`prep`命令，`prep`命令将跳过生成这些文件。 否则为`prep`命令将生成其自己的 Dockerfile 或 Helm 图表沿端现有的文件。
+The `prep` command will not replace any existing Dockerfiles or Helm charts you have in your project. If an existing Dockerfile or Helm chart uses the same naming convention as the files generated by the `prep` command, the `prep` command will skip generating those files. Otherwise, the `prep` command will generate its own Dockerfile or Helm chart along side the existing files.
 
-`prep`命令还将生成`azds.yaml`根目录下的项目文件。 Azure 开发人员空间使用此文件来构建、 安装、 配置和运行应用程序。 此配置文件列出了 Dockerfile 和 Helm 图表的位置，并可基于这些项目的其他配置。
+The `prep` command will also generate a `azds.yaml` file at the root of your project. Azure Dev Spaces uses this file to build, install, configure, and run your application. This configuration file lists the location of your Dockerfile and Helm chart and also provides additional configuration on top of those artifacts.
 
-下面是使用创建的示例 azds.yaml 文件[.NET Core 示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
+Here is an example azds.yaml file created using [.NET Core sample application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
 ```yaml
 kind: helm-release
@@ -193,114 +193,114 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-`azds.yaml`生成的文件`prep`命令应该能够正常工作的简单、 单个项目开发方案。 如果你的特定项目增加了复杂性，可能需要运行后更新此文件`prep`命令。 例如，你的项目可能需要进行一些调整到生成或启动基于您的开发或调试需要的进程。 此外可能具有多个应用程序在项目中，需要多个生成进程或不同的生成内容。
+The `azds.yaml` file generated by the `prep` command should work fine for a simple, single project development scenario. If your specific project has increased complexity, you may need to update this file after running the `prep` command. For example, your project may require some tweaking to your build or launch process based on your development or debugging needs. You also might have multiple applications in your project, which require multiple build processes or a different build content.
 
-## <a name="run-your-code"></a>运行代码
+## <a name="run-your-code"></a>Run your code
 
-若要在开发人员空间中运行你的代码，发出`up`所在的同一目录中的命令在`azds.yaml`文件：
+To run your code in a dev space, issue the `up` command in the same directory as your `azds.yaml` file:
 
 ```cmd
 azds up
 ```
 
-`up`命令将上传应用程序源文件和其他生成和运行到开发项目所需的项目。 从此处，在你开发的空间中的控制器：
+The `up` command uploads your application source files and other artifacts needed to build and run your project to the dev space. From there, the controller in your dev space:
 
-1. 创建要将应用程序部署的 Kubernetes 对象。
-1. 生成你的应用程序的容器。
-1. 将部署到开发应用程序。
-1. 如果配置，请创建具有可公开访问的应用程序终结点的 DNS 名称。
-1. 使用*端口转发*来提供对应用程序终结点使用访问 http://localhost 。
-1. 将转发 stdout 和 stderr 到客户端工具。
+1. Creates the Kubernetes objects to deploy your application.
+1. Builds the container for your application.
+1. Deploys your application to the dev space.
+1. Creates a publicly accessible DNS name for your application endpoint if configured.
+1. Uses *port-forward* to provide access to your application endpoint using http://localhost.
+1. Forwards stdout and stderr to the client-side tooling.
 
 
-### <a name="starting-a-service"></a>启动服务
+### <a name="starting-a-service"></a>Starting a service
 
-当开发人员空间中启动服务时，客户端工具和控制器将适用于协调同步源代码文件、 容器和 Kubernetes 对象创建和运行应用程序。
+When you start a service in a dev space, the client-side tooling and controller work in coordination to synchronize your source files, create your container and Kubernetes objects, and run your application.
 
-在更精细的级别，下面是在运行时，会发生什么情况`azds up`:
+At a more granular level, here is what happens when you run `azds up`:
 
-1. 文件将从用户的计算机同步到仅适用于用户的 AKS 群集将 Azure 文件存储。 上载源代码、 Helm 图表和配置文件。 下一节中提供了在同步过程的更多详细信息。
-1. 在控制器创建一个请求以启动新会话。 此请求包含多个属性，包括唯一 ID、 空间名称、 源代码、 路径和调试标志。
-1. 控制器替换 *$(tag)* Helm 图表使用唯一的会话 ID 和安装 Helm 图表为您的服务中的占位符。 添加到 Helm 图表的唯一会话 id 的引用允许容器部署到 AKS 群集，此特定会话中进行关联回到会话请求和相关信息。
-1. 安装过程中的 Helm 图表，Kubernetes webhook 许可服务器将更多的容器添加到应用程序的 pod 规范和访问你的项目的源代码。 添加 devspaces 代理和 devspaces 代理初始化容器来提供 HTTP 跟踪和空间路由。 添加 devspaces 生成容器，以提供用于构建应用程序的容器的 Docker 实例和项目源代码的访问权限的 pod。
-1. 启动应用程序的 pod，devspaces 生成容器和 devspaces 代理初始化容器用于生成应用程序容器。 然后启动应用程序容器和 devspaces 代理容器。
-1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost 。 此端口转发将在开发计算机连接到你的开发空间中的服务。
-1. 当在 pod 中的所有容器都启动后时，服务正在运行。 此时，客户端功能开始流式传输的 HTTP 跟踪、 stdout 和 stderr。 开发人员的情况下，此信息显示的客户端的功能。
+1. Files are synchronized from the user’s machine to an Azure file storage that is unique to the user’s AKS cluster. The source code, Helm chart, and configuration files are uploaded. More details on the synchronization process are available in the next section.
+1. The controller creates a request to start a new session. This request contains several properties, including a unique ID, space name, path to source code, and a debugging flag.
+1. The controller replaces the *$(tag)* placeholder in the Helm chart with the unique session ID and installs the Helm chart for your service. Adding a reference to the unique session ID to the Helm chart allows the container deployed to the AKS cluster for this specific session to be tied back to the session request and associated information.
+1. During the installation of the Helm chart, the Kubernetes webhook admission server adds additional containers to your application's pod for instrumentation and access to your project's source code. The devspaces-proxy and devspaces-proxy-init containers are added to provide HTTP tracing and space routing. The devspaces-build container is added to provide the pod with access to the Docker instance and project source code for building your application's container.
+1. When the application's pod is started, the devspaces-build container and devspaces-proxy-init container are used to build the application container. The application container and devspaces-proxy containers are then started.
+1. After the application container has started, the client-side functionality uses the Kubernetes *port-forward* functionality to provide HTTP access to your application over http://localhost. This port forwarding connects your development machine to the service in your dev space.
+1. When all containers in the pod have started, the service is running. At this point, the client-side functionality begins to stream the HTTP traces, stdout, and stderr. This information is displayed by the client-side functionality for the developer.
 
-### <a name="updating-a-running-service"></a>更新正在运行的服务
+### <a name="updating-a-running-service"></a>Updating a running service
 
-在运行时服务，Azure 开发人员空间的功能来更新该服务，如果项目源文件的任何更改。 此外可以开发空格处理更新服务以不同的方式具体取决于更改的文件的类型。 有三种方法适用于开发人员空间可以更新正在运行的服务：
+While a service is running, Azure Dev Spaces has the ability to update that service if any of the project source files change. Dev Spaces also handles updating the service differently depending on the type of file that is changed. There are three ways Dev Spaces can update a running service:
 
-* 直接更新文件
-* 重新生成并重新启动正在运行的应用程序的容器内的应用程序的进程
-* 重建和重新部署应用程序的容器
+* Directly updating a file
+* Rebuilding and restarting the application's process inside the running application's container
+* Rebuilding and redeploying the application's container
 
-![Azure 开发人员空格文件同步](media/how-dev-spaces-works/file-sync.svg)
+![Azure Dev Spaces file sync](media/how-dev-spaces-works/file-sync.svg)
 
-无需重新启动的任何内容，可以直接在应用程序的容器中更新是静态资产，例如 html、 css 和 cshtml 文件，某些项目文件。 如果静态资产发生更改，新的文件是同步到开发人员空间，然后由正在运行的容器。
+Certain project files that are static assets, such as html, css, and cshtml files, can be updated directly in the application's container without restarting anything. If a static asset changes, the new file is synchronized to the dev space and then used by the running container.
 
-可以通过重新启动应用程序的进程正在运行的容器内应用对如源代码文件或应用程序配置文件更改。 在正在运行的容器使用后，这些文件进行同步，重新启动应用程序的进程*devhostagent*过程。 最初创建应用程序的容器时，控制器替换为应用程序的 startup 命令名为的不同过程*devhostagent*。 应用程序的实际进程然后作为子进程下运行*devhostagent*，并使用其输出通过管道传送*devhostagent*的输出。 *Devhostagent*过程也是开发人员空间的一部分，并且可以执行在正在运行的容器中的命令，代表开发人员的空格。 执行重启时*devhostagent*:
+Changes to files such as source code or application configuration files can be applied by restarting the application's process within the running container. Once these files are synchronized, the application's process is restarted within the running container using the *devhostagent* process. When initially creating the application's container, the controller replaces the startup command for the application with a different process called *devhostagent*. The application's actual process is then run as a child process under *devhostagent*, and its output is piped out using *devhostagent*'s output. The *devhostagent* process is also part of Dev Spaces and can execute commands in the running container on behalf of Dev Spaces. When performing a restart, *devhostagent*:
 
-* 停止当前进程或与应用程序关联的进程
-* 重新生成应用程序
-* 重新启动该应用程序与关联的进程
+* Stops the current process or processes associated with the application
+* Rebuilds the application
+* Restarts the process or processes associated with the application
 
-方式*devhostagent*执行上述步骤中配置`azds.yaml`配置文件。 此配置是在后面的部分详细说明。
+The way *devhostagent* executes the preceding steps is configured in the `azds.yaml` configuration file. This configuration is detailed in a later section.
 
-项目文件，例如 Dockerfile、 csproj 文件或 Helm 图表的任何部分更新需要重新生成并重新部署的应用程序的容器。 其中一个文件同步到开发人员空间时，控制器将运行[运行 helm upgrade](https://helm.sh/docs/helm/#helm-upgrade)重建和重新部署命令和应用程序的容器。
+Updates to project files such as Dockerfiles, csproj files, or any part of the Helm chart require the application's container to be rebuilt and redeployed. When one of these files is synchronized to the dev space, the controller runs the [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure) command and the application's container is rebuilt and redeployed.
 
-### <a name="file-synchronization"></a>文件同步
+### <a name="file-synchronization"></a>File Synchronization
 
-第一次在开发人员空间中，启动的应用程序上传应用程序的所有源代码文件。 在运行时应用程序并在更高版本的重新启动，上载已更改的文件。 使用两个文件来协调此过程： 客户端文件和一个控制器端文件。
+The first time an application is started in a dev space, all the application's source files are uploaded. While the application is running and on later restarts, only the changed files are uploaded. Two files are used to coordinate this process: a client-side file and a controller-side file.
 
-客户端的文件存储在临时目录中和名为基于哈希在开发人员空间中运行的项目目录。 例如，在 Windows 上将具有类似的文件*Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog*为你的项目。 在 Linux 上，客户端的文件存储在 */tmp*目录。 可以通过运行在 macOS 上找到目录`echo $TMPDIR`命令。
+The client-side file is stored in a temporary directory and is named based on a hash of the project directory you are running in Dev Spaces. For example, on Windows you would have a file like *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* for your project. On Linux, the client-side file is stored in the */tmp* directory. You can find the directory on macOS by running the `echo $TMPDIR` command.
 
-此文件采用 JSON 格式且包含：
+This file is in JSON format and contains:
 
-* 与开发人员空间同步每个项目文件条目
-* 同步 ID
-* 最后一次同步操作的时间戳
+* An entry for each project file that is synchronized with the dev space
+* A synchronization ID
+* The timestamp of the last sync operation
 
-每个项目文件条目包含该文件，其时间戳的路径。
+Each project file entry contains a path to the file and its timestamp.
 
-控制器端文件存储在 AKS 群集上。 它包含同步 ID 和上次同步的时间戳。
+The controller-side file is stored on the AKS cluster. It contains the synchronization ID and the timestamp of the last synchronization.
 
-客户端和控制器端文件之间的同步时间戳不匹配时，会发生同步。 在同步时，客户端工具循环访问客户端的文件中的文件条目。 如果文件的时间戳晚于同步时间戳，该文件被同步到开发人员空间。 在同步完成后，同步时间戳会更新对客户端和控制器端文件。
+A sync happens when the synchronization timestamps do not match between the client-side and the controller-side files. During a sync, the client-side tooling iterates over the file entries in the client-side file. If the file's timestamp is after the sync timestamp, that file is synced to the dev space. Once the sync is complete, the sync timestamps are updated on both the client-side and controller-side files.
 
-如果客户端的文件不存在，同步的所有项目文件。 此行为，可通过删除客户端文件强制执行完全同步。
+All of the project files are synced if the client-side file is not present. This behavior allows you to force a full sync by deleting the client-side file.
 
-### <a name="how-routing-works"></a>路由的工作原理
+### <a name="how-routing-works"></a>How routing works
 
-适用于开发人员空间基于 AKS，并使用相同[的网络概念](../aks/concepts-network.md)。 Azure 开发人员空格也有集中式*ingressmanager*服务并将其自身入口控制器部署到 AKS 群集。 *Ingressmanager*服务的监视 AKS 群集使用适用于开发人员空间并增加 Azure 开发人员空格入口控制器与入口路由到应用程序 pod 的对象在群集中的内容。 每个 pod 中的 devspaces 代理容器添加`azds-route-as`HTTP 标头的 HTTP 流量传输到开发人员空间根据 URL。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 将获取 HTTP 标头与`azds-route-as: azureuser` 。 将不会添加 devspaces 代理容器`azds-route-as`标头，如果已存在。
+A dev space is built on top of AKS and uses the same [networking concepts](../aks/concepts-network.md). Azure Dev Spaces also has a centralized *ingressmanager* service and deploys its own Ingress Controller to the AKS cluster. The *ingressmanager* service monitors AKS clusters with dev spaces and augments the Azure Dev Spaces Ingress Controller in the cluster with Ingress objects for routing to application pods. The devspaces-proxy container in each pod adds an `azds-route-as` HTTP header for HTTP traffic to a dev space based on the URL. For example, a request to the URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* would get an HTTP header with `azds-route-as: azureuser`. The devspaces-proxy container will not add an `azds-route-as` header if one is already present.
 
-当 HTTP 请求从群集外部的服务请求将发送到入口控制器。 入口控制器请求将直接路由到相应的 pod 根据其入口对象和规则。 Pod 中的 devspaces 代理容器收到请求时，将添加`azds-route-as`标头基于 URL，并随后将请求路由到应用程序容器。
+When an HTTP request is made to a service from outside the cluster, the request goes to the Ingress controller. The Ingress controller routes the request directly to the appropriate pod based on its Ingress objects and rules. The devspaces-proxy container in the pod receives the request, adds the `azds-route-as` header based on the URL, and then routes the request to the application container.
 
-当对服务进行的 HTTP 请求时从群集内的另一个服务时，请求首先经历 devspaces 代理调用服务的容器。 Devspaces 代理容器会查看 HTTP 请求和检查`azds-route-as`标头。 基于标头，devspaces 代理容器将查找标头值与关联的服务的 IP 地址。 如果找到的 IP 地址，则 devspaces 代理容器重新确定对该 IP 地址的请求。 如果找不到 IP 地址，devspaces 代理容器会将请求路由到父应用程序容器。
+When an HTTP request is made to a service from another service within the cluster, the request first goes through the calling service's devspaces-proxy container. The devspaces-proxy container looks at the HTTP request and checks the `azds-route-as` header. Based on the header, the devspaces-proxy container will look up the IP address of the service associated with the header value. If an IP address is found, the devspaces-proxy container reroutes the request to that IP address. If an IP address is not found, the devspaces-proxy container routes the request to the parent application container.
 
-例如，应用程序*serviceA*并*serviceB*已部署到名为父开发空间*默认*。 *serviceA*依赖*serviceB*和 HTTP 对其进行调用。 Azure 用户创建基于一个子开发空间*默认*空间称为*azureuser*。 Azure 用户还可部署他们自己的版本*serviceA*到其子空间。 当请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+For example, the applications *serviceA* and *serviceB* are deployed to a parent dev space called *default*. *serviceA* relies on *serviceB* and makes HTTP calls to it. Azure User creates a child dev space based on the *default* space called *azureuser*. Azure User also deploys their own version of *serviceA* to their child space. When a request is made to *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
-![路由的 azure 开发人员空格](media/how-dev-spaces-works/routing.svg)
+![Azure Dev Spaces routing](media/how-dev-spaces-works/routing.svg)
 
-1. 入口控制器会查找 pod URL，即与关联的 IP *serviceA.azureuser*。
-1. 入口控制器查找 Azure 用户的开发空间中的 pod IP，并将路由到请求*serviceA.azureuser* pod。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 接收请求并将添加`azds-route-as: azureuser`作为 HTTP 标头。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 将路由到请求*serviceA*中的应用程序容器*serviceA.azureuser* pod。
-1. *ServiceA*应用程序中*serviceA.azureuser* pod 会调用*serviceB*。 *ServiceA*应用程序还包含代码，以保留现有`azds-route-as`标头，这种情况下是`azds-route-as: azureuser`。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 接收请求，并查找的 IP *serviceB*值的基础`azds-route-as`标头。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 未找到的 IP *serviceB.azureuser*。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 查找 IP *serviceB*中的父区域中，即*serviceB.default*。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 找到的 IP *serviceB.default* ，并将路由到请求*serviceB.default* pod。
-1. 中的 devspaces 代理容器*serviceB.default* pod 接收请求，并将路由到请求*serviceB*中的应用程序容器*serviceB.default*pod。
-1. *ServiceB*应用程序中*serviceB.default* pod 将响应返回给*serviceA.azureuser* pod。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 接收响应，并将路由到响应*serviceA*中的应用程序容器*serviceA.azureuser* pod。
-1. *ServiceA*应用程序接收的响应，然后返回其自己的响应。
-1. 中的 devspaces 代理容器*serviceA.azureuser* pod 收到从响应*serviceA*应用程序容器，并将路由到群集外部的原始调用方的响应。
+1. The Ingress controller looks up the IP for the pod associated with the URL, which is *serviceA.azureuser*.
+1. The Ingress controller finds the IP for the pod in Azure User's dev space and routes the request to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and adds `azds-route-as: azureuser` as an HTTP header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod routes the request to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application in the *serviceA.azureuser* pod makes a call to *serviceB*. The *serviceA* application also contains code to preserve the existing `azds-route-as` header, which in this case is `azds-route-as: azureuser`.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and looks up the IP of *serviceB* based on the value of the `azds-route-as` header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod does not find an IP for *serviceB.azureuser*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod looks up the IP for *serviceB* in the parent space, which is *serviceB.default*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod finds the IP for *serviceB.default* and routes the request to the *serviceB.default* pod.
+1. The devspaces-proxy container in the *serviceB.default* pod receives the request and routes the request to the *serviceB* application container in the *serviceB.default* pod.
+1. The *serviceB* application in the *serviceB.default* pod returns a response to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response and routes the response to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application receives the response and then returns its own response.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response from the *serviceA* application container and routes the response to the original caller outside of the cluster.
 
-不是 HTTP 的其他所有 TCP 流量将通过入口控制器和 devspaces 代理容器未修改的形式都传递。
+All other TCP traffic that is not HTTP passes through the Ingress controller and devspaces-proxy containers unmodified.
 
-### <a name="how-running-your-code-is-configured"></a>如何配置运行你的代码
+### <a name="how-running-your-code-is-configured"></a>How running your code is configured
 
-Azure 开发人员空间使用`azds.yaml`文件以安装和配置你的服务。 控制器使用`install`中的属性`azds.yaml`文件以安装 Helm 图表并创建 Kubernetes 对象：
+Azure Dev Spaces uses the `azds.yaml` file to install and configure your service. The controller uses the `install` property in the `azds.yaml` file to install the Helm chart and create the Kubernetes objects:
 
 ```yaml
 ...
@@ -326,25 +326,25 @@ install:
 ...
 ```
 
-默认情况下，`prep`命令将生成 Helm 图表。 它还设置*install.chart*到 Helm 图表的目录的属性。 如果你想要在其他位置使用 Helm 图表，则可以更新此属性，以使用该位置。
+By default, the `prep` command will generate the Helm chart. It also sets the *install.chart* property to the directory of the Helm chart. If you wanted to use a Helm chart in a different location, you can update this property to use that location.
 
-在安装 Helm 图表时，Azure 开发人员空间使您能够重写 Helm 图表中的值。 Helm 图表的默认值为`charts/APP_NAME/values.yaml`。
+When installing the Helm charts, Azure Dev Spaces provides a way to override values in the Helm chart. The default values for the Helm chart are in `charts/APP_NAME/values.yaml`.
 
-使用*install.values*属性，可以列出一个或多个文件定义要包含在 Helm 图表中被替换的值。 例如，如果您希望特别在运行你的应用程序开发人员空间中的主机名或数据库配置，您可以使用此重写功能。 您还可以添加 *？* 在任何文件名称，以便将其设置为可选的末尾。
+Using the *install.values* property, you can list one or more files that define values you want replaced in the Helm chart. For example, if you wanted a hostname or database configuration specifically when running your application in a dev space, you can use this override functionality. You can also add a *?* at the end of any of the file names to set it as optional.
 
-*Install.set*属性可以配置一个或多个要在 Helm 图表中被替换的值。 配置中的任何值*install.set*将覆盖配置中列出的文件中配置的值*install.values*。 属性下的*install.set*依赖 Helm 图表中的值，可能会有所不同，具体取决于生成 Helm 图表。
+The *install.set* property allows you to configure one or more values you want replaced in the Helm chart. Any values configured in *install.set* will override values configured in files listed in *install.values*. The properties under *install.set* are dependent on the values in the Helm chart and may be different depending on the generated Helm chart.
 
-在上述示例中， *install.set.replicaCount*属性会指示控制器在你开发的空间中运行应用程序的多少个实例。 具体取决于你的方案，可以增大此值，但它会影响将调试器附加到应用程序的 pod。 有关详细信息，请参阅[疑难解答文章](troubleshooting.md)。
+In the above example, the *install.set.replicaCount* property tells the controller how many instances of your application to run in your dev space. Depending on your scenario, you can increase this value, but it will have an impact on attaching a debugger to your application's pod. For more information, see the [troubleshooting article](troubleshooting.md).
 
-生成 Helm 图表，在容器映像设置为 *{{。Values.image.repository}}:{{。Values.image.tag}}* 。 `azds.yaml`文件定义*install.set.image.tag*属性设置为 *$(tag)* 默认情况下，它作为的值中使用 *{{。Values.image.tag}}* 。 通过设置*install.set.image.tag*以这种方式的属性，它允许你的应用程序来运行 Azure 开发人员空格时以不同方式标记容器映像。 在此特定情况下，映像标记为 *\<image.repository 值 >: $(tag)* 。 必须使用 *$(tag)* 变量的值作为*install.set.image.tag*为了使开发人员空间识别并找出在 AKS 群集中的容器。
+In the generated Helm chart, the container image is set to *{{ .Values.image.repository }}:{{ .Values.image.tag }}* . The `azds.yaml` file defines *install.set.image.tag* property as *$(tag)* by default, which is used as the value for *{{ .Values.image.tag }}* . By setting the *install.set.image.tag* property in this way, it allows the container image for your application to be tagged in a distinct way when running Azure Dev Spaces. In this specific case, the image is tagged as *\<value from image.repository>:$(tag)* . You must use the *$(tag)* variable as the value of   *install.set.image.tag* in order for Dev Spaces recognize and locate the container in the AKS cluster.
 
-在上述示例中，`azds.yaml`定义*install.set.ingress.hosts*。 *Install.set.ingress.hosts*属性定义的公共终结点的主机名格式。 此属性也使用 *$(spacePrefix)* ， *$(rootSpacePrefix)* ，并 *$(hostSuffix)* ，这是由控制器提供的值。 
+In the above example, `azds.yaml` defines *install.set.ingress.hosts*. The *install.set.ingress.hosts* property defines a host name format for public endpoints. This property also uses *$(spacePrefix)* , *$(rootSpacePrefix)* , and *$(hostSuffix)* , which are values provided by the controller. 
 
-*$(SpacePrefix)* 是子开发空间，其形式的名称*SPACENAME.s*。 *$(RootSpacePrefix)* 是父空间的名称。 例如，如果*azureuser*的子空间*默认*，为值 *$(rootSpacePrefix)* 是*默认*值 *$(spacePrefix)* 是*azureuser.s*。 如果没有子空间的空间。 *$(spacePrefix)* 为空。 例如，如果*默认*空间具有没有父空间的值 *$(rootSpacePrefix)* 是*默认*的值和 *$(spacePrefix)* 为空。 *$(HostSuffix)* 是指向在 AKS 群集中运行的 Azure 开发人员空格入口控制器的 DNS 后缀。 此 DNS 后缀与通配符 DNS 条目，例如对应 *\*。RANDOM_VALUE.eus.azds.io*，Azure 开发人员空格控制器添加到你的 AKS 群集时创建。
+The *$(spacePrefix)* is the name of the child dev space, which takes the form of *SPACENAME.s*. The *$(rootSpacePrefix)* is the name of the parent space. For example, if *azureuser* is a child space of *default*, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is *azureuser.s*. If the space is not a child space, *$(spacePrefix)* is blank. For example, if the *default* space has no parent space, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is blank. The *$(hostSuffix)* is a DNS suffix that points to the Azure Dev Spaces Ingress Controller that runs in your AKS cluster. This DNS suffix corresponds to a wildcard DNS entry, for example *\*.RANDOM_VALUE.eus.azds.io*, that was created when the Azure Dev Spaces controller was added to your AKS cluster.
 
-在上面`azds.yaml`文件，也可以更新*install.set.ingress.hosts*若要更改你的应用程序的主机名。 例如，如果您希望简化应用程序的主机名 *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* 到 *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
+In the above `azds.yaml` file, you could also update *install.set.ingress.hosts* to change the host name of your application. For example, if you wanted to simplify the hostname of your application from *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* to *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
-若要生成你的应用程序的容器的控制器，，请使用下面的部分`azds.yaml`配置文件：
+To build the container for your application, the controller uses the below sections of the `azds.yaml` configuration file:
 
 ```yaml
 build:
@@ -361,13 +361,13 @@ configurations:
 ...
 ```
 
-控制器使用 Dockerfile 生成并运行你的应用程序。
+The controller uses a Dockerfile to build and run your application.
 
-*Build.context*属性列出了 Dockerfile 所在的目录。 *Build.dockerfile*属性定义 Dockerfile 的用于构建应用程序的生产版本的名称。 *Configurations.develop.build.dockerfile*属性配置的 Dockerfile 的开发版本的应用程序的名称。
+The *build.context* property lists the directory where the Dockerfiles exist. The *build.dockerfile* property defines the name of the Dockerfile for building the production version of the application. The *configurations.develop.build.dockerfile* property configures the name of the Dockerfile for the development version of the application.
 
-具有不同的开发和生产的 Dockerfile，可在开发期间启用某些内容并禁用这些项进行生产部署。 例如，可以启用调试或在开发和生产环境中的禁用过程的更详细日志记录。 如果你的 Dockerfile 以不同方式命名，或位于不同位置，还可以更新这些属性。
+Having different Dockerfiles for development and production allows you to enable certain things during development and disable those items for production deployments. For example, you can enable debugging or more verbose logging during development and disable in a production environment. You can also update these properties if your Dockerfiles are named differently or are in a different location.
 
-为了帮助您在开发期间快速循环访问，Azure 开发人员空间将从本地项目的更改同步和增量更新你的应用程序。 以下部分中`azds.yaml`配置文件用于配置同步和更新：
+To help you rapidly iterate during development, Azure Dev Spaces will sync changes from your local project and incrementally update your application. The below section in the `azds.yaml` configuration file is used to configure the sync and update:
 
 ```yaml
 ...
@@ -388,59 +388,59 @@ configurations:
 ...
 ```
 
-中列出的文件和目录的更改将同步*configurations.develop.container.sync*属性。 在运行时，最初同步这些目录`up`命令以及当检测到更改。 如果有其他或不同的目录所同步到你的开发空间，可以更改此属性。
+The files and directories that will sync changes are listed in the *configurations.develop.container.sync* property. These directories are synced initially when you run the `up` command as well as when changes are detected. If there are additional or different directories you would like synced to your dev space, you can change this property.
 
-*Configurations.develop.container.iterate.buildCommands*属性指定如何生成开发方案中的应用程序。 *Configurations.develop.container.command*属性提供有关在开发方案中运行应用程序的命令。 您可能想要更新这些属性是否存在更多生成或运行时标志或你想要在开发过程中使用的参数。
+The *configurations.develop.container.iterate.buildCommands* property specifies how to build the application in a development scenario. The *configurations.develop.container.command* property provides the command for running the application in a development scenario. You may want to update either of these properties if there are additional build or runtime flags or parameters you would like to use during development.
 
-*Configurations.develop.container.iterate.processesToKill*列出终止停止应用程序的进程。 您可能想要更新此属性，如果你想要更改你的应用程序在开发过程的重新启动行为。 例如，如果您更新*configurations.develop.container.iterate.buildCommands*或*configurations.develop.container.command*属性以更改如何构建应用程序或启动，可能需要更改哪些进程已停止。
+The *configurations.develop.container.iterate.processesToKill* lists the processes to kill to stop the application. You may want to update this property if you want to change the restart behavior of your application during development. For example, if you updated the *configurations.develop.container.iterate.buildCommands* or *configurations.develop.container.command* properties to change how the application is built or started, you may need to change what processes are stopped.
 
-准备你的代码使用时`azds prep`命令时，您可以添加`--public`标志。 添加`--public`标志创建一个可公开访问的 URL，为应用程序。 如果省略此标志，该应用程序才可在群集或使用 localhost 隧道访问。 运行后`azds prep`命令，可以更改此设置修改*ingress.enabled*中的属性`charts/APPNAME/values.yaml`:
+When preparing your code using the `azds prep` command, you have the option of adding the `--public` flag. Adding the `--public` flag creates a publicly accessible URL for your application. If you omit this flag, the application is only accessible within the cluster or using the localhost tunnel. After you run the `azds prep` command, you can change this setting modifying the *ingress.enabled* property in `charts/APPNAME/values.yaml`:
 
 ```yaml
 ingress:
   enabled: true
 ```
 
-## <a name="debug-your-code"></a>调试代码
+## <a name="debug-your-code"></a>Debug your code
 
-对于 Java、.NET 和 Node.js 应用程序，您可以调试直接在您使用 Visual Studio Code 或 Visual Studio 的开发人员共享空间中运行的应用程序。 Visual Studio Code 和 Visual Studio 提供了工具连接到你的开发空间，启动应用程序，并附加调试器。 运行之后`azds prep`，可以在 Visual Studio Code 或 Visual Studio 中打开你的项目。 Visual Studio Code 或 Visual Studio 将生成其自己的配置文件来连接分开运行`azds prep`。 从 Visual Studio Code 或 Visual Studio 中，您可以设置断点并启动应用程序以便对你适用于开发人员的空间。
+For Java, .NET and Node.js applications, you can debug your application running directly in your dev space using Visual Studio Code or Visual Studio. Visual Studio Code and Visual Studio provide tooling to connect to your dev space, launch your application, and attach a debugger. After running `azds prep`, you can open your project in Visual Studio Code or Visual Studio. Visual Studio Code or Visual Studio will generate their own configuration files for connecting which is separate from running `azds prep`. From within Visual Studio Code or Visual Studio, you can set breakpoints and launch your application to your dev space.
 
-![调试代码](media/get-started-node/debug-configuration-nodejs2.png)
+![Debugging your code](media/get-started-node/debug-configuration-nodejs2.png)
 
-启动时使用 Visual Studio Code 或 Visual Studio 进行调试的应用程序，它们处理启动并正在运行相同的方式连接到你的开发空间`azds up`。 Visual Studio Code 和 Visual Studio 中的客户端工具还提供与特定的调试信息的附加参数。 参数包含的调试程序映像中调试器的映像中, 调试器的位置和应用程序的容器装载调试器文件夹中的目标位置的名称。
+When you launch your application using Visual Studio Code or Visual Studio for debugging, they handle launching and connecting to your dev space in the same way as running `azds up`. The client-side tooling in Visual Studio Code and Visual Studio also provide an additional parameter with specific information for debugging. The parameter contains the name of debugger image, the location of the debugger within in the debugger's image, and the destination location within the application's container to mount the debugger folder.
 
-由客户端工具自动确定调试程序映像。 它使用类似于在 Dockerfile 过程中使用的方法和 Helm 图表生成运行时`azds prep`。 在应用程序的映像中装载调试器后，运行使用`azds exec`。
+The debugger image is automatically determined by the client-side tooling. It uses a method similar to the one used during Dockerfile and Helm chart generate when running `azds prep`. After the debugger is mounted in the application's image, it is run using `azds exec`.
 
-## <a name="sharing-a-dev-space"></a>共享开发空间
+## <a name="sharing-a-dev-space"></a>Sharing a dev space
 
-在使用一个团队，你可以[跨整个团队共享开发空间](how-to/share-dev-spaces.md)创建派生的开发空间。 对开发人员空间的资源组参与者访问权限的任何人都可以使用适用于开发人员空间。
+When working with a team, you can [share a dev space across an entire team](how-to/share-dev-spaces.md) and create derived dev spaces. A dev space can be used by anyone with contributor access to the dev space's resource group.
 
-此外可以创建新的开发人员共享空间派生自另一个适用于开发人员空格。 当您创建派生的开发空间*azds.io/父空间 = 父空间名称*标签添加到派生的开发空间的命名空间。 此外，与派生的开发空间共享父开发空间中的所有应用程序。 如果部署到派生的开发的应用程序的更新的版本，它将仅存在于派生的开发空间和父开发空间不受任何影响。 可以具有最多三个级别的派生的开发空间或*祖父*空格。
+You can also create a new dev space that is derived from another dev space. When you create a derived dev space, the *azds.io/parent-space=PARENT-SPACE-NAME* label is added to the derived dev space's namespace. Also, all applications from the parent dev space are shared with the derived dev space. If you deploy an updated version of an application to the derived dev space, it will only exist in the derived dev space and the parent dev space will remain unaffected. You can have a maximum of three levels of derived dev spaces or *grandparent* spaces.
 
-派生的开发空间会将其自己的应用程序和从其父级中共享的应用程序之间的请求还以智能方式路由。 通过将请求路由到派生的开发空间中的应用程序尝试并回退到共享的应用程序从父开发空间路由的工作原理。 路由将回退到祖父空间中的共享应用程序如果应用程序不是父空间中。
+The derived dev space will also intelligently route requests between its own applications and the applications shared from its parent. The routing works by attempting to route request to an application in the derived dev space and falling back to the shared application from the parent dev space. The routing will fall back to the shared application in the grandparent space if the application is not in the parent space.
 
 例如：
-* 适用于开发人员空间*默认*具有应用程序*serviceA*并*serviceB* 。
-* 适用于开发人员空间*azureuser*派生自*默认*。
-* 更新的版本*serviceA*部署到*azureuser*。
+* The dev space *default* has applications *serviceA* and *serviceB* .
+* The dev space *azureuser* is derived from *default*.
+* An updated version of *serviceA* is deployed to *azureuser*.
 
-使用时*azureuser*，对所有请求*serviceA*将路由到中的更新版本*azureuser*。 对请求*serviceB*将首先尝试将路由到*azureuser*版本*serviceB*。 由于不存在，它将被路由到*默认*新版*serviceB*。 如果*azureuser*新版*serviceA*删除后，对所有请求*serviceA*将回退到使用*默认*的版本*serviceA*。
+When using *azureuser*, all requests to *serviceA* will be routed to the updated version in *azureuser*. A request to *serviceB* will first try to be routed to the *azureuser* version of *serviceB*. Since it does not exist, it will be routed to the *default* version of *serviceB*. If the *azureuser* version of *serviceA* is removed, all requests to *serviceA* will fall back to using the *default* version of *serviceA*.
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure 开发人员空间，请参阅以下快速入门：
+To get started using Azure Dev Spaces, see the following quickstarts:
 
-* [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
-* [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
-* [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-若要开始使用团队开发，请参阅以下操作指南文章：
+To get started with team development, see the following how-to articles:
 
-* [团队开发-使用 CLI 和 Visual Studio Code 的 Java](team-development-java.md)
-* [-.NET Core CLI 和 Visual Studio Code 和进行团队开发](team-development-netcore.md)
-* [团队开发的.NET Core 和 Visual Studio](team-development-netcore-visualstudio.md)
-* [团队开发-使用 CLI 和 Visual Studio Code 的 Node.js](team-development-nodejs.md)
+* [Team Development - Java with CLI and Visual Studio Code](team-development-java.md)
+* [Team Development - .NET Core with CLI and Visual Studio Code](team-development-netcore.md)
+* [Team Development - .NET Core with Visual Studio](team-development-netcore-visualstudio.md)
+* [Team Development - Node.js with CLI and Visual Studio Code](team-development-nodejs.md)
 
 
 

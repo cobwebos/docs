@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d0c6841e29323ceab0758f4c4d6881abd24532d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8aba38b7ecebefb1205b17bc633d9ff0c0812d4b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099962"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206811"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
-[965908]:https://launchpad.support.sap.com/#/notes/965908
+[965908]: https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
@@ -49,12 +49,12 @@ ms.locfileid: "70099962"
 [1757928]:https://launchpad.support.sap.com/#/notes/1757928
 [1758182]:https://launchpad.support.sap.com/#/notes/1758182
 [1758496]:https://launchpad.support.sap.com/#/notes/1758496
-[1772688]:https://launchpad.support.sap.com/#/notes/1772688
+[1772688]: https://launchpad.support.sap.com/#/notes/1772688
 [1814258]:https://launchpad.support.sap.com/#/notes/1814258
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -320,7 +320,7 @@ ms.locfileid: "70099962"
 
 通常应考虑使用最新的 SQL Server 版本在 Azure IaaS 中运行 SAP 工作负荷。 最新的 SQL Server 版本提供与一些 Azure 服务和功能的更好集成。 或者具有优化 Azure IaaS 基础结构中操作的更改。
 
-建议在继续之前查看[此][virtual-machines-sql-server-infrastructure-services]文档。
+It is recommended to review [this][virtual-machines-sql-server-infrastructure-services] documentation before continuing.
 
 在下列章节中，将汇总并提及上述链接下的文档的某些部分。 另外，还将提及有关 SAP 的具体信息，并且更深入地说明一些概念。 不过，强烈建议先完整阅读上述文档，再阅读 SQL Server 特定文档。
 
@@ -328,7 +328,7 @@ ms.locfileid: "70099962"
 
 * **SQL 版本支持**：对于 SAP 客户，Microsoft Azure 虚拟机上支持 SQL Server 2008 R2 和更高版本。 不支持更早版本。 有关更多详细信息，请查看此通用[支持声明](https://support.microsoft.com/kb/956893)。 Microsoft 通常也支持 SQL Server 2008。 不过，由于适用于 SAP 的重要功能是通过 SQL Server 2008 R2 引进的，因此，SQL Server 2008 R2 是适用于 SAP 的最低版本。 通常应考虑使用最新的 SQL Server 版本在 Azure IaaS 中运行 SAP 工作负荷。 最新的 SQL Server 版本提供与一些 Azure 服务和功能的更好集成。 或者具有优化 Azure IaaS 基础结构中操作的更改。 因此，本文仅限于 SQL Server 2016 和 SQL Server 2017。
 * **SQL 性能**：相比其他公有云虚拟化产品，Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)一文。
-* **使用来自 Azure 市场的映像**：部署新 Microsoft Azure VM 的最快方式是使用来自 Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[Microsoft Azure 市场中使用 SQL Server 图像一][dbms-guide-5.6]章中所述的步骤。 
+* **使用来自 Azure 市场的映像**：部署新 Azure VM 的最快方式是使用来自 Microsoft Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 In order to use such images, check the steps documented in chapter [Using a SQL Server image out of the Microsoft Azure Marketplace][dbms-guide-5.6]. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>适用于 SAP 相关 SQL Server 部署的 VM/VHD 结构建议
@@ -341,7 +341,7 @@ ms.locfileid: "70099962"
 这些配置让 tempdb 耗用的空间比系统驱动器能够提供的还多。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 若要确定正确的 tempdb 大小，可以在现有系统上检查 tempdb 大小。 
 
 >[!NOTE]
-> 将 tempdb 数据文件和日志文件放入在驱动器 D:\ 上创建的文件夹时，需要确保 VM 重启后，该文件夹存在。 由于 VM 重启后新初始化了驱动器 D:\，所有文件和目录结构都已清除。[本文](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)中记录了在启动 SQL Server 服务之前，有可能在驱动器 D:\ 上重新创建最终目录结构。
+> 将 tempdb 数据文件和日志文件放入在驱动器 D:\ 上创建的文件夹时，需要确保 VM 重启后，该文件夹存在。 Since the D:\ drive is freshly initialized after a VM reboot all file and directory structures are wiped out. A possibility to recreate eventual directory structures on D:\ drive before the start of the SQL Server service is documented in [this article](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
 
 运行包含 SAP 数据库的 SQL Server 且 tempdb 数据和 tempdb 日志文件放置于 D:\ 驱动器的 VM 配置应如下所示：
 
@@ -407,7 +407,7 @@ SQL Server 2014 引入了一项称为[缓冲池扩展](https://docs.microsoft.co
 2.  SQL Server 2012 CU4 和更高版本可以将数据库备份到 Azure 存储 URL。
 3.  Azure Blob 存储中数据库文件的文件快照备份。 此方法仅在 SQL Server 数据和日志文件位于 Azure Blob 存储上时适用
 
-第一种方法众所周知，并适用于本地环境中的许多情况。 不过，需要解决长期的备份位置的问题。 由于不希望备份在本地连接的 Azure 存储中保留 30 天或以上，需要使用 Azure 备份服务或其他第三方备份/恢复工具，此工具包含对备份的访问权限和保留期管理。 或者使用 Windows 存储空间在 Azure 中构建大型文件服务器。
+The first method is well known and applied in many cases in the on-premises world as well. 不过，需要解决长期的备份位置的问题。 由于不希望备份在本地连接的 Azure 存储中保留 30 天或以上，需要使用 Azure 备份服务或其他第三方备份/恢复工具，此工具包含对备份的访问权限和保留期管理。 或者使用 Windows 存储空间在 Azure 中构建大型文件服务器。
 
 [SQL Server 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) 一文更详细介绍了第二种方法。 不同版本的 SQL Server 在此功能上有一些变化。 因此，应查看文档以检查特定的 SQL Server 版本。 请务必注意，本文列出了许多限制。 可以根据以下条件执行备份：
 
@@ -415,12 +415,12 @@ SQL Server 2014 引入了一项称为[缓冲池扩展](https://docs.microsoft.co
 - 多个（最多 64 个） Azure 块 blob，这将使理论备份大小为 12 TB。 但是，对客户数据库的测试显示，最大备份大小可能小于其理论限制大小。 在此情况下，用户需要负责管理备份的保留期以及对备份的访问。
 
 
-### <a name="automated-backup-for-sql-server"></a>SQL Server 自动备份
+### <a name="automated-backup-for-sql-server"></a>对 SQL Server 进行自动备份
 自动备份为 Azure Windows VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。 如果在安装了 SQL Server 情况下部署自己的 OS 映像，需要单独安装 VM 扩展。 本[文章](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)介绍了必要的步骤。
 
 有关此方法的功能的详细信息，请参阅以下文章：
 
-- SQL Server 2014：[SQL Server 2014 虚拟机（资源管理器）的自动备份](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2014：[QL Server 2014 虚拟机 (Resource Manager) 的自动备份](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
 - SQL Server 2016/2017：[用于 Azure 虚拟机（资源管理器）的自动备份 v2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 查看文档，可以看到最新 SQL Server 版本的功能有所改进。 [Microsoft Azure 的 SQL Server 托管备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017)一文中发布了有关 SQL Server 自动备份的详细信息。 理论备份大小限制为 12 TB。  对于高达 12 TB 的备份大小，自动备份是一种很好的方法。 由于多个 Blob 并行写入，因此预期吞吐量可大于 100 MB/秒。 
@@ -448,7 +448,7 @@ Microsoft 在 Azure 市场中提供已经包含 SQL Server 版本的 VM。 对�
 
 * 以管理员身份打开 Windows 命令窗口。
 * 将目录更改为 C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012。
-* 执行此命令：Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
+* 执行命令：Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> 是第一次通过库部署 VM 时定义为管理员帐户的帐户。
 
 此过程应该只需要几分钟的时间。 若要确保此步骤最终会有正确的结果，请执行下列步骤：
@@ -475,8 +475,8 @@ Microsoft 在 Azure 市场中提供已经包含 SQL Server 版本的 VM。 对�
 几乎不在 Azure 中使用 SQL Server 日志传送功能来实现一个 Azure 区域内的高可用性。 但是，在以下场景中，SAP 客户成功将日志传送与 Azure 结合使用：
 
 - 从一个 Azure 区域到另一个 Azure 区域的灾难恢复场景
-- 从本地到 Azure 区域的灾难恢复配置
-- 从本地到 Azure 的缩减方案。 在这些情况下，日志传送用于将 Azure 中的新 DBMS 部署与本地正在进行的生产系统同步。 切换时，生产被关闭并确保已将上次和最新的事务日志备份传输到 Azure DBMS 部署。 然后打开 Azure DBMS 部署用于生产。  
+- Disaster Recovery configuration from on-premises into an Azure region
+- Cut-over scenarios from on-premises to Azure. In those cases, log shipping is used to synchronize the new DBMS deployment in Azure with the ongoing production system on-premises. 切换时，生产被关闭并确保已将上次和最新的事务日志备份传输到 Azure DBMS 部署。 然后打开 Azure DBMS 部署用于生产。  
 
 
 
@@ -496,7 +496,7 @@ SAP 支持的数据库镜像（请参阅 SAP 说明 [965908]）依赖于在 SAP 
 
 * 只有将 Windows Server 2012 或更高版本作为 VM 的来宾 OS 时，才支持使用可用性组侦听器。 对于 Windows Server 2012，必须确保应用此补丁：<https://support.microsoft.com/kb/2854082> 
 * 对于 Windows Server 2008 R2，此补丁并不存在，而 Always On 需要通过与数据库镜像相同的方式来使用，即，在连接字符串中指定故障转移伙伴（通过 SAP default.pfl 参数 dbs/mss/server 完成 - 请参阅 SAP 说明 [965908]）。
-* 使用可用性组侦听器时，数据库 VM 需要连接到专用的负载均衡器。 为了避免 Azure 在这两个 Vm 都已关闭的情况下分配新的 IP 地址，应将静态 IP 地址分配到 Always On 配置中这些 Vm 的网络接口（定义静态 IP 地址的说明，请参阅[本文）][virtual-networks-reserved-private-ip]
+* 使用可用性组侦听器时，数据库 VM 需要连接到专用的负载均衡器。 In order to avoid that Azure is assigning new IP addresses in cases where both VMs incidentally are shut down, one should assign static IP addresses to the network interfaces of those VMs in the Always On configuration (defining a static IP address is described in [this][virtual-networks-reserved-private-ip] article)
 * 构建群集需要分配特殊 IP 地址的 WSFC 群集配置时，需执行一些特殊的步骤，因为 Azure 及其当前功能会为群集名称分配与创建群集所在的节点相同的 IP 地址。 这表示必须执行手动步骤，为群集分配不同的 IP 地址。
 * 可用性组侦听器将创建于具有 TCP/IP 终结点的 Azure 中，这些终结点会分配给运行可用性组主要和次要副本的 VM。
 * 可能需要使用 ACL 来保护这些终结点。
@@ -521,15 +521,15 @@ SQL Server Always On 是 Azure 中用于 SAP 工作负荷部署的最常用高�
 有许多客户在 Azure 中部署 SAP SQL Server 数据库时，使用 SQL Server [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)。 SAP 完全支持 SQL Server TDE 功能（请参阅 SAP 说明 [#1380493](https://launchpad.support.sap.com/#/notes/1380493)）。 
 
 ### <a name="applying-sql-server-tde"></a>应用 SQL Server TDE
-从另一个本地运行的 DBMS 执行异类迁移到 Azure 中运行的 Windows/SQL Server 时，应提前在 SQL Server 中创建空的目标数据库。 接下来将应用 SQL Server TDE 功能。 同时仍在本地运行生产系统。 希望在此序列中执行的原因是，加密空数据库的进程可能需要相当长一段时间。 然后 SAP 导入进程将在停机阶段将数据导入加密数据库。 与在停机阶段的导出阶段之后加密数据库的开销相比，导入到加密数据库的开销的时间影响更小。 尝试在数据库上运行 SAP 工作负荷情况下应用 TDE 时，会产生负面体验。 因此，建议将 TDE 部署视为需要在特定数据库上没有 SAP 工作负载的情况下完成的活动。
+In cases where you perform a heterogeneous migration from another DBMS, running on-premises, to Windows/SQL Server running in Azure, you should create your empty target database in SQL Server ahead of time. 接下来将应用 SQL Server TDE 功能。 While you are still running your production system on-premises. 希望在此序列中执行的原因是，加密空数据库的进程可能需要相当长一段时间。 然后 SAP 导入进程将在停机阶段将数据导入加密数据库。 与在停机阶段的导出阶段之后加密数据库的开销相比，导入到加密数据库的开销的时间影响更小。 尝试在数据库上运行 SAP 工作负荷情况下应用 TDE 时，会产生负面体验。 因此，建议将 TDE 部署视为需要在特定数据库上没有 SAP 工作负载的情况下完成的活动。
 
-在将 SAP SQL Server 的数据库从本地移到 Azure 的情况下，我们建议测试可以最快地应用加密的基础结构。 对此，请记住这些事实：
+In cases where you move SAP SQL Server databases from on-premises into Azure, we recommend testing on which infrastructure you can get the encryption applied fastest. 对此，请记住这些事实：
 
 - 不能定义用于将数据加密应用于数据库的线程数。 线程数主要取决于 SQL Server 数据和日志文件分布的磁盘卷数。 意味着卷（驱动器号）越不同，将并行执行加密的线程越多。 此类配置与之前的磁盘配置建议有点矛盾，该建议是在 Azure VM 中为 SQL Server 数据库文件构建一个或少量存储空间。 具有少量卷的配置将导致执行加密的线程数较少。 单个线程加密正在读取 64KB 的盘区、对其进行加密，然后将记录写入事务日志文件，同时告知已加密盘区。 因此，事务日志上的负载适中。
-- 在较旧的 SQL Server 版本中，加密 SQL Server 数据库时，备份压缩不再有效。 当计划在本地加密 SQL Server 数据库，然后将备份复制到 Azure 以在 Azure 中还原数据库时，此行为可能会成为一个问题。 SQL Server 备份压缩通常可实现因子为 4 的压缩比。
+- 在较旧的 SQL Server 版本中，加密 SQL Server 数据库时，备份压缩不再有效。 This behavior could develop into an issue when your plan was to encrypt your SQL Server database on-premises and then copy a backup into Azure to restore the database in Azure. SQL Server 备份压缩通常可实现因子为 4 的压缩比。
 - 借助 SQL Server 2016，SQL Server 引入了新功能，也允许以有效的方式压缩加密的数据库。 请参阅[此博客](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/)了解详细信息。
  
-将 TDE 加密应用程序仅用于 SAP 工作负荷，并且应在特定的配置中测试是否最好将 TDE 应用于本地 SAP 数据库，或在 Azure 中执行此操作。 在 Azure 中，在过度预配基础结构方面，确实具有更大的灵活性，并且在应用 TDE 后可收缩基础结构。
+Treating the application of TDE encryption with no to little SAP workload only, you should test in your specific configuration on whether it is better to apply TDE to your SAP database on-premises or to do so in Azure. 在 Azure 中，在过度预配基础结构方面，确实具有更大的灵活性，并且在应用 TDE 后可收缩基础结构。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 Azure 提供 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服务以存储加密密钥。 另一方面，SQL Server 提供了一个连接器，可将 Azure Key Vault 用作 TDE 证书的存储。
@@ -552,7 +552,7 @@ Azure 提供 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服务
 1. 使用最新的 DBMS 版本（例如 SQL Server 2017），其在 Azure 中最具优势。 
 2. 在 Azure 中仔细规划 SAP 系统布局，以平衡数据文件布局和 Azure 限制：
    * 不要有太多磁盘，但必须足以确保可以达到所需的 IOPS。
-   * 如果不使用托管磁盘，请记住，每个 Azure 存储帐户的 IOPS 也受到限制，并且在每个 Azure 订阅内限制了存储帐户（[更多详细信息][azure-subscription-service-limits]）。 
+   * If you don't use Managed Disks, remember that IOPS are also limited per Azure Storage Account and that Storage Accounts are limited within each Azure subscription ([more details][azure-subscription-service-limits]). 
    * 只有在需要达到更高的吞吐量时，才在磁盘上划分带区。
 3. 永远不要在 D:\ 驱动器上安装软件或放置任何需要永久保留的文件，因为它不是永久性的，此驱动器上的所有内容都会在 Windows 重新启动时丢失。
 4. 不要对 Azure 标准存储使用磁盘缓存。
@@ -562,4 +562,4 @@ Azure 提供 [Key Vault](https://azure.microsoft.com/services/key-vault/) 服务
 8. 使用 SQL Server TDE 时，应用最新的 SQL Server 修补程序。
 9. 尽可能使用最高强度的数据库压缩。 对 SQL Server 而言，即页面压缩。
 10. 谨慎使用来自 Azure 市场的 SQL Server 映像。 如果使用 SQL Server 映像，就必须更改实例排序规则，才能在其上安装任何 SAP NetWeaver 系统。
-11. 如[部署指南][deployment-guide]中所述，安装和配置适用于 AZURE 的 SAP 主机监视。
+11. Install and configure the SAP Host Monitoring for Azure as described in [Deployment Guide][deployment-guide].

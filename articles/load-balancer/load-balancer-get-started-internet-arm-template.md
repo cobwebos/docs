@@ -1,6 +1,6 @@
 ---
 title: 创建公共负载均衡器 - Azure 模板
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用模板在资源管理器中创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a94c7d1b5d1ecd11dd213eccf2354e943a96cabd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4cfbbfb17e8be3ae78aad5aa5125020762f864c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275296"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225351"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>使用模板创建公共负载均衡器
 
 > [!div class="op_single_selector"]
-> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
@@ -36,14 +36,14 @@ ms.locfileid: "68275296"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 如果要通过单击部署的方式来部署此模板，请访问[此链接](https://go.microsoft.com/fwlink/?LinkId=544801)，单击“部署至 Azure”  ，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://go.microsoft.com/fwlink/?LinkId=544801)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
 1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
-2. 运行 **New-AzResourceGroupDeployment** cmdlet 以使用模板创建资源组。
+2. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `

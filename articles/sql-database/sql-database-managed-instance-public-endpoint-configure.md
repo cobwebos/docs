@@ -1,6 +1,6 @@
 ---
-title: 配置公共终结点托管实例
-description: 了解如何配置托管实例的公共终结点
+title: Configure public endpoint - managed instance
+description: Learn how to configure a public endpoint for managed instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,46 +10,46 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828033"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227984"
 ---
-# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置公共终结点
+# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Configure public endpoint in Azure SQL Database managed instance
 
-使用[托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)的公共终结点可以从[虚拟网络](../virtual-network/virtual-networks-overview.md)外部对托管实例进行数据访问。 可以从多租户 Azure 服务（例如 Power BI）、Azure 应用服务或本地网络访问托管实例。 如果使用托管实例上的公共终结点，则无需使用 VPN，这有助于避免 VPN 吞吐量问题。
+Public endpoint for a [managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) enables data access to your managed instance from outside the [virtual network](../virtual-network/virtual-networks-overview.md). You are able to access your managed instance from multi-tenant Azure services like Power BI, Azure App Service, or an on-premises network. By using the public endpoint on a managed instance, you do not need to use a VPN, which can help avoid VPN throughput issues.
 
 本文将介绍如何执行以下操作：
 
 > [!div class="checklist"]
-> - 在 Azure 门户中为托管实例启用公共终结点
-> - 使用 PowerShell 为托管实例启用公共终结点
-> - 配置托管实例网络安全组，以允许将流量传送到托管实例公共终结点
-> - 获取托管实例公共终结点的连接字符串
+> - Enable public endpoint for your managed instance in the Azure portal
+> - Enable public endpoint for your managed instance using PowerShell
+> - Configure your managed instance network security group to allow traffic to the managed instance public endpoint
+> - Obtain the managed instance public endpoint connection string
 
 ## <a name="permissions"></a>权限
 
-由于托管实例中数据的敏感性，需要执行两个步骤才能完成启用托管实例公共终结点的配置。 这种安全措施遵守职责分离 (SoD) 的原则：
+Due to the sensitivity of data that is in a managed instance, the configuration to enable managed instance public endpoint requires a two-step process. This security measure adheres to separation of duties (SoD):
 
-- 在托管实例上启用公共终结点需要由托管实例管理员完成。托管实例管理员可以在 SQL 托管实例资源的 "**概述**" 页中找到。
-- 使用需要由网络管理员完成的网络安全组来允许流量。有关详细信息，请参阅[网络安全组权限](../virtual-network/manage-network-security-group.md#permissions)。
+- Enabling public endpoint on a managed instance needs to be done by the managed instance admin. The managed instance admin can be found on **Overview** page of your SQL managed instance resource.
+- Allowing traffic using a network security group that needs to be done by a network admin. For more information, see [network security group permissions](../virtual-network/manage-network-security-group.md#permissions).
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例启用公共终结点
+## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Enabling public endpoint for a managed instance in the Azure portal
 
-1. 启动 Azure 门户 (<https://portal.azure.com/.>)
-1. 打开包含托管实例的资源组，然后选择要在其上配置公共终结点的 **SQL 托管实例**。
-1. 在“安全性”设置中，选择“虚拟网络”选项卡。
-1. 在虚拟网络配置页中选择“启用”，然后选择“保存”图标以更新配置。
+1. Launch the Azure portal at <https://portal.azure.com/.>
+1. Open the resource group with the managed instance, and select the **SQL managed instance** that you want to configure public endpoint on.
+1. On the **Security** settings, select the **Virtual network** tab.
+1. In the Virtual network configuration page, select **Enable** and then the **Save** icon to update the configuration.
 
 ![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>使用 PowerShell 为托管实例启用公共终结点
+## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Enabling public endpoint for a managed instance using PowerShell
 
-### <a name="enable-public-endpoint"></a>启用公共终结点
+### <a name="enable-public-endpoint"></a>Enable public endpoint
 
-运行以下 PowerShell 命令。 将 **subscription-id** 替换为你的订阅 ID。 将 **rg-name** 替换为托管实例的资源组，将 **mi-name** 替换为托管实例的名称。
+运行以下 PowerShell 命令。 Replace **subscription-id** with your subscription ID. Also replace **rg-name** with the resource group for your managed instance, and replace **mi-name** with the name of your managed instance.
 
 ```powershell
 Install-Module -Name Az
@@ -70,50 +70,50 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force
 ```
 
-### <a name="disable-public-endpoint"></a>禁用公共终结点
+### <a name="disable-public-endpoint"></a>Disable public endpoint
 
-若要使用 PowerShell 禁用公共终结点，请执行以下命令（另外，如果为入站端口 3342 配置了 NSG，请记得关闭该 NSG）：
+To disable the public endpoint using PowerShell, you would execute the following command (and also do not forget to close the NSG for the inbound port 3342 if you have it configured):
 
 ```powershell
 Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ```
 
-## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>在网络安全组上允许公共终结点流量
+## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Allow public endpoint traffic on the network security group
 
-1. 如果您的托管实例的 "配置" 页仍处于打开状态，请导航到 "**概述**" 选项卡。否则，请返回到**SQL 托管实例**资源。 选择“虚拟网络/子网”链接，转到虚拟网络配置页。
+1. If you have the configuration page of the managed instance still open, navigate to the **Overview** tab. Otherwise, go back to your **SQL managed instance** resource. Select the **Virtual network/subnet** link, which will take you to the Virtual network configuration page.
 
     ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. 在虚拟网络的左侧配置窗格中选择“子网”选项卡，并记下托管实例的**安全组**。
+1. Select the **Subnets** tab on the left configuration pane of your Virtual network, and make note of the **SECURITY GROUP** for your managed instance.
 
     ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
-1. 返回包含你的托管实例的资源组。 应会看到上面记下的**网络安全组**名称。 请选择该名称转到网络安全组配置页。
+1. Go back to your resource group that contains your managed instance. You should see the **Network security group** name noted above. Select the name to go into the network security group configuration page.
 
-1. 选择“入站安全规则”选项卡，并**添加**一个优先级高于 **deny_all_inbound** 规则且采用以下设置的规则： </br> </br>
+1. Select the **Inbound security rules** tab, and **Add** a rule that has higher priority than the **deny_all_inbound** rule with the following settings: </br> </br>
 
-    |设置  |建议的值  |说明  |
+    |设置  |建议的值  |描述  |
     |---------|---------|---------|
-    |**源**     |任何 IP 地址或服务标记         |<ul><li>对于 Power BI 等 Azure 服务，请选择“Azure 云服务标记”</li> <li>对于你的计算机或 Azure VM，请使用 NAT IP 地址</li></ul> |
-    |**源端口范围**     |*         |请将此字段保留为 *（任何），因为源端口通常是动态分配的，因而也是不可预测的 |
-    |**目标**     |任意         |将目标保留为“任何”，以允许流量进入托管实例子网 |
-    |**目标端口范围**     |3342         |将目标端口的范围限定为 3342，这是托管实例的公共 TDS 终结点 |
-    |**协议**     |TCP         |托管实例对 TDS 使用 TCP 协议 |
-    |**操作**     |ALLOW         |允许入站流量通过公共终结点传送到托管实例 |
-    |**Priority**     |1300         |请确保此规则的优先级高于 **deny_all_inbound** 规则 |
+    |**源**     |Any IP address or Service tag         |<ul><li>For Azure services like Power BI, select the Azure Cloud Service Tag</li> <li>For your computer or Azure VM, use NAT IP address</li></ul> |
+    |**Source port ranges**     |*         |Leave this to * (any) as source ports are usually dynamically allocated and as such, unpredictable |
+    |**Destination**     |任意         |Leaving destination as Any to allow traffic into the managed instance subnet |
+    |**Destination port ranges**     |3342         |Scope destination port to 3342, which is the managed instance public TDS endpoint |
+    |协议     |TCP         |Managed instance uses TCP protocol for TDS |
+    |**Action**     |允许         |Allow inbound traffic to managed instance through the public endpoint |
+    |**Priority**     |1300         |Make sure this rule is higher priority than the **deny_all_inbound** rule |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
-    > 端口 3342 用来与托管实例建立公共终结点连接，暂时不可更改。
+    > Port 3342 is used for public endpoint connections to managed instance, and cannot be changed at this point.
 
-## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>获取托管实例公共终结点的连接字符串
+## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Obtaining the managed instance public endpoint connection string
 
-1. 导航到为公共终结点启用的 SQL 托管实例配置页。 选择“设置”配置下的“连接字符串”选项卡。
-1. 请注意，公用终结点主机名的格式 < mi_name >。**public**. < dns_zone >，并且用于连接的端口为3342。
+1. Navigate to the SQL managed instance configuration page that has been enabled for public endpoint. Select the **Connection strings** tab under the **Settings** configuration.
+1. Note that the public endpoint host name comes in the format <mi_name>.**public**.<dns_zone>.database.windows.net and that the port used for the connection is 3342.
 
     ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[在公共终结点中安全使用 Azure SQL 数据库托管实例](sql-database-managed-instance-public-endpoint-securely.md)。
+- Learn about [using Azure SQL Database managed instance securely with public endpoint](sql-database-managed-instance-public-endpoint-securely.md).

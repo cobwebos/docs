@@ -1,20 +1,14 @@
 ---
 title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.author: glenga
-ms.openlocfilehash: 896179a393b870390991a8e9942f6e7287ec5c90
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 35ecebfb1956422470bf20e6d510543897ca0910
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063309"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227390"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -34,7 +28,7 @@ ms.locfileid: "73063309"
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在函数运行时版本2.x 中，基于运行时环境配置应用程序行为。 此值在[初始化期间](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)会被读取。 可以将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为任何值，但支持[三个值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[开发](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[过渡](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)和[生产](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则默认情况下，在本地环境中 `Development`，在 Azure 上 `Production`。 应使用此设置，而不是 `ASPNETCORE_ENVIRONMENT` 设置运行时环境。 
+In version 2.x of the Functions runtime, configures app behavior based on the runtime environment. This value is [read during initialization](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). You can set `AZURE_FUNCTIONS_ENVIRONMENT` to any value, but [three values](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) are supported: [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), and [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). When `AZURE_FUNCTIONS_ENVIRONMENT` isn't set,  it defaults to `Development` on a local environment and `Production` on Azure. This setting should be used instead of `ASPNETCORE_ENVIRONMENT` to set the runtime environment. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -101,7 +95,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
 
-指示是否启用了 Azure 门户中的编辑。 有效值为“readwrite”和“readonly”。
+Dictates whether editing in the Azure portal is enabled. 有效值为“readwrite”和“readonly”。
 
 |密钥|示例值|
 |---|------------|
@@ -115,18 +109,18 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
-## <a name="functions_worker_process_count"></a>函数\_WORKER\_进程\_计数
+## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
-指定语言工作进程的最大数量，默认值为 `1`。 允许的最大值为 `10`。 函数调用在语言工作进程之间均匀分布。 每隔10秒生成一次 Language 工作进程，直到达到函数\_WORKER\_进程\_计数。 使用多语言工作进程与[缩放](functions-scale.md)不同。 如果你的工作负荷混合使用了大量的 CPU 和 i/o 界限调用，请考虑使用此设置。 此设置适用于所有 non-.NET 语言。
+Specifies the maximum number of language worker processes, with a default value of `1`. The maximum value allowed is `10`. Function invocations are evenly distributed among language worker processes. Language worker processes are spawned every 10 seconds until the count set by FUNCTIONS\_WORKER\_PROCESS\_COUNT is reached. Using multiple language worker processes is not the same as [scaling](functions-scale.md). Consider using this setting when your workload has a mix of CPU-bound and I/O-bound invocations. This setting applies to all non-.NET languages.
 
 |密钥|示例值|
 |---|------------|
-|函数\_WORKER\_进程\_计数|2|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效值为 `dotnet` （C#/F#）、`node` （JavaScript/TypeScript）、`java` （Java）、`powershell` （PowerShell）和 `python` （Python）。
+要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  Valid values are `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell), and `python` (Python).
 
 |密钥|示例值|
 |---|------------|
@@ -134,7 +128,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-仅限 & 高级计划。 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+For consumption & Premium plans only. 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
 
 |密钥|示例值|
 |---|------------|
@@ -142,7 +136,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-仅限 & 高级计划。 函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+For consumption & Premium plans only. 函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
 
 |密钥|示例值|
 |---|------------|
@@ -161,12 +155,12 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-_仅限 Windows。_  
-设置在 Windows 上运行函数应用时使用的 node.js 版本。 应使用波形符（~）使运行时使用目标主版本的最新可用版本。 例如，如果设置为 `~10`，将使用最新版本的 node.js 10。 如果主要版本以颚化符为目标，则无需手动更新次版本。 
+_Windows only._  
+Sets the version of Node.js to use when running your function app on Windows. You should use a tilde (~) to have the runtime use the latest available version of the targeted major version. For example, when set to `~10`, the latest version of Node.js 10 is used. When a major version is targeted with a tilde, you don't have to manually update the minor version. 
 
 |密钥|示例值|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|~ 10|
+|WEBSITE\_NODE\_DEFAULT_VERSION|~10|
 
 ## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 

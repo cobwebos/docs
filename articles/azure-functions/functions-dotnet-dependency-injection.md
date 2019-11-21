@@ -1,45 +1,39 @@
 ---
-title: 在 .NET 中使用依赖关系注入 Azure Functions
-description: 了解如何在 .NET 函数中使用依赖关系注入来注册和使用服务
-services: functions
-documentationcenter: na
+title: Use dependency injection in .NET Azure Functions
+description: Learn how to use dependency injection for registering and using services in .NET functions
 author: craigshoemaker
-manager: gwallace
-keywords: azure functions, 函数, 无服务器体系结构
-ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 06415db201582f3e594173e9fe891ee9fdba4b18
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: dbd6762906bc189cad74d78dcd8f28b0cfeba183
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200390"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226993"
 ---
-# <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET 中使用依赖关系注入 Azure Functions
+# <a name="use-dependency-injection-in-net-azure-functions"></a>Use dependency injection in .NET Azure Functions
 
-Azure Functions 支持依赖关系注入（DI）软件设计模式，这是在类及其依赖项之间实现[控制反转（IoC）](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion)的一种技术。
+Azure Functions supports the dependency injection (DI) software design pattern, which is a technique to achieve [Inversion of Control (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) between classes and their dependencies.
 
-- Azure Functions 中的依赖关系注入基于 .NET Core 依赖项注入功能构建。 建议熟悉[.Net Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 但是，在使用消耗计划时，如何覆盖依赖项以及如何使用 Azure Functions 读取配置值。
+- Dependency injection in Azure Functions is built on the .NET Core Dependency Injection features. Familiarity with the [.NET Core dependency injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) is recommended. There are differences, however, in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
 
-- 对于依赖关系注入的支持从 Azure Functions 1.x 开始。
+- Support for dependency injection begins with Azure Functions 2.x.
 
 ## <a name="prerequisites"></a>必备组件
 
-使用依赖关系注入之前，必须安装以下 NuGet 包：
+Before you can use dependency injection, you must install the following NuGet packages:
 
-- [Microsoft。](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- 1\.0.28[包](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)版本或更高版本
+- [Microsoft.NET.Sdk.Functions package](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) version 1.0.28 or later
 
 ## <a name="register-services"></a>注册服务
 
-若要注册服务，请创建方法以配置组件并将其添加到 `IFunctionsHostBuilder` 的实例。  Azure Functions 主机创建 `IFunctionsHostBuilder` 的实例，并将其直接传递到方法中。
+To register services, create a method to configure and add components to an `IFunctionsHostBuilder` instance.  The Azure Functions host creates an instance of `IFunctionsHostBuilder` and passes it directly into your method.
 
-若要注册方法，请添加指定在启动过程中使用的类型名称的 `FunctionsStartup` 程序集特性。
+To register the method, add the `FunctionsStartup` assembly attribute that specifies the type name used during startup.
 
 ```csharp
 using System;
@@ -70,17 +64,17 @@ namespace MyNamespace
 
 ### <a name="caveats"></a>注意事项
 
-一系列注册步骤在运行时处理 startup 类之前和之后运行。 因此，请记住以下事项：
+A series of registration steps run before and after the runtime processes the startup class. Therefore, the keep in mind the following items:
 
-- *Startup 类仅用于安装和注册。* 避免在启动过程中使用在启动时注册的服务。 例如，不要尝试在启动期间注册的记录器中记录消息。 注册过程的这一时间点太早，你的服务将无法使用。 运行 `Configure` 方法后，函数运行时将继续注册其他依赖项，这可能会影响服务的运行方式。
+- *The startup class is meant for only setup and registration.* Avoid using services registered at startup during the startup process. For instance, don't try to log a message in a logger that is being registered during startup. This point of the registration process is too early for your services to be available for use. After the `Configure` method is run, the Functions runtime continues to register additional dependencies, which can affect how your services operate.
 
-- *依赖关系注入容器只保存显式注册类型*。 唯一可用作 injectable 类型的服务是 `Configure` 方法中的设置。 因此，在安装过程中或 injectable 类型时，函数特定类型（如 `BindingContext` 和 `ExecutionContext`）将不可用。
+- *The dependency injection container only holds explicitly registered types*. The only services available as injectable types are what are setup in the `Configure` method. As a result, Functions-specific types like `BindingContext` and `ExecutionContext` aren't available during setup or as injectable types.
 
-## <a name="use-injected-dependencies"></a>使用注入的依赖项
+## <a name="use-injected-dependencies"></a>Use injected dependencies
 
-构造函数注入用于使您的依赖项在函数中可用。 使用构造函数注入要求您不要使用静态类。
+Constructor injection is used to make your dependencies available in a function. The use of constructor injection requires that you do not use static classes.
 
-下面的示例演示如何将 `IMyService` 和 `HttpClient` 依赖项注入到 HTTP 触发的函数中。 此示例使用在启动时注册 `HttpClient` 所需的[Microsoft extension. Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/)包。
+The following sample demonstrates how the `IMyService` and `HttpClient` dependencies are injected into an HTTP-triggered function. This example uses the [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) package required to register an `HttpClient` at startup.
 
 ```csharp
 using System;
@@ -120,46 +114,46 @@ namespace MyNamespace
 }
 ```
 
-## <a name="service-lifetimes"></a>服务生存期
+## <a name="service-lifetimes"></a>Service lifetimes
 
-Azure Functions 应用提供与[ASP.NET 依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服务生存期。 对于函数应用，不同服务生存期的行为如下所示：
+Azure Functions apps provide the same service lifetimes as [ASP.NET Dependency Injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). For a Functions app, the different service lifetimes behave as follows:
 
-- **暂时性**：在每次服务请求时创建暂时性服务。
-- **作用域**：作用域内服务生存期与函数执行生存期匹配。 作用域内服务每次执行创建一次。 以后请求该服务时，将重新使用现有的服务实例。
-- **Singleton**：单一实例服务生存期与主机生存期匹配，并在该实例上的函数执行之间重复使用。 建议为连接和客户端使用单一实例生存期服务，例如 `SqlConnection` 或 `HttpClient` 实例。
+- **Transient**: Transient services are created upon each request of the service.
+- **Scoped**: The scoped service lifetime matches a function execution lifetime. Scoped services are created once per execution. Later requests for that service during the execution reuse the existing service instance.
+- **Singleton**: The singleton service lifetime matches the host lifetime and is reused across function executions on that instance. Singleton lifetime services are recommended for connections and clients, for example `SqlConnection` or `HttpClient` instances.
 
-查看或下载 GitHub 上[不同服务生存期的示例](https://aka.ms/functions/di-sample)。
+View or download a [sample of different service lifetimes](https://aka.ms/functions/di-sample) on GitHub.
 
-## <a name="logging-services"></a>日志记录服务
+## <a name="logging-services"></a>Logging services
 
-如果需要自己的日志记录提供程序，请将自定义类型注册为 `ILoggerProvider` 实例。 Azure Functions 自动添加 Application Insights。
+If you need your own logging provider, register a custom type as an `ILoggerProvider` instance. Application Insights is added by Azure Functions automatically.
 
 > [!WARNING]
-> - 不要将 `AddApplicationInsightsTelemetry()` 添加到服务集合，因为它注册的服务与环境提供的服务发生冲突。
-> - 如果使用内置的 Application Insights 功能，请勿注册您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。
+> - Do not add `AddApplicationInsightsTelemetry()` to the services collection as it registers services that conflict with services provided by the environment.
+> - Do not register your own `TelemetryConfiguration` or `TelemetryClient` if you are using the built-in Application Insights functionality.
 
-## <a name="function-app-provided-services"></a>函数应用提供的服务
+## <a name="function-app-provided-services"></a>Function app provided services
 
-函数主机将注册多个服务。 以下服务可作为依赖项在应用程序中安全执行：
+The function host registers many services. The following services are safe to take as a dependency in your application:
 
 |服务类型|生存期|描述|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|实体|运行时配置|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|实体|负责提供主机实例的 ID|
+|`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuration|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Responsible for providing the ID of the host instance|
 
-如果有其他服务要依赖于其他服务，请[在 GitHub 上创建一个问题并对其进行建议](https://github.com/azure/azure-functions-host)。
+If there are other services you want to take a dependency on, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
 
-### <a name="overriding-host-services"></a>重写主机服务
+### <a name="overriding-host-services"></a>Overriding host services
 
-当前不支持替代主机提供的服务。  如果有想要替代的服务，请[在 GitHub 上创建一个问题并对其进行建议](https://github.com/azure/azure-functions-host)。
+Overriding services provided by the host is currently not supported.  If there are services you want to override, [create an issue and propose them on GitHub](https://github.com/azure/azure-functions-host).
 
-## <a name="working-with-options-and-settings"></a>使用选项和设置
+## <a name="working-with-options-and-settings"></a>Working with options and settings
 
-在 "[应用设置](./functions-how-to-use-azure-function-app-settings.md#settings)" 中定义的值可用于 `IConfiguration` 实例，这允许你读取 startup 类中的应用设置值。
+Values defined in [app settings](./functions-how-to-use-azure-function-app-settings.md#settings) are available in an `IConfiguration` instance, which allows you to read app settings values in the startup class.
 
-可以从 `IConfiguration` 实例将值提取到自定义类型中。 如果将应用设置值复制到自定义类型，则通过使这些值 injectable，可以轻松地测试你的服务。 读入配置实例的设置必须是简单的键/值对。
+You can extract values from the `IConfiguration` instance into a custom type. Copying the app settings values to a custom type makes it easy test your services by making these values injectable. Settings read into the configuration instance must be simple key/value pairs.
 
-请考虑下面的类，该类包含一个名为与应用程序设置一致的属性。
+Consider the following class that includes a property named consistent with an app setting.
 
 ```csharp
 public class MyOptions
@@ -168,7 +162,7 @@ public class MyOptions
 }
 ```
 
-从 `Startup.Configure` 方法中，可以使用以下代码将 `IConfiguration` 实例中的值提取到自定义类型中：
+From inside the `Startup.Configure` method, you can extract values from the `IConfiguration` instance into your custom type using the following code:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -178,9 +172,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-调用 `Bind` 会将具有匹配的属性名称的值从配置复制到自定义实例中。 在 IoC 容器中现在可以使用 options 实例插入函数。
+Calling `Bind` copies values that have matching property names from the configuration into the custom instance. The options instance is now available in the IoC container to inject into a function.
 
-选项对象将作为泛型 `IOptions` 接口的实例注入到函数中。 使用 `Value` 属性访问在配置中找到的值。
+The options object is injected into the function as an instance of the generic `IOptions` interface. Use the `Value` property to access the values found in your configuration.
 
 ```csharp
 using System;
@@ -197,14 +191,14 @@ public class HttpTrigger
 }
 ```
 
-有关使用选项的更多详细信息，请参阅[ASP.NET Core 中的选项模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+Refer to [Options pattern in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) for more details regarding working with options.
 
 > [!WARNING]
-> 避免尝试读取文件中的值，*如* *appsettings。环境} json* 。 从与触发器连接相关的这些文件中读取的值在应用规模上不可用，因为宿主基础结构不能访问配置信息。
+> Avoid attempting to read values from files like *local.settings.json* or *appsettings.{environment}.json* on the Consumption plan. Values read from these files related to trigger connections aren't available as the app scales because the hosting infrastructure has no access to the configuration information.
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下资源：
 
-- [如何监视函数应用](functions-monitoring.md)
-- [函数的最佳实践](functions-best-practices.md)
+- [How to monitor your function app](functions-monitoring.md)
+- [Best practices for functions](functions-best-practices.md)

@@ -1,20 +1,15 @@
 ---
 title: 在 Durable Functions 中处理外部事件 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理外部事件。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1c2a2f08c31c427241bbd5e482906118a90ee178
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7d7fcc725d78b24a93b09cb9c76cf7dc0231cac2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614832"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232893"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -25,7 +20,7 @@ ms.locfileid: "73614832"
 
 ## <a name="wait-for-events"></a>等待事件
 
-[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` （.net）和 `waitForExternalEvent` （JavaScript）方法允许业务流程协调程序函数以异步方式等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。
+The `WaitForExternalEvent` (.NET) and `waitForExternalEvent` (JavaScript) methods of the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) allows an orchestrator function to asynchronously wait and listen for an external event. 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。
 
 ### <a name="c"></a>C#
 
@@ -47,9 +42,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面C#的代码适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -96,9 +91,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面C#的代码适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -142,9 +137,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的代码适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -163,7 +158,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`WaitForExternalEvent` 无限期地等待某些输入。  在等待时，可以安全地卸载函数应用。 对于此业务流程实例，如果某个事件到达，则会自动唤醒并立即处理该事件。
+`WaitForExternalEvent` waits indefinitely for some input.  在等待时，可以安全地卸载函数应用。 对于此业务流程实例，如果某个事件到达，则会自动唤醒并立即处理该事件。
 
 > [!NOTE]
 > 如果函数应用使用消耗计划，当业务流程协调程序函数等待来自 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 的任务时，无论它等待多久，都不会产生账单费用。
@@ -172,7 +167,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>发送事件
 
-[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` （.net）或 `raiseEvent` （javascript）方法发送 `WaitForExternalEvent` （.net）或 `waitForExternalEvent` （javascript）等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
+The `RaiseEventAsync` (.NET) or `raiseEvent` (JavaScript) method of the [orchestration client binding](durable-functions-bindings.md#orchestration-client) sends the events that `WaitForExternalEvent` (.NET) or `waitForExternalEvent` (JavaScript) waits for.  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 
@@ -189,9 +184,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面C#的代码适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# code is for Durable Functions 2.x. For Durable Functions 1.x, you must use `OrchestrationClient` attribute instead of the `DurableClient` attribute, and you must use the `DurableOrchestrationClient` parameter type instead of `IDurableOrchestrationClient`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -210,7 +205,7 @@ module.exports = async function(context, instanceId) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何实现错误处理](durable-functions-error-handling.md)
+> [Learn how to implement error handling](durable-functions-error-handling.md)
 
 > [!div class="nextstepaction"]
 > [运行等待人机交互的示例](durable-functions-phone-verification.md)

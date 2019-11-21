@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151911"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213119"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -19,11 +19,11 @@ Azure Database for MySQL 可自动创建服务器备份并将其存储在用户�
 
 ## <a name="backups"></a>备份
 
-Azure Database for MySQL 获取数据文件和事务日志的备份。 根据所支持的最大存储大小，我们可以进行完整备份和差异备份（4 TB 最大存储服务器）或快照备份（最多 16 TB 存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+Azure Database for MySQL takes backups of the data files and the transaction log. Depending on the supported maximum storage size, we either take full and differential backups (4 TB max storage servers) or snapshot backups (up to 16-TB max storage servers). 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 You can [optionally configure it](howto-restore-server-portal.md#set-backup-configuration) up to 35 days. 所有备份都使用 AES 256 位加密进行加密。
 
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，对于最大支持存储空间为 4 TB 的服务器，每日执行一次差异备份。 对于支持高达 16 TB 存储空间的服务器，每一天至少发生一次快照备份。 在这两种情况下，事务日志备份每五分钟执行一次。 创建服务器后，立即计划完整备份的第一个快照。 在较大的还原服务器上，初始完整备份的时间可能更长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 随着快照 instantanious，可将最多 16 TB 存储空间的服务器恢复到创建时间。
+Generally, full backups occur weekly, differential backups occur twice a day for servers with a max supported storage of 4 TB. Snapshot backups happen at least once a day for servers that support up to 16 TB of storage. Transaction log backups in both cases occur every five minutes. The first snapshot of full backup is scheduled immediately after a server is created. The initial full backup can take longer on a large restored server. 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 As snapshots are instantanious, servers with support up to 16 TB of storage can be restored all the way back to the create time.
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -62,7 +62,7 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 对于支持高达 16 TB 存储空间的服务器，只能在支持 16 TB 服务器的区域中还原异地备份。 查看[Azure Database for MySQL 的定价层](concepts-pricing-tiers.md)以获取受支持区域的列表。 
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 Servers that support up to 4 TB of storage can be restored to the geo-paired region, or to any region that supports up to 16 TB of storage. For servers that support up to 16 TB of storage, geo-backups can be restored in any region that support 16 TB servers as well. Review [Azure Database for MySQL pricing tiers](concepts-pricing-tiers.md) for the list of supported regions.
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 

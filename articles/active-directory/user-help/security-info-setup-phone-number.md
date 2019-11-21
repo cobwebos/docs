@@ -1,6 +1,6 @@
 ---
-title: 为电话呼叫设置安全信息（预览版）-Azure AD
-description: 如何设置安全信息，以使用电话呼叫验证身份。
+title: Set up your phone number as your authentication method - Azure AD
+description: How to set up the Security info page to verify your identity using your phone number and mobile device as your authentication method.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 74a0c0d374e9a3bc58a62ba72a0c934ed0c6eff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803804"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233148"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>设置安全信息（预览版）以使用电话呼叫
+# <a name="set-up-your-phone-number-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up your phone number as your authentication method from the Security info (preview) page
 
 可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
 
-如果在登录工作或学校帐户后系统提示立即进行设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
+如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -41,13 +41,13 @@ ms.locfileid: "73803804"
 
 ### <a name="to-set-up-phone-calls"></a>设置电话呼叫的步骤
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“电话”，然后选择“添加”。
 
@@ -90,11 +90,11 @@ ms.locfileid: "73803804"
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 呼叫 ( ***your_phone_number)”，然后选择“确认”*** 。
+2. 从可用方法的下拉列表中选择“电话 - 呼叫 ( *_your_phone_number_* )”，然后选择“确认”。
 
-    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
+    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 呼叫 ( ***your_phone_number)”*** 。
+    用于登录的默认方法更改为“电话 - 呼叫 ( *_your_phone_number_* )”。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 
@@ -104,7 +104,7 @@ ms.locfileid: "73803804"
 
 - **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

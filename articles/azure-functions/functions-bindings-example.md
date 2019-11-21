@@ -1,24 +1,20 @@
 ---
-title: Azure Functions 触发器和绑定示例
-description: 了解如何配置 Azure 函数绑定
-services: functions
-documentationcenter: na
+title: Azure Functions trigger and binding example
+description: Learn to configure Azure Function bindings
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097474"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227248"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions trigger and binding example
 
-本文展示了如何在 Azure 函数中配置[触发器和绑定](./functions-triggers-bindings.md)。
+This article demonstrates how to configure a [trigger and bindings](./functions-triggers-bindings.md) in an Azure Function.
 
 假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列存储触发器和 Azure 表存储输出绑定即可实现此方案。 
 
@@ -86,7 +82,7 @@ public class Person
 
 ## <a name="javascript-example"></a>JavaScript 示例
 
-可将同一 *function.json* 文件用于 JavaScript 函数：
+The same *function.json* file can be used with a JavaScript function:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -104,9 +100,9 @@ function generateRandomId() {
 }
 ```
 
-## <a name="class-library-example"></a>类库示例
+## <a name="class-library-example"></a>Class library example
 
-在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 以下是一个示例：
+在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 下面是一个示例：
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -134,9 +130,9 @@ public class Person
 }
 ```
 
-现在，你已有一个由 Azure 队列触发并将数据输出到 Azure 表存储的工作函数。
+You now have a working function that is triggered by an Azure Queue and outputs data to Azure Table storage.
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Functions 绑定表达式模式](./functions-bindings-expressions-patterns.md)
+> [Azure Functions binding expression patterns](./functions-bindings-expressions-patterns.md)

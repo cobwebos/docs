@@ -1,24 +1,24 @@
 ---
-title: Azure DNS 疑难解答指南
-description: 如何排查 Azure DNS 的常见问题
+title: Troubleshooting guide - Azure DNS
+description: In this learning path, get started troubleshooting common issues with Azure DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: genli
-ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.author: allensu
+ms.openlocfilehash: b5fedba7b739c07a37f3aabf75ddd8ca465ba73b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162067"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210940"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
-本文提供 Azure DNS 常见问题的疑难解答信息。
+This article provides troubleshooting information for common Azure DNS questions.
 
-如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 或者，你可以打开 Azure 支持请求。
+如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 Or, you can open an Azure support request.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>无法创建 DNS 区域
@@ -26,12 +26,12 @@ ms.locfileid: "71162067"
 若要解决常见问题，请尝试下面的一个或多个步骤：
 
 1.  查看 Azure DNS 审核日志以确定失败原因。
-2.  每个 DNS 区域名称在其资源组中必须唯一。 也就是说，具有相同名称的两个 DNS 区域无法共享资源组。 请尝试使用不同的区域名称，或采用不同的资源组。
+2.  每个 DNS 区域名称在其资源组中必须唯一。 That is, two DNS zones with the same name can't share a resource group. 请尝试使用不同的区域名称，或采用不同的资源组。
 3.  可能会显示一个错误“已达到或超过订阅 {订阅 id} 中的区域的最大数量。” 请使用其他 Azure 订阅，删除一些区域，或者联系 Azure 支持部门以提高订阅限制。
-4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 或者，如果你是域名所有者，你可以联系 Azure 支持部门为你分配名称服务器。
+4.  可能会显示一个错误“区域‘{区域名称}’不可用。” 此错误意味着 Azure DNS 无法为此 DNS 区域分配名称服务器。 请尝试使用不同的区域名称。 Or, if you are the domain name owner you can contact Azure support to allocate name servers for you.
 
 
-### <a name="recommended-articles"></a>推荐的文章
+### <a name="recommended-articles"></a>Recommended articles
 
 * [DNS 区域和记录](dns-zones-records.md)
 * [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
@@ -42,12 +42,12 @@ ms.locfileid: "71162067"
 
 1.  查看 Azure DNS 审核日志以确定失败原因。
 2.  该记录集是否已存在？  Azure DNS 使用记录集管理记录，记录集是具有相同名称和类型的记录的集合。 如果已存在名称和类型相同的记录，那么在添加另一此类记录时，应编辑现有记录集。
-3.  希望在 DNS 区域顶点处（该区域的“根”）尝试创建记录？ 如果是这样，DNS 约定会使用“@”字符作为记录名称。 另请注意，DNS 标准不允许区域顶点的 CNAME 记录。
-4.  是否存在 CNAME 冲突？  DNS 标准不允许与任何其他类型的记录同名的 CNAME 记录。 如果已存在 CNAME 记录，则无法创建具有相同名称的其他类型的记录。  同样，如果创建的 CNAME 记录与现有其他类型记录的名称相匹配，则无法创建 CNAME 记录。 可通过删除另一条记录或选用不同的记录名称来解决此冲突。
-5.  是否已达到 DNS 区域中允许的记录集数量上限？ 在 Azure 门户中此区域的“属性”下，显示有当前记录集数和最大记录集数。 如果已达到此限制，则删除某些记录集或联系 Azure 支持以提高此区域的记录集限制，然后重试。 
+3.  希望在 DNS 区域顶点处（该区域的“根”）尝试创建记录？ 如果是这样，DNS 约定会使用“@”字符作为记录名称。 Also note that the DNS standards don't permit CNAME records at the zone apex.
+4.  是否存在 CNAME 冲突？  The DNS standards don't allow a CNAME record with the same name as a record of any other type. 如果已存在 CNAME 记录，则无法创建具有相同名称的其他类型的记录。  同样，如果创建的 CNAME 记录与现有其他类型记录的名称相匹配，则无法创建 CNAME 记录。 可通过删除另一条记录或选用不同的记录名称来解决此冲突。
+5.  是否已达到 DNS 区域中允许的记录集数量上限？ 在 Azure 门户中此区域的“属性”下，显示有当前记录集数和最大记录集数。 If you've reached this limit, then either delete some record sets or contact Azure Support to raise your record set limit for this zone, then try again. 
 
 
-### <a name="recommended-articles"></a>推荐的文章
+### <a name="recommended-articles"></a>Recommended articles
 
 * [DNS 区域和记录](dns-zones-records.md)
 * [创建 DNS 区域](dns-getstarted-create-dnszone-portal.md)
@@ -67,7 +67,7 @@ DNS 名称解析是一个多步骤过程，该过程失败存在多种原因。 
 4.  完成上述步骤后，现在应可以正确解析 DNS 记录。 若要进行验证，可再次使用 [digwebinterface](https://digwebinterface.com)，这次请使用默认名称服务器设置。
 
 
-### <a name="recommended-articles"></a>推荐的文章
+### <a name="recommended-articles"></a>Recommended articles
 
 * [将域委托给 Azure DNS](dns-domain-delegation.md)
 
@@ -82,7 +82,7 @@ Azure DNS 以记录集方式管理记录，记录集是具有相同名称和类�
 - \_sip.\_tcp（在区域顶点创建一个记录集）
 - \_sip.\_tcp.sipservice（创建名为“sipservice”的记录集）
 
-### <a name="recommended-articles"></a>推荐的文章
+### <a name="recommended-articles"></a>Recommended articles
 
 * [DNS 区域和记录](dns-zones-records.md)
 * [使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)

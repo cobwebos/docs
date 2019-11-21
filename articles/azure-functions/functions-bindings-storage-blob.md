@@ -1,21 +1,16 @@
 ---
 title: Azure Functions 的 Azure Blob 存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure Blob 存储触发器和绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b2782ce39bbc2ca86c63b178535fc6b67b9dadfe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177397"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231041"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -30,7 +25,7 @@ ms.locfileid: "72177397"
 > [!NOTE]
 > 将事件网格触发器而非 Blob 存储触发器用于仅限 Blob 的存储帐户、大规模，或者降低延迟。 有关详细信息，请参阅[触发器](#trigger)部分。
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了 Blob 存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub 存储库中提供了此包的源代码。
 
@@ -52,11 +47,11 @@ ms.locfileid: "72177397"
 
 以下方案请使用事件网格而不是 Blob 存储触发器：
 
-* Blob 存储帐户
+* blob 存储帐户
 * 大规模
 * 最大程度地降低延迟
 
-### <a name="blob-storage-accounts"></a>Blob 存储帐户
+### <a name="blob-storage-accounts"></a>blob 存储帐户
 
 [Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)适用于 Blob 输入和输出绑定，但不适用于 Blob 触发器。 Blob 存储触发器需要使用常规用途存储帐户。
 
@@ -90,9 +85,9 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 有关 `BlobTrigger` 特性的详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
-下面的示例演示*函数 json*文件中的 blob 触发器绑定，以及使用绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
+The following example shows a blob trigger binding in a *function.json* file and code that uses the binding. 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -255,7 +250,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  该特性的构造函数采用一个表示要监视的容器的路径字符串，并选择性地采用某种 [Blob 名称模式](#trigger---blob-name-patterns)。 以下是一个示例：
+  该特性的构造函数采用一个表示要监视的容器的路径字符串，并选择性地采用某种 [Blob 名称模式](#trigger---blob-name-patterns)。 下面是一个示例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -279,7 +274,7 @@ public void run(
   }
    ```
 
-  有关完整示例，请参阅[触发器示例](#trigger---example)。
+  For a complete example, see [Trigger example](#trigger---example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -305,21 +300,21 @@ public void run(
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
-C#脚本不支持特性。
+Attributes are not supported by C# Script.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript 不支持特性。
+Attributes are not supported by JavaScript.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Attributes are not supported by Python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 属性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+The `@BlobTrigger` attribute is used to give you access to the blob that triggered the function. Refer to the [trigger example](#trigger---example) for details.
 
 ---
 
@@ -327,11 +322,11 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|类型 | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
+|name | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#trigger---blob-name-patterns)。 |
 |**连接** | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
@@ -343,21 +338,21 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+Access blob data using `context.bindings.<name from function.json>`.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+Access blob data via the parameter typed as [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Refer to the [trigger example](#trigger---example) for details.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 属性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+The `@BlobTrigger` attribute is used to give you access to the blob that triggered the function. Refer to the [trigger example](#trigger---example) for details.
 
 ---
 
@@ -409,7 +404,7 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
@@ -424,17 +419,17 @@ module.exports = function (context, myBlob) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 中的元数据不可用。
+Metadata is not available in Python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-元数据在 Java 中不可用。
+Metadata is not available in Java.
 
 ---
 
 ## <a name="trigger---blob-receipts"></a>触发器 - Blob 回执
 
-Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 blob 回执。
+Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 *blob 回执*。
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
@@ -444,7 +439,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 While reprocessing might not occur immediately, it's guaranteed to occur at a later point in time.
 
 ## <a name="trigger---poison-blobs"></a>触发器 - 有害 Blob
 
@@ -468,7 +463,7 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="trigger---polling"></a>触发器 - 轮询
 
-如果受监视的 blob 容器包含 10,000 多个 blob（跨所有容器），则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。
+If the blob container being monitored contains more than 10,000 blobs (across all containers), the Functions runtime scans log files to watch for new or changed blobs. 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。
 
 > [!WARNING]
 > 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。
@@ -497,7 +492,7 @@ public static void Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -654,7 +649,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 * [HTTP 触发器，使用查询字符串查找 blob 名称](#http-trigger-look-up-blob-name-from-query-string)
 * [队列触发器，接收来自队列消息的 blob 名称](#queue-trigger-receive-blob-name-from-queue-message)
 
-#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP 触发器，从查询字符串查找 blob 名称
+#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP trigger, look up blob name from query string
 
  下面的示例显示了一个 Java 函数，该函数使用 `HttpTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个参数。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。
 
@@ -679,7 +674,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
   }
 ```
 
-#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>队列触发器，从队列消息中接收 blob 名称
+#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>Queue trigger, receive blob name from queue message
 
  下面的示例显示了一个 Java 函数，该函数使用 `QueueTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个消息。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。
 
@@ -740,36 +735,36 @@ public static void Run(
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
-C#脚本不支持特性。
+Attributes are not supported by C# Script.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript 不支持特性。
+Attributes are not supported by JavaScript.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Attributes are not supported by Python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输入示例](#input---example)。
+The `@BlobInput` attribute gives you access to the blob that triggered the function. If you use a byte array with the attribute, set `dataType` to `binary`. Refer to the [input example](#input---example) for details.
 
 ---
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件和 `Blob` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blob`。 |
-|**direction** | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|类型 | 不适用 | 必须设置为 `blob`。 |
+|direction | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
+|name | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
 |**连接** |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **Access** | 表示是要读取还是写入。 |
+|不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -779,25 +774,25 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+Access the blob data using `context.bindings.<name from function.json>`.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#input---example)。
+Access blob data via the parameter typed as [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Refer to the [input example](#input---example) for details.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输入示例](#input---example)。
+The `@BlobInput` attribute gives you access to the blob that triggered the function. If you use a byte array with the attribute, set `dataType` to `binary`. Refer to the [input example](#input---example) for details.
 
 ---
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 使用 blob 存储输出绑定写入 blob。
 
@@ -853,7 +848,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -1103,25 +1098,25 @@ public static void Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
-C#脚本不支持特性。
+Attributes are not supported by C# Script.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript 不支持特性。
+Attributes are not supported by JavaScript.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Attributes are not supported by Python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输出示例](#output---example)。
+The `@BlobOutput` attribute gives you access to the blob that triggered the function. If you use a byte array with the attribute, set `dataType` to `binary`. Refer to the [output example](#output---example) for details.
 
 ---
 
-有关完整示例，请参阅[输出示例](#output---example)。
+For a complete example, see [Output example](#output---example).
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
@@ -1129,14 +1124,14 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blob`。 |
-|**direction** | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
-|**路径** |**BlobPath** | Blob 容器的路径。 |
+|类型 | 不适用 | 必须设置为 `blob`。 |
+|direction | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |
+|name | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
+|**路径** |**BlobPath** | The path to the blob container. |
 |**连接** |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **Access** | 表示是要读取还是写入。 |
+|不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1146,7 +1141,7 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
@@ -1156,16 +1151,16 @@ Python 不支持特性。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-可以将函数参数声明为以下类型以写出到 blob 存储：
+You can declare function parameters as the following types to write out to blob storage:
 
-* 字符串作为 `func.Out(str)`
-* 流为 `func.Out(func.InputStream)`
+* Strings as `func.Out(str)`
+* Streams as `func.Out(func.InputStream)`
 
-有关详细信息，请参阅[输出示例](#output---example)。
+Refer to the [output example](#output---example) for details.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输出示例](#output---example)。
+The `@BlobOutput` attribute gives you access to the blob that triggered the function. If you use a byte array with the attribute, set `dataType` to `binary`. Refer to the [output example](#output---example) for details.
 
 ---
 

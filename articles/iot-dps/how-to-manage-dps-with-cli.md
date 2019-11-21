@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务 | Microsoft Docs
+title: Manage IoT Hub Device Provisioning Service using Azure CLI & IoT extension
 description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 author: chrissie926
 ms.author: menchi
@@ -7,13 +7,12 @@ ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: 59d2277bd99fac1e8357c1b0d7336ca7451bf8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e276ca32d7cd02f9668b33b3729757404b13b00
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122857"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229743"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
@@ -44,20 +43,20 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 在开始之前，请完成前面所述的安装步骤。 如果没有 Azure 帐户，可以立即[创建一个免费帐户](https://azure.microsoft.com/free/?v=17.39a)。 
 
 
-### <a name="1-log-in-to-the-azure-account"></a>1.登录到 Azure 帐户
+### <a name="1-log-in-to-the-azure-account"></a>1. Log in to the Azure account
   
     az login
 
 ![登录][1]
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2.在 eastus 中创建资源组 IoTHubBlogDemo
+### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Create a resource group IoTHubBlogDemo in eastus
 
     az group create -l eastus -n IoTHubBlogDemo
 
 ![创建资源组][2]
 
 
-### <a name="3-create-two-device-provisioning-services"></a>3.创建两个设备预配服务
+### <a name="3-create-two-device-provisioning-services"></a>3. Create two Device Provisioning services
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 
@@ -65,20 +64,20 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 
-### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4.列出此资源组下的所有现有设备预配服务
+### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. List all the existing Device Provisioning services under this resource group
 
     az iot dps list --resource-group IoTHubBlogDemo
 
 ![列出设备预配服务][4]
 
 
-### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5.在新建的资源组下创建 IoT 中心 blogDemoHub
+### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Create an IoT Hub blogDemoHub under the newly created resource group
 
     az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
 
 ![创建 IoT 中心][5]
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6.将一个现有的 IoT 中心链接到设备预配服务
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Link one existing IoT Hub to a Device Provisioning service
 
     az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
 
@@ -94,7 +93,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你将了解：
+本教程介绍了以下操作：
 
 > [!div class="checklist"]
 > * 注册设备

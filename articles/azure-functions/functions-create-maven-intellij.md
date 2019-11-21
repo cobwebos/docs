@@ -1,25 +1,19 @@
 ---
-title: 使用 Java 和 IntelliJ 创建 Azure 函数 | Microsoft Docs
+title: Create an Azure function with Java and IntelliJ
 description: 了解如何使用 Java 和 IntelliJ 创建简单的 HTTP 触发式无服务器应用并将其发布到 Azure。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构, java
-ms.service: azure-functions
 ms.topic: conceptual
-ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70743990"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230730"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Create your first Azure function with Java and IntelliJ
 
 本文将介绍以下内容：
 - 如何使用 IntelliJ IDEA 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
@@ -52,8 +46,8 @@ ms.locfileid: "70743990"
 1. 在“添加 Archetype”窗口中按以下说明填写各个字段：
     - _GroupId_：com.microsoft.azure
     - _ArtifactId_：azure-functions-archetype
-    - _版本_：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    中的最新版本 **1.22** ![在 IntelliJ IDEA 中根据 archetype 创建 Maven 项目](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _Version_: Use the latest version **1.22** from [the central repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Create a Maven project from archetype in IntelliJ IDEA](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. 选择“确定”，然后选择“下一步”。
 1. 输入当前项目的详细信息，并选择“完成”。
 
@@ -93,7 +87,7 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-1. 在向 Azure 部署函数之前，必须[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+1. Before you can deploy your function to Azure, you must [sign in by using the Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login

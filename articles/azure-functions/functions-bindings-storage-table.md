@@ -1,21 +1,16 @@
 ---
 title: Azure Functions 的 Azure 表存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure 表存储绑定。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171186"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230981"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -23,7 +18,7 @@ ms.locfileid: "71171186"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了表存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub 存储库中提供了此包的源代码。
 
@@ -492,17 +487,17 @@ public int run(
 
 ## <a name="input---java-annotations"></a>输入 - Java 注释
 
-在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自表存储的参数使用 `@TableInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 Optional\<T> 的可为 null 的值一起使用。 
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自表存储的参数使用 `@TableInput` 注释。  This annotation can be used with native Java types, POJOs, or nullable values using Optional\<T>. 
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件和 `Table` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**name** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
+|类型 | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
+|name | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
 |**tableName** | **TableName** | 表的名称。| 
 |**partitionKey** | **PartitionKey** |可选。 要读取的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
 |**rowKey** |**RowKey** | 可选。 要读取的表实体的行键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
@@ -531,7 +526,7 @@ public int run(
 
   设置 `filter` 和 `take` 属性。 不要设置 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<BINDING_NAME>` 访问输入一个或多个输入表实体。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 使用 Azure 表存储输出绑定读取将实体写入 Azure 存储帐户中的表。
 
@@ -575,7 +570,7 @@ public class TableStorage
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -630,7 +625,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [F# 脚本](functions-reference-fsharp.md)代码。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -677,7 +672,7 @@ let Run(input: string, tableBinding: ICollector<Person>, log: ILogger) =
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数写入多个表实体。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -758,11 +753,11 @@ public static MyPoco TableOutput(
 
 下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**name** | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
+|类型 | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|direction | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
+|name | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
 |**tableName** |**TableName** | 表的名称。| 
 |**partitionKey** |**PartitionKey** | 要写入的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
 |**rowKey** |**RowKey** | 要写入的表实体的行键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 

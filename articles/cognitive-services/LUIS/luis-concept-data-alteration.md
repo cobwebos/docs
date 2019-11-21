@@ -1,5 +1,5 @@
 ---
-title: 数据更改 - LUIS
+title: Data alteration - LUIS
 titleSuffix: Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
 services: cognitive-services
@@ -9,30 +9,37 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 734389c92ede88d336df60a1a79a738d2abcfa92
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: a199821c4db7fd8131ec54700b8c999dfe604a6e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703164"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222027"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
-LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括[修复拼写](luis-tutorial-bing-spellcheck.md)和修复预生成的[datetimeV2](luis-reference-prebuilt-datetimev2.md)的时区问题。 
+LUIS 提供在预测之前或预测期间操作陈述的方法。 These include [fixing spelling](luis-tutorial-bing-spellcheck.md), and fixing timezone issues for prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>更正陈述中的拼写错误
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+
+
 LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更正陈述中的拼写错误。 LUIS 需要与该服务关联的密钥。 创建密钥，然后将密钥添加为[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)的 querystring 参数。 
 
-还可以通过[输入密钥](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)更正“测试”面板中的拼写错误。 该密钥以浏览器中“测试”面板的会话变量形式保存。 在每个要更正拼写的浏览器会话中，将该密钥添加到“测试”面板。 
+<!--
+You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
 
-测试面板和终结点中的密钥使用情况将计入[密钥用量](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/)配额。 LUIS 实施必应拼写检查文本长度限制。 
+Usage of the key in the test panel and at the endpoint count toward the [key usage](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) quota. LUIS implements Bing Spell Check limits for text length. 
+
+-->
 
 终结点需要两个参数以进行拼写更正：
 
-|Param|ReplTest1|
+|Param|Value|
 |--|--|
-|`spellCheck`|boolean|
+|`spellCheck`|布尔值|
 |`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 终结点密钥|
 
 [必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 检测到错误时，将一并从终结点返回原始陈述、已更正陈述和预测。
@@ -71,16 +78,16 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 
 * * * 
 
-### <a name="list-of-allowed-words"></a>允许的字词列表
-在 LUIS 中使用的必应拼写检查 API 不支持在拼写检查变更期间忽略的单词的列表。 如果需要允许字词或首字母缩写词的列表，请在将话语发送到 LUIS 进行意向预测之前在客户端应用程序中处理话语。
+### <a name="list-of-allowed-words"></a>List of allowed words
+The Bing spell check API used in LUIS does not support a list of words to ignore during the spell check alterations. If you need to allow a list of words or acronyms, process the utterance in the client application before sending the utterance to LUIS for intent prediction.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>更改预生成 datetimeV2 实体的时区
-当 LUIS 应用使用预生成的[datetimeV2](luis-reference-prebuilt-datetimev2.md)实体时，可在预测响应中返回 datetime 值。 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。 
+When a LUIS app uses the prebuilt [datetimeV2](luis-reference-prebuilt-datetimev2.md) entity, a datetime value can be returned in the prediction response. 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。 
 
 ### <a name="endpoint-querystring-parameter"></a>终结点 querystring 参数
 通过使用 `timezoneOffset` 参数将用户的时区添加到[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)来更正时区。 要更改时间，则 `timezoneOffset` 的值应为正数或负数（以分钟为单位）。  
 
-|Param|ReplTest1|
+|Param|Value|
 |--|--|
 |`timezoneOffset`|正数或负数（以分钟为单位）|
 
@@ -101,13 +108,13 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the l
 
 增加 60 分钟：
 
-https：//{region}. luis//v2.0 3.0-预览/应用/{appId}/槽/生产/预测？ query = 开启灯光？**timezoneOffset = 60**& 拼写检查 = {boolean} & 必应拼写检查-订阅-密钥 = {string} & log = {boolean}
+https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
 减去 60 分钟： 
 
-https：//{region}. luis//v2.0 3.0-预览/应用/{appId}/槽/生产/预测？ query = 开启灯光？**timezoneOffset =-60**& 拼写检查 = {boolean} & 必应拼写检查--key = {string} & log = {boolean}
+https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 

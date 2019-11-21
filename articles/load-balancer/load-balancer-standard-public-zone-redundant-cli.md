@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 让区域冗余的 VM 实现负载均衡
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 通过区域冗余的前端创建公共标准负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6a22ac9a2727c537d98e692e67076637fe8cc457
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: af327f751a0af67b6d17330dbaeb717df8660bfd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274330"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225265"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>使用 Azure CLI 跨所有可用性区域对 VM 进行负载均衡
 
@@ -49,7 +49,7 @@ az group create \
 ```
 
 ## <a name="create-a-zone-redundant-public-ip-standard"></a>创建区域冗余的公共 IP 标准
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 区域冗余的前端由区域中的所有可用性区域同时提供服务。 使用[az network 公共 ip create](/cli/azure/network/public-ip#az-network-public-ip-create)创建区域冗余的公共 ip 地址。 创建标准公共 IP 地址时，该地址默认是区域冗余的。
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 区域冗余的前端由区域中的所有可用性区域同时提供服务。 Create a zone redundant public IP address with [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). 创建标准公共 IP 地址时，该地址默认是区域冗余的。
 
 以下示例在 *myResourceGroupLoadBalancer* 资源组中创建名为 *myPublicIP* 的区域冗余公共 IP 地址。
 

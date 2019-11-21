@@ -1,21 +1,15 @@
 ---
 title: 使用 Azure 门户创建 Durable Functions
 description: 了解如何针对门户开发安装 Azure Functions 的 Durable Functions 扩展。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614976"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231484"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -23,10 +17,10 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 > [!NOTE]
 > 
-> * 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2019 开发](durable-functions-create-first-csharp.md)。
+> * If you are developing durable functions in C#, you should instead consider [Visual Studio 2019 development](durable-functions-create-first-csharp.md).
 > * 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-function-app"></a>创建函数应用
 
 必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
@@ -64,7 +58,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+** 。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -82,7 +76,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 1. 在函数应用中创建另一函数，这次使用 **Durable Functions 业务流程协调程序**模板。 将新的业务流程函数命名为 `HelloSequence`。
 
-1. 使用 `Hello`Durable Functions 活动**模板创建第三个函数，该函数名为** 。
+1. 使用 **Durable Functions 活动**模板创建第三个函数，该函数名为 `Hello`。
 
 ## <a name="test-the-durable-function-orchestration"></a>测试持久函数业务流程
 

@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure CLI 管理 Azure DNS 中的 DNS 记录 | Microsoft 文档
-description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。
+description: 当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
-ms.author: victorh
-ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: a0316710f78afc8810f5f65e108638b08fae3da2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293318"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211639"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -42,7 +42,7 @@ ms.locfileid: "61293318"
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a、srv、txt 等）有关帮助，请参阅 `az network dns record-set --help`。
+请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a, srv, txt, etc.) For help, see `az network dns record-set --help`.
 
 创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是*相对*名称，这意味着它必须排除区域名称。
 

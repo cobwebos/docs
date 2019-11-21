@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36f0b78f563bb4dda76f192259541d1c2b1fa060
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224667"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA（大型实例）部署 
 
@@ -36,7 +36,7 @@ Microsoft 需要使用以下信息来部署 HANA 大型实例单元：
 - 对于每个 Azure 部署区域：
     - 用于将 Azure 虚拟网络连接到 HANA 大型实例的 ER-P2P 连接的 /29 IP 地址范围。
     - 用于 HANA 大型实例服务器 IP 池的 /24 CIDR 块。
-    - 可选: 使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)启用从本地到 Hana 大型实例单元的直接路由, 或在不同 Azure 区域中的 Hana 大型实例单元之间进行路由时, 需要保留另一个/29 IP 地址范围。 此特定范围不能与之前定义的任何其他 IP 地址范围重叠。
+    - Optional when using [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) to enable direct routing from on-premises to HANA Large Instance units or routing between HANA Large Instance units in different Azure regions, you need to reserve another /29 IP address range. This particular range may not overlap with any of the other IP address ranges you defined before.
 - 对于连接到 HANA 大型实例的每个 Azure 虚拟网络，虚拟网络地址空间属性中使用的 IP 地址范围值。
 - 对于每个 HANA 大型实例系统的数据：
   - 所需主机名，最好是使用完全限定的域名。

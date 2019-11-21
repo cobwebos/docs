@@ -1,20 +1,16 @@
 ---
 title: Durable Functions 中的性能和缩放 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5efe571e2c7ff75ace584755324964003176b5f0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614714"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231343"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -30,9 +26,9 @@ ms.locfileid: "73614714"
 
 ## <a name="instances-table"></a>实例表
 
-**实例**表是另一个 Azure 存储表，其中包含任务中心内所有业务流程和实体实例的状态。 创建实例时，会在此表中添加新行。 此表的分区键是业务流程实例 ID 或实体键，行键是固定常数。 对于每个业务流程或实体实例，都有一行。
+The **Instances** table is another Azure Storage table that contains the statuses of all orchestration and entity instances within a task hub. 创建实例时，会在此表中添加新行。 The partition key of this table is the orchestration instance ID or entity key and the row key is a fixed constant. There is one row per orchestration or entity instance.
 
-此表用于满足来自 `GetStatusAsync` （.NET）和 `getStatus` （JavaScript） Api 以及[状态查询 HTTP API](durable-functions-http-api.md#get-instance-status)的实例查询请求。 它与前面所述的“历史记录”表内容保持最终一致。 以这种方式使用单独的 Azure 存储表有效满足实例查询操作不受[命令和查询责任分离 (CQRS) 模式](https://docs.microsoft.com/azure/architecture/patterns/cqrs)的影响。
+This table is used to satisfy instance query requests from the `GetStatusAsync` (.NET) and `getStatus` (JavaScript) APIs as well as the [status query HTTP API](durable-functions-http-api.md#get-instance-status). 它与前面所述的“历史记录”表内容保持最终一致。 以这种方式使用单独的 Azure 存储表有效满足实例查询操作不受[命令和查询责任分离 (CQRS) 模式](https://docs.microsoft.com/azure/architecture/patterns/cqrs)的影响。
 
 ## <a name="internal-queue-triggers"></a>内部队列触发器
 
@@ -44,24 +40,24 @@ Durable Functions 中的每个任务中心都有一个工作项队列。 它是�
 
 ### <a name="control-queues"></a>控制队列
 
-Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 控制队列用于触发有状态 orchestrator 和实体函数。 由于业务流程协调程序和实体函数实例都是有状态的单一实例，因此不能使用竞争性使用者模型来跨 Vm 分布负载。 相反，orchestrator 和 entity 消息在控制队列中进行负载均衡。 后续部分将会更详细地介绍此行为。
+Durable Functions 中的每个任务中心有多个控制队列。 与较为简单的工作项队列相比，控制队列更加复杂。 Control queues are used to trigger the stateful orchestrator and entity functions. Because the orchestrator and entity function instances are stateful singletons, it's not possible to use a competing consumer model to distribute load across VMs. Instead, orchestrator and entity messages are load-balanced across the control queues. 后续部分将会更详细地介绍此行为。
 
 控制队列包含各种业务流程生命周期消息类型。 示例包括[业务流程协调程序控制消息](durable-functions-instance-management.md)、活动函数响应消息和计时器消息。 在单次轮询中，最多会从一个控制队列中取消 32 条消息的排队。 这些消息包含有效负载数据以及元数据，包括适用的业务流程实例。 如果将多个取消排队的消息用于同一业务流程实例，将会批处理这些消息。
 
-### <a name="queue-polling"></a>队列轮询
+### <a name="queue-polling"></a>Queue polling
 
-Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮询对存储事务成本造成的影响。 当找到消息时，运行时会立即检查另一条消息；如果未找到消息，它将等待一定的时间，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 30 秒）。
+The durable task extension implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs. When a message is found, the runtime immediately checks for another message; when no message is found, it waits for a period of time before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to 30 seconds.
 
-可以通过 `maxQueuePollingInterval`host.json 文件[中的 ](../functions-host-json.md#durabletask) 属性配置最大轮询延迟。 将此属性设置为较高的值可能会导致更高的消息处理延迟。 只有在不活动的时间段过后，才会出现较高的延迟。 如果将此属性设置为较低的值，则可能会由于增加了存储事务而导致更高的存储成本。
+The maximum polling delay is configurable via the `maxQueuePollingInterval` property in the [host.json file](../functions-host-json.md#durabletask). Setting this property to a higher value could result in higher message processing latencies. Higher latencies would be expected only after periods of inactivity. Setting this property to a lower value could result in higher storage costs due to increased storage transactions.
 
 > [!NOTE]
-> 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
+> When running in the Azure Functions Consumption and Premium plans, the [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) will poll each control and work-item queue once every 10 seconds. This additional polling is necessary to determine when to activate function app instances and to make scale decisions. At the time of writing, this 10 second interval is constant and cannot be configured.
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
-在配置的 Azure 存储帐户中创建 Durable Functions 使用的队列、表和 Blob。 可以使用**host. json**文件中的 `durableTask/storageProvider/connectionStringName` 设置（或 Durable Functions 1.x 中 `durableTask/azureStorageConnectionStringName` 设置）指定要使用的帐户。
+The queues, tables, and blobs used by Durable Functions are created in a configured Azure Storage account. The account to use can be specified using the `durableTask/storageProvider/connectionStringName` setting (or `durableTask/azureStorageConnectionStringName` setting in Durable Functions 1.x) in the **host.json** file.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2。x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -75,7 +71,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1。x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -91,9 +87,9 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="orchestrator-scale-out"></a>业务流程协调程序横向扩展
 
-活动函数是无状态的，可通过添加 VM 自动进行横向扩展。 另一方面，业务流程协调程序函数和实体在一个或多个控制队列中进行*分区*。 控制队列的数目在 **host.json** 文件中定义。 下面的示例 host 代码段将 `durableTask/storageProvider/partitionCount` 属性（或 `durableTask/partitionCount` Durable Functions 1.x）设置为 `3`。
+活动函数是无状态的，可通过添加 VM 自动进行横向扩展。 Orchestrator functions and entities, on the other hand, are *partitioned* across one or more control queues. 控制队列的数目在 **host.json** 文件中定义。 The following example host.json snippet sets the `durableTask/storageProvider/partitionCount` property (or `durableTask/partitionCount` in Durable Functions 1.x) to `3`.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2。x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -107,7 +103,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1。x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -121,7 +117,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 可将任务中心配置为包含 1 到 16 个分区。 如果未指定分区数，则会使用默认分区数 **4**。
 
-横向扩展到多个函数主机实例（通常在不同的 VM 上）时，每个实例会获取某个控制队列上的锁。 这些锁在内部实现为 blob 存储租约，并确保一个业务流程实例或实体仅在单个主机实例上运行一次。 如果任务中心配置了三个控制队列，则可以在最多三个 Vm 之间对业务流程实例和实体进行负载均衡。 可以添加更多的 VM，以提高活动函数执行容量。
+横向扩展到多个函数主机实例（通常在不同的 VM 上）时，每个实例会获取某个控制队列上的锁。 These locks are internally implemented as blob storage leases and ensure that an orchestration instance or entity only runs on a single host instance at a time. If a task hub is configured with three control queues, orchestration instances and entities can be load-balanced across as many as three VMs. 可以添加更多的 VM，以提高活动函数执行容量。
 
 下图演示了 Azure Functions 主机如何与横向扩展环境中的存储实体交互。
 
@@ -129,18 +125,18 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 如上图所示，所有 VM 都会争用工作项队列中的消息。 但是，只有三个 VM 可从控制队列获取消息，每个 VM 锁定了单个控制队列。
 
-业务流程实例和实体分布在所有控制队列实例上。 通过对业务流程的实例 ID 或实体名称和密钥对进行哈希运算来完成分配。 默认情况下，业务流程实例 Id 为随机 Guid，确保实例在所有控制队列中均匀分布。
+Orchestration instances and entities are distributed across all control queue instances. The distribution is done by hashing the instance ID of the orchestration or the entity name and key pair. Orchestration instance IDs by default are random GUIDs, ensuring that instances are equally distributed across all control queues.
 
-一般而言，业务流程协调程序函数是轻量型的，应该不需要大量的计算能力。 因此，无需创建大量控制队列分区即可获得更好的业务流程吞吐量。 大部分繁重工作应在可无限横向扩展的无状态活动函数中完成。
+一般而言，业务流程协调程序函数是轻量型的，应该不需要大量的计算能力。 It is therefore not necessary to create a large number of control queue partitions to get great throughput for orchestrations. 大部分繁重工作应在可无限横向扩展的无状态活动函数中完成。
 
 ## <a name="auto-scale"></a>自动缩放
 
-与在使用和弹性高级计划中运行的所有 Azure Functions 一样，Durable Functions 通过[Azure Functions 缩放控制器](../functions-scale.md#runtime-scaling)支持自动缩放。 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
+As with all Azure Functions running in the Consumption and Elastic Premium plans, Durable Functions supports auto-scale via the [Azure Functions scale controller](../functions-scale.md#runtime-scaling). 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
 
 如果缩放控制器确定控制队列消息延迟过高，则会添加 VM 实例，直到消息延迟下降到可接受的级别，或者达到控制队列分区计数。 同样，如果工作项队列延迟偏高，缩放控制器会不断地添加 VM 实例，而不管分区计数如何。
 
 > [!NOTE]
-> 从 Durable Functions 2.0 开始，可以将函数应用配置为在弹性高级计划中的 VNET 保护的服务终结点中运行。 在此配置中，Durable Functions 触发器启动缩放请求，而不是缩放控制器。
+> Starting with Durable Functions 2.0, function apps can be configured to run within VNET-protected service endpoints in the Elastic Premium plan. In this configuration, the Durable Functions triggers initiate scale requests instead of the Scale Controller.
 
 ## <a name="thread-usage"></a>线程用量
 
@@ -148,15 +144,15 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 活动函数的行为与队列触发的正则函数完全相同。 它们可以安全地执行 I/O、执行 CPU 密集型操作和使用多个线程。 由于活动触发器是无状态的，因此可以任意横向扩展到不限数量的 VM。
 
-实体函数也在单个线程上执行，并且操作是一次性处理的。 但是，实体函数对可执行的代码类型没有任何限制。
+Entity functions are also executed on a single thread and operations are processed one-at-a-time. However, entity functions do not have any restrictions on the type of code that can be executed.
 
 ## <a name="concurrency-throttles"></a>并发限制
 
-Azure Functions 支持在单个应用实例中并发执行多个函数。 这种并发执行有助于提高并行度，将典型的应用在一段时间内遇到的“冷启动”次数减到最少。 但高并发性可能会耗尽每个 VM 系统资源，如网络连接或可用内存。 根据函数应用的需求，可能有必要限制每个实例的并发性，以免在负载较高的情况下出现内存不足的问题。
+Azure Functions 支持在单个应用实例中并发执行多个函数。 这种并发执行有助于提高并行度，将典型的应用在一段时间内遇到的“冷启动”次数减到最少。 However, high concurrency can exhaust per-VM system resources such network connections or available memory. 根据函数应用的需求，可能有必要限制每个实例的并发性，以免在负载较高的情况下出现内存不足的问题。
 
-可以在**host**文件中配置活动、orchestrator 和实体函数并发限制。 相关设置 `durableTask/maxConcurrentActivityFunctions` 用于活动函数，以及 orchestrator 和 entity 函数 `durableTask/maxConcurrentOrchestratorFunctions`。
+Activity, orchestrator, and entity function concurrency limits can be configured in the **host.json** file. The relevant settings are `durableTask/maxConcurrentActivityFunctions` for activity functions and `durableTask/maxConcurrentOrchestratorFunctions` for both orchestrator and entity functions.
 
-### <a name="functions-20"></a>函数2。0
+### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -180,18 +176,18 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 }
 ```
 
-在上面的示例中，最多可以在单个 VM 上并发运行最多10个 orchestrator 或 entity 函数和10个活动函数。 如果未指定，则并发活动数和 orchestrator 或实体函数执行数的上限为 VM 上的内核数的10倍。
+In the previous example, a maximum of 10 orchestrator or entity functions and 10 activity functions can run on a single VM concurrently. If not specified, the number of concurrent activity and orchestrator or entity function executions is capped at 10X the number of cores on the VM.
 
 > [!NOTE]
-> 这些设置有助于管理单个 VM 上的内存和 CPU 用量。 但是，当跨多个 Vm 扩展时，每个 VM 都有自己的限制集。 这些设置不能用于在全局级别控制并发。
+> 这些设置有助于管理单个 VM 上的内存和 CPU 用量。 However, when scaled out across multiple VMs, each VM has its own set of limits. These settings can't be used to control concurrency at a global level.
 
-## <a name="extended-sessions"></a>扩展会话
+## <a name="extended-sessions"></a>Extended sessions
 
-扩展会话是一种设置，它在处理完消息后，将业务流程和实体保存在内存中。 启用扩展会话的典型效果是减少针对 Azure 存储帐户的 I/O，并总体提高吞吐量。
+Extended sessions is a setting that keeps orchestrations and entities in memory even after they finish processing messages. 启用扩展会话的典型效果是减少针对 Azure 存储帐户的 I/O，并总体提高吞吐量。
 
-可以通过将 `durableTask/extendedSessionsEnabled` 设置为 `true` 在**host json**文件中来启用扩展会话。 `durableTask/extendedSessionIdleTimeoutInSeconds` 设置可用于控制空闲会话在内存中保留的时间：
+You can enable extended sessions by setting `durableTask/extendedSessionsEnabled` to `true` in the **host.json** file. The `durableTask/extendedSessionIdleTimeoutInSeconds` setting can be used to control how long an idle session will be held in memory:
 
-**函数2。0**
+**Functions 2.0**
 ```json
 {
   "extensions": {
@@ -203,7 +199,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 }
 ```
 
-**函数1。0**
+**Functions 1.0**
 ```json
 {
   "durableTask": {
@@ -213,34 +209,34 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 }
 ```
 
-此设置需要注意两个可能的缺点：
+There are two potential downsides of this setting to be aware of:
 
-1. 函数应用的内存使用量总体增加了。
-2. 如果有很多并发、生存期较短的业务流程协调程序或实体函数执行，则吞吐量总体会降低。
+1. There's an overall increase in function app memory usage.
+2. There can be an overall decrease in throughput if there are many concurrent, short-lived orchestrator or entity function executions.
 
-例如，如果 `durableTask/extendedSessionIdleTimeoutInSeconds` 设置为30秒，则在不到1秒内执行的生存期较短的业务流程协调器或实体函数剧集仍占用内存30秒。 它还会根据前面提到的 `durableTask/maxConcurrentOrchestratorFunctions` 配额计数，这可能会阻止其他 orchestrator 或 entity 函数运行。
+As an example, if `durableTask/extendedSessionIdleTimeoutInSeconds` is set to 30 seconds, then a short-lived orchestrator or entity function episode that executes in less than 1 second still occupies memory for 30 seconds. It also counts against the `durableTask/maxConcurrentOrchestratorFunctions` quota mentioned previously, potentially preventing other orchestrator or entity functions from running.
 
-下一节将介绍扩展会话对 orchestrator 和实体函数的特定影响。
+The specific effects of extended sessions on orchestrator and entity functions are described in the next sections.
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 启用扩展会话后，orchestrator 函数实例将保留在内存中，并且无需重播全部历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 When extended sessions are enabled, orchestrator function instances are held in memory longer and new messages can be processed without a full history replay.
 
-在以下情况下，通常会出现扩展会话的性能改进：
+The performance improvement of extended sessions is most often observed in the following situations:
 
-* 当并发运行的业务流程实例数量有限时。
-* 当业务流程具有多个快速完成的连续操作（如数百个活动函数调用）时。
-* 当业务流程进行扇出和扇入大量同时完成的操作时。
-* 当业务流程协调程序函数需要处理大消息或执行任何占用大量 CPU 的数据处理时。
+* When there are a limited number of orchestration instances running concurrently.
+* When orchestrations have large number of sequential actions (e.g. hundreds of activity function calls) that complete quickly.
+* When orchestrations fan-out and fan-in a large number of actions that complete around the same time.
+* When orchestrator functions need to process large messages or do any CPU-intensive data processing.
 
-在所有其他情况下，业务流程协调程序函数通常不会有明显的性能改进。
+In all other situations, there is typically no observable performance improvement for orchestrator functions.
 
 > [!NOTE]
-> 只能在全面开发并测试业务流程协调程序函数之后才使用这些设置。 默认的积极重播行为可用于在开发时检测[orchestrator 函数代码约束](durable-functions-code-constraints.md)冲突，因此在默认情况下是禁用的。
+> 只能在全面开发并测试业务流程协调程序函数之后才使用这些设置。 The default aggressive replay behavior can useful for detecting [orchestrator function code constraints](durable-functions-code-constraints.md) violations at development time, and is therefore disabled by default.
 
-### <a name="entity-function-unloading"></a>实体函数卸载
+### <a name="entity-function-unloading"></a>Entity function unloading
 
-实体函数在单个批处理中处理最多20个操作。 一旦实体处理完一批操作，它就会保持其状态并从内存中卸载。 您可以使用 "扩展会话" 设置延迟从内存中卸载实体。 实体继续像以前一样保持其状态更改，但会在配置的时间段内保留在内存中，从而减少 Azure 存储中的负载。 从 Azure 存储空间中减少负载可以提高经常访问的实体的整体吞吐量。
+Entity functions process up to 20 operations in a single batch. As soon as an entity finishes processing a batch of operations, it persists its state and unloads from memory. You can delay the unloading of entities from memory using the extended sessions setting. Entities continue to persist their state changes as before, but remain in memory for the configured period of time to reduce the number of loads from Azure Storage. This reduction of loads from Azure Storage can improve the overall throughput of frequently accessed entities.
 
 ## <a name="performance-targets"></a>性能目标
 
@@ -250,20 +246,20 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 * **并行活动执行**：此方案描述的业务流程协调程序函数使用[扇出扇入](durable-functions-cloud-backup.md)模式并行执行多个活动函数。
 * **并行响应处理**：此方案是[扇出扇入](durable-functions-cloud-backup.md)模式的后半部分。 它侧重于扇入性能。 必须注意，与扇出不同，扇入是由单个业务流程协调程序函数实例执行的，因此只能在单个 VM 上运行。
 * **外部事件处理**：此方案陈述每个等待一个[外部事件](durable-functions-external-events.md)的单个业务流程协调程序函数实例。
-* **实体操作处理**：此方案测试_单个_[计数器实体](durable-functions-entities.md)处理恒定操作流的速度。
+* **Entity operation processing**: This scenario tests how quickly a _single_ [Counter entity](durable-functions-entities.md) can process a constant stream of operations.
 
 > [!TIP]
 > 与扇出不同，扇入操作限制为单个 VM。 如果应用程序使用扇出扇入模式，并且你关注扇入性能，请考虑在多个[子业务流程](durable-functions-sub-orchestrations.md)之间分割活动函数扇出。
 
 下表显示了前面所述方案的预期最大吞吐量数字。 “实例”是指在 Azure 应用服务中单个小型 ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM 上运行的业务流程协调程序函数的单个实例。 在各种情况下，都假设已启用[扩展会话](#orchestrator-function-replay)。 实际结果可能根据函数代码执行的 CPU 或 I/O 工作而异。
 
-| 方案 | 最大吞吐量 |
+| 场景 | 最大吞吐量 |
 |-|-|
 | 顺序活动执行 | 每个实例每秒 5 个活动 |
 | 并行活动执行（扇出） | 每个实例每秒 100 个活动 |
 | 并行响应处理（扇入） | 每个实例每秒 150 个响应 |
 | 外部事件处理 | 每个实例每秒 50 个事件 |
-| 实体操作处理 | 每秒64操作数 |
+| Entity operation processing | 64 operations per second |
 
 > [!NOTE]
 > 上述数字是截止 Durable Functions 扩展 v1.4.0（正式版）发布后的最新数字。 随着功能的不断成熟和优化，这些数字今后可能会有变化。
@@ -273,4 +269,4 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解灾难恢复和异地分发](durable-functions-disaster-recovery-geo-distribution.md)
+> [Learn about disaster recovery and geo-distribution](durable-functions-disaster-recovery-geo-distribution.md)

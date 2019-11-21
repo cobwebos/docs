@@ -8,14 +8,14 @@ manager: vitavor
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: e1d0beb6ced0d582166d556c1ae2fc17b375dddf
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebbdd89d3ef41d4fb40197cbd83038b5cbc02073
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695361"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230150"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -28,10 +28,10 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 - 根据用量调整大小，以控制成本。
 - 获取 Cloudyn 提供的经济高效的大小调整优化建议。
 
-例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于所使用的_CPU 百分比_和 _\Memory @ no__t_。
+例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 The Azure VM metrics correspond to _Percentage CPU_ and _\Memory\% Committed Bytes In Use_.
 
 > [!NOTE]
-> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与[Log Analytics 代理](../azure-monitor/platform/agents-overview.md)不兼容。 
+> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn is not compatible with the [Log Analytics agent](../azure-monitor/platform/agents-overview.md). 
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
@@ -44,7 +44,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>在 Azure 门户中启用扩展指标
 
-标准指标属于主机指标。 _百分比 CPU_指标就是一个示例。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括 _\Memory @ No__t 提交的使用中的字节_和 _\Memory\Available 字节_。
+标准指标属于主机指标。 The _Percentage CPU_ metric is one example. 来宾 VM 的某些基本指标也称为扩展指标。 Examples of extended metrics include _\Memory\% Committed Bytes In Use_ and _\Memory\Available Bytes_.
 
 启用扩展指标的过程非常简单。 对每个 VM 启用来宾级监视。 启用来宾级监视时，将在 VM 上安装 Azure 诊断代理。 默认情况下会添加一组基本的扩展指标。 以下过程在经典和常规 VM，以及 Windows 和 Linux VM 上都是相同的。
 

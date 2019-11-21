@@ -1,101 +1,101 @@
 ---
-title: 在 Kubernetes 和 Helm 中使用 Speech Service 容器
+title: Use Speech Service container with Kubernetes and Helm
 titleSuffix: Azure Cognitive Services
-description: 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。
+description: Using Kubernetes and Helm to define the speech-to-text and text-to-speech container images, we'll create a Kubernetes package. This package will be deployed to a Kubernetes cluster on-premises.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 8/26/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6b9e2020435ef1c8960cc95e481e46e7c1b6e8a6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066491"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220871"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>在 Kubernetes 和 Helm 中使用 Speech Service 容器
+# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Use Speech Service container with Kubernetes and Helm
 
-在本地管理语音容器的一个选项是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像, 我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后, 我们将探讨如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息, 请参阅[安装和运行语音服务容器](speech-container-howto.md)。
+One option to manage your Speech containers on-premises is to use Kubernetes and Helm. Using Kubernetes and Helm to define the speech-to-text and text-to-speech container images, we'll create a Kubernetes package. This package will be deployed to a Kubernetes cluster on-premises. Finally, we'll explore how to test the deployed services and various configuration options. For more information about running Docker containers without Kubernetes orchestration, see [install and run Speech Service containers](speech-container-howto.md).
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在本地使用语音容器之前的先决条件如下:
+The following prerequisites before using Speech containers on-premises:
 
-|必填|用途|
+|需要|用途|
 |--|--|
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
-| 容器注册表访问 | 为了使 Kubernetes 能够将 docker 映像提取到群集中, 需要访问容器注册表。 需要首先请求对[容器注册表的访问权限][speech-preview-access]。 |
-| Kubernetes CLI | 从容器注册表管理共享凭据需要[KUBERNETES CLI][kubernetes-cli] 。 Helm 之前还需要 Kubernetes, 这是 Kubernetes 包管理器。 |
-| Helm CLI | 作为[HELM CLI][helm-install]安装的一部分, 你还需要初始化 Helm, 这将安装[Tiller][tiller-install]。 |
-|语音资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的计费密钥和计费终结点 URI 的_语音_Azure 资源。 Azure 门户的 "**语音**概述" 和 "密钥" 页上都有这两个值, 并且需要启动容器。<br><br>**{API_KEY}** : 资源键<br><br>**{ENDPOINT_URI}** : 终结点 URI 示例为:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| Container Registry access | In order for Kubernetes to pull the docker images into the cluster, it will need access to the container registry. |
+| Kubernetes CLI | The [Kubernetes CLI][kubernetes-cli] is required for managing the shared credentials from the container registry. Kubernetes is also needed before Helm, which is the Kubernetes package manager. |
+| Helm CLI | As part of the [Helm CLI][helm-install] install, you'll also need to initialize Helm, which will install [Tiller][tiller-install]. |
+|Speech resource |若要使用这些容器，必须具有：<br><br>A _Speech_ Azure resource to get the associated billing key and billing endpoint URI. Both values are available on the Azure portal's **Speech** Overview and Keys pages and are required to start the container.<br><br>**{API_KEY}** : resource key<br><br>**{ENDPOINT_URI}** : endpoint URI example is: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
-## <a name="the-recommended-host-computer-configuration"></a>建议的主机计算机配置
+## <a name="the-recommended-host-computer-configuration"></a>The recommended host computer configuration
 
-参考[语音服务容器主机][speech-container-host-computer]的详细信息。 此*helm 图*基于用户指定的解码 (并发请求数) 自动计算 CPU 和内存要求。 此外, 它还会根据是否将音频/文本输入的优化配置为`enabled`进行调整。 Helm 图表默认为, 即两个并发请求和禁用优化。
+Refer to the [Speech Service container host computer][speech-container-host-computer] details as a reference. This *helm chart* automatically calculates CPU and memory requirements based on how many decodes (concurrent requests) that the user specifies. Additionally, it will adjust based on whether optimizations for audio/text input are configured as `enabled`. The helm chart defaults to, two concurrent requests and disabling optimization.
 
-| 服务 | CPU/容器 | 内存/容器 |
+| 服务 | CPU / Container | Memory / Container |
 |--|--|--|
-| **语音转文本** | 一个解码器至少需要1150个 millicores。 `optimizedForAudioFile`如果已启用, 则需要 1950 millicores。 (默认值: 两个解码器) | 需要的功能:2 GB<br>少数4 GB |
-| **文本转语音** | 一个并发请求至少需要500个 millicores。 `optimizeForTurboMode`如果已启用, 则需要 1000 millicores。 (默认值: 两个并发请求) | 需要的功能:1 GB<br> 少数2 GB |
+| **语音转文本** | one decoder requires a minimum of 1,150 millicores. If the `optimizedForAudioFile` is enabled, then 1,950 millicores are required. (default: two decoders) | Required: 2 GB<br>Limited:  4 GB |
+| **文本转语音** | one concurrent request requires a minimum of 500 millicores. If the `optimizeForTurboMode` is enabled, then 1,000 millicores are required. (default: two concurrent requests) | Required: 1 GB<br> Limited: 2 GB |
 
-## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
+## <a name="connect-to-the-kubernetes-cluster"></a>Connect to the Kubernetes cluster
 
-主计算机应具有可用的 Kubernetes 群集。 请参阅本教程, 了解如何[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md), 以了解如何将 Kubernetes 群集部署到主机计算机。
+The host computer is expected to have an available Kubernetes cluster. See this tutorial on [deploying a Kubernetes cluster](../../aks/tutorial-kubernetes-deploy-cluster.md) for a conceptual understanding of how to deploy a Kubernetes cluster to a host computer.
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>通过 Kubernetes 群集共享 Docker 凭据
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Sharing Docker credentials with the Kubernetes cluster
 
-若要`docker pull` `containerpreview.azurecr.io`从容器注册表中允许 Kubernetes 群集到配置的映像, 需要将 docker 凭据传输到群集。 执行以下命令, 根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密。* [`kubectl create`][kubectl-create]
+To allow the Kubernetes cluster to `docker pull` the configured image(s) from the `mcr.microsoft.com` container registry, you need to transfer the docker credentials into the cluster. Execute the [`kubectl create`][kubectl-create] command below to create a *docker-registry secret* based on the credentials provided from the container registry access prerequisite.
 
-从所选的命令行界面运行以下命令。 请确保将`<username>`、 `<password>`和`<email-address>`替换为容器注册表凭据。
+From your command-line interface of choice, run the following command. Be sure to replace the `<username>`, `<password>`, and `<email-address>` with the container registry credentials.
 
 ```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
+kubectl create secret docker-registry mcr \
+    --docker-server=mcr.microsoft.com \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> 如果你已有权访问`containerpreview.azurecr.io`容器注册表, 则可以改为使用一般标志创建 Kubernetes 机密。 请考虑以下针对 Docker 配置 JSON 执行的命令。
+> If you already have access to the `mcr.microsoft.com` container registry, you could create a Kubernetes secret using the generic flag instead. Consider the following command that executes against your Docker configuration JSON.
 > ```console
->  kubectl create secret generic containerpreview \
+>  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-成功创建密钥后, 会将以下输出打印到控制台。
+The following output is printed to the console when the secret has been successfully created.
 
 ```console
-secret "containerpreview" created
+secret "mcr" created
 ```
 
-若要验证是否已创建密钥, 请执行[`kubectl get`][kubectl-get] `secrets`带有标志的。
+To verify that the secret has been created, execute the [`kubectl get`][kubectl-get] with the `secrets` flag.
 
 ```console
 kuberctl get secrets
 ```
 
-执行会`kubectl get secrets`打印所有配置的机密。
+Executing the `kubectl get secrets` prints all the configured secrets.
 
 ```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
+NAME    TYPE                              DATA    AGE
+mcr     kubernetes.io/dockerconfigjson    1       30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>配置用于部署的 Helm 图表值
+## <a name="configure-helm-chart-values-for-deployment"></a>Configure Helm chart values for deployment
 
-访问 microsoft [Helm 中心][ms-helm-hub], 了解 microsoft 提供的所有公开发布的 Helm 图表。 从 Microsoft Helm 中心, 你会发现**认知服务语音的本地图表**。 **认知服务语音**是我们将要安装的图表, 但我们必须首先创建一个`config-values.yaml`具有显式配置的文件。 首先, 将 Microsoft 存储库添加到 Helm 实例。
+Visit the [Microsoft Helm Hub][ms-helm-hub] for all the publicly available helm charts offered by Microsoft. From the Microsoft Helm Hub, you'll find the **Cognitive Services Speech On-Premises Chart**. The **Cognitive Services Speech On-Premises** is the chart we'll install, but we must first create an `config-values.yaml` file with explicit configurations. Let's start by adding the Microsoft repository to our Helm instance.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-接下来, 我们将配置 Helm 图表值。 将以下 YAML 复制并粘贴到名为`config-values.yaml`的文件中。 有关自定义**认知服务语音本地 Helm 图表**的详细信息, 请参阅[自定义 Helm 图表](#customize-helm-charts)。 将`# {ENDPOINT_URI}` 和`# {API_KEY}`注释替换为您自己的值。
+Next, we'll configure our Helm chart values. Copy and paste the following YAML into a file named `config-values.yaml`. For more information on customizing the **Cognitive Services Speech On-Premises Helm Chart**, see [customize helm charts](#customize-helm-charts). Replace the `# {ENDPOINT_URI}` and `# {API_KEY}` comments with your own values.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -106,11 +106,11 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-speech-to-text
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speech-to-text
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -122,11 +122,11 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-text-to-speech
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/text-to-speech
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> 如果未提供`apikey`和值, 则服务将在15分钟后过期。 `billing` 同样, 验证将会失败, 因为服务不可用。
+> If the `billing` and `apikey` values are not provided, the services will expire after 15 min. Likewise, verification will fail as the services will not be available.
 
-### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes 包 (Helm 图)
+### <a name="the-kubernetes-package-helm-chart"></a>The Kubernetes package (Helm chart)
 
-*Helm 图表*包含要从`containerpreview.azurecr.io`容器注册表中请求的 docker 映像的配置。
+The *Helm chart* contains the configuration of which docker image(s) to pull from the `mcr.microsoft.com` container registry.
 
-> [Helm 图][helm-charts]是描述一组相关 Kubernetes 资源的文件的集合。 单个图表可用于部署一些简单的操作, 例如 memcached pod 或复杂的内容, 如使用 HTTP 服务器、数据库、缓存等的完整 web 应用堆栈。
+> A [Helm chart][helm-charts] is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
 
-提供的*Helm 图表*从`containerpreview.azurecr.io`容器注册表中提取语音服务的 docker 图像, 包括文本到语音和语音到文本服务。
+The provided *Helm charts* pull the docker images of the Speech Service, both text-to-speech and the speech-to-text services from the `mcr.microsoft.com` container registry.
 
-## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Install the Helm chart on the Kubernetes cluster
 
-若要安装*helm 图表*, 我们需要执行[`helm install`][helm-install-cmd] `<config-values.yaml>`命令, 并将替换为相应的路径和文件名参数。 `microsoft/cognitive-services-speech-onpremise` [Microsoft Helm Hub][ms-helm-hub-speech-chart]上提供了下面引用的 Helm 图表。
+To install the *helm chart* we'll need to execute the [`helm install`][helm-install-cmd] command, replacing the `<config-values.yaml>` with the appropriate path and file name argument. The `microsoft/cognitive-services-speech-onpremise` Helm chart referenced below is available on the [Microsoft Helm Hub here][ms-helm-hub-speech-chart].
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
@@ -155,7 +155,7 @@ helm install microsoft/cognitive-services-speech-onpremise \
     --name onprem-speech
 ```
 
-下面是你可能希望从成功的安装执行中看到的示例输出:
+Here is an example output you might expect to see from a successful install execution:
 
 ```console
 NAME:   onprem-speech
@@ -197,13 +197,13 @@ cognitive-services-speech-onpremise has been installed!
 Release is named onprem-speech
 ```
 
-Kubernetes 部署可能需要几分钟才能完成。 若要确认是否正确部署了 pod 和服务, 请执行以下命令:
+The Kubernetes deployment can take over several minutes to complete. To confirm that both pods and services are properly deployed and available, execute the following command:
 
 ```console
 kubectl get all
 ```
 
-应会看到类似于以下输出的内容:
+You should expect to see something similar to the following output:
 
 ```console
 NAME                                  READY     STATUS    RESTARTS   AGE
@@ -230,18 +230,18 @@ horizontalpodautoscaler.autoscaling/speech-to-text-autoscaler   Deployment/speec
 horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-to-speech   0%/50%    2         10        2          34m
 ```
 
-### <a name="verify-helm-deployment-with-helm-tests"></a>验证 Helm 部署和 Helm 测试
+### <a name="verify-helm-deployment-with-helm-tests"></a>Verify Helm deployment with Helm tests
 
-已安装的 Helm 图表定义*Helm 测试*, 用作验证的便利。 这些测试将验证服务准备情况。 若要验证**语音到文本**和**文本到语音转换**服务, 请执行[Helm test][helm-test]命令。
+The installed Helm charts define *Helm tests*, which serve as a convenience for verification. These tests validate service readiness. To verify both **speech-to-text** and **text-to-speech** services, we'll execute the [Helm test][helm-test] command.
 
 ```console
 helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> 如果 POD 状态不`Running`是或在`AVAILABLE`列下未列出部署, 这些测试将失败。 请耐心等待, 因为这可能需要10分钟才能完成。
+> These tests will fail if the POD status is not `Running` or if the deployment is not listed under the `AVAILABLE` column. Be patient as this can take over ten minutes to complete.
 
-这些测试将输出各种状态结果:
+These tests will output various status results:
 
 ```console
 RUNNING: speech-to-text-readiness-test
@@ -250,11 +250,11 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-作为执行*helm 测试*的替代方法, 你可以从`kubectl get all`命令收集*外部 IP*地址和相应的端口。 使用 IP 和端口, 打开 web 浏览器并导航到`http://<external-ip>:<port>:/swagger/index.html`以查看 API swagger 页面。
+As an alternative to executing the *helm tests*, you could collect the *External IP* addresses and corresponding ports from the `kubectl get all` command. Using the IP and port, open a web browser and navigate to `http://<external-ip>:<port>:/swagger/index.html` to view the API swagger page(s).
 
-## <a name="customize-helm-charts"></a>自定义 Helm 图表
+## <a name="customize-helm-charts"></a>Customize Helm charts
 
-Helm 图表是分层的。 层次结构允许进行图表继承, 它还适用于明确的概念, 即, 更具体的重写继承规则的设置。
+Helm charts are hierarchical. Being hierarchical allows for chart inheritance, it also caters to the concept of specificity, where settings that are more specific override inherited rules.
 
 [!INCLUDE [Speech umbrella-helm-chart-config](includes/speech-umbrella-helm-chart-config.md)]
 
@@ -264,10 +264,10 @@ Helm 图表是分层的。 层次结构允许进行图表继承, 它还适用于
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何在 Azure Kubernetes Service (AKS) 中安装具有 Helm 的应用程序, 请[访问此处][installing-helm-apps-in-aks]。
+For more details on installing applications with Helm in Azure Kubernetes Service (AKS), [visit here][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [认知服务容器][cog-svcs-containers]
+> [Cognitive Services Containers][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
@@ -275,14 +275,13 @@ Helm 图表是分层的。 层次结构允许进行图表继承, 它还适用于
 [azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
-[helm-install]: https://helm.sh/docs/using_helm/#installing-helm
-[helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
+[helm-install]: https://helm.sh/docs/intro/install/
+[helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 [tiller-install]: https://helm.sh/docs/install/#installing-tiller
-[helm-charts]: https://helm.sh/docs/developing_charts
-[speech-preview-access]: https://aka.ms/speechcontainerspreview
+[helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-test]: https://helm.sh/docs/helm/#helm-test
+[helm-test]: https://v2.helm.sh/docs/helm/#helm-test
 [ms-helm-hub]: https://hub.helm.sh/charts/microsoft
 [ms-helm-hub-speech-chart]: https://hub.helm.sh/charts/microsoft/cognitive-services-speech-onpremise
 

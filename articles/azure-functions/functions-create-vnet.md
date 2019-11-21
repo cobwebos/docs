@@ -1,170 +1,168 @@
 ---
-title: 将 Azure Functions 与 Azure 虚拟网络集成
-description: 演示如何将函数连接到 Azure 虚拟网络的分步教程
+title: Integrate Azure Functions with an Azure virtual network
+description: A step-by-step tutorial that shows you how to connect a function to an Azure virtual network
 author: alexkarcher-msft
-manager: gwallace
-ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: bc6c87a28078d25a212a681206258d6d369f2867
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575545"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227083"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将函数与 Azure 虚拟网络集成
+# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: integrate Functions with an Azure virtual network
 
-本教程介绍如何使用 Azure Functions 连接到 Azure 虚拟网络中的资源。 你将创建一个函数，该函数可访问 internet 和在虚拟网络中运行 WordPress 的 VM。
+This tutorial shows you how to use Azure Functions to connect to resources in an Azure virtual network. you'll create a function that has access to both the internet and to a VM running WordPress in virtual network.
 
 > [!div class="checklist"]
-> * 在高级计划中创建函数应用
-> * 将 WordPress 站点部署到虚拟网络中的 VM
-> * 将函数应用连接到虚拟网络
-> * 创建函数代理以访问 WordPress 资源
-> * 从虚拟网络内部请求 WordPress 文件
+> * Create a function app in the Premium plan
+> * Deploy a WordPress site to VM in a virtual network
+> * Connect the function app to the virtual network
+> * Create a function proxy to access WordPress resources
+> * Request a WordPress file from inside the virtual network
 
 ## <a name="topology"></a>拓扑
 
-下图显示了您创建的解决方案的体系结构：
+The following diagram shows the architecture of the solution that you create:
 
- ![虚拟网络集成的 UI](./media/functions-create-vnet/topology.png)
+ ![UI for virtual network integration](./media/functions-create-vnet/topology.png)
 
-高级计划中运行的函数与 Azure App Service 中的 web 应用具有相同的承载功能，其中包括 VNet 集成功能。 若要了解有关 VNet 集成的详细信息，包括疑难解答和高级配置，请参阅将[应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
+Functions running in the Premium plan have the same hosting capabilities as web apps in Azure App Service, which includes the VNet Integration feature. To learn more about VNet Integration, including troubleshooting and advanced configuration, see [Integrate your app with an Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-对于本教程，请务必了解 IP 寻址和子网。 可以从本文开始[，其中介绍了寻址和子网的基本知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 其他更多的文章和视频可在线获得。
+For this tutorial, it's important that you understand IP addressing and subnetting. You can start with [this article that covers the basics of addressing and subnetting](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Many more articles and videos are available online.
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>在高级计划中创建 function app
+## <a name="create-a-function-app-in-a-premium-plan"></a>Create a function app in a Premium plan
 
-首先，在[高级计划]中创建一个函数应用。 此计划提供无服务器规模，同时支持虚拟网络集成。
+First, you create a function app in the [Premium plan]. This plan provides serverless scale while supporting virtual network integration.
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-您可以通过选择右上角的图钉图标将函数应用固定到仪表板。 在创建 VM 后，可以更轻松地返回到此函数应用。
+You can pin the function app to the dashboard by selecting the pin icon in the upper right-hand corner. Pinning makes it easier to return to this function app after you create your VM.
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>在虚拟网络中创建 VM
+## <a name="create-a-vm-inside-a-virtual-network"></a>Create a VM inside a virtual network
 
-接下来，创建一个在虚拟网络中运行 WordPress 的预配置 VM （[WORDPRESS LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware）。 使用 WordPress VM 的原因是成本较低且方便。 此同一方案适用于虚拟网络中的任何资源，例如 REST Api、应用服务环境和其他 Azure 服务。 
+Next, create a preconfigured VM that runs WordPress inside a virtual network ([WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress VM is used because of its low cost and convenience. This same scenario works with any resource in a virtual network, such as REST APIs, App Service Environments, and other Azure services. 
 
-1. 在门户中，在左侧导航窗格中选择 " **+ 创建资源**"，在 "搜索" 字段中键入 "`WordPress LEMP7 Max Performance`"，然后按 enter。
+1. In the portal, choose **+ Create a resource** on the left navigation pane, in the search field type `WordPress LEMP7 Max Performance`, and press Enter.
 
-1. 在搜索结果中选择 " **WORDPRESS LEMP Max 性能**"。 选择**WORDPRESS LEMP Max Performance For CentOS**的**软件计划，并选择 "** **创建**"。
+1. Choose **Wordpress LEMP Max Performance** in the search results. Select a software plan of **Wordpress LEMP Max Performance for CentOS** as the **Software Plan** and select **Create**.
 
-1. 在 "**基本**信息" 选项卡中，使用映像下下表中指定的 VM 设置：
+1. In the **Basics** tab, use the VM settings as specified in the table below the image:
 
-    ![用于创建 VM 的 "基本信息" 选项卡](./media/functions-create-vnet/create-vm-1.png)
+    ![Basics tab for creating a VM](./media/functions-create-vnet/create-vm-1.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | **订阅** | 订阅 | 用于创建资源的订阅。 | 
-    | **[资源组](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | 选择 "`myResourceGroup`"，或选择 "函数应用" 创建的资源组。 对于 function app、WordPress VM 和托管计划使用同一资源组，可以在完成本教程后更轻松地清理资源。 |
-    | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中必须是唯一的 |
-    | **[区](https://azure.microsoft.com/regions/)** | （欧洲）西欧 | 在访问 VM 的函数附近或附近选择一个区域。 |
-    | **大小** | B1s | 选择 "**更改大小**"，然后选择 B1s 标准映像，其中包含1个 vCPU 和 1 GB 的内存。 |
-    | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定**用户名**、安全**密码**，然后**确认密码**。 对于本教程，无需登录到 VM，除非需要进行故障排除。 |
+    | 订阅 | 你的订阅 | The subscription under which your resources are created. | 
+    | **[Resource group](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Choose `myResourceGroup`, or the resource group you created with your function app. Using the same resource group for the function app, WordPress VM, and hosting plan makes it easier to clean up resources when you are done with this tutorial. |
+    | **虚拟机名称** | VNET-Wordpress | The VM name needs to be unique in the resource group |
+    | **[Region](https://azure.microsoft.com/regions/)** | （欧洲）西欧 | Choose a region near you or near the functions that access the VM. |
+    | **大小** | B1s | Choose **Change size** and then select the B1s standard image, which has 1 vCPU and 1 GB of memory. |
+    | **身份验证类型** | 密码 | To use password authentication, you must also specify a **Username**, a secure **Password**, and then **Confirm password**. For this tutorial, you won't need to sign in to the VM unless you need to troubleshoot. |
 
-1. 选择 "**网络**" 选项卡，然后在 "配置虚拟网络" 下选择 "**新建**"。
+1. Choose the **Networking** tab and under Configure virtual networks select **Create new**.
 
-1. 在 "**创建虚拟网络**" 中，使用映像下表中的设置：
+1. In **Create virtual network**, use the settings in the table below the image:
 
-    ![创建 VM 的 "网络" 选项卡](./media/functions-create-vnet/create-vm-2.png)
+    ![Networking tab of create VM](./media/functions-create-vnet/create-vm-2.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | **名称** | MyResourceGroup-vnet | 你可以使用为虚拟网络生成的默认名称。 |
-    | **地址范围** | 10.10.0.0/16 | 为虚拟网络使用单个地址范围。 |
-    | **子网名称** | 教程-网络 | 子网的名称。 |
-    | **地址范围**（子网） | 10.10.1.0/24   | 子网大小定义可向子网添加多少个接口。 此子网由 WordPress 站点使用。  `/24` 子网提供254主机地址。 |
+    | 名称 | myResourceGroup-vnet | You can use the default name generated for your virtual network. |
+    | **地址范围** | 10.10.0.0/16 | Use a single address range for the virtual network. |
+    | **子网名称** | Tutorial-Net | Name of the subnet. |
+    | **Address range** (subnet) | 10.10.1.0/24   | The subnet size defines how many interfaces can be added to the subnet. This subnet is used by the WordPress site.  A `/24` subnet provides 254 host addresses. |
 
-1. 选择 **"确定"** 以创建虚拟网络。
+1. Select **OK** to create the virtual network.
 
-1. 返回 "**网络**" 选项卡，选择 "**无**" 作为**公共 IP**。
+1. Back in the **Networking** tab, choose **None** for **Public IP**.
 
-1. 选择 "**管理**" 选项卡，然后在 "**诊断存储帐户**" 中，选择你用 Function app 创建的存储帐户。
+1. Choose the **Management** tab, then in **Diagnostics storage account**, choose the Storage account you created with your function app.
 
-1. 选择“查看 + 创建”。 验证完成后，选择 "**创建**"。 VM 创建过程需花费几分钟时间。 创建的 VM 只能访问虚拟网络。
+1. 选择“查看 + 创建”。 After validation completes, select **Create**. The VM create process takes a few minutes. The created VM can only access the virtual network.
 
-1. 创建 VM 后，选择 "**前往资源**" 查看新 vm 的页面，然后在 "**设置**" 下选择 "**网络**"。
+1. After the VM is created, choose **Go to resource** to view the page for your new VM, then choose **Networking** under **Settings**.
 
-1. 验证没有**公共 IP**。 记下**专用 IP**，它用于从函数应用连接到 VM。
+1. Verify that there's no **Public IP**. Make a note the **Private IP**, which you use to connect to the VM from your function app.
 
-    ![VM 中的网络设置](./media/functions-create-vnet/vm-networking.png)
+    ![Networking settings in the VM](./media/functions-create-vnet/vm-networking.png)
 
-你现在已完全在虚拟网络中部署了 WordPress 站点。 无法从公共 internet 访问此站点。
+You now have a WordPress site deployed entirely within your virtual network. This site isn't accessible from the public internet.
 
-## <a name="connect-your-function-app-to-the-virtual-network"></a>将函数应用连接到虚拟网络
+## <a name="connect-your-function-app-to-the-virtual-network"></a>Connect your function app to the virtual network
 
-通过在虚拟网络中的 VM 上运行 WordPress 站点，你现在可以将函数应用连接到该虚拟网络。
+With a WordPress site running in a VM in a virtual network, you can now connect your function app to that virtual network.
 
-1. 在新的函数应用中，选择 "**平台功能** > **网络**"。
+1. In your new function app, select **Platform features** > **Networking**.
 
-    ![在 function app 中选择网络](./media/functions-create-vnet/networking-0.png)
+    ![Choose networking in the function app](./media/functions-create-vnet/networking-0.png)
 
-1. 在 " **VNet 集成**" 下，选择 **"单击此处进行配置**"。
+1. Under **VNet Integration**, select **Click here to configure**.
 
-    ![配置网络功能的状态](./media/functions-create-vnet/Networking-1.png)
+    ![Status for configuring a network feature](./media/functions-create-vnet/Networking-1.png)
 
-1. 在 "虚拟网络集成" 页上，选择 "**添加 VNet （预览版）** "。
+1. On the virtual network integration page, select **Add VNet (preview)** .
 
-    ![添加 VNet 集成预览](./media/functions-create-vnet/networking-2.png)
+    ![Add the VNet Integration preview](./media/functions-create-vnet/networking-2.png)
 
-1. 在 "**网络功能状态**" 中，使用映像下表中的设置：
+1. In **Network Feature Status**, use the settings in the table below the image:
 
-    ![定义函数应用虚拟网络](./media/functions-create-vnet/networking-3.png)
+    ![Define the function app virtual network](./media/functions-create-vnet/networking-3.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是你之前创建的网络。 |
-    | **子网** | 创建新子网 | 在虚拟网络中创建一个子网，以便函数应用使用。 必须将 VNet 集成配置为使用空子网。 函数使用不同于 VM 的子网并不重要。 虚拟网络自动在两个子网之间路由流量。 |
-    | **子网名称** | 函数-Net | 新子网的名称。 |
-    | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 只应定义一个地址块。 |
-    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以向外扩展到的实例总数。 此示例使用具有254可用主机地址的 `/24` 子网。 此子网过度预配，但易于计算。 |
+    | **虚拟网络** | MyResourceGroup-vnet | This virtual network is the one you created earlier. |
+    | 子网 | Create New Subnet | Create a subnet in the virtual network for your function app to use. VNet Integration must be configured to use an empty subnet. It doesn't matter that your functions use a different subnet than your VM. The virtual network automatically routes traffic between the two subnets. |
+    | **子网名称** | Function-Net | 新子网的名称。 |
+    | **Virtual network address block** | 10.10.0.0/16 | Choose the same address block used by the WordPress site. You should only have one address block defined. |
+    | **地址范围** | 10.10.2.0/24   | The subnet size restricts the total number of instances that your Premium plan function app can scale out to. This example uses a `/24` subnet with 254 available host addresses. This subnet is over-provisioned, but easy to calculate. |
 
-1. 选择 **"确定"** 以添加子网。 关闭 "VNet 集成" 和 "网络功能状态" 页，返回到 "function app" 页。
+1. Select **OK** to add the subnet. Close the VNet Integration and Network Feature Status pages to return to your function app page.
 
-函数应用现在可以访问运行 WordPress 站点的虚拟网络。 接下来，使用[Azure Functions 代理](functions-proxies.md)从 WordPress 站点返回文件。
+The function app can now access the virtual network where the WordPress site is running. Next, you use [Azure Functions Proxies](functions-proxies.md) to return a file from the WordPress site.
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>创建用于访问 VM 资源的代理
+## <a name="create-a-proxy-to-access-vm-resources"></a>Create a proxy to access VM resources
 
-启用 VNet 集成后，可以在 function app 中创建一个代理，以将请求转发到虚拟网络中运行的 VM。
+With VNet Integration enabled, you can create a proxy in your function app to forward requests to the VM running in the virtual network.
 
-1. 在函数应用中，选择 "**代理** >  **+** "，然后使用映像下表中的代理设置：
+1. In your function app, select  **Proxies** >  **+** , then use the proxy settings in the table below the image:
 
-    ![定义代理设置](./media/functions-create-vnet/create-proxy.png)
+    ![Define the proxy settings](./media/functions-create-vnet/create-proxy.png)
 
-    | 设置  | 建议的值  | 说明      |
+    | 设置  | 建议的值  | 描述      |
     | -------- | ---------------- | ---------------- |
-    | **名称** | 花草 | 该名称可以是任何值。 它用于标识代理。 |
-    | **路由模板** | /plant | 映射到 VM 资源的路由。 |
-    | **后端 URL** | http：//< YOUR_VM_IP >/wp-content/themes/twentyseventeen/assets/images/header.jpg | 将 `<YOUR_VM_IP>` 替换为之前创建的 WordPress VM 的 IP 地址。 此映射返回站点中的单个文件。 |
+    | 名称 | Plant | The name can be any value. It's used to identify the proxy. |
+    | **Route Template** | /plant | Route that maps to a VM resource. |
+    | **Backend URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Replace `<YOUR_VM_IP>` with the IP address of your WordPress VM that you created earlier. This mapping returns a single file from the site. |
 
-1. 选择 "**创建**"，将代理添加到 function app。
+1. Select **Create** to add the proxy to your function app.
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
-1. 在浏览器中，尝试访问用作**后端 url**的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
+1. In your browser, try to access the URL you used as the **Backend URL**. As expected, the request times out. A timeout occurs because your WordPress site is connected only to your virtual network and not the internet.
 
-1. 复制新代理中的 "**代理 URL** " 值，并将其粘贴到浏览器的地址栏中。 返回的映像来自虚拟网络内运行的 WordPress 站点。
+1. Copy the **Proxy URL** value from your new proxy and paste it into the address bar of your browser. The returned image is from the WordPress site running inside your virtual network.
 
-    ![从 WordPress 站点返回的植物映像文件](./media/functions-create-vnet/plant.png)
+    ![Plant image file returned from the WordPress site](./media/functions-create-vnet/plant.png)
 
-函数应用已连接到 internet 和虚拟网络。 代理正在通过公共 internet 接收请求，然后充当简单的 HTTP 代理，以便将该请求转发到连接的虚拟网络。 然后，代理通过 internet 将响应中继回给你。
+Your function app is connected to both the internet and your virtual network. The proxy is receiving a request over the public internet, and then acting as a simple HTTP proxy to forward that request to the connected virtual network. The proxy then relays the response back to you publicly over the internet.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，WordPress 站点充当 API，该 API 是通过在 function app 中使用代理来调用的。 此方案可以很好地实现教程，因为它易于设置和可视化。 你可以使用虚拟网络中部署的任何其他 API。 你还可以创建一个函数，该函数包含调用虚拟网络内部署的 Api 的代码。 一个更现实的方案是使用数据客户端 Api 调用部署在虚拟网络中的 SQL Server 实例的函数。
+In this tutorial, the WordPress site serves as an API that is called by using a proxy in the function app. This scenario makes a good tutorial because it's easy to set up and visualize. You could use any other API deployed within a virtual network. You could also have created a function with code that calls APIs deployed within the virtual network. A more realistic scenario is a function that uses data client APIs to call a SQL Server instance deployed in the virtual network.
 
-高级计划中运行的函数在 PremiumV2 计划上共享与 web 应用相同的基础应用服务基础结构。 [Azure App Service 中的 web 应用](../app-service/overview.md)的所有文档都适用于高级计划功能。
+Functions running in a Premium plan share the same underlying App Service infrastructure as web apps on PremiumV2 plans. All the documentation for [web apps in Azure App Service](../app-service/overview.md) applies to your Premium plan functions.
 
 > [!div class="nextstepaction"]
-> [了解有关函数中的网络选项的详细信息](./functions-networking-options.md)
+> [Learn more about the networking options in Functions](./functions-networking-options.md)
 
-[高级计划]: functions-scale.md#premium-plan
+[Premium plan]: functions-scale.md#premium-plan

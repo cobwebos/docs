@@ -1,20 +1,15 @@
 ---
 title: Durable Functions 中的监视器 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实现状态监视。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9c8edf5e8fb32160280a1ce9bff827c2e3fa14f8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614750"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232861"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -55,11 +50,11 @@ ms.locfileid: "73614750"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_SendGoodWeatherAlert` 返回 true，则此函数会调用 `E3_GetIsClear`。
+* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
+The following sections explain the configuration and code that is used for C# scripting and JavaScript. 文章末尾展示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -73,7 +68,7 @@ ms.locfileid: "73614750"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -84,13 +79,13 @@ ms.locfileid: "73614750"
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
 5. 创建一个持久计时器，以便在下一个轮询间隔恢复业务流程。 为简便起见，本示例使用了硬编码值。
-6. 继续运行，直至 `CurrentUtcDateTime` （.NET）或 `currentUtcDateTime` （JavaScript）通过了监视器的过期时间或发送了短信警报。
+6. Continues running until the `CurrentUtcDateTime` (.NET) or `currentUtcDateTime` (JavaScript) passes the monitor's expiration time, or an SMS alert is sent.
 
 可以通过发送多个 **MonitorRequests** 来同时运行多个业务流程实例。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-Orchestrator 需要多个数据段，以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输：  
+The orchestrator requires multiple pieces of data, so [shared POCO objects](../functions-reference-csharp.md#reusing-csx-code) are used for strongly-typed data transfer in C# and C# script:  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
@@ -109,7 +104,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -123,7 +118,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -176,7 +171,7 @@ POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
 
-下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
+下面的业务流程作为 Visual Studio 项目中的单个 C# 文件：
 
 > [!NOTE]
 > 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。

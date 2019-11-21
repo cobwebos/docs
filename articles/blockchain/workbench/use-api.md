@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Blockchain Workbench REST API
-description: 有关如何使用 Azure 区块链工作台 Preview 的方案 REST API
+description: Scenarios for how to use the Azure Blockchain Workbench Preview REST API
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 457c09aa2b235f30bd1f995c90429bdf9acb85ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328860"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222299"
 ---
-# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure 区块链工作台预览版 REST API
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Using the Azure Blockchain Workbench Preview REST API
 
-Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提供一种方式来构建丰富的区块链应用程序集成。 本文档详细介绍 Workbench REST API 的多种主要方法。 例如，假设开发人员要创建自定义区块链客户端。 此区块链客户端允许已登录用户查看并使用其已分配的区块链应用程序进行交互。 用户可以通过客户端查看合同实例并对智能合同执行操作。 在用户已登录的情况下，客户端会使用 Workbench REST API 执行以下操作：
+Azure Blockchain Workbench Preview REST API provides developers and information workers a way to build rich integrations to blockchain applications. 本文档详细介绍 Workbench REST API 的多种主要方法。 例如，假设开发人员要创建自定义区块链客户端。 此区块链客户端允许已登录用户查看并使用其已分配的区块链应用程序进行交互。 用户可以通过客户端查看合同实例并对智能合同执行操作。 在用户已登录的情况下，客户端会使用 Workbench REST API 执行以下操作：
 
 * 列出应用程序
 * 列出应用程序的工作流
@@ -28,6 +28,19 @@ Azure 区块链工作台预览版 REST API 向开发人员和信息工作者提�
 * 执行适用于合同的操作
 
 上述场景中使用的示例区块链应用程序可以[从 GitHub 下载](https://github.com/Azure-Samples/blockchain)。
+
+## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API endpoint
+
+Blockchain Workbench APIs are accessed through an endpoint for your deployment. To get the API endpoint URL for your deployment:
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. In the left-hand navigation pane, select **Resource groups**.
+1. Choose the resource group name your deployed Blockchain Workbench.
+1. 选择“类型”列标题，按类型的字母顺序将列表排序。
+1. 有两个类型为“应用服务”的资源。 Select the resource of type **App Service** *with* the "-api" suffix.
+1. In the App Service **Overview**, copy the **URL** value, which represents the API endpoint URL to your deployed Blockchain Workbench.
+
+    ![App service API endpoint URL](media/use-api/app-service-api.png)
 
 ## <a name="list-applications"></a>列出应用程序
 

@@ -1,28 +1,23 @@
 ---
 title: 处理 Durable Functions 中的错误 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614870"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231408"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
-Durable Function 业务流程采用代码实现，并可使用编程语言的内置错误处理功能。 实际上，不需要学习任何新概念，就可以将错误处理和补偿添加到业务流程中。 但应注意以下事项。
+Durable Function orchestrations are implemented in code and can use the programming language's built-in error-handling features. There really aren't any new concepts you need to learn to add error handling and compensation into your orchestrations. 但应注意以下事项。
 
 ## <a name="errors-in-activity-functions"></a>活动函数中的错误
 
-活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `FunctionFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
+Any exception that is thrown in an activity function is marshaled back to the orchestrator function and thrown as a `FunctionFailedException`. 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
 
 例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转移到另一帐户：
 
@@ -104,9 +99,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -142,7 +137,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-如果第一个 **CreditAccount** 函数调用失败，业务流程协调程序函数将通过将资金贷记回源帐户进行补偿。
+If the first **CreditAccount** function call fails, the orchestrator function compensates by crediting the funds back to the source account.
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 
@@ -180,9 +175,9 @@ public static async Task Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -196,20 +191,20 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`CallActivityWithRetryAsync` (.NET) 或 `callActivityWithRetry` (JavaScript) API 带有 `RetryOptions` 参数。 使用 `CallSubOrchestratorWithRetryAsync` （.NET）或 `callSubOrchestratorWithRetry` （JavaScript） API 的子业务流程调用可以使用这些相同的重试策略。
+`CallActivityWithRetryAsync` (.NET) 或 `callActivityWithRetry` (JavaScript) API 带有 `RetryOptions` 参数。 Sub-orchestration calls using the `CallSubOrchestratorWithRetryAsync` (.NET) or `callSubOrchestratorWithRetry` (JavaScript) API can use these same retry policies.
 
-可通过多种选项自定义自动重试策略：
+There are several options for customizing the automatic retry policy:
 
 * **最大尝试次数**：重试的最大次数。
 * **首次重试间隔**：首次重试前需要等待的时间。
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
 * **最大重试间隔**：每次重试之间需要等待的最大时间。
 * **重试超时**：执行重试的最大时间。 默认行为是可无限期重试。
-* **句柄**：可以指定用户定义的回调来确定是否应重试某个函数。
+* **Handle**: A user-defined callback can be specified to determine whether a function should be retried.
 
 ## <a name="function-timeouts"></a>函数超时
 
-如果业务流程协调程序函数内的函数调用耗时太长才能完成，建议放弃该函数调用。 本示例中执行此操作的正确方法是将 [ (.NET) 或 ](durable-functions-timers.md) (JavaScript) 与 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 结合使用，创建`Task.WhenAny`持久计时器`context.df.Task.any`，如下例中所示：
+You might want to abandon a function call within an orchestrator function if it's taking too long to complete. 本示例中执行此操作的正确方法是将 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 与 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 结合使用，创建[持久计时器](durable-functions-timers.md)，如下例中所示：
 
 ### <a name="precompiled-c"></a>预编译 C#
 
@@ -271,9 +266,9 @@ public static async Task<bool> Run(IDurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>JavaScript （仅限函数2.0）
+### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
 ```javascript
 const df = require("durable-functions");
@@ -307,7 +302,7 @@ module.exports = df.orchestrator(function*(context) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解永久业务流程](durable-functions-eternal-orchestrations.md)
+> [Learn about eternal orchestrations](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [了解如何诊断问题](durable-functions-diagnostics.md)

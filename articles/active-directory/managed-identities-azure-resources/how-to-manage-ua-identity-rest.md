@@ -1,5 +1,5 @@
 ---
-title: 如何使用 REST 管理 Azure 用户分配托管标识
+title: Manage user-assigned managed identities using REST - Azure AD
 description: 分步说明如何创建、列出和删除用户分配托管标识以进行 REST API 调用。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75867242358881c963ab4470bdb7963d0ea4671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0b4da7f47181341fce7c5fa5e7a6d239fe3070d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440175"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224649"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 调用创建、列出或删除用户分配托管标识
 
@@ -41,7 +41,7 @@ Azure 资源托管标识使 Azure 服务能够向支持 Azure AD 身份验证的
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
+## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配托管标识 
 
 若要创建用户分配的托管标识，你的帐户需要[托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 
@@ -67,7 +67,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **请求正文**
 
-|Name  |描述  |
+|名称  |描述  |
 |---------|---------|
 |位置     | 必需。 资源位置。        |
 

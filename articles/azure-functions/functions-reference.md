@@ -1,20 +1,15 @@
 ---
-title: Azure Functions 开发指南 | Microsoft 文档
+title: Guidance for developing Azure Functions
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
-author: ggailey777
-manager: gwallace
-keywords: 开发人员指南, Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982634"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226662"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -45,14 +40,14 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
-| 属性 | 值/类型 | 注释 |
+| properties | 值/类型 | 注释 |
 | --- | --- | --- |
-| `type` |string |绑定类型。 例如， `queueTrigger` 。 |
+| `type` |字符串 |绑定类型。 例如，`queueTrigger` 。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
-| `name` |string |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
+| `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
-## <a name="function-app"></a>Function App
-函数应用在 Azure 中提供用于运行函数的执行上下文。 因此, 它是功能的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息, 请参阅[如何管理 function app](functions-how-to-use-azure-function-app-settings.md)。 
+## <a name="function-app"></a>函数应用
+函数应用在 Azure 中提供用于运行函数的执行上下文。 As such, it is the unit of deployment and management for your functions. 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 All of the functions in a function app share the same pricing plan, deployment method, and runtime version. 将函数应用视为组织和共同管理函数的一种方法。 To learn more, see [How to manage a function app](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
 > 函数应用中的所有函数必须使用相同的语言编写。 在 Azure Functions 运行时的[先前版本](functions-versions.md)中，这不是必需的。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 707fc9f073e37d60c6c6fca8e9a8392b2550da9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103241"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229293"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -114,8 +114,10 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
 
 > [!NOTE]
-> 将 DNS 从 "已禁用" 升级为 "已启用" 时，Service Fabric Explorer 可能不会反映新状态。 若要解决此情况，请通过修改 Azure 资源管理器模板中的 UpgradePolicy 重启节点。 有关详细信息，请参阅[Service Fabric 模板参考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+> When upgrading DNS from disabled to enabled, Service Fabric Explorer may not reflect the new state. To solve, restart the nodes by modifying the UpgradePolicy in your Azure Resource Manager template. See the [Service Fabric Template Reference](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) for more.
 
+> [!NOTE]
+> Enabling DNS service when developing on a local machine will override some DNS settings. If you experience issues connecting to the internet, check your DNS settings.
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
@@ -179,10 +181,10 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-其中：
+地点：
 
 - *First-Label-Of-Partitioned-Service-DNSName* 是服务 DNS 名称的第一个部分。
-- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为 "--"。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 The default value is "--". 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Target-Partition-Name* 是分区的名称。 
 - *PartitionSuffix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为空字符串。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Remaining-Partitioned-Service-DNSName* 是服务 DNS 名称的剩余部分。

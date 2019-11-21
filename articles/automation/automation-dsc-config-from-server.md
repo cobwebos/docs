@@ -1,7 +1,7 @@
 ---
-title: 从现有服务器创建配置-Azure 自动化
-description: 了解如何在 Azure 自动化的现有服务器中创建配置。
-keywords: dsc, powershell, 配置, 安装程序
+title: Create configurations from existing servers - Azure Automation
+description: Learn how to create configurations from existing servers for Azure Automation.
+keywords: dsc,powershell,configuration,setup
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,41 +10,41 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b8c39ba6c12d43da1b2311ae4d7d85dd13946f25
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 35f967e946854c3ca097db379015a7ee0bbe2f3d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559540"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231691"
 ---
-# <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
+# <a name="create-configurations-from-existing-servers"></a>Create configurations from existing servers
 
-> 适用于：Windows PowerShell 5.1
+> Applies To: Windows PowerShell 5.1
 
-从现有服务器创建配置可能是一件非常困难的任务。
-您可能不希望进行*所有*设置, 只是您关心的设置。
-即使这样, 也需要了解设置的应用顺序, 以便成功地应用配置。
+Creating configurations from existing servers can be a challenging task.
+You might not want *all* settings, just those that you care about.
+Even then you need to know in what order the settings must be applied in order for the configuration to apply successfully.
 
 > [!NOTE]
-> 本文引用由开源社区维护的解决方案。
-> 支持仅以 GitHub 协作形式提供, 不适用于 Microsoft。
+> This article refers to a solution that is maintained by the Open Source community.
+> Support is only available in the form of GitHub collaboration, not from Microsoft.
 
-## <a name="community-project-reversedsc"></a>社区项目:ReverseDSC
+## <a name="community-project-reversedsc"></a>Community project: ReverseDSC
 
-已创建一个名为[ReverseDSC](https://github.com/microsoft/reversedsc)的社区维护解决方案, 以便在此区域中开始使用 SharePoint。
+A community maintained solution named [ReverseDSC](https://github.com/microsoft/reversedsc) has been created to work in this area starting SharePoint.
 
-此解决方案在[SharePointDSC 资源](https://github.com/powershell/sharepointdsc)的基础上进行扩展, 并将其扩展为从现有 SharePoint 服务器中[收集信息](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)。
-最新版本具有多个[提取模式](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes), 以确定要包含的信息级别。
+The solution builds on the [SharePointDSC resource](https://github.com/powershell/sharepointdsc) and extends it to orchestrate [gathering information](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use) from existing SharePoint servers.
+The latest version has multiple [extraction modes](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes) to determine what level of information to include.
 
-使用该解决方案的结果是生成要用于 SharePointDSC 配置脚本的[配置数据](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。
+The result of using the solution is generating [Configuration Data](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) to be used with SharePointDSC configuration scripts.
 
-生成数据文件后, 可以将其与[DSC 配置脚本](/powershell/dsc/overview/overview)一起使用, 以生成 mof 文件并[将 mof 文件上传到 Azure 自动化](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
-然后从[本地](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)或[Azure 中](/azure/automation/automation-dsc-onboarding#azure-virtual-machines)将服务器注册到请求配置。
+Once the data files have been generated, you can use them with [DSC Configuration scripts](/powershell/scripting/dsc/overview/overview) to generate MOF files and [upload the MOF files to Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
+Then register your servers from either [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) or [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) to pull configurations.
 
-若要试用 ReverseDSC, 请访问[PowerShell 库](https://www.powershellgallery.com/packages/ReverseDSC/)并下载解决方案, 或者单击 "项目网站" 查看[文档](https://github.com/Microsoft/sharepointDSC.reverse)。
+To try out ReverseDSC, visit the [PowerShell Gallery](https://www.powershellgallery.com/packages/ReverseDSC/) and download the solution or click "Project Site" to view the [documentation](https://github.com/Microsoft/sharepointDSC.reverse).
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Windows PowerShell Desired State Configuration 概述](/powershell/dsc/overview/overview)
-- [DSC 资源](/powershell/dsc/resources/resources)
-- [配置本地 Configuration Manager](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
+- [DSC Resources](/powershell/scripting/dsc/resources/resources)
+- [Configuring The Local Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)

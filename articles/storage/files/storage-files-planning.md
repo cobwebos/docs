@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33fa474d719ec8a20142f35f56cc697c11e03e86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926637"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227863"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -26,7 +26,7 @@ ms.locfileid: "72926637"
 
 * **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户容量的详细信息，请参阅[可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-* 共享：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量。 高级和标准文件共享的总容量为 100 TiB。
+* 共享：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 An account can contain an unlimited number of shares and a share can store an unlimited number of files, up to the total capacity of the file share. The total capacity for premium and standard file shares is 100 TiB.
 
 * 目录：可选的目录层次结构。
 
@@ -58,11 +58,11 @@ Azure 文件提供两个内置的简便数据访问方法，用户可单独使�
 Azure 文件提供可确保数据安全的几个内置选项：
 
 * 支持以下两种在线协议的加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
-    * 支持 SMB 3.0 加密的客户端通过加密通道发送和接收数据。
-    * 不支持通过加密的 SMB 3.0 的客户端可以在不加密的情况下通过 SMB 2.1 或 SMB 3.0 进行数据中心通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
+    * Clients that support SMB 3.0 encryption send and receive data over an encrypted channel.
+    * Clients that do not support SMB 3.0 with encryption can communicate intra-datacenter over SMB 2.1 or SMB 3.0 without encryption. 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
 * 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：为所有存储帐户启用存储服务加密 (SSE)。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
-* 加密数据在传输中的可选要求：选择此项时，Azure 文件将拒绝通过未加密的通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
+* Optional requirement of encrypted data in-transit: when selected, Azure Files rejects access to the data over unencrypted channels. 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
 
     > [!Important]  
     > 要求安全传输数据将导致较早的 SMB 客户端无法与 SMB 3.0 通信，进而造成加密失败。 有关详细信息，请参阅[在 Windows 上装载](storage-how-to-use-files-windows.md)、[在 Linux 上装载](storage-how-to-use-files-linux.md)和[在 macOS 上装载](storage-how-to-use-files-mac.md)。
@@ -73,29 +73,29 @@ Azure 文件提供可确保数据安全的几个内置选项：
 
 ## <a name="file-share-performance-tiers"></a>文件共享性能层
 
-Azure 文件提供两个性能层：标准和高级。
+Azure Files offers two performance tiers: standard and premium.
 
 ### <a name="standard-file-shares"></a>标准文件共享
 
-标准文件共享支持硬盘驱动器（Hdd）。 标准文件共享为 IO 工作负荷提供可靠的性能，这些工作负荷对性能变化（如一般用途文件共享和开发/测试环境）不敏感。 标准文件共享只能在即用即付计费模型下使用。
+Standard file shares are backed by hard disk drives (HDDs). Standard file shares provide reliable performance for IO workloads that are less sensitive to performance variability such as general-purpose file shares and dev/test environments. 标准文件共享只能在即用即付计费模型下使用。
 
 > [!IMPORTANT]
-> 如果要使用大于 5 TiB 的文件共享，请参阅板载[到较大的文件共享（标准层）](#onboard-to-larger-file-shares-standard-tier)部分，了解加入的步骤，以及区域可用性和限制。
+> If you want to use file shares larger than 5 TiB, see the [Onboard to larger file shares (standard tier)](#onboard-to-larger-file-shares-standard-tier) section for steps to onboard, as well as regional availability and restrictions.
 
-### <a name="premium-file-shares"></a>高级文件共享
+### <a name="premium-file-shares"></a>Premium file shares
 
-高级文件共享由固态硬盘（Ssd）支持。 对于 IO 密集型工作负荷，高级文件共享为大多数 IO 操作提供持续的高性能和低延迟。 这使得它们适用于各种工作负荷，如数据库、网站托管和开发环境。 高级文件共享只能在预配的计费模型下使用。 高级文件共享使用与标准文件共享分离的部署模型。
+Premium file shares are backed by solid-state drives (SSDs). Premium file shares provide consistent high performance and low latency, within single-digit milliseconds for most IO operations, for IO-intensive workloads. This makes them suitable for a wide variety of workloads like databases, web site hosting, and development environments. 高级文件共享只能在预配的计费模型下使用。 Premium file shares use a deployment model separate from standard file shares.
 
-Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.13 及更高版本中的高级文件共享。
+Azure Backup is available for premium file shares and Azure Kubernetes Service supports premium file shares in version 1.13 and above.
 
-如果你想要了解如何创建高级文件共享，请参阅主题的文章：[如何创建 Azure 高级文件存储帐户](storage-how-to-create-premium-fileshare.md)。
+If you'd like to learn how to create a premium file share, see our article on the subject: [How to create an Azure premium file storage account](storage-how-to-create-premium-fileshare.md).
 
-目前，不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层，必须在该层中创建新的文件共享，并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具（例如 Robocopy 或 AzCopy）来执行此操作。
+Currently, you cannot directly convert between a standard file share and a premium file share. If you would like to switch to either tier, you must create a new file share in that tier and manually copy the data from your original share to the new share you created. You can do this using any of the Azure Files supported copy tools, such as Robocopy or AzCopy.
 
 > [!IMPORTANT]
-> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出支持 ZRS 的区域，请参阅[支持范围和区域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
+> Premium file shares are available with LRS in most regions that offer storage accounts and with ZRS in a smaller subset of regions. To find out if premium file shares are currently available in your region, see the [products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) page for Azure. To find out what regions support ZRS, see [Support coverage and regional availability](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 >
-> 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
+> To help us prioritize new regions and premium tier features, please fill out this [survey](https://aka.ms/pfsfeedback).
 
 #### <a name="provisioned-shares"></a>预配的共享
 
@@ -103,61 +103,61 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 
 最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
 
-必须以 1 GiB 为增量预配共享。 最小大小为 100 GiB，下一大小为 101 GiB，依此类推。
+Shares must be provisioned in 1 GiB increments. Minimum size is 100 GiB, next size is 101 GiB and so on.
 
 > [!TIP]
-> 基线 IOPS = 1 * 预配的 GiB。 （最大可达 100000 IOPS）。
+> Baseline IOPS = 1 * provisioned GiB. (Up to a max of 100,000 IOPS).
 >
-> 突发限制 = 3 * 基准 IOPS。 （最大可达 100000 IOPS）。
+> Burst Limit = 3 * Baseline IOPS. (Up to a max of 100,000 IOPS).
 >
-> 出口速率 = 60 MiB/s + 0.06 * 预配 GiB
+> egress rate = 60 MiB/s + 0.06 * provisioned GiB
 >
-> 入口速率 = 40 MiB/s + 0.04 * 预配 GiB
+> ingress rate = 40 MiB/s + 0.04 * provisioned GiB
 
-预配的共享大小由共享配额指定。 共享配额可随时增加，但只能在自上次增加之后24小时后减少。 等待24小时后，如果没有增加配额，你可以根据需要将共享配额减少多次，直到再次增加。 在大小改变后的几分钟内，IOPS/吞吐量规模更改将生效。
+Provisioned share size is specified by share quota. Share quota can be increased at any time but can be decreased only after 24 hours since the last increase. After waiting for 24 hours without a quota increase, you can decrease the share quota as many times as you like, until you increase it again. IOPS/Throughput scale changes will be effective within a few minutes after the size change.
 
-可以在使用的 GiB 下减小预配共享的大小。 如果执行此操作，则不会丢失数据，但仍会对所用的大小进行计费，并获得预配的共享的性能（基线 IOPS、吞吐量和突发 IOPS），而不是所使用的大小。
+It is possible to decrease the size of your provisioned share below your used GiB. If you do this, you will not lose data but, you will still be billed for the size used and receive the performance (baseline IOPS, throughput, and burst IOPS) of the provisioned share, not the size used.
 
-下表演示了预配共享大小的这些公式的几个示例：
+The following table illustrates a few examples of these formulae for the provisioned share sizes:
 
-|容量（GiB） | 基线 IOPS | 突发 IOPS | 出口（MiB/秒） | 入口（MiB/秒） |
+|Capacity (GiB) | 基线 IOPS | Burst IOPS | Egress (MiB/s) | Ingress (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 最多 300     | 66   | 44   |
-|500         | 500     | 最高1500   | 90   | 60   |
-|1,024       | 1,024   | 最高3072   | 122   | 81   |
-|5,120       | 5,120   | 最高15360  | 368   | 245   |
-|10240      | 10240  | 最高30720  | 675 | 450   |
-|33792      | 33792  | 最高100000 | 2088 | 1392   |
-|51200      | 51200  | 最高100000 | 3,132 | 2088   |
-|102400     | 100,000 | 最高100000 | 6204 | 4136   |
+|500         | 500     | Up to 1,500   | 90   | 60   |
+|1,024       | 1,024   | Up to 3,072   | 122   | 81   |
+|5,120       | 5,120   | Up to 15,360  | 368   | 245   |
+|10,240      | 10,240  | Up to 30,720  | 675 | 450   |
+|33,792      | 33,792  | Up to 100,000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Up to 100,000 | 3,132 | 2,088   |
+|102,400     | 100,000 | Up to 100,000 | 6,204 | 4,136   |
 
 > [!NOTE]
-> 文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制，还有许多其他因素。 若要实现最大性能规模，请将负载分散到多个 Vm。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md)，了解一些常见问题和解决方法。
+> File shares performance is subject to machine network limits, available network bandwidth, IO sizes, parallelism, among many other factors. For example, based on internal testing with 8 KiB read/write IO sizes, a single Windows virtual machine, *Standard F16s_v2*, connected to premium file share over SMB could achieve 20K read IOPS and 15K write IOPS. With 512 MiB read/write IO sizes, the same VM could achieve 1.1 GiB/s egress and 370 MiB/s ingress throughput. To achieve maximum performance scale, spread the load across multiple VMs. Please refer [troubleshooting guide](storage-troubleshooting-files-performance.md) for some common performance issues and workarounds.
 
-#### <a name="bursting"></a>冲
+#### <a name="bursting"></a>Bursting
 
-高级文件共享可能会将其 IOPS 突发为三倍。 突发是自动进行的，并基于信用系统运行。 突发会尽力工作，而突发限制并不保证，文件共享可能会突然*达到*限制。
+Premium file shares can burst their IOPS up to a factor of three. Bursting is automated and operates based on a credit system. Bursting works on a best effort basis and the burst limit is not a guarantee, file shares can burst *up to* the limit.
 
-如果文件共享的流量低于基线 IOPS，信用额度会在突发桶中累积。 例如，100 GiB 共享有100的基线 IOPS。 如果共享上的实际流量为特定1秒间隔的 40 IOPS，则会将60未使用的 IOPS 贷记到突发桶。 以后在操作超过基线 IOPs 时，将使用这些信用额度。
+Credits accumulate in a burst bucket whenever traffic for your file share is below baseline IOPS. For example, a 100 GiB share has 100 baseline IOPS. If actual traffic on the share was 40 IOPS for a specific 1-second interval, then the 60 unused IOPS are credited to a burst bucket. These credits will then be used later when operations would exceed the baseline IOPs.
 
 > [!TIP]
-> 突发流量桶的大小 = 基线 IOPS * 2 * 3600。
+> Size of the burst bucket = Baseline IOPS * 2 * 3600.
 
-只要共享超过基线 IOPS，并在突发桶中包含信用额度，就会突然增长。 只要剩余信用额度，共享就可以继续突发，不过，小于 50 TiB 的共享只会保持最多一小时的突发限制。 超过 50 TiB 的共享在技术上可以超过此小时的限制，最长可达两个小时，但这取决于所应计的突发点数。 超出基线 IOPS 的每个 IO 消耗一个信用额度，一旦使用了所有信用额度，该共享就会返回到基线 IOPS。
+Whenever a share exceeds the baseline IOPS and has credits in a burst bucket, it will burst. Shares can continue to burst as long as credits are remaining, though shares smaller than 50 TiB will only stay at the burst limit for up to an hour. Shares larger than 50 TiB can technically exceed this one hour limit, up to two hours but, this is based on the number of burst credits accrued. Each IO beyond baseline IOPS consumes one credit and once all credits are consumed the share would return to baseline IOPS.
 
-共享信用包含三种状态：
+Share credits have three states:
 
-- 如果文件共享使用的不是基线 IOPS，则为。
-- 正在拒绝，当文件共享为突发。
-- 当未使用任何信用额度或基线 IOPS 时剩余的常量。
+- Accruing, when the file share is using less than the baseline IOPS.
+- Declining, when the file share is bursting.
+- Remaining constant, when there are either no credits or baseline IOPS are in use.
 
-新文件共享在其突发桶中以全部信用额度开头。 如果由于服务器限制而导致共享 IOPS 低于基准 IOPS，则不会对爆发信用进行应计。
+New file shares start with the full number of credits in its burst bucket. Burst credits will not be accrued if the share IOPS fall below baseline IOPS due to throttling by the server.
 
 ## <a name="file-share-redundancy"></a>文件共享冗余
 
-Azure 文件标准共享支持四种数据冗余选项：本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。
+Azure Files standard shares supports four data redundancy options: locally redundant storage (LRS), zone redundant storage (ZRS), geo-redundant storage (GRS), and geo-zone-redundant storage (GZRS) (preview).
 
-Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域中提供。
+Azure Files premium shares support both LRS and ZRS, ZRS is currently available in a smaller subset of regions.
 
 以下部分介绍了不同的冗余选项之间的差异：
 
@@ -176,63 +176,67 @@ Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域�
 
 异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 
-如果选择使用读取访问异地冗余存储（GRS），则应知道 Azure 文件目前不支持任何区域的读取访问异地冗余存储（GRS）。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同，并按 GRS 价格收费。
+If you opt for read-access geo-redundant storage (RA-GRS), you should know that Azure File does not support read-access geo-redundant storage (RA-GRS) in any region at this time. File shares in the RA-GRS storage account work like they would in GRS accounts and are charged GRS prices.
 
 GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Microsoft 发起了从主要区域到次要区域的故障转移时，才可读取这些数据。
 
-对于启用了 GRS 的存储帐户，将首先使用本地冗余存储（LRS）复制所有数据。 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
+For a storage account with GRS enabled, all data is first replicated with locally redundant storage (LRS). 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
 
 主要和次要区域在一个存储缩放单元内管理跨单独的容错域和升级域管理副本。 存储缩放单元是数据中心内的基本复制单元。 此级别的复制由 LRS 提供；有关详细信息，请参阅[本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](../common/storage-redundancy-lrs.md)。
 
 确定要使用哪个复制选项时，请记住以下几点：
 
-* 地域冗余存储（GZRS）（预览版）通过在三个 Azure 可用性区域之间同步复制数据，然后将数据异步复制到次要区域，提供高可用性和最大持久性。 你还可以启用对次要区域的读取访问权限。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。 有关 GZRS 的详细信息，请参阅[区域冗余存储以获得高可用性和最大持续性（预览版）](../common/storage-redundancy-gzrs.md)。
-* 区域冗余存储（ZRS）通过同步复制提供高可用性，对于某些方案，可能是比 GRS 更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
+* Geo-zone-redundant storage (GZRS) (preview) provides high availability together with maximum durability by replicating data synchronously across three Azure availability zones and then replicating data asynchronously to the secondary region. You can also enable read access to the secondary region. GZRS is designed to provide at least 99.99999999999999% (16 9's) durability of objects over a given year. For more information on GZRS, see [Geo-zone-redundant storage for highly availability and maximum durability (preview)](../common/storage-redundancy-gzrs.md).
+* Zone-redundant storage (ZRS) provides highly availability with synchronous replication and may be a better choice for some scenarios than GRS. 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
 * 对于异步复制，从数据写入到主要区域到数据复制到次要区域，这之间存在延迟。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 * 使用 GRS 时，副本不可用于读取或写入访问，除非 Microsoft 启动到次要区域的故障转移。 如果发生故障转移，则在故障转移完成后，你将具有对该数据的读取和写入访问权限。 有关详细信息，请参阅[灾难恢复指南](../common/storage-disaster-recovery-guidance.md)。
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>集成到较大的文件共享（标准层）
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboard to larger file shares (standard tier)
 
-本部分仅适用于标准文件共享。 所有高级文件共享都可用 100 TiB 容量。
+This section only applies to the standard file shares. All premium file shares are available with 100 TiB capacity.
 
 ### <a name="restrictions"></a>限制
 
-- 对于启用了大文件共享的任何存储帐户，将无法 LRS/ZRS 转换为 GRS/GZRS 帐户转换。
+- LRS/ZRS to GRS/GZRS account conversion will not be possible for any storage account with large file shares enabled.
 
 ### <a name="regional-availability"></a>区域可用性
 
-标准文件共享在所有区域中可用，最高可达 5 TiB。 在某些区域中，它们可用于 100 TiB 限制，下表列出了这些区域：
+Standard file shares are available in all regions up to 5 TiB. In certain regions, they are available with a 100 TiB limit, those regions are listed in the following table:
 
-|地区 |支持的冗余 |
+|地区 |Supported redundancy |
 |-------|---------|
 |澳大利亚东部 |LRS     |
 |澳大利亚东南部|LRS |
 |加拿大中部  |LRS     |
+|加拿大东部     |LRS     |
 |印度中部  |LRS     |
+|Central US*   |LRS     |
 |亚洲东部      |LRS     |
-|美国东部 *        |LRS     |
-|法国中部 |LRS、ZRS|
+|East US*        |LRS     |
+|East US 2*      |LRS     |
+|法国中部 |LRS, ZRS|
 |法国南部   |LRS     |
+|北欧   |LRS     |
 |印度南部    |LRS     |
-|亚洲东南部 |LRS、ZRS|
+|亚洲东南部 |LRS, ZRS|
 |美国中西部|LRS     |
-|西欧 *    |LRS、ZRS|
-|美国西部 *        |LRS     |
-|美国西部 2      |LRS、ZRS|
+|West Europe*    |LRS, ZRS|
+|West US*        |LRS     |
+|美国西部 2      |LRS, ZRS|
 
-新帐户支持 \*，并非所有现有帐户都完成了升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
+\* Supported for new accounts, not all existing accounts have completed the upgrade process. You can check if your existing storage accounts have completed the upgrade process by attempting to [Enable large file shares](storage-files-how-to-create-large-file-share.md).
 
-若要帮助我们确定新的区域和功能的优先级，请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
+To help us prioritize new regions and features, please fill out this [survey](https://aka.ms/azurefilesatscalesurvey).
 
-### <a name="enable-and-create-larger-file-shares"></a>启用和创建更大的文件共享
+### <a name="enable-and-create-larger-file-shares"></a>Enable and create larger file shares
 
-若要开始使用较大的文件共享，请参阅文章[如何启用和创建大型文件共享](storage-files-how-to-create-large-file-share.md)。
+To begin using larger file shares, see our article [How to enable and create large file shares](storage-files-how-to-create-large-file-share.md).
 
 ## <a name="data-growth-pattern"></a>数据增长模式
 
-目前，Azure 文件共享的最大大小为 100 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
+Today, the maximum size for an Azure file share is 100 TiB. 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
 
-可以使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这样，你就可以确保在本地可能会将较旧的大型文件共享引入 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
+It is possible to sync multiple Azure file shares to a single Windows File Server with Azure File Sync. This allows you to ensure that older, large file shares that you may have on-premises can be brought into Azure File Sync. For more information, see [Planning for an Azure File Sync Deployment](storage-files-planning.md).
 
 ## <a name="data-transfer-method"></a>数据传输方法
 

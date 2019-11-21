@@ -1,24 +1,24 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: df237cdbb8944928641f2dbea2117bbef7ba9165
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67173356"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224419"
 ---
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个订阅的可信 IP 地址或范围的最大数目</a> |0 |50 |
-| 记住我的设备、天数 |14 |60 |
-| 应用密码的最大数目 |0 |无限制 |
-| MFA 调用期间允许 **X** 次尝试 |1 |99 |
-| 双向短信超时秒数 |60 |600 |
+| Maximum number of trusted IP addresses or ranges</a> per subscription |0 |50 |
+| Remember my devices, number of days |14 |60 |
+| Maximum number of app passwords |0 |无限制 |
+| MFA 调用期间允许 **X** 次尝试 |第 |99 |
+| Two-way text message timeout seconds |60 |600 |
 | 默认一次性跳过秒数 |300 |1,800 |
-| **X** 次连续 MFA 拒绝后锁定用户帐户 |未设置 |99 |
-| **X** 分钟后重置帐户锁定计数器 |未设置 |9,999 |
-| **X** 分钟后解锁帐户 |未设置 |9,999 |
+| **X** 次连续 MFA 拒绝后锁定用户帐户 |Not set |99 |
+| **X** 分钟后重置帐户锁定计数器 |Not set |9,999 |
+| **X** 分钟后解锁帐户 |Not set |9,999 |
