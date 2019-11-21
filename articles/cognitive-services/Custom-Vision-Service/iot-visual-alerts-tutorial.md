@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: pafarley
-ms.openlocfilehash: b19f5a4f4f61285bc7b1a30073ea7d33d95420e0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "73519445"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888273"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
@@ -98,7 +98,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 
 ## <a name="train-the-custom-vision-model"></a>训练自定义视觉模型
 
-应用完成图像捕获后，会上传图像，然后切换到“等待训练的模型”状态** **。 此时，需要前往[自定义视觉门户](https://www.customvision.ai/)，基于新的训练图像生成模型。 下面的动画展示了此过程。
+应用完成图像捕获后，会上传图像，然后切换到“等待训练的模型”状态  。 此时，需要前往[自定义视觉门户](https://www.customvision.ai/)，基于新的训练图像生成模型。 下面的动画展示了此过程。
 
 ![动画：标记多个香蕉图像](./media/iot-visual-alerts-tutorial/labeling.gif)
 
@@ -116,7 +116,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 
 下载训练的模型后，应用会切换到“评分”状态，并连续循环地对照相机中的图像评分  。
 
-对于每个捕获的图像，应用都会在屏幕上显示顶部标记。 如果无法识别视觉状态，它将显示“无匹配项”  ）。 应用还会将这些消息发送到 IoT 中心，如果检测到一个类，则消息将包括标签、可信度评分和一个名为 `detectedClassAlert` 的属性，对基于属性的快速消息路由感兴趣的 IoT 中心客户端可以使用该属性。
+对于每个捕获的图像，应用都会在屏幕上显示顶部标记。 如果无法识别视觉状态，它将显示“无匹配项”  。 应用还会将这些消息发送到 IoT 中心，如果检测到一个类，则消息将包括标签、可信度评分和一个名为 `detectedClassAlert` 的属性，对基于属性的快速消息路由感兴趣的 IoT 中心客户端可以使用该属性。
 
 此外，当在具有 Sense HAT 单元的 Raspberry Pi 上运行时，该示例使用 [Sense HAT 库](https://github.com/emmellsoft/RPi.SenseHat) 来检测类，因此可将该单元用作输出显示，例如在检测到一个类时将所有显示灯设置为红色，在未检测到任何类时设置为空白。
 

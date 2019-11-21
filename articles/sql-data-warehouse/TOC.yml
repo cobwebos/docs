@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: 工作负荷管理
       items:
+        - name: 创建工作负荷分类器
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: 创建工作负荷隔离
           items:
             - name: T-SQL
