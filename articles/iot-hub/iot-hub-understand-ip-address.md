@@ -1,39 +1,39 @@
 ---
-title: 了解 IoT 中心的 IP 地址 | Microsoft Docs
-description: 了解如何查询 IoT 中心的 IP 地址及其属性。 IoT 中心的 IP 地址在某些情况下（例如灾难恢复或区域故障转移）可能会更改。
+title: Understanding the IP address of your IoT hub | Microsoft Docs
+description: Understand how to query your IoT hub IP address and its properties. The IP address of your IoT hub can change during certain scenarios such as disaster recovery or regional failover.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 3370442b29bc04ac2ba68d7346ac1c0a881cc080
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841530"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215447"
 ---
-# <a name="understanding-the-ip-address-of-your-iot-hub"></a>了解 IoT 中心的 IP 地址
+# <a name="understanding-the-ip-address-of-your-iot-hub"></a>Understanding the IP address of your IoT hub
 
-IoT 中心的 IP 地址是中心的负载均衡的公共终结点，不是专用 IP 地址。 此地址取决于它部署时所在的 Azure 区域的网络地址范围。 此 IP 地址可能会在没有通知的情况下更改。 数据中心网络更新、数据中心灾难恢复或 IoT 中心的区域故障转移可能会更改 IoT 中心 IP 地址。 请参阅 [IoT 中心高可用性和灾难恢复](iot-hub-ha-dr.md)，以便更详细地了解 Azure IoT 中心区域故障转移和可用性。
+The IP address of your IoT hub is a load-balanced public endpoint for your hub and NOT a dedicated IP address. The address is determined by the network address range of the Azure region where it is deployed. This IP address is subject to change without notice. Datacenter network updates, datacenter disaster recovery, or regional failover of an IoT hub can change your IoT hub IP address. See [IoT Hub high availability and disaster recovery](iot-hub-ha-dr.md) for more detail on Azure IoT Hub regional failover and availability.
 
-在故障转移到另一区域以后，IoT 中心的 IP 地址会更改。 可以按[对 IoT 中心执行手动故障转移](tutorial-manual-failover.md)教程中的说明测试此功能。
+The IP address of your IoT hub changes after a failover to another region. You can test this functionality by following the tutorial [Perform a manual failover of an IoT hub](tutorial-manual-failover.md).
 
-## <a name="discover-your-iot-hub-ip-address"></a>发现 IoT 中心 IP 地址
+## <a name="discover-your-iot-hub-ip-address"></a>Discover your IoT hub IP address
 
-你的 IoT 中心 IP 地址可以通过对 CNAME 使用反向 DNS 查找来发现（[*IoT 中心名称*]. azure-devices.net）。 可以使用 **nslookup** 验证 IoT 中心实例的 IP 地址：
+Your IoT Hub IP address can be discovered by using a DNS lookup on the CNAME ([*iot-hub-name*].azure-devices.net). You can use **nslookup** to verify the IP address of an IoT hub instance:
 
 ```cmd/sh
 nslookup {YourIoTHubName}.azure-devices.net
 ```
 
-此 IP 地址可能会在没有通知的情况下更改。 在进行故障转移或灾难恢复的情况下，必须在次要区域轮询 IoT 中心 IP 地址。
+This IP address can change without notice. In a failover or disaster recovery scenario, you'll have to poll your IoT hub IP address in the secondary region.
 
-## <a name="outbound-firewall-rules-for-iot-hub"></a>IoT 中心的出站防火墙规则
+## <a name="outbound-firewall-rules-for-iot-hub"></a>Outbound firewall rules for IoT hub
 
-尝试创建防火墙规则，根据 IoT 中心的主机名或域进行筛选。 如果只能允许出站流量发往特定地址，则请定期轮询 IoT 中心 IP 地址并更新防火墙规则。
+Try to create firewall rules and filtering based on the IoT hub host name or domain. If you can only allow outbound traffic to specific addresses, poll your IoT hub IP address regularly and update your firewall rules.
 
-## <a name="support-for-ipv6"></a>对 IPv6 的支持 
+## <a name="support-for-ipv6"></a>Support for IPv6 
 
-当前 IoT 中心不支持 IPv6。
+IPv6 is currently not supported on IoT Hub.

@@ -1,30 +1,31 @@
 ---
-title: 在 Azure 数据工厂中创建共享的自承载集成运行时
+title: Create a shared self-hosted integration runtime with PowerShell
 description: 了解如何在 Azure 数据工厂中创建共享自承载集成运行时，从而允许多个数据工厂访问集成运行时。
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: fcda60863f78dd338bbfc64c1679561262c554a9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: nabhishek
+manager: anansub
+ms.custom: seo-lt-2019
+ms.date: 10/31/2018
+ms.openlocfilehash: a8ac5bdaab915e46f5d5074c991703790d429e50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73677058"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218234"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享的自承载集成运行时
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Create a shared self-hosted integration runtime in Azure Data Factory
 
-本指南演示如何在 Azure 数据工厂中创建共享的自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
+This guide shows you how to create a shared self-hosted integration runtime in Azure Data Factory. 然后可在另一个数据工厂中使用共享自托管集成运行时。
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建共享的自承载 IR
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Create a shared self-hosted IR using Azure Data Factory UI
 
-若要使用 Azure 数据工厂 UI 创建共享的自承载 IR，可以执行以下步骤：
+To create a shared self-hosted IR using Azure Data Factory UI, you can take following steps:
 
 1. 在要共享的自承载 IR 中，授予要在其中创建链接 IR 的数据工厂的权限。
       
@@ -42,20 +43,20 @@ ms.locfileid: "73677058"
       
     ![用于输入名称和资源 ID 的框](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>使用 Azure PowerShell 创建共享的自承载 IR
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Create a shared self-hosted IR using Azure PowerShell
 
-若要使用 Azure PowerShell 创建共享的自承载 IR，可以执行以下步骤： 
+To create a shared self-hosted IR using Azure PowerShell, you can take following steps: 
 1. 创建数据工厂。 
 1. 创建自我托管的集成运行时。
 1. 与其他数据工厂共享自承载集成运行时。
 1. 创建链接的集成运行时。
 1. 撤消共享。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备组件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅**。 如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。 
+- **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。 
 
 - **Azure PowerShell**。 请遵循[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 中的说明。 可使用 PowerShell 运行脚本来创建可与其他数据工厂共享的自承载集成运行时。 
 
@@ -99,7 +100,7 @@ ms.locfileid: "73677058"
     > [!NOTE]  
     > 此步骤是可选的。 若已有数据工厂，请跳过此步骤。 
 
-    使用 [New-AzResourceGroup](../azure-resource-manager/resource-group-overview.md) 命令创建 [Azure 资源组](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
+    Create an [Azure resource group](../azure-resource-manager/resource-group-overview.md) by using the [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) command. 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

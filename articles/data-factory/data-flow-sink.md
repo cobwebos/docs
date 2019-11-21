@@ -1,117 +1,119 @@
 ---
-title: 在 Azure 数据工厂的映射数据流功能中设置接收器转换
-description: 了解如何在映射数据流中设置接收器转换。
+title: Set up a sink transformation in the mapping data flow feature
+description: Learn how to set up a sink transformation in the mapping data flow.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082933"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217927"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
+# <a name="sink-transformation-for-a-data-flow"></a>Sink transformation for a data flow
 
-转换数据流后，可以将数据接收到目标数据集。 在接收器转换中，选择目标输出数据的数据集定义。 您可以根据数据流需要任意数量的接收器转换。
+After you transform your data flow, you can sink the data into a destination dataset. In the sink transformation, choose a dataset definition for the destination output data. You can have as many sink transformations as your data flow requires.
 
-若要考虑架构偏移和传入数据的更改，请将输出数据接收到输出数据集中没有定义的架构的文件夹。 还可以通过选择源中的 "**允许架构偏移**" 来考虑源中的列更改。 然后自动映射接收器中的所有字段。
+To account for schema drift and changes in incoming data, sink the output data to a folder without a defined schema in the output dataset. You can also account for column changes in your sources by selecting **Allow schema drift** in the source. Then automap all fields in the sink.
 
-!["接收器" 选项卡上的选项，包括自动映射选项](media/data-flow/sink1.png "接收器1")
+![Options on the Sink tab, including the Auto Map option](media/data-flow/sink1.png "sink 1")
 
-若要接收所有传入字段，请打开**自动地图**。 若要选择要接收到目标的字段，或要更改目标中字段的名称，请关闭 "**自动映射**"。 然后打开 "**映射**" 选项卡以映射输出字段。
+To sink all incoming fields, turn on **Auto Map**. To choose the fields to sink to the destination, or to change the names of the fields at the destination, turn off **Auto Map**. Then open the **Mapping** tab to map output fields.
 
-!["映射" 选项卡上的选项](media/data-flow/sink2.png "接收器2")
+![Options on the Mapping tab](media/data-flow/sink2.png "sink 2")
 
 ## <a name="output"></a>输出 
-对于 Azure Blob 存储或 Data Lake Storage 接收器类型，将转换后的数据输出到文件夹中。 Spark 根据接收器转换使用的分区方案生成已分区的输出数据文件。 
+For Azure Blob storage or Data Lake Storage sink types, output the transformed data into a folder. Spark generates partitioned output data files based on the partitioning scheme that the sink transformation uses. 
 
-可以从 "**优化**" 选项卡设置分区方案。如果希望数据工厂将输出合并到单个文件中，请选择 "**单一分区**"。 如果要维护或创建分区文件夹，请使用**键分区**，并设置要用于分区文件夹结构的键。
+You can set the partitioning scheme from the **Optimize** tab. If you want Data Factory to merge your output into a single file, select **Single partition**. If you wish to maintain or create partitioned folders, use **Key partitioning** and set the keys you wish to use for partitioned folder structures.
 
-!["优化" 选项卡上的选项](media/data-flow/opt001.png "接收器选项")
+![Options on the Optimize tab](media/data-flow/opt001.png "sink options")
 
-## <a name="field-mapping"></a>字段映射
-在接收器转换的 "**映射**" 选项卡上，您可以将左侧的传入列映射到右侧的目标。 将数据流接收到文件时，数据工厂将始终向文件夹写入新文件。 映射到数据库数据集时，将选择要插入、更新、upsert 或删除的 "数据库表操作" 选项。
+## <a name="field-mapping"></a>Field mapping
+On the **Mapping** tab of your sink transformation, you can map the incoming columns on the left to the destinations on the right. When you sink data flows to files, Data Factory will always write new files to a folder. When you map to a database dataset, you will choose database table operation options to insert, update, upsert, or delete.
 
-!["映射" 选项卡](media/data-flow/sink2.png "接收器")
+![The Mapping tab](media/data-flow/sink2.png "接收器")
 
-在映射表中，您可以将多个列链接到多个列，解除链接陈旧多个列，或者将多个行映射到相同的列名称。
+In the mapping table, you can multiselect to link multiple columns, delink multiple columns, or map multiple rows to the same column name.
 
-若要始终将传入字段集映射到目标并完全接受灵活的架构定义，请选择 "**允许架构偏移**"。
+To always map the incoming set of fields to a target as they are and to fully accept flexible schema definitions, select **Allow schema drift**.
 
-!["映射" 选项卡，显示映射到数据集中的列的字段](media/data-flow/multi1.png "多个选项")
+![The Mapping tab, showing fields mapped to columns in the dataset](media/data-flow/multi1.png "multiple options")
 
-若要重置列映射，请选择 "**重新映射**"。
+To reset your column mappings, select **Re-map**.
 
-![接收器选项卡](media/data-flow/sink1.png "接收一个")
+![The Sink tab](media/data-flow/sink1.png "Sink One")
 
-如果架构发生更改，请选择 "**验证架构**" 以使接收器失败。
+Select **Validate schema** to fail the sink if the schema changes.
 
-选择**清除该文件夹**以截断接收器文件夹的内容，然后再在该目标文件夹中写入目标文件。
+Select **Clear the folder** to truncate the contents of the sink folder before writing the destination files in that target folder.
 
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>固定映射与基于规则的映射
-关闭自动映射时，可以选择添加基于列的映射（固定映射）或基于规则的映射。 利用基于规则的映射，你可以编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Fixed mapping vs. rule-based mapping
+When you turn off auto-mapping, you will have the option to add either column-based mapping (fixed mapping) or rule-based mapping. Rule-based mapping will allow you to write expressions with pattern matching while fixed mapping will map logical and physical column names.
 
-![基于规则的映射](media/data-flow/rules4.png "基于规则的映射")
+![Rule-based Mapping](media/data-flow/rules4.png "Rule-based mapping")
 
-当你选择 "基于规则的映射" 时，将指示 ADF 评估匹配的表达式，以匹配传入模式规则并定义传出字段名称。 可以添加基于字段和基于规则的映射的任意组合。 然后，在运行时，将基于源传入的元数据在运行时生成字段名称。 在调试过程中，可以使用 "数据预览" 窗格查看生成的字段的名称。
+When you choose rule-based mapping, you are instructing ADF to evaluate your matching expression to match incoming pattern rules and define the outgoing field names. You may add any combination of both field and rule-based mappings. Field names are then generated at runtime by ADF based on incoming metadata from the source. You can view the names of the generated fields during debug and using the data preview pane.
 
-有关模式匹配的详细信息位于[列模式文档](concepts-data-flow-column-pattern.md)中。
+Details on pattern matching are at [Column Pattern documentation](concepts-data-flow-column-pattern.md).
 
-通过展开行并在 "名称匹配：" 旁边输入正则表达式，还可以输入正则表达式模式。
+You can also enter regular expression patterns when using rule based matching by expanding the row and entering a regular expression next to "Name Matches:".
 
-![Regex 映射](media/data-flow/scdt1g4.png "Regex 映射")
+![Regex Mapping](media/data-flow/scdt1g4.png "Regex mapping")
 
-基于规则的映射的一个非常基本的常见示例与固定映射，这是你希望将所有传入字段映射到目标中的相同名称的情况。 对于固定映射，你将列出表中的每个单独的列。 对于基于规则的映射，你可以使用一个规则，将使用 ```true()``` 的所有字段映射到 ```$$```所表示的相同传入字段名称。
+A very basic common example for a rule-based mapping vs. fixed mapping is the case where you want to map all incoming fields to the same name in your target. In the case of fixed mappings, you would list each individual column in the table. For rule-based mapping, you would have a single rule that maps all fields using ```true()``` to the same incoming field name represented by ```$$```.
 
-### <a name="sink-association-with-dataset"></a>接收器与 dataset 的关联
+### <a name="sink-association-with-dataset"></a>Sink association with dataset
 
-你为接收器选择的数据集可能包含也可能不具有在数据集定义中定义的架构。 如果没有已定义的架构，则必须允许架构偏移。 定义固定映射后，将在接收器转换中保留逻辑到物理名称映射。 如果更改数据集的架构定义，则可能会中断接收器映射。 若要避免这种情况，请使用基于规则的映射。 基于规则的映射是通用化的，这意味着数据集上的架构更改不会中断映射。
+The dataset that you select for your sink may or may not have a schema defined in the dataset definition. If it does not have a defined schema, then you must allow schema drift. When you defined a fixed mapping, the logical-to-physical name mapping will persist in the sink transformation. If you change the schema definition of the dataset, then you will potentially break your sink mapping. To avoid this, use rule-based mapping. Rule-based mappings are generalized, meaning that schema changes on your dataset will not break the mapping.
 
 ## <a name="file-name-options"></a>文件名选项
 
-设置文件命名： 
+Set up file naming: 
 
-   * **默认**：允许 SPARK 基于部分默认值命名文件。
-   * **模式**：输入输出文件的模式。 例如，**贷款 [n]** 将创建 loans1、loans2，依此类推。
-   * **每个分区**：每个分区输入一个文件名。
-   * **As 列中的数据**：将输出文件设置为列的值。
-   * **输出到单个文件**：使用此选项时，ADF 会将已分区的输出文件合并为单个命名文件。 若要使用此选项，你的数据集应解析为文件夹名称。 另外，请注意，根据节点大小，此合并操作可能会失败。
+   * **Default**: Allow Spark to name files based on PART defaults.
+   * **Pattern**: Enter a pattern for your output files. For example, **loans[n]** will create loans1.csv, loans2.csv, and so on.
+   * **Per partition**: Enter one file name per partition.
+   * **As data in column**: Set the output file to the value of a column.
+   * **Output to a single file**: With this option, ADF will combine the partitioned output files into a single named file. To use this option, your dataset should resolve to a folder name. Also, please be aware that this merge operation can possibly fail based upon node size.
 
 > [!NOTE]
-> 仅当你运行 "执行数据流" 活动时，文件操作才开始。 它们不会在数据流调试模式下启动。
+> File operations start only when you're running the Execute Data Flow activity. They don't start in Data Flow Debug mode.
 
 ## <a name="database-options"></a>数据库选项
 
-选择数据库设置：
+Choose database settings:
 
-![显示 SQL 接收器选项的 "设置" 选项卡](media/data-flow/alter-row2.png "SQL 选项")
+![The Settings tab, showing SQL sink options](media/data-flow/alter-row2.png "SQL Options")
 
-* **Update 方法**：默认为允许插入。 如果要停止从源插入新行，请清除 "**允许插入**"。 若要更新、upsert 或删除行，请首先添加一个更改行转换，以标记这些操作的行。 
-* **重新创建表**：在数据流结束之前删除或创建目标表。
-* **截断表**：在数据流完成之前，从目标表中删除所有行。
-* **批大小**：输入要将数据桶写入到区块中的数字。 对于大型数据加载，请使用此选项。 
-* **启用暂存**：作为接收器数据集加载 Azure 数据仓库时使用 PolyBase。
-* **Pre 和 POST sql 脚本**：输入将在之前（预处理）和之后（后处理）数据写入接收器数据库时执行的多行 sql 脚本
+* **Update method**: The default is to allow inserts. Clear **Allow insert** if you want to stop inserting new rows from your source. To update, upsert, or delete rows, first add an alter-row transformation to tag rows for those actions. 
+* **Recreate table**: Drop or create your target table before the data flow finishes.
+* **Truncate table**: Remove all rows from your target table before the data flow finishes.
+* **Batch size**: Enter a number to bucket writes into chunks. Use this option for large data loads. 
+* **Enable staging**: Use PolyBase when you load Azure Data Warehouse as your sink dataset.
+* **Pre and Post SQL scripts**: Enter multi-line SQL scripts that will execute before (pre-processing) and after (post-processing) data is written to your Sink database
 
-![pre 和 post SQL 处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
-
-> [!NOTE]
-> 在 "数据流" 中，可以将数据工厂定向到在目标数据库中创建新的表定义。 若要创建表定义，请在接收器转换中设置具有新表名称的数据集。 在 SQL 数据集的表名称下方，选择 "**编辑**"，然后输入新的表名称。 然后，在接收器转换中启用 "**允许架构偏移**"。 将 "**导入架构**" 设置为 "**无**"。
-
-![SQL 数据集设置，显示在何处编辑表名称](media/data-flow/dataset2.png "SQL 架构")
+![pre and post SQL processing scripts](media/data-flow/prepost1.png "SQL processing scripts")
 
 > [!NOTE]
-> 在数据库接收器中更新或删除行时，必须设置键列。 此设置允许更改行转换来确定数据移动库（DML）中的唯一行。
+> In Data Flow, you can direct Data Factory to create a new table definition in your target database. To create the table definition, set a dataset in the sink transformation that has a new table name. In the SQL dataset, below the table name, select **Edit** and enter a new table name. Then, in the sink transformation, turn on **Allow schema drift**. Set **Import schema** to **None**.
 
-### <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
+![SQL dataset settings, showing where to edit the table name](media/data-flow/dataset2.png "SQL Schema")
 
-当 CosmosDB 中的登陆数据时，需要考虑以下附加选项：
+> [!NOTE]
+> When you update or delete rows in your database sink, you must set the key column. This setting allows the alter-row transformation to determine the unique row in the data movement library (DML).
 
-* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例：```/movies/title```
-* 吞吐量：为此数据流的每次执行，设置要应用于 CosmosDB 集合的 ru 数的可选值。 最小值为400。
+### <a name="cosmosdb-specific-settings"></a>CosmosDB specific settings
+
+When landing data in CosmosDB, you will need to consider these additional options:
+
+* Partition Key: This is a required field. Enter a string that represents the partition key for your collection. 示例： ```/movies/title```
+* Throughput: Set an optional value for the number of RUs you'd like to apply to your CosmosDB collection for each execution of this data flow. Minimum is 400.
 
 ## <a name="next-steps"></a>后续步骤
-创建数据流后，请将数据流[活动添加到管道](concepts-data-flow-overview.md)。
+Now that you've created your data flow, add a [Data Flow activity to your pipeline](concepts-data-flow-overview.md).

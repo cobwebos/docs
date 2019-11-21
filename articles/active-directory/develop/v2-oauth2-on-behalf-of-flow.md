@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台和 OAuth2.0 代理流 | Azure
+title: Microsoft identity platform and OAuth2.0 On-Behalf-Of flow | Azure
 description: 本文介绍如何使用 OAuth2.0 代理流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
 documentationcenter: ''
@@ -13,40 +13,42 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 09d851572731ad9c83093b7076279df112585703
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482166"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207508"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服务/Web API，而后者又需要调用另一个服务/Web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Microsoft 标识平台提供的访问令牌。
+OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服务/Web API，而后者又需要调用另一个服务/Web API。 思路是通过请求链传播委托用户标识和权限。 For the middle-tier service to make authenticated requests to the downstream service, it needs to secure an access token from the Microsoft identity platform, on behalf of the user.
+
+This article describes how to program directly against the protocol in your application.  When possible, we recommend you use the supported Microsoft Authentication Libraries (MSAL) instead to [acquire tokens and call secured web APIs](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Also take a look at the [sample apps that use MSAL](sample-v2-code.md).
 
 > [!NOTE]
 >
-> - Microsoft 标识平台终结点并非支持所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。 具体而言，具有 Microsoft 帐户 (MSA) 和 Azure AD 受众的应用不支持已知的客户端应用程序。 因此，OBO 的常见同意模式不适用于同时登录个人和工作或学校帐户的客户端。 若要详细了解如何处理该流的此步骤，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
+> - The Microsoft identity platform endpoint doesn't support all scenarios and features. To determine whether you should use the Microsoft identity platform endpoint, read about [Microsoft identity platform limitations](active-directory-v2-limitations.md). Specifically, known client applications aren't supported for apps with Microsoft account (MSA) and Azure AD audiences. 因此，OBO 的常见同意模式不适用于同时登录个人和工作或学校帐户的客户端。 若要详细了解如何处理该流的此步骤，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
 > - 自 2018 年 5 月起，派生 `id_token` 的某些隐式流不能用于 OBO 流。 单页应用 (SPA) 应改为将**访问**令牌传递给中间层机密客户端，才能执行 OBO 流。 有关哪些客户端可以执行 OBO 调用的详细信息，请参阅[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>协议图
 
-假设已在应用程序中使用 [OAuth 2.0 授权代码授权流](v2-oauth2-auth-code-flow.md)对用户进行身份验证。 此时，应用程序已获得 API A  的访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
+假设已在应用程序中使用 [OAuth 2.0 授权代码授权流](v2-oauth2-auth-code-flow.md)对用户进行身份验证。 此时，应用程序已获得 API A 的访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
 
 所遵循的步骤构成 OBO 流，并借助以下关系图进行说明。
 
-![显示了 OAuth2.0 上的代理流](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Shows the OAuth2.0 On-Behalf-Of flow](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. 客户端应用程序使用令牌 A（其中包含 API A 的 `aud` 声明）向 API A 发出请求。
-1. API A 向 Microsoft 标识平台令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
-1. Microsoft 标识平台令牌颁发终结点使用令牌 A 验证 API A 的凭据，并颁发访问 API B 的令牌（令牌 B）。
+1. API A authenticates to the Microsoft identity platform token issuance endpoint and requests a token to access API B.
+1. The Microsoft identity platform token issuance endpoint validates API A's credentials with token A and issues the access token for API B (token B).
 1. 令牌 B 在向 API B 发出的请求的授权标头中设置。
 1. API B 返回受保护资源中的数据。
 
@@ -55,7 +57,7 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 ## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 
-若要请求访问令牌，请使用以下参数向特定于租户的 Microsoft 标识平台令牌终结点发出 HTTP POST。
+To request an access token, make an HTTP POST to the tenant-specific Microsoft identity platform token endpoint with the following parameters.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -63,17 +65,17 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享密钥访问令牌请求
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
-| `client_secret` | 需要 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
+| `client_id` | 需要 | The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
+| `client_secret` | 需要 | The client secret that you generated for your app in the Azure portal - App registrations page. |
 | `assertion` | 需要 | 请求中使用的令牌值。 |
-| `scope` | 需要 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
+| `scope` | 需要 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 需要 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
 #### <a name="example"></a>示例
@@ -102,7 +104,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | 参数 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
+| `client_id` | 需要 |  The application (client) ID that [the Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page has assigned to your app. |
 | `client_assertion_type` | 需要 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为应用程序凭据注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
 | `assertion` | 需要 | 请求中使用的令牌值。 |
@@ -137,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 | 描述 |
 | --- | --- |
-| `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `Bearer`。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| `token_type` | 指示令牌类型值。 The only type that Microsoft identity platform supports is `Bearer`. For more info about bearer tokens, see the [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | 令牌中授予的访问权限的范围。 |
 | `expires_in` | 访问令牌有效的时间长度（以秒为单位）。 |
 | `access_token` | 请求的访问令牌。 调用方服务可以使用此令牌向接收方服务进行身份验证。 |
@@ -159,11 +161,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上述访问令牌是 v1.0 格式的令牌。 这是因为该令牌是基于要访问的资源提供的。 Microsoft Graph 请求 v1.0 令牌，因此当客户端请求 Microsoft Graph 的令牌时，Microsoft 标识平台会生成 v1.0 访问令牌。 只有应用程序才能查看访问令牌。 客户端不应该检查它们。
+> 上述访问令牌是 v1.0 格式的令牌。 这是因为该令牌是基于要访问的资源提供的。 The Microsoft Graph requests v1.0 tokens, so Microsoft identity platform produces v1.0 access tokens when a client requests tokens for Microsoft Graph. 只有应用程序才能查看访问令牌。 客户端不应该检查它们。
 
 ### <a name="error-response-example"></a>错误响应示例
 
-尝试对下游 api 获取访问令牌，如果下游 API 具有对其设置条件性访问策略 （如多重身份验证） 时，令牌终结点被返回错误响应。 中间层服务应给客户端应用程序中显示此错误，以便客户端应用程序可以提供用户交互，以满足条件性访问策略。
+An error response is returned by the token endpoint when trying to acquire an access token for the downstream API, if the downstream API has a Conditional Access policy (such as multi-factor authentication) set on it. The middle-tier service should surface this error to the client application so that the client application can provide the user interaction to satisfy the Conditional Access policy.
 
 ```
 {
@@ -191,19 +193,19 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>为中间层应用程序获得同意
 
-根据应用程序的受众，可以考虑使用不同的策略来确保 OBO 流的成功。 在所有情况下，最终目标都是确保给予适当的同意。 但是，如何实现这一点取决于应用程序支持哪些用户。
+Depending on the audience for your application, you may consider different strategies for ensuring that the OBO flow is successful. 在所有情况下，最终目标都是确保给予适当的同意。 但是，如何实现这一点取决于应用程序支持哪些用户。
 
 ### <a name="consent-for-azure-ad-only-applications"></a>同意 Azure AD 专用应用程序
 
 #### <a name="default-and-combined-consent"></a>/.default 和组合同意
 
-对于只需要登录工作或学校帐户的应用程序，传统的“已知客户端应用程序”方法就足够了。 中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台终结点中，此功能是使用 [`/.default` 范围](v2-permissions-and-consent.md#the-default-scope)实现的。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
+对于只需要登录工作或学校帐户的应用程序，传统的“已知客户端应用程序”方法就足够了。 中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 On the Microsoft identity platform endpoint, this is done using the [`/.default` scope](v2-permissions-and-consent.md#the-default-scope). 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
 
 目前，个人 Microsoft 帐户系统不支持组合同意，因此这种方法不适合想要专门登录个人帐户的应用。 在租户中用作来宾帐户的个人 Microsoft 帐户使用 Azure AD 系统进行处理，可以通过组合同意。
 
 #### <a name="pre-authorized-applications"></a>预授权应用程序
 
-应用程序门户的一项功能是“预授权应用程序”。 通过这种方式，资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
+A feature of the application portal is "pre-authorized applications". 通过这种方式，资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
 
 #### <a name="admin-consent"></a>管理员同意
 
@@ -211,7 +213,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ### <a name="consent-for-azure-ad--microsoft-account-applications"></a>同意 Azure AD + Microsoft 帐户应用程序
 
-由于在个人帐户的权限模型以及缺少的权限用于控制租户限制，个人帐户的许可要求会从 Azure AD 稍有不同。 既没有租户提供租户范围内的同意，也没有能力进行组合同意。 因此，会出现其他策略 - 请注意，这些策略也适用于仅需要支持 Azure AD 帐户的应用程序。
+Because of restrictions in the permissions model for personal accounts and the lack of a governing tenant, the consent requirements for personal accounts are a bit different from Azure AD. 既没有租户提供租户范围内的同意，也没有能力进行组合同意。 因此，会出现其他策略 - 请注意，这些策略也适用于仅需要支持 Azure AD 帐户的应用程序。
 
 #### <a name="use-of-a-single-application"></a>使用单一应用程序
 
@@ -219,12 +221,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="client-limitations"></a>客户端限制
 
-如果客户端使用隐式流来获取 id_token，且该客户端在回复 URL 中也具有通配符，则 id_token 不能用于 OBO 流。  但是，即使发起客户端已注册通配符回复 URL，通过隐式授予流获取的访问令牌仍可由机密客户端兑换。
+If a client uses the implicit flow to get an id_token, and that client also has wildcards in a reply URL, the id_token can't be used for an OBO flow.  但是，即使发起客户端已注册通配符回复 URL，通过隐式授予流获取的访问令牌仍可由机密客户端兑换。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 OAuth 2.0 协议和使用客户端凭据执行服务到服务身份验证的其他方法。
 
-* [Microsoft 标识平台中的 OAuth 2.0 客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)
-* [Microsoft 标识平台中的 OAuth 2.0 代码流](v2-oauth2-auth-code-flow.md)
+* [OAuth 2.0 client credentials grant in Microsoft identity platform](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0 code flow in Microsoft identity platform](v2-oauth2-auth-code-flow.md)
 * [使用 `/.default` 范围](v2-permissions-and-consent.md#the-default-scope)

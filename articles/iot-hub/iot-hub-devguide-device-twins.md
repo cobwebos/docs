@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640615"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209714"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -40,7 +40,7 @@ ms.locfileid: "68640615"
 
 有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
 
-## <a name="device-twins"></a>设备克隆
+## <a name="device-twins"></a>设备孪生
 
 设备克隆存储具有以下用途的设备相关信息：
 
@@ -56,7 +56,7 @@ ms.locfileid: "68640615"
 
 * **所需的属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
 
-* **报告属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。
 
@@ -147,7 +147,7 @@ ms.locfileid: "68640615"
 3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生，跟踪多个设备上的配置操作结果。
 
 > [!NOTE]
-> 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备孪生中的所需属性和报告属性施加特定的架构。
+> 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备克隆中的所需属性和报告属性施加特定的架构。
 > 
 
 可以使用孪生来同步长时间运行的操作，例如固件更新。 有关如何使用属性来同步和跟踪各设备中长时间运行的操作的详细信息，请参阅[使用所需的属性来配置设备](tutorial-device-twins.md)。
@@ -182,7 +182,7 @@ ms.locfileid: "68640615"
 
   - 属性
 
-    | 名称 | ReplTest1 |
+    | 名称 | Value |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -231,7 +231,7 @@ ms.locfileid: "68640615"
 
 设备应用使用以下原子操作对设备克隆执行操作：
 
-* **检索设备克隆**。 此操作返回当前连接的设备的设备克隆文档 (包括所需的系统属性和报告的系统属性)。 (标记对设备应用不可见。)
+* **检索设备孪生**。 This operation returns the device twin document (including desired and reported system properties) for the currently connected device. (Tags are not visible to device apps.)
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的设备的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 
@@ -245,11 +245,11 @@ ms.locfileid: "68640615"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* All keys in JSON objects are UTF-8 encoded, case-sensitive, and up-to 1 KB in length. 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
 * JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
 
-* 标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+* All JSON objects in tags, desired, and reported properties can have a maximum depth of 10. 例如，以下对象是有效的：
 
    ```json
    {
@@ -260,7 +260,17 @@ ms.locfileid: "68640615"
                    "three": {
                        "four": {
                            "five": {
-                               "property": "value"
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
                            }
                        }
                    }
@@ -271,7 +281,7 @@ ms.locfileid: "68640615"
    }
    ```
 
-* 所有字符串的值的长度最多为 512 个字节。
+* 所有字符串的值的长度最多为 4 KB。
 
 ## <a name="device-twin-size"></a>设备克隆的大小
 
@@ -281,7 +291,7 @@ IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包�
 
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 
-## <a name="device-twin-metadata"></a>设备孪生的元数据
+## <a name="device-twin-metadata"></a>设备克隆的元数据
 
 IoT 中心保留设备孪生所需属性和报告属性中每个 JSON 对象的上次更新时间戳。 时间戳采用 UTC，以 [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 格式编码`YYYY-MM-DDTHH:MM:SS.mmmZ`。
 

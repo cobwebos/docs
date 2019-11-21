@@ -1,32 +1,27 @@
 ---
-title: 如何以 WebJobs 的形式运行 Durable Functions - Azure
+title: How to run Durable Functions as WebJobs - Azure
 description: 了解如何使用 WebJobs SDK 编写 Durable Functions 的代码，并将其配置为在 WebJobs 中运行。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 06f2019dbaff390e88c73d1aae7a635a34a64721
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232745"
 ---
-# <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
+# <a name="how-to-run-durable-functions-as-webjobs"></a>How to run Durable Functions as WebJobs
 
-默认情况下，Durable Functions 使用 Azure Functions 运行时来托管业务流程。 但是，在某些情况下，可能需要对侦听事件的代码进行更多的控制。 本文介绍如何使用 WebJobs SDK 来实现业务流程。 若要查看函数和 Web 作业之间更详细的比较，请参阅[比较函数和 Web 作业](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)。
+By default, Durable Functions uses the Azure Functions runtime to host orchestrations. However, there may be certain scenarios where you need more control over the code that listens for events. This article shows you how to implement your orchestration using the WebJobs SDK. To see a more detailed comparison between Functions and WebJobs, see [Compare Functions and WebJobs](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-[Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 扩展构建在 [WebJobs SDK](../../app-service/webjobs-sdk-how-to.md) 基础之上。 WebJobs SDK 中的作业主机是 Azure Functions 中的运行时。 如果需要以 Azure Functions 中做不到的方式来控制行为，可以使用 WebJobs SDK 自行开发并运行 Durable Functions。
+[Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 扩展构建在 [WebJobs SDK](../../app-service/webjobs-sdk-how-to.md) 基础之上。 The job host in the WebJobs SDK is the runtime in Azure Functions. If you need to control behavior in ways not possible in Azure Functions, you can develop and run Durable Functions by using the WebJobs SDK yourself.
 
-在 WebJobs SDK 的版本 3.x 中，主机是 `IHost` 的实现，而在版本 2.x 中，你使用 `JobHost` 对象。
+In version 3.x of the WebJobs SDK, the host is an implementation of `IHost`, and in version 2.x you use the `JobHost` object.
 
-WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，然后转到 *samples\\webjobssdk\\chaining* 文件夹。
+The chaining Durable Functions sample is available in a WebJobs SDK 2.x version: download or clone the [Durable Functions repository](https://github.com/azure/azure-functions-durable-extension/), and go to the *samples\\webjobssdk\\chaining* folder.
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假定读者熟悉 WebJobs SDK、Azure Functions C# 类库开发和 Durable Functions 的基础知识。 如需这些主题的简介，请参阅以下资源：
 
@@ -36,9 +31,9 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 完成本文中的步骤：
 
-* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
+* [Install Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) with the **Azure development** workload.
 
-  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” **“获取工具和功能”以添加该工作负荷。**  > 
+  If you already have Visual Studio, but don't have that workload, add the workload by selecting **Tools** > **Get Tools and Features**.
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
@@ -50,15 +45,15 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 ## <a name="create-a-console-app"></a>创建控制台应用
 
-若要将 Durable Functions 作为 WebJobs 运行，必须先创建控制台应用。 WebJobs SDK 项目只是一个装有相应 NuGet 包的控制台应用项目。
+To run Durable Functions as WebJobs, you must first create a console app. WebJobs SDK 项目只是一个装有相应 NuGet 包的控制台应用项目。
 
-在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” **“控制台应用(.NET Framework)”。**  >  在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
+In the Visual Studio **New Project** dialog box, select **Windows Classic Desktop** > **Console App (.NET Framework)** . 在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
 
-Visual Studio 还有一个 WebJob 项目模板，选择“云” **“Azure WebJob (.NET Framework)”即可使用此模板。**  >  此模板会安装许多的包，其中一些包可能并不需要。
+Visual Studio also has a WebJob project template, which you can use by selecting **Cloud** > **Azure WebJob (.NET Framework)** . 此模板会安装许多的包，其中一些包可能并不需要。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
-需要 WebJobs SDK 的 NuGet 包、核心绑定、日志记录框架和 Durable Task 扩展。 下面是这些包的“包管理器控制台”命令，并提供了截至编写本文时的最新稳定版本号：
+需要 WebJobs SDK 的 NuGet 包、核心绑定、日志记录框架和 Durable Task 扩展。 Here are **Package Manager Console** commands for those packages, with the latest stable version numbers as of the date this article was written:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
@@ -66,7 +61,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
-还需要日志记录提供程序。 以下命令将安装 Azure 应用程序 Insights 提供程序和 `ConfigurationManager`。 使用 `ConfigurationManager` 可从应用设置中获取 Application Insights 检测密钥。
+还需要日志记录提供程序。 The following commands install the Azure Application Insights provider and the `ConfigurationManager`. 使用 `ConfigurationManager` 可从应用设置中获取 Application Insights 检测密钥。
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -81,9 +76,9 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 ## <a name="jobhost-code"></a>JobHost 代码
 
-创建控制台应用并安装所需的 NuGet 包以后，即可使用 Durable Functions。 可以使用 JobHost 代码来这样做。
+Having created the console app and installed the NuGet packages you need, you're ready to use Durable Functions. You do so by using JobHost code.
 
-若要使用 Durable Functions 扩展，请对 `UseDurableTask` 方法中的 `JobHostConfiguration` 对象调用 `Main`：
+若要使用 Durable Functions 扩展，请对 `Main` 方法中的 `JobHostConfiguration` 对象调用 `UseDurableTask`：
 
 ```cs
 var config = new JobHostConfiguration();
@@ -95,7 +90,7 @@ config.UseDurableTask(new DurableTaskExtension
 
 有关可在 `DurableTaskExtension` 对象中设置的属性列表，请参阅 [host.json](../functions-host-json.md#durabletask)。
 
-`Main` 方法也是设置日志记录提供程序的位置。 下面的示例配置控制台和 Application Insights 提供程序。
+`Main` 方法也是设置日志记录提供程序的位置。 The following example configures the console and Application Insights providers.
 
 ```cs
 static void Main(string[] args)
@@ -124,9 +119,9 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
-WebJobs 上下文中的 Durable Functions 有点不同于 Azure Functions 上下文中的 Durable Functions。 在编写代码时，必须了解相关差异。
+Durable Functions in the context of WebJobs differs somewhat from Durable Functions in the context of Azure Functions. It's important to be aware of the differences as you write your code.
 
 WebJobs SDK 不支持以下 Azure Functions 功能：
 
@@ -156,13 +151,13 @@ public static async Task CronJob(
 
 由于没有 HTTP 触发器，WebJobs SDK 没有 [HTTP 管理 API](durable-functions-http-api.md)。
 
-在 WebJobs SDK 项目中，可对业务流程客户端对象调用方法，而无需发送 HTTP 请求。 以下方法对应于可以使用 HTTP 管理 API 执行的三个任务：
+In a WebJobs SDK project, you can call methods on the orchestration client object, instead of by sending HTTP requests. 以下方法对应于可以使用 HTTP 管理 API 执行的三个任务：
 
 * `GetStatusAsync`
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-示例项目中的业务流程客户端函数启动业务流程协调程序函数，然后进入每隔 2 秒调用 `GetStatusAsync` 的循环：
+The orchestration client function in the sample project starts the orchestrator function, and then goes into a loop that calls `GetStatusAsync` every 2 seconds:
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -187,7 +182,7 @@ while (true)
 
 ## <a name="run-the-sample"></a>运行示例
 
-你已经将 Durable Functions 设置为以 WebJob 方式运行，并且已了解其与以独立 Azure Functions 形式运行 Durable Functions 时的区别。 此时可以在示例中查看其运行情况。
+You've got Durable Functions set up to run as a WebJob, and you now have an understanding of how this will differ from running Durable Functions as standalone Azure Functions. At this point, seeing it work in a sample might be helpful.
 
 本部分概述如何运行[示例项目](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)。 有关如何在本地运行 WebJobs SDK 项目并将其部署到 Azure WebJob 的详细说明，请参阅 [WebJobs SDK 入门](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)。
 
@@ -195,9 +190,9 @@ while (true)
 
 1. 确保存储模拟器正在运行（参阅[先决条件](#prerequisites)）。
 
-1. 如果要在本地运行项目时查看 Application Insights 中的日志，请执行以下操作：
+1. If you want to see logs in Application Insights when you run the project locally:
 
-    a. 创建一个 Application Insights 资源，并为其使用**一般**应用类型。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 Create an Application Insights resource, and use the **General** app type for it.
 
     b. 在 *App.config* 文件中保存检测密钥。
 
@@ -207,29 +202,29 @@ while (true)
 
 1. 创建 Web 应用和存储帐户。
 
-1. 在 web 应用中，将存储连接字符串保存到名为 `AzureWebJobsStorage`的应用程序设置中。
+1. In the web app, save the storage connection string in an app setting named `AzureWebJobsStorage`.
 
-1. 创建一个 Application Insights 资源，并为其使用**一般**应用类型。
+1. Create an Application Insights resource, and use the **General** app type for it.
 
-1. 将检测密钥保存到名为 `APPINSIGHTS_INSTRUMENTATIONKEY`的应用程序设置中。
+1. Save the instrumentation key in an app setting named `APPINSIGHTS_INSTRUMENTATIONKEY`.
 
 1. 部署为 WebJob
 
 ## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
-本文介绍如何开发 Web 作业 SDK 2.x 项目。 如果要开发[Web 作业 SDK](../../app-service/webjobs-sdk-get-started.md) 2.x 项目，本部分将帮助你了解这些差异。
+This article explains how to develop a WebJobs SDK 2.x project. If you're developing a [WebJobs SDK 3.x](../../app-service/webjobs-sdk-get-started.md) project, this section helps you understand the differences.
 
-引入的主要变化是使用 .NET Core 而不是 .NET Framework。 若要创建 Web 作业 SDK 2.x 项目，说明是相同的，但有以下例外：
+The main change introduced is the use of .NET Core instead of .NET Framework. To create a WebJobs SDK 3.x project, the instructions are the same, with these exceptions:
 
-1. 创建 .NET Core 控制台应用。 在 Visual Studio 的 "**新建项目**" 对话框中，选择 " **.Net Core** > **控制台应用（.net core）** "。 项目文件指定 `TargetFramework` 为 `netcoreapp2.x`。
+1. 创建 .NET Core 控制台应用。 In the Visual Studio **New Project** dialog box, select  **.NET Core** > **Console App (.NET Core)** . 项目文件指定 `TargetFramework` 为 `netcoreapp2.x`。
 
-1. 选择以下包的 release 版本 Web 作业 SDK 2.x：
+1. Choose the release version WebJobs SDK 3.x of the following packages:
 
     * `Microsoft.Azure.WebJobs.Extensions`
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. 使用 .NET Core 配置框架，在*appsettings*文件中设置存储连接字符串和 Application Insights 检测密钥。 下面是一个示例：
+1. Set the storage connection string and the Application Insights instrumentation key in an *appsettings.json* file, by using the .NET Core configuration framework. 下面是一个示例：
 
     ```json
         {
@@ -238,7 +233,7 @@ while (true)
         }
     ```
 
-1. 更改 `Main` 方法代码以执行此操作。 下面是一个示例：
+1. Change the `Main` method code to do this. 下面是一个示例：
 
    ```cs
    static void Main(string[] args)

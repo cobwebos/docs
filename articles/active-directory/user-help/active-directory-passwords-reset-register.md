@@ -1,6 +1,6 @@
 ---
-title: 注册以重置你自己的密码-Azure AD
-description: 为 Azure AD 自助服务密码重置注册身份验证数据，以便在没有管理员帮助的情况下重置自己的密码。
+title: Register authentication info to reset your own password - Azure AD
+description: Register your authentication method information for Azure AD self-service password reset, so you can reset your own password without administrator help.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 796702b2189dcfb001f72913e4a01c0ae01462ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: 01cae72ac4752d5d1f6135312d578eb1a277ccd9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820451"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231903"
 ---
-# <a name="register-to-reset-your-own-password"></a>注册以重置你自己的密码
+# <a name="register-your-authentication-method-info-to-reset-your-own-password"></a>Register your authentication method info to reset your own password
 
 > [!IMPORTANT]
 > 你是因为无法登录而来到这里吗？ 如果是，请参阅[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "73820451"
 
 5. 选择“完成”。 将来可根据需要使用 SSPR。
 
-输入“身份验证电话”或“身份验证电子邮件”的数据时，这些数据在全局目录中不可见。 只有你和管理员能够看到该数据。 只有你能够查看安全提问的答案。
+输入“身份验证电话”或“身份验证电子邮件”的数据时，这些数据在全局目录中不可见。 只有你和管理员能够看到该数据。 只有你能够查看安全性问题的答案。
 
 管理员可能会要求在一段时间过后确认身份验证方法，确保注册的方法仍然适用。
 
@@ -53,7 +53,7 @@ ms.locfileid: "73820451"
 | 错误案例| 看到什么错误？| 解决方案 |
 | --- | --- | --- |
 | 在输入我的用户 ID 后，出现了“请联系管理员”页面 | 请与管理员联系。 <br> <br> 我们检测到用户帐户密码不受 Microsoft 管理。 因此，我们无法自动重置密码。 <br> <br> 请与 IT 人员联系以获得任何进一步的帮助。 | 之所以看到此消息，是因为 IT 人员在本地环境中管理密码，而不允许从“无法访问帐户链接”重置密码。 <br> <br> 若要重置密码，请直接与 IT 人员联系以获得帮助。 告诉他们你想要重置密码，让他们启用此功能。|
-| 在输入我的用户 ID 后，出现“你的帐户未针对密码重置进行启用”错误 | 帐户未启用密码重置。 <br> <br> 很抱歉，IT 人员尚未将帐户设置为可使用此服务。 <br> <br> 如果愿意，我们可以联系你所在组织的管理员重置密码。 | 之所以看到此消息，是因为 IT 人员未对组织启用从“无法访问帐户”链接重置密码的功能，或未授权你使用该功能。 <br> <br> 若要重置密码，请选择“联系管理员”链接。 随后会向公司 IT 人员发送一封电子邮件。 该电子邮件告诉他们你想要重置密码，让他们启用此功能。 |
+| 在输入我的用户 ID 后，出现“帐户未启用密码重置”错误 | 帐户未启用密码重置。 <br> <br> 很抱歉，IT 人员尚未将帐户设置为可使用此服务。 <br> <br> 如果愿意，我们可以联系你所在组织的管理员重置密码。 | 之所以看到此消息，是因为 IT 人员未对组织启用从“无法访问帐户”链接重置密码的功能，或未授权你使用该功能。 <br> <br> 若要重置密码，请选择“联系管理员”链接。 随后会向公司 IT 人员发送一封电子邮件。 该电子邮件告诉他们你想要重置密码，让他们启用此功能。 |
 | 在输入我的用户 ID 后，出现了“我们无法验证帐户”错误 | 我们无法验证帐户。 <br> <br> 如果愿意，我们可以联系你所在组织的管理员重置密码。 | 之所以看到此消息，是因为已经启用了密码重置，但你并未注册使用此服务。 若要通过注册进行密码重置，请在重新获取帐户访问权限后转到[密码重置注册页](https://aka.ms/ssprsetup)。 <br> <br> 若要重置密码，请选择“联系管理员”链接以向公司 IT 人员发送电子邮件。 |
 
 ## <a name="next-steps"></a>后续步骤
