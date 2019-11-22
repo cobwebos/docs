@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1068d364-11f3-43b5-bd6d-26f00ecd5baa
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12b5984eb2fe4e54ffec7d6b4a2a6da202c70e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc91d51d49ac1a317b88835e4d2e51773216020
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097792"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>教程：Azure Active Directory 与 Lucidchart 集成
 
@@ -144,7 +145,7 @@ ms.locfileid: "67097792"
 
     ![更改证书](./media/lucidchart-tutorial/ic791193.png "更改证书")
 
-    c. 打开下载的元数据文件，复制内容，然后将其粘贴到“上传元数据”文本框中  。
+    c. 打开下载的元数据文件，复制内容，然后将其粘贴到“上传元数据”文本框中。 
 
     ![上传元数据](./media/lucidchart-tutorial/ic791194.png "上传元数据")
 

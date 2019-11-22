@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 从混合 Windows 计算机收集数据 | Microsoft Docs
+title: 使用 Azure Monitor 从混合 Windows 计算机收集数据
 description: 本快速入门介绍如何为 Azure 外部运行的 Windows 计算机部署 Log Analytics 代理，并通过 Azure Monitor 日志启用数据收集。
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677218"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199026"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 

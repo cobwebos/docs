@@ -1,5 +1,5 @@
 ---
-title: 在 Azure IoT Central 中导出数据并可视化见解 | Microsoft Docs
+title: 教程：在 Azure IoT Central 中导出数据并直观呈现见解
 description: 在本教程中，了解如何从 IoT Central 导出数据并在 Power BI 仪表板中可视化见解。
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
-ms.date: 10/22/2019
-ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: ce775f207eaa5df05900ea2e5b6d9fbeab4dc878
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615287"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112874"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
@@ -106,7 +106,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 1. 在工作区页上，选择“创建”>“流数据集”  。
 1. 在“新建流数据集”  页上，选择“API”  ，然后选择“下一步”  "。
 1. 对于“数据集名称”  ，输入“Zone 1 sensor”  。
-1. 在下表中输入三个“流中的值”** **：
+1. 在下表中输入三个“流中的值”  ：
 
     | 值名称  | 值类型 |
     | ----------- | ---------- |

@@ -1,5 +1,5 @@
 ---
-title: '教程：使用 Power BI 在 Azure HDInsight 中分析 Apache Spark 数据 '
+title: 教程：使用 Power BI 分析 Azure HDInsight Apache Spark 数据
 description: 教程 - 使用 Microsoft Power BI 直观显示存储在 HDInsight 群集中的 Apache Spark 数据
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: fe7560f68690233d7a333724274a259d693123d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035687"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241355"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据
 
@@ -78,11 +78,11 @@ ms.locfileid: "72035687"
 
 2. 从“主页”  选项卡，导航到“获取数据”   > “更多...”  。
 
-    ![从 HDInsight Apache Spark 中获取数据到 Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "从 Apache Spark BI 中获取数据到 Power BI")
+    ![从 HDInsight Apache Spark 将数据导入 Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "从 Apache Spark BI 将数据导入 Power BI")
 
 3. 在搜索框中输入 `Spark`，选择 Azure HDInsight Spark，然后选择“连接”   。
 
-    ![从 Apache Spark BI 中获取数据到 Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "从 Apache Spark BI 中获取数据到 Power BI")
+    ![从 Apache Spark BI 将数据导入 Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "从 Apache Spark BI 将数据导入 Power BI")
 
 4. 在“服务器”  文本框中输入群集 URL（形式为 `mysparkcluster.azurehdinsight.net`）。
 
@@ -134,11 +134,11 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 1. 选择要将数据集发布和报告到的工作区，然后单击“选择”  。 在下图中，默认选择“我的工作区”  。
 
-    ![选择要将数据集发布和报告到的工作区](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "选择要将数据集发布和报告到的工作区") 
+    ![选择要将数据集和报表发布到的工作区](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "选择要将数据集和报表发布到的工作区") 
 
 1. 发布成功后，单击“在 Power BI 中打开 BuildingTemperature.pbix”  。
 
-    ![发布成功，请单击输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "发布成功，请单击输入凭据") 
+    ![发布成功，请单击以输入凭据](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "发布成功，请单击以输入凭据") 
 
 1. 在 Power BI 服务中，单击“输入凭据”  。
 
@@ -150,11 +150,11 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 1. 输入 HDInsight 登录帐户信息，然后单击“登录”  。 默认帐户名为 admin  。
 
-    ![登录 Spark 群集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登录 Spark 群集")
+    ![登录到 Spark 群集](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "登录到 Spark 群集")
 
 1. 在左窗格中，转到“工作区” > “我的工作区” > “报表”，然后单击 BuildingTemperature     。
 
-    ![报表位于左窗格的报表下](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "报表位于左窗格的报表下")
+    ![左侧窗格中报表下列出的报表](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左侧窗格中报表下列出的报表")
 
     还可在左窗格中的“数据集”下找到 BuildingTemperature   。
 
@@ -166,7 +166,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 1. 选择“新的仪表板”，输入名称 `Building temperature`，再单击“固定”  。
 
-    ![固定到新的仪表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "固定到新仪表板")
+    ![固定到新仪表板](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "固定到新仪表板")
 
 1. 在报表中，单击“转到仪表板”  。
 

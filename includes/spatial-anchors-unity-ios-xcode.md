@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562510"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933470"
 ---
 选择“生成”  。 在打开的对话框中，选择要将 Xcode 项目导出到的文件夹。
 
@@ -33,7 +33,7 @@ open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> 如果看到 `library not found for -lPods-Unity-iPhone` 错误，则可能是打开了 `.xcodeproj` 文件，而没有打开 `.xcworkspace` 文件。 
+> 如果在升级到 macOS Catalina (10.15) 后遇到 CocoaPod 问题，请参阅[此处](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015)的故障排除相关步骤。
 
 选择根“Unity-iPhone”节点以查看项目设置，然后选择“常规”选项卡   。
 
@@ -50,3 +50,6 @@ open ./Unity-iPhone.xcworkspace
 选择“生成并运行当前方案”  。
 
 ![部署和运行](./media/spatial-anchors-unity/deploy-run.png)
+
+> [!NOTE]
+> 如果看到 `library not found for -lPods-Unity-iPhone` 错误，则可能是打开了 `.xcodeproj` 文件，而没有打开 `.xcworkspace` 文件。
