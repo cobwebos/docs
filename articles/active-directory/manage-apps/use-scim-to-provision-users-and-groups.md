@@ -1,5 +1,5 @@
 ---
-title: SCIM 用户预配 Azure Active Directory |Microsoft Docs
+title: 使用 Azure AD 中的 SCIM 自动预配应用
 description: 了解如何构建 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始自动将用户和组预配到应用程序。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1d4694dfa92d282e1dc098a510ac82dd9c703c1e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195456"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276486"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM 用户预配 Azure Active Directory （Azure AD）
 
@@ -88,7 +88,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | mailNickname |displayName |
 | members |members |
 | objectId |ID |
-| proxyAddresses |emails[type eq "other"].Value |
+| ProxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>步骤2：了解 Azure AD SCIM 实现
 > [!IMPORTANT]

@@ -5,14 +5,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12f8f64c051d33ac2518edbe8b937521318a9e71
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970655"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284502"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -88,8 +88,8 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 ### <a name="delete-a-workspace"></a>创建工作区
 
 浏览到附加到该项目的 Log Analytics 工作区。
-* 如果你尚未删除 Azure Migrate 项目，则可以在**Essentials** > **服务器评估**中找到指向工作区的链接。
-       @no__t 0LA 工作区 @ no__t-1
+* 如果你尚未删除 Azure Migrate 项目，可以在**Essentials** > **服务器评估**中找到工作区的链接。
+       ![LA 工作区](./media/troubleshooting-general/loganalytics-workspace.png)
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -106,13 +106,13 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 
 ## <a name="error-invalid-ovf-manifest-entry"></a>错误 "OVF 清单条目无效"
 
-如果收到错误消息 "提供的清单文件无效：OVF 清单条目无效 "，请执行以下操作：
+如果收到错误消息 "提供的清单文件无效：无效的 OVF 清单条目"，请执行以下操作：
 
 1. 通过检查 Azure Migrate 的设备的哈希值，验证是否已正确下载了设备 .OVA 文件。 [了解详细信息](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)。 如果哈希值不匹配，请重新下载 .OVA 文件，然后重试部署。
 2. 如果部署仍失败，并且你正在使用 VMware vSphere 客户端部署 OVF 文件，请尝试通过 vSphere web 客户端进行部署。 如果部署仍失败，请尝试使用不同的 web 浏览器。
 3. 如果你使用的是 vSphere web 客户端并尝试在 vCenter Server 6.5 或6.7 上部署它，请尝试直接在 ESXi 主机上部署 .OVA：
    - 直接连接到 ESXi 主机（而不是 vCenter Server）与 web 客户端（https：//<*主机 IP 地址*>/ui）连接。
-   - 在**Home** > **清单**中，选择 "**文件**"  >  "**部署 OVF 模板**"。 浏览到 .OVA 并完成部署。
+   - 在 "**家庭** > **库存**" 中，选择 "**文件** > **部署 OVF 模板**"。 浏览到 .OVA 并完成部署。
 4. 如果部署仍然失败，请联系 Azure Migrate 支持部门。
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>设备无法连接到 internet
@@ -139,7 +139,7 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 3. 若要同步时间，请运行**w32tm/resync**。
 
 
-## <a name="error-unabletoconnecttoserver"></a>错误：UnableToConnectToServer
+## <a name="error-unabletoconnecttoserver"></a>错误： UnableToConnectToServer
 
 如果出现此连接错误，则可能无法连接到 vCenter Server *Servername*. .com：9443。 错误详细信息表示没有终结点在 https://*servername*： 9443/sdk 上侦听，可以接受消息。
 
@@ -161,7 +161,7 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
     - 在 Azure 门户中，检查该项目是否存在于资源组中。
     - 如果项目不存在，请在资源组中创建新的 Azure Migrate 项目，并再次注册设备。 [了解如何](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool)创建新项目。
 
-## <a name="error-key-vault-management-operation-failed"></a>错误：Key Vault 管理操作失败
+## <a name="error-key-vault-management-operation-failed"></a>错误： Key Vault 管理操作失败
 
 如果收到错误60030或60031，"Azure Key Vault 管理操作失败"，请执行以下操作：
 - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
@@ -169,16 +169,16 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 - 如果问题持续出现，请联系 Microsoft 支持。
 - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)所需的 Azure 角色和权限。
 
-## <a name="fix-discovery-couldnt-be-initiated"></a>解决方法：无法启动发现
+## <a name="fix-discovery-couldnt-be-initiated"></a>修复：无法启动发现
 
 错误60028：由于出错，无法启动发现。 对于指定的主机或群集列表，操作失败 "指示无法在错误中列出的主机上启动发现，因为访问或检索 VM 信息时出现问题。 已成功添加其余的主机。
 
 - 使用**add host**选项再次添加错误中列出的主机。
 - 如果出现验证错误，请查看更正指南以修复错误，然后再次尝试 "**保存并启动发现**" 选项。
 
-## <a name="fix-azure-ad-operation-failed-60025"></a>解决方法：Azure AD 操作失败（60025）
+## <a name="fix-azure-ad-operation-failed-60025"></a>修复： Azure AD 操作失败（60025）
 
-错误60025："Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行下列操作之一：
+错误60025： "Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行下列操作之一：
 
 - 确保启动发现的用户帐户与用于注册设备的用户帐户相同。
 - 为发现操作失败的用户帐户提供 Azure Active Directory 应用程序访问权限。
@@ -217,9 +217,9 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
     1. 等待刷新操作完成。 现在应会看到最新信息。
 
 
-## <a name="fix-cant-connect-to-host-or-cluster"></a>解决方法：无法连接到主机或群集
+## <a name="fix-cant-connect-to-host-or-cluster"></a>修复：无法连接到主机或群集
 
-错误50004："无法连接到主机或群集，因为无法解析服务器名称。 WinRM 错误代码：如果设备的 Azure DNS 服务无法解析提供的群集或主机名，则可能出现 0x803381B9 "。
+错误50004： "无法连接到主机或群集，因为无法解析服务器名称。 WinRM 错误代码：如果设备的 Azure DNS 服务无法解析提供的群集或主机名，则可能出现 0x803381B9 "。
 
 - 如果在群集上看到此错误，则为群集 FQDN。
 - 对于群集中的主机，你可能还会看到此错误。 这表明设备可以连接到群集，但群集返回的主机名不是 Fqdn。 若要解决此错误，请通过添加 IP 地址和主机名的映射来更新设备上的 hosts 文件：
@@ -229,6 +229,31 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
     4. 保存并关闭 hosts 文件。
     5. 使用设备管理应用检查设备是否可以连接到主机。 30分钟后，应在 Azure 门户中看到这些主机的最新信息。
 
+## <a name="application-discovery-issues"></a>应用程序发现问题
+
+目前仅支持对 VMware Vm 的应用程序的发现。 以后会启用对 Hyper-v Vm 和物理服务器的支持。 应用程序的发现要求在设备中提供 VM 凭据。 详细了解 vCenter Server 和 VMware Vm 所需的访问权限。 发现可能会因为以下问题之一而失败，请查看以下建议的操作以解决此问题：
+
+**错误代码** | **消息** | **可能的原因** | **建议的操作**
+--- | --- | --- | ---
+10000 | 无法发现服务器上安装的应用程序。 | 如果在服务器上运行的操作系统既不是 Windows 也不是 Linux，则可能会发生这种情况。 | 只有 Windows 和 Linux 服务器才支持发现已安装的应用程序。
+10001 | 无法检索安装了服务器的应用程序。 | 这是由于出现内部错误，因为设备中缺少某些文件。 | 请联系 Microsoft 支持部门。
+10002 | 无法检索安装了服务器的应用程序。 | 如果 Azure Migrate 设备中的发现代理运行不正常，则可能会发生这种情况。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+10003 | 无法检索安装了服务器的应用程序。 | 如果发现代理运行不正常，则可能会发生这种情况。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+10004 | 无法发现 < Windows/Linux > 计算机的已安装应用程序。 |  Azure Migrate 设备中未提供用于访问 < Windows/Linux > 计算机的凭据 | 请在 Azure Migrate 设备中添加一个可以访问 < Windows/Linux > 计算机的凭据。
+10005 | 无法访问本地服务器。 | 如果为计算机提供的凭据不正确，则可能会发生这种情况。 | 请更新设备中提供的凭据，并确保可以使用凭据访问服务器。
+10006 | 无法访问本地服务器。 | 如果在服务器上运行的操作系统既不是 Windows 也不是 Linux，则可能会发生这种情况。 | 只有 Windows 和 Linux 服务器才支持发现已安装的应用程序。
+9000 | 无法发现 VM 上安装的应用程序。 | VMware 工具可能未安装或已损坏。 | 在 VM 中安装/重新安装 VMware 工具，并检查其是否正在运行。
+9001 | 无法发现 VM 上安装的应用程序。 | VMware 工具可能未安装或已损坏。 | 在 VM 中安装/重新安装 VMware 工具，并检查其是否正在运行。
+9002 | 无法发现 VM 上安装的应用程序。 | VMware 工具可能未在运行。 | 在 VM 中安装/重新安装 VMware 工具，并检查其是否正在运行。
+9003 | 无法发现服务器上安装的应用程序。 | 如果在服务器上运行的操作系统既不是 Windows 也不是 Linux，则可能会发生这种情况。 | 只有 Windows 和 Linux 服务器才支持发现已安装的应用程序。
+9004 | 无法发现服务器上安装的应用程序。 | 如果 VM 已关闭，则可能会发生这种情况。 | 若要发现服务器上已安装的应用程序，请确保已打开 VM。
+9005 | 无法发现 VM 上安装的应用程序。 | 如果在 VM 上运行的操作系统既不是 Windows 也不是 Linux，则可能会发生这种情况。 | 只有 Windows 和 Linux 服务器才支持发现已安装的应用程序。
+9006 | 无法检索安装了服务器的应用程序。 | 如果发现代理运行不正常，则可能会发生这种情况。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+9007 | 无法检索安装了服务器的应用程序。 | 如果发现代理运行不正常，则可能会发生这种情况。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+9008 | 无法检索安装了服务器的应用程序。 | 此问题可能是由于内部错误引起的。  | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+9009 | 无法检索安装了服务器的应用程序。 | 如果服务器上的 Windows 用户帐户控制（UAC）设置受到限制并且阻止发现已安装的应用程序，则会出现此问题。 | 搜索服务器上的 "用户帐户控制" 设置，并将服务器上的 UAC 设置配置为位于下面两个级别之一。
+9010 | 无法检索安装了服务器的应用程序。 | 此问题可能是由于内部错误引起的。  | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+8084 | 由于 VMware 错误，无法发现应用程序： <Exception from VMware> | Azure Migrate 设备使用 VMware Api 来发现应用程序。 出现此问题的原因可能是，在尝试发现应用程序时 vCenter Server 引发了异常。 VMware 中的错误消息将显示在 "门户" 中显示的错误消息中。 | 查看[vmware 文档](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)，搜索错误消息并按照 VMware 文章中的故障排除步骤解决问题。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
 
 ## <a name="fix-assessment-readiness"></a>修复评估准备情况
@@ -237,21 +262,21 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 
 **问题** | **修补程序**
 --- | ---
-启动类型不受支持 | Azure 不支持具有 EFI 启动类型的虚拟机。 在运行迁移之前，建议将启动类型转换为 BIOS。 <br/><br/>你可以使用 Azure Migrate 服务器迁移来处理此类 Vm 的迁移。 在迁移过程中，它会将 VM 的启动类型转换为 BIOS。
+引导类型不受支持 | Azure 不支持具有 EFI 启动类型的虚拟机。 在运行迁移之前，建议将启动类型转换为 BIOS。 <br/><br/>你可以使用 Azure Migrate 服务器迁移来处理此类 Vm 的迁移。 在迁移过程中，它会将 VM 的启动类型转换为 BIOS。
 有条件支持的 Windows 操作系统 | 操作系统已超过其支持的截止日期，需要自定义支持协议（CSA）以[支持 Azure 中的支持](https://aka.ms/WSosstatement)。 请考虑在迁移到 Azure 之前升级。
 不受支持的 Windows 操作系统 | Azure 仅支持[所选的 WINDOWS 操作系统版本](https://aka.ms/WSosstatement)。 请考虑在迁移到 Azure 之前升级计算机。
 有条件认可的 Linux OS | Azure 予以认可仅[选择 LINUX 操作系统版本](../virtual-machines/linux/endorsed-distros.md)。 请考虑在迁移到 Azure 之前升级计算机。
-不认可的 Linux OS | 计算机可能会在 Azure 中启动，但 Azure 不提供操作系统支持。 在迁移到 Azure 之前，请考虑升级到[认可的 Linux 版本](../virtual-machines/linux/endorsed-distros.md)。
+未经认可的 Linux OS | 计算机可能会在 Azure 中启动，但 Azure 不提供操作系统支持。 在迁移到 Azure 之前，请考虑升级到[认可的 Linux 版本](../virtual-machines/linux/endorsed-distros.md)。
 未知操作系统 | 在 vCenter Server 中，将 VM 的操作系统指定为 "其他"。 此行为会阻止 Azure Migrate 验证 VM 的 Azure 准备情况。 在迁移计算机之前，请确保 Azure[支持](https://aka.ms/azureoslist)该操作系统。
 不支持的位版本 | 具有32位操作系统的 Vm 可能会在 Azure 中启动，但建议在迁移到 Azure 之前升级到64位。
 需要 Microsoft Visual Studio 订阅 | 计算机正在运行 Windows 客户端操作系统，该系统仅通过 Visual Studio 订阅支持。
 找不到所需存储性能的 VM | 计算机所需的存储性能（每秒输入/输出操作数 [IOPS] 和吞吐量）超过了 Azure VM 支持。 在迁移之前，减少计算机的存储需求。
 找不到所需网络性能的 VM | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。
 在指定位置找不到 VM | 在迁移之前使用不同目标位置。
-一个或多个不适用的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> “Azure Migrate:服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘（32 TB）的磁盘限制来评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小为 < 64 TB （超级 SSD 磁盘支持）。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。 确保 Azure[托管的虚拟机磁盘](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)支持每个磁盘所需的性能（IOPS 和吞吐量）。
+一个或多个不合适的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘（32 TB）的磁盘限制来评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小为 < 64 TB （超级 SSD 磁盘支持）。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。 确保 Azure[托管的虚拟机磁盘](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)支持每个磁盘所需的性能（IOPS 和吞吐量）。
 存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。
-磁盘计数超出限制 | 在迁移之前从计算机中删除未使用的磁盘。
-磁盘大小超出限制 | “Azure Migrate:服务器评估目前不支持超级 SSD 磁盘，并基于高级磁盘限制（32 TB）评估磁盘。<br/><br/> 但是，Azure 支持最大为 64 TB 大小的磁盘（超级 SSD 磁盘支持）。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。
+磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
+磁盘大小超过限制 | Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并基于高级磁盘限制（32 TB）评估磁盘。<br/><br/> 但是，Azure 支持最大为 64 TB 大小的磁盘（超级 SSD 磁盘支持）。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在[一起](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping)，以获得更高的存储限制。
 指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
 不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
 由于内部错误，无法确定磁盘的适用性 | 请尝试为组创建一个新评估。
@@ -276,13 +301,13 @@ Azure Migrate 有[两个版本](https://docs.microsoft.com/azure/migrate/migrate
 
 
 - VM SKU 建议取决于评估属性。
-- 这受您在服务器评估中执行的评估类型的影响：*基于性能*，或*在本地*。
+- 这受您在 "服务器评估" 中执行的评估类型的影响： "*基于性能*" 或 *"本地*"。
 - 对于基于性能的评估，服务器评估会考虑本地 Vm 的使用率数据（CPU、内存、磁盘和网络使用率），以确定本地 Vm 的正确目标 VM SKU。 它还在确定有效利用率时增加了舒适的因素。
 - 对于本地大小调整，不考虑性能数据，建议根据本地分配使用目标 SKU。
 
 为了说明这会如何影响建议，我们举个例子：
 
-我们有一个具有四个核心和 8 GB 内存的本地 VM，其 CPU 50 使用率为 50%，内存使用率为%，指定的舒适系数为1.3。
+我们有一个具有四个核心和 8 GB 内存的本地 VM，其 CPU 50 使用率为50%，内存使用率为%，指定的舒适系数为1.3。
 
 -  如果评估为 **"本地**"，则建议使用具有4个核心和 8 GB 内存的 AZURE VM SKU。
 - 如果评估基于性能，则基于有效的 CPU 和内存利用率（4个内核的 50% * 1.3 = 2.6 个核心和 8 GB 内存的 50% * 1.3 = 5.3 = = =）、四个核心的最便宜 VM SKU （最接近支持的核心数）和 8 GB 内存（最接近支持内存大小）。
@@ -297,7 +322,7 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 
 例如，如果你有一个具有 32 GB 内存的本地磁盘，但该磁盘的聚合读取和写入 IOPS 为 800 IOPS，则服务器评估建议使用高级磁盘（由于 IOPS 要求较高），然后建议一个可支持 r 的磁盘 SKUe) IOPS 和大小。 本示例中最接近的匹配项将是 P15（256 GB，1100 IOPS）。 尽管本地磁盘所需的大小为 32 GB，服务器评估建议使用较大的磁盘，因为本地磁盘的 IOPS 要求较高。
 
-## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>解决方法：使用的核心数或缺少的内存百分比
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>修复：已用核心或内存缺失百分比
 
 当 Azure Migrate 设备无法收集相关本地 Vm 的性能数据时，服务器评估将报告 "PercentageOfCoresUtilizedMissing" 或 "PercentageOfMemoryUtilizedMissing"。
 
@@ -317,9 +342,8 @@ Azure Migrate Server 评估目前只考虑 Windows 计算机的操作系统许�
 - Azure Migrate 设备连续对本地环境进行配置，以便每隔20秒为 VMware Vm 收集实时利用率数据，每隔30秒收集一次 Hyper-v Vm。
 - 该设备汇总了20或30秒的样本，每10分钟创建一个数据点。 若要创建单一数据点，设备将从所有20秒和30秒的示例中选择峰值值，然后将其发送到 Azure。
 - 在服务器评估中创建评估时，根据性能持续时间和性能历史记录百分位值，确定代表性利用率值。 例如，如果性能历史记录为一周，百分比利用率为95，则 Azure Migrate 按升序排序最后一周的所有10分钟示例点，然后选择第95个百分点作为代表值。
-- 95% 的值可以确保忽略任何离群值，如果选择 99% 的百分点值，则可能会包含这些离群值。
-- 如果要选择该时间段的高峰使用量，而不想错过任何离群值，则应选择 99% 百分位以实现百分比利用率。
-
+- 95% 的值可以确保忽略任何离群值，如果选择99% 的百分点值，则可能会包含这些离群值。
+- 如果要选择该时间段的高峰使用量，而不想错过任何离群值，则应选择99% 百分位以实现百分比利用率。
 
 
 ## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>找不到 Azure 政府的依赖项可视化
@@ -328,12 +352,11 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
 ## <a name="dependencies-dont-show-after-installing-agents"></a>安装代理后不显示依赖关系
 
-
 在本地 Vm 上安装了依赖关系可视化代理后，Azure Migrate 通常需要15-30 分钟的时间才能在门户中显示依赖项。 如果等待超过30分钟，请确保 Microsoft Monitoring Agent （MMA）可以连接到 Log Analytics 工作区。
 
 对于 Windows VM：
 1. 在控制面板中，启动 MMA。
-2. 在**Microsoft Monitoring Agent 属性** > **AZURE Log Analytics （OMS）** 中，确保工作区的**状态**为绿色。
+2. 在 > **Azure Log Analytics （OMS）** **Microsoft Monitoring Agent 属性**中，确保工作区的**状态**为绿色。
 3. 如果状态不是绿色，请尝试删除工作区，并再次将其添加到 MMA。
 
       !["MMA 属性" 对话框](./media/troubleshooting-general/mma-status.png)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093782"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278793"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移动到不同的订阅或资源组
 
@@ -29,17 +29,17 @@ ms.locfileid: "74093782"
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>删除解决方案
-工作区中安装的托管解决方案将随 Log Analytics 工作区移动操作一起移动。 不过，由于必须从工作区向任何自动化帐户删除链接，因此必须删除依赖于该链接的解决方案。
+## <a name="workspace-move-considerations"></a>工作区移动注意事项
+工作区中安装的托管解决方案将随 Log Analytics 工作区移动操作一起移动。 在移动后，连接的代理将保持连接，并将数据发送到工作区。 由于移动操作要求从工作区到任何自动化帐户没有链接，因此必须删除依赖于该链接的解决方案。
 
-必须删除的解决方案包括： 
+取消链接自动化帐户之前必须先删除的解决方案：
 
 - 更新管理
 - 更改跟踪
 - 在非工作时间启动/停止 VM
 
 
-### <a name="azure-portal"></a>Azure 门户
+### <a name="delete-in-azure-portal"></a>在 Azure 门户中进行删除
 使用以下过程删除使用 Azure 门户的解决方案：
 
 1. 打开在其中安装了任何解决方案的资源组的菜单。
@@ -48,7 +48,7 @@ ms.locfileid: "74093782"
 
 ![删除解决方案](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>使用 PowerShell 删除
 
 若要使用 PowerShell 删除解决方案，请使用[AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) cmdlet，如以下示例中所示：
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>删除警报规则
+### <a name="remove-alert-rules"></a>删除警报规则
 对于 "**启动/停止 vm** " 解决方案，还需要删除解决方案创建的警报规则。 在 Azure 门户中使用以下过程删除这些规则。
 
 1. 打开 "**监视**" 菜单，然后选择 "**警报**"。
@@ -78,7 +78,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 2. 在菜单的 "**相关资源**" 部分中，选择 "**链接的工作区**"。 
 3. 单击 "**取消链接工作区**" 以从自动化帐户取消链接工作区。
 
-    ![取消链接工作区](media/move-workspace/unlink-workspace.png)
+    ![取消工作区链接](media/move-workspace/unlink-workspace.png)
 
 ## <a name="move-your-workspace"></a>移动工作区
 

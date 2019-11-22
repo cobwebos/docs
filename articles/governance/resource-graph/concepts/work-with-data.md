@@ -1,14 +1,14 @@
 ---
 title: 处理大型数据集
-description: 了解使用 Azure Resource Graph 时如何获取和控制大型数据集。
+description: 了解如何在使用 Azure 资源关系图的同时，在大型数据集中获取、格式化、页面和跳过记录。
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959020"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304009"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -168,4 +168,4 @@ response = client.resources(request)
 
 - 在[初学者查询](../samples/starter.md)中了解使用的语言。
 - 在[高级查询](../samples/advanced.md)中了解高级用法。
-- 了解有关如何[探索资源](explore-resources.md)的详细信息。
+- 详细了解如何[浏览资源](explore-resources.md)。

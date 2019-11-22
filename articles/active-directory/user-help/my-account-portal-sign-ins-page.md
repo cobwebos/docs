@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279035"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>从 "我的登录（预览）" 页查看和搜索最近的登录活动
 
@@ -31,7 +31,7 @@ ms.locfileid: "73587623"
 
 ## <a name="view-your-recent-sign-in-activity"></a>查看近期的登录活动
 
-1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
 2. 从左侧导航窗格中选择 "**我的登录（预览版）** "，或从 "**我的登录（预览版）** " 块中选择 "**查看最近的活动**" 链接。
 
@@ -49,7 +49,7 @@ ms.locfileid: "73587623"
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>如果你看到 "登录失败"
 
-如果登录不成功（没有会话活动），则表示你的主要身份验证方法（用户名/密码）失败。 这可能意味着你键入了错误的用户名或密码，但这也可能表示攻击者试图猜测你的密码。 如果认为是攻击者尝试破解密码失败，则无需更改密码，但强烈建议注册 Azure 多重身份验证（MFA）。 使用 MFA 时，即使黑客最终猜到你的密码，也不能访问你的帐户。
+如果登录不成功，则不会出现会话活动，这意味着主要验证方法（用户名/密码）已失败。 这可能意味着你键入了错误的用户名或密码，但这也可能表示攻击者试图猜测你的密码。 如果认为是攻击者尝试破解密码失败，则无需更改密码，但强烈建议注册 Azure 多重身份验证（MFA）。 使用 MFA 时，即使黑客最终猜到你的密码，也不能访问你的帐户。
 
 如果你看到 "登录失败"，则在 "会话活动" 下显示 "会话活动"，其中显示 "**其他验证失败，无效代码**"，这意味着你的主要身份验证（用户名/密码）已成功，但 MFA 失败。 如果这是攻击者，它们会正确推测你的密码，但仍无法通过 MFA 质询。 在这种情况下，我们建议你仍更改密码，因为攻击者获得了该部分的权限，然后转到 "[安全信息](https://mysignins.microsoft.com/security-info)" 页来更新安全设置。
 

@@ -1,5 +1,5 @@
 ---
-title: 排查应用程序代理的 Kerberos 约束委派配置问题 |Microsoft Docs
+title: 排查 Kerberos 约束委派应用代理问题
 description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381522"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275683"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -46,7 +46,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 - 域成员服务器有时会使用特定的域控制器 (DC) 来打开安全通道对话框。 然后服务器可能在任意给定时间移动到另一个对话框。 因此，连接器主机不限制于仅与特定的本地站点 DC 进行通信。
 - 跨域方案依赖于将连接器主机定向至 DC 的引荐，而这些 DC 可能不在本地网络外围内。 在这些情况下，将流量发送到表示其他各个域的 DC 同样重要。 如果未发送，则委派失败。
-- 如果可能，避免在连接器主机和 DC 之间放置任何活动 IPS 或 IDS 设备。 这些设备有时会过于干扰, 并干扰核心 RPC 通信。
+- 如果可能，避免在连接器主机和 DC 之间放置任何活动 IPS 或 IDS 设备。 这些设备有时会过于干扰，并干扰核心 RPC 通信。
 
 用简单方案测试委派。 引入的变量越多，可能需要应对的变量也越多。 为节省时间，将测试限制为在单个连接器中进行。 解决问题后，添加其他连接器。
 
@@ -56,13 +56,13 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 什么显示 KCD 问题？ 有多个常见迹象指示 KCD SSO 失败。 浏览器中显示问题的第一个迹象。
 
-![例如：KCD 配置不正确的错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![示例：不正确的 KCD 配置错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![例如：授权因缺少权限而失败](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![示例：授权失败，因为缺少权限](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-这两张图像显示了相同的故障：SSO 失败。 拒绝用户访问应用程序。
+这两个图像显示相同症状：SSO 失败。 拒绝用户访问应用程序。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如何排除故障取决于问题和观察到的症状。 在进行更多操作之前，请浏览以下文章。 它们将提供有用的故障排除信息：
 
@@ -84,7 +84,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 如前所述，浏览器错误消息会提供有关操作失败原因的有用线索。 请确保记下响应中的活动 ID 和时间戳。 此信息可帮助用户将行为与 Azure 代理事件日志中的实际事件相关联。
 
-![例如：KCD 配置不正确的错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![示例：不正确的 KCD 配置错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 在事件日志中看到的相应条目显示为事件 13019 或 12027。 在“应用程序和服务日志”&gt;“Microsoft”&gt;“AadApplicationProxy”&gt;“连接器”&gt;“管理员”中找到连接器事件日志。
 
@@ -166,7 +166,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 ## <a name="other-scenarios"></a>其他方案
 
 - 在将请求发送至应用程序前，Azure 应用程序代理将请求 Kerberos 票证。 某些第三方应用程序不像这种身份验证方法。 这些应用程序希望进行更多常规协商。 首个请求为匿名请求，允许应用程序响应通过 401 支持的身份验证类型。
-- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案, 请参阅支持文章[Kerberos 约束委派在多跃点方案中可能需要协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
+- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案，请参阅支持文章[Kerberos 约束委派在多跃点方案中可能需要协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
 
 ## <a name="next-steps"></a>后续步骤
 

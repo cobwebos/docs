@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679890"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280649"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -43,7 +43,7 @@ ms.locfileid: "73679890"
 
 **文件存储**
 
-| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | size<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
+| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -57,6 +57,7 @@ ms.locfileid: "73679890"
 
 - 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
+- 获取元数据活动不支持文件夹/文件上的通配符筛选器。
 
 **关系数据库**
 
@@ -75,7 +76,7 @@ ms.locfileid: "73679890"
 |:--- |:--- |
 | itemName | 文件或文件夹的名称。 |
 | itemType | 文件或文件夹的类型。 返回的值为 `File` 或 `Folder`。 |
-| size | 文件大小，以字节为单位。 仅适用于文件。 |
+| 大小 | 文件大小，以字节为单位。 仅适用于文件。 |
 | created | 文件或文件夹的创建日期时间。 |
 | lastModified | 文件或文件夹的上次修改日期时间。 |
 | childItems | 给定文件夹中的子文件夹和文件列表。 仅适用于文件夹。 返回的值为每个子项的名称和类型列表。 |
@@ -130,7 +131,7 @@ ms.locfileid: "73679890"
 }
 ```
 
-## <a name="type-properties"></a>Type 属性
+## <a name="type-properties"></a>类型属性
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 

@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113515"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287120"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 > [!IMPORTANT]
-> 我们计划在 2019 年 11 月 30 日弃用早期版 SAP 应用程序服务器和 SAP 消息服务器的连接器。 当前的 SAP 连接器具有以下特点：合并了这些以前的 SAP 连接器，使你不必更改连接类型；与以前的连接器完全兼容；提供许多其他的功能；继续使用 SAP .Net 连接器 (SAP NCo) 库。
+> 之前的 SAP 应用程序服务器和 SAP 消息服务器连接器在2020年2月29日计划为弃用。 当前的 SAP 连接器具有以下特点：合并了这些以前的 SAP 连接器，使你不必更改连接类型；与以前的连接器完全兼容；提供许多其他的功能；继续使用 SAP .Net 连接器 (SAP NCo) 库。
 >
 > 对于使用较旧连接器的逻辑应用，请在弃用日期之前[迁移到最新连接器](#migrate)。 否则，这些逻辑应用会遇到执行故障，无法将消息发送到 SAP 系统。
 

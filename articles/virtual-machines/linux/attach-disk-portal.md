@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037054"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279138"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
-将磁盘附加到 VM 前，请查看以下提示：
+将磁盘附加到 VM 之前，请查看以下提示：
 
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加到虚拟机的磁盘实际上是存储在 Azure 中的 .vhd 文件。 有关详细信息，请查看[托管磁盘简介](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>使用 parted 的备用方法
+Fdisk 实用工具需要交互式输入，因此不适合在自动化脚本中使用。 不过， [parted](https://www.gnu.org/software/parted/)实用工具可以编写脚本，因此在自动化方案中也更适合。 Parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘/dev/sdc，并使用[XFS](https://xfs.wiki.kernel.org/)文件系统对其进行格式化。
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+如上所示，我们使用[partprobe](https://linux.die.net/man/8/partprobe)实用程序来确保内核立即了解新的分区和文件系统。 如果无法使用 partprobe，则可能导致 blkid 或 lslbk 命令不立即返回新文件系统的 UUID。
+
 ### <a name="mount-the-disk"></a>装载磁盘
 使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：
 

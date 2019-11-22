@@ -1,5 +1,5 @@
 ---
-title: 配置应用程序的用户许可 - Azure Active Directory | Microsoft Docs
+title: 配置用户同意应用程序-Azure Active Directory
 description: 了解如何管理用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709267"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273985"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
 了解如何配置用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 本文提供配置用户许可的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。 
@@ -76,6 +76,6 @@ ms.locfileid: "71709267"
 
 [同意并将应用集成到 AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
+[AzureAD v2.0 聚合应用的许可和权限](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

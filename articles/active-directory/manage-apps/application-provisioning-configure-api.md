@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125069"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275723"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 配置预配
 
-Azure 门户是一种简单的方法，用于一次配置单个应用的预配。 但是，如果您要创建应用程序的多个实例，甚至是数百个，则使用 Microsoft Graph Api 来自动创建和配置应用程序会更容易。 本文概述了如何通过 Api 自动预配配置。 此方法通常用于[Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on)的应用程序。
+Azure 门户是一种简单的方法，用于一次配置单个应用的预配。 但是，如果您要创建应用程序的多个实例，甚至是数百个，则使用 Microsoft Graph Api 来自动创建和配置应用程序会更容易。 本文概述了如何通过 Api 自动预配配置。 此方法通常用于[Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso)的应用程序。
 
 **使用 Microsoft Graph Api 自动执行预配配置的步骤概述**
 

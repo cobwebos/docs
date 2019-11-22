@@ -1,5 +1,5 @@
 ---
-title: 无法使用应用代理应用访问此公司应用程序错误 |Microsoft Docs "
+title: 无法使用应用代理应用访问此公司应用程序错误
 description: 如何解决使用 Azure AD 应用程序代理应用程序时的常见访问问题。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381397"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275473"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -37,7 +37,7 @@ ms.locfileid: "68381397"
 
 若要查找代码，可查看错误消息左下角的“状态代码”字段中的文本。 查找页面底部是否有任何其他提示。
 
-![例如：网关超时错误](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![示例：网关超时错误](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
 有关如何诊断这些错误的根本原因以及建议的修复的详细信息，请参阅以下相应部分。
 
@@ -71,13 +71,13 @@ ms.locfileid: "68381397"
 若要确认应用程序已分配到正常工作的连接器组：
 
 1. 通过转到“Azure Active Directory”，并依次单击“企业应用程序”和“所有应用程序”，在门户中打开应用程序。 打开应用程序，并从左侧菜单中选择“应用程序代理”。
-1. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果看不到任何警告, 请继续验证是否允许所有所需的端口。
+1. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果看不到任何警告，请继续验证是否允许所有所需的端口。
 1. 如果显示错误的连接器组，请使用下拉列表选择正确的组，并确认不再显示任何警告。 如果显示预期的连接器组，请单击警告消息以打开“连接器管理”页面。
 1. 此处，有几种方法可进一步深入探讨：
 
-   - 将活动连接器移入该组：如果你有一个活动连接器，该连接器应属于此组并且直接可见目标后端应用程序，则可以将该连接器移入已分配的组。 若要执行此操作，请单击“连接器”。 在“连接器组”字段中，使用下拉列表选择正确的组，并单击“保存”。
-   - 为该组下载新的连接器：从该页面可获取指向[下载新连接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)的链接。 将连接器安装在直接与后端应用程序相连的机器上。 通常, 连接器与应用程序安装在同一服务器上。 使用“下载连接器”链接将连接器下载到目标计算机上。 接下来，单击“连接器”并使用“连接器组”下拉列表，确保它属于正确的组。
-   - 调查非活动连接器：如果连接器显示为非活动状态，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题, 请继续验证是否允许所有所需的端口。
+   - 将活动连接器移入该组：如果存在某个活动连接器应属于该组，并对目标后端应用程序具有视距，则可以将此连接器移入指定的组。 若要执行此操作，请单击“连接器”。 在“连接器组”字段中，使用下拉列表选择正确的组，并单击“保存”。
+   - 为该组下载新的连接器：从该页面可获取指向[下载新连接器](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)的链接。 将连接器安装在直接与后端应用程序相连的机器上。 通常，连接器与应用程序安装在同一服务器上。 使用“下载连接器”链接将连接器下载到目标计算机上。 接下来，单击“连接器”并使用“连接器组”下拉列表，确保它属于正确的组。
+   - 调查非活动连接器：如果连接器显示为非活动，它将无法访问服务。 此错误通常是因为某些必需的端口遭到阻止。 若要解决此问题，请继续验证是否允许所有所需的端口。
 
 使用上述步骤确保应用程序分配到具有正常工作的连接器的组之后，再次测试该应用程序。 如果它仍无法正常工作，则继续执行下一部分。
 

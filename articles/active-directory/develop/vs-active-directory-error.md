@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941384"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271248"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
 
-检测以前的身份验证代码时，Azure Active Directory 连接服务器检测到不兼容的身份验证类型。
+在检测以前的身份验证代码时，Azure Active Directory 连接的服务检测到不兼容的身份验证类型。
 
-若要正确检测某个项目中以前的身份验证代码，必须生成该项目。  如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
+若要正确检测项目中以前的身份验证代码，则必须重新生成该项目。 如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
 
 ## <a name="project-types"></a>项目类型
 

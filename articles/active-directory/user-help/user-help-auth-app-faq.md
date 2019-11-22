@@ -1,6 +1,6 @@
 ---
 title: 问题 & Microsoft Authenticator 应用的答案 Azure AD
-description: 提供与 Microsoft 身份验证应用和身份验证相关的常见问题和解答列表。
+description: 有关 Microsoft 身份验证应用和双因素验证的常见问题和解答（Faq）。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcd8140acaff693f5b73fe9654968a5ae7cd4c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029812"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266967"
 ---
-# <a name="frequently-asked-questions-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题
+# <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题（Faq）
 
 本文解答了有关 Microsoft Authenticator 应用的常见问题。 如果没有看到所提问题的答案，请转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)。
 
@@ -41,7 +41,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 |通知是否适用于非 Microsoft 帐户 | 不适用，通知只适用于 Microsoft 帐户和 Azure Active Directory 帐户。 如果工作单位或学校使用的是 Azure AD 帐户，则可能会禁用此功能。 |
 | 我购买了新的设备，或者从备份还原了我的设备。 如何再次在 Microsoft Authenticator 应用中设置我的帐户？ | 如果你运行的是 iOS 或 Android 设备，并且你在旧设备上启用了**云备份**，则可以使用旧的备份在新设备上恢复帐户凭据。 有关详细信息，请参阅[使用 Microsoft Authenticator 应用备份和恢复帐户凭据](user-help-auth-app-backup-recovery.md)一文。 |
 | 我丢失了设备或者改用了新设备。 如何确保不会继续向旧设备发送通知？ | 将 Microsoft Authenticator 应用添加到新设备不会自动从旧设备上删除该应用。 从旧设备中删除该应用并不足够。 必须从旧设备中删除该应用，同时告知 Microsoft 或组织忘记旧设备，并从帐户中注销该设备。<ul><li>**使用个人 Microsoft 帐户从设备中删除应用。** 转到[帐户安全](https://account.microsoft.com/security) 页的双重验证区域，选择关闭旧设备的验证。</li><li>**使用工作或学校 Microsoft 帐户从设备中删除应用。** 转到[我的应用](https://myapps.microsoft.com/)页的双重验证区域或转到组织的自定义门户，选择关闭旧设备的验证。</li></ul> |
-| 如何从应用中删除帐户？ | <ul><li>**iOS。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 依次点击帐户名旁边的红色图标、“删除帐户”。</li><li>**Android。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 点击帐户名称旁边的 **X**。</li></ul>如果拥有已注册到组织的设备，可能需要完成一个额外步骤才能删除帐户。 在这些设备上，Microsoft Authenticator 应用自动注册为设备管理员。 如果要完全卸载该应用，首先需要在应用设置中取消注册它。 |
+| 如何从应用中删除帐户？ | <ul><li>**iOS。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 依次点击帐户名旁边的红色图标、“删除帐户”。</li><li>**Android。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 点击帐户名称旁边的 **X**。</li></ul>如果拥有已注册到组织的设备，可能需要完成一个额外步骤才能删除帐户。 在这些设备上，以设备管理员自动注册了 Microsoft Authenticator 应用。 如果要完全卸载该应用，首先需要在应用设置中取消注册它。 |
 | 应用为什么请求这么多的权限？ | 下面是可能需要的权限的完整列表，以及应用的使用方式。 你看到的特定权限将取决于你所拥有的电话类型。<ul><li>**相机。** 在添加工作、学校或非 Microsoft 帐户时用于扫描 QR 码。</li><li>**联系人和电话。** 应用需要此权限，因此它可以在手机上搜索现有的工作或学校 Microsoft 帐户，并将其添加到应用，帮助确保帐户正常工作。 此权限还有助于在添加个人 Microsoft 帐户时节省时间，这种方式会自动填写某些信息，如名字和姓氏。</li><li>**短信。** 用于确保在首次使用个人 Microsoft 帐户登录时， 电话号码与记录中的号码匹配。 我们会将包含 6-8 位数验证码的短信发送到下载应用的手机。 我们不会要求在应用中查找并输入此代码，而是在短信中发送此代码。</li><li>**在其他应用上绘制。** 身份验证的通知也会显示在可能正运行的其他任何应用上。</li><li>**从 Internet 接收数据。** 必须使用此权限发送通知。</li><li>**防止手机休眠。** 如果向组织注册设备，组织可以更改手机上的这项策略。</li><li>**控制振动。** 可以选择在收到验证身份的通知时是否希望手机振动。</li><li>**使用指纹硬件。** 每当验证身份时，某些工作和学校帐户需要其他的 PIN。 为了使过程更加简单，我们允许使用指纹而不是输入 PIN。</li><li> **查看网络连接。** 添加 Microsoft 帐户时，应用需要网络/Internet 连接。</li><li>**读取存储内容。** 仅当通过应用设置报告技术问题时才使用此权限。 会从存储中收集某些信息来诊断问题。</li><li>**完全网络访问。** 必须使用此权限发送通知以验证身份。</li><li>**启动时运行。** 如果重启手机，此权限可确保继续接收通知以验证身份。</li></ul> |
 | 为何 Microsoft Authenticator 应用允许在不解锁设备的情况下批准请求？ | 同意验证请求时无需解锁设备，只需证明带了手机。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 只需知道密码。 你拥有的是手机（使用 Microsoft Authenticator 应用进行设置，并将其注册为 MFA 证明）。因此，让手机和批准请求符合第二个身份验证因素的标准。 |
 | 在 Apple Watch 中打开 Microsoft Authenticator 应用时，为何会显示我的所有帐户？ | 在 Apple Watch 伴侣应用中，Microsoft Authenticator 应用仅支持使用 Microsoft 个人帐户或者学校或工作帐户发送推送通知。 对于其他帐户（例如 Google 或 Facebook），必须在手机上打开 Authenticator 应用才能查看验证码。 |

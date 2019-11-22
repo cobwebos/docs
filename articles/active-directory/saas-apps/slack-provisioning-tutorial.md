@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Active Directory 为 Slack 配置自动用户预配 | Microsoft Docs
+title: 教程：可用于实现时差的用户设置-Azure AD
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Slack 和取消其预配。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932487"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278164"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -28,13 +28,13 @@ ms.locfileid: "68932487"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定已具有以下各项：
 
-* 一个 Azure Active Directory 租户
+* Azure Active Directory 租户
 * 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户
 * 在 Slack 中具有团队管理员权限的用户帐户
 
-注意:Azure AD 预配集成依赖于可供 Slack 团队在加法计划或更佳计划中使用的 [Slack SCIM API](https://api.slack.com/scim)。
+注意： Azure AD 预配集成依赖于可[宽延时间 SCIM API](https://api.slack.com/scim)，可用于 Plus 计划或更佳计划中的时差团队。
 
 ## <a name="assigning-users-to-slack"></a>将用户分配到 Slack
 
@@ -54,7 +54,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分指导完成将 Azure AD 连接到 Slack 的用户帐户预配 API 和配置预配服务，以便在 Slack 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
 
-提示：还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Slack 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+**提示：** 还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Slack 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>若要在 Azure AD 中为 Slack 配置自动用户帐户预配，请执行以下操作：
 
@@ -127,4 +127,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

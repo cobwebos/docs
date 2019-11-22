@@ -1,24 +1,24 @@
 ---
 title: Log Analytics 常见问题解答 | Microsoft Docs
-description: 有关 Azure Log Analytics 服务的常见问题解答。
+description: 有关 Azure Monitor 日志分析服务的常见问题的解答。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579314"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
+此 Microsoft FAQ 列出了有关 Azure Monitor Log Analytics 工作区的常见问题。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 
 ## <a name="new-logs-experience"></a>新的日志体验
@@ -62,15 +62,17 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 
 答：若要访问 Azure 中的工作区，必须获得 Azure 权限。 在某些情况下，你可能没有相应的访问权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。有关详细信息，请参阅[从 OMS 门户转到 Azure](oms-portal-transition.md)。
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？ 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？
+
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>问： 我仍可以在 Azure 之外使用分析门户吗？
-A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍可以使用以下 URL 访问分析门户： https：\/\/loganalytics/订阅/{subscriptionId}/resourcegroups/{resourceGroupName}/工作区/{workspaceName}。
+
+答： 可以，Azure 中的“日志”页和高级分析门户基于相同的代码。 Log Analytics 作为一项功能集成到 Azure Monitor 中，目的是提供更统一的监视体验。 你仍然可以使用以下 URL 访问 Analytics 门户：https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}。
 
 
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>问： 如何在 Azure 门户中查看视图和解决方案？ 
 
@@ -78,7 +80,7 @@ A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代�
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>问： 为何无法在“美国中西部”区域创建工作区？ 
 
-答：此区域有暂时的容量限制。 此限制计划在2019年9月结束时得到解决。
+答：此区域有暂时的容量限制。 此限制已计划于 2019 年 9 月底予以解除。
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
@@ -99,34 +101,11 @@ A. 可以，Azure 中的“日志”页和高级分析门户基于相同的代�
 
 答：你可能会看到*系统中心顾问*、*操作见解*或 *Log Analytics* 节点，具体取决于所使用的 Operations Manager 更新汇总。
 
-对 *OMS* 进行的文本字符串更新包含在一个管理包中，需要你手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
+对“OMS”进行的文本字符串更新包含在一个管理包中，需要手动导入。 若想看到最新文本和功能，请按照最新 System Center Operations Manager 更新汇总知识库文章中的说明进行操作并刷新控制台。
 
 ### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>问：Log Analytics 是否有“本地”版本？
 
 答：没有。 Log Analytics 是处理和存储大量数据的可缩放云服务。 
-
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>问： 如何排除 Log Analytics 不再收集数据这一故障？
-
-问：对于在 2018 年 4 月 2 日之前在“免费”定价层上创建的订阅和工作区，如果在一天中发送的数据超过 500 MB，则在该天的剩余时间内会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  
-
-Log Analytics 创建类型为“Heartbeat”的事件，并可用于确定数据收集是否停止。 
-
-请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据：`Heartbeat | summarize max(TimeGenerated)`
-
-若要检查特定计算机，可运行以下查询：`Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
-
-当数据收集停止时，根据所选的时间范围，将看不到任何返回的记录。   
-
-下表描述了数据收集停止的原因以及用于恢复数据收集的建议操作：
-
-| 数据收集停止的原因                       | 恢复数据收集需执行的操作 |
-| -------------------------------------------------- | ----------------  |
-| 达到免费数据限制<sup>1</sup>       | 等到下一月收集自动重新启动，或者<br> 更改为付费定价层 |
-| Azure 订阅由于以下原因处于挂起状态： <br> 免费试用已结束 <br> Azure 许可已过期 <br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）                          | 转换为付费订阅 <br> 转换为付费订阅 <br> 删除限制，或者等到限制重置 |
-
-<sup>1</sup> 如果工作区位于*免费*定价层，则限制为每天向服务发送 500 MB 数据。 达到每日限制时，数据收集将停止到下一天。 不会为在数据收集停止期间发送的数据编制索引并且该数据不可搜索。 当数据收集恢复后，将仅对发送的新数据进行处理。 
-
-Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果工作区达到每日限制，则处理将在采用 UTC 时间的下一天的第一个小时恢复。
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>问： 当数据收集停止时如何可以收到通知？
 
@@ -147,25 +126,26 @@ Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果�
 指定现有的操作组或创建一个新[操作组](../../azure-monitor/platform/action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
 
 ## <a name="configuration"></a>配置
+
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>问： 是否可以更改用于从 Azure 诊断 (WAD) 读取数据的表/blob 容器的名称？
 
-A. 不可以，当前还不能从 Azure 存储中的任意表或容器进行读取。
+答： 不可以，当前还不能从 Azure 存储中的任意表或容器进行读取。
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>问： Log Analytics 服务使用什么 IP 地址？ 如何确保我的防火墙仅允许与 Log Analytics 服务通信？
 
-A. Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内。
+答： Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内。
 
 当进行服务部署时，Log Analytics 服务的实际 IP 地址会发生变化。 [网络要求](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements)中记录了允许穿过防火墙的 DNS 名称。
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>问： 我使用 ExpressRoute 连接到 Azure。 我的 Log Analytics 流量是否使用我的 ExpressRoute 连接？
 
-A. 不同类型的 ExpressRoute 通信流量记录在 [ExpressRoute 文档](../../expressroute/expressroute-faqs.md#supported-services)中。
+答： 不同类型的 ExpressRoute 通信流量记录在 [ExpressRoute 文档](../../expressroute/expressroute-faqs.md#supported-services)中。
 
 Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>问： 有没有简单易用的方法将现有的 Log Analytics 工作区移到另一个 Log Analytics 工作区/Azure 订阅？
 
-A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[AzResource](https://msdn.microsoft.com/library/mt652516.aspx)。
+答： `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅 [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx)。
 
 也可在 Azure 门户中进行此更改。
 
@@ -180,7 +160,7 @@ A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动�
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>问：如何确认代理能够与 Log Analytics 通信？
 
-答：要确保代理能够与 OMS 通信，请转到：控制面板、安全性和设置、**Microsoft 监视代理**。
+答：若要确保代理能够与 Log Analytics 工作区进行通信，请参阅：控制面板、安全性 & 设置**Microsoft Monitoring Agent**。
 
 在“**Azure Log Analytics (OMS)** ”选项卡下，查找一个绿色复选标记。 绿色复选标记图标确认代理能够与 Azure 服务进行通信。
 
@@ -188,7 +168,7 @@ A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动�
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>问：如何使某个代理停止与 Log Analytics 进行通信？
 
-答：在 System Center Operations Manager 中，从 OMS 托管的计算机列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 进行通信：控制面板、安全性和设置、**Microsoft 监视代理**。
+答：在 System Center Operations Manager 中，从 Log Analytics 管理的计算机列表中删除计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 对于直接连接到 Log Analytics 的代理，可以通过以下路径使其停止与 Log Analytics 进行通信：控制面板、安全性和设置、**Microsoft 监视代理**。
 在“**Azure Log Analytics (OMS)** ”选项卡下，删除列出的所有工作区。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>问：为什么我在尝试将工作区从一个 Azure 订阅移动到另一个订阅时收到错误？
@@ -212,25 +192,25 @@ A. `Move-AzResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动�
 
 ## <a name="agent-data"></a>代理数据
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>问： 可以通过代理向 Log Analytics 发送多少数据？ 每个客户的数据量是否有最大限制？
-A. 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上传的数据量没有限制。 作为云服务，Log Analytics 设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
+答： 上传的数据量没有限制，它基于所选的定价选项-"容量保留" 或 "即用即付"。 Log Analytics 工作区旨在自动向上扩展以处理来自客户的卷–即使每天 tb。 有关详细信息，请参阅[定价详细](https://azure.microsoft.com/pricing/details/monitor/)信息。
 
 Log Analytics 代理设计为确保占用较小的数据空间。 数据量因启用的解决方案而异。 在[“使用情况”](../../azure-monitor/platform/data-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的故障。
 
-有关详细信息，可以阅读[客户博客](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)，其中显示了他们在评估 OMS 代理的资源利用率后的结果。
+有关详细信息，可以阅读[客户博客](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)，其中显示了评估 Log Analytics 代理的资源利用率（需求量）后的结果。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>问： 将数据发送到 Log Analytics 时，Microsoft 管理代理 (MMA) 使用多少网络带宽？
 
-A. 带宽是已发送数据量的一个函数。 数据通过网络发送时会被压缩。
+答： 带宽是已发送数据量的一个函数。 数据通过网络发送时会被压缩。
 
 ### <a name="q-how-much-data-is-sent-per-agent"></a>问： 每个代理发送多少数据？
 
-A. 每个代理发送的数据量取决于：
+答： 每个代理发送的数据量取决于：
 
 * 已启用的解决方案
 * 正在收集的日志和性能计数器的数量
 * 日志中的数据量
 
-一个好的方法就是利用免费定价层来搭载数台服务器并测量典型数据量。 总体使用情况显示在 [使用情况](../../azure-monitor/platform/data-usage.md) 页。
+总体使用情况显示在“[使用情况](../../azure-monitor/platform/data-usage.md)”页。
 
 对于能够运行 WireData 代理的计算机，可以使用以下查询了解正在发送的数据量：
 
@@ -239,4 +219,5 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [开始使用 Log Analytics](../../azure-monitor/overview.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。
+
+[Azure Monitor 入门](../../azure-monitor/overview.md)，了解有关 Log Analytics 并在几分钟内启动和运行的详细信息。

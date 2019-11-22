@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - PowerShell | Microsoft Docs
+title: 排查连接问题-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 PowerShell 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
@@ -13,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802045"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275995"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
 > [!div class="op_single_selector"]
-> - [门户](network-watcher-connectivity-portal.md)
+> - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 `NetworkSecurityRule`UserRule_Port80**的** 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```
 ConnectionStatus : Unreachable
@@ -306,4 +307,4 @@ Hops             : [
 
 访问[查看“IP 流验证”](diagnose-vm-network-traffic-filtering-problem.md)，确定是否允许某些流量传入和传出 VM。
 
-如果流量不应被阻止但却被阻止，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)，查找已定义的网络安全组和安全规则。
+如果流量被阻止且不应被阻止，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)找到定义的网络安全组和安全规则。

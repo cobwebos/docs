@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.openlocfilehash: b83ece803a72fe6132c1ba98414e95897a0fcc90
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132595"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304877"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安装和运行语音服务容器
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>语音到文本区域设置
 
-除 `latest` 之外的所有标记均采用以下格式，其中 `<culture>` 指示区域设置容器：
+除 `latest` 之外的所有标记均采用以下格式，并区分大小写：
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 以下标记是格式示例：
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>文本到语音的区域设置
 
-除 `latest` 以外的所有标记均采用以下格式，其中，`<culture>` 表示区域设置，`<voice>` 表示容器的语音：
+除 `latest` 之外的所有标记均采用以下格式，并区分大小写：
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 以下标记是格式示例：
@@ -404,7 +404,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>账单
 
 语音容器使用 Azure 帐户中的“语音”资源向 Azure 发送计费信息。
 

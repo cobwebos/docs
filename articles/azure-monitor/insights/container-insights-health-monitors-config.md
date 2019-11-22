@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134952"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279694"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>容器的 Azure Monitor 运行状况监视器配置指南
 
-监视器是用于测量运行状况和检测容器 Azure Monitor 中的错误的主要元素。 本文将帮助你了解如何测量运行状况的概念，以及构成运行状况模型的元素，以监视和报告具有[运行状况功能](container-insights-health.md)的 Kubernetes 群集的运行状况。
+监视器是用于测量运行状况和检测容器 Azure Monitor 中的错误的主要元素。 本文将帮助你了解如何测量运行状况的概念，以及构成运行状况模型的元素，以监视和报告具有[运行状况（预览版）](container-insights-health.md)功能的 Kubernetes 群集的运行状况。
+
+>[!NOTE]
+>运行状况功能目前处于公共预览状态。
+>
 
 ## <a name="monitors"></a>监视器
 
@@ -66,7 +70,7 @@ ms.locfileid: "74134952"
 |节点状态 |单元监视器 |此监视器检查 Kubernetes 报告的节点状态。<br> 当前已检查以下节点条件：磁盘压力、内存压力、PID 压力、磁盘空间不足、网络不可用、节点就绪状态。<br> 在上述情况下，如果*磁盘空间不足*或*网络不可用*都为**true**，则监视器将更改为 "**严重**" 状态。<br> 如果任何其他条件都等于**true**（即 "**就绪**" 状态），则监视器将更改为 "**警告**" 状态。 | NodeConditionTypeForFailedState | outofdisk,networkunavailable ||
 |容器内存利用率 |单元监视器 |此监视器报告容器实例的内存使用率（RSS）的运行状况状态。<br> 它执行简单的比较，比较每个样本和单个阈值，并由配置参数**ConsecutiveSamplesForStateTransition**指定。<br> 其状态计算为容器（StateThresholdPercentage）实例的最差90状态，以容器运行状况状态严重性的降序排序（即 "严重"、"警告"、"正常"）。<br> 如果没有从容器实例接收到任何记录，则容器实例的运行状况状态将报告为 "**未知**"，并且在 "**严重**" 状态下的排序顺序中优先级较高。<br> 使用在配置中指定的阈值计算每个单独容器实例的状态。 如果使用率高于严重阈值（90%），则实例处于**严重**状态（如果它小于严重阈值（90%））但大于警告阈值（80%），则实例处于**警告**状态。 否则，该状态处于**正常**状态。 |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
 |容器 CPU 使用率 |单元监视器 |此监视器报告容器实例的 CPU 使用率的合并运行状况状态。<br> 它执行简单的比较，比较每个样本和单个阈值，并由配置参数**ConsecutiveSamplesForStateTransition**指定。<br> 其状态计算为容器（StateThresholdPercentage）实例的最差90状态，以容器运行状况状态严重性的降序排序（即 "严重"、"警告"、"正常"）。<br> 如果没有从容器实例接收到任何记录，则容器实例的运行状况状态将报告为 "**未知**"，并且在 "**严重**" 状态下的排序顺序中优先级较高。<br> 使用在配置中指定的阈值计算每个单独容器实例的状态。 如果使用率高于严重阈值（90%），则实例处于**严重**状态（如果它小于严重阈值（90%））但大于警告阈值（80%），则实例处于**警告**状态。 否则，该状态处于**正常**状态。 |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
-|系统工作负荷箱就绪 |单元监视器 |此监视器根据给定工作负荷中处于 "就绪" 状态的箱的百分比报告状态。 如果小于100% 的 pod 处于**正常**状态，则将其状态设置为 "**严重**" |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 ||
+|系统工作负荷箱就绪 |单元监视器 |此监视器根据给定工作负荷中处于 "就绪" 状态的箱的百分比报告状态。 如果小于100% 的 pod 处于**正常**状态，则将其状态设置为 "**严重**" |ConsecutiveSamplesForStateTransition<br> FailIfLessThanPercentage |2<br> 100 个 ||
 |Kube API 状态 |单元监视器 |此监视器报告 Kube Api 服务的状态。 当 Kube Api 终结点不可用时，监视器处于严重状态。 对于此特定监视器，通过对 kube-api 服务器的 "节点" 终结点进行查询来确定状态。 除 OK 响应代码以外的任何内容都会将监视器更改为**严重**状态。 | 无配置属性 |||
 
 ### <a name="aggregate-monitors"></a>聚合监视器

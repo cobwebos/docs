@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序管理网络安全组流日志 - REST API | Microsoft Docs
+title: 管理 NSG 流日志-Azure REST API
+titleSuffix: Azure Network Watcher
 description: 此页说明如何在 Azure 网络观察程序中使用 REST API 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 636a422cd46dc6b6274766b92753f04195a829a0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563415"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277931"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -33,18 +34,18 @@ ms.locfileid: "69563415"
 
 ## <a name="before-you-begin"></a>开始之前
 
-通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
+ARMclient 用于使用 PowerShell 调用 REST API。 按照 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 在 chocolatey 上找到 ARMClient
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 > [!Important]
 > 对于网络观察程序 REST API 调用来说，请求 URI 中的资源组名称是包含网络观察程序的资源组，而不是要对其执行诊断操作的资源。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 本文中介绍的方案演示了如何使用 REST API 启用、禁用和查询流日志。 若要了解有关网络安全组流日志记录的详细信息，请访问[网络安全组流日志记录 - 概述](network-watcher-nsg-flow-logging-overview.md)。
 
-在此方案中，将：
+本方案中的操作：
 
 * 启用流日志（版本 2）
 * 禁用流日志
@@ -218,7 +219,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 
 > [!IMPORTANT]
-> 目前存在一个问题: 网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)不会根据保留策略设置从 Blob 存储中自动删除。 如果你有现有的非零保留策略, 我们建议你定期删除超出保留期的存储 blob, 以避免产生任何费用。 有关如何删除 NSG 流日志存储的详细信息, 请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
+> 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

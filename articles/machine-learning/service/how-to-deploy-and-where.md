@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d7dc724130286298af6e1d4b0babc551f3f2658
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123618"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276797"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -578,6 +578,10 @@ print(profiling_results)
 ## <a name="deploy-to-target"></a>部署到目标
 
 部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的情况略有不同，因为必须提供对 AKS 群集的引用。
+
+### <a name="securing-deployments-with-ssl"></a>用 SSL 保护部署
+
+有关如何保护 web 服务部署的详细信息，请参阅[使用 SSL 保护 web 服务](how-to-secure-web-service.md#enable)。
 
 ### <a id="local"></a>本地部署
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486627"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280801"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -60,17 +60,17 @@ ms.locfileid: "73486627"
 |我想要一台计算机，我该怎么做？|
 |我什么时候能有一台计算机？| 
 
-这里的核心术语“计算机”没有变化。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 会智能地从上下文中推断同义词，但当你为训练创建陈述时，最好还是改变它们。
+此处的核心术语 "计算机" 不会改变。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以智能地从上下文推断同义词，但在创建用于定型的最谈话时，更改它们的方式始终更好。
 
 ## <a name="example-utterances-in-each-intent"></a>每个意向的示例陈述
 
-每个意向都需要有示例话语，至少 15 个。 如果你的意向没有任何示例陈述，则将无法训练 LUIS。 如果你的意向只有一个或非常少的示例陈述，则 LUIS 将无法准确预测意向。 
+每个意向都需要有示例话语，至少 15 个。 如果你的意向没有任何示例陈述，则将无法训练 LUIS。 如果你有一个或多个示例最谈话，则 LUIS 可能无法准确预测意图。 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>为每个创作迭代添加由 15 个话语构成的小组
 
 在模型的每个迭代中，不要添加大量陈述。 添加数量为 15 的话语。 再次[训练](luis-how-to-train.md)、[发布](luis-how-to-publish-app.md)和[测试](luis-interactive-test.md)。  
 
-LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 添加太多话语是没有价值的，因为它会引起混乱。  
+LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 添加太多话语是没有价值的，因为它会引起混乱。
 
 最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endpoint-utterances.md)以进行正确的意向预测和实体提取。
 
@@ -112,7 +112,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 如果标点未规范化，则默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 
 
-请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的[模式](luis-concept-patterns.md)中处理标点：`I am applying for the {Job} position[.]`
+请确保该模型在示例最谈话（带有和不带标点符号）中或在能够更轻松地忽略带有特殊语法的标点的[模式](luis-concept-patterns.md)中处理标点符号： `I am applying for the {Job} position[.]`
 
 如果标点在客户端应用程序中没有特定含义，请考虑通过规范化标点来[忽略标点](#utterance-normalization)。 
 
@@ -142,7 +142,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 以下话语中，`fair` 一词为同形异义词。 该词虽拼写相同但含义不同：
 
-|陈述|
+|话语|
 |--|
 |今年夏天西雅图地区会举办什么样的乡村集市？|
 |西雅图评审的当前评级公平吗？|

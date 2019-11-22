@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373896"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284898"
 ---
 # <a name="service-to-service-apps"></a>服务到服务应用
 
@@ -30,7 +30,7 @@ ms.locfileid: "72373896"
 
 - 需要调用 Web API 的守护程序，基于 OAuth 2.0 客户端凭据授予类型构建
 
-    在此方案中，务必了解一些事项。 首先，用户无法与后台应用程序进行交互，因为这要求应用程序具有其自己的标识。 在后台运行的批处理作业或操作系统服务都是后台应用程序的示例。 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，后台应用程序会从 Azure AD 收到一个访问令牌，然后将使用该令牌来调用 Web API。
+    在此方案中，务必了解一些事项。 首先，用户无法与后台应用程序进行交互，因为这要求应用程序具有其自己的标识。 在后台运行的批处理作业或操作系统服务都是后台应用程序的示例。 此类型的应用程序通过以下方式来请求访问令牌：使用其应用程序标识并向 Azure AD 提供其应用程序 ID、凭据（密码或证书）以及应用程序 ID URI。 在身份验证成功后，后台应用程序会从 Azure AD 收到一个访问令牌，并将使用该令牌来调用 Web API。
 
 - 需要调用 Web API 的服务器应用程序（如 Web API），基于 OAuth 2.0 代理草案规范构建
 
@@ -40,7 +40,7 @@ ms.locfileid: "72373896"
 
 ![后台或服务器应用程序到 Web API 图示](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol 流
+## <a name="protocol-flow"></a>协议流
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>带有 OAuth 2.0 客户端凭据授权的应用程序标识
 
@@ -59,16 +59,16 @@ ms.locfileid: "72373896"
 
 ## <a name="code-samples"></a>代码示例
 
-请参阅后台或服务器应用程序到 Web API 方案的代码示例。 另外，请经常回来查看，因为我们会经常添加新示例。 [服务器或后台应用程序到 Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+请参阅后台或服务器应用程序到 Web API 方案的代码示例：[服务器或后台应用程序到 WEB api](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>应用注册
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托用户标识类型，则服务器应用程序需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
-* 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册这两个 Web API。
+* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托用户标识类型，则服务器应用程序需要选择所需的权限。 在应用程序注册的 " **API 权限**" 页中，选择 "**添加权限**" 并选择 API 系列后，选择 "**委派权限**"，然后选择你的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
+* 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 目标目录中的用户或管理员许可应用程序的要求，使应用程序可供其组织使用时，此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册这两个 Web API。
 
 ## <a name="token-expiration"></a>令牌过期
 
-当第一个应用程序使用其授权代码来获取 JWT 访问令牌时，它还会收到一个 JWT 刷新令牌。 当访问令牌过期时，可以使用刷新令牌来重新对用户进行身份验证，不会提示他们输入凭据。 然后将使用此刷新令牌对用户进行身份验证，这会生成新的访问令牌和刷新令牌。
+当第一个应用程序使用其授权代码来获取 JWT 访问令牌时，它还会收到一个 JWT 刷新令牌。 当访问令牌过期时，可以使用刷新令牌来重新对用户进行身份验证，不会提示他们输入凭据。 然后将使用此刷新令牌对用户进行身份验证，生成新的访问令牌和刷新令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,8 +1,6 @@
 ---
 title: 将 CI/CD 与 Azure Dev Spaces 配合使用
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
@@ -10,18 +8,18 @@ ms.topic: conceptual
 manager: gwallace
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264457"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280024"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
 
 本文逐步介绍了如何在已启用 Dev Spaces 的 Azure Kubernetes 服务 (AKS) 中设置持续集成/持续部署 (CI/CD)。 通过在 AKS 中设置 CI/CD，只要已提交的代码推送到源存储库，就可以自动部署应用更新。 结合使用 CI/CD 与已启用 Dev Spaces 的群集很有用，因为这样可以确保应用基线不断更新，以供团队使用。
 
-![示例 CI/CD 图](../media/common/ci-cd-simple.png)
+![示例 CI/CD 示意图](../media/common/ci-cd-simple.png)
 
 虽然本文介绍的是如何使用 Azure DevOps，但相同的概念同样适用于 Jenkins、TeamCity 等 CI/CD 系统。
 
@@ -34,16 +32,16 @@ ms.locfileid: "72264457"
 * [授权 AKS 群集从 Azure 容器注册表拉取映像](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>下载示例代码
-为了节省时间，接下来创建示例代码 GitHub 存储库的分支。 先转到 https://github.com/Azure/dev-spaces ，再选择“创建分支”。 分支创建流程完成后，在本地克隆存储库分支版本。 虽然默认签出的是主分支，但我们已在 azds_updates 分支中做出了一些省时更改，这些更改也应该在分支创建过程中传输。 azds_updates 分支包含要求在 Dev Spaces 教程各部分中手动进行的更新，以及一些用于简化 CI/CD 系统部署的预制 YAML 和 JSON 文件。 可使用 `git checkout -b azds_updates origin/azds_updates` 等命令签出本地存储库的 azds_update 分支。
+为了节省时间，接下来创建示例代码 GitHub 存储库的分支。 先转到 https://github.com/Azure/dev-spaces，再选择“创建分支”。 分支创建流程完成后，在本地克隆存储库分支版本。 虽然默认签出的是主分支，但我们已在 azds_updates 分支中做出了一些省时更改，这些更改也应该在分支创建过程中传输。 azds_updates 分支包含要求在 Dev Spaces 教程各部分中手动进行的更新，以及一些用于简化 CI/CD 系统部署的预制 YAML 和 JSON 文件。 可使用 `git checkout -b azds_updates origin/azds_updates` 等命令签出本地存储库的 azds_update 分支。
 
 ## <a name="dev-spaces-setup"></a>Dev Spaces 设置
-使用 `azds space select` 命令新建名为“dev”的空间。 CI/CD 管道将使用 dev 空间来推送代码更改。 它还将用于创建基于 dev 的子空间。
+使用  _命令新建名为“dev”_ `azds space select`的空间。 CI/CD 管道将使用 dev 空间来推送代码更改。 它还将用于创建基于 dev 的子空间。
 
 ```cmd
 azds space select -n dev
 ```
 
-当系统提示选择父 dev 空间时，请选择“\<无\>”。
+当系统提示选择父 dev 空间时，请选择“_无\<”。\>_
 
 开发人员空间创建完成后，需要确定主机后缀。 使用 `azds show-context` 命令显示 Azure Dev Spaces 入口控制器的主机后缀。
 
@@ -77,9 +75,9 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
 若要根据此文件创建管道，请执行以下操作：
 1. 在 DevOps 项目主页上，导航到 "> 生成的管道"。
 1. 选择该选项以创建**新**的生成管道。
-1. 选择 " **github** " 作为 "源"，根据需要向 github 帐户授权，并从 "_开发者空间_" 示例应用程序存储库的分叉版本中选择_azds_updates_分支。
+1. 选择 " **github** " 作为 "源"，根据需要向 github 帐户授权，并从 "_开发者空间_" 示例应用程序存储库的分叉版本中选择 " _azds_updates_ " 分支。
 1. 选择 "**配置为代码**" 或 " **YAML**" 作为模板。
-1. 此时，便会看到生成管道的配置页。 如上所述，使用 **...** 按钮，导航到**YAML 文件路径**的特定于语言的路径。 例如， `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 。
+1. 此时，便会看到生成管道的配置页。 如上所述，使用 **...** 按钮，导航到**YAML 文件路径**的特定于语言的路径。 例如，`samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`。
 1. 请参阅 "**变量**" 选项卡。
 1. 手动添加“dockerId”作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的用户名。 （如本文先决条件中所述）
 1. 手动添加“dockerPassword”作为变量，这是 [Azure 容器注册表管理员帐户](../../container-registry/container-registry-authentication.md#admin-account)的密码。 出于安全目的，请务必指定 dockerPassword 作为“机密”（通过选择锁图标）。
@@ -95,7 +93,7 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
 1. 如果处理的是尚未包含发布定义的全新 DevOps 项目，必须先创建空白的发布定义，再继续操作。 只有在现有发布定义的情况下，“导入”选项才会显示在 UI 中。
 1. 在左侧单击 " **+ 新建**" 按钮，然后单击 "**导入管道**"。
 1. 单击 "**浏览**"，然后从项目中选择 `samples/release.json`。
-1. 单击 **“确定”** 。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
+1. 单击“确定”。 请注意，“管道”窗格已加载发布定义编辑页。 另请注意，有一些红色警告图标，指明仍必须配置的群集专用详细信息。
 1. 在“管道”窗格的左侧，单击“添加项目”气泡。
 1. 在 "**源**" 下拉列表中，选择前面创建的生成管道。
 1. 对于**默认版本**，请**从带有标记的生成管道默认分支选择 "最新**"。
@@ -107,7 +105,7 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
     ![发布项目持续部署设置](../media/common/release-artifact-cd-setup.png)
 1. 启用**连续部署触发器**。
 1. 将鼠标悬停在 "**管道**" 旁边的 "**任务**" 选项卡上，然后单击 "_开发_" 以编辑_开发_阶段任务。
-1. 验证是否在 "**连接类型**" 下选择了 " **Azure 资源管理器**"。 你会看到三个下拉控件以红色突出显示：@no__t 0Release 定义设置 @ no__t-1
+1. 验证是否在 "**连接类型**" 下选择了 " **Azure 资源管理器**"。 你将看到以红色突出显示的三个下拉控件： ![发布定义设置](../media/common/release-setup-tasks.png)
 1. 选择要用于 Azure Dev Spaces 的 Azure 订阅。 还需要单击 "**授权**"。
 1. 选择要用于 Azure Dev Spaces 的资源组和群集。
 1. 单击 "**代理作业**"。
@@ -133,7 +131,7 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
 在完成所有任务后即可完成发布。
 
 > [!TIP]
-> 如果发布失败并看到“升级失败:等待条件超时”等错误消息，请尝试[使用 Kubernetes 仪表板](../../aks/kubernetes-dashboard.md)检查群集中的 Pod。 如果发现 Pod 无法起动，并看到“无法拉取映像 "azdsexample.azurecr.io/mywebapi:122": rpc 错误:代码 = Unknown 说明 = 来自守护程序的错误响应:获取 https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: 未经授权:需要进行身份验证等错误消息，可能是因为未授权群集从 Azure 容器注册表拉取映像。 请务必已完成[授权 AKS 群集从 Azure 容器注册表拉取映像](../../aks/cluster-container-registry-integration.md)先决条件。
+> 如果发布失败并看到“升级失败:等待条件超时”等错误消息，请尝试[使用 Kubernetes 仪表板](../../aks/kubernetes-dashboard.md)检查群集中的 Pod。 如果你看到 pod 无法启动，并显示错误消息 *"无法请求映像" azdsexample.azurecr.io/mywebapi:122 "： rpc 错误：代码 = 未知 desc = 来自守护程序的错误响应： Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: 未授权：请求身份验证*，这可能是因为你的群集尚未获得授权从 Azure 容器注册表拉取。 请务必已完成[授权 AKS 群集从 Azure 容器注册表拉取映像](../../aks/cluster-container-registry-integration.md)先决条件。
 
 此时，已针对 Dev Spaces 示例应用的 GitHub 分支拥有全自动 CI/CD 管道。 每当你提交和推送代码，生成管道都会生成 mywebapi 和 webfrontend 映像，并将它们推送到自定义 ACR 实例。 然后，发布管道会将每个应用的 Helm 图表部署到已启用 Dev Spaces 的群集上的 dev 空间。
 
@@ -155,7 +153,7 @@ http://dev.webfrontend.fedcba098.eus.azds.io  Available
 1. 单击示例应用程序的发布管道。
 1. 单击最新版本的名称。
 1. 将鼠标悬停在 "**阶段**" 框的下方，然后单击 "**部署** **"。**
-    ![Promote 到生产 @ no__t-1
+    ![升级到生产](../media/common/prod-promote.png)
 1. 再次将鼠标悬停在 "**阶段** **" 框下**，并单击 "**日志**"。
 
 在完成所有任务后即可完成发布。

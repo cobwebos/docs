@@ -1,5 +1,5 @@
 ---
-title: Office 365 外部共享与 B2B 协作-Azure Active Directory |Microsoft Docs
+title: Office 365 外部共享和 B2B 协作-Azure AD
 description: 讨论使用 O365 和 Azure Active Directory B2B 协作与外部合作伙伴共享资源。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f6cdc782f091709ed00358dd309e9fd4ccfd0eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807692"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272266"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 外部共享与 Azure Active Directory B2B 协作
 
@@ -34,7 +34,7 @@ OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发
 
 - 许可要求不同。 对于每个付费 Azure AD 许可证，最多可以让 5 名来宾用户访问你的付费 Azure AD 功能。 若要详细了解许可，请参阅 [Azure AD B2B 许可](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)和 [SharePoint Online 外部共享概述中的“什么是外部用户？”](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)。
 
-若要通过 Azure AD B2B 协作管理 OneDrive/SharePoint Online 中的外部共享，请将 OneDrive/SharePoint Online 外部共享设置设为“仅允许与组织的目录中已存在的外部用户共享”  。 用户可以转到外部共享站点，从管理员已添加的外部协作者中进行选取。 管理员可以通过 B2B 协作邀请 API 添加外部协作者。
+若要通过 Azure AD B2B 协作管理 OneDrive/SharePoint Online 中的外部共享，请将 OneDrive/SharePoint Online 外部共享设置设为“仅允许与组织的目录中已存在的外部用户共享”。 用户可以转到外部共享站点，从管理员已添加的外部协作者中进行选取。 管理员可以通过 B2B 协作邀请 API 添加外部协作者。
 
 
 ![OneDrive/SharePoint Online 外部共享设置](media/o365-external-user/odsp-sharing-setting.png)
@@ -46,7 +46,7 @@ OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是 Azure AD B2B 协作？](what-is-b2b.md)
-* [将 B2B 协作用户添加到角色](add-guest-to-role.md)
+* [向角色添加 B2B 协作用户](add-guest-to-role.md)
 * [委托 B2B 协作邀请](delegate-invitations.md)
 * [动态组和 B2B 协作](use-dynamic-groups.md)
-* [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)
+* [Azure Active Directory B2B 协作故障排除](troubleshoot.md)

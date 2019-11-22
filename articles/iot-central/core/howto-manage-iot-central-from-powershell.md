@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c55d0568832fcefee6e0763810c5e1220480270
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806648"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278851"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -61,12 +61,12 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-该脚本首先在美国东部区域为应用程序创建一个资源组。 下表描述了与 **New-AzIotCentralApp** 命令配合使用的参数：
+该脚本首先在 "美国东部" 位置为应用程序创建一个资源组。 下表描述了与 **New-AzIotCentralApp** 命令配合使用的参数：
 
 |参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|位置 |此 cmdlet 默认使用资源组中的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。  |
+|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在**美国**、**澳大利亚**、**亚太**或**欧洲**位置创建 IoT Central 应用程序。  |
 |名称              |应用程序在 Azure 门户中的名称。 |
 |子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
 |SKU               |目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |

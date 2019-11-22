@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927137"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271502"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -41,17 +41,18 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 * Microsoft Graph：`https://graph.microsoft.com`
 * Office 365 邮件 API：`https://outlook.office.com`
 * Azure AD Graph：`https://graph.windows.net`
+* Azure Key Vault： `https://vault.azure.net`
 
 > [!NOTE]
 > 我们强烈建议使用 Microsoft Graph，而不要使用 Azure AD Graph、Office 365 邮件 API 等。
 
-这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.com) 定义了执行以下（以及其他）任务的权限：
+这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 以上任意资源还可以定义一组可用于将该资源的功能划分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.com) 定义了执行以下（以及其他）任务的权限：
 
 * 读取用户的日历
 * 写入用户的日历
 * 以用户身份发送邮件
 
-通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 将资源的功能切割成较小的权限集，即可将第三方应用构建为只请求执行其功能所需的特定权限。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
+通过定义这些类型的权限，资源可以更精细地控制其数据以及 API 功能的公开方式。 第三方应用可以从用户和管理员请求这些权限，只有在用户或管理员批准该请求之后，应用才能代表用户访问或处理数据。 通过将资源的功能分割成较小的权限集，可将第三方应用构建为只请求所需的特定权限来执行其功能。 用户和管理员可以确切地知道应用有权访问哪些数据，并且他们可以更加确信应用不会怀有恶意的企图。 开发人员应始终遵守“最低特权”的概念，仅请求分配正常运行应用程序所需的权限。
 
 在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们通常也称为“权限”。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
@@ -59,7 +60,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 * 使用 `Calendars.ReadWrite` 写入用户的日历
 * 使用 `Mail.Send` 以用户身份发送邮件
 
-应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员许可来授予，并且是使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)来请求/授予的。 请继续阅读了解更多信息。
+应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员许可来授予，并且是使用[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)来请求/授予的。 继续阅读，了解详细信息。
 
 ## <a name="permission-types"></a>权限类型
 
@@ -83,7 +84,7 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 ### <a name="openid"></a>openid
 
-如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 可以在 Microsoft 标识平台令牌终结点中使用 `openid` 范围来获取 ID 令牌，应用可以使用该令牌进行身份验证。
+如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户许可页上显示为“登录”权限，而在个人 Microsoft 帐户许可页上显示为“查看个人资料并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 可以在 Microsoft 标识平台令牌终结点中使用 `openid` 范围来获取 ID 令牌，应用可以使用该令牌进行身份验证。
 
 ### <a name="email"></a>email
 
@@ -205,7 +206,7 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 |`scope`        | 必选      | 定义应用程序请求的权限集。 这可以是静态的（使用/.default）或动态作用域。  这可能包括 OIDC 范围（`openid`、`profile``email`）。 | 
 
 
-此时，Azure AD 会要求租户管理员进行登录来完成请求。 系统会要求管理员批准在 `scope` 参数中请求的所有权限。  如果使用了静态（`/.default`）值，则它的作用类似于1.0 版管理员同意终结点，并请求为在应用所需的权限中找到的所有范围请求许可。
+此时，Azure AD 要求租户管理员登录，以完成请求。 系统会要求管理员批准在 `scope` 参数中请求的所有权限。  如果使用了静态（`/.default`）值，则它的作用类似于1.0 版管理员同意终结点，并请求为在应用所需的权限中找到的所有范围请求许可。
 
 #### <a name="successful-response"></a>成功的响应
 
@@ -255,7 +256,7 @@ Content-Type: application/json
 }
 ```
 
-可以在对资源的 HTTP 请求中使用生成的访问令牌。 它会向资源可靠地指示应用具有执行特定任务的适当权限。 
+可以在对资源的 HTTP 请求中使用生成的访问令牌。 该令牌可靠地向资源指明，应用已获得适当权限，可执行特定的任务。 
 
 有关 OAuth 2.0 协议以及如何获取访问令牌的详细信息，请参阅 [Microsoft 标识平台终结点协议参考](active-directory-v2-protocols.md)。
 

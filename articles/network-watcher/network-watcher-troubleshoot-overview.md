@@ -1,5 +1,6 @@
 ---
-title: 在 Azure 网络观察程序中进行资源故障排除简介 | Microsoft 文档
+title: 资源故障排除简介
+titleSuffix: Azure Network Watcher
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
@@ -14,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684242"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277781"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对网关和连接进行故障排除的功能。 可通过门户、PowerShell、Azure CLI 或 REST API 调用该功能。 调用后，网络观察程序将对网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。 诊断完成后，将返回结果。
 
-![portal][2]
+![门户][2]
 
 ## <a name="results"></a>结果
 
@@ -75,7 +76,7 @@ ms.locfileid: "64684242"
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接” |否|
 | ConnectionNotConfiguredOnGateway | 未在基础服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| Authentication | 预共享密钥不匹配 | 是|
+| 身份验证 | 预共享密钥不匹配 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|
@@ -86,13 +87,13 @@ ms.locfileid: "64684242"
 
 |  |  |
 |---------|---------|
-|网关类型    |         |
+|网关类型   |         |
 |VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|VPN 类型  | |
+|VPN 类型 | |
 |基于路由 | 支持|
 |基于策略 | 不支持|
-|连接类型 ||
+|连接类型||
 |IPSec| 支持|
 |VNet2Vnet| 支持|
 |ExpressRoute| 不支持|
@@ -107,7 +108,7 @@ ms.locfileid: "64684242"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 使用 Azure Blob 存储入门](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

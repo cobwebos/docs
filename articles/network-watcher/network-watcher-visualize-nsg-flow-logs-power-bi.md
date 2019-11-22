@@ -1,5 +1,6 @@
 ---
-title: 使用 Power BI 可视化 Azure 网络安全组流日志 | Microsoft Docs
+title: 可视化 Azure NSG flow 日志-Power BI
+titleSuffix: Azure Network Watcher
 description: 本页介绍如何使用 Power BI 可视化 NSG 流日志。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860700"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277731"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
@@ -30,7 +31,7 @@ ms.locfileid: "60860700"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在以下方案中，我们会将 Power BI Desktop 连接到已配置为 NSG 流日志数据接收器的存储帐户。 连接到存储帐户后，Power BI 将下载并分析日志，提供网络安全组记录的流量的可视化形式。
 
@@ -46,13 +47,13 @@ ms.locfileid: "60860700"
 
 ## <a name="setup"></a>设置
 
-在开始之前，必须在帐户中的一个或多个网络安全组上启用网络安全组流日志记录。 有关如何启用网络安全流日志的说明，请参阅以下文章：[Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md)（网络安全组流日志记录简介）。
+在开始之前，必须在帐户中的一个或多个网络安全组上启用网络安全组流日志记录。 有关启用网络安全流日志的说明，请参阅以下文章：[Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md)（网络安全组流日志记录简介）。
 
 此外，必须在计算机上安装 Power BI Desktop 客户端，并在计算机上提供足够的可用空间用于下载和加载存储帐户中的日志数据。
 
 ![Visio 图示][1]
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 1. 在 Power BI Desktop 应用程序中下载并打开以下 Power BI 模板：[网络观察程序 PowerBI 流日志模板](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. 输入所需的查询参数
@@ -61,7 +62,7 @@ ms.locfileid: "60860700"
 
       ![Power BI 主界面][2]
 
-1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。  单击“连接”，并应用更改。 
+1. 输入存储帐户的访问密钥。 在 Azure 门户中导航到存储帐户，并从“设置”菜单中选择“访问密钥”，即可找到有效的访问密钥。 单击“连接”，并应用更改。
 
     ![访问密钥][3]
 

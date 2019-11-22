@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure Migrate Server 评估发现本地服务器
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 11/20/2019
 ms.author: snehaa
-ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158633"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278481"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>发现计算机应用、角色和功能
 
@@ -19,10 +19,10 @@ ms.locfileid: "74158633"
 
 发现应用的清单，以及在本地计算机上运行的角色/功能，可帮助您识别和计划针对您的工作负荷定制的 Azure 迁移路径。
 
-使用 Azure Migrate 的应用程序发现：服务器评估是无代理的。 不需要在计算机和 Vm 上安装任何内容。 服务器评估使用 Azure Migrate 设备，同时使用计算机来宾凭据执行发现。 设备使用 WMI 和 SSH 调用远程访问计算机。
-
 > [!NOTE]
 > 目前仅 VMware Vm 支持应用程序发现，仅限发现。 我们尚未提供基于应用的评估。  现在，服务器评估当前评估计算机级别的本地 VMware Vm、Hyper-v Vm 和物理服务器，以便进行直接迁移。
+
+使用 Azure Migrate 的应用程序发现：服务器评估是无代理的。 不需要在计算机和 Vm 上安装任何内容。 服务器评估使用 Azure Migrate 设备，同时使用计算机来宾凭据执行发现。 设备使用 VMware Api 远程访问 VMware 计算机。
 
 
 ## <a name="before-you-start"></a>开始之前

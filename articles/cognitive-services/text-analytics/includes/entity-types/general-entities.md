@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: aahi
-ms.openlocfilehash: 693a81cfb15407541311d7ab053bb2ab6a267b29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799703"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284082"
 ---
 ## <a name="general-entity-types"></a>常规实体类型：
 
@@ -51,7 +51,7 @@ ms.locfileid: "73799703"
 
 ### <a name="phone-number"></a>电话号码
 
-电话号码。 
+电话号码（仅限美国电话号码）。 
 
 语言：
 
@@ -60,9 +60,9 @@ ms.locfileid: "73799703"
 
 | 子类型名称 | 说明                                  |
 |----------|----------------------------------------------|
-| 不适用         | 电话号码，例如 `+1 123-123-123`。 |
+| 不适用         | 美国电话号码，例如 `(312) 555-0176`。 |
 
-### <a name="email"></a>电子邮件
+### <a name="email"></a>Email
 
 电子邮件地址。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "73799703"
 |----------|----------------------------------------------|
 | 不适用         | 电子邮件地址，例如 `support@contoso.com` |
 
-### <a name="url"></a>URL
+### <a name="url"></a>代码
 
 Internet Url。
 

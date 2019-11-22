@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中对企业应用禁用用户登录 | Microsoft Docs
+title: 为 Azure AD 中的企业应用禁用用户登录
 description: 如何禁用企业应用程序，防止用户在 Azure Active Directory 中登录该程序
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a08779d171367d982392ae4e987fb46e019e61f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 10553898376c4b9236ee62718fffccd45b12d70b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720278"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274086"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
 
@@ -33,7 +33,7 @@ ms.locfileid: "73720278"
 1. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
 1. 在“Azure Active Directory -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”。
 1. 在“企业应用程序 - 所有应用程序”窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
-1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”。
+1. 在“appname”窗格（即标题中包含所选应用名称的窗格）中，选择“属性”。
 1. 在“appname - 属性”窗格中，对“启用以让用户登录?”设置选择“否”。
 1. 选择“保存”命令。
 

@@ -1,6 +1,6 @@
 ---
-title: 向验证器应用添加个人 Microsoft 帐户-Azure AD
-description: 如何将 Microsoft 个人帐户（如 Outlook.com 或 Xbox LIVE 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。
+title: 向 Microsoft Authenticator 应用添加个人 Microsoft 帐户 Azure AD
+description: 将个人 Microsoft 帐户（如 Outlook.com 或 Xbox LIVE）添加到 Microsoft Authenticator 应用，以便在使用双重验证时验证你的身份。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,20 +12,20 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820242"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278904"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>添加 Microsoft 个人帐户
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将个人 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
 将 Microsoft 个人帐户（如 Outlook.com 和 Xbox LIVE 帐户）添加到 Microsoft Authenticator 应用，以实现标准双因素验证流程和无密码电话登录方法。
 
 - **标准双因素验证方法。** 在要登录的设备中，键入用户名和密码，再选择是 Microsoft Authenticator 应用发送通知，还是从 Microsoft Authenticator 应用的“帐户”屏幕复制关联的验证码。
 
-- **无密码登录方法。** 在要登录的设备中，键入 Microsoft 个人帐户的用户名，再在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 使用此方法无需输入密码。
+- **无密码登录方法。** 在要登录的设备中，键入 Microsoft 个人帐户的用户名，再在移动设备上使用指纹、人脸或 PIN 验证自己的身份。 对于这种方法，无需输入密码。
 
 >[!Important]
 >必须先下载并安装 Microsoft Authenticator 应用，然后才能添加帐户。 如果尚未这样做，请按照[下载并安装应用](user-help-auth-app-download-install.md)一文中的步骤操作。

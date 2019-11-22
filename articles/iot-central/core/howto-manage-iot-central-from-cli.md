@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: ddf1cfb1cb3997431b83812d03535ed990c88922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 80f91849a35bcb94b934941a204d4503ddda376b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806877"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278862"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -48,16 +48,16 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-这些命令首先在 "美国东部" 区域中为应用程序创建一个资源组。 下表描述了用于**az iotcentral app create**命令的参数：
+这些命令首先在 "美国东部" 位置为应用程序创建一个资源组。 下表描述了用于**az iotcentral app create**命令的参数：
 
 | 参数         | 说明 |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-| location          | 默认情况下，此命令使用来自资源组的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。 |
+| 位置          | 默认情况下，此命令使用来自资源组的位置。 目前，可以在**美国**、**澳大利亚**、**亚太**或**欧洲**位置创建 IoT Central 应用程序。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
 | 域名         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
 | sku               | 目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-| 模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
+| template          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 | display-name      | UI 中显示的应用程序名称。 |
 
 **应用程序模板**
@@ -69,7 +69,7 @@ az iotcentral app create \
 | iotc-devkit-sample@1.0.0 | 创建一个应用程序，其中的设备模板可以用来连接 MXChip 或 Raspberry Pi 设备。 如果你是在其中任一设备上进行试验的设备开发人员，请使用此模板。 |
 
 > [!NOTE]
-> **预览应用程序**模板当前仅在 "**北欧**" 和 "**美国中部**" 区域提供。
+> **预览应用程序**模板目前仅适用于**欧洲**和**美国**位置。
 
 ## <a name="view-your-applications"></a>查看应用程序
 

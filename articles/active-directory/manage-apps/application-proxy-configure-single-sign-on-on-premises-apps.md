@@ -1,5 +1,5 @@
 ---
-title: Azure AD 应用 Proxy 的本地应用的 SAML 单一登录 |Microsoft Docs
+title: 具有 Azure AD 应用 Proxy 的本地应用的 SAML 单一登录
 description: 了解如何为通过 SAML 身份验证保护的本地应用程序提供单一登录。 使用应用程序代理提供对本地应用的远程访问。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062503"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275587"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单一登录
 

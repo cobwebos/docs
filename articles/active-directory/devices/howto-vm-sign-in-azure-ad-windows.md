@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832853"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285525"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -34,8 +34,8 @@ ms.locfileid: "73832853"
 - Azure RBAC 允许根据需要授予 Vm 的适当访问权限，并在不再需要时将其删除。
 - 在允许访问 VM 之前，Azure AD 条件访问可强制执行其他要求，例如： 
    - 多重身份验证
-   - 登录风险
-- 为基于 Azure 的 Windows Vm 实现 Azure AD 联接自动化和缩放。
+   - 登录风险检查
+- 自动执行和缩放 Azure AD 加入适用于你的 VDI 部署的 Azure Windows Vm。
 
 ## <a name="requirements"></a>要求
 
@@ -68,7 +68,7 @@ ms.locfileid: "73832853"
 可以通过多种方式为 Windows VM 启用 Azure AD 登录：
 
 - 在创建 Windows VM 时使用 Azure 门户体验
-- 在创建 Windows VM 或现有 Windows VM 时使用 Azure Cloud Shell 体验
+- 在创建 Windows VM**或现有 WINDOWS vm**时使用 Azure Cloud Shell 体验
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>使用 Azure 门户创建 VM 体验来启用 Azure AD 登录
 
@@ -117,7 +117,7 @@ az vm create \
     --admin-password yourpassword
 ```
 
-创建 VM 和支持资源需要几分钟时间。
+创建 VM 和支持的资源需要几分钟时间。
 
 最后，安装 Azure AD 登录 VM 扩展，以便为 Windows VM 启用 Azure AD 登录。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 使用[az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 资源组中名为 MYVM 的 vm 上安装 AADLoginForWindows 扩展：
 
@@ -186,6 +186,13 @@ az role assignment create \
 - [使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 - [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
+
+## <a name="using-conditional-access"></a>使用条件性访问
+
+在授权访问通过 Azure AD 登录启用的 Azure 中的 Windows Vm 之前，可以强制实施条件访问策略（如多重身份验证或用户登录风险检查）。 若要应用条件性访问策略，你必须从 "云应用" 或 "操作" 分配选项中选择 "Azure Windows VM 登录" 应用，然后将登录风险用作条件，并/或需要多重身份验证作为授权访问控制。 
+
+> [!NOTE]
+> 如果你使用 "需要多重身份验证" 作为请求访问 "Azure Windows VM 登录" 应用的授权访问控制，则必须将多重身份验证声明作为启动与目标 Windows VM 的 RDP 会话的客户端的一部分提供Microsoft. 在 Windows 10 客户端上实现此目的的唯一方法是在 RDP 期间使用 Windows Hello 企业版 PIN 或生物识别身份验证。 在 Windows 10 1809 中添加了在 RDP 期间对生物识别身份验证的支持。 在 RDP 期间使用 Windows Hello 企业版身份验证仅适用于使用证书信任模型并且当前不可用于密钥信任模式的部署。
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 
@@ -337,7 +344,12 @@ az role assignment create \
 
 ![不允许使用尝试使用的登录方法。](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-如果已配置条件访问策略，要求先完成 MFA 才能访问 RBAC 资源，则需要确保使用强身份验证方法在 Windows 10 电脑上启动与 VM 的远程桌面连接。为 Windows Hello。 如果未对远程桌面连接使用强身份验证方法，则会看到以下错误。
+如果已配置条件访问策略，要求先完成 MFA 才能访问 RBAC 资源，则需要确保使用强身份验证方法在 Windows 10 电脑上启动与 VM 的远程桌面连接。为 Windows Hello。 如果未对远程桌面连接使用强身份验证方法，则会看到以下错误。 
+
+如果你尚未部署 Windows Hello for Business，并且该选项目前不是一个选项，则可以通过配置条件访问策略来 exlcude MFA 要求，此策略从需要 MFA 的云应用列表中排除 "Azure Windows VM 登录" 应用。 若要了解有关 Windows Hello 企业版的详细信息，请参阅[Windows Hello 企业版概述](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
+
+> [!NOTE]
+> 目前，Windows 10 已支持 RDP 中的 windows Hello 企业版 PIN 身份验证。 在 Windows 10 1809 中添加了在 RDP 期间对生物识别身份验证的支持。 在 RDP 期间使用 Windows Hello 企业版身份验证仅适用于使用证书信任模型并且当前不可用于密钥信任模式的部署。
  
 ## <a name="preview-feedback"></a>预览功能反馈
 

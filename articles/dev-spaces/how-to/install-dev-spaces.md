@@ -1,28 +1,24 @@
 ---
 title: 在 AKS 和客户端工具上安装 Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: 了解如何在 AKS 群集上安装 Azure Dev Spaces, 以及如何安装客户端工具。
+description: 了解如何在 AKS 群集上安装 Azure Dev Spaces，以及如何安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 642d4406840f1748c3b6cbb4441227fff0c6d721
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: c62fe38a12b5ec279bc51fe8bc0d340e2f439200
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494853"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280060"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>在 AKS 和客户端工具上安装 Azure Dev Spaces
 
-本文介绍了如何通过多种方式在 AKS 群集上安装 Azure Dev Spaces, 以及如何安装客户端工具。
+本文介绍了如何通过多种方式在 AKS 群集上安装 Azure Dev Spaces，以及如何安装客户端工具。
 
 ## <a name="install-azure-dev-spaces-using-the-cli"></a>使用 CLI 安装 Azure Dev Spaces
 
-你需要先执行以下操作, 然后才能使用 CLI 安装 Dev 空间:
+你需要先执行以下操作，然后才能使用 CLI 安装 Dev 空间：
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
 * [Azure CLI 安装][install-cli]。
 * [受支持区域][supported-regions]中[的 AKS 群集][create-aks-cli]。
@@ -33,7 +29,7 @@ ms.locfileid: "68494853"
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-上述命令在*myResourceGroup*组中的*myAKSCluster*群集上启用 Dev 空间, 并创建*默认*的 dev 空间。
+上述命令在*myResourceGroup*组中的*myAKSCluster*群集上启用 Dev 空间，并创建*默认*的 dev 空间。
 
 ```cmd
 $ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
@@ -53,15 +49,15 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces`命令还会安装 Azure Dev Spaces CLI。
+`use-dev-spaces` 命令还会安装 Azure Dev Spaces CLI。
 
 ## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>使用 Azure 门户安装 Azure Dev Spaces
 
-你需要先执行以下操作, 然后才能使用 Azure 门户安装 Dev 空格:
+你需要先执行以下操作，然后才能使用 Azure 门户安装 Dev 空格：
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
 * [受支持区域][supported-regions]中[的 AKS 群集][create-aks-portal]。
 
-使用 Azure 门户安装 Azure Dev Spaces:
+使用 Azure 门户安装 Azure Dev Spaces：
 1. 登录到 [Azure 门户][az-portal]。
 1. 导航到 AKS 群集。
 1. 单击 " *Dev Spaces*"。
@@ -73,11 +69,11 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 ## <a name="install-the-client-side-tooling"></a>安装客户端工具
 
-你可以使用 Azure Dev Spaces 的客户端工具与本地计算机上的 AKS 群集中的 Dev 空间进行交互。 有多种方法来安装客户端工具:
+你可以使用 Azure Dev Spaces 的客户端工具与本地计算机上的 AKS 群集中的 Dev 空间进行交互。 有多种方法来安装客户端工具：
 
-* 在[Visual Studio Code][vscode]中, 安装[Azure Dev Spaces 扩展][vscode-extension]。
-* 在[Visual Studio 2019][visual-studio]中, 安装 Azure 开发工作负荷。
-* 在 Visual Studio 2017 中, 安装 Web 开发工作负荷并[Visual Studio Tools for Kubernetes][visual-studio-k8s-tools]。
+* 在[Visual Studio Code][vscode]中，安装[Azure Dev Spaces 扩展][vscode-extension]。
+* 在[Visual Studio 2019][visual-studio]中，安装 Azure 开发工作负荷。
+* 在 Visual Studio 2017 中，安装 Web 开发工作负荷并[Visual Studio Tools for Kubernetes][visual-studio-k8s-tools]。
 * 下载并安装[Windows][cli-win]、 [Mac][cli-mac]或[Linux][cli-linux] CLI。
 
 ## <a name="next-steps"></a>后续步骤

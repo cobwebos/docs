@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure 诊断以将数据发送到 Application Insights
+title: 向 Application Insights 发送 Azure 诊断数据
 description: 更新 Azure 诊断公共配置，以将数据发送到 Application Insights。
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2016
-ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552044"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285995"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -66,7 +66,7 @@ Application Insights 接收器的示例配置：
 - **Channels** 元素包含一个或多个 **Channels** 元素。
     - *name* 属性唯一引用该通道。
     - 使用 *loglevel* 属性可以指定通道允许的日志级别。 可用日志级别从最多信息到最少信息的顺序依次为：
-        - 详细
+        - Verbose
         - 信息
         - 警告
         - 错误

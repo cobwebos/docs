@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure 门户 | Microsoft Docs
+title: 排查连接问题-Azure 门户
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure 门户使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
@@ -13,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702004"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275971"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 
 > [!div class="op_single_selector"]
-> - [门户](network-watcher-connectivity-portal.md)
+> - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
@@ -44,15 +45,15 @@ ms.locfileid: "64702004"
 
 此示例通过端口 80 检查与目标虚拟机的连接。
 
-导航到网络观察程序并单击“排查连接问题”  。 选择虚拟机以检查其连接性。 在“目标”  部分，选择“选择虚拟机”  ，并选择正确的虚拟机和端口来进行测试。
+导航到网络观察程序并单击“排查连接问题”。 选择虚拟机以检查其连接性。 在“目标”部分，选择“选择虚拟机”，并选择正确的虚拟机和端口来进行测试。
 
-单击“检查”  后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
+单击“检查”后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
 
 ![查看虚拟机的连接性结果][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>检查远程终结点连接性
 
-若要检查远程终结点的连接性和延迟性，请在“目标”  区域中选择“手动指定”  单选按钮，输入 URL 和端口并单击“检查”  。  此步骤适用于网站等远程终结点及存储终结点。
+若要检查远程终结点的连接性和延迟性，请在“目标”区域中选择“手动指定”单选按钮，输入 URL 和端口并单击“检查”。  此步骤适用于网站等远程终结点及存储终结点。
 
 ![查看网站的连接性结果][2]
 

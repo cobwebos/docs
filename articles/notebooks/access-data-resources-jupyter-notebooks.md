@@ -1,23 +1,14 @@
 ---
 title: 从 Azure 的 Jupyter Notebook 访问数据资源
 description: 如何从 Jupyter Notebook 中访问文件、REST API、数据库和不同的 Azure 存储资源。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970261"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277698"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
 
@@ -54,7 +45,7 @@ if response.status_code == 200:
 
 [使用 Python 查询 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)介绍了如何创建包含 AdventureWorks 数据的数据库，并演示了如何查询该数据。 本文的示例 Notebook 中显示了相同的代码。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储空间
 
 Azure 存储提供了几种不同类型的非关系存储，具体取决于你拥有的数据类型以及所需的访问方式：
 
@@ -79,9 +70,9 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 
 Azure 提供了许多可以使用的其他数据库类型。 以下文章提供了从 Python 访问这些数据库的指导：
 
-- [Azure Database for PostgreSQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL：使用 Python 进行连接并查询数据](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [快速入门：将 Azure Redis 缓存与 Python 配合使用](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL：使用 Python 进行连接并查询数据](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)
   - [Azure 数据工厂的复制向导](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 

@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1fd667e14501355f2567712d13b10dd7fbc7ee19
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112688"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266919"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -46,6 +47,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 索引器在 Azure 上抓取数据存储。
 
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
+* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) （预览版）
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

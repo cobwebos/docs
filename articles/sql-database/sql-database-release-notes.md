@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166254"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279219"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -80,6 +80,7 @@ ms.locfileid: "74166254"
 
 - **2019 年 8 月** - 托管实例完全支持包含的数据库。
 - **10 月 2019** -如果源数据库包含内存中 OLTP 对象，则在业务关键层到常规用途层的内置时间点数据库还原不会成功。
+- **Oct 2019** -可以将**数据库邮件**功能与使用安全连接的外部（非 Azure）邮件服务器一起使用。
 - **11 月 2019** -从 Azure Blob 存储还原数据库后，使用 `DBCC CHECKDB` 验证数据库一致性。
 
 ## <a name="updates"></a>更新

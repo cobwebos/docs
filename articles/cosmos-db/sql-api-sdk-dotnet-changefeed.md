@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bd727e9c68a34c8e182a6726b257a6bf37178837
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023891"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306770"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -29,8 +29,8 @@ ms.locfileid: "73023891"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -38,6 +38,9 @@ ms.locfileid: "73023891"
 |**API 文档**|[更改源处理器库 API 参考文档](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**入门**|[更改源处理器 .NET SDK 入门](change-feed.md)|
 |**当前受支持的框架**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+
+> [!NOTE]
+> 如果你使用的是更改源处理器，请参阅[.NET sdk](change-feed-processor.md)的最新版本1.x，其中包含 SDK 内置的更改源。 
 
 ## <a name="release-notes"></a>发行说明
 
@@ -52,7 +55,7 @@ ms.locfileid: "73023891"
   * 添加了新的公共属性： `ChangeFeedProcessorOptions.ChangeFeedTimeout`。 此属性的默认值为10分钟。
   * 添加了新的公共枚举值： `Monitoring.MonitoredOperation.ReadChangeFeed`。 当 `HealthMonitoringRecord.Operation` 的值设置为 `Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2。7
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * 改进了负载均衡策略，适用于获得所有租约所用时间超过租约过期时间间隔的情况，例如，由于网络问题：
   * 在此方案中，用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
   * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并 posponing 获取过期租约以进行下一次负载平衡迭代。
@@ -195,7 +198,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: 将本地应用与 Cloud App Security 集成 - Azure Active Directory | Microsoft Docs
-description: 在 Azure Active Directory 中配置本地应用程序，以便与 Microsoft Cloud App Security (MCAS) 配合使用。 基于条件性访问策略中实时使用 MCAS 条件访问应用控制对监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
+title: 将本地应用与 Cloud App Security Azure AD 集成
+description: 在 Azure Active Directory 中配置本地应用程序，以便与 Microsoft Cloud App Security (MCAS) 配合使用。 使用 MCAS 条件访问应用控制可以基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108452"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275495"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视
-在 Azure Active Directory (Azure AD) 中配置本地应用程序，以使用 Microsoft Cloud App Security (MCAS) 进行实时监视。 MCAS 使用条件访问应用控制来监视和控制会话中实时基于条件性访问策略。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
+在 Azure Active Directory (Azure AD) 中配置本地应用程序，以使用 Microsoft Cloud App Security (MCAS) 进行实时监视。 MCAS 使用条件访问应用控制基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
 
 以下是一些可以使用 MCAS 创建的策略类型示例：
 
@@ -47,10 +47,10 @@ ms.locfileid: "67108452"
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>将本地应用程序添加到 Azure AD
 
-将本地应用程序添加到 Azure AD。 有关快速入门信息，请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 添加应用程序时，请务必设置“添加本地应用程序”边栏选项卡中的以下两个设置  ：
+将本地应用程序添加到 Azure AD。 有关快速入门信息，请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 添加应用程序时，请务必设置“添加本地应用程序”边栏选项卡中的以下两个设置：
 
-- **预身份验证**：输入“Azure Active Directory”  。
-- **转换应用程序主体中的 URL**：选择“是”  。
+- **预身份验证**：输入**Azure Active Directory**。
+- **在应用程序正文中转换 url**：选择 **"是"** 。
 
 要将应用程序与 MCAS 配合使用，这两个设置是必需项。
 

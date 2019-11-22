@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 3d2895fa8d45ad594963d3f26cbe04fd968f5fcc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487525"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280886"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 应用中的意向
 
@@ -47,7 +47,7 @@ ms.locfileid: "73487525"
 |V3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>意向与实体
-意向代表机器人应为用户采取的操作，并且基于整个查询文本。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
+意向表示应用程序应为用户采取的操作，并且基于整个查询文本。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
 
 <a name="how-do-intents-relate-to-entities"></a>
 

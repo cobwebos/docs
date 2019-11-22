@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f36d3bcb16876f080f780658bc59afd794e3431e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699185"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269361"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
-本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
+本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境以获得最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -37,9 +37,9 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 1. 从支持 SMB 加密的客户端（Windows 8、Windows Server 2012 或更高版本）进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
-2. 如果客户端不支持 SMB 加密，请确保在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
+2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则 
 
 如果在存储帐户上配置了虚拟网络 (VNET) 和防火墙规则，则将拒绝访问网络流量，除非允许客户端 IP 地址或虚拟网络访问。
 
@@ -48,7 +48,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 <a id="error53-67-87"></a>
-## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>尝试装载或卸载 Azure 文件共享时发生错误 53、错误 67 或错误 87
+## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>装载或卸载 Azure 文件共享时出现“错误 53”、“错误 67”或“错误 87”
 
 尝试从本地或其他数据中心装载文件共享时，可能会看到以下错误消息：
 
@@ -56,7 +56,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 - 发生系统错误 67。 找不到网络名称。
 - 发生系统错误 87。 参数不正确。
 
-### <a name="cause-1-port-445-is-blocked"></a>原因 1：端口 445 被阻止
+### <a name="cause-1-port-445-is-blocked"></a>原因1：端口445被阻止
 
 如果端口 445 到 Azure 文件数据中心的出站通信受阻，可能会发生系统错误 53 或 67。 若要概览允许或不允许从端口 445 访问的 ISP，请转到 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
 
@@ -94,19 +94,19 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 #### <a name="solution-1---use-azure-file-sync"></a>解决方案 1-使用 Azure 文件同步
-Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 Azure 文件同步在端口443上工作, 因此可将其作为一种解决方法, 用于从已阻止端口445的客户端访问 Azure 文件。 [了解如何设置 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers)。
+Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 Azure 文件同步在端口443上工作，因此可将其作为一种解决方法，用于从已阻止端口445的客户端访问 Azure 文件。 [了解如何设置 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers)。
 
 #### <a name="solution-2---use-vpn"></a>解决方案 2-使用 VPN
-通过设置特定存储帐户的 VPN, 流量将通过安全隧道, 而不是通过 internet 传输。 按照说明设置 VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) , 从 Windows 访问 Azure 文件。 [
+通过设置特定存储帐户的 VPN，流量将通过安全隧道，而不是通过 internet 传输。 按照[说明设置 VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) ，从 Windows 访问 Azure 文件。
 
-#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口 445, 帮助你联系 ISP/IT 管理员
+#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口445，帮助你联系 ISP/IT 管理员
 与 IT 部门或 ISP 配合，向 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)开放端口 445 出站通信。
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>解决方案 4-使用存储资源管理器/Powershell 等基于 REST API 的工具
 除了 SMB，Azure 文件存储还支持 REST。 REST 访问可以通过端口 443 进行（标准 tcp）。 有许多工具是用 REST API 编写的，可以给用户带来丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，然后将其连接到 Azure 文件存储支持的文件共享。 也可使用 [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell)，此工具也使用 REST API。
 
-### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2：NTLMv1 已启用
+### <a name="cause-2-ntlmv1-is-enabled"></a>原因2： NTLMv1 已启用
 
 如果客户端上已启用 NTLMv1 通信，可能会出现系统错误 53 或 87。 Azure 文件仅支持 NTLMv2 身份验证。 启用 NTLMv1 将创建安全级别较低的客户端。 因此，Azure 文件的通信受阻。 
 
@@ -133,12 +133,12 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 
 关闭一些句柄，减少并发打开句柄的数量，再重试。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-若要查看文件共享、目录或文件的打开句柄, 请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
+若要查看文件共享、目录或文件的打开句柄，请使用 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
 
-若要关闭文件共享、目录或文件的打开句柄, 请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
+若要关闭文件共享、目录或文件的打开句柄，请使用 [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
 
 > [!Note]  
-> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块, 请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="authorizationfailureportal"></a>
 ## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“授权失败”错误
@@ -148,13 +148,13 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 授权失败  
 你无权访问 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1：你的用户帐户无权访问该存储帐户
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因1：你的用户帐户无权访问存储帐户
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
@@ -164,18 +164,18 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
 
 ### <a name="cause"></a>原因
-如果文件或目录具有打开的句柄, 通常会发生此问题。 
+如果该文件或目录有一个打开的句柄，通常会出现此问题。 
 
 ### <a name="solution"></a>解决方案
 
-如果 SMB 客户端已关闭所有打开的句柄, 但问题仍然存在, 请执行以下操作:
+如果 SMB 客户端关闭了所有打开的句柄，但问题仍然出现，请执行以下操作：
 
-- 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开句柄。
+- 使用 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开的句柄。
 
-- 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 关闭打开的句柄。 
+- 使用 [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 关闭打开的句柄。 
 
 > [!Note]  
-> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块, 请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>在 Windows 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
@@ -204,7 +204,7 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 > 自 2015 年 12 月起，Azure 市场中的 Windows Server 2012 R2 映像将默认安装修补程序 KB3114025。
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>"我的电脑" 或 "这台电脑" 中没有驱动器号的文件夹
+## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>“我的电脑”或“这台电脑”中没有带驱动器号的文件夹
 
 如果使用 net use 以管理员身份映射 Azure 文件共享，共享似乎会丢失。
 
@@ -241,7 +241,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 ### <a name="cause"></a>原因
 
-每个用户都装载了驱动器。 如果运行应用程序或服务的用户帐户与装载驱动器的用户帐户不同，应用程序将检测不到驱动器。
+根据用户装载驱动器。 如果运行应用程序或服务的用户帐户与装载驱动器的用户帐户不同，应用程序将检测不到驱动器。
 
 ### <a name="solution"></a>解决方案
 
@@ -256,12 +256,12 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
   `net use * \\storage-account-name.file.core.windows.net\share`
 
-按照这些说明操作后，对系统/网络服务帐户运行 net use 时，可能会收到以下错误消息：“发生系统错误 1312。 如果为系统/网络服务帐户运行 可能已被终止。” 如果发生这种情况，请确保传递到 net use 的用户名包括域信息（例如，“[存储帐户名称].file.core.windows.net”）。
+按照这些说明操作后，对系统/网络服务帐户运行 net use 时，可能会看到以下错误消息：“发生系统错误 1312。 如果为系统/网络服务帐户运行 可能已被终止。” 如果发生这种情况，请确保传递到 net use 的用户名包括域信息（例如，“[存储帐户名称].file.core.windows.net”）。
 
 <a id="doesnotsupportencryption"></a>
 ## <a name="error-you-are-copying-a-file-to-a-destination-that-does-not-support-encryption"></a>出现错误“要将该文件复制到的目标不支持加密”
 
-通过网络复制文件时，文件在源计算机上被解密，以明文形式传输，并在目标位置上被重新加密。 不过，尝试复制加密文件时，可能会看到以下错误：“要将该文件复制到的目标不支持加密。”
+通过网络复制文件时，文件在源计算机上被解密，以明文形式传输，并在目标位置上被重新加密。 不过，尝试复制加密文件时，可能会看到以下错误消息：“要将该文件复制到的目标不支持加密。”
 
 ### <a name="cause"></a>原因
 如果使用的是加密文件系统 (EFS)，可能会出现此问题。 可将 BitLocker 加密的文件复制到 Azure 文件。 不过，Azure 文件不支持 NTFS EFS。
@@ -299,7 +299,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 ### <a name="cause"></a>原因
 
-如果存储帐户在关联订阅的 AAD 租户上未创建 [AAD Domain Service(AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)则在该帐户上[为 Azure 文件存储启用 Azure Active Directory 身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)时，会发生错误 AadDsTenantNotFound。  
+如果存储帐户在关联订阅的 AAD 租户上未创建 [AAD Domain Service(AAD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)则在该帐户上[为 Azure 文件存储启用 Azure Active Directory 身份验证](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)时，会发生错误 AadDsTenantNotFound。  
 
 ### <a name="solution"></a>解决方案
 
@@ -307,5 +307,5 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>需要帮助? 联系支持人员。
+## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

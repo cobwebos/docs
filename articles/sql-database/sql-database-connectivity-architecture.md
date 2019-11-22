@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826910"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280787"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
@@ -54,6 +54,10 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 如果从 Azure 外部连接，则连接默认具有 `Proxy` 连接策略。 `Proxy` 策略是指通过 Azure SQL 数据库网关建立 TCP 会话，并且所有后续数据包通过网关传输。 下图演示了此流量流。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+
+> [!IMPORTANT]
+> 另外，打开端口14000-14999 以启用[与 DAC 的连接](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
@@ -96,11 +100,11 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 美国中南部     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | 东南亚      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | 阿拉伯联合酋长国中部          | 20.37.72.64        |
-| 阿拉伯联合酋长国北部            | 65.52.248.0        |
+| 阿联酋北部            | 65.52.248.0        |
 | 英国南部             | 51.140.184.11      |
 | 英国西部              | 51.141.8.11        |
 | 美国中西部      | 13.78.145.25       |
-| 欧洲西部          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| 西欧          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | 美国西部              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | 美国西部 2            | 13.66.226.202      |
 |                      |                    |

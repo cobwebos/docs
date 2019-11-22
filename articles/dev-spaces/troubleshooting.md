@@ -1,20 +1,16 @@
 ---
 title: 故障排除
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
-ms.translationtype: MT
+ms.openlocfilehash: 5eec9771e964cf6b47492fdad34bcba14d897d41
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072187"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279723"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -453,3 +449,13 @@ kubectl -n my-namespace delete pod --all
 ```
 
 在 pod 重新启动后，可以开始将现有命名空间用于 Azure Dev Spaces。
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>启用群集节点的受限制传出流量的 AKS 群集上的 Azure Dev Spaces
+
+若要在 AKS 群集上启用 Azure Dev Spaces，而这些群集节点的传出流量受到限制，则必须允许以下 Fqdn：
+
+| FQDN                                    | 端口      | 使用      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS:443 | 请求 linux alpine 和其他 Azure Dev Spaces 映像 |
+| gcr.io | HTTP：443 | 请求 helm/tiller 映像|
+| storage.googleapis.com | HTTP：443 | 请求 helm/tiller 映像|

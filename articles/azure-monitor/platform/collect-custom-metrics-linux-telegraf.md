@@ -1,6 +1,6 @@
 ---
 title: 通过 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
-description: 使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
+description: 说明如何在 Azure 中的 Linux VM 上部署 InfluxData Telegraf 代理，并将代理配置为将指标发布到 Azure Monitor。
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 4e8783d500ed7dd6e8e5d518d2a4fbe5e5e1e276
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200521"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305288"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标
 
@@ -33,13 +33,13 @@ ms.locfileid: "73200521"
 
 创建新的 Linux VM： 
 
-1. 从左侧导航窗格中选择 "**创建资源**" 选项。 
+1. 在左侧导航窗格中选择“创建资源”选项。 
 1. 搜索“虚拟机”。  
 1. 选择“Ubuntu 16.04 LTS”，然后选择“创建”。 
-1. 提供 VM 名称（如**MyTelegrafVM**）。  
-1. 将磁盘类型保留为“SSD”。 然后提供**用户名**，如**azureuser**。 
-1. 对于 "**身份验证类型**"，请选择 "**密码**"。 然后输入一个密码，稍后将使用该密码通过 SSH 连接到此 VM。 
-1. 选择**创建新的资源组**。 然后提供一个名称，例如**myResourceGroup**。 选择你的**位置**。 然后选择“确定”。 
+1. 提供一个 VM 名称，例如 **MyTelegrafVM**。  
+1. 将磁盘类型保留为“SSD”。 然后提供**用户名**，例如 **azureuser**。 
+1. 对于“身份验证类型”，请选择“密码”。 然后输入一个密码，稍后将使用该密码通过 SSH 连接到此 VM。 
+1. 选择“创建新的资源组”。 然后提供一个名称，例如 **myResourceGroup**。 选择你的“位置”。 然后选择“确定”。 
 
     ![创建 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "73200521"
 
     ![虚拟机大小 Telegraph 代理概述](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在**网络** > **网络安全组**"中的"**设置**"页上 > **选择" 公用入站端口**"，选择" **HTTP**和**SSH （22）** "。 将剩余的字段保留默认设置，然后选择“确定”。 
+1. 在“设置”页上的“网络” **“网络安全组”** “选择公共入站端口”中，选择“HTTP”和“SSH (22)”。 >  >  将剩余的字段保留默认设置，然后选择“确定”。 
 
 1. 在“摘要”页上，选择“创建”以启动 VM 部署。 
 
@@ -63,7 +63,7 @@ ms.locfileid: "73200521"
 
 ![Telegraf VM 概述页](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-在“连接到虚拟机”页面中，保留默认选项，以使用 DNS 名称通过端口 22 进行连接。 在**使用 VM 本地帐户登录**时，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式： 
+在“连接到虚拟机”页面中，保留默认选项，以使用 DNS 名称通过端口 22 进行连接。 在“使用 VM 本地帐户登录”中，会显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式： 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -128,7 +128,7 @@ sudo systemctl start telegraf
 
 ## <a name="clean-up-resources"></a>清理资源 
 
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，然后选择 "**删除**"。 确认要删除的资源组的名称。 
+不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，然后选择“删除”。 确认要删除的资源组的名称。 
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[自定义指标](metrics-custom-overview.md)。

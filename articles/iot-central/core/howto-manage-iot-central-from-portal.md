@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 59fc01920a94e8ab3e7037e4bb226ea18a4314bf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c9a8ed6d55fbbfcf59c98a86ac98cb4264d31ee4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806506"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278819"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
@@ -41,10 +41,10 @@ ms.locfileid: "73806506"
 
 填写窗体中的所有字段。 此窗体类似于你填写在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建应用程序的窗体。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
 
-**Location**是要在其中创建应用程序的物理位置或[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择在物理上离设备最近的位置，以获得最佳性能。 可以在[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central)页面上查看提供 Azure IoT Central 的区域。 选择某个位置后，就不能再将应用程序移到其他位置。
+**位置**是要在其中创建应用程序的[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择在物理上离设备最近的位置，以获得最佳性能。 Azure IoT Central 当前在**美国**、**澳大利亚**、**亚太**或**欧洲**可用。  选择某个位置后，就不能再将应用程序移到其他位置。
 
 > [!NOTE]
-> **预览应用程序**模板当前仅在 "**北欧**" 和 "**美国中部**" 区域提供。
+> **预览应用程序**模板目前仅适用于**欧洲**和**美国**位置。
 
 ![管理门户：创建 IoT Central 资源](media/howto-manage-iot-central-from-portal/image1a.png)  
 

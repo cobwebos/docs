@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor（预览版）| Microsoft Docs
+title: 使用 PowerShell 或模板启用用于 VM 的 Azure Monitor （经典）
 description: 本文介绍如何使用 Azure PowerShell 或 Azure 资源管理器模板为一个或多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/14/2019
-ms.openlocfilehash: 25e9848124b84822749d3be4d1ead7b86e6e584e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 7d5107279654aa883a040a9168eb099a6543caa8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091773"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286230"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>通过 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor（预览版）
 
@@ -141,7 +141,7 @@ Azure 资源管理器模板在存档文件 (.zip) 中提供，该文件可以从
 - **NewVmOnboarding** 模板用于创建虚拟机并启用用于 VM 的 Azure Monitor 来监视它。
 - **ExistingVmssOnboarding** 模板可启用用于 VM 的 Azure Monitor，前提是虚拟机规模集已存在。
 - **NewVmssOnboarding** 模板用于创建虚拟机规模集并启用用于 VM 的 Azure Monitor 来监视它们。
-- **ConfigureWorkspace**模板通过启用 Linux 和 Windows 操作系统性能计数器的解决方案和集合来配置 Log Analytics 工作区以支持用于 VM 的 Azure Monitor。
+- **ConfigureWorkspace** 模板可将 Log Analytics 工作区配置为支持用于 VM 的 Azure Monitor，只需启用相关解决方案以及 Linux 和 Windows 操作系统性能计数器集合即可。
 
 >[!NOTE]
 >如果虚拟机规模集已经存在，且升级策略已设置为“手动”，则不需在运行 **ExistingVmssOnboarding** Azure 资源管理器模板后默认为实例启用用于 VM 的 Azure Monitor。 必须手动升级实例。
@@ -185,7 +185,7 @@ provisioningState       : Succeeded
 
 对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果安装了 VM 扩展，该脚本会尝试重新安装它。 如果未安装 VM 扩展，该脚本将安装 Log Analytics 和依赖关系代理 VM 扩展。
 
-验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 

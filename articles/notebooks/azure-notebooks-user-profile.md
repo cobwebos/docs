@@ -1,23 +1,14 @@
 ---
 title: 用于 Azure Notebooks 的用户个人资料和 ID
 description: 如何创建和管理 Azure Notebooks 的用户配置文件和用户 ID，该配置文件将成为共享笔记本的 URL 的一部分。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: 3985e3d5fbe6e24014694665557f13bcc9a35a25
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0874fe8223ae9c49ccfe4e8efedf2620117a0f8c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598212"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277612"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
 

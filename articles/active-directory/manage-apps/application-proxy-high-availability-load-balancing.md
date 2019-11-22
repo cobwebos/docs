@@ -1,5 +1,5 @@
 ---
-title: Azure AD 应用程序代理的高可用性和负载平衡 |Microsoft Docs
+title: 高可用性和负载平衡-Azure AD 应用程序代理
 description: 流量分布如何与应用程序代理部署一起工作。 包括有关如何优化连接器性能和对后端服务器使用负载平衡的提示。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169808"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275536"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>应用程序代理连接器和应用程序的高可用性和负载均衡
 
@@ -81,18 +81,18 @@ ms.locfileid: "72169808"
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>多个应用服务器之间负载平衡的最佳实践
 如果分配给应用程序代理应用程序的连接器组有两个或更多连接器，并且你在多个服务器（服务器场）上运行后端 web 应用程序，则需要良好的负载平衡策略。 一个好的策略可确保服务器平均获取客户端请求，并阻止服务器场中的服务器过度使用或未通过使用。
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>方案 1：后端应用程序不需要会话持久性
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>方案1：后端应用程序不需要会话持久性
 最简单的情况是后端 web 应用程序不需要会话粘性（会话持久性）。 来自用户的任何请求都可以由服务器场中的任何后端应用程序实例处理。 你可以使用第4层负载均衡器，并将其配置为无关联。 某些选项包括 Microsoft 网络负载平衡、Azure 负载均衡器或来自其他供应商的负载均衡器。 或者，可以配置轮循机制。
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>方案 2：后端应用程序需要会话暂留
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>方案2：后端应用程序要求会话持久性
 在这种情况下，后端 web 应用程序需要在经过身份验证的会话期间进行会话粘性（会话持久性）。 所有来自用户的请求必须由在服务器场中的同一服务器上运行的后端应用程序实例处理。
 此方案可能更复杂，因为客户端通常与应用程序代理服务建立多个连接。 不同连接的请求可能会在服务器场中的不同连接器和服务器上。 由于每个连接器使用其自己的 IP 地址进行此通信，因此负载均衡器无法基于连接器的 IP 地址来确保会话粘性。 源 IP 相关性不能使用。
 下面是方案2的一些选项：
 
-- 选项 1：基于负载均衡器设置的会话 cookie，建立会话持久性。 建议使用此选项，因为这样可以在后端服务器之间更均匀地分配负载。 它需要具有此功能的第7层负载均衡器，并且可以处理 HTTP 流量并终止 SSL 连接。 你可以使用 Azure 应用程序网关（会话相关性）或其他供应商提供的负载均衡器。
+- 选项1：基于负载均衡器设置的会话 cookie 建立会话持久性。 建议使用此选项，因为这样可以在后端服务器之间更均匀地分配负载。 它需要具有此功能的第7层负载均衡器，并且可以处理 HTTP 流量并终止 SSL 连接。 你可以使用 Azure 应用程序网关（会话相关性）或其他供应商提供的负载均衡器。
 
-- 选项 2：将会话暂留在 X 转发的标头字段的基础上。 此选项需要具有此功能的第7层负载均衡器，并且可以处理 HTTP 流量并终止 SSL 连接。  
+- 选项2：使会话在 X 转发的标头字段中保留。 此选项需要具有此功能的第7层负载均衡器，并且可以处理 HTTP 流量并终止 SSL 连接。  
 
-- 选项 3：将后端应用程序配置为不需要会话暂留。
+- 选项3：将后端应用程序配置为不需要会话暂留。
 
 请参阅你的软件供应商文档，了解后端应用程序的负载平衡要求。
 

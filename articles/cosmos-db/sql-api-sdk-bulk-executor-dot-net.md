@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2019
 ms.author: ramkris
-ms.openlocfilehash: 0ff281e54df0273cc4c72d1780f4a99fe9719aec
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900186"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306750"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -28,17 +28,20 @@ ms.locfileid: "72900186"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以将 Azure Cosmos 容器中的现有数据大容量更新为修补程序。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
+| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 中的批量执行程序库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**入门**|[批量执行程序库 .NET SDK 入门](bulk-executor-dot-net.md)|
 | **当前受支持的框架**| Microsoft .NET Framework 4.5.2、4.6.1 和 .NET Standard 2.0 |
+
+> [!NOTE]
+> 如果你使用的是批量执行器，请参阅[.NET sdk](tutorial-sql-api-dotnet-bulk-import.md)的最新版本1.x，其中包含内置于 SDK 中的批量执行器。 
 
 ## <a name="release-notes"></a>发行说明
 
@@ -140,6 +143,6 @@ ms.locfileid: "72900186"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解批量执行器 Java 库，请参阅以下文章：
+若要了解批量执行程序 Java 库，请参阅以下文章：
 
-[Java 大容量执行器库 SDK 和发布信息](sql-api-sdk-bulk-executor-java.md)
+[Java 批量执行程序库 SDK 和发行信息](sql-api-sdk-bulk-executor-java.md)

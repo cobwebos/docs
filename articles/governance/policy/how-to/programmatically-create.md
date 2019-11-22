@@ -3,18 +3,18 @@ title: 以编程方式创建策略
 description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bc97eac8f66a3c289bb22bfac8617177d60b4583
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959421"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267237"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
 本文逐步讲解如何以编程方式创建和管理策略。 Azure Policy 定义对资源强制实施不同的规则和效果。 强制实施可确保资源始终符合企业标准和服务级别协议。
 
-有关符合性的信息，请参阅[获取符合性数据](getting-compliance-data.md)。
+有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

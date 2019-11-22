@@ -1,23 +1,14 @@
 ---
 title: 配置和管理 Azure Notebooks 项目
 description: 如何通过 Azure Notebooks UI 和直接终端访问管理项目元数据、项目文件、项目的环境和设置步骤。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
-ms.author: kraigb
-ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973133"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277645"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -42,7 +33,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据。 可随时更改项目元数据。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
 | 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
@@ -61,7 +52,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 “+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹。 使用该命令时，首先选择要创建的项的类型：
 
-| 项类型 | 描述 | 命令行为 |
+| 项类型 | 说明 | 命令行为 |
 | --- | --- | --- |
 | **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
 | **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
@@ -70,7 +61,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ### <a name="upload-files"></a>上传文件
 
-“上传”命令为从其他位置导入数据提供两个选择：“从 URL 导入”以及“从计算机导入”。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
+"**上传**" 命令提供了两个选项用于从**URL**和**计算机**导入数据。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
 
 ### <a name="select-file-specific-commands"></a>选择特定于文件的命令
 
@@ -78,17 +69,17 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ![文件上下文菜单上的命令](media/project-file-commands.png)
 
-| Command | 键盘快捷键 | 操作 |
+| 命令 | 键盘快捷键 | 操作 |
 | --- | --- | --- |
 | 运行 | r（或单击） | 运行笔记本文件。 其他文件类型打开供查看。  |
 | 复制链接 | y | 将文件链接复制到剪贴板。 |
 | 在 Jupyter 实验室中运行 | j | 在 Jupyter 实验室中运行笔记本，比起 Jupyter 通常提供的界面而言，该界面更像是面向开发者的界面。 |
 | 预览 | p | 打开文件 HTML 格式的预览；对于笔记本，则以只读形式呈现笔记本。 有关详细信息，请参阅[预览](#preview)部分。 |
 | 编辑文件 | i | 打开文件进行编辑。 |
-| 下载 | 天 | 下载 zip 文件，它包含文件夹的文件或内容。 |
+| 下载 | d | 下载 zip 文件，它包含文件夹的文件或内容。 |
 | 重命名 | a | 提示输入文件或文件夹的新名称。 |
-| DELETE | X | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
-| 移动 | 分钟 | 将文件移到同一项目的其他文件夹中。 |
+| 删除 | x | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
+| 移动 | m | 将文件移到同一项目的其他文件夹中。 |
 
 #### <a name="preview"></a>预览
 
@@ -96,12 +87,12 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 预览页支持以下几个具有键盘快捷方式的工具栏命令：
 
-| Command | 键盘快捷键 | 操作 |
+| 命令 | 键盘快捷键 | 操作 |
 | --- | --- | --- |
-| 共享 | 秒 | 显示共享弹出式菜单，可从中获取链接、共享至社交媒体、获取用于嵌入的 HTML 以及发送电子邮件。 |
+| 共享 | s | 显示共享弹出式菜单，可从中获取链接、共享至社交媒体、获取用于嵌入的 HTML 以及发送电子邮件。 |
 | 克隆 | c  | 将笔记本克隆到你的帐户。 |
 | 运行 | r | 运行笔记本（假如你有权执行此操作）。 |
-| 下载 | 天 | 下载笔记本的副本。 |
+| 下载 | d | 下载笔记本的副本。 |
 
 ## <a name="configure-the-project-environment"></a>配置项目环境
 
@@ -115,7 +106,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ### <a name="one-time-initialization-script"></a>一次性的初始化脚本
 
-Azure Notebooks 首次为项目创建服务器时，它会在项目中查找一个名为“aznbsetup.sh”的文件。如果该文件存在，Azure Notebooks 会运行它。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中。
+第一次 Azure Notebooks 创建项目的服务器，它将在名为*aznbsetup.sh*的项目中查找文件。如果此文件存在，Azure Notebooks 将运行该文件。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中。
 
 ### <a name="environment-setup-steps"></a>环境设置步骤
 
@@ -131,11 +122,11 @@ Azure Notebooks 首次为项目创建服务器时，它会在项目中查找一�
 
 稍后呈现的信息取决于你所选的操作类型：
 
-- **Requirements.txt**：在第二个下拉列表中，选择项目中已有的一个 *requirements.txt* 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`。 不需要在笔记本内显式安装程序包。
+- **要求 .txt**：在第二个下拉列表中，选择项目中已存在的 "*要求 .txt* " 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行`pip install -r`。 不需要在笔记本内显式安装程序包。
 
-- **Shell 脚本**：在第二个下拉列表中，选择项目中的一个 bash shell 脚本（通常为扩展名为 .sh 的文件），该脚本包含你希望为初始化环境而运行的所有命令。
+- **Shell 脚本**：在第二个下拉列表中，选择项目中的 bash Shell 脚本（通常为扩展名为 *. sh*的文件），其中包含要运行以初始化环境的任何命令。
 
-- **Environment.yml**：在第二个下拉列表中，为使用 conda 环境的 Python 项目选择 environments.yml 文件。
+- **Docker-compose.override.yml**：在第二个下拉列表中，选择用于使用 conda 环境的 Python 项目的*docker-compose.override.yml*文件。
 
 完成添加步骤后，选择“保存”。
 

@@ -7,20 +7,20 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 11/20/2019
 ms.custom: include file
-ms.openlocfilehash: 12d4278171d43fdaf8613a1c91bdbffc269adc56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e46041a33c12b3fcb40e5a04de11108471e59855
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949050"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307234"
 ---
 `objectIdType`（或**对象标识符类型**）是指赋予某个角色的标识类型。 除 `DeviceId` 和 `UserDefinedFunctionId` 类型外，对象标识符类型与 Azure Active Directory 对象的属性相对应。
 
 下表包含 Azure 数字孪生中支持的对象标识符类型：
 
-| type | 描述 |
+| 类型 | 说明 |
 | --- | --- |
 | UserId | 向用户分配角色。 |
 | DeviceId | 向设备分配角色。 |

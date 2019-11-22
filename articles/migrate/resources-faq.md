@@ -4,20 +4,20 @@ description: 获取有关 Azure Migrate 服务的常见问题解答。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185780"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284469"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
 本文解答了有关 Azure Migrate 的常见问题。 阅读本文后，如果你有更多的查询，请将其发布到[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="which-azure-geographies-are-supported"></a>支持哪些 Azure 区域？
 
@@ -82,7 +82,7 @@ Azure Migrate 设备收集的数据存储在创建迁移项目时选择的 Azure
 
 ### <a name="can-i-connect-the-same-appliance-to-multiple-vcenter-server-instances"></a>是否可以将同一台设备连接到多个 vCenter Server 实例？
 
-不能。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，需要部署多个设备。
+不。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，需要部署多个设备。
 
 
 ### <a name="machine-size-changed-can-i-run-the-assessment-again"></a>计算机大小已更改。 能否再次运行评估？
@@ -118,16 +118,10 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>服务器评估与 Site Recovery 部署规划器之间的区别是什么？
 
-服务器评估是一种迁移规划工具。 Site Recovery 部署规划器是一种灾难恢复规划工具。 
+服务器评估是一种迁移规划工具。 Site Recovery 部署规划器是一种灾难恢复规划工具。
 
 - **规划本地迁移到 azure**：如果计划将本地服务器迁移到 azure，请使用服务器评估进行迁移规划。 它会评估本地工作负荷，并提供指导和工具来帮助你进行迁移。 迁移计划准备就绪后，可以使用工具（包括 Azure Migrate 服务器迁移）将计算机迁移到 Azure。
 - **规划 azure 到 azure 的灾难恢复**：如果计划使用 Site Recovery 设置从本地到 Azure 的灾难恢复，请使用 Site Recovery 部署规划器。 部署规划器提供针对灾难恢复目的的本地环境的深入、Site Recovery 特定的评估。 它提供有关灾难恢复的建议，例如复制和故障转移。
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>企业协议（EA）计划 Azure Migrate 估算成本吗？
-
-Azure Migrate Server 评估目前不支持[企业协议计划](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 一种解决方法是，在创建评估时，可以指定即**用即付** **产品**/服务，并在评估属性中手动添加折扣百分比（适用于订阅）作为**折扣**：
-
-  ![评估属性](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>作为本地和基于性能的大小调整有什么区别？
 
@@ -167,7 +161,7 @@ Azure Migrate Server 评估目前不支持[企业协议计划](https://azure.mic
 > 依赖关系可视化在 Azure 政府版中不可用。
 
 ### <a name="do-i-need-to-pay-to-use-dependency-visualization"></a>是否需要付费才能使用依赖项可视化？
-不能。 [详细了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定价。
+不。 [详细了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定价。
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>要实现依赖项可视化，是否需要安装任何软件？
 
@@ -201,7 +195,7 @@ Azure Migrate Server 评估目前不支持[企业协议计划](https://azure.mic
 - 查看[MMA 支持的 Linux 操作系统](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)的列表。
 
 ### <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>是否可将依赖项可视化多个小时？
-不能。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖项。 但是，可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+不。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖项。 但是，可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
 
 ### <a name="can-i-use-dependency-visualization-for-groups-of-more-than-10-vms"></a>能否对超过10个 Vm 的组使用依赖项可视化？
 可以可视化包含多达10个 Vm 的组的[依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果有10个以上 Vm 的组，我们建议将该组拆分为较小的组，然后将这些依赖项可视化。

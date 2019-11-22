@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: f748399b6b356e5f8655f59221e78acd0d98f51e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173633"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279650"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>了解 Azure Monitor 容器的 Kubernetes 群集运行状况
 
-对于容器 Azure Monitor，它会监视和报告托管基础结构组件的运行状况状态，以及在 Azure Monitor for 容器支持的任何 Kubernetes 群集上运行的所有节点的运行状况状态。 此体验超出了在[多群集视图](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上计算和报告的群集运行状况状态，现在你可以了解群集中的一个或多个节点是否受资源约束，或者节点或 pod 是否不可用，可能会影响群集中正在运行的应用程序（基于特选指标）。 
+对于容器 Azure Monitor，它会监视和报告托管基础结构组件的运行状况状态，以及在 Azure Monitor for 容器支持的任何 Kubernetes 群集上运行的所有节点的运行状况状态。 此体验超出了在[多群集视图](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上计算和报告的群集运行状况状态，现在你可以了解群集中的一个或多个节点是否受资源约束，或者节点或 pod 是否不可用，可能会影响群集中正在运行的应用程序（基于特选指标）。
+
+>[!NOTE]
+>运行状况功能目前处于公共预览状态。
+>
 
 若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
 
@@ -33,7 +37,7 @@ ms.locfileid: "74173633"
 
 ## <a name="overview"></a>概述
 
-在容器 Azure Monitor 中，运行状况功能提供对 Kubernetes 群集的主动运行状况监视，以帮助你确定和诊断问题。 它使您能够查看检测到的重要问题。 在群集中的容器化代理上评估群集运行状况的监视器，运行状况数据将写入 Log Analytics 工作区中的**KubeHealth**表。 
+在容器 Azure Monitor 中，"运行状况（预览版）" 功能提供对 Kubernetes 群集的主动运行状况监视，以帮助你确定和诊断问题。 它使您能够查看检测到的重要问题。 在群集中的容器化代理上评估群集运行状况的监视器，运行状况数据将写入 Log Analytics 工作区中的**KubeHealth**表。 
 
 Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的大量监视方案：
 
@@ -72,7 +76,7 @@ Kubernetes 群集运行状况基于由以下 Kubernetes 对象和抽象组织的
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>查看 AKS 或非 AKS 群集的运行状况
 
-通过从 Azure 门户的左窗格中选择 "**见解**"，可以直接从 AKS 群集访问为容器运行状况功能 Azure Monitor。 在“见解”部分，选择“容器”。 
+通过从 Azure 门户的左窗格中选择 "**见解**"，可以直接从 AKS 群集访问为容器运行状况（预览版）功能 Azure Monitor。 在“见解”部分，选择“容器”。 
 
 若要查看非 AKS 群集的运行状况（这是托管在本地或 Azure Stack 上的 AKS Engine 群集），请从 Azure 门户的左窗格中选择 " **Azure Monitor** "。 在“见解”部分，选择“容器”。  在 "多群集" 页上，从列表中选择非 AKS 群集。
 

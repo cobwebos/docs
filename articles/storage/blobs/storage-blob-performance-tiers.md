@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932274"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270228"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 blob 存储的性能层
 
@@ -54,6 +54,12 @@ Azure 块 blob 存储提供两个不同的性能层：
 ## <a name="standard-performance"></a>标准性能
 
 标准性能支持不同的[访问层](storage-blob-storage-tiers.md)以最经济高效的方式存储数据。 它已针对大型数据集的高容量和高吞吐量进行了优化。
+
+- **备份和灾难恢复数据集**。 标准性能存储提供经济高效的层，这使其成为短期和长期灾难恢复数据集、辅助备份和符合性数据存档的完美用例。
+
+- **媒体内容**。 通常，在首次创建和存储图像和视频时经常对其进行访问，但当它变旧时，此内容类型的使用频率较低。 标准性能存储为媒体内容需求提供适当的层级。 
+
+- **大容量数据处理**。 这些类型的工作负荷适用于标准存储，因为它们需要经济高效的高吞吐量存储，而不是一致的低延迟。 会暂存大的原始数据集进行处理，并最终迁移到冷层。
 
 ## <a name="migrate-from-standard-to-premium"></a>从标准迁移到高级
 

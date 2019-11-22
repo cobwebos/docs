@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803929"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307319"
 ---
-# <a name="supported-platforms"></a>支持的平台 
+# <a name="supported-platforms"></a>受支持的平台 
 
 ## 虚拟机/服务器<a name="vm-server"></a>
 
@@ -101,18 +101,20 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 * 批处理帐户
 * Service fabric 帐户
 * 自动化帐户
-* 负载均衡
+* 负载均衡器
 * 搜索
 * 服务总线命名空间
 * 流分析
 * 事件中心命名空间
-* Logic Apps
+* 逻辑应用
 * Redis
-* Data Lake 分析
+* 数据湖分析
 * Data Lake Store
 * 密钥保管库
 
 若要详细了解适用于上述 PaaS 资源列表的支持的功能，请参阅[paas 服务支持的功能](security-center-services.md#paas-services)。
+
+还支持对驻留在 Azure Stack 中的虚拟机进行保护。 有关安全中心与 Azure Stack 的集成的详细信息，请参阅将[Azure Stack 虚拟机加入到安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
 
 ## <a name="next-steps"></a>后续步骤
 

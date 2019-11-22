@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
-description: 了解如何排查使用 Azure Resource Graph 查询 Azure 资源时出现的问题
+description: 了解如何在通过 Azure 资源关系图查询 Azure 资源时排查各种 Sdk 的问题。
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958523"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303899"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
 
@@ -91,4 +91,4 @@ Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。
 
 - 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

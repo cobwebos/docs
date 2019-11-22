@@ -1,5 +1,5 @@
 ---
-title: 为 Azure AD 库应用配置联合单一登录时遇到问题 |Microsoft Docs
+title: 为 Azure AD 库应用配置联合 SSO 时出现问题
 description: 解决在使用 SAML 配置 Azure AD 应用程序库中所列应用程序的联合单一登录时可能遇到的一些常见问题
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381216"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274646"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -42,11 +42,11 @@ ms.locfileid: "68381216"
 
 若要了解应用程序预配置的模式，请执行以下操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
+1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。中转到步骤7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
@@ -70,7 +70,7 @@ ms.locfileid: "68381216"
 
     * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 你可以：
+如果此值与 Azure AD 上预配置的模式不匹配。 可以：
 
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 
@@ -90,13 +90,13 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6. 选择已配置单一登录的应用程序。
 

@@ -1,5 +1,5 @@
 ---
-title: 如何打开应用程序代理应用程序所需的防火墙端口 | Microsoft Docs
+title: 如何打开应用程序代理应用程序所需的防火墙端口
 description: 了解要使 Azure AD 应用程序代理正常工作需要打开哪些端口
 services: active-directory
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e69f2e5049ca290a17c058c9d18dc7c6ec91f49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783560"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275551"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>如何打开应用程序代理应用程序所需的防火墙端口
 
 若要查看所需端口的完整列表及每个端口的功能，请参阅[应用程序代理文档](application-proxy-add-on-premises-application.md)的先决条件部分。 请注意，应用程序代理仅使用出站端口。
 
-您还可以检查是否具有所需的端口打开通过打开的所有[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)从本地网络。 绿色复选标记越多表示复原能力越强。 
+还可以通过在本地网络中打开[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)来检查是否已打开所有所需的端口。 绿色复选标记越多表示复原能力越强。 
 
 ## <a name="app-proxy-regions"></a>应用代理区域
 
@@ -37,7 +37,7 @@ ms.locfileid: "65783560"
 
 -   在安装有连接器的服务器的浏览器上打开该工具。
 
--   确保适用于连接器的任何代理或防火墙也应用到此页。 这通过转到可以在 Internet Explorer**设置** - &gt; **Internet 选项** - &gt; **连接**  - &gt; **LAN 设置**。 在此页上，会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
+-   确保适用于连接器的任何代理或防火墙也应用到此页。 若要在 Internet Explorer 中完成此操作，请转到 "**设置**" -&gt; **internet 选项**" -&gt;**连接** -&gt; **LAN 设置**"。 在此页上，会看到“为 LAN 使用代理服务器”字段。 选中此框，将代理地址输入“地址”字段。
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)

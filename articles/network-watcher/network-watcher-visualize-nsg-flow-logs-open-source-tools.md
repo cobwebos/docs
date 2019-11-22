@@ -1,5 +1,6 @@
 ---
-title: 使用网络观察程序和 Elastic Stack 管理和分析网络安全组流日志 | Microsoft Docs
+title: 可视化 NSG 流日志-弹性堆栈
+titleSuffix: Azure Network Watcher
 description: 在 Azure 中使用网络观察程序和 Elastic Stack 管理和分析网络安全组流日志。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53cbfe08d310f7244134e1ae31b18644a83c63d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859997"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277747"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
@@ -30,13 +31,13 @@ ms.locfileid: "60859997"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在本文中，我们将设置一个解决方案，方便用户使用 Elastic Stack 来可视化网络安全组流日志。  将使用 Logstash 输入插件直接从已配置为存储流日志的存储 Blob 获取流日志。 然后使用 Elastic Stack 为流日志编制索引并将这些日志用于创建 Kibana 仪表板，实现信息的可视化。
 
 ![方案][scenario]
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="enable-network-security-group-flow-logging"></a>启用网络安全组流日志记录
 就本方案来说，必须在帐户的至少一个网络安全组上启用网络安全组流日志记录。 有关启用网络安全组流日志的说明，请参阅以下文章：[网络安全组流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。
@@ -205,7 +206,7 @@ sudo /etc/init.d/logstash start
 
 下载[仪表板文件](https://aka.ms/networkwatchernsgflowlogdashboard)、[可视化效果文件](https://aka.ms/networkwatchernsgflowlogvisualizations)和[已保存的搜索文件](https://aka.ms/networkwatchernsgflowlogsearch)。
 
-在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。   然后，可从“仪表板”  选项卡打开并加载示例仪表板。
+在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 

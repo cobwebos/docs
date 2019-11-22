@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dad28da0b481467633bebf664fea2be39a50200b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e72e6c112913d646b6dc1479a9b80acc6d4ec7b1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681053"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280756"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
-> * [版本 1](v1/data-factory-onprem-db2-connector.md)
+> * [第 1 版](v1/data-factory-onprem-db2-connector.md)
 > * [当前版本](connector-db2.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 DB2 数据库复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -76,7 +76,9 @@ DB2 链接服务支持以下属性：
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | 否 |
+| certificateCommonName | 使用安全套接字层（SSL）或传输层安全性（TLS）加密时，必须为 "证书公用名" 输入一个值。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
 
@@ -114,7 +116,7 @@ DB2 链接服务支持以下属性：
 | type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
 | schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
-| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
+| tableName | 具有架构的表的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -138,7 +140,7 @@ DB2 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 DB2 源支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 DB2 源支持的属性列表。
 
 ### <a name="db2-as-source"></a>DB2 作为源
 
@@ -194,11 +196,11 @@ DB2 链接服务支持以下属性：
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| Date |Datetime |
+| 日期 |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
+| 小数 |小数 |
+| DecimalFloat |小数 |
 | Double |Double |
 | Float |Double |
 | Graphic |String |
@@ -206,7 +208,7 @@ DB2 链接服务支持以下属性：
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
-| 数字 |Decimal |
+| 数字 |小数 |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |

@@ -1,6 +1,6 @@
 ---
-title: 设置安全密钥的安全信息（预览版）-Azure AD
-description: 如何设置安全信息以使用快速标识联机（FIDO2）安全密钥验证身份。
+title: 设置安全密钥作为验证方法-Azure AD
+description: 如何设置安全信息（预览版）页以验证你的身份是否使用快速标识联机（FIDO2）安全密钥作为验证方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803786"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278950"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>设置安全密钥的安全信息（预览版）
+# <a name="set-up-a-security-key-as-your-verification-method"></a>将安全密钥设置为验证方法
 
-你可以使用安全密钥作为你的组织中的无密码登录方法。 安全密钥是一种物理设备，使用唯一的 PIN 登录到工作或学校帐户。 由于安全密钥要求你具有物理设备，并且只有你知道的内容，因此它被视为比用户名和密码更强的身份验证方法。
+你可以使用安全密钥作为你的组织中的无密码登录方法。 安全密钥是一种物理设备，使用唯一的 PIN 登录到工作或学校帐户。 由于安全密钥要求你具有物理设备，并且只有你知道的内容，因此它被视为比用户名和密码更强的验证方法。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "73803786"
 如果你的管理员或组织需要为你的工作或学校帐户提供安全密钥，则会向你提供该密钥。 你可以使用不同类型的安全密钥，例如，你插入到设备的 USB 密钥或你在 NFC 读卡器上点击的 NFC 密钥。 你可以从制造商的文档中了解有关安全密钥的详细信息，包括其类型。
 
 > [!Note]
-> 如果你无法使用 FIDO2 安全密钥，则可以使用其他无密码身份验证方法，例如 Microsoft Authenticator 应用或 Windows Hello。 有关 Microsoft Authenticator 应用的详细信息，请参阅[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)。 有关 Windows Hello 的详细信息，请参阅[Windows hello 概述](https://www.microsoft.com/windows/windows-hello)。
+> 如果你无法使用 FIDO2 安全密钥，则可以使用其他无密码验证方法，例如 Microsoft Authenticator 应用或 Windows Hello。 有关 Microsoft Authenticator 应用的详细信息，请参阅[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)。 有关 Windows Hello 的详细信息，请参阅[Windows hello 概述](https://www.microsoft.com/windows/windows-hello)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -150,7 +150,7 @@ ms.locfileid: "73803786"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关无密码 authentication 方法的详细信息，请阅读[Microsoft 的 Azure AD 开始 FIDO2 安全密钥的公共预览版，启用无密码登录](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)博客，或阅读[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)和[Windows Hello 概述](https://www.microsoft.com/windows/windows-hello)文章。
+- 有关无密码验证方法的详细信息，请阅读[Microsoft 的 Azure AD 开始 FIDO2 安全密钥的公共预览版，启用无密码登录](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)博客，或阅读[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)和[Windows Hello 概述](https://www.microsoft.com/windows/windows-hello)文章。
 
 - 有关[与 Microsoft 兼容的安全密钥](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)的详细信息。
 

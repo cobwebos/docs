@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 715752072a14a3220d17d0dbda2efd0786a83de4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123602"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271274"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -137,7 +137,7 @@ Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详
 
 ## <a name="audit-trail-of-the-ml-lifecycle"></a>ML 生命周期的审核线索
 
-Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而言：
+Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是在下列情况下：
 
 - Azure ML[与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，以跟踪你的代码所来自的存储库/分支/提交的信息。
 - [AZURE ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪和版本数据。
@@ -169,6 +169,6 @@ Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体而
 
 + 创建使用已[部署模型](how-to-consume-web-service.md)的客户端
 
-+ [规模化机器学习](/architecture/data-guide/big-data/machine-learning-at-scale)
++ [规模化机器学习](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
 + [Azure AI 参考体系结构 & 最佳实践代表](https://github.com/microsoft/AI)

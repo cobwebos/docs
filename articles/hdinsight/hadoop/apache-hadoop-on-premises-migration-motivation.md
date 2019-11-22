@@ -2,18 +2,18 @@
 title: 优势：将本地 Apache Hadoop 迁移到 Azure HDInsight
 description: 了解将本地 Hadoop 群集迁移到 Azure HDInsight 的动机和权益。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494938"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267326"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -45,7 +45,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
 
-- **简化版本管理** - Azure HDInsight 管理 Hadoop 生态系统组件的版本并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
+- **简化版本管理**-Azure HDInsight 管理 Hadoop eco 系统组件的版本，并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
 
 - **针对特定工作负载优化的较小群集与组件之间的依赖关系较少** - 典型的本地 Hadoop 设置使用具有多种用途的单个群集。 使用 Azure HDInsight，可创建特定于工作负载的群集。 为特定工作负载创建群集消除了维护单个群集日益复杂的复杂性。
 
@@ -85,7 +85,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 - 项目详细信息
 - Azure 要求
 
-### <a name="on-premises-deployment-questionnaire"></a>本地部署问卷
+### <a name="on-premises-deployment-questionnaire"></a>本地部署调查表
 
 | **问题** | **示例** | **答案** |
 |---|---|---|
@@ -95,7 +95,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |群集数|4|
 |主节点数|2|
-|辅助角色节点数|100|
+|辅助角色节点数|100 个|
 |边缘节点数| 5|
 |总磁盘空间|100 TB|
 |主节点配置|m/y、cpu、磁盘等。|
@@ -138,9 +138,9 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |**主题**：元数据|||
 |Hive 数据库类型|Mysql、Postgres||
 |Hive 元存储的数目|2||
-|Hive 表的数目|100||
-|Ranger 策略数|20||
-|Oozie 工作流数|100||
+|Hive 表的数目|100 个||
+|Ranger 策略的数目|20||
+|Oozie 工作流的数目|100 个||
 |**主题**：缩放|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
@@ -152,11 +152,11 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |已使用的磁盘空间|75%||
 |已使用的平均网络百分比|25%
 |**主题**：人员|||
-|管理员数|2||
-|开发人员数量|10||
-|最终用户数|100||
+|管理员的数目|2||
+|开发人员的数目|10||
+|最终用户的数目|100 个||
 |技能|Hadoop、Spark||
-|用于迁移的可用资源数|2||
+|可用于迁移工作的资源数目|2||
 |**主题**：限制|||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
@@ -180,7 +180,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
-|要同步的 AD 用户数？|          100||
+|要同步的 AD 用户数？|          100 个||
 |确定将密码同步到云？|    是||
 |仅云用户？|                 是||
 |需要 MFA？|                       否|| 

@@ -1,5 +1,5 @@
 ---
-title: 如何为 Azure AD 库应用程序配置用户预配 | Microsoft Docs
+title: 如何配置 Azure AD 库应用的用户预配
 description: 如何为在 Azure AD 应用程序库中列出的应用程序快速配置丰富的用户帐户预配和取消预配
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bcc53b97b1187314404cfe075f6593f437e7bf4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5a2955a418aa0ce43c030afc588a2840bbb9b50f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789051"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275831"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>如何为 Azure AD 库应用程序配置用户预配
 

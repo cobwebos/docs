@@ -2,16 +2,16 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 08e6d0c3516f16b72dc58e5dfe3f1e7da2eca154
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90831b106ddc3c7ed010df3fdc0ae9970391eb5b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850280"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284081"
 ---
-| 类别              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [映射数据流](../articles/data-factory/concepts-data-flow-overview.md) | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
+| 类别              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [映射数据流](../articles/data-factory/concepts-data-flow-overview.md)（源/接收器） | [查找活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
 | **Azure**             | [Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) | ✓/✓                                                          | ✓/✓ <br> <small>支持的格式：分隔文本、Parquet、JSON、Avro</small>               | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
@@ -23,9 +23,9 @@ ms.locfileid: "73850280"
 | &nbsp;                | [Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
-| &nbsp;                | [Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                           | ✓ <br> <small>不支持 MSI 身份验证</small>                                                            | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                           | ✓/✓ <br> <small>不支持 MSI 身份验证</small>                                                            | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
-| &nbsp;                | [Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓/✓                                                            | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure 认知搜索索引](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |                                                              |
 | &nbsp;                | [Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **数据库**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
@@ -97,4 +97,4 @@ ms.locfileid: "73850280"
 | &nbsp;                | [Zoho（预览）](../articles/data-factory/connector-zoho.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 
 > [!NOTE]
-> 连接器标记为“预览”意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 连接器标记为“预览”意味着，可以试用它并向我们提供反馈。  若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。

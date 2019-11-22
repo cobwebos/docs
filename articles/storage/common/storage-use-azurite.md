@@ -1,22 +1,22 @@
 ---
-title: 将 Azurite 开源模拟器用于 Azure 存储开发和测试（预览）
-description: Azurite 开源模拟器（预览版）提供了一个免费的本地环境，用于测试 Azure 存储应用程序。
+title: 将 Azurite 模拟器用于本地 Azure 存储开发
+description: Azurite 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure 存储应用程序。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309530"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269458"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>将 Azurite 开源模拟器用于 Azure 存储开发和测试（预览）
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>将 Azurite 模拟器用于本地 Azure 存储开发和测试（预览）
 
-Azurite 版本3.2 开源模拟器（预览版）提供了一个免费的本地环境，用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 MacOS 上提供跨平台支持。 Azurite v3 支持 Azure Blob 服务实现的 API。
+Azurite 版本 3.2 开源模拟器（预览版）提供一个免费的本地环境用于测试 Azure blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 MacOS 上提供跨平台支持。 Azurite v3 支持 Azure Blob 服务实现的 API。
 
 Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿真器](storage-use-emulator.md)。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。
 
@@ -29,39 +29,39 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>安装并运行 Azurite Visual Studio Code 扩展
 
-在 Visual Studio Code 中选择“扩展”窗格，然后在“扩展: 市场”中搜索 *Azurite*。
+在 Visual Studio Code 中选择“扩展”窗格，然后在“扩展: 市场”中搜索 **Azurite**。
 
 ![Visual Studio Code 扩展市场](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 或者，在浏览器中导航到 [VS Code 扩展市场](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 选择“安装”按钮打开 Visual Studio Code，并直接转到 Azurite 扩展页。
 
-可以通过单击 VS Code 状态栏中的 **[Azurite Blob service]** 或 **[Azurite Queue service]** ，或在 VS Code 命令面板中发出以下命令，快速启动或关闭 Azurite。 若要打开命令面板，请在 VS Code 中按 **F1**。
+可以通过单击 VS Code 状态栏中的“[Azurite Blob 服务]”或“[Azurite 队列服务]”，或者在 VS Code 命令面板中发出以下命令，快速启动或关闭 Azurite。 若要打开命令面板，请在 VS Code 中按 **F1**。
 
 该扩展支持以下 Visual Studio Code 命令：
 
-   * **Azurite:Start** - 启动所有 Azurite 服务
-   * **Azurite:Close** - 关闭所有 Azurite 服务
-   * **Azurite:Clean** - 重置所有 Azurite 服务永久性数据
-   * **Azurite:启动 blob 服务** -启动 blob 服务
-   * **Azurite:关闭 blob 服务** -关闭 blob 服务
-   * **Azurite:清理 blob 服务** -清理 blob 服务
-   * **Azurite:启动队列服务** -启动队列服务
-   * **Azurite:关闭队列服务** -关闭队列服务
-   * **Azurite:清理队列服务** -清理队列服务
+   * **Azurite：启动**所有 Azurite 服务
+   * **Azurite：关闭**所有 Azurite 服务
+   * **Azurite：清理**-重置所有 Azurite 服务持久性数据
+   * **Azurite：启动 Blob 服务**-启动 blob 服务
+   * **Azurite：关闭 Blob 服务**-关闭 blob 服务
+   * **Azurite：清理 Blob 服务**-清理 blob 服务
+   * **Azurite：启动队列服务**-启动队列服务
+   * **Azurite：关闭队列服务**-关闭队列服务
+   * **Azurite：清理队列**服务-清理队列服务
 
-若要在 Visual Studio Code 中配置 Azurite，请选择 "扩展" 窗格。 选择**Azurite**的 "**管理**" （齿轮）图标。 选择“配置扩展设置”。
+若要在 Visual Studio Code 中配置 Azurite，请选择“扩展”窗格。 选择 **Azurite** 所对应的“管理”(齿轮)图标。 选择“配置扩展设置”。
 
 ![Azurite - 配置扩展设置](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 支持以下设置：
 
-   * **Azurite:Blob 主机** - Blob 服务的侦听终结点。 默认设置为 127.0.0.1。
-   * **Azurite:Blob 端口** - Blob 服务的侦听端口。 默认端口为 10000。
-   * **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值为 **false**。
-   * **Azurite:位置** - 工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
-   * **Azurite:Queue Host** -队列服务侦听终结点。 默认设置为 127.0.0.1。
-   * **Azurite:队列端口** -队列服务侦听端口。 默认端口为10001。
-   * **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值为 **false**。
+   * **Azurite： Blob 主机**-blob 服务侦听终结点。 默认设置为 127.0.0.1。
+   * **Azurite： Blob 端口**-blob 服务侦听端口。 默认端口为 10000。
+   * **Azurite：调试**-将调试日志输出到 Azurite 通道。 默认值为 **false**。
+   * **Azurite： Location** -工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
+   * **Azurite： Queue Host** -队列服务侦听终结点。 默认设置为 127.0.0.1。
+   * **Azurite：队列端口**-队列服务侦听端口。 默认端口为 10001。
+   * **Azurite：无提示**模式禁用访问日志。 默认值为 **false**。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -91,7 +91,7 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 
 **指定工作区位置**：
 
-在下面的示例中， `-v c:/azurite:/data`参数将*c：/azurite*指定为 azurite 持久数据位置。 在运行 Docker 命令之前，必须创建目录*c：/azurite*。
+在以下示例中，`-v c:/azurite:/data` 参数指定“c:/azurite”作为 Azurite 永久性数据的位置。 必须在运行 Docker 命令之前创建目录“c:/azurite”。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
@@ -164,7 +164,7 @@ C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
     [-s | --silent] [-h | --help]
 ```
 
-**-D**是 **--debug**的快捷方式，- **l**开关是 **--location**的快捷方式， **-s**是--**缄默**的快捷方式， **-h**是-- **help**的快捷方式。
+**-d** 是 **--debug** 的简写， **-l** 开关是 **--location** 的简写， **-s** 是 **--silent** 的简写， **-h** 是 **--help** 的简写。
 
 ### <a name="blob-listening-host"></a>Blob 侦听主机
 
@@ -208,7 +208,7 @@ Azurite 启动期间，会显示正在使用的端口。
 
 ### <a name="queue-listening-host"></a>队列侦听主机
 
-**（可选）** 默认情况下，Azurite 将侦听本地服务器 127.0.0.1。 使用 **--queueHost**开关将地址设置为你的要求。
+**（可选）** 默认情况下，Azurite 将侦听本地服务器 127.0.0.1。 可根据要求使用 **--queueHost** 开关设置地址。
 
 仅接受本地计算机上的请求：
 
@@ -227,7 +227,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>队列侦听端口配置
 
-**可选**默认情况下，Azurite 会侦听端口10001上的队列服务。 使用 **--queuePort**开关指定所需的侦听端口。
+**（可选）** 默认情况下，Azurite 将在端口 10001 上侦听队列服务。 使用 **--queuePort** 开关可指定所需的侦听端口。
 
 > [!NOTE]
 > 使用自定义端口后，需要在 Azure 存储工具或 SDK 中更新连接字符串或相应的配置。
@@ -340,7 +340,7 @@ Azurite 的服务终结点不同于 Azure 存储帐户的终结点。 本地计�
 
 Azurite 不是可缩放的存储服务，且不支持大量并发客户端。 它不提供性能方面的保证。 Azurite 用于开发和测试目的。
 
-### <a name="error-handling"></a>错误处理
+### <a name="error-handling"></a>错误处理。
 
 Azurite 的错误处理逻辑与 Azure 存储相符，但存在一些差别。 例如，错误消息可能不同，而错误状态代码是一致的。
 

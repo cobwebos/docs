@@ -1,5 +1,5 @@
 ---
-title: 粗 Relocalization |Microsoft Docs
+title: 粗 Relocalization
 description: 粗 relocalization 快速入门指南。
 author: bucurb
 manager: dacoghl
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1d9e58f2d7eda818665a6253a8d0508104b17405
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093873"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270150"
 ---
-# <a name="coarse-relocalization"></a>粗 relocalization
+# <a name="coarse-relocalization"></a>粗略重新局部化
 
 粗 relocalization 是提供问题初始答案的一项功能：我的*设备现在的位置/我应该观察哪些内容？* 响应并不精确，但其形式如下：*你接近这些定位点，尝试找到其中一个*。
 

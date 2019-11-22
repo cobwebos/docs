@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序通过 VPN 网关诊断本地连接 | Microsoft 文档
+title: 通过 VPN 网关诊断本地连接
+titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序资源故障排除功能通过 VPN 网关诊断本地连接。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754063"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275943"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
@@ -30,7 +31,7 @@ ms.locfileid: "66754063"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
@@ -39,7 +40,7 @@ ms.locfileid: "66754063"
 1. 站点到站点连接（基于路由）- [VPN 网关与本地路由器之间的连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [配置 FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-有关配置站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
 一个关键的配置步骤是配置 IPsec 通信参数，任何不当的配置都会导致本地网络与 Azure 之间的连接断开。 目前，Azure VPN 网关配置为支持第 1 阶段的以下 IPsec 参数。 请注意，如前所述，这些设置不可修改。  如下表中所示，Azure VPN 网关支持的加密算法包括 AES256、AES128、和 3DES。
 
@@ -64,7 +65,7 @@ ms.locfileid: "66754063"
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
-![第][1]
+![1 个][1]
 
 打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。
 
@@ -107,7 +108,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |否|
 | ConnectionNotConfiguredOnGateway | 未在底层服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| Authentication | 预共享密钥不匹配。 | 是|
+| 身份验证 | 预共享密钥不匹配。 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|

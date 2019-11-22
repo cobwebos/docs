@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序管理数据包捕获 - PowerShell | Microsoft 文档
+title: 管理数据包捕获-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 本页说明如何使用 PowerShell 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163951"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277884"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -29,9 +30,9 @@ ms.locfileid: "70163951"
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
+使用网络观察程序数据包捕获功能，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息、获取网络入侵信息、调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻在所需计算机上手动运行数据包捕获的负担，从而节省宝贵的时间。
 
-本文将引导完成当前可用于数据包捕获的不同管理任务。
+本文介绍目前适用于数据包捕获的不同管理任务。
 
 - [**启动数据包捕获**](#start-a-packet-capture)
 - [**停止数据包捕获**](#stop-a-packet-capture)
@@ -99,7 +100,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-以下示例是运行 `Get-AzVMExtension` 后的响应示例
+以下示例是运行 `Get-AzVMExtension` 后的响应的实例
 
 ```
 ResourceGroupName       : testrg
@@ -151,7 +152,7 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
-> 可为数据包捕获定义多个筛选器。
+> 可以为数据包捕获定义多个筛选器。
 
 ### <a name="step-4"></a>步骤 4
 

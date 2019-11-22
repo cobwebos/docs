@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ae49a84dba01047d85ea0dbb854d1a7a59318567
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1fbd69a095e171ec2fb386bed34b196f723e7496
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647657"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278937"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
 > [!NOTE]
-> 本文介绍如何了解和控制 Azure Monitor 日志的成本。 相关文章[监视使用情况和估计成本](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)介绍了如何在不同定价模型的多个 Azure 监视功能中查看使用情况和预估成本。
+> 本文介绍如何了解和控制 Azure Monitor 日志的成本。 相关文章[监视使用情况和估算成本](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及估算成本。
 
 > [!NOTE]
 > 本文中所示的所有价格和成本仅用于举例。 
@@ -48,9 +48,9 @@ Log Analytics 的默认定价是基于数据量引入的即**用即付**模型�
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>估计管理环境的成本 
 
-如果尚未使用 Azure Monitor 日志，可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 首先在搜索框中输入 "Azure Monitor"，然后单击生成的 Azure Monitor 磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Log Analytics"。  可在此处输入要从每个 VM 收集的 Vm 数和 GB 数据。 通常，从典型的 Azure VM 引入的数据月为1到 3 GB。 如果已在评估 Azure Monitor 的日志，则可以使用自己的环境中的数据统计信息。 请参阅下面有关如何确定[受监视 vm 的数目](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data)以及[工作区引入的数据量](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)。 
+如果尚未使用 Azure Monitor 日志，可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的“Azure Monitor”磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Log Analytics"。  可在此处输入要从每个 VM 收集的 Vm 数和 GB 数据。 通常，从典型的 Azure VM 引入的数据月为1到 3 GB。 如果已在评估 Azure Monitor 的日志，则可以使用自己的环境中的数据统计信息。 请参阅下面有关如何确定[受监视 vm 的数目](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data)以及[工作区引入的数据量](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)。 
 
-## <a name="understand-your-usage-and-estimate-costs"></a>了解你的使用情况和估计成本
+## <a name="understand-your-usage-and-estimate-costs"></a>查看自己的使用情况和估算成本
 
 如果你现在使用 Azure Monitor 日志，则可以很容易地了解基于最近使用模式的可能成本。 若要执行此操作，请使用“Log Analytics 使用情况和预估成本”查看和分析数据使用情况。 这会显示每个解决方案收集的数据量、正在保留的数据量，以及基于引入的数据量和超出包含数量的任何附加保留期的成本估算。
 
@@ -66,9 +66,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Log Analytics 使用情况 
 
-Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（到 Log Analytics 的 microsoft.operationalinsights/工作区），可以跟踪你的支出。
+Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供大量有用的功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（到 Log Analytics 的 microsoft.operationalinsights/工作区），可以跟踪你的支出。
 
-通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源的使用情况（例如 Log Analytics 工作区）。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一次筛选来找到 Log Analytics 工作区的使用情况，以显示 "Insights 和分析" （由某些旧的定价层使用）和 "Log Analytics"，然后在 "实例" 上添加筛选器ID "列是" 包含工作区 "。 使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源的使用情况（例如 Log Analytics 工作区）。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一次筛选来找到 Log Analytics 工作区的使用情况，以显示 "Insights 和分析" （由某些旧的定价层使用）和 "Log Analytics"，然后在 "实例" 上添加筛选器ID "列是" 包含工作区 "。 使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  有更多详细信息可帮助你[了解自己的 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 ## <a name="changing-pricing-tier"></a>更改定价层
 
@@ -109,7 +109,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
     ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-还可以[通过 Azure 资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 仅通过 Azure 资源管理器公开此功能。 
+还可以[通过 Azure 资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 仅通过 Azure 资源管理器公开此功能。 
 
 默认情况下，两种数据类型（`Usage` 和 `AzureActivity`）将保留90天，此90天保留期不收取任何费用。 这些数据类型还可从数据引入费用中免费接收。 
 
@@ -438,7 +438,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
-   - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
+   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“24 小时内的数据量大于 100 GB”
@@ -452,7 +452,7 @@ union withsource = $table Usage
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - **警报逻辑** **基于***结果数*，**条件***大于***阈值** *0*
+   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
@@ -464,7 +464,7 @@ union withsource = $table Usage
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的数据传输费用
 
-向 Log Analytics 发送数据可能会导致数据带宽费用。 如[Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域的 azure 服务之间的数据传输以正常费率作为出站数据传输收费。 入站数据传输是免费的。 但是，这种收费非常小（几%）与 Log Analytics 数据引入的成本比较。 因此，控制 Log Analytics 的成本需要专注于引入数据量，我们提供了有助于[了解这一点的指南。](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)   
+向 Log Analytics 发送数据可能会导致数据带宽费用。 如 [Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，在两个区域中的 Azure 服务之间传输数据将按正常费率收取出站数据传输费。 入站数据传输是免费的。 但是，这种收费非常小（几%）与 Log Analytics 数据引入的成本比较。 因此，控制 Log Analytics 的成本需要注重引入的数据量，[此处](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)提供了相关的指导。   
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因

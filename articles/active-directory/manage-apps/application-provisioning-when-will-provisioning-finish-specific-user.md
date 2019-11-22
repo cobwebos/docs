@@ -1,5 +1,5 @@
 ---
-title: 找出特定的用户何时可以访问某个应用程序 | Microsoft Docs
+title: 查明特定的用户何时可以访问应用
 description: 如何找出非常重要的用户何时可以访问已使用 Azure AD 配置用户预配的应用程序
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3b334df8cd24a1d8ca88c8ac2e3117bdd24d8b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057766"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275739"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -40,7 +40,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 设置周期完成后，"**统计信息截止日期**" 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符，特定于租户中的应用。
 
-可以在 Azure 门户的 " **Azure Active Directory &gt;企业&gt; \[\] 应用程序""预配&gt;**  " 选项卡中查看设置进度。
+可以在 Azure 门户的**Azure Active Directory &gt; 企业应用 &gt; \[** \] 的 "预配" 选项卡中查看设置进度。&gt;
 
 ![设置页进度栏](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -48,7 +48,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 若要查看所选用户的预配状态，请参阅 Azure AD 中的[预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 。 用户预配服务运行的所有操作都记录在 Azure AD 预配日志中。 这包括对源系统和目标系统执行的所有读取和写入操作，以及每个操作期间读取或写入的用户数据。
 
-可以通过在 "**活动**" 部分中选择 " **Azure Active Directory** &gt; **企业应用** &gt; **预配日志（预览版）** " 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅[预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
+可以通过在 "**活动**" 部分中选择 " **Azure Active Directory** &gt;**企业应用**&gt;**预配日志（预览版）** " 来访问 Azure 门户中的设置日志。 你可以根据用户的名称或源系统或目标系统中的标识符来搜索设置数据。 有关详细信息，请参阅[预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。 
 
 预配日志记录预配服务执行的所有操作，包括：
 
@@ -66,7 +66,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 - 对于**初始周期**，作业时间取决于许多因素，包括用于预配的作用域中的用户和组的数量，以及源系统中的用户和组的总数。 Azure AD 和应用之间的首次同步可能会持续 20 分钟至几小时，具体取决于 Azure AD 目录的大小与作用域中的预配用户数量。 本部分稍后将概述影响初始周期性能的因素的综合列表。
 
-- 对于初始周期后的**增量循环**，作业时间往往更快（例如，在10分钟内），因为预配服务在初始周期后存储表示这两个系统状态的水印，从而提高后续性能同步. 作业时间取决于在该预配周期中检测到的更改的数量。 如果用户或组成员身份更改少于5000，则作业可以在单个增量预配周期内完成。 
+- 对于初始周期后的**增量循环**，作业时间往往更快（例如，在10分钟内），因为预配服务在初始周期后存储表示这两个系统状态的水印，从而提高后续同步的性能。 作业时间取决于在该预配周期中检测到的更改的数量。 如果用户或组成员身份更改少于5000，则作业可以在单个增量预配周期内完成。 
 
 下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间是从 SaaS 应用程序 ServiceNow、工作区、Salesforce 和 G Suite 的同步作业的统计分析派生而来的。
 

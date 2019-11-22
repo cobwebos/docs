@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 08/15/2019
-ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553880"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286395"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "72553880"
 
 它的组合提供：
 
-* 根据存储服务或 API 操作的运行状况显示可用性的快照视图 **、显示存储**服务接收的请求总数的利用率，以及显示平均时间的延迟存储服务或 API 操作类型正在处理请求。 你还可以按 blob、文件、表和队列查看容量。
+* 根据存储服务或 API 操作的运行状况显示可用性的快照视图 **、显示存储**服务接收的请求总数的使用率，以及显示存储服务或 API 操作类型处理请求所用的平均时间的延迟。 你还可以按 blob、文件、表和队列查看容量。
 
 * 向**下钻取**特定存储帐户的分析，以帮助诊断问题或按类别-可用性、性能、故障和容量执行详细分析。 选择这些选项中的任何一个可提供指标的深入了解。  
 
@@ -65,7 +65,7 @@ ms.locfileid: "72553880"
 
 下拉列表下的计数器磁贴汇总了订阅中的存储帐户总数，并反映了所选总数。 对于报表事务指标或错误的工作簿中的列，有条件颜色编码或热图。 最深的颜色具有最高的值，较浅的颜色基于最低值。 对于基于错误的列，值为红色，对于基于度量值的列，该值为蓝色。
 
-选择 "可用性" 列中的值 "**可用性**"、" **E2E 延迟**"、"**服务器延迟**" 和 "**事务错误类型/错误**" 会将您定向到针对特定类型的存储指标定制的报告，该报告与为该存储帐户。 有关每个类别的工作簿的详细信息，请参阅下面的 "[详细存储工作簿](#detailed-storage-workbooks)" 一节。 
+选择 "可用性" 列中的值 "**可用性**"、" **E2E 延迟**"、"**服务器延迟**" 和 "**事务错误类型/错误**" 会将您定向到针对特定类型的存储度量值（与为该存储帐户选择的列相匹配）的报表。 有关每个类别的工作簿的详细信息，请参阅下面的 "[详细存储工作簿](#detailed-storage-workbooks)" 一节。 
 
 >[!NOTE]
 >有关报表中可以显示的错误的详细信息，请参阅[响应类型架构](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions)和查找响应类型，如**ServerOtherError**、 **ClientOtherError**、 **ClientThrottlingError**。 根据所选的存储帐户，如果报告了三种以上类型的错误，则所有其他错误将以**其他**的类别表示。
@@ -111,7 +111,7 @@ ms.locfileid: "72553880"
 
 ## <a name="detailed-storage-workbooks"></a>详细存储工作簿
 
-是否从多个存储帐户**概述**工作簿中选择了列 "**可用性**"、" **E2E 延迟**"、"**服务器延迟**" 和 "**事务错误类型/错误**" 中的值，或选择**故障**、**性能**、**可用性**和**容量**从特定存储帐户的**概述**工作簿中，每个都提供一组针对该类别量身定制的交互式存储相关信息。  
+无论是从多个存储帐户**概述**工作簿中的 "**可用性**"、" **E2E 延迟**"、"**服务器延迟**" 和 "**事务错误类型/错误**" 中选择一个值，还是从特定存储帐户中选择 "**概述**" 工作簿中的任何一个按钮以进行**故障**、**性能**、**可用性**和**容量**，都将提供一组针对该类别量身定制的交互式存储相关信息  
 
 * **可用性**打开**可用性**工作簿。 它显示了 Azure 存储服务的当前运行状况状态，该表显示了存储帐户中定义的数据服务所分类的每个对象的可用运行状况状态，以及表示所选时间范围的趋势线，以及帐户中的每个数据服务。  
 
@@ -121,7 +121,7 @@ ms.locfileid: "72553880"
 
     ![性能报告示例](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* 选择网格中列出的任何错误类别将打开**失败**工作簿。 该报表显示除所述的所有客户端错误的指标磁贴和成功的请求，客户端限制错误，特定于 ClientOtherError 属性的事务**响应类型**维度指标的性能图表。和两个表-**按 API 名称**和**事务按响应类型**的事务。
+* 选择网格中列出的任何错误类别将打开**失败**工作簿。 此报告显示所有其他客户端错误的指标磁贴，但所述的所有客户端错误除外，客户端限制错误，特定于 ClientOtherError 属性的事务**响应类型**维度指标的性能图表，以及按**响应类型**列出的两个表-**按 API 名称**和事务列出的事务。
 
    ![故障报表示例](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "72553880"
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>修改工作簿中的指标和颜色
 
-预生成的工作簿包含指标数据，你可以修改或删除任何可视化效果，并可根据团队的特定需求进行自定义。 
+预生成的工作簿包含指标数据，你可以修改或删除任何可视化效果，并可根据团队的特定需求进行自定义。
 
 在我们的示例中，我们使用多订阅和存储帐户容量工作簿，演示如何：
 
@@ -183,7 +183,7 @@ ms.locfileid: "72553880"
 
     ![选择 "编辑" 以修改工作簿](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. 在 "指标" 部分旁边，选择 "**编辑**"。 
+3. 在 "指标" 部分旁边，选择 "**编辑**"。
 
     ![选择 "编辑" 以修改容量工作簿指标](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "72553880"
 
     ![编辑列设置](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. 在 "**编辑列设置**" 窗格中，选择 " **Storageaccounts/容量-UsedCapacity 时间线 $ |" 部分下的列。使用的帐户容量时间线 $** ，在下拉列表**列呈现**器中，选择 "**隐藏**"。 
+5. 在 "**编辑列设置**" 窗格中，选择 " **Storageaccounts/容量-UsedCapacity 时间线 $ |" 部分下的列。使用的帐户容量时间线 $** ，在下拉列表**列呈现**器中，选择 "**隐藏**"。
 
 6. 选择 "**保存并关闭**" 以提交更改。
 
@@ -199,7 +199,7 @@ ms.locfileid: "72553880"
 
 1. 选择 "度量值" 网格中的**列设置**。
 
-2. 在 "**编辑列设置**" 窗格中，选择 " **storageaccounts/UsedCapacity $ | storageaccounts/blobservices-容量-blobcapacity 相同 $ |/" 列下的列。storageaccounts/fileservices-FileCapacity $ | $ | $ | $ | $ | storageaccounts**/queueservices/QueueCapacity-storageaccounts $。 在下拉列表**调色板**中，选择 "**绿色**"。
+2. 在 "**编辑列设置**" 窗格中，选择 " **storageaccounts/UsedCapacity $ | storageaccounts/blobservices-blobcapacity 相同 $ |/-storageaccounts $ |/-fileservices $ |** $ |/FileCapacity/storageaccounts $ | $ | $" 列下的 "**列**"。 在下拉列表**调色板**中，选择 "**绿色**"。
 
 3. 选择 "**保存并关闭**" 以提交更改。
 
@@ -234,6 +234,86 @@ ms.locfileid: "72553880"
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>解决性能、容量或可用性问题
 
 若要帮助解决你在存储（预览版） Azure Monitor 标识的任何存储相关问题，请参阅 Azure 存储[故障排除指南](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>为什么只能看到200存储帐户？
+
+选择的存储帐户数限制为200，而不考虑所选订阅的数目。
+
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>在仪表板中单击最近固定的磁贴时，会发生什么情况？
+
+* 如果单击磁贴上的任意位置，它会将您转到从中固定磁贴的选项卡。 例如，如果在 "存储帐户概述" 选项卡中固定关系图，则当你在仪表板中单击该磁贴时，会打开该默认视图，但是，如果你从自己保存的副本固定图形，则会打开你保存的副本的视图。
+* 标题左上方的 "筛选器" 图标会打开 "配置磁贴设置" 选项卡。
+* 右上方的 "椭圆形" 图标将向你显示 "自定义标题数据"、"自定义"、"刷新" 和 "从仪表板中删除" 选项。
+
+### <a name="what-happens-when-i-save-a-workbook"></a>保存工作簿后会出现什么情况？
+
+* 保存工作簿时，可以通过编辑来创建工作簿的新副本并更改标题。 保存不会覆盖工作簿，当前工作簿将始终为默认视图。
+* **未保存**的工作簿只是默认视图。
+
+
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>为什么我在门户中看不到所有的订阅？
+
+门户只会显示门户启动时所选订阅的数据。 若要更改所选订阅，请转到右上方，并单击带有筛选器图标的笔记本。 这会显示 "目录 + 订阅" 选项卡。
+
+![目录 + 订阅](./media/storage-insights-overview/fqa3.png)
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何更改可用性的着色和阈值？
+
+有关如何更改可用性的着色和阈值的详细步骤，请参阅[修改可用性阈值](storage-insights-overview.md#modify-the-availability-threshold)部分。
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何对存储 Azure Monitor 中显示的数据进行分析和故障排除？
+
+ 有关详细信息，请参阅[监视、诊断和排查 Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)一文，详细了解如何对存储 Azure Monitor 中显示的 Azure 存储数据进行分析和故障排除。
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>为什么我看不到指标中的所有类型的错误？
+
+当前，显示最多三个不同类型的错误，其余错误在单个存储桶中组合在一起。 它是使用 splitByLimit 控制的，可进行修改。 若要更改此属性：
+
+1. 单击 "编辑工作簿"。
+2. 依次单击 "指标"、"编辑"，然后选择要编辑的 **"事务"、"求和"** 或任何指标。
+
+    ![请参阅 "度量值"，然后单击 "事务、求和" 上的 "编辑"](./media/storage-insights-overview/fqa7.png)
+
+1. 然后更改拆分数。
+
+    ![选择指标参数 "](./media/storage-insights-overview/fqa7-2.png)
+
+如果你想要查看 n 个不同类型的错误，而不是将 splitByLimit 指定为 n + 1，则对于其余错误，则为1个额外的错误。
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>我在某个存储帐户上保存了工作簿。 为什么现在找不到？
+
+每个工作簿都保存在您保存的存储帐户中。 尝试查找用户保存工作簿的特定存储帐户。 否则，如果没有了解资源（存储帐户），则无法查找特定的工作簿。
+
+### <a name="what-is-time-range"></a>什么是时间范围？
+
+时间范围显示特定时间范围内的数据。 例如，如果时间范围为24小时，则显示过去24小时内的数据。
+
+### <a name="what-is-time-granularity-time-grain"></a>什么是时间粒度（时间粒度）？
+
+时间粒度是两个数据点之间的时间差。 例如，如果时间粒度设置为1秒，则表示每秒收集一次指标。
+
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>将工作簿的任何部分固定到仪表板后，时间粒度是多少？
+
+默认时间粒度设置为自动，当前无法更改。
+
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>如何实现在我的仪表板上更改工作簿步骤的 timespan/时间范围？
+
+默认情况下，仪表板磁贴上的 timespan/时间范围设置为24小时，若要更改此选项，请单击右上角的省略号，选择 "**自定义磁贴数据**"，选中 "覆盖标题级别的仪表板时间设置" 框，然后使用下拉菜单选择一个 timespan。  
+
+![选择磁贴右上角的省略号，然后选择 "自定义此数据"](./media/storage-insights-overview/fqa-data-settings.png)
+
+![在 "配置磁贴设置" 中，选择 timespan 下拉列表以更改时间跨度/时间范围](./media/storage-insights-overview/fqa-timespan.png)
+
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>如何实现更改已固定到仪表板的工作簿或工作簿步骤的标题？
+
+固定到仪表板的工作簿或工作簿步骤的标题将保留在工作簿中的相同名称。 若要更改标题，必须保存您自己的工作簿副本。 然后，你将能够在按下 "保存" 之前命名工作簿。
+
+![选择顶部的 "保存"，保存工作簿的副本并更改其名称](./media/storage-insights-overview/fqa-change-workbook-name.png)
+
+若要更改已保存工作簿中某个步骤的名称，请在该步骤下选择 "编辑"，然后在 "设置" 的底部选择 "齿轮"。
+
+![在工作簿步骤底部选择 "编辑" 以打开 "设置"](./media/storage-insights-overview/fqa-edit.png)
+在 "设置" 中 ![选择底部的齿轮，以便更改步骤名称](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>后续步骤
 

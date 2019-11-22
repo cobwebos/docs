@@ -1,21 +1,21 @@
 ---
-title: Azure 区块链服务分类帐版本、修补和升级
+title: Azure 区块链服务分类帐版本、修补 & 升级
 description: Azure 区块链服务中支持的分类帐版本的概述，包括有关系统修补和系统管理的和用户管理的升级的策略。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 03eaf86ece191cce7eef6647a582a66495692db2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579803"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284925"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>支持的 Azure 区块链服务分类帐版本
 
@@ -29,7 +29,7 @@ Azure 区块链服务使用基于以太坊的[仲裁](https://www.goquorum.com/d
 
 |主版本 | Minor  | 修补程序  |
 | :--- | :----- | :----- |
-| 2 | 0 | 1 | 
+| 2 | 0 | 1 个 | 
 
 Azure 区块链服务会自动将仲裁的修补程序版本更新为30天内的现有运行成员，使其可从仲裁获得。
 

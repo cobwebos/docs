@@ -1,20 +1,20 @@
 ---
 title: 管理多个 Azure 虚拟机的更新
-description: 本文介绍了如何管理 Azure 虚拟机的更新。
+description: 本文介绍如何管理 Azure 和非 Azure 虚拟机的更新。
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374498"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278658"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -25,11 +25,13 @@ ms.locfileid: "72374498"
 - 计划安装所需的更新
 - 查看部署结果，验证是否已成功将更新应用到所有启用了“更新管理”的虚拟机
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用“更新管理”，需要具备以下条件：
 
 - 一个安装了某个受支持的操作系统的虚拟机或计算机。
+
+- 访问适用于 Linux Vm 的更新存储库载入解决方案。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -39,17 +41,13 @@ ms.locfileid: "72374498"
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 仅支持更新评估。         |
 |Windows Server 2008 R2 SP1 和更高版本     |需要 Windows PowerShell 4.0 或更高版本。 （[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）</br> 为提高可靠性，建议使用 Windows PowerShell 5.1。 （[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）         |
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。        |
-|Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
+|CentOS 6 (x86/x64) 和 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | |
+|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > 若要防止在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关详细信息，请参阅[“Ubuntu 服务器指南”中的“自动更新”主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
-
-Linux 代理必须具有访问更新存储库的权限。
-
-此解决方案不支持适用于 Linux 且配置为向多个 Azure Log Analytics 工作区报告的 Log Analytics 代理。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>为 Azure 虚拟机启用“更新管理”
 
@@ -69,9 +67,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>为非 Azure 虚拟机和计算机启用更新管理
 
-若要了解如何为非 Azure Windows 虚拟机和计算机启用更新管理，请参阅[将 Windows 计算机连接到 Azure 中的 Azure Monitor 服务](../log-analytics/log-analytics-windows-agent.md)。
-
-若要了解如何为非 Azure Linux 虚拟机和计算机启用更新管理，请参阅[将 Linux 计算机连接到 Azure Monitor 日志](../log-analytics/log-analytics-agent-linux.md)。
+需要在运行于企业网络或其他云环境中的 Vm 上安装适用于 Windows 和 Linux 的 Log Analytics 代理，才能使用更新管理启用它们。 若要了解将代理部署到在 Azure 外部托管的计算机的系统要求和支持的方法，请参阅[Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>查看附加到自动化帐户的计算机
 
@@ -103,12 +99,12 @@ Linux 代理必须具有访问更新存储库的权限。
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
 | Operations Manager 管理组 |是 |“更新管理”从已连接的管理组中的代理收集有关系统更新的信息。 |
-| Azure 存储器帐户 |No |Azure 存储不包含有关系统更新的信息。 |
+| Azure 存储帐户 |否 |Azure 存储不包含有关系统更新的信息。 |
 
 ### <a name="collection-frequency"></a>收集频率
 
@@ -130,8 +126,13 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **名称**：输入用于标识更新部署的唯一名称。
 - **操作系统**：选择 **Windows** 或 **Linux**。
-- **要更新的组（预览）** ：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management-groups.md)
-- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
+- **要更新的组**：基于订阅、资源组、位置和标记的组合定义查询，以生成要包含在部署中的 Azure vm 动态组。 对于非 Azure Vm，保存的搜索用于创建要包含在你的部署中的动态组。 若要了解详细信息，请参阅[动态组](automation-update-management-groups.md)。
+- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。
+
+   >[!NOTE]
+   >选择 "保存的搜索" 选项不会返回计算机标识，只返回其名称。 如果多个资源组中有多个具有相同名称的 Vm，则会在结果中返回它们。 建议使用 "**要更新的组**" 选项，以确保包括与条件相匹配的唯一 vm。
+
+   如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
@@ -158,7 +159,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|描述|
+   |选项|说明|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
    |始终重新启动|无论是否需要重启，都会开始重启。 |
@@ -172,7 +173,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 
-在计划的部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。
+在计划性部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。
 
 如果部署当前正在运行，则其状态为“正在进行”。 部署成功完成以后，其状态更改为“成功”。
 
@@ -196,5 +197,5 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解“更新管理”（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+若要详细了解“更新管理”（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
 

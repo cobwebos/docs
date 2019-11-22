@@ -1,20 +1,16 @@
 ---
-title: " 将开发计算机连接到 AKS 群集"
-titleSuffix: Azure Dev Spaces
+title: 将开发计算机连接到 AKS 群集
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: 了解如何使用 Azure Dev Spaces 将开发计算机连接到 AKS 群集
 keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888910"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280118"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>将开发计算机连接到 AKS 群集（预览版）
 
@@ -39,7 +35,7 @@ Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量�
 
 * 此时不支持 UDP。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli]。

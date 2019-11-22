@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 125841697a8ad7d34441dfca3a4c079ef59e5f96
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 214809df692bc7e43203fe4a736d6cc53908e0bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680825"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278523"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
-> * [版本 1](v1/data-factory-http-connector.md)
+> * [第 1 版](v1/data-factory-http-connector.md)
 > * [当前版本](connector-http.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 HTTP 终结点复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
@@ -169,7 +169,7 @@ HTTP 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
@@ -178,7 +178,7 @@ HTTP 链接的服务支持以下属性：
 | 属性    | 说明                                                  | 必选 |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | 数据集中 `location` 下的 type 属性必须设置为 **HttpServerLocation**。 | 是      |
-| relativeUrl | 包含数据的资源的相对 URL。       | 否       |
+| relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。   | 否       |
 
 > [!NOTE]
 > 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
@@ -284,7 +284,7 @@ HTTP 链接的服务支持以下属性：
 | requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | 否       |
 | addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | 否       |
-| requestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | 否       |
+| httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | 否       |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 **示例：**

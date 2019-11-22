@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012910"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285581"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
@@ -35,10 +35,6 @@ ms.locfileid: "74012910"
 可在[AZURE API 管理开发人员门户概述](api-management-howto-developer-portal.md)中找到开发人员门户的更多详细信息。
 
 ![API 管理开发人员门户-管理模式](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> 当前正在向 API 管理服务推出开发人员门户。
-> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 此功能推出应由2019年11月22日，星期五完成。 
 
 ## <a name="prerequisites"></a>先决条件
 

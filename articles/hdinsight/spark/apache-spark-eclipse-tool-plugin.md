@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6268256c9be26ef3e7e1061eef7cdb3b3f7d31db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494676"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286939"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "73494676"
 > [!IMPORTANT]  
 > 此工具可用于在 Linux 上的 HDInsight Spark 群集中创建和提交应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包版本 8，用于 Eclipse IDE 运行时。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)下载它。
@@ -84,7 +84,10 @@ ms.locfileid: "73494676"
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
    > ![Azure 资源管理器存储帐户](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > 对于仅限键盘的用户，当当前焦点在**存储密钥**上时，需要使用**Ctrl + TAB**将焦点放在对话框中的下一个字段上。
+   
+   
 1. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
    ![Azure 资源管理器 hdi 链接群集](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
@@ -147,7 +150,7 @@ ms.locfileid: "73494676"
 
 1. 在 HDInsight Spark 群集中运行该应用程序：
 
-   a. 在“包资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“包资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
 
    b. 在“Spark 提交”对话框中提供以下值，然后选择“提交”：
 
@@ -204,13 +207,13 @@ ms.locfileid: "73494676"
 
 ### <a name="access-the-spark-history-server"></a>访问 Spark 历史记录服务器
 
-1. 在“Azure 资源管理器”中，右键单击 Spark 群集名称，并选择“打开 Spark 历史记录 UI”。 出现提示时，请输入群集的管理员凭据。 预配群集时已指定这些凭据。
+1. 在“Azure 资源管理器”中，右键单击 Spark 群集名称，然后选择“打开 Spark 历史记录 UI”。 出现提示时，请输入群集的管理员凭据。 预配群集时已指定这些凭据。
 
 1. 在“Spark 历史记录服务器”仪表板中，可以使用应用程序名称查找刚运行完的应用程序。 在上述代码中，已使用 `val conf = new SparkConf().setAppName("MyClusterApp")` 设置了应用程序名称。 因此，Spark 应用程序名称为“MyClusterApp”。
 
 ### <a name="start-the-apache-ambari-portal"></a>启动 Apache Ambari 门户
 
-1. 在“Azure 资源管理器”中，右键单击 Spark 群集名称，并选择“打开群集管理门户(Ambari)”。
+1. 在“Azure 资源管理器”中，右键单击 Spark 群集名称，然后选择“打开群集管理门户(Ambari)”。
 
 1. 出现提示时，请输入群集的管理员凭据。 预配群集时已指定这些凭据。
 

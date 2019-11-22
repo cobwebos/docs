@@ -1,23 +1,14 @@
 ---
 title: 使用 Azure Notebooks 项目导入和导出数据
 description: 如何将数据从外部源导入 Azure Notebooks 项目，以及如何从项目中导出数据。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bd7ba27859e9d05c0d57c2f78b6449c2bc48ca33
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970208"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277380"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>使用 Azure Notebooks 项目中的数据文件
 
@@ -33,7 +24,7 @@ ms.locfileid: "71970208"
 
 ## <a name="import-data"></a>导入数据
 
-可使用“数据”菜单或诸如 `curl` 之类的命令，从项目仪表板或正在运行的笔记本中将文件导入项目。
+可使用“数据”菜单或诸如  **之类的命令，从项目仪表板或正在运行的笔记本中将文件导入项目**`curl`。
 
 ### <a name="import-files-from-the-project-dashboard"></a>从项目仪表板导入文件
 
@@ -41,11 +32,11 @@ ms.locfileid: "71970208"
 
 1. 选择“上传”命令，然后“从 URL”或“从计算机”中为要导入的数据设计必要的详细信息：
 
-   - **从 URL**：在“文件 URL”字段输入源地址，并在“文件名”字段输入在项目中分配给笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表。 对任何其他 URL 重复此过程，然后选择“完成”。
+   - **从 URL**：在 "文件**url** " 字段中输入源地址，并在 **"文件名" 字段中**输入项目中要分配给笔记本的文件名。 然后选择“+ 添加文件”将 URL 添加到上传列表。 对任何其他 URL 重复此过程，然后选择“完成”。
 
      ![从 URL 弹出窗口上传](media/quickstarts/upload-from-url-popup.png)
 
-   - **从计算机**：将文件拖放到弹出窗口，或选择“选择文件”，然后浏览并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
+   - **从计算机**：将文件拖放到弹出窗口中，或选择 "**选择文件**"，然后浏览到并选择要导入的数据文件。 可删除或选择任意数量、类型和格式的文件，因为它是由笔记本中的代码打开文件和解析其数据。
 
      ![从计算机弹出窗口上传](media/quickstarts/upload-from-computer-popup.png)
 
@@ -53,7 +44,7 @@ ms.locfileid: "71970208"
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>从笔记本中的“文件”菜单导入文件
 
-1. 在正在运行的笔记本中，选择“文件” > “上传”命令：
+1. 在正在运行的笔记本中，选择“文件” **“上传”命令** > ：
 
     ![笔记本中的文件“上传”菜单命令](media/file-menu-upload.png)
 
@@ -61,7 +52,7 @@ ms.locfileid: "71970208"
 
 1. 在出现的“上传状态”弹出窗口中，从下拉列表中选择“目标文件夹”：
 
-    - 会话文件夹 ( *~/* )：将文件上传到当前的笔记本会话，但不会在项目中创建文件。 会话文件夹是项目文件夹的对等方，但在会话结束后不会持久化。 要访问代码中的会话文件，请在文件名前面加上相对路径“../”。
+    - 会话文件夹（ *~/* ）：将文件上传到当前笔记本会话，但不会在项目中创建文件。 会话文件夹是项目文件夹的对等方，但在会话结束后不会持久化。 要访问代码中的会话文件，请在文件名前面加上相对路径“../”。
 
         使用会话文件夹有助于进行实验，并避免长期将项目中可能需要或不需要的文件弄得杂乱无章。 此外，还可将文件上传到项目中具有相同文件名的会话文件夹中，而不会导致冲突，且无需重命名文件。 例如，假设项目中已有一个版本的“data.csv”，但希望尝试使用不同版本的“data.csv”。 通过将文件上传到会话文件夹，可使用上传文件中的数据（在代码中使用“./data.csv”）而不是项目文件中的数据来运行笔记本。
 
@@ -107,7 +98,7 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>从笔记本中的“数据”菜单导出文件
 
-1. 选择“文件” > “下载”菜单命令：
+1. 选择“文件” **“下载”菜单命令** > ：
 
     ![笔记本中的“数据下载”菜单命令](media/file-menu-download.png)
 

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082980"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284818"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -38,14 +38,11 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 
 文件共享在 `clouddrive` 目录中装载为 `$Home`。 这是一次性操作，文件共享会自动装载在后续会话中。 
 
-> [!NOTE]
-> 安全起见，每个用户应预配自己的存储帐户。  对于基于角色的访问控制 (RBAC)，用户必须具有存储帐户级别的“参与者”访问权限或更高访问权限。
-
 文件共享还包含一个为你创建的 5-GB 映像，该映像自动将数据持久保存在 `$Home` 目录中。 对于 Bash 和 PowerShell 都是这样。
 
 ## <a name="use-existing-resources"></a>使用现有资源
 
-通过使用高级选项，可以将现有资源相关联。 选择 Cloud Shell 区域时，必须选择位于同一区域的后备存储帐户。 例如，如果你指定的区域位于美国西部，则必须关联也位于美国西部的文件共享。
+通过使用高级选项，可以将现有资源相关联。 选择 Cloud Shell 区域时，必须选择位于同一区域的后备存储帐户。 例如，如果分配的区域是美国西部，则还必须将位于美国西部的文件共享相关联。
 
 出现存储设置的提示时，选择“显示高级设置”查看其他选项。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
 
@@ -54,7 +51,14 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 
 ![资源组设置](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>支持的存储区域
+## <a name="securing-storage-access"></a>保护存储访问
+安全起见，每个用户应预配自己的存储帐户。  对于基于角色的访问控制 (RBAC)，用户必须具有存储帐户级别的“参与者”访问权限或更高访问权限。
+
+Cloud Shell 在指定订阅中的存储帐户内使用 Azure 文件共享。 由于继承了权限，对订阅拥有足够访问权限的用户将能够访问订阅中包含的所有存储帐户和文件共享。
+
+用户应通过在存储帐户或订阅级别设置权限来锁定对其文件的访问权限。
+
+## <a name="supported-storage-regions"></a>支持的存储区域
 关联的 Azure 存储帐户必须与其装载到的 Cloud Shell 计算机位于同一区域。 若要查找当前区域，可以在 Bash 中运行 `env` 并找到变量 `ACC_LOCATION`。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
 
 Cloud Shell 计算机位于以下区域中：
@@ -67,8 +71,6 @@ Cloud Shell 计算机位于以下区域中：
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
 在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../azure-policy/json-samples.md)。
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 存储的工作原理 
 Cloud Shell 通过以下两种方法持久保存文件： 

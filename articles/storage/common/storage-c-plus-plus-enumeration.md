@@ -1,5 +1,5 @@
 ---
-title: 使用用于 C++ 的存储客户端库列出 Azure 存储资源 | Microsoft Docs
+title: 列出 Azure 存储资源和C++客户端库
 description: 了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721923"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269452"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
 
@@ -22,7 +22,7 @@ ms.locfileid: "68721923"
 > [!NOTE]
 > 本指南主要面向适用于 C++ 版本 2.x 的 Azure 存储客户端库，该库可通过 [NuGet](https://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获取。
 
-存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文将探讨以下方案：
+存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文探讨以下方案：
 
 * 列出帐户中的容器
 * 列出容器或虚拟 blob 目录中的 blob
@@ -30,7 +30,7 @@ ms.locfileid: "68721923"
 * 列出帐户中的表
 * 查询表中的实体
 
-使用不同的重载针对不同的方案演示上述每种方法。
+将使用不同的重载针对不同的方案演示上述每种方法。
 
 ## <a name="asynchronous-versus-synchronous"></a>异步与同步
 
@@ -55,12 +55,12 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 云存储的规模决定了要使用分段列表。 例如，你可能在 Azure blob 容器中有超过一百万个 blob，或者在 Azure 表中有十亿个以上的实体。 这些不是理论上的数字，而是实际的客户使用情况。
 
-因此，要在单个响应中列出所有对象是不实际的。 与之相反，可以使用分页来列出对象。 每个列表 API 都有*分段*重载。
+因此，要在单个响应中列出所有对象是不实际的。 可以改用分页列出对象。 每个列表 API 都有*分段*重载。
 
 分段列表操作的响应包括：
 
 * *_segment*，其中包含针对列表 API 进行单个调用时返回的结果集。
-* continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
+* *continuation_token*，会传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。 我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
 
@@ -145,7 +145,7 @@ do
 
 可以指定该段的 *max_results* 参数，在请求数和内存使用量之间进行平衡，满足应用程序的性能要求。
 
-此外，如果使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议对代码进行重构，以便谨慎地处理在规模较大的本地集合中存储数据的问题。
+此外，如果使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议对代码进行重构，谨慎地应对数据处理规模扩大时会数据存储在本地集合中带来的问题。
 
 ## <a name="lazy-listing"></a>懒惰列表
 
@@ -183,7 +183,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 延迟列表 API 包括在用于 C++ 的存储客户端库的 2.2.0 版中。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 在本文中，我们针对用于 C++ 的存储客户端库中的各种对象，对列表 API 的不同重载进行了讨论。 总结：
 

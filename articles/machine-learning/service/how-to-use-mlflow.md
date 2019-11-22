@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716484"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276635"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "73716484"
 |监视模型性能||✓|  |   |
 | 检测数据偏差 |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [安装 MLflow。](https://mlflow.org/docs/latest/quickstart.html)
 * 在本地计算机上[安装 AZURE 机器学习 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 。 Sdk 为 MLflow 提供连接以访问工作区。
@@ -88,7 +88,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ```
 
 >[!NOTE]
->跟踪 URI 的有效时间最大为1小时或更短。 如果在某一空闲时间后重新启动脚本，请使用 get_mlflow_tracking_uri API 来获取新的 URI。
+>跟踪 URI 的有效时间最大为1小时或更短。 如果在某一空闲时间后重新启动脚本，请使用 get_mlflow_tracking_uri API 获取新的 URI。
 
 在 `set_experiment()` 中设置 MLflow 试验名称，并开始运行包含 `start_run()`的培训。 然后使用 `log_metric()` 激活 MLflow 日志记录 API 并开始记录定型运行指标。
 
@@ -238,7 +238,7 @@ ws.get_details()
 
 ### <a name="log-your-model"></a>记录模型
 
-部署之前，请确保已保存模型，以便可以引用它及其部署的路径位置。 在训练脚本中，应存在类似于以下[mlflow _model （）](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码，以将模型保存到指定的输出目录。 
+部署之前，请确保已保存模型，以便可以引用它及其部署的路径位置。 在训练脚本中，应存在类似于以下[log_model mlflow （）](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法的代码，以将模型保存到指定的输出目录。 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -269,7 +269,7 @@ model_save_path = 'model'
 
 `mlflow.azureml.build_image()` 函数以框架感知的方式从保存的模型生成 Docker 映像。 它会自动创建框架特定的推断包装器代码，并为您指定包依赖关系。 指定模型路径、工作区、运行 ID 和其他参数。
 
-以下代码使用*运行：/< >/model*作为 scikit-learn 学习试验的 model_uri 路径生成 docker 映像。
+以下代码使用*运行：/< >/model*作为 scikit-learn 试验的 model_uri 路径生成 docker 映像。
 
 ```python
 import mlflow.azureml
@@ -290,7 +290,7 @@ azure_image, azure_model = mlflow.azureml.build_image(model_uri='runs:/{}/{}'.fo
 
 #### <a name="deploy-to-aci"></a>部署到 ACI
 
-通过[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+设置具有[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法的部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -346,7 +346,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-通过[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法设置部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
+设置具有[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法的部署配置。 你还可以添加标记和说明以帮助跟踪你的 web 服务。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
 
 ```python
 # Webservice creation using single command
@@ -389,7 +389,7 @@ aks_service.wait_for_deployment(show_output=True)
 1. 输入资源组名称。 然后选择“删除”。
 
 
-## <a name="example-notebooks"></a>示例笔记本
+## <a name="example-notebooks"></a>示例 Notebook
 
 [MLflow With AZURE ML 笔记本](https://aka.ms/azureml-mlflow-examples)演示并扩展本文中介绍的概念。
 

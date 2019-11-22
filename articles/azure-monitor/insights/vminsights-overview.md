@@ -1,18 +1,18 @@
 ---
 title: 什么是用于 VM 的 Azure Monitor（预览版）？ | Microsoft 文档
-description: 用于 VM 的 Azure Monitor 是 Azure Monitor 的一项功能，它合并了 Azure VM 操作系统的运行状况和性能监视、应用程序组件及其与其他资源的依赖关系的自动发现功能，并映射这些组件和资源之间的通信。 本文提供了概述。
+description: 用于 VM 的 Azure Monitor 的概述，它监视 Azure Vm 的运行状况和性能，以及自动发现和映射应用程序组件及其依赖项。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/14/2019
-ms.openlocfilehash: 84ebf92f795dfe1a21570d782bf24fad27f50eda
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109060"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307302"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 

@@ -1,5 +1,6 @@
 ---
-title: 对 Azure 虚拟网络网关和连接进行故障排除 - Azure CLI | Microsoft 文档
+title: 排查 Azure VNET 网关和连接问题-Azure CLI
+titleSuffix: Azure Network Watcher
 description: 此页说明如何使用 Azure 网络观察程序对 Azure CLI 进行故障排除
 services: network-watcher
 documentationcenter: na
@@ -14,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca61486ce58ccd3385518c2d22e0690c1fb34d16
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699595"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277808"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 网络观察程序 Azure CLI 对虚拟网络网关和连接进行故障排除
 
 > [!div class="op_single_selector"]
-> - [门户](diagnose-communication-problem-between-networks.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -35,7 +36,7 @@ ms.locfileid: "64699595"
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 有关支持的网关类型列表，请访问[支持的网关类型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 

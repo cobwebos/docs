@@ -1,6 +1,6 @@
 ---
-title: Set up security questions as your authentication method - Azure AD
-description: How to set up your Security info to verify your identity using pre-defined security questions as your authentication method.
+title: 设置安全问题作为验证方法-Azure AD
+description: 如何设置安全信息（预览版）页，以使用预定义的安全问题作为验证方法来验证您的身份。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e660163d3cc728f9ffe49e23a5c6cc2baa25eb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231775"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279009"
 ---
-# <a name="set-up-security-questions-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up security questions as your authentication method from the Security info (preview) page
+# <a name="set-up-security-questions-as-your-verification-method"></a>将安全问题设置为验证方法
 
-可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
-设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)、[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
+设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "74231775"
 >
 > 如果看不到安全性问题选项，可能是因为组织不允许你使用安全性问题进行验证。 如果是这样，则将需要选择另一种方法，或与管理员联系以获取进一步帮助。
 >
-> Administrator accounts are not allowed to use Security Questions as a password reset method. If you are logged in as an admin level account you will not see these options.
+> 不允许管理员帐户使用安全问题作为密码重置方法。 如果以管理级别帐户的身份登录，则不会看到这些选项。
 
 ### <a name="to-set-up-your-security-questions"></a>设置安全性问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "74231775"
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“安全性问题”，然后选择“添加”。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74231775"
 
 4. 在“安全性问题”页上，选择并回答安全性问题，然后选择“保存”。
 
-    ![添加电话号码并选择电话](media/security-info/securityinfo-myprofile-securityquestions.png)
+    ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-securityquestions.png)
 
     已更新安全信息，以便在使用密码重置时通过安全性问题验证身份。
 
@@ -85,7 +85,7 @@ ms.locfileid: "74231775"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

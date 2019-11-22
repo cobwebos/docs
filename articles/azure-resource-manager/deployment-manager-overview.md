@@ -2,14 +2,14 @@
 title: 跨区域安全部署-Azure 部署管理器
 description: 介绍如何使用 Azure 部署管理器在多个区域部署服务。 其中介绍了安全部署实践，可在部署到所有区域前验证部署的稳定性。
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147187"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307036"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器启用安全部署实践（公共预览版）
 
@@ -338,3 +338,5 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 > [!div class="nextstepaction"]
 > [教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)
+>
+> [快速入门：只需几分钟即可试用 Azure 部署管理器](https://github.com/Azure-Samples/adm-quickstart)

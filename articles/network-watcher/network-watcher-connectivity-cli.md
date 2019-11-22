@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序排查连接问题 - Azure CLI | Microsoft Docs
+title: 排查连接问题-Azure CLI
+titleSuffix: Azure Network Watcher
 description: 了解如何通过 Azure CLI 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 568d3fe774bd2ec810bd3aa386fb151518e6a581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07358d5d77e91f0b4eebffa068ff72fc83c74893
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720845"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276026"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序排查连接问题
 
@@ -51,7 +52,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”  。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 `NetworkSecurityRule`UserRule_Port80**的** 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```json
 {
@@ -132,7 +133,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>响应
 
-在以下示例中，`connectionStatus` 显示为“不可访问”  。 在 `hops` 详细信息中，可以在 `issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。
+在以下示例中，`connectionStatus` 显示为“不可访问”。 在 `hops` 详细信息中，可以在 `issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。
 
 ```json
 {
@@ -190,7 +191,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>响应
 
-在以下响应中，可以看到 `connectionStatus` 显示为“可以访问”  。 连接成功后，提供了延迟值。
+在以下响应中，可以看到 `connectionStatus` 显示为“可以访问”。 连接成功后，提供了延迟值。
 
 ```json
 {
@@ -236,7 +237,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>响应
 
-以下 json 是运行前面 cmdlet 的示例响应。 由于此检查成功，`connectionStatus` 属性显示为“可以访问”  。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
+以下 json 是运行前面 cmdlet 的示例响应。 由于此检查成功，`connectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 blob 所需的跃点数和延迟的详细信息。
 
 ```json
 {

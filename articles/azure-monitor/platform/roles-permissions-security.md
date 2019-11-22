@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 的角色、权限和安全入门
+title: Azure Monitor 中的角色、权限和安全性
 description: 了解如何使用 Azure Monitor 的内置角色和权限限制对监视资源的访问。
 author: johnkemnetz
 services: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260618"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305155"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
+很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文说明如何在 Azure 中快速将内置监视 RBAC 角色应用到用户，或针对需要有限监视权限的用户构建自己的自定义角色。 然后，本文介绍 Azure 监视器相关资源的安全注意事项，以及如何限制对这些资源中的数据的访问。
 
 ## <a name="built-in-monitoring-roles"></a>内置监视角色
 Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，同时使负责监视基础结构的用户能够获取并配置他们需要的数据。 Azure Monitor 提供了两个现成的角色：监视查阅者和监视参与者。
@@ -71,7 +71,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>监视权限和自定义 RBAC 角色
 如果上述的内置角色不能满足团队的确切需求，则可以[创建具有更加细化的权限的自定义 RBAC 角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
 
-| 操作 | 描述 |
+| Operation | 说明 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |读取/写入/删除操作组。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |
@@ -123,7 +123,7 @@ New-AzRoleDefinition -Role $role
 
 * 使用单个、专用存储帐户来监视数据。 如果需要将监视数据划分到多个存储帐户，那么请勿在监视数据和非监视数据之间共享存储帐户的使用，因为这可能会无意中给予那些仅需要访问监视数据（例如第三方 SIEM）的人访问非监控数据的权限。
 * 与上述原因相同，请对所有诊断设置使用单个、专用的服务总线或事件中心命名空间。
-* 通过将监视相关的存储帐户或事件中心保存在单独的资源组中来限制对它们的访问，并对监视角色[使用范围](../../role-based-access-control/overview.md#scope)以限制仅访问该资源组。
+* 通过将监视相关的存储帐户或事件中心保留在不同的资源组中来限制对它们的访问，并对监视角色 [使用范围](../../role-based-access-control/overview.md#scope) ，将访问权限限定于该资源组。
 * 当用户只需访问监视数据时，请勿授予订阅范围内的存储帐户或事件中心的 ListKeys 权限。 取而代之的是给予用户资源或资源组（如果有专用的监视资源组）范围的权限。
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>限制对监视相关的存储帐户的访问权限
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 ### <a name="limiting-access-to-monitoring-related-event-hubs"></a>限制对监视相关的事件中心的访问权限
 事件中心可以遵循类似的模式，但首先需要创建专用的侦听授权规则。 如果想要将访问权限授予只需侦听与监视相关的事件中心的应用程序，请执行以下操作：
 
-1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以称它为“monitoringReadOnly”。 如果可以，会希望将密钥直接提供给用户，并跳过下一步。
+1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以将此策略称为“monitoringReadOnly”。 如果可能，可以直接将该密钥提供给使用者，并跳过下一步骤。
 2. 如果使用者必须能够临时获取密钥，请向用户授予对该事件中心执行 ListKeys 操作的权限。 这对于需要能够设置传输到事件中心的诊断设置或日志配置文件的用户来说也是必需的。 例如，可以创建 RBAC 规则：
    
    ```powershell

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1a8fb8140fd2f58556e4a64bca0f4a052a84c2bb
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74180691"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285605"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -26,8 +26,6 @@ ms.locfileid: "74180691"
 本文介绍了 API 管理中开发人员门户的自承载和托管版本之间的差异。 它还介绍了其体系结构，并提供常见问题的解答。
 
 > [!WARNING]
-> 新的开发人员门户当前正在部署到 API 管理服务。
-> 如果你的服务是新创建的或开发人员层服务，则你应该已经有最新版本。 否则，你可能会遇到问题（例如，通过发布功能）。 此功能推出应由2019年11月22日，星期五完成。
 >
 > [了解如何从预览版迁移到开发人员门户的正式发布版本](#preview-to-ga)。
 
@@ -109,11 +107,11 @@ ms.locfileid: "74180691"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板和/或它是否与 API 管理 DevOps 资源工具包兼容？
 
-不能。
+不。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>是否需要为托管门户依赖项启用附加 VNET 连接？
 
-不能。
+不。
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>使用交互式控制台时，出现 CORS 错误。 我该怎么办？
 

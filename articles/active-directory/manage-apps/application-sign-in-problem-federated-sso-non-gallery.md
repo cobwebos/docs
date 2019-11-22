@@ -1,5 +1,5 @@
 ---
-title: 登录到非库联合单一登录应用时出现的问题 |Microsoft Docs
+title: 登录到非库联合单一登录应用时出现的问题
 description: 关于使用 Azure AD 登录到配置为基于 SAML 的联合单一登录的应用程序时可能遇到的具体问题的指南
 services: active-directory
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26f52db394877cff13bf4b0b476a9603c1ddba8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381390"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274857"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
-若要解决下面的登录问题, 我们建议你遵循这些建议, 以获得更好的诊断并自动执行解决步骤:
+若要解决下面的登录问题，我们建议你遵循这些建议，以获得更好的诊断并自动执行解决步骤：
 
-- 安装 "[我的应用" 安全浏览器扩展](access-panel-extension-problem-installing.md), 以帮助 Azure Active Directory (Azure AD) 在 Azure 门户中使用测试体验时提供更好的诊断和解决方法。
+- 安装 "[我的应用" 安全浏览器扩展](access-panel-extension-problem-installing.md)，以帮助 Azure Active Directory （Azure AD）在 Azure 门户中使用测试体验时提供更好的诊断和解决方法。
 - 使用 Azure 门户中的 "应用配置" 页上的测试体验再现此错误。 详细了解如何[调试基于 SAML 的单一登录应用程序](../develop/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-*错误 AADSTS70001:在目录`https://contoso.com`* 中找不到标识符为的应用程序。
+*错误 AADSTS70001：在目录中找不到标识符为 `https://contoso.com` 的应用程序*。
 
 **可能的原因**
 
@@ -40,13 +40,13 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 **解决方法**
 
-确保 SAML 请求`Issuer`中的属性与 Azure AD 中配置的标识符值匹配。 如果在[Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展, 则无需手动执行这些步骤。
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
 
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
@@ -62,7 +62,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。 
 
-*错误 AADSTS50011:回复地址`https://contoso.com`与为应用程序配置的回复地址不匹配* 
+*错误 AADSTS50011：回复地址 `https://contoso.com` 与为应用程序配置的回复地址不匹配* 
 
 **可能的原因** 
 
@@ -70,13 +70,13 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法** 
 
-确保 SAML 请求`Issuer`中的属性与 Azure AD 中配置的标识符值匹配。 如果在[Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展, 则无需手动执行这些步骤。
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
  
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。 
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。 
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。 
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。 
 
@@ -88,13 +88,13 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“单一登录”。
 
-8. 当应用程序加载以后，请打开“基本 SAML 配置”。 验证或更新 "回复 URL" 文本框中的值, 使`AssertionConsumerServiceURL`其与 SAML 请求中的值匹配。    
+8. 当应用程序加载以后，请打开“基本 SAML 配置”。 验证或更新 "回复 URL" 文本框中的值，以匹配 SAML 请求中的 `AssertionConsumerServiceURL` 值。    
     
-在 Azure AD 中更新 "答复 URL" 值并将它与应用程序在 SAML 请求中发送的值匹配后, 应该可以登录到应用程序。
+在 Azure AD 中更新 "答复 URL" 值并将它与应用程序在 SAML 请求中发送的值匹配后，应该可以登录到应用程序。
 
 ## <a name="user-not-assigned-a-role"></a>未为用户分配角色
 
-*错误 AADSTS50105:已登录用户`brian\@contoso.com`未分配给应用程序的角色*
+*错误 AADSTS50105：没有为已登录的用户 `brian\@contoso.com` 分配到应用程序的角色*
 
 **可能的原因**
 
@@ -102,19 +102,19 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法**
 
-若要直接将一个或多个用户分配到应用程序, 请执行以下步骤。 如果在[Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展, 则无需手动执行这些步骤。
+若要直接将一个或多个用户分配到应用程序，请执行以下步骤。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
 
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
 
 6. 从列表中选择要向其分配用户的应用程序。
 
@@ -128,7 +128,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，并单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
@@ -140,7 +140,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 ## <a name="not-a-valid-saml-request"></a>不是有效的 SAML 请求
 
-*错误 AADSTS75005:请求不是有效的 Saml2 协议消息。*
+*错误 AADSTS75005: 请求不是有效的 Saml2 协议消息。*
 
 **可能的原因**
 
@@ -164,21 +164,21 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="misconfigured-application"></a>应用程序配置错误
 
-*错误 AADSTS650056:应用程序配置不正确。这可能由以下原因之一造成：客户端未在客户端应用程序注册中的请求权限中列出 "AAD Graph" 的任何权限。或者, 管理员未同意租户。或者, 检查请求中的应用程序标识符, 以确保它与配置的客户端应用程序标识符匹配。请联系管理员以修复配置或代表租户同意。*
+*错误 AADSTS650056：应用程序配置不正确。这可能是由以下原因之一导致的：客户端未在客户端应用程序注册中的请求权限中列出 "AAD Graph" 的任何权限。或者，管理员未同意租户。或者，检查请求中的应用程序标识符，以确保它与配置的客户端应用程序标识符匹配。请联系你的管理员以解决此问题。*
 
 **可能的原因**
 
-从应用程序发送到 SAML 请求中 Azure AD 的属性与为AzureAD中的应用程序配置的标识符值不匹配。`Issuer`
+从应用程序发送到 SAML 请求中 Azure AD 的 `Issuer` 属性与在 Azure AD 中为该应用程序配置的标识符值不匹配。
 
 **解决方法**
 
-确保 SAML 请求`Issuer`中的属性与 Azure AD 中配置的标识符值匹配。 如果在[Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展, 则无需手动执行以下步骤:
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
 1.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开**Azure Active Directory 扩展**。
 
-1.  在筛选器搜索框中键入 **"Azure Active Directory"** , 并选择**Azure Active Directory**项目。
+1.  在筛选器搜索框中键入 **"Azure Active Directory"** ，并选择**Azure Active Directory**项目。
 
 1.  从 Azure Active Directory 左侧导航菜单中选择 "**企业应用程序**"。
 
@@ -192,7 +192,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="certificate-or-key-not-configured"></a>证书或密钥未配置
 
-错误 AADSTS50003: 没有配置签名密钥。
+错误 AADSTS50003：没有配置签名密钥。
 
 **可能的原因**
 
@@ -206,7 +206,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
@@ -228,11 +228,11 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="saml-request-not-present-in-the-request"></a>请求中不存在 SAML 请求
 
-*错误 AADSTS750054:必须在针对 SAML 重定向绑定的 HTTP 请求中将SAMLRequest 或 SAMLResponse 提供为查询字符串参数。*
+*错误 AADSTS750054： SAMLRequest 或 SAMLResponse 必须作为 HTTP 请求中的查询字符串参数出现，才能请求 SAML 重定向绑定。*
 
 **可能的原因**
 
-Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果在将 SAML 请求发送到 Azure AD 时, 应用程序未使用 HTTP 重定向绑定, 则可能会发生这种情况。
+Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果在将 SAML 请求发送到 Azure AD 时，应用程序未使用 HTTP 重定向绑定，则可能会发生这种情况。
 
 **解决方法**
 
@@ -242,7 +242,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 **可能的原因**
 
-在单一登录过程中, 如果登录请求不包含显式回复 URL (断言使用者服务 URL), Azure AD 将为该应用程序选择任何已配置的依赖 Url。 即使应用程序已配置了显式回复 URL, 用户也可能会被重定向 https://127.0.0.1:444 。 
+在单一登录过程中，如果登录请求不包含显式回复 URL （断言使用者服务 URL），Azure AD 将为该应用程序选择任何已配置的依赖 Url。 即使应用程序已配置了显式回复 URL，用户也可能会被重定向 https://127.0.0.1:444。 
 
 当应用程序被添加为非库应用时，Azure Active Directory 将此回复 URL 创建为默认值。 此行为已更改，Azure Active Directory 默认情况下不再添加此 URL。 
 
@@ -254,7 +254,7 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开**Azure Active Directory 扩展**。
 
-3.  在筛选器搜索框中键入 **"Azure Active Directory"** , 并选择**Azure Active Directory**项目。
+3.  在筛选器搜索框中键入 **"Azure Active Directory"** ，并选择**Azure Active Directory**项目。
 
 4.  从 Azure Active Directory 左侧导航菜单中选择 "**企业应用程序**"。
 
@@ -264,13 +264,13 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 6.  选择要配置为单一登录的应用程序。
 
-7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在 "**答复 URL (断言使用者服务 URL)** " 中, 删除系统创建的未使用或默认的答复 url。 例如， `https://127.0.0.1:444/applications/default.aspx` 。
+7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在 "**答复 URL （断言使用者服务 URL）** " 中，删除系统创建的未使用或默认的答复 url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
 
 
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>自定义发送到应用程序的 SAML 声明时出现问题
 
-若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)获取详细信息。
+若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure AD 单一登录 SAML 协议要求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)

@@ -3,12 +3,12 @@ title: 评估新 Azure 策略的影响
 description: 了解将新策略引入 Azure 环境时要遵循的过程。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959826"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279424"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>评估新 Azure 策略的影响
 
@@ -71,6 +71,6 @@ _禁用_（DoNotEnforce），以防止创建触发或活动日志条目的[影�
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

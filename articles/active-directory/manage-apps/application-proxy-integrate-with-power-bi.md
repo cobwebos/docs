@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 应用程序代理启用对 Power BI 的远程访问 |Microsoft Docs
+title: 使用 Azure AD 应用程序代理启用对 Power BI 的远程访问
 description: 介绍有关如何将本地 Power BI 与 Azure AD 应用程序代理集成的基础知识。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275511"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
@@ -73,7 +73,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 4. 将 "委托设置" 设置为 **"仅信任此计算机来委派指定的服务"** 。 然后，选择“使用任意身份验证协议”。
 5. 选择 "**添加**"，然后选择 "**用户或计算机**"。
 6. 输入 Reporting Services 所用的服务帐户。 这是在 Reporting Services 配置中添加 SPN 的帐户。
-7. 单击 **“确定”** 。 若要保存更改，请再次单击 **"确定"** 。
+7. 单击“确定”。 若要保存更改，请再次单击 **"确定"** 。
 
 有关详细信息，请参阅[通过应用程序代理对应用进行单一登录的 Kerberos 约束委派](application-proxy-configure-single-sign-on-with-kcd.md)。
 
@@ -91,7 +91,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
 2. 发布应用后，请执行以下步骤来配置单一登录设置：
 
-   a. 在门户中的应用程序页上，选择“单一登录”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在门户中的应用程序页上，选择“单一登录”。
 
    b. 对于**单一登录模式**，请选择 "**集成 Windows 身份验证**"。
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619784"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286987"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -25,7 +25,7 @@ ms.locfileid: "73619784"
 
 Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所有 MPI 实现和版本，并提供适用于未受支持的虚拟机的 RDMA 谓词。 这将需要较短的停机时间-[详细了解 sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
 
-作为 Azure 机器学习托管计算产品（AmlCompute）的客户，此时不需要进行任何更改。 根据[更新计划](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，你需要在训练中计划一个短暂的中断。 服务将负责更新群集节点上的 VM 映像，并自动扩展群集。 升级完成后，除了获得更高的带宽、延迟时间和更好的分布式应用程序性能之外，您还可以使用其他所有 MPI discibutions （如 OpenMPI 和 Pytorch）。
+作为 Azure 机器学习托管计算产品（AmlCompute）的客户，此时不需要进行任何更改。 根据[更新计划](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku)，你需要在训练中计划一个短暂的中断。 服务将负责更新群集节点上的 VM 映像，并自动扩展群集。 升级完成后，除了获得更高的带宽、延迟时间和更好的分布式应用程序性能之外，还可以使用其他所有 MPI 分发（如 OpenMPI 和 Pytorch）。
 
 ## <a name="azure-machine-learning-designer-issues"></a>Azure 机器学习设计器问题
 
@@ -126,7 +126,7 @@ psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>自动机器学习 > 10 次迭代
 
-在自动机器学习设置中，如果有10个以上的迭代，请将 `show_output` 设置为提交运行时 `False`。
+在自动机器学习设置中，如果迭代次数超过10个，则在提交运行时，将 `show_output` 设置为 `False`。
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure 机器学习 SDK/自动机器学习的小组件
 
@@ -153,7 +153,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-如果在 Azure Databricks 群集上读取数据时看到 `FailToSendFeather` 错误，请参阅以下解决方案：
+如果在 Azure Databricks 群集上读取数据时出现 `FailToSendFeather` 错误，请参阅以下解决方案：
 
 * 将 `azureml-sdk[automl]` 包升级到最新版本。
 * 添加 `azureml-dataprep` 版本1.1.8 或更高版本。
@@ -196,13 +196,13 @@ Azure 机器学习工作区中的某些操作不会将信息记录到__活动日
 
 ## <a name="overloaded-azurefile-storage"></a>重载的 AzureFile 存储
 
-如果收到错误 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
+如果收到 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`错误，请应用以下解决方法。
 
 如果对其他工作负荷（如数据传输）使用文件共享，则建议使用 blob，以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes 服务中的 Webservices 故障 
 
-Azure Kubernetes 服务中的许多 webservice 故障都可以通过使用 `kubectl` 连接到群集来进行调试。 可以通过运行来获取 Azure Kubernetes 服务群集的 `kubeconfig.json`
+Azure Kubernetes 服务中的许多 webservice 故障都可以通过使用 `kubectl`连接到群集来进行调试。 可以通过运行来获取 Azure Kubernetes 服务群集的 `kubeconfig.json`
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -251,7 +251,7 @@ kubectl get secret/azuremlfessl -o yaml
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
 如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
 
-如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `pip_requirements_file` 参数，通过 `conda_dependencies_file`or 列出 txt 文件中的所有 pip 要求来指定具有所有依赖项的 docker-compose.override.yml 文件。
+如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
 
 Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
  
@@ -264,7 +264,7 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保查看训练脚本，并修复错误，然后重试。 
 
 ### <a name="horovod-is-shutdown"></a>Horovod 关闭
-在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称的后缀为 `_rank` 以便于区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
+在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以方便区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
 
 ## <a name="labeling-projects-issues"></a>标记项目问题
 

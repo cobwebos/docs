@@ -1,6 +1,6 @@
 ---
-title: Set up the Microsoft Authenticator app as your authentication method - Azure AD
-description: How to set up your Security info to verify your identity using the Microsoft Authenticator app as your authentication method.
+title: 将 Microsoft Authenticator 应用设置为验证方法-Azure AD
+description: 如何设置安全信息（预览版）页，以使用 Microsoft Authenticator 应用作为验证方法来验证身份。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761c9d3ed4cb49a7dc95ea98ce6f884930185643
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233193"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279072"
 ---
-# <a name="set-up-the-microsoft-authenticator-app-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up the Microsoft Authenticator app as your authentication method from the Security info (preview) page
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>将 Microsoft Authenticator 应用程序设置为验证方法
 
-可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页面以添加、更新或删除安全信息。
+可以按照以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 如果在登录工作或学校帐户后系统提示立即进行此项设置，请参阅[根据登录页提示设置安全信息](security-info-setup-signin.md)一文中的详细步骤。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74233193"
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页上，从下拉列表中选择“验证器应用”，然后选择“添加”。
 
@@ -113,7 +113,7 @@ ms.locfileid: "74233193"
 
 如果在使用双重验证登录到工作或学校帐户时想要将验证器应用用作默认的方法，或者希望验证器应用成为默认用于密码重置请求的方法，可以从“安全信息”页设置该方法。
 
-### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
+### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法的步骤
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接。
 
@@ -135,7 +135,7 @@ ms.locfileid: "74233193"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 
@@ -146,7 +146,7 @@ ms.locfileid: "74233193"
 
 ## <a name="next-steps"></a>后续步骤
 
-- Sign-in using the Microsoft Authenticator app, following steps in the [Sign in using two-step verification or security info](security-info-setup-signin.md) article.
+- 按照使用[双重验证或安全信息的登录](security-info-setup-signin.md)一文中的步骤，使用 Microsoft Authenticator 应用登录。
 
 - 如果你丢失或忘记了密码，请通过[密码重置门户](https://passwordreset.microsoftonline.com/)或遵循[重置工作或学校帐户密码](active-directory-passwords-update-your-own-password.md)一文中的步骤来重置密码。
 

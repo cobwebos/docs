@@ -1,6 +1,6 @@
 ---
-title: 向验证器应用添加非 Microsoft 帐户-Azure AD
-description: 如何将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。
+title: 将非 Microsoft 帐户添加到 Microsoft Authenticator 应用-Azure AD
+description: 将非 Microsoft 帐户（例如用于 Google 或 Facebook）添加到 Microsoft Authenticator 应用，以便在使用双重验证时验证你的身份。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803665"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278881"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
 将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
 

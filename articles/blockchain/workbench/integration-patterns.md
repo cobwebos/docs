@@ -1,21 +1,21 @@
 ---
-title: Azure Blockchain Workbench 中的智能合约集成模式
+title: 智能协定集成模式-Azure 区块链工作台
 description: Azure 区块链工作台预览版中的智能协定集成模式概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 7176cddae6affd19df4fe418afcf420f92d624ab
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 02789b2e4414af8503a655ea954b40031df8ccb7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579789"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286678"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 

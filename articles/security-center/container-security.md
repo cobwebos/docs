@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123968"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274064"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -32,7 +32,7 @@ Azure 安全中心是 Azure 本机解决方案，适用于容器安全性。 安
 [![Azure 安全中心的容器安全选项卡](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>漏洞管理-扫描容器映像（预览版）
-若要监视 Azure 容器注册表，请将其连接到安全中心。 推送新映像后，安全中心将使用行业领先漏洞扫描供应商 Qualys 中的扫描仪扫描映像。
+若要监视 Azure 容器注册表，请确保在安全中心的标准层上（请参阅[定价](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)）。 然后启用可选的容器注册表绑定。 推送新映像后，安全中心将使用行业领先漏洞扫描供应商 Qualys 中的扫描仪扫描映像。
 
 当通过 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 对于每个漏洞，安全中心都提供可操作的建议，以及严重性分类和有关如何修正问题的指南。 有关安全中心建议的详细信息，请参阅[虚拟机保护](security-center-virtual-machine-protection.md##compute-and-app-recs)中的建议列表。
 
@@ -55,7 +55,7 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 
 有关安全中心建议的详细信息，请参阅[虚拟机保护](security-center-virtual-machine-protection.md)。
 
-## <a name="run-time-protection---real-time-threat-detection"></a>运行时保护-实时威胁检测 
+## <a name="run-time-protection---real-time-threat-detection"></a>运行时保护-实时威胁检测
 
 安全中心为容器化环境提供实时威胁检测，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 

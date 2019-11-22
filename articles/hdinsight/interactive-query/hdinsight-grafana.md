@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dae9c47f535d87214c9e1583562b4c0419cd44cf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122983"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305442"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
 [Grafana](https://grafana.com/) 是一个受欢迎的开源图形和仪表板生成器。 Grafana 功能丰富；它不仅可以让用户创建可自定义和可共享的仪表板，还可提供模板化/脚本化仪表板、LDAP 集成、多个数据源等。
 
-目前，在 Azure HDInsight 中，Hbase 和交互式查询群集类型支持 Grafana。
+目前，在 Azure HDInsight 中，Hbase、Kafka 和 Interactive 查询群集类型都支持 Grafana。 启用了企业安全包的群集不支持此功能。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "71122983"
     > 
     >
     
-    ![门户中的 HDInsight Linux 入门资源管理器模板](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")
+    ![HDInsight Linux 入门资源管理器门户上的模板](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")
 
     输入或选择下列值：
     
@@ -45,10 +45,10 @@ ms.locfileid: "71122983"
     |---------|---------|
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
-    |**位置**     | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
+    |**Location**     | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
     |**群集类型**     | 选择“hadoop”。 |
     |**群集名称**     | 输入 Apache Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
-    |**群集登录名和密码**     | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
+    |**群集登录名和密码**     | 默认登录名是**admin**。密码长度必须至少为10个字符，且必须包含至少一个数字、一个大写字母和一个小写字母、一个非字母数字字符（字符 "" \)除外。 请确保不提供常见密码，如“ **”** Pass@word1。|
     |**SSH 用户名和密码**     | 默认用户名为“sshuser”。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。|
 
     某些属性已在模板中硬编码。  可以通过模板配置这些值。 有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
@@ -77,7 +77,7 @@ ms.locfileid: "71122983"
 
     ![HDInsight 群集仪表板门户](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "门户上的 HDInsight 群集仪表板")
 
-4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如， `https://<clustername>.azurehdinsight.net/grafana/` 。
+4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如，`https://<clustername>.azurehdinsight.net/grafana/`。
 
 5. 输入 Hadoop 群集用户凭据。
 
@@ -97,7 +97,7 @@ ms.locfileid: "71122983"
 
     ![Azure 门户删除群集图标](./media/hdinsight-grafana/hdinsight-delete-cluster.png "删除 HDInsight 群集")
 
-2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
+2. 如果希望删除群集和默认存储库帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
 3. 选择“删除资源组”，删除资源组（包括群集和默认存储帐户）。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 

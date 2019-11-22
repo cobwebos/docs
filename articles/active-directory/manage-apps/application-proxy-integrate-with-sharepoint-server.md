@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问 | Microsoft 文档
+title: Azure AD 应用程序代理启用对 SharePoint 的远程访问
 description: 概要介绍如何将本地 SharePoint 服务器与 Azure AD 应用程序代理相集成。
 services: active-directory
 documentationcenter: ''
@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f1351a2ebe6a23dc4d1e31f30f1c69ac862b21
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d8f1bbd79e6dcbbd75e1ea1b98bd211d77ed1a9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595438"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275446"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
 此循序渐进指南介绍了如何将本地 SharePoint 场与 Azure Active Directory （Azure AD）应用程序代理相集成。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要执行配置，需要以下资源：
 - SharePoint 2013 场或更高版本。
@@ -171,12 +171,12 @@ ms.locfileid: "72595438"
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>为 SharePoint 服务帐户设置 SPN
 
-本文将 `https://sharepoint` 内部 URL，因此 `HTTP/sharepoint` 了服务主体名称（SPN）。 您必须将这些值替换为与您的环境相对应的值。
+本文将 `https://sharepoint`内部 URL，因此 `HTTP/sharepoint`了服务主体名称（SPN）。 您必须将这些值替换为与您的环境相对应的值。
 若要为 SharePoint 应用程序池帐户注册 SPN `HTTP/sharepoint` `Contoso\spapppool`，请在命令提示符下以域管理员身份运行以下命令：
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-@No__t_0 命令将在添加 SPN 之前搜索该 SPN。 如果 SPN 已存在，则会出现 "**重复 Spn 值**" 错误。 在这种情况下，如果未在正确的应用程序池帐户下设置现有 SPN，请考虑删除该 SPN。 可以通过使用-L 选项运行 `Setspn` 命令来验证 SPN 是否已成功添加。 若要详细了解该命令，请参阅 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
+`Setspn` 命令将在添加 SPN 之前搜索该 SPN。 如果 SPN 已存在，则会出现 "**重复 Spn 值**" 错误。 在这种情况下，如果未在正确的应用程序池帐户下设置现有 SPN，请考虑删除该 SPN。 可以通过使用-L 选项运行 `Setspn` 命令来验证 SPN 是否已成功添加。 若要详细了解该命令，请参阅 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>确保连接器受信任，可委派给添加到 SharePoint 应用程序池帐户的 SPN
 
@@ -198,7 +198,7 @@ ms.locfileid: "72595438"
 
 ## <a name="troubleshoot-sign-in-errors"></a>排查登录错误
 
-如果无法登录到站点，则可以在连接器日志中获取有关该问题的详细信息：从运行连接器的计算机上，打开事件查看器，转到 "**应用程序和服务日志**"  > **Microsoft**  > **AadApplicationProxy**  > **连接器**，并检查**管理**日志。
+如果登录站点不工作，你可以从运行连接器的计算机上获取有关该问题的详细信息，打开事件查看器，转到 "**应用程序和服务日志**" > **Microsoft** > **AadApplicationProxy** > "**连接器**"，然后检查**管理**日志。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 为模型训练创建和使用计算目标
+title: 使用计算目标进行模型定型
 titleSuffix: Azure Machine Learning
 description: 为机器学习模型训练配置训练环境（计算目标）。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489572"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305319"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "73489572"
 
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.39 进行测试。
+> 本文中的代码已通过 Azure 机器学习 SDK 版本1.0.74 进行测试。
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
@@ -105,9 +105,6 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 #### <a name="run-based-creation"></a>基于运行的创建
 
 可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 完成运行后，会自动删除计算。 
-
-> [!NOTE]
-> 若要指定要使用的最大节点数，通常应将 `node_count` 设置为节点数。 当前有（04/04/2019） bug 阻止了此操作。 解决方法是使用运行配置的 `amlcompute._cluster_max_node_count` 属性。 例如，`run_config.amlcompute._cluster_max_node_count = 5`。
 
 > [!IMPORTANT]
 > Azure 机器学习计算的基于运行的创建功能目前为预览版。 如果使用自动化超参数优化或自动化机器学习，请不要使用基于运行的创建。 若要使用超参数优化或自动化机器学习，请改为创建[持久性计算](#persistent)目标。
@@ -380,7 +377,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 > [!IMPORTANT]
 > 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 

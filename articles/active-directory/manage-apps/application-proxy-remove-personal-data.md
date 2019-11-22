@@ -1,5 +1,5 @@
 ---
-title: 删除个人数据 - Azure Active Directory 应用程序代理 | Microsoft Docs
+title: 删除个人数据-Azure Active Directory 应用程序代理
 description: 从安装在设备上的连接器中删除 Azure Active Directory 应用程序代理的个人数据。
 documentationcenter: ''
 author: msmimart
@@ -15,12 +15,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807747"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275407"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>删除 Azure Active Directory 应用程序代理的个人数据
 
@@ -77,7 +77,7 @@ Azure Active Directory 应用程序代理要求你在设备上安装连接器，
 
 确保连接器日志不包含个人数据的一个选项是禁用日志生成。 若要停止生成连接器日志，请从 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 中删除以下突出显示的行。
 
-![显示了突出显示的代码，以删除代码片段](./media/application-proxy-remove-personal-data/01.png)
+![显示具有突出显示的代码以删除的代码段](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,19 +4,20 @@ description: 本部分介绍发布者可以使用的市场推广服务 - Microso
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752351"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818648"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
-你已发布到 marketplace，现在你想要了解你的产品/服务是否成功。 我们为你提供了权益–销售、技术和营销，你需要加速产品/服务的增长。
+你已发布到 marketplace，现在你想要了解你的产品/服务是否成功。 我们为你提供了优势-销售、技术和营销，你需要加速产品/服务的增长。
 
 当你开始使用你的产品/服务时，Marketplace 奖励团队将与你合作，以了解你的合格权益。 Marketplace 收益权益基于你的商业应用商店参与和销售。 你的参与越多，返回的越多。
 
@@ -102,7 +103,7 @@ Microsoft 保留吊销和终止市场奖励权益的权利：
 
 此产品/服务在 Azure Marketplace 或 Microsoft AppSource 中提供实时产品/服务的所有合作伙伴。
 
-验证为欺诈性的交易将不计入出版商的[帐单销售计划层](https://aka.ms/marketplacepublisherrewards)，如列[表、试用、咨询](#list-trial-and-consulting-benefits)部分、"[交易合作伙伴权益](#marketplace-rewards-for-transact-partners)" 部分和[详细的计划](https://aka.ms/marketplacepublisherrewards)中所述. 删除欺诈后，Microsoft 会根据其实际计费的销售，将合作伙伴分配到资格级别。 
+验证为欺诈性的交易不会计入出版商的[帐单销售计划层](https://aka.ms/marketplacepublisherrewards)，如[列表、试用、咨询](#list-trial-and-consulting-benefits)部分、"[交易合作伙伴权益](#marketplace-rewards-for-transact-partners)" 部分和[详细的计划](https://aka.ms/marketplacepublisherrewards)中所述。 删除欺诈后，Microsoft 会根据其实际计费的销售，将合作伙伴分配到资格级别。 
 
 ## <a name="next-steps"></a>后续步骤
 

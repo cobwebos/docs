@@ -3,12 +3,12 @@ title: 策略分配结构的详细信息
 description: 描述 Azure 策略使用的策略分配定义，用于将策略定义和参数关联到资源进行评估。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960043"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279480"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -17,7 +17,7 @@ ms.locfileid: "73960043"
 使用 JSON 创建策略分配。 策略分配包含的元素：
 
 - 显示名称
-- description
+- 说明
 - metadata
 - 强制模式
 - 策略定义
@@ -93,6 +93,6 @@ ms.locfileid: "73960043"
 
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -1,6 +1,6 @@
 ---
 title: Azure 活动日志事件架构
-description: 了解发送到活动日志中的数据的事件架构
+description: 介绍 Azure 活动日志中每个类别的事件架构。
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9f58f08718cc0bfeb94b83de55531c9bd22720e2
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: d196cf4024513d891182f3b916bd8412a2f81d14
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847352"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305491"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](activity-log-export.md)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](diagnostic-logs-schema.md)的映射。
@@ -117,7 +117,7 @@ ms.locfileid: "73847352"
 | channels |以下值之一：“Admin”、“Operation” |
 | 声明 |Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| description |事件的静态文本说明。 |
+| 说明 |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
 | eventName | 管理事件的易记名称。 |
 | category | 始终为“Administrative” |
@@ -261,7 +261,7 @@ ms.locfileid: "73847352"
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
-| description |警报事件的静态文本说明。 |
+| 说明 |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“ResourceHealth” |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -356,7 +356,7 @@ ms.locfileid: "73847352"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或警报引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| description |警报事件的静态文本说明。 |
+| 说明 |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
 | category | 始终为“Alert” |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
@@ -466,7 +466,7 @@ ms.locfileid: "73847352"
 | channels | 始终是“Admin, Operation” |
 | 声明 | 具有 SPN（服务主体名称）的 JSON blob，或自动缩放引擎资源类型。 |
 | correlationId | 字符串格式的 GUID。 |
-| description |自动缩放事件的静态文本说明。 |
+| 说明 |自动缩放事件的静态文本说明。 |
 | eventDataId |自动缩放事件的唯一标识符。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |自动缩放设置的资源组名称。 |
@@ -486,7 +486,7 @@ ms.locfileid: "73847352"
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 此类别包含 Azure 安全中心生成的任何警报记录。 可在此类别中看到的事件类型示例为“执行了可疑的双扩展名文件”。
 
 ### <a name="sample-event"></a>示例事件
@@ -554,7 +554,7 @@ ms.locfileid: "73847352"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| description |安全事件的静态文本说明。 |
+| 说明 |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
 | category | 始终为“Security” |
@@ -635,7 +635,7 @@ ms.locfileid: "73847352"
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
-| description |建议事件的静态文本说明 |
+| 说明 |建议事件的静态文本说明 |
 | eventDataId | 建议事件的唯一标识符。 |
 | category | 始终为“Recommendation” |
 | id |建议事件的唯一资源标识符。 |
@@ -748,7 +748,7 @@ ms.locfileid: "73847352"
 | channels | Policy 事件仅使用“操作”通道。 |
 | 声明 | Active Directory 使用 JWT 令牌来验证用户或应用程序，以在资源管理器中执行此操作。 |
 | correlationId | 通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| description | 对于 Policy 事件，此字段是空白的。 |
+| 说明 | 对于 Policy 事件，此字段是空白的。 |
 | eventDataId | 事件的唯一标识符。 |
 | eventName | “BeginRequest”或“EndRequest”。 “BeginRequest”用于延迟的 auditIfNotExists 和 deployIfNotExists 评估，并且在 deployIfNotExists 效果启动模板部署时使用。 所有其他操作返回“EndRequest”。 |
 | category | 将活动日志事件声明为属于“Policy”。 |
@@ -783,13 +783,13 @@ ms.locfileid: "73847352"
 | category | 操作名称的一部分 | 操作类型分类：“写入”/“删除”/“操作” |
 | resultType | status.value | |
 | resultSignature | substatus.value | |
-| resultDescription | description |  |
+| resultDescription | 说明 |  |
 | durationMs | 不适用 | 始终为 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | 声明和授权属性 |  |
 | 级别 | 级别 |  |
-| location | 不适用 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
+| 位置 | 不适用 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
 | 属性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |

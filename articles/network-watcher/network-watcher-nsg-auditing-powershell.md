@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 网络观察程序安全组视图自动进行 NSG 审核 | Microsoft 文档
+title: 自动 NSG 审核-安全组视图
+titleSuffix: Azure Network Watcher
 description: 本页说明如何配置网络安全组的审核
 services: network-watcher
 documentationcenter: na
@@ -14,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165146"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278042"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
-客户经常会遇到验证基础结构安全局势的难题。 对于 Azure 中的 VM，也存在类似的难题。 必须应用一个基于网络安全组 (NSG) 规则的类似安全配置文件。 现在，使用安全组视图可以获取应用到 NSG 中 VM 的规则列表。 可以定义一个黄金 NSG 安全配置文件，然后每周启动安全组视图，将输出与该黄金配置文件进行比较并创建报告。 这样，便可以轻松识别不符合指定的安全配置文件的所有 VM。
+客户经常会遇到验证基础结构安全局势的难题。 对于 Azure 中的 VM，也存在类似的难题。 必须应用一个基于网络安全组 (NSG) 规则的类似安全配置文件。 现在，使用安全组视图可以获取应用到 NSG 中 VM 的规则列表。 可以定义一个黄金 NSG 安全配置文件，每周启动安全组视图，将输出与该黄金配置文件进行比较并创建报告。 这样，便可以轻松识别不符合指定的安全配置文件的所有 VM。
 
 如果不熟悉网络安全组，请参阅[网络安全概述](../virtual-network/security-overview.md)。
 
@@ -34,9 +35,9 @@ ms.locfileid: "70165146"
 
 本方案将已知合理的基准与针对虚拟机返回的安全组视图结果进行比较。
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的是存在有效虚拟机的资源组。
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 本文所述的方案将获取虚拟机的安全组视图。
 

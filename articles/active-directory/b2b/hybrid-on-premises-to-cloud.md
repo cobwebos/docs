@@ -1,5 +1,5 @@
 ---
-title: 同步到云作为 B2B 用户的 Azure Active Directory 的本地合作伙伴帐户 |Microsoft Docs
+title: 将本地合作伙伴帐户作为 B2B 用户同步到云-Azure AD
 description: 使用 Azure AD B2B 协作时所用的相同凭据，向本地托管的外部合作伙伴授予对本地和云资源的访问权限。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae75311ab61449f37ccea15a0bcb88fed80c3ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767341"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272615"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>使用 Azure AD B2B 协作向本地托管的合作伙伴帐户授予对云资源的访问权限
 
@@ -32,7 +32,7 @@ ms.locfileid: "65767341"
 用于实现此目的的两种常用方法是：
 
 - 指定一个未使用的本地 Active Directory 属性（例如 extensionAttribute1）来用作源属性。 
-- 或者，从其他属性派生 UserType 属性的值。 例如，你想要将所有用户都同步为 Guest，如果其本地 Active Directory UserPrincipalName 属性结尾域 *\@partners.contoso.com*。
+- 或者，从其他属性派生 UserType 属性的值。 例如，如果本地 Active Directory UserPrincipalName 属性以域 *\@partners.contoso.com*结尾，则需要将所有用户同步为 Guest。
  
 有关详细的属性要求，请参阅[启用 UserType 同步](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)。 
 

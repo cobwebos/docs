@@ -1,21 +1,17 @@
 ---
 title: Azure Kubernetes 服务 & GitHub 操作
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改。
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f362e75b834cd33f209dfeb261b0e6ff1df57cb3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889733"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280166"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
@@ -31,7 +27,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 > [!IMPORTANT]
 > 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli-installed]。

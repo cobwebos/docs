@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111882"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276783"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes Service （AKS）的模型上检测数据偏差（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -80,7 +80,7 @@ ms.locfileid: "74111882"
 ## <a name="configure-data-drift"></a>配置数据偏移
 若要为试验配置数据偏移，请导入依赖项，如以下 Python 示例中所示。 
 
-此示例演示如何配置[`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py)对象：
+此示例演示如何配置[`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector)对象：
 
 ```python
 # Import Azure ML packages

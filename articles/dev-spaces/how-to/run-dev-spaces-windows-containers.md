@@ -1,20 +1,16 @@
 ---
 title: 使用 Azure Dev Spaces 与 Windows 容器交互
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/25/2019
 ms.topic: conceptual
 description: 了解如何使用 Windows 容器在现有群集上运行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Windows 容器
-ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: ad91d8e48a9242795d4f5d5cd165e658339ebe08
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582775"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280035"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>使用 Azure Dev Spaces 与 Windows 容器交互
 

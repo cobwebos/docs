@@ -1,23 +1,14 @@
 ---
 title: 登录到 Azure Notebooks
 description: 使用 Microsoft 帐户或工作/学校帐户配置 Azure Notebooks 的用户帐户。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: bc93f55a3349498fa82095c2bc2b3178e234c107
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a2d8c8180dfb5dc31e273c7953a57f40cf31238d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973142"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277626"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks 的用户帐户
 

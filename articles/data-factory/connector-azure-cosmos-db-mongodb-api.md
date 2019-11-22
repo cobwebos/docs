@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: d0c90562c5e0810e5ed4898f6b2ec09ee52d16a0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0da3452964a7c4bb7d2a22ce4cd5164ad8c1e3fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681324"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280704"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 的用于 MongoDB 的 API 复制数据
 
@@ -111,7 +111,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb-as-source"></a>Azure Cosmos DB 的用于 MongoDB 的 API 作为源
 
-复制活动 **source** 节支持以下属性：
+复制活动“源”部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -171,7 +171,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbMongoDbApiSink**。 |是 |
-| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>如果已存在具有相同 `_id` 的文档，则**upsert**的行为是替换该文档;否则，请插入文档。<br /><br />**注意**：如果未在原始文档中或按列映射指定 `_id`，数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
 | writeBatchTimeout | 批处理插入操作在超时之前完成的等待时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
 
@@ -218,7 +218,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 链接服务支持以下属性：
 * 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 * 在两个 Azure Cosmos DB 集合之间按原样复制文档。
 
-若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射。
+若要实现此类“架构不可知”复制，请跳过数据集中的“结构”（也称为“架构”）部分和复制活动中的架构映射。
 
 ## <a name="schema-mapping"></a>架构映射
 

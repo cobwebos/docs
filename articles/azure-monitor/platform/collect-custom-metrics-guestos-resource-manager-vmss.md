@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+title: 利用模板 Azure Monitor 收集 Windows 规模集度量值
 description: 使用 Windows 虚拟机规模集的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844969"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286122"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -246,7 +246,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. 为所要部署的 VM 创建新资源组。 运行下面的命令： 
+1. 为所要部署的 VM 创建新资源组。 运行以下命令： 
 
    ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
@@ -286,7 +286,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。 
 
-1. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。  
+1. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。  
 
 然后，还可以选择使用此指标中的维度，来为特定的 VM 绘制此指标的图表，或者绘制规模集中每个 VM 的图表。 
 

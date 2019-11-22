@@ -4,12 +4,12 @@ description: 使用 Azure Monitor 监视 Azure 备份工作负荷及创建自定
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 65bab1a6d6d424c90b38a3bdf99b6bf5bd8ded09
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 66417071190fa45a746ce0b80a9de12968198bda
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172908"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278281"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -35,9 +35,9 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 在“监视”部分，选择“诊断设置”并指定恢复服务保管库的诊断数据的目标。
 
-![面向 Log Analytics 的恢复服务保管库诊断设置](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
+![面向 Log Analytics 的恢复服务保管库诊断设置](media/backup-azure-monitoring-laworkspace/diagnostic-setting-new.png)
 
-可将另一订阅中的 Log Analytics 工作区设定为目标。 若要在单个位置监视不同订阅中的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 若要通过通道将有关 Azure 备份的所有信息传送到 Log Analytics 工作区，请选择“AzureBackupReport”作为日志。
+可将另一订阅中的 Log Analytics 工作区设定为目标。 若要在单个位置监视不同订阅中的保管库，请为多个恢复服务保管库选择相同的 Log Analytics 工作区。 若要将有关 Azure 备份的所有信息都通道到 Log Analytics 工作区，请选择显示的切换中的 "**资源特定**"，并选择以下事件- **CoreAzureBackup**、 **AddonAzureBackupJobs**、 **AddonAzureBackupAlerts**、 **AddonAzureBackupPolicy**、 **AddonAzureBackupStorage**、 **AddonAzureBackupProtectedInstance**。 有关配置 LA 诊断设置的更多详细信息，请参阅[此文](https://aka.ms/AA6jkus)。
 
 > [!IMPORTANT]
 > 完成配置后，应等待24小时，让初始数据推送完成。 完成初始数据推送后，将按本文稍后的[频率部分](#diagnostic-data-update-frequency)中所述推送所有事件。
@@ -68,7 +68,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
    ![还原作业的 Log Analytics 图形](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
-类似地，单击其他磁贴即可查看有关还原作业、云存储、备份项、来自本地资源备份的警报以及日志备份作业的报表。
+同样，通过单击其他磁贴，你可以查看有关还原作业、云存储、备份项、本地资源备份中的警报和日志备份作业的报告。
 
 这些图形随模板一起提供。 如果需要，可以编辑图形或添加更多图形。
 
@@ -112,90 +112,65 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 - 所有成功的备份作业
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Completed"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     ````
 
 - 所有失败的备份作业
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | where OperationName == "Job" and JobOperation_s == "Backup"
-    | where JobStatus_s == "Failed"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Failed"
     ````
 
 - 所有成功的 Azure VM 备份作业
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "VM" and BackupManagementType_s == "IaaSVM"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="VM" and BackupManagementType=="IaaSVM"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 - 所有成功的 SQL 日志备份作业
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s == "Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "SQLDataBase" and BackupManagementType_s == "AzureWorkload"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="SQLDataBase" and BackupManagementType=="AzureWorkload"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 - 所有成功的 Azure 备份代理作业
 
     ````Kusto
-    AzureDiagnostics
-    | where Category == "AzureBackupReport"
-    | where SchemaVersion_s == "V2"
-    | extend JobOperationSubType_s = columnifexists("JobOperationSubType_s", "")
-    | where OperationName == "Job" and JobOperation_s == "Backup" and JobStatus_s == "Completed" and JobOperationSubType_s != "Log" and JobOperationSubType_s != "Recovery point_Log"
+    AddonAzureBackupJobs
+    | where JobOperation=="Backup"
+    | where JobStatus=="Completed"
     | join kind=inner
     (
-        AzureDiagnostics
-        | where Category == "AzureBackupReport"
+        CoreAzureBackup
         | where OperationName == "BackupItem"
-        | where SchemaVersion_s == "V2"
-        | where BackupItemType_s == "FileFolder" and BackupManagementType_s == "MAB"
-        | distinct BackupItemUniqueId_s, BackupItemFriendlyName_s
-        | project BackupItemUniqueId_s , BackupItemFriendlyName_s
+        | where BackupItemType=="FileFolder" and BackupManagementType=="MAB"
+        | distinct BackupItemUniqueId, BackupItemFriendlyName
     )
-    on BackupItemUniqueId_s
-    | extend Vault= Resource
-    | project-away Resource
+    on BackupItemUniqueId
     ````
 
 ### <a name="diagnostic-data-update-frequency"></a>诊断数据更新频率

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062257"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271304"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -24,7 +24,7 @@ ms.locfileid: "73062257"
 
 本文介绍了成员身份更新的工作原理以及在加入 Azure AD 期间如何对其进行自定义。 本文的内容不适用于加入“混合” Azure AD。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 使用 Azure AD 联接将 Windows 设备与 Azure AD 连接时，Azure AD 会将以下安全原则添加到设备上的本地管理员组：
 
@@ -48,7 +48,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 在 Azure 门户中，可以管理“设备”页上的设备管理员角色。 要打开“设备”页，请执行以下操作：
 
 1. 以全局管理员或用户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航栏中，单击“Azure Active Directory”。 
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”部分单击“设备”。
 1. 在“设备”页上，单击“设备设置”。
 

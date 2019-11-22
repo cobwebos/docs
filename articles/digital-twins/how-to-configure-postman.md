@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 6a001d6b501a22b4b07599792a64af735c5d4d9b
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090474"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304829"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -52,15 +52,15 @@ ms.locfileid: "74090474"
 
 1. 所选的 API 在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”。 选择“读取 (1)”下拉列表，然后选中“Read.Write”复选框。 选择“添加权限”按钮。
 
-    [![添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [![为 Azure 数字孪生添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. 根据组织的设置，可能需要执行其他步骤才能授予对此 API 的管理员访问权限。 请联系管理员以了解详细信息。 在该管理员访问权限得到批准后，API 的“API 权限”窗格中的“需要管理员同意”列将如下所示：
 
-    [![管理员同意批准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![配置管理员同意批准](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 1. 配置要 `https://www.getpostman.com/oauth2/callback`的第二个**重定向 URI** 。
 
-    [![添加 Postman 的重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+    [![配置新 Postman 重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. 若要确保[将应用注册为**公用客户端**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，请打开应用注册的 "**身份验证**" 窗格，并在该窗格中向下滚动。 在 "**默认客户端类型**" 部分中，选择 **"是"** ，将**应用程序视为公共客户端**，然后单击 "**保存**"。
 
@@ -98,13 +98,13 @@ ms.locfileid: "74090474"
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
     | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
-    | 作用域 | 留空 |
+    | 范围 | 留空 |
     | 状态 | 留空 |
     | 客户端身份验证 | `Send as Basic Auth header` |
 
 1. 此时，客户端应如下所示：
 
-    [![Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [![Postman 客户端令牌示例](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
 1. 选择“请求令牌”。
   
@@ -116,14 +116,14 @@ ms.locfileid: "74090474"
 
 1. 在 "**标头**" 选项卡下，添加值为 `multipart/mixed`的 HTTP 请求标头密钥**内容类型**。
 
-   [![内容类型多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![指定内容类型多部分/混合](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
 1. 将非文本数据序列化为文件。 JSON 数据将另存为 JSON 文件。
 1. 在 "**正文**" 选项卡下，选择 `form-data`。 
 1. 通过分配**密钥**名称来添加每个文件，并选择 "`File`"。
 1. 然后，通过“选择文件”按钮选择每个文件。
 
-   [![Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [![Postman 客户端窗体正文示例](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
    >[!NOTE]
    > * Postman 客户端不要求多部分区块有手动分配的 **Content-Type** 或 **Content-Disposition**。

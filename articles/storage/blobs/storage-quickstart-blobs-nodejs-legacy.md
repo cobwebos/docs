@@ -1,6 +1,6 @@
 ---
 title: 快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v2
-description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Node.js v2 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+description: 在对象 (Blob) 存储中创建存储帐户和容器。 使用用于 node.js v2 的 Azure 存储客户端库来上传 blob、下载 blob 并列出容器中的 blob。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825350"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269682"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure Blob 存储客户端库 v2
 
@@ -151,7 +151,7 @@ const createContainer = async (containerName) => {
 
 使用 **createContainerIfNotExists** 时，应用程序可以多次运行 *createContainer* 命令，在容器存在的情况下也不会返回错误。 在生产环境中，通常只调用 **createContainerIfNotExists** 一次，因为在应用程序中，从头至尾使用的是同一容器。 在这种情况下，可以通过门户或 Azure CLI 提前创建容器。
 
-### <a name="upload-text"></a>上载文本
+### <a name="upload-text"></a>上传文本
 
 *uploadString* 函数调用 [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest)，以便将任意字符串写入（或覆盖）到 Blob 容器。
 
@@ -168,7 +168,7 @@ const uploadString = async (containerName, blobName, text) => {
     });
 };
 ```
-### <a name="upload-a-local-file"></a>上载本地文件
+### <a name="upload-a-local-file"></a>上传本地文件
 
 *uploadLocalFile* 函数通过 [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) 将文件从文件系统上传和写入（或覆盖）到 Blob 存储中。 
 
@@ -341,7 +341,7 @@ console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
-写入存储帐户的所有数据都将在代码示例结束时自动删除。 
+写入存储帐户的所有数据都会在代码示例结束时自动删除。 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>用于通过 Blob 开发 Node.js 应用程序的资源
 

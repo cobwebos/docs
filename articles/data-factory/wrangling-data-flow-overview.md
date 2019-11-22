@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665652"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287095"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什么是整理数据流？
 
@@ -37,6 +37,30 @@ ms.locfileid: "73665652"
 ### <a name="data-validation"></a>数据验证
 
 以无代码方式浏览数据，以删除任何离群值和异常，并将其与用于快速分析的形状相符。
+
+## <a name="supported-sources"></a>支持的源
+
+| 连接器 | 数据格式 | 身份验证类型 |
+| -- | -- | --|
+| [Azure Blob 存储](connector-azure-blob-storage.md) | CSV | 帐户密钥 |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service Principal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | 帐户密钥、服务主体 |
+| [Azure SQL 数据库](connector-azure-sql-database.md) | - | SQL 身份验证 |
+| [Azure Synapse 分析](connector-azure-sql-data-warehouse.md) | - | SQL 身份验证 |
+
+## <a name="the-mashup-editor"></a>混合编辑器
+
+创建整理数据流时，所有源数据集都将成为数据集查询，并放在**ADFResource**文件夹中。 默认情况下，UserQuery 将指向第一个数据集查询。 所有转换都应在 UserQuery 上完成，因为不支持对数据集查询进行更改，也不会将其保留。 当前不支持重命名、添加和删除查询。
+
+![整理](media/wrangling-data-flow/editor.png)
+
+当前并非所有 Power Query M 函数都支持数据整理，但在创作期间可用。 生成整理数据流时，如果函数不受支持，系统将提示你输入以下错误消息：
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+有关支持的转换的详细信息，请参阅[整理数据流函数](wrangling-data-flow-functions.md)。
+
+当前整理数据流仅支持写入到一个接收器。
 
 ## <a name="next-steps"></a>后续步骤
 

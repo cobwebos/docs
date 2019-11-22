@@ -7,16 +7,20 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 6fc81fa84d4d40d5318d6bf3690aa4b90c4e3c9b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26477eeb00fe7616a8d2f2be343e586042c0d130
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196808"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279664"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 
 容器 Azure Monitor 为 Azure Kubernetes 服务（AKS）和 AKS 引擎群集提供丰富的监视体验。 本文介绍如何启用对[Azure Red Hat OpenShift](../../openshift/intro-openshift.md)上托管的 Kubernetes 群集的监视，以实现类似的监视体验。
+
+>[!NOTE]
+>目前，对 Red Hat OpenShift 的支持是公共预览版中的一项功能。
+>
 
 可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
 
@@ -29,7 +33,7 @@ ms.locfileid: "74196808"
 
 - 实时数据
 - Prometheus 指标抓取
-- 收集指标
+- 收集群集节点和 pod 中的指标，并将其写入 Azure Monitor 指标存储
 - 运行状况功能
 
 ## <a name="prerequisites"></a>先决条件
@@ -96,7 +100,7 @@ ms.locfileid: "74196808"
 
 4. 编辑 JSON 参数文件**newClusterWithMonitoringParam**并更新以下值：
 
-    - *位置*
+    - *location*
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*

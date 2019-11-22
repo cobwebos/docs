@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012000"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280858"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -45,9 +45,9 @@ ms.locfileid: "74012000"
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>模式不会提升机器学习到的实体检测
 
-模式的主要用途是帮助预测意向和角色。 pattern.any 实体用来提取自由形式的实体。 当模式使用实体时，模式不会帮助检测机器学习到的实体。  
+模式的主要用途是帮助预测意向和角色。 _模式。任何_实体用于提取自由格式实体。 当模式使用实体时，模式不会帮助检测机器学习到的实体。  
 
-若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将无法触发。
+若将多个话语合并到单个模式，则无法提升实体预测。 对于要激发的简单实体，你需要添加最谈话或 use list 实体，否则你的模式将不会激发。
 
 ## <a name="patterns-use-entity-roles"></a>模式使用实体角色
 如果模式中的两个或多个实体具有相关的上下文，模式会使用实体[角色](luis-concept-roles.md)来提取关于实体的上下文信息。  

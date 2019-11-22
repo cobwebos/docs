@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 对 Azure 队列存储执行操作 - Azure 存储
+title: 在 PowerShell 中执行 Azure 队列存储操作
 description: 如何使用 PowerShell 对 Azure 队列存储执行操作
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721228"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269382"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -28,15 +28,15 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 > * 删除消息
 > * 删除队列
 
-本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
 
 队列的数据平面没有相应的 PowerShell cmdlet。 若要执行数据平面操作（如添加消息、读取消息和删除消息），必须使用 PowerShell 中公开的 .NET 存储客户端库。 创建消息对象，然后可以使用命令（例如 AddMessage）对该消息执行操作。 本文介绍如何执行该操作。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
+使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
 Connect-AzAccount
@@ -85,7 +85,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-有关命名 Azure 队列服务命名约定的信息，请参阅 [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx)（命名队列和元数据）。
+命名 Azure 队列服务命名约定的信息，请参阅 [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx)（命名队列和元数据）。
 
 ## <a name="retrieve-a-queue"></a>检索队列
 

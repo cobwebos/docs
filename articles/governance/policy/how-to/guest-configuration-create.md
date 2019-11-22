@@ -3,12 +3,12 @@ title: 如何创建 Guest Configuration 策略
 description: 了解如何创建适用于 Windows 或 Linux VM 的 Azure Policy Guest Configuration 策略。
 ms.date: 09/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959477"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279359"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 
@@ -412,4 +412,4 @@ GitHub 上的[生成新的 GPG 密钥](https://help.github.com/en/articles/gener
 
 - 了解如何使用 [Guest Configuration](../concepts/guest-configuration.md) 审核 VM。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取合规性数据](getting-compliance-data.md)。
+- 了解如何[获取合规性数据](get-compliance-data.md)。

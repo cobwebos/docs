@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185708"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286993"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -291,3 +291,19 @@ ms.locfileid: "74185708"
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>警告：数据更改检测策略已配置为使用键列 "X"
 [数据更改检测策略](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)对用于检测更改的列有特定要求。 其中一项要求是，每当源项发生更改时，都会更新此列。 另一要求是此列的新值大于先前值。 键列不满足此要求，因为它们不会在每次更新时都更改。 若要解决此问题，请为更改检测策略选择其他列。
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>警告：文档文本看似 UTF-16 编码，但缺少字节顺序标记
+
+在分析文本之前，[索引器分析模式](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters)需要知道文本如何编码。 编码文本最常见的两种方法是 UTF-16 和 UTF-8。 UTF-8 是长度可变的编码，其中每个字符的长度介于1个字节和4个字节之间。 UTF-16 是固定长度的编码，其中每个字符长度为2个字节。 UTF-16 具有两个不同的变量： "big endian" 和 "little endian"。 文本编码由 "字节顺序标记" 确定，这是文本前面的一系列字节。
+
+| 编码 | 字节顺序标记 |
+| --- | --- |
+| UTF-16 大字节序 | 0xFE 0xFF |
+| UTF-16 小字节序 | 0xFF 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+如果不存在字节顺序标记，则假定文本编码为 UTF-8。
+
+若要解决此警告，请确定此 blob 的文本编码，并添加相应的字节顺序标记。

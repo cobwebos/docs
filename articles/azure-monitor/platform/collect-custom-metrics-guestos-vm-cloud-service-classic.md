@@ -1,6 +1,6 @@
 ---
-title: 将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务
-description: 将来宾 OS 指标发送到 Azure Monitor 指标存储云服务
+title: 将经典云服务指标发送到 Azure Monitor 指标数据库
+description: 介绍将 Azure 经典云服务的来宾 OS 性能指标发送到 Azure Monitor 指标存储的过程。
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844933"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304782"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -51,7 +51,7 @@ ms.locfileid: "70844933"
 
 - 可以输入任何 URL 作为登录 URL。  
 - 为此应用创建新的客户端机密。  
-- 保存密钥和客户端 ID，以便在后续步骤中使用。  
+- 请保存密钥和客户端 ID，以便在后面的步骤中使用。  
 
 对于在前面步骤中创建的应用，请为其授予你希望发布其指标的资源的“监视指标发布者”权限。 如果你计划使用此应用为许多资源发布自定义指标，则可以在资源组或订阅级别授予这些权限。  
 

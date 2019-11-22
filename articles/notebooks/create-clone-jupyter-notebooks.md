@@ -1,23 +1,14 @@
 ---
 title: 在 Azure 上创建和克隆 Jupyter 笔记本
 description: Azure Notebooks 项目管理一系列笔记本和相关文件，你可以新建或从另一个源克隆笔记本和相关文件。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc5425312637710f0b9f94493b8cfb4a48582236
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496709"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277579"
 ---
 # <a name="create-and-clone-projects"></a>创建和克隆项目
 
@@ -77,10 +68,10 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| about | 帐户 | ™ | api | 发布 | 课堂 |
+| about | 帐户 | 管理 | api | 发布 | 课堂 |
 | 内容 | 仪表板 | 浏览 | 常见问题 | help | html |
 | 主页 | 进口 | 图书馆 | 管理 | 新的 | 笔记本 |
-| 记事本 | pdf | 预览 | 定价 | 个人资料 | 搜索 |
+| notebooks | pdf | 预览 | 定价 | 个人资料 | 搜索 |
 | status | support | 测试 | | | |
 
 如果尝试使用其中一个词作为项目 ID，则 "新建**项目**" 和 "**项目设置**" 弹出窗口会指示 "库 ID 是保留标识符"。

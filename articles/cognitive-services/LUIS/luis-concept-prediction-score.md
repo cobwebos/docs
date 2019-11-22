@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486763"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280825"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
 
@@ -26,7 +26,7 @@ ms.locfileid: "73486763"
 
 |分数值|置信度|
 |--|--|
-|1|明确匹配|
+|1 个|明确匹配|
 |0.99|高置信度|
 |0.01|低置信度|
 |0|明确匹配失败|

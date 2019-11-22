@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3ca668036a8b4a4af261ee85b8a884c22258beb4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474358"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269509"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "73474358"
 > [!NOTE]
 > 自2017年3月起，此功能已在 Microsoft Authenticator 应用中，因此，如果为目录启用了该策略，用户可能会立即遇到此流，如果策略未启用，则会看到一条错误消息。 请注意这一点，并让用户为此更改做好准备。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 多重身份验证，允许将推送通知作为验证方法 
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。
@@ -46,7 +46,7 @@ ms.locfileid: "73474358"
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码手机登录身份验证方法
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 浏览到**Azure AD 安全** > **身份验证**方法 > **身份验证方法策略（预览）**
+1. 搜索并选择“Azure Active Directory”。 选择**安全** > **身份**验证方法 > **身份验证方法策略（预览）**
 1. 在**无密码手机登录**下，选择以下选项
    1. **启用**-是或否
    1. **目标**-所有用户或选择用户

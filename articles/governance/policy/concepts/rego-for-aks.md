@@ -3,12 +3,12 @@ title: 了解 azure Kubernetes Service 的 Azure 策略
 description: 了解 Azure 策略如何使用 Rego 并打开策略代理来管理 Azure Kubernetes 服务中的群集。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959798"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279397"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>了解 azure Kubernetes Service 的 Azure 策略
 
@@ -93,7 +93,7 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 
 在 AKS 群集中安装外接程序之前，必须安装预览扩展。 此步骤通过 Azure CLI 来完成：
 
-1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+1. 需要安装并配置 Azure CLI 版本2.0.62 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. AKS 群集必须是_1.10_版或更高版本。 使用以下脚本验证 AKS 群集版本：
 
@@ -257,6 +257,6 @@ Azure 策略通过扩展了对[守卫](https://github.com/open-policy-agent/gate
 - 查看[策略定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

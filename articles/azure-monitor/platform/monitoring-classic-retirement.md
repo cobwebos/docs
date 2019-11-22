@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的统一警报和监视替换经典警报和监视
-description: 关于停用之前在“警报(经典)”下的 Azure 门户中显示的经典监视服务和功能的概述。 经典警报和监视包括以下内容：针对 Azure 资源的经典指标警报、针对 Application Insights 的经典指标警报、针对 Application Insights 的经典 Web 测试警报、针对 Application Insights 的经典自定义指标警报和针对 Application Insights SmartDetection v1 的经典警报
+title: 在 Azure Monitor 中 & 监视的经典警报更新
+description: 弃用了经典监视服务和功能的说明，这些说明早于在 "警报（经典）" 下 Azure 门户。
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676901"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307084"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
 Azure Monitor 现已成为统一的完整堆栈监视服务，支持跨资源“一个指标”和“一个警报”；如需更多信息，请参阅[关于新 Azure Monitor 的博客文章](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)。新的 Azure 监视和警报致力于成为更快速、更智能和可扩展的平台 - 与不断增长的云计算扩展齐头并进，并与 Microsoft 智能云理念保持一致。 
 
-新的 Azure 监视和警报平台建成后，我们**将于 2019 年 8 月在 Azure 公有云中弃用**“经典”监视和警报平台（托管于 Azure 警报的“查看经典警报”部分内）。 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)将不会受到影响。
+新的 Azure 监视和警报平台建成后，我们*将于 2019 年 8 月在 Azure 公有云中弃用*“经典”监视和警报平台（托管于 Azure 警报的“查看经典警报”部分内）。 [Azure 政府云和](../../azure-government/documentation-government-welcome.md) [Azure 中国世纪互联](https://docs.azure.cn/)将不会受到影响。
 
 > [!NOTE]
 > 由于迁移工具的延迟推出，经典警报迁移的停用日期已从原来宣布的 2019 年 6 月 30 日[推迟至 2019 年 8 月 31 日](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)。
@@ -80,7 +80,7 @@ Azure 资源的新指标按以下形式提供：
 
 以下是预警规则将产生费用的示例：
 
-- 新 Azure Monitor 平台上除免费单位数之外创建的任何新（非迁移）预警规则
+- 新 Azure Monitor 平台上除免费单位数之外创建的任何新警报（非迁移）规则
 - Azure Monitor 内除免费单位数之外引入和保留的任何数据
 - Application Insights 执行的任何多测试 Web 测试
 - Azure Monitor 内除免费单位数之外存储的任何自定义指标

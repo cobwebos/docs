@@ -1,7 +1,7 @@
 ---
-title: Migrate to Azure resource for authoring
+title: 迁移到 Azure 资源进行创作
 titleSuffix: Azure Cognitive Services
-description: Migrate to an Azure authoring resource key.
+description: 迁移到 Azure 创作资源密钥。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,99 +11,99 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7721b6c86642ad79cd646c66b1ef578acdca1505
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225514"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280778"
 ---
-# <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrate to an Azure resource authoring key
+# <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
-Language Understanding (LUIS) authoring authentication changed from an email account to an Azure resource. 
+语言理解（LUIS）创作身份验证从电子邮件帐户更改为 Azure 资源。 目前不需要切换到 Azure 资源，以后将强制实施。
 
 ## <a name="why-migrate"></a>为何要迁移？
 
-Using an Azure resource for authoring allows you, as the owner of the resource, to control access to authoring. You can create and name authoring resources to manage different groups of authors. 
+使用 Azure 资源进行创作可以让你作为资源的所有者来控制对创作的访问。 你可以创建和命名创作资源，以管理不同的作者组。 
 
-For example, if you have 2 types of LUIS apps you are authoring, with different members, you can create two different authoring resources and assign contributors. The Azure authoring resource controls the authorization. 
+例如，如果你正在创作两种类型的 LUIS 应用，而使用不同的成员，则可以创建两个不同的创作资源并分配参与者。 Azure 创作资源控制授权。 
 
 > [!Note]
-> Before migration, co-authors are known as _collaborators_. After migration, the Azure role of _contributor_ is used for the same functionality.
+> 迁移之前，共同创作者称为_协作_者。 迁移后，会将_参与者_的 Azure 角色用于相同的功能。
 
-## <a name="what-is-migrating"></a>What is migrating?
+## <a name="what-is-migrating"></a>什么是迁移？
 
-Migration includes:
+迁移包括：
 
-* All users of LUIS, owners and contributors.
-* **All** apps.
-* A **one-way** migration.
+* LUIS、所有者和参与者的所有用户。
+* **所有**应用。
+* 单向**迁移。**
 
-The owner can't choose a subset of apps to migrate and the process isn't reversible. 
+所有者无法选择要迁移的应用子集，此过程不可逆。 
 
-The migration is not: 
+迁移不是： 
 
-* A process that collects collaborators and automatically moves or adds to the Azure authoring resource. You, as the app owner, need to complete this step. This step requires permissions to the appropriate resource.
-* A process to create and assign a prediction runtime resource. If you need a prediction runtime resource, that is [a separate process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) and is unchanged. 
+* 收集协作者并自动移动或添加到 Azure 创作资源的进程。 作为应用所有者，需要完成此步骤。 此步骤需要具有相应资源的权限。
+* 用于创建和分配预测运行时资源的进程。 如果需要预测运行时资源，这是[一个单独的进程](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)，并且保持不变。 
 
-## <a name="how-are-the-apps-migrating"></a>How are the apps migrating?
+## <a name="how-are-the-apps-migrating"></a>如何迁移应用？
 
-The [LUIS portal](https://www.luis.ai) provides the migration process. 
+[LUIS 门户](https://www.luis.ai)提供迁移过程。 
 
-You will be asked to migrate if:
+系统会要求你在以下情况中进行迁移：
 
-* You have apps on the email authentication system for authoring.
-* And you are the app owner. 
+* 你具有用于创作的电子邮件身份验证系统上的应用。
+* 你是应用所有者。 
 
-You can delay the migration process, by canceling out of the window. You are periodically asked to migrate until you migrate or the migration deadline is passed. You can start the migration process from the top navigation bar's lock icon.
+您可以通过取消窗口来延迟迁移过程。 系统会定期要求你迁移，直到你迁移或通过迁移截止时间。 可以从顶部导航栏的锁定图标开始迁移过程。
 
-## <a name="migration-for-the-app-owner"></a>Migration for the app owner
+## <a name="migration-for-the-app-owner"></a>应用所有者的迁移
 
-### <a name="before-you-migrate"></a>Before you migrate
+### <a name="before-you-migrate"></a>迁移之前
 
-* **Optionally**, backup the apps from the LUIS portal's apps list by exporting each app or use the export [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Optionally**, save each app's collaborator's list. This email list is provided as part of the migration process.
-* **Required**, you need to have an [Azure subscription](https://azure.microsoft.com/free/). A part of the subscription process does require billing information. However, you can use the Free (`F0`) pricing tier when you use LUIS. 
+* **（可选**）通过导出每个应用或使用导出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，从 LUIS 门户的 "应用" 列表备份应用。
+* **还可以选择**保存每个应用的 collaborator's 列表。 此电子邮件列表作为迁移过程的一部分提供。
+* **需要，需要**有一个[Azure 订阅](https://azure.microsoft.com/free/)。 订阅过程的一部分需要计费信息。 但是，在使用 LUIS 时，可以使用免费（`F0`）定价层。 
 
-**Authoring your LUIS app is free**, indicated by the `F0` tier. Learn [more about pricing tiers](luis-boundaries.md#key-limits).
+**创作你的 LUIS 应用程序是免费**的，由 `F0` 层指示。 了解[有关定价层的详细信息](luis-boundaries.md#key-limits)。
 
-If you do not have an Azure subscription, [sign up](https://azure.microsoft.com/free/). 
+如果你没有 Azure 订阅，请[注册](https://azure.microsoft.com/free/)。 
 
 ### <a name="migration-steps"></a>迁移步骤
 
-Follow [these migration steps](luis-migration-authoring-steps.md).
+请按照[以下迁移步骤](luis-migration-authoring-steps.md)操作。
 
 ### <a name="after-you-migrate"></a>迁移之后 
 
-After the migration process, all your LUIS apps are now assigned to a single LUIS authoring resource.
+迁移过程完成后，所有 LUIS 应用现已分配给单个 LUIS 创作资源。
 
-You can create more authoring resources and assign from the **Manage -> Azure resources** page in the _LUIS portal_. 
+你可以在_LUIS 门户_中创建更多的创作资源，并从**管理-> Azure 资源**页分配。 
 
-You can add contributors to the authoring resource from the _Azure portal_, on the **Access Control (IAM)** page for that resource. See [add contributor access](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) for more information.
+您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|门户|用途|
+|门户|目的|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Create prediction and authoring resources.<br>* Assign contributors.|
-|[LUIS](https://www.luis.ai)|* Migrate to new authoring resources.<br>* Assign or unassign prediction and authoring resources to apps from **Manage -> Azure resources** page.| 
+|[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配参与者。|
+|[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。| 
 
-## <a name="migration-for-the-app-contributor"></a>Migration for the app contributor
+## <a name="migration-for-the-app-contributor"></a>应用参与者的迁移
 
-Every user of LUIS needs to migrate, including collaborators/contributors. 
+LUIS 的每个用户都需要迁移，包括协作者/参与者。 
 
-### <a name="before-the-app-is-migrated"></a>Before the app is migrated
+### <a name="before-the-app-is-migrated"></a>迁移应用之前
 
-You may choose to export an app you are a collaborator on, then import the app back into LUIS. The import process creates a new app with a new app ID, for which you are the owner.
+您可以选择导出您是其协作者的应用程序，然后将该应用程序导回 LUIS。 导入过程将创建一个新应用，其中包含你作为其所有者的新应用 ID。
 
-### <a name="after-the-app-is-migrated"></a>After the app is migrated
+### <a name="after-the-app-is-migrated"></a>迁移应用后
 
-The app owner needs to [add your email to the Azure authoring resource as a collaborator](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
+应用所有者需要[将电子邮件作为协作者添加到 Azure 创作资源](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)。 
 
-After the migration process, any apps you own are available on the **My apps** page of the LUIS portal.  
+迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。  
 
 ## <a name="troubleshooting"></a>故障排除
 
-LUIS authoring keys are only visible in the LUIS portal after the migration process is complete. If you create the authoring keys, such as with the LUIS CLI, the user still needs to complete the migration process. 
+迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需完成迁移过程。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [How to migrate your app to an authoring resource](luis-migration-authoring-steps.md)
+* [如何将应用迁移到创作资源](luis-migration-authoring-steps.md)

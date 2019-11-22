@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中更改企业应用程序的名称或徽标 | Microsoft Docs
+title: 在 Azure AD 中更改企业应用程序的名称或徽标
 description: 如何在 Azure Active Directory 中更改自定义企业应用程序的名称或徽标
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30da8d6843c27c42d4d99adef50b9ad98a131c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780927"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274715"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>在 Azure Active Directory 中更改企业应用程序的名称或徽标
 
@@ -50,4 +50,4 @@ ms.locfileid: "65780927"
 * [快速入门：在 Azure Active Directory 中查看组织的组和成员](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [向企业应用分配用户或组](assign-user-or-group-access-portal.md)
 * [删除企业应用的用户或组分配](remove-user-or-group-access-portal.md)
-* [Disable user sign-ins for an enterprise app](disable-user-sign-in-portal.md)
+* [禁用企业应用的用户登录](disable-user-sign-in-portal.md)

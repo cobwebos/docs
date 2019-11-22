@@ -1,5 +1,5 @@
 ---
-title: 应用程序的最终用户体验 - Azure Active Directory | Microsoft Docs
+title: 应用程序的最终用户体验-Azure Active Directory
 description: Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织中的最终用户部署应用程序。
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4a091abff02e544f97f5621b56836cf6ba6e237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175957"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274209"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 

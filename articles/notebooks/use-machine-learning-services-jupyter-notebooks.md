@@ -1,23 +1,14 @@
 ---
 title: 使用 Azure Notebooks 中的 Azure 机器学习
 description: 概述了可用于 Azure Notebooks Azure 机器学习的示例笔记本。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6eac5d77404c85d5481ded7e58b0cd9fab0de083
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3c4fbdf35bf7ea1f4dddbceb9d7235c67ed13a4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496640"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277462"
 ---
 # <a name="use-azure-machine-learning-in-a-notebook"></a>使用笔记本中的 Azure 机器学习
 

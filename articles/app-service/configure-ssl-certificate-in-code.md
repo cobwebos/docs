@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572081"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271281"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在代码中使用 SSL 证书 Azure App Service
 
@@ -38,7 +38,7 @@ ms.locfileid: "73572081"
 
 ## <a name="find-the-thumbprint"></a>查找指纹
 
-在<a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，从左侧菜单中选择 "**应用服务**" >  **\<"应用名称**" ">"。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” **“** app-name>” >  **\<** 。
 
 在应用程序的左侧导航栏中，选择 " **TLS/SSL 设置**"，然后选择 "**私钥证书（.pfx）** " 或 "**公钥证书（.cer）** "。
 
@@ -141,6 +141,8 @@ var cert = new X509Certificate2(bytes);
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
+>
+> 这种在代码中使用证书的方法利用应用服务中的 SSL 功能，要求应用位于“基本”层或更高层。
 
 以下C#示例从应用中的相对路径加载公共证书：
 

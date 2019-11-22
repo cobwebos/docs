@@ -1,5 +1,6 @@
 ---
-title: 对 Azure 虚拟网络网关和连接进行故障排除 - PowerShell | Microsoft 文档
+title: 排查 Azure VNet 网关和连接问题-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: 此页说明了如何使用 Azure 网络观察程序对 PowerShell cmdlet 进行故障排除
 services: network-watcher
 documentationcenter: na
@@ -14,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163861"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277833"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 
 > [!div class="op_single_selector"]
-> - [门户](diagnose-communication-problem-between-networks.md)
+> - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -36,7 +37,7 @@ ms.locfileid: "70163861"
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
+此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
 有关支持的网关类型列表，请访问[支持的网关类型](network-watcher-troubleshoot-overview.md#supported-gateway-types)。
 
@@ -72,7 +73,7 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>运行网络观察程序资源故障排除
 
-将使用 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递网络观察程序对象、连接或虚拟网络网关的 Id、存储帐户 Id 以及用来存储结果的路径。
+使用 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递网络观察程序对象、连接或虚拟网络网关的 Id、存储帐户 Id 以及用来存储结果的路径。
 
 > [!NOTE]
 > `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 的运行时间很长，可能需要几分钟才能完成。
