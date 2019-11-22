@@ -49,6 +49,8 @@
           href: routing-coverage.md
         - name: 出行覆盖区域
           href: mobility-coverage.md
+        - name: 天气覆盖区域
+          href: weather-coverage.md
     - name: 本地化支持
       href: supported-languages.md
     - name: 支持的地图样式
@@ -57,6 +59,8 @@
       href: zoom-levels-and-tile-grid.md
     - name: 出行服务数据结构
       href: mobility-service-data-structure.md
+    - name: 天气服务概念
+      href: weather-services-concepts.md
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户
@@ -185,6 +189,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: 呈现服务
           href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: 呈现服务 V2
+          href: 'https://docs.microsoft.com/rest/api/maps/renderv2'
         - name: 路线服务
           href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: 搜索服务
@@ -195,6 +201,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: 交通服务
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: 天气服务
+          href: 'https://docs.microsoft.com/rest/api/maps/weather'
         - name: 地图帐户管理
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

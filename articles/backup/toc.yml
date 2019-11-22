@@ -28,6 +28,8 @@
       href: tutorial-restore-files.md
     - name: 在 Azure VM 上备份 SQL Server
       href: tutorial-sql-backup.md
+    - name: 备份 Azure VM 中的 SAP HANA 数据库
+      href: tutorial-backup-sap-hana-db.md
     - name: 备份 Azure 文件存储文件共享
       href: tutorial-backup-azure-files.md
     - name: 备份 Windows Server
@@ -52,6 +54,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS 代理支持矩阵
           href: backup-support-matrix-mars-agent.md
+        - name: SAP HANA 备份支持矩阵
+          href: sap-hana-backup-support-matrix.md
     - name: 安全
       items:
         - name: 基于角色的访问控制
@@ -74,6 +78,8 @@
           href: backup-azure-files-faq.md
         - name: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
           href: faq-backup-sql-server.md
+        - name: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
+          href: sap-hana-faq-backup-azure-vm.md
         - name: 常见问题解答 - Azure 备份服务器和 DPM
           href: backup-azure-dpm-azure-server-faq.md
         - name: 常见问题解答 - Azure 备份监视警报
@@ -228,8 +234,14 @@
           href: restore-sql-database-azure-vm.md
         - name: 管理已备份的 SQL Server 数据库
           href: manage-monitor-sql-database-backup.md
-    - name: 备份 Azure VM 上的 SAP HANA 数据库
-      href: backup-azure-sap-hana-database.md
+    - name: Azure VM 上的 SAP HANA 数据库
+      items:
+        - name: 备份 Azure VM 上的 SAP HANA 数据库
+          href: backup-azure-sap-hana-database.md
+        - name: 还原 Azure VM 中的 SAP HANA 数据库
+          href: sap-hana-db-restore.md
+        - name: 管理已备份的 SQL Server 数据库
+          href: sap-hana-db-manage.md
     - name: Windows Server
       items:
         - name: 备份 Windows Server 文件和文件夹

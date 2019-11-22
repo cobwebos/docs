@@ -40,6 +40,8 @@
           href: class-type-ethical-hacking.md
         - name: 数据库管理
           href: class-type-database-management.md
+        - name: Python 和 Jupyter Notebook
+          href: class-type-jupyter-notebook.md
     - name: 创建和配置实验室帐户（实验室帐户所有者）
       items:
         - name: 创建和管理实验室帐户

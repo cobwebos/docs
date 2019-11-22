@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 数据工厂文档
-summary: Azure 数据工厂是 Azure 的云 ETL 服务，用于横向扩展无服务器数据集成和数据转换。  它提供了无代码的 UI，以用于直观创作与集中式监视和管理。 还可以将现有 SSIS 包直接迁移到 Azure，并在 ADF 中运行它们（二者完全兼容）。 SSIS Integration Runtime 提供完全托管的服务，因此无需担心基础结构管理。
+summary: Azure 数据工厂是 Azure 的云 ETL 服务，用于横向扩展无服务器数据集成和数据转换。  它提供了无代码的 UI，以用于直观创作和集中式监视与管理。 还可以将现有 SSIS 包直接迁移到 Azure，并在 ADF 中运行它们（二者完全兼容）。 SSIS Integration Runtime 提供完全托管的服务，因此无需担心基础结构管理。
 metadata:
   title: Azure 数据工厂文档
   description: 了解如何使用数据工厂（云数据集成服务）将数据存储服务、移动服务和处理服务组合成自动化数据管道。 教程和其他文档介绍了如何设置和管理数据管道，以及如何移动和转换要分析的数据。
@@ -12,12 +12,12 @@ metadata:
   ms.author: maghan
   ms.date: 10/02/2019
   monikerRange: ''
-  ms.openlocfilehash: 570a549bc132b1126d904d52af3066e152687e72
-  ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+  ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
+  ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/17/2019
-  ms.locfileid: "72554851"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74321757"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:

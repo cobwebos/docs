@@ -1,5 +1,5 @@
 ---
-title: 允许或阻止特定组织的邀请-Azure Active Directory |Microsoft Docs
+title: 允许或阻止特定组织的邀请-Azure AD
 description: 向管理员介绍如何使用 Azure 门户或 PowerShell 设置访问或拒绝列表，以允许或阻止来自某些域的 B2B 用户。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474176"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273424"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允许或阻止向特定组织中的 B2B 用户发送邀请
 

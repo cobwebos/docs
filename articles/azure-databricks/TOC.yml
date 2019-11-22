@@ -1522,9 +1522,9 @@
       href: /azure/databricks/dev-tools/stack
       maintainContext: true
     - name: Azure Databricks REST API
-      href: /azure/databricks//rest/api/databricks
+      href: /rest/api/databricks
     - name: 资源管理器模板
-      href: /azure/databricks//azure/templates/microsoft.databricks/workspaces
+      href: /azure/templates/microsoft.databricks/workspaces
 - name: 资源
   items:
     - name: 发行说明

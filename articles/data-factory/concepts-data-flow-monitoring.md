@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e522ede7da669f6e684fc9a07adcc506a69e77e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597124"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267906"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -51,7 +51,7 @@ ms.locfileid: "72597124"
   * 群集启动时间：获取用于数据流执行的 JIT Spark 计算环境的时间量
   * 转换数：在流中执行了多少个转换步骤
   
-![Acit 数据流监视](media/data-flow/monitornew.png "数据流监视新增")  
+![数据流监视](media/data-flow/monitornew.png "数据流监视新增")  
   
 ## <a name="monitor-icons"></a>监视图标
 

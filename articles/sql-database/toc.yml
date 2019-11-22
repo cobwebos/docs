@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: 数据库服务器资源
           items:
-            - name: 数据库服务器资源限制
+            - name: 数据库资源限制
               href: sql-database-resource-limits-database-server.md
             - name: 连接体系结构
               href: sql-database-connectivity-architecture.md

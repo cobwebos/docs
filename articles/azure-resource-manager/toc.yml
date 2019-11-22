@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: 导出模板
       href: export-template-portal.md
-    - name: 移动
+    - name: 移动 - 区域
       items:
-        - name: 移动资源
+        - name: 跨区域移动
+          href: resource-group-move-region.md
+        - name: 支持的服务
+          href: region-move-support.md
+        - name: 服务
+          items:
+            - name: Azure VM
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure 存储
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 虚拟网络
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 网络安全组 (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 公共 IP 地址
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: 移动 - 资源组/订阅
+      items:
+        - name: 跨资源组/订阅移动
           href: resource-group-move-resources.md
-        - name: 资源支持
+        - name: 支持的服务
           href: move-support-resources.md
         - name: 排查迁移问题
           href: troubleshoot-move.md
-        - name: 服务迁移指南
+        - name: 服务
           items:
             - name: 应用服务
               href: ./move-limitations/app-service-move-limitations.md

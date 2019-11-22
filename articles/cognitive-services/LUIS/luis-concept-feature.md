@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647417"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280900"
 ---
 # <a name="machine-learned-features"></a>计算机学习的功能 
 
-在机器学习中，*功能*是您的系统在学习 & 的情况下所观察到的数据的特征或属性。 在语言理解（LUIS）中，一项功能描述和说明了对你的意图和实体的重要程度。
+在机器学习中，_功能_是您的系统在学习 & 的情况下所观察到的数据的特征或属性。 在语言理解（LUIS）中，一项功能描述和说明了对你的意图和实体的重要程度。
 
 在[预览版 LUIS 门户](https://preview.luis.ai)中，功能是_描述符_，因为它们用于_描述_意向或实体。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "73647417"
 
 ### <a name="how-to-use-a-phrase-list"></a>如何使用短语列表
 
-当意向或实体包含重要的词或短语时，[创建短语列表](luis-how-to-add-features.md)列表，如：
+当意向或实体包含重要的词或短语时，[创建短语列表](luis-how-to-add-features.md)，如：
 
 * 行业术语
 * 俚语
@@ -82,7 +82,7 @@ ms.locfileid: "73647417"
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>作为另一个实体的功能的实体
 
-如果实体（a）的检测对（B）非常重要，则应将实体（A）作为功能添加到另一个实体（B）。
+当实体（A）的检测对于实体（B）的预测很重要时，应将实体（A）作为功能添加到另一个实体（B）。
 
 例如，如果检测到街道地址实体（A），则查找街道地址（A）会将权重添加到寄送地址实体的预测（B）。 
 

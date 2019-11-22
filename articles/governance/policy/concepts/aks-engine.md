@@ -3,12 +3,12 @@ title: 了解 Azure Policy for AKS 引擎
 description: 了解 Azure 策略如何使用 CustomResourceDefinitions 并从守卫 v3 打开策略代理，使用 AKS 引擎管理群集。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072061"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267253"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>了解 Azure Policy for AKS 引擎
 
@@ -282,6 +282,6 @@ kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 - 查看[策略定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

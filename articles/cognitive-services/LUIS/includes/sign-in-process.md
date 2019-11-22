@@ -10,18 +10,19 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488796"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278569"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
 LUIS 的新用户需要执行此过程：
 
-1. 登录到 [LUIS 门户](https://www.luis.ai)，选择你的国家/地区，并同意使用条款。
+1. 登录到 [LUIS 门户（预览版）](https://preview.luis.ai)，选择你的国家/地区，并同意使用条款。 如果看到“我的应用”  ，则 LUIS 资源已存在，你应该跳过此过程，开始创建应用。
+
 1. 选择“创建 Azure资源”   ，然后选择“创建要将应用迁移到的创作资源”。
 
     ![选择语言理解创作资源的类型](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
