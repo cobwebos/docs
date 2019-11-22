@@ -1,18 +1,18 @@
 ---
 title: 找到并打开 Azure Kinect 设备
-description: 找到并打开 Azure Kinect 设备
+description: 了解如何使用 Azure Kinect Senor SDK 找到和打开 Azure Kinect 设备。
 author: cedmonds
 ms.author: cedmonds
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 设备, 查找, 打开
-ms.openlocfilehash: 13edbd1bf03ea3e7be80f78472f84b5f88505eba
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 67fc93b924d5d663bb43098969c54d1975bd5895
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453029"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931741"
 ---
 # <a name="find-then-open-the-azure-kinect-device"></a>找到并打开 Azure Kinect 设备
 

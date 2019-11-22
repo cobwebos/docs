@@ -1,5 +1,5 @@
 ---
-title: 教程 - 监视 Azure 中的 Linux 虚拟机 | Microsoft Docs
+title: 教程 - 监视 Azure 中的 Linux 虚拟机
 description: 在本教程中，你将学习如何监视 Linux 虚拟机上运行的性能和发现的应用程序组件。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71679401"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111990"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Linux 虚拟机
 
@@ -133,7 +133,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 3. 在“见解(预览版)”页上，选择“立即试用”。  
 
-    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. 在“Azure Monitor Insights 载入”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
 

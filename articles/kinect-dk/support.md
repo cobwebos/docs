@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 支持选项和资源
-description: Azure Kinect 的不同支持选项和资源
+description: 了解 Azure Kinect 的不同支持选项和资源。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载, 人体, 跟踪, 支持
-ms.openlocfilehash: 7a88dc50b8c5a1b069c33656d286ad20099b90fa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f2a5aa43c31a0d75e8ced1662de0bdac62ac9b58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452821"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931694"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支持选项和资源
 

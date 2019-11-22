@@ -1,18 +1,18 @@
 ---
 title: 检索 Azure Kinect IMU 样本
-description: 使用 Azure Kinect 检索 IMU 样本
+description: 了解如何使用 Azure Kinect SDK 检索 Azure Kinect IMU 示例。
 author: qm13
 ms.author: cedmonds
 ms.date: 06/26/2019
 ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: kinect, azure, 配置, 深度, 彩色, RBG, 相机, 传感器, sdk, IMU, 运动传感器, 运动, 陀螺仪, 加速度传感器, FPS
-ms.openlocfilehash: d759784966b5c68c28adf9fc71a32f8cd5691559
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099436"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932205"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>检索 Azure Kinect IMU 样本
 

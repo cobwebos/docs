@@ -1,6 +1,6 @@
 ---
 title: 为 Azure Monitor 诊断日志的格式更改做准备
-description: 将于 2018 年 11 月 1 日移动 Azure 诊断日志以使用追加 blob。
+description: 介绍了在2018年11月1日更改为使用追加 blob 的新 Azure 诊断日志，并说明了如何更新工具。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258388"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307056"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 诊断日志的格式更改做准备
 
@@ -29,7 +29,7 @@ Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送
 * Blob 格式将于 2018 年 11 月 1 日星期四凌晨 12 点 (UTC) 更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
 * 将同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件将使用此新格式。 Blob 和容器名称保持不变。
 * 从现在到 11 月 1 日之间设置诊断设置将继续以当前格式发出数据，直到 11 月 1 日为止。
-* 此更改将同时在所有公有云区域中发生。 此更改不会在世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 中发生。
+* 此更改将同时在所有公有云区域中发生。 但是，由世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 不会进行此更改。
 * 此更改会影响以下数据类型：
   * [Azure 资源诊断日志](archive-diagnostic-logs.md)（[请参阅此处的资源列表](diagnostic-logs-schema.md)）
   * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)

@@ -1,18 +1,18 @@
 ---
 title: 更新 Azure Kinect DK 固件
-description: 有关更新 Azure Kinect DK 设备固件的说明
+description: 了解如何使用 Azure Kinect 固件工具更新 Azure Kinect DK 设备固件。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新, 恢复
-ms.openlocfilehash: 3471196c8be909bb394a73bed4eeefe09d918bab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 306d9528058c6148e9b594eb489b90765479ca60
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67452782"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931695"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件
 

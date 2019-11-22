@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移到另一 Azure 区域 | Microsoft Docs
+title: 使用 Azure Site Recovery 将 Azure VM 移动到另一个区域
 description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: ec78e4c260c2ca5e0469f9373f60d8bca29ada7f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375721"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092181"
 ---
-# <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
+# <a name="move-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
 你可能想要将 Azure 基础结构即服务 (IaaS) 虚拟机从一个区域移到另一个区域，以提高可靠性、可用性或更好地满足监管要求。 本教程介绍如何使用 Azure Site Recovery 将 VM 移到另一区域。 将了解如何执行以下操作：
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720230"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123509"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate：服务器评估服务器评估”评估 VMware VM
 
@@ -43,7 +43,7 @@ ms.locfileid: "73720230"
 - [完成](tutorial-prepare-physical.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
     - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-physical.md#prepare-azure)。
-    - [准备物理服务器](tutorial-prepare-physical.md#prepare-azure)以进行评估。 应验证设备要求。 此外，应该设置一个帐户用于发现物理服务器。 所需的端口应该可用；你应该知道用于访问 Azure 的 URL。
+    - [准备物理服务器](tutorial-prepare-physical.md#prepare-for-physical-server-assessment)以进行评估。 应验证设备要求。 此外，应该设置一个帐户用于发现物理服务器。 所需的端口应该可用；你应该知道用于访问 Azure 的 URL。
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
@@ -104,9 +104,10 @@ ms.locfileid: "73720230"
 在部署压缩文件之前检查其安全性。
 
 1. 在下载文件的计算机上，打开管理员命令窗口。
-2. 运行以下命令以生成 VHD 的哈希
+2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  对于设备版本 1.19.05.10，生成的哈希应与这些设置匹配。
 
   **算法** | **哈希值**
@@ -114,27 +115,32 @@ ms.locfileid: "73720230"
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
-= 此安装程序脚本执行以下操作：
+
+此安装程序脚本执行以下操作：
 
 - 安装用于物理服务器发现和评估的代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
 - 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
 - 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+    -  配置文件：%ProgramData%\Microsoft Azure\Config
+    -  日志文件：%ProgramData%\Microsoft Azure\Logs
 
 按如下所示运行脚本：
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令运行脚本：
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本  ：
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-脚本将在成功完成时启动设备 Web 应用程序。
+脚本将在成功完成时启动设备 Web 应用程序。 
 
+如果出现任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志以进行故障排除。
+
+> [!NOTE]
+> 请不要在现有的 Azure Migrate 设备上执行 Azure Migrate 安装程序脚本。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
@@ -182,7 +188,7 @@ ms.locfileid: "73720230"
     - 若要删除服务器，请选择 >“删除”  。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。 
 
-随即会启动发现。 大约 15 分钟后，已发现的服务器的元数据将显示在 Azure 门户中。 
+随即会启动发现。 每台服务器大约需要 1.5 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。 
 
 ### <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 

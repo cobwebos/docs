@@ -8,22 +8,24 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ad21dbb356a6630cec0a6f5658b20cb8568890f9
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 63c53a9b95e27486d7d6944c28f8fb085b1bc6ca
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "67172910"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279166"
 ---
 <!-- Not used for Ls-series -->
 
 ## <a name="size-table-definitions"></a>大小表定义
 
-- 存储容量的单位为 GiB 或 1024^3 字节。 比较以 GB（1000^3 字节）为单位的磁盘和以 GiB（1024^3 字节）为单位的磁盘时，请记住以 GiB 为单位的容量数显得更小。 例如，1023 GiB = 1098.4 GB
-- 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 Mbps，其中 Mbps = 10^6 字节/秒。
+- 存储容量的单位为 GiB 或 1024^3 字节。 将以 GB （1000 ^ 3 字节）度量的磁盘与在 GiB （1024 ^ 3）中度量的磁盘进行比较时，请记住在 GiB 中指定的容量数量可能会更小。 例如，1023 GiB = 1098.4 GB。
+- 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 MBps，其中 MBps = 10^6 字节/秒。
 - 数据磁盘可以在缓存或非缓存模式下运行。 对于缓存数据磁盘操作，主机缓存模式设置为 **ReadOnly** 或 **ReadWrite**。  对于非缓存数据磁盘操作，主机缓存模式设置为 **None**。
--   若要获得 VM 的最佳性能，应将数据磁盘数限制为每 vCPU 2 个磁盘。
-- **预期的网络带宽**是指跨所有 NIC [为每个 VM 类型分配的最大聚合带宽](../articles/virtual-network/virtual-machine-network-throughput.md)，适用于所有目标。 不保证能够达到上述预期上限，但目的是提供相关指导，以便为目标应用程序选择适当的 VM 类型。 实际的网络性能将取决于许多因素，包括网络拥塞、应用程序负载和网络设置。 有关如何优化网络吞吐量的信息，请参阅[为 Windows 和 Linux 优化网络吞吐量](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要在 Linux 或 Windows 中达到预期的网络性能，可能需要选择特定的版本，或者需要优化 VM。 有关详细信息，请参阅[如何针对虚拟机吞吐量进行可靠的测试](../articles/virtual-network/virtual-network-bandwidth-testing.md)。
+- 如果要获得 Vm 的最佳性能，应将数据磁盘的数量限制为每个 vCPU 的两个磁盘。
+- **预期网络带宽**是所有目标的所有 nic 上为每个 VM 类型分配的最大聚合带宽。 有关详细信息，请参阅[虚拟机网络带宽](../articles/virtual-network/virtual-machine-network-throughput.md)。
+
+  上限不能保证。 限制为目标应用程序选择适当的 VM 类型提供指导。 实际的网络性能将取决于多种因素，包括网络拥塞、应用程序负载和网络设置。 有关优化网络吞吐量的信息，请参阅为[Azure 虚拟机优化网络吞吐量](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要在 Linux 或 Windows 上实现预期的网络性能，可能需要选择特定版本或优化 VM。 有关详细信息，请参阅[带宽/吞吐量测试（NTTTCP）](../articles/virtual-network/virtual-network-bandwidth-testing.md)。
 
 
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 查看器
-description: Kinect for Azure 传感器数据流查看器主页
+description: 了解如何使用 Azure Kinect 查看器直观呈现所有设备数据流。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, 传感器, 查看器, 可视化, 深度, rgb, 颜色, imu, 音频, 麦克风, 点云
-ms.openlocfilehash: c2a4ee3359b1c8338f9d33bbf73f8f6318e15d31
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114436"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931767"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect 查看器
 

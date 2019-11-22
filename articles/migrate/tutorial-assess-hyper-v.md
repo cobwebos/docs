@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ff46ec437de671d5804eeb31a5d1fb0284a8946
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639990"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123520"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -223,7 +223,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
     - 即使群集中的特定主机出现问题，你也可以添加群集。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。 
 
-随即会启动发现。 大约 15 分钟后，已发现的 VM 的元数据将显示在 Azure 门户中。
+随即会启动发现。 在 Azure 门户中，每台主机大约需要 1.5 分钟才能显示发现的服务器的元数据。 
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 

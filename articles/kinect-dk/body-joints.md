@@ -1,6 +1,6 @@
 ---
 title: Azure Kinect 人体跟踪关节
-description: 使用人体帧和关节
+description: 了解 Azure Kinect DK 中的人体帧、关节、关节坐标和关节层次结构。
 author: qm13
 ms.author: quentinm
 ms.reviewer: cedmonds, abalan
@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
-ms.openlocfilehash: 5b6b6a255f873ee9c9790c39dac99a2b8e640c5d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2285c62526fbb22dc61557c079507cff840f1c53
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293433"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931766"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect 人体跟踪关节
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Kinect 中获取人体跟踪结果
-description: 获取人体跟踪结果
+description: 了解如何使用 Azure Kinect 人体跟踪 SDK 获取人体跟踪结果。
 author: qm13
 ms.prod: kinect-dk
 ms.author: quentinm
@@ -8,12 +8,12 @@ ms.reviewer: yijwan
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 联接
-ms.openlocfilehash: 66064bff13a4580c69aca47a350f7e93f50b9fda
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68863a2b91652f9e1f13dd4d722da682ede784d4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233052"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932208"
 ---
 # <a name="get-body-tracking-results"></a>获取人体跟踪结果
 

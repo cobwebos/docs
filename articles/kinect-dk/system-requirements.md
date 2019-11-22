@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 传感器 SDK 系统要求
-description: 传感器 SDK 系统要求
+description: 了解 Windows 和 Linux 上 Azure Kinect 传感器 SDK 的系统需求。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 系统要求, CPU, GPU, USB, 设置, 安装, 最低, 要求
-ms.openlocfilehash: cb19582440bfd6ef2c4eff804a1fb7529ed03cbc
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 921e4e3f75fe8e01cb4d2276d311e4974d9bd41c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949508"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932204"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect 传感器 SDK 系统要求
 

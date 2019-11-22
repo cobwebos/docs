@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect 固件工具
-description: Azure Kinect 固件工具的用法
+description: 了解如何使用 Azure Kinect 固件工具查询和更新设备固件。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新
-ms.openlocfilehash: 6de2fa33f63546caef6d00f932fecfe09c27fc17
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f8b89751d27fb5a4b18d635f45f63f4f36bd05f6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453536"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932223"
 ---
 # <a name="azure-kinect-dk-firmware-tool"></a>Azure Kinect DK 固件工具
 

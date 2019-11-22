@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: df425f723aa6a5e261ed6dcd15abfe87b367ad68
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091905"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -99,25 +99,25 @@ ms.locfileid: "73747974"
 
 ### <a name="verify-physical-server-settings"></a>验证物理服务器设置
 
-1. 验证服务器评估的[物理服务器要求](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements)。
-2. 确保物理服务器上已打开[所需的端口](migrate-support-matrix-hyper-v.md#assessment-port-requirements)。
+1. 验证服务器评估的[物理服务器要求](migrate-support-matrix-physical.md#assessment-physical-server-requirements)。
+2. 确保物理服务器上已打开[所需的端口](migrate-support-matrix-physical.md#assessment-port-requirements)。
 
 
 ### <a name="verify-appliance-settings"></a>验证设备设置
 
 在设置 Azure Migrate 设备并在下一篇教程中开始评估之前，需要准备好设备部署。
 
-1. [验证](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements)设备要求。
-2. [查看](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)设备需要访问的 Azure URL。
+1. [验证](migrate-support-matrix-physical.md#assessment-appliance-requirements)设备要求。
+2. [查看](migrate-support-matrix-physical.md#assessment-appliance-url-access)设备需要访问的 Azure URL。
 3. 查看设备在发现和评估期间要收集的数据。
-4. [注意](migrate-support-matrix-hyper-v.md#assessment-port-requirements)设备的端口访问要求。
+4. [注意](migrate-support-matrix-physical.md#assessment-port-requirements)设备的端口访问要求。
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>设置物理服务器发现的帐户
 
 Azure Migrate 需要拥有发现本地服务器的权限。
 
-- **Windows**：在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到以下组：       - 远程桌面用户       - 性能监视器用户       - 性能日志用户
+- **Windows**：在要包括在发现中的所有 Windows 服务器上设置本地用户帐户。需要将用户帐户添加到以下组：       - 远程管理用户       - 性能监视器用户       - 性能日志用户
 - **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。
 
 

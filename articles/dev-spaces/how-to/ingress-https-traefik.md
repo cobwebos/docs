@@ -1,20 +1,16 @@
 ---
 title: 使用自定义 traefik 入口控制器并配置 HTTPS
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 08/13/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7f8684c8236e69c16bedf0186ed7ed17bbc8462
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582322"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280072"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
 
@@ -87,7 +83,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-打开[yaml][values-yaml] ，并将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*将你的域用于*MY_CUSTOM_DOMAIN*。 另外，请将*kubernetes.io/ingress.class： traefik-azds # Dev Spaces 指定*为*kubernetes.io/ingress.class： Traefik # Custom 入口*。 下面是更新的 `values.yaml` 文件的示例：
+打开[yaml][values-yaml]并将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 另外，请将*kubernetes.io/ingress.class： traefik-azds # Dev Spaces 指定*为*kubernetes.io/ingress.class： Traefik # Custom 入口*。 下面是更新的 `values.yaml` 文件的示例：
 
 ```yaml
 # This is a YAML-formatted file.

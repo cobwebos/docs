@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用 Guest Configuration 审核 Azure 计算机内部的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5148ecb2f10a2ac517c5cf6c7f682a0f25808910
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: c01f6d02c15dbd7519bfafdc413d70a05498c7c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959782"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279372"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -61,7 +61,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 |操作系统|验证工具|说明|
 |-|-|-|
-|Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
+|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby 和 Python 由来宾配置扩展安装。 |
 
 ### <a name="validation-frequency"></a>验证频率
@@ -72,7 +72,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|Publisher|名称|版本|
+|发布者|名称|版本|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -113,7 +113,7 @@ Guest Configuration 运行的每个审核需要两个策略定义：**DeployIfNo
 
 一旦 **DeployIfNotExists** 分配合规，**AuditIfNotExists** 策略分配就会使用本地验证工具来确定配置分配是合规还是不合规。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
-Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/getting-compliance-data.md)。
+Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 
 > [!NOTE]
 > 需有 **DeployIfNotExists** 策略，才能让 **AuditIfNotExists**  策略返回结果。 如果没有 **DeployIfNotExists**，**AuditIfNotExists** 策略会将状态显示为“第 0 个，共 0 个”资源。
@@ -198,6 +198,6 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/getting-compliance-data.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

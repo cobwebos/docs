@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect DK 录制器
-description: Azure Kinect 录制器的选项和功能
+description: 了解如何使用 Azure Kinect 录制器将数据流从传感器 SDK 记录到文件。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
-ms.topic: article
+ms.topic: conceptual
 keywords: kinect, 录制, 播放, 读取器, matroska, mkv, 流, 深度, rgb, 相机, 彩色, imu, 音频
-ms.openlocfilehash: a9fe49a88e436dddb8e218cda7119437bac7b326
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 5fb6895d4102956a991c67ffab836a26b7a3abb0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491993"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932222"
 ---
 # <a name="azure-kinect-dk-recorder"></a>Azure Kinect DK 录制器
 

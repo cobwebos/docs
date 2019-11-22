@@ -1,18 +1,18 @@
 ---
 title: 快速入门 - 将 Azure Kinect 传感器流录制到文件中
-description: 有关如何将传感器 SDK 发出的数据流录制到文件的快速入门
+description: 此快速入门将介绍如何将传感器 SDK 发出的数据流记录到文件。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: azure, kinect, 录制, 播放, 读取器, matroska, mkv, 流, 深度, rgb, 相机, 彩色, imu, 音频, 传感器
-ms.openlocfilehash: 18e01f81d80ca1a1c4cf9b1f599748aff943697a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3dab147b593bf012bd6cd9c95d0195e84a2cbcf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451328"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932206"
 ---
 # <a name="quickstart-record-azure-kinect-sensor-streams-to-a-file"></a>快速入门：将 Azure Kinect 传感器流录制到文件中
 

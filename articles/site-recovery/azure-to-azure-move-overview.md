@@ -1,34 +1,23 @@
 ---
-title: 使用 Azure Site Recovery 服务将 Azure IaaS VM 移到另一 Azure 区域 | Microsoft Docs
-description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域移动到另一个 Azure 区域。
-services: site-recovery
+title: 使用 Azure Site Recovery 将 Azure VM 移动到另一个区域
+description: 使用 Azure Site Recovery 将 Azure VM 从一个 Azure 区域移动到另一个 Azure 区域。
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078000"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091939"
 ---
-# <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
+# <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
-Azure 随着客户群的扩大而不断扩建，并会添加新区域的支持，以应对不断增大的需求。 此外，每个月都会添加新的服务功能。 你可能想要将虚拟机 (VM) 移到不同的区域或可用性区域以提高可用性。
+本文概述了使用 [Azure Site Recovery](site-recovery-overview.md) 将 Azure VM 移动到另一个 Azure 区域的原因和所涉及的步骤。 
 
-本文档将介绍在哪种场合下可以移动 VM。 此外，介绍如何在目标区域中配置体系结构以实现更高的可用性。 
-
-本教程的内容：
-
-> [!div class="checklist"]
-> 
-> * 移动 VM 的原因
-> * 典型体系结构
-> * 将 VM 按原样移到目标区域
-> * 移动 VM 以提高可用性
 
 ## <a name="reasons-to-move-azure-vms"></a>移动 Azure VM 的原因
 

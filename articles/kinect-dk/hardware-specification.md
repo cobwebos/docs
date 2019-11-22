@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect DK 硬件规格
-description: Azure Kinect DK 规格和功能
+description: 了解 Azure Kinect DK 的组件、规范和功能。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: fc7da5d81a448cbe202155feda57294f95aab2fc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 32b6c2d840c602a04e12a77004f5d981cdaca911
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583127"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931717"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
 

@@ -1,18 +1,18 @@
 ---
 title: 快速入门 - 设置 Azure Kinect 人体跟踪
-description: 本快速入门提供设置 Azure Kinect 人体跟踪 SDK 的步骤
+description: 此快速入门将为 Azure Kinect 设置人体跟踪 SDK。
 author: qm13
 ms.author: quentinm
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, 访问, 深度, sdk, 人体, 跟踪, 关节, 设置, cuda, nvidia
-ms.openlocfilehash: 30170d5513cad772827f8be83677a03837d438b4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 21655bb5a7e5b3eeef008f715e703512734f3960
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293435"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931765"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>快速入门：设置 Azure Kinect 人体跟踪
 
