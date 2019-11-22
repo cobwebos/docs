@@ -1,26 +1,22 @@
 ---
-title: 如何使用 Azure 开发人员空间使用 kubectl
-titleSuffix: Azure Dev Spaces
+title: 如何将 kubectl 与 Azure Dev Spaces 配合使用
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 05/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 0dfe88966deeb4dcf0196aa1f1584a06794b36a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fea14668c35eddcd01417b417e2239788eddd6d1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686318"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279934"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>将 kubectl 与 Azure Dev Space 配合使用
 
 可以在 Azure Dev Space 中访问 Kubernetes 群集，并使用现有的 Kubernetes 工具（如 `kubectl`）。
 
-运行 `az aks use-dev-spaces` 命令会自动添加 `kubectl` 配置上下文，因此 kubectl 应已连接到 Azure Dev Spaces Kubernetes 群集。 示例：
+运行 `az aks use-dev-spaces` 命令会自动添加 `kubectl` 配置上下文，因此 kubectl 应已连接到 Azure Dev Spaces Kubernetes 群集。 示例:
 - 确认当前上下文：`kubectl config current-context`
 - 列出所有可用的上下文：`kubectl config get-contexts`。 
 - 更改上下文：`kubectl config use-context <context-name>`

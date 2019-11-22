@@ -1,23 +1,14 @@
 ---
 title: 以幻灯片放映形式在 Azure 上提供 Jupyter 笔记本
 description: 如何在 Jupyter 笔记本中为幻灯片放映模式配置单元格，然后使用 RISE 扩展呈现幻灯片放映。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973112"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277595"
 ---
 # <a name="run-a-notebook-slideshow"></a>运行笔记本幻灯片放映
 
@@ -102,6 +93,6 @@ Azure Notebooks 使用 Jupyter/IPython 幻灯片放映扩展 (RISE) 进行预配
 ## <a name="next-steps"></a>后续步骤
 
 - [如何：配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [如何：从笔记本内安装包](install-packages-jupyter-notebook.md)
+- [如何：从笔记本中安装包](install-packages-jupyter-notebook.md)
 - [如何：处理数据文件](work-with-project-data-files.md)
 - [如何：访问数据资源](access-data-resources-jupyter-notebooks.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953392"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280298"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -33,13 +33,13 @@ ms.locfileid: "73953392"
     * 公共预览版中的[阿拉伯语和印地语](luis-language-support.md)。
 * 预生成的模型
     * [预](luis-reference-prebuilt-domains.md)生成的域现已正式发布（GA）
-    * V3 中不支持日语[预建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)-年龄、货币、数字、百分比。
-    * 意大利语[预生成实体](luis-reference-prebuilt-entities.md#italian-entity-support)-age、currency、dimension、number、百分比分辨率已从 V2 更改。
-* 增强[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。 尝试预览门户教程：
+    * V3 中不支持日语[预建实体](luis-reference-prebuilt-entities.md#japanese-entity-support)-年龄、货币、数字和百分比。
+    * 意大利语[预生成实体](luis-reference-prebuilt-entities.md#italian-entity-support)-时间、货币、维度、数字和百分比解析从 V2 更改。
+* 增强了[preview.luis.ai 门户](https://preview.luis.ai)中的用户体验-改进标记体验，以启用生成和调试复杂模型。 尝试预览门户教程：
     * [仅限意向](tutorial-intents-only.md)
     * [可以分解机器学习的实体](tutorial-machine-learned-entity.md) 
 * 高级语言理解功能-采用更少的精力[构建复杂的语言模型](luis-concept-entity-types.md)。 
-* 在模型级别定义机器学习功能，并允许将模型用作其他模型的信号，如使用实体作为功能和其他实体。
+* 在模型级别定义机器学习功能，并允许将模型用作其他模型的信号，例如，使用实体作为功能和其他实体。
 * 新的扩展[限制](luis-boundaries.md)-词组列表和短语的最大上限，新模型作为功能限制
 * 以深层层次结构的格式从文本中提取信息，使会话应用程序功能更强大。
 

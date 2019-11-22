@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中编写属性映射的表达式 | Microsoft Docs
+title: 为 Azure AD 中的属性映射编写表达式
 description: 了解如何在 Azure Active Directory 中自动预配 SaaS 应用对象期间，使用表达式映射将属性值转换为可接受的格式。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 5f1880a79f7fdb27b407ecb7ed1b761493fe850d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162394"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274027"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -33,9 +33,9 @@ ms.locfileid: "71162394"
 * 可以将三种不同类型的参数传递给函数：
   
   1. 属性，必须括在方括号中。 例如：[attributeName]
-  2. 字符串常量必须括在双引号内。 例如："United States"
-  3. 其他函数。 例如：FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如：“Company name:\\"Contoso\\"”
+  2. 字符串常量必须括在双引号内。 例如："美国"
+  3. 其他函数。 例如： FunctionOne （`<<argument1>>`，FunctionTwo （`<<argument2>>`））
+* 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如： "公司名称： \\" Contoso\\""
 
 ## <a name="list-of-functions"></a>函数列表
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
@@ -48,10 +48,10 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是来自源对象的属性的名称。 |
-| **suffix** |必填 |字符串 |要附加到源值末尾的字符串。 |
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **suffix** |必选 |String |要附加到源值末尾的字符串。 |
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -61,14 +61,14 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是来自源对象的属性的名称。 |
-| **inputFormat** |必填 |字符串 |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-| **outputFormat** |必填 |字符串 |输出日期的格式。 |
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+| **outputFormat** |必选 |String |输出日期的格式。 |
 
 ---
-### <a name="join"></a>加入
+### <a name="join"></a>Join
 **函数：**<br> Join(separator, source1, source2, …)
 
 **说明：**<br> Join() 类似于 Append()，只不过它可以将多个 **source** 字符串值组合到单个字符串中，且每个值由 **separator** 字符串分隔。
@@ -77,10 +77,10 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **separator** |必填 |字符串 |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1  … sourceN** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
+| **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
+| **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
 
 ---
 ### <a name="mid"></a>Mid
@@ -90,11 +90,11 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是属性的名称。 |
-| **start** |必填 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |必填 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **source** |必选 |String |通常是属性的名称。 |
+| **start** |必选 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -104,24 +104,24 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 | 通常是名字或姓氏属性。 |
+| **source** |必选 |String | 通常是名字或姓氏属性。 |
 
 ---
-### <a name="not"></a>Not
+### <a name="not"></a>非
 **函数：**<br> Not(source)
 
-**说明：**<br> 翻转 **source** 的布尔值。 如果 **source** 值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
+**说明：**<br> 翻转 **source** 的布尔值。 如果 **source**  值为“*True*”，则返回“*False*”。 否则，返回“*True*”。
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 ---
-### <a name="replace"></a>替换
+### <a name="replace"></a>Replace
 **函数：**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **说明：**<br>
@@ -146,15 +146,15 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是来自**源**对象的属性的名称。 |
-| **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
-| **regexPattern** |可选 |字符串 |要在 **source** 中替换的值的正则表达式模式。 或者，使用**replacementPropertyName**时，将从**replacementPropertyName**中提取值。 |
-| **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用**replacementPropertyName**时，才会将此组的值从**replacementPropertyName**中提取为**replacementValue** 。 |
-| **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
-| **replacementAttributeName** |可选 |字符串 |要用于替换值的属性的名称 |
-| **template** |可选 |字符串 |提供**模板**值后，我们将在模板中查找**oldValue** ，并将其替换为**source**值。 |
+| **source** |必选 |String |通常是来自**源**对象的属性的名称。 |
+| **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
+| **regexPattern** |可选 |String |要在 **source** 中替换的值的正则表达式模式。 或者，使用**replacementPropertyName**时，将从**replacementPropertyName**中提取值。 |
+| **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用**replacementPropertyName**时，才会将此组的值从**replacementPropertyName**中提取为**replacementValue** 。 |
+| **replacementValue** |可选 |String |用于替换旧值的新值。 |
+| **replacementAttributeName** |可选 |String |要用于替换值的属性的名称 |
+| **template** |可选 |String |提供**模板**值后，我们将在模板中查找**oldValue** ，并将其替换为**source**值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -171,9 +171,9 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
 
 
 ---
@@ -184,9 +184,9 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | type | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必填 |字符串 |**[appRoleAssignments]** 对象。 |
+| **[appRoleAssignments]** |必选 |String |**[appRoleAssignments]** 对象。 |
 
 ---
 ### <a name="split"></a>拆分
@@ -196,10 +196,10 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |要更新的 **source** 值。 |
-| **delimiter** |必填 |字符串 |指定将用来拆分字符串的字符（示例：“,”） |
+| **source** |必选 |String |要更新的 **source** 值。 |
+| **delimiter** |必选 |String |指定将用来拆分字符串的字符（示例：“,”） |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -209,24 +209,24 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |要更新的 **source** 值。 |
+| **source** |必选 |String |要更新的 **source** 值。 |
 
 ---
-### <a name="switch"></a>Switch
+### <a name="switch"></a>开关
 **函数：**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
 **说明：**<br> 当 **source** 值匹配 **key** 时，会返回用于该 **key** 的 **value**。 如果 **source** 值不匹配任何键，则返回 **defaultValue**。  **Key** 和 **value** 参数必须始终成对出现。 该函数始终需要偶数个参数。
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |要更新的 **source** 值。 |
-| **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-| **key** |必填 |字符串 |用来比较 **source** 值的 **key**。 |
-| **value** |必填 |字符串 |与该 key 匹配的 **source** 的替换值。 |
+| **source** |必选 |String |要更新的 **source** 值。 |
+| **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+| **key** |必选 |String |用来比较 **source** 值的 **key**。 |
+| **value** |必选 |String |与该 key 匹配的 **source** 的替换值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -236,10 +236,10 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是来自源对象的属性的名称 |
-| **区域性** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必选 |String |通常是来自源对象的属性的名称 |
+| **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -249,10 +249,10 @@ ms.locfileid: "71162394"
 
 **参数：**<br> 
 
-| 姓名 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必填 |字符串 |通常是来自源对象的属性的名称。 |
-| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ## <a name="examples"></a>示例
 ### <a name="strip-known-domain-name"></a>删除已知域名
@@ -286,9 +286,9 @@ ms.locfileid: "71162394"
 
 **示例输入/输出：** <br>
 
-* **输入** (givenName)："John"
-* **输入** (surname)："Doe"
-* **输出**："JohDoe"
+* **输入** (givenName)：“John”
+* **输入** (surname)：“Doe”
+* **输出**：“JohDoe”
 
 ### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
 需要将包含重音符号的字符替换为不包含重音符号的等效字符。
@@ -298,8 +298,8 @@ NormalizeDiacritics([givenName])
 
 **示例输入/输出：** <br>
 
-* **输入** (givenName)："Zoë"
-* **输出**："Zoe"
+* **输入** (givenName)：“Zoë”
+* **输出**：“Zoe”
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
 你需要获取一个以逗号分隔的字符串列表，将它们拆分为一个数组，可以将该数组插入到多值属性中，例如 Salesforce 的 PermissionSets 属性。 在此示例中，Azure AD 中的 extensionAttribute5 中填充了一个权限集列表。
@@ -309,7 +309,7 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：** <br>
 
-* **INPUT** (extensionAttribute5):"PermissionSetOne, PermisionSetTwo"
+* **INPUT** （extensionAttribute5）： "PermissionSetOne，PermisionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
@@ -322,8 +322,8 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：**
 
-* **输入** (extensionAttribute1)："20150123105347.1Z"
-* **输出**："2015-01-23"
+* **输入** (extensionAttribute1)：“20150123105347.1Z”
+* **输出**：“2015-01-23”
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
 
@@ -335,8 +335,8 @@ Split([extensionAttribute5], ",")
 
 **示例输入/输出：**
 
-* **输入** (state)："QLD"
-* **输出**："Australia/Brisbane"
+* **输入** (state)：“QLD”
+* **输出**：“澳大利亚/布里斯班”
 
 ### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
 你需要查找与正则表达式匹配的值并将其删除。
@@ -348,7 +348,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **示例输入/输出：**
 
 * **INPUT** (mailNickname: "john_doe72"
-* **输出**："72"
+* **输出**： "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
 在下面的示例中，通过串联 PreferredFirstName 和 PreferredLastName 源字段生成 UPN 值，ToLower 函数对生成的字符串进行运算，将所有字符都转换为小写形式。 

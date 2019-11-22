@@ -1,14 +1,14 @@
 ---
 title: 获取资源更改
-description: 了解如何查找资源更改时间以及获取已更改属性的列表。
+description: 了解如何查找资源的更改时间，获取已更改属性的列表，并评估差异。
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2ed2c0ef8638744aeaa9f31eded14d1716d891ae
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958765"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303999"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -44,7 +44,7 @@ ms.locfileid: "73958765"
 - **间隔**\[所需的\]：在使用**祖鲁时区（Z）** 检查更改事件时的_开始_日期和_结束_日期属性。
 - **fetchPropertyChanges** （可选）：一个布尔值属性，设置响应对象是否包括属性更改。
 
-请求正文示例：
+示例请求正文：
 
 ```json
 {
@@ -163,12 +163,12 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 - **resourceId**：用于比较更改的 Azure 资源。
 - **changeId**：从**ResourceChanges**收集的**resourceId**的唯一更改事件。
 
-请求正文示例：
+示例请求正文：
 
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
-    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}"
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"afterTime\":'2019-05-10T00:00:00.000Z\"}"
 }
 ```
 
@@ -288,4 +288,4 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 - 在[初学者查询](../samples/starter.md)中了解使用的语言。
 - 在[高级查询](../samples/advanced.md)中了解高级用法。
-- 了解有关如何[探索资源](../concepts/explore-resources.md)的详细信息。
+- 详细了解如何[浏览资源](../concepts/explore-resources.md)。
