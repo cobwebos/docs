@@ -9,37 +9,37 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: c4ce0d4ecd64273bcb3226b4b543ba378aad538c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965507"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078959"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
-Azure 存储提供分层安全模型。 利用此模型，你可以根据所用网络的类型和子集保护和控制对你的应用程序和企业环境所需的存储帐户的访问级别。 配置网络规则时，只有通过指定网络集请求数据的应用程序才能访问存储帐户。 你可以将对存储帐户的访问权限限制为源自特定 IP 地址、IP 范围或 Azure 虚拟网络（VNet）中的子网列表的请求。
+Azure 存储提供分层安全模型。 利用此模型，你可以根据所用网络的类型和子集保护和控制对你的应用程序和企业环境所需的存储帐户的访问级别。 配置网络规则后，只有通过指定的网络集请求数据的应用程序才能访问存储帐户。 你可以将对存储帐户的访问权限限制为源自特定 IP 地址、IP 范围或 Azure 虚拟网络（VNet）中的子网列表的请求。
 
 存储帐户具有可通过 internet 访问的公共终结点。 你还可以[为存储帐户创建专用终结点，该终结点](storage-private-endpoints.md)将专用 IP 地址从 vnet 分配到存储帐户，并通过专用链接保护 vnet 和存储帐户之间的所有流量。 Azure 存储防火墙提供对你的存储帐户的公共终结点的访问控制访问。 使用专用终结点时，还可以使用防火墙阻止通过公共终结点进行的所有访问。 你的存储防火墙配置还允许选择 "受信任的 Azure 平台服务" 来安全地访问存储帐户。
 
-当网络规则生效时，访问存储帐户的应用程序仍需要对请求进行正确授权。 使用有效的帐户访问密钥或带有 SAS 令牌的 blob 和队列的 Azure Active Directory （Azure AD）凭据支持授权。
+当网络规则生效时，访问存储帐户的应用程序仍需要对请求进行正确授权。 支持通过 Azure Active Directory (Azure AD) 凭据（适用于 Blob 和队列）、有效的帐户访问密钥或 SAS 令牌进行授权。
 
 > [!IMPORTANT]
 > 默认情况下，打开存储帐户的防火墙规则会阻止传入的数据请求，除非这些请求源自 Azure 虚拟网络（VNet）或允许的公共 IP 地址中的服务操作。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。
 >
-> 可以通过允许来自托管服务实例的子网的流量，授予从 VNet 中运行的 Azure 服务的访问权限。 你还可以通过下面所述的[异常](#exceptions)机制启用有限数量的方案。 若要通过 Azure 门户访问存储帐户中的数据，需要在设置的受信任边界（IP 或 VNet）中的计算机上进行访问。
+> 可以通过允许来自托管服务实例的子网的流量，为从 VNet 内部运行的 Azure 服务授予访问权限。 你还可以通过下面所述的[异常](#exceptions)机制启用有限数量的方案。 若要通过 Azure 门户访问存储帐户中的数据，需要从设置的可信边界（IP 或 VNet）内的计算机进行访问。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>方案
 
-若要保护存储帐户，你应该首先配置一个规则，拒绝在公共终结点上从所有网络（包括 internet 流量）访问流量，默认情况下为。 然后，你应该配置规则，以便向来自特定 Vnet 的流量授予访问权限。 你还可以配置规则，以便从 "选择公共 internet IP 地址范围" 中为流量授予访问权限，并启用特定 internet 或本地客户端的连接。 借助此配置，可为应用程序生成安全网络边界。
+若要保护存储帐户，你应该首先配置一个规则，拒绝在公共终结点上从所有网络（包括 internet 流量）访问流量，默认情况下为。 然后，应该配置相应的规则，以便为来自特定 VNet 的流量授予访问权限。 此外，还可以配置规则为来自特定公共 Internet IP 地址范围的流量授予访问权限，以便能够从特定的 Internet 或本地客户端建立连接。 借助此配置，可为应用程序生成安全网络边界。
 
 可以组合防火墙规则，以允许来自特定虚拟网络的访问，以及来自同一存储帐户上公共 IP 地址范围的访问权限。 存储防火墙规则可以应用于现有的存储帐户，也可以在创建新的存储帐户时应用。
 
 存储防火墙规则适用于存储帐户的公共终结点。 不需要任何防火墙访问规则即可允许存储帐户的专用终结点的流量。 批准专用终结点的创建的过程授予对托管专用终结点的子网的流量的隐式访问权限。
 
-对于面向 Azure 存储的所有网络协议（包括 REST 和 SMB），将强制实施网络规则。 若要使用 Azure 门户、存储资源管理器和 AZCopy 之类的工具来访问数据，必须配置显式网络规则。
+对于面向 Azure 存储的所有网络协议（包括 REST 和 SMB），将强制实施网络规则。 若要使用 Azure 门户、存储资源管理器和 AZCopy 等工具访问数据，必须配置显式网络规则。
 
 一旦应用网络规则，就会对所有请求强制实施这些规则。 用于向特定 IP 地址授予访问权限的 SAS 令牌可限制令牌持有者的访问权限，但不会越过已配置的网络规则授予新的访问权限。
 
@@ -54,7 +54,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 默认情况下，存储帐户接受来自任何网络上客户端的连接。 若要限制为仅允许选定网络访问，必须先更改默认操作。
 
 > [!WARNING]
-> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 如果也应用**授予**访问权限的特定网络规则，则将默认网络规则设置为 "**拒绝**" 将阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
+> 更改网络规则可能会使应用程序无法正常连接到 Azure 存储。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。
 
 ### <a name="managing-default-network-access-rules"></a>管理默认网络访问规则
 
@@ -72,7 +72,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 #### <a name="powershell"></a>PowerShell
 
-1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并 [登录](/powershell/azure/authenticate-azureps)。
+1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并[“登录”](/powershell/azure/authenticate-azureps)。
 
 1. 显示存储帐户默认规则的状态。
 
@@ -116,9 +116,9 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 ## <a name="grant-access-from-a-virtual-network"></a>允许从虚拟网络进行访问
 
-可以将存储帐户配置为仅允许来自特定子网的访问。 允许的子网可以属于同一订阅中的 VNet，也可以属于不同订阅中的 VNet，包括属于不同 Azure Active Directory 租户的订阅。
+可将存储帐户配置为仅允许从特定子网进行访问。 允许的子网可以属于同一订阅中的 VNet，也可以属于不同订阅（包括属于不同 Azure Active Directory 租户的订阅）中的 VNet。
 
-在 VNet 内为 Azure 存储启用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)。 服务终结点将流量从 VNet 路由到 Azure 存储服务的最佳路径。 子网和虚拟网络的标识也随每个请求一起传输。 然后，管理员可以为存储帐户配置网络规则，以允许从 VNet 中的特定子网接收请求。 通过这些网络规则获得访问权限的客户端必须继续满足存储帐户的授权要求，才能访问数据。
+在 VNet 内为 Azure 存储启用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)。 服务终结点通过最佳路径将流量从 VNet 路由到 Azure 存储服务。 子网和虚拟网络的标识也随每个请求进行传输。 管理员随后可以配置存储帐户的网络规则，允许从 VNet 中的特定子网接收请求。 通过这些网络规则获得访问权限的客户端必须继续满足存储帐户的授权要求，才能访问数据。
 
 每个存储帐户最多支持 100 条虚拟网络规则，这些规则可与 [IP 网络规则](#grant-access-from-an-internet-ip-range)组合使用。
 
@@ -131,14 +131,14 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 > [!NOTE]
 > 服务终结点不适用于位于虚拟网络所在区域和指定区域对之外的流量。 可以将允许从虚拟网络访问存储帐户的网络规则仅应用于存储帐户主区域或指定配对区域中的存储帐户。
 
-### <a name="required-permissions"></a>所需的权限
+### <a name="required-permissions"></a>所需权限
 
 若要向存储帐户应用虚拟网络规则，用户必须对要添加的子网拥有适当的权限。 所需的权限为*向子网加入服务*权限，该权限包含在*存储帐户参与者*内置角色中。 该权限还可以添加到自定义角色定义中。
 
-已授予访问权限的存储帐户和虚拟网络可能位于不同的订阅中，其中包括属于不同 Azure AD 租户的订阅。
+存储帐户和获得访问权限的虚拟网络可以位于不同的订阅中，包括属于不同 Azure AD 租户的订阅。
 
 > [!NOTE]
-> 目前仅支持通过 Powershell、CLI 和 REST Api 来配置对虚拟网络中的子网进行访问 Azure Active Directory 的规则。 此类规则无法通过 Azure 门户进行配置，但可在门户中查看。
+> 目前，仅支持通过 Powershell、CLI 和 REST API 来配置对属于不同 Azure Active Directory 租户的虚拟网络中的子网授予访问权限的规则。 无法通过 Azure 门户配置此类规则，但可以在门户中查看此类规则。
 
 ### <a name="managing-virtual-network-rules"></a>管理虚拟网络规则
 
@@ -157,7 +157,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
     > [!NOTE]
     > 如果之前没有为所选的虚拟网络和子网配置 Azure 存储的服务终结点，则可在执行此操作时进行配置。
     >
-    > 目前，规则创建期间仅显示属于同一 Azure Active Directory 租户的虚拟网络。 若要授予访问属于其他租户的虚拟网络中子网的权限，请使用 Powershell、CLI 或 REST Api。
+    > 目前，在创建规则期间，只会显示属于同一 Azure Active Directory 租户的虚拟网络供用户选择。 若要对属于其他租户的虚拟网络中的子网授予访问权限，请使用 Powershell、CLI 或 REST API。
 
 1. 若要删除虚拟网络或子网规则，请单击“...”打开虚拟网络或子网的上下文菜单，然后单击“删除”。
 
@@ -165,7 +165,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
 
 #### <a name="powershell"></a>PowerShell
 
-1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并 [登录](/powershell/azure/authenticate-azureps)。
+1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并[“登录”](/powershell/azure/authenticate-azureps)。
 
 1. 列出虚拟网络规则。
 
@@ -187,7 +187,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
     ```
 
     > [!TIP]
-    > 若要为另一个 Azure AD 租户的 VNet 中的子网添加网络规则，请使用 "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" 形式的完全限定的**VirtualNetworkResourceId**参数。
+    > 若要为属于其他 Azure AD 租户的 VNet 中的子网添加网络规则，请使用“/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name”格式的完全限定的 **VirtualNetworkResourceId** 参数。
 
 1. 为虚拟网络和子网删除网络规则。
 
@@ -225,7 +225,7 @@ Azure 存储提供分层安全模型。 利用此模型，你可以根据所用�
     > [!TIP]
     > 若要为另一个 Azure AD 租户的 VNet 中的子网添加规则，请使用 "/subscriptions/\<订阅 ID" 形式的完全限定子网 ID\>/resourceGroups/\<resourceGroup 名称\>/providers/Microsoft.Network/virtualNetworks/\<vNet 名称\>/subnets/\<"子网-名称\>"。
     > 
-    > 可以使用**订阅**参数检索属于另一个 Azure AD 租户的 VNet 的子网 ID。
+    > 可以使用 **subscription** 参数检索属于其他 Azure AD 租户的 VNet 的子网 ID。
 
 1. 为虚拟网络和子网删除网络规则。
 
@@ -262,7 +262,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-如果是在本地使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)。
+如果是在本地使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 对于 Microsoft 对等互连，使用的 NAT IP 地址是客户提供的或由服务提供商提供的。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -276,7 +276,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 检查并确保已选择允许从“所选网络”进行访问。
 
-1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” > “地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）。
+1. 若要向 Internet IP 范围授予访问权限，请在“防火墙” **“地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）**  > 。
 
 1. 若要删除某个 IP 网络规则，请单击该地址范围旁边的垃圾桶图标。
 
@@ -284,7 +284,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 #### <a name="powershell"></a>PowerShell
 
-1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并 [登录](/powershell/azure/authenticate-azureps)。
+1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并[“登录”](/powershell/azure/authenticate-azureps)。
 
 1. 列出 IP 网络规则。
 
@@ -356,21 +356,21 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
-网络规则有助于在大多数情况下为应用程序和数据创建安全的环境。 但是，某些应用程序使用无法通过虚拟网络或 IP 地址规则唯一隔离的服务。 但是，必须将此类服务授予存储，以实现完整的应用程序功能。 在这种情况下，你可以使用 "***允许受信任的 Microsoft 服务 ...*** " 设置来启用对你的数据、日志或分析的访问。
+网络规则有助于在大多数情况下为应用程序和数据创建安全的环境。 但是，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则唯一隔离的 Azure 服务。 但是，必须将此类服务授予存储，以实现完整的应用程序功能。 在这种情况下，你可以使用 "***允许受信任的 Microsoft 服务 ...*** " 设置来启用此类服务访问你的数据、日志或分析。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服务
 
-某些 Microsoft 服务在网络规则中无法包含的网络中运行。 你可以允许此类受信任的 Microsoft 服务的一部分访问存储帐户，同时为其他应用维护网络规则。 然后，这些服务可以使用强身份验证安全地连接到存储帐户。 我们为 Microsoft 服务启用两种类型的受信任访问。
+某些 Microsoft 服务在网络规则中无法包含的网络中运行。 你可以向此类受信任的 Microsoft 服务授予对存储帐户的访问权限，同时为其他应用维护网络规则。 这些受信任的服务将使用强身份验证安全地连接到存储帐户。 我们为 Microsoft 服务启用了两种可信访问模式。
 
-- 某些服务的资源可以被授予对选择操作的访问权限，如写入日志或备份。
-- 某些服务的特定实例可以通过将[RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)给资源实例来向其授予访问权限。
+- 某些服务的资源在**你的订阅中注册后**，可以**在同一订阅中**访问你的存储帐户，以便选择操作，如写入日志或备份。
+- 可以通过将**RBAC 角色分配**给系统分配的托管标识，向某些服务的资源授予对存储帐户的显式访问权限。
 
 
-当你启用 "**允许受信任的 Microsoft 服务 ...** " 异常时，以下服务（在订阅中注册时）将被授予对存储帐户的访问权限，如下所述：
+如果启用 "**允许受信任的 Microsoft 服务 ...** " 设置，则在与存储帐户相同的订阅中注册的以下服务的资源将被授予对有限的一组操作的访问权限，如下所述：
 
-| 服务                  | 资源提供程序名称     | 用途                            |
+| 服务                  | 资源提供程序名称     | 允许的操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure 备份             | Microsoft.RecoveryServices | 在 IAAS 虚拟机中运行非托管磁盘的备份和还原。 （不是托管磁盘的必需操作）。 [了解详细信息](/azure/backup/backup-introduction-to-azure-backup)。 |
 | Azure Data Box           | Microsoft.DataBox          | 允许使用 Data Box 将数据导入到 Azure。 [了解详细信息](/azure/databox/data-box-overview)。 |
@@ -378,20 +378,20 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 事件网格         | Microsoft.EventGrid        | 启用 Blob 存储事件发布并允许事件网格发布到存储队列。 了解有关 [blob 存储事件](/azure/event-grid/event-sources)和[发布到队列](/azure/event-grid/event-handlers)的信息。 |
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中心捕获功能存档数据。 [了解详细信息](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 文件同步          | Microsoft.StorageSync      | 使你能够将本地文件服务器转换为 Azure 文件共享的缓存。 允许多站点同步、快速灾难恢复和云端备份。 [了解详细信息](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft.HDInsight        | 设置新 HDInsight 群集的默认文件系统的初始内容。 [了解详细信息](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。 |
+| Azure HDInsight          | Microsoft.HDInsight        | 为新的 HDInsight 群集预配默认文件系统的初始内容。 [了解详细信息](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
+| Azure 监视器            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 网络         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，启用复制来实现 Azure IaaS 虚拟机灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+
+"**允许受信任的 Microsoft 服务 ...** " 设置还允许以下服务的特定实例访问存储帐户，前提是将[RBAC 角色显式分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问作用域对应于分配给托管标识的 RBAC 角色。
+
+| 服务                        | 资源提供程序名称          | 目的                            |
+| :----------------------------- | :------------------------------ | :--------------------------------- |
+| Azure 数据工厂             | Microsoft.DataFactory/factories | 允许通过 ADF 运行时访问存储帐户。 |
+| Azure 逻辑应用               | Microsoft.Logic/workflows       | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure 机器学习服务 | Microsoft.MachineLearningServices | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure Monitor            | Microsoft.Insights         | 允许将监视数据写入受保护存储帐户[了解详细信息](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure 联网         | Microsoft.Network          | 存储和分析网络流量日志。 [了解详细信息](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
-| Azure 站点恢复      | Microsoft.SiteRecovery     | 使用启用了防火墙的缓存、源或目标存储帐户时，启用复制来实现 Azure IaaS 虚拟机灾难恢复。  [了解详细信息](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
-
-如果为实例分配了[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则 "**允许受信任的 Microsoft 服务 ...** " 例外使这些服务的特定实例能够访问存储帐户。
-
-| 服务                  | 资源提供程序名称          | 用途                            |
-| :----------------------- | :------------------------------ | :--------------------------------- |
-| Azure 数据工厂       | Microsoft.DataFactory/factories | 允许通过 ADF 运行时访问存储帐户。 |
-| Azure 逻辑应用         | Microsoft.Logic/workflows       | 使逻辑应用能够访问存储帐户。 |
-| Azure SQL 数据仓库 | Microsoft.Sql                   | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 流分析   | Microsoft.StreamAnalytics       | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](../../stream-analytics/blob-output-managed-identity.md)。 |
+| Azure SQL 数据仓库       | Microsoft.Sql                   | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics       | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
@@ -416,7 +416,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 #### <a name="powershell"></a>PowerShell
 
-1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并 [登录](/powershell/azure/authenticate-azureps)。
+1. 安装 [Azure PowerShell](/powershell/azure/install-Az-ps) 并[“登录”](/powershell/azure/authenticate-azureps)。
 
 1. 显示存储帐户的网络规则例外。
 
