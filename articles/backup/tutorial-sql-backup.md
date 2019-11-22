@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747032"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074658"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
 
@@ -23,7 +23,7 @@ ms.locfileid: "73747032"
 > * 创建并配置保管库。
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
-> * 运行即席备份。
+> * 运行按需备份。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -215,7 +215,7 @@ ms.locfileid: "73747032"
 
 14. 完成备份策略的编辑后，选择“确定”。 
 
-## <a name="run-an-ad-hoc-backup"></a>运行即席备份
+## <a name="run-an-on-demand-backup"></a>运行按需备份
 
 1. 在恢复服务保管库中，选择“备份项目”。
 2. 单击“Azure VM 中的 SQL”。
@@ -233,7 +233,7 @@ ms.locfileid: "73747032"
 > * 创建并配置保管库。
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
-> * 运行即席备份。
+> * 运行按需备份。
 
 继续阅读下一教程，学习如何从磁盘还原 Azure 虚拟机。
 

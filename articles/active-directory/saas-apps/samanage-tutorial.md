@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714e67bc7cf9e9c928eb4fd0764619041c9c1424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092597"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教程：Azure Active Directory 与 Samanage 的集成
 
@@ -132,7 +133,7 @@ ms.locfileid: "67092597"
 
 2. 在左侧导航窗格中，单击“仪表板”  并选择“设置”  。
    
-    ![仪表板](./media/samanage-tutorial/tutorial_samanage_001.png "Dashboard")
+    ![仪表板](./media/samanage-tutorial/tutorial_samanage_001.png "仪表板")
 
 3. 单击“单一登录”  。
    
@@ -228,7 +229,7 @@ ms.locfileid: "67092597"
 
 4. 单击“新建用户”  。
    
-    ![新建用户](./media/samanage-tutorial/tutorial_samanage_007.png "New User")
+    ![新建用户](./media/samanage-tutorial/tutorial_samanage_007.png "新建用户")
 
 5. 键入要预配的 Azure Active Directory 帐户的“名称”和“电子邮件地址”，并单击“创建用户”    。
    

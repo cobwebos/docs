@@ -1,20 +1,19 @@
 ---
-title: 通过 Azure IoT 中心设置和使用指标和诊断日志 | Microsoft Docs
-description: 通过 Azure IoT 中心设置和使用指标和诊断日志
+title: 通过 Azure IoT 中心设置和使用指标和诊断日志
+description: 了解如何通过 Azure IoT 中心设置和使用指标和诊断日志。 这将提供数据以进行分析，从而帮助诊断中心可能存在的问题。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262318"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084361"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 

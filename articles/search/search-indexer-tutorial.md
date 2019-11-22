@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793609"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113320"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C# 教程：使用 Azure 认知搜索索引器抓取 Azure SQL 数据库
+# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C# 教程：使用 Azure 认知搜索索引器导入 Azure SQL 数据库
 
 了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 认知搜索组件，用于对外部数据源进行抓取，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
 

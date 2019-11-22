@@ -1,21 +1,21 @@
 ---
-title: 准备 Azure 资源，以便对本地计算机进行灾难恢复
+title: 准备 Azure 以使用 Azure Site Recovery 实现 Hyper-V 灾难恢复
 description: 了解如何使用 Azure Site Recovery 准备 Azure，对本地 Hyper-V VM 进行灾难恢复。
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814353"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084178"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>为 Hyper-V 灾难恢复准备 Azure 资源
 
  [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用保持运行状态，来帮助实现业务连续性和灾难恢复 (BCDR)。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 

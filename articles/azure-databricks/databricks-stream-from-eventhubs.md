@@ -10,17 +10,14 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
-ms.openlocfilehash: 0ea85e60a84b540af2c772f81326dd8c45f61d4d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784026"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121282"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
-
-> [!IMPORTANT]
-> 本教程使用 Azure Databricks Runtime 5.2 版本。
 
 在本教程中，我们要将数据引入系统连接到 Azure Databricks，以便以近乎实时的速度将数据流式传输到 Apache Spark 群集。 我们将使用 Azure 事件中心设置数据引入系统，然后将此系统连接到 Azure Databricks 以处理传入的消息。 若要访问数据流，可以使用 Twitter API 将推文引入事件中心。 在 Azure Databricks 中准备好数据后，可以运行分析作业来进一步分析数据。
 
@@ -104,10 +101,10 @@ ms.locfileid: "72784026"
     除以下值外，接受其他所有默认值：
 
    * 输入群集的名称。
-   * 在本文中，请创建运行时为 **5.2** 的群集。
+   * 在本文中，请创建运行时为 *6.0 的群集  。
    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
-   选择适合你的技术标准和[预算](https://azure.microsoft.com/en-us/pricing/details/databricks/)的群集辅助角色和驱动程序节点大小。
+   选择适合你的技术标准和[预算](https://azure.microsoft.com/pricing/details/databricks/)的群集辅助角色和驱动程序节点大小。
 
      选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 

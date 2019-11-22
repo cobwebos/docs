@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure PowerShell 创建自定义 VM 映像 | Microsoft Docs
+title: 教程 - 使用 Azure PowerShell 创建自定义 VM 映像
 description: 本教程介绍如何使用 Azure PowerShell 在 Azure 中创建自定义虚拟机映像
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 906ac3b28a512a866e712cefda4355ad901c258d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390569"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064718"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像
 

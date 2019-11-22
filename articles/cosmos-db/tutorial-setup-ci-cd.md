@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28c7166c3569505d595c55178cf721ee432bd642
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597670"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024163"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -50,7 +50,7 @@ ms.locfileid: "68597670"
 3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 
 
 > [!NOTE]
-> 为此 CI 选择的代理池应该安装用于 Windows 的 Docker，除非已在以前的任务中作为 CI 的一部分手动完成该安装。 有关代理池的选择，请参阅 [Microsoft 托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)一文；我们建议从 `Hosted VS2017` 或 `Hosted VS2019` 开始。 
+> 为此 CI 选择的代理池应该安装用于 Windows 的 Docker，除非已在以前的任务中作为 CI 的一部分手动完成该安装。 有关代理池的选择，请参阅 [Microsoft 托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)一文；我们建议从 `Hosted VS2017` 开始。
 
 现在，我们有了一个生成管道，可以通过设置它来使用 Azure Cosmos DB 模拟器生成任务。 
 

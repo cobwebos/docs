@@ -1,22 +1,19 @@
 ---
-title: 在 Azure Kubernetes 服务 (AKS) 中创建应用程序网关入口控制器
+title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 虚拟机, azure, kubernetes, 入口, 应用程序网关
-author: tomarcher
-manager: gwallace
+ms.service: terraform
+author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/13/2019
+ms.openlocfilehash: 31faedf247f8dd0799a4ee52cabc8386f0363ff6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244804"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082572"
 ---
-# <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中创建应用程序网关入口控制器
+# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境。 使用 AKS 可以快速轻松地部署和管理容器化应用程序，而无需具备容器业务流程方面的专业知识。 AKS 还可以消除操作和维护任务使应用程序脱机而造成的负担。 使用 AKS 可以按需完成预配、升级和缩放资源等任务。
 
@@ -36,6 +33,8 @@ ms.locfileid: "72244804"
 - **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
+
+- **Azure 资源组**：如果没有用于演示的 Azure 资源组，请[创建 Azure 资源组](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups)。 记下资源组名称和位置，因为这些值将在演示中使用。
 
 - **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文的“创建服务主体”部分中的指导  。 记下 appId、displayName 和 password 的值。
 
@@ -105,7 +104,7 @@ ms.locfileid: "72244804"
     
     ```hcl
     variable "resource_group_name" {
-      description = "Name of the resource group already created."
+      description = "Name of the resource group."
     }
 
     variable "location" {
@@ -262,17 +261,17 @@ ms.locfileid: "72244804"
 
     ```hcl
     data "azurerm_resource_group" "rg" {
-      name = "${var.resource_group_name}"
+      name = var.resource_group_name
     }
 
     # User Assigned Idntities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
-      resource_group_name = "${data.azurerm_resource_group.rg.name}"
-      location            = "${data.azurerm_resource_group.rg.location}"
+      resource_group_name = data.azurerm_resource_group.rg.name
+      location            = data.azurerm_resource_group.rg.location
 
       name = "identity1"
 
-      tags = "${var.tags}"
+      tags = var.tags
     }
     ```
 
@@ -280,45 +279,45 @@ ms.locfileid: "72244804"
 
     ```hcl
     resource "azurerm_virtual_network" "test" {
-      name                = "${var.virtual_network_name}"
-      location            = "${data.azurerm_resource_group.rg.location}"
-      resource_group_name = "${data.azurerm_resource_group.rg.name}"
-      address_space       = ["${var.virtual_network_address_prefix}"]
+      name                = var.virtual_network_name
+      location            = data.azurerm_resource_group.rg.location
+      resource_group_name = data.azurerm_resource_group.rg.name
+      address_space       = [var.virtual_network_address_prefix]
 
       subnet {
-        name           = "${var.aks_subnet_name}"
-        address_prefix = "${var.aks_subnet_address_prefix}" 
+        name           = var.aks_subnet_name
+        address_prefix = var.aks_subnet_address_prefix
       }
 
       subnet {
         name           = "appgwsubnet"
-        address_prefix = "${var.app_gateway_subnet_address_prefix}"
+        address_prefix = var.app_gateway_subnet_address_prefix
       }
 
-      tags = "${var.tags}"
+      tags = var.tags
     }
 
     data "azurerm_subnet" "kubesubnet" {
-      name                 = "${var.aks_subnet_name}"
-      virtual_network_name = "${azurerm_virtual_network.test.name}"
-      resource_group_name  = "${data.azurerm_resource_group.rg.name}"
+      name                 = var.aks_subnet_name
+      virtual_network_name = azurerm_virtual_network.test.name
+      resource_group_name  = data.azurerm_resource_group.rg.name
     }
 
     data "azurerm_subnet" "appgwsubnet" {
       name                 = "appgwsubnet"
-      virtual_network_name = "${azurerm_virtual_network.test.name}"
-      resource_group_name  = "${data.azurerm_resource_group.rg.name}"
+      virtual_network_name = azurerm_virtual_network.test.name
+      resource_group_name  = data.azurerm_resource_group.rg.name
     }
 
     # Public Ip 
     resource "azurerm_public_ip" "test" {
       name                         = "publicIp1"
-      location                     = "${data.azurerm_resource_group.rg.location}"
-      resource_group_name          = "${data.azurerm_resource_group.rg.name}"
-      public_ip_address_allocation = "static"
+      location                     = data.azurerm_resource_group.rg.location
+      resource_group_name          = data.azurerm_resource_group.rg.name
+      allocation_method            = "Static"
       sku                          = "Standard"
 
-      tags = "${var.tags}"
+      tags = var.tags
     }
     ```
 
@@ -326,23 +325,23 @@ ms.locfileid: "72244804"
 
     ```hcl
     resource "azurerm_application_gateway" "network" {
-      name                = "${var.app_gateway_name}"
-      resource_group_name = "${data.azurerm_resource_group.rg.name}"
-      location            = "${data.azurerm_resource_group.rg.location}"
+      name                = var.app_gateway_name
+      resource_group_name = data.azurerm_resource_group.rg.name
+      location            = data.azurerm_resource_group.rg.location
 
       sku {
-        name     = "${var.app_gateway_sku}"
+        name     = var.app_gateway_sku
         tier     = "Standard_v2"
         capacity = 2
       }
 
       gateway_ip_configuration {
         name      = "appGatewayIpConfig"
-        subnet_id = "${data.azurerm_subnet.appgwsubnet.id}"
+        subnet_id = data.azurerm_subnet.appgwsubnet.id
       }
 
       frontend_port {
-        name = "${local.frontend_port_name}"
+        name = local.frontend_port_name
         port = 80
       }
 
@@ -352,16 +351,16 @@ ms.locfileid: "72244804"
       }
 
       frontend_ip_configuration {
-        name                 = "${local.frontend_ip_configuration_name}"
-        public_ip_address_id = "${azurerm_public_ip.test.id}"
+        name                 = local.frontend_ip_configuration_name
+        public_ip_address_id = azurerm_public_ip.test.id
       }
 
       backend_address_pool {
-        name = "${local.backend_address_pool_name}"
+        name = local.backend_address_pool_name
       }
 
       backend_http_settings {
-        name                  = "${local.http_setting_name}"
+        name                  = local.http_setting_name
         cookie_based_affinity = "Disabled"
         port                  = 80
         protocol              = "Http"
@@ -369,21 +368,21 @@ ms.locfileid: "72244804"
       }
 
       http_listener {
-        name                           = "${local.listener_name}"
-        frontend_ip_configuration_name = "${local.frontend_ip_configuration_name}"
-        frontend_port_name             = "${local.frontend_port_name}"
+        name                           = local.listener_name
+        frontend_ip_configuration_name = local.frontend_ip_configuration_name
+        frontend_port_name             = local.frontend_port_name
         protocol                       = "Http"
       }
 
       request_routing_rule {
-        name                       = "${local.request_routing_rule_name}"
+        name                       = local.request_routing_rule_name
         rule_type                  = "Basic"
-        http_listener_name         = "${local.listener_name}"
-        backend_address_pool_name  = "${local.backend_address_pool_name}"
-        backend_http_settings_name = "${local.http_setting_name}"
+        http_listener_name         = local.listener_name
+        backend_address_pool_name  = local.backend_address_pool_name
+        backend_http_settings_name = local.http_setting_name
       }
 
-      tags = "${var.tags}"
+      tags = var.tags
 
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
@@ -393,31 +392,31 @@ ms.locfileid: "72244804"
 
     ```hcl
     resource "azurerm_role_assignment" "ra1" {
-      scope                = "${data.azurerm_subnet.kubesubnet.id}"
+      scope                = data.azurerm_subnet.kubesubnet.id
       role_definition_name = "Network Contributor"
-      principal_id         = "${var.aks_service_principal_object_id }"
+      principal_id         = var.aks_service_principal_object_id 
 
       depends_on = ["azurerm_virtual_network.test"]
     }
 
     resource "azurerm_role_assignment" "ra2" {
-      scope                = "${azurerm_user_assigned_identity.testIdentity.id}"
+      scope                = azurerm_user_assigned_identity.testIdentity.id
       role_definition_name = "Managed Identity Operator"
-      principal_id         = "${var.aks_service_principal_object_id}"
+      principal_id         = var.aks_service_principal_object_id
       depends_on           = ["azurerm_user_assigned_identity.testIdentity"]
     }
 
     resource "azurerm_role_assignment" "ra3" {
-      scope                = "${azurerm_application_gateway.network.id}"
+      scope                = azurerm_application_gateway.network.id
       role_definition_name = "Contributor"
-      principal_id         = "${azurerm_user_assigned_identity.testIdentity.principal_id}"
+      principal_id         = azurerm_user_assigned_identity.testIdentity.principal_id
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
 
     resource "azurerm_role_assignment" "ra4" {
-      scope                = "${data.azurerm_resource_group.rg.id}"
+      scope                = data.azurerm_resource_group.rg.id
       role_definition_name = "Reader"
-      principal_id         = "${azurerm_user_assigned_identity.testIdentity.principal_id}"
+      principal_id         = azurerm_user_assigned_identity.testIdentity.principal_id
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
@@ -426,17 +425,17 @@ ms.locfileid: "72244804"
 
     ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
-      name       = "${var.aks_name}"
-      location   = "${data.azurerm_resource_group.rg.location}"
-      dns_prefix = "${var.aks_dns_prefix}"
+      name       = var.aks_name
+      location   = data.azurerm_resource_group.rg.location
+      dns_prefix = var.aks_dns_prefix
 
-      resource_group_name = "${data.azurerm_resource_group.rg.name}"
+      resource_group_name = data.azurerm_resource_group.rg.name
 
       linux_profile {
-        admin_username = "${var.vm_user_name}"
+        admin_username = var.vm_user_name
 
         ssh_key {
-          key_data = "${file(var.public_ssh_key_path)}"
+          key_data = file(var.public_ssh_key_path)
         }
       }
 
@@ -448,32 +447,32 @@ ms.locfileid: "72244804"
 
       agent_pool_profile {
         name            = "agentpool"
-        count           = "${var.aks_agent_count}"
-        vm_size         = "${var.aks_agent_vm_size}"
+        count           = var.aks_agent_count
+        vm_size         = var.aks_agent_vm_size
         os_type         = "Linux"
-        os_disk_size_gb = "${var.aks_agent_os_disk_size}"
-        vnet_subnet_id  = "${data.azurerm_subnet.kubesubnet.id}"
+        os_disk_size_gb = var.aks_agent_os_disk_size
+        vnet_subnet_id  = data.azurerm_subnet.kubesubnet.id
       }
 
       service_principal {
-        client_id     = "${var.aks_service_principal_app_id}"
-        client_secret = "${var.aks_service_principal_client_secret}"
+        client_id     = var.aks_service_principal_app_id
+        client_secret = var.aks_service_principal_client_secret
       }
 
       network_profile {
         network_plugin     = "azure"
-        dns_service_ip     = "${var.aks_dns_service_ip}"
-        docker_bridge_cidr = "${var.aks_docker_bridge_cidr}"
-        service_cidr       = "${var.aks_service_cidr}"
+        dns_service_ip     = var.aks_dns_service_ip
+        docker_bridge_cidr = var.aks_docker_bridge_cidr
+        service_cidr       = var.aks_service_cidr
       }
 
       depends_on = ["azurerm_virtual_network.test", "azurerm_application_gateway.network"]
-      tags       = "${var.tags}"
+      tags       = var.tags
     }
 
     ```
 
-1. 保存文件并退出编辑器。
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 本部分中的代码将设置群集的名称、位置和 resource_group_name。 将设置 `dns_prefix` 值 - 构成了用于访问群集的完全限定域名 (FQDN) 的一部分。
 
@@ -495,39 +494,39 @@ ms.locfileid: "72244804"
 
     ```hcl
     output "client_key" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_key
     }
 
     output "client_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate
     }
 
     output "cluster_ca_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate
     }
 
     output "cluster_username" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.username}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.username
     }
 
     output "cluster_password" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.password}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.password
     }
 
     output "kube_config" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config_raw}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config_raw
     }
 
     output "host" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.host
     }
 
     output "identity_resource_id" {
-        value = "${azurerm_user_assigned_identity.testIdentity.id}"
+        value = azurerm_user_assigned_identity.testIdentity.id
     }
 
     output "identity_client_id" {
-        value = "${azurerm_user_assigned_identity.testIdentity.client_id}"
+        value = azurerm_user_assigned_identity.testIdentity.client_id
     }
     ```
 
@@ -537,15 +536,13 @@ ms.locfileid: "72244804"
 
 Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户环境中，此模式非常合适。 但是，在更常见的多用户环境中，需要使用 [Azure 存储](/azure/storage/)来跟踪服务器上的状态。 本部分介绍如何检索所需的存储帐户信息和创建存储容器。 然后，Terraform 状态信息将存储到该容器中。
 
-1. 在 Azure 门户的左侧菜单中，选择“所有服务”。 
+1. 在 Azure 门户的“Azure 服务”下，选择“存储帐户”   。 （如果主页面上未显示“存储帐户”选项，请选择“更多服务”，然后找到并选择它   。）
 
-1. 选择“存储帐户”。 
-
-1. 在“存储帐户”选项卡上，选择用于存储 Terraform 状态信息的存储帐户名称。  例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 
+1. 在“存储帐户”页上，选择用于存储 Terraform 状态信息的存储帐户名称  。 例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 
 
     记下所选的存储帐户，因为稍后需要用到。
 
-1. 在存储帐户选项卡上，选择“访问密钥”。 
+1. 在存储帐户页上，选择“访问密钥”。 
 
     ![存储帐户菜单](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
@@ -553,7 +550,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![存储帐户访问密钥](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. 在 Cloud Shell 中，在 Azure 存储帐户内创建一个容器（请将 &lt;YourAzureStorageAccountName> 和 &lt;YourAzureStorageAccountAccessKey> 占位符替换为 Azure 存储帐户的相应值）。
+1. 在 Cloud Shell 的 Azure 存储帐户中创建容器。 将占位符替换为 Azure 存储帐户的相应值。
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -562,7 +559,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 ## <a name="create-the-kubernetes-cluster"></a>创建 Kubernetes 群集
 本部分介绍如何使用 `terraform init` 命令来创建资源，这些资源定义了前面部分中所创建的配置文件。
 
-1. 在 Cloud Shell 中启动 Terraform（请将 &lt;YourAzureStorageAccountName> 和 &lt;YourAzureStorageAccountAccessKey> 占位符替换为 Azure 存储帐户的相应值）。
+1. 在 Cloud Shell 中，初始化 Terraform。 将占位符替换为 Azure 存储帐户的相应值。
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -572,24 +569,24 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform init”结果示例](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. 在 Cloud Shell 中，创建名为 `main.tf` 的文件：
+1. 在 Cloud Shell 中，创建名为 `terraform.tfvars` 的文件：
 
     ```bash
     code terraform.tfvars
     ```
 
-1. 将前面创建的以下变量粘贴到编辑器中：
+1. 将前面创建的以下变量粘贴到编辑器中。 若要获取环境的位置值，请使用 `az account list-locations`。
 
     ```hcl
-    resource_group_name = <Name of the Resource Group already created>
+    resource_group_name = "<Name of the Resource Group already created>"
 
-    location = <Location of the Resource Group>
+    location = "<Location of the Resource Group>"
       
-    aks_service_principal_app_id = <Service Principal AppId>
+    aks_service_principal_app_id = "<Service Principal AppId>"
       
-    aks_service_principal_client_secret = <Service Principal Client Secret>
+    aks_service_principal_client_secret = "<Service Principal Client Secret>"
       
-    aks_service_principal_object_id = <Service Principal Object Id>
+    aks_service_principal_object_id = "<Service Principal Object Id>"
         
     ```
 
@@ -674,15 +671,15 @@ Azure Active Directory Pod Identity 提供对 [Azure 资源管理器](/azure/azu
 
 如果**已启用** RBAC，请运行以下命令，将 Azure AD Pod Identity 安装到群集：
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+```
 
 如果**已禁用** RBAC，请运行以下命令，将 Azure AD Pod Identity 安装到群集：
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+```
 
 ## <a name="install-helm"></a>安装 Helm
 
@@ -717,10 +714,10 @@ Azure Active Directory Pod Identity 提供对 [Azure 资源管理器](/azure/azu
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
 
-1. 编辑 `helm-config.yaml`，并输入 `appgw` 和 `armAuth` 节的适当值。
+1. 编辑 `helm-config.yaml`，并输入 `appgw` 和 `armAuth` 节的相应值。
 
     ```bash
-    nano helm-config.yaml
+    code helm-config.yaml
     ```
 
     下面描述了这些值：
@@ -730,7 +727,7 @@ Azure Active Directory Pod Identity 提供对 [Azure 资源管理器](/azure/azu
     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 
     - `appgw.name`：应用程序网关的名称。 示例：`applicationgateway1`。
     - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
-    - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。
+    - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。 将此变量注释掉，或将其设置为空字符串，会导致流入量控制器观察所有可访问的命名空间。
     - `armAuth.type`：`aadPodIdentity` 或 `servicePrincipal` 值。
     - `armAuth.identityResourceID`：托管标识的资源 ID。
     - `armAuth.identityClientId`：标识的客户端 ID。
@@ -762,12 +759,20 @@ Azure Active Directory Pod Identity 提供对 [Azure 资源管理器](/azure/azu
 2. 应用 YAML 文件：
 
     ```bash
-    kubectl apply -f apsnetapp.yaml
+    kubectl apply -f aspnetapp.yaml
     ```
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要本教程中创建的资源，请将其删除。  
+
+将占位符替换为相应的值。 将删除指定资源组中的所有资源。
+
+```bash
+az group delete -n <resource-group>
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何使用 Terraform 和 AKS 创建 Kubernetes 群集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform。
- 
- > [!div class="nextstepaction"] 
-  > [应用程序网关入口控制器](https://azure.github.io/application-gateway-kubernetes-ingress/)
+> [!div class="nextstepaction"] 
+> [应用程序网关入口控制器](https://azure.github.io/application-gateway-kubernetes-ingress/)

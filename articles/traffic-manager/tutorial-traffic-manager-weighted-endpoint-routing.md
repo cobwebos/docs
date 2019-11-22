@@ -1,5 +1,5 @@
 ---
-title: 教程 - 将流量路由到加权终结点 - Azure 流量管理器
+title: 教程：将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
 author: asudbring
@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: allensu
-ms.openlocfilehash: f9e2b6f6a45279c52e19a63509c57fb34e739330
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258374"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037921"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由
 
@@ -64,7 +64,7 @@ ms.locfileid: "66258374"
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
    - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”和“HTTP”。  
 
-3. 选择“管理”选项卡，或者选择“下一步:   磁盘”，然后选择“下一步:  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
 6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。   
@@ -139,10 +139,10 @@ ms.locfileid: "66258374"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
+    | Name                   | 输入 trafficmanager.net 区域中的唯一名称。 它会生成 DNS 名称 trafficmanager.net，用于访问流量管理器配置文件。                                   |
     | 路由方法          | 选择**权重**路由方法。                                       |
-    | 订阅            | 选择订阅。                          |
-    | 资源组          | 选择“使用现有”，然后选择“myResourceGroupTM1”   。 |
+    | Subscription            | 选择订阅。                          |
+    | Resource group          | 选择“使用现有”，然后选择“myResourceGroupTM1”   。 |
     |        |   |
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-weighted-endpoint-routing/create-traffic-manager-profile.png)
@@ -157,8 +157,8 @@ ms.locfileid: "66258374"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | 输入 Azure 终结点。                                   |
-    | 名称           | 输入 **myEastUSEndpoint**。                                        |
+    | 类型                    | 输入 Azure 终结点。                                   |
+    | Name           | 输入 **myEastUSEndpoint**。                                        |
     | 目标资源类型           | 选择“公共 IP 地址”。                           |
     | 目标资源          | 选择一个公共 IP 地址，以显示同一订阅下具有公共 IP 地址的资源的列表。 在“资源”中，选择名为 **myIISVMEastUS-ip** 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  重量      | 输入 **100**。        |

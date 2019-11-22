@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 针对本地 VMware VM 设置到 Azure 的灾难恢复
+title: 使用 Azure Site Recovery 设置到 Azure 的 VMware VM 灾难恢复
 description: 了解如何使用 Azure Site Recovery 针对本地 VMware VM 设置到 Azure 的灾难恢复。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfdb39fd3585eeeb2afb27749b42b0eaed1dfc33
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488461"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953625"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 

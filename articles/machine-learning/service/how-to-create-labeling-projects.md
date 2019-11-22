@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612770"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837481"
 ---
 # <a name="get-labels-for-data"></a>获取数据标签
 
 在机器学习项目中，标记大量数据通常是一件很麻烦的事情。 具有计算机视觉组件的 ML 项目（如图像分类或对象检测）通常需要数千个图像和对应的标签。 
  
-Azure 机器学习工作室提供了一个中心位置，用于创建、管理和监视标记项目。 标记项目有助于协调数据、标签和团队成员，使你能够更有效地管理标记任务。 当前支持的任务包括图像分类（多标签或多类）以及使用边界框的对象标识。
+Azure 机器学习提供了一个中心位置，用于创建、管理和监视标签项目。 标记项目有助于协调数据、标签和团队成员，使你能够更有效地管理标记任务。 当前支持的任务包括图像分类（多标签或多类）以及使用边界框的对象标识。
 
 Azure 跟踪进度并维护未完成标记任务的队列。 标记人员不需要 Azure 帐户即可参与。 通过他们的 Microsoft 帐户 (MSA) 或 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 进行身份验证后，他们就可以在时间允许的情况下进行或多或少的标记操作。 他们可以使用键盘快捷方式分配和更改标签。 
 
@@ -43,7 +43,7 @@ Azure 跟踪进度并维护未完成标记任务的队列。 标记人员不需�
 
 ## <a name="create-a-labeling-project"></a>创建标记项目
 
-标记项目从 [Azure 机器学习工作室](https://ml.azure.com/)进行管理。 “标记项目”  页可用于管理项目、团队和人员。 一个项目分配有一个或多个团队，一个团队分配有一个或多个人员。 
+标签项目从 [Azure 机器学习](https://ml.azure.com/)进行管理。 “标记项目”  页可用于管理项目、团队和人员。 一个项目分配有一个或多个团队，一个团队分配有一个或多个人员。 
 
 如果你的数据已存储在 Azure blob 存储中，则应将其作为数据存储提供，然后再创建标记项目。 有关信息，请参阅[创建和注册数据存储](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)。 
 
@@ -149,7 +149,7 @@ Azure 跟踪进度并维护未完成标记任务的队列。 标记人员不需�
 
 可以随时导出标签数据以进行机器学习试验。 可以采用 [COCO 格式](http://cocodataset.org/#format-data)或 Azure ML 数据集格式导出图像标签。 可在标记项目的“项目详细信息”页上找到“导出”按钮   。
 
-COCO 文件是在 Azure ML 工作区的默认 blob 存储中创建的，该存储位于 export/coco  内的文件夹中。 可以在工作室的“数据集”  部分下访问导出的 Azure ML 数据集。 “数据集详细信息”页还提供了用于从 Python 访问标签的示例代码。
+COCO 文件是在 Azure ML 工作区的默认 blob 存储中创建的，该存储位于 export/coco  内的文件夹中。 可以在 Azure 机器学习的“数据集”  部分下访问导出的 Azure ML 数据集。 “数据集详细信息”页还提供了用于从 Python 访问标签的示例代码。
 
 ![导出的数据集](media/how-to-create-labeling-projects/exported-dataset.png)
 

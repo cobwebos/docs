@@ -1,26 +1,25 @@
 ---
-title: 使用动态组成员身份添加或删除用户 - 教程 - Azure Active Directory
+title: 向动态组添加用户 - 教程 - Azure AD | Microsoft Docs
 description: 本教程介绍了如何将组与用户成员身份规则配合使用，以便自动添加或删除用户
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102627"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027111"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 

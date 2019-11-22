@@ -1,18 +1,19 @@
 ---
-title: 教程 - 创建 Azure DNS 别名记录以引用区域中的资源记录。
+title: 教程：创建别名记录以引用区域中的资源记录
+titleSuffix: Azure DNS
 description: 本教程介绍如何配置 Azure DNS 别名记录以引用区域内的资源记录。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 3b4ee688d6a5606ab6008b459fcf6331c24afaae
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: allensu
+ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091634"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082880"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>教程：创建别名记录以引用区域资源记录
 
@@ -39,27 +40,27 @@ ms.locfileid: "50091634"
 
 ### <a name="create-the-target-resource-record"></a>创建目标资源记录
 1. 选择 Azure DNS 区域以打开该区域。
-2. 选择“记录集”。
-3. 在“名称”文本框中，输入“server”。
-4. 对于“类型”，选择“A”。
-5. 在“IP 地址”文本框中，输入“10.10.10.10”。
-6. 选择“确定”。
+2. 选择“记录集”。 
+3. 在“名称”  文本框中，输入“server”  。
+4. 对于“类型”  ，选择“A”  。
+5. 在“IP 地址”  文本框中，输入“10.10.10.10”  。
+6. 选择“确定”  。
 
 ### <a name="create-the-alias-record"></a>创建别名记录
 1. 选择 Azure DNS 区域以打开该区域。
-2. 选择“记录集”。
-3. 在“名称”文本框中，输入“test”。
-4. 对于“类型”，选择“A”。
-5. 在“别名记录集”复选框中选择“是”。 然后选择“区域记录集”选项。
-6. 对于“区域记录集”，请选择“server”记录。
-7. 选择“确定”。
+2. 选择“记录集”。 
+3. 在“名称”  文本框中，输入“test”  。
+4. 对于“类型”  ，选择“A”  。
+5. 在“别名记录集”复选框中选择“是”  。  然后选择“区域记录集”  选项。
+6. 对于“区域记录集”  ，请选择“server”  记录。
+7. 选择“确定”  。
 
 ## <a name="test-the-alias-record"></a>测试别名记录
 
 1. 启动最喜欢的 nslookup 工具。 一种方法是浏览到 [https://network-tools.com/nslook ](https://network-tools.com/nslook)。
-2. 设置 A 记录的查询类型并查找 test.\<你的域名\>。 答案为 **10.10.10.10**。
-3. 在 Azure 门户中，将 server A 记录更改为 10.11.11.11。
-4. 等待几分钟，然后将 nslookup 再次用于 test 记录。 答案为 **10.11.11.11**。
+2. 设置 A 记录的查询类型并查找 test.\<你的域名\>  。 答案为 **10.10.10.10**。
+3. 在 Azure 门户中，将 server  A 记录更改为 10.11.11.11  。
+4. 等待几分钟，然后将 nslookup 再次用于 test  记录。 答案为 **10.11.11.11**。
 
 ## <a name="clean-up-resources"></a>清理资源
 

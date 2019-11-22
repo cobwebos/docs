@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: c374c9e8fd91d50b7e6589f22f9bed09fbe0de39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092863"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991474"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教程：将 RingCentral 与 Azure Active Directory 集成
 
@@ -36,12 +36,14 @@ ms.locfileid: "67092863"
 
 若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有订阅，可以从[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月免费试用版。
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用单一登录 (SSO) 的 RingCentral 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 RingCentral 支持 **IDP** 发起的 SSO
+本教程在测试环境中配置并测试 Azure AD SSO。
+
+* RingCentral 支持 **IDP** 发起的 SSO
 
 ## <a name="adding-ringcentral-from-the-gallery"></a>从库中添加 RingCentral
 
@@ -61,11 +63,11 @@ ms.locfileid: "67092863"
 若要配置和测试 RingCentral 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 RingCentral SSO](#configure-ringcentral-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 RingCentral 测试用户](#create-ringcentral-test-user)** - 在 RingCentral 中创建 Britta Simon 的对应用户，并将其与用户的 Azure AD 身份关联。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 RingCentral SSO](#configure-ringcentral-sso)** - 在应用程序端配置单一登录设置。
+    * **[创建 RingCentral 测试用户](#create-ringcentral-test-user)** - 在 RingCentral 中创建 B.Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -106,9 +108,47 @@ ms.locfileid: "67092863"
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-### <a name="configure-ringcentral-sso"></a>配置 RingCentral SSO
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 RingCentral。
+在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `Britta Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 RingCentral 的权限，允许其使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“RingCentral”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-ringcentral-sso"></a>配置 RingCentral SSO
+
+1. 若要在 RingCentral 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 RingCentral”，此时系统会将你定向到 RingCentral 应用程序  。 请在此处提供管理员凭据以登录到 RingCentral。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 RingCentral，请打开新的 Web 浏览器窗口，以管理员身份登录到 RingCentral 公司站点，并执行以下步骤：
 
 1. 在顶部单击“工具”。 
 
@@ -148,39 +188,9 @@ ms.locfileid: "67092863"
 
     * 单击“ **保存**”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 RingCentral 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“RingCentral”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-ringcentral-test-user"></a>创建 RingCentral 测试用户
 
-在本部分，请在 RingCentral 中创建一个名为“Britta Simon”的用户。 请与 [RingCentral 客户端支持团队](https://success.ringcentral.com/RCContactSupp) 协作，在 RingCentral 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，请在 RingCentral 中创建一个名为“Britta Simon”的用户。 请与 [RingCentral 客户端支持团队](https://success.ringcentral.com/RCContactSupp)协作，在 RingCentral 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-sso"></a>测试 SSO
 
@@ -193,3 +203,5 @@ ms.locfileid: "67092863"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [通过 Azure AD 试用 RingCentral](https://aad.portal.azure.com/)

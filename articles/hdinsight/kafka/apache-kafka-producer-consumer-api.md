@@ -1,5 +1,5 @@
 ---
-title: '教程：使用 Apache Kafka 生成者和使用者 API - Azure HDInsight '
+title: 教程：Apache Kafka 生成者和使用者 API - Azure HDInsight
 description: 了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 本教程介绍如何从 Java 应用程序中将这些 API 与 Kafka on HDInsight 配合使用。
 author: dhgoelmsft
 ms.author: dhgoel
@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/08/2019
+ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446398"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242006"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -59,9 +59,9 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
     ```xml
     <!-- Kafka client for producer/consumer operations -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-clients</artifactId>
-      <version>${kafka.version}</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
     </dependency>
     ```
 
@@ -112,7 +112,7 @@ consumer = new KafkaConsumer<>(properties);
 
 ### <a name="runjava"></a>Run.java
 
-[Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) 文件提供了命令行接口，该接口可运行生成者或使用者代码。 必须提供 Kafka 代理主机信息作为参数。 可以选择包括组 ID 值，该值由使用者进程使用。 如果使用相同的组 ID 创建多个使用者实例，它们将对主题的读取进行负载均衡。
+[Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) 文件提供了命令行接口，该接口可运行生成者或使用者代码。 必须提供 Kafka 代理主机信息作为参数。 可以选择包括组 ID 值，该值由使用者进程使用。 如果使用相同的组 ID 创建多个使用者实例，它们会对主题的读取进行负载均衡。
 
 ## <a name="build-and-deploy-the-example"></a>生成并部署示例
 
@@ -140,47 +140,48 @@ consumer = new KafkaConsumer<>(properties);
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. 安装 [jq](https://stedolan.github.io/jq/)，一个命令行 JSON 处理程序。 在打开的 SSH 连接中，输入以下命令以安装 `jq`：
+1. 安装 [jq](https://stedolan.github.io/jq/)，一个命令行 JSON 处理程序。 在打开的 SSH 连接中，输入以下命令以安装 `jq`：
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. 设置环境变量。 将 `PASSWORD` 和 `CLUSTERNAME` 分别替换为群集登录密码和群集名称，然后输入命令：
+1. 设置密码变量。 将 `PASSWORD` 替换为群集登录密码，然后输入以下命令：
 
     ```bash
     export password='PASSWORD'
-    export clusterNameA='CLUSTERNAME'
     ```
 
-4. 提取具有正确大小写格式的群集名称。 群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。 此命令会获取实际的大小写格式，将其存储在变量中，然后显示具有正确大小写格式的名称，以及此前提供的名称。 输入以下命令：
+1. 提取具有正确大小写格式的群集名称。 群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。 此命令将获取实际的大小写，然后将其存储在变量中。 输入以下命令：
 
     ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
-  	| jq -r '.items[].Clusters.cluster_name')
-    echo $clusterName, $clusterNameA
+    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+    > [!Note]  
+    > 如果要从群集外部执行此过程，存储群集名称的过程则有所不同。 从 Azure 门户中获取采用小写格式的群集名称。 然后，将以下命令中的 `<clustername>` 替换为群集名称，并执行：`export clusterName='<clustername>'`。  
 
-5. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令：
+1. 若要获取 Kafka 代理主机，请使用以下命令：
 
     ```bash
-    export KAFKABROKERS=`curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
-  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-6. 通过输入以下命令创建 Kafka 主题 `myTest`：
+    > [!Note]  
+    > 此命令需要 Ambari 访问权限。 如果群集位于 NSG 后面，请在可访问 Ambari 的计算机上运行此命令。
+
+1. 通过输入以下命令创建 Kafka 主题 `myTest`：
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
     ```
 
-7. 若要运行生成者并将数据写入到主题，请使用以下命令：
+1. 若要运行生成者并将数据写入到主题，请使用以下命令：
 
     ```bash
     java -jar kafka-producer-consumer.jar producer myTest $KAFKABROKERS
     ```
 
-8. 在生成者完成后，使用以下命令从主题中读取：
+1. 在生成者完成后，使用以下命令从主题中读取：
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
@@ -188,7 +189,7 @@ consumer = new KafkaConsumer<>(properties);
 
     将显示读取的记录以及记录计数。
 
-9. 使用 __Ctrl + C__ 让使用者退出。
+1. 使用 __Ctrl + C__ 让使用者退出。
 
 ### <a name="multiple-consumers"></a>多个使用者
 

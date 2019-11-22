@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在云中生成容器映像 - Azure 容器注册表任务
+title: 教程 - 快速生成容器映像 - Azure 容器注册表任务
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0b62ef1fa05138b1d5c0a3aacb570f5d577176fe
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057491"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931399"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 

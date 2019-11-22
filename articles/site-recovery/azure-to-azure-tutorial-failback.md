@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 服务对复制到 Azure 次要区域的 Azure VM 进行故障回复，以实现灾难恢复。
-description: 了解如何使用 Azure Site Recovery 服务对 Azure VM 进行故障回复。
+title: 使用 Azure Site Recovery 服务将 Azure VM 故障回复到主区域。
+description: 介绍如何使用 Azure Site Recovery 服务将 Azure VM 故障回复到主要区域。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814515"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091348"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 区域之间对 Azure VM 进行故障回复
 
@@ -56,6 +56,9 @@ ms.locfileid: "70814515"
 8. VM 应显示为已故障转移并已故障回复。
 
     ![主要和次要区域的 VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+
+> [!NOTE]
+> 对于运行 Site Recovery 扩展版本 9.28.x.x 及更高版本[更新汇总 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) 的计算机，在故障回复完成并重新保护 VM 后，Site Recovery 将清理次要灾难恢复区域中的计算机。 无需手动删除次要区域中的 VM 和 NIC。 如果在故障回复后完全禁用复制，则除了 VM 和 NIC 之外，Site Recovery 还会清理灾难恢复区域中的磁盘。
 
 ## <a name="next-steps"></a>后续步骤
 

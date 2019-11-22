@@ -22,7 +22,7 @@ ms.locfileid: "74109581"
 语音 SDK 的**压缩音频输入流**API 提供了一种使用请求或推送流将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 在 iOS 上流式传输压缩音频需要语音 SDK 版本 1.7.0 或更高版本。同时，[C++、C# 和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）上的 Java](how-to-use-codec-compressed-audio-input-streams.md) 以及 [Android 上的 Java](how-to-use-codec-compressed-audio-input-streams-android.md) 也支持流式传输压缩音频。
+> 在 iOS 上流式传输压缩音频需要语音 SDK 版本 1.7.0 或更高版本。 [ C++Linux （ubuntu 16.04、ubuntu C#18.04、Debian 9）](how-to-use-codec-compressed-audio-input-streams.md)和 Android 上的 java 还支持、和 java [。](how-to-use-codec-compressed-audio-input-streams-android.md)
 
 有关 wav/PCM，请参阅主线语音文档。 在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
 

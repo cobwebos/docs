@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed903e71a019d0bdb1b62503913bd696e9d8a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102046"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教程：Azure Active Directory 与 FreshDesk 集成
 
@@ -118,7 +119,7 @@ ms.locfileid: "67102046"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
     
-    | 名称 | 源属性 |
+    | Name | 源属性 |
     | ---------------| --------------- |
     | 唯一用户标识符 | user.mail |
 
@@ -249,15 +250,15 @@ ms.locfileid: "67102046"
 
 3. 在“常规设置”选项卡上，单击“代理”。  
   
-    ![代理](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![代理](./media/freshdesk-tutorial/IC776773.png "代理")
 
 4. 单击“新建代理”。 
 
-    ![新建代理](./media/freshdesk-tutorial/IC776774.png "New Agent")
+    ![新建代理](./media/freshdesk-tutorial/IC776774.png "新建代理")
 
 5. 在“代理信息”对话框中，执行以下步骤：
 
-    ![代理信息](./media/freshdesk-tutorial/IC776775.png "Agent Information")
+    ![代理信息](./media/freshdesk-tutorial/IC776775.png "代理信息")
 
     a. 在“电子邮件”  文本框中，键入要预配的 Azure AD 帐户的 Azure AD 电子邮件地址。
 

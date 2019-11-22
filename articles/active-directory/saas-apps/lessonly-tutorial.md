@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b038eca3d4e6beb6b1d226a4a7b1e20bfe3bb55a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121412"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Lesson.ly 集成
 
@@ -65,10 +65,10 @@ ms.locfileid: "71121412"
 若要配置和测试 Lesson.ly 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Lesson.ly SSO](#configure-lessonly-sso)** - 在应用程序端配置单一登录设置。
-    1. [创建 Lesson.ly 测试用户](#create-lessonly-test-user) - 在 Lesson.ly 中创建 B.Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+    * [创建 Lesson.ly 测试用户](#create-lessonly-test-user) - 在 Lesson.ly 中创建 B.Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -92,6 +92,19 @@ ms.locfileid: "71121412"
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Lessonly.com 客户端支持团队](mailto:support@lessonly.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+
+1. Lesson.ly 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述属性，Lesson.ly 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+
+    | Name | 源属性|
+    | ---------------  | ----------------|
+    | urn:oid:2.5.4.42 | user.givenname |
+    | urn:oid:2.5.4.4  | user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 | user.objectid |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -137,7 +150,7 @@ ms.locfileid: "71121412"
 
 ### <a name="create-lessonly-test-user"></a>创建 Lesson.ly 测试用户
 
-本部分的目的是在 Lessonly.com 中创建名为 Britta Simon 的用户。 Lessonly.com 支持在默认情况下启用的实时预配。
+本部分的目的是在 Lessonly.com 中创建名为 B.Simon 的用户。 Lessonly.com 支持在默认情况下启用的实时预配。
 
 此部分不存在任何操作项。 如果尚不存在用户，则在尝试访问 Lessonly.com 期间会创建一个新用户。
 

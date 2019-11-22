@@ -1,5 +1,5 @@
 ---
-title: REST 教程：生成用于从 JSON blob 提取文本和结构的 AI 扩充管道
+title: 教程：从 JSON blob 提取文本和结构
 titleSuffix: Azure Cognitive Search
 description: 通过一个示例来逐步了解如何使用 Postman 和 Azure 认知搜索 REST API 对 JSON Blob 中内容进行文本提取和自然语言处理。
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790192"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113656"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>教程：使用 AI 扩充将结构添加到“非结构化内容”
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>教程：使用 REST API 从 Azure 中的 JSON blob 提取文本和结构（Azure 认知搜索）
 
-如果你在使用非结构化文本或图像内容，[AI 扩充管道](cognitive-search-concept-intro.md)可帮助你提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像文件（JPG、PNG、TIFF），但本教程侧重于基于文字的内容，介绍如何应用语言检测和文本分析来创建可在查询、分面和筛选器中利用的新字段和信息。
+如果在 Azure Blob 存储中有使用非结构化文本或图像内容，则 [AI 扩充管道](cognitive-search-concept-intro.md)有助于提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像文件（JPG、PNG、TIFF），但本教程侧重于基于文字的内容，介绍如何应用语言检测和文本分析来创建可在查询、分面和筛选器中利用的新字段和信息。
 
 > [!div class="checklist"]
 > * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、MD、DOCX 和 PPTX）着手。

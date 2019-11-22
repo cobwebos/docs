@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板为 Azure IoT 中心配置消息路由 | Microsoft Docs
+title: 使用 Azure 资源管理器模板为 Azure IoT 中心配置消息路由
 description: 使用 Azure 资源管理器模板为 Azure IoT 中心配置消息路由
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163267"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084390"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教程：使用 Azure 资源管理器模板配置 IoT 中心消息路由
 
@@ -370,7 +370,7 @@ ms.locfileid: "66163267"
 
 运行脚本以执行部署。 此脚本的最后一行检索设置返回的变量 - 服务总线队列连接字符串。
 
-这些变量是在此脚本中设置的。
+该脚本设置并使用以下变量：
 
 **$RGName** 是模板要部署到的资源组名称。 此字段是在部署模板之前创建的。
 

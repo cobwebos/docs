@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 服务针对 Azure 次要区域的 Azure VM 运行灾难恢复演练
-description: 了解如何使用 Azure Site Recovery 服务针对 Azure 次要区域的 Azure IaaS VM 运行灾难恢复演练。
+title: 使用 Azure Site Recovery 运行 Azure VM 灾难恢复演练
+description: 了解如何使用 Azure Site Recovery 服务针对 Azure VM 的次要区域运行灾难恢复演练。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a4f2b2ff1c42d18626fb2be27438b2f499ee9368
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782632"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091336"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>运行 Azure VM 到 Azure 次要区域的灾难恢复演练
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>对 Azure VM 的次要区域运行灾难恢复演练 
 
 [Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
@@ -27,12 +27,13 @@ ms.locfileid: "68782632"
 > * 为单个 VM 运行测试故障转移
 
 > [!NOTE]
-> 本教程旨在引导用户完成相关步骤，以便在尽量减少步骤的情况下执行 DR 演练；如果需要详细了解与执行 DR 演练相关联的各个方面（包括网络注意事项、自动化或故障排除），请参阅适用于 Azure VM 的“操作方法”下面的文档。
+> 本教程帮助你以最少的步骤执行 DR 演练；如果需要详细了解与执行 DR 演练相关联的各个方面（包括网络注意事项、自动化或故障排除），请参阅适用于 Azure VM 的“操作方法”下面的文档。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 在运行测试故障转移前，我们建议先验证 VM 属性以确保一切按预期进行。  访问“复制项”  中的 VM 属性。 “概要”边栏选项卡显示有关计算机设置和状态的信息。 
 - **建议使用单独的 Azure VM 网络进行测试故障转移**，而不是使用启用复制时设置的默认网络。
+- 根据每个 NIC 的源网络配置，你可以在执行灾难恢复演练之前，在“计算机和网络”中的测试故障转移设置下选择指定“子网”、“IP 地址”、“公用 IP”、“网络安全组”或“内部负载均衡器”来连接到每个 NIC  。
 
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
@@ -41,11 +42,15 @@ ms.locfileid: "68782632"
 
 2. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
 
-   - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低
+    - **最新**：处理 Site Recovery 中的所有数据，并提供最低的 RTO（恢复时间目标）。
+    - **最新处理**：将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低
    - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
-   - **自定义**：选择任何恢复点。
+   - **自定义**：故障转移到特定的恢复点。 自定义仅在对单个 VM 进行故障转移时可用，对使用恢复计划进行的故障转移不可用。
 
 3. 选择辅助区域中的 Azure VM 在故障转移后要连接到的目标 Azure 虚拟网络。
+
+    > [!NOTE]
+    > 如果已为已复制项预先配置了测试故障转移设置，则将不会显示用于选择 Azure 虚拟网络的下拉列表。
 
 4. 若要启动故障转移，请单击“确定”。  若要跟踪进度，请单击 VM 以打开其属性。 或者，可以在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中单击“测试故障转移”作业。    
 5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  请确保 VM 正在运行、大小适当并已连接到相应的网络。

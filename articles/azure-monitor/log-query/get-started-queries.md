@@ -3,28 +3,23 @@ title: Azure Monitor 中的日志查询入门 | Microsoft Docs
 description: 本文提供了有关在 Azure Monitor 中编写日志查询的入门教程。
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894305"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933029"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
-
 > [!NOTE]
-> 在完成本教程之前，应完成[Azure Monitor Log Analytics 入门](get-started-portal.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
 
-> [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中执行此操作。 如果没有，则使用我们的[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
-
-
-在本教程中，您将学习如何在 Azure Monitor 中编写日志查询。 具体内容包括：
+在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
 - 了解查询结构
 - 将查询结果排序
@@ -34,8 +29,12 @@ ms.locfileid: "72894305"
 - 定义和使用自定义字段
 - 聚合和分组结果
 
-有关在 Azure 门户中使用 Log Analytics 的教程，请参阅[Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
-有关 Azure Monitor 中的日志查询的详细信息，请参阅[Azure Monitor 中的日志查询概述](log-query-overview.md)。
+有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
+有关 Azure Monitor 中日志查询的更多详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
+
+以下随附本教程的视频版本：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>编写新查询
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
@@ -67,10 +66,10 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。
+此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
 
 > [!WARNING]
-> 搜索查询通常比基于表的查询慢，因为它们必须处理更多数据。 
+> 搜索查询通常比基于表的查询慢，因为它们必须处理更多的数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
@@ -80,7 +79,7 @@ SecurityEvent
 | sort by TimeGenerated desc
 ```
 
-不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。 然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
+不过，这可能会返回过多的结果，此外可能需要一段时间。 上述查询按 TimeGenerated 列将整个 SecurityEvent 表排序。  然后，Analytics 门户将结果限制为仅显示 10,000 条记录。 当然，这种方法不是最佳的。
 
 仅获取最新 10 条记录的最佳方式是使用 **top**，它会在服务器端将整个表排序，然后返回前几条记录：
 
@@ -106,7 +105,7 @@ SecurityEvent
 
 编写筛选器条件时，可使用以下表达式：
 
-| 表达式 | 描述 | 示例 |
+| 表达式 | 说明 | 示例 |
 |:---|:---|:---|
 | == | 检查相等性<br>（区分大小写） | `Level == 8` |
 | =~ | 检查相等性<br>（不区分大小写） | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -134,7 +133,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>指定时间范围
 
 ### <a name="time-picker"></a>时间选取器
-时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。
+时间选取器位于“运行”按钮的旁边，指示我们只查询过去 24 小时的记录。 这是应用到所有查询的默认时间范围。 如果只要获取过去一个小时的记录，请选择“过去一小时”并再次运行查询。 
 
 ![时间选取器](media/get-started-queries/timepicker.png)
 
@@ -177,7 +176,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用**extend**来添加*EventCode*列。 请注意，此列可能不会在表的末尾显示，此时需要展开记录的详细信息以进行查看。
+**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用 extend 来添加 EventCode 列   。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，需要展开记录的详细信息才能查看它。
 
 ```Kusto
 SecurityEvent
@@ -186,7 +185,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：聚合行组
-使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize 最常见的用途是计数，可以返回每个组中的结果数。
+使用 **summarize** 可以根据一个或多个列标识记录组，并向其应用聚合。 summarize  最常见的用途是计数  ，可以返回每个组中的结果数。
 
 以下查询检查过去一小时的所有 *Perf* 记录，按 *ObjectName* 将其分组，然后统计每个组中的记录数： 
 ```Kusto
@@ -222,7 +221,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>按时间列汇总
 此外，分组结果可以基于时间列或其他连续值。 不过，只是汇总 `by TimeGenerated` 会针对时间范围内的每一毫秒创建组，因为这些值是唯一的。 
 
-若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去7天内每1小时的平均值：
+若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 7 天中每 1 小时时段的平均值：
 
 ```Kusto
 Perf 

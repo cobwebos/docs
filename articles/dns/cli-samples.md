@@ -1,18 +1,18 @@
 ---
-title: 用于 DNS 的 Azure CLI 示例
-description: 用于 DNS 的 Azure CLI 示例
+title: 用于 DNS 的 Azure CLI 示例 - Azure DNS
+description: 在此示例中，使用 Azure CLI 在 Azure DNS 中创建 DNS 区域和记录。
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: e51b198bc92afdf22269478b96e364934e63c191
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 31f34c6713d97c9019c23ae1c5c36d513a9c323c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154703"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030336"
 ---
 # <a name="azure-cli-examples-for-azure-dns"></a>用于 Azure DNS 的 Azure CLI 示例
 

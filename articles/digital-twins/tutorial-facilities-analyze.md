@@ -1,5 +1,5 @@
 ---
-title: 教程：分析 Azure 数字孪生设置中的事件 | Microsoft Docs
+title: 教程：分析 Azure 数字孪生设置中的事件
 description: 了解如何根据本教程中的步骤使用 Azure 时序见解可视化和分析 Azure 数字孪生空间中的事件。
 services: digital-twins
 ms.author: alinast
@@ -8,15 +8,15 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/23/2019
-ms.openlocfilehash: af776372026bf9affcda03fa9188b854ebedfc73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949808"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107686"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生中的事件
 
 部署 Azure 数字孪生实例、预配空间并实现用于监视特定条件的自定义函数以后，即可将空间中的事件和数据可视化，查找趋势和异常。
 

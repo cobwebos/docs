@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845582"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163433"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
@@ -243,8 +243,8 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
     | ------------- | ------------- | ------------- |
     | HR | targetHR.public | public.countries.country_id |
     | HR | targetHR.trgthr | trgthr.countries.country_id |
-    | HR | targetHR.TARGETHR | “TARGETHR”.”COUNTRIES”.”COUNTRY_ID” |
-    | HR | targetHR.HR | “HR”.”COUNTRIES”.”COUNTRY_ID” |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
     | HR | targetHR.Hr | *无法映射混合大小写 |
 
     *若要在目标 PostgreSQL 中创建混合大小写架构和表名，请联系 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。

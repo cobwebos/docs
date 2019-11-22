@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心的手动故障转移 | Microsoft Docs
-description: 介绍如何为 Azure IoT 中心执行手动故障转移
+description: 了解如何对 IoT 中心手动执行到其他区域的故障转移并确认其正常运行，然后将其返回到原始区域并再次检查。
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 308e452f33ded9be3b88ff370ed34326de54895c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 42785e3ee636f24ca185f57a11d4ee1091db3e98
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877045"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890410"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教程：为 IoT 中心执行手动故障转移
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0730dd89a61b046f73e7e39c8226e66700b3494
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af5021d3a8bed48003f38f01c3d61eac4bdd96b0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101647"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
 
@@ -228,7 +229,7 @@ ms.locfileid: "67101647"
 
 2. 单击“人员”。 
 
-    ![人员](./media/github-tutorial/tutorial_github_config_github_08.png "人员")
+    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "人员")
 
 3. 单击“邀请成员”。 
 

@@ -1,19 +1,19 @@
 ---
 title: 有关结果排序的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程是在“搜索结果分页 - Azure 认知搜索”项目的基础上编写的，目的是向搜索结果添加排序。 了解如何根据主属性对结果排序；如果结果的主属性相同，则了解如何根据辅助属性对结果进行排序。 最后，了解如何基于计分概要文件对结果进行排序。
+description: 本教程演示如何对搜索结果进行排序。 它基于之前的酒店项目，按主要属性和次要属性排序，并包含计分概要文件，以添加提升条件。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794056"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112682"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教程：对结果排序 - Azure 认知搜索
 

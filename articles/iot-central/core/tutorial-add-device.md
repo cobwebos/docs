@@ -1,20 +1,20 @@
 ---
-title: 将真实的设备添加到 Azure IoT Central 应用程序 | Microsoft Docs
-description: 了解如何在 Azure IoT Central 应用程序中添加和配置真实的设备。 你还可以了解真实设备中的代码。
+title: 教程：将真实设备添加到 Azure IoT Central 应用程序
+description: 教程：了解如何在 Azure IoT Central 应用程序中添加和配置真实的设备。 你还可以了解真实设备中的代码。
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 08/23/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5234c371cc4a7238148915f4dcca1faac564f608
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824613"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108970"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4d161295f236c711e8efbe23deb3c8ba5cad985
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30a57258dfe112c1b2d03bc43738c92272a156f9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086308"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
 
@@ -175,7 +176,7 @@ ms.locfileid: "67086308"
 
 4. 在“安全”  页中，执行以下步骤：
 
-    ![安全](././media/zendesk-tutorial/ic773089.png "安全")
+    ![安全性](././media/zendesk-tutorial/ic773089.png "安全")
 
     ![单一登录](././media/zendesk-tutorial/ic773090.png "单一登录")
 
@@ -260,7 +261,7 @@ ms.locfileid: "67086308"
     ![添加用户](././media/zendesk-tutorial/ic773632.png "添加用户")
 4. 键入要预配的现有 Azure AD 帐户的**名称**和**电子邮件**，然后单击“保存”  。
 
-    ![新用户](././media/zendesk-tutorial/ic773633.png "新用户")
+    ![新建用户](././media/zendesk-tutorial/ic773633.png "新建用户")
 
 > [!NOTE]
 > 可以使用 Zendesk 提供的任何其他 Zendesk 用户帐户创建工具或 API 来预配 AAD 用户帐户。

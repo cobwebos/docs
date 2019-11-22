@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 和 Apache Hive
+title: 快速入门：Apache Hadoop、Apache Hive 和 Azure HDInsight 门户
 description: 在本快速入门中，将使用 Azure 门户创建 HDInsight Hadoop 群集
 keywords: hadoop 入门,hadoop linux,hadoop 快速入门,hive 入门,hive 快速入门
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 09/25/2019
-ms.openlocfilehash: 5d87cc7fdcd9c8065c2a9886b970b406df0d8fc8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: cab46c4fe2ff0bd1f86c6d98a3b37efb3547a3ce
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677913"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044575"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -45,12 +45,12 @@ ms.locfileid: "71677913"
     |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
     |群集类型| 选择“选择群集类型”  。 然后选择 **Hadoop** 作为群集类型。|
-    |版本|将指定群集类型的默认版本。 如果要指定其他版本，请从下拉列表中进行选择。|
+    |版本|将指定群集类型的默认版本。 若要指定不同的版本，请从下拉列表中选择。|
     |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-    ![HDInsight Linux 入门提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics-blank.png "为创建 HDInsight 群集提供基本值")
+    ![HDInsight Linux 入门 - 提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics-blank.png "提供用于创建 HDInsight 群集的基本值")
 
     选择页面底部的“下一步:  存储 >>”以前进到存储设置。
 
@@ -58,24 +58,24 @@ ms.locfileid: "71677913"
 
     |属性  |说明  |
     |---------|---------|
-    |主存储类型|使用默认值 **Azure 存储**。|
-    |选择方法|使用默认值**从列表中选择**。|
+    |主存储类型|使用默认值“Azure 存储”。 |
+    |选择方法|使用默认值“从列表中选择”。 |
     |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "为创建 HDInsight 群集提供存储值")
+    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "提供用于创建 HDInsight 群集的存储值")
 
     选择“查看 + 创建”  选项卡。
 
 1. 在“查看 + 创建”  选项卡中，验证你在前面的步骤中选择的值。
 
-    ![HDInsight Linux 入门群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux 入门群集摘要")
+    ![HDInsight Linux 入门 - 群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux 入门 - 群集摘要")
 
 1. 选择“创建”  。 创建群集大约需要 20 分钟时间。
 
 创建群集后，Azure 门户中会显示群集概述页。
 
-![HDInsight Linux 入门群集设置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight 群集属性")
+![HDInsight Linux 入门 - 群集设置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight 群集属性")
 
 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
@@ -88,13 +88,13 @@ ms.locfileid: "71677913"
 
 1. 若要打开 Ambari，请从之前的屏幕截图中，选择“群集仪表板”  。  还可以浏览到 `https://ClusterName.azurehdinsight.net`，其中 `ClusterName` 是你在上一部分中创建的群集。
 
-    ![HDInsight Linux 入门群集仪表板](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux 入门群集仪表板")
+    ![HDInsight Linux 入门 - 群集仪表板](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux 入门 - 群集仪表板")
 
 2. 输入在创建群集时指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
 
 3. 打开“Hive 视图”，如以下屏幕截图中所示： 
 
-    ![从 Ambari 选择 Hive 视图](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive 查看器菜单")
+    ![从 Ambari 中选择 Hive 视图](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive 查看器菜单")
 
 4. 在“查询”  选项卡中，将以下 HiveQL 语句粘贴到工作表中：
 

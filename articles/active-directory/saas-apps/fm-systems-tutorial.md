@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f78c58c5-6e98-458b-8991-78624a245665
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 62e800a5ac1e1e001e5d4ef328a80c554d007182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7f5e003a058cd94e6e4a4440c512217c387fda3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102355"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>教程：Azure Active Directory 与 FM:Systems 集成
 
@@ -183,11 +184,11 @@ ms.locfileid: "67102355"
 
 2. 转到“系统管理”\>“管理安全性”\>“用户”\>“用户列表”  。
    
-    ![系统管理](./media/fm-systems-tutorial/ic795905.png "Administration")
+    ![系统管理](./media/fm-systems-tutorial/ic795905.png "系统管理")
 
 3. 单击“创建用户”  。
    
-    ![创建新用户](./media/fm-systems-tutorial/ic795906.png "Create New User")
+    ![创建新用户](./media/fm-systems-tutorial/ic795906.png "创建新用户")
 
 4. 在“创建用户”  部分中，执行以下步骤：
    

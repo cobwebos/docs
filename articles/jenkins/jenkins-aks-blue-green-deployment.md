@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/23/2019
+ms.openlocfilehash: 4f528a667a7b498cadb15a441f9d9321259fffde
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249394"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882092"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 
@@ -218,7 +218,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
     1. 选择“管理 Jenkins”>“管理插件”>“可用”。 
     1. 搜索并安装 Azure 容器服务插件。
 
-1. 添加用于管理 Azure 中的资源的凭据。 如果尚未安装“Azure 凭据”插件，请安装该插件。 
+1. 添加用于管理 Azure 中的资源的凭据。 如果尚未安装 Azure 凭据插件，请安装该插件  。
 
 1. 将 Azure 服务主体凭据添加为“Microsoft Azure 服务主体”类型。 
 

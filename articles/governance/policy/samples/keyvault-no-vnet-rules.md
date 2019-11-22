@@ -1,21 +1,18 @@
 ---
 title: 示例 - 没有 vNet 终结点的密钥保管库
 description: 此示例策略定义审核 Key Vault 保管库以检测没有虚拟网络服务终结点的实例。
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 078a781ca96df421d52179f5e8d25650def8a2f3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255723"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076205"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>示例 - 没有虚拟网络终结点的 Key Vault 保管库
 
-此策略通过审核来查找没有虚拟网络终结点的 Key Vault 保管库。 用于强制执行安全要求。 有关详细信息，请参阅 [Key Vault 中的虚拟网络服务终结点](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)。
+此示例演示如何[将 Key Vault 与 Azure Policy 集成](../../../key-vault/azure-policy.md)，可审核没有虚拟网络终结点的密钥保管库。 用于强制执行安全要求。 有关详细信息，请参阅 [Key Vault 中的虚拟网络服务终结点](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)。
 
 可以使用以下方法部署此示例策略：
 
@@ -187,4 +184,5 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 ## <a name="next-steps"></a>后续步骤
 
 - 查看其他 [Azure Policy 示例](index.md)
+- 了解如何[将 Azure Key Vault 与 Azure Policy 集成](../../../key-vault/azure-policy.md)。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)

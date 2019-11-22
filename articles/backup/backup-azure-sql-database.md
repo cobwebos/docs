@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437831"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162197"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -45,20 +45,10 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 **支持** | **详细信息**
 --- | ---
 **支持的部署** | 支持 SQL 市场 Azure VM 和非市场（手动安装的 SQL Server）VM。
-**支持的地理区域** | 澳大利亚东南部 (ASE)、东澳大利亚 (AE)、澳大利亚中部 (AC)、澳大利亚中部 2 (AC) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS)、印度西部 <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州、US DoD 中部、US DoD 东部 <br> 德国北部、德国中西部 <br> 瑞士北部、瑞士西部
-**受支持的操作系统** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012<br/><br/> 目前不支持 Linux。
-**支持的 SQL Server 版本** | SQL Server 2017（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)详述）、SQL Server 2016 和 SP（[此处](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)详述）、SQL Server 2014、SQL Server 2012。<br/><br/> Enterprise、Standard、Web、Developer、Express。
-**支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 及更高版本
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>对 SQL Server 2008 和 SQL Server 2008 R2 的支持
-
-Azure 备份最近已宣布对 [EOS SQL Sever](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) - SQL Server 2008 和 SQL Server 2008 R2 的支持。 该解决方案目前以适用于 EOS SQL Server 的预览版提供，支持以下配置：
-
-1. 在 Windows 2008 R2 SP1 上运行的 SQL Server 2008 和 SQL Server 2008 R2
-2. 需要在 VM 上安装 .NET Framework 4.5.2 和更高版本
-3. 不支持 FCI 和镜像数据库的备份
-
-在正式版发布之前，用户无需为此功能付费。 所有其他[功能注意事项和限制](#feature-consideration-and-limitations)同样适用于这些版本。 在 SQL Server 2008 和 2008 R2 上配置保护之前，请参阅[先决条件](backup-sql-server-database-azure-vms.md#prerequisites)。
+**支持的地理区域** | 澳大利亚东南部 (ASE)、东澳大利亚 (AE)、澳大利亚中部 (AC)、澳大利亚中部 2 (AC) <br> 巴西南部 (BRS)<br> 加拿大中部 (CNC)、加拿大东部 (CE)<br> 东南亚 (SEA)、东亚 (EA) <br> 美国东部 (EUS)、美国东部 2 (EUS2)、美国中西部 (WCUS)、美国西部 (WUS)；美国西部 2 (WUS 2) 美国中北部 (NCUS) 美国中部 (CUS) 美国中南部 (SCUS) <br> 印度中部 (INC)、印度南部 (INS)、印度西部 <br> 日本东部 (JPE)、日本西部 (JPW) <br> 韩国中部 (KRC)、韩国南部 (KRS) <br> 北欧 (NE)、西欧 <br> 英国南部 (UKS)、英国西部 (UKW) <br> US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州、US DoD 中部、US DoD 东部 <br> 德国北部、德国中西部 <br> 瑞士北部、瑞士西部 <br> 法国中部 <br> 中国东部、中国东部 2、中国北部、中国北部 2
+**受支持的操作系统** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> 目前不支持 Linux。
+**支持的 SQL Server 版本** | [搜索产品生命周期页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)中详细介绍了 SQL Server 2019、SQL Server 2017，[搜索产品生命周期页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)中详细介绍了 SQL Server 2016 和 SP、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
+**支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 或更高版本
 
 ## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 

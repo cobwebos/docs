@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM | Microsoft 文档
+title: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
 description: Azure CLI 脚本示例 - 使用内部和外部 NSG 创建两个 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0ed3ed5c3f44f9ddf912b420c4a89b6ca0fa94af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709589"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039585"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
 

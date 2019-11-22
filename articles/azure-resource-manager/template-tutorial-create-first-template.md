@@ -1,22 +1,22 @@
 ---
-title: 教程 - 创建和部署第一个 Azure 资源管理器模板
-description: 介绍创建第一个 Azure 资源管理器模板的步骤。 了解模板文件语法，以及如何部署存储帐户。
+title: 教程 - 创建和部署 Azure 资源管理器模板
+description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029548"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074376"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>教程：创建和部署第一个 Azure 资源管理器模板
 
-本教程介绍资源管理器模板。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
+本教程介绍 Azure 资源管理器模板。 其中将会说明如何创建初学者模板并将其部署到 Azure。 本教程还将介绍模板的结构，以及使用模板时所需的工具。 完成本教程大约需要 **12 分钟**，但实际时间根据需要安装的工具数量而异。
 
 本文是相关教学系列的第一篇教程。 在学习该教学系列的过程中，你将逐步修改入门模板，直到学会了资源管理器模板的所有核心组成部分。 这些元素是更复杂的模板的构建基块。 我们希望在本教学系列结束时，你能够自信地创建自己的模板，并准备好使用这些模板自动完成部署。
 

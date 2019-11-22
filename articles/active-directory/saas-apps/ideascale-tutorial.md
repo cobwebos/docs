@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a312e0ca70ef3a37b43f1ffb68a974a8aedaf982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100781"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 
@@ -137,19 +138,19 @@ ms.locfileid: "67100781"
 
 2. 转到“社区设置”  。
 
-    ![社区设置](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
 3. 转到“安全性”\>“单一登录设置”  。
 
-    ![单一登录设置](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
+    ![单一登录设置](./media/ideascale-tutorial/ic790848.png "单一登录设置")
 
 4. 对于“单一登录类型”  ，选择“SAML 2.0”  。
 
-    ![单一登录类型](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
+    ![单一登录类型](./media/ideascale-tutorial/ic790849.png "单一登录类型")
 
 5. 在“单一登录设置”  对话框上，执行以下步骤：
 
-    ![单一登录设置](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
+    ![单一登录设置](./media/ideascale-tutorial/ic790850.png "单一登录设置")
 
     a. 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值   。
 
@@ -220,17 +221,17 @@ ms.locfileid: "67100781"
 
 2. 转到“社区设置”  。
 
-    ![社区设置](./media/ideascale-tutorial/ic790847.png "Community Settings")
+    ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
 3. 转到“基本设置”\>“成员管理”  。
 
 4. 单击“添加成员”  。
 
-    ![成员管理](./media/ideascale-tutorial/ic790852.png "Member Management")
+    ![成员管理](./media/ideascale-tutorial/ic790852.png "成员管理")
 
 5. 在“添加新成员”部分中，执行以下步骤：
 
-    ![添加新成员](./media/ideascale-tutorial/ic790853.png "Add New Member")
+    ![添加新成员](./media/ideascale-tutorial/ic790853.png "添加新成员")
 
     a. 在“电子邮件地址”文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址  。
 

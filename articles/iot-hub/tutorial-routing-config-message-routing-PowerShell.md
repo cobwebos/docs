@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由 | Microsoft Docs
-description: 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由
+title: 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由
+description: 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由。 根据消息中的属性，路由到存储帐户或服务总线队列。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535146"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084436"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教程：使用 Azure PowerShell 配置 IoT 中心消息路由
 
@@ -34,13 +34,13 @@ ms.locfileid: "69535146"
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>使用 PowerShell 创建基本资源
 
+复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 该脚本的第一节将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。 在学习本教程的过程中，请复制每个脚本块并将其粘贴到 Cloud Shell，以运行该块。
+
 有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便进行标识，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。 
 
 > [!IMPORTANT]
 > 路由脚本也会使用初始脚本中设置的变量，因此，请在同一 Cloud Shell 会话中运行所有脚本。 如果打开新的会话来运行用于设置路由的脚本，则多个变量将会缺少值。 
 >
-
-复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 该脚本的第一节将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。 在学习本教程的过程中，请复制每个脚本块并将其粘贴到 Cloud Shell，以运行该块。
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -140,7 +140,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-需设置以下变量：
+以下是脚本使用的、必须在 Cloud Shell 会话中设置的变量：
 
 **resourceGroup**：此字段会在两个位置出现 - 请将两者设置为你的资源组。
 
@@ -162,7 +162,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 **condition**：此字段是用于筛选发送到此终结点的消息的查询。 路由到存储的消息的查询条件是 `level="storage"`。
 
-**enabled**：此字段默认为 `true`，表示创建消息路由后应启用该路由。
+**enabled**：此字段默认为 `true`，表示应在创建消息路由后启用该路由。
 
 请复制此脚本，并将其粘贴到 Cloud Shell 窗口中。
 
@@ -232,7 +232,7 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-现在，为服务总线队列设置路由终结点和消息路由。 需设置以下变量：
+现在，为服务总线队列设置路由终结点和消息路由。 以下是脚本使用的、必须在 Cloud Shell 会话中设置的变量：
 
 **endpointName**：此字段是用于标识终结点的名称。 
 

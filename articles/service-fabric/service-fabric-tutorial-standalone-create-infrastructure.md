@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302479"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177826"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 AWS 基础结构
 
@@ -82,7 +82,7 @@ Service Fabric 要求在群集中的主机之间打开一些端口。 若要在 
 
 为了避免向外界打开这些端口，请只对同一安全组中的主机打开这些端口。 记下安全组 ID（在本示例中为 **sg-c4fb1eba**）。  然后选择“编辑”。 
 
-接下来，在安全组中添加针对服务依赖项的四个规则，并额外添加针对 Service Fabric 本身的三个规则。 第一个规则允许 ICMP 流量，用于执行基本连接性检查。 其他规则打开所需的端口，以启用 SMB 和远程注册表。
+接下来，在安全组中添加针对服务依赖项的四个规则，并额外添加针对 Service Fabric 本身的三个规则。 第一个规则允许 ICMP 流量，用于执行基本连接性检查。 其他规则打开所需的端口，以启用远程注册表。
 
 对于第一个规则，请选择“添加规则”，然后从下拉菜单中选择“所有 ICMP - IPv4”。   选择自定义规则旁边的输入框，并输入前面记下的安全组 ID。
 
@@ -118,30 +118,18 @@ Service Fabric 要求在群集中的主机之间打开一些端口。 若要在 
 ping 172.31.20.163
 ```
 
-如果类似于 `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` 的输出重复出现四次，则表示实例之间的连接正常。  现在，使用以下命令验证 SMB 共享功能是否正常工作：
-
-```
-net use * \\172.31.20.163\c$
-```
-
-此命令应返回 `Drive Z: is now connected to \\172.31.20.163\c$.` 作为输出。
+如果类似于 `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` 的输出重复出现四次，则表示实例之间的连接正常。  
 
 ## <a name="prep-instances-for-service-fabric"></a>准备 Service Fabric 的实例
 
-如果从头开始创建了此项目，则需要执行几个额外的步骤。  即，需要验证远程注册表是否已运行、启用 SMB，并为 SMB 和远程注册表打开所需的端口。
+如果从头开始创建了此项目，则需要执行几个额外的步骤。  即，需要验证远程注册表是否正在运行，并打开所需的端口。
 
 为方便操作，我们在启动实例时已使用用户数据脚本嵌入了所有这些工作。
-
-为了启用 SMB，我们使用了以下 PowerShell 命令：
-
-```powershell
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-```
 
 若要在防火墙中打开端口，请使用以下 PowerShell 命令：
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
 ```
 
 ## <a name="next-steps"></a>后续步骤

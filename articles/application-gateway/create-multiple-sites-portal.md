@@ -1,5 +1,6 @@
 ---
-title: 教程 - 使用 Azure 门户创建托管多个网站的应用程序网关
+title: 教程：使用 Azure 门户托管多个网站
+titleSuffix: Azure Application Gateway
 description: 本教程介绍了如何使用 Azure 门户创建托管多个网站的应用程序网关。
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498457"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075154"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -219,7 +220,7 @@ ms.locfileid: "68498457"
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-1. 在浏览器的地址栏中输入域名。 例如 [http://40.121.222.19](http://www.contoso.com )。
+1. 在浏览器的地址栏中输入域名。 例如 [http://40.121.222.19](`http://www.contoso.com`)。
 
     ![在应用程序网关中测试 contoso 站点](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

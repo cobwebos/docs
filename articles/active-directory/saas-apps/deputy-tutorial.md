@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8b61bc01e729472c140253f8f936b6ec0dd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104236"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
 
@@ -254,7 +255,7 @@ ms.locfileid: "67104236"
 
 2. 在顶部的导航窗格中，单击“人员”。 
    
-    ![人员](./media/deputy-tutorial/tutorial_deputy_001.png "人员")
+    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "人员")
 
 3. 单击“添加人员”按钮，并单击“添加单个人员”。  
    
@@ -262,7 +263,7 @@ ms.locfileid: "67104236"
 
 4. 执行以下步骤并单击“保存并邀请”。 
    
-    ![新建用户](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
+    ![新建用户](./media/deputy-tutorial/tutorial_deputy_003.png "新建用户")
 
     a. 在“名称”文本框中，键入用户名称（例如“BrittaSimon”）   。
    

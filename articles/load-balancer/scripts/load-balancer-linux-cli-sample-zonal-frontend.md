@@ -1,12 +1,10 @@
 ---
-title: CLI 示例 - 区域中的负载均衡器 VM - Azure | Microsoft Docs
+title: 在区域内对 VM 进行负载均衡 - Azure CLI
 description: 此 Azure CLI 脚本示例演示如何在特定的可用性区域中对传入 VM 的流量进行负载均衡
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -16,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273735"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068766"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI 脚本示例：在特定的可用性区域中对传入 VM 的流量进行负载均衡
 
 此 Azure CLI 脚本示例在特定的可用性区域中创建运行多个 Ubuntu 虚拟机（使用高度可用且负载均衡的配置进行配置）所需的所有项。 运行脚本后，即可在某个区域的单个可用性区域中拥有可通过 Azure 标准负载均衡器访问的 3 个虚拟机。 
 

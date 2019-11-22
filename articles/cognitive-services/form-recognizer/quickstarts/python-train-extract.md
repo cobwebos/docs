@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ec1baa8797935b76963025f82d6c7df43a2a7d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264400"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931559"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -114,7 +114,7 @@ ms.locfileid: "72264400"
 
 接下来，分析某个文档并从中提取键值对和表。 请运行以下 Python 脚本，调用“模型 - 分析”API。  运行该命令之前，请进行以下更改：
 
-1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
+1. 将 `<Endpoint>` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `<path to your form>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
 1. 将 `<modelID>` 替换为在上一部分收到的模型 ID。
 1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`。

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb27e24e9b53b734a24304a63c8fd91d5e94f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107327"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
 
@@ -237,7 +238,7 @@ ms.locfileid: "67107327"
 
 2. 在顶部菜单中，选择“帐户”。  然后，在左窗格中选择“用户和组” > “创建新用户”。  
    
-    ![Adobe Sign 公司站点的屏幕截图，其中已突出显示“帐户”、“用户和组”和“创建新用户”](./media/adobe-echosign-tutorial/ic789524.png "帐户")
+    ![Adobe Sign 公司站点的屏幕截图，其中突出显示了“帐户”、“用户和组”和“创建新用户”](./media/adobe-echosign-tutorial/ic789524.png "帐户")
    
 3. 在“创建新用户”  部分中，执行以下步骤：
    

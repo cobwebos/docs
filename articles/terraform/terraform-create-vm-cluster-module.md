@@ -1,22 +1,19 @@
 ---
-title: 使用 Terraform 模块在 Azure 上创建 VM 群集
+title: 教程 - 使用模块注册表通过 Terraform 创建 Azure VM 群集
 description: 了解如何使用 Terraform 模块在 Azure 中创建 Windows 虚拟机群集
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 虚拟机, 网络, 模块
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6279b5c9022b448aea9b33a94fc1b2b35b6d23de
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169851"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969482"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>使用模块注册表通过 Terraform 创建 VM 群集
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>教程：使用模块注册表通过 Terraform 创建 Azure VM 群集
 
 本文介绍如何使用 Terraform [Azure 计算模块](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2)创建小型 VM 群集。 本教程介绍如何执行下列操作： 
 
@@ -63,7 +60,7 @@ module mycompute {
     remote_port = "3389"
     nb_instances = 2
     public_ip_dns = ["unique_dns_name"]
-    vnet_subnet_id = "${module.network.vnet_subnets[0]}"
+    vnet_subnet_id = module.network.vnet_subnets[0]
 }
 
 module "network" {
@@ -73,15 +70,15 @@ module "network" {
 }
 
 output "vm_public_name" {
-    value = "${module.mycompute.public_ip_dns_name}"
+    value = module.mycompute.public_ip_dns_name
 }
 
 output "vm_public_ip" {
-    value = "${module.mycompute.public_ip_address}"
+    value = module.mycompute.public_ip_address
 }
 
 output "vm_private_ips" {
-    value = "${module.mycompute.network_interface_private_ip}"
+    value = module.mycompute.network_interface_private_ip
 }
 ```
 
@@ -104,5 +101,5 @@ output "vm_private_ips" {
 
 ## <a name="next-steps"></a>后续步骤
 
-- 浏览 [Azure Terraform 模块](https://registry.terraform.io/modules/Azure)列表
-- [使用 Terraform 创建虚拟机规模集](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [浏览 Azure Terraform 模块列表](https://registry.terraform.io/modules/Azure)

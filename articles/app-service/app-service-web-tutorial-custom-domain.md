@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471365"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835870"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -330,7 +330,7 @@ ms.locfileid: "73471365"
 
 ![自定义虚拟目录](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-操作完成后，应用会返回根路径的正确页面（例如， http://contoso.com) 。
+操作完成后，应用会返回根路径的正确页面（例如，`http://contoso.com`）。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

@@ -13,21 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c239b88a67e1be19e3a95130839ab6fd4598fe77
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380756"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150041"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>快速入门：生成使用 Azure Active Directory 登录和注销的 AngularJS 单页应用
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
+
+> [!IMPORTANT]
+> [Microsoft 标识平台](v2-overview.md)由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。
+> 如果除工作和学校帐户登录外，还需要启用个人帐户登录，可以使用 [Microsoft 标识平台终结点](azure-ad-endpoint-comparison.md)  。
+> 本快速入门适用于版本较旧的 Azure AD v1.0 终结点。 建议对新项目使用 v2.0 终结点。 有关详细信息，请参阅[此 JavaScript SPA 教程](tutorial-v2-javascript-spa.md)以及[此文](active-directory-v2-limitations.md)对 Microsoft 标识平台终结点的解释  。
 
 使用 Azure Active Directory (Azure AD) 可以简单直接地在单页面应用程序中添加登录、注销和安全 OAuth API 调用。 它允许应用使用用户的 Windows Server Active Directory 帐户对用户进行身份验证，并使用 Azure AD 帮助保护的任何 Web API（例如 Office 365 API 或 Azure API）。
 
@@ -45,9 +50,6 @@ ms.locfileid: "68380756"
 1. 将应用注册到 Azure AD。
 2. 安装 ADAL 并配置单页面应用。
 3. 使用 ADAL 帮助保护单页面应用中的页面。
-
-> [!NOTE]
-> 如果除了工作和学校帐户登录外，还需要启用个人帐户登录，可以使用 [Microsoft 标识平台终结点](azure-ad-endpoint-comparison.md)  。 有关详细信息，请参阅[此 JavaScript SPA 教程](tutorial-v2-javascript-spa.md)以及[此文](active-directory-v2-limitations.md)对 Microsoft 标识平台终结点的解释  。 
 
 ## <a name="prerequisites"></a>先决条件
 

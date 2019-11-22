@@ -1,42 +1,39 @@
 ---
-title: 使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
+title: 教程 - 使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 description: 使用 Terraform 通过 Packer 生成的自定义映像配置 Azure 虚拟机规模集（配有虚拟网络和托管的附加磁盘）并对其进行版本控制。
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 规模集, 虚拟机, 网络, 存储, 模块, 自定义映像, packer
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173485"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077815"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教程：使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 
-在本教程中，你将使用 [Terraform](https://www.terraform.io/) 并通过 [HashiCorp 配置语言](https://www.terraform.io/docs/configuration/syntax.html) (HCL) 创建和部署含有托管磁盘的 [ Azure 虚拟机规模集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)（使用 [Packer](https://www.packer.io/intro/index.html) 生成的自定义映像创建）。  
+在本教程中，你将使用 [Terraform](https://www.terraform.io/) 并通过 [HashiCorp 配置语言](https://www.terraform.io/docs/configuration/syntax.html) (HCL) 创建和部署含有托管磁盘的 [ Azure 虚拟机规模集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)（使用 [Packer](https://www.packer.io/intro/index.html) 生成的自定义映像创建）。 
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置 Terraform 部署
-> * 使用变量和输出部署 Terraform 
-> * 创建和部署网络基础结构
-> * 使用 Packer 创建自定义虚拟机映像
-> * 使用自定义映像创建和部署虚拟机规模集
-> * 创建和部署 jumpbox 
+> * 设置 Terraform 部署。
+> * 使用变量和输出部署 Terraform。
+> * 创建和部署网络基础结构。
+> * 使用 Packer 创建自定义虚拟机映像。
+> * 使用自定义映像创建和部署虚拟机规模集。
+> * 创建和部署 jumpbox。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
-> * [安装 Terraform 并配置对 Azure 的访问](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
-> * [创建 SSH 密钥对](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)（如果还没有）
-> * 如果尚未在本地计算机上安装 Packer，请[安装 Packer](https://www.packer.io/docs/install/index.html)
+## <a name="prerequisites"></a>先决条件
 
+- **Terraform**：[安装 Terraform 并配置对 Azure 的访问](/azure/virtual-machines/linux/terraform-install-configure)。
+- **SSH 密钥对**：[创建 SSH 密钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。
+- **Packer**：[安装 Packer](https://www.packer.io/docs/install/index.html)。
 
 ## <a name="create-the-file-structure"></a>创建文件结构
 
@@ -66,7 +63,7 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> 系统不会设置 resource_group_name 变量的默认值，请定义自己的值。
+> 系统不会设置 resource_group_name 变量的默认值。 定义自己的值。
 
 保存文件。
 
@@ -76,16 +73,16 @@ variable "resource_group_name" {
 
 ```hcl 
 output "vmss_public_ip" {
-    value = "${azurerm_public_ip.vmss.fqdn}"
+    value = azurerm_public_ip.vmss.fqdn
 }
 ```
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>在模板中定义网络基础结构 
 
 在本步骤中，你将在新的 Azure 资源组中创建以下网络基础结构： 
-  - 1 个 VNET，地址空间为 10.0.0.0/16 
-  - 1 个子网，地址空间为 10.0.2.0/24
-  - 2 个公共 IP 地址。 一个供虚拟机规模集负载均衡器使用；另一个用于连接到 SSH jumpbox
+  - 1 个虚拟网络，其地址空间为 10.0.0.0/16。
+  - 1 个子网，其地址空间为 10.0.2.0/24。
+  - 2 个公共 IP 地址。 一个由虚拟机规模集负载均衡器使用。 另一个用于连接到 SSH jumpbox。
 
 还需要在其中创建所有资源的资源组。 
 
@@ -94,8 +91,8 @@ output "vmss_public_ip" {
 ```hcl
 
 resource "azurerm_resource_group" "vmss" {
-  name     = "${var.resource_group_name}"
-  location = "${var.location}"
+  name     = var.resource_group_name
+  location = var.location
 
   tags {
     environment = "codelab"
@@ -105,8 +102,8 @@ resource "azurerm_resource_group" "vmss" {
 resource "azurerm_virtual_network" "vmss" {
   name                = "vmss-vnet"
   address_space       = ["10.0.0.0/16"]
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   tags {
     environment = "codelab"
@@ -115,17 +112,17 @@ resource "azurerm_virtual_network" "vmss" {
 
 resource "azurerm_subnet" "vmss" {
   name                 = "vmss-subnet"
-  resource_group_name  = "${azurerm_resource_group.vmss.name}"
-  virtual_network_name = "${azurerm_virtual_network.vmss.name}"
+  resource_group_name  = azurerm_resource_group.vmss.name
+  virtual_network_name = azurerm_virtual_network.vmss.name
   address_prefix       = "10.0.2.0/24"
 }
 
 resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
-  location                     = "${var.location}"
-  resource_group_name          = "${azurerm_resource_group.vmss.name}"
+  location                     = var.location
+  resource_group_name          = azurerm_resource_group.vmss.name
   allocation_method            = "static"
-  domain_name_label            = "${azurerm_resource_group.vmss.name}"
+  domain_name_label            = azurerm_resource_group.vmss.name
 
   tags {
     environment = "codelab"
@@ -135,7 +132,7 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> 建议对在 Azure 中部署的资源进行标记，便于将来进行识别。
+> 对部署在 Azure 中的资源进行标记，便于将来识别它们。
 
 ## <a name="create-the-network-infrastructure"></a>创建网络基础结构
 
@@ -155,31 +152,31 @@ terraform apply
 
 验证公共 IP 地址的完全限定域名是否与配置相对应。
 
-![公共 IP 地址的虚拟机规模集 Terraform 完全限定域名](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![公共 IP 地址的虚拟机规模集 Terraform 完全限定的域名](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 资源组包含以下资源：
 
 ![虚拟机规模集 Terraform 网络资源](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>使用 Packer 创建 Azure 映像
-使用教程[如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像](https://docs.microsoft.com/azure/virtual-machines/linux/build-image-with-packer)中所述的步骤创建自定义 Linux 映像。
+## <a name="create-an-azure-image-by-using-packer"></a>使用 Packer 创建 Azure 映像
+按照教程[如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像](/azure/virtual-machines/linux/build-image-with-packer)中所述的步骤创建自定义 Linux 映像。
  
-按照本教程创建已取消设置且已安装 NGINX 的 Ubuntu 映像。
+按照本教程创建已取消设置且已安装 Nginx 的 Ubuntu 映像。
 
 ![创建 Packer 映像后即可拥有一个映像](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> 为达到本教程的目的，Packer 映像中将运行一个用于安装 nginx 的命令。 创建期间也可以运行自己的脚本。
+> 为达到本教程的目的，Packer 映像中将运行一个用于安装 Nginx 的命令。 创建期间也可以运行自己的脚本。
 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>编辑基础结构以添加虚拟机规模集
 
 在此步骤中，需在以前部署的网络上创建以下资源：
-- Azure 负载均衡器，用于为应用程序提供服务并将其附加到前面部署的公共 IP 地址。
-- 1 个 Azure 负载均衡器和规则，用于为应用程序提供服务并将其附加到之前配置的公共 IP 地址。
-- Azure 后端地址池，并将其分配给负载均衡器。
+- 为应用程序提供服务的 Azure 负载均衡器。 将其附加到之前部署的公共 IP 地址。
+- 为应用程序提供服务的 Azure 负载均衡器和规则。 将其附加到之前配置的公共 IP 地址。
+- Azure 后端地址池。 将其分配给负载均衡器。
 - 运行状况探测端口，供应用程序使用并在负载均衡器上配置。
-- 虚拟机规模集，位于在之前部署的 VNET 上运行的负载均衡器后端。
+- 一个虚拟机规模集，位于负载均衡器之后，并在早期部署的虚拟网络上运行。
 - [Nginx](https://nginx.org/)，位于通过自定义映像安装的虚拟机规模集的节点上。
 
 
@@ -189,12 +186,12 @@ terraform apply
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
-    public_ip_address_id = "${azurerm_public_ip.vmss.id}"
+    public_ip_address_id = azurerm_public_ip.vmss.id
   }
 
   tags {
@@ -203,28 +200,28 @@ resource "azurerm_lb" "vmss" {
 }
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id     = "${azurerm_lb.vmss.id}"
+  resource_group_name = azurerm_resource_group.vmss.name
+  loadbalancer_id     = azurerm_lb.vmss.id
   name                = "BackEndAddressPool"
 }
 
 resource "azurerm_lb_probe" "vmss" {
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id     = "${azurerm_lb.vmss.id}"
+  resource_group_name = azurerm_resource_group.vmss.name
+  loadbalancer_id     = azurerm_lb.vmss.id
   name                = "ssh-running-probe"
-  port                = "${var.application_port}"
+  port                = var.application_port
 }
 
 resource "azurerm_lb_rule" "lbnatrule" {
-  resource_group_name            = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id                = "${azurerm_lb.vmss.id}"
+  resource_group_name            = azurerm_resource_group.vmss.name
+  loadbalancer_id                = azurerm_lb.vmss.id
   name                           = "http"
   protocol                       = "Tcp"
-  frontend_port                  = "${var.application_port}"
-  backend_port                   = "${var.application_port}"
-  backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
+  frontend_port                  = var.application_port
+  backend_port                   = var.application_port
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
   frontend_ip_configuration_name = "PublicIPAddress"
-  probe_id                       = "${azurerm_lb_probe.vmss.id}"
+  probe_id                       = azurerm_lb_probe.vmss.id
 }
 
 data "azurerm_resource_group" "image" {
@@ -233,13 +230,13 @@ data "azurerm_resource_group" "image" {
 
 data "azurerm_image" "image" {
   name                = "myPackerImage"
-  resource_group_name = "${data.azurerm_resource_group.image.name}"
+  resource_group_name = data.azurerm_resource_group.image.name
 }
 
 resource "azurerm_virtual_machine_scale_set" "vmss" {
   name                = "vmscaleset"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
   upgrade_policy_mode = "Manual"
 
   sku {
@@ -249,7 +246,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
   }
 
   storage_profile_image_reference {
-    id="${data.azurerm_image.image.id}"
+    id=data.azurerm_image.image.id
   }
 
   storage_profile_os_disk {
@@ -277,7 +274,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
     ssh_keys {
       path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = "${file("~/.ssh/id_rsa.pub")}"
+      key_data = file("~/.ssh/id_rsa.pub")
     }
   }
 
@@ -287,8 +284,8 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
     ip_configuration {
       name                                   = "IPConfiguration"
-      subnet_id                              = "${azurerm_subnet.vmss.id}"
-      load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      subnet_id                              = azurerm_subnet.vmss.id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
       primary = true
     }
   }
@@ -345,7 +342,7 @@ terraform apply
 通过此可选步骤，SSH 可使用 jumpbox 访问虚拟机规模集的实例。
 
 将以下资源添加到现有部署：
-- 网络接口，已连接到与虚拟机规模集相同的子网
+- 网络接口，它已连接到与虚拟机规模集相同的子网
 - 虚拟机，已连接到此网络接口
 
 在 `vmss.tf` 文件的末尾添加以下代码：
@@ -353,8 +350,8 @@ terraform apply
 ```hcl 
 resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
-  location                     = "${var.location}"
-  resource_group_name          = "${azurerm_resource_group.vmss.name}"
+  location                     = var.location
+  resource_group_name          = azurerm_resource_group.vmss.name
   allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
@@ -365,14 +362,14 @@ resource "azurerm_public_ip" "jumpbox" {
 
 resource "azurerm_network_interface" "jumpbox" {
   name                = "jumpbox-nic"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   ip_configuration {
     name                          = "IPConfiguration"
-    subnet_id                     = "${azurerm_subnet.vmss.id}"
+    subnet_id                     = azurerm_subnet.vmss.id
     private_ip_address_allocation = "dynamic"
-    public_ip_address_id          = "${azurerm_public_ip.jumpbox.id}"
+    public_ip_address_id          = azurerm_public_ip.jumpbox.id
   }
 
   tags {
@@ -382,9 +379,9 @@ resource "azurerm_network_interface" "jumpbox" {
 
 resource "azurerm_virtual_machine" "jumpbox" {
   name                  = "jumpbox"
-  location              = "${var.location}"
-  resource_group_name   = "${azurerm_resource_group.vmss.name}"
-  network_interface_ids = ["${azurerm_network_interface.jumpbox.id}"]
+  location              = var.location
+  resource_group_name   = azurerm_resource_group.vmss.name
+  network_interface_ids = [azurerm_network_interface.jumpbox.id]
   vm_size               = "Standard_DS1_v2"
 
   storage_image_reference {
@@ -412,7 +409,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 
     ssh_keys {
       path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = "${file("~/.ssh/id_rsa.pub")}"
+      key_data = file("~/.ssh/id_rsa.pub")
     }
   }
 
@@ -426,7 +423,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 
 ```
 output "jumpbox_public_ip" {
-    value = "${azurerm_public_ip.jumpbox.fqdn}"
+    value = azurerm_public_ip.jumpbox.fqdn
 }
 ```
 
@@ -453,16 +450,9 @@ terraform apply
 terraform destroy
 ```
 
-系统要求确认删除资源时，请键入 `yes`。 破坏过程可能需要几分钟才能完成。
+系统要求确认是否删除资源组时，请输入“是”  。 破坏过程可能需要几分钟才能完成。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Terraform 在 Azure 上部署了虚拟机规模集和 jumpbox。 你已了解如何：
-
-> [!div class="checklist"]
-> * 初始化 Terraform 部署
-> * 使用变量和输出部署 Terraform 
-> * 创建和部署网络基础结构
-> * 使用 Packer 创建自定义虚拟机映像
-> * 使用自定义映像创建和部署虚拟机规模集
-> * 创建和部署 jumpbox 
+> [!div class="nextstepaction"] 
+> [详细了解如何在 Azure 中使用 Terraform](/azure/terraform)

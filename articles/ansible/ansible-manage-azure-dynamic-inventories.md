@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241581"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990670"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教程：使用 Ansible 配置 Azure 资源的动态库存
 
@@ -71,11 +71,20 @@ ms.locfileid: "72241581"
 
 可以根据用户定义的类别[使用标记来组织 Azure 资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli)。 
 
+### <a name="using-ansible-version--28"></a>使用低于 2.8 的 Ansible 版本
 输入以下 [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) 命令和键 `nginx` 来标记虚拟机 `ansible-inventory-test-vm1`：
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
+
+### <a name="using-ansible-version--28"></a>使用 2.8 及更高的 Ansible 版本
+输入以下 [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) 命令和键 `Ansible=nginx` 来标记虚拟机 `ansible-inventory-test-vm1`：
+
+```azurecli-interactive
+az resource tag --tags Ansible=nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+```
+
 ## <a name="generate-a-dynamic-inventory"></a>生成动态库存
 
 定义（并标记）虚拟机后，便可以生成动态库存了。
@@ -119,15 +128,19 @@ Ansible 提供一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob
 
 ### <a name="ansible-version--28"></a>Ansible 版本为 2.8 及更高版本
 
-从 Ansible 2.8 开始，Ansible 便已提供 [Azure 动态库存插件](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py)。 以下步骤将指导你使用插件：
+从 Ansible 2.8 开始，Ansible 便已提供 [Azure 动态库存插件](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py)。 以下步骤将引导你使用插件：
 
 1. 库存插件需要配置文件。 配置文件必须以 `azure_rm` 结尾，且扩展名为 `yml` 或 `yaml`。 对于本教程示例，请将以下 playbook 保存为 `myazure_rm.yml`：
 
     ```yml
-    plugin: azure_rm
-    include_vm_resource_groups:
-    - ansible-inventory-test-rg
-    auth_source: auto
+        plugin: azure_rm
+        include_vm_resource_groups:
+        - ansible-inventory-test-rg
+        auth_source: auto
+    
+        keyed_groups:
+        - prefix: tag
+          key: tags
     ```
 
 1. 运行以下命令以在资源组中对 VM 执行 ping 操作：
@@ -142,7 +155,7 @@ Ansible 提供一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
-    如果收到“主机密钥验证”错误，请将以下行添加到 Ansible 配置文件中。 Ansible 配置文件位于 `/etc/ansible/ansible.cfg`。
+    如果收到“主机密钥验证”错误，请将以下行添加到 Ansible 配置文件中。 Ansible 配置文件位于 `/etc/ansible/ansible.cfg` 或 `~/.ansible.cfg`。
 
     ```bash
     host_key_checking = False
@@ -156,33 +169,49 @@ Ansible 提供一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob
     ```
 
 ## <a name="enable-the-vm-tag"></a>启用 VM 标记
-设置标记后，需要“启用”该标记。 启用标记的方法之一是通过 `export` 命令将标记导出到环境变量 `AZURE_TAGS`：
 
-```azurecli-interactive
-export AZURE_TAGS=nginx
-```
+### <a name="if-youre-using-ansible--28"></a>如果使用的是低于 2.8 的 Ansible 版本，
 
-- 如果使用低于 2.8 版本的 Ansible，请运行以下命令：
+- 设置标记后，需要“启用”该标记。 启用标记的方法之一是通过 `export` 命令将标记导出到环境变量 `AZURE_TAGS`：
+
+    ```azurecli-interactive
+    export AZURE_TAGS=nginx
+    ```
+    
+- 运行以下命令：
 
     ```bash
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping
     ```
+    
+    现在，只会看到一个虚拟机（其标记与导出到 `AZURE_TAGS` 环境变量的值匹配）：
 
-- 如果使用版本 2.8 及更高版本的 Ansible，请运行以下命令：
-  
-    ```bash
-    ansible all -m ping -i ./myazure_rm.yml
+    ```Output
+       ansible-inventory-test-vm1 | SUCCESS => {
+        "changed": false,
+        "failed": false,
+        "ping": "pong"
+    }
     ```
 
-现在，只会看到一个虚拟机（其标记与导出到 `AZURE_TAGS` 环境变量的值匹配）：
+### <a name="if-youre-using-ansible---28"></a>如果使用的是 2.8 及更高的 Ansible 版本
 
-```Output
-ansible-inventory-test-vm1 | SUCCESS => {
-    "changed": false,
-    "failed": false,
-    "ping": "pong"
-}
-```
+- 运行命令 `ansible-inventory -i myazure_rm.yml --graph` 以获取以下输出：
+
+    ```Output
+        @all:
+          |--@tag_Ansible_nginx:
+          |  |--ansible-inventory-test-vm1_9e2f
+          |--@ungrouped:
+          |  |--ansible-inventory-test-vm2_7ba9
+    ```
+
+- 还可以运行以下命令来测试到 Nginx VM 的连接：
+  
+    ```bash
+    ansible -i ./myazure_rm.yml -m ping tag_Ansible_nginx
+    ```
+
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>在标记的 VM 上安装 Nginx
 
@@ -197,19 +226,19 @@ ansible-inventory-test-vm1 | SUCCESS => {
 1. 将以下示例代码粘贴到编辑器中：
 
     ```yml
-    ---
-    - name: Install and start Nginx on an Azure virtual machine
-      hosts: all
-      become: yes
-      tasks:
-      - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
-
-      handlers:
-        - name: start nginx
-          service: name=nginx state=started
+        ---
+        - name: Install and start Nginx on an Azure virtual machine
+          hosts: all
+          become: yes
+          tasks:
+          - name: install nginx
+            apt: pkg=nginx state=installed
+            notify:
+            - start nginx
+    
+          handlers:
+            - name: start nginx
+              service: name=nginx state=started
     ```
 
 1. 保存文件并退出编辑器。
@@ -218,15 +247,15 @@ ansible-inventory-test-vm1 | SUCCESS => {
 
    - Ansible 版本低于 2.8：
 
-    ```bash
-    ansible-playbook -i azure_rm.py nginx.yml
-    ```
+     ```bash
+     ansible-playbook -i azure_rm.py nginx.yml
+     ```
 
    - Ansible 为版本 2.8 及更高版本：
 
-    ```bash
-     ansible-playbook  -i ./myazure_rm.yml  nginx.yml
-    ```
+     ```bash
+     ansible-playbook  -i ./myazure_rm.yml  nginx.yml --limit=tag_Ansible_nginx
+     ```
 
 1. 运行 playbook 后，可看到类似于以下结果的输出：
 

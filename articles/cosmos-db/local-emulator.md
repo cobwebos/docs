@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997887"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075659"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -416,6 +416,24 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 若要打开数据资源管理器，请在浏览器中导航到以下 URL。 上面所示的响应消息中提供了模拟器终结点。
 
     https://<emulator endpoint provided in response>/_explorer/index.html
+
+如果在 Linux docker 容器上运行 .NET 客户端应用程序，并且在主机上运行 Azure Cosmos 仿真器，则在这种情况下，无法从仿真器连接到 Azure Cosmos 帐户。 由于应用未在主机上运行，因此无法添加在 Linux 容器上注册的与仿真器终结点匹配的证书。 
+
+解决方法是通过传递 `HttpClientHandler` 实例，从客户端应用程序禁用服务器的 SSL 证书验证，如下面的 .Net 代码示例所示。 仅当在使用 `Microsoft.Azure.DocumentDB` Nuget 包时，此解决方案才适用，`Microsoft.Azure.Cosmos` Nuget 包不支持此解决方案：
+ 
+ ```csharp
+var httpHandler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+};
+ 
+using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+{
+    RunDatabaseDemo(client).GetAwaiter().GetResult();
+}
+```
+
+除了禁用 SSL 证书验证之外，请务必使用 `/allownetworkaccess` 选项启动仿真器，并且仿真器的终结点可以从主机 IP 地址而非 `host.docker.internal` DNS 进行访问。
 
 ## 在 Mac 或 Linux 上运行<a id="mac"></a>
 

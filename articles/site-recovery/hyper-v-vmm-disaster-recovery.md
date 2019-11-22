@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 为本地站点之间的 Hyper-V VM 设置灾难恢复
+title: 使用 Azure Site Recovery 设置到辅助站点的 Hyper-V 灾难恢复
 description: 了解如何使用 Azure Site Recovery 为本地站点之间的 Hyper-V VM 设置灾难恢复。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813756"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132987"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -28,6 +28,7 @@ ms.locfileid: "70813756"
 > * 设置网络映射 
 > * 创建复制策略
 > * 为虚拟机启用复制
+
 
 ## <a name="prerequisites"></a>先决条件
 

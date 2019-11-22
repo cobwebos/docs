@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在基础映像更新时自动化容器映像生成 - Azure 容器注册表任务
+title: 教程 - 在基础映像更新时触发映像生成 - Azure 容器注册表
 description: 本教程介绍在更新基础映像时，如何配置 Azure 容器注册表任务以自动触发云中的容器映像生成。
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6b9a74ee6530d8fc195490b0f1414e6348e855f6
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 1beb66d8491b7dac84e9531558f8967e22086575
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743592"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931685"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 

@@ -1,22 +1,20 @@
 ---
-title: 通过 Azure Kubenetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件
+title: 通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件
 description: 了解如何在持续集成管道中使用 Azure Dev Spaces 插件。
 author: tomarchermsft
 ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/31/2019
-ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/23/2019
+ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161493"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881886"
 ---
-<!-- GMinchAQ, 06/18/19 -->
-
-# <a name="tutorial-using-the-azure-dev-spaces-plugin-for-jenkins-with-azure-kubenetes-service"></a>教程：通过 Azure Kubenetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
+# <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教程：通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
 
 使用 Azure Dev Spaces，可以测试并以迭代方式开发在 Azure Kubernetes 服务 (AKS) 中运行的微服务应用程序，而无需复制或模拟依赖项。 适用于 Jenkins 的 Azure Dev Spaces 插件有助于在持续集成和交付 (CI/CD) 管道中使用 Dev Spaces。
 

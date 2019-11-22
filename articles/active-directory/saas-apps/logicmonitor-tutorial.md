@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 496156c3-0e22-4492-b36f-2c29c055e087
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 468d55b2b96979658bc8f3e226da36dc4af1c174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 463a8981689614d96100e03965117c9344aa5d50
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097949"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>教程：Azure Active Directory 与 LogicMonitor 集成
 
@@ -140,7 +141,7 @@ ms.locfileid: "67097949"
 
 4. 在“单一登录(SSO)设置”  部分中，执行以下步骤：
 
-    ![单一登录设置](./media/logicmonitor-tutorial/ic790054.png "Single Sign-On Settings")
+    ![单一登录设置](./media/logicmonitor-tutorial/ic790054.png "单一登录设置")
 
     a. 选择“启用单一登录”。 
 
@@ -211,13 +212,13 @@ ms.locfileid: "67097949"
 
 2. 在顶部菜单中，单击“设置”，并单击“角色和用户”。  
 
-    ![角色和用户](./media/logicmonitor-tutorial/ic790056.png "Roles and Users")
+    ![角色和用户](./media/logicmonitor-tutorial/ic790056.png "角色和用户")
 
 3. 单击“添加”  。
 
 4. 在“添加帐户”  部分中，执行以下步骤：
 
-    ![添加帐户](./media/logicmonitor-tutorial/ic790057.png "Add an account")
+    ![添加帐户](./media/logicmonitor-tutorial/ic790057.png "添加帐户")
 
     a. 将要预配的 Azure Active Directory 用户的“用户名”、“电子邮件”、“密码”和“重新键入密码”值键入到相关文本框中     。
 

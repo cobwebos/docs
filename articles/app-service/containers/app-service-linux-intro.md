@@ -4,8 +4,8 @@ description: 了解 Linux 上的 Azure 应用服务。
 keywords: azure 应用服务, linux, oss
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -15,29 +15,20 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071328"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819679"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
-[Azure 应用服务](../overview.md)是一个完全托管的计算平台，非常适用于托管网站和 Web 应用程序。 客户可以使用 Linux 应用服务在 Linux 本地针对受支持的应用程序堆栈托管 Web 应用。 [语言](#languages)部分列出了目前受支持的应用程序堆栈。
+[Azure 应用服务](../overview.md)是一个完全托管的计算平台，非常适用于托管网站和 Web 应用程序。 客户可以使用 Linux 应用服务在 Linux 本地针对受支持的应用程序堆栈托管 Web 应用。
 
 ## <a name="languages"></a>Languages
 
-Linux 应用服务支持大量内置映像，以便提高开发人员工作效率。 如果内置映像不支持应用程序所需的运行时，请按照[生成自己的 Docker 映像](tutorial-custom-docker-image.md)中的说明将其部署到用于容器的 Web 应用。
-
-| 语言 | 支持的版本 |
-|---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、8.12、9.4、10.1、10.10、10.14 |
-| Java * | Tomcat 8.5、9.0，Java SE，WildFly 14（全都运行 JRE 8） |
-| PHP | 5.6、7.0、7.2、7.3 |
-| Python | 2.7、3.6、3.7 |
-| .NET Core | 1.0、1.1、2.0、2.1、2.2 |
-| Ruby | 2.3、2.4、2.5、2.6 |
+Linux 应用服务支持大量内置映像，以便提高开发人员工作效率。 语言包括：Node.js、Java (JRE 8 & JRE 11)、PHP、Python、.NET Core 和 Ruby。 运行 [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) 查看最新语言和支持的版本。 如果内置映像不支持应用程序所需的运行时，请按照[生成自己的 Docker 映像](tutorial-custom-docker-image.md)中的说明将其部署到用于容器的 Web 应用。
 
 ## <a name="deployments"></a>部署
 

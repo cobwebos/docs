@@ -1,19 +1,19 @@
 ---
-title: 使用 IoT Central 创建智能计量分析应用 | Microsoft Docs
-description: 了解如何使用 Azure IoT Central 应用程序模板创建智能计量监视应用程序。
+title: 教程：使用 IoT Central 创建智能计量分析应用
+description: 教程：了解如何使用 Azure IoT Central 应用程序模板创建智能计量监视应用程序。
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581243"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112537"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教程：创建并演练智能计量监视应用模板 
 

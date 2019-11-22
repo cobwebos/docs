@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618787"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172328"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -101,7 +101,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 
 若要在已加入域的 VM 上安装 Active Directory 管理工具，请完成以下步骤：
 
-1. 登录到 VM 时，系统默认会打开“服务器管理器”。  如果未打开，请在“开始”菜单中选择“服务器管理器”   。
+1. 如果在登录 VM 时服务器管理器  默认情况下未打开，请选择“开始”  菜单，然后选择“服务器管理器”  。
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。   
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。   
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。   
@@ -131,13 +131,15 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 
 1. 若要查看属于 Azure AD DS 托管域的用户和组，请选择“AADDC 用户”容器。  来自 Azure AD 租户的用户帐户和组将列在此容器中。
 
-    在以下示例输出中，名为 *contosoadmin* 的用户帐户和“AAD DC 管理员”组已显示在此容器中。 
+    在以下示例输出中，名为 Contoso Admin 的用户帐户和“AAD DC 管理员”组已在此容器中显示   。
 
     ![在 Active Directory 管理中心查看 Azure AD DS 域用户列表](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. 若要查看已加入 Azure AD DS 托管域的计算机，请选择“AADDC 计算机”容器。  此时会列出当前虚拟机的条目，例如 *myVM*。 已加入 Azure AD DS 托管域的所有计算机的计算机帐户存储在此“AADDC 计算机”容器中。 
 
-可以执行常见的 Active Directory 管理中心操作，例如重置用户帐户密码，或管理组成员身份。 还可以使用作为管理工具的一部分安装的“适用于 Windows PowerShell 的 Active Directory 模块”来管理 Azure AD DS 托管域中的常见操作。 
+可以执行常见的 Active Directory 管理中心操作，例如重置用户帐户密码，或管理组成员身份。 这些操作仅适用于直接在 Azure AD DS 托管域中创建的用户和组。 标识信息仅从 Azure AD 同步到 Azure AD DS  。 没有从 Azure AD DS 回写到 Azure AD 的操作。 无法更改从 Azure AD 同步的用户的密码或托管组成员身份，并且无法将这些更改同步回来。
+
+还可以使用作为管理工具的一部分安装的“适用于 Windows PowerShell 的 Active Directory 模块”来管理 Azure AD DS 托管域中的常见操作。 
 
 ## <a name="next-steps"></a>后续步骤
 

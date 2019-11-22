@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385026"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177727"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 Azure VM 基础结构
 
@@ -90,18 +90,12 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
  
 4. 打开 RDP 文件，并在出现提示时输入 VM 设置中提供的用户名和密码。
 
-5. 连接到实例后，你需要验证远程注册表是否已运行、启用 SMB，并为 SMB 和远程注册表打开所需的端口。
-
-   要启用 SMB，需要使用以下 PowerShell 命令：
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. 连接到实例后，需要验证远程注册表是否正在运行，并打开必需的端口。
 
 6. 若要在防火墙中打开端口，请使用以下 PowerShell 命令：
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. 在其他实例中重复此过程，请再次记下专用 IP 地址。
@@ -117,15 +111,6 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
    ```
 
    如果类似于 `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` 的输出重复出现四次，则表示实例之间的连接正常。
-
-3. 现在，使用以下命令验证 SMB 共享功能是否正常工作：
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   此命令应返回 `Drive Z: is now connected to \\172.31.20.163\c$.` 作为输出。
-
 
    现在你的实例已为 Service Fabric 准备好。
 

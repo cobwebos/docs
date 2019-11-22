@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193328"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172779"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -68,7 +68,7 @@ ms.locfileid: "70193328"
 * **密钥用途** - 必须将证书配置用于数字签名和密钥加密。  
 * **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
 
-本教程使用 PowerShell 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *contoso.com*：
+在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *contoso.com*：
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -176,7 +176,7 @@ Thumbprint                                Subject
 
 创建并导出包含私钥的数字证书，并将客户端计算机设置为信任连接后，接下来请在 Azure AD DS 托管域上启用安全 LDAP。 若要在 Azure AD DS 托管域上启用安全 LDAP，请执行以下配置步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)上的“搜索资源”框中搜索“域服务”。   从搜索结果中“选择 Azure AD 域服务”  。
+1. 在 [Azure 门户](https://portal.azure.com)上的“搜索资源”框中输入“域服务”   。 从搜索结果中“选择 Azure AD 域服务”  。
 
     ![在 Azure 门户中搜索并选择 Azure AD DS 托管域](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,7 +207,7 @@ Thumbprint                                Subject
 让我们创建一个规则，以允许从指定的一组 IP 地址通过 TCP 端口 636 进行入站安全 LDAP 访问。 低优先级的默认“全部拒绝”规则将应用到来自 Internet 的所有其他入站流量，因此只有指定的地址才能使用安全 LDAP 访问 Azure AD DS 托管域。 
 
 1. 在 Azure 门户上的左侧导航栏中选择“资源组”。 
-1. 选择资源组（例如 *myResourceGroup*），然后选择网络安全组（例如 *AADDS-contoso.com-NSG*）。
+1. 选择资源组（例如，myResourceGroup），然后选择网络安全组（例如，aaads-nsg）   。
 1. 此时会显示现有的入站和出站安全规则列表。 在网络安全组窗口的左侧，选择“安全性”>“入站安全规则”。 
 1. 选择“添加”，然后创建一个允许 *TCP* 端口 *636* 的规则。  为提高安全性，请选择“IP 地址”作为源，然后为组织指定自己的有效 IP 地址或范围。 
 
@@ -297,3 +297,4 @@ Thumbprint                                Subject
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

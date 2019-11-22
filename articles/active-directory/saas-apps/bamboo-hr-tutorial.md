@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bc3de858102c02d49a7cefeef15de7e1c82220e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106474"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
 
@@ -132,7 +133,7 @@ ms.locfileid: "67106474"
 
 2. 在主页上执行以下操作：
    
-    ![BambooHR 单一登录页面](./media/bamboo-hr-tutorial/ic796691.png "单一登录")   
+    ![BambooHR 单一登录页](./media/bamboo-hr-tutorial/ic796691.png "单一登录")   
 
     a. 选择“应用”  。
    
@@ -142,7 +143,7 @@ ms.locfileid: "67106474"
 
 3. 在“SAML 单一登录”  窗格中，执行以下操作：
    
-    ![“SAML 单一登录”窗格](./media/bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
+    ![SAML 单一登录窗格](./media/bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
    
     a. 在“SSO 登录 URL”框中，粘贴在步骤 6 中从 Azure 门户复制的“登录 URL”   。
       

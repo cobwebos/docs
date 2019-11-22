@@ -1,22 +1,19 @@
 ---
-title: 在 Azure 中使用 Terraform 验证中心辐射型网络
+title: 教程 - 使用 Terraform 验证 Azure 中的中心辐射型网络
 description: 有关使用所有互联的虚拟网络验证中心辐射型网络拓扑的教程。
-services: terraform
-ms.service: azure
-keywords: terraform, 中心辐射型, 网络, 混合网络, devops, 虚拟机, azure, vnet 对等互连
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169708"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969333"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 验证中心辐射型网络
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>教程：使用 Terraform 验证 Azure 中的中心辐射型网络
 
 在本文中，我们将执行在本教程系列的前一篇文章中创建的 Terraform 文件。 结果是演示虚拟网络之间的连接的验证结果。
 

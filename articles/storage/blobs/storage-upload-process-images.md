@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 存储在云中上传图像数据 | Microsoft Docs
 description: 将 Azure blob 存储与 Web 应用配合使用来存储应用数据
-author: normesta
+author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 11/16/2019
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: afa4672d2a8f65b61d634b95b695d1c9814bf991
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1c06cf12ac3264e77934a71426f9194136074e71
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053451"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132975"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -55,7 +55,8 @@ ms.locfileid: "73053451"
 以下示例创建名为 `myResourceGroup` 的资源组。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location southeastasia 
+az group create --name myResourceGroup --location southeastasia
+
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
@@ -65,14 +66,13 @@ az group create --name myResourceGroup --location southeastasia
 > [!IMPORTANT]
 > 在本教程的第 2 部分中，你将 Azure 事件网格与 Blob 存储配合使用。 请确保在支持事件网格的 Azure 区域中创建你的存储帐户。 有关受支持区域的列表，请参阅 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
-在以下命令中，请将 `<blob_storage_account>` 占位符替换为你自己的 Blob 存储帐户的全局唯一名称。  
+在以下命令中，请将 `<blob_storage_account>` 占位符替换为你自己的 Blob 存储帐户的全局唯一名称。
 
 ```azurecli-interactive
-blobStorageAccount=<blob_storage_account>
+$blobStorageAccount="<blob_storage_account>"
 
-az storage account create --name $blobStorageAccount \
---location southeastasia --resource-group myResourceGroup \
---sku Standard_LRS --kind blobstorage --access-tier hot 
+az storage account create --name $blobStorageAccount --location southeastasia --resource-group myResourceGroup --sku Standard_LRS --kind blobstorage --access-tier hot
+
 ```
 
 ## <a name="create-blob-storage-containers"></a>创建 Blob 存储容器
@@ -84,17 +84,15 @@ az storage account create --name $blobStorageAccount \
 *images* 容器的公共访问权限设置为 `off`。 *thumbnails* 容器的公共访问权限设置为 `container`。 `container` 公共访问权限设置允许访问网页的用户查看缩略图。
 
 ```azurecli-interactive
-blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
--n $blobStorageAccount --query [0].value --output tsv)
+$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup -n $blobStorageAccount --query [0].value --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount \
---account-key $blobStorageAccountKey --public-access off
+az storage container create -n images --account-name $blobStorageAccount --account-key $blobStorageAccountKey --public-access off
 
-az storage container create -n thumbnails --account-name $blobStorageAccount \
---account-key $blobStorageAccountKey --public-access container
+az storage container create -n thumbnails --account-name $blobStorageAccount --account-key $blobStorageAccountKey --public-access container
 
 echo "Make a note of your Blob storage account key..."
 echo $blobStorageAccountKey
+
 ```
 
 记下 Blob 存储帐户名称和密钥。 示例应用使用这些设置连接到存储帐户以上传图像。 
@@ -109,6 +107,7 @@ echo $blobStorageAccountKey
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
+
 ```
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
@@ -118,9 +117,10 @@ Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载�
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：_具有给定名称 `<web_app>` 的网站已存在。_ Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
 
 ```azurecli-interactive
-webapp=<web_app>
+$webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
+
 ```
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>从 GitHub 存储库部署示例应用
@@ -132,27 +132,24 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 示例项目包含一个 [ASP.NET MVC](https://www.asp.net/mvc) 应用。 该应用接受一个图像，将其保存到存储帐户，然后从缩略图容器显示图像。 Web 应用使用 Azure 存储客户端库中的 [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage)、[Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob) 和 Microsoft.Azure.Storage.Auth 命名空间与 Azure 存储进行交互。
 
 ```azurecli-interactive
-az webapp deployment source config --name $webapp \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+az webapp deployment source config --name $webapp --resource-group myResourceGroup --branch master --manual-integration --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+
 ```
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。 
 
 ```azurecli-interactive
-az webapp deployment source config --name $webapp \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
+az webapp deployment source config --name $webapp --resource-group myResourceGroup --branch master --manual-integration --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
+
 ```
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。 
 
 ```azurecli-interactive
-az webapp deployment source config --name $webapp \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+az webapp deployment source config --name $webapp --resource-group myResourceGroup --branch master --manual-integration --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+
 ```
 
 ---
@@ -164,11 +161,8 @@ az webapp deployment source config --name $webapp \
 示例 Web 应用使用 [Azure 存储客户端库](/dotnet/api/overview/azure/storage)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
 ```azurecli-interactive
-az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
---settings AzureStorageConfig__AccountName=$blobStorageAccount \
-AzureStorageConfig__ImageContainer=images  \
-AzureStorageConfig__ThumbnailContainer=thumbnails \
-AzureStorageConfig__AccountKey=$blobStorageAccountKey  
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup --settings AzureStorageConfig__AccountName=$blobStorageAccount AzureStorageConfig__ImageContainer=images AzureStorageConfig__ThumbnailContainer=thumbnails AzureStorageConfig__AccountKey=$blobStorageAccountKey
+
 ```
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
@@ -176,15 +170,10 @@ AzureStorageConfig__AccountKey=$blobStorageAccountKey
 示例 Web 应用使用 [Azure 存储客户端库](https://docs.microsoft.com/javascript/api/azure-storage)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
 ```azurecli-interactive
-storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
---name $blobStorageAccount --query connectionString --output tsv)
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
---settings AzureStorageConfig__ImageContainer=images  \
-AzureStorageConfig__ThumbnailContainer=thumbnails \
-AzureStorageConfig__AccountName=$blobStorageAccount \
-AzureStorageConfig__AccountKey=$blobStorageAccountKey \
-AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup --settings AzureStorageConfig__ImageContainer=images AzureStorageConfig__ThumbnailContainer=thumbnails AzureStorageConfig__AccountName=$blobStorageAccount AzureStorageConfig__AccountKey=$blobStorageAccountKey AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+
 ```
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
@@ -192,9 +181,8 @@ AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 示例 Web 应用使用 [Azure 存储客户端库](https://github.com/Azure/azure-storage-js)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
 ```azurecli-interactive
-az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
---settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
-AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+
 ```
 
 ---
@@ -394,7 +382,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 在“Blob 服务”  下，选择“Blob”  ，然后选择“images”  容器。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器   。
 
 验证图像是否显示在该容器中。
 
@@ -404,7 +392,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 在“Blob 服务”  下，选择“Blob”  ，然后选择“thumbnails”  容器。 选择“上传”  以打开“上传 blob”  窗格。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器   。 选择“上传”  以打开“上传 blob”  窗格。
 
 使用文件选取器选择文件，然后选择“上传”  。
 

@@ -1,5 +1,6 @@
 ---
-title: Azure AD v2.0 ASP.NET Web 服务器入门 | Microsoft Docs
+title: Azure AD v2.0 ASP.NET Web 服务器入门
+titleSuffix: Microsoft identity platform
 description: 使用基于传统 Web 浏览器的应用程序和 OpenID Connect 标准，在 ASP.NET 解决方案中实现 Microsoft 登录
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: b66d2a9a958afd536dcffeca211a3fc56cf09ef8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113647"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803721"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -269,7 +270,7 @@ ms.locfileid: "70113647"
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>详细信息
-> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[品牌准则](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
+> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[品牌准则](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "B品牌准则”)。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
@@ -378,7 +379,7 @@ ms.locfileid: "70113647"
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. 选择“新注册”。 
-1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    1. 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 **ASPNET-Tutorial**。
    1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“回复 URL”中，然后选择“注册”。  
 1. 选择“身份验证”菜单，在“隐式授权”下选择“ID 令牌”，然后选择“保存”。    
@@ -410,7 +411,7 @@ ms.locfileid: "70113647"
 >  > - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。 
 >  > - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。 
 >
-> 有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)。
+> 有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
 <!--end-collapse-->
 
 #### <a name="view-application-results"></a>查看应用程序结果

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097345"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>教程：Azure Active Directory 与 Mimecast Admin Console 集成
 
@@ -233,7 +234,7 @@ ms.locfileid: "67097345"
 
 2. 转到“目录”\>“内部”。 
    
-    ![目录](./media/mimecast-admin-console-tutorial/ic795003.png "目录")
+    ![Directories](./media/mimecast-admin-console-tutorial/ic795003.png "目录")
 
 3. 单击“注册新域”。 
    

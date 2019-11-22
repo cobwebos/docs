@@ -1,18 +1,18 @@
 ---
-title: 创建支持基于 URL 路径的重定向的应用程序网关 - Azure PowerShell
+title: 使用 PowerShell 实现基于 URL 路径的重定向 - Azure 应用程序网关
 description: 了解如何使用 Azure PowerShell 创建支持基于 URL 路径的重定向流量的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/3/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: tutorial
-ms.openlocfilehash: 6a73cbe9ef2302a8195f67b645a3e48b7ee6b1f2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 04cd390681d0492dc28308c3304753a6ecaf1c3c
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618888"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047612"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 

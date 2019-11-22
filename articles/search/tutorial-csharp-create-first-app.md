@@ -1,19 +1,19 @@
 ---
 title: 用于创建第一个应用的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 了解如何逐步构建第一个搜索应用。 本教程提供了 GitHub 上工作应用的链接以及从头开始构建应用的完整过程。 了解有关 Azure 认知搜索的基本组件。
+description: 了解如何逐步构建第一个 C# 搜索应用。 本教程提供了 GitHub 上工作应用的链接以及从头开始构建应用的完整过程。 了解有关 Azure 认知搜索的基本组件。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794139"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112231"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教程：创建第一个应用 - Azure 认知搜索
 

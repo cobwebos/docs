@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db56cd7551ef8179aeff575fdd1f2578cbee74ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -128,15 +129,15 @@ ms.locfileid: "67106713"
 
 2. 单击“编辑设置”  。
 
-    ![编辑设置](./media/arcgis-tutorial/ic784742.png "编辑设置")
+    ![编辑设置](./media/arcgis-tutorial/ic784742.png "单击“设置”")
 
 3. 单击“安全”  。
 
-    ![安全](./media/arcgis-tutorial/ic784743.png "安全")
+    ![安全性](./media/arcgis-tutorial/ic784743.png "安全")
 
 4. 在“企业登录”  下，单击“设置标识提供者”  。
 
-    ![企业登录名](./media/arcgis-tutorial/ic784744.png "企业登录名")
+    ![企业登录](./media/arcgis-tutorial/ic784744.png "企业登录")
 
 5. 在“设置标识提供者”  配置页上，执行以下步骤：
 

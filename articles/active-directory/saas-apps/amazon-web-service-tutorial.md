@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 10/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed1f1b6973d96fdc0bce560877720adfc5e33081
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f2fea3bca40d8a5783448e68ea89c3b238a0104d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170902"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074032"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -81,7 +81,6 @@ ms.locfileid: "71170902"
 1. 在“从库中添加”部分的搜索框中  ，键入 **Amazon Web Services (AWS)** 。
 1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>配置和测试 Amazon Web Services (AWS) 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Amazon Web Services (AWS) 中的相关用户之间建立链接关系。
@@ -93,6 +92,7 @@ ms.locfileid: "71170902"
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Amazon Web Services (AWS) SSO](#configure-amazon-web-services-aws-sso)** - 在应用程序端配置单一登录设置。
     1. **[创建 Amazon Web Services (AWS) 测试用户](#create-amazon-web-services-aws-test-user)** - 在 Amazon Web Services (AWS) 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[如何在 Amazon Web Services (AWS) 中配置角色预配](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -312,11 +312,13 @@ ms.locfileid: "71170902"
 
     c. 选择“关闭”。 
 
-21. 在 Azure AD 管理门户上的 AWS 应用中，转到“预配”。 
+### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>如何在 Amazon Web Services (AWS) 中配置角色预配
+
+1. 在 Azure AD 管理门户上的 AWS 应用中，转到“预配”。 
 
     ![AWS 应用的屏幕截图，其中突出显示了“预配”](./media/amazon-web-service-tutorial/provisioning.png)
 
-22. 分别在“客户端机密”和“机密令牌”字段中输入访问密钥和机密。  
+2. 分别在“客户端机密”和“机密令牌”字段中输入访问密钥和机密。  
 
     ![“管理凭据”对话框的屏幕截图](./media/amazon-web-service-tutorial/provisioning1.png)
 
@@ -328,7 +330,7 @@ ms.locfileid: "71170902"
 
     d. 选择“保存”以保存设置。 
 
-23. 在“设置”部分，为“预配状态”选择“打开”。    再选择“保存”  。
+3. 在“设置”部分，为“预配状态”选择“打开”。    再选择“保存”  。
 
     ![“设置”部分的屏幕截图，其中突出显示了“打开”](./media/amazon-web-service-tutorial/provisioning2.png)
 

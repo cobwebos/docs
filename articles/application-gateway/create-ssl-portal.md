@@ -1,18 +1,18 @@
 ---
-title: 教程 - 使用 SSL 终端配置应用程序网关 - Azure 门户
+title: 教程：在门户中配置 SSL 终端 - Azure 应用程序网关
 description: 在本教程中，你将了解如何使用 Azure 门户配置应用程序网关并为 SSL 终端添加证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470035"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012304"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 和 Azure 门户为 Azure IoT 中心配置消息路由 | Microsoft Docs
+title: 使用 Azure CLI 为 Azure IoT 中心配置消息路由
 description: 使用 Azure CLI 和 Azure 门户为 Azure IoT 中心配置消息路由
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535121"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084385"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 和 Azure 门户配置 IoT 中心消息路由
 
@@ -26,11 +26,13 @@ ms.locfileid: "69535121"
 
 本教程使用 Azure CLI 创建基本资源，然后使用 [Azure 门户](https://portal.azure.com)来演示如何配置消息路由和设置虚拟设备用于测试。
 
-有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便进行标识，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
-
 复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 此脚本将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。
 
-有关调试的说明：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保任何反斜杠后面没有空格。
+有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便进行标识，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
+
+> [!TIP]
+> 有关调试的提示：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保 Cloud Shell 会话正在运行 `bash`，并且所有反斜杠后面都没有空格。
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 流量管理器配置子网流量路由方法
+title: 教程：配置子网流量路由 - Azure 流量管理器
 description: 本文介绍了如何配置流量管理器以将流量从用户子网路由到特定终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: da2d4816f3f7a99ac2d213d72d7e801cf630e165
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304938"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048810"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 
 本文介绍如何配置子网流量路由方法。 借助子网流量路由方法，可以将一组 IP 地址范围映射到特定终结点，当流量管理器接收到请求后，它会检查请求的源 IP 并返回相关的终结点  。
 
@@ -154,10 +154,10 @@ ms.locfileid: "66304938"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
+    | Name                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
-    | 订阅            | 选择订阅。                          |
-    | 资源组          | 选择“现有”，然后输入 myResourceGroupTM1   。 |
+    | Subscription            | 选择订阅。                          |
+    | Resource group          | 选择“现有”，然后输入 myResourceGroupTM1   。 |
     | |                              |
     |
 
@@ -173,8 +173,8 @@ ms.locfileid: "66304938"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure 终结点                                   |
-    | 名称           | myInternalWebSiteEndpoint                                        |
+    | 类型                    | Azure 终结点                                   |
+    | Name           | myInternalWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。  这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |  子网路由设置    |   添加 myVMEastUS 测试 VM 的 IP 地址  。 源自此 VM 的任何用户查询将转向 myInternalWebSiteEndpoint  。    |

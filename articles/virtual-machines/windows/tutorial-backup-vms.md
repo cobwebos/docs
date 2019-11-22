@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 门户中备份 Windows 虚拟机 | Microsoft Docs
+title: 教程 - 在 Azure 门户中备份 Windows 虚拟机
 description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8eaa96dd92ab0f18b590b284d59dd7b775738602
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 603bffe3d28214dbdcd51888925c3c653d0759e7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101738"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068185"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Windows 虚拟机的文件
 

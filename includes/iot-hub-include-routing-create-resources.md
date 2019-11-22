@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173569"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808849"
 ---
 ## <a name="create-base-resources"></a>创建基础资源
 
-在配置消息路由之前，需创建 IoT 中心、存储帐户和服务总线队列。 可以参阅适用于本教程第 1 部分的四篇文章中的一篇来创建这些资源：Azure CLI、Azure PowerShell、Azure 门户或 Azure 资源管理器模板。
+在配置消息路由之前，需创建 IoT 中心、存储帐户和服务总线队列。 可以参阅适用于本教程第 1 部分的四篇文章中的一篇来创建这些资源：Azure门户、Azure 资源管理器模板、Azure CLI 或 Azure PowerShell。
 
 为所有资源使用相同的资源组和位置。 在本教程结束后，可以通过删除资源组一次性删除所有资源。
 
-以下部分介绍要执行的步骤。
+下面是将在以下部分中执行的步骤摘要： 
 
 1. 创建[资源组](../articles/azure-resource-manager/resource-group-overview.md)。
 

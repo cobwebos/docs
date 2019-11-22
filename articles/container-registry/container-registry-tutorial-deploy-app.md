@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中通过异地复制的 Docker 注册表部署应用
+title: 教程 - 通过异地复制的 Azure 容器注册表部署应用
 description: 使用异地复制的 Azure 容器注册表中的容器映像将基于 Linux 的 Web 应用部署到两个不同的 Azure 区域。 由三个部分构成的教程系列的第二部分。
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146933"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931412"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教程：通过异地复制的 Azure 容器注册表部署 Web 应用
 

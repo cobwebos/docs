@@ -11,23 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677964"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242218"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>教程：从 Android 应用将用户登录并调用 Microsoft Graph
+
+> [!NOTE]
+> 本教程尚未更新为使用适用于 Android 1.0 版的 MSAL 库。 它适用于在本教程中配置的早期版本。
 
 本教程介绍如何将 Android 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。  
 
-完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+> [!div class="checklist"]
+> * 将 Android 应用与 Microsoft 标识平台集成
+> * 将用户登录
+> * 获取用于调用 Microsoft Graph API 的访问令牌
+> * 调用 Microsoft Graph API。  
+
+完成本教程后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="how-this-tutorial-works"></a>本教程工作原理
 
@@ -53,7 +64,7 @@ ms.locfileid: "71677964"
 
 ## <a name="create-a-project"></a>创建一个项目
 
-本教程将创建新项目。 如果想要下载完整教程，请[下载代码](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)。
+本教程将创建新项目。 如果想要下载完整教程，请[下载代码](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)。
 
 1. 打开 Android Studio，然后选择“启动新的 Android Studio 项目”  。
 2. 选择“基本活动”，再选择“下一步”   。
@@ -177,7 +188,7 @@ ms.locfileid: "71677964"
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:0.3+'
     ```
 
 ### <a name="use-msal"></a>使用 MSAL
@@ -535,6 +546,10 @@ private void updateGraphUI(JSONObject graphResponse) {
 ### <a name="consent"></a>同意
 
 任何用户首次登录你的应用时，Microsoft 标识都将提示他们同意所请求的权限。  虽然大多数用户都能够同意，但某些 Azure AD 租户已禁用用户同意功能，这要求管理员代表所有用户同意。 要支持此方案，请在 Azure 门户中注册应用的作用域。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要，请删除[注册应用程序](#register-your-application) 步骤中创建的应用对象。
 
 ## <a name="get-help"></a>获取帮助
 

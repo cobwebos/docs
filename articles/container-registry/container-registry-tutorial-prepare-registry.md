@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中创建异地复制的 Docker 注册表
+title: 教程 - 创建异地复制的 Azure 容器注册表
 description: 创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5a2aedfe93aa27f839c416c27ac028db1e650295
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309571"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931353"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -115,7 +115,7 @@ cd acr-helloworld
 
 ## <a name="update-dockerfile"></a>更新 Dockerfile
 
-示例中包含的 Dockerfile 演示如何生成容器。 它从一个正式的 [aspnetcore][dockerhub-aspnetcore]image, copies the application files into the container, installs dependencies, compiles the output using the official [aspnetcore-build][dockerhub-aspnetcore-build] 映像开始，最后生成优化的 aspnetcore 映像。
+示例中包含的 Dockerfile 演示如何生成容器。 它首先创建一个正式的 [aspnetcore][dockerhub-aspnetcore] 映像，将应用程序文件复制到容器，安装依赖项，使用正式的 [aspnetcore-build][dockerhub-aspnetcore-build] 映像编译输出，最后生成优化的 aspnetcore 映像。
 
 在克隆的源中，[Dockerfile][dockerfile] 位于 `./AcrHelloworld/Dockerfile`。
 

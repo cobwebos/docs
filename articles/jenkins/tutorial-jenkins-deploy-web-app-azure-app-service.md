@@ -7,14 +7,14 @@ author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 10/23/2019
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24dbe67052d185de0eb308c4c869e63dbc825d9e
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172835"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882023"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 

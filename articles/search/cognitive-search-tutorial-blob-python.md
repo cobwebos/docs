@@ -1,5 +1,5 @@
 ---
-title: Python 教程：在 AI 扩充管道中调用认知服务
+title: 教程：使用 REST API 在 Python 中创建技能组
 titleSuffix: Azure Cognitive Search
 description: 本教程通过一个示例分步说明如何使用 Jupyter Python 笔记本在 Azure 认知搜索中完成数据提取、自然语言和图像 AI 处理。 提取的数据会编制索引并通过查询轻松访问。
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bb36ae551c48fc53756933e78ff0212f8ec1cdeb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790205"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113678"
 ---
-# <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-enrichment-pipeline"></a>Python 教程：在 Azure 认知搜索扩充管道中调用认知服务 API
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>教程：使用 REST 和 Python 创建 AI 扩充管道
 
 本教程介绍使用认知技能在 Azure 认知搜索中扩充编程数据的机制。  技能由自然语言处理 (NLP) 和认知服务中的图像分析功能提供支持。 通过技能集组合和配置，可以提取图像或扫描的文档文件的文本和文本表示形式。 还可以检测语言、实体、关键短语等。 最终结果是搜索索引中有丰富附加内容（使用索引管道中的 AI 扩充创建）。 
 

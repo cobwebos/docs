@@ -1,18 +1,18 @@
 ---
-title: 教程 - 创建具有 Web 应用程序防火墙的应用程序网关 - Azure 门户
+title: 教程：使用门户进行创建 - Web 应用程序防火墙
 description: 本教程介绍如何使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: d439703f1637282c73cd960923733460502c55bc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509741"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049217"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 

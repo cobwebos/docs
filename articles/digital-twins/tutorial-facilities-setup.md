@@ -1,5 +1,5 @@
 ---
-title: 教程：部署 Azure 数字孪生 | Microsoft Docs
+title: 教程：部署 Azure 数字孪生
 description: 了解如何使用本教程中的步骤部署 Azure 数字孪生的实例并配置空间资源。
 services: digital-twins
 ms.author: alinast
@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 09/17/2019
-ms.openlocfilehash: 54afe8ea67996562c88a2ade2ec16c4eaa89cdee
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/12/2019
+ms.openlocfilehash: 4d4e7e47b82c46cca53fab0540a4867031eaab85
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949731"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107740"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
 

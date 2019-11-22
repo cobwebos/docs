@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
+title: 快速入门：创建/管理 Apache Storm 拓扑 - Azure HDInsight
 description: 本快速入门介绍如何在 Azure HDInsight 中创建和监视 Apache Storm 拓扑。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018580"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241223"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
 

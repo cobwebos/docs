@@ -1,6 +1,6 @@
 ---
-title: 教程：创建 Azure 时序见解环境 | Microsoft Docs
-description: 本教程介绍如何创建时序见解环境，并在其中填充模拟设备的数据。
+title: 教程：创建环境 - Azure 时序见解 | Microsoft Docs
+description: 了解如何创建时序见解环境，并在其中填充模拟设备的数据。
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ca60b876272df15d306ac7fba2dc61875db6d06
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989657"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014663"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 

@@ -1,19 +1,20 @@
 ---
-title: 教程 - 创建支持基于 URL 路径的重定向的应用程序网关 - Azure CLI
+title: 教程：使用 CLI 实现基于 URL 路径的重定向
+titleSuffix: Azure Application Gateway
 description: 本教程介绍如何通过 Azure CLI 使用基于 URL 路径的重定向流量创建应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 7/30/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b2a06e47eec52d860aecdd2d9b57310cce5aeb27
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 23ddbdc62b2592a8fbfb7cdccaca52cbfe9aee62
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315940"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074440"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟 WAN 来与 Azure 建立站点到站点连接 | Microsoft Docs
+title: Azure 虚拟 WAN：创建站点到站点连接
 description: 本教程介绍如何使用 Azure 虚拟 WAN 来与 Azure 建立站点到站点 VPN 连接。
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 82f662dd00805cf53c0581fb0a2b3322a0207a11
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489016"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005714"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -41,7 +41,7 @@ ms.locfileid: "73489016"
 
 在开始配置之前，请验证你是否符合以下条件：
 
-* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 若要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
+* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
 * 虚拟网络不包含任何虚拟网络网关。 如果虚拟网络包含网关（VPN 或 ExpressRoute），则必须删除所有网关。 此配置要求将虚拟网络改为连接到虚拟 WAN 中心网关。
 
@@ -54,7 +54,7 @@ ms.locfileid: "73489016"
 从浏览器导航到 Azure 门户并使用 Azure 帐户登录。
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”  以打开“创建 WAN”页。
+2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
 3. 在“创建 WAN”  页的“基本”  选项卡上，填写以下字段：
 
    ![虚拟 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543022"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052175"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -44,7 +44,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 
 ### <a name="enterprise-agreement-customers"></a>企业协议客户
 
-款项将添加到进行交换和退款的货币承诺，前提是原始购买是使用其中一个进行的。 任何自原始购买以来生成的超额发票会重新打开并重新计费，确保使用货币承诺。 如果通过预留购买的货币承诺期限不再有效，则会将额度添加到当前的企业协议货币承诺期限。
+款项将添加到进行交换和退款的货币承诺，前提是原始购买是使用其中一个进行的。 任何自原始购买以来生成的超额发票会重新打开并重新计费，确保使用货币承诺。 如果通过预留购买的货币承诺期限不再有效，则会将额度添加到当前的企业协议货币承诺期限。 此额度自退款之日起 90 天内有效。 未使用的额度在 90 天结束之时过期。
 
 如果原始购买是以超额形式完成的，则 Microsoft 会发出信用票据。
 

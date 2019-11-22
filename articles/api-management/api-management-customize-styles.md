@@ -1,5 +1,5 @@
 ---
-title: 在 Azure API 管理开发人员门户中自定义页面样式 | Microsoft Docs
+title: 在 Azure API 管理旧版开发人员门户中自定义页面样式 | Microsoft Docs
 description: 遵循本快速入门中的步骤，在 Azure API 管理开发人员门户中自定义元素的样式。
 services: api-management
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073711"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176860"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
 
@@ -28,13 +28,13 @@ ms.locfileid: "70073711"
 * 跨开发人员门户更新页面元素所用的样式（本指南中所述）
 * [修改门户生成的页面所用的模板](api-management-developer-portal-templates.md)（例如 API 文档、产品和用户身份验证）
 
-本教程介绍如何执行下列操作：
-
-> [!div class="checklist"]
-> * 自定义**开发人员**门户页面中元素的样式
-> * 查看更改
+本文介绍如何自定义旧版开发人员门户页面上元素的样式并查看更改  。
 
 ![自定义样式](./media/modify-developer-portal-style/developer_portal.png)
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,12 +42,10 @@ ms.locfileid: "70073711"
 + 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
-
 ## <a name="customize-the-developer-portal"></a>自定义开发人员门户
 
 1. 选择“概述”。 
-2. 单击“概述”窗口顶部的“开发人员门户”按钮。   或者，可以单击“开发人员门户 URL”链接。 
+2. 单击“概述”窗口顶部的“开发人员门户(旧版)”按钮   。
 3. 在屏幕的左上方，可以看到由两支画笔构成的图标。 将鼠标悬停在此图标上，打开门户自定义菜单。
 
     ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -77,11 +75,5 @@ ms.locfileid: "70073711"
 2. 可以看到所做的更改。
 
 ## <a name="next-steps"></a>后续步骤
-
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 自定义**开发人员**门户页面中元素的样式
-> * 查看更改
 
 你还可能希望了解[如何使用模板自定义 Azure API 管理开发人员门户](api-management-developer-portal-templates.md)。

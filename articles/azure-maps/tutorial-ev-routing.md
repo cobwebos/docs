@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Notebooks 规划电动车路线 (Python) | Microsoft Docs
-description: 使用 Azure Maps 路线 API 和 Azure Notebooks 规划电动车路线。
+title: 教程：使用 Azure Notebooks 规划电动车路线 (Python)
+description: 教程：使用 Azure Maps 路线 API 和 Azure Notebooks 规划电动车路线。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243286"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109607"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>使用 Azure Notebooks 规划电动车路线 (Python)
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
 Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 创建位置感知的应用及 IoT、移动、物流与资产跟踪解决方案。 
 
@@ -41,7 +41,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 若要在 S1 定价层中创建 Azure Maps 帐户订阅，请按照[管理 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明操作。 
 
-若要获取帐户的主订阅密钥，请按照[使用 Azure Maps 搜索附近的兴趣点](./tutorial-search-location.md#getkey)中的说明操作。
+若要获取帐户的主要订阅密钥，请按照[创建帐户及获取密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)中的说明进行操作。
 
 ## <a name="create-an-azure-notebook"></a>创建 Azure Notebook
 
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 确定可抵达范围内的所有可能的充电站之后，需要知道在最短时间内可以抵达其中的哪个充电站。 
 
-以下脚本调用 Azure Maps 的[矩阵路线 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)，以返回指定车辆的位置，以及与每个充电站之间的行程时间和距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
+以下脚本调用 Azure Maps 的[矩阵路线 API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)，以返回指定车辆的位置，以及与每个充电站之间的行程时间和距离。 下一个单元中的脚本将分析响应，以找到在给定时间内可抵达的最近充电站。
 
 若要查找可在最短时间内抵达的最近充电站，请运行以下单元中的脚本：
 
@@ -394,8 +394,8 @@ display(Image(staticMapImage))
 * [获取路线范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
 * [在几何结构中发布搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [数据上传](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [渲染器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [发布路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [呈现器 - 获取地图图像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [发布路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [获取路线方向](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 有关 Azure Maps REST API 的完整列表，请参阅 [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference)。

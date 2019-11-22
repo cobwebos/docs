@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f248fe125873b4ed1e930e56865e4e403bcceea6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529011"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053840"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
@@ -87,7 +87,7 @@ ms.locfileid: "72529011"
 
 ## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>使用 CreateUiDefinition.json 定义创建体验
 
-作为发布者，可以使用 **createUiDefinition.json** 文件定义创建体验，该文件为创建托管应用程序的用户生成界面。 可以使用 [control elements] (create-uidefinition-elements.md)（包括下拉框、文本框和密码框）定义用户如何为每个参数提供输入。
+作为发布者，可以使用 **createUiDefinition.json** 文件定义创建体验，该文件为创建托管应用程序的用户生成界面。 使用[控件元素](create-uidefinition-elements.md)（包括下拉框、文本框和密码框）来定义用户如何为每个参数提供输入。
 
 创建一个名为 **createUiDefinition.json** 的文件（此名称区分大小写）
 

@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572155"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907138"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -68,6 +68,10 @@ ms.locfileid: "73572155"
 - 不支持通配符证书。
 - 不支持裸域。
 - 不可导出。
+
+> [!NOTE]
+> 免费证书是由 DigiCert 颁发的。 对于某些顶级域，必须通过创建值为 `0 issue digicert.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 DigiCert 作为证书颁发者。
+> 
 
 若要创建免费应用服务托管证书，请执行以下操作：
 
@@ -325,7 +329,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="export-certificate"></a>导出证书
 
-由于应用服务证书是 [Key Vault 机密](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)，因此可以导出该证书的 PFX 副本，并将其用于其他 Azure 服务或 Azure 外部。
+由于应用服务证书是 [Key Vault 机密](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets)，因此可以导出该证书的 PFX 副本，并将其用于其他 Azure 服务或 Azure 之外的服务。
 
 若要将应用服务证书导出为 PFX 文件，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令。 如果[已安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，则还可以在本地运行该命令。 将占位符替换为[创建应用服务证书](#start-certificate-order)时使用的名称。
 
@@ -344,7 +348,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-下载的 appservicecertificate.pfx  文件是一个原始 PKCS12 文件，其中包含公用证书和私有证书。 收到提示时，导入密码和 PEM 通行短语均为空字符串。
+下载的 appservicecertificate.pfx  文件是一个原始 PKCS12 文件，其中包含公用证书和私有证书。 在每个提示中，针对导入密码和 PEM 密码使用空字符串。
 
 ### <a name="delete-certificate"></a>删除证书 
 

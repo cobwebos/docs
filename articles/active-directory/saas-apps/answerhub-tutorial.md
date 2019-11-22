@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227484"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教程：Azure Active Directory 与 AnswerHub 集成
 
@@ -156,7 +157,7 @@ ms.locfileid: "68227484"
 
 5. 在“密钥和证书”部分中，完成以下步骤  ：
 
-    ![“密钥和证书”部分](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
+    ![密钥和证书部分](./media/answerhub-tutorial/ic785173.png "密钥和证书")  
 
     a. 在记事本中打开从 Azure 门户下载的 Base64 编码证书，复制其内容，然后粘贴到“IDP 公钥(x509 格式)”框中  。
   

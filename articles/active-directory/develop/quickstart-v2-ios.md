@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264174"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149509"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
-本快速入门包含了一个代码示例，该示例演示了本机 iOS 或 macOS 应用程序如何将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
+本快速入门包含了一个代码示例，该示例演示了本机 iOS 或 macOS 应用程序如何使用 Microsoft 标识平台将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
 
 本快速入门适用于 iOS 和 macOS 应用。 某些步骤只是 iOS 应用所需的。 这些步骤会指出它们仅适用于 iOS。
 
@@ -58,7 +58,7 @@ ms.locfileid: "72264174"
 >
 > 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://aka.ms/MobileAppReg)页。
 > 1. 选择“新注册”。 
-> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
+> 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >      - 在“名称”  部分输入一个当应用用户登录应用或进行应用许可时会显示给应用用户的有意义的应用程序名称。
 >      - 跳过此页上的其他配置。
 >      - 选择 `Register`。

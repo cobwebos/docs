@@ -1,5 +1,6 @@
 ---
-title: Azure AD v2.0 JavaScript 单页面应用程序 (SPA) 设置向导 | Microsoft Docs
+title: Azure AD v2.0 JavaScript 单页面应用程序 (SPA) 设置向导
+titleSuffix: Microsoft identity platform
 description: JavaScript SPA 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61790954393923bbf330ad3a534d1d33d1a44bbc
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fc03e6f1610fe6cef9ce72c981f6f800da8a9951
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983484"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802526"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -263,7 +264,7 @@ ms.locfileid: "70983484"
 
 用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。  此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。  成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名  。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
-本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌  。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
+本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌  。 如果需要用于验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 

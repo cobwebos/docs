@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376682"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898550"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft 合作伙伴协议计费帐户入门
 
 当你注册使用 Azure 时，系统将为你创建计费帐户。 可以使用计费帐户管理发票、付款并跟踪成本。 可以访问多个计费帐户。 例如，可以为个人项目注册 Azure。 也可通过组织的企业协议、Microsoft 客户协议或 Microsoft 合作伙伴协议访问 Azure。 每个这样的方案都会有单独的计费帐户。
 
-本文适用于 Microsoft 合作伙伴协议的计费帐户。 这些帐户是为云解决方案提供商 (CSP) 创建的，用于在新的商业体验中管理其客户的计费。 新体验仅适用于特定的合作伙伴，他们至少有一个接受 Microsoft 客户协议 (MCA) 且有 Azure 计划的客户。 [检查你是否有权访问 Microsoft 合作伙伴协议](#check-access-to-a-microsoft-partner-agreement)。
+本文适用于 Microsoft 合作伙伴协议的计费帐户。 这些帐户是为云解决方案提供商 (CSP) 创建的，用于在新的商业体验中管理其客户的计费。 新体验仅适用于特定的合作伙伴，他们至少有一个接受 Microsoft 客户协议且有 Azure 计划的客户。 [检查你是否有权访问 Microsoft 合作伙伴协议](#check-access-to-a-microsoft-partner-agreement)。 通过 [Azure 计划](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)，客户可以按 Microsoft 客户协议下的即用即付费率访问 Azure 服务。
 
 ## <a name="your-billing-account"></a>你的计费帐户
 
@@ -35,7 +35,7 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 ## <a name="billing-profiles"></a>计费对象信息
 
-使用计费对象信息可以管理某种货币的发票。 每月发票是在当月开始时针对帐户中的每项计费对象信息生成的。 发票包含上月的所有 Azure 订阅和其他购买项目的费用（使用计费对象信息的货币）。 
+使用计费对象信息可以管理某种货币的发票。 每月发票是在当月开始时针对帐户中的每项计费对象信息生成的。 发票包含上月的所有 Azure 订阅和其他购买项目的费用（使用计费对象信息的货币）。
 
 可以在 Azure 门户中查看发票并下载相关的文档（例如使用情况文件和价目表）。 有关详细信息，请参阅[下载 Microsoft 合作伙伴协议的发票](billing-download-azure-invoice.md)。
 
@@ -45,11 +45,11 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
 
 ## <a name="customers"></a>客户
 
-可以在 Azure 门户中查看和管理已接受 Microsoft 客户协议，因此有 Azure 计划的客户。 可以查看费用和交易，以及为这些客户创建并管理 Azure 订阅。 
+可以在 Azure 门户中查看和管理已接受 Microsoft 客户协议，因此有 Azure 计划的客户。 可以查看费用和交易，以及为这些客户创建并管理 Azure 订阅。
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>启用用于了解成本的策略
 
-应用策略来控制是否允许客户的组织中的用户查看和分析其 Azure 消耗的成本（采用即用即付费率）。 默认情况下，此策略处于关闭状态，用户不能查看成本。 启用以后，在订阅上有相应的 [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 访问权限的用户即可查看和分析订阅的成本。 
+应用策略来控制是否允许客户的组织中的用户查看和分析其 Azure 消耗的成本（采用即用即付费率）。 默认情况下，此策略处于关闭状态，用户不能查看成本。 启用以后，在订阅上有相应的 [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 访问权限的用户即可查看和分析订阅的成本。
 
 若要启用此策略，请执行以下操作：
 
@@ -60,7 +60,7 @@ Microsoft 合作伙伴协议的计费帐户包含开展业务时使用的每种�
    ![显示了 Azure 门户搜索的屏幕截图](./media/mpa-overview/search-cmb.png)
 
 1. 在左侧选择“客户”，然后从列表中选择一位客户。 
-   
+
    ![屏幕截图，显示正在选择客户](./media/mpa-overview/mpa-customers.png)
 
 1. 在左侧选择“策略”。 

@@ -1,29 +1,26 @@
 ---
-title: 安装并使用 Azure Terraform Visual Studio Code 扩展
+title: 教程 - 配置 Azure Terraform Visual Studio Code 扩展
 description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terraform 扩展。
-services: terraform
-ms.service: azure
-keywords: terraform, azure, devops, visual studio code, 扩展
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 7dd87f38ca5dfb1c2fdd38b56b314e0cbbe3ce12
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 93ec85a2e37350ef56ff8c2e1a0ea16bb3be355e
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169931"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969301"
 ---
-# <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>安装并使用 Azure Terraform Visual Studio Code 扩展
+# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>教程：配置 Azure Terraform Visual Studio Code 扩展
 
-Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创作、测试 Terraform 和结合 Azure 使用它时更加高效。 Visual Studio Code 中的扩展提供了 Terraform 命令支持、资源图可视化和 CloudShell 集成。
+借助 Azure Terraform Visual Studio Code 扩展，可以通过编辑器使用 Terraform。 使用此扩展，你可以创作、测试和运行 Terraform 配置。 此扩展还支持资源图表可视化效果。
 
 在本文中，学习如何：
 > [!div class="checklist"]
-> * 使用 Terraform 自动执行和简化 Azure 服务的预配。
-> * 安装和使用 Azure 服务的 Microsoft Terraform Visual Studio Code 扩展。
+> * 使用 Terraform 自动预配 Azure 服务
+> * 安装和使用 Azure 服务提供的 Terraform Visual Studio Code 扩展。
 > * 使用 Visual Studio Code 编写、规划和执行 Terraform 计划。
 
 ## <a name="prerequisites"></a>先决条件
@@ -144,7 +141,7 @@ Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创�
 
     ![是否要打开 Cloud Shell?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-1. 首次从新文件夹启动 Cloud Shell 时，需要设置 Web 应用程序。 选择“打开”  。
+1. 首次从新文件夹启动 Cloud Shell 时，系统将提示你创建一个 Web 应用程序。 选择“打开”  。
 
     ![首次启动 Cloud Shell](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
@@ -287,7 +284,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
 ![Lint 测试结果](media/terraform-vscode-extension/tf-lint-test-results.png)
 
-### <a name="module-test-end-to-end"></a>模块测试：端到端 
+### <a name="test-the-module"></a>测试模块
 
 1. 从菜单栏中，选择“视图”>“命令面板”>“Azure Terraform:  执行测试”。
 
@@ -304,7 +301,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
 几分钟后，终端窗格中会显示与以下示例类似的列表：
 
-![端到端试结果](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
+![测试结果](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

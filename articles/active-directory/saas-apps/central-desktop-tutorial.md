@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda8e928b530001faeae34c364dfed91d7620f0a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105741"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157510"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
 
@@ -140,11 +141,11 @@ ms.locfileid: "67105741"
 
 2. 转到“设置”  。 选择“高级”  ，然后选择“单一登录”  。
 
-    ![设置 - 高级](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
+    ![设置 - 高级](./media/central-desktop-tutorial/ic769563.png "设置 - 高级")
 
 3. 在“单一登录设置”  页上，执行以下步骤：
 
-    ![单一登录设置](./media/central-desktop-tutorial/ic769564.png "Single Sign-On Settings")
+    ![单一登录设置](./media/central-desktop-tutorial/ic769564.png "单一登录设置")
 
     a. 选择“启用 SAML v2 单一登录”  。
 
@@ -232,15 +233,15 @@ ms.locfileid: "67105741"
 
 2. 选择“人员”，然后选择“添加内部成员”   。
 
-    ![人员](./media/central-desktop-tutorial/ic781051.png "人员")
+    ![People](./media/central-desktop-tutorial/ic781051.png "人员")
 
 3. 在“新成员的电子邮件地址”框中，键入要预配的 Azure AD 帐户，并选择“下一步”   。
 
-    ![新成员的电子邮件地址](./media/central-desktop-tutorial/ic781052.png "Email Addresses of New Members")
+    ![新成员的电子邮件地址](./media/central-desktop-tutorial/ic781052.png "新成员的电子邮件地址")
 
 4. 选择“添加内部成员”  。
 
-    ![添加内部成员](./media/central-desktop-tutorial/ic781053.png "Add Internal Member")
+    ![添加内部成员](./media/central-desktop-tutorial/ic781053.png "添加内部成员")
   
    > [!NOTE]
    > 所添加的用户会收到一封电子邮件，其中包含用于激活其帐户的确认链接。

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中管理 Linux 虚拟机配置 | Microsoft Docs
+title: 教程 - 在 Azure 中管理 Linux 虚拟机配置
 description: 在本教程中，你将学习如何在 Linux 虚拟机上识别更改和管理包更新版
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: bc5029e0ea2d743fffe258af8e66728269d0933e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374343"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034553"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视更改并更新 Azure 中的 Linux 虚拟机
 

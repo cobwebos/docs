@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中均衡 Linux 虚拟机负载 | Microsoft Docs
+title: 教程 - 在 Azure 中对 Linux 虚拟机进行负载均衡
 description: 本教程介绍如何使用 Azure CLI 创建负载均衡器，以实现在三个 Linux 虚拟机上高度可用且安全的应用程序
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: daad74ae5f046edb1b4bf6eef547c963e52593f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300821"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034436"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>教程：在 Azure 中使用 Azure CLI 均衡 Linux 虚拟机负载以创建高可用性应用程序
 

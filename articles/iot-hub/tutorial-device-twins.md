@@ -1,24 +1,20 @@
 ---
 title: 从 Azure IoT 中心同步设备状态 | Microsoft Docs
-description: 使用设备孪生在设备与 IoT 中心之间同步状态
+description: 了解如何使用设备孪生从云中配置设备，并从设备接收状态和符合性数据。
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330358"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890434"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -45,7 +41,7 @@ ms.locfileid: "67330358"
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
-可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
+可从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 

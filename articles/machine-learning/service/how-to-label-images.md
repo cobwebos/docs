@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585583"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838940"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>如何在标签项目中标记图像
 
-一旦项目管理员在 Azure 机器学习工作室中创建了标签项目，你就可以使用标签工具为机器学习项目快速准备数据。 
+一旦项目管理员在 Azure 机器学习中创建了标签项目，你就可以使用标签工具为机器学习项目快速准备数据。 
 
 > [!div class="checklist"]
 > * 如何访问标签项目

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 为 Azure IoT 中心配置消息路由 | Microsoft Docs
-description: 使用 Azure CLI 为 Azure IoT 中心配置消息路由
+title: 使用 Azure CLI 为 Azure IoT 中心配置消息路由
+description: 使用 Azure CLI 为 Azure IoT 中心配置消息路由。 根据消息中的属性，路由到存储帐户或服务总线队列。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 103a18389a2b956f20b61ce45d045fb9a11c4356
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 340ea35bc3ed0c889a1a851da47f7e955116e103
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984715"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084467"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 配置 IoT 中心消息路由
 
@@ -30,17 +30,17 @@ ms.locfileid: "70984715"
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>使用 Azure CLI 创建资源
 
+复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 该脚本的第一节将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。 在学习本教程余下内容的过程中，请复制每个脚本块并将其粘贴到 Cloud Shell，以运行该块。
+
+> [!TIP]
+> 有关调试的提示：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保 Cloud Shell 会话正在运行 `bash`，并且所有反斜杠后面都没有空格。
+> 
+
 有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便进行标识，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。 
 
 > [!IMPORTANT]
 > 路由脚本也会使用初始脚本中设置的变量，因此，请在同一 Cloud Shell 会话中运行所有脚本。 如果打开新的会话来运行用于设置路由的脚本，则多个变量将会缺少值。
 >
-
-复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 该脚本的第一节将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。 在学习本教程余下内容的过程中，请复制每个脚本块并将其粘贴到 Cloud Shell，以运行该块。
-
-> [!TIP]
-> 有关调试的提示：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保任何反斜杠后面没有空格。
-> 
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account. 
@@ -155,7 +155,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 首先设置存储帐户的终结点，然后设置路由。 
 
-需设置以下变量：
+以下是脚本使用的、必须在 Cloud Shell 会话中设置的变量：
 
 **storageConnectionString**：此值是从前述脚本设置的存储帐户中检索的。 消息路由使用此值来访问存储帐户。
 
@@ -175,7 +175,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 **endpointName**：此字段是用于标识终结点的名称。 
 
-**enabled**：此字段默认为 `true`，表示创建消息路由后应启用该路由。
+**enabled**：此字段默认为 `true`，表示应在创建消息路由后启用该路由。
 
 **condition**：此字段是用于筛选发送到此终结点的消息的查询。 路由到存储的消息的查询条件是 `level="storage"`。
 
@@ -257,7 +257,7 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-现在，为服务总线队列设置路由终结点和消息路由。 需设置以下变量：
+现在，为服务总线队列设置路由终结点和消息路由。 以下是脚本使用的、必须在 Cloud Shell 会话中设置的变量：
 
 **endpointName**：此字段是用于标识终结点的名称。 
 

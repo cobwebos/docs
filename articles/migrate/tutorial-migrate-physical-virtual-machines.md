@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605545"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907107"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
 
@@ -123,7 +123,7 @@ ms.locfileid: "73605545"
 > [!NOTE]
 > 使用 Azure Migrate 服务器迁移进行基于代理的迁移依赖于 Azure Site Recovery 服务的功能。 某些要求可能提供了 Site Recovery 文档的链接。
 
-1. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) VMware 服务器要求。
+1. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)服务器要求。
 2. [验证](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)要迁移的 VM 的支持要求。
 3. 验证 VM 设置。 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](migrate-support-matrix-vmware.md#azure-vm-requirements)。
 
@@ -265,7 +265,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 
     ![复制 VM](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 VMware vSphere”。    
+2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”     。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。 
 4. 在“vCenter 服务器”中，指定用于管理 VM 的 vCenter 服务器的名称，或者 VM 所在的 vSphere 服务器的名称。 
 5. 在“进程服务器”中，选择复制设备的名称。 

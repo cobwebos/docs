@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 32af532fcb3b3c5a294590bb7a1fa610d1068e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094453"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>教程：Azure Active Directory 与 Picturepark 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "67094453"
     | |
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Picturepark 客户端支持团队](https://picturepark.com/about/contact/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Picturepark 客户端支持团队](https://picturepark.com/company/picturepark-customer-support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“SAML 签名证书”  部分中，单击“编辑”  按钮以打开“SAML 签名证书”  对话框。
 
@@ -148,7 +148,7 @@ ms.locfileid: "67094453"
 
 3. 单击“身份验证”，并单击“标识提供者”。  
    
-    ![身份验证](./media/picturepark-tutorial/ic795063.png "身份验证")
+    ![身份验证](./media/picturepark-tutorial/ic795063.png "Authentication")
 
 4. 在“标识提供者配置”部分执行以下步骤： 
    
@@ -168,7 +168,7 @@ ms.locfileid: "67094453"
 
 6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 并单击“保存”    。
 
-      ![配置](./media/picturepark-tutorial/ic795065.png "Configuration")
+      ![配置](./media/picturepark-tutorial/ic795065.png "配置")
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 

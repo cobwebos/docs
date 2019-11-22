@@ -1,19 +1,19 @@
 ---
 title: 有关搜索结果分页的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程是根据“创建第一个应用 - Azure 认知搜索”项目编写的，有两种类型的分页可供选择。 第一个使用一系列页码按钮，还使用“第一页”、“下一页”、“上一页”和“最后一页”按钮。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
+description: 本教程演示如何对搜索结果进行分页。 它基于现有的酒店项目，通过第一个、下一个、前一个、最后一个和编号按钮进行分页。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793999"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113763"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教程：搜索结果分页 - Azure 认知搜索
 

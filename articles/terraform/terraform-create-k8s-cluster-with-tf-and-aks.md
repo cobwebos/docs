@@ -1,25 +1,23 @@
 ---
-title: 使用 Azure Kubernetes 服务 (AKS) 和 Terraform 创建 Kubernetes 群集
+title: 教程 - 使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
 description: 演示如何使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集的教程
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 虚拟机, azure, kubernetes
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173498"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833611"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
-[Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
+# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教程：使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
 
-本教程介绍如何使用 [Terraform](https://terraform.io) 和 AKS 来执行创建 [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) 群集的任务：
+[Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境。 使用 AKS 可以部署和管理容器化应用程序，而无需具备容器业务流程方面的专业知识。 使用 AKS 还可在应用不离线的情况下进行许多常见的维护操作。 这些操作包括按需预配、更新和缩放资源。
+
+本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
 > * 使用 HCL（HashiCorp 语言）定义 Kubernetes 群集
@@ -35,6 +33,7 @@ ms.locfileid: "71173498"
 - **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文的“创建服务主体”部分中的指导  。 记下 appId、displayName、password 和 tenant 的值。
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
+
 首先，创建包含 Terraform 配置文件的目录用于练习。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
@@ -62,15 +61,14 @@ ms.locfileid: "71173498"
     ```
 
 ## <a name="declare-the-azure-provider"></a>声明 Azure 提供程序
+
 创建声明 Azure 提供程序的 Terraform 配置文件。
 
 1. 在 Cloud Shell 中，创建名为 `main.tf` 的文件。
 
     ```bash
-    vi main.tf
+    code main.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
@@ -84,31 +82,24 @@ ms.locfileid: "71173498"
     }
     ```
 
-1. 按 **Esc** 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 ## <a name="define-a-kubernetes-cluster"></a>定义 Kubernetes 群集
+
 创建 Terraform 配置文件，用于声明 Kubernetes 群集的资源。
 
 1. 在 Cloud Shell 中，创建名为 `k8s.tf` 的文件。
 
     ```bash
-    vi k8s.tf
+    code k8s.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
     ```hcl
     resource "azurerm_resource_group" "k8s" {
-        name     = "${var.resource_group_name}"
-        location = "${var.location}"
+        name     = var.resource_group_name
+        location = var.location
     }
     
     resource "random_id" "log_analytics_workspace_name_suffix" {
@@ -118,17 +109,17 @@ ms.locfileid: "71173498"
     resource "azurerm_log_analytics_workspace" "test" {
         # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
         name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
-        location            = "${var.log_analytics_workspace_location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        sku                 = "${var.log_analytics_workspace_sku}"
+        location            = var.log_analytics_workspace_location
+        resource_group_name = azurerm_resource_group.k8s.name
+        sku                 = var.log_analytics_workspace_sku
     }
 
     resource "azurerm_log_analytics_solution" "test" {
         solution_name         = "ContainerInsights"
-        location              = "${azurerm_log_analytics_workspace.test.location}"
-        resource_group_name   = "${azurerm_resource_group.k8s.name}"
-        workspace_resource_id = "${azurerm_log_analytics_workspace.test.id}"
-        workspace_name        = "${azurerm_log_analytics_workspace.test.name}"
+        location              = azurerm_log_analytics_workspace.test.location
+        resource_group_name   = azurerm_resource_group.k8s.name
+        workspace_resource_id = azurerm_log_analytics_workspace.test.id
+        workspace_name        = azurerm_log_analytics_workspace.test.name
 
         plan {
             publisher = "Microsoft"
@@ -137,36 +128,36 @@ ms.locfileid: "71173498"
     }
 
     resource "azurerm_kubernetes_cluster" "k8s" {
-        name                = "${var.cluster_name}"
-        location            = "${azurerm_resource_group.k8s.location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        dns_prefix          = "${var.dns_prefix}"
+        name                = var.cluster_name
+        location            = azurerm_resource_group.k8s.location
+        resource_group_name = azurerm_resource_group.k8s.name
+        dns_prefix          = var.dns_prefix
 
         linux_profile {
             admin_username = "ubuntu"
 
             ssh_key {
-                key_data = "${file("${var.ssh_public_key}")}"
+                key_data = file(var.ssh_public_key)
             }
         }
 
         agent_pool_profile {
             name            = "agentpool"
-            count           = "${var.agent_count}"
+            count           = var.agent_count
             vm_size         = "Standard_DS1_v2"
             os_type         = "Linux"
             os_disk_size_gb = 30
         }
 
         service_principal {
-            client_id     = "${var.client_id}"
-            client_secret = "${var.client_secret}"
+            client_id     = var.client_id
+            client_secret = var.client_secret
         }
 
         addon_profile {
             oms_agent {
             enabled                    = true
-            log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+            log_analytics_workspace_id = azurerm_log_analytics_workspace.test.id
             }
         }
 
@@ -176,29 +167,21 @@ ms.locfileid: "71173498"
     }
     ```
 
-    上面的代码设置群集的名称、位置和 resource_group_name。 此外，设置了 dns_prefix 值 - 构成了用于访问群集的完全限定域名 (FQDN) 的一部分。
+    上面的代码设置群集的名称、位置和资源组名称。 此外，还设置了完全限定域名 (FQDN) 的前缀。 FQDN 用于访问群集。
 
-    使用 **linux_profile** 记录可以配置用于通过 SSH 登录到工作节点的设置。
+    使用 `linux_profile` 记录可以配置用于通过 SSH 登录到工作器节点的设置。
 
-    使用 AKS 时，只需支付工作节点的费用。 **agent_pool_profile** 记录配置这些工作节点的详细信息。 **agent_pool_profile 记录**包含要创建的工作节点数，以及工作节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 **count** 值。
+    使用 AKS 时，只需支付工作节点的费用。 `agent_pool_profile` 记录配置这些工作器节点的详细信息。 `agent_pool_profile record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 `count` 值。
 
-1. 按 **Esc** 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 ## <a name="declare-the-variables"></a>声明变量
 
 1. 在 Cloud Shell 中，创建名为 `variables.tf` 的文件。
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
@@ -245,73 +228,65 @@ ms.locfileid: "71173498"
    }
     ```
 
-1. 按 **Esc** 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 ## <a name="create-a-terraform-output-file"></a>创建 Terraform 输出文件
+
 使用 [Terraform 输出](https://www.terraform.io/docs/configuration/outputs.html)可以定义当 Terraform 应用计划时要向用户突出显示的、可以使用 `terraform output` 命令查询的值。 在本部分，我们将创建一个输出文件，以便使用 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) 访问群集。
 
 1. 在 Cloud Shell 中，创建名为 `output.tf` 的文件。
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. 按 I 键进入插入模式。
 
 1. 在编辑器中粘贴以下代码：
 
     ```hcl
     output "client_key" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_key
     }
 
     output "client_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate
     }
 
     output "cluster_ca_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate
     }
 
     output "cluster_username" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.username}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.username
     }
 
     output "cluster_password" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.password}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.password
     }
 
     output "kube_config" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config_raw}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config_raw
     }
 
     output "host" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.host
     }
     ```
 
-1. 按 **Esc** 键退出插入模式。
-
-1. 保存文件，然后输入以下命令退出 vi 编辑器：
-
-    ```bash
-    :wq
-    ```
+1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>将 Azure 存储设置为存储 Terraform 状态
-Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户环境中，此模式非常合适。 但是，在更常见的多用户环境中，需要利用 [Azure 存储](/azure/storage/)来跟踪服务器上的状态。 在本部分，我们将检索所需的存储帐户信息（帐户名称和帐户密钥），并创建用于存储 Terraform 状态信息的存储容器。
+
+Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户环境中，此模式非常合适。 在多用户环境中，[Azure 存储](/azure/storage/)用于跟踪状态。
+
+本部分介绍如何执行以下任务：
+- 检索存储帐户信息（帐户名称和帐户密钥）
+- 创建存储 Terraform 状态信息的存储容器。
 
 1. 在 Azure 门户的左侧菜单中，选择“所有服务”。 
 
 1. 选择“存储帐户”。 
 
-1. 在“存储帐户”选项卡上，选择用于存储 Terraform 状态信息的存储帐户名称。  例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 **请记住选择的存储帐户名称，因为稍后需要用到。**
+1. 在“存储帐户”选项卡上，选择用于存储 Terraform 状态信息的存储帐户名称。  例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 记下所选的存储帐户。 稍后将需要使用此值。
 
 1. 在存储帐户选项卡上，选择“访问密钥”。 
 
@@ -321,16 +296,17 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![存储帐户访问密钥](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. 在 Cloud Shell 中，在 Azure 存储帐户内创建一个容器（请将 &lt;YourAzureStorageAccountName> 和 &lt;YourAzureStorageAccountAccessKey> 占位符替换为 Azure 存储帐户的相应值）。
+1. 在 Cloud Shell 的 Azure 存储帐户中创建容器。 将占位符替换为你的环境的相应值。
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
 ## <a name="create-the-kubernetes-cluster"></a>创建 Kubernetes 群集
+
 本部分介绍如何使用 `terraform init` 命令来创建资源，这些资源定义了前面部分中所创建的配置文件。
 
-1. 在 Cloud Shell 中启动 Terraform（请将 &lt;YourAzureStorageAccountName> 和 &lt;YourAzureStorageAccountAccessKey> 占位符替换为 Azure 存储帐户的相应值）。
+1. 在 Cloud Shell 中，初始化 Terraform。 将占位符替换为你的环境的相应值。
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -340,11 +316,11 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform init”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. 导出服务主体凭据。 将 &lt;your-client-id> 和 &lt;your-client-secret> 占位符分别替换为与服务主体关联的 **appId** 和 **password** 值。
+1. 导出服务主体凭据。 将占位符替换为服务主体的相应值。
 
     ```bash
-    export TF_VAR_client_id=<your-client-id>
-    export TF_VAR_client_secret=<your-client-secret>
+    export TF_VAR_client_id=<service-principal-appid>
+    export TF_VAR_client_secret=<service-principal-password>
     ```
 
 1. 运行 `terraform plan` 命令，以创建定义基础结构元素的 Terraform 计划。 
@@ -367,11 +343,12 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform apply”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. 在 Azure 门户中，在左侧菜单中选择“所有服务”，查看为新 Kubernetes 群集创建的资源。 
+1. 在 Azure 门户中，在左侧菜单中选择“所有资源”，查看为新 Kubernetes 群集创建的资源  。
 
-    ![Cloud Shell 提示符](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Azure 门户中的所有资源](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>在 Cloud Shell 超时后进行恢复
+
 如果 Cloud Shell 会话超时，可执行以下步骤予以恢复：
 
 1. 启动 Cloud Shell 会话。
@@ -389,6 +366,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
     ```
     
 ## <a name="test-the-kubernetes-cluster"></a>测试 Kubernetes 群集
+
 可以使用 Kubernetes 工具来验证新建的群集。
 
 1. 从 Terraform 状态中获取 Kubernetes 配置，并将其存储在 kubectl 可以读取的文件中。
@@ -414,12 +392,10 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
     ![使用 kubectl 工具可以验证 Kubernetes 群集的运行状况](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
 ## <a name="monitor-health-and-logs"></a>监视运行状况和日志
-创建 AKS 群集以后，已启用监视功能来捕获群集节点和 Pod 的运行状况指标。 Azure 门户提供这些运行状况指标。 有关容器运行状况监视的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
+
+创建 AKS 群集以后，已启用监视功能来捕获群集节点和 Pod 的运行状况指标。 Azure 门户提供这些运行状况指标。 有关容器运行状况监视的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况](/azure/azure-monitor/insights/container-insights-overview)。
 
 ## <a name="next-steps"></a>后续步骤
-本文已介绍如何使用 Terraform 和 AKS 创建 Kubernetes 群集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform： 
 
- [Microsoft.com 中的 Terraform 中心](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure 提供程序文档](https://aka.ms/terraform)  
- [Terraform Azure 提供程序源](https://aka.ms/tfgit)  
- [Terraform Azure 模块](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [详细了解如何在 Azure 中使用 Terraform](/azure/terraform)

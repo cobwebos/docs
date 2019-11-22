@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Maps 创建地域隔离区 | Microsoft Docs
-description: 使用 Azure Maps 设置地域隔离区。
+title: 教程：使用 Azure Maps 创建地域隔离区
+description: 教程：使用 Azure Maps 设置地域隔离区。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694927"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107096"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
 本教程将引导你完成使用 Azure Maps 设置地域隔离区的基本步骤。 本教程中所述的方案可帮助工地管理员监视潜在危险的设备越过指定的施工区域。 工地使用昂贵的设备，并需要遵守相关法规。 这些设备通常必须保留在工地范围以内，在未经许可的情况下不可离开工地。
 

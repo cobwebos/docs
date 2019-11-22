@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中的 Linux 虚拟机上部署 LEMP | Microsoft Docs
+title: 教程 - 在 Azure 中的 Linux 虚拟机上部署 LEMP
 description: 本教程介绍如何在 Azure 中的 Linux 虚拟机上安装 LEMP 堆栈
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299387"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034456"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上安装 LEMP Web 服务器
 

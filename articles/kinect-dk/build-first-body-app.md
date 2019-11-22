@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 生成第一个 Azure Kinect 人体跟踪应用程序
+title: 快速入门：生成 Azure Kinect 人体跟踪应用程序
 description: 有关生成第一个 Azure Kinect 人体跟踪应用程序的分步说明
 author: qm13
 ms.author: quentinm
@@ -8,14 +8,14 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
-ms.openlocfilehash: f99883376688e58a696057078e1c3502dc86a27b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 46110021495f924b3521f8748fbd282c0e8094b8
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828064"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053880"
 ---
-# <a name="quickstart-build-your-first-azure-kinect-body-tracking-application"></a>快速入门：生成第一个 Azure Kinect 人体跟踪应用程序
+# <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>快速入门：生成 Azure Kinect 人体跟踪应用程序
 
 想要开始使用人体跟踪 SDK？ 本快速入门可帮助你启动并运行人体跟踪！
 

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 在 Azure 中为 Linux 创建虚拟机规模集 | Microsoft Docs
+title: 教程 - 在 Azure 中为 Linux 创建虚拟机规模集
 description: 本教程介绍如何通过 Azure CLI 使用虚拟机规模集在 Linux VM 上创建和部署高度可用的应用程序
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3887e32aba625e6aaca01f1a8f743e50ff580d9e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b9368da24af3b0fe08045ed869c752eefe3912fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300844"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034520"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 

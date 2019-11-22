@@ -1,22 +1,19 @@
 ---
-title: 在 Azure 中使用 Terraform 创建中心辐射型混合网络拓扑
+title: 教程 - 使用 Terraform 在 Azure 中创建中心辐射型混合网络拓扑
 description: 本教程演示如何使用 Terraform 在 Azure 中创建完整的混合网络参考体系结构
-services: terraform
-ms.service: azure
-keywords: terraform, 中心辐射, 网络, 混合网络, devops, 虚拟机, azure, vnet 对等互连, 网络虚拟设备
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173451"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969400"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 创建中心辐射型混合网络拓扑
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>教程：使用 Terraform 在 Azure 中创建中心辐射型混合网络拓扑
 
 本教程系列介绍如何使用 Terraform 在 Azure 中实现[中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 
 

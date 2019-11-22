@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/07/2019
+ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbfb07b73d591bbab64f38e8c986fb1b7e072a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f901bd37a54d12dc2afe805f71c7b018a277e34
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106593"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969630"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教程：将 Atlassian Cloud 与 Azure Active Directory 集成
 
@@ -43,7 +43,9 @@ ms.locfileid: "67106593"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 Atlassian Cloud 支持 SP 和 IDP 发起的 SSO 
+本教程在测试环境中配置并测试 Azure AD SSO。 
+
+* Atlassian Cloud 支持 SP 和 IDP 发起的 SSO 
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>从库中添加 Atlassian Cloud
 
@@ -63,11 +65,11 @@ ms.locfileid: "67106593"
 若要配置和测试 Atlassian Cloud 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 Atlassian Cloud SSO](#configure-atlassian-cloud-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B.Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B.Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Atlassian Cloud 测试用户](#create-atlassian-cloud-test-user)** - 在 Atlassian Cloud 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Atlassian Cloud SSO](#configure-atlassian-cloud-sso)** - 在应用程序端配置单一登录设置。
+    * **[创建 Atlassian Cloud 测试用户](#create-atlassian-cloud-test-user)** - 在 Atlassian Cloud 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -79,7 +81,7 @@ ms.locfileid: "67106593"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://auth.atlassian.com/saml/<unique ID>`
 
@@ -119,56 +121,15 @@ ms.locfileid: "67106593"
 
     c. 注销 URL
 
-### <a name="configure-atlassian-cloud-sso"></a>配置 Atlassian Cloud SSO
-
-1. 若要在 Atlassian Cloud 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”  ，方法是单击“安装扩展”  。
-
-    ![我的应用扩展](common/install-myappssecure-extension.png)
-
-2. 将扩展添加到浏览器后，单击“设置 Atlassian Cloud”  会将你定向到 Atlassian Cloud 应用程序。 在此处，提供管理员凭据以登录到 Atlassian Cloud。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
-
-    ![设置配置](common/setup-sso.png)
-
-3. 如果想要手动设置 Atlassian Cloud，请打开新的 Web 浏览器窗口并以管理员身份登录到 Atlassian Cloud 公司网站，并执行以下步骤：
-
-4. 在打算配置单一登录前，需要对你的域进行验证。 有关详细信息，请参阅 [Atlassian 域验证](https://confluence.atlassian.com/cloud/domain-verification-873871234.html)文档。
-
-5. 在左侧窗格中，选择“安全性”   > “SAML 单一登录”  。 如果尚未订阅 Atlassian Identity Manager，请订阅。
-
-    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-11.png)
-
-6. 在“添加 SAML 配置”窗口中执行以下操作： 
-
-    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-12.png)
-
-    a. 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 **Azure AD 标识符**  。
-
-    b. 在“标识提供者 SSO URL”框中，粘贴从 Azure 门户复制的**登录 URL**  。
-
-    c. 在 Azure 门户中打开下载的证书 .txt 文件，复制其中包含的值（不要复制 *Begin Certificate* 和 *End Certificate* 行），然后将其粘贴到“公共 X509 证书”框中。 
-
-    d. 单击“保存配置”  。
-
-7. 为了确保设置正确的 URL，请执行以下操作来更新 Azure AD 设置：
-
-    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-13.png)
-
-    a. 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“基本 SAML 配置”下，将此 ID 粘贴到“标识符”框中。   
-
-    b. 在“SAML”窗口中，复制“SP 断言使用者服务 URL”，然后在 Azure 门户中 Atlassian Cloud 的“基本 SAML 配置”下，将此 URL 粘贴到“回复 URL”框中。    “登录 URL”是 Atlassian Cloud 的租户 URL。
-
-    > [!NOTE]
-    > 现有客户在 Azure 门户中更新“SP 标识 ID”和“SP 断言使用者服务 URL”值之后，应选择“是，更新配置”。    新客户可以跳过此步骤。
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
 
@@ -182,13 +143,54 @@ ms.locfileid: "67106593"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-atlassian-cloud-sso"></a>配置 Atlassian Cloud SSO
+
+1. 若要在 Atlassian Cloud 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”  ，方法是单击“安装扩展”  。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 Atlassian Cloud”  会将你定向到 Atlassian Cloud 应用程序。 在此处，提供管理员凭据以登录到 Atlassian Cloud。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 如果想要手动设置 Atlassian Cloud，请打开新的 Web 浏览器窗口并以管理员身份登录到 Atlassian Cloud 公司网站，并执行以下步骤：
+
+1. 在打算配置单一登录前，需要对你的域进行验证。 有关详细信息，请参阅 [Atlassian 域验证](https://confluence.atlassian.com/cloud/domain-verification-873871234.html)文档。
+
+1. 在左侧窗格中，选择“安全性”   > “SAML 单一登录”  。 如果尚未订阅 Atlassian Identity Manager，请订阅。
+
+    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-11.png)
+
+1. 在“添加 SAML 配置”窗口中执行以下操作： 
+
+    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-12.png)
+
+    a. 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 **Azure AD 标识符**  。
+
+    b. 在“标识提供者 SSO URL”框中，粘贴从 Azure 门户复制的**登录 URL**  。
+
+    c. 在 Azure 门户中打开下载的证书 .txt 文件，复制其中包含的值（不要复制 *Begin Certificate* 和 *End Certificate* 行），然后将其粘贴到“公共 X509 证书”框中。 
+
+    d. 单击“保存配置”  。
+
+1. 为了确保设置正确的 URL，请执行以下操作来更新 Azure AD 设置：
+
+    ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-13.png)
+
+    a. 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“基本 SAML 配置”下，将此 ID 粘贴到“标识符”框中。   
+
+    b. 在“SAML”窗口中，复制“SP 断言使用者服务 URL”，然后在 Azure 门户中 Atlassian Cloud 的“基本 SAML 配置”下，将此 URL 粘贴到“回复 URL”框中。    “登录 URL”是 Atlassian Cloud 的租户 URL。
+
+    > [!NOTE]
+    > 现有客户在 Azure 门户中更新“SP 标识 ID”和“SP 断言使用者服务 URL”值之后，应选择“是，更新配置”。    新客户可以跳过此步骤。
 
 ### <a name="create-atlassian-cloud-test-user"></a>创建 Atlassian Cloud 测试用户
 
@@ -198,15 +200,15 @@ ms.locfileid: "67106593"
 
     ![Atlassian Cloud“用户”链接](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-14.png)
 
-2. 若要在 Atlassian Cloud 中创建用户，请选择“邀请用户”。 
+1. 若要在 Atlassian Cloud 中创建用户，请选择“邀请用户”。 
 
     ![创建 Atlassian Cloud 用户](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-15.png)
 
-3. 在“电子邮件地址”框中输入该用户的电子邮件地址，然后分配应用程序访问权限。 
+1. 在“电子邮件地址”框中输入该用户的电子邮件地址，然后分配应用程序访问权限。 
 
     ![创建 Atlassian Cloud 用户](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
-4. 若要向该用户发送电子邮件邀请，请选择“邀请用户”。  随后会将一封电子邮件邀请发送给该用户，接受邀请后，该用户将在系统中激活。
+1. 若要向该用户发送电子邮件邀请，请选择“邀请用户”。  随后会将一封电子邮件邀请发送给该用户，接受邀请后，该用户将在系统中激活。
 
 > [!NOTE]
 > 还可以通过选择“用户”部分中的“批量创建”按钮来批量创建用户。  
@@ -222,3 +224,5 @@ ms.locfileid: "67106593"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [通过 Azure AD 试用 Atlassian Cloud](https://aad.portal.azure.com/)

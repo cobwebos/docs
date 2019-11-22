@@ -1,5 +1,5 @@
 ---
-title: 教程 - 监视 Azure 中的 Windows 虚拟机 | Microsoft Docs
+title: 教程 - 监视 Azure 中的 Windows 虚拟机
 description: 本教程介绍如何监视 Windows 虚拟机上运行的性能和发现的应用程序组件。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a2f4083841c801db3edf1b2838b8d3271b700731
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679342"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112484"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机
 
@@ -91,7 +91,7 @@ Windows VM 在 Azure 中有一个与它交互的专用主机 VM。 系统会自�
 
 3. 在“见解(预览版)”页上，选择“立即试用”。  
 
-    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. 在“Azure Monitor Insights 载入”页上，如果现有的 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
 

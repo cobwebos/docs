@@ -1,18 +1,18 @@
 ---
-title: 为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器
-description: 了解如何使用 Azure Site Recovery 服务准备本地 Hyper-V VM 以进行到 Azure 的灾难恢复。
+title: 使用 Azure Site Recovery 为到 Azure 的 Hyper-V VM 的灾难恢复做准备
+description: 了解如何使用 Azure Site Recovery 准备本地 Hyper-V VM 以进行到 Azure 的灾难恢复。
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813728"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954005"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>为 Hyper-V VM 到 Azure 的灾难恢复准备本地 Hyper-V 服务器
 

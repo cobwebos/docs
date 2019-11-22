@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure DevOps Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs
+title: 教程 - 使用 Azure DevOps Services 通过 Jenkins 实现到 Azure VM 的 CI/CD
 description: 本教程介绍如何从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM
 author: tomarchermsft
 manager: jpconnock
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828429"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034571"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 

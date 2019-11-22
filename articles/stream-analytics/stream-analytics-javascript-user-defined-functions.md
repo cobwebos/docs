@@ -1,5 +1,5 @@
 ---
-title: '教程：Azure 流分析 JavaScript 用户定义的函数 | Microsoft 文档 '
+title: Azure 流分析 JavaScript 用户定义的函数
 description: 在本教程中，将使用 JavaScript 用户定义的函数执行高级查询机制
 services: stream-analytics
 author: rodrigoamicrosoft
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329378"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990221"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
  
@@ -71,6 +71,9 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 6.  选择“保存”。  该函数随即显示在函数列表中。
 7.  选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要*包含该前缀*。 在本例中，调用的是 **UDF.hex2Int**。
 
+## <a name="testing-javascript-udfs"></a>测试 JavaScript UDF 
+可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
 1. 在查询编辑器中的“作业拓扑”  标题下，选择“查询”  。
@@ -102,7 +105,7 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
 double | Number
-nvarchar(MAX) | 字符串
+nvarchar(MAX) | String
 Record | Object
 Array | Array
 Null | Null
@@ -115,7 +118,7 @@ JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime
-字符串 | nvarchar(MAX)
+String | nvarchar(MAX)
 Object | Record
 Array | Array
 Null、Undefined | Null
@@ -125,7 +128,6 @@ JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写�
 
 ## <a name="troubleshooting"></a>故障排除
 JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。 
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>JavaScript 用户定义的函数的其他模式
 

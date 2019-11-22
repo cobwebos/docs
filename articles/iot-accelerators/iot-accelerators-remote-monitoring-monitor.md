@@ -1,5 +1,5 @@
 ---
-title: 教程：通过 Azure 解决方案监视 IoT 设备 - Azure | Microsoft Docs
+title: 在远程监视解决方案中监视设备 - Azure | Microsoft Docs
 description: 本教程介绍如何使用远程监视解决方案加速器监视 IoT 设备。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173815"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890867"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>教程：监视 IoT 设备
 
@@ -37,7 +37,7 @@ ms.locfileid: "58173815"
 
 ## <a name="choose-the-devices-to-display"></a>选择要显示的设备
 
-若要选择想要在“仪表板”页上显示的联网设备，请使用筛选器。 如果只想显示“卡车”设备，请在筛选器下拉列表中选择内置的“卡车”筛选器：
+若要选择想要在“仪表板”页上显示的联网设备，请使用筛选器。  如果只想显示“卡车”设备，请在筛选器下拉列表中选择内置的“卡车”筛选器：  
 
 [![在仪表板上筛选卡车](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
@@ -45,15 +45,15 @@ ms.locfileid: "58173815"
 
 [![地图上只显示卡车](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-若要创建、编辑和删除筛选器，请单击“管理设备组”。
+若要创建、编辑和删除筛选器，请单击“管理设备组”。 
 
 ## <a name="view-real-time-telemetry"></a>查看实时遥测数据
 
-解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。 遥测数据图表的顶部显示当前筛选器选择的设备（包括 truck-02）的可用遥测类型。 默认情况下，图表显示卡车的纬度和卡车 02 似乎是固定的：
+解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。  遥测数据图表的顶部显示当前筛选器选择的设备（包括 truck-02）的可用遥测类型。 默认情况下，图表显示卡车的纬度和卡车 02 似乎是固定的：
 
 [![卡车遥测类型](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-若要查看卡车的温度遥测数据，请单击“温度”。 可以查看 truck-02 的温度在过去一小时内是如何变化的。
+若要查看卡车的温度遥测数据，请单击“温度”  。 可以查看 truck-02 的温度在过去一小时内是如何变化的。
 
 [![卡车温度遥测绘图](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
@@ -61,7 +61,7 @@ ms.locfileid: "58173815"
 
 地图显示当前筛选器选择的模拟卡车的相关信息。 可以缩放和平移地图，以更多或更少的细节显示位置。 地图上设备图标的颜色指示该设备是否有任何未处理的**警报**（深蓝色）或**警告**（红色）。 地图左侧显示**警报**和**警告**的汇总数目。
 
-若要查看 truck-02 的详细信息，请通过平移和缩放地图找到该设备，并在地图上选择该卡车。 然后单击设备标签打开“设备详细信息”面板。 设备详细信息包括：
+若要查看 truck-02 的详细信息，请通过平移和缩放地图找到该设备，并在地图上选择该卡车。 然后单击设备标签打开“设备详细信息”面板。  设备详细信息包括：
 
 * 最近的遥测值
 * 设备支持的方法
@@ -71,7 +71,7 @@ ms.locfileid: "58173815"
 
 ## <a name="view-alerts"></a>查看警报
 
-“警报”面板显示来自设备的最新警报的详细信息。 来自 truck-02 的警报指示温度超过正常货物温度：
+“警报”  面板显示来自设备的最新警报的详细信息。 来自 truck-02 的警报指示温度超过正常货物温度：
 
 [![在仪表板上查看设备警报](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
@@ -79,7 +79,7 @@ ms.locfileid: "58173815"
 
 ## <a name="view-the-system-kpis"></a>查看系统 KPI
 
-“仪表板”页在“分析”面板中显示解决方案加速器计算得出的系统 KPI：
+“仪表板”页在“分析”面板中显示解决方案加速器计算得出的系统 KPI：  
 
 [![仪表板 KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
@@ -97,7 +97,7 @@ ms.locfileid: "58173815"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用远程监视解决方案加速器中的“仪表板”页来筛选和监视模拟卡车。 若要了解如何使用解决方案加速器来检测联网设备的问题，请继续学习下一篇教程。
+本教程介绍了如何使用远程监视解决方案加速器中的“仪表板”页来筛选和监视模拟卡车。  若要了解如何使用解决方案加速器来检测联网设备的问题，请继续学习下一篇教程。
 
 > [!div class="nextstepaction"]
 > [检测连接到监视解决方案的设备问题](iot-accelerators-remote-monitoring-automate.md)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 06ce2e51f72b9b4f709bf26ce6d92ad3861d36db
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102886"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081649"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教程：将 Shmoop For Schools 与 Azure Active Directory 集成
 
@@ -58,7 +58,6 @@ ms.locfileid: "71102886"
 1. 在“从库中添加”部分的搜索框中，键入“Shmoop For Schools”   。
 1. 从结果面板中选择“Shmoop For Schools”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-shmoop-for-schools"></a>配置和测试 Shmoop For Schools 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户为 Shmoop For Schools 配置和测试 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Shmoop For Schools 相关用户之间建立关联。
@@ -66,10 +65,10 @@ ms.locfileid: "71102886"
 若要为 Shmoop For Schools 配置和测试 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Shmoop For Schools SSO](#configure-shmoop-for-schools-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Shmoop For Schools 测试用户](#create-shmoop-for-schools-test-user)** - 在 Shmoop For Schools 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
+    * **[创建 Shmoop For Schools 测试用户](#create-shmoop-for-schools-test-user)** - 在 Shmoop For Schools 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -91,38 +90,20 @@ ms.locfileid: "71102886"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Shmoop For Schools 客户端支持团队](mailto:support@shmoop.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Shmoop For Schools 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
+1. Shmoop For Schools 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
     > [!NOTE]
     > Shmoop For Schools 支持两个用户角色：“教师”和“学生”   。 在 Azure AD 中设置这些角色，以便可为用户分配相应的角色。 若要了解如何在 Azure AD 中配置角色，请参阅[此文](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
 
-6. 除了上述属性，Shmoop For Schools 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示： 
+1. 除了上述属性，Shmoop For Schools 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
     | Name |  源属性|
     | --------- | --------------- |
     | role      | user.assignedroles |
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    ![图像](common/new-save-attribute.png)
-
-    ![图像](common/new-attribute-details.png)
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 将“命名空间”留空  。
-
-    d. 选择“源”作为“属性”  。
-
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    f. 单击“确定” 
-
-    g. 单击“ **保存**”。
-
-4. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -167,7 +148,7 @@ ms.locfileid: "71102886"
 > [!NOTE]
 > 如果需要手动创建用户，请联系 [Shmoop For Schools 支持团队](mailto:support@shmoop.com)。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -181,3 +162,4 @@ ms.locfileid: "71102886"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [使用 Azure AD 试用 Shmoop For Schools](https://aad.portal.azure.com/)

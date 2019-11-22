@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073690"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176835"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>发布 API 的多个版本 
 
@@ -94,11 +94,10 @@ ms.locfileid: "70073690"
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 
 1. 在顶部菜单中选择“开发人员门户”。 
-2. 选择“API”，请注意，“演示会议 API”显示了“原始”和“v1”版本。    
-3. 选择“v1”。 
-4. 请注意列表中第一个操作的“请求 URL”。  其中显示 API URL 路径包含“v1”。 
-
-    ![API 上下文菜单 - 添加版本](media/api-management-getstarted-publish-versions/developer_portal.png)
+2. 选择“API”，然后单击“演示会议 API”   。
+3. 可在 API 名称旁边看到一个含有多个版本的下拉列表。
+4. 选择“v1”。 
+5. 请注意列表中第一个操作的“请求 URL”。  其中显示 API URL 路径包含“v1”。 
 
 ## <a name="next-steps"></a>后续步骤
 

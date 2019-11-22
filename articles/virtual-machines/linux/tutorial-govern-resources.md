@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure CLI 管理 Azure 虚拟机 | Microsoft Docs
+title: 教程 - 使用 Azure CLI 管理 Azure 虚拟机
 description: 本教程介绍了如何在 Azure CLI 上应用 RBAC、策略、锁和标记来管理 Azure 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 5fa14ef30d45a9a28cc690761ec33b5bfaaac6a7
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676498"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034529"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 

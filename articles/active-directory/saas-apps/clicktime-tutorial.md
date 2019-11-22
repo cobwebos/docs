@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b14b060cc37f94e51ceb902f8b4158120d4d02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105299"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157405"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 集成
 
@@ -211,7 +212,7 @@ ms.locfileid: "67105299"
 
 1. 在顶部工具栏中，单击“公司”，并单击“人员”。  
    
-    ![人员](./media/clicktime-tutorial/tic777282.png "人员")
+    ![People](./media/clicktime-tutorial/tic777282.png "人员")
 
 1. 单击“添加用户”  。
    
@@ -219,7 +220,7 @@ ms.locfileid: "67105299"
 
 1. 在“新建人员”部分中，执行以下步骤：
    
-    ![人员](./media/clicktime-tutorial/tic777284.png "人员")
+    ![People](./media/clicktime-tutorial/tic777284.png "人员")
    
     a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon   。 
   

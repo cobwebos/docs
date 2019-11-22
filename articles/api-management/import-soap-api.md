@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073244"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107659"
 ---
 # <a name="import-soap-api"></a>导入 SOAP API
 
@@ -60,7 +60,7 @@ ms.locfileid: "70073244"
     * **不受限制**   
 10. 选择“创建”  。
 
-### <a name="test-the-new-apim-api-in-the-administrative-portal"></a>在管理门户中测试新的 APIM API
+### <a name="test-the-new-api-in-the-administrative-portal"></a>在管理门户中测试新的 API
 
 可直接从管理门户调用操作，这样可以方便地查看和测试 API 的操作。  
 
@@ -72,21 +72,6 @@ ms.locfileid: "70073244"
 1. 按“发送”。 
 
     后端以“200 正常”和某些数据做出响应  。
-
-### <a name="call-operation"> </a>从开发人员门户调用操作
-
-此外，也可从“开发人员门户”调用操作来测试 API  。 
-
-1. 选择在“导入和发布后端 API”步骤中创建的 API。
-2. 按“开发人员门户”  。
-
-    “开发人员门户”站点随即打开。
-3. 选择创建的 **API**。
-4. 单击要测试的操作。
-5. 按“试用”  。
-6. 按“发送”。 
-    
-    调用操作后，开发人员门户会显示**响应状态**、**响应标头**以及任何**响应内容**。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

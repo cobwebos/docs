@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8389ba4c-f5f8-4ede-b2f4-32eae844ceb0
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e44b11f756f198724d37b3cef49f3ad94699df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101034"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>教程：Azure Active Directory 与 Huddle 集成
 
@@ -224,11 +225,11 @@ ms.locfileid: "67101034"
 
 3. 单击“人员” **\>“邀请人员”** 。
 
-    ![人员](./media/huddle-tutorial/ic787838.png "人员")
+    ![People](./media/huddle-tutorial/ic787838.png "人员")
 
 4. 在“创建新邀请”  部分中，执行以下步骤：
   
-    ![新建邀请](./media/huddle-tutorial/ic787839.png "New Invitation")
+    ![新建邀请](./media/huddle-tutorial/ic787839.png "新建邀请")
   
     a. 在“选择要邀请人员加入的团队”  列表中，选择“团队”  。
 

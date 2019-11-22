@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757368"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044050"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
@@ -68,6 +68,6 @@ ms.locfileid: "72757368"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何在应用中单独使用审查 API。
-- 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
-- 实施文本审查。 使用 [API 控制台](try-text-api.md)或 [C# 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人数据。
+- 实施图像审查。 使用 [API 控制台](try-image-api.md)或按照 [.NET SDK 快速入门](dotnet-sdk-quickstart.md)使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或使用 [.NET SDK 快速入门](dotnet-sdk-quickstart.md)扫描文本内容以查找潜在的不雅内容、机器辅助的不需要的文本分类（预览）和个人数据。
 - 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

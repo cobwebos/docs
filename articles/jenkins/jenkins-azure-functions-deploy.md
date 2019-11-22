@@ -7,15 +7,15 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815732"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882041"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
 
 [Azure Functions](/azure/azure-functions/) 是一个无服务器计算服务。 使用 Azure Functions 可以按需运行代码，而无需预配或管理基础结构。 本教程演示如何使用 Azure Functions 插件将 Java 函数部署到 Azure Functions。
 
@@ -76,7 +76,7 @@ ms.locfileid: "68815732"
 
 1. 在 Jenkins 仪表板中，安装以下插件：
 
-    - Azure Function 插件
+    - Azure Functions 插件
     - EnvInject 插件
 
 1. Jenkins 需要 Azure 服务主体以进行身份验证和访问 Azure 资源。 有关分步说明，请参阅[部署到 Azure 应用服务](./tutorial-jenkins-deploy-web-app-azure-app-service.md)。

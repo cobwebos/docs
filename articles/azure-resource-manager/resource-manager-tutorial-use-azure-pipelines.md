@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/15/2019
+ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597224"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052206"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -223,7 +223,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 名称是在管道 YAML 文件中指定的名称。  你将看到创建了一个存储帐户。  存储帐户名称以“存储”开头  。
 1. 选择存储帐户名称以将其打开。
-1. 选择“属性”  。 请注意，“SKU”是“Standard_LRS”   。
+1. 选择“属性”  。 注意“复制”是“本地冗余存储(LRS)”   。
 
     ![Azure 资源管理器 Azure DevOps Azure Pipelines 门户验证](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-portal-verification.png)
 
@@ -250,7 +250,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     更新远程存储库的主分支后，将再次发送管道。
 
-若要验证所做的更改，可以检查存储帐户的 SKU。  请参阅[验证部署](#verify-the-deployment)。
+若要验证所做的更改，可以检查存储帐户的“复制”属性。  请参阅[验证部署](#verify-the-deployment)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

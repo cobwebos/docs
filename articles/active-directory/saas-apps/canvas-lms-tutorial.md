@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d96d1addf1028c2651ed837f3dab66f12d5d5fcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab998b6d9aec663123f0bd2428e4c6f1767f1846
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105849"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
 
@@ -136,15 +137,15 @@ ms.locfileid: "67105849"
 
 2. 转到“课程” **\>“托管帐户”\>** “Microsoft”。
 
-    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+    ![画布](./media/canvas-lms-tutorial/ic775990.png "画布")
 
 3. 在左侧导航窗格中，选择“身份验证”，并单击“添加新 SAML 配置”。  
 
-    ![身份验证](./media/canvas-lms-tutorial/ic775991.png "身份验证")
+    ![身份验证](./media/canvas-lms-tutorial/ic775991.png "Authentication")
 
 4. 在“当前集成”页上，执行以下步骤：
 
-    ![当前集成](./media/canvas-lms-tutorial/ic775992.png "Current Integration")
+    ![当前集成](./media/canvas-lms-tutorial/ic775992.png "当前集成")
 
     a. 在“IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值   。
 
@@ -223,7 +224,7 @@ ms.locfileid: "67105849"
 
 2. 转到“课程” **\>“托管帐户”\>** “Microsoft”。
 
-   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+   ![画布](./media/canvas-lms-tutorial/ic775990.png "画布")
 
 3. 单击“用户”  。
 

@@ -4,14 +4,35 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 1007533df077c58d9e4d57f9e86b035730ea917f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903860"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882317"
 ---
-## <a name="set-up-your-device-in-unity"></a>在 Unity 中设置设备
+## <a name="androidtabandroid"></a>[Android](#tab/Android)
+
+Java android 示例支持跨设备共享。
+在 Android Studio 的示例文件夹中打开文件 `SharedActivity.java`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="iostabios"></a>[iOS](#tab/iOS)
+
+Objective-C iOS 示例支持跨设备共享。
+打开示例文件夹中的文件 `SharedDemoViewController.m`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+
+Xamarin Android 和 iOS 示例都支持跨设备共享。
+打开示例文件夹中的文件 `AccountDetails.cs`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `AnchorSharingServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
+
+## <a name="unitytabunity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
@@ -45,10 +66,7 @@ ms.locfileid: "69903860"
 
 确保“导出项目”不显示勾号  。 单击“生成并运行”  。 系统将提示你保存 `.apk` 文件。 你可为其选择任何名称。
 
-应用启动后，请在“选择演示”  对话框中，使用向左或向右箭头选择“LocalShare”  选项，然后点击“开始!”  。 根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”   。
-
-第一个方案是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。
-如果已在相同设备或其他设备上运行应用，则第二个方案可让你找到之前共享的定位标记。 在你选取方案以后，应用会通过进一步的说明引导你完成后续步骤。 例如，会要求你四处移动设备以收集环境信息。 随后需在环境中放置一个定位点，等待其保存，以及执行其他操作。
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ### <a name="deploy-to-an-ios-device"></a>部署到 iOS 设备
 
@@ -58,9 +76,6 @@ ms.locfileid: "69903860"
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-应用启动后，请在“选择演示”  对话框中，使用向左或向右箭头选择“LocalShare”  选项，然后点击“开始!”  。 根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”   。
-
-第一个方案是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。
-如果已在相同设备或其他设备上运行应用，则第二个方案可让你找到之前共享的定位标记。 在你选取方案以后，应用会通过进一步的说明引导你完成后续步骤。 例如，会要求你四处移动设备以收集环境信息。 随后需在环境中放置一个定位点，等待其保存，以及执行其他操作。
+[!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 在 Xcode 中，通过选择“停止”来停止应用  。

@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Edge 上机器学习的详细演练 | Microsoft Docs
+title: 教程：Azure IoT Edge 上机器学习的详细演练
 description: 一个高层次的教程，介绍在边缘场景中创建端到端机器学习所需的各种任务。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 916e48752431be41ff150c2ac84e66eb1e98e81f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064671"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106506"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>教程：使用 Azure 机器学习和 IoT Edge 的端到端解决方案
 

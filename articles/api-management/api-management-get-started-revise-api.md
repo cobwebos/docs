@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 811591a3340f07b08b3a954ccd475e926b73a9cf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072563"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176774"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>使用修订安全做出非重大更改
 当 API 准备就绪并即将供开发人员使用时，你最终需要对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 可以在 Azure API 管理中使用**修订**实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)以及[使用 Azure API 管理进行 API 版本控制](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)。
@@ -92,10 +92,8 @@ ms.locfileid: "70072563"
 2. 在顶部菜单中选择“开发人员门户”。 
 3. 依次选择“API”、“演示会议 API”。  
 4. 请注意，新的“测试”操作现已显示。 
-5. 选择 API 名称下面的“API 更改历史记录”。 
+5. 单击 API 名称附近的“Changelog”  。
 6. 请注意，更改日志项目已显示在此列表中。
-
-    ![开发人员门户](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 

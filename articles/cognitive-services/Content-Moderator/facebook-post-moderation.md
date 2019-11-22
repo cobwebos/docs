@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bd2ed09294ad122b7e8af045f01d3c6f63fcc510
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564937"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936012"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查 Facebook 帖子和评论
 
@@ -72,7 +72,7 @@ ms.locfileid: "68564937"
     | -------------------- |-------------|
     | cm:TeamId   | 内容审查器 TeamId  | 
     | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) |
-    | cm:Region | 内容审查器的区域名称，不含空格。 |
+    | cm:Region | 内容审查器的区域名称，不含空格。 在 Azure 资源“概述”选项卡的“位置”字段中可以找到此名称   。|
     | cm:ImageWorkflow | 对图像运行的工作流的名称 |
     | cm:TextWorkflow | 对文本运行的工作流的名称 |
     | cm:CallbackEndpoint | 将在本指南稍后部分创建的 CMListener Function App 的 URL |

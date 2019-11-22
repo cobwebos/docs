@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure CLI 创建和管理 Linux VM | Microsoft Docs
+title: 教程 - 使用 Azure CLI 创建和管理 Linux VM
 description: 本教程介绍如何使用 Azure CLI 在 Azure 中创建和管理 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300788"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034419"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
