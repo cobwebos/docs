@@ -23,7 +23,7 @@ ms.locfileid: "71679518"
 本文还假定你在 VM 上拥有提升的访问权限，无论是在 Azure 中预配还是 Hyper-v 管理器。 否则，请参阅[提升访问权限以管理所有 Azure 订阅和管理组](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)。
 
 >[!NOTE]
->这些说明适用于 Windows 虚拟桌面特定的配置，可与组织的现有流程一起使用。
+>这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共享计算机激活模式下安装 Office
 
@@ -53,7 +53,7 @@ Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示�
 - 在每用户模式下安装 OneDrive。 若要了解详细信息，请参阅[在每个计算机模式下安装 OneDrive](#install-onedrive-in-per-machine-mode)。
 
 >[!NOTE]
->共享计算机激活可通过组策略对象（Gpo）或注册表设置进行设置。 GPO 位于**计算机配置 @ no__t-1Policies @ no__t-2Administrative Templates @ no__t-3Microsoft Office 2016 （计算机） \\Licensing 设置**
+>共享计算机激活可通过组策略对象（Gpo）或注册表设置进行设置。 GPO 位于 "**计算机配置"\\策略中\\管理模板\\Microsoft Office 2016 （计算机）\\授权设置**
 
 Office 部署工具包含 setup.exe。 若要安装 Office，请在命令行中运行以下命令：
 
@@ -130,11 +130,11 @@ OneDrive 通常按用户安装。 在此环境中，应将其安装在每台计�
 
 下面介绍如何在每个计算机模式下安装 OneDrive：
 
-1. 首先，创建一个用于暂存 OneDrive 安装程序的位置。 本地磁盘文件夹或 [\\ @ no__t-1unc] （file://unc）位置正常。
+1. 首先，创建一个用于暂存 OneDrive 安装程序的位置。 本地磁盘文件夹或 [\\\\unc] （file://unc）位置正常。
 
 2. 通过以下链接将 OneDriveSetup 下载到暂存位置： <https://aka.ms/OneDriveWVD-Installer>
 
-3. 如果通过省略 **\<EXCLUDEAPP ID = "OneDrive"/\>** 安装 Office with OneDrive，请运行以下命令，从提升的命令提示符中卸载任何现有的 OneDrive 每用户安装：
+3. 如果通过省略 **\<EXCLUDEAPP ID = "OneDrive"/\>** 来安装 Office with onedrive，请运行以下命令，从提升的命令提示符中卸载任何现有的 OneDrive 每用户安装：
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

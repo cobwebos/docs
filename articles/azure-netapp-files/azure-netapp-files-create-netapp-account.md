@@ -54,7 +54,7 @@ ms.locfileid: "70012571"
      ![新建 NetApp 帐户](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. 单击“创建”。     
+5. 单击“**创建**”。     
    你创建的 NetApp 帐户现在出现在“Azure NetApp 文件”边栏选项卡中。 
 
 > [!NOTE] 

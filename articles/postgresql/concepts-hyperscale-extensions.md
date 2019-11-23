@@ -37,7 +37,7 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 > | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | 提供用于多维数据集的数据类型。 |
 > | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | 提供用于存储键/值对集的数据类型。 |
 > | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | 提供用于国际产品编号标准的数据类型。 |
-> | [高低](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 |
+> | [lo](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 |
 > | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | 提供用于分层树形结构的数据类型。 |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | 用于表示线段或浮点间隔的数据类型。 |
 > | [topn](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB 的类型。 |
@@ -59,7 +59,7 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 用于自动递增字段的函数。 |
 > | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | 提供一种计算地球表面上的大圆距离的方法。 |
 > | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | 提供多个函数，用于确定字符串间的相似性和差异。 |
-> | [插入\_用户名](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | 用于跟踪谁更改了表的函数。 |
+> | [insert\_username](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | 用于跟踪谁更改了表的函数。 |
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整数聚合器和枚举器（已过时）。 |
 > | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 |
@@ -67,7 +67,7 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性（已过时）的函数。 |
-> | 会话\_分析 | 用于查询 hstore 数组的函数。 |
+> | session\_analytics | 用于查询 hstore 数组的函数。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | 触发的更改通知。 |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 用于实现旅行的函数。 |
@@ -79,7 +79,7 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 > | **扩展** | **说明** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 |
-> | 分片\_rebalancer | 在添加或删除节点时，安全地重新平衡服务器组中的数据。 |
+> | shard\_rebalancer | 在添加或删除节点时，安全地重新平衡服务器组中的数据。 |
 
 ### <a name="index-types-extensions"></a>索引类型扩展
 
@@ -104,20 +104,20 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | PostgreSQL 的管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用于验证关系完整性的函数。 |
-> | [文件\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外数据包装。 |
+> | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外数据包装。 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 |
 > | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 |
 > | [pg\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 |
 > | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | 检查可用空间图（FSM）。 |
 > | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 |
 > | [pg\_stat\_statements](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅 "pg_stat_statements" 部分。 |
-> | [pg\_可见性](https://www.postgresql.org/docs/current/pgvisibility.html) | 检查可见性地图（VM）和页面级别的可见性信息。 |
+> | [pg\_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) | 检查可见性地图（VM）和页面级别的可见性信息。 |
 > | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | 提供一种显示行级锁定信息的方法。 |
 > | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 |
 > | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。|
 > | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) | 有关 SSL 证书的信息。 |
-> | [tsm\_系统\_行](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，它接受行数作为限制。 |
-> | [tsm\_系统\_时间](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，以毫秒为单位接受时间（以毫秒为单位）。 |
+> | [tsm\_system\_rows](https://www.postgresql.org/docs/current/tsm-system-rows.html) | TABLESAMPLE 方法，它接受行数作为限制。 |
+> | [tsm\_system\_time](https://www.postgresql.org/docs/current/tsm-system-time.html) | TABLESAMPLE 方法，以毫秒为单位接受时间（以毫秒为单位）。 |
 > | [hypopg](https://hypopg.readthedocs.io/en/latest/) | 提供了一种创建不耗费 CPU 或磁盘的假设索引的方法。 |
 > | [dblink](https://www.postgresql.org/docs/current/dblink.html) | 一个支持从数据库会话中连接到其他 PostgreSQL 数据库的模块。 有关此扩展的信息，请参阅 "dblink and postgres_fdw" 部分。 |
 > | [xml2](https://www.postgresql.org/docs/current/xml2.html) | XPath 查询和 XSLT。 |
@@ -140,7 +140,7 @@ Azure Database for PostgreSQL 超大规模（Citus）目前支持此处列出的
 
 设置 `pg_stat_statements.track` 控制扩展对哪些语句进行计数。 默认为 `top`，这意味着将跟踪客户端直接发出的所有语句。 另外两个跟踪级别为 `none` 和 `all`。 此设置可通过 [Azure 门户](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli) 作为服务器参数进行配置。
 
-Pg_stat_statements 提供的查询执行信息和对服务器性能的影响，因为它记录了每个 SQL 语句。 如果你没有主动使用 pg_stat_statements 扩展，我们建议你将 `pg_stat_statements.track` 设置为 `none`。 某些第三方监视服务可能依赖于 pg_stat_statements 来提供查询性能见解，因此请确认这是否适用于这种情况。
+Pg_stat_statements 提供的查询执行信息和对服务器性能的影响，因为它记录了每个 SQL 语句。 如果你没有主动使用 pg_stat_statements 扩展，我们建议你将 `pg_stat_statements.track` 设置为 "`none`"。 某些第三方监视服务可能依赖于 pg_stat_statements 来提供查询性能见解，因此请确认这是否适用于这种情况。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
 可以使用 dblink 和 postgres_fdw 从一台 PostgreSQL 服务器连接到另一台服务器，或连接到同一服务器上的其他数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 若要使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接，请将 "**允许访问 Azure 服务**" 设置为 "开"。 如果要使用这些扩展来循环回到同一服务器，还需要启用此设置。 "**允许访问 Azure 服务**" 设置可在 Postgres 服务器的 "Azure 门户" 页中的 "**连接安全性**" 下找到。 启用 "允许对所有 Azure Ip 使用白名单**访问 azure 服务**"。

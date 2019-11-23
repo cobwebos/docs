@@ -91,7 +91,7 @@ Deleting the source, and downloaded files
 
 验证文件后，按 **Enter** 键可完成演示并删除测试文件。 现在已了解此示例的用途，打开 AzureApp.java 文件可查看代码。
 
-## <a name="understand-the-sample-code"></a>了解示例代码
+## <a name="understand-the-sample-code"></a>理解示例代码
 
 下一步，我们演练示例代码，以便了解它的工作原理。
 
@@ -155,7 +155,7 @@ blob.uploadFromFile(sourceFile.getAbsolutePath());
 
 有多个可以与 Blob 存储配合使用的 `upload` 方法，其中包括 [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext)。 例如，如果有字符串，可以使用 `UploadText` 方法，而不是 `Upload` 方法。
 
-块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 Blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
+块 blob 可以是任何类型的文本或二进制文件。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 将追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 

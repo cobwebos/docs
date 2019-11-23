@@ -78,7 +78,7 @@ ms.locfileid: "74186430"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 ### <a name="auditing"></a>审核
 

@@ -324,8 +324,8 @@ Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视指标 |
-| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
-| [2039619] |Microsoft Azure 上使用 Oracle Database 的 SAP 应用程序：支持的产品和版本 |
+| [2191498] |带有 Azure 的 Linux 上的 SAP：增强型监视 |
+| [2039619] |使用 Oracle 数据库 Microsoft Azure 上的 SAP 应用程序：支持的产品和版本 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [2069760] |Oracle Linux 7.x SAP 安装和升级 |
 | [1597355] |适用于 Linux 的交换空间建议 |
@@ -372,20 +372,20 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 最低配置如下： 
 
-| 组件 | 磁盘 | 正在缓存 | 存储池 |
+| 组件 | 磁盘 | 缓存 | 存储池 |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA & mirrlogB | 高级 | 无 | 无需 |
 | \oracle\<SID>\origlogaB & mirrlogA | 高级 | 无 | 无需 |
 | \oracle\<SID>\sapdata1...n | 高级 | 只读 | 可使用 |
 | \oracle\<SID>\oraarch | 标准 | 无 | 无需 |
-| Oracle 主页, saptrace, ... | 操作系统磁盘 | | 无需 |
+| Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 
 托管联机重做日志的磁盘选择应由 IOP 要求驱动。 只要大小、IOPS 和吞吐量满足要求，就可以将所有 sapdata1...n（表空间）存储在一个已装载的磁盘上。 
 
 性能配置如下：
 
-| 组件 | 磁盘 | 正在缓存 | 存储池 |
+| 组件 | 磁盘 | 缓存 | 存储池 |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA | 高级 | 无 | 可使用  |
 | \oracle\<SID>\origlogaB | 高级 | 无 | 可使用 |
@@ -394,7 +394,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 | \oracle\<SID>\sapdata1...n | 高级 | 只读 | 建议  |
 | \oracle\SID\sapdata(n+1)* | 高级 | 无 | 可使用 |
 | \oracle\<SID>\oraarch* | 高级 | 无 | 无需 |
-| Oracle 主页, saptrace, ... | 操作系统磁盘 | 无需 |
+| Oracle 主页, saptrace, ... | OS 磁盘 | 无需 |
 
 *(n+1)：托管 SYSTEM、TEMP 和 UNDO 表空间。 系统和撤消表空间的 I/O 模式与托管应用程序数据的其他表空间不同。 无缓存是系统和撤消表空间性能的最佳选择。
 
@@ -418,7 +418,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 有关 Azure 中 Oracle Database 灾难恢复的详细信息，请参阅 [Azure 环境中 Oracle Database 12c 数据库的灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
 
-### <a name="accelerated-networking"></a>更快的网络连接
+### <a name="accelerated-networking"></a>加速网络
 对于 Window 上的 Oracle 部署，我们强烈建议根据 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)中所述使用加速网络。 也可以考虑[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的建议。 
 ### <a name="other"></a>其他
 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中介绍了使用 Oracle Database 的 VM 部署相关的其他重要概念，包括 Azure 可用性集和 SAP 监视。
@@ -456,19 +456,19 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
- 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关其配额的 VM 类型的列表, 请参阅[Azure 中 Linux 虚拟机的大小][virtual-machines-sizes-linux]。
+ 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关其配额的 VM 类型的列表，请参阅[Azure 中 Linux 虚拟机的大小][virtual-machines-sizes-linux]。
 
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
 最低配置：
 
-| 组件 | 磁盘 | 正在缓存 | 撤消* |
+| 组件 | 磁盘 | 缓存 | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID >/origlogaA & mirrlogB | 高级 | None | 无需 |
-| /oracle/\<SID >/origlogaB & mirrlogA | 高级 | None | 无需 |
+| /oracle/\<SID >/origlogaA & mirrlogB | 高级 | 无 | 无需 |
+| /oracle/\<SID >/origlogaB & mirrlogA | 高级 | 无 | 无需 |
 | /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 可使用 |
-| /oracle/\<SID >/oraarch | 标准 | None | 无需 |
-| Oracle 主页, saptrace, ... | 操作系统磁盘 | | 无需 |
+| /oracle/\<SID >/oraarch | 标准 | 无 | 无需 |
+| Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
@@ -476,20 +476,20 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 性能配置：
 
-| 组件 | 磁盘 | 正在缓存 | 撤消* |
+| 组件 | 磁盘 | 缓存 | 撤消* |
 | --- | ---| --- | --- |
 | /oracle/\<SID >/origlogaA | 高级 | 无 | 可使用  |
-| /oracle/\<SID >/origlogaB | 高级 | None | 可使用 |
+| /oracle/\<SID >/origlogaB | 高级 | 无 | 可使用 |
 | /oracle/\<SID >/mirrlogAB | 高级 | 无 | 可使用 |
 | /oracle/\<SID>/mirrlogBA | 高级 | 无 | 可使用 |
 | /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 建议  |
-| /oracle/\<SID >/sapdata (n + 1) * | 高级 | 无 | 可使用 |
+| /oracle/\<SID >/sapdata （n + 1） * | 高级 | 无 | 可使用 |
 | /oracle/\<SID >/oraarch * | 高级 | 无 | 无需 |
-| Oracle 主页, saptrace, ... | 操作系统磁盘 | 无需 |
+| Oracle 主页, saptrace, ... | OS 磁盘 | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
-*(n+1)：托管 SYSTEM、TEMP 和 UNDO 表空间。系统和撤消表空间的 I/O 模式与托管应用程序数据的其他表空间不同。 无缓存是系统和撤消表空间性能的最佳选择。
+\* （n + 1）：宿主系统、TEMP 和 UNDO 表空间：系统和撤消表空间的 i/o 模式不同于承载应用程序数据的其他表空间。 无缓存是系统和撤消表空间性能的最佳选择。
 
 *oraarch：性能视图中不需要存储池。
 
@@ -512,7 +512,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 有关在 Azure 环境下的 Oracle Database 数据库灾难恢复方面的信息，请参阅[在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
 
-### <a name="accelerated-networking"></a>更快的网络连接
+### <a name="accelerated-networking"></a>加速网络
 Oracle Linux 7 更新 5 (Oracle Linux 7.5) 提供对 Oracle Linux 中 Azure 加速网络的支持。 如果无法升级到最新的 Oracle Linux 7.5 版本，可能的解决方法是，使用 RedHat 兼容内核 (RHCK) 而不是 Oracle UEK 内核。 
 
 根据 SAP 说明 [#1565179](https://launchpad.support.sap.com/#/notes/1565179)，支持在 Oracle Linux 内使用 RHEL 内核。 对于 Azure 加速网络，最小 RHCKL 内核版本必须是 3.10.0-862.13.1.el7。 如果在 Oracle Linux 中结合 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)使用 UEK 内核，需要使用 Oracle UEK 内核版本 5。

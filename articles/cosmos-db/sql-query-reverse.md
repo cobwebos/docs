@@ -1,6 +1,6 @@
 ---
-title: 反向 Azure Cosmos DB 查询语言
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数逆向。
+title: Azure Cosmos DB 查询语言中的 REVERSE
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数 REVERSE。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349560"
 ---
-# <a name="reverse-azure-cosmos-db"></a>反向（Azure Cosmos DB）
+# <a name="reverse-azure-cosmos-db"></a>REVERSE (Azure Cosmos DB)
  返回字符串值的逆序排序形式。  
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ REVERSE(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   字符串表达式。  
+   是一个字符串表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ REVERSE(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何在查询中使用 @no__t 0。  
+  以下示例演示如何在查询中使用 `REVERSE`。  
   
 ```sql
 SELECT REVERSE("Abc") AS reverse  

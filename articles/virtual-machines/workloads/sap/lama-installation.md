@@ -77,7 +77,7 @@ ms.locfileid: "72430105"
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入名称，选择 "应用程序类型" "Web 应用/API"，输入登录 URL （例如 http： \//localhost），然后单击 "创建"
+1. 输入名称，选择 "应用程序类型" "Web 应用/API"，输入登录 URL （例如 http：\//localhost），然后单击 "创建"
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
@@ -93,7 +93,7 @@ ms.locfileid: "72430105"
 1. 单击“添加角色分配”
 1. 选择“参与者”角色
 1. 输入前面创建的应用程序名称
-1. 点击“保存”
+1. 点击“保存”(Save)
 1. 针对要在 SAP LaMa 中使用的所有资源组重复步骤 3 到 8
 
 打开 SAP LaMa 网站并导航到“基础结构”。 转到“云管理器”选项卡并单击“添加”。 选择“Microsoft Azure 云适配器”并单击“下一步”。 输入以下信息：
@@ -289,7 +289,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/\<SID @ no__t-2*、 */USR/SAP/\<SID @ no__t-5*和 */home/\<sid @ no__t-8adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/\<sid\>* 、 */usr/sap/\<sid\>* 和 */home/\<sid\>adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
 
 > [!NOTE]
 > 在测试阶段，卷的名称在订阅中必须是唯一的。
@@ -336,7 +336,7 @@ mkdir -p /usr/sap/trans
 
 对于 ASCS 和 AS 实例，装载点应如下所示：
 
-LaMa 中的 0SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 @no__t IP 地址和导出路径与之前使用的路径不同）
+在 LaMa 中 ![SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 IP 地址和导出路径与之前使用的路径不同）
 
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA

@@ -28,7 +28,7 @@ Cascade 500 IoT 网关是 Rigado 中的一项硬件服务，包含在其级联�
 
 Cascade 500 预认证适用于 Azure IoT 即插即用（PnP），使我们的解决方案构建者可以轻松地将设备集成到端到端解决方案。 使用级联网关可以通过无线方式连接到接近网关设备的各种状况监视传感器。 可以通过网关设备将这些传感器载入到 IoT Central。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要以下资源：
 
 * Rigado Cascade 500 设备。 有关详细信息，请访问[Rigado](https://www.rigado.com/)。

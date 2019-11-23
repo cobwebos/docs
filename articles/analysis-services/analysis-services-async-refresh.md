@@ -93,16 +93,16 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 不需要指定参数。 将应用默认值。
 
-| Name             | 类型  | 说明  |默认  |
+| 名称             | 类型  | 说明  |默认  |
 |------------------|-------|--------------|---------|
 | `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
-| `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
+| `MaxParallelism` | int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
+| `RetryCount`     | int   | 指示操作在失败之前要重试的次数。      |     0    |
 | `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。

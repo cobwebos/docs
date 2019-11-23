@@ -26,7 +26,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ## <a name="enable-the-solutions"></a>启用解决方案
 
-转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 无论自动化帐户的位置如何，虚拟机都可以存在于任何区域中。 从 VM 载入解决方案时，需要具有 @no__t 0 权限来确定 VM 是否载入到工作区。 若要了解常规所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding)。
+转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 无论自动化帐户的位置如何，虚拟机都可以存在于任何区域中。 从 VM 载入解决方案时，需要具有 `Microsoft.OperationalInsights/workspaces/read` 的权限来确定 VM 是否载入到工作区。 若要了解常规所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding)。
 
 若要仅为 VM 启用解决方案，请确保已选择“为此 VM 启用”。 若要将多台计算机加入到解决方案中，请选择“为此订阅中的 VM 启用”，然后选择“单击以选择要启用的计算机”。 若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
 
@@ -87,7 +87,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
-   ![“取消链接工作区”页](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png)。
 
    系统会提示用户确认是否要继续。
 

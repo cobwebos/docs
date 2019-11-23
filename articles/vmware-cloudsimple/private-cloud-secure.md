@@ -37,8 +37,8 @@ ms.locfileid: "72311770"
 
 ### <a name="add-new-users-to-vcenter"></a>将新用户添加到 vCenter
 
-1. [提升](escalate-private-cloud-privileges.md)私有云中 **@no__t 2**用户的权限。
-2. 使用 **@no__t**登录到 vCenter
+1. [提升](escalate-private-cloud-privileges.md)私有云中 **CloudOwner@cloudsimple.local** 用户的权限。
+2. 使用 **CloudOwner@cloudsimple.local** 登录到 vCenter
 3. [添加 VCenter 单一登录用户](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)。
 4. 将用户添加到[vCenter 单一登录组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
@@ -51,8 +51,8 @@ ms.locfileid: "72311770"
 * [使用 Active Directory 作为私有云 vCenter 上的标识提供者](set-vcenter-identity.md)。
 * 在私有云 vCenter 上[使用 Azure AD 作为标识提供者](azure-ad.md)
 
-1. [提升](escalate-private-cloud-privileges.md)私有云中 **@no__t 2**用户的权限。
-2. 使用 **@no__t**登录到 vCenter
+1. [提升](escalate-private-cloud-privileges.md)私有云中 **CloudOwner@cloudsimple.local** 用户的权限。
+2. 使用 **CloudOwner@cloudsimple.local** 登录到 vCenter
 3. 将标识提供程序中的用户添加到[vCenter 单一登录组](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>在私有云环境中保护网络

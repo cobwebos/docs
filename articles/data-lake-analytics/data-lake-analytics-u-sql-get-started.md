@@ -27,7 +27,7 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 
 ## <a name="prerequisites"></a>先决条件
 
-在完成本文档中的 U-SQL 示例之前，请阅读并完成 [Tutorial：使用适用于 Visual Studio @ no__t 的 Data Lake 工具开发 SQL 脚本。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
+在学习本文档中的 U-SQL 示例之前，请先阅读并完成[教程：使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
 
@@ -55,7 +55,7 @@ OUTPUT @searchlog
 请注意 `Duration` 字段中数据类型旁边的问号。 它表示 `Duration` 字段可以为 null。
 
 ### <a name="key-concepts"></a>关键概念
-* **行集变量**：可以将生成行集的每个查询表达式分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
+* **行集变量**：生成行集的每个查询表达式可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
 * **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是用于制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
 * **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是用于创建逗号分隔值文件的内置 U-SQL 输出器。 可以开发自定义输出器。
 

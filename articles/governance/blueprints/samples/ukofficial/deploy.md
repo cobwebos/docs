@@ -5,7 +5,7 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1905e5fee894575d5ee85ce1bffb536813d34287
 ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2019
 ms.locfileid: "74037750"
@@ -62,7 +62,7 @@ ms.locfileid: "74037750"
 
 1. 提供蓝图分配的参数值：
 
-   - Basics
+   - 基础知识
 
      - **订阅**：选择要在其中保存蓝图示例副本的管理组中的一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：根据蓝图的名称预先填充名称。

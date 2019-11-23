@@ -56,7 +56,7 @@ ms.locfileid: "73824859"
 请先阅读以下 SAP 说明和文档
 
 * SAP 说明 [1928533]，其中包含：
-  * SAP 软件部署支持的 Azure VM 大小列表
+  * SAP 软件部署支持的 Azure VM 大小的列表
   * Azure VM 大小的重要容量信息
   * 支持的 SAP 软件、操作系统 (OS) 和数据库组合
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 内核版本

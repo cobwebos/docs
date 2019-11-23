@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/05/2019
 ms.locfileid: "73605810"
 ---
-# <a name="connect-with-the-macos-client"></a>连接 macOS 客户端
+# <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
 > 适用于： macOS 10.12 或更高版本
 

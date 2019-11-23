@@ -32,7 +32,7 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 可限制以下功能：
 
-| Feature          | 说明 |
+| 功能          | 说明 |
 |------------------|-------------|
 | N'ErrorMessages' | 启用限制时，会将错误消息中的任何用户数据掩码。 请参阅[错误消息功能限制](#error-messages-feature-restriction) |
 | N'Waitfor'       | 启用限制时，该命令将立即返回，而不会延迟。 请参阅 [WAITFOR 功能限制](#waitfor-feature-restriction) |

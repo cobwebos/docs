@@ -34,13 +34,13 @@ ms.locfileid: "70193166"
 > 本文档是为开发者和管理员提供的指导，但决不应当被客户自己使用。 错误代码可能会随时更改，以便提供更详细的错误消息，以在开发者构建应用程序时为其提供帮助。 依赖于文本或错误代码的应用程序随着时间的推移将会损坏。
 
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
-错误代码和消息可能会更改。  有关最新信息, 请查看[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)页面以查找 AADSTS 错误说明、修补程序和一些建议的解决方法。  
+错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
 
-搜索返回的错误代码的数字部分。  例如, 如果收到错误代码 "AADSTS16000", 则在中[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)搜索 "16000"。  还可以通过将错误代码号添加到 URL 来直接链接到特定错误: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)。
+针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“16000”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) 来直接链接到特定错误。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | Description |
+| 错误 | 说明 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -58,7 +58,7 @@ ms.locfileid: "70193166"
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
-| AADSTS50005 | DevicePolicyError-用户试图从当前不受条件访问策略支持的平台登录到设备。 |
+| AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 未找到此应用的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50008 | InvalidSamlToken - SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。 |
@@ -110,7 +110,7 @@ ms.locfileid: "70193166"
 | AADSTS50127 | BrokerAppNotInstalled - 用户需要安装中转站应用才能访问此内容。 |
 | AADSTS50128 | 域名无效 - 未在请求中找到或提供的任何凭据均未暗示任何租户标识信息。 |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined - 需要加入工作区才能注册设备。 |
-| AADSTS50131 | ConditionalAccessFailed-指示各种条件访问错误, 如错误的 Windows 设备状态、由于可疑活动、访问策略或安全策略决策而被阻止的请求。 |
+| AADSTS50131 | ConditionalAccessFailed - 指示各种条件访问错误，例如，Windows 设备状态不正确，请求因活动可疑、访问策略和安全策略决策而被阻止。 |
 | AADSTS50132 | SsoArtifactInvalidOrExpired - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50133 | SsoArtifactRevoked - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter - 错误的数据中心。 若要授权 OAuth 2.0 设备流中的应用发起的请求，授权方必须与原始请求位于同一数据中心。 |
@@ -139,10 +139,10 @@ ms.locfileid: "70193166"
 | AADSTS51005 | TemporaryRedirect - 等效于 HTTP 状态 307，表示请求的信息位于 location 标头中指定的 URI 处。 如果收到此状态，请遵循与响应关联的 location 标头操作。 如果原始请求方法是 POST，则重定向的请求也会使用 POST 方法。 |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要 Windows 集成身份验证。 用户已使用缺少 Windows 集成身份验证声明的会话令牌登录。 请求用户重新登录。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - 用户未许可访问 LinkedIn 资源。 |
-| AADSTS53000 | DeviceNotCompliant-条件性访问策略需要相容设备, 并且设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
-| AADSTS53001 | DeviceNotDomainJoined-条件性访问策略需要加入域的设备, 且设备未加入域。 让用户使用已加入域的设备。 |
-| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp-使用的应用不是用于条件性访问的已批准应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
-| AADSTS53003 | BlockedByConditionalAccess-条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
+| AADSTS53000 | DeviceNotCompliant - 条件访问策略需要合规的设备，该设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
+| AADSTS53001 | DeviceNotDomainJoined - 条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。 |
+| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用的应用不是批准用于条件访问的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
+| AADSTS53003 | BlockedByConditionalAccess - 条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
@@ -169,7 +169,7 @@ ms.locfileid: "70193166"
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims - 用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 身份验证请求包含无效的 NameIdPolicy。 |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable - 身份验证代理无法连接到 Active Directory。 确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。 |
-| AADSTS80002 | OnPremisePasswordValidatorRequestTimedout - 密码验证请求超时。确保 Active Directory 可用，并且可以响应代理的请求。 |
+| AADSTS80002 | OnPremisePasswordValidatorRequestTimedout-密码验证请求已超时。请确保 Active Directory 可用，并响应代理的请求。 |
 | AADSTS80005 | OnPremisePasswordValidatorUnpredictableWebException - 处理来自身份验证代理的响应时发生未知的错误。 重试请求。 如果仍旧失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |
 | AADSTS80007 | OnPremisePasswordValidatorErrorOccurredOnPrem - 身份验证代理无法验证用户的密码。 检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。 |
 | AADSTS80010 | OnPremisePasswordValidationEncryptionException - 身份验证代理无法解密密码。 |
@@ -199,7 +199,7 @@ ms.locfileid: "70193166"
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
 | AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
-| AADSTS9002313 | InvalidRequest-请求格式不正确或无效。 -这里的问题是由于请求与特定终结点发生错误。 此问题的建议是获取发生的错误的 fiddler 跟踪, 并查看请求的格式是否确实正确。 |
+| AADSTS9002313 | InvalidRequest - 请求格式错误或无效。 - 这里的问题是对某个终结点的请求出了问题。 对此问题的建议是获取发生的错误的 fiddler 跟踪，并查看请求的格式是否确实正确。 |
 | AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |
@@ -221,7 +221,7 @@ ms.locfileid: "70193166"
 | AADSTS90093 | GraphUserUnauthorized - Graph 返回了针对请求的禁止访问错误代码。 |
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
-| AADSTS901002 | AADSTS901002:"Resource" 请求参数不受支持。 |
+| AADSTS901002 | AADSTS901002：不支持 "resource" 请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |
 | AADSTS90102 | InvalidUriParameter - 值必须是有效的绝对 URI。 |
 | AADSTS90107 | InvalidXml - 请求无效。 请确保数据不包含无效字符。|
@@ -271,7 +271,7 @@ ms.locfileid: "70193166"
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
-| AADSTS7000112 | UnauthorizedClientApplicationDisabled-应用程序被禁用。 |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |
 
 ## <a name="next-steps"></a>后续步骤
 

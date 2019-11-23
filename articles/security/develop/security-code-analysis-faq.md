@@ -26,7 +26,7 @@ ms.locfileid: "71828252"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
-否。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+不能。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>我是否必须在生成时运行 Microsoft 安全代码分析？ 
 
@@ -38,7 +38,7 @@ ms.locfileid: "71828252"
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>能否在发现结果时中断生成？
 
-是。 如果任何工具在其日志文件中报告了问题或问题，则可以引入生成中断。 只需添加后期分析生成任务，并选中要为其中断生成的任何工具的复选框。
+可以。 如果任何工具在其日志文件中报告了问题或问题，则可以引入生成中断。 只需添加后期分析生成任务，并选中要为其中断生成的任何工具的复选框。
 
 在分析后任务的 UI 中，你可以选择在任何工具仅报告错误或同时报告错误和警告时中断生成。
 
@@ -48,14 +48,14 @@ ms.locfileid: "71828252"
 
 明显差异：
 
-- 从代理 $ （Build.sourcesdirectory）或% BUILD_SOURCESDIRECTORY% 的源文件夹运行的工具。 例如，C:\agent @ no__t-0work\1\s。
+- 从代理 $ （Build.sourcesdirectory）的源文件夹或从% BUILD_SOURCESDIRECTORY% 运行的工具。 例如，C:\agent\_work\1\s。
 - 自变量中的路径可以是相对于前面列出的源目录的根目录的相对路径。 路径也可以是绝对路径。 你可以使用 Azure DevOps 生成变量或运行本地代理和本地资源的已知部署位置来获取绝对路径。
 - 工具自动提供输出文件路径或文件夹。 如果提供生成任务的输出位置，则会将该位置替换为生成代理上的日志的众所周知位置的路径
 - 某些工具的其他命令行参数会被更改。 例如，添加或删除确保没有启动 GUI 的选项。
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-否。 不支持在单个管道中跨多个存储库运行安全开发工具。
+不能。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建指定的输出文件，或者找不到指定的输出文件
 
@@ -63,11 +63,11 @@ ms.locfileid: "71828252"
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>工具所生成的输出文件保存在何处？ 
 
-生成任务自动将输出路径添加到生成代理上的此已知位置： $ （Agent.builddirectory） \_sdt \ logs。 由于我们将在此位置上标准化，因此生成或使用代码分析日志的所有团队都可以访问输出。
+生成任务自动将输出路径添加到生成代理上的此已知位置： $ （Agent.builddirectory）\_sdt\logs。 由于我们将在此位置上标准化，因此生成或使用代码分析日志的所有团队都可以访问输出。
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>是否可以对生成进行排队以便在托管生成代理上运行这些任务？ 
 
-是。 扩展中的所有任务和工具都可以在托管生成代理上执行。
+可以。 扩展中的所有任务和工具都可以在托管生成代理上执行。
 
 >[!NOTE]
 > 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供此类代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
@@ -90,7 +90,7 @@ ms.locfileid: "71828252"
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装扩展是否会修改现有的 Azure 管道？ 
 
-否。 安装扩展会使安全生成任务可用于添加到管道。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
+不能。 安装扩展会使安全生成任务可用于添加到管道。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
 
 ## <a name="task-specific-faq"></a>任务特定的常见问题
 
@@ -170,14 +170,14 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 
 内容搜索者定义如下：
 
-- **名称**：要在 Credential 扫描器输出文件中使用的描述性搜索程序名称。 建议为搜索程序名称使用 camel 大小写命名约定。
+- **Name**：要在 Credential 扫描器输出文件中使用的描述性搜索程序名称。 建议为搜索程序名称使用 camel 大小写命名约定。
 - **RuleId**：搜索者的稳定不透明 ID：
     - 为凭据扫描器默认搜索者分配了**RuleId**值，如 CSCAN0010、CSCAN0020 或 CSCAN0030。 最后一个数字保留用于通过正则表达式（regex）合并或划分搜索程序组。
-    - 自定义搜索程序的**RuleId**值应具有其自己的命名空间。 示例包括 CSCAN-\<Namespace @ no__t-10010、CSCAN \<Namespace @ no__t-30020 和 @no__t CSCAN-4Namespace @ no__t-50030。
+    - 自定义搜索程序的**RuleId**值应具有其自己的命名空间。 示例包括 CSCAN-\<命名空间\>0010、CSCAN\<命名空间\>0020 和 CSCAN\<命名空间\>0030。
     - 完全限定的搜索者名称是**RuleId**值和搜索者名称的组合。 例如，CSCAN0010。KeyStoreFiles 和 CSCAN0020。Base64EncodedCertificate.
-- **ResourceMatchPattern**：用于对照搜索者检查的文件扩展名的正则表达式。
-- **ContentSearchPatterns**：一个字符串数组，其中包含要匹配的正则表达式语句。 如果未定义搜索模式，则返回与**ResourceMatchPattern**值匹配的所有文件。
-- **ContentSearchFilters**：一个包含 regex 语句的字符串数组，用于筛选搜索器特定的误报。
+- **ResourceMatchPattern**：用于检查搜索者的文件扩展名的正则表达式。
+- **ContentSearchPatterns**：包含要匹配的正则表达式语句的字符串数组。 如果未定义搜索模式，则返回与**ResourceMatchPattern**值匹配的所有文件。
+- **ContentSearchFilters**：包含 regex 语句的字符串数组，用于筛选搜索器特定的误报。
 - **MatchDetails**：为每个搜索匹配项添加的描述性消息、缓解说明或同时添加这两者。
 - **建议**：使用 PREfast 报表格式的匹配项的建议字段内容。
 - **严重性**：一个整数，反映问题的严重级别。 最高严重性级别的值为1。
@@ -192,7 +192,7 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 
 完整的错误消息：
 
-“错误:使用*NETCore 版本 1.x*还原了项目，但使用当前设置时，将*改用版本为 y 的*版本。 若要解决此问题，请确保使用相同的设置进行还原，并进行后续操作，例如生成或发布。 通常，如果在生成或发布过程中设置了 Runtimeidentifiers 属性，但在还原过程中未设置此属性，则会出现此问题。
+"错误：使用 NETCore 版本1.x 还原了项目，但使用当前设置时，将*改用版本为 y* *的版本。* 若要解决此问题，请确保使用相同的设置进行还原，并进行后续操作，例如生成或发布。 通常，如果在生成或发布过程中设置了 Runtimeidentifiers 属性，但在还原过程中未设置此属性，则会出现此问题。
 
 由于 Roslyn 分析器任务作为编译的一部分运行，因此生成计算机上的源树需要处于可生成状态。
 
@@ -202,13 +202,13 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 
 完整的错误消息：
 
-"csc" 已退出，错误代码为 1--无法从 C： \\*BBBB*创建分析器*AAAA*的实例：未能加载文件或程序集 "CodeAnalysis，Version =*x*. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x 系统找不到指定的文件。”
+"csc" 已退出，错误代码为 1--无法从 C：\\*BBBB*创建分析器*AAAA*的实例：无法加载文件或程序集 "CodeAnalysis，*Version = 31bf3856ad364e35，Culture*= 中性，PublicKeyToken =" 或其依赖项之一。 系统找不到指定的文件。”
 
 确保编译器支持 Roslyn 分析器。 运行命令**csc/version**应报告版本值2.6 或更高版本。
 
 有时，.csproj 文件可通过从 Microsoft.Net 引用包来重写生成计算机的 Visual Studio 安装。 如果不打算使用特定版本的编译器，请删除对 Microsoft.Net 的引用。 否则，请确保引用包的版本也为2.6 或更高版本。
 
-尝试获取在**csc/errorlog**选项中指定的错误日志路径。 选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog： F:\ts-services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.sarif**
+尝试获取在**csc/errorlog**选项中指定的错误日志路径。 选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog： f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C#编译器版本不是最新版本
 
@@ -222,9 +222,9 @@ Roslyn 分析器生成任务需要从 MSBuild 生成任务中查询 MSBuild 日�
 
 如果需要更多帮助，Microsoft 安全代码分析支持将于太平洋标准时间上午9:00 到晚上5:00 的星期五提供。
 
-  - 登记：请与你的技术客户经理联系，开始。
+  - 载入：请联系你的技术客户经理，开始。
   
-  - 支持通过电子邮件将我们的团队发送到[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)。
+  - 支持：通过电子邮件发送[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)团队。
 
   >[!NOTE] 
   >你可能没有与 Microsoft 的付费支持关系。 或者，你可能有一个支持产品，它阻止你从 Phoenix 目录购买服务。 如果满足上述任一条件，请访问我们的[支持服务主页](https://www.microsoft.com/enterprise/services/support)获取详细信息。

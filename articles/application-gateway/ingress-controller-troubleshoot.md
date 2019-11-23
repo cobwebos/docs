@@ -111,8 +111,8 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 - 路由规则： ![routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
 
 - 后端池：
-  - 后端地址池中将有一个 IP 地址，并且它将与我们之前观察到的 backend_pool 的 IP 地址相匹配，`kubectl get pods -o wide`
-![](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
+  - 后端地址池中将有一个 IP 地址，并且它将与我们前面介绍的 `kubectl get pods -o wide`
+![backend_pool 中的 Pod 的 IP 地址匹配](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
 
 
 最后，我们可以使用[Cloud Shell](https://shell.azure.com/)中的 `cURL` 命令与新部署的应用建立 HTTP 连接：
@@ -238,7 +238,7 @@ Kubernetes 社区已建立了[kubectl](https://kubernetes.io/docs/reference/kube
 
 | 详细程度 | 说明 |
 |-----------|-------------|
-|  1        | 默认日志级别;显示启动详细信息、警告和错误 |
+|  1 个        | 默认日志级别;显示启动详细信息、警告和错误 |
 |  3        | 有关事件和更改的扩展信息;已创建对象的列表 |
 |  5        | 记录封送处理的对象;显示应用于 ARM 的净化的 JSON 配置 |
 

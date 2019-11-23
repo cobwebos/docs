@@ -219,7 +219,7 @@ dblink 和 postgres_fdw 允许从一台 PostgreSQL 服务器连接到另一台�
 
 
 ## <a name="pgaudit"></a>pgAudit
-PgAudit 扩展提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[审核概念一文](concepts-audit.md)。 
+pgAudit 扩展提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。

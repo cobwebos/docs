@@ -19,18 +19,18 @@ ms.locfileid: "71802611"
 使用远程 Windows 会话时，网络的可用带宽会极大地影响你的体验质量。 不同的应用程序和显示分辨率需要不同的网络配置，因此请务必确保网络已配置为满足你的需求。
 
 >[!NOTE]
->以下建议适用于低于 0.1% 的网络丢失。
+>以下建议适用于低于0.1% 的网络丢失。
 
 ## <a name="applications"></a>应用程序
 
 下表列出了为实现平滑用户体验而推荐的最小带宽。 
 
-|工作负荷        |示例应用程序                                                                                           |建议的带宽|
+|工作负载        |示例应用程序                                                                                           |建议的带宽|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|任务辅助     |Microsoft Word、Outlook、Excel、Adobe Reader                                                                  |1.5 @ no__t-0Mbps        |
-|Office 辅助角色   |Microsoft Word、Outlook、Excel、Adobe Reader、PowerPoint、照片查看器                                        |3 @ no__t-0Mbps          |
-|知识工作者|Microsoft Word，Outlook，Excel，Adobe Reader，PowerPoint，照片查看器，Java                                  |5 @ no__t-0Mbps          |
-|Power worker    |Microsoft Word，Outlook，Excel，Adobe Reader，PowerPoint，照片查看器，Java，CAD/CAM，插图/发布|15 @ no__t-0Mbps         |
+|任务辅助     |Microsoft Word、Outlook、Excel、Adobe Reader                                                                  |1.5&nbsp;Mbps        |
+|Office 辅助角色   |Microsoft Word、Outlook、Excel、Adobe Reader、PowerPoint、照片查看器                                        |3&nbsp;Mbps          |
+|知识工作者|Microsoft Word，Outlook，Excel，Adobe Reader，PowerPoint，照片查看器，Java                                  |5&nbsp;Mbps          |
+|Power worker    |Microsoft Word，Outlook，Excel，Adobe Reader，PowerPoint，照片查看器，Java，CAD/CAM，插图/发布|15&nbsp;Mbps         |
 
 >[!NOTE]
 >不管会话中有多少用户，这些建议都适用。

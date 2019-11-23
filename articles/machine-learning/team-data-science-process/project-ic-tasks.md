@@ -55,7 +55,7 @@ ms.locfileid: "72244257"
 
 若要在本地使用存储库并将更改推送到共享团队和项目存储库，请先将存储库复制或*克隆*到本地计算机。 
 
-1. 在 Azure DevOps 中，请参阅*https： \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >* ，例如， **https： \///DataScienceUnit/** MyTeam。
+1. 在 Azure DevOps 中，请参阅*https：\//\<服务器名称 >/\<组织名称 >/\<团队名称 >* ，如**https：\//dev.azure.com/DataScienceUnit/MyTeam**。
    
 1. 在左侧导航栏中选择 "**存储库**"，并在页面顶部选择要克隆的存储库。
    
@@ -67,7 +67,7 @@ ms.locfileid: "72244257"
    
 1. 在本地计算机或 DSVM 上创建以下目录：
    
-   - 对于 Windows：**C:\GitRepos**
+   - 对于 Windows： **C:\GitRepos**
    - 对于 Linux： **$home/gitrepos**
    
 1. 更改为你创建的目录。

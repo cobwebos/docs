@@ -40,12 +40,12 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 * 在适用的 Windows Active Directory （AD）服务器上必须打开正确的端口。  
     所需的端口如下： 
 
-    |     服务           |     Port     |     Protocol     |
+    |     服务           |     端口     |     协议     |
     |-----------------------|--------------|------------------|
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    不可用       |    回显回复    |
+    |    ICMPv4             |    不适用       |    回显回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -100,7 +100,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     * **组织单位路径**  
         这是将在其中创建 SMB 服务器计算机帐户的组织单位（OU）的 LDAP 路径。 即 OU = 第二级，OU = 第一级。 
 
-        如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径 @no__t 为0。
+        如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，将 `OU=AADDC Computers` 组织单位路径。
         
     * 凭据，包括**用户名**和**密码**
 
@@ -130,7 +130,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
         卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 您可以使用任何字母数字字符。   
 
-        不能使用 `default` 作为卷名。
+        不能将 `default` 用作卷名。
 
     * **容量池**  
         指定要在其中创建卷的容量池。

@@ -19,10 +19,10 @@ ms.locfileid: "71949523"
 
 在 Azure 容器注册表中，可以锁定某个映像版本或存储库，使之不会被删除或更新。 若要锁定映像或存储库，可使用 Azure CLI 命令 [az acr repository update][az-acr-repository-update] 更新其属性。 
 
-本文要求在 Azure Cloud Shell 或本地运行 Azure CLI （建议使用版本2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+本文要求在 Azure Cloud Shell 或本地运行 Azure CLI （建议使用版本2.0.55 或更高版本）。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 本文不适用于锁定整个注册表，例如，使用 Azure 门户中的**设置 > 锁定**，或在 Azure CLI 中 @no__t 1 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，例如添加或删除复制或删除注册表本身。 [锁定资源以防止意外更改](../azure-resource-manager/resource-group-lock-resources.md)的详细信息。
+> 本文不适用于锁定整个注册表，例如，使用 Azure 门户中的**设置 > 锁定**，或在 Azure CLI 中 `az lock` 命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，例如添加或删除复制或删除注册表本身。 [锁定资源以防止意外更改](../azure-resource-manager/resource-group-lock-resources.md)的详细信息。
 
 ## <a name="scenarios"></a>方案
 
@@ -70,7 +70,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>按清单摘要锁定映像
 
-若要锁定按清单摘要（SHA-256 哈希，以 `sha256:...` 形式表示）标识的 *myrepo/myimage* 映像，请运行以下命令。 （若要查找与一个或多个映像标记关联的清单摘要，请运行 [az acr repository show-manifests][az-acr-repository-show-manifests] 命令。）
+若要锁定按清单摘要（SHA-256 哈希，以 *形式表示）标识的*myrepo/myimage`sha256:...` 映像，请运行以下命令。 （若要查找与一个或多个映像标记关联的清单摘要，请运行 [az acr repository show-manifests][az-acr-repository-show-manifests] 命令。）
 
 ```azurecli
 az acr repository update \

@@ -45,7 +45,7 @@ Azure 映像生成器服务将在这些区域提供预览版。 可以在这些�
 AIB 将支持 Azure Marketplace 基础操作系统映像：
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7。6
+- RHEL 7.6
 - CentOS 7。6
 - Windows 10 RS5 企业/专业/企业版虚拟桌面（EVD） 
 - Windows 2016
@@ -58,7 +58,7 @@ AIB 将支持 RHEL ISO，作为的源：
 
 RHEL 7.6 Iso 不受支持，但正在进行测试。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 
 ![Azure 映像生成器的概念图](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -72,9 +72,9 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 ![Azure 映像生成器过程的概念图](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. 以一个 json 文件的形式创建图像模板。 此 json 文件包含有关映像源、自定义和分发的信息。 [Azure 映像生成器 GitHub 存储库](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中提供了多个示例。
-1. 将其提交给服务，这将在指定的资源组中创建一个映像模板项目。 在后台，映像生成器将根据需要下载源映像或 ISO，以及脚本。 它们存储在订阅中自动创建的单独资源组中，格式为： IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >。 
-1. 一旦创建了映像模板，就可以生成映像。 在背景图像生成器中，使用模板和源文件在 IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > 资源组中创建 VM （D1v2）、网络、公共 IP 和存储。
-1. 在创建映像的过程中，映像生成器会根据模板对其进行处理，然后在为进程创建的 IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > 资源组中删除其他资源。
+1. 将其提交给服务，这将在指定的资源组中创建一个映像模板项目。 在后台，映像生成器将根据需要下载源映像或 ISO，以及脚本。 它们存储在订阅中自动创建的单独资源组中，格式为： IT_\<DestinationResourceGroup > _\<TemplateName >。 
+1. 一旦创建了映像模板，就可以生成映像。 在背景图像生成器中，使用模板和源文件在 IT_ 中创建一个 VM （D1v2）、网络、公共 IP 和存储\<DestinationResourceGroup > _\<TemplateName > 资源组。
+1. 在创建映像时，图像生成器会根据模板对其进行处理，然后删除 IT_\<DestinationResourceGroup > _\<TemplateName > 为该进程创建的资源组中的其他资源。
 
 
 ## <a name="permissions"></a>权限
@@ -98,7 +98,7 @@ az role assignment create \
 ## <a name="costs"></a>成本
 通过 Azure 映像生成器创建、构建和存储映像时，会产生一些计算、网络和存储成本。 这些成本与手动创建自定义映像的成本类似。 对于资源，将按 Azure 费率向你收费。 
 
-在映像创建过程中，文件会下载并存储在 `IT_<DestinationResourceGroup>_<TemplateName>` 资源组中，这会产生较小的存储成本。 如果你不希望保留这些模板，请在生成映像后删除该**映像模板**。
+在映像创建过程中，会下载文件并将其存储在 `IT_<DestinationResourceGroup>_<TemplateName>` 资源组中，这会产生较小的存储成本。 如果你不希望保留这些模板，请在生成映像后删除该**映像模板**。
  
 映像生成器使用 D1v2 VM 大小和 VM 所需的存储和网络创建 VM。 这些资源将在生成过程的持续时间内持续，并将在映像生成器创建完映像后被删除。 
  

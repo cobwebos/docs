@@ -25,7 +25,7 @@ ms.locfileid: "72674926"
 
 你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 Azure NetApp 文件导出策略仅支持 NFS 卷。  支持 NFSv3 和 NFSv4。 
 
-## <a name="steps"></a>Steps 
+## <a name="steps"></a>步骤 
 
 1.  在 Azure NetApp 文件导航窗格中单击 "**导出策略**"。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "72674926"
         * IPv4 地址，例如 `10.1.12.24` 
         * 带有以位数表示的子网掩码的 IPv4 地址，例如 `10.1.12.10/4`
 
-    * **访问**  
+    * **Access**  
         选择以下访问权限类型之一：  
         * 无访问权限 
         * 读取和写入

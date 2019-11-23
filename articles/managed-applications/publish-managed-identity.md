@@ -139,7 +139,7 @@ ms.locfileid: "72330226"
 
 > [!NOTE]
 > 将为客户提供 Azure 门户创建体验的 Marketplace 托管应用程序模板。
-> 在这些情况下，必须使用 CreateUIDefinition 上的 `managedIdentity` 输出密钥来启用标识。
+> 对于这些方案，CreateUIDefinition 上的 `managedIdentity` 输出密钥必须用于启用标识。
 
 还可以通过 Azure 资源管理器模板启用托管标识。 示例下面将在托管应用程序上启用**系统分配**的标识。 可以使用 Azure 资源管理器模板参数提供更复杂的标识对象，以提供输入。 这些输入可用于使用**用户分配的标识**构造托管应用程序。
 
@@ -275,7 +275,7 @@ ms.locfileid: "72330226"
 
 ### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>使用链接资源创作 Maintemplate.json
 
-除了更新 CreateUIDefinition，主模板还需要更新，以接受传入链接的资源 ID。 可以通过添加新的参数更新主模板以接受新的输出。 由于 @no__t 0 的输出将覆盖生成的托管应用程序模板上的值，因此不会将其传递到主模板，且不应包含在 parameters 节中。
+除了更新 CreateUIDefinition，主模板还需要更新，以接受传入链接的资源 ID。 可以通过添加新的参数更新主模板以接受新的输出。 由于 `managedIdentity` 输出将覆盖生成的托管应用程序模板上的值，因此不会将其传递到主模板，且不应包含在 parameters 节中。
 
 将网络配置文件设置为 CreateUIDefinition 提供的现有网络接口的示例主模板。
 
@@ -334,10 +334,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 请求正文参数：
 
-参数 | 需要 | 描述
+参数 | 必选 | 说明
 ---|---|---
-authorizationAudience | 否 | 目标资源的应用 ID URI。 它还是已颁发令牌的 @no__t 0 （受众）声明。 默认值为 "https://management.azure.com/"
-userAssignedIdentities | 否 | 要为其检索令牌的用户分配的托管标识的列表。 如果未指定，则 @no__t 为系统分配的托管标识返回标记。
+authorizationAudience | 否 | 目标资源的应用 ID URI。 它还是已颁发令牌的 `aud` （受众）声明。 默认值为 "https://management.azure.com/"
+userAssignedIdentities | 否 | 要为其检索令牌的用户分配的托管标识的列表。 如果未指定，`listTokens` 将为系统分配的托管标识返回令牌。
 
 
 示例响应可能如下所示：
@@ -363,13 +363,13 @@ Content-Type: application/json
 
 响应将包含 `value` 属性下的标记数组：
 
-参数 | 描述
+参数 | 说明
 ---|---
 access_token | 请求的访问令牌。
 expires_in | 访问令牌有效的秒数。
 expires_on | 访问令牌过期的时间范围。 这表示为 epoch 中的秒数。
 not_before | 访问令牌生效时的时间跨度。 这表示为 epoch 中的秒数。
-authorizationAudience | 访问令牌请求的 @no__t 0 （受众）。 这与 `listTokens` 请求中提供的内容相同。
+authorizationAudience | 访问令牌请求的 `aud` （受众）。 这与 `listTokens` 请求中提供的内容相同。
 resourceId | 已颁发令牌的 Azure 资源 ID。 这是托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 

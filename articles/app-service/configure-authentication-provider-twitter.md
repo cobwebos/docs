@@ -33,7 +33,7 @@ ms.locfileid: "72176959"
 
 1. 登录到[Azure 门户]并中转到你的应用程序。 复制 **URL**。 你将使用它来配置你的 Twitter 应用。
 1. 请前往[Twitter 开发人员]网站，用你的 Twitter 帐户凭据登录，并选择 "**创建新应用**"。
-1. 输入新应用的**名称**和**描述**。 将应用程序的**URL**粘贴到 "**网站**" 字段。 在 "**回调 URL** " 字段中，输入应用服务应用的 URL，并将路径追加 `/.auth/login/aad/callback`。 例如， `https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 请确保使用 HTTPS 方案。
+1. 输入新应用的**名称**和**描述**。 将应用程序的**URL**粘贴到 "**网站**" 字段。 在 "**回调 url** " 字段中，输入应用服务应用的 URL，并将路径追加 `/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback`。 请确保使用 HTTPS 方案。
 1. 在页面底部，阅读并接受条款。 选择 "**创建 Twitter 应用程序**"。 将显示应用程序详细信息。
 1. 选择 "**设置**" 选项卡，选中 "**允许使用此应用程序通过 Twitter 登录**"，然后选择 "**更新设置**"。
 1. 选择“密钥和访问令牌”选项卡。
@@ -48,9 +48,9 @@ ms.locfileid: "72176959"
 ## <a name="secrets"></a>向应用程序添加 Twitter 信息
 
 1. 在[Azure 门户]中转到你的应用程序。
-1. 选择 "**设置**" @no__t "**身份验证/授权**"，并确保已**启用 "** **应用服务身份验证**"。
+1. 选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
 1. 选择 " **Twitter**"。
-1. 粘贴你之前获取的 @no__t 0 和 @no__t 值。
+1. 粘贴你之前获取的 `API Key` 和 `API Secret` 值。
 1. 选择“确定”。
 
    ![移动应用 Twitter 设置的屏幕截图][1]

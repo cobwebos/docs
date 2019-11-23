@@ -27,7 +27,7 @@ Azure Active Directory （Azure AD）支持批量用户创建和删除操作，�
 ## <a name="to-bulk-restore-users"></a>批量还原用户
 
 1. 使用 Azure AD 组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
-1. 在 Azure AD 中，选择 "**用户**@no__t**已删除**-1"。
+1. 在 Azure AD 中，选择 "**用户** > **删除**"。
 1. 在 "**已删除用户**" 页上，选择 "**批量还原**"，以上传要还原的用户的属性的有效 CSV 文件。
 
    ![在 "已删除用户" 页上选择 "批量还原" 命令](./media/users-bulk-restore/bulk-restore.png)
@@ -60,7 +60,7 @@ Azure Active Directory （Azure AD）支持批量用户创建和删除操作，�
 
 ### <a name="view-users-with-powershell"></a>通过 PowerShell 查看用户
 
-运行下面的命令：
+运行以下命令：
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"

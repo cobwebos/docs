@@ -40,7 +40,7 @@ ms.locfileid: "72430212"
  
 下表将服务类型映射到相应的必需数据类型：
 
-| 服务类型 | 代理（Windows 服务名称） | 用途 | 生成的数据类型  |
+| 服务类型 | 代理（Windows 服务名称） | 目的 | 生成的数据类型  |
 | --- | --- | --- | --- |  
 | Azure AD Connect （同步） | Azure AD Connect Health Sync Insights 服务 | 收集特定于 AAD 连接的信息（连接器、同步规则等） | - AadSyncService-SynchronizationRules <br />  -AadSyncService <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync 监视服务 | 收集 AAD 连接特定的性能计数器、ETW 跟踪、文件 | 性能计数器 |
@@ -59,7 +59,7 @@ ms.locfileid: "72430212"
 
 * 请确保已安装最新版本的代理。 查看[发布历史记录](reference-connect-health-version-history.md)。 
 * 请确保 Azure AD Connect Health 代理服务正在计算机上**运行**。 例如，适用于 AD FS 的 Connect Health 应该有三个服务。
-  ![Verify Azure AD Connect Health @ no__t-1
+  ![验证 Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * 请务必仔细审阅并满足[要求部分](how-to-connect-health-agent-install.md#requirements)。
 * 使用[测试连接工具](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)来发现连接问题。

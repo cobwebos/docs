@@ -81,12 +81,12 @@ az provider register --namespace Microsoft.ContainerInstance
 
 在“基本信息”页面上，配置以下选项：
 
-- *项目详细信息*：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
+- *项目详细信息*：选择 Azure 订阅，然后选择或创建一个 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
 - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
-- *主节点池*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
-     - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 *1*。 部署群集后，可以调整节点计数。
+- *主节点池*：为 AKS 节点选择 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
+     - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 **1**。 部署群集后，可以调整节点计数。
 
-单击“下一步:**Scale @ no__t。
+单击 "**下一步：缩放**"。
 
 在 "**缩放**" 页上，选择 "**虚拟节点**" 下的 "*启用*"。
 
@@ -169,7 +169,7 @@ spec:
 kubectl apply -f virtual-node.yaml
 ```
 
-使用带有 `-o wide` 参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-linux` 节点上计划 `virtual-node-helloworld` pod。
+使用带有 `-o wide` 参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-helloworld` 节点上计划 `virtual-node-linux` pod。
 
 ```
 $ kubectl get pods -o wide
@@ -191,7 +191,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-使用 `apt-get` 在 Pod 中安装 `curl`：
+使用 `curl` 在 Pod 中安装 `apt-get`：
 
 ```azurecli-interactive
 apt-get update && apt-get install -y curl

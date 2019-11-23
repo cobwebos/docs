@@ -35,21 +35,21 @@ ms.locfileid: "71981990"
 ## <a name="enable-nested-virtualization-on-a-template-vm"></a>在模板 VM 上启用嵌套虚拟化
 本部分中的步骤重点介绍如何为 Windows Server 2016 或 Windows Server 2019 设置嵌套虚拟化。 你将使用脚本通过 Hyper-v 设置模板计算机。 有关自动解决方案，请参阅[实验室服务版 Hyper-v 脚本](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)中的脚本。 以下步骤将引导你完成如何使用该脚本。
 
-1. 如果使用的是 Internet Explorer，则可能必须将 `https://github.com` 添加到 "受信任的站点" 列表中。 
+1. 如果使用的是 Internet Explorer，则可能需要将 `https://github.com` 添加到 "受信任的站点" 列表中。 
     1. 打开 Internet Explorer。
     1. 选择齿轮图标，然后选择 " **Internet 选项**"。  
     1. 出现 " **Internet 选项**" 对话框时，选择 "**安全性**"，选择 "**受信任的站点**"，单击 "**站点**" 按钮。
     1. 当 "**受信任的站点**" 对话框出现时，将 `https://github.com` 添加到受信任的网站列表中，然后选择 "**关闭**"。
 
         ![受信任的站点](../media/how-to-enable-nested-virtualization-template-vm/trusted-sites-dialog.png)
-1.  按照以下步骤所述下载 Git 存储库文件。  此外，Git 存储库可以从[@no__t](https://github.com/Azure/azure-devtestlab.git)进行克隆。 
+1.  按照以下步骤所述下载 Git 存储库文件。  此外，也可以从[https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)中克隆 Git 存储库。 
     1. 转到 [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/)。
     1. 单击 "**克隆或下载**" 按钮。
     1. 单击 "**下载 ZIP**"。
     1. 提取 ZIP 文件
 1. 在**管理员**模式下启动**PowerShell** 。
-1. 在 PowerShell 窗口中，导航到下载了该脚本的文件夹。 如果要从存储库文件的顶部文件夹进行导航，则该脚本位于 @no__t 0。
-1. 您可能必须更改执行策略才能成功运行该脚本。 运行下面的命令：
+1. 在 PowerShell 窗口中，导航到下载了该脚本的文件夹。 如果要从存储库文件的顶部文件夹进行导航，则该脚本位于 `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`。
+1. 您可能必须更改执行策略才能成功运行该脚本。 运行以下命令：
     
     ```powershell
     Set-ExecutionPolicy bypass -force 
@@ -62,7 +62,7 @@ ms.locfileid: "71981990"
 
     > [!NOTE]
     > 该脚本可能需要重新启动计算机。 按照脚本中的说明操作，然后重新运行该脚本，直到在输出中显示**脚本 "已完成**"。
-1. 请不要忘记重置执行策略。 运行下面的命令： 
+1. 请不要忘记重置执行策略。 运行以下命令： 
 
     ```powershell
     Set-ExecutionPolicy default -force

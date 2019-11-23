@@ -21,12 +21,12 @@ ms.locfileid: "67172941"
 **标准 SSD 托管磁盘**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**高级 SSD 托管磁盘：每磁盘限制**
+**高级 SSD 托管磁盘：每个磁盘的限制**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 **高级 SSD 托管磁盘：每个 VM 的限制**
 
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | --- |
 | 每个 VM 的最大 IOPS |GS5 VM 为 80,000 IOPS |
 | 每个 VM 的最大吞吐量 |GS5 VM 为 2,000 MB/秒 |

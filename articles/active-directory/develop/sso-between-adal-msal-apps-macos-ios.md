@@ -24,7 +24,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72264145"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：MacOS 和 iOS 上的 ADAL 和 MSAL 应用之间的 SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上，在 ADAL 和 MSAL 应用之间 SSO
 
 适用于 iOS 的 Microsoft 身份验证库（MSAL）可以在应用程序之间与[ADAL 目标-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)共享 SSO 状态。 你可以按自己的节奏将你的应用迁移到 MSAL，确保你的用户仍可从跨应用 SSO （即使混合使用 ADAL 和基于 MSAL 的应用）中受益。
 
@@ -42,21 +42,21 @@ ADAL 2.7. x 可以读取 MSAL 缓存格式。 不需要对版本为 ADAL 2.7. x 
 
 ### <a name="account-identifier-differences"></a>帐户标识符差异
 
-MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为其主帐户标识符。 MSAL 使用一个不可显示的帐户标识符，该标识符基于对象 ID 和 AAD 帐户的租户 ID，并为其他类型的帐户使用 @no__t 0 声明。
+MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为其主帐户标识符。 MSAL 使用一个不可显示的帐户标识符，该标识符基于对象 ID 和 AAD 帐户的租户 ID 以及其他帐户类型的 `sub` 声明。
 
-当你在 MSAL 结果中收到 @no__t 0 对象时，它将在 @no__t 属性中包含一个帐户标识符。 应用程序应将此标识符用于后续的无提示请求。
+当你在 MSAL 结果中收到 `MSALAccount` 对象时，它将在 `identifier` 属性中包含一个帐户标识符。 应用程序应将此标识符用于后续的无提示请求。
 
-除 `identifier` 外，`MSALAccount` 对象还包含名为 `username` 的可显示标识符。 这会转换为 ADAL 中的 `userId`。 `username` 不被视为唯一的标识符，可以随时更改，因此它只应用于 ADAL 的向后兼容性方案。 MSAL 支持使用 `username` 或 `identifier` 进行缓存查询，建议使用 `identifier` 进行查询。
+除了 `identifier`之外，`MSALAccount` 对象还包含名为 `username`的可显示标识符。 这会转换为 ADAL 中的 `userId`。 `username` 不被视为唯一的标识符，可以随时更改，因此它只应用于使用 ADAL 的后向兼容方案。 MSAL 支持 `username` 或 `identifier`使用缓存查询，建议使用 `identifier` 进行查询。
 
 下表汇总了 ADAL 与 MSAL 之间的帐户标识符差异：
 
 | 帐户标识符                | MSAL                                                         | ADAL 2.7. x      | 旧 ADAL （ADAL 2.7. x 之前） |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示标识符            | `username`                                                   | `userId`        | `userId`                       |
-| 唯一不可显示的标识符 | `identifier`                                                 | `homeAccountId` | 不可用                            |
-| 不知道帐户 id               | 通过 @no__t 中的 `allAccounts:` API 查询所有帐户 | 不可用             | 不可用                            |
+| 唯一不可显示的标识符 | `identifier`                                                 | `homeAccountId` | 不适用                            |
+| 不知道帐户 id               | 通过 `MSALPublicClientApplication` 中的 `allAccounts:` API 查询所有帐户 | 不适用             | 不适用                            |
 
-这是提供这些标识符的 @no__t 0 接口：
+这是提供这些标识符的 `MSALAccount` 接口：
 
 ```objc
 @protocol MSALAccount <NSObject>
@@ -89,7 +89,7 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为其主帐�
 
 ### <a name="sso-from-msal-to-adal"></a>从 MSAL 到 ADAL 的 SSO
 
-如果你有一个 MSAL 应用和一个 ADAL 应用，并且用户第一次登录到基于 MSAL 的应用，则可以通过从 @no__t 的对象保存 @no__t，并将其作为 `userId` 传递到基于 ADAL 的应用，来获取 ADAL 应用中的 SSO。 然后，ADAL 可以通过 `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API 以无提示方式查找帐户信息。
+如果你有一个 MSAL 应用和一个 ADAL 应用，并且用户第一次登录到基于 MSAL 的应用，则可以通过从 `MSALAccount` 对象保存 `username`，并将其作为 `userId`传递到基于 ADAL 的应用来获取 ADAL 应用中的 SSO。 然后，ADAL 可以通过 `acquireTokenSilentWithResource:clientId:redirectUri:userId:completionBlock:` API 以无提示方式查找帐户信息。
 
 ### <a name="sso-from-adal-to-msal"></a>从 ADAL 到 MSAL 的 SSO
 
@@ -97,20 +97,20 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为其主帐�
 
 #### <a name="adals-homeaccountid"></a>ADAL 的 homeAccountId
 
-ADAL 2.7. x 通过此属性返回结果中 @no__t 对象的 @no__t 0：
+ADAL 2.7. x 通过此属性返回结果中 `ADUserInformation` 对象的 `homeAccountId`：
 
 ```objc
 /*! Unique AAD account identifier across tenants based on user's home OID/home tenantId. */
 @property (readonly) NSString *homeAccountId;
 ```
 
-ADAL 中的 `homeAccountId` 等效于 MSAL 中的 `identifier`。 可以保存此标识符，以便在 MSAL 中使用 `accountForIdentifier:error:` API 进行帐户查找。
+ADAL 中的 `homeAccountId` 与 MSAL 中 `identifier` 等效。 可以保存此标识符，以便在 MSAL 中用于帐户查找，并提供 `accountForIdentifier:error:` API。
 
 #### <a name="adals-userid"></a>ADAL 的 `userId`
 
-如果 `homeAccountId` 不可用，或者只有可显示的标识符，则可以使用 ADAL 的 `userId` 查找 MSAL 中的帐户。
+如果 `homeAccountId` 不可用，或者只有可显示的标识符，则可以使用 ADAL 的 `userId` 在 MSAL 中查找帐户。
 
-在 MSAL 中，首先 `username` 或 `identifier` 查找帐户。 始终使用 `identifier` 进行查询（如果有），并且仅使用 `username` 作为回退。 如果找到该帐户，请使用 `acquireTokenSilent` 调用中的帐户。
+在 MSAL 中，首先 `username` 或 `identifier`查找帐户。 始终使用 `identifier` 进行查询（如果有），并且仅将 `username` 用作回退。 如果找到该帐户，请使用 `acquireTokenSilent` 调用中的帐户。
 
 Objective-C：
 
@@ -195,7 +195,7 @@ Returns account for for the given username (received from an account object retu
 
 旧的 ADAL 版本不支持 MSAL 缓存格式。 但是，若要确保从 ADAL 平稳迁移到 MSAL，MSAL 可以读取较旧的 ADAL 缓存格式，而不会再次提示用户凭据。
 
-因为 `homeAccountId` 在较早的 ADAL 版本中不可用，所以需要使用 @no__t 查找帐户：
+由于 `homeAccountId` 在旧版 ADAL 版本中不可用，因此需要使用 `username`查找帐户：
 
 ```objc
 /*!

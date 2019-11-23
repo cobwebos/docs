@@ -41,7 +41,7 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 本文中的步骤可以通过[Azure CLI](/cli/azure/)、 [Azure PowerShell Az module](/powershell/azure/overview)或[Azure 门户](https://portal.azure.com)来完成。
 
-当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装;请参阅 [Azure Disk Encryption for Windows：安装工具 @ no__t-0 获取详细信息。
+当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装;有关详细信息，请参阅适用[于 Windows 的 Azure 磁盘加密：安装工具](disk-encryption-windows.md#install-tools-and-connect-to-azure)。
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 

@@ -37,7 +37,7 @@ DSVM 支持以下数据平台工具。
 > SQL Server 2016 Developer Edition 只能用于开发和测试目的。 需要许可证或一个 SQL Server VM 才能在生产中运行。
 
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 
 数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一的手动步骤涉及使用 Microsoft Machine Learning Server 启用数据库内分析。 为此，可以运行以下命令作为 SQL Server Management Studio （SSMS）中的一次性操作。 以计算机管理员身份登录后运行此命令，在 SSMS 中打开一个新查询，并确保所选数据库 `master`：
 
@@ -55,7 +55,7 @@ DSVM 支持以下数据平台工具。
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>如何在 DSVM 上配置并安装它？ 
 
- SQL Server 以标准方式安装。 可在 `C:\Program Files\Microsoft SQL Server` 中找到它。 数据库内 Machine Learning Server 实例位于 `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`。 DSVM 还具有单独的独立 Machine Learning Server 实例，该实例安装在 `C:\Program Files\Microsoft\R Server\R_SERVER`。 这两个 Machine Learning Server 实例不共享库。
+ SQL Server 以标准方式安装。 可在 `C:\Program Files\Microsoft SQL Server` 中找到它。 数据库内 Machine Learning Server 实例可在 `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`找到。 DSVM 还具有单独的独立 Machine Learning Server 实例，该实例安装在 `C:\Program Files\Microsoft\R Server\R_SERVER`。 这两个 Machine Learning Server 实例不共享库。
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (Standalone)
@@ -69,7 +69,7 @@ DSVM 支持以下数据平台工具。
 | DSVM 上的相关工具       | PySpark、Scala<br/>Jupyter（Spark/PySpark 内核）<br/>Microsoft Machine Learning Server、SparkR、Sparklyr <br />Apache Drill      |
 
 ### <a name="how-to-use-it"></a>如何使用
-你可以通过运行 @no__t 0 或 `pyspark` 命令在命令行上提交 Spark 作业。 还可通过使用 Spark 内核新建笔记本来创建 Jupyter 笔记本。
+可以通过运行 `spark-submit` 或 `pyspark` 命令在命令行上提交 Spark 作业。 还可通过使用 Spark 内核新建笔记本来创建 Jupyter 笔记本。
 
 可以通过使用 DSVM 上提供的 SparkR、Sparklyr 和 Microsoft Machine Learning Server 库，从 R 使用 Spark。 请参阅上表中的示例链接。
 
@@ -78,7 +78,7 @@ DSVM 支持以下数据平台工具。
 
 
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 在 Ubuntu Linux DSVM edition Microsoft Machine Learning Server 上的 Spark 上下文中运行之前，必须完成一次性安装步骤，才能启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它们，请在第一次运行以下命令：
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -89,7 +89,7 @@ DSVM 支持以下数据平台工具。
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-当你不再需要 Hadoop 相关服务时，你可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来将其停止。
+当你不再需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```来停止这些服务。
 
 此示例演示如何在远程 Spark 上下文（即 DSVM 上的独立 Spark 实例）中开发和测试 MRS，并在 `/dsvm/samples/MRS` 目录中提供。
 
@@ -101,9 +101,9 @@ DSVM 支持以下数据平台工具。
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-用于从 Azure Blob 存储或 Azure Data Lake Storage 中使用 Microsoft MMLSpark 机器学习库访问数据的库预安装在 $SPARK 给家里打电话/jar 中。 Spark 启动时，这些 JAR 会自动加载。 默认情况下，Spark 使用本地磁盘上的数据。 
+用于从 Azure Blob 存储或 Azure Data Lake Storage 中使用 Microsoft MMLSpark 机器学习库访问数据的库预安装在 $SPARK _HOME/jars。 Spark 启动时，这些 JAR 会自动加载。 默认情况下，Spark 使用本地磁盘上的数据。 
 
-对于 DSVM 上的 Spark 实例，若要访问存储在 Blob 存储或 Azure Data Lake Storage 中的数据，必须根据 $SPARK 给家里打电话//core-site.xml 中找到的模板来创建和配置 @no__t 文件。 你还必须具有相应的凭据才能访问 Blob 存储和 Azure Data Lake Storage。 （请注意，模板文件使用 Blob 存储的占位符，并 Azure Data Lake Storage 配置。）
+对于 DSVM 上的 Spark 实例，若要访问存储在 Blob 存储或 Azure Data Lake Storage 中的数据，必须根据 $SPARK _HOME/conf/core-site.xml.template. 中找到的模板来创建和配置 `core-site.xml` 文件。 你还必须具有相应的凭据才能访问 Blob 存储和 Azure Data Lake Storage。 （请注意，模板文件使用 Blob 存储的占位符，并 Azure Data Lake Storage 配置。）
 
 有关创建 Azure Data Lake Storage 服务凭据的详细信息，请参阅[Azure Data Lake Storage Gen1 身份验证](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)。 在 core-site.xml 文件中输入 Blob 存储或 Azure Data Lake Storage 的凭据后，可以通过 wasb://或 adl://的 URI 前缀引用存储在这些源中的数据。
 

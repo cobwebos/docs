@@ -36,7 +36,7 @@ ms.locfileid: "72299803"
 
    -SkuName 可以是 F0 （免费层）或 S0 （标准层，也可以在公共预览期间免费）。 S0 层的调用速率限制更高，对调用次数没有每月配额。
 
-   -Location 可以是以下任一项： `eastus`、`westus`、`australiaeast`、`centralindia`、`japaneast`、`northeurope` @no__t
+   -Location 可以是以下任意内容： `eastus`、`westus`、`australiaeast`、`centralindia`、`japaneast`、`northeurope`、`westeurope`
 
    -CustomSubdomainName 需要全局唯一，并且不能包含特殊字符，如： "."、"！"、"，"。
 
@@ -137,4 +137,4 @@ ms.locfileid: "72299803"
 * 查看 [Node.js 教程](./tutorial-nodejs.md)，了解通过 Node.js 使用沉浸式阅读器 SDK 还可以做什么
 * 查看 [Python 教程](./tutorial-python.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
 * 查看[swift 教程](./tutorial-ios-picture-immersive-reader.md)，了解如何使用 swift 来处理沉浸式读者 SDK
-* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)
+* 探索[沉浸式阅读器 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沉浸式阅读器 SDK 参考](./reference.md)

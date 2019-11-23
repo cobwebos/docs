@@ -153,7 +153,7 @@ Maven 允许定义项目级的值，称为属性。 在 `pom.xml` 中的 `</repo
 
 ## <a name="build-configuration"></a>生成配置
 
-Maven 插件允许自定义项目的构建阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 在 `pom.xml` 中，紧靠在 `</project>` 行的上面添加以下文本：
+Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 在 `pom.xml` 中，紧靠在 `</project>` 行的上面添加以下文本：
 
 ```xml
 <build>

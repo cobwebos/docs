@@ -149,7 +149,7 @@ ms.locfileid: "72899167"
                                                             <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core 分析</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
                                                             
-<a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">.NET Core SDK GitHub</a>存储库的开源                                                        </p>
+<a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">.NET Core SDK GitHub</a>存储库的开源                                                         </p>
                                                         <br><br>
                                                           <h3>Node.js 应用程序</h3>
                                                         <p>
@@ -201,7 +201,7 @@ ms.locfileid: "72899167"
                                                         <h3>隐私、安全性、使用情况 &amp; 成本</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">处理个人数据</a><br>
-                                                            <a href="./app/data-retention-privacy.md">数据收集、保留和存储</a><br>
+                                                            <a href="./app/data-retention-privacy.md">数据收集、保留和存储&amp;<br>
                                                             <a href="./app/resources-roles-access-control.md">基于角色的访问</a><br>
                                                             <a href="./app/ip-addresses.md">IP 地址 &amp; 防火墙异常</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用情况和估计成本</a>
@@ -214,7 +214,7 @@ ms.locfileid: "72899167"
                                                             <a href="./app/data-model-dependency-telemetry.md">依赖项</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">异常</a><br>
                                                             <a href="./app/data-model-trace-telemetry.md">跟踪</a><br>
-                                                            <a href="./app/data-model-event-telemetry.md">事件</a><br>
+                                                            <a href="./app/data-model-event-telemetry.md">Event</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">指标</a><br>
                                                             <a href="./app/data-model-context.md">上下文</a>
                                                             </p>

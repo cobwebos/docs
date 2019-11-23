@@ -108,7 +108,7 @@ ms.locfileid: "73680027"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.  在 "阶段" 视图中，单击 "**查看阶段任务**" 链接。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在 "阶段" 视图中，单击 "**查看阶段任务**" 链接。
 
     ![](media/continuous-integration-deployment/continuous-integration-image14.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "73680027"
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    h.如果该值不存在，请单击“添加行”。 选择“增量”部署模式。
+    h. 选择“增量”部署模式。
 
     > [!WARNING]
     > 如果选择 "**完成**部署模式"，则可能会删除现有资源，其中包括未在资源管理器模板中定义的目标资源组中的所有资源。
@@ -341,7 +341,7 @@ else {
       * `=` 意味着保留当前值作为参数的默认值。
       * `-` 表示不保留参数的默认值。
       * 对于连接字符串或密钥，`|` 是 Azure Key Vault 机密的特殊情况。
-   * `<name>` 是参数的名称。 如果为空，则采用属性的名称。 如果值以 `-` 字符开头，则将缩短名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 会缩短为 `AzureStorage1_connectionString`。
+   * `<name>` 是参数的名称。 如果为空，则采用属性的名称。 如果值以 `-` 字符开头，则将缩短名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 将缩短为 `AzureStorage1_connectionString`。
    * `<stype>` 是参数的类型。 如果 `<stype>` 为空白，则默认类型为 `string`。 支持的值： `string`、`bool`、`number`、`object`和 `securestring`。
 * 如果在定义文件中指定数组，则表明模板中的匹配属性是数组。 数据工厂使用数组的 Integration Runtime 对象中指定的定义来循环访问数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 * 不能有特定于资源实例的定义。 任何定义都适用于该类型的所有资源。
@@ -414,7 +414,7 @@ else {
 
 #### <a name="pipelines"></a>管道
     
-* Path activity/typeProperties/waitTimeInSeconds 中的任何属性均已参数化。 管道中具有名为 `waitTimeInSeconds` 的代码级属性的任何活动（例如，`Wait` 活动）都被参数化为数字，具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
+* Path activity/typeProperties/waitTimeInSeconds 中的任何属性均已参数化。 管道中具有名为 `waitTimeInSeconds` （例如，`Wait` 活动）的代码级属性的任何活动都参数化为数字，具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
 * 同样，名为 `headers` 的属性（例如，在 `Web` 活动中）使用类型 `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂中的值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
@@ -423,12 +423,12 @@ else {
 
 #### <a name="triggers"></a>触发器
 
-* 在 `typeProperties` 下，参数化两个属性。 第一个是 `maxConcurrency`，它指定为具有默认值，并且为`string`类型。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
-* `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 例外情况是 `interval` 属性（参数化为数字类型），参数名称后缀 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性为字符串，参数化为字符串。 但是，不使用默认值参数化 `freq` 属性。 名称将被缩短并带有后缀。 例如，`<entityName>_freq`。
+* 在 `typeProperties`下，参数化两个属性。 第一个是 `maxConcurrency`，它指定为具有默认值，并且为`string`类型。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
+* `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 一个例外情况是 `interval` 属性，该属性参数化为数值类型，参数名称后缀为 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性是字符串，参数化为字符串。 但是，不使用默认值对 `freq` 属性进行参数化。 名称将被缩短并带有后缀。 例如，`<entityName>_freq`。
 
-#### <a name="linkedservices"></a>Linkedservices.json
+#### <a name="linkedservices"></a>LinkedServices
 
-* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，所有类型的链接服务 `AzureDataLakeStore`，将应用特定的模板，并且所有其他模板（通过 \*）将应用不同的模板。
+* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，所有类型的链接服务 `AzureDataLakeStore`，将应用特定的模板，所有其他模板（通过 \*）将应用不同的模板。
 * `connectionString` 属性将参数化为 `securestring` 值，它不会有默认值，并且它将具有一个带有后缀 `connectionString`的短型参数名称。
 * 属性 `secretAccessKey` `AzureKeyVaultSecret` （例如，`AmazonS3` 链接的服务）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
 
@@ -545,7 +545,7 @@ else {
 }
 ```
 
-下面是如何将单个值添加到默认参数化模板的示例。 我们只想要将 Databricks 链接服务的现有 Databricks 交互式群集 ID 添加到参数文件。 请注意，下面的文件与上述文件相同，只是在 `Microsoft.DataFactory/factories/linkedServices` 的属性字段下包含 `existingClusterId`。
+下面是如何将单个值添加到默认参数化模板的示例。 我们只想要将 Databricks 链接服务的现有 Databricks 交互式群集 ID 添加到参数文件。 请注意，以下文件与上述文件相同，不同之处在于 `Microsoft.DataFactory/factories/linkedServices`的属性字段下包含 `existingClusterId`。
 
 ```json
 {
@@ -657,7 +657,7 @@ else {
 
 如果已为数据工厂设置持续集成和部署（CI/CD），则当工厂增长更大时，你可能会遇到 Azure 资源管理器模板限制。 限制的一个示例是资源管理器模板中的最大资源数。 为了适应大型工厂，以及生成工厂的完整资源管理器模板，数据工厂现在会生成链接资源管理器模板。 利用此功能，整个工厂有效负载分为多个文件，因此不会遇到限制。
 
-如果已配置 Git，则会生成链接的模板，并将其与 `adf_publish` 分支中的完整资源管理器模板一起保存在名为 `linkedTemplates` 的新文件夹下。
+如果已配置 Git，则会生成链接的模板，并将其与 `adf_publish` 分支中的完整资源管理器模板一起保存在名为 "`linkedTemplates`" 的新文件夹下。
 
 ![链接的资源管理器模板文件夹](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
@@ -685,7 +685,7 @@ else {
 
 7.  手动将此生成签入到 adf_publish 分支。
 
-8.  如果已将发布管道配置为基于 adf_publish 签入自动触发，则新版本将自动启动。 否则，手动将发布排队。
+8.  如果已将发布管道配置为根据 adf_publish 签入自动触发，则新版本将自动启动。 否则，手动将发布排队。
 
 9.  将热修补版本部署到测试工厂和生产工厂。 此版本包含之前的生产负载以及步骤5中所做的修复。
 

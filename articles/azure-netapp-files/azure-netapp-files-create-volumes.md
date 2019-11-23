@@ -39,7 +39,7 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
 * 确定要使用的 NFS 版本  
   NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 你应验证应用程序所需的版本（NFSv3 或 NFSv 4.1），并使用适当的版本创建你的卷。 例如，如果使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
 
-* “安全”  
+* 安全性  
   支持 UNIX 模式位（读取、写入和执行），适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。
 
 * NFSv 4.1 的本地用户/组和 LDAP 支持  
@@ -68,7 +68,7 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
 
         卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 您可以使用任何字母数字字符。   
 
-        不能使用 `default` 作为卷名。
+        不能将 `default` 用作卷名。
 
     * **容量池**  
         指定要在其中创建卷的容量池。

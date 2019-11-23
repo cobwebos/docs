@@ -1,6 +1,6 @@
 ---
-title: 查询存储 Azure Database for PostgreSQL 单服务器
-description: 本文介绍 Azure Database for PostgreSQL 单服务器中的查询存储功能。
+title: Azure Database for PostgreSQL - 单一服务器中的查询存储
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -31,12 +31,12 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 3. 搜索 `pg_qs.query_capture_mode` 参数。
 4. 将值设置为 `TOP` 并**保存**。
 
-在查询存储中启用等待统计信息： 
+若要在查询存储中启用等待统计信息，请执行以下操作： 
 1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
 1. 将值设置为 `ALL` 并**保存**。
 
 
-或者，可以使用 Azure CLI 设置这些参数。
+或者，可使用 Azure CLI 设置这些参数。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
@@ -72,7 +72,7 @@ SELECT * FROM query_store.qs_view;
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-你还可以将查询存储数据发送到[Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)进行分析和警报、用于流式处理的事件中心，以及用于存档的 Azure 存储。 要配置的日志类别为 " **QueryStoreRuntimeStatistics** " 和 " **QueryStoreWaitStatistics**"。 若要了解有关安装的信息，请访问[Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
+还可以将查询存储数据发送到 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)进行分析和发出警报，发送到事件中心进行流式处理，以及发送到 Azure 存储进行存档。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 若要了解有关安装的信息，请访问[Azure Monitor 诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 
 ## <a name="finding-wait-queries"></a>查找等待查询
@@ -80,7 +80,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 以下是一些示例，说明如何使用查询存储中的等待统计信息获得有关工作负载的更多见解：
 
-| **观测** | **Action** |
+| **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。|
 | 高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。|
@@ -103,7 +103,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | **Parameter** | **说明** | **默认** | **范围**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | 设置跟踪哪些语句以获取等待统计信息。 | 无 | none, all|
-| Pgms_wait_sampling.history_period | 设置等待事件采样的频率（以毫秒为单位）。 | 100 | 1-600000 |
+| Pgms_wait_sampling.history_period | 设置等待事件采样的频率（以毫秒为单位）。 | 100 个 | 1-600000 |
 
 > [!NOTE] 
 > 将 pgms_wait_sampling.query_capture_mode 替代为 pg_qs.query_capture_mode。 如果 pg_qs.query_capture_mode 为 NONE，则 pgms_wait_sampling.query_capture_mode 设置无效。
@@ -119,7 +119,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。 
 
-|名称   |类型 | **参考**  | **说明**|
+|**名称**   |**类型** | **参考**  | **说明**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | runtime_stats_entries 表的 ID|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
@@ -152,7 +152,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
-|名称|  类型|   **说明**|
+|**名称**|  **类型**|   **说明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts 表的 ID|
 |query_sql_text |Varchar(10000)     |代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
@@ -160,7 +160,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-|名称|  类型|   **参考**| **说明**|
+|**名称**|  **类型**|   **参考**| **说明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
 |db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
@@ -170,7 +170,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |calls  |Integer        ||捕获的相同事件的数量|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函数
 Query_store.qs_reset() 返回无效值
 
 `qs_reset` 丢弃查询存储到目前为止收集的所有统计信息。 只能由服务器管理员角色执行此函数。
@@ -182,7 +182,7 @@ Query_store.staging_data_reset() 返回无效值
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 - 如果 PostgreSQL 服务器具有参数 default_transaction_read_only，则查询存储无法捕获数据。
 - 如果遇到较长的 Unicode 查询（> = 6000 个字节），查询存储功能可能会中断。
-- [读取副本](concepts-read-replicas.md)从主服务器查询存储的数据复制。 这意味着读取副本的查询存储不提供有关在读取副本上运行的查询的统计信息。
+- [只读副本](concepts-read-replicas.md)从主服务器复制查询存储数据。 这意味着只读副本的查询存储不提供有关在只读副本上运行的查询的统计信息。
 
 
 ## <a name="next-steps"></a>后续步骤

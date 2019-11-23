@@ -60,7 +60,7 @@ ms.locfileid: "71828987"
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. 下载的文件的名称与从中导出资源的资源组的名称相同。 @No__t 找到与命令一起导出的*1resource > json*文件，并在编辑器中将其打开：
+1. 下载的文件的名称与从中导出资源的资源组的名称相同。 找到 *\<的资源组名称 > json*文件，该文件是用命令导出的，然后在编辑器中打开它：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -98,16 +98,16 @@ ms.locfileid: "71828987"
 
     ```
   
-1. 若要获取区域位置代码，可以通过运行以下命令使用 Azure PowerShell cmdlet [AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) ：
+1. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     ```
 
-1. 可有可无你还可以根据你的要求，更改 *@no__t 1resource > json*文件中的其他参数：
+1. 可有可无你还可以根据你的要求，更改 *\<资源组名称 > json*文件中的其他参数：
 
-    * **地址空间**：在保存文件之前，可以通过修改**资源** > **addressSpace**部分并更改**addressPrefixes**属性，来更改虚拟网络的地址空间：
+    * **地址空间**：在保存文件之前，可以通过修改**addressSpace**部分的 > **资源**并更改**addressPrefixes**属性来更改虚拟网络的地址空间：
 
         ```json
                 "resources": [
@@ -193,7 +193,7 @@ ms.locfileid: "71828987"
          ]
         ```
 
-1. 将资源*组名称保存>json文件。\<*
+1. 保存 *\<resource-group-name>.json* 文件。
 
 1. 在目标区域中创建一个资源组，以使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)部署目标虚拟网络：
     
@@ -201,7 +201,7 @@ ms.locfileid: "71828987"
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 使用[AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将编辑过的 *@no__t > 1resource*文件部署到你在上一步中创建的资源组：
+1. 使用[AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将已编辑 *\<资源组名称 > json*文件部署到在上一步中创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -224,7 +224,7 @@ ms.locfileid: "71828987"
 
 部署虚拟网络后，若要在目标区域中重新开始或放弃虚拟网络，请删除在目标区域中创建的资源组，移动的虚拟网络将被删除。 
 
-若要删除资源组，请使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 

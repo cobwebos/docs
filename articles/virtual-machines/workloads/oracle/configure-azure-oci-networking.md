@@ -25,7 +25,7 @@ ms.locfileid: "71802217"
 为了创建[集成的多云体验](oracle-oci-overview.md)（预览版），Microsoft 和 Oracle 通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 与 oracle 云基础结构（OCI）之间的直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以在两个云之间体验低延迟、高吞吐量、专用直接连接。
 
 > [!IMPORTANT]
-> Microsoft Azure 和 OCI 之间的连接处于预览阶段。 若要在 Azure 与 OCI 之间建立低延迟连接，必须首先为此功能启用 Azure 订阅。 您必须完成此简短的[调查表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)，才能注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 你还可以联系 Microsoft 代表，为此预览版启用此功能。 对预览功能的访问权限仅限于由 Microsoft 自行决定的可用性和限制。 完成调查并不保证访问权限。 此预览版在提供时没有服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 Microsoft Azure 预览版的[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> Microsoft Azure 和 OCI 之间的连接处于预览阶段。 若要在 Azure 与 OCI 之间建立低延迟连接，必须首先为此功能启用 Azure 订阅。 您必须完成此简短的[调查表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)，才能注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 你还可以联系 Microsoft 代表，为此预览版启用此功能。 对预览功能的访问权限仅限于由 Microsoft 自行决定的可用性和限制。 完成调查并不保证访问权限。 此预览版在提供时没有服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 Microsoft Azure 预览版的[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
 下图显示了互连的高级概述：
 
@@ -57,13 +57,13 @@ ms.locfileid: "71802217"
 1. 创建动态路由网关（.DRG）。 创建 FastConnect 线路时需要用到它。 有关详细信息，请参阅[动态路由网关](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)文档。
 1. 在 Oracle 租户下创建 FastConnect 线路。 有关详细信息，请参阅[Oracle 文档](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)。
   
-    * 在 "FastConnect 配置" 下，选择 "**Microsoft Azure：ExpressRoute @ no__t 为提供程序。
+    * 在 "FastConnect 配置" 下，选择 " **Microsoft Azure： ExpressRoute**作为提供程序。
     * 选择上一步中预配的动态路由网关。
     * 选择要设置的带宽。 为了获得最佳性能，带宽必须与创建 ExpressRoute 线路时选择的带宽匹配。
     * 在 "**提供程序服务密钥**" 中，粘贴 ExpressRoute 服务密钥。
     * 使用前一步骤中的第一个/30 个专用 IP 地址空间来划分**主 BGP Ip 地址**和**辅助 bgp ip**地址的第二/30 个专用 ip 地址空间。
         * 将 Oracle BGP IP 地址（主要和次要）的两个范围的第一个可用地址分配给客户 BGP IP 地址（来自 FastConnect）。 第一个可用的 IP 地址是/30 地址空间中的第二个 IP 地址（Microsoft 保留第一个 IP 地址）。
-    * 单击“创建”。
+    * 单击“**创建**”。
 1. 使用路由表通过动态路由网关完成将 FastConnect 链接到 Oracle 租户下的虚拟云网络。
 1. 导航到 Azure 并确保 ExpressRoute 线路的**提供程序状态**已更改为 "已**设置**"，并确保已设置**Azure 专用**类型的对等互连。 这是以下步骤的先决条件。
 

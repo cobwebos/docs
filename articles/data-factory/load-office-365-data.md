@@ -73,7 +73,7 @@ ms.locfileid: "73672620"
 
     ![新建 Office 365 链接服务](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. 在创建链接服务后，会返回到数据集设置。 在 "**表**" 旁边，选择向下箭头以展开可用 Office 365 数据集的列表，然后选择 "BasicDataSet_v0"。Message_v0 "从下拉列表中：
+7. 在创建链接服务后，会返回到数据集设置。 在 "**表**" 旁边，选择向下箭头以展开可用 Office 365 数据集的列表，然后选择 "BasicDataSet_v0。下拉列表中的 "Message_v0"：
 
     ![配置 Office 365 数据集 - 表](./media/load-office-365-data/edit-dataset.png)
 

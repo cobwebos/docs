@@ -57,7 +57,7 @@ az role assignment create \
 
 由于用户委托密钥的有效最大时间间隔是从开始日期起的7天，因此，你应为开始时间在7天内的 SAS 指定到期时间。 此 SA 在用户委托密钥过期后无效，因此过期时间超过7天的 SAS 仍将仅适用于7天。
 
-创建用户委派 SAS 时，需要 @no__t 0 和 `--as-user parameters`。 指定 `--auth-mode` 参数的*登录名*，以便向 Azure 存储发出的请求授权有你的 Azure AD 凭据。 指定 `--as-user` 参数以指示返回的 SAS 应为用户委托 SAS。
+创建用户委派 SAS 时，需要 `--auth-mode login` 和 `--as-user parameters`。 指定 `--auth-mode` 参数的*登录名*，以便向 Azure 存储发出的请求授权有你的 Azure AD 凭据。 指定 `--as-user` 参数，以指示返回的 SAS 应为用户委托 SAS。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>为容器创建用户委托 SAS
 
@@ -89,7 +89,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
-以下语法返回 blob 的用户委托 SAS。 该示例指定 @no__t 的参数，该参数返回附加 SAS 令牌的 blob URI。 请记住，用自己的值替换括号中的占位符值：
+以下语法返回 blob 的用户委托 SAS。 该示例指定 `--full-uri` 参数，该参数返回附加 SAS 令牌的 blob URI。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli-interactive
 az storage blob generate-sas \

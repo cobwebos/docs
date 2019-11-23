@@ -24,13 +24,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71679810"
 ---
-# <a name="authorization-agents-android"></a>授权代理（Android）
+# <a name="authorization-agents-android"></a>授权代理 (Android)
 
 本文介绍 Microsoft 身份验证库（MSAL）允许你的应用使用的不同授权代理，以及如何启用它们。
 
 为授权代理选择特定策略是可选的，它表示应用可以自定义的其他功能。 大多数应用将使用 MSAL 默认值（请参阅[了解 ANDROID MSAL 配置文件](msal-configuration.md)以查看不同的默认值）。
 
-MSAL 支持使用 `WebView` 或系统浏览器的授权。  下图显示了如何使用 `WebView` 或使用 CustomTabs 或不带 CustomTabs 的系统浏览器：
+MSAL 支持使用 `WebView`或系统浏览器的授权。  下图显示了使用 `WebView`或使用 CustomTabs 或不带 CustomTabs 的系统浏览器的外观：
 
 ![MSAL 登录示例](./media/authorization-agents/sign-in-ui.jpg)
 
@@ -38,7 +38,7 @@ MSAL 支持使用 `WebView` 或系统浏览器的授权。  下图显示了如�
 
 默认情况下，与 MSAL 集成的应用程序使用系统浏览器的自定义选项卡进行授权。 与 Webview 不同的是，自定义选项卡使用默认系统浏览器共享 cookie jar，从而能够使用与自定义选项卡集成的 web 或其他本机应用进行更少的登录。
 
-如果应用程序使用 @no__t 0 策略，但未将 Microsoft Authenticator 或公司门户支持集成到其应用中，则用户将不会在设备上或在本机应用和 web 应用之间提供单一登录（SSO）体验。
+如果应用程序使用 `WebView` 策略，但未将 Microsoft Authenticator 或公司门户支持集成到其应用中，则用户不会在设备上或在本机应用和 web 应用之间提供单一登录（SSO）体验。
 
 如果应用程序将 MSAL 与 Microsoft Authenticator 或公司门户支持一起使用，则用户可以在应用程序之间具有 SSO 体验，前提是该用户具有其中一个应用的有效登录。
 
@@ -50,7 +50,7 @@ MSAL 支持使用 `WebView` 或系统浏览器的授权。  下图显示了如�
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-使用应用内 `WebView` 时，用户可以直接登录到应用。 令牌保存在应用的沙箱内，不能在应用的 cookie jar 之外使用。 因此，用户不能跨应用程序提供 SSO 体验，除非应用程序与验证器或公司门户集成。
+使用应用内 `WebView`时，用户可以直接登录到应用。 令牌保存在应用的沙箱内，不能在应用的 cookie jar 之外使用。 因此，用户不能跨应用程序提供 SSO 体验，除非应用程序与验证器或公司门户集成。
 
 但 `WebView` 提供了为登录 UI 自定义外观的功能。 有关如何执行此自定义的详细信息，请参阅[Android webview](https://developer.android.com/reference/android/webkit/WebView) 。
 
@@ -68,7 +68,7 @@ MSAL 支持使用 `WebView` 或系统浏览器的授权。  下图显示了如�
 
 由于 MSAL 无法指定要在每个大范围的 Android 手机上使用的确切浏览器包，因此 MSAL 实现了浏览器选择试探法，用于尝试提供最佳的跨设备 SSO。
 
-MSAL 检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 列表按包管理器返回的顺序，后者间接反映用户的首选项。 例如，默认浏览器（如果已设置）是列表中的第一项。 将选择列表中的_第一个_浏览器，而不考虑它是否支持自定义选项卡。 如果浏览器支持自定义选项卡，MSAL 将启动自定义选项卡。自定义选项卡的外观和感觉更接近应用内 `WebView` 并允许基本 UI 自定义。 有关详细信息，请参阅[Android 中的自定义选项卡](https://developer.chrome.com/multidevice/android/customtabs)。
+MSAL 检索设备上安装的浏览器的完整列表，以选择要使用的浏览器。 列表按包管理器返回的顺序，后者间接反映用户的首选项。 例如，默认浏览器（如果已设置）是列表中的第一项。 将选择列表中的_第一个_浏览器，而不考虑它是否支持自定义选项卡。 如果浏览器支持自定义选项卡，MSAL 将启动 "自定义" 选项卡。自定义选项卡具有更接近应用程序 `WebView` 的外观，允许进行基本的 UI 自定义。 有关详细信息，请参阅[Android 中的自定义选项卡](https://developer.chrome.com/multidevice/android/customtabs)。
 
 如果设备上没有浏览器包，MSAL 将使用应用内 `WebView`。
 

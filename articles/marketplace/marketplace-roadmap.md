@@ -45,4 +45,4 @@ ms.locfileid: "73826425"
 
 ## <a name="next-steps"></a>后续步骤
 
-访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页面。
+访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页。

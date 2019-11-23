@@ -31,7 +31,7 @@ ms.locfileid: "71673341"
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”下的“应用和功能”设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从中 `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
+    - 从 `%Program Files%\WindowsPowerShell\Modules`中移除所有**Azure**模块。
 
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
 
@@ -102,7 +102,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 由于用户委托密钥的有效最大时间间隔是从开始日期起的7天，因此，你应为开始时间在7天内的 SAS 指定到期时间。 此 SA 在用户委托密钥过期后无效，因此过期时间超过7天的 SAS 仍将仅适用于7天。
 
-若要为带有 Azure PowerShell 的容器或 blob 创建用户委托 SAS，请先创建一个新的 Azure 存储上下文对象，并指定 @no__t 参数。 @No__t 的参数指定该命令在您登录时所用的 Azure AD 帐户下创建上下文对象。
+若要为带有 Azure PowerShell 的容器或 blob 创建用户委托 SAS，请先创建一个新的 Azure 存储上下文对象，并指定 `-UseConnectedAccount` 参数。 `-UseConnectedAccount` 参数指定该命令在您登录时所用的 Azure AD 帐户下创建上下文对象。
 
 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -134,7 +134,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 若要为 blob 返回用户委托 SAS 令牌，请调用[AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken)命令，并传入之前创建的 Azure 存储上下文对象。
 
-以下语法返回 blob 的用户委托 SAS。 该示例指定 @no__t 的参数，该参数返回附加 SAS 令牌的 blob URI。 请记住，用自己的值替换括号中的占位符值：
+以下语法返回 blob 的用户委托 SAS。 该示例指定 `-FullUri` 参数，该参数返回附加 SAS 令牌的 blob URI。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

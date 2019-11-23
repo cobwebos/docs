@@ -117,9 +117,9 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
     ![单击“自定义”按钮](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. 单击 "**Group 1" 旁边的省略号（...）：Start @ no__t-0 @ no__t**添加 post 操作**。
+2. 单击 "**组1：开始** > **添加 post 操作**" 旁边的省略号（...）。
 3. 在 "**插入操作**" 中，验证是否选择了 "**脚本**"，并指定脚本的名称（**Hello World**）。
-4. 指定自动化帐户并选择 runbook。 选择“确定”，保存脚本。 此脚本添加到“组 1: **后步骤”** 。
+4. 指定自动化帐户并选择 runbook。 选择“确定”，保存脚本。 此时，脚本添加到“组 1：后步骤”。
 
 
 ## <a name="reuse-a-runbook-script"></a>重复使用 runbook 脚本
@@ -215,7 +215,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. 在此复杂变量中，VMDetails 是受保护 VM 的 VM ID。 若要获取 VM ID，请在 Azure 门户中查看 VM 属性。 下面的屏幕截图展示了一个存储两个 VM 详细信息的变量：
+3. 在此复杂变量中，**VMDetails** 是受保护 VM 的 VM ID。 若要获取 VM ID，请在 Azure 门户中查看 VM 属性。 下面的屏幕截图展示了一个存储两个 VM 详细信息的变量：
 
     ![将 VM ID 用作 GUID](media/site-recovery-runbook-automation-new/vmguid.png)
 
@@ -225,7 +225,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
     $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
-4. 在 Runbook 中，循环访问恢复计划上下文的 VM。 检查 $VMDetailsObj 中是否有 VM。 如果有，请访问变量属性，以应用 NSG：
+4. 在 Runbook 中，循环访问恢复计划上下文的 VM。 检查 **$VMDetailsObj** 中是否有 VM。 如果有，请访问变量属性，以应用 NSG：
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name

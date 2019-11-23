@@ -41,7 +41,8 @@ ms.locfileid: "72256270"
 
 左侧显示群集虚拟服务器，IP 地址显示在右侧中间。 如图所示，使用 A 记录和指针配置每个客户端接入点。
 
-@no__t 0Avere 群集循环 DNS 关系图 @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![Avere 群集轮循机制 DNS 关系图](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 每个面向客户端的 IP 地址必须具有唯一的名称供群集内部使用。 （在此图中，为了清楚起见，将客户端 IP 命名为 vs1-client-IP- *，但在生产中，应使用更简洁的名称，如 client*。）
 
@@ -73,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>群集 DNS 设置
 
-在“群集” > “管理网络设置”页面中指定 vFXT 群集使用的 DNS 服务器。 该页面上的设置包括：
+在“群集” **“管理网络设置”页面中指定 vFXT 群集使用的 DNS 服务器** > 。 该页面上的设置包括：
 
 * DNS 服务器地址
 * DNS 域名

@@ -22,7 +22,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/01/2019
 ms.locfileid: "71709534"
 ---
-# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Elium
+# <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教程：为 Elium 配置自动用户预配
 
 本教程介绍如何配置 Elium 和 Azure Active Directory （Azure AD）以自动将用户或组预配到 Elium 和取消其预配。
 
@@ -53,9 +53,9 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
 ## <a name="set-up-elium-for-provisioning"></a>设置 Elium 以进行预配
 
-在将 Elium 配置为使用 Azure AD 进行自动用户预配之前，必须在 Elium 上为跨域标识管理（SCIM）预配启用系统。 请执行以下步骤：
+在将 Elium 配置为使用 Azure AD 进行自动用户预配之前，必须在 Elium 上为跨域标识管理（SCIM）预配启用系统。 执行以下步骤：
 
-1. 登录到 Elium 并中转到**我的配置文件** > **设置**。
+1. 登录到 Elium，并 > "**设置**" 中转到 **"我的配置文件"** 。
 
     ![Elium 中的 "设置" 菜单项](media/Elium-provisioning-tutorial/setting.png)
 
@@ -69,7 +69,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
 ## <a name="add-elium-from-the-gallery"></a>从库中添加 Elium
 
-若要将 Elium 配置为使用 Azure AD 进行自动用户预配，还必须将 Azure AD 应用程序库中的 Elium 添加到托管的软件即服务（SaaS）应用程序列表。 请执行以下步骤：
+若要将 Elium 配置为使用 Azure AD 进行自动用户预配，还必须将 Azure AD 应用程序库中的 Elium 添加到托管的软件即服务（SaaS）应用程序列表。 执行以下步骤：
 
 1. 在[Azure 门户](https://portal.azure.com)的左侧导航面板中，选择 " **Azure Active Directory**"。
 
@@ -112,7 +112,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
     ![设置模式的自动设置](common/provisioning-automatic.png)
 
-1. 在 "**管理员凭据**" 部分的 "**租户 URL** " 字段中，键入 **\<tenantURL @ no__t/scim/v2** 。 （ **L**是之前从 Elium 管理控制台中检索到的值。）同时，在 "**机密令牌**" 字段中键入 Elium**机密令牌**值。 最后，选择 "**测试连接**" 以验证 Azure AD 能否连接到 Elium。 如果连接失败，请确保 Elium 帐户具有管理员权限，然后重试。
+1. 在 "**管理员凭据**" 部分的 "**租户 URL** " 字段中，键入 **\<l\>/scim/v2** "。 （ **L**是之前从 Elium 管理控制台中检索到的值。）同时，在 "**机密令牌**" 字段中键入 Elium**机密令牌**值。 最后，选择 "**测试连接**" 以验证 Azure AD 能否连接到 Elium。 如果连接失败，请确保 Elium 帐户具有管理员权限，然后重试。
 
     ![管理凭据中的租户 URL 和机密令牌字段](common/provisioning-testconnection-tenanturltoken.png)
 

@@ -18,12 +18,12 @@ ms.locfileid: "73516859"
 
 本文介绍如何使用 Azure 门户在 Azure Web 应用程序防火墙（WAF）中为应用程序网关配置机器人保护规则。 
 
-可以为 WAF 启用托管机器人保护规则集，以便阻止或记录来自已知恶意 IP 地址的请求。 IP 地址源自 Microsoft 威胁情报源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
+可以为 WAF 启用托管机器人保护规则集，以便阻止或记录来自已知恶意 IP 地址的请求。 IP 地址源自 Microsoft 威胁智能源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
 
 > [!NOTE]
 > 机器人保护规则集当前以公共预览版提供，并随预览版服务级别协议一起提供。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 按照 [创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)中所述的说明，为应用程序网关创建基本的 WAF 策略。
 

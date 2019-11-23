@@ -28,7 +28,7 @@ ms.locfileid: "72298836"
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。 本文介绍通过使用 Visual Studio 中的“连接服务”在 ASP.NET Core 项目中创建 Azure 存储帐户之后，如何开始使用 blob 存储。
 
-正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建 blob 后，可以在此 blob 中创建一个或多个容器。 例如，在名为“Scrapbook”的 blob 中，可以创建名为“images”的容器，用于存储图片，以及另一个名为“audio”的容器，用于存储音频文件。 创建这些容器后，即可将各个文件上传到其中。 请参阅[快速入门：使用上传、下载和列出 blob。NET @ no__t，了解有关以编程方式操作 blob 的详细信息。
+正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建 blob 后，可以在此 blob 中创建一个或多个容器。 例如，在名为“Scrapbook”的 blob 中，可以创建名为“images”的容器，用于存储图片，以及另一个名为“audio”的容器，用于存储音频文件。 创建这些容器后，即可将各个文件上传到其中。 有关以编程方式操作 Blob 的详细信息，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 某些 Azure 存储 API 为异步，而本文中的代码假定正在使用异步方法。 有关详细信息，请参阅[异步编程](https://docs.microsoft.com/dotnet/csharp/async)。
 
@@ -67,7 +67,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 
 ## <a name="create-a-container-in-code"></a>使用代码创建容器
 
-还可以通过调用 `CreateIfNotExistsAsync` 使用 `CloudBlobClient` 在存储帐户中创建容器：
+还可以通过调用 `CloudBlobClient` 使用 `CreateIfNotExistsAsync` 在存储帐户中创建容器：
 
 ```cs
 // Create a blob client.
@@ -141,7 +141,7 @@ do
 } while (token != null);
 ```
 
-请参阅[快速入门：使用上传、下载和列出 blob。NET @ no__t 用于列出 blob 容器内容的其他方式。
+有关列出 Blob 容器内容的其他方法，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)。
 
 ## <a name="download-a-blob"></a>下载 Blob
 
@@ -158,7 +158,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-请参阅[快速入门：使用上传、下载和列出 blob。NET @ no__t，以了解将 blob 另存为文件的其他方法。
+有关将 Blob 另存为文件的其他方法，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)。
 
 ## <a name="delete-a-blob"></a>删除 Blob
 

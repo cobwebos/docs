@@ -24,7 +24,7 @@ GitHub 上的 [Analysis Services](https://github.com/Microsoft/Analysis-Services
 
 ## <a name="tabular-model-project-and-database-samples"></a>表格模型项目和数据库示例
 
-GitHub 上[用于 Analysis Services 的 Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) 是最常用的示例表格模型项目。 你可以下载 VS 项目或已完成的示例表格模型数据库。
+GitHub 上的 [Adventure Works for Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) 是最常用的示例表格模型项目。 你可以下载 VS 项目或已完成的示例表格模型数据库。
 
 
 ## <a name="sample-databases-on-github"></a>GitHub 上的示例数据库
@@ -35,7 +35,7 @@ GitHub 上的这些示例数据库可用于创建和测试你自己的模型。
 
 [Wide World Importers 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
-## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Azure 门户中的 Adventure Works Internet Sales 示例模型
+## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Azure 门户中的 Adventure Works Internet 销售示例模型
 
 如果 Azure 门户中具有 Analysis Services 服务器，则可快速、轻松创建示例模型。 在 Azure 门户的服务器概述页中，单击“新建模型”，然后在“选择数据源”中选择“示例数据”。
 

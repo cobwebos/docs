@@ -77,7 +77,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
 - 不具有多个数据科学团队的小型数据科学组。 
 - 具有多个数据科学团队的更大数据科学组，但又想要将团队间协作与活动（如组级冲刺规划）进行优化。 
 
-如果团队选择将其团队特定的存储库置于单个组项目下，则团队主管应使用类似 *\<TeamName*的名称创建存储库，> 模板和 *\<TeamName > 实用工具*。 例如：*TeamATemplate*和*TeamAUtilities*。 
+如果团队选择将其团队特定的存储库置于单个组项目下，则团队主管应创建包含名称（如 *\<TeamName > 模板*和 *\<TeamName > 实用程序*）的存储库。 例如： *TeamATemplate*和*TeamAUtilities*。 
 
 在任何情况下，团队主管都需要让其团队成员知道要设置和克隆哪些模板和实用程序存储库。 项目主管应按照[数据科学团队的项目主管任务](project-lead-tasks.md)创建项目存储库，无论是在单独的项目中还是在单个项目中。 
 
@@ -85,17 +85,17 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
 
 为团队创建一个单独的项目：
 
-1. 在 web 浏览器中，在 URL *https：\//\<server name >/\<组织名称 >* 上，中转到组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
+1. 在 web 浏览器中，在 URL *https：\//\<服务器名称 >/\<组织名称 >* 中转到组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
    
    ![选择新项目](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. 在 "**创建项目**" 对话框中，在 "**项目名称**" 下输入团队名称，如*MyTeam*，然后选择 "**高级**"。 
    
-1. 在 "**版本控制**" 下，选择 " **Git**"，然后在 "**工作项进程**" 下选择 "**敏捷**"。 然后选择“创建”。 
+1. 在 "**版本控制**" 下，选择 " **Git**"，然后在 "**工作项进程**" 下选择 "**敏捷**"。 然后，选择“创建”。 
    
    ![创建项目](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-此时将打开 "团队项目**摘要**" 页，其中包含页 URL *https\/：\</\<server name >/\<组织名称 >/团队名称 >* 。
+此时将打开 "团队项目**摘要**" 页，其中包含页 URL *https：\//\<服务器名称 >/\<组织名称 >/\<团队名称 >* 。
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>将 MyTeam 默认存储库重命名为 TeamUtilities
 
@@ -140,7 +140,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
    
    ![选择导入](./media/team-lead-tasks/import-repo.png)
    
-1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入组通用模板存储库的 URL。 URL 为*https： \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* 。 例如： *https： \//DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
+1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入组通用模板存储库的 URL。 URL 为*https：\//\<服务器名称 >/\<组织名称 >/_git/\<存储库名称 >* 。 例如： *https：\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
    
 1. 选择“导入”。 组模板存储库的内容将导入到团队模板存储库中。 
    
@@ -170,7 +170,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
      
    - 若要上传文件，请选择 "**上传文件**"。 
      
-     ![上载文件](./media/team-lead-tasks/upload-files.png)
+     ![上传文件](./media/team-lead-tasks/upload-files.png)
      
    - 若要编辑现有文件，请导航到该文件，然后选择 "**编辑**"。 
      
@@ -194,12 +194,12 @@ TDSP 是一种敏捷的迭代式数据科学方法，可高效交付预测分析
    
 1. 在本地计算机上，创建以下目录：
    
-   - 对于 Windows：**C:\GitRepos\MyTeam**
+   - 对于 Windows： **C:\GitRepos\MyTeam**
    - 对于 Linux，请 **$home/gitrepos/myteam** 
    
 1. 更改为你创建的目录。
    
-1. 在 Git Bash 中运行命令`git clone <clone URL>`，其中\<clone url > 是从**克隆**对话框中复制的 url。
+1. 在 Git Bash 中运行命令 `git clone <clone URL>`，其中 \<clone URL > 是从**clone**对话框复制的 url。
    
    例如，使用以下命令之一将**TeamUtilities**存储库克隆到本地计算机上的*MyTeam*目录。 
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> 如果这是您第一次提交到 Git 存储库，则在运行该`git commit`命令之前，您可能需要配置全局参数*user.name*和*user。* 运行以下两个命令：
+> 如果这是您第一次提交到 Git 存储库，则在运行 `git commit` 命令之前，您可能需要配置全局参数*user.name*和*user. email* 。 运行以下两个命令：
 > 
 > `git config --global user.name <your name>`
 > 

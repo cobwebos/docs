@@ -38,7 +38,7 @@ ms.locfileid: "72374073"
 - 共同客户可以获得分步配置教程。
 - 使用系统进行跨域标识管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)）的客户可以使用同一应用的预配。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 对于联合应用程序（开放 ID 和 SAML/WS 进纸），应用程序必须支持 "软件即服务" （SaaS）模型，才能在 Azure AD 应用库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现[Azure AD 许可框架](consent-framework.md)。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
@@ -114,7 +114,7 @@ ms.locfileid: "72374073"
 
 ## <a name="list-requests-by-customers"></a>列出客户的请求
 
-客户可以提交请求以列出应用程序，方法是选择 "**客户**"  >  "**提交新请求**"。
+客户可以通过选择**客户的应用请求** > **提交新请求**来提交列出应用程序的请求。
 
 ![显示客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -134,4 +134,4 @@ ms.locfileid: "72374073"
 
 ## <a name="escalations"></a>升级
 
-对于任何升级，请将电子邮件发送到 @no__t [Azure AD 的 SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com)，并尽快做出回复。
+对于任何升级，请将电子邮件发送到 SaaSApplicationIntegrations@service.microsoft.com[AZURE AD SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com)，并尽快做出回复。

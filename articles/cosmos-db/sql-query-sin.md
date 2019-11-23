@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查询语言中的 SIN
-description: 在 Azure Cosmos DB 中了解 SQL 系统函数的 SIN。
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SIN。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349459"
 ---
-# <a name="sin-azure-cosmos-db"></a>SIN （Azure Cosmos DB）
+# <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
  返回指定表达式中指定角度的三角正弦（弧度）。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ SIN(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例计算指定角度的 @no__t 0。  
+  以下示例计算指定角度的 `SIN`。  
   
 ```sql
 SELECT SIN(45.175643) AS sin  

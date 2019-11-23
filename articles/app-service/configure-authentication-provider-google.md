@@ -32,7 +32,7 @@ ms.locfileid: "72176965"
 ## <a name="register"> </a>向 Google 注册应用程序
 
 1. 按照[适用于服务器端应用的 Google 登录](https://developers.google.com/identity/sign-in/web/server-side-flow)上的 google 文档来创建客户端 ID 和客户端密码。 无需进行任何代码更改。 只需使用以下信息：
-    - 对于**授权的 JavaScript**源，请将 `https://<app-name>.azurewebsites.net` 与应用名称一起使用 *@no__t 3app >* 。
+    - 对于**授权的 JavaScript**源，请将 `https://<app-name>.azurewebsites.net` 与应用名称一起使用 *\<应用名称 >* 中。
     - 对于**授权的重定向 URI**，请使用 `https://<app-name>.azurewebsites.net/.auth/login/google/callback`。
 1. 复制 "应用 ID" 和 "应用密钥" 值。
 
@@ -42,7 +42,7 @@ ms.locfileid: "72176965"
 ## <a name="secrets"></a>向应用程序添加 Google 信息
 
 1. 在[Azure 门户]中转到应用服务应用。
-1. 选择 "**设置**" @no__t "**身份验证/授权**"，并确保已**启用 "** **应用服务身份验证**"。
+1. 选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
 1. 选择 " **Google**"，然后粘贴你之前获取的应用程序 ID 和应用程序密钥值。 启用应用程序所需的任何范围。
 1. 选择“确定”。
 

@@ -45,15 +45,15 @@ API 利用了 Twilio 谓词；例如， **&lt;Say&gt;** 谓词指示 Twilio 在�
 下面是 Twilio 谓词的列表。 通过 [Twilio 标记语言文档][twiml]了解其他谓词和功能。
 
 * **&lt;Dial&gt;** ：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;** ：收集通过电话按键输入的数字。
+* **&lt;Gather&gt;** ：收集在电话键盘上输入的数字。
 * **&lt;Hangup&gt;** ：结束呼叫。
 * **&lt;Pause&gt;** ：安静地等待指定的秒数。
 * **&lt;Play&gt;** ：播放音频文件。
 * **&lt;Queue&gt;** ：添加到呼叫方队列。
-* **&lt;Record&gt;** ：记录呼叫方的声音并返回包含记录信息的文件 URL。
-* **&lt;Redirect&gt;** ：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;** ：拒绝对 Twilio 号码的传入呼叫且无需付费。
-* **&lt;Say&gt;** ：将文本转换为通话语音。
+* **&lt;Record&gt;** ：录制呼叫方的声音，并返回录音文件的 URL。
+* **&lt;Redirect&gt;** ：将对呼叫或短信 的控制权转让给其他 URL 上的 TwiML。
+* **&lt;Reject&gt;** ：拒绝对 Twilio 号码的传入呼叫，且无需付费。
+* **&lt;Say&gt;** ：将短信转换为通话语音。
 * **&lt;Sms&gt;** ：发送短信。
 
 ### <a id="TwiML"></a>TwiML
@@ -103,7 +103,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
     \- 或 -
 
-* 从 GitHub 下载适用于 Python 的 Twilio 库（[https://github.com/twilio/twilio-python][twilio_python]）并安装它，如下所示：
+* 从 GitHub 下载适用于 Python 的 Twilio 库（[https://github.com/twilio/twilio-python][twilio_python]），并按如下所示安装：
 
         $ python setup.py install
 
@@ -172,7 +172,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>如何：从自己的网站提供 TwiML 响应
-当应用程序发起对 Twilio API 的调用时，Twilio 会将请求发送到应返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url]。 （虽然 TwiML 专供 Twilio 使用，但可以在浏览器中查看它。 例如，单击[https://twimlets.com/message][twimlet_message_url]可查看空的 `<Response>` 元素;再如另一个示例，单击[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world]可查看包含 `<Say>` 元素的 @no__t 5 元素。）
+当应用程序发起对 Twilio API 的调用时，Twilio 会将请求发送到应返回 TwiML 响应的 URL。 上面的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url]。 （虽然 TwiML 专供 Twilio 使用，但可以在浏览器中查看它。 例如，单击 " [https://twimlets.com/message][twimlet_message_url] " 以查看空 `<Response>` 元素;作为另一个示例，请单击 " [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] " 以查看包含 `<Say>` 元素 `<Response>` 元素。）
 
 可以创建自己的返回 HTTP 响应的网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 XML 响应的站点；本主题假设使用 Python 创建 TwiML。
 

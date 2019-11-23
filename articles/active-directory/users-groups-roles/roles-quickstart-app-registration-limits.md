@@ -131,7 +131,7 @@ $rolePermissions = $rolePermission
 $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="create-a-custom-role-using-microsoft-graph-api"></a>使用 Microsoft Graph API 创建自定义角色
+### <a name="create-a-custom-role-using-microsoft-graph-api"></a>使用 Microsoft 图形 API 创建自定义角色
 
 用于创建自定义角色的 HTTP 请求。
 

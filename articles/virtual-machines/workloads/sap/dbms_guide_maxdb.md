@@ -319,7 +319,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>SAP MaxDB DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP MaxDB DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表 (PAM)][sap-pam]
+* [SAP 产品可用性对照表（PAM）][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的操作系统 Microsoft Windows，也就是 Microsoft Windows 2016。
@@ -385,7 +385,7 @@ Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP liveCache DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表 (PAM)][sap-pam]
+* [SAP 产品可用性对照表（PAM）][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的操作系统 Microsoft Windows Server。 
@@ -427,12 +427,12 @@ SAP 目前支持：
 
 强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS。 
 
-在[Sap 产品可用性矩阵 (PAM)][sap-pam]中查看 Sap 内容服务器和 Microsoft IIS 的最新支持版本。
+在[Sap 产品可用性矩阵（PAM）][sap-pam]中查看 Sap 内容服务器和 Microsoft IIS 的最新支持版本。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP 内容服务器支持的 Microsoft Windows 和 Azure VM 类型
 若要为 Azure 上的 SAP 内容服务器查找受支持的 Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表 (PAM)][sap-pam]
+* [SAP 产品可用性对照表（PAM）][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的 Microsoft Windows Server。
@@ -454,8 +454,8 @@ SAP 缓存服务器是一个基于服务器的附加组件，可在本地提供�
 
 可以使用以下两个选项：
 
-1. **客户端是后端 SAP 系统**：如果将后端 SAP 系统配置为访问 SAP 内容服务器，则该 SAP 系统就是客户端。 由于 SAP 系统和 SAP 内容服务器部署在同一个 Azure 区域（在相同的 Azure 数据中心），它们在物理上是彼此靠近的。 因此，不需要专用的 SAP 缓存服务器。 SAP UI 客户端（SAP GUI 或 Web 浏览器）可直接访问 SAP 系统，而 SAP 系统会从 SAP 内容服务器检索文档。
-2. **客户端是本地 Web 浏览器** ：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
+1. **客户端是后端 SAP 系统** ：如果将后端 SAP 系统配置为访问 SAP 内容服务器，则该 SAP 系统就是客户端。 由于 SAP 系统和 SAP 内容服务器部署在同一个 Azure 区域（在相同的 Azure 数据中心），它们在物理上是彼此靠近的。 因此，不需要专用的 SAP 缓存服务器。 SAP UI 客户端（SAP GUI 或 Web 浏览器）可直接访问 SAP 系统，而 SAP 系统会从 SAP 内容服务器检索文档。
+2. **客户端是本地 Web 浏览器**：SAP 内容服务器可配置为由 Web 浏览器直接访问。 在此情况下，本地运行的 Web 浏览器就是 SAP 内容服务器的客户端。 本地数据中心与 Azure 数据中心位于不同的物理位置（理想情况下相邻）。 本地数据中心通过 Azure 站点到站点 VPN 或 ExpressRoute 连接到 Azure。 虽然这两个选项均提供到 Azure 的安全 VPN 网络连接，但站点到站点网络连接不会在本地数据中心与 Azure 数据中心之间提供网络带宽和延迟 SLA。 若要加快对文档的访问，可以执行以下操作之一：
    1. 在本地安装 SAP 缓存服务器，靠近本地 Web 浏览器（下图中的选项）
    2. 配置 Azure ExpressRoute，以便在本地数据中心与 Azure 数据中心之间提供高速且低延迟的专用网络连接。
 

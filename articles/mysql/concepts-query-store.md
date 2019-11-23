@@ -1,6 +1,6 @@
 ---
 title: Azure Database for MySQL 中的查询存储
-description: 了解 Azure Database for MySQL 中的查询存储功能，以帮助您跟踪一段时间内的性能。
+description: 了解 Azure Database for MySQL 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -36,12 +36,12 @@ ms.locfileid: "73603030"
 1. 登录到 Azure 门户，选择你的 Azure Database for MySQL 服务器。
 1. 在菜单的“设置”部分中选择“服务器参数”。
 1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 "全部" 并**保存**。
+1. 将值设置为 ALL，然后**保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 "全部" 并**保存**。
+1. 将值设置为 ALL，然后**保存**。
 
 第一批数据可在 mysql 数据库中最长保留 20 分钟。
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>查找等待查询
 
 > [!NOTE]
-> 不应在高峰工作负荷时段内启用等待统计信息，也不能无限期地开启。 <br>对于运行 CPU 使用率较高的工作负荷或使用较低 Vcore 配置的服务器上的工作负荷，请在启用等待统计信息时小心。 不应无限期地打开它。 
+> 不应该在工作负荷高峰时段启用等待统计信息，或者对于敏感的工作负荷无限期地启用等待统计信息。 <br>对于在 CPU 利用率较高的情况下运行的工作负荷，或在配置了较低 vCore 的服务器上运行的工作负荷，启用等待统计信息时请格外小心。 不应无限期地启用等待统计信息。 
 
 等待事件类型按相似性将不同的等待事件组合到存储桶中。 查询存储提供等待事件类型、特定等待事件名称和有争议的查询。 能将此等待信息与查询运行时统计信息相关联，意味着可更深入地了解有助于查询性能特征的因素。
 
@@ -89,7 +89,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 | **Parameter** | **说明** | **默认** | **范围** |
 |---|---|---|---|
-| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，则启用 query_store_capture_mode 会启用 performance_schema，并将启用此功能所需的性能架构检测子集。 | ALL | NONE、ALL |
+| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，打开 query_store_capture_mode 将打开 performance_schema，并启用此功能所需的性能架构检测子集。 | ALL | NONE、ALL |
 | query_store_capture_interval | 查询存储捕获时间间隔，以分钟为单位。 允许指定聚合查询指标的时间间隔 | 15 | 5 - 60 |
 | query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 否 | YES、NO |
 | query_store_retention_period_in_days | 在查询存储中保留数据的时限，以天为单位。 | 7 | 1 - 30 |
@@ -108,7 +108,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在**mysql**数据库中可用。
+使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
@@ -174,7 +174,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 如果 MySQL 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
-- 等待统计信息使用样本来捕获一小部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
+- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
 
 ## <a name="next-steps"></a>后续步骤
 

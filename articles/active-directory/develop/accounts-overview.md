@@ -24,9 +24,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71679836"
 ---
-# <a name="accounts--tenant-profiles-android"></a>帐户 & 租户配置文件（Android）
+# <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
-本文概述了 Microsoft 标识平台中的 @no__t 0。
+本文概述了 Microsoft 标识平台中的 `account`。
 
 Microsoft 身份验证库（MSAL） API 将*用户*替换为术语 "*帐户*"。 原因之一是用户（人或软件代理）可能具有多个帐户，或者可以使用多个帐户。 这些帐户可以在用户自己的组织中，也可以位于用户所属的其他组织中。
 
@@ -36,7 +36,7 @@ Microsoft 标识平台中的帐户包括：
   - 用于演示帐户所有权/控制的一个或多个凭据。
   - 一个或多个配置文件，包括以下属性：
     - 图片，名称，系列名称，职务，办公室位置
-- 帐户有一个或一条记录的源。 这是在其中创建帐户的系统，以及与该帐户关联的凭据的存储位置。 在多租户系统（如 Microsoft 标识平台）中，记录的系统是在其中创建帐户的 @no__t 0。 此租户也称为 `home tenant`。
+- 帐户有一个或一条记录的源。 这是在其中创建帐户的系统，以及与该帐户关联的凭据的存储位置。 在多租户系统（如 Microsoft 标识平台）中，记录的系统是在其中创建帐户的 `tenant`。 此租户也称为 `home tenant`。
 - Microsoft 标识平台中的帐户具有以下记录系统：
   - Azure Active Directory，包括 Azure Active Directory B2C。
   - Microsoft 帐户（Live）。
@@ -47,13 +47,13 @@ Microsoft 标识平台中的帐户包括：
 - Microsoft 标识平台允许使用一个帐户来访问属于多个组织（Azure Active Directory 租户）的资源。
   - 若要记录某个系统记录（AAD 租户 A）的帐户有权访问另一个记录系统中的资源（AAD 租户 B），该帐户必须在定义该资源的租户中表示。 这是通过从系统 B 中的系统 A 创建帐户的本地记录来完成的。
   - 此本地记录（这是帐户的表示形式）绑定到原始帐户。
-  - MSAL 将此本地记录作为 @no__t 公开。
+  - MSAL 公开此本地记录作为 `Tenant Profile`。
   - 租户配置文件可以具有适用于本地上下文的不同属性，例如职务、办公室位置、联系信息等。
  
 - 由于一个帐户可能出现在一个或多个租户中，因此一个帐户可以有多个配置文件。
 
 > [!NOTE]
-> MSAL 将 Microsoft 帐户系统（实时、MSA）视为 Microsoft 标识平台中的其他租户。 Microsoft 帐户租户的租户 id 为： `9188040d-6c67-4c5b-b112-36a304b66dad`
+> MSAL 将 Microsoft 帐户系统（实时、MSA）视为 Microsoft 标识平台中的其他租户。 Microsoft 帐户租户的租户 id 是： `9188040d-6c67-4c5b-b112-36a304b66dad`
 
 ## <a name="account-overview-diagram"></a>帐户概述关系图
 
@@ -61,20 +61,20 @@ Microsoft 标识平台中的帐户包括：
 
 在上图中：
 
-- 帐户 `bob@contoso.com` 在本地 Windows Server Active Directory （源本地系统记录）中创建。
-- @No__t 在 Microsoft 帐户租户中创建帐户。
+- 帐户 `bob@contoso.com` 是在本地 Windows Server Active Directory （源本地系统记录）中创建的。
+- `tom@live.com` 在 Microsoft 帐户租户中创建帐户。
 - `bob@contoso.com` 有权访问以下 Azure Active Directory 租户中的至少一个资源：
   - contoso.com （记录的云系统-链接到本地系统记录）
   - fabrikam.com
   - woodgrovebank.com
   - 每个租户中都存在 `bob@contoso.com` 的租户配置文件。
-- `tom@live.com` 有权访问以下 Microsoft 租户中的资源：
+- `tom@live.com` 可以访问以下 Microsoft 租户中的资源：
   - contoso.com
   - fabrikam.com
   - 每个租户中都存在 `tom@live.com` 的租户配置文件。
 - 有关其他租户中的 Tom 和 Bob 的信息可能与记录系统中的不同。 它们可能会不同，如职务、办公室位置等。 它们可能是每个组织（Azure Active Directory 租户）中的组和/或角色的成员。 我们将此信息称为 bob@contoso.com 租户配置文件。
 
-在关系图中，bob@contoso.com 和 tom@live.com 可访问 Azure Active Directory 不同租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+在关系图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
 
 ## <a name="accounts-and-single-sign-on-sso"></a>帐户和单一登录（SSO）
 
@@ -102,9 +102,9 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 除了请求访问令牌外，MSAL 还始终从每个租户请求一个 ID 令牌。 它通过总是请求以下范围来实现此操作：
 
 - openid
-- profile
+- 个人资料
 
-ID 令牌包含声明的列表。 @no__t 为与帐户有关的名称/值对，并用于发出请求。
+ID 令牌包含声明的列表。 `Claims` 是有关帐户的名称/值对，用于发出请求。
 
 如前所述，帐户所在的每个租户都可能存储有关该帐户的不同信息，包括但不限于以下属性：职务、办公室位置等。
 
@@ -126,7 +126,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 > 若要查看 account 对象中提供的声明列表，请参阅[id_token 中的声明](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
 
 > [!TIP]
-> 若要在 id_token 中包含其他声明，请参阅 [How 中的可选声明文档：向 Azure AD 应用提供可选声明 @ no__t-0
+> 若要在 id_token 中包括其他声明，请参阅[如何：向 Azure AD 应用提供可选声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)中的可选声明文档
 
 ### <a name="access-tenant-profile-claims"></a>访问租户配置文件声明
 
@@ -145,7 +145,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 刷新帐户的令牌不会跨 B2C 策略共享。 因此，无法使用令牌进行单一登录。 这并不意味着无法进行单一登录。 这意味着单一登录必须使用一个交互式体验，其中 cookie 可用于启用单一登录。
 
-这也意味着，对于 MSAL，如果你使用不同的 B2C 策略获取令牌，则会将它们视为单独的帐户-每个帐户都有其自己的标识符。 如果要使用 `acquireTokenSilent` 的帐户来请求令牌，则需要从与令牌请求所使用的策略相匹配的帐户列表中选择帐户。 例如：
+这也意味着，对于 MSAL，如果你使用不同的 B2C 策略获取令牌，则会将它们视为单独的帐户-每个帐户都有其自己的标识符。 如果要使用 `acquireTokenSilent`来请求令牌，则需要从帐户列表中选择帐户，该帐户与用于令牌请求的策略相匹配。 例如：
 
 ```java
 // Get Account For Policy

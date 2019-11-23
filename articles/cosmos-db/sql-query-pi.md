@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349647"
 ---
-# <a name="pi-azure-cosmos-db"></a>PI （Azure Cosmos DB）
+# <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
  返回 PI 的常数值。  
   
 ## <a name="syntax"></a>语法
@@ -29,7 +29,7 @@ PI ()
   
 ## <a name="examples"></a>示例
   
-  下面的示例返回 @no__t 的值。  
+  以下示例返回 `PI` 的值。  
   
 ```sql
 SELECT PI() AS pi 

@@ -79,7 +79,7 @@ ms.locfileid: "71057985"
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
+6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” **“加载配置单元”**  > 。
 
 7. 查找 \Windows\System32\config 文件夹中的系统文件。
 
@@ -116,6 +116,6 @@ ms.locfileid: "71057985"
 
 16. [拆离系统磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

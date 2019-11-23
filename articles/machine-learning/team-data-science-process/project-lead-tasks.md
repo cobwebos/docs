@@ -25,9 +25,9 @@ ms.locfileid: "72244391"
 
 ![项目主管任务工作流](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
-本教程包括步骤1：创建项目存储库和步骤2：从团队 ProjectTemplate 存储库播种项目存储库。 
+本教程介绍第1步：创建项目存储库和步骤2：从团队 ProjectTemplate 存储库创建种子项目存储库。 
 
-对于步骤3：为项目创建功能工作项，并执行步骤4：添加项目阶段的情景，请参阅[数据科学项目的敏捷开发](agile-development.md)。
+对于步骤3：为项目创建功能工作项，并使用步骤4：为项目阶段添加情景，请参阅[数据科学项目的敏捷开发](agile-development.md)。
 
 对于步骤5：创建和自定义存储/分析资产并共享，如有必要，请参阅[创建团队数据和分析资源](team-lead-tasks.md#create-team-data-and-analytics-resources)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "72244391"
 
 在团队的**MyTeam**项目中创建项目存储库：
 
-1. 请参阅*https： \/ @ no__t-3 @ no__t-4server name >/\<organization name >/\<team name >* ，例如， **https： \///DataScienceUnit/MyTeam**，并从左侧导航栏中选择 "**存储库**"。 
+1. 请参阅*https：\//\<服务器名称 >/\<组织名称 >/\<团队名称 >* ，如**https：\//dev.azure.com/DataScienceUnit/MyTeam**，并从左侧导航栏中选择**存储库**。 
    
 1. 选择页面顶部的 "存储库名称"，然后从下拉列表中选择 "**新建存储库**"。
    
@@ -83,7 +83,7 @@ ms.locfileid: "72244391"
    
    ![选择导入](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入**TeamTemplate**存储库的 url。 URL 为*https： \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >/_git/\<team 模板存储库名称 >* 。 例如： **https： \//DataScienceUnit/MyTeam/_git/TeamTemplate**。 
+1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，并在 "**克隆 url**" 下输入**TeamTemplate**存储库的 url。 URL 为*https：\//\<服务器名称 >/\<组织名称 >/\<团队名称 >/_git 团队模板存储库名称\<* 。 例如： **https：\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**。 
    
 1. 选择“导入”。 你的团队模板存储库的内容将导入到你的项目存储库中。 
    

@@ -30,11 +30,11 @@ ms.locfileid: "71936932"
 
 谓词名称并不一定直接映射到 `oc` 命令。 它们更常见地等同于你可以执行的 CLI 操作类型。 
 
-例如，如果使用 @no__t 0 谓词，则表示可以显示资源名称（@no__t）的所有对象的列表。 如果你知道特定对象的名称（@no__t 为-1），则 @no__t 谓词表示可以显示该对象的详细信息。
+例如，具有 `list` 谓词意味着可以显示资源名称（`oc get`）的所有对象的列表。 `get` 谓词表示，如果知道特定对象的名称（`oc describe`），则可以显示该对象的详细信息。
 
 ## <a name="configure-the-customer-administrator-role"></a>配置客户管理员角色
 
-只有在创建群集期间，才能通过提供 `--customer-admin-group-id` 标志来配置客户管理员角色。 若要了解如何配置 Azure Active Directory 和 Administrators 组，请参阅[Azure Red Hat OpenShift 的 Azure Active Directory 集成](howto-aad-app-configuration.md)。
+只有在创建群集期间，才能通过提供标志 `--customer-admin-group-id`来配置客户管理员角色。 若要了解如何配置 Azure Active Directory 和 Administrators 组，请参阅[Azure Red Hat OpenShift 的 Azure Active Directory 集成](howto-aad-app-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

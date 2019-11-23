@@ -22,9 +22,9 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [AKS 快速入门][aks-quickstart]。
+本文档详述的步骤假设你已创建 AKS 群集并已与该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [AKS 快速入门][aks-quickstart]。
 
-还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+另外，还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="start-the-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
 
@@ -70,7 +70,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > [!IMPORTANT]
 > 如果 AKS 群集使用 RBAC，则必须先创建 *ClusterRoleBinding*，然后才能正确访问仪表板。 默认情况下，Kubernetes 仪表板是使用最小读取访问权限部署的，并且显示 RBAC 访问错误。 Kubernetes 仪表板当前不支持使用用户提供的凭据来确定访问权限级别，而是使用授予给服务帐户的角色。 群集管理员可以选择向 *kubernetes-dashboard* 服务帐户授予更多访问权限，但这可能会导致需要进行权限提升。 还可以集成 Azure Active Directory 身份验证来提供更精细的访问权限级别。
 > 
-> 若要创建绑定，请使用[kubectl create clusterrolebinding][kubectl-create-clusterrolebinding]命令。 下面的示例演示如何创建一个示例绑定，但是，此示例绑定不会应用任何其他身份验证组件，并可能导致使用不安全。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
+> 若要创建绑定，请使用 [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] 命令。 以下示例说明如何创建示例绑定，但是，此示例绑定不会应用任何其他身份验证组件，并且可能导致不安全的使用。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

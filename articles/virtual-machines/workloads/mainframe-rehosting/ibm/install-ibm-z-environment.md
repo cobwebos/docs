@@ -62,11 +62,11 @@ Azure 和 Azure Stack 支持以下版本：
 
 3. 通过 "**连接**" 按钮获取 VM 的 "**概述**" 边栏选项卡上显示的 SSH 凭据。 选择 " **ssh** " 选项卡，并将 SSH 登录命令复制到剪贴板。
 
-4. 从本地 PC 登录到[Bash shell](/azure/cloud-shell/quickstart)并粘贴命令。 它采用的格式为**ssh @ no__t-1user id @ no__t-2 @ no__t-3 @ no__t-4IP Address @ no__t-5**。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
+4. 从本地 PC 登录到[Bash shell](/azure/cloud-shell/quickstart)并粘贴命令。 其格式为**ssh\<用户 id\>\@\<IP 地址\>** 。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>将安装文件复制到服务器
 
-Web 服务器的安装文件为**ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**。 它包含在 IBM 提供的媒体中。 必须将此文件上传到 Ubuntu VM。
+Web 服务器的安装文件是**ZDT\_安装\_EE\_v 12.0.0.1. tgz**。 它包含在 IBM 提供的媒体中。 必须将此文件上传到 Ubuntu VM。
 
 1. 在命令行中输入以下命令，确保新创建的映像中的所有内容都是最新的：
 
@@ -91,7 +91,7 @@ Web 服务器的安装文件为**ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz
 
 ## <a name="install-the-enterprise-edition"></a>安装 Enterprise Edition
 
-1. 使用以下命令，中转到 ZDT 目录并解压缩 ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz 文件：
+1. 使用以下命令，中转到 ZDT 目录并解压缩 ZDT\_安装\_EE\_V 12.0.0.1 tgz 文件：
 
     ```
     cd ZDT

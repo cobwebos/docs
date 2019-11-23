@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71348490"
 ---
-# <a name="asin-azure-cosmos-db"></a>ASIN （Azure Cosmos DB）
+# <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
  返回角度（弧度），其正弦是指定的数值表达式。 也被称为反正弦。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ ASIN(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例返回-1 的 @no__t。  
+  以下示例返回 -1 的 `ASIN`。  
   
 ```sql
 SELECT ASIN(-1) AS asin  

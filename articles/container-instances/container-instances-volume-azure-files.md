@@ -82,7 +82,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-@No__t-0 值在创建容器实例的 Azure 区域中必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
+在创建容器实例的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
@@ -98,9 +98,9 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 
 还可以部署容器组，并使用 Azure CLI 和[YAML 模板](container-instances-multi-container-yaml.md)在容器中装载卷。 在部署由多个容器组成的容器组时，通过 YAML 模板进行部署是首选方法。
 
-以下 YAML 模板定义容器组，其中一个容器使用 @no__t 0 映像创建。 容器将以前创建的 Azure 文件共享*acishare*装载为卷。 如果指示，请输入托管文件共享的存储帐户的名称和存储密钥。 
+以下 YAML 模板定义容器组，其中一个容器使用 `aci-hellofiles` 映像创建。 容器将以前创建的 Azure 文件共享*acishare*装载为卷。 如果指示，请输入托管文件共享的存储帐户的名称和存储密钥。 
 
-与在 CLI 示例中一样，@no__t 0 值在创建容器实例的 Azure 区域内必须是唯一的。 如果需要，请更新 YAML 文件中的值。
+与在 CLI 示例中一样，`dnsNameLabel` 值在创建容器实例的 Azure 区域内必须是唯一的。 如果需要，请更新 YAML 文件中的值。
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -138,7 +138,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml` 的文件，然后使用 `--file` 参数执行[az container create][az-container-create]命令：
+若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml`的文件，然后使用 `--file` 参数执行[az container create][az-container-create]命令：
 
 ```azurecli
 # Deploy with YAML template
@@ -148,13 +148,13 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 除了 CLI 和 YAML 部署，还可以使用 Azure[资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)部署容器组并在容器中装载卷。
 
-首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 
+首先，在模板的容器组 `volumes` 节中填充 `properties` 数组。 
 
-然后，对于要在其中装入卷的每个容器，在容器定义的 @no__t 部分中填充 `volumeMounts` 数组。
+然后，对于要在其中装入卷的每个容器，在容器定义的 `properties` 部分中填充 `volumeMounts` 数组。
 
-以下资源管理器模板定义容器组，其中一个容器使用 @no__t 的映像创建。 容器将以前创建的 Azure 文件共享*acishare*装载为卷。 如果指示，请输入托管文件共享的存储帐户的名称和存储密钥。 
+以下资源管理器模板定义容器组，其中一个容器使用 `aci-hellofiles` 映像创建。 容器将以前创建的 Azure 文件共享*acishare*装载为卷。 如果指示，请输入托管文件共享的存储帐户的名称和存储密钥。 
 
-如前面的示例所示，@no__t 0 值在创建容器实例的 Azure 区域内必须是唯一的。 如果需要，请更新模板中的值。
+如前面的示例所示，`dnsNameLabel` 值在创建容器实例的 Azure 区域内必须是唯一的。 如果需要，请更新模板中的值。
 
 ```JSON
 {
@@ -223,7 +223,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 }
 ```
 
-若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 @no__t 的文件中，然后使用 `--template-file` 参数执行[az group deployment create][az-group-deployment-create]命令：
+若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json`的文件中，然后使用 `--template-file` 参数执行[az group deployment create][az-group-deployment-create]命令：
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -233,9 +233,9 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>装载多个卷
 
-若要将多个卷装载到容器实例中，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)或 YAML 文件进行部署。 若要使用模板或 YAML 文件，请在模板的 @no__t 部分填充 `volumes` 数组，提供共享详细信息并定义卷。 
+若要将多个卷装载到容器实例中，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)或 YAML 文件进行部署。 若要使用模板或 YAML 文件，请在模板的 `properties` 部分中填充 `volumes` 数组，提供共享详细信息并定义卷。 
 
-例如，如果在存储帐户*myStorageAccount*中创建了两个名为*share1*和*share2*的 Azure 文件共享，则资源管理器模板中的 @no__t 3 数组将如下所示：
+例如，如果在存储帐户*myStorageAccount*中创建了两个名为*share1*和*share2*的 Azure 文件共享，则资源管理器模板中的 `volumes` 数组将如下所示：
 
 ```JSON
 "volumes": [{
@@ -256,7 +256,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `volumeMounts` 部分填充 `properties` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
 
 ```JSON
 "volumeMounts": [{

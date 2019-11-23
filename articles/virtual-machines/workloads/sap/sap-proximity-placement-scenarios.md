@@ -25,7 +25,7 @@ ms.locfileid: "71719995"
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
 
-网络上花费的时间将此类查询从应用程序层发送到数据库层并接收结果集，这对运行业务流程所需的时间有重大影响。 网络延迟的这一敏感度是需要在 SAP 部署项目中实现最佳网络延迟的原因。 请参阅 [SAP Note #1100926-常见问题解答：网络性能 @ no__t 有关如何对网络延迟分类的指导原则。
+网络上花费的时间将此类查询从应用程序层发送到数据库层并接收结果集，这对运行业务流程所需的时间有重大影响。 网络延迟的这一敏感度是需要在 SAP 部署项目中实现最佳网络延迟的原因。 请参阅[SAP 说明 #1100926-常见问题解答：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)以获得有关如何对网络延迟分类的准则。
 
 在许多 Azure 区域中，数据中心的数量越来越多。 此增长也是通过引入可用性区域来触发的。 同时，客户（尤其是对于高端 SAP 系统）使用 M 系列系列或 HANA 大型实例中的更多特殊 VM Sku。 这些 Azure 虚拟机类型在特定 Azure 区域的所有数据中心中都不可用。 由于这两个倾向，客户遇到了不在最佳范围内的网络延迟。 在某些情况下，这种延迟会导致其 SAP 系统的性能不佳。
 
@@ -65,7 +65,7 @@ Azure 上的大多数 SAP NetWeaver 和 S/4HANA 系统部署不使用[HANA 大�
 在这种情况下，单个 SAP 系统每个资源组中分组，每个资源组一个邻近的放置组。 无论你使用 HANA 横向扩展配置还是 DBMS 扩展配置，都没有任何依赖关系。
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>邻近位置组和 HANA 大型实例
-如果某些 SAP 系统依赖于应用程序层的[Hana 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)，则在使用 hana 大型实例单元和 Azure vm 之间的网络延迟时，可能会显著改进部署在[修订版本4行或标记](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中。 其中一项改进是，在部署时，HANA 大型实例单元使用邻近位置组进行部署。 你可以使用该邻近布局组来部署你的应用程序层虚拟机。 因此，这些 Vm 将部署在托管 HANA 大型实例单元的同一数据中心内。
+如果某些 SAP 系统依赖于应用程序层的[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)，则当你使用在[修订版4行或 stamp](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中部署的 hana 大型实例单元时，你可以在 hana 大型实例单元和 Azure vm 之间显著改进网络延迟。 其中一项改进是，在部署时，HANA 大型实例单元使用邻近位置组进行部署。 你可以使用该邻近布局组来部署你的应用程序层虚拟机。 因此，这些 Vm 将部署在托管 HANA 大型实例单元的同一数据中心内。
 
 若要确定 HANA 大型实例单元是否部署在修订版本4的 stamp 或行中，请[通过 Azure 门户查看 AZURE HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)的文章。 在 HANA 大型实例单元的特性概述中，还可以确定邻近位置组的名称，因为它是在部署 HANA 大型实例单元时创建的。 "属性概述" 中显示的名称是应该将应用程序层 Vm 部署到的邻近感应位置组的名称。
 
@@ -130,7 +130,7 @@ New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location
 
 假设你以与 DBMS Vm 相同的方式部署中心服务 Vm，同时引用同一区域或区域和相同的邻近位置组。 在下一步中，需要创建要用于 SAP 系统的应用程序层的可用性集。
 
-你需要定义和创建邻近位置组。 用于创建可用性集的命令需要对邻近位置组 ID (不是名称) 的其他引用。 可以通过使用以下命令获取邻近组的 ID：
+你需要定义和创建邻近位置组。 用于创建可用性集的命令需要对邻近位置组 ID （不是名称）的其他引用。 可以通过使用以下命令获取邻近组的 ID：
 
 <pre><code>
 Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose"
@@ -142,7 +142,7 @@ Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "let
 New-AzAvailabilitySet -ResourceGroupName "myfirstppgexercise" -Name "myppgavset" -Location "westus2" -ProximityPlacementGroupId "/subscriptions/my very long ppg id string" -sku "aligned" -PlatformUpdateDomainCount 3 -PlatformFaultDomainCount 2 
 </code></pre>
 
-理想情况下, 应使用三个容错域。 但受支持的容错域的数量可能会因区域而异。 在这种情况下，特定区域可能有两个容错域的最大数量。 若要部署应用程序层 Vm，需要添加对可用性集名称和邻近组名称的引用，如下所示：
+理想情况下，应使用三个容错域。 但受支持的容错域的数量可能会因区域而异。 在这种情况下，特定区域可能有两个容错域的最大数量。 若要部署应用程序层 Vm，需要添加对可用性集名称和邻近组名称的引用，如下所示：
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Location "westus2" -OpenPorts 80,3389 -AvailabilitySetName "myppgavset" -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"

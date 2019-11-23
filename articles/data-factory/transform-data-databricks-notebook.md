@@ -123,7 +123,7 @@ ms.locfileid: "73683927"
 2. 您可以使用表达式（如 `'@activity('databricks notebook activity name').output.runOutput'`）在数据工厂中使用输出。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 

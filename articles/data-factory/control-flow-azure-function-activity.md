@@ -45,7 +45,7 @@ Azure 函数的返回类型必须是有效的 `JObject`。 （请记住， [JArr
 | type  | 活动的类型为“AzureFunctionActivity” | String | 是 |
 | 链接服务 | 相应 Azure 函数应用的 Azure 函数链接服务  | 链接服务引用 | 是 |
 | 函数名称  | 此活动在 Azure 函数应用中调用的函数的名称 | String | 是 |
-| method  | 函数调用的 Rest API 方法 | 字符串支持的类型： "GET"、"POST"、"PUT"   | 是 |
+| 方法  | 函数调用的 Rest API 方法 | 字符串支持的类型： "GET"、"POST"、"PUT"   | 是 |
 | 标头的值开始缓存响应  | 发送到请求的标头。 例如，若要在请求中设置语言和类型："headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 字符串（或带有 resultType 字符串的表达式） | 否 |
 | body  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）或对象。   | PUT/POST 方法所必需 |
 |   |   |   | |

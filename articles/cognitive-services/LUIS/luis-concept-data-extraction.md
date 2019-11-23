@@ -1,5 +1,5 @@
 ---
-title: 数据提取-LUIS
+title: 数据提取 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 从包含意向和实体的话语文本中提取数据。 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据。
 services: cognitive-services
@@ -34,7 +34,7 @@ LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 
@@ -76,15 +76,15 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 
-|数据对象|数据类型|数据位置|ReplTest1|
+|数据对象|数据类型|数据位置|值|
 |--|--|--|--|
-|Intent|字符串|topScoringIntent.intent|"GetStoreInfo"|
+|意向|String|topScoringIntent.intent|"GetStoreInfo"|
 
-如果你的聊天机器人或 LUIS 调用应用根据多个意向评分做出决定，则返回所有意向分数。
+如果聊天机器人或 LUIS 调用应用基于不止一个意向评分来进行决策，则返回所有意向的评分。
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
@@ -136,16 +136,16 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|ReplTest1|分数|
+|数据对象|数据类型|数据位置|值|得分|
 |--|--|--|--|:--|
-|Intent|字符串|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Intent|字符串|intents[1].intent|"None"|0.0168218873|
+|意向|String|intents[0].intent|"GetStoreInfo"|0.984749258|
+|意向|String|intents[1].intent|"None"|0.0168218873|
 
 如果添加预构建的域，则意向名称指示该域，例如 `Utilties` 或 `Communication` 以及意向：
 
@@ -199,15 +199,15 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 
-|Domain|数据对象|数据类型|数据位置|ReplTest1|
+|域|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
-|公用事业|Intent|字符串|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通信|Intent|字符串|intents[1].intent|<b>Communication</b>.StartOver"|
-||Intent|字符串|intents[2].intent|"None"|
+|实用程序|意向|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|通信|意向|String|intents[1].intent|<b>Communication</b>.StartOver"|
+||意向|String|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>实体中的数据
@@ -248,7 +248,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
     "number": [3]
 }
 ```
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 
@@ -357,7 +357,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
-如果没有 querystring 参数，`verbose=true`：
+不使用 querystring 参数 `verbose=true`：
 
 ```json
 "entities": {
@@ -399,7 +399,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-对于 querystring 参数，@no__t 为-0：
+使用 querystring 参数 `verbose=true`：
 
 ```json
 
@@ -532,12 +532,12 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * * 
 ## <a name="regular-expression-entity-data"></a>正则表达式实体数据
 
-[正则表达式实体](reference-entity-regular-expression.md)基于您提供的正则表达式模式提取实体。
+[正则表达式实体](reference-entity-regular-expression.md)基于所提供的正则表达式模式提取实体。
 
 ## <a name="extracting-names"></a>提取名称
 从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 以下建议不是规则，而是更多准则。
@@ -548,7 +548,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="names-of-people"></a>人的姓名
 
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用任一预构建 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。 
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 将预生成的 **[personName](luis-reference-prebuilt-person.md)** 实体或 **[简单实体](luis-concept-entity-types.md#simple-entity)** 与包含姓和名的[角色](luis-concept-roles.md)配合使用。 
 
 如果使用简单实体，请确保给出的示例在话语的不同部分、在不同长度的话语中以及在所有意向（包括“None”意向）的话语中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
@@ -558,7 +558,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难进行的数据提取类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 以开头 **[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。
@@ -566,7 +566,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
-实体名称为 `Location`，具有两个角色，@no__t 为-1，@no__t 为2。
+实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
 
 ```JSON
 "entities": [
@@ -601,9 +601,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 在 V3 中，**角色名称**是对象的主要名称。 
 
-实体名称为 `Location`，具有两个角色，@no__t 为-1，@no__t 为2。
+实体名称为 `Location`，具有两个角色 `Origin` 和 `Destination`。
 
-如果没有 querystring 参数，`verbose=true`：
+不使用 querystring 参数 `verbose=true`：
 
 ```json
 "entities": {
@@ -619,7 +619,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-对于 querystring 参数，@no__t 为-0：
+使用 querystring 参数 `verbose=true`：
 
 ```json
 "entities": {
@@ -681,7 +681,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * *
 
@@ -754,9 +754,9 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
-如果没有 querystring 参数，`verbose=true`：
+不使用 querystring 参数 `verbose=true`：
 
 ```json
 "entities": {
@@ -768,7 +768,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-对于 querystring 参数，@no__t 为-0：
+使用 querystring 参数 `verbose=true`：
 
 ```json
 "entities": {
@@ -817,7 +817,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * *
 
@@ -828,7 +828,7 @@ LUIS 返回在陈述中发现的所有实体。 因此，机器人可能需要�
 
 `book me 2 adult business tickets to paris tomorrow on air france`
 
-LUIS 终结点可在不同的实体中发现相同的数据。
+LUIS 终结点可以发现不同实体中的相同数据。
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
@@ -958,7 +958,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
-不 `verbose=true` 作为查询字符串参数。
+不使用 `verbose=true` 作为 querystring 参数。
 
 ```json
 "entities": {
@@ -995,7 +995,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 }
 ```
 
-使用 `verbose=true` 作为查询字符串参数。
+使用 `verbose=true` 作为 querystring 参数。
 
 
 ```json
@@ -1133,7 +1133,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * *
 
@@ -1183,7 +1183,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
-在查询字符串中无 `verbose=true`：
+在查询字符串中不包含 `verbose=true`：
 
 ```JSON
 {
@@ -1213,7 +1213,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 ```
 
 
-在查询字符串中为 `verbose=true`：
+在查询字符串中包含 `verbose=true`：
 
 ```JSON
 {
@@ -1270,7 +1270,7 @@ LUIS 终结点可在不同的实体中发现相同的数据。
 }
 ```
 
-了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+详细了解 [V3 预测终结点](luis-migration-api-v3.md)。
 
 * * *
 

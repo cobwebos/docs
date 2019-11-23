@@ -26,9 +26,9 @@ Azure 串行控制台中有一组已知错误。 这是这些错误的列表以�
 
 ## <a name="common-errors"></a>常见错误
 
-Error                            |   缓解
+错误                            |   缓解措施
 :---------------------------------|:--------------------------------------------|
-无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 @no__t 0Boot 诊断错误 @ no__t-1 | 请确保 VM 或虚拟机规模集已启用[启动诊断](boot-diagnostics.md)。 如果在虚拟机规模集实例上使用串行控制台，请确保实例具有最新的模型。
+无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 ![启动诊断错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | 请确保 VM 或虚拟机规模集已启用[启动诊断](boot-diagnostics.md)。 如果在虚拟机规模集实例上使用串行控制台，请确保实例具有最新的模型。
 VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 ![已释放错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | VM 或虚拟机规模集实例必须处于已启动状态才能访问串行控制台。 启动 VM 或虚拟机规模集实例，然后重试。
 访问此 VM 的启动诊断存储帐户时遇到“已禁止”响应。 ![存储帐户防火墙错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| 请确保启动诊断没有帐户防火墙。 若要使串行控制台正常运行，需要一个可访问的启动诊断存储帐户。 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
 没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有“虚拟机参与者”角色权限。| 通过串行控制台访问，你可以在 VM 或虚拟机规模集上访问参与者级别或更高级别。 有关详细信息，请参阅[概述页](serial-console-overview.md)。

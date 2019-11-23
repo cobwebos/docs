@@ -29,7 +29,7 @@ ms.locfileid: "72264490"
 ## <a name="create-a-new-pipeline"></a>创建新管道
 
 1. 选择 "**创作**铅笔" 工具。 
-1. 通过选择 " **@no__t** "，然后从下拉端选择 "**管道**" 来创建新的管道。
+1. 通过选择 " **+** "，然后从下拉选择 "**管道**" 来创建新的管道。
 
    ![创建新管道](media/data-factory-command-activity/create-pipeline.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "72264490"
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>向查找活动添加查询
 
-1. 在**管道中-4-文档** > **设置**在 "**查询**" 文本框中添加查询，例如：
+1. 在 "**管道-4-文档** > **设置**" 在 "**查询**" 文本框中添加查询，例如：
 
     ```kusto
     ClusterQueries
@@ -116,7 +116,7 @@ ms.locfileid: "72264490"
 1.  选择画布中的 ForEach 活动。 在下面的 "**设置**" 选项卡中：
     * 选中 "**顺序**" 复选框可按顺序处理查找结果，或将其保留为未选中状态以创建并行处理。
     * 设置**批处理计数**。
-    * 在 "**项**" 中，提供对输出值的以下引用： *@activity （' Lookup1 '）。*
+    * 在 "**项**" 中，提供对输出值的以下引用： *@activity（' Lookup1 '）。*
 
        ![ForEach 活动设置](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "72264490"
 
     > [!NOTE]
     > 命令活动具有以下限制：
-    > * 大小限制：1 MB 响应大小
+    > * 大小限制： 1 MB 响应大小
     > * 时间限制：20分钟（默认值），1小时（最大值）。
     > * 如果需要，可以使用[AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands)将查询追加到结果，以减少生成的大小/时间。
 
@@ -170,7 +170,7 @@ ms.locfileid: "72264490"
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>非 async control 命令的返回值
 
-在非 async control 命令中，返回值的结构类似于查找活动结果的结构。 @No__t-0 字段指示返回的记录数。 固定数组字段 `value` 包含记录的列表。 
+在非 async control 命令中，返回值的结构类似于查找活动结果的结构。 "`count`" 字段指示返回的记录数。 固定数组字段 `value` 包含一系列记录。 
 
 ```json
 { 
@@ -192,7 +192,7 @@ ms.locfileid: "72264490"
  
 ### <a name="returned-value-of-an-async-control-command"></a>Async control 命令的返回值
 
-在 async control 命令中，活动将轮询后台的操作表，直到异步操作完成或超时。因此，返回的值将包含给定**OperationId**属性 `.show operations OperationId` 的结果。 检查 "**状态**" 和 "**状态**" 属性的值，验证操作是否成功完成。
+在 async control 命令中，活动将轮询后台的操作表，直到异步操作完成或超时。因此，返回的值将包含给定**OperationId**属性的 `.show operations OperationId` 结果。 检查 "**状态**" 和 "**状态**" 属性的值，验证操作是否成功完成。
 
 ```json
 { 

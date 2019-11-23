@@ -38,13 +38,13 @@ ms.locfileid: "73825729"
 
 有关 bug 和已知问题，请参阅[已知问题](sql-database-managed-instance-transact-sql-information.md#Issues)。
 
-## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>在哪里可以找到最新的功能和公共预览版中的功能？
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>在哪里可以找到最新功能和处于公共预览状态的功能？
 
 对于新功能和预览功能，请参阅[发行说明](/azure/sql-database/sql-database-release-notes?tabs=managed-instance)。
 
 ## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>创建或更新实例或还原数据库需要多长时间？
 
-创建新的托管实例或更改服务层（Vcore，存储）所需的时间取决于多个因素。 查看[管理操作](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+创建新的托管实例或更改服务层（vCore、存储）所需的时间取决于多个因素。 请查看[管理操作](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>托管实例是否可与本地 SQL Server 同名？
 

@@ -62,9 +62,9 @@ _Blob2.json_
 
 | id | 温度 | 压强 | timestamp |
 |----|-------------|----------|-----------|
-| aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
+| aHR0 ...YjEuanNvbjsx | 100 个 | 100 个 | 2019-02-13T00:00:00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0 ...YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
+| aHR0 ...YjIuanNvbjsx | 1 个 | 1 个 | 2018-01-12T00:00:00Z |
 | aHR0 ...YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
 
 ## <a name="custom-field-mapping-for-index-key-field"></a>索引键字段的自定义字段映射

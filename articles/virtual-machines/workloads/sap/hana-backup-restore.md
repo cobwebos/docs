@@ -154,7 +154,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>步骤 5：为 SAP HANA 用户帐户授权
 
-在此步骤中，你将为你创建的 SAP HANA 用户帐户授权，以便脚本无需在运行时提交密码。 SAP HANA 命令 @no__t 启用了 SAP HANA 用户密钥的创建。 密钥存储在一个或多个 SAP HANA 节点上。 用户可以使用用户密钥从脚本流程内部访问 SAP HANA，而无需管理密码。 本文稍后会介绍脚本过程。
+在此步骤中，你将为你创建的 SAP HANA 用户帐户授权，以便脚本无需在运行时提交密码。 使用 SAP HANA 命令 `hdbuserstore` 可以创建 SAP HANA 的用户密钥。 密钥存储在一个或多个 SAP HANA 节点上。 用户可以使用用户密钥从脚本流程内部访问 SAP HANA，而无需管理密码。 本文稍后会介绍脚本过程。
 
 >[!IMPORTANT]
 >在运行快照命令的用户上下文中运行这些配置命令。 否则，snapshot 命令将无法正常运行。
@@ -197,7 +197,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 有关确切的命令语法和功能，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "执行快照备份-azure_hana_backup"。 
 
-当脚本 `azure_hana_backup` 运行时，它会在以下三个阶段创建存储快照：
+`azure_hana_backup` 运行脚本时，它会在以下三个阶段创建存储快照：
 
 1. 它运行 SAP HANA 快照。
 1. 它运行存储快照。
@@ -278,7 +278,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 如果从未备份过数据库，则最后一步是执行基于文件的数据库备份，以创建必须在备份目录中存在的单个备份项。 否则，SAP HANA 无法启动指定的日志备份。
 
-![创建基于文件的备份以创建单个备份项](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
+![创建基于文件的备份用于创建单个备份项](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
 第一次成功运行存储快照后，删除在步骤6中运行的测试快照。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "删除测试快照-removeTestStorageSnapshot"。 
@@ -286,7 +286,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>监视磁盘卷上的快照数量和大小
 
-在特定的存储卷上，可以监视快照的数量以及这些快照的存储消耗量。 `ls` 命令不会显示快照目录或文件。 Linux OS 命令 @no__t 显示有关这些存储快照的详细信息，因为这些快照存储在相同的卷上。 使用带有以下选项的命令：
+在特定的存储卷上，可以监视快照的数量以及这些快照的存储消耗量。 `ls` 命令不会显示快照目录或文件。 Linux OS 命令 `du` 显示有关这些存储快照的详细信息，因为这些快照存储在相同的卷上。 使用带有以下选项的命令：
 
 - `du –sh .snapshot`：此选项提供快照目录中所有快照的总数。
 - `du –sh --max-depth=1`：此选项列出 **.snapshot** 文件夹中保存的所有快照，以及每个快照的大小。
@@ -307,7 +307,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
       - 快照频率
       - 与该快照关联的 HANA 备份 ID（如果相关）
 
-有关命令和输出的语法，请参阅[azure 上用于 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "列出快照-azure_hana_snapshot_details"。 
+有关命令和输出的语法，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"列出快照-azure_hana_snapshot_details"。 
 
 
 
@@ -336,7 +336,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-有关该脚本的详细信息，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"删除快照-azure_hana_snapshot_delete"。
+有关该脚本的详细信息，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"删除快照 azure_hana_snapshot_delete"。
 
 以用户**根**身份运行脚本。
 
@@ -373,7 +373,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
    ![关闭 HANA 实例](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
-1. 卸载每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
+1. 每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
 
    ![卸载每个 HANA 数据库节点上的数据卷](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 

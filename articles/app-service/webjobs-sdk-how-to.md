@@ -88,7 +88,7 @@ static void Main(string[] args)
 
 #### <a name="version-3x"></a>版本 3.*x*
 
-版本 3.x 使用标准 ASP.NET Core API。 对 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例调用 [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) 方法。 传递名为 `development` 的字符串，如以下示例中所示：
+版本 3.x 使用标准 ASP.NET Core API。 对 [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) 实例调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 方法。 传递名为 `development` 的字符串，如以下示例中所示：
 
 ```cs
 static void Main()
@@ -128,7 +128,7 @@ static void Main()
 
 ### <a name="jobhost-servicepointmanager-settings"></a>管理并发连接数（版本 2.*x*）
 
-在版本 3.*x* 中，连接限制默认为无限次连接。 如果由于某种原因需要更改此限制，则可以使用[@no__t](/dotnet/api/system.net.http.winhttphandler)类的[@no__t](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver)属性。
+在版本 3.*x* 中，连接限制默认为无限次连接。 如果出于某种原因您需要更改此限制，则可以使用[`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler)类的[`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver)属性。
 
 在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 控制主机的并发连接数。 在 2.*x* 中，应在启动 WebJobs 主机之前，在默认值 2 的基础上增大此值。
 
@@ -151,7 +151,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Triggers
+## <a name="triggers"></a>触发器
 
 函数必须是公共方法，并且必须包含一个触发器特性或 [`NoAutomaticTrigger`](#manual-triggers) 特性。
 
@@ -240,7 +240,7 @@ static void Main(string[] args)
 
 #### <a name="version-3x"></a>版本 3.*x*
 
-在版本 3.*x* 中，存储绑定包含在 `Microsoft.Azure.WebJobs.Extensions.Storage` 包中。 在 `ConfigureWebJobs` 方法中调用 `AddAzureStorage` 扩展方法，如下所示：
+在版本 3.*x* 中，存储绑定包含在 `Microsoft.Azure.WebJobs.Extensions.Storage` 包中。 在 `AddAzureStorage` 方法中调用 `ConfigureWebJobs` 扩展方法，如下所示：
 
 ```cs
 static void Main()
@@ -288,7 +288,7 @@ static void Main()
 * 队列存储
 * 表存储
 
-若要使用其他触发器和绑定类型，请安装包含这些类型的 NuGet 包，并对 `JobHostConfiguration` 对象调用 `Use<binding>` 方法。 例如，若要使用 Timer 触发器，请安装 `Microsoft.Azure.WebJobs.Extensions` 并在 `Main` 方法中调用 `UseTimers`，如下所示：
+若要使用其他触发器和绑定类型，请安装包含这些类型的 NuGet 包，并对 `Use<binding>` 对象调用 `JobHostConfiguration` 方法。 例如，若要使用 Timer 触发器，请安装 `Microsoft.Azure.WebJobs.Extensions` 并在 `UseTimers` 方法中调用 `Main`，如下所示：
 
 ```cs
 static void Main()
@@ -322,7 +322,7 @@ public class Functions
 
 #### <a name="version-3x"></a>版本 3.*x*
 
-在 `ConfigureWebJobs` 方法中调用 `AddExecutionContextBinding` 扩展方法，如下所示：
+在 `AddExecutionContextBinding` 方法中调用 `ConfigureWebJobs` 扩展方法，如下所示：
 
 ```cs
 static void Main()
@@ -362,8 +362,8 @@ class Program
 
 可以配置某些触发器和绑定的行为。 配置过程取决于 SDK 版本。
 
-* **版本 3.*x*：** 在 `ConfigureWebJobs` 中调用 `Add<Binding>` 方法时设置配置。
-* **版本 2.*x*：** 通过在传入 `JobHost` 的配置对象中设置属性来设置配置。
+* **版本3。*x*：** 在 `ConfigureWebJobs`中调用 `Add<Binding>` 方法时设置配置。
+* **版本2。*x*：** 通过在传入到 `JobHost`的配置对象中设置属性来设置配置。
 
 这些特定于绑定的设置相当于 Azure Functions 的 [host.json 项目文件](../azure-functions/functions-host-json.md)中的设置。
 
@@ -600,7 +600,7 @@ public static void CreateThumbnail(
 
 有时，你想要在代码中指定队列名称、Blob 名称、容器或表名称，而不是进行硬编码。 例如，可能要在配置文件或环境变量中指定 `QueueTrigger` 特性的队列名称。
 
-为此，可以向 `JobHostConfiguration` 对象传入 `NameResolver` 对象。 在触发器或绑定特性构造函数参数中包含占位符，`NameResolver` 代码将提供用于取代这些占位符的实际值。 占位符的标识方式是以百分号 (%) 将其括住，如下所示：
+为此，可以向 `NameResolver` 对象传入 `JobHostConfiguration` 对象。 在触发器或绑定特性构造函数参数中包含占位符，`NameResolver` 代码将提供用于取代这些占位符的实际值。 占位符的标识方式是以百分号 (%) 将其括住，如下所示：
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -633,7 +633,7 @@ public class CustomNameResolver : INameResolver
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-可以通过调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 上的 [`ConfigureServices`] 扩展方法来添加解析程序，如下例所示：
+可以通过调用 [`ConfigureServices`] 上的 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 扩展方法来添加解析程序，如下例所示：
 
 ```cs
 static async Task Main(string[] args)
@@ -802,7 +802,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>查看租约 Blob
 
-WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs)来实现分布式锁定。 可以在 `AzureWebJobsStorage` 存储帐户的 `azure-webjobs-host` 容器中的路径“locks”下面找到单一实例使用的租约 Blob。 例如，前面演示的第一个 `ProcessImage` 示例的租约 Blob 路径可能是 `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`。 所有路径包含 JobHost ID，在本例中为 061851c758f04938a4426aa9ab3869c0。
+WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs)来实现分布式锁定。 可以在 `azure-webjobs-host` 存储帐户的 `AzureWebJobsStorage` 容器中的路径“locks”下面找到单一实例使用的租约 Blob。 例如，前面演示的第一个 `ProcessImage` 示例的租约 Blob 路径可能是 `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`。 所有路径包含 JobHost ID，在本例中为 061851c758f04938a4426aa9ab3869c0。
 
 ## <a name="async-functions"></a>异步函数
 
@@ -837,11 +837,11 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 |LogLevel    |代码|
 |------------|---|
 |跟踪       | 0 |
-|调试       | 1 |
-|Information | 2 |
+|调试       | 1 个 |
+|信息 | 2 |
 |警告     | 3 |
-|Error       | 4 |
-|关键    | 5 |
+|错误       | 4 |
+|严重    | 5 |
 |无        | 6 |
 
 可以将每个类别单独筛选为特定的 [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)。 例如，你可能想要查看有关 Blob 触发器处理的所有日志，但对于其他任何操作，只想查看 `Error` 和更高级别的日志。
@@ -856,7 +856,7 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-以下示例构造的筛选器默认会筛选 `Warning` 级别的所有日志。 `Function` 和 `results`类别（等效于版本 2.*x* 中的 `Host.Results`）在 `Error` 级别进行筛选。 筛选器将当前类别与 `LogCategories` 实例中所有已注册的级别进行比较，并选择最长匹配项。 这意味着，为 `Host.Triggers` 注册的 `Debug` 级别将匹配 `Host.Triggers.Queue` 或 `Host.Triggers.Blob`。 这样，便可以控制更广泛的类别，而无需添加每个类别。
+以下示例构造的筛选器默认会筛选 `Warning` 级别的所有日志。 `Function` 和 `results`类别（等效于版本 2.`Host.Results`x*中的*）在 `Error` 级别进行筛选。 筛选器将当前类别与 `LogCategories` 实例中所有已注册的级别进行比较，并选择最长匹配项。 这意味着，为 `Debug` 注册的 `Host.Triggers` 级别将匹配 `Host.Triggers.Queue` 或 `Host.Triggers.Blob`。 这样，便可以控制更广泛的类别，而无需添加每个类别。
 
 ```cs
 static async Task Main(string[] args)
@@ -885,11 +885,11 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>版本 2.*x*
 
-在版本 2.*x* 的 SDK 中，`LogCategoryFilter` 类用于控制筛选。 `LogCategoryFilter` 包含初始值为 `Information` 的 `Default` 属性，这意味着，将会记录级别为 `Information`、`Warning`、`Error` 或 `Critical` 的所有消息，但会筛选掉级别为 `Debug` 或 `Trace` 的所有消息。
+在版本 2.*x* 的 SDK 中，`LogCategoryFilter` 类用于控制筛选。 `LogCategoryFilter` 包含初始值为 `Default` 的 `Information` 属性，这意味着，将会记录级别为 `Information`、`Warning`、`Error` 或 `Critical` 的所有消息，但会筛选掉级别为 `Debug` 或 `Trace` 的所有消息。
 
-与版本 3.*x* 中的 `LogCategories` 一样，使用 `CategoryLevels` 属性可以指定特定类别的日志级别，以便能够微调日志记录输出。 如果在 `CategoryLevels` 字典中未找到任何匹配项，筛选器在决定是否筛选消息时会回退到 `Default` 值。
+与版本 3.`LogCategories`x*中的* 一样，使用 `CategoryLevels` 属性可以指定特定类别的日志级别，以便能够微调日志记录输出。 如果在 `CategoryLevels` 字典中未找到任何匹配项，筛选器在决定是否筛选消息时会回退到 `Default` 值。
 
-以下示例构造的筛选器默认会筛选 `Warning` 级别的所有日志。 `Function` 和 `Host.Results` 类别在 `Error` 级别进行筛选。 `LogCategoryFilter` 将当前类别与所有已注册的 `CategoryLevels` 进行比较，并选择最长匹配项。 因此，为 `Host.Triggers` 注册的 `Debug` 级别将匹配 `Host.Triggers.Queue` 或 `Host.Triggers.Blob`。 这样，便可以控制更广泛的类别，而无需添加每个类别。
+以下示例构造的筛选器默认会筛选 `Warning` 级别的所有日志。 `Function` 和 `Host.Results` 类别在 `Error` 级别进行筛选。 `LogCategoryFilter` 将当前类别与所有已注册的 `CategoryLevels` 进行比较，并选择最长匹配项。 因此，为 `Debug` 注册的 `Host.Triggers` 级别将匹配 `Host.Triggers.Queue` 或 `Host.Triggers.Blob`。 这样，便可以控制更广泛的类别，而无需添加每个类别。
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -916,7 +916,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-使用以下 [`ITelemetryInitializer`] 的自定义实现，可向默认的 [`TelemetryConfiguration`] 添加自己的 [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry)。
+使用以下 [`ITelemetryInitializer`] 的自定义实现，可向默认的 [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) 添加自己的 [`TelemetryConfiguration`]。
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer

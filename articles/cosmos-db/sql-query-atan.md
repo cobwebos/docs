@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71348558"
 ---
-# <a name="atan-azure-cosmos-db"></a>ATAN （Azure Cosmos DB）
+# <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
  返回角度（弧度），其正切是指定的数值表达式。 这也被称为反正切。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ ATAN(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例返回指定值的 @no__t。  
+  以下示例返回指定值的 `ATAN`。  
   
 ```sql
 SELECT ATAN(-45.01) AS atan  

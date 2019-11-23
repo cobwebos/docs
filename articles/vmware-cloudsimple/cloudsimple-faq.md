@@ -33,7 +33,7 @@ CloudSimple 在美国东部、美国西部和西欧地区提供，即将推出�
 
 **如何实现为 CloudSimple 启用我的订阅？**
 
-你可以在[@no__t](mailto:azurevmwaresales@microsoft.com)上联系你的 Microsoft 帐户代表，以便为 CloudSimple 服务启用订阅。 在要为其启用 CloudSimple 服务的电子邮件中提供订阅 ID。  
+你可以在[azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com)联系你的 Microsoft 帐户代表，为 CloudSimple 服务启用订阅。 在要为其启用 CloudSimple 服务的电子邮件中提供订阅 ID。  
 
 **如何实现访问 CloudSimple 门户？**
 
@@ -50,7 +50,7 @@ CloudSimple 在计划的维护间隔之前的几天提供通知。  维护是以
 * **CloudSimple 基础结构**。  CloudSimple 基础结构设计为具有高可用性。  在此类型的维护间隔期间，每次更新一个冗余组件以避免任何服务中断。 你可以保持对私有云 vCenter、所有虚拟机、从私有云的 internet 连接以及连接到本地或 Azure 的访问权限。
 * **CloudSimple 门户**。 在此类型的维护间隔期间，CloudSimple 门户中的某些功能可能已禁用或不可访问。  维护间隔之前的通知包括进行维护时的功能限制的详细信息。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
 **CloudSimple 区域网络的连接选项有哪些？**
 
@@ -68,11 +68,11 @@ CloudSimple 提供下列连接选项用于连接到 CloudSimple 区域网络。 
 
 Azure ExpressRoute 线路是一种高速、低延迟、安全的连接。  CloudSimple 为每个客户提供专用的 ExpressRoute 线路。  使用此线路，可以从本地或 Azure 订阅建立安全连接。
 
-@no__t 0What 连接到 CloudSimple 的网络开销是多少？是否在 CloudSimple 与 Azure 之间或跨区域应用任何出口费用？ **
+**连接到 CloudSimple 的网络开销是多少？ 是否在 CloudSimple 与 Azure 之间或跨区域应用任何出口费用？**
 
 无 CloudSimple 的网络出口费用。  Azure 标准费率适用于来自虚拟网络或本地 ExpressRoute 线路的任何出口流量。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 **哪些网络功能可用于我的私有云？**
 
@@ -106,9 +106,9 @@ CloudSimple 提供了以下安全功能来保护私有云环境：
 
 CloudSimple 提供以下主机类型：
 
-* **CS28 节点：** CPU： 2x 2.2 GHz，总共28核，48 HT。  RAM：256 GB。  存储：1600 GB NVMe 缓存，5760 GB 数据（全部刷新）。 网络：4x25Gbe NIC
-* **CS36 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM：512 GB。  存储：3200 GB NVMe 缓存 11520 GB 数据（全部刷新）。  网络：4x25Gbe NIC
-* **CS36m 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM：576 GB。  存储：3200 GB NVMe 缓存 13360 GB 数据（全部刷新）。  网络：4x25Gbe NIC
+* **CS28 节点：** CPU： 2x 2.2 GHz，总共28核，48 HT。  RAM： 256 GB。  存储空间： 1600 GB NVMe 缓存，5760 GB 数据（全部闪烁）。 网络： 4x25Gbe NIC
+* **CS36 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 512 GB。  存储： 3200 GB NVMe 缓存 11520 GB 数据（所有闪存）。  网络： 4x25Gbe NIC
+* **CS36m 节点：** CPU 2x 2.3 GHz，36核心总数，72 HT。  RAM： 576 GB。  存储： 3200 GB NVMe 缓存 13360 GB 数据（所有闪存）。  网络： 4x25Gbe NIC
 
 **所有硬件故障的处理方式是什么？**
 
@@ -121,7 +121,7 @@ CloudSimple 平台和我们的服务运营团队将不断监视所有 CloudSimpl
 CloudSimple 提供每个私有云的所有闪存 VMware vSAN 存储。  每个 vSphere 都创建有自己的 vSAN 数据存储。  有关详细信息，请参阅[私有云 VMware 组件-vSAN 存储](vmware-components.md#vsan-storage)。
 
 **是否支持数据加密？**
-是。  你可以在私有云上设置 vSAN 存储，以使用部署在本地或 Azure 上的密钥管理服务器（KMS）来加密 vSAN 上存储的数据。
+可以。  你可以在私有云上设置 vSAN 存储，以使用部署在本地或 Azure 上的密钥管理服务器（KMS）来加密 vSAN 上存储的数据。
 
 **如何处理失败的磁盘？**
 
@@ -163,4 +163,4 @@ CloudSimple 提供了从 Azure 门户管理私有云上的 VMware Vm 的独特�
 
 **Azure 有哪些授权权益？**
 
-使用 CloudSimple，可以利用 Azure 混合使用权益，并节省高达 90% 的许可证。 此权益可节省你对 Microsoft 许可证的投资，并可降低相对于其他云解决方案的总体拥有成本。 还会获得 Windows Server 2008 和 Microsoft SQL Server 2008 的扩展安全更新。  自带许可（BYOL）模型有助于降低常见应用（例如 Veeam 和 Zerto）的成本。  
+使用 CloudSimple，可以利用 Azure 混合使用权益，并节省高达90% 的许可证。 此权益可节省你对 Microsoft 许可证的投资，并可降低相对于其他云解决方案的总体拥有成本。 还会获得 Windows Server 2008 和 Microsoft SQL Server 2008 的扩展安全更新。  自带许可（BYOL）模型有助于降低常见应用（例如 Veeam 和 Zerto）的成本。  

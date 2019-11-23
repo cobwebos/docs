@@ -1,5 +1,5 @@
 ---
-title: 常见问题解答 (FAQ)
+title: 常见问题 (FAQ)
 titleSuffix: Azure Cognitive Search
 description: 获取有关 Microsoft Azure 认知搜索服务（Microsoft Azure 上的云托管搜索服务）的常见问题的解答。
 manager: nitinme
@@ -23,7 +23,7 @@ ms.locfileid: "72792912"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure 认知搜索如何与我的 DBMS 中的全文搜索不同？
 
-Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](https://docs.microsoft.com/rest/api/searchservice/language-support)、[对感兴趣的异常数据输入进行自定义分析](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)、通过[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)搜索排名控件和用户体验typeahead、命中突出显示和分面导航等功能。 它还包含其他功能，如同义词和丰富的查询语法，但通常来说，这些不属于区别性功能。
+Azure 认知搜索支持多个数据源、[针对多种语言的语言分析](https://docs.microsoft.com/rest/api/searchservice/language-support)、[对感兴趣的异常数据输入进行自定义分析](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)、通过[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)搜索排名控件以及 typeahead、命中突出显示和分面导航等用户体验功能。 它还包含其他功能，如同义词和丰富的查询语法，但通常来说，这些不属于区别性功能。
 
 ### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Azure 认知搜索与 Elasticsearch 之间的区别是什么？
 
@@ -73,9 +73,9 @@ Azure 门户中目前没有内置索引提取、快照或备份-还原功能。 
 
 不，不支持此操作。 搜索始终限制在单一索引内。
 
-### <a name="can-i-restrict-search-index-access-by-user-identity"></a>是否可以按用户身份限制搜索索引访问？
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>能否根据用户身份限制搜索索引访问？
 
-可以使用 `search.in()` 筛选器实现[安全筛选器](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)。 使用 [Azure Active Directory(AAD) 等标识管理服务](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。
+可以使用 [ 筛选器实现](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)安全筛选器`search.in()`。 使用 [Azure Active Directory(AAD) 等标识管理服务](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>为什么确定有效的术语没有匹配项？
 

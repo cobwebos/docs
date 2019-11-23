@@ -26,7 +26,7 @@ ms.locfileid: "71212530"
 **免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于适用于 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以便在操作系统层上进行进一步的故障排除或澄清。Microsoft 服务管理团队设置了 STONITH 设备，并完全支持并可参与 STONITH 设备问题的疑难解答。*
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
-### <a name="pre-requisites"></a>必备组件
+### <a name="pre-requisites"></a>先决条件
 - 预配 HANA 大型实例
 - 注册操作系统
 - HANA 大型实例服务器已连接到 SMT 服务器以获取修补程序/包
@@ -154,7 +154,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击 **“确定”**
+单击“确定”
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
@@ -257,7 +257,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm "-mon" ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 你还可以登录到 hawk 以检查群集状态*https://\<node IP >： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
+!["crm-mon"](media/HowToHLI/HASetupWithStonith/crm-mon.png) 你还可以登录到 hawk 以检查群集状态*https://\<节点 IP >： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
@@ -322,7 +322,7 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，还可以在*https://\<node IP 地址 >： 7630/cib/live/state*中查看状态
+此外，你还可以在*https://\<节点 IP 地址 >： 7630/cib/live/state*中查看状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -333,12 +333,12 @@ Service pacemaker stop
 ```
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
-故障转移前  
-![Before-failover ](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+**故障转移之前**  
+![Before-failover](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
-故障转移后  
-![after-failover ](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![crm-mon-after-failover ](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+**故障转移之后**  
+![after-failover](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. 疑难解答

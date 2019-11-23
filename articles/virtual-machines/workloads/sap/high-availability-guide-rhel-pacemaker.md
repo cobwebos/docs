@@ -55,7 +55,7 @@ ms.locfileid: "71673001"
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
 * 通用 RHEL 文档
@@ -63,10 +63,10 @@ ms.locfileid: "71673001"
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [RHEL 高可用性群集的支持策略-sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)
-* Azure 特定的 RHEL 文档:
+* Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
-  * [在 RHEL 7.6 上的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为独立的排队服务器 2 (ENSA2)](https://access.redhat.com/articles/3974941)
+  * [在 RHEL 7.6 上的 Pacemaker 中将 SAP S/4HANA ASCS/ERS 配置为独立的排队服务器2（ENSA2）](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>群集安装
 
@@ -88,7 +88,7 @@ ms.locfileid: "71673001"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   请注意, 通过将池附加到 Azure Marketplace PAYG RHEL 映像, 你将能够有效地按 RHEL 使用情况进行双重计费: 一次用于 PAYG 映像, 一次用于附加的池中的 RHEL 权限。 为了缓解这种情况, Azure 现在提供了 BYOS RHEL 映像。 [此处](https://aka.ms/rhel-byos)提供了详细信息。
+   请注意，通过将池附加到 Azure Marketplace PAYG RHEL 映像，你将能够有效地按 RHEL 使用情况进行双重计费：一次用于 PAYG 映像，一次用于附加的池中的 RHEL 权限。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 [此处](https://aka.ms/rhel-byos)提供了详细信息。
 
 1. **[A]** 为 SAP 存储库启用 RHEL
 
@@ -107,13 +107,13 @@ ms.locfileid: "71673001"
    </code></pre>
 
    > [!IMPORTANT]
-   > 我们建议使用以下版本的 Azure 隔离代理 (或更高版本), 以使客户从更快的故障转移时间受益, 如果资源停止失败, 或者群集节点无法彼此通信, 则可以:  
-   > RHEL 7.6： fence-agents-4.2.1-11. el7 _ 6。8  
-   > RHEL 7.5： fence-agents-4.0.11-86. el7 _ 5。8  
-   > RHEL 7.4： fence-agents-4.0.11-66. el7 _ 4.12  
+   > 我们建议使用以下版本的 Azure 隔离代理（或更高版本），以使客户从更快的故障转移时间受益，如果资源停止失败，或者群集节点无法彼此通信，则可以：  
+   > RHEL 7.6：围栏-4.2.1-11. el7_6 8  
+   > RHEL 7.5：围栏-4.0.11 el7_5-  
+   > RHEL 7.4： 4.0.11-66. el7_4 12  
    > 有关详细信息，请参阅[作为 RHEL 高可用性群集成员运行的 AZURE VM 需要很长时间才能隔离，或者在 VM 关闭之前发生防护失败/超时](https://access.redhat.com/solutions/3408711)。
 
-   查看 Azure 隔离代理的版本。 如有必要, 请将其更新为等于或晚于以上所述版本的版本。
+   查看 Azure 隔离代理的版本。 如有必要，请将其更新为等于或晚于以上所述版本的版本。
 
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
@@ -161,7 +161,7 @@ ms.locfileid: "71673001"
 
 1. **[1]** 创建 Pacemaker 群集
 
-   运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息, 请参阅[适用于 Linux 的这篇文章][virtual-machines-linux-maintenance]。
+   运行以下命令以验证节点并创建群集。 将令牌设置为 30000，以允许内存保留维护。 有关详细信息，请参阅[适用于 Linux 的这篇文章][virtual-machines-linux-maintenance]。
 
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
@@ -205,11 +205,11 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
    转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击 "新建注册"
-1. 输入名称, 选择 "仅限此组织目录中的帐户" 
-2. 选择 "Web" 应用程序类型, 输入登录 URL (例如 http:\//localhost), 然后单击 "添加"  
+1. 输入名称，选择 "仅限此组织目录中的帐户" 
+2. 选择 "Web" 应用程序类型，输入登录 URL （例如 http：\//localhost），然后单击 "添加"  
    不会使用登录 URL，可为它输入任何有效的 URL
-1. 选择证书和密码, 然后单击 "新建客户端密码"
-1. 输入新密钥的说明, 选择 "永不过期" 并单击 "添加"
+1. 选择证书和密码，然后单击 "新建客户端密码"
+1. 输入新密钥的说明，选择 "永不过期" 并单击 "添加"
 1. 记下值。 此值用作服务主体的**密码**
 1. 选择 "概述"。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
@@ -250,7 +250,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 单击“添加角色分配”
 1. 选择角色“Linux 隔离代理角色”
 1. 输入前面创建的应用程序名称
-1. 点击“保存”
+1. 点击“保存”(Save)
 
 为第二个群集节点重复上述步骤。
 
@@ -279,4 +279,4 @@ sudo pcs property set stonith-timeout=900
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复，请参阅[Azure 虚拟机（vm）上的 SAP HANA 的高可用性][sap-hana-ha]

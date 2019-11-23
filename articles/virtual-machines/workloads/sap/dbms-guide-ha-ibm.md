@@ -60,13 +60,13 @@ ms.locfileid: "72783784"
 
 在开始安装之前，请参阅以下 SAP 说明和文档：
 
-| SAP 说明 | 描述 |
+| SAP 说明 | 说明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] | Azure 上的 SAP：支持先决条件 |
 | [2178632] | Azure 上的 SAP 的关键监视指标 |
 | [2191498] | 带有 Azure 的 Linux 上的 SAP：增强型监视 |
-| [2243692] | Azure 上的 Linux （IaaS） VM： SAP 许可证问题 |
+| [2243692] | Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [1984787] | SUSE LINUX Enterprise Server 12：安装说明 |
 | [1999351] | 适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2233094] | DB6： Azure 上使用 IBM Db2 for Linux、UNIX 和 Windows 的 SAP 应用程序-其他信息 |
@@ -430,7 +430,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 将 "**分配**" 设置为 "**静态**"，并输入在**开头定义的 "ip 地址**"。
 
-   d.单击“下一步”。 选择“确定”。
+   d. 选择“确定”。
 
    e. 创建新前端 IP 池后，请记下池 IP 地址。
 
@@ -442,7 +442,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 选择“添加虚拟机”。
 
-   d.单击“下一步”。 选择在上一步中创建的托管 IBM Db2 数据库的可用性集或虚拟机。
+   d. 选择在上一步中创建的托管 IBM Db2 数据库的可用性集或虚拟机。
 
    e. 选择 IBM Db2 群集的虚拟机。
 
@@ -456,7 +456,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 选择 " **TCP** " 作为协议和端口**62500**。 保持**间隔**值设置为**5**，并将 "不**正常阈值**" 设置为 " **2**"。
 
-   d.单击“下一步”。 选择“确定”。
+   d. 选择“确定”。
 
 1. 创建负载均衡规则：
 
@@ -466,7 +466,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
    c. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如， **Db2-前端**）。
 
-   d.单击“下一步”。 将**协议**设置为 " **TCP**"，并输入端口*数据库通信端口*。
+   d. 将**协议**设置为 " **TCP**"，并输入端口*数据库通信端口*。
 
    e. 将“空闲超时”增大到 30 分钟。
 
@@ -483,7 +483,7 @@ sudo crm configure property maintenance-mode=false</pre></code>
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID >/global/db6/db2cli.ini
+/sapmnt/\<SID>/global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -504,7 +504,7 @@ j2ee/dbhost = db-virt-hostname
 1. 在右侧框中，选择密钥 jdbc/pool/\<SAPSID >/url。
 1. 将 JDBC URL 中的主机名更改为虚拟主机名。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 选择 **添加** 。
+1. 选择“添加”。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。
@@ -527,7 +527,7 @@ j2ee/dbhost = db-virt-hostname
 
 本部分介绍如何测试 Db2 HADR 设置。 *每个测试都假设你以用户根用户身份登录*，并且 IBM Db2 主节点在*azibmdb01*虚拟机上运行。
 
-所有测试用例的初始状态如下所示：（crm_mon-r 或 crm status）
+此处说明了所有测试用例的初始状态：（crm_mon r 或 crm 状态）
 
 - **crm 状态**是在执行时 Pacemaker 状态的快照 
 - **crm_mon-r**是 Pacemaker 状态的连续输出
