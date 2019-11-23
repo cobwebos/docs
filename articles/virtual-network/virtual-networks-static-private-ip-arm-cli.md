@@ -1,5 +1,5 @@
 ---
-title: 为 Vm 配置专用 IP 地址-Azure CLI
+title: Configure private IP addresses for VMs - Azure CLI
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 5734b96466801efaa991a971bd87f60aafc9df32
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: dfc56d86d2e516a7c7bb82ef7a5e84105e049188
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196611"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404461"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -46,7 +46,7 @@ ms.locfileid: "74196611"
 2. 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
 
     > [!NOTE]
-    > 根据环境，可能需在该步骤及后续步骤中使用不同的参数值。
+    > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
 
     ```azurecli
     az network public-ip create \
@@ -72,7 +72,7 @@ ms.locfileid: "74196611"
 
    * `--resource-group`：要在其中创建公共 IP 的资源组的名称。
    * `--name`：公共 IP 的名称。
-   * `--location`：在其中创建公共 IP 的 Azure 区域。
+   * `--location`：要在其中创建公共 IP 的 Azure 区域。
 
 3. 运行 [az network nic create](/cli/azure/network/nic) 命令，以创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
    
@@ -197,7 +197,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
 
-无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须具备以下条件：
+无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
 - 创建使用动态 IP 的新 NIC
 - 将 VM 上的 NIC 设置为新创建的 NIC。 
 
@@ -251,7 +251,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 2. 运行 **azure vm set** 命令，以更改 VM 使用的 NIC。
    
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+   az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     预期输出：

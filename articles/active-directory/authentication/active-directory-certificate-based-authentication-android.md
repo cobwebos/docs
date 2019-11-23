@@ -1,22 +1,22 @@
 ---
-title: Android 上基于证书的身份验证 - Azure Active Directory
+title: Android certificate-based authentication - Azure Active Directory
 description: 了解 Android 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effa03f042b44890fccd474128e75bd1c0f782a3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416158"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381986"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,20 +35,20 @@ ms.locfileid: "60416158"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
-| Intune 公司门户 |![对号，表示支持此应用程序][1] |
-| Microsoft Teams |![对号，表示支持此应用程序][1] |
-| OneNote |![对号，表示支持此应用程序][1] |
-| OneDrive |![对号，表示支持此应用程序][1] |
-| Outlook |![对号，表示支持此应用程序][1] |
-| Power BI |![对号，表示支持此应用程序][1] |
-| Skype for Business |![对号，表示支持此应用程序][1] |
-| Word/Excel/PowerPoint |![对号，表示支持此应用程序][1] |
-| Yammer |![对号，表示支持此应用程序][1] |
+| Azure 信息保护应用 |![Check mark signifying support for this application][1] |
+| Intune 公司门户 |![Check mark signifying support for this application][1] |
+| Microsoft Teams |![Check mark signifying support for this application][1] |
+| OneNote |![Check mark signifying support for this application][1] |
+| OneDrive |![Check mark signifying support for this application][1] |
+| Outlook |![Check mark signifying support for this application][1] |
+| Power BI |![Check mark signifying support for this application][1] |
+| Skype for Business |![Check mark signifying support for this application][1] |
+| Word/Excel/PowerPoint |![Check mark signifying support for this application][1] |
+| Yammer |![Check mark signifying support for this application][1] |
 
 ### <a name="implementation-requirements"></a>实现要求
 
-设备 OS 版本必须为 Android 5.0 (Lollipop) 及更高版本。
+设备 OS 版本必须为 Android 5.0 (Lollipop) 及更高版本
 
 必须配置联合服务器。
 
@@ -66,7 +66,7 @@ ms.locfileid: "60416158"
 
 有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）    。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。  
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”。
 可使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

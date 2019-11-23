@@ -1,108 +1,108 @@
 ---
-title: 启用 Azure AD （预览版）的无密码安全密钥登录-Azure Active Directory
-description: 使用 FIDO2 安全密钥（预览版）启用无密码安全密钥登录 Azure AD
+title: Passwordless security key sign (preview) - Azure Active Directory
+description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603436"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381858"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录（预览版）
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Enable passwordless security key sign in (preview)
 
-对于目前使用密码并具有共享 PC 环境的企业，安全密钥为辅助角色提供了无需输入用户名或密码即可进行身份验证的无缝方式。 安全密钥可提高工作人员的工作效率，并获得更好的安全性。
+For enterprises that use passwords today and have a shared PC environment, security keys provide a seamless way for workers to authenticate without entering a username or password. Security keys provide improved productivity for workers, and have better security.
 
-本文档重点介绍如何启用基于安全密钥的无密码身份验证。 本文末尾，你将能够使用 FIDO2 安全密钥通过 Azure AD 帐户登录到基于 web 的应用程序。
+This document focuses on enabling security key based passwordless authentication. At the end of this article, you will be able to sign in to web-based applications with your Azure AD account using a FIDO2 security key.
 
 |     |
 | --- |
-| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| FIDO2 security keys are a public preview feature of Azure Active Directory. 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>要求
 
 - [Azure 多重身份验证](howto-mfa-getstarted.md)
-- [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
-- 兼容的[FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN 需要 Windows 10 版本1809或更高版本 * *
+- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
+- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
+- WebAuthN requires Windows 10 version 1809 or higher**
 
-若要使用安全密钥登录到 web 应用和服务，您必须拥有支持 WebAuthN 协议的浏览器。 其中包括 Microsoft Edge、Chrome、Firefox 和 Safari。
+To use security keys for logging in to web apps and services, you must have a browser that supports the WebAuthN protocol. These include Microsoft Edge, Chrome, Firefox, and Safari.
 
-## <a name="prepare-devices-for-preview"></a>为预览版准备设备
+## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
 
-要试验的设备必须运行 Windows 10 版本1809或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+Devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
 
-## <a name="enable-passwordless-authentication-method"></a>启用无密码 authentication 方法
+## <a name="enable-passwordless-authentication-method"></a>Enable passwordless authentication method
 
-### <a name="enable-the-combined-registration-experience"></a>启用组合注册体验
+### <a name="enable-the-combined-registration-experience"></a>Enable the combined registration experience
 
-无密码身份验证方法的注册功能依赖于组合注册预览。 按照[启用组合安全信息注册（预览版）](howto-registration-mfa-sspr-combined.md)一文中的步骤，启用组合注册预览。
+Registration features for passwordless authentication methods rely on the combined registration preview. Follow the steps in the article [Enable combined security information registration (preview)](howto-registration-mfa-sspr-combined.md), to enable the combined registration preview.
 
-### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
+### <a name="enable-fido2-security-key-method"></a>Enable FIDO2 security key method
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory** > **安全** > **身份验证**方法 > **身份验证方法策略（预览）** 。
-1. 在 "方法**FIDO2 安全密钥**" 下，选择以下选项：
-   1. **启用**-是或否
-   1. **目标**-所有用户或选择用户
+1. Browse to **Azure Active Directory** > **Security** > **Authentication methods** > **Authentication method policy (Preview)** .
+1. Under the method **FIDO2 Security Key**, choose the following options:
+   1. **Enable** - Yes or No
+   1. **Target** - All users or Select users
 1. **保存**配置。
 
-## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全密钥的用户注册和管理
+## <a name="user-registration-and-management-of-fido2-security-keys"></a>User registration and management of FIDO2 security keys
 
 1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
-1. 如果尚未登录，请登录。
-1. 单击 "**安全信息**"。
-   1. 如果用户已注册至少一个 Azure 多重身份验证方法，则可以立即注册 FIDO2 安全密钥。
-   1. 如果它们没有注册至少一个 Azure 多重身份验证方法，则它们必须添加一个。
-1. 通过单击 "**添加方法**" 并选择 "**安全密钥**" 来添加 FIDO2 安全密钥。
-1. 选择 " **USB 设备**" 或 " **NFC 设备**"。
-1. 准备好密钥，然后选择 "**下一步**"。
-1. 将显示一个框，要求用户为你的安全密钥创建/输入 PIN，然后为密钥（生物识别或触摸）执行所需的笔势。
-1. 用户将返回到合并的注册体验，并要求为密钥提供有意义的名称，以便用户可以识别有多个密钥的名称。 单击“下一步”。
-1. 单击 "**完成**" 以完成该过程。
+1. Sign in if not already.
+1. Click **Security Info**.
+   1. If the user already has at least one Azure Multi-Factor Authentication method registered, they can immediately register a FIDO2 security key.
+   1. If they don’t have at least one Azure Multi-Factor Authentication method registered, they must add one.
+1. Add a FIDO2 Security key by clicking **Add method** and choosing **Security key**.
+1. Choose **USB device** or **NFC device**.
+1. Have your key ready and choose **Next**.
+1. A box will appear and ask the user to create/enter a PIN for your security key, then perform the required gesture for the key, either biometric or touch.
+1. The user will be returned to the combined registration experience and asked to provide a meaningful name for the key so the user can identify which one if they have multiple. 单击“下一步”。
+1. Click **Done** to complete the process.
 
-## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录
+## <a name="sign-in-with-passwordless-credential"></a>Sign in with passwordless credential
 
-在下面的示例中，用户已设置了其 FIDO2 安全密钥。 用户可以选择使用 Windows 10 1809 版或更高版本上受支持的浏览器内的 FIDO2 安全密钥登录到 web。
+In the example below a user has already provisioned their FIDO2 security key. The user can choose to sign in on the web with their FIDO2 security key inside of a supported browser on Windows 10 version 1809 or higher.
 
-![安全密钥登录 Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
+![Security key sign-in Microsoft Edge](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 
-## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
+## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
 
-若要在预览此功能时共享反馈或遇到问题，请通过 Windows 反馈中心应用进行共享。
+If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
 
-1. 启动**反馈中心**并确保已登录。
-1. 按照以下分类提交反馈：
-   1. 类别：安全和隐私
-   1. 子类别： FIDO
-1. 若要捕获日志，请使用选项：**重新创建问题**
+1. Launch **Feedback Hub** and make sure you're signed in.
+1. Submit feedback under the following categorization:
+   1. Category: Security and Privacy
+   1. Subcategory: FIDO
+1. To capture logs, use the option: **Recreate my Problem**
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="security-key-provisioning"></a>安全密钥预配
+### <a name="security-key-provisioning"></a>Security key provisioning
 
-在公共预览版中，管理员预配和取消预配安全密钥不可用。
+Administrator provisioning and de-provisioning of security keys is not available in the public preview.
 
-### <a name="upn-changes"></a>UPN 更改
+### <a name="upn-changes"></a>UPN changes
 
-如果用户的 UPN 发生更改，你将无法再修改 FIDO2 安全密钥来考虑此更改。 解决方法是重置设备，用户必须重新注册其 FIDO2 安全密钥。
+If a user’s UPN changes, you can no longer modify FIDO2 security keys to account for the change. The resolution is to reset the device and the user has to re-register their FIDO2 security keys.
 
 ## <a name="next-steps"></a>后续步骤
 
-[FIDO2 安全密钥 Windows 10 登录](howto-authentication-passwordless-security-key-windows.md)
+[FIDO2 security key Windows 10 sign in](howto-authentication-passwordless-security-key-windows.md)
 
-[对本地资源启用 FIDO2 authentication](howto-authentication-passwordless-security-key-on-premises.md)
+[Enable FIDO2 authentication to on-premises resources](howto-authentication-passwordless-security-key-on-premises.md)
 
-[了解有关设备注册的详细信息](../devices/overview.md)
+[Learn more about device registration](../devices/overview.md)
 
-[了解有关 Azure 多重身份验证的详细信息](../authentication/howto-mfa-getstarted.md)
+[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

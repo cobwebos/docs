@@ -1,5 +1,5 @@
 ---
-title: 如何管理已加入 Azure AD 的设备上的本地管理员组 | Microsoft Docs
+title: How to manage local administrators on Azure AD joined devices
 description: 了解如何将 Azure 角色分配给 Windows 设备的本地管理员组。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271304"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379658"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -24,7 +24,7 @@ ms.locfileid: "74271304"
 
 本文介绍了成员身份更新的工作原理以及在加入 Azure AD 期间如何对其进行自定义。 本文的内容不适用于加入“混合” Azure AD。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 使用 Azure AD 联接将 Windows 设备与 Azure AD 连接时，Azure AD 会将以下安全原则添加到设备上的本地管理员组：
 
@@ -59,10 +59,10 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 >[!NOTE]
 > 此选项需要 Azure AD Premium 租户。 
 
-设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 在用户已登录到的设备上，当发生以下*两项*操作时，会进行权限更新：
+设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 On devices where a user is already signed into, the privilege update takes place when *both* the below actions happen:
 
-- 已为 Azure AD 传递了4小时，以便使用适当的权限颁发新的主刷新令牌。 
-- 用户注销并重新登录，而不是锁定/取消锁定，以刷新其配置文件。
+- 4 hours have passed for Azure AD to issue a new Primary Refresh Token with the appropriate privileges. 
+- User signs out and signs back in, not lock/unlock, to refresh their profile.
 
 ## <a name="manage-regular-users"></a>管理常规用户
 
@@ -75,7 +75,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 除使用 Azure AD 联接过程之外，还可手动将常规用户提升为某个特定设备上的本地管理员。 此步骤要求用户已是本地管理员组的成员。 
 
-从**Windows 10 1709**版本开始，你可以通过 "**设置-> 帐户" （> 其他用户**）来执行此任务。 选择“添加工作单位或学校用户”，在“用户帐户”下输入用户的 UPN，然后在“帐户类型”下选择“管理员”  
+Starting with the **Windows 10 1709** release, you can perform this task from **Settings -> Accounts -> Other users**. 选择“添加工作单位或学校用户”，在“用户帐户”下输入用户的 UPN，然后在“帐户类型”下选择“管理员”  
  
 此外，还可使用命令提示符添加用户：
 
@@ -93,4 +93,4 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要大致了解如何在 Azure 门户中管理设备，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)
-- 若要了解有关基于设备的条件性访问的详细信息，请参阅[配置 Azure Active Directory 基于设备的条件性访问策略](../conditional-access/require-managed-devices.md)。
+- To learn more about device-based Conditional Access, see [configure Azure Active Directory device-based Conditional Access policies](../conditional-access/require-managed-devices.md).

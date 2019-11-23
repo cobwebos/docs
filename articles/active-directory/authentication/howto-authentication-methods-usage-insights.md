@@ -1,101 +1,101 @@
 ---
-title: '& Insights 报告（预览版）的身份验证方法用法-Azure Active Directory'
-description: 报告 Azure AD 自助服务密码重置和多重身份验证方法使用情况
+title: Authentication methods usage & insights - Azure Active Directory
+description: Reporting on Azure AD self-service password reset and Multi-Factor Authentication authentication method usage
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0d6a87b5797ea5c8f4ac116d6df9e6a48204f1fd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255065"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381902"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>身份验证方法用法 & insights （预览版）
+# <a name="authentication-methods-usage--insights-preview"></a>Authentication methods usage & insights (preview)
 
-使用情况 & insights 使你能够了解 Azure 多重身份验证和自助服务密码重置等功能的身份验证方法在你的组织中的工作方式。 此报告功能为您的组织提供了一种了解哪些方法正在注册以及如何使用它们的方法。
+Usage & insights enables you to understand how authentication methods for features like Azure Multi-Factor Authentication and self-service password reset are working in your organization. This reporting capability provides your organization with the means to understand what methods are being registered and how they are being used.
 
-## <a name="permissions-and-licenses"></a>权限和许可证
+## <a name="permissions-and-licenses"></a>Permissions and licenses
 
-以下角色可以访问使用情况和见解：
+The following roles can access usage and insights:
 
 - 全局管理员角色
 - 安全读取者
 - 安全管理员
 - 报告读者
 
-访问使用情况和见解不需要额外的许可。 Azure 多重身份验证和自助密码重置（SSPR）许可信息可在[Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到。
+No additional licensing is required to access usage and insights. Azure Multi-Factor Authentication and self-service password reset (SSPR) licensing information can be found on the [Azure Active Directory pricing site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
-若要访问身份验证方法使用情况和见解：
+To access authentication method usage and insights:
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory**@no__t 的**密码重置** > **用法 & insights**。
-1. 从**注册**或**使用情况**概述中，你可以选择打开预先筛选的报表以根据你的需要进行筛选。
+1. Browse to **Azure Active Directory** > **Password reset** > **Usage & insights**.
+1. From the **Registration** or **Usage** overviews, you can choose to open the pre-filtered reports to filter based on your needs.
 
-![使用情况 & 见解概述](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Usage & insights overview](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-若要直接访问 insights &，请参阅[https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)。 此链接将显示注册概述。
+To access usage & insights directly, go to [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). This link will bring you to the registration overview.
 
-已注册的用户、启用的用户和支持用户的磁贴会显示用户的以下注册数据：
+The Users registered, Users enabled, and Users capable tiles show the following registration data for your users:
 
-- 注册如果用户（或管理员）已注册了足够的身份验证方法来满足组织的 SSPR 或多重身份验证策略，则会将该用户视为已注册用户。
-- 已启用:如果用户在 SSPR 策略范围内，则认为该用户处于启用状态。 如果为某个组启用了 SSPR，则如果用户在该组中，则认为该用户处于启用状态。 如果为所有用户启用了 SSPR，则租户中的所有用户（不包括来宾）都将被视为已启用。
-- 能够如果用户已注册并处于启用状态，则会将该用户视为能够使用。 此状态意味着它们可以在需要时随时执行 SSPR。
+- Registered: A user is considered registered if they (or an admin) have registered enough authentication methods to meet your organization's SSPR or Multi-Factor Authentication policy.
+- Enabled: A user is considered enabled if they are in scope for the SSPR policy. If SSPR is enabled for a group, then the user is considered enabled if they are in that group. If SSPR is enabled for all users, then all users in the tenant (excluding guests) are considered enabled.
+- Capable: A user is considered capable if they are both registered and enabled. This status means that they can perform SSPR at any time if needed.
 
-单击其中的任何磁贴或其中显示的见解会将你带到预筛选的注册详细信息列表。
+Clicking on any of these tiles or the insights shown in them will bring you to a pre-filtered list of registration details.
 
-"**注册**" 选项卡上的 **"注册" 图表显示**通过身份验证方法进行的身份验证方法注册失败和失败的次数。 "**使用情况**" 选项卡上的 "**重置**图表" 会显示通过身份验证方法进行密码重置流时的身份验证成功和失败的次数。
+The **Registrations** chart on the **Registration** tab shows the number of successful and failed authentication method registrations by authentication method. The **Resets** chart on the **Usage** tab shows the number of successful and failed authentications during the password reset flow by authentication method.
 
-单击其中一个图表将显示注册或重置事件的预筛选列表。
+Clicking on either of the charts will bring you to a pre-filtered list of registration or reset events.
 
-使用右上角的控件，可以更改注册中显示的审核数据的日期范围，并将图表重置为24小时、7天或30天。
+Using the control in the upper, right-hand corner, you can change the date range for the audit data shown in the Registrations and Resets charts to 24 hours, 7 days, or 30 days.
 
-### <a name="registration-details"></a>注册详细信息
+### <a name="registration-details"></a>Registration details
 
-单击注册的**用户**、**启用**的用户或**支持**的磁贴或见解的用户将会获得注册详细信息。
+Clicking on the **Users registered**, **Users enabled**, or **Users capable** tiles or insights will bring you to the registration details.
 
-"注册详细信息" 报表显示每个用户的以下信息：
-
-- 名称
-- 用户名
-- 注册状态（所有、已注册、未注册）
-- 启用状态（"全部"、"已启用"、"未启用"）
-- 支持的状态（全部、功能、不支持）
-- 方法（应用通知、应用代码、电话呼叫、短信、电子邮件、安全问题）
-
-使用列表顶部的控件，可以搜索用户并根据显示的列筛选用户列表。
-
-### <a name="reset-details"></a>重置详细信息
-
-单击注册或重置图表会显示重置详细信息。
-
-"重置详细信息" 报告显示过去30天内的注册和重置事件，其中包括：
+The registration details report shows the following information for each user:
 
 - 名称
 - 用户名
-- 功能（全部、注册、重置）
-- 身份验证方法（应用通知、应用代码、电话呼叫、办公室电话、短信、电子邮件、安全问题）
-- 状态（全部、成功、失败）
+- Registration status (All, Registered, Not registered)
+- Enabled status (All, Enabled, Not enabled)
+- Capable status (All, Capable, Not capable)
+- Methods (App notification, App code, Phone call, SMS, Email, Security questions)
 
-使用列表顶部的控件，可以搜索用户并根据显示的列筛选用户列表。
+Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
+
+### <a name="reset-details"></a>Reset details
+
+Clicking on the Registrations or Resets charts will bring you to the reset details.
+
+The reset details report shows registration and reset events from the last 30 days including:
+
+- 名称
+- 用户名
+- Feature (All, Registration, Reset)
+- Authentication method (App notification, App code, Phone call, Office call, SMS, Email, Security questions)
+- Status (All, Success, Failure)
+
+Using the controls at the top of the list, you can search for a user and filter the list of users based on the columns shown.
 
 ## <a name="limitations"></a>限制
 
-这些报告中显示的数据将延迟达60分钟。 "上次刷新时间" 字段存在于 Azure 门户中，用于识别最近的数据的方式。
+The data shown in these reports will be delayed by up to 60 minutes. A “Last refreshed" field exists in the Azure portal to identify how recent your data is.
 
-使用情况和见解数据并不能替代 Azure 多重身份验证活动报告或 Azure AD 登录报告中包含的信息。
+Usage and insights data is not a replacement for the Azure Multi-Factor Authentication activity reports or information contained in the Azure AD sign-ins report.
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用身份验证方法使用情况报表 API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [为你的组织选择身份验证方法](concept-authentication-methods.md)
-- [组合注册体验](concept-registration-mfa-sspr-combined.md)
+- [Working with the authentication methods usage report API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Choosing authentication methods for your organization](concept-authentication-methods.md)
+- [Combined registration experience](concept-registration-mfa-sspr-combined.md)

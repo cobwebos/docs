@@ -1,95 +1,91 @@
 ---
-title: Azure 区块链标记模板
-description: Azure 区块链标记模板是标准化且可重复使用的模板，可简化基于分类帐的令牌的创建和部署。
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Tokens templates
+description: Azure Blockchain Tokens templates are standardized and reusable templates that simplify the creation and deployment of ledger-based tokens.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 5b8fc2bd4d2cedadb4c50f7ec11def8bea7b37c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577282"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324987"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Azure 区块链标记模板
+# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Tokens templates
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure 区块链标记模板是一种标准化且可重复使用的模板，可简化基于分类帐的令牌的创建和部署。 模板包含一个公式，该公式基于[标记分类框架（.ttf）](overview.md#token-taxonomy-framework)语法。 该语法包含标记的基本标记类型和行为集。  
+An Azure Blockchain Tokens template is a standardized and reusable template that simplifies the creation and deployment of ledger-based tokens. A template consists of a formula, which is based off the [Token Taxonomy Framework (TTF)](overview.md#token-taxonomy-framework) grammar. The grammar encompasses the base token type and the set of behaviors for the token.  
 
-例如， **τϜ {d，m，b，r}** 标记模板介绍了 dividable、mintable、burnable 和具有角色支持的替代基本令牌。
+For example, **τϜ{d,m,b,r}** token template describes a fungible base token that is sub-dividable, mintable, burnable, and has role support.
   
-## <a name="base-token-types"></a>基本令牌类型
+## <a name="base-token-types"></a>Base token types
 
-为特定资产定义和创建基于分类帐的令牌时，必须考虑要使用的基本令牌。
+When defining and creating the ledger-based token for your particular asset, it is important to consider what base token to use.
 
-### <a name="fungible"></a>替代
+### <a name="fungible"></a>Fungible
 
-替代令牌（τF）的值彼此相同，只要它们在相同的类或序列中即可。 一个令牌的值与另一个令牌的值相同，或者给定的令牌数量与另一个相等数量的值相同。 例如，美元是替代标记。 如果两个人都持有美元帐单，则他们可以在不产生后果的情况下交换这些美元帐单。 美元计费的值相同。 
+Fungible tokens (𝜏F) have interchangeable value with each other as long as they are in the same class or series. One token has the same value as another token or a given quantity of tokens has the same value as another equal quantity. For example, a dollar is a fungible token. If two people are each holding a dollar bill, they can exchange these dollar bills without consequence. The dollar bills have equal value. 
 
-### <a name="non-fungible"></a>非替代
+### <a name="non-fungible"></a>Non-Fungible
 
-非替代的令牌（τN）无法与通常具有不同值的其他类型的令牌互换。 例如，属性标题为非替代的标记。 单元中的两个不同单元的属性标题不一定是相等的值，这是因为单位的位置或该单元所在的楼层。 两个属性标题标记的感知值不相等。
+Non-fungible tokens (𝜏N) are not interchangeable with other tokens of the same type as they typically have different values. For example, a property title is a non-fungible token. Property titles to two different apartments in an apartment complex are not necessarily of equal value, due to either the location of the unit or which floor the unit is on. The perceived value of the two property title tokens are not equal.
 
 ### <a name="hybrid"></a>混合
 
-混合令牌是具有替代令牌和非替代令牌的组件的令牌。 混合标记是拥有另一标记类型的类的基标记类型。
+Hybrid tokens are tokens that have components of both fungible tokens and non-fungible tokens. A hybrid token is a base token type that owns a class of the other token type.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>具有替代段的混合非替代基础
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybrid non-fungible base with fungible segments
 
-具有替代段标记的混合非替代基础具有带替代标记段的非替代基。
-例如，音乐会票证是混合令牌，其中，音乐会的日期和时间是非替代的基本令牌。 给定音乐会的不同座位部分中的票证为带有替代令牌的段。 这些票证在单独的 "可交换" 部分中，而不是在各部分中。
+A hybrid non-fungible base with fungible segments token has a non-fungible base with fungible token segments.
+For example, a concert ticket is a hybrid token where the date and time of the concert is the non-fungible base token. The tickets in various seating sections for the given concert are the segments with fungible tokens. The tickets are exchangeable in their individual seating sections, but not across sections.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>混合替代基和非替代段
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybrid fungible base with non-fungible segments
 
-具有非替代段标记的混合替代基具有具有非替代标记段的替代基。 例如，抵押支持的安全是一种混合令牌，其中多个所有者是在多个所有者间拆分的替代库。 安全性是可互换的。 单个抵押品是代表特定的抵押支持安全的非替代段。
+A hybrid fungible base with a non-fungible segments token has a fungible base with non-fungible token segments. For example, a mortgage backed security is a hybrid token where multiple owners are the fungible base that is split across many owners. The security is interchangeable. The individual mortgages are the non-fungible segments that represent the specific mortgage backed security.
 
-## <a name="token-behaviors"></a>令牌行为
+## <a name="token-behaviors"></a>Token behaviors
 
-令牌行为定义令牌的功能或限制。 此行为包括作为标记定义一部分的支持属性。 行为可以应用于所有标记类型或仅应用于一个标记类型。 行为可以是内部的，也可以是外部的，具体取决于行为影响。 内部行为允许或限制标记本身的属性。 外部行为允许或限制外部执行组件的行为调用。
+A token behavior defines capabilities or restrictions of the token. The behavior includes supporting properties that are a part of the token definition. Behaviors can be applied across all token types or just one. Behaviors can be internal or external depending on what the behavior effects. An internal behavior enables or restricts properties on the token itself. An external behavior enables or restricts the invocation of the behavior from an external actor.
 
-有关 Azure 区块链令牌支持的令牌分类框架（.TTF）令牌行为的详细信息，请参阅[令牌可组合性](composability.md)。
+For more information about Azure Blockchain Tokens supported Token Taxonomy Framework (TTF) token behaviors, see [token composability](composability.md).
 
-## <a name="pre-built-token-templates"></a>预建标记模板
+## <a name="pre-built-token-templates"></a>Pre-built token templates
 
-Azure 区块链令牌提供四个预建的令牌模板，无需修改即可使用。 对于大多数用例，你可以调入这些预先生成的模板，以便快速开始创建、部署和管理令牌。
+Azure Blockchain Tokens provides four pre-built token templates that can be used without modification. You can call into these pre-built templates for most use cases to get started creating, deploying, and managing your tokens quickly.
 
-### <a name="commodity-tokens"></a>商品令牌
+### <a name="commodity-tokens"></a>Commodity tokens
 
-商品令牌的值一致，并且可转移。 例如，一条油脂或能源单位。
+Commodity tokens have consistent value and are transferrable. For example, a barrel of oil or a unit of energy.
 
-**τF {~ d，t，m，b，r}** -替代，整组，可转让，mintable，burnable，并具有角色支持
+**𝜏F{~d,t,m,b,r}** - fungible, whole, transferable, mintable, burnable, and have role support
 
-许多区块链方案需要在供应链或多个组织中具有透明度和可见性。 商品令牌基于这些常见的用例。 标记是可互换的并且一致。 商品令牌模板非常灵活，可自定义元数据。
+Many blockchain scenarios require transparency and visibility across the supply chain or multiple organizations. Commodity tokens are based off these common use cases. The tokens are interchangeable and consistent. The commodity token template is flexible and customizable with metadata.
 
-### <a name="qualified-tokens"></a>限定标记
+### <a name="qualified-tokens"></a>Qualified tokens
 
-限定标记表示获得的内容，通常与一个实体相关联，并且无法传输。 例如，文凭或停车冲突。
+Qualified tokens represent something earned and are usually associated with one entity and cannot be transferred. For example, a diploma or a parking violation.
 
-**τN {s，~ t}** -非替代，单独且不可转让
+**𝜏N{s,~t}** - non-fungible, singleton, and non-transferable
 
-各种审核和证明方案都要求令牌的所有权不能更改。 有一组用例，这些用例需要提供限定的标记，而不管关联是良好还是糟糕。
+Various audit and attestation scenarios require that the ownership of the token cannot be changed. There is a set of use cases, which have a need to provide a qualified token whether the association is good or bad.
 
-### <a name="asset-tokens"></a>资产标记
+### <a name="asset-tokens"></a>Asset tokens
 
-资产令牌的唯一值依赖于项，而不是 commoditized。 例如，博物馆项目或属性标题。
+Asset tokens have unique value dependent on the item and are not commoditized. For example, a museum artifact or a property title.
 
-**τN {s，t}** -非替代，单独，并可转换
+**𝜏N{s,t}** - non-fungible, singleton, and transferable
 
-资产令牌可能会与商品令牌混淆。 这两个标记之间的主要区别在于资产令牌本质上是唯一的，值与令牌类型无关。 例如，由已建立的艺术家这样的一种艺术型美术就是资产标记。 不过，蒙娜丽莎郭的图片打印被视为商品令牌。 同样，属性标题是资产标记，因为该值存在于属性的主观特性中。
+Asset tokens may be confused with commodity tokens. The major difference between the two tokens is that asset tokens are inherently unique, and value is independent of the type of token it is. For example, a piece of art like an oil painting by an established artist is an asset token. However, an art print of the Mona Lisa is considered a commodity token. Similarly, a property title is an asset token since the value exists in the subjective qualities of the property.
 
-### <a name="ticket-tokens"></a>票证令牌
+### <a name="ticket-tokens"></a>Ticket tokens
 
-票证令牌的值一致，但通常会过期。 例如，飞机票据。
+Ticket tokens have consistent value but typically expire. For example, a plane ticket.
 
-**τN {m，b，r}** -非替代，mintable，burnable，并具有角色支持。
+**𝜏N{m,b,r}** - non-fungible, mintable, burnable, and have role support.
 
-通常，票证令牌的到期日期使它们不同于常规商品令牌。 例如，飞机票据、音乐会票据或体育票据都具有使用特定日期的 "已分配" 座位选项。 不能轻松交换日期或座位表之间的票证。
+Ticket tokens typically have an expiry date that makes them different from a regular commodity token. For example, an airplane ticket, concert ticket, or sports ticket all have options of assigned seating with specific dates of use. You cannot easily interchange tickets between dates or seating areas.
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要更灵活地进行方案，请参阅使用[令牌可组合性](composability.md)创建自己的令牌模板。
+If you require more flexibility for your scenario, learn about creating your own token templates using [token composability](composability.md).

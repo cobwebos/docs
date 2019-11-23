@@ -1,83 +1,83 @@
 ---
-title: FAQ-适用于 Windows Vm 的 Azure 磁盘加密
-description: 本文提供了有关 Microsoft Azure Windows IaaS Vm 的磁盘加密的常见问题的解答。
+title: FAQ - Azure Disk Encryption for Windows VMs
+description: This article provides answers to frequently asked questions about Microsoft Azure Disk Encryption for Windows IaaS VMs.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98ab9ea67ceb1d965e248c93d27cb801ab8c7483
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033326"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384266"
 ---
-# <a name="azure-disk-encryption-for-windows-vms-faq"></a>适用于 Windows Vm 的 Azure 磁盘加密常见问题解答
+# <a name="azure-disk-encryption-for-windows-vms-faq"></a>Azure Disk Encryption for Windows VMs FAQ
 
-本文提供有关适用于 Windows Vm 的 Azure 磁盘加密的常见问题解答（FAQ）的解答。 有关此服务的详细信息，请参阅[Azure 磁盘加密概述](disk-encryption-overview.md)。
+This article provides answers to frequently asked questions (FAQ) about Azure Disk Encryption for Windows VMs. For more information about this service, see [Azure Disk Encryption overview](disk-encryption-overview.md).
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>哪里有正式发布版 (GA) 的 Azure 磁盘加密？
 
-Azure 磁盘加密已在所有 Azure 公共区域公开上市。
+Azure Disk Encryption is in general availability in all Azure public regions.
 
 ## <a name="what-user-experiences-are-available-with-azure-disk-encryption"></a>Azure 磁盘加密提供哪些用户体验？
 
-Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell 和 Azure CLI。 不同的用户体验提供了灵活性。 为 Vm 启用磁盘加密有三个不同的选项。 有关 Azure 磁盘加密中提供的用户体验和循序渐进指南的详细信息，请参阅适用于[Windows 的 Azure 磁盘加密方案](disk-encryption-windows.md)。
+Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell 和 Azure CLI。 不同的用户体验提供了灵活性。 You have three different options for enabling disk encryption for your VMs. For more information on the user experience and step-by-step guidance available in Azure Disk Encryption, see [Azure Disk Encryption scenarios for Windows](disk-encryption-windows.md).
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Azure 磁盘加密如何收费？
 
-使用 Azure 磁盘加密来加密 VM 磁盘不收取任何费用，但使用 Azure Key Vault 会产生费用。 有关 Azure Key Vault 成本的详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)页面。
+There's no charge for encrypting VM disks with Azure Disk Encryption, but there are charges associated with the use of Azure Key Vault. 有关 Azure Key Vault 成本的详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)页面。
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>如何开始使用 Azure 磁盘加密？
 
 若要开始，请参阅 [Azure 磁盘加密概述](disk-encryption-overview.md)。
 
-## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>什么 VM 大小和操作系统支持 Azure 磁盘加密？
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>What VM sizes and operating systems support Azure Disk Encryption?
 
-[Azure 磁盘加密概述](disk-encryption-overview.md)一文列出了支持 Azure 磁盘加密的[Vm 大小](disk-encryption-overview.md#supported-vm-sizes)和[vm 操作系统](disk-encryption-overview.md#supported-operating-systems)。
+The [Azure Disk Encryption overview](disk-encryption-overview.md) article lists the [VM sizes](disk-encryption-overview.md#supported-vm-sizes) and [VM operating systems](disk-encryption-overview.md#supported-operating-systems) that support Azure Disk Encryption.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
-可以加密启动卷和数据卷，但不能在不首先加密 OS 卷的情况下加密数据。
+You can encrypt both boot and data volumes, but you can't encrypt the data without first encrypting the OS volume.
 
-加密 OS 卷后，不支持在 OS 卷上禁用加密。
+After you've encrypted the OS volume, disabling encryption on the OS volume isn't supported.
 
-## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密未装入的卷？
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Can I encrypt an unmounted volume with Azure Disk Encryption?
 
-不，Azure 磁盘加密仅加密已装入的卷。
+No, Azure Disk Encryption only encrypts mounted volumes.
 
-## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>如何实现轮换机密或加密密钥吗？
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>How do I rotate secrets or encryption keys?
 
-若要轮换机密，只需调用你最初使用的相同命令启用磁盘加密，并指定不同的 Key Vault。 若要轮换密钥加密密钥，请调用与最初用于启用磁盘加密相同的命令，指定新的密钥加密。 
+To rotate secrets, just call the same command you used originally to enable disk encryption, specifying a different Key Vault. To rotate the key encryption key, call the same command you used originally to enable disk encryption, specifying the new key encryption. 
 
 >[!WARNING]
-> - 如果以前通过指定 Azure AD 凭据加密此 VM，将[Azure 磁盘加密用于 Azure AD 应用程序](disk-encryption-windows-aad.md)，则必须继续使用此选项来加密 vm。 无法在此加密的 VM 上使用 Azure 磁盘加密，因为这不是受支持的方案，但目前不支持切换到此加密 VM 的 AAD 应用程序。
+> - If you have previously used [Azure Disk Encryption with Azure AD app](disk-encryption-windows-aad.md) by specifying Azure AD credentials to encrypt this VM, you will have to continue use this option to encrypt your VM. You can’t use Azure Disk Encryption on this encrypted VM as this isn’t a supported scenario, meaning switching away from AAD application for this encrypted VM isn’t supported yet.
 
-## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如果我最初不使用密钥加密密钥，如何实现添加或删除密钥加密密钥？
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>How do I add or remove a key encryption key if I didn't originally use one?
 
-若要添加密钥加密密钥，请再次调用 enable 命令，同时传递密钥加密密钥参数。 若要删除密钥加密密钥，请在不使用密钥加密密钥参数的情况下再次调用 enable 命令。
+To add a key encryption key, call the enable command again passing the key encryption key parameter. To remove a key encryption key, call the enable command again without the key encryption key parameter.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure 磁盘加密是否支持自带秘钥 (BYOK)？
 
-是的，可以提供自己的密钥加密密钥。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥支持方案的详细信息，请参阅[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。
+是的，可以提供自己的密钥加密密钥。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 For more information on the key encryption keys support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).
 
 ## <a name="can-i-use-an-azure-created-key-encryption-key"></a>是否可以使用 Azure 创建的密钥加密密钥？
 
-是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。
+是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 For more information on the key encryption key, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).
 
 ## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>是否可以使用本地密钥管理服务或 HSM 来保护加密密钥？
 
-无法使用本地密钥管理服务或 HSM 来配合 Azure 磁盘加密保护加密密钥。 只能使用 Azure Key Vault 服务来保护加密密钥。 有关密钥加密密钥支持方案的详细信息，请参阅[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。
+无法使用本地密钥管理服务或 HSM 来配合 Azure 磁盘加密保护加密密钥。 只能使用 Azure Key Vault 服务来保护加密密钥。 For more information on the key encryption key support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>配置 Azure 磁盘加密的先决条件是什么？
 
-Azure 磁盘加密具有先决条件。 请参阅[创建和配置 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)一文，以创建新的密钥保管库，或设置现有密钥保管库以进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。
+Azure 磁盘加密具有先决条件。 See the [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md) article to create a new key vault, or set up an existing key vault for disk encryption access to enable encryption, and safeguard secrets and keys. For more information on the key encryption key support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用（早期版本）配置 Azure 磁盘加密的先决条件是什么？
 
-Azure 磁盘加密具有先决条件。 请参阅[包含 Azure AD 内容的 Azure 磁盘加密](disk-encryption-windows-aad.md)，以创建 Azure Active Directory 应用程序、创建新的密钥保管库，或设置现有密钥保管库以进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅[使用 Azure AD 为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault-aad.md)。
+Azure 磁盘加密具有先决条件。 See the [Azure Disk Encryption with Azure AD](disk-encryption-windows-aad.md) content to create an Azure Active Directory application, create a new key vault, or set up an existing key vault for disk encryption access to enable encryption, and safeguard secrets and keys. For more information on the key encryption key support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption with Azure AD](disk-encryption-key-vault-aad.md).
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍然支持使用 Azure AD 应用（早期版本）进行 Azure 磁盘加密？
 可以。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
@@ -91,21 +91,31 @@ Azure 磁盘加密具有先决条件。 请参阅[包含 Azure AD 内容的 Azur
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>磁盘“Bek 卷”或“/mnt/azure_bek_disk”是什么？
 
-"Bek 卷" 是一种本地数据卷，可安全地存储加密 Azure Vm 的加密密钥。
+The "Bek volume" is a local data volume that securely stores the encryption keys for Encrypted Azure VMs.
 
 > [!NOTE]
 > 请勿删除或编辑此磁盘中的任何内容。 请勿卸载磁盘，因为 IaaS VM 上的任何加密操作都需要有加密密钥才能执行。
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁盘加密使用何种加密方法？
 
-Azure 磁盘加密使用 Windows Server 2012 之前版本的 BitLocker AES256 加密方法（AES256WithDiffuser）。 
+Azure Disk Encryption selects the encryption method in BitLocker based on the version of Windows as follows:
+
+| Windows Versions                 | 版本 | Encryption Method        |
+|----------------------------------|--------|--------------------------|
+| Windows Server 2012, Windows 10, or greater  | >=1511 |XTS-AES 256 bit           |
+| Windows Server 2012, Windows 8, 8.1, 10 | < 1511 |AES 256 bit *              |
+| Windows Server 2008R2            |        |AES 256 bit with Diffuser |
+
+\* AES 256 bit with Diffuser isn't supported in Windows 2012 and later.
+
+To determine Windows OS version, run the 'winver' tool in your virtual machine.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll 并指定了所有卷类型，它是否会擦除我们已加密的数据驱动器上的数据？
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 
 
-## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>是否可以备份和还原已加密的 VM？ 
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Can I backup and restore an encrypted VM? 
 
-Azure 备份提供了一种机制，用于在同一订阅和区域中备份和还原加密的 VM。  有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](../../backup/backup-azure-vms-encryption.md)。  当前不支持将加密的 VM 还原到其他区域。  
+Azure Backup provides a mechanism to backup and restore encrypted VM's within the same subscription and region.  For instructions, please see [Back up and restore encrypted virtual machines with Azure Backup](../../backup/backup-azure-vms-encryption.md).  Restoring an encrypted VM to a different region is not currently supported.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>可以在何处提问或提供反馈？
 

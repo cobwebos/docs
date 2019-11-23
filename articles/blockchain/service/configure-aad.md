@@ -1,90 +1,84 @@
 ---
-title: 如何配置 Azure Active Directory 访问权限
-description: 如何使用 Azure Active Directory 访问配置 Azure 区块链服务
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: seal
+title: Configure Azure Active Directory access - Azure Blockchain Service
+description: How to configure Azure Blockchain Service with Azure Active Directory access
 ms.date: 05/02/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 616e342f1d52179c40c225c5dafc9de13ce85e06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: janders
+ms.openlocfilehash: 6f1271f9bbf89a5e1a6fdfffc00ca856aff94c91
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028210"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326295"
 ---
-# <a name="how-to-configure-azure-active-directory-access"></a>如何配置 Azure Active Directory 访问权限
+# <a name="how-to-configure-azure-active-directory-access"></a>How to configure Azure Active Directory access
 
-在本文中，您将学习如何授予访问权限，并连接到 Azure 区块链服务节点上使用 Azure Active Directory (Azure AD) 用户、 组或应用程序 Id。
+In this article, you learn how to grant access and connect to Azure Blockchain Service nodes using Azure Active Directory (Azure AD) user, group, or application IDs.
 
-Azure AD 提供基于云的标识管理，并允许您在整个企业和访问应用程序在 Azure 中使用单个标识。 Azure 区块链服务与 Azure AD 集成，并提供了好处，如 ID 联合身份验证、 单一登录和多因素身份验证。
+Azure AD provides cloud-based identity management and allows you to use a single identity across an entire enterprise and access applications in Azure. Azure Blockchain Service is integrated with Azure AD and offers benefits such as ID federation, single sign-on and multi-factor authentication.
 
 ## <a name="prerequisites"></a>必备组件
 
-* [创建使用 Azure 门户的区块链成员](create-member.md)
+* [Create a blockchain member using the Azure portal](create-member.md)
 
 ## <a name="grant-access"></a>授予访问权限
 
-您可以授予成员级别和节点级别的访问权限。 授予成员级别的访问权限又将授予成员下的所有节点访问权限。
+You can grant access at both the member level and the node level. Granting access rights at the member level will in turn grant access to all nodes under the member.
 
-### <a name="grant-member-level-access"></a>授予成员级别的访问权限
+### <a name="grant-member-level-access"></a>Grant member level access
 
-若要授予成员级别的访问权限。
+To grant access permission at the member level.
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到**访问控制 (IAM) > 添加 > 添加角色分配**。
-1. 选择**区块链成员节点访问 （预览）** 角色并添加你想要授予访问权限的 Azure AD ID 对象。 Azure AD ID 对象可以是：
+1. Navigate to **Access control (IAM) > Add > Add role assignment**.
+1. Select the **Blockchain Member Node Access (Preview)** role and add the Azure AD ID object you wish to grant access to. Azure AD ID object can be:
 
-    | Azure AD 对象 | 示例 |
+    | Azure AD object | 示例 |
     |-----------------|---------|
-    | Azure AD 用户   | `frank@contoso.onmicrosoft.com` |
-    | Azure AD 组  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD user   | `frank@contoso.onmicrosoft.com` |
+    | Azure AD group  | `sales@contoso.onmicrosoft.com` |
     | 应用程序 ID  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
     ![添加角色分配](./media/configure-aad/add-role-assignment.png)
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
-### <a name="grant-node-level-access"></a>授予节点级别的访问权限
+### <a name="grant-node-level-access"></a>Grant node level access
 
-1. 可以通过导航到节点安全性授予节点级别的访问权限，并单击你想要授予访问权限的节点名称。
-1. 选择区块链成员节点访问 （预览） 角色并添加你想要授予访问权限的 Azure AD ID 对象。 
+1. You can grant access at the node level by navigating to node security and click on the node name that you wish to grant access.
+1. Select the Blockchain Member Node Access (Preview) role and add the Azure AD ID object you wish to grant access to. 
 
-## <a name="connect-using-azure-blockchain-connector"></a>使用 Azure 区块链连接器进行连接
+## <a name="connect-using-azure-blockchain-connector"></a>Connect using Azure Blockchain Connector
 
-下载或克隆[从 GitHub 的 Azure 区块链连接器](https://github.com/Microsoft/azure-blockchain-connector/)。
+Download or clone the [Azure Blockchain Connector from GitHub](https://github.com/Microsoft/azure-blockchain-connector/).
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-本快速入门主题中，请按照**自述文件**若要生成的源代码从连接器。
+The follow the quickstart section in the **readme** to build the connector from the source code.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 用户帐户进行连接
+### <a name="connect-using-an-azure-ad-user-account"></a>Connect using an Azure AD user account
 
-1. 运行以下命令以使用 Azure AD 用户帐户进行身份验证。 替换\<myAADDirectory\>与 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
+1. Run the following command to authenticate using an Azure AD user account. Replace \<myAADDirectory\> with an Azure AD domain. 例如，`yourdomain.onmicrosoft.com` 。
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD 会提示你输入凭据。
-1. 使用你的用户名和密码登录。
-1. 成功进行身份验证，您的本地代理服务器连接到你区块链的节点。 现在可以将附加 Geth 客户端与本地终结点。
+1. Azure AD prompts for credentials.
+1. Sign in with your user name and password.
+1. Upon successful authentication, your local proxy connects to your blockchain node. You can now attach your Geth client with the local endpoint.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>使用应用程序 ID 进行连接
+### <a name="connect-using-an-application-id"></a>Connect using an application ID
 
-许多应用程序而不 Azure AD 用户帐户使用应用程序 ID 与 Azure AD 进行身份验证。
+Many applications authenticate with Azure AD using an application ID instead of an Azure AD user account.
 
-若要连接到你使用应用程序 ID 的节点，替换**aadauthcode**与**aadclient**。
+To connect to your node using an application ID, replace **aadauthcode** with **aadclient**.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -92,17 +86,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | 参数 | 描述 |
 |-----------|-------------|
-| tenant-id | Azure AD 域，例如， `yourdomain.onmicrosoft.com`
-| client-id | Azure AD 中注册的应用程序的客户端 ID
-| client-secret | Azure AD 中注册的应用程序的客户端机密
+| tenant-id | Azure AD domain, For example, `yourdomain.onmicrosoft.com`
+| client-id | Client ID of the registered application in Azure AD
+| client-secret | Client secret of the registered application in Azure AD
 
-有关如何在 Azure AD 中注册应用程序的详细信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)
+For more information on how to register an application in Azure AD, see [How to: Use the portal to create an Azure AD application and service principal that can access resources](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>将移动设备或文本浏览器连接
+### <a name="connect-a-mobile-device-or-text-browser"></a>Connect a mobile device or text browser
 
-对于移动设备或 Azure AD 身份验证弹出窗口中显示不能基于文本的浏览器中，Azure AD 将生成一次性密码。 可以复制密码，并继续进行在另一个环境中的 Azure AD 身份验证。
+For a mobile device or text-based browser where the Azure AD authentication pop-up display is not possible, Azure AD generates a one-time passcode. You can copy the passcode and proceed with Azure AD authentication in another environment.
 
-若要生成代码的更多信息，请替换**aadauthcode**与**aaddevice**。 替换\<myAADDirectory\>与 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
+To generate the passcode, replace **aadauthcode** with **aaddevice**. Replace \<myAADDirectory\> with an Azure AD domain. 例如，`yourdomain.onmicrosoft.com` 。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -110,7 +104,7 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 区块链服务中的数据安全性的详细信息，请参阅：
+For more information about data security in Azure Blockchain Service, see:
 
 > [!div class="nextstepaction"]
-> [Azure 区块链服务安全性](data-security.md)
+> [Azure Blockchain Service security](data-security.md)

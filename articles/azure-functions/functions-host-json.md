@@ -3,17 +3,17 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 03abacf6bb18a4d3b6e9b01328806d2dcb6971e1
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
-ms.translationtype: HT
+ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304798"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323081"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
-> [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
-> * [第 1 版](functions-host-json-v1.md)
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
 *host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v2 运行时的设置。  
@@ -111,13 +111,13 @@ ms.locfileid: "74304798"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。| 
-|EnableLiveMetrics |是|启用实时指标收集。|
-|EnableDependencyTracking|是|启用依赖项跟踪。|
-|EnablePerformanceCountersCollection|是|启用 Kudu 性能计数器集合。|
+|EnableLiveMetrics |是|Enables live metrics collection.|
+|EnableDependencyTracking|是|Enables dependency tracking.|
+|EnablePerformanceCountersCollection|是|Enables Kudu performance counters collection.|
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -137,7 +137,7 @@ ms.locfileid: "74304798"
 
 ## <a name="extensionbundle"></a>extensionBundle 
 
-扩展捆绑允许向函数应用添加一组兼容的函数绑定扩展。 若要了解详细信息，请参阅[用于本地开发的扩展捆绑](functions-bindings-register.md#extension-bundles)。
+Extension bundles lets you add a compatible set of Functions binding extensions to your function app. To learn more, see [Extension bundles for local development](functions-bindings-register.md#extension-bundles).
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
@@ -153,8 +153,11 @@ ms.locfileid: "74304798"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
-在专用（应用服务）计划中，没有总限制，默认值为30分钟。 值 `-1` 指示未绑定的执行，但建议保留固定的上限。
+指示所有函数的超时持续时间。 It follows the timespan string format. 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+
+In the Premium plan the valid range is from 1 second to 60 minutes, and the default value is 30 minutes.
+
+In a Dedicated (App Service) plan, there is no overall limit, and the default value is 30 minutes. A value of `-1` indicates unbounded execution, but keeping a fixed upper bound is recommended.
 
 ```json
 {
@@ -178,7 +181,7 @@ ms.locfileid: "74304798"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |已启用|是|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -210,7 +213,7 @@ ms.locfileid: "74304798"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -233,13 +236,13 @@ ms.locfileid: "74304798"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
 ## <a name="manageddependency"></a>managedDependency
 
-托管依赖项是目前仅支持基于 PowerShell 的函数的一项功能。 它允许服务自动管理依赖项。 `enabled` 属性设置为 `true`时，将处理 `requirements.psd1` 文件。 发布任何次要版本时，会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
+Managed dependency is a feature that is currently only supported with PowerShell based functions. It enables dependencies to be automatically managed by the service. When the `enabled` property is set to `true`, the `requirements.psd1` file is processed. Dependencies are updated when any minor versions are released. For more information, see [Managed dependency](functions-reference-powershell.md#dependency-management) in the PowerShell article.
 
 ```json
 {
@@ -277,7 +280,7 @@ ms.locfileid: "74304798"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

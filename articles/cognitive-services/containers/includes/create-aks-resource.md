@@ -1,51 +1,51 @@
 ---
-title: 创建 Azure Kubernetes Service 群集资源
+title: Create an Azure Kubernetes Service cluster resource
 titleSuffix: Azure Cognitive Services
-description: 了解如何创建 Azure Kubernetes 服务 (AKS) 资源。
+description: Learn how to create an Azure Kubernetes Service (AKS) resource.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/3/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4e3102912e88ef904fed3e680f8cdd23242b1f17
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377433"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383407"
 ---
-## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>创建 Azure Kubernetes Service 群集资源
+## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Create an Azure Kubernetes Service cluster resource
 
-1. 请参阅[Azure Kubernetes 服务](https://ms.portal.azure.com/#create/microsoft.aks), 并选择 "**创建**"。
+1. Go to [Azure Kubernetes Service](https://ms.portal.azure.com/#create/microsoft.aks), and select **Create**.
 
-1. 在 "**基本**信息" 选项卡上, 输入以下信息:
+1. On the **Basics** tab, enter the following information:
 
-    |设置|ReplTest1|
+    |设置|Value|
     |--|--|
-    |订阅|选择相应的订阅。|
-    |资源组|选择可用的资源组。|
-    |Kubernetes 群集名称|输入名称 (小写)。|
-    |地区|选择附近的位置。|
-    |Kubernetes 版本|1.12.8 (默认值)。|
-    |DNS 名称前缀|自动创建, 但你可以重写。|
-    |节点大小|标准 DS2 v2：<br>`2 vCPUs`， `7 GB`|
-    |节点计数|将滑块保持为默认值。|
+    |Subscription|选择相应的订阅。|
+    |Resource group|Select an available resource group.|
+    |Kubernetes cluster name|Enter a name (lowercase).|
+    |地区|Select a nearby location.|
+    |Kubernetes version|Whatever value is marked as **(default)** .|
+    |DNS name prefix|Created automatically, but you can override.|
+    |Node size|Standard DS2 v2:<br>`2 vCPUs`，`7 GB`|
+    |Node count|Leave the slider at the default value.|
 
-1. 在 "**缩放**" 选项卡上, 将**虚拟节点**和**虚拟机规模集 (预览)** 设置为默认值。
-1. 在 "**身份验证**" 选项卡上, 将 "**服务主体**" 和 "**启用 RBAC** " 设置为默认值。
-1. 在“网络”选项卡上，输入以下选择： 
+1. On the **Scale** tab, leave **Virtual nodes** and **VM scale sets** set to their default values.
+1. On the **Authentication** tab, leave **Service principal** and **Enable RBAC** set to their default values.
+1. On the **Networking** tab, enter the following selections:
 
-    |设置|ReplTest1|
+    |设置|Value|
     |--|--|
-    |HTTP 应用程序路由|否|
+    |HTTP 应用程序路由|No|
     |网络配置|基本|
 
-1. 在 "**监视**" 选项卡上, 确保 "**启用容器监视**" 设置为 **"是"** , 并将**Log Analytics 工作区**保留为默认值。
-1. 在“标记”选项卡上，暂时让名称/值对保留空白  。
-1. 选择 "**检查和创建**"。
-1. 验证通过后, 选择 "**创建**"。
+1. On the **Monitoring** tab, make sure that **Enable container monitoring** is set to **Yes**, and leave **Log Analytics workspace** as the default value.
+1. On the **Tags** tab, leave the name/value pairs blank for now.
+1. Select **Review and Create**.
+1. After validation passes, select **Create**.
 
 > [!NOTE]
-> 如果验证失败, 则可能是由于 "服务主体" 错误导致的。 返回到 "**身份验证**" 选项卡, 然后返回以**查看 + 创建**, 验证应在此运行, 然后通过。
+> If validation fails, it might be because of a "Service principal" error. Go back to the **Authentication** tab and then go back to **Review + create**, where validation should run and then pass.

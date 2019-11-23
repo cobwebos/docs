@@ -1,31 +1,31 @@
 ---
-title: 将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2
-description: 升级解决方案以使用 Azure Data Lake Storage Gen2
+title: Upgrade Azure Data Lake Storage from Gen1 to Gen2
+description: Upgrade Azure Data Lake Storage from Gen1 to Gen2.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 02/07/2019
+ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 27d752b8ff7eafbb92930b19e17890ace8a90b85
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41074561b4805fef1889bd889b625e1a59d57d91
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750435"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327870"
 ---
-# <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2
+# <a name="upgrade-azure-data-lake-storage-from-gen1-to-gen2"></a>Upgrade Azure Data Lake Storage from Gen1 to Gen2
 
 如果在大数据分析解决方案中使用 Azure Data Lake Storage Gen1，本指南可以帮助升级这些解决方案以使用 Azure Data Lake Storage Gen2。 可以使用此文档来评估解决方案对 Data Lake Storage Gen1 的依赖关系。 本指南还介绍了如何计划和执行升级。
 
 我们将帮助你完成以下任务：
 
-： heavy_check_mark：评估升级准备情况
+:heavy_check_mark: Assess your upgrade readiness
 
-： heavy_check_mark：规划升级
+:heavy_check_mark: Plan for an upgrade
 
-： heavy_check_mark：执行升级
+:heavy_check_mark: Perform the upgrade
 
 ## <a name="assess-your-upgrade-readiness"></a>评估升级就绪情况
 
@@ -45,21 +45,21 @@ ms.locfileid: "72750435"
 
 图 2 显示了如何使用特定技术实现这些组件的示例。
 
-图 1 中的存储功能由 Data Lake Storage Gen1（图 2）提供。 请注意数据流中的各种组件使用 REST API 或 Java SDK 与 Data Lake Storage Gen1 交互的方式。 另请注意跨领域功能组件和 Data Lake Storage Gen1 交互的方式。 预配组件使用 Azure 资源模板，而使用 Azure Monitor 日志的监视组件利用来自 Data Lake Storage Gen1 的操作数据。
+图 1 中的存储功能由 Data Lake Storage Gen1（图 2）提供。 请注意数据流中的各种组件使用 REST API 或 Java SDK 与 Data Lake Storage Gen1 交互的方式。 另请注意跨领域功能组件和 Data Lake Storage Gen1 交互的方式。 The Provisioning component uses Azure Resource templates, whereas the Monitoring component which uses Azure Monitor logs utilizes operational data that comes from Data Lake Storage Gen1.
 
 要将解决方案升级从使用 Data Lake Storage Gen1 升级到Data Lake Storage Gen2，需要复制数据和元数据，重新挂钩数据流，然后，所有组件都需要能够配合 Data Lake Storage Gen2 使用。
 
 下面提供的信息有助于做出更好的决策：
 
-： heavy_check_mark：平台功能
+:heavy_check_mark: Platform capabilities
 
-： heavy_check_mark：编程接口
+:heavy_check_mark: Programming interfaces
 
-： heavy_check_mark： Azure 生态系统
+:heavy_check_mark: Azure ecosystem
 
-： heavy_check_mark：合作伙伴生态系统
+:heavy_check_mark: Partner ecosystem
 
-： heavy_check_mark：操作信息
+:heavy_check_mark: Operational information
 
 在每个部分中，都能够为升级确定“必需品”。 确保功能可用后，或者确保合理的解决方法就位后，请继续本指南的[规划升级](#planning-for-an-upgrade)部分。
 
@@ -72,44 +72,36 @@ ms.locfileid: "72750435"
 | 数据组织| 支持将数据作为文件夹和文件进行存储 | 支持将数据作为对象/Blob、文件夹和文件进行存储 - [链接](https://docs.microsoft.com/azure/storage/data-lake-storage/namespace) | 支持将数据作为文件夹和文件进行存储 – *现已提供* <br><br> 支持将数据作为对象/blob 进行存储 - *尚未提供* |
 | 命名空间| 分层实体 | 分层实体 |  现已提供  |
 | API  | 基于 HTTPS 的 REST API | 基于 HTTP/HTTPS 的 REST API| 现已提供 |
-| 服务器端 API| [WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） | Azure Blob 服务 REST API [Data Lake Storage Gen2 REST API](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) | Data Lake Storage Gen2 REST API – *现已提供* <br><br> Azure Blob 服务 REST API – *尚未提供*       |
+| 服务器端 API| [WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） | Azure Blob 服务 REST API [Data Lake Storage Gen2 REST API](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) | Data Lake Storage Gen2 REST API – *现已提供* <br><br> Azure Blob Service REST API – *Available now*       |
 | Hadoop 文件系统客户端 | 是 ([Azure Data Lake Storage](https://hadoop.apache.org/docs/current/hadoop-azure-datalake/index.html)) | 是 ([ABFS](https://jira.apache.org/jira/browse/HADOOP-15407))  | 现已提供  |  
 | 数据操作 - 授权  | 基于 Azure Active Directory 标识的文件和文件夹级别 POSIX 访问控制列表 (ACL)  | 基于 Azure Active Directory 标识的文件和文件夹级别 POSIX 访问控制列表 (ACL) [共享密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)用于帐户级别授权基于角色的访问控制 ([RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)) 访问容器 | 现已提供 |
-| 数据操作 - 日志  | 是 | 使用支持票证 Azure 监视集成对特定持续时间的日志进行一次性请求 | 使用支持票证一次性请求特定持续时间内的日志 – *现已提供*<br><br> Azure 监视集成 – *尚未提供* |
+| 数据操作 - 日志  | 是 | 是 | *Available now* (Preview). See [known issues](data-lake-storage-known-issues.md).<br><br> Azure 监视集成 – *尚未提供* |
 | 静态数据加密 | Azure Key Vault 中具有服务托管密钥和客户托管密钥的透明服务器端 | Azure Key Vault 中具有服务托管密钥和客户托管密匙的透明服务器端 | 服务托管密钥 – *现已提供*<br><br> 客户管理的密钥 – *现已提供*  |
 | 管理操作（例如“帐户创建”） | [基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) 由 Azure 帐户管理提供 | [基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) 由 Azure 帐户管理提供 | 现已提供|
-| Developer SDK | .NET、Java、Python、Node.js  | .NET、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS| 尚未提供 |
+| Developer SDK | .NET、Java、Python、Node.js  | .NET、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS| Blob SDK - *Available now*. Azure Data Lake Storage Gen2 SDK - *Not yet available*  |
 | |并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 | 并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 | 现已提供 |
 | 虚拟网络 (VNet) 支持  | [使用虚拟网络集成](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [使用 Azure 存储的服务终结点](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | 现已提供 |
 | 大小限制 | 无帐户大小、文件大小或文件数量限制 | 帐户大小或文件数量没有限制。 文件大小限制为 5 TB。 | 现已提供|
-| 异地冗余| 本地冗余 (LRS) | 本地冗余（LRS）区域冗余（ZRS）地域冗余（GRS）读取访问地域冗余（RA-GRS）请参阅[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，了解详细信息| 现已提供 |
+| 异地冗余| 本地冗余 (LRS) | Locally redundant (LRS) Zone redundant (ZRS) geo-redundant (GRS) Read-access geo-redundant (RA-GRS) See [here](https://docs.microsoft.com/azure/storage/common/storage-redundancy) for more information| 现已提供 |
 | 区域可用性 | 参见[此处](https://azure.microsoft.com/regions/) | 所有 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | 现已提供                                                                                                                           |
 | 价格                                       | 参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | 参阅[定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | 可用性 SLA                            | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | 现已提供                                                                                                                           |
-| 数据管理                             | 文件到期时间                                                                                                                                        | 生命周期策略                                                                                                                                                                                                                                                                                                                                                                                                          | 尚未提供                                                                                                                       |
+| 数据管理                             | 文件到期时间                                                                                                                                        | 生命周期策略                                                                                                                                                                                                                                                                                                                                                                                                          | Lifecycle policies *Available now* (Preview). See [known issues](data-lake-storage-known-issues.md).                                                                                                                     |
 
 ### <a name="programming-interfaces"></a>编程接口
 
-此表介绍可用于自定义应用程序的 API 集。 为了使某些内容更清晰，我们已将这些 API 集分为2种类型：管理 Api 和文件系统 Api。
-
-管理 Api 可帮助你管理帐户，而文件系统 Api 可帮助你对文件和文件夹进行操作。
+此表介绍可用于自定义应用程序的 API 集。 SDK support for ACL and directory-level operations are not yet supported.
 
 |  API 集                           |  Data Lake Storage Gen1                                                                                                                                                                                                                                                                                                   | Data Lake Storage Gen2 可用性 - 共享密钥验证 | Data Lake Storage Gen2 可用性 - OAuth 验证                                                                                                  |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| .NET SDK - 管理                  | [链接](https://docs.microsoft.com/dotnet/api/overview/azure/datalakestore/management?view=azure-dotnet)                                                                                                                                                                                                                 | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/rest/api/storageservices/operations-on-the-account--blob-service-)                                    |
-| .NET SDK –文件系统                  | [链接](https://docs.microsoft.com/dotnet/api/overview/azure/datalakestore/client?view=azure-dotnet)                                                                                                                                                                                                                     | 尚未提供                                                | 尚未提供                                                                                                                                             |
-| Java SDK - 管理                  | [链接](https://docs.microsoft.com/java/api/overview/azure/datalakestore/management)                                                                                                                                                                                                                                     | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob?view=azure-java-stable)                                     |
-| Java SDK –文件系统                  | [链接](https://docs.microsoft.com/java/api/overview/azure/datalake)                                                                                                                                                                                                                                         | 尚未提供                                                | 尚未提供                                                                                                                                             |
-| Node.js - 管理                   | [链接](https://www.npmjs.com/package/azure-arm-datalake-store)                                                                                                                                                                                                                                                                | 不支持                                                      | 现已提供 - [链接](https://azure.github.io/azure-storage-node/)                                                                                            |
-| Node.js-文件系统                   | [链接](https://www.npmjs.com/package/azure-arm-datalake-store)                                                                                                                                                                                                                                                                | 尚未提供                                                | 尚未提供                                                                                                                                             |
-| Python - 管理                    | [链接](https://docs.microsoft.com/python/api/overview/azure/datalakestore/management?view=azure-python)                                                                                                                                                                                                                 | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/python/api/overview/azure/storage/management?view=azure-python)                                       |
-| Python-文件系统                    | [链接](https://azure-datalake-store.readthedocs.io/en/latest/)                                                                                                                                                                                                                                                                 | 尚未提供                                                | 尚未提供                                                                                                                                             |
-| REST API - 管理                  | [链接](https://docs.microsoft.com/rest/api/datalakestore/accounts)                                                                                                                                                                                                                                                      | *不支持*                                                      | 现已提供 -                                                                                                                                               |
-| REST API 文件系统                  | [链接](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis)                                                                                                                                                                                                                                       | 现已提供                                                    | 现已提供 - [链接](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)                                                      |
-| PowerShell 管理和文件系统 | [链接](https://docs.microsoft.com/powershell/module/az.datalakestore)                                                                                                                                                                                                                        | 管理-不支持的文件系统-尚未*提供*        | 管理 – *现已提供 -* [链接](https://docs.microsoft.com/powershell/module/az.storage) <br><br>文件系统-*尚不可用* |
-| CLI - 作业管理                       | [链接](https://docs.microsoft.com/cli/azure/dls/account?view=azure-cli-latest)                                                                                                                                                                                                                                          | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/cli/azure/storage?view=azure-cli-latest)                                                              |
-| CLI-文件系统                       | [链接](https://docs.microsoft.com/cli/azure/dls/fs?view=azure-cli-latest)                                                                                                                                                                                                                                               | 尚未提供                                                | 尚未提供                                                                                                                                             |
-| Azure 资源管理器模板 - 管理             | [模板 1](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/)  [模板 2](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)  [模板 3](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)  | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/azure/templates/microsoft.storage/2018-07-01/storageaccounts)                                         |
+| .NET SDK                  | [链接](https://docs.microsoft.com/dotnet/api/overview/azure/datalakestore/management?view=azure-dotnet) | 现已提供 | 现已提供 |
+| Java SDK                | [链接](https://docs.microsoft.com/java/api/overview/azure/datalakestore/management)                                                                                                                                                                                                                                     | 现已提供                                                      | 现已提供                                     |
+| Node.js                | [链接](https://www.npmjs.com/package/azure-arm-datalake-store)                                                                                                                                                                                                                                                                | 现已提供                                                     | 现已提供                                                                                           |
+| Python SDK                   | [链接](https://docs.microsoft.com/python/api/overview/azure/datalakestore/management?view=azure-python)                                                                                                                                                                                                                 | 现已提供                                                      | 现已提供                                        |
+| REST API                 | [链接](https://docs.microsoft.com/rest/api/datalakestore/accounts)                                                                                                                                                                                                                                                      | 现已提供                                                      | 现已提供                                                                                                                                               |
+| PowerShell | [链接](https://docs.microsoft.com/powershell/module/az.datalakestore)                                                                                                                                                                                                                        | 现已提供 |
+| CLI                 | [链接](https://docs.microsoft.com/cli/azure/dls/account?view=azure-cli-latest)                                                                                                                                                                                                                                          | 现已提供                                                      | 现已提供                                                               |
+| Azure 资源管理器模板 - 管理             | [模板 1](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/)  [模板 2](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)  [模板 3](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)  | 现已提供                                                      | 现已提供                                          |
 
 ### <a name="azure-ecosystem"></a>Azure 生态系统
 
@@ -161,7 +153,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 |--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 计费数据 - 发送到商业团队进行计费，然后提供给客户的计量  | 现已提供                                                                                             | 现已提供                                                                                                                           |
 | 活动日志                                                                                          | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs#audit-logs)   | 使用支持票证对特定持续时间的日志进行一次性请求 - 现已提供 Azure 监视集成 - 尚未提供 |
-| 诊断日志                                                                                        | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs#request-logs) | 使用支持票证对特定持续时间的日志进行一次性请求 - 现已提供 Azure 监视集成 - 尚未提供 |
+| 诊断日志                                                                                        | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs#request-logs) | *Available now* (Preview). See [known issues](data-lake-storage-known-issues.md). <br>Azure Monitoring integration - *Not yet available* |
 | 指标                                                                                                | *不支持*                                                                                               | 现已提供 - [链接](https://docs.microsoft.com/azure/storage/common/storage-metrics-in-azure-monitor)                          |
 
 ## <a name="planning-for-an-upgrade"></a>规划升级
@@ -172,7 +164,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 升级的最关键部分是确定策略。 这一决定将确定可用的选择。
 
-此表列出了一些用于迁移数据库、Hadoop 群集等的已知策略。我们将在本指南中采用类似的策略，并将其调整为上下文。
+This table lists some well-known strategies that have been used to migrate databases, Hadoop clusters, etc. We'll adopt similar strategies in our guidance, and adapt them to our context.
 
 | 策略                   | 优点                                                                                  | 缺点                                                           | 何时使用？                                                                                                                                                                                             |
 |--------------------------------|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -220,12 +212,12 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 | 策略                       | 工具                                                                                                             | 优点                                                                                                                             | 注意事项                                                                                                                                                                                                                                                                                                                |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **直接迁移**                 | [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | 托管云服务                                                                                                                | 当前可以复制数据和 Acl。                                                                                                                                                                                                                                                                      |
+| **直接迁移**                 | [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2-from-gen1) | 托管云服务                                                                                                                | Both data and ACLs can be copied over currently.                                                                                                                                                                                                                                                                      |
 |                                    | [Distcp](https://hadoop.apache.org/docs/r1.2.1/distcp.html)                                                           | 可使用此工具复制众所周知的 Hadoop 提供的工具权限（即 ACL）                                                   | 需要可以同时连接 Data Lake Storage Gen1 和 Gen2 的群集。                                                                                                                                                                                   |
-| **一次性复制和增量复制** | Azure 数据工厂                                                                                                    | 托管云服务                                                                                                                | 当前可以复制数据和 Acl。 若要支持 ADF 中的增量复制，需要以时序的方式组织数据。 增量复制的最短时间间隔是 [15 分钟](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)。 |
+| **一次性复制和增量复制** | Azure 数据工厂                                                                                                    | 托管云服务                                                                                                                | Both data and ACLs can be copied over currently. 若要支持 ADF 中的增量复制，需要以时序的方式组织数据。 增量复制的最短时间间隔是 [15 分钟](https://docs.microsoft.com/azure/data-factory/how-to-create-tumbling-window-trigger)。 |
 | **并行采用**              | [WANdisco](https://docs.wandisco.com/bigdata/wdfusion/adls/)                                                           | 支持一致的复制，如果使用纯 Hadoop 环境连接到 Azure Data Lake Storage，则支持双向复制 | 如果不使用纯 Hadoop 环境，则复制可能会延迟。                                                                                                                                                                                                                                                  |
 
-请注意，有第三方可以处理 Data Lake Storage Gen1 Data Lake Storage Gen2 升级，而不涉及以上数据/元数据复制工具（例如： [Cloudera](https://blog.cloudera.com/blog/2017/08/use-amazon-s3-with-cloudera-bdr/)）。 它们提供执行数据迁移以及工作负载迁移的“一站式”体验。 可能必须对其生态系统之外的任何工具执行带外升级。
+Note that there are third-parties that can handle the Data Lake Storage Gen1 to Data Lake Storage Gen2 upgrade without involving the above data/meta-data copying tools (For example: [Cloudera](https://blog.cloudera.com/blog/2017/08/use-amazon-s3-with-cloudera-bdr/)). 它们提供执行数据迁移以及工作负载迁移的“一站式”体验。 可能必须对其生态系统之外的任何工具执行带外升级。
 
 #### <a name="considerations"></a>注意事项
 
@@ -235,7 +227,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 * 如果使用的工具无法复制 ACL 或者你不想复制 ACL，需要在适当的顶级手动设置目标上的 ACL。 可以使用存储资源管理器来执行此操作。 确保这些 ACL 是默认 ACL，以便复制的文件和文件夹继承它们。
 
-* 在 Data Lake Storage Gen1 中，可以设置的 ACL 的最高级别位于帐户的根目录。 但是，在 Data Lake Storage Gen2 中，可设置 Acl 的最高级别为容器中的根文件夹，而不是整个帐户。 因此，如果要在帐户级别设置默认 ACL，则需要在 Data Lake Storage Gen2 帐户中的所有文件系统中复制这些 ACL。
+* 在 Data Lake Storage Gen1 中，可以设置的 ACL 的最高级别位于帐户的根目录。 In Data Lake Storage Gen2, however, the highest level you can set ACLs is at the root folder in a container, not the whole account. 因此，如果要在帐户级别设置默认 ACL，则需要在 Data Lake Storage Gen2 帐户中的所有文件系统中复制这些 ACL。
 
 * 两个存储系统之间的文件命名限制是不同的。 从 Data Lake Storage Gen2 复制到 Data Lake Storage Gen1 时，尤其应注意这些差异，因为后者具有更多约束限制。
 
@@ -245,11 +237,11 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 #### <a name="uri-changes"></a>URI 更改
 
-此处的主要任务是将具有前缀 `adl://` 的 URI 转换为具有 `abfss://` 前缀的 URI 的。
+The main task here is to translate URI's that have a prefix of `adl://` into URI's that have an `abfss://` prefix.
 
 Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store)进行了详细介绍，但从广义上讲，它是 adl：//mydatalakestore.azuredatalakestore.net/ \<file_path\>。
 
-[此处](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)详细说明了用于访问 Data Lake Storage Gen2 文件的 URI 方案，但在很大程度上，它是 `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>` 的。
+The URI scheme for accessing Data Lake Storage Gen2 files is explained [here](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) in detail, but broadly speaking, it is `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`.
 
 需要浏览现有的应用程序，并确保已适当地更改 URI，使其指向 Data Lake Storage Gen2。 此外，还需要添加适当的凭据。 最后，如何停用原始应用程序并替换为新的应用程序需要与整体升级策略密切保持一致。
 
@@ -309,7 +301,7 @@ Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azur
 
 首先，确保有可以用于 Data Lake Storage Gen2 的集成。
 
-然后，必须更改上面称为的元素（例如： URI 和凭据）。 可以修改使用 Data Lake Storage Gen1 的现有实例或创建新的可以使用 Data Lake Storage Gen2 的实例。
+Then, the elements called out above (For example: URI and credentials), will have to be changed. 可以修改使用 Data Lake Storage Gen1 的现有实例或创建新的可以使用 Data Lake Storage Gen2 的实例。
 
 ### <a name="partner-ecosystem-upgrade"></a>合作伙伴生态系统升级
 
@@ -327,7 +319,7 @@ Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azur
 
 ### <a name="post-upgrade"></a>升级后
 
-转移操作完成后，最后的步骤将涉及到全面验证。 这包括但不限于验证数据已通过可靠方式复制，验证 Acl 是否已正确设置，验证端到端管道是否正常运行等。验证完成后，你现在可以关闭旧管道，删除你的源 Data Lake Storage Gen1 帐户，并在基于 Data Lake Storage Gen2 的解决方案上全速。
+转移操作完成后，最后的步骤将涉及到全面验证。 This would include but not be limited to verifying data has been copied over reliably, verifying ACLs have been set correctly, verifying end-to-end pipelines are functioning correctly etc. After the verifications have been completed, you can now turn off your old pipelines, delete your source Data Lake Storage Gen1 accounts and go full speed on your Data Lake Storage Gen2-based solutions.
 
 ## <a name="conclusion"></a>结束语
 

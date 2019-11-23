@@ -1,143 +1,137 @@
 ---
-title: 配置 Azure 区块链 Service transaction 节点
-description: 如何配置 Azure 区块链 Service transaction 节点
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Service transaction nodes
+description: How to configure Azure Blockchain Service transaction nodes
 ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 2885e5c9376264875cba03865c45b6b1e5d4aaf2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286843"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326306"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链 Service transaction 节点
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Configure Azure Blockchain Service transaction nodes
 
-事务节点用于通过公共终结点将区块链事务发送到 Azure 区块链服务。 默认事务节点包含在区块链上注册的以太坊帐户的私钥，因此无法删除。
+Transaction nodes are used to send blockchain transactions to Azure Blockchain Service through a public endpoint. The default transaction node contains the private key of the Ethereum account registered on the blockchain, and as such cannot be deleted.
 
-查看默认事务节点详细信息：
+To view the default transaction node details:
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到你的 Azure 区块链服务成员。 选择 "**事务节点**"。
+1. 导航到你的 Azure 区块链服务成员。 Select **Transaction nodes**.
 
     ![选择默认事务节点](./media/configure-transaction-nodes/nodes.png)
 
-    概述详细信息包括公共终结点地址和公钥。
+    Overview details include public endpoint addresses and public key.
 
 ## <a name="create-transaction-node"></a>创建事务节点
 
-最多可以向区块链成员添加9个附加的事务节点，总计10个事务节点。 通过添加事务节点，可以提高可伸缩性或分配负载。 例如，您可以为不同的客户端应用程序创建一个事务节点终结点。
+You can add up to nine additional transaction nodes to your blockchain member, for a total of 10 transaction nodes. By adding transaction nodes, you can increase scalability or distribute load. For example, you could have a transaction node endpoint for different client applications.
 
-添加事务节点：
+To add a transaction node:
 
-1. 在 Azure 门户中，导航到 Azure 区块链服务成员，然后选择 "**事务节点" > "添加**"。
-1. 完成 "新建事务" 节点的设置。
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Add**.
+1. Complete the settings for the new transaction node.
 
-    ![添加事务节点](./media/configure-transaction-nodes/add-node.png)
+    ![Add transaction node](./media/configure-transaction-nodes/add-node.png)
 
-    | 设置 | 说明 |
+    | 设置 | 描述 |
     |---------|-------------|
-    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 创建节点名称后，不能对其进行更改。 |
-    | 密码 | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
+    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com` 。 The node name cannot be changed once it is created. |
+    | 密码 | Set a strong password. Use the password to access the transaction node endpoint with basic authentication.
 
-1. 选择“创建”。
+1. 选择**创建**。
 
-    预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生费用。 有关成本的详细信息，请参阅[Azure 定价](https://aka.ms/ABSPricing)。
+    预配新的事务节点大约需要 10 分钟时间。 Additional transaction nodes incur cost. For more information on costs, see [Azure pricing](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>终结点
 
-事务节点具有唯一的 DNS 名称和公共终结点。
+Transaction nodes have a unique DNS name and public endpoints.
 
-查看事务节点的终结点详细信息：
+To view a transaction node's endpoint details:
 
-1. 在 Azure 门户中，导航到 Azure 区块链 Service 成员事务节点之一，然后选择 "**概述**"。
+1. In the Azure portal, navigate to one of your Azure Blockchain Service member transaction nodes and select **Overview**.
 
     ![终结点](./media/configure-transaction-nodes/endpoints.png)
 
-事务节点终结点是安全的，需要进行身份验证。 你可以使用 Azure AD 身份验证、HTTPS 基本身份验证以及通过 SSL 上的访问密钥或基于 SSL 的 Websocket 来连接到事务终结点。
+Transaction node endpoints are secure and require authentication. You can connect to a transaction endpoint using Azure AD authentication, HTTPS basic authentication, and using an access key over HTTPS or Websocket over SSL.
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory 访问控制
 
-Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory （Azure AD）身份验证。 可以向 Azure AD 用户、组和服务主体授予对终结点的访问权限。
+Azure Blockchain Service transaction node endpoints support Azure Active Directory (Azure AD) authentication. You can grant Azure AD user, group, and service principal access to your endpoint.
 
-授予对终结点的 Azure AD 访问控制权限：
+To grant Azure AD access control to your endpoint:
 
-1. 在 Azure 门户中，导航到 Azure 区块链服务成员，然后选择 "**事务节点" > 访问控制（IAM） > 添加 > "添加角色分配**"。
-1. 为用户、组或服务主体（应用程序角色）创建新的角色分配。
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Access control (IAM) > Add > Add role assignment**.
+1. Create a new role assignment for a user, group, or service principal (application roles).
 
-    ![添加 IAM 角色](./media/configure-transaction-nodes/add-role.png)
+    ![Add IAM role](./media/configure-transaction-nodes/add-role.png)
 
-    | 设置 | 操作 |
+    | 设置 | 行动 |
     |---------|-------------|
-    | 角色 | 选择 "**所有者**"、"**参与者**" 或 "**读者**"。
-    | 将访问权限分配到 | 选择**Azure AD 用户、组或服务主体**。
-    | Select | 搜索要添加的用户、组或服务主体。
+    | 角色 | Select **Owner**, **Contributor**, or **Reader**.
+    | 将访问权限分配到 | Select **Azure AD user, group, or service principal**.
+    | Select | Search for the user, group, or service principal you want to add.
 
-1. 选择 "**保存**" 以添加角色分配。
+1. Select **Save** to add the role assignment.
 
-有关 Azure AD 访问控制的详细信息，请参阅[使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-portal.md)
+For more information on Azure AD access control, see [Manage access to Azure resources using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md)
 
-有关如何使用 Azure AD 身份验证进行连接的详细信息，请参阅[使用 AAD 身份验证连接到你的节点](configure-aad.md)。
+For details on how to connect using Azure AD authentication, see [connect to your node using AAD authentication](configure-aad.md).
 
 ### <a name="basic-authentication"></a>基本身份验证
 
-对于 HTTPS 基本身份验证，用户名和密码凭据会在请求的 HTTPS 标头中传递到终结点。
+For HTTPS basic authentication, user name and password credentials are passed in the HTTPS header of the request to the endpoint.
 
-可以在 Azure 门户中查看事务节点的基本身份验证终结点详细信息。 导航到 Azure 区块链 Service 成员事务节点之一，并在 "设置" 中选择 "**基本身份验证**"。
+You can view a transaction node's basic authentication endpoint details in the Azure portal. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Basic Authentication** in settings.
 
 ![基本身份验证](./media/configure-transaction-nodes/basic.png)
 
-用户名是节点的名称，无法更改。
+The user name is the name of your node and cannot be changed.
 
-若要使用 URL，请将 \<password\> 替换为预配节点时设置的密码。 可以通过选择 "**重置密码**" 来更新密码。
+To use the URL, replace \<password\> with the password set when the node was provisioned. You can update the password by selecting **Reset password**.
 
 ### <a name="access-keys"></a>访问密钥
 
-对于访问密钥身份验证，访问密钥包含在终结点 URL 中。 预配事务节点后，将生成两个访问密钥。 "访问密钥" 可用于身份验证。 使用两个密钥可以更改和旋转密钥。
+For access key authentication, the access key is included in the endpoint URL. When the transaction node is provisioned, two access keys are generated. Either access key can be used for authentication. Two keys enable you to change and rotate keys.
 
-您可以查看事务节点的访问密钥详细信息并复制包含访问密钥的终结点地址。 导航到 Azure 区块链 Service 成员事务节点之一，然后在 "设置" 中选择 "**访问密钥**"。
+You can view a transaction node's access key details and copy endpoint addresses that include the access keys. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Access Keys** in settings.
 
 ### <a name="firewall-rules"></a>防火墙规则
 
-防火墙规则使你可以限制可尝试对事务节点进行身份验证的 IP 地址。  如果没有为事务节点配置防火墙规则，任何参与方都不能访问它。  
+Firewall rules enable you to limit the IP addresses that can attempt to authenticate to your transaction node.  If no firewall rules are configured for your transaction node, it cannot be accessed by any party.  
 
-若要查看事务节点的防火墙规则，请导航到 Azure 区块链 Service 成员事务节点之一，并在 "设置" 中选择 "**防火墙规则**"。
+To view a transaction node's firewall rules, navigate to one of your Azure Blockchain Service member transaction nodes and select **Firewall rules** in settings.
 
-可以通过在 "**防火墙规则**" 网格中输入规则名称、"起始 ip 地址" 和 "结束 ip 地址" 来添加防火墙规则。
+You can add firewall rules by entering a rule name, starting IP address, and an ending IP address in the **Firewall rules** grid.
 
 ![防火墙规则](./media/configure-transaction-nodes/firewall-rules.png)
 
-若要启用：
+To enable:
 
-* **单个 IP 地址：** 为起始 IP 地址和结束 IP 地址配置相同的 IP 地址。
-* **IP 地址范围：** 配置起始和结束 IP 地址范围。 例如，从10.221.34.0 开始，到10.221.34.255 结束的范围会启用整个10.221.34.xxx 子网。
-* **允许所有 IP 地址：** 将 "起始 IP 地址" 配置为0.0.0.0，并将 "结束 IP 地址" 配置为255.255.255.255。
+* **Single IP address:** Configure the same IP address for the starting and ending IP addresses.
+* **IP address range:** Configure the starting and ending IP address range. For example, a range starting at 10.221.34.0 and ending at 10.221.34.255 would enable the entire 10.221.34.xxx subnet.
+* **Allow all IP addresses:** Configure the starting IP address to 0.0.0.0 and the ending IP address to 255.255.255.255.
 
 ## <a name="connection-strings"></a>连接字符串
 
-为基本身份验证或使用访问密钥提供了事务节点的连接字符串语法。 提供了包括通过 HTTPS 和 Websocket 的访问密钥的连接字符串。
+Connection string syntax for your transaction node is provided for basic authentication or using access keys. Connection strings including access keys over HTTPS and WebSockets are provided.
 
-您可以查看事务节点的连接字符串并复制终结点地址。 导航到 Azure 区块链 Service 成员事务节点之一，并在 "设置" 中选择 "**连接字符串**"。
+You can view a transaction node's connection strings and copy endpoint addresses. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Connection strings** in settings.
 
 ![连接字符串](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>代码示例
 
-提供的示例代码可通过 Web3、Nethereum、Web3js 和 Truffle 快速启用到事务节点的连接。
+Sample code is provided to quickly enable connecting to your transaction node via Web3, Nethereum, Web3js, and Truffle.
 
-您可以查看事务节点的示例连接代码，并将其复制到使用常用的开发人员工具。 中转到 Azure 区块链 Service 成员事务节点之一，并在 "设置" 中选择 "**代码示例**"。
+You can view a transaction node's sample connection code and copy it to use with popular developer tools. Go to one of your Azure Blockchain Service member transaction nodes and select **Sample Code** in settings.
 
-选择 Web3、Nethereum、Truffle 或 Web3j 选项卡以查看要使用的代码示例。
+Choose the Web3, Nethereum, Truffle, or Web3j tab to view the code sample you want to use.
 
 ![代码示例](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Azure CLI 配置事务节点](manage-cli.md)
+> [Configure transaction nodes using Azure CLI](manage-cli.md)

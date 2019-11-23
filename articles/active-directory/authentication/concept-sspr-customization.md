@@ -1,22 +1,22 @@
 ---
-title: 自定义 Azure AD 自助服务密码重置-Azure Active Directory
+title: Customize self-service password reset - Azure Active Directory
 description: 用于 Azure AD 自助服务密码重置的自定义选项
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 0dfd035f73ea529ddb55bac6ce601185fda51a4d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666300"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381943"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -24,22 +24,22 @@ ms.locfileid: "68666300"
 
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
-自助服务密码重置用户在密码重置门户中提供 "联系你的管理员" 链接。 如果用户选择此链接, 它将执行以下两个操作之一:
+Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
 
-* 如果处于默认状态:
-   * 电子邮件将发送给你的管理员, 并要求他们在更改用户密码时提供帮助。 请参阅下面的[示例电子邮件](#sample-email)。
-* 如果自定义:
-   * 将用户发送到管理员指定的网页或电子邮件地址以获得帮助。
+* If left in the default state:
+   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
+* If customized:
+   * Sends your user to a webpage or email address specified by the administrator for assistance.
 
 > [!TIP]
-> 如果你自定义此功能, 我们建议将其设置为用户已熟悉支持的内容。
+> If you customize this, we recommend setting this to something users are already familiar with for support
 
 > [!WARNING]
-> 如果你使用需要密码重置的电子邮件地址和帐户自定义此设置, 则用户可能无法请求协助。
+> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
 
 ### <a name="sample-email"></a>示例电子邮件
 
-![用于重置发送到管理员的电子邮件的示例请求][Contact]
+![Sample request to reset email sent to Administrator][Contact]
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
@@ -76,8 +76,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * 用户输入其用户名后
 * 如果用户通过以下方式访问自定义的 URL：
-   * 通过将`whr`参数传递到密码重置页, 如`https://login.microsoftonline.com/?whr=contoso.com`
-   * 通过将`username`参数传递到密码重置页, 如`https://login.microsoftonline.com/?username=admin@contoso.com`
+   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
+   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页](../fundamentals/customize-branding.md)一文。
 
@@ -90,17 +90,17 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "与管理员联系以获取有关重置密码电子邮件示例的帮助"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"

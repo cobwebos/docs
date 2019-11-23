@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数字孪生启用多租户应用程序 | Microsoft Docs
+title: Enable multitenant applications - Azure Digital Twins | Microsoft Docs
 description: 如何为 Azure 数字孪生配置多租户 Azure Active Directory 应用程序。
 ms.author: alinast
 author: alinamstanciu
@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.date: 11/21/2019
+ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958778"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383325"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure 数字孪生启用多租户应用程序
 
@@ -54,16 +54,16 @@ ms.locfileid: "71958778"
 
 - 在 [Azure 门户](https://portal.azure.com)中，CUSTOMER 的 Azure Active Directory 租户管理员执行以下步骤：
 
-  1. 打开“订阅”。
+  1. Search for **Subscriptions** in the top Azure search field. 选择 **订阅**。
   1. 选择一个订阅，该订阅需具有要在开发人员的应用程序中使用的 Azure Active Directory 租户。
 
-     [![Azure Active Directory 订阅](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [![Azure Active Directory subscriptions](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. 选择“资源提供程序”。
   1. 搜索 Microsoft.IoTSpaces。
   1. 选择“注册”。
 
-     [@no__t Active Directory 资源提供程序](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
+     [![Azure Active Directory resource providers](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>后续步骤
 

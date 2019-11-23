@@ -1,22 +1,22 @@
 ---
-title: 如何为 Azure AD SSPR 配置密码写回 - Azure Active Directory
+title: Configure password writeback for SSPR - Azure Active Directory
 description: 使用 Azure AD 和 Azure AD Connect 将密码写回本地目录
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021774"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381161"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回
 
@@ -59,14 +59,14 @@ ms.locfileid: "74021774"
 > 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
 >
 
-## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory 权限和本地密码复杂性策略 
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory permissions and on-premises password complexity policies 
 
 若要纳入 SSPR 范围，在 Azure AD Connect 实用工具中指定的帐户必须设置以下各项：
 
 * **重置密码** 
 * **更改密码** 
-* 对  **的写入权限**`lockoutTime`
-* 对  **的写入权限**`pwdLastSet`
+* 对 `lockoutTime` 的写入权限
+* 对 `pwdLastSet` 的写入权限
 * 对以下任一项的扩展权限：
    * 相应林中各个域的根对象
    * 要纳入 SSPR 范围的用户组织单位 (OU)
@@ -99,7 +99,7 @@ ms.locfileid: "74021774"
     * **写入 pwdLastSet**
 9. 选择“应用”/“确定”以应用更改，并退出所有打开的对话框。
 
-由于授权来源位于本地，因此，密码复杂性策略将应用于相同的连接数据源。 请确保已更改 "密码最短期限" 的现有组策略。 不应将 "组策略" 设置为 "1"，这意味着密码应至少为一天，然后才能更新。 需要确保将其设置为0。 这些设置可在 "计算机配置" > 策略 "下的 `gpmc.msc` 中找到， **> Windows 设置" > 安全设置 "> 帐户策略**。 运行 `gpupdate /force` 以确保更改生效。 
+Since the source of authority is on premises, the password complexity policies apply from the same connected data source. Make sure you've changed the existing group policies for "Minimum password age". The group policy shouldn't be set to 1, which means password should be at least a day old before it can be updated. You need make sure it's set to 0. These settings can be found in `gpmc.msc` under **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies**. Run `gpupdate /force` to ensure that the change takes effect. 
 
 ## <a name="next-steps"></a>后续步骤
 

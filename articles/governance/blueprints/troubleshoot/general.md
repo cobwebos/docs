@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
-description: 了解如何排查创建、分配和删除蓝图时出现的问题。
-ms.date: 12/11/2018
+description: Learn how to troubleshoot issues creating, assigning, and removing blueprints such as policy violations and blueprint parameter functions.
+ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960295"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406611"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 
@@ -20,9 +20,9 @@ ms.locfileid: "73960295"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 从左侧页面中选择 "**分配的蓝图**"，然后使用 "搜索" 框筛选蓝图分配，查找失败的分配。 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
+1. Select **Assigned blueprints** from the page on the left and use the search box to filter the blueprint assignments to find the failed assignment. 还可以按“预配状态”列对分配表进行排序，集中查看失败的分配项。
 
-1. 左键单击状态为 "_失败_" 的蓝图，或右键单击并选择 "**查看分配详细信息**"。
+1. Left-click on the blueprint with the _Failed_ status or right-click and select **View assignment details**.
 
 1. 蓝图分配页面顶部有一个红色横幅警告，指出此分配已失败。 单击横幅任意位置可获取更多详细信息。
 
@@ -43,11 +43,11 @@ ms.locfileid: "73960295"
 - 正在创建的资源受到策略的限制（通常为 SKU 或位置限制）
 - 部署是由策略配置的设置字段（通常带有标记）
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 
 更改蓝图，使其不与错误详细信息中的策略冲突。 如果无法进行此更改，替代方法是更改策略分配的作用域，以使蓝图不再与策略冲突。
 
-### <a name="escape-function-parameter"></a>方案：蓝图参数是一个函数
+### <a name="escape-function-parameter"></a>Scenario: Blueprint parameter is a function
 
 #### <a name="issue"></a>问题
 
@@ -57,14 +57,14 @@ ms.locfileid: "73960295"
 
 将使用函数的蓝图参数（例如 `[resourceGroup().tags.myTag]`）传递到项目会导致在项目上设置的函数的处理结果而不是动态函数。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 
-若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 有关详细信息，请参阅[Azure 资源管理器模板中的语法和表达式](../../../azure-resource-manager/template-expressions.md)。
+若要将函数作为参数传递，请使用 `[` 转义整个字符串，使蓝图参数如 `[[resourceGroup().tags.myTag]`。 转义字符会导致蓝图在处理蓝图时将值视为字符串。 然后，蓝图将该函数放置在项目中，使其按预期动态化。 For more information, see [Syntax and expressions in Azure Resource Manager templates](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
+- Get answers from Azure experts through [Azure Forums](https://azure.microsoft.com/support/forums/).
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

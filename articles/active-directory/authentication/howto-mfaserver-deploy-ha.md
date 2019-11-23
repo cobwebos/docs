@@ -1,35 +1,35 @@
 ---
-title: 将 Azure MFA 服务器配置以实现高可用性-Azure Active Directory
+title: High availability for Azure MFA Server - Azure Active Directory
 description: 在配置中部署可提供高可用性的多个 Azure 多重身份验证服务器实例。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18f56665041fed301faf3b4b5f99c78c1d468f8e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056024"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404304"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>配置 Azure 多重身份验证服务器以实现高可用性
 
 若要使用 Azure 服务器 MFA 部署实现高可用性，需要部署多个 MFA 服务器。 本部分提供有关可在 Azure MFS 服务器部署中实现高可用性目标的负载均衡设计的信息。
 
 > [!IMPORTANT]
-> 截至 2019 年 7 月 1 日，Microsoft 将 MFA 服务器不再提供对新的部署。 想要要求从其用户的多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 已激活在 7 月 1 日之前的 MFA 服务器的现有客户将能够下载最新版本，将来的更新并照常生成激活凭据。
+> As of July 1, 2019, Microsoft will no longer offer MFA Server for new deployments. New customers who would like to require multi-factor authentication from their users should use cloud-based Azure Multi-Factor Authentication. Existing customers who have activated MFA Server prior to July 1 will be able to download the latest version, future updates and generate activation credentials as usual.
 
 ## <a name="mfa-server-overview"></a>MFA 服务器概述
 
 Azure MFA 服务器服务体系结构由下图中所示的多个组件构成：
 
- ![MFA 服务器体系结构组件](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA Server Architecture components](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
 MFA 服务器是装有 Azure 多重身份验证软件的 Windows 服务器。 MFA 服务器实例必须由 Azure 中的 MFA 服务激活才能正常运行。 可在本地安装多个 MFA 服务器。
 
@@ -39,7 +39,7 @@ MFA 服务器是装有 Azure 多重身份验证软件的 Windows 服务器。 MF
 
 在 AD 中成功完成身份验证后，MFA 服务器会与 MFA 服务通信。 MFA 服务器等待 MFA 服务发出允许或拒绝用户访问应用程序的通知。
 
-如果 MFA 主服务器脱机，仍可处理身份验证，但无法处理需要对 MFA 数据库进行更改的操作。 (示例包括： 添加用户、 自助 PIN 更改、 不断变化用户信息或用户门户的访问权限)
+如果 MFA 主服务器脱机，仍可处理身份验证，但无法处理需要对 MFA 数据库进行更改的操作。 (Examples include: the addition of users, self-service PIN changes, changing user information, or access to the user portal)
 
 ## <a name="deployment"></a>部署
 

@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 数字孪生中创建用户定义的函数 |Microsoft Docs
+title: How to create user-defined functions - in Azure Digital Twins | Microsoft Docs
 description: 如何在 Azure 数字孪生中创建用户定义的函数、匹配程序和角色分配。
 ms.author: alinast
 author: alinamstanciu
@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009570"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383316"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -46,7 +46,7 @@ ms.locfileid: "74009570"
 
 对于数据类型值为 `"Temperature"` 的所有传感器遥测事件，以下示例匹配程序的计算结果都为 true。 可通过向以下对象发出经过身份验证的 HTTP POST 请求，在用户定义函数中创建多个匹配程序：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
@@ -69,7 +69,7 @@ YOUR_MANAGEMENT_API_URL/matchers
 }
 ```
 
-| 值 | 替换为 |
+| Value | 替换为 |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | 托管实例的服务器区域 |
 
@@ -81,7 +81,7 @@ YOUR_MANAGEMENT_API_URL/matchers
 
 创建匹配程序后，使用以下经过身份验证的多部分 HTTP POST 请求来上传函数代码片段：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
@@ -109,19 +109,19 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| 值 | 替换为 |
+| Value | 替换为 |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 | YOUR_SPACE_IDENTIFIER | 空间标识符  |
 | YOUR_MATCHER_IDENTIFIER | 要使用的匹配程序的 ID |
 
 1. 验证标头是否包括：`Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`。
-1. 验证正文由多个部分组成：
+1. 验证正文为多个部分：
 
    - 第一部分包含所需的用户定义的函数元数据。
    - 第二部分包含 JavaScript 计算逻辑。
 
-1. 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”( **) 和“matchers”(** ) 值`YOUR_SPACE_IDENTIFIER``YOUR_MATCHER_IDENTIFIER`。
+1. 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”(`YOUR_SPACE_IDENTIFIER`) 和“matchers”(`YOUR_MATCHER_IDENTIFIER`) 值。
 1. 验证 JavaScript 用户定义的函数是否作为 `Content-Type: text/javascript` 提供。
 
 ### <a name="example-functions"></a>示例函数
@@ -201,26 +201,26 @@ function process(telemetry, executionContext) {
 
 1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#retrieve-all-roles) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   保留所需的角色 ID。 它将作为下面的 JSON 体属性“roleId”( **) 传递**`YOUR_DESIRED_ROLE_IDENTIFIER`。
+   保留所需的角色 ID。 它将作为下面的 JSON 体属性“roleId”(`YOUR_DESIRED_ROLE_IDENTIFIER`) 传递。
 
-1. “objectId”( **) 将是先前创建的用户定义的函数 ID**`YOUR_USER_DEFINED_FUNCTION_ID`。
-1. 通过使用  **查询你的空间来查找“path”(** ) 的值`YOUR_ACCESS_CONTROL_PATH``fullpath`。
+1. “objectId”(`YOUR_USER_DEFINED_FUNCTION_ID`) 将是先前创建的用户定义的函数 ID。
+1. 通过使用 `fullpath` 查询你的空间来查找“path”(`YOUR_ACCESS_CONTROL_PATH`) 的值。
 1. 复制返回的 `spacePaths` 值。 稍后你将使用该值。 向以下对象发出经过身份验证的 HTTP GET 请求：
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | 值 | 替换为 |
+    | Value | 替换为 |
     | --- | --- |
     | YOUR_SPACE_NAME | 要使用的空间名称 |
 
 1. 将返回的 `spacePaths` 值粘贴到“路径”，以通过向以下对象发出经过身份验证的 HTTP POST 请求来创建用户定义的函数角色分配：
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
     使用 JSON 体：
@@ -234,11 +234,11 @@ function process(telemetry, executionContext) {
     }
     ```
 
-    | 值 | 替换为 |
+    | Value | 替换为 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 所需角色的标识符 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 要使用的用户定义的函数 ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定用户定义的函数类型的 ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | The ID specifying the user-defined function type (`UserDefinedFunctionId`) |
     | YOUR_ACCESS_CONTROL_PATH | 访问控制路径 |
 
 >[!TIP]

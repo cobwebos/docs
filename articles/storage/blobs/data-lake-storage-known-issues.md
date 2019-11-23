@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5253ab1d9599c2758127156e46e1dbf2e8e1eddc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033943"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327953"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
-本文列出了使用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2) 尚不支持或者仅部分支持的功能与工具。
+This article lists the features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
 <a id="blob-apis-disabled" />
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>使用 Blob Api 的问题和限制
+## <a name="issues-and-limitations-with-using-blob-apis"></a>Issues and limitations with using Blob APIs
 
-Blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
+Blob APIs and Data Lake Storage Gen2 APIs can operate on the same data.
 
-本部分介绍使用 Blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时存在的问题和限制。
+This section describes issues and limitations with using blob APIs and Data Lake Storage Gen2 APIs to operate on the same data.
 
-* 不能同时使用 Blob API 和 Data Lake Storage API 向文件的同一实例写入数据。 如果使用 Data Lake Storage Gen2 API 向某个文件写入数据，则在调用[获取块列表](https://docs.microsoft.com/rest/api/storageservices/get-block-list) Blob API 时，该文件的块将不可见。 覆盖某个文件时，可以使用 Data Lake Storage Gen2 API 或 Blob API。 这不会影响文件属性。
+* You can't use both Blob APIs and Data Lake Storage APIs to write to the same instance of a file. If you write to a file by using Data Lake Storage Gen2 APIs, then that file's blocks won't be visible to calls to the [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API. You can overwrite a file by using either Data Lake Storage Gen2 APIs or Blob APIs. This won't affect file properties.
 
-* 如果在使用[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 操作时不指定分隔符，则结果会包含目录和 Blob。 如果选择使用分隔符，请只使用正斜杠 (`/`)。 这是唯一支持的分隔符。
+* When you use the [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) operation without specifying a delimiter, the results will include both directories and blobs. If you choose to use a delimiter, use only a forward slash (`/`). This is the only supported delimiter.
 
-* 如果使用[删除 Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 来删除目录，则只能在该目录为空的情况下将其删除。 这意味着，不能使用 Blob API 以递归方式删除目录。
+* If you use the [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API to delete a directory, that directory will be deleted only if it's empty. This means that you can't use the Blob API delete directories recursively.
 
-这些 Blob REST API 不受支持：
+These Blob REST APIs aren't supported:
 
-* [放置 Blob（页）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [放置页](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [获取页面范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [放置 Blob（追加）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
 * [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [从 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-在有分层命名空间的帐户中，非托管 VM 磁盘不受支持。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘放到未启用分层命名空间功能的存储帐户中。
+Unmanaged VM disks are not supported in accounts that have a hierarchical namespace. If you want to enable a hierarchical namespace on a storage account, place unmanaged VM disks into a storage account that doesn't have the hierarchical namespace feature enabled.
 
-## <a name="support-for-other-blob-storage-features"></a>支持其他 Blob 存储功能
+## <a name="support-for-other-blob-storage-features"></a>Support for other Blob Storage features
 
-下表列出了使用分层命名空间的存储帐户 (Azure Data Lake Storage Gen2) 尚不支持或者仅部分支持的所有其他功能与工具。
+The following table lists all other features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
-| 功能/工具    | 详细信息    |
+| Feature / Tool    | 详细信息    |
 |--------|-----------|
-| **Data Lake Storage Gen2 Api** | 部分支持 <br><br>在当前版本中，你可以使用 Data Lake Storage Gen2 **REST** api 与目录交互和设置访问控制列表（acl），但没有其他 sdk （例如： .Net、Java 或 Python）来执行这些任务。 若要执行其他任务，如上传和下载文件，你可以使用 Blob Sdk。  |
-| **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。|
-| **Azure Blob 存储生命周期管理策略** | 支持所有访问层。 存档访问层目前处于预览阶段。 尚不支持删除 Blob 快照的功能。 |
-| **Azure 内容分发网络（CDN）** | 尚不支持|
-| **Azure 搜索** |支持（预览）|
-| **Azure 存储资源管理器** | 特定于版本的支持 <br><br>仅使用 `1.10.0``1.6.0` 版本。 <br> 版本 `1.10.0` 可[免费下载](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)。 尚不支持版本 `1.11.0`。|
-| **Blob 容器 ACL** |尚不支持|
-| **Blobfuse** |尚不支持|
-| **自定义域** |尚不支持|
-| **Azure 门户中的存储资源管理器** | 有限支持。 目前尚不支持 Acl。 |
-| **诊断日志记录** |支持诊断日志（预览）。<br><br>目前不支持在 Azure 门户中启用日志。 以下示例演示如何使用 PowerShell 来启用日志。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请务必将 `Blob` 指定为 `-ServiceType` 参数的值，如此示例所示。 <br><br>目前，Azure 存储资源管理器不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 SDK。
-| **不可变存储** |尚不支持 <br><br>使用不可变存储可以 [WORM（一次写入，多次读取）](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态存储数据。|
-| **对象级层** |支持冷层和存档层。 存档层处于预览阶段。 所有其他访问层目前均不受支持。|
-| **Powershell 和 CLI 支持** | 受限功能 <br><br>支持 Blob 操作。 处理目录以及设置访问控制列表 (ACL) 的功能尚不受支持。 |
-| **静态网站** |尚不支持 <br><br>具体而言，是将文件提供给[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)的功能。|
-| **第三方应用程序** | 有限支持 <br><br>对于使用 REST API 保持正常运行的第三方应用程序，如果在 Data Lake Storage Gen2 中使用这些应用程序，则它们可继续正常运行。 <br>调用 Blob Api 的应用程序可能会起作用。|
-|**软删除** |尚不支持|
-| **版本控制功能** |尚不支持 <br><br>这包括[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)和其他版本控制功能，例如[快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)。|
+| **Data Lake Storage Gen2 APIs** | 部分支持 <br><br>In the current release, you can use Data Lake Storage Gen2 **REST** APIs to interact with directories and set access control lists (ACLs), but there are no other SDKs (For example: .NET, Java, or Python) to perform those tasks. To perform other tasks such as uploading and downloading files, you can use the Blob SDKs.  |
+| **AzCopy** | Version-specific support <br><br>Use only the latest version of AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Earlier versions of AzCopy such as AzCopy v8.1, are not supported.|
+| **Azure Blob Storage lifecycle management policies** | All access tiers are supported. The archive access tier is currently in preview. The deletion of blob snapshots is not yet supported. |
+| **Azure Content Delivery Network (CDN)** | Not yet supported|
+| **Azure search** |Supported (Preview)|
+| **Azure 存储空间资源管理器** | Version-specific support. <br><br>Use only versions `1.6.0` or higher. <br> There is currently a storage bug affecting version `1.11.0` that can result in authentication errors in certain scenarios. A fix for the storage bug is being rolled out, but as a workaround, we recommend that you use version `1.10.x` which is available as a [free download](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` is not affected by the storage bug.|
+| **Blob container ACLs** |Not yet supported|
+| **Blobfuse** |Not yet supported|
+| **自定义域** |Not yet supported|
+| **Storage Explorer in the Azure portal** | Limited support. ACLs are not yet supported. |
+| **诊断日志记录** |Diagnostic logs are supported (Preview).<br><br>Enabling logs in the Azure portal is not currently supported. Here's an example of how to enable the logs by using PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>Make sure to specify `Blob` as the value of the `-ServiceType` parameter as shown in this example. <br><br>Currently, Azure Storage Explorer can't be used for viewing diagnostic logs. To view logs, please use AzCopy or SDKs.
+| **Immutable storage** |Not yet supported <br><br>Immutable storage gives the ability to store data in a [WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) state.|
+| **Object-level tiers** |Cool and archive tiers are supported. The archive tier is in preview. All other access tiers are not yet supported.|
+| **Powershell and CLI support** | Limited functionality <br><br>Blob operations are supported. Working with directories and setting access control lists (ACLs) is not yet supported. |
+| **Static websites** |Not yet supported <br><br>Specifically, the ability to serve files to [Static websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
+| **Third party applications** | Limited support <br><br>Third party applications that use REST APIs to work will continue to work if you use them with Data Lake Storage Gen2. <br>Applications that call Blob APIs will likely work.|
+|**软删除** |Not yet supported|
+| **Versioning features** |Not yet supported <br><br>This includes  [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), and other versioning features such as [snapshots](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

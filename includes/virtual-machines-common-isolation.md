@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: d85ea932a62718d04e0c0aff1eeae80472a410f1
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4aa995e8e246e96b4fdac59a7ad94fa4abd3cabc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173949"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378203"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
 
@@ -27,77 +27,77 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 * Standard_D15_v2
 * Standard_F72s_v2
 
-可在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)详细了解每个可用的隔离大小。
+You can learn more about each available isolated size [here](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
-## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>2020年2月15日停用 D15_v2/DS15_v2 隔离
-我们最近宣布推出 Azure 专用主机预览，这使你能够在单租户物理服务器上运行你的组织的 Linux 和 Windows 虚拟机。 我们计划将隔离的 Azure Vm 完全替换为 Azure 专用主机。 **2020 年2月15日之后，** Azure vm 的 D15_v2/DS15_v2 可能不再与硬件隔离。
+## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Retiring D15_v2/DS15_v2 isolation on February 15, 2020
+We recently announced the Preview of Azure Dedicated Host, which allows you to run your organization’s Linux and Windows virtual machines on single-tenant physical servers. We plan to fully replace isolated Azure VMs with Azure Dedicated Host. After **February 15, 2020** the D15_v2/DS15_v2 Azure VMs may no longer be hardware isolated.
 
-## <a name="how-does-this-affect-me"></a>这对我有何影响？
-2020年2月15日之后，将不再为你的 D15_v2/DS15_v2 Azure 虚拟机提供隔离保障。 
+## <a name="how-does-this-affect-me"></a>How does this affect me?
+After February 15, 2020, we will no longer provide an isolation guarantee for your D15_v2/DS15_v2 Azure virtual machines. 
 
-## <a name="what-actions-should-i-take"></a>我应该执行哪些操作？
-如果不需要硬件隔离，则无需执行任何操作。 
+## <a name="what-actions-should-i-take"></a>What actions should I take?
+If hardware isolation is not required for you, there is no action you need to take. 
 
-如果需要在2020年2月15日之前进行隔离，则需要执行以下操作之一：
+If isolation is required to you, before February 15, 2020, you would need to either:
 
-•将工作负荷[迁移](https://azure.microsoft.com/blog/introducing-azure-dedicated-host)到 Azure 专用主机预览
+•   [Migrate](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) your workload to Azure Dedicated Host Preview
 
-•[请求访问](https://aka.ms/D15iRequestAccess)D15i_v2 和 DS15I_V2 Azure VM，以获得相同的性价比。 此选项仅适用于即用即付和一年保留实例方案。    
+•   [Request access](https://aka.ms/D15iRequestAccess) to a D15i_v2 and DS15i_v2 Azure VM, to get the same price performance. This option is only available for pay-as-you-go and one-year reserved instance scenarios.    
 
-•将工作负荷[迁移](https://azure.microsoft.com/blog/resize-virtual-machines/)到另一台 Azure 隔离的虚拟机。 
+•   [Migrate](https://azure.microsoft.com/blog/resize-virtual-machines/) your workload to another Azure isolated virtual machine. 
 
-有关详细信息，请参阅以下内容：
+For details see below:
 
 ## <a name="timeline"></a>时间线
-| 日期 | 操作 | 
+| 日期 | 行动 | 
 | --- | --- |
-| 11月18日2019  | D/DS15i_v2 （PAYG，1年 RI）的可用性 |
-| 2020年2月14日  | 第一天购买 D/DS15i_v2 1 年 RI | 
-| 2020年2月15日   | 删除了 D/DS15_v2 隔离保障 | 
-| 5月15日2021  | 停用 D/DS15i_v2 （在2019年11月18日之前购买了 D/DS15_v2 的3年 RI 除外的所有客户）| 
-| 11月17日2022   | 当完成3年的 RIs （对于在2019年11月18日之前购买 DS15_v2 了3年 RI 的客户），停用 D/DS15i_v2 | 
+| Nov 18, 2019  | Availability of D/DS15i_v2 (PAYG, 1-year RI) |
+| Feb 14, 2020  | Last day to buy D/DS15i_v2 1-year RI | 
+| Feb 15, 2020   | D/DS15_v2 isolation guarantee removed | 
+| May 15, 2021  | Retire D/DS15i_v2 (all customers except who bought 3-year RI of D/DS15_v2 before November 18, 2019)| 
+| Nov 17, 2022   | Retire D/DS15i_v2 when 3-year RIs done (for customers who bought 3-year RI of D/DS15_v2 before November 18, 2019) | 
 
-## <a name="faq"></a>常见问题
-### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>问：为什么我在门户中看不到新的 D/DS15i_v2 大小？
-**答**：如果你是当前的 d/DS15_v2 客户，并且想要使用新的 d/DS15i_v2 大小，请填写此[窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
+## <a name="faq"></a>常见问题解答
+### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>Q: Why am I not seeing the new D/DS15i_v2 sizes in the portal?
+**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
 
-### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>问：为何我看不到新的 D/DS15i_v2 大小的配额？
-**答**：如果你是当前的 d/DS15_v2 客户，并且想要使用新的 d/DS15i_v2 大小，请填写此[窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u)
+### <a name="q-why-i-am-not-seeing-any-quota-for-the-new-dds15i_v2-sizes"></a>Q: Why I am not seeing any quota for the new D/DS15i_v2 sizes?
+**A**: If you are a current D/DS15_v2 customer and want to use the new D/DS15i_v2 sizes, please fill this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUNU1XUkhZWkNXQUFMNEJWUk9VWkRRVUJPMy4u)
 
-### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>问：是否要停用其他隔离的大小？
-**答**：我们将在官方取消使用之前12个月内提供提醒。
+### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>Q: When are the other isolated sizes going to retire?
+**A**: We will provide reminders 12 months in advance of the official decommissioning of the sizes.
 
-### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>问：如果 vm 落在非隔离硬件上，是否会出现停机？
-**答**：如果无需隔离，则无需执行任何操作，也不会出现任何停机时间。
+### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Q: Is there a downtime when my vm lands on a non-isolated hardware?
+**A**: If you do not need isolation you do not need to take any action and you would not see any downtime.
 
-### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>问：移动到非隔离虚拟机是否有任何成本变化？
-**答**：否 
+### <a name="q-are-there-any-cost-changes-for-moving-to-a-non-isolated-virtual-machine"></a>Q: Are there any cost changes for moving to a non-isolated virtual machine?
+**A**: No 
 
-### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>问：我已经为 D15_v2 或 Ds15_v2 购买了1年或3年的预订实例。 如何将折扣应用于 VM 使用情况？
-**答**：在2019年11月18日之前购买的 RIs 会自动将覆盖范围扩展到新的隔离 VM 系列。 
+### <a name="q-i-already-purchased-1--or-3-year-reserved-instance-for-d15_v2-or-ds15_v2-how-will-the-discount-be-applied-to-my-vm-usage"></a>Q: I already purchased 1- or 3-year Reserved Instance for D15_v2 or Ds15_v2. How will the discount be applied to my VM usage?
+**A**: RIs purchased before November 18, 2019 will automatically extend coverage to the new isolated VM series. 
 
-| RI |  实例大小灵活性 | 权益资格 |   
+| RI |  Instance Size Flexibility | Benefit eligibility |   
 | --- | --- | --- |
-|   D15_v2  |   关闭     |   D15_v2 和 D15i_v2 |    
-|   D15_v2  |   启用  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
-|   D14_v2  |   启用  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
+|   D15_v2  |   关闭     |   D15_v2 and D15i_v2 |    
+|   D15_v2  |   开  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
+|   D14_v2  |   开  |   D15_v2 series and D15i_v2 will all receive the RI benefit. |    
  
-同样，对于 Dsv2 系列也是如此。
+Likewise for Dsv2 series.
  
-### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>问：我想要为 Dv2 购买额外的预订实例。 我应该选择哪一种？
-**答**：在2019年11月18日之后购买的所有 RIs 都具有以下行为。 
+### <a name="q-i-want-to-purchase-additional-reserved-instances-for-dv2-which-one-should-i-choose"></a>Q: I want to purchase additional Reserved Instances for Dv2. Which one should I choose?
+**A**: All RIs purchased after Nov 18, 2019, have the following behavior. 
 
-| RI |  实例大小灵活性 | 权益资格 |   
+| RI |  Instance Size Flexibility | Benefit eligibility |   
 | --- | --- | --- |
-| D15_v2 |  关闭 |   仅 D15_v2  
-| D15_v2 |  启用 |    D15_v2 系列将获得 RI 权益。 新的 D15i_v2 将不能从此 RI 类型获得 RI 权益。 | 
-| D15i_v2 |     关闭 | 仅 D15i_v2 |  
-| D15i_v2 |     启用  | 仅 D15i_v2 | 
+| D15_v2 |  关闭 |   D15_v2 only  
+| D15_v2 |  开 |    D15_v2 series will receive the RI benefit. The new D15i_v2 will not be eligible for RI benefit from this RI type. | 
+| D15i_v2 |     关闭 | D15i_v2 only |  
+| D15i_v2 |     开  | D15i_v2 only | 
  
-实例大小灵活性不能应用于任何其他大小，如 D2_v2、D4_v2 或 D15_v2。 同样，对于 Dsv2 系列也是如此。  
+Instance Size Flexibility cannot be used to apply to any other sizes such as D2_v2, D4_v2, or D15_v2. Likewise, for Dsv2 series.  
  
-### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>问：是否可以购买新的3年 RI 用于 D15i_v2 和 DS15i_v2？
-**答**：遗憾的是，只有1年的 RI 可用于新购买。
+### <a name="q-can-i-buy-a-new-3-year-ri-for-d15i_v2-and-ds15i_v2"></a>Q: Can I buy a new 3-year RI for D15i_v2 and DS15i_v2?
+**A**: Unfortunately no, only 1-year RI is available for new purchase.
  
-### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>问：我是否可以将现有 D15_v2/DS15_v2 Reserve 实例移到隔离大小的保留实例？
-**答**：这并不是必需的，因为此权益将同时适用于隔离和非隔离大小。 但 Azure 将支持更改现有 D15_v2/DS15_v2 保留实例 D15i_v2/DS15i_v2。 对于所有其他 Dv2/Dsv2 保留实例，使用现有的保留实例或为隔离大小购买新的保留实例。
+### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>Q: Can I move my existing D15_v2/DS15_v2 Reserve Instance to an isolated size Reserved Instance?
+**A**: This is not necessary since the benefit will apply to both isolated and non-isolated sizes. But Azure will support changing existing D15_v2/DS15_v2 Reserved Instances to D15i_v2/DS15i_v2. For all other Dv2/Dsv2 Reserved Instances, use the existing Reserved Instance or buy new Reserved Instances for the isolated sizes.

@@ -1,19 +1,19 @@
 ---
-title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
+title: Java user-defined function (UDF) with Apache Hive Azure HDInsight
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/20/2019
+ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044782"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327212"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
@@ -21,20 +21,21 @@ ms.locfileid: "73044782"
 
 ## <a name="prerequisites"></a>必备组件
 
-* HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+* A Hadoop cluster on HDInsight. 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是 wasb://for Azure Storage、abfs://for Azure Data Lake Storage Gen2 或 adl://for Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 This would be wasb:// for Azure Storage, abfs:// for Azure Data Lake Storage Gen2 or adl:// for Azure Data Lake Storage Gen1. 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
 
     > [!IMPORTANT]  
     > 如果在 Windows 客户端上创建 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[故障排除](#troubleshooting)部分，了解删除 CR 字符的步骤。
 
-## <a name="test-environment"></a>测试环境
-用于本文的环境是运行 Windows 10 的计算机。  命令在命令提示符下执行，并使用记事本编辑了各种文件。 针对你的环境相应地进行修改。
+## <a name="test-environment"></a>Test environment
 
-在命令提示符下，输入以下命令以创建工作环境：
+The environment used for this article was a computer running Windows 10.  The commands were executed in a command prompt, and the various files were edited with Notepad. Modify accordingly for your environment.
+
+From a command prompt, enter the commands below to create a working environment:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -43,28 +44,28 @@ cd C:\HDI
 
 ## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例
 
-1. 通过输入以下命令创建一个新的 Maven 项目：
+1. Create a new Maven project by entering the following command:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令创建一个名为 `exampleudf`的目录，其中包含 Maven 项目。
+    This command creates a directory named `exampleudf`, which contains the Maven project.
 
-2. 创建项目后，通过输入以下命令删除作为项目的一部分创建的 `exampleudf/src/test` 目录：
+2. Once the project has been created, delete the `exampleudf/src/test` directory that was created as part of the project by entering the following command:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. 通过输入以下命令打开 `pom.xml`：
+3. Open `pom.xml` by entering the command below:
 
     ```cmd
     notepad pom.xml
     ```
 
-    然后，将现有 `<dependencies>` 条目替换为以下 XML：
+    Then replace the existing `<dependencies>` entry with the following XML:
 
     ```xml
     <dependencies>
@@ -143,13 +144,13 @@ cd C:\HDI
 
     一旦进行了更改，请保存该文件。
 
-4. 输入以下命令以创建并打开新文件 `ExampleUDF.java`：
+4. Enter the command below to create and open a new file `ExampleUDF.java`:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    然后，将以下 java 代码复制并粘贴到新文件中。 然后关闭该文件。
+    Then copy and paste the java code below into the new file. Then close the file.
 
     ```java
     package com.microsoft.examples;
@@ -180,9 +181,9 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>生成并安装 UDF
 
-在下面的命令中，将 `sshuser` 替换为实际用户名（如果不同）。 将 `mycluster` 替换为实际的群集名称。
+In the commands below, replace `sshuser` with the actual username if different. Replace `mycluster` with the actual cluster name.
 
-1. 通过输入以下命令编译和打包 UDF：
+1. Compile and package the UDF by entering the following command:
 
     ```cmd
     mvn compile package
@@ -190,19 +191,19 @@ cd C:\HDI
 
     此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
-2. 使用 `scp` 命令通过输入以下命令将文件复制到 HDInsight 群集：
+2. Use the `scp` command to copy the file to the HDInsight cluster by entering the following command:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. 输入以下命令，使用 SSH 连接到群集：
+3. Connect to the cluster using SSH by entering the following command:
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. 从打开的 SSH 会话中，将 jar 文件复制到 HDInsight 存储。
+4. From the open SSH session, copy the jar file to HDInsight storage.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -210,7 +211,7 @@ cd C:\HDI
 
 ## <a name="use-the-udf-from-hive"></a>在 Hive 中使用 UDF
 
-1. 通过输入以下命令从 SSH 会话启动 Beeline 客户端：
+1. Start the Beeline client from the SSH session by entering the following command:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -231,7 +232,7 @@ cd C:\HDI
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    此查询从表中选择状态，将字符串转换为小写形式，然后将其与未修改的名称一起显示。 显示的输出类似于以下文本：
+    This query selects the state from the table, convert the string to lower case, and then display them along with the unmodified name. 显示的输出类似于以下文本：
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -250,7 +251,7 @@ cd C:\HDI
 
 ## <a name="troubleshooting"></a>故障排除
 
-运行 Hive 作业时，可能会遇到类似于以下文本的错误：
+When running the hive job, you may come across an error similar to the following text:
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 

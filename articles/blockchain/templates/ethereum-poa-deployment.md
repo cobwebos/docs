@@ -1,28 +1,21 @@
 ---
-title: Ethereum 权威证明联盟 - Azure
-description: 使用 Ethereum 权威证明联盟解决方案部署和配置多成员联盟 Ethereum 网络
-services: azure-blockchain
-keywords: ''
-author: CodyBorn
-ms.author: coborn
+title: Deploy Ethereum Proof-of-Authority consortium solution template on Azure
+description: Use the Ethereum Proof-of-Authority Consortium solution to deploy and configure a multi-member consortium Ethereum network on Azure
 ms.date: 04/08/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: vamelech
-ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: coborn
+ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698455"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326176"
 ---
-# <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
+# <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Deploy Ethereum proof-of-authority consortium solution template on Azure
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概述
-[此解决方案](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium)旨在利用最少的 Azure 和 Ethereum 知识使部署、配置和管理多成员联盟权威证明 Ethereum 网络变得更加轻松。
+[The Ethereum Proof-of-Authority Consortium Azure solution template](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) is designed to make it easier to deploy, configure, and govern a multi-member consortium Proof-of-authority Ethereum network with minimal Azure and Ethereum knowledge.
 
 通过 Azure 门户中的少量用户输入和一键式部署，每个成员都可以使用全球范围内的 Microsoft Azure 计算、网络和存储服务来预配网络内存占用。 每个成员的网络内存占用由一组负载均衡验证程序节点组成，应用程序或用户可以通过与这些节点交互来提交 Ethereum 事务。
 
@@ -40,15 +33,15 @@ ms.locfileid: "68698455"
 
 ### <a name="proof-of-authority"></a>权威证明
 
-对于那些刚刚进入区块链社区的人来说，该解决方案的发布是在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 工作量证明是一种抗 Sybil 机制，利用计算成本对网络进行自我调节并允许公平参与。 这非常适合开放的匿名区块链网络，其中加密货币的竞争提升了网络安全性。 但是，在专用/联盟网络中，基础 Ether 没有值。 证书颁发机构是一种替代协议, 更适用于所有共识参与者已知且可信的允许网络。 无需进行挖矿，权威证明更有效，同时仍保留拜占庭容错。
+对于那些刚刚进入区块链社区的人来说，该解决方案的发布是在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 工作量证明是一种抗 Sybil 机制，利用计算成本对网络进行自我调节并允许公平参与。 这非常适合开放的匿名区块链网络，其中加密货币的竞争提升了网络安全性。 但是，在专用/联盟网络中，基础 Ether 没有值。 An alternative protocol, proof-of-authority, is more suitable for permitted networks where all consensus participants are known and reputable. 无需进行挖掘，权威证明更有效，同时仍保留拜占庭容错。
 
 ### <a name="consortium-governance"></a>联盟治理
 
-由于证书颁发机构依赖于允许的网络颁发机构列表来使网络保持正常运行, 因此提供一种公平机制来对此权限列表进行修改非常重要。 每个部署都附带一组智能协定和门户, 适用于此允许列表的链间管理。 一旦提议的更改获得联盟成员的多数票，就会执行更改。 这允许以一种激励诚信网络的透明方式添加新的共识参与者或删除受到损害的参与者。
+Since proof-of-authority relies upon a permitted list of network authorities to keep the network healthy, it's important to provide a fair mechanism to make modifications to this permission list. Each deployment comes with a set of smart-contracts and portal for on-chain governance of this permitted list. 一旦提议的更改获得联盟成员的多数票，就会执行更改。 这允许以一种激励诚信网络的透明方式添加新的共识参与者或删除受到损害的参与者。
 
-### <a name="admin-account"></a>管理帐户
+### <a name="admin-account"></a>管理员帐户
 
-在部署证书颁发机构节点时, 系统会要求你提供管理员以太坊地址。 可使用多种不同的机制来生成 Ethereum 帐户并确保其安全。 将此地址添加为网络上的权威后，即可使用此帐户参与治理。 此管理员帐户还可用于将共识参与委托给作为此部署的一部分创建的验证程序节点。 由于仅使用公用以太坊地址, 因此每个管理员都可以灵活地以遵循其所需安全模式的方式保护其私钥。
+During the deployment of the proof-of-authority nodes, you'll be asked for an Admin Ethereum address. 可使用多种不同的机制来生成 Ethereum 帐户并确保其安全。 将此地址添加为网络上的权威后，即可使用此帐户参与治理。 此管理员帐户还可用于将共识参与委托给作为此部署的一部分创建的验证程序节点。 Since only the public Ethereum address is used, each admin has the flexibility to secure their private keys in a way that follows their wanted security model.
 
 ### <a name="validator-node"></a>验证程序节点
 
@@ -57,15 +50,15 @@ ms.locfileid: "68698455"
 
 ### <a name="identity-store"></a>标识存储区
 
-由于每个成员都有多个同时运行的验证程序节点, 并且每个节点都必须具有允许的标识, 因此, 验证程序可以安全地获取网络上的唯一活动标识, 这一点很重要。 为了使此过程更容易, 我们构建了一个标识存储, 该存储将部署在每个成员的订阅中, 以安全地保存生成的以太坊标识。 部署时, 业务流程容器将为每个验证程序生成以太坊私钥, 并将其存储在 Azure Key Vault 中。 在奇偶校验节点启动之前，它首先获取对未使用标识的租用，以确保该标识不会由另一个节点获取。 标识提供给为其授予开始创建块的权限的客户端。 如果托管 VM 发生故障，将释放标识租用，允许替换节点在将来恢复其标识。
+Since each member will have multiple validator nodes running simultaneously and each node must have a permitted identity, it's important that the validators can safely acquire a unique active identity on the network. To make this easier, we've built an Identity Store that gets deployed in each member's subscription that securely holds the generated Ethereum identities. Upon deployment, the orchestration container will generate an Ethereum private key for each validator and store it in Azure Key Vault. 在奇偶校验节点启动之前，它首先获取对未使用标识的租用，以确保该标识不会由另一个节点获取。 标识提供给为其授予开始创建块的权限的客户端。 如果托管 VM 发生故障，将释放标识租用，允许替换节点在将来恢复其标识。
 
 ### <a name="bootnode-registrar"></a>引导节点注册机构
 
-为了便于连接，每个成员都可在[数据 API 终结点](#data-api)上托管一组连接信息。 此数据包括作为联接成员的对等节点提供的 bootnodes 的列表。 作为此数据 API 的一部分，我们将此引导节点列表保持最新状态
+为了便于连接，每个成员都可在[数据 API 终结点](#data-api)上托管一组连接信息。 This data includes a list of bootnodes that are provided as peering nodes for the joining member. 作为此数据 API 的一部分，我们将此引导节点列表保持最新状态
 
 ### <a name="bring-your-own-operator"></a>自带运营商
 
-联盟成员通常希望参与网络治理，但不希望运营和维护其基础结构。 与传统系统不同，整个网络中只有一个运营商与区块链系统的分散模型是背道而驰的。 每个联盟成员都可以将基础结构管理委托给他们选择的运营商，而不是雇用同一中介来运营网络。 这允许使用混合模型, 其中每个成员都可以选择操作自己的基础结构或将操作委托给不同的合作伙伴。 委托运营工作流的工作方式如下：
+联盟成员通常希望参与网络治理，但不希望运营和维护其基础结构。 与传统系统不同，整个网络中只有一个运营商与区块链系统的分散模型是背道而驰的。 每个联盟成员都可以将基础结构管理委托给他们选择的运营商，而不是雇用同一中介来运营网络。 This allows a hybrid model where each member can choose to operate their own infrastructure or delegate operation to a different partner. 委托运营工作流的工作方式如下：
 
 1.  联盟成员生成 Ethereum 地址（保存私钥）
 
@@ -79,7 +72,7 @@ ms.locfileid: "68698455"
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-此解决方案还附带 Azure Monitor，用于跟踪节点和网络统计信息。 对于应用程序开发人员，这提供了对基础区块链的可见性，用于跟踪块生成统计信息。 网络运营商可以使用 Azure Monitor 通过基础结构统计信息和可查询日志快速检测并防止网络中断。 有关详细信息, 请参阅[服务监视](#service-monitoring)。
+此解决方案还附带 Azure Monitor，用于跟踪节点和网络统计信息。 对于应用程序开发人员，这提供了对基础区块链的可见性，用于跟踪块生成统计信息。 网络运营商可以使用 Azure Monitor 通过基础结构统计信息和可查询日志快速检测并防止网络中断。 For more information, see [Service monitoring](#service-monitoring).
 
 ### <a name="deployment-architecture"></a>部署体系结构
 
@@ -107,7 +100,7 @@ ms.locfileid: "68698455"
 
 我们利用 Docker 容器提供可靠性和模块性。 我们使用 Azure 容器注册表托管每个部署中包含的版本控制映像，并为其提供服务。 容器映像包括：
 
--   业务流程协调程序
+-   Orchestrator
 
     -   在部署期间运行一次
 
@@ -145,28 +138,28 @@ ms.locfileid: "68698455"
 -   **可审核的更改历史记录 -** 每次更改都记录在区块链上，提供了透明度和可审核性。
 
 #### <a name="getting-started-with-governance"></a>Governance 入门
-若要通过管理 DApp 执行任何类型的事务, 需要利用以太坊钱包。  最简单的方法是使用 [MetaMask](https://metamask.io) 等浏览器内电子钱包；但是，由于它们是网络上部署的智能合同，因此还可以自动化与 Governance 合同的交互。
+To perform any kind of transactions through the Governance DApp, you'll need to leverage an Ethereum wallet.  最简单的方法是使用 [MetaMask](https://metamask.io) 等浏览器内电子钱包；但是，由于它们是网络上部署的智能合同，因此还可以自动化与 Governance 合同的交互。
 
-安装 MetaMask 后，在浏览器中导航到 Governance DApp。  可以在部署确认电子邮件中或通过部署输出中的 Azure 门户查找 URL。  如果未安装浏览器内钱包, 将无法执行任何操作;但是, 您仍然可以读取管理员状态。  
+安装 MetaMask 后，在浏览器中导航到 Governance DApp。  可以在部署确认电子邮件中或通过部署输出中的 Azure 门户查找 URL。  If you don't have an in-browser wallet installed you'll not be able to perform any actions; however, you still can read the administrator state.  
 
 #### <a name="becoming-an-admin"></a>成为管理员
-如果你是在网络上部署的第一个成员, 则你将自动成为管理员, 而你的奇偶校验节点将作为验证程序列出。  如果加入网络, 你将需要以管理员身份 (超过 50%) 进行投票现有管理员集。  如果你选择不成为管理员，则节点仍将同步并验证区块链；但是，它们不会参与块创建过程。 若要启动投票过程以成为管理员，请单击“提名”并输入 Ethereum 地址和别名。
+If you're the first member that deployed on the network, then you'll automatically become an Admin and your Parity nodes will be listed as Validators.  If you're joining the network, you'll need to get voted in as an Admin by a majority (greater than 50%) of the existing Admin set.  如果你选择不成为管理员，则节点仍将同步并验证区块链；但是，它们不会参与块创建过程。 若要启动投票过程以成为管理员，请单击“提名”并输入 Ethereum 地址和别名。
 
 ![提名](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
 #### <a name="candidates"></a>候选人
-选择“候选人”选项卡将向你显示当前候选管理员集。  一旦候选人的票数超过当前管理员的票数，候选人就会被提升为管理员。若要对候选人进行投票，请选择该行，然后单击顶部的“投票”。  如果要更改投票，则可以选择候选人，然后单击“撤销投票”。
+选择“候选人”选项卡将向你显示当前候选管理员集。  Once a Candidate reaches a majority vote by the current Admins, the Candidate will get promoted to an Admin.  To vote on a Candidate, select the row and click "Vote in" at the top.  如果要更改投票，则可以选择候选人，然后单击“撤销投票”。
 
 ![候选人](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
 
 #### <a name="admins"></a>管理员
-“管理员”选项卡将显示当前管理员集并允许你投反对票。  管理员丢失超过 50% 的支持后, 将作为网络上的管理员删除。  此管理员拥有的任何验证程序节点将丢失验证程序状态并成为网络上的事务节点。  可能出于多种原因删除管理员;不过, 它会提前对策略达成一致。
+“管理员”选项卡将显示当前管理员集并允许你投反对票。  Once an Admin loses more than 50% support, they'll be removed as an Admin on the network.  此管理员拥有的任何验证程序节点将丢失验证程序状态并成为网络上的事务节点。  An Admin may be removed for any number of reasons; however, it's up to the consortium to agree on a policy in advance.
 
 ![管理员](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
 #### <a name="validators"></a>验证程序
-选择左侧菜单中的“验证程序”选项卡将显示此实例的当前已部署的奇偶校验节点及其当前状态（节点类型）。  由于此视图表示当前已部署的联合会成员, 因此每个联合会成员将在此列表中具有一组不同的验证器。  如果这是新部署的实例, 并且尚未添加验证程序, 则会显示 "添加验证程序" 选项。  选择此设置将自动选择突破均衡的奇偶校验节点集, 并将其分配给验证器集。  如果已部署的节点数大于允许的容量，则剩余节点将成为网络上的事务节点。
+选择左侧菜单中的“验证程序”选项卡将显示此实例的当前已部署的奇偶校验节点及其当前状态（节点类型）。  Each consortium member will have a different set of validators in this list, since this view represents the current deployed consortium member.  If this is a newly deployed instance and you haven't yet added your validators, you'll be shown the option to 'Add Validators'.  Selecting this will automatically choose a regionally balanced set of Parity nodes and assign them to your validator set.  如果已部署的节点数大于允许的容量，则剩余节点将成为网络上的事务节点。
 
 每个验证程序的地址将通过 Azure 中的[标识存储区](#identity-store)自动分配。  如果某个节点出现故障，则将放弃其标识，允许部署中的其他节点来取代它。  这可确保一致参与高度可用。
 
@@ -176,7 +169,7 @@ ms.locfileid: "68698455"
 任何管理员都可以更新页面顶部显示的联盟名称。  选择左上角的齿轮图标可更新联盟名称。
 
 #### <a name="account-menu"></a>帐户菜单
-右上角是 Ethereum 帐户别名和 identicon。  如果你是管理员, 则可以更新别名。
+右上角是 Ethereum 帐户别名和 identicon。  If you're an Admin you'll have the ability to update your alias.
 
 ![帐户](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
@@ -202,23 +195,23 @@ ms.locfileid: "68698455"
 
 以下部分介绍如何在网络中配置第一个成员的内存占用。 部署流程分为五个步骤：基础、部署区域、网络规模和性能、Ethereum 设置、Azure Monitor。
 
-#### <a name="basics"></a>基本
+#### <a name="basics"></a>基础
 
 在“基础”部分，为全部部署指定标准参数的值，例如订阅、资源组和基本虚拟机属性。
 
 每个参数的详细说明如下：
 
-参数名称|描述|允许值|默认值
+参数名称|描述|允许的值|默认值
 ---|---|---|---
 新建网络还是加入现有网络？|新建网络或加入预先存在的联盟网络|新建 加入现有|新建
-电子邮件地址（可选）|部署完成后，可收到包含相关部署信息的电子邮件通知。|有效的电子邮件地址|不可用
-VM 用户名|部署的每个 VM 的管理员用户名（仅限字母数字字符）|1-64 个字符|不可用
+电子邮件地址（可选）|部署完成后，可收到包含相关部署信息的电子邮件通知。|有效的电子邮件地址|NA
+VM 用户名|部署的每个 VM 的管理员用户名（仅限字母数字字符）|1-64 个字符|NA
 身份验证类型|对虚拟机进行身份验证的方法。|密码或 SSH 公钥|密码
-密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。  密码必须包含以下 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12-72 个字符|不可用
-SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell 密钥。||不可用
-订阅|部署联盟网络的订阅||不可用
-资源组|部署联盟网络的资源组。||不可用
-Location|资源组的 Azure 区域。||不可用
+密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。  密码必须包含下列要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 虽然所有 VM 最初都有相同的密码，但你可以在预配后更改密码。|12-72 个字符|NA
+SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell 密钥。||NA
+Subscription|部署联盟网络的订阅||NA
+资源组|部署联盟网络的资源组。||NA
+Location|资源组的 Azure 区域。||NA
 
 示例部署如下所示：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -228,14 +221,14 @@ Location|资源组的 Azure 区域。||不可用
 
 每个参数的详细说明如下：
 
-  参数名称|描述|允许值|默认值
+  参数名称|描述|允许的值|默认值
   ---|---|---|---
-  区域数量|部署联盟网络的区域数量|1、2、3、4、5|1
-  第一个区域|部署联盟网络的第一个区域|所有允许的 Azure 区域|不可用
-  第二个区域|部署联盟网络的第二个区域（仅在选择的区域数量为 2 时可见）|所有允许的 Azure 区域|不可用
-  第三个区域|部署联盟网络的第三个区域（仅在选择的区域数量为 3 时可见）|所有允许的 Azure 区域|不可用
-  第四个区域|部署联盟网络的第四个区域（仅在选择的区域数量为 4 时可见）|所有允许的 Azure 区域|不可用
-  第五个区域|部署联盟网络的第五个区域（仅在选择的区域数量为 5 时可见）|所有允许的 Azure 区域|不可用
+  区域数量|部署联盟网络的区域数量|1、2、3、4、5|第
+  第一个区域|部署联盟网络的第一个区域|所有允许的 Azure 区域|NA
+  第二个区域|部署联盟网络的第二个区域（仅在选择的区域数量为 2 时可见）|所有允许的 Azure 区域|NA
+  第三个区域|部署联盟网络的第三个区域（仅在选择的区域数量为 3 时可见）|所有允许的 Azure 区域|NA
+  第四个区域|部署联盟网络的第四个区域（仅在选择的区域数量为 4 时可见）|所有允许的 Azure 区域|NA
+  第五个区域|部署联盟网络的第五个区域（仅在选择的区域数量为 5 时可见）|所有允许的 Azure 区域|NA
 
 示例部署如下所示：![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -246,7 +239,7 @@ Location|资源组的 Azure 区域。||不可用
 
 每个参数的详细说明如下：
 
-  参数名称|描述|允许值|默认值
+  参数名称|描述|允许的值|默认值
   ---|---|---|---
   负载均衡验证程序节点数|要预配为网络组成部分的验证程序节点数|2-15|2
   验证程序节点存储性能|支持每个已部署验证程序节点的托管磁盘的类型。|标准 SSD 或高级|标准 SSD
@@ -256,13 +249,13 @@ Location|资源组的 Azure 区域。||不可用
 
 [虚拟机定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 
-虚拟机和存储层会影响网络性能。  根据所需的成本效益，我们建议使用以下 SKU：
+Virtual Machine and Storage Tier will affect network performance.  根据所需的成本效益，我们建议使用以下 SKU：
 
   虚拟机 SKU|存储层|价格|吞吐量|延迟
   ---|---|---|---|---
   F1|标准 SSD|低|低|高
   D2_v3|标准 SSD|中|中|中
-  F16s|高级 SSD|高|高|低
+  F16s|高级·SSD|高|高|低
 
 示例部署如下所示：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -272,32 +265,32 @@ Location|资源组的 Azure 区域。||不可用
 
 每个参数的详细说明如下：
 
-  参数名称|描述|允许值|默认值
+  参数名称|描述|允许的值|默认值
   ---|---|---|---
-联盟成员 ID|与参与联盟网络的每个成员相关联的 ID，用于配置 IP 地址空间以避免冲突。 在专用网络中，成员 ID 在同一网络中的不同组织之间应该是唯一的。  即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。 请记下此参数的值, 因为你需要与其他联接成员共享它, 以确保不会发生冲突。|0-255|不可用
+联盟成员 ID|与参与联盟网络的每个成员相关联的 ID，用于配置 IP 地址空间以避免冲突。 在专用网络中，成员 ID 在同一网络中的不同组织之间应该是唯一的。  即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。 Make note of the value of this parameter since you'll need to share it with other joining members to ensure there’s no collision.|0-255|NA
 网络 ID|要部署的 Ethereum 联盟网络的网络 ID。  每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。|5 - 999,999,999|10101010
-管理员 Ethereum 地址|用于参与 PoA 治理的 Ethereum 帐户地址。  建议使用 MetaMask 生成 Ethereum 地址。|以 0x 开头的 42 个字母数字字符|不可用
+管理员 Ethereum 地址|用于参与 PoA 治理的 Ethereum 帐户地址。  建议使用 MetaMask 生成 Ethereum 地址。|以 0x 开头的 42 个字母数字字符|NA
 高级选项|用于 Ethereum 设置的高级选项|启用或禁用|禁用
 公共 IP（高级选项 = 启用）|在 VNet 网关后方部署网络，并删除对等互连访问权限。 如果选择了此选项，则所有成员都必须使用 VNet 网关进行连接，以确保兼容性。|公共 IP 专用 VNet|公共 IP
 区块燃料限制（高级选项 = 启用）|网络的起始区块燃料限制|任意数字|50000000
 区块重新封装时间段（秒）|网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。|任意数字|15
-事务权限协定（高级选项 = 启用）|事务权限协定的字节码。 将智能协定部署和执行限制到以太坊帐户的允许列表。|协定字节码|不可用
+事务权限协定（高级选项 = 启用）|事务权限协定的字节码。 Restricts smart contract deployment and execution to a permitted list of Ethereum accounts.|协定字节码|NA
 
 示例部署如下所示：![ethereum 设置](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>监视
 
-"监视" 边栏选项卡允许你为网络配置 Azure Monitor 日志资源。 监视代理从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。
+The Monitoring blade allows you to configure an Azure Monitor logs resource for your network. 监视代理从网络收集并显示有用的指标和日志，从而提供快速检查网络运行状况或调试问题的功能。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-  参数名称|描述|允许值|默认值
+  参数名称|描述|允许的值|默认值
   ---|---|---|---
 监视|启用监视的选项|启用或禁用|启用
-连接到现有 Azure Monitor 日志|创建新 Azure Monitor 日志实例或加入现有实例|新建或加入现有|新建
-监视位置 (连接到现有 Azure Monitor 日志 = 新建)|将在其中部署新 Azure Monitor 日志实例的区域|所有 Azure Monitor 日志区域|不可用
-现有 log analytics 工作区 ID (连接到现有 Azure Monitor 日志 = 加入现有的)|现有 Azure Monitor 日志实例的工作区 ID||不可用
-现有 log analytics 主密钥 (连接到现有 Azure Monitor 日志 = 加入现有的日志)|用于连接到现有 Azure Monitor 日志实例的主键||不可用
+Connect to existing Azure Monitor logs|Create a new Azure Monitor logs instance or join an existing instance|新建或加入现有|新建
+Monitor Location(Connect to existing Azure Monitor logs= Create new)|The region where the new Azure Monitor logs instance will be deployed|All Azure Monitor logs regions|NA
+Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing)|Workspace ID of the existing Azure Monitor logs instance||NA
+Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing)|The primary key used to connect to the existing Azure Monitor logs instance||NA
 
 
 示例部署如下所示：![azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
@@ -312,7 +305,7 @@ Location|资源组的 Azure 区域。||不可用
 
 ##### <a name="deployment-output"></a>部署输出
 
-部署完成后, 可以通过确认电子邮件或 Azure 门户访问所需的参数。 这些参数中，可看到：
+Once the deployment has completed, you can access the necessary parameters via the confirmation email or through the Azure portal. 这些参数中，可看到：
 
 -   Ethereum RPC 终结点
 
@@ -332,7 +325,7 @@ Location|资源组的 Azure 区域。||不可用
 
 ##### <a name="portal"></a>门户
 
-成功完成部署并设置所有资源后, 你可以查看资源组中的输出参数。
+Once the deployment has completed successfully and all resources have been provisioned you can view the output parameters in your resource group.
 
 1.  在门户中找到自己的资源组
 
@@ -345,7 +338,7 @@ Location|资源组的 Azure 区域。||不可用
 ### <a name="growing-the-consortium"></a>扩大联盟
 
 要扩展联盟，首先必须连接物理网络。
-此首要步骤使用基于公共 IP 的部署，可顺畅完成。 如果在 VPN 后面部署, 请参阅[连接 VNet 网关](#connecting-vnet-gateways)以在新成员部署过程中执行网络连接一节。  完成部署后，请使用 [Governance DApp](#governance-dapp) 成为网络管理员。
+此首要步骤使用基于公共 IP 的部署，可顺畅完成。 If deploying behind a VPN, see the section [Connecting VNet Gateway](#connecting-vnet-gateways) to do the network connection as part of the new member deployment.  完成部署后，请使用 [Governance DApp](#governance-dapp) 成为网络管理员。
 
 #### <a name="new-member-deployment"></a>新成员部署
 
@@ -371,7 +364,7 @@ Location|资源组的 Azure 区域。||不可用
 
 #### <a name="connecting-vnet-gateways"></a>连接 VNet 网关
 
-如果已使用默认的公共 IP 设置进行部署，则可以忽略此步骤。 在专用网络中，不同的成员通过 VNet 网关连接进行连接。 在成员可以加入网络并查看事务流量之前, 现有成员必须在其 VPN 网关上执行最终配置, 以接受连接。 这意味着在建立连接之前, 联接成员的以太坊节点将不会运行。 建议在协会中创建冗余网络连接 (网格), 以减少单点故障的可能性。
+如果已使用默认的公共 IP 设置进行部署，则可以忽略此步骤。 在专用网络中，不同的成员通过 VNet 网关连接进行连接。 Before a member can join the network and see transaction traffic, an existing member must do a final configuration on their VPN gateway to accept the connection. This means that the Ethereum nodes of the joining member won't run until a connection is established. It's recommended to create redundant network connections (mesh) into the consortium to reduce chances of a single point of failure.
 
 部署新成员后，现有成员必须通过设置与新成员的 VNet 网关连接来完成双向连接。 为此，现有成员需要：
 
@@ -379,7 +372,7 @@ Location|资源组的 Azure 区域。||不可用
 
 2.  共享的连接密钥
 
-现有成员必须运行以下 PowerShell 脚本来完成连接。 建议使用门户中右上方导航栏中的 Azure Cloud Shell。
+现有成员必须运行以下 PowerShell 脚本来完成连接。 We recommend using Azure Cloud Shell located in the top-right navigation bar in the portal.
 
 ![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
@@ -429,7 +422,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $
 
 ![网络统计信息](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-kusto-queries"></a>示例 Kusto 查询
+#### <a name="sample-kusto-queries"></a>Sample Kusto queries
 
 这些仪表板之后是一组可查询的原始日志。 可以使用这些原始日志自定义仪表板、调查失败或设置阈值警报。 下方是一组可在日志搜索工具中运行的示例查询：
 
@@ -455,7 +448,7 @@ ParityLog_CL
 
 ### <a name="ssh-access"></a>SSH 访问权限
 
-出于安全因素，默认情况下，网络组安全规则拒绝 SSH 端口访问。 若要访问 PoA 网络中的虚拟机实例, 需要将此规则更改为\""允许"\"
+出于安全因素，默认情况下，网络组安全规则拒绝 SSH 端口访问。 To access the virtual machine instances in the PoA network, you'll need to change this rule to \"Allow\"
 
 1.  从 Azure 门户中已部署资源组的“概述”部分开始。
 
@@ -484,7 +477,7 @@ ParityLog_CL
 
 Azure 流量管理器可通过路由不同区域中多个部署间的传入流量，帮助减少故障时间并加快 PoA 网络的响应速度。 内置运行状况检查和自动重新路由功能有助于确保 RPC 终结点和 Governance DApp 的高可用性。 如果已部署到多个区域并且已准备好投入生产，则此功能非常有用。
 
-通过使用流量管理器，可以：
+通过使用 Traffic Manager，可以：
 
 -   借助自动故障转移改进 PoA 网络可用性。
 
@@ -502,7 +495,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 ![创建流量管理器](./media/ethereum-poa-deployment/traffic-manager-create.png)
 
-部署后, 选择资源组中的实例。 可以在“概述”选项卡中找到用于访问流量管理器的 DNS 名称
+Once it's deployed, then select the instance in the resource group. 可以在“概述”选项卡中找到用于访问流量管理器的 DNS 名称
 
 ![查找流量管理器 DNS](./media/ethereum-poa-deployment/traffic-manager-dns.png)
 
@@ -510,15 +503,15 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 ![路由流量管理器](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-对已部署网络中的每个区域重复此操作。 终结点处于 "已启用\"\" " 状态后, 它们将自动加载并在流量管理器的 DNS 名称中进行区域平衡。 现在，可以在文档的其他步骤中使用此 DNS 名称替代 \[CONSORTIUM\_DATA\_URL\] 参数。
+对已部署网络中的每个区域重复此操作。 Once the endpoints are in the \"enabled\" status, they'll be automatically load and region balanced at the DNS name of the traffic manager. 现在，可以在文档的其他步骤中使用此 DNS 名称替代 \[CONSORTIUM\_DATA\_URL\] 参数。
 
 ### <a name="data-api"></a>数据 API
 
-每个联盟成员都拥有其他成员连接到网络所需的信息。 现有成员将在该成员的部署之前提供 [CONSORTIUM_DATA_URL]。 部署后，加入的成员可从以下终结点的 JSON 接口检索信息：
+每个联盟成员都拥有其他成员连接到网络所需的信息。 The existing member will provide the [CONSORTIUM_DATA_URL] before the member's deployment. 部署后，加入的成员可从以下终结点的 JSON 接口检索信息：
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-响应将包含有助于联接成员 (Genesis 块、验证程序集协定 ABI、bootnodes) 的信息, 以及对现有成员有用的信息 (验证程序地址)。 我们鼓励使用此标准化来跨云提供程序扩展联盟。 此 API 返回具有以下结构的 JSON 格式的响应：
+The response will contain information useful for joining members (Genesis block, Validator Set contract ABI, bootnodes) and information useful to the existing member (validator addresses). 我们鼓励使用此标准化来跨云提供程序扩展联盟。 此 API 返回具有以下结构的 JSON 格式的响应：
 ```json
 {
   "$id": "",
@@ -760,7 +753,7 @@ Truffle 具有可用于调试智能合同的本地开发网络。 可在[此处]
 
 ## <a name="reference"></a>参考
 
-### <a name="faq"></a>常见问题
+### <a name="faq"></a>常见问题解答
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我在网络上看到许多未发送的事务。 这些事务来自哪里？
 

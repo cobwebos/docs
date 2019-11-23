@@ -1,19 +1,19 @@
 ---
-title: Apache Spark & Apache Kafka 与 Cosmos DB-Azure HDInsight
+title: Apache Spark & Apache Kafka with Cosmos DB - Azure HDInsight
 description: 了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka 读取数据，然后将数据存储到 Azure Cosmos DB 中。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 11/18/2019
+ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044898"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406172"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
 
@@ -32,7 +32,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 ## <a name="create-the-clusters"></a>创建群集
 
-Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the public internet. 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
@@ -55,53 +55,36 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
    * Spark on HDInsight 3.6 群集。
 
-   * 包含 HDInsight 群集的 Azure 虚拟网络。
-
-       > [!NOTE]  
-       > 通过模板创建的虚拟网络使用 10.0.0.0/16 地址空间。
+   * 包含 HDInsight 群集的 Azure 虚拟网络。 通过模板创建的虚拟网络使用 10.0.0.0/16 地址空间。
 
    * Azure Cosmos DB SQL API 数据库。
 
-     > [!IMPORTANT]  
-     > 本示例使用的结构化流式处理笔记本需要 Spark on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
+    > [!IMPORTANT]  
+    > 本示例使用的结构化流式处理笔记本需要 Spark on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
 
-2. 使用以下信息填充“自定义部署”部分中的条目：
+1. 使用以下信息填充“自定义部署”部分中的条目：
 
-    ![HDInsight 自定义部署值](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+    |properties |Value |
+    |---|---|
+    |Subscription|选择 Azure 订阅。|
+    |Resource group|创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。|
+    |Cosmos DB Account Name|此值用作 Cosmos DB 帐户的名称。 The name can only contain lowercase letters, numbers, and the hyphen (-) character. 它的长度必须介于 3 到 31 个字符之间。|
+    |Base Cluster Name|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集。|
+    |Cluster Version|HDInsight 群集版本。 此示例使用 HDInsight 3.6 进行测试，可能不适用于其他群集类型。|
+    |群集登录用户名|Spark 和 Kafka 群集的管理员用户名。|
+    |群集登录密码|Spark 和 Kafka 群集的管理员用户密码。|
+    |Ssh User Name|创建 Spark 和 Kafka 群集的 SSH 用户。|
+    |Ssh Password|Spark 和 Kafka 群集的 SSH 用户的密码。|
 
-    * **订阅**：选择 Azure 订阅。
+    ![HDInsight custom deployment values](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-    * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
+1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-    * **位置**：选择在地理上邻近的位置。
-
-    * **Cosmos DB 帐户名**：此值用作 Cosmos DB 帐户的名称。
-
-    * **基群集名称**：此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集。
-
-    * **群集版本**：HDInsight 群集版本。
-
-        > [!IMPORTANT]  
-        > 此示例使用 HDInsight 3.6 进行测试，可能不适用于其他群集类型。
-
-    * **群集登录用户名**：Spark 和 Kafka 群集的管理员用户名。
-
-    * **群集登录密码**：Spark 和 Kafka 群集的管理员用户密码。
-
-    * **SSH 用户名**：创建 Spark 和 Kafka 群集的 SSH 用户。
-
-    * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
-
-3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
-
-4. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
-
-> [!IMPORTANT]  
-> 创建群集、虚拟网络和 Cosmos DB 帐户最多可能需要 45 分钟时间。
+1. 最后，选择“购买”。 创建群集、虚拟网络和 Cosmos DB 帐户最多可能需要 45 分钟时间。
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>创建 Cosmos DB 数据库和集合
 
-本文档使用的项目在 Cosmos DB 中存储数据。 运行代码之前，必须首先在 Cosmos DB 实例中创建数据库和集合。 还必须检索文档终结点，以及用于对 Cosmos DB 的请求进行身份验证的密钥。 
+本文档使用的项目在 Cosmos DB 中存储数据。 运行代码之前，必须首先在 Cosmos DB 实例中创建数据库和集合。 还必须检索文档终结点，以及用于对 Cosmos DB 的请求进行身份验证的密钥。
 
 可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 执行此操作。 以下脚本将创建名为 `kafkadata` 的数据库和名为 `kafkacollection` 的集合。 然后，将返回主键。
 
@@ -119,15 +102,16 @@ databaseName='kafkadata'
 collectionName='kafkacollection'
 
 # Create the database
-az cosmosdb database create --name $name --db-name $databaseName --resource-group $resourceGroupName
+az cosmosdb sql database create --account-name $name --name $databaseName --resource-group $resourceGroupName
+
 # Create the collection
-az cosmosdb collection create --collection-name $collectionName --name $name --db-name $databaseName --resource-group $resourceGroupName
+az cosmosdb sql container create --account-name $name --database-name $databaseName --name $collectionName --partition-key-path "/my/path" --resource-group $resourceGroupName
 
 # Get the endpoint
 az cosmosdb show --name $name --resource-group $resourceGroupName --query documentEndpoint
 
 # Get the primary key
-az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query primaryMasterKey
+az cosmosdb keys list --name $name --resource-group $resourceGroupName --type keys
 ```
 
 文档终结点和主键信息与以下文本类似：
@@ -141,38 +125,6 @@ az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query p
 
 > [!IMPORTANT]  
 > 保存终结点和键值，以便用于 Jupyter 笔记本。
-
-## <a name="get-the-apache-kafka-brokers"></a>获取 Apache Kafka 中转站
-
-本示例中的代码连接到 Kafka 群集中的 Kafka 中转站主机。 若要查找两个 Kafka 中转站主机的地址，请使用以下 PowerShell 或 Bash 示例：
-
-```powershell
-$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
-$clusterName = Read-Host -Prompt "Enter the Kafka cluster name"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER" `
-    -Credential $creds `
-    -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
-($brokerHosts -join ":9092,") + ":9092"
-```
-
-> [!NOTE]  
-> Bash 示例需要 `$CLUSTERNAME` 包含 Kafka 群集的名称。
->
-> 本示例使用 [jq](https://stedolan.github.io/jq/) 实用工具来分析 JSON 文档外的数据。
-
-```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
-```
-
-出现提示时，输入群集登录（管理员）帐户的密码
-
-输出与以下文本类似：
-
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
-
-保存此信息，因为本文档的后面部分还将用到此信息。
 
 ## <a name="get-the-notebooks"></a>获取笔记本
 
@@ -204,7 +156,7 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已了解如何使用 Apache Spark 结构化流式处理，请参阅下列文档，深入了解如何使用 Apache Spark、Apache Kafka 和 Azure Cosmos DB：
+Now that you've learned how to use Apache Spark Structured Streaming, see the following documents to learn more about working with Apache Spark, Apache Kafka, and Azure Cosmos DB:
 
 * [如何将 Apache Spark 流式处理 (DStream) 与 Apache Kafka 配合使用](hdinsight-apache-spark-with-kafka.md)。
 * [开始使用 Jupyter Notebook 和 Apache Spark on HDInsight](spark/apache-spark-jupyter-spark-sql.md)
