@@ -11,30 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200241"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420601"
 ---
-# <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
+# <a name="manage-device-identities-using-the-azure-portal"></a>Manage device identities using the Azure portal
 
-通过 Azure Active Directory （Azure AD）中的设备标识管理，可以确保用户从满足安全和合规性标准的设备访问资源。
+With device identity management in Azure Active Directory (Azure AD), you can ensure that your users are accessing your resources from devices that meet your standards for security and compliance.
 
 本文：
 
-- 假设你熟悉[中的设备标识管理简介 Azure Active Directory](overview.md)
-- 提供有关使用 Azure AD 门户管理设备标识的信息
+- Assumes that you are familiar with the [introduction to device identity management in Azure Active Directory](overview.md)
+- Provides you with information about managing your device identities using the Azure AD portal
 
 ## <a name="manage-device-identities"></a>管理设备标识
 
-Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)或按照以下手动步骤转到此位置：
+The Azure AD portal provides you with a central place to manage your device identities. 可以使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)或按照以下手动步骤转到此位置：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧导航栏中，单击“Active Directory”。
 
-   ![配置设备设置](./media/device-management-azure-portal/01.png)
+2. Search for and select **Azure Active Directory** or select it from the **Home** page.
 
 3. 在“管理”部分单击“设备”。
 
@@ -44,12 +43,12 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 - 配置设备设置
 - 查找设备
-- 执行设备标识管理任务
-- 查看与设备相关的审核日志  
+- Perform device identity management tasks
+- Review device-related audit logs  
   
 ## <a name="configure-device-settings"></a>配置设备设置
 
-若要使用 Azure AD 门户管理设备标识，你的设备需要[已注册或已加入](overview.md)Azure AD。 作为管理员，可以通过配置设备设置来微调注册和加入设备的过程。
+To manage your device identities using the Azure AD portal, your devices need to be either [registered or joined](overview.md) to Azure AD. 作为管理员，可以通过配置设备设置来微调注册和加入设备的过程。
 
 ![配置设备设置](./media/device-management-azure-portal/22.png)
 
@@ -57,22 +56,22 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 ![管理 Intune 设备](./media/device-management-azure-portal/21.png)
 
-- **用户可以将设备加入到 Azure AD** -此设置使你能够选择可将其设备注册为 Azure AD 加入设备的用户。 默认值为“全部”。
+- **Users may join devices to Azure AD** - This setting enables you to select the users who can register their devices as Azure AD joined devices. 默认值为“全部”。
 
 > [!NOTE]
-> **用户可以将设备加入到 Azure AD**设置仅适用于 Windows 10 上的 Azure AD 加入。
+> **Users may join devices to Azure AD** setting is only applicable to Azure AD join on Windows 10.
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 此处添加的用户会添加到 Azure AD 中的“设备管理员”角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
-- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOs 设备。 如果选择 "**无**"，则不允许设备注册 Azure AD。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
-- **需要多重身份验证才能加入设备**-可以选择是否要求用户提供附加身份验证因素，以将其设备加入 Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 
+- **Users may register their devices with Azure AD** - You need to configure this setting to allow Windows 10 personal, iOS, Android, and macOs devices to be registered with Azure AD. If you select **None**, devices are not allowed to register with Azure AD. 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
+- **Require Multi-Factor Auth to join devices** - You can choose whether users are required to provide an additional authentication factor to join their device to Azure AD. 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 
 
 > [!NOTE]
-> **需要多重身份验证加入设备**"设置适用于 Azure AD 联接或 Azure AD 注册的设备。 此设置不适用于混合 Azure AD 连接设备。
+> **Require Multi-Factor Auth to join devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
 
-- **最大设备数**-通过此设置，可以选择用户可以在 Azure AD 中具有的 Azure AD 联接或 Azure AD 注册设备的最大数量。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为 20。
+- **Maximum number of devices** - This setting enables you to select the maximum number of Azure AD joined or Azure AD registered devices that a user can have in Azure AD. 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为 20。
 
 > [!NOTE]
-> "**最大设备数**" 设置适用于 Azure AD 联接或注册 Azure AD 的设备。 此设置不适用于混合 Azure AD 连接设备。
+> **Maximum number of devices** setting applies to devices that are either Azure AD joined or Azure AD registered. This setting does not apply to hybrid Azure AD joined devices.
 
 - **用户可跨设备同步设置和应用数据** - 此设置默认为“无”。 选择特定用户或组，或者选择“全部”，允许用户跨其 Windows 10 设备同步设置和应用数据。 深入了解 Windows 10 中同步的工作原理。
 此选项属于高级功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
@@ -91,7 +90,7 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 使用这两个选项均可获得一个具有以下功能的视图：
 
-- 使你能够使用显示名称或设备 ID 作为筛选器来搜索设备。
+- Enables you to search for devices using the display name or device ID as filter.
 - 提供有关已注册和已加入设备的详细概述
 - 支持执行常见的设备管理任务
 
@@ -99,24 +98,24 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 >[!TIP]
 >
->* 如果在 "已注册" 列下看到 "混合 Azure AD 联接" 状态为 "挂起" 的设备，则表示设备已从 Azure AD 连接同步，并正在等待客户端完成注册。 阅读有关如何[计划混合 Azure AD 联接实现](hybrid-azuread-join-plan.md)的详细信息。 有关详细信息，请参阅[设备常见问题解答](faq.md)。
+>* If you see a device that is "Hybrid Azure AD joined" with a state "Pending" under the REGISTERED column, it indicates that the device has been synchronized from Azure AD connect and is waiting to complete registration from the client. Read more on how to [plan your Hybrid Azure AD join implementation](hybrid-azuread-join-plan.md). Additional information can be found in the article, [Devices frequently asked questions](faq.md).
 >
->   ![挂起的设备](./media/device-management-azure-portal/75.png)
+>   ![Pending devices](./media/device-management-azure-portal/75.png)
 >
->* 对于某些 iOS 设备，包含单引号的设备名可能会使用看起来像单引号的不同字符。 因此搜索此类设备有点棘手：如果您不能正确地看到搜索结果，请确保搜索字符串包含匹配的撇号字符。
+>* 对于某些 iOS 设备，包含单引号的设备名可能会使用看起来像单引号的不同字符。 So searching for such devices is a little tricky - if you are not seeing search results correctly, ensure that the search string contains matching apostrophe character.
 
-## <a name="device-identity-management-tasks"></a>设备标识管理任务
+## <a name="device-identity-management-tasks"></a>Device identity management tasks
 
-作为全局管理员或云设备管理员，你可以管理已注册或已加入的设备。 Intune 服务管理员可执行以下操作：
+As a global administrator or cloud device administrator, you can manage the registered or joined devices. Intune 服务管理员可执行以下操作：
 
 - 更新设备 - 例如启用/禁用设备等日常操作
 - 删除设备 - 设备停用且应在 Azure AD 中将其删除时
 
-本部分提供有关常见设备标识管理任务的信息。
+This section provides you with information about common device identity management tasks.
 
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
 
-Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果设备未向注册 Microsoft Intune "管理" 选项将灰显。
+Intune 管理员可以管理标记为“Microsoft Intune”的设备。 If the device is not enrolled with Microsoft Intune the "Manage" option will be greyed out.
 
 ![管理 Intune 设备](./media/device-management-azure-portal/31.png)
 
@@ -134,9 +133,9 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 
 **备注：**
 
-- 若要启用/禁用设备，你必须是中的全局管理员或云设备管理员 Azure AD。 
-- 禁用设备会阻止设备在 Azure AD 上成功进行身份验证，从而阻止设备访问由设备 CA 或使用 WH4B 凭据保护的 Azure AD 资源。
-- 禁用设备将同时撤消设备上的主刷新令牌（PRT）和任何刷新令牌（RT）。
+- You need to be a global administrator or cloud device administrator in Azure AD to enable / disable a device. 
+- Disabling a device prevents a device from successfully authenticating with Azure AD, thereby preventing the device from accessing your Azure AD resources that are guarded by device CA or using your WH4B credentials.
+- Disabling the device will revoke both the Primary Refresh Token (PRT) and any Refresh Tokens (RT) on the device.
 
 ### <a name="delete-an-azure-ad-device"></a>删除 Azure AD 设备
 
@@ -158,7 +157,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
    - 可删除附加到设备的所有详细信息，例如适用于 Windows 设备的 BitLocker 密钥。  
    - 表示一个不可恢复的活动，除非必需，否则不建议。
 
-如果设备由另一管理机构（例如 Microsoft Intune）管理，请确保在 Azure AD 中删除设备之前已擦除/停用设备。 删除任何设备之前，请查看如何[管理过时设备](device-management-azure-portal.md)。
+If a device is managed by another management authority (for example, Microsoft Intune), make sure that the device has been wiped / retired before deleting the device in Azure AD. Review how to [manage stale devices](device-management-azure-portal.md) before deleting any devices.
 
 ### <a name="view-or-copy-device-id"></a>查看或复制设备 ID
 
@@ -186,7 +185,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 
 ## <a name="audit-logs"></a>审核日志
 
-设备活动通过活动日志提供。 这些日志包括设备注册服务和用户触发的活动：
+设备活动通过活动日志提供。 These logs include activities triggered by the device registration service and by users:
 
 - 创建设备并在设备上添加所有者/用户
 - 更改设备设置
@@ -224,4 +223,4 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。 如果�
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何在 Azure AD 中管理过时设备](manage-stale-devices.md)
+[How to manage stale devices in Azure AD](manage-stale-devices.md)

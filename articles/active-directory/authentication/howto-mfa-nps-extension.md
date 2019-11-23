@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5faf7c73e071b1eb075a72dac103b92e982ed84
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8388d5b22cddcf148c68f35758ccdf797abbcd9e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381746"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420641"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -68,9 +68,9 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 使用 NPS 扩展的任何用户必须使用 Azure AD Connect 同步到 Azure Active Directory，并且必须注册 MFA。
 
-安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录，在左侧选择“Azure Active Directory”图标，然后选择“属性”即可。 复制“目录 ID”框中的 GUID 并保存。 安装 NPS 扩展时，使用此 GUID 作为租户 ID。
+安装该扩展时，需要使用 Azure AD 租户的目录 ID 和管理员凭据。 可在 [Azure 门户](https://portal.azure.com)中找到该目录 ID。 以管理员身份登录。 Search for and select the **Azure Active Directory**, then select **Properties**. 复制“目录 ID”框中的 GUID 并保存。 安装 NPS 扩展时，使用此 GUID 作为租户 ID。
 
-![在 Azure Active Directory 属性下找到目录 ID](./media/howto-mfa-nps-extension/find-directory-id.png)
+![在 Azure Active Directory 属性下找到目录 ID](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
 ### <a name="network-requirements"></a>网络要求
 

@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和 S2S VPN 共存连接： Azure PowerShell
+title: 'Configure ExpressRoute and S2S VPN coexisting connections: Azure PowerShell'
 description: 使用 PowerShell 为资源管理器模型配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接。
 services: expressroute
 author: charwen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 84c4d466a820616b8f8dfa69cfa149cb86006f49
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132852"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423584"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -38,7 +38,7 @@ ms.locfileid: "74132852"
 ## <a name="limits-and-limitations"></a>限制和局限性
 * **不支持传输路由。** 无法在通过站点到站点 VPN 连接的本地网络与通过 ExpressRoute 连接的本地网络之间进行路由（通过 Azure）。
 * **不支持基本 SKU 网关。** 必须为 [ExpressRoute 网关](expressroute-about-virtual-network-gateways.md)和 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)使用非基本 SKU 网关。
-* **仅支持基于路由的 VPN 网关。** 必须使用基于路由的[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 你还可以使用基于路由的 VPN 网关，并将 VPN 连接配置为基于策略的流量选择器，如[连接到多个基于策略的 VPN 设备](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
+* **仅支持基于路由的 VPN 网关。** You must use a route-based [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). You also can use a route-based VPN gateway with a VPN connection configured for 'policy-based traffic selectors' as described in [Connect to multiple policy-based VPN devices](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **应该为 VPN 网关配置静态路由。** 如果本地网络同时连接到 ExpressRoute 和站点到站点 VPN，则必须在本地网络中配置静态路由，以便将站点到站点 VPN 连接路由到公共 Internet。
 * **如果未指定，则 VPN 网关将默认为 ASN 65515。** Azure VPN 网关支持 BGP 路由协议。 通过添加 -Asn 开关，可为虚拟网络指定 ASN（AS 编号）。 如果未指定此参数，则默认 AS 编号为 65515。 可以将任何 ASN 用于配置，但如果选择 65515 以外的其他 ASN，则必须重置网关才能使设置生效。
 
@@ -71,7 +71,7 @@ ms.locfileid: "74132852"
     如果还没有虚拟网络，此过程将指导使用 Resource Manager 部署模型创建新的虚拟网络，并创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置虚拟网络，请遵循[创建新的虚拟网络和并存连接](#new)中的步骤。
 * 我已有一个 Resource Manager 部署模型 VNet。
   
-    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 在此场景下，如果网关子网掩码为 /28 或更小（/28、/29、等等），则必须删除现有网关。 [为现有的 VNet 配置并存连接](#add) 部分将指导删除网关，并创建新的 ExpressRoute 连接和站点到站点 VPN 连接。
+    可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 在此场景下，如果网关子网掩码为 /28 或更小（/28、/29、等等），则必须删除现有网关。 [为现有的 VNet 配置并存连接](#add) 部分指导删除网关，然后创建新的 ExpressRoute 连接和站点到站点 VPN 连接。
   
     如果删除并重新创建网关，则跨界连接将会中断一段时间。 但是，在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
 
@@ -88,7 +88,7 @@ ms.locfileid: "74132852"
 1. 登录并选择订阅。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 设置变量。
+2. Set variables.
 
    ```azurepowershell-interactive
    $location = "Central US"
@@ -216,15 +216,13 @@ ms.locfileid: "74132852"
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. 此时，已有不带网关的虚拟网络。 若要创建新网关并设置连接，请使用以下示例：
+4. 此时，已有不带网关的虚拟网络。 To create new gateways and set up the connections, use the following examples:
 
    设置变量。
 
     ```azurepowershell-interactive
    $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
@@ -243,7 +241,7 @@ ms.locfileid: "74132852"
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 
-可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 若要上传 VPN 根证书，必须以本地方式将 PowerShell 安装到计算机，或者使用 Azure 门户。
+可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 To upload the VPN root certificate, you must either install PowerShell locally to your computer, or use the Azure portal.
 
 1. 添加 VPN 客户端地址池。
 
@@ -251,7 +249,7 @@ ms.locfileid: "74132852"
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. 为 VPN 网关将 VPN 根证书上传到 Azure。 在此示例中，假定根证书存储在运行以下 PowerShell cmdlet 的本地计算机中，并且你在本地运行 PowerShell。 也可使用 Azure 门户来上传证书。
+2. 为 VPN 网关将 VPN 根证书上传到 Azure。 In this example, it's assumed that the root certificate is stored in the local machine where the following PowerShell cmdlets are run and that you are running PowerShell locally. You can also upload the certificate using the Azure portal.
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

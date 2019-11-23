@@ -1,6 +1,6 @@
 ---
-title: 从 Azure 媒体编码器迁移到 Media Encoder Standard | Microsoft Docs
-description: 本主题介绍如何从 Azure 媒体编码器迁移到 Media Encoder Standard 媒体处理器。
+title: Migrate from Azure Media Encoder to Media Encoder Standard | Microsoft Docs
+description: This topic discusses how to migrate from Azure Media Encoder to the Media Encoder Standard media processor.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: d2ed1d5e0cf0e42c3f916ab33f860039b5d5f781
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: e9c83a25147696b5e492241a191b3104df001c7c
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196461"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424016"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>从 Azure 媒体编码器迁移到 Media Encoder Standard
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrate from Azure Media Encoder to Media Encoder Standard
 
-本文介绍了从 2019 年 11 月 30 日停用的旧 Azure 媒体编码器 (AME) 媒体处理器迁移到 Media Encoder Standard 媒体处理器的步骤。  
+This article discusses the steps for migrating from the legacy Azure Media Encoder (AME) media processor, which is being retired on March 1, 2020, to the Media Encoder Standard media processor.  
 
-使用 AME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 AME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
+When encoding files with AME, customers typically used a named preset string such as `H264 Adaptive Bitrate MP4 Set 1080p`. In order to migrate, your code needs to be updated to use the **Media Encoder Standard** media processor instead of AME, and one of the equivalent [system presets](media-services-mes-presets-overview.md) like `H264 Multiple Bitrate 1080p`. 
 
-## <a name="migrating-to-media-encoder-standard"></a>迁移到 Media Encoder Standard
+## <a name="migrating-to-media-encoder-standard"></a>Migrating to Media Encoder Standard
 
-下面是使用旧媒体处理器的典型 C# 代码示例。 
+Here is a typical C# code sample that uses the legacy media processor. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-下面是使用 Media Encoder Standard 的已更新版本。
+Here is the updated version that uses Media Encoder Standard.
 
 ```csharp
 // Declare a new job. 
@@ -64,15 +64,15 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高级方案 
 
-如果已使用 AME 的架构为 AME 创建了自己的编码预设，则会有一个[用于 Media Encoder Standard 的等效架构](media-services-mes-schema.md)。 如果有关于如何将较旧的设置映射到新编码器的问题, 请通过 mailto:amshelp@microsoft.com  
-## <a name="known-differences"></a>已知差异 
+If you had created your own encoding preset for AME using its schema, there is an [equivalent schema for Media Encoder Standard](media-services-mes-schema.md). If you have questions on how to map the older settings to the new encoder, please reach out to us via mailto:amshelp@microsoft.com  
+## <a name="known-differences"></a>Known differences 
 
-与旧的 AME 编码器相比，Media Encoder Standard 更强大、更可靠、性能更好且输出质量更好。 此外： 
+Media Encoder Standard is more robust, reliable, has better performance, and produces better quality output than the legacy AME encoder. 此外： 
 
-* Media Encoder Standard 生成的输出文件的命名约定与 AME 不同。
-* Media Encoder Standard 生成项目，例如包含[输入文件元数据](media-services-input-metadata-schema.md)和[输出文件元数据](media-services-output-metadata-schema.md)的文件。
+* Media Encoder Standard produces output files with a different naming convention than AME.
+* Media Encoder Standard produces artifacts such as files containing the [input file metadata](media-services-input-metadata-schema.md) and the [output file(s) metadata](media-services-output-metadata-schema.md).
 
 ## <a name="next-steps"></a>后续步骤
 
-* [旧组件](legacy-components.md)
-* [定价页](https://azure.microsoft.com/pricing/details/media-services/#encoding)
+* [Legacy components](legacy-components.md)
+* [Pricing page](https://azure.microsoft.com/pricing/details/media-services/#encoding)

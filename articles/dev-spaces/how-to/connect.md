@@ -3,114 +3,114 @@ title: 将开发计算机连接到 AKS 群集
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: 了解如何使用 Azure Dev Spaces 将开发计算机连接到 AKS 群集
-keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+description: Learn how to connect your development machine to an AKS cluster with Azure Dev Spaces
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: a4cc88252ec92ad696366661d80ca8f69adc6e66
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280118"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424101"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>将开发计算机连接到 AKS 群集（预览版）
 
-Azure Dev Spaces 允许在开发计算机上使用或不使用容器来运行和调试代码，同时仍与应用程序或服务的其余部分连接到 Kubernetes 群集。 将开发计算机连接到群集可帮助快速开发应用程序并执行端到端测试，而无需创建任何 Docker 或 Kubernetes 配置。 你还可以连接到 AKS 群集，而不会影响可能使用同一群集的其他工作负荷或用户。
+Azure Dev Spaces allows you to run and debug code with or without a container on your development machine, while still connected to your Kubernetes cluster with the rest of your application or services. Connecting your development machine to your cluster helps you to quickly develop your application and perform end-to-end testing without having to create any Docker or Kubernetes configuration. You can also connect to your AKS cluster without affecting other workloads or users who may be using the same cluster.
 
-Azure Dev Spaces 重定向已连接 AKS 群集与开发计算机之间的流量。 此流量重定向允许开发计算机上的代码和在 AKS 群集中运行的服务进行通信，就像它们位于同一个 AKS 群集中一样。 由于你的代码在你的开发计算机上运行，因此你还可以在用于运行和调试该代码的开发工具中获得灵活性。 Azure Dev Spaces 还提供了一种方法，用于将环境变量和已装载文件复制到开发计算机的 AKS 群集中的 pod。
+Azure Dev Spaces redirects traffic between your connected AKS cluster and your development machine. This traffic redirection allows code on your development machine and services running in your AKS cluster to communicate as if they are in the same AKS cluster. Since your code is running on your development machine, you also have flexibility in the development tools you are using to run and debug that code. Azure Dev Spaces also provides a way to replicate environment variables and mounted files available to pods in your AKS cluster in your development machine.
 
-本指南介绍如何：
+本指南介绍如何执行以下操作：
 
 * 在 Azure 中的托管 Kubernetes 群集上设置 Azure Dev Spaces。
 * 将包含多个微服务的大型应用程序部署到开发空间。
-* 使用 Azure Dev Spaces 重定向 AKS 群集与开发计算机上运行的代码之间的流量。
+* Use Azure Dev Spaces to redirect traffic between your AKS cluster and code running on your development machine.
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本指南使用[Azure Dev Spaces 自行车共享示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)来演示如何将开发计算机连接到 AKS 群集。 按照[Azure Dev Spaces 自行车共享示例应用程序自述文件](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md)中的说明运行示例应用程序。 或者，如果你在 AKS 群集上拥有自己的应用程序，仍可以执行以下步骤，并使用你自己的服务和 pod 的名称。
+This guide uses the [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) to demonstrate connecting your development machine to an AKS cluster. Follow the instructions in the [Azure Dev Spaces Bike Sharing sample application README](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) to run the sample application. Alternatively, if you have your own application on an AKS cluster you can still follow the steps below and use the names of your own services and pods.
 
 ### <a name="limitations"></a>限制
 
-* 此时不支持 UDP。
+* UDP is not supported at this time.
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli]。
-* [Visual Studio Code][vs-code]在 MacOS 或 Windows 10 上安装和运行[Azure Dev Spaces][azds-vs-code]扩展。
-* [Azure Dev Spaces 自行车共享示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)或你自己在 AKS 群集上运行的应用程序。
+* [Visual Studio Code][vs-code] with the [Azure Dev Spaces][azds-vs-code] extension installed and running on MacOS or Windows 10.
+* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) or your own application running on an AKS cluster.
 
-## <a name="connect-your-development-machine"></a>连接开发计算机
+## <a name="connect-your-development-machine"></a>Connect your development machine
 
-在 Visual Studio Code 中打开*dev/samples/BikeSharingApp/自行车*，并使用 Azure Dev Spaces 扩展将开发计算机连接到 AKS 群集。
+Open *dev-spaces/samples/BikeSharingApp/Bikes* in Visual Studio Code and use the Azure Dev Spaces extension to connect your development machine to your AKS cluster.
 
-若要使用 Azure Dev Spaces 扩展，请单击 "*查看*"，然后单击 "*命令面板*"，打开 Visual Studio Code 中的命令面板。 开始键入 "`Azure Dev Spaces: Redirect`"，然后单击 "`Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`"、"`Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`" 或 "`Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`"。
+To use the Azure Dev Spaces extension, open the Command Palette in Visual Studio Code by clicking *View* then *Command Palette*. Begin typing `Azure Dev Spaces: Redirect` and click on either `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, or `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`.
 
 ![命令](../media/how-to-connect/connect-commands.png)
 
-### <a name="select-a-redirection-option"></a>选择重定向选项
+### <a name="select-a-redirection-option"></a>Select a redirection option
 
-如果运行 `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`，系统将要求你选择现有的 Kubernetes 服务：
+If you run `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`, you are asked to choose an existing Kubernetes service:
 
-![选择服务](../media/how-to-connect/connect-choose-service.png)
+![Choose Service](../media/how-to-connect/connect-choose-service.png)
 
-此选项将此服务的 AKS 群集中的所有流量重定向到你的开发计算机中运行的应用程序的版本。 如果此服务在 AKS 群集中运行多个 pod，则此服务的所有流量仅路由到您的开发计算机。 Azure Dev Spaces 还会将应用程序的所有出站流量路由回 AKS 群集。
+This option redirects all traffic in the AKS cluster for this service to the version of your application running in your development machine. If this service has multiple pods running in the AKS cluster, all traffic for this service is only routed to your development machine. Azure Dev Spaces also routes all outbound traffic from the application back to your AKS cluster.
 
-如果运行 `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`，系统将要求你选择特定的 pod：
+If you run `Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`, you are asked to choose a specific pod:
 
-![选择 Pod](../media/how-to-connect/connect-choose-pod.png)
+![Choose Pod](../media/how-to-connect/connect-choose-pod.png)
 
-此选项连接到特定的 pod。 此选项可用于与不发送或接收流量以及终止复制盒的 pod 交互。 如果 pod 发送和接收流量，此选项的行为方式与 `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` 类似，并将重定向 AKS 群集中所有与所选 pod 服务相关的所有 pod 的流量。
+This option connects to a specific pod. This option is useful for interacting with pods that do not send or receive traffic and replicating terminated pods. If the pod does send and receive traffic, this option behaves in a similar way to `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and will redirect all traffic in the AKS cluster for all pods related to the service of the selected pod.
 
-如果运行 `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`，系统不会提示选择现有的 pod 或服务。 此选项将所有出站流量从开发计算机上运行的应用程序重定向到 AKS 群集。
+If you run `Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]`, you are not prompted to select an existing pod or service. This option redirects all outbound traffic from the application running on your development machine to the AKS cluster.
 
-对于本示例，请选择 "`Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`"，然后选择 "*自行车*" 服务。
+For this example, choose `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` and select the *bikes* service.
 
-### <a name="select-a-connection-mode"></a>选择连接模式
+### <a name="select-a-connection-mode"></a>Select a connection mode
 
-选择重定向选项后，系统会提示选择 "*替换*" 或 "*克隆*" 连接模式。
+After you select your redirection option, you are prompted to choose either the *Replace* or *Clone* connection mode.
 
-![替换或克隆](../media/how-to-connect/connect-replace-clone.png)
+![Replace or Clone](../media/how-to-connect/connect-replace-clone.png)
 
-*Replace*选项将替换 AKS 群集中的当前 pod 或服务，并将该服务的所有流量重定向到你的开发计算机。 如果你在开发计算机上启动应用程序，则此选项可能会破坏 AKS 群集中与要重定向的服务进行交互的其他服务。 *Clone*选项允许选择现有的子开发人员空间，或创建新的子 dev 空间，以将 pod 或服务的流量重定向到开发计算机。 此选项可让你隔离，而不会中断其他服务，因为只有流向该子开发人员空间的流量将重定向到你的开发计算机。 *Clone*选项要求 AKS 群集启用 Azure Dev Spaces。
+The *Replace* option replaces current pod or service in the AKS cluster and redirects all the traffic for that service to your development machine. This option can be disruptive to other services in your AKS cluster that interact with the service you are redirecting may not function until you start the application on your development machine. The *Clone* option allows you to choose an existing child dev space or create a new child dev space for redirecting traffic for a pod or service to your development machine. This option allows you to work in isolation and not disrupt other services since only traffic to that child dev space will be redirected to your development machine. The *Clone* option requires your AKS cluster to have Azure Dev Spaces enabled.
 
-对于本示例，请选择 "*替换*"。
+For this example, choose *Replace*.
 
 > [!NOTE]
-> 如果现有服务的 pod 有多个容器，则系统还会提示你选择应用程序的容器。
+> If your existing service's pod has multiple containers, you are also prompted to choose the application's container.
 
-### <a name="select-a-port-for-your-application"></a>选择应用程序的端口
+### <a name="select-a-port-for-your-application"></a>Select a port for your application
 
-选择连接模式后，系统会提示你输入本地应用程序的 TCP 端口。 如果你的应用程序打开多个端口，请用逗号分隔这些端口，例如*80，81*。 如果你的应用程序不接受任何网络请求，请输入*0*。 对于本示例，请输入*3000*。
+After you select your connection mode, you are prompted to enter the TCP port your local application. If your application opens multiple ports, separate them by a comma for example *80,81*. If your application does not accept any network requests, enter *0*. For this example, enter *3000*.
 
-![连接选择端口](../media/how-to-connect/connect-choose-port.png)
+![Connect choose port](../media/how-to-connect/connect-choose-port.png)
 
-### <a name="confirm-you-are-connected"></a>确认已连接
+### <a name="confirm-you-are-connected"></a>Confirm you are connected
 
-选择应用程序的 TCP 端口后，Azure Dev Spaces 将建立与 AKS 群集的连接。 Azure Dev Spaces 将代理注入 AKS 群集，以便在 AKS 群集与开发计算机之间重定向流量。 建立此连接可能需要几分钟的时间。 Azure Dev Spaces 还将请求管理员访问权限，以便修改开发计算机中的*主机*文件。
+After you select your application's TCP port, Azure Dev Spaces will establish a connection to the AKS cluster. Azure Dev Spaces injects an agent into your AKS cluster to redirect traffic between the AKS cluster and your development machine. Establishing this connection may take a few minutes. Azure Dev Spaces will also request administrator access in order to modify the *hosts* file in your development machine.
 
 > [!IMPORTANT]
-> Azure Dev Spaces 与 AKS 群集建立连接后，AKS 群集中的其他服务可能无法正常工作，除非你选择 "*替换*连接模式"。 您可以改为选择*克隆*连接模式来创建重定向的子 dev 空间，并避免对父空间造成任何中断。 此外，如果你的服务具有在你的开发计算机中不可用的依赖项，则可能需要修改应用程序或提供[其他配置](#additional-configuration)
+> Once Azure Dev Spaces establishes a connection to your AKS cluster, the other services in your AKS cluster may not function correctly until you start the service in your development machine if you choose the *Replace* connection mode. You can choose the *Clone* connection mode instead to create a child dev space for your redirection and avoid any disruption to the parent space. Also, if your service has a dependency that is not available in your development machine, you may need to modify your application or provide [additional configuration](#additional-configuration)
 
-Azure Dev Spaces 在建立与 AKS 群集的连接后，将打开一个名为*AZDS*的终端窗口。 此终端窗口包含从 AKS 群集配置的所有环境变量和 DNS 条目。 在此终端窗口中或使用 Visual Studio Code 调试程序运行的任何代码都将连接到 AKS 群集。
+Azure Dev Spaces opens a terminal window titled *AZDS Connect - Bikes* after it establishes a connection to your AKS cluster. This terminal window has all the environment variables and DNS entries configured from your AKS cluster. Any code you run in this terminal window or using the Visual Studio Code debugger is connected to the AKS cluster.
 
-![最终](../media/how-to-connect/connect-terminal.png)
+![Terminal](../media/how-to-connect/connect-terminal.png)
 
-此外，Azure Dev Spaces 会创建一个名为 "*开发共享空间*" 的窗口，并将其全部输出。
+Additionally, Azure Dev Spaces creates a window titled *Dev Spaces Connect* with all its output.
 
 ![输出](../media/how-to-connect/connect-output.png)
 
-Azure Dev Spaces 还有一个显示连接状态的状态栏项目。
+Azure Dev Spaces also has a status bar item showing the connection status.
 
 ![状态](../media/how-to-connect/connect-status.png)
 
-验证状态栏是否显示*Dev Spaces：连接到本地端口3000上的开发/自行车*。
+Verify the status bar shows *Dev Spaces: Connected to dev/bikes on local port 3000*.
 
-### <a name="configure-your-application-on-your-development-machine"></a>在开发计算机上配置应用程序
+### <a name="configure-your-application-on-your-development-machine"></a>Configure your application on your development machine
 
-打开*AZDS 连接-自行车*终端窗口并运行 `npm install`：
+Open the *AZDS Connect - Bikes* terminal window and run `npm install`:
 
 ```console
 $ npm install
@@ -120,8 +120,7 @@ $ npm install
 ...
 ```
 
-
-单击 "*调试*"，然后*打开 "配置*"。 如果系统提示选择环境，请选择 *"node.js"。* 这将创建一个 `.vscode/launch.json` 文件。 将该文件的内容替换为以下内容：
+Click *Debug* then *Open Configurations*. If prompted to select an environment, choose *Node.js*.This creates a `.vscode/launch.json` file. Replace the contents of that file with the following:
 
 ```json
 {
@@ -141,7 +140,7 @@ $ npm install
 }
 ```
 
-打开[package](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json)并添加调试脚本：
+Open [package.json](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/package.json) and add a debugging script:
 
 ```json
   "devDependencies": {
@@ -152,13 +151,13 @@ $ npm install
   }
 ```
 
-### <a name="start-your-application-on-your-development-machine"></a>在开发计算机上启动应用程序
+### <a name="start-your-application-on-your-development-machine"></a>Start your application on your development machine
 
-单击左侧的 "*调试*" 图标，然后单击顶部的 "*通过 NPM 启动*" 旁边的 "开始" 按钮。
+Click on the *Debug* icon on the left and click on the start button next to *Launch via NPM* at the top.
 
-![通过 NPM 启动](../media/how-to-connect/launch-npm.png)
+![Launch via NPM](../media/how-to-connect/launch-npm.png)
 
-你的应用程序将启动并 Azure Dev Spaces 重定向 AKS 群集与开发计算机之间的流量。 在*调试控制台*中，你将看到如下所示的消息：
+Your application will start and Azure Dev Spaces redirects traffic between your AKS cluster and your development machine. You will see messages similar to the below in the *Debug Console*:
 
 ```console
 /usr/local/bin/npm run-script debug 
@@ -170,26 +169,26 @@ Connected to MongoDB
 Listening on port 3000
 ```
 
-单击 "Azure Dev Spaces" 状态栏，然后选择应用程序的 "公共 URL"，导航到 " *bikesharingweb* " 服务。 你还可以从前面运行的 `azds list-uris` 命令查找公共 URL。 如果未在群集上使用 Azure Dev Spaces，请使用应用程序的 IP 或 URL 作为正在使用的命名空间。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`。 选择 " *Aurelia meets Briggs （客户）* " 作为用户，然后选择要出租的自行车。
+Navigate to the *bikesharingweb* service by clicking on the Azure Dev Spaces status bar and choosing the public URL of your application. You can also find the public URL from the `azds list-uris` command you ran earlier. If you are not using Azure Dev Spaces on your cluster, use the IP or the URL for the application for the namespace you are using. 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`。 Select *Aurelia Briggs (customer)* as the user, then select a bike to rent.
 
-### <a name="set-a-break-point"></a>设置断点
+### <a name="set-a-break-point"></a>Set a break point
 
-打开[node.js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233)并单击行233上的某个位置，将光标放在此处。 通过按*F9*或单击 "*调试*"，然后单击 "*切换断点*" 来设置断点。
+Open [server.js](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/Bikes/server.js#L233) and click somewhere on line 233 to put your cursor there. Set a breakpoint by hitting *F9* or clicking *Debug* then *Toggle Breakpoint*.
 
-通过打开公共 URL 导航到*bikesharingweb*服务。 选择 " *Aurelia meets Briggs （客户）* " 作为用户，然后选择要出租的自行车。 请注意，自行车的图像不会加载。 返回 Visual Studio Code 并观察第233行。 设置的断点已暂停第233行的服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回到你的浏览器并验证你是否看到了自行车的占位符图像。
+Navigate to the *bikesharingweb* service by opening the public URL. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Notice the image for the bike does not load. Return to Visual Studio Code and observe line 233 is highlighted. The breakpoint you set has paused the service at line 233. 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 Return to your browser and verify you see a placeholder image for the bike.
 
-将光标置于第233行 `server.js` 上，并命中*F9*，以删除断点。
+Remove the breakpoint by putting your cursor on line 233 in `server.js` and hitting *F9*.
 
 ### <a name="update-your-application"></a>更新应用程序
 
-编辑 `server.js` 以删除行232和233：
+Edit `server.js` to remove lines 232 and 233:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-此部分现在应如下所示：
+The section should now look like:
 
 ```javascript
     var theBike = result;
@@ -197,15 +196,15 @@ Listening on port 3000
     delete theBike._id;
 ```
 
-保存更改，然后单击 "*调试*"，然后*重新启动调试*。 刷新您的浏览器，并验证您是否不再看到自行车的占位符图像。
+Save your changes and click *Debug* then *Restart Debugging*. Refresh your browser and verify that you no longer see a placeholder image for the bike.
 
-依次单击“调试”、“停止调试”以停止调试器。 单击 "Azure Dev Spaces" 状态栏以断开与 AKS 群集的连接。
+依次单击“调试”、“停止调试”以停止调试器。 Click on the Azure Dev Spaces status bar to disconnect from the AKS cluster.
 
 ## <a name="additional-configuration"></a>其他配置
 
-Azure Dev Spaces 无需任何其他配置即可处理路由流量和复制环境变量。 如果需要将装载到 AKS 群集中的容器的所有文件（例如 ConfigMap 文件）下载，可以创建 `azds-local.env` 将这些文件下载到开发计算机。
+Azure Dev Spaces can handle routing traffic and replicating environment variables without any additional configuration. If you need to download any files that are mounted to the container in your AKS cluster, such as a ConfigMap file, you can create a `azds-local.env` to download those files to your development machine.
 
-下面是一个示例 `azds-local.env`：
+Here is an example `azds-local.env`:
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -231,13 +230,26 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
 ```
 
+## <a name="using-logging-and-diagnostics"></a>Using logging and diagnostics
+
+Logging output is written to the *Dev Spaces Connect* window after connect your development machine to your AKS cluster.
+
+![输出](../media/how-to-connect/connect-output.png)
+
+Click on the Azure Dev Spaces status bar and choose *Show diagnostics info*. This command prints the current environment variables and DNS entires in the logging output.
+
+![Output with diagnostics](../media/how-to-connect/connect-output-diagnostics.png)
+
+Additionally, you can find the diagnostic logs in `Azure Dev Spaces` directory in your [development machine's *TEMP* directory][azds-tmp-dir].
+
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在拉取请求合并到存储库的主分支之前，使用 Azure Dev Spaces 和 GitHub 操作直接在 AKS 中测试拉取请求中的更改。
+Learn how to use Azure Dev Spaces and GitHub Actions to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch.
 
 > [!div class="nextstepaction"]
-> [Azure Kubernetes 服务 & GitHub 操作][gh-actions]
+> [GitHub Actions & Azure Kubernetes Service][gh-actions]
 
+[azds-tmp-dir]: ../troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp

@@ -1,6 +1,6 @@
 ---
-title: 身份验证方法-Azure Active Directory
-description: MFA 和 SSPR 的 Azure AD 中可用的身份验证方法
+title: Authentication methods - Azure Active Directory
+description: Authentication methods available in Azure AD for MFA and SSPR
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808410"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420761"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
-以管理员身份选择 Azure 多重身份验证和自助密码重置（SSPR）的身份验证方法时，建议你要求用户注册多个身份验证方法。 如果用户无法使用身份验证方法，则可以选择使用其他方法进行身份验证。
+As an administrator, choosing authentication methods for Azure Multi-Factor Authentication and self-service password reset (SSPR) it is recommended that you require users to register multiple authentication methods. When an authentication method is not available for a user, they can choose to authenticate with another method.
 
-管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 有关配置策略的详细信息，请参阅文章[如何成功推出自助服务密码重置](howto-sspr-deployment.md)和[规划基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)
+管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 For more information about configuring your policies see the articles [How to successfully roll out self-service password reset](howto-sspr-deployment.md) and [Planning a cloud-based Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 
 Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身份验证方法，以防他们无法使用其中的某个方法。
 
@@ -41,7 +41,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 
 |     |
 | --- |
-| 适用于 MFA 和 SSPR 的 OATH 硬件令牌是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| OATH Hardware tokens for MFA and SSPR are public preview features of Azure Active Directory. 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>密码
@@ -142,7 +142,7 @@ Microsoft Authenticator 应用通过将通知推送到智能手机或平板电�
 如果你允许通过移动应用和移动应用的验证码使用通知，则使用通知注册 Microsoft Authenticator 应用的用户可以使用通知和代码来验证其身份。
 
 > [!NOTE]
-> 如果你的组织有员工在中国工作或出差，则通过**Android 设备**上的**移动应用方法发出的通知**在该国家/地区不起作用。 应为这些用户提供备用方法。
+> If your organization has staff working in or traveling to China, the **Notification through mobile app** method on **Android devices** does not work in that country. Alternate methods should be made available for those users.
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 
@@ -152,13 +152,13 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 > 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是可供用户确保最高级别的安全性的唯一选项。
 >
 
-用户最多可将五个 OATH 硬件令牌或验证器应用程序（例如配置为使用的 Microsoft Authenticator 应用）组合到一起使用。
+Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
 
-OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 机密密钥限制为128个字符，它们可能与所有令牌都不兼容。 机密密钥需要在 Base32 中进行编码。
+OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 Secret keys are limited to 128 characters, which may not be compatible with all tokens. The secret keys need to be encoded in Base32.
 
-![将 OATH 令牌上传到 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Uploading OATH tokens to the MFA Server OATH tokens blade](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
@@ -178,9 +178,9 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥。
 
-用户最多可将五个 OATH 硬件令牌或验证器应用程序（例如配置为使用的 Microsoft Authenticator 应用）组合到一起使用。
+Users may have a combination of up to five OATH hardware tokens or authenticator applications such as the Microsoft Authenticator app configured for use at any time.
 
-## <a name="phone-options"></a>电话选项
+## <a name="phone-options"></a>Phone options
 
 ### <a name="mobile-phone"></a>移动电话
 
@@ -195,7 +195,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 >
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外，Microsoft 不支持国家/地区的短代码。
+Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 Microsoft does not support short codes for countries/regions besides the United States and Canada.
 
 #### <a name="text-message"></a>短信
 
@@ -206,7 +206,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证
 
 > [!IMPORTANT]
-> 从2019年3月开始，将无法在免费/试用 Azure AD 租户中向 MFA 和 SSPR 用户提供电话呼叫选项。 SMS 消息不受此更改的影响。 电话呼叫将继续为付费 Azure AD 租户中的用户提供。 此更改仅影响免费/试用 Azure AD 租户。
+> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
 
 ### <a name="office-phone"></a>办公电话
 
@@ -217,31 +217,31 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 办公电话属性由管理员管理。
 
 > [!IMPORTANT]
-> 从2019年3月开始，将无法在免费/试用 Azure AD 租户中向 MFA 和 SSPR 用户提供电话呼叫选项。 SMS 消息不受此更改的影响。 电话呼叫将继续为付费 Azure AD 租户中的用户提供。 此更改仅影响免费/试用 Azure AD 租户。
+> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
 
 > [!NOTE]
 > 在国家/地区代码和电话号码之间需要有一个空格。
 >
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-### <a name="troubleshooting-phone-options"></a>电话选项疑难解答
+### <a name="troubleshooting-phone-options"></a>Troubleshooting phone options
 
-使用电话号码的身份验证方法相关的常见问题：
+Common problems related to authentication methods using a phone number:
 
-* 单个设备上阻止的呼叫方 ID
-   * 排查设备问题
-* 错误的电话号码、国家/地区代码不正确、家庭电话号码与工作电话号码
-   * 排查用户对象和配置的身份验证方法。 确保注册了正确的电话号码。
-* 输入的 PIN 错误
-   * 确认用户使用了在 Azure MFA 服务器中注册的正确 PIN。
-* 呼叫转发到语音邮件
-   * 确保用户已打开手机并且该服务在其区域中可用或使用替代方法。
+* Blocked caller ID on a single device
+   * Troubleshoot device
+* Wrong phone number, incorrect country code, home phone number versus work phone number
+   * Troubleshoot user object and configured authentication methods. Ensure correct phone numbers are registered.
+* Wrong PIN entered
+   * Confirm user has used the correct PIN registered in Azure MFA Server.
+* Call forwarded to voicemail
+   * Ensure user has phone turned on and that service is available in their area or use alternate method.
 * 用户被阻止
-   * 让管理员取消阻止 Azure 门户中的用户。
-* 设备上未订阅短信
-   * 让用户更改方法或激活设备上的 SMS。
-* 错误的电信提供商（检测不到电话输入，缺少 DTMF 音问题，在多台设备上阻止的呼叫方 ID，或跨多台设备阻止的短信）
-   * Microsoft 使用多个电信提供商路由电话呼叫和短信以进行身份验证。 如果你看到上述任何问题，则用户在5分钟内至少尝试使用方法5次，并在联系 Microsoft 支持部门时提供该用户的信息。
+   * Have administrator unblock the user in the Azure portal.
+* SMS is not subscribed on the device
+   * Have the user change methods or activate SMS on the device.
+* Faulty telecom providers (No phone input detected, missing DTMF tones issues, blocked caller ID on multiple devices, or blocked SMS across multiple devices)
+   * Microsoft uses multiple telecom providers to route phone calls and SMS messages for authentication. If you are seeing any of the above issues have a user attempt to use the method at least 5 times within 5 minutes and have that user's information available when contacting Microsoft support.
 
 ## <a name="app-passwords"></a>应用密码
 
@@ -263,6 +263,6 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 [为组织启用 Azure 多重身份验证](howto-mfa-getstarted.md)
 
-[启用租户中的组合注册](howto-registration-mfa-sspr-combined.md)
+[Enable combined registration in your tenant](howto-registration-mfa-sspr-combined.md)
 
 [最终用户身份验证方法配置文档](https://aka.ms/securityinfoguide)

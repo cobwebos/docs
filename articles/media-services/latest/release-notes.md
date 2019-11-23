@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168637"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420038"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -38,101 +38,101 @@ ms.locfileid: "72168637"
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
 
-#### <a name="live-linear-encoding-of-live-events"></a>实时事件的实时线性编码
+#### <a name="live-linear-encoding-of-live-events"></a>Live linear encoding of live events
 
-媒体服务 v3 宣布推出对直播活动进行实时线性编码的 24 小时 x 365 天预览版。
+Media Services v3 is announcing the preview of 24 hrs x 365 days of live linear encoding of live events.
 
 ###  <a name="media-services-v2"></a>媒体服务 v2  
 
-#### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
 
-我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](../previous/media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](../previous/media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+We are announcing deprecation of *Azure Media Indexer* and *Azure Media Indexer 2 Preview*. The [Azure Media Indexer](../previous/media-services-index-content.md) media processor will be retired on October 1st of 2020. The [Azure Media Indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) media processors will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces these legacy media processors.
 
-有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
+For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>2019 年 8 月
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
 
-#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>South Africa regional pair is open for Media Services 
 
-媒体服务现已在南部北部和南非非洲地区推出。
+Media Services is now available in South Africa North and South Africa West regions.
 
-有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
 
 ###  <a name="media-services-v2"></a>媒体服务 v2  
 
-#### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
 
-我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将于 2019 年 11 月 30 日停用。
+We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors, which are being retired on March 31, 2020.
 
-有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+For details, see [Migrate WAME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) and [Migrate AME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>内容保护
 
-当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 使用*令牌重播防护*功能，媒体服务客户可以设置一个限制，该限制可用于请求密钥或许可证。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
+When streaming content protected with token restriction, end users need to obtain a token that is sent as part of the key delivery request. The *Token Replay Prevention* feature allows Media Services customers to set a limit on how many times the same token can be used to request a key or a license. For more information, see [Token Replay Prevention](content-protection-overview.md#token-replay-prevention).
 
-此功能目前已在美国中部和美国西部中部提供。
+This feature is currently available in US Central and US West Central.
 
 ## <a name="june-2019"></a>2019 年 7 月
 
-### <a name="video-subclipping"></a>视频子剪辑
+### <a name="video-subclipping"></a>Video subclipping
 
-现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
+You can now trim or subclip a video when encoding it using a [Job](https://docs.microsoft.com/rest/api/media/jobs). 
 
-此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
+This functionality works with any [Transform](https://docs.microsoft.com/rest/api/media/transforms) that is built using either the [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) presets, or the [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) presets. 
 
-请参阅示例：
+See examples:
 
-* [使用 .NET 创建视频的子剪辑](subclip-video-dotnet-howto.md)
-* [使用 REST 对视频进行子剪辑](subclip-video-rest-howto.md)
+* [Subclip a video with .NET](subclip-video-dotnet-howto.md)
+* [Subclip a video with REST](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>媒体服务诊断日志和指标 Azure Monitor 支持
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor support for Media Services diagnostic logs and metrics
 
-你现在可以使用 Azure Monitor 查看媒体服务 emmited 的遥测数据。
+You can now use Azure Monitor to view telemetry data emmited by Media Services.
 
-* 使用 Azure Monitor 诊断日志来监视 Media Services 密钥传送终结点发送的请求。 
-* 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
+* Use the Azure Monitor diagnostic logs to monitor requests sent by the Media Services Key Delivery endpoint. 
+* Monitor metrics emitted by Media Services [Streaming Endpoints](streaming-endpoint-concept.md).   
 
-有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+For details, see [Monitor Media Services metrics and diagnostic logs](media-services-metrics-diagnostic-logs.md).
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频轨道支持 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Multi audio tracks support in Dynamic Packaging 
 
-使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
+When streaming Assets that have multiple audio tracks with multiple codecs and languages, [Dynamic Packaging](dynamic-packaging-overview.md) now supports multi audio tracks for the HLS output (version 4 or above).
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea regional pair is open for Media Services 
 
-媒体服务现已在韩国中部和韩国南部区域推出。 
+Media Services is now available in Korea Central and Korea South regions. 
 
-有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
 
 ### <a name="performance-improvements"></a>性能提升
 
-添加了包括媒体服务性能改进的更新。
+Added updates that include Media Services performance improvements.
 
-* 更新了处理所支持的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
-* [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* The maximum file size supported for processing was updated. See, [Quotas and limitations](limits-quotas-constraints.md).
+* [Encoding speeds improvements](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-presets"></a>新增预设
+### <a name="new-presets"></a>New presets
 
-* 向内置分析器预设添加了 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
-* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](cae-experimental.md)。 
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) was added to the built-in analyzer presets.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) was added to the built-in encoder presets. For more information, see [Content-aware encoding](cae-experimental.md). 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
+Dynamic Packaging now supports Dolby Atmos. For more information, see [Audio codecs supported by dynamic packaging](dynamic-packaging-overview.md#audio-codecs).
 
-现在，可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 有关详细信息，请参阅[将筛选器与流定位器相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+You can now specify a list of asset or account filters, which would apply to your Streaming Locator. For more information, see [Associate filters with Streaming Locator](filters-concept.md#associating-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-媒体服务 v3 目前在 Azure 国家云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+Media Services v3 is now supported in Azure national clouds. 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
@@ -278,7 +278,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="net-sdk"></a>.NET SDK
 
-.NET SDK 中提供了以下功能：
+The following features are present in the .NET SDK:
 
 * 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
@@ -298,4 +298,4 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 ## <a name="next-steps"></a>后续步骤
 
 - [概述](media-services-overview.md)
-- [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)
+- [Media Services v2 release notes](../previous/media-services-release-notes.md)

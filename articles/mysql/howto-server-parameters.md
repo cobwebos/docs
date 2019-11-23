@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6b5d48a1d198b62af853a6334de41bad01b3c98c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d589800f62f96510a09d23cb6e8794177121c6dd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232553"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419717"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -39,7 +39,7 @@ The InnoDB Buffer Pool size is not configurable and tied to your [pricing tier](
 
 |**定价层**|**vCore(s)**|**InnoDB Buffer Pool size in MB <br>(servers supporting up to 4 TB storage)**| **InnoDB Buffer Pool size in MB <br>(servers supporting up to 16 TB storage)**|
 |:---|---:|---:|---:|
-|基本| 第| 960| |
+|基本| 第| 832| |
 |基本| 2| 2560| |
 |常规用途| 2| 3584| 7168|
 |常规用途| 4| 7680| 15360|

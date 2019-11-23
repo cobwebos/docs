@@ -1,6 +1,6 @@
 ---
 title: 弹性数据库作业（预览版）
-description: 配置弹性数据库作业（预览）以在包含一个或多个 Azure SQL 数据库的集合中运行 Transact-SQL (T-SQL) 脚本
+description: Configure Elastic Database Jobs (preview) to run Transact-SQL (T-SQL) scripts across a set of one or more Azure SQL databases
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,33 +11,35 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827266"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420378"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
-在本文中，你将了解如何创建、配置和管理弹性作业。 如果未使用弹性作业，请[详细了解 Azure SQL 数据库中的作业自动化概念](sql-database-job-automation-overview.md)。
+在本文中，你将了解如何创建、配置和管理弹性作业。
+
+如果未使用弹性作业，请[详细了解 Azure SQL 数据库中的作业自动化概念](sql-database-job-automation-overview.md)。
 
 ## <a name="create-and-configure-the-agent"></a>创建并配置代理
 
 1. 创建或标识空的 S0 或更高级别的 SQL 数据库。 该数据库在弹性作业代理创建期间将用作“作业数据库”。
-2. 通过[门户](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理。
+2. Create an Elastic Job agent in the [portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) or with [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
    ![创建弹性作业代理](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>创建、运行和管理作业
 
-1. 使用 [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) 或 [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) 在作业数据库中创建执行作业所需的凭据。
-2. 使用 [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) 或 [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) 定义目标组（需对其运行作业的数据库）。
-3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-control-access.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets)。
-4. 使用 [PowerShell](elastic-jobs-powershell.md#create-a-job) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 创建作业。
-5. 使用 [PowerShell](elastic-jobs-powershell.md#create-a-job-step) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 添加作业步骤。
-6. 使用 [PowerShell](elastic-jobs-powershell.md#run-the-job) 或 [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) 运行作业。
-7. 使用门户、[PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) 或 [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status) 监视作业执行状态。
+1. Create a credential for job execution in the *Job database* using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
+2. Define the target group (the databases you want to run the job against) using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
+3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-control-access.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md)。
+4. Create a job using [PowerShell](elastic-jobs-powershell.md) or [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
+5. 使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 添加作业步骤。
+6. Run a job using [PowerShell](elastic-jobs-powershell.md#run-the-job) or [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
+7. Monitor job execution status using the portal, [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) or [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
 
    ![门户](media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -55,7 +57,7 @@ ms.locfileid: "73827266"
 
 ![弹性作业凭据](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>安全最佳实践
+## <a name="security-best-practices"></a>安全性最佳实践
 
 使用弹性作业时的一些最佳做法注意事项：
 
@@ -75,7 +77,7 @@ ms.locfileid: "73827266"
 
 若要确保针对 SQL 弹性池中的数据库运行作业时资源不会超负荷，可以对作业进行配置，限制可以在同一时间对其运行作业的数据库数。
 
-通过在 T-SQL 中设置 `sp_add_jobstep` 存储过程的 `@max_parallelism` 参数，或者通过在 PowerShell 中设置 `Add-AzSqlElasticJobStep -MaxParallelism`，来设置作业运行的并发数据库数。
+Set the number of concurrent databases a job runs on by setting the `sp_add_jobstep` stored procedure's `@max_parallelism` parameter in T-SQL, or `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 

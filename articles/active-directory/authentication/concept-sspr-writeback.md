@@ -1,6 +1,6 @@
 ---
-title: 本地密码写回与 Azure AD SSPR-Azure Active Directory 的集成
-description: 将云密码写回到本地 AD 基础结构
+title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
+description: Get cloud passwords written back to on-premises AD infrastructure
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 758d7122a991309504c5cac18b9aaf1268808887
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561291"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420658"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -29,21 +29,21 @@ ms.locfileid: "68561291"
 * [直通身份验证](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
+> 当 [Azure 访问控制服务 (ACS) 于 2018 年 11 月 7 日停用](../develop/active-directory-acs-migration.md)时，密码写回将停止为使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户工作。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 若要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从旧版升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 密码写回提供：
 
 * **本地 Active Directory 密码策略的实施**：如果用户重置密码，系统会检查此请求，以确保它符合本地 Active Directory 策略要求，然后再将请求提交到相应目录。 此评审包括检查历史记录、复杂性、期限、密码筛选器，以及已在本地 Active Directory 中定义的其他任何密码限制。
 * **零延迟反馈**：密码写回是一项同步操作。 如果用户的密码不符合策略或因任何原因而无法重置或更改，用户会立即收到通知。
-* **支持从访问面板和 Office 365 更改密码**：如果联合用户或密码哈希同步用户更改已过期或未过期的密码，这些密码会写回到本地 Active Directory 环境。
-* **支持当管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
+* **支持访问面板和 Office 365 中的密码更改**：如果联合用户或密码哈希同步用户更改已过期或未过期的密码，这些密码会写回到本地 Active Directory 环境。
+* **支持管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
 > [!NOTE]
-> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 管理员可以在云中更改其密码, 但不能使用密码重置重置忘记的密码。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
+> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -117,9 +117,9 @@ ms.locfileid: "68561291"
 
 在用户提交密码重置请求后，重置请求会先经历多个加密步骤，然后才会到达本地环境。 这些加密步骤可确保实现最高的服务可靠性和安全性。 这些步骤如下所述：
 
-* **步骤 1：使用 2048 位 RSA 密钥加密密码**：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
-* **步骤 2：使用 AES-GCM 进行包级加密**：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
-* **步骤 3：所有通信都是通过 TLS/SSL 进行**：与服务总线的所有通信都是在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
+* **第 1 步：使用 2048 位 RSA 密钥加密密码**：在用户提交要写回本地的密码后，提交的密码本身会使用 2048 位 RSA 密钥进行加密。
+* **第 2 步：使用 AES-GCM 进行包级加密**：使用 AES-GCM 加密整个包（密码及所需的元数据）。 此加密可防止任何可直接访问基础服务总线通道的人员查看或篡改内容。
+* **第 3 步：所有通信都是通过 TLS/SSL 进行**：与服务总线的所有通信都是在 SSL/TLS 通道中发生。 此加密可保护内容不被未经授权的第三方查看/篡改。
 * **每隔六个月自动滚动更新密钥**：每隔六个月，或者每当在 Azure AD Connect 中禁用再重新启用密码写回时，滚动更新所有密钥，确保最高的服务安全性与可靠性。
 
 ### <a name="password-writeback-bandwidth-usage"></a>密码写回带宽用量
@@ -161,11 +161,11 @@ ms.locfileid: "68561291"
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API 重置自己的密码
 * **不支持的管理员操作**
    * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API）
-   * 管理员从[Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置
+   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
 
 > [!WARNING]
-> 使用 "用户在下次登录时必须更改密码 Active Directory" 这一复选框不支持 Active Directory 用户和计算机或 Active Directory 管理中心等管理工具。 更改本地密码时, 请不要选中此选项。
+> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
 
 ## <a name="next-steps"></a>后续步骤
 
-使用以下教程启用密码写回：[启用密码写回](tutorial-enable-writeback.md)
+参考教程[启用密码写回](tutorial-enable-writeback.md)来启用密码写回

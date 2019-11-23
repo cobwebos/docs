@@ -1,5 +1,5 @@
 ---
-title: 迭代应用设计-LUIS
+title: Iterative app design - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
 services: cognitive-services
@@ -9,142 +9,144 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 12a1f2304e4255eb9abd04ab2e2d0726066dd1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487762"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422603"
 ---
-# <a name="authoring-cycles-and-versions"></a>创作周期和版本
+# <a name="iterative-app-design-for-luis"></a>Iterative app design for LUIS
 
-你的 LUIS 应用程序的迭代周期最佳：
+A Language Understanding (LUIS) app learns and performs most efficiently with iteration. Here's a typical iteration cycle:
 
-* 创建新版本
-* 编辑应用架构
-    * 示例最谈话
+* Create new version
+* Edit the LUIS app schema. 这包括：
+    * Intents with example utterances
     * 实体
-    * features
-* 辆
-* 测试
-* 发布
-    * 在预测终结点测试活动学习
-* 从终结点查询收集数据
+    * 功能
+* Train, test, and publish
+    * Test at the prediction endpoint for active learning
+* Gather data from endpoint queries
 
 ![创作周期](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>生成 LUIS 架构
+## <a name="building-a-luis-schema"></a>Building a LUIS schema
 
-应用架构的目的是定义用户正在请求的内容（意图或意向）以及问题的哪些部分提供有助于确定答案的详细信息（实体）。 
+An app's schema defines what the user is asking for (the _intention_ or _intent_ ) and what parts of the intent provide details (called _entities_) that are used to help determine the answer. 
 
-应用架构需要特定于应用域，才能确定相关的单词和短语以及典型的字词排序。 
+The app schema must be specific to the app domains to determine words and phrases that are relevant, as well as to determine typical word ordering. 
 
-示例最谈话表示应用程序在运行时应获取的用户输入。 
+Example utterances represent user inputs, such as recognized speech or text, that the app expects at runtime. 
 
-架构需要意向，并且_应具有_实体。 
+The schema requires intents, and _should have_ entities. 
 
-### <a name="example-schema-of-intents"></a>意向架构示例
+### <a name="example-schema-of-intents"></a>Example schema of intents
 
-最常见的架构是使用意向组织的目的架构。 这种类型的架构依赖于 LUIS 来确定用户的意图。 
+The most common schema is an intent schema organized with intents. This type of schema uses LUIS to determine a user's intention. 
 
-如果它有助于 LUIS 确定意图，则此架构类型可能具有实体。 例如，发货实体（作为意向的描述符）可帮助 LUIS 确定发货目的。 
+The intent schema type may have entities if it helps LUIS determine the user's intention. For example, a shipping entity (as a descriptor to an intent) helps LUIS determine a shipping intention. 
 
-### <a name="example-schema-of-entities"></a>实体的示例架构
+### <a name="example-schema-of-entities"></a>Example schema of entities
 
-实体架构侧重于实体，这些实体是要从最谈话中提取的数据。 
+An entity schema focuses on entities, which is the data that is extracted from user utterances. For example, if a user was to say, "I'd like to order three pizzas." There are two entities that would be extracted: _three_ and _pizzas_. These are used to help fulfill the intention, which was to make an order. 
 
-对于客户端应用程序而言，查询文本的目的更少或不重要。 
+For an entity schema, the intention of the utterance is less important to the client application. 
 
-组织实体架构的一种常用方法是将所有示例最谈话添加到无意向。 
+A common method of organizing an entity schema is to add all example utterances to the **None** intent. 
 
-### <a name="example-of-a-mixed-schema"></a>混合架构的示例
+### <a name="example-of-a-mixed-schema"></a>Example of a mixed schema
 
-最强大且成熟的架构是一种具有各种实体和功能的意向架构。 此架构可以作为意向架构或实体架构开始，并扩大为包含两者的概念，因为客户端应用程序需要这些信息片段。 
+The most powerful and mature schema is an intent schema with a full range of entities and features. This schema can begin as either an intent or entity schema and grow to include concepts of both, as the client application needs those pieces of information. 
 
-## <a name="add-example-utterances-to-intents"></a>将最谈话示例添加到意向
+## <a name="add-example-utterances-to-intents"></a>Add example utterances to intents
 
-LUIS 需要在每个**意向**中使用几个最谈话示例。 示例最谈话需要足够多的单词选择和字序，才能确定查询文本的用途。 
+LUIS needs a few example utterances in each **intent**. The example utterances need enough variation of word choice and word order to be able to determine which intent the utterance is meant for. 
 
 > [!CAUTION]
-> 不要批量添加示例最谈话。 从15到30个具体的示例开始。 
+> Do not add example utterances in bulk. Start with 15 to 30 specific and varying examples. 
 
-查询文本的每个示例都需要具有**所需的任何数据，以**使用**实体**进行设计和标记。 
+Each example utterance needs to have any **required data to extract** designed and labeled with **entities**. 
 
-|Key 元素|目的|
+|Key element|用途|
 |--|--|
-|意向|将用户最谈话**分类**为单一意图或操作。 示例包括 `BookFlight` 和 `GetWeather`。|
-|实体|从所需的查询文本**提取**数据以完成目的。 例如，旅行日期和时间以及位置。|
+|Intent|**Classify** user utterances into a single intention, or action. 示例包括 `BookFlight` 和 `GetWeather`。|
+|实体|**Extract** data from utterance required to complete intention. Examples include date and time of travel, and location.|
 
-可以通过将查询文本分配给**None** ，来设计 LUIS 应用，以忽略与应用的域无关的最谈话。 
+A LUIS app can be designed to ignore utterances that aren't relevant to an app's domain by assigning the utterance to the **None** intent.
 
-## <a name="test-and-train-your-app"></a>测试并训练应用
+## <a name="test-and-train-your-app"></a>Test and train your app
 
-每个意向中有15到30个不同的示例最谈话，并标记所需的实体时，需要测试和[定型](luis-how-to-train.md)。 
+After you have 15 to 30 different example utterances in each intent, with the required entities labeled, you need to test and [train](luis-how-to-train.md) your LUIS app. 
 
-## <a name="publish-to-a-prediction-endpoint"></a>发布到预测终结点
+## <a name="publish-to-a-prediction-endpoint"></a>Publish to a prediction endpoint
 
-请确保发布应用，使其在所需的[预测终结点区域](luis-reference-regions.md)中可用。 
+The LUIS app must be published so that it's available to you in the list [prediction endpoint regions](luis-reference-regions.md).
 
 ## <a name="test-your-published-app"></a>测试已发布的应用
 
-可以从 HTTPS 预测终结点测试已发布的 LUIS 应用。 通过预测终结点进行测试，LUIS 可以选择具有低置信度的任何[最谈话。](luis-how-to-review-endpoint-utterances.md)  
+You can test your published LUIS app from the HTTPS prediction endpoint. Testing from the prediction endpoint allows LUIS to choose any utterances with low-confidence for [review](luis-how-to-review-endpoint-utterances.md).  
 
-## <a name="create-a-new-version-for-each-cycle"></a>为每个周期创建新版本
+## <a name="create-a-new-version-for-each-cycle"></a>Create a new version for each cycle
 
-LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用的即时快照。 在对应用进行更改之前，请创建新版本。 更容易返回到较旧版本，然后尝试删除方法并最谈话到以前的状态。
+Each version is a snapshot in time of the LUIS app. 在对应用进行更改之前，请创建新版本。 It is easier to go back to an older version than to try to remove intents and utterances to a previous state.
 
 版本 ID 由字符、数字或“.”组成，且长度不得超过 10 个字符。
 
 初始版本 (0.1) 是默认活动版本。 
 
-### <a name="begin-by-cloning-an-existing-version"></a>首先克隆现有版本
+### <a name="begin-by-cloning-an-existing-version"></a>Begin by cloning an existing version
 
-克隆现有版本，作为新版本的起点。 克隆版本后，新版本将成为活动版本。 
+Clone an existing version to use as a starting point for each new version. After you clone a version, the new version becomes the **active** version. 
 
-### <a name="publishing-slots"></a>发布槽
-你可以发布到阶段和生产槽。 每个槽可以具有不同的版本或相同的版本。 这对于在发布到生产环境之前验证更改非常有用，这些更改可供 bot 或其他 LUIS 调用应用程序使用。 
+### <a name="publishing-slots"></a>Publishing slots
 
-训练的版本在应用的[终结点](luis-glossary.md#endpoint)上不会自动提供。 为使版本在终结点中可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 你可以发布到**过渡**和**生产环境**，提供终结点上可用的两个版本的应用。 如果需要更多版本的应用在终结点上可用，应导出版本并重新导入到新的应用。 新的应用具有不同的应用 ID。
+You can publish to either the stage and/or production slots. 每个槽可以具有不同的版本或相同的版本。 This is useful for verifying changes before publishing to production, which is available to bots or other LUIS calling apps. 
+
+Trained versions aren't automatically available at your LUIS app's [endpoint](luis-glossary.md#endpoint). You must [publish](luis-how-to-publish-app.md) or republish a version in order for it to be available at your LUIS app endpoint. You can publish to **Staging** and **Production**, giving you two versions of the app available at the endpoint. If more versions of the app need to be available at an endpoint, you should export the version and reimport it to a new app. 新的应用具有不同的应用 ID。
 
 ### <a name="import-and-export-a-version"></a>导入和导出版本
-可以在应用级别导入版本。 该版本将成为活动版本，并使用应用文件的 `versionId` 属性中的版本 ID。 你还可以在版本级别导入到现有应用。 新版本将成为活动版本。 
 
-可以在应用或版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“**设置[”页上选择任意要导出的版本](luis-how-to-manage-versions.md)** 。 
+A version can be imported at the app level. That version becomes the active version and uses the version ID in the `versionId` property of the app file. You can also import into an existing app, at the version level. 新版本将成为活动版本。 
 
-导出的文件不包含：
+A version can be exported at the app or version level as well. 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本。 
 
-* 计算机获知的信息，因为该应用程序在导入后重新训练
-* 参与者信息
+The exported file **doesn't** contain:
 
-若要备份 LUIS 应用架构，请从 LUIS 门户导出版本。
+* Machine-learned information, because the app is retrained after it's imported
+* Contributor information
 
-## <a name="manage-contributor-changes-with-versions-and-apps"></a>管理版本和应用的参与者更改
+In order to back up your LUIS app schema, export a version from the [LUIS portal](https://www.luis.ai/applications).
 
-LUIS 提供了应用程序参与者的概念，通过提供 Azure 资源级权限。 将此概念与版本控制结合，以提供目标协作。 
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Manage contributor changes with versions and contributors
 
-使用以下技术管理对应用的参与者更改。
+LUIS uses the concept of contributors to an app, by providing Azure resource-level permissions. Combine this concept with versioning to provide targeted collaboration. 
+
+Use the following techniques to manage contributor changes to your app.
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
-首先，每个创建者基于基础版进行[克隆](luis-how-to-manage-versions.md#clone-a-version)。 
 
-每个创建者对自己的应用版本进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
+Begin by [cloning](luis-how-to-manage-versions.md#clone-a-version) from a base version for each author. 
 
-可对导出的应用、json 或 lu 文件进行比较以进行更改。 合并文件以创建新版本的单个文件。 更改**versionId**属性以表示新的合并版本。 将该版本导入原始应用。 
+Each author makes changes to their own version of the app. When the author is satisfied with the model, export the new versions to JSON files.  
 
-通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可以在[交互式测试窗格](luis-interactive-test.md)中将活动版本与发布版本（阶段或生产）的结果进行比较。
+Exported apps, .json or .lu files, can be compared for changes. Combine the files to create a single file of the new version. Change the `versionId` property to signify the new merged version. 将该版本导入原始应用。 
+
+通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 You can compare the results of the active version with a published version (stage or production) in the [interactive testing pane](luis-interactive-test.md).
 
 ### <a name="manage-multiple-versions-as-apps"></a>将各版本作为应用进行管理
+
 [导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。 
 
 导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
 
-详细了解来自[协作者](luis-how-to-collaborate.md)的创作贡献。
+Learn more about authoring contributions from [collaborators](luis-how-to-collaborate.md).
 
-## <a name="review-endpoint-utterances-to-begin-the-new-authoring-cycle"></a>查看终结点最谈话以开始新的创作周期
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Review endpoint utterances to begin the new iterative cycle
 
-结束一个创作周期后可以重新开始。 开始[审阅预测终结点最谈话](luis-how-to-review-endpoint-utterances.md)LUIS 标记为低置信度。 检查这些最谈话以查找正确的预测意向，并准确和完整地提取实体。 查看并接受更改后，审阅列表应为空。  
+When you are done with an iteration cycle, you can repeat the process. Start with [reviewing prediction endpoint utterances](luis-how-to-review-endpoint-utterances.md) LUIS marked with low-confidence. Check these utterances for both correct predicted intent and correct and complete entity extracted. After you review and accept changes, the review list should be empty.  
 
 ## <a name="next-steps"></a>后续步骤
 

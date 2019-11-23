@@ -72,6 +72,8 @@
       href: customize-feed-for-virtual-desktop-users.md
     - name: 部署诊断工具
       href: deploy-diagnostics.md
+    - name: 发布应用
+      href: publish-apps.md
     - name: 设置 MSIX 应用附加
       href: app-attach.md
 - name: 概念
@@ -128,6 +130,8 @@
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 学习路径
+      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
     - name: 技术社区支持组
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
     - name: UserVoice 论坛
