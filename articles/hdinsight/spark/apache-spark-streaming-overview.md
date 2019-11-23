@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight 中的 Spark 流式处理
-description: 如何在 HDInsight Spark 群集上使用 Apache Spark 流式处理应用程序。
-ms.service: hdinsight
+description: How to use Apache Spark Streaming applications on HDInsight Spark clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2019
-ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813996"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406267"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -27,9 +27,9 @@ Spark 流式处理应用程序必须先等待一会，以收集事件的每个�
 
 Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流。 可以基于输入源（例如事件中心或 Kafka）或通过对另一个 DStream 应用转换来创建此 DStream。
 
-DStream 可提供基于原始事件数据的抽象层。 
+DStream 可提供基于原始事件数据的抽象层。
 
-从单一事件开始，例如已连接调温器的温度读数。 此事件到达 Spark 流式处理应用程序后，系统将以可靠方式存储事件，即在多个节点上进行复制。 此容错功能可确保任何单个节点的故障都不会导致事件丢失。 Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
+从单一事件开始，例如已连接调温器的温度读数。 When this event arrives at your Spark Streaming application, the event is stored in a reliable way, where it's replicated on multiple nodes. This fault-tolerance ensures that the failure of any single node won't result in the loss of your event. Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
 
 每个 RDD 表示在用户定义的时间范围（称为*批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 连续的 RDD 集将被收集到 DStream。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
@@ -139,13 +139,13 @@ stream.foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
         .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
 ```
 
-在启动上面的应用程序以后，等待约 30 秒钟。  然后，你可以定期查询 DataFrame 来查看批处理中存在的当前值集，例如，使用以下 SQL 查询：
+Wait for about 30 seconds after starting the application above.  Then, you can query the DataFrame periodically to see the current set of values present in the batch, for example using this SQL query:
 
 ```sql
 %%sql
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 生成的输出如下所示：
 
-| value | 时间 |
+| 值 | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -214,7 +214,7 @@ stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
     .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
@@ -222,9 +222,9 @@ ssc.start()
 
 第一分钟后，会产生 12 个条目 - 窗口中收集到的两个批处理中各有 6 个条目。
 
-| value | 时间 |
+| 值 | time |
 | --- | --- |
-| 1 | 1497316294139 |
+| 第 | 1497316294139 |
 | 2 | 1497316299158
 | 3 | 1497316304178
 | 4 | 1497316309204

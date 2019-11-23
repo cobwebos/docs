@@ -1,67 +1,61 @@
 ---
-title: Azure 区块链限制
-description: Azure 区块链服务中的服务和功能限制概述
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service limits
+description: Overview of the service and functional limits in Azure Blockchain Service
 ms.date: 05/02/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0500d7c5e2d05d185b4d032a33c008726d996df1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577221"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326152"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
+# <a name="limits-in-azure-blockchain-service"></a>Limits in Azure Blockchain Service
 
-Azure 区块链服务具有服务和功能限制，如成员可以具有的节点数、联合会限制和存储量。
+Azure Blockchain Service has service and functional limits such as the number of nodes a member can have, consortium restrictions, and storage amounts.
 
 ## <a name="pricing-tier"></a>定价层
 
-事务和验证器节点的最大限制取决于是否在基本或标准定价层预配 Azure 区块链服务。
+Maximum limits on transactions and validator nodes depend on whether you provision Azure Blockchain Service at Basic or Standard pricing tiers.
 
-| 定价层 | 最大事务节点数 | 最大验证器节点 |
+| 定价层 | Max transaction nodes | Max validator nodes |
 |:---|:---:|:---:|
-| 基本 | 10 | 1 |
-| 标准 | 10 | 2 |
+| 基本 | 10 | 第 |
+| 标准版 | 10 | 2 |
 
-不支持在创建成员后更改基本和标准定价层。
+Changing the pricing tier between Basic and Standard after member creation is not supported.
 
 ## <a name="storage-capacity"></a>存储容量
 
-每个节点用于分类帐数据和日志的最大存储量为 1.8 tb。
+The maximum amount of storage that can be used per node for ledger data and logs is 1.8 terabytes.
 
-不支持降低分类帐和日志存储大小。
+Decreasing ledger and log storage size is not supported.
 
-## <a name="consortium-limits"></a>协会限制
+## <a name="consortium-limits"></a>Consortium limits
 
-* **联盟和成员名称必须**与 Azure 区块链服务中的其他联盟和成员名称唯一。
+* **Consortium and member names must be unique** from other consortium and member names in the Azure Blockchain Service.
 
-* **不能更改成员和联盟名称**
+* **Member and consortium names cannot be changed**
 
-* **联盟中的所有成员都必须在同一定价层中**
+* **All members in a consortium must be in the same pricing tier**
 
-* **参与联盟的所有成员必须位于同一区域**
+* **All members that participate in a consortium must reside in the same region**
 
-    在联盟中创建的第一个成员决定区域。 联盟的受邀成员必须与第一个成员位于同一区域。 将所有成员限制为同一区域有助于确保网络共识不会受到负面影响。
+    The first member created in a consortium dictates the region. Invited members to the consortium must reside in the same region as the first member. Limiting all members to the same region helps ensure network consensus is not negatively impacted.
 
-* **联盟至少必须有一个管理员**
+* **A consortium must have at least one administrator**
 
-    如果联盟中只有一个管理员，则他们不能将其自身从协会中删除，也不能删除其成员，直到在协会中添加或升级其他管理员。
+    If there is only one administrator in a consortium, they cannot remove themselves from the consortium or delete their member until another administrator is added or promoted in the consortium.
 
-* **不能再次添加从联合会删除的成员**
+* **Members removed from the consortium cannot be added again**
 
-    相反，他们必须重新邀请加入联盟并创建新成员。 不会删除其现有成员资源来保留历史事务。
+    Rather, they must be reinvited to join the consortium and create a new member. Their existing member resource are not deleted to preserve historical transactions.
 
-* **联盟中的所有成员都必须使用同一分类帐版本**
+* **All members in a consortium must be using the same ledger version**
 
-    有关 Azure 区块链服务中可用的修补、更新和分类帐版本的详细信息，请参阅[修补程序、更新和版本](ledger-versions.md)。
+    For more information on the patching, updates, and ledger versions available in Azure Blockchain Service, see [Patching, updates, and versions](ledger-versions.md).
 
 ## <a name="next-steps"></a>后续步骤
 
-* [修补、更新和版本](ledger-versions.md)
+* [Patching, updates, and versions](ledger-versions.md)

@@ -1,7 +1,7 @@
 ---
-title: 通过 Azure SQL 数据库边缘使用 SQL 数据库 DAC 包和流分析作业 |Microsoft Docs
-description: 了解如何在 SQL 数据库边缘中使用流分析作业
-keywords: sql 数据库边缘，流分析，sqlpackage
+title: Using SQL Database DAC packages and Stream Analytics jobs with Azure SQL Database Edge | Microsoft Docs
+description: Learn about using Stream Analytics jobs in SQL Database Edge
+keywords: sql database edge, stream analytics, sqlpackage
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -9,20 +9,20 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108745"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384156"
 ---
-# <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>在 SQL 数据库边缘中使用 SQL 数据库 DAC 包和流分析作业
+# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>Using SQL Database DAC packages and Stream Analytics jobs with SQL Database Edge
 
-Azure SQL 数据库边缘预览版是一种优化的关系数据库引擎，适用于 IoT 和边缘部署。 它基于最新版本的 Microsoft SQL Server 数据库引擎提供，提供业界领先的性能、安全性和查询处理功能。 除了 SQL Server 的业界领先的关系数据库管理功能之外，Azure SQL 数据库边缘还提供内置的流式处理功能，可用于实时分析和复杂的事件处理。
+Azure SQL Database Edge Preview is an optimized relational database engine geared for IoT and edge deployments. It's built on the latest versions of the Microsoft SQL Server Database Engine, which provides industry-leading performance, security, and query processing capabilities. Along with the industry-leading relational database management capabilities of SQL Server, Azure SQL Database Edge provides in-built streaming capability for real-time analytics and complex event-processing.
 
-Azure SQL 数据库边缘还提供了 SQLPackage 的本机实现，使用户能够在 SQL 数据库边缘部署过程中部署[Sql 数据库 DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications)包。
+Azure SQL Database Edge also provides a native implementation of SqlPackage.exe that enables you to deploy a [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) package during the deployment of SQL Database Edge.
 
-Azure SQL 数据库边缘通过 IoT Edge 模块的模块克隆*的所需属性*选项来公开两个可选参数。
+Azure SQL Database Edge exposes two optional parameters through the `module twin's desired properties` option of the IoT Edge module:
 
 ```json
 {
@@ -34,37 +34,37 @@ Azure SQL 数据库边缘通过 IoT Edge 模块的模块克隆*的所需属性*�
 }
 ```
 
-|字段 | 说明 |
+|字段 | 描述 |
 |------|-------------|
-| SQLPackage | 包含 SQL 数据库 DAC 包的 * .zip 文件的 Azure Blob 存储 URI。
-| ASAJobInfo | ASA Edge 作业的 Azure Blob 存储 URI。 有关发布 ASA Edge 作业的详细信息，请参阅[为 SQL 数据库边缘发布 Asa edge 作业](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
+| SqlPackage | Azure Blob storage URI for the *.zip file that contains the SQL Database DAC package.
+| ASAJobInfo | Azure Blob storage URI for the ASA Edge job. For more information, see [Publishing an ASA Edge job for SQL Database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
-## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>结合使用 SQL 数据库 DAC 包和 SQL 数据库边缘
+## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>Using SQL Database DAC packages with SQL Database Edge
 
-若要将 SQL 数据库 DAC 包（* .dacpac）用于 SQL 数据库边缘，请按照下面所述的步骤进行操作。
+To use a SQL Database DAC package (*.dacpac) with SQL Database Edge, take these steps:
 
-1. 创建或提取 SQL 数据库 DAC 包。 您可以使用[从现有数据库提取 DAC](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)中所述的概念为现有的 SQL 数据库生成 DacPac。
+1. Create or extract a SQL Database DAC package. See [Extracting a DAC from a database](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) for information on how to generate a DAC package for an existing SQL Server database.
 
-2. 压缩 * *.dacpac*并上传到 Azure Blob 存储帐户。 有关将文件上传到 Azure Blob 存储的详细信息，请参阅[上传、下载和列出 Azure 门户的 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
+2. Zip the *.dacpac and upload it to an Azure Blob storage account. For more information on uploading files to Azure Blob storage, see [Upload, download, and list blobs with the Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-3. 使用 Azure 门户为 zip 文件生成 SAS 签名。 有关详细信息，请参阅[使用共享访问签名（SAS）委派访问权限](../storage/common/storage-sas-overview.md)。
+3. Generate a shared access signature for the zip file by using the Azure portal. For more information, see [Delegate access with shared access signatures (SAS)](../storage/common/storage-sas-overview.md).
 
-4. 更新 SQL 数据库边缘模块配置，使其包含 DAC 包的 SAS URI。 更新 SQL 数据库边缘模块
+4. Update the SQL Database Edge module configuration to include the shared access URI for the DAC package. To update the SQL Database Edge module, take these steps:
 
-    1. 在 Azure 门户上，浏览到 IoT 中心部署。
+    1. In the Azure portal, go to your IoT Hub deployment.
 
-    2. 在左侧窗格中，单击 " **IoT Edge**"。
+    2. 在左窗格中，选择“IoT Edge”。
 
-    3. 在 " **IoT Edge** " 页上，找到并单击部署 SQL 数据库边缘模块的 IoT Edge。
+    3. On the **IoT Edge** page, find and select the IoT edge where the SQL Database Edge module is deployed.
 
-    4. 在 " *IoT Edge 设备*设备" 页上，单击 "**设置模块**"。 
+    4. On the **IoT Edge Device** device page, select **Set Module**.
 
-    5. 在 "**设置模块**" 页上，单击 "*配置*" 以根据 SQL 数据库边缘模块。 
+    5. On the **Set modules** page, select **Configure** against the SQL Database Edge module.
 
-    6. 在 " **IoT Edge 自定义模块**" 窗格上，选择 "*设置模块克隆的所需属性*"，然后更新所需的属性以包含 SQLPackage 选项的 URI，如以下示例中所示。 
+    6. In the **IoT Edge Custom Modules** pane, select **Set module twin's desired properties**. Update the desired properties to include the URI for the `SQLPackage` option, as shown in the following example.
 
         > [!NOTE]
-        > 下面的 SAS URI 仅用于说明。 请将 URI 替换为部署中的实际 URI。
+        > The SAS URI in the following JSON is just an example. Replace the URI with the actual URI from your deployment.
 
         ```json
             {
@@ -75,40 +75,40 @@ Azure SQL 数据库边缘通过 IoT Edge 模块的模块克隆*的所需属性*�
             }
         ```
 
-    7. 单击“保存”。
+    7. 选择“保存”。
 
-    8. 在 "**设置模块**" 页上，单击 "*下一步*"。
+    8. On the **Set modules** page, select **Next**.
 
-    9. 在 "**设置模块**" 页上单击 "*下一步*"，然后单击 "**提交**"。
+    9. On the **Set modules** page, select **Next** and then **Submit**.
 
-5. 发布模块更新后，将下载、解压缩 dacpac 文件，并将其部署在 SQL 数据库边缘实例上。
+5. After the module update, the DAC package file is downloaded, unzipped, and deployed against the SQL Database Edge instance.
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>在 SQL 数据库边缘中使用流式处理作业
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>Using streaming jobs with SQL Database Edge
 
-Azure SQL 数据库边缘具有流分析运行时的本机实现。 这使用户可以创建 Azure 流分析 Edge 作业，并将该作业部署为 SQL 数据库边缘流式处理作业。 若要创建流分析边缘作业，请遵循以下步骤。
+Azure SQL Database Edge has a native implementation of the stream analytics runtime. This implementation enables you to create an Azure Stream Analytics edge job and deploy that job as a SQL Database Edge streaming job. To create a Stream Analytics edge job, complete these steps:
 
-1. 使用预览[URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)浏览到 Azure 门户。 此预览 URL 允许用户为流分析边缘作业配置 SQL 数据库输出。
+1. Go to the Azure portal by using the preview [URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true). This preview URL enables you to configure SQL Database output for a Stream Analytics edge job.
 
-2. 创建新的**Azure IoT Edge 流分析**作业，并选择宿主环境目标**边缘**。
+2. Create a new **Azure Stream Analytics on IoT Edge** job. Choose the hosting environment that targets **Edge**.
 
-3. 定义 Azure 流分析作业的*输入*和*输出*。 每个 SQL 输出（如下所示）都绑定到数据库中的一个表。 如果需要将数据流式传输到多个表，则需要创建多个 SQL 数据库输出。 可以将 SQL 输出配置为指向不同的数据库。
+3. Define an input and output for the Azure Stream Analytics job. Each SQL output, which you'll set up here, is tied to a single table in the database. If you need to stream data to multiple tables, you'll need to create multiple SQL Database outputs. You can configure the SQL outputs to point to different databases.
 
-    *输入-选择 EdgeHub 作为边缘作业的输入，并填写资源信息。*
+    **Input**. Choose EdgeHub as the input for the edge job, and provide the resource info.
 
-    *输出-选择 SQL 数据库作为输出，"手动提供 SQL 数据库设置"，并提供数据库和表的配置详细信息。*
+    **Output**. Select SQL Database the as output. Select **Provide SQL Database settings manually**. Provide the configuration details for the database and table.
 
-    |字段      | 说明 |
+    |字段      | 描述 |
     |---------------|-------------|
-    |输出别名 | 输出别名的名称。|
-    |数据库 | SQL 数据库的名称。 这必须是 SQL 数据库边缘实例上存在的有效数据库名称。|
-    |服务器名称 | SQL 实例的名称（或 IP 地址）和端口号详细信息。 对于 SQL 数据库边缘部署，可以使用**tcp：.、1433**作为服务器名称。|
-    |用户名 | SQL 登录帐户，其中包含对上述数据库的数据读取器和数据写入器的访问权限。|
-    |密码 | 上面提到的 SQL 登录帐户的密码。|
-    |表 | 将为流式处理作业输出的表的名称。|
-    |继承分区| 此 SQL 输出配置选项可继承上一个查询步骤或输入的分区方案。 启用此功能后，写入到基于磁盘的表，并为作业提供完全并行拓扑，就会看到更好的吞吐量。|
-    |批大小| 批大小是每个大容量插入事务发送的最大记录数。|
+    |输出别名 | Name of the output alias.|
+    |数据库 | Name of the SQL database. It needs to be a valid name of a database that exists on the SQL Database Edge instance.|
+    |服务器名称 | Name (or IP address) and port number details for the SQL instance. For a SQL Database Edge deployment, you can use **tcp:.,1433** for the server name.|
+    |用户名 | SQL sign-in account that has data reader and data writer access to the database that you specified earlier.|
+    |密码 | Password for the SQL sign-in account that you specified earlier.|
+    |表 | Name of the table that will be output for the streaming job.|
+    |Inherit Partitioning| Enables inheriting the partitioning scheme of your previous query step or input. When this option is enabled, you can expect to see better throughput when you write to a disk-based table and have a fully parallel topology for your job.|
+    |批大小| The maximum number of records that's sent with every bulk insert transaction.|
 
-    示例输入/输出配置如下：
+    Here's a sample input/output configuration:
 
     ```txt
         Input:
@@ -118,7 +118,7 @@ Azure SQL 数据库边缘具有流分析运行时的本机实现。 这使用户
             Encoding: UTF-8
             Event compression type: None
 
-        Output :
+        Output:
             Output alias: output
             Database:  MeasurementsDB
             Server name: tcp:.,1433
@@ -130,32 +130,32 @@ Azure SQL 数据库边缘具有流分析运行时的本机实现。 这使用户
     ```
 
     > [!NOTE]
-    > 有关 Azure 流分析的 SQL 输出适配器的详细信息，请参阅 azure[流分析输出到 AZURE SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md)。
+    > For more information on the SQL output adapter for Azure Stream Analytics, see [Azure Stream Analytics output to Azure SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md).
 
-4. 定义 edge 作业的 ASA 作业查询。 此查询应使用定义的输入/输出别名作为查询中的输入和输出名称。 有关详细信息，请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。
+4. Define the ASA job query for the edge job. This query should use the defined input/output aliases as the input and output names in the query. For more information, see [Stream Analytics Query Language reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
-5. 设置边缘作业的存储帐户设置。 存储帐户用作边缘作业的发布目标。
+5. Set the storage account settings for the edge job. The storage account is used as the publishing target for the edge job.
 
-6. 在 "配置" 下，选择 "发布"，然后单击 "发布" 按钮。 保存 SAS URL 以用于 SQL 数据库边缘模块。
+6. Under **Configure**, select **Publish**, and then select the **Publish** button. Save the SAS URI for use with the SQL Database Edge module.
 
-### <a name="deploy-the-stream-analytics-edge-job-to-the-sql-database-edge"></a>将流分析边缘作业部署到 SQL 数据库边缘
+### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>Deploy the Stream Analytics edge job to SQL Database Edge
 
-若要将流式处理作业部署到 SQL 数据库边缘模块，请更新 SQL 数据库边缘模块配置，使其包含上述步骤中的流式处理作业的 SAS URI。 更新 SQL 数据库边缘模块
+To deploy the streaming job to the SQL Database Edge module, update the SQL Database Edge module configuration to include the SAS URI for the streaming job from the earlier step. To update the SQL Database Edge module:
 
-1. 在 Azure 门户上，浏览到 IoT 中心部署。
+1. In the Azure portal, go to your IoT Hub deployment.
 
-2. 在左侧窗格中，单击 " **IoT Edge**"。
+2. 在左窗格中，选择“IoT Edge”。
 
-3. 在 " **IoT Edge** " 页上，找到并单击部署 SQL 数据库边缘模块的 IoT Edge。
+3. On the **IoT Edge** page, find and select the IoT edge where the SQL Database Edge module is deployed.
 
-4. 在 " *IoT Edge 设备*设备" 页上，单击 "**设置模块**"。 
+4. On the **IoT Edge Device** device page, select **Set Module**.
 
-5. 在 "**设置模块**" 页上，单击 "*配置*" 以根据 SQL 数据库边缘模块。 
+5. On the **Set modules** page, select **Configure** against the SQL Database Edge module.
 
-6. 在 " **IoT Edge 自定义模块**" 窗格上，选择 "*设置模块克隆的所需属性*"，然后更新所需的属性以包含 ASAJobInfo 选项的 URI，如以下示例中所示。 
+6. In the **IoT Edge Custom Modules** pane, select **Set module twin's desired properties**. Update the desired properties to include the URI for the `ASAJobInfo` option, as shown in the following example.
 
     > [!NOTE]
-    > 下面的 SAS URI 仅用于说明。 请将 URI 替换为部署中的实际 URI。
+    > The SAS URI in the following JSON is just an example. Replace the URI with the actual URI from your deployment.
 
     ```json
         {
@@ -166,17 +166,16 @@ Azure SQL 数据库边缘具有流分析运行时的本机实现。 这使用户
         }
     ```
 
-7. 单击“保存”。
+7. 选择“保存”。
 
-8. 在 "**设置模块**" 页上，单击 "*下一步*"。
+8. On the **Set modules** page, select **Next**.
 
-9. 在 "**设置模块**" 页上单击 "*下一步*"，然后单击 "**提交**"。
+9. On the **Set modules** page, select **Next** and then **Submit**.
 
-10. 升级模块更新后，将下载、解压缩流分析作业文件，并将其部署在 SQL 数据库边缘实例上。
+10. After the module update, the stream analytics job file is downloaded, unzipped, and deployed against the SQL Database Edge instance.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关定价和可用性相关的详细信息，请参阅[AZURE SQL 数据库边缘](https://azure.microsoft.com/services/sql-database-edge/)。
-- 为订阅启用 Azure SQL 数据库边缘的请求。
-- 若要开始操作，请参阅以下内容：
-  - [通过 Azure 门户部署 SQL 数据库边缘](deploy-portal.md)
+- For pricing and availability details, see [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/).
+- Request enabling Azure SQL Database Edge for your subscription.
+- To get started, see [Deploy SQL Database Edge through Azure portal](deploy-portal.md).

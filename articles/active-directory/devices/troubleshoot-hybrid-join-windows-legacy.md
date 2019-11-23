@@ -1,22 +1,22 @@
 ---
-title: 排查已加入混合 Azure Active Directory 的下层设备问题 | Microsoft Docs
+title: Troubleshoot legacy hybrid Azure Active Directory joined devices
 description: 排查已加入混合 Azure Active Directory 的下层设备问题。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7f02937555f7637a6d2f81be717aaad83bab74f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481460"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379119"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -32,7 +32,7 @@ ms.locfileid: "67481460"
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
-- 基于设备的条件性访问
+- Device-based Conditional Access
 
 本文提供有关如何解决潜在问题的故障排除指导。  
 
@@ -41,7 +41,7 @@ ms.locfileid: "67481460"
 - 下层 Windows 设备混合 Azure AD 加入的工作方式与它在 Windows 10 中的工作方式略有不同。 许多客户没有意识到他们需要配置 AD FS（对于联合域）或无缝 SSO（对于托管域）。
 - 对于具有联合域的客户，如果服务连接点 (SCP) 配置为指向托管域名（例如 contoso.onmicrosoft.com 而非 contoso.com），则下层 Windows 设备混合 Azure AD 加入不会工作。
 - 每个用户的最大设备数也适用于加入了混合 Azure AD 的下层设备。 
-- 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”  选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
+- 当有多个域用户登录到加入了混合 Azure AD 的下层设备时，同一物理设备在 Azure AD 中出现多次。  例如：如果 *jdoe* 和 *jharnett* 登录到某个设备，会在“用户信息”选项卡中为其中每个用户单独创建一个注册 (DeviceID)。 
 - 由于操作系统的重新安装或手动重新注册，在用户信息选项卡上也可能会出现同一设备的多个条目。
 - 设备的初始注册/加入配置为在登录或锁定/解锁时执行尝试。 可能会有 5 分钟的延迟，由任务计划程序任务触发。 
 - 对于 Windows 7 SP1 或 Windows Server 2008 R2 SP1，请确保安装 [KB4284842](https://support.microsoft.com/help/4284842)。 此更新可防止将来因客户更改密码后无法访问受保护密钥而导致身份验证失败。
@@ -69,12 +69,12 @@ ms.locfileid: "67481460"
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
-   - 它可能是多重身份验证 (MFA) 是为用户启用/配置和 WIAORMULTIAUTHN 没有在 AD FS 服务器上配置。 
+   - It could be that multi-factor authentication (MFA) is enabled/configured for the user and WIAORMULTIAUTHN is not configured at the AD FS server. 
    - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
    - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
    - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
-   - **Autoworkplace.exe**要求客户端具有直接视距从客户端到组织的本地 AD 域控制器，这意味着该混合 Azure AD 联接成功仅客户端连接到组织的 intranet。
-   - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”  。
+   - **Autoworkplace.exe** requires the client to have direct line of sight from the client to the organization's on-premises AD domain controller, which means that hybrid Azure AD join succeeds only when the client is connected to organization's intranet.
+   - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
 - 登录身份不是域用户
 
    ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
@@ -91,7 +91,7 @@ ms.locfileid: "67481460"
 
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-还可以在以下路径下的事件日志中找到状态信息：**Applications and Services Log\Microsoft-Workplace Join**
+此外，也可以在“应用程序和服务日志\Microsoft-Workplace Join”下面的事件日志中找到状态信息
   
 **混合 Azure AD 加入失败的最常见原因是：** 
 

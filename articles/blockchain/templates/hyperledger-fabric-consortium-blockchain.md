@@ -1,21 +1,15 @@
 ---
-title: Azure 上的 Hyperledger Fabric 联盟网络
-description: 用于部署和配置 Hyperledger Fabric 联盟网络的解决方案模板
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Deploy Hyperledger Fabric Consortium solution template on Azure
+description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: caleteet
-manager: femila
-ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510750"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325134"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric 联盟网络
 
@@ -39,10 +33,10 @@ ms.locfileid: "65510750"
 
 在任一部署中，构成 Hyperledger Fabric 核心的构建基块是相同的。  这两种部署的不同之处在于如何横向扩展以下组件。
 
-- **CA 节点**：运行用于生成证书的证书颁发机构的节点，这些证书用于网络中的各种标识。
-- **排序节点**：运行通信服务来实现交付保证的节点，例如全序广播或原子事务。
-- **对等节点**：提交事务并保持状态和分布式账本副本的节点。
-- **CouchDB 节点**：可以运行 CouchDB 服务的节点，该服务可以容纳状态数据库，并对链代码数据（从简单的键/值到 JSON 类型存储）执行丰富的查询。
+- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
+- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
+- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
+- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
 
 ### <a name="single-virtual-machine-architecture"></a>单虚拟机体系结构
 
@@ -60,57 +54,57 @@ ms.locfileid: "65510750"
 
 开始之前，需要一个能够支持部署多个虚拟机和标准存储帐户的 Azure 订阅。 如果没有 Azure 订阅，可以[创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-拥有订阅后，请转到 [Azure 门户](https://portal.azure.com)。 选择“创建资源”>“区块链”>“Hyperledger Fabric 联盟”  。
+拥有订阅后，请转到 [Azure 门户](https://portal.azure.com)。 选择“创建资源”>“区块链”>“Hyperledger Fabric 联盟”。
 
 ![Hyperledger Fabric 单一成员区块链市场模板](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
 ## <a name="deployment"></a>部署
 
-在“Hyperledger Fabric 联盟”模板中，选择“创建”   。
+在“Hyperledger Fabric 联盟”模板中，选择“创建”。
 
-模板部署将引导你配置多节点 [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) 网络。 部署流程分为四个步骤：基本信息、联盟网络设置、Fabric 配置和可选组件。
+模板部署将引导你配置多节点 [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) 网络。 The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
 
 ### <a name="basics"></a>基础
 
-在“基本信息”中，指定适用于任何部署的标准参数的值  。 例如，订阅、资源组和基本的虚拟机属性。
+在“基本信息”中，指定适用于任何部署的标准参数的值。 例如，订阅、资源组和基本的虚拟机属性。
 
 ![基础](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| 参数名称 | 描述 | 允许的值 |
+| 参数名 | 描述 | 允许的值 |
 |---|---|---|
 **资源前缀** | 在部署过程中预配的资源的名称前缀 |6 个字符或更少 |
 **用户名** | 为此成员部署的每个虚拟机的管理员用户名 |1 - 64 个字符 |
 **身份验证类型** | 向虚拟机进行身份验证的方法 |密码或 SSH 公钥|
-**密码（身份验证类型 = 密码）** |部署的每个虚拟机的管理员帐户密码。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码|12 - 72 个字符|
+**密码（身份验证类型 = 密码）** |部署的每个虚拟机的管理员帐户密码。 The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码|12 - 72 个字符|
 **SSH 密钥（身份验证类型 = SSH 公钥）** |用于远程登录的安全 shell 密钥 ||
-**订阅** |要部署到的订阅 ||
+订阅 |要部署到的订阅 ||
 **资源组** |要将联盟网络部署到的资源组 ||
-**位置** |要部署第一个成员的 Azure 区域 ||
+位置 |要部署第一个成员的 Azure 区域 ||
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="consortium-network-settings"></a>联盟网络设置
 
-在“网络设置”中，指定用于创建或加入现有联盟网络的输入，并配置组织设置  。
+在“网络设置”中，指定用于创建或加入现有联盟网络的输入，并配置组织设置。
 
 ![联盟网络设置](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| 参数名称 | 描述 | 允许的值 |
+| 参数名 | 描述 | 允许的值 |
 |---|---|---|
-**网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值  。 |新建网络 <br/> 加入现有网络 |
-**HLF CA 密码** |用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
+**网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值。 |新建网络 <br/> 加入现有网络 |
+**HLF CA 密码** |用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含下列字符类型中的三项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
 **组织设置** |可以自定义组织的名称和证书，也可以使用默认值。|默认 <br/> 高级 |
-**VPN 网络设置** | 预配 VPN 隧道网关以访问 VM | 是 <br/> 否 |
+**VPN 网络设置** | 预配 VPN 隧道网关以访问 VM | 是 <br/> No |
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="fabric-specific-settings"></a>Fabric 特定的设置
 
-在“Fabric 配置”中，配置网络大小和性能，并为网络可用性指定输入  。 例如，排序节点和对等节点的数量，每个节点使用的持久性引擎，以及 VM 大小。
+在“Fabric 配置”中，配置网络大小和性能，并为网络可用性指定输入。 例如，排序节点和对等节点的数量，每个节点使用的持久性引擎，以及 VM 大小。
 
 ![Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| 参数名称 | 描述 | 允许的值 |
+| 参数名 | 描述 | 允许的值 |
 |---|---|---|
 **缩放类型** |以下两种部署类型之一：具有多个容器的单个虚拟机或横向扩展模型中的多个虚拟机。|单 VM 或多 VM |
 **VM 磁盘类型** |支持每个已部署的节点的存储类型。 <br/> 若要详细了解可用的磁盘类型，请访问[选择磁盘类型](../../virtual-machines/windows/disks-types.md)。|标准 SSD <br/> 高级·SSD |
@@ -119,7 +113,7 @@ ms.locfileid: "65510750"
 
 ![有关多 VM 部署的 Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| 参数名称 | 描述 | 允许的值 |
+| 参数名 | 描述 | 允许的值 |
 |---|---|---|
 **排序节点数** |将事务排序（整理）为块的节点数。 <br />有关排序服务的其他详细信息，请访问 Hyperledger [文档](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
 **排序节点虚拟机大小** |用于网络中排序节点的虚拟机大小|标准 Bs、<br />标准 Ds、<br />标准 FS |
@@ -133,15 +127,15 @@ ms.locfileid: "65510750"
 
 ![多对等节点配置](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="deploy"></a>部署
 
-在“摘要”边栏选项卡中，查看指定的输入并运行基本的部署前验证  。
+在“摘要”边栏选项卡中，查看指定的输入并运行基本的部署前验证。
 
-![摘要](./media/hyperledger-fabric-consortium-blockchain/summary.png)
+![总结](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-查看法律和隐私条款，然后选择“购买”进行部署  。 部署时间可能从几分钟到数十分钟不等，具体取决于正在预配的 VM 数量。
+查看法律和隐私条款，然后选择“购买”进行部署。 部署时间可能从几分钟到数十分钟不等，具体取决于正在预配的 VM 数量。
 
 ## <a name="next-steps"></a>后续步骤
 

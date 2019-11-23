@@ -1,7 +1,7 @@
 ---
-title: 添加实体 - LUIS
+title: Add entities - LUIS
 titleSuffix: Azure Cognitive Services
-description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 提取的实体数据由客户端应用程序用来 fullfil 客户请求。
+description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,167 +11,167 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132687"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383674"
 ---
-# <a name="add-entities-to-extract-data"></a>添加实体以提取数据 
+# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
 
-创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 你的客户端应用程序使用提取的实体数据来 fullfil 客户请求。
+Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
 
-实体表示要提取的话语中的字词或短语。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 在将示例查询文本添加到意向或从（之前或之后）将示例查询文本添加到目的时，可以创建实体。
+实体表示要提取的话语中的字词或短语。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>规划实体，然后创建并标记
+## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
 
-可以从示例最谈话创建计算机学习的实体，也可以从 "**实体**" 页创建。 
+Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
 
-通常，最佳做法是在门户中创建计算机学习实体之前，花费时间规划实体。 然后，在查询文本示例中创建计算机学习的实体，在子组件和描述符中提供详细信息，如您所知。 [可以分解实体教程](tutorial-machine-learned-entity.md)演示了如何使用此方法。 
+In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
 
-在规划实体的过程中，您可能会知道您需要文本匹配实体（例如预生成实体、正则表达式实体或列表实体）。 你可以从 "**实体**" 页创建它们，然后将它们标记为示例最谈话。 
+As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
 
-进行标记时，可以标记各个实体，然后生成到父计算机学习的实体。 或者，你可以从一个由计算机学习的父实体开始，然后分解为子实体。 
+When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
 
 > [!TIP] 
->标记可能指示实体的所有单词，即使在客户端应用程序中提取的单词不会使用。 
+>Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>在标记之前创建实体
+## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
 
-使用下表来了解将每个实体创建或添加到应用中的实体。 
+Use the following table to understand which entities where to create or add each entity to the app. 
 
-|实体类型|在 LUIS 门户中的何处创建实体|
+|实体类型|Where to create entity in the LUIS portal|
 |--|--|
-|机器学习实体|实体或意向详细信息|
-|列表实体|实体或意向详细信息|
+|机器学习实体|Entities or Intent detail|
+|列表实体|Entities or Intent detail|
 |正则表达式实体|实体|
 |Pattern.any 实体|实体|
 |预生成实体|实体|
-|预生成的域实体|实体|
+|Prebuilt domain entity|实体|
 
-您可以从 "**实体**" 页创建所有实体，也可以在 "**目的详细信息**" 页上的示例查询文本中，创建一些实体作为标签实体的一部分。 您只能在 "**目的详细信息**" 页的示例查询文本中_标记_实体。 
+You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
 
-## <a name="create-a-machine-learned-entity"></a>创建机器学习的实体
+## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>创建文本匹配实体
+## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
 
-使用文本匹配实体提供多种方法来提取数据：
+Use text-matching entities provide several ways to extract data:
 
-|文本匹配实体|目的|
+|Text-matching entities|用途|
 |--|--|
-|[列出实体](#add-list-entities-for-exact-matches)|规范名称和同义词作为替代形式的列表|
-|正则表达式实体|使用正则表达式实体匹配文本|
-|[预生成实体](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|匹配常见数据类型，如数字、电子邮件、日期|
-|预生成的域实体|使用选定的使用者域匹配|
-|[Pattern.any](#add-a-patternany-entity)| 匹配可能与周围文本容易混淆的实体|  
+|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
+|正则表达式实体|match text using a regular expression entity|
+|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
+|Prebuilt domain entity|match using selected subject domains|
+|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
 
-预生成的实体无需提供任何自定义训练数据即可工作。 其他实体需要你提供客户定型数据（如列出实体的项）或表达式（如正则表达式或模式）。
+Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>如何创建新的自定义实体
+### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
 
-1. 在 LUIS 门户中，依次转到 "**管理**" 部分、"**实体**" 页。 
-1. 选择 " **+ 创建**"，然后选择实体类型。 
-1. 继续配置实体，并在完成后选择 "**创建**"。 
+1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
+1. Select **+ Create**, then select the entity type. 
+1. Continue configuring the entity then select **Create** when you are done. 
 
-### <a name="add-list-entities-for-exact-matches"></a>添加列表实体以进行完全匹配
+### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
 
-列表实体表示一组固定、封闭的相关单词。 当您作为作者，可以更改列表时，LUIS 不会扩大或缩小列表。 你还可以使用 [列出实体 json 格式（例如，json 到列表实体）导入到现有的列表实体中的一个实体。 
+列表实体表示一组固定、封闭的相关单词。 While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
 
-下面的列表演示规范名称和同义词。 
+The following list demonstrates the canonical name and the synonyms. 
 
-|颜色列表项名称|颜色-同义词|
+|Color - list item name|Color - synonyms|
 |--|--|
-|红色|crimson、血、apple、消防引擎|
-|蓝色|天空，azure，钴|
-|绿色|王，酸橙色|
+|红色|crimson, blood, apple, fire-engine|
+|蓝色|sky, azure, cobalt|
+|绿色|kelly, lime|
 
-使用过程来创建一个列表实体。 创建列表实体后，不需要在意向中标记示例最谈话。 使用精确文本匹配列表项和同义词。 
+Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
 
-1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. 在 "**创建实体类型**" 对话框中，输入实体的名称，如 "`Colors`" 和 "选择**列表**"。
-1. 在 "**创建列表实体**" 对话框中的 "**添加新**子列表 ..." 中，输入列表项名称，如 `Green`，然后添加同义词。
+1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
+1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
 
     > [!div class="mx-imgBorder"]
-    > ![在实体详细信息页中创建一个颜色列表作为列表实体。](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. 添加完列表项和同义词后，选择 "**创建**"。
+1. When you are finished adding list items and synonyms, select **Create**.
 
-    对应用进行一组更改后，请记住**训练**应用。 请不要在一次更改后对应用进行训练。 
+    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
 
     > [!NOTE]
-    > 此过程演示如何从 "**意向详细信息**" 页中的示例查询文本创建并标记列表实体。 你还可以从 "**实体**" 页创建相同的实体。
+    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
 
-## <a name="add-a-role-for-an-entity"></a>为实体添加角色
+## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
 
-角色是基于上下文的实体的命名子类型。 
+A role is a named subtype of an entity, based on context. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色以区分不同的上下文
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
 
-在下面的查询文本中，有两个位置，每个位置都在语义上由围绕它的单词（如 `to` 和 `from`）指定： 
+In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-在此过程中，将 `origin` 和 `destination` 角色添加到预生成的 geographyV2 实体。
+In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
 
 1. 在“生成”部分的左侧面板中选择“实体”。
 
-1. 选择 " **+ 添加预生成实体**"。 选择**geographyV2** ，然后选择 "**完成**"。 这会将预生成的实体添加到应用。
+1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
     
     如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](reference-pattern-syntax.md#explicit-lists)来更正此问题。 
 
-1. 从实体的 "**实体**" 页列表中选择新添加的 "预生成的 geographyV2" 实体。 
-1. 若要添加新角色，请选择 "**未添加任何角色** **+** " 旁边的 "添加"。
-1. 在 "**类型角色 ...** " 文本框中，输入角色的名称，`Origin` 输入。 添加第二个角色名称，然后输入 `Destination`。 
+1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
+1. To add a new role, select **+** next to **No roles added**.
+1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
 
     > [!div class="mx-imgBorder"]
-    > 向 Location 实体添加源角色 ![屏幕截图](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    该角色将添加到预生成的实体中，但不会添加到使用该实体的任何最谈话。 
+    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>使用查询文本中的角色标签文本
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
 
-1. 请参阅意向详细信息页，其中包含使用角色的示例最谈话。 
-1. 若要用角色标记，请选择示例查询文本中的实体标签（文本下的实线），然后从下拉列表中选择 "从**实体调色板查看**"。 
-
-    > [!div class="mx-imgBorder"]
-    > ![在实体调色板中选择视图的屏幕截图](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    将在右侧打开实体调色板。 
-
-1. 选择实体，然后前往调色板底部，选择 "角色"。 
+1. Go to the Intent details page, which has example utterances that use the role. 
+1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
 
     > [!div class="mx-imgBorder"]
-    > ![在实体调色板中选择视图的屏幕截图](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    The entity palette opens to the right. 
+
+1. Select the entity, then go to the bottom of the palette and select the role. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>添加 pattern.any 实体
+## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
 
-[模式。任何](luis-concept-entity-types.md)实体仅适用于[模式](luis-how-to-model-intent-pattern.md)，而不是意向的示例最谈话。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
+[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
 
-### <a name="steps-to-create-a-patternany-entity"></a>创建模式的步骤。任何实体
+### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
 
-1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. 在 "**选择实体类型**" 对话框中，在 "**名称**" 框中输入实体名称，然后选择 "**模式"。任何**作为**类型**，然后选择 "**创建**"。
+1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
 
-    使用此实体[创建模式查询文本](luis-how-to-model-intent-pattern.md)后，将使用组合的计算机学习和文本匹配算法提取实体。 
+    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>创建模式模板查询文本，以使用模式。任何实体
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
 
-若要使用 pattern.any 实体，请在“模式”页的“提升应用性能”部分中，通过正确的大括号语法（例如 **）添加模式**`Where is **{HumanResourcesFormTitle}** on the server?`。
+若要使用 pattern.any 实体，请在“模式”页的“提升应用性能”部分中，通过正确的大括号语法（例如 `Where is **{HumanResourcesFormTitle}** on the server?`）添加模式。
 
 如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](reference-pattern-syntax.md#explicit-lists)来更正此问题。 
 
-## <a name="do-not-change-entity-type"></a>不要更改实体类型
+## <a name="do-not-change-entity-type"></a>Do not change entity type
 
 LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。 
 
@@ -179,14 +179,18 @@ LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解模式：
+> [!div class="nextstepaction"] 
+> [Use prebuilt models](howto-add-prebuilt-models.md) 
 
-* [模式概念](luis-concept-patterns.md)
-* [模式语法](reference-pattern-syntax.md)
+了解有关以下方面的详细信息：
+* How to [train](luis-how-to-train.md)
+* How to [test](luis-interactive-test.md)
+* How to [publish](luis-how-to-publish-app.md)
+* Patterns:
+    * [概念](luis-concept-patterns.md)
+    * [语法](reference-pattern-syntax.md)
+* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
+* [Data Extraction concepts](luis-concept-data-extraction.md)
 
-有关预生成实体的详细信息，请参阅 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 项目。 
 
-有关实体在 JSON 终结点查询响应中的显示方式的信息，请参阅[数据提取](luis-concept-data-extraction.md)
-
-因为已添加意向、话语和实体，所以有了基本的 LUIS 应用。 了解如何[定型](luis-how-to-train.md)、[测试](luis-interactive-test.md)和[发布](luis-how-to-publish-app.md)应用。
  

@@ -1,41 +1,41 @@
 ---
-title: 如何为-需要托管使用 Azure Active Directory 条件性访问的云应用访问权限的设备 |Microsoft Docs
-description: 了解如何配置 Azure Active Directory (Azure AD) 基于设备的条件性访问策略要求的云应用的访问权限的被管理的设备。
+title: Conditional Access require managed device - Azure Active Directory
+description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c99b8390cd43c3f0767123684fe06e0ae74f86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 31b7aa906cbefc0ffda707a228f2a9d50be351a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509373"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380031"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：需要使用条件性访问的云应用访问权限的被管理的设备
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
 
 在移动优先、云优先的世界中，使用 Azure Active Directory (Azure AD) 可以实现从任意位置以单一登录方式登录到应用和服务。 经授权的用户可以从一系列设备（包括移动设备和个人设备）访问云应用。 但是，许多环境中至少有几个应用会要求仅通过满足你的安全性和符合性标准的设备进行访问。 这些设备也称为受管理设备。 
 
-本文介绍如何配置需要使用托管的设备来访问您的环境中某些云应用的条件性访问策略。 
+This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
 
 ## <a name="prerequisites"></a>必备组件
 
-需要为云应用程序访问将被管理的设备**Azure AD 条件访问**并**Azure AD 设备管理**在一起。 如果尚不熟悉其中的某项功能，应该先阅读以下主题:
+Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. 如果尚不熟悉其中的某项功能，应该先阅读以下主题:
 
-- **[Azure Active Directory 中的条件性访问](../active-directory-conditional-access-azure-portal.md)** -本文提供的条件性访问和相关的术语的概念性概述。
+- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
 - **[Azure Active Directory 中的设备管理简介](../devices/overview.md)** - 此文章概述了可以用来将设备置于组织控制下的各种选项。 
 
 ## <a name="scenario-description"></a>方案描述
 
 掌控安全性与工作效率之间的平衡是一个难题。 扩大用来访问云资源的受支持设备的范围有助于提高用户的工作效率。 另一方面，你可能不希望具有未知保护级别的设备访问你的环境中的某些资源。 对于受影响的资源，你应当要求用户只能使用受管理设备访问它们。 
 
-使用 Azure AD 条件性访问可以解决这一要求使用一个策略，授予访问权限：
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
 
 - 授予对所选云应用的访问权限
 - 为所选用户和组授予权限
@@ -49,11 +49,11 @@ ms.locfileid: "67509373"
 
 若要向 Azure AD 注册设备，你有三种选择： 
 
-- **Azure AD 注册设备**-若要获取个人设备注册到 Azure AD
-- **Azure AD 加入设备**-若要获取的组织的 Windows 10 设备，未加入本地 AD 与 Azure AD 注册。 
-- **已加入混合 Azure AD 设备**-若要获取 Windows 10 或受支持的低级别设备加入本地 AD 与 Azure AD 注册。
+- **Azure AD registered devices** - to get a personal device registered with Azure AD
+- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
+- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
 
-在本文中讨论了这三个选项[设备标识是什么？](../devices/overview.md)
+These three options are discussed in the article [What is a device identity?](../devices/overview.md)
 
 若要成为受管理设备，注册设备必须是**加入混合 Azure AD 的设备**或者是**已标记为合规的设备**。  
 
@@ -61,7 +61,7 @@ ms.locfileid: "67509373"
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>要求使用加入混合 Azure AD 的设备
 
-在条件性访问策略中，可以选择**需要混合 Azure AD 加入的设备**来声明，可仅使用托管的设备访问所选的云应用。 
+In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
 
 ![基于设备的条件](./media/require-managed-devices/10.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "67509373"
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
-“要求将设备标记为合规”选项是一种用于请求受管理设备的最强大的形式  。
+“要求将设备标记为合规”选项是一种用于请求受管理设备的最强大的形式。
 
 ![基于设备的条件](./media/require-managed-devices/11.png)
 
@@ -93,4 +93,4 @@ ms.locfileid: "67509373"
 
 ## <a name="next-steps"></a>后续步骤
 
-在您的环境中配置基于设备的条件访问策略之前, 应看一看[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。
+Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

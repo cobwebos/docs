@@ -1,6 +1,6 @@
 ---
-title: 如何调试 Udf-Azure 数字孪生 |Microsoft Docs
-description: 了解调试 Azure 数字孪生中的用户定义函数的建议方法。
+title: How to debug UDFs - Azure Digital Twins | Microsoft Docs
+description: Learn about recommended approaches to debug user-defined functions in Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,43 +9,43 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a5f5729836e031b895fdb584efd971f2b8653353
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005938"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383382"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
-本文总结了如何诊断和调试 Azure 数字孪生中的用户定义函数。 然后，它介绍了调试这些函数时遇到的一些最常见情况。
+This article summarizes how to diagnose and debug user-defined functions in Azure Digital Twins. 然后，它介绍了调试这些函数时遇到的一些最常见情况。
 
 >[!TIP]
 > 若要详细了解如何使用活动日志、诊断日志和 Azure Monitor 在 Azure 数字孪生中设置调试工具，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 
 ## <a name="debug-issues"></a>调试问题
 
-知道如何诊断 Azure 数字孪生中的问题，您可以有效地分析问题，确定问题的原因，并为他们提供合适的解决方案。
+Knowing how to diagnose issues within Azure Digital Twins allows you to effectively analyze issues, identify the causes of problems, and provide appropriate solutions for them.
 
-提供各种日志记录、分析和诊断工具。
+A variety of logging, analytics, and diagnostic tools are provided to that end.
 
-### <a name="enable-logging-for-your-instance"></a>为实例启用日志记录
+### <a name="enable-logging-for-your-instance"></a>Enable logging for your instance
 
-Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案开发人员可以使用 Azure Monitor 日志、诊断日志、活动日志和其他服务来支持 IoT 应用的复杂监视需求。 可以将日志记录选项组合在一起，用于查询或显示多个服务的记录，并为许多服务提供精细的日志记录范围。
+Azure 数字孪生支持可靠的日志记录、监视和分析。 Solutions developers can use Azure Monitor logs, diagnostic logs, activity logs, and other services to support the complex monitoring needs of an IoT app. 可以将日志记录选项组合在一起，用于查询或显示多个服务的记录，并为许多服务提供精细的日志记录范围。
 
-* 有关特定于 Azure 数字孪生的日志记录配置，请参阅[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
-* 请参阅[Azure Monitor](../azure-monitor/overview.md)概述，了解通过 Azure Monitor 启用了强大的日志设置。
-* 查看文章[从 azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)，以便通过 Azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断日志设置。
+* For logging configuration specific to Azure Digital Twins, read [How to configure monitoring and logging](./how-to-configure-monitoring.md).
+* Consult the [Azure Monitor](../azure-monitor/overview.md) overview to learn about powerful log settings enabled through Azure Monitor.
+* Review the article [Collect and consume log data from your Azure resources](../azure-monitor/platform/resource-logs-overview.md) for configuring diagnostic log settings in Azure Digital Twins through the Azure portal, Azure CLI, or PowerShell.
 
-配置后，你将能够选择所有日志类别和指标，并使用强大的 Azure Monitor log analytics 工作区来支持调试工作。
+Once configured, you'll be able to select all log categories, metrics, and use powerful Azure Monitor log analytics workspaces to support your debugging efforts.
 
 ### <a name="trace-sensor-telemetry"></a>跟踪传感器遥测数据
 
-若要跟踪传感器遥测数据，请验证为 Azure 数字孪生实例启用了诊断设置。 然后，确保选择所需的全部日志类别。 最后，确认所需的日志将发送到 Azure Monitor 日志。
+若要跟踪传感器遥测数据，请验证为 Azure 数字孪生实例启用了诊断设置。 然后，确保选择所需的全部日志类别。 Lastly, confirm that the desired logs are being sent to Azure Monitor logs.
 
 要将传感器遥测数据消息与其各自的日志进行匹配，可以在要发送的事件数据上指定相关 ID。 为此，请将 `x-ms-client-request-id` 属性设置为 GUID。
 
-发送遥测数据后，请打开 Azure Monitor log analytics，以使用设置的相关 ID 查询日志：
+After sending telemetry, open Azure Monitor log analytics to query for logs using the set Correlation ID:
 
 ```Kusto
 AzureDiagnostics
@@ -56,14 +56,14 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | 已在事件数据中指定的相关 ID |
 
-若要查看所有最近的遥测日志查询：
+To see all recent telemetry logs query:
 
 ```Kusto
 AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-如果为用户定义函数启用日志记录，则这些日志将显示在 log analytics 实例中，其类别 `UserDefinedFunction`。 若要检索它们，请在 log analytics 中输入以下查询条件：
+If you enable logging for your user-defined function, those logs appear in your log analytics instance with the category `UserDefinedFunction`. To retrieve them, enter the following query condition in log analytics:
 
 ```Kusto
 AzureDiagnostics
@@ -84,7 +84,7 @@ AzureDiagnostics
 
 通过管理 API 检查用户定义的函数是否存在角色分配：
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
@@ -98,7 +98,7 @@ GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_U
 
 通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定给定的匹配程序是否适用于给定的传感器。
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
@@ -122,7 +122,7 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 
 通过针对 Azure 数字孪生管理 API 的以下调用，能够确定由给定传感器的传入遥测数据触发的用户定义的函数的标识符：
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
@@ -216,4 +216,4 @@ function process(telemetry, executionContext) {
 
 - 了解如何在 Azure 数字孪生中启用[监视和日志](./how-to-configure-monitoring.md)。
 
-- 有关 Azure 日志记录选项的详细信息，请参阅[Azure 活动日志概述一](../azure-monitor/platform/activity-logs-overview.md)文。
+- Read the [Overview of Azure Activity log](../azure-monitor/platform/activity-logs-overview.md) article for more Azure logging options.

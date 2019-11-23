@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 性能优化指南 | Microsoft Docs
+title: Optimize Azure Data Lake Storage Gen2 for performance | Microsoft Docs
 description: Azure Data Lake Storage Gen2 性能优化指南
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855571"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327939"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimize Azure Data Lake Storage Gen2 for performance
 
 Azure Data Lake Storage Gen2 支持使用高吞吐量进行 I/O 密集型分析和数据移动。  在 Data Lake Storage Gen2 中，使用所有可用的吞吐量（每秒可读取或写入的数据量）对于获取最佳性能非常重要。  可通过尽可能多地执行并行读取和写入来实现这一点。
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 解决上述源硬件和网络连接瓶颈后，即可配置引入工具。 下表概述了几种常用引入工具的关键设置，并提供了关于这些工具的详尽性能优化文章。  若要深入了解方案应使用何种工具，请参阅这篇[文章](data-lake-storage-data-scenarios.md)。
 
-| Tool               | 设置     | 更多详细信息                                                                 |
+| 工具               | 设置     | 更多详细信息                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapper)   | [链接](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure 数据工厂| parallelCopies    | [链接](../../data-factory/copy-activity-performance.md)                          |
@@ -138,5 +138,5 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 | [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen2 概述](data-lake-storage-introduction.md)

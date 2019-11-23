@@ -1,18 +1,18 @@
 ---
-title: 从门户更新现有分配
-description: 了解在 Azure 蓝图中通过门户更新现有作业的机制。
-ms.date: 10/25/2018
+title: Update an existing assignment from the portal
+description: Learn about the mechanism for updating an existing blueprint assignment from the portal in Azure Blueprints.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: f48f8cfb33a05e2bf8dcbe097d3a9eb3a5ebb9db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960358"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406382"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
-分配蓝图时可以更新分配。 众多原因导致要更新现有分配，其中包括：
+分配蓝图时可更新分配。 众多原因导致要更新现有分配，其中包括：
 
 - 添加或删除[资源锁定](../concepts/resource-locking.md)
 - 更改[动态参数](../concepts/parameters.md#dynamic-parameters)的值
@@ -24,19 +24,20 @@ ms.locfileid: "73960358"
 
 1. 从左侧页面选择“分配的蓝图”。
 
-1. 在蓝图列表中，左键单击蓝图分配。 然后单击 "**更新分配**" 按钮，或右键单击蓝图分配，然后选择 "**更新分配**"。
+1. 在蓝图列表中，左键单击蓝图分配。 Then click the **Update assignment** button OR right-click the blueprint assignment and select **Update assignment**.
 
-   ![更新现有蓝图分配](../media/update-existing-assignments/update-assignment.png)
+   ![Update an existing blueprint assignment](../media/update-existing-assignments/update-assignment.png)
 
-1. "**分配蓝图**" 页将加载原始赋值中的所有值。 可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”。
+1. The **Assign blueprint** page will load pre-filled with all values from the original assignment.
+   可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”。
 
 1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”。
 
-   ![更新了现有蓝图分配锁模式](../media/update-existing-assignments/updated-assignment.png)
+   ![Updated an existing blueprint assignment - lock mode changed](../media/update-existing-assignments/updated-assignment.png)
 
-1. 使用下拉菜单浏览有关其他**分配操作**的详细信息。 **托管资源**的表由所选的分配操作更新。
+1. Explore details about other **Assignment operations** using the drop-down. The table of **Managed resources** updates by selected assignment operation.
 
-   ![蓝图赋值的赋值运算](../media/update-existing-assignments/assignment-operations.png)
+   ![Assignment operations of a blueprint assignment](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 
@@ -46,7 +47,8 @@ ms.locfileid: "73960358"
   - 如果角色或角色代理人（用户、组或应用程序）发生更改，则创建新的角色分配。 以前部署的角色分配将会保留。
 - 策略分配
   - 如果策略分配的参数已发生更改，则更新现有分配。
-  - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。 以前部署的策略分配将会保留。
+  - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。
+    以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
 - Azure 资源管理器模板
   - 该模板通过资源管理器作为 PUT 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。

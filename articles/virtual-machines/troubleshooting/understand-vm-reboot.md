@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086975"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384228"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -67,7 +67,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>用户发起的重启或关闭操作
 
-如果从 Azure 门户、Azure PowerShell、 命令行接口或重置 API 执行重启，则可在 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)中找到该事件。
+If you perform a reboot from the Azure portal, Azure PowerShell, command-line interface, or REST API, you can find the event in the [Azure Activity Log](../../azure-monitor/platform/activity-logs-overview.md).
 
 如果在 VM 的操作系统中执行该操作，则可在系统日志中找到该事件。
 
@@ -101,7 +101,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 在少数情况下，Azure 运营团队可能需要执行维护活动，确保 Azure 平台总体上正常运行。 此行为可能会影响 VM 可用性，并且通常会导致相同的自动恢复操作，如前所述。  
 
-计划外维护包括以下内容：
+Unplanned maintenance include the following:
 
 - 紧急节点碎片整理
 - 紧急网络交换机更新
@@ -118,7 +118,7 @@ VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能
 
 超过 IO 限制
 
-如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 （标准磁盘存储的限制为 500 IOPS。）为缓解此问题，请在来宾 VM 中使用磁盘剥离或配置存储空间，具体情况取决于工作负荷。 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
+如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 (Standard disk storage is limited to 500 IOPS.) To mitigate this issue, use disk striping or configure the storage space inside the guest VM, depending on the workload. 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
 
 ### <a name="other-incidents"></a>其他事件
 

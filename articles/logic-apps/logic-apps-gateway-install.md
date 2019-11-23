@@ -1,5 +1,5 @@
 ---
-title: 安装本地数据网关-Azure 逻辑应用
+title: Install on-premises data gateway - Azure Logic Apps
 description: 在从 Azure 逻辑应用访问本地数据之前，下载并安装本地数据网关
 services: logic-apps
 ms.service: logic-apps
@@ -8,78 +8,80 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 11/06/2019
+ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042225"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326378"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-在[从 Azure 逻辑应用连接到本地数据源](../logic-apps/logic-apps-gateway-connection.md)之前，请在本地计算机上下载并安装本地[数据网关](https://aka.ms/on-premises-data-gateway-installer)。 该网关充当桥，可在本地数据源和逻辑应用之间提供快速数据传输和加密。 可以将相同的网关安装与其他云服务（例如 Power BI、Microsoft Flow、PowerApps 和 Azure Analysis Services）结合使用。 有关如何使用这些服务的网关的信息，请参阅以下文章：
+Before you can [connect to on-premises data sources from Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), download and install the [on-premises data gateway](https://aka.ms/on-premises-data-gateway-installer) on a local computer. The gateway works as a bridge that provides quick data transfer and encryption between data sources on premises and your logic apps. You can use the same gateway installation with other cloud services, such as Power BI, Power Automate, Power Apps, and Azure Analysis Services. For information about how to use the gateway with these services, see these articles:
 
-* [Microsoft Power BI 本地数据网关](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft PowerApps 本地数据网关](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Microsoft Flow 本地数据网关](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Automate on-premises data gateway](/power-automate/gateway-reference)
+* [Microsoft Power BI 本地数据网关](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps on-premises data gateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services 本地数据网关](../analysis-services/analysis-services-gateway.md)
 
-本文介绍如何下载、安装和设置本地数据网关，以便可以从 Azure 逻辑应用访问本地数据源。 你还可以在本主题的后面部分了解有关[数据网关如何工作的](#gateway-cloud-service)详细信息。 有关网关的详细信息，请参阅[什么是本地网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)？
+This article shows how to download, install, and set up your on-premises data gateway so that you can access on-premises data sources from Azure Logic Apps. You can also learn more about [how the data gateway works](#gateway-cloud-service) later in this topic. For more information about the gateway, see [What is an on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>必备组件
 
-* Azure 帐户和订阅。 如果没有包含订阅的 Azure 帐户，请[注册免费 azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 If you don't have an Azure account with a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free/).
 
-  * 需要使用相同的 Azure 帐户来安装和管理本地计算机上的网关。
+  * Your Azure account must belong to a single [Azure Active Directory (Azure AD) tenant or directory](../active-directory/fundamentals/active-directory-whatis.md#terminology). You must use the same Azure account for installing and administering the gateway on your local computer.
 
-    在网关安装过程中，你可以用 Azure 帐户登录，这会将网关安装链接到你的 Azure 帐户，并且仅将该帐户链接到该帐户。 稍后，在 Azure 门户中，需要使用同一个 Azure 帐户来创建 Azure 网关资源，用于注册和声明网关安装。 在 Azure 逻辑应用中，本地触发器和操作使用网关资源连接到本地数据源。
+  * During gateway installation, you sign in with your Azure account, which links your gateway installation to your Azure account and only that account. Later, in the Azure portal, you must use the same Azure account and Azure AD tenant when you create an Azure gateway resource that registers and claims your gateway installation. In Azure Logic Apps, on-premises triggers and actions then use the gateway resource for connecting to on-premises data sources.
 
     > [!NOTE]
-    > 你只能将一个网关安装和一个 Azure 网关资源链接到对方。 不能将相同的网关安装链接到多个 Azure 帐户或 Azure 网关资源。 但是，Azure 帐户可以链接到多个网关安装和 Azure 网关资源。 在本地触发器或操作中，可以从各种 Azure 订阅中进行选择，然后选择关联的网关资源。
+    > You can link only one gateway installation and one Azure gateway resource to each other. You can't link the same gateway installation to multiple Azure accounts or Azure gateway resources. However, an Azure account can link to multiple gateway installations and Azure gateway resources. In an on-premises trigger or action, you can select from your various Azure subscriptions, and then select an associated gateway resource.
 
-  * 你需要使用工作帐户或学校帐户（也称为*组织*帐户）登录，该帐户类似于 `username@contoso.com`。 不能使用 Azure B2B （来宾）帐户或个人 Microsoft 帐户，如 @hotmail.com 或 @outlook.com。
+  * You need to sign in with either a work account or school account, also known as an *organization* account, which looks like `username@contoso.com`. You can't use Azure B2B (guest) accounts or personal Microsoft accounts, such as @hotmail.com or @outlook.com.
 
     > [!TIP]
-    > 如果注册了 Office 365 产品/服务，但未提供工作电子邮件地址，则该地址可能类似于 `username@domain.onmicrosoft.com`。 你的帐户存储在 Azure Active Directory （Azure AD）中的租户内。 大多数情况下，Azure AD 帐户的用户主体名称（UPN）与电子邮件地址相同。
+    > If you signed up for an Office 365 offering and didn't provide your work email address, your address might look like `username@domain.onmicrosoft.com`. Your account is stored within a tenant in an Azure Active Directory (Azure AD). In most cases, the User Principal Name (UPN) for your Azure AD account is the same as your email address.
     >
-    > 若要使用链接到 Microsoft 帐户的[Visual Studio 标准订阅](https://visualstudio.microsoft.com/vs/pricing/)，请先[在 Azure AD 中创建租户](../active-directory/develop/quickstart-create-new-tenant.md)，或使用默认目录。 将具有密码的用户添加到目录，并向该用户授予对 Azure 订阅的访问权限。 然后在网关安装期间可以使用此用户名和密码登录。
+    > To use a [Visual Studio Standard subscription](https://visualstudio.microsoft.com/vs/pricing/) that's linked to a Microsoft account, first [create a tenant in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) or use the default directory. Add a user with a password to the directory, and then give that user access to your Azure subscription. 然后在网关安装期间可以使用此用户名和密码登录。
 
 * 下面是本地计算机的要求：
 
   **最低要求**
 
-  * .NET Framework 4.7。2
+  * .NET Framework 4.7.2
   * 64 位版本的 Windows 7 或 Windows Server 2008 R2（或更高版本）
 
   **建议的要求**
 
   * 8 核 CPU
   * 8 GB 内存
-  * 64位版本的 Windows Server 2012 R2 或更高版本
-  * 用于后台处理的固态硬盘（SSD）存储
+  * 64-bit version of Windows Server 2012 R2 or later
+  * Solid-state drive (SSD) storage for spooling
 
   > [!NOTE]
-  > 网关不支持 Windows Server Core。
+  > The gateway doesn't support Windows Server Core.
 
-* **相关注意事项**
+* **Related considerations**
 
-  * 只能在本地计算机上安装本地数据网关，而不能在域控制器上安装。 但是，不一定要在数据源所在的同一台计算机上安装网关。 对于所有数据源，只需一个网关，因此不需要为每个数据源安装网关。
+  * Install the on-premises data gateway only on a local computer, not a domain controller. 不一定要在数据源所在的同一台计算机上安装网关。 You need only one gateway for all your data sources, so you don't need to install the gateway for each data source.
 
     > [!TIP]
     > 为了尽量降低延迟，可将网关安装在尽可能靠近数据源的位置或同一台计算机上（假设你有相应的权限）。
 
-  * 在有线网络上的计算机上安装网关，将其连接到 internet，始终开机并且不会进入睡眠状态。 否则，网关将无法运行，并且性能可能会受到无线网络的影响。
+  * Install the gateway on a computer that's on a wired network, connected to the internet, always turned on, and doesn't go to sleep. Otherwise, the gateway can't run, and performance might suffer over a wireless network.
 
-  * 如果打算使用 Windows 身份验证，请确保在与数据源相同的 Active Directory 环境成员的计算机上安装网关。
+  * If you plan to use Windows authentication, make sure that you install the gateway on a computer that's a member of the same Active Directory environment as your data sources.
 
-  * 你为网关安装选择的区域与你稍后为逻辑应用创建 Azure 网关资源时必须选择的位置相同。 默认情况下，此区域与管理 Azure 帐户的 Azure AD 租户位于同一位置。 但是，你可以在安装网关的过程中更改该位置。
+  * The region that you select for your gateway installation is the same location that you must select when you later create the Azure gateway resource for your logic app. By default, this region is the same location as your Azure AD tenant that manages your Azure account. However, you can change the location during gateway installation.
 
-  * 网关有两种模式：标准模式和个人模式，仅适用于 Power BI。 在同一台计算机上，不能有多个网关在同一模式下运行。
+  * If you're updating your gateway installation to the latest version, uninstall your current gateway first for a cleaner experience.
 
-  * Azure 逻辑应用支持通过网关进行的读取和写入操作。 但是，这些操作会[限制其负载大小](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
+  * The gateway has two modes: standard mode and personal mode, which applies only to Power BI. You can't have more than one gateway running in the same mode on the same computer.
+
+  * Azure Logic Apps supports read and write operations through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -87,46 +89,46 @@ ms.locfileid: "73042225"
 
 1. [在本地计算机上下载并运行网关安装程序](https://aka.ms/on-premises-data-gateway-installer)。
 
-1. 安装程序打开后，选择 "**下一步**"。
+1. After the installer opens, select **Next**.
 
-   ![网关安装程序简介屏幕](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Intro screen for gateway installer](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
-1. 选择 **"本地数据网关（推荐）** "，这是标准模式，然后选择 "**下一步**"。
+1. Select **On-premises data gateway (recommended)** , which is standard mode, and then select **Next**.
 
-   ![选择数据网关的运行模式](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
+   ![Select run mode for data gateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
-1. 查看最低要求，保留默认的安装路径，接受使用条款，然后选择 "**安装**"。
+1. Review the minimum requirements, keep the default installation path, accept the terms of use, and then select **Install**.
 
-   ![查看要求并接受使用条款](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
+   ![Review requirements and accept terms of use](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. 成功安装网关后，提供 Azure 帐户的电子邮件地址，然后选择 "**登录**"，例如：
+1. After the gateway successfully installs, provide the email address for your Azure account, and then select **Sign in**, for example:
 
    ![使用工作或学校帐户登录](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   网关安装只能链接到一个 Azure 帐户。
+   Your gateway installation can link to only one Azure account.
 
-1. 选择 **"在此计算机上注册新网关  > "** **下一步**"。 此步骤将你的网关安装注册到[网关云服务](#gateway-cloud-service)。
+1. Select **Register a new gateway on this computer** > **Next**. This step registers your gateway installation with the [gateway cloud service](#gateway-cloud-service).
 
-   ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
+   ![Register gateway on local computer](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. 提供网关安装的以下信息：
 
-   * 在 Azure AD 租户中唯一的网关名称
-   * 要使用的恢复密钥必须至少包含八个字符
+   * A gateway name that's unique across your Azure AD tenant
+   * The recovery key, which must have at least eight characters, that you want to use
    * 确认恢复密钥
 
-   ![为网关安装提供信息](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
+   ![Provide information for gateway installation](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
-   > 请将恢复密钥保存在安全位置。 如果要更改位置、移动、恢复或接管网关安装，则需要此密钥。
+   > 请将恢复密钥保存在安全位置。 You need this key if you ever want to change the location, move, recover, or take over a gateway installation.
 
-   请注意要**添加到现有网关群集**的选项，在为[高可用性方案](#high-availability)安装其他网关时选择此选项。
+   Note the option to **Add to an existing gateway cluster**, which you select when you install additional gateways for [high-availability scenarios](#high-availability).
 
-1. 检查网关云服务和[Azure 服务总线](https://azure.microsoft.com/services/service-bus/)的区域，该区域用于网关安装。 默认情况下，此区域与你的 Azure 帐户的 Azure AD 租户位于同一位置。
+1. Check the region for the gateway cloud service and [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) that's used by your gateway installation. By default, this region is the same location as the Azure AD tenant for your Azure account.
 
-   ![确认网关服务和服务总线的区域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
+   ![Confirm region for gateway service and service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. 若要接受默认区域，请选择 "**配置**"。 但是，如果默认区域不是最接近你的区域，则可以更改区域。
+1. To accept the default region, select **Configure**. However, if the default region isn't the one that's closest to you, you can change the region.
 
    *为何要更改网关安装的区域？*
 
@@ -134,36 +136,36 @@ ms.locfileid: "73042225"
 
    1. 在当前区域的旁边，选择“更改区域”。
 
-      ![更改当前网关区域](./media/logic-apps-gateway-install/change-gateway-service-region.png)
+      ![Change the current gateway region](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. 在下一页上，打开 "**选择区域**" 列表，选择所需的区域，然后选择 "**完成**"。
+   1. On the next page, open the **Select Region** list, select the region you want, and select **Done**.
 
-      ![为网关服务选择另一个区域](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Select another region for gateway service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. 查看最终确认窗口中的信息。 此示例对逻辑应用、Power BI、PowerApps 和 Microsoft Flow 使用同一帐户，因此该网关适用于所有这些服务。 准备就绪后，选择 "**关闭**"。
+1. Review the information in the final confirmation window. This example uses the same account for Logic Apps, Power BI, Power Apps, and Power Automate, so the gateway is available for all these services. When you're ready, select **Close**.
 
-   ![确认数据网关信息](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Confirm data gateway information](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-1. 现在，请[为网关安装创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)。
+1. Now [create the Azure resource for your gateway installation](../logic-apps/logic-apps-gateway-connection.md).
 
-## <a name="check-or-adjust-communication-settings"></a>检查或调整通信设置
+## <a name="check-or-adjust-communication-settings"></a>Check or adjust communication settings
 
-本地数据网关依赖于适用于云连接的[Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)，并为与网关关联的 azure 区域建立相应的出站连接。 如果你的工作环境要求流量通过代理或防火墙来访问 internet，则此限制可能会阻止本地数据网关连接到网关云服务和 Azure 服务总线。 网关具有多个通信设置，你可以调整这些设置。 有关详细信息，请参阅以下主题：
+The on-premises data gateway depends on [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) for cloud connectivity and establishes the corresponding outbound connections to the gateway's associated Azure region. If your work environment requires that traffic goes through a proxy or firewall to access the internet, this restriction might prevent the on-premises data gateway from connecting to the gateway cloud service and Azure Service Bus. The gateway has several communication settings, which you can adjust. 有关详细信息，请参阅以下主题：
 
-* [调整本地数据网关的通信设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [为本地数据网关配置代理设置](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Adjust communication settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Configure proxy settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
 ## <a name="high-availability-support"></a>高可用性支持
 
-为了避免本地数据访问的单点故障，你可以在不同的计算机上安装多个网关（仅限标准模式），并将它们设置为群集或组。 这样一来，如果主网关不可用，数据请求将路由到第二个网关，依此类推。 因为你只能在计算机上安装一个标准网关，所以你必须在另一台计算机上安装群集中的每个其他网关。 使用本地数据网关的所有连接器都支持高可用性。
+To avoid single points of failure for on-premises data access, you can have multiple gateway installations (standard mode only) with each on a different computer, and set them up as a cluster or group. That way, if the primary gateway is unavailable, data requests are routed to the second gateway, and so on. Because you can install only one standard gateway on a computer, you must install each additional gateway that's in the cluster on a different computer. All the connectors that work with the on-premises data gateway support high availability.
 
-* 必须已至少有一个网关安装，其中包含与主网关相同的 Azure 帐户和该安装的恢复密钥。
+* You must already have at least one gateway installation with the same Azure account as the primary gateway and the recovery key for that installation.
 
 * 主网关必须运行网关 2017 年 11 月更新版或更高版本。
 
-设置主网关后，当你开始安装其他网关时，请选择 "**添加到现有网关群集**"，选择主网关，即你安装的第一个网关，并为该网关提供恢复密钥。 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
+After you set up your primary gateway, when you go to install another gateway, select **Add to an existing gateway cluster**, select the primary gateway, which is the first gateway that you installed, and provide the recovery key for that gateway. 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
 
 <a name="update-gateway-installation"></a>
 
@@ -171,108 +173,108 @@ ms.locfileid: "73042225"
 
 如果必须更改网关的位置、将网关安装移到新计算机、恢复已损坏的网关，或接管现有网关的所有权，需要使用安装网关期间提供的恢复密钥。
 
-1. 在具有现有网关的计算机上运行网关安装程序。 如果没有最新的网关安装程序，请[下载最新的网关版本](https://aka.ms/on-premises-data-gateway-installer)。
+1. Run the gateway installer on the computer that has the existing gateway. If you don't have the latest gateway installer, [download the latest gateway version](https://aka.ms/on-premises-data-gateway-installer).
 
    > [!NOTE]
-   > 在安装了原始网关的计算机上还原网关之前，必须先卸载该计算机上的网关。 此操作会断开原来的网关。
-   > 如果删除或删除任何云服务的网关群集，则无法恢复该群集。
+   > Before you restore the gateway on the computer that has the original gateway installation, you must first uninstall the gateway on that computer. This action disconnects the original gateway.
+   > If you remove or delete a gateway cluster for any cloud service, you can't restore that cluster.
 
-1. 安装程序打开后，使用用于安装网关的同一 Azure 帐户登录。
+1. After the installer opens, sign in with the same Azure account that was used to install the gateway.
 
-1. 选择 "**迁移"、"还原" 或接管现有网关** > **接下来**，例如：
+1. Select **Migrate, restore, or takeover an existing gateway** > **Next**, for example:
 
    ![选择“迁移、还原或接管现有网关”](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-1. 从可用群集和网关中选择，并输入所选网关的恢复密钥，例如：
+1. Select from the available clusters and gateways, and enter the recovery key for the selected gateway, for example:
 
-   ![选择 "网关" 并提供恢复密钥](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Select gateway and provide recovery key](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. 若要更改区域，请选择 "**更改区域**"，然后选择新的区域。
+1. To change the region, select **Change Region**, and select the new region.
 
-1. 准备就绪后，请选择 "**配置**"，以完成任务。
+1. When you're ready, select **Configure** so that you can finish your task.
 
-## <a name="tenant-level-administration"></a>租户级别管理
+## <a name="tenant-level-administration"></a>Tenant-level administration
 
-若要查看 Azure AD 租户中的所有本地数据网关，该租户中的全局管理员可以以租户管理员身份登录到[Power Platform 管理中心](https://powerplatform.microsoft.com)，然后选择 "**数据网关**" 选项。 有关详细信息，请参阅[本地数据网关的租户级管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)。
+To get visibility into all the on-premises data gateways in an Azure AD tenant, global administrators in that tenant can sign in to the [Power Platform Admin center](https://powerplatform.microsoft.com) as a tenant administrator and select the **Data Gateways** option. For more information, see [Tenant-level administration for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
 ## <a name="restart-gateway"></a>重启网关
 
-默认情况下，本地计算机上的网关安装以名为 "本地数据网关服务" 的 Windows 服务帐户的形式运行。 但是，网关安装使用其 "作为服务登录" 帐户凭据的 `NT SERVICE\PBIEgwService` 名称，并且具有 "作为服务登录" 权限。
+By default, the gateway installation on your local computer runs as a Windows service account named "On-premises data gateway service". However, the gateway installation uses the `NT SERVICE\PBIEgwService` name for its "Log On As" account credentials and has "Log on as a service" permissions.
 
 > [!NOTE]
-> Windows 服务帐户不同于用于连接到本地数据源的帐户，也不同于登录到云服务时使用的 Azure 帐户的帐户。
+> Your Windows service account differs from the account used for connecting to on-premises data sources and from the Azure account that you use when you sign in to cloud services.
 
-与任何其他 Windows 服务一样，您可以通过多种方式启动和停止该网关。 有关详细信息，请参阅[重启本地数据网关](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart)。
+Like any other Windows service, you can start and stop the gateway in various ways. For more information, see [Restart an on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
 ## <a name="how-the-gateway-works"></a>网关的工作原理
 
-你的组织中的用户可以访问他们已获得授权访问权限的本地数据。 但是，在这些用户可以连接到本地数据源之前，需要安装并设置本地数据网关。 通常，管理员是安装和设置网关的人员。 这些操作可能需要服务器管理员权限或有关本地服务器的特殊知识。
+Users in your organization can access on-premises data for which they already have authorized access. However, before these users can connect to your on-premises data source, you need to install and set up an on-premises data gateway. Usually, an admin is the person who installs and sets up a gateway. These actions might require Server Administrator permissions or special knowledge about your on-premises servers.
 
-网关有助于在幕后通信后进行快速安全的通信。 此通信在云中的用户、网关云服务和本地数据源之间流动。 网关云服务可加密和存储数据源凭据与网关详细信息。 该服务还在用户、网关和本地数据源之间路由查询及其结果。
+The gateway facilitates quick and secure communication behind-the-scenes-communication. This communication flows between a user in the cloud, the gateway cloud service, and your on-premises data source. 网关云服务可加密和存储数据源凭据与网关详细信息。 The service also routes queries and their results between the user, the gateway, and your on-premises data source.
 
-网关可与防火墙配合使用，只使用出站连接。 所有流量最初都是网关代理的安全出站流量。 网关通过[Azure 服务总线](../service-bus-messaging/service-bus-messaging-overview.md)中继加密通道上本地源中的数据。 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
+网关可与防火墙配合使用，只使用出站连接。 所有流量最初都是网关代理的安全出站流量。 The gateway relays data from on-premises sources on encrypted channels through [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). 此服务总线在网关与调用方服务之间创建通道，但不存储任何数据。 通过网关的所有数据经过加密。
 
-![本地数据网关体系结构](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![Architecture for on-premises data gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 > [!NOTE]
-> 根据云服务，可能需要为网关设置数据源。
+> Depending on the cloud service, you might need to set up a data source for the gateway.
 
-以下步骤描述与连接到本地数据源的元素交互时所发生的情况：
+These steps describe what happens when you interact with an element that's connected to an on-premises data source:
 
-1. 云服务创建一个查询，以及数据源的加密凭据。 然后，该服务将查询和凭据发送到网关队列进行处理。
+1. The cloud service creates a query, along with the encrypted credentials for the data source. The service then sends the query and credentials to the gateway queue for processing.
 
-1. 网关云服务将分析该查询，并将请求推送到 Azure 服务总线。
+1. The gateway cloud service analyzes the query and pushes the request to Azure Service Bus.
 
-1. Azure 服务总线会将挂起的请求发送到网关。
+1. Azure Service Bus sends the pending requests to the gateway.
 
-1. 网关获取查询，对凭据进行解密，并连接到一个或多个具有这些凭据的数据源。
+1. The gateway gets the query, decrypts the credentials, and connects to one or more data sources with those credentials.
 
-1. 网关将查询发送到数据源以供运行。
+1. The gateway sends the query to the data source for running.
 
 1. 结果将从数据源发回给网关，并发送到网关云服务。 网关云服务随后使用结果。
 
-### <a name="authentication-to-on-premises-data-sources"></a>对本地数据源进行身份验证
+### <a name="authentication-to-on-premises-data-sources"></a>Authentication to on-premises data sources
 
-存储的凭据用于从网关连接到本地数据源。 无论使用哪种用户，网关都将使用存储的凭据进行连接。 对于特定服务（如 DirectQuery 和 LiveConnect），可能存在针对 Power BI 中 Analysis Services 的身份验证例外。
+A stored credential is used to connect from the gateway to on-premises data sources. Regardless of the user, the gateway uses the stored credential to connect. There might be authentication exceptions for specific services, such as DirectQuery and LiveConnect for Analysis Services in Power BI.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Microsoft 云服务使用[Azure AD](../active-directory/fundamentals/active-directory-whatis.md)对用户进行身份验证。 Azure AD 租户包含用户名和安全组。 通常，用于登录的电子邮件地址与帐户的用户主体名称（UPN）相同。
+Microsoft cloud services use [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) to authenticate users. An Azure AD tenant contains usernames and security groups. Typically, the email address that you use for sign-in is the same as the User Principal Name (UPN) for your account.
 
-### <a name="what-is-my-upn"></a>什么是 UPN？
+### <a name="what-is-my-upn"></a>What is my UPN?
 
-如果你不是域管理员，你可能不知道你的 UPN。 若要查找帐户的 UPN，请从工作站运行 `whoami /upn` 命令。 尽管结果类似于电子邮件地址，但结果是本地域帐户的 UPN。
+If you're not a domain admin, you might not know your UPN. To find the UPN for your account, run the `whoami /upn` command from your workstation. Although the result looks like an email address, the result is the UPN for your local domain account.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>使用 Azure AD 同步本地 Active Directory
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronize an on-premises Active Directory with Azure AD
 
-本地 Active Directory 帐户和 Azure AD 帐户的 UPN 必须相同。 因此，请确保每个本地 Active Directory 帐户都与 Azure AD 帐户相匹配。 云服务仅了解 Azure AD 中的帐户。 因此，无需将帐户添加到本地 Active Directory。 如果 Azure AD 中不存在该帐户，则不能使用该帐户。
+The UPN for your on-premises Active Directory accounts and Azure AD accounts must be the same. So, make sure that each on-premises Active Directory account matches your Azure AD account. The cloud services know only about accounts within Azure AD. So, you don't need to add an account to your on-premises Active Directory. If the account doesn't exist in Azure AD, you can't use that account.
 
-可以通过以下方式将本地 Active Directory 帐户与 Azure AD 相匹配。
+Here are ways that you can match your on-premises Active Directory accounts with Azure AD.
 
-* 手动将帐户添加到 Azure AD。
+* Add accounts manually to Azure AD.
 
-  在 Azure 门户或 Microsoft 365 管理中心中创建帐户。 请确保帐户名称与本地 Active Directory 帐户的 UPN 匹配。
+  Create an account in the Azure portal or in the Microsoft 365 admin center. Make sure that the account name matches the UPN for the on-premises Active Directory account.
 
-* 使用 Azure Active Directory Connect 工具将本地帐户同步到 Azure AD 租户。
+* Synchronize local accounts to your Azure AD tenant by using the Azure Active Directory Connect tool.
 
-  Azure AD Connect 工具提供目录同步和身份验证设置的选项。 这些选项包括密码哈希同步、传递身份验证和联合身份验证。 如果你不是租户管理员或本地域管理员，请联系你的 IT 管理员获取 Azure AD Connect 设置。 Azure AD Connect 确保 Azure AD UPN 与本地 Active Directory UPN 匹配。 如果你使用的是 Analysis Services 与 Power BI 或单一登录（SSO）功能之间的实时连接，则此匹配项将有所帮助。
+  The Azure AD Connect tool provides options for directory synchronization and authentication setup. These options include password hash sync, pass-through authentication, and federation. If you're not a tenant admin or a local domain admin, contact your IT admin to get Azure AD Connect set up. Azure AD Connect ensures that your Azure AD UPN matches your local Active Directory UPN. This matching helps if you're using Analysis Services live connections with Power BI or single sign-on (SSO) capabilities.
 
   > [!NOTE]
-  > 与 Azure AD Connect 工具同步帐户会在 Azure AD 租户中创建新帐户。
+  > Synchronizing accounts with the Azure AD Connect tool creates new accounts in your Azure AD tenant.
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>常见问题和故障排除
+## <a name="faq-and-troubleshooting"></a>FAQ and troubleshooting
 
 有关详细信息，请参阅以下主题：
 
 * [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [本地数据网关故障排除](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [监视和优化网关性能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Troubleshoot the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitor and optimize gateway performance](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>后续步骤
 

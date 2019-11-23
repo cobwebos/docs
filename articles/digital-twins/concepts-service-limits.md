@@ -1,19 +1,19 @@
 ---
-title: 公共预览版服务限制-Azure 数字孪生 |Microsoft Docs
-description: 了解 Azure 数字孪生的公共预览版服务限制。
+title: Public preview service limits - Azure Digital Twins | Microsoft Docs
+description: Learn about public preview service, subscription, instance, and rate limits for Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014172"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383072"
 ---
 # <a name="public-preview-service-limits"></a>公共预览版服务限制
 
@@ -70,8 +70,8 @@ Azure 数字孪生管理 API 的请求速率限制是：
 
 以下限制会限制设备可以发送到 Azure 数字孪生实例的所有消息总数：
 
-- 所有设备每秒100消息数
--   每台设备每秒25条消息
+- 100 messages per second across all devices
+-   25 messages per second per device
 
 ## <a name="next-steps"></a>后续步骤
 
