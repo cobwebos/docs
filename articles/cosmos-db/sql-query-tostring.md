@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349126"
 ---
-# <a name="tostring-azure-cosmos-db"></a>ToString （Azure Cosmos DB）
+# <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  返回标量表达式的字符串表示形式。 
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ ToString(<expr>)
 ## <a name="arguments"></a>参数
   
 *expr*  
-   为任意标量表达式。  
+   是任意标量表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示在不同类型之间 @no__t 的行为。   
+  以下示例演示 `ToString` 在不同类型中的行为方式。   
   
 ```sql
 SELECT 
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- 下面的示例演示如何将 `ToString` 与 `CONCAT` 之类的其他字符串函数结合使用。   
+ 以下示例演示 `ToString` 如何与其他字符串函数（如 `CONCAT`）一起使用。   
  
 ```sql
 SELECT 
@@ -78,7 +78,7 @@ FROM p in c.Products
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-下面的示例演示如何将 `ToString` 与 `REPLACE` 之类的其他字符串函数结合使用。   
+以下示例演示 `ToString` 如何与其他字符串函数（如 `REPLACE`）一起使用。   
 ```sql
 SELECT 
     n.id AS nutrientID,

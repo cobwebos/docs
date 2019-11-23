@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349280"
 ---
-# <a name="stringtoarray-azure-cosmos-db"></a>StringToArray （Azure Cosmos DB）
+# <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  返回已转换为数组的表达式。 如果表达式无法转换，则返回未定义的表达式。  
   
 ## <a name="syntax"></a>语法
@@ -26,18 +26,18 @@ StringToArray(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   要分析为 JSON 数组表达式的字符串表达式。 
+   是要解析为 JSON Array 表达式的字符串表达式。 
   
 ## <a name="return-types"></a>返回类型
   
-  返回一个数组表达式或未定义。 
+  返回一个数组表达式或未定义的表达式。 
   
 ## <a name="remarks"></a>备注
-  嵌套字符串值必须用双引号编写，才能成为有效的 JSON。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
+  嵌套字符串值必须用双引号写成有效的 JSON。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示在不同类型之间 @no__t 的行为。 
+  以下示例演示 `StringToArray` 在不同类型中的行为方式。 
   
  下面是输入有效的示例。
 

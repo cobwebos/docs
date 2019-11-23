@@ -30,7 +30,7 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 以下快速入门中阐释了这些步骤：
 
 - [使用 Azure CLI 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
-- [使用 Azure PowerShell 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
+- [使用 Azure Powershell 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
 
 你还可以根据需要生成或导入密钥加密密钥（KEK）。
 
@@ -41,7 +41,7 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 本文中的步骤可以通过[Azure CLI](/cli/azure/)、 [Azure PowerShell Az module](/powershell/azure/overview)或[Azure 门户](https://portal.azure.com)来完成。 
 
-当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装;请参阅 @no__t-适用于 Linux 的磁盘加密：安装工具 @ no__t-0 获取详细信息。
+当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装;有关详细信息，请参阅[适用于 Linux 的 Azure 磁盘加密：安装工具](disk-encryption-linux.md#install-tools-and-connect-to-azure)。
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
@@ -129,7 +129,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **根据需要为模板部署启用 Key Vault：** 允许资源管理器从保管库中检索机密。
+ - **根据需要为模板部署启用 Key Vault**：允许资源管理器从保管库中检索机密。
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```
@@ -137,7 +137,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 ###  <a name="azure-powershell"></a>Azure PowerShell
  使用 Key Vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 为 Key Vault 启用磁盘加密。
 
-  - **为磁盘加密启用 Key Vault：** 若要启用 Azure 磁盘加密，需要使用 EnabledForDiskEncryption。
+  - **为磁盘加密启用 Key Vault：** 需要使用 EnabledForDiskEncryption 来启用 Azure 磁盘加密。
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDiskEncryption
@@ -149,7 +149,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
       Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDeployment
      ```
 
-  - **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器能够从此 Key Vault 中获取机密。
+  - **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器模板能够从此 Key Vault 中检索机密。
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment

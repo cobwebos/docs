@@ -69,7 +69,7 @@ ms.locfileid: "72243061"
 1. 复制插件包中的*Unreal\ProjectAcoustics*文件夹。 创建新文件夹 *[UProjectDir] \Plugins\ProjectAcoustics*，其中 *[UProjectDir]* 是游戏的项目文件夹，其中包含*uproject*文件。
 
    > [!NOTE]
-   > **引擎插件**：如果使用 Wwise 作为引擎插件，则还应将项目噪声用作 Unreal 引擎插件。 请使用 *[UESource] \Engine\Plugins\ProjectAcoustics*，而不是前面提到的目标目录。
+   > **引擎插件**：如果使用 Wwise 作为引擎插件，则还应使用项目噪声作为 Unreal engine 插件的项目。 请使用 *[UESource] \Engine\Plugins\ProjectAcoustics*，而不是前面提到的目标目录。
 
 1. 确认*Wwise*文件夹和*ProjectAcoustics*文件夹一起出现。 它包含先前部署的混音器插件的 Wwise 插件和二进制文件。
 
@@ -80,11 +80,11 @@ ms.locfileid: "72243061"
 
     ![突出显示了用于修补 Wwise 的脚本的 Windows 资源管理器窗口](media/patch-wwise-script.png)
 
-* 如果尚未安装 DirectX SDK：根据你所使用的 Wwise 的版本，你可能需要在*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*中注释掉包含 `DXSDK_DIR` 的行：
+* 如果尚未安装 DirectX SDK，则可能需要在*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*中注释掉包含 `DXSDK_DIR` 的行，具体取决于所使用的 Wwise 版本：
 
     ![显示 "DXSDK" 注释掉的代码编辑器](media/directx-sdk-comment.png)
 
-* 如果使用 Visual Studio 2019 进行编译：若要解决与 Wwise 的链接错误，请手动将*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*中的默认 @no__t 值更改为**microsoft.vc150**：
+* 如果使用 Visual Studio 2019 进行编译：若要解决与 Wwise 的链接错误，请手动将*AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*中的默认 `VSVersion` 值更改为**microsoft.vc150**：
 
     ![显示 "VSVersion" 的代码编辑器已更改为 "microsoft.vc150"](media/vsversion-comment.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "72243061"
 示例下载中包含了一个示例 Wwise 项目。 建议你查看并查看这些说明。 本文后面的屏幕截图来自此项目。
 
 #### <a name="bus-setup"></a>总线设置
-项目噪声 Unreal 插件将在名称 @no__t 为0的总线上查找关联的混音器插件。 创建一个具有相同名称的新音频总线。 混音器插件可在各种配置中工作。 但现在，我们假定它仅用于回音处理。 此总线将为使用噪声的所有源传输混合回音信号。 它可以将上游混合到任何总线混合结构。 此处显示的示例来自示例下载中包含的 Wwise 示例项目。
+项目噪声 Unreal 插件将在名称 `Project Acoustics Bus`完全相同的总线上查找关联的混音器插件。 创建一个具有相同名称的新音频总线。 混音器插件可在各种配置中工作。 但现在，我们假定它仅用于回音处理。 此总线将为使用噪声的所有源传输混合回音信号。 它可以将上游混合到任何总线混合结构。 此处显示的示例来自示例下载中包含的 Wwise 示例项目。
 
 ![显示项目噪声总线的 Wwise 总线](media/acoustics-bus.png)
 
@@ -127,17 +127,17 @@ ms.locfileid: "72243061"
     ![如何将项目噪声混音器插件添加到 Wwise 总线的示意图](media/add-mixer-plugin.png)
 
 #### <a name="actor-mixer-hierarchy-setup"></a>执行组件-混合器层次结构设置
-为了获得最佳性能，项目噪声同时对所有源应用音频数字信号处理。 因此，该插件必须作为混音器插件运行。 Wwise 要求将混音器插件置于输出总线上，尽管输出总线通常携带干燥输出信号。 项目噪声要求在 "`Project Acoustics Bus`" 上携带湿信号，而将湿信号通过 aux 总线进行路由。 以下过程支持逐步迁移到此信号流。
+为了获得最佳性能，项目噪声同时对所有源应用音频数字信号处理。 因此，该插件必须作为混音器插件运行。 Wwise 要求将混音器插件置于输出总线上，尽管输出总线通常携带干燥输出信号。 项目噪声要求在 `Project Acoustics Bus`上携带湿信号，而将湿信号路由到 aux 总线。 以下过程支持逐步迁移到此信号流。
 
 假设你有一个现有项目，其中包含一个包含*效仿*、*武器*和其他级别的参与者-混合器层次结构。 每个都有一个对应的输出总线用于其干布。 假设要将效仿迁移为使用噪声。 首先，创建相应的 aux 总线来携带效仿输出总线的子 submix。 例如，使用下图中的 "干燥" 前缀来组织总线，尽管确切名称并不重要。 效仿总线上的任何计量或效果仍将像以前一样工作。
 
 ![建议的 Wwise 晾干混合设置](media/wwise-dry-mix-setup.png)
 
-接下来，按如下所示修改效仿执行组件-混音器的总线输出结构，并将*项目噪声总线*设置为**输出总线**，并将*Dry_Footsteps*设置为用户定义的 aux 总线。
+接下来，按如下所示修改效仿执行组件-混音器的总线输出结构，并将*项目噪声总线*设置为**输出总线**，并*Dry_Footsteps*设置为用户定义的 aux 总线。
 
 ![建议的 Wwise 执行组件混音总线设置](media/actor-mixer-bus-settings.png)
 
-现在，所有效仿都可以获得噪声处理并在项目噪声总线上输出其回音。 通常，使用 Dry_Footsteps 和 spatialized 来路由晾干信号。
+现在，所有效仿都可以获得噪声处理并在项目噪声总线上输出其回音。 干信号通过 Dry_Footsteps 和照常路由。
 
 项目噪声仅适用于在世界各地具有3D 位置的声音。 按照[Wwise 文档](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/)中的说明，必须按如下所示设置定位属性。 根据需要， **3D Spatialization**设置可以是*位置*或*位置 + 方向*。
 

@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349226"
 ---
-# <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber （Azure Cosmos DB）
+# <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  返回已转换为数字值的表达式。 如果表达式无法转换，则返回未定义的表达式。  
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ StringToNumber(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   要分析为 JSON 数字表达式的字符串表达式。 JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
+   是要解析为 JSON Number 表达式的字符串表达式。 JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ StringToNumber(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示在不同类型之间 @no__t 的行为。 
+  以下示例演示 `StringToNumber` 在不同类型中的行为方式。 
 
 只能在 Number 之前或之后使用空格。
 

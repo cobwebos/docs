@@ -20,7 +20,7 @@ ms.locfileid: "73811703"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用数据库异地复制实现多租户 SaaS 应用程序的灾难恢复
 
-本教程探讨如何对使用“租户各有一个数据库”(database-per-tenant) 模型实施的多租户 SaaS 应用程序完全实现灾难恢复。 若要防止应用中断，可以使用[_异地复制_](sql-database-geo-replication-overview.md)在备用恢复区域中创建目录和租户数据库的副本。 如果发生中断，可以快速故障转移到这些副本，以恢复正常业务运营。 故障转移后，原始区域中的数据库将成为恢复区域中数据库的辅助副本。 这些副本重新联机后，会自动同步到恢复区域中数据库的状态。 解决中断后，故障回复到原始生产区域中的数据库。
+本教程探讨如何对使用“每租户一个数据库”模型实现的多租户 SaaS 应用程序实施完整的灾难恢复方案。 若要防止应用中断，可以使用[_异地复制_](sql-database-geo-replication-overview.md)在备用恢复区域中创建目录和租户数据库的副本。 如果发生中断，可以快速故障转移到这些副本，以恢复正常业务运营。 故障转移后，原始区域中的数据库将成为恢复区域中数据库的辅助副本。 这些副本重新联机后，会自动同步到恢复区域中数据库的状态。 解决中断后，故障回复到原始生产区域中的数据库。
 
 本教程探讨故障转移和故障回复工作流。 将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "73811703"
 > * 确保应用程序和主要租户数据库始终共置在同一 Azure 区域，以降低延迟  
  
 
-在开始学习本教程之前，请确保满足以下先决条件：
+开始学习本教程之前，请确保满足以下先决条件：
 * 已部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS 租户各有数据库应用程序](saas-dbpertenant-get-started-deploy.md)  
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
@@ -42,7 +42,7 @@ ms.locfileid: "73811703"
 
 ![恢复体系结构](media/saas-dbpertenant-dr-geo-replication/recovery-architecture.png)
  
-不管是出于合规还是业务连续性原因，灾难恢复 (DR) 都是许多应用程序的一个重要考虑因素。 如果发生长时间的服务中断，精心准备的灾难恢复计划可以最大程度地减轻对业务造成的干扰。 使用异地复制可将 RPO 和 RTO 降到最低，因为它在恢复区域中维护数据库副本，并且可以在短时间内将应用程序故障转移到该区域。
+不管是出于合规还是业务连续性原因，灾难恢复 (DR) 都是许多应用程序的一个重要考虑因素。 如果发生长时间的服务中断，充分准备的 DR 计划可以最大程度地降低业务中断。 使用异地复制可将 RPO 和 RTO 降到最低，因为它在恢复区域中维护数据库副本，并且可以在短时间内将应用程序故障转移到该区域。
 
 基于异地复制的灾难恢复计划包括三个不同的组成部分：
 * 设置 - 创建和维护恢复环境
@@ -56,7 +56,7 @@ ms.locfileid: "73811703"
 * 恢复
     * 如果使用缩减的恢复环境来最大限度地降低日常成本，则必须扩大池和数据库，以在恢复区域中获得完全运转能力
     * 尽快在恢复区域中启用新租户预配  
-    * 按优先顺序对租户还原进行优化
+    * 针对按优先顺序还原租户进行优化
     * 优化为在可行的情况下同时执行多个步骤，以尽快让租户联机
     * 能够处理故障、可重启和幂等情况
     * 如果原始区域恢复联机，可中途取消过程。
@@ -65,7 +65,7 @@ ms.locfileid: "73811703"
 
 本教程使用 Azure SQL 数据库和 Azure 平台的功能解决这些问题：
 
-* [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)：尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配生产服务器和弹性池的镜像映像。
+* [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)可用于尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配生产服务器和弹性池的镜像映像。
 * [异地复制](sql-database-geo-replication-overview.md)：为所有数据库创建以异步方式复制的只读辅助副本。 在中断期间，故障转移到恢复区域中的副本。  解决中断后，故障回复到原始生产区域中的数据库，且不会丢失任何数据。
 * [异步](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)故障转移操作按租户的优先顺序，以最大程度地减少大量数据库的故障转移时间。
 * [分片管理恢复功能](sql-database-elastic-database-recovery-manager.md)：在恢复和遣返期间更改目录中的数据库条目。 无需重新配置应用，这些功能就能让应用连接到租户数据库，而不管位置如何。
@@ -74,9 +74,9 @@ ms.locfileid: "73811703"
 ## <a name="get-the-disaster-recovery-scripts"></a>获取灾难恢复脚本 
 
 > [!IMPORTANT]
-> 与所有 Wingtip Tickets 管理脚本一样，灾难恢复脚本的质量仅适合用于演示，而不能在生产环境中使用。 
+> 与所有 Wingtip Tickets 管理脚本一样，DR 脚本的质量仅适合用于演示，不能在生产环境中使用。 
 
-[Wingtip Tickets SaaS“租户各有一个数据库”GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)中提供了本教程使用的恢复脚本和 Wingtip 应用程序源代码。 请查看[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)，获取下载和取消阻止 Wingtip Tickets 管理脚本的步骤。
+[Wingtip Tickets SaaS“租户各有一个数据库”GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)中提供了本教程使用的恢复脚本和 Wingtip 应用程序源代码。 请查看[通用指南](saas-tenancy-wingtip-app-guidance-tips.md)，获取下载和取消阻止 Wingtip Tickets 管理脚本的步骤。
 
 ## <a name="tutorial-overview"></a>教程概述
 本教程先使用异地复制在不同的区域中创建 Wingtip Tickets 应用程序及其数据库的副本。 然后故障转移到此区域，以模拟中断后进行恢复的操作。 完成上述过程后，该应用程序将在恢复区域中完全正常运行。
@@ -95,7 +95,7 @@ ms.locfileid: "73811703"
     ![原始区域中的事件中心正常状态](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. 单击 Contoso Concert Hall 租户并打开其事件页。
-    * 在页脚中，注意租户服务器名称。 位置与目录服务器的位置相同。
+    * 在页脚中，注意租户服务器名称。 该位置与目录服务器的位置相同。
 
 3. 在 [Azure 门户](https://portal.azure.com)中，打开部署应用的资源组
     * 注意服务器所部署到的区域。 
@@ -153,7 +153,7 @@ ms.locfileid: "73811703"
 
 恢复脚本执行以下任务：
 
-1. 在原始区域中禁用 Web 应用的流量管理器终结点。 禁用该终结点可以防止在恢复期间当原始区域恢复联机时，用户连接到处于无效状态的应用。
+1. 在原始区域中禁用 Web 应用的流量管理器终结点。 通过禁用该终结点，当原始区域在恢复期间恢复联机时，可防止用户连接到处于无效状态的应用。
 
 1. 在恢复区域中使用目录数据库强制故障转移来使其成为主数据库，并将 _activecatalog_ 别名更新为指向恢复目录服务器。
 
@@ -185,9 +185,9 @@ ms.locfileid: "73811703"
 
 2. 按 **F5** 运行脚本。  
     * 该脚本将在新 PowerShell 窗口中打开，然后启动一系列并行运行的 PowerShell 作业。 这些作业将租户数据库故障转移到恢复区域。
-    * 恢复区域是部署应用程序的 Azure 区域相关联的配对区域。 有关详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+    * 恢复区域是与部署应用程序的 Azure 区域相关联的配对区域。 有关详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
-3. 在 PowerShell 窗口中监视恢复过程的状态。
+3. 在 PowerShell 窗口中监视恢复进程的状态。
     ![故障转移过程](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
@@ -195,7 +195,7 @@ ms.locfileid: "73811703"
 
 ### <a name="review-the-application-state-during-recovery"></a>在恢复期间查看应用程序状态
 
-在流量管理器中禁用应用程序终结点时，应用程序不可用。 将目录故障转移到恢复区域并将所有租户标记为脱机后，应用程序会重新联机。 尽管应用程序可用，但在故障转移每个租户的数据库之前，这些租户在事件中心会显示脱机状态。 必须将应用程序设计为能够处理脱机租户数据库。
+在流量管理器中禁用应用程序终结点时，应用程序不可用。 将目录故障转移到恢复区域并将所有租户标记为脱机后，应用程序会重新联机。 尽管应用程序可用，但在故障转移每个租户的数据库之前，这些租户在事件中心会显示脱机状态。 务必将应用程序设计为能够处理脱机租户数据库。
 
 1. 恢复目录数据库后的短时间内，请在 Web 浏览器中刷新 Wingtip Tickets 事件中心。
    * 在页脚中，注意目录服务器名称现在带有 -recovery 后缀，并且位于恢复区域。
@@ -238,11 +238,11 @@ ms.locfileid: "73811703"
    * 目录和带有 -recovery 后缀的 tenants1 服务器的恢复版本。  这些服务器上的还原目录和租户数据库全部使用在原始区域中使用的名称。
 
    * tenants2-dpt-_user&lt;-recovery SQL 服务器&gt;_ 。  此服务器用于在中断期间预配新租户。
-   * 名为 _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_; 的应用服务，即“事件”应用的恢复实例。 
+   * 名为 events-wingtip-dpt-_recoveryregion&lt;&gt;-user> 的应用服务，即“事件”应用的恢复实例&lt;_ 。 
 
      ![Azure 恢复资源](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. 打开 _tenants2-dpt-&lt;user&gt;-recovery_ SQL 服务器。  请注意，其中包含数据库 hawthornhall 和弹性池 Pool1。  _hawthornhall_ 数据库配置为 _Pool1_ 弹性池中的弹性数据库。
+4. 打开 tenants2-dpt-_user&lt;-recovery SQL 服务器&gt;_ 。  请注意，其中包含数据库 hawthornhall 和弹性池 Pool1。  hawthornhall 数据库配置为 Pool1 弹性池中的弹性数据库。
 
 5. 导航回到资源组，单击 _tenants1-dpt-&lt;user&gt;-recovery_ 服务器上的 Contoso Concert Hall 数据库。 单击左侧的“异地复制”。
     
@@ -261,7 +261,7 @@ ms.locfileid: "73811703"
 
 此任务将应用程序遣返到其原始区域。 在实际场景中，请在解决中断后启动遣返。
 
-### <a name="repatriation-process-overview"></a>遣返过程概述
+### <a name="repatriation-process-overview"></a>遣返进程概述
 
 ![遣返体系结构](media/saas-dbpertenant-dr-geo-replication/repatriation-architecture.png)
 
@@ -279,13 +279,13 @@ ms.locfileid: "73811703"
 
 1. 在 *PowerShell ISE* 中，打开 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 脚本。
 
-2. 检查目录同步进程是否仍在其 PowerShell 实例中运行。  必要时，可通过进行如下设置将其重启：
+2. 确认目录同步进程是否仍在其 PowerShell 实例中运行。  必要时，可通过进行如下设置将其重启：
     * **$DemoScenario = 1**：开始将租户服务器、池和数据库配置信息同步到目录中
     * 按 **F5** 运行脚本。
 
 3.  然后，进行如下设置以启动遣返进程：
     * **$DemoScenario = 6**：将应用遣返到其原始区域
-    * 按 F5，在新的 PowerShell 窗口中运行恢复脚本。  遣返过程需要花费几分钟时间，可在 PowerShell 窗口中监视其进度。
+    * 按 F5，在新的 PowerShell 窗口中运行恢复脚本。  遣返需要几分钟，可在 PowerShell 窗口进行监视。
     ![遣返过程](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
 4. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net)

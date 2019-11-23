@@ -35,7 +35,7 @@ ms.locfileid: "71718521"
 
 ## <a name="use-the-api"></a>使用 API
 
-你可以通过 "[分析映像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API" 检测成人内容。 将 `Adult` 的值添加到**visualFeatures**查询参数时，API 将返回三个布尔属性 @ no__t-2 @ no__t，`isRacyContent`，并 `isGoryContent` @ no__t-6IN 其 JSON 响应。 此方法还返回相应的属性 @ no__t-0 @ no__t，`racyScore`，`goreScore` @ no__t 表示每个相应类别的值介于0和1之间的置信度。
+你可以通过 "[分析映像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API" 检测成人内容。 将 `Adult` 的值添加到**visualFeatures**查询参数时，API 将返回三个布尔属性&mdash;在其 JSON 响应中 `isAdultContent`、`isRacyContent`和 `isGoryContent`&mdash;。 方法还会返回对应的属性&mdash;`adultScore`、`racyScore`和 `goreScore`&mdash;，这表示每个相应类别的之间的置信度。
 
-- [快速入门：分析图像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
-- [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)
+- [快速入门：分析图像（.NET SDK）](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

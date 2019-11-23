@@ -76,7 +76,7 @@ ms.locfileid: "72035205"
 
     按 **SHIFT + ENTER** 运行代码单元。  
 
-1. 使用下面的代码段生成可传递到 Spark 数据帧 Api 的 JDBC URL。 此代码创建一个 @no__t 0 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 使用以下代码片段生成可传递给 Spark 数据帧 API 的 JDBC URL。 此代码创建一个 `Properties` 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        import java.util.Properties
 
@@ -121,7 +121,7 @@ ms.locfileid: "72035205"
 
     按 **SHIFT + ENTER** 运行代码单元。  
 
-1. 以下代码片段生成可传递到 Spark 数据帧 Api 的 JDBC URL。 此代码创建一个 @no__t 0 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 以下代码片段生成可传递给 Spark 数据帧 API 的 JDBC URL。 此代码创建一个 `Properties` 对象来保存参数。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        import java.util.Properties
 
@@ -146,7 +146,7 @@ ms.locfileid: "72035205"
 
 1. 使用 SSMS 连接到 Azure SQL 数据库，并确认其中是否显示了 `dbo.hvactable`。
 
-    a. 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
 
     使用![SSMS1 连接到 sql 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS1 连接到 sql 数据库")
 
@@ -178,7 +178,7 @@ ms.locfileid: "72035205"
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. 我们要将数据从 **HVAC.csv** 流式传输到 hvactable。 @No__t-0 的群集上提供了 HVAC .csv 文件。 在以下代码片段中，我们先获取要流式传输的数据的架构。 然后，使用该架构创建流数据帧。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
+1. 我们要将数据从 **HVAC.csv** 流式传输到 hvactable。 `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`上的群集中提供了 HVAC .csv 文件。 在以下代码片段中，我们先获取要流式传输的数据的架构。 然后，使用该架构创建流数据帧。 粘贴代码单元中的代码片段，然后按 **SHIFT + ENTER** 运行。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71351246"
 ---
-# <a name="cot-azure-cosmos-db"></a>COT （Azure Cosmos DB）
+# <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
  返回指定数值表达式中指定角度的三角余切。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ COT(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例计算指定角度的 @no__t 0。  
+  以下示例计算指定角度的 `COT`。  
   
 ```sql
 SELECT COT(124.1332) AS cot  

@@ -35,7 +35,7 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 
 以下部分提供了有关在 Azure 中构建弹性应对 DDoS 的服务的规范性指导。
 
-### <a name="design-for-security"></a>针对安全性进行设计
+### <a name="design-for-security"></a>安全设计
 
 确保优先考虑从设计和实施到部署和操作的整个应用程序生命周期的安全性。 应用程序可能包含 bug，使相对较少的请求使用过多的资源，导致服务中断。 
 
@@ -46,7 +46,7 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 
 ### <a name="design-for-scalability"></a>可伸缩性设计
 
-可伸缩性是指系统处理增加的负载的能力。 设计应用程序以进行[横向扩展](/azure/architecture/guide/design-principles/scale-out)，以满足扩大的负载需求，尤其是在出现 DDoS 攻击的情况下。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。
+可伸缩性是指系统处理增加的负载的能力。 采用可[横向缩放](/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。
 
 对于 [Azure 应用服务](/azure/app-service/app-service-value-prop-what-is)，请选择提供多个实例的[应用服务计划](/azure/app-service/overview-hosting-plans)。 对于 Azure 云服务，请将每个角色配置为使用[多个实例](/azure/cloud-services/cloud-services-choose-me)。 对于 [Azure 虚拟机](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，请确保虚拟机 (VM) 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](/azure/virtual-machines/virtual-machines-windows-manage-availability)中。 我们建议使用[虚拟机规模集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)来实现自动缩放功能。
 
@@ -97,7 +97,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择“监视” > “指标”。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
+在 Azure 门户中，选择“监视” **“指标”。**  >  在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。 DDoS 指标将显示在“可用指标”窗格中。
 
 标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。
 

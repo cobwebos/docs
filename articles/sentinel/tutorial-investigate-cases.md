@@ -21,7 +21,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72024612"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：用 Azure Sentinel 调查事件
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：通过 Azure Sentinel 调查事件
 
 > [!IMPORTANT]
 > 调查关系图目前为公共预览版。
@@ -31,7 +31,7 @@ ms.locfileid: "72024612"
 
 本教程帮助你通过 Azure Sentinel 调查事件。 将数据源连接到 Azure Sentinel 后，需要在出现可疑情况时收到通知。 为了使你能够执行此操作，Azure Sentinel 允许你创建高级警报规则，以生成可分配和调查的事件。
 
-本文包含以下内容：
+本文介绍：
 > [!div class="checklist"]
 > * 调查事件
 > * 使用调查图
@@ -70,9 +70,9 @@ ms.locfileid: "72024612"
   
 调查图为您提供了：
 
-- **原始数据的可视化上下文**：实时可视化关系图显示自动从原始数据中提取的实体关系。 这使你可以轻松地查看跨不同数据源的连接。
+- **原始数据中的可视上下文**：实时、可视化图形显示从原始数据自动提取的实体关系。 这使你可以轻松地查看跨不同数据源的连接。
 
-- **完全调查范围发现**：使用内置的浏览查询展开调查范围，以显示破坏的全部范围。
+- **完全调查范围发现**：使用内置探索查询展开调查作用域，以显示破坏的全部范围。
 
 - **内置调查步骤**：使用预定义的浏览选项，以确保在面临威胁时询问正确的问题。
 
@@ -97,7 +97,7 @@ ms.locfileid: "72024612"
 
     ![查看相关警报](media/tutorial-investigate-cases/related-alerts.png)
 
-1. 对于每个浏览查询，可以通过选择 "**事件 @ no__t-1**"，选择用于打开原始事件结果和 Log Analytics 中所使用的查询的选项。
+1. 对于每个浏览查询，可以通过选择 "**事件"\>** ，选择用于打开原始事件结果和 Log Analytics 中所使用的查询的选项。
 
 1. 为了理解事件，图形提供了一个并行时间线。
 

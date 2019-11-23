@@ -31,9 +31,9 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 一些代码段显示了手动调用（即：不是使用触发器属性之一调用）的函数中使用的 **Table** 属性。
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
-若要将实体添加到表中，请将**table**属性与**ICollector @ no__t-2T >** 或**IAsyncCollector @ no__t-4T >** 参数一起使用，其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中，请将**table**属性与**ICollector\<t >** 或**IAsyncCollector\<t >** 参数一起使用，其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
-下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
+下面的代码示例将 **Person** 实体添加到名为 *Ingress*的表。
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -67,7 +67,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 如果想要直接使用 Azure 存储 API，则可以向方法签名添加 **CloudStorageAccount** 参数。
 
 ## <a name="real-time-monitoring"></a>实时监视
-因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分告诉你函数是否仍在运行。
+因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分将指示函数是否仍在运行。
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
@@ -80,7 +80,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
-若要读取表，请将**table**属性与**IQueryable @ no__t-2T >** 参数一起使用，其中类型**t**从**TableEntity**派生或实现**ITableEntity**。
+若要读取表，请将**表**属性与**IQueryable\<t >** 参数一起使用，其中类型**t**派生自**TableEntity**或实现**ITableEntity**。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 
@@ -122,7 +122,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 此示例中的 **Person** 类并非必须实现 **ITableEntity**。
 
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>如何直接使用 .NET 存储 API 处理表
-还可以将 Table 属性和 CloudTable 对象一起使用，更灵活地处理表。
+还可以将 **Table** 属性和 **CloudTable** 对象一起使用，以便更灵活地处理表。
 
 下面的代码示例使用 **CloudTable** 对象将单个实体添加到 *Ingress* 表中。
 

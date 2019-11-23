@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349605"
 ---
-# <a name="rand-azure-cosmos-db"></a>RAND （Azure Cosmos DB）
+# <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
  返回 [0,1) 中随机生成的数值。
  
 ## <a name="syntax"></a>语法
@@ -29,7 +29,7 @@ RAND ()
 
 ## <a name="remarks"></a>备注
 
-  @no__t 为非确定性函数。 @No__t 的重复调用将返回相同的结果。
+  `RAND` 是非确定性的函数。 重复调用 `RAND` 不会返回相同的结果。
 
 ## <a name="examples"></a>示例
   

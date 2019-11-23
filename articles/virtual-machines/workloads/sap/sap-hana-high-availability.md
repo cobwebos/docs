@@ -150,7 +150,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择“添加虚拟机”。
       1. 选择 "虚拟机"。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
-      1. 选择“设置”（应用程序对象和服务主体对象）。
+      1. 选择“添加”。
    
    1. 接下来创建运行状况探测：
    
@@ -233,7 +233,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    有关 SAP HANA 所需的端口的详细信息，请参阅[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或[SAP 说明 2388694][2388694]中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)的章节。
 
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 > 另请参阅 SAP 说明[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="create-a-pacemaker-cluster"></a>创建 Pacemaker 群集

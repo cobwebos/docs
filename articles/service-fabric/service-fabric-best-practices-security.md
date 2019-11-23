@@ -25,7 +25,7 @@ ms.locfileid: "71828512"
 
 有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
-## <a name="key-vault"></a>Key Vault
+## <a name="key-vault"></a>密钥保管库
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 是建议用于 Azure Service Fabric 应用程序和群集的机密管理服务。
 > [!NOTE]
@@ -217,7 +217,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration （DSC）扩展处理程序，在虚拟机处于联机状态时对其进行配置，使其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-@no__t 0Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和不受限制的云可伸缩性的完全有状态防火墙即服务。 ](https://docs.microsoft.com/azure/firewall/overview);这使你能够将出站 HTTP/S 流量限制为指定的完全限定的域名（FQDN）列表（包括通配符）。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新，并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作：
+[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和不受限制的云可伸缩性的完全有状态防火墙即服务。](https://docs.microsoft.com/azure/firewall/overview)这使你能够将出站 HTTP/S 流量限制为指定的完全限定的域名（FQDN）列表（包括通配符）。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新，并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作：
 
 - \* download.microsoft.com
 - *servicefabric.azure.com
@@ -276,8 +276,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)。
-* 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在运行 Windows Server 的 Vm 或计算机上创建群集：[为 Windows server Service Fabric 群集创建](service-fabric-cluster-creation-for-windows-server.md)。
+* 在运行 Linux 的 Vm 或计算机上创建群集：[创建 linux 群集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

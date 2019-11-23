@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349210"
 ---
-# <a name="stringtoobject-azure-cosmos-db"></a>StringToObject （Azure Cosmos DB）
+# <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
  返回已转换为对象的表达式。 如果表达式无法转换，则返回未定义的表达式。  
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   要分析为 JSON 对象表达式的字符串表达式。 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
+   是要解析为 JSON 对象表达式的字符串表达式。 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示在不同类型之间 @no__t 的行为。 
+  以下示例演示 `StringToObject` 在不同类型中的行为方式。 
   
  下面是输入有效的示例。
 

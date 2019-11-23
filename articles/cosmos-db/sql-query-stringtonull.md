@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349245"
 ---
-# <a name="stringtonull-azure-cosmos-db"></a>StringToNull （Azure Cosmos DB）
+# <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  返回已转换为 Null 的表达式。 如果表达式无法转换，则返回未定义的表达式。  
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   要分析为 null 表达式的字符串表达式。
+   是要解析为 null 表达式的字符串表达式。
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示在不同类型之间 @no__t 的行为。 
+  以下示例演示 `StringToNull` 在不同类型中的行为方式。 
 
 下面是输入有效的示例。
 

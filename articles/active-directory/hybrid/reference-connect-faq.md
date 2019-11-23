@@ -52,7 +52,7 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 2016 年 2 月版开始支持此方案。
 
 **问：Azure Active Directory 域服务 (Azure AD DS) 运行状况代理是否能够在服务器核心上运行？**  
-是的。 安装代理后，可以使用以下 PowerShell cmdlet 完成注册过程： 
+可以。 安装代理后，可以使用以下 PowerShell cmdlet 完成注册过程： 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
@@ -121,7 +121,7 @@ Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此
 
 ## <a name="network"></a>网络
 **问：我的防火墙、网络设备或其他设备限制了连接在网络上保持打开状态的时间。使用 Azure AD Connect 时，我的客户端的超时阈值是多少？**  
-所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的所有 Microsoft 标识同步工具。
+所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。 此项建议同样适用于以前发布的 Microsoft 标识同步工具。
 
 **是否支持单一标签域 (SLD)？**  
 虽然我们强烈建议不要使用此网络配置（[请参阅相关文章](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)），但只要单级域的网络配置正常发挥作用，将 Azure AD Connect 同步与单标签域配合使用就是受支持的。

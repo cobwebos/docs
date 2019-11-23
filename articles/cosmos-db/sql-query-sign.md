@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查询语言登录
-description: 了解 SQL 系统函数登录 Azure Cosmos DB。
+title: Azure Cosmos DB 查询语言中的 SIGN
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SIGN。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71349483"
 ---
-# <a name="sign-azure-cosmos-db"></a>SIGN （Azure Cosmos DB）
+# <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
  返回指定数值表达式的正数 (+1)、零 (0) 或负数 (-1)。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ SIGN(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例将从-2 到2的数字的 @no__t 值返回值。  
+  以下示例返回数字 -2 到 2 的 `SIGN` 值。  
   
 ```sql
 SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  

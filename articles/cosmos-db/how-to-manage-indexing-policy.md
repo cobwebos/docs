@@ -370,7 +370,7 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
-[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的 @no__t 0 对象公开了 @no__t 的属性，该属性使您可以更改 @no__t，并添加或删除 `IncludedPaths` 和 @no__t。
+`DocumentCollection`.NET SDK v2[ 中的 ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 对象公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
 ```csharp
 // Retrieve the container's details
@@ -400,7 +400,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
-[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)中的 @no__t 0 对象（有关其用法，请参阅[此快速入门](create-sql-api-dotnet.md)）提供了一个 @no__t 的属性，该属性使你可以更改 @no__t，并添加或删除 `IncludedPaths` 和 @no__t。
+`ContainerProperties`.NET SDK v3[ 中的 ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 对象（请参阅有关其用法的[此快速入门](create-sql-api-dotnet.md)）公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
 ```csharp
 // Retrieve the container's details
@@ -424,7 +424,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-若要跟踪索引转换进度，请传递将 `PopulateQuotaInfo` 属性设置为 `true` 的 @no__t 0 对象，然后从 @no__t 的响应标头中检索值。
+若要跟踪索引转换进度，请传递一个用以将 `RequestOptions` 属性设置为 `PopulateQuotaInfo` 的 `true` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
 
 ```csharp
 // retrieve the container's details
@@ -433,7 +433,7 @@ ContainerResponse containerResponse = await client.GetContainer("database", "con
 long indexTransformationProgress = long.Parse(containerResponse.Headers["x-ms-documentdb-collection-index-transformation-progress"]);
 ```
 
-在创建新容器时定义自定义索引策略时，SDK V3's Fluent API 使你能够以简洁高效的方式编写此定义：
+在创建新容器的同时定义自定义索引策略时，SDK V3 的 fluent API 可让你以简洁高效的方式编写这个定义：
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -457,7 +457,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>使用 Java SDK
 
-[Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 中的 `DocumentCollection` 对象（请参阅有关其用法的[此快速入门](create-sql-api-java.md)）公开了 `getIndexingPolicy()` 和 `setIndexingPolicy()` 方法。 通过它们操作的 `IndexingPolicy` 对象，你可以更改索引模式，以及添加或删除包括的和排除的路径。
+`DocumentCollection`Java SDK[ 中的 ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 对象（请参阅有关其用法的[此快速入门](create-sql-api-java.md)）公开了 `getIndexingPolicy()` 和 `setIndexingPolicy()` 方法。 通过它们操作的 `IndexingPolicy` 对象，你可以更改索引模式，以及添加或删除包括的和排除的路径。
 
 ```java
 // Retrieve the container's details
@@ -539,7 +539,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
 
-[Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) 中的 `ContainerDefinition` 接口（请参阅有关其用法的[此快速入门](create-sql-api-nodejs.md)）公开了一个 `indexingPolicy` 属性，可以通过该属性更改 `indexingMode` 以及添加或删除 `includedPaths` 和 `excludedPaths`。
+`ContainerDefinition`Node.js SDK[ 中的 ](https://www.npmjs.com/package/@azure/cosmos) 接口（请参阅有关其用法的[此快速入门](create-sql-api-nodejs.md)）公开了一个 `indexingPolicy` 属性，可以通过该属性更改 `indexingMode` 以及添加或删除 `includedPaths` 和 `excludedPaths`。
 
 检索容器的详细信息
 
@@ -596,7 +596,7 @@ containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-若要在容器上跟踪索引转换进度，请传递一个用以将 `populateQuotaInfo` 属性设置为 `true` 的 `RequestOptions` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
+若要在容器上跟踪索引转换进度，请传递一个用以将 `RequestOptions` 属性设置为 `populateQuotaInfo` 的 `true` 对象，然后从 `x-ms-documentdb-collection-index-transformation-progress` 响应标头中检索该值。
 
 ```javascript
 // retrieve the container's details
@@ -673,7 +673,7 @@ response = client.ReplaceContainer(containerPath, container)
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读以下文章中有关索引的详细信息：
+阅读以下文章中有关索引的更多信息：
 
 - [索引概述](index-overview.md)
 - [索引策略](index-policy.md)

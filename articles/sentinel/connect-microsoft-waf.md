@@ -40,12 +40,12 @@ ms.locfileid: "72029785"
     
 1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"。
 1. 在 "数据连接器" 页上，选择 " **WAF** " 磁贴。
-1. 请参阅[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)@no__t 1AND 选择 WAF。
+1. 请参阅[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) 并选择你的 WAF。
     1. 选择“诊断设置”。
     1. 选择表下的 " **+ 添加诊断设置**"。
     1. 在 "**诊断设置**" 页中，键入**名称**，然后选择 "**发送到 Log Analytics**"。
     1. 在**Log Analytics 工作区**中，选择 Azure Sentinel 工作区。
-    1. 选择要分析的日志类型。 建议使用：ApplicationGatewayAccessLog 和 ApplicationGatewayFirewallLog。
+    1. 选择要分析的日志类型。 建议使用： ApplicationGatewayAccessLog 和 ApplicationGatewayFirewallLog。
 1. 若要在 Microsoft web 应用程序防火墙警报 Log Analytics 中使用相关架构，请搜索**AzureDiagnostics**。
 
 ## <a name="next-steps"></a>后续步骤

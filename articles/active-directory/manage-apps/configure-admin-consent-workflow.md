@@ -118,7 +118,7 @@ ms.locfileid: "73180415"
 > 当前所有方案中都缺少 audit 参与者的用户上下文。 这是预览版本中的一个已知限制。
 
 
-|场景  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
+|方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|
 |启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
 |管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |
@@ -127,7 +127,7 @@ ms.locfileid: "73180415"
 |审批管理员同意请求的审阅者       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            |目前找不到已授予管理员许可的用户上下文或应用 ID。           |
 |审阅者拒绝管理员同意请求       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            | 当前找不到拒绝管理员同意请求的执行组件的用户上下文          |
 
-## <a name="faq"></a>常见问题解答 
+## <a name="faq"></a>常见问题 
 
 **我打开了此工作流，但在测试功能时，为什么看不到允许我请求访问的新 "需要审批" 提示？**
 
@@ -155,6 +155,6 @@ ms.locfileid: "73180415"
 
 [同意并将应用集成到 AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
+[AzureAD v2.0 聚合应用的许可和权限](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

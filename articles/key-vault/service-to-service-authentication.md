@@ -22,7 +22,7 @@ ms.locfileid: "72177473"
 
 管理此类凭据可能比较困难。 通过将凭据包含在源或配置文件中，可以将凭据捆绑到应用中。 用于 .NET 库的 `Microsoft.Azure.Services.AppAuthentication` 简化了此问题。 它使用开发人员的凭据在本地开发期间进行身份验证。 随后将解决方案部署到 Azure 时，该库会自动切换到应用程序凭据。 在本地开发期间使用开发人员凭据更安全，因为无需创建 Azure AD 凭据或在开发人员之间共享凭据。
 
-@No__t 0 库自动管理身份验证，这进而使你可以专注于你的解决方案，而不是你的凭据。 该库支持使用 Microsoft Visual Studio、Azure CLI 或 Azure AD 集成身份验证进行本地开发。 部署到支持托管标识的 Azure 资源时，该库会自动使用 [Azure 资源的托管标识](../active-directory/msi-overview.md)。 不需代码或配置更改。 当托管标识不可用时，或在本地开发期间无法确定开发人员的安全上下文时，该库还支持直接使用 Azure AD 的[客户端凭据](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+`Microsoft.Azure.Services.AppAuthentication` 库自动管理身份验证，从而使你能够专注于你的解决方案，而不是你的凭据。 该库支持使用 Microsoft Visual Studio、Azure CLI 或 Azure AD 集成身份验证进行本地开发。 部署到支持托管标识的 Azure 资源时，该库会自动使用 [Azure 资源的托管标识](../active-directory/msi-overview.md)。 不需代码或配置更改。 当托管标识不可用时，或在本地开发期间无法确定开发人员的安全上下文时，该库还支持直接使用 Azure AD 的[客户端凭据](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "72177473"
 
 对于 .NET 应用程序，若要使用托管标识，最简单的方式是通过 `Microsoft.Azure.Services.AppAuthentication` 包来使用。 下面介绍如何入门：
 
-1. 选择 "**工具**"  >  "**Nuget 包管理器**" @no__t**管理用于解决方案的 nuget 包**，以便将对[microsoft.azure.services.appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和[KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用添加到你的项目。
+1. 选择 "**工具**" > **Nuget 包管理器**" > **管理解决方案的 Nuget 包**，将对[microsoft.azure.services.appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和[KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包的引用添加到项目。
 
 1. 添加以下代码：
 
@@ -51,7 +51,7 @@ ms.locfileid: "72177473"
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-`AzureServiceTokenProvider` 类将令牌缓存在内存中，在过期前才将其从 Azure AD 检索出来。 因此，在调用 @no__t 0 方法之前，您不再需要检查到期时间。 在需要使用令牌时直接调用该方法即可。
+`AzureServiceTokenProvider` 类将令牌缓存在内存中，在过期前才将其从 Azure AD 检索出来。 因此，在调用 `GetAccessTokenAsync` 方法之前，不再需要检查到期时间。 在需要使用令牌时直接调用该方法即可。
 
 `GetAccessTokenAsync` 方法需要资源标识符。 若要了解有关 Microsoft Azure 服务的详细信息，请参阅[什么是 Azure 资源的托管标识](../active-directory/msi-overview.md)。
 
@@ -69,13 +69,13 @@ ms.locfileid: "72177473"
 
 使用 Visual Studio 进行身份验证：
 
-1. 登录到 Visual Studio，使用**工具**&nbsp; @ no__t-2 @ no__t**选项**打开**选项**。
+1. 登录到 Visual Studio，使用**工具**&nbsp;>&nbsp;**选项**打开**选项**。
 
 1. 选择 " **Azure 服务身份验证**"，选择用于本地开发的帐户，然后选择 **"确定"** 。
 
 如果使用 Visual Studio 时遇到问题（如涉及令牌提供程序文件的错误），请仔细查看前面的步骤。
 
-可能需要重新验证开发人员令牌。 为此，请选择 "**工具**" &nbsp; @ no__t-2 @ No__t "**选项**，然后选择" **Azure @ no__t-6Service @ no__t-7Authentication**"。 查找所选帐户下的 "**重新身份验证**" 链接。 选择该链接进行身份验证。
+可能需要重新验证开发人员令牌。 为此，请选择 "**工具**"&nbsp;>&nbsp;"**选项**，然后选择" **Azure&nbsp;服务&nbsp;身份验证**"。 查找所选帐户下的 "**重新身份验证**" 链接。 选择该链接进行身份验证。
 
 #### <a name="authenticating-with-azure-cli"></a>使用 Azure CLI 进行身份验证
 
@@ -87,9 +87,9 @@ ms.locfileid: "72177473"
 
 1. 登录到 Azure 门户： *az login*登录到 Azure。
 
-1. 通过输入*az account get-help--resource https://vault.azure.net* 验证访问权限。 如果收到错误，请检查是否正确安装了正确版本的 Azure CLI。
+1. 输入*az account get-help--resource https://vault.azure.net* 来验证访问权限。 如果收到错误，请检查是否正确安装了正确版本的 Azure CLI。
 
-   如果 Azure CLI 未安装到默认目录，你可能会收到错误报告，`AzureServiceTokenProvider` 找不到 Azure CLI 的路径。 请使用 **AzureCLIPath** 环境变量来定义 Azure CLI 安装文件夹。 `AzureServiceTokenProvider` 在需要时将 **AzureCLIPath** 环境变量中指定的目录添加到 **Path** 环境变量。
+   如果 Azure CLI 未安装到默认目录，你可能会收到错误报告，指出 `AzureServiceTokenProvider` 找不到 Azure CLI 的路径。 请使用 **AzureCLIPath** 环境变量来定义 Azure CLI 安装文件夹。 `AzureServiceTokenProvider` 在需要时将 **AzureCLIPath** 环境变量中指定的目录添加到 **Path** 环境变量。
 
 1. 如果使用多个帐户登录到 Azure CLI，或者你的帐户有权访问多个订阅，则需指定要使用的订阅。 输入命令*az account set--订阅 < 订阅 id >* 。
 
@@ -156,7 +156,7 @@ ms.locfileid: "72177473"
     此命令创建一个存储在主目录中的 pem 文件（私钥）。 将此证书部署到 *LocalMachine* 或 *CurrentUser* 存储。
 
     > [!Important]
-    > CLI 命令生成一个 pem 文件，但 Windows 只为 PFX 证书提供本机支持。 若要改为生成 PFX 证书，请使用此处所示的 PowerShell 命令：[创建具有自签名证书的服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 这些命令也会自动部署证书。
+    > CLI 命令生成一个 pem 文件，但 Windows 只为 PFX 证书提供本机支持。 若要改为生成 PFX 证书，请使用此处所示的 PowerShell 命令：使用[自签名证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 这些命令也会自动部署证书。
 
 1. 将名为**AzureServicesAuthConnectionString**的环境变量设置为以下值：
 
@@ -201,7 +201,7 @@ ms.locfileid: "72177473"
 
 使用客户端证书进行服务主体身份验证：
 
-1. 创建一个服务主体证书，并自动将其存储在 Key Vault 中。 使用 Azure CLI [az ad sp create--keyvault @no__t--1keyvaultname >--cert @no__t--2certificatename >--create--](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+1. 创建一个服务主体证书，并自动将其存储在 Key Vault 中。 使用 Azure CLI [az ad sp create--keyvault \<keyvaultname >--cert \<certificatename >--](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) --：
 
     ```azurecli
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
@@ -229,21 +229,21 @@ ms.locfileid: "72177473"
 
 可以使用以下选项：
 
-| 连接字符串选项 | 应用场景 | 注释|
+| 连接字符串选项 | 方案 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | `AzureServiceTokenProvider` 使用 AzureCli 获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | `AzureServiceTokenProvider` 使用 Visual Studio 获取令牌。 |
 | `RunAs=CurrentUser` | 本地开发 | `AzureServiceTokenProvider` 使用 Azure AD 集成身份验证获取令牌。 |
 | `RunAs=App` | [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` 使用托管标识获取令牌。 |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 资源的用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` 使用用户分配的标识来获取令牌。 |
-| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自定义服务身份验证 | @no__t 为证书的机密标识符。 |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自定义服务身份验证 | `KeyVaultCertificateSecretIdentifier` 是证书的机密标识符。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | 服务主体 | `AzureServiceTokenProvider` 使用证书从 Azure AD 获取令牌|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | 服务主体 |`AzureServiceTokenProvider` 使用机密从 Azure AD 获取令牌。 |
 
 ## <a name="samples"></a>示例
 
-若要查看操作中的 @no__t 0 库，请参阅以下代码示例。
+若要查看操作中的 `Microsoft.Azure.Services.AppAuthentication` 库，请参阅以下代码示例。
 
 - [Use a managed identity to retrieve a secret from Azure Key Vault at runtime](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)（在运行时使用托管标识从 Azure Key Vault 检索机密）
 
@@ -277,7 +277,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>未在应用服务上设置托管标识
 
-使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 是否存在。 如果这些环境变量不存在，则不会在应用服务上启用托管标识。
+使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 存在。 如果这些环境变量不存在，则不会在应用服务上启用托管标识。
 
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>在本地与 IIS 一起部署时遇到的常见问题
 

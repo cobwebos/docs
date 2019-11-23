@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71351073"
 ---
-# <a name="cos-azure-cosmos-db"></a>COS （Azure Cosmos DB）
+# <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
  返回指定表达式中指定角度的三角余弦（弧度）。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ COS(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例计算指定角度的 @no__t 0。  
+  以下示例计算指定角度的 `COS`。  
   
 ```sql
 SELECT COS(14.78) AS cos  
