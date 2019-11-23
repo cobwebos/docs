@@ -1,161 +1,161 @@
 ---
-title: 启用 Azure AD （预览版）的无密码安全密钥登录-Azure Active Directory
-description: 使用 FIDO2 安全密钥（预览版）启用无密码安全密钥登录 Azure AD
+title: Passwordless security key sign-in Windows - Azure Active Directory
+description: Enable passwordless security key sign-in to Azure AD using FIDO2 security keys (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 36c00af260ca73913eabf3a1589d8d468de50711
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081560"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381877"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>启用无密码安全密钥登录到 Windows 10 设备（预览）
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Enable passwordless security key sign in to Windows 10 devices (preview)
 
-本文档重点介绍如何在 Windows 10 设备上启用基于 FIDO2 安全密钥的无密码身份验证。 本文末尾，你将能够使用 FIDO2 安全密钥登录到基于 web 的应用程序，以及使用 Azure AD 帐户登录到 Azure AD 联接的 Windows 10 设备。
+This document focuses on enabling FIDO2 security key based passwordless authentication with Windows 10 devices. At the end of this article, you will be able to sign in to both web-based applications and your Azure AD joined Windows 10 devices with your Azure AD account using a FIDO2 security key.
 
 |     |
 | --- |
-| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| FIDO2 security keys are a public preview feature of Azure Active Directory. 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>要求
 
 - [Azure 多重身份验证](howto-mfa-getstarted.md)
-- [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md)
-- 兼容的[FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN 需要 Windows 10 版本1809或更高版本
-- [Azure AD 联接的设备](../devices/concept-azure-ad-join.md)需要 Windows 10 版本1809或更高版本
-- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) （可选）
-- 预配包（可选）
+- [Combined security information registration preview](concept-registration-mfa-sspr-combined.md)
+- Compatible [FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
+- WebAuthN requires Windows 10 version 1809 or higher
+- [Azure AD joined devices](../devices/concept-azure-ad-join.md) require Windows 10 version 1809 or higher
+- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (Optional)
+- Provisioning package (Optional)
 
 ### <a name="unsupported-scenarios"></a>不支持的方案
 
-- Windows Server Active Directory 域服务（AD DS） "已加入域（仅限本地）" 部署**不受支持**。
-- 使用安全密钥**不支持**RDP、VDI 和 Citrix 方案。
-- **不支持**使用安全密钥的 S/MIME。
-- **不支持**使用安全密钥的 "运行身份"。
-- **不支持**使用安全密钥登录到服务器。
-- 如果你未使用安全密钥在联机时登录到你的设备，你将无法使用它来登录或脱机解锁。
+- Windows Server Active Directory Domain Services (AD DS) domain-joined (on-premises only devices) deployment **not supported**.
+- RDP, VDI, and Citrix scenarios are **not supported** using security key.
+- S/MIME is **not supported** using security key.
+- “Run as“ is **not supported** using security key.
+- Log in to a server using security key is **not supported**.
+- If you have not used your security key to sign in to your device while online, you will not be able to use it to sign in or unlock offline.
 
-## <a name="prepare-devices-for-preview"></a>为预览版准备设备
+## <a name="prepare-devices-for-preview"></a>Prepare devices for preview
 
-要试验的 Azure AD 联接的设备必须运行 Windows 10 版本1809或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+Azure AD joined devices that you will be piloting with must be running Windows 10 version 1809 or higher. The best experience is on Windows 10 version 1903 or higher.
 
-## <a name="enable-security-keys-for-windows-sign-in"></a>启用 Windows 登录的安全密钥
+## <a name="enable-security-keys-for-windows-sign-in"></a>Enable security keys for Windows sign-in
 
-组织可能会选择使用以下一种或多种方法来根据组织的要求，使用安全密钥进行 Windows 登录。
+Organizations may choose to use one or more of the following methods to enable the use of security keys for Windows sign-in based on their organization's requirements.
 
-- [使用 Intune 启用](#enable-with-intune)
-   - [面向 Intune 部署](#targeted-intune-deployment)
-- [使用预配包启用](#enable-with-a-provisioning-package)
+- [Enable with Intune](#enable-with-intune)
+   - [Targeted Intune deployment](#targeted-intune-deployment)
+- [Enable with a provisioning package](#enable-with-a-provisioning-package)
 
-### <a name="enable-with-intune"></a>使用 Intune 启用
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Microsoft Intune** > **设备注册** > **Windows 注册** > **windows Hello 企业版** > **属性**。
-1. 在 "**设置**" 下，将 "**使用安全密钥登录**" 设置为 "**已启用**"。
-
-用于登录的安全密钥配置不依赖于配置 Windows Hello 企业版。
-
-#### <a name="targeted-intune-deployment"></a>面向 Intune 部署
-
-若要以特定的设备组为目标以启用凭据提供程序，请通过 Intune 使用以下自定义设置。
+### <a name="enable-with-intune"></a>Enable with Intune
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Microsoft Intune** > **设备配置**" > **配置**文件 > "**创建配置文件**"。
-1. 用以下设置配置新配置文件
-   1. 名称： Windows 登录的安全密钥
-   1. 说明：在 Windows 登录过程中启用要使用的 FIDO 安全密钥
-   1. 平台： Windows 10 及更高版本
-   1. 配置文件类型：自定义
-   1. 自定义 OMA-URI 设置：
-      1. 名称：开启 Windows 登录的 FIDO 安全密钥
-      1. OMA-URI：./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. 数据类型：整数
-      1. 值：1
-1. 此策略可以分配给特定的用户、设备或组。 有关详细信息，请参阅[将用户和设备配置文件分配到 Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign)一文。
+1. Browse to **Microsoft Intune** > **Device enrollment** > **Windows enrollment** > **Windows Hello for Business** > **Properties**.
+1. Under **Settings** set **Use security keys for sign-in** to **Enabled**.
 
-![Intune 自定义设备配置策略创建](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
+Configuration of security keys for sign-in, is not dependent on configuring Windows Hello for Business.
 
-### <a name="enable-with-a-provisioning-package"></a>使用预配包启用
+#### <a name="targeted-intune-deployment"></a>Targeted Intune deployment
 
-对于不由 Intune 管理的设备，可以安装预配包以启用该功能。 可以从[Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22)安装 Windows 配置设计器应用。
+To target specific device groups to enable the credential provider, use the following custom settings via Intune.
 
-1. 启动 Windows 配置设计器。
-1. 选择 "**文件**" > "**新建项目**"。
-1. 为项目指定一个名称，并记下创建项目的路径。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. Browse to **Microsoft Intune** > **Device configuration** > **Profiles** > **Create profile**.
+1. Configure the new profile with the following settings
+   1. Name: Security Keys for Windows Sign-In
+   1. Description: Enables FIDO Security Keys to be used during Windows Sign In
+   1. Platform: Windows 10 and later
+   1. Profile type: Custom
+   1. Custom OMA-URI Settings:
+      1. Name: Turn on FIDO Security Keys for Windows Sign-In
+      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. Data Type: Integer
+      1. Value: 1
+1. This policy can be assigned to specific users, devices, or groups. More information can be found in the article [Assign user and device profiles in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+
+![Intune custom device configuration policy creation](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
+
+### <a name="enable-with-a-provisioning-package"></a>Enable with a provisioning package
+
+For devices not managed by Intune, a provisioning package can be installed to enable the functionality. The Windows Configuration Designer app can be installed from the [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
+
+1. Launch the Windows Configuration Designer.
+1. Select **File** > **New project**.
+1. Give your project a name and take note of the path where your project is created.
 1. 选择“**下一步**”。
-1. 选择 "**预配包**" 作为**选定的项目工作流**，然后选择 "**下一步**"。
-1. 选择**要查看和配置的设置**，然后**选择 "** **下一步**"。
+1. Leave **Provisioning package** selected as the **Selected project workflow** and select **Next**.
+1. Select **All Windows desktop editions** under **Choose which settings to view and configure** and select **Next**.
 1. 选择“完成”。
-1. 在新创建的项目中，浏览到 "**运行时设置**" > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**"。
-1. 将**UseSecurityKeyForSignIn**设置为**Enabled**。
-1. 选择 "**导出** > **预配包**"
-1. 在 "**生成**" 窗口的 "**描述预配包**" 中保留默认值，然后选择 "**下一步**"。
-1. 在 "**生成**" 窗口的 "**选择设置包的安全详细信息**" 下保留默认值，然后选择 "**下一步**"。
-1. 记下或更改**生成**窗口中的路径，**选择要保存预配包的位置**，然后选择 "**下一步**"。
-1. 在 "**生成预配包**" 页面上选择 "**生成**"。
-1. 将创建的两个文件（ppkg 和 cat）保存到你稍后可以将它们应用到计算机的位置。
-1. 按照[应用预配包一](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package)文中的指导进行操作，以应用创建的预配包。
+1. In your newly created project, browse to **Runtime settings** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
+1. Set **UseSecurityKeyForSignIn** to **Enabled**.
+1. Select **Export** > **Provisioning package**
+1. Leave the defaults in the **Build** window under **Describe the provisioning package** and select **Next**.
+1. Leave the defaults in the **Build** window under **Select security details for the provisioning package** and select **Next**.
+1. Take note of or change the path in the **Build** windows under **Select where to save the provisioning package** and select **Next**.
+1. Select **Build** on the **Build the provisioning package** page.
+1. Save the two files created (ppkg and cat) to a location where you can apply them to machines later.
+1. Follow the guidance in the article [Apply a provisioning package](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package), to apply the provisioning package you created.
 
 > [!NOTE]
-> 运行 Windows 10 版本1809的设备还必须启用共享 PC 模式（EnableSharedPCMode）。 有关启用此有趣的信息，请参阅文章[使用 Windows 10 设置共享计算机或来宾 PC](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc)。
+> Devices running Windows 10 Version 1809 must also enable shared PC mode (EnableSharedPCMode). Information about enabling this funtionality can be found in the article, [Set up a shared or guest PC with Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>使用 FIDO2 安全密钥登录 Windows
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Sign in to Windows with a FIDO2 security key
 
-在下面的示例中，用户 Bala Sandhu 已经使用上一文章中的步骤设置了其 FIDO2 安全密钥，请[启用无密码安全密钥登录](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys)。 Bala 可以从 Windows 10 锁屏界面中选择安全密钥凭据提供程序，并插入用于登录 Windows 的安全密钥。
+In the example below a user Bala Sandhu has already provisioned their FIDO2 security key using the steps in the previous article, [Enable passwordless security key sign in](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala can choose the security key credential provider from the Windows 10 lock screen and insert the security key to sign into Windows.
 
-![Windows 10 锁屏界面上的安全密钥登录](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
+![Security key sign in at the Windows 10 lock screen](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-sign-in-lock-screen.png)
 
-### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>管理安全密钥生物识别、PIN 或重置安全密钥
+### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Manage security key biometric, PIN, or reset security key
 
-* Windows 10 版本1903或更高版本
-   * 用户可以在其设备上打开**Windows 设置**>**帐户** > **安全密钥**
-   * 用户可以更改其 PIN、更新生物识别或重置其安全密钥
+* Windows 10 version 1903 or higher
+   * Users can open **Windows Settings** on their device > **Accounts** > **Security Key**
+   * Users can change their PIN, update biometrics, or reset their security key
 
-## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
+## <a name="troubleshooting-and-feedback"></a>Troubleshooting and feedback
 
-若要在预览此功能时共享反馈或遇到问题，请通过 Windows 反馈中心应用进行共享。
+If you would like to share feedback or encounter issues while previewing this feature, please share via the Windows Feedback Hub app.
 
-1. 启动**反馈中心**并确保已登录。
-1. 按照以下分类提交反馈：
-   1. 类别：安全和隐私
-   1. 子类别： FIDO
-1. 若要捕获日志，请使用选项：**重新创建问题**
+1. Launch **Feedback Hub** and make sure you're signed in.
+1. Submit feedback under the following categorization:
+   1. Category: Security and Privacy
+   1. Subcategory: FIDO
+1. To capture logs, use the option: **Recreate my Problem**
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="does-this-work-in-my-on-premises-environment"></a>这是在我的本地环境中吗？
+### <a name="does-this-work-in-my-on-premises-environment"></a>Does this work in my on-premises environment?
 
-此功能不适用于纯本地 Active Directory 域服务（AD DS）环境。
+This feature does not work for a pure on-premises Active Directory Domain Services (AD DS) environment.
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>我的组织需要双重身份验证来访问资源，我可以执行哪些操作来支持此要求？
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>My organization requires two factor authentication to access resources, what can I do to support this requirement?
 
-安全密钥分为多种形式。 请联系感兴趣的设备制造商，讨论如何使用 PIN 或生物识别功能来启用其设备，作为第二个因素。
+Security keys come in a variety of form factors. Please contact the device manufacturer of interest to discuss how their devices can be enabled with a PIN or biometric as a second factor.
 
-### <a name="can-admins-set-up-security-keys"></a>管理员可以设置安全密钥吗？
+### <a name="can-admins-set-up-security-keys"></a>Can admins set up security keys?
 
-我们正在努力提供此功能的公开上市（GA）功能。
+We are working on this capability for general availability (GA) of this feature.
 
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>在哪里可以找到符合条件的安全密钥？
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Where can I go to find compliant security keys?
 
-[FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys)
+[FIDO2 security keys](concept-authentication-passwordless.md#fido2-security-keys)
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>如果丢失了安全密钥，我该怎么办？
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>What do I do if I lose my security key?
 
-可以通过导航到 "安全信息" 页并删除安全密钥，从 Azure 门户中删除密钥。
+You can remove keys from the Azure portal, by navigating to the security info page and removing the security key.
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关设备注册的详细信息](../devices/overview.md)
+[Learn more about device registration](../devices/overview.md)
 
-[了解有关 Azure 多重身份验证的详细信息](../authentication/howto-mfa-getstarted.md)
+[Learn more about Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

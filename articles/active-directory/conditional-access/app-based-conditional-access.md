@@ -1,61 +1,61 @@
 ---
-title: 如何使用 Azure Active Directory 中的条件访问来要求批准的云应用访问客户端应用 |Microsoft Docs
-description: 了解如何在 Azure Active Directory 中使用条件访问来要求批准的客户端应用进行云应用访问。
+title: Approved client apps with Conditional Access - Azure Active Directory
+description: Learn how to require approved client apps for cloud app access with Conditional Access in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45eeef7d96f194e224e5b44421e73eb5ee5d9c0d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515146"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381125"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：需要经过批准的客户端应用才能使用条件访问访问 cloud app 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>How To: Require approved client apps for cloud app access with Conditional Access 
 
-员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 使用 Azure Active Directory (Azure AD) 条件性访问, 你可以将云应用的访问权限限制为可保护你的公司数据的批准的客户端应用。  
+员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 With Azure Active Directory (Azure AD) Conditional Access, you can restrict access to your cloud apps to approved client apps that can protect your corporate data.  
 
 本主题介绍了如何配置要求使用经批准的客户端应用的条件访问策略。
 
 ## <a name="overview"></a>概述
 
-使用[Azure AD 条件性访问](overview.md), 你可以微调已授权用户访问资源的方式。 例如，可以限制为只允许受信任的设备访问云应用程序。
+With [Azure AD Conditional Access](overview.md), you can fine-tune how authorized users can access your resources. 例如，可以限制为只允许受信任的设备访问云应用程序。
 
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据。 Intune 应用程序保护策略不要求使用移动设备管理 (MDM) 解决方案，即无论是否在设备管理解决方案中注册设备，都可以帮助保护公司数据。
 
-Azure Active Directory 条件访问允许你将云应用的访问权限限制为支持 Intune 应用保护策略的客户端应用。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。
+Azure Active Directory Conditional Access enables you to limit access to your cloud apps to client apps that support Intune app protection policies. 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。
 
-在条件访问术语中, 这些客户端应用被称为**批准的客户端应用**。  
+In the Conditional Access terminology, these client apps are known as **approved client apps**.  
 
 ![条件访问](./media/app-based-conditional-access/05.png)
 
 有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)。
 
-你可以结合使用基于应用的条件性访问策略与其他策略 (如[基于设备的条件访问策略](require-managed-devices.md)) 来灵活地保护个人和公司设备的数据。
+You can combine app-based Conditional Access policies with other policies such as [device-based Conditional Access policies](require-managed-devices.md) to provide flexibility in how to protect data for both personal and corporate devices.
 
 ## <a name="before-you-begin"></a>开始之前
 
 本主题假定你熟悉以下内容：
 
 - [核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)技术参考。
-- [Azure Active Directory 中条件性访问](overview.md)的基本概念。
-- 如何[配置条件性访问策略](app-based-mfa.md)。
-- [条件访问策略的迁移](best-practices.md#policy-migration)。
+- The basic concepts of [Conditional Access in Azure Active Directory](overview.md).
+- How to [configure a Conditional Access policy](app-based-mfa.md).
+- The [migration of Conditional Access policies](best-practices.md#policy-migration).
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要创建基于应用的条件性访问策略, 必须具有企业移动性 + 安全性或 Azure Active Directory premium 订阅, 并且用户必须获得 EMS 或 Azure AD 许可。 
+To create an app-based Conditional Access policy, you must have an Enterprise Mobility + Security or an Azure Active Directory premium subscription, and the users must be licensed for EMS or Azure AD. 
 
 ## <a name="exchange-online-policy"></a>Exchange Online 策略 
 
-此方案包含用于访问 Exchange Online 的基于应用的条件性访问策略。
+This scenario consists of an app-based Conditional Access policy for access to Exchange Online.
 
 ### <a name="scenario-playbook"></a>方案演练
 
@@ -70,31 +70,31 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
 - 收到系统提示，要求注册设备
 - 可访问电子邮件
 
-在访问公司数据时将激活任何 Intune 应用保护策略, 并可能提示用户重新启动应用程序、使用额外的 PIN 等。 (如果是为应用程序和平台配置的)。
+Any Intune app protection policies are activated at the time the access corporate data and may prompt the user to restart the application, use an additional PIN etc. (if configured for the application and platform).
 
 ### <a name="configuration"></a>配置 
 
-**步骤 1-为 Exchange Online 配置 Azure AD 条件性访问策略**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。
-1. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”：
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。
+1. **条件：** 对于“条件”，需配置“设备平台”和“客户端应用”：
    1. 对于“设备平台”，请选择 Android 和 iOS。
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面应用”以及“新式身份验证客户端”。
 1. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
    ![条件访问](./media/app-based-conditional-access/05.png)
 
-**步骤 2-使用 Active Sync (EAS) 为 Exchange Online 配置 Azure AD 条件性访问策略**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。
 1. **条件：** 对于“条件”，需要配置“客户端应用(预览版)”。 
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
    1. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
@@ -107,40 +107,40 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
 
 ## <a name="exchange-online-and-sharepoint-online-policy"></a>Exchange Online 和 SharePoint Online 策略
 
-此方案包含使用移动应用管理策略的条件性访问, 可通过已批准的应用访问 Exchange Online 和 SharePoint Online。
+This scenario consists of a Conditional Access with mobile app management policy for access to Exchange Online and SharePoint Online with approved apps.
 
 ### <a name="scenario-playbook"></a>方案演练
 
 此方案假定用户：
 
 - 尝试使用 SharePoint 应用进行连接并查看其公司站点
-- 尝试以 Outlook 应用凭据的相同凭据登录
+- Attempts to sign in with the same credentials as the Outlook app credentials
 - 无需重新注册并且可以获取对资源的访问权限
 
 ### <a name="configuration"></a>配置
 
-**步骤 1-为 Exchange Online 和 SharePoint Online 配置 Azure AD 条件性访问策略**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
-1. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”：
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+1. **条件：** 对于“条件”，需配置“设备平台”和“客户端应用”：
    1. 对于“设备平台”，请选择 Android 和 iOS。
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“新式身份验证客户端”。
 1. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
    ![条件访问](./media/app-based-conditional-access/05.png)
 
-**步骤 2-使用 Active Sync (EAS) 为 Exchange Online 配置 Azure AD 条件性访问策略**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 Online 
-1. **条件：** 对于“条件”，需要配置“客户端应用”：
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 联机 
+1. **条件：** 对于“条件”，无需配置“客户端应用”：
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
    1. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
@@ -154,26 +154,26 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
 
 ## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>用于访问 Exchange Online 和 SharePoint Online 的基于应用程序或相容设备策略
 
-此方案包含用于访问 Exchange Online 的基于应用或合规的设备条件访问策略。
+This scenario consists of an app-based or compliant device Conditional Access policy for access to Exchange Online.
 
 ### <a name="scenario-playbook"></a>方案演练
 
 此方案假定：
  
-- 某些用户已注册 (有或没有企业设备)
+- Some users are already enrolled (with or without corporate devices)
 - 未使用受保护应用程序向 Azure AD 登记并注册的用户需注册设备，获取资源访问权限
 - 已使用受保护应用程序注册的用户无需重新注册设备
 
 ### <a name="configuration"></a>配置
 
-**步骤 1-为 Exchange Online 和 SharePoint Online 配置 Azure AD 条件性访问策略**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
-1. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”。 
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+1. **条件：** 对于“条件”，无需配置“设备平台”和“客户端应用”。 
    1. 对于“设备平台”，请选择 Android 和 iOS。
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“新式身份验证客户端”。
 1. 对于“访问控制”，需选中以下内容：
@@ -183,14 +183,14 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
  
       ![条件访问](./media/app-based-conditional-access/11.png)
 
-**步骤 2-使用 Active Sync (EAS) 为 Exchange Online 配置 Azure AD 条件性访问策略**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 
-1. **条件：** 对于“条件”，需要配置“客户端应用”。 
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 
+1. **条件：** 对于“条件”，无需配置“客户端应用”. 
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 1. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
  
@@ -204,7 +204,7 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
 
 ## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>用于访问 Exchange Online 和 SharePoint Online 的基于应用程序和相容设备策略
 
-此方案包含用于访问 Exchange Online 的基于应用和相容设备条件访问策略。
+This scenario consists of an app-based and compliant device Conditional Access policy for access to Exchange Online.
 
 ### <a name="scenario-playbook"></a>方案演练
 
@@ -222,14 +222,14 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
 
 ### <a name="configuration"></a>配置
 
-**步骤 1-为 Exchange Online 和 SharePoint Online 配置 Azure AD 条件性访问策略**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
-1. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”。 
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+1. **条件：** 对于“条件”，无需配置“设备平台”和“客户端应用”。 
    1. 对于“设备平台”，请选择 Android 和 iOS。
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面应用”以及“新式身份验证客户端”。
 1. 对于“访问控制”，需选中以下内容：
@@ -239,13 +239,13 @@ Azure Active Directory 条件访问允许你将云应用的访问权限限制为
  
       ![条件访问](./media/app-based-conditional-access/13.png)
 
-**步骤 2-使用 Active Sync (EAS) 为 Exchange Online 配置 Azure AD 条件性访问策略**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-对于此步骤中的条件性访问策略, 需要配置以下组件:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. 条件访问策略的**名称**。
-1. **用户和组**：每个条件访问策略都必须至少选择一个用户或组。
-1. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 
 1. **条件：** 对于“条件”，需要配置“客户端应用(预览版)”。 
    1. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 

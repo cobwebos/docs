@@ -1,92 +1,92 @@
 ---
-title: 条件性访问基线保护策略-Azure Active Directory
-description: 用于保护组织免受常见攻击的基准条件性访问策略
+title: Conditional Access baseline policies - Azure Active Directory
+description: Baseline Conditional Access policies to protect organizations from common attacks
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: c73b806d227fbe6e1f2c1d5a92d75a9827d69ed8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430334"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380644"
 ---
-# <a name="what-are-baseline-policies"></a>什么是基准策略？
+# <a name="what-are-baseline-policies"></a>What are baseline policies?
 
-基准策略是一组预定义策略，可帮助组织防范多种常见攻击。 这些常见攻击包括密码喷涂、重播和网络钓鱼。 所有版本的 Azure AD 都提供基准策略。 Microsoft 将这些基准保护策略提供给所有人，因为基于身份的攻击已经在过去几年的时间上升。 这四个策略的目标是确保所有组织都启用了基线级别 "安全"，无需额外付费。  
+Baseline policies are a set of predefined policies that help protect organizations against many common attacks. These common attacks can include password spray, replay, and phishing. Baseline policies are available in all editions of Azure AD. Microsoft is making these baseline protection policies available to everyone because identity-based attacks have been on the rise over the last few years. The goal of these four policies is to ensure that all organizations have a baseline level of security enabled at no extra cost.  
 
-管理自定义条件访问策略需要 Azure AD Premium 许可证。
+Managing customized Conditional Access policies requires an Azure AD Premium license.
 
 ## <a name="baseline-policies"></a>基线策略
 
-![Azure 门户中的条件性访问基线策略](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Conditional Access baseline policies in the Azure portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-有四个基准策略：
+There are four baseline policies:
 
-* 要求对管理员进行 MFA （预览）
-* 最终用户保护（预览版）
-* 阻止旧身份验证（预览）
-* 需要 MFA 进行服务管理（预览版）
+* Require MFA for admins (preview)
+* End user protection (preview)
+* Block legacy authentication (preview)
+* Require MFA for service management (preview)
 
-这四个策略都将影响旧版身份验证流，如 POP、IMAP 和旧版 Office 桌面客户端。
+All four of these policies will impact legacy authentication flows like POP, IMAP, and older Office desktop clients.
 
-### <a name="require-mfa-for-admins-preview"></a>要求对管理员进行 MFA （预览）
+### <a name="require-mfa-for-admins-preview"></a>Require MFA for admins (preview)
 
-由于管理员帐户具有的强大功能和访问权限，你应特别小心对待它们。 改善特权帐户保护的一种常见方法是在使用登录时需要更强大的帐户验证形式。 在 Azure Active Directory 中，你可以通过要求管理员注册并使用 Azure 多重身份验证来获取更强的帐户验证。
+Due to the power and access that administrator accounts have, you should treat them with special care. One common method to improve the protection of privileged accounts is to require a stronger form of account verification when they are used to sign in. In Azure Active Directory, you can get a stronger account verification by requiring administrators to register for and use Azure Multi-Factor Authentication.
 
-"需要对管理员的 MFA （预览版）" 是需要对以下目录角色进行多重身份验证（MFA）的基准策略，被认为是最特权的 Azure AD 角色：
+Require MFA for admins (preview) is a baseline policy that requires multi-factor authentication (MFA) for the following directory roles, considered to be the most privileged Azure AD roles:
 
 * 全局管理员
 * SharePoint 管理员
 * Exchange 管理员
 * 条件访问管理员
 * 安全管理员
-* 支持人员管理员/密码管理员
+* Helpdesk administrator / Password administrator
 * 计费管理员
 * 用户管理员
 
-如果你的组织在脚本或代码中使用这些帐户，请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。
+If your organization has these accounts in use in scripts or code, consider replacing them with [managed identities](../managed-identities-azure-resources/overview.md).
 
-### <a name="end-user-protection-preview"></a>最终用户保护（预览版）
+### <a name="end-user-protection-preview"></a>End user protection (preview)
 
-高特权管理员并不是攻击者的唯一目标。 不良的执行组件往往面向普通用户。 获取访问权限后，这类不良的执行组件可以代表原始帐户持有者请求对特权信息的访问权限，也可以下载整个目录并对整个组织执行网络钓鱼攻击。 提高所有用户保护的一种常见方法是在检测到风险登录时需要更强大的帐户验证形式。
+High privileged administrators aren’t the only ones targeted in attacks. Bad actors tend to target normal users. After gaining access, these bad actors can request access to privileged information on behalf of the original account holder or download the entire directory and perform a phishing attack on your whole organization. One common method to improve the protection for all users is to require a stronger form of account verification when a risky sign-in is detected.
 
-**最终用户保护（预览版）** 是保护目录中所有用户的基准策略。 如果启用此策略，则需要所有用户在14天内注册 Azure 多重身份验证。 注册后，仅在有风险的登录尝试期间，系统才会提示用户进行 MFA。 在密码重置和风险消除之前，会阻止泄露的用户帐户。 
+**End user protection (preview)** is a baseline policy that protects all users in a directory. Enabling this policy requires all users to register for Azure Multi-Factor Authentication within 14 days. Once registered, users will be prompted for MFA only during risky sign-in attempts. Compromised user accounts are blocked until password reset and risk dismissal. 
 
 [!NOTE]
-之前标记为风险的任何用户都将被阻止，直到重置密码，并在策略激活时消除。
+Any users previously flagged for risk are blocked until password reset and risk dismissal upon policy activation.
 
-### <a name="block-legacy-authentication-preview"></a>阻止旧身份验证（预览）
+### <a name="block-legacy-authentication-preview"></a>Block legacy authentication (preview)
 
-旧的身份验证协议（例如： IMAP、SMTP、POP3）通常由较旧的邮件客户端用来进行身份验证。 旧版协议不支持多重身份验证。 即使你具有需要对目录进行多重身份验证的策略，糟糕的执行组件也可以使用其中一种旧协议进行身份验证，并绕过多重身份验证。
+Legacy authentication protocols (ex: IMAP, SMTP, POP3) are protocols normally used by older mail clients to authenticate. Legacy protocols do not support multi-factor authentication. Even if you have a policy requiring multi-factor authentication for your directory, a bad actor can authenticate using one of these legacy protocols and bypass multi-factor authentication.
 
-保护你的帐户不受传统协议发出的恶意身份验证请求的最佳方式是阻止它们。
+The best way to protect your account from malicious authentication requests made by legacy protocols is to block them.
 
-"**阻止旧身份验证（预览版）** " 基准策略阻止使用旧版协议发出的身份验证请求。 必须使用新式身份验证才能成功登录所有用户。 与其他基准策略结合使用时，将阻止来自旧协议的请求。 此外，在需要时，所有用户都需要进行 MFA。 此策略不会阻止 Exchange ActiveSync。
+The **Block legacy authentication (preview)** baseline policy blocks authentication requests that are made using legacy protocols. Modern authentication must be used to successfully sign in for all users. Used in conjunction with the other baseline policies, requests coming from legacy protocols will be blocked. In addition, all users will be required to MFA whenever required. This policy does not block Exchange ActiveSync.
 
-### <a name="require-mfa-for-service-management-preview"></a>需要 MFA 进行服务管理（预览版）
+### <a name="require-mfa-for-service-management-preview"></a>Require MFA for service management (preview)
 
-组织使用各种 Azure 服务，并通过 Azure 资源管理器工具（如下所示）对其进行管理：
+Organizations use a variety of Azure services and manage them from Azure Resource Manager based tools like:
 
 * Azure 门户
 * Azure PowerShell
 * Azure CLI
 
-使用这些工具中的任何一种执行资源管理是一种高度特权的操作。 这些工具可能会改变订阅范围的配置，例如服务设置和订阅计费。
+Using any of these tools to perform resource management is a highly privileged action. These tools can alter subscription-wide configurations, such as service settings and subscription billing.
 
-若要保护特权操作，此操作需要针对任何用户访问 Azure 门户、Azure PowerShell 或 Azure CLI 的**服务管理（预览版）** 策略进行多重身份验证。
+To protect privileged actions, this **Require MFA for service management (preview)** policy will require multi-factor authentication for any user accessing Azure portal, Azure PowerShell, or Azure CLI.
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅：
 
-* [常见的条件访问策略](concept-conditional-access-policy-common.md)
+* [Common Conditional Access policies](concept-conditional-access-policy-common.md)
 * [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md)
 * [什么是 Azure Active Directory 中的条件访问？](overview.md)

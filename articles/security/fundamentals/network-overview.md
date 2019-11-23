@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 746994585dfa968a8d8d982908ad424b08c06066
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726920"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384198"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -44,7 +44,7 @@ ms.locfileid: "68726920"
 
 Azure 要求将虚拟机连接到 Azure 虚拟网络。 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个虚拟网络与其他所有虚拟网络相互隔离。 这可帮助确保其他 Azure 客户无法访问部署中的流量。
 
-了解详细信息:
+了解更多：
 
 * [虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 
@@ -75,7 +75,7 @@ Azure 支持多种类型的网络访问控制，例如：
 
 NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
-了解详细信息:
+了解更多：
 
 * [网络安全组](../../virtual-network/security-overview.md)
 
@@ -83,7 +83,7 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 [Azure 安全中心](../../security-center/security-center-intro.md)可以管理 VM 上的 NSG，并将 VM 的访问权限锁定到具有相应基于角色的访问控制 ([RBAC](/azure/role-based-access-control/overview)) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
 
-了解详细信息:
+了解更多：
 
 * [Azure 安全中心实时访问](../../security-center/security-center-just-in-time.md)
 
@@ -91,9 +91,9 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 服务终结点是对流量实施控制的另一种方式。 可以限制为只能在 VNet 中通过直接连接来与支持的服务通信。 从 VNet 发往指定 Azure 服务的流量保留在 Microsoft Azure 主干网络中。  
 
-了解详细信息:
+了解更多：
 
-* [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md#securing-azure-services-to-virtual-networks)
+* [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
 
 ### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
 
@@ -109,7 +109,7 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 
 相反，你想要使用强制隧道来防止这种情况。 启用强制隧道后，会强制与 Internet 的所有连接通过本地网关。 可以利用 UDR 配置强制隧道。
 
-了解详细信息:
+了解更多：
 
 * [什么是用户定义的路由和 IP 转发](../../virtual-network/virtual-networks-udr-overview.md)
 
@@ -139,7 +139,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 * 应用程序 FQDN 筛选规则
 * 网络流量筛选规则
 
-了解详细信息:
+了解更多：
 
 * [Azure 防火墙概述](/azure/firewall/overview)
 
@@ -158,7 +158,7 @@ Azure 网络支持以下安全远程访问方案：
 
 你可能想要让各个开发者或操作人员在 Azure 中管理虚拟机和服务。 例如，假设需要访问虚拟网络上的虚拟机。 但你的安全策略不允许 RDP 或 SSH 远程访问单独的虚拟机。 在这种情况下，可以使用[点到站点 VPN](../../vpn-gateway/point-to-site-about.md) 连接。
 
-点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （假设用户可以进行身份验证并获得授权。）点到站点 VPN 支持以下项：
+点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 (This assumes that the user can authenticate and is authorized.) Point-to-site VPN supports:
 
 * 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
@@ -166,7 +166,7 @@ Azure 网络支持以下安全远程访问方案：
 
 * [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
-了解详细信息:
+了解更多：
 
 * [使用 PowerShell 配置与虚拟网络的点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -176,7 +176,7 @@ Azure 网络支持以下安全远程访问方案：
 
 完成此操作的一种方法是使用 [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn)（站点到站点 VPN）。 站点到站点 VPN 和点到站点 VPN 的区别在于后者将单个设备连接到虚拟网络。 站点到站点 VPN 将整个网络（如本地网络）连接到虚拟网络。 连接到 Azure 虚拟网络的站点到站点 VPN 使用高度安全的 IPsec 隧道模式 VPN 协议。
 
-了解详细信息:
+了解更多：
 
 * [使用 Azure 门户创建具有站点到站点 VPN 连接的资源管理器 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [关于 VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
@@ -190,7 +190,7 @@ Azure 网络支持以下安全远程访问方案：
 
 对于其跨界连接需要最高级别的安全性和可用性的组织通常使用专用的 WAN 链路连接到远程站点。 凭借 Azure，可使用专用的 WAN 链接将本地网络连接到虚拟网络。 Azure ExpressRoute、Express Route Direct 和 Express Route Global Reach 实现了此功能。
 
-了解详细信息:
+了解更多：
 
 * [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)
 * [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
@@ -206,7 +206,7 @@ Azure 网络支持以下安全远程访问方案：
 
 此方法的优点是通过 Azure 网络结构建立 VPN 连接，而不是通过 Internet 进行连接。 与通过 Internet 连接的站点到站点 VPN 相比，这提供了额外的安全层。
 
-了解详细信息:
+了解更多：
 
 * [使用 Azure 资源管理器和 PowerShell 配置 VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
@@ -235,7 +235,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 * SSL 卸载。 当客户端与负载均衡器连接时，会话使用 HTTPS (SSL) 协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为“SSL 卸载”，因为负载均衡器后面的 Web 服务器不会遇到涉及加密的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
 * 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 与基于 IP 地址做出负载均衡决策的解决方案相比，这提供了更多的灵活性。
 
-了解详细信息:
+了解更多：
 
 * [应用程序网关概述](/azure/application-gateway/application-gateway-introduction)
 
@@ -250,7 +250,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 * 可用于面向 Internet（外部负载均衡）和面向非 Internet（内部负载均衡）的应用程序和虚拟机。
 * 终结点监视，可用于确定负载均衡器后面的任何服务是否已变得不可用。
 
-了解详细信息:
+了解更多：
 
 * [多个虚拟机或服务之间的面向 Internet 的负载均衡器](/azure/load-balancer/load-balancer-internet-overview)
 * [内部负载均衡器概述](/azure/load-balancer/load-balancer-internal-overview)
@@ -263,7 +263,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 在 Azure 中，可以使用 Azure 流量管理器获得全局负载均衡的优点。
 
-了解详细信息:
+了解更多：
 
 * [什么是流量管理器？](../../traffic-manager/traffic-manager-overview.md)
 
@@ -281,7 +281,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 * 虚拟网络 DNS 服务器。 创建新的虚拟网络时，会为你创建 DNS 服务器。 此 DNS 服务器可以解析位于该虚拟网络上的计算机的名称。 此 DNS 服务器是不可配置的，而且由 Azure 结构管理器进行管理，从而帮助对名称解析解决方案进行安全保护。
 * 自带 DNS 服务器。 可选择将自己选择的 DNS 服务器放置在虚拟网络上。 此 DNS 服务器可以是 Active Directory 集成的 DNS 服务器或由 Azure 合作伙伴提供的专用 DNS 服务器解决方案，两者均可从 Azure 市场中获得。
 
-了解详细信息:
+了解更多：
 
 * [虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 * [管理虚拟网络使用的 DNS 服务器](../../virtual-network/manage-virtual-network.md#change-dns-servers)
@@ -297,7 +297,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS 解决方案。 此外部名称解析解决方案利用全球 Azure DNS 基础结构。 由此可使用与其他 Azure 服务相同的凭据、API、工具和计费在 Azure 中托管域。 作为 Azure 的一部分，它还继承了内置在平台中的强大的安全控件。
 
-了解详细信息:
+了解更多：
 
 * [Azure DNS 概述](../../dns/dns-overview.md)
 * 使用 [Azure DNS 专用区域](../../dns/private-dns-overview.md)可为 Azure 资源配置专用的 DNS 名称而不是自动分配的名称，且无需添加自定义 DNS 解析。
@@ -308,7 +308,7 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 
 可通过多种不同的方式设计外围网络。 部署外围网络的决策以及决定使用哪种类型的外围网络取决于你的网络安全需求。
 
-了解详细信息:
+了解更多：
 
 * [Microsoft 云服务和网络安全](network-best-practices.md)
 
@@ -317,20 +317,20 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的一些最大的可用性和安全性问题。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
 Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。 DDoS 保护标准功能包括：
 
-* **本机平台集成：** 以本机方式集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
-* **成套保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
+* **本机平台集成：** 本机集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
+* **统包保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 * **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 * **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
 * **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
-* **自适应优化：** 智能流量分析了解不同时段的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+* **Adaptive tuning:** Intelligent traffic profiling learns your application's traffic over time, and selects and updates the profile that is the most suitable for your service. 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 * **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 * **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
-* **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件, 如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
+* **Attack alerting:** Alerts can be configured at the start and stop of an attack, and over the attack's duration, using built-in attack metrics. Alerts integrate into your operational software like Microsoft Azure Monitor logs, Splunk, Azure Storage, Email, and the Azure portal.
 * **成本保证：** 记录的 DDoS 攻击的数据传输和应用程序横向扩展服务信用度。
 * **DDoS 快速响应** DDoS 防护标准版客户可以在攻击正在进行时联系“快速响应”团队。 DRR 可以帮助进行攻击调查，在攻击发生期间定制缓解措施以及进行攻击后分析。
 
 
-了解详细信息:
+了解更多：
 
 * [DDOS 防护概述](../../virtual-network/ddos-protection-overview.md)
 
@@ -340,7 +340,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防
 
 Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
 
-了解详细信息:
+了解更多：
 
 * 若要了解有关 Azure Front Door 的完整功能的详细信息，可以查看 [Azure Front Door 概述](../../frontdoor/front-door-overview.md)
 
@@ -348,7 +348,7 @@ Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进�
 
 Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全球 Azure 区域内以最佳方式向服务分发流量，同时提供高可用性和响应性。 流量管理器根据流量路由方法和终结点的运行状况，使用 DNS 将客户端请求定向到最合适的服务终结点。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器对终结点进行监视，并且不会将流量定向到不可用的任何终结点。
 
-了解详细信息:
+了解更多：
 
 * [Azure 流量管理器概述](../../traffic-manager/traffic-manager-overview.md)
 
@@ -379,7 +379,7 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 * 监视网络安全配置的状态。
 * 在终结点和网络级别发出基于网络的威胁警报。
 
-了解详细信息:
+了解更多：
 
 * [Azure 安全中心简介](../../security-center/security-center-intro.md)
 
@@ -387,7 +387,7 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具是由网络虚拟设备合作伙伴提供的。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。
 
-了解详细信息:
+了解更多：
 
 * [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
 
@@ -400,6 +400,6 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 
 还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) 来查看和分析这些日志。
-了解详细信息:
+了解更多：
 
-* [网络安全组 (Nsg) 的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [Azure Monitor logs for Network Security Groups (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md)
