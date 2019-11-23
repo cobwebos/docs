@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: 运行状况监视配置
               href: insights/container-insights-health-monitors-config.md
-            - name: 禁用监视
+            - name: 禁止监视 AKS
               href: insights/container-insights-optout.md
+            - name: 禁止监视 Red Hat OpenShift
+              href: insights/container-insights-optout-openshift.md
             - name: 故障排除
               href: insights/container-insights-troubleshoot.md
         - name: Docker 和 Windows 容器监视

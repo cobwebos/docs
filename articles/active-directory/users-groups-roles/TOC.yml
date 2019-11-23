@@ -86,6 +86,8 @@
           href: groups-members-owners-search.md
         - name: 创建组（Azure 门户）
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 分配敏感度标签（预览版）
+          href: groups-assign-sensitivity-labels.md
         - name: 管理组 - 用于 Graph 的 PowerShell (v2)
           href: groups-settings-v2-cmdlets.md
         - name: 管理组 - PowerShell MSOnline

@@ -59,6 +59,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 支持和帮助选项
+      href: cognitive-services-support-options.md
     - name: 服务级别协议 (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: 视频
