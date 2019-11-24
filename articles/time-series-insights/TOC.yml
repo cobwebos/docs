@@ -17,10 +17,6 @@
           href: time-series-insights-update-quickstart.md
 - name: 教程
   items:
-    - name: 时序见解 JavaScript 客户端库
-      href: tutorial-explore-js-client-lib.md
-    - name: 创建单页 Web 应用
-      href: tutorial-create-tsi-sample-spa.md
     - name: Azure 时序见解 GA
       items:
         - name: 创建时序见解环境
