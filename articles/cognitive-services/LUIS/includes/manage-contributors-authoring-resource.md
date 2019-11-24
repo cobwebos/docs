@@ -8,22 +8,22 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 4dd638d825c73d901de0c9b909307bd6995511a2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: a255a68eab6936de18d238b40f596076261049c1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259713"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451539"
 ---
-如果你的应用需要由其他人创作，则需要在 Azure 门户的创作资源中添加关联的电子邮件地址。
+If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
 
-如果你是**Azure 订阅的所有者或管理员**，则可将参与者添加到资源。 
+If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
 
-如果你**不是 azure 订阅的所有者或管理员**，你的 azure 帐户需要具有`Microsoft.Authorization/roleAssignments/write`权限。
+If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
 
-如果在执行此角色分配时遇到问题，请查看： 
+If you have trouble with this role assignment, review: 
 
-* [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)
- * [Azure 访问控制故障排除](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
+ * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
