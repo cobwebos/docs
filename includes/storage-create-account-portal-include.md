@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d34f18b688be2afd7febf1f948b3093696ee9118
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172622"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451468"
 ---
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
-1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“存储帐户”  。 开始键入时，会根据输入筛选该列表。 选择“存储帐户”  。
+1. 在 Azure 门户菜单中，选择“所有服务”  。 在资源列表中，键入“存储帐户”  。 开始键入时，会根据输入筛选该列表。 选择“存储帐户”  。
 1. 在显示的“存储帐户”窗口中，选择“添加”。  
 1. 选择要在其中创建存储帐户的订阅。
 1. 在“资源组”  字段下，选择“新建”  。 输入新资源组的名称，如下图中所示。
 
-    ![显示如何在门户中创建资源组的屏幕截图](./media/storage-create-account-portal-include/create-resource-group.png)
+    ![显示如何在门户中创建资源组的屏幕截图](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
 
 1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 1. 选择存储帐户的位置或使用默认位置。
