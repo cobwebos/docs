@@ -1,25 +1,20 @@
 ---
-title: Azure 容器注册表 - 角色和权限
+title: RBAC roles and permissions
 description: 使用 Azure 基于角色的访问控制 (RBAC) 以及标识和访问管理 (IAM)，提供对 Azure 容器注册表中资源的细粒度访问权限。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: danlep
-ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793989"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456237"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
 Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 Azure 容器注册表所需的不同级别的权限。 使用 Azure [基于角色的访问控制](../role-based-access-control/index.yml) (RBAC)，为需要与注册表交互的用户或服务主体分配特定的权限。
 
-| 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除图像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
+| 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [Delete image data](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 所有者 | X | X | X | X | X | X |  |  
 | 参与者 | X | X | X |  X | X | X |  |  
@@ -63,7 +58,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="delete-image-data"></a>删除映像数据
 
-删除注册表的[容器映像](container-registry-delete.md)，或从注册表中删除其他[支持的项目](container-registry-image-formats.md)，例如 Helm 图表。
+The ability to [delete container images](container-registry-delete.md), or delete other [supported artifacts](container-registry-image-formats.md) such as Helm charts, from a registry.
 
 ## <a name="change-policies"></a>更改策略
 

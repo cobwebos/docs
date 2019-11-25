@@ -1,63 +1,61 @@
 ---
-title: 对 Azure 容器注册表中的映像进行标记和版本控制
-description: 在将映像推送到 Azure 容器注册表并从 Azure 容器注册表中提取映像时对 Docker 容器映像进行标记和版本控制的最佳做法
-services: container-registry
+title: Image tag best practices
+description: Best practices for tagging and versioning Docker container images when pushing images to and pulling images from an Azure container registry
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931558"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454993"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>有关对容器映像进行标记和版本控制的建议
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Recommendations for tagging and versioning container images
 
-将容器映像推送到容器注册表，然后部署这些映像时，需要为映像标记和版本控制制定一个策略。 本文介绍两种方法，其中的每种方法在容器生命周期内都适用：
+When pushing deploying container images to a container registry and then deploying them, you need a strategy for image tagging and versioning. This article discusses two approaches and where each fits during the container lifecycle:
 
-* **稳定标记** - 可重复使用的标记，例如，这些标记可指示类似于 *mycontainerimage:1.0* 的主要版本或次要版本。
-* **唯一标记** - 对要推送到注册表的每个映像使用不同标记，例如 *mycontainerimage:abc123*。
+* **Stable tags** - Tags that you reuse, for example, to indicate a major or minor version such as *mycontainerimage:1.0*.
+* **Unique tags** - A different tag for each image you push to a registry, such as *mycontainerimage:abc123*.
 
-## <a name="stable-tags"></a>稳定标记
+## <a name="stable-tags"></a>Stable tags
 
-**建议**：使用稳定标记来维护容器生成的**基本映像**。 请避免在部署中使用稳定标记，因为这些标记会持续接收更新，并可能导致生产环境出现不一致情况。
+**Recommendation**: Use stable tags to maintain **base images** for your container builds. Avoid deployments with stable tags, because those tags continue to receive updates and can introduce inconsistencies in production environments.
 
-稳定标记意味着开发人员或生成系统可以持续提取特定的标记，从而持续获取更新。 稳定不表示内容已冻结。 相反，“稳定”表示该映像应该根据该版本的意图保持稳定。 为保持 "稳定"，可能会对应用安全修补程序或框架更新提供服务。
+*Stable tags* mean a developer, or a build system, can continue to pull a specific tag, which continues to get updates. Stable doesn’t mean the contents are frozen. Rather, stable implies the image should be stable for the intent of that version. To stay “stable”, it might be serviced to apply security patches or framework updates.
 
 ### <a name="example"></a>示例
 
-某个框架团队交付了版本 1.0。 他们知道他们会提供更新，其中包括次更新。 为了支持给定主要版本和次要版本的稳定标记，它们创建了两组稳定标记。
+A framework team ships version 1.0. They know they’ll ship updates, including minor updates. To support stable tags for a given major and minor version, they have two sets of stable tags.
 
-* `:1` –主要版本的稳定标记。 `1` 表示 "最新" 或 "最新" 1. * 版本。
-* `:1.0` - 版本1.0 的稳定标记，可让开发人员绑定到 1.0 的更新，而不会在 1.1 发布时前滚到 1.1。
+* `:1` – a stable tag for the major version. `1` represents the “newest” or “latest” 1.* version.
+* `:1.0`- a stable tag for version 1.0, allowing a developer to bind to updates of 1.0, and not be rolled forward to 1.1 when it is released.
 
-该团队还使用了 `:latest` 标记，无论当前主要版本是什么，该标记都会指向最新的稳定标记。
+The team also uses the `:latest` tag, which points to the latest stable tag, no matter what the current major version is.
 
-有基础映像更新可用，或者发布了框架的任何类型的维护版本时，使用稳定标记的映像将更新到最新摘要（代表该版本的最新稳定版本）。
+When base image updates are available, or any type of servicing release of the framework, images with the stable tags are updated to the newest digest that represents the most current stable release of that version.
 
-在这种情况下，会继续维护主要和次要标记。 在基础映像方案中，这使得映像所有者可以提供经过维护的映像。
+In this case, both the major and minor tags are continually being serviced. From a base image scenario, this allows the image owner to provide serviced images.
 
-## <a name="unique-tags"></a>唯一标记
+## <a name="unique-tags"></a>Unique tags
 
-**建议**：对**部署**使用唯一标记，尤其是在可在多个节点上缩放的环境中。 你可能想要特意部署一致的组件版本。 如果你的容器重启或 orchestrator 扩展了多个实例，则你的主机不会意外地提取较新的版本，这与其他节点不一致。
+**Recommendation**: Use unique tags for **deployments**, especially in an environment that could scale on multiple nodes. You likely want deliberate deployments of a consistent version of components. If your container restarts or an orchestrator scales out more instances, your hosts won’t accidentally pull a newer version, inconsistent with the other nodes.
 
-唯一标记仅仅表示推送到注册表的每个映像具有唯一的标记。 不会重复使用这些标记。 可以遵循多种模式来生成唯一标记，其中包括：
+Unique tagging simply means that every image pushed to a registry has a unique tag. Tags are not reused. There are several patterns you can follow to generate unique tags, including:
 
-* **日期时间戳** - 此方法相当常见，因为使用它可以清楚地判断映像的生成时间。 但是，如何将它关联到生成系统呢？ 是否需要查找同时完成的生成？ 处于哪个时区？ 所有生成系统是否已校准为 UTC 时间？
-* **Git 提交**–此方法可用于开始支持基本映像更新。 如果基础映像更新已发生，则会使用与上一生成相同的 Git 提交来启动生成系统。 但是，基础映像包含新内容。 Git 提交通常提供半稳定标记。
-* **清单摘要** - 推送到容器注册表的每个容器映像关联到某个清单，该清单由唯一的 SHA-256 哈希或摘要标识。 尽管摘要是唯一的，但它很长且难于阅读，并且与生成环境不相关联。
-* **生成 ID** - 这可能是最佳选项，因为此 ID 可能是增量式的，使你能够关联到特定的生成来查找所有项目和日志。 但与清单摘要一样，用户很难阅读它。
+* **Date-time stamp** - This approach is fairly common, since you can clearly tell when the image was built. But, how to correlate it back to your build system? Do you have to find the build that was completed at the same time? What time zone are you in? Are all your build systems calibrated to UTC?
+* **Git commit**  – This approach works until you start supporting base image updates. If a base image update happens, your build system  kicks off with the same Git commit as the previous build. However, the base image has new content. In general, a Git commit provides a *semi*-stable tag.
+* **Manifest digest** - Each container image pushed to a container registry is associated with a manifest, identified by a unique SHA-256 hash, or digest. While unique, the digest is long, difficult to read, and uncorrelated with your build environment.
+* **Build ID** - This option may be best since it's likely incremental, and it allows you to correlate back to the specific build to find all the artifacts and logs. However, like a manifest digest, it might be difficult for a human to read.
 
-  如果组织使用多个生成系统，此选项的一种变通方式是使用生成系统名称作为标记的前缀：`<build-system>-<build-id>`。 例如，你可以将 API 团队的 Jenkins 生成系统和 web 团队的 Azure Pipelines 生成系统中的生成区分开来。
+  If your organization has several build systems, prefixing the tag with the build system name is a variation on this option: `<build-system>-<build-id>`. For example, you could differentiate builds from the API team’s Jenkins build system and the web team's Azure Pipelines build system.
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本文中的概念的详细讨论，请参阅博客文章[Docker 标记：标记和版本控制 docker 映像的最佳实践](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)。
+For a more detailed discussion of the concepts in this article, see the blog post [Docker Tagging: Best practices for tagging and versioning docker images](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-若要最大程度地提高 Azure 容器注册表的性能并以经济高效的方式使用它，请参阅[有关 Azure 容器注册表的最佳做法](container-registry-best-practices.md)。
+To help maximize the performance and cost-effective use of your Azure container registry, see [Best practices for Azure Container Registry](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

@@ -1,35 +1,30 @@
 ---
-title: Azure 门户中的“Azure 容器注册表”存储库
-description: 使用 "Azure 门户查看 Azure 容器注册表存储库，该存储库承载 Docker 容器映像和其他受支持的项目。
-services: container-registry
-author: cristy
-manager: gwallace
-ms.service: container-registry
+title: View repositories in portal
+description: Use the Azure portal to view Azure Container Registry repositories, which host Docker container images and other supported artifacts.
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 793d8e82ca78c6055a6e956d4f41b7991d5fd700
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931534"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456293"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库
 
 使用 Azure 容器注册表可将 Docker 容器映像存储在存储库中。 通过将映像存储在存储库中，可以将映像组（或映像版本）存储在隔离环境中。 将映像推送到注册表时，可以指定这些存储库，并可在 Azure 门户中查看其内容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **容器注册表**：在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **DOCKER CLI**：在本地计算机上安装[docker][docker-install] ，这为你提供 docker 命令行界面。
+* **Docker CLI**: Install [Docker][docker-install] on your local machine, which provides you with the Docker command-line interface.
 * **容器映像**：将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
 
 ## <a name="view-repositories-in-azure-portal"></a>在 Azure 门户中查看存储库
 
 在 Azure 门户中可以查看承载映像以及映像标记的存储库的列表。
 
-如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的步骤操作（且随后未删除映像），则应在容器注册表中有一个 Nginx 映像。 该文中的说明指定使用命名空间（`/samples/nginx` 中的“samples”）标记映像。 该文中指定的 [docker push][docker-push] 命令（作为刷新程序）如下所示：
+如果已按照[推送和拉取映像](container-registry-get-started-docker-cli.md)中的步骤操作（且随后未删除映像），则应在容器注册表中有一个 Nginx 映像。 该文中的说明指定使用命名空间（`/samples/nginx` 中的“samples”）标记映像。 As a refresher, the [docker push][docker-push] command specified in that article was:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx

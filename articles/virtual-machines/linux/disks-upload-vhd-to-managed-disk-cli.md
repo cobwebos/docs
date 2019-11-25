@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 将 vhd 上传到 Azure
-description: 了解如何使用 Azure CLI 将 vhd 上传到 Azure 托管磁盘并跨区域复制托管磁盘。
+title: Upload a vhd to Azure using Azure CLI
+description: Learn how to upload a vhd to an Azure managed disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,59 +9,59 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803987"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457608"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 将 vhd 上传到 Azure
+# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Upload a vhd to Azure using Azure CLI
 
-本文介绍如何将 vhd 从本地计算机上传到 Azure 托管磁盘。 以前，你必须遵循更多涉及的过程，将数据暂存到存储帐户，并管理该存储帐户。 现在，你不再需要管理存储帐户，也不需要暂存其中的数据来上载 vhd。 而是创建一个空的托管磁盘，并将 vhd 直接上传到该磁盘。 这简化了将本地 Vm 上传到 Azure 的功能，使你能够将 vhd 最多上传到 32 TiB，并将其直接上传到大型托管磁盘。
+This article explains how to upload a vhd from your local machine to an Azure managed disk. Previously, you had to follow a more involved process that included staging your data in a storage account, and managing that storage account. Now, you no longer need to manage a storage account, or stage data in it to upload a vhd. Instead, you create an empty managed disk, and upload a vhd directly to it. This simplifies uploading on-premises VMs to Azure and enables you to upload a vhd up to 32 TiB directly into a large managed disk.
 
-如果你正在为 Azure 中的 IaaS Vm 提供备份解决方案，我们建议你使用直接上传将客户备份还原到托管磁盘。 如果要从 Azure 中的外部计算机上传 VHD，速度将取决于你的本地带宽。 如果使用的是 Azure VM，则带宽将与标准 Hdd 相同。
+If you are providing a backup solution for IaaS VMs in Azure, we recommend you use direct upload to restore customer backups to managed disks. If you are uploading a VHD from a machine external to Azure, speeds will depend on your local bandwidth. If you are using an Azure VM, then your bandwidth will be the same as standard HDDs.
 
-目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 它尚不支持超 Ssd。
+Currently, direct upload is supported for standard HDD, standard SSD, and premium SSD managed disks. It is not yet supported for ultra SSDs.
 
 ## <a name="prerequisites"></a>必备组件
 
-- 下载最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
+- Download the latest [version of AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [安装 Azure CLI](/cli/azure/install-azure-cli)。
-- Vhd 文件，本地存储
-- 如果要从本地上载 vhd：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的 vhd，本地存储。
-- 如果要执行复制操作，请使用 Azure 中的托管磁盘。
+- A vhd file, stored locally
+- If you intend to upload a vhd from on-premises: A vhd that [has been prepared for Azure](../windows/prepare-for-upload-vhd-image.md), stored locally.
+- Or, a managed disk in Azure, if you intend to perform a copy action.
 
-## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
+## <a name="create-an-empty-managed-disk"></a>Create an empty managed disk
 
-若要将 vhd 上传到 Azure，需要创建一个为此上传过程配置的空托管磁盘。 创建前，还应了解有关这些磁盘的一些其他信息。
+To upload your vhd to Azure, you'll need to create an empty managed disk that is configured for this upload process. Before you create one, there's some additional information you should know about these disks.
 
-这种托管磁盘具有两种独特的状态：
+This kind of managed disk has two unique states:
 
-- ReadToUpload，这意味着磁盘已准备好接收上载，但未生成[安全访问签名](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)（SAS）。
-- ActiveUpload，这意味着磁盘已准备好接收上传并且已生成 SAS。
+- ReadToUpload, which means the disk is ready to receive an upload but, no [secure access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) has been generated.
+- ActiveUpload, which means that the disk is ready to receive an upload and the SAS has been generated.
 
-无论在哪种状态中，托管磁盘都将按[标准 HDD 定价](https://azure.microsoft.com/pricing/details/managed-disks/)计费，而不考虑实际的磁盘类型。 例如，P10 将按 S10 计费。 在对托管磁盘调用 `revoke-access` 之前，此设置为 true，这是将磁盘附加到虚拟机所必需的。
+While in either of these states, the managed disk will be billed at [standard HDD pricing](https://azure.microsoft.com/pricing/details/managed-disks/), regardless of the actual type of disk. For example, a P10 will be billed as an S10. This will be true until `revoke-access` is called on the managed disk, which is required in order to attach the disk to a VM.
 
-在创建用于上传的空标准 HDD 之前，需要上载要上传的 vhd 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 此值在指定 **--上传大小-字节**参数时使用。
+Before you can create an empty standard HDD for uploading, you'll need to have the file size of the vhd you want to upload, in bytes. To get that, you can use either `wc -c <yourFileName>.vhd` or `ls -al <yourFileName>.vhd`. This value is used when specifying the **--upload-size-bytes** parameter.
 
-通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 以进行上传：
+Create an empty standard HDD for uploading by specifying both the **-–for-upload** parameter and the **--upload-size-bytes** parameter in a [disk create](/cli/azure/disk#az-disk-create) cmdlet:
 
 ```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-如果要上传高级 SSD 或标准 SSD，请将**standard_lrs**替换为**premium_LRS**或**standardssd_lrs**。 超级 SSD 尚不受支持。
+If you would like to upload either a premium SSD or a standard SSD, replace **standard_lrs** with either **premium_LRS** or **standardssd_lrs**. Ultra SSD is not yet supported.
 
-你现在已创建了一个为上传过程配置的空托管磁盘。 若要将 vhd 上传到磁盘，则需要一个可写 SAS，以便将其作为上传的目标进行引用。
+You have now created an empty managed disk that is configured for the upload process. To upload a vhd to the disk, you'll need a writeable SAS, so that you can reference it as the destination for your upload.
 
-若要生成空托管磁盘的可写 SAS，请使用以下命令：
+To generate a writable SAS of your empty managed disk, use the following command:
 
 ```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
-示例返回值：
+Sample returned value:
 
 ```
 {
@@ -69,21 +69,21 @@ az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --d
 }
 ```
 
-## <a name="upload-vhd"></a>上传 vhd
+## <a name="upload-vhd"></a>Upload vhd
 
-现在，你有了用于空托管磁盘的 SAS，可以使用它将托管磁盘设置为上传命令的目标。
+Now that you have a SAS for your empty managed disk, you can use it to set your managed disk as the destination for your upload command.
 
-通过指定生成的 SAS URI，使用 AzCopy v10 将本地 VHD 文件上传到托管磁盘。
+Use AzCopy v10 to upload your local VHD file to a managed disk by specifying the SAS URI you generated.
 
-此上传与等效的[标准 HDD](disks-types.md#standard-hdd)具有相同的吞吐量。 例如，如果大小等于 S4，则吞吐量最高可达 60 MiB/s。 但是，如果大小等于 S70，则吞吐量最高可达 500 MiB/秒。
+This upload has the same throughput as the equivalent [standard HDD](disks-types.md#standard-hdd). For example, if you have a size that equates to S4, you will have a throughput of up to 60 MiB/s. But, if you have a size that equates to S70, you will have a throughput of up to 500 MiB/s.
 
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-如果在上传过程中 SAS 过期，但尚未调用 `revoke-access`，则可以使用 `grant-access` 来继续上传。
+If your SAS expires during upload, and you haven't called `revoke-access` yet, you can get a new SAS to continue the upload using `grant-access`, again.
 
-上传完成后，不再需要将任何数据写入磁盘，请撤销 SAS。 吊销 SAS 将更改托管磁盘的状态，并允许你将磁盘附加到 VM。
+After the upload is complete, and you no longer need to write any more data to the disk, revoke the SAS. Revoking the SAS will change the state of the managed disk and allow you to attach the disk to a VM.
 
 ```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
@@ -91,14 +91,14 @@ az disk revoke-access -n mydiskname -g resourcegroupname
 
 ## <a name="copy-a-managed-disk"></a>复制托管磁盘
 
-直接上传还可以简化复制托管磁盘的过程。 可以在同一区域或跨区域（到其他区域）中进行复制。
+Direct upload also simplifies the process of copying a managed disk. You can either copy within the same region or cross-region (to another region).
 
-下面的脚本将为你执行此操作，此过程类似于前面所述的步骤，因为你使用的是现有磁盘。
+The follow script will do this for you, the process is similar to the steps described earlier, with some differences since you're working with an existing disk.
 
 > [!IMPORTANT]
-> 如果要提供 Azure 中托管磁盘的磁盘大小（以字节为单位），则需要添加512的偏移量。 这是因为在返回磁盘大小时，Azure 会省略页脚。 如果不执行此操作，该副本将失败。 以下脚本已为你执行此功能。
+> You need to add an offset of 512 when you're providing the disk size in bytes of a managed disk from Azure. This is because Azure omits the footer when returning the disk size. The copy will fail if you do not do this. The following script already does this for you.
 
-使用你的值替换 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>` 和 `<yourTargetLocationHere>` （位置值的示例是 uswest2），然后运行以下脚本，以便复制托管磁盘。
+Replace the `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, and `<yourTargetLocationHere>` (an example of a location value would be uswest2) with your values, then run the following script in order to copy a managed disk.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -124,5 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>后续步骤
 
-现在已成功将 vhd 上传到托管磁盘，可以将该磁盘作为[数据磁盘附加到现有 VM](add-disk.md) ，或者[将磁盘作为 OS 磁盘附加到 VM](upload-vhd.md#create-the-vm)，以创建新的 vm。 
+Now that you've successfully uploaded a vhd to a managed disk, you can attach the disk as a [data disk to an existing VM](add-disk.md) or [attach the disk to a VM as an OS disk](upload-vhd.md#create-the-vm), to create a new VM. 
 

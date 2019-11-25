@@ -1,19 +1,14 @@
 ---
-title: Azure 容器注册表内容格式
-description: 了解 Azure 容器注册表支持的内容格式，其中包括 Docker 兼容容器映像、Helm 图、OCI 图像和 OCI 项目。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Supported content formats
+description: Learn about content formats supported by Azure Container Registry, including Docker-compatible container images, Helm charts, OCI images, and OCI artifacts.
 ms.topic: article
 ms.date: 08/30/2019
-ms.author: danlep
-ms.openlocfilehash: 38639f22457d923643e8de09cfbbb2fd7f4d2985
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007478"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455022"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure 容器注册表中支持的内容格式
 
@@ -21,25 +16,25 @@ ms.locfileid: "74007478"
 
 ## <a name="docker-compatible-container-images"></a>兼容 Docker 的容器映像
 
-支持以下 Docker 容器映像格式：
+The following Docker container image formats are supported:
 
 * [Docker 映像清单 V2，架构 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
 * [Docker 映像清单 V2，架构 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - 包括了允许注册表在单个“映像:标记”引用下存储多平台映像的清单列表
 
-## <a name="oci-images"></a>OCI 映像
+## <a name="oci-images"></a>OCI images
 
-Azure 容器注册表支持符合[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映像。 打包格式包括[奇点映像格式 (SIF)](https://github.com/sylabs/sif)。
+Azure Container Registry supports images that meet the [Open Container Initiative (OCI) Image Format Specification](https://github.com/opencontainers/image-spec/blob/master/spec.md). Packaging formats include [Singularity Image Format (SIF)](https://github.com/sylabs/sif).
 
-## <a name="oci-artifacts"></a>OCI 项目
+## <a name="oci-artifacts"></a>OCI artifacts
 
-Azure 容器注册表支持 [OCI 分发规范](https://github.com/opencontainers/distribution-spec)，这是一个独立于供应商、与云无关的规范，用于存储、共享、保护和部署容器映像和其他内容类型（项目）。 除了容器映像外，该规范还允许注册表存储各种不同的项目。 可以使用适合于项目的工具来推送和拉取项目。 有关示例，请参阅[使用 Azure 容器注册表推送和拉取 OCI 项目](container-registry-oci-artifacts.md)。
+Azure Container Registry supports the [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec), a vendor-neutral, cloud-agnostic spec to store, share, secure, and deploy container images and other content types (artifacts). The specification allows a registry to store a wide range of artifacts in addition to container images. You use tooling appropriate to the artifact to push and pull artifacts. For an example, see [Push and pull an OCI artifact using an Azure container registry](container-registry-oci-artifacts.md).
 
-若要详细了解 OCI 项目，请参阅 GitHub 上的 [OCI 注册表即存储 (ORAS)](https://github.com/deislabs/oras) 存储库和 [OCI 项目](https://github.com/opencontainers/artifacts)存储库。
+To learn more about OCI artifacts, see the [OCI Registry as Storage (ORAS)](https://github.com/deislabs/oras) repo and the [OCI Artifacts](https://github.com/opencontainers/artifacts) repo on GitHub.
 
 ## <a name="helm-charts"></a>Helm 图表
 
-Azure 容器注册表可以承载 [Helm 图表](https://helm.sh/)的存储库，该存储库是用来快速为 Kubernetes 管理和部署应用程序的一种打包格式。 支持 [Helm 客户端](https://docs.helm.sh/using_helm/#installing-helm)版本 2（2.11.0 或更高版本）。
+Azure Container Registry can host repositories for [Helm charts](https://helm.sh/), a packaging format used to quickly manage and deploy applications for Kubernetes. [Helm client](https://docs.helm.sh/using_helm/#installing-helm) version 2 (2.11.0 or later) is supported.
 
 ## <a name="next-steps"></a>后续步骤
 

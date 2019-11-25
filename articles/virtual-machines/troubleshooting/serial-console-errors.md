@@ -1,6 +1,6 @@
 ---
-title: Azure 串行控制台错误 |Microsoft Docs
-description: Azure 串行控制台中的常见错误
+title: Azure Serial Console errors | Microsoft Docs
+description: Common errors within the Azure Serial Console
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -14,32 +14,33 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: e4596ae2f92e5dfd99dc7c83857e0c9874358fd4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: fb74fdb74a366f6ab920b7782f6013fd8bab7148
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949706"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452301"
 ---
-# <a name="common-errors-within-the-azure-serial-console"></a>Azure 串行控制台中的常见错误
-Azure 串行控制台中有一组已知错误。 这是这些错误的列表以及这些错误的缓解步骤。
+# <a name="common-errors-within-the-azure-serial-console"></a>Common errors within the Azure Serial Console
+There are a set of known errors within the Azure Serial Console. This is a list of those errors and mitigation steps for them.
 
 ## <a name="common-errors"></a>常见错误
 
 错误                            |   缓解措施
 :---------------------------------|:--------------------------------------------|
-无法检索 *&lt;VMNAME&gt;* 的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 ![启动诊断错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | 请确保 VM 或虚拟机规模集已启用[启动诊断](boot-diagnostics.md)。 如果在虚拟机规模集实例上使用串行控制台，请确保实例具有最新的模型。
-VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 ![已释放错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | VM 或虚拟机规模集实例必须处于已启动状态才能访问串行控制台。 启动 VM 或虚拟机规模集实例，然后重试。
-访问此 VM 的启动诊断存储帐户时遇到“已禁止”响应。 ![存储帐户防火墙错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| 请确保启动诊断没有帐户防火墙。 若要使串行控制台正常运行，需要一个可访问的启动诊断存储帐户。 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
-没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有“虚拟机参与者”角色权限。| 通过串行控制台访问，你可以在 VM 或虚拟机规模集上访问参与者级别或更高级别。 有关详细信息，请参阅[概述页](serial-console-overview.md)。
-在此 VM 上找不到用于启动诊断的存储帐户 ""。 验证是否为此 VM 启用了启动诊断，此存储帐户未被删除，并且你有权访问此存储帐户。 | 仔细检查你是否未删除 VM 或虚拟机规模集的启动诊断存储帐户
-尚未成功预配此 VM。 请确保已完全部署 VM，并重试串行控制台连接。 | 你的 VM 或虚拟机规模集可能仍在进行设置。 请等待一段时间，然后重试。
-你没有写入此 VM 的启动诊断存储帐户所需的权限。 请确保在 "" 上至少具有 VM 参与者权限。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅[概述页](serial-console-overview.md)。
-无法确定启动诊断存储帐户 *&lt;STORAGEACCOUNTNAME&gt;* 的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅[概述页](serial-console-overview.md)。
-Web 套接字已关闭或无法打开。 | 可能需要将防火墙访问权限添加到 `*.console.azure.com`。 更详细但更好的方法是允许防火墙访问[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，这种范围会定期发生变化。
-串行控制台不能使用具有分层命名空间的 Azure Data Lake Storage Gen2 的存储帐户。 | 这是分层命名空间的已知问题。 若要缓解此情况，请确保不使用 Azure Data Lake Storage Gen2 创建 VM 的启动诊断存储帐户。 仅可在创建存储帐户时设置此选项。 你可能需要创建单独的启动诊断存储帐户，而不启用 Azure Data Lake Storage Gen2 来缓解此问题。
+"Azure Serial Console requires boot diagnostics to be enabled. Click here to configure boot diagnostics for your virtual machine."![Boot diagnostics error](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | Ensure that the VM or virtual machine scale set has [boot diagnostics](boot-diagnostics.md) enabled. If you are using serial console on a virtual machine scale set instance, ensure that your instance has the latest model.
+"Azure Serial Console requires a virtual machine to be running. Use the Start button above to start your virtual machine." ![Deallocated error](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | The VM or virtual machine scale set instance must be in a started state to access the serial console (your VM must not be stopped or deallocated). Ensure your VM or virtual machine scale set instance is running and try again.
+"Azure Serial Console is not enabled for this subscription, contact your subscription administrator to enable."![Subscription disabled error](./media/virtual-machines-serial-console/virtual-machines-serial-console-subscription-disabled-error.png) | The Azure Serial Console can be disabled at a subscription level. If you are a subscription administrator, you may [enable and disable the Azure Serial Console](./serial-console-enable-disable.md). If you are not a subscription administrator, you should reach out to your subscription administrator for next steps.
+访问此 VM 的启动诊断存储帐户时遇到“已禁止”响应。 ![Storage account firewall error](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| 请确保启动诊断没有帐户防火墙。 若要使串行控制台正常运行，需要一个可访问的启动诊断存储帐户。 根据设计串行控制台无法与启动诊断存储帐户上启用的存储帐户防火墙一起使用。
+没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有“虚拟机参与者”角色权限。| The serial console access requires you to have contributor level access or above on your VM or virtual machine scale set. For more information, see the [overview page](serial-console-overview.md).
+The storage account '' used for boot diagnostics on this VM could not be found. Verify that boot diagnostics is enabled for this VM, this storage account has not been deleted, and you have access to this storage account. | Double check that you have not deleted the boot diagnostics storage account for your VM or virtual machine scale set
+Provisioning for this VM has not yet succeeded. Please ensure the VM is fully deployed and retry the serial console connection. | Your VM or virtual machine scale set may still be provisioning. Wait some time and try again.
+You do not have the required permissions to write to the boot diagnostics storage account for this VM. Please ensure you have at least VM Contributor permissions on ''. | Serial console access requires contributor level access on the boot diagnostics storage account. For more information, see the [overview page](serial-console-overview.md).
+无法确定启动诊断存储帐户 *&lt;STORAGEACCOUNTNAME&gt;* 的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | Serial console access requires contributor level access on the boot diagnostics storage account. For more information, see the [overview page](serial-console-overview.md).
+Web 套接字已关闭或无法打开。 | You may need to add firewall access to `*.console.azure.com`. A more detailed but longer approach is to allow firewall access to the [Microsoft Azure Datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653), which change fairly regularly.
+Serial console does not work with a storage account using Azure Data Lake Storage Gen2 with hierarchical namespaces. | This is a known issue with hierarchical namespaces. To mitigate, ensure that your VM's boot diagnostics storage account is not created using Azure Data Lake Storage Gen2. This option can only be set upon storage account creation. You may have to create a separate boot diagnostics storage account without Azure Data Lake Storage Gen2 enabled to mitigate this issue.
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解适用于[Linux vm 的 Azure 串行控制台](./serial-console-linux.md)
-* 详细了解适用于[Windows vm 的 Azure 串行控制台](./serial-console-windows.md)
+* Learn more about the [Azure Serial Console for Linux VMs](./serial-console-linux.md)
+* Learn more about the [Azure Serial Console for Windows VMs](./serial-console-windows.md)

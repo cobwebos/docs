@@ -1,20 +1,15 @@
 ---
-title: 将 Docker 映像推送到专用 Azure 容器注册表
+title: Push & pull Docker image
 description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 6944755619ea5e8e63af04b9b3bca6f7376e29a9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309446"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456352"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -22,7 +17,7 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 
 以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
@@ -62,7 +57,7 @@ docker pull nginx
 docker run -it --rm -p 8080:80 nginx
 ```
 
-浏览到 `http://localhost:8080`，查看由正在运行的容器中的 Nginx 提供服务的默认网页。 应看到类似于下面的页面：
+Browse to `http://localhost:8080` to view the default web page served by Nginx in the running container. 应看到类似于下面的页面：
 
 ![本地计算机上的 Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -104,7 +99,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-浏览到 `http://localhost:8080` 以查看正在运行的容器。
+Browse to `http://localhost:8080` to view the running container.
 
 若要停止并删除容器，请按 `Control`+`C`。
 

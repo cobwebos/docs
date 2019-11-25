@@ -9,23 +9,22 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 286bab7b7fdbe42190c32dabb42c59d6fc094b2a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540898"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457368"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
-创建**IoT Edge 自动部署**来同时管理多个设备的持续部署在 Azure 门户中。 自动部署为 IoT Edge 属于[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)IoT 中心的功能。 部署是动态过程，您可以将多个模块部署到多个设备，跟踪的状态和运行状况的模块，并进行更改时需要。 
+Create an **IoT Edge automatic deployment** in the Azure portal to manage ongoing deployments for many devices at once. Automatic deployments for IoT Edge are part of the [automatic device management](/azure/iot-hub/iot-hub-automatic-device-management) feature of IoT Hub. Deployments are dynamic processes that enable you to deploy multiple modules to multiple devices, track the status and health of the modules, and make changes when necessary. 
 
-有关详细信息，请参阅[了解 IoT Edge 自动部署为单个设备或大规模](module-deployment-monitoring.md)。
+For more information, see [Understand IoT Edge automatic deployments for single devices or at scale](module-deployment-monitoring.md).
 
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备可以有多个标记，用于以任何适合你的解决方案的方式定义。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 Each device can have multiple tags that you define in any way that makes sense for your solution. 例如，如果管理有智能楼宇的校园，可能要将以下标记添加到设备：
 
 ```json
 "tags":{
@@ -50,27 +49,27 @@ ms.locfileid: "67540898"
 
 ### <a name="step-1-name-and-label"></a>步骤 1：名称和标签
 
-1. 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+1. 为部署命名唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 1. 可以将标签作为键/值对添加，以帮助跟踪部署。 例如，**HostPlatform** 和 **Linux**，或 **Version** 和 **3.0.1**。
 1. 选择“下一步”，进入到步骤 2。 
 
 ### <a name="step-2-add-modules-optional"></a>步骤 2：添加模块（可选）
 
-可以将最多 20 个模块添加到部署。 
+You can add up to 20 modules to a deployment. 
 
-如果不含模块创建部署，则会从目标设备中删除任何当前模块。 
+If you create a deployment with no modules, it removes any current modules from the target devices. 
 
 要添加 Azure 流分析中的模块，请执行以下步骤：
 
 1. 在页面的“部署模块”部分中，单击“添加”。
 1. 选择“Azure 流分析模块”。
 1. 选择下拉菜单中的“订阅”。
-1. 选择 IoT **Edge 作业**从下拉列表菜单。
+1. Choose your IoT **Edge job** from the drop-down menu.
 1. 选择“保存”，将模块添加到部署。 
 
 若要将自定义代码添加为模块，或手动添加 Azure 服务模块，请执行以下步骤：
 
-1. 在页面的“容器注册表设置”部分中，为包含此部署模块映像的任何专用容器注册表提供名称和凭据。 如果它找不到容器注册表凭据的 Docker 映像 IoT Edge 代理将报告错误 500。
+1. 在页面的“容器注册表设置”部分中，为包含此部署模块映像的任何专用容器注册表提供名称和凭据。 The IoT Edge Agent will report error 500 if it can't find the container registry credential for a Docker image.
 1. 在页面的“部署模块”部分中，单击“添加”。
 1. 选择“IoT Edge 模块”。
 1. 为模块提供一个名称。
@@ -78,14 +77,14 @@ ms.locfileid: "67540898"
 1. 指定应传递到容器的任意容器创建选项。 有关详细信息，请参阅 [docker create](https://docs.docker.com/engine/reference/commandline/create/)。
 1. 使用下拉菜单选择“重启策略”。 从以下选项中选择： 
    * 始终 - 如果模块因任何原因关闭，该模块将始终重启。
-   * **永远不会**-只有在因任何原因关闭，永远不会重新启动该模块。
-   * **在故障**-如果崩溃，但不是如果它完全关闭，重新启动该模块。 
-   * **在正常**-如果它崩溃或返回不正常状态，重新启动该模块。 这取决于每个执行运行状况监控功能的模块。 
+   * **never** - The module never restarts if it shuts down for any reason.
+   * **on-failure** - The module restarts if it crashes, but not if it shuts down cleanly. 
+   * **on-unhealthy** - The module restarts if it crashes or returns an unhealthy status. 这取决于每个执行运行状况监控功能的模块。 
 1. 使用下拉菜单选择模块的所需状态。 从以下选项中选择：
-   * **运行**-运行是默认选项。 该模块在部署之后将立即开始运行。
-   * **停止**-部署之后，模块将保持空闲状态，直到调用来启动由你或另一个模块。
+   * **running** - Running is the default option. 该模块在部署之后将立即开始运行。
+   * **stopped** - After being deployed, the module will remain idle until called upon to start by you or another module.
 1. 如果想要将标记或其他属性添加到模块孪生中，请选择“设置模块孪生的所需属性”。
-1. 输入此模块的“环境变量”。 环境变量提供对模块的配置信息。
+1. 输入此模块的“环境变量”。 Environment variables provide configuration information to a module.
 1. 选择“保存”，将模块添加到部署。 
 
 配置完部署的所有模块之后，选择“下一步”，进入到步骤 3。
@@ -96,7 +95,7 @@ ms.locfileid: "67540898"
 
 在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
 
-### <a name="step-4-specify-metrics-optional"></a>步骤 4：指定指标（可选）
+### <a name="step-4-specify-metrics-optional"></a>Step 4: Specify Metrics (optional)
 
 指标提供应用配置内容后设备可能报告的各种状态的摘要计数。
 
@@ -111,17 +110,17 @@ ms.locfileid: "67540898"
      WHERE properties.reported.lastDesiredStatus.code = 200
    ```
 
-### <a name="step-5-target-devices"></a>步骤 5：目标设备
+### <a name="step-5-target-devices"></a>Step 5: Target Devices
 
 使用设备中的标记属性将应接收此部署的特定设备定为目标。 
 
-因为多个部署可能将同一个设备定为目标，所以应为每个部署提供优先级编号。 如果曾经冲突，（较大的值表示较高的优先级） 的最高优先级的部署定为目标。 如果两个部署的优先级编号相同，则将最新创建的部署定为目标。 
+因为多个部署可能将同一个设备定为目标，所以应为每个部署提供优先级编号。 If there's ever a conflict, the deployment with the highest priority (larger values indicate higher priority) wins. 如果两个部署的优先级编号相同，则将最新创建的部署定为目标。 
 
 1. 为部署优先级输入一个正整数。
-1. 输入“目标条件”确定将作为此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。 
+1. 输入“目标条件”确定将作为此部署的目标的设备。 The condition is based on device twin tags or device twin reported properties and should match the expression format. For example, `tags.environment='test'` or `properties.reported.devicemodel='4000x'`. 
 1. 选择“下一步”，进入到最后一步。
 
-### <a name="step-6-review-deployment"></a>步骤 6：检查部署
+### <a name="step-6-review-deployment"></a>Step 6: Review Deployment
 
 审阅部署信息，然后选择“提交”。
 
@@ -129,11 +128,11 @@ ms.locfileid: "67540898"
 
 Azure 市场是一个应用程序和服务在线市场，可在其中浏览各种企业应用程序和解决方案，这些应用程序和解决方案针对在 Azure 上运行进行了认证和优化，包括 [IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)。 还可以在“创建资源”下通过 Azure 门户访问 Azure 市场。
 
-你可以部署 IoT Edge 模块从 Azure Marketplace 或 Azure 门户：
+You can deploy an IoT Edge module from either Azure Marketplace or the Azure portal:
 
 1. 查找模块并开始部署过程。
 
-   * Azure 门户：查找模块，然后选择“创建”。
+   * Azure portal: Find a module and select **Create**.
 
    * Azure 市场：
 
@@ -158,13 +157,13 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 
    ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. 检查部署列表。 对于每个部署，可以查看以下详细信息：
+1. 检查部署列表。 For each deployment, you can view the following details:
    * ID - 部署的名称。
    * 目标条件 - 用于定义目标设备的标记。
    * 优先级 - 分配到部署的优先级编号。
    * **系统指标** - “已定目标”指定 IoT 中心内与目标条件匹配的设备孪生数量，“已应用”指定在 IoT 中心对模块孪生应用部署内容的设备数量。 
-   * **设备指标**-报告成功或错误的 IoT Edge 运行时客户端部署中的 IoT Edge 设备数。
-   * **自定义指标**-部署报告为部署定义任何度量值数据中的 IoT Edge 设备数。
+   * **Device metrics** - the number of IoT Edge devices in the deployment reporting success or errors from the IoT Edge client runtime.
+   * **Custom metrics** - the number of IoT Edge devices in the deployment reporting data for any metrics that you defined for the deployment.
    * 创建时间 - 开始创建部署的时间戳。 两个部署具有相同优先级，此时间戳用于消除它们的关系。 
 1. 选择想要监视的部署。  
 1. 检查部署详细信息。 可以使用选项卡查看部署的详细信息。
@@ -192,7 +191,7 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
    * 目标条件
    * 指标 - 可以修改或删除定义的指标，或添加新的指标。
    * 标签
-   * 优先度
+   * 优先级
 1. 选择“保存”。
 1. 执行[监视部署](#monitor-a-deployment)中的步骤，注意更改的推出。 
 
@@ -208,8 +207,8 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 
 1. 使用复选框选择想要删除的部署。 
 1. 选择“删除”。
-1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  这意味着将应用具有较低优先级的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 选择“是”继续。 
+1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  This means that a deployment with a lower priority will apply.  If no other deployment is targeted, no modules will be removed. 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 Select **Yes** to continue. 
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)。
+Learn more about [Deploying modules to IoT Edge devices](module-deployment-monitoring.md).

@@ -9,12 +9,12 @@ ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: 0f61057daf994fde284e9484e41c01ed2e8ae78c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d131523e3031f55a818bb1919f39119bf073cb75
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220214"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456528"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB monitoring data reference
 This article provides a reference of log and metric data collected to analyze the performance and availability of Azure Cosmos DB. See [Monitoring Cosmos DB](monitor-cosmos-db.md) for details on collecting and analyzing monitoring data for Azure Cosmos DB.
@@ -27,7 +27,7 @@ The following table lists the properties for Azure Cosmos DB resource logs when 
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** | 对于 Azure Cosmos DB 日志，**DataPlaneRequests** 是唯一可用的值。 |
+| **category** | **类别** | For Azure Cosmos DB logs, **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests** are the available log types. |
 | **operationName** | **OperationName** | 操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
 | **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |

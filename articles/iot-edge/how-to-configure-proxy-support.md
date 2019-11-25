@@ -2,83 +2,81 @@
 title: 为设备配置网络代理 - Azure IoT Edge | Microsoft Docs
 description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT Edge 模块配置为通过代理服务器进行通信。
 author: kgremban
-manager: ''
 ms.author: kgremban
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 47d3018015d05d0587e841c216a5eb89f2a0ae20
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 9a4ed17ceddf01ec628d80dc3ba9f4d7ee305f3b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414564"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457151"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
 IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设备已连接到使用代理服务器的网络，则需要将 IoT Edge 运行时配置为通过该服务器进行通信。 如果代理服务器发出不通过 IoT Edge 中心路由的 HTTP 或 HTTPS 请求，则可能还会影响各个 IoT Edge 模块。 
 
-本文将引导你完成以下四个步骤，来配置并管理代理服务器后面的 IoT Edge 设备： 
+This article walks through the following four steps to configure and then manage an IoT Edge device behind a proxy server: 
 
-1. **在设备上安装 IoT Edge 运行时。**
+1. **Install the IoT Edge runtime on your device.**
 
-   IoT Edge 安装脚本从 Internet 提取包和文件，因此，设备需要通过代理服务器通信，以发出这些请求。 有关详细步骤，请参阅本文的[通过代理安装运行时](#install-the-runtime-through-a-proxy)部分。 对于 Windows 设备，安装脚本还会提供[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)选项。 
+   The IoT Edge installation scripts pull packages and files from the internet, so your device needs to communicate through the proxy server to make those requests. For detailed steps, see the [Install the runtime through a proxy](#install-the-runtime-through-a-proxy) section of this article. For Windows devices, the installation script also provides an [Offline installation](how-to-install-iot-edge-windows.md#offline-installation) option. 
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。 更新 IoT Edge 运行时时，也需要使用相同的连接。 
+   This step is a one-time process performed on the IoT Edge device when you first set it up. The same connections are also required when you update the IoT Edge runtime. 
 
-2. **在设备上配置 Docker 守护程序和 IoT Edge 守护程序。**
+2. **Configure the Docker daemon and the IoT Edge daemon on your device.**
 
-   IoT Edge 使用设备上的两个守护程序，这些守护程序需要通过代理服务器发出 Web 请求。 IoT Edge 守护程序负责与 IoT 中心通信。 Moby 守护程序负责容器管理，因此将与容器注册表通信。 有关详细步骤，请参阅本文的[配置守护程序](#configure-the-daemons)部分。 
+   IoT Edge uses two daemons on the device, both of which need to make web requests through the proxy server. The IoT Edge daemon is responsible for communications with IoT Hub. The Moby daemon is responsible for container management, so communicates with container registries. For detailed steps, see the [Configure the daemons](#configure-the-daemons) section of this article. 
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。
+   This step is a one-time process performed on the IoT Edge device when you first set it up.
 
-3. **在设备上的 config.yaml 文件中配置 IoT Edge 代理属性。**
+3. **Configure the IoT Edge agent properties in the config.yaml file on your device.**
 
-   IoT Edge 守护程序最初会启动 edgeAgent 模块，然后，edgeAgent 模块将负责从 IoT 中心检索部署清单，并启动所有其他模块。 要使 IoT Edge 代理能够与 IoT 中心建立初始连接，请在设备本身上手动配置 edgeAgent 模块环境变量。 建立初始连接后，可以远程配置 edgeAgent 模块。 有关详细步骤，请参阅本文的[配置 IoT Edge 代理](#configure-the-iot-edge-agent)部分。
+   The IoT Edge daemon starts the edgeAgent module initially, but then the edgeAgent module is responsible for retrieving the deployment manifest from IoT Hub and starting all the other modules. For the IoT Edge agent to make the initial connection to IoT Hub, configure the edgeAgent module environment variables manually on the device itself. After the initial connection, you can configure the edgeAgent module remotely. For detailed steps, see the [Configure the IoT Edge agent](#configure-the-iot-edge-agent) section of this article.
 
-   此步骤是首次设置 IoT Edge 设备时，在其上执行的一次性过程。
+   This step is a one-time process performed on the IoT Edge device when you first set it up.
 
-4. **针对将来的所有模块部署设置环境变量，使任何模块可以通过代理进行通信。**
+4. **For all future module deployments, set environment variables for any module communicating through the proxy.**
 
-   设置 IoT Edge 设备并通过代理服务器将其连接到 IoT 中心后，需要在将来的所有模块部署中保持该连接。 有关详细步骤，请参阅本文的[配置部署清单](#configure-deployment-manifests)部分。 
+   Once your IoT Edge device is set up and connected to IoT Hub through the proxy server, you need to maintain the connection in all future module deployments. For detailed steps, see the [Configure deployment manifests](#configure-deployment-manifests) section of this article. 
 
-   此步骤是远程执行的持续过程，目的是在每次更换新模块或更新部署后，设备仍可通过代理服务器通信。 
+   This step is an ongoing process performed remotely so that every new module or deployment update maintains the device's ability to communicate through the proxy server. 
 
 ## <a name="know-your-proxy-url"></a>知道你的代理 URL
 
-在开始执行本文中的任何步骤之前，需要知道你的代理 URL。
+Before you begin any of the steps in this article, you need to know your proxy URL.
 
 代理 URL 采用以下格式：**protocol**://**proxy_host**:**proxy_port**。
 
-* **protocol** 是 HTTP 或 HTTPS。 Docker 守护程序可以根据容器注册表设置使用任一协议，但 IoT Edge 守护程序和运行时容器应始终使用 HTTP 连接到代理。
+* **protocol** 是 HTTP 或 HTTPS。 The Docker daemon can use either protocol, depending on your container registry settings, but the IoT Edge daemon and runtime containers should always use HTTP to connect to the proxy.
 
-* **proxy_host** 是代理服务器的地址。 如果代理服务器要求进行身份验证，则可采用 **user**:**password**\@**proxy_host** 格式将凭据作为 proxy_host 的一部分提供。
+* **proxy_host** 是代理服务器的地址。 If your proxy server requires authentication, you can provide your credentials as part of the proxy host with the following format: **user**:**password**\@**proxy_host**.
 
 * **proxy_port** 是代理用来响应网络流量的网络端口。
 
-## <a name="install-the-runtime-through-a-proxy"></a>通过代理安装运行时
+## <a name="install-the-runtime-through-a-proxy"></a>Install the runtime through a proxy
 
-无论 IoT Edge 设备是在 Windows 还是 Linux 上运行，都需要通过代理服务器访问安装包。 请据所用的操作系统，遵循相应的步骤通过代理服务器安装 IoT Edge 运行时。 
+Whether your IoT Edge device runs on Windows or Linux, you need to access the installation packages through the proxy server. Depending on your operating system, follow the steps to install the IoT Edge runtime through a proxy server. 
 
 ### <a name="linux"></a>Linux
 
-若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置程序包管理器后, 请按照通常情况下在[Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明进行操作。
+若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 Once your package manager is configured, follow the instructions in [Install Azure IoT Edge runtime on Linux](how-to-install-iot-edge-linux.md) as usual.
 
 ### <a name="windows"></a>Windows
 
-若要在 Windows 设备上安装 IoT Edge 运行时，需要两次通过代理服务器执行操作。 第一个连接用于下载安装程序脚本文件，第二个连接用于在安装过程中下载必需的组件。 可以在 Windows 设置中配置代理信息，或直接在 PowerShell 命令中包含代理信息。 
+If you're installing the IoT Edge runtime on a Windows device, you need to go through the proxy server twice. The first connection downloads the installer script file, and the second connection is during the installation to download the necessary components. You can configure proxy information in Windows settings, or include your proxy information directly in the PowerShell commands. 
 
-以下步骤演示使用 `-proxy` 参数安装 Windows 的示例：
+The following steps demonstrate an example of a windows installation using the `-proxy` argument:
 
-1. Invoke-WebRequest 命令需要获得代理信息才能访问安装程序脚本。 然后，Deploy-IoTEdge 命令需要获得代理信息才能下载安装文件。 
+1. The Invoke-WebRequest command needs proxy information to access the installer script. Then the Deploy-IoTEdge command needs the proxy information to download the installation files. 
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. Initialize-IoTEdge 命令不需经过代理服务器，因此第二步仅需 Invoke-WebRequest 的代理信息。
+2. The Initialize-IoTEdge command doesn't need to go through the proxy server, so the second step only requires proxy information for Invoke-WebRequest.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
@@ -92,30 +90,30 @@ $proxyCredential = (Get-Credential).GetNetworkCredential()
 Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-有关代理参数的详细信息，请参阅 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 有关 Windows 安装选项（包括脱机安装）的详细信息，请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
+有关代理参数的详细信息，请参阅 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)。 For more information about Windows installation options, including offline installation, see [Install Azure IoT Edge runtime on Windows](how-to-install-iot-edge-windows.md).
 
 ## <a name="configure-the-daemons"></a>配置守护程序
 
-IoT Edge 依赖于 IoT Edge 设备上运行的两个守护程序。 Moby 守护程序发出 Web 请求，以从容器注册表中拉取容器映像。 IoT Edge 守护程序发出 Web 请求，以与 IoT 中心进行通信。
+IoT Edge relies on two daemons running on the IoT Edge device. The Moby daemon makes web requests to pull container images from container registries. IoT Edge 守护程序发出 Web 请求，以与 IoT 中心进行通信。
 
-Moby 和 IoT Edge 守护程序都需要配置为使用代理服务器持续获得设备功能。 需在最初设置设备期间，在 IoT Edge 设备上执行此步骤。 
+Both the Moby and the IoT Edge daemons need to be configured to use the proxy server for ongoing device functionality. This step takes place on the IoT Edge device during initial device setup. 
 
-### <a name="moby-daemon"></a>Moby 守护程序
+### <a name="moby-daemon"></a>Moby daemon
 
-由于 Moby 是基于 Docker 的，因此若要使用环境变量配置 Moby 守护程序，请参阅 Docker 文档。 大多数容器注册表（包括 DockerHub 和 Azure 容器注册表）支持 HTTPS 请求，因此，你应当设置的变量为 **HTTPS_PROXY**。 如果要从不支持传输层安全性 (TLS) 的注册表中拉取映像，则应当设置 **HTTP_PROXY**。 
+Since Moby is built on Docker, refer to the Docker documentation to configure the Moby daemon with environment variables. 大多数容器注册表（包括 DockerHub 和 Azure 容器注册表）支持 HTTPS 请求，因此，你应当设置的变量为 **HTTPS_PROXY**。 如果要从不支持传输层安全性 (TLS) 的注册表中拉取映像，则应当设置 **HTTP_PROXY**。 
 
-选择适用于 IoT Edge 设备操作系统的文章： 
+Choose the article that applies to your IoT Edge device operating system: 
 
-* [在 Linux 上配置 Docker 守护程序](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-    * Linux 设备上的 Moby 守护程序保留“Docker”这一名称。
-* [在 Windows 上配置 Docker 守护程序](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
-    * Windows 设备上的 Moby 守护程序称为 iotedge-moby。 之所以让这些名称保持不同，是因为可能会在 Windows 设备上并行运行 Docker Desktop 和 Moby。 
+* [Configure Docker daemon on Linux](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+    * The Moby daemon on Linux devices keeps the name Docker.
+* [Configure Docker daemon on Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+    * The Moby daemon on Windows devices is called iotedge-moby. The names are different because it's possible to run both Docker Desktop and Moby in parallel on a Windows device. 
 
 ### <a name="iot-edge-daemon"></a>IoT Edge 守护程序
 
-IoT Edge 守护程序以类似的方式配置为 Moby 守护程序。 使用以下步骤根据所使用的操作系统为服务设置环境变量。 
+The IoT Edge daemon is configured in a similar manner to the Moby daemon. 使用以下步骤根据所使用的操作系统为服务设置环境变量。 
 
-IoT Edge 守护程序始终使用 HTTPS 将请求发送到 IoT 中心。
+The IoT Edge daemon always uses HTTPS to send requests to IoT Hub.
 
 #### <a name="linux"></a>Linux
 
@@ -168,9 +166,9 @@ Restart-Service iotedge
 
 IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代理基于 IoT Edge config.yaml 文件中的信息首次启动， IoT Edge 代理随后连接到 IoT 中心以检索部署清单，其中声明了应在设备上部署的其他模块。
 
-需在最初设置设备期间，在 IoT Edge 设备上执行此步骤一次。 
+This step takes place once on the IoT Edge device during initial device setup. 
 
-1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 在 Linux 系统上，请使用 `sudo` 命令，然后在偏好的文本编辑器中打开该文件。 在 Windows 上，请以管理员身份打开记事本之类的文本编辑器，然后打开该文件。 
+1. 打开 IoT Edge 设备上的 config.yaml 文件。 在 Linux 系统上，此文件位于 /etc/iotedge/config.yaml。 在 Windows 系统上，此文件位于 C:\ProgramData\iotedge\config.yaml。 配置文件是受保护的，因此，你需要管理权限才能对其进行访问。 On Linux systems, use the `sudo` command before opening the file in your preferred text editor. On Windows, open a text editor like Notepad as administrator and then open the file. 
 
 2. 在 config.yaml 文件中，找到“Edge 代理模块规范”部分。 IoT Edge 代理定义包括可以在其中添加环境变量的 **env** 参数。 
 
@@ -204,13 +202,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ## <a name="configure-deployment-manifests"></a>配置部署清单  
 
-将 IoT Edge 设备配置为与代理服务器配合使用后，还需要在将来的部署清单中声明环境变量。 可以使用 Azure 门户向导或者通过编辑部署清单 JSON 文件，来编辑部署清单。 
+将 IoT Edge 设备配置为与代理服务器配合使用后，还需要在将来的部署清单中声明环境变量。 You can edit deployment manifests either using the Azure portal wizard or by editing a deployment manifest JSON file. 
 
-始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 如果从 edgeAgent 模块中删除了代理信息，则重新建立连接的唯一方法是根据前一部分中所述，编辑设备上的 config.yaml 文件。 
+始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 If you remove the proxy information from the edgeAgent module, the only way to reestablish connection is by editing the config.yaml file on the device, as described in the previous section. 
 
-连接到 Internet 的其他 IoT Edge 模块也应该配置为通过代理服务器进行通信。 但是，通过 edgeHub 路由其消息的模块或仅与设备上的其他模块通信的模块不需要代理服务器详细信息。 
+Other IoT Edge modules that connect to the internet should be configured to communicate through the proxy server, too. 但是，通过 edgeHub 路由其消息的模块或仅与设备上的其他模块通信的模块不需要代理服务器详细信息。 
 
-在 IoT Edge 设备的整个生命周期内，都需要执行此步骤。 
+This step is ongoing throughout the life of the IoT Edge device. 
 
 ### <a name="azure-portal"></a>Azure 门户
 

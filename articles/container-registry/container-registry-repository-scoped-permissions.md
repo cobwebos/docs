@@ -1,53 +1,48 @@
 ---
-title: Azure 容器注册表中的存储库权限
-description: 创建一个令牌，该令牌的权限限定为注册表中特定存储库的请求或推送映像
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Permissions to repositories
+description: Create a token with permissions scoped to specific repositories in a registry to pull or push images
 ms.topic: article
 ms.date: 10/31/2019
-ms.author: danlep
-ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742743"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454908"
 ---
-# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Azure 容器注册表中的存储库范围内的权限 
+# <a name="repository-scoped-permissions-in-azure-container-registry"></a>Repository-scoped permissions in Azure Container Registry 
 
-Azure 容器注册表支持多种[身份验证选项](container-registry-authentication.md)，这些选项使用对整个注册表具有[基于角色的访问权限](container-registry-roles.md)的标识。 但是，在某些情况下，你可能只需要为注册表中的特定*存储库*提供访问权限。 
+Azure Container Registry supports several [authentication options](container-registry-authentication.md) using identities that have [role-based access](container-registry-roles.md) to an entire registry. However, for certain scenarios, you might need to provide access only to specific *repositories* in a registry. 
 
-本文介绍如何创建和使用一个访问令牌，该令牌有权在注册表的特定存储库中执行操作。 使用访问令牌，可以为用户或服务提供对存储库的有限限制的访问权限，以便请求或推送或执行其他操作。 
+This article shows how to create and use an access token that has permissions to perform actions on only specific repositories in a registry. With an access token, you can provide users or services with scoped, time-limited access to repositories to pull or push images or perform other actions. 
 
-请参阅本文后面的[关于存储库范围的权限](#about-repository-scoped-permissions)，了解有关令牌概念和方案的背景信息。
+See [About repository-scoped permissions](#about-repository-scoped-permissions), later in this article, for background about token concepts and scenarios.
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 此功能仅在**高级**容器注册表中提供。 有关注册表服务层和限制的信息，请参阅[Azure 容器注册表 sku](container-registry-skus.md)。
-* 当前无法将存储库范围内的权限分配给某个 Azure Active Directory 对象（例如服务主体或托管标识）。
+* This feature is only available in a **Premium** container registry. For information about registry service tiers and limits, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can't currently assign repository-scoped permissions to an Azure Active Directory object such as a service principal or managed identity.
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **Azure CLI** -本文要求本地安装 Azure CLI （版本2.0.76 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
-* **Docker** -若要使用注册表进行身份验证，还需要本地 Docker 安装。 Docker 提供适用于 [macOS](https://docs.docker.com/docker-for-mac/)[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统的安装说明。
-* **包含存储库的容器注册表**-如果没有，请在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。 
+* **Azure CLI** - This article requires a local installation of the Azure CLI (version 2.0.76 or later). 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* **Docker** - To authenticate with the registry, you also need a local Docker installation. Docker 提供适用于 [macOS](https://docs.docker.com/docker-for-mac/)[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统的安装说明。
+* **Container registry with repositories** - If you don't have one, create a container registry in your Azure subscription. 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。 
 
-  出于测试目的，请将一个或多个示例图像[推送](container-registry-get-started-docker-cli.md)或[导入](container-registry-import-images.md)到注册表。 本文中的示例涉及两个存储库中的以下图像： `samples/hello-world:v1` 和 `samples/nginx:v1`。 
+  For test purposes, [push](container-registry-get-started-docker-cli.md) or [import](container-registry-import-images.md) one or more sample images to the registry. Examples in this article refer to the following images in two repositories: `samples/hello-world:v1` and `samples/nginx:v1`. 
 
 ## <a name="create-an-access-token"></a>创建访问令牌
 
-使用[az acr token create][az-acr-token-create]命令创建令牌。 创建令牌时，请在每个存储库上指定一个或多个存储库和关联的操作，或使用这些设置指定现有的作用域映射。
+Create a token using the [az acr token create][az-acr-token-create] command. When creating a token, specify one or more repositories and associated actions on each repository, or specify an existing scope map with those settings.
 
-### <a name="create-access-token-and-specify-repositories"></a>创建访问令牌并指定存储库
+### <a name="create-access-token-and-specify-repositories"></a>Create access token and specify repositories
 
-下面的示例创建一个访问令牌，该令牌具有对 `samples/hello-world` 存储库执行 `content/write` 和 `content/read` 操作的权限，以及 `samples/nginx` 存储库上的 `content/read` 操作。 默认情况下，该命令生成两个密码。 
+The following example creates an access token with permissions to perform `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository. By default, the command generates two passwords. 
 
-此示例将标记状态设置为 `enabled` （默认设置），但你可以随时更新令牌并将状态设置为 `disabled`。
+This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
@@ -55,9 +50,9 @@ az acr token create --name MyToken --registry myregistry \
   --repository samples/nginx content/read --status enabled
 ```
 
-输出显示有关令牌的详细信息，包括生成的密码和作用域映射。 建议将密码保存在安全的位置，以便稍后用于 `docker login`。 不能再次检索这些密码，而是可以生成新密码。
+The output shows details about the token, including generated passwords and scope map. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-输出还显示了自动创建的作用域映射，名为 `MyToken-scope-map`。 可以使用范围映射将相同的存储库操作应用于其他令牌。 或者，稍后更新范围映射以更改令牌权限。
+The output also shows that a scope map is automatically created, named `MyToken-scope-map`. You can use the scope map to apply the same repository actions to other tokens. Or, update the scope map later to change the token permissions.
 
 ```console
 {
@@ -90,11 +85,11 @@ az acr token create --name MyToken --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/tokens"
 ```
 
-### <a name="create-a-scope-map-and-associated-token"></a>创建作用域映射和关联的令牌
+### <a name="create-a-scope-map-and-associated-token"></a>Create a scope map and associated token
 
-或者，在创建令牌时，使用存储库和关联的操作指定范围映射。 若要创建作用域映射，请使用[az acr scope map create][az-acr-scope-map-create]命令。
+Alternatively, specify a scope map with repositories and associated actions when creating a token. To create a scope map, use the [az acr scope-map create][az-acr-scope-map-create] command.
 
-下面的示例命令创建具有上一示例中所用相同权限的范围映射。 它允许 `samples/hello-world` 存储库上的 `content/write` 和 `content/read` 操作以及 `samples/nginx` 存储库上的 `content/read` 操作：
+The following example command creates a scope map with the same permissions used in the previous example. It allows `content/write` and `content/read` actions on the `samples/hello-world` repository, and the `content/read` action on the `samples/nginx` repository:
 
 ```azurecli
 az acr scope-map create --name MyScopeMap --registry myregistry \
@@ -121,21 +116,21 @@ az acr scope-map create --name MyScopeMap --registry myregistry \
   "type": "Microsoft.ContainerRegistry/registries/scopeMaps"
 ```
 
-运行[az acr token create][az-acr-token-create]以创建与*MyScopeMap*范围映射关联的令牌。 默认情况下，该命令生成两个密码。 此示例将标记状态设置为 `enabled` （默认设置），但你可以随时更新令牌并将状态设置为 `disabled`。
+Run [az acr token create][az-acr-token-create] to create a token associated with the *MyScopeMap* scope map. By default, the command generates two passwords. This example sets the token status to `enabled` (the default setting), but you can update the token at any time and set the status to `disabled`.
 
 ```azurecli
 az acr token create --name MyToken --registry myregistry --scope-map MyScopeMap --status enabled
 ```
 
-输出显示有关令牌的详细信息，包括生成的密码和应用的范围映射。 建议将密码保存在安全的位置，以便稍后用于 `docker login`。 不能再次检索这些密码，而是可以生成新密码。
+The output shows details about the token, including generated passwords and the scope map you applied. It's recommended to save the passwords in a safe place to use later with `docker login`. The passwords can't be retrieved again but new ones can be generated.
 
-## <a name="generate-passwords-for-token"></a>为令牌生成密码
+## <a name="generate-passwords-for-token"></a>Generate passwords for token
 
-如果创建令牌时创建了密码，请继续对[注册表进行身份验证](#authenticate-using-token)。
+If passwords were created when you created the token, proceed to [Authenticate with registry](#authenticate-using-token).
 
-如果没有令牌密码，或想要生成新密码，请运行[az acr token credential 生成][az-acr-token-credential-generate]命令。
+If you don't have a token password, or you want to generate new passwords, run the [az acr token credential generate][az-acr-token-credential-generate] command.
 
-下面的示例为你创建的令牌生成新密码，有效期为30天。 它在环境变量 TOKEN_PWD 中存储密码。 此示例的格式适用于 bash shell。
+The following example generates a new password for the token you created, with an expiration period of 30 days. It stores the password in the environment variable TOKEN_PWD. This example is formatted for the bash shell.
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
@@ -143,9 +138,9 @@ TOKEN_PWD=$(az acr token credential generate \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 
-## <a name="authenticate-using-token"></a>使用令牌进行身份验证
+## <a name="authenticate-using-token"></a>Authenticate using token
 
-使用令牌凭据运行 `docker login` 以使用注册表进行身份验证。 输入令牌名称作为用户名，并提供其密码之一。 下面的示例为 bash shell 设置格式，并使用环境变量提供值。
+Run `docker login` to authenticate with the registry using the token credentials. Enter the token name as the user name and provide one of its passwords. The following example is formatted for the bash shell, and provides the values using environment variables.
 
 ```bash
 TOKEN_NAME=MyToken
@@ -154,22 +149,22 @@ TOKEN_PWD=<token password>
 echo $TOKEN_PWD | docker login --username $TOKEN_NAME --password-stdin myregistry.azurecr.io
 ```
 
-输出应显示成功的身份验证：
+Output should show successful authentication:
 
 ```console
 Login Succeeded
 ```
 
-## <a name="verify-scoped-access"></a>验证范围的访问权限
+## <a name="verify-scoped-access"></a>Verify scoped access
 
-可以验证令牌是否为注册表中的存储库提供了作用域内的权限。 在此示例中，以下 `docker pull` 命令会成功完成，以便请求 `samples/hello-world` 和 `samples/nginx` 存储库中可用的映像：
+You can verify that the token provides scoped permissions to the repositories in the registry. In this example, the following `docker pull` commands complete successfully to pull images available in the `samples/hello-world` and `samples/nginx` repositories:
 
 ```console
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-由于示例标记只允许在 `samples/hello-world` 存储库上进行 `content/write` 操作，因此 `docker push` 成功到该存储库，但对于 `samples/nginx`失败：
+Because the example token allows the `content/write` action only on the `samples/hello-world` repository, `docker push` succeeds to that repository but fails for `samples/nginx`:
 
 ```console
 # docker push succeeds
@@ -179,90 +174,90 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 docker pull myregistry.azurecr.io/samples/nginx:v1
 ```
 
-## <a name="update-scope-map-and-token"></a>更新范围映射和令牌
+## <a name="update-scope-map-and-token"></a>Update scope map and token
 
-若要更新令牌权限，请使用[az acr scope map update][az-acr-scope-map-update]更新关联的作用域映射中的权限。 例如，若要更新*MyScopeMap* ，以删除 `samples/hello-world` 存储库中的 `content/write` 操作：
+To update token permissions, update the permissions in the associated scope map, using [az acr scope-map update][az-acr-scope-map-update]. For example, to update *MyScopeMap* to remove the `content/write` action on the `samples/hello-world` repository:
 
 ```azurecli
 az acr scope-map update --name MyScopeMap --registry myregistry \
   --remove samples/hello-world content/write
 ```
 
-如果作用域映射与多个令牌关联，则该命令将更新所有关联令牌的权限。
+If the scope map is associated with more than one token, the command updates the permission of all associated tokens.
 
-如果要使用不同的作用域映射来更新令牌，请运行[az acr token update][az-acr-token-update]。 例如：
+If you want to update a token with a different scope map, run [az acr token update][az-acr-token-update]. 例如：
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-更新令牌或与令牌关联的作用域映射后，权限更改将在下一 `docker login` 或使用令牌的其他身份验证后生效。
+After updating a token, or a scope map associated with a token, the permission changes take effect at the next `docker login` or other authentication using the token.
 
-更新令牌后，你可能想要生成新密码来访问注册表。 运行[az acr token credential 生成][az-acr-token-credential-generate]。 例如：
+After updating a token, you might want to generate new passwords to access the registry. Run [az acr token credential generate][az-acr-token-credential-generate]. 例如：
 
 ```azurecli
 az acr token credential generate \
   --name MyToken --registry myregistry --days 30
 ```
 
-## <a name="about-repository-scoped-permissions"></a>关于存储库范围的权限
+## <a name="about-repository-scoped-permissions"></a>About repository-scoped permissions
 
 ### <a name="concepts"></a>概念
 
-若要配置存储库范围的权限，请使用 Azure CLI 中的命令创建*访问令牌*和关联的*作用域映射*。
+To configure repository-scoped permissions, you create an *access token* and an associated *scope map* using commands in the Azure CLI.
 
-* **访问令牌**是用于在注册表中进行身份验证的密码。 允许对一个或多个存储库的*操作*使用与每个令牌关联的。 可以为每个令牌设置过期时间。 
+* An **access token** is a credential used with a password to authenticate with the registry. Associated with each token are permitted *actions* scoped to one or more repositories. You can set an expiration time for each token. 
 
-* 每个指定存储库上的操作包括以下一项或多项**操作**。
+* **Actions** on each specified repository include one or more of the following.
 
-  |操作  |说明  |
+  |行动  |描述  |
   |---------|---------|
-  |`content/read`     |  读取存储库中的数据。 例如，请求项目。  |
-  |`metadata/read`    | 从存储库中读取元数据。 例如，列出标记或显示清单元数据。   |
-  |`content/write`     |  将数据写入存储库。 与 `content/read` 一起使用来推送项目。    |
-  |`metadata/write`     |  将元数据写入存储库。 例如，更新清单属性。  |
-  |`content/delete`    | 从存储库中删除数据。 例如，删除存储库或清单。 |
+  |`content/read`     |  Read data from the repository. For example, pull an artifact.  |
+  |`metadata/read`    | Read metadata from the repository. For example, list tags or show manifest metadata.   |
+  |`content/write`     |  Write data to the repository. Use with `content/read` to push an artifact.    |
+  |`metadata/write`     |  Write metadata to the repository. For example, update manifest attributes.  |
+  |`content/delete`    | Remove data from the repository. For example, delete a repository or a manifest. |
 
-* **作用域映射**是一个注册表对象，可将应用于令牌的存储库权限组合在一起，也可以重新应用到其他令牌。 如果在创建标记时未应用作用域映射，将自动为你创建一个作用域映射，以保存权限设置。 
+* A **scope map** is a registry object that groups repository permissions you apply to a token, or can reapply to other tokens. If you don't apply a scope map when creating a token, a scope map is automatically created for you, to save the permission settings. 
 
-  作用域映射有助于配置多个用户对一组存储库具有相同的访问权限。 Azure 容器注册表还提供系统定义的作用域映射，你可以在创建访问令牌时应用此映射。
+  A scope map helps you configure multiple users with identical access to a set of repositories. Azure Container Registry also provides system-defined scope maps that you can apply when creating access tokens.
 
-下图汇总了标记与范围映射之间的关系。 
+The following image summarizes the relationship between tokens and scope maps. 
 
-![注册表范围映射和令牌](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
+![Registry scope maps and tokens](media/container-registry-repository-scoped-permissions/token-scope-map-concepts.png)
 
 ### <a name="scenarios"></a>方案
 
-使用访问令牌的方案包括：
+Scenarios for using an access token include:
 
-* 为 IoT 设备提供单独的令牌，以便从存储库中提取映像
-* 向外部组织提供对特定存储库的权限 
-* 限制存储库访问组织中的特定用户组。 例如，向开发人员提供写入和读取访问权限，这些开发人员构建面向特定存储库的映像，以及对从这些存储库部署的团队的读取访问权限。
+* Provide IoT devices with individual tokens to pull an image from a repository
+* Provide an external organization with permissions to a specific repository 
+* Limit repository access to specific user groups in your organization. For example, provide write and read access to developers who build images that target specific repositories, and read access to teams that deploy from those repositories.
 
-### <a name="authentication-using-token"></a>使用令牌进行身份验证
+### <a name="authentication-using-token"></a>Authentication using token
 
-使用令牌名称作为用户名及其关联的密码之一来向目标注册表进行身份验证。 身份验证方法取决于配置的操作。
+Use a token name as a user name and one of its associated passwords to authenticate with the target registry. The authentication method depends on the configured actions.
 
-### <a name="contentread-or-contentwrite"></a>内容/读取或内容/写入
+### <a name="contentread-or-contentwrite"></a>content/read or content/write
 
-如果令牌仅允许 `content/read` 或 `content/write` 操作，请在以下任一身份验证流中提供令牌凭据：
+If the token permits only `content/read` or `content/write` actions, provide token credentials in either of the following authentication flows:
 
-* 使用 `docker login` 在 Docker 中进行身份验证
-* 在 Azure CLI 中使用[az acr login][az-acr-login]命令对注册表进行身份验证
+* Authenticate with Docker using `docker login`
+* Authenticate with the registry using the [az acr login][az-acr-login] command in the Azure CLI
 
-进行身份验证后，该令牌将允许在作用域的存储库或存储库中配置的操作。 例如，如果令牌允许对存储库进行 `content/read` 操作，则允许对该存储库中的映像执行 `docker pull` 操作。
+Following authentication, the token permits the configured actions on the scoped repository or repositories. For example, if the token permits the `content/read` action on a repository, `docker pull` operations are permitted on images in that repository.
 
-#### <a name="metadataread-metadatawrite-or-contentdelete"></a>元数据/读取、元数据/写入或内容/删除
+#### <a name="metadataread-metadatawrite-or-contentdelete"></a>metadata/read, metadata/write, or content/delete
 
-如果令牌允许对存储库进行 `metadata/read`、`metadata/write`或 `content/delete` 操作，则令牌凭据必须作为参数提供 Azure CLI 中的相关[az acr 存储库][az-acr-repository]命令。
+If the token permits `metadata/read`, `metadata/write`, or `content/delete` actions on a repository, token credentials must be provided as parameters with the related [az acr repository][az-acr-repository] commands in the Azure CLI.
 
-例如，如果在存储库上允许 `metadata/read` 操作，请在运行[az acr repository show-tags][az-acr-repository-show-tags]命令以列出标记时传递令牌凭据。
+For example, if `metadata/read` actions are permitted on a repository, pass the token credentials when running the [az acr repository show-tags][az-acr-repository-show-tags] command to list tags.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要管理作用域映射和访问令牌，请使用[az acr 范围地图][az-acr-scope-map]和[az acr 标记][az-acr-token]命令组中的其他命令。
-* 有关使用管理员帐户或 Azure Active Directory 标识对 Azure 容器注册表进行身份验证的方案，请参阅[身份验证概述](container-registry-authentication.md)。
+* To manage scope maps and access tokens, use additional commands in the [az acr scope-map][az-acr-scope-map] and [az acr token][az-acr-token] command groups.
+* See the [authentication overview](container-registry-authentication.md) for scenarios to authenticate with an Azure container registry using an admin account or an Azure Active Directory identity.
 
 
 <!-- LINKS - External -->

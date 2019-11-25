@@ -8,13 +8,12 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb45f2b929c08ce77c83af450726a00dd6af458e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318200"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456731"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 
@@ -26,18 +25,18 @@ Azure IoT Edge 设备遵循的[设备生命周期](../iot-hub/iot-hub-device-man
 
 Azure IoT Edge 提供两种方法来配置在 IoT Edge 设备上运行的模块：一种方法用于在单个设备上进行开发和快速迭代（在 Azure IoT Edge [教程](tutorial-deploy-function.md)中使用此方法），另一种方法用于管理大群 IoT Edge 设备。 可以通过 Azure 门户和编程方式使用这两种方法。 若是针对组或大量设备，可以使用设备孪生中的[标记](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags)指定要将模块部署到哪些设备。 以下步骤步骤讨论如何部署到通过标记属性标识的华盛顿州设备组。 
 
-本文重点介绍设备群的配置和监视阶段，统称为 IoT Edge 自动部署。 整个部署步骤如下所示： 
+本文重点介绍设备群的配置和监视阶段，统称为 IoT Edge 自动部署。 The overall deployment steps are as follows: 
 
-1. 由操作员来定义部署，描述一组模块和目标设备。 每个部署都有一个反映此信息的部署清单。 
+1. 由操作员来定义部署，描述一组模块和目标设备。 Each deployment has a deployment manifest that reflects this information. 
 2. IoT 中心服务与所有目标设备通信，为其配置所需模块。 
-3. IoT 中心服务从 IoT Edge 设备检索状态，然后将这些状态提供给操作员。  例如，如果某个 Edge 设备配置不成功，或者某个模块在运行时发生故障，操作员就会看到。 
+3. IoT 中心服务从 IoT Edge 设备检索状态，然后将这些状态提供给操作员。  For example, an operator can see when an Edge device is not configured successfully or if a module fails during runtime. 
 4. 随时对新的符合目标条件的 IoT Edge 设备进行部署配置。 例如，如果某个部署的目标是华盛顿州的所有 IoT Edge 设备，则当某个新的 IoT Edge 设备完成预配并添加到华盛顿州设备组时，该部署会自动配置此设备。 
  
 本文将介绍配置和监视部署过程中涉及的每个组件。 如需创建和更新部署的详细介绍，请参阅[大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)。
 
 ## <a name="deployment"></a>部署
 
-loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT Edge 目标设备上作为实例运行。 操作方式是：配置一个 IoT Edge 部署清单，其中包括一系列模块和相应的初始化参数。 部署可以分配给单个设备（根据设备 ID 分配），也可以分配给一组设备（根据标记）。 IoT Edge 设备在收到部署清单以后，就会从各个容器存储库下载并安装容器映像，并对其进行相应的配置。 创建部署以后，操作员可以监视部署状态，看目标设备是否已正确配置。
+loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT Edge 目标设备上作为实例运行。 操作方式是：配置一个 IoT Edge 部署清单，其中包括一系列模块和相应的初始化参数。 A deployment can be assigned to a single device (based on Device ID) or to a group of devices (based on tags). Once an IoT Edge device receives a deployment manifest, it downloads and installs the container images from the respective container repositories, and configures them accordingly. Once a deployment is created, an operator can monitor the deployment status to see whether targeted devices are correctly configured.
 
 只能通过部署配置 IoT Edge 设备。 设备在接收部署之前，必须具备以下先决条件：
 
@@ -51,7 +50,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 
 每个模块的配置元数据包括： 
 
-* Version 
+* 版本 
 * Type 
 * 状态（例如，正在运行或已停止） 
 * 重启策略 
@@ -62,7 +61,7 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 
 ### <a name="target-condition"></a>目标条件
 
-在部署的整个生存期内会持续对目标条件进行评估。 将包括满足要求的任何新设备，并删除不再满足要求的任何现有设备。 如果服务检测到任何目标条件更改，则会重新激活部署。 
+The target condition is continuously evaluated throughout the lifetime of the deployment. 将包括满足要求的任何新设备，并删除不再满足要求的任何现有设备。 如果服务检测到任何目标条件更改，则会重新激活部署。 
 
 例如，部署 A 具有目标条件 tags.environment = 'prod'。 启动该部署时，共有 10 个生产设备。 这 10 个设备都成功安装了模块。 IoT Edge 代理状态显示为总共 10 个设备，10 个成功响应，0 个失败响应，以及 0 个挂起响应。 现在，又添加 5 个 tags.environment = 'prod' 的设备。 服务检测到更改，当它尝试部署到这 5 个新设备时，IoT Edge 代理状态变为总共 15 个设备，10 个成功响应，0 个失败响应，以及 5 个挂起响应。
 
@@ -83,17 +82,17 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 * 单引号表示目标条件的值。 因此，如果某个单引号是设备名称的一部分，则必须使用另一个单引号对其转义。 若要以名为 `operator'sDevice` 的设备为目标，请编写 `deviceId='operator''sDevice'`。
 * 目标条件值中允许使用数字、字母和以下字符：`-:.+%_#*?!(),=@;$`。
 
-### <a name="priority"></a>优先度
+### <a name="priority"></a>优先级
 
-优先级定义相对于其他部署，是否更应将某个部署应用到目标设备。 部署优先级是一个正整数，数字越大表示优先级越高。 如果多个部署均以某个 IoT Edge 设备为目标，则应用优先级最高的部署。  不会应用或合并优先级较低的部署。  如果两个或两个以上优先级相同的部署以某个设备为目标，则应用最近创建的部署（取决于创建时间戳）。
+优先级定义相对于其他部署，是否更应将某个部署应用到目标设备。 部署优先级是一个正整数，数字越大表示优先级越高。 如果多个部署均以某个 IoT Edge 设备为目标，则应用优先级最高的部署。  Deployments with lower priorities are not applied, nor are they merged.  If a device is targeted with two or more deployments with equal priority, the most recently created deployment (determined by the creation timestamp) applies.
 
 ### <a name="labels"></a>标签 
 
-标签是字符串键值对，可以用于部署的筛选和分组。 一个部署可能有多个标签。 标签是可选的，不影响 IoT Edge 设备的实际配置。 
+标签是字符串键值对，可以用于部署的筛选和分组。 A deployment may have multiple labels. 标签是可选的，不影响 IoT Edge 设备的实际配置。 
 
 ### <a name="deployment-status"></a>部署状态
 
-可以监视任何目标 IoT Edge 设备的部署，确定其是否成功应用。  目标 Edge 设备会在下述一个或多个状态类别中显示： 
+可以监视任何目标 IoT Edge 设备的部署，确定其是否成功应用。  A targeted Edge device will appear in one or more of the following status categories: 
 
 * **目标**：显示与部署目标条件匹配的 IoT Edge 设备。
 * **实际**：显示的目标 IoT Edge 设备尚未成为另一优先级更高的部署的目标。
@@ -107,16 +106,16 @@ loT Edge 自动部署会分配 IoT Edge 模块映像，这些映像在一组 IoT
 
 分阶段推出按以下阶段和步骤执行： 
 
-1. 建立一个 IoT Edge 设备的测试环境，方法是对设备进行预配，并设置类似 `tag.environment='test'` 的设备孪生标记。 该测试环境应镜像最终会成为部署目标的生产环境。 
+1. 建立一个 IoT Edge 设备的测试环境，方法是对设备进行预配，并设置类似 `tag.environment='test'` 的设备孪生标记。 The test environment should mirror the production environment that the deployment will eventually target. 
 2. 创建包含所需模块和配置的部署。 目标条件应针对测试型 IoT Edge 设备环境。   
 3. 在测试环境中验证新的模块配置。
 4. 更新部署，使之包括部分生产型 IoT Edge 设备，方法是向目标条件添加新标记。 另请确保部署的优先级高于其他目前以这些设备为目标的部署。 
 5. 通过查看部署状态，验证部署是否已在目标 IoT 设备上成功完成。
 6. 更新部署，使之以所有剩余的生产型 IoT Edge 设备为目标。
 
-## <a name="rollback"></a>回退
+## <a name="rollback"></a>回滚
 
-在出现错误或配置不当的情况下，可以回退部署。  由于部署为 IoT Edge 设备定义绝对的模块配置，因此即使目的是删除所有模块，也必须有另一优先级较低的部署以该设备为目标。  
+在出现错误或配置不当的情况下，可以回退部署。  Because a deployment defines the absolute module configuration for an IoT Edge device, an additional deployment must also be targeted to the same device at a lower priority even if the goal is to remove all modules.  
 
 请按以下顺序执行回退： 
 

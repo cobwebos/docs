@@ -8,43 +8,42 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 37d5288389c7b602eb0d13a736e289010d7e0f80
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 0d315c7955fff854fc52f73de16eda71b9296b40
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208203"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452450"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Azure IoT Edge 的安全标准
 
-Azure IoT Edge 可以解决将数据和分析移动到智能边缘时的固有风险。 IoT Edge 安全标准将不同部署方案的灵活性与你期望所有 Azure 服务的保护进行平衡。 
+Azure IoT Edge addresses the risks that are inherent when moving your data and analytics to the intelligent edge. The IoT Edge security standards balance flexibility for different deployment scenarios with the protection that you expect from all Azure services. 
 
-IoT Edge 在各种硬件和型号的硬件上运行, 支持多个操作系统, 并适用于不同的部署方案。 部署方案的风险取决于各种因素, 包括解决方案所有权、部署地理、数据敏感度、隐私、应用程序垂直和法规要求。 IoT Edge 是一个可扩展的安全框架，它基于针对规模设计的有充分根据的原则，而不是为特定的场景提供具体解决方案。
+IoT Edge runs on various makes and models of hardware, supports several operating systems, and applies to diverse deployment scenarios. The risk of a deployment scenario depends on factors that include solution ownership, deployment geography, data sensitivity, privacy, application vertical, and regulatory requirements. Rather than offering concrete solutions for specific scenarios, IoT Edge is an extensible security framework based on well-grounded principles that are designed for scale. 
  
-本文提供 IoT Edge 安全框架的概述。 有关详细信息，请参阅[保护智能边缘](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)。
+本文提供 IoT Edge 安全框架的概述。 For more information, see [Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
 ## <a name="standards"></a>标准
 
-标准使审查和实施更简单，两者是安全性的标志。 安全解决方案应有助于通过评估中的审查，从而建立信任，并且不应成为部署的障碍。 确保 Azure IoT Edge 安全的框架设计源自经过时间考验和行业认可的安全协议，以便利用熟悉的功能并重复使用。 
+标准使审查和实施更简单，两者是安全性的标志。 A security solution should lend itself to scrutiny under evaluation to build trust and shouldn't be a hurdle to deployment. The design of the framework to secure Azure IoT Edge is based on time-tested and industry proven security protocols for familiarity and reuse. 
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
-部署 IoT 解决方案时，你需要知道的是：只能让受信任的执行组件、设备和模块访问你的解决方案。 基于证书的身份验证是 Azure IoT Edge 平台身份验证的主要机制。 此机制派生自 Internet 工程任务组 (IETF) 一组管理公钥基础结构 (PKiX) 的标准。     
+When you deploy an IoT solution, you need to know that only trusted actors, devices, and modules have access to your solution. Certificate-based authentication is the primary mechanism for authentication for the Azure IoT Edge platform. This mechanism is derived from a set of standards governing Public Key Infrastructure (PKiX) by the Internet Engineering Task Force (IETF).     
 
-与 Azure IoT Edge 设备交互（无论是物理上的交互还是通过网络连接交互）的所有设备、模块和执行组件都应该有唯一的证书标识。 并非每个方案或组件都适用于基于证书的身份验证, 因此安全框架的扩展性提供了安全的替代方法。 
+与 Azure IoT Edge 设备交互（无论是物理上的交互还是通过网络连接交互）的所有设备、模块和执行组件都应该有唯一的证书标识。 Not every scenario or component may lend itself to certificate-based authentication, so the extensibility of the security framework offers secure alternatives. 
 
-有关详细信息, 请参阅[Azure IoT Edge 证书使用](iot-edge-certs.md)。
+For more information, see [Azure IoT Edge certificate usage](iot-edge-certs.md).
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>授权
 
-最低特权原则指出，系统的用户和组件应该只有权访问其执行角色所要访问的最少量资源和数据。 设备、模块和执行组件应该只能在架构方面允许时，访问其权限范围内的资源和数据。 一些权限可以使用足够的特权进行配置，而其他权限在体系结构上强制执行。  例如, 可以授权某些模块连接到 Azure IoT 中心。 但是, 没有理由将一个 IoT Edge 设备中的模块访问其他 IoT Edge 设备中的模块。
+最低特权原则指出，系统的用户和组件应该只有权访问其执行角色所要访问的最少量资源和数据。 设备、模块和执行组件应该只能在架构方面允许时，访问其权限范围内的资源和数据。 Some permissions are configurable with sufficient privileges and others are architecturally enforced.  For example, some modules may be authorized to connect to Azure IoT Hub. However, there is no reason why a module in one IoT Edge device should access the twin of a module in another IoT Edge device.
 
-其他授权方案包括证书签名权限和基于角色的访问控制 (RBAC)。 
+Other authorization schemes include certificate signing rights and role-based access control (RBAC). 
 
 ## <a name="attestation"></a>证明
 
-证明确保软件位的完整性, 这对于检测和阻止恶意软件非常重要。  Azure IoT Edge 安全框架将证明分为以下三个主要类别：
+Attestation ensures the integrity of software bits, which is important for detecting and preventing malware.  The Azure IoT Edge security framework classifies attestation under three main categories:
 
 * 静态证明
 * 运行时证明
@@ -52,34 +51,34 @@ IoT Edge 在各种硬件和型号的硬件上运行, 支持多个操作系统, �
 
 ### <a name="static-attestation"></a>静态证明
 
-静态认证在开机期间验证设备上所有软件的完整性, 包括操作系统、所有运行时和配置信息。 由于静态证明是在启动过程中发生的, 因此它通常称为 "安全启动"。 IoT Edge 设备的安全框架扩展到制造商, 并包含确保静态证明进程的安全硬件功能。 这些过程包括安全启动和安全固件升级。  与芯片供应商的密切协作减少了多余的固件层，从而尽量减小受攻击面。 
+Static attestation verifies the integrity of all software on a device during power-up, including the operating system, all runtimes, and configuration information. Because static attestation occurs during power-up, it's often referred to as secure boot. The security framework for IoT Edge devices extends to manufacturers and incorporates secure hardware capabilities that assure static attestation processes. These processes include secure boot and secure firmware upgrade.  Working in close collaboration with silicon vendors eliminates superfluous firmware layers, so minimizes the threat surface. 
 
 ### <a name="runtime-attestation"></a>运行时证明
 
-一旦系统完成了安全启动过程, 设计良好的系统就会检测到注入恶意软件并采取适当对策的尝试。 恶意软件攻击可能以系统的端口和接口为目标。 如果恶意执行组件具有设备的物理访问权限, 则可能会篡改设备本身, 或使用侧通道攻击获取访问权限。 由于恶意软件或未经授权的配置更改, 无法检测到此类恶意内容, 因为它是在启动过程中注入的。 设备硬件提供或强制实施的对策有助于抵御这种威胁。  IoT Edge 的安全框架显式调用对付运行时威胁的扩展。  
+Once a system has completed a secure boot process, well-designed systems should detect attempts to inject malware and take proper countermeasures. Malware attacks may target the system's ports and interfaces. If malicious actors have physical access to a device, they may tamper with the device itself or use side-channel attacks to gain access. Such malcontent, whether malware or unauthorized configuration changes, can't be detected by static attestation because it is injected after the boot process. 设备硬件提供或强制实施的对策有助于抵御这种威胁。  The security framework for IoT Edge explicitly calls for extensions that combat runtime threats.  
 
 ### <a name="software-attestation"></a>软件证明
 
-所有正常运行的系统 (包括智能边缘系统) 都需要修补和升级。  安全性对更新进程非常重要, 否则它们可能是潜在的威胁媒介。  IoT Edge 的安全框架通过测量和签名的包调用更新, 以确保和验证包源的完整性。  此标准适用于所有操作系统和应用程序软件。 
+All healthy systems, including intelligent edge systems, need patches and upgrades.  Security is important for update processes, otherwise they can be potential threat vectors.  The security framework for IoT Edge calls for updates through measured and signed packages to assure the integrity of and authenticate the source of the packages.  This standard applies to all operating systems and application software bits. 
 
 ## <a name="hardware-root-of-trust"></a>硬件信任根
 
-对于许多智能边缘设备 (尤其是可以通过潜在恶意执行组件进行物理访问的设备), 硬件安全是最后一种保护措施。 防篡改硬件对于这种部署而言至关重要。 Azure IoT Edge 鼓励安全芯片硬件提供商协作，提供不同类型的硬件信任根，以适应各种风险状况和部署方案。 硬件信任可能来源于一般安全协议标准，例如受信任的平台模块 (ISO/IEC 11889) 和受信任的计算组的设备身份合成引擎 (DICE)。 TrustZones 和软件防护扩展 (SGX) 等安全飞地技术也提供硬件信任。 
+For many intelligent edge devices, especially devices that can be physically accessed by potential malicious actors, hardware security is the last defense for protection. Tamper resistant hardware is crucial for such deployments. Azure IoT Edge encourages secure silicon hardware vendors to offer different flavors of hardware root of trust to accommodate various risk profiles and deployment scenarios. 硬件信任可能来源于一般安全协议标准，例如受信任的平台模块 (ISO/IEC 11889) 和受信任的计算组的设备身份合成引擎 (DICE)。 Secure enclave technologies like TrustZones and Software Guard Extensions (SGX) also provide hardware trust. 
 
 ## <a name="certification"></a>认证
 
-为了帮助客户在采购 Azure IoT Edge 设备进行部署时做出明智的决策, IoT Edge 框架包括认证要求。  这些要求的基础是关于安全声明的认证和关于安全实现的认证。  例如, 安全声明证书意味着 IoT Edge 设备使用已知的安全硬件来抵御启动攻击。 验证证书是指正确实现了安全硬件, 以便在设备中提供此值。  为了符合简单性原则，该框架会尽量减轻认证负担。   
+To help customers make informed decisions when procuring Azure IoT Edge devices for their deployment, the IoT Edge framework includes certification requirements.  Foundational to these requirements are certifications pertaining to security claims and certifications pertaining to validation of the security implementation.  For example, a security claim certification means that the IoT Edge device uses secure hardware known to resist boot attacks. A validation certification means that the secure hardware was properly implemented to offer this value in the device.  In keeping with the principle of simplicity, the framework tries to keep the burden of certification minimal.   
 
 ## <a name="extensibility"></a>扩展性
 
-借助 IoT 技术驱动不同类型的业务转换, 安全应并行发展以应对新兴方案。  Azure IoT Edge 安全框架有着坚实的基础，在此之上扩展到不同的维度，包括： 
+With IoT technology driving different types of business transformations, security should evolve in parallel to address emerging scenarios.  The Azure IoT Edge security framework starts with a solid foundation on which it builds in extensibility into different dimensions to include: 
 
 * 第一方安全服务，如 Azure IoT 中心的设备预配服务。
-* 第三方服务, 例如适用于不同应用程序的中心 (如工业或医疗保健) 或技术焦点 (如网格网络中的安全监视或硅硬件证明服务), 通过丰富的网络群体.
+* Third-party services like managed security services for different application verticals (like industrial or healthcare) or technology focus (like security monitoring in mesh networks, or silicon hardware attestation services) through a rich network of partners.
 * 旧系统，用于包括使用备用安全策略的更新，比如使用安全技术而不是证书进行身份验证和身份管理。
 * 安全硬件，用于吸收新的安全硬件技术以及芯片合作伙伴的贡献。
 
-最后, 确保智能边缘的安全需要由开放社区的协作发布, 这些内容由保护 IoT 的共同关注。  这些贡献可能采用的形式是安全的技术或服务。  Azure IoT Edge 安全框架提供可最大范围扩展的坚实基础，在智能边缘中提供与 Azure 云中相同级别的信任和完整性。  
+In the end, securing the intelligent edge requires collaborative contributions from an open community driven by the common interest in securing IoT.  These contributions might be in the form of secure technologies or services.  The Azure IoT Edge security framework offers a solid foundation for security that is extensible for the maximum coverage to offer the same level of trust and integrity in the intelligent edge as with Azure cloud.  
 
 ## <a name="next-steps"></a>后续步骤
 

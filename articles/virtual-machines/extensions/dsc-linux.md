@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux 的 Azure DSC 扩展
+title: Azure DSC extension for Linux
 description: 安装 OMI 和 DSC 包，以便能够使用 Desired State Configuration 来配置 Azure Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,77 +13,78 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750070"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457523"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
-Desired State Configuration (DSC) 是一个管理平台，可让你使用“配置即代码”来管理 IT 和开发基础结构。
+Desired State Configuration (DSC) is a management platform that you can use to manage your IT and development infrastructure with configuration as code.
 
-> !请注意，适用于 linux 的 DSC 扩展和[适用于 linux 的 Azure Monitor 虚拟机扩展](/azure/virtual-machines/extensions/oms-linux)目前存在冲突，不受并行配置支持。  这意味着不应在同一 VM 上一起使用这两个解决方案。
+> [!NOTE]
+> The DSC extension for Linux and the [Azure Monitor virtual machine extension for Linux](/azure/virtual-machines/extensions/oms-linux) currently present a conflict and aren't supported in a side-by-side configuration. Don't use the two solutions together on the same VM.
 
-DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作
+The DSCForLinux extension is published and supported by Microsoft. 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 The DSC extension can also do the following actions:
 
 
-- 将 Linux VM 注册到 Azure 自动化帐户，以便从 Azure 自动化服务提取配置 (Register ExtensionAction)
-- 将 MOF 配置推送到 Linux VM (Push ExtensionAction)
-- 将元 MOF 配置应用到 Linux VM，以配置提取服务器来提取节点配置 (Pull ExtensionAction)
-- 将自定义的 DSC 模块安装到 Linux VM (Install ExtensionAction)
-- 在 Linux VM 中删除自定义的 DSC 模块 (Remove ExtensionAction)
+- Register the Linux VM to an Azure Automation account to pull configurations from the Azure Automation service (Register ExtensionAction).
+- Push MOF configurations to the Linux VM (Push ExtensionAction).
+- Apply meta MOF configuration to the Linux VM to configure a pull server in order to pull node configuration (Pull ExtensionAction).
+- Install custom DSC modules to the Linux VM (Install ExtensionAction).
+- Remove custom DSC modules from the Linux VM (Remove ExtensionAction).
 
  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
-| 分发 | 版本 |
+| 分配 | 版本 |
 |---|---|
 | Debian | 所有版本 |
 | Ubuntu| 18.04 |
  
 ### <a name="internet-connectivity"></a>Internet 连接
 
-DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。 对于其他操作（例如“拉取”），Pull 和 Install 扩展要求连接到 Azure 存储/Github， 具体取决于客户提供的设置。
+The DSCForLinux extension requires the target virtual machine to be connected to the internet. For example, the Register extension requires connectivity to the Automation service. For other actions such as Pull, Pull, Install requires connectivity to Azure Storage and GitHub. It depends on settings provided by the customer.
 
 ## <a name="extension-schema"></a>扩展架构
 
-### <a name="11-public-configuration"></a>1.1 公共配置
+### <a name="public-configuration"></a>公共配置
 
 下面是所有支持的公共配置参数：
 
-* `FileUri`：（可选，字符串）MOF 文件/元 MOF 文件/自定义资源 ZIP 文件的 URI。
-* `ResourceName`：（可选，字符串）自定义资源模块的名称
-* `ExtensionAction`：（可选，字符串）指定扩展的功能。 有效值：Register、Push、Pull、Install、Remove。 如果未指定，则默认将值视为推送操作。
-* `NodeConfigurationName`：（可选，字符串）要应用的节点配置的名称。
-* `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。 
-       如果提取服务器上的配置不同于目标节点上的当前配置，则会将前者复制到挂起的存储并应用。
-* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
+* `FileUri`: (optional, string) The uri of the MOF file, meta MOF file, or custom resource zip file.
+* `ResourceName`: (optional, string) The name of the custom resource module.
+* `ExtensionAction`：（可选，字符串）指定扩展的功能。 Valid values are Register, Push, Pull, Install, and Remove. If not specified, it's considered a Push Action by default.
+* `NodeConfigurationName`: (optional, string) The name of a node configuration to apply.
+* `RefreshFrequencyMins`: (optional, int) Specifies how often (in minutes) that DSC attempts to obtain the configuration from the pull server. 
+       If configuration on the pull server differs from the current one on the target node, it's copied to the pending store and applied.
+* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 Valid values are ApplyOnly, ApplyAndMonitor, and ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
 
 > [!NOTE]
-> 如果使用的版本小于 2.3，则 mode 参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 因此，为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
+> If you use a version earlier than 2.3, the mode parameter is the same as ExtensionAction. Mode seems to be an overloaded term. To avoid confusion, ExtensionAction is used from version 2.3 onward. 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
 >
 
-### <a name="12-protected-configuration"></a>1.2 受保护的配置
+### <a name="protected-configuration"></a>受保护的配置
 
 下面是所有支持的受保护配置参数：
 
-* `StorageAccountName`：（可选，字符串）包含文件的存储帐户的名称
-* `StorageAccountKey`：（可选，字符串）包含文件的存储帐户的密钥
-* `RegistrationUrl`：（可选，字符串）Azure 自动化帐户的 URL
-* `RegistrationKey`：（可选，字符串）Azure 自动化帐户的访问密钥
+* `StorageAccountName`: (optional, string) The name of the storage account that contains the file
+* `StorageAccountKey`: (optional, string) The key of the storage account that contains the file
+* `RegistrationUrl`: (optional, string) The URL of the Azure Automation account
+* `RegistrationKey`: (optional, string) The access key of the Azure Automation account
 
 
 ## <a name="scenarios"></a>方案
 
-### <a name="register-to-azure-automation-account"></a>注册到 Azure 自动化帐户
+### <a name="register-an-azure-automation-account"></a>Register an Azure Automation account
 protected.json
 ```json
 {
@@ -102,7 +103,7 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell format
 ```powershell
 $privateConfig = '{
   "RegistrationUrl": "<azure-automation-account-url>",
@@ -118,7 +119,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>将 MOF 配置文件（在 Azure 存储帐户中）应用到 VM
+### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply an MOF configuration file (in an Azure storage account) to the VM
 
 protected.json
 ```json
@@ -136,7 +137,7 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell format
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -150,7 +151,7 @@ $publicConfig = '{
 ```
 
 
-### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>将 MOF 配置文件（在公共存储中）应用到 VM
+### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Apply an MOF configuration file (in public storage) to the VM
 
 public.json
 ```json
@@ -159,14 +160,14 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell format
 ```powershell
 $publicConfig = '{
   "FileUri": "<mof-file-uri>"
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>将元 MOF 配置文件（在 Azure 存储帐户中）应用到 VM
+### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Apply a meta MOF configuration file (in an Azure storage account) to the VM
 
 protected.json
 ```json
@@ -184,7 +185,7 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell format
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -205,7 +206,7 @@ public.json
   "ExtensionAction": "Pull"
 }
 ```
-powershell 格式
+PowerShell format
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -213,7 +214,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>将自定义资源模块（Azure 存储帐户中的 ZIP 文件）安装到 VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Install a custom resource module (a zip file in an Azure storage account) to the VM
 protected.json
 ```json
 {
@@ -229,7 +230,7 @@ public.json
 }
 ```
 
-powershell 格式
+PowerShell format
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -242,7 +243,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>将自定义资源模块（公共存储中的 ZIP 文件）安装到 VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Install a custom resource module (a zip file in public storage) to the VM
 public.json
 ```json
 {
@@ -250,7 +251,7 @@ public.json
   "FileUri": "<resource-zip-file-uri>"
 }
 ```
-powershell 格式
+PowerShell format
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -266,7 +267,7 @@ public.json
   "ExtensionAction": "Remove"
 }
 ```
-powershell 格式
+PowerShell format
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -276,25 +277,25 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure 自动化）的一个或多个虚拟机时，模板是理想选择。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 Templates are ideal when you deploy one or more virtual machines that require post-deployment configuration, such as onboarding to Azure Automation. 
 
 [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) 和 [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) 是示例资源管理器模板。
 
-有关 Azure 资源管理器模板的更多详细信息，请访问[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)。
+For more information about the Azure Resource Manager template, see [Authoring Azure Resource Manager templates](../../azure-resource-manager/resource-group-authoring-templates.md).
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. 使用 [**Azure-CLI**][azure-cli]
-在部署 DSCForLinux 扩展之前，应根据第 3 部分中所述的不同方案配置 `public.json` 和 `protected.json`。
+### <a name="use-azure-cliazure-cli"></a>Use [Azure CLI][azure-cli]
+Before you deploy the DSCForLinux extension, configure your `public.json` and `protected.json` according to the different scenarios in section 3.
 
-#### <a name="211-classic"></a>2.1.1. 经典
-经典模式也称为 Azure 服务管理模式。 可运行以下命令切换到该模式：
+#### <a name="classic"></a>经典
+The classic deployment mode is also called Azure Service Management mode. 可运行以下命令切换到该模式：
 ```
 $ azure config mode asm
 ```
 
-可运行以下命令部署 DSCForLinux 扩展：
+You can deploy the DSCForLinux extension by running:
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
@@ -305,33 +306,33 @@ $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2. Resource Manager
+#### <a name="resource-manager"></a>资源管理器
 可运行以下命令切换到 Azure 资源管理器模式：
 ```
 $ azure config mode arm
 ```
 
-可运行以下命令部署 DSCForLinux 扩展：
+You can deploy the DSCForLinux extension by running:
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> 在 Azure 资源管理器模式下，`azure vm extension list` 目前不可用。
+> In Azure Resource Manager mode, `azure vm extension list` isn't available for now.
 >
 
-### <a name="22-using-azure-powershellazure-powershell"></a>2.2. 使用 [**Azure PowerShell**][azure-powershell]
+### <a name="use-azure-powershellazure-powershell"></a>Use [Azure PowerShell][azure-powershell]
 
-#### <a name="221-classic"></a>2.2.1 经典
+#### <a name="classic"></a>经典
 
-可运行以下命令登录到 Azure 帐户（Azure 服务管理模式）：
+You can sign in to your Azure account in Azure Service Management mode by running:
 
 ```powershell>
 Add-AzureAccount
 ```
 
-运行以下命令部署 DSCForLinux 扩展：
+And deploy the DSCForLinux extension by running:
 
 ```powershell>
 $vmname = '<vm-name>'
@@ -341,7 +342,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-需要根据上面部分所述的不同方案更改 $privateConfig 和 $publicConfig 的内容 
+Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -362,17 +363,17 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="222resource-manager"></a>2.2.2. 资源管理器
+#### <a name="resource-manager"></a>资源管理器
 
-可运行以下命令登录到 Azure 帐户（Azure 资源管理器模式）：
+You can sign in to your Azure account in Azure Resource Manager mode by running:
 
 ```powershell>
 Login-AzAccount
 ```
 
-单击[**此处**](../../azure-resource-manager/manage-resources-powershell.md)详细了解如何将 Azure PowerShell 与 Azure 资源管理器配合使用。
+To learn more about how to use Azure PowerShell with Azure Resource Manager, see [Manage Azure resources by using Azure PowerShell](../../azure-resource-manager/manage-resources-powershell.md).
 
-可运行以下命令部署 DSCForLinux 扩展：
+You can deploy the DSCForLinux extension by running:
 
 ```powershell>
 $rgName = '<resource-group-name>'
@@ -383,7 +384,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-需要根据上面部分所述的不同方案更改 $privateConfig 和 $publicConfig 的内容 
+Change the content of $privateConfig and $publicConfig according to different scenarios in the previous section.
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -408,7 +409,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ### <a name="troubleshoot"></a>故障排除
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
+Data about the state of extension deployments can be retrieved from the Azure portal and by using the Azure CLI. To see the deployment state of extensions for a given VM, run the following command by using the Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -420,14 +421,14 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-错误代码 51 表示分发版或扩展操作不受支持。
-在某些情况下，如果计算机中存在较高版本的 OMI，则 DSC Linux 扩展无法安装 OMI。 [错误响应: (000003)不允许降级]
+Error code: 51 represents either unsupported distribution or unsupported extension action.
+In some cases, DSC Linux extension fails to install OMI when a higher version of OMI already exists in the machine. [错误响应: (000003)不允许降级]
 
 
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+If you need more help at any point in this article, contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/community/). Alternatively, you can file an Azure Support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/), and select **Get support**. 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。

@@ -1,19 +1,14 @@
 ---
-title: 从容器实例访问 Azure 容器注册表
+title: Access from Container Instances
 description: 了解如何使用 Azure Active Directory 服务主体从 Azure 容器实例允许访问专用容器注册表中的映像。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: danlep
-ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931671"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456518"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用 Azure 容器注册表从 Azure 容器实例进行身份验证
 

@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: bbc9daf580d2f2641701c344d69e993ca7b2bd1c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422837"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452367"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -27,7 +27,7 @@ ms.locfileid: "74422837"
 - 一个 Azure 订阅。 If you don't have a subscription, sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual Studio 2019 version 16.3** or later, or **Visual Studio 2017 version 15.7** with the **Web Development** workload installed. [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 - For ASP.NET (not Core) with Visual Studio 2017, you need the .NET Framework 4.7.1 or later Development Tools, which are not installed by default. 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。
-- An ASP.NET 4.7.1 or later, or ASP.NET Core 2.0 or later web project open. With Visual Studio 2019, you need an ASP.NET Core web project; adding a Key Vault connected service to an ASP.NET project is not supported in Visual Studio 2019.
+- An ASP.NET 4.7.1 or later, or ASP.NET Core 2.0 or later web project open.
 
 ## <a name="add-key-vault-support-to-your-project"></a>将 Key Vault 支持添加到项目
 

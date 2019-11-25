@@ -1,6 +1,6 @@
 ---
 title: 准备设备和部署以用于生产 - Azure IoT Edge | Microsoft Docs
-description: 了解如何从开发到生产中获取 Azure IoT Edge 解决方案，包括使用适当的证书设置设备，并为未来的代码更新制定部署计划。
+description: Learn how to take your Azure IoT Edge solution from development to production, including setting up your devices with the appropriate certificates and making a deployment plan for future code updates.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,23 +8,22 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1d8ba8452f5f2d4ab05083e1a97fa0b9ba75017f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73096959"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457306"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并不完全相同。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。
+The information provided in this article isn't all equal. 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。
 
 ## <a name="device-configuration"></a>设备配置
 
-IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 无论采用哪种方式，都要确保将其配置为相应工作。 
+IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 Either way, you want to make sure that it's configured to work appropriately. 
 
 * **重要说明**
     * 安装生产证书
@@ -52,15 +51,15 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * IoT Edge 守护程序
 * CA 证书
 
-有关详细信息，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 更新 IoT Edge 守护程序的当前方法需要通过物理方式或 SSH 访问 IoT Edge 设备。 如果有多个要更新的设备，请考虑将更新步骤添加到脚本或使用 Ansible 等自动化工具。
+For more information, see [Update the IoT Edge runtime](how-to-update-iot-edge.md). 更新 IoT Edge 守护程序的当前方法需要通过物理方式或 SSH 访问 IoT Edge 设备。 If you have many devices to update, consider adding the update steps to a script or use an automation tool like Ansible.
 
 ### <a name="use-moby-as-the-container-engine"></a>使用 Moby 作为容器引擎
 
-容器引擎是任何 IoT Edge 设备的必备组件。 生产环境中仅支持 Moby 引擎。 其他容器引擎（例如 Docker）确实也能在 IoT Edge 上正常运行，但最好是将其用于开发。 与 Azure IoT Edge 配合使用时，可以重新分配 Moby 引擎，Microsoft 将为此引擎提供服务。
+A container engine is a prerequisite for any IoT Edge device. 生产环境中仅支持 Moby 引擎。 其他容器引擎（例如 Docker）确实也能在 IoT Edge 上正常运行，但最好是将其用于开发。 与 Azure IoT Edge 配合使用时，可以重新分配 Moby 引擎，Microsoft 将为此引擎提供服务。
 
 ### <a name="choose-upstream-protocol"></a>选择上游协议
 
-对于与 IoT 中心的上游通信，可以同时为 IoT Edge 代理和 IoT Edge 中心配置协议（以及使用的端口）。 默认协议为 AMQP，但可以根据网络设置更改协议。 
+The protocol (and therefore the port used) for upstream communication to IoT Hub can be configured for both the IoT Edge agent and the IoT Edge hub. 默认协议为 AMQP，但可以根据网络设置更改协议。 
 
 两个运行时模块都包含 **UpstreamProtocol** 环境变量。 该变量的有效值为： 
 
@@ -69,7 +68,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * MQTTWS
 * AMQPWS
 
-在设备自身上的 yaml 文件中配置 IoT Edge 代理的 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能需要将 IoT Edge 代理配置为使用 AMQP over WebSocket （AMQPWS）来建立与 IoT 中心的初始连接。 
+Configure the UpstreamProtocol variable for the IoT Edge agent in the config.yaml file on the device itself. For example, if your IoT Edge device is behind a proxy server that blocks AMQP ports, you may need to configure the IoT Edge agent to use AMQP over WebSocket (AMQPWS) to establish the initial connection to IoT Hub. 
 
 IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个运行时模块配置 UpstreamProtocol 变量。 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
@@ -77,41 +76,41 @@ IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个�
 
 * **有用提示**
     * 与上游协议保持一致
-    * 为系统模块设置主机存储
-    * 减少 IoT Edge 集线器使用的内存空间
+    * Set up host storage for system modules
+    * Reduce memory space used by the IoT Edge hub
     * 不要使用模块映像的调试版本
 
 ### <a name="be-consistent-with-upstream-protocol"></a>与上游协议保持一致
 
-如果你将 IoT Edge 设备上的 IoT Edge 代理配置为使用不同于默认 AMQP 的协议，则在将来的所有部署中都应声明相同的协议。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 将模块部署到设备时，为 IoT Edge 代理和 IoT Edge 中心配置相同的 AMQPWS 协议，否则，默认 AMQP 将覆盖设置，并阻止你再次连接。 
+If you configured the IoT Edge agent on your IoT Edge device to use a different protocol than the default AMQP, then you should declare the same protocol in all future deployments. 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 When you deploy modules to the device, configure the same AMQPWS protocol for the IoT Edge agent and IoT Edge hub, or else the default AMQP will override the settings and prevent you from connecting again. 
 
-只需为 IoT Edge 代理和 IoT Edge 中心模块配置 UpstreamProtocol 环境变量。 其他任何模块将采用运行时模块中设置的任何协议。 
+You only have to configure the UpstreamProtocol environment variable for the IoT Edge agent and IoT Edge hub modules. 其他任何模块将采用运行时模块中设置的任何协议。 
 
 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
-### <a name="set-up-host-storage-for-system-modules"></a>为系统模块设置主机存储
+### <a name="set-up-host-storage-for-system-modules"></a>Set up host storage for system modules
 
-IoT Edge 集线器和代理模块使用本地存储来维护状态，并在模块、设备和云之间启用消息传递。 为了获得更好的可靠性和性能，请将系统模块配置为使用主机文件系统上的存储。
+The IoT Edge hub and agent modules use local storage to maintain state and enable messaging between modules, devices, and the cloud. For better reliability and performance, configure the system modules to use storage on the host filesystem.
 
-有关详细信息，请参阅[主机存储系统模块](how-to-access-host-storage-from-module.md)。
+For more information, see [Host storage for system modules](how-to-access-host-storage-from-module.md).
 
-### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>减少 IoT Edge 集线器使用的内存空间
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduce memory space used by IoT Edge hub
 
-如果要部署的受限制设备具有可用的内存，则可以将 IoT Edge 集线器配置为以更精简的容量运行，并使用较少的磁盘空间。 不过，这些配置会限制 IoT Edge 集线器的性能，因此请找到适合您的解决方案的适当平衡。 
+If you're deploying constrained devices with limited memory available, you can configure IoT Edge hub to run in a more streamlined capacity and use less disk space. These configurations do limit the performance of the IoT Edge hub, however, so find the right balance that works for your solution. 
 
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>在受限的设备上不要进行性能优化
 
-默认情况下，IoT Edge 中心已针对性能进行了优化，因此它会尝试分配大块内存。 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 如果要部署具有受约束资源的设备，则可能需要在 IoT Edge 中心将**OptimizeForPerformance**环境变量设置为**false** 。 
+The IoT Edge hub is optimized for performance by default, so it attempts to allocate large chunks of memory. 在 Raspberry Pi 等小型设备上，此配置可能会影响稳定性。 If you're deploying devices with constrained resources, you may want to set the **OptimizeForPerformance** environment variable to **false** on the IoT Edge hub. 
 
-如果将**OptimizeForPerformance**设置为**TRUE**，则 MQTT 协议头将使用具有更好的性能的 PooledByteBufferAllocator，但会分配更多的内存。 分配器在32位操作系统或内存不足的设备上不能正常工作。 此外，如果针对性能进行了优化，RocksDb 会为其角色分配更多的内存作为本地存储提供程序。 
+When **OptimizeForPerformance** is set to **true**, the MQTT protocol head uses the PooledByteBufferAllocator which has better performance but allocates more memory. The allocator does not work well on 32 bit operating systems or on devices with low memory. Additionally, when optimized for performance, RocksDb allocates more memory for its role as the local storage provider. 
 
 有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
 
 #### <a name="disable-unused-protocols"></a>禁用未使用的协议
 
-若要优化 IoT Edge 集线器的性能并降低内存使用率，另一种方法是关闭不在解决方案中使用的任何协议的协议头。 
+Another way to optimize the performance of the IoT Edge hub and reduce its memory usage is to turn off the protocol heads for any protocols that you're not using in your solution. 
 
-通过在部署清单中设置 IoT Edge 中心模块的布尔环境变量来配置协议头。 三个变量如下：
+Protocol heads are configured by setting boolean environment variables for the IoT Edge hub module in your deployment manifests. 三个变量如下：
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
@@ -121,7 +120,7 @@ IoT Edge 集线器和代理模块使用本地存储来维护状态，并在模�
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
-如果由于任何原因无法将消息传送到 IoT 中心，IoT Edge 中心模块会暂时存储消息。 可以配置在使消息过期之前，IoT Edge 集线器在未传递的消息上保留多长时间。 如果设备上存在内存问题，可以降低 IoT Edge 中心模块克隆中的**timeToLiveSecs**值。 
+The IoT Edge hub module stores messages temporarily if they cannot be delivered to IoT Hub for any reason. You can configure how long the IoT Edge hub holds on to undelivered messages before letting them expire. If you have memory concerns on your device, you can lower the **timeToLiveSecs** value in the IoT Edge hub module twin. 
 
 timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。 
 
@@ -143,7 +142,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是一个 docker 概念，可用于区分 docker 容器的各个版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
+A tag is a docker concept that you can use to distinguish between versions of docker containers. 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。 
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。 
 
@@ -153,16 +152,16 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 * **有用提示**
     * 检查出站/入站配置
-    * 允许来自 IoT Edge 设备的连接
+    * Allow connections from IoT Edge devices
     * 配置为通过代理进行通信
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
 Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
 
-### <a name="allow-connections-from-iot-edge-devices"></a>允许来自 IoT Edge 设备的连接
+### <a name="allow-connections-from-iot-edge-devices"></a>Allow connections from IoT Edge devices
 
-如果网络设置要求明确允许从 IoT Edge 设备进行的连接，请查看以下 IoT Edge 组件列表：
+If your networking setup requires that you explicitly permit connections made from IoT Edge devices, review the following list of IoT Edge components:
 
 * **IoT Edge 代理**可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。 
 * **IoT Edge 中心**可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。 
@@ -178,12 +177,12 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
    | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
-   | \*.azurecr.io | 443 | 个人和第三方容器注册表 |
-   | \*.blob.core.windows.net | 443 | 从 blob 存储下载 Azure 容器注册表映像增量  | 
+   | \*.azurecr.io | 443 | Personal and third-party container registries |
+   | \*.blob.core.windows.net | 443 | Download Azure Container Registry image deltas from blob storage  | 
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
-   | \*.docker.io  | 443 | Docker 中心访问（可选） |
+   | \*.docker.io  | 443 | Docker Hub access (optional) |
 
-其中的某些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 
@@ -197,7 +196,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 ### <a name="set-up-logs-and-diagnostics"></a>设置日志和诊断
 
-在 Linux 上，IoT Edge daemon 使用日记作为默认日志记录驱动程序。 可以使用命令行工具 `journalctl` 查询守护程序日志。 在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-IoTEdgeLog` 可以查询守护程序的日志。 IoT Edge 模块使用 JSON 驱动程序进行日志记录，这是默认设置。  
+On Linux, the IoT Edge daemon uses journals as the default logging driver. 可以使用命令行工具 `journalctl` 查询守护程序日志。 在 Windows 上，IoT Edge 守护程序使用 PowerShell 诊断。 使用 `Get-IoTEdgeLog` 可以查询守护程序的日志。 IoT Edge modules use the JSON driver for logging, which is the  default.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -205,13 +204,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 测试 IoT Edge 部署时，通常可以访问设备来检索日志和进行故障排除。 在部署方案中，可能做不到这一点。 考虑如何收集有关生产环境中设备的信息。 一种做法是使用日志记录模块从其他模块收集信息，然后将其发送到云中。 日志记录模块的一个示例是 [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics)，你也可以设计自己的模块。 
 
-### <a name="place-limits-on-log-size"></a>对日志大小施加限制
+### <a name="place-limits-on-log-size"></a>Place limits on log size
 
-默认情况下，小鲸鱼容器引擎不设置容器日志大小限制。 随着时间的推移，这可能会导致设备填满日志并耗尽磁盘空间。 请考虑以下选项以防止出现这种情况：
+By default the Moby container engine does not set container log size limits. Over time this can lead to the device filling up with logs and running out of disk space. Consider the following options to prevent this:
 
-**选项：设置适用于所有容器模块的全局限制**
+**Option: Set global limits that apply to all container modules**
 
-可以在容器引擎日志选项中限制所有容器日志记录的大小。 下面的示例将日志驱动程序设置为 `json-file` （推荐），并限制文件的大小和数量：
+You can limit the size of all container logfiles in the container engine log options. The following example sets the log driver to `json-file` (recommended) with limits on size and number of files:
 
 ```JSON
 {
@@ -223,18 +222,18 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 }
 ```
 
-将此信息添加（或追加）到名为 `daemon.json` 的文件，并将其放置在设备平台的适当位置。
+Add (or append) this information to a file named `daemon.json` and place it the right location for your device platform.
 
 | 平台 | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
 
-要使更改生效，必须重新启动容器引擎。
+The container engine must be restarted for the changes to take effect.
 
-**选项：调整每个容器模块的日志设置**
+**Option: Adjust log settings for each container module**
 
-可以在每个模块的**createOptions**中执行此操作。 例如：
+You can do so in the **createOptions** of each module. 例如：
 
 ```yml
 "createOptions": {
@@ -250,11 +249,11 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 }
 ```
 
-**Linux 系统上的其他选项**
+**Additional options on Linux systems**
 
-* 通过将 "`journald`" 设置为默认的日志记录驱动程序，将容器引擎配置为将日志发送到 `systemd`[日志](https://docs.docker.com/config/containers/logging/journald/)。 
+* Configure the container engine to send logs to `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) by setting `journald` as the default logging driver. 
 
-* 通过安装 logrotate 工具，定期从设备中删除旧日志。 使用以下文件规范： 
+* Periodically remove old logs from your device by installing a logrotate tool. 使用以下文件规范： 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

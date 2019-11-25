@@ -8,22 +8,21 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 744a901c6b0260f4fc14a2f06b88dfb36973b0f8
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152668"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456583"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
-通过 Azure IoT Edge，可让你以模块  的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 若要了解如何开发、部署和维护模块，有必要考虑模块的四个概念元素：
+通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
 
-* 模块映像  是包含定义模块的程序包。
-* 模块实例  是在 IoT Edge 设备上运行模块映像的特定计算单位。 该模块实例由 IoT Edge 运行时启动。
-* 模块标识  是存储在 IoT 中心的一段信息（包括安全凭据），与每个模块实例相关联。
-* 模块孪生  是存储在 IoT 中心的 JSON 文档，包含模块实例的状态信息，其中包括元数据、配置和条件。 
+* 模块映像是包含定义模块的程序包。
+* 模块实例是在 IoT Edge 设备上运行模块映像的特定计算单位。 该模块实例由 IoT Edge 运行时启动。
+* 模块标识是存储在 IoT 中心的一段信息（包括安全凭据），与每个模块实例相关联。
+* 模块孪生是存储在 IoT 中心的 JSON 文档，包含模块实例的状态信息，其中包括元数据、配置和条件。 
 
 ## <a name="module-images-and-instances"></a>模块映像和实例
 
@@ -69,7 +68,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>脱机功能
 
-在与 IoT 中心同步至少一次后，Azure IoT Edge 模块可以无限地脱机运行。 IoT Edge 设备还可以将此脱机功能扩展到其他 IoT 设备。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
+Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>后续步骤
  - [了解开发 IoT Edge 模块的要求和工具](module-development.md)
