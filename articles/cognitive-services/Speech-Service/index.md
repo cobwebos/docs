@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580333"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406188"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580333"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>识别语音、意向和实体</h3>
-                                                    <p>使用语音 SDK 和 LUIS 识别语音、意向和实体。</p>
+                                                    <p>使用语音 SDK 和语言理解 (LUIS) 识别语音、意向和实体。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580333"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS 文档</h3>
+                                                    <h3>语言理解 (LUIS) 文档</h3>
                                                     <p>详细了解语言理解服务 (LUIS) 和自然语言处理 (NLP)。</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580333"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS 门户</h3>
+                                                    <h3>语言理解 (LUIS) 门户</h3>
                                                     <p>将自然语言置入应用、机器人和 IoT 设备中。</p>
                                                 </div>
                                             </div>

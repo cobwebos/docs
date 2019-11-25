@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: 语言理解 (LUIS) 文档
-summary: 了解如何使用语言理解服务使应用程序可以理解用户以自己的语言表达的内容。
+summary: 了解语言理解如何使应用程序能够理解用户希望使用自己的词语表达的内容。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 11/22/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,13 +11,13 @@ metadata:
   services: cognitive-services
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
-  description: 语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
+  ms.openlocfilehash: 14386a08b92814b16fb007e4dd01cb4bb5238c0a
+  ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155022"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74406153"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -25,16 +25,18 @@ landingContent:
     links:
     - text: 什么是语言理解？
       url: what-is-luis.md
-    - text: 新增功能
-      url: whats-new.md
     - text: LUIS 门户
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: 规划应用
       url: luis-how-plan-your-app.md
-    - text: 应用的创作周期
+    - text: 迭代应用设计
       url: luis-concept-app-iteration.md
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: whats-new.md
   - linkListType: video
     links:
     - text: AI 巡展：LUIS
@@ -47,9 +49,9 @@ landingContent:
       url: luis-concept-intent.md
     - text: 实体
       url: luis-concept-entity-types.md
-    - text: 良好的示例言语
+    - text: 陈述
       url: luis-concept-utterance.md
-    - text: 短语列表功能
+    - text: 短语列表特征
       url: luis-concept-feature.md
   - linkListType: quickstart
     links:
@@ -91,13 +93,13 @@ landingContent:
     links:
     - text: 对应用进行版本控制
       url: luis-how-to-manage-versions.md
-    - text: 交互式测试
+    - text: 执行交互式测试
       url: luis-interactive-test.md
-    - text: 批处理测试
+    - text: 执行批量测试
       url: luis-how-to-batch-test.md
-    - text: 训练应用
+    - text: 训练用户
       url: luis-how-to-train.md
-    - text: 发布以使用预测终结点
+    - text: 发布预测终结点
       url: luis-how-to-publish-app.md
 - title: 从终结点获取预测
   linkLists:

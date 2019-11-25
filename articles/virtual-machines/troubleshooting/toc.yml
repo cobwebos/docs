@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure 门户
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: 启动错误
-  href: boot-error-troubleshoot.md
+- name: 启动错误 Linux
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub 救援
       href: troubleshoot-vm-boot-error.md
+- name: 启动错误 Windows
+  href: boot-error-troubleshoot.md
+  items:
     - name: 启动诊断
       href: boot-diagnostics.md
     - name: BitLocker 错误

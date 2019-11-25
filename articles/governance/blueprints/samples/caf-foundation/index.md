@@ -1,14 +1,14 @@
 ---
 title: CAF 基础蓝图示例 - 概述
-description: CAF 基础蓝图示例的概述和体系结构。
+description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: a353f92be995412702a93219c8fb1af967368beb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2943d3327fe6ea3c935694118aaa995b8e96ace6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038492"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404783"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -50,7 +50,7 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
 你已查看了 CAF 基础蓝图示例的概述和体系结构。
 
 > [!div class="nextstepaction"]
->  [CAF 基础蓝图 - 部署步骤](./deploy.md)
+> [CAF 基础蓝图 - 部署步骤](./deploy.md)
 
 有关蓝图及其使用方式的更多文章：
 

@@ -1,14 +1,14 @@
 ---
 title: CAF 迁移登陆区域蓝图示例 - 概述
-description: CAF 迁移登陆区域蓝图示例的概述和体系结构。
+description: 适用于 Azure 的云采用框架 (CAF) 迁移登陆区域蓝图示例的概述和体系结构。
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: cba1eb6d4761ae8e236f22fa22ff08c129d9637e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e007c7af4d788016d74f085ba39b63ee218d6de0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038463"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404754"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例概述
 
@@ -43,7 +43,7 @@ CAF 迁移登陆区域蓝图示例在 Azure 中部署基础结构资源，这些
 你已查看了 CAF 迁移登陆区域蓝图示例的概述和体系结构。
 
 > [!div class="nextstepaction"]
->  [CAF 迁移登陆区域蓝图 - 部署步骤](./deploy.md)
+> [CAF 迁移登陆区域蓝图 - 部署步骤](./deploy.md)
 
 有关蓝图及其使用方式的更多文章：
 

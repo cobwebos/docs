@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: b99b45427cf793eec4f6257190823c102b838cfa
-  ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+  ms.openlocfilehash: cbd3a4dbaa80119d72cd54efa7dd2dc751b91b40
+  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/10/2019
-  ms.locfileid: "73903350"
+  ms.lasthandoff: 11/23/2019
+  ms.locfileid: "74422815"
 highlightedContent:
   items:
   - title: Azure IoT 是什么？
@@ -40,7 +40,7 @@ conceptualContent:
   title: 开始生成你的 IoT 解决方案
   summary: Azure IoT 提供云和边缘 IoT 平台以及完全托管的 IoT 解决方案
   items:
-  - title: 使用 Azure IoT 中心构建自己的 IoT 解决方案
+  - title: 构建自己的 IoT 云解决方案
     links:
     - url: ../iot-hub/about-iot-hub.md
       itemType: overview
@@ -54,7 +54,7 @@ conceptualContent:
     footerLink:
       url: ../iot-hub/index.yml
       text: 另请参阅
-  - title: 使用 Azure IoT Central 部署完全托管的 IoT 解决方案
+  - title: 部署完全托管的 IoT 解决方案
     links:
     - url: ../iot-central/core/overview-iot-central.md
       itemType: overview
@@ -68,7 +68,7 @@ conceptualContent:
     footerLink:
       url: ../iot-central/core/index.yml
       text: 另请参阅
-  - title: 使用 Azure IoT 解决方案加速器自定义预建 IoT 解决方案
+  - title: 自定义预建的 IoT 解决方案
     links:
     - url: ../iot-accelerators/about-iot-accelerators.md
       itemType: overview
@@ -82,7 +82,7 @@ conceptualContent:
     footerLink:
       url: ../iot-accelerators/index.md
       text: 另请参阅
-  - title: 使用 Azure IoT Edge 在设备上运行云智能
+  - title: 在边缘设备上运行云智能
     links:
     - url: ../iot-edge/about-iot-edge.md
       itemType: overview
@@ -96,7 +96,7 @@ conceptualContent:
     footerLink:
       url: ../iot-edge/index.yml
       text: 另请参阅
-  - title: 使用 Azure 数字孪生创建联网的智能基础结构
+  - title: 创建联网的智能基础结构
     links:
     - url: ../digital-twins/about-digital-twins.md
       itemType: overview
@@ -110,7 +110,7 @@ conceptualContent:
     footerLink:
       url: ../digital-twins/index.yml
       text: 另请参阅
-  - title: 使用 Azure IoT 中心设备预配服务大规模地安全预配设备
+  - title: 安全地大规模预配设备
     links:
     - url: ../iot-dps/about-iot-dps.md
       itemType: overview
@@ -124,7 +124,7 @@ conceptualContent:
     footerLink:
       url: ../iot-dps/index.yml
       text: 另请参阅
-  - title: 使用 Azure 时序见解探索和分析设备数据
+  - title: 探索和分析设备数据
     links:
     - url: ../time-series-insights/time-series-insights-update-overview.md
       itemType: overview
@@ -138,7 +138,7 @@ conceptualContent:
     footerLink:
       url: ../time-series-insights/index.yml
       text: 另请参阅
-  - title: 使用 Azure Maps 在企业中实现移动性
+  - title: 在企业中实现移动性
     links:
     - url: ../azure-maps/about-azure-maps.md
       itemType: overview
