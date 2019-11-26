@@ -1,60 +1,60 @@
 ---
-title: FSLogix 配置文件容器 NetApp Windows 虚拟桌面-Azure
-description: 如何使用 Windows 虚拟桌面中的 Azure NetApp 文件创建 FSLogix 配置文件容器。
+title: FSLogix profile containers NetApp Windows Virtual Desktop - Azure
+description: How to create an FSLogix profile container using Azure NetApp Files in Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605764"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483655"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
+# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Create an FSLogix profile container for a host pool using Azure NetApp Files
 
-建议使用 FSLogix 配置文件容器作为[Windows 虚拟桌面预览服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录时，容器会使用本地支持的虚拟硬盘（VHD）和 Hyper-v 虚拟硬盘（VHDX）以动态方式附加到计算环境。 这些高级筛选器驱动程序技术允许用户配置文件立即可用，并与本地用户配置文件完全相同。 若要了解有关 FSLogix 配置文件容器的详细信息，请参阅[FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
+We recommend using FSLogix profile containers as a user profile solution for the [Windows Virtual Desktop service](overview.md). FSLogix profile containers store a complete user profile in a single container and are designed to roam profiles in non-persistent remote computing environments like Windows Virtual Desktop. When you sign in, the container dynamically attaches to the computing environment using a locally supported virtual hard disk (VHD) and Hyper-V virtual hard disk (VHDX). These advanced filter-driver technologies allow the user profile to be immediately available and appear in the system exactly like a local user profile. To learn more about FSLogix profile containers, see [FSLogix profile containers and Azure files](fslogix-containers-azure-files.md).
 
-可以使用[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)创建 FSLogix 配置文件容器，这是一种易于使用的 azure 本机平台服务，可帮助客户快速、可靠地为其 Windows 虚拟桌面环境设置企业级 SMB 卷。 若要了解有关 Azure NetApp 文件的详细信息，请参阅[什么是 Azure Netapp 文件？](../azure-netapp-files/azure-netapp-files-introduction.md)
+You can create FSLogix profile containers using [Azure NetApp Files](https://azure.microsoft.com/services/netapp/), an easy-to-use Azure native platform service that helps customers quickly and reliably provision enterprise-grade SMB volumes for their Windows Virtual Desktop environments. To learn more about Azure NetApp Files, see [What is Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-本指南将演示如何设置 Azure NetApp 文件帐户，以及如何在 Windows 虚拟桌面中创建 FSLogix 配置文件容器。
+This guide will show you how to set up an Azure NetApp Files account and create FSLogix profile containers in Windows Virtual Desktop.
 
-本文假设已在 Windows 虚拟桌面环境中设置了[主机池](create-host-pools-azure-marketplace.md)并将其分组到一个或多个租户。 若要了解如何设置租户，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)和[我们的技术社区博客文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
+This article assumes you already have [host pools](create-host-pools-azure-marketplace.md) set up and grouped into one or more tenants in your Windows Virtual Desktop environment. To learn how to set up tenants, see [Create a tenant in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) and [our Tech Community blog post](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-本指南中的说明专门针对 Windows 虚拟桌面用户。 如果要了解有关如何在 Windows 虚拟桌面之外设置 Azure NetApp 文件和创建 FSLogix 配置文件容器的更多常规指导，请参阅[设置 Azure Netapp 文件和创建 NFS 卷快速入门](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。
-
->[!NOTE]
->本文不介绍用于保护对 Azure NetApp 文件共享的访问的最佳做法。
+The instructions in this guide are specifically for Windows Virtual Desktop users. If you're looking for more general guidance for how to set up Azure NetApp Files and create FSLogix profile containers outside of Windows Virtual Desktop, see the [Set up Azure NetApp Files and create an NFS volume quickstart](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
 >[!NOTE]
->如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+>This article doesn't cover best practices for securing access to the Azure NetApp Files share.
 
-## <a name="prerequisites"></a>先决条件
+>[!NOTE]
+>If you're looking for comparison material about the different FSLogix Profile Container storage options on Azure, see [Storage options for FSLogix profile containers](store-fslogix-profile.md).
 
-必须先执行以下操作，然后才能为主机池创建 FSLogix 配置文件容器：
+## <a name="prerequisites"></a>必备组件
 
-- 设置和配置 Windows 虚拟桌面
-- 预配 Windows 虚拟桌面主机池
-- [启用 Azure NetApp 文件订阅](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+Before you can create an FSLogix profile container for a host pool, you must:
 
-## <a name="set-up-your-azure-netapp-files-account"></a>设置你的 Azure NetApp 文件帐户
+- Set up and configure Windows Virtual Desktop
+- Provision a Windows Virtual Desktop host pool
+- [Enable your Azure NetApp Files subscription](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
 
-若要开始，需要设置 Azure NetApp 文件帐户。
+## <a name="set-up-your-azure-netapp-files-account"></a>Set up your Azure NetApp Files account
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
+To get started, you need to set up an Azure NetApp Files account.
 
-2. 选择搜索栏右侧的 " **Azure Cloud Shell" 图标**以打开 Azure Cloud Shell。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 Make sure your account has contributor or administrator permissions.
 
-3. 打开 Azure Cloud Shell 后，请选择 " **PowerShell**"。
+2. Select the **Azure Cloud Shell icon** to the right of the search bar to open Azure Cloud Shell.
 
-4. 如果这是你第一次使用 Azure Cloud Shell，请在同一订阅中创建存储帐户，以保留你的 Azure NetApp 文件和 Windows 虚拟桌面。
+3. Once Azure Cloud Shell is open, select **PowerShell**.
 
-   ![位于窗口底部的 "创建存储" 按钮的 "存储帐户" 窗口以红色突出显示。](media/create-storage-button.png)
+4. If this is your first time using Azure Cloud Shell, create a storage account in the same subscription you keep your Azure NetApp Files and Windows Virtual Desktop.
 
-5. Azure Cloud Shell 加载后，运行以下两个 cmdlet。
+   ![The storage account window with the create storage button at the bottom of the window highlighted in red.](media/create-storage-button.png)
+
+5. Once Azure Cloud Shell loads, run the following two cmdlets.
 
    ```powershell
    az account set --subscription <subscriptionID>
@@ -64,127 +64,132 @@ ms.locfileid: "73605764"
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. 在窗口左侧，选择 "**所有服务**"。 将**Azure NetApp 文件**输入到菜单顶部显示的 "搜索" 框中。
+6. In the left side of the window, select **All services**. Enter **Azure NetApp Files** into the search box that appears at the top of the menu.
 
-   ![用户在 "所有服务" 搜索框中输入 "Azure NetApp 文件" 的屏幕截图。 搜索结果显示 "Azure NetApp 文件" 资源。](media/azure-netapp-files-search-box.png)
+   ![A screenshot of a user entering "Azure NetApp Files" into the All services search box. The search results show the Azure NetApp Files resource.](media/azure-netapp-files-search-box.png)
 
 
-7. 在搜索结果中选择 " **Azure NetApp 文件**"，然后选择 "**创建**"。
+7. Select **Azure NetApp Files** in the search results, then select **Create**.
 
 8. 选择“添加”按钮。
-9. 当 "**新的 NetApp 帐户**" 边栏选项卡打开时，输入以下值：
+9. When the **New NetApp account** blade opens, enter the following values:
 
-    - 对于 "**名称**"，请输入你的 NetApp 帐户名称。
-    - 对于 "**订阅**"，从下拉菜单中选择你在步骤4中设置的存储帐户的订阅。
-    - 对于 "**资源组**"，请从下拉菜单中选择现有的资源组，或通过选择 **"新建"** 创建一个新的资源组。
-    - 对于 "**位置**"，请从下拉菜单中选择你的 NetApp 帐户所在的区域。 此区域必须与你的会话主机 Vm 位于同一区域。
+    - For **Name**, enter your NetApp account name.
+    - For **Subscription**, select the subscription for the storage account you set up in step 4 from the drop-down menu.
+    - For **Resource group**, either select an existing resource group from the drop-down menu or create a new one by selecting **Create new**.
+    - For **Location**, select the region for your NetApp account from the drop-down menu. This region must be the same region as your session host VMs.
 
    >[!NOTE]
-   >Azure NetApp 文件当前不支持跨区域装载卷。
+   >Azure NetApp Files currently doesn't support mounting of a volume across regions.
 
-10. 完成后，选择 "**创建**" 以创建 NetApp 帐户。
+10. When you're finished, select **Create** to create your NetApp account.
 
-## <a name="create-a-capacity-pool"></a>创建容量池
+## <a name="create-a-capacity-pool"></a>Create a capacity pool
 
-接下来，创建新的容量池： 
+Next, create a new capacity pool: 
 
-1. 请在 "Azure NetApp 文件" 菜单中，选择新的帐户。
-2. 在帐户菜单中，选择 "存储服务" 下的**容量池**。
-3. 选择 "**添加池**"。
-4. 打开 "**新建容量池**" 边栏选项卡时，输入以下值：
+1. Go to the Azure NetApp Files menu and select your new account.
+2. In your account menu, select **Capacity pools** under Storage service.
+3. Select **Add pool**.
+4. When the **New capacity pool** blade opens, enter the following values:
 
-    - 对于 "**名称**"，请输入新容量池的名称。
-    - 对于 "**服务级别**"，请从下拉菜单中选择所需的值。 对于大多数环境，建议**高级**。
+    - For **Name**, enter a name for the new capacity pool.
+    - For **Service level**, select your desired value from the drop-down menu. We recommend **Premium** for most environments.
        >[!NOTE]
-       >"高级" 设置提供适用于高级服务级别（256 MBps）的最小吞吐量。 对于生产环境，可能需要调整此吞吐量。 最终吞吐量基于[吞吐量限制](../azure-netapp-files/azure-netapp-files-service-levels.md)中所述的关系。
-    - 对于 "**大小（TiB）** "，输入最适合你的需求的容量池大小。 最小大小为 4 TiB。
+       >The Premium setting provides the minimum throughput available for a Premium Service level, which is 256 MBps. You may need to adjust this throughput for a production environment. Final throughput is based on the relationship described in [Throughput limits](../azure-netapp-files/azure-netapp-files-service-levels.md).
+    - For **Size (TiB)** , enter the capacity pool size that best fits your needs. The minimum size is 4 TiB.
 
-5. 完成后，选择 **"确定"** 。
+5. When you're finished, select **OK**.
 
-## <a name="join-an-active-directory-connection"></a>联接 Active Directory 连接
+## <a name="join-an-active-directory-connection"></a>Join an Active Directory connection
 
-然后，需要加入 Active Directory 连接。
+After that, you need to join an Active Directory connection.
 
-1. 在页面左侧的菜单中选择 " **Active Directory 连接**"，然后选择 "**联接**" 按钮打开 "**联接 Active Directory** " 页。
+1. Select **Active Directory connections** in the menu on the left side of the page, then select the **Join** button to open the **Join Active Directory** page.
 
-   ![联接 Active Directory 连接 "菜单的屏幕截图。](media/active-directory-connections-menu.png)
+   ![A screenshot of the Join Active Directory connections menu.](media/active-directory-connections-menu.png)
 
-2. 在 "**联接 Active Directory** " 页中输入以下值以联接连接：
+2. Enter the following values in the **Join Active Directory** page to join a connection:
 
-    - 对于**主 dns**，请在你的环境中输入可以解析域名的 DNS 服务器的 IP 地址。
-    - 对于 "**域**"，输入完全限定的域名（FQDN）。
-    - 对于 " **SMB 服务器（计算机帐户）" 前缀**，请输入要追加到计算机帐户名称的字符串。
-    - 对于 "**用户名**"，请输入具有执行域加入权限的帐户的名称。
-    - 对于 "**密码**"，输入帐户的密码。
+    - For **Primary DNS**, enter the IP address of the DNS server in your environment that can resolve the domain name.
+    - For **Domain**, enter your fully qualified domain name (FQDN).
+    - For **SMB Server (Computer Account) Prefix**, enter the string you want to append to the computer account name.
+    - For **Username**, enter the name of the account with permissions to perform domain join.
+    - For **Password**, enter the account's password.
 
   >[!NOTE]
-  >最佳做法是确认在[加入 Active Directory 连接](create-fslogix-profile-container.md#join-an-active-directory-connection)中创建的计算机帐户已在域控制器中的 "**计算机**" 或**企业相关的 OU**下出现。
+  >It's best practice to confirm that the computer account you created in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection) has appeared in your domain controller under **Computers** or **your enterprise's relevant OU**.
 
 ## <a name="create-a-new-volume"></a>创建新卷
 
-接下来，需要创建一个新卷。
+Next, you'll need to create a new volume.
 
-1. 选择**卷**，然后选择 "**添加卷**"。
+1. Select **Volumes**, then select **Add volume**.
 
-2. 打开 "**创建卷**" 边栏选项卡时，输入以下值：
+2. When the **Create a volume** blade opens, enter the following values:
 
-    - 对于 "**卷名称**"，请输入新卷的名称。
-    - 对于 "**容量池**"，请从下拉菜单中选择刚创建的容量池。
-    - 对于 "**配额（GiB）** "，输入适合你的环境的卷大小。
-    - 对于 "**虚拟网络**"，请从下拉菜单中选择一个已连接到域控制器的现有虚拟网络。
-    - 在 "**子网**" 下，选择 "**新建**"。 请记住，此子网将委托给 Azure NetApp 文件。
+    - For **Volume name**, enter a name for the new volume.
+    - For **Capacity pool**, select the capacity pool you just created from the drop-down menu.
+    - For **Quota (GiB)** , enter the volume size appropriate for your environment.
+    - For **Virtual network**, select an existing virtual network that has connectivity to the domain controller from the drop-down menu.
+    - Under **Subnet**, select **Create new**. Keep in mind that this subnet will be delegated to Azure NetApp Files.
 
-3.  选择 "**下一步：协议 \>\>** " 打开 "协议" 选项卡并配置卷访问参数。
+3.  Select **Next: Protocol \>\>** to open the Protocol tab and configure your volume access parameters.
 
-## <a name="configure-volume-access-parameters"></a>配置卷访问参数
+## <a name="configure-volume-access-parameters"></a>Configure volume access parameters
 
-创建卷后，请配置卷访问参数。
+After you create the volume, configure the volume access parameters.
 
-1.  选择**SMB**作为协议类型。
-2.  在 "配置" 下的 " **Active Directory** " 下拉菜单中，选择最初连接的同一目录 "[加入 Active Directory 连接](create-fslogix-profile-container.md#join-an-active-directory-connection)"。 请记住，每个订阅有一个 Active Directory 限制。
-3.  在 "**共享名**" 文本框中，输入会话主机池及其用户使用的共享的名称。
+1.  Select **SMB** as the protocol type.
+2.  Under Configuration in the **Active Directory** drop-down menu, select the same directory that you originally connected in [Join an Active Directory connection](create-fslogix-profile-container.md#join-an-active-directory-connection). Keep in mind that there's a limit of one Active Directory per subscription.
+3.  In the **Share name** text box, enter the name of the share used by the session host pool and its users.
 
-4.  选择页面底部的 "**查看 + 创建**"。 这将打开 "验证" 页。 成功验证卷后，选择 "**创建**"。
+4.  Select **Review + create** at the bottom of the page. This opens the validation page. After your volume is validated successfully, select **Create**.
 
-5.  此时，新卷将开始部署。 部署完成后，可以使用 Azure NetApp 文件共享。
+5.  At this point, the new volume will start to deploy. Once deployment is complete, you can use the Azure NetApp Files share.
 
-6.  若要查看装载路径，请选择 "**中转到资源**"，然后在 "概述" 选项卡中查找它。
+6.  To see the mount path, select **Go to resource** and look for it in the Overview tab.
 
-    !["概述" 屏幕的屏幕截图，其中包含一个指向装入路径的红色箭头。](media/overview-mount-path.png)
+    ![A screenshot of the Overview screen with a red arrow pointing at the mount path.](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在会话主机虚拟机（Vm）上配置 FSLogix
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Configure FSLogix on session host virtual machines (VMs)
 
-本部分基于[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
+This section is based on [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).
 
-1. [下载 FSLogix agent .zip 文件](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409)，但仍在会话主机 VM 中进行远程处理。
+1. [Download the FSLogix agent .zip file](https://go.microsoft.com/fwlink/?linkid=2084562&clcid=0x409) while you're still remoted in the session host VM.
 
-2. 解压缩下载的文件。
+2. Unzip the downloaded file.
 
-3. 在文件中，中转到**x64** > **版本**并运行**FSLogixAppsSetup**。 将打开安装菜单。
+3. In the file, go to **x64** > **Releases** and run **FSLogixAppsSetup.exe**. The installation menu will open.
 
-4.  如果有产品密钥，请在 "产品密钥" 文本框中输入该密钥。
+4.  If you have a product key, enter it in the Product Key text box.
 
-5. 选中 "**我同意许可条款和条件**" 旁边的复选框。
+5. Select the check box next to **I agree to the license terms and conditions**.
 
 6. 选择“安装”。
 
-7. 导航到**C：\\Program Files\\FSLogix\\应用**以确认安装的代理。
+7. Navigate to **C:\\Program Files\\FSLogix\\Apps** to confirm the agent installed.
 
-8. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。
+8. From the Start menu, run **RegEdit** as administrator.
 
-9. 导航到**计算机\\HKEY_LOCAL_MACHINE\\software\\FSLogix**。
+9. Navigate to **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 
-10. 创建名为 "**配置文件**" 的密钥。
+10. Create a key named **Profiles**.
 
-11.  创建一个名为 " **Enabled** " 的值，将**REG_DWORD**类型设置为数据值**1**。
+11.  Create a value named **Enabled** with a **REG_DWORD** type set to a data value of **1**.
 
-12. 使用**多字符串**类型创建名为**VHDLocations**的值，并将其数据值设置为 Azure NETAPP 文件共享的 URI。
+12. Create a value named **VHDLocations** with a **Multi-String** type and set its data value to the URI for the Azure NetApp Files share.
 
-## <a name="assign-users-to-session-host"></a>将用户分配到会话主机
+13. Create a value named **DeleteLocalProfileWhenVHDShouldApply** with a DWORD value of 1 to avoid problems with existing local profiles before you sign in.
 
-1. 以管理员身份打开**POWERSHELL ISE**并登录到 Windows 虚拟桌面。
+     >[!WARNING]
+     >Be careful when creating the DeleteLocalProfileWhenVHDShouldApply value. When the FSLogix Profiles system determines a user should have an FSLogix profile, but a local profile already exists, Profile Container will permanently delete the local profile. The user will then be signed in with the new FSLogix profile.
 
-2. 运行以下 cmdlet：
+## <a name="assign-users-to-session-host"></a>Assign users to session host
+
+1. Open **PowerShell ISE** as administrator and sign in to Windows Virtual Desktop.
+
+2. Run the following cmdlets:
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -193,9 +198,9 @@ ms.locfileid: "73605764"
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. 当系统提示输入凭据时，请在 Windows 虚拟桌面租户上输入具有租户创建者或 RDS 所有者/RDS 参与者角色的用户的凭据。
+3. When prompted for credentials, enter the credentials for the user with the Tenant Creator or RDS Owner/RDS Contributor roles on the Windows Virtual Desktop tenant.
 
-4. 运行以下 cmdlet 以将用户分配到远程桌面组：
+4. Run the following cmdlets to assign a user to a Remote Desktop group:
 
    ```powershell
    $wvdTenant = "<your-wvd-tenant>"
@@ -205,26 +210,26 @@ ms.locfileid: "73605764"
    Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
-## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>确保用户可以访问 Azure NetApp 文件共享
+## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Make sure users can access the Azure NetApp File share
 
-1. 打开 internet 浏览器并中转到 <https://rdweb.wvd.microsoft.com/webclient/index.html>。
+1. Open your internet browser and go to <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
-2. 使用分配给远程桌面组的用户的凭据登录。
+2. Sign in with the credentials of a user assigned to the Remote Desktop group.
 
-3. 建立用户会话后，请使用管理帐户登录到 Azure 门户。
+3. Once you've established the user session, sign in to the Azure portal with an administrative account.
 
-4. 打开**Azure Netapp 文件**，选择 Azure netapp 文件帐户，然后选择 "**卷**"。 打开 "卷" 菜单后，选择相应的卷。
+4. Open **Azure NetApp Files**, select your Azure NetApp Files account, and then select **Volumes**. Once the Volumes menu opens, select the corresponding volume.
 
-   ![你之前在 Azure 门户中设置的 NetApp 帐户的屏幕截图，其中选择了 "卷" 按钮。](media/netapp-account.png)
+   ![A screenshot of the NetApp account you set up earlier in the Azure portal with the Volumes button selected.](media/netapp-account.png)
 
-5. 请在 "**概述**" 选项卡上，确认 FSLogix 配置文件容器正在使用空间。
+5. Go to the **Overview** tab and confirm that the FSLogix profile container is using space.
 
-6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为 \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\和）。
+6. Connect directly to any VM part of the host pool using Remote Desktop and open the **File Explorer.** Then navigate to the **Mount path** (in the following example, the mount path is \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL).
 
-   在此文件夹中，应存在一个配置文件 VHD （或 VHDX），如以下示例中所示。
+   Within this folder, there should be a profile VHD (or VHDX) like the one in the following example.
 
-   ![装载路径中文件夹内容的屏幕截图。 内部是名为 "Profile_ssbb" 的单个 VHD 文件。](media/mount-path-folder.png)
+   ![A screenshot of the contents of the folder in the mount path. Inside is a single VHD file named "Profile_ssbb."](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以使用 FSLogix 配置文件容器来设置用户配置文件共享。 若要了解如何使用新容器创建用户配置文件共享，请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
+You can use FSLogix profile containers to set up a user profile share. To learn how to create user profile shares with your new containers, see [Create a profile container for a host pool using a file share](create-host-pools-user-profile.md).

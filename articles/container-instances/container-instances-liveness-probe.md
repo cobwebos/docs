@@ -1,31 +1,26 @@
 ---
-title: 在 Azure 容器实例中配置运行情况探测
+title: Set up liveness probe on container instance
 description: 了解如何配置运行情况探测以重启 Azure 容器实例中不正常的容器
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: danlep
-ms.openlocfilehash: 7f9696e9803e9ab168c59b6c5e7413a4f754a6ae
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904428"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481676"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
-容器化应用程序可能会长时间运行，从而导致损坏的状态，这些状态可能需要通过重新启动容器进行修复。 Azure 容器实例支持活动探测，以便在关键功能不工作时，将容器组内的容器配置为重新启动。 活动探测的行为类似于[Kubernetes 活动探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)。
+Containerized applications may run for extended periods of time, resulting in broken states that may need to be repaired by restarting the container. Azure Container Instances supports liveness probes so that you can configure your containers within your container group to restart if critical functionality is not working. The liveness probe behaves like a [Kubernetes liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
 本文介绍了如何部署包括运行情况探测的容器组，演示了模拟的不正常容器的自动重启。
 
-Azure 容器实例还支持[准备情况探测](container-instances-readiness-probe.md)，你可以将其配置为确保流量仅在准备就绪时才到达容器。
+Azure Container Instances also supports [readiness probes](container-instances-readiness-probe.md), which you can configure to ensure that traffic reaches a container only when it's ready for it.
 
 ## <a name="yaml-deployment"></a>YAML 部署
 
-运行下面的代码片段，创建 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
+创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
 
 ```yaml
 apiVersion: 2018-10-01
@@ -65,17 +60,17 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>启动命令
 
-部署定义一个启动命令，该命令将在容器第一次开始运行时运行，由 `command` 属性定义，该属性接受字符串数组。 在此示例中，它将通过传递以下命令启动 bash 会话并在 `healthy` 目录中创建名为 `/tmp` 的文件：
+The deployment defines a starting command to be run when the container first starts running, defined by the `command` property, which accepts an array of strings. 在此示例中，它将通过传递以下命令启动 bash 会话并在 `/tmp` 目录中创建名为 `healthy` 的文件：
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- 然后，它将休眠30秒，然后再删除该文件，然后进入10分钟睡眠状态。
+ It will then sleep for 30 seconds before deleting the file, then enters a 10-minute sleep.
 
 ### <a name="liveness-command"></a>运行情况命令
 
-此部署定义一个 `livenessProbe`，该支持作为活动检查的 `exec` 活动命令。 如果此命令以非零值退出，则容器将被终止并重启，指明找不到 `healthy` 文件。 如果此命令以退出代码 0 成功退出，则不会采取任何操作。
+This deployment defines a `livenessProbe` that supports an `exec` liveness command that acts as the liveness check. 如果此命令以非零值退出，则容器将被终止并重启，指明找不到 `healthy` 文件。 如果此命令以退出代码 0 成功退出，则不会采取任何操作。
 
 `periodSeconds` 属性指定运行情况命令应当每 5 秒执行一次。
 
@@ -89,7 +84,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ![门户不正常事件][portal-unhealthy]
 
-通过在 Azure 门户中查看事件，在运行情况命令失败时将触发 `Unhealthy` 类型的事件。 后续事件将是 `Killing` 类型的，表示容器已删除，因此可以开始重启。 每次发生此事件时，容器的重启计数都会增加。
+通过在 Azure 门户中查看事件，在运行情况命令失败时将触发 `Unhealthy` 类型的事件。 后续事件将是 `Killing` 类型的，表示容器已删除，因此可以开始重启。 The restart count for the container increments each time this event  occurs.
 
 重启是就地完成的，因此，诸如公用 IP 地址和节点特定的内容都将保留。
 
@@ -99,7 +94,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ## <a name="liveness-probes-and-restart-policies"></a>运行情况探测和重启策略
 
-重启策略会取代由运行情况探测触发的重启行为。 例如，如果您设置了一个 `restartPolicy = Never`*和*一个活动探测，则由于活动检查失败，容器组将不会重新启动。 容器组将改为遵守容器组的重启策略 `Never`。
+重启策略会取代由运行情况探测触发的重启行为。 For example, if you set a `restartPolicy = Never` *and* a liveness probe, the container group will not restart because of a failed liveness check. 容器组将改为遵守容器组的重启策略 `Never`。
 
 ## <a name="next-steps"></a>后续步骤
 

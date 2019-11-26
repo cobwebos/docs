@@ -1,6 +1,6 @@
 ---
 title: vCore 模型概述
-description: VCore 购买模式使你可以独立缩放计算和存储资源、匹配本地性能和优化价格。
+description: The vCore purchasing model lets you independently scale compute and storage resources, match on-premises performance, and optimize price.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -8,176 +8,176 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: 1bdd14841fc1c537046ee8dc3d0d6dc63b88ea25
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.date: 11/25/2019
+ms.openlocfilehash: 94728f2e4be6a16d048b4ff97bedefd5e32957ed
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196535"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481288"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
-虚拟核心（vCore）模型具有以下几个优点：
+The virtual core (vCore) model provides several benefits:
 
-- 更高的计算、内存、IO 和存储限制。
-- 控制硬件的生成，以便更好地匹配工作负载的计算和内存要求。
-- [Azure 混合权益（AHB）](sql-database-azure-hybrid-benefit.md)和[预订实例（RI）](sql-database-reserved-capacity.md)的定价折扣。
-- 提高计算能力的硬件细节的透明度;有助于规划从本地部署迁移。
+- Higher compute, memory, IO, and storage limits.
+- Control over the hardware generation to better match compute and memory requirements of the workload.
+- Pricing discounts for [Azure Hybrid Benefit (AHB)](sql-database-azure-hybrid-benefit.md) and [Reserved Instance (RI)](sql-database-reserved-capacity.md).
+- Greater transparency in the hardware details that power the compute; facilitates planning for migrations from on-premises deployments.
 
 ## <a name="service-tiers"></a>服务层
 
-VCore 模型中的服务层选项包括常规用途、业务关键和超大规模。 服务层通常定义与可用性和灾难恢复相关的存储体系结构、空间和 IO 限制以及业务连续性选项。
+Service tier options in the vCore model include General Purpose, Business Critical, and Hyperscale. The service tier generally defines the storage architecture, space and IO limits, and business continuity options related to availability and disaster recovery.
 
-||**常规用途**|**业务关键**|**超大规模**|
+||**常规用途**|**Business critical**|**Hyperscale**|
 |---|---|---|---|
-|最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
-|存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 8 TB<br/>**托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。|
-|可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](sql-database-read-scale-out.md)|
-|备份|[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
-|内存中|不支持|支持|不支持|
+|最适用情况|大多数业务工作负荷。 Offers budget-oriented, balanced, and scalable compute and storage options. |Offers business applications the highest resilience to failures by using several isolated replicas, and provides the highest I/O performance per database replica.|Most business workloads with highly scalable storage and read-scale requirements.  Offers higher resilience to failures by allowing configuration of more than one isolated database replica. |
+|存储空间|Uses remote storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Serverless compute**:<br/>5 GB - 3 TB<br/>**Managed instance**: 32 GB - 8 TB |Uses local SSD storage.<br/>**Single database and elastic pool provisioned compute**:<br/>5 GB – 4 TB<br/>**Managed instance**:<br/>32 GB - 4 TB |Flexible autogrow of storage as needed. Supports up to 100 TB of storage. Uses local SSD storage for local buffer-pool cache and local data storage. Uses Azure remote storage as final long-term data store. |
+|I/O throughput (approximate)|**Single database and elastic pool**: 500 IOPS per vCore up to 40000 maximum IOPS.<br/>**Managed instance**: Depends on [size of file](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per vCore up to 320,000 maximum IOPS|Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPs will depend on the workload.|
+|可用性|1 replica, no read-scale replicas|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>zone-redundant high availability (HA)|1 read-write replica, plus 0-4 [read-scale replicas](sql-database-read-scale-out.md)|
+|备份|[Read-access geo-redundant storage (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 days (7 days by default)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Snapshot-based backups in Azure remote storage. 还原使用这些快照进行快速恢复。 Backups are instantaneous and don't impact compute I/O performance. Restores are fast and aren't a size-of-data operation (taking minutes rather than hours or days).|
+|内存中|不支持|受支持|不支持|
 |||
 
 
 ### <a name="choosing-a-service-tier"></a>选择服务层级
 
-有关为特定工作负荷选择服务层的信息，请参阅以下文章：
+For information on selecting a service tier for your particular workload, see the following articles:
 
-- [何时选择 "常规用途" 服务层](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
-- [何时选择业务关键的服务层](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
-- [选择超大规模服务层的时间](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
+- [When to choose the General purpose service tier](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [When to choose the Business Critical service tier](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [When to choose the Hyperscale service tier](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
 
-## <a name="compute-tiers"></a>计算层
+## <a name="compute-tiers"></a>Compute tiers
 
-VCore 模型中的计算层选项包括预配的和无服务器的计算层。
+Compute tier options in the vCore model include the provisioned and serverless compute tiers.
 
 
 ### <a name="provisioned-compute"></a>已预配计算
 
-预配的计算层提供了一种特定数量的计算资源，这些资源的配置与工作负荷活动无关，并按固定价格（每小时）预配计算数量。
+The provisioned compute tier provides a specific amount of compute resources that are continuously provisioned independent of workload activity, and bills for the amount of compute provisioned at a fixed price per hour.
 
 
 ### <a name="serverless-compute"></a>无服务器计算
 
-[无服务器计算层](sql-database-serverless.md)根据工作负荷活动自动缩放计算资源，并按每秒使用的计算量计费。
+The [serverless compute tier](sql-database-serverless.md) auto-scales compute resources based on workload activity, and bills for the amount of compute used per second.
 
 
 
-## <a name="hardware-generations"></a>硬件代
+## <a name="hardware-generations"></a>Hardware generations
 
-VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 Fsv2 （预览版）。 硬件生成通常定义计算和内存限制以及影响工作负荷性能的其他特征。
+Hardware generation options in the vCore model include Gen 4/5, M-series (preview), and Fsv2-series (preview). The hardware generation generally defines the compute and memory limits and other characteristics that impact the performance of the workload.
 
 ### <a name="gen4gen5"></a>Gen4/Gen5
 
-- Gen4/Gen5 硬件提供均衡的计算和内存资源，适用于不具有更高内存、更高 vCore 或更快的单一 vCore 要求的大多数数据库工作负荷，如 Fsv2 系列或 M 系列所提供。
+- Gen4/Gen5 hardware provides balanced compute and memory resources, and is suitable for most database workloads that do not have higher memory, higher vCore, or faster single vCore requirements as provided by Fsv2-series or M-series.
 
-对于 Gen4/Gen5 可用的区域，请参阅[Gen4/Gen5 可用性](#gen4gen5-1)。
+For regions where Gen4/Gen5 is available, see [Gen4/Gen5 availability](#gen4gen5-1).
 
-### <a name="fsv2-seriespreview"></a>Fsv2 系列（预览）
+### <a name="fsv2-seriespreview"></a>Fsv2-series (preview)
 
-- Fsv2 系列是一种计算优化硬件选项，可为大多数 CPU 要求的工作负荷提供低 CPU 延迟和较高的时钟速度。
-- 根据工作负荷的不同，Fsv2 系列可以为每个 vCore 提供比 Gen5 更多的 CPU 性能，72 vCore 大小可提供更多的 CPU 性能，而不是 Vcore 上 80 Gen5。 
-- Fsv2 对每个 vCore 提供的内存和 tempdb 比其他硬件更少，因此，对这些限制敏感的工作负荷可能需要考虑 Gen5 或 M 系列。  
+- Fsv2-series is a compute optimized hardware option delivering low CPU latency and high clock speed for the most CPU demanding workloads.
+- Depending on the workload, Fsv2-series can deliver more CPU performance per vCore than Gen5, and the 72 vCore size can provide more CPU performance for less cost than 80 vCores on Gen5. 
+- Fsv2 provides less memory and tempdb per vCore than other hardware so workloads sensitive to those limits may want to consider Gen5 or M-series instead.  
 
-对于 Fsv2 系列可用的区域，请参阅[Fsv2 系列的可用性](#fsv2-series)。
-
-
-### <a name="m-seriespreview"></a>M 系列（预览）
-
-- M 系列是内存优化硬件选项，适用于需要更多内存和更高计算限制的工作负荷，而不是由 Gen5 提供。
-- M 系列提供每 vCore 29 GB 和 128 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
-
-若要为订阅和区域启用 M 系列硬件，必须打开支持请求。 如果支持请求获得批准，M 系列的选择和预配体验将遵循与其他硬件代相同的模式。 对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
+For regions where Fsv2-series is available, see [Fsv2-series availability](#fsv2-series).
 
 
-### <a name="compute-and-memory-specifications"></a>计算和内存规格
+### <a name="m-seriespreview"></a>M-series (preview)
+
+- M-series is a memory optimized hardware option for workloads demanding more memory and higher compute limits than provided by Gen5.
+- M-series provides 29 GB per vCore and 128 vCores, which increases the memory limit relative to Gen5 by 8x to nearly 4 TB.
+
+To enable M-series hardware for a subscription and region, a support request must be open. If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+
+
+### <a name="compute-and-memory-specifications"></a>Compute and memory specifications
 
 
 |硬件代次  |计算  |内存  |
 |:---------|:---------|:---------|
-|Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器<br>-预配多达24个 Vcore （1 vCore = 1 个物理内核）  |-每个 vCore 7 GB<br>-预配高达 168 GB|
-|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
-|Fsv2 系列     |-Intel 至强白金8168（SkyLake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-设置 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配 136 GB|
-|M 系列     |-Intel E7-8890 v3 2.5 GHz 处理器<br>-设置 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配 3.7 TB|
+|Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz processors<br>- Provision up to 24 vCores (1 vCore = 1 physical core)  |- 7 GB per vCore<br>- Provision up to 168 GB|
+|Gen5     |**预配计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Provision up to 80 vCores (1 vCore = 1 hyper-thread)<br><br>**无服务器计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz processors<br>- Auto-scale up to 16 vCores (1 vCore = 1 hyper-thread)|**预配计算**<br>- 5.1 GB per vCore<br>- Provision up to 408 GB<br><br>**无服务器计算**<br>- Auto-scale up to 24 GB per vCore<br>- Auto-scale up to 48 GB max|
+|Fsv2 系列     |- Intel Xeon Platinum 8168 (SkyLake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision 72 vCores (1 vCore = 1 hyper-thread)|- 1.9 GB per vCore<br>- Provision 136 GB|
+|M 系列     |- Intel Xeon E7-8890 v3 2.5 GHz processors<br>- Provision 128 vCores (1 vCore = 1 hyper-thread)|- 29 GB per vCore<br>- Provision 3.7 TB|
 
 
-有关资源限制的详细信息，请参阅[单一数据库的资源限制（vCore）](sql-database-vcore-resource-limits-single-databases.md)或[弹性池的资源限制（vCore）](sql-database-vcore-resource-limits-elastic-pools.md)。
+For more information on resource limits, see [Resource limits for single databases (vCore)](sql-database-vcore-resource-limits-single-databases.md), or [Resource limits for elastic pools (vCore)](sql-database-vcore-resource-limits-elastic-pools.md).
 
-### <a name="selecting-a-hardware-generation"></a>选择硬件生成
+### <a name="selecting-a-hardware-generation"></a>Selecting a hardware generation
 
-在 Azure 门户中，可以选择在创建时为 SQL 数据库或池生成硬件，也可以更改现有 SQL 数据库或池的硬件生成。
+In the Azure portal, you can select the hardware generation for a SQL database or pool at the time of creation, or you can change the hardware generation of an existing SQL database or pool.
 
-**创建 SQL 数据库或池时选择硬件生成**
+**To select a hardware generation when creating a SQL database or pool**
 
-有关详细信息，请参阅[创建 SQL 数据库](sql-database-single-database-get-started.md)。
+For detailed information, see [Create a SQL database](sql-database-single-database-get-started.md).
 
-在 "**基本**信息" 选项卡上，选择 "**计算 + 存储**" 部分中的 "**配置数据库**" 链接，然后选择 "**更改配置**" 链接：
+On the **Basics** tab, select the **Configure database** link in the **Compute + storage** section, and then select the **Change configuration** link:
 
   ![配置数据库](media/sql-database-service-tiers-vcore/configure-sql-database.png)
 
-选择所需的硬件生成：
+Select the desired hardware generation:
 
-  ![选择硬件](media/sql-database-service-tiers-vcore/select-hardware.png)
+  ![select hardware](media/sql-database-service-tiers-vcore/select-hardware.png)
 
 
-**更改现有 SQL 数据库或池的硬件生成**
+**To change the hardware generation of an existing SQL database or pool**
 
-对于数据库，在 "概述" 页上，选择 "**定价层**" 链接：
+For a database, on the Overview page, select the **Pricing tier** link:
 
-  ![更改硬件](media/sql-database-service-tiers-vcore/change-hardware.png)
+  ![change hardware](media/sql-database-service-tiers-vcore/change-hardware.png)
 
-对于池，请在 "概述" 页上选择 "**配置**"。
+For a pool, on the Overview page, select **Configure**.
 
-按照上述步骤更改配置，并按前面的步骤中所述选择硬件生成。
+Follow the steps to change configuration, and select the hardware generation as described in the previous steps.
 
-### <a name="hardware-availability"></a>硬件可用性
+### <a name="hardware-availability"></a>Hardware availability
 
-#### <a name="gen4gen5-1"></a>Gen4/Gen5
+#### <a name="gen4gen5-1"></a> Gen4/Gen5
 
-澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。 
+New Gen4 databases are no longer supported in the Australia East or Brazil South regions. 
 
-Gen5 在世界各地的大多数区域中都可用。
+Gen5 is available in most regions worldwide.
 
 #### <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列在以下区域中提供：澳大利亚中部、澳大利亚中部2、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、东亚、美国东部、法国中部、印度中部、印度西部、韩国中部、韩国南部、北部欧洲、南非北部、东南亚、英国南部、英国西部、西欧、美国西部2。
+Fsv2-series is available in the following regions: Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Canada Central, East Asia, East Us, France Central, India Central, India West, Korea Central, Korea South, North Europe, South Africa North, Southeast Asia, UK South, UK West, West Europe, West Us 2.
 
 
 #### <a name="m-series"></a>M 系列
 
-M 系列在以下区域提供：美国东部、北欧、西欧、美国西部2。
-在其他区域，M 系列也可能具有有限的可用性。 你可以请求与此处列出的区域不同的区域，但可能无法在不同的区域执行请求。
+M-series is available in the following regions: East US, North Europe, West Europe, West US 2.
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-若要在订阅中启用 M 系列的可用性，必须通过[归档新的支持请求](#create-a-support-request-to-enable-m-series)来请求访问权限。
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>创建支持请求以启用 M 系列： 
+##### <a name="create-a-support-request-to-enable-m-series"></a>Create a support request to enable M-series: 
 
-1. 选择门户中的 "**帮助 + 支持**"。
+1. Select **Help + support** in the portal.
 2. 选择“新建支持请求”。
 
-在 "**基本**信息" 页上，提供以下内容：
+On the **Basics** page, provide the following:
 
 1. 对于“问题类型”，选择“服务和订阅限制(配额)”。
-2. 对于**订阅**= 选择订阅以启用 M 系列。
-3. 对于 "**配额类型**"，请选择 " **SQL 数据库**"。
-4. 选择 "**下一步**" 以中转到**详细信息**页。
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-在**详细信息**页上，提供以下内容：
+On the **Details** page, provide the following:
 
-5. 在 "**问题详细信息**" 部分中，选择 "**提供详细信息**" 链接。 
-6. 对于**SQL 数据库配额类型**，请选择**M 系列**。
-7. 对于 "**区域**"，选择区域以启用 M 系列。
-    对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
+5. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+6. For **SQL Database quota type** select **M-series**.
+7. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-批准的支持请求通常在5个工作日内完成。
+Approved support requests are typically fulfilled within 5 business days.
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 SQL 数据库，请参阅[使用 Azure 门户创建 sql 数据库](sql-database-single-database-get-started.md)。
-- 有关适用于单一数据库的特定计算大小和存储大小选项，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
-- 有关适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
-- 有关定价的详细信息，请参阅[AZURE SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)。
+- To create a SQL database, see [Creating a SQL database using the Azure portal](sql-database-single-database-get-started.md).
+- For the specific compute sizes and storage size choices available for single databases, see [SQL Database vCore-based resource limits for single databases](sql-database-vcore-resource-limits-single-databases.md).
+- For the specific compute sizes and storage size choices available for elastic pools, see [SQL Database vCore-based resource limits for elastic pools](sql-database-vcore-resource-limits-elastic-pools.md).
+- For pricing details, see the [Azure SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/single/).

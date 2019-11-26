@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 435ae9f08f718a9310fd1687fb7859058edf8b45
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384246"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479370"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -102,6 +102,10 @@ Select **CONNECT** under a solution to integrate with Security Center and be not
 ![数据源](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 ## <a name="exporting-data-to-a-siem"></a>将数据导出到 SIEM
+
+> [!NOTE]
+> For details of a simpler method (currently in preview) for exporting data to a SIEM, see [Export security alerts and recommendations (Preview)](continuous-export.md). The new method does not use Activity Log as an intermediator and allows direct export from Security Center to Event Hubs (and then on to your SIEM), it also supports the export of Security Recommendations.
+
 
 You can configure your SIEMs or other monitoring tools to receive Azure Security Center events.
 

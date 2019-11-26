@@ -1,5 +1,5 @@
 ---
-title: 将虚拟机设置 Azure 门户
+title: Provision virtual machine with Azure portal
 description: 本操作指南介绍用于在 Azure 门户中创建 Windows SQL Server 2017 虚拟机的选项。
 services: virtual-machines-windows
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 68fda45038da48660da0c29787b3a86e00d9b129
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033588"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464150"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -29,20 +29,20 @@ ms.locfileid: "74033588"
 借助本指南创建你自己的 SQL Server VM。 或使用它作为参考，了解 Azure 门户中可用的选项。
 
 > [!TIP]
-> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题](virtual-machines-windows-sql-server-iaas-faq.md)。
+> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a id="select"></a>SQL Server 虚拟机库映像
 
 创建 SQL Server 虚拟机时，可从虚拟机库中选择一个预配置的映像。 以下步骤演示如何选择一个 SQL Server 2017 映像。
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 **Azure SQL** 不在列表中，请选择“所有服务”，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
-1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 您可以通过选择 "**显示详细**信息" 查看其他信息。 
-1. 在 " **SQL 虚拟机**" 磁贴的 "SQL Server 图像搜索" 框中键入 `2017`，然后在下拉框中选择 "**免费 SQL Server 许可证 SQL Server： Windows Server 2016 上的2017开发人员**"。 
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 If **Azure SQL** is not in the list, select **All services**, then type Azure SQL in the search box. （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 You can view additional information by selecting **Show details**. 
+1. Type `2017` in the SQL Server image search box on the **SQL virtual machines** tile, and then select **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** from the drop-down. 
 
 
-   ![选择 SQL VM 映像](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
+   ![Select SQL VM image](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > 本演示使用 Developer（开发人员）版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 但是，本教程中使用的映像可随意选择。 有关可用映像的说明，请参阅 [SQL Server Microsoft 虚拟机概述](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)。
@@ -53,36 +53,36 @@ ms.locfileid: "74033588"
    > 有关这些选项的详细信息，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
 
-1. 选择“创建”。
+1. 选择**创建**。
 
 
-## <a name="1-configure-basic-settings"></a>1. 配置基本设置
+## <a name="1-configure-basic-settings"></a>1. Configure basic settings
 
 
 在“基本信息”选项卡中提供以下信息：
 
-* 在 "**项目详细信息**" 下，确保选择了正确的订阅。 
-*  在 "**资源组**" 部分中，从列表中选择现有的资源组，或选择 "**新建**" 以创建新的资源组。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。 
+* Under **Project Details**, make sure the correct subscription is selected. 
+*  In the **Resource group** section, either select an existing resource group from the list or choose **Create new** to create a new resource group. 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。 
 
-    ![订阅](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+    ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
   > 如果只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../../azure-resource-manager/resource-group-overview.md)。
 
 
 * 在“实例详细信息”下：
-    1. 输入唯一的**虚拟机名称**。  
+    1. Enter a unique **Virtual machine name**.  
     1. 为“区域”选择一个位置。 
-    1. 出于本指南的目的，请将 "**可用性选项**" 设置为 "_无需基础结构冗余_"。 有关可用性选项的详细信息，请参阅[可用性](../../windows/availability.md)。 
-    1. 在 "**映像**" 列表中，选择 "_免费 SQL Server 许可证： Windows Server 2016 上的 SQL Server 2017 开发人员_"。  
+    1. For the purpose of this guide, leave **Availability options** set to _No infrastructure redundancy required_. 有关可用性选项的详细信息，请参阅[可用性](../../windows/availability.md)。 
+    1. In the **Image** list, select _Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016_.  
     1. 对于虚拟机**大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。 用完资源后，请务必清理资源，以免产生任何意外的费用。 对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)中建议的计算机大小和配置。
 
     ![实例详细信息](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> 在“选择大小”窗口中显示的每月估计成本不包括 SQL Server 许可成本。 此预估费用只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 另请参阅 [SQL Server Azure VM 的定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)和[虚拟机的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> 在“选择大小”窗口中显示的每月估计成本不包括 SQL Server 许可成本。 此预估费用只是 VM 的成本。 对于 SQL Server 的 Express 和开发人员版本，这是估计的总成本。 对于其他版本，请参阅[“Windows 虚拟机定价”页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)并选择 SQL Server 的目标版本。 Also see the [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) and [Sizes for virtual machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-* 在 "**管理员帐户**" 下提供用户名和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+* Under **Administrator account**, provide a username and a password. 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
    ![管理员帐户](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
@@ -91,46 +91,46 @@ ms.locfileid: "74033588"
    ![入站端口规则](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. 配置可选功能
+## <a name="2-configure-optional-features"></a>2. Configure optional features
 
 ### <a name="disks"></a>磁盘
 
-在 "**磁盘**" 选项卡上，配置磁盘选项。 
+On the **Disks** tab, configure your disk options. 
 
-* 在 " **os 磁盘类型**" 下，从下拉类型中选择要用于操作系统的磁盘类型。 建议为生产系统使用高级版，但不适用于基本 VM。 若要使用高级 SSD，请更改虚拟机大小。 
-* 在 "**高级**" 下的 "使用**托管磁盘**" 下选择 **"是"** 。
+* Under **OS disk type**, select the type of disk you want for your OS from the drop-down. Premium is recommended for production systems but is not available for a Basic VM. To utilize Premium SSD, change the virtual machine size. 
+* Under **Advanced**, select **Yes** under use **Managed Disks**.
 
    > [!NOTE]
-   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅[Azure 托管磁盘概述](../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md)。
+   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 For more information, see [Azure Managed Disks Overview](../managed-disks-overview.md). 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md)。
 
-![SQL VM 磁盘设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
+![SQL VM Disk settings](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 
-在 "**网络**" 选项卡上，配置网络选项。 
+On the **Networking** tab, configure your networking options. 
 
-* 创建新的**虚拟网络**，或使用现有的 vNet 作为 SQL Server VM。 同时指定一个**子网**。 
+* Create a new **virtual network**, or use an existing vNet for your SQL Server VM. Designate a **Subnet** as well. 
 
-* 在 " **NIC 网络安全组**" 下，选择 "基本" 安全组或 "高级" 安全组。 选择 "基本" 选项后，可以为 SQL Server VM 选择入站端口（在 "**基本**" 选项卡上配置的值相同）。 选择 "高级" 选项，可以选择现有的网络安全组，也可以创建一个新的安全组。 
+* Under **NIC network security group**, select either a basic security group, or the advanced security group. Choosing the basic option allows you to select inbound ports for the SQL Server VM (the same values that were configured on the **Basic** tab). Selecting the advanced option allows you to choose an existing network security group, or create a new one. 
 
 * 你可以对网络设置进行其他更改，也可以保留默认值。
 
-![SQL VM 网络设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-networking.png)
+![SQL VM Networking settings](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-networking.png)
 
 #### <a name="monitoring"></a>监视
 
-在 "**监视**" 选项卡上，配置监视和自动关闭。 
+On the **Monitoring** tab, configure monitoring and autoshutdown. 
 
-* 默认情况下，Azure 会启用使用为 VM 指定的同一个存储帐户的**启动诊断**。 你可以在此处更改这些设置，并启用**OS 来宾诊断**。 
-* 也可以在此选项卡上启用**系统分配的托管标识**和**自动关闭**。 
+* Azure enables **Boot diagnostics** by default with the same storage account designated for the VM. You can change these settings here, as well as enabling **OS guest diagnostics**. 
+* You can enable **System assigned managed identity** and **autoshutdown** on this tab as well. 
 
-![SQL VM 管理设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
+![SQL VM management settings](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
 
 
-## <a name="3-configure-sql-server-settings"></a>3. 配置 SQL Server 设置
+## <a name="3-configure-sql-server-settings"></a>3. Configure SQL Server settings
 
-在“SQL Server 设置”选项卡上，配置 SQL Server 的特定设置和优化。 可以为 SQL Server 配置的设置包括以下各项：
+On the **SQL Server settings** tab, configure specific settings and optimizations for SQL Server. The settings that you can configure for SQL Server include the following:
 
 | 设置 |
 | --- |
@@ -140,17 +140,17 @@ ms.locfileid: "74033588"
 | [存储配置](#storage-configuration) |
 | [自动修补](#automated-patching) |
 | [自动备份](#automated-backup) |
-| [R Services （高级分析）](#r-services-advanced-analytics) |
+| [机器学习服务](#machine-learning-services) |
 
 
-### <a name="connectivity"></a>连接
+### <a name="connectivity"></a>连接性
 
-在“ **SQL 连接**”下，指定要对此 VM 上的 SQL Server 实例进行的访问类型。 对于本演示，请选择“公共(Internet)”以允许从 Internet 上的计算机或服务连接到 SQL Server。 选择此选项以后，Azure 会自动将防火墙和网络安全组配置为允许在所选端口上通信。
+在“ **SQL 连接**”下，指定要对此 VM 上的 SQL Server 实例进行的访问类型。 对于本演示，请选择“公共(Internet)”以允许从 Internet 上的计算机或服务连接到 SQL Server。 With this option selected, Azure automatically configures the firewall and the network security group to allow traffic on the port selected.
 
 > [!TIP]
 > SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请更改上一对话框中的端口，改成在非默认端口（例如 1401）上侦听。 如果更改端口，则必须在任何客户端工具（例如 SSMS）中使用该端口进行连接。
 
-![SQL VM 安全性](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-security.png)
+![SQL VM Security](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-security.png)
 
 若要通过 Internet 连接到 SQL Server，还必须启用下一部分中所述的“SQL Server 身份验证”。
 
@@ -163,23 +163,23 @@ ms.locfileid: "74033588"
 
 
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
-如果需要 SQL Server 身份验证，请在**SQL Server 设置**"选项卡上单击" **SQL 身份验证**"下的"**启用**"。
+If you require SQL Server Authentication, click **Enable** under **SQL authentication** on the **SQL Server settings** tab.
 
 ![SQL Server 身份验证](./media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
 > [!NOTE]
 > 如果计划通过 Internet 来访问 SQL Server（“公共”连接选项），则必须在此处启用 SQL 身份验证。 对 SQL Server 进行公共访问需要使用 SQL 身份验证。
 
-如果启用 SQL Server 身份验证，请指定“登录名”和“密码”。 此登录名已配置为 SQL Server 身份验证登录名和 **sysadmin** 固定服务器角色的成员。 若要详细了解身份验证模式，请参阅[选择身份验证模式](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)。
+如果启用 SQL Server 身份验证，请指定“登录名”和“密码”。 This login name is configured as a SQL Server Authentication login and member of the **sysadmin** fixed server role. 若要详细了解身份验证模式，请参阅[选择身份验证模式](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)。
 
 如果未启用 SQL Server 身份验证，可以在 VM 上使用本地管理员帐户连接到 SQL Server 实例。
 
 
 ### <a name="azure-key-vault-integration"></a>Azure 密钥保管库集成
 
-若要将安全机密存储在 Azure 中进行加密，请选择 " **SQL Server 设置**"，并向下滚动到 " **azure 密钥保管库集成**"。 选择 "**启用**"，并填写所需的信息。 
+To store security secrets in Azure for encryption, select **SQL Server settings**, and scroll down to  **Azure key vault integration**. Select **Enable** and fill in the requested information. 
 
 ![Azure 密钥保管库集成](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
@@ -196,30 +196,30 @@ ms.locfileid: "74033588"
 
 ### <a name="storage-configuration"></a>存储配置
 
-在 " **SQL Server 设置**" 选项卡上的 "**存储配置**" 下，选择 "**更改配置**" 以打开 "性能优化存储配置" 页，并指定存储要求。
+On the **SQL Server settings** tab, under **Storage configuration**, select **Change configuration** to open the Performance Optimized Storage Configuration page and specify the storage requirements.
 
-![SQL VM 存储配置](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![SQL VM Storage configuration](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 在“ **存储优化目标**”下，选择以下选项之一：
 
 * **常规** ：默认设置，支持大多数工作负荷。
-* **事务处理**针对传统数据库 OLTP 工作负荷优化存储。
+* **Transactional processing** optimizes the storage for traditional database OLTP workloads.
 * **数据仓库** ：针对分析和报告工作负荷优化存储。
 
-![SQL VM 存储配置](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+![SQL VM Storage configuration](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
 
-您可以选择将值保留为默认值，也可以根据 IOPS 需要手动更改存储拓扑。 有关详细信息，请参阅[存储配置](virtual-machines-windows-sql-server-storage-configuration.md)。 
+You can choose to leave the values at default, or you can manually change the storage topology to suit your IOPS needs. For more information, see [storage configuration](virtual-machines-windows-sql-server-storage-configuration.md). 
 
-### <a name="sql-server-license"></a>SQL Server 许可证
-如果你是软件保障客户，则可以利用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来引入你自己的 SQL Server 许可证并保存资源。 
+### <a name="sql-server-license"></a>SQL Server License
+If you're a Software Assurance customer, you can utilize the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) to bring your own SQL Server license and save on resources. 
 
-![SQL VM 许可证](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
+![SQL VM License](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
 
 ### <a name="automated-patching"></a>自动修补
 
 **自动修补** ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 指定进行维护的具体日期（星期几）、时间和时长。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。 如果不希望 Azure 自动修补 SQL Server 和操作系统，请单击“ **禁用**”。  
 
-![SQL VM 自动修补](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-automated-patching.png)
+![SQL VM automated patching](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-automated-patching.png)
 
 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补](virtual-machines-windows-sql-automated-patching.md)。
 
@@ -235,19 +235,19 @@ ms.locfileid: "74033588"
 * 备份系统数据库
 * 配置备份计划
 
-若要加密备份，请单击“ **启用**”。 然后指定“密码”。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。 默认情况下会自动设置计划，但你可以通过选择 "**手动**" 来创建手动计划。 
+若要加密备份，请单击“ **启用**”。 然后指定“密码”。 Azure 创建一个证书来加密备份，并使用指定的密码来保护该证书。 By default the schedule is set automatically, but you can create a manual schedule by selecting **Manual**. 
 
-![SQL VM 自动备份](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
+![SQL VM automated backups](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
 
 有关详细信息，请参阅 [针对 Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)。
 
 
-### <a name="r-services-advanced-analytics"></a>R Services （高级分析）
+### <a name="machine-learning-services"></a>机器学习服务
 
-你可以选择启用[SQL Server R Services （高级分析）](/sql/advanced-analytics/r/sql-server-r-services/)。 使用此选项，可使用 SQL Server 2017 的高级分析功能。 在**SQL Server 设置**"窗口中选择"**启用**"。
+You have the option to enable [Machine Learning Services](/sql/advanced-analytics/). This option enables you to use machine learning with Python and R in SQL Server 2017. Select **Enable** on the **SQL Server Settings** window.
 
 
-## <a name="4-review--create"></a>4. 查看 + 创建
+## <a name="4-review--create"></a>4. Review + create
 
 在“查看 + 创建”选项卡中查看摘要，然后选择“创建”以创建为此 VM 指定的 SQL Server、资源组和资源。
 
@@ -278,7 +278,7 @@ ms.locfileid: "74033588"
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
   > [!NOTE]
-  > 本示例使用常用端口 1433。 但是，如果在部署 SQL Server VM 过程中指定了其他端口（例如 1401），则需修改此值。 
+  > This example uses the common port 1433. However, this value will need to be modified if a different port (such as 1401) was specified during the deployment of the SQL Server VM. 
 
 
 ## <a name="next-steps"></a>后续步骤

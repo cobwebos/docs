@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel 中的权限 |Microsoft Docs
-description: 本文介绍 Azure Sentinel 如何使用基于角色的访问控制向用户分配权限并标识每个角色允许的操作。
+title: Permissions in Azure Sentinel | Microsoft Docs
+description: This article explains how Azure Sentinel uses role-based access control to assign permissions to users and identifies the allowed actions for each role.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -13,70 +13,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0bf95b499a7366dad1e7b78fa4298aa6a42bb5fe
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316797"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464113"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
+# <a name="permissions-in-azure-sentinel"></a>Permissions in Azure Sentinel
 
-Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-access-control/role-assignments-portal.md)来提供可分配给 Azure 中的用户、组和服务的 [内置角色](../role-based-access-control/built-in-roles.md) 。
+Azure Sentinel uses [Role-Based Access Control(RBAC)](../role-based-access-control/role-assignments-portal.md), to provide [built-in roles](../role-based-access-control/built-in-roles.md) that can be assigned to users, groups, and services in Azure.
 
-使用 RBAC，你可以使用和创建安全操作团队中的角色来授予对 Azure Sentinel 的适当访问权限。 基于这些角色，你可以精细地控制有权访问 Azure Sentinel 的用户可以看到的内容。 可以直接在 Azure Sentinel 工作区中分配 RBAC 角色，也可以在工作区所属的订阅或资源组中分配 RBAC 角色。
+Using RBAC, you can use and create roles within your security operations team to grant appropriate access to Azure Sentinel. Based on the roles, you have fine-grained control over what users with access to Azure Sentinel can see. You can assign RBAC roles in the Azure Sentinel workspace directly, or to a subscription or resource group that the workspace belongs to.
 
-有三个特定的内置 Azure Sentinel 角色。  
-**所有 Azure Sentinel 内置角色都授予对 Azure Sentinel 工作区中数据的读取访问权限。**
-- **Azure sentinel 读者**：分配有此角色的用户具有查看 Azure Sentinel 的权限。 用户可以查看事件和数据，但不能进行更改。
-- **Azure Sentinel 响应**程序：分配有此角色的用户可以在事件（例如分配和严重性更改）上读取和执行操作。
-- **Azure Sentinel 参与者**：分配有此角色的用户可以读取和执行有关事件的操作并创建和删除分析规则。
+There are three specific built-in Azure Sentinel roles.  
+**All Azure Sentinel built-in roles grant read access to the data in your Azure Sentinel workspace.**
+- **Azure Sentinel reader**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- **Azure Sentinel responder**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- **Azure Sentinel contributor**: For more information, see [Built-in roles](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
-除了 Azure Sentinel 专用 RBAC 角色外，还可以使用 Azure 和 Log Analytics RBAC 角色，这些角色可授予一组更广泛的权限，包括对 Azure Sentinel 工作区和其他资源的访问权限：
+In addition to Azure Sentinel dedicated RBAC roles, there are Azure and Log Analytics RBAC roles that can grant a wider set of permissions that include access to your Azure Sentinel workspace and other resources:
 
-- **Azure 角色：** [所有者](../role-based-access-control/built-in-roles.md#owner)、[参与者](../role-based-access-control/built-in-roles.md#contributor)和[读者](../role-based-access-control/built-in-roles.md#reader)。 Azure 角色授予所有 Azure 资源的访问权限，包括 Log Analytics 工作区和 Azure Sentinel 资源。
+- **Azure roles:** [Owner](../role-based-access-control/built-in-roles.md#owner), [Contributor](../role-based-access-control/built-in-roles.md#contributor), and [Reader](../role-based-access-control/built-in-roles.md#reader). Azure roles grant access across all your Azure resources, including Log Analytics workspaces and Azure Sentinel resources.
 
--   **Log Analytics 角色：** [Log Analytics 参与者](../role-based-access-control/built-in-roles.md#log-analytics-contributor)、 [Log Analytics 读取](../role-based-access-control/built-in-roles.md#log-analytics-reader)者。 Log Analytics 角色授予所有 Log Analytics 工作区的访问权限。 
-
-> [!NOTE]
-> Log Analytics 角色还会授予对所有 Azure 资源的读取访问权限，但只会为 Log Analytics 资源分配写入权限。
-
-
-例如，使用**Azure sentinel reader**和**azure 捐助**者（而不是**azure sentinel 参与者**）角色分配的用户将可以在 Azure sentinel 中编辑数据，不过它们只具有**Sentinel 读取器**权限。 因此，如果希望仅在 Azure Sentinel 中授予权限，则应仔细删除此用户的以前权限，确保不会中断其他资源所需的任何权限角色。
+-   **Log Analytics roles:** [Log Analytics contributor](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [Log Analytics reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics roles grant access across all your Log Analytics workspaces. 
 
 > [!NOTE]
->- Azure Sentinel 使用自动响应的行动手册。 行动手册利用 Azure 逻辑应用，是单独的 Azure 资源。 你可能想要将安全操作团队的特定成员指定为使用逻辑应用进行安全业务流程、自动化和响应（之忠诚度）操作的选项。 可以使用[逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)角色分配显式权限来使用行动手册。
->- 若要添加数据连接器，每个连接器的必要角色都按连接器类型列出，并在相关连接器页中列出。 此外，若要连接任何数据源，您必须对 Azure Sentinel 工作区具有写入权限。
+> Log Analytics roles also grant read access across all Azure resources but will only assign write permissions to Log Analytics resources.
+
+
+For example, a user who is assigned with **Azure Sentinel reader** and **Azure contributor** (not **Azure Sentinel contributor**) roles, will be able to edit data in Azure Sentinel, although they only have **Sentinel reader** permissions. Therefore, if you want to grant permissions to a only in Azure Sentinel, you should carefully remove this user’s prior permissions making sure you do not break any needed permission role for another resource.
+
+> [!NOTE]
+>- Azure Sentinel uses playbooks for automated threat response. Playbooks leverage Azure Logic Apps and are a separate Azure resource. You might want to assign specific members of your security operations team with the option to use Logic Apps for security orchestration, automation, and response (SOAR) operations. You can use the [Logic App contributor](../role-based-access-control/built-in-roles.md#logic-app-contributor) role or the [Logic App operator](../role-based-access-control/built-in-roles.md#logic-app-operator) role to assign explicit permission for using playbooks.
+>- To add data connectors, the necessary roles for each connector are per connector type and are listed in the relevant connector page. In addition, in order to connect any data source, you must have write permission on the Azure Sentinel workspace.
 
 
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
-下表显示 Azure Sentinel 中的角色和允许的操作。 X 指示允许该角色执行该操作。
+The following table displays roles and allowed actions in Azure Sentinel. X 指示允许该角色执行该操作。
 
-| 角色 | 创建和运行行动手册| 创建和编辑仪表板、分析规则和其他 Azure Sentinel 资源 | 管理事件（解除、分配等） | 查看数据、事件、仪表板和其他 Azure Sentinel 资源 |
+| 角色 | Create and run playbooks| Create and edit dashboards, analytic rules, and other Azure Sentinel resources | Manage incidents (dismiss, assign, etc.) | View data, incidents, dashboards and other Azure Sentinel resources |
 |--- |---|---|---|---|
-| Azure Sentinel 读取器 | -- | -- | -- | X |
-| Azure Sentinel 响应程序|--|--| X | X |
-| Azure Sentinel 参与者 | -- | X | X | X |
-| Azure Sentinel 参与者 + 逻辑应用参与者 | X | X | X | X |
+| Azure Sentinel reader | -- | -- | -- | X |
+| Azure Sentinel responder|--|--| X | X |
+| Azure Sentinel contributor | -- | X | X | X |
+| Azure Sentinel contributor + Logic App contributor | X | X | X | X |
 
 
 > [!NOTE]
-> - 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，仅将 Azure Sentinel 参与者角色分配给需要创建规则或仪表板的用户。
-> - 建议在资源组作用域中设置 Azure Sentinel 的权限，以便用户可以访问同一资源组中的所有 Azure Sentinel 工作区。
+> - 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 For example, assign the Azure Sentinel contributor role only to users who need to create rules or dashboards.
+> - We recommend that you set permissions for Azure Sentinel in the resource group scope, so the user can have access to all Azure Sentinel workspaces in the same resource group.
 >
-## <a name="building-custom-rbac-roles"></a>生成自定义 RBAC 角色
+## <a name="building-custom-rbac-roles"></a>Building custom RBAC roles
 
-除了、或而不是使用内置 RBAC 角色，你还可以为 Azure Sentinel 创建自定义 RBAC 角色。 Azure Sentinel 的自定义 RBAC 角色的创建方式与创建其他[自定义 AZURE RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)角色的方式相同，具体取决于 azure sentinel 资源的特定权限。
+In addition to, or instead of, using built-in RBAC roles, you can create custom RBAC roles for Azure Sentinel. Custom RBAC roles for Azure Sentinel are created the same way you create other [custom Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) roles, based on specific permissions to Azure Sentinel resources.
 
-## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>在 Azure Sentinel 中存储的数据的高级 RBAC
+## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Advanced RBAC on the data you store in Azure Sentinel
   
-可以在 Azure Sentinel 工作区中的数据上使用 Log Analytics 高级基于角色的访问控制。 这包括每个数据类型的基于角色的访问控制和以资源为中心的基于角色的访问控制。 有关 Log Analytics 角色的详细信息，请参阅 [在 Azure Monitor 中管理日志数据和工作区](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
+You can use the Log Analytics advanced role-based access control across the data in your Azure Sentinel workspace. This includes both role-based access control per data type and resource-centric role-based access control. For more information on Log Analytics roles, see [Manage log data and workspaces in Azure Monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍了如何使用 Azure Sentinel 用户角色，以及每个角色允许用户执行的操作。
+In this document, you learned how to work with roles for Azure Sentinel users and what each role enables users to do.
 
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure Sentinel Blog](https://aka.ms/azuresentinelblog). 查找关于 Azure 安全性及合规性的博客文章。

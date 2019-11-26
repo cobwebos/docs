@@ -1,76 +1,76 @@
 ---
-title: 评估新 Azure 策略的影响
-description: 了解将新策略引入 Azure 环境时要遵循的过程。
+title: Evaluate the impact of a new Azure policy
+description: Understand the process to follow when introducing a new policy definition into your Azure environment.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: e39183b13d2b3cf8c7527f9372879372b2123648
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279424"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463519"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>评估新 Azure 策略的影响
+# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Evaluate the impact of a new Azure policy
 
-Azure 策略是一种功能强大的工具，可用于管理 Azure 资源与业务标准并满足合规性需求。 当用户、进程或管道创建或更新资源时，Azure 策略会检查请求。 当策略定义效果为[Append](./effects.md#deny)或[DeployIfNotExists](./effects.md#deployifnotexists)时，策略将更改请求或将其添加到其中。 当策略定义效果为[Audit](./effects.md#audit)或[AuditIfNotExists](./effects.md#auditifnotexists)时，策略将导致创建活动日志条目。 当策略定义效果为 "[拒绝](./effects.md#deny)" 时，策略将停止创建或更改请求。
+Azure Policy is a powerful tool for managing your Azure resources to business standards and to meet compliance needs. When people, processes, or pipelines create or update resources, Azure Policy reviews the request. When the policy definition effect is [Append](./effects.md#deny) or [DeployIfNotExists](./effects.md#deployifnotexists), Policy alters the request or adds to it. When the policy definition effect is [Audit](./effects.md#audit) or [AuditIfNotExists](./effects.md#auditifnotexists), Policy causes an Activity log entry to be created. And when the policy definition effect is [Deny](./effects.md#deny), Policy stops the creation or alteration of the request.
 
-如果你知道已正确定义策略，则这些结果将完全按预期方式进行。 不过，验证新策略的工作方式非常重要，因为它允许更改或阻止工作。 验证必须确保仅将预期资源确定为不合规，并且不会在结果中错误地包含符合性资源（称为_误报_）。
+These outcomes are exactly as desired when you know the policy is defined correctly. However, it's important to validate a new policy works as intended before allowing it to change or block work. The validation must ensure only the intended resources are determined to be non-compliant and no compliant resources are incorrectly included (known as a _false positive_) in the results.
 
-验证新策略定义的建议方法是执行以下步骤：
+The recommended approach to validating a new policy definition is by following these steps:
 
-- 严格定义策略
-- 审核现有资源
-- 审核新的或更新的资源请求
-- 将策略部署到资源
+- Tightly define your policy
+- Audit your existing resources
+- Audit new or updated resource requests
+- Deploy your policy to resources
 - 持续监视
 
-## <a name="tightly-define-your-policy"></a>严格定义策略
+## <a name="tightly-define-your-policy"></a>Tightly define your policy
 
-务必了解如何实现业务策略，作为策略定义以及 Azure 资源与其他 Azure 服务之间的关系。 此步骤通过[标识要求](../tutorials/create-custom-policy-definition.md#identify-requirements)并[确定资源属性](../tutorials/create-custom-policy-definition.md#determine-resource-properties)来完成。
-但除了企业策略的窄定义外，还必须了解这一点。 你的策略状态是否为 "所有虚拟机必须 ..."？ 使用 Azure 的其他 Azure 服务（例如 HDInsight 或 AKS）有什么作用？ 定义策略时，必须考虑此策略如何影响其他服务使用的资源。
+It's important to understand how the business policy is implemented as a policy definition and the relationship of Azure resources with other Azure services. This step is accomplished by [identifying the requirements](../tutorials/create-custom-policy-definition.md#identify-requirements) and [determining the resource properties](../tutorials/create-custom-policy-definition.md#determine-resource-properties).
+But it's also important to see beyond the narrow definition of your business policy. Does your policy state for example "All Virtual Machines must..."? What about other Azure services that make use of VMs, such as HDInsight or AKS? When defining a policy, we must consider how this policy impacts resources that are used by other services.
 
-出于此原因，应严格定义策略定义，并将其重点放在需要评估符合性的资源和属性上。
+For this reason, your policy definitions should be as tightly defined and focused on the resources and the properties you need to evaluate for compliance as possible.
 
-## <a name="audit-existing-resources"></a>审核现有资源
+## <a name="audit-existing-resources"></a>Audit existing resources
 
-在希望使用新策略定义管理新的或更新的资源之前，最好是了解它是如何评估现有资源（如测试资源组）的有限子集的。 在策略分配中使用[强制模式](./assignment-structure.md#enforcement-mode)
-_禁用_（DoNotEnforce），以防止创建触发或活动日志条目的[影响](./effects.md)。
+Before looking to manage new or updated resources with your new policy definition, it's best to see how it evaluates a limited subset of existing resources, such as a test resource group. Use the [enforcement mode](./assignment-structure.md#enforcement-mode)
+_Disabled_ (DoNotEnforce) on your policy assignment to prevent the [effect](./effects.md) from triggering or activity log entries from being created.
 
-此步骤使你可以在不影响工作流的情况下评估新策略对现有资源的符合性结果。 检查是否未将符合标准的资源标记为不符合（_误报_），并检查是否所有预期为不符合的资源均已正确标记。
-资源的初始子集按预期进行验证后，慢慢地将计算展开为所有现有资源。
+This step gives you a chance to evaluate the compliance results of the new policy on existing resources without impacting work flow. Check that no compliant resources are marked as non-compliant (_false positive_) and that all the resources you expect to be non-compliant are marked correctly.
+After the initial subset of resources validates as expected, slowly expand the evaluation to all existing resources.
 
-以这种方式评估现有资源还可以在完整实现新策略之前修正不合规的资源。 如果策略定义效果为_DeployIfNotExists_，则可以手动或通过[修正任务](../how-to/remediate-resources.md)来执行此清理。
+Evaluating existing resources in this way also provides an opportunity to remediate non-compliant resources before full implementation of the new policy. This cleanup can be done manually or through a [remediation task](../how-to/remediate-resources.md) if the policy definition effect is _DeployIfNotExists_.
 
-## <a name="audit-new-or-updated-resources"></a>审核新资源或更新的资源
+## <a name="audit-new-or-updated-resources"></a>Audit new or updated resources
 
-验证新策略定义在现有资源上正确报告后，可以在创建或更新资源时查看策略的影响。 如果策略定义支持效果参数化，请使用[审核](./effects.md#audit)。 此配置允许你监视资源的创建和更新，以查看新策略定义是否在 Azure 活动日志中为不符合的资源触发一个条目，而不影响现有工作或请求。
+Once you've validated your new policy definition is reporting correctly on existing resources, it's time to look at the impact of the policy when resources get created or updated. If the policy definition supports effect parameterization, use [Audit](./effects.md#audit). This configuration allows you to monitor the creation and updating of resources to see if the new policy definition triggers an entry in Azure Activity log for a resource that is non-compliant without impacting existing work or requests.
 
-建议更新并创建与策略定义相匹配的新资源，以查看在预期时正确触发了_审核_效果。 适用于资源请求的 lookout，这些请求不应受到触发_审核_效果的新策略定义的影响。
-这些受影响的资源是_误报_的另一个示例，在完全实现之前必须在策略定义中修复。
+It's recommended to both update and create new resources that match your policy definition to see that the _Audit_ effect is correctly being triggered when expected. Be on the lookout for resource requests that shouldn't be impacted by the new policy definition that trigger the _Audit_ effect.
+These impacted resources are another example of _false positives_ and must be fixed in the policy definition before full implementation.
 
-如果在此测试阶段更改了策略定义，则建议你开始验证过程，并审核现有资源。 对新资源或更新资源的_误报_策略定义的更改也可能会影响现有资源。
+In the event the policy definition is changed at this stage of testing, it's recommended to begin the validation process over with the auditing of existing resources. A change to the policy definition for a _false positive_ on new or updated resources is likely to also have an impact on existing resources.
 
-## <a name="deploy-your-policy-to-resources"></a>将策略部署到资源
+## <a name="deploy-your-policy-to-resources"></a>Deploy your policy to resources
 
-完成对新策略定义的验证以及现有资源和新的或更新的资源请求后，开始执行该策略的过程。 建议为新的策略定义创建策略分配，使其成为所有资源的子集，如资源组。 验证初始部署后，将策略的作用域扩展到更广泛、更广泛的级别，如订阅和管理组。 此扩展是通过以下方式实现的：删除分配并在目标范围内创建新的扩展，直到将其分配给新策略定义所涵盖的资源的完整范围为止。
+After completing validation of your new policy definition with both existing resources and new or updated resource requests, you begin the process of implementing the policy. It's recommended to create the policy assignment for the new policy definition to a subset of all resources first, such as a resource group. After validating initial deployment, extend the scope of the policy to broader and broader levels, such as subscriptions and management groups. This expansion is achieved by removing the assignment and creating a new one at the target scopes until it's assigned to the full scope of resources intended to be covered by your new policy definition.
 
-在推出过程中，如果资源所在的资源应该从新策略定义中排除，请按以下方式之一进行处理：
+During rollout, if resources are located that should be exempt from your new policy definition, address them in one of the following ways:
 
-- 更新策略定义以更明确地减少意外的影响
-- 更改策略分配的范围（通过删除和创建新分配）
-- 将资源组添加到策略分配的排除列表中
+- Update the policy definition to be more explicit to reduce unintended impact
+- Change the scope of the policy assignment (by removing and creating a new assignment)
+- Add the group of resources to the exclusion list for the policy assignment
 
-对范围（级别或排除项）所做的任何更改都应进行完全验证并与您的安全和合规性组织通信，以确保不会有覆盖范围。
+Any changes to the scope (level or exclusions) should be fully validated and communicated with your security and compliance organizations to ensure there are no gaps in coverage.
 
-## <a name="monitor-your-policy-and-compliance"></a>监视策略和符合性
+## <a name="monitor-your-policy-and-compliance"></a>Monitor your policy and compliance
 
-实现并分配策略定义不是最后一步。 连续监视资源的[符合性](../how-to/get-compliance-data.md)级别，并设置适当的[Azure Monitor 警报和通知](../../../azure-monitor/platform/alerts-overview.md)，以确定何时识别不符合的设备。 还建议按计划评估策略定义和相关分配，以验证策略定义是否满足业务策略和合规性需求。 如果不再需要策略，则应该将其删除。 随着底层 Azure 资源的发展，策略也需要随时更新，并添加新的属性和功能。
+Implementing and assigning your policy definition isn't the final step. Continuously monitor the [compliance](../how-to/get-compliance-data.md) level of resources to your new policy definition and setup appropriate [Azure Monitor alerts and notifications](../../../azure-monitor/platform/alerts-overview.md) for when non-compliant devices are identified. It's also recommended to evaluate the policy definition and related assignments on a scheduled basis to validate the policy definition is meeting business policy and compliance needs. Policies should be removed if no longer needed. Policies also need updating from time to time as the underlying Azure resources evolve and add new properties and capabilities.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[策略定义结构](./definition-structure.md)。
-- 了解[策略分配结构](./assignment-structure.md)。
-- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- Learn about the [policy definition structure](./definition-structure.md).
+- Learn about the [policy assignment structure](./assignment-structure.md).
+- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
+- Learn how to [get compliance data](../how-to/get-compliance-data.md).
+- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478783"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484353"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
-创建 Azure Maps 帐户后，将创建客户端 ID 和密钥以支持 Azure Active Directory （Azure AD）或共享密钥身份验证。
+After you create an Azure Maps account, a client ID and keys are created to support either Azure Active Directory (Azure AD) or Shared Key authentication.
 
 ## <a name="view-authentication-details"></a>查看身份验证详细信息
 
-你可以在 Azure 门户上查看身份验证详细信息。 请在 "**设置**" 菜单中转到你的帐户并选择 "**身份验证**"。
+You can view your authentication details on the Azure portal. Go to your account and select **Authentication** on the **Settings** menu.
 
 ![身份验证详细信息](./media/how-to-manage-authentication/how-to-view-auth.png)
 
- 若要了解详细信息，请参阅[Azure Maps 的身份验证](https://aka.ms/amauth)。
+ To learn more, see [Authentication with Azure Maps](https://aka.ms/amauth).
 
 
-## <a name="set-up-azure-ad-app-registration"></a>设置 Azure AD 应用注册
+## <a name="set-up-azure-ad-app-registration"></a>Set up Azure AD app registration
 
-创建 Azure Maps 帐户后，需要在 Azure AD 租户与 Azure Maps 资源之间建立链接。
+After you create an Azure Maps account, you need to establish a link between your Azure AD tenant and the Azure Maps resource.
 
-1. 请中转到 Azure AD 边栏选项卡，并创建应用注册。 提供注册的名称。 在 "**登录 URL** " 框中，提供 web 应用/API 的主页（例如，https：\//localhost/）。 如果已注册应用，请执行步骤2。
+1. Go to the Azure AD blade and create an app registration. Provide a name for the registration. In the **Sign-on URL** box, provide the home page of the web app / API (for example, https:\//localhost/). If you already have a registered app, go to step 2.
 
     ![应用注册](./media/how-to-manage-authentication/app-registration.png)
 
-    ![应用注册详细信息](./media/how-to-manage-authentication/app-create.png)
+    ![App registration details](./media/how-to-manage-authentication/app-create.png)
 
-2. 若要将委派的 API 权限分配到 Azure Maps，请在 "**应用注册**下访问应用程序，然后选择"**设置**"。  选择 "**所需权限**"，然后选择 "**添加**"。 搜索并选择 "**选择 API**" 下的**Azure Maps** ，然后选择 "**选择**" 按钮。
+2. To assign delegated API permissions to Azure Maps, go to the application under **App registrations**, and then select **Settings**.  Select **Required permissions**, and then select **Add**. Search for and select **Azure Maps** under **Select an API**, and then select the **Select** button.
 
-    ![应用 API 权限](./media/how-to-manage-authentication/app-permissions.png)
+    ![App API permissions](./media/how-to-manage-authentication/app-permissions.png)
 
-3. 在 "**选择权限**" 下，选择 "**访问 Azure Maps**"，然后选择 "**选择**" 按钮。
+3. Under **Select permissions**, select **Access Azure Maps**, and then select the **Select** button.
 
-    ![选择应用 API 权限](./media/how-to-manage-authentication/select-app-permissions.png)
+    ![Select app API permissions](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. 根据身份验证方法完成步骤 a 或 b。
+4. Complete step a or b, depending on your authentication method.
 
-    1. 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，请启用 `oauthEnableImplicitFlow`，方法是在应用注册详细信息页的清单部分将其设置为 true。
+    1. If your application uses user-token authentication with the Azure Maps Web SDK, enable `oauthEnableImplicitFlow` by setting it to true in the Manifest section of your app registration detail page.
     
        ![应用部件清单](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. 如果你的应用程序使用服务器/应用程序身份验证，请在应用程序注册中转到 "**密钥**" 边栏选项卡，或者创建一个密码或将公钥证书上传到应用程序注册。 如果创建密码，请在选择 "**保存**" 后，复制该密码以供稍后使用，并将其安全地存储。 你将使用此密码从 Azure AD 获取令牌。
+    2. If your application uses server/application authentication, go to the **Keys** blade in app registration and either create a password or upload a public key certificate to the app registration. If you create a password, after you select **Save**, copy the password for later and store it securely. You'll use this password to acquire tokens from Azure AD.
 
        ![应用密钥](./media/how-to-manage-authentication/app-keys.png)
 
 
 ## <a name="grant-rbac-to-azure-maps"></a>向 Azure Maps 授予 RBAC
 
-将 Azure Maps 帐户与 Azure AD 租户关联后，可以通过将用户、组或应用程序分配给一个或多个 Azure Maps 访问控制角色来授予访问控制权限。
+After you associate an Azure Maps account with your Azure AD tenant, you can grant access control by assigning a user, group or application to one or more Azure Maps access control roles.
 
-1. 中转到 "**访问控制（IAM）** "，选择 "**角色分配**"，然后选择 "**添加角色分配**"。
+1. Go to **Access control (IAM)** , select **Role assignments**, and then select **Add role assignment**.
 
     ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 "**添加角色分配**" 窗口中的 "**角色**" 下，选择 " **Azure Maps 日期读取者（预览版）** "。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”。 在 "**选择**" 下，选择用户或应用程序。 选择“保存”。
+2. In the **Add role assignment** window, under **Role**, select **Azure Maps Date Reader (Preview)** . 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”。 Under **Select**, select the user or application. 选择“保存”。
 
     ![添加角色分配](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>查看可用 Azure Maps RBAC 角色
 
-若要查看可用于 Azure Maps 的基于角色的访问控制（RBAC）角色，请访问 "**访问控制（IAM）** "，选择 "**角色**"，然后搜索 "以**Azure Maps**开头的角色。 这些是你可以授予对其的访问权限的角色。
+To view role-based access control (RBAC) roles that are available for Azure Maps, go to **Access control (IAM)** , select **Roles**, and then search for roles beginning with **Azure Maps**. These are the roles that you can grant access to.
 
 ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 
-## <a name="view-azure-maps-rbac"></a>查看 Azure Maps RBAC
+## <a name="view-azure-maps-rbac"></a>View Azure Maps RBAC
 
-RBAC 提供粒度访问控制。
+RBAC provides granular access control.
 
-若要查看已为 Azure Maps 授予 RBAC 的用户和应用，请访问 "**访问控制（IAM）** "，选择 "**角色分配**"，然后按**Azure Maps**进行筛选。
+To view users and apps that have been granted RBAC for Azure Maps, go to **Access Control (IAM)** , select **Role assignments**, and then filter by **Azure Maps**.
 
-![查看已授予 RBAC 的用户和应用](./media/how-to-manage-authentication/how-to-view-amrbac.png)
+![View users and apps granted RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
 
 ## <a name="request-tokens-for-azure-maps"></a>请求用于 Azure Maps 的令牌
 
-注册应用并将其与 Azure Maps 相关联后，可以请求访问令牌。
+After you register your app and associated it with Azure Maps, you can request access tokens.
 
-* 如果你的应用程序对 Azure Maps Web SDK 使用用户令牌身份验证，则需要使用 Azure Maps 的客户端 ID 和 Azure AD 应用 ID 来配置 HTML 页面。
+* If your application uses user-token authentication with the Azure Maps Web SDK, you need to configure your HTML page with the Azure Maps client ID and the Azure AD app ID.
 
-* 如果你的应用程序使用服务器/应用程序身份验证，则需要使用 Azure AD 资源 ID `https://atlas.microsoft.com/`Azure AD 令牌终结点 `https://login.microsoftonline.com` 请求令牌、Azure Maps 的客户端 ID、Azure AD 的应用程序 ID 和 Azure AD 应用注册密码，或证书.
+* If your application uses server/application authentication, you need to request a token from Azure AD token endpoint `https://login.microsoftonline.com` with the Azure AD resource ID `https://atlas.microsoft.com/`, the Azure Maps client ID, the Azure AD app ID, and the Azure AD app registration password or certificate.
 
-| Azure 环境   | Azure AD 令牌终结点 | Azure 资源 ID |
+| Azure 环境   | Azure AD token endpoint | Azure 资源 ID |
 | --------------------|-------------------------|-------------------|
 | Azure Public        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
 | Azure Government    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
-有关请求用户和服务主体 Azure AD 的访问令牌的详细信息，请参阅[Azure AD 的身份验证方案](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)。
+For more information about requesting access tokens from Azure AD for users and service principals, see [Authentication scenarios for Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -109,7 +109,7 @@ RBAC 提供粒度访问控制。
 > [!div class="nextstepaction"] 
 > [查看使用情况指标](how-to-view-api-usage.md)
 
-有关演示如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例列表，请参阅：
+For a list of samples showing how to integrate Azure Active Directory (AAD) with Azure Maps, see:
 
 > [!div class="nextstepaction"]
-> [AAD 身份验证示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD authentication samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

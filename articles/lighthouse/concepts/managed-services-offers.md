@@ -2,17 +2,17 @@
 title: Azure 市场中的托管服务产品
 description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
 ms.date: 09/19/2019
-ms.topic: overview
-ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: f7dcaa34b1fb471823acd74a7d9b05e42dd44161
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131870"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463996"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
-本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型  。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
+本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
 
 ## <a name="understand-managed-services-offers"></a>了解托管服务产品
 

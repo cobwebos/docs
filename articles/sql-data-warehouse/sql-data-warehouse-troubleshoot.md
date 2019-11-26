@@ -7,57 +7,58 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 7/29/2019
+ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b2a9a7b0b759f5853d83a4b1999887414fd5f430
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685402"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483213"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
 本文列出了常见的故障排除问题。
 
 ## <a name="connecting"></a>连接
-| 问题                                                        | 解决方法                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 (Microsoft SQL Server，错误: 18456) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview][Security overview]（安全性概述）一文。 |
 | 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 (Microsoft SQL Server，错误: 916) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview][Security overview]（安全性概述）一文。 |
 | CTAIP 错误                                                  | 当登录名已在 SQL Server master 数据库中创建，但未在 SQL 数据仓库数据库中时，可能会出现此错误。  如果遇到此错误，请参阅[安全性概述][Security overview]一文。  本文介绍如何在 master 中创建登录名和用户，以及如何在 SQL 数据仓库数据库中创建用户。 |
-| 被防火墙阻止                                          | 为了确保只有已知的 IP 地址可以访问数据库，Azure SQL 数据库受到服务器和数据库级别的防火墙保护。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置防火墙的访问权限，请遵循[预配说明][Configure server firewall access for your client IP]中的[为客户端 IP 配置服务器防火墙访问权限][Provisioning instructions]中所述的步骤。 |
-| 无法使用工具或驱动程序进行连接                           | SQL 数据仓库建议使用 [SSMS][SSMS]、[用于 Visual Studio 的 SSDT][SSDT for Visual Studio] 或 [sqlcmd][sqlcmd] 来查询数据。 如需详细了解驱动程序以及如何连接到 SQL 数据仓库，请参阅 [Azure SQL 数据仓库驱动程序][Drivers for Azure SQL Data Warehouse]和[连接到 Azure SQL 数据仓库][Connect to Azure SQL Data Warehouse]这两篇文章。 |
+| 被防火墙阻止                                          | 为了确保只有已知的 IP 地址可以访问数据库，Azure SQL 数据库受到服务器和数据库级别的防火墙保护。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置防火墙的访问权限，请遵循[预配说明][Provisioning instructions]中的[为客户端 IP 配置服务器防火墙访问权限][Configure server firewall access for your client IP]中所述的步骤。 |
+| 无法使用工具或驱动程序进行连接                           | SQL Data Warehouse recommends using [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio], or [sqlcmd][sqlcmd] to query your data. For more information on drivers and connecting to SQL Data Warehouse, see [Drivers for Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] and [Connect to Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] articles. |
 
 ## <a name="tools"></a>工具
-| 问题                                                        | 解决方法                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio 对象资源管理器缺少 AAD 用户           | 这是已知问题。  解决方法是在 [sys.database_principals][sys.database_principals] 中查看这些用户。  要详细了解如何将 Azure Active Directory 用于 SQL 数据仓库，请参阅[向 Azure SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。 |
-| 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、不响应或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
-| 在 SSMS 中生成脚本失败                               | 如果将“生成依赖对象的脚本”选项设置为“True”，则为 SQL 数据仓库生成脚本将失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
+| Manual scripting, using the scripting wizard, or connecting via SSMS is slow, not responding, or producing errors | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
+| 在 SSMS 中生成脚本失败                               | Generating a script for SQL Data Warehouse fails if the option "Generate script for dependent objects" option is set to "True." 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
 
 ## <a name="performance"></a>性能
-| 问题                                                        | 解决方法                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 查询性能故障排除                            | 如果要尝试对特定查询进行故障排除，请从 [Learning how to monitor your queries][Learning how to monitor your queries]（学习如何监视查询）开始。 |
-| 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  有关如何创建统计信息以及统计信息为何对性能至关重要的详细信息，请参阅[维护表统计信息][Statistics]。 |
+| TempDB space issues | [Monitor TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) space usage.  Common causes for running out of TempDB space are:<br>- Not enough resources allocated to the query causing data to spill to TempDB.  See [Workload management](resource-classes-for-workload-management.md) <br>- Statistics are missing or out of date causing excessive data movement.  See [Maintaining table statistics][Statistics] for details on how to create statistics<br>- TempDB space is allocated per service level.  [Scaling your SQL Data Warehouse][Scaling your SQL Data Warehouse] to a higher DWU setting allocates more TempDB space.|
+| 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  See [Maintaining table statistics][Statistics] for details on how to create statistics and why they are critical to your performance. |
 | 低并发性/查询排队                             | 若要了解如何利用并发性平衡内存分配，了解[工作负荷管理][Workload management]很重要。 |
 | 如何实施最佳做法                              | 开始了解如何提高查询性能的最好地方是 [SQL 数据仓库最佳实践][SQL Data Warehouse best practices]一文。 |
 | 如何通过缩放提高性能                      | 有时，改进性能的解决方案只需通过[缩放 SQL 数据仓库][Scaling your SQL Data Warehouse]来提升查询的计算能力。 |
-| 由于索引质量不佳导致查询性能不佳     | 有时，由于[列存储索引质量不佳][Poor columnstore index quality]，查询速度可能会减慢。  有关详细信息以及如何[重建索引以提高段质量][Rebuild indexes to improve segment quality]，请参阅本文。 |
+| 由于索引质量不佳导致查询性能不佳     | Some times queries can slow down because of [Poor columnstore index quality][Poor columnstore index quality].  有关详细信息以及如何[重建索引以提高段质量][Rebuild indexes to improve segment quality]，请参阅本文。 |
 
 ## <a name="system-management"></a>系统管理
-| 问题                                                        | 解决方法                                                   |
+| 问题                                                        | 分辨率                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库事务单元配额。 | 请减少要尝试创建的数据库的 [DWU][DWU]，或者[请求增加配额][request a quota increase]。 |
 | 调查空间使用率                              | 请参阅[表大小][Table sizes]，了解系统的空间使用率。 |
-| 管理表的帮助                                    | 有关管理表的帮助，请参阅[表概述][Overview]一文。  此文还包含指向更详细主题的链接，如[表数据类型][Data types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]、[维护表统计信息][Statistics]和[临时表][Temporary]。 |
-| 在 Azure 门户中，透明数据加密 (TDE) 进度栏不更新 | 可以通过 [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 查看 TDE 的状态。 |
+| 管理表的帮助                                    | See the [Table overview][Overview] article for help with managing your tables.  This article also includes links into more detailed topics like [Table data types][Data types], [Distributing a table][Distribute], [Indexing a table][Index],  [Partitioning a table][Partition], [Maintaining table statistics][Statistics] and [Temporary tables][Temporary]. |
+| Transparent data encryption (TDE) progress bar is not updating in the Azure portal | 可以通过 [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 查看 TDE 的状态。 |
 
 
 ## <a name="differences-from-sql-database"></a>与 SQL 数据库的差异
-| 问题                                 | 解决方法                                                   |
+| 问题                                 | 分辨率                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | 不支持的 SQL 数据库功能     | 请参阅[不支持的表功能][Unsupported table features]。 |
 | 不支持的 SQL 数据库数据类型   | 请参阅[不支持的数据类型][Unsupported data types]。        |

@@ -2,13 +2,13 @@
 title: 建议的安全做法
 description: 使用 Azure 委派资源管理时，请务必考虑安全性和访问控制。
 ms.date: 07/11/2019
-ms.topic: overview
-ms.openlocfilehash: e0f0a9d4cdd56ff1bca9b9faf493d3e0d68e558c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 18decc337722c1dc64fac94679d783dd55915ee6
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132464"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463899"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -28,7 +28,7 @@ ms.locfileid: "74132464"
 
 例如，建议使用如下结构：
 
-|组名称  |类型  |principalId  |角色定义  |角色定义 ID  |
+|组名称  |Type  |principalId  |角色定义  |角色定义 ID  |
 |---------|---------|---------|---------|---------|
 |架构师     |用户组         |\<principalId\>         |参与者         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |评估     |用户组         |\<principalId\>         |读取器         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881896"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462612"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析介质 
 
 > [!IMPORTANT]
-> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
+> Review the [retirement plans](media-services-analytics-overview.md#retirement-plans) of some media processors.
 
 ## <a name="overview"></a>概述
 Azure 媒体服务分析是一系列语音和影像组件（具企业规模、合规性、安全性和全球性覆盖），让组织和企业可以从其视频文件中更轻松地获得可操作的见解。 有关 Azure 媒体服务分析的详细概述，请参阅[此](media-services-analytics-overview.md)主题。 
@@ -54,15 +54,11 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 
 ### <a name="captions"></a>字幕
 可以选择要从内容生成的字幕格式。 索引作业可以生成以下格式的隐藏字幕文件：  
-
-* **SAMI**
+ 
 * **TTML**
 * **WebVTT**
 
 采用这些格式的隐藏字幕 (CC) 文件可用于使有听力障碍的用户能够访问音频和视频文件。
-
-### <a name="aib-file"></a>AIB 文件
-如果要生成与自定义的 SQL Server IFilter 搭配使用的音频索引 Blob 文件，请选择此选项。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/)博客。
 
 ### <a name="keywords"></a>关键字
 若要生成关键字 XML 文件，请选择此选项。 此文件包含从语音内容中提取的关键字以及频率和偏移量信息。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529370"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481640"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -104,7 +104,7 @@ ms.locfileid: "72529370"
 我们致力于改善体验，但现在升级由你负责。 必须升级群集虚拟机上的操作系统映像，一次升级一个 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以对群集节点类型（虚拟机规模集）中的附加数据磁盘进行加密？
-可以。  有关详细信息，请参阅[使用附加的数据磁盘创建群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[虚拟机规模集的 Azure 磁盘加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
+可以。  For more information, see [Create a cluster with attached data disks](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) and [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以在群集节点类型（虚拟机规模集）中使用低优先级 VM？
 不。 不支持低优先级 VM。 
@@ -136,7 +136,7 @@ ms.locfileid: "72529370"
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
 A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
-B. 对于启用了虚拟机规模集 MSI 的主机，可以为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+B. For virtual machine scale set MSI enabled hosts, you can develop a simple PowerShell SetupEntryPoint for your SF app to get [an access token from the MSI endpoint](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), and then [retrieve your secrets from KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -146,7 +146,8 @@ Reliable Collections 通常已[分区](service-fabric-concepts-partitioning.md)�
 
 - 创建一个服务用于查询另一服务的所有分区，提取所需的数据。
 - 创建一个可从另一服务的所有分区接收数据的服务。
-- 定期将每个服务中的数据推送到外部存储。 仅当执行的查询不是核心业务逻辑的一部分时，此方法才适用。
+- 定期将每个服务中的数据推送到外部存储。 This approach is only appropriate if the queries you're performing are not part of your core business logic, as the external store's data will be stale.
+- Alternatively, store data that must support querying across all records directly in a data store rather than in a reliable collection. This eliminates the issue with stale data, but doesn't allow the advantages of reliable collections to be leveraged.
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>跨执行组件查询数据的最佳方法是什么？
@@ -192,4 +193,4 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳实践](service-fabric-best-practices-overview.md)ice 构造概念] （overview.md）和[最佳实践](service-fabric-best-practices-overview.md)
+Learn about [core Service Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md) ice Fabric concepts](service-fabric-technical-overview.md) and [best practices](service-fabric-best-practices-overview.md)

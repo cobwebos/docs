@@ -2,23 +2,23 @@
 title: Azure Lighthouse 方案中的租户、角色和用户
 description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
 ms.date: 11/05/2019
-ms.topic: overview
-ms.openlocfilehash: 73c5cd592f07a23edaad23796e498ea9243c5d26
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131343"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463927"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、角色和用户
 
 在将客户加入 [Azure 委派资源管理](azure-delegated-resource-management.md)之前，请务必了解 Azure Active Directory (Azure AD) 租户、用户和角色的工作原理以及如何在 Azure Lighthouse 方案中使用它们。
 
-租户是 Azure AD 的专用受信任的实例  。 通常，每个租户表示一个组织。 通过 Azure 委派资源管理，可以将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
+租户是 Azure AD 的专用受信任的实例。 通常，每个租户表示一个组织。 通过 Azure 委派资源管理，可以将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
 
-为了实现此逻辑投影，必须加入客户租户中的订阅（或订阅中的一个或多个资源组）以进行 Azure 委派资源管理  。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
+为了实现此逻辑投影，必须加入客户租户中的订阅（或订阅中的一个或多个资源组）以进行 Azure 委派资源管理。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
 
-无论选择哪种加入方法，都需要定义授权  。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
+无论选择哪种加入方法，都需要定义授权。 每个授权在管理租户中指定可以访问委派资源的用户帐户，还指定用于设置其中每个用户对这些资源的权限的内置角色。
 
 ## <a name="role-support-for-azure-delegated-resource-management"></a>Azure 委派资源管理的角色支持
 

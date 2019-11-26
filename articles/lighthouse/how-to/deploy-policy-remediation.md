@@ -2,13 +2,13 @@
 title: 部署可修正的策略
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 ms.date: 10/11/2019
-ms.topic: overview
-ms.openlocfilehash: 662daeb305856fb36bfb84f98e80bedf48b22756
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132488"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463878"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
@@ -18,11 +18,11 @@ ms.locfileid: "74132488"
 
 载入 Azure 委托资源管理的客户时，我们使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template)以及用于在管理租户中定义用户、用户组和服务主体的参数文件，而管理租户将能够访问客户租户中的委托资源。 在参数文件中，将为每个此类用户 (**principalId**) 分配一个用于定义访问级别的[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**)。
 
-若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。  虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
+若要允许 **principalId** 在客户租户中创建托管标识，必须将其 **roleDefinitionId** 设置为“用户访问管理员”。 虽然此角色通常不受支持，但可以将它用在此特定方案中，允许具有此权限的用户将一个或多个特定的内置角色分配给托管标识。 这些角色在 **delegatedRoleDefinitionIds** 属性中定义。 可以在此处包括任何内置角色，用户访问管理员或所有者除外。
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
 
-下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 此用户将能够将两个内置角色分配给客户租户中的托管标识：参与者和 Log Analytics 参与者。
+下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 This user will be able to assign two built-in roles to managed identities in the customer tenant: Contributor and Log Analytics Contributor.
 
 ```json
 {

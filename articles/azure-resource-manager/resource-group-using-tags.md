@@ -1,14 +1,14 @@
 ---
-title: 逻辑组织的标记资源
+title: Tag resources for logical organization
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f3fca2030d33ba5a52d43924ff542801d435e4de
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149586"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484263"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -20,7 +20,7 @@ ms.locfileid: "74149586"
 
 ## <a name="policies"></a>策略
 
-可以使用 [Azure Policy ](../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 现在，还可以使用新的[修改](../governance/policy/concepts/effects.md#modify)效果和[修正任务](../governance/policy/how-to/remediate-resources.md)将标记应用到现有资源。 以下部分展示标记策略示例。
+可以使用 [Azure Policy ](../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 Tags can also now be applied to existing resources with the new [Modify](../governance/policy/concepts/effects.md#modify) effect and a [remediation task](../governance/policy/how-to/remediate-resources.md). 以下部分展示标记策略示例。
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
@@ -104,7 +104,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-若要将资源组中的所有标记应用于其资源，并且不保留资源上的现有标记，请使用以下脚本：
+To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -114,7 +114,7 @@ foreach ($g in $groups)
 }
 ```
 
-若要将资源组中的所有标记应用于其资源，并且保留资源上不重复的现有标记，请使用以下脚本：
+To apply all tags from a resource group to its resources, and *keep existing tags on resources that aren't duplicates*, use the following script:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -206,18 +206,18 @@ az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet -
 若要将标记添加到已带标记的资源，请检索现有标记，重新格式化该值，然后重新应用现有标记和新标记：
 
 ```azurecli
-jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
+jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags -o json)
 rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-若要将资源组中的所有标记应用于其资源，并且不保留资源上的现有标记，请使用以下脚本：
+To apply all tags from a resource group to its resources, and *not keep existing tags on the resources*, use the following script:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
 for rg in $groups
 do
-  jsontag=$(az group show -n $rg --query tags)
+  jsontag=$(az group show -n $rg --query tags -o json)
   t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
   r=$(az resource list -g $rg --query [].id --output tsv)
   for resid in $r
@@ -227,18 +227,18 @@ do
 done
 ```
 
-若要将资源组中的所有标记应用于其资源，并且保留资源上的现有标记，请使用以下脚本：
+To apply all tags from a resource group to its resources, and *keep existing tags on resources*, use the following script:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
 for rg in $groups
 do
-  jsontag=$(az group show -n $rg --query tags)
+  jsontag=$(az group show -n $rg --query tags -o json)
   t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
   r=$(az resource list -g $rg --query [].id --output tsv)
   for resid in $r
   do
-    jsonrtag=$(az resource show --id $resid --query tags)
+    jsonrtag=$(az resource show --id $resid --query tags -o json)
     rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
     az resource tag --tags $t$rt --id $resid
   done
@@ -247,7 +247,7 @@ done
 
 ## <a name="templates"></a>模板
 
-若要在部署过程中标记资源，请将 `tags` 元素添加到要部署的资源。 提供标记名称和值。
+To tag a resource during deployment, add the `tags` element to the resource you're deploying. 提供标记名称和值。
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>将文本值应用到标记名称
 
@@ -283,11 +283,11 @@ done
 }
 ```
 
-若要设置日期/时间值的标记，请使用 [utcNow 函数](resource-group-template-functions-string.md#utcnow)。
+To set a tag to a datetime value, use the [utcNow function](resource-group-template-functions-string.md#utcnow).
 
 ### <a name="apply-an-object-to-the-tag-element"></a>将对象应用到标记元素
 
-可以定义一个对象参数，用于存储多个标记，并将该对象应用于标记元素。 对象中的每个属性将成为该资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，该标记应用于标记元素。
+可以定义一个对象参数，用于存储多个标记，并将该对象应用于标记元素。 对象中的每个属性将成为该资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，应用于标记元素。
 
 ```json
 {
@@ -325,7 +325,7 @@ done
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>将 JSON 字符串应用到标记名称
 
-要将多个值存储在单个标记中，请应用表示值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的几个值：  
+要将多个值存储在单个标记中，请应用表示值的 JSON 字符串。 The entire JSON string is stored as one tag that can't exceed 256 characters. 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的几个值：  
 
 ```json
 {
@@ -356,9 +356,9 @@ done
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>应用资源组中的标记
+### <a name="apply-tags-from-resource-group"></a>Apply tags from resource group
 
-若要将资源组中的标记应用于资源，请使用 [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 函数。 获取标记值时，请使用 `tags.[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
+To apply tags from a resource group to a resource, use the [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) function. When getting the tag value, use the `tags.[tag-name]` syntax instead of the `tags.tag-name` syntax, because some characters aren't parsed correctly in the dot notation.
 
 ```json
 {

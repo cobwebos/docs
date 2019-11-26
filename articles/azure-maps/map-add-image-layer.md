@@ -1,6 +1,6 @@
 ---
 title: 将图像层添加到 Azure Maps | Microsoft Docs
-description: 如何将图像层添加到 Azure Maps Web SDK。
+description: How to add an Image Layer to the Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6c43ccaee473eca701d15a5a83f84814d65c6b7c
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fadaaf7c64b11a6d6d94c68234f8288d1b3f8d07
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976147"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480491"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -29,9 +29,16 @@ ms.locfileid: "68976147"
 > [!TIP]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) 是一种在地图上叠加图像的快捷且轻松的方式。 但是，如果图像很大，浏览器可能难以加载它。 在这种情况下，请考虑将图像分解为图块并将其作为 [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 加载到地图中。
 
+The image layer supports the following image formats:
+
+- JPEG
+- PNG
+- BMP
+- GIF (no animations)
+
 ## <a name="add-an-image-layer"></a>添加图像层
 
-在下面的代码中, 在地图上覆盖了[纽瓦克 New 1922 Jersey 的地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是通过以下方式创建的: 将 URL 传递到图像, 并将四个角的`[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`坐标设置为格式。
+In the following code overlays an image of a [map of Newark New Jersey from 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) on the map. An [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) is created by passing a URL to an image and coordinates for the four corners in the format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -46,7 +53,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-下面是上述功能的完整运行代码示例。
+Below is the complete running code sample of the above functionality.
 
 <br/>
 
@@ -55,9 +62,9 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 ## <a name="import-a-kml-ground-overlay"></a>导入 KML 地面叠加
 
-此示例演示如何将 KML 地面叠加信息叠加为地图上的图像层。 KML 地面叠加提供北方、南部、东和西坐标和逆时针旋转, 而图像层需要图像每个角的坐标。 此示例中的 KML 地面叠加是来自[维基媒体](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)的 Chartres 大教堂。
+此示例演示如何将 KML 地面叠加信息叠加为地图上的图像层。 KML ground overlays provide north, south, east, and west coordinates and a counter-clockwise rotation, whereas the image layer expects coordinates for each corner of the image. 此示例中的 KML 地面叠加是来自[维基媒体](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)的 Chartres 大教堂。
 
-下面的代码使用[ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)类`getCoordinatesFromEdges`的静态函数来计算 KML 地面叠加中来自北部、南部、东、西和旋转信息的图像的四个角。
+The following code uses the static `getCoordinatesFromEdges` function of the [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) class to calculate the four corners of the image from the north, south, east, west and rotation information from the KML ground overlay.
 
 <br/>
 

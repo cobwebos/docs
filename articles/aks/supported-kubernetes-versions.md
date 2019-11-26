@@ -7,22 +7,22 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b6dd91dda559f778eaa8f5a17b46a22020dd8373
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147221"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484043"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
-Kubernetes 社区大约会每隔三个月发布次要版本。 这些版本包括新增功能和改进。 修补程序版本更为频繁（有时会每周发布），并且仅用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对影响大量客户以及在生产中基于 Kubernetes 运行的产品的安全漏洞或重大 Bug 的修复。
+Kubernetes 社区大约每三个月会发布次要版本。 这些版本包括新增功能和改进。 修补程序版本的发布更为频繁（有时会每周发布），并且仅用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对影响大量客户以及在生产中基于 Kubernetes 运行的产品的安全漏洞或重大 Bug 的修复。
 
-AKS 旨在完成上游版本发布后的 30 天内，根据该版本的稳定性认证和发布新的 Kubernetes 版本。
+AKS aims to certify and release new Kubernetes versions within 30 days of an upstream release, subject to the stability of the release.
 
-## <a name="kubernetes-versions"></a>Kubernetes 版本
+## <a name="kubernetes-versions"></a>Kubernetes versions
 
-Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 这意味着，Kubernetes 的每个版本都遵循此编号方案：
+Kubernetes uses the standard [Semantic Versioning](https://semver.org/) versioning scheme. This means that each version of Kubernetes follows this numbering scheme:
 
 ```
 [major].[minor].[patch]
@@ -32,34 +32,37 @@ Example:
   1.12.15
 ```
 
-版本中的每个编写表示与前一版本的一般兼容性：
+Each number in the version indicates general compatibility with the previous version:
 
-* 如果发生不兼容的 API 更改或者后向兼容性受到破坏，主要版本将会更改。
-* 如果所做的功能更改与其他次要版本后向兼容，则次要版本将会更改。
-* 做出后向兼容的 Bug 修复时，修补程序版本将会更改。
+* Major versions change when incompatible API changes or backwards compatibility may be broken.
+* Minor versions change when functionality changes are made that are backwards compatible to the other minor releases.
+* Patch versions change when backwards-compatible bug fixes are made.
 
-通常情况下, 用户应努力运行其正在运行的次要版本的最新修补程序版本 (例如, 如果你的生产群集在*1.12.14*上, 而*1.12.15*是适用于*1.12*系列的最新可用修补程序版本)。应尽快升级到*1.12.15* , 可以确保群集已完全修补并受支持。
+In general, users should endeavor to run the latest patch release of the minor version they are running, for example if your production cluster is on *1.12.14* and *1.12.15* is the latest available patch version available for the *1.12* series, you should upgrade to *1.12.15* as soon as you are able to ensure your cluster is fully patched and supported.
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes 版本支持策略
 
+> [!NOTE]
+> Starting December 9th, 2019 AKS will move to supporting latest (N) - 2 versions of Kubernetes. This change is to conform to the upstream window of support for Kubernetes versions and ensure the latest and most secure versions are being used. To learn more read the [announcement here](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
+
 AKS 支持以下四个 Kubernetes 次要版本：
 
-* AKS 中发布的当前次要版本 (N)
+* The current minor version that is released in AKS (N)
 * 以前的三个次要版本。 每个受支持的次要版本还支持两个稳定的修补程序。
 
-这称为“N-3”-（N（最新版本）- 3（次要版本））。
+This is known as "N-3" - (N (Latest release) - 3 (minor versions)).
 
-例如, 如果 AKS 引入了*1.13。* 现在, 提供了对以下版本的支持:
+For example, if AKS introduces *1.13.a* today, support is provided for the following versions:
 
-新的次要版本    |    支持的版本列表
+New minor version    |    Supported Version List
 -----------------    |    ----------------------
-1.13. a               |    1.12.a、1.12.b、1.11.a、1.11.b、1.10.a、1.10.b
+1.13.a               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
-其中, ". a" 和 ". b" 是代表性修补程序版本。 "从 1.13. a 可以与1.12 不同。 例如, 1.13.9 和1.12.8。
+Where ".a" and ".b" are representative patch versions."a" from 1.13.a can be different from 1.12.a. For example, 1.13.9 and 1.12.8.
 
-有关如何传达版本更改和预期后果的详细信息，请参阅下面的“信息传达”。
+For details on communications regarding version changes and expectations, see "Communications" below.
 
-引入新的次要版本后，支持的最早次要版本和修补程序版本将被弃用并删除。 例如，如果当前支持的版本列表为：
+When a new minor version is introduced, the oldest minor version and patch releases supported are deprecated and removed. For example if the current supported version list is:
 
 ```
 1.12.a
@@ -72,13 +75,13 @@ AKS 支持以下四个 Kubernetes 次要版本：
 1.9.b
 ```
 
-和 AKS 版本1.13。 *, 这意味着1.9。* 版本 (所有1.9 版本) 将被删除且不再受支持。
+And AKS releases 1.13. *, this means that the 1.9.* versions (all 1.9 versions) will be removed and out of support.
 
 > [!NOTE]
-> 请注意，如果客户运行不受支持的 Kubernetes 版本，则在请求群集支持时，系统将要求他们升级。 运行不受支持 Kubernetes 版本的群集未涵盖在 [AKS 支持策略](https://docs.microsoft.com/azure/aks/support-policies)中。
+> Please note, that if customers are running an unsupported Kubernetes version, they will be asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS support policies](https://docs.microsoft.com/azure/aks/support-policies).
 
 
-除了上述次要版本以外，AKS 还支持给定次要版本的两个最新修补程序* 版本。 例如，假设支持的版本如下：
+In addition to the above on minor versions, AKS supports the two latest *patch** releases of a given minor version. For example, given the following supported versions:
 
 ```
 Current Supported Version List
@@ -86,7 +89,7 @@ Current Supported Version List
 1.12.1, 1.12.2, 1.11.4, 1.11.5
 ```
 
-如果上游 Kubernetes 发布了 1.12.3 和 1.11.6，而 AKS 发布了这些修补程序版本，则最早的修补程序版本将被弃用并删除，支持的版本列表现为：
+If upstream Kubernetes released 1.12.3 and 1.11.6 and AKS releases those patch versions, the oldest patch versions are deprecated and removed, and the supported version list becomes:
 
 ```
 New Supported Version List
@@ -95,50 +98,56 @@ New Supported Version List
 ```
 
 > [!NOTE]
-> 客户不应将群集创建、CI 或其他自动化作业限定为特定的修补程序版本。 
+> Customers should not pin cluster creation, CI or other automated jobs to specific patch releases. 
 
-### <a name="communications"></a>信息传达
+### <a name="communications"></a>通信
 
-* 对于 Kubernetes 的新**次要**版本
-  * 在发布新版本以及删除版本之前，我们会公开通知所有用户。
-  * 在发布新修补程序版本的同时，会删除最早的修补程序版本。
-  * 客户可以在公告日期起的 **60 天**内升级到支持的次要版本。
-* 对于 Kubernetes 的新**修补程序**版本
-  * 在发布新的修补程序版本以及升级到最新修补程序版本之前，我们会通知所有用户。
-  * 用户可以在 **30 天**内升级到支持的更新版本。 在删除最早的版本之前，用户可以在 **30 天**内升级到支持的修补程序版本。
+* For new **minor** versions of Kubernetes
+  * All users are notified publicly of the new version and what version will be removed.
+  * When a new patch version is released, the oldest patch release is removed at the same time.
+  * Customers have **60 days** from the public notification date to upgrade to a supported minor version release.
+* For new **patch** versions of Kubernetes
+  * All users are notified of the new patch version being released and to upgrade to the latest patch release.
+  * Users have **30 days** to upgrade to a newer, supported patch release. Users have **30 days** to upgrade to a supported patch release before the oldest is removed.
 
-AKS 将“发布”版本定义为正式版本，所有 SLO/服务质量衡量方案都采用此术语，并且在所有区域都是如此。
+AKS defines "released" as general availability, enabled in all SLO / Quality of Service measurements and available in all regions.
 
 > [!NOTE]
-> 在发布和弃用 Kubernetes 版本之前，我们会通知客户；如果弃用/删除了次要版本，用户可在 60 天内升级到支持的版本。 如果发布了修补程序版本，客户可在 30 天内升级到支持的版本。
+> Customers are notified of Kubernetes version releases and deprecations, when a minor version is deprecated/removed users are given 60 days to upgrade to a supported release. In the case of patch releases, customers are given 30 days to upgrade to a supported release.
 
-通过以下方式发送通知：
+#### <a name="notification-channels-for-aks-changes"></a>Notification channels for AKS changes
 
-* [AKS 发行说明](https://aka.ms/aks/releasenotes)
-* Azure 门户通知
-* [Azure 更新渠道][azure-update-channel]
+AKS releases a weekly service update which summarizes new Kubernetes versions, service changes, and component updates that have been released on the service on [github](https://github.com/Azure/AKS/releases).
 
-### <a name="policy-exceptions"></a>策略例外情况
+These changes are rolled to all customers as part of regular maintenance that is offered as part of the managed service, some require explicit upgrades while others require no action.
 
-AKS 有权在不事先发出通行的情况下添加新的版本，或者删除已确定存在一个或多个影响生产的严重 Bug 或安全问题的现有版本。
+Notifications are also sent via:
 
-特定的修补程序版本可能会跳过发布或者加速推出，具体取决于 Bug 或安全问题的严重性。
+* [AKS Release notes](https://aka.ms/aks/releasenotes)
+* Azure 门户中的通知
+* [Azure update channel][azure-update-channel]
 
-### <a name="azure-portal-and-cli-default-versions"></a>Azure 门户和 CLI 默认版本
+### <a name="policy-exceptions"></a>Policy Exceptions
 
-在门户中或使用 Azure CLI 部署 AKS 群集时，群集始终会设置为 N-1 次要版本和最新修补程序。 例如, 如果 AKS 支持*1.13. a*, *1.12* + .*b*, *1.11。*  + *1.11. b*, *1.10. a* + *1.10 b*, 新群集的默认版本为*1.12. b*.
+AKS reserves the right to add or remove new/existing versions that have been identified to have one or more critical production impacting bugs or security issues without advance notice.
 
-AKS 默认使用 N-1（“次要版本.最新修补程序版本”，例如 1.12.b），为客户提供已知的稳定修补版本。
+Specific patch releases may be skipped, or rollout accelerated depending on the severity of the bug or security issue.
+
+### <a name="azure-portal-and-cli-default-versions"></a>Azure portal and CLI default versions
+
+When you deploy an AKS cluster in the portal or with the Azure CLI, the cluster is always set to the N-1 minor version and latest patch. For example, if AKS supports *1.13.a*, *1.12.a* + *1.12.b*, *1.11.a* + *1.11.b*, *1.10.a* + *1.10b*, the default version for new clusters is *1.12.b*.
+
+AKS defaults to N-1 (minor.latestPatch, eg 1.12.b) to provide customers a known, stable and patched version by default.
 
 ## <a name="list-currently-supported-versions"></a>列出当前支持的版本
 
-若要了解你的订阅和区域当前可用的版本，请使用 [az aks get-versions][az-aks-get-versions] 命令。 以下示例列出了 *EastUS* 区域可用的 Kubernetes 版本：
+To find out what versions are currently available for your subscription and region, use the [az aks get-versions][az-aks-get-versions] command. 以下示例列出了 *EastUS* 区域可用的 Kubernetes 版本：
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
 
-输出类似于以下示例, 该示例显示 Kubernetes 版本*1.14.6*是可用的最新版本:
+The output is similar to the following example, which shows that Kubernetes version *1.14.6* is the most recent version available:
 
 ```
 KubernetesVersion    Upgrades
@@ -155,20 +164,20 @@ KubernetesVersion    Upgrades
 1.10.12              1.10.13, 1.11.9, 1.11.10
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 客户升级的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
 
-如果你当前使用的是 *n-4* 版本，则你不再可接收支持，系统会要求你升级。 如果从版本 n-4 成功升级到了 n-3，则你现在涵盖在我们的支持策略中。 例如：
+If you are on the *n-4* version, you are outside of support and will be asked to upgrade. If your upgrade from version n-4 to n-3 succeeds, you are now within our support policies. 例如：
 
-- 如果受支持的 AKS 版本为 1.13. *a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*, 和*1.10. f* + *1.10* 。, 则不受支持。
-- 如果从*1.9. h*或*1.9*升级到*1.10. f*或*1.10. g*成功, 你将返回到我们的支持策略中。
+- If the supported AKS versions are *1.13.a*, *1.12.b* + *1.12.c*, *1.11.d* + *1.11.e*, and *1.10.f* + *1.10.g* and you are on *1.9.h* or *1.9.i*, you are outside of support.
+- If the upgrade from *1.9.h* or *1.9.i* to *1.10.f* or *1.10.g* succeeds, you are back in the within our support policies.
 
 不支持升级到早于 n-4 的版本。 在这种情况下，我们会建议客户创建新的 AKS 群集并重新部署其工作负载。
 
-**“停止支持”是什么意思**
+**What does 'Out of Support' mean**
 
-“停止支持”是指运行的版本不在支持的版本列表内，当你请求支持时，系统会要求你将群集升级到支持的版本。 此外，对于受支持版本列表以外的群集，AKS 不会在正常运行时间或其他方面做出任何保证。
+'Outside of Support' means that the version you are running is outside of the supported versions list, and you will be asked to upgrade the cluster to a supported version when requesting support. Additionally, AKS does not make any runtime or other guarantees for clusters outside of the supported versions list.
 
 客户缩放的 Kubernetes 群集具有不受支持的次要版本时，会发生什么情况？
 
@@ -176,7 +185,7 @@ KubernetesVersion    Upgrades
 
 客户可以永久保留 Kubernetes 版本吗？
 
-是的。 但是，如果群集不使用 AKS 支持的版本之一，该群集不会涵盖在 AKS 支持策略内。 Azure 不会自动升级群集或将其删除。
+可以。 However, if the cluster is not on one of the versions supported by AKS, the cluster is out of the AKS support policies. Azure 不会自动升级群集或将其删除。
 
 如果代理群集不是 AKS 支持的版本之一，主群集会支持哪个版本？
 
@@ -184,7 +193,7 @@ KubernetesVersion    Upgrades
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何升级群集的信息，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集][aks-upgrade]。
+For information on how to upgrade your cluster, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade].
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

@@ -1,6 +1,6 @@
 ---
-title: 导出 Azure IoT Central 应用程序 |Microsoft Docs
-description: 作为解决方案经理，我想要导出应用程序模板以便能够重用它。
+title: Export an Azure IoT Central application | Microsoft Docs
+description: As a solution manager, I want to export an application template to be able to reuse it.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/17/2019
@@ -8,89 +8,95 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 81e24712de186e2d5ec03e33ecabe485cc0d9f31
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894755"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480351"
 ---
-# <a name="export-your-application-preview-features"></a>导出应用程序（预览功能）
+# <a name="export-your-application-preview-features"></a>Export your application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-本文介绍如何使用解决方案管理器导出 IoT Central 的应用程序，使其能够重复使用。
+This article describes how, as a solution manager, to export an IoT Central application to be able to reuse it.
 
 可以使用两个选项：
 
-- 如果只需创建应用程序的副本，则可以创建应用程序的副本。
-- 如果计划创建多个副本，则可以从你的应用程序创建应用程序模板。
+- You can create a copy of your application if you just need to create a duplicate copy of your application.
+- You can create an application template from your application if you plan to create multiple copies.
 
-## <a name="copy-your-application"></a>复制应用程序
+## <a name="copy-your-application"></a>Copy your application
 
-可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 该副本是将向你收费的即用即付应用程序。 不能通过复制应用程序来创建试用应用程序。
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 The copy is a Pay-As-You-Go application that you'll be charged for. You can't create a Trial application by copying an application.
 
-选择 "**复制**"。 在对话框中，输入新的即用即付应用程序的详细信息。 然后选择 "**复制**"，确认是否要继续。 若要了解有关窗体中的字段的详细信息，请参阅[创建应用程序](quick-deploy-iot-central.md)快速入门。
+Select **Copy**. 在对话框中，输入新的即用即付应用程序的详细信息。 Then select **Copy** to confirm that you want to continue. To learn more about the fields in the form, see the [Create an application](quick-deploy-iot-central.md) quickstart.
+
+> [!NOTE]
+> You can **Copy your application** to **Europe** and **US** locations only.
 
 ![“应用程序设置”页](media/howto-use-app-templates/appcopy2.png)
 
-应用复制操作成功后，可以使用链接导航到新应用程序。
+After the app copy operation succeeds, you can navigate to the new application using the link.
 
 ![“应用程序设置”页](media/howto-use-app-templates/appcopy3a.png)
 
-复制应用程序还会复制规则和电子邮件操作的定义。 某些操作（例如 Flow 和逻辑应用）通过规则 ID 与特定规则关联。 将规则复制到其他应用程序时，它将获取其自己的规则 ID。 在这种情况下，用户必须创建一个新的操作，然后将新规则与其关联。 通常情况下，最好检查规则和操作，以确保它们在新应用中处于最新状态。
+Copying an application also copies the definition of rules and email action. Some actions, such as Flow and  Logic Apps, are tied to specific rules via the Rule ID. When a rule is copied to a different application, it gets its own Rule ID. In this case, users will have to create a new action and then associate the new rule with it. In general, it's a good idea to check the rules and actions to make sure they're up-to-date in the new app.
 
 > [!WARNING]
-> 如果仪表板包括显示特定设备相关信息的磁贴，则那些磁贴会显示在新应用程序中**找不到请求的资源**。 您必须重新配置这些磁贴，以显示有关新应用程序中设备的信息。
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
 
 ## <a name="create-an-application-template"></a>创建应用程序模板
 
-创建 Azure IoT Central 应用程序时，可以选择内置的示例模板。 你还可以从现有的 IoT Central 应用程序创建自己的应用程序模板。 然后，你可以在创建新应用程序时使用自己的应用程序模板。
+When you create an Azure IoT Central application, you have a choice of built-in sample templates. You can also create your own application templates from existing IoT Central applications. You can then use your own application templates when you create new applications.
 
-当你创建应用程序模板时，它将包括你的现有应用程序中的以下项：
+When you create an application template, it includes the following items from your existing application:
 
-- 默认应用程序仪表板，包括仪表板布局和你定义的所有磁贴。
-- 设备模板，包括度量、设置、属性、命令和仪表板。
-- 原则. 包括所有规则定义。 但不包括电子邮件操作以外的操作。
-- 设备集，包括其条件和仪表板。
+- The default application dashboard, including the dashboard layout and all the tiles you've defined.
+- Device templates, including measurements, settings, properties, commands, and dashboard.
+- Rules. All rule definitions are included. However actions, except for email actions, aren't included.
+- Device sets, including their conditions and dashboards.
 
 > [!WARNING]
-> 如果仪表板包括显示特定设备相关信息的磁贴，则那些磁贴会显示在新应用程序中**找不到请求的资源**。 您必须重新配置这些磁贴，以显示有关新应用程序中设备的信息。
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
 
-当你创建应用程序模板时，它不包含以下项：
+When you create an application template, it doesn't include the following items:
 
 - 设备
 - 用户
-- 作业定义
-- 连续数据导出定义
+- Job definitions
+- Continuous data export definitions
 
-请手动将这些项添加到从应用程序模板创建的任何应用程序。
+Add these items manually to any applications created from an application template.
 
-从现有 IoT Central 应用程序创建应用程序模板：
+To create an application template from an existing IoT Central application:
 
-1. 请在应用程序中中转到 "**管理**" 部分。
-1. 选择**应用程序模板导出**。
-1. 在 "**应用程序模板导出**" 页上，输入模板的名称和描述。
-1. 选择 "**导出**" 按钮，创建应用程序模板。 你现在可以复制可**共享的链接**，使某人可以从模板创建新应用程序：
+1. Go to the **Administration** section in your application.
+1. Select **Application Template Export**.
+1. On the **Application Template Export** page, enter a name and description for your template.
+1. Select the **Export** button to create the application template. You can now copy the **Shareable Link** that enables someone to create a new application from the template:
 
 ![创建应用程序模板](media/howto-use-app-templates/create-template.png)
 
-### <a name="use-an-application-template"></a>使用应用程序模板
+### <a name="use-an-application-template"></a>Use an application template
 
-若要使用应用程序模板创建新的 IoT Central 应用程序，你需要一个以前创建的可**共享的链接**。 将可**共享的链接**粘贴到浏览器的地址栏中。 将显示 "**创建应用程序**" 页，其中选择了自定义应用程序模板：
+To use an application template to create a new IoT Central application, you need a previously created **Shareable Link**. Paste the **Shareable Link** into your browser's address bar. The **Create an application** page displays with your custom application template selected:
 
-![从模板创建应用程序](media/howto-use-app-templates/create-app.png)
+![Create an application from a template](media/howto-use-app-templates/create-app.png)
 
-选择付款计划，并填写窗体上的其他字段。 然后从 "应用程序" 模板中选择 "**创建**" 来创建新的 IoT Central 应用程序。
+Select your payment plan and fill out the other fields on the form. Then select **Create** to create a new IoT Central application from the application template.
 
-### <a name="manage-application-templates"></a>管理应用程序模板
+> [!NOTE]
+> When an application is created using **Shareable Link** the available locations are **Europe** and **US**.
 
-在 "**应用程序模板导出**" 页上，可以删除或更新应用程序模板。
+### <a name="manage-application-templates"></a>Manage application templates
 
-如果删除应用程序模板，则不能再使用以前生成的可共享的链接来创建新的应用程序。
+On the **Application Template Export** page, you can delete or update the application template.
 
-若要更新应用程序模板，请在**应用程序模板导出**页上更改模板名称或说明。 然后再次选择 "**导出**" 按钮。 此操作将生成一个新的可**共享链接**，并使任何以前可**共享的链接**URL 失效。
+If you delete an application template, you can no longer use the previously generated shareable link to create new applications.
+
+To update your application template, change the template name or description on the **Application Template Export** page. Then select the **Export** button again. This action generates a new **Shareable link** and invalidates any previous **Shareable link** URL.
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何使用应用程序模板，接下来的建议是了解如何[从 Azure 门户管理 IoT Central](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
+Now that you've learned how to use application templates, the suggested next step is to learn how to [Manage IoT Central from the Azure portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)

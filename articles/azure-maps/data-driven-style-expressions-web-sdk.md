@@ -1,6 +1,6 @@
 ---
-title: Azure Maps Web SDK 中的数据驱动样式表达式 |Microsoft Docs
-description: 如何在 Azure Maps Web SDK 中使用数据驱动样式表达式。
+title: Data-driven style Expressions in the Azure Maps Web SDK | Microsoft Docs
+description: How to use data-driven style expressions in the Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976316"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480636"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式 (Web SDK)
+# <a name="data-driven-style-expressions-web-sdk"></a>Data-driven Style Expressions (Web SDK)
 
-使用表达式可以将业务逻辑应用到样式选项, 这些选项可观察数据源中每个形状中定义的属性。 表达式还可用于筛选数据源或层中的数据。 表达式可以包含条件逻辑 (如 if 语句), 并且还可用于操作的数据;string、logical 和数学运算符。 
+Expressions enable you to apply business logic to styling options that observe the properties defined in each shape in a data source. Expressions can also be used to filter data in a data source or layer. Expressions can consist of conditional logic, like if-statements, and can also be used to manipulate data with; string, logical and mathematical operators. 
 
-数据驱动的样式可减少在样式设置之间实现业务逻辑所需的代码量。 与层一起使用时, 表达式在呈现时在单独的线程上进行计算, 在与在 UI 线程上评估业务逻辑相比, 此线程可提供更高的性能。
+Data-driven styles can reduce the amount of code needed to implement business logic around styling. When used with layers, expressions are evaluated at render time on a separate thread that provides increased performance when compared to evaluating business logic on the UI thread.
 
-以下视频概述了 Azure Maps Web SDK 中的数据驱动样式。
+The following video provides an overview of data-driven styling in the Azure Maps Web SDK.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串, 该字符串指定表达式运算符的名称。 例如, "+" 或 "case"。 接下来的元素 (如果有) 是表达式的参数。 每个参数都是一个文本值 (字符串、数字、布尔值或`null`) 或另一个表达式数组。 以下伪代码定义表达式的基本结构。 
+Expressions are represented as JSON arrays. The first element of an expression in the array is a string that specifies the name of the expression operator. For example, "+" or "case". The next elements (if any) are the arguments to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array. The following pseudocode defines the basic structure an expression. 
 
 ```javascript
 [ 
@@ -39,24 +39,24 @@ ms.locfileid: "68976316"
 ] 
 ```
 
-Azure Maps Web SDK 支持多种类型, 这些类型可在其自身或与其他表达式结合使用。
+The Azure Maps Web SDK supports many types of that can be used on their own or in combination with other expressions.
 
-| 表达式的类型 | 描述 |
+| Type of expressions | 描述 |
 |---------------------|-------------|
-| [聚合表达式](#aggregate-expression) | 一个表达式, 该表达式定义对一组数据进行处理并可与`clusterProperties`选项`DataSource`一起使用的计算。 |
-| [布尔表达式](#boolean-expressions) | 布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。 |
-| [颜色表达式](#color-expressions) | 颜色表达式使您可以更轻松地创建和操作颜色值。 |
-| [条件表达式](#conditional-expressions) | 条件表达式提供类似于 if 语句的逻辑运算。 |
-| [数据表达式](#data-expressions) | 提供对功能中的属性数据的访问。 |
-| [内插和单步表达式](#interpolate-and-step-expressions) | 内插和单步表达式可用于沿内插曲线或单步执行函数计算值。 |
-| [层特定的表达式](#layer-specific-expressions) | 仅适用于单个层的特殊表达式。 |
-| [数学表达式](#math-expressions) | 提供数学运算符, 用于在 expression framework 内执行数据驱动的计算。 |
-| [字符串运算符表达式](#string-operator-expressions) | 字符串运算符表达式对字符串执行转换操作, 例如连接和转换大小写。 |
-| [类型表达式](#type-expressions) | 类型表达式提供了用于测试和转换不同数据类型 (如字符串、数字和布尔值) 的工具。 |
-| [变量绑定表达式](#variable-binding-expressions) | 可变绑定表达式使计算结果存储在变量中, 并多次在表达式中的其他位置引用, 而无需重新计算存储的值。 |
-| [Zoom 表达式](#zoom-expression) | 在呈现时检索地图的当前缩放级别。 |
+| [Aggregate expression](#aggregate-expression) | An expression that defines a calculate that is processed over a set of data and can be used with the `clusterProperties` option of a `DataSource`. |
+| [Boolean expressions](#boolean-expressions) | Boolean expressions provide a set of boolean operators expressions for evaluating boolean comparisons. |
+| [Color expressions](#color-expressions) | Color expressions make it easier to create and manipulate color values. |
+| [Conditional expressions](#conditional-expressions) | Conditional expressions provide logic operations that are like if-statements. |
+| [Data expressions](#data-expressions) | Provides access to the property data in a feature. |
+| [Interpolate and Step expressions](#interpolate-and-step-expressions) | Interpolate and step expressions can be used to calculate values along an interpolated curve or step function. |
+| [Layer specific expressions](#layer-specific-expressions) | Special expressions that are only applicable to a single layer. |
+| [Math expressions](#math-expressions) | Provides mathematical operators to perform data-driven calculations within the expression framework. |
+| [String operator expressions](#string-operator-expressions) | String operator expressions perform conversion operations on strings such as concatenating and converting the case. |
+| [Type expressions](#type-expressions) | Type expressions provide tools for testing and converting different data types like strings, numbers, and boolean values. |
+| [Variable binding expressions](#variable-binding-expressions) | Variable binding expressions let the results of a calculation be stored in a variable and referenced elsewhere in an expression multiple times without having to recalculate the stored value. |
+| [Zoom expression](#zoom-expression) | Retrieves the current zoom level of the map at render time. |
 
-本文档中的所有示例都将使用以下功能演示不同类型的表达式的不同使用方式。 
+All examples in this document will use the following feature to demonstrate different ways in that the different types of expressions can be used. 
 
 ```javascript
 {
@@ -77,24 +77,24 @@ Azure Maps Web SDK 支持多种类型, 这些类型可在其自身或与其他�
 }
 ```
 
-## <a name="data-expressions"></a>数据表达式
+## <a name="data-expressions"></a>Data expressions
 
-数据表达式提供对功能中的属性数据的访问。 
+Data expressions provide access to the property data in a feature. 
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | 从数组中检索项。 |
-| `['geometry-type']` | string | 获取功能的几何图形类型:Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
-| `['get', string]` | value | 从当前功能的属性获取属性值。 如果缺少请求的属性, 则返回 null。 |
-| `['get', string, object]` | value | 从提供的对象的属性获取属性值。 如果缺少请求的属性, 则返回 null。 |
-| `['has', string]` | boolean | 确定功能的属性是否具有指定的属性。 |
-| `['has', string, object]` | boolean | 确定对象的属性是否具有指定的属性。 |
-| `['id']` | value | 获取功能的 ID (如果有)。 |
-| `['length', string | array]` | 号 | 获取字符串或数组的长度。 |
+| `['at', number, array]` | 对象 | Retrieves an item from an array. |
+| `['geometry-type']` | 字符串 | Gets the feature's geometry type: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
+| `['get', string]` | 值 | Gets the property value from the current feature's properties. Returns null if the requested property is missing. |
+| `['get', string, object]` | 值 | Gets the property value from the properties of the provided object. Returns null if the requested property is missing. |
+| `['has', string]` | boolean | Determines if the properties of a feature have the specified property. |
+| `['has', string, object]` | boolean | Determines if the properties of the object have the specified property. |
+| `['id']` | 值 | Gets the feature's ID if it has one. |
+| `['length', string | array]` | 数字 | Gets the length of a string or array. |
 
 **示例**
 
-通过使用`get`表达式, 可以在表达式中直接访问功能的属性。 下面的示例使用功能的 "zoneColor" 值指定气泡图层的颜色属性。 
+Properties of a feature can be accessed directly in an expression by using a `get` expression. The following example uses the "zoneColor" value of the feature to specify the color property of a bubble layer. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -102,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-如果所有点特征都具有`zoneColor`属性, 则上述示例将正常运行, 但如果不存在, 则颜色可能会回退到 "黑色"。 若要修改回退颜色, `case`表达式可`has`与表达式结合使用来检查属性是否存在, 如果不返回回退颜色, 则为。
+The above example will work fine if all the point features have the `zoneColor` property, but if they don’t, the color will likely fall back to "black". To modify the fallback color, a `case` expression can be used in combination with the `has` expression to check if the property exists, and if it doesn’t return a fallback color instead.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -117,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-默认情况下, 气泡图和符号层将呈现数据源中所有形状的坐标。 这样可以突出显示多边形或线条的顶点。 该层`filter`的选项可用于限制`['geometry-type']`使用布尔表达式中的表达式呈现的功能的几何类型。 下面的示例将限制气泡图层, 以便`Point`仅呈现功能。
+Bubble and symbol layers will render the coordinates of all shapes in a data source by default. This can be done to highlight the vertices of a polygon or line. The `filter` option of the layer can be used to limit the geometry type of the features it renders by using a `['geometry-type']` expression within a boolean expression. The following example limits a bubble layer so that only `Point` features are rendered.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -125,7 +125,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例将允许`Point`呈现和`MultiPoint`功能。 
+The following example will allow both `Point` and `MultiPoint` features to be rendered. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -133,90 +133,90 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-同样, 多边形的轮廓将以线条层呈现。 若要在线条层中禁用此行为, 请添加只允许`LineString`和`MultiLineString`功能的筛选器。  
+Similarly, the outline of Polygons will render in line layers. To disable this behavior in a line layer, add a filter that only allows `LineString` and `MultiLineString` features.  
 
-## <a name="math-expressions"></a>数学表达式
+## <a name="math-expressions"></a>Math expressions
 
-数学表达式提供数学运算符, 用于在 expression framework 内执行数据驱动的计算。
+Math expressions provide mathematical operators to perform data-driven calculations within the expression framework.
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | 号 | 计算指定数字的和。 |
-| `['-', number]` | 号 | 将0减去指定数字。 |
-| `['-', number, number]` | 号 | 用第二个数字减去第一个数字。 |
-| `['*', number, number, …]` | 号 | 将指定的数字相乘。 |
-| `['/', number, number]` | 号 | 将第一个数字除以第二个数字。 |
-| `['%', number, number]` | 号 | 计算第一个数字除以第二个数字时的余数。 |
-| `['^', number, number]` | 号 | 计算第一个值的值, 该值为第二个数字的幂。 |
-| `['abs', number]` | 号 | 计算指定数字的绝对值。 |
-| `['acos', number]` | 号 | 计算指定数字的反余弦值。 |
-| `['asin', number]` | 号 | 计算指定数字的反正弦值。 |
-| `['atan', number]` | 号 | 计算指定数字的反正切值。 |
-| `['ceil', number]` | 号 | 将数字向上舍入到下一个整数。 |
-| `['cos', number]` | 号 | 计算指定数字的 cos。 |
-| `['e']` | 号 | 返回数学常量`e`。 |
-| `['floor', number]` | 号 | 将数字向下舍入到上一个整数。 |
-| `['ln', number]` | 号 | 计算指定数字的自然对数。 |
-| `['ln2']` | 号 | 返回数学常量`ln(2)`。 |
-| `['log10', number]` | 号 | 计算指定数字的以10为底的对数。 |
-| `['log2', number]` | 号 | 计算指定数字的以2为底的对数。 |
-| `['max', number, number, …]` | 号 | 计算指定的一组数字中的最大数目。 |
-| `['min', number, number, …]` | 号 | 计算指定的一组数字中的最小数目。 |
-| `['pi']` | 号 | 返回数学常量`PI`。 |
-| `['round', number]` | 号 | 将数字舍入到最接近的整数。 将值从零向外舍入。 例如, `['round', -1.5]`计算结果为-2。 |
-| `['sin', number]` | 号 | 计算指定数字的正弦值。 |
-| `['sqrt', number]` | 号 | 计算指定数字的平方根。 |
-| `['tan', number]` | 号 | 计算指定数值的正切值。 |
+| `['+', number, number, …]` | 数字 | Calculates the sum of the specified numbers. |
+| `['-', number]` | 数字 | Subtracts 0 by the specified number. |
+| `['-', number, number]` | 数字 | Subtracts the first numbers by the second number. |
+| `['*', number, number, …]` | 数字 | Multiplies the specified numbers together. |
+| `['/', number, number]` | 数字 | Divides the first number by the second number. |
+| `['%', number, number]` | 数字 | Calculates the remainder when dividing the first number by the second number. |
+| `['^', number, number]` | 数字 | Calculates the value of the first value raised to the power of the second number. |
+| `['abs', number]` | 数字 | Calculates the absolute value of the specified number. |
+| `['acos', number]` | 数字 | Calculates the arccosine of the specified number. |
+| `['asin', number]` | 数字 | Calculates the arcsine of the specified number. |
+| `['atan', number]` | 数字 | Calculates the arctangent of the specified number. |
+| `['ceil', number]` | 数字 | Rounds the number up to the next whole integer. |
+| `['cos', number]` | 数字 | Calculates the cos of the specified number. |
+| `['e']` | 数字 | Returns the mathematical constant `e`. |
+| `['floor', number]` | 数字 | Rounds the number down to the previous whole integer. |
+| `['ln', number]` | 数字 | Calculates the natural logarithm of the specified number. |
+| `['ln2']` | 数字 | Returns the mathematical constant `ln(2)`. |
+| `['log10', number]` | 数字 | Calculates the base-ten logarithm of the specified number. |
+| `['log2', number]` | 数字 | Calculates the base-two logarithm of the specified number. |
+| `['max', number, number, …]` | 数字 | Calculates the maximum number in the specified set of numbers. |
+| `['min', number, number, …]` | 数字 | Calculates the minimum number in the specified set of numbers. |
+| `['pi']` | 数字 | Returns the mathematical constant `PI`. |
+| `['round', number]` | 数字 | Rounds the number to the nearest integer. Halfway values are rounded away from zero. For example, `['round', -1.5]` evaluates to -2. |
+| `['sin', number]` | 数字 | Calculates the sine of the specified number. |
+| `['sqrt', number]` | 数字 | Calculates the square root of the specified number. |
+| `['tan', number]` | 数字 | Calculates the tangent of the specified number. |
 
-## <a name="aggregate-expression"></a>聚合表达式
+## <a name="aggregate-expression"></a>Aggregate expression
 
-聚合表达式定义了通过一组数据进行处理并可与`clusterProperties`选项`DataSource`一起使用的计算。 这些表达式的输出必须是数字或布尔值。 
+An aggregate expression defines a calculation that is processed over a set of data and can be used with the `clusterProperties` option of a `DataSource`. The output of these expressions must be a number or boolean. 
 
-聚合表达式采用三个值;运算符值和初始值, 以及用于从数据中的每个功能检索属性以便对其应用聚合运算的表达式。 此表达式的格式如下:
+An aggregate expression takes in three values; an operator value, and initial value, and an expression to retrieve a property from each feature in a data to apply the aggregate operation on. This expression has the following format:
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 操作员然后, 将应用于每个由`mapExpression`为分类中的每个点计算的值的表达式函数。 支持的运算符; 
-    - 对于数字: `+`、 `*`、 `max`、`min`
-    - 对于布尔值`all`:,`any`
-- initialValue:用于聚合第一个计算值的初始值。
-- mapExpression:对数据集中的每个点应用的表达式。
+- operator: An expression function that is then applied to against all values calculated by the `mapExpression` for each point in the cluster. Supported operators; 
+    - For numbers: `+`, `*`, `max`, `min`
+    - For Booleans: `all`, `any`
+- initialValue: An initial value in which the first calculated value is aggregated against.
+- mapExpression: An expression that is applied against each point in the data set.
 
 **示例**
 
-如果数据集中的所有功能都有`revenue`一个数字属性, 则为。 可以使用以下聚合表达式计算从数据集中创建的群集中所有点的总收入:`['+', 0, ['get', 'revenue']]`
+If all features in a data set have a `revenue` property that is a number. The total revenue of all points in a cluster created from the data set can be calculated using the following aggregate expression: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>布尔表达式
 
-布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。
+Boolean expressions provide a set of boolean operators expressions for evaluating boolean comparisons.
 
-比较值时, 将严格类型化比较。 不同类型的值始终被视为不相等。 在分析时已知不同类型的情况被视为无效, 并将生成分析错误。 
+When comparing values, the comparison is strictly typed. Values of different types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. 
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 逻辑求反。 如果`true`输入为`false`, 则返回; `false`如果输入为`true`, 则返回。 |
-| `['!= ', value, value]` | boolean | 如果`true`输入值不相等, `false`则返回; 否则返回。 |
-| `['<', value, value]` | boolean | 如果`true`第一个输入严格小于第二个输入, `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
-| `['<=', value, value]` | boolean | 如果`true`第一个输入小于或等于第二个输入, `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
-| `['==', value, value]` | boolean | 如果`true`输入值相等, `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
-| `['>', value, value]` | boolean | 如果`true`第一个输入严格大于第二个输入, `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
-| `['>=' value, value]` | boolean | 如果`true`第一个输入大于或等于第二个输入, `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
-| `['all', boolean, boolean, …]` | boolean | 如果`true`所有输入都为`true`, `false`则返回; 否则返回。 |
-| `['any', boolean, boolean, …]` | boolean | 如果`true`任何输入为`true`, `false`则返回; 否则返回。 |
+| `['! ', boolean]` | boolean | Logical negation. Returns `true` if the input is `false`, and `false` if the input is `true`. |
+| `['!= ', value, value]` | boolean | Returns `true` if the input values are not equal, `false` otherwise. |
+| `['<', value, value]` | boolean | Returns `true` if the first input is strictly less than the second, `false` otherwise. The arguments are required to be either both strings or both numbers. |
+| `['<=', value, value]` | boolean | Returns `true` if the first input is less than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers. |
+| `['==', value, value]` | boolean | Returns `true` if the input values are equal, `false` otherwise. The arguments are required to be either both strings or both numbers. |
+| `['>', value, value]` | boolean | Returns `true` if the first input is strictly greater than the second, `false` otherwise. The arguments are required to be either both strings or both numbers. |
+| `['>=' value, value]` | boolean | Returns `true` if the first input is greater than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers. |
+| `['all', boolean, boolean, …]` | boolean | Returns `true` if all the inputs are `true`, `false` otherwise. |
+| `['any', boolean, boolean, …]` | boolean | Returns `true` if any of the inputs are `true`, `false` otherwise. |
 
 ## <a name="conditional-expressions"></a>条件表达式
 
-条件表达式提供类似于 if 语句的逻辑运算。
+Conditional expressions provide logic operations that are like if-statements.
 
-以下表达式对输入数据执行条件逻辑操作。 例如, `case`表达式提供 "if/then/else" 逻辑, `match`而表达式就像 "switch 语句"。 
+The following expressions perform conditional logic operations on the input data. For example, the `case` expression provides "if/then/else" logic while the `match` expression is like a "switch-statement". 
 
-### <a name="case-expression"></a>Case 表达式
+### <a name="case-expression"></a>Case expression
 
-`case`表达式是一种提供 if 语句 (if/then/else) 的条件表达式。 这种类型的表达式逐句通过一个布尔条件列表, 并返回第一个 true 布尔条件的输出值。
+A `case` expression is a type of conditional expression that provides if-statement like logic (if/then/else). This type of expression steps through a list of boolean conditions and returns the output value of the first boolean condition that’s true.
 
-以下伪代码定义`case`表达式的结构。 
+The following pseudocode defines the structure of the `case` expression. 
 
 ```javascript
 [
@@ -232,7 +232,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例单步执行不同的布尔条件, 直到找到计算结果`true`为的值, 然后返回该关联值。 如果没有布尔条件的计算`true`结果为, 则返回回退值。 
+The following example steps through different boolean conditions until it finds one that evaluates to `true`, and then returns that associated value. If no boolean condition evaluates to `true`, a fallback value will be returned. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -253,11 +253,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="match-expression"></a>Match 表达式
+### <a name="match-expression"></a>Match expression
 
-`match`表达式是一种提供类似于逻辑的 switch 语句的条件表达式。 输入可以是任何表达式`['get', 'entityType']` , 如返回字符串或数字。 每个标签都必须是单个文本值或文本值的数组, 其值必须是所有字符串或所有数字。 如果数组中的任何值匹配, 则输入匹配。 每个标签都必须是唯一的。 如果输入类型与标签类型不匹配, 则结果将为回退值。
+A `match` expression is a type of conditional expression that provides switch-statement like logic. The input can be any expression such as `['get', 'entityType']` that returns a string or a number. Each label must be either a single literal value or an array of literal values, whose values must be all strings or all numbers. The input matches if any of the values in the array match. Each label must be unique. If the input type doesn't match the type of the labels, the result will be the fallback value.
 
-以下伪代码定义`match`表达式的结构。 
+The following pseudocode defines the structure of the `match` expression. 
 
 ```javascript
 [
@@ -274,7 +274,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例在气泡图`entityType`层中查找点功能的属性搜索匹配项。 如果找到匹配项, 则返回指定的值或返回回退值。
+The following example looks at the `entityType` property of a Point feature in a bubble layer searches for a match. If it finds a match, that specified value is returned or it returns the fallback value.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -294,7 +294,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例使用数组列出一组应返回相同值的标签。 这比单独列出每个标签要高效得多。 在这种情况下, `entityType`如果属性为 "餐馆" 或 "grocery_store", 则将返回颜色 "red"。
+The following example uses an array to list a set of labels that should all return the same value. This is much more efficient than list each label individually. In this case, if the `entityType` property is "restaurant" or "grocery_store", the color "red" will be returned.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -315,7 +315,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例使用 match 表达式来执行 "in array" 或 "array contains" 类型筛选器, 在这种情况下, 筛选 ID 值在允许 Id 列表中的数据。 使用带有筛选器的表达式时, 结果必须是布尔值。
+The following example uses a match expression to perform an "in array" or "array contains" type filter, in this case filtering data that has an ID value that is in a list of allowed IDs. When using expressions with filters, the result needs to be a Boolean value.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -337,11 +337,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="coalesce-expression"></a>合并表达式
+### <a name="coalesce-expression"></a>Coalesce expression
 
-`coalesce`表达式逐句通过一组表达式, 直到获取第一个非 null 值并返回该值。 
+A `coalesce` expression steps through a set of expressions until the first non-null value is obtained and returns that value. 
 
-以下伪代码定义`coalesce`表达式的结构。 
+The following pseudocode defines the structure of the `coalesce` expression. 
 
 ```javascript
 [
@@ -354,7 +354,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`coalesce`表达式来`textField`设置符号层的选项。 如果特性`title`缺少该特性或将其设置为`null`, 则该表达式将尝试查找`subtitle`属性 (如果缺少或`null`, 它将回退到空字符串)。 
+The following example uses a `coalesce` expression to set the `textField` option of a symbol layer. If the `title` property is missing from the feature or set to `null`, the expression will then try looking for the `subtitle` property, if its missing or `null`, it will then fall back to an empty string. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -375,21 +375,40 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-## <a name="type-expressions"></a>类型表达式
+The following example uses a `coalesce` expression to retrieve the first available image icon available in the map sprite from a list of specified image names.
 
-类型表达式提供了用于测试和转换不同数据类型 (如字符串、数字和布尔值) 的工具。
+```javascript
+var layer = new atlas.layer.SymbolLayer(datasource, null, {
+    iconOptions: {
+        image: [
+            'coalesce',
+
+            //Try getting the image with id 'missing-image'.
+            ['image', 'missing-image'],
+
+            //Specify an image id to fallback to. 
+            'marker-blue'
+        ]
+    }
+});
+``` 
+
+## <a name="type-expressions"></a>Type expressions
+
+Type expressions provide tools for testing and converting different data types like strings, numbers, and boolean values.
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | array \|对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时, 这是必需的。 |
-| `['to-boolean', value]` | boolean | 将输入值转换为布尔值。 如果输入为`false`空字符串`false`、 `0` `null`、、或`NaN`, 则结果为; 否则`true`为。 |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | 颜色 | 将输入值转换为颜色。 如果提供了多个值, 则将按顺序对每个值进行计算, 直到获取第一个成功的转换。 如果没有任何输入可转换, 则表达式为错误。 |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 号 | 如果可能, 将输入值转换为数字。 如果输入为`null`或`false`, 则结果为0。 如果输入为`true`, 则结果为1。 如果输入是字符串, 则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值, 则将按顺序对每个值进行计算, 直到获取第一个成功的转换。 如果没有任何输入可转换, 则表达式为错误。 |
-| `['to-string', value]` | string | 将输入值转换为字符串。 如果输入为`null`, 则结果为`""`。 如果输入为布尔值, 则结果为`"true"`或。 `"false"` 如果输入是一个数字, 则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色, 则将其转换为 CSS RGBA 颜色`"rgba(r,g,b,a)"`字符串。 否则, 使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
-| `['typeof', value]` | string | 返回一个字符串, 该字符串描述给定值的类型。 |
+| `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Returns a literal array or object value. Use this expression to prevent an array or object from being evaluated as an expression. This is necessary when an array or object needs to be returned by an expression. |
+| `['image', string]` | 字符串 | Checks to see if a specified image ID is loaded into the maps image sprite. If it is, the ID is returned, otherwise null is returned. |
+| `['to-boolean', value]` | boolean | Converts the input value to a boolean. The result is `false` when the input is an empty string, `0`, `false`, `null`, or `NaN`; otherwise its `true`. |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 数字 | Converts the input value to a number, if possible. If the input is `null` or `false`, the result is 0. If the input is `true`, the result is 1. If the input is a string, it's converted to a number using the [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) string function of the ECMAScript Language Specification. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error. |
+| `['to-string', value]` | 字符串 | Converts the input value to a string. If the input is `null`, the result is `""`. If the input is a boolean, the result is `"true"` or `"false"`. If the input is a number, it's converted to a string using the [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number function of the ECMAScript Language Specification. If the input is a color, it's converted to CSS RGBA color string `"rgba(r,g,b,a)"`. Otherwise, the input is converted to a string using the [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) function of the ECMAScript Language Specification. |
+| `['typeof', value]` | 字符串 | Returns a string describing the type of the given value. |
 
 > [!TIP]
-> 如果浏览器控制台中出现`Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`类似于的错误消息, 则表示代码中的某个位置有一个数组, 该表达式的第一个值没有字符串。 如果希望表达式返回数组, 请使用`literal`表达式包装数组。 下面的示例设置符号层`offset`的图标选项, 该选项需要是一个包含两个数字的数组, 方法是`match`使用表达式根据点的`entityType`属性的值在两个偏移值之间进行选择具有.
+> If an error message similar to `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` appears in the browser console it means that there is an expression somewhere in your code that has an array that doesn’t have a string for its first value. If you want the expression to return an array, wrap the array with the `literal` expression. The following example sets the icon `offset` option of a symbol layer, which needs to be an array containing two numbers, by using a `match` expression to choose between two offset values based on the value of the  `entityType` property of the point feature.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -400,7 +419,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 >             //Get the entityType value.
 >             ['get', 'entityType'],
 >
->             //If there is no title, try getting the subtitle. 
+>             //If the entity type is 'restaurant', return a different pixel offset. 
 >             'restaurant', ['literal', [0, -10]],
 >
 >             //Default to value.
@@ -410,19 +429,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 > });
 > ```
 
-## <a name="color-expressions"></a>颜色表达式
+## <a name="color-expressions"></a>Color expressions
 
-颜色表达式使您可以更轻松地创建和操作颜色值。
+Color expressions make it easier to create and manipulate color values.
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | 颜色 | 从*红色*、*绿色*和*蓝色*分量创建颜色值, 该颜色值必须介于`0`和`255`之间, 并具有的`1`alpha 分量。 如果任何组件超出范围, 则表达式为错误。 |
-| `['rgba', number, number, number, number]` | 颜色 | 从*红色*、*绿色*、*蓝色*分量创建颜色值, 这些分量必须介于`0`和`255`之间, 并且在`0`和`1`范围内的 alpha 分量。 如果任何组件超出范围, 则表达式为错误。 |
-| `['to-rgba']` | \[number、number、number、number\] | 返回一个由四个元素组成的数组, 其中包含输入颜色的*红色*、*绿色*、*蓝色*和*alpha*分量, 按顺序排列。 |
+| `['rgb', number, number, number]` | color | Creates a color value from *red*, *green*, and *blue* components that must range between `0` and `255`, and an alpha component of `1`. If any component is out of range, the expression is an error. |
+| `['rgba', number, number, number, number]` | color | Creates a color value from *red*, *green*, *blue* components that must range between `0` and `255`, and an alpha component within a range of `0` and `1`. If any component is out of range, the expression is an error. |
+| `['to-rgba']` | \[number, number, number, number\] | Returns a four-element array containing the input color's *red*, *green*, *blue*, and *alpha* components, in that order. |
 
 **示例**
 
-下面的示例创建和 RGB 颜色值`255`, 其*红*值为,*绿色*和*蓝色*值是通过与`2.5` `temperature`属性的值相乘计算得出的。 当温度改变时, 颜色将变为不同的*红色*阴影。
+The following example creates and RGB color value that has a *red* value of `255`, and *green* and *blue* values that are calculated by multiplying `2.5` by the value of the `temperature` property. As the temperature changes the color will change to different shades of *red*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -438,19 +457,19 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="string-operator-expressions"></a>字符串运算符表达式
+## <a name="string-operator-expressions"></a>String operator expressions
 
-字符串运算符表达式对字符串执行转换操作, 例如连接和转换大小写。 
+String operator expressions perform conversion operations on strings such as concatenating and converting the case. 
 
 | 表达式 | 返回类型 | 描述 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | string | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要, 请使用类型表达式将其他值类型转换为字符串。`to-string` |
-| `['downcase', string]` | string | 将指定的字符串转换为小写。 |
-| `['upcase', string]` | string | 将指定的字符串转换为大写。 |
+| `['concat', string, string, …]` | 字符串 | Concatenates multiple strings together. Each value must be a string. Use the `to-string` type expression to convert other value types to string if needed. |
+| `['downcase', string]` | 字符串 | Converts the specified string to lowercase. |
+| `['upcase', string]` | 字符串 | Converts the specified string to uppercase. |
 
 **示例**
 
-下面的示例将点`temperature`功能的属性转换为字符串, 然后将 "° f" 连接到该字符串的末尾。
+The following example converts the `temperature` property of the point feature into a string and then concatenates "°F" to the end of it.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -465,33 +484,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-上面的表达式在地图上呈现文本 "64 ° F" 的 pin, 如下图所示。
+The above expression renders a pin on the map with the text "64°F" overlaid on top of it as shown in the image below.
 
 <center>
 
-![字符串运算符表达式示例](media/how-to-expressions/string-operator-expression.png)</center>
+![String operator expression example](media/how-to-expressions/string-operator-expression.png) </center>
 
-## <a name="interpolate-and-step-expressions"></a>内插和单步表达式
+## <a name="interpolate-and-step-expressions"></a>Interpolate and Step expressions
 
-内插和单步表达式可用于沿内插曲线或单步执行函数计算值。 这些表达式采用返回数值作为输入的表达式, 例如`['get',  'temperature']`。 根据输入和输出值对 (称为 "停止") 对输入值进行求值, 以确定最适合于内插曲线或单步执行函数的值。 每个停止的输入值必须是数字, 并且必须是升序。 输出值必须是数字、数字数组或颜色。
+Interpolate and step expressions can be used to calculate values along an interpolated curve or step function. These expressions take in an expression that returns a numeric value as their input, for example `['get',  'temperature']`. The input value is evaluated against pairs of input and output values, called "stops", to determine the value that best fits the interpolated curve or step function. The input values for each stop must be a number and be in ascending order. The output values must be a number, and array of numbers, or a color.
 
-### <a name="interpolate-expression"></a>内插表达式
+### <a name="interpolate-expression"></a>Interpolate expression
 
-`interpolate`表达式可用于通过在 stop 值之间进行插值计算来计算连续平滑的值集。 返回颜色值的表达式将产生从中选择结果值的颜色渐变。`interpolate`
+An `interpolate` expression can be used to calculate a continuous, smooth set of values by interpolating between stop values. An `interpolate` expression that returns color values produces a color gradient in which result values are selected from.
 
-可在`interpolate`表达式中使用三种类型的内插方法:
+There are three types of interpolation methods that can be used in an `interpolate` expression:
  
-* `['linear']`-在停止对之间的线性内插。
-* `['exponential', base]`-停止之间以指数方式插。 `base`值控制输出的增加速度。 值越大, 输出就会增加到范围的高端。 接近1的值将生成一个输出, 该输出将增加线性增长。 `base`
-* `['cubic-bezier', x1, y1, x2, y2]`-使用由给定控制点定义的一[条三次方贝塞尔曲线](https://developer.mozilla.org/docs/Web/CSS/timing-function)。
+* `['linear']` -  Interpolates linearly between the pair of stops.
+* `['exponential', base]` - Interpolates exponentially between the stops. The `base` value controls the rate at which the output increases. Higher values make the output increase more towards the high end of the range. A `base` value close to 1 produces an output that increases more linearly.
+* `['cubic-bezier', x1, y1, x2, y2]` - Interpolates using a [cubic Bezier curve](https://developer.mozilla.org/docs/Web/CSS/timing-function) defined by the given control points.
 
-下面是这些不同类型的内插的示例。 
+Here is an example of what these different types of interpolations look like. 
 
-| 线性  | 指数 | 三次方贝塞尔 |
+| 线性  | 指数 | Cubic Bezier |
 |---------|-------------|--------------|
-| ![线性内插图](media/how-to-expressions/linear-interpolation.png) | ![指数内插关系图](media/how-to-expressions/exponential-interpolation.png) | ![三次方贝塞尔插值图](media/how-to-expressions/bezier-curve-interpolation.png) |
+| ![Linear interpolation graph](media/how-to-expressions/linear-interpolation.png) | ![Exponential interpolation graph](media/how-to-expressions/exponential-interpolation.png) | ![Cubic Bezier interpolation graph](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-以下伪代码定义`interpolate`表达式的结构。 
+The following pseudocode defines the structure of the `interpolate` expression. 
 
 ```javascript
 [
@@ -508,7 +527,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`linear interpolate`表达式基于点功能的`color` `temperature`属性设置气泡图层的属性。 `temperature`如果值小于 60, 则将返回 "blue", 如果介于60和低于70之间, 则将返回黄色, 如果在70和小于80之间, 将返回 "橙色", 如果为80或更高, 则返回 "red"。
+The following example uses a `linear interpolate` expression to set the `color` property of a bubble layer based on the `temperature` property of the point feature. If the `temperature` value is less than 60, "blue" will be returned, if between 60 and less than 70, yellow will be returned, if between 70 and less than 80, "orange" will be returned, if 80 or greater, "red" will be returned.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -528,17 +547,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下图演示了如何为上面的表达式选择颜色。
+The following image demonstrates how the colors are chosen for the above expression.
  
 <center>
 
-![内插表达式](media/how-to-expressions/interpolate-expression-example.png)示例</center>
+![Interpolate expression example](media/how-to-expressions/interpolate-expression-example.png) </center>
 
-### <a name="step-expression"></a>步骤表达式
+### <a name="step-expression"></a>Step expression
 
-通过计算由停止定义的[分段函数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html),表达式可用于计算离散的阶数结果值。`step` 
+A `step` expression can be used to calculate discrete, stepped result values by evaluating a [piecewise-constant function](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) defined by stops. 
 
-以下伪代码定义`step`表达式的结构。 
+The following pseudocode defines the structure of the `step` expression. 
 
 ```javascript
 [
@@ -553,11 +572,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-步骤表达式返回的输出值刚好早于输入值, 或第一个输入值 (如果输入小于第一次停止)。 
+Step expressions return the output value of the stop just before the input value, or the first input value if the input is less than the first stop. 
 
 **示例**
 
-下面的示例使用`step`表达式基于点功能的`color` `temperature`属性设置气泡图层的属性。 `temperature`如果该值小于 60, 则将返回 "blue", 如果介于60和低于70之间, 则将返回 "黄色", 如果在70和低于80之间, 将返回 "橙色", 如果为80或更高, 则返回 "red"。
+The following example uses a `step` expression to set the `color` property of a bubble layer based on the `temperature` property of the point feature. If the `temperature` value is less than 60, "blue" will be returned, if between 60 and less than 70, "yellow" will be returned, if between 70 and less than 80, "orange" will be returned, if 80 or greater, "red" will be returned.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -575,27 +594,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下图演示了如何为上面的表达式选择颜色。
+The following image demonstrates how the colors are chosen for the above expression.
  
 <center>
 
-![步骤表达式示例](media/how-to-expressions/step-expression-example.png)
+![Step expression example](media/how-to-expressions/step-expression-example.png)
 </center>
 
-## <a name="layer-specific-expressions"></a>层特定的表达式
+## <a name="layer-specific-expressions"></a>Layer specific expressions
 
-仅适用于特定层的特殊表达式。
+Special expressions that only apply to specific layers.
 
-### <a name="heat-map-density-expression"></a>热度地图密度表达式
+### <a name="heat-map-density-expression"></a>Heat map density expression
 
-热度地图密度表达式检索热度地图层中每个像素的热度地图密度值, 并将其定义为`['heatmap-density']`。 此`0`值是介于和`1`之间的数字, 并与`interpolation` or `step`表达式结合使用来定义用于着色热度地图的颜色渐变。 此表达式只能用于热度地图层的 "[颜色" 选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)。
+A heat map density expression retrieves the heat map density value for each pixel in a heat map layer and is defined as `['heatmap-density']`. This value is a number between `0` and `1` and is used in combination with a `interpolation` or `step` expression to define the color gradient used to colorize the heat map. This expression can only be used in the [color option](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) of the heat map layer.
 
 > [!TIP]
-> 内插表达式中索引0处的颜色或步骤颜色的默认颜色, 定义了没有数据并可用于定义背景色的区域的颜色。 很多用户喜欢将此值设置为透明或半透明黑色。 
+> The color at index 0 in an interpolation expression or the default color of a step color, defines the color of the area where there's no data and can be used to define a background color. 很多用户喜欢将此值设置为透明或半透明黑色。 
 
 **示例**
 
-此示例使用 "内插内插" 表达式为呈现热度地图创建平滑颜色渐变。 
+This example uses a liner interpolation expression to create a smooth color gradient for rendering the heat map. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -611,7 +630,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-除了使用平滑渐变来着色热度地图外, 还可以使用`step`表达式在一组范围内指定颜色。 `step`将表达式用于着色时, 热度地图会将密度直观地分解为多个范围, 更类似于等高线或雷达样式地图。  
+In addition to using a smooth gradient to colorize a heat map, colors can be specified within a set of ranges by using a `step` expression. Using a `step` expression for colorizing the heat map breaks up the density visually into ranges that more so resembles a contour or radar style map.  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -628,18 +647,18 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-有关详细信息, 请参阅[添加热度地图层](map-add-heat-map-layer.md)文档。
+For more information, see the [Add a heat map layer](map-add-heat-map-layer.md) documentation.
 
-### <a name="line-progress-expression"></a>行进度表达式
+### <a name="line-progress-expression"></a>Line progress expression
 
-行进度表达式在直线层中沿渐变线检索进度, 并将其定义为`['line-progress']`。 此值是一个介于0到1之间的数字, 与`interpolation` or `step`表达式结合使用。 此表达式只能与线条层的[strokeGradient 选项]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)一起使用。 
+A line progress expression retrieves the progress along a gradient line in a line layer and is defined as `['line-progress']`. This value is a number between 0 and 1 and is used in combination with a `interpolation` or `step` expression. This expression can only be used with the [strokeGradient option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) of the line layer. 
 
 > [!NOTE]
-> 线条`strokeGradient`层的选项`lineMetrics`要求将数据源的选项设置为`true`。
+> The `strokeGradient` option of the line layer requires the `lineMetrics` option of the data source to be set to `true`.
 
 **示例**
 
-下面的示例使用`['line-progress']`表达式对线条的笔划应用颜色渐变。
+The following example uses the `['line-progress']` expression to apply a color gradient to the stroke of a line.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -657,16 +676,17 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[查看实时示例](map-add-line-layer.md#line-stroke-gradient)
+[See live example](map-add-line-layer.md#line-stroke-gradient)
 
-### <a name="text-field-format-expression"></a>文本字段格式表达式
+### <a name="text-field-format-expression"></a>Text field format expression
 
-文本字段格式表达式可与`textField` "符号层`textOptions` " 属性的选项一起使用, 以提供混合文本格式。 此表达式允许指定一组输入字符串和格式设置选项。 可以为此表达式中的每个输入字符串指定以下选项。
+The text field format expression can be used with the `textField` option of the symbol layers `textOptions` property to provide mixed text formatting. This expression allows a set of input strings and formatting options to be specified. The following options can be specified for each input string in this expression.
 
- * `'font-scale'`-指定字体大小的缩放系数。 如果指定, 此值将重写`size`单个字符串的`textOptions`的属性。
- * `'text-font'`-指定应对此字符串使用的一个或多个字体系列。 如果指定, 此值将重写`font`单个字符串的`textOptions`的属性。
+ * `'font-scale'` - Specifies the scaling factor for the font size. If specified, this value will override the `size` property of the `textOptions` for the individual string.
+ * `'text-font'` - Specifies one or more font families that should be used for this string. If specified, this value will override the `font` property of the `textOptions` for the individual string.
+ * `'text-color'` - Specifies a color to apply to a text when rendering. 
 
-以下伪代码定义文本字段格式表达式的结构。 
+The following pseudocode defines the structure of the text field format expression. 
 
 ```javascript
 [
@@ -674,12 +694,14 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[],
+        'text-color': color
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[] ,
+        'text-color': color
     },
     …
 ]
@@ -687,7 +709,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **示例**
 
-下面的示例通过添加粗体字体并放大功能的`title`属性的字体大小, 设置文本字段的格式。 此示例还将功能`subtitle`的属性添加到带缩小字体大小的换行符上。
+The following example formats the text field by adding a bold font and scaling up the font size of the `title` property of the feature. This example also adds the `subtitle` property of the feature on a newline, with a scaled down font size and colored red.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -706,28 +728,31 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             //Scale the font size down of the subtitle property. 
             ['get', 'subtitle'],
-            { 'font-scale': 0.75 }
+            { 
+                'font-scale': 0.75, 
+                'text-color': 'red' 
+            }
         ]
     }
 });
 ```
 
-此层将呈现点功能, 如下图所示:
+This layer will render the point feature as shown in the image below:
  
 <center>
 
-![带格式文本字段](media/how-to-expressions/text-field-format-expression.png)的点功能图像</center>
+![Image of Point feature with formatted text field](media/how-to-expressions/text-field-format-expression.png) </center>
 
-### <a name="number-format-expression"></a>数字格式表达式
+### <a name="number-format-expression"></a>Number format expression
 
-表达式只能与符号层的选项一起使用。 `textField` `number-format` 此表达式将提供的数字转换为带格式的字符串。 此表达式包装 JavaScript 的[toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数, 并支持以下选项集。
+The `number-format` expression can only be used with the `textField` option of a symbol layer. This expression converts the provided number into a formatted string. This expression wraps JavaScript’s [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) function and supports the following set of options.
 
- * `locale`-指定此选项, 以便将数字转换为字符串, 使其与指定语言对齐。 将[BCP 47 语言标记](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)传递到此选项。
- * `currency`-将数字转换为表示货币的字符串。 可能的值为[ISO 4217 币种代码](https://en.wikipedia.org/wiki/ISO_4217), 如美元的美元 "USD"、欧元的 "EUR" 或中文 RMB 的 "CNY"。
- * `'min-fraction-digits'`-指定要包含在数字的字符串版本中的最小小数位数。
- * `'max-fraction-digits'`-指定要包含在数字字符串版本中的小数位数的最大位数。
+ * `locale` - Specify this option for converting numbers to strings in a way that aligns with the specified language. Pass a [BCP 47 language tag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) into this option.
+ * `currency` - To convert the number into a string representing a currency. Possible values are the [ISO 4217 currency codes](https://en.wikipedia.org/wiki/ISO_4217), such as "USD" for the US dollar, "EUR" for the euro, or "CNY" for the Chinese RMB.
+ * `'min-fraction-digits'` - Specifies the minimum number of decimal places to include in the string version of the number.
+ * `'max-fraction-digits'` - Specifies the maximum number of decimal places to include in the string version of the number.
 
-以下伪代码定义文本字段格式表达式的结构。 
+The following pseudocode defines the structure of the text field format expression. 
 
 ```javascript
 [
@@ -744,7 +769,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`number-format`表达式来修改 "点" `revenue` `textField`功能的属性在符号层选项中的呈现方式, 使其显示为美元值。
+The following example uses a `number-format` expression to modify how the `revenue` property of the point feature is rendered in the `textField` option of a symbol layer such that it appears a US dollar value.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -760,19 +785,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-此层将呈现点功能, 如下图所示:
+This layer will render the point feature as shown in the image below:
 
 <center>
 
-![数字格式表达式示例](media/how-to-expressions/number-format-expression.png)</center>
+![Number format expression example](media/how-to-expressions/number-format-expression.png) </center>
 
-## <a name="zoom-expression"></a>Zoom 表达式
+## <a name="zoom-expression"></a>Zoom expression
 
-表达式用于在呈现时检索地图的当前缩放级别, 并定义为`['zoom']`。 `zoom` 此表达式在地图的最小和最大缩放级别范围之间返回一个数字。 使用此表达式可在更改地图的缩放级别时动态修改样式。 表达式只能与`interpolate` 和`step`表达式一起使用。 `zoom`
+A `zoom` expression is used to retrieve the current zoom level of the map at render time and is defined as `['zoom']`. This expression returns a number between the minimum and maximum zoom level range of the map. Using this expression allows styles to be modified dynamically as the zoom level of the map is changed. The `zoom` expression may only be used with `interpolate` and `step` expressions.
 
 **示例**
 
-默认情况下, 热度地图层中呈现的数据点的半径对于所有缩放级别都具有固定像素半径。 当地图放大数据聚合时, 热度地图层看起来会有所不同。 `zoom`表达式可用于缩放每个缩放级别的半径, 使每个数据点都涵盖地图的同一物理区域。 这会使热度地图层的外观更具静态和一致性。 地图的每个缩放级别都具有两倍于与上一个缩放级别垂直和水平的像素。 缩放半径以使每个缩放级别翻倍, 将创建一个在所有缩放级别上都保持一致的热度地图。 这可以通过使用`zoom`表达式`base 2 exponential interpolation`和表达式来实现, 如下所示。 
+By default, the radii of data points rendered in the heat map layer have a fixed pixel radius for all zoom levels. As the map is zoomed the data aggregates together and the heat map layer looks different. A `zoom` expression can be used to scale the radius for each zoom level such that each data point covers the same physical area of the map. This will make the heat map layer look more static and consistent. Each zoom level of the map has twice as many pixels vertically and horizontally as the previous zoom level. Scaling the radius such that it doubles with each zoom level will create a heat map that looks consistent on all zoom levels. This can be accomplished by using the `zoom` expression with a `base 2 exponential interpolation` expression as shown below. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -790,20 +815,20 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 };
 ```
 
-[查看实时示例](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
+[See live example](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
 
-## <a name="variable-binding-expressions"></a>变量绑定表达式
+## <a name="variable-binding-expressions"></a>Variable binding expressions
 
-变量绑定表达式将计算结果存储在变量中, 以便可以多次引用表达式中的其他位置, 而无需重新计算该值。 这是涉及许多计算的表达式的有用优化
+Variable binding expressions store the results of a calculation in a variable so that it can be referenced elsewhere in an expression multiple times without having to recalculate it. This is a useful optimization for expressions that involve many calculations
 
 | 表达式 | 返回类型 | 描述 |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 将一个或多个值作为变量存储, 以`var`供返回结果的子表达式中的表达式使用。 |
-| `['var', name: string]` | 任何 | 引用使用`let`表达式创建的变量。 |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Stores one or more values as variables for use by the `var` expression in the child expression that returns the result. |
+| `['var', name: string]` | 任意 | References a variable that was created using the `let` expression. |
 
 **示例**
 
-此示例使用一个表达式, 该表达式计算相对于温度比率的收入, 并`case`使用表达式来计算对该值的不同布尔运算。 表达式用于存储相对于温度比率的收入, 以便只需计算一次`var` , 表达式就会根据需要频繁地引用此变量, 而无需重新计算该值。 `let`
+This example uses an expression that calculates the revenue relative to temperature ratio and then uses a `case` expression to evaluate different boolean operations on this value. The `let` expression is used to store the revenue relative to temperature ratio so that it only needs to be calculated once and the `var` expression references this variable as often as needed without having to recalculate it.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -831,7 +856,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关实现表达式的更多代码示例, 请参阅以下文章:
+See the following articles for more code samples that implement expressions:
 
 > [!div class="nextstepaction"] 
 > [添加符号层](map-add-pin.md)
@@ -840,15 +865,15 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [添加气泡层](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [添加线条层](map-add-line-layer.md)
+> [Add a line layer](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [添加多边形层](map-add-shape.md)
+> [Add a polygon layer](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
-> [添加热度地图层](map-add-heat-map-layer.md)
+> [Add a heat map layer](map-add-heat-map-layer.md)
 
-详细了解支持表达式的层选项:
+Learn more about the layer options that support expressions:
 
 > [!div class="nextstepaction"] 
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)

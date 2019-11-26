@@ -1,25 +1,20 @@
 ---
-title: 使用 Azure 容器实例作为 Jenkins 生成代理
-description: 了解如何在 Azure 容器实例中将 Jenkins 服务器配置为按需运行生成作业
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Jenkins build on container instance
+description: Learn how to configure a Jenkins server to run build jobs on-demand in Azure Container Instances
 ms.topic: article
 ms.date: 08/31/2018
-ms.author: danlep
-ms.openlocfilehash: 7e93457a182598a2e8d739f4d626b49ff57b30fb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: e63ade82d4efeed40a9fba6f11d16131e8c728e7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150215"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484059"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>使用 Azure 容器实例作为 Jenkins 生成代理
 
 Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容器化工作负荷。 这些特性使得 ACI 成了大规模运行 Jenkins 生成作业的极佳平台。 本文逐步说明如何部署和使用一个将 ACI 预先配置为生成目标的 Jenkins 服务器。
 
-有关 Azure 容器实例的详细信息，请参阅[关于 Azure 容器实例][about-aci]。
+For more information on Azure Container Instances, see [About Azure Container Instances][about-aci].
 
 ## <a name="deploy-a-jenkins-server"></a>部署 Jenkins 服务器
 
@@ -48,7 +43,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
    ![Jenkins 门户部署的其他设置](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. 对于 "服务主体集成"，选择 "**自动（MSI）** "，让[Azure 资源的托管标识][managed-identities-azure-resources]自动为 Jenkins 实例创建身份验证标识。 选择“手动”可提供自己的服务主体凭据。
+4. For service principal integration, select **Auto(MSI)** to have [managed identities for Azure resources][managed-identities-azure-resources] automatically create an authentication identity for the Jenkins instance. 选择“手动”可提供自己的服务主体凭据。
 
 5. 云代理将为 Jenkins 生成作业配置基于云的平台。 对于本文档，请选择“ACI”。 使用 ACI 云代理时，每个 Jenkins 生成作业将在容器实例中运行。
 
@@ -70,7 +65,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 4. 连接会话后，运行以下命令检索初始管理员密码：
 
-   ```
+   ```bash
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
@@ -134,7 +129,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 上的 Jenkins 的详细信息，请参阅[azure 和 Jenkins][jenkins-azure]。
+To learn more about Jenkins on Azure, see [Azure and Jenkins][jenkins-azure].
 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md

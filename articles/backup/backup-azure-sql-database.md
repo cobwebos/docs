@@ -1,14 +1,14 @@
 ---
 title: 将 SQL Server 数据库备份到 Azure
-description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
+description: This article explains how to back up SQL Server to Azure. 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 811f04edb4d5f0326d0af629146b7cee10424df8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172648"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462586"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -48,19 +48,19 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="feature-consideration-and-limitations"></a>功能注意事项和限制
 
-* SQL Server 备份可配置在 Azure 门户或 PowerShell 中  。 我们不支持 CLI。
+* SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 我们不支持 CLI。
 * 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)上均受支持。
 * 运行 SQL Server 的 VM 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。
-* 不支持 SQL Server **故障转移群集实例 (FCI)** 和 SQL Server Always on 故障转移群集实例。
+* SQL Server **Failover Cluster Instance (FCI)** is not supported.
 * 不支持对镜像数据库和数据库快照执行备份和还原操作。
 * 使用多个备份解决方案来备份独立的 SQL Server 实例或 SQL Always On 可用性组可能导致备份失败，请避免执行此操作。
 * 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
-* Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型 
-* 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000  。  
-* 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库  。 如果有大量数据库，可创建多个保管库。
-* 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载  。
-* 我们支持最高 2 TB 大小的数据库；对于超过此大小的数据库，可能会出现性能问题  。
-* 若要了解每个服务器可以保护多少个数据库，我们需要考虑带宽、VM 大小、备份频率、数据库大小等因素。[下载](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)资源规划器，它根据 VM 资源和备份策略提供每个服务器可以具有的大致数据库数。
+* Azure 备份支持只读数据库的仅完整备份和仅复制完整备份类型
+* 无法保护包含大量文件的数据库。 支持的最大文件数约为 1000。  
+* 在一个保管库中最多可以备份约 2000 个 SQL Server 数据库。 如果有大量数据库，可创建多个保管库。
+* 一次最多可配置 50 个数据库的备份；此限制有助于优化备份负载。
+* We support databases up to **2 TB** in size; for sizes greater than that performance issues may come up.
+* To have a sense of as to how many databases can be protected per server, we need to consider factors such as bandwidth, VM size, backup frequency, database size, etc. [Download](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) the resource planner that gives the approximate number of databases you can have per server based on the VM resources and the backup policy.
 * 对于可用性组，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性组的备份行为
@@ -74,7 +74,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 根据备份首选项和备份类型（完整/差异/日志/仅复制完整），从特定节点（主要/次要）获取备份。
 
-* **备份首选项：主要节点**
+* **Backup preference: Primary**
 
 **备份类型** | **Node**
     --- | ---
@@ -83,7 +83,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
     日志 |  主要
     仅复制完整 |  主要
 
-* **备份首选项：仅次要节点**
+* **Backup preference: Secondary Only**
 
 **备份类型** | **Node**
 --- | ---
@@ -92,7 +92,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 日志 |  辅助
 仅复制完整 |  辅助
 
-* **备份首选项：次要节点**
+* **Backup preference: Secondary**
 
 **备份类型** | **Node**
 --- | ---
@@ -125,27 +125,27 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 对于所有其他版本，可使用以下步骤解决权限问题：
 
   1. 使用拥有 SQL Server sysadmin 权限的帐户登录到 SQL Server Management Studio (SSMS)。 除非需要特殊权限，否则 Windows 身份验证应该正常运行。
-  2. 在 SQL 服务器上，打开“安全/登录名”文件夹。 
+  2. 在 SQL 服务器上，打开“安全/登录名”文件夹。
 
       ![打开“安全/登录名”文件夹以查看帐户](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. 右键单击“登录名”文件夹并选择“新建登录名”。   在“登录名 - 新建”中，选择“搜索”。  
+  3. 右键单击“登录名”文件夹并选择“新建登录名”。 在“登录名 - 新建”中，选择“搜索”。
 
       ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc  。 输入“输入要选择的对象名称”中显示的帐户名。  选择“检查名称”以解析名称。  单击“确定”。 
+  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc。 输入“输入要选择的对象名称”中显示的帐户名。 选择“检查名称”以解析名称。 单击 **“确定”** 。
 
       ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在“服务器角色”中，确保“sysadmin”角色已选中。   单击“确定”。  现在，所需的权限应会存在。
+  5. 在“服务器角色”中，确保“sysadmin”角色已选中。 单击 **“确定”** 。 现在，所需的权限应会存在。
 
       ![确保 sysadmin 服务器角色已选中](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. 现在，将数据库与恢复服务保管库相关联。 在 Azure 门户上的“受保护的服务器”列表中，右键单击处于错误状态的服务器，并选择“重新发现数据库”   。
+  6. 现在，将数据库与恢复服务保管库相关联。 在 Azure 门户上的“受保护的服务器”列表中，右键单击处于错误状态的服务器，并选择“重新发现数据库”。
 
       ![验证服务器是否拥有相应的权限](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-  7. 在“通知”区域查看进度。  找到选定的数据库后，会显示一条成功消息。
+  7. 在“通知”区域查看进度。 找到选定的数据库后，会显示一条成功消息。
 
       ![部署成功消息](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
@@ -158,7 +158,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 1. 在对象资源管理器中转到该 SQL Server 实例。
 2. 导航到“安全性”->“登录名”
-3. 右键单击“登录名”，然后单击“新建登录名...” 
+3. 右键单击“登录名”，然后单击“新建登录名...”
 
     ![使用 SSMS 的新登录名](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
@@ -166,17 +166,17 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![SSMS 的登录名](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. 转到“服务器角色”，选择“public”和“sysadmin”角色。   
+5. 转到“服务器角色”，选择“public”和“sysadmin”角色。
 
     ![在 SSMS 中选择角色](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. 转到“状态”。  *授予*连接到数据库引擎的权限，并将“登录名”设置为“已启用”。 
+6. 转到“状态”。 *授予*连接到数据库引擎的权限，并将“登录名”设置为“已启用”。
 
     ![在 SSMS 中授予权限](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. 单击“确定”。
 8. 重复相同的步骤序列（上述步骤 1-7），将 NT Service\AzureWLBackupPluginSvc 登录名添加到 SQL Server 实例。 如果该登录名已存在，请确保它具有 sysadmin 服务器角色并处于这种状态：已授予连接到数据库引擎的权限，且“登录名”设置为“已启用”。
-9. 授予权限后，在门户中**重新发现数据库**：“保管库”->“备份基础结构”->“Azure VM 中的工作负荷”：  
+9. After granting permission, **Rediscover DBs** in the portal: Vault **->** Backup Infrastructure **->** Workload in Azure VM:
 
     ![在 Azure 门户中重新发现数据库](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

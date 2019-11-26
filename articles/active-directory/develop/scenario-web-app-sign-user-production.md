@@ -1,6 +1,6 @@
 ---
-title: 用于登录用户的 Web 应用（移到生产环境）- Microsoft 标识平台
-description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
+title: Web app that signs in users (move to production) - Microsoft identity platform
+description: Learn how to build a web app that signs in users (move to production)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,38 +15,46 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: efcc7ed4f80d0e3e9750d19ff95d010052a08b87
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086550"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481890"
 ---
-# <a name="web-app-that-signs-in-users---move-to-production"></a>用于登录用户的 Web 应用 - 移到生产环境
+# <a name="web-app-that-signs-in-users-move-to-production"></a>Web app that signs in users: Move to production
 
-现在你已了解如何获取用于调用 Web API 的令牌，接下来学习如何将其移到生产环境。
+Now that you know how to get a token to call web APIs, learn how to move it to production.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="calling-web-apis-scenario"></a>调用 Web API 方案
+### <a name="scenario-for-calling-web-apis"></a>Scenario for calling web APIs
 
-Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：
+After your web app signs in users, it can call web APIs on behalf of the signed-in users. Calling web APIs from the web app is the object of the following scenario:
 
 > [!div class="nextstepaction"]
 > [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>深层 ASP.NET Core web 应用教程
+### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep dive: ASP.NET Core web app tutorial
 
-了解使用 ASP.NET Core 登录用户的其他方法教程：[ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)。 本示例是一个循序渐进的教程，其中包含用于 web 应用的生产就绪代码，其中包括如何在中添加帐户登录：
+Learn about other ways to sign in users with this ASP.NET Core tutorial: 
 
-- 你的组织，
-- 多个组织，
-- 工作或学校帐户或个人 Microsoft 帐户
-- 对于[Azure AD B2C](https://aka.ms/aadb2c)，
-- 或在国家/地区云中。
+> [!div class="nextstepaction"]
+> [Enable your web apps to sign in users and call APIs with the Microsoft identity platform for developers](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
 
-### <a name="sample-code---java-web-app"></a>示例代码-Java web 应用
+This progressive tutorial has production-ready code for a web app, including how to add sign-in with accounts in:
 
-从 GitHub 上的示例中了解有关 Java web 应用的详细信息：[一个 Java Web 应用程序，该应用程序使用 Microsoft 标识平台登录用户并调用 Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+- Your organization
+- Multiple organizations
+- Work or school accounts, or personal Microsoft accounts
+- [Azure AD B2C](https://aka.ms/aadb2c)
+- National clouds
+
+### <a name="sample-code-java-web-app"></a>Sample code: Java web app
+
+Learn more about the Java web app from this sample on GitHub: 
+
+> [!div class="nextstepaction"]
+> [A Java Web application that signs in users with the Microsoft identity platform and calls Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)

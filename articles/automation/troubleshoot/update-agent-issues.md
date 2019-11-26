@@ -2,19 +2,19 @@
 title: 了解 Azure 更新管理中的 Windows 代理检查结果
 description: 了解如何排查更新管理代理问题。
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/25/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72fdfe912a5560ce0c0e3886dd3c56cf9534dc22
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886402"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480779"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
@@ -27,7 +27,7 @@ ms.locfileid: "73886402"
 * **未配置** - 未找到更新代理或尚未完成载入。
 
 > [!NOTE]
-> 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
+> There may be a slight delay between what the Azure portal shows and the current state of the machine.
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
@@ -55,15 +55,15 @@ ms.locfileid: "73886402"
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2008 R2 RTM、Windows Server 2008 | 仅支持更新评估。         |
-|Windows Server 2008 R2 SP1 和更高版本 |需要 .NET Framework 4.6.1 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2008 R2 SP1 和更高版本 |.NET Framework 4.6 or later is required. （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 is required.  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 
-### <a name="net-461"></a>.NET 4.6.1 +
+### <a name="net-462"></a>.NET 4.6.2
 
-.NET Framework 检查将验证系统是否至少安装了[.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) 。
+The .NET Framework check verifies that the system has a minimum of [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) installed.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
+The WMF check verifies that the system has the required version of the Windows Management Framework (WMF) - [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -107,7 +107,7 @@ Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\Progra
 
 ## <a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本，才能运行该脚本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 You must have WMF 4.0, or greater, installed to run the script. To download the latest version of PowerShell, see [Installing various versions of PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 此脚本的输出如以下示例所示：
 

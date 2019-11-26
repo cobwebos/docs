@@ -1,6 +1,6 @@
 ---
 title: 通过 Azure 门户管理 IoT Central | Microsoft Docs
-description: 本文介绍如何从 Azure 门户创建和管理 IoT Central 应用程序。
+description: This article describes how to create and manage your IoT Central applications from the Azure portal.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,22 +8,22 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c9a8ed6d55fbbfcf59c98a86ac98cb4264d31ee4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2133819ce7c298e2f73fdc5a68b80b64f9e72ea7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278819"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480430"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-你可以使用[Azure 门户](https://portal.azure.com)来管理你的应用程序，而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
+Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use the [Azure portal](https://portal.azure.com) to manage your applications.
 
 ## <a name="create-iot-central-applications"></a>创建 IoT Central 应用程序
 
-若要创建应用程序，请导航到[Azure 门户](https://ms.portal.azure.com)，然后在左侧的主窗格中选择 "**创建资源**"。
+To create an application, navigate to the [Azure portal](https://ms.portal.azure.com) and select **Create a resource** in the main pane on the left.
 
 ![管理门户：导航菜单](media/howto-manage-iot-central-from-portal/image0.png)
 
@@ -31,7 +31,7 @@ ms.locfileid: "74278819"
 
 ![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-在搜索结果中选择 " **IoT Central 应用程序**" 行项。
+Select the **IoT Central Application** line-item in the search results.
 
 ![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
@@ -39,16 +39,20 @@ ms.locfileid: "74278819"
 
 ![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-填写窗体中的所有字段。 此窗体类似于你填写在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建应用程序的窗体。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
+填写窗体中的所有字段。 This form is similar to the form you fill out to create applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website. 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
 
-**位置**是要在其中创建应用程序的[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择在物理上离设备最近的位置，以获得最佳性能。 Azure IoT Central 当前在**美国**、**澳大利亚**、**亚太**或**欧洲**可用。  选择某个位置后，就不能再将应用程序移到其他位置。
+You can create IoT Central application with general features by selecting **Sample Contoso**, **Custom application** and **Sample Devkits** as application templates, all the other application templates uses public preview features.
+
+![create IoT Central form](media/howto-manage-iot-central-from-portal/image6a.png)
+
+**Location** is the [geography](https://azure.microsoft.com/global-infrastructure/geographies/) where you’d like to create your application. Typically, you should choose the location that's physically closest to your devices to get optimal performance. Azure IoT Central is currently available in the **United States**, **Australia**, **Asia Pacific**, or in **Europe**.  Once you choose a location, you can't move your application to a different location later.
 
 > [!NOTE]
-> **预览应用程序**模板目前仅适用于**欧洲**和**美国**位置。
+> The preview application templates are currently only available in the **Europe** and **United States** locations.
 
 ![管理门户：创建 IoT Central 资源](media/howto-manage-iot-central-from-portal/image1a.png)  
 
-填写所有字段后，选择 "**创建**"。
+After filling out all fields, select **Create**.
 
 ## <a name="manage-existing-iot-central-applications"></a>管理现有 IoT Central 应用程序
 
@@ -57,19 +61,19 @@ ms.locfileid: "74278819"
 > [!NOTE]
 > Azure 门户中不会显示试用版应用程序，因为它们与订阅无关。
 
-若要开始，请在左侧窗格中选择 "**所有资源**"。 在搜索框中键入应用程序的名称以在资源列表中将其找到。 然后选择要管理的 IoT Central 应用程序。
+To get started, select **All resources** in the main pane on the left. 在搜索框中键入应用程序的名称以在资源列表中将其找到。 Then select the IoT Central application you'd like to manage.
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image2a.png)
 
-若要导航到应用程序，请选择 "IoT Central 应用程序 URL"。
+To navigate to the application, select the IoT Central Application URL.
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要将应用程序移动到其他资源组，请选择资源组旁边的 "**更改**"。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
+To move the application to a different resource group, select **change** beside the resource group. 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 
-若要将应用程序移动到其他订阅，请选择订阅旁边的 "**更改**" 链接。 在显示的对话框中，选取要将此应用程序迁移到其中的订阅。
+To move the application to a different subscription, select the **change** link beside the subscription. 在显示的对话框中，选取要将此应用程序迁移到其中的订阅。
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image5a.png)
 

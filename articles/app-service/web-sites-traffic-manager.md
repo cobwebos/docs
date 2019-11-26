@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a1f377c3325797f2f55f051830014b1068c51327
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2cd53c3c0b3e9acbb8a5a88c7696e8b3089c50c9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405595"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483386"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "74405595"
 ## <a name="routing-methods"></a>路由方法
 Azure 流量管理器使用四种不同的路由方法。 下面的列表中介绍了与 Azure 应用服务相关时这些方法的情况。
 
-* **[优先级](../traffic-manager/traffic-manager-routing-methods.md#priority)：** 所有流量都使用主应用，并提供备份以防主或备份应用不可用。
+* **[优先级](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)：** 所有流量都使用主应用，并提供备份以防主或备份应用不可用。
 * **[加权](../traffic-manager/traffic-manager-routing-methods.md#weighted)：** 将流量分配到一组应用，不管是平均分配还是根据定义的权重进行分配。
 * **[性能](../traffic-manager/traffic-manager-routing-methods.md#performance)：** 当应用位于不同的地理位置时，请使用从最低网络延迟角度而言“最靠近的”应用。
 * **[地理](../traffic-manager/traffic-manager-routing-methods.md#geographic)：** 根据 DNS 查询来自的地理位置将用户定向到特定的应用。 

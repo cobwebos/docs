@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820544"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483948"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法
 
@@ -45,7 +45,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 ### <a name="cloud-authentication"></a>云身份验证
 选择此身份验证方法时，Azure AD 会处理用户的登录过程。 结合使用无缝单一登录 (SSO)，用户可以登录到云应用，无需重新输入其凭据。 如果使用的是云身份验证，可以从以下两个选项中选择：
 
-**Azure AD 密码哈希同步**。 这是在 Azure AD 中为本地目录对象启用身份验证的最简单方法。 用户可以使用其在本地使用的同一用户名和密码，不必部署任何其他基础结构。 Azure AD 的某些高级功能（例如 Identity Protection 和[Azure AD 域服务](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)）需要密码哈希同步，无论选择哪种身份验证方法。
+**Azure AD 密码哈希同步**。 这是在 Azure AD 中为本地目录对象启用身份验证的最简单方法。 用户可以使用其在本地使用的同一用户名和密码，不必部署任何其他基础结构。 Some premium features of Azure AD, like Identity Protection and [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), require password hash synchronization, no matter which authentication method you choose.
 
 > [!NOTE]
 > 请勿以明文形式存储密码，或者使用 Azure AD 不可逆算法加密。 有关密码哈希同步实际过程的详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
@@ -69,13 +69,13 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 1. Azure AD 可以处理不依赖于本地组件来验证密码的用户的登录。
 2. Azure AD 可以将用户登录移交给受信任的身份验证提供 程序，例如 Microsoft 的 AD FS。
-3. 如果需要应用，用户级 Active Directory 安全策略（例如帐户已过期、已禁用帐户、密码已过期、帐户锁定和登录时间），Azure AD 需要某些本地组件。
+3. If you need to apply, user-level Active Directory security policies such as account expired, disabled account, password expired, account locked out, and sign-in hours on each user sign-in, Azure AD requires some on-premises components.
 4. Azure AD 本身不支持的登录功能：
    * 使用智能卡或证书进行登录。
    * 使用本地 MFA 服务器进行登录。
-   * 使用第三方身份验证解决方案进行登录。
+   * Sign-in using third party authentication solution.
    * 多站点本地身份验证解决方案。
-5. 无论你选择了哪种登录方法，Azure AD 标识保护都需要使用“密码哈希同步”来提供“凭据泄漏的用户”报告。 如果组织的主要登录方法失败并且在发生故障事件之前进行了配置，则组织可以故障转移到密码哈希同步。
+5. 无论你选择了哪种登录方法，Azure AD 标识保护都需要使用“密码哈希同步”来提供“凭据泄漏的用户”报告。 Organizations can fail over to Password Hash Sync if their primary sign-in method fails and it was configured before the failure event.
 
 > [!NOTE]
 > “Azure AD 标识保护”需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -88,19 +88,19 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随密码哈希同步一起部署。 在用户登录时，无缝 SSO 将消除不必要的提示。
 
-* **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的“Azure AD 标识保护”报告配合使用。 例如已泄漏凭据报告。 [使用密码哈希同步时](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)，Windows Hello 企业版具有特定的要求。 [Azure AD 域服务](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)需要密码哈希同步才能在托管域中设置用户的公司凭据。
+* **高级方案**。 如果组织选择，可以将来自标识的见解与 Azure AD Premium P2 的“Azure AD 标识保护”报告配合使用。 例如已泄漏凭据报告。 Windows Hello for Business has [specific requirements when you use password hash synchronization](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) requires password hash synchronization to provision users with their corporate credentials in the managed domain.
 
-    需要多重身份验证和密码哈希同步的组织必须使用 Azure AD 多重身份验证或[条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合的第三方或本地多重因素身份验证方法。
+    Organizations that require multifactor authentication with password hash synchronization must use Azure AD multifactor authentication or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use third-party or on-premises multifactor authentication methods that rely on federation.
 
 > [!NOTE]
-> Azure AD 条件访问需要[Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/)许可证。
+> Azure AD Conditional Access require [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenses.
 
 * **业务连续性**。 密码哈希同步与云身份验证结合在一起完全可以作为云服务使用，适合所有 Microsoft 数据中心。 若要确保密码哈希同步不会在长时间内无法工作，请在备用配置中部署另一个处于暂存模式的 Azure AD Connect 服务器。
 
 * **注意事项**。 目前，密码哈希同步不会即时强制本地帐户状态更改生效。 在此情况下，除非用户帐户状态已同步到 Azure AD，否则用户有权访问云应用。 组织可能希望在管理员对本地用户帐户状态执行批量更新后运行新的同步循环来克服此限制。 例如禁用帐户。
 
 > [!NOTE]
-> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 更改用户的密码并将 "*用户必须在下一次登录时更改密码*" 标志设置为时，不会将密码哈希同步到 Azure AD Connect Azure AD，直到用户更改其密码。
+> 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 When you change a user's password and set the *user must change password at next logon* flag, the password hash will not be synced to Azure AD with Azure AD Connect, until the user change their password.
 
 请参阅[实现密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)了解相关部署步骤。
 
@@ -112,15 +112,15 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随直通身份验证一起部署。 在用户登录后，无缝 SSO 将消除不必要的提示。
 
-* **高级方案**。 传递身份验证在登录时强制执行本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。
+* **高级方案**。 Pass-through Authentication enforces the on-premises account policy at the time of sign-in. 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。
 
-    需要使用传递身份验证进行多重身份验证的组织必须使用 Azure 多重身份验证（MFA）或[条件访问自定义控件](../../active-directory/conditional-access/controls.md#custom-controls-preview)。 这些组织不能使用依赖于联合的第三方或本地多重因素身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如“标识保护”的已泄漏凭据报表。
+    Organizations that require multifactor authentication with pass-through authentication must use Azure Multi-Factor Authentication (MFA) or [Conditional Access custom controls](../../active-directory/conditional-access/controls.md#custom-controls-preview). Those organizations can't use a third-party or on-premises multifactor authentication method that relies on federation. 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如“标识保护”的已泄漏凭据报表。
 
 * **业务连续性**。 我们建议部署两个额外的直通身份验证代理。 这些额外的代理是 Azure AD Connect 服务器上第一个代理之外的代理。 此额外部署将确保身份验证请求的高可用性。 如果部署了三个代理，关闭一个代理进行维护时另一个仍然可能失败。
 
     在除了部署直通身份验证之外还部署密码哈希同步有另一个好处。 它将在主要身份验证方法不再可用时充当备份身份验证方法。
 
-* **注意事项**。 当代理由于明显的本地故障而无法验证用户的凭据时，可以使用密码哈希同步作为直通身份验证的备份身份验证方法。 故障转移到密码哈希同步不会自动发生，你必须使用 Azure AD Connect 手动切换登录方法。
+* **注意事项**。 当代理由于明显的本地故障而无法验证用户的凭据时，可以使用密码哈希同步作为直通身份验证的备份身份验证方法。 Fail over to password hash synchronization doesn't happen automatically and you must use Azure AD Connect to switch the sign-on method manually.
 
     有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](../../active-directory/hybrid/how-to-connect-pta-faq.md)。
 
@@ -135,7 +135,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 * **高级方案**。 客户有 Azure AD 本身不支持的身份验证要求时通常需要联合身份验证解决方案。 请参阅详细信息以帮助你[选择正确的登录选项](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)。 请考虑以下常见要求：
 
   * 需要智能卡或证书的身份验证。
-  * 需要联合标识提供者的本地 MFA 服务器或第三方多因素提供程序。
+  * On-premises MFA servers or third-party multifactor providers requiring a federated identity provider.
   * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)。
   * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
 
@@ -160,7 +160,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
     ![使用密码哈希同步的 Azure AD 混合标识](./media/choose-ad-authn/azure-ad-authn-image2.png)
 
-* 传递身份验证的代理要求，使用两个代理进行冗余：
+* Agent requirements of pass-through authentication, using two agents for redundancy:
 
     ![使用直通身份验证的 Azure AD 混合标识](./media/choose-ad-authn/azure-ad-authn-image3.png)
 
@@ -173,22 +173,22 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |注意事项|密码哈希同步 + 无缝 SSO|直通身份验证 + 无缝 SSO|使用 AD FS 进行联合身份验证|
 |:-----|:-----|:-----|:-----|
 |身份验证在何处发生？|在云中|在云中，在使用本地身份验证代理进行安全密码验证交换后|本地|
-|除预配系统外的本地服务器要求是什么：Azure AD Connect？|无|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
-|除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
-|是否有 SSL 证书要求？|否|否|是|
-|是否有运行状况监视解决方案？|不是必需|[Azure Active Directory 管理中心](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)提供的代理状态|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|除预配系统外的本地服务器要求是什么：Azure AD Connect？|None|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
+|除预配系统外的本地 Internet 和网络的要求是什么？|None|从运行身份验证代理的服务器进行[出站 Internet 访问](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
+|是否有 SSL 证书要求？|No|No|是|
+|是否有运行状况监视解决方案？|无需|[Azure Active Directory 管理中心](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)提供的代理状态|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](../../active-directory/hybrid/how-to-connect-sso.md)|是，同时使用[无缝 SSO](../../active-directory/hybrid/how-to-connect-sso.md)|是|
-|支持哪些登录类型？|UserPrincipalName + 密码<br><br>使用[无缝 SSO 实现](../../active-directory/hybrid/how-to-connect-sso.md)Windows 集成的身份验证<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + 密码<br><br>使用[无缝 SSO 实现](../../active-directory/hybrid/how-to-connect-sso.md)Windows 集成的身份验证<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成的身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|支持哪些登录类型？|UserPrincipalName + 密码<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + 密码<br><br>Windows-Integrated Authentication by using [Seamless SSO](../../active-directory/hybrid/how-to-connect-sso.md)<br><br>[备用登录 ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows-Integrated Authentication<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |是否支持 Windows Hello 企业版？|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*需要 Windows Server 2016 域功能级别*|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[证书信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[具有条件访问的自定义控件 *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[具有条件访问的自定义控件 *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[具有条件访问的自定义控件 *](../../active-directory/conditional-access/controls.md)|
+|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Custom Controls with Conditional Access*](../../active-directory/conditional-access/controls.md)|
 |支持哪些用户帐户状态？|已禁用帐户<br>（最多 30 分钟延迟）|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|
-|什么是条件性访问选项？|[使用 Azure AD Premium Azure AD 条件性访问](../../active-directory/conditional-access/overview.md)|[使用 Azure AD Premium Azure AD 条件性访问](../../active-directory/conditional-access/overview.md)|[使用 Azure AD Premium Azure AD 条件性访问](../../active-directory/conditional-access/overview.md)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
+|What are the Conditional Access options?|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Azure AD Conditional Access, with Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |是否支持阻止旧协议？|[是](../../active-directory/conditional-access/conditions.md)|[是](../../active-directory/conditional-access/conditions.md)|[是](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |是否可以自定义登录页面的徽标、图像和说明？|[是，可使用 Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[是，可使用 Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[是](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|支持哪些高级方案？|[智能密码锁定](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Azure AD Premium P2 的已泄漏凭据报告](../../active-directory/reports-monitoring/concept-risk-events.md)|[智能密码锁定](../../active-directory/authentication/howto-password-smart-lockout.md)|多站点低延迟身份验证系统<br><br>[AD FS Extranet 锁定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[与第三方标识系统集成](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|支持哪些高级方案？|[智能密码锁定](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Azure AD Premium P2 的已泄漏凭据报告](../../active-directory/reports-monitoring/concept-risk-events.md)|[智能密码锁定](../../active-directory/authentication/howto-password-smart-lockout.md)|多站点低延迟身份验证系统<br><br>[AD FS Extranet 锁定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[与第三方标识系统集成](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
-> Azure AD 条件访问中的自定义控件当前不支持设备注册。
+> Custom controls in Azure AD Conditional Access does not currently support device registration.
 
 ## <a name="recommendations"></a>建议
 标识系统确保用户有权访问云应用、迁移到云中的业务线应用以及在云中提供的业务线应用。 为了使授权用户保持效率并防止歹徒接触组织的敏感数据，身份验证会控制对应用的访问。
@@ -203,7 +203,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
    * 先前已启用密码哈希同步的组织更改了其身份验证方法以使用密码哈希同步。 它们在数小时内即可重新联机。 通过 Office 365 使用对电子邮件的访问权限，可以解决问题并访问其他基于云的工作负荷。
 
-   * 之前未启用密码哈希同步的组织必须使用不受信任的外部消费者电子邮件系统来解决问题。 在这些情况下，在用户能够再次登录到基于云的应用之前，需要几周的时间来还原其本地标识基础结构。
+   * Organizations that didn’t previously enable password hash synchronization had to resort to untrusted external consumer email systems for communications to resolve issues. In those cases, it took them weeks to restore their on-premises identity infrastructure, before users were able to sign in to cloud-based apps again.
 
 3. **标识保护**。 在云中保护用户的最佳方法之一是将 Azure AD 标识保护与 Azure AD Premium P2 配合使用。 Microsoft 不断扫描 Internet 以查找歹徒在暗网上销售和提供的用户和密码列表。 Azure AD 可以用此信息验证组织的任意用户名和密码是否泄漏。 所以，无论使用哪种身份验证方法（无论其是联合身份验证还是直通身份验证），启用密码哈希同步都至关重要。 泄漏的凭据将以报表形式提供。 使用此信息可阻止或强制用户在尝试使用泄漏的密码登录时更改其密码。
 
@@ -219,4 +219,4 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 [开始使用](../../active-directory/fundamentals/get-started-azure-ad.md) Azure AD 并为组织部署正确的身份验证解决方案。
 
-如果你正在考虑从联合身份验证迁移到云身份验证，请了解有关[更改登录方法](../../active-directory/hybrid/plan-connect-user-signin.md)的详细信息。 若要帮助你规划和实施迁移，请使用[这些项目部署计划](https://aka.ms/deploymentplans)，或考虑使用新的[分步推出](../../active-directory/hybrid/how-to-connect-staged-rollout.md)功能，将联合用户迁移到使用云身份验证的分步方法。
+如果你正在考虑从联合身份验证迁移到云身份验证，请了解有关[更改登录方法](../../active-directory/hybrid/plan-connect-user-signin.md)的详细信息。 To help you plan and implement the migration, use [these project deployment plans](https://aka.ms/deploymentplans) or consider using the new [Staged Rollout](../../active-directory/hybrid/how-to-connect-staged-rollout.md) feature to migrate federated users to using cloud authentication in a staged approach.
