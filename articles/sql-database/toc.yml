@@ -124,8 +124,6 @@
               href: sql-database-threat-detection-overview.md
             - name: 安全属性
               href: sql-database-security-attributes.md
-            - name: 功能限制
-              href: sql-database-feature-restrictions.md
         - name: 单一数据库安全性
           items:
             - name: 网络访问控件

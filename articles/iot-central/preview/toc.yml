@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: 管理设备
           href: howto-manage-devices.md
+        - name: 配置规则
+          href: howto-configure-rules.md
         - name: 分析设备数据
           href: howto-create-analytics.md
         - name: 向仪表板添加磁贴

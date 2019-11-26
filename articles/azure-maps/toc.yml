@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: 显示交通情况
               href: map-show-traffic.md
-            - name: 与鼠标事件交互
+            - name: 对事件做出响应
               href: map-events.md
             - name: 使应用可供访问
               href: map-accessibility.md

@@ -337,7 +337,7 @@
     - name: 方案
       items:
         - name: 呼叫中心
-          href: get-started.md
+          href: call-center-transcription.md
           displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: 操作指南
       items:
