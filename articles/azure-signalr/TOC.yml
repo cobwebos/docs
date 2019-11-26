@@ -61,6 +61,8 @@
   items:
     - name: 缩放
       items:
+        - name: 单实例
+          href: signalr-howto-scale-signalr.md
         - name: 多个实例
           href: signalr-howto-scale-multi-instances.md
     - name: 安全

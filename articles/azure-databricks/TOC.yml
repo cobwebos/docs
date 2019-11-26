@@ -226,7 +226,7 @@
       maintainContext: true
     - name: 数据
       items:
-        - name: Databricks 文件系统
+        - name: Databricks 文件系统 (DBFS)
           href: /azure/databricks/data/databricks-file-system
           maintainContext: true
         - name: 数据库和表
@@ -242,7 +242,7 @@
             - name: 使用 JDBC 的 SQL 数据库
               href: /azure/databricks/data/data-sources/sql-databases
               maintainContext: true
-            - name: 使用 Apache Spark 连接器的 Azure SQL 数据库
+            - name: 使用 Apache Spark 连接器的 SQL 数据库
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
             - name: Azure Blob 存储
@@ -254,7 +254,7 @@
             - name: Azure Data Lake 存储
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
-            - name: Azure Data Lake Storage 直通身份验证
+            - name: Azure Data Lake Storage 凭据直通身份验证
               href: /azure/databricks/data/data-sources/azure/adls-passthrough
               maintainContext: true
             - name: Cosmos DB
@@ -764,16 +764,16 @@
               href: /azure/databricks/applications/deep-learning/data-prep/ddl-data
               maintainContext: true
             - name: 使用 Petastorm 加载数据
-              href: /azure/databricks//applications/deep-learning/data-prep/petastorm
+              href: /azure/databricks/applications/deep-learning/data-prep/petastorm
               maintainContext: true
             - name: 将数据帧和数据集保存到 TFRecord 文件
-              href: /azure/databricks//applications/deep-learning/data-prep/dataset-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/dataset-to-tfrecords
               maintainContext: true
             - name: 使用 TensorFlow 从 TFRecord 文件加载数据
-              href: /azure/databricks//applications/deep-learning/data-prep/tfrecords-to-tensorflow
+              href: /azure/databricks/applications/deep-learning/data-prep/tfrecords-to-tensorflow
               maintainContext: true
             - name: 使用 TensorFlow 将数据保存到 TFRecord 文件
-              href: /azure/databricks//applications/deep-learning/data-prep/tensorflow-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
         - name: 单节点训练
           items:
@@ -1061,6 +1061,17 @@
         - name: 管理工作区存储
           href: /azure/databricks/administration-guide/workspace-storage/storage
           maintainContext: true
+        - name: 启用群集配置
+          items:
+            - name: 群集配置概述
+              href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: 启用容器服务
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
+            - name: 启用用于基因组学的 Databricks Runtime
+              href: /azure/databricks/administration-guide/clusters/genomics-runtime
+              maintainContext: true
         - name: 管理虚拟网络
           items:
             - name: 虚拟网络概述
@@ -1084,7 +1095,7 @@
     - name: 故障排除
       items:
         - name: 常见问题
-          href: /azure/databricks//azure/azure-databricks/frequently-asked-questions-databricks
+          href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
         - name: 管理
           items:

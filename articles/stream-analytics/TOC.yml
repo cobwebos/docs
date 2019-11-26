@@ -133,6 +133,9 @@
         - name: 处理事件中心数据
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
+        - name: 处理 Azure SQL 数据库
+          href: ../sql-database/sql-database-stream-analytics.md
+          maintainContext: true
         - name: 地理空间方案
           href: geospatial-scenarios.md
     - name: 监视
