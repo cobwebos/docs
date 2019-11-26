@@ -175,6 +175,10 @@
   items:
     - name: 单个服务器
       items:
+        - name: 管理服务器
+          items:
+            - name: Azure 门户
+              href: howto-create-manage-server-portal.md
         - name: Authentication
           items:
             - name: 创建用户

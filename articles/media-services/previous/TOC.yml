@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: 碎片化 MP4 实时引入规范
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: 入门
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: 加载视频
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: 配置键盘快捷方式
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: 配置本地化
-          href: media-services-azure-media-clipper-localization.md
-        - name: 提交剪辑作业
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure 门户
-          href: media-services-azure-media-clipper-portal.md
     - name: 保护内容
       href: media-services-content-protection-overview.md
       items:
