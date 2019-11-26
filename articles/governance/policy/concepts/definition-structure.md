@@ -90,7 +90,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，并在预览时不支持计划。
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>参数
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -454,7 +454,7 @@ Azure Policy 支持以下类型的效果：
 
 ## <a name="aliases"></a>别名
 
-使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
+可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
 
@@ -604,6 +604,6 @@ Azure Policy 支持以下类型的效果：
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

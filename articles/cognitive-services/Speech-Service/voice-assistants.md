@@ -58,7 +58,7 @@ ms.locfileid: "74195937"
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#、UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| C#、UWP | {1}Windows{2} | [Browse](https://aka.ms/csspeech/csharpref) |
 | Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
 | Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
 

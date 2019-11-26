@@ -1,6 +1,6 @@
 ---
-title: How it works Azure MFA - Azure Active Directory
-description: Azure 多重身份验证可保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。
+title: Azure MFA 的工作原理-Azure Active Directory
+description: Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -24,11 +24,11 @@ ms.locfileid: "74381971"
 
 * 你知道的某样东西（通常为密码）
 * 具有的某样东西（无法轻易复制的可信设备，如电话）
-* 自身的特征（生物辨识系统）
+* 您的特征（生物识别）
 
 <center>
 
-![Conceptual authentication methods image](./media/concept-mfa-howitworks/methods.png)</center>
+![概念性身份验证方法图像](./media/concept-mfa-howitworks/methods.png)</center>
 
 Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
 
@@ -36,9 +36,9 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 
 多重身份验证属于以下产品/服务的一部分：
 
-* **Azure Active Directory Premium** or **Microsoft 365 Business** - Full featured use of Azure Multi-Factor Authentication using Conditional Access policies to require multi-factor authentication.
+* **Azure Active Directory Premium**或**Microsoft 365 商业版**-使用条件性访问策略来要求执行多重身份验证的 Azure 多重身份验证的完整功能。
 
-* **Azure AD Free** or standalone **Office 365** licenses - Use pre-created [Conditional Access baseline protection policies](../conditional-access/concept-baseline-protection.md) to require multi-factor authentication for your users and administrators.
+* **Azure AD Free**或独立**Office 365**许可证-使用预先创建的[条件访问基线保护策略](../conditional-access/concept-baseline-protection.md)，要求用户和管理员进行多重身份验证。
 
 * **Azure Active Directory 全局管理员** - 提供 Azure 多重身份验证的部分功能，可用来保护全局管理员帐户。
 
@@ -50,10 +50,10 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 由于大多数用户习惯只使用密码进行身份验证，因此，贵组织必须让所有用户了解此过程。 如果用户熟悉该过程，他们就不会在遇到与 MFA 相关的小问题时经常呼叫支持人员。 但是，在某些情况下，需要暂时禁用 MFA。 使用以下指导原则了解如何处理这种情况：
 
 * 请对支持人员进行培训，以处理用户因无法访问其身份验证方法或操作不正确而无法登录的情况。
-   * Using Conditional Access policies for Azure MFA Service, your support staff can add a user to a group that is excluded from a policy requiring MFA.
-* Consider using Conditional Access named locations as a way to minimize two-step verification prompts. With this functionality, administrators can bypass two-step verification for users that are signing in from a secure trusted network location such as a network segment used for new user onboarding.
-* Deploy [Azure AD Identity Protection](../active-directory-identityprotection.md) and trigger two-step verification based on risk detections.
+   * 使用 Azure MFA 服务的条件访问策略，你的支持人员可以将用户添加到从需要 MFA 的策略中排除的组。
+* 请考虑使用条件性访问命名位置作为最小化双重验证提示的方式。 使用此功能，管理员可以绕过从安全的受信任的网络位置（例如用于新用户载入的网络分段）登录的用户的双重验证。
+* 部署[Azure AD Identity Protection](../active-directory-identityprotection.md)并根据风险检测来触发双重验证。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Step-by-step Azure Multi-Factor Authentication deployment](howto-mfa-getstarted.md)
+- [循序渐进 Azure 多重身份验证部署](howto-mfa-getstarted.md)

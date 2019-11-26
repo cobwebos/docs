@@ -1,5 +1,5 @@
 ---
-title: How to use reference Swagger documentation - Azure Digital Twins | Microsoft Docs
+title: 如何使用 reference Swagger 文档-Azure 数字孪生 |Microsoft Docs
 description: 了解如何使用 Azure 数字孪生 Swagger 参考文档。
 ms.author: alinast
 author: alinamstanciu
@@ -42,15 +42,15 @@ Swagger 是一种非常便利的工具，可用于帮助执行对 Azure 数字�
 
 精简摘要对 API 进行了描述。
 
-[![Swagger summary and API overview information](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger 摘要和 API 概述信息](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 还列出了管理 API 对象模型。
 
-[![Swagger models listed at bottom of Swagger UI](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![swagger 模式列在 Swagger UI 底部](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 可以选择每个列出的对象模型来获取关键属性的更详细摘要：
 
-[![Swagger models expanded to see contents of models](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger 模型展开以查看模型的内容](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 生成的 Swagger 对象模型可方便地用于查看所有可用的 Azure 数字孪生[对象和 API](./concepts-objectmodel-spatialgraph.md)。 开发人员在 Azure 数字孪生上生成解决方案时可以使用此资源。
 
@@ -64,7 +64,7 @@ Swagger 还对编写管理 API 的所有终结点提供了全面概述。
 * 必需的参数数据类型。
 * 用于访问资源的 HTTP 方法。
 
-[![Swagger endpoints displayed in Swagger UI](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[Swagger UI 中显示 ![Swagger 终结点](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 若要查看更详细的概述，请选择每个资源。
 
@@ -74,11 +74,11 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 选择特定的终结点后，你会看到**试用**。
 
-[![Swagger Try it out button](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger 试用 "按钮](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 展开该部分会显示每个必需字段和可选参数的输入字段。 输入正确的值，并选择“执行”。
 
-[![Swagger Try it out result example](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Swagger 试用结果示例](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 执行测试后，可以验证响应数据。
 
@@ -86,43 +86,43 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 每个列出的终结点还包括用以验证开发和测试的响应正文数据。 这些示例包括对于成功的 HTTP 请求你希望看到的状态代码和 JSON。
 
-[![Swagger JSON response example](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Swagger JSON 响应示例](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 这些示例还包括用以帮助调试或改进失败测试的错误代码。
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授权
 
 > [!NOTE]
-> * The user principal that created the Azure Digital Twins resource will have a Space Administrator role assignment and will be able to create additional role assignments for other users. Such users and their roles can be authorized to call the APIs.
+> * 创建 Azure 数字孪生资源的用户主体将具有空间管理员角色分配，并将能够为其他用户创建其他角色分配。 此类用户及其角色可以获得调用 Api 的权限。
 
-1. Follow the steps in [this quickstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) to create and configure an Azure AD application. Alternatively, you can reuse an existing app registration.
+1. 按照[本快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)中的步骤创建和配置 Azure AD 应用程序。 或者，你可以重复使用现有的应用注册。
 
-1. Add the following **Redirect url** to your Azure AD app registration:
+1. 将以下**重定向 url**添加到 Azure AD 应用注册：
 
-    [![Register Swagger redirect url in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
+    [![在 AAD 中注册 Swagger 重定向 url](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
     | 名称  | 替换为 | 示例 |
     |---------|---------|---------|
-    | YOUR_SWAGGER_URL | Your Management REST API documentation URL found in the portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+    | YOUR_SWAGGER_URL | 你的管理 REST API 在门户中找到的文档 URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Copy the **Client ID** of your Azure AD app.
+1. 复制 Azure AD 应用的**客户端 ID** 。
 
-After completing the Azure Active Directory registration:
+完成 Azure Active Directory 注册后：
 
-1. Select the **Authorize** button on your swagger page.
+1. 在 swagger 页面上选择 "**授权**" 按钮。
 
-    [![Select the Swagger authorize button](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![选择 "Swagger 授权" 按钮](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-1. Paste the application ID into the **client_id** field.
+1. 将应用程序 ID 粘贴到**client_id**字段。
 
-    [![Swagger client_id field](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![Swagger client_id 字段](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-1. You will then be redirected to the following success modal.
+1. 然后，将重定向到以下成功模式。
 
-    [![Swagger redirect modal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![Swagger 重定向模式](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
 若要详细了解如何以交互方式测试受 OAuth 2.0 保护的请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
 

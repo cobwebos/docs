@@ -16,7 +16,7 @@ ms.locfileid: "74279934"
 
 可以在 Azure Dev Space 中访问 Kubernetes 群集，并使用现有的 Kubernetes 工具（如 `kubectl`）。
 
-运行 `az aks use-dev-spaces` 命令会自动添加 `kubectl` 配置上下文，因此 kubectl 应已连接到 Azure Dev Spaces Kubernetes 群集。 示例:
+运行 `az aks use-dev-spaces` 命令会自动添加 `kubectl` 配置上下文，因此 kubectl 应已连接到 Azure Dev Spaces Kubernetes 群集。 例如：
 - 确认当前上下文：`kubectl config current-context`
 - 列出所有可用的上下文：`kubectl config get-contexts`。 
 - 更改上下文：`kubectl config use-context <context-name>`

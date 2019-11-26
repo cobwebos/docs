@@ -1,6 +1,6 @@
 ---
-title: Metrics and alerts - Azure DNS
-description: With this learning path, get started with Azure DNS metrics and alerts.
+title: 指标和警报-Azure DNS
+description: 利用此学习路径，开始 Azure DNS 度量值和警报。
 services: dns
 documentationcenter: na
 author: asudbring
@@ -24,7 +24,7 @@ Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提
 
 ## <a name="azure-dns-metrics"></a>Azure DNS 指标
 
-Azure DNS provides metrics for customers to enable them to monitor specific aspects of their DNS zones hosted in the service. 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
+Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区域的具体各方面。 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
 
 -   QueryVolume
 -   RecordSetCount
@@ -34,7 +34,7 @@ Azure DNS provides metrics for customers to enable them to monitor specific aspe
 >[!NOTE]
 > 这个时候，这些指标仅可用于 Azure DNS 中托管的公共 DNS 区域。 如果 Azure DNS 托管专用区域，那么这些指标不为这些区域提供数据。 此外，仅 Azure 公有云支持指标和警报功能。 对主权云的支持将会在稍后跟进。 
 
-The most granular element that you can see metrics for is a DNS zone. You cannot currently see metrics for individual resource records within a zone.
+可以看到指标的最细粒度元素是 DNS 区域。 当前无法查看区域中单个资源记录的指标。
 
 ### <a name="query-volume"></a>查询量
 

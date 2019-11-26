@@ -24,7 +24,7 @@ Azure 安全中心提供了其他 Microsoft 许可证来使用以下安全产品
 * [Azure WAF](#azure-waf)
 * [Azure DDoS 防护](#azure-ddos)
 
-## Azure WAF <a name="azure-waf"></a>
+## Azure WAF<a name="azure-waf"></a>
 
 Azure 应用程序网关提供的 Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
 

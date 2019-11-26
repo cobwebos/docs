@@ -1,7 +1,7 @@
 ---
 title: 配置 Azure 负载均衡器分发模式
 titleSuffix: Azure Load Balancer
-description: In this article, get started configuring the distribution mode for Azure Load Balancer to support source IP affinity.
+description: 在本文中，开始配置 Azure 负载均衡器的分发模式以支持源 IP 关联。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -26,33 +26,33 @@ ms.locfileid: "74225375"
 
 ## <a name="hash-based-distribution-mode"></a>基于哈希的分发模式
 
-The default distribution mode for Azure Load Balancer is a five-tuple hash. 
+Azure 负载均衡器的默认分发模式是5元组哈希。 
 
-The tuple is composed of the:
-* **Source IP**
-* **Source port**
-* **Destination IP**
-* **Destination port**
-* **Protocol type**
+元组由以下内容组成：
+* **源 IP**
+* **源端口**
+* **目标 IP**
+* **目标端口**
+* **协议类型**
 
-The hash is used to map traffic to the available servers. The algorithm provides stickiness only within a transport session. Packets that are in the same session are directed to the same datacenter IP behind the load-balanced endpoint. When the client starts a new session from the same source IP, the source port changes and causes the traffic to go to a different datacenter endpoint.
+使用哈希将流量映射到可用的服务器。 该算法仅在传输会话内提供粘性。 同一会话中的数据包会定向到负载均衡终结点后面的同一数据中心 IP。 当客户端从同一源 IP 启动新会话时，源端口会更改，并导致流量发送到不同的数据中心终结点。
 
-![Five-tuple hash-based distribution mode](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
+![5元组基于哈希的分发模式](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>源 IP 关联模式
 
-The load balancer can also be configured by using the source IP affinity distribution mode. 此分配模式也称为为会话关联或客户端 IP 关联。 The mode uses a two-tuple (source IP and destination IP) or three-tuple (source IP, destination IP, and protocol type) hash to map traffic to the available servers. By using source IP affinity, connections that are started from the same client computer go to the same datacenter endpoint.
+还可以通过使用源 IP 关联分发模式来配置负载均衡器。 此分配模式也称为为会话关联或客户端 IP 关联。 模式使用两个元组（源 IP 和目标 IP）或3元组（源 IP、目标 IP 和协议类型）哈希将流量映射到可用的服务器。 通过使用源 IP 关联，从同一客户端计算机启动的连接会移到相同的数据中心终结点。
 
-The following figure illustrates a two-tuple configuration. Notice how the two-tuple runs through the load balancer to virtual machine 1 (VM1). VM1 随后由 VM2 和 VM3 备份。
+下图说明了一个双元组配置。 请注意，这两个元组如何通过负载均衡器运行到虚拟机1（VM1）。 VM1 随后由 VM2 和 VM3 备份。
 
-![Two-tuple session affinity distribution mode](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![双元组会话相关性分发模式](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
 源 IP 关联模式解决了 Azure 负载均衡器与远程桌面网关（RD 网关）之间的不兼容问题。 使用此模式可在单个云服务中生成 RD 网关场。
 
 另一个用例方案是媒体上传。 数据上传通过 UDP 进行，但控制平面通过 TCP 实现：
 
-* A client starts a TCP session to the load-balanced public address and is directed to a specific DIP. 通道将保持活动状态以监视连接运行状况。
-* A new UDP session from the same client computer is started to the same load-balanced public endpoint. 连接像前面的 TCP 连接一样定向到同一个 DIP 终结点。 能够以较高的吞吐量执行媒体上传，同时通过 TCP 维护控制通道。
+* 客户端启动与负载均衡公共地址的 TCP 会话，并定向到特定 DIP。 通道将保持活动状态以监视连接运行状况。
+* 来自同一客户端计算机的新 UDP 会话启动到相同的负载均衡公共终结点。 连接像前面的 TCP 连接一样定向到同一个 DIP 终结点。 能够以较高的吞吐量执行媒体上传，同时通过 TCP 维护控制通道。
 
 > [!NOTE]
 > 如果通过删除或添加虚拟机来更改负载均衡集，则会重新计算客户端请求的分配。 无法确保现有客户端的新连接最终都会抵达同一台服务器。 此外，使用源 IP 关联分配模式可能导致流量的不均衡分配。 在代理后面运行的客户端可被视为唯一的客户端应用程序。
@@ -61,22 +61,22 @@ The following figure illustrates a two-tuple configuration. Notice how the two-t
 
 ### <a name="azure-portal"></a>Azure 门户
 
-You can change the configuration of the distribution mode by modifying the load-balancing rule in the portal.
+可以通过修改门户中的负载均衡规则来更改分发模式的配置。
 
-1. Sign in to the Azure portal and locate the Resource Group containing the load balancer you wish to change by clicking on **Resource Groups**.
-2. In the load balancer overview screen, click on **Load-balancing rules** under **Settings**.
-3. In the load-balancing rules screen, click on the load-balancing rule that you wish to change the distribution mode.
-4. Under the rule, the distribution mode is changed by changing the **Session persistence** drop down box.  提供了以下选项：
+1. 登录 Azure 门户并通过单击“资源组”找到包含要更改的负载均衡器的资源组。
+2. 在 "负载均衡器概述" 屏幕上，单击 "**设置**" 下的 "**负载均衡规则**"。
+3. 在 "负载均衡规则" 屏幕中，单击要更改分发模式的负载均衡规则。
+4. 在规则下，通过更改“会话持续性”下拉框来更改分发模式。  你可使用以下选项：
     
-    * **None (hash-based)** - Specifies that successive requests from the same client may be handled by any virtual machine.
-    * **Client IP (source IP affinity 2-tuple)** - Specifies that successive requests from the same client IP address will be handled by the same virtual machine.
-    * **Client IP and protocol (source IP affinity 3-tuple)** - Specifies that successive requests from the same client IP address and protocol combination will be handled by the same virtual machine.
+    * **无(基于哈希)** - 指定任何虚拟机可能处理来自同一客户端的后续请求。
+    * **客户端 IP (源 IP 关联 2 元组)** - 指定来自同一客户端 IP 地址的后续请求将由同一虚拟机处理。
+    * **客户端 IP 和协议(源 IP 关联 3 元组)** - 指定来自同一客户端 IP 地址和协议组合的连续请求将由同一虚拟机处理。
 
-5. Choose the distribution mode and then click **Save**.
+5. 选择分发模式，然后单击“保存”。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-For virtual machines deployed with Resource Manager, use PowerShell to change the load-balancer distribution settings on an existing load-balancing rule. The following command updates the distribution mode: 
+对于使用资源管理器部署的虚拟机，请使用 PowerShell 更改现有负载均衡规则上的负载均衡器分发设置。 以下命令将更新分发模式： 
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
@@ -90,7 +90,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-Set the value of the `LoadBalancerDistribution` element for the amount of load balancing required. Specify sourceIP for two-tuple (source IP and destination IP) load balancing. Specify sourceIPProtocol for three-tuple (source IP, destination IP, and protocol type) load balancing. Specify none for the default behavior of five-tuple load balancing.
+为所需的负载平衡量设置 `LoadBalancerDistribution` 元素的值。 为两个元组（源 IP 和目标 IP）负载均衡指定 sourceIP。 为三个元组（源 IP、目标 IP 和协议类型）负载均衡指定 Sourceipprotocol (。 对于5元组负载平衡的默认行为，请指定 none。
 
 使用以下设置检索终结点负载均衡器分配模式配置：
 
@@ -114,7 +114,7 @@ Set the value of the `LoadBalancerDistribution` element for the amount of load b
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-When the `LoadBalancerDistribution` element isn't present, Azure Load Balancer uses the default five-tuple algorithm.
+如果 `LoadBalancerDistribution` 元素不存在，Azure 负载均衡器将使用默认的5元组算法。
 
 ### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>在负载均衡终结点集上配置分配模式
 
@@ -179,7 +179,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-As previously described, set the `LoadBalancerDistribution` element to sourceIP for two-tuple affinity, sourceIPProtocol for three-tuple affinity, or none for no affinity (five-tuple affinity).
+如前文所述，将两元组关联的 `LoadBalancerDistribution` 元素设置为 sourceIP，将 Sourceipprotocol (设置为三元组相关性，或将 none 设置为 none。
 
 #### <a name="response"></a>响应
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions reliable event processing
-description: Avoid missing Event Hub messages in Azure Functions
+title: Azure Functions 可靠事件处理
+description: 避免 Azure Functions 中缺少事件中心消息
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
@@ -12,118 +12,118 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74230376"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions reliable event processing
+# <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
 
-Event processing is one of the most common scenarios associated with serverless architecture. This article describes how to create a reliable message processor with Azure Functions to avoid losing messages.
+事件处理是与无服务器体系结构关联的最常见场景之一。 本文介绍如何使用 Azure Functions 创建可靠的消息处理器，以避免丢失消息。
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Challenges of event streams in distributed systems
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>分布式系统中的事件流的难题
 
-Consider a system that sends events at a constant rate  of 100 events per second. At this rate, within minutes multiple parallel Functions instances can consume the incoming 100 events every second.
+假设某个系统以每秒 100 个事件的恒定速率发送事件。 根据这种速率，在数分钟内，就有多个并行 Functions 实例可以每秒使用 100 个传入事件。
 
-However, any of the following less-optimal conditions are possible:
+但是，也可能会出现以下任何欠佳的情况：
 
-- What if the event publisher sends a corrupt event?
-- What if your Functions instance encounters unhandled exceptions?
-- What if a downstream system goes offline?
+- 如果事件发布者发送了损坏的事件，该怎么办？
+- 如果 Functions 实例遇到了未经处理的异常，该怎么办？
+- 如果下游系统脱机，该怎么办？
 
-How do you handle these situations while preserving the throughput of your application?
+如何在保持应用程序吞吐量的情况下处理这些情况？
 
-With queues, reliable messaging comes naturally. When paired with a Functions trigger, the function creates a lock on the queue message. If processing fails, the lock is released to allow another instance to retry processing. Processing then continues until either the message is evaluated successfully, or it is added to a poison queue.
+对于队列，可靠消息传递可以自然而然地进行。 与 Functions 触发器搭配使用时，函数会在队列消息中创建一个锁。 如果处理失败，将释放该锁，使另一个实例能够重试处理。 然后，处理将会继续，直到成功评估消息或者将消息添加到有害队列为止。
 
-Even while a single queue message may remain in a retry cycle, other parallel executions continue to keep to dequeueing remaining messages. The result is that the overall throughput remains largely unaffected by one bad message. However, storage queues don’t guarantee ordering and aren’t optimized for the high throughput demands required by Event Hubs.
+即使单个队列消息仍保留在重试循环中，其他并行执行也会继续取消剩余消息的排队。 结果是，整体吞吐量在很大程度上不受一条错误消息的影响。 但是，存储队列不能保证处理顺序，并且未针对事件中心的高吞吐量需求进行优化。
 
-By contrast, Azure Event Hubs doesn't include a locking concept. To allow for features like high-throughput, multiple consumer groups, and replay-ability, Event Hubs events behave more like a video player. Events are read from a single point in the stream per partition. From the pointer you can read forwards or backwards from that location, but you have to choose to move the pointer for events to process.
+相反，Azure 事件中心不存在锁定的概念。 为了实现高吞吐量、多个使用者组和重播等功能，事件中心事件的行为更像是视频播放器。 按分区从流中的单个点读取事件。 可以从指针位置向前或向后读取，但必须选择移动要处理的事件的指针。
 
-When errors occur in a stream, if you decide to keep the pointer in the same spot, event processing is blocked until the pointer is advanced. In other words, if the pointer is stopped to deal with problems processing a single event, the unprocessed events begin piling up.
+当流中出现错误时，如果你决定将指针保留在同一个点，则在指针递进之前，事件处理将受到阻止。 换而言之，如果停止指针来解决处理单个事件时出现的问题，则未处理的事件将开始累积。
 
-Azure Functions avoids deadlocks by advancing the stream's pointer regardless of success or failure. Since the pointer keeps advancing, your functions need to deal with failures appropriately.
+无论成功与否，Azure Functions 都会通过递进流的指针来避免死锁。 由于指针不断递进，函数需要相应地处理故障。
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>How Azure Functions consumes Event Hubs events
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>Azure Functions 如何使用事件中心事件
 
-Azure Functions consumes Event Hub events while cycling through the following steps:
+Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
-1. A pointer is created and persisted in Azure Storage for each partition of the event hub.
-2. When new messages are received (in a batch by default), the host attempts to trigger the function with the batch of messages.
-3. If the function completes execution (with or without exception) the pointer advances and a checkpoint is saved to the storage account.
-4. If conditions prevent the function execution from completing, the host fails to progress the pointer. If the pointer isn't advanced, then later checks end up processing the same messages.
-5. Repeat steps 2–4
+1. 为事件中心的每个分区创建一个指针并将其保存在 Azure 存储中。
+2. 收到新消息（默认分批接收）时，宿主会尝试对消息批触发函数。
+3. 如果该函数完成执行（出现或未出现异常），则指针将会递进，并将一个检查点保存到存储帐户。
+4. 如果某种状况阻止该函数完成执行，则宿主无法递进指针。 如果指针未递进，则后面的检查会结束相同消息的处理。
+5. 重复步骤 2-4
 
-This behavior reveals a few important points:
+此行为揭示了几个要点：
 
-- *Unhandled exceptions may cause you to lose messages.* Executions that result in an exception will continue to progress the pointer.
-- *Functions guarantees at-least-once delivery.* Your code and dependent systems may need to [account for the fact that the same message could be received twice](./functions-idempotent.md).
+- 未经处理的异常可能导致丢失消息。 导致异常的执行会继续递进指针。
+- 函数保证至少传送一次。 代码和相关系统可能需要[考虑到同一消息可能会接收两次这一事实](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>处理异常
 
-As a general rule, every function should include a [try/catch block](./functions-bindings-error-pages.md) at the highest level of code. Specifically, all functions that consume Event Hubs events should have a `catch` block. That way, when an exception is raised, the catch block handles the error before the pointer progresses.
+作为一般规则，每个函数应在代码的最高级别包含一个 [try/catch 块](./functions-bindings-error-pages.md)。 具体而言，使用事件中心事件的所有函数都应有一个 `catch` 块。 这样，在引发异常时，catch 块会在指针递进之前处理错误。
 
-### <a name="retry-mechanisms-and-policies"></a>Retry mechanisms and policies
+### <a name="retry-mechanisms-and-policies"></a>重试机制和策略
 
-Some exceptions are transient in nature and don't reappear when an operation is attempted again moments later. This is why the first step is always to retry the operation. You could write retry processing rules yourself, but they are so commonplace that a number of tools available. Using these libraries allow you to define robust retry-policies, which can also help preserve processing order.
+某些异常在性质上是暂时性的，稍后再次尝试操作时不会重现。 正因如此，第一个步骤始终是重试操作。 你可以自行编写重试处理规则，不过，有许多现成的工具可以完成此工作。 使用这些库可以定义可靠的重试策略，而这些策略也有助于保持处理顺序。
 
-Introducing fault-handling libraries to your functions allow you to define both basic and advanced retry policies. For instance, you could implement a policy that follows a workflow illustrated by the following rules:
+将故障处理库引入函数可以定义基本和高级重试策略。 例如，可以实现一个遵循以下规则所演示的工作流的策略：
 
-- Try to insert a message three times (potentially with a delay between retries).
-- If the eventual outcome of all retries is a failure, then add a message to a queue so processing can continue on the stream.
-- Corrupt or unprocessed messages are then handled later.
+- 尝试插入某条消息三次（可以在每次重试之前设置一定的延迟）。
+- 如果所有重试的最终结果均为失败，则将一条消息添加到队列，以便可以在流中继续进行处理。
+- 然后将处理损坏的或未处理的消息。
 
 > [!NOTE]
-> [Polly](https://github.com/App-vNext/Polly) is an example of a resilience and transient-fault-handling library for C# applications.
+> [Polly](https://github.com/App-vNext/Polly) 是适用于 C# 应用程序的复原和暂时性故障处理库的一个示例。
 
-When working with pre-complied C# class libraries, [exception filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) allow you to run code whenever an unhandled exception occurs.
+使用预编译的 C# 类库时，每当发生未经处理的异常，都可以借助[异常筛选器](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch)来运行代码。
 
-Samples that demonstrate how to use exception filters are available in the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) repo.
+[Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 存储库中提供了演示如何使用异常筛选器的示例。
 
-## <a name="non-exception-errors"></a>Non-exception errors
+## <a name="non-exception-errors"></a>非异常错误
 
-Some issues arise even when an error is not present. For example, consider a failure that occurs in the middle of an execution. In this case, if a function doesn’t complete execution, the offset pointer is never progressed. If the pointer doesn't advance, then any instance that runs after a failed execution continues to read the same messages. This situation provides an "at-least-once" guarantee.
+有些问题即使在未出错时也会出现。 例如，假设在执行的中途发生失败。 在这种情况下，如果某个函数未完成执行，则偏移指针永远不会递进。 如果指针未递进，则在执行失败后运行的任何实例将继续读取相同的消息。 这种机制可提供“至少一次”保证。
 
-The assurance that every message is processed at least one time implies that some messages may be processed more than once. Your function apps need to be aware of this possibility and must be built around the [principles of idempotency](./functions-idempotent.md).
+保证每条消息至少被处理一次意味着，某些消息可能会被处理多次。 函数应用需要意识到这种可能性，并且必须围绕[幂等性原则](./functions-idempotent.md)构建。
 
-## <a name="stop-and-restart-execution"></a>Stop and restart execution
+## <a name="stop-and-restart-execution"></a>停止和重启执行
 
-While a few errors may be acceptable, what if your app experiences significant failures? You may want to stop triggering on events until the system reaches a healthy state. Having the opportunity pause processing is often achieved with a circuit breaker pattern. The circuit breaker pattern allows your app to "break the circuit" of the event process and resume at a later time.
+尽管少量的错误可能是可接受的，但如果应用遇到严重的故障，该怎么办？ 在系统达到正常状态之前，你可能想要停止基于事件的触发。 通常可以通过断路器模式来实现处理暂停。 断路器模式允许应用“中断”事件进程的线路，稍后再恢复。
 
-There are two pieces required to implement a circuit breaker in an event process:
+在事件进程中实现断路器需要两项信息：
 
-- Shared state across all instances to track and monitor health of the circuit
-- Master process that can manage the circuit state (open or closed)
+- 所有实例之间用于跟踪和监视线路运行状况的共享状态
+- 可管理线路状态（打开或闭合）的主进程
 
-Implementation details may vary, but to share state among instances you need a storage mechanism. You may choose to store state in Azure Storage, a Redis cache, or any other account that is accessible by a collection of functions.
+实现详细信息可能有所不同，但对于实例之间的共享状态，需要使用一个存储机制。 可以选择将状态存储在 Azure 存储、Redis 缓存或者可由函数集合访问的任何其他帐户中。
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) or [durable entities](./durable/durable-functions-overview.md) are a natural fit to manage the workflow and circuit state. Other services may work just as well, but logic apps are used for this example. Using logic apps, you can pause and restart a function's execution giving you the control required to implement the circuit breaker pattern.
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久实体](./durable/durable-functions-overview.md)原生就很适合用于管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
 
-### <a name="define-a-failure-threshold-across-instances"></a>Define a failure threshold across instances
+### <a name="define-a-failure-threshold-across-instances"></a>定义实例之间的故障阈值
 
-To account for multiple instances processing events simultaneously, persisting shared external state is needed to monitor the health of the circuit.
+若要同时考虑多个实例处理事件，需要保存共享的外部状态以监视线路的运行状况。
 
-A rule you may choose to implement might enforce that:
+可以选择实现的规则可能会强制要求：
 
-- If there are more than 100 eventual failures within 30 seconds across all instances, then break the circuit and stop triggering on new messages.
+- 如果在 30 秒内所有实例的最终故障数超过 100，则中断线路，并针对新消息停止触发。
 
-The implementation details will vary given your needs, but in general you can create a system that:
+实现详细信息根据需求而异，但一般情况下，可以创建一个系统来执行以下操作：
 
-1. Log failures to a storage account (Azure Storage, Redis, etc.)
-1. When new failure is logged, inspect the rolling count to see if the threshold is met (for example, more than 100 in last 30 seconds).
-1. If the threshold is met, emit an event to Azure Event Grid telling the system to break the circuit.
+1. 将故障记录到存储帐户（Azure 存储、Redis 等）
+1. 记录新的故障时，检查累积计数以查看是否符合阈值（例如，过去 30 秒内超过 100 个）。
+1. 如果符合阈值，则将一个事件发送到 Azure 事件网格，告知系统中断线路。
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>Managing circuit state with Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理线路状态
 
-The following description highlights one way you could create an Azure Logic App to halt a Functions app from processing.
+以下内容重点介绍了一种创建 Azure 逻辑应用来停止函数应用的处理的方式。
 
-Azure Logic Apps comes with built-in connectors to different services, features stateful orchestrations, and is a natural choice to manage circuit state. After detecting the circuit needs to break, you can build a logic app to implement the following workflow:
+Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业务流程，并且是管理线路状态的自然选择。 检测到线路需要中断后，可以构建一个逻辑应用来实现以下工作流：
 
-1. Trigger an Event Grid workflow and stop the Azure Function (with the Azure Resource connector)
-1. Send a notification email that includes an option to restart the workflow
+1. 触发事件网格工作流并停止 Azure 函数（使用 Azure 资源连接器）
+1. 发送通知电子邮件并在其中包含用于重启工作流的选项
 
-The email recipient can investigate the health of the circuit and, when appropriate, restart the circuit via a link in the notification email. As the workflow restarts the function, messages are processed from the last Event Hub checkpoint.
+电子邮件收件人可以调查线路的运行状况，并在适当的情况下通过通知电子邮件中的链接重启线路。 当工作流重启函数时，将从最后一个事件中心检查点处理消息。
 
-Using this approach, no messages are lost, all messages are processed in order, and you can break the circuit as long as necessary.
+使用此方法不会丢失任何消息、会按顺序处理所有消息，并可以根据需要中断线路。
 
 ## <a name="resources"></a>资源
 
-- [Reliable event processing samples](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions Circuit Breaker](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [可靠事件处理的示例](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Azure Durable Functions 断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>后续步骤
 

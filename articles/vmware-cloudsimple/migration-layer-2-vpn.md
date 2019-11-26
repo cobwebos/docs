@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Stretch a Layer 2 network on-premises to Private Cloud
-description: Describes how to set up a Layer 2 VPN between NSX-T on a CloudSimple Private Cloud and an on-premises standalone NSX Edge client
+title: Azure VMware 解决方案（通过 CloudSimple）将本地第2层网络延伸到私有云
+description: 介绍如何在 CloudSimple 私有云和本地独立的 NSX 边缘客户端上的 NSX 之间设置第2层 VPN
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -17,165 +17,165 @@ ms.locfileid: "74232382"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
-In this guide, you will learn how to use Layer 2 VPN (L2VPN) to stretch a Layer 2 network from your on-premises environment to your CloudSimple Private Cloud. This solution enables migration of workloads running in your on-premises VMware environment to the Private Cloud in Azure within the same subnet address space without having to re-IP your workloads.
+在本指南中，你将了解如何使用第2层 VPN （L2VPN）将第2层网络从本地环境延伸到 CloudSimple 私有云。 此解决方案可在同一子网地址空间内将本地 VMware 环境中运行的工作负荷迁移到 Azure 中的私有云，而无需重新对工作负荷进行 IP 处理。
 
-L2VPN based stretching of Layer 2 networks can work with or without NSX-based networks in your on-premises VMware environment. If you don't have NSX-based networks for workloads on-premises, you can use a standalone NSX Edge Services Gateway.
+基于 L2VPN 的第2层网络可在本地 VMware 环境中使用或不使用基于 NSX 的网络。 如果没有基于 NSX 的网络用于本地工作负荷，则可以使用独立的 NSX Edge 服务网关。
 
 > [!NOTE]
-> This guide covers the scenario where on-premises and the Private Cloud datacenters are connected over Site-to-Site VPN.
+> 本指南介绍了本地和私有云数据中心通过站点到站点 VPN 连接的情况。
 
-## <a name="deployment-scenario"></a>Deployment scenario
+## <a name="deployment-scenario"></a>部署方案
 
-To stretch your on-premises network using L2VPN, you must configure an L2VPN server (destination NSX-T Tier0 router) and an L2VPN client (source standalone client).  
+若要使用 L2VPN 拉伸本地网络，必须配置 L2VPN 服务器（目标 NSX-T Tier0 路由器）和 L2VPN 客户端（源独立客户端）。  
 
-In this deployment scenario, your Private Cloud is connected to your on-premises environment via a Site-to-Site VPN tunnel that allows on-premises management and vMotion subnets to communicate with the Private Cloud management and vMotion subnets. This arrangement is necessary for Cross vCenter vMotion (xVC-vMotion). A NSX-T Tier0 router is deployed as an L2VPN server in the Private Cloud.
+在此部署方案中，私有云是通过站点到站点 VPN 隧道连接到本地环境的，该隧道允许本地管理和 vMotion 子网与私有云管理和 vMotion 子网通信。 这种排列对于跨 vCenter vMotion （xVC）是必需的。 在私有云中，Tier0 路由器部署为 L2VPN 服务器。
 
-Standalone NSX Edge is deployed in your on-premises environment as an L2VPN client and subsequently paired with the L2VPN server. A GRE tunnel endpoint is created on each side and configured to 'stretch' the on-premises Layer 2 network to your Private Cloud. This configuration is depicted in the following figure.
+独立的 NSX 边缘部署在本地环境中作为 L2VPN 客户端，随后与 L2VPN 服务器配对。 每一端都会创建一个 GRE 隧道终结点，并将其配置为将本地第2层网络 "拉伸" 到私有云。 下图描述了此配置。
 
-![Deployment scenario](media/l2vpn-deployment-scenario.png)
+![部署方案](media/l2vpn-deployment-scenario.png)
 
-To learn more about migration using L2 VPN, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
+若要详细了解如何使用 L2 VPN 进行迁移，请参阅 VMware 文档中的[虚拟专用网络](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)。
 
-## <a name="prerequisites-for-deploying-the-solution"></a>Prerequisites for deploying the solution
+## <a name="prerequisites-for-deploying-the-solution"></a>部署解决方案的先决条件
 
-Verify that the following are in place before deploying and configuring the solution:
+在部署和配置解决方案之前，验证是否已准备好以下各项：
 
-* The on-premises vSphere version is 6.7U1+ or 6.5P03+.
-* The on-premises vSphere license is at the Enterprise Plus level (for vSphere Distributed Switch).
-* Identify the workload Layer 2 network to be stretched to your Private Cloud.
-* Identify a Layer 2 network in your on-premises environment for deploying your L2VPN client appliance.
-* [A Private Cloud is already created](create-private-cloud.md).
-* The version of the standalone NSX-T Edge appliance is compatible with the NSX-T Manager version (NSX-T 2.3.0) used in your Private Cloud environment.
-* A trunk port group has been created in the on-premises vCenter with forged transmits enabled.
-* A public IP address has been reserved to use for the NSX-T standalone client uplink IP  address, and 1:1 NAT is in place for translation between the two addresses.
-* DNS forwarding is set on the on-premises DNS servers for the az.cloudsimple.io domain to point to the Private Cloud DNS servers.
-* RTT latency is less than or equal to 150 ms, as required for vMotion to work across the two sites.
+* 本地 vSphere 版本为 6.7 U1 + 或 6.5 P03 +。
+* 本地 vSphere 许可证位于企业 Plus 级别（适用于 vSphere 分布式交换机）。
+* 确定要延伸到私有云的工作负荷第2层网络。
+* 确定本地环境中用于部署 L2VPN 客户端设备的第2层网络。
+* [已创建私有云](create-private-cloud.md)。
+* 独立的 NSX-T 边缘设备版本与在私有云环境中使用的 NSX-T 管理器版本（NSX-T 2.3.0）兼容。
+* 已在本地 vCenter 中创建了一个已启用伪造传输的中继端口组。
+* 已保留一个公共 IP 地址用于 NSX-T 独立客户端上行 IP 地址，1:1 NAT 可用于在两个地址之间进行转换。
+* 将 az.cloudsimple.io 域的本地 DNS 服务器上的 DNS 转发设置为指向私有云 DNS 服务器。
+* RTT 延迟小于或等于 150 ms，这是因为 vMotion 需要在两个站点间工作。
 
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
-The following table lists supported vSphere versions and network adaptor types.  
+下表列出了支持的 vSphere 版本和网络适配器类型。  
 
-| vSphere version | Source vSwitch type | Virtual NIC driver | Target vSwitch Type | Supported? |
+| vSphere 版本 | 源 vSwitch 类型 | 虚拟 NIC 驱动程序 | 目标 vSwitch 类型 | 受? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| 所有 | DVS | 所有 | DVS | 是 |
-| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | VMXNET3 | N-VDS | 是 |
-| vSphere 6.7UI or higher, 6.5P03 or higher | DVS | E1000 | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI or 6.5P03, NSX-V or versions below NSX-T2.2, 6.5P03 or higher | 所有 | 所有 | N-VDS | [Not supported per VWware](https://kb.vmware.com/s/article/56991) |
+| All | DVS | All | DVS | 是 |
+| vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | 是 |
+| vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | E1000 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI 或 6.5 P03，NSX-V 或低于 NSX-T 2.2、6.5 P03 或更高版本的版本 | All | All | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
 
-As of the VMware NSX-T 2.3 release:
+从 VMware NSX 到2.3 版本：
 
-* The logical switch on the Private Cloud side that is stretched to on-premises over L2VPN can't be routed at the same time. The stretched logical switch can't be connected to a logical router.
-* L2VPN and route-based IPSEC VPNs can only be configured using API calls.
+* 私有云端上通过 L2VPN 延伸到本地的逻辑交换机不能同时路由。 延伸逻辑交换机无法连接到逻辑路由器。
+* 仅可使用 API 调用配置 L2VPN 和基于路由的 IPSEC Vpn。
 
-For more information, see [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) in the VMware documentation.
+有关详细信息，请参阅 VMware 文档中的[虚拟专用网络](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704)。
 
-### <a name="sample-l2-vpn-deployment-addressing"></a>Sample L2 VPN deployment addressing
+### <a name="sample-l2-vpn-deployment-addressing"></a>L2 VPN 部署寻址示例
 
-### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>On-premises network where the standalone ESG (L2 VPN client) is deployed
+### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>部署独立 ESG （L2 VPN 客户端）的本地网络
 
 | **Item** | **值** |
 |------------|-----------------|
-| Network name | MGMT_NET_VLAN469 |
+| 网络名称 | MGMT_NET_VLAN469 |
 | VLAN | 469 |
 | CIDR| 10.250.0.0/24 |
-| Standalone Edge appliance IP address | 10.250.0.111 |
-| Standalone Edge appliance NAT IP address | 192.227.85.167 |
+| 独立边缘设备 IP 地址 | 10.250.0.111 |
+| 独立边缘设备 NAT IP 地址 | 192.227.85.167 |
 
-### <a name="on-premises-network-to-be-stretched"></a>On-premises network to be stretched
+### <a name="on-premises-network-to-be-stretched"></a>要扩展的本地网络
 
 | **Item** | **值** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Private Cloud IP schema for NSX-T Tier0 Router (L2 VPN serve)
+### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>用于 NSX 的私有云 IP 架构-T Tier0 路由器（L2 VPN 服务）
 
 | **Item** | **值** |
 |------------|-----------------|
-| Loopback interface | 192.168.254.254/32 |
-| Tunnel interface | 5.5.5.1/29 |
-| Logical switch (stretched) | Stretch_LS |
-| Loopback interface (NAT IP address) | 104.40.21.81 |
+| 环回接口 | 192.168.254.254/32 |
+| 隧道接口 | 5.5.5.1/29 |
+| 逻辑交换机（延伸） | Stretch_LS |
+| 环回接口（NAT IP 地址） | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Private Cloud network to be mapped to the stretched network
+### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>要映射到延伸网络的私有云网络
 
 | **Item** | **值** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
 
-## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>Fetch the logical router ID needed for L2VPN
+## <a name="fetch-the-logical-router-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑路由器 ID
 
-The following steps show how to fetch the logical-router ID of Tier0 DR logical router instance for the IPsec and L2VPN services. The logical-router ID is needed later when implementing the L2VPN.
+以下步骤演示了如何获取 IPsec 和 L2VPN 服务的 Tier0 DR 逻辑路由器实例的逻辑路由器 ID。 稍后在实现 L2VPN 时需要逻辑路由器 ID。
 
-1. Sign in to NSX-T Manager https://*nsx-t-manager-ip-address* and select **Networking** > **Routers** > **Provider-LR** > **Overview**. For **High Availability Mode**, select **Active-Standby**. This action opens a pop-up window that shows the Edge VM on which the Tier0 router is currently active.
+1. 登录到*nsx-t manager https://，* 并选择 "**网络** > **路由器** > **提供程序-LR** > **概述**"。 对于**高可用性模式**，请选择 "**主动-备用**"。 此操作将打开一个弹出窗口，其中显示了 Tier0 路由器当前处于活动状态的边缘 VM。
 
-    ![Select active-standby](media/l2vpn-fetch01.png)
+    ![选择活动-备用](media/l2vpn-fetch01.png)
 
-2. Select **Fabric** > **Nodes** > **Edges**. Make a note of the management IP address of the active Edge VM (Edge VM1) identified in the previous step.
+2. 选择 " **Fabric** > **节点** > **边缘**"。 记下在上一步中标识的活动边缘 VM （Edge VM1）的管理 IP 地址。
 
-    ![Note management IP](media/l2vpn-fetch02.png)
+    ![注意管理 IP](media/l2vpn-fetch02.png)
 
-3. Open an SSH session to the management IP address of the Edge VM. Run the ```get logical-router``` command with username **admin** and password **CloudSimple 123!** .
+3. 打开与边缘 VM 的管理 IP 地址的 SSH 会话。 用用户名**admin**和 password **CloudSimple 123！** 运行 ```get logical-router``` 命令。
 
-    ![get logical-router output](media/l2vpn-fetch03.png)
+    ![获取逻辑路由器输出](media/l2vpn-fetch03.png)
 
-4. If you don't see an entry 'DR-Provider-LR', complete the following steps.
+4. 如果看不到 "DR-Provider-LR" 条目，请完成以下步骤。
 
-5. Create two overlay-backed logical switches. One logical switch is stretched to on-premises where the migrated workloads reside. Another logical switch is a dummy switch. For instructions, see [Create a Logical Switch](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html) in the VMware documentation.
+5. 创建两个支持覆盖的逻辑交换机。 一个逻辑交换机延伸到了迁移的工作负荷所在的本地位置。 另一逻辑交换机为虚拟交换机。 有关说明，请参阅 VMware 文档中的[创建逻辑交换机](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-23194F9A-416A-40EA-B9F7-346B391C3EF8.html)。
 
-    ![Create logical switch](media/l2vpn-fetch04.png)
+    ![创建逻辑交换机](media/l2vpn-fetch04.png)
 
-6. Attach the dummy switch to the Tier1 router with a link local IP address or any non-overlapping subnet from on-premises or your Private Cloud. See [Add a Downlink Port on a Tier-1 Logical Router](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) in the VMware documentation.
+6. 使用链接本地 IP 地址或从本地或私有云中的任何非重叠子网，将虚拟交换机附加到 Tier1 路由器。 请参阅 VMware 文档中的在[第1层逻辑路由器上添加下行端口](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html)。
 
-    ![Attach dummy switch](media/l2vpn-fetch05.png)
+    ![附加虚拟交换机](media/l2vpn-fetch05.png)
 
-7. Run the `get logical-router` command again on the SSH session of the Edge VM. The UUID of the 'DR-Provider-LR' logical router is displayed. Make a note of the UUID, which is required when configuring the L2VPN.
+7. 在边缘 VM 的 SSH 会话上再次运行 `get logical-router` 命令。 显示 "DR-Provider-LR" 逻辑路由器的 UUID。 记下在配置 L2VPN 时需要的 UUID。
 
-    ![get logical-router output](media/l2vpn-fetch06.png)
+    ![获取逻辑路由器输出](media/l2vpn-fetch06.png)
 
-## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Fetch the logical-switch ID needed for L2VPN
+## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑交换机 ID
 
-1. Sign in to [NSX-T Manager](https://nsx-t-manager-ip-address).
-2. Select **Networking** > **Switching** > **Switches** >  **<\Logical switch\>**  > **Overview**.
-3. Make a note of the UUID of the stretch logical switch, which is required when configuring the L2VPN.
+1. 登录到 " [NSX-T 管理器](https://nsx-t-manager-ip-address)"。
+2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。 > 
+3. 记下 stretch 逻辑交换机的 UUID，在配置 L2VPN 时需要用到它。
 
-    ![get logical-router output](media/l2vpn-fetch-switch01.png)
+    ![获取逻辑路由器输出](media/l2vpn-fetch-switch01.png)
 
-## <a name="routing-and-security-considerations-for-l2vpn"></a>Routing and security considerations for L2VPN
+## <a name="routing-and-security-considerations-for-l2vpn"></a>L2VPN 的路由和安全注意事项
 
-To establish an IPsec route-based VPN between the NSX-T Tier0 router and the standalone NSX Edge client, the loopback interface of the NSX-T Tier0 router must be able to communicate with the public IP address of NSX standalone client on-premises over UDP 500/4500.
+若要在 NSX-T Tier0 路由器与独立的 NSX 边缘客户端之间建立基于 IPsec 路由的 VPN，则必须能够通过 UDP 500/4500 与本地的 NSX 独立客户端公共 IP 地址进行通信。
 
-### <a name="allow-udp-5004500-for-ipsec"></a>Allow UDP 500/4500 for IPsec
+### <a name="allow-udp-5004500-for-ipsec"></a>允许 UDP 500/4500 for IPsec
 
-1. [Create a public IP address](public-ips.md) for the NSX-T Tier0 loopback interface in the CloudSimple portal.
+1. 在 CloudSimple 门户中创建 Tier0 环回接口的[公共 IP 地址](public-ips.md)。
 
-2. [Create a firewall table](firewall.md) with stateful rules that allow UDP 500/ 4500 inbound traffic and attach the firewall table to the NSX-T HostTransport subnet.
+2. 创建具有允许 UDP 500/4500 入站流量并将防火墙表附加到 NSX-T HostTransport 子网的有状态规则的[防火墙表](firewall.md)。
 
-### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Advertise the loopback interface IP to the underlay network
+### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>将环回接口 IP 播发到是网络
 
-1. Create a null route for the loopback interface network. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Static Routes**. 单击“添加”。 For **Network**, enter the loopback interface IP address. For **Next Hops**, click **Add**, specify 'Null' for the next hop, and keep the default of 1 for Admin Distance.
+1. 为环回接口网络创建空路由。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供程序-LR** > **路由** > **静态路由**。 单击“添加”。 对于 "**网络**"，请输入环回接口 IP 地址。 对于 "**下一**跃点"，单击 "**添加**"，为下一个跃点指定 "Null"，并保留默认值1进行管理距离。
 
-    ![Add static route](media/l2vpn-routing-security01.png)
+    ![添加静态路由](media/l2vpn-routing-security01.png)
 
-2. Create an IP prefix list. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **IP Prefix Lists**. 单击“添加”。 Enter a name to identify the list. For **Prefixes**, click **Add** twice. In the first line, enter '0.0.0.0/0' for **Network** and 'Deny' for **Action**. In the second line, select **Any** for **Network** and **Permit** for **Action**.
-3. Attach the IP prefix list to both BGP neighbors (TOR). Attaching the IP prefix list to the BGP neighbor prevents the default route from being advertised in BGP to the TOR switches. However, any other route that includes the null route will advertise the loopback interface IP address to the TOR switches.
+2. 创建 IP 前缀列表。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **IP 前缀列表**。 单击“添加”。 输入名称以标识列表。 对于**前缀**，单击 "**添加**两次"。 在第一行中，输入 "0.0.0.0/0" 作为**网络**，为 "拒绝" 输入**操作**。 在第二行中，**选择**"**网络**" 和 "**允许** **操作**"。
+3. 将 IP 前缀列表附加到这两个 BGP 邻居（TOR）。 将 IP 前缀列表附加到 BGP 邻居可防止将默认路由播发到 TOR 交换机的 BGP。 但是，任何其他包含空路由的路由都将向 TOR 交换机公布环回接口 IP 地址。
 
-    ![Create IP prefix list](media/l2vpn-routing-security02.png)
+    ![创建 IP 前缀列表](media/l2vpn-routing-security02.png)
 
-4. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **BGP** > **Neighbors**. Select the first neighbor. Click **Edit** > **Address Families**. For the IPv4 family, Edit the **Out Filter** column and select the IP prefix list that you created. 单击“保存”。 Repeat this step for the second neighbor.
+4. 登录到 "NSX-T 管理器"，并选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** ** > " > ** **邻居**"。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击“ **保存**”。 对第二个邻居重复此步骤。
 
-    ![Attach IP prefix list 1](media/l2vpn-routing-security03.png) ![Attach IP prefix list 2](media/l2vpn-routing-security04.png)
+    ![附加 IP 前缀列表 1](media/l2vpn-routing-security03.png) ![附加 IP 前缀列表 2](media/l2vpn-routing-security04.png)
 
-5. Redistribute the null static route into BGP. To advertise the loopback interface route to the underlay, you must redistribute the null static route into BGP. Sign in to NSX-T Manager and select **Networking** > **Routing** > **Routers** > **Provider-LR** > **Routing** > **Route Redistribution** > **Neighbors**. Select **Provider-LR-Route_Redistribution** and click **Edit**. Select the **Static** checkbox and click **Save**.
+5. 将空静态路由重新分发到 BGP。 若要将环回接口路由播发到是，必须将空静态路由重新分发到 BGP。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **邻居** > **路由重新分发**。 选择 "**提供程序-LR-Route_Redistribution** "，然后单击 "**编辑**"。 选中 "**静态**" 复选框，然后单击 "**保存**"。
 
-    ![Redistribute null static route into BGP](media/l2vpn-routing-security05.png)
+    ![将空静态路由重新分发到 BGP](media/l2vpn-routing-security05.png)
 
-## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Configure a route-based VPN on the NSX-T Tier0 router
+## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>在 Tier0 路由器上配置基于路由的 VPN
 
-Use the following template to fill in all the details for configuring a route-based VPN on the NSX-T Tier0 router. The UUIDs in each POST call are required in subsequent POST calls. The IP addresses for the loopback and tunnel interfaces for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks.
+使用以下模板填写在 Tier0 路由器上配置基于路由的 VPN 的所有详细信息。 后续的 POST 调用中需要每个 POST 调用中的 Uuid。 L2VPN 环回和隧道接口的 IP 地址必须唯一，并且不与本地或私有云网络重叠。
 
-The IP addresses chosen for loopback and tunnel interface used for L2VPN must be unique and not overlap with the on-premises or Private Cloud networks. The loopback interface network must always be /32.
+为用于 L2VPN 的环回和隧道接口选择的 IP 地址必须是唯一的，且不能与本地或私有云网络重叠。 环回接口网络必须始终为/32。
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -195,9 +195,9 @@ Logical-Port ID :
 Peer Code :
 ```
 
-For all of the following API calls, replace the IP address with your NSX-T Manager IP address. You can run all these API calls from the POSTMAN client or by using `curl` commands.
+对于以下所有 API 调用，请将 IP 地址替换为你的 NSX-T 管理器 IP 地址。 可以从 POSTMAN 客户端或使用 `curl` 命令运行所有这些 API 调用。
 
-### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>Enable the IPSec VPN service on the logical router
+### <a name="enable-the-ipsec-vpn-service-on-the-logical-router"></a>在逻辑路由器上启用 IPSec VPN 服务
 
 ```
 POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
@@ -211,7 +211,7 @@ POST   https://192.168.110.201/api/v1/vpn/ipsec/services/
 }
 ```
 
-### <a name="create-profiles-ike"></a>Create profiles: IKE
+### <a name="create-profiles-ike"></a>创建配置文件： IKE
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
@@ -228,7 +228,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/ike-profiles
 }
 ```
 
-### <a name="create-profiles-dpd"></a>Create profiles: DPD
+### <a name="create-profiles-dpd"></a>创建配置文件： DPD
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles  
@@ -240,7 +240,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/dpd-profiles
 }
 ```
 
-### <a name="create-profiles-tunnel"></a>Create profiles: Tunnel
+### <a name="create-profiles-tunnel"></a>创建配置文件：隧道
 
 ```
 POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
@@ -259,7 +259,7 @@ POST  https://192.168.110.201/api/v1/vpn/ipsec/tunnel-profiles
 }
 ```
 
-### <a name="create-a-local-endpoint"></a>Create a local endpoint
+### <a name="create-a-local-endpoint"></a>创建本地终结点
 
 ``` 
 POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
@@ -277,7 +277,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/local-endpoints
 }
 ```
 
-### <a name="create-a-peer-endpoint"></a>Create a peer endpoint
+### <a name="create-a-peer-endpoint"></a>创建对等终结点
 
 ```
 POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
@@ -297,7 +297,7 @@ POST https://192.168.110.201/api/v1/vpn/ipsec/peer-endpoints
 }
 ```
 
-### <a name="create-a-route-based-vpn-session"></a>Create a route-based VPN session
+### <a name="create-a-route-based-vpn-session"></a>创建基于路由的 VPN 会话
 
 ```
 POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
@@ -323,9 +323,9 @@ POST :  https://192.168.110.201/api/v1/vpn/ipsec/sessions
 }
 ```
 
-## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>Configure L2VPN on NSX-T Tier0 router
+## <a name="configure-l2vpn-on-nsx-t-tier0-router"></a>在 NSX-T Tier0 路由器上配置 L2VPN
 
-Fill in the following information after every POST call. The IDs are required in subsequent POST calls.
+请在每次发布呼叫之后填写以下信息。 后续的 POST 调用中需要 Id。
 
 ```
 L2VPN Service ID:
@@ -333,15 +333,15 @@ L2VPN Session ID:
 Logical Port ID:
 ```
 
-### <a name="create-the-l2vpn-service"></a>Create the L2VPN service
+### <a name="create-the-l2vpn-service"></a>创建 L2VPN 服务
 
-The output of the following GET command will be blank, because the configuration is not complete yet.
+以下 GET 命令的输出将为空，因为配置尚未完成。
 
 ```
 GET : https://192.168.110.201/api/v1/vpn/l2vpn/services
 ```
 
-For the following POST command, the logical router ID is the UUID of the Tier0 DR logical router obtained earlier.
+对于以下 POST 命令，逻辑路由器 ID 是之前获得的 Tier0 DR 逻辑路由器的 UUID。
 
 ```
 POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
@@ -352,9 +352,9 @@ POST : https://192.168.110.201/api/v1/vpn/l2vpn/services
 }
 ```
 
-### <a name="create-the-l2vpn-session"></a>Create the L2VPN session
+### <a name="create-the-l2vpn-session"></a>创建 L2VPN 会话
 
-For the following POST command, the L2VPN service ID is the ID that you just obtained and the IPsec VPN session ID is the ID obtained in the previous section.
+对于以下 POST 命令，L2VPN service ID 是刚刚获得的 ID，IPsec VPN 会话 ID 是在上一节中获取的 ID。
 
 ``` 
 POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
@@ -368,7 +368,7 @@ POST: https://192.168.110.201/api/v1/vpn/l2vpn/sessions
 }
 ```
 
-These calls create a GRE tunnel endpoint. To check the status, run the following command.
+这些调用会创建一个 GRE 隧道终结点。 若要检查状态，请运行以下命令。
 
 ```
 edge-2> get tunnel-port
@@ -391,7 +391,7 @@ REMOTE      : 192.168.140.156
 ENCAP       : GENEVE
 ```
 
-### <a name="create-logical-port-with-the-tunnel-id-specified"></a>Create logical port with the tunnel ID specified
+### <a name="create-logical-port-with-the-tunnel-id-specified"></a>创建具有指定的隧道 ID 的逻辑端口
 
 ```
     POST https://192.168.110.201/api/v1/logical-ports/
@@ -412,70 +412,70 @@ ENCAP       : GENEVE
         }
 ```
 
-## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Obtain the peer code for L2VPN on the NSX-T side
+## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>获取 NSX 端的 L2VPN 的对等代码
 
-Obtain the peer code of the NSX-T endpoint. The peer code is required when configuring the remote endpoint. The L2VPN <session-id> can be obtained from the previous section. For more information, see the [NSX-T 2.3 API Guide](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
+获取 NSX-T 终结点的对等代码。 配置远程终结点时需要对等方代码。 可以从上一节中获取 L2VPN < 会话 id >。 有关详细信息，请参阅[NSX-T 2.3 API 指南](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)。
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 ```
 
-## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Deploy the NSX-T standalone client (on-premises)
+## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>部署 NSX-T 独立客户端（本地）
 
-Before deploying, verify that your on-premises firewall rules allow inbound and outbound UDP 500/4500 traffic from/to the CloudSimple public IP address that was reserved earlier for the NSX-T T0 router loopback interface. 
+在部署之前，请验证本地防火墙规则是否允许入站和出站 UDP 500/4500 流量发送到之前为 CloudSimple 公共 IP 地址，该地址已为 NSX-T T0 路由器环回接口预留。 
 
-1. [Download the Standalone NSX Edge Client](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF and Extract the files from the downloaded bundle into a folder.
+1. [下载独立的 NSX 边缘客户端](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230)OVF 并将下载的捆绑包中的文件提取到文件夹中。
 
-    ![Download standalone NSX Edge client](media/l2vpn-deploy-client01.png)
+    ![下载独立的 NSX 边缘客户端](media/l2vpn-deploy-client01.png)
 
-2. Go to the folder with all the extracted files. Select all the vmdks (NSX-l2t-client-large.mf and NSX-l2t-client-large.ovf for large appliance size or NSX-l2t-client-Xlarge.mf and NSX-l2t-client-Xlarge.ovf for extra large size appliance size). 单击“下一步”。
+2. 前往包含所有已提取文件的文件夹。 为大设备大小选择所有 vmdk （l2t 和 NSX-l2t-client-large），并选择 ""，并选择 ""，为超大大小的设备调整和 l2t。 单击“下一步”。
 
-    ![Select template](media/l2vpn-deploy-client02.png) ![Select template](media/l2vpn-deploy-client03.png)
+    ![选择模板](media/l2vpn-deploy-client02.png) ![选择模板 "](media/l2vpn-deploy-client03.png)
 
-3. Enter a name for the NSX-T standalone client and click **Next**.
+3. 输入 "NSX-T 独立客户端" 的名称，然后单击 "**下一步**"。
 
-    ![Enter template name](media/l2vpn-deploy-client04.png)
+    ![输入模板名称](media/l2vpn-deploy-client04.png)
 
-4. Click **Next** as needed to reach the datastore settings. Select the appropriate datastore for NSX-T standalone client and click **Next**.
+4. 根据需要单击 "**下一步**" 以访问数据存储设置。 选择适用于 NSX-T 独立客户端的数据存储，然后单击 "**下一步**"。
 
-    ![Select datastore](media/l2vpn-deploy-client06.png)
+    ![选择数据存储](media/l2vpn-deploy-client06.png)
 
-5. Select the correct port groups for Trunk (Trunk PG), Public (Uplink PG) and HA interface (Uplink PG) for the NSX-T standalone client. 单击“下一步”。
+5. 为 NSX-T 独立客户端选择正确的端口组（干线 PG）、公用（上行 PG）和 HA 接口（上行 PG）。 单击“下一步”。
 
-    ![Select port groups](media/l2vpn-deploy-client07.png)
+    ![选择端口组](media/l2vpn-deploy-client07.png)
 
-6. Fill the following details in the **Customize template** screen and click **Next**:
+6. 在 "**自定义模板**" 屏幕中填写以下详细信息，然后单击 "**下一步**"：
 
-    Expand L2T:
+    展开 L2T：
 
-    * **Peer Address**. Enter the IP address reserved on Azure CloudSimple portal for NSX-T Tier0 Loopback interface.
-    * **Peer Code**. Paste the peer code obtained from the last step of L2VPN Server deployment.
-    * **Sub Interfaces VLAN (Tunnel ID)** . Enter the VLAN ID to be stretched. In parentheses (), enter the tunnel ID that was previously configured.
+    * **对等地址**。 输入用于 NSX-T Tier0 环回接口的 Azure CloudSimple 门户上保留的 IP 地址。
+    * **对等代码**。 粘贴从 L2VPN Server 部署的最后一个步骤中获取的对等代码。
+    * **子接口 VLAN （隧道 ID）** 。 输入要拉伸的 VLAN ID。 在括号（）中，输入以前配置的隧道 ID。
 
-    Expand Uplink Interface:
+    展开上行接口：
 
-    * **DNS IP Address**. Enter the on-premises DNS IP address.
-    * **Default Gateway**.  Enter the default gateway of the VLAN that will act as a default gateway for this client.
-    * **IP Address**. Enter the uplink IP address of the standalone client.
-    * **Prefix Length**. Enter the prefix length of the uplink VLAN/subnet.
-    * **CLI admin/enable/root User Password**. Set the password for admin /enable /root account.
+    * **DNS IP 地址**。 输入本地 DNS IP 地址。
+    * **默认网关**。  输入 VLAN 的默认网关，该网关将充当此客户端的默认网关。
+    * **IP 地址**。 输入独立客户端的上行 IP 地址。
+    * **前缀长度**。 输入上行 VLAN/子网的前缀长度。
+    * **CLI 管理员/启用/根用户密码**。 设置管理员/enable/root 帐户的密码。
 
-      ![Customize template](media/l2vpn-deploy-client08.png)
-      ![Customize template - more](media/l2vpn-deploy-client09.png)
+      ![自定义模板](media/l2vpn-deploy-client08.png)
+      ![自定义模板-更多](media/l2vpn-deploy-client09.png)
 
-7. Review the settings and click **Finish**.
+7. 查看设置，然后单击 "**完成**"。
 
-    ![Complete configuration](media/l2vpn-deploy-client10.png)
+    ![完成配置](media/l2vpn-deploy-client10.png)
 
-## <a name="configure-an-on-premises-sink-port"></a>Configure an on-premises sink port
+## <a name="configure-an-on-premises-sink-port"></a>配置本地接收器端口
 
-If one of the VPN sites doesn't have NSX deployed, you can configure an L2 VPN by deploying a standalone NSX Edge at that site. A standalone NSX Edge is deployed using an OVF file on a host that is not managed by NSX. This deploys an NSX Edge Services Gateway appliance to function as an L2 VPN client.
+如果某个 VPN 站点未部署 NSX，则可以通过在该站点上部署独立的 NSX 边缘来配置 L2 VPN。 独立的 NSX 边缘是使用不由 NSX 管理的主机上的 OVF 文件部署的。 这会部署一个 NSX Edge 服务网关设备，作为 L2 VPN 客户端。
 
-If a standalone edge trunk vNIC is connected to a vSphere Distributed Switch, either promiscuous mode or a sink port is required for L2 VPN function. Using promiscuous mode can cause duplicate pings and duplicate responses. For this reason, use sink port mode in the L2 VPN standalone NSX Edge configuration. See the [Configure a sink port](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html) in the VMware documentation.
+如果独立边缘的干线 vNIC 连接到 vSphere 分布式交换机，则可以使用混杂模式，也可以使用接收器端口进行 L2 VPN 功能。 使用混杂模式可能会导致重复的 ping 和重复的响应。 出于此原因，请在 L2 VPN 独立的 NSX 边缘配置中使用接收器端口模式。 请参阅 VMware 文档中的[配置接收器端口](https://docs.vmware.com/en/VMware-NSX-Data-Center-for-vSphere/6.4/com.vmware.nsx.admin.doc/GUID-3CDA4346-E692-4592-8796-ACBEEC87C161.html)。
 
-## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN and L2VPN verification
+## <a name="ipsec-vpn-and-l2vpn-verification"></a>IPsec VPN 和 L2VPN 验证
 
-Use the following commands to verify IPsec and L2VPN sessions from standalone NSX-T Edge.
+使用以下命令从独立的 NSX-T 边缘验证 IPsec 和 L2VPN 会话。
 
 ```
 nsx-l2t-edge> show service ipsec
@@ -502,7 +502,7 @@ SITENAME                       IPSECSTATUS          VTI                  GRE
 1ecb00fb-a538-4740-b788-c9049e8cb6c6 UP                   vti-100              l2t-1
 ```
 
-Use the following commands to verify IPsec and L2VPN sessions from the NSX-T Tier0 router.
+使用以下命令从 NSX-T Tier0 路由器验证 IPsec 和 L2VPN 会话。
 
 ```
 edge-2> get ipsecvpn session
@@ -531,7 +531,7 @@ IPSEC Session : 1ecb00fb-a538-4740-b788-c9049e8cb6c6
 Status        : UP
 ```
 
-Use the following commands to verify the sink port on the ESXi host where the NSX-T standalone client VM resides in the on-premises environment.
+使用以下命令验证 ESXi 主机上的接收器端口，其中，NSX-T 独立客户端 VM 位于本地环境中。
 
 ```
  [root@esxi02:~] esxcfg-vswitch -l |grep NSX

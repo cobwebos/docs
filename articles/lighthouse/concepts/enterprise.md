@@ -24,7 +24,7 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 跨多个租户集中处理管理操作时，需要确定哪个租户包含要对其他租户执行管理操作的用户。 换言之，需要确定哪个租户是其他租户的管理租户。
 
-For example, say your organization has a single tenant that we’ll call *Tenant A*. Your organization then acquires two additional tenants, *Tenant B* and *Tenant C*, and you have business reasons that require you to maintain them as separate tenants.
+例如，假设你的组织有一个租户，我们将调用*租户 a*。然后，你的组织会获得两个其他租户：*租户 B*和*租户 C*，你的业务理由要求你将它们维护为单独的租户。
 
 你的组织希望在所有租户中使用相同的策略定义、备份实践和安全流程。 由于已有用户（包括用户组和服务主体）负责在租户 A 中执行这些任务，因此，你可以登记租户 B 和租户 C 中的所有订阅，使租户 A 中的这些用户可以执行这些任务。
 

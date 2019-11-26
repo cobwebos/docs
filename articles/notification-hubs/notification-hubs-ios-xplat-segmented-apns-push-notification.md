@@ -29,11 +29,11 @@ ms.locfileid: "74228167"
 
 ## <a name="overview"></a>概述
 
-本教程演示如何使用 Azure 通知中心将突发新闻通知广播到 iOS 应用。 完成后，可注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用来说是常见模式，在这些应用中必须将通知发送到以前声明过对它们感兴趣的用户组，这样的应用包括 RSS 阅读器、针对音乐迷的应用等。
+本教程演示如何使用 Azure 通知中心将突发新闻通知广播到 iOS 应用。 完成后，可注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。 此方案对于很多应用来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用有 RSS 阅读器、针对音乐迷的应用等。
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标记时，已注册该标记的设备会接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
-在本教程中，我们将执行以下步骤：
+在本教程中，请执行以下步骤：
 
 > [!div class="checklist"]
 > * 向应用中添加类别选择
@@ -41,9 +41,9 @@ ms.locfileid: "74228167"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-This topic builds on the app you created in [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started]. Before starting this tutorial, you must have already completed [Tutorial: Push notifications to iOS apps using Azure Notification Hubs][get-started].
+本主题基于在[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]中创建的应用。 开始本教程之前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -75,7 +75,7 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
     - (IBAction)subscribe:(id)sender;
     ```
 
-4. 创建名为 `Notifications` 的新 **Cocoa Touch 类**。 在文件 Notifications.h 的接口部分中复制以下代码：
+4. 创建名为 **的新**Cocoa Touch 类`Notifications`。 在文件 Notifications.h 的接口部分中复制以下代码：
 
     ```objc
     @property NSData* deviceToken;
@@ -146,8 +146,8 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
     @property (nonatomic) Notifications* notifications;
     ```
 
-8. 在 `AppDelegate.m` 中的 `didFinishLaunchingWithOptions` 方法开头，添加用于初始化 notifications 实例的代码。  
-    在 `hubinfo.h` 中定义的 `HUBNAME` 和 `HUBLISTENACCESS` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串
+8. 在 `didFinishLaunchingWithOptions` 中的 `AppDelegate.m` 方法开头，添加用于初始化 notifications 实例的代码。  
+    在 `HUBNAME` 中定义的 `HUBLISTENACCESS` 和 `hubinfo.h` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -156,7 +156,7 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
     > [!NOTE]
     > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
-9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
+9. 将 `didRegisterForRemoteNotificationsWithDeviceToken` 中 `AppDelegate.m` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
 
     > [!NOTE]
     > 由于 Apple Push Notification 服务 (APNS) 分配的设备标记随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
@@ -177,7 +177,7 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
 
     此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. The following methods should already be present in `AppDelegate.m` from completing the [Get started with Notification Hubs][get-started] tutorial. 否则，请添加这些方法。
+10. 完成`AppDelegate.m`通知中心入门[教程后，以下方法应已存在于 ][get-started] 中。 否则，请添加这些方法。
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -197,7 +197,7 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
 
     此方法通过显示简单的 **UIAlert** 处理运行应用程序时收到的通知。
 
-11. 在 `ViewController.m` 中，为 `AppDelegate.h` 添加 `import` 语句，并将以下代码复制到 XCode 生成的 `subscribe` 方法中。 此代码会更新通知注册，使用用户在用户界面中选择的新类别标记。
+11. 在 `ViewController.m` 中，为 `import` 添加 `AppDelegate.h` 语句，并将以下代码复制到 XCode 生成的 `subscribe` 方法中。 此代码会更新通知注册，使用用户在用户界面中选择的新类别标记。
 
     ```objc
     #import "Notifications.h"
@@ -253,7 +253,7 @@ This topic builds on the app you created in [Tutorial: Push notifications to iOS
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
 
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 To do so, you update the `SendNotificationRESTAPI` method that you defined in the [Get started with Notification Hubs][get-started] tutorial.
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需更新`SendNotificationRESTAPI`通知中心入门[教程中定义的 ][get-started] 方法。
 
 1. 在 `ViewController.m` 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
 

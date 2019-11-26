@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Blockchain Service consortium members - PowerShell
-description: Learn how to manage Azure Blockchain Service consortium members by using Azure PowerShell.
+title: 管理 Azure 区块链服务联合会成员-PowerShell
+description: 了解如何使用 Azure PowerShell 管理 Azure 区块链 Service 联合会成员。
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: zeyadr
@@ -11,43 +11,43 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455547"
 ---
-# <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Manage consortium members in Azure Blockchain Service using PowerShell
+# <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>使用 PowerShell 管理 Azure 区块链服务中的联合会成员
 
-You can use PowerShell to manage blockchain consortium members for your Azure Blockchain Service. Members who have administrator privileges can invite, add, remove, and change roles for all participants in the blockchain consortium. Members who have user privileges can view all participants in the blockchain consortium and change their member display name.
+你可以使用 PowerShell 来管理 Azure 区块链服务的区块链联合会成员。 具有管理员权限的成员可以邀请、添加、删除和更改区块链联合会中所有参与者的角色。 具有用户权限的成员可以查看区块链联合会中的所有参与者并更改其成员显示名称。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Create a blockchain member by using the [Azure portal](create-member.md).
-* For more information about consortia, members, and nodes, see [Azure Blockchain Service consortium](consortium.md).
+* 使用[Azure 门户](create-member.md)创建区块链成员。
+* 有关 consortia、成员和节点的详细信息，请参阅[Azure 区块链 Service 联合会](consortium.md)。
 
 ## <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。
 
-You can also open Cloud Shell in a separate browser tab by going to [shell.azure.com/powershell](https://shell.azure.com/powershell). Select **Copy** to copy the blocks of code, paste it into Cloud Shell, and select **Enter** to run it.
+你还可以通过转到[shell.azure.com/powershell](https://shell.azure.com/powershell)在单独的浏览器选项卡中打开 Cloud Shell。 选择 "**复制**" 以复制代码块，将其粘贴到 Cloud Shell 中，然后选择 " **Enter** " 以运行。
 
-## <a name="install-the-powershell-module"></a>Install the PowerShell module
+## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
-Install the Microsoft.AzureBlockchainService.ConsortiumManagement.PS package from the PowerShell Gallery.
+从 PowerShell 库安装 Microsoft.AzureBlockchainService.ConsortiumManagement.PS 包。
 
 ```powershell-interactive
 Install-Module -Name Microsoft.AzureBlockchainService.ConsortiumManagement.PS -Scope CurrentUser
 Import-Module Microsoft.AzureBlockchainService.ConsortiumManagement.PS
 ```
 
-## <a name="set-the-information-preference"></a>Set the information preference
+## <a name="set-the-information-preference"></a>设置信息首选项
 
-You can get more information when executing the cmdlets by setting the information preference variable. By default, *$InformationPreference* is set to *SilentlyContinue*.
+通过设置信息首选项变量，可以在执行 cmdlet 时获取详细信息。 默认情况下， *$InformationPreference*设置为*SilentlyContinue*。
 
-For more verbose information from cmdlets, set the preference in the PowerShell as follows:
+有关 cmdlet 的详细信息，请按如下所示在 PowerShell 中设置首选项：
 
 ```powershell-interactive
 $InformationPreference = 'Continue'
 ```
 
-## <a name="establish-a-web3-connection"></a>Establish a Web3 connection
+## <a name="establish-a-web3-connection"></a>建立 Web3 连接
 
-To manage consortium members, establish a Web3 connection to your Blockchain Service member endpoint. You can use this script to set global variables for calling the consortium management cmdlets.
+若要管理协会成员，请建立到区块链服务成员终结点的 Web3 连接。 您可以使用此脚本设置全局变量，以便调用联合会管理 cmdlet。
 
 ```powershell-interactive
 $Connection = New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
@@ -55,38 +55,38 @@ $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account addr
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
 ```
 
-Replace *\<Member account password\>* with the member account password that you used when you created the member.
+将 *\<成员帐户密码\>* 替换为在创建成员时使用的成员帐户密码。
 
-Find the other values in the Azure portal:
+在 Azure 门户中查找其他值：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. Go to your default Blockchain Service member **Overview** page.
+1. 请参阅默认区块链服务成员**概述**页。
 
-    ![Member overview](./media/manage-consortium-powershell/member-overview.png)
+    ![成员概述](./media/manage-consortium-powershell/member-overview.png)
 
-    Replace *\<Member account\>* and *\<RootContract address\>* with the values from the portal.
+    将 *\<成员帐户\>* 和 *\<RootContract address\>* 替换为门户中的值。
 
-1. For the endpoint address, select **Transaction nodes**, and then select the **default transaction node**. The default node has the same name as the blockchain member.
+1. 对于终结点地址，请选择 "**事务节点**"，然后选择 "**默认事务" 节点**。 默认节点的名称与区块链成员的名称相同。
 1. 选择“连接字符串”。
 
     ![连接字符串](./media/manage-consortium-powershell/connection-strings.png)
 
-    Replace *\<Endpoint address\>* with the value from **HTTPS (Access key 1)** or **HTTPS (Access key 2)** .
+    将 *\<终结点地址\>* 替换为**https （访问密钥1）** 或**https （访问密钥2）** 中的值。
 
-## <a name="manage-the-network-and-smart-contracts"></a>Manage the network and smart contracts
+## <a name="manage-the-network-and-smart-contracts"></a>管理网络和智能协定
 
-Use the network and smart contract cmdlets to establish a connection to the blockchain endpoint's smart contracts responsible for consortium management.
+使用网络和智能协定 cmdlet 建立与区块链终结点的智能协定（负责联盟管理）的连接。
 
 ### <a name="import-consortiummanagementcontracts"></a>Import-ConsortiumManagementContracts
 
-Use this cmdlet to connect to the consortium management's smart contracts. These contracts are used to manage and enforce members within the consortium.
+使用此 cmdlet 连接到联盟管理的智能协定。 这些协定用于管理和强制联盟中的成员。
 
 `Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| RootContractAddress | Root contract address of the consortium management smart contracts | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| RootContractAddress | 联盟管理智能协定的根协定地址 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -96,14 +96,14 @@ Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address
 
 ### <a name="import-web3account"></a>Import-Web3Account
 
-Use this cmdlet to create an object to hold the information for a remote node's management account.
+使用此 cmdlet 创建一个对象，用于保存远程节点的管理帐户的信息。
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | Blockchain member account address | 是 |
-| ManagedAccountPassword | Account address password | 是 |
+| ManagedAccountAddress | 区块链成员帐户地址 | 是 |
+| ManagedAccountPassword | 帐户地址密码 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -111,15 +111,15 @@ Use this cmdlet to create an object to hold the information for a remote node's 
 Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAccountPassword '<Member account password>'
 ```
 
-### <a name="new-web3connection"></a>New-Web3Connection
+### <a name="new-web3connection"></a>新-Web3Connection
 
-Use this cmdlet to establish a connection to the RPC endpoint of a transaction node.
+使用此 cmdlet 建立与事务节点的 RPC 终结点的连接。
 
 `New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| RemoteRPCEndpoint | Blockchain member endpoint address | 是 |
+| RemoteRPCEndpoint | 区块链成员终结点地址 | 是 |
 
 #### <a name="example"></a>示例
 
@@ -127,25 +127,25 @@ Use this cmdlet to establish a connection to the RPC endpoint of a transaction n
 New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 ```
 
-## <a name="manage-the-consortium-members"></a>Manage the consortium members
+## <a name="manage-the-consortium-members"></a>管理协会成员
 
-Use consortium member management cmdlets to manage members within the consortium. The available actions depend on your consortium role.
+使用联合会成员管理 cmdlet 管理联盟中的成员。 可用操作取决于你的联盟角色。
 
 ### <a name="get-blockchainmember"></a>Get-BlockchainMember
 
-Use this cmdlet to get member details or list members of the consortium.
+使用此 cmdlet 可获取联盟的成员详细信息或列表成员。
 
 `Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| 名称 | The name of the Blockchain Service member that you want to retrieve details about. When a name is entered, it returns the member's details. When a name is omitted, it returns a list of all consortium members. | No |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| 名称 | 要检索其详细信息的区块链服务成员的名称。 输入名称后，将返回成员的详细信息。 省略名称时，它将返回所有 "联盟" 成员的列表。 | 否 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection variable.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 变量。
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMember -Name <Member Name>
@@ -164,20 +164,20 @@ Role           : ADMIN
 
 ### <a name="remove-blockchainmember"></a>Remove-BlockchainMember
 
-Use this cmdlet to remove a blockchain member.
+使用此 cmdlet 可删除区块链成员。
 
 `Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| 名称 | Member name to remove | 是 |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Account | Web3Account object obtained from Import-Web3Account | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| 名称 | 要删除的成员名称 | 是 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Account | 从 Web3Account 中获取的 Web3Account 对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 和 $MemberAccount 变量。
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $MemberAccount
@@ -185,56 +185,56 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 
 ### <a name="set-blockchainmember"></a>Set-BlockchainMember
 
-Use this cmdlet to set blockchain member attributes, including the display name and the consortium role.
+使用此 cmdlet 设置区块链成员属性，包括显示名称和联盟角色。
 
-Consortium administrators can set **DisplayName** and **Role** for all members. A consortium member with the user role can change only their own member's display name.
+联盟管理员可以为所有成员设置**DisplayName**和**Role** 。 具有用户角色的联合会成员只能更改自己的成员的显示名称。
 
 ```
 Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
  -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| 名称 | Name of the blockchain member | 是 |
-| DisplayName | New display name | No |
-| AccountAddress | Account address | No |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Account | Web3Account object obtained from Import-Web3Account | 是 |
-| Web3Client |  Web3Client object obtained from New-Web3Connection| 是 |
+| 名称 | 区块链成员的名称 | 是 |
+| DisplayName | 新显示名称 | 否 |
+| AccountAddress | 帐户地址 | 否 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Account | 从 Web3Account 中获取的 Web3Account 对象 | 是 |
+| Web3Client |  从 Web3Connection 中获取的 Web3Client 对象| 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 和 $MemberAccount 变量。
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Display name> -Web3Account $MemberAccount
 ```
 
-## <a name="manage-the-consortium-members-invitations"></a>Manage the consortium members' invitations
+## <a name="manage-the-consortium-members-invitations"></a>管理协会成员的邀请
 
-Use the consortium member invitation management cmdlets to manage consortium members' invitations. The available actions depend on your consortium role.
+使用 "联合会成员邀请管理" cmdlet 来管理联合会成员邀请。 可用操作取决于你的联盟角色。
 
 ### <a name="new-blockchainmemberinvitation"></a>New-BlockchainMemberInvitation
 
-Use this cmdlet to invite new members to the consortium.
+使用此 cmdlet 将新成员邀请到联盟。
 
 ```
 New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| SubscriptionId | Azure subscription ID of the member to invite | 是 |
-| 角色 | The consortium role. Values can be ADMIN or USER. ADMIN is the consortium administrator role. USER is the consortium member role. | 是 |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Account | Web3Account object obtained from Import-Web3Account | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| SubscriptionId | 要邀请的成员的 Azure 订阅 ID | 是 |
+| 角色 | 联盟角色。 值可以是 "管理员" 或 "用户"。 管理员是联盟管理员角色。 USER 是联合会成员角色。 | 是 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Account | 从 Web3Account 中获取的 Web3Account 对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 和 $MemberAccount 变量。
 
 ```powershell-interactive
 $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subscription ID> -Role USER -Web3Account $MemberAccount
@@ -242,19 +242,19 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 
 ### <a name="get-blockchainmemberinvitation"></a>Get-BlockchainMemberInvitation
 
-Use this cmdlet to retrieve or list a consortium member's invitation status.
+使用此 cmdlet 可检索或列出联合会成员的邀请状态。
 
 `Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| SubscriptionId | The Azure subscription ID of the member to invite. If the subscription ID is provided, it returns the subscription ID's invitation details. If the subscription ID is omitted, it returns a list of all member invitations. | No |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| SubscriptionId | 要邀请的成员的 Azure 订阅 ID。 如果提供了订阅 ID，它将返回订阅 ID 的邀请详细信息。 如果省略订阅 ID，它将返回所有成员邀请的列表。 | 否 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection variable.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 变量。
 
 ```powershell-interactive
 $ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
@@ -270,23 +270,23 @@ SubscriptionId                       Role CorrelationId
 
 ### <a name="remove-blockchainmemberinvitation"></a>Remove-BlockchainMemberInvitation
 
-Use this cmdlet to revoke a consortium member's invitation.
+使用此 cmdlet 可撤消联合会成员的邀请。
 
 ```
 Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
  -Web3Client <IClient>
 ```
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| SubscriptionId | Azure subscription ID of the member to revoke | 是 |
-| 成员 | Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Account | Web3Account object obtained from Import-Web3Account | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| SubscriptionId | 要撤消的成员的 Azure 订阅 ID | 是 |
+| 成员 | 从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Account | 从 Web3Account 中获取的 Web3Account 对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 和 $MemberAccount 变量。
 
 ```powershell-interactive
 $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscription ID> -Web3Account $MemberAccount
@@ -294,24 +294,24 @@ $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscri
 
 ### <a name="set-blockchainmemberinvitation"></a>Set-BlockchainMemberInvitation
 
-Use this cmdlet to set the **Role** for an existing invitation. Only consortium administrators can change invitations.
+使用此 cmdlet 设置现有邀请的**角色**。 只有联合会管理员才能更改邀请。
 
 ```
 Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
  -Web3Account <IAccount> -Web3Client <IClient>
 ```
 
-| 参数 | 描述 | 需要 |
+| 参数 | 说明 | 必需 |
 |-----------|-------------|:--------:|
-| SubscriptionId | Azure subscription ID of the member to invite | 是 |
-| 角色 | New consortium role for invitation. Values can be **USER** or **ADMIN**. | 是 |
-| 成员 |  Members object obtained from Import-ConsortiumManagementContracts | 是 |
-| Web3Account | Web3Account object obtained from Import-Web3Account | 是 |
-| Web3Client | Web3Client object obtained from New-Web3Connection | 是 |
+| SubscriptionId | 要邀请的成员的 Azure 订阅 ID | 是 |
+| 角色 | 邀请的新联盟角色。 值可以是 " **USER** " 或 " **ADMIN**"。 | 是 |
+| 成员 |  从 ConsortiumManagementContracts 获取的成员对象 | 是 |
+| Web3Account | 从 Web3Account 中获取的 Web3Account 对象 | 是 |
+| Web3Client | 从 Web3Connection 中获取的 Web3Client 对象 | 是 |
 
 #### <a name="example"></a>示例
 
-[Establish a Web3 connection](#establish-a-web3-connection) to set the $ContractConnection and $MemberAccount variables.
+[建立 Web3 连接](#establish-a-web3-connection)以设置 $ContractConnection 和 $MemberAccount 变量。
 
 ```powershell-interactive
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount
@@ -319,4 +319,4 @@ $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subs
 
 ## <a name="next-steps"></a>后续步骤
 
-For more information about consortia, members, and nodes, see [Azure Blockchain Service consortium](consortium.md)
+有关 consortia、成员和节点的详细信息，请参阅[Azure 区块链 Service 联合会](consortium.md)

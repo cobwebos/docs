@@ -1,6 +1,6 @@
 ---
 title: 异地复制注册表
-description: Get started creating and managing a geo-replicated Azure container registry, which enables the registry to serve multiple regions with multi-master regional replicas.
+description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个具有多主机区域副本的区域提供服务。
 author: stevelas
 ms.topic: article
 ms.date: 08/16/2019
@@ -61,7 +61,7 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
-配置异地复制就如在地图上单击区域一样简单。 You can also manage geo-replication using tools including the [az acr replication](/cli/azure/acr/replication) commands in the Azure CLI, or deploy a registry enabled for geo-replication with an [Azure Resource Manager template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication).
+配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](/cli/azure/acr/replication) 命令）来管理异地复制，或者使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)部署为异地复制启用的注册表。
 
 异地复制是[高级注册表](container-registry-skus.md)特有的功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.com)中将基本和标准更改为高级：
 
@@ -94,19 +94,19 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 * 异地复制注册表中的每个区域在设置后都是独立的。 Azure 容器注册表 SLA 适用于每个异地复制区域。
 * 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近的区域中的注册表。
 * 将映像或标记更新推送到最近的区域后，Azure 容器注册表需要一些时间将清单和层复制到你选择加入的其余区域。 较大的映像比较小的映像复制所需的时间更长。 映像和标记通过最终一致性模型在复制区域之间进行同步。
-* To manage workflows that depend on push updates to a geo-replicated , we recommend that you configure [webhooks](container-registry-webhook.md) to respond to the push events. 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
+* 若要管理依赖于对异地复制进行推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
 
 ## <a name="delete-a-replica"></a>删除副本
 
-After you've configured a replica for your registry, you can delete it at any time if it's no longer needed. Delete a replica using the Azure portal or other tools such as the [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) command in the Azure CLI.
+为注册表配置副本后，如果不再需要它，可以随时将其删除。 使用 Azure 门户或其他工具（例如 Azure CLI 中的 [az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) 命令）删除副本。
 
-To delete a replica in the Azure portal:
+若要在 Azure 门户中删除副本，请执行以下操作：
 
-1. Navigate to your Azure Container Registry, and select **Replications**.
-1. Select the name of a replica, and select **Delete**. Confirm that you want to delete the replica.
+1. 导航到 Azure 容器注册表，然后选择“复制”。
+1. 选择副本的名称，然后选择“删除”。 确认要删除该副本。
 
 > [!NOTE]
-> You can't delete the registry replica in the *home region* of the registry, that is, the location where you created the registry. You can only delete the home replica by deleting the registry itself.
+> 无法删除注册表的*主区域*（即创建注册表的位置）中的注册表副本。 只能通过删除注册表本身来删除主副本。
 
 ## <a name="geo-replication-pricing"></a>异地复制定价
 

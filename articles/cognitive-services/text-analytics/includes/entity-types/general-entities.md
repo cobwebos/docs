@@ -75,7 +75,7 @@ ms.locfileid: "74284082"
 |----------|----------------------------------------------|
 | 不适用         | 电子邮件地址，例如 `support@contoso.com` |
 
-### <a name="url"></a>代码
+### <a name="url"></a>URL
 
 Internet Url。
 

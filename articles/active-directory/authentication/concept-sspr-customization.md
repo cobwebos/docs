@@ -1,5 +1,5 @@
 ---
-title: Customize self-service password reset - Azure Active Directory
+title: 自定义自助服务密码重置-Azure Active Directory
 description: 用于 Azure AD 自助服务密码重置的自定义选项
 services: active-directory
 ms.service: active-directory
@@ -24,22 +24,22 @@ ms.locfileid: "74381943"
 
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
-Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
+自助式密码重置用户在密码重置门户中有一个“联系管理员”链接可供他们使用。 如果用户选择此链接，它将执行以下两个操作之一：
 
-* If left in the default state:
-   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
-* If customized:
-   * Sends your user to a webpage or email address specified by the administrator for assistance.
+* 如果处于默认状态：
+   * 将向管理员发送电子邮件，请求他们提供更改用户密码的帮助。 请参阅下面的[示例电子邮件](#sample-email)。
+* 如果已自定义：
+   * 将用户发送到管理员指定的网页或电子邮件地址以获得帮助。
 
 > [!TIP]
-> If you customize this, we recommend setting this to something users are already familiar with for support
+> 如果自定义此设置，我们建议将其设置为用户已经熟悉的内容以获得支持
 
 > [!WARNING]
-> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
+> 如果你使用需要密码重置的电子邮件地址和帐户自定义此设置，则用户可能无法请求协助。
 
 ### <a name="sample-email"></a>示例电子邮件
 
-![Sample request to reset email sent to Administrator][Contact]
+![发送给管理员的重置电子邮件的示例请求][Contact]
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
@@ -76,8 +76,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * 用户输入其用户名后
 * 如果用户通过以下方式访问自定义的 URL：
-   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
-   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * 通过将 `whr` 参数传递到密码重置页，如 `https://login.microsoftonline.com/?whr=contoso.com`
+   * 通过将 `username` 参数传递到密码重置页，如 `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页](../fundamentals/customize-branding.md)一文。
 
@@ -90,17 +90,17 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "联系管理员请求帮忙重置密码的电子邮件示例"

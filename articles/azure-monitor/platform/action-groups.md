@@ -18,25 +18,25 @@ ms.locfileid: "74423849"
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
 
-You configure an action to notify a person by email or SMS, they receive a confirmation indicating they have been added to the action group.
+当配置操作来通过电子邮件或短信通知某个人员时，该人员将收到确认，指出其已被添加到操作组。
 
 本文演示如何在 Azure 门户中创建和管理操作组。
 
 每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* **Action type**: The action performed. 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
-* **Details**: The corresponding details that vary by *action type*.
+* **操作类型**：执行的操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
+* **详细信息**：根据*操作类型*变化的相应详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 门户创建操作组
 
-1. In the [Azure portal](https://portal.azure.com), search for and select **Monitor**. The **Monitor** pane consolidates all your monitoring settings and data in one view.
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**监视器**"。 “监视器”窗格将所有监视设置和数据合并到一个视图中。
 
 1. 选择“警报”，然后选择“管理操作”。
 
-    ![Manage Actions button](./media/action-groups/manage-action-groups.png)
+    ![“管理操作”按钮](./media/action-groups/manage-action-groups.png)
     
 1. 选择“添加操作组”，并填写字段。
 
@@ -50,7 +50,7 @@ You configure an action to notify a person by email or SMS, they receive a confi
 
 1. 选择在其中保存操作组的“资源组”。
 
-1. Define a list of actions. Provide the following for each action:
+1. 定义一个操作列表。 为每个操作提供以下信息：
 
     1. 名称：输入此操作的唯一标识符。
 
@@ -58,13 +58,13 @@ You configure an action to notify a person by email or SMS, they receive a confi
 
     1. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
     
-    1. **Common alert schema**: You can choose to enable the [common alert schema](https://aka.ms/commonAlertSchemaDocs), which provides the advantage of having a single extensible and unified alert payload across all the alert services in Azure Monitor.
+    1. **常见的警报架构**：你可以选择启用[常见的警报架构](https://aka.ms/commonAlertSchemaDocs)，该架构提供了在 Azure Monitor 中的所有警报服务之间具有单个可扩展和统一的警报负载的优点。
 
 1. 选择“确定”创建操作组。
 
 ## <a name="manage-your-action-groups"></a>管理操作组
 
-After you create an action group, it's visible in the **Action groups** section of the **Monitor** pane. 选择要管理的操作组：
+创建操作组后，它会显示在“监视器”边栏选项卡的“操作组”部分中。 选择要管理的操作组：
 
 * 添加、编辑或删除操作。
 * 删除操作组。
@@ -72,65 +72,65 @@ After you create an action group, it's visible in the **Action groups** section 
 ## <a name="action-specific-information"></a>特定于操作的信息
 
 > [!NOTE]
-> See [Subscription Service Limits for Monitoring](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) for numeric limits on each of the items below.  
+> 有关以下每项的数值限制，请参阅[用于监视的订阅服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits)。  
 
-### <a name="automation-runbook"></a>Automation Runbook
-Refer to the [Azure subscription service limits](../../azure-subscription-service-limits.md) for limits on Runbook payloads.
+### <a name="automation-runbook"></a>自动化 Runbook
+有关 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../../azure-subscription-service-limits.md)。
 
-You may have a limited number of Runbook actions in an Action Group. 
+一个操作组中可以存在有限数量的 Runbook 操作。 
 
-### <a name="azure-app-push-notifications"></a>Azure app Push Notifications
-You may have a limited number of Azure app actions in an Action Group.
+### <a name="azure-app-push-notifications"></a>Azure 应用推送通知
+一个操作组中可以存在有限数量的 Azure 应用操作。
 
-### <a name="email"></a>电子邮件
+### <a name="email"></a>Email
 将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
+一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-### <a name="email-azure-resource-manager-role"></a>Email Azure Resource Manager Role
-Send email to the members of the subscription's role.
+### <a name="email-azure-resource-manager-role"></a>电子邮件 Azure 资源管理器角色
+向订阅角色的成员发送电子邮件。
 
-You may have a limited number of email actions in an Action Group. See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
+一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-The function keys for Function Apps configured as actions are read through the Functions API, which currently requires v2 function apps to configure the app setting “AzureWebJobsSecretStorageType” to “files”. For more information, see [Changes to Key Management in Functions V2]( https://aka.ms/funcsecrets).
+配置为操作的 Function App 的函数密钥通过函数 API 读取。目前，这需要 v2 函数应用将应用设置“AzureWebJobsSecretStorageType”配置为“files”。 有关详细信息，请参阅 [Functions V2 中对密钥管理的更改]( https://aka.ms/funcsecrets)。
 
-You may have a limited number of Function actions in an Action Group.
+一个操作组中可以存在有限数量的 Function 操作。
 
 ### <a name="itsm"></a>ITSM
 ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-monitor/platform/itsmc-overview.md)。
 
-You may have a limited number of ITSM actions in an Action Group. 
+一个操作组中可以存在有限数量的 ITSM 操作。 
 
-### <a name="logic-app"></a>逻辑应用程序
-You may have a limited number of Logic App actions in an Action Group.
+### <a name="logic-app"></a>逻辑应用
+一个操作组中可以存在有限数量的逻辑应用操作。
 
-### <a name="secure-webhook"></a>Secure Webhook
-**The Secure Webhook functionality is currently in Preview.**
+### <a name="secure-webhook"></a>安全 Webhook
+**安全 Webhook 功能目前为预览版。**
 
-The Action Groups Webhook action enables you to take advantage of Azure Active Directory to secure the connection between your action group and your protected web API (webhook endpoint). The overall workflow for taking advantage of this functionality is described below. For an overview of Azure AD Applications and service principals, see [Microsoft identity platform (v2.0) overview](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+可以通过“操作组 Webhook”操作利用 Azure Active Directory 来保护操作组和受保护 Web API（Webhook 终结点）之间的连接。 利用此功能的完整工作流如下所述。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-1. Create an Azure AD Application for your protected web API. 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
-    - Configure your protected API to be called by a daemon app.
+1. 针对受保护的 Web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview。
+    - 将受保护的 API 配置为通过守护程序应用进行调用。
     
-1. Enable Action Groups to use your Azure AD Application.
+1. 允许操作组使用 Azure AD 应用程序。
 
     > [!NOTE]
-    > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
+    > 你必须是 [Azure AD 应用程序管理员角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员才能执行此脚本。
     
-    - Modify the PowerShell script's Connect-AzureAD call to use your Azure AD Tenant ID.
-    - Modify the PowerShell script's variable $myAzureADApplicationObjectId to use the Object ID of your Azure AD Application
-    - Run the modified script.
+    - 修改 PowerShell 脚本的 Connect-AzureAD 调用，以便使用 Azure AD 租户 ID。
+    - 修改 PowerShell 脚本的变量 $myAzureADApplicationObjectId，以便使用 Azure AD 应用程序的对象 ID。
+    - 运行修改的脚本。
     
-1. Configure the Action Group Secure Webhook action.
-    - Copy the value $myApp.ObjectId from the script and enter it in the Application Object ID field in the Webhook action definition.
+1. 配置操作组保护 Webhook 操作。
+    - 从脚本中复制 $myApp.ObjectId 值，将其输入 Webhook 操作定义的“应用程序对象 ID”字段中。
     
-    ![Secure Webhook action](./media/action-groups/action-groups-secure-webhook.png)
+    ![保护 Webhook 操作](./media/action-groups/action-groups-secure-webhook.png)
 
-#### <a name="secure-webhook-powershell-script"></a>Secure Webhook PowerShell Script
+#### <a name="secure-webhook-powershell-script"></a>保护 Webhook PowerShell 脚本
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -199,18 +199,18 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
 
-### <a name="sms"></a>短信
-See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) and [SMS alert behavior](../../azure-monitor/platform/alerts-sms-behavior.md) for additional important information.
+### <a name="sms"></a>SMS
+有关其他重要信息，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)和[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。
 
-You may have a limited number of SMS actions in an Action Group.  
+一个操作组中可以存在有限数量的短信操作。  
 
 ### <a name="voice"></a>语音
-See the [rate limiting information](./../../azure-monitor/platform/alerts-rate-limiting.md) article.
+请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
-You may have a limited number of Voice actions in an Action Group.
+一个操作组中可以存在有限数量的语音操作。
 
 ### <a name="webhook"></a>Webhook
-Webhooks are retried using the following rules. The webhook call is retried a maximum of 2 times when the following HTTP status codes are returned: 408, 429, 503, 504 or the HTTP endpoint does not respond. 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 After two failures, no action group will call the endpoint for 30 minutes. 
+Webhook 使用以下规则进行重试。 返回以下 HTTP 状态代码时，webhook 调用最多重试2次：408、429、503、504或 HTTP 终结点未响应。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 在失败两次后，操作组在 30 分钟内不会再调用该终结点。 
 
 源 IP 地址范围
  - 13.72.19.232
@@ -229,9 +229,9 @@ Webhooks are retried using the following rules. The webhook call is retried a ma
  - 51.5.148.86
  - 51.5.149.19
 
-To receive updates about changes to these IP addresses, we recommend you configure a Service Health alert, which monitors for Informational notifications about the Action Groups service.
+若要接收有关这些 IP 地址更改的更新，我们建议你配置服务运行状况警报，以监视有关操作组服务的信息通知。
 
-You may have a limited number of Webhook actions in an Action Group.
+一个操作组中可以存在有限数量的 Webhook 操作。
 
 
 

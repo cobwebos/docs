@@ -21,10 +21,10 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74462612"
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析介质 
+# <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体 
 
 > [!IMPORTANT]
-> Review the [retirement plans](media-services-analytics-overview.md#retirement-plans) of some media processors.
+> 查看一些媒体处理器的[停用计划](media-services-analytics-overview.md#retirement-plans)。
 
 ## <a name="overview"></a>概述
 Azure 媒体服务分析是一系列语音和影像组件（具企业规模、合规性、安全性和全球性覆盖），让组织和企业可以从其视频文件中更轻松地获得可操作的见解。 有关 Azure 媒体服务分析的详细概述，请参阅[此](media-services-analytics-overview.md)主题。 
@@ -44,7 +44,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
     本文的其余部分介绍每种处理器的功能和使用方式。 
 5. 按“创建”，开始作业。
 
-## <a name="azure-media-indexer"></a>Azure 媒体索引器
+## <a name="azure-media-indexer"></a>Azure Media Indexer
 通过 **Azure Media Indexer** 媒体处理器，可使媒体文件和内容具有可搜索性并可生成隐藏式字幕跟踪。 本部分提供有关可为此 MP 指定的选项的一些详细信息。
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
@@ -69,7 +69,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 ### <a name="output-file"></a>输出文件
 可以识别出输出内容的友好名称。 
 
-### <a name="speed"></a>速度
+### <a name="speed"></a>Speed
 指定用于加速输入视频的速度。 输出是输入视频经过稳定和缩时转译的结果。
 
 ### <a name="job-name"></a>作业名称
@@ -91,7 +91,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
   > 
 * **情绪检测**
   
-    情绪检测是人脸检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
+    情绪检测是面部检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
 

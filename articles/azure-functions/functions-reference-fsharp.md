@@ -1,5 +1,5 @@
 ---
-title: Azure Functions F# developer reference
+title: Azure Functions F#开发人员参考
 description: 了解如何使用 F# 脚本开发 Azure Functions。
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
@@ -63,7 +63,7 @@ let Run(blob: string, output: byref<Item>) =
 
 F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
 
-在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
+在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `byref<>`，请使用 `output` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
 作为输入类型使用 F # 记录时，必须使用 `[<CLIMutable>]`标记的记录定义，以便在记录传递给函数之前让 Azure 功能框架设置相应字段。 实质上， `[<CLIMutable>]` 生成记录属性的 setter。 例如：
 
@@ -225,7 +225,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问将要显示程序包安装输出位置的流式传输日志。
-2. 若要上传  `project.json`文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
+2. 若要上传 `project.json` 文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 
 ```
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>重用.fsx 代码
-可以通过 `#load` 指令使用其他 `.fsx` 文件中的代码。 例如：
+可以通过 `.fsx` 指令使用其他 `#load` 文件中的代码。 例如：
 
 `run.fsx`
 
@@ -280,7 +280,7 @@ let mylog(log: ILogger, text: string) =
 
 * `#load "logger.fsx"` 加载函数文件夹中的文件。
 * `#load "package\logger.fsx"` 加载文件 `package` 函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `wwwroot` 的正下方）加载 `shared` 文件夹中的文件，使其成为函数文件夹。
+* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `shared` 的正下方）加载 `wwwroot` 文件夹中的文件，使其成为函数文件夹。
 
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 

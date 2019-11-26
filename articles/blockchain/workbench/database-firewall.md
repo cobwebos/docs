@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Blockchain Workbench database firewall
-description: Learn how to configure the Azure Blockchain Workbench Preview database firewall to allow external clients and applications to connect.
+title: 配置 Azure 区块链工作台数据库防火墙
+description: 了解如何配置 Azure 区块链工作台预览版数据库防火墙，以允许外部客户端和应用程序进行连接。
 ms.date: 09/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
@@ -19,9 +19,9 @@ ms.locfileid: "74326001"
 
 若要连接到要配置规则的数据库，请执行以下操作：
 
-1. Sign in to the Azure portal with an account that has **Owner**     permissions for the Azure Blockchain Workbench resources.
+1. 使用对 Azure 区块链工作台资源拥有**所有者**权限的帐户登录到 Azure 门户。
 2. 在左侧导航窗格中，选择“资源组”。
-3. 选择你的 Blockchain Workbench 部署的资源组的名称。
+3. 为 Blockchain Workbench 部署选择资源组名称。
 4. 选择“类型”，对资源列表进行排序，然后选择 **SQL Server**。
 5. 以下屏幕截图中的资源列表示例演示两个数据库：*master* 和 *lsgn-sdk*。 在 *lsgn-sdk* 上配置防火墙规则。
 

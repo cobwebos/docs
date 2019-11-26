@@ -100,7 +100,7 @@ ms.locfileid: "74195841"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
-    b. 选择“**下一步**”。
+    b. 选择“下一步”。
 1. 在接下来显示的“新建项目”对话框中执行以下操作，并选择“完成”：
 
     - 输入项目名称和位置。
@@ -111,7 +111,7 @@ ms.locfileid: "74195841"
   
    ![选择项目 SDK 和 Spark 版本](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
-1. Spark 项目将自动创建一个项目。 若要查看项目，请执行以下操作：
+1. Spark 项目会自动创建一个项目。 若要查看项目，请执行以下操作：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“文件”菜单中，选择“项目结构”。
 

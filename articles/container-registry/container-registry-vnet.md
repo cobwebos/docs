@@ -1,19 +1,14 @@
 ---
-title: 使用虚拟网络限制对 Azure 容器注册表的访问
+title: 限制对虚拟网络的访问
 description: 仅允许从 Azure 虚拟网络中的资源或从公共 IP 地址范围访问 Azure 容器注册表。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
-ms.author: danlep
-ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931321"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454340"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>使用 Azure 虚拟网络或防火墙规则限制对 Azure 容器注册表的访问权限
 

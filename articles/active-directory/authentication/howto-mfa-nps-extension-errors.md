@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Azure MFA NPS extension - Azure Active Directory
+title: Azure MFA NPS 扩展故障排除-Azure Active Directory
 description: 获取有关解决 Azure 多重身份验证的 NPS 扩展问题的帮助
 services: multi-factor-authentication
 ms.service: active-directory
@@ -30,8 +30,8 @@ ms.locfileid: "74381805"
 | **CLIENT_CERT_INSTALL_ERROR** | 客户端证书的安装方式或者与租户的关联方式可能有问题。 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书问题。 |
 | **ESTS_TOKEN_ERROR** | 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书和 ADAL 令牌问题。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 服务器无法从 Azure MFA 接收响应。 验证防火墙是否双向打开，用于传入和传出 https://adnotifications.windowsazure.com 的流量 |
-| **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/ 。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
-| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com 。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 This error can also trigger if the user is not assigned a license. |
+| **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
+| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 如果没有为用户分配许可证，也会触发此错误。 |
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](howto-mfa-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
 | **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |

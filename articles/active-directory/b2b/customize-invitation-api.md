@@ -115,7 +115,7 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > 确保拥有最新版本的 AzureAD PowerShell 模块或 AzureADPreview PowerShell 模块。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 在 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 中查看邀请 API 参考。
 

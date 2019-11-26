@@ -36,8 +36,8 @@ ms.locfileid: "74278375"
 | 触发者 | 启动管道的触发器的名称 |
 | 状态 | **失败**、已**成功**、**正在进行**、**已取消或已** **排队** |
 | 批注 | 与管道关联的可筛选标记  |
-| Parameters | 管道运行的参数（名称/值对） |
-| 错误 | 如果管道失败，则运行错误 |
+| 参数 | 管道运行的参数（名称/值对） |
+| Error | 如果管道失败，则运行错误 |
 | 运行 ID | 管道运行的 ID |
 
 ![用于监视管道运行的列表视图](media/monitor-visually/pipeline-runs.png)
@@ -60,7 +60,7 @@ ms.locfileid: "74278375"
 | 状态 | **失败**、已**成功**、**正在进行**或**已取消** |
 | Integration Runtime | 运行活动的 Integration Runtime |
 | 用户属性 | 活动的用户定义属性 |
-| 错误 | 如果活动失败，则运行错误 |
+| Error | 如果活动失败，则运行错误 |
 | 运行 ID | 活动运行的 ID |
 
 ![用于监视活动运行的列表视图](media/monitor-visually/activity-runs.png)

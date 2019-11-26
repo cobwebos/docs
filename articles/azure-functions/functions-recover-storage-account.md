@@ -20,7 +20,7 @@ ms.locfileid: "74226757"
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>Summary
 当 Azure Functions 运行时无法启动时，会出现此问题。 出现此错误最常见的原因是，Function App 无法访问其存储帐户。 [在此处阅读有关存储帐户要求的详细信息](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>故障排除
@@ -48,7 +48,7 @@ ms.locfileid: "74226757"
 
 ### <a name="required-application-settings"></a>必需的应用程序设置
 
-* 需要
+* 必需
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 * 消耗计划函数需要
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
@@ -59,7 +59,7 @@ ms.locfileid: "74226757"
 ### <a name="guidance"></a>指南
 
 * 对于这些设置中的任何设置，不要选中“插槽设置”。 当交换部署槽位时，Function 将中断。
-* Do not modify these settings as part of automated deployments.
+* 在自动部署过程中，请勿修改这些设置。
 * 必须在创建时提供这些设置并使其有效。 不包含这些设置的自动部署将导致应用程序无法运行，即使事后添加了这些设置也是如此。
 
 ## <a name="storage-account-credentials-invalid"></a>存储帐户凭据无效

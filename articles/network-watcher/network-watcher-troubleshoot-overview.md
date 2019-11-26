@@ -50,7 +50,7 @@ ms.locfileid: "74277781"
 
 ### <a name="gateway"></a>网关
 
-| 错误类型 | 原因 | 日志|
+| 错误类型 | Reason | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -65,7 +65,7 @@ ms.locfileid: "74277781"
 
 ### <a name="connection"></a>连接
 
-| 错误类型 | 原因 | 日志|
+| 错误类型 | Reason | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -88,14 +88,14 @@ ms.locfileid: "74277781"
 |  |  |
 |---------|---------|
 |网关类型   |         |
-|VPN      | 支持        |
+|VPN      | 是否支持        |
 |ExpressRoute | 不支持 |
 |VPN 类型 | |
-|基于路由 | 支持|
+|基于路由 | 是否支持|
 |基于策略 | 不支持|
 |连接类型||
-|IPSec| 支持|
-|VNet2Vnet| 支持|
+|IPSec| 是否支持|
+|VNet2Vnet| 是否支持|
 |ExpressRoute| 不支持|
 |VPNClient| 不支持|
 

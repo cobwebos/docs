@@ -20,9 +20,9 @@ ms.locfileid: "74457413"
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。
 
-本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+本文介绍如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
@@ -31,11 +31,11 @@ ms.locfileid: "74457413"
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。
+若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一节中运行命令来将配置应用到设备时，会用到这个文件路径。
 
-下面是一个基本的部署清单示例，其中有一个模块：
+下面是一个基本的部署清单示例，其中具有一个模块：
 
    ```json
    {

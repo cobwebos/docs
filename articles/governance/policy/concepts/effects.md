@@ -571,6 +571,6 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 "看门程序 v2" 
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

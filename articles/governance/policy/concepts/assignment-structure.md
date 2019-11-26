@@ -61,7 +61,7 @@ ms.locfileid: "74279480"
 
 |Mode |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
-|已启用 |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
+|Enabled |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
 |已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
 
 如果策略或计划定义中未指定**enforcementMode** ，则使用值_Default_ 。 即使将**enforcementMode**设置为_DoNotEnforce_，也可以为[deployIfNotExists](./effects.md#deployifnotexists)策略启动[修正任务](../how-to/remediate-resources.md)。
@@ -71,7 +71,7 @@ ms.locfileid: "74279480"
 此字段必须是策略定义或计划定义的完整路径名称。
 `policyDefinitionId` 是字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>参数
 
 策略分配的此段提供[策略定义或计划定义](./definition-structure.md#parameters)中定义的参数的值。
 此设计使你可以重复使用不同资源的策略或计划定义，但需要检查不同的业务值或结果。
@@ -93,6 +93,6 @@ ms.locfileid: "74279480"
 
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

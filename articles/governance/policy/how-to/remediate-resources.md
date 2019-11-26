@@ -187,5 +187,5 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取合规性数据](get-compliance-data.md)。
+- 了解如何[获取符合性数据](get-compliance-data.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

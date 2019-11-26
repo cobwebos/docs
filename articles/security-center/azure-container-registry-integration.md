@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center and Azure Container Registry
-description: Learn about Azure Security Center's integration with Azure Container Registry
+title: Azure 安全中心和 Azure 容器注册表
+description: 了解 Azure 安全中心与 Azure 容器注册表的集成
 services: security-center
 documentationcenter: na
 author: memildin
@@ -19,35 +19,35 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229317"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure 容器注册表与安全中心集成（预览版）
 
-Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
+Azure 容器注册表（ACR）是一项托管的专用 Docker 注册表服务，用于在中央注册表中存储和管理 Azure 部署的容器映像。 它基于开源 Docker 注册表2.0。
 
-For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. 有关详细信息，请参阅[定价](security-center-pricing.md)。 With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
+为了更深入地了解你的注册表和映像漏洞，Azure 安全中心的标准层用户可以启用可选的容器注册表绑定。 有关详细信息，请参阅[定价](security-center-pricing.md)。 启用捆绑包后，只要将映像推送到注册表，安全中心就会自动扫描注册表中的映像。
 
 > [!NOTE]
-> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
+> 仅在启用容器注册表绑定并将映像推送到注册表后，才会对注册表进行安全中心的第一次扫描。
 
-When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
+扫描完成后（通常在大约10分钟后），将在安全中心建议中获得结果，如下所示：
 
-[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![示例 Azure 安全中心建议，了解 Azure 容器注册表（ACR）托管图像中发现的漏洞](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>集成的好处
 
-Security Center identifies ACR registries in your subscription and seamlessly provides:
+安全中心标识订阅中的 ACR 注册表并无缝提供：
 
-* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
+* 针对所有推送的 Linux 映像的**Azure 本机漏洞扫描**。 安全中心使用 Qualys 中业界领先的漏洞扫描供应商提供的扫描程序扫描映像。 默认情况下，此本机解决方案无缝集成。
 
-* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
+* 针对具有已知漏洞的 Linux 映像的**安全建议**。 安全中心提供每个报告的漏洞和严重性分类的详细信息。 此外，它还提供了有关如何修正推送到注册表的每个映像上发现的特定漏洞的指南。
 
-![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+![Azure 安全中心和 Azure 容器注册表（ACR）高级概述](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-To learn more about Security Center's container security features, see:
+若要了解有关安全中心容器安全功能的详细信息，请参阅：
 
-* [Azure Security Center and container security](container-security.md)
+* [Azure 安全中心和容器安全性](container-security.md)
 
-* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
+* [与 Azure Kubernetes 服务集成](azure-kubernetes-service-integration.md)
 
-* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations
+* [虚拟机保护](security-center-virtual-machine-protection.md)-介绍安全中心的建议

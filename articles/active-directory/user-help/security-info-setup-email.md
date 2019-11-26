@@ -23,7 +23,7 @@ ms.locfileid: "74279026"
 
 可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
-设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
+设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)、[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 

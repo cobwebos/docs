@@ -27,7 +27,7 @@ ms.locfileid: "74480779"
 * **未配置** - 未找到更新代理或尚未完成载入。
 
 > [!NOTE]
-> There may be a slight delay between what the Azure portal shows and the current state of the machine.
+> 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
@@ -55,15 +55,15 @@ ms.locfileid: "74480779"
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2008 R2 RTM、Windows Server 2008 | 仅支持更新评估。         |
-|Windows Server 2008 R2 SP1 和更高版本 |.NET Framework 4.6 or later is required. （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 is required.  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2008 R2 SP1 和更高版本 |需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 
-### <a name="net-462"></a>.NET 4.6.2
+### <a name="net-462"></a>.NET 4.6。2
 
-The .NET Framework check verifies that the system has a minimum of [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) installed.
+.NET Framework 检查将验证系统是否至少安装了[.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) 。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-The WMF check verifies that the system has the required version of the Windows Management Framework (WMF) - [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616).
+WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -107,7 +107,7 @@ Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\Progra
 
 ## <a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 You must have WMF 4.0, or greater, installed to run the script. To download the latest version of PowerShell, see [Installing various versions of PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本，才能运行该脚本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
 此脚本的输出如以下示例所示：
 

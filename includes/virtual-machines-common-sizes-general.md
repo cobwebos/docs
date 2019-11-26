@@ -17,45 +17,45 @@ ms.locfileid: "74485496"
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数以及存储吞吐量的相关信息。
 
-- The [DC-series](#dc-series) is a family of virtual machines in Azure that can help protect the confidentiality and integrity of your data and code while it’s processed in the public cloud. 这些虚拟机由采用 SGX 技术的最新一代 3.7GHz Intel XEON E-2176G 处理器提供支持。 借助 Intel 睿频加速技术，这些虚拟机最高可以达到 4.7GHz。 客户使用 DC 系列实例可以构建安全的基于 enclave 的应用程序，以在使用该系列时保护其代码和数据。
+- [DC 系列](#dc-series)是 Azure 中的一系列虚拟机，在公有云中进行处理时，这些虚拟机可帮助保护你的数据和代码的机密性和完整性。 这些虚拟机由最新一代采用 SGX 技术的 3.7GHz Intel XEON E-2176G 处理器提供支持。 借助 Intel Turbo Boost Technology，这些虚拟机最高可以达到 4.7GHz。 客户使用 DC 系列实例可以构建安全的基于 enclave 的应用程序，以在使用该系列时保护其代码和数据。
 
-- Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 A 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负载。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，不论硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
+- Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 A 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，不论硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
 
   示例用例包括开发和测试服务器、低流量 Web 服务器、中小型数据库、概念证明和代码存储库。
 
-- Dv2 系列（原始 D 系列的后续产品）提供更强大的 CPU 和最优 CPU 到内存的配置，使其可适合大多数生产工作负荷。 The Dv2-series is about 35% faster than the D-series. Dv2-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with the Intel Turbo Boost Technology 2.0. Dv2 系列的内存和磁盘配置与 D 系列相同。
+- Dv2 系列（原始 D 系列的后续产品）提供更强大的 CPU 和最优 CPU 到内存的配置，使其可适合大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并采用 Intel Turbo Boost Technology 2.0。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
-- The Dv3-series runs on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors in a hyper-threaded configuration, providing a better value proposition for most general purpose workloads.  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。  The Dv3-series no longer has the high memory VM sizes of the D/Dv2-series, those have been moved to the memory optimized Ev3-series for [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) and [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series).
+- Dv3 系列在超线程配置中在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，针对最常规用途的工作负荷提供了更好的价值主张。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。  Dv3 系列不再具有 D/Dv2 系列的高内存 VM 大小，这些 VM 大小已移到已针对 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#ev3-series) 和 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#ev3-series) 的 Ev3 系列优化的内存。
 
-  Example D-series use cases include enterprise-grade applications, relational databases, in-memory caching, and analytics.
+  D 系列用例示例包括企业级应用程序、关系数据库、内存中缓存和分析。
 
-- The Dav4-series and Dasv4-series are new sizes utilizing AMD’s 2.35Ghz EPYC<sup>TM</sup> 7452 processor in a multi-threaded configuration with up to 256 GB L3 cache dedicating 8 GB of that L3 cache to every 8 cores increasing customer options for running their general purpose workloads. The Dav4-series and Dasv4-series have the same memory and disk configurations as the D & Dsv3-series.
+- Dav4 系列和 Dasv4 系列是在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452 处理器的新大小，多线程配置具有256多线程配置，其中每 8 gb 专用 8 gb 的三个用途工作负荷。 Dav4 系列和 Dasv4 具有与 D & Dsv3 系列相同的内存和磁盘配置。
   
 ## <a name="b-series"></a>B 系列
 
 高级存储：支持
 
-Premium Storage caching:  Not Supported
+高级存储缓存：不支持
 
 对于并非持续需要 CPU 完全性能的工作负荷（如 Web 服务器、小型数据库以及开发和测试环境）而言，B 系列可突增 VM 十分理想。 这些工作负荷通常具有可突增的性能要求。 B 系列使这些客户能够购买具有高性价比基线性能的 VM 大小，允许 VM 实例在 VM 使用的性能小于其基线性能时积累积分。 如果 VM 已累积了积分，则 VM 可以在应用程序需要更高的 CPU 性能时突增到 VM 的基线之上，使用最多达到 100% 的 vCPU。
 
 示例用例包括开发和测试服务器、低流量 Web 服务器、小型数据库、微服务、概念证明服务器和生成服务器。
 
 
-| 大小             | vCPU  | 内存：GiB | 临时存储 (SSD) GB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | Initial Credits | 累积的积分/小时 | 最大累积积分 | 最大数据磁盘数 | Max cached and temp storage throughput: IOPS / MBps | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |          
+| 大小             | vCPU  | 内存：GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 累积的积分/小时 | 最大累积积分 | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量： IOPS/MBps | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 第           | 0.5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
-| Standard_B1s  | 第           | 第              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
-| Standard_B1ms | 第           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1           | 0.5              | 4                          | 5%                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
 | Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
 | Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400%                   | 120                   | 54                 | 1296           | 8                                      | 3600 / 35                                 | 2880 / 35                                 | 4  |
-| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 240                   | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
-| Standard_B12ms | 12           | 48             | 96                         | 202%                  | 1200%                   | 360                   | 121                 | 2909           | 16                                     | 6480 / 75                                 | 4320/50                                 | 6  |
-| Standard_B16ms | 16           | 64             | 128                         | 270%                  | 1600%                   | 480                   | 162                 | 3888           | 32                                     | 8640 / 100                                 | 4320/50                                 | 8  |
-| Standard_B20ms | 20           | 80             | 160                         | 337%                  | 2000%                   | 600                   | 203                 | 4860           | 32                                     | 10800 / 125                                 | 4320/50                                 | 8  |
+| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800%                   | 240                   | 81                 | 1944           | 16                                     | 4320 / 50                                 | 4320 / 50                                 | 4  |
+| Standard_B12ms | 12           | 48             | 96                         | 202%                  | 1200%                   | 360                   | 121                 | 2909           | 16                                     | 6480/75                                 | 4320 / 50                                 | 6  |
+| Standard_B16ms | 16           | 64             | 128                         | 270%                  | 1600%                   | 480                   | 162                 | 3888           | 32                                     | 8640 / 100                                 | 4320 / 50                                 | 8  |
+| Standard_B20ms | 20           | 80             | 160                         | 337%                  | 2000%                   | 600                   | 203                 | 4860           | 32                                     | 10800 / 125                                 | 4320 / 50                                 | 8  |
 
-<sup>1</sup> B1ls is supported only on Linux
+<sup>1</sup> 仅 Linux 支持 B1ls
 
 ## <a name="dsv3-series-sup1sup"></a>Dsv3 系列 <sup>1</sup>
 
@@ -63,45 +63,45 @@ ACU：160-190
 
 高级存储：支持
 
-Premium Storage caching:  Supported
+高级存储缓存：支持
 
-Dsv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage. Dsv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
+Dsv3 系列大小在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用 Intel Turbo Boost Technology 2.0 并使用高级存储。 Dsv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
 
 
-| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000 / 32 (50)                                                       | 3200 / 48                                | 2 / 1000                                   |
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000 / 64 (100)                                                      | 6400 / 96                                | 2 / 2000                                   |
 | Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000 / 128 (200)                                                    | 12800 / 192                              | 4 / 4000                                      |
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000 / 256 (400)                                                    | 25600 / 384                              | 8 / 8000                                      |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000 / 512 (800)                                                    | 51200 / 768                              | 8 / 16000                                               |
-| Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000 / 768 (1200)                                                    | 76800 / 1152                               | 8 / 24000                                               |
+| Standard_D48s_v3 | 48     | 192          | 384            | 32             | 96000/768 (1200)                                                    | 76800 / 1152                               | 8 / 24000                                               |
 | Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000 / 1024 (1600)                                                    | 80000 / 1200                              | 8 / 30000                                               |
 
 <sup>1</sup> Dsv3 系列 VM 的 Intel® 超线程技术功能
 
 ## <a name="dasv4-series"></a>Dasv4 系列
 
-ACU:  230-260
+ACU：230-260
 
 高级存储：支持
 
-Premium Storage caching: Supported
+高级存储缓存：支持
 
-Dasv4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz and use premium SSD. The Dasv4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads.
+Dasv4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Dasv4 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储的组合。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | Max NICs / Expected network bandwidth (MBps) |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 Nic 数/预期网络带宽（MBps） |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2as_v4|2|8|16|4|4000 / 32 (50)|3200 / 48|2 / 1000 |
 | Standard_D4as_v4|4|16|32|8|8000 / 64 (100)|6400 / 96|2 / 2000 |
 | Standard_D8as_v4|8|32|64|16|16000 / 128 (200)|12800 / 192|4 / 4000 |
-| Standard_D16as_v4|16|64|128|32|32000 / 255 (400)|25600 / 384|8 / 8000 |
-| Standard_D32as_v4|32|128|256|32|64000 / 510 (800)|51200 / 768|8 / 16000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 （400）|25600 / 384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 （800）|51200 / 768|8 / 16000 |
 | Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
 | Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
 | Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup>这些大小处于预览阶段。  如果你有兴趣尝试这些更大的大小，请在[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview)上进行注册。
 
 ## <a name="dv3-series-sup1sup"></a>Dv3 系列 <sup>1</sup>
 
@@ -109,14 +109,14 @@ ACU：160-190
 
 高级存储：不支持
 
-Premium Storage caching:  Not Supported
+高级存储缓存：不支持
 
-Dv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0. Dv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
+Dv3 系列大小在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用 Intel Turbo Boost Technology 2.0。 Dv3 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储组合。
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 Dsv3 大小。 Dsv3 大小的定价和计费标准与 Dv3 系列相同。 
 
 
-| 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | Max NICs / Network bandwidth (Mbps) |
+| 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 (Mbps) |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2000                    |
@@ -130,15 +130,15 @@ Dv3-series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon�
 
 ## <a name="dav4-series"></a>Dav4 系列
 
-ACU: 230-260
+ACU：230-260
 
-Premium Storage: Not Supported
+高级存储：不支持
 
-Premium Storage caching: Not Supported
+高级存储缓存：不支持
 
-Dav4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor that can achieve a boosted maximum frequency of 3.35GHz. The Dav4-series sizes offer a combination of vCPU, memory and temporary storage for most production workloads. 数据磁盘存储与虚拟机分开计费。 To use premium SSD, use the Dasv4 sizes. The pricing and billing meters for Dasv4 sizes are the same as the Dav4-series.
+Dav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率。 Dav4 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储的组合。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Dasv4 大小。 Dasv4 大小的定价和计费标准与 Dav4 系列相同。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | Max NICs / Expected network bandwidth (MBps) |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大 Nic 数/预期网络带宽（MBps） |
 |-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000/46/23   | 2 / 1000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000/93/46   | 2 / 2000 |
@@ -149,21 +149,21 @@ Dav4-series sizes are based on the 2.35Ghz AMD EPYC<sup>TM</sup> 7452 processor 
 | Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
 | Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-<sup>**</sup> These sizes are in Preview.  If you are interested in trying out these larger sizes, sign up at [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
+<sup>**</sup>这些大小处于预览阶段。  如果你有兴趣尝试这些更大的大小，请在[https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview)上进行注册。
 
-## <a name="dsv2-series"></a>DSv2 系列
+## <a name="dsv2-series"></a>DSv2-series
 
 ACU：210-250
 
 高级存储：支持
 
-Premium Storage caching:  Supported
+高级存储缓存：支持
 
-DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
+DSv2 系列大小在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用 Intel Turbo Boost Technology 2.0 并使用高级存储。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1_v2 |第 |3.5 |7 |4 |4000 / 32 (43) |3200 / 48 |2 / 750 |
+| Standard_DS1_v2 |1 |3.5 |7 |4 |4000 / 32 (43) |3200 / 48 |2 / 750 |
 | Standard_DS2_v2 |2 |7 |14 |8 |8000 / 64 (86) |6400 / 96 |2 / 1500 |
 | Standard_DS3_v2 |4 |14 |28 |16 |16000 / 128 (172) |12800 / 192 |4 / 3000 |
 | Standard_DS4_v2 |8 |28 |56 |32 |32000 / 256 (344) |25600 / 384 |8 / 6000 |
@@ -175,13 +175,13 @@ ACU：210-250
 
 高级存储：不支持
 
-Premium Storage caching:  Not Supported
+高级存储缓存：不支持
 
-DSv2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0.
+DSv2 系列大小在 Intel®强® 8171M 2.1 GHz （Skylake）上运行，或者在 intel®强® E5-2673 v4 2.3 GHz （Broadwell）或 intel®至强® E5-2673 v3 2.0 2。4
 
-| 大小           | vCPU | 内存：GiB | 临时存储 (SSD) GB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小           | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
-| Standard_D1_v2 | 第    | 3.5         | 50                     | 3000/46/23                                             | 4              | 4x500            | 2 / 750                                      |
+| Standard_D1_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 4              | 4x500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8x500            | 2 / 1500                                     |
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             | 16x500           | 4 / 3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32             | 32x500           | 8 / 6000                                       |
@@ -193,13 +193,13 @@ ACU：100
 
 高级存储：不支持
 
-Premium Storage caching:  Not Supported
+高级存储缓存：不支持
 
-Av2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) or the Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) processors with Intel Turbo Boost Technology 2.0 and use premium storage.
+Av2 系列大小运行在 Intel®强® 8171M 2.1 GHz （Skylake）或 Intel®强® E5-2673 v4 2.3 GHz （Broadwell）上，或 intel®至强® E5-2673 v3 2.4 GHz （Haswell）处理器，其中包含 Intel Turbo 提升技术2.0 并使用高级存储。
 
-| 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) | 
+| 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_A1_v2  | 第         | 2           | 10             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4x500               | 2 / 500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8/8x500               | 4 / 1000                     |
 | Standard_A8_v2  | 8         | 16          | 80             | 8000/160/80                                          | 16/16x500             | 8 / 2000                     |
@@ -211,11 +211,11 @@ Av2-Series sizes run on the Intel® Xeon® 8171M 2.1GHz (Skylake) or the the Int
 
 高级存储：支持
 
-Premium Storage caching: Supported
+高级存储缓存：支持
 
 
 
-| 大小          | vCPU | 内存：GiB | 临时存储 (SSD) GB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小          | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |

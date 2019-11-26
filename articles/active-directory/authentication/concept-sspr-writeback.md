@@ -1,6 +1,6 @@
 ---
-title: On-premises password writeback integration with Azure AD SSPR - Azure Active Directory
-description: Get cloud passwords written back to on-premises AD infrastructure
+title: 本地密码写回与 Azure AD SSPR 的集成 - Azure Active Directory
+description: 获取写回到本地 AD 基础结构的云密码
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -43,7 +43,7 @@ ms.locfileid: "74420658"
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
 > [!NOTE]
-> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 Administrators can change their password in the cloud but cannot use password reset to reset a forgotten password. 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
+> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 管理员可以在云中更改其密码，但不能使用密码重置来重置忘记的密码。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -161,10 +161,10 @@ ms.locfileid: "74420658"
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API 重置自己的密码
 * **不支持的管理员操作**
    * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API）
-   * Any administrator-initiated end-user password reset from the [Microsoft 365 admin center](https://admin.microsoft.com)
+   * 管理员从[Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置
 
 > [!WARNING]
-> Use of the checkbox "User must change password at next logon" in on-premises Active Directory administrative tools like Active Directory Users and Computers or the Active Directory Administrative Center is supported as a preview feature of Azure AD Connect. For more information, see the article, [Implement password hash synchronization with Azure AD Connect sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> 使用 "用户在下次登录时必须更改密码" 复选框在本地 Active Directory 管理工具（如 Active Directory 用户和计算机）或 Active Directory 管理中心支持为 Azure AD Connect 的预览功能。 有关详细信息，请参阅[Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

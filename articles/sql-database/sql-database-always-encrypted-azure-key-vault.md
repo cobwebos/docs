@@ -1,5 +1,5 @@
 ---
-title: Always Encrypted - Azure Key Vault
+title: Always Encrypted-Azure Key Vault
 description: 本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。
 keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
@@ -35,7 +35,7 @@ ms.locfileid: "74421693"
 - 创建一个数据库表并加密列。
 - 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中，需要：
 
@@ -43,7 +43,7 @@ ms.locfileid: "74421693"
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
 - [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 或更高版本（在客户端计算机上）。
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
-- [Azure PowerShell](/powershell/azure/overview) or [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure PowerShell](/powershell/azure/overview)或[Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>使客户端应用程序可以访问 SQL 数据库服务
 
@@ -55,12 +55,12 @@ ms.locfileid: "74421693"
 
 至此，已配置客户端应用并且已拥有应用程序 ID，接下来，可以创建密钥保管库并配置其访问策略，以便你和你的应用程序可以访问保管库的机密（Always Encrypted 密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
 
-通过运行以下脚本，可以快速创建密钥保管库。 For a detailed explanation of these commands and more information about creating and configuring a key vault, see [What is Azure Key Vault?](../key-vault/key-vault-overview.md).
+通过运行以下脚本，可以快速创建密钥保管库。 有关这些命令的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅[什么是 Azure Key Vault？](../key-vault/key-vault-overview.md)。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
 
 ```powershell
 $subscriptionName = '<subscriptionName>'
@@ -137,7 +137,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 1. 展开“数据库”。
 2. 右键单击“Clinic”数据库，并单击“新建查询”。
-3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，然后“执行”它。
+3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，并“执行”它。
 
 ```sql
 CREATE TABLE [dbo].[Patients](
@@ -192,11 +192,11 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>Summary
 
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
-![总结](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![Summary](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
 
@@ -216,10 +216,10 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 > 通过始终加密列将明文数据传递到服务器时，应用程序必须使用 [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) 对象。 在不使用 SqlParameter 对象的情况下传递文本值会导致异常。
 
 1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)** （Visual Studio 2017 和更高版本）。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
-2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
+2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，并单击“确定”。
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
-Run these two lines of code in the Package Manager Console:
+在 Package Manager Console 中运行以下两行代码：
 
    ```powershell
    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider

@@ -20,15 +20,15 @@ ms.locfileid: "74231456"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 These tracking events can be found and queried using the [Application Insights Analytics](../../azure-monitor/app/analytics.md) tool in the Azure portal.
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可以在 Azure 门户中使用[Application Insights 分析](../../azure-monitor/app/analytics.md)工具找到并查询这些跟踪事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 
 业务流程实例的每个生命周期事件会导致将一个跟踪事件写入 Application Insights 中的**跟踪**集合。 此事件包含带有多个字段的 **customDimensions** 有效负载。  字段名称的前面都附有 `prop__`。
 
 * **hubName**：运行业务流程的任务中心的名称。
-* **appName**：函数应用的名称。 This field is useful when you have multiple function apps sharing the same Application Insights instance.
-* **slotName**：运行当前函数应用的[部署槽位](../functions-deployment-slots.md)。 This field is useful when you leverage deployment slots to version your orchestrations.
+* **appName**：函数应用的名称。 如果有多个函数应用共享同一个 Application Insights 实例，则此字段非常有用。
+* **slotName**：运行当前函数应用的[部署槽位](../functions-deployment-slots.md)。 当你利用部署槽位对你的业务流程进行版本调整时，此字段非常有用。
 * **functionName**：业务流程协调程序或活动函数的名称。
 * **functionType**：函数的类型，例如“业务流程协调程序”或“活动”。
 * **instanceId**：业务流程实例的唯一 ID。
@@ -39,14 +39,14 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
   * **Listening**：业务流程协调程序正在侦听外部事件通知。
   * **Completed**：函数已成功完成。
   * **Failed**：函数失败并出错。
-* **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 If a function has failed, this field will contain the error details.
+* **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 如果函数失败，则此字段将包含错误详细信息。
 * **isReplay**：指示跟踪事件是否用于重播执行的布尔值。
-* **extensionVersion**：持久任务扩展的版本。 The version information is especially important data when reporting possible bugs in the extension. 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
+* **extensionVersion**：持久任务扩展的版本。 当报告扩展中的可能 bug 时，版本信息尤其重要。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
 * **sequenceNumber**：事件的执行序列号。 与时间戳组合使用可以帮助按执行时间对事件进行排序。 *请注意，如果主机在实例正在运行时重新启动，则此数字将重置为零，因此始终先按时间戳然后按 sequenceNumber 排序很重要。*
 
-The verbosity of tracking data emitted to Application Insights can be configured in the `logger` (Functions 1.x) or `logging` (Functions 2.0) section of the `host.json` file.
+可以在 `host.json` 文件的 `logger` （函数1.x）或 `logging` （函数2.0）部分中配置发出到 Application Insights 的跟踪数据的详细级别。
 
-#### <a name="functions-10"></a>Functions 1.0
+#### <a name="functions-10"></a>函数1。0
 
 ```json
 {
@@ -60,7 +60,7 @@ The verbosity of tracking data emitted to Application Insights can be configured
 }
 ```
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>函数2。0
 
 ```json
 {
@@ -74,9 +74,9 @@ The verbosity of tracking data emitted to Application Insights can be configured
 
 默认情况下，会发出所有非重播跟踪事件。 可通过将 `Host.Triggers.DurableTask` 设置为 `"Warning"` 或 `"Error"` 来减少数据量，在这种情况下，只会在发生异常情况时发出跟踪事件。
 
-若要启用发出详细业务流程重播事件，可以在 `host.json` 文件中的 `durableTask` 下将 `LogReplayEvents` 设置为 `true`，如下所示：
+若要启用发出详细业务流程重播事件，可以在 `LogReplayEvents` 文件中的 `true` 下将 `host.json` 设置为 `durableTask`，如下所示：
 
-#### <a name="functions-10"></a>Functions 1.0
+#### <a name="functions-10"></a>函数1。0
 
 ```json
 {
@@ -86,7 +86,7 @@ The verbosity of tracking data emitted to Application Insights can be configured
 }
 ```
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name="functions-20"></a>函数2。0
 
 ```javascript
 {
@@ -205,7 +205,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-The resulting log data is going to look something like the following example output:
+生成的日志数据类似于以下示例输出：
 
 ```txt
 Calling F1.
@@ -276,7 +276,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Starting in Durable Functions 2.0, .NET orchestrator functions also have the option to create an `ILogger` that automatically filters out log statements during replay. This automatic filtering is done using the `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API.
+从 Durable Functions 2.0 开始，.NET orchestrator 函数还可以选择创建一个在重播期间自动筛选出日志语句的 `ILogger`。 这种自动筛选是使用 `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API 完成的。
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,7 +295,7 @@ public static async Task Run(
 }
 ```
 
-With the previously mentioned changes, the log output is as follows:
+随着前面提到的更改，日志输出如下所示：
 
 ```txt
 Calling F1.
@@ -305,7 +305,7 @@ Done!
 ```
 
 > [!NOTE]
-> The previous C# examples are for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 ## <a name="custom-status"></a>自定义状态
 
@@ -328,7 +328,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> 上面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 ### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
@@ -373,19 +373,19 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这项支持，不管它是在 Azure 中还是在本地运行。 但是，调试时需注意几种行为：
 
-* **Replay**: Orchestrator functions regularly [replay](durable-functions-orchestrations.md#reliability) when new inputs are received. This behavior means a single *logical* execution of an orchestrator function can result in hitting the same breakpoint multiple times, especially if it is set early in the function code.
-* **Await**: Whenever an `await` is encountered in an orchestrator function, it yields control back to the Durable Task Framework dispatcher. If it is the first time a particular `await` has been encountered, the associated task is *never* resumed. Because the task never resumes, stepping *over* the await (F10 in Visual Studio) is not possible. 仅当任务正在重播时，才能跳过。
-* **Messaging timeouts**: Durable Functions internally uses queue messages to drive execution of orchestrator, activity, and entity functions. 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
-* **Stopping and starting**: Messages in Durable functions persist between debug sessions. If you stop debugging and terminate the local host process while a durable function is executing, that function may re-execute automatically in a future debug session. This behavior can be confusing when not expected. Clearing all messages from the [internal storage queues](durable-functions-perf-and-scale.md#internal-queue-triggers) between debug sessions is one technique to avoid this behavior.
+* **重播**：收到新输入时，Orchestrator 函数定期[重播](durable-functions-orchestrations.md#reliability)。 此行为意味着，业务流程协调程序函数的单个*逻辑*执行可能导致多次命中同一个断点，尤其是在函数代码早期设置的情况下。
+* **Await**：每当在业务流程协调程序函数中遇到 `await` 时，它都会向持久任务框架调度程序返回控制权。 如果是第一次遇到特定的 `await`，则*不会*恢复关联的任务。 由于任务永远不会恢复，因此*无法逐过程执行 await* （Visual Studio 中的 F10）。 仅当任务正在重播时，才能跳过。
+* **消息超时**： Durable Functions 在内部使用队列消息来驱动 orchestrator、活动和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
+* **停止和启动**：持久性函数中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，此行为可能会造成混淆。 在调试会话之间从[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中清除所有消息是一种避免此行为的方法。
 
 > [!TIP]
-> When setting breakpoints in orchestrator functions, if you want to only break on non-replay execution, you can set a conditional breakpoint that breaks only if `IsReplaying` is `false`.
+> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置一个条件断点，该断点仅在 `false``IsReplaying` 时才中断。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
-默认情况下，Durable Functions 在 Azure 存储中存储状态。 This behavior means you can inspect the state of your orchestrations using tools such as [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+默认情况下，Durable Functions 在 Azure 存储中存储状态。 此行为意味着可以使用[Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)的工具检查业务流程的状态。
 
-![Azure Storage Explorer screenshot](./media/durable-functions-diagnostics/storage-explorer.png)
+![Azure 存储资源管理器屏幕快照](./media/durable-functions-diagnostics/storage-explorer.png)
 
 此工具非常适合用于调试，因为可以看到业务流程所处的确切状态。 此外，还可以检查队列中的消息，了解哪项工作处于挂起状态（或停滞在某种状态）。
 
@@ -395,4 +395,4 @@ Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Learn more about monitoring in Azure Functions](../functions-monitoring.md)
+> [详细了解 Azure Functions 中的监视](../functions-monitoring.md)

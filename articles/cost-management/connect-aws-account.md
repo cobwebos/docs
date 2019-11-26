@@ -44,12 +44,12 @@ ms.locfileid: "74219738"
 
 1. 通过 https://console.aws.amazon.com/iam/home 登录到 AWS 控制台，选择“角色”。
 2. 单击“创建角色”，然后选择“另一个 AWS 帐户”。
-3. 在“帐户 ID”框中粘贴 `432263259397`。 此帐户 ID 是 AWS 分配给 Cloudyn 服务的 Cloudyn 数据收集器帐户。 使用与显示内容完全相同的帐户 ID。
+3. 在“帐户 ID”框中粘贴 **。** `432263259397` 此帐户 ID 是 AWS 分配给 Cloudyn 服务的 Cloudyn 数据收集器帐户。 使用与显示内容完全相同的帐户 ID。
 4. 在“选项”旁边，选择“需要外部 ID”。 粘贴前面从 Cloudyn 中的“外部 ID”字段复制的唯一值。 然后单击“下一步: 权限”。  
     ![从 Cloudyn 将外部 ID 粘贴到“创建角色”页面](./media/connect-aws-account/create-role01.png)
-5. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 `ReadOnlyAccess`，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。  
+5. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 **，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。** `ReadOnlyAccess`  
     ![在策略名称列表中选择只读访问](./media/connect-aws-account/readonlyaccess.png)
-6. 在“查看”页上，确保选择正确无误，然后键入一个**角色名称**。 For example, *Azure-Cost-Mgt*. Enter a **Role description**. 例如“Cloudyn 的角色分配”，然后单击“创建角色”。
+6. 在“查看”页上，确保选择正确无误，然后键入一个**角色名称**。 例如， *Azure 成本节约*。输入**角色描述**。 例如“Cloudyn 的角色分配”，然后单击“创建角色”。
 7. 在“角色”列表中单击创建的角色，并复制“摘要”页中显示的“角色 ARN”值。 稍后在 Cloudyn 中注册配置时，需要使用该“角色 ARN”（Amazon 资源名称）值。  
     ![从“摘要”页复制角色 ARN](./media/connect-aws-account/role-arn.png)
 
@@ -83,7 +83,7 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
 4. 对于“访问类型”，请选择“以编程方式访问”，然后单击“下一步: 权限”。  
     ![在“添加用户”页上输入用户名](./media/connect-aws-account/add-user01.png)
 5. 对于权限，请选择“直接附加现有策略”。
-6. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 `ReadOnlyAccess`，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。  
+6. 在“附加权限策略”下面的“策略类型”筛选搜索框中键入 **，选择“ReadOnlyAccess”，然后单击“下一步: 查看”。** `ReadOnlyAccess`  
     ![选择 ReadOnlyAccess 为用户设置权限](./media/connect-aws-account/set-permission-for-user.png)
 7. 在“查看”页上，确保选择正确无误，然后单击“创建用户”。
 8. “完成”页上显示了“访问密钥 ID”和“机密访问密钥”。 可以使用此信息在 Cloudyn 中配置注册。
@@ -172,7 +172,7 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
    }
    ```
 
-9. 单击“保存”。  
+9. 单击“ **保存**”。  
     ![在“储存桶策略”编辑器中单击“保存”](./media/connect-aws-account/bucket-policy-editor.png)
 
 

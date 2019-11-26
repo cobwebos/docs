@@ -1,6 +1,6 @@
 ---
-title: Azure Functions networking options
-description: An overview of all networking options available in Azure Functions.
+title: Azure Functions 网络选项
+description: Azure Functions 中提供的所有网络选项的概述。
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
@@ -12,144 +12,144 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226797"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Functions networking options
+# <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
-This article describes the networking features available across the hosting options for Azure Functions. All the following networking options give you some ability to access resources without using internet-routable addresses, or to restrict internet access to a function app.
+本文介绍了可在各种 Azure Functions 托管选项中使用的网络功能。 通过以下所有网络选项，您可以在不使用可通过 internet 路由的地址的情况下访问资源，或限制对函数应用程序的 internet 访问。
 
-The hosting models have different levels of network isolation available. Choosing the correct one will help you meet your network isolation requirements.
+托管模型具有不同的可用网络隔离级别。 选择适当的级别有助于满足网络隔离要求。
 
-You can host function apps in a couple of ways:
+可按多种方式托管函数应用：
 
-* There's a set of plan options that run on a multi-tenant infrastructure, with various levels of virtual network connectivity and scaling options:
-    * The [Consumption plan](functions-scale.md#consumption-plan), which scales dynamically in response to load and offers minimal network isolation options.
-    * The [Premium plan](functions-scale.md#premium-plan), which also scales dynamically, while offering more comprehensive network isolation.
-    * The Azure [App Service plan](functions-scale.md#app-service-plan), which operates at a fixed scale and offers similar network isolation as the Premium plan.
-* You can run functions in an [App Service Environment](../app-service/environment/intro.md). This method deploys your function into your virtual network and offers full network control and isolation.
+* 在多租户基础结构上运行的一组计划选项有各种级别的虚拟网络连接和缩放选项：
+    * [消耗计划](functions-scale.md#consumption-plan)：可以动态缩放以响应负载，但只能提供极少量的网络隔离选项。
+    * [高级计划](functions-scale.md#premium-plan)，还可以动态缩放，同时提供更全面的网络隔离。
+    * Azure[应用服务计划](functions-scale.md#app-service-plan)，以固定规模运行，并提供类似的网络隔离作为高级计划。
+* 可以在[应用服务环境](../app-service/environment/intro.md)中运行函数。 此方法将您的函数部署到您的虚拟网络中，并提供完全的网络控制和隔离。
 
-## <a name="matrix-of-networking-features"></a>Matrix of networking features
+## <a name="matrix-of-networking-features"></a>网络功能矩阵
 
-|                |[Consumption plan](functions-scale.md#consumption-plan)|[Premium plan](functions-scale.md#premium-plan)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
+|                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划](functions-scale.md#premium-plan)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Inbound IP restrictions & private site access](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[虚拟网络集成](#virtual-network-integration)|❌No|✅Yes (Regional)|✅Yes (Regional and Gateway)|✅Yes|
-|[Virtual network triggers (non-HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[混合连接](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
-|[Outbound IP restrictions](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
+|[入站 IP 限制和专用站点访问](#inbound-ip-restrictions)|✅是|✅是|✅是|✅是|
+|[虚拟网络集成](#virtual-network-integration)|❌否|✅是（区域）|✅是（区域和网关）|✅是|
+|[虚拟网络触发器（非 HTTP）](#virtual-network-triggers-non-http)|❌否| ❌否|✅是|✅是|
+|[混合连接](#hybrid-connections)|❌否|✅是|✅是|✅是|
+|[出站 IP 限制](#outbound-ip-restrictions)|❌否| ❌否|❌否|✅是|
 
-## <a name="inbound-ip-restrictions"></a>Inbound IP restrictions
+## <a name="inbound-ip-restrictions"></a>入站 IP 限制
 
-You can use IP restrictions to define a priority-ordered list of IP addresses that are allowed or denied access to your app. The list can include IPv4 and IPv6 addresses. When there are one or more entries, an implicit "deny all" exists at the end of the list. IP restrictions work with all function-hosting options.
+可以使用 IP 限制来定义允许或拒绝其访问应用的 IP 地址的优先级排序列表。 此列表可以包含 IPv4 和 IPv6 地址。 如果有一个或多个条目，则在该列表的末尾存在一个隐式 "全部拒绝"。 IP 限制可与所有函数托管选项配合使用。
 
 > [!NOTE]
-> With network restrictions in place, you can use the portal editor only from within your virtual network, or when you've put the IP address of the machine you're using to access the Azure portal on the Safe Recipients list. However, you can still access any features on the **Platform features** tab from any machine.
+> 有了网络限制后，只需从虚拟网络内使用门户编辑器，或者在将用于访问 "安全收件人" 列表中的 Azure 门户的计算机的 IP 地址放入后，就可以使用该编辑器。 但是，仍可以从任何计算机访问“平台功能”选项卡中的任何功能。
 
-To learn more, see [Azure App Service static access restrictions](../app-service/app-service-ip-restrictions.md).
+有关详细信息，请参阅 [Azure 应用服务静态访问限制](../app-service/app-service-ip-restrictions.md)。
 
 ## <a name="private-site-access"></a>专用站点访问
 
-Private site access refers to making your app accessible only from a private network such as an Azure virtual network.
+专用站点访问是指使应用只能通过专用网络（例如 Azure 虚拟网络）进行访问。
 
-* Private site access is available in the [Premium](./functions-premium-plan.md), [Consumption](functions-scale.md#consumption-plan), and [App Service](functions-scale.md#app-service-plan) plans when service endpoints are configured.
-    * Service endpoints can be configured on a per-app basis under **Platform features** > **Networking** > **Configure Access Restrictions** > **Add Rule**. Virtual networks can now be selected as a rule type.
-    * For more information, see [virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
-    * Keep in mind that with service endpoints, your function still has full outbound access to the internet, even with virtual network integration configured.
-* Private site access is also available within an App Service Environment that's configured with an internal load balancer (ILB). For more information, see [Create and use an internal load balancer with an App Service Environment](../app-service/environment/create-ilb-ase.md).
+* 配置服务终结点时，[高级](./functions-premium-plan.md)、[消费](functions-scale.md#consumption-plan)和[应用服务](functions-scale.md#app-service-plan)计划中提供了专用站点访问。
+    * 可以基于每个应用在**平台功能** > **网络**上配置服务终结点， > **配置访问限制** > **添加规则**。 现在可以选择虚拟网络作为规则类型。
+    * 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
+    * 请注意，对于服务终结点，即使配置了虚拟网络集成，函数仍具有 internet 的完全出站访问权限。
+* 还可在使用内部负载均衡器（ILB）配置的应用服务环境中获取专用站点访问。 有关详细信息，请参阅[创建和使用带有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 
-Virtual network integration allows your function app to access resources inside a virtual network. This feature is available in both the Premium plan and the App Service plan. If your app is in an App Service Environment, it's already in a virtual network and doesn't require virtual network integration to reach resources in the same virtual network.
+函数应用可以通过虚拟网络集成来访问虚拟网络内部的资源。 此功能适用于高级计划和应用服务计划。 如果你的应用处于应用服务环境中，它已在虚拟网络中，不需要虚拟网络集成即可访问同一虚拟网络中的资源。
 
-You can use virtual network integration to enable access from apps to databases and web services running in your virtual network. With virtual network integration, you don't need to expose a public endpoint for applications on your VM. You can use private, non-internet routable addresses instead.
+可以使用虚拟网络集成来从应用访问虚拟网络中运行的数据库和 Web 服务。 使用虚拟网络集成就不需要公开 VM 上应用程序的公共终结点。 可以改用专用的非 internet 可路由地址。
 
-There are two forms of virtual network integration:
+虚拟网络集成有两种形式：
 
-+ **Regional virtual network integration (preview)** : Enables integration with virtual networks in the same region. This type of integration requires a subnet in a virtual network in the same region. This feature is still in preview, but it's supported for function apps running on Windows, with the caveats described after the following Problem/Solution table.
-+ **Gateway required virtual network integration**: Enables integration with virtual networks in remote regions, or with classic virtual networks. This type of integration requires deployment of a virtual network gateway into your VNet. This is a point-to-site VPN-based feature, which is supported only for function apps running on Windows.
++ **区域虚拟网络集成（预览版）** ：可在同一区域中与虚拟网络集成。 这种类型的集成需要在同一区域的虚拟网络中有一个子网。 此功能仍处于预览状态，但在 Windows 上运行的函数应用支持此功能，但在下面的问题/解决方案表后面有说明。
++ **网关所需的虚拟网络集成**：允许与远程区域或经典虚拟网络的虚拟网络集成。 这种类型的集成要求在 VNet 中部署虚拟网络网关。 这是一个基于点到站点 VPN 的功能，仅支持在 Windows 上运行的函数应用。
 
-An app can use only one type of the virtual network integration feature at a time. Although both are useful for many scenarios, the following table indicates where each should be used:
+应用一次只能使用一种类型的虚拟网络集成功能。 尽管这两种方案对许多情况都很有用，但下表指明了应使用每个方案的位置：
 
 | 问题  | 解决方案 |
 |----------|----------|
-| Want to reach an RFC 1918 address (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in the same region | Regional virtual network integration |
-| Want to reach resources in a Classic virtual network or a virtual network in another region | Gateway required virtual network integration |
-| Want to reach RFC 1918 endpoints across Azure ExpressRoute | Regional virtual network integration |
-| Want to reach resources across service endpoints | Regional virtual network integration |
+| 想要访问同一区域中的某个 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域虚拟网络集成 |
+| 想要访问经典虚拟网络或另一个区域中的虚拟网络中的资源 | 网关所需的虚拟网络集成 |
+| 想要跨 Azure ExpressRoute 访问 RFC 1918 终结点 | 区域虚拟网络集成 |
+| 想要跨服务终结点访问资源 | 区域虚拟网络集成 |
 
-Neither feature lets you reach non-RFC 1918 addresses across ExpressRoute. To do that, you currently have to use an App Service Environment.
+这两种功能都不允许跨 ExpressRoute 访问非 RFC 1918 地址。 为此，您当前必须使用应用服务环境。
 
-Using regional virtual network integration doesn't connect your virtual network to on-premises endpoints or configure service endpoints. That's a separate networking configuration. Regional virtual network integration just enables your app to make calls across those connection types.
+使用区域虚拟网络集成不会将虚拟网络连接到本地终结点或配置服务终结点。 这是一个单独的网络配置。 区域虚拟网络集成只是使应用程序能够在这些连接类型上进行调用。
 
-Regardless of the version used, virtual network integration gives your function app access to resources in your virtual network but doesn't grant private site access to your function app from the virtual network. Private site access means making your app accessible only from a private network like an Azure virtual network. virtual network integration is only for making outbound calls from your app into your virtual network.
+无论使用何种版本，虚拟网络集成都使函数应用能够访问虚拟网络中的资源，但不会授予对虚拟网络中的函数应用的专用站点访问权限。 "专用站点访问" 意味着使应用只能通过专用网络（如 Azure 虚拟网络）进行访问。 虚拟网络集成仅适用于从应用到虚拟网络的出站调用。
 
-The virtual network integration feature:
+虚拟网络集成功能：
 
-* Requires a Standard, Premium, or PremiumV2 App Service plan
-* Supports TCP and UDP
-* Works with App Service apps and function apps
+* 需要标准、高级或 PremiumV2 应用服务计划
+* 支持 TCP 和 UDP
+* 适用于应用服务应用和函数应用
 
-There are some things that virtual network integration doesn't support, including:
+虚拟网络集成不支持某些功能，其中包括：
 
 * 装载驱动器
 * Active Directory 集成
 * NetBIOS
 
-Virtual network integration in Azure Functions uses shared infrastructure with App Service web apps. To learn more about the two types of virtual network integration, see:
+Azure Functions 中的虚拟网络集成使用共享基础结构和应用服务 web 应用。 若要了解有关这两种类型的虚拟网络集成的详细信息，请参阅：
 
-* [Regional virtual network Integration](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
-* [Gateway required virtual network integration](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+* [区域虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
+* [网关所需的虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-To learn more about using virtual network integration, see [Integrate a function app with an Azure virtual network](functions-create-vnet.md).
+若要详细了解如何使用虚拟网络集成，请参阅将[function app 与 Azure 虚拟网络集成](functions-create-vnet.md)。
 
-## <a name="connecting-to-service-endpoint-secured-resources"></a>Connecting to service endpoint secured resources
+## <a name="connecting-to-service-endpoint-secured-resources"></a>连接到服务终结点保护的资源
 
 > [!NOTE]
-> For now, it may take up to 12 hours for new service endpoints to become available to your function app after you configure access restrictions on the downstream resource. During this time the resource will be completely unavailable to your app.
+> 目前，在配置下游资源的访问限制后，最多可能需要12小时的时间，新服务终结点才可用于函数应用。 在此期间，资源将对应用完全不可用。
 
-To provide a higher level of security, you can restrict a number of Azure services to a virtual network by using service endpoints. You must then integrate your function app with that virtual network to access the resource. This configuration is supported on all plans that support virtual network integration.
+若要提供更高级别的安全性，可以使用服务终结点将多个 Azure 服务限制为一个虚拟网络。 然后，必须将函数应用与该虚拟网络集成，才能访问资源。 支持虚拟网络集成的所有计划都支持此配置。
 
-[Learn more about virtual network service endpoints.](../virtual-network/virtual-network-service-endpoints-overview.md)
+[详细了解虚拟网络服务终结点。](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Restricting your storage account to a virtual network
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络
 
-When you create a function app, you must create or link to a general-purpose Azure Storage account that supports Blob, Queue, and Table storage. You can't currently use any virtual network restrictions on this account. If you configure a virtual network service endpoint on the storage account you're using for your function app, that will break your app.
+创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。
 
-[Learn more about storage account requirements.](./functions-create-function-app-portal.md#storage-account-requirements)
+[了解有关存储帐户要求的详细信息。](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>Using Key Vault references 
+### <a name="using-key-vault-references"></a>使用 Key Vault 引用 
 
-Key Vault references allow you to use secrets from Azure Key Vault in your Azure Functions application without requiring any code changes. Azure Key Vault is a service that provides centralized secrets management, with full control over access policies and audit history.
+Key Vault 引用允许在 Azure Functions 应用程序中使用 Azure Key Vault 的机密，无需进行任何代码更改。 Azure Key Vault 是一种提供集中式机密管理的服务，可以完全控制访问策略和审核历史记录。
 
-Currently [Key Vault references](../app-service/app-service-key-vault-references.md) will not work if your Key Vault is secured with service endpoints. To connect to a Key Vault using virtual network integration you will need to call key vault in your application code.
+如果你的 Key Vault 通过服务终结点进行保护，则当前[Key Vault 引用](../app-service/app-service-key-vault-references.md)将不起作用。 若要使用虚拟网络集成连接到 Key Vault，需要在应用程序代码中调用密钥保管库。
 
-## <a name="virtual-network-triggers-non-http"></a>Virtual network triggers (non-HTTP)
+## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器（非 HTTP）
 
-Currently, to use function triggers other than HTTP from within a virtual network, you must run your function app in an App Service plan or in an App Service Environment.
+目前，若要在虚拟网络中使用除 HTTP 之外的函数触发器，必须在应用服务计划或应用服务环境中运行函数应用。
 
-For example, assume you want to configure Azure Cosmos DB to accept traffic only from a virtual network. You would need to deploy your function app in an app service plan that provides virtual network integration with that virtual network in order to configure Azure Cosmos DB triggers from that resource. During preview, configuring virtual network integration doesn't allow the Premium plan to trigger off that Azure Cosmos DB resource.
+例如，假设要将 Azure Cosmos DB 配置为仅接受来自虚拟网络的流量。 需要在应用服务计划中部署函数应用，该计划提供与该虚拟网络的虚拟网络集成，以便从该资源配置 Azure Cosmos DB 触发器。 在预览期间，配置虚拟网络集成不允许高级计划触发该 Azure Cosmos DB 资源。
 
-See [this list for all non-HTTP triggers](./functions-triggers-bindings.md#supported-bindings) to double-check what's supported.
+请查看[此列表以了解所有非 HTTP 触发器](./functions-triggers-bindings.md#supported-bindings)，以仔细检查受支持的内容。
 
 ## <a name="hybrid-connections"></a>混合连接
 
-[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) is a feature of Azure Relay that you can use to access application resources in other networks. 使用混合连接可以从应用访问应用程序终结点。 You can't use it to access your application. Hybrid Connections is available to functions running in all but the Consumption plan.
+[混合连接](../service-bus-relay/relay-hybrid-connections-protocol.md)是可用于访问其他网络中的应用程序资源的一项 Azure 中继功能。 使用混合连接可以从应用访问应用程序终结点。 不能使用混合连接来访问应用程序。 在除消耗计划以外的所有计划中运行的函数都可以使用混合连接。
 
-As used in Azure Functions, each hybrid connection correlates to a single TCP host and port combination. This means that the hybrid connection's endpoint can be on any operating system and any application as long as you're accessing a TCP listening port. The Hybrid Connections feature doesn't know or care what the application protocol is or what you're accessing. It just provides network access.
+在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着混合连接的终结点可以位于任何操作系统和任何应用程序上，只要你要访问 TCP 侦听端口。 混合连接功能不知道或不关心应用程序协议或要访问的内容。 它只提供网络访问。
 
-To learn more, see the [App Service documentation for Hybrid Connections](../app-service/app-service-hybrid-connections.md). These same configuration steps support Azure Functions.
+若要了解详细信息，请参阅[应用服务文档中的混合连接](../app-service/app-service-hybrid-connections.md)。 Azure Functions 支持这些相同的配置步骤。
 
-## <a name="outbound-ip-restrictions"></a>Outbound IP restrictions
+## <a name="outbound-ip-restrictions"></a>出站 IP 限制
 
-Outbound IP restrictions are available only for functions deployed to an App Service Environment. You can configure outbound restrictions for the virtual network where your App Service Environment is deployed.
+出站 IP 限制仅适用于部署到应用服务环境的函数。 你可以为部署应用服务环境的虚拟网络配置出站限制。
 
-When you integrate a function app in a Premium plan or an App Service plan with a virtual network, the app can still make outbound calls to the internet.
+将高级计划或应用服务计划中的函数应用与虚拟网络集成时，应用仍可对 internet 进行出站调用。
 
 ## <a name="next-steps"></a>后续步骤
 
-To learn more about networking and Azure Functions:
+若要详细了解网络和 Azure Functions ，请参阅以下链接：
 
-* [Follow the tutorial about getting started with virtual network integration](./functions-create-vnet.md)
-* [Read the Functions networking FAQ](./functions-networking-faq.md)
-* [Learn more about virtual network integration with App Service/Functions](../app-service/web-sites-integrate-with-vnet.md)
-* [Learn more about virtual networks in Azure](../virtual-network/virtual-networks-overview.md)
-* [Enable more networking features and control with App Service Environments](../app-service/environment/intro.md)
-* [Connect to individual on-premises resources without firewall changes by using Hybrid Connections](../app-service/app-service-hybrid-connections.md)
+* [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
+* [阅读 Azure Functions 网络常见问题解答](./functions-networking-faq.md)
+* [详细了解虚拟网络与应用服务/Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
+* [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
+* [启用应用服务环境的更多网络功能和控制](../app-service/environment/intro.md)
+* [在不更改防火墙的情况下使用混合连接连接到单个本地资源](../app-service/app-service-hybrid-connections.md)

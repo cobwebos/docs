@@ -57,7 +57,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
-1. 检查 `Microsoft.ServiceFabric/clusters` 资源的 `apiversion` 是否设置为 `2017-07-01-preview` 或更高，如果不是，请按以下示例所示进行更新：
+1. 检查 `apiversion` 资源的 `2017-07-01-preview` 是否设置为 `Microsoft.ServiceFabric/clusters` 或更高，如果不是，请按以下示例所示进行更新：
 
     ```json
     {
@@ -71,7 +71,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 2. 现在，通过以下方式之一启用 DNS 服务：
 
-   - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
+   - 若要启用采用默认设置的 DNS 服务，请将其添加到 `addonFeatures` 节中的 `properties` 节，如以下示例所示：
 
         ```json
           "properties": {
@@ -83,7 +83,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
           }
         ```
 
-   - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+   - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `fabricSettings` 节中的 `properties` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
        ```json
            "properties": {
@@ -114,10 +114,10 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
 
 > [!NOTE]
-> When upgrading DNS from disabled to enabled, Service Fabric Explorer may not reflect the new state. To solve, restart the nodes by modifying the UpgradePolicy in your Azure Resource Manager template. See the [Service Fabric Template Reference](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) for more.
+> 将 DNS 从 "已禁用" 升级为 "已启用" 时，Service Fabric Explorer 可能不会反映新状态。 若要解决此情况，请通过修改 Azure 资源管理器模板中的 UpgradePolicy 重启节点。 有关详细信息，请参阅[Service Fabric 模板参考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
 
 > [!NOTE]
-> Enabling DNS service when developing on a local machine will override some DNS settings. If you experience issues connecting to the internet, check your DNS settings.
+> 在本地计算机上进行开发时启用 DNS 服务将替代某些 DNS 设置。 如果在连接到 internet 时遇到问题，请检查 DNS 设置。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
@@ -181,10 +181,10 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-地点：
+其中：
 
 - *First-Label-Of-Partitioned-Service-DNSName* 是服务 DNS 名称的第一个部分。
-- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 The default value is "--". 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为“--”。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Target-Partition-Name* 是分区的名称。 
 - *PartitionSuffix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为空字符串。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Remaining-Partitioned-Service-DNSName* 是服务 DNS 名称的剩余部分。

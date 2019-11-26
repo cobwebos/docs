@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Database for MySQL - Single Server
-description: An overview of the security features in Azure Database for MySQL - Single Server.
+title: Azure Database for MySQL 中的安全性-单一服务器
+description: Azure Database for MySQL-单服务器中的安全功能概述。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -13,42 +13,42 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485050"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Security in Azure Database for MySQL - Single Server
+# <a name="security-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 中的安全性-单一服务器
 
-There are multiple layers of security that are available to protect the data on your Azure Database for MySQL server. This article outlines those security options.
+有多个安全层可用于保护 Azure Database for MySQL 服务器上的数据。 本文概述了这些安全选项。
 
 ## <a name="information-protection-and-encryption"></a>信息保护和加密
 
-### <a name="in-transit"></a>In-transit
-Azure Database for MySQL secures your data by encrypting data in-transit with Transport Layer Security. Encryption (SSL/TLS) is enforced by default.
+### <a name="in-transit"></a>传输中
+Azure Database for MySQL 通过使用传输层安全性对传输中的数据进行加密来保护数据。 默认情况下，强制实施加密（SSL/TLS）。
 
-### <a name="at-rest"></a>At-rest
-Azure Database for MySQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 Data, including backups, are encrypted on disk, with the exception of temporary files created while running queries. 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
+### <a name="at-rest"></a>静止
+Azure Database for MySQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，在运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 
 
 ## <a name="network-security"></a>网络安全
-Connections to an Azure Database for MySQL server are first routed through a regional gateway. The gateway has a publicly accessible IP, while the server IP addresses are protected. For more information about the gateway, visit the [connectivity architecture article](concepts-connectivity-architecture.md).  
+与 Azure Database for MySQL 服务器的连接先通过区域网关进行路由。 网关具有可公开访问的 IP，而服务器 IP 地址受到保护。 有关网关的详细信息，请访问[连接体系结构一文](concepts-connectivity-architecture.md)。  
 
-A newly created Azure Database for MySQL server has a firewall that blocks all external connections. Though they reach the gateway, they are not allowed to connect to the server. 
+新创建的 Azure Database for MySQL 服务器具有阻止所有外部连接的防火墙。 尽管它们到达网关，但不允许它们连接到服务器。 
 
 ### <a name="ip-firewall-rules"></a>IP 防火墙规则
-IP firewall rules grant access to servers based on the originating IP address of each request. See the [firewall rules overview](concepts-firewall-rules.md) for more information.
+IP 防火墙规则根据每个请求的起始 IP 地址授予对服务器的访问权限。 有关详细信息，请参阅[防火墙规则概述](concepts-firewall-rules.md)。
 
 ### <a name="virtual-network-firewall-rules"></a>虚拟网络防火墙规则
-Virtual network service endpoints extend your virtual network connectivity over the Azure backbone. Using virtual network rules you can enable your Azure Database for MySQL server to allow connections from selected subnets in a virtual network. For more information, see the [virtual network service endpoint overview](concepts-data-access-and-security-vnet.md).
+虚拟网络服务终结点通过 Azure 主干扩展你的虚拟网络连接。 使用虚拟网络规则，你可以使 Azure Database for MySQL 服务器允许来自虚拟网络中所选子网的连接。 有关详细信息，请参阅[虚拟网络服务终结点概述](concepts-data-access-and-security-vnet.md)。
 
 
 ## <a name="access-management"></a>访问管理
 
-While creating the Azure Database for MySQL server, you provide credentials for an administrator user. This administrator can be used to create additional MySQL users.
+创建 Azure Database for MySQL 服务器时，需要为管理员用户提供凭据。 此管理员可用于创建其他 MySQL 用户。
 
 
 ## <a name="threat-protection"></a>威胁防护
 
-You can opt in to [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) which detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit servers.
+你可以选择 "[高级威胁防护](concepts-data-access-and-security-threat-protection.md)"，它会检测异常活动，这些活动表示对访问或利用服务器的异常和潜在有害尝试。
 
-[Audit logging](concepts-audit-logs.md) is available to track activity in your databases. 
+[审核日志记录](concepts-audit-logs.md)可用于跟踪数据库中的活动。 
 
 
 ## <a name="next-steps"></a>后续步骤
-- Enable firewall rules for [IPs](concepts-firewall-rules.md) or [virtual networks](concepts-data-access-and-security-vnet.md)
+- 为[IPs](concepts-firewall-rules.md)或[虚拟网络](concepts-data-access-and-security-vnet.md)启用防火墙规则

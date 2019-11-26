@@ -1,6 +1,6 @@
 ---
-title: Conditional Access - Combined security information - Azure Active Directory
-description: Create a custom Conditional Access policy to require a trusted location for security info registration
+title: 条件性访问-组合的安全信息-Azure Active Directory
+description: 创建自定义条件访问策略以要求受信任位置进行安全信息注册
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,37 +18,37 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74322735"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Conditional Access: Require trusted location for MFA registration
+# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件性访问：要求受信任的位置进行 MFA 注册
 
-Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
+使用条件性访问策略中的用户操作，可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 在需要用户在 HR 载入期间从中心位置注册 Azure 多重身份验证和 SSPR （如受信任的网络位置）的组织中，可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息，请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
 
-The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
+以下策略适用于所有选定的用户，这些用户尝试使用组合注册体验进行注册，并阻止访问，除非它们从标记为受信任网络的位置进行连接。
 
-1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**.
+1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **条件性访问**。
 1. 选择“新策略”。
-1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**.
-1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to.
+1. 在 "名称" 中，输入此策略的名称。 例如，**受信任的网络上的合并安全信息注册**。
+1. 在 "**分配**" 下，单击 "**用户和组**"，然后选择你想要将此策略应用到的用户和组。
 
    > [!WARNING]
-   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
+   > 必须为用户启用[组合注册预览](../authentication/howto-registration-mfa-sspr-combined.md)。
 
-1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)** .
-1. Under **Conditions** > **Locations**.
-   1. Configure **Yes**.
-   1. Include **Any location**.
-   1. Exclude **All trusted locations**.
-   1. Click **Done** on the Locations blade.
-   1. Click **Done** on the Conditions blade.
-1. Under **Access controls** > **Grant**.
-   1. Click **Block access**.
+1. 在 "**云应用或操作**" 下，选择 "**用户操作**"，然后选中 "**注册安全信息（预览版）** "。
+1. 在 "**条件** > **位置**" 下。
+   1. 配置 **"是"** 。
+   1. 包含**任何位置**。
+   1. 排除**所有受信任的位置**。
+   1. 单击 "位置" 边栏选项卡上的 "**完成**"。
+   1. 单击 "条件" 边栏选项卡上的 "**完成**"。
+1.  > **Grant**下的 "**访问控制**"。
+   1. 单击 "**阻止访问**"。
    1. 然后单击“选择”。
-1. Set **Enable policy** to **On**.
+1. 将“启用策略”设置为“打开”。
 1. 然后单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Conditional Access common policies](concept-conditional-access-policy-common.md)
+[条件访问常见策略](concept-conditional-access-policy-common.md)
 
-[Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md)
+[使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

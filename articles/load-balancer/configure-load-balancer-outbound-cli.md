@@ -24,11 +24,11 @@ ms.locfileid: "74225471"
 
 本快速入门介绍如何使用 Azure CLI 在标准负载均衡器中配置出站规则。  
 
-完成后，负载均衡器资源包含两个前端以及与之关联的规则：一个前端用于入站，另一个前端用于出站。  每个前端都会引用一个公共 IP 地址，此方案对于入站和出站使用不同的公共 IP 地址。   负载均衡规则仅提供入站负载均衡，由出站规则控制为 VM 提供的出站 NAT。  This quickstart uses two separate backend pools, one for inbound and one for outbound, to illustrate capability and allow for flexibility for this scenario.
+完成后，负载均衡器资源包含两个前端以及与之关联的规则：一个前端用于入站，另一个前端用于出站。  每个前端都会引用一个公共 IP 地址，此方案对于入站和出站使用不同的公共 IP 地址。   负载均衡规则仅提供入站负载均衡，由出站规则控制为 VM 提供的出站 NAT。  本快速入门使用两个独立的后端池（一个用于入站连接，一个用于出站连接）来演示功能，以及如何灵活实施此方案。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -42,7 +42,7 @@ ms.locfileid: "74225471"
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>创建虚拟网络
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 *mysubnetoutbound* 的子网。
+使用 *az network vnet create* 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 [mysubnetoutbound](https://docs.microsoft.com/cli/azure/network/vnet) 的子网。
 
 ```azurecli-interactive
   az network vnet create \
@@ -73,15 +73,15 @@ ms.locfileid: "74225471"
 
 本部分详细介绍如何创建和配置负载均衡器的以下组件：
   - 前端 IP，用于在负载均衡器上接收传入网络流量。
-  - A backend pool where the frontend IP sends the load balanced network traffic.
-  - A backend pool for outbound connectivity. 
+  - 后端池，前端 IP 将负载均衡的网络流量发送到此处。
+  - 用于出站连接的后端池。 
   - 运行状况探测，用于确定后端 VM 实例的运行状况。
   - 负载均衡器入站规则，用于定义如何将流量分配给 VM。
   - 负载均衡器出站规则，用于定义如何从 VM 分配流量。
 
 ### <a name="create-load-balancer"></a>创建负载均衡器
 
-Create a Load Balancer with the inbound IP address using [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named *lb* that includes an inbound frontend IP configuration and a backend pool *bepoolinbound* that is associated with the public IP address *mypublicipinbound* that you created in the preceding step.
+使用 [az network lb create ](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 *lb* 的入站 IP 地址负载均衡器，该负载均衡器包括入站前端 IP 配置和后端池 *bepoolinbound*（与在前一步创建的公共 IP 地址 *mypublicipinbound* 相关联）。
 
 ```azurecli-interactive
   az network lb create \
@@ -94,9 +94,9 @@ Create a Load Balancer with the inbound IP address using [az network lb create](
     --public-ip-address mypublicipinbound   
   ```
 
-### <a name="create-outbound-pool"></a>Create outbound pool
+### <a name="create-outbound-pool"></a>创建出站池
 
-Create an additional backend address pool to define outbound connectivity for a pool of VMs with [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) with the name *bepooloutbound*.  Creating a separate outbound pool provides maximum flexibility, but you can omit this step and only use the inbound *bepoolinbound* as well.
+使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 *bepooloutbound* 的另一个后端地址池，用于定义 VM 池的出站连接。  创建独立的出站池可以提供最大的灵活性，但你也可以忽略此步骤，仅使用入站池 *bepoolinbound*。
 
 ```azurecli-interactive
   az network lb address-pool create \
@@ -132,7 +132,7 @@ Create an additional backend address pool to define outbound connectivity for a 
 
 ### <a name="create-load-balancing-rule"></a>创建负载均衡规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myinboundlbrule*，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myinboundlbrule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
 
 >[!NOTE]
 >此负载均衡规则通过其 --disable-outbound-snat 参数禁用自动出站 (S)NAT。 出站 NAT 仅通过出站规则提供。
@@ -167,9 +167,9 @@ az network lb outbound-rule create \
  --address-pool bepooloutbound
 ```
 
-If you do not want to use a separate outbound pool, you can change the address pool argument in the preceding command to specify *bepoolinbound* instead.  We recommend to use separate pools for flexibility and readability of the resulting configuration.
+如果你不想要使用独立的出站池，可以更改上述命令中的地址池参数，以指定 *bepoolinbound*。  我们建议使用独立的池，以提高灵活性，并方便阅读最终的配置。
 
-At this point, you can proceed with adding your VM's to the backend pool *bepoolinbound* __and__ *bepooloutbound* by updating the IP configuration of the respective NIC resources using [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
+此时，可以使用 *az network nic ip-config address-pool add*，通过更新相应 NIC 资源的 IP 配置来继续将 VM 添加到后端池 __bepoolinbound__ *和* [bepooloutbound](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

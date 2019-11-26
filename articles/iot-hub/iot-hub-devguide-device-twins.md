@@ -26,7 +26,7 @@ ms.locfileid: "74209714"
 * 设备孪生的结构：标记、所需的属性和报告的属性。
 * 设备应用和后端可在设备孪生上执行的操作。
 
-使用设备克隆可以：
+使用设备孪生可以：
 
 * 将设备特定的元数据存储在云中。 例如，存储在自动售货机的部署位置。
 
@@ -54,9 +54,9 @@ ms.locfileid: "74209714"
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备应用不可见。
 
-* **所需的属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
+* **所需属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
 
-* **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。
 
@@ -182,7 +182,7 @@ ms.locfileid: "74209714"
 
   - 属性
 
-    | 名称 | Value |
+    | 名称 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -196,9 +196,9 @@ ms.locfileid: "74209714"
 
     消息系统属性以 `$` 符号为前缀。
 
-  - Body
+  - 正文
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，应用于对象的
 
     ```json
     {
@@ -219,7 +219,7 @@ ms.locfileid: "74209714"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要**控制对 IoT 中心的访问**中定义的 [ServiceConnect](iot-hub-devguide-security.md) 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
@@ -231,13 +231,13 @@ ms.locfileid: "74209714"
 
 设备应用使用以下原子操作对设备克隆执行操作：
 
-* **检索设备孪生**。 This operation returns the device twin document (including desired and reported system properties) for the currently connected device. (Tags are not visible to device apps.)
+* **检索设备克隆**。 此操作返回当前连接的设备的设备克隆文档（包括所需的系统属性和报告的系统属性）。 （标记对设备应用不可见。）
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的设备的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 
 * **观察所需属性**。 当前连接的设备可以选择在所需属性发生更新时接收通知。 设备收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
+上述所有操作都需要**控制对 IoT 中心的访问**中定义的 [DeviceConnect](iot-hub-devguide-security.md) 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 
@@ -245,11 +245,11 @@ ms.locfileid: "74209714"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* All keys in JSON objects are UTF-8 encoded, case-sensitive, and up-to 1 KB in length. 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* JSON 对象中的所有键都是 UTF-8 编码、区分大小写和最大为 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
 * JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
 
-* All JSON objects in tags, desired, and reported properties can have a maximum depth of 10. 例如，以下对象是有效的：
+* 标记、所需属性和报告属性中的所有 JSON 对象的最大深度为10。 例如，以下对象是有效的：
 
    ```json
    {

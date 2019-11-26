@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Classify, predict income example'
+title: 设计器：分类，预测收入示例
 titleSuffix: Azure Machine Learning
-description: Follow this example build a no-code classifier to predict income with Azure Machine Learning designer.
+description: 按照此示例生成一个无代码分类器，使用 Azure 机器学习设计器预测收入。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,57 +17,57 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214146"
 ---
-# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Build a classifier & use feature selection to predict income with Azure Machine Learning designer
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>生成分类器 & 使用功能选择通过 Azure 机器学习设计器预测收入
 
-**Designer (preview) sample 3**
+**设计器（预览）示例3**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Learn how to build a machine learning classifier without writing a single line of code using the designer (preview). This sample trains a **two-class boosted decision tree** to predict adult census income (>=50K or <=50K).
+了解如何在不编写代码的情况下使用设计器（预览）生成机器学习分类器。 本示例训练一个**双类提升决策树**，以预测成人人口收益（> = 50K 或 < = 50K）。
 
-Because the question is answering "Which one?" this is called a classification problem. However, you can apply the same fundamental process to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
+因为问题回答 "哪一个？" 这称为分类问题。 但是，您可以应用相同的基本过程来解决任何类型的机器学习问题，无论是回归、分类、群集等。
 
-Here's the final pipeline graph for this sample:
+下面是此示例的最终管道图：
 
-![Graph of the pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
+![管道的图形](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Click the sample 3 to open it.
+4. 单击示例3打开它。
 
 
 
 ## <a name="data"></a>数据
 
-The dataset contains 14 features and one label column. There are multiple types of features, including numerical and categorical. The following diagram shows an excerpt from the dataset: ![data](media/how-to-designer-sample-classification-predict-income/data.png)
+数据集包含14个特征和一个标签列。 有多种类型的功能，包括数字和分类。 下图显示了数据集的摘录： ![数据](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
-## <a name="pipeline-summary"></a>Pipeline summary
+## <a name="pipeline-summary"></a>管道摘要
 
-Follow these steps to create the pipeline:
+按照以下步骤创建管道：
 
-1. Drag the Adult Census Income Binary dataset module into the pipeline canvas.
-1. Add a **Split Data** module to create the training and test sets. Set the fraction of rows in the first output dataset to 0.7. This setting specifies that 70% of the data will be output to the left port of the module and the rest to the right port. We use the left dataset for training and the right one for testing.
-1. Add the **Filter Based Feature Selection** module to select 5 features by PearsonCorreclation. 
-1. Add a **Two-Class Boosted Decision Tree** module to initialize a boosted decision tree classifier.
-1. Add a **Train Model** module. Connect the classifier from the previous step to the left input port of the **Train Model**. Connect the filtered dataset from Filter Based Feature Selection module as training dataset.  The **Train Model** will train the classifier.
-1. Add Select Columns Transformation and Apply Transformation module to apply the same transformation (filtered based feature selection) to test dataset.
-![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
-1. Add **Score Model** module and connect the **Train Model** module to it. Then add the test set (the output of Apply Transformation module which apply feature selection to test set too) to the **Score Model**. The **Score Model** will make the predictions. You can select its output port to see the predictions and the positive class probabilities.
+1. 将 "成人人口收入二进制数据集" 模块拖入管道画布。
+1. 添加 "**拆分数据**" 模块以创建定型集和测试集。 将第一个输出数据集中的行的小数部分设置为0.7。 此设置指定将70% 的数据输出到模块的左端口，将其余的数据输出到正确的端口。 我们使用左侧的数据集进行培训，使用正确的数据集进行测试。
+1. 添加**基于筛选器的特征选择**模块，按 PearsonCorreclation 选择5个特征。 
+1. 添加一个**双类提升决策树**模块来初始化提升决策树分类器。
+1. 添加 "**训练模型**" 模块。 将上一步中的分类器连接到**定型模型**的左侧输入端口。 将筛选的数据集从基于筛选器的特征选择模块连接为定型数据集。  **训练模型**将对分类器进行定型。
+1. 添加 "选择列" "转换并应用转换" 模块，以将相同的转换（基于筛选的功能选择）应用于测试数据集。
+![应用转换](media/how-to-designer-sample-classification-predict-income/transformation.png)
+1. 添加 "**评分模型**" 模块并将 "**定型模型**" 模块连接到该模块。 然后将测试集（应用转换模块的输出，它也将功能选择应用于测试集）添加到**评分模型**。 **评分模型**将进行预测。 您可以选择其输出端口来查看预测和正类概率。
 
 
-    This pipeline has two score modules, the one on the right has excluded label column before make the prediction. This is prepared to deploy a real-time endpoint, because the web service input will expect only features not label. 
+    此管道有两个评分模块，在进行预测之前，右侧的模块已排除标签列。 这是为了部署实时终结点做好准备，因为 web 服务输入只需要 "不标记功能"。 
 
-1. Add an **Evaluate Model** module and connect the scored dataset to its left input port. To see the evaluation results, select the output port of the **Evaluate Model** module and select **Visualize**.
+1. 添加 "**评估模型**" 模块并将评分的数据集连接到其左侧输入端口。 若要查看评估结果，请选择 "**评估模型**" 模块的输出端口，并选择 "**可视化**"。
 
 ## <a name="results"></a>结果
 
 ![评估结果](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
-In the evaluation results, you can see that the curves like ROC, Precision-recall and confusion metrics. 
+在评估结果中，可以看到类似于 ROC、精度召回和混淆指标的曲线。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -75,11 +75,11 @@ In the evaluation results, you can see that the curves like ROC, Precision-recal
 
 ## <a name="next-steps"></a>后续步骤
 
-Explore the other samples available for the designer:
+浏览可用于设计器的其他示例：
 
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
-- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
+- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
+- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
+- [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)

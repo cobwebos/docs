@@ -1,6 +1,6 @@
 ---
 title: Threat Modeling Tool 发行版 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 阐述 Threat Modeling Tool 的发行说明
+description: 记录威胁建模工具的发行说明
 services: security
 documentationcenter: na
 author: jegeib
@@ -21,39 +21,39 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233826"
 ---
-# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool update release 7.1.61015.1 - 10/16/2019
+# <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新版 7.1.61015.1 - 2019/10/16
 
-Version 7.1.61015.1 of the Microsoft Threat Modeling Tool (TMT) was released on October 16 2019 and contains the following changes:
+16 2019 年10月发布了 Microsoft Threat Modeling Tool （TMT）的版本7.1.61015.1，其中包含以下更改：
 
-- Accessibility improvements
+- 辅助功能改进
 - Bug 修复
-- New stencils for Azure Logic Apps and Azure Data Explorer
+- 适用于 Azure 逻辑应用和 Azure 数据资源管理器的新模具
 
-## <a name="notable-bug-fixes"></a>Notable bug fixes
+## <a name="notable-bug-fixes"></a>值得注意的 bug 修复
 
-### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>Improved backward compatibility with files created in "Threat Modeling Tool 2016"
+### <a name="improved-backward-compatibility-with-files-created-in-threat-modeling-tool-2016"></a>提高了与 "Threat Modeling Tool 2016" 中创建的文件的向后兼容性
 
-Several bugs related to the opening or display of threat model files created in "Threat Modeling Tool 2016" have been fixed.
+已修复与打开或显示在 "Threat Modeling Tool 2016" 中创建的威胁模型文件相关的几个 bug。
 
-## <a name="feature-enhancements"></a>Feature enhancements
+## <a name="feature-enhancements"></a>功能增强
 
-### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>New stencils for Azure Logic Apps and Azure Data Explorer
+### <a name="new-stencils-for-azure-logic-apps-and-azure-data-explorer"></a>适用于 Azure 逻辑应用和 Azure 数据资源管理器的新模具
 
-New stencils for Azure Logic Apps and Azure Data Explorer were added to the Azure Stencil along with their associated threats and mitigations.
+已将适用于 Azure 逻辑应用和 Azure 数据资源管理器的新模具添加到 Azure 模具及其相关威胁和缓解措施。
 
-![Azure Logic Apps and Azure Data Explorer Stencils](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
+![Azure 逻辑应用和 Azure 数据资源管理器模具](./media/threat-modeling-tool-releases-71610151/tmt-logic-apps.png)
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>Errors related to priority values outside of the expected ranges
+### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>与预期范围外的优先级值相关的错误
 
-Some customers have reported receiving the following error message when opening files created in the "Threat Modeling Tool 2016" or custom templates:
+当打开在 "Threat Modeling Tool 2016" 或自定义模板中创建的文件时，某些客户报告接收到以下错误消息：
 
     System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
     
     System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
 
-This issue is under investigation
+此问题正在调查中
 
 ## <a name="system-requirements"></a>系统要求
 
@@ -62,7 +62,7 @@ This issue is under investigation
 - 所需的 .NET 版本
   - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更高版本
 - 其他要求
-  - 需要建立 Internet 连接才能接收工具和模板的更新。
+  - 需要 Internet 连接才能接收工具和模板的更新。
 
 ## <a name="documentation-and-feedback"></a>文档和反馈
 

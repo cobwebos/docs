@@ -47,7 +47,7 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 Windows 代理正式支持以下版本的 Windows 操作系统：
 
 * Windows Server 2019
-* Windows Server 2008 SP2 （x64），2008 R2，2012，2012 R2，2016，版本1709和1803
+* Windows Server 2008 SP2 (x64)、2008 R2、2012、2012 R2、2016，版本 1709 和 1803
 * Windows 7 SP1、Windows 8 企业版和专业版，以及 Windows 10 企业版和专业版
 
 >[!NOTE]
@@ -140,7 +140,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 
 可以根据要求使用不同的方法，将 Azure 订阅或混合环境中的计算机直接连接到 Azure Monitor 日志。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|Source | 方法 | 说明|
+|source | 方法 | 说明|
 |-------|-------------|-------------|
 |Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>[从 Azure 门户中手动](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)- <br>- [Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md)| -扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将其注册到现有 Azure Monitor 工作区。<br>-Azure 安全中心可在所有受支持的 Azure Vm 和创建的任何新的 Azure Vm 上预配 Log Analytics 代理，以使其监视安全漏洞和威胁。 如果启用，则将预配未安装代理的任何新的或现有的虚拟机。|
 | 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 

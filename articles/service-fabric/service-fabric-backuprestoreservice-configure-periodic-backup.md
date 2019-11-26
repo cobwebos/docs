@@ -98,7 +98,7 @@ ms.locfileid: "74232496"
         }
         ```
 
-    2. **File share**: This storage type should be selected for _standalone_ clusters when the need is to store data backup on-premises. 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
+    2. **文件共享**：当需要在本地存储数据备份时，应为_独立_群集选择此存储类型。 描述此存储类型需要提供要将备份上传到的文件共享路径。 可以使用以下选项之一配置对文件共享的访问权限
         1. _集成 Windows 身份验证_，这会将对文件共享的访问权限提供给属于 Service Fabric 群集的所有计算机。 在这种情况下，请设置以下字段来配置基于“文件共享”的备份存储。
 
             ```json
@@ -127,8 +127,8 @@ ms.locfileid: "74232496"
 > 请确保存储可靠性满足或高于备份数据的可靠性要求。
 >
 
-* **Retention Policy**: Specifies the policy to retain backups in the configured storage. 只支持基本保留策略。
-    1. **Basic Retention Policy**: This retention policy allows to ensure optimal storage utilization by removing backup files which are no more required. 可指定 `RetentionDuration` 来设置需要在存储中保留备份的时间跨度。 `MinimumNumberOfBackups` 是一个可选参数，可指定该参数以确保无论 `RetentionDuration` 如何始终保留指定数量的备份。 以下示例说明了要将备份保留 10 天的配置，并且不允许备份数量低于 20。
+* **保留策略**：指定在配置的存储中保留备份的策略。 只支持基本保留策略。
+    1. **基本保留策略**：通过删除不再需要的备份文件，此保留策略可确保最佳存储利用率。 可指定 `RetentionDuration` 来设置需要在存储中保留备份的时间跨度。 `MinimumNumberOfBackups` 是一个可选参数，可指定该参数以确保无论 `RetentionDuration` 如何始终保留指定数量的备份。 以下示例说明了要将备份保留 10 天的配置，并且不允许备份数量低于 20。
 
         ```json
         {
@@ -167,16 +167,16 @@ ms.locfileid: "74232496"
 
 为解决这些数据备份要求，将创建备份策略 BP_1 到 BP_5 并启用备份，如下所述。
 1. MyApp_A
-    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 为应用程序 _MyApp_A_ 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
+    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用_启用应用程序备份_ API 为应用程序 [MyApp_A](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
 
-    2. 创建备份策略 _BP_2_，使其采用基于频率的备份计划且将频率设置为 1 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcA3_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_2_ 为服务 _SvcA3_ 的所有分区替代传播的策略 _BP_1_，从而导致使用备份策略 _BP_2_ 为这些分区执行数据备份。
+    2. 创建备份策略 _BP_2_，使其采用基于频率的备份计划且将频率设置为 1 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用_启用服务备份_ API 为服务 [SvcA3](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) 启用此策略。 此操作将使用显式启用的备份策略 _BP_2_ 为服务 _SvcA3_ 的所有分区替代传播的策略 _BP_1_，从而导致使用备份策略 _BP_2_ 为这些分区执行数据备份。
 
-    3. 创建备份策略 _BP_3_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore2_。 使用[启用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcA1_P2_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_3_ 为分区 _SvcA1_P2_ 替代传播的策略 _BP_1_。
+    3. 创建备份策略 _BP_3_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore2_。 使用_启用分区备份_ API 为分区 [SvcA1_P2](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) 启用此策略。 此操作将使用显式启用的备份策略 _BP_3_ 为分区 _SvcA1_P2_ 替代传播的策略 _BP_1_。
 
 2. MyApp_B
-    1. 创建备份策略 _BP_4_，使其采用基于时间的备份计划，将计划频率类型设置为每周，将运行日设置为星期日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcB1_ 启用此策略。 此操作为服务 _SvcB1_ 的所有分区启用使用备份策略 _BP_4_ 的数据备份。
+    1. 创建备份策略 _BP_4_，使其采用基于时间的备份计划，将计划频率类型设置为每周，将运行日设置为星期日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用_启用服务备份_ API 为服务 [SvcB1](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) 启用此策略。 此操作为服务 _SvcB1_ 的所有分区启用使用备份策略 _BP_4_ 的数据备份。
 
-    2. 创建备份策略 _BP_5_，使其采用基于时间的备份计划，将计划频率类型设置为每日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcB2_P1_ 启用此策略。 此操作为分区 _SvcB2_P1_ 启用使用备份策略 _BP_5_ 的数据备份。
+    2. 创建备份策略 _BP_5_，使其采用基于时间的备份计划，将计划频率类型设置为每日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用_启用分区备份_ API 为分区 [SvcB2_P1](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) 启用此策略。 此操作为分区 _SvcB2_P1_ 启用使用备份策略 _BP_5_ 的数据备份。
 
 下图描绘了显式启用的备份策略和传播的备份策略。
 

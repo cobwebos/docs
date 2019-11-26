@@ -5,7 +5,7 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: 使用 Azure 上的容器和微服务进行快速的 Kubernetes 开发
+description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3

@@ -1,6 +1,6 @@
 ---
-title: Migrate from v1 to v2 - Azure Application Gateway
-description: This article shows you how to migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+title: 从 v1 迁移到 v2-Azure 应用程序的网关
+description: 本文介绍如何将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -14,67 +14,67 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231730"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrate Azure Application Gateway and Web Application Firewall from v1 to v2
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
-[Azure Application Gateway and Web Application Firewall (WAF) v2](application-gateway-autoscaling-zone-redundant.md) is now available, offering additional features such as autoscaling and availability-zone redundancy. 但是，现有 v1 网关不会自动升级到 v2。 If you want to migrate from v1 to v2, follow the steps in this article.
+[Azure 应用程序网关和 Web 应用程序防火墙 (WAF) v2](application-gateway-autoscaling-zone-redundant.md) 现已推出，它提供自动缩放和可用性区域冗余等附加功能。 但是，现有 v1 网关不会自动升级到 v2。 若要从 v1 迁移到 v2，请遵循本文中的步骤。
 
-There are two stages in a migration:
+迁移分为两个阶段：
 
-1. Migrate the configuration
-2. Migrate the client traffic
+1. 迁移配置
+2. 迁移客户端流量
 
-This article covers configuration migration. Client traffic migration varies depending on your specific environment. However, some high-level, general recommendations [are provided](#migrate-client-traffic).
+本文介绍配置迁移。 客户端流量迁移过程因环境而异。 不过，本文提供了一些概要性的普通[建议](#migrate-client-traffic)。
 
 ## <a name="migration-overview"></a>迁移概述
 
-An Azure PowerShell script is available that does the following:
+我们提供了一个用于执行以下操作的 Azure PowerShell 脚本：
 
-* Creates a new Standard_v2 or WAF_v2 gateway in a virtual network subnet that you specify.
-* Seamlessly copies the configuration associated with the v1 Standard or WAF gateway to the newly created Standard_V2 or WAF_V2 gateway.
+* 在指定的虚拟网络子网中创建新的 Standard_v2 或 WAF_v2 网关。
+* 将与 v1 Standard 或 WAF 网关关联的配置无缝复制到新建的 Standard_V2 或 WAF_V2 网关。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* The new v2 gateway has new public and private IP addresses. It isn't possible to move the IP addresses associated with the existing v1 gateway seamlessly to v2. However, you can allocate an existing (unallocated) public or private IP address to the new v2 gateway.
-* You must provide an IP address space for another subnet within your virtual network where your v1 gateway is located. The script can't create the v2 gateway in any existing subnets that already have a v1 gateway. However, if the existing subnet already has a v2 gateway, that may still work provided there's enough IP address space.
-* To  migrate an SSL configuration, you must specify all the SSL certs used in your v1 gateway.
-* If you have FIPS mode enabled for your V1 gateway, it won’t be migrated to your new v2 gateway. FIPS mode isn't supported in v2.
-* v2 doesn't support IPv6, so IPv6 enabled v1 gateways aren't migrated. If you run the script, it may not complete.
-* If the v1 gateway has only a private IP address, the script creates a public IP address and a private IP address for the new v2 gateway. v2 gateways currently don't support only private IP addresses.
+* 新的 v2 网关使用新的公共和专用 IP 地址。 无法将与现有 v1 网关关联的 IP 地址无缝移动到 v2。 但是，可将现有的（未分配的）公共或专用 IP 地址分配到新的 v2 网关。
+* 必须为 v1 网关所在的虚拟网络中的另一个子网提供 IP 地址空间。 该脚本无法在已有 v1 网关的任何现有子网中创建 v2 网关。 但是，如果现有子网已包含 v2 网关，只要该子网具有足够的 IP 地址空间，它就仍可正常运行。
+* 若要迁移 SSL 配置，必须指定 v1 网关中使用的所有 SSL 证书。
+* 如果为 v1 网关启用了 FIPS 模式，该网关不会迁移到新的 v2 网关。 v2 不支持 FIPS 模式。
+* v2 不支持 IPv6，因此不会迁移启用了 IPv6 的 v1 网关。 如果运行该脚本，它可能不会完成。
+* 如果 v1 网关只有专用 IP 地址，该脚本将为新的 v2 网关创建一个公共 IP 地址和一个专用 IP 地址。 v2 网关目前不支持仅指定专用 IP 地址。
 
-## <a name="download-the-script"></a>Download the script
+## <a name="download-the-script"></a>下载脚本
 
-Download the migration script from the  [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAppGWMigration).
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureAppGWMigration)下载迁移脚本。
 
-## <a name="use-the-script"></a>Use the script
+## <a name="use-the-script"></a>使用脚本
 
-There are two options for you depending on your local PowerShell environment setup and preferences:
+根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：
 
-* If you don’t have the Azure Az modules installed, or don’t mind uninstalling the Azure Az modules, the best option is to use the `Install-Script` option to run the script.
-* If you need to keep the Azure Az modules, your best bet is to download the script and run it directly.
+* 如果你尚未安装 Azure Az 模块或者不介意卸载 Azure Az 模块，最佳做法是使用 `Install-Script` 选项运行该脚本。
+* 如果需要保留 Azure Az 模块，则最佳做法是下载并直接运行该脚本。
 
-To determine if you have the Azure Az modules installed, run `Get-InstalledModule -Name az`. If you don't see any installed Az modules, then you can use the `Install-Script` method.
+若要确定是否安装了 Azure Az 模块，请运行 `Get-InstalledModule -Name az`。 如果未看到任何已安装的 Az 模块，可以使用 `Install-Script` 方法。
 
-### <a name="install-using-the-install-script-method"></a>Install using the Install-Script method
+### <a name="install-using-the-install-script-method"></a>使用 Install-Script 方法安装
 
-To use this option, you must not have the Azure Az modules installed on your computer. If they're installed, the following command displays an error. You can either uninstall the Azure Az modules, or use the other option to download the script manually and run it.
+只有尚未在计算机上安装 Azure Az 模块时才能使用此选项。 如果已安装，则以下命令将显示错误。 可以卸载 Azure Az 模块，或者另一个选项手动下载并运行该脚本。
   
 使用以下命令运行该脚本：
 
 `Install-Script -Name AzureAppGWMigration`
 
-This command also installs the required Az modules.  
+此命令还会安装所需的 Az 模块。  
 
-### <a name="install-using-the-script-directly"></a>Install using the script directly
+### <a name="install-using-the-script-directly"></a>直接使用脚本安装
 
-If you do have some Azure Az modules installed and can't uninstall them (or don't want to uninstall them), you can manually download the script using the **Manual Download** tab in the script download link. The script is downloaded as a raw nupkg file. To install the script from this nupkg file, see [Manual Package Download](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。 此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 若要运行该脚本，请执行以下操作：
 
-1. Use `Connect-AzAccount` to connect to Azure.
+1. 使用 `Connect-AzAccount` 连接到 Azure。
 
-1. Use `Import-Module Az` to import the Az modules.
+1. 使用 `Import-Module Az` 导入 Az 模块。
 
-1. Run `Get-Help AzureAppGWMigration.ps1` to examine the required parameters:
+1. 运行 `Get-Help AzureAppGWMigration.ps1` 检查所需的参数：
 
    ```
    AzureAppGwMigration.ps1
@@ -88,21 +88,21 @@ If you do have some Azure Az modules installed and can't uninstall them (or don'
     -validateMigration -enableAutoScale
    ```
 
-   Parameters for the script:
-   * **resourceId: [String]: Required** - This is the Azure Resource ID for your existing Standard v1 or WAF v1 gateway. To find this string value,  navigate to the Azure portal, select your application gateway or WAF resource, and click the **Properties** link for the gateway. The Resource ID is located on that page.
+   脚本的参数：
+   * **resourceId： [String]：必需**-这是适用于现有标准 V1 或 WAF v1 网关的 AZURE 资源 ID。 若要查找此字符串值，请导航到 Azure 门户，选择你的应用程序网关或 WAF 资源，然后单击网关对应的“属性”链接。 资源 ID 位于该页上。
 
-     You can also run the following Azure PowerShell commands to get the Resource ID:
+     也可以运行以下 Azure PowerShell 命令获取资源 ID：
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Required** - This is the IP address space that you've allocated (or want to allocate) for a new subnet that contains your new v2 gateway. This must be specified in the CIDR notation. For example: 10.0.0.0/24. You don't need to create this subnet in advance. The script creates it for you if it doesn't exist.
-   * **appgwName: [String]: Optional**. This is a string you specify to use as the name for the new Standard_v2 or WAF_v2 gateway. If this parameter isn't supplied, the name of your existing v1 gateway will be used with the suffix *_v2* appended.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  A comma-separated list of PSApplicationGatewaySslCertificate objects that you create to represent the SSL certs from your v1 gateway must be uploaded to the new v2 gateway. For each of your SSL certs configured for your Standard v1 or WAF v1 gateway, you can create a new PSApplicationGatewaySslCertificate object via the `New-AzApplicationGatewaySslCertificate` command shown here. You need the path to your SSL Cert file and the password.
+   * **subnetAddressRange： [String]：必需**-这是为包含新 v2 网关的新子网分配（或要分配）的 IP 地址空间。 必须以 CIDR 表示法指定此参数。 例如： 10.0.0.0/24。 无需提前创建此子网。 如果此子网不存在，脚本将会创建它。
+   * **appgwName： [String]：可选**。 这是指定用作新 Standard_v2 或 WAF_v2 网关的名称的字符串。 如果未提供此参数，则会使用现有 v1 网关的名称并在其后追加后缀 *_v2*。
+   * **azure： [PSApplicationGatewaySslCertificate]：可选**。  创建的 PSApplicationGatewaySslCertificate 对象的逗号分隔列表，表示 v1 网关中必须上传到新 v2 网关的 SSL 证书。 对于为 Standard v1 或 WAF v1 网关配置的每个 SSL 证书，可按如下所示通过 `New-AzApplicationGatewaySslCertificate` 命令创建新的 PSApplicationGatewaySslCertificate 对象。 需要 SSL 证书文件的路径和密码。
 
-       This parameter is only optional if you don’t have HTTPS listeners configured for your v1 gateway or WAF. If you have at least one HTTPS listener setup, you must specify this parameter.
+       仅当没有为 v1 网关或 WAF 配置 HTTPS 侦听器时，此参数才是可选的。 如果至少安装了一个 HTTPS 侦听器，则必须指定此参数。
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,16 +114,16 @@ If you do have some Azure Az modules installed and can't uninstall them (or don'
         -Password $password
       ```
 
-      You can pass in `$mySslCert1, $mySslCert2` (comma-separated) in the previous example as values for this parameter in the script.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optional**. A comma-separated list of PSApplicationGatewayTrustedRootCertificate objects that you create to represent the [Trusted Root certificates](ssl-overview.md) for authentication of your backend instances from your v2 gateway.  
+      在以上示例中，可以传入 `$mySslCert1, $mySslCert2`（逗号分隔）作为脚本中此参数的值。
+   * **trustedRootCertificates： [PSApplicationGatewayTrustedRootCertificate]：可选**。 创建的 PSApplicationGatewayTrustedRootCertificate 对象的逗号分隔列表，表示用于对 v2 网关中后端实例进行身份验证的[受信任根证书](ssl-overview.md)。  
 
-      To create a list of PSApplicationGatewayTrustedRootCertificate objects, see [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [String]: Optional**. A specific private IP address that you want to associate to your new v2 gateway.  This must be from the same VNet that you allocate for your new v2 gateway. If this isn't specified, the script allocates a private IP address for your v2 gateway.
-    * **publicIpResourceId: [String]: Optional**. The resourceId of a public IP address (standard SKU) resource in your subscription that you want to allocate to the new v2 gateway. If this isn't specified, the script allocates a new public IP in the same resource group. The name is the v2 gateway’s name with *-IP* appended.
-   * **validateMigration: [switch]: Optional**. Use this parameter if you want the script to do some basic configuration comparison validations after the v2 gateway creation and the configuration copy. By default, no validation is done.
-   * **enableAutoScale: [switch]: Optional**. Use this parameter if you want the script to enable AutoScaling on the new v2 gateway after it's created. By default, AutoScaling is disabled. You can always manually enable it later on the newly created v2 gateway.
+      若要创建 PSApplicationGatewayTrustedRootCertificate 对象列表，请参阅 [AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
+   * **privateIpAddress： [String]：可选**。 要关联到新 v2 网关的特定专用 IP 地址。  此地址必须来自为新 v2 网关分配的同一 VNet。 如果未指定，该脚本将为 v2 网关分配一个专用 IP 地址。
+    * **publicIpResourceId： [String]：可选**。 订阅中要分配给新 v2 网关的公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了 *-IP* 的 v2 网关名称。
+   * **validateMigration： [开关]：可选**。 如果你希望在创建 v2 网关并复制配置后让脚本执行一些基本的配置比较验证，请使用此参数。 默认不会执行任何验证。
+   * **enableAutoScale： [开关]：可选**。 如果你希望在创建新的 v2 网关后让脚本启用自动缩放，请使用此参数。 默认会禁用自动缩放。 以后，始终可以在创建新的 v2 网关后手动启用自动缩放。
 
-1. Run the script using the appropriate parameters. It may take five to seven minutes to finish.
+1. 使用相应的参数运行脚本。 完成该脚本可能需要 5 到 7 分钟时间。
 
     **示例**
 
@@ -139,59 +139,59 @@ If you do have some Azure Az modules installed and can't uninstall them (or don'
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>Migrate client traffic
+## <a name="migrate-client-traffic"></a>迁移客户端流量
 
-First, double check that the script successfully created a new v2 gateway with the exact configuration migrated over from your v1 gateway. You can verify this from the Azure portal.
+首先，请仔细检查脚本是否已成功创建了一个新的 v2 网关，其中包含要从 v1 网关迁移的确切配置。 可以从 Azure 门户验证此结果。
 
-Also, send a small amount of traffic through the v2 gateway as a manual test.
+另外，请通过 v2 网关发送少量的流量作为手动测试。
   
-Here are a few scenarios where your current application gateway (Standard) may receive client traffic, and our recommendations for each one:
+在以下几种情况下，当前的应用程序网关 (Standard) 可以接收客户端流量，我们针对每种情况提供了建议：
 
-* **A custom DNS zone (for example, contoso.com) that points to the frontend IP address (using an A record) associated with your Standard v1 or WAF v1 gateway**.
+* **自定义 DNS 区域（例如 contoso.com）指向与 Standard v1 或 WAF v1 网关关联的前端 IP 地址（使用 A 记录）** 。
 
-    You can update your DNS record to point to the frontend IP or DNS label associated with your Standard_v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **A custom DNS zone (for example, contoso.com) that points to the DNS label (for example: *myappgw.eastus.cloudapp.azure.com* using a CNAME record) associated with your v1 gateway**.
+    可以更新 DNS 记录，使其指向与 Standard_v2 应用程序网关关联的前端 IP 或 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
+* **一个自定义 dns 区域（例如 contoso.com），指向与 v1 网关关联的 dns 标签（例如： *myappgw.eastus.cloudapp.azure.com* ，使用 CNAME 记录）** 。
 
-   You have two choices:
+   有两种选择：
 
-  * If you use public IP addresses on your application gateway, you can do a controlled, granular migration using a Traffic Manager profile to incrementally route traffic (weighted traffic routing method) to the new v2 gateway.
+  * 如果在应用程序网关上使用公共 IP 地址，则可以使用流量管理器配置文件执行受控的粒度迁移，以增量方式将流量路由到新的 v2 网关（加权流量路由方法）。
 
-    You can do this by adding the DNS labels of both the v1 and v2 application gateways to the [Traffic Manager profile](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), and CNAMEing your custom DNS record (for example, `www.contoso.com`) to the Traffic Manager domain (for example, contoso.trafficmanager.net).
-  * Or, you can update your custom domain DNS record to point to the DNS label of the new v2 application gateway. Depending on the TTL configured on your DNS record, it may take a while for all your client traffic to migrate to your new v2 gateway.
-* **Your clients connect to the frontend IP address of your application gateway**.
+    为此，可以将 v1 和 v2 应用程序网关的 DNS 标签添加到[流量管理器配置文件](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)，并将自定义 DNS 记录（例如 `www.contoso.com`） CNAMEing 到流量管理器域（例如 contoso.trafficmanager.net）。
+  * 或者，可以更新自定义域的 DNS 记录，使其指向新 v2 应用程序网关的 DNS 标签。 根据 DNS 记录中配置的 TTL，可能需要一段时间才能将所有客户端流量迁移到新的 v2 网关。
+* **客户端连接到应用程序网关的前端 IP 地址**。
 
-   Update your clients to use the IP address(es) associated with the newly created v2 application gateway. We recommend that you don't use IP addresses directly. Consider using the DNS name label (for example, yourgateway.eastus.cloudapp.azure.com) associated with your application gateway that you can CNAME to your own custom DNS zone (for example, contoso.com).
+   更新客户端，以使用与新建的 v2 应用程序网关关联的 IP 地址。 我们建议不要直接使用 IP 地址。 请考虑使用与你的应用程序网关关联的 DNS 名称标签（例如，yourgateway.eastus.cloudapp.azure.com），可以将其 CNAME 到你自己的自定义 DNS 区域（例如，contoso.com）。
 
 ## <a name="common-questions"></a>常见问题
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Are there any limitations with the Azure PowerShell script to migrate the configuration from v1 to v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>用于将配置从 v1 迁移到 v2 的 Azure PowerShell 脚本是否存在任何限制？
 
-可以。 See [Caveats/Limitations](#caveatslimitations).
+可以。 请参阅[注意事项/限制](#caveatslimitations)。
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Is this article and the Azure PowerShell script applicable for Application Gateway WAF product as well? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>本文和上述 Azure PowerShell 脚本是否也适用于应用程序网关 WAF 产品？ 
 
 可以。
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Does the Azure PowerShell script also switch over the traffic from my v1 gateway to the newly created v2 gateway?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>该 Azure PowerShell 脚本是否还可以将流量从 v1 网关切换到新建的 v2 网关？
 
-不。 The Azure PowerShell script only migrates the configuration. Actual traffic migration is your responsibility and in your control.
+否。 该 Azure PowerShell 脚本只会迁移配置。 实际的流量迁移由你负责和控制。
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Is the new v2 gateway created by the Azure PowerShell script sized appropriately to handle all of the traffic that is currently served by my v1 gateway?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>该 Azure PowerShell 脚本创建的新 v2 网关是否大小适当，可以处理当前由 v1 网关提供服务的所有流量？
 
-The Azure PowerShell script creates a new v2 gateway with an appropriate size to handle the traffic on your existing v1 gateway. Autoscaling is disabled by default, but you can enable AutoScaling when you run the script.
+该 Azure PowerShell 脚本将创建适当大小的新 v2 网关来处理现有 v1 网关上的流量。 默认会禁用自动缩放，但你可以在运行脚本时启用自动缩放。
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>I configured my v1 gateway  to send logs to Azure storage. Does the script replicate this configuration for v2 as well?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>我已将 v1 网关配置为向 Azure 存储发送日志。 该脚本是否也会为 v2 复制此配置？
 
-不。 The script doesn't  replicate this configuration for v2. You must add the log configuration separately to the migrated v2 gateway.
+否。 该脚本不会为 v2 复制此配置。 必须单独将日志配置添加到迁移后的 v2 网关。
 
-### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Does this script support certificates uploaded to Azure KeyVault ?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>此脚本是否支持上传到 Azure KeyVault 的证书？
 
-不。 Currently the script does not support certificates in KeyVault. However, this is being considered for a future version.
+否。 该脚本目前不支持 KeyVault 中的证书。 但是，我们正在考虑在将来的版本中添加此功能。
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>I ran into some issues with using this script. How can I get help?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时我遇到了一些问题。 如何求助？
   
-You can send an email to appgwmigrationsup@microsoft.com, open a support case with Azure Support, or do both.
+可以向 appgwmigrationsup@microsoft.com 发送电子邮件、向 Azure 支持部门提交支持案例，或同时采取这两种措施。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Learn about Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)
+[了解应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md)

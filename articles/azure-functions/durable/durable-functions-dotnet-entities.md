@@ -1,6 +1,6 @@
 ---
-title: Developer's Guide to Durable Entities in .NET - Azure Functions
-description: How to work with durable entities in .NET with the Durable Functions extension for Azure Functions.
+title: 有关 .NET 中的持久实体的开发人员指南 - Azure Functions
+description: 如何通过 Azure Functions 的 Durable Functions 扩展使用 .NET 中的持久实体。
 author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
@@ -12,26 +12,26 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231432"
 ---
-# <a name="developers-guide-to-durable-entities-in-net"></a>Developer's guide to durable entities in .NET
+# <a name="developers-guide-to-durable-entities-in-net"></a>.NET 中持久实体的开发人员指南
 
-In this article, we describe the available interfaces for developing durable entities with .NET in detail, including examples and general advice. 
+本文详细介绍可用于在 .NET 中开发持久实体的接口，并提供示例和一般建议。 
 
-Entity functions provide serverless application developers with a convenient way to organize application state as a collection of fine-grained entities. For more detail about the underlying concepts, see the [Durable Entities: Concepts](durable-functions-entities.md) article.
+实体函数为无服务器应用程序开发人员提供一种便捷的方式用于将应用程序状态组织为细化实体的集合。 有关基础概念的更多详细信息，请参阅 "[持久实体：概念](durable-functions-entities.md)" 一文。
 
-We currently offer two APIs for defining entities:
+我们目前提供两个 API 用于定义实体：
 
-- The **class-based syntax** represents entities and operations as classes and methods. This syntax produces easily readable code and allows operations to be invoked in a type-checked manner through interfaces. 
+- **基于类的语法**将实体和操作表示为类和方法。 此语法生成易读的代码，并允许通过接口以类型检查的方式调用操作。 
 
-- The **function-based syntax** is a lower-level interface that represents entities as functions. It provides precise control over how the entity operations are dispatched, and how the entity state is managed.  
+- **基于函数的语法**是将实体表示为函数的较低级别的接口。 使用该语法可以精确控制实体操作的调度方式以及实体状态的管理方式。  
 
-This article focuses primarily on the class-based syntax, as we expect it to be better suited for most applications. However, the [function-based syntax](#function-based-syntax) may be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate for implementing libraries that require genericity not currently supported by the class-based syntax. 
+本文侧重于基于类的语法，因为我们预期它更适用于大多数应用程序。 但是，对于想要定义或管理自身的实体状态和操作抽象的应用程序，可能适合使用[基于函数的语法](#function-based-syntax)。 此外，该语法可能适合用于实现需要基于类的语法所不支持的泛型的库。 
 
 > [!NOTE]
-> The class-based syntax is just a layer on top of the function-based syntax, so both variants can be used interchangeably in the same application. 
+> 基于类的语法只是建立在基于函数的语法基础之上的一个层，因此，在同一应用程序中，这两种变体可以换用。 
  
-## <a name="defining-entity-classes"></a>Defining entity classes
+## <a name="defining-entity-classes"></a>定义实体类
 
-The following example is an implementation of a `Counter` entity that stores a single value of type integer, and offers four operations `Add`, `Reset`, `Get`, and `Delete`.
+以下示例是 `Counter` 实体的一个实现，该实体存储整数类型的单个值，并提供 `Add`、`Reset`、`Get` 和 `Delete` 这四个操作。
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -67,38 +67,38 @@ public class Counter
 }
 ```
 
-The `Run` function contains the boilerplate required for using the class-based syntax. It must be a *static* Azure Function. It executes once for each operation message that is processed by the entity. When `DispatchAsync<T>` is called and the entity isn't already in memory, it constructs an object of type `T` and populates its fields from the last persisted JSON found in storage (if any). Then it invokes the method with the matching name.
+`Run` 函数包含使用基于类的语法所需的样板。 它必须是静态的 Azure 函数。 它对实体处理的每个操作消息执行一次。 调用 `DispatchAsync<T>` 时，如果该实体尚未进入内存，该函数将构造 `T` 类型的对象，并基于存储中最后保存的 JSON（如果有）填充该对象的字段。 然后，它结合匹配的名称调用方法。
 
 > [!NOTE]
-> The state of a class-based entity is **created implicitly** before the entity processes an operation, and can be **deleted explicitly** in an operation by calling `Entity.Current.DeleteState()`.
+> 基于类的实体的状态是在实体处理操作之前**隐式创建**的，可以通过调用  **在操作中**显式删除`Entity.Current.DeleteState()`。
 
-### <a name="class-requirements"></a>Class Requirements
+### <a name="class-requirements"></a>类要求
  
-Entity classes are POCOs (plain old CLR objects) that require no special superclasses, interfaces, or attributes. However:
+实体类是不需要特殊超类、接口或特性的 POCO（普通旧 CLR 对象）。 但是：
 
-- The class must be constructible (see [Entity construction](#entity-construction)).
-- The class must be JSON-serializable (see [Entity serialization](#entity-serialization)).
+- 类必须是可构造的（请参阅[实体构造](#entity-construction)）。
+- 类必须是 JSON 可序列化的（请参阅[实体序列化](#entity-serialization)）。
 
-Also, any method that is intended to be invoked as an operation must satisfy additional requirements:
+此外，旨在作为操作调用的任何方法必须满足附加的要求：
 
-- An operation must have at most one argument, and must not have any overloads or generic type arguments.
-- An operation meant to be called from an orchestration using an interface must return `Task` or `Task<T>`.
-- Arguments and return values must be serializable values or objects.
+- 一个操作最多只能有一个参数，并且不能有任何重载或泛型类型参数。
+- 要使用接口从业务流程调用的操作必须返回 `Task` 或 `Task<T>`。
+- 参数和返回值必须是可序列化的值或对象。
 
-### <a name="what-can-operations-do"></a>What can operations do?
+### <a name="what-can-operations-do"></a>操作的作用是什么？
 
-All entity operations can read and update the entity state, and changes to the state are automatically persisted to storage. Moreover, operations can perform external I/O or other computations, within the general limits common to all Azure Functions.
+所有实体操作可以读取和更新实体状态，对状态的更改将自动保存到存储中。 此外，操作可以在所有 Azure Functions 通用的限制范围内执行外部 I/O 或其他计算。
 
-Operations also have access to functionality provided by the `Entity.Current` context:
+操作还可以访问 `Entity.Current` 上下文提供的功能：
 
-* `EntityName`: the name of the currently executing entity.
-* `EntityKey`: the key of the currently executing entity.
-* `EntityId`: the ID of the currently executing entity (includes name and key).
-* `SignalEntity`: sends a one-way message to an entity.
-* `CreateNewOrchestration`: starts a new orchestration.
-* `DeleteState`: deletes the state of this entity.
+* `EntityName`：当前正在执行的实体的名称。
+* `EntityKey`：当前正在执行的实体的键。
+* `EntityId`：当前正在执行的实体的 ID（包括名称和键）。
+* `SignalEntity`：将单向消息发送到实体。
+* `CreateNewOrchestration`：启动新的业务流程。
+* `DeleteState`：删除此实体的状态。
 
-For example, we can modify the counter entity so it starts an orchestration when the counter reaches 100 and passes the entity ID as an input argument:
+例如，我们可以将计数器实体修改为在计数器达到 100 时启动某个业务流程，并将实体 ID 作为输入参数传递：
 
 ```csharp
     public void Add(int amount) 
@@ -111,16 +111,16 @@ For example, we can modify the counter entity so it starts an orchestration when
     }
 ```
 
-## <a name="accessing-entities-directly"></a>Accessing entities directly
+## <a name="accessing-entities-directly"></a>直接访问实体
 
-Class-based entities can be accessed directly, using explicit string names for the entity and its operations. We provide some examples below; for a deeper explanation of the underlying concepts (such as signals vs. calls) see the discussion in [Access entities](durable-functions-entities.md#access-entities). 
+可以使用实体及其操作的显式字符串名称来直接访问基于类的实体。 我们提供以下示例：有关基础概念的更深入说明（如信号与调用），请参阅[访问实体](durable-functions-entities.md#access-entities)中的讨论。 
 
 > [!NOTE]
-> Where possible, we recommend [Accessing entities through interfaces](#accessing-entities-through-interfaces), because it provides more type checking.
+> 我们建议尽量[通过接口访问实体](#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。
 
-### <a name="example-client-signals-entity"></a>Example: client signals entity
+### <a name="example-client-signals-entity"></a>示例：客户端向实体发出信号
 
-The following Azure Http Function implements a DELETE operation using REST conventions. It sends a delete signal to the counter entity whose key is passed in the URL path.
+以下 Azure Http 函数使用 REST 约定实现 DELETE 操作。 它将一个删除信号发送到计数器实体，该实体的键已在 URL 路径中传递。
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -135,9 +135,9 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-### <a name="example-client-reads-entity-state"></a>Example: client reads entity state
+### <a name="example-client-reads-entity-state"></a>示例：客户端读取实体状态
 
-The following Azure Http Function implements a GET operation using REST conventions. It reads the current state of the counter entity whose key is passed in the URL path.
+以下 Azure Http 函数使用 REST 约定实现 GET 操作。 该函数读取计数器实体的当前状态，该实体的键已在 URL 路径中传递。
 
 ```csharp
 [FunctionName("GetCounter")]
@@ -153,11 +153,11 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> The object returned by `ReadEntityStateAsync` is just a local copy, that is, a snapshot of the entity state from some earlier point in time. In particular, it may be stale, and modifying this object has no effect on the actual entity. 
+> `ReadEntityStateAsync` 返回的对象只是一个本地副本，即，某个较早时间点的实体状态的快照。 具体而言，此状态可能已过时，修改此对象不会影响实际的实体。 
 
-### <a name="example-orchestration-first-signals-then-calls-entity"></a>Example: orchestration first signals, then calls entity
+### <a name="example-orchestration-first-signals-then-calls-entity"></a>示例：业务流程先发出信号，然后调用实体
 
-The following orchestration signals a counter entity to increment it, and then calls the same entity to read its latest value.
+以下业务流程向计数器实体发出信号来递增计数器，然后调用同一实体来读取其最新值。
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -176,11 +176,11 @@ public static async Task<int> Run(
 }
 ```
 
-## <a name="accessing-entities-through-interfaces"></a>Accessing entities through interfaces
+## <a name="accessing-entities-through-interfaces"></a>通过接口访问实体
 
-Interfaces can be used for accessing entities via generated proxy objects. This approach ensures that the name and argument type of an operation matches what is implemented. We recommend using interfaces for accessing entities whenever possible.
+使用接口可以通过生成的代理对象访问实体。 此方法确保操作的名称和参数类型与实现的操作相匹配。 我们建议尽量使用接口来访问实体。
 
-For example, we can modify the counter example as follows:
+例如，可按如下所示修改计数器示例：
 
 ```csharp
 public interface ICounter
@@ -197,13 +197,13 @@ public class Counter : ICounter
 }
 ```
 
-Entity classes and entity interfaces are similar to the grains and grain interfaces popularized by [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/). For a more information about similarities and differences between Durable Entities and Orleans, see [Comparison with virtual actors](durable-functions-entities.md#comparison-with-virtual-actors).
+实体类和实体接口类似于 [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/) 普及化的粒度和粒度接口。 有关持久实体与 Orleans 之间的相似性和差异的详细信息，请参阅[与虚拟执行组件的比较](durable-functions-entities.md#comparison-with-virtual-actors)。
 
-Besides providing type checking, interfaces are useful for a better separation of concerns within the application. For example, since an entity may implement multiple interfaces, a single entity can serve multiple roles. Also, since an interface may be implemented by multiple entities, general communication patterns can be implemented as reusable libraries.
+除了提供类型检查以外，接口可以更好地在应用程序内部实现关注点分离。 例如，由于一个实体可以实现多个接口，因此单个实体可为多个角色提供服务。 此外，由于一个接口可由多个实体实现，因此可将常规通信模式实现为可重用的库。
 
-### <a name="example-client-signals-entity-through-interface"></a>Example: client signals entity through interface
+### <a name="example-client-signals-entity-through-interface"></a>示例：客户端通过接口向实体发出信号
 
-Client code can use `SignalEntityAsync<TEntityInterface>` to send signals to entities that implement `TEntityInterface`. 例如：
+客户端代码可以使用 `SignalEntityAsync<TEntityInterface>` 向实现 `TEntityInterface` 的实体发送信号。 例如：
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -218,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-In this example, the `proxy` parameter is a dynamically generated instance of `ICounter`, which internally translates the call to `Delete` into a signal.
+在此示例中，`proxy` 参数是动态生成的 `ICounter` 实例，该实体在内部将 `Delete` 调用转换为信号。
 
 > [!NOTE]
-> The `SignalEntityAsync` APIs can be used only for one-way operations. Even if an operation returns `Task<T>`, the value of the `T` parameter will always be null or `default`, not the actual result.
-For example, it doesn't make sense to signal the `Get` operation, as no value is returned. Instead, clients can use either `ReadStateAsync` to access the counter state directly, or can start an orchestrator function that calls the `Get` operation. 
+> `SignalEntityAsync` API 只可用于单向操作。 即使操作返回 `Task<T>`，`T` 参数的值也始终是 null 或 `default`，而不是实际结果。
+例如，向 `Get` 操作发出信号没有意义，因为这不会返回任何值。 客户端可以改用 `ReadStateAsync` 来直接访问计数器状态，或者可以启动一个调用 `Get` 操作的业务流程协调程序函数。 
 
-### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Example: orchestration first signals, then calls entity through proxy
+### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>示例：业务流程先发出信号，然后通过代理调用实体
 
-To call or signal an entity from within an orchestration, `CreateEntityProxy` can be used, along with the interface type, to generate a proxy for the entity. This proxy can then be used to call or signal operations:
+若要从业务流程内部调用实体或向实体发出信号，可以结合接口类型使用 `CreateEntityProxy`，以便为实体生成代理。 然后，可以使用此代理来调用操作或向操作发出信号：
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -246,39 +246,39 @@ public static async Task<int> Run(
 }
 ```
 
-Implicitly, any operations that return `void` are signaled, and any operations that return `Task` or `Task<T>` are called. One can change this default behavior, and signal operations even if they return Task, by using the `SignalEntity<IInterfaceType>` method explicitly.
+将隐式向返回 `void` 的操作发出信号并调用返回 `Task` 或 `Task<T>` 的任何操作。 可以更改此默认行为，并使用 `SignalEntity<IInterfaceType>` 方法显式向操作发出信号，即使操作返回 Task。
 
-### <a name="shorter-option-for-specifying-the-target"></a>Shorter option for specifying the target
+### <a name="shorter-option-for-specifying-the-target"></a>用于指定目标的简短选项
 
-When calling or signaling an entity using an interface, the first argument must specify the target entity. The target can be specified either by specifying the entity ID, or, in cases where there's just one class that implements the entity, just the entity key:
+使用接口调用实体或向实体发出信号时，第一个参数必须指定目标实体。 可以通过指定实体 ID 来指定目标；如果只有一个类实现实体，则只需指定实体键：
 
 ```csharp
 context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-If only the entity key is specified and a unique implementation can't be found at runtime, `InvalidOperationException` is thrown. 
+如果仅指定实体键，而在运行时找不到唯一的实现，则会引发 `InvalidOperationException`。 
 
-### <a name="restrictions-on-entity-interfaces"></a>Restrictions on entity interfaces
+### <a name="restrictions-on-entity-interfaces"></a>实体接口的限制
 
-As usual, all parameter and return types must be JSON-serializable. Otherwise, serialization exceptions are thrown at runtime.
+与往常一样，所有参数和返回类型必须是 JSON 可序列化的。 否则，在运行时将引发序列化异常。
 
-We also enforce some additional rules:
-* Entity interfaces must only define methods.
-* Entity interfaces must not contain generic parameters.
-* Entity interface methods must not have more than one parameter.
-* Entity interface methods must return `void`, `Task`, or `Task<T>` 
+我们还强制实施其他一些规则：
+* 实体接口只能定义方法。
+* 实体接口不得包含泛型参数。
+* 实体接口方法不能有多个参数。
+* 实体接口方法必须返回 `void`、`Task` 或 `Task<T>` 
 
-If any of these rules are violated, an `InvalidOperationException` is thrown at runtime when the interface is used as a type argument to `SignalEntity` or `CreateProxy`. The exception message explains which rule was broken.
+如果违反上述任意规则，在将接口用作 `InvalidOperationException` 或 `SignalEntity` 的类型参数时，在运行时会引发 `CreateProxy`。 异常消息会解释违反了哪个规则。
 
 > [!NOTE]
-> Interface methods returning `void` can only be signaled (one-way), not called (two-way). Interface methods returning `Task` or `Task<T>` can be either called or signalled. If called, they return the result of the operation, or re-throw exceptions thrown by the operation. However, when signalled, they do not return the actual result or exception from the operation, but just the default value.
+> 对于返回 `void` 的接口方法，只能向其发出信号（单向），而不能调用（双向）它们。 对于返回 `Task` 或 `Task<T>` 的接口方法，可以调用它们，也可以向其发出信号。 如果调用，它们将返回操作的结果，或重新引发操作所引发的异常。 但是，在向其发出信号时，它们不会返回实际结果或操作引发的异常，而只返回默认值。
 
-## <a name="entity-serialization"></a>Entity serialization
+## <a name="entity-serialization"></a>实体序列化
 
-Since the state of an entity is durably persisted, the entity class must be serializable. The Durable Functions runtime uses the [Json.NET](https://www.newtonsoft.com/json) library for this purpose, which supports a number of policies and attributes to control the serialization and deserialization process. Most commonly used C# data types (including arrays and collection types) are already serializable, and can easily be used for defining the state of durable entities.
+由于实体的状态会持久保存，因此实体类必须可序列化。 Durable Functions 运行时使用 [Json.NET](https://www.newtonsoft.com/json) 库来实现此目的，该库支持使用多个策略和特性来控制序列化和反序列化过程。 最常用的 C# 数据类型（包括数组和集合类型）已经可序列化，并可轻松用于定义持久实体的状态。
 
-For example, Json.NET can easily serialize and deserialize the following class:
+例如，Json.NET 可以轻松序列化和反序列化以下类：
 
 ```csharp
 [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
@@ -307,13 +307,13 @@ public class User
 }
 ```
 
-### <a name="serialization-attributes"></a>Serialization Attributes
+### <a name="serialization-attributes"></a>序列化特性
 
-In the example above, we chose to include several attributes to make the underlying serialization more visible:
-- We annotate the class with `[JsonObject(MemberSerialization.OptIn)]` to remind us that the class must be serializable, and to persist only members that are explicitly marked as JSON properties.
--  We annotate the fields to be persisted with `[JsonProperty("name")]` to remind us that a field is part of the persisted entity state, and to specify the property name to be used in the JSON representation.
+在以上示例中，我们已选择包含多个特性来提高基础序列化的可见性：
+- 我们已使用 `[JsonObject(MemberSerialization.OptIn)]` 为类做了批注，以提醒我们，该类必须可序列化，并仅保存显式标记为 JSON 属性的成员。
+-  我们已使用 `[JsonProperty("name")]` 为要保存的字段做了批注，以提醒我们，某个字段是持久实体状态的一部分，并指定要在 JSON 表示形式中使用的属性名称。
 
-However, these attributes aren't required; other conventions or attributes are permitted as long as they work with Json.NET. For example, one may use `[DataContract]` attributes, or no attributes at all:
+但是，这些特性不是必需的；允许使用其他约定或特性，只要它们使用 Json.NET 即可。 例如，可以使用 `[DataContract]` 特性，或者不使用任何特性：
 
 ```csharp
 [DataContract]
@@ -331,29 +331,29 @@ public class Counter
 }
 ```
 
-By default, the name of the class is *not* stored as part of the JSON representation: that is, we use `TypeNameHandling.None` as the default setting. This default behavior can be overridden using `JsonObject` or `JsonProperty` attributes.
+默认情况下，类的名称不会存储为 JSON 表示形式的一部分：即，我们将使用  *作为默认设置。* `TypeNameHandling.None` 可以使用 `JsonObject` 或 `JsonProperty` 特性来重写此默认行为。
 
-### <a name="making-changes-to-class-definitions"></a>Making changes to class definitions
+### <a name="making-changes-to-class-definitions"></a>对类定义进行更改
 
-Some care is required when making changes to a class definition after an application has been run, because the stored JSON object may no longer match the new class definition. Still, it is often possible to deal correctly with changing data formats as long as one understands the deserialization process used by `JsonConvert.PopulateObject`.
+在应用程序运行后对类定义进行更改时需要注意某些问题，因为存储的 JSON 对象可能不再与新的类定义相匹配。 尽管如此，只要用户了解 `JsonConvert.PopulateObject` 使用的反序列化过程，则通常就可以正确处理数据格式的更改。
 
-For example, here are some examples of changes and their effect:
+例如，下面是一些更改的示例及其效果：
 
-1. If a new property is added, which is not present in the stored JSON, it assumes its default value.
-1. If a property is removed, which is present in the stored JSON, the previous content is lost.
-1. If a property is renamed, the effect is as if removing the old one and adding a new one.
-1. If the type of a property is changed so it can no longer be deserialized from the stored JSON, an exception is thrown.
-1. If the type of a property is changed, but it can still be deserialized from the stored JSON, it will do so.
+1. 如果添加了一个新属性，而该属性不在存储的 JSON 中，则系统假设该属性使用默认值。
+1. 如果删除了一个不在存储的 JSON 中的属性，则以前的内容将会丢失。
+1. 如果重命名某个属性，则效果如同删除旧属性并添加新属性。
+1. 如果更改了某个属性的类型，使其不再可以从存储的 JSON 进行反序列化，则会引发异常。
+1. 如果更改了某个属性的类型，但仍可以从存储的 JSON 将其反序列化，则会将其反序列化。
 
-There are many options available for customizing the behavior of Json.NET. For example, to force an exception if the stored JSON contains a field that is not present in the class, specify the attribute `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`. It is also possible to write custom code for deserialization that can read JSON stored in arbitrary formats.
+可以使用多个选项来自定义 Json.NET 的行为。 例如，若要在存储的 JSON 包含类中不存在的字段时强制引发异常，请指定 `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)` 特性。 还可以编写自定义的反序列化代码用于读取以任意格式存储的 JSON。
 
-## <a name="entity-construction"></a>Entity construction
+## <a name="entity-construction"></a>实体构造
 
-Sometimes we want to exert more control over how entity objects are constructed. We now describe several options for changing the default behavior when constructing entity objects. 
+有时，我们希望能够更好地控制实体对象的构造方式。 下面将会介绍几个用于在构造实体对象时更改默认行为的选项。 
 
-### <a name="custom-initialization-on-first-access"></a>Custom initialization on first access
+### <a name="custom-initialization-on-first-access"></a>首次访问时的自定义初始化
 
-Occasionally we need to perform some special initialization before dispatching an operation to an entity that has never been accessed, or that has been deleted. To specify this behavior, one can add a conditional before the `DispatchAsync`:
+在向从未访问过的或者已删除的实体调度操作之前，我们偶尔需要执行某种特殊的初始化。 若要指定此行为，可以在 `DispatchAsync` 的前面添加一个条件：
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -367,11 +367,11 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="bindings-in-entity-classes"></a>Bindings in entity classes
+### <a name="bindings-in-entity-classes"></a>实体类中的绑定
 
-Unlike regular functions, entity class methods don't have direct access to input and output bindings. 必须在入口点函数声明中捕获绑定数据，然后将其传递给 `DispatchAsync<T>` 方法。 传递给 `DispatchAsync<T>` 的任何对象将作为参数自动传入实体类构造函数。
+与普通函数不同，实体类方法不能直接访问输入和输出绑定。 必须在入口点函数声明中捕获绑定数据，然后将其传递给 `DispatchAsync<T>` 方法。 传递给 `DispatchAsync<T>` 的任何对象将作为参数自动传入实体类构造函数。
 
-以下示例演示如何将 [Blob 输入绑定](../functions-bindings-storage-blob.md#input)中的 `CloudBlobContainer` 引用提供给基于类的实体使用。
+以下示例演示如何将 `CloudBlobContainer`Blob 输入绑定[中的 ](../functions-bindings-storage-blob.md#input) 引用提供给基于类的实体使用。
 
 ```csharp
 public class BlobBackedEntity
@@ -400,7 +400,7 @@ public class BlobBackedEntity
 
 有关 Azure Functions 中的绑定的详细信息，请参阅 [Azure Functions 触发器和绑定](../functions-triggers-bindings.md)文档。
 
-### <a name="dependency-injection-in-entity-classes"></a>Dependency injection in entity classes
+### <a name="dependency-injection-in-entity-classes"></a>实体类中的依赖项注入
 
 实体类支持 [Azure Functions 依赖项注入](../functions-dotnet-dependency-injection.md)。 以下示例演示如何将一个 `IHttpClientFactory` 服务注册到基于类的实体中。
 
@@ -447,16 +447,16 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> To avoid issues with serialization, make sure to exclude fields meant to store injected values from the serialization.
+> 为了避免序列化问题，请务必排除要在序列化后存储注入值的字段。
 
 > [!NOTE]
-> 与在常规 .NET Azure Functions 中使用构造函数注入不同，必须将基于类的实体的函数入口点方法声明为 `static`。 声明非静态函数入口点可能导致正常的 Azure Functions 对象初始值设定项与持久实体对象初始值设定项之间发生冲突。
+> 与在常规 .NET Azure Functions 中使用构造函数注入不同，必须将基于类的实体的函数入口点方法声明为 *。* `static` 声明非静态函数入口点可能导致正常的 Azure Functions 对象初始值设定项与持久实体对象初始值设定项之间发生冲突。
 
-## <a name="function-based-syntax"></a>Function-based syntax
+## <a name="function-based-syntax"></a>基于函数的语法
 
-So far we have focused on the class-based syntax, as we expect it to be better suited for most applications. However, the function-based syntax can be appropriate for applications that wish to define or manage their own abstractions for entity state and operations. Also, it may be appropriate when implementing libraries that require genericity not currently supported by the class-based syntax. 
+前面的内容侧重于基于类的语法，因为我们预期它更适用于大多数应用程序。 但是，对于想要定义或管理自身的实体状态和操作抽象的应用程序，可能适合使用基于函数的语法。 此外，在实现需要基于类的语法所不支持的泛型的库时，也可能适合使用该语法。 
 
-With the function-based syntax, the Entity Function explicitly handles the operation dispatch, and explicitly manages the state of the entity. For example, the following code shows the *Counter* entity implemented using the function-based syntax.  
+使用基于函数的语法，实体函数可以显式处理操作调度和显式管理实体的状态。 例如，以下代码演示了使用基于函数的语法实现的 *Counter* 实体。  
 
 ```csharp
 [FunctionName("Counter")]
@@ -480,34 +480,34 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-### <a name="the-entity-context-object"></a>The entity context object
+### <a name="the-entity-context-object"></a>实体上下文对象
 
-Entity-specific functionality can be accessed via a context object of type `IDurableEntityContext`. This context object is available as a parameter to the entity function, and via the async-local property `Entity.Current`.
+可以通过 `IDurableEntityContext` 类型的上下文对象访问特定于实体的功能。 此上下文对象可用作实体函数的参数，并可通过异步本地属性 `Entity.Current` 访问。
 
-The following members provide information about the current operation, and allow us to specify a return value. 
+以下成员提供有关当前操作的信息，并允许指定返回值。 
 
-* `EntityName`: the name of the currently executing entity.
-* `EntityKey`: the key of the currently executing entity.
-* `EntityId`: the ID of the currently executing entity (includes name and key).
-* `OperationName`: the name of the current operation.
-* `GetInput<TInput>()`: gets the input for the current operation.
-* `Return(arg)`: returns a value to the orchestration that called the operation.
+* `EntityName`：当前正在执行的实体的名称。
+* `EntityKey`：当前正在执行的实体的键。
+* `EntityId`：当前正在执行的实体的 ID（包括名称和键）。
+* `OperationName`：当前操作的名称。
+* `GetInput<TInput>()`：获取当前操作的输入。
+* `Return(arg)`：将值返回到调用该操作的业务流程。
 
-The following members manage the state of the entity (create, read, update, delete). 
+以下成员管理实体的状态（创建、读取、更新、删除）。 
 
-* `HasState`: whether the entity exists, that is, has some state. 
-* `GetState<TState>()`: gets the current state of the entity. If it does not already exist, it is created.
-* `SetState(arg)`: creates or updates the state of the entity.
-* `DeleteState()`: deletes the state of the entity, if it exists. 
+* `HasState`：实体是否存在，即，是否存在某种状态。 
+* `GetState<TState>()`：获取实体的当前状态。 如果它尚不存在，则会创建它。
+* `SetState(arg)`：创建或更新实体的状态。
+* `DeleteState()`：删除实体的状态（如果存在）。 
 
-If the state returned by `GetState` is an object, it can be directly modified by the application code. There is no need to call `SetState` again at the end (but also no harm). If `GetState<TState>` is called multiple times, the same type must be used.
+如果 `GetState` 返回的状态是一个对象，可以通过应用程序代码直接修改它。 结束时无需再次调用 `SetState`（同时不会造成损害）。 如果多次调用 `GetState<TState>`，必须使用相同的类型。
 
-Finally, the following members are used to signal other entities, or start new orchestrations:
+最后，以下成员用于向其他实体发出信号，或启动新的业务流程：
 
-* `SignalEntity(EntityId, operation, input)`: sends a one-way message to an entity.
-* `CreateNewOrchestration(orchestratorFunctionName, input)`: starts a new orchestration.
+* `SignalEntity(EntityId, operation, input)`：将单向消息发送到实体。
+* `CreateNewOrchestration(orchestratorFunctionName, input)`：启动新的业务流程。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Learn about entity concepts](durable-functions-entities.md)
+> [了解实体的概念](durable-functions-entities.md)

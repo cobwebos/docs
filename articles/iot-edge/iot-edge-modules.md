@@ -17,7 +17,7 @@ ms.locfileid: "74456583"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
-通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
+通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Azure 服务（如 Azure 流分析）或你自己特定于解决方案的代码。 若要了解如何开发、部署和维护模块，有必要考虑模块的四个概念元素：
 
 * 模块映像是包含定义模块的程序包。
 * 模块实例是在 IoT Edge 设备上运行模块映像的特定计算单位。 该模块实例由 IoT Edge 运行时启动。
@@ -68,7 +68,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>脱机功能
 
-Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
+在与 IoT 中心同步至少一次后，Azure IoT Edge 模块可以无限地脱机运行。 IoT Edge 设备还可以将此脱机功能扩展到其他 IoT 设备。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>后续步骤
  - [了解开发 IoT Edge 模块的要求和工具](module-development.md)

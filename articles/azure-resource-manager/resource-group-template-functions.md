@@ -1,5 +1,5 @@
 ---
-title: 模板功能
+title: 模板函数
 description: 介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
 ms.date: 11/19/2019
@@ -12,7 +12,7 @@ ms.locfileid: "74224188"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure 资源管理器模板函数
 
-本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 For information about using functions in your template, see [template syntax](template-expressions.md).
+本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](resource-group-authoring-templates.md#functions)。
 
@@ -78,7 +78,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [deployment](resource-group-template-functions-deployment.md#deployment)
-* [environment](resource-group-template-functions-deployment.md#environment)
+* [环境](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
@@ -222,4 +222,4 @@ Resource Manager 提供以下用于处理字符串的函数：
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)
-* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)
+* 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)

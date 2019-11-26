@@ -24,7 +24,7 @@ ms.locfileid: "74464066"
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
 
 > [!NOTE]
-> The [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) media processor will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces this legacy media processor. For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+> [Azure Media Indexer 2](media-services-process-content-with-indexer2.md)媒体处理器将在2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)将替换此旧媒体处理器。 有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
 Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件和内容可供搜索，以及生成隐藏式字幕跟踪。 与 [Azure Media Indexer](media-services-index-content.md)以前的版本相比， **Azure Media Indexer 2 预览版** 执行索引的速度更快，并提供更广泛的语言支持。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（普通话，简体）、葡萄牙语、阿拉伯语、俄语和日语。
 
@@ -36,7 +36,7 @@ Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件�
 
 请注意以下事项：
  
-* Indexer 2 is not supported in Azure China 21Vianet and Azure Government.
+* 索引器2在 Azure 中国世纪互联和 Azure 政府版中不受支持。
 * 在编制内容的索引时，请确保使用语音极其清晰的媒体文件（没有背景音乐、噪音、特效音或麦克风电流嘶嘶声）。 适当内容的某些示例包括：录制的会议、讲座或演示内容。 以下内容可能不适合用于编制索引：电影、电视剧、混合了音频和声音特效的任何内容、带有背景噪音（电流嘶嘶声）的不当录制内容。
  
 ## <a name="input-and-output-files"></a>输入和输出文件
@@ -86,7 +86,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 * 日语 [JaJp]
 * 俄语 [RuRu]
 * 英式英语 [EnGb]
-* Spanish (Mexico) [EsMx] 
+* 西班牙语（墨西哥） [EsMx] 
 
 ## <a name="supported-file-types"></a>支持的文件类型
 

@@ -1,5 +1,5 @@
 ---
-title: Guidance for developing Azure Functions
+title: Azure Functions 开发指南
 description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions 概念和技术，包括各种编程语言和绑定。
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
@@ -40,14 +40,14 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
-| properties | 值/类型 | 注释 |
+| 属性 | 值/类型 | 注释 |
 | --- | --- | --- |
-| `type` |字符串 |绑定类型。 例如，`queueTrigger` 。 |
+| `type` |字符串 |绑定类型。 例如，`queueTrigger`。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
 | `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
-函数应用在 Azure 中提供用于运行函数的执行上下文。 As such, it is the unit of deployment and management for your functions. 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 All of the functions in a function app share the same pricing plan, deployment method, and runtime version. 将函数应用视为组织和共同管理函数的一种方法。 To learn more, see [How to manage a function app](functions-how-to-use-azure-function-app-settings.md). 
+函数应用在 Azure 中提供用于运行函数的执行上下文。 因此，它是函数的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
 > 函数应用中的所有函数必须使用相同的语言编写。 在 Azure Functions 运行时的[先前版本](functions-versions.md)中，这不是必需的。
@@ -58,7 +58,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 以上是 Function app 的默认（和推荐）文件夹结构。 如果要更改函数代码的文件位置，请修改 function.json 文件的 `scriptFile` 部分。 我们还建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 也可以使用现有工具，比如[持续集成和部署](functions-continuous-deployment.md)以及 Azure DevOps。
 
 > [!NOTE]
-> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到 `wwwroot` 文件夹。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
+> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到  _文件夹_`wwwroot`。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
 
 #### <a name="use-local-tools-and-publishing"></a>使用本地工具和发布
 可以使用各种工具创作和发布各种函数应用，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 和 [Azure Functions Core Tools](./functions-develop-local.md)。 有关详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)。

@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use managed identity to access Azure Storage using SAS credential - Azure AD
+title: 教程`:` 使用托管标识通过 SAS 凭据访问 Azure 存储-Azure AD
 description: 本教程介绍了如何使用 Windows VM 系统分配的托管标识通过 SAS 凭据（而不是存储帐户访问密钥）访问 Azure 存储。
 services: active-directory
 documentationcenter: ''
@@ -28,14 +28,14 @@ ms.locfileid: "74232163"
 
 本教程介绍如何使用系统分配的标识为 Windows 虚拟机 (VM) 获取存储共享访问签名 (SAS) 凭据。 具体而言，是[服务 SAS 凭据](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)。 
 
-服务 SAS 提供了在不公开帐户访问密钥的情况下授权特定的服务（在我们的示例中为 blob 服务）在有限时间内访问存储帐户中对象的权限。 可以像平常在执行存储操作时一样使用 SAS 凭据，例如使用存储 SDK 时。 对于本教程，我们将演示使用 Azure 存储 PowerShell 上传和下载 blob。 你将了解如何执行以下操作：
+服务 SAS 提供了在不公开帐户访问密钥的情况下授权特定的服务（在我们的示例中为 blob 服务）在有限时间内访问存储帐户中对象的权限。 可以像平常在执行存储操作时一样使用 SAS 凭据，例如使用存储 SDK 时。 对于本教程，我们将演示使用 Azure 存储 PowerShell 上传和下载 blob。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建存储帐户
 > * 向 VM 授予对资源管理器中的存储帐户 SAS 的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索 SAS 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -48,9 +48,9 @@ ms.locfileid: "74232163"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
 2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的名称，稍后将使用该名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用”。 
+4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
-6. 单击“创建”。
+6. 单击“**创建**”。
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

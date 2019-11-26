@@ -23,7 +23,7 @@ ms.lasthandoff: 11/19/2019
 ms.locfileid: "74196687"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网
-可以使用 PowerShell 将 VM（经典）从一个子网移动到同一虚拟网络 (VNet) 中的另一个子网。 可通过编辑 CSCFG 文件（而非使用 PowerShell）移动角色实例。
+可以使用 PowerShell 将 VM（经典）从一个子网移动到同一虚拟网络 (VNet) 中的另一个子网。 可以通过编辑 CSCFG 文件（而不是使用 PowerShell）移动角色实例。
 
 > [!NOTE]
 > 本文说明了如何仅移动通过经典部署模型部署的 VM。

@@ -15,7 +15,7 @@ ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: 2f8ba53080b10568a3ac74e9ad2a81114e1c7c93
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206703"
@@ -71,7 +71,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 ### <a name="host-only"></a>仅限主机 
 
-由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 Varying packet delays can negatively affect quality of the time sync. Removing NTP by switching to host-only sync can sometimes improve your time sync results.
+由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅限主机的同步来删除 NTP 有时会缩短时间同步结果。
 
 如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
 
@@ -145,11 +145,11 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 如果同时启用了 chrony 和 TimeSync 源，则可以将其中一个源标记为“首选”，将另一个源设置为备份。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
 
-By default chronyd accelerates or slows the system clock to fix any time drift. If the drift becomes too big, chrony will fail to fix the drift. To overcome this the `makestep` parameter in **/etc/chrony.conf** can be changed to force a timesync if the drift exceeds the threshold specified.
+默认情况下，chronyd 加速或减速系统时钟，以解决任何时间偏移。 如果偏移过大，chrony 将无法修复偏移。 若要解决此情况，可以更改 **/etc/chrony.conf**中的 `makestep` 参数，以在偏移超出指定的阈值时强制 timesync。
  ```bash
 makestep 1.0 -1
 ```
-Here, chrony will force a time update if the drift is greater than 1 second. To apply the changes restart the chronyd service.
+如果偏移大于1秒，chrony 将强制进行时间更新。 若要应用更改，请重新启动 chronyd 服务。
 
 ```bash
 systemctl restart chronyd

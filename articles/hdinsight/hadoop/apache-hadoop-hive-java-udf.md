@@ -1,5 +1,5 @@
 ---
-title: Java user-defined function (UDF) with Apache Hive Azure HDInsight
+title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -19,23 +19,23 @@ ms.locfileid: "74327212"
 
 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例中的 Java UDF 将表中的文本字符串转换为全小写字符。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* A Hadoop cluster on HDInsight. 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
-* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
-* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 This would be wasb:// for Azure Storage, abfs:// for Azure Data Lake Storage Gen2 or adl:// for Azure Data Lake Storage Gen1. 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 根据 Apache 要求正确[安装](https://maven.apache.org/download.cgi)的 [Apache Maven](https://maven.apache.org/install.html)。  Maven 是 Java 项目的项目生成系统。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
 
     > [!IMPORTANT]  
     > 如果在 Windows 客户端上创建 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[故障排除](#troubleshooting)部分，了解删除 CR 字符的步骤。
 
-## <a name="test-environment"></a>Test environment
+## <a name="test-environment"></a>测试环境
 
-The environment used for this article was a computer running Windows 10.  The commands were executed in a command prompt, and the various files were edited with Notepad. Modify accordingly for your environment.
+本文使用的环境是一台运行 Windows 10 的计算机。  命令在命令提示符下执行，各种文件使用记事本进行编辑。 针对环境进行相应的修改。
 
-From a command prompt, enter the commands below to create a working environment:
+在命令提示符下，输入以下命令以创建工作环境：
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -44,28 +44,28 @@ cd C:\HDI
 
 ## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例
 
-1. Create a new Maven project by entering the following command:
+1. 通过输入以下命令创建一个新的 Maven 项目：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    This command creates a directory named `exampleudf`, which contains the Maven project.
+    此命令创建一个名为 `exampleudf`的目录，其中包含 Maven 项目。
 
-2. Once the project has been created, delete the `exampleudf/src/test` directory that was created as part of the project by entering the following command:
+2. 创建项目后，通过输入以下命令删除作为项目的一部分创建的 `exampleudf/src/test` 目录：
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. Open `pom.xml` by entering the command below:
+3. 输入以下命令打开 `pom.xml`：
 
     ```cmd
     notepad pom.xml
     ```
 
-    Then replace the existing `<dependencies>` entry with the following XML:
+    然后，将现有 `<dependencies>` 条目替换为以下 XML：
 
     ```xml
     <dependencies>
@@ -86,7 +86,7 @@ cd C:\HDI
 
     这些条目指定了 HDInsight 3.6 中包含的 Hadoop 和 Hive 版本。 可以在 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)文档中找到 HDInsight 提供的 Hadoop 和 Hive 的版本信息。
 
-    在文件末尾的 `</project>` 行之前添加 `<build>` 部分。 本部分应包含以下 XML：
+    在文件末尾的 `<build>` 行之前添加 `</project>` 部分。 本部分应包含以下 XML：
 
     ```xml
     <build>
@@ -144,13 +144,13 @@ cd C:\HDI
 
     一旦进行了更改，请保存该文件。
 
-4. Enter the command below to create and open a new file `ExampleUDF.java`:
+4. 输入以下命令，以创建并打开新文件 `ExampleUDF.java`：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    Then copy and paste the java code below into the new file. Then close the file.
+    将以下 Java 代码复制并粘贴到新文件中。 然后关闭该文件。
 
     ```java
     package com.microsoft.examples;
@@ -181,9 +181,9 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>生成并安装 UDF
 
-In the commands below, replace `sshuser` with the actual username if different. Replace `mycluster` with the actual cluster name.
+在以下命令中，请将 `sshuser` 替换为实际用户名（如果两者不同）。 将 `mycluster` 替换为实际群集名称。
 
-1. Compile and package the UDF by entering the following command:
+1. 通过输入以下命令编译和打包 UDF：
 
     ```cmd
     mvn compile package
@@ -191,19 +191,19 @@ In the commands below, replace `sshuser` with the actual username if different. 
 
     此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
-2. Use the `scp` command to copy the file to the HDInsight cluster by entering the following command:
+2. 使用 `scp` 命令通过输入以下命令将文件复制到 HDInsight 群集：
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. Connect to the cluster using SSH by entering the following command:
+3. 输入以下命令，使用 SSH 连接到群集：
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. From the open SSH session, copy the jar file to HDInsight storage.
+4. 从打开的 SSH 会话中，将 jar 文件复制到 HDInsight 存储。
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -211,7 +211,7 @@ In the commands below, replace `sshuser` with the actual username if different. 
 
 ## <a name="use-the-udf-from-hive"></a>在 Hive 中使用 UDF
 
-1. Start the Beeline client from the SSH session by entering the following command:
+1. 通过输入以下命令从 SSH 会话启动 Beeline 客户端：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -232,7 +232,7 @@ In the commands below, replace `sshuser` with the actual username if different. 
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    This query selects the state from the table, convert the string to lower case, and then display them along with the unmodified name. 显示的输出类似于以下文本：
+    此查询从表中选择状态，将字符串转换为小写形式，然后将其与未修改的名称一起显示。 显示的输出类似于以下文本：
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -251,13 +251,13 @@ In the commands below, replace `sshuser` with the actual username if different. 
 
 ## <a name="troubleshooting"></a>故障排除
 
-When running the hive job, you may come across an error similar to the following text:
+运行 hive 作业时，可能会遇到类似于以下文本的错误：
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
 此问题可能是由 Python 文件中的行尾结束符号导致的。 许多 Windows 编辑器默认为使用 CRLF 作为行尾结束符号，但 Linux 应用程序通常应使用 LF。
 
-可以使用 PowerShell 语句删除 CR 字符，然后再将文件上传到 HDInsight：
+可以使用 PowerShell 语句删除 CR 字符，再将文件上载到 HDInsight：
 
 ```PowerShell
 # Set $original_file to the python file path

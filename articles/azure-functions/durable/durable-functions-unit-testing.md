@@ -12,12 +12,12 @@ ms.locfileid: "74231229"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
-单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 The following sections explain how to unit test the three function types - Orchestration client, orchestrator, and activity functions.
+单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下各节说明如何单元测试三个函数类型-业务流程客户端、业务流程协调程序和活动函数。
 
 > [!NOTE]
-> This article provides guidance for unit testing for Durable Functions apps targeting Durable Functions 1.x. It has not yet been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> 本文提供针对 Durable Functions 1.x Durable Functions 应用的单元测试的指南。 尚未对其进行更新，以考虑 Durable Functions 1.x 中引入的更改。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 学习本文中的示例需要了解以下概念和框架：
 
@@ -31,7 +31,7 @@ ms.locfileid: "74231229"
 
 ## <a name="base-classes-for-mocking"></a>用于模拟的基类
 
-Mocking is supported via three abstract classes in Durable Functions 1.x:
+在 Durable Functions 1.x 中，通过三个抽象类支持模拟：
 
 * `DurableOrchestrationClientBase`
 
@@ -39,9 +39,9 @@ Mocking is supported via three abstract classes in Durable Functions 1.x:
 
 * `DurableActivityContextBase`
 
-These classes are base classes for `DurableOrchestrationClient`, `DurableOrchestrationContext`, and `DurableActivityContext` that define Orchestration Client, Orchestrator, and Activity methods. 模拟将会设置基类方法的预期行为，使单元测试能够验证业务逻辑。 可以通过一个两步工作流对业务流程客户端和业务流程协调程序中的业务逻辑进行单元测试：
+这些类是用于定义业务流程客户端、Orchestrator 和活动方法的 `DurableOrchestrationClient`、`DurableOrchestrationContext`和 `DurableActivityContext` 的基类。 模拟将会设置基类方法的预期行为，使单元测试能够验证业务逻辑。 可以通过一个两步工作流对业务流程客户端和业务流程协调程序中的业务逻辑进行单元测试：
 
-1. Use the base classes instead of the concrete implementation when defining orchestration client and orchestrator function signatures.
+1. 在定义业务流程客户端和业务流程协调程序函数签名时，使用基类而不是具体的实现。
 2. 在单元测试中模拟基类的行为，并验证业务逻辑。
 
 在以下段落中，可以找到有关对使用业务流程客户端绑定和业务流程协调程序触发器绑定的函数进行测试的更多详细信息。
@@ -52,9 +52,9 @@ These classes are base classes for `DurableOrchestrationClient`, `DurableOrchest
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 So the unit test will mock some of `DurableOrchestrationClientBase` methods to ensure predictable behavior.
+单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此单元测试将模拟某些 `DurableOrchestrationClientBase` 方法，以确保行为可预测。
 
-First, a mock of the base class is required, `DurableOrchestrationClientBase`. The mock can be a new class that implements `DurableOrchestrationClientBase`. 但是，使用 [moq](https://github.com/moq/moq4) 之类的模拟框架可以简化过程：
+首先，需要将基类模拟 `DurableOrchestrationClientBase`。 模拟可以是实现 `DurableOrchestrationClientBase`的新类。 但是，使用 [moq](https://github.com/moq/moq4) 之类的模拟框架可以简化过程：
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -172,7 +172,7 @@ First, a mock of the base class is required, `DurableOrchestrationClientBase`. T
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-另外，单元测试将验证输出格式。 The unit tests can use the parameter types directly or mock `DurableActivityContextBase` class:
+另外，单元测试将验证输出格式。 单元测试可以直接使用参数类型，也可以模拟 `DurableActivityContextBase` 类：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

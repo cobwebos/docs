@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach data science with Python and Jupyter Notebooks | Microsoft Docs
-description: Learn how to set up a lab to teach data science using Python and Jupyter Notebooks.
+title: 使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学 |Microsoft Docs
+description: 了解如何使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学。
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,60 +20,60 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383977"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Set up a lab to teach data science with Python and Jupyter Notebooks
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学
 
-This article outlines how to set up a template machine in Lab Services with the tools needed to teach students how to use [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io).  Jupyter Notebooks is an open-source project that lets you easily combine rich text and executable [Python](https://www.python.org/) source code on a single canvas called a notebook.  Running a notebook results in a linear record of inputs and outputs.  Those outputs can include text, tables of information, scatter plots, and more.
+本文概述了如何在实验室服务中设置模板计算机，以及如何使用[Jupyter 笔记本](http://jupyter-notebook.readthedocs.io)讲授学生所需的工具。  Jupyter 笔记本是一个开源项目，可让你轻松地将丰富的文本和可执行的[Python](https://www.python.org/)源代码组合到称为笔记本的单个画布上。  运行笔记本会生成输入和输出的线性记录。  这些输出可以包括文本、信息表、散点图等。
 
 ## <a name="lab-configuration"></a>实验室配置
 
-To set up this lab, you need an Azure subscription and lab account to get started. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [tutorial to setup a lab account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
 
-### <a name="lab-account-settings"></a>Lab Account Settings
+### <a name="lab-account-settings"></a>实验室帐户设置
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [specify marketplace images available to lab creators](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)。
 
-| Lab account setting | 说明 |
+| 实验室帐户设置 | 说明 |
 | ------------------- | ------------ |
-| Marketplace image | Enable the [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image for use within your lab account. |
+| 市场映像 | 启用[Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)映像以便在实验室帐户中使用。 |
 
 >[!TIP]
->This article will focus on configuring a template machine that uses the Windows Server operating system.  It's also possible to set up a data science class with Python and Jupyter Notebooks using [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) or [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) images from the Azure Marketplace.
+>本文重点介绍如何配置使用 Windows Server 操作系统的模板计算机。  还可以使用[适用于 linux 的 Data Science Virtual Machine （CentOS）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) Data Science Virtual Machine 或 Azure Marketplace 中的[linux （Ubuntu）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)映像，使用 Python 和 Jupyter 笔记本设置数据科学类。
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>实验室设置
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+设置教室实验室时，请使用下表中的设置。  有关如何创建教室实验室的详细信息，请参阅[设置课堂实验室教程](tutorial-setup-classroom-lab.md)。
 
-| Lab settings | Value/instructions |
+| 实验室设置 | 值/说明 |
 | ------------ | ------------------ |
-|虚拟机大小| Small GPU (Compute). This size is best suited for compute-intensive and network-intensive applications like Artificial Intelligence and Deep Learning. |
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|虚拟机大小| 小型 GPU （计算）。 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习。 |
+|虚拟机映像| Windows Server 2019 上的 SQL Server 2019 标准版|
 
-## <a name="template-machine"></a>Template machine
+## <a name="template-machine"></a>模板计算机
 
-The [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) image provides the necessary deep learning frameworks and tools required for this type of class.  The image includes Jupyter Notebooks and Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) is a web application that allows data scientists to take raw data, run computations, and see the results all in the same environment.  For our template machine, the web application will be running locally.  [Visual Studio Code](https://code.visualstudio.com/) is an IDE that provides a rich interactive experience when writing and testing a notebook.  For more information, see [Working with Jupyter Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
+[Data Science Virtual Machine-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)映像提供此类类型所需的深入学习框架和工具。  该映像包括 Jupyter 笔记本和 Visual Studio Code。  [Jupyter 笔记本](http://jupyter-notebook.readthedocs.io)是一个 web 应用程序，它允许数据科学家获取原始数据、运行计算，并查看相同环境中的所有结果。  对于模板计算机，web 应用程序将以本地方式运行。  [Visual Studio Code](https://code.visualstudio.com/)是在编写和测试笔记本时提供丰富交互式体验的 IDE。  有关详细信息，请参阅[在 Visual Studio Code 中使用 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support)。
 
-The remaining task to set up the class is to provide local notebooks.  For instructions how to use the Azure Machine Learning samples, see [how to configure an environment with Jupyter Notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter).  You can also provide your own notebooks on the template machine.  The notebooks will be copied to all student machines when the template is published.
+用于设置类的其余任务是提供本地笔记本。  有关如何使用 Azure 机器学习示例的说明，请参阅[如何使用 Jupyter 笔记本配置环境](../../machine-learning/service/how-to-configure-environment.md#jupyter)。  你还可以在模板计算机上提供自己的笔记本。  发布模板时，笔记本将复制到所有学生计算机。
 
 ## <a name="cost-estimate"></a>成本估计
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was small gpu (compute), which is 139 lab units.
+我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  我们选择的虚拟机大小为小 gpu （计算），即139实验室单位。
 
-Here is an example of a possible cost estimate for this class:
+下面是此类的可能的成本估算示例：
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 139 lab units \*  0.01 USD per hour  = 1042.5 USD
+25名学生 \* （20个计划小时 + 10 个配额小时） \* 139 实验室单位 \* 0.01 美元/小时 = 1042.5 USD
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>结束语
 
-In this article, we walked through the steps to create a lab for a Jupyter Notebooks class. You can use a similar setup for other machine learning classes.
+本文逐步介绍了为 Jupyter 笔记本类创建实验室的步骤。 对于其他机器学习类，您可以使用类似的设置。
 
 ## <a name="next-steps"></a>后续步骤
 
-Next steps are common to setting up any lab.
+下一步是设置任何实验室的常见步骤。
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [创建和管理模板](how-to-create-manage-template.md)
 - [添加用户](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [设置配额](how-to-configure-student-usage.md#set-quotas-for-users)
+- [设置计划](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [向学生发送电子邮件注册链接](how-to-configure-student-usage.md#send-invitations-to-users)

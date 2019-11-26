@@ -288,4 +288,4 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 - 在[初学者查询](../samples/starter.md)中了解使用的语言。
 - 在[高级查询](../samples/advanced.md)中了解高级用法。
-- 详细了解如何[浏览资源](../concepts/explore-resources.md)。
+- 了解有关如何[浏览资源](../concepts/explore-resources.md)的详细信息。

@@ -26,7 +26,7 @@ ms.locfileid: "74421029"
 
 1. 从 [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget) 下载最新的 NuGet 版本。
 
-1. 打开命令提示符，然后导航到下载 nuget.exe 的目录。 此下载包括 PowerShell 命令。
+1. 打开命令提示符，并导航到下载 nuget.exe 的目录。 此下载包括 PowerShell 命令。
 
 1. 使用以下命令将最新的拆分/合并包下载到当前目录中：
 
@@ -36,7 +36,7 @@ ms.locfileid: "74421029"
 
 文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分/合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分/合并 PowerShell 脚本（和所需的客户端 dll）可在 **content\splitmerge\powershell** 子目录中找到。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
 
@@ -63,9 +63,9 @@ ms.locfileid: "74421029"
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. Enter this connection string in the *.cscfg* file in both the **SplitMergeWeb** and **SplitMergeWorker** role sections in the ElasticScaleMetadata setting.
+1. 在 ElasticScaleMetadata 设置的 " **SplitMergeWeb** " 和 " **SplitMergeWorker** " 角色部分中，在 *.cscfg*文件中输入此连接字符串。
 
-1. 对于 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 设置中输入有效的连接字符串用于连接到 Azure 存储空间。
+1. 对于 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 设置中输入有效的连接字符串用于连接到 Azure 存储。
 
 ### <a name="configure-security"></a>配置安全性
 
@@ -111,7 +111,7 @@ ms.locfileid: "74421029"
 2. 选择“云服务”。
 3. 选择之前为拆分/合并服务创建的云服务。
 4. 单击顶部菜单上的“证书”。
-5. 单击底部栏中的“上载”。
+5. 单击底部栏中的“上传”。
 6. 选择 PFX 文件并输入上面所述的相同密码。
 7. 完成操作后，从列表中的新条目复制证书指纹。
 
@@ -184,7 +184,7 @@ ms.locfileid: "74421029"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
@@ -206,7 +206,7 @@ ms.locfileid: "74421029"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
@@ -225,18 +225,18 @@ ms.locfileid: "74421029"
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>使用 PowerShell 验证部署
 
-1. 打开新 PowerShell 窗口并导航到下载拆分/合并包的目录，然后导航到“powershell”目录中。
+1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
 
 2. 创建一个将要在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
 
    > [!NOTE]
-   > The *SetupSampleSplitMergeEnvironment.ps1* script creates all these databases on the same server by default to keep the script simple. 这并不表示拆分/合并服务本身存在限制。
+   > 默认情况下， *setupsamplesplitmergeenvironment.ps1*脚本将在相同的服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
 
    拆分/合并服务将需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
 
    确保 Azure SQL 服务器已配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在“Azure SQL 服务器”/“配置”/“允许的 IP 地址”下找到此设置。
 
-3. Execute the *SetupSampleSplitMergeEnvironment.ps1* script to create the sample environment.
+3. 执行*setupsamplesplitmergeenvironment.ps1*脚本以创建示例环境。
 
    运行此脚本将擦除分片映射管理器数据库和分片上任何现有的分片映射管理数据结构。 如果要重新初始化分片映射或分片，重新运行脚本可能会很有用。
 
@@ -254,7 +254,7 @@ ms.locfileid: "74421029"
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Execute the *ExecuteSampleSplitMerge.ps1* script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
+5. 执行*executesamplesplitmerge.ps1*脚本以执行拆分操作（将第一个分片上的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。 如果已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 https:// 终结点。
 
    示例命令行：
 

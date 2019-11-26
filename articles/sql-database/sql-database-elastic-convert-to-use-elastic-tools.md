@@ -100,7 +100,7 @@ $ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' 
 $ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Option 3: List mappings on an individual database
+### <a name="option-3-list-mappings-on-an-individual-database"></a>选项3：列出单个数据库上的映射
 
 设置此模式也需要创建列表映射，如步骤 2，选项 1 中所示。
 
@@ -149,7 +149,7 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>Summary
 
 完成设置后，可以开始使用弹性数据库客户端库。 还可以使用[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分片查询](sql-database-elastic-scale-multishard-querying.md)。
 

@@ -1,6 +1,6 @@
 ---
-title: Get started with Azure Cost Management for partners
-description: This article explains how partners use Azure Cost Management features and how they enable Cost Management access for their customers.
+title: 适用于合作伙伴的 Azure 成本管理入门
+description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户提供成本管理访问权限。
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -17,271 +17,271 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74219221"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>Get started with Azure Cost Management for partners
+# <a name="get-started-with-azure-cost-management-for-partners"></a>适用于合作伙伴的 Azure 成本管理入门
 
-Azure Cost Management is natively available for partners who have onboarded their customers to a Microsoft Customer Agreement and have [purchased an Azure Plan](/partner-center/purchase-azure-plan). This article explains how partners use [Azure Cost Management](index.yml) features to view costs for subscriptions in the Azure Plan. It also describes how partners enable Cost Management access for their customers. Customers can use Cost Management features when enabled by their CSP partner.
+对于已载入客户到 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的合作伙伴，Azure 成本管理是本机可用的。 本文介绍合作伙伴如何使用[Azure 成本管理](index.yml)功能在 azure 计划中查看订阅成本。 还介绍了合作伙伴如何为其客户实现成本管理访问权限。 客户可在其 CSP 合作伙伴启用后使用成本管理功能。
 
-CSP partners use Cost Management to:
+CSP 合作伙伴使用成本管理来：
 
-- Understand invoiced costs and associate the costs to the customer, subscriptions, resource groups, and services.
-- Get an intuitive view of Azure costs in [cost analysis](quick-acm-cost-analysis.md) with capabilities to analyze costs by customer, subscription, resource group, resource, meter, service, and many other dimensions.
-- View resource costs that have Partner Earned Credit (PEC) applied in Cost Analysis.
-- Set up notifications and automation using programmatic [budgets](tutorial-acm-create-budgets.md) and alerts when costs exceed budgets.
-- Enable the Azure Resource Manager policy that provides customer access to Cost Management data. Customers can then view consumption cost data for their subscriptions using [pay-as-you-go rates](https://azure.microsoft.com/pricing/calculator/).
+- 了解已开票的成本，并将成本与客户、订阅、资源组和服务相关联。
+- 在[成本分析](quick-acm-cost-analysis.md)中获得 Azure 成本的直观视图，并通过功能按客户、订阅、资源组、资源、计量、服务及许多其他维度分析成本。
+- 查看在成本分析中应用了合作伙伴挣贷款（PEC）的资源成本。
+- 当成本超出预算时，使用编程[预算](tutorial-acm-create-budgets.md)和警报设置通知和自动化。
+- 启用 Azure 资源管理器策略，以提供对成本管理数据的客户访问。 然后，客户可以使用即用即[付费率](https://azure.microsoft.com/pricing/calculator/)查看其订阅的消耗成本数据。
 
-Here's an example showing costs for all customers.
-![Example showing costs for all customers](./media/get-started-partners/customer-costs1.png)
+以下示例显示了所有客户的成本。
+显示所有客户的成本的 ![示例](./media/get-started-partners/customer-costs1.png)
 
-Here's an example showing costs for a single customer.
-![Example showing costs for a single customer](./media/get-started-partners/customer-costs2.png)
+下面是一个显示单个客户的成本的示例。
+显示单个客户的成本的 ![示例](./media/get-started-partners/customer-costs2.png)
 
-All functionality available in Azure Cost Management is also available with REST APIs. Use the APIs to automate cost management tasks.
+还可通过 REST Api 使用 Azure 成本管理中提供的所有功能。 使用 Api 自动执行成本管理任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-Azure Cost Management requires read access to your billing account or subscription. Access can be granted at any level above your resources, from the billing account or a management group down to individual resource groups where you manage your apps. For more information about enabling and assigning access to Azure Cost Management for a billing account, see [Assign users roles and permissions](/partner-center/permissions-overview). The **Global admin** and **Admin agent** roles can manage costs for a billing account.
+Azure 成本管理要求对计费帐户或订阅具有 "读取" 权限。 可以在资源的任何级别授予访问权限，将计费帐户或管理组向下授予管理应用的各个资源组。 有关为计费帐户启用和分配对 Azure 成本管理的访问的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 **全局管理员**和**管理代理**角色可以管理计费帐户的成本。
 
-To view a full list of supported account types, see [Understand Cost Management data](understand-cost-mgt-data.md).
+若要查看受支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
 
-## <a name="how-cost-management-uses-scopes"></a>How Cost Management uses scopes
+## <a name="how-cost-management-uses-scopes"></a>成本管理如何使用作用域
 
-Scopes are where you manage billing data, have roles specific to payments, view invoices, and conduct general account management. Billing and account roles are managed separately from scopes used for resource management, which use RBAC. To clearly distinguish the intent of the separate scopes, including the access control differences, they are referred to as billing scopes and RBAC scopes, respectively.
+作用域是你在其中管理计费数据、拥有特定于付款的角色、查看发票和执行常规帐户管理的位置。 计费和帐户角色与使用 RBAC 的资源管理的范围分开管理。 若要明确区分不同范围的意图，包括访问控制差异，它们分别称为计费范围和 RBAC 范围。
 
-To understand billing scopes and RBAC scopes and how cost management works with scopes, see [Understand and work with scopes](understand-work-scopes.md).
+若要了解计费范围和 RBAC 范围以及成本管理如何与作用域一起使用，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
-## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Manage costs with partner tenant billing scopes
+## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>通过合作伙伴租户计费范围管理成本
 
-After you've onboarded your customers to a Microsoft Customer Agreement, the following _billing scopes_ are available in your tenant. Use the scopes to manage costs in Cost Management.
+将客户载入到 Microsoft 客户协议后，你的租户中将提供以下_计费范围_。 使用范围来管理成本管理中的成本。
 
-### <a name="billing-account-scope"></a>Billing account scope
+### <a name="billing-account-scope"></a>计费帐户范围
 
-Use the billing account scope to view pre-tax costs across all your customers and billing profiles. Invoice costs are only shown for customer's consumption-based products on the Microsoft Customer Agreement. However, invoice costs are shown for purchased-based products for customers on both the Microsoft Customer Agreement and the CSP offer. Currently, the default currency to view costs in the scope is US dollars. Budgets set for the scope are also in USD.
+使用计费帐户范围查看所有客户和计费配置文件中的税前成本。 仅在 Microsoft 客户协议上为客户的基于消耗的产品显示发票成本。 但是，对于在 Microsoft 客户协议和 CSP 提议上购买的基于购买的产品，会显示发票成本。 目前，在范围内查看成本的默认货币为美元。 作用域的预算集也以 USD 为单位。
 
-Regardless of different customer-billed currencies, partners use Billing account scope to set budgets and manage costs in USD across their customers, subscriptions, resources, and resource groups.
+无论使用哪种不同的客户计费货币，合作伙伴都使用计费帐户范围来设置预算，并跨其客户、订阅、资源和资源组来管理成本。
 
-Partners also filter costs in a specific billing currency across customers in the cost analysis view. Select the **Actual cost** list to view costs in supported customer billing currencies.
+合作伙伴还可以在成本分析视图中通过特定的计费币种来筛选客户的成本。 选择 "**实际成本**" 列表以查看受支持的客户计费币种的成本。
 
-![Example showing Actual cost selection for currencies](./media/get-started-partners/actual-cost-selector.png)
+![显示货币的实际成本选择的示例](./media/get-started-partners/actual-cost-selector.png)
 
-Use the [amortized cost view](quick-acm-cost-analysis.md#customize-cost-views) in billing scopes to view reserved instance amortized costs across a reservation term.
+使用计费范围中的[摊销成本视图](quick-acm-cost-analysis.md#customize-cost-views)来查看预订期限内的预留实例摊销成本。
 
-### <a name="billing-profile-scope"></a>Billing profile scope
+### <a name="billing-profile-scope"></a>计费配置文件范围
 
-Use the billing profile scope to view pre-tax costs in the billing currency across all your customers for all products and subscriptions included in an invoice. You can filter costs in a billing profile for a specific invoice using the **InvoiceID** filter. The filter shows the consumption and product purchase costs for a specific invoice. You can also filter the costs for a specific customer on the invoice to see pre-tax costs.
+使用计费配置文件范围，以在所有产品和发票中包含的订阅的所有客户的计费币种内查看税前成本。 您可以使用**InvoiceID**筛选器来筛选特定发票的计费配置文件中的成本。 筛选器显示特定发票的消耗和产品采购成本。 您还可以筛选发票上特定客户的成本，以查看税前成本。
 
-After you onboard customers to a Microsoft Customer Agreement, you receive an invoice that includes all charges for all products (consumption, purchases, and entitlements) for these customers on the Microsoft Customer Agreement. When billed in the same currency, these invoices also include the charges for entitlement and purchased products such as SaaS, Azure Marketplace, and reservations for customers who are still in the CSP offer.
+将客户加入 Microsoft 客户协议后，您将收到一张发票，其中包含这些客户在 Microsoft 客户协议上的所有产品（消耗、购买和权利）的所有费用。 如果以相同的货币进行计费，这些发票还包括有关授权和购买产品的费用，如 SaaS、Azure Marketplace 以及仍处于 CSP 提供的客户的预订。
 
-To help reconcile charges against the customer invoice, the billing profile scope enables you to see all costs that accrue for an invoice for your customers. Like the invoice, the scope shows costs for every customer in the new Microsoft Customer Agreement. The scope also shows every charge for customer entitlement products still in the current CSP offer.
+为了帮助根据客户发票来协调费用，可以使用计费配置文件范围来查看为客户的发票支付的所有成本。 与发票一样，范围显示新的 Microsoft 客户协议中每个客户的成本。 范围还显示了仍在当前 CSP 提议中的客户授权产品的每个费用。
 
-The billing profile and billing account scopes are the only applicable scopes that show charges for entitlement and purchase-based products like Azure Marketplace and reservation purchases.
+计费配置文件和计费帐户范围是唯一适用的作用域，这些范围显示了授权和基于采购的产品（如 Azure Marketplace 和预订购买）的费用。
 
-Billing profiles define the subscriptions that are included in an invoice. Billing profiles are the functional equivalent of an enterprise agreement enrollment. A billing profile is the scope where invoices are generated.
+计费配置文件定义发票中包含的订阅。 计费配置文件在功能上等同于企业协议注册。 计费配置文件是生成发票的作用域。
 
-Currently, the customer's billing currency is the default currency when viewing costs in the billing profile scope. Budgets set at the billing profile scope are in the billing currency.
+目前，客户的计费币种是在计费配置文件范围内查看成本时的默认货币。 计费配置文件范围内的预算设置为计费货币。
 
-Partners can use the scope to reconcile to invoices. And, they use the scope to set budgets in the billing currency for the following items:
+合作伙伴可以使用范围来协调发票。 而且，它们使用范围为以下各项设置计费货币中的预算：
 
-- Specific filtered invoice
-- 客户
-- Subscription
-- Resource group
-- 资源
+- 特定筛选的发票
+- Customer
+- 订阅
+- 资源组
+- Resource
 - Azure 服务
 - 计量
 - ResellerMPNID
 
-### <a name="customer-scope"></a>Customer scope
+### <a name="customer-scope"></a>客户范围
 
-Partners use the scope to manage costs associated to customers that are onboarded to the Microsoft Customer Agreement. The scope allows partners to view pre-tax costs for a specific customer. You can also filter the pre-tax costs for a specific subscription, resource group, or resource.
+合作伙伴使用范围来管理与载入 Microsoft 客户协议的客户关联的成本。 范围允许合作伙伴查看特定客户的税前成本。 你还可以为特定的订阅、资源组或资源筛选税前成本。
 
-The customer scope doesn't include customers who are on the current CSP offer. The scope only includes customers who have a Microsoft Customer Agreement. Entitlement costs, not Azure usage, for current CSP offer customers are available at the billing account and billing profile scopes when you apply the customer filter.
+客户范围不包括当前 CSP 提供的客户。 此范围仅包括具有 Microsoft 客户协议的客户。 在应用客户筛选器时，适用于当前 CSP 的授权成本（而非 Azure 使用情况）提供了计费帐户和计费配置文件范围内的客户。
 
-## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partner access to billing scopes in Cost Management
+## <a name="partner-access-to-billing-scopes-in-cost-management"></a>在成本管理中合作伙伴访问计费范围
 
-Only the users with **Global admin** and **Admin agent** roles can manage and view costs for billing accounts, billing profiles, and customers directly in the partner's Azure tenant. For more information about partner center roles, see [Assign users roles and permissions](/partner-center/permissions-overview).
+只有拥有**全局管理员**和**管理代理**角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件和客户的成本。 有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Enable cost management in the customer tenant
+## <a name="enable-cost-management-in-the-customer-tenant"></a>启用客户租户中的成本管理
 
-Partners may enable access to Cost Management after customers are onboarded to a Microsoft Customer Agreement. Then partners can then enable a policy allowing customers to view their costs computed at pay-as-you-go retail rates. Costs are shown in the customer's billing currency for their consumed usage at RBAC subscription and resource groups scopes.
+合作伙伴可以在客户载入 Microsoft 客户协议后启用对成本管理的访问。 然后，合作伙伴可以启用允许客户查看按现用现付零售费率计算的成本的策略。 在 RBAC 订阅和资源组范围内，按客户的计费币种显示成本。
 
-When the policy for cost visibility is enabled by the partner, any user with Azure Resource Manager access to the subscription can manage and analyze costs at pay-as-you-go rates. Effectively, resellers and customers that have the appropriate RBAC access to the Azure subscriptions can view cost.
+当伙伴启用了成本可见性策略时，拥有 Azure 资源管理器访问权限的任何用户都可以按现用现付费率管理和分析成本。 有效地，具有对 Azure 订阅的合适 RBAC 访问权限的分销商和客户可以查看成本。
 
-Regardless of the policy, partners can also view the costs if they have access to the subscription and resource group.
+无论采用哪种策略，合作伙伴都可以查看订阅和资源组的访问权限。
 
-### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Enable the policy to view Azure usage charges
+### <a name="enable-the-policy-to-view-azure-usage-charges"></a>启用策略以查看 Azure 使用费用
 
-Partners use the following information to enable to the policy to view Azure usage charges for their customers.
+合作伙伴可以使用以下信息来为其客户查看 Azure 使用情况收费。
 
-In the Azure portal, sign in to the partner tenant and click **Cost Management + Billing**. Select a billing account and then click **Customers**. The list of customers is associated with the billing account.
+在 Azure 门户中，登录到合作伙伴租户，然后单击 "**成本管理 + 计费**"。 选择计费帐户，然后单击 "**客户**"。 客户列表与计费帐户关联。
 
-In the list of customers, select the customer that you want to allow to view costs.
+在 "客户" 列表中，选择要允许其查看成本的客户。
 
-![Select customers in Cost Management](./media/get-started-partners/customer-list.png)
+![选择成本管理中的客户](./media/get-started-partners/customer-list.png)
 
-Under **Settings**, click **Policies**.
+在 "**设置**" 下，单击 "**策略**"。
 
-The current cost visibility policy is shown for **Azure Usage** charges associated to the subscriptions for the selected customer.
-![Policy to allow customers to view pay-as-you-go charges](./media/get-started-partners/cost-management-billing-policies.png)
+对于与所选客户的订阅相关联的**Azure 使用**费用，将显示当前成本可见性策略。
+![策略以允许客户查看即用即付费用](./media/get-started-partners/cost-management-billing-policies.png)
 
-When the policy is set to **No**, Azure Cost Management isn't available for subscription users associated to the customer. Unless enabled by a partner, the cost visibility policy is disabled by default for all subscription users.
+当策略设置为 "**否**" 时，Azure 成本管理不适用于与客户关联的订阅用户。 默认情况下，默认情况下，为所有订阅用户禁用成本可见性策略。
 
-When the cost policy is set to **Yes**, subscription users associated to the customer tenant can see usage charges at pay-as-you go rates.
+当成本策略设置为 **"是"** 时，与客户租户关联的订阅用户可以按即用即付费率查看使用量。
 
-When the cost visibility policy is enabled, all services that have subscription usage show costs at pay-as-you-go rates. Reservation usage appears with zero charges for actual and amortized costs. Purchases and entitlements are not associated to a specific subscription. So, purchases aren't displayed at the subscription scope.
+启用成本可见性策略后，具有订阅使用情况的所有服务都按现用现付费率显示成本。 预订使用情况在实际和摊销成本上显示为零。 采购和权利不关联到特定订阅。 因此，不会在订阅范围中显示购买。
 
-To view costs for the customer tenant, open Cost Management + Billing and then click Billing accounts. In the list of billing accounts, click a billing account.
+若要查看客户租户的成本，请打开成本管理 + 计费，然后单击 "计费帐户"。 在计费帐户列表中，单击计费帐户。
 
-![Select a billing account](./media/get-started-partners/select-billing-account.png)
+![选择计费帐户](./media/get-started-partners/select-billing-account.png)
 
-Under **Billing**, click **Azure subscriptions**, and then click a customer.
+在 "**计费**" 下，单击 " **Azure 订阅**"，然后单击客户。
 
-![Select an Azure subscription customer](./media/get-started-partners/subscriptions-select-customer.png)
+![选择 Azure 订阅客户](./media/get-started-partners/subscriptions-select-customer.png)
 
-Click **Cost analysis** and start reviewing costs.
-Cost analysis, budgets, and alerts are available for the subscription and resource group RBAC scopes at pay-as-you-go rate-based costs.
+单击 "**成本分析**" 并开始查看成本。
+按即用即付费率的成本提供订阅和资源组 RBAC 范围的成本分析、预算和警报。
 
-![View cost analysis as a customer ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+![以客户身份查看成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
-Amortized views and actual costs for reserved instances in the RBAC scopes show zero charges. Reserved instance costs are only showing in billing scopes where the purchases were made.
+RBAC 范围内的预留实例的分期查看和实际成本显示零收费。 预订实例成本仅显示在进行购买的计费范围中。
 
-## <a name="analyze-costs-in-cost-analysis"></a>Analyze costs in cost analysis
+## <a name="analyze-costs-in-cost-analysis"></a>分析成本分析中的成本
 
-Partners can explore and analyze costs in cost analysis across customers for a specific customer or for an invoice. In the [cost analysis](quick-acm-cost-analysis.md) view, you can also [save views](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) and export data to [CSV and PNG files](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+合作伙伴可以探索和分析客户对于特定客户或发票的成本分析成本。 在 "[成本分析](quick-acm-cost-analysis.md)" 视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)并将数据导出到[CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
 
-You can use filter and group by features in cost analysis to analyze costs by multiple fields. Partner-specific fields are shown in the next section.
+您可以使用 "筛选和分组依据" 成本分析中的功能来按多个字段分析成本。 下一节将显示特定于合作伙伴的字段。
 
-## <a name="data-fields"></a>Data fields
+## <a name="data-fields"></a>数据字段
 
-The following data fields are found in usage detail files and Cost Management APIs. Where available, Partner Center equivalent information is shown. For the following bold fields, partners can use filter and group by features in cost analysis to analyze costs by multiple fields. Bold fields apply only to Microsoft Customer Agreements supported by partners.
+在使用情况详细信息文件和成本管理 Api 中可以找到以下数据字段。 在可用的情况下，会显示合作伙伴中心的等效信息。 对于下面的加粗字段，合作伙伴可以使用筛选器并分组按成本分析中的功能来按多个字段对成本进行分析。 粗体字段仅适用于合作伙伴支持的 Microsoft 客户协议。
 
-| **字段名称** | **说明** | **Partner Center equivalent** |
+| **字段名称** | **说明** | **合作伙伴中心等效项** |
 | --- | --- | --- |
-| invoiceId | Invoice ID shown on the invoice for the specific transaction. | Invoice number where the transaction is shown. |
-| previousInvoiceID | Reference to an original invoice there is a refund (negative cost). Populated only when there is a refund. | N/A |
-| billingAccountName | Name of the billing account representing the partner. It accrues all costs across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | N/A |
-| billingAccountID | Identifier for the billing account representing the partner. | MCAPI Partner Commerce Root ID. Used in a request, but not included in a response.|
-| billingProfileID | Identifier for the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | MCAPI Partner Billing Group ID. Used in a request, but not included in a response. |
-| billingProfileName | Name of the billing profile that groups costs across invoices in a single billing currency across the customers who have onboarded to a Microsoft customer agreement and the CSP customers that have made entitlement purchases like SaaS, Azure Marketplace, and reservations. | N/A |
-| invoiceSectionName | Name of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | N/A |
-| invoiceSectionID | Identifier of the project that is being charged in the invoice. Not applicable for Microsoft Customer Agreements onboarded by partners. | N/A |
-| **CustomerTenantID** | Identifier of the Azure Active Directory tenant of the customer's subscription. | Customer's organizational ID - the customer's Azure Active Directory TenantID. |
-| **CustomerName** | Name of the Azure Active Directory tenant for the customer's subscription. | Customer's organization name, as shown in the Partner Center. Important for reconciling the invoice with your system information. |
-| **CustomerTenantDomainName** | Domain name for the Azure Active Directory tenant of the customer's subscription. | Customer Azure Active Directory tenant domain. |
-| **PartnerTenantID** | Identifier for the partner's Azure Active Directory tenant. | Partner Azure Active Directory Tenant ID called as Partner ID, in GUID format. |
-| **PartnerName** | Name of the partner Azure Active Directory tenant. | 合作伙伴名称。 |
-| **ResellerMPNID** | MPNID for the reseller associated with the subscription. | MPN ID of the reseller on record for the subscription. Not available for current activity. |
-| costCenter | Cost center associated to the subscription. | N/A |
-| billingPeriodStartDate | Billing period start date, as shown on the invoice. | N/A |
-| billingPeriodEndDate | Billing period end date, as shown on the invoice. | N/A |
-| servicePeriodStartDate | Start date for the rating period when the service usage was rated for charges. The prices for Azure services are determined for the rating period. | ChargeStartDate in Partner Center. Billing cycle start date, except when presenting dates of previously uncharged latent usage data from a previous billing cycle. The time is always the beginning of the day, 0:00. |
-| servicePeriodEndDate | End date for the period when the service usage was rated for charges. The prices for Azure services are determined based on the rating period. | N/A |
-| date | For Azure consumption data, it shows date of usage as rated. For reserved instance, it shows the purchased date. For recurring charges and one-time charges such as Marketplace and support, it shows the purchase date. | N/A |
-| productID | Identifier for the product that has accrued charges by consumption or purchase. It is the concatenated key of productID and SKuID, as shown in the Partner Center. | The ID of the product. |
-| product | Name of the product that has accrued charges by consumption or purchase, as shown on the invoice. | The product name in the catalog. |
-| serviceFamily | Shows the service family for the product purchased or charged. For example, Storage or Compute. | N/A |
-| productOrderID | The identifier of the asset or Azure plan name that the subscription belongs to. For example, Azure Plan. | N/A |
-| productOrderName | The name of the Azure plan that the subscription belongs to. For example, Azure Plan. | N/A|
-| consumedService | Consumed service (legacy taxonomy) as used in legacy EA usage details. | Service shown in the Partner Center. For example, Microsoft.Storage, Microsoft.Compute, and microsoft.operationalinsights. |
-| meterID | Metered identifier for measured consumption. | The ID of the used meter. |
-| meterName | Identifies the name of the meter for measured consumption. | The name of the consumed meter. |
-| meterCategory | Identifies the top-level service for usage. | The top-level service for the usage. |
-| meterSubCategory | Defines the type or subcategory of Azure service that can affect the rate. | The type of Azure service that can affect the rate.|
-| meterRegion | 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 | The regional location of a data center for services, where applicable and populated. |
-| 订阅 ID | Unique Microsoft generated identifier for the Azure subscription. | N/A |
-| subscriptionName | Azure 订阅的名称。 | N/A |
-| 条款 | 显示套餐的有效期限。 For example, reserved instances show 12 months of a yearly term of the reserved instance. For one-time purchases or recurring purchases, the term displays one month for SaaS, Azure Marketplace, and support. Not applicable for Azure consumption. | N/A |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Type of publisher that identifies the publisher as first party, third-party reseller, or third-party agency. | N/A |
-| partNumber | Part number for the unused reserved instance and Azure Marketplace services. | N/A |
-| publisherName | Name of the publisher of the service including Microsoft or third-party publishers. | The name of the product's publisher.|
-| reservationId | Identifier for the reserved instance purchase. | N/A |
-| reservationName | Name of the reserved instance. | N/A |
-| reservationOrderId | OrderID for the reserved instance. | N/A |
-| frequency | Payment frequency for a reserved instance. | N/A |
-| resourceGroup | Name of the Azure resource group used for lifecycle resource management. | Name of the resource group. |
-| instanceID (or) ResourceID | Identifier of the resource instance. | Shown as a ResourceURI that includes complete resource properties. |
-| resourceLocation | Name of the resource location. | The location of the resource. |
-| Location | Normalized location of the resource. | N/A |
-| effectivePrice | The effective unit price of the service, in pricing currency. Unique for a product, service family, meter, and offer. Used with pricing in the price sheet for the billing account. When there is tiered pricing or an included quantity, it shows the blended price for consumption. | The unit price after adjustments are made. |
-| 数量 | Measured quantity purchased or consumed. The amount of the meter used during the billing period. | Number of units. Ensure it matches the information in your billing system during reconciliation. |
-| unitOfMeasure | 指明服务的计价单位。 For example, GB and hours. | 指明服务的计价单位。 For example, GB, hours, and 10,000s. |
-| pricingCurrency | The currency defining the unit price. | The currency in the pricelist.|
-| billingCurrency | The currency defining the billed cost. | The currency of the customer's geographic region. |
-| chargeType | Defines the type of charge that the cost represents in Azure Cost Management like purchase and refund. | The type of charge or adjustment. Not available for current activity. |
-| costinBillingCurrency | ExtendedCost or blended cost before tax in the billed currency. | N/A |
-| costinPricingCurrency | ExtendedCost or blended cost before tax in pricing currency to correlate with prices. | N/A |
-| **costinUSD** | Estimated ExtendedCost or blended cost before tax in USD. | N/A |
-| **paygCostInBillingCurrency** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in the billing currency. Available only at RBAC scopes. | N/A |
-| **paygCostInUSD** | Shows costs if pricing is in retail prices. Shows pay-as-you-go prices in USD. Available only at RBAC scopes. | N/A |
-| exchangeRate | Exchange rate used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRate in the Partner Center. The pricing currency to billing currency exchange rate.|
-| exchangeRateDate | The date for the exchange rate that's used to convert from the pricing currency to the billing currency. | Referred to as PCToBCExchangeRateDat in the Partner Center. The pricing currency to billing currency exchange rate date.|
-| isAzureCreditEligible | Indicates whether the cost is eligible for payment by Azure credits. | N/A |
-| serviceInfo1 | 旧字段，用于捕获可选的服务特定元数据。 | Internal Azure service metadata. |
-| serviceInfo2 | 旧字段，用于捕获可选的服务特定元数据。 | Service information. 例如，虚拟机的映像类型和 ExpressRoute 的 ISP 名称。|
-| additionalInfo | 服务特定的元数据。 例如，虚拟机的映像类型。 | Any additional information not covered in other columns. The service-specific metadata. 例如，虚拟机的映像类型。|
-| 标记 | Tag that you assign to the meter. 使用标记对计费记录进行分组。 例如，可以使用标记按使用测定仪的部门分配费用。 | Tags added by the customer.|
-| **partnerEarnedCreditRate** | Rate of discount applied if there is a partner earned credit (PEC) based on partner admin link access. | The rate of partner earned credit (PEC). For example, 0% or 15%. |
-| **partnerEarnedCreditApplied** | Indicates whether the partner earned credit has been applied. | N/A |
+| invoiceId | 发票上显示的特定交易记录的发票 ID。 | 显示交易记录的发票号。 |
+| previousInvoiceID | 引用原始发票时有退款（负成本）。 只有退款时才填充。 | 不适用 |
+| billingAccountName | 表示合作伙伴的计费帐户的名称。 它在已载入 Microsoft 客户协议的客户和已进行授权购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订）中，向客户收取费用。 | 不适用 |
+| billingAccountID | 表示合作伙伴的计费帐户的标识符。 | MCAPI 合作伙伴 Commerce 根 ID。 用于请求，但不包括在响应中。|
+| billingProfileID | 计费配置文件的标识符，它在载入到 Microsoft 客户协议的客户和已进行权利购买的 CSP 客户（如 SaaS、Azure Marketplace 和预订. | MCAPI 合作伙伴计费组 ID。 用于请求，但不包括在响应中。 |
+| billingProfileName | 计费配置文件的名称，该配置文件在已载入 Microsoft 客户协议的客户和 CSP 客户（如 SaaS、Azure Marketplace 和）中将成本按单一计费币种分组预订. | 不适用 |
+| invoiceSectionName | 在发票中计费的项目的名称。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
+| invoiceSectionID | 发票中正在进行计费的项目的标识符。 不适用于合作伙伴载入的 Microsoft 客户协议。 | 不适用 |
+| **CustomerTenantID** | 客户订阅的 Azure Active Directory 租户的标识符。 | 客户的组织 ID-客户 Azure Active Directory TenantID。 |
+| **CustomerName** | 客户订阅的 Azure Active Directory 租户的名称。 | 客户的组织名称，如合作伙伴中心中所示。 重要的是要使发票与系统信息进行协调。 |
+| **CustomerTenantDomainName** | 客户订阅的 Azure Active Directory 租户的域名。 | 客户 Azure Active Directory 租户域。 |
+| **PartnerTenantID** | 合作伙伴的 Azure Active Directory 租户的标识符。 | 作为合作伙伴 ID 的合作伙伴 Azure Active Directory 租户 ID，采用 GUID 格式。 |
+| **PartnerName** | Azure Active Directory 租户的合作伙伴的名称。 | 合作伙伴名称。 |
+| **ResellerMPNID** | 与订阅关联的分销商的 MPNID。 | 订阅的 MPN 的经销商 ID。 对当前活动不可用。 |
+| costCenter | 与订阅关联的成本中心。 | 不适用 |
+| billingPeriodStartDate | 计费周期开始日期，如发票中所示。 | 不适用 |
+| billingPeriodEndDate | 计费期间结束日期，如发票中所示。 | 不适用 |
+| servicePeriodStartDate | 评估服务使用情况的评估期的开始日期。 Azure 服务的价格是针对评级周期确定的。 | 合作伙伴中心中的 ChargeStartDate。 计费周期开始日期，除非在以前的计费周期内提供以前 uncharged 的潜在使用情况数据的日期。 该时间始终为0:00 的开始时间。 |
+| servicePeriodEndDate | 评估服务使用情况的时间段的结束日期。 Azure 服务的价格取决于分级期限。 | 不适用 |
+| 日期 | 对于 Azure 消耗数据，它会将 "使用日期" 显示为 "分级"。 对于预订实例，它显示购买日期。 对于定期收费和一次收费（如 Marketplace 和支持），它会显示购买日期。 | 不适用 |
+| productID | 按消耗或购买将计费的产品标识符。 它是 productID 和 SKuID 的连接键，如合作伙伴中心中所示。 | 产品的 ID。 |
+| product | 按消耗或购买将计费的产品的名称，如发票中所示。 | 目录中的产品名称。 |
+| serviceFamily | 显示购买或收费的产品的服务系列。 例如，存储或计算。 | 不适用 |
+| productOrderID | 订阅所属的资产或 Azure 计划名称的标识符。 例如，Azure 计划。 | 不适用 |
+| productOrderName | 订阅所属的 Azure 计划的名称。 例如，Azure 计划。 | 不适用|
+| consumedService | 旧 EA 使用情况详细信息中使用的已使用服务（旧分类）。 | 在合作伙伴中心显示的服务。 例如，"microsoft.operationalinsights"、"microsoft"、"microsoft"。 |
+| meterID | 度量的消耗的计量标识符。 | 已使用计量的 ID。 |
+| meterName | 标识度量消耗的计量的名称。 | 已使用指示器的名称。 |
+| meterCategory | 标识使用的顶级服务。 | 使用的顶级服务。 |
+| meterSubCategory | 定义 Azure 服务的类型或子类别，它们可能会影响速度。 | 可能影响速度的 Azure 服务类型。|
+| meterRegion | 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。 | 用于服务的数据中心的区域位置，其中适用并已填充。 |
+| 订阅 ID | Microsoft 为 Azure 订阅生成的唯一标识符。 | 不适用 |
+| subscriptionName | Azure 订阅的名称。 | 不适用 |
+| 术语 | 显示套餐的有效期限。 例如，预订实例显示预订实例的每年12个月。 对于一次性购买或定期购买，术语针对 SaaS、Azure Marketplace 和支持显示一个月。 不适用于 Azure。 | 不适用 |
+| publisherType （firstParty，thirdPartyReseller，thirdPartyAgency） | 将发布服务器标识为第一方、第三方经销商或第三方代理商的出版商类型。 | 不适用 |
+| partNumber | 未使用的保留实例和 Azure Marketplace 服务的部件号。 | 不适用 |
+| publisherName | 服务发布者的名称，包括 Microsoft 或第三方发布者。 | 产品发布者的名称。|
+| reservationId | 采购预订实例的标识符。 | 不适用 |
+| reservationName | 预订实例的名称。 | 不适用 |
+| reservationOrderId | 预订实例的订单 Id。 | 不适用 |
+| frequency | 预订实例的付款频率。 | 不适用 |
+| resourceGroup | 用于生命周期资源管理的 Azure 资源组的名称。 | 资源组的名称。 |
+| instanceID （或） ResourceID | 资源实例的标识符。 | 显示为包含完整资源属性的 ResourceURI。 |
+| resourceLocation | 资源位置的名称。 | 资源的位置。 |
+| 位置 | 资源的规范化位置。 | 不适用 |
+| effectivePrice | 服务的有效单价（定价货币）。 产品、服务系列、计量和产品/服务的独特之处。 与计费帐户的价目表中的定价一起使用。 如果有分层定价或包含数量，则会显示消耗的混合价格。 | 进行调整后的单位价格。 |
+| 数量 | 购买或消耗的度量数量。 计费期间使用的计量量。 | 单位数。 确保在协调期间它与计费系统中的信息相匹配。 |
+| unitOfMeasure | 指明服务的计价单位。 例如，GB 和小时。 | 指明服务的计价单位。 例如，GB、小时和10，计。 |
+| pricingCurrency | 定义单位价格的货币。 | Pricelist 中的货币。|
+| billingCurrency | 定义计费成本的货币。 | 客户的地理区域的货币。 |
+| chargeType | 定义成本在 Azure 成本管理中代表的费用类型，如购买和退款。 | 费用或调整的类型。 对当前活动不可用。 |
+| costinBillingCurrency | 按计费货币表示的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
+| costinPricingCurrency | 与价格关联的税收之前的 ExtendedCost 或混合成本。 | 不适用 |
+| **costinUSD** | 以 USD 为单位的估计 ExtendedCost 或混合成本。 | 不适用 |
+| **paygCostInBillingCurrency** | 如果定价价格为零售价格，则显示成本。 以计费币种显示即用即付价格。 仅在 RBAC 范围内可用。 | 不适用 |
+| **paygCostInUSD** | 如果定价价格为零售价格，则显示成本。 显示即用即付价格（美元）。 仅在 RBAC 范围内可用。 | 不适用 |
+| exchangeRate | 用于从定价货币转换为计费货币的汇率。 | 在合作伙伴中心中称为 PCToBCExchangeRate。 定价货币与计费货币汇率。|
+| exchangeRateDate | 用于从定价货币转换为计费货币的汇率的日期。 | 在合作伙伴中心中称为 PCToBCExchangeRateDat。 定价货币与计费货币汇率日期。|
+| isAzureCreditEligible | 指示成本是否适合由 Azure 额度支付。 | 不适用 |
+| serviceInfo1 | 旧字段，用于捕获可选的服务特定元数据。 | 内部 Azure 服务元数据。 |
+| serviceInfo2 | 旧字段，用于捕获可选的服务特定元数据。 | 服务信息。 例如，虚拟机的映像类型和 ExpressRoute 的 ISP 名称。|
+| additionalInfo | 服务特定的元数据。 例如，虚拟机的映像类型。 | 其他列中未涵盖的任何其他信息。 服务特定的元数据。 例如，虚拟机的映像类型。|
+| 标记 | 分配给计量器的标记。 使用标记对计费记录进行分组。 例如，可以使用标记按使用测定仪的部门分配费用。 | 客户添加的标记。|
+| **partnerEarnedCreditRate** | 基于合作伙伴管理员链接访问权限的合作伙伴获得的信用额度（PEC）时应用的折扣率。 | 合作伙伴获得的信用额度（PEC）的速率。 例如，0% 或15%。 |
+| **partnerEarnedCreditApplied** | 指示是否已应用合作伙伴获得的信用额度。 | 不适用 |
 
-## <a name="view-partner-earned-credit-pec-resource-costs"></a>View Partner Earned Credit (PEC) resource costs
+## <a name="view-partner-earned-credit-pec-resource-costs"></a>查看合作伙伴获得的信用（PEC）资源成本
 
-In Azure Cost Management, partners can use cost analysis to view costs that received the PEC benefits.
+在 Azure 成本管理中，合作伙伴可以使用成本分析来查看收到 PEC 权益的成本。
 
-In the Azure portal, sign in to the partner tenant and select **Cost Management + Billing**. Under **Cost Management**, click **Cost analysis**.
+在 Azure 门户中，登录到合作伙伴租户，并选择 "**成本管理 + 计费**"。 在 "**成本管理**" 下，单击 "**成本分析**"。
 
-The Cost analysis view shows costs of the billing account for the partner. Select the **Scope** as needed for the partner, a specific customer, or a billing profile to reconcile invoices.
+成本分析视图显示合作伙伴的计费帐户的成本。 根据需要为合作伙伴、特定客户或计费配置文件选择**范围**，以对发票进行协调。
 
-In a donut chart, click the drop-down list and select **PartnerEarnedCreditApplied** to drill into PEC costs.
+在环形图中，单击下拉列表并选择 " **PartnerEarnedCreditApplied** " 以深化到 "PEC 成本"。
 
-![Example showing how to view partner-earned credit](./media/get-started-partners/cost-analysis-pec1.png)
+![示例演示如何查看合作伙伴获得的信用额度](./media/get-started-partners/cost-analysis-pec1.png)
 
-When the **PartnerEarnedCreditApplied** property is _True_, the associated cost has the benefit of the partner earned admin access.
+当**PartnerEarnedCreditApplied**属性为_True_时，关联的成本具有合作伙伴获得管理访问权限。
 
-When the **PartnerEarnedCreditApplied** property is _False_, the associated cost hasn't met the required eligibility for the credit. Or, the service purchased isn't eligible for partner earned credit.
+如果**PartnerEarnedCreditApplied**属性为_False_，则关联的成本不满足信用要求的资格。 或者，购买的服务不适用于合作伙伴获得的信用额度。
 
-Service usage data normally takes 8-24 hours to appear in Cost Management. For more information, see [Usage data update frequency varies](understand-cost-mgt-data.md#usage-data-update-frequency-varies). PEC credits appear within 48 hours from time of access in Azure Cost Management.
-
-
-You can also group and filter by the **PartnerEarnedCreditApplied** property using the **Group by** options. Use the options to examine costs that do and don't have PEC.
-
-![Group or filter by partner-earned credit](./media/get-started-partners/cost-analysis-pec2.png)
-
-## <a name="cost-management-rest-apis"></a>Cost Management REST APIs
-
-Partners and customers can use Cost Management APIs described in the following sections for common tasks.
-
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management APIs - Direct and indirect providers
-
-Partners with access to billing scopes in a partner tenant can use the following APIs to view invoiced costs.
-
-APIs at the subscription scope can be called by a partner regardless of the cost policy if they have access to the subscription. Other users with access to the subscription, like the customer or reseller, can call the APIs only after the partner enables the cost policy for the customer tenant.
+服务使用情况数据通常需要8-24 小时才能出现在成本管理中。 有关详细信息，请参阅[使用情况数据更新频率有所不同](understand-cost-mgt-data.md#usage-data-update-frequency-varies)。 从 Azure 成本管理中的访问时间开始，PEC 信用将在48小时内显示。
 
 
-#### <a name="to-get-a-list-of-billing-accounts"></a>To get a list of billing accounts
+还可以使用 "**分组依据**" 选项按**PartnerEarnedCreditApplied**属性进行分组和筛选。 使用这些选项可以检查有和没有 PEC 的成本。
+
+![按合作伙伴所获得信用额度分组或筛选](./media/get-started-partners/cost-analysis-pec2.png)
+
+## <a name="cost-management-rest-apis"></a>成本管理 REST Api
+
+合作伙伴和客户可以使用以下部分中所述的成本管理 Api 来执行常见任务。
+
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure 成本管理 Api-直接和间接提供程序
+
+具有合作伙伴租户中计费范围访问权限的合作伙伴可以使用以下 Api 来查看开票成本。
+
+如果合作伙伴有权访问订阅，则可以调用订阅范围内的 Api，而无需考虑成本策略。 有权访问订阅的其他用户（如客户或经销商）只有在合作伙伴启用了客户租户的成本策略之后，才能调用 Api。
+
+
+#### <a name="to-get-a-list-of-billing-accounts"></a>获取计费帐户列表
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>To get a list of customers
+#### <a name="to-get-a-list-of-customers"></a>获取客户列表
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-subscriptions"></a>To get a list of subscriptions
+#### <a name="to-get-a-list-of-subscriptions"></a>获取订阅列表
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>To get a list of invoices for a period of time
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>获取一段时间的发票列表
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
 ```
 
-The API call returns an array of invoices that has elements similar to the following JSON code.
+API 调用返回一个发票数组，其中包含类似于下面的 JSON 代码的元素。
 
 ```
     {
@@ -296,79 +296,79 @@ The API call returns an array of invoices that has elements similar to the follo
     }
 ```
 
-Use the preceding returned ID field value and replace it in the following example as the scope to query for usage details.
+使用前面返回的 ID 字段值，并将其替换为范围以查询使用情况详细信息。
 
 ```
 GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
 ```
 
-The example returns the usage records associated with the specific invoice.
+该示例返回与特定发票关联的使用记录。
 
 
-#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>To get the policy for customers to view costs
+#### <a name="to-get-the-policy-for-customers-to-view-costs"></a>获取客户的策略以查看成本
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>To set the policy for customers to view costs
+#### <a name="to-set-the-policy-for-customers-to-view-costs"></a>设置客户要查看成本的策略
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
-#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>To get Azure service usage for a billing account
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>获取计费帐户的 Azure 服务使用情况
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-download-a-customers-azure-service-usage"></a>To download a customer's Azure service usage
+#### <a name="to-download-a-customers-azure-service-usage"></a>下载客户的 Azure 服务使用情况
 
-The following get call is an asynchronous operation.
+以下 get 调用是一个异步操作。
 
 ```
 GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-Call the `Location` URI returned in the response to check the operation status. When the status is *Completed*, the `downloadUrl` property contains a link that you can use to download the generated report.
+调用在响应中返回的 `Location` URI 以检查操作状态。 当状态为 "*已完成*" 时，`downloadUrl` 属性包含一个链接，可用于下载生成的报表。
 
 
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>To get or download the price sheet for consumed Azure services
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>获取或下载已使用的 Azure 服务的价目表
 
-First, use the following post.
+首先，使用以下文章。
 
 ```
 POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Then, call the asynchronous operation property value. 例如：
+然后，调用异步操作属性值。 例如：
 
 ```
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
-The preceding get call returns the download link containing the price sheet.
+前面的 get 调用返回包含价目表的下载链接。
 
 
-#### <a name="to-get-aggregated-costs"></a>To get aggregated costs
+#### <a name="to-get-aggregated-costs"></a>获取聚合成本
 
 ```
 POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-partner"></a>Create a budget for a partner
+#### <a name="create-a-budget-for-a-partner"></a>为合作伙伴创建预算
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
 
-#### <a name="create-a-budget-for-a-customer"></a>Create a budget for a customer
+#### <a name="create-a-budget-for-a-customer"></a>为客户创建预算
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
 
-#### <a name="delete-a-budget"></a>Delete a budget
+#### <a name="delete-a-budget"></a>删除预算
 
 ```
 PUT
@@ -377,5 +377,5 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billin
 
 
 ## <a name="next-steps"></a>后续步骤
-- [Start analyzing costs](quick-acm-cost-analysis.md) in Cost Management
-- [Create and manage budgets](tutorial-acm-create-budgets.md) in Cost Management
+- [开始分析](quick-acm-cost-analysis.md)成本管理中的成本
+- 在成本管理中[创建和管理预算](tutorial-acm-create-budgets.md)

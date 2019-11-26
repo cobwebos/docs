@@ -35,21 +35,21 @@ ms.locfileid: "74230118"
 
 当部门支出达到配额的固定阈值时，部门支出配额警报会通知你。 支出配额在 EA 门户中配置。 阈值在达到后会生成一封给部门所有者的电子邮件并显示在成本警报中。 例如，配额的 50% 或 75%。
 
-## <a name="supported-alert-features-by-offer-categories"></a>Supported alert features by offer categories
+## <a name="supported-alert-features-by-offer-categories"></a>按产品/服务类别支持的警报功能
 
-Support for alert types depends on the type of Azure account that you have (Microsoft offer). The following table shows the alert features that are supported by various Microsoft offers. You can view the full list of Microsoft offers at [Understand Cost Management data](understand-cost-mgt-data.md).
+对警报类型的支持取决于你拥有的 Azure 帐户类型（Microsoft 产品/服务）。 下表显示了各种 Microsoft 产品/服务支持的警报功能。 可以在[了解成本管理数据](understand-cost-mgt-data.md)的同时查看完整的 Microsoft 产品列表。
 
-| 警报类型 | 企业协议 | Microsoft 客户协议 | Web direct/Pay-As-You-Go |
+| 警报类型 | 企业协议 | Microsoft 客户协议 | Web 直接/即用即付 |
 |---|---|---|---|
-| Budget | ✔ | ✔ | ✔ |
+| 额定 | ✔ | ✔ | ✔ |
 | 额度 | ✔ |✘ | ✘ |
-| Department spending quota | ✔ | ✘ | ✘ |
+| 部门支出配额 | ✔ | ✘ | ✘ |
 
 
 
 ## <a name="view-cost-alerts"></a>查看成本警报
 
-To view cost alerts, open the desired scope in the Azure portal and select **Budgets** in the menu. Use the **Scope** pill to switch to a different scope. Select **Cost alerts** in the menu. 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要查看成本警报，请在 Azure 门户中打开所需的作用域，并在菜单中选择 "**预算**"。 使用**范围**欣然切换到其他作用域。 在菜单中选择 "**成本警报**"。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在成本管理中显示的警报的示例图像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
@@ -67,6 +67,6 @@ To view cost alerts, open the desired scope in the Azure portal and select **Bud
 
 ![示例图像，显示消除和重新激活选项](./media/cost-mgt-alerts-monitor-usage-spending/Dismiss-reactivate-options.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - 如果尚未创建预算或为预算设置警报条件，请完成[创建和管理预算](tutorial-acm-create-budgets.md)教程。

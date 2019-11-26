@@ -1,5 +1,5 @@
 ---
-title: JavaScript developer reference for Azure Functions
+title: Azure Functions 的 JavaScript 开发人员参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.locfileid: "74226710"
 
 本指南包含有关使用 JavaScript 编写 Azure Functions 的复杂性的信息。
 
-JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 The first argument passed to every function is a `context` object, which is used for receiving and sending binding data, logging, and communicating with the runtime.
+JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 Complete the Functions quickstart to create your first function, using [Visual Studio Code](functions-create-first-function-vs-code.md) or [in the portal](functions-create-first-azure-function.md).
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成有关使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或[门户](functions-create-first-azure-function.md)创建第一个函数的 Functions 快速入门。
 
-This article also supports [TypeScript app development](#typescript).
+本文也支持 [TypeScript 应用开发](#typescript)。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 默认情况下，Functions 运行时会在 `index.js` 中查找你的函数，其中，`index.js` 与其相应的 `function.json` 共享同一个父目录。 默认情况下，导出的函数应该是其文件中的唯一导出，或者名为 `run` 或 `index` 的导出。 若要配置文件位置和导出函数名称，请阅读下面的[配置函数的入口点](functions-reference-node.md#configure-function-entry-point)。
 
-在执行时，将为导出的函数传递一些参数。 采用的第一个参数始终是 `context` 对象。 If your function is synchronous (doesn't return a Promise), you must pass the `context` object, as calling `context.done` is required for correct use.
+在执行时，将为导出的函数传递一些参数。 采用的第一个参数始终是 `context` 对象。 如果函数是同步的（不返回 Promise），则必须传递 `context` 对象，因为需要调用 `context.done` 才能正常使用该函数。
 
 ```javascript
 // You should include context, other arguments are optional
@@ -75,7 +75,7 @@ module.exports = async function (context) {
 
 导出异步函数时，还可配置输出绑定，以使用 `return` 值。 如果只有一个输出绑定，则建议使用此值。
 
-若要使用 `return` 分配输出，请将 `name` 属性更改为 `function.json` 中的 `$return`。
+若要使用 `return` 分配输出，请将 `name` 属性更改为 `$return` 中的 `function.json`。
 
 ```json
 {
@@ -102,13 +102,13 @@ module.exports = async function (context, req) {
 
 ### <a name="inputs"></a>输入
 在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
- - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 The `name` property defined in *function.json* does not need to match the name of your parameter, although it should.
+ - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 `name`function.json*中定义的* 属性不需要与参数名称匹配，不过两者应该匹配。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
+ - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 `name`function.json*中定义的* 属性命名。
  
    ```javascript
    module.exports = async function(context) { 
@@ -128,12 +128,12 @@ module.exports = async function (context, req) {
    };
    ```
 
-### <a name="outputs"></a>Outputs
-函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，*function.json* 中定义的绑定属性 `name` 对应于函数中所写入到的对象成员的名称。 
+### <a name="outputs"></a>outputs
+函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，`name`function.json*中定义的绑定属性* 对应于函数中所写入到的对象成员的名称。 
 
-You can assign data to output bindings in one of the following ways (don't combine these methods):
+可通过以下方式之一将数据分配到输出绑定（不要结合使用这些方法）：
 
-- **_[有多个输出时建议使用]_ 返回对象。** If you are using an async/Promise returning function, you can return an object with assigned output data. 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
+- **_[有多个输出时建议使用]_ 返回对象。** 如果使用异步函数/返回 Promise 的函数，可以返回分配有输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
   module.exports = async function(context) {
@@ -196,7 +196,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Returns a named object that is used to read or assign binding data. Input and trigger binding data can be accessed by reading properties on `context.bindings`. Output binding data can be assigned by adding data to `context.bindings`
+返回用于读取或分配绑定数据的命名对象。 可以通过读取 `context.bindings` 上的属性来访问输入和触发器绑定数据。 可以通过将数据添加到 `context.bindings` 来分配输出绑定数据
 
 例如，function.json 中的以下绑定定义允许通过 `context.bindings.myInput` 访问队列的内容和使用 `context.bindings.myOutput` 将输出分配给队列。
 
@@ -242,7 +242,7 @@ context.done([err],[propertyBag])
 
 让运行时知道代码已完成。 如果函数使用 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 声明，则你不需要使用 `context.done()`。 `context.done` 回调是隐式调用的。 异步函数在 Node 8 或更高版本（需要 Functions 运行时版本 2.x）中可用。
 
-如果函数不是异步函数，则必须调用 `context.done` 来告知运行时函数是完整的。 如果缺少它，则执行将会超时。
+如果函数不是异步函数，则必须调用  **来告知运行时函数是完整的**`context.done`。 如果缺少它，则执行将会超时。
 
 `context.done` 方法允许将用户定义的错误传递回运行时以及包含输出绑定数据的 JSON 对象。 传递给 `context.done` 的属性将覆盖 `context.bindings` 对象上设置的任何内容。
 
@@ -265,7 +265,7 @@ context.log(message)
 允许在默认跟踪级别向流式处理函数日志进行写入。 `context.log` 中还提供了其他的日志记录方法，用以允许在其他跟踪级别写入函数日志：
 
 
-| 方法                 | 描述                                |
+| 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | 向错误级日志记录或更低级别进行写入。   |
 | **warn(_message_)**    | 向警告级日志记录或更低级别进行写入。 |
@@ -284,7 +284,7 @@ context.log.warn("Something has happened.");
 
 ## <a name="writing-trace-output-to-the-console"></a>将跟踪输出写入到控制台 
 
-在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 This means that outputs from `console.log` are not tied to a specific function invocation and aren't displayed in a specific function's logs. 但是，它们将传播到 Application Insights。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
+在 Functions 中，可以使用 `context.log` 方法将跟踪输出写入到控制台。 在 Functions v2.x 中，使用 `console.log` 的跟踪输出在函数应用级别捕获。 这意味着 `console.log` 的输出不受限于特定的函数调用，因此不会显示在特定函数的日志中。 但是，它们将传播到 Application Insights。 在 Functions v1.x 中，不能使用 `console.log` 向控制台进行写入。
 
 调用 `context.log()` 时，消息会在默认跟踪级别（即_信息_跟踪级别）写入到控制台。 以下代码在信息跟踪级别向控制台进行写入：
 
@@ -342,7 +342,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.req`（请求）对象具有以下属性：
 
-| properties      | 描述                                                    |
+| 属性      | 说明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
@@ -357,18 +357,18 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 `context.res`（响应）对象具有以下属性：
 
-| properties  | 描述                                               |
+| 属性  | 说明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 一个包含响应正文的对象。         |
 | _headers_ | 一个包含响应标头的对象。             |
 | _isRaw_   | 指示是否为响应跳过格式设置。    |
-| _status_  | 响应的 HTTP 状态代码。                     |
+| _状态_  | 响应的 HTTP 状态代码。                     |
 
 ### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 
 使用 HTTP 触发器时，可采用多种方式来访问 HTTP 请求和响应对象：
 
-+ **通过 `context` 对象的 `req` 和 `res` 属性。** 采用此方式时，可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `context` 上的 `req` 和 `res` 对象：
++ **通过 `req` 对象的 `res` 和 `context` 属性。** 采用此方式时，可以使用传统模式通过上下文对象访问 HTTP 数据，而不必使用完整的 `context.bindings.name` 模式。 以下示例展示了如何访问 `req` 上的 `res` 和 `context` 对象：
 
     ```javascript
     // You can access your http request off the context ...
@@ -391,7 +391,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     ```
 + **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 是隐式调用的。
 
-+ **_[仅响应]_ 通过调用 `context.done()`。** A special type of HTTP binding returns the response that is passed to the `context.done()` method. 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
++ **_[仅响应]_ 通过调用 `context.done()`。** 有一种特殊类型的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
     ```json
     {
@@ -413,7 +413,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | Functions 版本 | Node.js 版本 | 
 |---|---|
 | 1.x | 6.11.2（运行时锁定） |
-| 2.x  | _Active LTS_ and _Maintenance LTS_ Node.js versions (~10 recommended). Target the version in Azure by setting the WEBSITE_NODE_DEFAULT_VERSION [app setting](functions-how-to-use-azure-function-app-settings.md#settings) to `~10`.|
+| 2.x  | _活动 LTS_ 和_维护 LTS_ Node.js 版本（建议使用 ~10）。 通过将 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设置为 `~10` 来确定 Azure 中的版本。|
 
 可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 
@@ -445,11 +445,11 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 转到  `https://<function_app_name>.scm.azurewebsites.net` 。
+1. 转到 `https://<function_app_name>.scm.azurewebsites.net`。
 
 2. 单击“调试控制台”，选择“CMD”。 > 
 
-3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
+3. 转到 `D:\home\site\wwwroot`，并将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
     还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#fileupdate)。 
 
 4. 上传 package.json 文件后，在 Kudu 远程执行控制台中运行  命令。  
@@ -457,7 +457,7 @@ module.exports = function(context) {
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 You can access these settings using `process.env`, as shown here in the second and third calls to `context.log()` where we log the `AzureWebJobsStorage` and `WEBSITE_SITE_NAME` environment variables:
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可以使用 `process.env` 访问这些设置，如此处 `context.log()` 的第二和第三个调用中所示，其中记录了 `AzureWebJobsStorage` 和 `WEBSITE_SITE_NAME` 环境变量：
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -495,7 +495,7 @@ FunctionApp
  | - package.json
 ```
 
-`myNodeFunction` 的 `function.json` 应包含 `scriptFile` 属性，该属性指向包含要运行的导出函数的文件。
+`function.json` 的 `myNodeFunction` 应包含 `scriptFile` 属性，该属性指向包含要运行的导出函数的文件。
 
 ```json
 {
@@ -510,7 +510,7 @@ FunctionApp
 
 在 `scriptFile`（或 `index.js`）中，必须使用 `module.exports` 导出函数才能使其被找到和运行。 默认情况下，触发时执行的函数是该文件的唯一导出（导出名为 `run` 或 `index`）。
 
-可以使用 `function.json` 中的 `entryPoint` 配置此项设置，如以下示例所示：
+可以使用 `entryPoint` 中的 `function.json` 配置此项设置，如以下示例所示：
 
 ```json
 {
@@ -539,63 +539,63 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-In this example, it is important to note that although an object is being exported, there are no guarantees for preserving state between executions.
+请在此示例中务必注意，尽管正在导出对象，但无法保证可保留两次执行之间的状态。
 
-## <a name="local-debugging"></a>Local Debugging
+## <a name="local-debugging"></a>本地调试
 
-When started with the `--inspect` parameter, a Node.js process listens for a debugging client on the specified port. In Azure Functions 2.x, you can specify arguments to pass into the Node.js process that runs your code by adding the environment variable or App Setting `languageWorkers:node:arguments = <args>`. 
+使用 `--inspect` 参数启动时，Node.js 进程会在指定端口上侦听调试客户端。 在 Azure Functions 2.x 中，可以指定要传递到运行代码的 Node.js 进程中的参数，方法是添加环境变量或应用设置 `languageWorkers:node:arguments = <args>`。 
 
-To debug locally, add `"languageWorkers:node:arguments": "--inspect=5858"` under `Values` in your [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) file and attach a debugger to port 5858.
+若要在本地进行调试，请在 `"languageWorkers:node:arguments": "--inspect=5858"`local.settings.json`Values` 文件的 [ 下添加 ](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file)，然后将调试程序附加到端口 5858。
 
-When debugging using VS Code, the `--inspect` parameter is automatically added using the `port` value in the project's launch.json file.
+使用 VS Code 进行调试时，系统会使用项目的 launch.json 文件中的 `--inspect` 值自动添加 `port` 参数。
 
-In version 1.x, setting `languageWorkers:node:arguments` will not work. The debug port can be selected with the [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) parameter on Azure Functions Core Tools.
+在版本 1.x 中，设置 `languageWorkers:node:arguments` 将无效。 可以在 Azure Functions Core Tools 中使用 [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) 参数来选择调试端口。
 
 ## <a name="typescript"></a>TypeScript
 
-When you target version 2.x of the Functions runtime, both [Azure Functions for Visual Studio Code](functions-create-first-function-vs-code.md) and the [Azure Functions Core Tools](functions-run-local.md) let you create function apps using a template that support TypeScript function app projects. The template generates `package.json` and `tsconfig.json` project files that make it easier to transpile, run, and publish JavaScript functions from TypeScript code with these tools.
+如果将目标限定为 2.x 版 Functions 运行时，可以在 [Azure Functions for Visual Studio Code](functions-create-first-function-vs-code.md) 和 [Azure Functions Core Tools](functions-run-local.md) 中使用支持 TypeScript 函数应用项目的模板创建函数应用。 该模板会生成 `package.json` 和 `tsconfig.json` 项目文件，以方便使用这些工具从 TypeScript 代码转译、运行和发布 JavaScript 函数。
 
-A generated `.funcignore` file is used to indicate which files are excluded when a project is published to Azure.  
+生成的 `.funcignore` 文件用于指示将项目发布到 Azure 时会排除哪些文件。  
 
-TypeScript files (.ts) are transpiled into JavaScript files (.js) in the `dist` output directory. TypeScript templates use the [`scriptFile` parameter](#using-scriptfile) in `function.json` to indicate the location of the corresponding .js file in the `dist` folder. The output location is set by the template by using `outDir` parameter in the `tsconfig.json` file. If you change this setting or the name of the folder, the runtime is not able to find the code to run.
+TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文件。 TypeScript 模板使用 [ 中的 `scriptFile`](#using-scriptfile) 参数`function.json`来指示 `dist` 文件夹中相应 .js 文件的位置。 模板使用 `outDir` 文件中的 `tsconfig.json` 参数设置输出位置。 如果更改此设置或文件夹的名称，则运行时将找不到要运行的代码。
 
 > [!NOTE]
-> Experimental support for TypeScript exists version 1.x of the Functions runtime. The experimental version transpiles TypeScript files into JavaScript files when the function is invoked. In version 2.x, this experimental support has been superseded by the tool-driven method that does transpilation before the host is initialized and during the deployment process.
+> 1\.x 版 Functions 运行时提供 TypeScript 的试验性支持。 调用函数时，试验版本会将 TypeScript 文件转译为 JavaScript 文件。 在版本 2.x 中，此试验性支持已由工具驱动的方法取代，该方法在初始化主机之前以及部署期间执行转译。
 
-The way that you locally develop and deploy from a TypeScript project depends on your development tool.
+在本地通过 TypeScript 项目进行开发和部署的方式取决于所用的开发工具。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-The [Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) extension lets you develop your functions using TypeScript. The Core Tools is a requirement of the Azure Functions extension.
+[Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) 扩展允许使用 TypeScript 开发函数。 Azure Functions 扩展要求安装 Core Tools。
 
-To create a TypeScript function app in Visual Studio Code, choose `TypeScript` as your language when you create a function app.
+若要在 Visual Studio Code 中创建 TypeScript 函数应用，请在创建函数应用时选择 `TypeScript` 作为语言。
 
-When you press **F5** to run the app locally, transpilation is done before the host (func.exe) is initialized. 
+按下 **F5** 在本地运行应用时，会先执行转译，然后再初始化主机 (func.exe)。 
 
-When you deploy your function app to Azure using the **Deploy to function app...** button, the Azure Functions extension first generates a production-ready build of JavaScript files from the TypeScript source files.
+使用“部署到函数应用...”按钮将函数应用部署到 Azure 时，Azure Functions 扩展首先会基于 TypeScript 源文件生成一个可随时在生产环境中使用的 JavaScript 文件版本。
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-There are several ways in which a TypeScript project differs from a JavaScript project when using the Core Tools.
+使用 Core Tools 时，TypeScript 项目与 JavaScript 项目有几种不同之处。
 
 #### <a name="create-project"></a>创建项目
 
-To create a TypeScript function app project using Core Tools, you must specify the TypeScript language option when you create your function app. You can do this in one of the following ways:
+若要使用 Core Tools 创建 TypeScript 函数应用项目，必须在创建函数应用时指定 TypeScript 语言选项。 可通过以下方式之一执行此操作：
 
-- Run the `func init` command, select `node` as your language stack, and then select `typescript`.
+- 运行 `func init` 命令，选择 `node` 作为语言堆栈，然后选择 `typescript`。
 
 - 运行 `func init --worker-runtime typescript` 命令。
 
-#### <a name="run-local"></a>Run local
+#### <a name="run-local"></a>在本地运行
 
-To run your function app code locally using Core Tools, use the following commands instead of `func host start`: 
+若要使用 Core Tools 在本地运行函数应用代码，请使用以下命令而不是 `func host start`： 
 
 ```command
 npm install
 npm start
 ```
 
-The `npm start` command is equivalent to the following commands:
+`npm start` 命令等效于以下命令：
 
 - `npm run build`
 - `func extensions install`
@@ -604,16 +604,16 @@ The `npm start` command is equivalent to the following commands:
 
 #### <a name="publish-to-azure"></a>发布到 Azure
 
-Before you use the [`func azure functionapp publish`] command to deploy to Azure, you create a production-ready build of JavaScript files from the TypeScript source files. 
+在使用 [`func azure functionapp publish`] 命令部署到 Azure 之前，请基于 TypeScript 源文件创建一个随时可在生产环境中使用的 JavaScript 文件版本。 
 
-The following commands prepare and publish your TypeScript project using Core Tools: 
+以下命令使用 Core Tools 准备和发布 TypeScript 项目： 
 
 ```command
 npm run build:production 
 func azure functionapp publish <APP_NAME>
 ```
 
-In this command, replace `<APP_NAME>` with the name of your function app.
+在此命令中，将 `<APP_NAME>` 替换为函数应用的名称。
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 
@@ -621,23 +621,23 @@ In this command, replace `<APP_NAME>` with the name of your function app.
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>选择单 vCPU 应用服务计划
 
-创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 When necessary, you can manually scale out by adding more single-vCPU VM instances, or you can enable autoscale. 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
+创建使用应用服务计划的函数应用时，建议选择单 vCPU 计划，而不是选择具有多个 vCPU 的计划。 目前，Functions 在单 vCPU VM 上运行 JavaScript 函数更为高效；使用更大的 VM 不会产生预期的性能提高。 需要时，可以通过添加更多单 vCPU VM 实例来手动横向扩展，也可以启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
 
 ### <a name="cold-start"></a>冷启动
 
 对于无服务器托管模型中开发 Azure Functions，冷启动已成为现实。 “冷启动”是指在函数应用处于非活动状态一段时间后进行第一次启动时，将需要较长时间才能启动。 具体而言，对于具有较大依赖项树的 JavaScript 函数，冷启动可能不足以解决问题。 为了加快冷启动过程，请尽量[以包文件的形式运行函数](run-functions-from-deployment-package.md)。 许多部署方法默认使用包模型中的运行，但如果遇到大规模的冷启动而不是以这种方式运行，则此项更改可以提供明显的改善。
 
-### <a name="connection-limits"></a>Connection Limits
+### <a name="connection-limits"></a>连接限制
 
-When you use a service-specific client in an Azure Functions application, don't create a new client with every function invocation. Instead, create a single, static client in the global scope. For more information, see [managing connections in Azure Functions](manage-connections.md).
+在 Azure Functions 应用程序中使用特定于服务的客户端时，不要在每次函数调用时都创建新的客户端。 而是，应在全局范围内创建单个静态客户端。 有关详细信息，请参阅[在 Azure Functions 中管理连接](manage-connections.md)。
 
-### <a name="use-async-and-await"></a>Use `async` and `await`
+### <a name="use-async-and-await"></a>使用 `async` 和 `await`
 
-When writing Azure Functions in JavaScript, you should write code using the `async` and `await` keywords. Writing code using `async` and `await` instead of callbacks or `.then` and `.catch` with Promises helps avoid two common problems:
- - Throwing uncaught exceptions that [crash the Node.js process](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), potentially affecting the execution of other functions.
- - Unexpected behavior, such as missing logs from context.log, caused by asynchronous calls that are not properly awaited.
+在 JavaScript 中编写 Azure Functions 时，应使用 `async` 和 `await` 关键字编写代码。 使用 `async` 和 `await` 编写代码，而不是使用回调或者结合约定使用 `.then` 和 `.catch`，将有助于避免两个常见问题：
+ - 引发未经捕获的异常，从而导致 [Node.js 进程崩溃](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)，并可能影响其他函数的执行。
+ - 意外的行为，例如，未正常等待的异步调用导致 context.log 中缺少日志。
 
-In the example below, the asynchronous method `fs.readFile` is invoked with an error-first callback function as its second parameter. This code causes both of the issues mentioned above. An exception that is not explicitly caught in the correct scope crashed the entire process (issue #1). Calling `context.done()` outside of the scope of the callback function means that the function invocation may end before the file is read (issue #2). In this example, calling `context.done()` too early results in missing log entries starting with `Data from file:`.
+以下示例使用错误优先回调函数作为第二个参数调用异步方法 `fs.readFile`。 此代码会导致出现上述两个问题。 未在正确范围内显式捕获的异常导致整个进程崩溃（问题 #1）。 在回调函数范围以外调用 `context.done()` 意味着函数调用可能会在读取文件之前结束（问题 #2）。 在此示例中，过早调用 `context.done()` 导致缺少以 `Data from file:` 开头的日志条目。
 
 ```javascript
 // NOT RECOMMENDED PATTERN
@@ -658,9 +658,9 @@ module.exports = function (context) {
 }
 ```
 
-Using the `async` and `await` keywords helps avoid both of these errors. You should use the Node.js utility function [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) to turn error-first callback-style functions into awaitable functions.
+使用 `async` 和 `await` 关键字有助于避免这两个错误。 应使用 Node.js 实用工具函数 [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) 将错误优先回调样式函数转换为可等待函数。
 
-In the example below, any unhandled exceptions thrown during the function execution only fail the individual invocation that raised an exception. The `await` keyword means that steps following `readFileAsync` only execute after `readFile` is complete. With `async` and `await`, you also don't need to call the `context.done()` callback.
+在以下示例中，在执行函数过程中引发的任何未经处理的异常只会导致引发异常的单个调用失败。 `await` 关键字表示只有在完成 `readFileAsync` 后，才执行 `readFile` 后面的步骤。 此外，如果使用 `async` 和 `await`，则无需调用 `context.done()` 回调。
 
 ```javascript
 // Recommended pattern

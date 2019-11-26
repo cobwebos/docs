@@ -1,7 +1,7 @@
 ---
-title: 'Execute R Script: Module Reference'
+title: 执行 R 脚本：模块引用
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Execute R Script module in Azure Machine Learning to run R code.
+description: 了解如何使用 Azure 机器学习中的执行 R 脚本模块来运行 R 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,22 +18,22 @@ ms.locfileid: "74232638"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
-This article describes how to use the **Execute R Script** module to run R code in your Azure Machine Learning designer (preview) pipeline.
+本文介绍如何使用 "**执行 r 脚本**" 模块在 Azure 机器学习设计器（预览）管道中运行 R 代码。
 
-With R, you can perform tasks that aren't currently supported by existing modules such as: 
-- Create custom data transformations
-- Use your own metrics to evaluate predictions
-- Build models using algorithms that aren't implemented as standalone modules in the designer
+使用 R，你可以执行现有模块当前不支持的任务，例如： 
+- 创建自定义数据转换
+- 使用你自己的度量值来评估预测
+- 使用未在设计器中作为独立模块实现的算法生成模型
 
-## <a name="r-version-support"></a>R version support
+## <a name="r-version-support"></a>R 版本支持
 
-Azure Machine Learning designer uses the CRAN (Comprehensive R Archive Network) distribution of R. The currently used version is CRAN 3.5.1.
+Azure 机器学习设计器使用 R 的 CRAN （全面 R 存档网络）分发。当前使用的版本为 CRAN 3.5.1。
 
-## <a name="supported-r-packages"></a>Supported R packages
+## <a name="supported-r-packages"></a>支持的 R 包
 
-The R environment is pre-installed with over 100 packages. For a complete list, see the section [Pre-installed R packages](#pre-installed-r-packages).
+R 环境是预先安装的，超过100个包。 有关完整列表，请参阅[预安装 R 包](#pre-installed-r-packages)部分。
 
-You can also add the following code to any **Execute R Script** module and to see the installed packages.
+你还可以将以下代码添加到任何**执行 R 脚本**模块，并查看已安装的包。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -44,9 +44,9 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>安装 R 程序包
-To install additional R packages, use the `install.packages()` method. Be sure to specify the CRAN repository. Packages are installed for each **Execute R Script** module, and aren't shared across other **Execute R Script** modules.
+若要安装其他 R 包，请使用 `install.packages()` 方法。 请确保指定 CRAN 存储库。 包是为每个**执行 r 脚本**模块安装的，并且不在其他**执行 r 脚本**模块之间共享。
 
-This sample shows how to install Zoo:
+此示例演示如何安装 Zoo：
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,31 +65,31 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Please check if the package already exists before install it to avoid repeat installing. Like `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`  in above sample code. Repeat installing may cause web service request timeout.     
+  > 安装之前，请检查包是否已存在，以避免重复安装。 类似于上面的示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 web 服务请求超时。     
 
-## <a name="how-to-configure-execute-r-script"></a>How to configure Execute R Script
+## <a name="how-to-configure-execute-r-script"></a>如何配置执行 R 脚本
 
-The **Execute R Script** module contains sample code that you can use as a starting point. To configure the **Execute R Script** module, provide a set of inputs and code to execute.
+**执行 R 脚本**模块包含可用作起始点的示例代码。 若要配置 "**执行 R 脚本**" 模块，请提供一组输入和要执行的代码。
 
-![R-module](media/module/execute-r-script.png)
+![R-模块](media/module/execute-r-script.png)
 
-Datasets stored in the designer are automatically converted to an R data frame when loaded with this module.
+使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 
-1.  Add the **Execute R Script** module to your pipeline.
+1.  将**执行 R 脚本**模块添加到管道。
 
   
 
-1. Connect any inputs needed by the script. Inputs are optional and can include data and additional R code.
+1. 连接脚本所需的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **Dataset1**: Reference the first input as `dataframe1`. The input dataset must be formatted as a CSV, TSV, ARFF, or you can connect an Azure Machine Learning dataset.
+    * **Dataset1**：引用 `dataframe1`的第一个输入。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
 
-    * **Dataset2**: Reference the second input as `dataframe2`. This dataset also must be formatted as a CSV, TSV, ARFF file, or as an Azure Machine Learning dataset.
+    * **Dataset2**：引用 `dataframe2`的第二个输入。 此数据集也必须设置为 CSV、TSV、ARFF 文件或 Azure 机器学习数据集格式。
 
-    * **Script Bundle**: The third input accepts ZIP files. The zipped file can contain multiple files and multiple file types.
+    * **脚本捆绑包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
 
-1. In the **R script** text box, type or paste valid R script.
+1. 在 " **R 脚本**" 文本框中，键入或粘贴有效的 R 脚本。
 
-    To help you get started, the **R Script** text box is pre-populated with sample code, which you can edit or replace.
+    为了帮助你入门，" **R 脚本**" 文本框中预先填充了可以编辑或替换的示例代码。
     
 ```R
 # R version: 3.5.1
@@ -111,48 +111,48 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * The script must contain a function named `azureml_main`, which is the entry point for this module.
+ * 脚本必须包含名为 `azureml_main`的函数，这是此模块的入口点。
 
- * The entry point function can contain up to two input arguments: `Param<dataframe1>` and `Param<dataframe2>`
+ * 入口点函数最多可以包含两个输入参数： `Param<dataframe1>` 和 `Param<dataframe2>`
  
    > [!NOTE]
-    > The data passed to the **Execute R Script** module is referenced as `dataframe1` and `dataframe2`, which is different from Azure Machine Learning designer (the designer reference as `dataset1`, `dataset2`). Please check to make sure input data is referneced correctly in your script.  
+    > 传递给 "**执行 R 脚本**" 模块的数据被称为 `dataframe1` 和 `dataframe2`，这不同于 Azure 机器学习设计器（设计器引用为 `dataset1``dataset2`）。 请检查以确保在脚本中正确 referneced 输入数据。  
  
     > [!NOTE]
-    >  Existing R code may need minor changes to run in a designer pipeline. For example, input data that you provide in CSV format should be explicitly converted to a dataset before you can use it in your code. Data and column types used in the R language also differ in some ways from the data and column types used in the designer.
+    >  现有 R 代码可能需要稍作更改才能在设计器管道中运行。 例如，你以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用它。 R 语言中使用的数据和列类型在设计器中使用的数据和列类型的某些方面也有所不同。
 
-1.  **Random Seed**: Type a value to use inside the R environment as the random seed value. This parameter is equivalent to calling `set.seed(value)` in R code.  
+1.  **随机种子**：键入要在 R 环境中用作随机种子值的值。 此参数等效于在 R 代码中调用 `set.seed(value)`。  
 
 1. 运行管道。  
 
 ## <a name="results"></a>结果
 
-The **Execute R Script** modules can return multiple outputs, but they must be provided as R data frames. Data frames are automatically converted to datasets in the designer for compatibility with other modules.
+**执行 r 脚本**模块可以返回多个输出，但它们必须作为 R 数据帧提供。 数据帧会自动转换为设计器中的数据集，以便与其他模块兼容。
 
-Standard messages and errors from R are returned to the module's log.
+来自 R 的标准消息和错误将返回到模块的日志中。
 
 ## <a name="sample-scripts"></a>示例脚本
 
-There are many ways that you can extend your pipeline by using custom R script.  This section provides sample code for common tasks.
+可以通过多种方式使用自定义 R 脚本来扩展管道。  本部分提供了常见任务的示例代码。
 
 
-### <a name="add-r-script-as-an-input"></a>Add R script as an input
+### <a name="add-r-script-as-an-input"></a>添加 R 脚本作为输入
 
-The **Execute R Script** module supports arbitrary R script files as inputs. To do so, they must be uploaded to your workspace as part of the ZIP file.
+**执行 r 脚本**模块支持任意 R 脚本文件作为输入。 为此，必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
 
-1. To upload a ZIP file containing R code to your workspace, click **New**, click **Dataset**, and then select **From local file** and the **Zip file** option.  
+1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请单击 "**新建**"，再单击 "**数据集**"，然后选择 "**从本地文件**和**ZIP 文件**" 选项。  
 
-1. Verify that the zipped file is available in the **Saved Datasets** list.
+1. 验证压缩文件是否在 "**保存的数据集**" 列表中可用。
 
-1.  Connect the dataset to the **Script Bundle** input port.
+1.  将数据集连接到 "**脚本绑定**" 输入端口。
 
-1. All files that are contained in the ZIP file are available during pipeline run time. 
+1. ZIP 文件中包含的所有文件都在管道运行时可用。 
 
-    If the script bundle file contained a directory structure, the structure is preserved. However, you must alter your code to prepend the directory **./Script Bundle** to the path.
+    如果脚本捆绑文件中包含目录结构，则会保留结构。 但是，您必须更改您的代码，以便将 **/Script 捆绑**到该路径。
 
 ### <a name="process-data"></a>处理数据
 
-The following sample shows how to scale and normalize input data:
+下面的示例演示如何缩放和规范化输入数据：
 
 ```R
 # R version: 3.5.1
@@ -181,15 +181,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>Read a ZIP file as input
+### <a name="read-a-zip-file-as-input"></a>读取 ZIP 文件作为输入
 
-This sample shows how to use a dataset in a ZIP file as an input to the **Execute R Script** module.
+此示例演示如何使用 ZIP 文件中的数据集作为**执行 R 脚本**模块的输入。
 
-1. Create the data file in CSV format, and name it “mydatafile.csv”.
-1. Create a ZIP file and add the CSV file to the archive.
-1. Upload the zipped file to your Azure Machine Learning workspace. 
-1. Connect the resulting dataset to the **ScriptBundle** input of your **Execute R Script** module.
-1. Using the following code to read the CSV data from the zipped file.
+1. 创建 CSV 格式的数据文件，并将其命名为 "mydatafile"。
+1. 创建一个 ZIP 文件，并将 CSV 文件添加到存档。
+1. 将压缩的文件上传到 Azure 机器学习工作区。 
+1. 将生成的数据集连接到**执行 R 脚本**模块的**ScriptBundle**输入。
+1. 使用以下代码从压缩文件中读取 CSV 数据。
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -200,9 +200,9 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="replicate-rows"></a>Replicate rows
+### <a name="replicate-rows"></a>复制行
 
-This sample shows how to replicate positive records in a dataset to balance the sample:
+此示例演示如何复制数据集中的正记录来平衡示例：
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -217,11 +217,11 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="pass-r-objects-between-execute-r-script-modules"></a>Pass R objects between Execute R Script modules
+### <a name="pass-r-objects-between-execute-r-script-modules"></a>在执行 R 脚本模块之间传递 R 对象
 
-You can pass R objects between instances of the **Execute R Script** module by using the internal serialization mechanism. This example assumes that you want to move the R object named `A` between two **Execute R Script** modules.
+可以使用内部序列化机制在**执行 r 脚本**模块的实例之间传递 R 对象。 此示例假设你要在两个**执行 R 脚本**模块之间移动名为 `A` 的 R 对象。
 
-1. Add the first **Execute R Script** module to your pipeline, and type the following code in the **R Script** text box to create a serialized object `A` as a column in the module’s output Data Table:  
+1. 将第一个 "**执行 R 脚本**" 模块添加到管道，然后在 " **R 脚本**" 文本框中键入以下代码，以创建一个序列化对象，`A` 作为模块输出数据表中的列：  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -235,11 +235,11 @@ You can pass R objects between instances of the **Execute R Script** module by u
     }
     ```
 
-    The explicit conversion to integer type is done because the serialization function outputs data in the R `Raw` format, which isn't supported by the designer.
+    已完成到整数类型的显式转换，因为序列化函数会输出 R `Raw` 格式的数据，设计器不支持该格式。
 
-1. Add a second instance of the **Execute R Script** module, and connect it to the output port of the previous module.
+1. 添加**执行 R 脚本**模块的第二个实例，并将其连接到上一个模块的输出端口。
 
-1. Type the following code in the **R Script** text box to extract object `A` from the input Data Table. 
+1. 在 " **R 脚本**" 文本框中键入以下代码，以从输入数据表提取对象 `A`。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -250,17 +250,17 @@ You can pass R objects between instances of the **Execute R Script** module by u
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Pre-installed R Packages
+## <a name="pre-installed-r-packages"></a>预安装的 R 包
 
-The current list of pre-installed R Packages available to use:
+可供使用的预安装 R 包的当前列表：
 
 |              |            | 
 |--------------|------------| 
-| 程序包      | 版本    | 
+| package      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
-| backports    | 1.1.4      | 
-| base         | 3.5.1      | 
+| precise-backports    | 1.1.4      | 
+| 基座         | 3.5.1      | 
 | base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
 | bindr        | 0.1.1      | 
@@ -269,7 +269,7 @@ The current list of pre-installed R Packages available to use:
 | 启动         | 1.3-22     | 
 | broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| caret        | 6.0-84     | 
+| 字        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | class        | 7.3-15     | 
@@ -278,8 +278,8 @@ The current list of pre-installed R Packages available to use:
 | cluster      | 2.0.7-1    | 
 | codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
-| compiler     | 3.5.1      | 
-| crayon       | 1.3.4      | 
+| 编译程序     | 3.5.1      | 
+| 起来       | 1.3.4      | 
 | curl         | 3.3        | 
 | data.table   | 1.12.2     | 
 | datasets     | 3.5.1      | 
@@ -292,40 +292,40 @@ The current list of pre-installed R Packages available to use:
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| foreign      | 0.8-71     | 
+| 国外      | 0.8-71     | 
 | fs           | 1.3.1      | 
 | gdata        | 2.18.0     | 
-| generics     | 0.0.2      | 
+| 属     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0-18     | 
-| glue         | 1.3.1      | 
+| 粘贴         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| graphics     | 3.5.1      | 
+| 图形图像     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| grid         | 3.5.1      | 
+| 格         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| haven        | 2.1.0      | 
+| 尚未        | 2.1.0      | 
 | highr        | 0.8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
 | ipred        | 0.9-9      | 
-| iterators    | 1.0.10     | 
+| 迭代器    | 1.0.10     | 
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
 | knitr        | 1.23       | 
-| labeling     | 0.3        | 
-| lattice      | 0.20-38    | 
+| 加     | 0.3        | 
+| 点阵      | 0.20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| markdown     | 第          | 
-| MASS         | 7.3-51.4   | 
-| Matrix       | 1.2-17     | 
-| methods      | 3.5.1      | 
+| markdown     | 1          | 
+| 成批         | 7.3-51.4   | 
+| 矩阵       | 1.2-17     | 
+| 方法      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
 | mime         | 0.7        | 
 | ModelMetrics | 1.2.2      | 
@@ -335,8 +335,8 @@ The current list of pre-installed R Packages available to use:
 | nnet         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
 | openssl      | 1.4        | 
-| parallel     | 3.5.1      | 
-| pillar       | 1.4.1      | 
+| 并行     | 3.5.1      | 
+| 支柱       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
@@ -366,16 +366,16 @@ The current list of pre-installed R Packages available to use:
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| scales       | 1.0.0      | 
-| selectr      | 0.4-1      | 
-| spatial      | 7.3-11     | 
-| splines      | 3.5.1      | 
+| 可扩展       | 1.0.0      | 
+| 选择      | 0.4-1      | 
+| 空间      | 7.3-11     | 
+| 样条      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
 | stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
 | stringr      | 1.3.1      | 
-| survival     | 2.44-1.1   | 
+| 至关重要     | 2.44-1.1   | 
 | sys          | 3.2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
@@ -391,7 +391,7 @@ The current list of pre-installed R Packages available to use:
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0.3-2      | 
+| 须      | 0.3-2      | 
 | withr        | 2.1.2      | 
 | xfun         | 0.8        | 
 | xml2         | 1.2.0      | 
@@ -402,4 +402,4 @@ The current list of pre-installed R Packages available to use:
 
 ## <a name="next-steps"></a>后续步骤
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

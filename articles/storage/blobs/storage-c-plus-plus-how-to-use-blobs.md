@@ -32,14 +32,14 @@ ms.locfileid: "74227908"
 
 要安装适用于 C++ 的 Azure 存储客户端库，可以使用以下方法：
 
-* **Linux:** Follow the instructions given in the [Azure Storage Client Library for C++ README: Getting Started on Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) page.
-* **Windows:** On Windows, use [vcpkg](https://github.com/microsoft/vcpkg) as the dependency manager. Follow the [quick-start](https://github.com/microsoft/vcpkg#quick-start) to initialize vcpkg. Then, use the following command to install the library:
+* **Linux：** 按照[自述文件的 Azure 存储客户端库中提供C++的说明进行操作： Linux 页上的入门](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)。
+* **Windows：** 在 Windows 上，使用[vcpkg](https://github.com/microsoft/vcpkg)作为依赖关系管理器。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)中的步骤初始化 vcpkg。 然后，使用以下命令安装库：
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-You can find a guide for how to build the source code and export to Nuget in the [README](https://github.com/Azure/azure-storage-cpp#download--install) file.
+可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 Nuget 的指南。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>配置应用程序以访问 Blob 存储
 将以下 include 语句添加到 C++ 文件的顶部，要在此使用 Azure 存储 API 来访问 blob：  
@@ -52,14 +52,14 @@ You can find a guide for how to build the source code and export to Nuget in the
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的存储访问密钥。 有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 此示例演示如何声明一个静态字段以保存连接字符串：  
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 [AccountName](https://portal.azure.com) 和 *AccountKey* 值使用 *Azure 门户*中列出的存储帐户的名称和存储帐户的存储访问密钥。 有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 此示例演示如何声明一个静态字段以保存连接字符串：  
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-要在本地 Windows 计算机中测试应用程序，可以使用随同 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安装的 Microsoft Azure [存储模拟器](../storage-use-emulator.md)。 存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。 以下示例演示如何声明一个静态字段以将连接字符串保存到本地存储模拟器：
+要在本地 Windows 计算机中测试应用程序，可以使用随同 [Azure SDK](../storage-use-emulator.md) 一起安装的 Microsoft Azure [存储模拟器](https://azure.microsoft.com/downloads/)。 存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。 以下示例演示如何声明一个静态字段以将连接字符串保存到本地存储模拟器：
 
 ```cpp
 // Define the connection-string with Azure Storage Emulator.
@@ -70,7 +70,7 @@ const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;
 
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。  
 
-## <a name="retrieve-your-storage-account"></a>Retrieve your storage account
+## <a name="retrieve-your-storage-account"></a>检索存储帐户
 可使用 **cloud_storage_account** 类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。  
 
 ```cpp
@@ -120,7 +120,7 @@ permissions.set_public_access(azure::storage::blob_container_public_access_type:
 container.upload_permissions(permissions);  
 ```
 
-Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在你具有相应的访问密钥时，才能修改或删除它们。  
+Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在具有相应的访问密钥时，才能修改或删除它们。  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>如何：将 Blob 上传到容器
 Azure Blob 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 Blob。  
@@ -188,7 +188,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 有关列出操作的更多详细信息，请参阅[使用 C++ 列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>如何：下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 **download_to_stream** 方法将 Blob 内容传输到一个流对象，然后用户即可将该对象保存到本地文件。  
+要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 **download_to_stream** 方法将 Blob 内容传输到一个流对象，用户即可将该对象保存到本地文件。  
 
 ```cpp
 // Retrieve storage account from connection string.

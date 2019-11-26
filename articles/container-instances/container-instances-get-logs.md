@@ -1,5 +1,5 @@
 ---
-title: Get container instance logs & events
+title: 获取容器实例日志 & 事件
 description: 了解如何使用 Azure 容器实例获取容器日志和事件以进行调试
 ms.topic: article
 ms.date: 03/21/2019
@@ -13,7 +13,7 @@ ms.locfileid: "74481745"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器实例中检索容器日志和事件
 
-When you have a misbehaving container, start by viewing its logs with [az container logs][az-container-logs], and streaming its standard out and standard error with [az container attach][az-container-attach].
+如果有错误的容器，请首先使用[az 容器日志][az-container-logs]查看其日志，并使用[az container attach][az-container-attach]流式传输其标准输出和标准错误。
 
 ## <a name="view-logs"></a>查看日志
 
@@ -45,7 +45,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>附加输出流
 
-The [az container attach][az-container-attach] command provides diagnostic information during container startup. 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
+[Az container attach][az-container-attach]命令在容器启动过程中提供诊断信息。 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
 
 例如，下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的容器，在向其提供一个大型文本文件的有效 URL 进行处理后的输出：
 

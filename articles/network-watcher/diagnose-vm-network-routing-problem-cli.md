@@ -43,7 +43,7 @@ ms.locfileid: "74276097"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm#az-vm-create)创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM：
+使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 以下示例创建名为 myVm 的 VM：
 
 ```azurecli-interactive
 az vm create \

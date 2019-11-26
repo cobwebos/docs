@@ -147,7 +147,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -165,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `OfferType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -186,7 +186,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offer-type`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -337,7 +337,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 订阅的显示名称。|
 | `billingProfileId`   | 是      | String | 将按订阅费用计费的计费配置文件的 ID。  |
@@ -502,7 +502,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 订阅的显示名称。|
 | `skuId` | 是      | String | Azure 计划的 sku ID。 使用*0001*作为 Microsoft Azure 计划类型的订阅 |

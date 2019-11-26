@@ -1,5 +1,5 @@
 ---
-title: Android certificate-based authentication - Azure Active Directory
+title: 基于 Android 证书的身份验证-Azure Active Directory
 description: 了解 Android 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
@@ -35,16 +35,16 @@ ms.locfileid: "74381986"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![Check mark signifying support for this application][1] |
-| Intune 公司门户 |![Check mark signifying support for this application][1] |
-| Microsoft Teams |![Check mark signifying support for this application][1] |
-| OneNote |![Check mark signifying support for this application][1] |
-| OneDrive |![Check mark signifying support for this application][1] |
-| Outlook |![Check mark signifying support for this application][1] |
-| Power BI |![Check mark signifying support for this application][1] |
-| Skype for Business |![Check mark signifying support for this application][1] |
-| Word/Excel/PowerPoint |![Check mark signifying support for this application][1] |
-| Yammer |![Check mark signifying support for this application][1] |
+| Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
+| Intune 公司门户 |![对号，表示支持此应用程序][1] |
+| Microsoft Teams |![对号，表示支持此应用程序][1] |
+| OneNote |![对号，表示支持此应用程序][1] |
+| OneDrive |![对号，表示支持此应用程序][1] |
+| Outlook |![对号，表示支持此应用程序][1] |
+| Power BI |![对号，表示支持此应用程序][1] |
+| Skype for Business |![对号，表示支持此应用程序][1] |
+| Word/Excel/PowerPoint |![对号，表示支持此应用程序][1] |
+| Yammer |![对号，表示支持此应用程序][1] |
 
 ### <a name="implementation-requirements"></a>实现要求
 

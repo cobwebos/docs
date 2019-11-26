@@ -1,6 +1,6 @@
 ---
-title: Protecting DNS Zones and Records - Azure DNS
-description: In this learning path, get started protecting DNS zones and record sets in Microsoft Azure DNS.
+title: 保护 DNS 区域和记录-Azure DNS
+description: 在此学习路径中，开始保护 Microsoft Azure DNS 中的 DNS 区域和记录集。
 services: dns
 author: asudbring
 ms.service: dns
@@ -160,7 +160,7 @@ azure role create -inputfile <file path>
 
 除支持 RBAC 外，Azure 资源管理器还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 
-There are two types of resource lock: **CanNotDelete** and **ReadOnly**. 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
+有两种类型的资源锁： **CanNotDelete**和**ReadOnly**。 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
 
 ### <a name="protecting-against-all-changes"></a>防止所有更改
 

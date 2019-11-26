@@ -1,5 +1,5 @@
 ---
-title: Certificate-based authentication - Azure Active Directory
+title: 基于证书的身份验证-Azure Active Directory
 description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
@@ -119,7 +119,7 @@ ms.locfileid: "74382024"
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>移除
+### <a name="remove"></a>删除
 
 若要删除受信任的证书颁发机构，请使用 [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet：
 
@@ -166,7 +166,7 @@ ms.locfileid: "74382024"
 
 ### <a name="testing-your-certificate"></a>测试证书
 
-作为第一个配置测试，应尝试使用**设备内置的浏览器**登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
+作为第一个配置测试，应尝试使用[设备内置的浏览器](https://outlook.office365.com)登录 [Outlook Web Access](https://microsoft.sharepoint.com) 或 **SharePoint Online**。
 
 如果登录成功，则表示：
 

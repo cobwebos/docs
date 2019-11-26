@@ -16,7 +16,7 @@ ms.locfileid: "74269361"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
-本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境以获得最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
+本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -48,7 +48,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 <a id="error53-67-87"></a>
-## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>装载或卸载 Azure 文件共享时出现“错误 53”、“错误 67”或“错误 87”
+## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>尝试装载或卸载 Azure 文件共享时发生错误 53、错误 67 或错误 87
 
 尝试从本地或其他数据中心装载文件共享时，可能会看到以下错误消息：
 
@@ -241,7 +241,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 ### <a name="cause"></a>原因
 
-根据用户装载驱动器。 如果运行应用程序或服务的用户帐户与装载驱动器的用户帐户不同，应用程序将检测不到驱动器。
+每个用户都装载了驱动器。 如果运行应用程序或服务的用户帐户与装载驱动器的用户帐户不同，应用程序将检测不到驱动器。
 
 ### <a name="solution"></a>解决方案
 
@@ -274,7 +274,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Value type = DWORD
   - 名称 = CopyFileAllowDecryptedRemoteDestination
-  - 值= 1
+  - 值 = 1
 
 请注意，设置注册表项会影响对网络共享进行的所有复制操作。
 
@@ -307,5 +307,5 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

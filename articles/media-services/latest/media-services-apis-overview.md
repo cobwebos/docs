@@ -118,7 +118,7 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 > [!NOTE]
 > Azure 媒体服务 v3 Sdk 不保证是线程安全的。 当开发多线程应用程序时，您应该添加自己的线程同步逻辑来保护客户端，或对每个线程使用新的 AzureMediaServicesClient 对象。 你还应该注意由代码提供给客户端的可选对象引入的多线程问题（如 .NET 中的 HttpClient 实例）。
 
-|SDK 中 IsInRole 中的声明|引用|
+|SDK 中 IsInRole 中的声明|参考|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET 参考](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java 参考](https://aka.ms/ams-v3-java-ref)|
@@ -127,7 +127,7 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 |[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go 参考](https://aka.ms/ams-v3-go-ref)|
 |[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
@@ -146,7 +146,7 @@ AMSE 是一个开源项目，由社区提供支持（可以将问题报告给 ht
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 

@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot using the dsregcmd command - Azure Active Directory
-description: Using the output from dsregcmd to understand the state of devices in Azure AD
+title: 使用 dsregcmd.exe 命令进行故障排除-Azure Active Directory
+description: 使用 dsregcmd.exe 的输出来了解中设备的状态 Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -18,30 +18,30 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379208"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Troubleshooting devices using the dsregcmd command
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
 
-The dsregcmd /status utility must be run as a domain user account.
+必须以域用户帐户身份运行 dsregcmd.exe/status 实用程序。
 
 ## <a name="device-state"></a>设备状态
 
-This section lists the device join state parameters. The table below lists the criteria for the device to be in various join states.
+此部分列出了设备联接状态参数。 下表列出了设备处于不同联接状态的条件。
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | 设备状态 |
 | ---   | ---   | ---   | ---   |
-| 是 | 否 | 否 | Azure AD Joined |
-| 否 | 否 | 是 | Domain Joined |
-| 是 | 否 | 是 | Hybrid AD Joined |
-| 否 | 是 | 是 | On-premises DRS Joined |
+| 是 | 否 | 否 | Azure AD 联接 |
+| 否 | 否 | 是 | 已加入域 |
+| 是 | 否 | 是 | 已加入混合广告 |
+| 否 | 是 | 是 | 已联接本地 DRS |
 
 > [!NOTE]
-> Workplace Join (Azure AD registered) state is displayed in the "User State" section
+> Workplace Join （Azure AD 注册）状态显示在 "用户状态" 部分中
 
-- **AzureAdJoined:** - Set to “YES” if the device is Joined to Azure AD. “NO” otherwise.
-- **EnterpriseJoined:** - Set to “YES” if the device is Joined to an on-premises DRS. A device cannot be both EnterpriseJoined and AzureAdJoined.
-- **DomainJoined:** - Set to “YES” if the device is joined to a domain (AD).
-- **DomainName:** - Set to the name of the domain if the device is joined to a domain.
+- **AzureAdJoined：** -如果设备已加入到 Azure AD，则设置为 "是"。 否则为 "NO"。
+- **EnterpriseJoined：** -如果设备已加入本地 DRS，则设置为 "是"。 设备不能同时为 EnterpriseJoined 和 AzureAdJoined。
+- **DomainJoined：** -如果设备已加入域（AD），则设置为 "是"。
+- **DomainName：** -如果设备已加入域，则设置为域的名称。
 
-### <a name="sample-device-state-output"></a>Sample device state output
+### <a name="sample-device-state-output"></a>设备状态输出示例
 
 ```
 +----------------------------------------------------------------------+
@@ -56,16 +56,16 @@ This section lists the device join state parameters. The table below lists the c
 
 ## <a name="device-details"></a>设备详细信息
 
-Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists device identifying details stored in the cloud.
+仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 本部分列出了存储在云中的设备标识详细信息。
 
-- **DeviceId:** - Unique ID of the device in the Azure AD tenant
-- **Thumbprint:** - Thumbprint of the device certificate 
-- **DeviceCertificateValidity:** - Validity of the device certificate
-- **KeyContainerId:** - ContainerId of the device private key associated with the device certificate
-- **KeyProvider:** - KeyProvider (Hardware/Software) used to store the device private key.
-- **TpmProtected:** - “YES” if the device private key is stored in a Hardware TPM.
+- **DeviceId：** -Azure AD 租户中的设备的唯一 ID
+- **指纹：** -设备证书的指纹 
+- **DeviceCertificateValidity：** -设备证书的有效性
+- **KeyContainerId：** -与设备证书关联的设备私钥的 ContainerId
+- **KeyProvider：** -KeyProvider （硬件/软件）用于存储设备私钥。
+- **TpmProtected：** -如果设备私钥存储在硬件 TPM 中，则为 "是"。
 
-### <a name="sample-device-details-output"></a>Sample device details output
+### <a name="sample-device-details-output"></a>示例设备详细信息输出
 
 ```
 +----------------------------------------------------------------------+
@@ -81,17 +81,17 @@ Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Tenant details
+## <a name="tenant-details"></a>租户详细信息
 
-Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not Azure AD registered). This section lists the common tenant details when a device is joined to Azure AD.
-
-> [!NOTE]
-> If the MDM URLs in this section are empty, it indicates that the MDM was either not configured or current user is not in scope of MDM enrollment. Check the Mobility settings in Azure AD to review your MDM configuration.
+仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 此部分列出了将设备加入到 Azure AD 时的常见租户详细信息。
 
 > [!NOTE]
-> Even if you see MDM URLs this does not mean that the device is managed by an MDM. The information is displayed if the tenant has MDM configuration for auto-enrollment even if the device itself is not managed. 
+> 如果此部分中的 MDM Url 为空，则表示 MDM 未配置，或者当前用户不在 MDM 注册的范围内。 查看 Azure AD 中的移动设置以查看 MDM 配置。
 
-### <a name="sample-tenant-details-output"></a>Sample tenant details output
+> [!NOTE]
+> 即使您看到 MDM Url，这并不意味着设备由 MDM 管理。 如果租户具有用于自动注册的 MDM 配置（即使设备本身不受管理），则会显示此信息。 
+
+### <a name="sample-tenant-details-output"></a>示例租户详细信息输出
 
 ```
 +----------------------------------------------------------------------+
@@ -124,22 +124,22 @@ Displayed only when the device is Azure AD joined or hybrid Azure AD joined (not
 
 ## <a name="user-state"></a>用户状态
 
-This section lists the status of various attributes for the user currently logged into the device.
+此部分列出了当前登录到设备的用户的各种属性的状态。
 
 > [!NOTE]
-> The command must run in a user context to retrieve valid status.
+> 命令必须在用户上下文中运行，才能检索有效状态。
 
-- **NgcSet:** - Set to “YES” if a Windows Hello key is set for the current logged on user.
-- **NgcKeyId:** - ID of the Windows Hello key if one is set for the current logged on user.
-- **CanReset:** - Denotes if the Windows Hello key can be reset by the user. 
-- **Possible values:** - DestructiveOnly, NonDestructiveOnly, DestructiveAndNonDestructive, or Unknown if error. 
-- **WorkplaceJoined:** - Set to “YES” if Azure AD registered accounts have been added to the device in the current NTUSER context.
-- **WamDefaultSet:** - Set to “YES” if a WAM default WebAccount is created for the logged in user. This field could display an error if dsreg /status is run in admin context. 
-- **WamDefaultAuthority:** - Set to “organizations” for Azure AD.
-- **WamDefaultId:** - Always “https://login.microsoft.com” for Azure AD.
-- **WamDefaultGUID:** - The WAM provider’s (Azure AD/Microsoft account) GUID for the default WAM WebAccount. 
+- **NgcSet：** -如果为当前已登录用户设置 Windows Hello 密钥，则设置为 "是"。
+- **NgcKeyId：** -Windows Hello 密钥的 ID （如果为当前已登录用户设置了一个密钥）。
+- **CanReset：** -表示用户是否可以重置 Windows Hello 密钥。 
+- **可能的值：** -DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive 或 Unknown （如果错误）。 
+- **WorkplaceJoined：** -如果已将 Azure AD 注册帐户添加到当前已上下文中的设备，则设置为 "是"。
+- **WamDefaultSet：** -如果为已登录用户创建 WAM 默认 WebAccount，则设置为 "是"。 如果在管理上下文中运行 dsreg/status，则此字段可能显示错误。 
+- **WamDefaultAuthority：** -设置为 "组织" Azure AD。
+- **WamDefaultId：** -Always "https://login.microsoft.com" Azure AD。
+- **末尾为：** -默认 WAM WEBACCOUNT 的 WAM 提供程序的（Azure AD/MICROSOFT 帐户） GUID。 
 
-### <a name="sample-user-state-output"></a>Sample user state output
+### <a name="sample-user-state-output"></a>用户状态输出示例
 
 ```
 +----------------------------------------------------------------------+
@@ -158,23 +158,23 @@ This section lists the status of various attributes for the user currently logge
 +----------------------------------------------------------------------+
 ```
 
-## <a name="sso-state"></a>SSO state
+## <a name="sso-state"></a>SSO 状态
 
-This section can be ignored for Azure AD registered devices.
+对于 Azure AD 注册的设备，可忽略此部分。
 
 > [!NOTE]
-> The command must run in a user context to retrieve valid status for that user.
+> 此命令必须在用户上下文中运行，以检索该用户的有效状态。
 
-- **AzureAdPrt:** - Set to “YES” if a PRT is present on the device for the logged-on user.
-- **AzureAdPrtUpdateTime:** - Set to the time in UTC when the PRT was last updated.
-- **AzureAdPrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
-- **AzureAdPrtAuthority:** - Azure AD authority URL
-- **EnterprisePrt:** - Set to “YES” if the device has PRT from on-premises ADFS. For hybrid Azure AD joined devices the device could have PRT from both Azure AD and on-premises AD simultaneously. On-premises joined devices will only have an Enterprise PRT.
-- **EnterprisePrtUpdateTime:** - Set to the time in UTC when the Enterprise PRT was last updated.
-- **EnterprisePrtExpiryTime:** - Set to the time in UTC when the PRT is going to expire if it is not renewed.
-- **EnterprisePrtAuthority:** - ADFS authority URL
+- **AzureAdPrt：** -如果登录用户的设备上存在 PRT，则设置为 "是"。
+- **AzureAdPrtUpdateTime：** -设置为上次更新 PRT 时的 UTC 时间。
+- **AzureAdPrtExpiryTime：** -设置为在未续订时 PRT 将过期的时间（UTC）。
+- **AzureAdPrtAuthority：** -Azure AD 颁发机构 URL
+- **EnterprisePrt：** -如果设备已从本地 ADFS PRT，则设置为 "是"。 对于已加入混合 Azure AD 设备，设备可能同时具有 Azure AD 和本地 AD 中的 PRT。 本地加入的设备将只有企业 PRT。
+- **EnterprisePrtUpdateTime：** -设置为上次更新 Enterprise PRT 时的 UTC 时间。
+- **EnterprisePrtExpiryTime：** -设置为在未续订时 PRT 将过期的时间（UTC）。
+- **EnterprisePrtAuthority：** -ADFS 证书颁发机构 URL
 
-### <a name="sample-sso-state-output"></a>Sample SSO state output
+### <a name="sample-sso-state-output"></a>示例 SSO 状态输出
 
 ```
 +----------------------------------------------------------------------+
@@ -195,35 +195,35 @@ This section can be ignored for Azure AD registered devices.
 
 ## <a name="diagnostic-data"></a>诊断数据
 
-### <a name="pre-join-diagnostics"></a>Pre-join diagnostics
+### <a name="pre-join-diagnostics"></a>预先联接诊断
 
-This section is displayed only if the device is domain joined and is unable to hybrid Azure AD join.
+仅当设备已加入域并且无法 Azure AD 联接混合时，才显示此部分。
 
-This section performs various tests to help diagnose join failures. This section also includes the details of the previous (?). This information includes the error phase, the error code, the server request ID, server response http status, server response error message.
+本部分将执行各种测试来帮助诊断联接失败。 本节还包括上一个（？）的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
 
-- **User Context:** - The context in which the diagnostics are run. Possible values: SYSTEM, UN-ELEVATED User, ELEVATED User. 
+- **用户上下文：** -运行诊断的上下文。 可能的值：系统、不提升的用户、提升的用户。 
 
    > [!NOTE]
-   > Since the actual join is performed in SYSTEM context, running the diagnostics in SYSTEM context is closest to the actual join scenario. To run diagnostics in SYSTEM context, the dsregcmd /status command must be run from an elevated command prompt.
+   > 由于实际联接是在系统上下文中执行的，因此在系统上下文中运行诊断最接近实际联接方案。 若要在系统上下文中运行诊断，必须在提升的命令提示符下运行 dsregcmd.exe/status 命令。
 
-- **Client Time:** - The system time in UTC.
-- **AD Connectivity Test:** - Test performs a connectivity test to the domain controller. Error in this test will likely result in Join errors in pre-check phase.
-- **AD Configuration Test:** - Test reads and verifies whether the SCP object is configured properly in the on-premises AD forest. Errors in this test would likely result in Join errors in the discover phase with the error code 0x801c001d.
-- **DRS Discovery Test:** - Test gets the DRS endpoints from discovery metadata endpoint and performs a user realm request. Errors in this test would likely result in Join errors in the discover phase.
-- **DRS Connectivity Test:** - Test performs basic connectivity test to the DRS endpoint.
-- **Token acquisition Test:** - Test tries to get an Azure AD authentication token if the user tenant is federated. Errors in this test would likely result in Join errors in the auth phase. If auth fails sync join will be attempted as fallback, unless fallback is explicitly disabled with a registry key.
-- **Fallback to Sync-Join:** - Set to “Enabled” if the registry key, to prevent the fallback to sync join with auth failures, is NOT present. This option is available from Windows 10 1803 and later.
-- **Previous Registration:** - Time the previous Join attempt occurred. Only failed Join attempts are logged.
-- **Error Phase:** - The stage of the join in which it was aborted. Possible values are pre-check, discover, auth, join.
-- **Client ErrorCode:** - Client error code returned (HRESULT).
-- **Server ErrorCode:** - Server error code if a request was sent to the server and server responded back with an error code. 
-- **Server Message:** - Server message returned along with the error code.
-- **Https Status:** - Http status returned by the server.
-- **Request ID:** - The client requestId sent to the server. Useful to correlate with server-side logs.
+- **客户端时间：** -UTC 格式的系统时间。
+- **AD 连接测试：** -test 执行到域控制器的连接测试。 此测试中的错误可能导致预检查阶段出现联接错误。
+- **AD 配置测试：** -测试读取并验证是否在本地 AD 林中正确配置了 SCP 对象。 此测试中的错误可能导致发现阶段出现联接错误，错误代码为0x801c001d。
+- **DRS 发现测试：** -Test 从发现元数据终结点获取 DRS 终结点并执行用户领域请求。 此测试中的错误可能导致发现阶段出现联接错误。
+- **Drs 连接测试：** -测试对 DRS 终结点执行基本连接测试。
+- **令牌获取测试：** 如果用户租户是联合的，则测试尝试获取 Azure AD 身份验证令牌。 此测试中的错误可能导致在身份验证阶段出现联接错误。 如果身份验证失败，则将尝试将同步联接作为回退，除非使用注册表项显式禁用回退。
+- **回退到同步连接：** -如果注册表项不存在，则设置为 "已启用"，以防止回退与身份验证失败的联接。 此选项在 Windows 10 1803 和更高版本中可用。
+- **上一次注册：** -上次进行联接尝试的时间。 仅记录失败的联接尝试。
+- **错误阶段：** -已中止的联接的阶段。 可能的值包括预检查、发现、身份验证和联接。
+- **客户端错误：** -返回的客户端错误代码（HRESULT）。
+- **服务器 ErrorCode：** -服务器错误代码（如果向服务器发送了请求，并且服务器响应了错误代码）。 
+- **服务器消息：** -与错误代码一起返回的服务器消息。
+- **Https 状态：** -服务器返回的 Http 状态。
+- **请求 ID：** -发送到服务器的客户端 requestId。 与服务器端日志关联很有用。
 
-### <a name="sample-pre-join-diagnostics-output"></a>Sample pre-join diagnostics output
+### <a name="sample-pre-join-diagnostics-output"></a>示例预联接诊断输出
 
-The following example shows diagnostics test failing with a discovery error.
+下面的示例演示发现错误，诊断测试失败。
 
 ```
 +----------------------------------------------------------------------+
@@ -247,7 +247,7 @@ The following example shows diagnostics test failing with a discovery error.
 +----------------------------------------------------------------------+
 ```
 
-The following example shows diagnostics tests are passing but the registration attempt failed with a directory error, which is expected for sync join. Once the Azure AD Connect synchronization job completes, the device will be able to join.
+下面的示例演示了如何通过了诊断测试，但注册尝试失败，并出现目录错误，要求同步联接。 Azure AD Connect 同步作业完成后，设备将能够加入。
 
 ```
 +----------------------------------------------------------------------+
@@ -276,14 +276,14 @@ The following example shows diagnostics tests are passing but the registration a
 +----------------------------------------------------------------------+
 ```
 
-### <a name="post-join-diagnostics"></a>Post-join diagnostics
+### <a name="post-join-diagnostics"></a>联接后诊断
 
-This section displays the output of sanity checks performed on a device joined to the cloud.
+此部分显示在加入云的设备上执行的检查的输出。
 
-- **AadRecoveryEnabled:** - If “YES”, the keys stored in the device are not usable and the device is marked for recovery. The next sign in will trigger the recovery flow and re-register the device.
-- **KeySignTest:** - If “PASSED” the device keys are in good health. If KeySignTest fails, the device will usually be marked for recovery. The next sign in will trigger the recovery flow and re-register the device. For hybrid Azure AD joined devices the recovery is silent. While Azure AD joined or Azure AD registered, devices will prompt for user authentication to recover and re-register the device if necessary. **The KeySignTest requires elevated privileges.**
+- **AadRecoveryEnabled：** -如果是 "YES"，则表示存储在设备中的密钥不可用，并且设备已标记为要恢复。 下一个登录将触发恢复流，并重新注册设备。
+- **KeySignTest：** -如果 "通过" 设备密钥的运行状况良好。 如果 KeySignTest 失败，设备通常会标记为要恢复。 下一个登录将触发恢复流，并重新注册设备。 对于混合 Azure AD 联接的设备，恢复是静默的。 Azure AD 加入或 Azure AD 注册后，设备将提示用户进行身份验证，以便在必要时恢复并重新注册设备。 **KeySignTest 需要提升的权限。**
 
-#### <a name="sample-post-join-diagnostics-output"></a>Sample post-join diagnostics output
+#### <a name="sample-post-join-diagnostics-output"></a>示例联接后诊断输出
 
 ```
 +----------------------------------------------------------------------+
@@ -295,14 +295,14 @@ This section displays the output of sanity checks performed on a device joined t
 +----------------------------------------------------------------------+
 ```
 
-## <a name="ngc-prerequisite-check"></a>NGC prerequisite check
+## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
-This section performs the perquisite checks for the provisioning of an NGC key. 
+本部分将执行系统必备组件检查以预配 NGC 密钥。 
 
 > [!NOTE]
-> You may not see NGC pre-requisite check details in dsregcmd /status if the user already successfully configured NGC credentials.
+> 如果用户已成功配置了 NGC 凭据，则可能不会在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
 
-### <a name="sample-ngc-prerequisite-check-output"></a>Sample NGC prerequisite check output
+### <a name="sample-ngc-prerequisite-check-output"></a>示例 NGC 先决条件检查输出
 
 ```
 +----------------------------------------------------------------------+

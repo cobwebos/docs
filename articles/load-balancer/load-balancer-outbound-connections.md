@@ -34,33 +34,33 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 有多种[出站方案](#scenarios)。 可根据需要结合这些方案。 请认真分析这些方案，以了解在部署模型和应用方案中应用这些方案时的功能、约束和模式。 查看有关[管理这些方案](#snatexhaust)的指导。
 
 >[!IMPORTANT] 
->标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。  它们不同于基本 SKU。  如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。  This includes creating outbound connectivity when using an internal Standard Load Balancer.  建议始终使用标准公共负载均衡器上的出站规则。  [方案 3](#defaultsnat)不适用于标准 SKU。  这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。  在出站连接的上下文中，单独的 VM、可用性集中的所有 VM、VMSS 中的所有实例都是一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。  请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-rules-overview.md)。  使用出站规则可以对出站连接的所有方面进行细化管理控制。
+>标准负载均衡器和标准公共 IP 为出站连接引入了新功能和不同的行为。  它们不同于基本 SKU。  如果在使用标准 SKU 时需要出站连接，则必须使用标准公共 IP 地址或标准公共负载均衡器显式定义它。  这包括在使用内部标准负载均衡器时创建出站连接。  建议始终使用标准公共负载均衡器上的出站规则。  [方案 3](#defaultsnat)不适用于标准 SKU。  这意味着使用内部标准负载均衡器时，如果需要出站连接，则需要采取步骤为后端池中的 VM 创建出站连接。  在出站连接的上下文中，单独的 VM、可用性集中的所有 VM、VMSS 中的所有实例都是一个组。 这意味着，如果可用性集中的单个 VM 与标准 SKU 关联，则该可用性集中的所有 VM 实例现在都遵循相同的规则，就好像这些 VM 实例与标准 SKU 相关联一样，即使单个实例与标准 SKU 没有直接关联。  请仔细查看整个文档以了解整体概念，查看[标准负载均衡器](load-balancer-standard-overview.md)了解 SKU 之间的差异，并查看[出站规则](load-balancer-outbound-rules-overview.md)。  使用出站规则可以对出站连接的所有方面进行细化管理控制。
 
 ## <a name="scenarios"></a>方案概述
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| SKU | 场景 | 方法 | IP 协议 | 描述 |
+| SKU | 应用场景 | 方法 | IP 协议 | 说明 |
 | --- | --- | --- | --- | --- |
-| 标准、基本 | [1. VM with Public IP address (with or without Load Balancer)](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
-| 标准、基本 | [2. Public Load Balancer associated with a VM (no Public IP address on the instance)](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
-| 无或基本 | [3. Standalone VM (no Load Balancer, no Public IP address)](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
+| 标准、基本 | [1. 具有公共 IP 地址的 VM （有或没有负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 在使用标准负载均衡器时，应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接 |
+| 标准、基本 | [2. 与 VM 关联的公共负载均衡器（实例上没有公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 |
+| 无或基本 | [3. 独立 VM （无负载均衡器，无公共 IP 地址）](#defaultsnat) | 使用端口伪装 (PAT) 的 SNAT | TCP、UDP | Azure 自动指定用于 SNAT 的公共 IP 地址，与可用性集的多个专用 IP 地址共享此公共 IP 地址，并使用此公共 IP 地址的临时端口。 此方案是前述方案的回退方案。 如果需要可见性和控制，则我们不建议采用。 |
 
 如果不希望 VM 与 Azure 外部的公共 IP 地址空间中的终结点通信，则可以根据需要使用网络安全组 (NSG) 来阻止访问。 [阻止出站连接](#preventoutbound)部分详细介绍了 NSG。 本文不会介绍有关在无任何出站访问权限的情况下，如何设计和管理虚拟网络的设计和实施指导。
 
-### <a name="ilpip"></a>Scenario 1: VM with Public IP address
+### <a name="ilpip"></a>方案1：具有公共 IP 地址的 VM
 
-In this scenario, the VM has a Public IP assigned to it. 就出站连接而言，VM 是否经过负载均衡并不重要。 此方案优先于其他方案。 When a Public IP address is used, the VM uses the Public IP address for all outbound flows.  
+在此场景中，向 VM 分配了公共 IP。 就出站连接而言，VM 是否经过负载均衡并不重要。 此方案优先于其他方案。 使用公共 IP 地址时，VM 将该公共 IP 地址用于所有出站流。  
 
 分配到 VM 的公共 IP 属于 1 对 1 关系（而不是 1 对多关系），并实现为无状态的 1 对 1 NAT。  不使用端口伪装 (PAT)，并且 VM 具有所有可供使用的临时端口。
 
-If your application initiates many outbound flows and you experience SNAT port exhaustion, consider assigning a [Public IP address to mitigate SNAT constraints](#assignilpip). 请查看[管理 SNAT 耗尽](#snatexhaust)。
+如果应用程序启动很多出站流，并且遇到 SNAT 端口耗尽的情况，可以考虑分配[公共 IP 地址以缓解 SNAT 约束](#assignilpip)。 请查看[管理 SNAT 耗尽](#snatexhaust)。
 
-### <a name="lb"></a>Scenario 2: Load-balanced VM without a Public IP address
+### <a name="lb"></a>方案2：没有公共 IP 地址的负载平衡 VM
 
 在此方案中，VM 是公共负载均衡器池的一部分。 没有分配给 VM 的公共 IP 地址。 必须为负载均衡器资源配置一个负载均衡器规则，以在公共 IP 前端与后端池之间创建链接。
 
-If you do not complete this rule configuration, the behavior is as described in the scenario for [Standalone VM with no Public IP](#defaultsnat). 不需要在规则中添加后端池的正常运行的侦听器或者运行状况探测就能成功实现。
+如果没有完成此规则配置，则行为将如适用于[没有公共 IP 的独立 VM](#defaultsnat) 方案中所述。 不需要在规则中添加后端池的正常运行的侦听器或者运行状况探测就能成功实现。
 
 当负载均衡的 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共负载均衡器前端的公共 IP 地址。 Azure 使用 (SNAT) 来执行此功能。 Azure 还使用 [PAT](#pat) 来伪装公共 IP 地址后面的多个专用 IP 地址。 
 
@@ -70,11 +70,11 @@ SNAT 端口是按照[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 如果[多个公共 IP 地址与负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是出站流的候选项，并且会随机选择其中一个。  
 
-To monitor the health of outbound connections with Load Balancer Basic, you can use [Azure Monitor logs for Load Balancer](load-balancer-monitor-log.md) and [alert event logs](load-balancer-monitor-log.md#alert-event-log) to monitor for SNAT port exhaustion messages.
+若要监视负载均衡器基本版的出站连接的运行状况，可以使用[负载均衡器 Azure Monitor 日志](load-balancer-monitor-log.md)，并使用[警报事件日志](load-balancer-monitor-log.md#alert-event-log)监视 SNAT 端口耗尽消息。
 
-### <a name="defaultsnat"></a>Scenario 3: Standalone VM without a Public IP address
+### <a name="defaultsnat"></a>方案3：无公共 IP 地址的独立 VM
 
-In this scenario, the VM is not part of a public Load Balancer pool (and not part of an internal Standard Load Balancer pool) and does not have a Public IP address assigned to it. 当 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共源 IP 地址。 用于此出站流的公共 IP 地址是不可配置的，并且不会影响订阅的公共 IP 资源限制。 此公共 IP 地址不属于你，不能保留。 如果重新部署 VM、可用性集或虚拟机规模集，则将释放此公共 IP 地址并请求新的公共 IP 地址。 请不要使用此方案将 IP 地址加入允许列表。 而是使用其他两个方案之一，其中你显式声明出站方案和要用于出站连接的公共 IP 地址。
+在此场景中，VM 不是公共负载均衡器池的一部分（也不是内部标准负载均衡器池的一部分），并且没有分配给它的公共 IP 地址。 当 VM 创建出站流时，Azure 将此出站流的专用源 IP 地址转换为公共源 IP 地址。 用于此出站流的公共 IP 地址是不可配置的，并且不会影响订阅的公共 IP 资源限制。 此公共 IP 地址不属于你，不能保留。 如果重新部署 VM、可用性集或虚拟机规模集，则将释放此公共 IP 地址并请求新的公共 IP 地址。 请不要使用此方案将 IP 地址加入允许列表。 而是使用其他两个方案之一，其中你显式声明出站方案和要用于出站连接的公共 IP 地址。
 
 >[!IMPORTANT] 
 >仅当附加了内部基本负载均衡器时，此场景才适用。 如果已将内部标准负载均衡器附加到 VM，则场景 3 不适用。  除了使用内部标准负载均衡器以外，还必须显式创建[场景 1](#ilpip) 或[场景 2](#lb)。
@@ -133,9 +133,9 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 UDP SNAT 端口由与 TCP SNAT 端口不同的算法管理。  负载均衡器对 UDP 使用称为“端口受限锥形 NAT”的算法。  无论目标 IP 地址、端口如何，每个流都会使用一个 SNAT 端口。
 
-#### <a name="snat-port-reuse"></a>SNAT port reuse
+#### <a name="snat-port-reuse"></a>SNAT 端口重用
 
-Once a port has been released, the port is available for reuse as needed.  You can think of SNAT ports as a sequence from lowest to highest available for a given scenario, and the first available SNAT port is used for new connections. 
+释放某个端口以后，即可根据需要重复使用该端口。  可以将 SNAT 端口视为一个适用于给定场景的从低到高的序列，第一个可用 SNAT 端口用于新的连接。 
  
 #### <a name="exhaustion"></a>耗尽
 
@@ -154,7 +154,7 @@ Once a port has been released, the port is available for reuse as needed.  You c
 >[!IMPORTANT]
 >标准 SKU SNAT 编程依据 IP 传输协议并且派生自负载均衡规则。  如果只存在一个 TCP 负载均衡规则，则 SNAT 仅可用于 TCP。 如果只有一个 TCP 负载均衡规则并且 UDP 需要出站 SNAT，请创建从同一个前端到同一个后端池的 UDP 负载均衡规则。  这将触发针对 UDP 的 SNAT 编程。  不需要采用工作规则或运行状况探测。  无论在负载均衡规则中指定了什么传输协议，基本 SKU SNAT 都始终针对 IP 传输协议编写 SNAT 程序。
 
-Azure 向每个 VM 的 NIC IP 配置预先分配 SNAT 端口。 将 IP 配置添加到池后，将会根据后端池的大小预先分配此 IP 配置的 SNAT 端口。 创建出站流后，当流关闭或[空闲超时](#idletimeout)时，[PAT](#pat) 动态使用（不超过预先分配的限制）和释放这些端口。
+Azure 向每个 VM 的 NIC IP 配置预先分配 SNAT 端口。 将 IP 配置添加到池后，将会根据后端池的大小预先分配此 IP 配置的 SNAT 端口。 创建出站流后，当流关闭或[空闲超时](#pat)时，[PAT](#idletimeout) 动态使用（不超过预先分配的限制）和释放这些端口。
 
 下表显示了针对后端池大小层的 SNAT 端口预分配：
 
@@ -180,22 +180,22 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT 端口释放
 
-- If either server/client sends FINACK, SNAT port will be released after 240 seconds.
+- 如果服务器/客户端均发送 FINACK，则 SNAT 端口在 240 秒后释放。
 - 如果出现 RST，则 SNAT 端口在 15 秒后释放。
-- If idle timeout has been reached, port is released.
+- 如果已达到空闲超时，则会释放端口。
 
 ### <a name="udp-snat-port-release"></a>UDP SNAT 端口释放
 
-- If idle timeout has been reached, port is released.
+- 如果已达到空闲超时，则会释放端口。
 
 ## <a name="problemsolving"></a>解决问题 
 
 本部分旨在帮助解决 SNAT 耗尽的问题，以及 Azure 中的出站连接可能出现的其他情况。
 
 ### <a name="snatexhaust"></a>应对 SNAT (PAT) 端口耗尽问题
-[Ephemeral ports](#preallocatedports) used for [PAT](#pat) are an exhaustible resource, as described in [Standalone VM without a Public IP address](#defaultsnat) and [Load-balanced VM without a Public IP address](#lb).
+用于 [PAT](#preallocatedports) 的[临时端口](#pat)是可用尽的资源，如[无公共 IP 地址的独立 VM](#defaultsnat) 和[无公共 IP 地址的负载均衡 VM](#lb) 中所述。
 
-如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，观察失败的出站连接，或者支持人员通知已耗尽 SNAT 端口（[PAT](#pat) 使用的预先分配[临时端口](#preallocatedports)），则有几个常见缓解选项可供选择。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。
+如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，观察失败的出站连接，或者支持人员通知已耗尽 SNAT 端口（[PAT](#preallocatedports) 使用的预先分配[临时端口](#pat)），则有几个常见缓解选项可供选择。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。
 
 如果难以理解出站连接行为，可以使用 IP 堆栈统计 (netstat)。 或者使用数据包捕获来观察连接行为。 可以在实例的来宾 OS 中执行这些数据包捕获，或使用[网络观察程序来捕获数据包](../network-watcher/network-watcher-packet-capture-manage-portal.md)。
 
@@ -210,12 +210,12 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 连接池可能已经存在于正在使用的框架中，以开发应用程序或应用程序的配置设置。 可将连接池与连接重复使用相结合。 多个请求使用指向相同目标 IP 地址和端口的可预测固定数量的端口。 请求还可以从 TCP 事务的高效使用中受益，从而减少延迟和资源利用。 UDP 事务也能从中受益，因为管理 UDP 流数又能避免耗尽情况和管理 SNAT 端口利用率。
 
 #### <a name="retry logic"></a>修改应用程序以使用主动性较低的重试逻辑
-当用于 [PAT](#pat) 的[预先分配临时端口](#preallocatedports)耗尽或应用程序故障发生时，无衰减或回退逻辑的积极重试或暴力重试会使耗尽状况再次发生或一直持续。 使用主动性较低的重试逻辑，可以降低对临时端口的需求。 
+当用于 [PAT](#preallocatedports) 的[预先分配临时端口](#pat)耗尽或应用程序故障发生时，无衰减或回退逻辑的积极重试或暴力重试会使耗尽状况再次发生或一直持续。 使用主动性较低的重试逻辑，可以降低对临时端口的需求。 
 
 临时端口有 4 分钟的空闲超时（不可调整）。 如果重试太过积极，则消耗没有机会进行自行清除。 因此，应用程序停用事务的方式和频率对于设计至关重要。
 
-#### <a name="assignilpip"></a>Assign a Public IP to each VM
-Assigning a Public IP address changes your scenario to [Public IP to a VM](#ilpip). 用于各 VM 的公共 IP 的所有临时端口都可供 VM 使用。 (As opposed to scenarios where ephemeral ports of a public IP are shared with all the VMs associated with the respective backend pool.) There are trade-offs to consider, such as the additional cost of public IP addresses and the potential impact of whitelisting a large number of individual IP addresses.
+#### <a name="assignilpip"></a>向每个 VM 分配公共 IP
+分配公共 IP 地址会将方案更改为 [VM 的公共 IP](#ilpip)。 用于各 VM 的公共 IP 的所有临时端口都可供 VM 使用。 （而不是与所有与相应后端池关联的 Vm 共享公共 IP 的临时端口的方案。）需要考虑一些权衡，如公共 IP 地址的额外成本，以及允许列表大量单个 IP 地址的潜在影响。
 
 >[!NOTE] 
 >此选项不适用于 Web 辅助角色。
@@ -257,7 +257,7 @@ Assigning a Public IP address changes your scenario to [Public IP to a VM](#ilpi
 
 ## <a name="limitations"></a>限制
 - 在门户中配置负载均衡规则时，不能将 DisableOutboundSnat 用作选项。  请改用 REST、模板或客户端工具。
-- 由于 VNet 之前的服务和其他平台服务功能的副作用，如果仅使用内部标准负载均衡器，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此副作用，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建出站连接。 本文中所述的[默认 SNAT](#defaultsnat) 方案 3 不可用。
+- 如果仅使用内部标准负载均衡器，由于 VNet 之前的服务和其他平台服务功能的副作用，则可以访问没有 VNet 和其他 Microsoft 平台服务的辅助角色。 请勿依赖此副作用，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 在仅使用内部标准负载均衡器时，必须始终假定需要明确创建出站连接。 本文中所述的[默认 SNAT](#defaultsnat) 方案 3 不可用。
 
 ## <a name="next-steps"></a>后续步骤
 

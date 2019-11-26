@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 管理 Azure DNS 中的 DNS 记录 | Microsoft 文档
-description: 当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。
+description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。
 services: dns
 documentationcenter: na
 author: asudbring
@@ -32,7 +32,7 @@ ms.locfileid: "74211639"
 
 本文中的示例假设读者[已安装 Azure CLI、已登录，并且已创建一个 DNS 区域](dns-operations-dnszones-cli.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74211639"
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a, srv, txt, etc.) For help, see `az network dns record-set --help`.
+请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a、srv、txt 等）有关帮助，请参阅 `az network dns record-set --help`。
 
 创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是*相对*名称，这意味着它必须排除区域名称。
 
@@ -82,7 +82,7 @@ az network dns record-set a create --resource-group myresourcegroup --zone-name 
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-创建空记录集后，可根据[创建 DNS 记录](#create-a-dns-record)中所述，使用 `azure network dns record-set <record-type> add-record` 添加记录。
+创建空记录集后，可根据`azure network dns record-set <record-type> add-record`创建 DNS 记录[中所述，使用 ](#create-a-dns-record) 添加记录。
 
 ## <a name="create-records-of-other-types"></a>创建其他类型的记录
 

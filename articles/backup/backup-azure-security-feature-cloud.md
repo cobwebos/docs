@@ -162,9 +162,9 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 如果保管库中的备份项处于软删除状态，则无法删除恢复服务保管库。 删除操作后的14天内，将永久删除软删除的项。 如果你不能等待14天，则[禁用软删除](#disabling-soft-delete)，删除软删除项，并再次将其删除以永久删除。 确保不存在受保护的项并且没有软删除项，可以删除保管库。  
 
-#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>删除后，是否可以删除早于14天软删除期的数据？
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在删除后的 14 天软删除期之前删除数据？
 
-不。 不能强制删除软删除项，14天后会自动删除这些项。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待14天，然后再在 VM 上执行任何其他操作。  不会向软删除的项目收费。  如果需要在14天内将标记为软删除的 Vm 重新保护到新的保管库，请联系 Microsoft 支持部门。
+否。 无法强制删除软删除项，14 天后会自动删除这些项。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待 14 天，然后再在 VM 上执行任何其他操作。  不会对软删除项收费。  如果需要在14天内将标记为软删除的 Vm 重新保护到新的保管库，请联系 Microsoft 支持部门。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中执行软删除操作？
 
@@ -172,7 +172,7 @@ Azure 存储在将数据保存到云时会自动加密数据。 加密可以保�
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>其他云工作负荷（例如 Azure VM 中的 SQL Server，以及 Azure VM 中的 SAP HANA）是否支持软删除？
 
-不。 目前只有 Azure 虚拟机支持软删除。
+否。 目前只有 Azure 虚拟机支持软删除。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录 | Microsoft Docs
-description: 当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。
+description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。
 services: dns
 documentationcenter: na
 author: asudbring
@@ -35,7 +35,7 @@ ms.locfileid: "74211693"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
@@ -238,7 +238,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `Add-AzDnsRecordConfig` 的 `-Ipv4Address` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
+上述示例说明了如何将“A”记录添加到现有的类型“A”记录集。 可以使用类似操作顺序向其他类型的记录集添加记录，将 `-Ipv4Address` 的 `Add-AzDnsRecordConfig` 参数替换为特定于每个记录类型的其他参数。 每个记录类型的参数与 `New-AzDnsRecordConfig` cmdlet 的参数相同，如上面的其他记录类型示例所示。
 
 类型为“CNAME”或“SOA”的记录集不能包含多个记录。 此约束源自 DNS 标准， 不是 Azure DNS 的限制。
 
@@ -388,7 +388,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则每个 cmdlet 都会提示用户进行确认。 由于 `$ConfirmPreference` 的默认值为 `High`，因此在使用默认的 PowerShell 设置时不会发出这些提示。
 
-可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。 
+可以使用 `$ConfirmPreference` 参数重写当前的 `-Confirm` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。 
 
 有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](/powershell/module/microsoft.powershell.core/about/about_preference_variables)（关于首选项变量）。
 

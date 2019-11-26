@@ -18,7 +18,7 @@ ms.locfileid: "74186522"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 发布
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑难解答指南</a> 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">故障排除指南</a> 
 | <a href="https://github.com/Azure/service-fabric-issues" target="blank">问题跟踪</a> 
 | <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支持选项</a> 
 | <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支持的版本</a> 

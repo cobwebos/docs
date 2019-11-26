@@ -1,5 +1,5 @@
 ---
-title: 'Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
+title: 优化性能：风暴，HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
 description: Azure Data Lake Storage Gen2 Storm 性能优化指南
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -15,14 +15,14 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74327902"
 ---
-# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Tune performance: Storm, HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>优化性能：风暴，HDInsight & Azure Data Lake Storage Gen2
 
 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素。 例如，必须了解 Spout 和 Bolt 的工作特征（这种工作是 I/O 密集型还是内存密集型的）。 本文介绍一系列性能优化指南，包括如何排查常见问题。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure Data Lake Storage Gen2 帐户。 For instructions on how to create one, see [Quickstart: Create a storage account for analytic](data-lake-storage-quickstart-create-account.md).
+* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure Data Lake Storage Gen2 帐户。 有关如何创建的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
 * 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen2 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   
@@ -51,7 +51,7 @@ ms.locfileid: "74327902"
 
 使用 Data Lake Storage Gen2 时，如果采取以下措施，可以获得最佳性能：
 * 将小规模的追加操作联合成更大的大小。
-* 尽可能地发出大量并发请求。 由于每个 Bolt 线程执行阻塞读取，因此，最好是将每个核心的线程数限制在 8-12 的范围内。 这可以让 NIC 和 CPU 得到充分利用。 更大的 VM 支持更多的并发请求。  
+* 尽可能多地发出并发请求。 由于每个 Bolt 线程执行阻塞读取，因此，最好是将每个核心的线程数限制在 8-12 的范围内。 这可以让 NIC 和 CPU 得到充分利用。 更大的 VM 支持更多的并发请求。  
 
 ### <a name="example-topology"></a>示例拓扑
 
@@ -82,7 +82,7 @@ ms.locfileid: "74327902"
 
 默认的 Data Lake Storage Gen2 Storm Bolt 提供了一个可用于优化此参数的大小同步策略参数 (fileBufferSize)。
 
-在 I/O 密集型拓扑中，最好是让每个 Bolt 线程将数据写入其自身的文件，并设置文件轮转策略 (fileRotationSize)。 当文件达到特定的大小时，系统会自动刷新流并向其写入新文件。 用于轮转的建议文件大小为 1 GB。
+在 I/O 密集型拓扑中，最好是让每个 Bolt 线程将数据写入其自身的文件，并设置文件轮转策略 (fileRotationSize)。 当文件达到特定的大小时，系统会自动刷新流并写入新文件。 用于轮转的建议文件大小为 1 GB。
 
 ## <a name="monitor-your-topology-in-storm"></a>在 Storm 中监视拓扑  
 运行拓扑时，可在 Storm 用户界面中对它进行监视。 下面是要查看的主要参数：
@@ -99,9 +99,9 @@ ms.locfileid: "74327902"
 
 ## <a name="troubleshoot-common-problems"></a>排查常见问题
 下面是一些常见的故障排除方案。
-* **Many tuples are timing out.** Look at each node in the topology to determine where the bottleneck is. 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
+* **许多元组超时。** 查看拓扑中的每个节点以确定瓶颈的位置。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
 
-* **进程执行延迟总计较高，但 Bolt 进程延迟较低。** 此情况下，可能不会快速确认元组。 请检查是否有足够数量的确认器。 另一种可能是元组在队列中等待 Bolt 处理的时间太长。 请减小最大 Spout 挂起时间。
+* **进程执行延迟总计较高，但 Bolt 进程延迟较低。** 此情况下，可能不会快速确认元组。 请检查是否有足够数量的确认器。 另一种可能是元组在队列中等待 Bolt 处理的时间太长。 请减小最大 Spout 挂起数。
 
 * **Bolt 执行延迟较高。** 这表示 Bolt 的 execute() 方法花费的时间太长。 请优化代码，或检查写入大小并刷新行为。
 
@@ -110,7 +110,7 @@ ms.locfileid: "74327902"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. In **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, change **&lt;root level="info"&gt;** to **&lt;root level="debug"&gt;** . 重新启动所有节点/服务使配置生效。
+1. 在“Ambari” **“Storm”** “配置” > “高级 storm-worker-log4j”中，将root level="info" > **更改为** > root level="debug"。 **&lt;&gt;** **&lt;&gt;** 重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen2 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

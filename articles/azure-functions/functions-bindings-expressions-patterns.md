@@ -1,6 +1,6 @@
 ---
-title: Azure Functions bindings expressions and patterns
-description: Learn to create different Azure Functions binding expressions based on common patterns.
+title: Azure Functions 绑定表达式和模式
+description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
@@ -12,9 +12,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227229"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions binding expression patterns
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
-One of the most powerful features of [triggers and bindings](./functions-triggers-bindings.md) is *binding expressions*. 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
+[触发器和绑定](./functions-triggers-bindings.md)的最强大功能之一是*绑定表达式*。 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
 
 大多数表达式的标识方式是将其包装在大括号中。 例如，在队列触发器函数中，`{queueTrigger}` 解析为队列消息文本。 如果 Blob 输出绑定的 `path` 属性为 `container/{queueTrigger}`，并且函数由队列消息 `HelloWorld` 触发，则创建名为 `HelloWorld` 的 Blob。
 
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger file name
+## <a name="trigger-file-name"></a>触发器文件名
 
 Blob 触发器的 `path` 可以是一种模式，用于引用其他绑定和函数代码中的触发 Blob 的名称。 该模式还可包含筛选条件，用于指定哪些 Blob 可以触发函数调用。
 
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 *function.json* 示例中的 `path` 值相同： 
+类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 `path`function.json*示例中的* 值相同： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -142,12 +142,12 @@ public static void Run(
 * QueueTrigger - 如果字符串有效，将触发消息内容
 * DequeueCount
 * ExpirationTime
-* ID
+* Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `queueTrigger` 属性中使用 `path` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -169,7 +169,7 @@ public static void Run(
 
 相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”选项卡的绑定配置区域下方的“文档”部分中，还提供了文档。  
 
-## <a name="json-payloads"></a>JSON payloads
+## <a name="json-payloads"></a>JSON 有效负载
 
 当触发器有效负载为 JSON 时，可以在相同的函数和函数代码中，引用其他绑定的配置中的相应属性。
 
@@ -256,7 +256,7 @@ module.exports = function (context, info) {
 }
 ```
 
-可以直接以 `BlobName.FileName` 的形式引用 `FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
+可以直接以 `FileName` 的形式引用 `BlobName.FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
@@ -307,4 +307,4 @@ public class BlobName
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [Using the Azure Function return value](./functions-bindings-return-value.md)
+> [使用 Azure 函数返回值](./functions-bindings-return-value.md)

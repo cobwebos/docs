@@ -11,7 +11,7 @@ ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 09a1b8e54726accf705515bf077f6a599f0f9b78
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74266919"

@@ -4339,7 +4339,7 @@ ms.locfileid: "74185728"
 > | 操作 | microsoft.operationalinsights/workspaces/rules/read | 获取所有警报规则。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/delete | 删除保存的搜索查询 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
-> | 操作 | microsoft.operationalinsights/workspaces/savedsearches/results/read | 获取保存的搜索结果。 已放弃 |
+> | 操作 | microsoft.operationalinsights/workspaces/savedsearches/results/read | 获取保存的搜索结果。 已弃用 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/delete | 删除计划的搜索操作。 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/read | 获取计划的搜索操作。 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/write | 创建或更新计划的搜索操作。 |

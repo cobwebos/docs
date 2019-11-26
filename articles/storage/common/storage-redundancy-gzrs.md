@@ -10,7 +10,7 @@ ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
 ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/19/2019
 ms.locfileid: "74186601"
@@ -137,20 +137,20 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 1. 选择 "**新建支持请求**"。
 2. 根据帐户信息填写“基本信息”。 在 "**服务**" 部分中，选择 "**存储帐户管理**" 并指定要迁移的帐户。
-3. 选择“**下一步**”。
+3. 选择“下一步”。
 4. 在“问题”部分指定以下值：
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
     - **标题**：键入描述性标题，例如 **（RA-） GZRS 帐户迁移**。
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 GZRS。" 要从 \_\_ 区域中的 [LRS，RA-GRS] 迁移到 GZRS。 "
-5. 选择“**下一步**”。
+5. 选择“下一步”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
 7. 选择“创建”。
 
 支持代表将与你联系以提供帮助。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

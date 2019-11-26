@@ -1,6 +1,6 @@
 ---
-title: Azure Functions error handling guidance
-description: Learn to handle errors in Azure Functions with links to specific binding errors.
+title: Azure Functions 错误处理指南
+description: 了解如何处理 Azure Functions 中的错误，并提供指向特定绑定错误的链接。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
@@ -14,9 +14,9 @@ ms.locfileid: "74227322"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
 
-Handling errors in Azure Functions is important to avoid lost data, missed events, and to monitor the health of your application.
+处理 Azure Functions 中的错误对于避免丢失数据、错过事件以及监视应用程序的运行状况非常重要。
 
-This article describes general strategies for error handling along with links to binding-specific errors.
+本文介绍了用于错误处理的常规策略，并提供了指向绑定特定错误的链接。
 
 ## <a name="handling-errors"></a>处理错误
 
@@ -24,7 +24,7 @@ This article describes general strategies for error handling along with links to
 
 ## <a name="binding-error-codes"></a>绑定错误代码
 
-When integrating with Azure services, errors may originate from the APIs of the underlying services. Information relating to binding-specific errors is available in the **Exceptions and return codes** section of the following articles:
+与 Azure 服务集成时，错误可能源自底层服务的 API。 以下文章的**异常和返回代码**部分中提供了与特定于绑定的错误有关的信息：
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

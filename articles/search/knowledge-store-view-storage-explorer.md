@@ -1,7 +1,7 @@
 ---
-title: View a knowledge store (preview) with Storage Explorer
+title: 使用存储资源管理器查看知识 store （预览版）
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 门户的存储资源管理器查看和分析 Azure 认知搜索知识存储。 knowledge store is currently in public preview.
+description: 使用 Azure 门户的存储资源管理器查看和分析 Azure 认知搜索知识存储。 知识存储目前为公共预览版。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -20,17 +20,17 @@ ms.locfileid: "74406551"
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-In this article, you'll learn by example how to connect to and explore a knowledge store using Storage Explorer in the Azure portal.
+在本文中，你将学习如何使用 Azure 门户中的存储资源管理器连接到知识库并进行浏览。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-+ Follow the steps in [Create a knowledge store in Azure portal](knowledge-store-create-portal.md) or [Create an Azure Cognitive Search knowledge store by using REST](knowledge-store-create-rest.md) to create the sample knowledge store used in this walkthrough.
++ 按照在 Azure 门户中[创建知识库](knowledge-store-create-portal.md)中的步骤或[通过使用 REST 创建 Azure 认知搜索知识库](knowledge-store-create-rest.md)中的步骤创建本演练中使用的示例知识存储。
 
 + 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
 
-## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>View, edit, and query a knowledge store in Storage Explorer
+## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>查看、编辑和查询中的知识库存储资源管理器
 
-1. In the Azure portal, [open the Storage account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) that you used to create the knowledge store.
+1. 在 Azure 门户中，打开用于创建知识库的[存储帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。
 
 1. 在存储帐户的左侧导航窗格中，单击“存储资源管理器”。
 
@@ -58,8 +58,8 @@ In this article, you'll learn by example how to connect to and explore a knowled
 
 ## <a name="next-steps"></a>后续步骤
 
-Connect this knowledge store to Power BI for deeper analysis, or move forward with code, using the REST API and Postman to create a different knowledge store.
+将此知识库连接到 Power BI，以便进行更深入的分析，或继续使用 REST API 和 Postman 创建不同的知识库。
 
 > [!div class="nextstepaction"]
-> [Connect with Power BI](knowledge-store-connect-power-bi.md)
-> [Create a knowledge store in REST](knowledge-store-howto.md)
+> [与 Power BI 连接](knowledge-store-connect-power-bi.md)
+> [在 REST 中创建知识库](knowledge-store-howto.md)

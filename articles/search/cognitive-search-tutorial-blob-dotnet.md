@@ -69,7 +69,7 @@ ms.locfileid: "74185694"
 
 1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。
 
-1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可以将“公共访问级别”设为任何有效值。 本教程假定容器名称为“basic-demo-data-pr”。
+1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可将“公共访问级别”设为任何有效值。 本教程假定容器名称为“basic-demo-data-pr”。
 
 1. 打开已创建的容器，并选择命令栏中的“上传”，以上传[样本数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。
 

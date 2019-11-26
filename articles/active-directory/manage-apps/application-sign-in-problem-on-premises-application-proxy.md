@@ -1,5 +1,5 @@
 ---
-title: Problem signing in to on-premises app using Azure AD app proxy | Microsoft Docs
+title: 使用 Azure AD 应用代理登录到本地应用时出现问题 |Microsoft Docs
 description: 无法使用 Azure AD 应用程序代理登录与 Azure AD 集成的本地应用程序时所遇到的常见问题疑难解答
 services: active-directory
 documentationcenter: ''

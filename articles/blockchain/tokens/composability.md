@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens composability
-description: Azure Blockchain Tokens composability provides flexibility to create tokens for advanced scenarios.
+title: Azure 区块链令牌可组合性
+description: Azure 区块链令牌可组合性为高级方案提供创建令牌的灵活性。
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,74 +11,74 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325119"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens composability
+# <a name="azure-blockchain-tokens-composability"></a>Azure 区块链令牌可组合性
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Token composability provides flexibility to create tokens for advanced scenarios. You may have a complex scenario that cannot be implemented using the [four pre-built token templates](templates.md#base-token-types). Token composability allows you to design your own token templates by adding or removing defined behaviors to build your own token template. When creating a new token template, Azure Blockchain Tokens verifies all token grammar rules. Composed templates are saved in Azure Blockchain Tokens service for issuing on connected blockchain networks.
+令牌可组合性为高级方案提供创建令牌的灵活性。 可能有一个复杂的方案，不能使用[四个预建的标记模板](templates.md#base-token-types)实现。 令牌可组合性使你可以通过添加或删除定义的行为构建你自己的令牌模板来设计自己的令牌模板。 创建新的令牌模板时，Azure 区块链令牌将验证所有令牌语法规则。 组合模板保存在 Azure 区块链令牌服务中，用于在连接的区块链网络上发出。
 
-You can use the [token behaviors](templates.md#token-behaviors) in the following sections to design your token template.
+您可以使用以下部分中的[令牌行为](templates.md#token-behaviors)设计标记模板。
 
-## <a name="burnable-b"></a>Burnable (b)
+## <a name="burnable-b"></a>Burnable （b）
 
-Ability to remove the tokens from supply.
+能够从提供中删除令牌。
 
-For example, when you redeem online credit card points for a gift card, the credit card points are burned.
+例如，当你兑换礼品卡的联机信用卡点时，信用卡点将被刻录。
 
-## <a name="delegable-g"></a>Delegable (g)
+## <a name="delegable-g"></a>可委派（g）
 
-Ability to delegate the actions taken on the token that you own.
+能够委托对所拥有的令牌执行的操作。
 
-The delegate can perform actions as the owner of the token. For example, you could use a delegable token to implement a vote. A delegable token allows the vote token owner to have someone else vote on their behalf.
+委托可以作为令牌所有者执行操作。 例如，可以使用可委派令牌来实现投票。 可委派令牌允许投票令牌所有者让其他人代表他们投票。
 
-## <a name="logable-l"></a>Logable (l)
+## <a name="logable-l"></a>Logable （l）
 
-Ability to log.
+记录的功能。
 
-For example, you can issue a logable token for a movie distribution to each theater showing a specific movie. For the movie to be played, the showing must log a transaction for each showing because royalty payouts are per showing during the movie's release run. The actors build can use the movie tokens to validate payouts per movie showing per theater in the distribution.
+例如，可以向每个显示特定电影的剧院发出电影分发的 logable 令牌。 对于要播放的电影，显示的必须记录每个显示的交易，因为版税付款是在电影的发行版期间显示的。 执行组件生成可以使用影片令牌来验证每个电影在分发中的付款。
 
-## <a name="mint-able-m"></a>Mint-able (m)
+## <a name="mint-able-m"></a>Mint （m）
 
-Ability to mint additional tokens for the token class. The minter role includes the mintable behavior.
+能够 mint 令牌类的其他令牌。 Minter 角色包括 mintable 行为。
 
-For example, a retail company, which wants to implement a loyalty program can use mintable tokens for their loyalty program. They can mint additional loyalty points for their customers as their customer base grows.  
+例如，要实现会员计划的零售公司可以将 mintable 令牌用于其会员计划。 当客户群增长时，他们可以为其客户 mint 额外的积分。  
 
-## <a name="non-subdividable-or-whole-d"></a>Non-subdividable or whole (~d)
+## <a name="non-subdividable-or-whole-d"></a>非 subdividable 或整体（~ d）
 
-Restriction to prevent a token from being divided into smaller parts.
+限制以防止将令牌划分为较小的部分。
 
-For example, a single art painting cannot be subdivided into multiple smaller parts. 
+例如，单个艺术绘图不能细分为多个较小的部分。 
 
-## <a name="non-transferable-t"></a>Non-transferable (~t)
+## <a name="non-transferable-t"></a>不可转让（~ t）
 
-Restriction to prevent a change of ownership from the initial token owner.
+限制以防止初始令牌所有者更改所有权。
 
-For example, a university diploma is a non-transferable token. Once a diploma is given to a graduate, it cannot be transferred from the graduate to another person.
+例如，大学文凭是不可转让的令牌。 将文凭提供给毕业后，不能将其从毕业生传输到其他人。
 
-## <a name="roles-r"></a>Roles (r)
+## <a name="roles-r"></a>角色（r）
 
-Ability to define roles within the token template class for specific behaviors.
+能够在令牌模板类中为特定行为定义角色。
 
-You can provide a list of role names that a token supports at the token creation time. When roles are specified, the user can assign roles to these behaviors. Currently, only the minter role is supported.
+可以提供令牌创建时令牌支持的角色名称列表。 指定角色后，用户可以将角色分配给这些行为。 目前仅支持 minter 角色。
 
-## <a name="singleton-s"></a>Singleton (s)
+## <a name="singleton-s"></a>单一实例
 
-Restriction to allow a supply of one token.
+允许一个令牌的提供的限制。
 
-For example, a museum artifact is a singleton token. Museum artifacts are unique. A token representing an artifact only has a single item in the supply.
+例如，博物馆项目是单独标记。 博物馆项目是唯一的。 表示项目的令牌仅在提供中具有单个项目。
 
-## <a name="subdividable-d"></a>Subdividable (d)
+## <a name="subdividable-d"></a>Subdividable （d）
 
-Ability to divide a token into smaller parts.
+能够将令牌划分为较小的部分。
 
-For example, a dollar can be subdivided into cents.
+例如，可以将美元细分为美分。
 
-## <a name="transferable-t"></a>Transferable (t)
+## <a name="transferable-t"></a>可转换（t）
 
-Ability to transfer ownership of the token.
+能够转让令牌的所有权。
 
-For example, a property title is a transferable token, which can be transferred from one person to another when the property is sold.
+例如，属性标题是一个可转让标记，在销售属性时，可以将其从一个人传输到另一个。
 
 ## <a name="next-steps"></a>后续步骤
 
-Learn about [Azure Blockchain Tokens account management](account-management.md).
+了解[Azure 区块链令牌帐户管理](account-management.md)。

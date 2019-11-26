@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML model management'
+title: MLOps： ML 模型管理
 titleSuffix: Azure Machine Learning
-description: 'Learn about model management with Azure Machine Learning (MLOps). Deploy, manage, and monitor your models to continuously improve them. '
+description: '了解 Azure 机器学习（MLOps）的模型管理。 部署、管理和监视模型，以便不断改善它们。 '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,151 +18,151 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420067"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model management, deployment, and monitoring with Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
-In this article, learn about how to use Azure Machine Learning to manage the lifecycle of your models. Azure Machine Learning uses a Machine Learning Operations (MLOps) approach. MLOps improves the quality and consistency of your machine learning solutions. 
+本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作（MLOps）方法。 MLOps 提高了机器学习解决方案的质量和一致性。 
 
-Azure Machine Learning provides the following MLOps capabilities:
+Azure 机器学习提供以下 MLOps 功能：
 
-- **Create reproducible ML pipelines**. Pipelines allow you to define repeatable and reusable steps for your data preparation, training, and scoring processes.
-- **Register, package, and deploy models from anywhere** and track associated metadata required to use the model.
-- **Capture the governance data required for capturing the end-to-end ML lifecycle**, including who is publishing models, why changes are being made, and when models were deployed or used in production.
-- **Notify and alert on events in the ML lifecycle** such as experiment completion, model registration, model deployment, and data drift detection.
-- **Monitor ML applications for operational and ML-related issues**. Compare model inputs between training and inference, explore model-specific metrics, and provide monitoring and alerts on your ML infrastructure.
-- **Automate the end-to-end ML lifecycle with Azure Machine Learning and Azure DevOps** to frequently update models, test new models, and continuously roll out new ML models alongside your other applications and services.
+- **创建可重复的 ML 管道**。 管道使你可以为数据准备、定型和评分过程定义可重复和可重复使用的步骤。
+- **从任何位置注册、打包和部署模型**，并跟踪使用该模型所需的相关元数据。
+- **捕获捕获端到端 ML 生命周期所需的管理数据**，包括发布模型的人员、进行更改的原因以及在生产环境中部署或使用模型的时间。
+- **通知和警报 ML 生命周期中的事件**，例如试验完成、模型注册、模型部署和数据偏差检测。
+- **监视 ml 应用程序的操作和 ml 相关的问题**。 比较定型与推理之间的模型输入，探索特定于模型的指标，并提供有关 ML 基础结构的监视和警报。
+- **通过 Azure 机器学习和 Azure DevOps 自动执行端到端 ML 生命周期**，以频繁更新模型、测试新模型，并随其他应用程序和服务一起不断推出新的 ML 模型。
 
-## <a name="create-reproducible-ml-pipelines"></a>Create reproducible ML pipelines
+## <a name="create-reproducible-ml-pipelines"></a>创建可重复的 ML 管道
 
-Use ML pipelines from Azure Machine Learning to stitch together all of the steps involved in your model training process.
+使用 Azure 机器学习的 ML 管道将模型定型过程中涉及的所有步骤汇聚在一起。
 
-An ML pipeline can contain steps from data preparation to feature extraction to hyperparameter tuning to model evaluation. For more information, see [ML pipelines](concept-ml-pipelines.md).
+ML 管道可包含从数据准备到功能提取到超参数优化到模型评估的步骤。 有关详细信息，请参阅[ML 管道](concept-ml-pipelines.md)。
 
-## <a name="register-package-and-deploy-models-from-anywhere"></a>Register, package, and deploy models from anywhere
+## <a name="register-package-and-deploy-models-from-anywhere"></a>从任何位置注册、打包和部署模型
 
-### <a name="register-and-track-ml-models"></a>Register and track ML models
+### <a name="register-and-track-ml-models"></a>注册和跟踪 ML 模型
 
 通过模型注册，可在 Azure 云的工作区中存储模型并确定模型版本。 使用模型注册表，可轻松组织和跟踪定型的模型。
 
 > [!TIP]
-> A registered model is a logical container for one or more files that make up your model. For example, if you have a model that is stored in multiple files, you can register them as a single model in your Azure Machine Learning workspace. After registration, you can then download or deploy the registered model and receive all the files that were registered.
+> 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果您有一个存储在多个文件中的模型，则可以将它们作为一个模型注册到 Azure 机器学习工作区中。 注册后，可以下载或部署已注册的模型，并接收已注册的所有文件。
 
-按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 Additional metadata tags can be provided during registration. These tags are then used when searching for a model. Azure Machine Learning supports any model that can be loaded using Python 3.5.2 or higher.
+按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 注册期间可以提供其他元数据标记。 然后在搜索模型时使用这些标记。 Azure 机器学习支持可使用 Python 3.5.2 或更高版本加载的任何模型。
 
 > [!TIP]
-> You can also register models trained outside Azure Machine Learning.
+> 你还可以注册在 Azure 机器学习之外训练的模型。
 
-You can't delete a registered model that is being used in an active deployment.
+不能删除在活动部署中使用的已注册模型。
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)的注册模型部分。
 
-### <a name="package-and-debug-models"></a>Package and debug models
+### <a name="package-and-debug-models"></a>包和调试模型
 
-Before deploying a model into production, it is packaged into a Docker image. In most cases, image creation happens automatically in the background during deployment. You can manually specify the image.
+在将模型部署到生产环境之前，会将其打包到 Docker 映像中。 在大多数情况下，映像创建会在部署期间自动执行。 可以手动指定映像。
 
-If you run into problems with the deployment, you can deploy on your local development environment for troubleshooting and debugging.
+如果遇到部署问题，可以在本地开发环境中进行部署，以便进行故障排除和调试。
 
-For more information, see [Deploy models](how-to-deploy-and-where.md#registermodel) and [Troubleshooting deployments](how-to-troubleshoot-deployment.md).
+有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)和[排查部署问题](how-to-troubleshoot-deployment.md)。
 
-### <a name="validate-and-profile-models"></a>Validate and profile models
+### <a name="validate-and-profile-models"></a>验证和分析模型
 
-Azure Machine Learning can use profiling to determine the ideal CPU and memory settings to use when deploying your model. Model validation happens as part of this process, using data that you supply for the profiling process.
+Azure 机器学习可以使用分析来确定部署模型时要使用的理想 CPU 和内存设置。 在此过程中，将使用为分析过程提供的数据来进行模型验证。
 
-### <a name="convert-and-optimize-models"></a>Convert and optimize models
+### <a name="convert-and-optimize-models"></a>转换和优化模型
 
-Converting your model to [Open Neural Network Exchange](https://onnx.ai) (ONNX) may improve performance. On average, converting to ONNX can yield a 2x performance increase.
+将模型转换为[开放式神经网络交换](https://onnx.ai)（ONNX）可以提高性能。 平均情况下，转换为 ONNX 可能会提高性能的2倍。
 
-For more information on ONNX with Azure Machine Learning, see the [Create and accelerate ML models](concept-onnx.md) article.
+有关 ONNX 与 Azure 机器学习的详细信息，请参阅[创建和加速 ML 模型](concept-onnx.md)一文。
 
-### <a name="use-models"></a>Use models
+### <a name="use-models"></a>使用模型
 
-Trained machine learning models are deployed as web services in the cloud or locally. You can also deploy models to Azure IoT Edge devices. Deployments use CPU, GPU, or field-programmable gate arrays (FPGA) for inferencing. You can also use models from Power BI.
+训练的机器学习模型作为 web 服务部署到云中或本地。 你还可以将模型部署到 Azure IoT Edge 设备。 部署将 CPU、GPU 或现场可编程入口阵列（FPGA）用于推断。 你还可以使用 Power BI 中的模型。
 
-When using a model as a web service or IoT Edge device, you provide the following items:
+使用模型作为 web 服务或 IoT Edge 设备时，需要提供以下项：
 
-* The model(s) that are used to score data submitted to the service/device.
-* An entry script. This script accepts requests, uses the model(s) to score the data, and return a response.
-* A conda environment file that describes the dependencies required by the model(s) and entry script.
-* Any additional assets such as text, data, etc. that are required by the model(s) and entry script.
+* 用于对提交到服务/设备的数据进行评分的模型。
+* 一个项脚本。 此脚本接受请求，使用模型对数据进行评分并返回响应。
+* Conda 环境文件，用于描述模型和条目脚本所需的依赖项。
+* 模型和输入脚本所需的任何其他资产，如文本、数据等。
 
-You also provide the configuration of the target deployment platform. For example, the VM family type, available memory, and number of cores when deploying to Azure Kubernetes Service.
+还提供目标部署平台的配置。 例如，在部署到 Azure Kubernetes 服务时，VM 家族类型、可用内存和核心数。
 
-When the image is created, components required by Azure Machine Learning are also added. For example, assets needed to run the web service and interact with IoT Edge.
+创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 web 服务并与 IoT Edge 进行交互所需的资产。
 
 #### <a name="batch-scoring"></a>批处理评分
-Batch scoring is supported through ML pipelines. For more information, see [Batch predictions on big data](how-to-run-batch-predictions.md).
+通过 ML 管道支持批处理评分。 有关详细信息，请参阅[大数据上的批处理预测](how-to-run-batch-predictions.md)。
 
-#### <a name="real-time-web-services"></a>Real-time web services
+#### <a name="real-time-web-services"></a>实时 web 服务
 
-You can use your models in **web services** with the following compute targets:
+您可以在**web 服务**中使用您的模型以及以下计算目标：
 
 * Azure 容器实例
 * Azure Kubernetes 服务
-* Local development environment
+* 本地开发环境
 
-To deploy the model as a web service, you must provide the following items:
+若要将模型部署为 web 服务，必须提供以下项：
 
-* The model or ensemble of models.
-* Dependencies required to use the model. For example, a script that accepts requests and invokes the model, conda dependencies, etc.
-* Deployment configuration that describes how and where to deploy the model.
+* 模型的模型或系综。
+* 使用模型所需的依赖项。 例如，接受请求并调用模型的脚本、conda 依赖项等。
+* 描述如何以及在何处部署模型的部署配置。
 
-For more information, see [Deploy models](how-to-deploy-and-where.md).
+有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
-#### <a name="iot-edge-devices"></a>IoT Edge devices
+#### <a name="iot-edge-devices"></a>IoT Edge 设备
 
-You can use models with IoT devices through **Azure IoT Edge modules**. IoT Edge modules are deployed to a hardware device, which enables inference, or model scoring, on the device.
+可以通过**Azure IoT Edge 模块**将模型与 IoT 设备一起使用。 IoT Edge 模块部署到硬件设备上，该设备在设备上启用推理或模型评分。
 
-For more information, see [Deploy models](how-to-deploy-and-where.md).
+有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
 ### <a name="analytics"></a>分析
 
-Microsoft Power BI supports using machine learning models for data analytics. For more information, see [Azure Machine Learning integration in Power BI (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详细信息，请参阅[Power BI （预览版）中的 Azure 机器学习集成](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 
-## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Capture the governance data required for capturing the end-to-end ML lifecycle
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获捕获端到端 ML 生命周期所需的管理数据
 
-Azure ML gives you the capability to track the end-to-end audit trail of all of your ML assets. 具体如下：
+Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是在下列情况下：
 
-- Azure ML [integrates with Git](how-to-set-up-training-targets.md#gitintegration) to track information on which repository / branch / commit your code came from.
-- [Azure ML Datasets](how-to-create-register-datasets.md) help you track, profile, and version data. 
-- Azure ML Run history stores a snapshot of the code, data, and compute used to train a model.
-- The Azure ML Model Registry captures all of the metadata associated with your model (which experiment trained it, where it is being deployed, if its deployments are healthy).
+- Azure ML[与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，以跟踪有关代码来源的存储库/分支/提交的信息。
+- [AZURE ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析和版本数据。 
+- Azure ML 运行历史记录存储用于定型模型的代码、数据和计算的快照。
+- Azure ML 模型注册表捕获与模型关联的所有元数据（这会对它进行定型，以便在部署时进行定型）。
 
-## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Notify, automate, and alert on events in the ML lifecycle
-Azure ML publishes key events to Azure EventGrid, which can be used to notify and automate on events in the ML lifecycle. For more information, please see [this document](how-to-use-event-grid.md).
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知、自动执行和警报
+Azure ML 将关键事件发布到 Azure EventGrid，可用于在 ML 生命周期中通知和自动执行事件。 有关详细信息，请参阅[此文档](how-to-use-event-grid.md)。
 
-## <a name="monitor-for-operational--ml-issues"></a>Monitor for operational & ML issues
+## <a name="monitor-for-operational--ml-issues"></a>监视操作 & ML 问题
 
-Monitoring enables you to understand what data is being sent to your model, and the predictions that it returns.
+利用监视功能，您可以了解要发送到您的模型的数据以及返回的预测。
 
-This information helps you understand how your model is being used. The collected input data may also be useful in training future versions of the model.
+此信息可帮助你了解模型的使用方式。 收集的输入数据在训练模型的未来版本时也可能会很有用。
 
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
 
 
-## <a name="automate-the-ml-lifecycle"></a>Automate the ML lifecycle 
+## <a name="automate-the-ml-lifecycle"></a>自动执行 ML 生命周期 
 
-You can use GitHub and Azure Pipelines to create a continuous integration process that trains a model. In a typical scenario, when a Data Scientist checks a change into the Git repo for a project, the Azure Pipeline will start a training run. The results of the run can then be inspected to see the performance characteristics of the trained model. You can also create a pipeline that deploys the model as a web service.
+您可以使用 GitHub 和 Azure Pipelines 来创建用于训练模型的持续集成过程。 在典型方案中，当数据科研人员将更改签入项目的 Git 存储库时，Azure 管道将开始训练运行。 然后，可以检查运行的结果，以查看定型模型的性能特征。 还可以创建一个管道，用于将模型部署为 web 服务。
 
-The [Azure Machine Learning extension](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml) makes it easier to work with Azure Pipelines. It provides the following enhancements to Azure Pipelines:
+使用[Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml)可以更轻松地使用 Azure Pipelines。 它为 Azure Pipelines 提供了以下增强功能：
 
-* Enables workspace selection when defining a service connection.
-* Enables release pipelines to be triggered by trained models created in a training pipeline.
+* 定义服务连接时启用工作区选择。
+* 允许在定型管道中创建的定型模型触发发布管道。
 
-For more information on using Azure Pipelines with Azure Machine Learning, see the [Continuous integration and deployment of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) article and the [Azure Machine Learning MLOps](https://aka.ms/mlops) repository.
+有关将 Azure Pipelines 与 Azure 机器学习配合使用的详细信息，请参阅使用 Azure Pipelines 文章和[Azure 机器学习 MLOps](https://aka.ms/mlops)存储库实现[ML 模型的持续集成和部署](/azure/devops/pipelines/targets/azure-machine-learning)。
 
 ## <a name="next-steps"></a>后续步骤
 
-Learn more by reading and exploring the following resources:
+阅读并浏览以下资源了解详细信息：
 
-+ [How & where to deploy models](how-to-deploy-and-where.md) with Azure Machine Learning
++ [& 如何 Azure 机器学习部署模型](how-to-deploy-and-where.md)
 
-+ [Tutorial: Deploy an image classification model in ACI](tutorial-deploy-models-with-aml.md).
++ [教程：在 ACI 中部署图像分类模型](tutorial-deploy-models-with-aml.md)。
 
-+ [End-to-end MLOps examples repo](https://github.com/microsoft/MLOps)
++ [端到端 MLOps 示例存储库](https://github.com/microsoft/MLOps)
 
-+ [CI/CD of ML models with Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
++ [具有 Azure Pipelines 的 ML 型号的 CI/CD](/azure/devops/pipelines/targets/azure-machine-learning)
 
-+ Create clients that [consume a deployed model](how-to-consume-web-service.md)
++ 创建使用已[部署模型](how-to-consume-web-service.md)的客户端
 
 + [规模化机器学习](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
-+ [Azure AI reference architectures & best practices rep](https://github.com/microsoft/AI)
++ [Azure AI 参考体系结构 & 最佳实践代表](https://github.com/microsoft/AI)

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub bindings for Azure Functions
-description: Understand how to use IoT Hub bindings in Azure Functions.
+title: 适用于 Azure Functions 的 Azure IoT 中心绑定
+description: 了解如何在 Azure Functions 中使用 IoT 中心绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 03/05/2019
@@ -12,15 +12,15 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227258"
 ---
-# <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure IoT Hub bindings for Azure Functions
+# <a name="azure-iot-hub-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure IoT 中心绑定
 
-This article explains how to work with Azure Functions bindings for IoT Hub. The IoT Hub support is based on the [Azure Event Hubs Binding](functions-bindings-event-hubs.md).
+本文介绍如何使用 IoT 中心的 Azure Functions 绑定。 IoT 中心支持基于 [Azure 事件中心绑定](functions-bindings-event-hubs.md)。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-For Azure Functions version 1.x, the IoT Hub bindings are provided in the [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet package, version 2.x. [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub 存储库中提供了此包的源代码。
+对于 Azure Functions 版本 1.x，[Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet 包 2.x 版中提供了 IoT 中心绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -31,7 +31,7 @@ For Azure Functions version 1.x, the IoT Hub bindings are provided in the [Micro
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 > [!IMPORTANT]
-> While the following code samples use the Event Hub API, the given syntax is applicable for IoT Hub functions.
+> 虽然下述代码示例使用事件中心 API，但给定的语法适用于 IoT 中心函数。
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 

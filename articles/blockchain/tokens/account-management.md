@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Tokens account management
-description: Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+title: Azure 区块链令牌帐户管理
+description: 使用 Azure 区块链令牌帐户管理，可以创建组并链接区块链帐户，以控制对区块链操作的访问。
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
@@ -11,25 +11,25 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326102"
 ---
-# <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens account management
+# <a name="azure-blockchain-tokens-account-management"></a>Azure 区块链令牌帐户管理
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-For a blockchain solution, users may require different levels of access to the tokens that are created with the Azure Blockchain Tokens service. In most blockchain scenarios, you need to plan and deploy different blockchain accounts that exist on the ledger. You also need to manage access across participants. Using Azure Blockchain Tokens account management, you can create groups and link blockchain accounts to control access to blockchain actions.
+对于区块链解决方案，用户可能需要不同级别的访问权限，才能使用 Azure 区块链令牌服务创建的令牌。 在大多数区块链方案中，需要规划和部署在分类帐上存在的不同区块链帐户。 还需要跨参与者管理访问权限。 使用 Azure 区块链令牌帐户管理，可以创建组并链接区块链帐户，以控制对区块链操作的访问。
 
-## <a name="blockchain-networks"></a>Blockchain networks
+## <a name="blockchain-networks"></a>区块链网络
 
-Azure Blockchain Tokens enables deployment and management of tokens across a set of blockchain networks. You can connect a single blockchain ledger or several blockchain ledgers to the service.
+Azure 区块链令牌可在一组区块链网络中部署和管理令牌。 可以将单个区块链分类帐或几个区块链分类帐连接到服务。
 
 ## <a name="accounts"></a>帐户
 
-For blockchain networks connected to Azure Blockchain Tokens, the service creates and manages the account private-public key pairs and performs transaction signing and submission. Azure Blockchain Tokens also provides identity mapping to match accounts with the public key identity on the ledger.
+对于连接到 Azure 区块链令牌的区块链网络，服务将创建和管理帐户私钥对，并执行事务签名和提交。 Azure 区块链令牌还提供标识映射，以匹配分类帐上具有公钥标识的帐户。
 
 ## <a name="groups"></a>组
 
-Groups lets you manage a large number of blockchain accounts across connected networks. You can track and audit which applications and users in the directory have the ability to use accounts through Azure Blockchain Tokens APIs. For example, you could group a set of accounts that represent different lines of business or different roles and access to blockchain tokens.
+利用组，你可以跨连接的网络管理大量区块链帐户。 你可以跟踪和审核目录中哪些应用程序和用户能够通过 Azure 区块链令牌 Api 使用帐户。 例如，你可以将表示不同业务线或不同角色的一组帐户分组，并对区块链令牌进行分组。
 
-You can also associate a group to an Azure Active Directory user or service principal and this principal has permissions to the group and its associated accounts.  
+你还可以将组关联到 Azure Active Directory 的用户或服务主体，并且此主体有权访问组及其关联的帐户。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -25,12 +25,12 @@ ms.locfileid: "74480588"
 
 本文将会介绍有关创建多客户端、多线程文件复制系统，以便将数据移到 Avere vFXT 群集的策略。 其中解释了文件传输的概念，以及可用于有效通过多个客户端和简单复制命令来复制数据的决策点。
 
-此外，本文还介绍了一些有用的实用工具。 The ``msrsync`` utility can be used to partially automate the process of dividing a dataset into buckets and using ``rsync`` commands. ``parallelcp`` 脚本是可以读取源目录和自动发出复制命令的另一个实用工具。 Also, the ``rsync`` tool can be used in two phases to provide a quicker copy that still provides data consistency.
+此外，本文还介绍了一些有用的实用工具。 ``msrsync`` 实用工具可用于部分自动完成将数据集划分为存储桶和使用 ``rsync`` 命令的过程。 ``parallelcp`` 脚本是可以读取源目录和自动发出复制命令的另一个实用工具。 此外，可以在两个阶段中使用 ``rsync`` 工具，以提供更快的复制，但仍可提供数据一致性。
 
 请单击链接跳转到相关部分：
 
 * [手动复制示例](#manual-copy-example) - 有关使用复制命令的完整说明
-* [Two-phase rsync example](#use-a-two-phase-rsync-process)
+* [两阶段 rsync 示例](#use-a-two-phase-rsync-process)
 * [部分自动化 (msrsync) 示例](#use-the-msrsync-utility)
 * [并行复制示例](#use-the-parallel-copy-script)
 
@@ -113,7 +113,7 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ### <a name="when-to-add-mount-points"></a>何时添加装入点
 
-针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。 (Throughput will be measured in files/second or bytes/second, depending on your type of data.) Or worse, over-threading can sometimes cause a throughput degradation.
+针对单个目标文件系统装入点运行足够多的并行线程后，在某个时间点，添加更多的线程并不能提高吞吐量。 （吞吐量将按每秒的文件数或字节数/秒来度量，具体取决于你的数据类型。）或者更糟的是，超线程可能会导致吞吐量下降。
 
 如果发生这种情况，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 vFXT 群集 IP 地址：
 
@@ -240,13 +240,13 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-And for six.... Extrapolate as needed.
+六 ...。根据需要推断。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-你将获得 *N* 个生成的文件，包含 `find` 命令输出中获取的四级目录的路径名称的每个（共 *N* 个）客户端各有一个生成的文件。
+你将获得 *N* 个生成的文件，包含 *命令输出中获取的四级目录的路径名称的每个（共*N`find` 个）客户端各有一个生成的文件。
 
 使用每个文件生成复制命令：
 
@@ -258,25 +258,25 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 
 目标是在多个客户端的每个客户端上并行运行这些脚本的多个线程。
 
-## <a name="use-a-two-phase-rsync-process"></a>Use a two-phase rsync process
+## <a name="use-a-two-phase-rsync-process"></a>使用两阶段 rsync 过程
 
-The standard ``rsync`` utility does not work well for populating cloud storage through the Avere vFXT for Azure system because it generates a large number of file create and rename operations to guarantee data integrity. However, you can safely use the ``--inplace`` option with ``rsync`` to skip the more careful copying procedure if you follow that with a second run that checks file integrity.
+标准 ``rsync`` 实用程序无法很好地通过 Avere vFXT for Azure 系统填充云存储，因为它会生成大量文件创建和重命名操作来保证数据的完整性。 但是，你可以使用 ``--inplace`` 选项与 ``rsync`` 安全地使用 "" 选项，以跳过更小心的复制过程（如果遵循此操作，第二次运行检查文件的完整性）。
 
-A standard ``rsync`` copy operation creates a temporary file and fills it with data. If the data transfer completes successfully, the temporary file is renamed to the original filename. This method guarantees consistency even if the files are accessed during copy. But this method generates more write operations, which slows file movement through the cache.
+标准 ``rsync`` 复制操作将创建一个临时文件并使用数据填充该文件。 如果数据传输成功完成，临时文件将重命名为原始文件名。 即使在复制过程中访问文件，此方法仍可保证一致性。 但此方法会生成更多的写入操作，从而减慢了文件在缓存中的移动。
 
-The option ``--inplace`` writes the new file directly in its final location. Files are not guaranteed to be consistent during transfer, but that is not important if you are priming a storage system for use later.
+选项 ``--inplace`` 直接在其最终位置写入新文件。 在传输过程中不保证文件是一致的，但如果要在以后使用存储系统填充，这并不重要。
 
-The second ``rsync`` operation serves as a consistency check on the first operation. Because the files have already been copied, the second phase is a quick scan to ensure that the files on the destination match the files on the source. If any files don't match, they are recopied.
+第二个 ``rsync`` 操作充当第一次操作的一致性检查。 由于文件已被复制，因此第二个阶段是一次快速扫描，以确保目标上的文件与源上的文件相匹配。 如果任何文件不匹配，则会重新复制。
 
-You can issue both phases together in one command:
+可以在一个命令中同时发出两个阶段：
 
 ```bash
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-This method is a simple and time-effective method for datasets up to the number of files the internal directory manager can handle. (This is typically 200 million files for a 3-node cluster, 500 million files for a six-node cluster, and so on.)
+此方法是数据集的一种简单而有效的方法，最多可处理内部目录管理器可以处理的文件数。 （对于三节点群集，这通常是200000000文件，对于六节点群集则为500000000个文件，依此类推。）
 
-## <a name="use-the-msrsync-utility"></a>Use the msrsync utility
+## <a name="use-the-msrsync-utility"></a>使用 msrsync 实用工具
 
 也可以使用 ``msrsync`` 工具将数据移到 Avere 群集的后端核心文件管理器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具：<https://github.com/jbd/msrsync>。
 
@@ -284,18 +284,18 @@ This method is a simple and time-effective method for datasets up to the number 
 
 使用四核 VM 进行的初步测试表明，使用 64 个进程时效率最高。 使用 ``msrsync`` 选项 ``-p`` 将进程数设置为 64。
 
-You also can use the ``--inplace`` argument with ``msrsync`` commands. If you use this option, consider running a second command (as with [rsync](#use-a-two-phase-rsync-process), described above) to ensure data integrity.
+还可以将 ``--inplace`` 参数用于 ``msrsync`` 命令。 如果使用此选项，请考虑运行另一个命令（如上面所述的[rsync](#use-a-two-phase-rsync-process)），以确保数据完整性。
 
-``msrsync`` can only write to and from local volumes. 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
+``msrsync`` 只能向本地卷和从本地卷进行写入。 必须可将源和目标作为群集虚拟网络中的本地装入点进行访问。
 
-To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, follow these instructions:
+若要使用 ``msrsync`` 填充 Avere 群集的 Azure 云卷，请遵循以下说明：
 
-1. Install ``msrsync`` and its prerequisites (rsync and Python 2.6 or later)
+1. 安装 ``msrsync`` 及其必备组件（rsync 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
-   For example, use the Avere utility ``prime.py`` with arguments ```prime.py --directory /path/to/some/directory``` (available by downloading url <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
+   例如，将 Avere 实用工具与参数 ``prime.py`` 一起使用 ```prime.py --directory /path/to/some/directory``` （可通过下载 url <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>获取）。
 
-   If not using ``prime.py``, you can calculate the number of items with the GNU ``find`` tool as follows:
+   如果不使用 ``prime.py``，则可以使用 GNU ``find`` 工具计算项的数目，如下所示：
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -305,13 +305,13 @@ To use ``msrsync`` to populate an Azure cloud volume with an Avere cluster, foll
 
 1. 将项数除以 64 即可得出每个进程的项数。 运行该命令时，在 ``-f`` 选项中使用此数字可以设置桶的大小。
 
-1. Issue the ``msrsync`` command to copy files:
+1. 发出 ``msrsync`` 命令以复制文件：
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   If using ``--inplace``, add a second execution without the option to check that the data is correctly copied:
+   如果使用 ``--inplace``，请在不使用选项的情况下添加第二次执行来检查是否正确复制了数据：
 
    ```bash
    msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>

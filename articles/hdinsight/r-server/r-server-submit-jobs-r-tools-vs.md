@@ -17,7 +17,7 @@ ms.locfileid: "74229012"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
-[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/vs/rtvs/) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS is not available for [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019).
+[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/vs/rtvs/) (RTVS) 是一个免费的开源扩展，适用于 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更高版本的社区版（免费）、专业版和企业版。 RTVS 不适用于[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
 
 RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R 代码调试](https://docs.microsoft.com/visualstudio/rtvs/debugging)等等。
 
@@ -41,32 +41,32 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
    2. 转到“R 工具”菜单项，然后选择“数据科学设置...”。
 
-       ![Visual Studio Data Science Settings](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Visual Studio 数据科学设置](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > 通过使用步骤 1 中的方法，也可以保存和还原个性化的数据科学家布局，而不必重复使用“数据科学设置”命令。
 
 ## <a name="execute-local-r-methods"></a>执行本地 R 方法
 
-1. Create your HDInsight ML Services cluster.
+1. 创建 HDInsight ML 服务群集。
 2. 安装 [RTVS 扩展](https://docs.microsoft.com/visualstudio/rtvs/installation)。
 3. 下载[示例 zip 文件](https://github.com/Microsoft/RTVS-docs/archive/master.zip)。
 4. 打开 `examples/Examples.sln` 以在 Visual Studio 中启动解决方案。
-5. 在 `A first look at R` 解决方案文件夹中打开 `1-Getting Started with R.R` 文件。
+5. 在 `1-Getting Started with R.R` 解决方案文件夹中打开 `A first look at R` 文件。
 6. 从文件顶部开始，按 Ctrl+Enter 将每一行发送到 R 交互窗口（一次一行）。 某些行可能需要一些时间，因为它们要安装程序包。
     * 或者，也可以选择 R 文件中的所有行 (Ctrl+A)，然后全部执行 (Ctrl+Enter) 或选择工具栏上的“交互执行”图标。
 
-        ![Visual Studio execute interactive](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio 执行交互式](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. 在运行完脚本中的所有行以后，应该会看到类似于下面的输出：
 
-    ![Visual Studio workspace R tools](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio 工作区 R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>将作业提交到 HDInsight ML Services 群集
 
 通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Apache Hadoop 群集的边缘节点、SSH 交换机等等。
 
-1. The ML Services edge node address on HDInsight is `CLUSTERNAME-ed-ssh.azurehdinsight.net` where `CLUSTERNAME` is the name of your ML Services cluster.
+1. HDInsight 上的 ML 服务边缘节点地址为 `CLUSTERNAME-ed-ssh.azurehdinsight.net`，其中 `CLUSTERNAME` 是 ML 服务群集的名称。
 
 1. 将以下代码粘贴到 Visual Studio 中的 R 交互窗口，并更改设置变量的值以匹配用户环境。
 
@@ -96,7 +96,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![apache spark setting the context](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![apache spark 设置上下文](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. 在 R 交互窗口中执行以下命令：
 
@@ -108,22 +108,22 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
     应该会看到与下面类似的输出：
 
-    ![Successful rx command execution](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
+    ![成功执行 rx 命令](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
     1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”。
 
-        ![Azure HDInsight Storage accounts](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight 存储帐户](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 选择群集的默认存储帐户，记下容器/目录名称。
 
     3. 从存储帐户窗格的左侧菜单中选择“容器”。
 
-        ![Azure HDInsight Storage containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight 存储容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. 选择群集的容器名称，浏览到 **user** 文件夹（可能需要单击列表底部的“加载更多”），然后依次选择“RevoShare”、“newUser”。 `people.json` 文件应显示在 `newUser` 文件夹中。
 
-        ![HDInsight copied file folder location](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight 复制的文件文件夹位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. 用完当前 Apache Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
 

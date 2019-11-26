@@ -1,7 +1,7 @@
 ---
-title: 'Create Python Model: Module Reference'
+title: 创建 Python 模型：模块引用
 titleSuffix: Azure Machine Learning
-description: Learn how to use the Create Python Model model in Azure Machine Learning to create custom modeling or data processing module.
+description: 了解如何使用 Azure 机器学习中的 "创建 Python 模型" 模型创建自定义建模或数据处理模块。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,29 +18,29 @@ ms.locfileid: "74232651"
 ---
 # <a name="create-python-model"></a>创建 Python 模型
 
-This article describes a module in Azure Machine Learning designer (preview).
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
-Learn how to use the **Create Python Model** module to create an untrained model from a Python script. You can base the model on any learner that is included in a Python package in the Azure Machine Learning designer environment. 
+了解如何使用 "**创建 Python 模型**" 模块通过 Python 脚本创建未经训练的模型。 可以在 Azure 机器学习设计器环境中包含在 Python 包中的任何学习器的基础上进行建模。 
 
-After you create the model, you can use [Train Model](train-model.md) to train the model on a dataset, like any other learner in Azure Machine Learning. The trained model can be passed to [Score Model](score-model.md) to use the model to make predictions. The trained model can then be saved, and the scoring workflow can be published as a web service.
+创建模型后，可以使用[定型模型](train-model.md)对数据集上的模型进行定型，就像 Azure 机器学习中的任何其他学习器一样。 训练的模型可以传递给[评分模型](score-model.md)，使用该模型进行预测。 然后，就可以保存训练后的模型，并且可以将评分工作流发布为 web 服务。
 
 > [!WARNING]
-> Currently it is not possible to pass the scored results of a Python model to [Evaluate Model](evaluate-model.md). If you need to evaluate a model, you can write custom Python script and run it using the [Execute Python Script](execute-python-script.md) module.  
+> 目前不能将 Python 模型的评分结果传递给[评估模型](evaluate-model.md)。 如果需要评估模型，可以编写自定义 Python 脚本，并使用 "[执行 Python 脚本](execute-python-script.md)" 模块运行该脚本。  
 
 
-## <a name="how-to-configure-create-python-model"></a>How to configure Create Python Model
+## <a name="how-to-configure-create-python-model"></a>如何配置创建 Python 模型
 
-Use of this module requires intermediate or expert knowledge of Python. The module supports use of any learner that is included in the Python packages already installed in Azure Machine Learning. See pre-installed Python package list in [Execute Python Script](execute-python-script.md).
+使用此模块需要 Python 的中级或专家知识。 该模块支持使用 Azure 机器学习中已安装的 Python 包中包含的任何学习器。 请参阅[执行 Python 脚本](execute-python-script.md)中的预安装 python 包列表。
   
 
-This article will show how to use the **Create Python Model** with a simple pipeline. Below is the graph of the pipeline.
+本文介绍如何使用简单管道**创建 Python 模型**。 下面是管道的关系图。
 
 ![create-python-model](./media/module/aml-create-python-model.png)
 
-1.  Click **Create Python Model**, edit the script to implement your modeling or data management process. You can base the model on any learner that is included in a Python package in the Azure Machine Learning environment.
+1.  单击 "**创建 Python 模型**"，编辑脚本以实现建模或数据管理过程。 可以在 Azure 机器学习环境中包含在 Python 包中的任何学习器基础上建模。
 
 
-    Below is a sample code of two-class Naive Bayes classifier by using the popular *sklearn* package.
+    下面是使用常用*spark-sklearn*包的双类 Naive Bayes 分类器的示例代码。
 
 ```Python
 
@@ -75,11 +75,11 @@ class AzureMLModel:
 ```
 
 
-2. Connect the **Create Python Model** module you just created to a **Train Model** and  **Score Model**
+2. 将您刚创建的**创建 Python 模型**模块连接到**定型模型**和**评分模型**
 
-3. If you need to evaluate the model, add a [Execute Python Script](execute-python-script.md) and edit the Python script to implement evaluation.
+3. 如果需要评估模型，请添加[执行 Python 脚本](execute-python-script.md)，并编辑 Python 脚本以实现评估。
 
-Below is sample evaluation code.
+下面是示例计算代码。
 
 ```Python
 

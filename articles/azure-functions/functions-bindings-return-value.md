@@ -1,6 +1,6 @@
 ---
-title: Using return value from an Azure Function
-description: Learn to manage return values for Azure Functions
+title: 使用 Azure 函数的返回值
+description: 了解如何管理 Azure 函数的返回值
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
@@ -12,15 +12,15 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480580"
 ---
-# <a name="using-the-azure-function-return-value"></a>Using the Azure Function return value
+# <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
 
-This article explains how return values work inside a function.
+本文解释了返回值在函数内如何工作。
 
-In languages that have a return value, you can bind a function [output binding](./functions-triggers-bindings.md#binding-direction) to the return value:
+在支持返回值的语言中，可以将函数[输出绑定](./functions-triggers-bindings.md#binding-direction)绑定到返回值：
 
 * 在 C# 类库，请将输出绑定特性应用到方法返回值。
-* In Java, apply the output binding annotation to the function method.
-* 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
+* 在 Java 中，将输出绑定批注应用于 function 方法。
+* 在其他语言中，请将 `name`function.json*中的* 属性设置为 `$return`。
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
@@ -52,7 +52,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
 
 下面是 *function.json* 文件中的输出绑定：
 
@@ -155,7 +155,7 @@ def main(input: azure.functions.InputStream) -> str:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Here's Java code that uses the return value for an output binding:
+下面是使用输出绑定的返回值的 Java 代码：
 
 ```java
 @FunctionName("QueueTrigger")
@@ -176,4 +176,4 @@ public static String run(
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Handle Azure Functions binding errors](./functions-bindings-errors.md)
+> [处理 Azure Functions 绑定错误](./functions-bindings-errors.md)

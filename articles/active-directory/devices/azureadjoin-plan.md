@@ -1,5 +1,5 @@
 ---
-title: How to plan your Azure Active Directory join implementation
+title: 如何计划 Azure Active Directory 联接实现
 description: 介绍在环境中实现 Azure AD 联接设备的所需步骤。
 services: active-directory
 ms.service: active-directory
@@ -24,13 +24,13 @@ ms.locfileid: "74379608"
 
 本文介绍计划 Azure AD 联接实现所需信息。
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假设读者已阅读 [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)。
 
-## <a name="plan-your-implementation"></a>计划实施
+## <a name="plan-your-implementation"></a>规划实施
 
-To plan your Azure AD join implementation, you should familiarize yourself with:
+若要计划 Azure AD 联接实现，应熟悉以下内容：
 
 |   |   |
 |---|---|
@@ -40,7 +40,7 @@ To plan your Azure AD join implementation, you should familiarize yourself with:
 |![勾选标记][1]|了解有关应用程序和资源的注意事项|
 |![勾选标记][1]|了解预配选项|
 |![勾选标记][1]|配置企业状态漫游|
-|![勾选标记][1]|Configure Conditional Access|
+|![勾选标记][1]|配置条件访问|
 
 ## <a name="review-your-scenarios"></a>查看方案 
 
@@ -75,10 +75,10 @@ Azure AD 联接适用于托管环境和联合环境。
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 Currently, web sign-in is a preview feature and is not recommended for production deployments.
+如果标识提供者不支持这些协议，则 Azure AD 联接无法本机运行。 从 Windows 10 1809 开始，你的用户可使用基于 SAML 的标识提供者通过 [Windows 10 上的 Web 登录](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)登录到 Azure AD 联接设备。 目前，web 登录是一项预览功能，不建议用于生产部署。
 
 >[!NOTE]
-> Currently, Azure AD join does not work with [AD FS 2019 configured with external authentication providers as the primary authentication method](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Azure AD join defaults to password authentication as the primary method, which results in authentication failures in this scenario
+> 目前，Azure AD 联接不适用于使用[外部身份验证提供程序配置的 AD FS 2019 作为主要身份验证方法](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD 联接默认为密码身份验证作为主要方法，这会导致此方案中的身份验证失败
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智能卡和基于证书的身份验证
@@ -110,10 +110,10 @@ Azure AD 联接：
 
 ### <a name="management-platform"></a>管理平台
 
-Device management for Azure AD joined devices is based on an MDM platform such as Intune, and MDM CSPs. Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
+Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM Csp。 Windows 10 提供适用于所有兼容 MDM 解决方案的内置 MDM 代理。
 
 > [!NOTE]
-> Group policies are not supported in Azure AD joined devices as they are not connected to on-premises Active Directory. Management of Azure AD joined devices is only possible through MDM
+> Azure AD 联接的设备中不支持组策略，因为它们未连接到本地 Active Directory。 仅可通过 MDM 管理 Azure AD 联接的设备
 
 管理 Azure AD 联接设备有两种方法：
 
@@ -197,11 +197,11 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
  
 |   | 自助式设置 | Windows Autopilot | 批量注册 |
 | --- | --- | --- | --- |
-| 需要用户交互以进行设置 | 是 | 是 | No |
-| 需要 IT 工作量 | No | 是 | 是 |
+| 需要用户交互以进行设置 | 是 | 是 | 否 |
+| 需要 IT 工作量 | 否 | 是 | 是 |
 | 适用流 | OOBE 和设置 | 仅限 OOBE | 仅限 OOBE |
-| 主要用户的本地管理员权限 | 是，默认情况下 | 可配置性 | No |
-| 需要设备 OEM 的支持 | No | 是 | No |
+| 主要用户的本地管理员权限 | 是，默认情况下 | 可配置性 | 否 |
+| 需要设备 OEM 的支持 | 否 | 是 | 否 |
 | 支持的版本 | 1511+ | 1709+ | 1703+ |
  
 查看上表和以下采用任一方法的注意事项，选择一个或多个部署方法：  
@@ -217,7 +217,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ## <a name="configure-your-device-settings"></a>配置设备设置
 
-通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择 `Devices > Device settings`。
+通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择`Devices > Device settings`。
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>用户可将设备联接到 Azure AD
 
@@ -243,7 +243,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 **若要添加 MDM 提供程序**：
 
-1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`。 
+1. 在“Azure Active Directory 页”的“管理”部分，单击`Mobility (MDM and MAM)`。 
 1. 单击“添加应用程序”。
 1. 从列表中选择 MDM 提供程序。
 
@@ -284,13 +284,13 @@ MAM 不适用于 Azure AD 联接。
 
 **建议**：即使对于混合 Azure AD 联接设备，也启用此设置。
 
-## <a name="configure-conditional-access"></a>Configure Conditional Access
+## <a name="configure-conditional-access"></a>配置条件访问
 
 如果为 Azure AD 联接设备配置的 MDM 提供程序，只要该设备处于管理状态，提供程序就将其标记为符合。 
 
 ![合规的设备](./media/azureadjoin-plan/46.png)
 
-You can use this implementation to [require managed devices for cloud app access with Conditional Access](../conditional-access/require-managed-devices.md).
+你可以使用此实现来[要求使用条件访问的云应用访问的托管设备](../conditional-access/require-managed-devices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

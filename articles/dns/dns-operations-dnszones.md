@@ -140,7 +140,7 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>指定使用 $zone 对象的区域
 
-可使用 `Get-AzureRmDnsZone` 返回的 `$zone` 对象指定要删除的区域。
+可使用 `$zone` 返回的 `Get-AzureRmDnsZone` 对象指定要删除的区域。
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -160,11 +160,11 @@ Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | R
 
 `New-AzureRmDnsZone`、`Set-AzureRmDnsZone` 和 `Remove-AzureRmDnsZone` cmdlet 都支持确认提示。
 
-如果 `$ConfirmPreference` PowerShell 首选项变量的值为 `Medium` 或更低，则 `New-AzureRmDnsZone` 和 `Set-AzureRmDnsZone` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `$ConfirmPreference` PowerShell 变量拥有除 `None` 之外的其他值，则 `Remove-AzureRmDnsZone` cmdlet 会提示用户进行确认。
+如果 `New-AzureRmDnsZone` PowerShell 首选项变量的值为 `Set-AzureRmDnsZone` 或更低，则 `$ConfirmPreference` 和 `Medium` 都会提示用户进行确认。 由于删除 DNS 区域存在的潜在影响力较大，如果 `Remove-AzureRmDnsZone` PowerShell 变量拥有除 `$ConfirmPreference` 之外的其他值，则 `None` cmdlet 会提示用户进行确认。
 
 由于 `$ConfirmPreference` 的默认值为 `High`，则默认情况下仅 `Remove-AzureRmDnsZone` 会提示用户进行确认。
 
-可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
+可以使用 `$ConfirmPreference` 参数重写当前的 `-Confirm` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。
 
 有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](/powershell/module/microsoft.powershell.core/about/about_preference_variables)（关于首选项变量）。
 

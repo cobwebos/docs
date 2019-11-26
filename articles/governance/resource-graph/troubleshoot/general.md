@@ -30,7 +30,7 @@ ms.locfileid: "74303899"
 
 Azure CLI 和 PowerShell 只会将前 1000 个订阅转发到 Azure Resource Graph。 Azure Resource Graph 的 REST API 接受对最大数目的订阅执行查询。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 
 对一部分订阅批处理查询请求，以保持在 1000 个订阅的限制范围内。 解决方法是在 PowerShell 中使用 **Subscription** 参数。
 
@@ -67,7 +67,7 @@ $response
 
 Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。 某些 REST 工具或代理默认为 **text/plain**，REST API 不支持此选项。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 
 验证用于查询 Azure Resource Graph 的工具或代理是否为 `Content-Type`application/json**配置了 REST API 标头**。
 
@@ -81,7 +81,7 @@ Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。
 
 如果客户对所有提供的订阅没有读取权限，则由于缺乏适当的安全权限，请求将被拒绝。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 
 在订阅列表中包括至少一个订阅，运行查询的客户至少具有对该订阅的读取访问权限。 有关详细信息，请参阅 [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)。
 
@@ -91,4 +91,4 @@ Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。
 
 - 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

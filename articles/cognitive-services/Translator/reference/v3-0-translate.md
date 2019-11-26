@@ -119,7 +119,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td><em>可选</em>。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 

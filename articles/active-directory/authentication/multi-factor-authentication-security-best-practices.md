@@ -1,5 +1,5 @@
 ---
-title: Security guidance for Azure Multi-Factor Authentication - Azure Active Directory
+title: Azure 多重身份验证的安全指南-Azure Active Directory
 description: 本文档提供有关配合使用 Azure MFA 与 Azure 帐户的指导
 services: multi-factor-authentication
 ms.service: active-directory
@@ -31,9 +31,9 @@ ms.locfileid: "74208434"
 
 ### <a name="licenses"></a>许可证
 
-![Apply licenses to users, enable, notify](./media/multi-factor-authentication-security-best-practices/ems.png)
+![向用户应用许可证，启用，通知](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-如果拥有 Azure AD Premium 或企业移动性 + 安全性许可证，则已拥有了 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，然后便可以启用 MFA。
+如果拥有 Azure AD Premium 或企业移动性 + 安全性许可证，则已拥有了 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，就可以启用 MFA。
 
 设置多重身份验证时，请注意以下提示：
 
@@ -43,7 +43,7 @@ ms.locfileid: "74208434"
 
 ### <a name="multi-factor-auth-provider"></a>Multi-Factor Auth 提供程序
 
-![Multi-Factor Authentication Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
+![多重身份验证提供程序](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
 如果没有包含 Azure MFA 的许可证，可以[创建 MFA 身份验证提供程序](concept-mfa-authprovider.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74208434"
 * 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：
   * 将双重验证功能扩展到所有用户
   * 为全局管理员提供其他功能，例如管理门户、自定义问候语和报告。
-* If you synchronize your on-premises Active Directory environment with an Azure AD directory, you need DirSync or Azure AD Sync. If you use an Azure AD directory that is not synchronized with an on-premises instance of Active Directory, you do not need DirSync or Azure AD Sync.
+* 如果将本地 Active Directory 环境与 Azure AD 目录同步，则需要 DirSync 或 Azure AD Sync。如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 Azure AD Sync。
 * 选择最适合业务的消耗模型。 使用模型一旦选择之后，就无法对其更改。 有以下两个模型：
   * 按身份验证：针对每次验证收费。 如果要对访问某些应用的任何人（而不是特定用户）进行双重验证，请使用此模型。
   * 基于启用的用户：对启用 Azure MFA 的每个用户收费。 如果拥有一些使用 Azure AD Premium 或企业移动性套件许可证的用户，请使用此模型。
@@ -68,14 +68,14 @@ ms.locfileid: "74208434"
 
 如果公司决定利用自己的基础结构来启用 MFA，则需要[在本地部署 Azure 多重身份验证服务器](howto-mfaserver-deploy.md)。 下图显示了 MFA 服务器的组件：
 
-![The default MFA Server components](./media/multi-factor-authentication-security-best-practices/server.png) \*Not installed by default \**Installed but not enabled by default
+![默认的 MFA 服务器组件](./media/multi-factor-authentication-security-best-practices/server.png) 默认情况下 \*未安装 \** 默认情况下未安装，但默认情况下未启用
 
 Azure 多重身份验证服务器可以使用联合身份验证来保护云资源和本地资源。 必须安装 AD FS，并将它与 Azure AD 租户联合。
 设置多重身份验证服务器时，请注意以下详细信息：
 
 * 如果使用 Active Directory 联合身份验证服务 (AD FS) 来保护 Azure AD 资源，则第一个验证步骤是使用 AD FS 在本地执行的。 遵循声明在本地执行第二步。
 * 不需要在 AD FS 联合服务器上安装 Azure 多重身份验证服务器。 但是，必须在运行 AD FS 的 Windows Server 2012 R2 上安装用于 AD FS 的多重身份验证适配器。 可以将服务器安装在其他计算机上（只要它是受支持的版本），并将 AD FS 适配器单独安装在 AD FS 联合服务器上。 
-* 多重身份验证 AD FS 适配器安装向导会在 Active Directory 中创建名为 PhoneFactor Admins 的安全组，然后将 AD FS 服务帐户添加到此组。 检查是否在域控制器上创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 需要时，在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor 管理员组。
+* 多重身份验证 AD FS 适配器安装向导将在 Active Directory 中创建名为 PhoneFactor Admins 的安全组，并将 AD FS 服务帐户添加到此组。 检查是否在域控制器上创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 需要时，在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor 管理员组。
 
 ### <a name="user-portal"></a>用户门户
 

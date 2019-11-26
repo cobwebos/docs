@@ -43,7 +43,7 @@ ms.locfileid: "74280649"
 
 **文件存储**
 
-| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
+| 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | size<br>（文件） | created<br>（文件/文件夹） | lastModified<br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<br/>（文件） | columnCount<br>（文件） | exists<br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -76,7 +76,7 @@ ms.locfileid: "74280649"
 |:--- |:--- |
 | itemName | 文件或文件夹的名称。 |
 | itemType | 文件或文件夹的类型。 返回的值为 `File` 或 `Folder`。 |
-| 大小 | 文件大小，以字节为单位。 仅适用于文件。 |
+| size | 文件大小，以字节为单位。 仅适用于文件。 |
 | created | 文件或文件夹的创建日期时间。 |
 | lastModified | 文件或文件夹的上次修改日期时间。 |
 | childItems | 给定文件夹中的子文件夹和文件列表。 仅适用于文件夹。 返回的值为每个子项的名称和类型列表。 |
@@ -135,7 +135,7 @@ ms.locfileid: "74280649"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-属性 | 说明 | 必选
+属性 | 说明 | 必需
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是

@@ -1,6 +1,6 @@
 ---
-title: Migrate data from data lake and data warehouse to Azure
-description: Use Azure Data Factory to migrate data from your data lake and data warehouse to Azure.
+title: 将数据从 data lake 和数据仓库迁移到 Azure
+description: 使用 Azure 数据工厂将数据从 Data Lake 和数据仓库迁移到 Azure。
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -20,46 +20,46 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74217564"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Use Azure Data Factory to migrate data from your data lake or data warehouse to Azure
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure
 
-If you want to migrate your data lake or enterprise data warehouse (EDW) to Microsoft Azure, consider using Azure Data Factory. Azure Data Factory is well-suited to the following scenarios:
+如果要将 data lake 或企业数据仓库（EDW）迁移到 Microsoft Azure，请考虑使用 Azure 数据工厂。 Azure 数据工厂非常适合以下场景：
 
-- Big data workload migration from Amazon Simple Storage Service (Amazon S3) or an on-premises Hadoop Distributed File System (HDFS) to Azure
-- EDW migration from Oracle Exadata, Netezza, Teradata, or Amazon Redshift to Azure
+- 将大数据工作负荷从 Amazon 简单存储服务 (Amazon S3) 或本地 Hadoop 分布式文件系统 (HDFS) 迁移到 Azure
+- 将 EDW 从 Oracle Exadata、Netezza、Teradata 或 Amazon Redshift 迁移到 Azure
 
-Azure Data Factory can move petabytes (PB) of data for data lake migration, and tens of terabytes (TB) of data for data warehouse migration.
+在迁移 Data Lake 时，Azure 数据工厂可以移动千万亿字节 (PB) 量级的数据；在迁移数据仓库时，它可以移动万亿字节 (TB) 量级的数据。
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Why Azure Data Factory can be used for data migration
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>为何可以使用 Azure 数据工厂来迁移数据
 
-- Azure Data Factory can easily scale up the amount of processing power to move data in a serverless manner with high performance, resilience, and scalability. And you pay only for what you use. 另请注意以下几点： 
-  - Azure Data Factory has no limitations on data volume or on the number of files.
-  - Azure Data Factory can fully use your network and storage bandwidth to achieve the highest volume of data movement throughput in your environment.
-  - Azure Data Factory uses a pay-as-you-go method, so that you pay only for the time you actually use to run the data migration to Azure.  
-- Azure Data Factory can perform both a one-time historical load and scheduled incremental loads.
-- Azure Data Factory uses Azure integration runtime (IR) to move data between publicly accessible data lake and warehouse endpoints. It can also use self-hosted IR for moving data for data lake and warehouse endpoints inside Azure Virtual Network (VNet) or behind a firewall.
-- Azure Data Factory has enterprise-grade security: You can use Windows Installer (MSI) or Service Identity for secured service-to-service integration, or use Azure Key Vault for credential management.
-- Azure Data Factory provides a code-free authoring experience and a rich, built-in monitoring dashboard.  
+- Azure 数据工厂可以轻松增大处理能力，能以无服务器方式移动数据，并保持较高的性能、复原能力和可伸缩性。 你只需为使用的资源付费。 另请注意以下几点： 
+  - Azure 数据工厂对数据量或文件数没有限制。
+  - Azure 数据工厂可以充分利用网络和存储带宽，在环境中实现最大的数据移动吞吐量。
+  - Azure 数据工厂使用即用即付方法，只需为实际用于运行数据迁移到 Azure 的时间付费。  
+- Azure 数据工厂可以执行一次性的历史数据加载和计划的增量加载。
+- Azure 数据工厂使用 Azure 集成运行时 (IR) 在可公开访问的 Data Lake 与仓库终结点之间移动数据。 它还可以使用自承载 IR 来移动位于 Azure 虚拟网络 (VNet) 内部或防火墙后面的 Data Lake 和仓库终结点的数据。
+- Azure 数据工厂具有企业级安全性：你可以使用 Windows Installer （MSI）或服务标识进行安全的服务到服务集成，或使用 Azure Key Vault 进行凭据管理。
+- Azure 数据工厂提供无代码创作体验，以及丰富的内置监视仪表板。  
 
-## <a name="online-vs-offline-data-migration"></a>Online vs. offline data migration
+## <a name="online-vs-offline-data-migration"></a>联机与脱机数据迁移
 
-Azure Data Factory is a standard online data migration tool to transfer data over a network (internet, ER, or VPN). Whereas with offline data migration, users physically ship data-transfer devices from their organization to an Azure Data Center.  
+Azure 数据工厂是用于通过网络（Internet、ER 或 VPN）传输数据的标准联机数据迁移工具。 而使用脱机数据迁移时，用户需要将数据传输设备的实物从其组织寄送到 Azure 数据中心。  
 
-There are three key considerations when you choose between an online and offline migration approach:  
+在联机与脱机迁移方法之间选择时，请注意三个要点：  
 
-- Size of data to be migrated
+- 要迁移的数据大小
 - 网络带宽
-- Migration window
+- 迁移时限
 
-For example, assume you plan to use Azure Data Factory to complete your data migration within two weeks (your *migration window*). Notice the pink/blue cut line in the following table. The lowest pink cell for any given column shows the data size/network bandwidth pairing whose migration window is closest to but less than two weeks. (Any size/bandwidth pairing in a blue cell has an online migration window of more than two weeks.) 
+例如，假设你打算使用 Azure 数据工厂在两周（迁移时限）内完成数据迁移。 请注意下表中的粉红色/蓝色切割线。 在任意给定列中，最下面的粉红色单元格显示其迁移时限最接近（但不到）两周的数据大小/网络带宽对。 （蓝色单元格中的任何大小/带宽对的联机迁移时限超过两周。） 
 
-![online vs. offline](media/data-migration-guidance-overview/online-offline.png) This table helps you determine whether you can meet your intended migration window through online migration (Azure Data Factory) based on the size of your data and your available network bandwidth. If the online migration window is more than two weeks, you'll want to use offline migration.
+![联机与脱机迁移](media/data-migration-guidance-overview/online-offline.png)此表可帮助你根据数据大小和可用网络带宽，确定是否可以通过联机迁移（Azure 数据工厂）来满足预期的迁移时限。 如果联机迁移时限超过两周，则需要使用脱机迁移。
 
 > [!NOTE]
-> By using online migration, you can achieve both historical data loading and incremental feeds end-to-end through a single tool.  Through this approach, your data can be kept synchronized between the existing store and the new store during the entire migration window. This means you can rebuild your ETL logic on the new store with refreshed data.
+> 使用联机迁移，可以通过一个工具端到端地实现历史数据加载和增量馈送。  通过此方法，数据在整个迁移时限内可在现有存储与新存储之间保持同步。 这意味着，可以使用刷新的数据在新存储中重新生成 ETL 逻辑。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Migrate data from AWS S3 to Azure](data-migration-guidance-s3-azure-storage.md)
-- [Migrate data from on-premises hadoop cluster to Azure](data-migration-guidance-hdfs-azure-storage.md)
-- [Migrate data from on-premises Netezza server to Azure](data-migration-guidance-netezza-azure-sqldw.md)
+- [将数据从 AWS S3 迁移到 Azure](data-migration-guidance-s3-azure-storage.md)
+- [将数据从本地 Hadoop 群集迁移到 Azure](data-migration-guidance-hdfs-azure-storage.md)
+- [将数据从本地 Netezza 服务器迁移到 Azure](data-migration-guidance-netezza-azure-sqldw.md)

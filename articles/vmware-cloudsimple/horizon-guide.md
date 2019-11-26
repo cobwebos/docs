@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - Use Private Cloud site to host a virtual desktop infrastructure using VMware Horizon
-description: Describes how you can use your CloudSimple Private Cloud site to host a virtual desktop infrastructure using VMware Horizon
+title: Azure VMware 解决方案（按 CloudSimple）-使用私有云网站使用 VMware 横向托管虚拟桌面基础结构
+description: 介绍如何使用 CloudSimple 私有云网站来托管使用 VMware 范围的虚拟桌面基础结构
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -15,129 +15,129 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74206557"
 ---
-# <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>Use CloudSimple Private Cloud site to host a virtual desktop infrastructure using VMware Horizon
+# <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私有云网站使用 VMware 范围托管虚拟桌面基础结构
 
-You can use your CloudSimple Private Cloud site to host a virtual desktop infrastructure (VDI) using VMware Horizon 7.x. The following figure shows the logical solution architecture for the VDI.
+你可以使用 CloudSimple 私有云网站来托管使用 VMware 地平线7、windows 的虚拟桌面基础结构（VDI）。 下图显示了 VDI 的逻辑解决方案体系结构。
 
-![Horizon deployment](media/horizon-deployment.png)
+![水平部署](media/horizon-deployment.png)
 
-With this solution, you have full control over Horizon View Manager and App Volume. The familiar UI, API, and CLI interfaces enable use of your existing scripts and tools.
+使用此解决方案，你可以完全控制范围视图管理器和应用卷。 熟悉的 UI、API 和 CLI 接口允许使用现有的脚本和工具。
 
-The CloudSimple solution requires you to do the following:
+CloudSimple 解决方案要求你执行以下操作：
 
-* Install, configure, and manage VMware Horizon 7.x in your Private Cloud.
-* Provide your own Horizon licenses.
+* 在私有云中安装、配置和管理 VMware 地平线1.x。
+* 提供您自己的水平许可证。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-The following sections describe how to deploy a VDI solution using Horizon in your Private Cloud.
+以下部分介绍如何在私有云中使用地平线部署 VDI 解决方案。
 
-1. [Verify that VMware product versions are compatible](#verify-that-vmware-product-versions-are-compatible)
-2. [Estimate the size of your desktop environment](#estimate-the-size-of-your-desktop-environment)
-3. [Create a Private Cloud for your environment](#create-a-private-cloud-for-your-environment)
-4. [Install VMware Horizon in your Private Cloud](#install-vmware-horizon-in-your-private-cloud)
+1. [验证 VMware 产品版本是否兼容](#verify-that-vmware-product-versions-are-compatible)
+2. [估计桌面环境大小](#estimate-the-size-of-your-desktop-environment)
+3. [为环境创建私有云](#create-a-private-cloud-for-your-environment)
+4. [在私有云中安装 VMware 地平线](#install-vmware-horizon-in-your-private-cloud)
 
-### <a name="verify-that-vmware-product-versions-are-compatible"></a>Verify that VMware product versions are compatible
+### <a name="verify-that-vmware-product-versions-are-compatible"></a>验证 VMware 产品版本是否兼容
 
-* Verify that your current and planned versions of Horizon, App Volumes, Unified Access Gateway, and User Environment Manager are compatible with each other and with vCenter and PSC in the Private Cloud. For compatibility information, see [VMware Compatibility Matrix for Horizon 7.5](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&260=2877&0=).
-* To find out the current versions of vCenter and PSC in your Private Cloud, go to **Resources** in the [CloudSimple portal](access-cloudsimple-portal.md), select your Private Cloud, and click the **vSphere Management Network** tab.
+* 验证你当前和计划内版本的水平、应用卷、统一访问网关和用户环境管理器是否相互兼容，以及私有云中的 vCenter 和 PSC。 有关兼容性信息，请参阅[适用于地平线7.5 的 VMware 兼容性矩阵](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&260=2877&0=)。
+* 若要在私有云中了解 vCenter 和 PSC 的当前版本，请在[CloudSimple 门户](access-cloudsimple-portal.md)中，选择 "**资源**"，选择私有云，然后单击 " **vSphere 管理网络**" 选项卡。
 
-![vCenter and PSC versions](media/private-cloud-vsphere-versions.png)
+![vCenter 和 PSC 版本](media/private-cloud-vsphere-versions.png)
 
-### <a name="estimate-the-size-of-your-desktop-environment"></a>Estimate the size of your desktop environment
+### <a name="estimate-the-size-of-your-desktop-environment"></a>估计桌面环境大小
 
-* Verify that your identified configuration is within VMware operational limits.
-* Estimate the resources that are needed in your DR site to protect your on-premises environment.
+* 验证你确定的配置是否处于 VMware 运营限制内。
+* 估计灾难恢复站点所需的资源，以保护本地环境。
 
-### <a name="create-a-private-cloud-for-your-environment"></a>Create a Private Cloud for your environment
+### <a name="create-a-private-cloud-for-your-environment"></a>为环境创建私有云
 
-1. Create a Private Cloud from the CloudSimple portal by following the instructions in [Configure a Private Cloud environment](quickstart-create-private-cloud.md).  CloudSimple creates a default vCenter user named 'cloudowner' in every newly created Private Cloud. For details on the default Private Cloud user and permission model, see [Learn the Private Cloud permissions model](learn-private-cloud-permissions.md).
-2. Create a VLAN in your Private Cloud for the Horizon management plane and assign it a subnet CIDR. For instructions, see [Create and manage VLANs/Subnets](create-vlan-subnet.md). This is the network where all the solution components (Unified Access Gateway, Connection Server, App Volume Server, and User Environment Manager servers) will be installed.
-3. Decide if you want to use an external identity provider with your Private Cloud vCenter. If yes, choose one of these options:
-    * Use your on-premises Active Directory as the external identity provider. For instructions, see [vCenter Identity Sources](set-vcenter-identity.md).
-    * Set up an Active Directory server in the Private Cloud in Horizon management plane VLAN to use as your external identity provider. For instructions, see [vCenter Identity Sources](set-vcenter-identity.md).
-    * Set up a DHCP and DNS server in Horizon management plane VLAN in the Private Cloud. For instructions, see [Set up DNS and DHCP applications and workloads in your CloudSimple Private Cloud](dns-dhcp-setup.md).
-4. Configure DNS forwarding on the DNS server installed in the Private Cloud. For instructions, see [Create a Conditional Forwarder](on-premises-dns-setup.md#create-a-conditional-forwarder).
+1. 按照[配置私有云环境](quickstart-create-private-cloud.md)中的说明，从 CloudSimple 门户创建私有云。  CloudSimple 在每个新创建的私有云中创建一个名为 "cloudowner" 的默认 vCenter 用户。 有关默认私有云用户和权限模型的详细信息，请参阅[了解私有云权限模型](learn-private-cloud-permissions.md)。
+2. 在私有云中为地平线管理平面创建 VLAN，并为其分配一个子网 CIDR。 有关说明，请参阅[创建和管理 vlan/子网](create-vlan-subnet.md)。 这是将安装所有解决方案组件（统一访问网关、连接服务器、应用卷服务器和用户环境管理器服务器）的网络。
+3. 决定是否要将外部标识提供者与私有云 vCenter 一起使用。 如果是，请选择下列选项之一：
+    * 使用本地 Active Directory 作为外部标识提供者。 有关说明，请参阅[VCenter 标识源](set-vcenter-identity.md)。
+    * 在 "水平" 管理平面 VLAN 中的私有云中设置 Active Directory 服务器，以用作外部标识提供者。 有关说明，请参阅[VCenter 标识源](set-vcenter-identity.md)。
+    * 在私有云中的水平管理平面 VLAN 中设置 DHCP 和 DNS 服务器。 有关说明，请参阅[在 CloudSimple 私有云中设置 DNS 和 DHCP 应用程序和工作负荷](dns-dhcp-setup.md)。
+4. 在安装在私有云中的 DNS 服务器上配置 DNS 转发。 有关说明，请参阅[创建条件转发器](on-premises-dns-setup.md#create-a-conditional-forwarder)。
 
-### <a name="install-vmware-horizon-in-your-private-cloud"></a>Install VMware Horizon in your Private Cloud
+### <a name="install-vmware-horizon-in-your-private-cloud"></a>在私有云中安装 VMware 地平线
 
-The following deployment diagram depicts a Horizon solution deployed in a Private Cloud. Unified Access Gateway, AD/DC, View, and App Volume Server are installed in user-created VLAN 234. Unified Access Gateway has an assigned public IP address that is reachable from the Internet. Horizon desktop pool VMs are deployed in VLAN 235 to provide additional isolation and security.
+以下部署关系图描述了在私有云中部署的水平解决方案。 统一访问网关、AD/DC、视图和应用卷服务器安装在用户创建的 VLAN 234 中。 统一访问网关具有可从 Internet 访问的分配的公共 IP 地址。 在 VLAN 235 中部署了地平线桌面池 Vm，以提供更多的隔离和安全性。
 
-![Horizon deployment in the Private Cloud](media/horizon-private-cloud.png)
+![私有云中的范围部署](media/horizon-private-cloud.png)
 
-The following sections outline the instructions to set up a deployment similar to the one that is depicted in the figure. Before you begin, verify that you have the following:
+以下各节概括说明了如何设置与图中描述的部署类似的部署。 在开始之前，请确认你具有以下各项：
 
-* A Private Cloud created using the CloudSimple portal with sufficient capacity to run your desktop pools.
-* Sufficient bandwidth between your on-premises environment and the Private Cloud environment to support the network traffic for your desktops.
-* A Site-to-Site VPN tunnel set up between your on-premises datacenter and the Private Cloud.
-* IP reachability from end-user subnets in your on-premises environment to the CloudSimple Private Cloud subnets.
-* AD/DHCP/DNS installed for your Private Cloud.
+* 使用 CloudSimple 门户创建的私有云，具有足够的容量来运行桌面池。
+* 在本地环境和私有云环境之间提供足够的带宽，以支持桌面的网络流量。
+* 在本地数据中心和私有云之间设置站点到站点 VPN 隧道。
+* 从本地环境中的最终用户子网到 CloudSimple 私有云子网的 IP 可访问性。
+* 为私有云安装 AD/DHCP/DNS。
 
-#### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple portal: Create a dedicated VLAN/subnet for desktop pools
+#### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple 门户：为桌面池创建专用 VLAN/子网
 
-Create a VLAN for the Horizon desktop pools and assign it a subnet CIDR. For instructions, see [Create and manage VLANs/Subnets](create-vlan-subnet.md). This is the network where all the desktop virtual machines will run.
+为地平线桌面池创建 VLAN，并为其分配一个子网 CIDR。 有关说明，请参阅[创建和管理 vlan/子网](create-vlan-subnet.md)。 这是将运行所有桌面虚拟机的网络。
 
-Follow standard security best practices to secure your Horizon deployment:
+遵循标准的安全最佳做法来保护您的水平部署：
 
-* Allow only desktop RDP traffic / SSH traffic to your desktop VMs.
-* Allow only management traffic between Horizon management plane VLAN and desktop pool VLAN.
-* Allow only management traffic from on-premises network.
+* 仅允许桌面 RDP 流量/SSH 流量发送到桌面 Vm。
+* 仅允许在地平线管理平面 VLAN 和桌面池 VLAN 之间进行管理流量。
+* 仅允许来自本地网络的管理流量。
 
-You can enforce these best practices by configuring [firewall rules](firewall.md) from the CloudSimple portal.
+可以通过从 CloudSimple 门户配置[防火墙规则](firewall.md)来强制实施这些最佳实践。
 
-#### <a name="cloudsimple-portal-configure-firewall-rules-to-secure-horizon-management-plane"></a>CloudSimple portal: Configure firewall rules to secure Horizon management plane
+#### <a name="cloudsimple-portal-configure-firewall-rules-to-secure-horizon-management-plane"></a>CloudSimple portal：配置防火墙规则以保护范围的管理平面
 
-Set up the following rules in the CloudSimple portal. For instructions, see [Set up firewall tables and rules](firewall.md).
+在 CloudSimple 门户中设置以下规则。 有关说明，请参阅[设置防火墙表和规则](firewall.md)。
 
-1. Configure firewall rules in the CloudSimple N-S firewall to allow communication between on-premises subnets and Horizon management VLAN so that only the network ports listed in the VMware document [Horizon port list](https://docs.vmware.com/en/VMware-Horizon-7/7.1/com.vmware.horizon-client-agent.security.doc/GUID-52807839-6BB0-4727-A9C7-EA73DE61ADAB.html) are allowed.
+1. 在 CloudSimple N-S 防火墙中配置防火墙规则，以允许在本地子网和横向管理 VLAN 之间进行通信，以便只允许在 VMware 文档[范围端口列表](https://docs.vmware.com/en/VMware-Horizon-7/7.1/com.vmware.horizon-client-agent.security.doc/GUID-52807839-6BB0-4727-A9C7-EA73DE61ADAB.html)中列出的网络端口。
 
-2. Create E-W firewall rules between the Horizon management VLAN and desktop pool VLAN in the Private Cloud.
+2. 在私有云中的水平管理 VLAN 和桌面池 VLAN 之间创建电子 W 防火墙规则。
 
-#### <a name="cloudsimple-portal-create-a-public-ip-address-for-unified-access-gateway"></a>CloudSimple portal: Create a public IP address for Unified Access Gateway
+#### <a name="cloudsimple-portal-create-a-public-ip-address-for-unified-access-gateway"></a>CloudSimple 门户：创建统一访问网关的公共 IP 地址
 
-Create a public IP address for the Unified Access Gateway appliance to enable desktop client connections from the internet. For instructions, see [Allocate public IP addresses](public-ips.md).
+为统一访问网关设备创建公共 IP 地址，以启用来自 internet 的桌面客户端连接。 有关说明，请参阅[分配公共 IP 地址](public-ips.md)。
 
-When the setup is complete, the public IP address is assigned and listed on the Public IPs page.
+安装完成后，公共 IP 地址被分配并在公共 Ip 页面上列出。
 
-#### <a name="cloudsimple-portal-escalate-privileges"></a>CloudSimple portal: Escalate privileges
+#### <a name="cloudsimple-portal-escalate-privileges"></a>CloudSimple 门户：提升权限
 
-The default 'cloudowner' user doesn't have sufficient privileges in the Private Cloud vCenter to install Horizon, so the user's vCenter privileges must be escalated. For more information, see [Escalate privileges](escalate-private-cloud-privileges.md).
+默认值为 "cloudowner" 的用户在私有云 vCenter 中没有足够的权限来安装，因此必须升级用户的 vCenter 特权。 有关详细信息，请参阅[提升权限](escalate-private-cloud-privileges.md)。
 
-#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-horizon-installation"></a>vCenter UI: Create a user in Private Cloud for Horizon installation
+#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-horizon-installation"></a>vCenter UI：在私有云中创建用于地平线安装的用户
 
-1. Sign in to vCenter using the 'cloudowner' user credentials.
-2. Create a new user, 'horizon-soln-admin', in vCenter and add the user to the administrators group in vCenter.
-3. Sign out of vCenter as the 'cloudowner' user and sign in as the 'horizon-soln-admin' user.
+1. 使用 "cloudowner" 用户凭据登录到 vCenter。
+2. 在 vCenter 中创建新用户 "soln-管理员"，并将该用户添加到 vCenter 中的 administrators 组。
+3. 以 "cloudowner" 用户身份注销 vCenter，并以 "soln-admin" 用户身份登录。
 
-#### <a name="vcenter-ui-install-vmware-horizon"></a>vCenter UI: Install VMware Horizon
+#### <a name="vcenter-ui-install-vmware-horizon"></a>vCenter UI：安装 VMware 地平线
 
-As mentioned in the earlier logical architecture section, Horizon solution has the following components:
+如前面的逻辑体系结构部分所述，地平线解决方案包含以下组件：
 
-* VMware Horizon View
-* VMware Unified Access Gateway
-* VMware App Volume Manager
-* VMware User Environment Manager
+* VMware 地平线视图
+* VMware 统一访问网关
+* VMware 应用卷管理器
+* VMware 用户环境管理器
 
-Install the components as follows:
+按如下所示安装组件：
 
-1. Install and configure Unified Access Gateway by following the instructions provided in the VMware document [Deploying and Configuring VMware Unified Access Gateway](https://docs.vmware.com/en/Unified-Access-Gateway/3.3.1/com.vmware.uag-331-deploy-config.doc/GUID-F5CE0D5E-BE85-4FA5-BBCF-0F86C9AB8A70.html).
+1. 按照 VMware 文档[部署和配置 Vmware 统一访问网关](https://docs.vmware.com/en/Unified-Access-Gateway/3.3.1/com.vmware.uag-331-deploy-config.doc/GUID-F5CE0D5E-BE85-4FA5-BBCF-0F86C9AB8A70.html)中提供的说明安装和配置统一访问网关。
 
-2. Install Horizon View in the Private Cloud by following the instructions in [View Installation Guide](https://docs.vmware.com/en/VMware-Horizon-7/7.4/horizon-installation/GUID-37D39B4F-5870-4188-8B11-B6C41AE9133C.html).
+2. 按照[查看安装指南](https://docs.vmware.com/en/VMware-Horizon-7/7.4/horizon-installation/GUID-37D39B4F-5870-4188-8B11-B6C41AE9133C.html)中的说明，在私有云中安装范围视图。
 
-3. Install App Volume Manager by following the instructions in [Install and Configure VMware App Volumes](https://docs.vmware.com/en/VMware-App-Volumes/2.10/com.vmware.appvolumes.user.doc/GUID-5E8BAF8C-F5A6-412C-9424-266BA7109BA4.html).
+3. 按照[安装和配置 VMware 应用卷](https://docs.vmware.com/en/VMware-App-Volumes/2.10/com.vmware.appvolumes.user.doc/GUID-5E8BAF8C-F5A6-412C-9424-266BA7109BA4.html)中的说明安装应用卷管理器。
 
-4. Install and configure User Environment Manager by following the instructions in [About Installing and Configuring VMware User Environment Manager](https://docs.vmware.com/en/VMware-User-Environment-Manager/9.4/com.vmware.user.environment.manager-install-config/GUID-DBBC82E4-483F-4B28-9D49-4D28E08715BC.html).
+4. 按照[关于安装和配置 VMware 用户环境管理器](https://docs.vmware.com/en/VMware-User-Environment-Manager/9.4/com.vmware.user.environment.manager-install-config/GUID-DBBC82E4-483F-4B28-9D49-4D28E08715BC.html)中的说明安装和配置用户环境管理器。
 
-#### <a name="file-a-support-request-to-upload-vmware-horizon-pre-packaged-app-volumes"></a>File a support request to upload VMware Horizon pre-packaged app volumes
+#### <a name="file-a-support-request-to-upload-vmware-horizon-pre-packaged-app-volumes"></a>为上载 VMware 地平线预打包应用程序卷提供支持请求
 
-As a part of the installation process, App Volume Manager uses pre-packaged volumes to provision app stacks and writable volumes. These volumes serve as templates for app stacks and writable volumes.
+作为安装过程的一部分，应用卷管理器使用预打包的卷来预配应用堆栈和可写卷。 这些卷用作应用堆栈和可写卷的模板。
 
-Uploading the volumes to the Private Cloud datastore requires the ESXi root password. For assistance, submit a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Attach the AppVolumes installer bundle so that CloudSimple support personnel can upload the templates to your Private Cloud environment.
+将卷上传到私有云数据存储需要 ESXi root 密码。 若要获得帮助，请提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 附加 AppVolumes 安装程序捆绑包，以便 CloudSimple 支持人员可以将模板上传到私有云环境。
 
-#### <a name="cloudsimple-portal-de-escalate-privileges"></a>CloudSimple portal: De-escalate privileges
+#### <a name="cloudsimple-portal-de-escalate-privileges"></a>CloudSimple 门户：取消提升权限
 
-You can now [de-escalate the privileges](escalate-private-cloud-privileges.md#de-escalate-privileges) of the 'cloudowner' user.
+你现在可以[取消升级](escalate-private-cloud-privileges.md#de-escalate-privileges)"cloudowner" 用户的权限。
 
-## <a name="ongoing-management-of-your-horizon-solution"></a>Ongoing management of your Horizon solution
+## <a name="ongoing-management-of-your-horizon-solution"></a>正在进行的水平解决方案管理
 
-You have full control over Horizon and App Volume Manager software in your Private Cloud environment and are expected to perform the necessary software lifecycle management. Ensure that any new versions of software are compatible with the Private Cloud vCenter and PSC before updating or upgrading Horizon or App Volume.
+你可以完全控制私有云环境中的地平线和应用卷管理器软件，并且应执行必要的软件生命周期管理。 在更新或升级范围或应用程序卷之前，请确保软件的任何新版本都与私有云 vCenter 和 PSC 兼容。

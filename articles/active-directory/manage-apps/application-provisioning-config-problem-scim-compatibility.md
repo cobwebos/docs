@@ -45,7 +45,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
-不。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
+否。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
 修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](configure-single-sign-on-non-gallery-applications.md)。
 

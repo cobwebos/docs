@@ -1,5 +1,5 @@
 ---
-title: Script action for Python packages with Jupyter on Azure HDInsight
+title: Azure HDInsight 上的 Jupyter 的 Python 包的脚本操作
 description: 逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -14,17 +14,17 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74215559"
 ---
-# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Safely manage Python environment on Azure HDInsight using Script Action
+# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
 > [!div class="op_single_selector"]
 > * [使用单元格 magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [使用脚本操作](apache-spark-python-package-installation.md)
 
-HDInsight has two built-in Python installations in the Spark cluster, Anaconda Python 2.7 and Python 3.5. In some cases, customers need to customize the Python environment, like installing external Python packages or another Python version. In this article, we show the best practice of safely managing Python environments for an [Apache Spark](https://spark.apache.org/) cluster on HDInsight.
+HDInsight 在 Spark 群集中有两个内置的 Python 安装，Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，如安装外部 Python 包或其他 Python 版本。 本文介绍如何安全地管理 HDInsight 上的[Apache Spark](https://spark.apache.org/)群集的 Python 环境。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -33,98 +33,98 @@ HDInsight has two built-in Python installations in the Spark cluster, Anaconda P
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件
 
-Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 For more information, see [Azure Support FAQ website](https://azure.microsoft.com/support/faq/). HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅[Azure 支持常见问题网站](https://azure.microsoft.com/support/faq/)。 HDInsight 服务为内置组件提供附加的支持级别。
 
 HDInsight 服务中有两种类型的开放源代码组件：
 
-* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 For example, Apache Hadoop YARN Resource Manager, the Apache Hive query language (HiveQL), and the Mahout library belong to this category. [HDInsight 提供的 Apache Hadoop 群集版本的新增功能](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)中提供了群集组件的完整列表。
+* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Apache Hadoop YARN 资源管理器，则 Apache Hive 查询语言（HiveQL）和 Mahout 库属于此类别。 [HDInsight 提供的 Apache Hadoop 群集版本的新增功能](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)中提供了群集组件的完整列表。
 * **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
 
 > [!IMPORTANT]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 Also Apache projects have project sites on [https://apache.org](https://apache.org), for example: [Hadoop](https://hadoop.apache.org/).
+> 自定义组件可获得合理范围的支持，帮助进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如 [Hadoop](https://hadoop.apache.org/)。
 
-## <a name="understand-default-python-installation"></a>Understand default Python installation
+## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
-HDInsight Spark cluster is created with Anaconda installation. There are two Python installations in the cluster, Anaconda Python 2.7 and Python 3.5. The table below shows the default Python settings for Spark, Livy, and Jupyter.
+HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 Python 安装，Anaconda Python 2.7 和 Python 3.5。 下表显示了 Spark、Livy 和 Jupyter 的默认 Python 设置。
 
 | |Python 2.7|Python 3.5|
 |----|----|----|
-|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Default set to 2.7|N/A|
-|Livy|Default set to 2.7|N/A|
-|Jupyter|PySpark kernel|PySpark3 kernel|
+|Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|默认设置为2。7|不适用|
+|Livy|默认设置为2。7|不适用|
+|Jupyter|PySpark 内核|PySpark3 内核|
 
-## <a name="safely-install-external-python-packages"></a>Safely install external Python packages
+## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
 
-HDInsight cluster depends on the built-in Python environment, both Python 2.7 and Python 3.5. Directly installing custom packages in those default built-in environments may cause unexpected library version changes, and break the cluster further. In order to safely install custom external Python packages for your Spark applications, follow below steps.
+HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5。 直接在这些默认的内置环境中安装自定义包可能会导致意外的库版本更改，并进一步打破群集。 若要为 Spark 应用程序安全安装自定义外部 Python 包，请执行以下步骤。
 
-1. Create Python virtual environment using conda. A virtual environment provides an isolated space for your projects without breaking others. When creating the Python virtual environment, you can specify python version that you want to use. Note that you still need to create virtual environment even though you would like to use Python 2.7 and 3.5. This is to make sure the cluster’s default environment not getting broke. Run script actions on your cluster for all nodes with below script to create a Python virtual environment. 
+1. 使用 conda 创建 Python 虚拟环境。 虚拟环境为项目提供隔离空间，而不会中断其他用户。 创建 Python 虚拟环境时，可以指定要使用的 python 版本。 请注意，即使要使用 Python 2.7 和3.5，仍需要创建虚拟环境。 这是为了确保群集的默认环境不会中断。 使用以下脚本在群集上运行脚本操作，以创建 Python 虚拟环境。 
 
-    -   `--prefix` specifies a path where a conda virtual environment lives. There are several configs that need to be changed further based on the path specified here. In this example, we use the py35new, as the cluster has an existing virtual environment called py35 already.
-    -   `python=` specifies the Python version for the virtual environment. In this example, we use version 3.5, the same version as the cluster built in one. You can also use other Python versions to create the virtual environment.
-    -   `anaconda` specifies the package_spec as anaconda to install Anaconda packages in the virtual environment.
+    -   `--prefix` 指定 conda 虚拟环境所在的路径。 需要根据此处指定的路径进一步更改某些配置。 在此示例中，我们使用 py35new，因为群集已有一个名为 py35 的现有虚拟环境。
+    -   `python=` 指定虚拟环境的 Python 版本。 在此示例中，我们使用版本3.5，该版本与内置群集的版本相同。 你还可以使用其他 Python 版本来创建虚拟环境。
+    -   `anaconda` 将 package_spec 指定为 anaconda，以便在虚拟环境中安装 Anaconda 包。
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
     ```
 
-2. Install external Python packages in the created virtual environment if needed. Run script actions on your cluster for all nodes with below script to install external Python packages. You need to have sudo privilege here in order to write files to the virtual environment folder.
+2. 如果需要，请在创建的虚拟环境中安装外部 Python 包。 在群集上对具有以下脚本的所有节点运行脚本操作以安装外部 Python 包。 若要将文件写入虚拟环境文件夹，需要在此处具有 sudo 权限。
 
     可以在[包索引](https://pypi.python.org/pypi)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [conda-forge](https://conda-forge.org/feedstocks/) 提供的包。
 
-    -   `seaborn` is the package name that you would like to install.
-    -   `-n py35new` specify the virtual environment name that just gets created. Make sure to change the name correspondingly based on your virtual environment creation.
+    -   `seaborn` 是要安装的包名称。
+    -   `-n py35new` 指定刚创建的虚拟环境名称。 请确保根据虚拟环境创建相应地更改名称。
 
     ```bash
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    if you don't know the virtual environment name, you can SSH to the header node of the cluster and run `/usr/bin/anaconda/bin/conda info -e` to show all virtual environments.
+    如果不知道虚拟环境名称，可以通过 SSH 连接到群集的标头节点并运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
 
-3. Change Spark and Livy configs and point to the created virtual environment.
+3. 更改 Spark 和 Livy 配置，并指向创建的虚拟环境。
 
-    1. Open Ambari UI, go to Spark2 page, Configs tab.
+    1. 打开 Ambari UI，中转到 Custom-spark2-defaults 页，"配置" 选项卡。
     
-        ![Change Spark and Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        ![通过 Ambari 更改 Spark 和 Livy config](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
  
-    2. Expand Advanced livy2-env, add below statements at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    2. 展开 Advanced livy2-env，将下面的语句添加到底部。 如果使用不同的前缀安装虚拟环境，请相应地更改路径。
 
         ```
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Change Livy config through Ambari](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        ![通过 Ambari 更改 Livy config](./media/apache-spark-python-package-installation/ambari-livy-config.png)
 
-    3. Expand Advanced spark2-env, replace the existing export PYSPARK_PYTHON statement at bottom. If you installed the virtual environment with a different prefix, change the path correspondingly.
+    3. 展开 Advanced custom-spark2-defaults-env，替换底部的现有 export PYSPARK_PYTHON 语句。 如果使用不同的前缀安装虚拟环境，请相应地更改路径。
 
         ```
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        ![通过 Ambari 更改 Spark 配置](./media/apache-spark-python-package-installation/ambari-spark-config.png)
 
-    4. Save the changes and restart affected services. These changes need a restart of Spark2 service. Ambari UI will prompt a required restart reminder, click Restart to restart all affected services.
+    4. 保存更改并重新启动受影响的服务。 这些更改需要重新启动 Custom-spark2-defaults 服务。 Ambari UI 将提示需要重新启动提醒，单击 "重新启动" 以重新启动所有受影响的服务。
 
-        ![Change Spark config through Ambari](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![通过 Ambari 更改 Spark 配置](./media/apache-spark-python-package-installation/ambari-restart-services.png)
  
-4.  If you would like to use the new created virtual environment on Jupyter. You need to change Jupyter configs and restart Jupyter. Run script actions on all header nodes with below statement to point Jupyter to the new created virtual environment. Make sure to modify the path to the prefix you specified for your virtual environment. After running this script action, restart Jupyter service through Ambari UI to make this change available.
+4.  如果要在 Jupyter 上使用新创建的虚拟环境。 需要更改 Jupyter 配置并重新启动 Jupyter。 在包含以下语句的所有标头节点上运行脚本操作，使 Jupyter 指向新创建的虚拟环境。 请确保修改为虚拟环境指定的前缀的路径。 运行此脚本操作后，通过 Ambari UI 重启 Jupyter 服务，以使此更改可用。
 
     ```
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
-    You could double confirm the Python environment in Jupyter Notebook by running below code:
+    可以通过运行以下代码，在 Jupyter Notebook 中加倍确认 Python 环境：
 
-    ![Check Python version in Jupyter Notebook](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    ![在 Jupyter Notebook 中检查 Python 版本](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
 ## <a name="known-issue"></a>已知问题
 
-There is a known bug for Anaconda version 4.7.11 and 4.7.12. If you see your script actions hanging at `"Collecting package metadata (repodata.json): ...working..."` and failing with `"Python script has been killed due to timeout after waiting 3600 secs"`. You can download [this script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) and run it as script actions on all nodes to fix the issue.
+Anaconda 版本4.7.11 和4.7.12 有一个已知的 bug。 如果你的脚本操作在 `"Collecting package metadata (repodata.json): ...working..."` 挂起，但未能通过 `"Python script has been killed due to timeout after waiting 3600 secs"`。 您可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)并将其作为脚本操作运行，以解决此问题。
 
-To check your Anaconda version, you can SSH to the cluster header node and run `/usr/bin/anaconda/bin/conda --v`.
+若要检查 Anaconda 版本，可以通过 SSH 连接到群集标头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 
 ## <a name="seealso"></a>另请参阅
 

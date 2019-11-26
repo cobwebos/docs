@@ -28,10 +28,10 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 - 根据用量调整大小，以控制成本。
 - 获取 Cloudyn 提供的经济高效的大小调整优化建议。
 
-例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 The Azure VM metrics correspond to _Percentage CPU_ and _\Memory\% Committed Bytes In Use_.
+例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标与使用中的已_提交字节数百分比\% \Memory_。
 
 > [!NOTE]
-> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn is not compatible with the [Log Analytics agent](../azure-monitor/platform/agents-overview.md). 
+> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与[Log Analytics 代理](../azure-monitor/platform/agents-overview.md)不兼容。 
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
@@ -44,7 +44,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>在 Azure 门户中启用扩展指标
 
-标准指标属于主机指标。 The _Percentage CPU_ metric is one example. 来宾 VM 的某些基本指标也称为扩展指标。 Examples of extended metrics include _\Memory\% Committed Bytes In Use_ and _\Memory\Available Bytes_.
+标准指标属于主机指标。 _百分比 CPU_指标就是一个示例。 来宾 VM 的某些基本指标也称为扩展指标。 扩展指标的示例包括 _\Memory\% 使用中的已提交字节数_和 _\Memory\Available 字节_数。
 
 启用扩展指标的过程非常简单。 对每个 VM 启用来宾级监视。 启用来宾级监视时，将在 VM 上安装 Azure 诊断代理。 默认情况下会添加一组基本的扩展指标。 以下过程在经典和常规 VM，以及 Windows 和 Linux VM 上都是相同的。
 
@@ -80,7 +80,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="view-azure-performance-metrics"></a>查看 Azure 性能指标
 
-若要在 Cloudyn 门户中查看 Azure 实例的性能指标，请导航到“资产” > “计算” > “实例资源管理器”。 在 VM 实例列表中展开某个实例，然后展开某个资源查看详细信息。
+若要在 Cloudyn 门户中查看 Azure 实例的性能指标，请导航到“资产” **“计算”** “实例资源管理器”。 >  >  在 VM 实例列表中展开某个实例，然后展开某个资源查看详细信息。
 
 ![实例资源管理器中显示的示例信息](./media/azure-vm-extended-metrics/instance-explorer.png)
 

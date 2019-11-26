@@ -27,13 +27,13 @@ ms.locfileid: "74231496"
 > - 将节点配置分配给托管节点
 > - 检查托管节点的符合性状态
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
 - 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
 - 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
-- Azure PowerShell 模块 3.6 版或更高版本。 可以运行 `Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+- Azure PowerShell 模块 3.6 版或更高版本。 可以运行 `Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 - 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
 
 ## <a name="log-in-to-azure"></a>登录 Azure
@@ -65,7 +65,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> In more advanced scenarios where you require multiple modules to be imported that provide DSC Resources, make sure each module has a unique `Import-DscResource` line in your configuration.
+> 在需要导入多个提供 DSC 资源的模块的更高级方案中，请确保每个模块在配置中都有唯一的 `Import-DscResource` 行。
 
 调用 `Import-AzureRmAutomationDscConfiguration` cmdlet，将配置上传到自动化帐户：
 
@@ -134,16 +134,16 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 默认情况下，每隔 30 分钟会检查一次 DSC 节点是否符合节点配置。
 有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
-## <a name="working-with-partial-configurations"></a>Working with Partial Configurations
+## <a name="working-with-partial-configurations"></a>使用部分配置
 
-Azure Automation State Configuration supports usage of [partial configurations](/powershell/scripting/dsc/pull-server/partialconfigs).
-In this scenario, DSC is configured to manage multiple configurations independently, and each configuration is retrieved from Azure Automation.
-However, only one configuration can be assigned to a node per automation account.
-This means if you are using two configurations for a node you will require two automation accounts.
+Azure 自动化状态配置支持使用[部分配置](/powershell/scripting/dsc/pull-server/partialconfigs)。
+在此方案中，DSC 配置为独立管理多个配置，并且每个配置都从 Azure 自动化中检索。
+但是，每个自动化帐户只能为一个节点分配一个配置。
+这意味着，如果对节点使用两种配置，则需要两个自动化帐户。
 
-For details about how to register a partial configuration from pull service, see the documentation for [partial configurations](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+有关如何从请求服务注册部分配置的详细信息，请参阅[部分配置](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
 
-For more information about how teams can work together to collaboratively manage servers using configuration as code see [Understanding DSC's role in a CI/CD Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
+有关团队如何协作以代码形式使用配置来协作管理服务器的更多信息，请参见[了解 DSC 在 CI/CD 管道中的角色](/powershell/scripting/dsc/overview/authoringadvanced)。
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>检查托管节点的符合性状态
 
@@ -160,30 +160,30 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>Removing nodes from service
+## <a name="removing-nodes-from-service"></a>从服务中删除节点
 
-When you add a node to Azure Automation State Configuration, the settings in Local Configuration Manager are set to register with the service and pull configurations and required modules to configure the machine.
-If you choose to remove the node from the service, you can do so using either the Azure portal or the Az cmdlets.
+当节点添加到 Azure 自动化 State Configuration 时，本地配置管理器中的设置会设置为注册到服务，并拉取配置和所需的模块，以配置计算机。
+如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 进行删除。
 
 > [!NOTE]
-> Unregistering a node from the service only sets the Local Configuration Manager settings so the node is no longer connecting to the service.
-> This does not effect the configuration that is currently applied to the node.
-> To remove the current configuration, use the [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) or delete the local configuration file (this is the only option for Linux nodes).
+> 从服务注销节点只会设置本地配置管理器设置，这样，该节点便不再连接到该服务。
+> 这不影响当前应用于该节点的配置。
+> 若要删除当前配置，请使用 [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 或删除本地配置文件（这是适用于 Linux 节点的唯一选项）。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-From Azure Automation, click on **State configuration (DSC)** in the table of contents.
-Next click **Nodes** to view the list of nodes that are registered with the service.
-Click on the name of the node you wish to remove.
-In the Node view that opens, click **Unregister**.
+在 Azure 自动化中，单击目录中的“状态配置(DSC)”。
+接下来，单击“节点”，以查看注册到服务的节点的列表。
+单击要删除的节点的名称。
+在打开的“节点”视图中，单击“注销”。
 
 ### <a name="powershell"></a>PowerShell
 
-To unregister a node from Azure Automation State Configuration service using PowerShell, follow the documentation for the cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+若要使用 PowerShell 从 Azure 自动化 State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) 的文档进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
+- 若要开始使用，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)

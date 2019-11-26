@@ -1,5 +1,5 @@
 ---
-title: Access from Container Instances
+title: 从容器实例访问
 description: 了解如何使用 Azure Active Directory 服务主体从 Azure 容器实例允许访问专用容器注册表中的映像。
 ms.topic: article
 ms.date: 04/23/2018

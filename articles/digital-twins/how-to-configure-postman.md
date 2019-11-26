@@ -62,11 +62,11 @@ ms.locfileid: "74304829"
 
     [![配置新 Postman 重定向 URI](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. 若要确保[将应用注册为**公用客户端**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，请打开应用注册的 "**身份验证**" 窗格，并在该窗格中向下滚动。 在 "**默认客户端类型**" 部分中，选择 **"是"** ，将**应用程序视为公共客户端**，然后单击 "**保存**"。
+1. 若要确保[将应用注册为“公共客户端”](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)，请打开用于应用注册的“身份验证”窗格，然后在该窗格中向下滚动。 在“默认客户端类型”部分中，为“将应用程序视为公共客户端”选择“是”，然后点击“保存”。
 
-    检查**访问令牌**，以在**oauth2AllowImplicitFlow**中启用 "设置" 设置。
+    选中“访问令牌”以启用 Manifest.json 中的“oauth2AllowImplicitFlow”设置。
 
-    [![公用客户端配置设置](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [![公共客户端配置设置](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
 
 1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
 
@@ -98,7 +98,7 @@ ms.locfileid: "74304829"
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
     | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
-    | 范围 | 留空 |
+    | 作用域 | 留空 |
     | 状态 | 留空 |
     | 客户端身份验证 | `Send as Basic Auth header` |
 

@@ -58,7 +58,7 @@ ms.locfileid: "74483538"
 DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局的，位于数据中心外部，且不受任何区域级或可用性区域 (AZ) 级故障影响。 可以使用基于 DNS 的故障转移机制。在 Azure 中，有两个 DNS 服务可以某种方式完成相同任务，即 Azure DNS（权威 DNS）和 Azure 流量管理器（基于 DNS 的智能流量路由）。 
 
 请务必了解本文为介绍解决方案而广泛使用的一些 DNS 概念：
-- **DNS A Record** – A Records are pointers that point a domain to an IPv4 address. 
+- **DNS a 记录**– A 记录是指将域指向 IPv4 地址的指针。 
 - **CNAME 或 Canonical 名称** - 此记录类型用于指向其他 DNS 记录。 CNAME 响应不返回 IP 地址，而是返回指向包含 IP 地址的记录的指针。 
 - **加权路由** - 可以关联权重和服务终结点，然后根据分配的权重来分布流量。 这种路由方法是流量管理器提供的四种流量路由机制之一。 有关详细信息，请参阅[加权路由方法](../traffic-manager/traffic-manager-routing-methods.md#weighted)。
 - **优先级路由** - 优先级路由以终结点的运行状况检查为依据。 默认情况下，Azure 流量管理器将所有流量都发送到优先级最高的终结点。在发生故障或灾难后，流量管理器将流量路由到辅助终结点。 有关详细信息，请参阅[优先级路由方法](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)。
@@ -72,7 +72,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 为此解决方案做出了如下假设：
 - 主终结点和辅助终结点使用不经常变化的静态 IP。 假设主站点的 IP 为 100.168.124.44，辅助站点的 IP 为 100.168.124.43。
-- 主站点和辅助站点均有对应的 Azure DNS 区域。 假设主站点的终结点为 prod.contoso.com，备份站点的终结点为 dr.contoso.com。 A DNS record for the main application known as www\.contoso.com also exists.   
+- 主站点和辅助站点均有对应的 Azure DNS 区域。 假设主站点的终结点为 prod.contoso.com，备份站点的终结点为 dr.contoso.com。 此外，还有主应用程序的 DNS 记录 www\.contoso.com。   
 - TTL 不高于组织中设置的 RTO SLA。 例如，如果企业将应用程序灾难响应 RTO 设置为 60 分钟，TTL 应短于 60 分钟，最好是越低越好。 
   设置 Azure DNS 手动故障转移的具体步骤如下：
 - 创建 DNS 区域
@@ -80,7 +80,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 - 更新 CNAME 记录
 
 ### <a name="step-1-create-a-dns"></a>第 1 步：创建 DNS
-Create a DNS zone (for example, www\.contoso.com) as shown below:
+创建 DNS 区域（例如，www\.contoso.com），如下所示：
 
 ![在 Azure 中创建 DNS 区域](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -88,13 +88,13 @@ Create a DNS zone (for example, www\.contoso.com) as shown below:
 
 ### <a name="step-2-create-dns-zone-records"></a>第 2 步：创建 DNS 区域记录
 
-Within this zone create three records (for example - www\.contoso.com, prod.contoso.com and dr.consoto.com) as show below.
+在此区域内，创建三条记录（例如，www\.contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
 
 ![创建 DNS 区域记录](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 图：在 Azure 中创建 DNS 区域记录
 
-In this scenario, site, www\.contoso.com has a TTL of 30 mins, which is well below the stated RTO, and is pointing to the production site prod.contoso.com. 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务，如 Azure Monitor、Azure App Insights 或任何合作伙伴监视解决方案（如 Dynatrace）。甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
+在此方案中，站点 www\.contoso.com 的 TTL 为 30 分钟，这远低于规定的 RTO，并且指向生产站点 prod.contoso.com。 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务，如 Azure Monitor、Azure App Insights 或任何合作伙伴监视解决方案（如 Dynatrace）。甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
 
 ### <a name="step-3-update-the-cname-record"></a>第 3 步：更新 CNAME 记录
 
@@ -104,7 +104,7 @@ In this scenario, site, www\.contoso.com has a TTL of 30 mins, which is well bel
 
 图：在 Azure 中更新 CNAME 记录
 
-Within 30 minutes, during which most resolvers will refresh the cached zone file, any query to www\.contoso.com will be redirected to dr.contoso.com.
+在 30 分钟内，大多数解析程序都会刷新缓存的区域文件，任何指向 www\.contoso.com 的查询都会重定向到 dr.contoso.com。
 还可以运行下面的 Azure CLI 命令来更改 CNAME 值：
  ```azurecli
    az network dns record-set cname set-record \
@@ -140,9 +140,9 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 ### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>第 1 步：新建 Azure 流量管理器配置文件
 新建 Azure 流量管理器配置文件，并命名为“contoso123”，再选择“优先级”作为“路由方法”。 若有要与之关联的现有资源组，可以选择现有资源组，否则新建资源组。
 
-![Create Traffic Manager profile](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+![创建流量管理器配置文件](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 
-*Figure - Create a Traffic Manager profile*
+*图 - 创建流量管理器配置文件*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 

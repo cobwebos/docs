@@ -22,9 +22,9 @@ ms.locfileid: "74287835"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-不。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此处](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)介绍了门户警报的详细行为。 但是，如果你有兴趣获得成功作业的警报，可以使用[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)介绍了门户警报的详细行为。 但是，如果你有兴趣获得成功作业的警报，可以使用[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
 
-### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>是否可以在 "备份作业" 菜单中看到计划的备份作业？
+### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
 "备份作业" 菜单将仅显示即席备份作业。 对于计划作业，请使用[Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "74287835"
 
 ### <a name="if-i-delete-a-database-from-an-instance-what-will-happen-to-the-backups"></a>如果从实例中删除数据库，备份会发生什么情况呢？
 
-如果从 SAP HANA 实例中删除数据库，则仍将尝试数据库备份。 这意味着，已删除的数据库在 "**备份项**" 下开始显示为 "不正常"，并且仍受保护。
+如果从 SAP HANA 实例中删除数据库，则仍将尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。
 停止保护此数据库的正确方法是对此数据库上的**删除数据执行停止备份**。
 
 ### <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-the-behavior-be"></a>如果在保护数据库后更改该数据库的名称，会出现什么情况？

@@ -12,7 +12,7 @@ author: cody-dkdc
 ms.date: 11/04/2019
 ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74276783"

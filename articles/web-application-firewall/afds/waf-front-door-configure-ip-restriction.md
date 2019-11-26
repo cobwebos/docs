@@ -28,7 +28,7 @@ ms.locfileid: "74186682"
 在开始配置 IP 限制策略之前，请设置 CLI 环境并创建 Azure 前门服务配置文件。
 
 #### <a name="set-up-the-azure-cli-environment"></a>设置 Azure CLI 环境
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与你的帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
+1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门服务扩展。
  2. 如果在 Bash 本地使用 CLI，请使用 `az login`登录到 Azure。
 
 #### <a name="create-an-azure-front-door-service-profile"></a>创建 Azure 前门服务配置文件

@@ -19,9 +19,9 @@ ms.locfileid: "74215796"
 
 在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。
 
-For example, choose **Interactive Query** cluster type to optimize for ad hoc, interactive queries. 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+例如，选择“交互式查询”群集类型可以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
 
-HDInsight clusters of Hadoop cluster type aren't optimized for performance by default. 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
+默认情况下，Hadoop 群集类型的 HDInsight 群集未针对性能进行优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
 ## <a name="scale-out-worker-nodes"></a>向外缩放辅助节点
 
@@ -29,11 +29,11 @@ HDInsight clusters of Hadoop cluster type aren't optimized for performance by de
 
 * 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
-    ![Azure portal cluster size nodes](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Azure 门户群集大小节点](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
 
 * 创建后，还可以通过编辑工作节点的数目来进一步横向扩展群集，而无需重新创建：
 
-    ![Azure portal scale cluster size](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure 门户缩放群集大小](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
 有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
@@ -41,12 +41,12 @@ HDInsight clusters of Hadoop cluster type aren't optimized for performance by de
 
 [Apache Tez](https://tez.apache.org/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
-![HDInsight Apache Tez overview diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight Apache Tez 概述关系图](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez 速度更快，因为：
 
-* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)** 。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez doesn't have such constraint and can process complex DAG as one job thus minimizing job startup overhead.
-* **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 Since Tez minimizes number of jobs for each Hive query, it's able to avoid unnecessary writes.
+* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)** 。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez 没有此类限制，可将复杂 DAG 作为一个作业处理，从而最大程度地减少了作业启动开销。
+* **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 由于 Tez 会将每个 Hive 查询的作业数降到最低，因此可以避免不必要的写入。
 * **最大限度地降低启动延迟**。 Tez 可以减少需要启动的映射器数目，同时还能提高优化吞吐量，因此，更有利于最大限度地降低启动延迟。
 * **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
 * **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
@@ -65,7 +65,7 @@ I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要
 
 Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
 
-![HDInsight Apache Hive partitioning](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![HDInsight Apache Hive 分区](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 一些分区注意事项：
 
@@ -101,7 +101,7 @@ STORED AS TEXTFILE;
    LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **动态分区**表示希望 Hive 自动创建分区。 Since you've already created the partitioning table from the staging table, all you need to do is insert data to the partitioned table:
+* **动态分区**表示希望 Hive 自动创建分区。 由于您已经从临时表创建了分区表，因此您只需将数据插入到已分区表中：
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -198,5 +198,5 @@ set hive.vectorized.execution.enabled = true;
 在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [Analyze flight delay data by using Interactive Query in HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [使用 HDInsight 中的交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
 * [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)

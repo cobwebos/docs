@@ -519,7 +519,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ## <a name="Environment"></a>环境约束
 
-### <a name="subnet"></a>子网
+### <a name="subnet"></a>Subnet
 -  在部署托管实例的子网中，无法放置任何其他资源（例如虚拟机）。 请使用其他子网部署这些资源。
 - 子网必须有足够数量的可用 [IP 地址](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 至少为 16 个，但建议在子网中至少有 32 个 IP 地址。
 - [不能将服务终结点与托管实例的子网相关联](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。 创建虚拟网络时，请务必禁用“服务终结点”选项。

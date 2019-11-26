@@ -25,14 +25,14 @@ ms.locfileid: "74423886"
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 Also, see [migration guidance from v2 to v3](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
-## <a name="a-idissuesknown-issues"></a><a id="issues"/>Known issues
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>已知问题
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | 描述 |
+| 问题 | 说明 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
@@ -41,34 +41,34 @@ ms.locfileid: "74423886"
 | 查询实体时，一次返回的实体数限制为 1,000 个，因为公共 REST 第 2 版将查询结果数限制为 1,000 个。 |使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 Skip 和 Take (.NET)/ top (REST)。 |
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
-|The REST API responds with an error message saying “The filter cannot be accessed by this version of REST Api” when attempting to get an Asset or Account level filter.|The filter was created or modified with a newer API version than is being used to try to get the filter. This can happen if two API versions are being used by code or tools being used by the customer.  The best solution here is to upgrade the code or tools to use the newer or the two API versions.|
+|尝试获取资产或帐户级别筛选器时，REST API 会以一条错误消息做出响应，指出“此版本的 REST API 无法访问筛选器”。|该筛选器是使用比尝试获取该筛选器所使用的 API 版本更高的 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两个 API 版本。|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
+### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-We are announcing deprecation of *Azure Media Indexer* and *Azure Media Indexer 2 Preview*. The [Azure Media Indexer](media-services-index-content.md) media processor will be retired on October 1st of 2020. The [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) media processors will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces these legacy media processors.
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
-For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
+### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors, which are being retired on March 31, 2020.
+我们宣布不推荐在2020年3月31日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
 
-For details, see [Migrate WAME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) and [Migrate AME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-The Media Hyperlapse Preview feature of Azure Media Services was deprecated.
+Azure 媒体服务的 Media Hyperlapse 预览功能已弃用。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-The Media Hyperlapse Preview feature of Azure Media Services will soon be retired. 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+Azure 媒体服务的 Media Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -203,7 +203,7 @@ Azure 媒体编修器正式推出 - 此媒体处理器将会通过模糊化所�
 
  将在 Media Encoder Standard 发布后大约 12 个月内开始弃用媒体编码器。
 
-### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
+### <a name="azure-sdk-for-php"></a>内置 Web 服务器
 Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 包，其中包含媒体服务的更新与新功能。 具体而言，适用于 PHP 的媒体服务 SDK 现支持最新[内容保护](media-services-content-protection-overview.md)功能。 使用 AES 和 DRM（PlayReady 和 Widevine）对这些功能进行动态加密（可以使用也可不使用标记限制）。 还支持缩放[编码单位](media-services-dotnet-encoding-units.md)。
 
 有关详细信息，请参阅：
@@ -233,7 +233,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)。
   
 可以通过[媒体服务 .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/)（从版本 3.5.1 开始）或 REST API 来配置 AssetDeliveryConfiguration 以使用 Widevine。 
-* 媒体服务增加了对 Apple ProRes 视频的支持。 你现在可以上传使用 Apple ProRes 或其他编解码器的 QuickTime 源视频文件。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)。
+* 媒体服务增加了对 Apple ProRes 视频的支持。 现在可以上传使用 Apple ProRes 或其他编解码器的 QuickTime 源视频文件。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)。
 * 现可使用 Media Encoder Standard 来执行子剪辑和实时存档提取操作。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)。
 * 在筛选方面做了以下更新： 
   

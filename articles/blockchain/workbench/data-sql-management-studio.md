@@ -1,5 +1,5 @@
 ---
-title: Query Azure Blockchain Workbench data using SQL Server Management Studio
+title: 使用 SQL Server Management Studio 查询 Azure 区块链工作台数据
 description: 了解如何从 SQL Server Management Studio 中连接到 Azure Blockchain Workbench 的 SQL 数据库。
 ms.date: 11/20/2019
 ms.topic: article
@@ -14,9 +14,9 @@ ms.locfileid: "74326038"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>通过 SQL Server Management Studio 使用 Azure Blockchain Workbench 数据
 
-利用 Microsoft SQL Server Management Studio，可以快速编写和测试针对 Azure Blockhain Workbench 的 SQL DB 的查询。 This section contains a step-by-step walkthrough of how to connect to Azure Blockchain Workbench's SQL Database from within SQL Server Management Studio.
+利用 Microsoft SQL Server Management Studio，可以快速编写和测试针对 Azure Blockhain Workbench 的 SQL DB 的查询。 本部分包含有关如何从 SQL Server Management Studio 中连接到 Azure 区块链工作台的 SQL 数据库的分步演练。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 下载 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
 

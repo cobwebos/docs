@@ -1,5 +1,5 @@
 ---
-title: Use managed identities on a virtual machine to acquire access token - Azure AD
+title: 使用虚拟机上的托管标识获取访问令牌-Azure AD
 description: 在虚拟机上使用 Azure 资源的托管标识获取 OAuth 访问令牌的分步说明和示例。
 services: active-directory
 documentationcenter: ''
@@ -26,11 +26,11 @@ ms.locfileid: "74232210"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 可以使用此标识向任何支持 Azure AD 身份验证的服务进行身份验证，而无需在代码中包含凭据。 
+Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
 
 本文提供有关获取令牌的各种代码和脚本示例，以及有关处理令牌过期和 HTTP 错误等重要主题的指导。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -70,7 +70,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 Azure 资源的托管标识终结点。 |
@@ -79,7 +79,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。 |
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
-| `mi_res_id` | (Optional) A query string parameter, indicating the mi_res_id (Azure Resource ID) of the managed identity you would like the token for. 如果 VM 有用户分配的多个托管标识，则为必需的。 |
+| `mi_res_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 mi_res_id（Azure 资源 ID）。 如果 VM 有用户分配的多个托管标识，则为必需的。 |
 
 使用 Azure 资源托管标识 VM 扩展终结点（计划于 2019 年 1 月弃用）的示例请求：
 
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -362,16 +362,16 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | error   | 错误标识符。 |
-| error_description | 错误的详细说明。 **Error descriptions can change at any time. Do not write code that branches based on values in the error description.**|
+| error_description | 错误的详细说明。 **错误说明随时可能会更改。不要编写根据错误说明中的值进行分支的代码。**|
 
 ### <a name="http-response-reference"></a>HTTP 响应参考
 
 本部分介绍可能的错误响应。 “200 OK”状态表示成功的响应，访问令牌包含在响应正文 JSON 的 access_token 元素中。
 
-| 状态代码 | 错误 | 错误说明 | 解决方案 |
+| 状态代码 | Error | 错误说明 | 解决方案 |
 | ----------- | ----- | ----------------- | -------- |
 | 400 错误请求 | invalid_resource | AADSTS50001：在名为 *\<TENANT-ID\>* 的租户中找不到名为 *\<URI\>* 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
 | 400 错误请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅前面 REST 部分中的“示例请求”。|

@@ -1,5 +1,5 @@
 ---
-title: Configure private IP addresses for VMs - Azure CLI
+title: 为 Vm 配置专用 IP 地址-Azure CLI
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na

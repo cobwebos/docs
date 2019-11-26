@@ -251,7 +251,7 @@ $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-b
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>步骤 1：存储负载均衡器资源
 
-将负载均衡器资源存储到变量中（如果还没有这样做）。 We're using the variable name **$lb**. For the attribute values in the script, use the names for the load balancer resources that were created in the previous steps.
+将负载均衡器资源存储到变量中（如果还没有这样做）。 使用变量名 **$lb**。对于脚本中的属性值，请使用在前面步骤中创建的负载均衡器资源的名称。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -295,7 +295,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 
 ### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>步骤 1：将负载均衡器对象分配给一个变量
 
-使用 `Get-AzLoadBalancer` 命令将负载均衡器对象（取自前一示例）分配到$slb 变量：
+使用 **命令将负载均衡器对象（取自前一示例）分配到**`Get-AzLoadBalancer`$slb 变量：
 
 ```azurepowershell-interactive
 $slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
@@ -319,7 +319,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="remove-an-existing-load-balancer"></a>删除现有的负载均衡器
 
-使用 `Remove-AzLoadBalancer` 命令删除NRP-RG 资源组中的NRP-LB 负载均衡器：
+使用 **命令删除** **NRP-RG 资源组中的** `Remove-AzLoadBalancer`NRP-LB 负载均衡器：
 
 ```azurepowershell-interactive
 Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG

@@ -19,7 +19,7 @@ ms.locfileid: "74229379"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要最新的 Azure PowerShell 模块版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要最新的 Azure PowerShell 模块版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

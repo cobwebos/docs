@@ -1,5 +1,5 @@
 ---
-title: Roll X.509 certificates in Azure IoT Hub Device Provisioning Service
+title: 在 Azure IoT 中心设备预配服务中滚动 x.509 证书
 description: 如何使用设备预配服务实例滚动更新 X.509 证书
 author: wesmc7777
 ms.author: wesmc
@@ -94,7 +94,7 @@ ms.locfileid: "74228757"
 
 1. 单击“单独注册”，然后单击列表中的注册 ID 条目。 
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“保存”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
 
     ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "74228757"
 
 1. 单击“注册组”，然后在列表中单击组名称。 
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“保存”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
 
     此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
 

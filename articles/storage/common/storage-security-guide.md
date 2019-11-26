@@ -1,6 +1,6 @@
 ---
 title: Azure 存储安全指南 | Microsoft Docs
-description: Details methods for securing Azure Storage accounts, including management plane security, authorization, network security, encryption, etc.
+description: 用于保护 Azure 存储帐户的详细信息，包括管理平面安全性、授权、网络安全、加密等。
 services: storage
 author: tamram
 ms.service: storage
@@ -18,40 +18,40 @@ ms.locfileid: "72926717"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
-Azure Storage provides a comprehensive set of security capabilities that together enable organizations to build and deploy secure applications:
+Azure 存储提供一组全面的安全功能，使组织能够构建和部署安全的应用程序：
 
-- All data (including metadata) written to Azure Storage is automatically encrypted using [Storage Service Encryption (SSE)](storage-service-encryption.md). For more information, see [Announcing Default Encryption for Azure Blobs, Files, Tables, and Queues Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) are supported for both resource management operations and data plane operations:   
+- 所有写入 Azure 存储的数据（包括元数据），都使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布 Azure blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
+- 资源管理操作和数据平面操作都支持 Azure Active Directory （Azure AD）和基于角色的访问控制（RBAC）：   
     - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
-    - Azure AD integration is supported for blob and queue data operations. RBAC roles can be scoped to a subscription, resource group, storage account, individual container or queue. Roles can be assigned to a security principal or a managed identity for Azure resources. 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
-- Data can be secured in transit between an application and Azure using [Client-Side Encryption](../storage-client-side-encryption.md), HTTPS, or SMB 3.0.  
+    - 支持通过 Azure AD 集成执行 blob 和队列数据操作。 RBAC 角色的作用域可以是订阅、资源组、存储帐户、单个容器或队列。 可以将角色分配给一个安全主体或 Azure 资源的托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。
+- 可以使用[客户端加密](../storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 在应用程序和 Azure 之间传输数据。  
 - Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)进行加密。
-- Delegated access to the data objects in Azure Storage can be granted using a shared access signature. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](storage-sas-overview.md).
-- Network-layer security between your application components and storage can be enabled using the storage firewall, service endpoints or private endpoints.
+- 在 Azure 存储中，可以使用共享访问签名授予数据对象的委派访问权限。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
+- 可以使用存储防火墙、服务终结点或专用终结点来启用应用程序组件和存储之间的网络层安全性。
 
-本文概述其中每项可配合 Azure 存储使用的安全功能。 Links are provided to articles provide additional details on each capability.
+本文概述其中每项可配合 Azure 存储使用的安全功能。 向文章提供了有关每个功能的其他详细信息。
 
-Here are the areas covered in this article:
+本文介绍了以下内容：
 
-* [Management Plane Security](#management-plane-security) – Securing resource-level access to your Storage Account
+* [管理平面安全性](#management-plane-security)-保护对存储帐户的资源级访问
 
-  The management plane consists of the operations used to manage your storage account. 此部分包括 Azure 资源管理器部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制对存储帐户的访问。 还解决了如何管理存储帐户密钥以及重新生成此类密钥。
+  管理平面包含用于管理存储帐户的操作。 此部分包括 Azure 资源管理器部署模型，以及如何使用基于角色的访问控制 (RBAC) 来控制对存储帐户的访问。 还解决了如何管理存储帐户密钥以及重新生成此类密钥。
 
-* [Network Security](#network-security) - Securing network-level access to your Storage Account
+* [网络安全](#network-security)-保护对你的存储帐户的网络级别访问
 
-  This section covers how you can secure the network-level access to the storage services endpoints. It discusses how you can use the storage firewall to allow access to your data from specific virtual networks or IP address ranges. It also covers the use of service endpoints and private endpoints with storage accounts.
+  本部分介绍如何保护对存储服务终结点的网络级别访问。 本文介绍如何使用存储防火墙来允许从特定虚拟网络或 IP 地址范围访问数据。 还介绍了如何将服务终结点和专用终结点用于存储帐户。
 
-* [Authorization](#authorization) – Authorizing access to your data
+* [授权](#authorization)–授权访问你的数据
 
-  This section describes access to the data objects in your Storage account, such as blobs, files, queues, and tables, using Shared Access Signatures and Stored Access Policies. 我们介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。
+  本部分介绍使用共享访问签名和存储访问策略对存储帐户中的数据对象（例如 blob、文件、队列和表）的访问权限。 我们介绍服务级别 SAS 和帐户级别 SAS。 此外，还将了解如何限制访问特定的 IP 地址（或 IP 地址范围）、如何限制用于 HTTPS 的协议，以及如何吊销共享访问签名而无需等到它过期。
 
 * [传输中加密](#encryption-in-transit)
 
-  此部分讨论如何在将数据传输到 Azure 存储或从中传出时提供保护。 我们将讨论 HTTPS 的建议用法，以及 SMB 3.0 针对 Azure 文件共享使用的加密。 We will also discuss Client-side Encryption, which enables you to encrypt data before transfer into Storage, and to decrypt the data after it is transferred out of Storage.
+  此部分讨论如何在将数据传输到 Azure 存储或从中传出时提供保护。 我们将讨论 HTTPS 的建议用法，以及 SMB 3.0 针对 Azure 文件共享使用的加密。 我们还将讨论客户端加密，它可让你在传输到存储之前加密数据，以及在传输到存储空间后解密数据。
 
 * [静态加密](#encryption-at-rest)
 
-  我们还将讨论存储服务加密 (SSE)，目前此项服务已针对新的和现有的存储帐户自动启用。 此外，将了解如何使用 Azure 磁盘加密，并探究磁盘加密、SSE 与客户端加密之间的基本差异和用例。 We will briefly look at FIPS compliance for U.S. Government computers.
+  我们还将讨论存储服务加密 (SSE)，目前此项服务已针对新的和现有的存储帐户自动启用。 此外，将了解如何使用 Azure 磁盘加密，并探究磁盘加密、SSE 与客户端加密之间的基本差异和用例。 将简要介绍美国政府针计算机的 FIPSFIPS 合规性。
 
 * 使用[存储分析](#storage-analytics)审核 Azure 存储的访问
 
@@ -69,7 +69,7 @@ Here are the areas covered in this article:
 本指南着重于资源管理器模型，即创建存储帐户的建议方法。 使用 Resource Manager 存储帐户而不是提供整个订阅的访问权限，可以使用基于角色的访问控制 (RBAC) 以更高的限制级别来控制对管理平面的访问。
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>如何使用基于角色的访问控制 (RBAC) 来保护存储帐户
-让我们讨论 RBAC 是什么及其用法。 每个 Azure 订阅都有 Azure Active Directory。 可以为来自该目录的用户、组和应用程序授予访问权限，以便在使用 Resource Manager 部署模型的 Azure 订阅中管理资源。 此类型的安全性称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 存储资源提供程序 REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)。
+让我们讨论 RBAC 是什么及其用法。 每个 Azure 订阅都有一个 Azure Active Directory。 可以为来自该目录的用户、组和应用程序授予访问权限，以便在使用 Resource Manager 部署模型的 Azure 订阅中管理资源。 此类型的安全性称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 存储资源提供程序 REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx)。
 
 通过 Resource Manager 模型，可将存储帐户置于资源组中，并使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可授权特定用户访问存储帐户密钥，而其他用户可查看存储帐户相关信息却无法访问存储帐户密钥。
 
@@ -92,12 +92,12 @@ Here are the areas covered in this article:
   * 虚拟机参与者 – 他们可以管理虚拟机，但无法管理他们连接的存储帐户。 此角色可以列出存储帐户密钥，意味着分配此角色的用户可以更新数据平面。
 
     为了让用户能够创建虚拟机，他们必须能够在存储帐户中创建相应的 VHD 文件。 为此，他们需要能够检索存储帐户密钥，并将它传递给创建 VM 的 API。 因此，他们必须拥有此权限才能列出存储帐户密钥。
-* 定义自定义角色的功能可让你从 Azure 资源上执行的可用操作列表中编写一系列操作。
+* 定义自定义角色的功能可让你基于 Azure 资源上执行的可用操作列表编写一系列操作。
 * 必须先在 Azure Active Directory 中设置用户，才能为他们分配角色。
 * 可以创建一份报告，其中描述了哪个用户已使用 PowerShell 或 Azure CLI 在哪个范围为哪些对象授予/吊销哪种类型的访问权限。
 
 #### <a name="resources"></a>资源
-* [Azure Active Directory Role-based Access Control（Azure Active Directory 基于角色的访问控制）](../../role-based-access-control/role-assignments-portal.md)
+* [Azure Active Directory 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
 
   此文解释了 Azure Active Directory 基于角色的访问控制及其工作原理。
 * [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
@@ -106,7 +106,7 @@ Here are the areas covered in this article:
 * [了解 Resource Manager 部署和经典部署](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   此文介绍了 Resource Manager 部署和经典部署模型，并阐释了使用 Resource Manager 和资源组的优点。 本文介绍了 Azure 计算、网络和存储提供程序在 Resource Manager 模式下的工作方式。
-* [Managing Role-Based Access Control with the REST API（使用 REST API 管理基于角色的访问控制）](../../role-based-access-control/role-assignments-rest.md)
+* [使用 REST API 管理基于角色的访问控制](../../role-based-access-control/role-assignments-rest.md)
 
   此文说明如何使用 REST API 来管理 RBAC。
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/azure/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
@@ -122,16 +122,16 @@ Here are the areas covered in this article:
 
 每个存储帐户在 [Azure 门户](https://portal.azure.com/)和 PowerShell cmdlet 中有两个密钥，分别称为“密钥 1”和“密钥 2”。 可采用多种多种方式手动重新生成这些密钥，包括（但不限于）使用 [Azure 门户](https://portal.azure.com/)、PowerShell、Azure CLI，或以编程方式使用 .NET 存储客户端库或 Azure 存储服务 REST API。
 
-There are various reasons to regenerate your storage account keys.
+重新生成存储帐户密钥的原因有多种。
 
-* You may regenerate them periodically for security.
-* You might regenerate your storage account keys if your application or network security is compromised.
-* Another instance for key regeneration is when team members with access to the keys leave. Shared Access Signatures were designed primarily to address this scenario – you should share an account-level SAS connection string or token, instead of sharing access keys, with most individuals or applications.
+* 可以定期重新生成它们以获得安全。
+* 如果应用程序或网络安全受到威胁，则可以重新生成存储帐户密钥。
+* 重新生成密钥的另一个实例是指具有密钥访问权限的团队成员离开。 共享访问签名主要用于处理这种情况-应共享帐户级 SAS 连接字符串或令牌，而不是共享访问密钥，包括大多数个人或应用程序。
 
 #### <a name="key-regeneration-plan"></a>密钥重新生成计划
-You should not regenerate an access key in use without planning. Abrupt key regeneration can block access to a storage account for existing applications, causing major disruption. Azure Storage accounts provide two keys, so that you can regenerate one key at a time.
+不应在没有规划的情况下重新生成使用的访问密钥。 突然密钥重新生成可以阻止对现有应用程序的存储帐户的访问，从而导致重大中断。 Azure 存储帐户提供了两个密钥，因此你可以一次重新生成一个密钥。
 
-Before you regenerate your keys, be sure you have a list of all applications dependent on the storage account, as well as any other services you are using in Azure. For example, if you are using Azure Media Services use your storage account, you must resync the access keys with your media service after you regenerate the key. If you are using an application such as a storage explorer, you will need to provide new keys to those applications as well. 如果 VM 的 VHD 文件存储在存储帐户中，它们将不会受到重新生成存储帐户密钥的影响。
+重新生成密钥之前，请确保具有依赖于存储帐户的所有应用程序的列表，以及在 Azure 中使用的任何其他服务。 例如，如果使用 Azure 媒体服务，使用存储帐户，则必须在重新生成密钥后将访问密钥与媒体服务重新同步。 如果使用的是应用程序，例如存储资源管理器，则还需要为这些应用程序提供新密钥。 如果 VM 的 VHD 文件存储在存储帐户中，它们将不会受到重新生成存储帐户密钥的影响。
 
 可以在 Azure 门户中重新生成密钥。 重新生成密钥之后，最多 10 分钟后即可跨存储服务进行同步。
 
@@ -145,11 +145,11 @@ Before you regenerate your keys, be sure you have a list of all applications dep
 
 可以过几天后迁移，更改每个应用程序来使用新的密钥并进行发布。 全部完成之后，应该返回并重新生成旧密钥，使其不再可用。
 
-还可将存储帐户密钥作为机密放在 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中，并让应用程序从此处检索该密钥。 然后，当重新生成密钥并更新 Azure 密钥保管库时，就不需要重新部署应用程序，因为它们将自动从 Azure 密钥保管库中选择新密钥。 You can have the application read the key each time it needs it, or the application can cache it in memory and if it fails when using it, retrieve the key again from the Azure Key Vault.
+还可将存储帐户密钥作为机密放在 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)中，并让应用程序从此处检索该密钥。 然后，重新生成密钥并更新 Azure 密钥保管库时，就不需要重新部署应用程序，因为它们会自动从 Azure 密钥保管库中选择新密钥。 您可以让应用程序在每次需要该密钥时读取它，或者应用程序可以在内存中缓存该密钥，如果在使用该密钥时失败，请从 Azure Key Vault 再次检索该密钥。
 
-使用 Azure 密钥保管库还可以提高存储密钥的安全级别。 Using the Key Vault, enables you to avoid writing storage keys in application configuration files. It also prevents exposure of keys to everyone with access to those configuration files.
+使用 Azure 密钥保管库还可以提高存储密钥的安全级别。 使用 Key Vault，可以避免在应用程序配置文件中写入存储密钥。 它还可以防止将密钥泄露给有权访问这些配置文件的每个人。
 
-Azure Key Vault also has the advantage of using Azure AD to control access to your keys. You can grant access to the specific applications that need to retrieve the keys from Key Vault, without exposing them to other applications that do not need access to the keys.
+Azure Key Vault 还具有使用 Azure AD 控制对密钥的访问的优点。 你可以向需要从 Key Vault 检索密钥的特定应用程序授予访问权限，而无需将这些密钥公开给不需要访问密钥的其他应用程序。
 
 > [!NOTE]
 > Microsoft 建议同一时间在所有应用程序中只使用一个密钥。 如果在某些地方使用密钥 1 并在其他地方使用密钥 2，将无法在没有部分应用程序失去访问的情况下轮转密钥。
@@ -160,39 +160,39 @@ Azure Key Vault also has the advantage of using Azure AD to control access to yo
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
 
 ## <a name="network-security"></a>网络安全
-Network Security enables you to restrict access to the data in an Azure Storage Account from select networks. You can use the Azure Storage firewall to restrict access to clients from specific public IP address ranges, select virtual networks (VNets) on Azure, or to specific Azure resources. You also have the option to create a Private Endpoint for your storage account in the VNet that needs access, and blocking all access through the public endpoint.
+利用网络安全，你可以通过 "选择网络" 限制对 Azure 存储帐户中的数据的访问。 你可以使用 Azure 存储防火墙来限制对客户端的访问：特定的公共 IP 地址范围、选择 Azure 上的虚拟网络（Vnet）或特定的 Azure 资源。 你还可以选择在 VNet 中为你的存储帐户创建一个需要访问的专用终结点，并通过公共终结点阻止所有访问。
 
-You can configure the network access rules for your storage account through the [Firewalls and Virtual Networks](storage-network-security.md) tab in the Azure portal. Using the storage firewall, you can deny access for public internet traffic, and grant access to select clients based on the configured network rules.
+可以通过 Azure 门户中的 "[防火墙和虚拟网络](storage-network-security.md)" 选项卡来配置存储帐户的网络访问规则。 使用存储防火墙，你可以拒绝对公共 internet 流量的访问，并根据配置的网络规则授予对所选客户端的访问权限。
 
-You can also use [Private Endpoints](../../private-link/private-endpoint-overview.md) to privately and securely connect to a storage account from a VNet using [Private Links](../../private-link/private-link-overview.md).
+你还可以使用专用[终结点](../../private-link/private-endpoint-overview.md)从 VNet 使用[专用链接](../../private-link/private-link-overview.md)安全地连接到存储帐户。
 
-Storage firewall rules only apply to the public endpoint for the storage account. The subnet that hosts a private endpoint for a storage account gets implicit access to the account when you approve the creation of that private endpoint.
+存储防火墙规则仅适用于存储帐户的公共终结点。 当你批准创建专用终结点时，为存储帐户承载专用终结点的子网将获取对该帐户的隐式访问权限。
 
 > [!NOTE]
-> The storage firewall rules are not applicable to storage management operations conducted through the Azure portal and the Azure Storage Management API.
+> 存储防火墙规则不适用于通过 Azure 门户和 Azure 存储管理 API 进行的存储管理操作。
 
-### <a name="access-rules-for-public-ip-address-ranges"></a>Access rules for public IP address ranges
-The Azure Storage firewall can be used to restrict access to a storage account from specific public IP address ranges. You can use IP address rules to restrict access to specific internet-based services communicating on a fixed public IP endpoint, or to select on-premises networks.
+### <a name="access-rules-for-public-ip-address-ranges"></a>公共 IP 地址范围的访问规则
+可以使用 Azure 存储防火墙来限制对特定公共 IP 地址范围内的存储帐户的访问。 您可以使用 IP 地址规则限制对在固定公共 IP 终结点上进行通信的基于 internet 的特定服务的访问，或选择本地网络。
 
-### <a name="access-rules-for-azure-virtual-networks"></a>Access rules for Azure virtual networks
-Storage accounts, by default, accept connections from clients on any network. You can restrict the client access to the data in a storage account to selected networks using the storage firewall. [Service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md) enable routing of traffic from an Azure virtual network to the storage account. 
+### <a name="access-rules-for-azure-virtual-networks"></a>Azure 虚拟网络的访问规则
+默认情况下，存储帐户接受来自任何网络上的客户端的连接。 你可以使用存储防火墙限制客户端对存储帐户中的数据的访问权限。 [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)支持将流量从 Azure 虚拟网络路由到存储帐户。 
 
-### <a name="granting-access-to-specific-trusted-resource-instances"></a>Granting access to specific trusted resource instances
-You can allow a [subset of Azure trusted services](storage-network-security.md#trusted-microsoft-services) to access the storage account through the firewall with strong authentication based on the service resource type, or a resource instance.
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>授予对特定受信任资源实例的访问权限
+可以允许[Azure 受信任服务的子集](storage-network-security.md#trusted-microsoft-services)通过防火墙（基于服务资源类型或资源实例）访问存储帐户。
 
-For the services that support resource instance-based access through the storage firewall, only the selected instance can access the data in the storage account. In this case, the service must support resource-instance authentication using system-assigned [managed identities](../../active-directory/managed-identities-azure-resources/overview.md).
+对于支持通过存储防火墙进行基于资源实例的访问的服务，只有所选实例才能访问存储帐户中的数据。 在这种情况下，服务必须使用系统分配的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)支持资源实例身份验证。
 
-### <a name="using-private-endpoints-for-securing-connections"></a>Using private endpoints for securing connections
-Azure Storage supports private endpoints, which enable secure access of storage account from an Azure virtual network. Private endpoints assign a private IP address from your VNet's address space to the storage service. When using private endpoints, the storage connection string redirects traffic destined for the storage account to the private IP address. The connection between the private endpoint and the storage account uses a private link. Using private endpoints you can block exfiltration of data from your VNet.
+### <a name="using-private-endpoints-for-securing-connections"></a>使用专用终结点保护连接
+Azure 存储支持专用终结点，可以从 Azure 虚拟网络安全访问存储帐户。 专用终结点将专用 IP 地址从 VNet 的地址空间分配给存储服务。 使用专用终结点时，存储连接字符串将目标为存储帐户的流量重定向到专用 IP 地址。 专用终结点与存储帐户之间的连接使用专用链接。 使用专用终结点可以阻止来自 VNet 的渗透数据。
 
-On-premises networks connected over VPN or [ExpressRoutes](../../expressroute/expressroute-locations.md) private peering and other peered virtual networks can also access the storage account over the private endpoint. Private endpoint for your storage accounts can be created in a VNet in any region, enabling a secure global reach. You may also create private endpoints for storage accounts in other [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) tenants.
+通过 VPN 或[ExpressRoutes](../../expressroute/expressroute-locations.md)专用对等互连连接的本地网络和其他对等互连虚拟网络还可以通过专用终结点访问存储帐户。 可以在任何区域中的 VNet 中创建存储帐户的专用终结点，从而实现安全的全球覆盖。 你还可以为其他[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)租户中的存储帐户创建专用终结点。
 
 ## <a name="authorization"></a>授权
 数据平面安全是指用于保护存储在 Azure 存储的数据对象（Blob、队列、表和文件）的方法。 我们已了解在传输数据期间加密数据和安全的方法，但该从何处着手来控制访问对象？
 
 Azure 存储中数据对象的访问授权有三个选项，包括：
 
-- Using Azure AD to authorize access to containers and queues. 进行身份验证时，Azure AD 相对于其他方法具有很多优势，包括不需要将机密存储在代码中。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。 
+- 使用 Azure AD 进行容器和队列的访问授权。 进行身份验证时，Azure AD 相对于其他方法具有很多优势，包括不需要将机密存储在代码中。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。 
 - 使用存储帐户密钥通过共享密钥进行访问授权。 通过共享密钥进行授权需要将存储帐户密钥存储在应用程序中，因此 Microsoft 建议尽可能改用 Azure AD。
 - 使用共享访问签名授予特定时间段对特定数据对象的受控权限。
 
@@ -210,12 +210,12 @@ Azure 存储中数据对象的访问授权有三个选项，包括：
 
 可授予用户访问 Blob、容器、队列、文件和表的权限。 使用表时，可以实际授予权限来访问表中某个范围的实体，方法是指定想要让用户有权访问的分区和行键范围。 例如，如果已使用具有地理状态的分区键存储数据，则可为某人提供只能访问加州数据的访问权限。
 
-另举一例，可以为 Web 应用程序提供 SAS 令牌，使它能够将条目写入队列，并为辅助角色应用程序提供 SAS 令牌，以便从队列中获取和处理消息。 或者，你可以为某位客户提供 SAS 令牌，使他们能够将图片上传到 Blob 存储中的容器，并为 Web 应用程序提供权限来读取这些图片。 在这两种情况下，都可实现关注点分离 – 每个应用程序只能获取执行其任务所需的访问权限。 这是通过使用共享访问签名来实现的。
+另举一例，可以为 Web 应用程序提供 SAS 令牌，使它能够将条目写入队列，并为辅助角色应用程序提供 SAS 令牌，以便从队列中获取和处理消息。 或者，可以为某位客户提供 SAS 令牌，使他们能够将图片上传到 Blob 存储中的容器，并为 Web 应用程序提供权限来读取这些图片。 在这两种情况下，都可实现关注点分离 – 每个应用程序只能获取执行其任务所需的访问权限。 这是通过使用共享访问签名来实现的。
 
 #### <a name="why-you-want-to-use-shared-access-signatures"></a>使用共享访问签名的原因
-为什么要使用 SAS 而不只是分发存储帐户密钥，哪一种方法更方便？ 分发存储帐户密钥就像是在存储王国中共享密钥。 它将授予完全访问权限。 其他人可以使用密钥，并将其整个音乐库上传到你的存储帐户。 他们也许还能将文件替换为受病毒感染的版本，或窃取数据。 不应该草率地无限制分发对你存储帐户的访问权限。
+为什么要使用 SAS 而不只是分发存储帐户密钥，哪一种方法更方便？ 分发存储帐户密钥就像是在存储王国中共享密钥。 它将授予完全访问权限。 其他人可以使用密钥，并将其整个音乐库上传到存储帐户。 他们也许还能将文件替换为受病毒感染的版本，或窃取数据。 不应该草率地无限制分发对你存储帐户的访问权限。
 
-如果使用共享访问签名，可以只为客户端提供有限时间内所需的权限。 例如，如果有人将 Blob 上传到帐户，则你可以授予他们刚好足够时间的写入权限来上传 Blob（当然，这取决于 Blob 的大小）。 如果改变想法，可以吊销该访问权限。
+如果使用共享访问签名，可以只为客户端提供有限时间内所需的权限。 例如，如果有人将 Blob 上传到帐户，则可以授予他们刚好足够时间的写入权限来上传 Blob（当然，这取决于 Blob 的大小）。 如果改变想法，可以吊销该访问权限。
 
 此外，可以指定将使用 SAS 所发出的请求限制为特定的 IP 地址或 Azure 外部的 IP 地址范围。 还可以要求使用特定协议（HTTPS 或 HTTP/HTTPS）来发出请求。 这意味着，如果只想要允许 HTTPS 流量，可以将所需的协议设置为仅限 HTTPS，并阻止 HTTP 流量。
 
@@ -251,7 +251,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
    该方法十分灵活，但如果每次都有一组类似的逻辑参数，使用存储访问策略是个不错的想法。
 2. 可以针对整个容器、文件共享、表或队列创建存储访问策略。 然后使用此策略作为所创建的 SAS URI 的基础。 可以轻松吊销基于存储访问策略的权限。 可以对每个容器、队列、表或文件共享最多定义五个策略。
 
-   例如，如果要让许多人读取特定容器中的 Blob，则可以创建存储访问策略，表示“提供读访问权限”以及每次都一样的任何其他设置。 然后，可以使用存储访问策略的设置，并指定过期日期/时间，来创建 SAS URI。 这样做的优点是不需要每次指定所有查询参数。
+   例如，如果要让许多人读取特定容器中的 Blob，则可以创建存储访问策略，表示“提供读访问权限”以及每次都一样的任何其他设置。 然后，可以使用存储访问策略的设置并指定到期日期/时间，来创建 SAS URI。 这样做的优点是不需要每次指定所有查询参数。
 
 #### <a name="revocation"></a>吊销
 假设 SAS 已被泄露，或者要基于公司安全或法规遵循要求更改 SAS。 如何使用该 SAS 吊销对资源的访问权限？ 这取决于 SAS URI 的创建方式。
@@ -273,12 +273,12 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
   * [Constructing a Service SAS](https://msdn.microsoft.com/library/dn140255.aspx)（构造服务 SAS）
   * [Constructing an account SAS](https://msdn.microsoft.com/library/mt584140.aspx)（构造帐户 SAS）
 
-* This is a tutorial for using the .NET client library to create Shared Access Signatures and Stored Access Policies.
+* 这是有关使用 .NET 客户端库创建共享访问签名和存储访问策略的教程。
   * [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
 
     此文包含 SAS 模型的说明、共享访问签名的示例，以及 SAS 用法最佳实践的建议。 此外介绍了如何吊销授予的权限。
 
-* Authentication
+* 身份验证
 
   * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务的身份验证）
 * 共享访问签名入门教程
@@ -325,7 +325,7 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
 
 客户端加密内置于 Java 和 .NET 存储客户端库，这些库使用 Azure 密钥保管库 API 让实现变得很简单。 加密和解密数据的程序将使用信封技术，并在每个存储对象中存储加密使用的元数据。 例如，对于 Blob，会会其存储在 Blob 元数据中；对于队列，会它添加到每个队列消息。
 
-对于加密本身，可以生成和管理自己的加密密钥。 也可以使用 Azure 存储客户端库所生成的密钥，或者可以让 Azure 密钥保管库生成密钥。 可以将加密密钥存储在本地密钥存储中，或将它们存储在 Azure 密钥保管库中。 Azure 密钥保管库可让你使用 Azure Active Directory 为特定的用户授予 Azure 密钥保管库中密码的访问权限。 这意味着，并非每个人都能读取 Azure Key Vault，以及检索用于进行客户端加密的密钥。
+对于加密本身，可以生成和管理自己的加密密钥。 也可以使用 Azure 存储客户端库所生成的密钥，或者可以让 Azure 密钥保管库生成密钥。 可以将加密密钥存储在本地密钥存储中，或将它们存储在 Azure 密钥保管库中。 Azure Key Vault 可让你使用 Azure Active Directory 向特定用户授予对 Azure Key Vault 中机密的访问权限。 这意味着，并非每个人都能读取 Azure Key Vault，以及检索用于进行客户端加密的密钥。
 
 #### <a name="resources"></a>资源
 * [在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 Blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
@@ -336,9 +336,9 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
   本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密 4 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>使用 Azure 磁盘加密来加密虚拟机所用的磁盘
-Azure Disk Encryption allows you to encrypt the OS disks and Data disks used by an IaaS Virtual Machine. 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
+Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
 
-在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
+在 Microsoft Azure 中启用它们时，该解决方案支持以下 IaaS VM 方案：
 
 * 与 Azure Key Vault 集成
 * 标准层 VM：[A、D、DS、G 和 GS 等系列 IaaS VM](https://azure.microsoft.com/pricing/details/virtual-machines/)
@@ -362,7 +362,7 @@ Azure Disk Encryption allows you to encrypt the OS disks and Data disks used by 
 
 
 > [!NOTE]
-> 以下 Linux 分发（RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
+> Linux 分发（RHEL 7.2、CentOS 7.2n 和 Ubuntu 16.04）当前支持 Linux OS 磁盘加密。
 >
 >
 
@@ -379,7 +379,7 @@ Azure Disk Encryption allows you to encrypt the OS disks and Data disks used by 
 
 如果通过本地将预先加密的 VM 带入 Azure 中，就能将加密密钥上传到 Azure 密钥保管库，并继续针对使用本地的 VM 使用加密。 启用 Azure 磁盘加密即可处理此方案。
 
-如果你有来自本地的未加密 VHD，可以作为自定义映像将它上传到库并从中预配 VM。 如果使用 Resource Manager 模板执行此操作，可以要求它在启动 VM 时打开 Azure 磁盘加密。
+如果有来自本地的未加密 VHD，可以作为自定义映像将它上传到库并从中预配 VM。 如果使用 Resource Manager 模板执行此操作，可以要求它在启动 VM 时打开 Azure 磁盘加密。
 
 添加数据磁盘并装载到 VM 时，可以在该数据磁盘上打开 Azure 磁盘加密。 它先在本地加密该数据磁盘，然后经典部署模型层将会对存储进行延迟写入，如此即可加密存储内容。
 
@@ -466,7 +466,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 
   本文提供 Microsoft Message Analyzer 的参考信息，包括教程、快速入门和功能摘要的链接。
 
-## <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>跨源资源共享 (CORS)
 ### <a name="cross-domain-access-of-resources"></a>跨域访问资源
 在某一个域中运行的 Web 浏览器对来自不同域的资源发出 HTTP 请求称为跨域 HTTP 请求。 例如，contoso.com 中的 HTML 页面将对 fabrikam.blob.core.windows.net 上托管的 jpeg 发出请求。 出于安全原因，浏览器将限制从脚本（例如 JavaScript）中初始化的跨域 HTTP 请求。 这意味着，如果 contoso.com 的页面上有一些 JavaScript 代码请求 fabrikam.blob.core.windows.net 上的该 jpeg，浏览器将拒绝此请求。
 
@@ -475,7 +475,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 #### <a name="possible-solutions"></a>可能的解决方案
 一种解决方式是向 fabrikam.blob.core.windows.net 分配类似于“storage.contoso.com”的自定义域。 问题在于，只能将该自定义域分配给一个存储帐户。 如果资产存储在多个存储帐户中该怎么办？
 
-解决此问题的另一种方法是让 Web 应用程序充当存储调用的代理。 这意味着，如果要将文件上传到 Blob 存储，Web 应用程序可以在本地写入它，然后将它复制到 Blob 存储，或者将它全部读入内存，然后将它写入 Blob 存储。 或者，你可以编写专门的 Web 应用程序（例如 Web API），以在本地上传文件并将它们写入 Blob 存储。 无论如何，都必须在确定伸缩性需求时考虑该功能。
+解决此问题的另一种方法是让 Web 应用程序充当存储调用的代理。 这意味着，如果要将文件上载到 Blob 存储，Web 应用程序可以在本地写入它，并将它复制到 Blob 存储，或者将它全部读入内存，并将它写入 Blob 存储。 或者，可以编写专门的 Web 应用程序（例如 Web API），以在本地上传文件并将它们写入 Blob 存储。 无论如何，都必须在确定伸缩性需求时考虑该功能。
 
 #### <a name="how-can-cors-help"></a>CORS 有何用途？
 Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户，可以指定可访问该存储帐户中的资源的域。 例如上例中，可在 fabrikam.blob.core.windows.net 存储帐户中启用 CORS，并将其设置为允许访问 contoso.com。 然后，Web 应用程序 contoso.com 就可直接访问 fabrikam.blob.core.windows.net 中的资源。
@@ -520,14 +520,14 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
 ## <a name="frequently-asked-questions-about-azure-storage-security"></a>有关 Azure 存储安全性的常见问题
 1. **如果无法使用 HTTPS 协议，该如何验证传输到 Azure 存储或从中传出的 Blob 的完整性？**
 
-   如果出于任何原因，需要使用 HTTP 而不是 HTTPS，且你正在使用块 Blob，则可以使用 MD5 检查，帮助验证正在传输的 Blob 的完整性。 这会有助于防止网络/传输层错误，但不一定可帮助防止中间攻击。
+   如果出于任何原因，需要使用 HTTP 而不是 HTTPS，且你正在使用块 Blob，则可以使用 MD5 检查，帮助验证正在传输的 Blob 的完整性。 这将有助于防止网络/传输层错误，但不一定可帮助防止中间攻击。
 
    如果可以使用提供传输级安全的 HTTPS，则使用 MD5 检查就很多余且不必要。
 
    有关详细信息，请查看 [Azure Blob MD5 Overview](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)（Azure Blob MD5 概述）。
-2. **What about FIPS-Compliance for the U.S. Government?**
+2. **美国政府实施的 FIPS 合规性要求是怎样的？**
 
-   The United States Federal Information Processing Standard (FIPS) defines cryptographic algorithms approved for use by U.S. Federal government computer systems for the protection of sensitive data. 如果在 Windows 服务器或桌面上启用 FIPS 模式，将告知 OS 仅应使用经 FIPS 验证的加密算法。 如果某个应用程序使用不合规的算法，即表示该应用程序违规。 使用 .NET Framework 4.5.2 或更高版本，应用程序可在计算机处于 FIPS 模式时自动切换加密算法来使用符合 FIPS 的算法。
+   美国美国联邦信息处理标准（FIPS）定义了由美国联邦政府计算机系统批准使用的加密算法，以保护敏感数据。 如果在 Windows 服务器或桌面上启用 FIPS 模式，将告知 OS 仅应使用经 FIPS 验证的加密算法。 如果某个应用程序使用不合规的算法，即表示该应用程序违规。 使用 .NET Framework 4.5.2 或更高版本，应用程序可在计算机处于 FIPS 模式时自动切换加密算法来使用符合 FIPS 的算法。
 
    Microsoft 允许每个客户决定是否启用 FIPS 模式。 我们相信，客户没有充分的理由违反政府法规，不按默认启用 FIPS 模式。
 
@@ -537,7 +537,7 @@ Azure 存储允许启用 CORS – 跨域资源共享。 对于每个存储帐户
   此博客文章提供 FIPS 概述，并说明他们为什么默认不启用 FIPS 模式。
 * [FIPS 140 Validation](https://technet.microsoft.com/library/cc750357.aspx)（FIPS 140 验证）
 
-  This article provides information on how Microsoft products and cryptographic modules comply with the FIPS standard for the U.S. Federal government.
+  此文提供有关 Microsoft 产品和加密模块如何遵守美国联邦政府 FIPS 标准的信息。
 * [“系统加密：使用 FIPS 兼容的算法来加密、哈希和签名”在 Windows XP 和更高版本的 Windows 中的安全设置影响](https://support.microsoft.com/kb/811833)
 
   此文介绍如何在较旧版 Windows 计算机中使用 FIPS 模式。

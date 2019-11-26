@@ -28,7 +28,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 > * 删除消息
 > * 删除队列
 
-本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
+本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 队列的数据平面没有相应的 PowerShell cmdlet。 若要执行数据平面操作（如添加消息、读取消息和删除消息），必须使用 PowerShell 中公开的 .NET 存储客户端库。 创建消息对象，然后可以使用命令（例如 AddMessage）对该消息执行操作。 本文介绍如何执行该操作。
 
@@ -85,7 +85,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-命名 Azure 队列服务命名约定的信息，请参阅 [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx)（命名队列和元数据）。
+有关命名 Azure 队列服务命名约定的信息，请参阅 [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx)（命名队列和元数据）。
 
 ## <a name="retrieve-a-queue"></a>检索队列
 

@@ -68,17 +68,17 @@ ms.locfileid: "74280756"
 
 DB2 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Db2 | 是 |
-| server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
+| 服务器 |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
 | database |DB2 数据库的名称。 |是 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | packageCollection | 指定在查询数据库时 ADF 自动创建所需包的位置 | 否 |
 | certificateCommonName | 使用安全套接字层（SSL）或传输层安全性（TLS）加密时，必须为 "证书公用名" 输入一个值。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -111,12 +111,12 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
 | schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
-| tableName | 具有架构的表的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
+| table | 表名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -146,7 +146,7 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **Db2Source** | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
@@ -196,7 +196,7 @@ DB2 链接服务支持以下属性：
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| 日期 |Datetime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | 小数 |小数 |

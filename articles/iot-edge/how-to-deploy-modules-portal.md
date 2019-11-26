@@ -22,7 +22,7 @@ ms.locfileid: "74457425"
 
 本文介绍了 Azure 门户如何引导创建部署清单并将部署推送给 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-in-the-azure-portal)。
@@ -36,15 +36,15 @@ ms.locfileid: "74457425"
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。 创建分为三步：添加模块、指定路由和评审部署。
 
 ### <a name="add-modules"></a>添加模块
 
-1. In the **Container Registry Settings** section of the page, provide the credentials to access any private container registries that contain your module images.
+1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
 
-1. In the **Deployment Modules** section of the page, select **Add**.
+1. 在此页的“部署模块”部分中，选择“添加”。
 
 1. 在下拉列表中找到模块类型：
 
@@ -56,7 +56,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 1. 提供模块名称，然后指定容器映像。 例如：
 
-   * **Name** - SimulatedTemperatureSensor
+   * **名称** - SimulatedTemperatureSensor
    * **映像 URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
 
 1. 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
@@ -69,7 +69,7 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="specify-routes"></a>指定路由
 
-向导默认提供名为“route”且定义为FROM /\* INTO $upstream 的路由，这表示任何模块输出的任何消息都将发送到 IoT 中心。  
+默认情况下，向导提供名为**route**且定义为“FROM /*INTO $upstream** **的路由。也就是说，任意模块输出的任何消息都发送到 IoT 中心。  
 
 在路由中添加或更新[声明路由](module-composition.md#declare-routes)中的信息，再选择“下一步”继续转到评审部分。
 
@@ -91,7 +91,7 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 
 1. 查找模块并开始部署过程。
 
-   * Azure portal: Find a module and select **Create**.
+   * Azure 门户：查找模块并选择 "**创建**"。
 
    * Azure 市场：
 

@@ -1,6 +1,6 @@
 ---
-title: Designing Azure Functions for identical input
-description: Building Azure Functions to be idempotent
+title: 针对完全相同的输入设计 Azure Functions
+description: 将 Azure Functions 构建为幂等
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 9/12/2019
@@ -12,34 +12,34 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226859"
 ---
-# <a name="designing-azure-functions-for-identical-input"></a>Designing Azure Functions for identical input
+# <a name="designing-azure-functions-for-identical-input"></a>针对完全相同的输入设计 Azure Functions
 
-The reality of event-driven and message-based architecture dictates the need to accept identical requests while preserving data integrity and system stability.
+事件驱动型和基于消息的体系结构这一现实要求在确保数据完整性和系统稳定性的同时接受完全相同的请求。
 
-To illustrate, consider an elevator call button. As you press the button, it lights up and an elevator is sent to your floor. A few moments later, someone else joins you in the lobby. This person smiles at you and presses the illuminated button a second time. You smile back and chuckle to yourself as you're reminded that the command to call an elevator is idempotent.
+让我们以电梯调用按钮来说明这一点。 按按钮时，按钮会亮起，电梯会送到你所在的楼层。 过了一会儿，另外一个人来到你所在的大厅。 该人对你微笑了一下，然后将亮起的按钮又按了一次。 你也对该人报之以微笑，忽然想到，调用电梯的命令是幂等的。
 
-Pressing an elevator call button a second, third, or fourth time has no bearing on the final result. When you press the button, regardless of the number of times, the elevator is sent to your floor. Idempotent systems, like the elevator, result in the same outcome no matter how many times identical commands are issued.
+按电梯调用按钮两次、三次或四次对最终结果没有影响。 当你按按钮时，不管按多少次，电梯都会送到你的楼层。 对于电梯这样的幂等系统，不管发出相同的命令多少次，结果都一样。
 
-When it comes to building applications, consider the following scenarios:
+在构建应用程序时，请考虑以下场景：
 
-- What happens if your inventory control application tries to delete the same product more than once?
-- How does your human resource application behave if there is more than one request to create an employee record for the same person?
-- Where does the money go if your banking app gets 100 requests to make the same withdrawal?
+- 如果库存控制应用程序尝试删除同一产品多次，会发生什么情况？
+- 如果有多个要求为同一人创建员工记录的请求，人力资源应用程序会如何表现？
+- 如果银行应用收到 100 个要求进行相同金额提款的请求，则资金会转到哪里？
 
-There are many contexts where requests to a function may receive identical commands. Some situations include:
+在许多情况下，对同一函数的请求可能会收到相同的命令。 一些情况包括：
 
-- Retry policies sending the same request many times
-- Cached commands replayed to the application
-- Application errors sending multiple identical requests
+- 将同一请求发送许多次的重试策略
+- 缓存对应用程序重播的命令
+- 发送多个相同请求时出现应用程序错误
 
-To protect data integrity and system health, an idempotent application contains logic that may contain the following behaviors:
+为了保护数据完整性和系统运行状况，幂等应用程序包含的逻辑可能会包含以下行为：
 
-- Verifying of the existence of data before trying to execute a delete
-- Checking to see if data already exists before trying to execute a create action
-- Reconciling logic that creates eventual consistency in data
-- Concurrency controls
-- Duplication detection
-- Data freshness validation
-- Guard logic to verify input data
+- 在尝试执行删除操作之前，验证数据是否存在
+- 在尝试执行创建操作之前，查看数据是否已存在
+- 协调在数据中形成最终一致性的逻辑
+- 并发控制
+- 重复内容检测
+- 数据新鲜度验证
+- 用于验证输入数据的保护逻辑
 
-Ultimately idempotency is achieved by ensuring a given action is possible and is only executed once.
+最终通过确保某些给定的操作可以执行且只执行一次来实现幂等性。

@@ -23,7 +23,7 @@ ms.locfileid: "74229932"
 
 可以将 Cloudyn 报表保存在 Cloudyn 门户、Azure 存储或 AWS 存储 Bucket 中。 将报表保存到 Cloudyn 门户的操作免费。 但是，将报表保存到云服务提供商的存储为可选操作，需要额外付费。 本文介绍如何配置用于存储报表的 Azure 存储帐户和 Amazon Web Services (AWS) 存储 Bucket。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 必须有 Azure 存储帐户或 Amazon 存储 Bucket。
 
@@ -65,7 +65,7 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到�
 2. 从服务列表中选择“IAM”。
 3. 在控制台左侧选择“策略”，然后单击“创建策略”。
 4. 单击“JSON”选项卡。
-5. 以下策略允许将报表保存到 S3 Bucket。 Copy and paste the following policy example to the **JSON** tab. Replace &lt;bucketname&gt; with your bucket name.
+5. 以下策略允许将报表保存到 S3 Bucket。 将以下策略示例复制并粘贴到 " **JSON** " 选项卡。将 &lt;Bucketname&gt; 替换为 bucket 名称。
 
    ```json
    {

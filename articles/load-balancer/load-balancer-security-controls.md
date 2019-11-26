@@ -1,6 +1,6 @@
 ---
-title: Security controls for Azure Load Balancer
-description: A checklist of security controls for evaluating Load Balancer
+title: Azure 负载均衡器的安全控制
+description: 用于评估负载均衡器的安全控制清单
 services: load-balancer
 author: asudbring
 manager: KumudD
@@ -15,52 +15,52 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74214900"
 ---
-# <a name="security-controls-for-azure-load-balancer"></a>Security controls for Azure Load Balancer
+# <a name="security-controls-for-azure-load-balancer"></a>Azure 负载均衡器的安全控制
 
-This article documents the security controls built into Azure Load Balancer.
+本文介绍了内置于 Azure 负载均衡器中的安全控件。
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>网络
 
-| Security control | Yes/No | 说明 |
+| 安全控制 | 是/否 | 说明 |
 |---|---|--|
-| Service endpoint support| N/A | |
-| VNet injection support| N/A | |
-| Network Isolation and Firewalling support| N/A |  |
-| Forced tunneling support| N/A | |
+| 服务终结点支持| 不适用 | |
+| VNet 注入支持| 不适用 | |
+| 网络隔离和防火墙支持| 不适用 |  |
+| 强制隧道支持| 不适用 | |
 
-## <a name="monitoring--logging"></a>Monitoring & logging
+## <a name="monitoring--logging"></a>监视和日志记录
 
-| Security control | Yes/No | 说明|
+| 安全控制 | 是/否 | 说明|
 |---|---|--|
-| Azure monitoring support (Log analytics, App insights, etc.)| 是 | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Control and management plane logging and audit| 是 | See [Azure Monitor logs for public Basic Load Balancer](load-balancer-monitor-log.md). |
-| Data plane logging and audit | N/A |  |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | [有关公共基本负载均衡器](load-balancer-monitor-log.md)，请参阅 Azure Monitor 日志。 |
+| 控制和管理平面日志记录和审核| 是 | [有关公共基本负载均衡器](load-balancer-monitor-log.md)，请参阅 Azure Monitor 日志。 |
+| 数据平面日志记录和审核 | 不适用 |  |
 
-## <a name="identity"></a>身份标识
+## <a name="identity"></a>标识
 
-| Security control | Yes/No | 说明|
+| 安全控制 | 是/否 | 说明|
 |---|---|--|
-| Authentication| N/A |  |
-| 授权| N/A |  |
+| 身份验证| 不适用 |  |
+| 授权| 不适用 |  |
 
 ## <a name="data-protection"></a>数据保护
 
-| Security control | Yes/No | 说明 |
+| 安全控制 | 是/否 | 说明 |
 |---|---|--|
-| Server-side encryption at rest: Microsoft-managed keys | N/A | |
-| Encryption in transit (such as ExpressRoute encryption, in VNet encryption, and VNet-VNet encryption )| N/A | |
-| Server-side encryption at rest: customer-managed keys (BYOK) | N/A | |
-| Column level encryption (Azure Data Services)| N/A | |
-| 加密的 API 调用| 是 | Via the [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| 服务器端加密： Microsoft 托管密钥 | 不适用 | |
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 不适用 | |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 不适用 | |
+| 列级加密（Azure 数据服务）| 不适用 | |
+| 加密的 API 调用| 是 | 通过[Azure 资源管理器](../azure-resource-manager/index.yml)。 |
 
 ## <a name="configuration-management"></a>配置管理
 
-| Security control | Yes/No | 说明|
+| 安全控制 | 是/否 | 说明|
 |---|---|--|
-| Configuration management support (versioning of configuration, etc.)| N/A |  | 
+| 配置管理支持（配置的版本控制等）| 不适用 |  | 
 
 ## <a name="next-steps"></a>后续步骤
 
-- Learn more about the [built-in security controls across Azure services](../security/fundamentals/security-controls.md).
+- 详细了解[Azure 服务中的内置安全控件](../security/fundamentals/security-controls.md)。

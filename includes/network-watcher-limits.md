@@ -11,7 +11,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224513"
 ---
-| 资源 | 默认限制 | 最大限制 | 说明 |
+| Resource | 默认限制 | 最大限制 | 注意 |
 | --- | --- | --- | --- |
-| Azure 网络观察程序 | 每个区域 1 个 | 每个区域 1 个 | Network Watcher is created to enable access to the service. Only one instance of Network Watcher is required per subscription per region. |
-| Packet capture sessions |10,000 per region | 10,000 |Number of sessions only, not saved captures. |
+| Azure 网络观察程序 | 每个区域 1 个 | 每个区域 1 个 | 创建网络观察程序以启用对服务的访问。 每个区域每个订阅只需要一个网络观察程序实例。 |
+| 数据包捕获会话 |每个区域10000 | 10,000 |仅限会话数，不保存捕获。 |

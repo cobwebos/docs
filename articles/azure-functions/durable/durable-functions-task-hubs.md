@@ -1,6 +1,6 @@
 ---
 title: Durable Functions 中的任务中心 - Azure
-description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 Learn how to configure task hubs.
+description: 了解在 Azure Functions 的 Durable Functions 扩展中什么是任务中心。 了解如何配置任务中心。
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -14,7 +14,7 @@ ms.locfileid: "74232790"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) 中的*任务中心*是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
+*Durable Functions* 中的[任务中心](durable-functions-overview.md)是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 
 如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
 
@@ -29,15 +29,15 @@ ms.locfileid: "74232790"
 * 一个历史记录表。
 * 一个实例表。
 * 一个包含一个或多个租用 blob 的存储容器。
-* A storage container containing large message payloads, if applicable.
+* 包含大型消息有效负载的存储容器（如果适用）。
 
-All of these resources are created automatically in the default Azure Storage account when orchestrator, entity, or activity functions run or are scheduled to run. [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
+在运行或计划运行 orchestrator、entity 或 activity 函数时，会自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
 
 ## <a name="task-hub-names"></a>任务中心名称
 
 任务中心由 *host.json* 文件中声明的名称标识，如以下示例所示：
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>host json （函数2.0）
 
 ```json
 {
@@ -60,9 +60,9 @@ All of these resources are created automatically in the default Azure Storage ac
 }
 ```
 
-Task hubs can also be configured using app settings, as shown in the following `host.json` example file:
+还可以使用应用设置来配置任务中心，如以下 `host.json` 示例文件所示：
 
-### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
+### <a name="hostjson-functions-10"></a>host json （函数1.0）
 
 ```json
 {
@@ -72,7 +72,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
+### <a name="hostjson-functions-20"></a>host json （函数2.0）
 
 ```json
 {
@@ -96,7 +96,7 @@ Task hubs can also be configured using app settings, as shown in the following `
 }
 ```
 
-The following code is a precompiled C# example of how to write a function that uses the [orchestration client binding](durable-functions-bindings.md#orchestration-client) to work with a task hub that is configured as an App Setting:
+下面的代码是一个预C#编译示例，说明如何编写一个函数，该函数使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心：
 
 ### <a name="c"></a>C#
 
@@ -119,7 +119,7 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> The previous C# example is for Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+> 上面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -134,19 +134,19 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-任务中心名称必须以字母开头且只能包含字母和数字。 If not specified, a default task hub name will be used as shown in the following table:
+任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则将使用默认的任务中心名称，如下表所示：
 
-| Durable extension version | Default task hub name |
+| 持久扩展版本 | 默认任务中心名称 |
 | - | - |
-| 2.x | When deployed in Azure, the task hub name is derived from the name of the _function app_. When running outside of Azure, the default task hub name is `TestHubName`. |
-| 1.x | The default task hub name for all environments is `DurableFunctionsHub`. |
+| 2.x | 在 Azure 中部署时，任务中心名称从_函数应用_的名称派生而来。 在 Azure 外部运行时，将 `TestHubName`默认的任务中心名称。 |
+| 1.x | 所有环境的默认任务中心名称都是 `DurableFunctionsHub`。 |
 
-For more information about the differences between extension versions, see the [Durable Functions versions](durable-functions-versions.md) article.
+有关扩展版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
 
 > [!NOTE]
-> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json 文件中为每个任务中心显式配置不同的名称。 Otherwise the multiple function apps will compete with each other for messages, which could result in undefined behavior, including orchestrations getting unexpectedly "stuck" in the `Pending` or `Running` state.
+> 当共享存储帐户中有多个任务中心时，名称用于将一个任务中心与其他任务中心区分开来。 如果有多个函数应用共享一个共享存储帐户，则必须在 host.json 文件中为每个任务中心显式配置不同的名称。 否则，多个函数应用将为消息彼此竞争，这可能会导致未定义的行为，包括在 `Pending` 或 `Running` 状态下意外 "停滞" 的业务流程。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Learn how to handle orchestration versioning](durable-functions-versioning.md)
+> [了解如何处理业务流程版本管理](durable-functions-versioning.md)

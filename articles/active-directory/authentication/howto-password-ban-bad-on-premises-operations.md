@@ -1,6 +1,6 @@
 ---
-title: Password protection operations and reports - Azure Active Directory
-description: Azure AD Password Protection post-deployment operations and reporting
+title: 密码保护操作和报表-Azure Active Directory
+description: Azure AD 的密码保护部署后操作和报告
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -28,7 +28,7 @@ ms.locfileid: "74381667"
 
 ## <a name="enable-password-protection"></a>启用密码保护
 
-1. Sign in to the [Azure portal](https://portal.azure.com) and browse to **Azure Active Directory**, **Authentication methods**, then **Password Protection**.
+1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**、**身份验证方法**和**密码保护**。
 1. 将“对 Windows Server Active Directory 启用密码保护”设置为“是”
 1. 如[部署指南](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)中所述，我们建议最初将“模式”设置为“审核”
    * 在熟悉该功能后，可将“模式”切换为“强制”
@@ -56,11 +56,11 @@ ms.locfileid: "74381667"
 受影响的最终用户可能需要咨询其 IT 人员才能了解新的要求和选择安全密码。
 
 > [!NOTE]
-> Azure AD Password Protection has no control over the specific error message displayed by the client machine when a weak password is rejected.
+> Azure AD 密码保护不会控制拒绝弱密码时客户端计算机所显示的特定错误消息。
 
 ## <a name="enable-mode"></a>启用模式
 
-This setting should be left in its default enabled (Yes) state. 将此设置配置为已禁用（“否”）将导致所有已部署的 Azure AD 密码保护 DC 代理进入静止模式，在这种模式下，将按现样接受所有密码，并且不会执行任何验证活动（例如，甚至连审核事件都不会发布）。
+应将此设置保留为其默认启用（是）状态。 将此设置配置为已禁用（“否”）将导致所有已部署的 Azure AD 密码保护 DC 代理进入静止模式，在这种模式下，将按现样接受所有密码，并且不会执行任何验证活动（例如，甚至连审核事件都不会发布）。
 
 ## <a name="next-steps"></a>后续步骤
 

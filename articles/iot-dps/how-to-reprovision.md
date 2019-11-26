@@ -1,6 +1,6 @@
 ---
-title: Reprovision devices in Azure IoT Hub Device Provisioning Service
-description: Learn how to reprovision devices with your device provisioning service instance, and why you might need to do this.
+title: Azure IoT 中心设备预配服务中的重新设置设备
+description: 了解如何将设备与设备预配服务实例重新设置，以及可能需要执行此操作的原因。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -16,17 +16,17 @@ ms.locfileid: "74229709"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
-在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 此项移动的原因可能包括以下情况：
+在 IoT 解决方案的生命周期中，通常在 IoT 中心之间移动设备。 此举的原因可能包括以下情况：
 
 * **地理位置**：当设备在两个位置之间移动时，通过将设备迁移到离每个位置更近的 IoT 中心来改善网络延迟。
 
-* **多租户**：可在同一 IoT 解决方案中使用设备，但将其重新分配或租赁给新的客户或客户站点。 可使用不同的 IoT 中心为这位新客户提供服务。
+* **多租户**：可在同一 IoT 解决方案中使用设备，但将其重新分配或租赁给新的客户或客户站点。 可以使用不同的 IoT 中心来为这位新客户提供服务。
 
-* **解决方案更改**：可将设备移到新版或更新后的 IoT 解决方案中。 这种重新分配可能需要设备与连接到其他后端组件的新 IoT 中心通信。 
+* **解决方案更改**：可将设备移到新的或更新的 IoT 解决方案中。 这种重新分配可能需要设备与连接到其他后端组件的新 IoT 中心通信。 
 
 * **隔离**：类似于解决方案更改。 出现故障、被盗用或已过时的设备可能会重新分配到 IoT 中心，该设备只能在此处进行更新并恢复其符合性。 一旦设备正常运行，它就会迁移回主中心。
 
-For more a more detailed overview of reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md).
+有关更详细的重新预配概述，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>配置注册分配策略
@@ -69,9 +69,9 @@ For more a more detailed overview of reprovisioning, see [IoT Hub Device reprovi
 
 3. 在“选择在重新预配到其他 IoT 中心时要如何处理设备数据”下，选择下述一个重新配置策略：
 
-    * **重新预配并迁移数据**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的所有设备状态信息都将迁移到新的 IoT 中心。 迁移期间，设备的状态将报告为“正在分配”
+    * **重新预配并迁移数据**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作。 根据注册项配置，设备可以重新分配给另一个 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的所有设备状态信息都将迁移到新的 IoT 中心。 迁移期间，设备的状态将报告为“正在分配”
 
-    * **重新预配并重置为初始配置**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 向新的 IoT 中心提供预配设备时预配服务实例接收到的初始配置数据。 迁移期间，设备的状态将报告为“正在分配”。
+    * **重新预配并重置为初始配置**：当与注册项关联的设备提交新的预配请求时，此策略将执行操作。 根据注册项配置，设备可以重新分配给另一个 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 向新的 IoT 中心提供预配设备时预配服务实例接收到的初始配置数据。 迁移期间，设备的状态将报告为“正在分配”。
 
 4. 单击“保存”，开始根据所作更改进行设备的重新预配。
 
@@ -85,15 +85,15 @@ For more a more detailed overview of reprovisioning, see [IoT Hub Device reprovi
 
 设备提交预配请求的频率由具体方案而定。 但是，建议设定计划，让设备在重启时向预配服务实例发送预配请求，同时还支持按需手动触发预配的[方法](../iot-hub/iot-hub-devguide-direct-methods.md)。 此外，还可设置[所需属性](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)来触发预配。 
 
-注册项上的重新预配策略将确定设备预配服务实例如何处理这些预配请求，以及是否应在重新预配期间迁移设备状态数据。 单个注册和注册组可使用相同的策略：
+注册项上的重新预配策略将确定设备预配服务实例如何处理这些预配请求，以及是否应在重新预配期间迁移设备状态数据。 相同的策略可用于单个注册和注册组：
 
 要通过示例代码了解如何在启动顺序期间发送来自设备的预配请求，请参阅[自动预配模拟设备](quick-create-simulated-device.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+- 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

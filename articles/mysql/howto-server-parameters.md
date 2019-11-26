@@ -35,11 +35,11 @@ ms.locfileid: "74419717"
 
 ## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
 
-The InnoDB Buffer Pool size is not configurable and tied to your [pricing tier](concepts-service-tiers.md).
+InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-tiers.md)。
 
-|**定价层**|**vCore(s)**|**InnoDB Buffer Pool size in MB <br>(servers supporting up to 4 TB storage)**| **InnoDB Buffer Pool size in MB <br>(servers supporting up to 16 TB storage)**|
+|定价层|**vCore(s)**|**InnoDB 缓冲池大小（MB <br>）（支持多达 4 TB 存储的服务器）**| **InnoDB 缓冲池大小（MB <br>）（支持高达 16 TB 存储的服务器）**|
 |:---|---:|---:|---:|
-|基本| 第| 832| |
+|基本| 1| 832| |
 |基本| 2| 2560| |
 |常规用途| 2| 3584| 7168|
 |常规用途| 4| 7680| 15360|
@@ -57,9 +57,9 @@ The InnoDB Buffer Pool size is not configurable and tied to your [pricing tier](
 
 |**Parameter**|**固定值**|
 | :------------------------ | :-------- |
-|基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|第|
-|sync_binlog|第|
+|基本层中的 innodb_file_per_table|熄灭|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
 |innodb_log_file_size|512MB|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。

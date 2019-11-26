@@ -1,6 +1,6 @@
 ---
-title: Set up a lab to teach database management for relational databases | Microsoft Docs
-description: Learn how to set up a lab to teach the management of relational databases.
+title: 设置实验室来讲授关系数据库的数据库管理 |Microsoft Docs
+description: 了解如何设置实验室来讲授关系数据库的管理。
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -20,59 +20,59 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233761"
 ---
-# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Set up a lab to teach database management for relational databases
+# <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>设置实验室来讲授关系数据库的数据库管理
 
-This article describes how to set up a lab for a basic databases management class in Azure Lab Services. Databases concepts are one of the introductory courses taught in most of the Computer Science departments in college. Structured Query Language (SQL) is an international standard. SQL is the standard language for relation database management including adding, accessing, and managing content in a database.  It is most noted for its quick processing, proven reliability, ease, and flexibility of use.
+本文介绍如何在 Azure 实验室服务中为基本数据库管理类设置实验室。 数据库概念是在大学的大多数计算机科学部门中讲授的一个介绍性课程。 结构化查询语言（SQL）是一种国际标准。 SQL 是一种用于关系数据库管理的标准语言，包括在数据库中添加、访问和管理内容。  最值得注意的是，其快速处理、可靠的可靠性、易用性和灵活性。
 
-In this article, we'll show how to set up a virtual machine template in a lab with both MySQL Database Server and SQL Server 2019 server.  [MySQL](https://www.mysql.com/) is a freely available open source Relational Database Management System (RDBMS).  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) is the latest version of Microsoft’s RDBMS.
+本文介绍如何使用 MySQL 数据库服务器和 SQL Server 2019 服务器在实验室中设置虚拟机模板。  [MySQL](https://www.mysql.com/)是一种可自由使用的开源关系数据库管理系统（RDBMS）。  [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019)是最新版本的 Microsoft RDBMS。
 
 ## <a name="lab-configuration"></a>实验室配置
 
-To set up this lab, you need an Azure subscription and lab account to get started. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 Once you get an Azure subscription, you can create a new lab account in Azure Lab Services. For more information about creating a new lab account, see [Tutorial to Setup a Lab Account](tutorial-setup-lab-account.md).  You can also use an existing lab account.
+若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
 
-### <a name="lab-account-settings"></a>Lab account settings
+### <a name="lab-account-settings"></a>实验室帐户设置
 
-Enable the settings described in the table below for the lab account. For more information about how to enable marketplace images, see [Specify Marketplace images available to lab creators](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)。
 
-| Lab account setting | 说明 |
+| 实验室帐户设置 | 说明 |
 | ------------------- | ------------ |
-|Marketplace image| Enable the ‘SQL Server 2019 Standard on Windows Server 2019’ image for use within your lab account.|
+|市场映像| 启用 "Windows Server 2019 上的 SQL Server 2019 标准" 映像，以便在实验室帐户中使用。|
 
-### <a name="lab-settings"></a>Lab settings
+### <a name="lab-settings"></a>实验室设置
 
-Use the settings in the table below when setting up a classroom lab.  For more information how to create a classroom lab, see [set up a classroom lab tutorial](tutorial-setup-classroom-lab.md).
+设置教室实验室时，请使用下表中的设置。  有关如何创建教室实验室的详细信息，请参阅[设置课堂实验室教程](tutorial-setup-classroom-lab.md)。
 
-| Lab settings | Value/instructions |
+| 实验室设置 | 值/说明 |
 | ------------ | ------------------ |
-|虚拟机大小| 中。 This size is best suited for relational databases, in-memory caching, and analytics.|
-|Virtual Machine Image| SQL Server 2019 Standard on Windows Server 2019|
+|虚拟机大小| 中。 此大小最适合用于关系数据库、内存中缓存和分析。|
+|虚拟机映像| Windows Server 2019 上的 SQL Server 2019 标准版|
 
-## <a name="template-machine-configuration"></a>Template machine configuration
+## <a name="template-machine-configuration"></a>模板计算机配置
 
-To install MySQL on Windows Server 2019, you can follow the steps mentioned in [Install and Run MySQL Community Server on a Virtual Machine](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine).
+若要在 Windows Server 2019 上安装 MySQL，你可以按照在[虚拟机上安装和运行 Mysql 社区服务器](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)中所述的步骤进行操作。
 
-SQL Server 2019 is pre-installed in the virtual machine image we chose when creating the new lab.
+在创建新实验室时选择的虚拟机映像中预安装了 SQL Server 2019。
 
 ## <a name="cost-estimate"></a>成本估计
 
-Let's cover a possible cost estimate for this class.  We'll use a class of 25 students.  There are 20 hours of scheduled class time.  Also, each student gets 10 hours quota for homework or assignments outside scheduled class time.  The virtual machine size we chose was medium, which is 42 lab units.
+我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  选择的虚拟机大小为 "中"，即 "42 实验室单位"。
 
-Here is an example of a possible cost estimate for this class:
+下面是此类的可能的成本估算示例：
 
-25 students \* (20 scheduled hours + 10 quota hours) \* 0.42 USD per hour  = 315.00 USD
+25名学生 \* （20个计划小时 + 10 个配额小时） \* 0.42 美元/小时 = 315.00 美元
 
-Further more details on pricing, see [Azure Lab Services Pricing](https://azure.microsoft.com/pricing/details/lab-services/).
+有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>结束语
 
-This article walked you through the steps necessary to create a lab for basic database management concepts using both MySQL and SQL Server. You can use a similar setup for other databases classes.
+本文指导你完成使用 MySQL 和 SQL Server 为基本数据库管理概念创建实验室所需的步骤。 您可以为其他数据库类使用类似的设置。
 
 ## <a name="next-steps"></a>后续步骤
 
-Next steps are common to setting up any lab.
+下一步是设置任何实验室的常见步骤。
 
-- [Create and manage a template](how-to-create-manage-template.md)
+- [创建和管理模板](how-to-create-manage-template.md)
 - [添加用户](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Set quota](how-to-configure-student-usage.md#set-quotas-for-users)
-- [Set a schedule](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Email registration links to students](how-to-configure-student-usage.md#send-invitations-to-users)
+- [设置配额](how-to-configure-student-usage.md#set-quotas-for-users)
+- [设置计划](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [向学生发送电子邮件注册链接](how-to-configure-student-usage.md#send-invitations-to-users)

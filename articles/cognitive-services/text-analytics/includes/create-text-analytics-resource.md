@@ -1,5 +1,5 @@
 ---
-title: Create a Cognitive Services Text Analytics resource
+title: 创建认知服务文本分析资源
 titleSuffix: Azure Cognitive Services
 description: 了解如何创建认知服务文本分析资源。
 services: cognitive-services
@@ -16,25 +16,25 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383445"
 ---
-## <a name="create-a-cognitive-services-text-analytics-resource"></a>Create a Cognitive Services Text Analytics resource
+## <a name="create-a-cognitive-services-text-analytics-resource"></a>创建认知服务文本分析资源
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. Select **Create a resource**, and then go to **AI + Machine Learning** > **Text Analytics**.
-   Or, go to [Create Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
-1. Enter all the required settings:
+1. 选择“创建资源”，然后转到“AI + 机器学习” > “文本分析”。
+   或者，转到 [创建文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)。
+1. 输入所有必需的设置：
 
-    |设置|Value|
+    |设置|值|
     |--|--|
-    |名称|Enter a name (2-64 characters).|
-    |Subscription|Select the appropriate subscription.|
-    |Location|Select a nearby location.|
-    |定价层| Enter **S**, the standard pricing tier.|
-    |Resource group|Select an available resource group.|
+    |名称|输入名称（2-64 个字符）。|
+    |订阅|选择相应的订阅。|
+    |位置|选择附近的位置。|
+    |定价层| 输入 **"标准" 定价**层。|
+    |资源组|选择可用的资源组。|
 
-1. Select **Create**, and wait for the resource to be created. Your browser automatically redirects to the newly created resource page.
-1. Collect the configured `endpoint` and an API key:
+1. 选择 "**创建**"，并等待创建资源。 浏览器会自动重定向到新创建的资源页。
+1. 收集配置的 `endpoint` 和 API 密钥：
 
-    |Resource tab in portal|设置|Value|
+    |门户中的“资源”选项卡|设置|值|
     |--|--|--|
-    |**概述**|终结点|Copy the endpoint. It appears similar to `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`.|
-    |密钥|API 密钥|Copy one of the two keys. It's a 32-character alphanumeric string with no spaces or dashes: <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>.|
+    |**概述**|终结点|复制终结点。 它看上去类似于 `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`。|
+    |密钥|API 密钥|复制两个密钥中的一个。 它是一个 32 个字符的字母数字字符串（不包含空格或短划线）：<`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>。|

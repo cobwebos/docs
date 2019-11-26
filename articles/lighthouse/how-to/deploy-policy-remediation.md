@@ -22,7 +22,7 @@ ms.locfileid: "74463878"
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
 
-下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 This user will be able to assign two built-in roles to managed identities in the customer tenant: Contributor and Log Analytics Contributor.
+下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 此用户将能够将两个内置角色分配到客户租户中的托管标识：参与者和 Log Analytics 参与者。
 
 ```json
 {

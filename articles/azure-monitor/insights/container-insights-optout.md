@@ -21,7 +21,7 @@ ms.locfileid: "74382250"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-使用 [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令禁用容器的 Azure Monitor。 The command removes the agent from the cluster nodes, it does not remove the solution or the data already collected and stored in your Azure Monitor resource.  
+使用 [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令禁用容器的 Azure Monitor。 该命令从群集节点中删除代理，它不会删除已收集并存储在 Azure Monitor 资源中的解决方案或数据。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -38,7 +38,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
 >[!NOTE]
->The template needs to be deployed in the same resource group of the cluster. 如果在使用此模板时省略任何其他属性或加载项，则可能导致从群集中删除这些属性或加载项。 For example, *enableRBAC* for RBAC policies implemented in your cluster, or *aksResourceTagValues* if tags are specified for the AKS cluster.  
+>模板需要部署在群集所在的资源组中。 如果在使用此模板时省略任何其他属性或加载项，则可能导致从群集中删除这些属性或加载项。 例如，*enableRBAC*（用于群集中实施的 RBAC 策略），或 *aksResourceTagValues*（如果为 AKS 群集指定了标记）。  
 >
 
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
@@ -125,7 +125,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 
     位于“属性”页时，还请复制“工作区资源 ID”。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。 
 
-    Edit the values for **aksResourceTagValues** to match the existing tag values specified for the AKS cluster.
+    编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
 
 5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹。
 
@@ -168,5 +168,5 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 Don't forget about the **Workspace Resource ID** copied earlier in step 4, you're going to need that. 
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 别忘了前面在步骤4中复制的**工作区资源 ID** ，你将需要这样做。 
 

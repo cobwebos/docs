@@ -40,7 +40,7 @@ ms.locfileid: "74277889"
 
 此方案假定用户已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的是存在有效虚拟机的资源组。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>应用场景
 
 本文中介绍的方案检索给定虚拟机的已应用有效安全规则。
 

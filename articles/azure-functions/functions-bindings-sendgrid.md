@@ -18,7 +18,7 @@ ms.locfileid: "74231084"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 2.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74231084"
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 > [!NOTE]
-> Version 2.x does not create the topic or subscription configured in the `ServiceBusTrigger` instance. Version 2.x is based on [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) and does not handle queue management.
+> 版本 2.x 不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 版本 2.x 基于 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)，但不处理队列管理。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -105,7 +105,7 @@ public class OutgoingEmail
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json 
 {
@@ -162,7 +162,7 @@ public class Message
 
 ### <a name="java-example"></a>Java 示例
 
-The following example uses the `@SendGridOutput` annotation from the [Java functions runtime library](/java/api/overview/azure/functions/runtime) to send an email using the SendGrid output binding.
+以下示例使用 `@SendGridOutput`Java 函数运行时库[中的 ](/java/api/overview/azure/functions/runtime) 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
 ```java
 @FunctionName("SendEmail")
@@ -191,7 +191,7 @@ The following example uses the `@SendGridOutput` annotation from the [Java funct
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 *function.json* 文件中的绑定数据：
 
 ```json 
 {
@@ -229,7 +229,7 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
@@ -249,15 +249,15 @@ public static void Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `SendGrid` 特性中设置的绑定配置属性。
+下表解释了在 *function.json* 文件和 `SendGrid` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型|| 必需 - 必须设置为 `sendGrid`。|
-|direction|| 必需 - 必须设置为 `out`。|
-|name|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|**类型**|| 必需 - 必须设置为 `sendGrid`。|
+|**direction**|| 必需 - 必须设置为 `out`。|
+|**名称**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
 |**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
-|**to**|**收件人**| 收件人的电子邮件地址。 |
+|**to**|**To**| 收件人的电子邮件地址。 |
 |**from**|**From**| 发件人的电子邮件地址。 |
 |**subject**|**主题**| 电子邮件主题。 |
 |**text**|**Text**| 电子邮件内容。 |
@@ -284,7 +284,7 @@ public static void Run(
 }
 ```  
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 

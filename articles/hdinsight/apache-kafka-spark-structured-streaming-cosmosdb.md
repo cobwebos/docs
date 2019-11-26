@@ -1,5 +1,5 @@
 ---
-title: Apache Spark & Apache Kafka with Cosmos DB - Azure HDInsight
+title: Apache Spark & Apache Kafka 与 Cosmos DB-Azure HDInsight
 description: 了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka 读取数据，然后将数据存储到 Azure Cosmos DB 中。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -32,7 +32,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 ## <a name="create-the-clusters"></a>创建群集
 
-Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the public internet. 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
@@ -64,19 +64,19 @@ Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the p
 
 1. 使用以下信息填充“自定义部署”部分中的条目：
 
-    |properties |Value |
+    |属性 |值 |
     |---|---|
-    |Subscription|选择 Azure 订阅。|
-    |Resource group|创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。|
-    |Cosmos DB Account Name|此值用作 Cosmos DB 帐户的名称。 The name can only contain lowercase letters, numbers, and the hyphen (-) character. 它的长度必须介于 3 到 31 个字符之间。|
-    |Base Cluster Name|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集。|
-    |Cluster Version|HDInsight 群集版本。 此示例使用 HDInsight 3.6 进行测试，可能不适用于其他群集类型。|
+    |订阅|选择 Azure 订阅。|
+    |资源组|创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。|
+    |Cosmos DB 帐户名称|此值用作 Cosmos DB 帐户的名称。 名称只能包含小写字母、数字和连字符（-）字符。 它的长度必须介于 3 到 31 个字符之间。|
+    |基本群集名称|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 myhdi 将创建名为 spark-myhdi 的 Spark 群集和名为 kafka-myhdi 的 Kafka 群集。|
+    |群集版本|HDInsight 群集版本。 此示例使用 HDInsight 3.6 进行测试，可能不适用于其他群集类型。|
     |群集登录用户名|Spark 和 Kafka 群集的管理员用户名。|
     |群集登录密码|Spark 和 Kafka 群集的管理员用户密码。|
-    |Ssh User Name|创建 Spark 和 Kafka 群集的 SSH 用户。|
-    |Ssh Password|Spark 和 Kafka 群集的 SSH 用户的密码。|
+    |SSH 用户名|创建 Spark 和 Kafka 群集的 SSH 用户。|
+    |SSH 密码|Spark 和 Kafka 群集的 SSH 用户的密码。|
 
-    ![HDInsight custom deployment values](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+    ![HDInsight 自定义部署值](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
 1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
@@ -156,7 +156,7 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 ## <a name="next-steps"></a>后续步骤
 
-Now that you've learned how to use Apache Spark Structured Streaming, see the following documents to learn more about working with Apache Spark, Apache Kafka, and Azure Cosmos DB:
+现在，你已了解如何使用 Apache Spark 结构化流式处理，请参阅以下文档了解有关使用 Apache Spark、Apache Kafka 和 Azure Cosmos DB 的详细信息：
 
 * [如何将 Apache Spark 流式处理 (DStream) 与 Apache Kafka 配合使用](hdinsight-apache-spark-with-kafka.md)。
 * [开始使用 Jupyter Notebook 和 Apache Spark on HDInsight](spark/apache-spark-jupyter-spark-sql.md)

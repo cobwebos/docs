@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Enterprise State Roaming in Azure Active Directory
+title: Azure Active Directory 中的企业状态漫游疑难解答
 description: 就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。
 services: active-directory
 ms.service: active-directory
@@ -30,7 +30,7 @@ ms.locfileid: "74379765"
 
 1. 已在设备上安装包含最新更新的 Windows 10，最低版本需为 1511（OS 内部版本 10586 或更高）。 
 1. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](overview.md)。
-1. 确保如[启用企业状态漫游](enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了**企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
+1. 确保如**启用企业状态漫游**中所述在 Azure AD 中为租户启用了[企业状态漫游](enterprise-state-roaming-enable.md)。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
 1. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74379765"
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>验证同步；“同步设置”设置页 
 
-1. 将 Windows 10 电脑加入到配置为允许企业状态漫游的域之后，请使用工作帐户登录。 转到“设置” > “帐户” > “同步设置”，确认同步和各项设置已打开，并且设置页的顶部指示将与工作帐户同步。 在“设置” > “帐户” > “信息”中确认同一个帐户也用作登录帐户。 
+1. 将 Windows 10 电脑加入到配置为允许企业状态漫游的域之后，请使用工作帐户登录。 转到“设置” **“帐户”** “同步设置”，确认同步和各项设置已打开，并且设置页的顶部指示将与工作帐户同步。 >  >  在“设置” **“帐户”** “信息”中确认同一个帐户也用作登录帐户。 >  >  
 1. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改能否在 5 分钟内传播到第二台计算机。 
 
    * 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
@@ -66,9 +66,9 @@ ms.locfileid: "74379765"
 1. 打开命令提示符后，键入“*dsregcmd.exe /status*”。
 1. 在预期的输出中，**AzureAdJoined** 字段值应为“YES”，**WamDefaultSet** 字段值应为“YES”，**WamDefaultGUID** 字段值应是末尾为“(AzureAd)”的 GUID。
 
-**Potential issue**: **WamDefaultSet** and **AzureAdJoined** both have “NO” in the field value, the device was domain-joined and registered with Azure AD, and the device does not sync. If it is showing this, the device may need to wait for policy to be applied or the authentication for the device failed when connecting to Azure AD. 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
+**潜在问题**： **WamDefaultSet**和**AzureAdJoined**在字段值中都有 "NO"，则设备已加入域并已注册到 Azure AD，设备不会同步。如果显示了此设备，则设备可能需要等待策略应用，或者在连接到 Azure AD 时，设备的身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
 
-**Potential issue**: The field for **SettingsUrl** is empty and the device does not sync. The user may have last logged in to the device before Enterprise State Roaming was enabled in the Azure Active Directory Portal. 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员导航到“Azure Active Directory” > “设备” > “企业状态漫游”禁用并重新启用“用户可以跨设备同步设置和应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
+**潜在问题**： **SettingsUrl**的字段为空，且设备未同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员导航到“Azure Active Directory” > “设备” > “企业状态漫游”禁用并重新启用“用户可以跨设备同步设置和应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
 
@@ -76,7 +76,7 @@ ms.locfileid: "74379765"
 
 **潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 通过 Microsoft Passport for Work PIN 或通过访问其他 Azure 服务（如 Office 365）时完成多重身份验证，管理员用户仍能登录到 Windows 10 设备，从而进行同步。
 
-**Potential issue**: Sync can fail if the admin configures the Active Directory Federation Services Multi-Factor Authentication Conditional Access policy and the access token on the device expires. 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
+**潜在问题**：如果管理员配置了 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
 
 ### <a name="event-viewer"></a>事件查看器
 

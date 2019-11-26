@@ -1,5 +1,5 @@
 ---
-title: Implement a geo-distributed solution
+title: 实现地理分散的解决方案
 description: 了解如何配置 Azure SQL 数据库和应用程序以便故障转移到复制的数据库，以及如何测试故障转移。
 services: sql-database
 ms.service: sql-database
@@ -20,26 +20,26 @@ ms.locfileid: "74421140"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
 
-配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中并测试故障转移计划。 你将学习如何：
+配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中并测试故障转移计划。 学习如何：
 
 > [!div class="checklist"]
 > - 创建[故障转移组](sql-database-auto-failover-group.md)
 > - 运行 Java 应用程序以查询 Azure SQL 数据库
 > - 测试故障转移
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要完成本教程，请确保已安装以下各项：
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- A single database in Azure SQL Database. 若要创建一个，请使用以下各项：
+- Azure SQL 数据库中的单一数据库。 若要创建一个，请使用以下各项：
   - [Portal](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
@@ -93,7 +93,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
-> Run `az login` to sign in to Azure.
+> 运行 `az login` 以登录到 Azure。
 
 ```powershell
 $admin = "<adminName>"
@@ -118,7 +118,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-还可以通过选择数据库，然后选择“设置” > “异地复制”，在 Azure 门户中更改异地复制设置。
+还可以通过选择数据库，然后选择“设置” **“异地复制”，在 Azure 门户中更改异地复制设置** > 。
 
 ![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -150,7 +150,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </dependency>
    ```
 
-1. 通过在 `dependencies` 部分后添加 `properties` 部分来指定 Java 版本：
+1. 通过在 `properties` 部分后添加 `dependencies` 部分来指定 Java 版本：
 
    ```xml
    <properties>
@@ -159,7 +159,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    </properties>
    ```
 
-1. 通过在 `properties` 部分后添加 `build` 部分来支持清单文件：
+1. 通过在 `build` 部分后添加 `properties` 部分来支持清单文件：
 
    ```xml
    <build>
@@ -319,7 +319,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-You can check the role of the disaster recovery server during the test with the following command:
+您可以通过以下命令在测试过程中检查灾难恢复服务器的角色：
 
 ```powershell
 (Get-AzSqlDatabaseFailoverGroup -FailoverGroupName $failoverGroup `
@@ -344,7 +344,7 @@ You can check the role of the disaster recovery server during the test with the 
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You can check the role of the disaster recovery server during the test with the following command:
+您可以通过以下命令在测试过程中检查灾难恢复服务器的角色：
 
 ```azure-cli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer

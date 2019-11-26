@@ -213,7 +213,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 可以在 Azure Monitor 中查看从活动日志和 Log Analytics 工作区创建的所有警报。 只需打开左侧的“警报”窗格即可。
 
-尽管你可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics（而不是活动日志）进行大规模监视。 原因如下：
+尽管你可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics（而不是活动日志）进行大规模监视。 原因是：
 
 - **有限方案**：通过活动日志的通知仅适用于 Azure VM 备份。 必须为每个恢复服务保管库设置通知。
 - **定义大小**：计划的备份活动不适用于活动日志的最新定义。 相反，它会与[资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)对齐。 当通过活动日志通道传送数据发生变化时，这种相符性会导致意外的影响。

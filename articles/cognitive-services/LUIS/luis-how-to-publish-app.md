@@ -1,5 +1,5 @@
 ---
-title: Publish app - LUIS
+title: 发布应用 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 当完成生成和测试活动 LUIS 应用时，可通过将其发布到终结点使其可用于客户端应用程序。
 services: cognitive-services
@@ -20,7 +20,7 @@ ms.locfileid: "74221723"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
-When you finish building, training, and testing your active LUIS app, make it available to your client application by publishing it to the endpoint. 
+完成活动 LUIS 应用的构建、定型和测试后，通过将其发布到终结点，使其可供客户端应用程序使用。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -28,48 +28,48 @@ When you finish building, training, and testing your active LUIS app, make it av
 
 1. 若要发布到终结点，请在右上方的面板中选择“发布”。 
 
-    ![Publish button in top, right nav bar](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![导航栏右上角的“发布”按钮](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Select your settings for the published prediction endpoint, then select **Publish**.
+1. 选择用于已发布的预测终结点的设置，然后选择“发布”。
 
-    ![Select publish settings then select Publish button](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![选择发布设置，然后选择“发布”按钮](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>Publishing slots
+### <a name="publishing-slots"></a>发布槽
 
-Select the correct slot when the pop-up window displays: 
+当显示弹出窗口时选择正确的槽： 
 
 * 过渡
 * 生产 
 
-By using both publishing slots, this allows you to have two different versions of your app available at the published endpoints or the same version on two different endpoints. 
+使用两个发布槽，可以对已发布的终结点使用两个不同版本的应用，或者在两个不同的终结点上使用同一版本。 
 
 ### <a name="publishing-regions"></a>发布区域
 
-The app is published to all regions associated with the LUIS prediction endpoint resources added in the LUIS portal from the **Manage** ->  **[Azure Resources](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** page. 
+应用将从 "管理 ->  **[Azure 资源](/luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** " 页上的 "**管理**" 中，将应用发布到与 LUIS 门户中添加的 LUIS 预测终结点资源关联的所有区域。 
 
-For example, for an app created on [www.luis.ai](https://www.luis.ai), if you create a LUIS resource in two regions, **westus** and **eastus**, and add these to the app as resources, the app is published in both regions. 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
+例如，对于在[www.luis.ai](https://www.luis.ai)上创建的应用，如果在两个区域**westus**和**eastus**中创建 luis 资源，并将它们作为资源添加到该应用，则会在这两个区域发布该应用。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
 
 > [!TIP]
-> There are 3 authoring regions. You must author in the region you intend to publish to. If you need to publish to all regions, you need to manage your authoring process and the resulting trained model in all 3 authoring regions. 
+> 有3种创作区域。 您必须在要发布到的区域中创建。 如果需要发布到所有区域，需要在所有3个创作区域中管理创作过程和生成的定型模型。 
 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
 
-After you select the slot, configure the publish settings for:
+在选择槽后，为以下项配置发布设置：
 
-* 观点分析
-* Spelling correction - v2 prediction endpoint only
+* 情绪分析
+* 拼写更正-仅限 v2 预测终结点
 * 语音启动 
 
-After you publish, these settings are available for review from the **Manage** section's **Publish settings** page. You can change the settings with every publish. If you cancel a publish, any changes you made during the publish are also canceled. 
+发布以后，即可在“发布设置”页的“管理”部分查看这些设置。 可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也会被取消。 
 
-### <a name="when-your-app-is-published"></a>When your app is published
+### <a name="when-your-app-is-published"></a>当应用发布后
 
-When your app is successfully published, a success notification appears at the top of the browser. The notification also includes a link to the endpoints. 
+成功发布应用后，浏览器的顶部会显示成功通知。 通知还包括指向终结点的链接。 
 
-如果需要终结点 URL，请选择该链接。 You can also get to the endpoint URLs by selecting **Manage** in the top menu, then select **Azure Resources** in the left menu. 
+如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“Azure 资源”来访问终结点 URL。 
 
-## <a name="sentiment-analysis"></a>观点分析
+## <a name="sentiment-analysis"></a>情绪分析
 
 <a name="enable-sentiment-analysis"></a>
 
@@ -81,15 +81,15 @@ When your app is successfully published, a success notification appears at the t
 
 若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-concept-data-extraction.md#sentiment-analysis)
 
-## <a name="spelling-correction"></a>Spelling correction
+## <a name="spelling-correction"></a>拼写更正
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-Corrections to spelling are made before the LUIS user utterance prediction. You can see any changes to the original utterance, including spelling, in the response.
+在 LUIS 用户话语预测之前纠正拼写错误。 可以在响应中查看对原始话语所做的任何更改，包括拼写方面的更改。
 
 ## <a name="speech-priming"></a>语音启动
 
-Speech priming is the process of using sending the LUIS model to Speech services prior to conversion of text to speech. This allows the speech service to provide speech conversion more accurately for your model. This allows bot Speech and LUIS requests and responses in one call by making one speech call and getting back a LUIS response. It provides less latency overall.
+语音启动是指在将文本转换为语音之前使用“将 LUIS 模型发送到语音服务”的过程。 这样一来，语音服务就可以更准确地为模型提供语音转换。 这样可以在一个调用中使用机器人语音以及 LUIS 请求和响应，方法是：进行一次语音调用，然后获取 LUIS 响应。 它的延迟综合说来较低。
 
 ## <a name="next-steps"></a>后续步骤
 

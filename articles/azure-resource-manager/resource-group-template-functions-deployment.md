@@ -1,5 +1,5 @@
 ---
-title: Template functions - deployment
+title: 模板函数-部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 ms.date: 11/19/2019
@@ -15,13 +15,13 @@ ms.locfileid: "74230237"
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [deployment](#deployment)
-* [environment](#environment)
+* [环境](#environment)
 * [parameters](#parameters)
 * [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](resource-group-template-functions-resource.md)（资源函数）。
 
-## <a name="deployment"></a>部署
+## <a name="deployment"></a>deployment
 
 `deployment()`
 
@@ -137,11 +137,11 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 `environment()`
 
-Returns information about the Azure environment used for deployment.
+返回有关用于部署的 Azure 环境的信息。
 
 ### <a name="return-value"></a>返回值
 
-This function returns properties for the current Azure environment.
+此函数返回当前 Azure 环境的属性。
 
 ```json
 {
@@ -179,7 +179,7 @@ This function returns properties for the current Azure environment.
 
 ### <a name="example"></a>示例
 
-The following example template returns the environment object.
+下面的示例模板返回环境对象。
 
 ```json
 {
@@ -195,7 +195,7 @@ The following example template returns the environment object.
 }
 ```
 
-The preceding example returns the following object when deployed to global Azure:
+在部署到全局 Azure 时，上面的示例返回以下对象：
 
 ```json
 {
@@ -237,9 +237,9 @@ The preceding example returns the following object when deployed to global Azure
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -326,15 +326,15 @@ The preceding example returns the following object when deployed to global Azure
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | 字符串 | option 1 |
-| intOutput | Int | 第 |
-| objectOutput | 对象 | {"one": "a", "two": "b"} |
-| arrayOutput | 数组 | [1, 2, 3] |
-| crossOutput | 字符串 | option 1 |
+| stringOutput | String | option 1 |
+| intOutput | int | 1 |
+| objectOutput | Object | {"one": "a", "two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
+| crossOutput | String | option 1 |
 
-For more information about using parameters, see [Parameters in Azure Resource Manager template](template-parameters.md).
+如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -342,11 +342,11 @@ For more information about using parameters, see [Parameters in Azure Resource M
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| variableName |是 |字符串 |要返回的变量名称。 |
+| variableName |是 |String |要返回的变量名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -418,14 +418,14 @@ For more information about using parameters, see [Parameters in Azure Resource M
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | 字符串 | myVariable |
-| exampleOutput2 | 数组 | [1, 2, 3, 4] |
-| exampleOutput3 | 字符串 | myVariable |
-| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
+| exampleOutput1 | String | myVariable |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput3 | String | myVariable |
+| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-For more information about using variables, see [Variables in Azure Resource Manager template](template-variables.md).
+如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

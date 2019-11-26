@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services legacy components | Microsoft Docs
-description: This topic discusses Azure Media Services legacy components.
+title: Azure 媒体服务旧组件 | Microsoft Docs
+description: 本主题介绍 Azure 媒体服务旧组件。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -20,23 +20,23 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74423915"
 ---
-# <a name="azure-media-services-legacy-components"></a>Azure Media Services legacy components
+# <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
-Over time, there have been steady improvements and enhancements to Media Service components. As a result, some legacy components have been retired. You can find the instructions on how to migrate your application from the legacy component to a current component in the following articles.
+随着时间的推移，对媒体服务组件进行了稳定的改进和增强。 因此，某些旧组件已经停用。 可以在以下文章中找到有关如何将应用程序从旧组件迁移到当前组件的说明。
  
-## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Retirement plans of legacy components and migration guidance
+## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>旧组件和迁移指南的停用计划
 
-We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors. These processors are being retired on March 31, 2020.
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器。 这些处理器将于2020年3月31日停用。
 
-* [Migrate from Windows Azure Media Encoder to Media Encoder Standard](migrate-windows-azure-media-encoder.md)
-* [Migrate from Azure Media Encoder to Media Encoder Standard](migrate-azure-media-encoder.md)
+* [从 Windows Azure 媒体编码器迁移到 Media Encoder Standard](migrate-windows-azure-media-encoder.md)
+* [从 Azure 媒体编码器迁移到 Media Encoder Standard](migrate-azure-media-encoder.md)
 
-We are also announcing retirement of the following Media Analytics media processors: 
+我们还宣布停用以下媒体分析媒体处理器： 
  
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| January 1 of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer 2 to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|October 1st of 2020|This media processor will be replaced by [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). For more information, see [Migrate from Azure Media Indexer to Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020年1月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。|
+|[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>后续步骤
 

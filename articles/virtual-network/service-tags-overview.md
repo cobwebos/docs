@@ -1,7 +1,7 @@
 ---
-title: Azure service tags overview
+title: Azure 服务标记概述
 titlesuffix: Azure Virtual Network
-description: Learn about service tags. Service tags help minimize complexity of security rule creation.
+description: 了解服务标记。 服务标记有助于最大程度地降低安全规则创建的复杂性。
 services: virtual-network
 documentationcenter: na
 author: jispar
@@ -20,105 +20,105 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74384146"
 ---
-# <a name="virtual-network-service-tags"></a>Virtual network service tags 
+# <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
 
-A service tag represents a group of IP address prefixes from a given Azure service. It helps to minimize complexity of frequent updates on network security rules. You can use service tags to define network access controls on [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) or [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags). 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 By specifying the service tag name (e.g., **ApiManagement**) in the appropriate *source* or *destination* field of a rule, you can allow or deny the traffic for the corresponding service. Microsoft manages the address prefixes encompassed by the service tag and automatically updates the service tag as addresses change. 
+服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 它有助于最大程度地减少对网络安全规则的频繁更新的复杂性。 你可以使用服务标记来定义[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)或[Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "*源*" 或 "*目标*" 字段中指定服务标记名称（例如**ApiManagement**），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。 
 
-## <a name="available-service-tags"></a>Available service tags
-The following table includes all of the service tags available to be used in [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) rules.
+## <a name="available-service-tags"></a>可用服务标记
+下表包含可用于[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)规则的所有服务标记。
 
-The columns indicate whether the tag is:
+列指示标记是否是：
 
-- Suitable for rules covering inbound or outbound traffic
-- Support [regional](https://azure.microsoft.com/regions) scope 
-- Usable in [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) rules
+- 适用于涵盖入站或出站流量的规则
+- 支持[区域](https://azure.microsoft.com/regions)范围 
+- 可用于[Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)规则
 
-By default, service tags reflect the ranges for the entire cloud.  Some service tags also allow more finer-grain control by restricting the corresponding IP ranges to a specified region.  For example while the service tag **Storage** represents Azure Storage for the entire cloud,  **Storage.WestUS** narrows that to only the storage IP address ranges from the WestUS region.  The descriptions of each Service tag below indicates whether they support such regional scope.  
+默认情况下，服务标记反映整个云的范围。  某些服务标记还可以通过将相应的 IP 范围限制为指定的区域，从而获得更精细的控制。  例如，当服务标记**存储**代表整个云的 Azure 存储时， **WestUS**会将其从 WestUS 区域缩小为仅存储 IP 地址范围。  下面每个服务标记的说明都指示它们是否支持此类范围。  
 
 
 
-| 标记 | 用途 | Can use Inbound or Outbound? | Can be Regional? | Can use with Azure Firewall? |
+| 标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Management traffic for APIM dedicated deployments. | 两者 | No | 是 |
-| **AppService**    | App Service service. This tag is recommended for outbound security rules to WebApp frontends. | 出站 | 是 | 是 |
-| **AppServiceManagement** | Management traffic for App Service Environment dedicated deployments. | 两者 | No | 是 |
-| **AzureActiveDirectory** | Azure Active Directory service. | 出站 | No | 是 |
-| **AzureActiveDirectoryDomainServices** | Management traffic for Azure Active Directory Domain Services dedicated deployments. | 两者 | No | 是 |
-| **AzureBackup** |Azure Backup service.<br/><br/>*Note:* This tag has a dependency on the **Storage** and **AzureActiveDirectory** tags. | 出站 | No | 是 |
-| **AzureCloud** | All [datacenter public IP addresses](https://www.microsoft.com/download/details.aspx?id=41653). | 出站 | 是 | 是 |
-| **AzureConnectors** | Logic Apps connectors for probe/backend connections. | 入站 | 是 | 是 |
-| **AzureContainerRegistry** | Azure Container Registry service. | 出站 | 是 | 是 |
-| **AzureCosmosDB** | Azure Cosmos Database service. | 出站 | 是 | 是 |
-| **AzureDataLake** | Azure Data Lake service. | 出站 | No | 是 |
-| **AzureIoTHub** | Azure IoT Hub service. | 出站 | No | No |
-| **AzureKeyVault** | Azure KeyVault service.<br/><br/>*Note:* This tag has a dependency on the **AzureActiveDirectory** tag. | 出站 | 是 | 是 |
-| **AzureLoadBalancer** | Azure's infrastructure load balancer. 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 两者 | No | No |
-| **AzureMachineLearning** | Azure Machine Learning service. | 出站 | No | 是 |
-| **AzureMonitor** | Log Analytics, App Insights, AzMon, and custom metrics (GiG endpoints).<br/><br/>*Note:* For Log Analytics, this tag has dependency on the **Storage** tag. | 出站 | No | 是 |
-| **AzurePlatformDNS** | The basic infrastructure (default) DNS service.<br/><br>You can use this tag to disable the default DNS. Please exercise caution in using this tag. Reading [Azure platform considerations](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) is recommended. Testing is recommended before using this tag. | 出站 | No | No |
-| **AzurePlatformIMDS** | IMDS, which is a basic infrastructure service.<br/><br/>You can use this tag to disable the default IMDS.  Please exercise caution in using this tag. Reading [Azure platform considerations](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) is recommended. Testing is recommended before using this tag. | 出站 | No | No |
-| **AzurePlatformLKM** | Windows licensing or key management service.<br/><br/>You can use this tag to disable the defaults for licensing. Please exercise caution in using this tag.  Reading [Azure platform considerations](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) is recommended. Testing is recommended before using this tag. | 出站 | No | No |
-| **AzureTrafficManaged** | Azure Traffic Manager probe IP addresses.<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | No | 是 |  
-| **BatchNodeManagement** | Management traffic for Azure Batch dedicated deployments. | 两者 | No | 是 |
-| **CognitiveServicesManagement** | The address ranges for traffic for Cognitive Services | 出站 | No | No |
-| **Dynamics365ForMarketingEmail** | The address ranges for the marketing email service of Dynamics 365. | 出站 | 是 | No |
-| **EventHub** | Azure EventHub service. | 出站 | 是 | 是 |
-| **GatewayManager** | Management traffic for VPN/App Gateways dedicated deployments. | 入站 | No | No |
-| **Internet** | The IP address space that is outside the virtual network and reachable by the public Internet.<br/><br/>地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 两者 | No | No |
-| **MicrosoftContainerRegistry** | Microsoft Container Registry service. | 出站 | 是 | 是 |
-| **ServiceBus** | Azure Service Bus service using the Premium service tier. | 出站 | 是 | 是 |
-| **ServiceFabric** | Service Fabric service. | 出站 | No | No |
-| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and Azure SQL Data Warehouse services.<br/><br/>*Note:* This tag represents the service, but not specific instances of the service. 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 | 出站 | 是 | 是 |
-| **SqlManagement** | Management traffic for SQL dedicated deployments. | 两者 | No | 是 |
-| **存储** | Azure Storage service. <br/><br/>*Note:* The tag represents the service, but not specific instances of the service. 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
-| **VirtualNetwork** | The virtual network address space (all IP address ranges defined for the virtual network), all connected on-premises address spaces, [peered](virtual-network-peering-overview.md) virtual networks, or virtual network connected to a [virtual network gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), the [virtual IP address of the host](security-overview.md#azure-platform-considerations) and address prefixes used on [user-defined routes](virtual-networks-udr-overview.md). Be aware that this tag may also contain default routes. | 两者 | No | No |
+| **ApiManagement** | APIM 专用部署的管理流量。 | 两者 | 否 | 是 |
+| **AppService**    | 应用服务服务。 建议将此标记用于 WebApp 前端的出站安全规则。 | 出站 | 是 | 是 |
+| **AppServiceManagement** | 应用服务环境专用部署的管理流量。 | 两者 | 否 | 是 |
+| **AzureActiveDirectory** | Azure Active Directory 服务。 | 出站 | 否 | 是 |
+| **AzureActiveDirectoryDomainServices** | 用于 Azure Active Directory 域服务专用部署的管理流量。 | 两者 | 否 | 是 |
+| **AzureBackup** |Azure 备份服务。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 否 | 是 |
+| **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 | 出站 | 是 | 是 |
+| **AzureConnectors** | 用于探测/后端连接的逻辑应用连接器。 | 入站 | 是 | 是 |
+| **AzureContainerRegistry** | Azure 容器注册表服务。 | 出站 | 是 | 是 |
+| **AzureCosmosDB** | Azure Cosmos 数据库服务。 | 出站 | 是 | 是 |
+| **AzureDataLake** | Azure Data Lake 服务。 | 出站 | 否 | 是 |
+| **AzureIoTHub** | Azure IoT 中心服务。 | 出站 | 否 | 否 |
+| **AzureKeyVault** | Azure KeyVault 服务。<br/><br/>*注意：* 此标记依赖于**AzureActiveDirectory**标记。 | 出站 | 是 | 是 |
+| **AzureLoadBalancer** | Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 两者 | 否 | 否 |
+| **AzureMachineLearning** | Azure 机器学习服务。 | 出站 | 否 | 是 |
+| **AzureMonitor** | Log Analytics、App Insights、AzMon 和自定义指标（g 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记与**存储**标记相关。 | 出站 | 否 | 是 |
+| **AzurePlatformDNS** | 基本基础结构（默认） DNS 服务。<br/><br>您可以使用此标记来禁用默认 DNS。 请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
+| **AzurePlatformIMDS** | IMDS，它是一个基本基础结构服务。<br/><br/>您可以使用此标记来禁用默认 IMDS。  请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
+| **AzurePlatformLKM** | Windows 许可或密钥管理服务。<br/><br/>您可以使用此标记来禁用许可的默认值。 请在使用此标记时务必小心。  建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
+| **AzureTrafficManaged** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | 否 | 是 |  
+| **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 两者 | 否 | 是 |
+| **CognitiveServicesManagement** | 认知服务的流量的地址范围 | 出站 | 否 | 否 |
+| **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
+| **EventHub** | Azure EventHub 服务。 | 出站 | 是 | 是 |
+| **GatewayManager** | VPN/应用网关专用部署的管理流量。 | 入站 | 否 | 否 |
+| **Internet** | 虚拟网络外部的 IP 地址空间，并可通过公共 Internet 访问。<br/><br/>地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 两者 | 否 | 否 |
+| **MicrosoftContainerRegistry** | Microsoft 容器注册表服务。 | 出站 | 是 | 是 |
+| **ServiceBus** | 使用高级服务层的 Azure 服务总线服务。 | 出站 | 是 | 是 |
+| **ServiceFabric** | Service Fabric 服务。 | 出站 | 否 | 否 |
+| **Transact-sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure SQL 数据仓库服务。<br/><br/>*注意：* 此标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 | 出站 | 是 | 是 |
+| **SqlManagement** | 针对 SQL 专用部署的管理流量。 | 两者 | 否 | 是 |
+| **存储** | Azure 存储服务。 <br/><br/>*注意：* 标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
+| **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)虚拟网络或连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络（[虚拟 IP）](security-overview.md#azure-platform-considerations)[用户定义路由](virtual-networks-udr-overview.md)上使用的主机和地址前缀的地址。 请注意，此标记可能还包含默认路由。 | 两者 | 否 | 否 |
 
 >[!NOTE]
->When working in the *Classic* (pre-Azure Resource Manager) environment, a select set of the above tags are supported.  These use an alternative spelling:
+>在*经典*（Azure 预 Azure 资源管理器）环境中工作时，支持一组选择的上述标记。  它们使用替代拼写：
 
-| Classic spelling | Equivalent Resource Manager tag |
+| 经典拼写 | 等效资源管理器标记 |
 |---|---|
 | AZURE_LOADBALANCER | AzureLoadBalancer |
 | INTERNET | Internet |
 | VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]
-> Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 e.g. the underlying IP ranges corresponding to the **Sql** tag value will differ between the Azure Public cloud and the Azure China cloud.
+> Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 例如，Azure 公有云与 Azure 中国云之间的**Sql**标记值所对应的基础 IP 范围将有所不同。
 
 > [!NOTE]
 > 如果为某个服务（例如 Azure 存储或 Azure SQL 数据库）实现了[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)，Azure 会将[路由](virtual-networks-udr-overview.md#optional-default-routes)添加到该服务的虚拟网络子网。 路由中的地址前缀与相应服务标记的地址前缀或 CIDR 范围相同。
 
 
 
-## <a name="service-tags-in-on-premises"></a>Service tags in on-premises  
-You can obtain the current service tag and range information to include as part of your on-premises firewall configurations.  This information is the current point-in-time list of the IP ranges corresponding to each service tag.  The information can be obtained programmatically or via JSON file download as follows.
+## <a name="service-tags-in-on-premises"></a>本地服务标记  
+你可以获取当前服务标记和范围信息，以将其作为本地防火墙配置的一部分包含在内。  此信息是对应于每个服务标记的 IP 范围的当前时间点列表。  可以通过编程方式或通过 JSON 文件下载获取此信息，如下所示。
 
-### <a name="service-tag-discovery-api-public-preview"></a>Service tag Discovery API (Public Preview)
-You can programmatically retrieve the current list of service tags with IP address range details:
+### <a name="service-tag-discovery-api-public-preview"></a>服务标记发现 API （公共预览版）
+可以通过 IP 地址范围详细信息以编程方式检索当前服务标记列表：
 
 - [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
-> While in Public Preview, the Discovery API may return information that is not as current as the JSON downloads (below).
+> 在公共预览版中，发现 API 返回的信息可能与 JSON 下载（下面的内容）不是最新的。
 
 
-### <a name="discover-service-tags-using-downloadable-json-files"></a>Discover service tags using downloadable JSON files 
-You can download JSON files containing the current list of service tags with IP address range details. These are updated and published weekly.  Locations for each cloud are:
+### <a name="discover-service-tags-using-downloadable-json-files"></a>使用可下载的 JSON 文件发现服务标记 
+您可以下载包含当前服务标记列表和 IP 地址范围详细信息的 JSON 文件。 每周更新并发布这些更新。  每个云的位置如下：
 
-- [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
+- [Azure 公共](https://www.microsoft.com/download/details.aspx?id=56519)
 - [Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure 中国：](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure 德国](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 > [!NOTE]
->A subset of this information has previously been published in XML files for [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064) and [Azure Germany](https://www.microsoft.com/download/details.aspx?id=54770). These XML downloads will be deprecated by June 30, 2020 and will no longer be available after that date. Please migrate to using the Discovery API or JSON file downloads as described above.
+>之前已在[Azure 公共](https://www.microsoft.com/download/details.aspx?id=41653)、 [Azure 中国](https://www.microsoft.com/download/details.aspx?id=42064)和[azure 德国](https://www.microsoft.com/download/details.aspx?id=54770)的 XML 文件中发布了此信息的子集。 这些 XML 下载将在2020年6月30日弃用，在该日期后将不再可用。 请迁移到使用发现 API 或 JSON 文件下载，如上所述。
 
 ### <a name="tips"></a>提示 
-- You can detect updates from one publishing to the next via increased *changeNumber* values within the JSON file. Each subsection (e.g. **Storage.WestUS**) has its own *changeNumber* that is incremented as changes occur.  The top level of the file's *changeNumber* is incremented when any of the subsections has changed.
-- For examples of how to parse the service tag information (e.g. get all address ranges for Storage in WestUS), please refer to the [Service Tag Discovery API PowerShell](https://aka.ms/discoveryapi_powershell) documentation.
+- 可以通过 JSON 文件中增加的*changeNumber*值从一个发布到下一个发布检测更新。 每个子节（如**WestUS**）都有其自己的*changeNumber* ，在发生更改时递增。  更改任何子节后，文件的*changeNumber*的顶层将递增。
+- 有关如何分析服务标记信息（例如，在 WestUS 中获取存储的所有地址范围）的示例，请参阅[服务标记发现 API PowerShell](https://aka.ms/discoveryapi_powershell)文档。
 
 ## <a name="next-steps"></a>后续步骤
 - 连接如何[创建网络安全组](tutorial-filter-network-traffic.md)。

@@ -1,6 +1,6 @@
 ---
-title: PowerShell developer reference for Azure Functions
-description: Understand how to develop functions by using PowerShell.
+title: Azure Functions 的 PowerShell 开发人员参考
+description: 了解如何使用 PowerShell 开发函数。
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
@@ -11,19 +11,19 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226676"
 ---
-# <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell developer guide
+# <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
-This article provides details about how you write Azure Functions using PowerShell.
+本文详细介绍如何使用 PowerShell 编写 Azure Functions。
 
-A PowerShell Azure function (function) is represented as a PowerShell script that executes when triggered. Each function script has a related `function.json` file that defines how the function behaves, such as how it's triggered and its input and output parameters. To learn more, see the [Triggers and binding article](functions-triggers-bindings.md). 
+PowerShell Azure function （函数）表示为触发时执行的 PowerShell 脚本。 每个函数脚本都有一个相关的 `function.json` 文件，用于定义该函数的行为方式，如其触发方式及其输入和输出参数。 若要了解详细信息，请参阅[触发器和绑定一文](functions-triggers-bindings.md)。 
 
-Like other kinds of functions, PowerShell script functions take in parameters that match the names of all the input bindings defined in the `function.json` file. A `TriggerMetadata` parameter is also passed that contains additional information on the trigger that started the function.
+与其他类型的函数一样，PowerShell 脚本函数采用与 `function.json` 文件中定义的所有输入绑定的名称相匹配的参数。 还传递了一个 `TriggerMetadata` 参数，该参数包含有关启动函数的触发器的附加信息。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 You should have also completed the [Functions quickstart for PowerShell](functions-create-first-function-powershell.md) to create your first PowerShell function.
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 还应已完成 PowerShell 的[函数快速入门](functions-create-first-function-powershell.md)，以创建第一个 powershell 函数。
 
 ## <a name="folder-structure"></a>文件夹结构
 
-The required folder structure for a PowerShell project looks like the following. 可更改此默认值。 有关详细信息，请参阅下面的 [scriptFile](#configure-function-scriptfile) 部分。
+PowerShell 项目的所需文件夹结构如下所示。 可更改此默认值。 有关详细信息，请参阅下面的 [scriptFile](#configure-function-scriptfile) 部分。
 
 ```
 PSFunctionApp
@@ -48,56 +48,56 @@ PSFunctionApp
  | - bin
 ```
 
-At the root of the project, there's a shared [`host.json`](functions-host-json.md) file that can be used to configure the function app. Each function has a folder with its own code file (.ps1) and binding configuration file (`function.json`). The name of the function.json file's parent directory is always the name of your function.
+在项目的根目录中，有一个可用于配置 function app 的共享[`host.json`](functions-host-json.md)文件。 每个函数都有一个具有其自己的代码文件（ps1）和绑定配置文件（`function.json`）的文件夹。 函数的父目录名称始终是函数的名称。
 
-Certain bindings require the presence of an `extensions.csproj` file. Binding extensions, required in [version 2.x](functions-versions.md) of the Functions runtime, are defined in the `extensions.csproj` file, with the actual library files in the `bin` folder. 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+某些绑定需要 `extensions.csproj` 文件存在。 函数运行时的[版本](functions-versions.md)2.x 中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
-In PowerShell Function Apps, you may optionally have a `profile.ps1` which runs when a function app starts to run (otherwise know as a *[cold start](#cold-start)* . For more information, see [PowerShell profile](#powershell-profile).
+在 PowerShell Function Apps 中，你可以选择创建一个在函数应用开始运行时运行的 `profile.ps1` （也称为 *[冷启动](#cold-start)* ）。 有关详细信息，请参阅[PowerShell 配置文件](#powershell-profile)。
 
-## <a name="defining-a-powershell-script-as-a-function"></a>Defining a PowerShell script as a function
+## <a name="defining-a-powershell-script-as-a-function"></a>将 PowerShell 脚本定义为函数
 
 默认情况下，Functions 运行时会在 `run.ps1` 中查找你的函数，其中，`run.ps1` 与其相应的 `function.json` 共享同一个父目录。
 
-Your script is passed a number of arguments on execution. To handle these parameters, add a `param` block to the top of your script as in the following example:
+您的脚本在执行时传递了多个参数。 若要处理这些参数，请将 `param` 块添加到脚本顶部，如以下示例中所示：
 
 ```powershell
 # $TriggerMetadata is optional here. If you don't need it, you can safely remove it from the param block
 param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 ```
 
-### <a name="triggermetadata-parameter"></a>TriggerMetadata parameter
+### <a name="triggermetadata-parameter"></a>TriggerMetadata 参数
 
-The `TriggerMetadata` parameter is used to supply additional information about the trigger. The additional metadata varies from binding to binding but they all contain a `sys` property that contains the following data:
+`TriggerMetadata` 参数用于提供有关触发器的附加信息。 其他元数据的不同之处在于绑定到绑定，但是它们都包含包含以下数据的 `sys` 属性：
 
 ```powershell
 $TriggerMetadata.sys
 ```
 
-| properties   | 描述                                     | Type     |
+| 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | When, in UTC, the function was triggered        | 日期/时间 |
-| MethodName | The name of the Function that was triggered     | 字符串   |
-| RandGuid   | a unique guid to this execution of the function | 字符串   |
+| UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
+| 名称 | 触发的函数的名称     | 字符串   |
+| RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
-Every trigger type has a different set of metadata. For example, the `$TriggerMetadata` for `QueueTrigger` contains the `InsertionTime`, `Id`, `DequeueCount`, among other things. For more information on the queue trigger's metadata, go to the [official documentation for queue triggers](functions-bindings-storage-queue.md#trigger---message-metadata). Check the documentation on the [triggers](functions-triggers-bindings.md) you're working with to see what comes inside the trigger metadata.
+每个触发器类型都有一组不同的元数据。 例如，`QueueTrigger` 的 `$TriggerMetadata` 包含 `InsertionTime`、`Id`、`DequeueCount`和其他项。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue.md#trigger---message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
 
 ## <a name="bindings"></a>绑定
 
-In PowerShell, [bindings](functions-triggers-bindings.md) are configured and defined in a function's function.json. 函数通过多种方式来与绑定交互。
+在 PowerShell 中，在函数的函数 json 中配置和定义[绑定](functions-triggers-bindings.md)。 函数通过多种方式来与绑定交互。
 
 ### <a name="reading-trigger-and-input-data"></a>读取触发器和输入数据
 
-Trigger and input bindings are read as parameters passed to your function. Input bindings have a `direction` set to `in` in function.json. The `name` property defined in `function.json` is the name of the parameter, in the `param` block. Since PowerShell uses named parameters for binding, the order of the parameters doesn't matter. However, it's a best practice to follow the order of the bindings defined in the `function.json`.
+触发器和输入绑定作为传递到函数的参数读取。 输入绑定的 `direction` 设置为 `in`。 在 `function.json` 中定义的 `name` 属性是 `param` 块中参数的名称。 由于 PowerShell 使用命名参数进行绑定，因此参数的顺序并不重要。 不过，最佳做法是遵循 `function.json`中定义的绑定的顺序。
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
 ```
 
-### <a name="writing-output-data"></a>Writing output data
+### <a name="writing-output-data"></a>写入输出数据
 
-In Functions, an output binding has a `direction` set to `out` in the function.json. You can write to an output binding by using the `Push-OutputBinding` cmdlet, which is available to the Functions runtime. In all cases, the `name` property of the binding as defined in `function.json` corresponds to the `Name` parameter of the `Push-OutputBinding` cmdlet.
+在函数中，输出绑定在函数 json 中的 `direction` 设置为 `out`。 您可以使用 `Push-OutputBinding` cmdlet 写入输出绑定，该 cmdlet 可用于函数运行时。 在所有情况下，`function.json` 中定义的绑定的 `name` 属性对应于 `Push-OutputBinding` cmdlet 的 `Name` 参数。
 
-The following shows how to call `Push-OutputBinding` in your function script:
+下面演示了如何在函数脚本中调用 `Push-OutputBinding`：
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -105,7 +105,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Push-OutputBinding -Name myQueue -Value $myValue
 ```
 
-You can also pass in a value for a specific binding through the pipeline.
+还可以通过管道传递特定绑定的值。
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -113,25 +113,25 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding` behaves differently based on the value specified for `-Name`:
+根据为 `-Name`指定的值 `Push-OutputBinding` 行为有所不同：
 
-* When the specified name cannot be resolved to a valid output binding, then an error     is thrown.
+* 当指定的名称无法解析为有效的输出绑定时，将引发错误。
 
-* When the output binding accepts a collection of values, you can call `Push-OutputBinding` repeatedly to push multiple values.
+* 当输出绑定接受值的集合时，可以重复调用 `Push-OutputBinding` 来推送多个值。
 
-* When the output binding only accepts a singleton value, calling `Push-OutputBinding` a second time raises an error.
+* 当输出绑定只接受单一值时，第二次调用 `Push-OutputBinding` 会引发错误。
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` syntax
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` 语法
 
-The following are valid parameters for calling `Push-OutputBinding`:
+下面是用于调用 `Push-OutputBinding`的有效参数：
 
-| 名称 | Type | 位置 | 描述 |
+| 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | 字符串 | 第 | The name of the output binding you want to set. |
-| **`-Value`** | 对象 | 2 | The value of the output binding you want to set, which is accepted from the pipeline ByValue. |
-| **`-Clobber`** | SwitchParameter | 名为 | (Optional) When specified, forces the value to be set for a specified output binding. | 
+| **`-Name`** | String | 1 | 要设置的输出绑定的名称。 |
+| **`-Value`** | Object | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
+| **`-Clobber`** | SwitchParameter | 名为 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
 
-The following common parameters are also supported: 
+还支持以下常见参数： 
 * `Verbose`
 * `Debug`
 * `ErrorAction`
@@ -142,11 +142,11 @@ The following common parameters are also supported:
 * `PipelineVariable`
 * `OutVariable` 
 
-For more information, see [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+有关详细信息，请参阅[About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
 
-#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding example: HTTP responses
+#### <a name="push-outputbinding-example-http-responses"></a>OutputBinding 示例： HTTP 响应
 
-An HTTP trigger returns a response using an output binding named `response`. In the following example, the output binding of `response` has the value of "output #1":
+HTTP 触发器使用名为 `response`的输出绑定返回响应。 在下面的示例中，`response` 的输出绑定具有 "output #1" 的值：
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -155,7 +155,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Because the output is to HTTP, which accepts a singleton value only, an error is thrown when `Push-OutputBinding` is called a second time.
+由于输出是 HTTP （仅接受单一实例值），因此，在第二次调用 `Push-OutputBinding` 时会引发错误。
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -164,7 +164,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-For outputs that only accept singleton values, you can use the `-Clobber` parameter to override the old value instead of trying to add to a collection. The following example assumes that you have already added a value. By using `-Clobber`, the response from the following example overrides the existing value to return a value of "output #3":
+对于仅接受单独值的输出，可以使用 `-Clobber` 参数重写旧值，而不是尝试添加到集合。 下面的示例假定您已经添加了一个值。 通过使用 `-Clobber`，以下示例中的响应将重写现有值以返回 "output #3" 值：
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -173,33 +173,33 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding example: Queue output binding
+#### <a name="push-outputbinding-example-queue-output-binding"></a>OutputBinding 示例：队列输出绑定
 
-`Push-OutputBinding` is used to send data to output bindings, such as an [Azure Queue storage output binding](functions-bindings-storage-queue.md#output). In the following example, the message written to the queue has a value of "output #1":
+`Push-OutputBinding` 用于将数据发送到输出绑定，如[Azure 队列存储输出绑定](functions-bindings-storage-queue.md#output)。 在下面的示例中，写入队列的消息的值为 "output #1"：
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
 ```
 
-The output binding for a Storage queue accepts multiple output values. In this case, calling the following example after the first writes to the queue a list with two items: "output #1" and "output #2".
+存储队列的输出绑定接受多个输出值。 在这种情况下，在第一次写入队列后调用下面的示例： "output #1" 和 "output #2"。
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #2"
 ```
 
-The following example, when called after the previous two, adds two more values to the output collection:
+下面的示例（在上一两个调用后调用）将另外两个值添加到输出集合：
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 ```
 
-When written to the queue, the message contains these four values: "output #1", "output #2", "output #3", and "output #4".
+写入队列时，消息包含以下四个值： "output #1"、"output #2"、"output #3" 和 "output #4"。
 
 #### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` cmdlet
 
-You can use the `Get-OutputBinding` cmdlet to retrieve the values currently set for your output bindings. This cmdlet retrieves a hashtable that contains the names of the output bindings with their respective values. 
+可以使用 `Get-OutputBinding` cmdlet 来检索当前为输出绑定设置的值。 此 cmdlet 将检索包含输出绑定名称及其各自值的哈希表。 
 
-The following is an example of using `Get-OutputBinding` to return current binding values:
+下面是使用 `Get-OutputBinding` 返回当前绑定值的示例：
 
 ```powershell
 Get-OutputBinding
@@ -212,7 +212,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` also contains a parameter called `-Name`, which can be used to filter the returned binding, as in the following example:
+`Get-OutputBinding` 还包含一个名为 `-Name`的参数，该参数可用于筛选返回的绑定，如以下示例中所示：
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -224,30 +224,30 @@ Name                           Value
 MyQueue                        myData
 ```
 
-Wildcards (*) are supported in `Get-OutputBinding`.
+`Get-OutputBinding`中支持通配符（*）。
 
 ## <a name="logging"></a>日志记录
 
-Logging in PowerShell functions works like regular PowerShell logging. You can use the logging cmdlets to write to each output stream. Each cmdlet maps to a log level used by Functions.
+PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。 您可以使用日志记录 cmdlet 来写入每个输出流。 每个 cmdlet 都映射到函数使用的日志级别。
 
-| Functions logging level | Logging cmdlet |
+| 函数日志记录级别 | 日志记录 cmdlet |
 | ------------- | -------------- |
-| 错误 | **`Write-Error`** |
+| Error | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| 信息 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 信息 | Writes to _Information_ level logging. |
+| 信息 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 信息 | 写入_信息_级别日志记录。 |
 | 调试 | **`Write-Debug`** |
 | 跟踪 | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
-In addition to these cmdlets, anything written to the pipeline is redirected to the `Information` log level and displayed with the default PowerShell formatting.
+除了这些 cmdlet 外，写入管道的任何内容都将重定向到 `Information` 日志级别，并显示默认 PowerShell 格式设置。
 
 > [!IMPORTANT]
-> Using the `Write-Verbose` or `Write-Debug` cmdlets is not enough to see verbose and debug level logging. You must also configure the log level threshold, which declares what level of logs you actually care about. To learn more, see [Configure the function app log level](#configure-the-function-app-log-level).
+> 使用 `Write-Verbose` 或 `Write-Debug` cmdlet 不足以查看详细和调试级别日志记录。 你还必须配置日志级别阈值，该阈值声明你实际关注的日志级别。 若要了解详细信息，请参阅[配置函数应用日志级别](#configure-the-function-app-log-level)。
 
-### <a name="configure-the-function-app-log-level"></a>Configure the function app log level
+### <a name="configure-the-function-app-log-level"></a>配置 function app 日志级别
 
-Azure Functions lets you define the threshold level to make it easy to control the way Functions writes to the logs. To set the threshold for all traces written to the console, use the `logging.logLevel.default` property in the [`host.json` file][host.json 参考]. 此设置应用于 Function App 中的所有函数。
+Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日志的方式。 若要为写入控制台的所有跟踪设置阈值，请使用[`host.json` 文件][host.json 参考]中的 `logging.logLevel.default` 属性。 此设置应用于 Function App 中的所有函数。
 
-The following example sets the threshold to enable verbose logging for all functions, but sets the threshold to enable debug logging for a function named `MyFunction`:
+下面的示例将阈值设置为对所有函数启用详细日志记录，但将阈值设置为对名为 `MyFunction`的函数启用调试日志记录：
 
 ```json
 {
@@ -262,17 +262,17 @@ The following example sets the threshold to enable verbose logging for all funct
 
 有关详细信息，请参阅 [host.json 参考]。
 
-### <a name="viewing-the-logs"></a>Viewing the logs
+### <a name="viewing-the-logs"></a>查看日志
 
-If your Function App is running in Azure, you can use Application Insights to monitor it. 若要了解有关查看和查询函数日志的详细信息，请阅读[监视 Azure Functions](functions-monitoring.md)。
+如果 Function App 在 Azure 中运行，则可以使用 Application Insights 进行监视。 若要了解有关查看和查询函数日志的详细信息，请阅读[监视 Azure Functions](functions-monitoring.md)。
 
-If you're running your Function App locally for development, logs default to the file system. To see the logs in the console, set the `AZURE_FUNCTIONS_ENVIRONMENT` environment variable to `Development` before starting the Function App.
+如果要在本地运行 Function App 进行开发，则日志将默认保存到文件系统。 若要在控制台中查看日志，请在启动 Function App 之前将 `AZURE_FUNCTIONS_ENVIRONMENT` 环境变量设置为 `Development`。
 
-## <a name="triggers-and-bindings-types"></a>Triggers and bindings types
+## <a name="triggers-and-bindings-types"></a>触发器和绑定类型
 
-There are a number of triggers and bindings available to you to use with your function app. The full list of triggers and bindings [can be found here](functions-triggers-bindings.md#supported-bindings).
+你可以使用许多触发器和绑定来与函数应用一起使用。 [可在此处找到](functions-triggers-bindings.md#supported-bindings)触发器和绑定的完整列表。
 
-All triggers and bindings are represented in code as a few real data types:
+所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
 * 字符串
@@ -282,9 +282,9 @@ All triggers and bindings are represented in code as a few real data types:
 * HttpRequestContext
 * HttpResponseContext
 
-The first five types in this list are standard .NET types. The last two are used only by the [HttpTrigger trigger](#http-triggers-and-bindings).
+此列表中的前五个类型是标准 .NET 类型。 最后两个仅由[HttpTrigger 触发器](#http-triggers-and-bindings)使用。
 
-Each binding parameter in your functions must be one of these types.
+函数中的每个绑定参数都必须是这些类型之一。
 
 ### <a name="http-triggers-and-bindings"></a>HTTP 触发器和绑定
 
@@ -292,35 +292,35 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 #### <a name="request-object"></a>请求对象
 
-The request object that's passed into the script is of the type `HttpRequestContext`, which has the following properties:
+传入脚本的请求对象的类型为 `HttpRequestContext`，该类型具有以下属性：
 
-| properties  | 描述                                                    | Type                      |
+| 属性  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body` is serialized into the best type based on the data. For example, if the data is JSON, it's passed in as a hashtable. If the data is a string, it's passed in as a string. | 对象 |
-| **`Headers`** | A dictionary that contains the request headers.                | Dictionary<string,string><sup>*</sup> |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 根据数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 |
+| **`Headers`** | 包含请求标头的字典。                | 字典 < 字符串，string ><sup>*</sup> |
 | **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
-| **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string,string><sup>*</sup> |
-| **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string,string><sup>*</sup> |
+| **`Params`**  | 一个包含请求的路由参数的对象。 | 字典 < 字符串，string ><sup>*</sup> |
+| **`Query`** | 一个包含查询参数的对象。                  | 字典 < 字符串，string ><sup>*</sup> |
 | **`Url`** | 请求的 URL。                                        | 字符串                    |
 
-<sup>*</sup> All `Dictionary<string,string>` keys are case-insensitive.
+<sup>*</sup>所有 `Dictionary<string,string>` 键都不区分大小写。
 
 #### <a name="response-object"></a>响应对象
 
-The response object that you should send back is of the type `HttpResponseContext`, which has the following properties:
+应发送回的响应对象的类型为 `HttpResponseContext`，该对象具有以下属性：
 
-| properties      | 描述                                                 | Type                      |
+| 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | 对象                    |
-| **`ContentType`** | A short hand for setting the content type for the response. | 字符串                    |
-| **`Headers`** | 一个包含响应标头的对象。               | Dictionary or Hashtable   |
-| **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
+| **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
+| **`StatusCode`**  | 响应的 HTTP 状态代码。                       | string 或 int             |
 
 #### <a name="accessing-the-request-and-response"></a>访问请求和响应
 
-When you work with HTTP triggers, you can access the HTTP request the same way you would with any other input binding. It's in the `param` block.
+当使用 HTTP 触发器时，可以使用与任何其他输入绑定相同的方式访问 HTTP 请求。 它位于 `param` 块中。
 
-Use an `HttpResponseContext` object to return a response, as shown in the following:
+使用 `HttpResponseContext` 对象返回响应，如下所示：
 
 `function.json`
 
@@ -353,18 +353,18 @@ Push-OutputBinding -Name res -Value ([HttpResponseContext]@{
 })
 ```
 
-The result of invoking this function would be:
+调用此函数的结果为：
 
 ```
 PS > irm http://localhost:5001?Name=Functions
 Hello Functions!
 ```
 
-### <a name="type-casting-for-triggers-and-bindings"></a>Type-casting for triggers and bindings
+### <a name="type-casting-for-triggers-and-bindings"></a>触发器和绑定的类型强制转换
 
-For certain bindings like the blob binding, you're able to specify the type of the parameter.
+对于某些绑定，如 blob 绑定，可以指定参数的类型。
 
-For example, to have data from Blob storage supplied as a string, add the following type cast to my `param` block:
+例如，若要将 Blob 存储中的数据作为字符串提供，请将以下类型强制转换添加到我的 `param` 块：
 
 ```powershell
 param([string] $myBlob)
@@ -372,29 +372,29 @@ param([string] $myBlob)
 
 ## <a name="powershell-profile"></a>PowerShell 配置文件
 
-In PowerShell, there's the concept of a PowerShell profile. If you're not familiar with PowerShell profiles, see [About profiles](/powershell/module/microsoft.powershell.core/about/about_profiles).
+在 PowerShell 中，有一个 PowerShell 配置文件的概念。 如果你不熟悉 PowerShell 配置文件，请参阅[关于配置文件](/powershell/module/microsoft.powershell.core/about/about_profiles)。
 
-In PowerShell Functions, the profile script executes when the function app starts. Function apps start when first deployed and after being idled ([cold start](#cold-start)).
+在 PowerShell 函数中，配置文件脚本在函数应用启动时执行。 函数应用在首次部署时开始，在空闲后启动（[冷启动](#cold-start)）。
 
-When you create a function app using tools, such as Visual Studio Code and Azure Functions Core Tools, a default `profile.ps1` is created for you. The default profile is maintained [on the Core Tools GitHub repository](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) and contains:
+使用工具（如 Visual Studio Code 和 Azure Functions Core Tools）创建函数应用时，将为您创建一个默认的 `profile.ps1`。 默认配置文件将保留[在核心工具 GitHub 存储库中](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1)，并包含：
 
-* Automatic MSI authentication to Azure.
-* The ability to turn on the Azure PowerShell `AzureRM` PowerShell aliases if you would like.
+* 自动对 Azure 进行 MSI 身份验证。
+* 如果需要，可以打开 Azure PowerShell `AzureRM` PowerShell 别名。
 
-## <a name="powershell-version"></a>PowerShell version
+## <a name="powershell-version"></a>PowerShell 版本
 
-The following table shows the PowerShell version used by each major version of the Functions runtime:
+下表显示了每个主要版本的函数运行时所使用的 PowerShell 版本：
 
-| Functions 版本 | PowerShell version                             |
+| Functions 版本 | PowerShell 版本                             |
 |-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (locked by the runtime) |
+| 1.x               | Windows PowerShell 5.1 （由运行时锁定） |
 | 2.x               | PowerShell Core 6                              |
 
-You can see the current version by printing `$PSVersionTable` from any function.
+可以通过从任何函数打印 `$PSVersionTable` 来查看当前版本。
 
 ## <a name="dependency-management"></a>依赖项管理
 
-Functions lets you leverage [PowerShell gallery](https://www.powershellgallery.com) for managing dependencies. With dependency management enabled, the requirements.psd1 file is used to automatically download required modules. You enable this behavior by setting the `managedDependency` property to `true` in the root of the [host.json file](functions-host-json.md), as in the following example:
+函数可让你利用[PowerShell 库](https://www.powershellgallery.com)来管理依赖项。 启用依赖关系管理后，psd1 文件将用于自动下载所需的模块。 可以通过将 `managedDependency` 属性设置为在[主机 json 文件](functions-host-json.md)的根目录中 `true` 来启用此行为，如以下示例中所示：
 
 ```json
 {
@@ -404,7 +404,7 @@ Functions lets you leverage [PowerShell gallery](https://www.powershellgallery.c
 }
 ```
 
-When you create a new PowerShell functions project, dependency management is enabled by default, with the Azure [`Az` module](/powershell/azure/new-azureps-module-az) included. The maximum number of modules currently supported is 10. The supported syntax is _`MajorNumber`_ `.*` or exact module version as shown in the following requirements.psd1 example:
+创建新的 PowerShell 函数项目时，默认情况下会启用依赖项管理，其中包含 Azure [`Az` 模块](/powershell/azure/new-azureps-module-az)。 当前支持的最大模块数为10。 支持的语法是 _`MajorNumber`_ `.*` 或确切的模块版本，如以下要求中所示。 psd1 示例：
 
 ```powershell
 @{
@@ -413,43 +413,43 @@ When you create a new PowerShell functions project, dependency management is ena
 }
 ```
 
-When you update the requirements.psd1 file, updated modules are installed after a restart.
+更新 psd1 文件时，将在重新启动后安装更新的模块。
 
 > [!NOTE]
-> Managed dependencies requires access to www.powershellgallery.com to download modules. When running locally, make sure that the runtime can access this URL by adding any required firewall rules. 
+> 托管依赖项需要对 www.powershellgallery.com 的访问权限才能下载模块。 在本地运行时，请确保运行时可以通过添加任何所需的防火墙规则来访问此 URL。 
 
-The following application settings can be used to change how the managed dependencies are downloaded and installed. Your app upgrade starts within `MDMaxBackgroundUpgradePeriod`, and the upgrade process completes within approximately the `MDNewSnapshotCheckPeriod`.
+以下应用程序设置可用于更改如何下载和安装托管依赖项。 应用升级在 `MDMaxBackgroundUpgradePeriod`中启动，升级过程将在大约 `MDNewSnapshotCheckPeriod`内完成。
 
-| Function App setting              | 默认值             | 描述                                         |
+| Function App 设置              | 默认值             | 说明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 days)     | Each PowerShell worker process initiates checking for module upgrades on the PowerShell Gallery on process start and every `MDMaxBackgroundUpgradePeriod` after that. When a new module version is available in the PowerShell Gallery, it's installed to the file system and made available to PowerShell workers. Decreasing this value lets your function app get newer module versions sooner, but it also increases the app resource usage (network I/O, CPU, storage). Increasing this value decreases the app's resource usage, but it may also delay delivering new module versions to your app. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hour)       | After new module versions are installed to the file system, every PowerShell worker process must be restarted. Restarting PowerShell workers affects your app availability as it can interrupt current function execution. Until all PowerShell worker processes are restarted, function invocations may use either the old or the new module versions. Restarting all PowerShell workers complete within `MDNewSnapshotCheckPeriod`. Increasing this value decreases the frequency of interruptions, but may also increase the period of time when function invocations use either the old or the new module versions non-deterministically. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 day)     | To avoid excessive module upgrades on frequent Worker restarts, checking for module upgrades isn't performed when any worker has already initiated that check in the last `MDMinBackgroundUpgradePeriod`. |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` （7天）     | 每个 PowerShell 工作进程启动 PowerShell 库的进程启动时检查模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod`。 当 PowerShell 库中有新的模块版本时，它将安装到文件系统，并提供给 PowerShell 辅助角色。 减小此值后，函数应用可以更快地获取较新的模块版本，但它还会增加应用资源使用情况（网络 i/o、CPU、存储）。 增加此值会减少应用的资源使用情况，但也可能会延迟将新的模块版本传递给你的应用。 | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` （1小时）       | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在 `MDNewSnapshotCheckPeriod`内重新启动所有 PowerShell 辅助角色。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` （1天）     | 若要避免频繁的工作线程重新启动时进行过多的模块升级，则当任何工作线程已经启动了上次 `MDMinBackgroundUpgradePeriod`中的检查时，不会执行模块升级检查。 |
 
-Leveraging your own custom modules is a little different than how you would do it normally.
+利用您自己的自定义模块与通常的方式不同。
 
-On your local computer, the module gets installed in one of the globally available folders in your `$env:PSModulePath`. When running in Azure, you don't have access to the modules installed on your machine. This means that the `$env:PSModulePath` for a PowerShell function app differs from `$env:PSModulePath` in a regular PowerShell script.
+在本地计算机上，该模块将安装在 `$env:PSModulePath`中的一个全局可用文件夹中。 在 Azure 中运行时，无法访问计算机上安装的模块。 这意味着 PowerShell 函数应用的 `$env:PSModulePath` 与常规 PowerShell 脚本中的 `$env:PSModulePath` 不同。
 
-In Functions, `PSModulePath` contains two paths:
+在函数中，`PSModulePath` 包含两个路径：
 
-* A `Modules` folder that exists at the root of your function app.
-* A path to a `Modules` folder that is controlled by the PowerShell language worker.
+* 位于 function app 的根目录中的 `Modules` 文件夹。
+* 由 PowerShell 语言辅助角色控制的 `Modules` 文件夹的路径。
 
-### <a name="function-app-level-modules-folder"></a>Function app-level `Modules` folder
+### <a name="function-app-level-modules-folder"></a>函数应用级 `Modules` 文件夹
 
-To use custom modules, you can place modules on which your functions depend in a `Modules` folder. From this folder, modules are automatically available to the functions runtime. Any function in the function app can use these modules. 
+若要使用自定义模块，你可以将函数所依赖的模块放在 `Modules` 文件夹中。 在此文件夹中，模块自动提供给函数运行时。 函数应用中的任何函数都可以使用这些模块。 
 
 > [!NOTE]
-> Modules specified in the requirements.psd1 file are automatically downloaded and included in the path so you don't need to include them in the modules folder. These are stored locally in the `$env:LOCALAPPDATA/AzureFunctions` folder and in the `/data/ManagedDependencies` folder when run in the cloud.
+> Psd1 文件中指定的模块会自动下载并包含在路径中，因此不需要将它们包含在模块文件夹中。 当在云中运行时，它们存储在本地 `$env:LOCALAPPDATA/AzureFunctions` 文件夹和 `/data/ManagedDependencies` 文件夹中。
 
-To take advantage of the custom module feature, create a `Modules` folder in the root of your function app. Copy the modules you want to use in your functions to this location.
+若要利用自定义模块功能，请在函数应用程序的根目录中创建一个 `Modules` 文件夹。 将要在函数中使用的模块复制到此位置。
 
 ```powershell
 mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-With a `Modules` folder, your function app should have the following folder structure:
+对于 `Modules` 文件夹，函数应用应具有以下文件夹结构：
 
 ```
 PSFunctionApp
@@ -465,22 +465,22 @@ PSFunctionApp
  | - requirements.psd1
 ```
 
-When you start your function app, the PowerShell language worker adds this `Modules` folder to the `$env:PSModulePath` so that you can rely on module autoloading just as you would in a regular PowerShell script.
+启动函数应用时，PowerShell 语言辅助角色会将此 `Modules` 文件夹添加到 `$env:PSModulePath` 中，以便你可以依赖于常规 PowerShell 脚本中的模块自动加载。
 
-### <a name="language-worker-level-modules-folder"></a>Language worker level `Modules` folder
+### <a name="language-worker-level-modules-folder"></a>`Modules` 文件夹的语言辅助角色级别
 
-Several modules are commonly used by the PowerShell language worker. These modules are defined in the last position of `PSModulePath`. 
+PowerShell 语言辅助角色通常使用几个模块。 在 `PSModulePath`的最后一个位置定义这些模块。 
 
-The current list of modules is as follows:
+模块的当前列表如下所示：
 
-* [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module used for working with archives, like `.zip`, `.nupkg`, and others.
-* **ThreadJob**: A thread-based implementation of the PowerShell job APIs.
+* 用于处理存档的[Microsoft PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive)： module，如 `.zip`、`.nupkg`和其他。
+* **ThreadJob**：一种基于线程的 PowerShell 作业 api 实现。
 
-By default, Functions uses the most recent version of these modules. To use a specific module version, put that specific version in the `Modules` folder of your function app.
+默认情况下，函数使用这些模块的最新版本。 若要使用特定模块版本，请将该特定版本放置在 function app 的 `Modules` 文件夹中。
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 You can access these settings using `$env:NAME_OF_ENV_VAR`, as shown in the following example:
+在 Functions 中，服务连接字符串等[应用设置](functions-app-settings.md)在执行过程中将公开为环境变量。 您可以使用 `$env:NAME_OF_ENV_VAR`访问这些设置，如以下示例中所示：
 
 ```powershell
 param($myTimer)
@@ -496,32 +496,32 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 ## <a name="concurrency"></a>并发
 
-By default, the Functions PowerShell runtime can only process one invocation of a function at a time. However, this concurrency level might not be sufficient in the following situations:
+默认情况下，PowerShell 运行时一次只能处理一个函数调用。 但是，在以下情况下，此并发级别可能不足：
 
-* When you're trying to handle a large number of invocations at the same time.
-* When you have functions that invoke other functions inside the same function app.
+* 当你尝试同时处理大量调用时。
+* 当您具有在同一 function app 内调用其他函数的函数时。
 
-You can change this behavior by setting the following environment variable to an integer value:
+可以通过将以下环境变量设置为整数值来更改此行为：
 
 ```
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-You set this environment variable in the [app settings](functions-app-settings.md) of your Function App.
+在 Function App 的 "[应用设置](functions-app-settings.md)" 中设置此环境变量。
 
-### <a name="considerations-for-using-concurrency"></a>Considerations for using concurrency
+### <a name="considerations-for-using-concurrency"></a>使用并发的注意事项
 
-PowerShell is a _single threaded_ scripting language by default. However, concurrency can be added by using multiple PowerShell runspaces in the same process. The amount of runspaces created will match the PSWorkerInProcConcurrencyUpperBound application setting. The throughput will be impacted by the amount of CPU and memory available in the selected plan.
+默认情况下，PowerShell 是_单线程_脚本语言。 但是，可以在同一进程中使用多个 PowerShell 运行空间来添加并发。 创建的运行空间量将与 PSWorkerInProcConcurrencyUpperBound 应用程序设置匹配。 吞吐量将受到选定计划中可用的 CPU 和内存量的影响。
 
-Azure PowerShell uses some _process-level_ contexts and state to help save you from excess typing. However, if you turn on concurrency in your function app and invoke actions that change state, you could end up with race conditions. These race conditions are difficult to debug because one invocation relies on a certain state and the other invocation changed the state.
+Azure PowerShell 使用某些_进程级_上下文和状态，以帮助节省额外的键入内容。 但是，如果在函数应用中打开并发，并调用更改状态的操作，则可能会出现争用条件。 这些争用条件很难调试，因为一个调用依赖于某种状态，另一个调用更改了状态。
 
-There's immense value in concurrency with Azure PowerShell, since some operations can take a considerable amount of time. However, you must proceed with caution. If you suspect that you're experiencing a race condition, set the PSWorkerInProcConcurrencyUpperBound app setting to `1` and instead use [language worker process level isolation](functions-app-settings.md#functions_worker_process_count) for concurrency.
+Azure PowerShell 的并发性存在巨大的价值，因为某些操作可能需要相当长的时间。 但是，必须谨慎操作。 如果怀疑遇到争用条件，请将 PSWorkerInProcConcurrencyUpperBound 应用设置设置为 `1`，而改用用于并发的[语言工作进程级隔离](functions-app-settings.md#functions_worker_process_count)。
 
-## <a name="configure-function-scriptfile"></a>Configure function `scriptFile`
+## <a name="configure-function-scriptfile"></a>配置函数 `scriptFile`
 
-By default, a PowerShell function is executed from `run.ps1`, a file that shares the same parent directory as its corresponding `function.json`.
+默认情况下，PowerShell 函数从 `run.ps1`执行，该文件与对应的 `function.json`共享相同的父目录。
 
-The `scriptFile` property in the `function.json` can be used to get a folder structure that looks like the following example:
+`function.json` 中的 `scriptFile` 属性可用于获取类似于以下示例的文件夹结构：
 
 ```
 FunctionApp
@@ -532,7 +532,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-In this case, the `function.json` for `myFunction` includes a `scriptFile` property referencing the file with the exported function to run.
+在这种情况下，`myFunction` 的 `function.json` 包括一个 `scriptFile` 属性，该属性引用包含要运行的导出函数的文件。
 
 ```json
 {
@@ -543,14 +543,14 @@ In this case, the `function.json` for `myFunction` includes a `scriptFile` prope
 }
 ```
 
-## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Use PowerShell modules by configuring an entryPoint
+## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>通过配置入口点来使用 PowerShell 模块
 
-This article has shown PowerShell functions in the default `run.ps1` script file generated by the templates.
-However, you can also include your functions in PowerShell modules. You can reference your specific function code in the module by using the `scriptFile` and `entryPoint` fields in the function.json` configuration file.
+本文显示了模板生成的默认 `run.ps1` 脚本文件中的 PowerShell 函数。
+但是，还可以在 PowerShell 模块中包含函数。 您可以通过使用函数 `scriptFile` 中的特定函数代码，并在函数 json "配置文件中 `entryPoint` 字段。
 
-In this case, `entryPoint` is the name of a function or cmdlet in the PowerShell module referenced in `scriptFile`.
+在这种情况下，`entryPoint` 是 `scriptFile`中引用的 PowerShell 模块中的函数或 cmdlet 的名称。
 
-Consider the following folder structure:
+请考虑以下文件夹结构：
 
 ```
 FunctionApp
@@ -561,7 +561,7 @@ FunctionApp
  | | - PSFunction.psm1
 ```
 
-Where `PSFunction.psm1` contains:
+其中 `PSFunction.psm1` 包含：
 
 ```powershell
 function Invoke-PSTestFunc {
@@ -573,7 +573,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-In this example, the configuration for `myFunction` includes a `scriptFile` property that references `PSFunction.psm1`, which is a PowerShell module in another folder.  The `entryPoint` property references the `Invoke-PSTestFunc` function, which is the entry point in the module.
+在此示例中，`myFunction` 的配置包含一个 `scriptFile` 属性，该属性引用 `PSFunction.psm1`，这是另一个文件夹中的 PowerShell 模块。  `entryPoint` 属性引用 `Invoke-PSTestFunc` 函数，该函数是模块中的入口点。
 
 ```json
 {
@@ -585,19 +585,19 @@ In this example, the configuration for `myFunction` includes a `scriptFile` prop
 }
 ```
 
-With this configuration, the `Invoke-PSTestFunc` gets executed exactly as a `run.ps1` would.
+使用此配置，`Invoke-PSTestFunc` 会完全按 `run.ps1` 执行。
 
-## <a name="considerations-for-powershell-functions"></a>Considerations for PowerShell functions
+## <a name="considerations-for-powershell-functions"></a>PowerShell 函数的注意事项
 
-When you work with PowerShell functions, be aware of the considerations in the following sections.
+使用 PowerShell 函数时，请注意以下部分中的注意事项。
 
 ### <a name="cold-start"></a>冷启动
 
-When developing Azure Functions in the [serverless hosting model](functions-scale.md#consumption-plan), cold starts are a reality. *Cold start* refers to period of time it takes for your function app to start running to process a request. Cold start happens more frequently in the Consumption plan because your function app gets shut down during periods of inactivity.
+在[无服务器托管模型](functions-scale.md#consumption-plan)中开发 Azure Functions 时，冷启动就会成为现实。 *冷启动*是指函数应用开始运行以处理请求所用的时间段。 在消耗计划中，冷启动会更频繁，因为函数应用在非活动期间关闭。
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Bundle modules instead of using `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>绑定模块，而不是使用 `Install-Module`
 
-Your script is run on every invocation. Avoid using `Install-Module` in your script. Instead use `Save-Module` before publishing so that your function doesn't have to waste time downloading the module. If cold starts are impacting your functions, consider deploying your function app to an [App Service plan](functions-scale.md#app-service-plan) set to *always on* or to a [Premium plan](functions-scale.md#premium-plan).
+脚本将在每次调用时运行。 避免在脚本中使用 `Install-Module`。 请在发布前使用 `Save-Module`，以便您的函数无需浪费时间来下载模块。 如果冷启动会影响你的功能，请考虑将 function app 部署到[应用服务计划](functions-scale.md#app-service-plan)，将其设置为*Always on*或[高级计划](functions-scale.md#premium-plan)。
 
 ## <a name="next-steps"></a>后续步骤
 

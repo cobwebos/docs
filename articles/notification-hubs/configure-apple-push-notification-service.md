@@ -1,6 +1,6 @@
 ---
-title: Configure Apple Push Notification Service in Azure Notification Hubs | Microsoft Docs
-description: Learn how to configure an Azure notification hub with Apple Push Notification Service (APNS) settings.
+title: 在 Azure 通知中心中配置 Apple Push Notification 服务 |Microsoft Docs
+description: 了解如何为 Azure 通知中心配置 Apple Push Notification 服务 (APNS) 设置。
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -19,17 +19,17 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406105"
 ---
-# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Configure Apple Push Notification Service (APNS) settings for a notification hub in the Azure portal
-This article shows you how to configure Apple Push Notification Service (APNS) settings for an Azure notification hub by using the Azure portal. 
+# <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中为通知中心配置 Apple Push Notification 服务 (APNS) 设置
+本文介绍如何使用 Azure 门户为 Azure 通知中心配置 Apple Push Notification 服务 (APNS) 设置。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 如果尚未创建通知中心，请立即创建。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
 
-## <a name="configure-apple-push-notification-service"></a>Configure Apple Push Notification Service
+## <a name="configure-apple-push-notification-service"></a>配置 Apple Push Notification 服务
 
-The following procedure gives you steps to configure Apple Push Notification Service (APNS) settings for a notification hub:
+以下过程提供的步骤演示了如何为通知中心配置 Apple Push Notification 服务 (APNS) 设置：
 
-1. In the Azure portal, on the **Notification Hub** page, select **Apple (APNS)** on the left menu.
+1. 在 Azure 门户的“通知中心”页上，在左侧菜单中选择“Apple (APNS)”。
 
 1. 对于“身份验证模式”，请选择“证书”或“令牌”。
 
@@ -48,4 +48,4 @@ The following procedure gives you steps to configure Apple Push Notification Ser
      ![Azure 门户中 APNS 令牌配置的屏幕截图](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>后续步骤
-For a tutorial with step-by-step instructions for pushing notifications to iOS devices, see the following article: [Push notifications to iOS devices by using Notification Hubs and APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+有关将通知推送到 iOS 设备的分步说明的教程，请参阅以下文章：[使用通知中心和 APNS 将通知推送到 iOS 设备](notification-hubs-ios-apple-push-notification-apns-get-started.md)

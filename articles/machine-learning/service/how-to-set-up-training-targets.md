@@ -377,7 +377,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 > [!IMPORTANT]
 > 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 

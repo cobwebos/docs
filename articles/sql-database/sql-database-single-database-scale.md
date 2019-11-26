@@ -1,5 +1,5 @@
 ---
-title: Scale single database resources
+title: 缩放单一数据库资源
 description: 本文介绍如何在 Azure SQL 数据库中缩放适用于单一数据库的计算和存储资源。
 services: sql-database
 ms.service: sql-database
@@ -20,11 +20,11 @@ ms.locfileid: "74422541"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
-This article describes how to scale the compute and storage resources available for an Azure SQL Database in the provisioned compute tier. Alternatively, the [serverless compute tier](sql-database-serverless.md) provides compute auto-scaling and bills per second for compute used.
+本文介绍如何在预配的计算层中缩放适用于 Azure SQL 数据库的计算和存储资源。 或者，[无服务器计算层](sql-database-serverless.md)为使用的计算提供计算自动缩放和每秒的帐单。
 
-## <a name="change-compute-size-vcores-or-dtus"></a>Change compute size (vCores or DTUs)
+## <a name="change-compute-size-vcores-or-dtus"></a>更改计算大小（vCore 或 DTU）
 
-After initially picking the number of vCores or DTUs, you can scale a single database up or down dynamically based on actual experience using the [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), the [Azure CLI](/cli/azure/sql/db#az-sql-db-update), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+最初选择 vCore 或 DTU 数量后，可以使用 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。
 
 下面的视频演示了如何动态更改服务层级和计算大小以增加单一数据库的可用 DTU。
 
@@ -33,51 +33,51 @@ After initially picking the number of vCores or DTUs, you can scale a single dat
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Impact of changing service tier or rescaling compute size
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小的影响
 
-Changing the service tier or compute size of mainly involves the service performing the following steps:
+更改服务层或计算大小主要涉及服务执行以下步骤：
 
-1. Create new compute instance for the database  
+1. 为数据库创建新的计算实例  
 
-    A new compute instance is created with the requested service tier and compute size. For some combinations of service tier and compute size changes, a replica of the database must be created in the new compute instance which involves copying data and can strongly influence the overall latency. Regardless, the database remains online during this step, and connections continue to be directed to the database in the original compute instance.
+    使用请求的服务层和计算大小创建一个新的计算实例。 更改后，对于服务层级和计算大小的某些组合，必须在新的计算实例中创建数据库的副本，此过程涉及到数据复制，可能会对总体延迟造成很大的影响。 无论如何，在执行此步骤期间，数据库会保持联机，并且连接会继续定向到原始计算实例中的数据库。
 
-2. Switch routing of connections to new compute instance
+2. 将连接路由切换到新的计算实例
 
-    Existing connections to the database in the original compute instance are dropped. Any new connections are established to the database in the new compute instance. For some combinations of service tier and compute size changes, database files are detached and reattached during the switch.  Regardless, the switch can result in a brief service interruption when the database is unavailable generally for less than 30 seconds and often for only a few seconds. If there are long running transactions running when connections are dropped, the duration of this step may take longer in order to recover aborted transactions. [Accelerated Database Recovery](sql-database-accelerated-database-recovery.md) can reduce the impact from aborting long running transactions.
+    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以降低中止长时间运行事务的影响。
 
 > [!IMPORTANT]
-> No data is lost during any step in the workflow. Make sure that you have implemented some [retry logic](sql-database-connectivity-issues.md) in the applications and components that are using Azure SQL Database while the service tier is changed.
+> 执行工作流中的任何步骤期间都不会丢失数据。 请确保在服务层更改时，使用 Azure SQL 数据库的应用程序和组件中已实现了一些[重试逻辑](sql-database-connectivity-issues.md)。
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latency of changing service tier or rescaling compute size
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
 
-The estimated latency to change the service tier or rescale the compute size of a single database or elastic pool is parameterized as follows:
+可根据如下所述，将更改服务层级或者重新缩放单一数据库或弹性池的计算大小所造成的估计延迟参数化：
 
-|服务层|Basic single database,</br>Standard (S0-S1)|Basic elastic pool,</br>Standard (S2-S12), </br>Hyperscale, </br>General Purpose single database or elastic pool|Premium or Business Critical single database or elastic pool|
+|服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|
-|**Basic single database,</br> Standard (S0-S1)**|&bull; &nbsp;Constant time latency independent of space used</br>&bull; &nbsp;Typically, less than 5 minutes|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
-|**Basic elastic pool, </br>Standard (S2-S12), </br>Hyperscale, </br>General Purpose single database or elastic pool**|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Constant time latency independent of space used</br>&bull; &nbsp;Typically, less than 5 minutes|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
-|**Premium or Business Critical single database or elastic pool**|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|&bull; &nbsp;Latency proportional to database space used due to data copying</br>&bull; &nbsp;Typically, less than 1 minute per GB of space used|
+|**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**基本弹性池、</br>标准 (S2-S12)、</br>超大规模、</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 
 > [!TIP]
-> To monitor in-progress operations, see: [Manage operations using the SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Manage operations using CLI](/cli/azure/sql/db/op), [Monitor operations using T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) and these two PowerShell commands: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) and [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 t-sql 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和以下两个 PowerShell 命令： [AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Cancelling service tier changes or compute rescaling operations
+### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>取消服务层级更改或计算重新缩放操作
 
-A service tier change or compute rescaling operation can be canceled.
+服务层级更改或计算重新缩放操作可以取消。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-In the database overview blade, navigate to **Notifications** and click on the tile indicating there is an ongoing operation:
+在数据库概述边栏选项卡中，导航到“通知”并单击指示有正在进行的操作的磁贴：
 
-![Ongoing operation](media/sql-database-single-database-scale/ongoing-operations.png)
+![正在进行的操作](media/sql-database-single-database-scale/ongoing-operations.png)
 
-Next, click on the button labeled **Cancel this operation**.
+接下来，单击标签为“取消此操作”的按钮。
 
-![Cancel ongoing operation](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
+![取消正在进行的操作](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
 
 #### <a name="powershell"></a>PowerShell
 
-From a PowerShell command prompt, set the `$resourceGroupName`, `$serverName`, and `$databaseName`, and then run the following command:
+从 PowerShell 命令提示符下，设置 `$resourceGroupName`、`$serverName` 和 `$databaseName`，然后运行以下命令：
 
 ```powershell
 $operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
@@ -90,17 +90,17 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Additional considerations when changing service tier or rescaling compute size
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小时的其他注意事项
 
 - 如果要升级到更高的服务层级或计算大小，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 - 若要对数据库进行降级，数据库所用空间必须小于目标服务层级和计算大小允许的最大大小。
-- 从“高级”层级降级至“标准”层级时，如果同时满足 (1) 目标计算大小支持该数据库的最大大小，(2) 最大大小超出目标计算大小包括的存储量，那么将产生额外存储费用。 For example, if a P1 database with a max size of 500 GB is downsized to S3, then an extra storage cost applies since S3 supports a max size of 1 TB and its included storage amount is only 250 GB. 因此，额外存储量为 500 GB – 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。
+- 从“高级”层级降级至“标准”层级时，如果同时满足 (1) 目标计算大小支持该数据库的最大大小，(2) 最大大小超出目标计算大小包括的存储量，那么将产生额外存储费用。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 1 TB，而它的附送存储量仅为 250 GB。 因此，额外存储量为 500 GB – 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。
 - 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将其辅助数据库升级到所需的服务层级和计算大小，然后再升级主数据库（用于实现最佳性能的常规指南）。 在升级到另一版本时，必须首先升级辅助数据库。
 - 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下降级数据库时，请先将其主数据库降级到所需的服务层级和计算大小，然后再降级辅助数据库（用于实现最佳性能的常规指南）。 在降级到另一版本时，必须首先降级主数据库。
 - 各服务层级的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短。 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 - 所做的更改完成之前不会应用数据库的新属性。
 
-### <a name="billing-during-compute-rescaling"></a>Billing during compute rescaling
+### <a name="billing-during-compute-rescaling"></a>计算重新缩放期间的计费
 
 将根据使用最高服务层级的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
 
@@ -125,11 +125,11 @@ else {
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 and P15 constraints when max size greater than 1 TB
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>当最大大小超过 1 TB 时，P11 和 P15 约束
 
-More than 1 TB of storage in the Premium tier is currently available in all regions except: China East, China North, Germany Central, Germany Northeast, West Central US, US DoD regions, and US Government Central. 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
+高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
-- If the max size for a P11 or P15 database was ever set to a value greater than 1 TB, then can it only be restored or copied to a P11 or P15 database.  Subsequently, the database can be rescaled to a different compute size provided the amount of space allocated at the time of the rescaling operation does not exceed max size limits of the new compute size.
+- 如果 P11 或 P15 数据库的最大大小已设置为大于 1 TB 的值，则只能将其还原或复制到 P11 或 P15 数据库。  随后，如果重新缩放操作时分配的空间量不超过新计算大小的最大大小限制，则可以将数据库重新缩放到不同的计算大小。
 - 对于“活动异地复制”方案：
   - 设置异地复制关系：如果主数据库是 P11 或 P15，则辅助数据库也必须为 P11 或 P15，更低的计算大小会被拒绝作为辅助数据库，因为它们不能支持超过 1 TB。
   - 升级异地复制关系中的主数据库：在主数据库上将最大大小更改为超过 1 TB 将触发辅助数据库上的相同更改。 这两个升级都必须成功才能使主数据库上的更改生效。 超过 1 TB 选项的区域限制适用。 如果辅助数据库位于不支持超过 1 TB 的区域，则不会升级主数据库。

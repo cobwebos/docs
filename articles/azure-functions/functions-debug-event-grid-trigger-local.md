@@ -16,7 +16,7 @@ ms.locfileid: "74227070"
 
 本文演示如何调试一个用于处理存储帐户所引发 Azure 事件网格事件的本地函数。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 创建或使用现有的函数应用
 - 创建或使用现有的存储帐户
@@ -54,7 +54,7 @@ ngrok http -host-header=localhost 7071
 
 ![启动 ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-复制运行 *ngrok* 时生成的 **HTTPS** URL。 配置事件网格事件终结点时将使用此值。
+复制运行 **ngrok** 时生成的 *HTTPS* URL。 配置事件网格事件终结点时将使用此值。
 
 ## <a name="add-a-storage-event"></a>添加存储事件
 
@@ -70,7 +70,7 @@ ngrok http -host-header=localhost 7071
 
 ![选择终结点类型](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-“订阅者终结点”值由三个不同的值构成。 前缀是 *ngrok* 生成的 HTTPS URL。 URL 的剩余部分来自函数代码文件中的 URL，其末尾添加了函数名称。 首先处理函数代码文件中的 URL：将 `http://localhost:7071` 替换为 *ngrok* URL，将 `{functionname}` 替换为函数名称。
+“订阅者终结点”值由三个不同的值构成。 前缀是 *ngrok* 生成的 HTTPS URL。 URL 的剩余部分来自函数代码文件中的 URL，其末尾添加了函数名称。 首先处理函数代码文件中的 URL：将 *替换为*ngrok`http://localhost:7071` URL，将 `{functionname}` 替换为函数名称。
 
 以下屏幕截图显示了最终 URL 的形式：
 

@@ -1,6 +1,6 @@
 ---
-title: Create Apache Hadoop clusters using web browser, Azure HDInsight
-description: Learn how to create Apache Hadoop, Apache HBase, Apache Storm, or Apache Spark clusters on Linux for HDInsight by using a web browser and the Azure portal.
+title: 使用 web 浏览器、Azure HDInsight 创建 Apache Hadoop 群集
+description: 了解如何使用 web 浏览器和 Azure 门户，在 Linux 上的 HDInsight 中创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -23,9 +23,9 @@ Azure 门户是一种基于 Web 的管理工具，用于管理 Microsoft Azure �
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 一个 Azure 订阅。 请参阅 [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)（如何获取用于在 HDInsight 中测试 Hadoop 的 Azure 免费试用版）。
+* **一个 Azure 订阅**。 请参阅 [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)（如何获取用于在 HDInsight 中测试 Hadoop 的 Azure 免费试用版）。
 * **一个新式 Web 浏览器**。 Azure 门户使用 HTML5 和 JavaScript， 可能无法在旧版 Web 浏览器中正常运行。
 
 ## <a name="create-clusters"></a>创建群集
@@ -36,50 +36,50 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. From the left menu, navigate to **+ Create a resource** >  **Analytics** > **Azure HDInsight**.
+1. 从左侧菜单中，导航到 " **+ 创建资源**" >  **Analytics** > **Azure HDInsight**"。
 
-    ![Create a new cluster in the Azure portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "在 Azure 门户中创建新群集")
+    ![在 Azure 门户中创建新群集](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "在 Azure 门户中创建新群集")
 
-1. From the **Create HDInsight cluster** page, select **Go to classic create experience**.
+1. 从“创建 HDInsight 群集”页，选择“转到经典创建体验”。
 
-    ![Go to classic create experience](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
+    ![转到经典创建体验](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
 
 1. 在“HDInsight”页上，选择“自定义(大小、设置、应用)”。
 
-1. 选择“1 基础知识”。 Then enter the following information:
+1. 选择“1 基础知识”。 然后输入以下信息：
 
-    |properties |描述 |
+    |属性 |说明 |
     |---|---|
     |群集名称|该名称必须全局唯一。|
-    |Subscription|From the drop-down list, select the Azure subscription that's used for the cluster.|
-    |群集类型|Select the type of cluster you want to create. 例如，Hadoop 和 Apache Spark。 “操作系统”将为 Linux。 接下来，选择群集类型版本。 如果不知道要选择哪个版本，请使用默认版本。 有关详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。|
-    |群集登录用户名|Provide the username, default is **admin**.|
-    |群集登录密码|Provide the password.|
-    |安全外壳 (SSH) 用户名|Default is **sshuser**. If you want the same SSH password as the admin password you specified earlier, select the **Use cluster login password for SSH** check box. 否则，请提供“密码”或“公钥”来验证 SSH 用户。 建议的方法是公钥。 选择底部的“选择”，保存凭据配置。  有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。|
-    |Resource group|指定是要创建新的资源组还是使用现有的资源组。|
-    |Location|Specify a datacenter where the cluster is created.|
+    |订阅|从下拉列表中，选择用于群集的 Azure 订阅。|
+    |群集类型|选择要创建的群集的类型。 例如，Hadoop 和 Apache Spark。 “操作系统”将为 Linux。 接下来，选择群集类型版本。 如果不知道要选择哪个版本，请使用默认版本。 有关详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。|
+    |群集登录用户名|提供用户名，默认值为**admin**。|
+    |群集登录密码|提供密码。|
+    |安全外壳 (SSH) 用户名|默认值为**sshuser**。 如果需要的 SSH 密码与之前指定的管理员密码相同，请选中 "**使用 ssh 的群集登录密码**" 复选框。 否则，请提供“密码”或“公钥”来验证 SSH 用户。 建议的方法是公钥。 选择底部的“选择”，保存凭据配置。  有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。|
+    |资源组|指定是要创建新的资源组还是使用现有的资源组。|
+    |位置|指定在其中创建群集的数据中心。|
 
-    ![HDInsight create cluster basics](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "在 Azure 门户中创建新群集")
+    ![HDInsight 创建群集基本信息](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-basics.png "在 Azure 门户中创建新群集")
 
     > [!IMPORTANT]  
     > HDInsight 群集有各种类型。 这些类型与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集， 例如，一个群集同时具有 Storm 和 HBase 类型。
 
     选择“下一步”转到下一页。
 
-1. 在“2 安全性 + 网络”中，可以使用所提供的下拉菜单将群集连接到虚拟网络。 如果要将群集放入虚拟网络，请选择 Azure 虚拟网络和子网。 For information on using HDInsight with a virtual network, see [Plan a virtual network deployment for Azure HDInsight clusters](hdinsight-plan-virtual-network-deployment.md). 本文包含虚拟网络的特定配置要求。
+1. 在“2 安全性 + 网络”中，可以使用所提供的下拉菜单将群集连接到虚拟网络。 如果要将群集放入虚拟网络，请选择 Azure 虚拟网络和子网。 有关在虚拟网络中使用 HDInsight 的信息，请参阅[为 Azure HDInsight 群集规划虚拟网络部署](hdinsight-plan-virtual-network-deployment.md)。 本文包含虚拟网络的特定配置要求。
 
-    If you want to use the **Enterprise Security Package**, follow these instructions: [Configure a HDInsight cluster with Enterprise Security Package by using Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+    如果要使用**企业安全性套餐**，请按照以下说明进行操作：[使用 Azure Active Directory 域服务配置包含企业安全性套餐的 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)。
 
     选择“下一步”转到下一页。
 
-1. From **3 Storage**, for **Storage Account Settings**, specify whether you want Azure Storage or Azure Data Lake Storage as your default storage. 有关详细信息，请参阅下表。
+1. 对于 "**存储帐户设置**"，在**3 个存储**中，指定是要将 Azure 存储还是 Azure Data Lake Storage 作为默认存储。 有关详细信息，请参阅下表。
 
-    | Primary Storage type | 描述 |
+    | 主存储类型 | 说明 |
     |------------------|-------------|
-    | Azure 存储器   |  * For **Selection method**, choose **My subscriptions** if you want to specify a storage account that's part of your Azure subscription. 然后选择存储帐户。 否则，请选择“访问密钥”， 然后提供想要从 Azure 订阅外部选择的存储帐户的信息。</br></br> * For **Default container**, choose the default container name suggested by the portal or specify your own.</br></br> * If Azure Blob storage is your default storage, you can also select **Additional Storage Accounts** to specify additional storage accounts to associate with the cluster. 对于“Azure 存储密钥”，请选择“添加存储密钥”。 然后，可以从 Azure 订阅或其他订阅提供一个存储帐户。 提供存储帐户访问密钥。</br></br> * If Blob storage is your default storage, you can also select **Data Lake Storage access** to specify Azure Data Lake Storage as additional storage. 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。</li></ul> |
-    | Azure Data Lake Storage | Select **Azure Data Lake Storage Gen1** or **Azure Data Lake Storage Gen2**. Then refer to the article [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) for instructions. |
+    | Azure 存储空间   |  * 对于**选择方法**，如果要指定属于 Azure 订阅的存储帐户，请选择 **"我的订阅**"。 然后选择存储帐户。 否则，请选择“访问密钥”， 然后提供想要从 Azure 订阅外部选择的存储帐户的信息。</br></br> * 对于 "**默认容器**"，请选择门户建议的默认容器名称或指定自己的容器名称。</br></br> * 如果将 Azure Blob 存储作为默认存储，则还可以选择 "**其他存储帐户**" 以指定要与群集关联的其他存储帐户。 对于“Azure 存储密钥”，请选择“添加存储密钥”。 然后，可以从 Azure 订阅或其他订阅提供一个存储帐户。 提供存储帐户访问密钥。</br></br> * 如果 Blob 存储是默认存储，则还可以选择**Data Lake Storage 访问权限**，以将 Azure Data Lake Storage 指定为附加存储。 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。</li></ul> |
+    | Azure Data Lake 存储 | 选择**Azure Data Lake Storage Gen1**或**Azure Data Lake Storage Gen2**。 然后参阅文章[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)了解相关说明。 |
 
-    **Metastore Settings (optional)**
+    **元存储设置（可选）**
 
     以选项的方式指定一个 SQL 数据库，用于保存与群集关联的 Apache Hive 和 Apache Oozie 元数据。 对于“为 Hive 选择 SQL 数据库”选项，请选择一个 SQL 数据库， 然后为数据库提供用户名和密码。 为 Oozie 元数据重复以上这些步骤。
 
@@ -87,7 +87,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
     * 用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 在 Azure SQL 数据库仪表板的右侧选择服务器名称。 此服务器是运行 SQL 数据库实例的服务器。 进入服务器视图以后，选择“配置”。 然后，对于“Azure 服务”，请选择“是”。 再选择“保存”。
     * 创建元存储时，请勿使用短划线或连字符来命名数据库。 这些字符可能导致群集创建过程失败。
 
-    ![HDInsight create cluster storage](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "在 Azure 门户中创建新群集")
+    ![HDInsight 创建群集存储](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "在 Azure 门户中创建新群集")
 
     > [!WARNING]  
     > 不支持在 HDInsight 群集之外的其他位置使用别的存储帐户。
@@ -100,7 +100,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 1. “5 群集大小”显示用于此群集的节点的相关信息。 设置群集所需的工作节点数。 运行群集的估计成本也会显示出来。
 
-    ![HDInsight create cluster nodes](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Specify number of cluster nodes")
+    ![HDInsight 创建群集节点](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "指定群集节点数")
 
    > [!IMPORTANT]  
    > 如果计划使用 32 个以上的辅助角色节点，则请选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集时计划节点，也可以在创建群集之后通过缩放群集来计划节点。
@@ -113,24 +113,24 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
    选择“下一步”转到下一页。
 
-1. 从“7 摘要”中，验证之前输入的信息， 然后选择“创建”。
+1. 从“7 摘要”中，验证之前输入的信息， 然后，选择“创建”。
 
-    ![HDInsight create cluster summary](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Specify number of cluster nodes")
+    ![HDInsight 创建群集摘要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "指定群集节点数")
 
     > [!NOTE]  
     > 创建群集需要一些时间，通常约 20 分钟左右。 监视“通知”以检查预配进程。
 
 1. 创建进程完成后，选择“部署成功”通知中的“转到资源”。 群集窗口会提供以下信息。
 
-    ![HDI Azure portal cluster overview](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "群集属性")
+    ![HDI Azure 门户群集概述](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "群集属性")
 
-    Some of the icons in the window are explained as follows:
+    窗口中的某些图标如下所述：
 
-    |properties | 描述 |
+    |属性 | 说明 |
     |---|---|
-    |概述|Provides all the essential information about the cluster. 例如，名称、其所属的资源组、位置、操作系统、群集仪表板 URL。|
-    |群集仪表板|Directs you to the Ambari portal associated with the cluster.|
-    |SSH + Cluster login|Provides information needed to access the cluster by using SSH.|
+    |概述|提供有关群集的所有基本信息。 例如，名称、其所属的资源组、位置、操作系统、群集仪表板 URL。|
+    |群集仪表板|将用户定向到与群集关联的 Ambari 门户。|
+    |SSH + 群集登录|提供使用 SSH 访问群集时所需的信息。|
     |删除|删除 HDInsight 群集。|
 
 ## <a name="customize-clusters"></a>自定义群集

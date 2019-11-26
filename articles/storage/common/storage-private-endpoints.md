@@ -1,6 +1,6 @@
 ---
-title: Using Private Endpoints with Azure Storage | Microsoft Docs
-description: Overview of private endpoints for secure access to storage accounts from virtual networks.
+title: 将专用终结点用于 Azure 存储 |Microsoft Docs
+description: 用于从虚拟网络安全访问存储帐户的专用终结点的概述。
 services: storage
 author: santoshc
 ms.service: storage
@@ -16,125 +16,125 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74227883"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Using Private Endpoints for Azure Storage (Preview)
+# <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
-You can use [Private Endpoints](../../private-link/private-endpoint-overview.md) for your Azure Storage accounts to allow clients on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md). The private endpoint uses an IP address from the VNet address space for your storage account service. Network traffic between the clients on the VNet and the storage account traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
+你可以使用 Azure 存储帐户的[专用终结点](../../private-link/private-endpoint-overview.md)，以允许虚拟网络（VNet）上的客户端通过[专用链接](../../private-link/private-link-overview.md)安全地访问数据。 专用终结点使用来自你的存储帐户服务的 VNet 地址空间中的 IP 地址。 VNet 和存储帐户上的客户端之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行遍历，从而消除了公共 internet 的泄露。
 
-Using private endpoints for your storage account enables you to:
-- Secure your storage account by configuring the storage firewall to block all connections on the public endpoint for the storage service.
-- Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
-- Securely connect to storage accounts from on-premises networks that connect to the VNet using [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) or [ExpressRoutes](../../expressroute/expressroute-locations.md) with private-peering.
+使用存储帐户的专用终结点可以：
+- 通过将存储防火墙配置为阻止存储服务的公共终结点上的所有连接来保护存储帐户。
+- 通过使你能够阻止渗透来自 VNet 的数据，提高虚拟网络（VNet）的安全性。
+- 使用[VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../../expressroute/expressroute-locations.md)与专用对等互连连接到 VNet，从而安全地连接到存储帐户。
 
-## <a name="conceptual-overview"></a>Conceptual Overview
-![Private Endpoints for Azure Storage Overview](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+## <a name="conceptual-overview"></a>概念性概述
+![Azure 存储的专用终结点概述](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-A Private Endpoint is a special network interface for an Azure service in your [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNet). When you create a private endpoint for your storage account, it provides secure connectivity between clients on your VNet and your storage. The private endpoint is assigned an IP address from the IP address range of your VNet. The connection between the private endpoint and the storage service uses a secure private link.
+专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
 
-Applications in the VNet can connect to the storage service over the private endpoint seamlessly, **using the same connection strings and authorization mechanisms that they would use otherwise**. Private endpoints can be used with all protocols supported by the storage account, including REST and SMB.
+VNet 中的应用程序可以**使用相同的连接字符串和要使用的授权机制**，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
 
-When you create a private endpoint for a storage service in your VNet, a consent request is sent for approval to the storage account owner. If the user requesting the creation of the private endpoint is also an owner of the storage account, this consent request is automatically approved.
+在 VNet 中创建用于存储服务的专用终结点时，会将一个申请批准的许可请求发送到存储帐户所有者。 如果请求创建专用终结点的用户也是存储帐户的所有者，则会自动批准此同意请求。
 
-Storage account owners can manage consent requests and the private endpoints, through the '*Private Endpoints*' tab for the storage account in the [Azure portal](https://portal.azure.com).
-
-> [!TIP]
-> If you want to restrict access to your storage account through the private endpoint only, configure the storage firewall to deny or control access through the public endpoint.
-
-You can secure your storage account to only accept connections from your VNet, by [configuring the storage firewall](storage-network-security.md#change-the-default-network-access-rule) to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the storage firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the storage service.
-
-### <a name="private-endpoints-for-storage-service"></a>Private Endpoints for Storage Service
-
-When creating the private endpoint, you must specify the storage account and the storage service to which it connects. You need a separate private endpoint for each storage service in a storage account that you need to access, namely [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Queues](../queues/storage-queues-introduction.md), [Tables](../tables/table-storage-overview.md), or [Static Websites](../blobs/storage-blob-static-website.md).
+存储帐户所有者可以通过[Azure 门户](https://portal.azure.com)中存储帐户的 "*专用终结点*" 选项卡来管理同意请求和专用终结点。
 
 > [!TIP]
-> Create a separate private endpoint for the secondary instance of the storage service for better read performance on RA-GRS accounts.
+> 如果要仅通过专用终结点限制对存储帐户的访问，请将存储防火墙配置为拒绝或通过公共终结点控制访问权限。
 
-For read availability on a [read-access geo redundant storage account](storage-redundancy-grs.md#read-access-geo-redundant-storage), you need separate private endpoints for both the primary and secondary instances of the service. You don't need to create a private endpoint for the secondary instance for **failover**. The private endpoint will automatically connect to the new primary instance after failover.
+你可以通过将[存储防火墙配置](storage-network-security.md#change-the-default-network-access-rule)为拒绝默认情况下通过其公共终结点进行访问，从而保护存储帐户仅接受来自 VNet 的连接。 无需防火墙规则即可允许来自具有专用终结点的 VNet 的流量，因为存储防火墙只控制通过公共终结点进行的访问。 专用终结点而是依赖于授予对存储服务的子网访问权限的许可流。
+
+### <a name="private-endpoints-for-storage-service"></a>用于存储服务的专用终结点
+
+创建专用终结点时，必须指定存储帐户及其连接到的存储服务。 对于需要访问的存储帐户中的每个存储服务，都需要一个单独的专用终结点，即[blob](../blobs/storage-blobs-overview.md)、 [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[文件](../files/storage-files-introduction.md)、[队列](../queues/storage-queues-introduction.md)、[表](../tables/table-storage-overview.md)或[静态网站](../blobs/storage-blob-static-website.md)。
+
+> [!TIP]
+> 为存储服务的辅助实例创建单独的专用终结点，以在 GRS 帐户中获得更好的读取性能。
+
+对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。
 
 #### <a name="resources"></a>资源
 
-For more detailed information on creating a private endpoint for your storage account, refer to the following articles:
+有关为你的存储帐户创建专用终结点的详细信息，请参阅以下文章：
 
-- [Connect privately to a storage account from the Storage Account experience in the Azure portal](../../private-link/create-private-endpoint-storage-portal.md)
-- [Create a private endpoint using the Private Link Center in the Azure portal](../../private-link/create-private-endpoint-portal.md)
-- [Create a private endpoint using Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Create a private endpoint using Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+- [从 Azure 门户中的存储帐户体验私下连接到存储帐户](../../private-link/create-private-endpoint-storage-portal.md)
+- [使用 Azure 门户中的专用链接中心创建专用终结点](../../private-link/create-private-endpoint-portal.md)
+- [使用 Azure CLI 创建专用终结点](../../private-link/create-private-endpoint-cli.md)
+- [使用 Azure PowerShell 创建专用终结点](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="connecting-to-private-endpoints"></a>Connecting to Private Endpoints
+### <a name="connecting-to-private-endpoints"></a>连接到专用终结点
 
-Clients on a VNet using the private endpoint should use the same connection string for the storage account, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the storage account over a private link.
+当客户端连接到公共终结点时，使用专用终结点的 VNet 中的客户端应为存储帐户使用相同的连接字符串。 我们依赖 DNS 解析，通过专用链路自动将连接从 VNet 路由到存储帐户。
 
 > [!IMPORTANT]
-> Use the same connection string to connect to the storage account using private endpoints, as you'd use otherwise. Please don't connect to the storage account using its '*privatelink*' subdomain URL.
+> 使用相同的连接字符串连接到使用专用终结点的存储帐户，否则你将使用此连接字符串。 请不要使用 "*privatelink*" 子域 URL 连接到存储帐户。
 
-We create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. The section on [DNS changes](#dns-changes-for-private-endpoints) below describes the updates required for private endpoints.
+默认情况下，我们创建附加到 VNet 的[专用 DNS 区域](../../dns/private-dns-overview.md)，其中包含专用终结点的必要更新。 但是，如果使用自己的 DNS 服务器，则可能需要对 DNS 配置进行其他更改。 以下[DNS 更改](#dns-changes-for-private-endpoints)部分介绍了专用终结点所需的更新。
 
-## <a name="dns-changes-for-private-endpoints"></a>DNS changes for Private Endpoints
+## <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
-The DNS CNAME resource record for a storage account with a private endpoint is updated to an alias in a subdomain with the prefix '*privatelink*'. By default, we also create a [private DNS zone](../../dns/private-dns-overview.md) attached to the VNet that corresponds to the subdomain with the prefix '*privatelink*', and contains the DNS A resource records for the private endpoints.
+具有专用终结点的存储帐户的 DNS CNAME 资源记录将更新为具有前缀 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建附加到 VNet 的[专用 DNS 区域](../../dns/private-dns-overview.md)，该区域对应于前缀为 "*privatelink*" 的子域，其中包含用于专用终结点的 DNS a 资源记录。
 
-When you resolve the storage endpoint URL from outside the VNet with the private endpoint, it resolves to the public endpoint of the storage service. When resolved from the VNet hosting the private endpoint, the storage endpoint URL resolves to the private endpoint's IP address.
+当你通过专用终结点在 VNet 外部解析存储终结点 URL 时，它将解析为存储服务的公共终结点。 当从承载专用终结点的 VNet 解析时，存储终结点 URL 解析为专用终结点的 IP 地址。
 
-For the illustrated example above, the DNS resource records for the storage account 'StorageAccountA', when resolved from outside the VNet hosting the private endpoint, will be:
+对于上面所示的示例，存储帐户 "StorageAccountA" 的 DNS 资源记录在托管专用终结点的 VNet 之外进行解析时将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
-| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<存储服务公共终结点\>                   |
+| \<存储服务公共终结点\>                   | A     | \<存储服务公共 IP 地址\>                 |
 
-As previously mentioned, you can deny or control access for clients outside the VNet through the public endpoint using the storage firewall.
+如前文所述，你可以使用存储防火墙通过公共终结点拒绝或控制对 VNet 外部客户端的访问。
 
-The DNS resource records for StorageAccountA, when resolved by a client in the VNet hosting the private endpoint, will be:
+托管专用终结点的 VNet 中的客户端解析后，StorageAccountA 的 DNS 资源记录将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-This approach enables access to the storage account **using the same connection string** for clients on the VNet hosting the private endpoints, as well as clients outside the VNet.
+利用此方法，可以对承载专用终结点的 VNet 中的客户端以及 VNet 外部的客户端**使用相同的连接字符串**来访问存储帐户。
 
-If you are using a custom DNS server on your network, clients must be able to resolve the FQDN for the storage account endpoint to the private endpoint IP address. For this, you must configure your DNS server to delegate your private link subdomain to the private DNS zone for the VNet, or configure the A records for '*StorageAccountA.privatelink.blob.core.windows.net*' with the private endpoint IP address. 
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将存储帐户终结点的 FQDN 解析到专用终结点 IP 地址。 为此，你必须将你的 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或使用专用终结点 IP 地址为 "*StorageAccountA.privatelink.blob.core.windows.net*" 配置 A 记录。 
 
 > [!TIP]
-> When using a custom or on-premises DNS server, you should configure your DNS server to resolve the storage account name in the 'privatelink' subdomain to the private endpoint IP address. You can do this by delegating the 'privatelink' subdomain to the private DNS zone of the VNet, or configuring the DNS zone on your DNS server and adding the DNS A records.
+> 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将 "privatelink" 子域中的存储帐户名称解析为专用终结点 IP 地址。 为此，可以将 "privatelink" 子域委托给 VNet 的专用 DNS 区域，或在 DNS 服务器上配置 DNS 区域并添加 DNS A 记录。
 
-The recommended DNS zone names for private endpoints for storage services are:
+建议用于存储服务的专用终结点的 DNS 区域名称为：
 
-| Storage service        | Zone name                            |
+| 存储服务        | 区域名称                            |
 | :--------------------- | :----------------------------------- |
 | Blob 服务           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| File service           | `privatelink.file.core.windows.net`  |
+| 文件服务           | `privatelink.file.core.windows.net`  |
 | 队列服务          | `privatelink.queue.core.windows.net` |
 | 表服务          | `privatelink.table.core.windows.net` |
-| Static Websites        | `privatelink.web.core.windows.net`   |
+| 静态网站        | `privatelink.web.core.windows.net`   |
 
 #### <a name="resources"></a>资源
 
-For additional guidance on configuring your own DNS server to support private endpoints, refer to the following articles:
+有关配置自己的 DNS 服务器以支持专用终结点的其他指导，请参阅以下文章：
 
 - [Azure 虚拟网络中资源的名称解析](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS configuration for Private Endpoints](/private-link/private-endpoint-overview#dns-configuration)
+- [专用终结点的 DNS 配置](/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="copy-blob-support"></a>Copy Blob support
+### <a name="copy-blob-support"></a>复制 Blob 支持
 
-During the preview, we don't support [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) commands issued to storage accounts accessed through private endpoints when the source storage account is protected by a firewall.
+在预览期间，我们不支持在源存储帐户受防火墙保护时，发布到通过专用终结点访问的存储帐户的 "[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) " 命令。
 
-### <a name="subnets-with-service-endpoints"></a>Subnets with Service Endpoints
-Currently, you can't create a private endpoint in a subnet that has service endpoints. As a workaround, you can create separate subnets in the same VNet for service endpoints and private endpoints.
+### <a name="subnets-with-service-endpoints"></a>包含服务终结点的子网
+目前，无法在具有服务终结点的子网中创建专用终结点。 作为一种解决方法，你可以在服务终结点和专用终结点的同一 VNet 中创建单独的子网。
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Storage access constraints for clients in VNets with Private Endpoints
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有专用终结点的 Vnet 中客户端的存储访问约束
 
-Clients in VNets with existing private endpoints face constraints when accessing other storage accounts that have private endpoints. For instance, suppose a VNet N1 has a private endpoint for a storage account A1 for, say, the blob service. If storage account A2 has a private endpoint in a VNet N2 for the blob service, then clients in VNet N1 must also access the blob service of account A2 using a private endpoint. If storage account A2 does not have any private endpoints for the blob service, then clients in VNet N1 can access its blob service without a private endpoint.
+Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的其他存储帐户时面临约束。 例如，假设 VNet N1 具有用于存储帐户 A1 的专用终结点，例如，blob 服务。 如果存储帐户 A2 在 VNet N2 中有一个用于 blob 服务的专用终结点，则 VNet N1 中的客户端还必须使用专用终结点访问帐户 A2 的 blob 服务。 如果存储帐户 A2 没有用于 blob 服务的任何专用终结点，则 VNet N1 中的客户端无需专用终结点即可访问其 blob 服务。
 
-This constraint is a result of the DNS changes made when account A2 creates a private endpoint.
+此约束是在帐户 A2 创建专用终结点时所做的 DNS 更改的结果。
 
-### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Network Security Group rules for subnets with private endpoints
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有专用终结点的子网的网络安全组规则
 
-Currently, you can't configure [Network Security Group](../../virtual-network/security-overview.md) (NSG) rules for subnets with private endpoints. A limited workaround for this issue is to implement your access rules for private endpoints on the source subnets, though this approach may require a higher management overhead.
+目前，无法为具有专用终结点的子网配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。

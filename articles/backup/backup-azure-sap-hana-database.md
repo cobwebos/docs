@@ -10,7 +10,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74285812"
 ---
-# <a name="back-up-sap-hana-databases-in-azure-vms"></a>在 Azure Vm 中备份 SAP HANA 数据库
+# <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
 SAP HANA 数据库是需要低恢复点目标（RPO）和长期保留的关键工作负荷。 可以使用[Azure 备份](backup-overview.md)来备份 Azure 虚拟机（vm）上运行的 SAP HANA 数据库。
 

@@ -42,7 +42,7 @@ ms.locfileid: "74230102"
 在生成用于设置 Cloudyn 的 Azure 企业协议 API 密钥之前，必须遵照以下主题中的说明启用 Azure 计费 API：
 
 - [面向企业客户的报告 API 概述](../billing/billing-enterprise-api.md)
-- **实现对 API 的数据访问**中的 [Microsoft Azure Enterprise Portal 报告 API](https://ea.azure.com/helpdocs/reportingAPI)
+- [实现对 API 的数据访问](https://ea.azure.com/helpdocs/reportingAPI)中的 **Microsoft Azure Enterprise Portal 报告 API**
 
 
 可能还需要向部门管理员、帐户所有者和企业管理员授予使用计费 API 查看费用的权限。
@@ -74,9 +74,9 @@ ms.locfileid: "74230102"
 
 首先，让我们来看一下导致用户帐户初始挂起的常见应用场景。
 
-> Admin1 might be a Microsoft Cloud Solution Provider or Enterprise Agreement user. Their organization is ready to start using Cloudyn.  他通过 Azure 门户注册并登录到 Cloudyn 门户。 As the person who registers the Cloudyn service and signs into the Cloudyn portal, Admin1 becomes the *primary administrator*. 管理员 1 不创建任何用户帐户。 However, using the Cloudyn portal, they do create Azure accounts and set up an entity hierarchy. Admin1 informs Admin2, a tenant administrator, that they need to register with Cloudyn and sign in to the Cloudyn portal.
+> Admin1 可能是 Microsoft 云解决方案提供商或企业协议用户。 他们的组织已准备好开始使用 Cloudyn。  他通过 Azure 门户注册并登录到 Cloudyn 门户。 作为注册 Cloudyn 服务并登录到 Cloudyn 门户的用户，Admin1 将成为*主要管理员*。 管理员 1 不创建任何用户帐户。 但是，使用 Cloudyn 门户时，它们会创建 Azure 帐户并设置实体层次结构。 Admin1 通知管理员2，是租户管理员，他们需要注册 Cloudyn 并登录到 Cloudyn 门户。
 >
-> 管理员 2 通过 Azure 门户进行注册。 However when they try to sign in to the Cloudyn portal, they get an error saying their account is **suspended**. 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
+> 管理员 2 通过 Azure 门户进行注册。 但是，当用户尝试登录到 Cloudyn 门户时，会收到一条错误消息，指出其帐户已**挂起**。 主要管理员（管理员 1）将收到帐户挂起的通知。 管理员 1 需要激活管理员 2 的帐户并针对相应的实体授予管理员实体访问权限，并允许用户管理访问和激活用户帐户。
 
 
 如果收到请求允许某个用户进行访问的警报，需要激活该用户帐户。
@@ -90,13 +90,13 @@ ms.locfileid: "74230102"
 
 Cloudyn 用户帐户使用单一登录从 Azure 建立连接。 如果用户错误地键入了密码，他们可能被锁定在 Cloudyn 之外，即使他们仍可访问 Azure。
 
-If you change your e-mail address in Cloudyn from the default address in Azure, your account can get locked out. It might show "status initiallySuspended." 如果用户帐户已锁定，请联系另一管理员重置帐户。
+如果从 Azure 中的默认地址更改 Cloudyn 中的电子邮件地址，你的帐户可能会被锁定。它可能会显示 "状态 initiallySuspended"。 如果用户帐户已锁定，请联系另一管理员重置帐户。
 
 我们建议至少创建两个 Cloudyn 管理员帐户，以防其中一个帐户被锁定。
 
 如果无法登录到 Cloudyn 门户，请确保使用正确的 URL 登录到 Cloudyn。 使用 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade)。
 
-避免使用 Cloudyn 直接 URL https://app.cloudyn.com 。
+避免使用 Cloudyn 直接 URL https://app.cloudyn.com。
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>如何使用 Azure 凭据激活尚未激活的帐户？
 
@@ -118,9 +118,9 @@ Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提�
 
 可能有多个使用不同货币的 Azure 帐户。 但在 Cloudyn 中，每个成本报表不显示超过一种货币类型。
 
-如果有多个使用不同货币的订阅，则父实体及其子实体货币会以美元 ($) 显示。 建议的最佳做法是避免在同一实体层次结构中使用不同的货币。 换而言之，实体结构中组织的所有订阅应使用同一货币。
+如果有多个使用不同货币的订阅，则父实体及其子实体货币会以美元 ( **) 显示$** 。 建议的最佳做法是避免在同一实体层次结构中使用不同的货币。 换而言之，实体结构中组织的所有订阅应使用同一货币。
 
-Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  但是，Cloudyn 仅对 CSP 和 Web 直通 Azure 帐户显示美元 ($)。
+Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  但是，Cloudyn 仅对 CSP 和 Web 直通 Azure 帐户显示美元 ( **)$** 。
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn 数据刷新时间线是什么？
 
@@ -154,7 +154,7 @@ Cloudyn 提供以下数据刷新时间线：
 
 ## <a name="is-cloudyn-agent-based"></a>Cloudyn 是否基于代理？
 
-不。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
+否。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
 

@@ -45,7 +45,7 @@ ms.locfileid: "74186357"
 ## <a name="create-the-udr-for-the-front-end-subnet"></a>为前端子网创建 UDR
 若要根据上述方案为前端子网创建所需的路由表和路由，请按照下面的步骤操作。
 
-1. 运行以下命令，为前端子网创建路由表：
+1. 运行以下命令为前端子网创建路由表：
 
     ```powershell
     New-AzureRouteTable -Name UDR-FrontEnd -Location uswest `
@@ -103,7 +103,7 @@ ms.locfileid: "74186357"
 
 若要在 FW1 VM 中启用 IP 转发，请完成以下步骤：
 
-1. 运行以下命令，检查 IP 转发的状态：
+1. 可运行以下命令检查 IP 转发的状态：
 
     ```powershell
     Get-AzureVM -Name FW1 -ServiceName TestRGFW `

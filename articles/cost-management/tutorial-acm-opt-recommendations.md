@@ -21,18 +21,18 @@ ms.locfileid: "74229838"
 
 Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 查看成本优化建议，以查看潜在的低效使用情况。
 > * 实施建议，以将虚拟机的大小调整为更具成本效益的选项
 > * 验证操作，确保成功调整虚拟机的大小
 
-## <a name="prerequisites"></a>必备组件
-Recommendations are available for a variety of scopes and Azure account types. 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+## <a name="prerequisites"></a>先决条件
+建议适用于各种范围和 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
-- Subscription
-- Resource group
+- 订阅
+- 资源组
 
 必须提供至少有 14 天保持活动状态的虚拟机。
 
@@ -41,9 +41,9 @@ Recommendations are available for a variety of scopes and Azure account types. �
 
 ## <a name="view-cost-optimization-recommendations"></a>查看成本优化建议
 
-To view cost optimization recommendations for a subscription, open the desired scope in the Azure portal and select **Advisor recommendations**.
+若要查看订阅的成本优化建议，请在 Azure 门户中打开所需的作用域，并选择 "**顾问建议**"。
 
-To view recommendations for a management group, open the desired scope in the Azure portal and select **Cost analysis** in the menu. Use the **Scope** pill to switch to a different scope, such as a management group. Select **Advisor recommendations** in the menu. 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要查看管理组的建议，请在 Azure 门户中打开所需的作用域，并在菜单中选择 "**成本分析**"。 使用**范围**欣然切换到不同的作用域，如管理组。 在菜单中选择 "**顾问建议**"。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在 Azure 门户中显示的成本管理顾问建议](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
@@ -51,19 +51,19 @@ To view recommendations for a management group, open the desired scope in the Az
 
 “影响”类别和“潜在年度节省”旨在帮助识别哪些建议有可能会实现最大的节省。
 
-High impact recommendations include:
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-- [Optimize virtual machine spend by resizing or shutting down underutilized instances](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Use Standard Storage to store Managed Disks snapshots](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+高影响建议包括：
+- [购买保留虚拟机实例，通过即用即付成本节省资金](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [通过调整大小或关闭未充分利用的实例来优化虚拟机花费](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [使用标准存储来存储托管磁盘快照](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
-Medium impact recommendations include:
-- [Delete Azure Data Factory pipelines that are failing](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
-- [Reduce costs by eliminating un-provisioned ExpressRoute circuits](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
-- [Reduce costs by deleting or reconfiguring idle virtual network gateways](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
+中等影响建议包括：
+- [删除失败的 Azure 数据工厂管道](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [消除未预配的 ExpressRoute 线路，从而降低成本](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [删除或重新配置空闲虚拟网络网关，降低成本](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
 ## <a name="act-on-a-recommendation"></a>实施建议
 
-Azure Advisor monitors your virtual machine usage for seven days and then identifies underutilized virtual machines. 如果在 4 天或 4 天以上，虚拟机的 CPU 利用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
+Azure Advisor 会监视你的虚拟机使用情况七天，然后识别使用不足的虚拟机。 如果在 4 天或 4 天以上，虚拟机的 CPU 利用率都小于或等于 5% 且网络使用率小于或等于 7 MB，则会被视为利用率较低的虚拟机。
 
 5% 或更低的 CPU 利用率设置是默认值，可以调整设置。 有关调整设置的详细信息，请参阅[配置平均 CPU 利用率规则或低使用率虚拟机建议](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)。
 
@@ -79,14 +79,14 @@ Azure Advisor monitors your virtual machine usage for seven days and then identi
 
 注意当前虚拟机的大小。 确认应该调整该虚拟机的大小后，关闭 VM 详细信息以查看虚拟机列表。
 
-In the list of candidates to shut down or resize, select **Resize *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;***.
+在要关闭或重设大小的候选项列表中，选择 " *&lt;FromVirtualMachineSKU&gt;* 的大小调整为 *&lt;ToVirtualMachineSKU&gt;* * *。
 ![具有调整虚拟机大小选项的示例建议](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-接下来，会看到可用调整大小选项的列表。 选择能够为方案实现最佳性能和成本效益的选项。 In the following example, the option chosen resizes from **Standard_D8s_v3** to **Standard_D2s_v3**.
+接下来，会看到可用调整大小选项的列表。 选择能够为方案实现最佳性能和成本效益的选项。 在下面的示例中，从**Standard_D8s_v3**到**Standard_D2s_v3**，选择的选项会调整大小。
 
 ![可以在其中选择一个大小的可用 VM 大小示例列表](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-After you choose a suitable size, click **Resize** to start the resize action.
+选择适当的大小后，请单击 "**调整**大小" 以开始调整大小操作。
 
 调整大小需要重启正在运行的虚拟机。 如果该虚拟机在生产环境中，则我们建议在非营业时间运行调整大小操作。 计划重启可以减少暂时性的中断造成的干扰。
 
@@ -98,7 +98,7 @@ After you choose a suitable size, click **Resize** to start the resize action.
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+在本教程中，已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看成本优化建议，以查看潜在的低效使用情况。

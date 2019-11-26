@@ -1,7 +1,7 @@
 ---
-title: 'Join Data: Module Reference'
+title: 联接数据：模块引用
 titleSuffix: Azure Machine Learning
-description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
+description: 了解如何使用 Azure 机器学习中的联接联接数据模块来合并数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,54 +18,54 @@ ms.locfileid: "74232624"
 ---
 # <a name="join-data"></a>联接数据
 
-This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
+本文介绍如何使用 "Azure 机器学习设计器（预览）" 中的**联接数据**模块，通过数据库样式的联接操作来合并两个数据集。  
 
-## <a name="how-to-configure-join-data"></a>How to configure Join Data
+## <a name="how-to-configure-join-data"></a>如何配置联接数据
 
-To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
+若要在两个数据集上执行联接，应按键列进行关联。 还支持使用多个列的组合键。 
 
-1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
+1. 添加要合并的数据集，然后将**联接数据**模块拖放到管道中。 
 
-    You can find the module in the **Data Transformation** category, under **Manipulation**.
+    您可以在 "**操作**" 下的 "**数据转换**" 类别中找到该模块。
 
-1. Connect the datasets to the **Join Data** module. 
+1. 将数据集连接到**联接数据**模块。 
  
-1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
+1. 选择 "**启动列选择器**" 以选择键列。 请记得为左侧输入和右侧输入选择列。
 
-    For a single key:
+    对于单个密钥：
 
-    Select a single key column for both inputs.
+    为两个输入选择一个键列。
     
-    For a composite key:
+    对于组合键：
 
-    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
+    按相同顺序从左输入和右输入中选择所有键列。 **联接数据**模块将在所有键列匹配时联接表。 如果列顺序与原始表不同，则选中 "**允许重复项并保留列顺序**" 选项。 
 
     ![列选择器](media/module/join-data-column-selector.png)
 
 
-1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
+1. 如果要在文本列联接上保留区分大小写选项，请选择 "区分**大小写**" 选项。 
    
-1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
+1. 使用 "**联接类型**" 下拉列表指定应如何合并数据集。  
   
-    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
+    * **内部联接**：*内部联接*是最常见的联接操作。 仅当键列的值匹配时，它才返回组合的行。  
   
-    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
+    * **左外部联接**：左*外部联接*返回左表中所有行的联接行。 如果左侧表中的某行在右表中没有匹配的行，则返回的行包含右侧表中所有列的缺失值。 还可以为缺失值指定替换值。  
   
-    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
+    * **完全外部联接**：*完全外部联接*返回左表（**table1**）中的所有行以及右表中的所有行（**table2**）。  
   
-         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
+         对于两个表中与另一个表中没有匹配行的每个行，结果包括一个包含缺失值的行。  
   
-    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
+    * **左半部联接**：只有当键列的值匹配时，*左半部联接*才返回左侧表中的值。  
 
-1. For the option **Keep right key columns in joined table**:
+1. 对于 "**在联接的表中保留右键列**" 选项：
 
-    * Select this option to view the keys from both input tables.
-    * Deselect to only return the key columns from the left input.
+    * 选择此选项可以查看两个输入表中的键。
+    * 取消选择此项将只返回左侧输入中的键列。
 
-1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
+1. 运行管道，或选择 "联接数据" 模块，并选择 "所选**运行**" 以执行联接。
 
-1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
+1. 若要查看结果，请右键单击**联接数据** > **结果数据集** > **可视化**。
 
 ## <a name="next-steps"></a>后续步骤
 
-See the [set of modules available](module-reference.md) to Azure Machine Learning. 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

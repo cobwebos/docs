@@ -1,5 +1,5 @@
 ---
-title: Install and run containers - Text Analytics
+title: 安装和运行容器-文本分析
 titleSuffix: Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行文本分析容器。
 services: cognitive-services
@@ -20,23 +20,23 @@ ms.locfileid: "74383164"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
-Containers enable you to run the Text Analytic APIs in your own environment and are great for your specific security and data governance requirements. The Text Analytics containers provide advanced natural language processing over raw text, and include three main functions: sentiment analysis, key phrase extraction, and language detection. 容器当前不支持实体链接。
+容器使你能够在自己的环境中运行文本分析 Api，这非常适合你的特定安全和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并包括三个主要功能：情绪分析、关键短语提取和语言检测。 容器当前不支持实体链接。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-To run any of the Text Analytics containers, you must have the host computer and container environments.
+若要运行任何文本分析容器，你必须拥有主机计算机和容器环境。
 
 ## <a name="preparation"></a>准备工作
 
 使用文本分析容器之前，必须满足以下先决条件：
 
-|需要|用途|
+|必需|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|文本分析资源 |若要使用容器，必须具有：<br><br>An Azure [Text Analytics resource](../../cognitive-services-apis-create-account.md) to get the associated API key and endpoint URI. 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** : One of the two available resource keys on the **Keys** page<br><br>**{ENDPOINT_URI}** : The endpoint as provided on the **Overview** page|
+|文本分析资源 |若要使用容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure[文本分析资源](../../cognitive-services-apis-create-account.md)。 这两个值可以从 Azure 门户中的“文本分析概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{API_KEY}** ： "**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}** ： "**概述**" 页中提供的终结点|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -62,14 +62,14 @@ To run any of the Text Analytics containers, you must have the host computer and
 
 ***
 
-* 每个核心必须至少为 2.6 千兆赫（GHz）或更快。
+* 每个核心至少必须为 2.6 GHz 或更快。
 * TPS - 每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
-Container images for Text Analytics are available on the Microsoft Container Registry.
+Microsoft 容器注册表中提供了文本分析的容器映像。
 
 # <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
@@ -87,7 +87,7 @@ Container images for Text Analytics are available on the Microsoft Container Reg
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker pull for the Text Analytics containers
+### <a name="docker-pull-for-the-text-analytics-containers"></a>用于文本分析容器的 Docker 请求
 
 # <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
@@ -107,14 +107,14 @@ Container images for Text Analytics are available on the Microsoft Container Reg
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](../text-analytics-resource-container-config.md#example-docker-run-commands)。
+1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 [ 命令的多个](../text-analytics-resource-container-config.md#example-docker-run-commands)示例`docker run`。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 Refer to [Gathering required parameters](#gathering-required-parameters) for details on how to get the `{ENDPOINT_URI}` and `{API_KEY}` values.
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 有关如何获取 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-[Examples](../text-analytics-resource-container-config.md#example-docker-run-commands) of the `docker run` command are available.
+[ 命令的](../text-analytics-resource-container-config.md#example-docker-run-commands)示例`docker run`可用。
 
 # <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
@@ -167,11 +167,11 @@ Container images for Text Analytics are available on the Microsoft Container Reg
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>Summary
 
-在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 摘要：
+在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 综上所述：
 
-* Text Analytics provides three Linux containers for Docker, encapsulating various capabilities:
+* 文本分析为 Docker 提供三个 Linux 容器，封装各种功能：
    * *关键短语提取*
    * *语言检测*
    * *情绪分析*

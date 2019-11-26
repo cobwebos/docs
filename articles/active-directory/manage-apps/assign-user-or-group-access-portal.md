@@ -57,7 +57,7 @@ ms.locfileid: "74274743"
 - 如果此选项设置为“是”，则必须先将用户分配到此应用程序，然后用户才能访问它。
 - 如果此选项设置为“否”，则任何直接导航到应用程序深层链接 URL 或应用程序 URL 的用户都将被授予访问权限
 - 不会影响应用程序是否显示在应用程序访问面板上。 要在访问面板上显示应用程序，需要为应用程序分配相应的用户或组。
-- 仅适用于为 SAML 单一登录配置的云应用程序、使用 Azure Active Directory 预身份验证的应用程序代理应用程序或直接 Azure AD 在使用 OAuth 2.0/用户或管理员同意该应用程序后，OpenID Connect 身份验证。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。 请参阅[配置最终用户对应用程序的许可方式](configure-user-consent.md)。
+- 仅适用于使用为 SAML 单一登录配置的云应用程序的函数、使用 Azure Active Directory 预身份验证的应用程序代理应用程序或在用户或管理员同意该应用程序后直接在使用 OAuth 2.0/OpenID Connect Authentication 的 Azure AD 应用程序平台上构建的应用程序。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。 请参阅[配置最终用户对应用程序的许可方式](configure-user-consent.md)。
 - 当为任何其他单一登录模式配置应用程序时，此选项不起作用。
 
 ## <a name="assign-a-user-to-an-app---powershell"></a>将用户分配到应用 - PowerShell

@@ -11,12 +11,12 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224478"
 ---
-| 资源 | 默认限制 |
+| Resource | 默认限制 |
 | --- | --- |
-| Azure Content Delivery Network profiles |25 |
-| Content Delivery Network endpoints per profile |25 |
+| Azure 内容分发网络配置文件 |25 |
+| 每个配置文件的内容分发网络终结点 |25 |
 | 每个终结点的自定义域数 |25 |
 
-A Content Delivery Network subscription can contain one or more Content Delivery Network profiles. A Content Delivery Network profile can contain one or more Content Delivery Network endpoints. You might want to use multiple profiles to organize your Content Delivery Network endpoints by internet domain, web application, or some other criteria. 
+内容交付网络订阅可以包含一个或多个内容交付网络配置文件。 内容分发网络配置文件可以包含一个或多个内容交付网络终结点。 你可能想要使用多个配置文件按 internet 域、web 应用程序或某些其他条件来组织内容分发网络终结点。 
 
 

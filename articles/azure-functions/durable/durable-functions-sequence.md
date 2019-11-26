@@ -27,10 +27,10 @@ ms.locfileid: "74231329"
 * `E1_HelloSequence`：在一个序列中多次调用 `E1_SayHello` 的 orchestrator 函数。 它存储来自 `E1_SayHello` 调用的输出并记录结果。
 * `E1_SayHello`：在字符串前添加“Hello”的活动函数。
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
 
 > [!NOTE]
-> JavaScript Durable Functions are available for the Functions 2.0 runtime only.
+> JavaScript Durable Functions 仅适用于2.0 运行时函数。
 
 ## <a name="e1_hellosequence"></a>E1_HelloSequence
 
@@ -43,7 +43,7 @@ The following sections explain the configuration and code that is used for C# sc
 `orchestrationTrigger` 绑定类型非常重要。 所有 orchestrator 函数都必须使用此触发器类型。
 
 > [!WARNING]
-> 为遵守 orchestrator 函数的“无 I/O”规则，在使用 `orchestrationTrigger` 触发器绑定时不要使用任何输入或输出绑定。  如果需要其他输入或输出绑定，则应改为在业务流程协调程序调用的 `activityTrigger` 函数的上下文中使用。 For more information, see the [orchestrator function code constraints](durable-functions-code-constraints.md) article.
+> 为遵守 orchestrator 函数的“无 I/O”规则，在使用 `orchestrationTrigger` 触发器绑定时不要使用任何输入或输出绑定。  如果需要其他输入或输出绑定，则应改为在业务流程协调程序调用的 `activityTrigger` 函数的上下文中使用。 有关详细信息，请参阅业务流程[协调程序函数代码约束](durable-functions-code-constraints.md)一文。
 
 ### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# 脚本（Visual Studio Code 和 Azure 门户的示例代码）
 
@@ -51,29 +51,29 @@ The following sections explain the configuration and code that is used for C# sc
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-所有 C# orchestration 函数都必须具有 `DurableOrchestrationContext` 类型的参数，此参数存在于 `Microsoft.Azure.WebJobs.Extensions.DurableTask` 程序集中。 如果使用 C# 脚本，则可以使用 `#r` 表示法引用程序集。 This context object lets you call other *activity* functions and pass input parameters using its `CallActivityAsync` method.
+所有 C# orchestration 函数都必须具有 `DurableOrchestrationContext` 类型的参数，此参数存在于 `Microsoft.Azure.WebJobs.Extensions.DurableTask` 程序集中。 如果使用 C# 脚本，则可以使用 `#r` 表示法引用程序集。 此上下文对象允许调用其他*活动*函数并使用其 `CallActivityAsync` 方法传递输入参数。
 
 代码将在具有不同参数值的序列中调用三次 `E1_SayHello`。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 下面是源代码：
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 It's a library that enables you to write Durable Functions in JavaScript. 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
+所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 它是一个库，可用于在 JavaScript 中编写 Durable Functions。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
 
 1. 此函数是一个[生成器函数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)。
 2. 此函数包装在对 `durable-functions` 模块的 `orchestrator` 方法的调用（此处为 `df`）中。
 3. 此函数必须是同步的。 因为“orchestrator”方法处理“context.done”的调用，所以此函数应该只是“return”。
 
-`context` 对象包含一个 `df` 对象，可使用其 `callActivity` 方法调用其他活动函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
+`context` 对象包含一个 `df` 对象，可使用其  *方法调用其他活动*`callActivity`函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
 
 ## <a name="e1_sayhello"></a>E1_SayHello
 
 ### <a name="functionjson-file"></a>function.json 文件
 
-活动函数 `E1_SayHello` 的 function.json 文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
+活动函数  *的 function.json*`E1_SayHello` 文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
@@ -86,7 +86,7 @@ The following sections explain the configuration and code that is used for C# sc
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-This function has a parameter of type `DurableActivityContext`, which it uses to get the input that was passed to it by the orchestrator function's call to `CallActivityAsync<T>`.
+此函数有一个 `DurableActivityContext`类型的参数，该参数用于获取由 orchestrator 函数对 `CallActivityAsync<T>`的调用传递给它的输入。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -139,11 +139,11 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > 启动 orchestrator 函数的 HTTP POST 终结点在示例应用中作为名为“HttpStart”的 HTTP 触发器函数实现。 可对其他触发器类型（如 `queueTrigger`、`eventHubTrigger` 或 `timerTrigger`）实施类似的启动器逻辑。
 
-查看函数执行日志。 The `E1_HelloSequence` function started and completed multiple times due to the replay behavior described in the [orchestration reliability](durable-functions-orchestrations.md#reliability) topic. 另一方面，由于未重播这些函数执行，因此只执行三次 `E1_SayHello`。
+查看函数执行日志。 由于`E1_HelloSequence`业务流程可靠性[主题中所述的重播行为，](durable-functions-orchestrations.md#reliability) 函数已多次启动和完成。 另一方面，由于未重播这些函数执行，因此只执行三次 `E1_SayHello`。
 
-## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
+## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
 
-下面的业务流程作为 Visual Studio 项目中的单个 C# 文件：
+下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 

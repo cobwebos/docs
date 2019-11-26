@@ -134,8 +134,8 @@ https://download.microsoft.com/download/* | 允许从 Microsoft 下载站点下�
 | **NFS**                        | 不会复制装载为 Vm 上的卷的 NFS 卷。 |
 | **/ISCSI**                      | 具有 iSCSI 目标的 Vm 不支持迁移。
 | **目标磁盘**                | 仅可将 Azure Vm 迁移到托管磁盘。 |
-| **IPv6** | 不支持。
-| **NIC 组合** | 不支持。
+| **IPv6** | 不受支持。
+| **NIC 组合** | 不受支持。
 | **Azure Site Recovery** | 如果 VM 启用了与 Azure Site Recovery 的复制，则无法使用 Azure Migrate Server 迁移进行复制。
 
 
@@ -168,4 +168,4 @@ Hyper-v 主机/Vm | HTTPS 端口443上的出站连接，用于将 VM 复制数�
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备用于迁移的 HYPER-V VM](tutorial-prepare-hyper-v.md) 迁移。
+[准备用于迁移的 HYPER-V VM 评估](tutorial-prepare-hyper-v.md)。

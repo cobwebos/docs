@@ -77,7 +77,7 @@ Oracle Linux        | 默认已启用串行控制台访问。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>访问串行控制台的常见方案
 
-方案          | 串行控制台中的操作
+应用场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 *FSTAB* 文件受损 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用串行控制台访问 GRUB 和单一用户模式](serial-console-grub-single-user-mode.md)的串行控制台部分。
 错误的防火墙规则 |  如果已将 iptables 配置为阻止 SSH 连接，则可以使用串行控制台与 VM 交互，而无需使用 SSH。 可在[iptables 手册页](https://linux.die.net/man/8/iptables)找到更多详细信息。<br>同样，如果你的 firewalld 阻止 SSH 访问，你可以通过串行控制台访问 VM，然后重新配置 firewalld。 可在[firewalld 文档](https://firewalld.org/documentation/)中找到更多详细信息。

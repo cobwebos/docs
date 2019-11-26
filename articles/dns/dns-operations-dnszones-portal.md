@@ -41,10 +41,10 @@ ms.locfileid: "74211912"
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
-   |名称|contoso.com|DNS 区域的名称|
-   |订阅|[订阅]|选择要在其中创建 DNS 区域的订阅。|
+   |**Name**|contoso.com|DNS 区域的名称|
+   |**订阅**|[订阅]|选择要在其中创建 DNS 区域的订阅。|
    |**资源组**|**新建：** contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
-   |位置|美国西部||
+   |**位置**|美国西部||
 
 > [!NOTE]
 > 资源组指的是资源组的位置，对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。

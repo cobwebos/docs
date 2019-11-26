@@ -1,5 +1,5 @@
 ---
-title: Create a Kubernetes cluster with Azure Dev Spaces enabled - Azure Cloud Shell
+title: 创建 Azure Dev Spaces 启用了 Azure Cloud Shell 的 Kubernetes 群集
 services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
@@ -12,13 +12,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325759"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Create a Kubernetes cluster with Azure Dev Spaces enabled with Azure Cloud Shell
+# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>使用 Azure Cloud Shell 启用 Azure Dev Spaces 创建 Kubernetes 群集
 
-You can use [Azure Cloud Shell](/azure/cloud-shell) to create an Azure Kubernetes Service cluster by using the **Try It** button from this page. 如果未登录，请按照提示使用 Azure 帐户登录，然后在出现 Azure Cloud Shell 提示符时在 Azure Cloud Shell 提示符下键入命令。
+通过使用此页中的 "**试用**" 按钮，可以使用[Azure Cloud Shell](/azure/cloud-shell)创建 Azure Kubernetes Service 群集。 如果未登录，请按照提示使用 Azure 帐户登录，然后在出现 Azure Cloud Shell 提示符时在 Azure Cloud Shell 提示符下键入命令。
 
 ## <a name="create-the-cluster"></a>创建群集
 
-First, create the resource group in a [region that supports Azure Dev Spaces][supported-regions].
+首先，在[支持 Azure Dev Spaces 的区域][supported-regions]中创建资源组。
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -37,7 +37,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 如需完整教程的链接，请参阅 [Azure Dev Spaces](/azure/dev-spaces/)。
 
 > [!IMPORTANT]
-> Many of the Azure Dev Spaces quickstarts and tutorials use the Azure Dev Spaces CLI to perform operations. 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
+> 许多 Azure Dev Spaces 快速入门和教程都使用 Azure Dev Spaces CLI 来执行操作。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

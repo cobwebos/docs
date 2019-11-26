@@ -36,7 +36,7 @@ ms.locfileid: "74196481"
 
 如果在要安装文件共享的计算机上达到文件允许的并发打开句柄上限，则会出现错误1816。 有关详细信息，请参阅[Azure 存储性能和可伸缩性清单](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
 
-## <a name="resolution"></a>解决方法
+## <a name="resolution"></a>分辨率
 
 通过关闭某些句柄，减少并发打开句柄的数量。
 
@@ -72,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>示例结果：
 
-|HandleId|路径|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|Path|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12：16：50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12：36：20Z|0|0|9507758546259807489|

@@ -31,7 +31,7 @@ ms.locfileid: "74277747"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>应用场景
 
 在本文中，我们将设置一个解决方案，方便用户使用 Elastic Stack 来可视化网络安全组流日志。  将使用 Logstash 输入插件直接从已配置为存储流日志的存储 Blob 获取流日志。 然后使用 Elastic Stack 为流日志编制索引并将这些日志用于创建 Kibana 仪表板，实现信息的可视化。
 

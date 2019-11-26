@@ -21,20 +21,20 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 本文假设你已阅读了以下文章：
 
 * [Azure Functions 开发人员指南](functions-reference.md)
-* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>支持的版本
 
-The Azure Functions 2.x runtime uses .NET Core 2.2. Your function code can use .NET Core 2.2 APIs by updating the Visual Studio project settings. The Function templates do not default to .NET Core 2.2 to avoid adversely affecting customers that do not have .NET Core 2.2 installed.
+Azure Functions 2.x 运行时使用 .NET Core 2.2。 通过更新 Visual Studio 项目设置，函数代码可以使用 .NET Core 2.2 API。 函数模板不默认为使用 .NET Core 2.2，以避免对未安装 .NET Core 2.2 的客户产生不利影响。
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
 在 Visual Studio 中，**Azure Functions** 项目模板会创建一个 C# 类库项目，它包含以下文件：
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 Instead, [add app settings to your function app](functions-develop-vs.md#function-app-settings).
+* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 而是，应[将应用设置添加到函数应用](functions-develop-vs.md#function-app-settings)。
 
-When you build the project, a folder structure that looks like the following example is generated in the build output directory:
+生成项目时，在生成输出目录中生成如下例所示的文件夹结构：
 
 ```
 <framework.version>
@@ -69,7 +69,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性将该方法标记为函数入口点。 The name must be unique within a project, start with a letter and only contain letters, numbers, `_`, and `-`, up to 127 characters in length. 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
+`FunctionName` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字、`_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 示例函数将由一条队列消息触发，并且队列消息将传递到该方法中的 `myQueueItem` 参数。
 
@@ -78,8 +78,8 @@ public static class SimpleExample
 方法签名可能包含不与触发器属性一起使用的参数。 下面是可以包括的一些其他参数：
 
 * [输入和输出绑定](functions-triggers-bindings.md)通过使用属性修饰来进行此类标记。  
-* 用于[日志](#logging)的 `ILogger` 或 `TraceWriter`（仅限[版本 1.x](functions-versions.md#creating-1x-apps)）参数。
-* 用于[正常关闭](#cancellation-tokens)的 `CancellationToken` 参数。
+* 用于`ILogger`日志`TraceWriter`的 [ 或 ](functions-versions.md#creating-1x-apps)（仅限[版本 1.x](#logging)）参数。
+* 用于`CancellationToken`正常关闭[的 ](#cancellation-tokens) 参数。
 * 用于获取触发器元数据的[绑定表达式](./functions-bindings-expressions-patterns.md)参数。
 
 函数签名中的参数顺序并不重要。 例如，可以在其他绑定之前或之后放置触发器参数，也可以在触发器或绑定参数之前或之后添加记录器参数。
@@ -130,7 +130,7 @@ public static class BindingExpressionsExample
 
 此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
-生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
+生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 以下是一个示例：
 
 ```json
 {
@@ -178,11 +178,11 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目
 </ItemGroup>
 ```
 
-`Sdk` 包的依赖关系是触发器和绑定。 A 1.x project refers to 1.x triggers and bindings because those triggers and bindings target the .NET Framework, while 2.x triggers and bindings target .NET Core.
+`Sdk` 包的依赖关系是触发器和绑定。 1\.x 项目是指 1.x 触发器和绑定，因为这些触发器和绑定面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
 
 `Sdk` 包也依赖于 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)，并间接依赖于 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage)。 这些依赖关系确保项目使用的包版本与项目面向的 Functions 运行时版本兼容。 例如，`Newtonsoft.Json` 的 11 版可用于 .NET Framework 4.6.1，但面向 .NET Framework 4.6.1 的 Functions 运行时仅与 `Newtonsoft.Json` 9.0.1 兼容。 因此该项目中的函数代码也只能使用 `Newtonsoft.Json` 9.0.1。
 
-GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) 中提供了适用于 `Microsoft.NET.Sdk.Functions` 的源代码。
+GitHub 存储库 `Microsoft.NET.Sdk.Functions`azure[functions\-vs\-build\-sdk\- 中提供了适用于 ](https://github.com/Azure/azure-functions-vs-build-sdk) 的源代码。
 
 ## <a name="runtime-version"></a>运行时版本
 
@@ -271,7 +271,7 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>取消令牌
 
-函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
+函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知确保该函数不会意外终止，从而导致数据处于不一致状态。
 
 下面的示例演示了如何检查即将发生的函数终止。
 
@@ -320,7 +320,7 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 *local.settings.json* 文件中的 `Values` 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
+在本地开发和在 Azure 中运行时，都可以从环境变量读取应用设置。 在本地开发时，应用设置来自 `Values`local.settings.json*文件中的* 集合。 在这两个环境（本地和 Azure）中，`GetEnvironmentVariable("<app setting name>")` 都会检索命名应用设置的值。 例如，在本地运行时，如果 *local.settings.json* 文件包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，则会返回“My Site Name”。
 
 [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 属性是用于获取应用设置值的替代 API，但我们建议你使用 `GetEnvironmentVariable`，如下所示。
 
@@ -341,11 +341,11 @@ public static class EnvironmentVariablesExample
   }
   ```
 
-  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 For example, the Mobile Apps table output binding supports [six output types](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), but you can only use [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) with imperative binding.
+  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[六种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于命令性绑定，仅可使用 [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，并将字符串写入此 blob。
 
 ```cs
 public static class IBinderExample

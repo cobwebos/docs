@@ -1,6 +1,6 @@
 ---
-title: Configure authentication session management - Azure Active Directory
-description: Customize Azure AD authentication session configuration including user sign in frequency and browser session persistence.
+title: 配置身份验证会话管理-Azure Active Directory
+description: 自定义 Azure AD 身份验证会话配置，包括用户登录频率和浏览器会话持久性。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,100 +18,100 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483460"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Configure authentication session management with Conditional Access
+# <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
-In complex deployments, organizations might have a need to restrict authentication sessions. Some scenarios might include:
+在复杂部署中，组织可能需要限制身份验证会话。 部分场景包括：
 
-* Resource access from an unmanaged or shared device
-* Access to sensitive information from an external network
-* High impact users
-* Critical business applications
+* 从非托管设备或共享设备访问资源
+* 从外部网络访问敏感信息
+* 对用户影响很大的操作
+* 业务关键型应用程序
 
-Conditional Access controls allow you to create policies that target specific use cases within your organization without affecting all users.
+使用条件访问控制可以创建相应的策略来满足组织中的具体用例，且不会影响到所有用户。
 
-Before diving into details on how to configure the policy, let’s examine the default configuration.
+在深入了解如何配置策略之前，让我们了解默认的配置。
 
-## <a name="user-sign-in-frequency"></a>User sign-in frequency
+## <a name="user-sign-in-frequency"></a>用户登录频率
 
-Sign-in frequency defines the time period before a user is asked to sign in again when attempting to access a resource.
+登录频率定义在用户尝试访问资源时，要求用户重新登录之前所要经过的时限。
 
-The Azure Active Directory (Azure AD) default configuration for user sign in frequency is a rolling window of 90 days. Asking users for credentials often seems like a sensible thing to do, but it can backfire: users that are trained to enter their credentials without thinking can unintentionally supply them to a malicious credential prompt.
+Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚动时限。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
 
-It might sound alarming to not ask for a user to sign back in, in reality any violation of IT policies will revoke the session. Some examples include (but are not limited to) a password change, an incompliant device, or account disable. You can also explicitly [revoke users’ sessions using PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). The Azure AD default configuration comes down to “don’t ask users to provide their credentials if security posture of their sessions has not changed”.
+如果不要求用户重新登录，则可能会发出警报，实际上任何违反 IT 策略的情况都将吊销会话。 部分示例包括（但不限于）密码更改、设备不合规或禁用帐户。 也可以[使用 PowerShell 显式吊销用户会话](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 的默认配置是“如果用户会话的安全状况未发生变化，则不要求用户提供其凭据”。
 
-Sign-in frequency setting works with apps that have implemented OAUTH2 or OIDC protocols according to the standards. Most Microsoft native apps for Windows, Mac, and Mobile including the following web applications comply with the setting.
+登录频率设置适用于已根据标准实现了 OAUTH2 或 OIDC 协议的应用。 大多数适用于 Windows、Mac 和 Mobile 的 Microsoft 本机应用，包括以下 web 应用程序的设置。
 
-- Word, Excel, PowerPoint Online
+- Word、Excel、PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 Admin portal
+- O365 管理门户
 - Exchange Online
-- SharePoint and OneDrive
-- Teams web client
+- SharePoint 和 OneDrive
+- 团队 web 客户端
 - Dynamics CRM Online
 - Azure 门户
 
-## <a name="persistence-of-browsing-sessions"></a>Persistence of browsing sessions
+## <a name="persistence-of-browsing-sessions"></a>浏览会话的持久性
 
-A persistent browser session allows users to remain signed in after closing and reopening their browser window.
+持久性浏览器会话可让用户在关闭再重新打开其浏览器窗口后保持登录状态。
 
-The Azure AD default for browser session persistence allows users on personal devices to choose whether to persist the session by showing a “Stay signed in?” prompt after successful authentication. If browser persistence is configured in AD FS using the guidance in the article [AD FS Single Sign-On Settings](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
-), we will comply with that policy and persist the Azure AD session as well. You can also configure whether users in your tenant see the “Stay signed in?” prompt by changing the appropriate setting in the company branding pane in Azure portal using the guidance in the article [Customize your Azure AD sign-in page](../fundamentals/customize-branding.md).
+成功完成身份验证后，浏览器会话的 Azure AD 默认配置会显示“是否保持登录状态?”提示，让个人设备上的用户选择 是否要保留会话。 如果使用[AD FS 单一登录设置一](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+)文中的指南在 AD FS 中配置了浏览器持久性，我们将遵守该策略并同时保留 Azure AD 会话。 还可以参考 [自定义 Azure AD 登录页](../fundamentals/customize-branding.md)一文中的指导在 Azure 门户上的公司品牌窗格中更改相应的设置，来配置是否要向租户中的用户显示“是否保持登录状态?”提示。
 
-## <a name="configuring-authentication-session-controls"></a>Configuring authentication session controls
+## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控制
 
-Conditional Access is an Azure AD Premium capability and requires a premium license. If you would like to learn more about Conditional Access, see [What is Conditional Access in Azure Active Directory?](overview.md#license-requirements)
+条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 若要详细了解条件访问，请参阅 [Azure Active Directory 中的条件访问是什么？](overview.md#license-requirements)
 
 > [!WARNING]
-> If you are using the [configurable token lifetime](../develop/active-directory-configurable-token-lifetimes.md) feature currently in public preview, please note that we don’t support creating two different policies for the same user or app combination: one with this feature and another one with configurable token lifetime feature. Microsoft plans to retire the configurable token lifetime feature on May 1, 2020 and replace it with the Conditional Access authentication session management feature.  
+> 如果使用的是公共预览版中的[可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在 2020 5 月1日停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
 
-### <a name="policy-1-sign-in-frequency-control"></a>Policy 1: Sign-in frequency control
+### <a name="policy-1-sign-in-frequency-control"></a>策略1：登录频率控制
 
-1. Create new policy
-1. Choose all required conditions for customer’s environment, including the target cloud apps.
-
-   > [!NOTE]
-   > It is recommended to set equal authentication prompt frequency for key Microsoft Office apps such as Exchange Online and SharePoint Online for best user experience.
-
-1. Go to **Access Controls** > **Session** and click **Sign-in frequency**
-1. Enter the required value of days and hours in the first text box
-1. Select a value of **Hours** or **Days** from dropdown
-1. Save your policy
-
-![Conditional Access policy configured for sign in frequency](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
-
-On Azure AD registered Windows devices sign in to the device is considered a prompt. For example, if you have configured the Sign in frequency to 24 hours for Office apps, users on Azure AD registered Windows devices will satisfy the Sign in frequency policy by signing in to the device and will be not prompted again when opening Office apps.
-
-If you have configured different Sign-in frequency for different web apps that are running in the same browser session, the strictest policy will be applied to both apps because all apps running in the same browser session share a single session token.
-
-### <a name="policy-2-persistent-browser-session"></a>Policy 2: Persistent browser session
-
-1. Create new policy
-1. Choose all required conditions.
+1. 创建新策略
+1. 选择客户环境所需的所有条件，包括目标云应用。
 
    > [!NOTE]
-   > Please note that this control requires to choose “All Cloud Apps” as a condition. Browser session persistence is controlled by authentication session token. All tabs in a browser session share a single session token and therefore they all must share persistence state.
+   > 建议为 Exchange Online 和 SharePoint Online 等重要 Microsoft Office 应用设置相同的身份验证提示频率，以获得最佳用户体验。
 
-1. Go to **Access Controls** > **Session** and click **Persistent browser session**
-1. Select a value from dropdown
-1. Save you policy
+1. 转到“访问控制” **“会话”，然后单击“登录频率”**  > 
+1. 在第一个文本框中输入所需的天数和小时值
+1. 从下拉列表中选择“小时”或“天”的值
+1. 保存策略
 
-![Conditional Access policy configured for persistent browser](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![在条件访问策略中配置的登录频率](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+
+在已注册到 Azure AD 的 Windows 设备上，设备登录被视为一种提示。 例如，如果将 Office 应用的“登录频率”配置为 24 小时，则已注册到 Azure AD 的 Windows 设备上的用户符合“登录频率”策略，他们可以登录到设备，在打开 Office 应用时不再会看到提示。
+
+如果为同一浏览器会话中运行的不同 Web 应用配置了不同的登录频率，最严格的策略将应用到这两个应用，因为在同一浏览器会话中运行的所有应用共享一个会话令牌。
+
+### <a name="policy-2-persistent-browser-session"></a>策略2：持久性浏览器会话
+
+1. 创建新策略
+1. 选择所有所需的条件。
+
+   > [!NOTE]
+   > 请注意，此控制措施要求选择“所有云应用”作为条件。 浏览器会话持久性由身份验证会话令牌控制。 浏览器会话中的所有标签页共享一个会话令牌，因此它们都必须共享持久性状态。
+
+1. 转到“访问控制” **“会话”，然后单击“持久性浏览器会话”**  > 
+1. 从下拉列表中选择一个值
+1. 保存策略
+
+![在条件访问策略中配置的持久性浏览器](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
-> Persistent Browser Session configuration in Azure AD Conditional Access will overwrite the “Stay signed in?” setting in the company branding pane in the Azure portal for the same user if you have configured both policies.
+> Azure AD 条件访问中的持久性浏览器会话配置将覆盖 在 Azure 门户上的公司品牌窗格中为同一用户配置的“是否保持登录状态?”设置（如果同时配置了这两个策略）。
 
 ## <a name="validation"></a>验证
 
-Use the What-If tool to simulate a login from the user to the target application and other conditions based on how you configured your policy. The authentication session management controls show up in the result of the tool.
+使用 What-If 工具根据策略的配置方式，来模拟用户登录目标应用程序及其他条件。 身份验证会话管理控制措施将显示在工具的结果中。
 
-![Conditional Access What If tool results](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![条件访问的 What If 工具结果](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>策略部署
 
-若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 For more information, see the article [Best practices for Conditional Access in Azure Active Directory](best-practices.md).
+若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅 [Azure Active Directory 中的条件访问的最佳做法](best-practices.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-* If you want to know how to configure a Conditional Access policy, see the article [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
-* If you are ready to configure Conditional Access policies for your environment, see the article [Best practices for Conditional Access in Azure Active Directory](best-practices.md).
+* 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md) 一文。
+* 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)一文。

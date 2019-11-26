@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Service development overview
-description: Introduction on developing solutions on Azure Blockchain Service.
+title: Azure 区块链服务开发概述
+description: 介绍如何在 Azure 区块链 Service 上开发解决方案。
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
@@ -11,65 +11,65 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74455882"
 ---
-# <a name="azure-blockchain-service-development-overview"></a>Azure Blockchain Service development overview
+# <a name="azure-blockchain-service-development-overview"></a>Azure 区块链服务开发概述
 
-With Azure Blockchain Service, you can create consortium blockchain networks to enable enterprise scenarios like asset tracking, digital token, loyalty and reward, supply chain financial, and provenance. The following sections introduce Azure Blockchain Service development for implementing enterprise blockchain solutions.
+使用 Azure 区块链服务，可以创建联合会区块链网络，以实现企业方案，如资产跟踪、数字令牌、忠诚度和奖励、供应链金融和 provenance。 以下部分介绍了用于实现企业区块链解决方案的 Azure 区块链服务开发。
 
-## <a name="connecting-to-azure-blockchain-service"></a>Connecting to Azure Blockchain Service
+## <a name="connecting-to-azure-blockchain-service"></a>连接到 Azure 区块链服务
 
-There are different types of clients for blockchain networks including full nodes, light nodes, and remote clients. Azure Blockchain Service builds a blockchain network that includes nodes. You can use different clients as your gateway to Azure Blockchain Service for blockchain development. Azure Blockchain Service offers basic authentication or access key as a development endpoint. The following are popular clients you can use connect.
+区块链网络有不同类型的客户端，包括完整节点、轻型节点和远程客户端。 Azure 区块链服务构建包含节点的区块链网络。 你可以使用不同的客户端作为 Azure 区块链服务的网关进行区块链开发。 Azure 区块链服务提供基本身份验证或访问密钥作为开发终结点。 下面是一些常用的客户端，可以使用 connect。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-You can connect to consortium members using the Azure Blockchain Development Kit Visual Studio Code extension. 连接到联盟后，可以编译、生成智能合同并将其部署到 Azure 区块链服务联盟成员。
+可以使用 Azure 区块链开发工具包 Visual Studio Code 扩展连接到联合会成员。 连接到联盟后，可以编译、生成智能合同并将其部署到 Azure 区块链服务联盟成员。
 
-For more information, see [Quickstart: Use Visual Studio Code to connect to an Azure Blockchain Service consortium network](connect-vscode.md).
+有关详细信息，请参阅[快速入门：使用 Visual Studio Code 连接到 Azure 区块链 Service 联合会网络](connect-vscode.md)。
 
 ### <a name="metamask"></a>MetaMask
 
-MetaMask is a browser-based wallet (remote client), RPC client, and basic contract explorer. Unlike other browser wallets, MetaMask injects a web3 instance into the browser JavaScript context, acting as an RPC client that connects to a variety of Ethereum blockchains (*mainnet*, *Ropsten testnet*, *Kovan testnet*, local RPC node, etc.). You can set up custom RPC easily to connect to Azure Blockchain Service and start blockchain development using Remix.
+MetaMask 是一个基于浏览器的钱包（远程客户端）、RPC 客户端和基本协定资源管理器。 与其他浏览器 wallets 不同，MetaMask 将 web3 实例注入浏览器 JavaScript 上下文，作为连接到各种以太坊区块链（*mainnet*， *Ropsten testnet*， *Kovan testnet*，本地 RPC 节点，等等）。 可以轻松地将自定义 RPC 设置为连接到 Azure 区块链服务，并使用 Remix 开始区块链开发。
 
-For more information, see [Quickstart: Use MetaMask to connect and deploy a smart contract](connect-metamask.md)
+有关详细信息，请参阅[快速入门：使用 MetaMask 连接和部署智能协定](connect-metamask.md)
 
 ### <a name="geth"></a>Geth
 
-Geth is the command-line interface for running a full Ethereum node implemented in Go. You don't need to run full node but can launch its interactive console that provides a JavaScript runtime environment exposing a JavaScript API to interact with Azure Blockchain Service.
+Geth 是命令行接口，用于运行在中转中实现的完全以太坊节点。 无需运行完整节点，但可以启动其交互式控制台，它提供了一个公开 JavaScript API 的 JavaScript 运行时环境来与 Azure 区块链服务交互。
 
-For more information, see [Quickstart: Use Geth to attach to an Azure Blockchain Service transaction node](connect-geth.md).
+有关详细信息，请参阅[快速入门：使用 Geth 附加到 Azure 区块链 Service transaction 节点](connect-geth.md)。
 
-## <a name="development-framework-configuration"></a>Development framework configuration
+## <a name="development-framework-configuration"></a>开发框架配置
 
-To develop sophisticated enterprise blockchain solutions, a development framework is needed to connect to different blockchain networks and manage smart contract lifecycles.
+若要开发复杂的企业区块链解决方案，需要使用开发框架连接到不同的区块链网络，并管理智能协定生命周期。
 
-Truffle is a popular blockchain development framework to write, compile, deploy, and test decentralized applications on Ethereum blockchains. You can also think of Truffle as a framework that attempts to seamlessly integrate smart contract development and traditional web development.
+Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上编写、编译、部署和测试分散的应用程序。 你还可以将 Truffle 看作是一个框架，它尝试无缝集成智能协定开发和传统 web 开发。
 
-Most projects interact with at least two blockchain nodes. Developers use a local blockchain during development. When the application is ready for test or release, the developer deploys to a blockchain network. For example, the main public Ethereum network or Azure Blockchain Service. Truffle can be used to compile and deploy smart contracts for each network and simplifies final application deployment. For more information, see [Quickstart: Use Truffle to connect to a an Azure Blockchain Service network](connect-truffle.md).
+大多数项目与至少两个区块链节点进行交互。 开发人员在开发期间使用本地区块链。 当应用程序准备好进行测试或发布时，开发人员将部署到区块链网络。 例如，主公共以太坊网络或 Azure 区块链服务。 Truffle 可用于为每个网络编译和部署智能协定，并简化最终的应用程序部署。 有关详细信息，请参阅[快速入门：使用 Truffle 连接到 Azure 区块链服务网络](connect-truffle.md)。
 
-## <a name="ethereum-quorum-private-transactions"></a>Ethereum Quorum private transactions
+## <a name="ethereum-quorum-private-transactions"></a>以太坊仲裁私有事务
 
-Quorum is an Ethereum-based distributed ledger protocol with transaction plus contract privacy and new consensus mechanisms. Key enhancements over Go-Ethereum include:
+仲裁是一个基于以太坊的分布式单协议，其中包含事务以及协定隐私和新的共识机制。 以太坊上的主要增强功能包括：
 
-* **Privacy** - Quorum supports private transactions and private contracts through public and private state separation and utilizes peer-to-peer encrypted message exchanges for directed transfer of private data to network participants.
-* **Alternative consensus mechanisms** - proof-of-work or proof-of-stake consensus is not needed for a permissioned network. Quorum offers multiple consensus mechanisms that are designed for consortium chains such as RAFT and IBFT.  Azure Blockchain Service uses the IBFT consensus mechanism.
-* **Peer permissioning** - node and peer permissioning using smart contracts ensures only known parties can join the network.
-* **Higher Performance** - Quorum offers higher performance than public Geth.
+* **隐私**-仲裁通过公共和专用状态分离支持专用事务和私有协定，并利用对等加密消息交换，将专用数据定向到网络参与者。
+* 授权网络不需要**替代的共识机制**，也不需要对工作或证据进行共识。 仲裁提供多种共识机制，适用于筏和 IBFT 等联盟链。  Azure 区块链服务使用 IBFT 共识机制。
+* **对等**互连-使用智能协定的节点和对等节点可以确保只有已知的参与方可以加入网络。
+* **更高的性能**-仲裁比公共 Geth 提供更高的性能。
 
-## <a name="block-explorers"></a>Block explorers
+## <a name="block-explorers"></a>阻止资源管理器
 
-Block explorers are online blockchain browsers that display individual block content, transaction address data, and history. Basic block information is available through Azure Monitor in Azure Blockchain Service. However, if you need more detail information during development, block explorers can be useful.  The following block explorers work with Azure Blockchain Service:
+阻止资源管理器是联机区块链浏览器，用于显示单个块内容、事务地址数据和历史记录。 可以通过 Azure 区块链服务中的 Azure Monitor 获取基本的块信息。 但是，如果在开发过程中需要更多详细信息，则块资源管理器会很有用。  以下块资源管理器使用 Azure 区块链服务：
 
-* [Epirus Azure Blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) from Web3 Labs
+* 从 Web3 实验室[Epirus Azure 区块链 Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview)
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
-You can also build your own block explorer by using Blockchain Data Manager and Azure Cosmos DB, see [Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md).
+还可以通过使用区块链数据管理器和 Azure Cosmos DB 来生成自己的块资源管理器，请参阅[教程：使用区块链数据管理器将数据发送到 Azure Cosmos DB](data-manager-cosmosdb.md)。
 
-## <a name="tps-measurement"></a>TPS measurement
+## <a name="tps-measurement"></a>TPS 度量
 
-As blockchain is used in more enterprise scenarios, transactions per second (TPS) speed is important to avoid bottlenecks and system inefficiencies. High transaction rates can be difficult to maintain within a decentralized blockchain. An accurate TPS measurement may be affected by different factors such as server thread, transaction queue size, network latency, and security. If you need to measure TPS speed during development, a popular open-source tool is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
+由于区块链用于更多企业方案，因此，每秒事务数（TPS）速度非常重要，可避免瓶颈和系统效率低下。 在分散区块链中，事务速率较高可能很难维护。 精确的 TPS 度量可能受不同因素的影响，如服务器线程、事务队列大小、网络延迟和安全性。 如果在开发过程中需要衡量 TPS 速度，则会[ChainHammer](https://github.com/drandreaskrueger/chainhammer)一个流行的开源工具。
 
 ## <a name="next-steps"></a>后续步骤
 
-Try a quickstart using Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
+尝试使用适用于以太坊的 Azure 区块链开发工具包附加到 Azure 区块链服务上的联合会。
 
 > [!div class="nextstepaction"]
-> [Use Visual Studio Code to connect to Azure Blockchain Service](connect-vscode.md)
+> [使用 Visual Studio Code 连接到 Azure 区块链服务](connect-vscode.md)

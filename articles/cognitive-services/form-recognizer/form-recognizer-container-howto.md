@@ -1,7 +1,7 @@
 ---
-title: How to install and run container for Form Recognizer
+title: 如何安装和运行窗体识别器的容器
 titleSuffix: Azure Cognitive Services
-description: This article will explain how to use the Azure Cognitive Services Form Recognizer container to parse form and table data.
+description: 本文介绍如何使用 Azure 认知服务窗体识别器容器分析窗体和表数据。
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
@@ -16,48 +16,48 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325840"
 ---
-# <a name="install-and-run-form-recognizer-containers-preview"></a>Install and run Form Recognizer containers (Preview)
+# <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
 
 Azure 表单识别器应用机器学习技术从表单中识别和提取键值对和表。 它将值和表项与键值对相关联，然后输出包含原始文件中的关系的结构化数据。 
 
-若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 Only five form documents (or one empty form and two filled-in forms) are needed, so you can get results quickly, accurately, and tailored to your specific content. 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。
+若要降低复杂性并轻松地将自定义表单识别器模型集成到工作流自动化过程或其他应用程序中，可以使用简单的 REST API 来调用该模型。 只需要五个窗体文档（或一个空窗体和两个填充窗体），因此你可以快速、准确地获取结果并针对特定内容进行定制。 而无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 它不要求标记或标注数据。
 
 |函数|功能|
 |-|-|
-|表单识别器| <li>处理 PDF、PNG 和 JPG 文件<li>Trains custom models with a minimum of five forms of the same layout <li>提取键值对和表信息 <li>使用 Azure 认知服务计算机视觉 API 文本识别功能从表单内部的图像中检测和提取印刷体文本<li>无需进行标注或标记|
+|表单识别器| <li>处理 PDF、PNG 和 JPG 文件<li>使用最少五个窗体的相同布局的培训自定义模型 <li>提取键值对和表信息 <li>使用 Azure 认知服务计算机视觉 API 文本识别功能从表单内部的图像中检测和提取印刷体文本<li>无需进行标注或标记|
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用表单识别器容器之前，必须满足以下先决条件：
 
-|需要|用途|
+|必需|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解，并了解基本的 `docker` 命令。|
 |Azure CLI| 在主机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。|
-|计算机视觉 API 资源| 若要处理扫描的文档和图像，需要计算机视觉资源。 可以访问作为 Azure 资源（REST API 或 SDK）或 *cognitive-services-recognize-text* [容器](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)提供的文本识别功能。 使用此功能需要按普通费率付费。 <br><br>Pass in both the API key and endpoints for your Computer Vision resource (Azure cloud or Cognitive Services container). Use this API key and the endpoint as **{COMPUTER_VISION_API_KEY}** and **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> 如果使用 *cognitive-services-recognize-text* 容器，请确保：<br><br>表单识别器容器的计算机视觉密钥是在 *cognitive-services-recognize-text* 容器的计算机视觉 `docker run` 命令中指定的密钥。<br>计费终结点是容器的终结点（例如 `http://localhost:5000`）。 如果在同一台主机上同时使用计算机视觉容器和表单识别器容器，不能使用默认端口 *5000* 将两者同时启动。 |
-|表单识别器资源 |若要使用这些容器，必须具有：<br><br>An Azure **Form Recognizer** resource to get the associated API key and endpoint URI. Both values are available on the Azure portal **Form Recognizer** Overview and Keys pages, and both values are required to start the container.<br><br>**{FORM_RECOGNIZER_API_KEY}** : One of the two available resource keys on the Keys page<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : The endpoint as provided on the Overview page|
+|计算机视觉 API 资源| 若要处理扫描的文档和图像，需要计算机视觉资源。 可以访问作为 Azure 资源（REST API 或 SDK）或 *cognitive-services-recognize-text* [容器](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)提供的文本识别功能。 使用此功能需要按普通费率付费。 <br><br>同时传入计算机视觉资源（Azure 云或认知服务容器）的 API 密钥和终结点。 使用此 API 密钥和终结点作为 **{COMPUTER_VISION_API_KEY}** 和 **{COMPUTER_VISION_ENDPOINT_URI}** 。<br><br> 如果使用 *cognitive-services-recognize-text* 容器，请确保：<br><br>表单识别器容器的计算机视觉密钥是在 `docker run`cognitive-services-recognize-text*容器的计算机视觉* 命令中指定的密钥。<br>计费终结点是容器的终结点（例如 `http://localhost:5000`）。 如果在同一台主机上同时使用计算机视觉容器和表单识别器容器，不能使用默认端口 *5000* 将两者同时启动。 |
+|表单识别器资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure**窗体识别器**资源。 Azure 门户**窗体识别器**概述和密钥页上都提供了这两个值，这两个值都是启动容器所必需的。<br><br>**{FORM_RECOGNIZER_API_KEY}** ： "密钥" 页上有两个可用的资源键之一<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** ： "概述" 页中提供的终结点|
 
-## <a name="gathering-required-parameters"></a>Gathering required parameters
+## <a name="gathering-required-parameters"></a>正在收集所需参数
 
-There are three primary parameters for all Cognitive Services' containers that are required. The end-user license agreement (EULA) must be present with a value of `accept`. Additionally, both an Endpoint URL and API Key are needed.
+所有认知服务容器都需要三个主要参数。 最终用户许可协议（EULA）的值必须为 `accept`。 此外，需要终结点 URL 和 API 密钥。
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Endpoint URI `{COMPUTER_VISION_ENDPOINT_URI}` and `{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>终结点 URI `{COMPUTER_VISION_ENDPOINT_URI}` 和 `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
-The **Endpoint** URI value is available on the Azure portal *Overview* page of the corresponding Cognitive Service resource. Navigate to the *Overview* page, hover over the Endpoint, and a `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> icon will appear. Copy and use where needed.
+"**终结点**URI" 值在相应认知服务资源的 "Azure 门户*概述*" 页上可用。 导航到 "*概述*" 页，将鼠标悬停在终结点上<span class="docon docon-edit-copy x-hidden-focus"></span> ，将显示一个 `Copy to clipboard` 图标。 复制并在需要时使用。
 
-![Gather the endpoint uri for later use](../containers/media/overview-endpoint-uri.png)
+![收集终结点 uri 供以后使用](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Keys `{COMPUTER_VISION_API_KEY}` and `{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>密钥 `{COMPUTER_VISION_API_KEY}` 和 `{FORM_RECOGNIZER_API_KEY}`
 
-This key is used to start the container, and is available on the Azure portal's Keys page of the corresponding Cognitive Service resource. Navigate to the *Keys* page, and click on the `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> icon.
+此密钥用于启动容器，并在相应认知服务资源的 Azure 门户 "密钥" 页上可用。 导航到 "*密钥*" 页，然后单击 "`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> " 图标。
 
-![Get one of the two keys for later use](../containers/media/keys-copy-api-key.png)
+![获取两个密钥之一供以后使用](../containers/media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> These subscription keys are used to access your Cognitive Service API. Do not share your keys. Store them securely, for example, using Azure Key Vault. We also recommend regenerating these keys regularly. Only one key is necessary to make an API call. When regenerating the first key, you can use the second key for continued access to the service.
+> 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全地存储它们，例如，使用 Azure Key Vault。 我们还建议定期重新生成这些密钥。 只需一个密钥就能进行 API 调用。 重新生成第一个密钥时，可以使用第二个密钥来继续访问该服务。
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
@@ -75,27 +75,27 @@ This key is used to start the container, and is available on the Azure portal's 
 
 下表描述了为每个表单识别器容器分配的最小的和建议的 CPU 核心数和内存：
 
-| 容器 | 最小值 | 推荐 |
+| 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
-| 表单识别器 | 2 core, 4-GB memory | 4 core, 8-GB memory |
-| 识别文本 | 1 core, 8-GB memory | 2 cores, 8-GB memory |
+| 表单识别器 | 2核，4 GB 内存 | 4核，8 GB 内存 |
+| 识别文本 | 1核，8 GB 内存 | 2核，8 GB 内存 |
 
-* 每个核心必须至少为 2.6 千兆赫（GHz）或更快。
+* 每个核心至少必须为 2.6 GHz 或更快。
 * 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 > [!Note]
 > 最小值和建议值基于 Docker 限制，而不是基于主机资源。
 
-## <a name="get-the-container-images-with-the-docker-pull-command"></a>Get the container images with the docker pull command
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>通过 docker pull 命令获取容器映像
 
-Container images for both the **Form Recognizer** and **Recognize Text** offerings are available in the following container registry:
+以下容器注册表中提供了**窗体识别器**和**识别文本**产品/服务的容器映像：
 
-| 容器 | Fully qualified image name |
+| 容器 | 完全限定的映像名称 |
 |-----------|------------|
 | 表单识别器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
 | 识别文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-You will need both containers, please note that the **Recognizer Text** container is [detailed outside of this article.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
+你将需要这两个容器，请注意，[本文外详细介绍](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)了**识别器文本**容器。
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,7 +112,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 #### <a name="recognize-text"></a>识别文本
 
-To get the Recognize Text container, use the following command:
+若要获取识别文本容器，请使用以下命令：
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
@@ -122,14 +122,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 当容器位于[主计算机](#the-host-computer)上以后，请通过以下过程使用容器。
 
-1. 使用所需的计费设置[运行容器](#run-the-container-by-using-the-docker-run-command)。 提供 `docker run` 命令的多个[示例](form-recognizer-container-configuration.md#example-docker-run-commands)。
+1. 使用所需的计费设置[运行容器](#run-the-container-by-using-the-docker-run-command)。 提供 [ 命令的多个](form-recognizer-container-configuration.md#example-docker-run-commands)示例`docker run`。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>使用 docker run 命令运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 Refer to [gathering required parameters](#gathering-required-parameters) for details on how to get the `{COMPUTER_VISION_ENDPOINT_URI}`, `{COMPUTER_VISION_API_KEY}`, `{FORM_RECOGNIZER_ENDPOINT_URI}` and `{FORM_RECOGNIZER_API_KEY}` values.
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{COMPUTER_VISION_ENDPOINT_URI}`、`{COMPUTER_VISION_API_KEY}`、`{FORM_RECOGNIZER_ENDPOINT_URI}` 和 `{FORM_RECOGNIZER_API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-[Examples](form-recognizer-container-configuration.md#example-docker-run-commands) of the `docker run` command are available.
+[ 命令的](form-recognizer-container-configuration.md#example-docker-run-commands)示例`docker run`可用。
 
 ### <a name="form-recognizer"></a>表单识别器
 
@@ -186,7 +186,7 @@ ApiKey={COMPUTER_VISION_API_KEY}
 
 ### <a name="run-separate-containers-with-docker-compose"></a>使用 Docker Compose 运行单独的容器
 
-对于托管在本地的同一主机上的表单识别器和文本识别器组合，请查看下面的示例 Docker Compose YAML 文件。 对于 `formrecognizer` 和 `ocr` 容器，文本识别器 `{COMPUTER_VISION_API_KEY}` 必须相同。 `{COMPUTER_VISION_ENDPOINT_URI}` 只在 `ocr` 容器中使用，因为 `formrecognizer` 容器使用 `ocr` 名称和端口。 
+对于托管在本地的同一主机上的表单识别器和文本识别器组合，请查看下面的示例 Docker Compose YAML 文件。 对于 `{COMPUTER_VISION_API_KEY}` 和 `formrecognizer` 容器，文本识别器 `ocr` 必须相同。 `{COMPUTER_VISION_ENDPOINT_URI}` 只在 `ocr` 容器中使用，因为 `formrecognizer` 容器使用 `ocr` 名称和端口。 
 
 ```docker
 version: '3.3'
@@ -319,9 +319,9 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>Summary
 
-本文介绍了与下载、安装和运行表单识别器容器相关的概念与工作流。 摘要：
+本文介绍了与下载、安装和运行表单识别器容器相关的概念与工作流。 综上所述：
 
 * 表单识别器提供一个适用于 Docker 的 Linux 容器。
 * 可从 Azure 中的专用容器注册表下载容器映像。

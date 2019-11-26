@@ -1,5 +1,5 @@
 ---
-title: Use different attestation mechanisms with the Azure IoT Hub Device Provisioning Service Client SDK
+title: 将不同的证明机制与 Azure IoT 中心设备预配服务客户端 SDK 配合使用
 description: Azure 操作方法 - 如何将不同的证明机制与 Azure 中的设备预配服务客户端 SDK 配合使用
 author: robinsh
 ms.author: robinsh
@@ -17,9 +17,9 @@ ms.locfileid: "74228274"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 
-本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 The provisioning service supports authentication for two types of attestation mechanisms: X.509 and Trusted Platform Module (TPM).
+本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持两种类型的证明机制： x.509 和受信任的平台模块（TPM）的身份验证。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 根据[创建和预配模拟设备](./quick-create-simulated-device.md)指南中“准备开发环境”部分的说明准备开发环境。
 
@@ -35,11 +35,11 @@ ms.locfileid: "74228274"
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>为受支持的证明机制启用身份验证
 
-The SDK authentication mode (X.509 or TPM) must be enabled for the physical device or simulator before they can be enrolled in the Azure portal. 首先，导航到 azure-iot-sdk-c 的根文件夹。 然后，根据所选身份验证模式运行指定的命令：
+必须先为物理设备或模拟器启用 SDK 身份验证模式（X.509 或 TPM），然后才能在 Azure 门户中注册它们。 首先，导航到 azure-iot-sdk-c 的根文件夹。 然后，根据所选身份验证模式运行指定的命令：
 
-### <a name="use-x509-with-simulator"></a>Use X.509 with simulator
+### <a name="use-x509-with-simulator"></a>对模拟器使用 X.509
 
-The provisioning service ships with a Device Identity Composition Engine (DICE) emulator that generates an **X.509** certificate for authenticating the device. To enable **X.509** authentication, run the following command: 
+预配服务配备了一个设备标识组合引擎 (DICE) 模拟器，该模拟器可生成用于对设备进行身份验证的 **X.509** 证书。 若要启用 **X.509** 身份验证，请运行以下命令： 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -47,9 +47,9 @@ cmake -Ddps_auth_type=x509 ..
 
 有关带 DICE 的硬件的信息，请参阅[此处](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。
 
-### <a name="use-x509-with-hardware"></a>Use X.509 with hardware
+### <a name="use-x509-with-hardware"></a>对硬件使用 X.509
 
-The provisioning service can be used with **X.509** on other hardware. 硬件和 SDK 之间的接口需要建立连接。 请咨询 HSM 制造商，了解接口上的信息。
+在其他硬件上预配服务可与 **X.509** 配合使用。 硬件和 SDK 之间的接口需要建立连接。 请咨询 HSM 制造商，了解接口上的信息。
 
 ### <a name="use-tpm"></a>使用 TPM
 
@@ -95,7 +95,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     ctest -C "debug" -V
     ```
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>{1}Windows{2}
 - 若要在 Windows 中生成 SDK，请执行以下步骤生成项目文件：
   - 打开“VS2015 开发人员命令提示符”
   - 从存储库的根目录运行以下 CMake 命令：
@@ -148,8 +148,8 @@ cmake -Ddps_auth_type=tpm_simulator ..
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
-   - **X.509 Individual Enrollment**: On the provisioning service summary blade, select **Manage enrollments**. 选择“单个注册”选项卡，单击顶部的“添加”按钮。 Select **X.509** as the identity attestation *Mechanism*, upload the leaf certificate as required by the blade. 完成后，单击“保存”按钮。 
-   - **X.509 Group Enrollment**: On the provisioning service  summary blade, select **Manage enrollments**. 选择“组注册”选项卡，单击顶部的“添加”按钮。 Select **X.509** as the identity attestation *Mechanism*, enter a group name and certification name, upload the CA/Intermediate certificate as required by the blade. 完成后，单击“保存”按钮。 
+   - **X.509 个人注册**：在 "预配服务摘要" 边栏选项卡上，选择 "**管理注册**"。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 选择 **X.509** 作为标识证明机制，根据边栏选项卡的要求上传叶证书。 完成后，单击“保存”按钮。 
+   - **X.509 组注册**：在 "预配服务摘要" 边栏选项卡上，选择 "**管理注册**"。 选择“组注册”选项卡，单击顶部的“添加”按钮。 选择 **X.509** 作为标识证明机制，输入组名和证书名称，根据边栏选项卡的要求上传 CA/中间证书。 完成后，单击“保存”按钮。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>使用自定义证明机制为设备启用身份验证（可选）
 
@@ -165,7 +165,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     - 对于自定义 TPM：实现在 [HSM TPM API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api) 下定义的函数。  
     - 对于自定义 X.509：实现在 [HSM X509 API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api) 下定义的函数。 
 
-在库成功地自行生成以后，需要通过根据库进行链接来将其与设备预配服务客户端 SDK 进行集成。 ：
+在库成功地自行生成以后，需要通过根据库进行链接来将其与设备预配服务客户端 SDK 进行集成。 :
 
 1. 在下面的 `cmake` 命令中提供自定义 GitHub 存储库和库：
     ```cmd/sh
@@ -181,7 +181,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>在预配后连接到 IoT 中心
 
-Once the device has been provisioned with the provisioning service, this API uses the specified authentication mode (**X.509** or TPM) to connect with IoT Hub: 
+使用预配服务预配设备后，此 API 便使用指定的身份验证模式（**X.509** 或 TPM）来与 IoT 中心进行连接： 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

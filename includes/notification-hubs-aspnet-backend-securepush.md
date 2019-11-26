@@ -95,4 +95,4 @@ ms.locfileid: "74260660"
 请注意，`Post` 方法现在不发送 toast 通知。 它将发送只包含通知 ID 且没有任何敏感内容的原始通知。 另外，请确保注释在通知中心上未配置其凭据的平台的发送操作，因为它们会导致错误。
 
 1. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”。
-2. 选择 Azure 网站作为发布目标。 Sign in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. 单击“发布”。
+2. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有的或新的网站，并记下 "**连接**" 选项卡中的 "**目标 URL** " 属性。在本教程的后面部分，我们将此 URL 称为*后端终结点*。 单击“发布”。

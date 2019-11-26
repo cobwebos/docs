@@ -1,5 +1,5 @@
 ---
-title: PowerShell for VNet endpoints and rules for single and pooled databases
+title: PowerShell for VNet 终结点和适用于单个和共用数据库的规则
 description: 提供 PowerShell 脚本，用于创建和管理 Azure SQL 数据库和 SQL 数据仓库的虚拟服务终结点。
 services: sql-database
 ms.service: sql-database
@@ -30,7 +30,7 @@ ms.locfileid: "74422490"
 1. 在子网上创建 Microsoft Azure 虚拟服务终结点。
 2. 将终结点添加到 Azure SQL 数据库服务器的防火墙，以创建虚拟网络规则。
 
-Your motivations for creating a rule are explained in: [Virtual Service endpoints for Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+用于创建规则的动机在： [AZURE SQL 数据库的虚拟服务终结点][sql-db-vnet-service-endpoint-rule-overview-735r]中进行了介绍。
 
 > [!TIP]
 > 如果只需访问或将 SQL 数据库的虚拟服务终结点类型名称添加到子网，则可以直接跳至 [PowerShell 脚本](#a-verify-subnet-is-endpoint-ps-100)。
@@ -38,24 +38,24 @@ Your motivations for creating a rule are explained in: [Virtual Service endpoint
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 ## <a name="major-cmdlets"></a>主要 cmdlet
 
-This article emphasizes the **New-AzSqlServerVirtualNetworkRule** cmdlet that adds the subnet endpoint to the access control list (ACL) of your Azure SQL Database server, thereby creating a rule.
+本文将着重介绍 **New-AzSqlServerVirtualNetworkRule** cmdlet，它用于将子网终结点添加到 Azure SQL 数据库服务器的访问控制列表 (ACL)，从而创建规则。
 
-The following list shows the sequence of other *major* cmdlets that you must run to prepare for your call to **New-AzSqlServerVirtualNetworkRule**. 在本文中，这些调用出现在[脚本 3 虚拟网络规则](#a-script-30) 中：
+下面的列表显示准备对 New-AzSqlServerVirtualNetworkRule 进行调用时必须运行的其他主要cmdlet 的序列。 在本文中，这些调用出现在脚本 3 [虚拟网络规则](#a-script-30) 中：
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Creates a subnet object.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Creates your virtual network, giving it the subnet.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Assigns a Virtual Service endpoint to your subnet.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Persists updates made to your virtual network.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): After your subnet is an endpoint, adds your subnet as a virtual network rule, into the ACL of your Azure SQL Database server.
+1. [AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：创建子网对象。
+2. [AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：创建虚拟网络，并为其提供子网。
+3. [AzVirtualNetworkSubnetConfig：将](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig)虚拟服务终结点分配给子网。
+4. [AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork)：保留对虚拟网络所做的更新。
+5. [AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)：子网为终结点后，会将子网作为虚拟网络规则添加到 Azure SQL 数据库服务器的 ACL 中。
    - 从 Azure RM PowerShell 模块 5.1.1 版开始，此模块提供参数 **-IgnoreMissingVNetServiceEndpoint**。
 
 ## <a name="prerequisites-for-running-powershell"></a>运行 PowerShell 的先决条件
 
-- You can already log in to Azure, such as through the [Azure portal][http-azure-portal-link-ref-477t].
+- 已可以登录到 Azure，例如通过 [Azure 门户][http-azure-portal-link-ref-477t]。
 - 已可以运行 PowerShell 脚本。
 
 > [!NOTE]
@@ -374,7 +374,7 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 ## <a name="verify-your-subnet-is-an-endpoint"></a>验证子网是否是终结点。
 
-可能已拥有已被分配 Microsoft.Sql 类型名称的子网，这就说明它已是虚拟服务终结点。 You could use the [Azure portal][http-azure-portal-link-ref-477t] to create a virtual network rule from the endpoint.
+可能已拥有已被分配 Microsoft.Sql 类型名称的子网，这就说明它已是虚拟服务终结点。 可以使用 [Azure 门户][http-azure-portal-link-ref-477t]从终结点创建虚拟网络规则。
 
 或者，如果不确定你的子网是否具有 Microsoft.Sql 类型名称， 则可以运行下面的 PowerShell 脚本执行以下操作：
 

@@ -23,70 +23,70 @@ ms.locfileid: "74482126"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-This article contains the latest release notes for Azure Storage Explorer, as well as release notes for previous versions. 
+本文包含有关 Azure 存储资源管理器的最新发行说明，以及以前版本的发行说明。 
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-To download previous versions of Storage Explorer, you can visit the [Releases page](https://github.com/microsoft/AzureStorageExplorer/releases) of our GitHub repo.
+若要下载以前版本的存储资源管理器，你可以访问 GitHub 存储库的 "[发布" 页](https://github.com/microsoft/AzureStorageExplorer/releases)。
 
-## <a name="version-1110"></a>Version 1.11.0
+## <a name="version-1110"></a>版本1.11。0
 11/4/2019
 
-### <a name="new"></a>新
-* Operations for Blobs, ADLS Gen2 and Managed Disks use the integrated AzCopy. More specifically, the following operations are done using AzCopy:
+### <a name="new"></a>新建
+* Blob、ADLS Gen2 和托管磁盘的操作使用集成 AzCopy。 更具体地讲，使用 AzCopy 执行以下操作：
    * Blob
-      * Open for editing + Upload
-      * Upload, including drag & drop
+      * 打开以进行编辑 + 上传
+      * 上传 & 拖放
       * 下载
-      * Copy & paste #1249
+      * 复制 & 粘贴 #1249
       * 删除
-   * ADLS Gen2 Blobs
-      * Upload, including drag & drop
+   * ADLS Gen2 Blob
+      * 上传 & 拖放
       * 下载
-      * Copy & paste
-      * Delete, including folder delete
+      * 复制 & 粘贴
+      * 删除，包括文件夹删除
    * 托管磁盘
-      * 上载
+      * 上传
       * 下载
-      * Copy & paste
+      * 复制 & 粘贴
 
-   Additionally, several frequently requested features have been added to the integrated AzCopy experience:
-   * Conflict resolutions - you will be prompted during transfers to resolve conflicts. #1455
-   * Upload as page blobs - you can choose whether or not AzCopy uploads .vhd and .vhdx files as page blobs. #1164 and #1601
-   * Configurable AzCopy parameters - Several settings have been added to tune AzCopy's performance and resource usage. See more details below.
+   此外，已将几个经常请求的功能添加到了集成的 AzCopy 体验中：
+   * 冲突解决-在传输过程中，系统会提示您解决冲突。 #1455
+   * 上传为页 blob-可以选择是否将 AzCopy 和 .vhdx 文件作为页 blob 进行上载。 #1164 和 #1601
+   * 可配置的 AzCopy 参数-添加了多个设置，以优化 AzCopy 的性能和资源使用情况。 请参阅下面的详细信息。
 
-* To enable ADLS Gen2 and Blobs multi-protocol access and further enhance ADLS Gen2 experiences, we have added the following features for the ADLS Gen2 accounts:
-   * Search using friendly names to set ACL permissions
-   * View hidden containers, such as $logs and $web
-   * Acquire and break container lease
-   * Acquire and break Blob lease #848
-   * Manage container access policies
-   * Configure Blob access tiers
-   * Copy & Paste Blobs
+* 为实现 ADLS Gen2 和 Blob 的多协议访问，并进一步增强 ADLS Gen2 体验，我们为 ADLS Gen2 帐户添加了以下功能：
+   * 使用友好名称进行搜索以设置 ACL 权限
+   * 查看隐藏容器，如 $logs 和 $web
+   * 获取和中断容器租约
+   * 获取和中断 Blob 租约 #848
+   * 管理容器访问策略
+   * 配置 Blob 访问层
+   * 复制 & 粘贴 Blob
 
-* In this release, we are previewing 17 additional languages. You can switch to a language of your choice on the settings page under "Application" → "Regional Settings" → "Language (Preview)". We are still working hard on translating additional strings and improving the translation quality. Should you have any feedback regarding a translation, or if you notice a string which is not yet translated, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%F0%9F%8C%90%20localization&template=bug-report.md&title=).
-* In every release, we try to onboard a few settings to enable fine turning Storage Explorer. In this release, we added settings to further configure AzCopy as well as to hide service nodes:
-   * AzCopy bandwidth limit - helps control how much of the network AzCopy uses. You can find this setting at "Transfers" → "AzCopy" → "Maximum transfer rate". #1099
-   * AzCopy MD5 check - lets you configure if and how strictly AzCopy checks for MD5 hashes on download. You can find this setting at "Transfers" → "AzCopy" → "Check MD5".
-   * AzCopy concurrency and memory buffer size - by default AzCopy will analyze your machine to determine reasonable default values for these settings. But if you run into performance problems, these advanced settings can be used to further tailor how AzCopy runs on your computer. You can find these settings under "Transfers" → "AzCopy". #994
-   * Display and hide service nodes - these settings give you the options to display or hide any of the Azure services that Storage Explorer supports. You can find these settings under the "Services" section. #1877
+* 在此版本中，我们将预览17个其他语言。 可以在 "应用程序" → "区域设置" → "语言（预览）" 下的 "设置" 页中切换到所选的语言。 我们仍在努力翻译其他字符串并改善翻译质量。 如果你有关于翻译的反馈，或者你注意到尚未翻译的字符串，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%F0%9F%8C%90%20localization&template=bug-report.md&title=)。
+* 在每个版本中，我们都尝试载入几个设置，以启用微调存储资源管理器。 在此版本中，我们添加了设置以进一步配置 AzCopy，并隐藏了服务节点：
+   * AzCopy 带宽限制-帮助控制 AzCopy 使用的网络流量。 可以在 "传输" → "AzCopy" → "最大传输速率" 中找到此设置。 #1099
+   * AzCopy MD5 检查-用于在下载时配置是否严格 AzCopy 检查 MD5 哈希。 可以在 "传输" → "AzCopy" → "Check MD5" 处找到此设置。
+   * AzCopy 并发和内存缓冲区大小-默认情况下，AzCopy 会分析你的计算机，以确定这些设置的合理默认值。 但如果遇到性能问题，则可以使用这些高级设置进一步定制 AzCopy 在计算机上的运行方式。 可以在 "传输" → "AzCopy" 下找到这些设置。 #994
+   * 显示和隐藏服务节点-这些设置可让你选择显示或隐藏存储资源管理器支持的任何 Azure 服务。 可以在 "服务" 部分下找到这些设置。 #1877
 
-* When creating a Snapshot of a Managed Disk, a default name is now provided. #1847
-* When attaching with Azure AD, if you attach an ADLS Gen2 Blob container, then "(ADLS Gen2)" will be shown next to the node. #1861
+* 创建托管磁盘的快照时，现在提供了一个默认名称。 #1847
+* 附加到 Azure AD 时，如果附加了 ADLS Gen2 的 Blob 容器，则节点旁边将显示 "（ADLS Gen2）"。 #1861
 
 ### <a name="fixes"></a>修复项
-* When copying, uploading, or downloading large Disks, Storage Explorer would sometimes fail to revoke access to the disks involved in the operation. 此问题已解决。 #2048
-* Table statistics failed when viewing a partition key query. 此问题已解决。 #1886
+* 复制、上传或下载大磁盘时，存储资源管理器有时无法撤销对操作涉及的磁盘的访问权限。 此问题已解决。 #2048
+* 查看分区键查询时表统计信息失败。 此问题已解决。 #1886
 
 ### <a name="known-issues"></a>已知问题
-* Storage Explorer 1.11.0 now requires a DFS endpoint (such as "myaccount.dfs.core.windows.net") to attach to ADLS Gen2 containers. Previous versions of Storage Explorer allowed you to use a blob endpoint. These attachments may no longer work after upgrading to 1.11.0. If you encounter this problem, reattach using the DFS endpoint.
-* Numeric settings are not checked for whether they lie in a valid range.#2140
-* Copying blob containers from one storage account to another in the tree view may fail. We are investigating the issue.#2124
-* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
-* Managed Disk features are not supported in Azure Stack.
-* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
-* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* 存储资源管理器1.11.0 现在需要 DFS 终结点（如 "myaccount.dfs.core.windows.net"）附加到 ADLS Gen2 容器。 以前版本的存储资源管理器允许使用 blob 终结点。 升级到1.11.0 后，这些附件可能不再工作。 如果遇到此问题，请使用 DFS 终结点重新连接。
+* 不检查数值设置是否在有效范围内。 #2140
+* 在树视图中将 blob 容器从一个存储帐户复制到另一个存储帐户可能会失败。 我们正在调查此问题。 #2124
+* “自动刷新”设置目前不会影响 Blob 资源管理器中的所有操作。
+* Azure Stack 不支持托管磁盘功能。
+* 如果磁盘上传或粘贴失败，并且在失败之前创建了新磁盘，则存储资源管理器不会删除新磁盘。
+* 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -108,17 +108,17 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
 ## <a name="previous-releases"></a>以前的版本
 
-* [Version 1.10.1](#version-1101)
-* [Version 1.10.0](#version-1100)
-* [Version 1.9.0](#version-190)
-* [Version 1.8.1](#version-181)
-* [Version 1.8.0](#version-180)
-* [Version 1.7.0](#version-170)
-* [Version 1.6.2](#version-162)
+* [版本1.10。1](#version-1101)
+* [版本1.10。0](#version-1100)
+* [版本 1.9.0](#version-190)
+* [版本 1.8.1](#version-181)
+* [版本 1.8.0](#version-180)
+* [版本 1.7.0](#version-170)
+* [版本 1.6.2](#version-162)
 * [版本 1.6.1](#version-161)
 * [版本 1.6.0](#version-160)
 * [版本 1.5.0](#version-150)
@@ -153,54 +153,54 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
 
-## <a name="version-1101"></a>Version 1.10.1
+## <a name="version-1101"></a>版本1.10。1
 9/19/2019
 
-### <a name="hotfix"></a>Hotfix
-* Some users encountered an error in 1.10.0 while attempting to view their data in their ADLS Gen 1 accounts. This error prevented the explorer panel from rendering properly. 此问题已解决。 #1853 #1865
+### <a name="hotfix"></a>修补
+* 某些用户试图在其 ADLS 第1代帐户中查看其数据时遇到1.10.0 中的错误。 此错误会阻止 "资源管理器" 面板正确呈现。 此问题已解决。 #1853 #1865
 
-### <a name="new"></a>新
-* Storage Explorer now has a dedicated Settings UI. You can access it either from Edit → Settings, or by clicking on the Settings icon (the gear) in the left-hand vertical toolbar. This feature is the first step we're taking towards providing a variety of [user requested settings](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate). Starting in this release the following settings are supported:
+### <a name="new"></a>新建
+* 存储资源管理器现在提供专用的“设置”UI。 可以通过“编辑”→“设置”访问该 UI，或者，可以单击左侧垂直工具栏中的“设置”图标（齿轮）。 只有在了解此功能后，才能提供各种[用户请求的设置](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)。 从此版本开始支持以下设置：
   * 主题
   * 代理
-  * Logout on exit #6
-  * Enable device code flow sign-in
-  * Auto refresh #1526
-  * Enable AzCopy
-  * AzCopy SAS duration If there are other setttings you would like to see added, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) describing the setting you want to see.
-* Storage Explorer now supports Managed Disks. 你可以：
-  * Upload an on-prem VHD to a new Disk
-  * Download a Disk
-  * Copy and paste disks across resource groups and regions
-  * Delete Disks
-  * Create a Snapshot of a Disk The uploading, downloading, and cross-region copying of disks are powered by AzCopy v10.
-* Storage Explorer can now be installed via the Snap store on Linux. When you install via the Snap store, all dependencies are installed for you, including .NET Core! Currently we have verified that Storage Explorer runs well on Ubuntu and CentOS. If you encounter issues installing from the Snap store on other Linux distros, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). To learn more about installing from the Snap store, see our [getting started guide](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux). #68
-* Two major changes have been made to attach with Azure Active Directory (Azure AD) which are intended to make the feature more useful for ADLS Gen2 users:
-  * You now select the tenant that the resource you are attaching is in. This means that you no longer need to have RBAC access to the resource's subscription.
-  * If you are attaching an ADLS Gen2 Blob Container, you can now attach to a specific path in the container.
-* When managing ACLs for ADLS Gen2 files and folders, Storage Explorer will now show the friendly names for entities in the ACL. #957
-* When adding via OID to an ADLS Gen2 ACL, Storage Explorer will now validate that the OID belongs to a valid entity in your tenant. #1603
-* The keyboard shortcuts for navigating between tabs now use more standard key combinations. #1018
-* Middle clicking on a tab will now close it. #1348
-* If an AzCopy transfer contains skips and no failures, Storage Explorer will now show a warning icon to highlight that skips occured. #1490
-* The integrated AzCopy has been updated to version 10.2.1. Additionally, you can now view the version of AzCopy installed in the About dialog. #1343
+  * 退出时注销 #6
+  * 启用设备代码流登录
+  * 自动刷新 #1526
+  * 启用 AzCopy
+  * AzCopy SAS 持续时间如果要添加其他设置，请[在 GitHub 上打开](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)描述要查看的设置的问题。
+* 存储资源管理器现在支持托管磁盘。 可以：
+  * 将本地 VHD 上传到新磁盘
+  * 下载磁盘
+  * 跨资源组和区域复制并粘贴磁盘
+  * 删除磁盘
+  * 创建磁盘的快照磁盘的上传、下载和跨区域复制由 AzCopy v10 提供支持。
+* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)。 #68
+* 已使用 Azure Active Directory （Azure AD）附加了两项重大更改，这些更改旨在使此功能更适用于 ADLS Gen2 用户：
+  * 现在选择要附加的资源所在的租户。 这意味着，不再需要对资源的订阅拥有 RBAC 访问权限。
+  * 如果要附加 ADLS Gen2 Blob 容器，你现在可以附加到容器中的特定路径。
+* 管理 ADLS Gen2 文件和文件夹的 ACL 时，存储资源管理器现在会显示 ACL 中实体的易记名称。 #957
+* 通过 OID 添加到 ADLS Gen2 ACL 时，存储资源管理器现在会验证 OID 是否属于租户中的有效实体。 #1603
+* 用于在选项卡之间导航的快捷键现在使用更标准的组合键。 #1018
+* 现在，以鼠标中键单击某个选项卡会将其关闭。 #1348
+* 如果 AzCopy 传输内容包含 skip 但不包含 failure，存储资源管理器现在会显示一个警告图标，强调已发生跳过动作。 #1490
+* 集成式 AzCopy 已更新为版本 10.2.1。 此外，现在可以在“关于”对话框中查看安装的 AzCopy 版本。 #1343
 
 ### <a name="fixes"></a>修复项
-* Many users have run into various "cannot read version of undefined" or "cannot read connection of undefined" errors when working with attached Storage Accounts. Although we are still continuing to investigate the root cause of this issue, in 1.10.0 we have improved the error handling around loading attached Storage Accounts. #1626, #985, and #1532
-* It was possible for the explorer tree (left-hand side) to get into a state where focus would jump to the top node repeatedly. 此问题已解决。 #1596
-* When managing a blob's snapshots, screenreaders would not read the timestamp associated with the snapshot. 此问题已解决。 #1202
-* Proxy setting on macOS were not being set in time for the authentication process to use them. 此问题已解决。 #1567
-* If a Storage Account in a sovereign cloud was attached using name and key, AzCopy would not work. 此问题已解决。 #1544
-* When attaching via a connection string, Storage Explorer will now remove trailing spaces. #1387
+* 许多用户在使用附加的存储帐户时遇到了各种“无法读取未定义的版本”或“无法读取未定义的连接”错误。 我们仍在继续调查此问题的根本原因，同时，在 1.10.0 中，我们改进了与加载附加存储帐户相关的错误处理。 #1626、#985 和 #1532
+* 资源管理器树（左侧）可能会进入某种状态，在该状态下，焦点反复跳转到顶层节点。 此问题已解决。 #1596
+* 管理 Blob 的快照时，读屏器不会读取与快照关联的时间戳。 此问题已解决。 #1202
+* 未及时设置 macOS 上的代理设置，导致身份验证进程无法使用这些设置。 此问题已解决。 #1567
+* 如果使用名称和密钥附加了主权云中的存储帐户，AzCopy 将无法正常工作。 此问题已解决。 #1544
+* 通过连接字符串附加时，存储资源管理器现在会删除尾部空格。 #1387
 
 ### <a name="known-issues"></a>已知问题
-* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
-* Managed Disk features are not supported in Azure Stack.
-* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
-* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
-* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
-* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* “自动刷新”设置目前不会影响 Blob 资源管理器中的所有操作。
+* Azure Stack 不支持托管磁盘功能。
+* 如果磁盘上传或粘贴失败，并且在失败之前创建了新磁盘，则存储资源管理器不会删除新磁盘。
+* 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
+* 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -222,59 +222,59 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
 
-## <a name="version-1100"></a>Version 1.10.0
+## <a name="version-1100"></a>版本 1.10.0
 9/12/2019
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
-* Storage Explorer now has a dedicated Settings UI. You can access it either from Edit → Settings, or by clicking on the Settings icon (the gear) in the left-hand vertical toolbar. This feature is the first step we're taking towards providing a variety of [user requested settings](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate). Starting in this release the following settings are supported:
+* 存储资源管理器现在提供专用的“设置”UI。 可以通过“编辑”→“设置”访问该 UI，或者，可以单击左侧垂直工具栏中的“设置”图标（齿轮）。 只有在了解此功能后，才能提供各种[用户请求的设置](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)。 从此版本开始支持以下设置：
     * 主题
     * 代理
-    * Logout on exit [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
-    * Enable device code flow sign-in
-    * Auto refresh [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
-    * Enable AzCopy
-    * AzCopy SAS duration
+    * 退出时注销 [#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
+    * 启用设备代码流登录
+    * 自动刷新 [#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
+    * 启用 AzCopy
+    * AzCopy SAS 持续时间
 
-    If there are other setttings you would like to see added, please [open an issue on GitHub describing the setting you want to see](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Storage Explorer now supports Managed Disks. 你可以：
-    * Upload an on-prem VHD to a new Disk
-    * Download a Disk
-    * Copy and paste disks across resource groups and regions
-    * Delete Disks
-    * Create a Snapshot of a Disk
+    如果你还希望添加其他设置，请[在 GitHub 上提出问题并描述所需的设置](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
+* 存储资源管理器现在支持托管磁盘。 可以：
+    * 将本地 VHD 上传到新磁盘
+    * 下载磁盘
+    * 跨资源组和区域复制并粘贴磁盘
+    * 删除磁盘
+    * 创建磁盘的快照
 
-    The uploading, downloading, and cross-region copying of disks are powered by AzCopy v10.
-* Storage Explorer can now be installed via the Snap store on Linux. When you install via the Snap store, all dependencies are installed for you, including .NET Core! Currently we have verified that Storage Explorer runs well on Ubuntu and CentOS. If you encounter issues installing from the Snap store on other Linux distros, please [open an issue on GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). To learn more about installing from the Snap store, see our [getting started guide](https://aka.ms/storageexplorer/snapinformation). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
-* Two major changes have been made to attach with Azure Active Directory (Azure AD) which are intended to make the feature more useful for ADLS Gen2 users: * You now select the tenant that the resource you are attaching is in. This means that you no longer need to have RBAC access to the resource's subscription.
-        * If you are attaching an ADLS Gen2 Blob Container, you can now attach to a specific path in the container.
-* When managing ACLs for ADLS Gen2 files and folders, Storage Explorer will now show the friendly names for entities in the ACL. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
-* When adding via OID to an ADLS Gen2 ACL, Storage Explorer will now validate that the OID belongs to a valid entity in your tenant. [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
-* The keyboard shortcuts for navigating between tabs now use more standard key combinations. [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
-* Middle clicking on a tab will now close it. [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
-* If an AzCopy transfer contains skips and no failures, Storage Explorer will now show a warning icon to highlight that skips occured. [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
-* The integrated AzCopy has been updated to version 10.2.1. Additionally, you can now view the version of AzCopy installed in the About dialog. [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
+    磁盘的上传、下载和跨区域复制由 AzCopy v10 提供支持。
+* 现在可以通过 Linux 上的 Snap Store 安装存储资源管理器。 通过 Snap Store 安装时，系统将为你安装所有依赖项，包括 .NET Core！ 目前，我们已验证存储资源管理器可在 Ubuntu 和 CentOS 上正常运行。 如果在从其他 Linux 分发版上的 Snap Store 安装时遇到问题，请[在 GitHub 上提出问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要详细了解如何从 Snap Store 安装，请参阅[入门指南](https://aka.ms/storageexplorer/snapinformation)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* 使用 Azure Active Directory Azure Active Directory (Azure AD) 附加资源的功能已发生两项重大更改，目的是使该功能为 ADLS Gen2 用户提供更大的价值：* 现在可以选择要附加的资源所在的租户。 这意味着，不再需要对资源的订阅拥有 RBAC 访问权限。
+        * 如果附加 ADLS Gen2 Blob 容器，现在可以附加到容器中的特定路径。
+* 管理 ADLS Gen2 文件和文件夹的 ACL 时，存储资源管理器现在会显示 ACL 中实体的易记名称。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* 通过 OID 添加到 ADLS Gen2 ACL 时，存储资源管理器现在会验证 OID 是否属于租户中的有效实体。 [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* 用于在选项卡之间导航的快捷键现在使用更标准的组合键。 [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* 现在，以鼠标中键单击某个选项卡会将其关闭。 [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* 如果 AzCopy 传输内容包含 skip 但不包含 failure，存储资源管理器现在会显示一个警告图标，强调已发生跳过动作。 [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* 集成式 AzCopy 已更新为版本 10.2.1。 此外，现在可以在“关于”对话框中查看安装的 AzCopy 版本。 [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
 ### <a name="fixes"></a>修复项
 
-* Many users have run into various "cannot read version of undefined" or "cannot read connection of undefined" errors when working with attached Storage Accounts. Although we are still continuing to investigate the root cause of this issue, in 1.10.0 we have improved the error handling around loading attached Storage Accounts. [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626), [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985), and [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
-* It was possible for the explorer tree (left-hand side) to get into a state where focus would jump to the top node repeatedly. 此问题已解决。 [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
-* When managing a blob's snapshots, screenreaders would not read the timestamp associated with the snapshot. 此问题已解决。 [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
-* Proxy setting on macOS were not being set in time for the authentication process to use them. 此问题已解决。 [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
-* If a Storage Account in a sovereign cloud was attached using name and key, AzCopy would not work. 此问题已解决。 [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
-* When attaching via a connection string, Storage Explorer will now remove trailing spaces. [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
+* 许多用户在使用附加的存储帐户时遇到了各种“无法读取未定义的版本”或“无法读取未定义的连接”错误。 我们仍在继续调查此问题的根本原因，同时，在 1.10.0 中，我们改进了与加载附加存储帐户相关的错误处理。 [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626)、[#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985) 和 [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* 资源管理器树（左侧）可能会进入某种状态，在该状态下，焦点反复跳转到顶层节点。 此问题已解决。 [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* 管理 Blob 的快照时，读屏器不会读取与快照关联的时间戳。 此问题已解决。 [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* 未及时设置 macOS 上的代理设置，导致身份验证进程无法使用这些设置。 此问题已解决。 [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* 如果使用名称和密钥附加了主权云中的存储帐户，AzCopy 将无法正常工作。 此问题已解决。 [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* 通过连接字符串附加时，存储资源管理器现在会删除尾部空格。 [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>已知问题
 
-* The Auto Refresh setting does not yet affect all operations in the Blob Explorer.
-* Managed Disk features are not supported in Azure Stack.
-* If a Disk upload or paste fails and a new Disk was created prior to the failure, Storage Explorer will not delete the Disk for you.
-* Depending on when you cancel a Disk upload or paste, it is possible to leave the new Disk in a corrupted state. If this happens, you either need to delete the new Disk, or manually call the Disk APIs to replace the contents of the Disk such that it is no longer corrupted.
-* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
+* “自动刷新”设置目前不会影响 Blob 资源管理器中的所有操作。
+* Azure Stack 不支持托管磁盘功能。
+* 如果磁盘上传或粘贴失败，并且在失败之前创建了新磁盘，则存储资源管理器不会删除新磁盘。
+* 根据取消磁盘上传或粘贴操作的时间，新磁盘可能会保持损坏状态。 如果发生这种情况，需要删除新磁盘，或手动调用磁盘 API 来替换磁盘内容，使其不再损坏。
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -296,44 +296,44 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
-## <a name="version-190"></a>Version 1.9.0
-7/1/2019
+## <a name="version-190"></a>版本 1.9.0
+2019/7/1
 
-### <a name="download-azure-storage-explorer-190"></a>Download Azure Storage Explorer 1.9.0
-- [Azure Storage Explorer 1.9.0 for Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer 1.9.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer 1.9.0 for Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-190"></a>下载 Azure 存储资源管理器 1.9.0
+- [适用于 Windows 的 Azure 存储资源管理器 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.9.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
-* You can now attach Blob containers via Azure AD (RBAC or ACL permissions). This feature is intended to help users who have access to containers but not the Storage Accounts that the containers are in. See our Getting Started Guide for more information on this feature.
-* Acquire and break lease now work with RBAC. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
-* Managing access policies and setting public access level now work with RBAC. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
-* Deleting blob folders now work with RBAC. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
-* Changing blob access tier now work with RBAC. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
-* You can now quickly reset Quick Access via "Help" → "Reset". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+* 现在可以通过 Azure AD 附加 Blob 容器（RBAC 或 ACL 权限）。 此功能旨在帮助那些可以访问容器但不能访问容器所在的存储帐户的用户。 若要详细了解此功能，请参阅入门指南。
+* 获取和中断租约现在适用于 RBAC。 [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* 管理访问策略和设置公共访问级别现在适用于 RBAC。 [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* 删除 Blob 文件夹现在适用于 RBAC。 [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* 更改 Blob 访问层级现在适用于 RBAC。 [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* 现在可以通过“帮助”→“重置”快速重置“快速访问”。 [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
 
 ### <a name="preview-features"></a>预览功能
 
-* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
-* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
 
 ### <a name="fixes"></a>修复项
 
-* Fixed being unable to load more than 50 subscriptions for one account. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
-* Fixed the "Sign in" button not working on the infobar that appears when a direct link fails. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
-* Fixed not being to upload .app files on macOS. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
-* Fixed "Retry All" not working for a failed blob rename. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
-* Fixed "Cancel" not working while opening a blob. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
-* Fixed multiple spelling and tooltip issues throughout the product. Many thanks to all who reported these issues! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+* 修复了无法为一个帐户加载超过 50 个订阅的问题。 [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* 修复了“登录”按钮在信息栏上无法使用的问题。信息栏会在直接链接故障时显示。 [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* 修复了无法在 macOS 上上传 .app 文件的问题。 [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* 修复了 Blob 重命名失败时“全部重试”无法使用的问题。 [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* 修复了在打开 Blob 时“取消”无法使用的问题。 [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* 修复了产品中出现的多个拼写和工具提示问题。 十分感谢所有报告这些问题的人！ [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303)、[#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328)、[#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329)、[#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331)、[#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336)、[#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352)、[#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368)、[#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
 
 ### <a name="known-issues"></a>已知问题
 
-* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
-* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -354,43 +354,43 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
-## <a name="version-181"></a>Version 1.8.1
-5/13/2019
+## <a name="version-181"></a>版本 1.8.1
+2019/5/13
 
 ### <a name="hotfixes"></a>修补程序
-* In some cases, clicking "Load more" at the resource level would not return the next page of resources. 此问题已解决。 [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
-* On Windows, AzCopy downloads would fail if a single file or folder was being downloaded and the name of the file or folder had a character which was invalid for a Windows path. 此问题已解决。 [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
-* In extremely rare cases, while performing a rename of a File Share or a rename in a File Share, if the copies for the rename failed, or if Storage Explore was unable to confirm the success of the copies with Azure, there was the potential for Storage Explorer to delete the original files before the copy had finished. 此问题已解决。
+* 在某些情况下，在资源级别单击“加载更多”不会返回下一页的资源。 此问题已解决。 [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* 在 Windows 上，如果某个文件或文件夹在下载时，文件或文件夹的名称有一个字符对于 Windows 路径无效，则 AzCopy 下载会失败。 此问题已解决。 [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* 在极罕见的情况下，在对文件共享重命名或在文件共享中重命名时，如果重命名的复制失败，或者存储资源管理器无法通过 Azure 确认复制是否成功，则存储资源管理器可能会在复制完成之前删除原始文件。 此问题已解决。
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
-* The integrated AzCopy version has been updated to version 10.1.0.
-* Ctrl/Cmd+R can now be used to refresh the currently focused editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* The Azure Stack Storage API version has been changed to 2017-04-17.
-* The Manage Access Dialog for ADLS Gen2 will now keep the Mask in sync in a way similar to other POSIX permissions tools. The UI will also warn you if a change is made that causes the permissions of a user or group to exceed the bounds of the Mask. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* For AzCopy uploads, the flag to calculate and set the MD5 hash is now enabled. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* 集成的 AzCopy 版本已更新为版本 10.1.0。
+* 现在可以使用 Ctrl/Cmd+R 来刷新当前具有焦点的编辑器了。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Azure Stack 存储 API 版本已更改为 2017-04-17。
+* ADLS Gen2 的“管理访问权限”对话框现在将以与其他 POSIX 权限工具类似的方式使掩码保持同步。 如果所做的更改导致某个用户或组的权限超出了掩码的边界，则 UI 还会发出警告。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* 对于 AzCopy 上传，现在启用了用于计算和设置 MD5 哈希的标志。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
 ### <a name="preview-features"></a>预览功能
 
-* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
-* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
 
 ### <a name="fixes"></a>修复项
 
-* The Access Policies dialog will no longer set an expiry date on Storage Access Policies that do not have an expiry. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Some changes have been made to the Generate SAS dialog to make sure Stored Access Policies are used correctly when generating a SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* When attempting to upload a non-512 byte aligned file to a page Blob, Storage Explorer will now expose a more relevant error. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Copying a Blob container which utilized a display name would fail. Now, the actual name of the Blob container is used. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Attempting to perform certain actions on an ADLS Gen2 folder which had unicode characters in its name would fail. All actions should now work. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* “访问策略”对话框将不再在没有截止日期的存储访问策略上设置截止日期。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* 对“生成 SAS”对话框进行了一些更改，以确保在生成 SAS 时正确地使用所存储的访问策略。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* 当尝试将非 512 字节对齐的文件上传到页 blob 时，存储资源管理器现在会公开一个相关性更强的错误。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* 复制利用了显示名称的 Blob 容器将会失败。 现在使用的是 Blob 容器的实际名称。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* 尝试对名称中包含 unicode 字符的 ADLS Gen2 文件夹执行某些操作将会失败。 现在，所有操作应当都可正常工作。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>已知问题
 
-* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
-* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -411,38 +411,38 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
-## <a name="version-180"></a>Version 1.8.0
-5/1/2019
+## <a name="version-180"></a>版本 1.8.0
+2019 年 5 月 1 日
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
-* The integrated AzCopy version has been updated to version 10.1.0.
-* Ctrl/Cmd+R can now be used to refresh the currently focused editor. [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* The Azure Stack Storage API version has been changed to 2017-04-17.
-* The Manage Access Dialog for ADLS Gen2 will now keep the Mask in sync in a way similar to other POSIX permissions tools. The UI will also warn you if a change is made that causes the permissions of a user or group to exceed the bounds of the Mask. [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* For AzCopy uploads, the flag to calculate and set the MD5 hash is now enabled. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+* 集成的 AzCopy 版本已更新为版本 10.1.0。
+* 现在可以使用 Ctrl/Cmd+R 来刷新当前具有焦点的编辑器了。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Azure Stack 存储 API 版本已更改为 2017-04-17。
+* ADLS Gen2 的“管理访问权限”对话框现在将以与其他 POSIX 权限工具类似的方式使掩码保持同步。 如果所做的更改导致某个用户或组的权限超出了掩码的边界，则 UI 还会发出警告。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* 对于 AzCopy 上传，现在启用了用于计算和设置 MD5 哈希的标志。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
 ### <a name="preview-features"></a>预览功能
 
-* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in.
-* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
 
 ### <a name="fixes"></a>修复项
 
-* The Access Policies dialog will no longer set an expiry date on Storage Access Policies that do not have an expiry. [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* Some changes have been made to the Generate SAS dialog to make sure Stored Access Policies are used correctly when generating a SAS. [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* When attempting to upload a non-512 byte aligned file to a page Blob, Storage Explorer will now expose a more relevant error. [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* Copying a Blob container which utilized a display name would fail. Now, the actual name of the Blob container is used. [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* Attempting to perform certain actions on an ADLS Gen2 folder which had unicode characters in its name would fail. All actions should now work. [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* “访问策略”对话框将不再在没有截止日期的存储访问策略上设置截止日期。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* 对“生成 SAS”对话框进行了一些更改，以确保在生成 SAS 时正确地使用所存储的访问策略。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* 当尝试将非 512 字节对齐的文件上传到页 blob 时，存储资源管理器现在会公开一个相关性更强的错误。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* 复制利用了显示名称的 Blob 容器将会失败。 现在使用的是 Blob 容器的实际名称。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* 尝试对名称中包含 unicode 字符的 ADLS Gen2 文件夹执行某些操作将会失败。 现在，所有操作应当都可正常工作。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
 
 ### <a name="known-issues"></a>已知问题
 
-* When performing a non-AzCopy Blob download, the MD5 for large files is not being verified. This is due to a bug in the Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
-* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* 在执行非 AzCopy Blob 下载时，不会验证大型文件的 MD5。 这是由存储 SDK 中的一个 bug 导致的。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
 * Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
@@ -463,42 +463,42 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Running Storage Explorer on Linux requires certain dependencies to be installed first. Check the Storage Explorer [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) for more information.
+* 在 Linux 上运行存储资源管理器需要首先安装某些依赖项。 有关详细信息，请查看存储资源管理器[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
 ## <a name="version-170"></a>版本 1.7.0
 3/5/2019
 
-### <a name="download-azure-storage-explorer-170"></a>Download Azure Storage Explorer 1.7.0
-- [Azure Storage Explorer 1.7.0 for Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer 1.7.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer 1.7.0 for Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-170"></a>下载 Azure 存储资源管理器 1.7.0
+- [适用于 Windows 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
-* You can now change the owner and owning group when managing access for an ADLS Gen2 container, file, or folder.
-* On Windows, updating Storage Explorer from within the product is now an incremental install. This should result in a faster update experience. If you prefer a clean install, then you can download the [installer](https://azure.microsoft.com/features/storage-explorer/) yourself and then install manually. #1089
+* 现在，在管理 ADLS Gen2 容器、文件或文件夹的访问权限时，可以更改所有者和拥有组。
+* 在 Windows 上，从产品内部更新存储资源管理器现在属于增量安装操作。 这样应该可以加快更新的速度。 如果你偏向于全新安装，可以自行下载[安装程序](https://azure.microsoft.com/features/storage-explorer/)并手动安装。 #1089
 
 ### <a name="preview-features"></a>预览功能
 
-* Device code flow sign in is now available to preview. To enable it, go to "Preview" → "Use Device Code Flow Sign-in". We encourage any users who have had issues with blank sign-in windows to try this feature, as it may prove to be a more reliable form of sign-in. #938
-* Storage Explorer integrated with AzCopy is currently available to preview. To enable it, go to "Preview" → "Use AzCopy for Improved Blob Upload and Download". Blob transfers completed with AzCopy should be faster and more performant.
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。 #938
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
 
 ### <a name="fixes"></a>修复项
 
-* You can now choose the blob type you want to upload as when AzCopy is enabled. #1111
-* Previously, if you had enabled static websites for an ADLS Gen2 Storage account and then attached it with name and key, Storage Explorer would not have detected that hierarchical namespace was enabled. 此问题已解决。 #1081
-* In the blob editor, sorting by either retention days remaining or status was broken. 此问题已解决。 #1106
-* After 1.5.0, Storage Explorer no longer waited for server side copies to finish before reporting success during a rename or copy & paste. 此问题已解决。 #976
-* When using the experimental AzCopy feature, the command copied after clicking "Copy command to clipboard" was not always runnable on its own. Now, all commands needed to run the transfer manually will be copied. #1079
-* Previously, ADLS Gen2 blobs were not accessible if you were behind a proxy. This was due to a bug in a new networking library used by the Storage SDK. In 1.7.0, an attempt to mitigate this issue has been made, but some people may continue to see issues. A full fix will be released in a future update. #1090
-* In 1.7.0, the save file dialog now correctly remembers the last location you saved a file to. #16
-* In the properties panel, the SKU tier of a Storage account was being shown as the account's kind. 此问题已解决。 #654
-* Sometimes, it was impossible to break the lease of a blob, even if you entered the name of the blob correctly. 此问题已解决。 #1070
+* 现在，在启用 AzCopy 后，可以选择要上传的 Blob 类型。 #1111
+* 以前，如果为 ADLS Gen2 存储帐户启用了静态网站，然后在该帐户中附加名称和密钥，则存储资源管理器将检测不到已启用该分层命名空间。 此问题已解决。 #1081
+* 在 Blob 编辑器中，不再能够按剩余保留天数或状态进行排序。 此问题已解决。 #1106
+* 在版本 1.5.0 之后，存储资源管理器不再会先等待服务器端复制完成，然后在重命名或复制/粘贴操作期间报告成功结果。 此问题已解决。 #976
+* 使用试验性的 AzCopy 功能时，单击“将命令复制到剪贴板”后复制的命令本身不一定始终可运行。 现在，将会复制手动运行传输所需的所有命令。 #1079
+* 以前，如果在代理后面操作，则无法访问 ADLS Gen2 Blob。 这是因为存储 SDK 使用的新网络库中存在一个 bug。 1\.7.0 会尝试缓解此问题，但有些人仍可能会遇到问题。 在将来的更新中会发布完整修复措施。 #1090
+* 在 1.7.0 中，“保存文件”对话框现在会正确记住文件的上次保存位置。 #16
+* 在“属性”窗格中，存储帐户的 SKU 层显示为帐户类型。 此问题已解决。 #654
+* 有时，即使正确输入 Blob 的名称，也无法中断该 Blob 的租约。 此问题已解决。 #1070
 
 ### <a name="known-issues"></a>已知问题
 
-* When using RBAC, Storage Explorer requires some management layer permissions in order to access your storage resources. See the [troubleshooting guide](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) for more info.
-* Attempting to access ADLS Gen2 Blobs when behind a proxy may fail.
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
@@ -555,7 +555,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * 如果某文件夹的名称包含空格，则尝试从 ADLS Gen2 Blob 容器中下载该文件夹时，AzCopy 会失败。 此问题已解决。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 编辑器在 1.6.0 版本中出现中断。 现已修复。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -624,7 +624,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * 如果某文件夹的名称包含空格，则尝试从 ADLS Gen2 Blob 容器中下载该文件夹时，AzCopy 会失败。 此问题已解决。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 编辑器在 1.6.0 版本中出现中断。 现已修复。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -677,9 +677,9 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
     ```
 
 ## <a name="version-160"></a>版本 1.6.0
-12/5/2018
+2018/12/5
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -734,7 +734,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-150"></a>版本 1.5.0
 10/29/2018
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 现在可以使用 [AzCopy v10（预览版）](https://github.com/Azure/azure-storage-azcopy)来上传和下载 Blob。 若要启用此功能，请转到“试验”菜单，然后单击“使用 AzCopy 改进 Blob 上传和下载”。 启用后，AzCopy 将在以下方案中使用：
    * 通过工具栏或拖放操作将文件夹和文件上传到 Blob 容器。
@@ -803,12 +803,12 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * Azure 资源管理 API 版本已回滚，以对 Azure 美国政府用户解除阻止。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -859,12 +859,12 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * Azure 资源管理 API 版本已回滚，以对 Azure 美国政府用户解除阻止。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -914,12 +914,12 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ### <a name="hotfixes"></a>修补程序
 * 将 Azure 资源管理 API 版本更新为 2018-07-01，以添加对新 Azure 存储帐户种类的支持。 [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -974,12 +974,12 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * 在较慢的 Windows 计算机上，初始屏幕有时需要很长时间才会显示。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
 * 即使已存在附加的帐户或服务，连接对话框也会显示。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -1026,7 +1026,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-130"></a>版本 1.3.0
 2018/07/09
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 现在支持访问静态网站使用的 $web 容器。 这使你可以轻松上传和管理网站使用的文件和文件夹。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS 上的应用栏已经重新组织。 更改包括“文件”菜单、一些快捷键更改以及应用菜单下的几个新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * 用于登录到 Azure 美国政府的颁发机构终结点已更改为 https://login.microsoftonline.us/
@@ -1083,7 +1083,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-120"></a>版本 1.2.0
 06/12/2018
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 如果存储资源管理器无法做到只加载一部分租户中的订阅，则会显示所有已成功加载的订阅，此外还会专门针对失败的租户显示一条错误消息。 [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
 * 在 Windows 上，当有更新可用时，现在可以选择“关闭时更新”。 如果选择此选项，将在关闭存储资源管理器后运行更新安装程序。 [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
 * 查看文件共享快照时，“还原快照”会添加到文件共享编辑器的上下文菜单中。[#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
@@ -1140,7 +1140,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-110"></a>版本 1.1.0
 2018/05/09
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
 * 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
 * 生成 SAS 时不再需要开始时间。
@@ -1195,7 +1195,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-100"></a>版本 1.0.0
 04/16/2018
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 增强的身份验证，允许存储资源管理器使用与 Visual Studio 2017 相同的帐户存储。 若要使用此功能，需要重新登录到帐户并重置已筛选的订阅。
 * 对于由 AAD 提供支持的 Azure Stack 帐户，当已启用“目标 Azure Stack”时，存储资源管理器现在会检索 Azure Stack 订阅。 不再需要创建自定义登录环境。
 * 添加了几个快捷方式以启用更快的导航。 这些快捷方式包括切换各种面板和在编辑器之间移动。 有关更多详细信息，请参阅“视图”菜单。
@@ -1296,7 +1296,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-095"></a>版本 0.9.5
 2018/02/06
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 对文件共享快照的支持：
     * 创建和管理文件共享快照。
@@ -1345,7 +1345,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-094-and-093"></a>版本 0.9.4 和 0.9.3
 2018 年 1 月 21 日
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 在以下情况下，将重新使用现有的存储资源管理器窗口：
     * 打开存储资源管理器中生成的直接链接。
     * 从门户打开存储资源管理器。
@@ -1399,7 +1399,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 * 适用于 Azure 美国政府版的终结点域不正确。 此问题已解决。
 * 有时很难单击“管理帐户”面板上的“应用”按钮。 不会再发生此问题。
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
@@ -1455,7 +1455,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 ## <a name="version-091-and-090"></a>版本 0.9.1 和 0.9.0
 10/20/2017
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
@@ -1512,7 +1512,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ## <a name="version-0816"></a>版本 0.8.16
 8/21/2017
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 * 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
 * 增强的 Azure Stack 登录体验
 * 改善了同时上传/下载多个小型文件时的性能
@@ -1552,12 +1552,12 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ### <a name="version-0814"></a>版本 0.8.14
 2017/06/22
 
-### <a name="new"></a>新
+### <a name="new"></a>新建
 
 * 已将 Electron 版本更新为 1.7.2，以便利用若干关键安全更新
 * 现可从帮助菜单快速访问联机疑难解答指南
-* Storage Explorer Troubleshooting [Guide][2]
-* [Instructions][3] on connecting to an Azure Stack subscription
+* 存储资源管理器故障排除[指南][2]
+* 有关连接到 Azure Stack 订阅的[说明][3]
 
 ### <a name="known-issues"></a>已知问题
 
@@ -1579,16 +1579,16 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ### <a name="version-0813"></a>版本 0.8.13
 05/12/2017
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
-* Storage Explorer Troubleshooting [Guide][2]
-* [Instructions][3] on connecting to an Azure Stack subscription
+* 存储资源管理器故障排除[指南][2]
+* 有关连接到 Azure Stack 订阅的[说明][3]
 
 #### <a name="fixes"></a>修复项
 
 * 已修复：文件上传很可能导致内存不足错误
 * 已修复：现可使用 PIN/智能卡登录
-* Fixed: Open in Portal now works with Azure China 21Vianet, Azure Germany, Azure US Government, and Azure Stack
+* 已修复：在门户中打开现在适用于 Azure 中国世纪互联、Azure 德国、Azure 美国政府和 Azure Stack
 * 已修复：将文件夹上传到 blob 容器中时，“非法操作”错误时有发生
 * 已修复：管理快照时禁用“选择全部”
 * 已修复：查看基础 blob 快照的属性后，可能会覆盖其元数据
@@ -1614,7 +1614,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 ### <a name="version-0812-and-0811-and-0810"></a>版本 0.8.12、0.8.11 和 0.8.10
 2017/04/07
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 如今，如果从更新通知安装更新，存储资源管理器会自动关闭
 * 对使用经常访问的资源而言，就地快速访问提供增强的体验
@@ -1662,7 +1662,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 >[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 存储资源管理器 0.8.9 自动下载最新版本进行更新。
 * 修补程序：使用门户生成的 SAS URI 附加存储帐户会导致错误。
@@ -1692,7 +1692,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 在“活动”窗口中，可选择如何在更新、下载或复制会话开始时解决冲突
 * 将鼠标悬停在选项卡上，以查看存储资源的完整路径
@@ -1719,10 +1719,10 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 2016/11/18
 ### <a name="version-086"></a>版本 0.8.6
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 现可将最常用服务固定到快速访问，从而实现轻松导航
-* 现可在不同选项卡中打开多个编辑器。 Single click to open a temporary tab; double click to open a permanent tab. You can also click on the temporary tab to make it a permanent tab
+* 现可在不同选项卡中打开多个编辑器。 单击以打开临时选项卡;双击以打开永久选项卡。还可以单击 "临时" 选项卡以使其成为永久选项卡
 * 已显著提升上传和下载的性能及稳定性，尤其是对于快速计算机上的大文件
 * 现可在 blob 容器中创建空白“虚拟”文件夹
 * 已重新引入通过新的增强子字符串搜索进行的限定范围搜索，因此现可通过两种方式进行搜索：
@@ -1757,7 +1757,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 2016/10/03
 ### <a name="version-085"></a>版本 0.8.5
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 现可使用门户生成的 SAS 密钥附加到存储帐户和资源
 
@@ -1780,7 +1780,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 生成指向存储帐户、容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源 - Windows 和 Mac 操作系统支持
 * 从搜索框搜索 blob 容器、表、队列、文件共享或存储帐户
@@ -1801,7 +1801,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 重命名容器、表和文件共享
 * 提升了查询生成器体验
@@ -1827,7 +1827,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 存储帐户按订阅分组；通过密钥或 SAS 附加的开发存储和资源显示在（本地和附加）节点下
 * 从“Azure 帐户设置”面板注销帐户
@@ -1854,7 +1854,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 文件共享支持：查看、上传、下载、复制文件和目录以及 SAS URI（创建和连接）
 * 改进了使用 SAS URI 或帐户密钥连接到存储的用户体验
@@ -1877,7 +1877,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 2016/05/17
 ### <a name="version-07201605090"></a>版本 0.7.20160509.0
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 更好的应用崩溃错误处理
 
@@ -1897,7 +1897,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 >[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * 表支持：实体的查看、查询、导出、导入和 CRUD 操作
 * 队列支持：查看、添加消息，以及取消消息排队
@@ -1929,7 +1929,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 
 ### <a name="version-07201601050"></a>版本 0.7.20160105.0
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * Linux 支持（OSX 的奇偶校验功能）
 * 添加具有共享访问签名 (SAS) 密钥的 blob 容器
@@ -1959,7 +1959,7 @@ To download previous versions of Storage Explorer, you can visit the [Releases p
 11/18/2015
 ### <a name="version-07201511160"></a>版本 0.7.20151116.0
 
-#### <a name="new"></a>新
+#### <a name="new"></a>新建
 
 * macOS 和 Windows 版本
 * 登录以查看存储帐户 - 使用组织帐户、Microsoft 帐户、2FA 等。

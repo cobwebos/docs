@@ -1,6 +1,6 @@
 ---
-title: Use multiple node pools in Azure Kubernetes Service (AKS)
-description: Learn how to create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS)
+title: 在 Azure Kubernetes 服务中使用多个节点池（AKS）
+description: 了解如何在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -14,39 +14,39 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382993"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
-In Azure Kubernetes Service (AKS), nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. The initial number of nodes and their size (SKU) are defined when you create an AKS cluster, which creates a *default node pool*. To support applications that have different compute or storage demands, you can create additional node pools. For example, use these additional node pools to provide GPUs for compute-intensive applications, or access to high-performance SSD storage.
+在 Azure Kubernetes Service （AKS）中，相同配置的节点组合在一起成为*节点池*。 这些节点池包含运行应用程序的基础 Vm。 初始节点数及其大小（SKU）是在创建 AKS 群集时定义的，该群集创建*默认节点池*。 若要支持具有不同计算或存储需求的应用程序，可以创建其他节点池。 例如，使用这些附加的节点池为计算密集型应用程序或高性能 SSD 存储提供 Gpu。
 
 > [!NOTE]
-> This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for  create/update/delete. Previously cluster operations through `az aks create` or `az aks update` used the managedCluster API and were the only option to change your control plane and a single node pool. This feature exposes a separate operation set for agent pools through the agentPool API and require use of the `az aks nodepool` command set to execute operations on an individual node pool.
+> 利用此功能，可以更好地控制如何创建和管理多个节点池。 因此，创建/更新/删除需要单独的命令。 以前的群集操作通过 `az aks create` 或 `az aks update` 使用 managedCluster API，是更改控制平面和单节点池的唯一选项。 此功能通过 agentPool API 为代理池公开单独的操作集，并要求使用 `az aks nodepool` 命令集在单个节点池上执行操作。
 
-This article shows you how to create and manage multiple node pools in an AKS cluster.
+本文介绍如何在 AKS 群集中创建和管理多个节点池。
 
 ## <a name="before-you-begin"></a>开始之前
 
-You need the Azure CLI version 2.0.76 or later installed and configured. 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 版本2.0.76 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations"></a>限制
 
-The following limitations apply when you create and manage AKS clusters that support multiple node pools:
+创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
-* You can't delete the default (first) node pool.
-* The HTTP application routing add-on can't be used.
-* The AKS cluster must use the Standard SKU load balancer to use multiple node pools, the feature is not supported with Basic SKU load balancers.
-* The AKS cluster must use virtual machine scale sets for the nodes.
-* You can't add or delete node pools using an existing Resource Manager template as with most operations. Instead, [use a separate Resource Manager template](#manage-node-pools-using-a-resource-manager-template) to make changes to node pools in an AKS cluster.
-* The name of a node pool may only contain lowercase alphanumeric characters and must begin with a lowercase letter. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters.
-* The AKS cluster can have a maximum of eight node pools.
-* The AKS cluster can have a maximum of 400 nodes across those eight node pools.
-* All node pools must reside in the same subnet.
+* 不能删除默认（第一个）节点池。
+* 无法使用 HTTP 应用程序路由加载项。
+* AKS 群集必须使用标准 SKU 负载均衡器来使用多个节点池，但基本 SKU 负载均衡器不支持此功能。
+* AKS 群集必须使用节点的虚拟机规模集。
+* 不能使用与大多数操作一样的现有资源管理器模板来添加或删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
+* 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
+* AKS 群集最多可以有8个节点池。
+* AKS 群集在这八个节点池中最多可以有400个节点。
+* 所有节点池必须位于同一子网中。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-To get started, create an AKS cluster with a single node pool. The following example uses the [az group create][az-group-create] command to create a resource group named *myResourceGroup* in the *eastus* region. An AKS cluster named *myAKSCluster* is then created using the [az aks create][az-aks-create] command. A *--kubernetes-version* of *1.13.10* is used to show how to update a node pool in a following step. You can specify any [supported Kubernetes version][supported-versions].
+若要开始，请创建具有单个节点池的 AKS 群集。 以下示例使用[az group create][az-group-create]命令在*eastus*区域中创建名为*myResourceGroup*的资源组。 然后，使用[az AKS create][az-aks-create]命令创建名为*myAKSCluster*的 AKS 群集。 *1.13.10*的*kubernetes 版本*用于说明如何在以下步骤中更新节点池。 可以指定任何[受支持的 Kubernetes 版本][supported-versions]。
 
 > [!NOTE]
-> The *Basic* load balancer SKU is **not supported** when using multiple node pools. By default, AKS clusters are created with the *Standard* load balancer SKU from Azure CLI and Azure portal.
+> 使用多节点池时，**不支持***基本*负载平衡器 SKU。 默认情况下，使用*标准*负载均衡器 SKU Azure CLI 和 AZURE 门户创建 AKS 群集。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -66,17 +66,17 @@ az aks create \
 创建群集需要几分钟时间。
 
 > [!NOTE]
-> To ensure your cluster operates reliably, you should run at least 2 (two) nodes in the default node pool, as essential system services are running across this node pool.
+> 若要确保群集正常运行，应在默认节点池中至少运行2个节点，因为基本的系统服务在此节点池上运行。
 
-When the cluster is ready, use the [az aks get-credentials][az-aks-get-credentials] command to get the cluster credentials for use with `kubectl`:
+群集准备就绪后，请使用[az aks get 凭据][az-aks-get-credentials]命令获取用于 `kubectl`的群集凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Add a node pool
+## <a name="add-a-node-pool"></a>添加节点池
 
-The cluster created in the previous step has a single node pool. Let's add a second node pool using the [az aks nodepool add][az-aks-nodepool-add] command. The following example creates a node pool named *mynodepool* that runs *3* nodes:
+在上一步中创建的群集具有单个节点池。 让我们使用[az aks nodepool add][az-aks-nodepool-add]命令添加另一个节点池。 以下示例创建一个名为*mynodepool*的节点池，运行*3*个节点：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -88,15 +88,15 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> The name of a node pool must start with a lowercase letter and can only contain alphanumeric characters. For Linux node pools the length must be between 1 and 12 characters, for Windows node pools the length must be between 1 and 6 characters.
+> 节点池的名称必须以小写字母开头，且只能包含字母数字字符。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 
-To see the status of your node pools, use the [az aks node pool list][az-aks-nodepool-list] command and specify your resource group and cluster name:
+若要查看节点池的状态，请使用[az aks node pool list][az-aks-nodepool-list]命令并指定资源组和群集名称：
 
 ```azurecli-interactive
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-The following example output shows that *mynodepool* has been successfully created with three nodes in the node pool. When the AKS cluster was created in the previous step, a default *nodepool1* was created with a node count of *2*.
+以下示例输出显示已成功地在节点池中有三个节点创建了*mynodepool* 。 在上一步中创建 AKS 群集时，创建的默认*nodepool1*的节点计数为*2*。
 
 ```console
 $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
@@ -126,21 +126,21 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> If no *OrchestratorVersion* or *VmSize* is specified when you add a node pool, the nodes are created based on the defaults for the AKS cluster. In this example, that was Kubernetes version *1.13.10* and node size of *Standard_DS2_v2*.
+> 如果在添加节点池时未指定*OrchestratorVersion*或*VmSize* ，则将基于 AKS 群集的默认值创建节点。 在此示例中，这是 Kubernetes 的版本*1.13.10*和节点大小*Standard_DS2_v2*。
 
-## <a name="upgrade-a-node-pool"></a>Upgrade a node pool
+## <a name="upgrade-a-node-pool"></a>升级节点池
  
 > [!NOTE]
-> Upgrade and scale operations on a cluster or node pool cannot occur simultaneously, if attempted an error is returned. Instead, each operation type must complete on the target resource prior to the next request on that same resource. Read more about this on our [troubleshooting guide](https://aka.ms/aks-pending-upgrade).
+> 如果尝试返回错误，则无法同时在群集或节点池上执行升级和缩放操作。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 有关详细信息，请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
 
-When your AKS cluster was initially created in the first step, a `--kubernetes-version` of *1.13.10* was specified. This set the Kubernetes version for both the control plane and the default node pool. The commands in this section explain how to upgrade a single specific node pool.
+当 AKS 群集最初是在第一步中创建的时，指定了*1.13.10* `--kubernetes-version`。 这会为控制平面和默认节点池设置 Kubernetes 版本。 本部分中的命令介绍如何升级单个特定节点池。
 
-The relationship between upgrading the Kubernetes version of the control plane and the node pool are explained in the [section below](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+[下面的部分](#upgrade-a-cluster-control-plane-with-multiple-node-pools)介绍了升级控制平面的 Kubernetes 版本与节点池之间的关系。
 
 > [!NOTE]
-> The node pool OS image version is tied to the Kubernetes version of the cluster. You will only get OS image upgrades, following a cluster upgrade.
+> 节点池 OS 映像版本绑定到群集的 Kubernetes 版本。 在群集升级之后，你只会获得 OS 映像升级。
 
-Since there are two node pools in this example, we must use [az aks nodepool upgrade][az-aks-nodepool-upgrade] to upgrade a node pool. Let's upgrade the *mynodepool* to Kubernetes *1.13.10*. Use the [az aks nodepool upgrade][az-aks-nodepool-upgrade] command to upgrade the node pool, as shown in the following example:
+因为在此示例中有两个节点池，所以必须使用[az aks nodepool upgrade][az-aks-nodepool-upgrade]升级节点池。 让我们将*mynodepool*升级到 Kubernetes *1.13.10*。 使用[az aks nodepool upgrade][az-aks-nodepool-upgrade]命令升级节点池，如以下示例中所示：
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -151,7 +151,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-List the status of your node pools again using the [az aks node pool list][az-aks-nodepool-list] command. The following example shows that *mynodepool* is in the *Upgrading* state to *1.13.10*:
+使用[az aks node pool list][az-aks-nodepool-list]命令再次列出节点池的状态。 以下示例显示*mynodepool*处于*1.13.10*的*升级*状态：
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -184,49 +184,49 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-It takes a few minutes to upgrade the nodes to the specified version.
+将节点升级到指定的版本需要几分钟时间。
 
-As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The default behavior of `az aks upgrade` is to upgrade all node pools together with the control plane to achieve this alignment. The ability to upgrade individual node pools lets you perform a rolling upgrade and schedule pods between node pools to maintain application uptime within the above constraints mentioned.
+最佳做法是，应将 AKS 群集中的所有节点池升级到相同的 Kubernetes 版本。 `az aks upgrade` 的默认行为是将所有节点池与控制平面一起升级以实现此对齐方式。 升级各个节点池的功能使你能够在节点池之间执行滚动升级和计划 pod，以维持上述约束中的应用程序正常运行时间。
 
-## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade a cluster control plane with multiple node pools
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>升级具有多个节点池的群集控制平面
 
 > [!NOTE]
-> Kubernetes uses the standard [Semantic Versioning](https://semver.org/) versioning scheme. The version number is expressed as *x.y.z*, where *x* is the major version, *y* is the minor version, and *z* is the patch version. For example, in version *1.12.6*, 1 is the major version, 12 is the minor version, and 6 is the patch version. The Kubernetes version of the control plane and the initial node pool are set during cluster creation. All additional node pools have their Kubernetes version set when they are added to the cluster. The Kubernetes versions may differ between node pools as well as between a node pool and the control plane.
+> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号表示为*x.x*，其中*x*是主要版本， *y*是次版本， *z*是修补程序版本。 例如，在版本*1.12.6*中，1表示主版本，12表示次版本，6表示修补程序版本。 在群集创建过程中，会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时，将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同。
 
-An AKS cluster has two cluster resource objects with Kubernetes versions associated.
+AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。
 
-1. A cluster control plane Kubernetes version.
-2. A node pool with a Kubernetes version.
+1. 群集控制平面 Kubernetes 版本。
+2. 具有 Kubernetes 版本的节点池。
 
-A control plane maps to one or many node pools. The behavior of an upgrade operation depends on which Azure CLI command is used.
+控件平面映射到一个或多个节点池。 升级操作的行为取决于所使用的 Azure CLI 命令。
 
-Upgrading an AKS control plane requires using `az aks upgrade`. This upgrades the control plane version and all node pools in the cluster. 
+升级 AKS 控制平面需要使用 `az aks upgrade`。 这会升级群集中的控制平面版本和所有节点池。 
 
-Issuing the `az aks upgrade` command with the `--control-plane-only` flag upgrades only the cluster control plane. None of the associated node pools in the cluster are changed.
+发出带 `--control-plane-only` 标志的 `az aks upgrade` 命令仅升级群集控制平面。 不会更改群集中的任何关联节点池。
 
-Upgrading individual node pools requires using `az aks nodepool upgrade`. This upgrades only the target node pool with the specified Kubernetes version
+升级各个节点池需要使用 `az aks nodepool upgrade`。 这仅升级具有指定 Kubernetes 版本的目标节点池
 
-### <a name="validation-rules-for-upgrades"></a>Validation rules for upgrades
+### <a name="validation-rules-for-upgrades"></a>升级的验证规则
 
-The valid Kubernetes upgrades for a cluster's control plane and node pools are validated by the following sets of rules.
+群集的控制平面和节点池的有效 Kubernetes 升级由以下规则集验证。
 
-* Rules for valid versions to upgrade node pools:
-   * The node pool version must have the same *major* version as the control plane.
-   * The node pool *minor* version must be within two *minor* versions of the control plane version.
-   * The node pool version cannot be greater than the control `major.minor.patch` version.
+* 用于升级节点池的有效版本的规则：
+   * 节点池版本必须与控制平面具有相同的*主*版本。
+   * 节点池的*次*版本必须位于控制平面版本的两个*次要*版本中。
+   * 节点池版本不能大于控件 `major.minor.patch` 版本。
 
-* Rules for submitting an upgrade operation:
-   * You cannot downgrade the control plane or a node pool Kubernetes version.
-   * If a node pool Kubernetes version is not specified, behavior depends on the client being used. Declaration in Resource Manager templates fall back to the existing version defined for the node pool if used, if none is set the control plane version is used to fall back on.
-   * You can either upgrade or scale a control plane or a node pool at a given time, you cannot submit multiple operations on a single control plane or node pool resource simultaneously.
+* 提交升级操作的规则：
+   * 不能降级控制平面或节点池 Kubernetes 版本。
+   * 如果未指定节点池 Kubernetes 版本，则行为取决于所使用的客户端。 资源管理器模板中的声明将回退到为节点池定义的现有版本（如果使用），如果未设置，则使用控制平面版本回退。
+   * 您可以在给定时间升级或缩放控制面或节点池，而不能同时在单个控制平面或节点池资源上提交多个操作。
 
-## <a name="scale-a-node-pool-manually"></a>Scale a node pool manually
+## <a name="scale-a-node-pool-manually"></a>手动缩放节点池
 
-As your application workload demands change, you may need to scale the number of nodes in a node pool. The number of nodes can be scaled up or down.
+当应用程序工作负荷需求改变时，可能需要扩展节点池中的节点数。 节点数可以向上或向下缩放。
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-To scale the number of nodes in a node pool, use the [az aks node pool scale][az-aks-nodepool-scale] command. The following example scales the number of nodes in *mynodepool* to *5*:
+若要缩放节点池中的节点数，请使用[az aks node pool scale][az-aks-nodepool-scale]命令。 下面的示例将*mynodepool*中的节点数扩展到*5*：
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -237,7 +237,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-List the status of your node pools again using the [az aks node pool list][az-aks-nodepool-list] command. The following example shows that *mynodepool* is in the *Scaling* state with a new count of *5* nodes:
+使用[az aks node pool list][az-aks-nodepool-list]命令再次列出节点池的状态。 下面的示例显示*mynodepool*处于*缩放*状态，其新计数为*5*个节点：
 
 ```console
 $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
@@ -270,24 +270,24 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 ]
 ```
 
-It takes a few minutes for the scale operation to complete.
+完成缩放操作需要几分钟时间。
 
-## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Scale a specific node pool automatically by enabling the cluster autoscaler
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>通过启用群集来自动缩放特定节点池自动缩放程序
 
-AKS offers a separate feature to automatically scale node pools with a feature called the [cluster autoscaler](cluster-autoscaler.md). This feature can be enabled per node pool with unique minimum and maximum scale counts per node pool. Learn how to [use the cluster autoscaler per node pool](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS 提供单独的功能，可使用称为[群集自动缩放程序](cluster-autoscaler.md)的功能自动缩放节点池。 可以为每个节点池启用此功能，每个节点池具有唯一的最小和最大刻度计数。 了解如何[使用每个节点池的群集自动缩放程序](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。
 
-## <a name="delete-a-node-pool"></a>Delete a node pool
+## <a name="delete-a-node-pool"></a>删除节点池
 
-If you no longer need a pool, you can delete it and remove the underlying VM nodes. To delete a node pool, use the [az aks node pool delete][az-aks-nodepool-delete] command and specify the node pool name. The following example deletes the *mynoodepool* created in the previous steps:
+如果不再需要某个池，可以将其删除并删除基础 VM 节点。 若要删除节点池，请使用[az aks node pool delete][az-aks-nodepool-delete]命令并指定节点池名称。 下面的示例删除在前面的步骤中创建的*mynoodepool* ：
 
 > [!CAUTION]
-> There are no recovery options for data loss that may occur when you delete a node pool. If pods can't be scheduled on other node pools, those applications are unavailable. Make sure you don't delete a node pool when in-use applications don't have data backups or the ability to run on other node pools in your cluster.
+> 删除节点池时，不存在任何可能发生的数据丢失恢复选项。 如果无法在其他节点池上计划 pod，则这些应用程序不可用。 当使用中的应用程序没有数据备份或在群集中的其他节点池上运行时，请确保不删除节点池。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-The following example output from the [az aks node pool list][az-aks-nodepool-list] command shows that *mynodepool* is in the *Deleting* state:
+以下来自[az aks node pool list][az-aks-nodepool-list]命令的示例输出显示： *mynodepool*处于*删除*状态：
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -320,15 +320,15 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-It takes a few minutes to delete the nodes and the node pool.
+删除节点和节点池需要几分钟时间。
 
-## <a name="specify-a-vm-size-for-a-node-pool"></a>Specify a VM size for a node pool
+## <a name="specify-a-vm-size-for-a-node-pool"></a>指定节点池的 VM 大小
 
-In the previous examples to create a node pool, a default VM size was used for the nodes created in the cluster. A more common scenario is for you to create node pools with different VM sizes and capabilities. For example, you may create a node pool that contains nodes with large amounts of CPU or memory, or a node pool that provides GPU support. In the next step, you [use taints and tolerations](#schedule-pods-using-taints-and-tolerations) to tell the Kubernetes scheduler how to limit access to pods that can run on these nodes.
+在上述示例中，若要创建节点池，请使用群集中创建的节点的默认 VM 大小。 更常见的情况是创建具有不同 VM 大小和功能的节点池。 例如，你可以创建一个节点池，其中包含具有大量 CPU 或内存的节点或提供 GPU 支持的节点池。 在下一步中，你[将使用 taints 和 tolerations](#schedule-pods-using-taints-and-tolerations)来告知 Kubernetes 计划程序如何将访问权限限制为可在这些节点上运行的 pod。
 
-In the following example, create a GPU-based node pool that uses the *Standard_NC6* VM size. These VMs are powered by the NVIDIA Tesla K80 card. For information on available VM sizes, see [Sizes for Linux virtual machines in Azure][vm-sizes].
+在以下示例中，创建使用*Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 Vm 由 NVIDIA Tesla K80 卡提供支持。 有关可用 VM 大小的信息，请参阅[Azure 中 Linux 虚拟机的大小][vm-sizes]。
 
-Create a node pool using the [az aks node pool add][az-aks-nodepool-add] command again. This time, specify the name *gpunodepool*, and use the `--node-vm-size` parameter to specify the *Standard_NC6* size:
+再次使用[az aks node pool add][az-aks-nodepool-add]命令创建节点池。 这一次，请指定名称*gpunodepool*，并使用 `--node-vm-size` 参数指定*Standard_NC6*大小：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -340,7 +340,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-The following example output from the [az aks node pool list][az-aks-nodepool-list] command shows that *gpunodepool* is *Creating* nodes with the specified *VmSize*:
+以下来自[az aks node pool list][az-aks-nodepool-list]命令的示例输出显示*gpunodepool*正在*创建*具有指定*VmSize*的节点：
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -373,11 +373,11 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-It takes a few minutes for the *gpunodepool* to be successfully created.
+成功创建*gpunodepool*需要几分钟时间。
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>Schedule pods using taints and tolerations
+## <a name="schedule-pods-using-taints-and-tolerations"></a>使用 taints 和 tolerations 计划箱
 
-You now have two node pools in your cluster - the default node pool initially created, and the GPU-based node pool. Use the [kubectl get nodes][kubectl-get] command to view the nodes in your cluster. The following example output shows the nodes:
+现在，群集中有两个节点池：最初创建的默认节点池，以及基于 GPU 的节点池。 使用[kubectl get 节点][kubectl-get]命令查看群集中的节点。 以下示例输出显示节点：
 
 ```console
 $ kubectl get nodes
@@ -392,15 +392,15 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 * 将**排斥**应用到指明了只能计划特定 pod 的节点。
 * 然后，将**容许**应用到可以*容许*节点排斥的 pod。
 
-For more information on how to use advanced Kubernetes scheduled features, see [Best practices for advanced scheduler features in AKS][taints-tolerations]
+有关如何使用高级 Kubernetes 计划功能的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][taints-tolerations]
 
-In this example, apply a taint to your GPU-based node using the [kubectl taint node][kubectl-taint] command. Specify the name of your GPU-based node from the output of the previous `kubectl get nodes` command. The taint is applied as a *key:value* and then a scheduling option. The following example uses the *sku=gpu* pair and defines pods otherwise have the *NoSchedule* ability:
+在此示例中，使用[kubectl 破坏 node][kubectl-taint]命令将破坏应用到基于 GPU 的节点。 从上一个 `kubectl get nodes` 命令的输出中指定基于 GPU 的节点的名称。 破坏将应用为*键：值*和计划选项。 下面的示例使用*sku = gpu*对，并定义了*NoSchedule*功能：
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
-The following basic example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on the GPU-based node. For a more appropriate, but time-intensive example to run a Tensorflow job against the MNIST dataset, see [Use GPUs for compute-intensive workloads on AKS][gpu-cluster].
+下面的基本示例 YAML 清单使用 toleration，以允许 Kubernetes 计划程序在基于 GPU 的节点上运行 NGINX pod。 有关对 MNIST 数据集运行 Tensorflow 作业的更合适但更耗时的示例，请参阅[AKS 上的将 gpu 用于计算密集型工作负荷][gpu-cluster]。
 
 创建名为 `gpu-toleration.yaml` 的文件，并将其复制到以下示例 YAML 中：
 
@@ -427,13 +427,13 @@ spec:
     effect: "NoSchedule"
 ```
 
-Schedule the pod using the `kubectl apply -f gpu-toleration.yaml` command:
+使用 `kubectl apply -f gpu-toleration.yaml` 命令计划 pod：
 
 ```console
 kubectl apply -f gpu-toleration.yaml
 ```
 
-It takes a few seconds to schedule the pod and pull the NGINX image. Use the [kubectl describe pod][kubectl-describe] command to view the pod status. The following condensed example output shows the *sku=gpu:NoSchedule* toleration is applied. In the events section, the scheduler has assigned the pod to the *aks-gpunodepool-28993262-vmss000000* GPU-based node:
+需要几秒钟时间来计划 pod，并请求 NGINX 图像。 使用[kubectl 说明 pod][kubectl-describe]命令查看 pod 状态。 以下精简示例输出显示了 " *sku = gpu： NoSchedule* toleration"。 在 "事件" 部分中，计划程序已将 pod 分配到*aks-gpunodepool-28993262-vmss000000*基于 GPU 的节点：
 
 ```console
 $ kubectl describe pod mypod
@@ -452,19 +452,19 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Only pods that have this taint applied can be scheduled on nodes in *gpunodepool*. Any other pod would be scheduled in the *nodepool1* node pool. If you create additional node pools, you can use additional taints and tolerations to limit what pods can be scheduled on those node resources.
+只能在*gpunodepool*中的节点上计划已应用此破坏的箱。 任何其他 pod 都将在*nodepool1*节点池中进行计划。 如果创建其他节点池，则可以使用附加的 taints 和 tolerations 来限制可以在这些节点资源上计划的 pod。
 
-## <a name="manage-node-pools-using-a-resource-manager-template"></a>Manage node pools using a Resource Manager template
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>使用资源管理器模板管理节点池
 
-When you use an Azure Resource Manager template to create and managed resources, you can typically update the settings in your template and redeploy to update the resource. With node pools in AKS, the initial node pool profile can't be updated once the AKS cluster has been created. This behavior means that you can't update an existing Resource Manager template, make a change to the node pools, and redeploy. Instead, you must create a separate Resource Manager template that updates only the node pools for an existing AKS cluster.
+使用 Azure 资源管理器模板来创建和管理资源时，通常可以更新模板中的设置，并重新部署以更新资源。 对于 AKS 中的节点池，在创建 AKS 群集后，初始节点池配置文件将无法更新。 此行为意味着你不能更新现有资源管理器模板，更改节点池，并重新部署。 相反，您必须创建单独的资源管理器模板，该模板仅更新现有 AKS 群集的节点池。
 
-Create a template such as `aks-agentpools.json` and paste the following example manifest. This example template configures the following settings:
+创建一个模板（如 `aks-agentpools.json`），并粘贴下面的示例清单。 此示例模板配置以下设置：
 
-* Updates the *Linux* node pool named *myagentpool* to run three nodes.
-* Sets the nodes in the node pool to run Kubernetes version *1.13.10*.
-* Defines the node size as *Standard_DS2_v2*.
+* 将名为*myagentpool*的*Linux*节点池更新为运行三个节点。
+* 将节点池中的节点设置为运行 Kubernetes 版本*1.13.10*。
+* 将节点大小定义为*Standard_DS2_v2*。
 
-Edit these values as need to update, add, or delete node pools as needed:
+根据需要编辑这些值，以更新、添加或删除节点池：
 
 ```json
 {
@@ -533,7 +533,7 @@ Edit these values as need to update, add, or delete node pools as needed:
 }
 ```
 
-Deploy this template using the [az group deployment create][az-group-deployment-create] command, as shown in the following example. You are prompted for the existing AKS cluster name and location:
+使用[az group deployment create][az-group-deployment-create]命令部署此模板，如以下示例中所示。 系统将提示你输入现有的 AKS 群集名称和位置：
 
 ```azurecli-interactive
 az group deployment create \
@@ -541,32 +541,32 @@ az group deployment create \
     --template-file aks-agentpools.json
 ```
 
-It may take a few minutes to update your AKS cluster depending on the node pool settings and operations you define in your Resource Manager template.
+根据资源管理器模板中定义的节点池设置和操作，更新 AKS 群集可能需要几分钟时间。
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Assign a public IP per node in a node pool
+## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
 
 > [!WARNING]
-> During the preview of assigning a public IP per node, it cannot be used with the *Standard Load Balancer SKU in AKS* due to possible load balancer rules conflicting with VM provisioning. While in preview you must use the *Basic Load Balancer SKU* if you need to assign a public IP per node.
+> 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 在预览中，如果需要为每个节点分配一个公共 IP，则必须使用*基本负载均衡器 SKU* 。
 
-AKS nodes do not require their own public IP addresses for communication. However, some scenarios may require nodes in a node pool to have their own public IP addresses. An example is gaming, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. This can be achieved by registering for a separate preview feature, Node Public IP (preview).
+AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下，可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此，可以注册单独的预览功能 "节点公共 IP （预览版）"。
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-After successful registration, deploy an Azure Resource Manager template following the same instructions as [above](#manage-node-pools-using-a-resource-manager-template) and add the boolean value property `enableNodePublicIP` to agentPoolProfiles. Set the value to `true` as by default it is set as `false` if not specified. This is a create-time only property and requires a minimum API version of 2019-06-01. This can be applied to both Linux and Windows node pools.
+注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并将 "布尔值" 属性 `enableNodePublicIP` 添加到 "agentPoolProfiles"。 将值设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-In this article, you created an AKS cluster that includes GPU-based nodes. To reduce unnecessary cost, you may want to delete the *gpunodepool*, or the whole AKS cluster.
+本文创建了包含基于 GPU 的节点的 AKS 群集。 为了降低不必要的成本，你可能想要删除*gpunodepool*或整个 AKS 群集。
 
-To delete the GPU-based node pool, use the [az aks nodepool delete][az-aks-nodepool-delete] command as shown in following example:
+若要删除基于 GPU 的节点池，请使用[az aks nodepool delete][az-aks-nodepool-delete]命令，如以下示例中所示：
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-To delete the cluster itself, use the [az group delete][az-group-delete] command to delete the AKS resource group:
+若要删除群集本身，请使用[az group delete][az-group-delete]命令删除 AKS 资源组：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -574,9 +574,9 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-In this article, you learned how to create and manage multiple node pools in an AKS cluster. For more information about how to control pods across node pools, see [Best practices for advanced scheduler features in AKS][operator-best-practices-advanced-scheduler].
+本文介绍了如何在 AKS 群集中创建和管理多个节点池。 有关如何跨节点池控制 pod 的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][operator-best-practices-advanced-scheduler]。
 
-To create and use Windows Server container node pools, see [Create a Windows Server container in AKS][aks-windows].
+若要创建和使用 Windows Server 容器节点池，请参阅[在 AKS 中创建 Windows server 容器][aks-windows]。
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

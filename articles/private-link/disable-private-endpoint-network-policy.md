@@ -1,6 +1,6 @@
 ---
-title: Disable network policies for private endpoints in Azure
-description: Learn how to disable network policies for private endpoints.
+title: 在 Azure 中禁用专用终结点的网络策略
+description: 了解如何禁用专用终结点的网络策略。
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,16 +14,16 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224807"
 ---
-# <a name="disable-network-policies-for-private-endpoints"></a>Disable network policies for private endpoints
+# <a name="disable-network-policies-for-private-endpoints"></a>禁用专用终结点的网络策略
 
-Network policies like network security groups (NSG) are not supported for private endpoints. In order to deploy a Private Endpoint on a given subnet, an explicit disable setting is required on that subnet. This setting is only applicable for the Private Endpoint. For other resources in the subnet, access is controlled based on Network Security Groups (NSG) security rules definition. 
+专用终结点不支持网络安全组（NSG）等网络策略。 若要在给定的子网上部署专用终结点，需要在该子网上进行显式禁用设置。 此设置仅适用于专用终结点。 对于子网中的其他资源，访问权限基于网络安全组（NSG）安全规则定义进行控制。 
  
-When using the portal to create a private endpoint, this setting is automatically disabled as part of the create process. Deployment using other clients requires an additional step to change this setting. You can disable the setting using cloud shell from the Azure portal, or local installations of Azure PowerShell, Azure CLI, or use Azure Resource Manager templates.  
+使用门户创建专用终结点时，会在创建过程中自动禁用此设置。 使用其他客户端进行的部署需要额外的步骤来更改此设置。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用此设置。  
  
-The following examples describe how to disable `PrivateEndpointNetworkPolicies` for a virtual network named *myVirtualNetwork* with a *default* subnet hosted in a resource group named *myResourceGroup*.
+以下示例介绍如何使用名为*myResourceGroup*的资源组中托管的*默认*子网来禁用名为*myVirtualNetwork*的虚拟网络的 `PrivateEndpointNetworkPolicies`。
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
-This section describes how to disable subnet private endpoint policies using Azure PowerShell.
+本部分介绍如何使用 Azure PowerShell 禁用子网专用终结点策略。
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>使用 Azure CLI
-This section describes how to disable subnet private endpoint policies using Azure CLI.
+本部分介绍如何使用 Azure CLI 禁用子网专用终结点策略。
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-endpoint-network-policies true
 ```
 ## <a name="using-a-template"></a>使用模板
-This section describes how to disable subnet private endpoint policies using Azure Resource Manager Template.
+本部分介绍如何使用 Azure 资源管理器模板禁用子网专用终结点策略。
 ```json
 { 
           "name": "myVirtualNetwork", 
@@ -70,5 +70,5 @@ This section describes how to disable subnet private endpoint policies using Azu
 } 
 ```
 ## <a name="next-steps"></a>后续步骤
-- Learn more about [Azure private endpoint](private-endpoint-overview.md)
+- 了解有关[Azure 专用终结点](private-endpoint-overview.md)的详细信息
  

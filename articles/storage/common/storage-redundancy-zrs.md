@@ -98,14 +98,14 @@ Microsoft 将继续在其他 Azure 区域推出 ZRS。 请不时地查看 [Azure
 可以通过 [Azure 支持门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)请求实时迁移。 在门户中，选择要转换为 ZRS 的存储帐户。
 1. 选择“新建支持请求”
 2. 根据帐户信息填写“基本信息”。 在“服务”部分，选择“存储帐户管理”以及要转换为 ZRS 的资源。 
-3. 选择“**下一步**”。 
+3. 选择“下一步”。 
 4. 在“问题”部分指定以下值： 
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择**迁移到 ZRS**。
     - **标题**：键入描述性的标题，例如“ZRS 帐户迁移”。
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 ZRS。 
-5. 选择“**下一步**”。
+5. 选择“下一步”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
 7. 选择“创建”。
 
@@ -163,7 +163,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [Azure 存储复制](storage-redundancy.md)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)

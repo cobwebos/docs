@@ -84,7 +84,7 @@ HealthEvents          :
 
 假设群集资源管理器正尝试放置某些服务，但没有任何可行的解决方案。 如果不能放置服务，通常是由于以下原因之一引起的：
 
-1. 某个暂时性情况导致无法正确放置此服务实例或副本
+1. 某个暂时性状态导致无法正确放置此服务实例或副本
 2. 不满足服务的放置要求。
 
 在这些情况下，群集资源管理器的运行状况报告可帮助确定不能放置服务的原因。 我们将此过程称为“约束消除序列”。 在此过程中，系统将逐步了解配置的约束如何影响服务，并记录约束消除的因素。 这样，当无法放置服务时，便可以看到哪些节点已被消除及其原因。
@@ -95,7 +95,7 @@ HealthEvents          :
 * ReplicaExclusionStatic 和 ReplicaExclusionDynamic：这些约束指示系统拒绝某解决方案是由于同一分区中的两个服务对象必须放置在同一节点上。 不允许这样操作，因为该节点的失败会过度地影响该分区。 ReplicaExclusionStatic 和 ReplicaExclusionDynamic 遵循几乎相同的规则，有所差别也无关紧要。 如果看到的约束消除序列包含 ReplicaExclusionStatic 或 ReplicaExclusionDynamic 约束，群集资源管理器就会认为没有足够的节点。 这要求剩余的解决方案能够使用这些不允许使用的无效放置。 序列中的其他约束通常会告诉我们首先要消除节点的原因。
 * **PlacementConstraint**：如果看到此消息，表示已消除了一些节点，因为它们不符合服务的放置约束。 我们在此消息中描绘当前配置的放置约束。 如果定义了放置约束，则这种情况是正常的。 但是，如果放置约束错误地导致消除了过多的节点，则会看到这种结果。
 * NodeCapacity：此约束表示群集资源管理器无法将副本放在指定的节点上，因为这样放置会超出容量。
-* **Affinity**：此约束表示无法将副本放在受影响的节点上，因为这会导致违反相关性约束。 [此文](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **Affinity**：此约束表示无法将副本放在受影响的节点上，因为这会导致违反相关性约束。 [此文](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)介绍了有关相关性的详细信息。
 * **FaultDomain** 和 **UpgradeDomain**：如果将副本放在指定的节点上会导致副本打包在特定的容错域或升级域中，此约束将消除节点。 [容错域与升级域约束及最终行为](service-fabric-cluster-resource-manager-cluster-description.md)中的主题提供了几个介绍此约束的示例
 * PreferredLocation：通常我们看不到这个会将节点从解决方案中删除的约束，因为该约束默认作为优化运行。 首选的位置约束还会出现在升级期间。 在升级期间，该约束用于将服务移回到开始升级时所在的位置。
 
@@ -114,7 +114,7 @@ HealthEvents          :
 
 在所有约束中，可能觉得：“嘿 – 我认为容错域约束在系统中是最重要的。 为了确保不违反故障域约束，我情愿违反其他约束。”
 
-可为约束配置不同的优先级别。 它们是：
+可为约束配置不同的优先级别。 这些是：
 
    - “硬”(0)
    - “软”(1)

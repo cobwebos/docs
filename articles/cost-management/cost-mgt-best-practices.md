@@ -93,9 +93,9 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 #### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)
 
-- 无最低限额或承诺
+- 无最低限额或承诺使用量
 - 有竞争力的定价
-- 只为自己使用的东西付费
+- 只需为使用的服务付费
 - 随时可以取消
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)

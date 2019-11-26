@@ -33,7 +33,7 @@ ms.locfileid: "74186180"
 本文提供有关使用媒体服务实时传送视频流的概述和指导，并提供其他相关文章的链接。
  
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="dynamic-packaging"></a>动态打包
 

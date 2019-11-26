@@ -11,18 +11,18 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74224435"
 ---
-| 层 | 免费 | 基本 | 标准版 |
+| 层 | 免费 | 基本 | 标准 |
 | --- | --- | --- | --- |
-| API 调用 |500,000 |1.5 million per unit |15 million per unit |
-| Active devices |500 |无限制 |无限制 |
-| 调整规模 |N/A |最多 6 个单位 |无限单位 |
-| 推送通知 |Azure Notification Hubs Free tier included, up to 1 million pushes |Notification Hubs Basic tier included, up to 10 million pushes |Notification Hubs Standard tier included, up to 10 million pushes |
-| Real-time messaging/<br/>Web Socket |受限制 |350 per mobile service |无限制 |
-| 脱机同步 |受限制 |包含 |包含 |
-| 计划的作业 |受限制 |包含 |包含 |
-| Azure SQL Database (required) <br/>对其他容量收取标准资费 |附送 20 MB |附送 20 MB |附送 20 MB |
-| CPU 容量 |60 minutes per day |无限制 |无限制 |
-| 出站数据传输 |165 MB per day (daily rollover) |包含 |包含 |
+| API 调用 |500,000 |每单位1500000 |每单位15000000 |
+| 活动设备数 |500 |不受限制 |不受限制 |
+| 缩放 |不适用 |最多 6 个单位 |单位数不受限制 |
+| 推送通知 |随附 Azure 通知中心免费层，最多1000000推送 |包括通知中心基本层，最多10000000推送 |包括通知中心标准层，最多10000000推送 |
+| 实时消息传送/<br/>Web 套接字 |受限 |每个移动服务350 |不受限制 |
+| 脱机同步 |受限 |附送 |附送 |
+| 计划的作业 |受限 |附送 |附送 |
+| Azure SQL 数据库（必需） <br/>对其他容量收取标准资费 |附送 20 MB |附送 20 MB |附送 20 MB |
+| CPU 容量 |每日60分钟 |不受限制 |不受限制 |
+| 出站数据传输 |每日 165 MB （每日滚动更新） |附送 |附送 |
 
-For more information on limits and pricing, see [Azure Mobile Services pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+有关限制和定价的详细信息，请参阅[Azure 移动服务定价](https://azure.microsoft.com/pricing/details/mobile-services/)。 
 

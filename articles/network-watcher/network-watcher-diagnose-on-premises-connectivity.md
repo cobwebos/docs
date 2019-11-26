@@ -17,7 +17,7 @@ ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
 ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/21/2019
 ms.locfileid: "74275943"
@@ -31,7 +31,7 @@ ms.locfileid: "74275943"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>应用场景
 
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
@@ -65,7 +65,7 @@ ms.locfileid: "74275943"
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
-![1 个][1]
+![1][1]
 
 打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。
 
@@ -82,7 +82,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 ### <a name="gateway"></a>网关
 
-| 错误类型 | 原因 | 日志|
+| 错误类型 | Reason | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
 | GatewayNotFound | 找不到网关，或网关未预配。 |否|
@@ -97,7 +97,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 ### <a name="connection"></a>连接
 
-| 错误类型 | 原因 | 日志|
+| 错误类型 | Reason | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
 | GatewayNotFound | 找不到网关，或网关未预配。 |否|

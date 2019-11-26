@@ -1,6 +1,6 @@
 ---
-title: Understand API authentication - Azure Digital Twins | Microsoft Docs
-description: Learn how to connect to and authenticate with APIs using Azure Digital Twins.
+title: 了解 API 身份验证-Azure 数字孪生 |Microsoft Docs
+description: 了解如何使用 Azure 数字孪生连接到 Api 并向其进行身份验证。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,14 +15,14 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456902"
 ---
-# <a name="connect-to-and-authenticate-with-apis"></a>Connect to and authenticate with APIs
+# <a name="connect-to-and-authenticate-with-apis"></a>连接到 Api 并向其进行身份验证
 
-Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份验证并保护应用程序。 Azure AD 支持各种新式体系结构的身份验证。 所有这些体系结构都以行业标准协议 OAuth 2.0 或 OpenID Connect 为基础。 此外，开发人员可以使用 Azure AD 生成单租户和业务线 (LOB) 应用程序。 Developers also can use Azure AD to develop [multitenant applications](how-to-multitenant-applications.md).
+Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份验证并保护应用程序。 Azure AD 支持各种新式体系结构的身份验证。 所有这些体系结构都以行业标准协议 OAuth 2.0 或 OpenID Connect 为基础。 此外，开发人员可以使用 Azure AD 生成单租户和业务线 (LOB) 应用程序。 开发人员还可以使用 Azure AD 开发多[租户应用程序](how-to-multitenant-applications.md)。
 
 有关 Azure AD 的概述，请访问[基础知识页](https://docs.microsoft.com/azure/active-directory/fundamentals/)的分步指南、概念和快速入门。
 
 > [!TIP]
-> Follow the [Tutorial](tutorial-facilities-setup.md) to set up and run an Azure Digital Twins sample app.
+> 按照[教程](tutorial-facilities-setup.md)设置并运行 Azure 数字孪生示例应用。
 
 若要将某个应用程序或服务与 Azure AD 进行集成，开发人员必须先将该应用程序注册到 Azure AD。 有关详细说明和屏幕截图，请参阅[此快速入门](../active-directory/develop/quickstart-register-app.md)。
 
@@ -35,9 +35,9 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 * 守护程序或服务器应用程序到 Web API：没有 Web UI 的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
 
 > [!IMPORTANT]
-> Azure Digital Twins supports both of the following authentication libraries:
-> * The more recent [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * The [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
+> Azure 数字孪生支持以下两种身份验证库：
+> * 最新的[Microsoft 身份验证库（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Active Directory 身份验证库（ADAL）](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>从中间层 Web API 调用数字孪生
 

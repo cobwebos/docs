@@ -31,7 +31,7 @@ ms.locfileid: "74277731"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>应用场景
 
 在以下方案中，我们会将 Power BI Desktop 连接到已配置为 NSG 流日志数据接收器的存储帐户。 连接到存储帐户后，Power BI 将下载并分析日志，提供网络安全组记录的流量的可视化形式。
 

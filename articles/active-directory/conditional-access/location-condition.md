@@ -1,5 +1,5 @@
 ---
-title: Location condition in Azure Active Directory Conditional Access
+title: Azure Active Directory 条件访问中的位置条件
 description: 了解如何使用位置条件基于用户的网络位置来控制对云应用的访问。
 services: active-directory
 ms.service: active-directory
@@ -19,71 +19,71 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380297"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>What is the location condition in Azure Active Directory Conditional Access? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users can access your cloud apps. The location condition of a Conditional Access policy enables you to tie access controls settings to the network locations of your users.
+使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用的方式。 使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。
 
 本文提供配置位置条件所需的信息。
 
 ## <a name="locations"></a>位置
 
-Azure AD enables single sign-on to devices, apps, and services from anywhere on the public internet. 使用位置条件，可以基于用户的网络位置来控制对云应用的访问。 位置条件的常见用例如下：
+Azure AD 允许从公共 internet 上的任何位置单一登录到设备、应用和服务。 使用位置条件，可以基于用户的网络位置来控制对云应用的访问。 位置条件的常见用例如下：
 
 - 要求用户在企业网络外部访问服务时执行多重身份验证。
 - 阻止特定国家或地区的用户访问服务。
 
-A location is a label for a network location that either represents a named location or multi-factor authentication Trusted IPs.
+位置是网络位置的标签，表示命名位置或多重身份验证信任的 IP。
 
 ## <a name="named-locations"></a>命名位置
 
-With named locations, you can create logical groupings of IP address ranges or countries and regions.
+使用命名位置可以创建 IP 地址范围或者国家和地区的逻辑分组。
 
-You can access your named locations in the **Manage** section of the Conditional Access page.
+可在条件访问页的“管理”部分中访问命名位置。
 
-![Named locations in Conditional Access](./media/location-condition/02.png)
+![条件访问中的命名位置](./media/location-condition/02.png)
 
 命名位置包括以下组成部分：
 
-![Create a new named location](./media/location-condition/42.png)
+![创建新命名位置](./media/location-condition/42.png)
 
 - **名称** - 命名位置的显示名称。
-- **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 Specifying an IPv6 address range is not supported.
+- **IP 范围** - 采用 CIDR 格式的一个或多个 IPv4 地址范围。 不支持指定 IPv6 地址范围。
 
    > [!NOTE]
-   > IPv6 address ranges cannot currently be included in a named location. This means IPv6 ranges cannot be excluded from a Conditional Access policy.
+   > IPv6 地址范围当前不能包含在命名位置。 这意味着不能从条件性访问策略中排除 IPv6 范围。
 
-- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 In addition to Conditional Access, trusted named locations are also used by Azure Identity Protection and Azure AD security reports to reduce [false positives](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
+- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除了条件性访问以外，Azure Identity Protection 还会使用受信任的命名位置，并 Azure AD 安全报告来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
-- **Include unknown areas** - Some IP addresses are not mapped to a specific country or region. 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
+- **包含未知区域** - 某些 IP 地址未映射到特定的国家或地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
-可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 You can configure locations based on of the following limitations:
+可配置的已命名位置数受限于 Azure AD 中相关对象的大小。 可以根据以下限制来配置位置：
 
 - 一个命名位置最多可以有 1200 个 IP 范围。
 - 最多可有 90 个命名位置，其中每个都分配有一个 IP 范围。
 
-Conditional Access policy applies to IPv4 and IPv6 traffic. Currently named locations do not allow IPv6 ranges to be configured. This limitation causes the following situations:
+条件访问策略适用于 IPv4 和 IPv6 流量。 目前，命名位置不允许配置 IPv6 范围。 此限制导致以下情况：
 
-- Conditional Access policy cannot be targeted to specific IPv6 ranges
-- Conditional Access policy cannot exclude specific IPV6 ranges
+- 条件访问策略的目标不能是特定的 IPv6 范围
+- 条件访问策略不能排除特定的 IPv6 范围
 
-If a policy is configured to apply to “Any location”, it will apply to IPv4 and IPv6 traffic. Named locations configured for specified countries and regions only support IPv4 addresses. IPv6 traffic is only included if the option to “include unknown areas” selected.
+如果配置的策略适用于“任何位置”，则适用于 IPv4 和 IPv6 流量。 为指定国家和地区配置的命名位置仅支持 IPv4 地址。 只有在“包含未知区域”选项已选中的情况下，才会包括 IPv6 流量。
 
 ## <a name="trusted-ips"></a>受信任的 IP
 
-还可以在[多重身份验证服务设置](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中配置 IP 地址范围，用于表示组织的本地 Intranet。 使用此功能最多可以配置 50 个 IP 地址范围。 IP 地址范围采用 CIDR 格式。 For more information, see [Trusted IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
+还可以在[多重身份验证服务设置](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中配置 IP 地址范围，用于表示组织的本地 Intranet。 使用此功能最多可以配置 50 个 IP 地址范围。 IP 地址范围采用 CIDR 格式。 有关详细信息，请参阅[受信任的 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)。  
 
-If you have Trusted IPs configured, they show up as **MFA Trusted IPS** in the list of locations for the location condition.
+如果已配置受信任的 IP，这些 IP 将作为“MFA 受信任的 IP”显示在位置条件的位置列表中。
 
 ### <a name="skipping-multi-factor-authentication"></a>跳过多重身份验证
 
-在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。 此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 For more information, see [Enable the Trusted IPs feature by using Conditional Access](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。 此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 IP 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
 
-After checking this option, including the named location **MFA Trusted IPS** will apply to any policies with this option selected.
+选中此选项之后，“MFA 受信任的 IP”（包括命名位置）将应用到已选择此选项的所有策略。
 
-For mobile and desktop applications, which have long lived session lifetimes, Conditional Access is periodically reevaluated. 默认设置是一小时评估一次。 如果只在初始身份验证时才颁发内部企业网络声明，则 Azure AD 可能没有受信任的 IP 范围列表。 在这种情况下，更难以确定用户是否仍在企业网络中：
+对于会话生存期较长的移动和桌面应用程序，将定期重新评估条件访问。 默认设置是一小时评估一次。 如果只在初始身份验证时才颁发内部企业网络声明，则 Azure AD 可能没有受信任的 IP 范围列表。 在这种情况下，更难以确定用户是否仍在企业网络中：
 
 1. 检查用户的 IP 地址是否在某个受信任的 IP 范围内。
-2. Check whether the first three octets of the user’s IP address match the first three octets of the IP address of the initial authentication. The IP address is compared with the initial authentication when the inside corporate network claim was originally issued and the user location was validated.
+2. 检查用户 IP 地址的前三个八位字节是否匹配初始身份验证 IP 地址的前三个八位字节。 当内部企业网络声明最初是初次颁发且用户位置已经过验证时，IP 地址将与初始身份验证进行比较。
 
 如果这两个步骤均失败，则将用户视为不再位于受信任的 IP 中。
 
@@ -116,21 +116,21 @@ For mobile and desktop applications, which have long lived session lifetimes, Co
 
 ### <a name="when-is-a-location-evaluated"></a>何时评估位置？
 
-Conditional Access policies are evaluated when:
+条件访问策略的评估时机：
 
 - 当用户最初登录到 Web 应用、移动应用或桌面应用程序时。
-- 当使用新式身份验证的移动应用或桌面应用程序使用刷新令牌来获取新的访问令牌时。 By default this check is once an hour.
+- 当使用新式身份验证的移动应用或桌面应用程序使用刷新令牌来获取新的访问令牌时。 默认情况下此检查一小时进行一次。
 
-This check means for mobile and desktop applications using modern authentication, a change in location would be detected within an hour of changing the network location. 对于不使用新式身份验证的移动应用和桌面应用程序，此策略将应用于每个令牌请求。 请求的频率可能会因应用程序而异。 同样，对于 Web 应用程序，此策略在初始登录时应用，并适合用于 Web 应用程序的会话生存期。 由于不同应用程序的会话生存期不同，因此策略评估间隔的时间也会有所不同。 每次应用程序请求新的登录令牌时，就会应用一次此策略。
+对于使用新式身份验证的移动应用和桌面应用程序，此检查意味着，在更改网络位置的一小时内会检测到位置更改。 对于不使用新式身份验证的移动应用和桌面应用程序，此策略将应用于每个令牌请求。 请求的频率可能会因应用程序而异。 同样，对于 Web 应用程序，此策略在初始登录时应用，并适合用于 Web 应用程序的会话生存期。 由于不同应用程序的会话生存期不同，因此策略评估间隔的时间也会有所不同。 每次应用程序请求新的登录令牌时，就会应用一次此策略。
 
 默认情况下，Azure AD 每小时颁发一个令牌。 在移出企业网络后的一小时内，将使用新式身份验证对应用程序实施该策略。
 
 ### <a name="user-ip-address"></a>用户 IP 地址
 
-在策略评估中使用的 IP 地址是用户的公共 IP 地址。 For devices on a private network, this IP address is not the client IP of the user’s device on the intranet, it is the address used by the network to connect to the public internet.
+在策略评估中使用的 IP 地址是用户的公共 IP 地址。 对于专用网络中的设备，此 IP 地址不是 Intranet 中用户设备的客户端 IP，而是专用网络连接到公共 Internet 时使用的地址。
 
 > [!WARNING]
-> If your device has only an IPv6 address, configuring the location condition is not supported.
+> 如果设备只有一个 IPv6 地址，则不支持配置位置条件。
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>批量上传和下载命名位置
 
@@ -144,7 +144,7 @@ This check means for mobile and desktop applications using modern authentication
 
 ### <a name="api-support-and-powershell"></a>API 支持和 PowerShell
 
-API and PowerShell is not yet supported for named locations, or for Conditional Access policies.
+API 和 PowerShell 尚不支持命名位置或条件访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 

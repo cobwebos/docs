@@ -1,5 +1,5 @@
 ---
-title: Registry authentication options
+title: 注册表身份验证选项
 description: Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识、使用服务主体以及使用可选的管理凭据进行登录。
 ms.topic: article
 ms.date: 12/21/2018
@@ -15,11 +15,11 @@ ms.locfileid: "74455384"
 
 可通过几种方法使用 Azure 容器注册表进行身份验证，并且每种方法适用于一种或多种注册表使用方案。
 
-Recommended ways include authenticating to a registry directly via [individual login](#individual-login-with-azure-ad), or your applications and container orchestrators can perform unattended, or "headless," authentication by using an Azure Active Directory (Azure AD) [service principal](#service-principal).
+建议的方法包括通过[个人登录](#individual-login-with-azure-ad)来直接向注册表进行身份验证，或者应用程序和容器业务流程协调程序可以通过使用 Azure Active Directory (Azure AD) [服务主体](#service-principal)执行无人参与或“无外设”身份验证。
 
 ## <a name="individual-login-with-azure-ad"></a>使用 Azure AD 进行单次登录
 
-直接使用注册表时（例如向开发工作站拉取映像和从中推送映像），可通过在 [Azure CLI](/cli/azure/install-azure-cli) 中使用 [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) 命令进行身份验证：
+直接使用注册表时（例如向开发工作站拉取映像和从中推送映像），可通过在 [Azure CLI](/cli/azure/acr?view=azure-cli-latest#az-acr-login) 中使用 [az acr login](/cli/azure/install-azure-cli) 命令进行身份验证：
 
 ```azurecli
 az acr login --name <acrName>
@@ -45,14 +45,14 @@ az acr login --name <acrName>
 
 有关完整的角色列表，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。
 
-For CLI scripts to create a service principal for authenticating with an Azure container registry, and guidance on using a service principal, see [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md).
+有关创建服务主体以使用 Azure 容器注册表进行身份验证的 CLI 脚本，以及有关使用服务主体的指导，请参阅[使用服务主体进行 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 ## <a name="admin-account"></a>管理员帐户
 
 每个容器注册表包含一个管理员用户帐户，此帐户默认禁用。 可以在 Azure 门户中或通过使用 Azure CLI 或其他 Azure 工具启用管理员用户并管理其凭据。
 
 > [!IMPORTANT]
-> 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 We do not recommend sharing the admin account credentials among multiple users. 对于使用管理员帐户进行身份验证的所有用户，他们都将显示为对注册表具有推送和拉取访问权限的单个用户。 更改或禁用此帐户会禁用使用凭据的所有用户的注册表访问权限。 建议用户和服务主体在无外设方案中使用单个标识。
+> 管理员帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要在多个用户之间共享管理帐户凭据。 对于使用管理员帐户进行身份验证的所有用户，他们都将显示为对注册表具有推送和拉取访问权限的单个用户。 更改或禁用此帐户会禁用使用凭据的所有用户的注册表访问权限。 建议用户和服务主体在无外设方案中使用单个标识。
 >
 
 管理员帐户有两个密码，这两个密码都可以再生成。 使用这两个密码，可以在再生成一个密码时使用另一个密码保持与注册表的连接。 如果管理员帐户已启用，可以在系统提示时将用户名和/或密码传递到 `docker login` 命令，以对注册表进行基本身份验证。 例如：
@@ -61,9 +61,9 @@ For CLI scripts to create a service principal for authenticating with an Azure c
 docker login myregistry.azurecr.io 
 ```
 
-For best practices to manage login credentials, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/) command reference.
+有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
 
-若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 命令的 `--admin-enabled` 参数：
+若要启用现有注册表的管理员用户，可以在 Azure CLI 中使用 `--admin-enabled`az acr update[ 命令的 ](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 参数：
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

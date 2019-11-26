@@ -1,5 +1,5 @@
 ---
-title: View service principal of a managed identity - Azure CLI - Azure AD
+title: 查看托管标识的服务主体-Azure CLI-Azure AD
 description: 使用 Azure CLI 查看托管标识的服务主体的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -28,7 +28,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文将介绍如何使用 Azure CLI 查看托管标识的服务主体。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -36,7 +36,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 若要运行 CLI 脚本示例，可以使用下列三种方法：
     - 在 Azure 门户中使用 [Azure Cloud Shell](../../cloud-shell/overview.md)（见下一部分）。
     - 单击各代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。
-    - 如果喜欢使用本地 CLI 控制台并使用 `az login` 登录 Azure，请[安装最新版的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+    - 如果喜欢使用本地 CLI 控制台并使用 [ 登录 Azure，请](https://docs.microsoft.com/cli/azure/install-azure-cli)安装最新版的 Azure CLI`az login`
  
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

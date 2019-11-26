@@ -41,14 +41,14 @@ Log Analytics 的默认定价是基于数据量引入的即**用即付**模型�
   - 监视的 Vm 数
   - 从每个受监视的 VM 收集的数据的类型 
   
-除了即用即付模型外，Log Analytics 还提供了**容量预留**层，使你可以将其保存为与即用即付价格相比最多25%。 产能预留价格使你可以购买起价 100 GB/天的保留。 将按现用现付费率对超出预订级别的任何使用量进行计费。 容量预留层具有31天承诺期。 在承诺期内，您可以更改为更高级的容量预留层（这将重新启动31天承诺期间），但您不能移回即用即付或更低的容量预留层，直到完. 
+除了即用即付模型外，Log Analytics 还提供了**容量预留**层，使你可以将其保存为与即用即付价格相比最多25%。 容量预留定价模型允许每天购买 100 GB 的初始预留容量。 超过预留级别的任何用量将按即用即付费率计费。 容量预留层具有31天承诺期。 在承诺期内，您可以更改为更高级的容量预留层（这将重新启动31天承诺期间），但您不能移回即用即付或更低的容量预留层，直到完. 
 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)Log Analytics 即用即付和产能预留定价。 
 
 另请注意，某些解决方案（例如[Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)和[azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)）有自己的定价模型。 
 
-## <a name="estimating-the-costs-to-manage-your-environment"></a>估计管理环境的成本 
+## <a name="estimating-the-costs-to-manage-your-environment"></a>估算环境的管理成本 
 
-如果尚未使用 Azure Monitor 日志，可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的“Azure Monitor”磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Log Analytics"。  可在此处输入要从每个 VM 收集的 Vm 数和 GB 数据。 通常，从典型的 Azure VM 引入的数据月为1到 3 GB。 如果已在评估 Azure Monitor 的日志，则可以使用自己的环境中的数据统计信息。 请参阅下面有关如何确定[受监视 vm 的数目](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data)以及[工作区引入的数据量](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)。 
+如果尚未使用 Azure Monitor 日志，可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Log Analytics 的成本。 首先在搜索框中输入“Azure Monitor”，然后单击生成的“Azure Monitor”磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Log Analytics"。  可在此处输入要从每个 VM 收集的 Vm 数和 GB 数据。 通常，从典型的 Azure VM 引入的数据月为1到 3 GB。 如果已经评估了 Azure Monitor 日志，则可以使用自己环境中的数据统计信息。 请参阅下文来了解如何确定[受监视 VM 数](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data)和[工作区引入的数据量](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>查看自己的使用情况和估算成本
 
@@ -68,7 +68,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供大量有用的功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（到 Log Analytics 的 microsoft.operationalinsights/工作区），可以跟踪你的支出。
 
-通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源的使用情况（例如 Log Analytics 工作区）。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一次筛选来找到 Log Analytics 工作区的使用情况，以显示 "Insights 和分析" （由某些旧的定价层使用）和 "Log Analytics"，然后在 "实例" 上添加筛选器ID "列是" 包含工作区 "。 使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  有更多详细信息可帮助你[了解自己的 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+[从 Azure 门户下载使用情况](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)可以更好地了解使用情况。 在下载的电子表格中，你可以查看每天每个 Azure 资源的使用情况（例如 Log Analytics 工作区）。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一次筛选来找到 Log Analytics 工作区的使用情况，以显示 "Insights 和分析" （由某些旧的定价层使用）和 "Log Analytics"，然后在 "实例" 上添加筛选器ID "列是" 包含工作区 "。 使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  有更多详细信息可帮助你[了解自己的 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 ## <a name="changing-pricing-tier"></a>更改定价层
 
@@ -101,7 +101,7 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 
 ### <a name="default-retention"></a>默认保留期
 
-若要设置工作区的默认保留期， 
+若要设置工作区的默认保留期，请执行以下操作： 
  
 1. 在 Azure 门户的工作区中，从左窗格中选择 "**使用情况和估计成本**"。
 2. 在“使用情况和预估成本”页面顶部，单击“数据量管理”。
@@ -109,31 +109,31 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 
     ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-还可以[通过 Azure 资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 仅通过 Azure 资源管理器公开此功能。 
+保留期也可使用 [ 参数](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)通过 Azure 资源管理器进行设置`retentionInDays`。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 此功能仅通过 Azure 资源管理器公开。 
 
-默认情况下，两种数据类型（`Usage` 和 `AzureActivity`）将保留90天，此90天保留期不收取任何费用。 这些数据类型还可从数据引入费用中免费接收。 
+两种数据类型（`Usage` 和 `AzureActivity`）默认保留 90 天，在这 90 天的保留期内不收费。 这些数据类型也没有数据引入费用。 
 
-### <a name="retention-by-data-type"></a>按数据类型保留
+### <a name="retention-by-data-type"></a>按数据类型分类的保留期
 
-还可以为单个数据类型指定不同的保留设置。 每个数据类型都是工作区的子资源。 例如，SecurityEvent 表可以在 Azure 中进行寻址[资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)如下所示：
+也可为单个数据类型指定不同的保留期设置。 每个数据类型都是工作区的子资源。 例如，SecurityEvent 表可以在 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)中寻址，如下所示：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
 ```
 
-请注意，数据类型（表）区分大小写。  若要获取特定数据类型（在此示例中为 SecurityEvent）中的每个数据类型保留设置的当前设置，请使用：
+请注意，数据类型（表）区分大小写。  若要获取特定数据类型（在此示例中为 SecurityEvent）的当前每数据类型保留期设置，请使用：
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-若要获取工作区中所有数据类型的当前每个数据类型保持设置，只需省略特定的数据类型，例如：
+若要获取工作区中所有数据类型的当前每数据类型保留期设置，请直接省略特定的数据类型，例如：
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
 ```
 
-若要将特定数据类型（在本例中为 SecurityEvent）的保留期设置为730天，请执行
+若要将特定数据类型（在此示例中为 SecurityEvent）的保留期设置为 730 天，请执行以下代码
 
 ```JSON
     PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
@@ -145,16 +145,16 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
     }
 ```
 
-`Usage` 和 `AzureActivity` 数据类型不能通过自定义保留设置进行设置。 它们将采用默认工作区保持期或90天内的最大值。 
+`Usage` 和 `AzureActivity` 数据类型不能使用自定义保留期进行设置。 它们会使用最大的默认工作区保留期（或 90 天）。 
 
-用于直接连接到 Azure 资源管理器以通过数据类型设置保留的极佳工具是 OSS 工具[ARMclient](https://github.com/projectkudu/ARMClient)。  详细了解 ARMclient [Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)的文章。  下面是使用 ARMClient 的示例，将 SecurityEvent 数据设置为730天的保留期：
+OSS 工具 [ARMclient](https://github.com/projectkudu/ARMClient) 是一个很好的工具，可以直接连接到 Azure 资源管理器，以便按数据类型设置保留期。  请在 [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) 和 [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) 的文章中了解有关 ARMclient 的详细信息。  下面是一个示例，演示了如何使用 ARMClient 将 SecurityEvent 数据的保留期设置为 730 天：
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
 ```
 
 > [!NOTE]
-> 设置单个数据类型的保留期可用于降低数据保留成本。  对于从2019年10月（发布此功能时）开始收集的数据，减少某些数据类型的保留期可降低你的时间。  对于先前收集的数据，为单独类型设置较低的保留期不会影响你的保留费用。  
+> 可以根据单个数据类型设置保留期，这样可以降低数据保留成本。  如果数据是从 2019 年 10 月（此时发布了该功能）开始收集的，则缩短某些数据类型的保留期可以降低一段时间的保留成本。  如果数据是更早之前收集的，则为单个类型设置较短的保留期不会影响保留成本。  
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 

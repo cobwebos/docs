@@ -1,6 +1,6 @@
 ---
-title: Use Azure .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use the Azure Storage client library to manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: 在 Azure Data Lake Storage Gen2 （预览版）中将 Azure .NET 用于文件 & Acl
+description: 使用 Azure 存储客户端库来管理已启用分层命名空间（HNS）的存储帐户中的目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -10,33 +10,33 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 9e20445768334eb3272fb9534e5cc04e30c6f41f
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484972"
 ---
-# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use .NET for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>在 Azure Data Lake Storage Gen2 中使用 & Acl 的 .NET 文件（预览）
 
-This article shows you how to use .NET to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+本文介绍如何使用 .NET 在已启用分层命名空间（HNS）的存储帐户中创建和管理目录、文件和权限。 
 
 > [!IMPORTANT]
-> The [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package that is featured in this article is currently in public preview.
+> 本文中所述的[DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet 包目前处于公共预览版中。
 
-[Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+[包（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html) | [Gen1 到 Gen2 映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已启用分层命名空间（HNS）的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 
-To get started, install the [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet package.
+若要开始，请安装[DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet 包。
 
-For more information about how to install NuGet packages, see [Install and manage packages in Visual Studio using the NuGet Package Manager](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
+有关如何安装 NuGet 包的详细信息，请参阅[使用 Nuget 包管理器在 Visual Studio 中安装和管理包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)。
 
-Then, add these using statements to the top of your code file.
+然后，将这些 using 语句添加到代码文件的顶部。
 
 ```csharp
 using Azure.Storage.Files.DataLake;
@@ -45,11 +45,11 @@ using System.IO;
 using Azure;
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>连接到帐户
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+若要使用本文中的代码段，需要创建表示存储帐户的**DataLakeServiceClient**实例。 若要获取一个帐户，最简单的方法是使用帐户密钥。 
 
-This example creates an instance of the **DataLakeServiceClient** by using an account key.
+此示例使用帐户密钥创建**DataLakeServiceClient**的实例。
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -67,9 +67,9 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-A file system acts as a container for your files. You can create one by calling the **FileSystemClient.CreateFileSystemAsync** method.
+文件系统充当文件的容器。 可以通过调用**FileSystemClient. CreateFileSystemAsync**方法来创建一个。
 
-This example creates a file system named `my-file-system`. 
+此示例将创建一个名为 `my-file-system`的文件系统。 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -81,9 +81,9 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 ## <a name="create-a-directory"></a>创建目录
 
-Create a directory reference by calling the **FileSystemClient.CreateDirectoryAsync** method.
+通过调用**FileSystemClient. CreateDirectoryAsync**方法创建目录引用。
 
-This example adds a directory named `my-directory` to a file system, and then adds a sub-directory named `my-subdirectory`. 
+此示例将名为 `my-directory` 的目录添加到文件系统，然后添加名为 `my-subdirectory`的子目录。 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -99,11 +99,11 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 }
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
-Rename or move a directory by calling the **DirectoryClient.RenameAsync** method. Pass the path of the desired directory a parameter. 
+通过调用**DirectoryClient. RenameAsync**方法重命名或移动目录。 传递所需目录的路径。 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+此示例将子目录重命名为 `my-subdirectory-renamed`的名称。
 
 ```cs
 public async Task<DataLakeDirectoryClient> 
@@ -116,7 +116,7 @@ public async Task<DataLakeDirectoryClient>
 }
 ```
 
-This example moves a directory named `my-subdirectory-renamed` to a sub-directory of a directory named `my-directory-2`. 
+此示例将名为 `my-subdirectory-renamed` 的目录移动到名为 `my-directory-2`的目录的子目录中。 
 
 ```cs
 public async Task<DataLakeDirectoryClient> MoveDirectory
@@ -131,9 +131,9 @@ public async Task<DataLakeDirectoryClient> MoveDirectory
 
 ## <a name="delete-a-directory"></a>删除目录
 
-Delete a directory by calling the **DirectoryClient.Delete** method.
+通过调用**DirectoryClient**方法删除目录。
 
-This example deletes a directory named `my-directory`.  
+此示例删除名为 `my-directory`的目录。  
 
 ```cs
 public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -145,11 +145,11 @@ public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Manage a directory ACL
+## <a name="manage-a-directory-acl"></a>管理目录 ACL
 
-Get the access control list (ACL) of a directory by calling the **directoryClient.GetAccessControlAsync** method and set the ACL by calling the **DirectoryClient.SetAccessControl** method.
+通过调用**directoryClient. GetAccessControlAsync**方法获取目录的访问控制列表（ACL），并通过调用**directoryClient. SetAccessControl**方法来设置 ACL。
 
-This example gets and sets the ACL of a directory named `my-directory`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+此示例获取并设置名为 `my-directory`的目录的 ACL。 字符串 `user::rwx,group::r-x,other::rw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 
 ```cs
 public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
@@ -168,11 +168,11 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory
+## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.AppendAsync** method. Make sure to complete the upload by calling the **DataLakeFileClient.FlushAsync** method.
+首先，通过创建**DataLakeFileClient**类的实例在目标目录中创建文件引用。 通过调用**DataLakeFileClient. AppendAsync**方法上传文件。 请确保通过调用**DataLakeFileClient. FlushAsync**方法完成上传。
 
-This example uploads a text file to a directory named `my-directory`.    
+此示例将文本文件上传到名为 `my-directory`的目录。    
 
 ```cs
 public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
@@ -194,11 +194,11 @@ public async Task UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Manage a file ACL
+## <a name="manage-a-file-acl"></a>管理文件 ACL
 
-Get the access control list (ACL) of a file by calling the **DataLakeFileClient.GetAccessControlAsync** method and set the ACL by calling the **FileClient.SetAccessControl** method.
+通过调用**DataLakeFileClient. GetAccessControlAsync**方法获取文件的访问控制列表（ACL），并通过调用**FileClient. SetAccessControl**方法来设置 ACL。
 
-This example gets and sets the ACL of a file named `my-file.txt`. The string `user::rwx,group::r-x,other::rw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+此示例获取并设置名为 `my-file.txt`的文件的 ACL。 字符串 `user::rwx,group::r-x,other::rw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 
 ```cs
 public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
@@ -218,11 +218,11 @@ public async Task ManageFileACLs(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory 
+## <a name="download-from-a-directory"></a>从目录下载 
 
-First, create a **DataLakeFileClient** instance that represents the file that you want to download. Use the **FileClient.ReadAsync** method, and parse the return value to obtain a [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) object. Use any .NET file processing API to save bytes from the stream to a file. 
+首先，创建表示要下载的文件的**DataLakeFileClient**实例。 使用**FileClient. ReadAsync**方法，并分析返回值以获取[流](https://docs.microsoft.com/dotnet/api/system.io.stream)对象。 使用任何 .NET 文件处理 API 将字节从流保存到文件。 
 
-This example uses a [BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader) and a [FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream) to save bytes to a file. 
+此示例使用[BinaryReader](https://docs.microsoft.com/dotnet/api/system.io.binaryreader)和[FileStream](https://docs.microsoft.com/dotnet/api/system.io.filestream)将字节保存到文件。 
 
 ```cs
 public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
@@ -259,9 +259,9 @@ public async Task DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>列出目录内容
 
-List directory contents by calling the **FileSystemClient.ListPathsAsync** method, and then enumerating through the results.
+通过调用**FileSystemClient. ListPathsAsync**方法并枚举结果来列出目录内容。
 
-This example, prints the names of each file that is located in a directory named `my-directory`.
+此示例将打印位于名为 `my-directory`的目录中的每个文件的名称。
 
 ```cs
 public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient)
@@ -288,12 +288,12 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
-* [Package (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
+* [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Storage.Files.DataLake/12.0.0-preview.6/api/index.html)
+* [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6)
 * [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-net/issues)
+* [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
+* [已知功能缺口](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 

@@ -78,7 +78,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 2. 在菜单的 "**相关资源**" 部分中，选择 "**链接的工作区**"。 
 3. 单击 "**取消链接工作区**" 以从自动化帐户取消链接工作区。
 
-    ![取消工作区链接](media/move-workspace/unlink-workspace.png)
+    ![取消链接工作区](media/move-workspace/unlink-workspace.png)
 
 ## <a name="move-your-workspace"></a>移动工作区
 

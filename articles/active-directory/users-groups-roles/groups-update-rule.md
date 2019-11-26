@@ -1,6 +1,6 @@
 ---
-title: Update and manage a dynamic group rule and troubleshoot membership - Azure Active Directory | Microsoft Docs
-description: How to create a group membership rule in the Azure portal, check status.
+title: 更新和管理动态组规则并排除成员身份 Azure Active Directory |Microsoft Docs
+description: 如何在 Azure 门户中创建组成员资格规则并检查状态。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -21,72 +21,72 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422350"
 ---
-# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Update a dynamic group to manage membership in Azure Active Directory
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>更新动态组以管理中的成员身份 Azure Active Directory
 
-In Azure Active Directory (Azure AD), you can use rules to determine group membership based on user or device properties. This article tells how to set up a rule for a dynamic group in the Azure portal.
-Dynamic membership is supported for security groups or Office 365 groups. When a group membership rule is applied, user and device attributes are evaluated for matches with the membership rule. When an attribute changes for a user or device, all dynamic group rules in the organization are processed for membership changes. Users and devices are added or removed if they meet the conditions for a group.
+在 Azure Active Directory (Azure AD) 中，可以使用规则根据用户或设备属性确定组成员资格。 本文介绍如何为 Azure 门户中的动态组设置一项规则。
+支持为安全组或 Office 365 组启用动态成员身份。 应用组成员身份规则时，将会对用户和设备属性进行评估，确定其是否与成员身份规则匹配。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行成员身份更改。 如果用户和设备符合组的条件，则会对其执行添加或删除操作。
 
-## <a name="rule-builder-in-the-azure-portal"></a>Rule builder in the Azure portal
+## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
 
-Azure AD provides a rule builder to create and update your important rules more quickly. The rule builder supports the construction up to five expressions. The rule builder makes it easier to form a rule with a few simple expressions, however, it can't be used to reproduce every rule. If the rule builder doesn't support the rule you want to create, you can use the text box.
+Azure AD 提供了一个规则生成器，以便更快地创建和更新重要规则。 规则生成器支持的构造最多为五个表达式。 使用规则生成器可以通过一些简单的表达式轻松形成规则，但是，它不能用于重现每个规则。 如果规则生成器不支持要创建的规则，则可以使用文本框。
 
-Here are some examples of advanced rules or syntax for which we recommend that you construct using the text box:
+下面是一些高级规则或语法的示例，我们建议你使用文本框构造这些规则或语法：
 
-- Rule with more than five expressions
-- The Direct reports rule
-- Setting [operator precedence](groups-dynamic-membership.md#operator-precedence)
-- [Rules with complex expressions](groups-dynamic-membership.md#rules-with-complex-expressions); for example `(user.proxyAddresses -any (_ -contains "contoso"))`
+- 包含五个以上表达式的规则
+- 直接下属规则
+- 设置[运算符优先顺序](groups-dynamic-membership.md#operator-precedence)
+- [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions)；例如 `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> The rule builder might not be able to display some rules constructed in the text box. You might see a message when the rule builder is not able to display the rule. The rule builder doesn't change the supported syntax, validation, or processing of dynamic group rules in any way.
+> 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会显示一条消息。 规则生成器不会以任何方式更改动态组规则支持的语法、验证或处理。
 
-![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+![为动态组添加成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-For examples of syntax, supported properties, operators, and values for a membership rule, see [Dynamic membership rules for groups in Azure Active Directory](groups-dynamic-membership.md).
+如需成员身份规则的语法、支持的属性、运算符和值的示例，请参阅 [Azure Active Directory 中的组的动态成员资格规则](groups-dynamic-membership.md)。
 
-## <a name="to-update-a-group-membership-rule"></a>To update a group membership rule
+## <a name="to-update-a-group-membership-rule"></a>更新组成员身份规则
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with an account that is in the Global administrator, Group administrator, Intune administrator, or User administrator role in the tenant.
-1. Select **Groups** > **All groups**.
-1. Select a group to open its profile.
-1. On the profile page for the group, select **Dynamic membership rules**. The rule builder supports up to five expressions. To add more than five expressions, you must use the text box.
+1. 使用租户中 "全局管理员"、"组管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 选择**组** > "**所有组**"。
+1. 选择组以打开其配置文件。
+1. 在该组的 "配置文件" 页上，选择 "**动态成员身份规则**"。 规则生成器支持最多五个表达式。 若要添加五个以上的表达式，必须使用文本框。
 
-   ![Add membership rule for a dynamic group](./media/groups-update-rule/update-dynamic-group-rule.png)
+   ![为动态组添加成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-1. To see the custom extension properties available for your membership rule:
-   1. Select **Get custom extension properties**
-   1. Enter the application ID, and then select **Refresh properties**.
-1. After updating the rule, select **Save**.
+1. 查看适用于你的成员身份规则的自定义扩展属性：
+   1. 选择“获取自定义扩展属性”
+   1. 输入应用程序 ID，然后选择“刷新属性”。
+1. 更新规则后，请选择 "**保存**"。
 
-If the rule you entered isn't valid, an explanation of why the rule couldn't be processed is displayed in an Azure notification in the portal. Read it carefully to understand how to fix the rule.
+如果输入的规则无效，则会在门户的 Azure 通知中显示一个说明，指出为何系统无法处理规则。 请仔细阅读，了解如何修复规则。
 
-## <a name="check-processing-status-for-a-rule"></a>Check processing status for a rule
+## <a name="check-processing-status-for-a-rule"></a>检查规则的处理状态
 
 可在组的“概述”页上查看成员资格处理状态和上次更新日期。
   
-  ![display of dynamic group status](./media/groups-create-rule/group-status.png)
+  ![显示动态组状态](./media/groups-create-rule/group-status.png)
 
 “成员资格处理”状态会显示以下几种状态消息：
 
 - **正在评估**：已收到组更改，正在评估更新。
 - **正在处理**：正在进行更新。
 - **更新完成**：处理已完成，且已完成所有适用更新。
-- **Processing error**:  Processing couldn't be completed because of an error evaluating the membership rule.
+- **处理错误**：无法完成处理，因为评估成员身份规则时出错。
 - **更新已暂停**：管理员暂停了动态成员资格规则更新。 MembershipRuleProcessingState 设置为“已暂停”。
 
 “上次更新的成员资格”状态会显示以下几种状态消息：
 
-- **Date and time**: The last time the membership was updated.
+- **日期和时间**：上次更新成员身份的时间。
 - **正在进行**：目前正在进行更新。
-- **Unknown**: The last update time can't be retrieved. The group might be new.
+- **未知**：无法检索上次更新时间。 该组可能是新的。
 
 如果在处理特定组的成员资格规则时出错误，则该组的“概述”页顶部会显示警报。 如果无法在 24 小时之后处理租户中所有组的挂起动态成员资格更新，则会在所有组的顶部显示警报。
 
-![processing error message alerts](./media/groups-create-rule/processing-error.png)
+![正在处理错误消息警报](./media/groups-create-rule/processing-error.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-These articles provide additional information on working with dynamic groups in Azure AD.
+这些文章提供了有关在 Azure AD 中使用动态组的其他信息。
 
-- For a complete reference to dynamic rule structure, see [Dynamic membership rule syntax](groups-dynamic-membership.md).
-- [Create a static membership group and add members](../fundamentals/active-directory-groups-create-azure-portal.md).
+- 有关动态规则结构的完整引用，请参阅[动态成员身份规则语法](groups-dynamic-membership.md)。
+- [创建静态成员身份组并添加成员](../fundamentals/active-directory-groups-create-azure-portal.md)。

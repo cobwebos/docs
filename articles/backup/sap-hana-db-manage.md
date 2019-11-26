@@ -22,7 +22,7 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 
 ![备份作业部分](./media/sap-hana-db-manage/backup-jobs.png)
 
-在此门户中看到的作业包括数据库发现和注册以及备份和还原操作。 此部分未显示计划作业，包括日志备份。 不会在此处显示从 SAP HANA 本机客户端（Studio/考核中心考核中心）手动触发的备份。
+此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。 此部分未显示计划作业，包括日志备份。 不会在此处显示从 SAP HANA 本机客户端（Studio/考核中心考核中心）手动触发的备份。
 
 ![备份作业列表](./media/sap-hana-db-manage/backup-jobs-list.png)
 
@@ -47,8 +47,8 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 
 如今，Azure 备份允许通过电子邮件发送警报。 这些警报包括：
 
-* 触发所有备份失败。
-* 按错误代码在数据库级别合并。
+* 只要出现备份失败就会触发。
+* 在数据库级别按错误代码进行合并。
 * 仅在数据库首次备份失败时发送。
 
 给了解有关监视的详细信息，请参阅[Azure 门户中的 "监视" 和 "](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) [使用 Azure Monitor 进行监视](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)"。
@@ -96,7 +96,7 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
   ![备份策略详细信息](./media/sap-hana-db-manage/backup-policy-details.png)
 
 >[!NOTE]
-> 保留期内的任何更改都将应用于所有旧恢复点（新的恢复点除外）。
+> 在保留期内进行的任何更改将应用到新恢复点，并以追溯方式应用到所有旧恢复点。
 >
 > 增量备份策略不能用于 SAP HANA 的数据库。 对于这些数据库，目前不支持增量备份。
 
@@ -107,15 +107,15 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 * 停止所有将来的备份作业并删除所有恢复点。
 * 停止所有将来的备份作业，并将恢复点保留不变。
 
-如果选择保留恢复点，请记住以下详细信息：
+如果选择保留恢复点，请注意以下细节：
 
-* 所有恢复点都将永久保持原样，所有修剪都应在停止保护时停止，并保留数据。
-* 将为受保护的实例和使用的存储付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+* 所有恢复点永远保留不变，在停止保护时所有修剪操作都会停止，但会保留数据。
+* 需要为受保护的实例和消耗的存储空间付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 * 如果在不停止备份的情况下删除数据源，则新备份将会失败。
 
 停止数据库的保护：
 
-* 在保管库仪表板上，选择 "**备份项**"。
+* 在保管库仪表板中，选择“备份项”。
 * 在 "**备份管理类型**" 下，选择**Azure VM 中的 SAP HANA**
 
   ![选择 Azure VM 中的 SAP HANA](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
@@ -128,11 +128,11 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 
   ![选择停止备份](./media/sap-hana-db-manage/stop-backup.png)
 
-* 在 "**停止备份**" 菜单中，选择是保留还是删除数据。 如果需要，请提供原因和注释。
+* 在“停止备份”菜单中，选择是要保留还是删除数据。 根据需要提供原因和注释。
 
   ![选择保留或删除数据](./media/sap-hana-db-manage/retain-backup-data.png)
 
-* 选择 "**停止备份**"。
+* 选择“停止备份”。
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>恢复 SAP HANA 数据库的保护
 
@@ -140,7 +140,7 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 
 继续保护 SAP HANA 数据库：
 
-* 打开备份项，然后选择 "**恢复备份**"。
+* 打开备份项，并选择“恢复备份”。
 
    ![选择恢复备份](./media/sap-hana-db-manage/resume-backup.png)
 
@@ -158,7 +158,7 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 
 在禁用保护之后但在删除保管库之前取消注册 SAP HANA 实例：
 
-* 在保管库仪表板上的 "**管理**" 下，选择 "**备份基础结构**"。
+* 在保管库仪表板上，在“管理”下，选择“备份基础结构”。
 
    ![选择“备份基础结构”。](./media/sap-hana-db-manage/backup-infrastructure.png)
 

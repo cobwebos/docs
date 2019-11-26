@@ -1,5 +1,5 @@
 ---
-title: Disenroll device from Azure IoT Hub Device Provisioning Service
+title: Azure IoT 中心设备预配服务中的取消注册设备
 description: 如何从 Azure IoT 中心设备预配服务取消注册设备以阻止预配
 author: wesmc7777
 ms.author: wesmc
@@ -26,7 +26,7 @@ ms.locfileid: "74228764"
 
 ## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>使用单独登记项将设备加入方块列表
 
-单独登记适用于单个设备，可使用 X.509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 (Devices that use SAS tokens as their attestation mechanism can be provisioned only through an individual enrollment.) To blacklist a device that has an individual enrollment, you can either disable or delete its enrollment entry. 
+单独登记适用于单个设备，可使用 X.509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 （使用 SAS 令牌作为证明机制的设备只能通过单个注册进行预配。）若要将具有单个注册的设备列入黑名单，可以禁用或删除其注册条目。 
 
 若要暂时将设备加入方块列表，可禁用其登记项： 
 

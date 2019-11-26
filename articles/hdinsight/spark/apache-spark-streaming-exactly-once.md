@@ -1,6 +1,6 @@
 ---
-title: Spark Streaming & exactly-once event processing - Azure HDInsight
-description: How to set up Apache Spark Streaming to process an event once and only once.
+title: Spark 流式处理 & 一次事件处理-Azure HDInsight
+description: 如何设置 Apache Spark 流式处理事件一次且仅处理一次。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -17,10 +17,10 @@ ms.locfileid: "74228968"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
 
-Stream processing applications take different approaches to how they handle reprocessing messages after some failure in the system:
+在系统发生故障后，流处理应用程序采用不同的方法来处理重新处理消息：
 
 * 至少一次：保证处理每条消息，但消息可能会处理多次。
-* 最多一次：不一定会处理每条消息。 If a message is processed, it's only processed once.
+* 最多一次：不一定会处理每条消息。 如果处理消息，则它仅处理一次。
 * 恰好一次：保证处理每条消息一次且只有一次。
 
 本文介绍如何配置 Spark 流，以实现“恰好一次”处理。
@@ -51,7 +51,7 @@ Spark 流应用程序从中读取事件的源必须可重播。 这意味着，�
 
 Spark 流支持使用预写日志，其中每个收到的事件首先写入容错存储中的 Spark 检查点目录，然后存储在弹性分布式数据集 (RDD) 中。 在 Azure 中，容错存储是由 Azure 存储或 Azure Data Lake Storage 提供支持的 HDFS。 在 Spark 流应用程序中，可以通过将 `spark.streaming.receiver.writeAheadLog.enable` 配置设置指定为 `true`，为所有接收器启用预写日志。 预写日志针对驱动程序和执行器的故障提供容错。
 
-对于针对事件数据运行任务的辅助角色，将会根据定义在多个辅助角色之间复制和分配每个 RDD。 If a task fails because the worker running it crashed, the task will be restarted on another worker that has a replica of the event data, so the event isn't lost.
+对于针对事件数据运行任务的辅助角色，将会根据定义在多个辅助角色之间复制和分配每个 RDD。 如果由于运行任务的工作线程崩溃而导致任务失败，则该任务将在具有事件数据副本的另一个工作线程上重新启动，因此事件不会丢失。
 
 ### <a name="use-checkpoints-for-drivers"></a>使用驱动程序的检查点
 
@@ -79,13 +79,13 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 ### <a name="use-idempotent-sinks"></a>使用幂等接收器
 
-The destination sink to which your job writes results must be able to handle the situation where it's given the same result more than once. 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。
+作业写入结果的目标接收器必须能够处理其结果数超过一次的情况。 该接收器必须能够检测此类重复结果并将其忽略。 可以使用相同的数据多次调用幂等接收器，而不会更改状态。
 
-若要创建幂等接收器，可以实现相应的逻辑来首先检查数据存储中是否存在传入的结果。 如果已存在该结果，则从 Spark 作业的角度看，写入操作看上去已成功，但实际上数据存储忽略了重复的数据。 If the result doesn't exist, then the sink should insert this new result into its storage.
+若要创建幂等接收器，可以实现相应的逻辑来首先检查数据存储中是否存在传入的结果。 如果已存在该结果，则从 Spark 作业的角度看，写入操作看上去已成功，但实际上数据存储忽略了重复的数据。 如果结果不存在，则接收器应将此新结果插入其存储中。
 
 例如，可以在 Azure SQL 数据库中使用存储过程，将事件插入表中。 此存储过程先根据键字段查找事件，仅当未找到匹配的事件时，才将记录插入到表中。
 
-另一个示例是使用分区文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Storage。 In this case, your sink logic doesn't need to check for the existence of a file. If the file representing the event exists, it's simply overwritten with the same data. 否则，需要在计算的路径中创建一个新文件。
+另一个示例是使用分区文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Storage。 在这种情况下，接收器逻辑不需要检查文件是否存在。 如果表示事件的文件存在，则只会用相同的数据覆盖它。 否则，需要在计算的路径中创建一个新文件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -38,7 +38,7 @@ Cloudyn 从存储桶中检索 Google 计费数据。 请将“存储桶名称”
 使用 Google Cloud Storage 存储用量报表会产生少量的费用。 有关详细信息，请参阅[云存储定价](https://cloud.google.com/storage/pricing)。
 
 1. 如果尚未启用在文件中导出计费，请遵照[如何启用在文件中导出计费](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file)中的说明。 可以使用 JSON 或 CSV 计费导出格式。
-2. 否则，请在 Google Cloud Platform 控制台中，导航到“计费” > “计费导出”。 记下计费的“存储桶名称”和“报表前缀”。  
+2. 否则，请在 Google Cloud Platform 控制台中，导航到“计费” **“计费导出”。**  >  记下计费的“存储桶名称”和“报表前缀”。  
     ![“计费导出”页面上显示的计费导出信息](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>启用 Google Cloud Platform API
@@ -55,7 +55,7 @@ Cloudyn 从存储桶中检索 Google 计费数据。 请将“存储桶名称”
 ### <a name="enable-or-verify-apis"></a>启用或验证 API
 
 1. 在 Google Cloud Platform 控制台中，选择要向 Cloudyn 注册的项目。
-2. 导航到“API 和服务” > “库”。
+2. 导航到“API 和服务” **“库”。**  > 
 3. 使用搜索查找前面列出的每个 API。
 4. 对于每个 API，检查是否显示了“已启用 API”。 否则，请单击“启用”。
 

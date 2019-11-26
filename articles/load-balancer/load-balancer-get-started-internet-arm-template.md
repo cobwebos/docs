@@ -43,7 +43,7 @@ ms.locfileid: "74225351"
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
 1. 如果从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择订阅。
-2. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
+2. 运行 **New-AzResourceGroupDeployment** cmdlet 以使用模板创建资源组。
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `

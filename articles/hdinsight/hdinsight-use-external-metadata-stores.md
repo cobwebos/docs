@@ -1,6 +1,6 @@
 ---
 title: 使用外部元数据存储 - Azure HDInsight
-description: Use external metadata stores with Azure HDInsight clusters, and best practices.
+description: 将外部元数据存储与 Azure HDInsight 群集一起使用以及最佳做法。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -17,7 +17,7 @@ ms.locfileid: "74327364"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
-HDInsight allows you to take control of your data and metadata by deploying key metadata solutions and management databases to external data stores. This feature is currently available for [Apache Hive metastore](#custom-metastore), [Apache Oozie metastore](#apache-oozie-metastore) and [Apache Ambari database](#custom-ambari-db).
+HDInsight 允许通过将关键元数据解决方案和管理数据库部署到外部数据存储来控制数据和元数据。 此功能当前可用于[Apache Hive 元存储](#custom-metastore)、 [apache Oozie 元存储](#apache-oozie-metastore)和[apache Ambari 数据库](#custom-ambari-db)。
 
 HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部分。 元存储是可供其他大数据访问工具（例如 Apache Spark、交互式查询 (LLAP)、Presto 或 Apache Pig）使用的中央架构存储库。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
 
@@ -36,7 +36,7 @@ HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部
 
 * 每个默认元存储都是群集生命周期的一部分。 删除群集时，会一并删除相应的元存储和元数据。
 
-* You can't share the default metastore with other clusters.
+* 不能与其他群集共享默认元存储。
 
 * 默认元存储使用基本 Azure SQL DB，它具有 5 个 DTU（数据库事务单位）的限制。
 此默认元存储通常用于相对简单的工作负荷，这种工作负荷无需使用多个群集，且无需在群集生命周期结束后继续保留元数据。
@@ -47,7 +47,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 将自己的 Azure SQL 数据库指定为元存储。
 
-* The lifecycle of the metastore isn't tied to a clusters lifecycle, so you can create and delete clusters without losing metadata. 即使删除和重新创建 HDInsight 群集之后，系统仍然保留 Hive 架构等元数据。
+* 元存储的生命周期不与群集生命周期相关联，因此你可以在不丢失元数据的情况下创建和删除群集。 即使删除和重新创建 HDInsight 群集之后，系统仍然保留 Hive 架构等元数据。
 
 * 通过自定义元存储，可将多个群集和群集类型附加到元存储。 例如，可跨交互式查询、Hive 和 HDInsight 中的群集的 Spark 共享单个元存储。
 
@@ -57,21 +57,21 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
-### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Create and config Azure SQL Database for the custom metastore
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>为自定义元存储创建和配置 Azure SQL 数据库
 
-You need to create or have an existing Azure SQL Database before setting up a custom Hive metastore for a HDInsight cluster.  For more information, see [Quickstart: Create a single database in Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+为 HDInsight 群集设置自定义 Hive 元存储之前，需要创建或拥有现有的 Azure SQL 数据库。  有关详细信息，请参阅[快速入门：在 AZURE SQL 数据库中创建单个数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
 
-To make sure that your HDInsight cluster can access the connected Azure SQL Database, configure Azure SQL Database firewall rules to allow Azure services and resources to access the server.
+若要确保 HDInsight 群集可以访问已连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，以允许 Azure 服务和资源访问服务器。
 
-You can enable this option in the Azure portal by clicking **Set server firewall**, and clicking **ON** underneath **Allow Azure services and resources to access this server** for the Azure SQL Database server or database. For more information, see [Create and manage IP firewall rules](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+可以在 Azure 门户中启用此选项，方法是单击 "**设置服务器防火墙**"，然后单击下面的 **"** **允许 Azure 服务和资源访问**azure SQL 数据库服务器或数据库的此服务器"。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-![set server firewall button](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+!["设置服务器防火墙" 按钮](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
-![allow azure services access](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+![允许 azure 服务访问](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
-可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 This option is specified with the **Storage > Metastore settings** while creating a new Hadoop, Spark, or interactive Hive cluster from Azure portal.
+可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 通过 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，依次访问“存储”和“元存储”设置来指定此选项。
 
 ![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
@@ -89,15 +89,15 @@ You can enable this option in the Azure portal by clicking **Set server firewall
 
 * 将元存储和 HDInsight 群集放置在同一区域中，以获得最高的性能和最低的网络出口费用。
 
-* Monitor your metastore for performance and availability using Azure SQL Database Monitoring tools, such as the Azure portal or Azure Monitor logs.
+* 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Monitor 日志）监视元存储的性能和可用性。
 
 * 对现有的自定义元存储数据库创建更高版本的新 Azure HDInsight 时，系统会升级元存储的架构，这是不可逆转的，无法从备份还原数据库。
 
-* 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 For example, you can't share a metastore across Hive 2.1 and Hive 3.1 versioned clusters.
+* 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，不能跨 Hive 2.1 和 Hive 3.1 版本控制群集共享元存储。
 
-* In HDInsight 4.0, Spark and Hive use independent catalogs for accessing SparkSQL or Hive tables. A table created by Spark resides in the Spark catalog. A table created by Hive resides in the Hive catalog. This is different than HDInsight 3.6 where Hive and Spark shared common catalog. Hive and Spark Integration in HDInsight 4.0 relies on Hive Warehouse Connector (HWC). HWC works as a bridge between Spark and Hive. [Learn about Hive Warehouse Connector](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+* 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表位于 Spark 目录中。 Hive 创建的表位于 Hive 目录中。 这与 HDInsight 3.6 不同，在 HDInsight 3.6 中，Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 Hive 和 Spark 集成依赖于 Hive 仓库连接器 (HWC)。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 
-## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
+## <a name="apache-oozie-metastore"></a>Apache Oozie 元存储
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支持对 Apache MapReduce、Pig 和 Hive 等模型执行 Hadoop 作业。  Oozie 使用元存储来存储当前工作流及历史工作流的相关详细信息。 可使用 Azure SQL 数据库作为自定义元存储，提高使用 Oozie 时的性能。 删除群集后，还可通过云存储访问 Oozie 作业数据。
 
@@ -105,7 +105,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支
 
 ## <a name="custom-ambari-db"></a>自定义 Ambari DB
 
-To use your own external database with Apache Ambari on HDInsight, see [Custom Apache Ambari database](hdinsight-custom-ambari-db.md).
+若要将自己的外部数据库用于 HDInsight 上的 Apache Ambari，请参阅[自定义 Apache Ambari 数据库](hdinsight-custom-ambari-db.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

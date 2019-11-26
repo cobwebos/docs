@@ -1,6 +1,6 @@
 ---
-title: Create app passwords from Security info (preview) page - Azure AD
-description: Create auto-generated passwords (app passwords) to use with any non-browser app, or any app that doesn't support two-factor verification, in your organization. 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
+title: 通过 "安全信息（预览版）" 页创建应用密码-Azure AD
+description: 创建自动生成的密码（应用密码）以用于任何非浏览器应用，或者组织中不支持双重验证的任何应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231805"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Create app passwords from the Security info (preview) page
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>通过 "安全信息（预览版）" 页创建应用密码
 
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
@@ -30,7 +30,7 @@ ms.locfileid: "74231805"
 
 使用应用密码时，请务必记住：
 
-- App passwords are auto-generated, and should be created and entered once per app.
+- 应用密码是自动生成的，应为每个应用创建和输入一次。
 
 - 每个用户的密码限制为 40 个。 如果在达到该限制后尝试创建密码，系统会提示删除现有的密码，然后才能创建新密码。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74231805"
 
 2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”。
 
-    ![“安全信息”页面，突出显示“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![“安全信息”页面，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. 在“添加方法”页面上，从下拉列表中选择“应用密码”，然后选择“添加”。
 
@@ -83,6 +83,6 @@ ms.locfileid: "74231805"
 
 2. 从确认框中选择“是”，以删除“应用密码”。 删除应用密码后，它将从你的安全信息中删除，并从“安全信息”页面中消失。
 
-## <a name="for-more-information"></a>有关
+## <a name="for-more-information"></a>更多信息
 
 - 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)

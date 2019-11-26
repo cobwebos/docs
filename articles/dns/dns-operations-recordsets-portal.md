@@ -18,7 +18,7 @@ ms.locfileid: "74211780"
 
 本文演示如何通过使用 Azure 门户来管理 DNS 区域的记录集和记录。
 
-请务必了解 DNS 记录集和单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)。
+请务必了解 DNS 记录集与单独的 DNS 记录之间的差异。 记录集是区域中具有相同名称和相同类型的记录的集合。 有关详细信息，请参阅[使用 Azure 门户创建 DNS 记录集和记录](dns-getstarted-create-recordset-portal.md)。
 
 ## <a name="create-a-new-record-set-and-record"></a>创建新的记录集和记录
 

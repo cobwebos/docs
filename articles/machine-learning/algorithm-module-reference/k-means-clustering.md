@@ -1,7 +1,7 @@
 ---
-title: 'K-Means Clustering: Module Reference'
+title: K 平均值聚类分析：模块引用
 titleSuffix: Azure Machine Learning
-description: Learn how to use the K-Means Clustering module in the Azure Machine Learning to train clustering models.
+description: 了解如何在 Azure 机器学习中使用 K 平均值聚类分析模块来定型聚类分析模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,129 +16,129 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213919"
 ---
-# <a name="module-k-means-clustering"></a>Module: K-Means Clustering
+# <a name="module-k-means-clustering"></a>模块： K 平均值聚类
 
-This article describes how to use the *K-Means Clustering* module in Azure Machine Learning designer (preview) to create an untrained K-means clustering model. 
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用*K 平均值聚类分析*模块来创建未经训练的 K 平均值聚类分析模型。 
  
-K-means is one of the simplest and the best known *unsupervised* learning algorithms. You can use the algorithm for a variety of machine learning tasks, such as: 
+K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用于各种机器学习任务，如： 
 
-* [Detecting abnormal data](https://msdn.microsoft.com/magazine/jj891054.aspx).
-* Clustering text documents.
-* Analyzing datasets before you use other classification or regression methods. 
+* [检测异常数据](https://msdn.microsoft.com/magazine/jj891054.aspx)。
+* 对文本文档进行分类。
+* 在使用其他分类或回归方法之前，分析数据集。 
 
-To create a clustering model, you:
+若要创建聚类分析模型，请执行以下操作：
 
-* Add this module to your pipeline.
-* Connect a dataset.
-* Set parameters, such as the number of clusters you expect, the distance metric to use in creating the clusters, and so forth. 
+* 将此模块添加到管道。
+* 连接数据集。
+* 设置参数，例如所需的分类数，要在创建群集时使用的距离度量值等。 
   
-After you've configured the module hyperparameters, you connect the untrained model to the [Train Clustering Model](train-clustering-model.md). Because the K-means algorithm is an unsupervised learning method, a label column is optional. 
+配置模块超参数后，将未经训练的模型连接到[定型聚类分析模型](train-clustering-model.md)。 由于 K 平均值算法是无人监督学习方法，因此标签列是可选的。 
 
-+ If your data includes a label, you can use the label values to guide selection of the clusters and optimize the model. 
++ 如果数据包含标签，则可以使用标签值来指导选择分类并优化模型。 
 
-+ If your data has no label, the algorithm creates clusters representing possible categories, based solely on the data.  
++ 如果数据没有标签，则算法会基于数据创建表示可能类别的分类。  
 
-##  <a name="understand-k-means-clustering"></a>Understand K-means clustering
+##  <a name="understand-k-means-clustering"></a>了解 K 平均值聚类
  
-In general, clustering uses iterative techniques to group cases in a dataset into clusters that possess similar characteristics. These groupings are useful for exploring data, identifying anomalies in the data, and eventually for making predictions. Clustering models can also help you identify relationships in a dataset that you might not logically derive by browsing or simple observation. For these reasons, clustering is often used in the early phases of machine learning tasks, to explore the data and discover unexpected correlations.  
+通常，群集使用迭代技术将数据集中的事例分组到具有相似特征的分类。 这些分组有助于浏览数据、标识数据中的异常，并最终用于进行预测。 聚类分析模型还可以帮助您识别数据集中的关系，您可能不会通过浏览或简单的观察来以逻辑方式派生这些关系。 由于这些原因，通常在机器学习任务的早期阶段使用聚类分析来浏览数据并发现意外的相关性。  
   
- When you configure a clustering model by using the K-means method, you must specify a target number *k* that indicates the number of *centroids* you want in the model. The centroid is a point that's representative of each cluster. The K-means algorithm assigns each incoming data point to one of the clusters by minimizing the within-cluster sum of squares. 
+ 使用 K 平均值方法配置聚类分析模型时，必须指定目标数字*K* ，指示要在模型中使用的*质心*数。 质心是每个分类的代表点。 K 平均值算法将每个传入数据点分配给一个分类，方法是最大程度地减少在群集内的平方和。 
  
-When it processes the training data, the K-means algorithm begins with an initial set of randomly chosen centroids. Centroids serve as starting points for the clusters, and they apply Lloyd's algorithm to iteratively refine their locations. The K-means algorithm stops building and refining clusters when it meets one or more of these conditions:  
+当处理定型数据时，K 平均值算法以一组随机选择的初始质心开始。 质心充当群集的起点，并应用 Lloyd 算法以迭代方式优化其位置。 当符合以下一个或多个条件时，K 平均值算法将停止构建和优化群集：  
   
--   The centroids stabilize, meaning that the cluster assignments for individual points no longer change and the algorithm has converged on a solution.  
+-   质心稳定，表示各个点的群集分配不再改变，并且算法已聚合到解决方案中。  
   
--   The algorithm completed running the specified number of iterations.  
+-   该算法已运行完指定的迭代数。  
   
- After you've completed the training phase, you use the [Assign Data to Clusters](assign-data-to-clusters.md) module to assign new cases to one of the clusters that you found by using the K-means algorithm. You perform cluster assignment by computing the distance between the new case and the centroid of each cluster. Each new case is assigned to the cluster with the nearest centroid.  
+ 完成培训阶段后，可以使用 "[将数据分配到群集](assign-data-to-clusters.md)" 模块，将新事例分配到使用 K 平均值算法找到的某个分类。 通过计算新事例与每个分类的质心之间的距离，执行群集分配。 每个新事例分配给具有最接近质心的群集。  
 
-## <a name="configure-the-k-means-clustering-module"></a>Configure the K-Means Clustering module
+## <a name="configure-the-k-means-clustering-module"></a>配置 K 平均值聚类分析模块
   
-1.  Add the **K-Means Clustering** module to your pipeline.  
+1.  将**K 平均值聚类分析**模块添加到管道。  
   
-2.  To specify how you want the model to be trained, select the **Create trainer mode** option.  
+2.  若要指定模型的定型方式，请选择 "**创建训练人员模式**" 选项。  
   
-    -   **Single Parameter**: If you know the exact parameters you want to use in the clustering model, you can provide a specific set of values as arguments.  
+    -   **单个参数**：如果知道要在聚类分析模型中使用的确切参数，可以提供一组特定的值作为参数。  
   
-3.  For **Number of centroids**, type the number of clusters you want the algorithm to begin with.  
+3.  对于 "**质心数**"，键入要开始算法的分类数。  
   
-     The model isn't guaranteed to produce exactly this number of clusters. The algorithm starts with this number of data points and iterates to find the optimal configuration.  
+     此模型不能保证产生正好数量的群集。 该算法以此数目的数据点开始，并循环访问以查找最佳配置。  
   
-4.  The properties **Initialization** is used to specify the algorithm that's used to define the initial cluster configuration.  
+4.  属性**初始化**用于指定用于定义初始群集配置的算法。  
   
-    -   **First N**: Some initial number of data points are chosen from the dataset and used as the initial means. 
+    -   **第 N**个：从数据集中选择某些初始数目的数据点，并将其用作初始方式。 
     
-         This method is also called the *Forgy method*.  
+         此方法也称为*Forgy 方法*。  
   
-    -   **Random**: The algorithm randomly places a data point in a cluster and then computes the initial mean to be the centroid of the cluster's randomly assigned points. 
+    -   **随机**：该算法随机在群集中放置一个数据点，然后将初始平均值计算为群集的随机分配点的质心。 
 
-         This method is also called the *random partition* method.  
+         此方法也称为*随机分区*方法。  
   
-    -   **K-Means++** : This is the default method for initializing clusters.  
+    -   **K 平均值 + +** ：这是用于初始化群集的默认方法。  
   
-         The **K-means++** algorithm was proposed in 2007 by David Arthur and Sergei Vassilvitskii to avoid poor clustering by the standard K-means algorithm. **K-means++** improves upon standard K-means by using a different method for choosing the initial cluster centers.  
+         **K 平均值 + +** 算法在2007中建议使用 Arthur 和 Sergei Vassilvitskii，以避免标准 K 平均值算法的聚类分析。 **K 平均值 + +** 通过使用不同的方法选择初始群集中心来改善标准 K 平均值。  
   
     
-5.  For **Random number seed**, optionally type a value to use as the seed for the cluster initialization. This value can have a significant effect on cluster selection.  
+5.  对于 "**随机数字种子**"，可以选择键入要用作群集初始化种子的值。 此值可能会对群集选择有重大影响。  
   
-6.  For **Metric**, choose the function to use for measuring the distance between cluster vectors, or between new data points and the randomly chosen centroid. Azure Machine Learning supports the following cluster distance metrics:  
+6.  对于 "**指标**"，请选择用于测量群集矢量之间或新数据点和随机所选质心之间的距离的函数。 Azure 机器学习支持以下群集距离度量值：  
   
-    -   **Euclidean**: The Euclidean distance is commonly used as a measure of cluster scatter for K-means clustering. This metric is preferred because it minimizes the mean distance between points and the centroids.
+    -   **欧氏**：对于 K 平均值聚类分析，欧氏距离通常用作分类散播的度量值。 此指标优先，因为它最大程度地减少了点与质心之间的平均距离。
   
-7.  For **Iterations**, type the number of times the algorithm should iterate over the training data before it finalizes the selection of centroids.  
+7.  对于 "**迭代**"，键入在完成选择质心之前算法应该循环访问定型数据的次数。  
   
-     You can adjust this parameter to balance accuracy against training time.  
+     您可以调整此参数以平衡定型时间。  
   
-8.  For **Assign label mode**, choose an option that specifies how a label column, if it's present in the dataset, should be handled.  
+8.  对于 "**分配标签模式**"，请选择一个选项，该选项指定如何处理标签列（如果它存在于数据集中）。  
   
-     Because K-means clustering is an unsupervised machine learning method, labels are optional. However, if your dataset already has a label column, you can use those values to guide the selection of the clusters, or you can specify that the values be ignored.  
+     由于 K 平均值聚类分析是一种无人监督机器学习方法，因此标签是可选的。 但是，如果你的数据集已具有标签列，则可以使用这些值来指导选择群集，或者可以指定忽略这些值。  
   
-    -   **Ignore label column**: The values in the label column are ignored and are not used in building the model.
+    -   **忽略标签列**：标签列中的值将被忽略，并且不会在生成模型时使用。
   
-    -   **Fill missing values**: The label column values are used as features to help build the clusters. If any rows are missing a label, the value is imputed by using other features.  
+    -   **填充缺失值**：标签列的值用作有助于构建群集的功能。 如果任何行缺少标签，则使用其他功能数据估算值。  
   
-    -   **Overwrite from closest to center**: The label column values are replaced with predicted label values, using the label of the point that is closest to the current centroid.  
+    -   **从最接近中心覆盖**：标签列值将替换为预测的标签值，使用最靠近当前质心的点的标签。  
 
-8.  Select the **Normalize features** option if you want to normalize features before training.
+8.  如果要在定型之前标准化功能，请选择 "**规范化功能**" 选项。
   
-     If you apply normalization, before training, the data points are normalized to `[0,1]` by MinMaxNormalizer.
+     如果在定型之前应用规范化，数据点将规范化为 MinMaxNormalizer `[0,1]`。
 
-10. Train the model.  
+10. 训练模型。  
   
-    -   If you set **Create trainer mode** to **Single Parameter**, add a tagged dataset and train the model by using the [Train Clustering Model](train-clustering-model.md) module.  
+    -   如果将 "**创建训练人员模式**" 设置为 "**单个参数**"，请添加标记数据集，并使用 "[训练聚类模型](train-clustering-model.md)" 模块来训练该模型。  
   
 ### <a name="results"></a>结果
 
-After you've finished configuring and training the model, you have a model that you can use to generate scores. However, there are multiple ways to train the model, and multiple ways to view and use the results: 
+完成配置和定型模型后，您可以使用一个模型来生成分数。 不过，有多种方法来训练模型，以及查看和使用结果的方式有多种： 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Capture a snapshot of the model in your workspace
+#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>捕获工作区中模型的快照
 
-If you used the [Train Clustering Model](train-clustering-model.md) module:
+如果使用了 "[训练聚类模型](train-clustering-model.md)" 模块：
 
-1. Right-click the **Train Clustering Model** module.
+1. 右键单击 "**训练聚类模型**" 模块。
 
-2. Select **Trained model**, and then select **Save as Trained Model**.
+2. 选择 "**定型模型**"，然后选择 "**另存为定型模型**"。
 
-The saved model represents the training data at the time you saved the model. If you later update the training data used in the pipeline, it doesn't update the saved model. 
+保存的模型表示保存模型时的定型数据。 如果以后更新了管道中使用的定型数据，则不会更新已保存的模型。 
 
-#### <a name="see-the-clustering-result-dataset"></a>See the clustering result dataset 
+#### <a name="see-the-clustering-result-dataset"></a>查看聚类分析结果数据集 
 
-If you used the [Train Clustering Model](train-clustering-model.md) module:
+如果使用了 "[训练聚类模型](train-clustering-model.md)" 模块：
 
-1. Right-click the **Train Clustering Model** module.
+1. 右键单击 "**训练聚类模型**" 模块。
 
-2. Select **Results dataset**, and then select **Visualize**.
+2. 选择 "**结果数据集**"，然后选择 "**可视化**"。
 
-### <a name="tips-for-generating-the-best-clustering-model"></a>Tips for generating the best clustering model  
+### <a name="tips-for-generating-the-best-clustering-model"></a>有关生成最佳聚类分析模型的提示  
 
-It is known that the *seeding* process that's used during clustering can significantly affect the model. Seeding means the initial placement of points into potential centroids.
+知道，在聚类分析过程中使用的*种子设定*过程会显著影响模型。 种子设定指的是初始位置到潜在的质心。
  
-For example, if the dataset contains many outliers, and an outlier is chosen to seed the clusters, no other data points would fit well with that cluster, and the cluster could be a singleton. That is, it might have only one point.  
+例如，如果数据集包含多个离群值，并且选择了一个离群值以播种群集，则没有其他数据点适合该群集，并且群集可能是单一实例。 也就是说，它可能只有一个点。  
   
-You can avoid this problem in a couple of ways:  
+可以通过以下几种方式来避免此问题：  
   
--   Change the number of centroids and try multiple seed values.  
+-   更改质心的数量，并尝试多个种子值。  
   
--   Create multiple models, varying the metric or iterating more.  
+-   创建多个模型，改变指标或循环访问。  
   
-In general, with clustering models, it's possible that any given configuration will result in a locally optimized set of clusters. In other words, the set of clusters that's returned by the model suits only the current data points and isn't generalizable to other data. If you use a different initial configuration, the K-means method might find a different, superior, configuration. 
+通常，对于聚类分析模型，任何给定的配置都可能会导致本地优化群集集。 换句话说，模型返回的一组分类只适合当前数据点，而不能归纳为其他数据。 如果使用不同的初始配置，则 K 平均值方法可能会发现不同的高级配置。 

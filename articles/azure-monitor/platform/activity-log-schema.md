@@ -789,7 +789,7 @@ ms.locfileid: "74305491"
 | correlationId | correlationId |  |
 | identity | 声明和授权属性 |  |
 | 级别 | 级别 |  |
-| 位置 | 不适用 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
+| location | 不适用 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
 | 属性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |

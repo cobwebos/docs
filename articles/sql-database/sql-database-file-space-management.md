@@ -1,5 +1,5 @@
 ---
-title: Single/pooled databases file space management
+title: 单个/共用数据库文件空间管理
 description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
@@ -140,12 +140,12 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的弹性池数据空间
 
-Modify the following examples to return a table listing the space allocated and unused allocated space for each database in an elastic pool. 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
+修改以下示例以返回一个表，该表列出弹性池中每个数据库的已分配空间和未分配的空间。 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
 
 将查询结果（确定分配给池中每个数据库的空间）相加，可以确定为弹性池分配的总空间。 分配的弹性池空间不应超过弹性池最大大小。  
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
 
 PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)进行安装。
 

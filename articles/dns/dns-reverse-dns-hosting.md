@@ -34,7 +34,7 @@ ms.locfileid: "74211251"
 ## <a name="create-a-reverse-lookup-dns-zone"></a>创建反向查找 DNS 区域
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“中心”菜单上，单击“新建” > “网络”，然后单击“DNS 区域”。
+1. 在“中心”菜单上，单击“新建” **“网络”，然后单击“DNS 区域”。**  > 
 
    ![“DNS 区域”选项](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -245,7 +245,7 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
     azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>是否可以在 Azure DNS 上托管 ISP 分配的 IP 块的反向 DNS 查找区域？
 

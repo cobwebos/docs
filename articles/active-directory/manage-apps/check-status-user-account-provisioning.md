@@ -44,7 +44,7 @@ Azure Active Directory （Azure AD）包含一个[用户帐户预配服务](user
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>从 Azure 门户获取预配报告
 
-若要获取给定应用程序的预配报表信息，请 先启动 [Azure 门户](https://portal.azure.com)Azure Active Directory &gt;企业应用&gt; 预配日志（预览）并在活动部分。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
+若要获取给定应用程序的预配报表信息，请首先启动[Azure 门户](https://portal.azure.com)，并**Azure Active Directory** "**活动**" 部分中的 "&gt;**预配日志（预览版）** " &gt;**企业应用程序**。 还可以浏览到配置了预配的企业应用程序。 例如，如果要在 LinkedIn Elevate 中预配用户，应用程序详细信息的导航路径为：
 
 “Azure Active Directory”>“企业应用程序”>“所有应用程序”>“LinkedIn Elevate”
 

@@ -185,7 +185,7 @@ provisioningState       : Succeeded
 
 对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展。 如果安装了 VM 扩展，该脚本会尝试重新安装它。 如果未安装 VM 扩展，该脚本将安装 Log Analytics 和依赖关系代理 VM 扩展。
 
-验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 

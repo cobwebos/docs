@@ -22,7 +22,7 @@ ms.locfileid: "74230281"
 * **预览** - 尚不支持，但将来应达到 GA 状态。
 * **实验性** - 不支持，将来可能会弃用；不保证最终达到预览或 GA 状态。
 
-## <a name="languages-by-runtime-version"></a>Languages by runtime version 
+## <a name="languages-by-runtime-version"></a>语言运行时版本 
 
 [这两个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
 
@@ -38,16 +38,16 @@ ms.locfileid: "74230281"
 
 ### <a name="language-extensibility"></a>语言扩展性
 
-Starting with version 2.x, the runtime is designed to offer [language extensibility](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). 2\.x 运行时中的 JavaScript 和 Java 语言是使用此扩展性生成的。
+从版本2.x 开始，运行时旨在提供[语言扩展性](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)。 2\.x 运行时中的 JavaScript 和 Java 语言是使用此扩展性生成的。
 
 ## <a name="next-steps"></a>后续步骤
 
-To learn more about how to develop functions in the supported languages, see the following resources:
+若要了解有关如何以支持的语言开发函数的详细信息，请参阅以下资源：
 
-+ [C# class library developer reference](functions-dotnet-class-library.md)
-+ [C# script developer reference](functions-reference-csharp.md)
-+ [Java developer reference](functions-reference-java.md)
-+ [JavaScript developer reference](functions-reference-node.md)
-+ [PowerShell developer reference](functions-reference-powershell.md)
-+ [Python developer reference](functions-reference-python.md)
-+ [TypeScript developer reference](functions-reference-node.md#typescript)
++ [C#类库开发人员参考](functions-dotnet-class-library.md)
++ [C#脚本开发人员参考](functions-reference-csharp.md)
++ [Java 开发人员参考](functions-reference-java.md)
++ [JavaScript 开发人员参考](functions-reference-node.md)
++ [PowerShell 开发人员参考](functions-reference-powershell.md)
++ [Python 开发人员参考](functions-reference-python.md)
++ [TypeScript 开发人员参考](functions-reference-node.md#typescript)

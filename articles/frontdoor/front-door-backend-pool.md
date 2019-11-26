@@ -1,6 +1,6 @@
 ---
-title: Backends and backend pools in Azure Front Door Service | Microsoft Docs
-description: This article describes what backends and backend pools are in Front Door configuration.
+title: Azure 前门服务中的后端和后端池 |Microsoft Docs
+description: 本文介绍前门配置中的后端和后端池。
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -19,77 +19,77 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74229021"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door 服务中的后端和后端池
-This article describes concepts about how to map your app deployment with Azure Front Door Service. It also explains the different terms in Front Door configuration around app backends.
+本文介绍有关如何将应用部署与 Azure 前门服务进行映射的概念。 它还说明了应用后端的前端配置中的不同术语。
 
 ## <a name="backends"></a>后端
-A backend is equal to an app's deployment instance in a region. Front Door Service supports both Azure and non-Azure backends, so the region isn't only restricted to Azure regions. Also, it can be your on-premises datacenter or an app instance in another cloud.
+后端等于某个区域中的应用部署实例。 前门服务支持 Azure 和非 Azure 后端，因此此区域不仅限于 Azure 区域。 此外，它还可以是本地数据中心或其他云中的应用程序实例。
 
-Front Door Service backends refer to the host name or public IP of your app, which can serve client requests. Backends shouldn't be confused with your database tier, storage tier, and so on. Backends should be viewed as the public endpoint of your app backend. When you add a backend in a Front Door backend pool, you must also add the following:
+前门服务后端引用可为客户端请求提供服务的应用的主机名或公共 IP。 不应将后端与数据库层、存储层等混淆。 应将后端视为应用后端的公共终结点。 在前门后端池中添加后端时，还必须添加以下内容：
 
-- **Backend host type**. The type of resource you want to add. Front Door Service supports autodiscovery of your app backends from app service, cloud service, or storage. If you want a different resource in Azure or even a non-Azure backend, select **Custom host**.
+- **后端主机类型**。 要添加的资源的类型。 前门服务支持从应用服务、云服务或存储中自动发现应用后端。 如果需要 Azure 中的其他资源，甚至是非 Azure 后端，请选择 "**自定义主机**"。
 
     >[!IMPORTANT]
-    >During configuration, APIs don't validate if the backend is inaccessible from Front Door environments. Make sure that Front Door can reach your backend.
+    >在配置期间，如果不能从前门环境访问后端，则 Api 不会验证。 请确保前门可以访问后端。
 
-- **Subscription and Backend host name**. If you haven't selected **Custom host** for backend host type, select your backend by choosing the appropriate subscription and the corresponding backend host name in the UI.
+- **订阅和后端主机名**。 如果尚未选择 "**自定义主机**作为后端主机类型"，请选择相应的订阅，并在 UI 中选择相应的后端主机名。
 
-- **Backend host header**. The host header value sent to the backend for each request. For more information, see [Backend host header](#hostheader).
+- **后端主机标头**。 为每个请求发送到后端的主机标头值。 有关详细信息，请参阅[后端主机标头](#hostheader)。
 
-- **优先级**。 Assign priorities to your different backends when you want to use a primary service backend for all traffic. Also, provide backups if the primary or the backup backends are unavailable. For more information, see [Priority](front-door-routing-methods.md#priority).
+- **优先级**。 如果要对所有流量使用主服务后端，请将优先级分配给不同的后端。 此外，如果主副本或备份后端不可用，请提供备份。 有关详细信息，请参阅[Priority](front-door-routing-methods.md#priority)。
 
-- **Weight**. Assign weights to your different backends to distribute traffic across a set of backends, either evenly or according to weight coefficients. For more information, see [Weights](front-door-routing-methods.md#weighted).
+- **权重**。 将权重分配给不同的后端，以将流量分配到一组后端上，不管是平均分配还是根据权重系数分配流量。 有关详细信息，请参阅[权重](front-door-routing-methods.md#weighted)。
 
 ### <a name = "hostheader"></a>后端主机标头
 
-Requests forwarded by Front Door to a backend include a host header field that the backend uses to retrieve the targeted resource. 此字段的值通常来自后端 URI，具有主机和端口。
+由前门转发到后端的请求包括一个主机标头字段，后端使用它来检索目标资源。 此字段的值通常来自后端 URI，具有主机和端口。
 
-For example, a request made for www\.contoso.com will have the host header www\.contoso.com. If you use Azure portal to configure your backend, the default value for this field is the host name of the backend. If your backend is contoso-westus.azurewebsites.net, in the Azure portal, the autopopulated value for the backend host header will be contoso-westus.azurewebsites.net. However, if you use Azure Resource Manager templates or another method without explicitly setting this field, Front Door Service will send the incoming host name as the value for the host header. If the request was made for www\.contoso.com, and your backend is contoso-westus.azurewebsites.net that has an empty header field, Front Door Service will set the host header as www\.contoso.com.
+例如，为 www\.contoso.com 发出的请求将具有主机标头 www\.contoso.com。 如果使用 Azure 门户配置后端，则此字段的默认值为后端的主机名。 如果后端为 contoso-westus.azurewebsites.net，则在 Azure 门户中，后端主机标头的会自动填充值将为 contoso-westus.azurewebsites.net。 但是，如果使用 Azure 资源管理器模板或其他方法而不显式设置此字段，则前门服务将发送传入的主机名作为主机标头的值。 如果对 www\.contoso.com 发出请求，并且后端 contoso-westus.azurewebsites.net 具有空的标头字段，则前门服务会将主机标头设置为 www\.contoso.com。
 
-Most app backends (Azure Web Apps, Blob storage, and Cloud Services) require the host header to match the domain of the backend. However, the frontend host that routes to your backend will use a different hostname such as www\.contoso.azurefd.net.
+大多数应用后端（Azure Web 应用、Blob 存储和云服务）都需要主机标头来匹配后端的域。 但是，路由到后端的前端主机将使用不同的主机名，例如 www\.contoso.azurefd.net。
 
-If your backend requires the host header to match the backend host name, make sure that the backend host header includes the host name backend.
+如果后端需要主机标头来匹配后端主机名，请确保后端主机标头包含主机名后端。
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>配置后端的后端主机标头
 
-To configure the **backend host header** field for a backend in the backend pool section:
+在后端池部分为后端配置**后端主机标头**字段：
 
-1. Open your Front Door resource and select the backend pool with the backend to configure.
+1. 打开前门资源，并选择后端要配置的后端池。
 
-2. Add a backend if you haven't done so, or edit an existing one.
+2. 如果尚未执行此操作，请添加后端，或编辑现有后端。
 
-3. Set the backend host header field to a custom value or leave it blank. The hostname for the incoming request will be used as the host header value.
+3. 将 "后端主机标头" 字段设置为自定义值，或将其留空。 传入请求的主机名将用作主机标头值。
 
-## <a name="backend-pools"></a>Backend pools
-A backend pool in Front Door Service refers to the set of backends that receive similar traffic for their app. In other words, it's a logical grouping of your app instances across the world that receive the same traffic and respond with expected behavior. These backends are deployed across different regions or within the same region. All backends can be in Active/Active deployment mode or what is defined as Active/Passive configuration.
+## <a name="backend-pools"></a>后端池
+前门服务中的后端池是指为其应用接收类似流量的一组后端。 换句话说，它是世界各地的应用程序实例的逻辑分组，可接收相同的流量并响应预期的行为。 这些后端部署在不同的区域或同一区域中。 所有后端可以处于主动/主动部署模式下，也可以定义为主动/被动配置。
 
-A backend pool defines how the different backends should be evaluated via health probes. It also defines how load balancing occurs between them.
+后端池定义了如何通过运行状况探测来计算不同的后端。 它还定义了负载平衡之间的发生方式。
 
 ### <a name="health-probes"></a>运行状况探测
-Front Door Service sends periodic HTTP/HTTPS probe requests to each of your configured backends. Probe requests determine the proximity and health of each backend to load balance your end-user requests. Health probe settings for a backend pool define how we poll the health status of app backends. The following settings are available for load-balancing configuration:
+前门服务将定期 HTTP/HTTPS 探测请求发送到每个已配置的后端。 探测请求会确定每个后端的邻近性和运行状况以对最终用户请求进行负载平衡。 后端池的运行状况探测设置定义我们如何轮询 app 后端的运行状况状态。 以下设置可用于负载平衡配置：
 
-- **路径**。 The URL used for probe requests for all the backends in the backend pool. For example, if one of your backends is contoso-westus.azurewebsites.net and the path is set to /probe/test.aspx, then Front Door Service environments, assuming the protocol is set to HTTP, will send health probe requests to http\://contoso-westus.azurewebsites.net/probe/test.aspx.
+- **路径**。 用于对后端池中所有后端的探测请求的 URL。 例如，如果你的某个后端为 contoso-westus.azurewebsites.net，并且路径设置为/probe/test.aspx，则在将协议设置为 HTTP 时，前门服务环境（假定该协议设置为 HTTP）将向 http\://contoso-westus.azurewebsites.net/probe/test.aspx 发送运行状况探测请求。
 
-- **协议**。 Defines whether to send the health probe requests from Front Door Service to your backends with HTTP or HTTPS protocol.
+- **协议**。 定义是否通过 HTTP 或 HTTPS 协议将前端服务的运行状况探测请求发送到后端。
 
-- **Interval (seconds)** . Defines the frequency of health probes to your backends, or the intervals in which each of the Front Door environments sends a probe.
+- **间隔（秒）** 。 定义后端的运行状况探测频率，或每个前端环境发送探测的间隔。
 
     >[!NOTE]
-    >For faster failovers, set the interval to a lower value. The lower the value, the higher the health probe volume your backends receive. For example, if the interval is set to 30 seconds with 90 Front Door environments or POPs globally, each backend will receive about 3-5 probe requests per second.
+    >为了更快地进行故障转移，请将间隔设置为较小的值。 值越低，后端接收到的运行状况探测量就越高。 例如，如果将时间间隔设置为30秒，并显示90前门环境或全局弹出，则每个后端每秒收到大约3-5 探测请求。
 
-For more information, see [Health probes](front-door-health-probes.md).
+有关详细信息，请参阅[运行状况探测](front-door-health-probes.md)。
 
-### <a name="load-balancing-settings"></a>Load-balancing settings
-Load-balancing settings for the backend pool define how we evaluate health probes. These settings determine if the backend is healthy or unhealthy. They also check how to load-balance traffic between different backends in the backend pool. The following settings are available for load-balancing configuration:
+### <a name="load-balancing-settings"></a>负载平衡设置
+后端池的负载平衡设置定义我们评估运行状况探测的方式。 这些设置确定后端是否正常运行。 它们还检查如何在后端池中的不同后端之间对流量进行负载均衡。 以下设置可用于负载平衡配置：
 
-- **Sample size**. Identifies how many samples of health probes we need to consider for backend health evaluation.
+- **样本大小**。 标识为后端运行状况评估需要考虑的运行状况探测示例数。
 
-- **Successful sample size**. Defines the sample size as previously mentioned, the number of successful samples needed to call the backend healthy. For example, assume a Front Door health probe interval is 30 seconds, sample size is 5, and successful sample size is 3. Each time we evaluate the health probes for your backend, we look at the last five samples over 150 seconds (5 x 30). At least three successful probes are required to declare the backend as healthy.
+- **样本大小成功**。 定义前面提到的示例大小，即调用后端所需的成功样本的数目。 例如，假定前门运行状况探测间隔为30秒，样本大小为5，成功的样本大小为3。 每次评估后端的运行状况探测时，我们都会查看过去5个样本，超过150秒（5 x 30）。 需要至少三个成功的探测，才能将后端声明为正常。
 
-- **Latency sensitivity (additional latency)** . Defines whether you want Front Door to send the request to backends within the latency measurement sensitivity range or forward the request to the closest backend.
+- **延迟敏感度（附加延迟）** 。 定义是否希望前门在延迟测量敏感度范围内将请求发送到后端，或将请求转发到最近的后端。
 
-For more information, see [Least latency based routing method](front-door-routing-methods.md#latency).
+有关详细信息，请参阅[基于延迟的最小路由方法](front-door-routing-methods.md#latency)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Create a Front Door profile](quickstart-create-front-door.md)
-- [How Front Door works](front-door-routing-architecture.md)
+- [创建前门配置文件](quickstart-create-front-door.md)
+- [前门的工作方式](front-door-routing-architecture.md)

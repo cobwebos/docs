@@ -131,11 +131,11 @@ ms.locfileid: "74195901"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
-    ![image](common/preintegrated.png)
+    ![图像](common/preintegrated.png)
 
 5. Amazon Web Services (AWS) 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性和声明”对话框。
 
-    ![image](common/edit-attribute.png)
+    ![图像](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -147,9 +147,9 @@ ms.locfileid: "74195901"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![image](common/new-save-attribute.png)
+    ![图像](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![图像](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
@@ -161,7 +161,7 @@ ms.locfileid: "74195901"
 
     f. 单击“确定”
 
-    g. 单击“保存”。
+    g. 单击“ **保存**”。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”并将其保存在计算机上。
 

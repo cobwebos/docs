@@ -1,5 +1,5 @@
 ---
-title: OpenAPI metadata in Azure Functions
+title: Azure Functions 中的 OpenAPI 元数据
 description: Azure Functions 中的 OpenAPI 支持概述
 author: alexkarcher-msft
 ms.topic: conceptual
@@ -40,7 +40,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="templates"></a>可用模板
 
-|名称| 描述 |
+|名称| 说明 |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 
@@ -50,9 +50,9 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 |Swagger.json|门户 UI|Function.json|
 |:----|:-----|:-----|
-|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” > “应用服务设置” > “概述” > “URL”|*不存在*
-|[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法”|绑定：路由
-|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板”|绑定︰方法
+|[主机](https://swagger.io/specification/#fixed-fields-15)|“Function App 设置” **“应用服务设置”** “概述” > “URL” >  > |*不存在*
+|[路径](https://swagger.io/specification/#paths-object-29)|“集成” **“选择 HTTP 方法”**  > |绑定：路由
+|[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” **“路由模板”**  > |绑定︰方法
 |[安全性](https://swagger.io/specification/#security-scheme-object-112)|密钥|*不存在*|
 |operationID*|路由 + 允许的动作|路由 + 允许的动作|
 

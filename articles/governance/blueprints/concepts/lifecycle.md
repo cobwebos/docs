@@ -1,6 +1,6 @@
 ---
 title: 了解蓝图的生命周期
-description: Learn about the lifecycle that a blueprint definition goes through and details about each stage, including updating and removing blueprint assignments.
+description: 了解蓝图定义经历的生命周期，以及每个阶段的详细信息，包括更新和删除蓝图分配。
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
@@ -29,7 +29,7 @@ ms.locfileid: "74404590"
 
 创建蓝图时，请向其添加项目、将其保存到管理组或订阅，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配。 但在“草稿”模式下，仍可继续更新和更改此蓝图。
 
-如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 The **Latest Version** is displayed as **Draft** for these never published blueprints.
+如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 对于这些从未发布蓝图，**最新版本**显示为**草稿**。
 
 使用 [Azure 门户](../create-blueprint-portal.md#create-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#create-a-blueprint) 创建和编辑蓝图。
 
@@ -63,11 +63,11 @@ ms.locfileid: "74404590"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. Select **Blueprint definitions** from the page on the left and use the filter options to locate the blueprint you want to delete a version of. Select it to open the edit page.
+1. 从左侧页面中选择 "**蓝图定义**"，并使用筛选器选项查找要删除其版本的蓝图。 选择它以打开 "编辑" 页。
 
-1. Select the **Published versions** tab and locate the version you wish to delete.
+1. 选择 "**已发布版本**" 选项卡，然后找到要删除的版本。
 
-1. Right-click on the version to delete and select **Delete this version**.
+1. 右键单击要删除的版本，然后选择 "**删除此版本**"。
 
 ## <a name="deleting-the-blueprint"></a>删除蓝图
 
@@ -86,7 +86,7 @@ ms.locfileid: "74404590"
 
 ### <a name="updating-assignments"></a>更新分配
 
-分配蓝图时可更新分配。 众多原因导致要更新现有分配，其中包括：
+分配蓝图时可以更新分配。 众多原因导致要更新现有分配，其中包括：
 
 - 添加或删除[资源锁定](resource-locking.md)
 - 更改[动态参数](parameters.md#dynamic-parameters)的值
@@ -94,16 +94,16 @@ ms.locfileid: "74404590"
 
 要了解操作方式，请参阅[更新现有分配](../how-to/update-existing-assignments.md)。
 
-### <a name="unassigning-assignments"></a>Unassigning assignments
+### <a name="unassigning-assignments"></a>取消分配赋值
 
-If the blueprint is no longer needed, it can be unassigned from the management group or subscription. During blueprint unassignment, the following occurs:
+如果不再需要该蓝图，则可以将其从管理组或订阅中取消分配。 在蓝图取消分配期间，会发生以下情况：
 
-- Removal of [blueprint resource locking](resource-locking.md)
-- Deletion of the blueprint assignment object
-- (Conditional) If a **system-assigned managed identity** was used, it's also deleted
+- 删除[蓝图资源锁定](resource-locking.md)
+- 删除蓝图分配对象
+- 增值税如果使用**系统分配的托管标识**，还会将其删除
 
 > [!NOTE]
-> All resources deployed by the blueprint assignment remain in place, but are no longer protected by Azure Blueprints.
+> 蓝图分配部署的所有资源都将保留原样，但不再受 Azure 蓝图的保护。
 
 ## <a name="next-steps"></a>后续步骤
 

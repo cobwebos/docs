@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: msExchUserHoldPolicies and cloudMsExchUserHoldPolicies | Microsoft Docs'
-description: This topic describes attribute behavior of the msExchUserHoldPolicies and cloudMsExchUserHoldPolicies attributes
+title: Azure AD Connect：msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies | Microsoft Docs
+description: 本主题介绍 msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies 属性的属性行为
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -21,54 +21,54 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213078"
 ---
-# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies and cloudMsExchUserHoldPolicies
-The following reference document describes these attributes used by Exchange and the proper way to edit the default sync rules.
+# <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies
+以下参考文档介绍了 Exchange 使用的这些属性，以及编辑默认同步规则的适当方式。
 
-## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>What are msExchUserHoldPolicies and cloudMsExchUserHoldPolicies?
-There are two types of [holds](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) available for an Exchange Server: Litigation Hold and In-Place Hold. When Litigation Hold is enabled, all mailbox all items are placed on hold.  An In-Place Hold is used to preserve only those items that meet the criteria of a search query that you defined by using the In-Place eDiscovery tool.
+## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>什么是 msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies？
+有两种类型的[保留](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)可用于 Exchange 服务器：诉讼持有和就地保留。 启用诉讼保留后，所有邮箱和项都会保留。  就地保留仅保留符合你使用 In-Place eDiscovery 工具定义的搜索查询条件的项。
 
-The MsExchUserHoldPolcies and cloudMsExchUserHoldPolicies attributes allow on-premises AD and Azure AD to determine which users are under a hold depending on whether they are using on-premises Exchange or Exchange on-line.
+MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 属性允许本地 AD 与 Azure AD 根据用户使用的是本地 Exchange 还是联机 Exchange，来确定哪些用户处于保留状态。
 
-## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies synchronization flow
-By default MsExchUserHoldPolcies is synchronized by Azure AD Connect directly to the msExchUserHoldPolicies attribute in the metaverse and then to the msExchUserHoldPolices attribute in Azure AD
+## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies 同步流
+默认情况下，MsExchUserHoldPolcies 将由 Azure AD Connect 直接同步到 Metaverse 中的 msExchUserHoldPolicies 属性，然后同步到 Azure AD 中的 msExchUserHoldPolices 属性
 
-The following tables describe the flow:
+下表描述了该流：
 
-Inbound from on-premises Active Directory:
+从本地 Active Directory 入站：
 
-|Active Directory attribute|属性名称|流类型|Metaverse attribute|Sync Rule|
+|Active Directory 属性|属性名称|流类型|Metaverse 属性|同步规则|
 |-----|-----|-----|-----|-----|
-|本地 Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolices|In from AD - User Exchange|
+|本地 Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolices|In from AD - User Exchange|
 
-Outbound to Azure AD:
+出站到 Azure AD：
 
-|Metaverse attribute|属性名称|流类型|Azure AD attribute|Sync Rule|
+|Metaverse 属性|属性名称|流类型|Azure AD 属性|同步规则|
 |-----|-----|-----|-----|-----|
-|Azure Active Directory|msExchUserHoldPolicies|Direct|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
+|Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|Out to AAD – UserExchangeOnline|
 
-## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies synchronization flow
-By default cloudMsExchUserHoldPolicies is synchronized by Azure AD Connect directly to the cloudMsExchUserHoldPolicies attribute in the metaverse. Then, if msExchUserHoldPolices is not null in the metaverse, the attribute in flowed out to Active Directory.
+## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies 同步流
+默认情况下，cloudMsExchUserHoldPolicies 由 Azure AD Connect 直接同步到 Metaverse 中的 cloudMsExchUserHoldPolicies 属性。 如果 Metaverse 中的 msExchUserHoldPolices 不为 null，该属性将流出到 Active Directory。
 
-The following tables describe the flow:
+下表描述了该流：
 
-Inbound from Azure AD:
+从 Azure AD 入站：
 
-|Active Directory attribute|属性名称|流类型|Metaverse attribute|Sync Rule|
+|Active Directory 属性|属性名称|流类型|Metaverse 属性|同步规则|
 |-----|-----|-----|-----|-----|
-|本地 Active Directory|cloudMsExchUserHoldPolicies|Direct|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
+|本地 Active Directory|cloudMsExchUserHoldPolicies|直接|cloudMsExchUserHoldPolicies|In from AAD - User Exchange|
 
-Outbound to on-premises Active Directory:
+出站到本地 Active Directory：
 
-|Metaverse attribute|属性名称|流类型|Azure AD attribute|Sync Rule|
+|Metaverse 属性|属性名称|流类型|Azure AD 属性|同步规则|
 |-----|-----|-----|-----|-----|
 |Azure Active Directory|cloudMsExchUserHoldPolicies|IF(NOT NULL)|msExchUserHoldPolicies|Out to AD – UserExchangeOnline|
 
-## <a name="information-on-the-attribute-behavior"></a>Information on the attribute behavior
-The msExchangeUserHoldPolicies is a single authority attribute.  A single authority attribute can be set on an object (in this case, user object) in the on-premises directory or in the cloud directory.  The Start of Authority rules dictate, that if the attribute is synchronized from on-premises, then Azure AD will not be allowed to update this attribute.
+## <a name="information-on-the-attribute-behavior"></a>有关属性行为的信息
+msExchangeUserHoldPolicies 是单机构属性。  可以针对本地目录或云目录中的对象（在本例中为用户对象）设置单机构属性。  “启动机构”规则规定，如果属性已从本地同步，则不允许 Azure AD 更新此属性。
 
-To allow users to set a hold policy on a user object in the cloud, the cloudMSExchangeUserHoldPolicies attribute is used. This attribute is used because Azure AD cannot set msExchangeUserHoldPolicies directly based on the rules explained above.  This attribute will then synchronize back to the on-premises directory if, the msExchangeUserHoldPolicies is not null and replace the current value of msExchangeUserHoldPolicies.
+若要允许用户针对云中的用户对象设置保留策略，请使用 cloudMSExchangeUserHoldPolicies 属性。 之所以使用此属性，是因为 Azure AD 无法根据上述规则直接设置 msExchangeUserHoldPolicies。  如果 msExchangeUserHoldPolicies 不为 null，则此属性将同步回到本地目录，并替换 msExchangeUserHoldPolicies 的当前值。
 
-Under certain circumstances, for instance, if both were changed on-premises and in Azure at the same time, this could cause some issues.  
+例如，在某些情况下，如果两者同时在本地和 Azure 中发生更改，这可能会导致一些问题。  
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

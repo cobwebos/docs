@@ -1,6 +1,6 @@
 ---
-title: The Conditional Access What If tool - Azure Active Directory
-description: Learn how you can understand the impact of your Conditional Access policies on your environment.
+title: 条件性访问 What If 工具-Azure Active Directory
+description: 了解如何理解条件访问策略对环境的影响。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,21 +18,21 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74379982"
 ---
-# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Troubleshoot using the What If tool in Conditional Access
+# <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active Directory (Azure AD) that enables you to control how authorized users access your cloud apps. How do you know what to expect from the Conditional Access policies in your environment? To answer this question, you can use the **Conditional Access What If tool**.
+[条件访问](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户访问云应用的方式。 如何知道环境中的条件访问策略会带来什么？ 若要回答此问题，可以使用“条件访问 What If 工具”。
 
-This article explains how you can use this tool to test your Conditional Access policies.
+本文介绍如何使用此工具来测试条件访问策略。
 
-## <a name="what-it-is"></a>描述
+## <a name="what-it-is"></a>作用
 
-The **Conditional Access What If policy tool** allows you to understand the impact of your Conditional Access policies on your environment. 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 The report does not only list the applied Conditional Access policies but also [classic policies](policy-migration.md#classic-policies) if they exist.    
+通过“条件访问 What If 策略工具”，可了解条件访问策略对环境的影响。 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 报表不仅列出应用的条件访问策略，还列出[经典策略](policy-migration.md#classic-policies)（如果存在）。    
 
-The **What If** tool provides a way to quickly determine the policies that apply to a specific user. 如果需要解决问题等，则可以使用此信息。    
+**What If** 工具提供了一种快速确定适用于特定用户的策略的方法。 如果需要解决问题等，则可以使用此信息。    
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
-In the **Conditional Access What If tool**, you first need to configure the settings of the sign-in scenario you want to simulate. 这些设置包括：
+在“条件访问 What If 工具”中，首先需要配置想要模拟的登录方案的设置。 这些设置包括：
 
 - 想要测试的用户 
 - 用户要尝试访问的云应用
@@ -44,9 +44,9 @@ In the **Conditional Access What If tool**, you first need to configure the sett
 
 ## <a name="running-the-tool"></a>运行此工具
 
-You can find the **What If** tool on the **[Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** page in the Azure portal.
+可以在 Azure 门户中的“**条件访问 - 策略** **[”页上找到 ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)What If** 工具。
 
-To start the tool, in the toolbar on top of the list of policies, click **What If**.
+若要启动此工具，请在策略列表顶部的工具栏中单击 **What If**。
 
 ![What If](./media/what-if-tool/01.png)
 
@@ -88,7 +88,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 ## <a name="evaluation"></a>计算 
 
-You start an evaluation by clicking **What If**. 评估结果提供包含以下内容的报表： 
+通过单击 **What If** 启动评估。 评估结果提供包含以下内容的报表： 
 
 ![What If](./media/what-if-tool/03.png)
 

@@ -1,7 +1,7 @@
 ---
-title: 'Designer: classify book reviews example'
+title: 设计器：对书籍评审示例进行分类
 titleSuffix: Azure Machine Learning
-description: Build a multiclass logistic regression classifier to predict the company category with wikipedia SP 500 dataset using Azure Machine Learning designer.
+description: 使用 Azure 机器学习设计器生成一个多类逻辑回归分类器，以预测带有维基百科 SP 500 数据集的公司类别。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -17,41 +17,41 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74213769"
 ---
-# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Build a classifier to predict company category using Azure Machine Learning designer.
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器以预测公司类别。
 
-**Designer (preview) sample 7**
+**设计器（预览）示例7**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-This sample demonstrates how to use text analytics modules to build a text classification pipeline in Azure Machine Learning designer (preview).
+此示例演示如何使用文本分析模块在 Azure 机器学习设计器（预览版）中构建文本分类管道。
 
-The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. 
+文本分类的目标是将一些文本分配给一个或多个预定义的类或类别。 文本片段可以是文档、新闻文章、搜索查询、电子邮件、推文、支持票证、客户反馈、用户产品评论等。文本分类应用程序包括将报纸文章和资讯内容分类到主题，将网页组织成层次结构类别，筛选垃圾邮件，情绪分析，根据搜索查询预测用户意向，路由支持票证和分析客户反馈。 
 
-This pipeline trains a **multiclass logistic regression classifier** to predict the company category with **Wikipedia SP 500 dataset derived from Wikipedia**.  
+此管道培训**多类逻辑回归分类器**，以预测**从维基百科派生的维基百科 SP 500 数据集**的公司类别。  
 
-The fundamental steps of a training machine learning model with text data are:
+训练机器学习模型中包含文本数据的基本步骤如下：
 
 1. 获取数据
 
-1. Pre-process the text data
+1. 预处理文本数据
 
 1. 特征工程
 
-   Convert text feature into the numerical feature with feature extracting module such as feature hashing, extract n-gram feature from the text data.
+   通过功能提取模块（例如功能哈希）将文本功能转换为数值功能，从文本数据中提取 n 元语法功能。
 
-1. 定型模型
+1. 训练模型
 
-1. Score dataset
+1. 评分数据集
 
 1. 评估模型
 
-Here's the final, completed graph of the pipeline we'll be working on. We'll provide the rationale for all the modules so you can make similar decisions on your own.
+下面是我们将处理的管道的最终完成关系图。 我们将提供所有模块的基本原理，以便您可以自行做出类似的决策。
 
-[![Graph of the pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
+[管道 ![图](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>数据
 
-In this pipeline, we use the **Wikipedia SP 500** dataset. The dataset is derived from Wikipedia (https://www.wikipedia.org/) based on articles of each S&P 500 company. Before uploading to Azure Machine Learning designer, the dataset was processed as follows:
+在此管道中，我们使用**维基百科 SP 500**数据集。 数据集派生自维基百科（ https://www.wikipedia.org/) 基于每个 & P 500 公司的文章。 上载到 Azure 机器学习设计器之前，数据集的处理方式如下：
 
 - 提取每个特定公司的文本内容
 - 去除维基百科的格式设置
@@ -59,49 +59,49 @@ In this pipeline, we use the **Wikipedia SP 500** dataset. The dataset is derive
 - 将所有文本都转换为小写
 - 添加了已知的公司类别
 
-Articles could not be found for some companies, so the number of records is less than 500.
+对于某些公司，找不到项目，因此记录数小于500。
 
-## <a name="pre-process-the-text-data"></a>Pre-process the text data
+## <a name="pre-process-the-text-data"></a>预处理文本数据
 
-We use the **Preprocess Text** module to preprocess the text data, including detect the sentences, tokenize sentences and so on. You would found all supported options in the [**Preprocess Text**](../algorithm-module-reference/preprocess-text.md) article. After pre-processing tex data, we use the **Split Data** module to randomly divide the input data so that the training dataset contains 50% of the original data and the testing dataset contains 50% of the original data.
+我们使用 "**预处理文本**" 模块对文本数据进行预处理，包括检测句子、标记的句子等。 您可以在[**预处理文本**](../algorithm-module-reference/preprocess-text.md)一文中找到所有支持的选项。 预处理 tex 数据后，我们使用**拆分数据**模块随机划分输入数据，以便定型数据集包含50% 的原始数据，并且测试数据集包含原始数据的50%。
 
 ## <a name="feature-engineering"></a>特征工程
-In this sample, we will use two methods performing feature engineering.
+在此示例中，我们将使用两个执行特征工程的方法。
 
 ### <a name="feature-hashing"></a>特征哈希
-We used the [**Feature Hashing**](../algorithm-module-reference/feature-hashing.md) module to convert the plain text of the articles to integers and used the integer values as input features to the model. 
+我们使用了 "[**特征哈希**](../algorithm-module-reference/feature-hashing.md)" 模块将文章的纯文本转换为整数，并使用整数值作为模型的输入功能。 
 
-The **Feature Hashing** module can be used to convert variable-length text documents to equal-length numeric feature vectors, using the 32-bit murmurhash v3 hashing method provided by the Vowpal Wabbit library. The objective of using feature hashing is dimensionality reduction; also feature hashing makes the lookup of feature weights faster at classification time because it uses hash value comparison instead of string comparison.
+**功能哈希**模块可用于将可变长度的文本文档转换为相等长度的数字特征向量，使用 Vowpal Wabbit 库提供的32位 murmurhash v3 哈希方法。 使用特征哈希的目标是维度缩减;此外，特征哈希使得功能权重的查找在分类时间更快，因为它使用哈希值比较而不是字符串比较。
 
-In the sample pipeline, we set the number of hashing bits to 14 and set the number of n-grams to 2. With these settings, the hash table can hold 2^14 entries, in which each hashing feature represents one or more n-gram features and its value represents the occurrence frequency of that n-gram in the text instance. For many problems, a hash table of this size is more than adequate, but in some cases, more space might be needed to avoid collisions. Evaluate the performance of your machine learning solution using different number of bits. 
+在示例管道中，我们将哈希位数设置为14，并将 n 元语法数设置为2。 在这些设置中，哈希表可以保存 2 ^ 14 个条目，其中每个哈希特征表示一个或多个 n 元语法特征，其值表示文本实例中 n 语法的出现频率。 对于许多问题，此大小的哈希表已足够，但在某些情况下，可能需要更多的空间来避免冲突。 使用不同位数评估机器学习解决方案的性能。 
 
-### <a name="extract-n-gram-feature-from-text"></a>Extract N-Gram Feature from Text
+### <a name="extract-n-gram-feature-from-text"></a>从文本提取 N 元语法特征
 
-An n-gram is a contiguous sequence of n terms from a given sequence of text. An n-gram of size 1 is referred to as a unigram; an n-gram of size 2 is a bigram; an n-gram of size 3 is a trigram. N-grams of larger sizes are sometimes referred to by the value of n, for instance, "four-gram", "five-gram", and so on.
+N 语法是给定文本序列中的 n 个字词的连续序列。 大小为1的 n 语法称为 unigram;大小为2的 n 语法为 bigram;大小为3的 n 语法为三线形。 N-如果值较大，则值通常由 n 的值引用，例如 "四语法"、"5 语法" 等。
 
-We used [**Extract N-Gram Feature from Text**](../algorithm-module-reference/extract-n-gram-features-from-text.md)module as another solution for feature engineering. This module first extracts the set of n-grams, in addition to the n-grams, the number of documents where each n-gram appears in the text is counted(DF). In this sample, TF-IDF metric is used to calculate feature values. Then, it converts unstructured text data into equal-length numeric feature vectors where each feature represents the TF-IDF of an n-gram in a text instance.
+我们使用了 "[**从文本中提取 N 元语法" 功能**](../algorithm-module-reference/extract-n-gram-features-from-text.md)作为功能设计的另一个解决方案。 此模块首先提取 n 语法集，此外还会提取 n 语法，其中每个 n 元语法在文本中出现的文档数（DF）。 在此示例中，使用了 TF-IDF 指标来计算特征值。 然后，它将非结构化文本数据转换为等长数值特征向量，其中每个特征表示文本实例中 n 语法的 TF-IDF。
 
-After converting text data into numeric feature vectors, A **Select Column** module is used to remove the text data from the dataset. 
+将文本数据转换为数字特征向量后，使用 "**选择列**" 模块从数据集中删除文本数据。 
 
-## <a name="train-the-model"></a>定型模型
+## <a name="train-the-model"></a>训练模型
 
-Your choice of algorithm often depends on the requirements of the use case. Because the goal of this pipeline is to predict the category of company, a multi-class classifier model is a good choice. Considering that the number of features is large and these features are sparse, we use **Multiclass Logistic Regression** model for this pipeline.
+选择的算法通常取决于用例的要求。 由于此管道的目标是预测公司的类别，因此，多类分类器模型是一个不错的选择。 考虑到功能很大，这些功能是稀疏的，我们将**多类逻辑回归**模型用于此管道。
 
-## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
+## <a name="test-evaluate-and-compare"></a>测试、评估和比较
 
- We split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
+ 我们拆分数据集并使用不同的数据集来定型和测试模型，以使模型的评估更具目标。
 
-After the model is trained, we would use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. However, before using the **Score Model** module, performing feature engineering as what we have done during training is required. 
+在对模型进行定型后，我们将使用**评分模型**并**评估模型**模块以生成预测结果并对模型进行评估。 但是，在使用 "**评分模型**" 模块之前，需要执行培训过程中所做的工作。 
 
-For **Feature Hashing** module, it is easy to perform feature engineer on scoring flow as training flow. Use **Feature Hashing** module directly to process the input text data.
+对于**特征哈希**模块，可以轻松地在评分流上执行功能工程师。 直接使用**特征哈希**模块来处理输入文本数据。
 
-For **Extract N-Gram Feature from Text** module, we would connect the **Result Vocabulary output** from the training dataflow to the **Input Vocabulary** on the scoring dataflow, and set the **Vocabulary mode** parameter to **ReadOnly**.
-[![Graph of n-gram score](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
+对于 "**从文本中提取 N 元语法特征**" 模块，我们会将定型数据流的**结果词汇输出**连接到计分数据流上的**输入词汇**，并将**词汇模式**参数设置为**ReadOnly**.
+[n 语法分数 ![图形](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
-After finishing the engineering step, **Score Model** could be used to generate predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
+完成工程步骤后，可以使用**评分模型**通过训练的模型生成测试数据集的预测。 若要检查结果，请选择 "**评分模型**" 的输出端口，然后选择 "**可视化**"。
 
-We then pass the scores to the **Evaluate Model** module to generate evaluation metrics. **Evaluate Model** has two input ports, so that we could evaluate and compare scored datasets that are generated with different methods. In this sample, we compare the performance of the result generated with feature hashing method and n-gram method.
-To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
+然后，将评分传递到 "**评估模型**" 模块以生成评估指标。 **评估模型**有两个输入端口，因此，我们可以评估和比较用不同方法生成的评分的数据集。 在此示例中，我们比较了用功能哈希方法和 n 语法方法生成的结果的性能。
+若要检查结果，请选择 "**评估模型**" 的输出端口，然后选择 "**可视化**"。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -109,10 +109,10 @@ To check the result, select the output port of the **Evaluate Model** and then s
 
 ## <a name="next-steps"></a>后续步骤
 
-Explore the other samples available for the designer:
-- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
-- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
-- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+浏览可用于设计器的其他示例：
+- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
+- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
+- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
+- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)

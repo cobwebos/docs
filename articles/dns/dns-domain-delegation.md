@@ -24,7 +24,7 @@ ms.locfileid: "74212096"
 
 域名系统是域的层次结构。 该层次结构从名为“ **.** ”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  这些顶级域的下面是二级域，例如“org.uk”或“co.jp”。  依此类推。 DNS 层次结构中的域托管在不同的 DNS 区域。 这些区域遍布全球，由世界各地的 DNS 名称服务器托管。
 
-**DNS 区域** - 域在域名系统中具有一个唯一名称，例如“contoso.com”。 DNS 区域用于托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
+**DNS 区域** - 域在域名系统中具有一个唯一名称，例如“contoso.com”。 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
 
 **域注册机构** - 域注册机构是可以提供 Internet 域名的公司。 它们会验证所要使用的 Internet 域是否可用，以及是否允许购买。 注册域名后，注册者即是该域名的合法所有者。 如果已有一个 Internet 域，将使用当前的域注册机构将该域委托给 Azure DNS。
 

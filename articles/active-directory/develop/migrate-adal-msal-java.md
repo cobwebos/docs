@@ -1,7 +1,7 @@
 ---
-title: ADAL to MSAL migration guide for Java | Azure
+title: 适用于 Java 的 ADAL 到 MSAL 迁移指南 |Microsoft
 titleSuffix: Microsoft identity platform
-description: Learn how to migrate your Azure Active Directory Authentication Library (ADAL) Java app to the Microsoft Authentication Library (MSAL).
+description: 了解如何将 Azure Active Directory 身份验证库（ADAL） Java 应用迁移到 Microsoft 身份验证库（MSAL）。
 services: active-directory
 author: sangonzal
 manager: henrikm
@@ -24,80 +24,80 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74452206"
 ---
-# <a name="adal-to-msal-migration-guide-for-java"></a>ADAL to MSAL migration guide for Java
+# <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
-This article highlights changes you need to make to migrate an app that uses the Azure Active Directory Authentication Library (ADAL) to use the Microsoft Authentication Library (MSAL).
+本文重点介绍需要做出哪些更改，才能迁移使用 Azure Active Directory 身份验证库 (ADAL) 的应用，使之使用 Microsoft 身份验证库 (MSAL)。
 
-Both Microsoft Authentication Library for Java (MSAL4J) and Azure AD Authentication Library for Java (ADAL4J) are used to authenticate Azure AD entities and request tokens from Azure AD. Until now, most developers have worked with Azure AD for developers platform (v1.0) to authenticate Azure AD identities (work and school accounts) by requesting tokens using Azure AD Authentication Library (ADAL).
+适用于 Java 的 Microsoft 身份验证库（MSAL4J）和 Java Azure AD 身份验证库（ADAL4J）用于对 Azure AD 实体进行身份验证并从 Azure AD 请求令牌。 到现在为止，大多数开发人员都与 Azure AD 开发人员平台（1.0）合作，通过使用 Azure AD 身份验证库（ADAL）请求令牌来对 Azure AD 标识（工作和学校帐户）进行身份验证。
 
-MSAL offers the following benefits:
+MSAL 具有以下优势：
 
-- Because it uses the newer Microsoft identity platform endpoint, you can authenticate a broader set of Microsoft identities such as Azure AD identities, Microsoft accounts, and social and local accounts through Azure AD Business to Consumer (B2C).
-- Your users will get the best single-sign-on experience.
-- Your application can enable incremental consent, and supporting conditional access is easier.
+- 由于它使用较新的 Microsoft 标识平台终结点，因此你可以通过 Azure AD 企业到消费者（B2C）来验证一组更广泛的 Microsoft 标识，如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户。
+- 你的用户将获得最佳的单一登录体验。
+- 你的应用程序可以启用增量许可，并支持条件性访问。
 
-MSAL for Java is the auth library we recommend you use with the Microsoft identity platform. No new features will be implemented on ADAL4J. All efforts going forward are focused on improving MSAL.
+MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 不会在 ADAL4J 上实现新功能。 今后的所有工作都侧重于改进 MSAL。
 
 ## <a name="differences"></a>差异
 
-If you have been working with the Azure AD for developers (v1.0) endpoint (and ADAL4J), you might want to read [What's different about the Microsoft identity platform (v2.0) endpoint?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+如果你使用的是面向开发人员（1.0）终结点（ADAL4J）的 Azure AD，则可能需要阅读[有关 Microsoft 标识平台（v2.0）终结点的不同之处](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)。
 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
-ADAL4J acquires tokens for resources whereas MSAL for Java acquires tokens for scopes. A number of MSAL for Java classes require a scopes parameter. This parameter is a list of strings that declare the desired permissions and resources that are requested. See [Microsoft Graph's scopes](https://docs.microsoft.com/graph/permissions-reference) to see example scopes.
+ADAL4J 获取资源的令牌，而 MSAL for Java 将获取作用域的令牌。 Java 类的多个 MSAL 需要作用域参数。 此参数是一个字符串列表，这些字符串声明所请求的权限和资源。 请参阅[Microsoft Graph 的作用域](https://docs.microsoft.com/graph/permissions-reference)以查看示例范围。
 
 ## <a name="core-classes"></a>核心类
 
-In ADAL4J, the `AuthenticationContext` class represents your connection to the Security Token Service (STS), or authorization server, through an Authority. However, MSAL for Java is designed around client applications. It provides two separate classes: `PublicClientApplication` and `ConfidentialClientApplication` to represent client applications.  The latter, `ConfidentialClientApplication`, represents an application that is designed to securely maintain a secret such as an application identifier for a daemon app.
+在 ADAL4J 中，`AuthenticationContext` 类表示与安全令牌服务（STS）或授权服务器（通过颁发机构）的连接。 但是，MSAL for Java 是围绕客户端应用程序设计的。 它提供两个单独的类： `PublicClientApplication` 和 `ConfidentialClientApplication`，以表示客户端应用程序。  后者（`ConfidentialClientApplication`）表示一个应用程序，该应用程序旨在安全地维护机密，如后台应用程序的应用程序标识符。
 
-The following table shows how ADAL4J functions map to the new MSAL for Java functions:
+下表显示了 ADAL4J 函数如何映射到新的 MSAL for Java 函数：
 
-| ADAL4J method| MSAL4J method|
+| ADAL4J 方法| MSAL4J 方法|
 |------|-------|
-|acquireToken(String resource, ClientCredential credential, AuthenticationCallback callback) | acquireToken(ClientCredentialParameters)|
-|acquireToken(String resource, ClientAssertion assertion, AuthenticationCallback callback)|acquireToken(ClientCredentialParameters)|
-|acquireToken(String resource, AsymmetricKeyCredential credential, AuthenticationCallback callback)|acquireToken(ClientCredentialParameters)|
-|acquireToken(String resource, String clientId, String username, String password, AuthenticationCallback callback)| acquireToken(UsernamePasswordParameters)|
-|acquireToken(String resource, String clientId, String username, String password=null, AuthenticationCallback callback)|acquireToken(IntegratedWindowsAuthenticationParameters)|
-|acquireToken(String resource, UserAssertion userAssertion, ClientCredential credential, AuthenticationCallback callback)| acquireToken(OnBehalfOfParameters)|
-|acquireTokenByAuthorizationCode() | acquireToken(AuthorizationCodeParameters) |
-| acquireDeviceCode() and acquireTokenByDeviceCode()| acquireToken(DeviceCodeParameters)|
+|acquireToken （字符串资源，ClientCredential credential，Authenticationcallback 传递给回调） | acquireToken （ClientCredentialParameters）|
+|acquireToken （字符串资源，ClientAssertion 断言，Authenticationcallback 传递给回调）|acquireToken （ClientCredentialParameters）|
+|acquireToken （字符串资源，AsymmetricKeyCredential credential，Authenticationcallback 传递给回调）|acquireToken （ClientCredentialParameters）|
+|acquireToken （字符串资源，字符串 clientId，字符串用户名，字符串密码，Authenticationcallback 传递给回调）| acquireToken （UsernamePasswordParameters）|
+|acquireToken （字符串资源，字符串 clientId，字符串用户名，字符串密码 = null，Authenticationcallback 传递给回调）|acquireToken （IntegratedWindowsAuthenticationParameters）|
+|acquireToken （字符串资源，UserAssertion userAssertion，ClientCredential credential，Authenticationcallback 传递给回调）| acquireToken （OnBehalfOfParameters）|
+|acquireTokenByAuthorizationCode （） | acquireToken （AuthorizationCodeParameters） |
+| acquireDeviceCode （）和 acquireTokenByDeviceCode （）| acquireToken （DeviceCodeParameters）|
 |acquireTokenByRefreshToken()| acquireTokenSilently(SilentParameters)|
 
-## <a name="iaccount-instead-of-iuser"></a>IAccount instead of IUser
+## <a name="iaccount-instead-of-iuser"></a>IAccount 而不是 IUser
 
-ADAL4J manipulated users. Although a user represents a single human or software agent, it can have one or more accounts in the Microsoft identity system. For example, a user may have several Azure AD, Azure AD B2C, or Microsoft personal accounts.
+ADAL4J 操作用户。 尽管用户代表单个人员或软件代理，但它可以在 Microsoft 标识系统中有一个或多个帐户。 例如，用户可能有多个 Azure AD、Azure AD B2C 或 Microsoft 个人帐户。
 
-MSAL for Java defines the concept of Account via the `IAccount` interface. This is a breaking change from ADAL4J, but it is a good one because it captures the fact that the same user can have several accounts, and perhaps even in different Azure AD directories. MSAL for Java provides better information in guest scenarios because home account information is provided.
+MSAL for Java 通过 `IAccount` 接口定义帐户的概念。 这是 ADAL4J 的一项重大更改，但这是一项很好的更改，因为它可以捕获同一个用户可以拥有多个帐户的事实，甚至在不同 Azure AD 目录中。 MSAL for Java 在来宾方案中提供了更好的信息，因为提供了 home 帐户信息。
 
 ## <a name="cache-persistence"></a>缓存持久性
 
-ADAL4J did not have support for token cache.
-MSAL for Java adds a [token cache](msal-acquire-cache-tokens.md) to simplify managing token lifetimes by automatically refreshing expired tokens when possible and preventing unnecessary prompts for the user to provide credentials when possible.
+ADAL4J 不支持令牌缓存。
+MSAL for Java 添加了一个[令牌缓存](msal-acquire-cache-tokens.md)，可通过自动刷新过期令牌来简化令牌生存期的管理，并防止用户在可能的情况中提供凭据。
 
-## <a name="common-authority"></a>Common Authority
+## <a name="common-authority"></a>共同颁发机构
 
-In v1.0, if you use the `https://login.microsoftonline.com/common` authority, users can sign in with any Azure Active Directory (AAD) account (for any organization).
+在1.0 版中，如果使用的是 `https://login.microsoftonline.com/common` 机构，则用户可以使用任何 Azure Active Directory （AAD）帐户登录（适用于任何组织）。
 
-If you use the `https://login.microsoftonline.com/common` authority in v2.0, users can sign in with any AAD organization, or even a Microsoft personal account (MSA). In MSAL for Java, if you want to restrict login to any AAD account, you need to use the `https://login.microsoftonline.com/organizations` authority (which is the same behavior as with ADAL4J). To specify an authority, set the `authority` parameter in the [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) method when you create your `PublicClientApplication` class.
+如果你使用 v2.0 中的 `https://login.microsoftonline.com/common` 颁发机构，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户（MSA）登录。 在适用于 Java 的 MSAL 中，如果要将登录限制为任何 AAD 帐户，则需使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 相同的行为）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时设置[PublicClientApplication](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html)方法中的 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 
 v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
-The v2.0 endpoint (used by MSAL) can emit v1.0 and v2.0 tokens. 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 See `accessTokenAcceptedVersion` in the [application manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) reference documentation.
+V2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 请参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档中的 `accessTokenAcceptedVersion`。
 
-For more information about v1.0 and v2.0 tokens, see [Azure Active Directory access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+有关1.0 和 v2.0 令牌的详细信息，请参阅[Azure Active Directory 访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
 
 ## <a name="adal-to-msal-migration"></a>ADAL 到 MSAL 的迁移
 
-In ADAL4J, the refresh tokens were exposed--which allowed developers to cache them. They would then use `AcquireTokenByRefreshToken()` to enable solutions such as implementing long-running services that refresh dashboards on behalf of the user when the user is no longer connected.
+在 ADAL4J 中，用户可以使用刷新令牌来缓存这些令牌。 然后，他们将使用 `AcquireTokenByRefreshToken()` 来启用解决方案，如实现长时间运行的服务，这些服务将在用户不再连接时代表用户刷新仪表板。
 
-MSAL for Java does not expose refresh tokens for security reasons. Instead, MSAL handles refreshing tokens for you.
+MSAL for Java 出于安全原因不会公开刷新令牌。 相反，MSAL 会为你处理刷新令牌的情况。
 
-MSAL for Java has an API that allows you to migrate refresh tokens you acquired with ADAL4j into the ClientApplication: [acquireToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-). 使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 The refresh token will be exchanged for a new one and cached for use by your application.
+MSAL for Java 提供了一个 API，可让你将使用 ADAL4j 获取的刷新令牌迁移到 ClientApplication： [acquireToken （RefreshTokenParameters）](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-)中。 使用此方法可以结合所需的任何范围（资源）提供以前用过的刷新令牌。 将为新的刷新令牌进行交换，并缓存该令牌以供你的应用程序使用。
 
-The following code snippet shows some migration code in a confidential client application:
+以下代码段显示了机密客户端应用程序中的一些迁移代码：
 
 ```java
 String rt = GetCachedRefreshTokenForSIgnedInUser(); // Get refresh token from where you have them stored
@@ -112,13 +112,13 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-The `IAuthenticationResult` returns an access token and ID token, while your new refresh token is stored in the cache. The application will also now contain an IAccount:
+当新的刷新令牌存储在缓存中时，`IAuthenticationResult` 将返回访问令牌和 ID 令牌。 应用程序现在还将包含一个 IAccount：
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
 ```
 
-To use the tokens that are now in the cache, call:
+若要使用目前在缓存中的令牌，请调用：
 
 ```java
 SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build(); 

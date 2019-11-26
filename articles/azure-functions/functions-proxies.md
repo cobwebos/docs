@@ -1,5 +1,5 @@
 ---
-title: Work with proxies in Azure Functions
+title: 在 Azure Functions 中使用代理
 description: 有关如何使用 Azure Functions 代理的概述
 author: alexkarcher-msft
 ms.topic: conceptual
@@ -29,8 +29,8 @@ ms.locfileid: "74230458"
 2. 在左窗格中，选择“新建代理”。
 3. 为代理提供一个名称。
 4. 通过指定**路由模板**和 **HTTP 方法**配置在此 Function App 上公开的终结点。 这些参数的行为取决于 [HTTP 触发器]的规则。
-5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[application settings]和[原始客户端请求中的参数]。
-6. 单击“创建”。
+5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
+6. 单击“**创建**”。
 
 代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用最喜欢的 HTTP 客户端对其进行测试来试验新代理。
 
@@ -40,13 +40,13 @@ ms.locfileid: "74230458"
 
 ### <a name="modify-backend-request"></a>修改后端请求
 
-默认情况下，后端请求初始化为原始请求的副本。 除了设置后端 URL 以外，还可以对 HTTP 方法、标头和查询字符串参数进行更改。 修改的值可以引用[application settings]和[原始客户端请求中的参数]。
+默认情况下，后端请求初始化为原始请求的副本。 除了设置后端 URL 以外，还可以对 HTTP 方法、标头和查询字符串参数进行更改。 修改的值可以引用[应用程序设置]和[原始客户端请求中的参数]。
 
 可在门户中通过展开代理详细信息页的“请求替代”部分修改后端请求。 
 
 ### <a name="modify-response"></a>修改响应
 
-默认情况下，客户端响应初始化为后端响应的副本。 可对响应的状态代码、原因短语、标头和正文进行更改。 修改的值可以引用[application settings]、[原始客户端请求中的参数]和[后端响应中的参数]。
+默认情况下，客户端响应初始化为后端响应的副本。 可对响应的状态代码、原因短语、标头和正文进行更改。 修改的值可以引用[应用程序设置]、[原始客户端请求中的参数]和[后端响应中的参数]。
 
 可在门户中通过展开代理详细信息页的“响应替代”部分修改后端请求。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "74230458"
 
  
 >[!Note]  
->如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 In this case the reference would look like: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` We recommend storing these keys in [application settings] and referencing those in your proxies. This avoids storing secrets in your source code. 
+>如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用如下所示： `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` 建议将这些密钥存储在[应用程序设置]中，并在代理中引用这些密钥。 这样可以避免在源代码中存储机密。 
 
 ### <a name="request-parameters"></a>引用请求参数
 
@@ -100,7 +100,7 @@ ms.locfileid: "74230458"
 
 通过将标志 `"debug":true` 添加到 `proxies.json` 中的任何代理，将启用调试日志记录。 日志存储在 `D:\home\LogFiles\Application\Proxies\DetailedTrace` 中，可通过高级工具 (kudu) 访问。 任何 HTTP 响应也将包含 `Proxy-Trace-Location` 标头，其中包含用于访问日志文件的 URL。
 
-可以通过添加设置为 `true` 的 `Proxy-Trace-Enabled` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
+可以通过添加设置为 `Proxy-Trace-Enabled` 的 `true` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
 
 ### <a name="block-proxy-traces"></a>阻止代理跟踪
 
@@ -249,7 +249,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 [Modify the response]: #modify-response
 [定义 requestOverrides 对象]: #requestOverrides
 [定义 responseOverrides 对象]: #responseOverrides
-[application settings]: #use-appsettings
+[应用程序设置]: #use-appsettings
 [使用变量]: #using-variables
 [原始客户端请求中的参数]: #request-parameters
 [后端响应中的参数]: #response-parameters

@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption with Azure AD app prerequisites (previous release)
+title: 具有 Azure AD 应用必备组件的 Azure 磁盘加密（以前的版本）
 description: 本文提供了对 IaaS VM 使用 Microsoft Azure 磁盘加密所要满足的先决条件。
 author: msmbaldwin
 ms.service: security
@@ -14,28 +14,28 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74457199"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption with Azure AD (previous release)
+# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 
-The new release of Azure Disk Encryption eliminates the requirement for providing an Azure Active Directory (Azure AD) application parameter to enable VM disk encryption. 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 All new VMs must be encrypted without the Azure AD application parameters by using the new release. For instructions on how to enable VM disk encryption by using the new release, see [Azure Disk Encryption for Linux VMs](disk-encryption-overview.md). 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
+新版本的 Azure 磁盘加密消除了提供 Azure Active Directory （Azure AD）应用程序参数以启用 VM 磁盘加密的要求。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 在不使用新版本的情况下，必须使用 Azure AD 的应用程序参数对所有新的 Vm 进行加密。 有关如何使用新版本启用 VM 磁盘加密的说明，请参阅适用于[Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
 
-This article provides supplements to [Azure Disk Encryption for Linux VMs](disk-encryption-overview.md) with additional requirements and prerequisites for Azure Disk Encryption with Azure AD (previous release).
+本文提供了对[Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)的补充，其中包含针对 Azure AD （以前版本）的 Azure 磁盘加密的其他要求和先决条件。
 
-The information in these sections remains the same:
+这些部分中的信息保持不变：
 
-- [Supported VMs and operating systems](disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [Additional VM requirements](disk-encryption-overview.md#additional-vm-requirements)
+- [支持的 VM 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [其他 VM 要求](disk-encryption-overview.md#additional-vm-requirements)
 
 
  
 
-## <a name="networking-and-group-policy"></a>Networking and Group Policy
+## <a name="networking-and-group-policy"></a>网络和组策略
 
-To enable the Azure Disk Encryption feature by using the older AAD parameter syntax, the infrastructure as a service (IaaS) VMs must meet the following network endpoint configuration requirements: 
-  - To get a token to connect to your key vault, the IaaS VM must be able to connect to an Azure AD endpoint, \[login.microsoftonline.com\].
+若要通过使用较旧的 AAD 参数语法来启用 Azure 磁盘加密功能，基础结构即服务（IaaS） Vm 必须满足以下网络终结点配置要求： 
+  - 若要获取令牌以连接到密钥保管库，IaaS VM 必须能够连接到 Azure AD 终结点，\[login.microsoftonline.com\]。
   - IaaS VM 必须能够连接到 Key Vault 终结点，以将加密密钥写入 Key Vault。
   - IaaS VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  If your security policy limits access from Azure VMs to the internet, you can resolve the preceding URI and configure a specific rule to allow outbound connectivity to the IPs. 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。
-  - On Windows, if TLS 1.0 is explicitly disabled and the .NET version isn't updated to 4.6 or higher, the following registry change enables Azure Disk Encryption to select the more recent TLS version:
+  -  如果安全策略限制从 Azure Vm 到 internet 的访问，可以解析上述 URI，并配置特定的规则以允许与 Ip 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/key-vault-access-behind-firewall.md)。
+  - 在 Windows 上，如果显式禁用了 TLS 1.0，并且 .NET 版本未更新为4.6 或更高版本，则通过以下注册表更改，Azure 磁盘加密可选择最新的 TLS 版本：
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
             "SystemDefaultTlsVersions"=dword:00000001
@@ -47,19 +47,19 @@ To enable the Azure Disk Encryption feature by using the older AAD parameter syn
          
     
 ### <a name="group-policy"></a>组策略
- - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 For domain-joined VMs, don't push any Group Policies that enforce TPM protectors. For information about the Group Policy for the option **Allow BitLocker without a compatible TPM**, see [BitLocker Group Policy reference](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+ - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 Vm，不要推送任何强制 TPM 保护程序的组策略。 有关选项的组策略**允许无兼容 TPM 的 bitlocker**的信息，请参阅[bitlocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
-- BitLocker policy on domain-joined virtual machines with a custom Group Policy must include the following setting: [Configure user storage of BitLocker recovery information -> Allow 256-bit recovery key](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption fails when custom Group Policy settings for BitLocker are incompatible. On machines that don't have the correct policy setting, apply the new policy, force the new policy to update (gpupdate.exe /force), and then restart if it's required. 
+- 使用自定义组策略的已加入域的虚拟机上的 BitLocker 策略必须包括以下设置：[配置 BitLocker 恢复信息的用户存储-> 允许256位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 当 BitLocker 的自定义组策略设置不兼容时，Azure 磁盘加密会失败。 在没有正确的策略设置的计算机上，应用新策略，强制更新新策略（gpupdate/force），然后在需要时重新启动。 
 
-## <a name="encryption-key-storage-requirements"></a>Encryption key storage requirements 
+## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求 
 
-Azure Disk Encryption requires Azure Key Vault to control and manage disk encryption keys and secrets. Your key vault and VMs must reside in the same Azure region and subscription.
+Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
 
-For more information, see [Creating and configuring a key vault for Azure Disk Encryption with Azure AD (previous release)](disk-encryption-key-vault-aad.md).
+有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前的版本）](disk-encryption-key-vault-aad.md)。
  
 ## <a name="next-steps"></a>后续步骤
 
-- [Creating and configuring a key vault for Azure Disk Encryption with Azure AD (previous release)](disk-encryption-key-vault-aad.md)
-- [Enable Azure Disk Encryption with Azure AD on Linux VMs (previous release)](disk-encryption-linux-aad.md)
-- [Azure Disk Encryption prerequisites CLI script](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure Disk Encryption prerequisites PowerShell script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）](disk-encryption-key-vault-aad.md)
+- [在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）](disk-encryption-linux-aad.md)
+- [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

@@ -1,6 +1,6 @@
 ---
-title: How trusts work for Azure AD Domain Services | Microsoft Docs
-description: Learn more about how forest trust work with Azure AD Domain Services
+title: 信任 Azure AD 域服务的工作方式 |Microsoft Docs
+description: 详细了解林信任如何与 Azure AD 域服务一起使用
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,266 +17,266 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233696"
 ---
-# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>How trust relationships work for resource forests in Azure Active Directory Domain Services
+# <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中的资源林的信任关系的工作原理
 
-Active Directory Domain Services (AD DS) provides security across multiple domains or forests through domain and forest trust relationships. Before authentication can occur across trusts, Windows must first check if the domain being requested by a user, computer, or service has a trust relationship with the domain of the requesting account.
+Active Directory 域服务（AD DS）通过域和林信任关系提供跨多个域或林的安全性。 在对信任进行身份验证之前，Windows 必须首先检查用户、计算机或服务请求的域是否与请求帐户的域有信任关系。
 
-To check for this trust relationship, the Windows security system computes a trust path between the domain controller (DC) for the server that receives the request and a DC in the domain of the requesting account.
+若要检查此信任关系，Windows 安全系统将计算接收请求的服务器的域控制器（DC）和请求帐户的域中的 DC 之间的信任路径。
 
-The access control mechanisms provided by AD DS and the Windows distributed security model provide an environment for the operation of domain and forest trusts. For these trusts to work properly, every resource or computer must have a direct trust path to a DC in the domain in which it is located.
+AD DS 和 Windows 分布式安全模型提供的访问控制机制为域和林信任的操作提供了一个环境。 为了使这些信任能够正常运行，每个资源或计算机必须对其所在的域中的 DC 具有直接信任路径。
 
-The trust path is implemented by the Net Logon service using  an authenticated remote procedure call (RPC) connection to the trusted domain authority. A secured channel also extends to other AD DS domains through interdomain trust relationships. This secured channel is used to obtain and verify security information, including security identifiers (SIDs) for users and groups.
+使用经过身份验证的远程过程调用（RPC）与受信任的域颁发机构的连接，由 Net Logon 服务实现此信任路径。 安全通道还通过域间信任关系扩展到其他 AD DS 域。 此安全通道用于获取和验证安全信息，包括用户和组的安全标识符（Sid）。
 
-## <a name="trust-relationship-flows"></a>Trust relationship flows
+## <a name="trust-relationship-flows"></a>信任关系流
 
-The flow of secured communications over trusts determines the elasticity of a trust. How you create or configure a trust determines how far the communication extends within or across forests.
+受信任的安全通信流确定信任的弹性。 创建或配置信任的方式决定了通信在林范围内或跨林扩展的程度。
 
-The flow of communication over trusts is determined by the direction of the trust. Trusts can be one-way or two-way, and can be transitive or non-transitive.
+信任之间的通信流取决于信任的方向。 信任可以是单向的，也可以是双向的，并且可以是可传递的或不可传递的。
 
-The following diagram shows that all domains in *Tree 1* and *Tree 2* have transitive trust relationships by default. As a result, users in *Tree 1* can access resources in domains in *Tree 2* and users in *Tree 1* can access resources in *Tree 2*, when the proper permissions are assigned at the resource.
+下图显示了默认情况下，*树 1*和*树 2*中的所有域都具有可传递信任关系。 因此，在资源中分配适当的权限时，*树 1*中的用户可以访问*树 2*中的域中的资源，*树 1*中的用户可以访问*树 2*中的资源。
 
-![Diagram of trust relationships between two forests](./media/concepts-forest-trust/trust-relationships.png)
+![两个林之间的信任关系关系图](./media/concepts-forest-trust/trust-relationships.png)
 
-### <a name="one-way-and-two-way-trusts"></a>One-way and two-way trusts
+### <a name="one-way-and-two-way-trusts"></a>单向和双向信任
 
-Trust relationships enable access to resources can be either one-way or two-way.
+信任关系允许对资源进行单向或双向访问。
 
-A one-way trust is a unidirectional authentication path created between two domains. In a one-way trust between *Domain A* and *Domain B*, users in *Domain A* can access resources in *Domain B*. However, users in *Domain B* can't access resources in *Domain A*.
+单向信任是在两个域之间创建的单向身份验证路径。 在*域 a*和*域 b*之间的单向信任中，*域 a*中的用户可以访问*域 b*中的资源。但是*域 B*中的用户无法访问*域 A 中的*资源。
 
-Some one-way trusts can be either non-transitive or transitive depending on the type of trust being created.
+某些单向信任可以是不可传递的，也可以是可传递的，具体取决于所创建的信任类型。
 
-In a two-way trust, *Domain A* trusts *Domain B* and *Domain B* trusts *Domain A*. This configuration means that authentication requests can be passed between the two domains in both directions. Some two-way relationships can be non-transitive or transitive depending on the type of trust being created.
+在双向信任中，*域 a*信任*域 b* ，并且*域 b*信任*域 a*。此配置表示可以在两个域之间双向传递身份验证请求。 某些双向关系可以是不可传递的，也可以是可传递的，具体取决于所创建的信任类型。
 
-All domain trusts in an AD DS forest are two-way, transitive trusts. When a new child domain is created, a two-way, transitive trust is automatically created between the new child domain and the parent domain.
+AD DS 林中的所有域信任都是双向可传递信任。 创建新的子域时，将在新的子域和父域之间自动创建双向可传递信任。
 
-### <a name="transitive-and-non-transitive-trusts"></a>Transitive and non-transitive trusts
+### <a name="transitive-and-non-transitive-trusts"></a>可传递和不可传递信任
 
-Transitivity determines whether a trust can be extended outside of the two domains with which it was formed.
+传递性确定是否可以将信任扩展到它所构成的两个域之外。
 
-* A transitive trust can be used to extend trust relationships with other domains.
-* A non-transitive trust can be used to deny trust relationships with other domains.
+* 可传递信任可用于扩展与其他域的信任关系。
+* 不可传递的信任可用于拒绝与其他域的信任关系。
 
-Each time you create a new domain in a forest, a two-way, transitive trust relationship is automatically created between the new domain and its parent domain. If child domains are added to the new domain, the trust path flows upward through the domain hierarchy extending the initial trust path created between the new domain and its parent domain. Transitive trust relationships flow upward through a domain tree as it is formed, creating transitive trusts between all domains in the domain tree.
+每次在林中创建新域时，都会在新域及其父域之间自动创建双向可传递信任关系。 如果将子域添加到新域，则信任路径将向上流入域层次结构，扩展在新域及其父域之间创建的初始信任路径。 传递信任关系通过域树向上流动，因为它是形成的，在域树中的所有域之间创建可传递信任。
 
-Authentication requests follow these trust paths, so accounts from any domain in the forest can be authenticated by any other domain in the forest. With a single logon process, accounts with the proper permissions can access resources in any domain in the forest.
+身份验证请求遵循这些信任路径，因此林中任何域的帐户都可以通过林中的任何其他域进行身份验证。 通过单一登录过程，具有适当权限的帐户可以访问林中任何域中的资源。
 
-## <a name="forest-trusts"></a>Forest trusts
+## <a name="forest-trusts"></a>林信任
 
-Forest trusts help you to manage a segmented AD DS infrastructures and support access to resources and other objects across multiple forests. Forest trusts are useful for service providers, companies undergoing mergers or acquisitions, collaborative business extranets, and companies seeking a solution for administrative autonomy.
+林信任有助于管理分段的 AD DS 基础结构，并支持跨多个林对资源和其他对象的访问。 林信任适用于服务提供商、正在进行合并或收购的公司、协作业务 extranet 和寻求管理自治解决方案的公司。
 
-Using forest trusts, you can link two different forests to form a one-way or two-way transitive trust relationship. A forest trust allows administrators to connect two AD DS forests with a single trust relationship to provide a seamless authentication and authorization experience across the forests.
+使用林信任，可以链接两个不同的林，形成单向或双向可传递信任关系。 林信任允许管理员将两个 AD DS 林连接到一个信任关系，以跨林提供无缝的身份验证和授权体验。
 
-A forest trust can only be created between a forest root domain in one forest and a forest root domain in another forest. Forest trusts can only be created between two forests and can't be implicitly extended to a third forest. This behavior means that if a forest trust is created between *Forest 1* and *Forest 2*, and another forest trust is created between *Forest 2* and *Forest 3*, *Forest 1* doesn't have an implicit trust with *Forest 3*.
+林信任只能在一个林中的林根域和另一个林中的林根域之间创建。 林信任只能在两个林之间创建，不能隐式扩展到第三个林。 此行为意味着，如果林信任是在*林 1*和*林 2*之间创建的，并且在*林 2*和*林 3*之间创建另一个林信任，则*林 1*与*林 3*之间没有隐式信任关系。
 
-The following diagram shows two separate forest trust relationships between three AD DS forests in a single organization.
+下图显示了一个组织中三个 AD DS 林之间的两个单独的林信任关系。
 
-![Diagram of forest trusts relationships within a single organization](./media/concepts-forest-trust/forest-trusts.png)
+![单个组织内的林信任关系示意图](./media/concepts-forest-trust/forest-trusts.png)
 
-This example configuration provides the following access:
+此示例配置提供以下访问权限：
 
-* Users in *Forest 2* can access resources in any domain in either *Forest 1* or *Forest 3*
-* Users in *Forest 3* can access resources in any domain in *Forest 2*
-* Users in *Forest 1* can access resources in any domain in *Forest 2*
+* *林 2*中的用户可以访问*林 1*或*林 3*中任何域的资源
+* *林 3*中的用户可以访问*林 2*中任何域中的资源
+* *林中*的用户可以访问*林 2*中任何域中的资源
 
-This configuration doesn't allow users in *Forest 1* to access resources in *Forest 3* or vice versa. To allow users in both *Forest 1* and *Forest 3* to share resources, a two-way transitive trust must be created between the two forests.
+此配置不允许*林中*的用户访问*林 3*中的资源，反之亦然。 若要允许*林 1*和*林 3*中的用户共享资源，必须在两个林之间创建双向可传递信任。
 
-If a one-way forest trust is created between two forests, members of the trusted forest can utilize resources located in the trusting forest. However, the trust operates in only one direction.
+如果在两个林之间创建单向林信任，则受信任林的成员可以利用位于信任林中的资源。 但是，信任只在一个方向上操作。
 
-For example, when a one-way, forest trust is created between *Forest 1* (the trusted forest) and *Forest 2* (the trusting forest):
+例如，在*林 1* （受信任林）和*林 2* （信任林）之间创建单向林信任时：
 
-* Members of *Forest 1* can access resources located in *Forest 2*.
-* Members of *Forest 2* can't access resources located in *Forest 1* using the same trust.
+* *林 1*的成员可以访问位于*林 2*中的资源。
+* *林 2*的成员不能使用相同的信任访问位于*林 1*的资源。
 
 > [!IMPORTANT]
-> Azure AD Domain Services resource forest only supports a one-way forest trust to on-premises Active Directory.
+> Azure AD 域服务资源林仅支持对本地 Active Directory 的单向林信任。
 
-### <a name="forest-trust-requirements"></a>Forest trust requirements
+### <a name="forest-trust-requirements"></a>林信任要求
 
-Before you can create a forest trust, you need to verify you have the correct Domain Name System (DNS) infrastructure in place. Forest trusts can only be created when one of the following DNS configurations is available:
+你需要确认正确的域名系统（DNS）基础结构，然后才能创建林信任。 仅当以下 DNS 配置之一可用时，才能创建林信任：
 
-* A single root DNS server is the root DNS server for both forest DNS namespaces - the root zone contains delegations for each of the DNS namespaces and the root hints of all DNS servers include the root DNS server.
-* Where there is no shared root DNS server, and the root DNS servers for each forest DNS namespace use DNS conditional forwarders for each DNS namespace to route queries for names in the other namespace.
+* 单个根 DNS 服务器是用于林 DNS 命名空间的根 DNS 服务器，根区域包含每个 DNS 命名空间的委派，所有 DNS 服务器的根提示都包括根 DNS 服务器。
+* 如果没有任何共享的根 DNS 服务器，并且每个林 DNS 命名空间的根 DNS 服务器使用 dns 条件转发器，则每个 DNS 命名空间都为其他命名空间中的名称路由查询。
 
     > [!IMPORTANT]
-    > Azure AD Domain Services resource forest must use this DNS configuration. Hosting a DNS namespace other than the resource forest DNS namespace is not a feature of Azure AD Domain Services. Conditional forwarders is the proper configuration.
+    > Azure AD 域服务资源林必须使用此 DNS 配置。 承载除资源林 DNS 命名空间之外的 DNS 命名空间不是 Azure AD 域服务的一项功能。 条件转发器是正确的配置。
 
-* Where there is no shared root DNS server, and the root DNS servers for each forest DNS namespace are use DNS secondary zones are configured in each DNS namespace to route queries for names in the other namespace.
+* 如果没有任何共享的根 DNS 服务器，并且每个林 DNS 命名空间的根 DNS 服务器使用 DNS 辅助区域，则会在每个 DNS 命名空间中配置 DNS 辅助区域以路由其他命名空间中的名称查询。
 
-To create a forest trust, you must be a member of the Domain Admins group (in the forest root domain) or the Enterprise Admins group in Active Directory. Each trust is assigned a password that the administrators in both forests must know. Members of Enterprise Admins in both forests can create the trusts in both forests at once and, in this scenario, a password that is cryptographically random is automatically generated and written for both forests.
+若要创建林信任，你必须是域管理员组（在目录林根级域中）或 Enterprise Admins 组的成员。 Active Directory。 为每个信任分配一个密码，这两个林中的管理员都必须知道该密码。 这两个林中企业管理员的成员可以同时在两个林中创建信任，在这种情况下，系统会自动为这两个林生成密码随机密码。
 
-The outbound forest trust for Azure AD Domain Services is created in the Azure portal. You don't manually create the trust with the managed domain itself. The incoming forest trust must be configured by a user with the privileges previously noted in the on-premises Active Directory.
+Azure AD 域服务的出站林信任在 Azure 门户中创建。 不会手动创建与托管域本身的信任。 传入林信任必须由具有以前在本地 Active Directory 中记录的特权的用户配置。
 
-## <a name="trust-processes-and-interactions"></a>Trust processes and interactions
+## <a name="trust-processes-and-interactions"></a>信任进程和交互
 
-Many inter-domain and inter-forest transactions depend on domain or forest trusts in order to complete various tasks. This section describes the processes and interactions that occur as resources are accessed across trusts and authentication referrals are evaluated.
+许多域间和林间事务依赖于域或林信任才能完成各种任务。 本部分介绍当跨信任访问资源并评估身份验证引用时所发生的过程和交互。
 
-### <a name="overview-of-authentication-referral-processing"></a>Overview of Authentication Referral Processing
+### <a name="overview-of-authentication-referral-processing"></a>身份验证引用处理概述
 
-When a request for authentication is referred to a domain, the domain controller in that domain must determine whether a trust relationship exists with the domain from which the request comes. The direction of the trust and whether the trust is transitive or nontransitive must also be determined before it authenticates the user to access resources in the domain. The authentication process that occurs between trusted domains varies according to the authentication protocol in use. The Kerberos V5 and NTLM protocols process referrals for authentication to a domain differently
+当身份验证请求被引用到域时，该域中的域控制器必须确定是否存在与请求来自的域之间的信任关系。 信任的方向以及信任是可传递还是无法传递在对用户进行身份验证以访问域中的资源之前，也必须进行确定。 根据所使用的身份验证协议，在受信任域之间发生的身份验证过程会有所不同。 Kerberos V5 和 NTLM 协议会以不同方式为域身份验证的处理引用
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 Referral Processing
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 引用处理
 
-The Kerberos V5 authentication protocol is dependent on the Net Logon service on domain controllers for client authentication and authorization information. The Kerberos protocol connects to an online Key Distribution Center (KDC) and the Active Directory account store for session tickets.
+Kerberos V5 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客户端身份验证和授权信息。 Kerberos 协议连接到联机密钥发行中心（KDC）和会话票证的 Active Directory 帐户存储。
 
-The Kerberos protocol also uses trusts for cross-realm ticket-granting services (TGS) and to validate Privilege Attribute Certificates (PACs) across a secured channel. The Kerberos protocol performs cross-realm authentication only with non-Windows-brand operating system Kerberos realms such as an MIT Kerberos realm and does not need to interact with the Net Logon service.
+Kerberos 协议还使用信任来实现跨领域票证授予服务（TGS），并在受保护的通道之间验证特权属性证书（Pac）。 Kerberos 协议仅对非 Windows 品牌的操作系统 Kerberos 领域（如 MIT Kerberos 领域）执行跨领域身份验证，并且无需与 Net Logon 服务交互。
 
-If the client uses Kerberos V5 for authentication, it requests a ticket to the server in the target domain from a domain controller in its account domain. The Kerberos KDC acts as a trusted intermediary between the client and server and provides a session key that enables the two parties to authenticate each other. If the target domain is different from the current domain, the KDC follows a logical process to determine whether an authentication request can be referred:
+如果客户端使用 Kerberos V5 进行身份验证，则会从帐户域中的域控制器向目标域中的服务器请求票证。 Kerberos KDC 充当客户端和服务器之间的受信任中介，并提供一个会话密钥，使双方彼此进行身份验证。 如果目标域不同于当前域，KDC 将遵循逻辑进程来确定是否可以引用身份验证请求：
 
-1. Is the current domain trusted directly by the domain of the server that is being requested?
-    * If yes, send the client a referral to the requested domain.
-    * If no, go to the next step.
+1. 当前域是否由正在请求的服务器的域直接信任？
+    * 如果是，则向客户端发送对请求域的引用。
+    * 如果不是，则继续执行下一步。
 
-2. Does a transitive trust relationship exist between the current domain and the next domain on the trust path?
-    * If yes, send the client a referral to the next domain on the trust path.
-    * If no, send the client a logon-denied message.
+2. 当前域与信任路径上的下一个域之间是否存在可传递信任关系？
+    * 如果是，则向客户端发送对信任路径上的下一个域的引用。
+    * 如果不是，则向客户端发送拒绝登录消息。
 
-### <a name="ntlm-referral-processing"></a>NTLM Referral Processing
+### <a name="ntlm-referral-processing"></a>NTLM 引用处理
 
-The NTLM authentication protocol is dependent on the Net Logon service on domain controllers for client authentication and authorization information. This protocol authenticates clients that do not use Kerberos authentication. NTLM uses trusts to pass authentication requests between domains.
+NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客户端身份验证和授权信息。 此协议对不使用 Kerberos 身份验证的客户端进行身份验证。 NTLM 使用信任来传递域之间的身份验证请求。
 
-If the client uses NTLM for authentication, the initial request for authentication goes directly from the client to the resource server in the target domain. This server creates a challenge to which the client responds. The server then sends the user's response to a domain controller in its computer account domain. This domain controller checks the user account against its security accounts database.
+如果客户端使用 NTLM 进行身份验证，则会直接从客户端向目标域中的资源服务器发送身份验证的初始请求。 此服务器创建客户端响应的质询。 然后，服务器将用户的响应发送到其计算机帐户域中的域控制器。 此域控制器将根据其安全帐户数据库检查用户帐户。
 
-If the account does not exist in the database, the domain controller determines whether to perform pass-through authentication, forward the request, or deny the request by using the following logic:
+如果数据库中不存在该帐户，则域控制器将确定是执行传递身份验证、转发请求还是使用以下逻辑拒绝请求：
 
-1. Does the current domain have a direct trust relationship with the user's domain?
-    * If yes, the domain controller sends the credentials of the client to a domain controller in the user's domain for pass-through authentication.
-    * If no, go to the next step.
+1. 当前域与用户的域是否具有直接信任关系？
+    * 如果是，则域控制器将客户端的凭据发送到用户域中的域控制器，以便进行直通身份验证。
+    * 如果不是，则继续执行下一步。
 
-2. Does the current domain have a transitive trust relationship with the user's domain?
-    * If yes, pass the authentication request on to the next domain in the trust path. This domain controller repeats the process by checking the user's credentials against its own security accounts database.
-    * If no, send the client a logon-denied message.
+2. 当前域与用户的域是否具有可传递信任关系？
+    * 如果是，请将身份验证请求传递到信任路径中的下一个域。 此域控制器将根据其自己的安全帐户数据库检查用户的凭据，从而重复此过程。
+    * 如果不是，则向客户端发送拒绝登录消息。
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Kerberos-Based Processing of Authentication Requests Over Forest Trusts
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>基于 Kerberos 的身份验证请求对林信任的处理
 
-When two forests are connected by a forest trust, authentication requests made using the Kerberos V5 or NTLM protocols can be routed between forests to provide access to resources in both forests.
+如果两个林通过林信任进行连接，则可以在林之间路由使用 Kerberos V5 或 NTLM 协议发出的身份验证请求，以提供对这两个林中资源的访问。
 
-When a forest trust is first established, each forest collects all of the trusted namespaces in its partner forest and stores the information in a [trusted domain object](#trusted-domain-object). Trusted namespaces include domain tree names, user principal name (UPN) suffixes, service principal name (SPN) suffixes, and security ID (SID) namespaces used in the other forest. TDO objects are replicated to the global catalog.
+第一次建立林信任时，每个林都收集其伙伴林中的所有受信任命名空间，并将信息存储在[受信任的域对象](#trusted-domain-object)中。 受信任的命名空间包括域树名称、用户主体名称（UPN）后缀、服务主体名称（SPN）后缀和在其他林中使用的安全 ID （SID）命名空间。 TDO 对象将被复制到全局编录。
 
-Before authentication protocols can follow the forest trust path, the service principal name (SPN) of the resource computer must be resolved to a location in the other forest. An SPN can be one of the following:
+在身份验证协议可以遵循林信任路径之前，必须将资源计算机的服务主体名称（SPN）解析为其他林中的某个位置。 SPN 可以是以下项之一：
 
-* The DNS name of a host.
-* The DNS name of a domain.
-* The distinguished name of a service connection point object.
+* 主机的 DNS 名称。
+* 域的 DNS 名称。
+* 服务连接点对象的可分辨名称。
 
-When a workstation in one forest attempts to access data on a resource computer in another forest, the Kerberos authentication process contacts the domain controller for a service ticket to the SPN of the resource computer. Once the domain controller queries the global catalog and determines that the SPN is not in the same forest as the domain controller, the domain controller sends a referral for its parent domain back to the workstation. At that point, the workstation queries the parent domain for the service ticket and continues to follow the referral chain until it reaches the domain where the resource is located.
+当某个林中的工作站尝试访问另一个林中的资源计算机上的数据时，Kerberos 身份验证过程会将服务票证的域控制器与资源计算机的 SPN 联系在一起。 一旦域控制器查询全局目录并确定 SPN 与域控制器不在同一个林中，则域控制器将其父域的引用发送回工作站。 此时，工作站会查询父域中的服务票证，并继续按引用链进行操作，直到到达资源所在的域。
 
-The following diagram and steps provide a detailed description of the Kerberos authentication process that's used when computers running Windows attempt to access resources from a computer located in another forest.
+以下关系图和步骤提供了在运行 Windows 的计算机尝试从位于另一个林中的计算机访问资源时使用的 Kerberos 身份验证过程的详细说明。
 
-![Diagram of the Kerberos process over a forest trust](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![通过林信任的 Kerberos 进程示意图](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
 
-1. *User1* logs on to *Workstation1* using credentials from the *europe.tailspintoys.com* domain. The user then attempts to access a shared resource on *FileServer1* located in the *usa.wingtiptoys.com* forest.
+1. *User1*使用*europe.tailspintoys.com*域中的凭据登录到*Workstation1* 。 然后，用户尝试访问位于*usa.wingtiptoys.com*林中的*FileServer1*上的共享资源。
 
-2. *Workstation1* contacts the Kerberos KDC on a domain controller in its domain, *ChildDC1*, and requests a service ticket for the *FileServer1* SPN.
+2. *Workstation1*联系域控制器上域控制器中的 Kerberos KDC *ChildDC1*，并为*FileServer1* SPN 请求服务票证。
 
-3. *ChildDC1* does not find the SPN in its domain database and queries the global catalog to see if any domains in the *tailspintoys.com* forest contain this SPN. Because a global catalog is limited to its own forest, the SPN is not found.
+3. *ChildDC1*在其域数据库中找不到 SPN，并查询全局编录以查看*tailspintoys.com*林中的任何域是否包含此 spn。 由于全局编录仅限于其自己的林，因此找不到 SPN。
 
-    The global catalog then checks its database for information about any forest trusts that are established with its forest. If found, it compares the name suffixes listed in the forest trust trusted domain object (TDO) to the suffix of the target SPN to find a match. Once a match is found, the global catalog provides a routing hint back to *ChildDC1*.
+    然后，全局编录将检查其数据库中是否存在与其林建立的任何林信任相关的信息。 如果找到，它将林信任可信域对象（TDO）中列出的名称后缀与目标 SPN 的后缀进行比较以查找匹配项。 找到匹配项后，全局编录会向*ChildDC1*提供路由提示。
 
-    Routing hints help direct authentication requests toward the destination forest. Hints are only used when all traditional authentication channels, such as local domain controller and then global catalog, fail to locate a SPN.
+    路由提示有助于向目标林直接进行身份验证请求。 仅在所有传统身份验证通道（例如本地域控制器和全局编录）无法找到 SPN 时使用提示。
 
-4. *ChildDC1* sends a referral for its parent domain back to *Workstation1*.
+4. *ChildDC1*向*Workstation1*发送其父域的引用。
 
-5. *Workstation1* contacts a domain controller in *ForestRootDC1* (its parent domain) for a referral to a domain controller (*ForestRootDC2*) in the forest root domain of the *wingtiptoys.com* forest.
+5. *Workstation1*联系*ForestRootDC1* （其父域）中的域控制器，以获取对*wingtiptoys.com*林的林根域中的域控制器（*ForestRootDC2*）的引用。
 
-6. *Workstation1* contacts *ForestRootDC2* in the *wingtiptoys.com* forest for a service ticket to the requested service.
+6. *Workstation1*将*ForestRootDC2*的*wingtiptoys.com*林中的联系人联系到请求的服务。
 
-7. *ForestRootDC2* contacts its global catalog to find the SPN, and the global catalog finds a match for the SPN and sends it back to *ForestRootDC2*.
+7. *ForestRootDC2*联系它的全局编录来查找 spn，全局编录查找 spn 的匹配项并将其发送回*ForestRootDC2*。
 
-8. *ForestRootDC2* then sends the referral to *usa.wingtiptoys.com* back to *Workstation1*.
+8. 然后， *ForestRootDC2*将引用发送到*usa.wingtiptoys.com*返回*Workstation1*。
 
-9. *Workstation1* contacts the KDC on *ChildDC2* and negotiates the ticket for *User1* to gain access to *FileServer1*.
+9. *Workstation1*在*CHILDDC2*上联系 KDC，并协商*User1*的票证以获取对*FileServer1*的访问权限。
 
-10. Once *Workstation1* has a service ticket, it sends the service ticket to *FileServer1*, which reads *User1*'s security credentials and constructs an access token accordingly.
+10. *Workstation1*有一个服务票证后，它会将服务票证发送到*FileServer1*，后者会读取*User1*的安全凭据并相应地构造一个访问令牌。
 
-## <a name="trusted-domain-object"></a>Trusted domain object
+## <a name="trusted-domain-object"></a>受信任的域对象
 
-Each domain or forest trust within an organization is represented by a Trusted Domain Object (TDO) stored in the *System* container within its domain.
+组织内的每个域或林信任均由存储在其域中的*系统*容器中的受信任域对象（TDO）表示。
 
-### <a name="tdo-contents"></a>TDO contents
+### <a name="tdo-contents"></a>TDO 内容
 
-The information contained in a TDO varies depending on whether a TDO was created by a domain trust or by a forest trust.
+TDO 中包含的信息取决于是否由域信任或林信任创建的 TDO。
 
-When a domain trust is created, attributes such as the DNS domain name, domain SID, trust type, trust transitivity, and the reciprocal domain name are represented in the TDO. Forest trust TDOs store additional attributes to identify all of the trusted namespaces from the partner forest. These attributes include domain tree names, user principal name (UPN) suffixes, service principal name (SPN) suffixes, and security ID (SID) namespaces.
+创建域信任时，TDO 中将显示诸如 DNS 域名、域 SID、信任类型、信任传递性和互惠域名之类的属性。 林信任 Tdo 存储其他属性以识别来自合作伙伴林中的所有受信任命名空间。 这些属性包括域树名称、用户主体名称（UPN）后缀、服务主体名称（SPN）后缀和安全 ID （SID）命名空间。
 
-Because trusts are stored in Active Directory as TDOs, all domains in a forest have knowledge of the trust relationships that are in place throughout the forest. Similarly, when two or more forests are joined together through forest trusts, the forest root domains in each forest have knowledge of the trust relationships that are in place throughout all of the domains in trusted forests.
+因为信任以 Tdo 的形式存储在 Active Directory 中，所以林中的所有域都将了解整个林中存在的信任关系。 同样，如果两个或多个林通过林信任联接在一起，则每个林中的林根域都将了解受信任林中所有域中的信任关系。
 
-### <a name="tdo-password-changes"></a>TDO password changes
+### <a name="tdo-password-changes"></a>TDO 密码更改
 
-Both domains in a trust relationship share a password, which is stored in the TDO object in Active Directory. As part of the account maintenance process, every 30 days the trusting domain controller changes the password stored in the TDO. Because all two-way trusts are actually two one-way trusts going in opposite directions, the process occurs twice for two-way trusts.
+信任关系中的两个域都共享一个密码，该密码存储在 Active Directory 中的 TDO 对象中。 作为帐户维护过程的一部分，每隔30天，信任域控制器会更改 TDO 中存储的密码。 由于所有双向信任实际上都是 2 1 路信任，因此该过程对双向信任发生两次。
 
-A trust has a trusting and a trusted side. On the trusted side, any writable domain controller can be used for the process. On the trusting side, the PDC emulator performs the password change.
+信任具有信任和信任端。 在受信任的端，任何可写域控制器都可用于此过程。 在信任端，PDC 模拟器执行密码更改。
 
-To change a password, the domain controllers complete the following process:
+若要更改密码，域控制器将完成以下过程：
 
-1. The primary domain controller (PDC) emulator in the trusting domain creates a new password. A domain controller in the trusted domain never initiates the password change. It's always initiated by the trusting domain PDC emulator.
+1. 信任域中的主域控制器（PDC）仿真器会创建一个新密码。 受信任域中的域控制器将不会启动密码更改。 它始终由信任域 PDC 模拟器启动。
 
-2. The PDC emulator in the trusting domain sets the *OldPassword* field of the TDO object to the current *NewPassword* field.
+2. 信任域中的 PDC 模拟器将 TDO 对象的*OldPassword*字段设置为当前*NewPassword*字段。
 
-3. The PDC emulator in the trusting domain sets the *NewPassword* field of the TDO object to the new password. Keeping a copy of the previous password makes it possible to revert to the old password if the domain controller in the trusted domain fails to receive the change, or if the change is not replicated before a request is made that uses the new trust password.
+3. 信任域中的 PDC 模拟器将 TDO 对象的*NewPassword*字段设置为新密码。 如果保留以前密码的副本，则在受信任域中的域控制器无法接收更改时，或者如果在使用新的信任密码进行请求之前未复制更改，就可以还原到旧密码。
 
-4. The PDC emulator in the trusting domain makes a remote call to a domain controller in the trusted domain asking it to set the password on the trust account to the new password.
+4. 信任域中的 PDC 模拟器对受信任域中的域控制器进行远程调用，要求它将信任帐户的密码设置为新密码。
 
-5. The domain controller in the trusted domain changes the trust password to the new password.
+5. 受信任域中的域控制器将信任密码更改为新密码。
 
-6. On each side of the trust, the updates are replicated to the other domain controllers in the domain. In the trusting domain, the change triggers an urgent replication of the trusted domain object.
+6. 在信任的每一方，将更新复制到域中的其他域控制器。 在信任域中，更改将触发受信任域对象的紧急复制。
 
-The password is now changed on both domain controllers. Normal replication distributes the TDO objects to the other domain controllers in the domain. However, it's possible for the domain controller in the trusting domain to change the password without successfully updating a domain controller in the trusted domain. This scenario might occur because a secured channel, which is required to process the password change, couldn't be established. It's also possible that the domain controller in the trusted domain might be unavailable at some point during the process and might not receive the updated password.
+这两个域控制器上的密码现在都已更改。 正常复制将 TDO 对象分发到域中的其他域控制器。 但是，信任域中的域控制器可能会更改密码，而不会成功更新受信域中的域控制器。 出现这种情况的原因可能是，无法建立处理密码更改所需的安全通道。 此外，受信任域中的域控制器可能会在进程中的某个时间点不可用，并且可能无法接收更新的密码。
 
-To deal with situations in which the password change isn't successfully communicated, the domain controller in the trusting domain never changes the new password unless it has successfully authenticated (set up a secured channel) using the new password. This behavior is why both the old and new passwords are kept in the TDO object of the trusting domain.
+若要处理密码更改未成功传递的情况，信任域中的域控制器决不会更改新密码，除非已使用新密码成功完成身份验证（设置安全通道）。 此行为是将旧密码和新密码保存在信任域的 TDO 对象中的原因。
 
-A password change isn't finalized until authentication using the password succeeds. The old, stored password can be used over the secured channel until the domain controller in the trusted domain receives the new password, thus enabling uninterrupted service.
+密码更改未完成，直到使用密码的身份验证成功。 旧的存储密码可用于受保护的通道，直到受信域中的域控制器收到新密码，从而启用不间断的服务。
 
-If authentication using the new password fails because the password is invalid, the trusting domain controller tries to authenticate using the old password. If it authenticates successfully with the old password, it resumes the password change process within 15 minutes.
+如果使用新密码进行的身份验证失败，因为密码无效，则信任域控制器会尝试使用旧密码进行身份验证。 如果它通过旧密码成功进行身份验证，则会在15分钟内恢复密码更改过程。
 
-Trust password updates need to replicate to the domain controllers of both sides of the trust within 30 days. If the trust password is changed after 30 days and a domain controller then only has the N-2 password, it cannot use the trust from the trusting side and cannot create a secure channel on the trusted side.
+信任密码更新需要在30天内复制到信任双方的域控制器。 如果在30天后更改了信任密码，并且域控制器只包含 N-2 个密码，则它不能使用信任端的信任，也不能在受信任端创建安全通道。
 
-## <a name="network-ports-used-by-trusts"></a>Network ports used by trusts
+## <a name="network-ports-used-by-trusts"></a>信任使用的网络端口
 
-Because trusts must be deployed across various network boundaries, they might have to span one or more firewalls. When this is the case, you can either tunnel trust traffic across a firewall or open specific ports in the firewall to allow the traffic to pass through.
+因为信任必须跨各种网络边界进行部署，所以它们可能必须跨越一个或多个防火墙。 如果出现这种情况，可以通过防火墙对流量进行隧道信任，或在防火墙中打开特定端口，使流量通过。
 
 > [!IMPORTANT]
-> Active Directory Domain Services does not support restricting Active Directory RPC traffic to specific ports.
+> Active Directory 域服务不支持将 Active Directory RPC 流量限制为特定端口。
 
-Read the **Windows Server 2008 and later versions** section of the Microsoft Support Article [How to configure a firewall for Active Directory domains and trusts](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) to learn about the ports needed for a forest trust.
+阅读 Microsoft 支持部门文章中的**Windows Server 2008 和更高版本**部分，了解[如何为 Active Directory 域和信任关系配置防火墙](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts)，以了解林信任所需的端口。
 
-## <a name="supporting-services-and-tools"></a>Supporting services and tools
+## <a name="supporting-services-and-tools"></a>支持服务和工具
 
-To support trusts and authentication, some additional features and management tools are used.
+为了支持信任和身份验证，使用了一些额外的功能和管理工具。
 
 ### <a name="net-logon"></a>Net Logon
 
-The Net Logon service maintains a secured channel from a Windows-based computer to a DC. It's also used in the following trust-related processes:
+Net Logon 服务维护从基于 Windows 的计算机到 DC 的安全通道。 它还在以下与信任相关的进程中使用：
 
-* Trust setup and management - Net Logon helps maintain trust passwords, gathers trust information, and verifies trusts by interacting with the LSA process and the TDO.
+* 信任设置和管理-Net Logon 有助于维护信任密码、收集信任信息，并通过与 LSA 进程和 TDO 交互来验证信任。
 
-    For Forest trusts, the trust information includes the Forest Trust Information (*FTInfo*) record, which includes the set of namespaces that a trusted forest claims to manage, annotated with a field that indicates whether each claim is trusted by the trusting forest.
+    对于林信任，信任信息包括林信任信息（*FTInfo*）记录，其中包括受信任的林声明要管理的命名空间集，使用指示每个声明是否受信任林信任的字段进行批注。
 
-* Authentication – Supplies user credentials over a secured channel to a domain controller and returns the domain SIDs and user rights for the user.
+* 身份验证-通过受保护的通道向域控制器提供用户凭据，并为用户返回域 Sid 和用户权限。
 
-* Domain controller location – Helps with finding or locating domain controllers in a domain or across domains.
+* 域控制器位置–帮助查找或查找域中或跨域的域控制器。
 
-* Pass-through validation – Credentials of users in other domains are processed by Net Logon. When a trusting domain needs to verify the identity of a user, it passes the user's credentials through Net Logon to the trusted domain for verification.
+* 传递验证– Net Logon 处理其他域中用户的凭据。 当信任域需要验证用户的身份时，它会将用户的凭据通过 Net Logon 传递到受信任的域进行验证。
 
-* Privilege Attribute Certificate (PAC) verification – When a server using the Kerberos protocol for authentication needs to verify the PAC in a service ticket, it sends the PAC across the secure channel to its domain controller for verification.
+* 特权属性证书（PAC）验证–当使用 Kerberos 协议进行身份验证的服务器需要在服务票证中验证 PAC 时，它会将 PAC 发送到其域控制器，以便进行验证。
 
-### <a name="local-security-authority"></a>Local Security Authority
+### <a name="local-security-authority"></a>本地安全机构
 
-The Local Security Authority (LSA) is a protected subsystem that maintains information about all aspects of local security on a system. Collectively known as local security policy, the LSA provides various services for translation between names and identifiers.
+本地安全机构（LSA）是一个受保护的子系统，用于维护有关系统上的本地安全的各个方面的信息。 LSA 共同称为本地安全策略，它提供了用于在名称和标识符之间进行转换的各种服务。
 
-The LSA security subsystem provides services in both kernel mode and user mode for validating access to objects, checking user privileges, and generating audit messages. LSA is responsible for checking the validity of all session tickets presented by services in trusted or untrusted domains.
+LSA 安全子系统在内核模式和用户模式下提供服务，用于验证对对象的访问权限、检查用户权限以及生成审核消息。 LSA 负责检查受信任或不受信任的域中的服务提供的所有会话票证的有效性。
 
 ### <a name="management-tools"></a>管理工具
 
-Administrators can use *Active Directory Domains and Trusts*, *Netdom* and *Nltest* to expose, create, remove, or modify trusts.
+管理员可以使用*Active Directory 域和信任关系*、 *Netdom*和*Nltest*来公开、创建、删除或修改信任。
 
-* *Active Directory Domains and Trusts* is the Microsoft Management Console (MMC) that is used to administer domain trusts, domain and forest functional levels, and user principal name suffixes.
-* The *Netdom* and *Nltest* command-line tools can be used to find, display, create, and manage trusts. These tools communicate directly with the LSA authority on a domain controller.
+* *Active Directory 域和信任关系*是 Microsoft 管理控制台（MMC），用于管理域信任、域和林功能级别以及用户主体名称后缀。
+* *Netdom*和*Nltest*命令行工具可用于查找、显示、创建和管理信任关系。 这些工具直接与域控制器上的 LSA 机构通信。
 
 ## <a name="next-steps"></a>后续步骤
 
-To learn more about resource forests, see [How do forest trusts work in Azure AD DS?][concepts-trust]
+若要了解有关资源林的详细信息，请参阅[林信任如何在 AZURE AD DS 中工作？][concepts-trust]
 
-To get started with creating an Azure AD DS managed domain with a resource forest, see [Create and configure an Azure AD DS managed domain][tutorial-create-advanced]. You can then [Create an outbound forest trust to an on-premises domain (preview)][create-forest-trust].
+若要开始使用资源林创建 Azure AD DS 托管域，请参阅[创建和配置 AZURE AD ds 托管域][tutorial-create-advanced]。 然后，你可以[创建到本地域的出站林信任（预览）][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md
