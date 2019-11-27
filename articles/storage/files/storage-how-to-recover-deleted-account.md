@@ -1,5 +1,5 @@
 ---
-title: Use an Azure file share with Azure Storage | Microsoft Docs
+title: 将 Azure 文件共享用于 Azure 存储 |Microsoft Docs
 description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
 author: todmccoy
 manager: dcscontentpm
@@ -17,29 +17,29 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233787"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>How to recover a deleted storage account
+# <a name="how-to-recover-a-deleted-storage-account"></a>如何恢复已删除的存储帐户
 
-Azure Storage provides data resiliency through automated replicas, but doesn't prevent users or application code from corrupting data, whether accidentally or maliciously. Maintaining data fidelity during instances of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log.
+Azure 存储通过自动化副本提供数据复原功能，但不会阻止用户或应用程序代码破坏数据（不管是意外还是恶意）。 在应用程序或用户错误的实例中维护数据保真度需要更高级的技术，如使用审核日志将数据复制到辅助存储位置。
 
-The following table provides overview of the scope of Storage Account Recovery depending on the replication strategy.
+下表概述了存储帐户恢复的范围，具体取决于复制策略。
 
-| |LRS|ZRS|GRS|RA - GRS|
+| |LRS|ZRS|GRS|RA-GRS|
 |---|---|---|---|---|
-|Storage Account Azure Resource Manager|是|是|是|是|
-|Storage Account Classic|是|是|是|是|
+|Azure 资源管理器的存储帐户|是|是|是|是|
+|经典存储帐户|是|是|是|是|
 
-Gather the following information and file a support request with Microsoft Support:
+收集以下信息，并向 Microsoft 支持部门提供支持请求：
 
 * 存储帐户名称
-* Date of deletion
-* Storage account region
-* How was the storage account deleted?
-* What method deleted the storage account? (Portal, PowerShell, etc.)
+* 删除日期
+* 存储帐户区域
+* 如何删除存储帐户？
+* 什么方法删除了存储帐户？ （门户、PowerShell 等）
 
-Important Points
+要点
 
-* It can generally take up to 15 days from the time of deletion for the storage service to perform garbage collection, so storage accounts recovery may not be recovered with an SLA.
-* Microsoft Support will try to recover the Container/Account on a best-effort basis and cannot guarantee the recovery.
+* 通常，从存储服务的删除时间起，最多需要15天才能执行垃圾回收，因此无法使用 SLA 恢复存储帐户恢复。
+* Microsoft 支持部门将尽力尽力恢复容器/帐户，且无法保证恢复。
 
 > [!NOTE]
-> The recovery may not be successful if the account has been re-created. If you have already re-created the account, you must delete it first before recovery can be attempted.
+> 如果重新创建了帐户，则恢复可能失败。 如果你已经重新创建了该帐户，则必须先将其删除，然后才能尝试恢复。

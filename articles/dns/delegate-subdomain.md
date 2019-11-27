@@ -1,6 +1,6 @@
 ---
-title: Delegate a subdomain - Azure DNS
-description: With this learning path, get started delegating an Azure DNS subdomain.
+title: 委派子域-Azure DNS
+description: 使用此学习路径，开始委派 Azure DNS 子域。
 services: dns
 author: asudbring
 ms.service: dns
@@ -20,7 +20,7 @@ ms.locfileid: "74212380"
 
 如果需要，可以使用 [Azure PowerShell](delegate-subdomain-ps.md) 委托子域。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要委托 Azure DNS 子域，必须先将公共域委托给 Azure DNS。 有关如何为委托配置名称服务器的说明，请参阅[将域委托给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委托给 Azure DNS 区域后，可以委托子域。
 
@@ -33,10 +33,10 @@ ms.locfileid: "74212380"
 
 1. 在 Azure 门户中，选择“创建资源”。
 2. 在搜索框中键入 **DNS**，然后选择“DNS 区域”。
-3. 选择**创建**。
+3. 选择“创建”。
 4. 在“创建 DNS 区域”窗格中的“名称”文本框内，键入 **engineering.contoso.com**。
 5. 选择区域的资源组。 可以使用父区域所在的同一资源组将类似资源放到一起。
-6. 单击“创建”。
+6. 单击“**创建**”。
 7. 部署成功后，转到新区域。
 
 ## <a name="note-the-name-servers"></a>记下名称服务器
@@ -45,7 +45,7 @@ ms.locfileid: "74212380"
 
 在 **engineering** 区域窗格中，记下区域的四个名称服务器。 稍后要使用这些名称服务器。
 
-## <a name="create-a-test-record"></a>创建测试记录
+## <a name="create-a-test-record"></a>创建一条测试记录
 
 创建用于测试的 **A** 记录。 例如，创建 **www** A 记录，并为其配置 **10.10.10.10** IP 地址。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74212380"
 3. 在“添加记录集”窗格中的“名称”文本框内，键入 **engineering**。
 4. 对于“类型”，请选择“NS”。
 5. 在“名称服务器”下，输入前面从 **engineering** 区域记录的四个名称服务器。
-6. 单击 **“确定”** 。
+6. 单击“确定”。
 
 ## <a name="test-the-delegation"></a>测试委托
 

@@ -1,5 +1,5 @@
 ---
-title: Migrate TDE certificate - managed instance
+title: 迁移 TDE 证书托管实例
 description: 将用于通过透明数据加密保护数据库加密密钥的证书迁移到 Azure SQL 数据库托管实例
 services: sql-database
 ms.service: sql-database
@@ -30,9 +30,9 @@ ms.locfileid: "74420745"
 有关使用完全托管服务无缝迁移 TDE 保护的数据库和相应证书的替代选项，请参阅[如何使用 Azure 数据库迁移服务将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。
 
 > [!IMPORTANT]
-> 迁移的证书仅用于还原 TDE 保护的数据库。 Soon after restore is done, the migrated certificate gets replaced by a different protector, either service-managed certificate or asymmetric key from the key vault, depending on the type of the transparent data encryption you set on the instance.
+> 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的保护程序，可能是服务托管证书，也可能是密钥保管库中的非对称密钥，具体取决于在实例上设置的透明数据加密类型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要符合以下先决条件：
 
@@ -43,15 +43,15 @@ ms.locfileid: "74420745"
 
 确保做好以下准备：
 
-- Azure PowerShell module [installed and updated](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- [Az.Sql module](https://www.powershellgallery.com/packages/Az.Sql).
+- [已安装并更新](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。
+- [Az.Sql 模块](https://www.powershellgallery.com/packages/Az.Sql)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-Run the following commands in PowerShell to install/update the module:
+在 PowerShell 中运行以下命令以安装/更新模块：
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -158,7 +158,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-You need to first [setup an Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) with your *.pfx* file.
+需要首先使用 *.pfx*文件[设置 Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) 。
 
 1. 在 PowerShell 中开始准备步骤：
 

@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting password protection - Azure Active Directory
-description: Understand Azure AD password protection common troubleshooting
+title: 密码保护疑难解答-Azure Active Directory
+description: 了解 Azure AD 密码保护常见故障排除
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -22,81 +22,81 @@ ms.locfileid: "74381648"
 
 部署 Azure AD 密码保护后，可能需要进行故障排除。 本文详细介绍如何帮助你了解一些常见的故障排除步骤。
 
-## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>The DC agent cannot locate a proxy in the directory
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>DC 代理在目录中找不到代理
 
-The main symptom of this problem is 30017 events in the DC agent Admin event log.
+此问题的主要症状是 DC 代理管理事件日志中的30017事件。
 
-The usual cause of this issue is that a proxy has not yet been registered. If a proxy has been registered, there may be some delay due to AD replication latency until a particular DC agent is able to see that proxy.
+此问题的常见原因是尚未注册代理。 如果代理已经注册，可能会由于 AD 复制延迟而导致某些延迟，直到特定 DC 代理可以查看该代理。
 
-## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>The DC agent is not able to communicate with a proxy
+## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>DC 代理无法与代理进行通信
 
-The main symptom of this problem is 30018 events in the DC agent Admin event log. This problem may have several possible causes:
+此问题的主要症状是 DC 代理管理事件日志中的30018事件。 此问题可能有几个可能的原因：
 
-1. The DC agent is located in an isolated portion of the network that does not allow network connectivity to the registered proxy(s). This problem may be benign as long as other DC agents can communicate with the proxy(s) in order to download password policies from Azure. Once downloaded, those policies will then be obtained by the isolated DC via replication of the policy files in the sysvol share.
+1. DC 代理位于网络的隔离部分，不允许与已注册的代理建立网络连接。 此问题可能是良性的，因为其他 DC 代理可以与代理进行通信，以便从 Azure 下载密码策略。 下载之后，这些策略将通过复制 sysvol 共享中的策略文件，由独立 DC 获得。
 
-1. The proxy host machine is blocking access to the RPC endpoint mapper endpoint (port 135)
+1. 代理主机正在阻止访问 RPC 终结点映射器终结点（端口135）
 
-   The Azure AD Password Protection Proxy installer automatically creates a Windows Firewall inbound rule that allows access to port 135. If this rule is later deleted or disabled, DC agents will be unable to communicate with the Proxy service. If the builtin Windows Firewall has been disabled in lieu of another firewall product, you must configure that firewall to allow access to port 135.
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，以允许访问端口135。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须配置该防火墙以允许访问端口135。
 
-1. The proxy host machine is blocking access to the RPC endpoint (dynamic or static) listened on by the Proxy service
+1. 代理主机正在阻止对代理服务侦听的 RPC 终结点（动态或静态）的访问
 
-   The Azure AD Password Protection Proxy installer automatically creates a Windows Firewall inbound rule that allows access to any inbound ports listened to by the Azure AD Password Protection Proxy service. If this rule is later deleted or disabled, DC agents will be unable to communicate with the Proxy service. If the builtin Windows Firewall has been disabled in lieu of another firewall product, you must configure that firewall to allow access to any inbound ports listened to by the Azure AD Password Protection Proxy service. This configuration may be made more specific if the Proxy service has been configured to listen on a specific static RPC port (using the `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet).
+   Azure AD 密码保护代理安装程序会自动创建 Windows 防火墙入站规则，该规则允许访问 Azure AD 密码保护代理服务侦听的任何入站端口。 如果以后删除或禁用此规则，DC 代理将无法与代理服务通信。 如果已禁用内置 Windows 防火墙而不是另一个防火墙产品，则必须将该防火墙配置为允许 Azure AD 密码保护代理服务访问所侦听的任何入站端口。 如果已将代理服务配置为侦听特定的静态 RPC 端口（使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet），则此配置可能更具体。
 
-1. The proxy host machine is not configured to allow domain controllers the ability to log on to the machine. This behavior is controlled via the "Access this computer from the network" user privilege assignment. All domain controllers in all domains in the forest must be granted this privilege. This setting is often constrained as part of a larger network hardening effort.
+1. 代理主机未配置为允许域控制器登录到计算机。 此行为是通过 "从网络访问此计算机" 用户权限分配来控制的。 林中所有域中的所有域控制器都必须被授予此权限。 此设置通常会被约束为更大的网络强化工作量。
 
-## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy service is unable to communicate with Azure
+## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>代理服务无法与 Azure 通信
 
-1. Ensure the proxy machine has connectivity to the endpoints listed in the [deployment requirements](howto-password-ban-bad-on-premises-deploy.md).
+1. 确保代理计算机已连接到[部署要求](howto-password-ban-bad-on-premises-deploy.md)中列出的终结点。
 
-1. Ensure that the forest and all proxy servers are registered against the same Azure tenant.
+1. 确保为同一 Azure 租户注册了林和所有代理服务器。
 
-   You can check this requirement by running the  `Get-AzureADPasswordProtectionProxy` and `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlets, then compare the `AzureTenant` property of each returned item. For correct operation, the reported tenant name must be the same across all DC agents and proxy servers.
+   你可以通过运行 `Get-AzureADPasswordProtectionProxy` 和 `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlet 来检查此要求，然后比较每个返回项的 `AzureTenant` 属性。 对于正确的操作，报告的租户名称在所有 DC 代理和代理服务器上必须相同。
 
-   If an Azure tenant registration mismatch condition does exist, this problem can be fixed by running the `Register-AzureADPasswordProtectionProxy` and/or `Register-AzureADPasswordProtectionForest` PowerShell cmdlets as needed, making sure to use credentials from the same Azure tenant for all registrations.
+   如果存在 Azure 租户注册不匹配条件，可以根据需要运行 `Register-AzureADPasswordProtectionProxy` 和/或 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来解决此问题，并确保使用同一 Azure 租户中的凭据进行所有注册。
 
-## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC agent is unable to encrypt or decrypt password policy files
+## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC 代理无法加密或解密密码策略文件
 
-Azure AD Password Protection has a critical dependency on the encryption and decryption functionality supplied by the Microsoft Key Distribution Service. Encryption or decryption failures can manifest with a variety of symptoms and have several potential causes.
+Azure AD 密码保护对 Microsoft 密钥分发服务提供的加密和解密功能有重要的依赖性。 加密或解密失败可能会导致各种症状，并有几个可能的原因。
 
-1. Ensure that the KDS service is enabled and functional on all Windows Server 2012 and later domain controllers in a domain.
+1. 确保已在域中的所有 Windows Server 2012 和更高版本的域控制器上启用并运行 KDS 服务。
 
-   By default the KDS service's service start mode is configured as Manual (Trigger Start). This configuration means that the first time a client tries to use the service, it is started on-demand. This default service start mode is acceptable for Azure AD Password Protection to work.
+   默认情况下，KDS 服务的服务启动模式配置为手动（触发器启动）。 此配置意味着，当客户端首次尝试使用该服务时，它将按需启动。 此默认服务启动模式可用于 Azure AD 密码保护才能工作。
 
-   If the KDS service start mode has been configured to Disabled, this configuration must be fixed before Azure AD Password Protection will work properly.
+   如果已将 KDS 服务启动模式配置为 "已禁用"，则必须先修复此配置，然后 Azure AD 密码保护才能正常工作。
 
-   A simple test for this issue is to manually start the KDS service, either via the Service management MMC console, or using other management tools (for example, run "net start kdssvc" from a command prompt console). The KDS service is expected to start successfully and stay running.
+   此问题的简单测试是通过 Service management MMC 控制台或使用其他管理工具（例如，从命令提示符控制台运行 "net start kdssvc.dll"）手动启动 KDS 服务。 KDS 服务应成功启动并保持运行状态。
 
-   The most common root cause for the KDS service being unable to start is that the Active Directory domain controller object is located outside of the default Domain Controllers OU. This configuration is not supported by the KDS service and is not a limitation imposed by Azure AD Password Protection. The fix for this condition is to move the domain controller object to a location under the default Domain Controllers OU.
+   KDS 服务无法启动的最常见根本原因是 Active Directory 域控制器对象位于默认域控制器 OU 外。 此配置不受 KDS 服务支持，且不受 Azure AD 密码保护的限制。 此问题的解决方法是将域控制器对象移动到默认域控制器 OU 下的某个位置。
 
-1. Incompatible KDS encrypted buffer format change from Windows Server 2012 R2 to Windows Server 2016
+1. 从 Windows Server 2012 R2 到 Windows Server 2016 的 KDS 加密缓冲区格式更改不兼容
 
-   A KDS security fix was introduced in Windows Server 2016 that modifies the format of KDS encrypted buffers; these buffers will sometimes fail to decrypt on Windows Server 2012 and Windows Server 2012 R2. The reverse direction is okay - buffers that are KDS-encrypted on Windows Server 2012 and Windows Server 2012 R2 will always successfully decrypt on Windows Server 2016 and later. If the domain controllers in your Active Directory domains are running a mix of these operating systems, occasional Azure AD Password Protection decryption failures may be reported. It is not possible to accurately predict the timing or symptoms of these failures given the nature of the security fix, and given that it is non-deterministic which Azure AD Password Protection DC Agent on which domain controller will encrypt data at a given time.
+   Windows Server 2016 中引入了 KDS 安全修补程序，用于修改 KDS 加密缓冲区的格式;有时，这些缓冲区在 Windows Server 2012 和 Windows Server 2012 R2 上无法解密。 反向方向是 KDS 在 Windows Server 2012 上加密的缓冲区，Windows Server 2012 R2 在 Windows server 2016 及更高版本上始终会成功解密。 如果 Active Directory 域中的域控制器运行的是这些操作系统的混合，则可能会报告偶尔 Azure AD 密码保护解密失败。 由于安全修补程序的性质，无法准确预测这些故障的时间或症状，并且假设它是不确定的，这 Azure AD 密码保护 DC 代理，在该代理上，域控制器将在给定的时间对数据进行加密。
 
-   Microsoft is investigating a fix for this issue but no ETA is available yet. In the meantime, there is no workaround for this issue other than to not run a mix of these incompatible operating systems in your Active Directory domain(s). In other words, you should run only Windows Server 2012 and Windows Server 2012 R2 domain controllers, OR you should only run Windows Server 2016 and above domain controllers.
+   Microsoft 正在调查此问题的修补程序，但尚未提供 ETA。 同时，除了不在 Active Directory 域中混合使用这些不兼容的操作系统以外，此问题没有解决方法。 换句话说，你应该只运行 Windows Server 2012 和 Windows Server 2012 R2 域控制器，或者只应运行 Windows Server 2016 及更高版本的域控制器。
 
-## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Weak passwords are being accepted but should not be
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>正在接受弱密码，但不应
 
-This problem may have several causes.
+此问题可能有几个原因。
 
-1. Your DC agent(s) are running a public preview software version that has expired. See [Public preview DC agent software has expired](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+1. 你的 DC 代理正在运行已过期的公共预览版软件版本。 请参阅[公共预览版 DC 代理软件已过期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
-1. Your DC agent(s) cannot download a policy or is unable to decrypt existing policies. Check for possible causes in the above topics.
+1. 你的 DC 代理无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
 
-1. 密码策略强制模式仍设置为“审核”。 If this configuration is in effect, reconfigure it to Enforce using the Azure AD Password Protection portal. See [Enable Password protection](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 请参阅[启用密码保护](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
 
-1. 密码策略已被禁用。 If this configuration is in effect, reconfigure it to enabled using the Azure AD Password Protection portal. See [Enable Password protection](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 请参阅[启用密码保护](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
 
-1. You have not installed the DC agent software on all domain controllers in the domain. In this situation, it is difficult to ensure that remote Windows clients target a particular domain controller during a password change operation. If you think you have successfully targeted a particular DC where the DC agent software is installed, you can verify by double-checking the DC agent admin event log: regardless of outcome, there will be at least one event to document the outcome of the password validation. If there is no event present for the user whose password is changed, then the password change was likely processed by a different domain controller.
+1. 你未在域中的所有域控制器上安装 DC 代理软件。 在这种情况下，很难确保远程 Windows 客户端在密码更改操作过程中以特定的域控制器为目标。 如果你认为已成功将安装了 DC 代理软件的特定 DC 作为目标，则可以通过双重检查 DC 代理管理事件日志进行验证：无论结果如何，都至少需要一个事件来记录密码的结果检查. 如果用户的密码更改不存在任何事件，则可能是由另一个域控制器处理密码更改。
 
-   As an alternative test, try setting\changing passwords while logged in directly to a DC where the DC agent software is installed. This technique is not recommended for production Active Directory domains.
+   作为替代方案，请在登录 DC 代理软件时，尝试 setting\changing 密码，并将密码直接登录到 DC。 对于生产 Active Directory 域，不建议使用此方法。
 
-   While incremental deployment of the DC agent software is supported subject to these limitations, Microsoft strongly recommends that the DC agent software is installed on all domain controllers in a domain as soon as possible.
+   尽管支持对 DC 代理软件进行增量部署，但受到这些限制的限制，但 Microsoft 强烈建议尽快在域中的所有域控制器上安装 DC 代理软件。
 
-1. The password validation algorithm may actually be working as expected. See [How are passwords evaluated](concept-password-ban-bad.md#how-are-passwords-evaluated).
+1. 密码验证算法实际可能按预期方式工作。 请参阅[如何计算密码](concept-password-ban-bad.md#how-are-passwords-evaluated)。
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe fails to set a weak DSRM password
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil 无法设置弱 DSRM 密码
 
-Active Directory will always validate a new Directory Services Repair Mode password to make sure it meets the domain's password complexity requirements; this validation also calls into password filter dlls like Azure AD Password Protection. If the new DSRM password is rejected, the following error message results:
+Active Directory 将始终验证新的目录服务修复模式密码，确保它满足域的密码复杂性要求;此验证还会调用密码筛选器 dll，例如 Azure AD 密码保护。 如果拒绝新的 DSRM 密码，则会出现以下错误消息：
 
 ```text
 C:\>ntdsutil.exe
@@ -109,39 +109,39 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-When Azure AD Password Protection logs the password validation event log event(s) for an Active Directory DSRM password, it is expected that the event log messages will not include a user name. This behavior occurs because the DSRM account is a local account that is not part of the actual Active Directory domain.  
+当 Azure AD 密码保护记录 Active Directory DSRM 密码的密码验证事件日志事件时，事件日志消息应该不包括用户名。 出现此行为的原因是 DSRM 帐户是不属于实际 Active Directory 域的本地帐户。  
 
-## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Domain controller replica promotion fails because of a weak DSRM password
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>由于使用弱 DSRM 密码，域控制器副本升级失败
 
-During the DC promotion process, the new Directory Services Repair Mode password will be submitted to an existing DC in the domain for validation. If the new DSRM password is rejected, the following error message results:
+在 DC 升级过程中，会将新的目录服务修复模式密码提交到域中的现有 DC 进行验证。 如果拒绝新的 DSRM 密码，则会出现以下错误消息：
 
 ```powershell
 Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
 ```
 
-Just like in the above issue, any Azure AD Password Protection password validation outcome event will have empty user names for this scenario.
+正如以上问题中所示，任何 Azure AD 密码保护密码验证结果事件都将在此方案中包含空的用户名。
 
-## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Domain controller demotion fails due to a weak local Administrator password
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>由于本地管理员密码弱，域控制器降级失败
 
-支持降级仍在运行 DC 代理软件的域控制器。 但管理员应注意，在降级过程中，DC 代理软件会继续实施当前密码策略。 将像验证其他任何密码一样验证（降级操作过程中指定的）新本地管理员帐户密码。 Microsoft recommends that secure passwords be chosen for local Administrator accounts as part of a DC demotion procedure.
+支持降级仍在运行 DC 代理软件的域控制器。 但管理员应注意，在降级过程中，DC 代理软件会继续实施当前密码策略。 将像验证其他任何密码一样验证（降级操作过程中指定的）新本地管理员帐户密码。 Microsoft 建议为本地管理员帐户选择安全密码作为 DC 降级过程的一部分。
 
 成功降级后，如果域控制器已重新启动并再次以普通成员服务器的形式运行，则 DC 代理软件将恢复为以被动模式运行。 然后，随时可将其卸载。
 
-## <a name="booting-into-directory-services-repair-mode"></a>Booting into Directory Services Repair Mode
+## <a name="booting-into-directory-services-repair-mode"></a>启动进入目录服务修复模式
 
-If the domain controller is booted into Directory Services Repair Mode, the DC agent password filter dll detects this condition and will cause all password validation or enforcement activities to be disabled, regardless of the currently active policy configuration. The DC agent password filter dll will log a 10023 warning event to the Admin event log, for example:
+如果域控制器已启动到目录服务修复模式，则 DC 代理密码筛选器 dll 将检测到此情况，并将导致所有密码验证或强制活动处于禁用状态，而不考虑当前活动的策略configuration. DC 代理密码筛选器 dll 会将10023警告事件记录到管理事件日志，例如：
 
 ```text
 The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
 ```
-## <a name="public-preview-dc-agent-software-has-expired"></a>Public preview DC agent software has expired
+## <a name="public-preview-dc-agent-software-has-expired"></a>公共预览版 DC 代理软件已过期
 
-During the Azure AD Password Protection public preview period, the DC agent software was hard-coded to stop processing password validation requests on the following dates:
+在 Azure AD 密码保护公共预览版期间，DC 代理软件进行了硬编码，以便在以下日期停止处理密码验证请求：
 
-* Version 1.2.65.0 will stop processing password validation requests on September 1 2019.
-* Version 1.2.25.0 and prior stopped processing password validation requests on July 1 2019.
+* 版本1.2.65.0 将停止在 1 2019 年9月处理密码验证请求。
+* 版本1.2.25.0 和先前在7月 1 2019 处理密码验证请求。
 
-As the deadline approaches, all time-limited DC agent versions will emit a 10021 event in the DC agent Admin event log at boot time that looks like this:
+截止到截止时间，在启动时，所有限时的 DC 代理版本都将在 DC agent 管理事件日志中发出10021事件，如下所示：
 
 ```text
 The password filter dll has successfully loaded and initialized.
@@ -153,7 +153,7 @@ Expiration date:  9/01/2019 0:00:00 AM
 This message will not be repeated until the next reboot.
 ```
 
-Once the deadline has passed, all time-limited DC agent versions will emit a 10022 event in the DC agent Admin event log at boot time that looks like this:
+截止到截止时间之后，所有受时间限制的 DC 代理版本都将在启动时在 DC 代理管理事件日志中发出10022事件，如下所示：
 
 ```text
 The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
@@ -161,12 +161,12 @@ The password filter dll is loaded but the allowable trial period has expired. Al
 No further messages will be logged until after the next reboot.
 ```
 
-Since the deadline is only checked on initial boot, you may not see these events until long after the calendar deadline has passed. Once the deadline has been recognized, no negative effects on either the domain controller or the larger environment will occur other than all passwords will be automatically approved.
+由于仅在初始启动时检查截止时间，因此在日历截止时间过去之前，你可能看不到这些事件。 一旦识别到截止时间，就不会再对域控制器或更大的环境产生负面影响。
 
 > [!IMPORTANT]
-> Microsoft recommends that expired public preview DC agents be immediately upgraded to the latest version.
+> Microsoft 建议将过期的公共预览版 DC 代理立即升级到最新版本。
 
-An easy way to discover DC agents in your environment that need to be upgrade is by running the `Get-AzureADPasswordProtectionDCAgent` cmdlet, for example:
+若要在需要升级的环境中发现 DC 代理，一种简单的方法是运行 `Get-AzureADPasswordProtectionDCAgent` cmdlet，例如：
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -180,16 +180,16 @@ HeartbeatUTC          : 8/1/2019 10:00:00 PM
 AzureTenant           : bpltest.onmicrosoft.com
 ```
 
-For this topic, the SoftwareVersion field is obviously the key property to look at. You can also use PowerShell filtering to filter out DC agents that are already at or above the required baseline version, for example:
+对于本主题，SoftwareVersion 字段显然是要查看的关键属性。 你还可以使用 PowerShell 筛选来筛选出已在所需基准版本或更高版本上的 DC 代理，例如：
 
 ```powershell
 PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-The Azure AD Password Protection Proxy software is not time-limited in any version. Microsoft still recommends that both DC and proxy agents be upgraded to the latest versions as they are released. The `Get-AzureADPasswordProtectionProxy` cmdlet may be used to find Proxy agents that require upgrades, similar to the example above for DC agents.
+在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy` cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
 
-Refer to [Upgrading the DC agent](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) and [Upgrading the Proxy agent](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) for more details on specific upgrade procedures.
+有关具体的升级过程的详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理程序](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)。
 
 ## <a name="emergency-remediation"></a>紧急补救
 
@@ -199,7 +199,7 @@ Refer to [Upgrading the DC agent](howto-password-ban-bad-on-premises-deploy.md#u
 
 ## <a name="removal"></a>删除
 
-If it is decided to uninstall the Azure AD password protection software and cleanup all related state from the domain(s) and forest, this task can be accomplished using the following steps:
+如果决定卸载 Azure AD 密码保护软件并清除域和林中的所有相关状态，则可以使用以下步骤完成此任务：
 
 > [!IMPORTANT]
 > 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。
@@ -218,7 +218,7 @@ If it is decided to uninstall the Azure AD password protection software and clea
 
    然后，可通过管道将 `Get-ADObject` 命令找到的结果对象传送到 `Remove-ADObject`，或手动将其删除。
 
-4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 There may be one these objects per domain controller in the forest, depending on how widely the software was deployed. 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
+4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 林中每个域控制器可能有一个这样的对象，具体取决于软件的部署范围。 可使用以下 Active Directory PowerShell 命令发现该对象的位置：
 
    ```powershell
    $scp = "serviceConnectionPoint"

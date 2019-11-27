@@ -20,7 +20,7 @@ ms.locfileid: "74285931"
 
 ## <a name="common-user-errors"></a>常见用户错误
 
-| 错误                                | 错误消息                    | 可能的原因                                              | 建议的操作                                           |
+| Error                                | 错误消息                    | 可能的原因                                              | 建议的操作                                           |
 | ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | UserErrorInOpeningHanaOdbcConnection | 未能连接到 HANA 系统 | SAP HANA 实例可能已关闭。 <br> 未设置 Azure 备份与 HANA 数据库进行交互所需的权限。 | 检查 SAP HANA 数据库是否已启动。 如果数据库已启动并正在运行，请检查是否设置了所有必需的权限。 如果缺少任何权限，请运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)以添加缺少的权限。 |
 | UserErrorHanaInstanceNameInvalid | 指定的 SAP HANA 实例无效或找不到 | 无法备份单个 Azure VM 上的多个 SAP HANA 实例。 | 在要备份的 SAP HANA 实例上运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)。 如果问题仍然存在，请联系 Microsoft 支持部门。 |

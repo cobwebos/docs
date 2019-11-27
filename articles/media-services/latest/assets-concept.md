@@ -118,7 +118,7 @@ curl -X PUT \
 |加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，密钥由媒体服务管理。|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|支持|支持|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|是否支持|是否支持|
 |[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 存储提供的客户端加密，Key Vault 中的客户管理的密钥。|不支持|不支持|
 
 <sup>1</sup>虽然媒体服务支持以明文/不加密形式处理内容，但不建议这样做。

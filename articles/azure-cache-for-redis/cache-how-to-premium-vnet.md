@@ -1,5 +1,5 @@
 ---
-title: Configure a Virtual Network for a Premium Azure Cache for Redis
+title: 为 Redis 的高级 Azure 缓存配置虚拟网络
 description: 了解如何为高级层 Azure Redis 缓存实例创建和管理虚拟网络支持
 author: yegu-ms
 ms.service: cache
@@ -14,7 +14,7 @@ ms.lasthandoff: 11/20/2019
 ms.locfileid: "74233132"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
-Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上很灵活。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
+Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
 
 > [!NOTE]
 > Azure Redis 缓存同时支持经典 VNet 和资源管理器 VNet。
@@ -96,46 +96,46 @@ Azure Redis 缓存有不同的缓存套餐，因此在缓存大小和功能（�
 
 #### <a name="outbound-port-requirements"></a>出站端口要求
 
-There are nine outbound port requirements. Outbound requests in these ranges are either outbound to other services necessary for the cache to function or internal to the Redis subnet for internode communication. For geo-replication, additional outbound requirements exist for communication between subnets of the primary and secondary cache.
+有九个出站端口要求。 这些范围中的出站请求是出站到缓存运行所必需的其他服务或 Redis 子网的内部请求，以便进行节点间通信。 对于地域复制，存在用于在主缓存和辅助缓存的子网之间进行通信的额外出站要求。
 
-| 端口 | Direction | 传输协议 | 用途 | 本地 IP | 远程 IP |
+| 端口 | Direction | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 | （Redis 子网） |* |
-| 443 | 出站 | TCP | Redis dependency on Azure Key Vault | （Redis 子网） | AzureKeyVault <sup>1</sup> |
-| 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 | （Redis 子网） | 168.63.129.16 and 169.254.169.254 <sup>2</sup> and any custom DNS server for the subnet <sup>3</sup> |
+| 443 | 出站 | TCP | Azure Key Vault 上的 Redis 依赖关系 | （Redis 子网） | AzureKeyVault <sup>1</sup> |
+| 53 |出站 |TCP/UDP |DNS (Internet/VNet) 上的 Redis 依赖关系 | （Redis 子网） | 168.63.129.16 和 169.254.169.254 <sup>2</sup>以及子网<sup>3</sup>的任何自定义 DNS 服务器 |
 | 8443 |出站 |TCP |Redis 内部通信 | （Redis 子网） | （Redis 子网） |
 | 10221-10231 |出站 |TCP |Redis 内部通信 | （Redis 子网） | （Redis 子网） |
 | 20226 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 | 13000-13999 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
-| 15000-15999 |出站 |TCP |Internal communications for Redis and Geo-Replication | （Redis 子网） |(Redis subnet) (Geo-replica peer subnet) |
+| 15000-15999 |出站 |TCP |Redis 的内部通信和异地复制 | （Redis 子网） |（Redis 子网）（地域副本对等子网） |
 | 6379-6380 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
-<sup>1</sup> You can use the service tag 'AzureKeyVault' with Resource Manager Network Security Groups.
+<sup>1</sup>可以将服务标记 "AzureKeyVault" 用于资源管理器网络安全组。
 
-<sup>2</sup> These IP addresses owned by Microsoft are used to address the Host VM which serves Azure DNS.
+<sup>2</sup>这些 IP 地址用于处理 Azure DNS 的主机 VM。
 
-<sup>3</sup> Not needed for subnets with no custom DNS server, or newer redis caches that ignore custom DNS.
+<sup>3</sup> 没有自定义 DNS 服务器的子网或忽略自定义 DNS 的更新 redis 缓存不需要。
 
-#### <a name="geo-replication-peer-port-requirements"></a>Geo-replication peer port requirements
+#### <a name="geo-replication-peer-port-requirements"></a>异地复制对等端口要求
 
-If you are using georeplication between caches in Azure Virtual Networks, please note that the recommended configuration is to unblock ports 15000-15999 for the whole subnet in both inbound AND outbound directions to both caches, so that all the replica components in the subnet can communicate directly with each other even in the event of a future geo-failover.
+如果在 Azure 虚拟网络中的缓存之间使用异地复制，请注意，建议的配置是在两个缓存的入站和出站方向上取消阻止整个子网的端口 15000-15999，这样即使将来发生异地故障转移，子网中的所有副本组件也可以直接相互通信。
 
 #### <a name="inbound-port-requirements"></a>入站端口要求
 
 有 8 个入站端口范围要求。 这些范围内的入站请求是指从同一 VNET 上托管的其他服务入站或者来自 Redis 子网通信内部。
 
-| 端口 | Direction | 传输协议 | 用途 | 本地 IP | 远程 IP |
+| 端口 | Direction | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | (Redis subnet), Virtual Network, Azure Load Balancer <sup>1</sup> |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | （Redis 子网）、虚拟网络、Azure 负载均衡器<sup>1</sup> |
 | 8443 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 | 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 10221-10231 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网）、Azure 负载均衡器 |
 | 13000-13999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
-| 15000-15999 |入站 |TCP |Client communication to Redis Clusters, Azure load Balancing, and Geo-Replication | （Redis 子网） |Virtual Network, Azure Load Balancer, (Geo-replica peer subnet) |
+| 15000-15999 |入站 |TCP |与 Redis 群集的客户端通信、Azure 负载均衡和异地复制 | （Redis 子网） |虚拟网络、Azure 负载均衡器（地域副本对等子网） |
 | 16001 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 20226 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
-<sup>1</sup> You can use the Service Tag 'AzureLoadBalancer' (Resource Manager) (or 'AZURE_LOADBALANCER' for classic) for authoring the NSG rules.
+<sup>1</sup>可以使用服务标记 "AzureLoadBalancer" （资源管理器）（对于经典为 "AZURE_LOADBALANCER"）来创作 NSG 规则。
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>其他 VNET 网络连接要求
 
@@ -149,7 +149,7 @@ If you are using georeplication between caches in Azure Virtual Networks, please
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>如何验证 VNET 中缓存是否正常工作？
 
 >[!IMPORTANT]
->When connecting to an Azure Cache for Redis instance that is hosted in a VNET, your cache clients must be in the same VNET or in a VNET with VNET peering enabled within the same Azure region. Global VNET Peering isn't currently supported. 这包括任何测试应用程序或诊断 ping 工具。 无论客户端应用程序在哪里托管，都必须配置网络安全组，这样客户端的网络流量才能到达 Redis 实例。
+>连接到 VNET 中托管的 Redis 实例的 Azure 缓存时，缓存客户端必须位于同一 VNET 中，或在同一 Azure 区域内启用 VNET 对等互连的 VNET 中。 当前不支持全局 VNET 对等互连。 这包括任何测试应用程序或诊断 ping 工具。 无论客户端应用程序在哪里托管，都必须配置网络安全组，这样客户端的网络流量才能到达 Redis 实例。
 >
 >
 

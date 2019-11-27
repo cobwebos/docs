@@ -14,13 +14,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74325476"
 ---
-# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Use CloudEvents v1.0 schema with Event Grid
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
 
-In addition to its [default event schema](event-schema.md), Azure Event Grid natively supports events in the [JSON implementation of CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) and [HTTP protocol binding](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
+Azure 事件网格除了[默认的事件架构](event-schema.md)外，还支持 CloudEvents V1.0 和[HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的[JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供的常用事件架构适合发布和使用基于云的事件，因此可简化互操作性。 可以通过此架构使用统一的工具、以标准方式路由和处理事件，以及以通用方式反序列化外部事件架构。 使用通用架构可以更轻松地跨平台集成工作。
 
-CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 It's currently available as version 1.0.
+CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 目前提供的版本为1.0。
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
 
@@ -60,7 +60,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 }
 ```
 
-A detailed description of the available fields, their types, and definitions in CloudEvents v0.1 is [available here](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
+[可在此处](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)查看可用字段、其类型和 CloudEvents v 0.1 中的定义的详细说明。
 
 在 CloudEvents 架构和事件网格架构中传递的事件的标头值是相同的，但 `content-type` 除外。 对于 CloudEvents 架构，该标头值为 `"content-type":"application/cloudevents+json; charset=utf-8"`。 对于事件网格架构，该标头值为 `"content-type":"application/json; charset=utf-8"`。
 
@@ -141,9 +141,9 @@ New-AzureRmEventGridSubscription `
 
  目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[使用 HTTP 触发器作为事件网格触发器](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpoint Validation with CloudEvents v1.0
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>用 CloudEvents 1.0 版进行终结点验证
 
-If you are already familiar with Event Grid, you may be aware of Event Grid's endpoint validation handshake for preventing abuse. CloudEvents v1.0 implements its own [abuse protection semantics](security-authentication.md#webhook-event-delivery) using the HTTP OPTIONS method. 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 When using the CloudEvents schema for output, Event Grid uses with the CloudEvents v1.0 abuse protection in place of the Event Grid validation event mechanism.
+如果已熟悉事件网格，可能会注意到事件网格的终结点验证握手，以防止滥用。 CloudEvents 1.0 版使用 HTTP OPTIONS 方法实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格将与 CloudEvents v1.0 滥用保护一起使用，以取代事件网格验证事件机制。
 
 ## <a name="next-steps"></a>后续步骤
 

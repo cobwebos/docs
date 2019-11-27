@@ -1,6 +1,6 @@
 ---
-title: Egress and endpoints - Azure Digital Twins | Microsoft Docs
-description: Learn how to create and egress event endpoints in Azure Digital Twins.
+title: 出口和终结点-Azure 数字孪生 |Microsoft Docs
+description: 了解如何在 Azure 数字孪生中创建和传出事件终结点。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -15,7 +15,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456923"
 ---
-# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Egress and endpoints in Azure Digital Twins
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 数字孪生中的出口和终结点
 
 Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件代理。 可以将事件和消息发送到 Azure 事件中心、Azure 事件网格和 Azure 服务总线主题。
 
@@ -47,13 +47,13 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 属性 | Type | 描述 |
+| 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | id | 字符串 | 事件的唯一标识符。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | 数据 | 对象 | 特定于资源提供程序的事件数据。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| eventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
@@ -85,12 +85,12 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 报告
+- 报表
 - RoleDefinition
 - 传感器
 - SensorBlobMetadata
 - SensorExtendedProperty
-- 航天
+- 空格
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| Value | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -153,7 +153,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| Value | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -188,7 +188,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| Value | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -223,7 +223,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| Value | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -246,7 +246,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 >[!IMPORTANT]
 > 请特别注意 **eventTypes** 属性。 它定义终结点处理哪些事件类型并确定其路由。
 
-An authenticated HTTP POST request against:
+经过身份验证的 HTTP POST 请求：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串|
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
     | YOUR_EVENT_HUB_NAME | 事件中心的名称 |
 
-- 路由到事件中心事件类型 **DeviceMessage**。 必须在 **connectionString** 中包含 `EntityPath`：
+- 路由到事件中心事件类型 **DeviceMessage**。 必须在 `EntityPath`connectionString**中包含**：
 
   ```JSON
   {
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | 替换为 |
+    | 值 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |

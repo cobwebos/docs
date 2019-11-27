@@ -121,7 +121,7 @@ ms.locfileid: "74279072"
 
 2. 从可用方法下拉列表中选择“Microsoft Authenticator - 通知”。 如果不使用 Microsoft Authenticator 应用，请选择“验证器应用或硬件令牌”选项。
 
-    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-defaultauthapp.png)
+    ![选择默认登录方法](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
 3. 选择“确认”。
 

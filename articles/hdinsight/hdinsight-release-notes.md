@@ -19,7 +19,7 @@ ms.locfileid: "74185603"
 
 本文提供有关**最新** Azure HDInsight 版本更新的信息。 有关较早版本的信息，请参阅 [HDInsight 发行说明存档](hdinsight-release-notes-archive.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>Summary
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
 
@@ -45,7 +45,7 @@ Kafka Rest API 代理通过安全 AAD 授权和 OAuth 协议，通过 Kafka 群�
 
 Azure HDInsight 的自动缩放现已在适用于 Apache Spark 和 Hadoop 群集类型的所有区域公开提供。 此功能可让你以更具成本效益和高效的方式管理大数据分析工作负荷。 现在，你可以优化 HDInsight 群集的使用，并且仅为所需的部分付费。
 
-根据你的要求，你可以选择基于负载和计划的自动缩放。 基于负载的自动缩放可根据当前资源需求，根据当前资源需求调整群集大小，而基于计划的自动缩放可以根据预定义的计划更改群集大小。 
+根据具体的要求，你可以选择基于负载的自动缩放或者基于计划的自动缩放。 基于负载的自动缩放可根据当前资源需求，根据当前资源需求调整群集大小，而基于计划的自动缩放可以根据预定义的计划更改群集大小。 
 
 HBase 和 LLAP 工作负荷的自动缩放支持也是公共预览。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-autoscale-clusters)。
 

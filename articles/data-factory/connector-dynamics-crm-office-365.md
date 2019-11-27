@@ -73,7 +73,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为**Dynamics**、 **DynamicsCrm**或**CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"** 。 | 是 |
@@ -84,7 +84,7 @@ Dynamics 链接服务支持以下属性。
 | servicePrincipalCredential | 指定服务主体凭据。 <br>当使用 `ServicePrincipalKey` 作为凭据类型时，`servicePrincipalCredential` 可以是一个字符串（ADF 会在链接的服务部署时对其进行加密）或对 AKV 中的机密的引用。 <br>使用 `ServicePrincipalCert` 作为凭据时，`servicePrincipalCredential` 应是对 AKV 中的证书的引用。 | 使用 `AADServicePrincipal` 身份验证时为是 | 
 | username | 指定用于连接到 Dynamics 的用户名。 | 使用 `Office365` 身份验证时为是 |
 | password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 使用 `Office365` 身份验证时为是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!NOTE]
 >Dynamics 连接器使用可选的“organizationName”属性来标识 Dynamics CRM/365 Online 实例。 虽然它保持正常工作，但建议改为指定新的“serviceUri”属性来获得更好的实例发现性能。
@@ -170,7 +170,7 @@ Dynamics 链接服务支持以下属性。
 
 与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为**Dynamics**、 **DynamicsCrm**或**CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"** 。| 是 |
@@ -180,7 +180,7 @@ Dynamics 链接服务支持以下属性。
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是 |
 | username | 指定用于连接到 Dynamics 的用户名。 | 是 |
 | password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“No”，对于接收器为“Yes” |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“No”，对于接收器为“Yes” |
 
 示例：带有 IFD、使用 IFD 身份验证的本地 Dynamics
 
@@ -216,7 +216,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从/向 Dynamics 复制数据，支持下列属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**DynamicsEntity**、 **DynamicsCrmEntity**或**CommonDataServiceForAppsEntity**。 |是 |
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
@@ -248,7 +248,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从 Dynamics 复制数据，复制活动**源**部分支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为**DynamicsSource**、 **DynamicsCrmSource**或**CommonDataServiceForAppsSource**。 | 是 |
 | 查询 | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
@@ -316,7 +316,7 @@ Dynamics 链接服务支持以下属性。
 
 若要将数据复制到 Dynamics，请在复制活动**接收器**部分中支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为**DynamicsSink**、 **DynamicsCrmSink**或**CommonDataServiceForAppsSink**。 | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"** 。 | 是 |

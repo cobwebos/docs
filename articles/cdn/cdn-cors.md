@@ -30,7 +30,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 ### <a name="for-simple-requests"></a>简单请求：
 
-1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议、域和端口的组合。  从 https 的页面时\://www.contoso.com 尝试访问 fabrikam.com 源中的用户的数据，以下请求标头将发送到 fabrikam.com:
+1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议、域和端口的组合。  当来自 https\://www.contoso.com 的页面尝试访问 fabrikam.com 源中的用户数据时，以下请求标头将发送到 fabrikam.com：
 
    `Origin: https://www.contoso.com`
 
@@ -74,7 +74,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 在**从 Akamai Azure CDN 标准**中，允许多个源而不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。 为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
 
-### <a name="azure-cdn-premium-from-verizon"></a>来自 Verizon 的高级 Azure CDN
+### <a name="azure-cdn-premium-from-verizon"></a>Verizon 提供的高级 Azure CDN
 使用 Verizon Premium 规则引擎，你将需要[创建一个规则](cdn-rules-engine.md)来检查请求的**源**标头。  如果是有效的源，规则将使用请求中提供的源设置 **Access-Control-Allow-Origin** 标头。  如果不允许使用在 **Origin** 标头中指定的源，规则应忽略 **Access-Control-Allow-Origin** 标头，这会导致浏览器拒绝请求。 
 
 可以通过两种方法来实现此目的。 在这两种情况下，来自文件的源服务器的 **Access-Control-Allow-Origin** 标头都会被忽略，并且 CDN 的规则引擎会完全管理允许的 CORS 源。

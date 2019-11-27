@@ -22,15 +22,15 @@ ms.locfileid: "74325445"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 If you need an AKS cluster, see the AKS quickstart [using the Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-You also need the Azure CLI version 2.0.59 or later installed and configured. 运行  `az --version` 即可查找版本。 If you need to install or upgrade, see [Install Azure CLI][install-azure-cli].
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-This article covers using a *Standard* SKU IP with a *Standard* SKU load balancer. For more information, see [IP address types and allocation methods in Azure][ip-sku].
+本文介绍如何将*标准*sku IP 与*标准*sku 负载均衡器结合使用。 有关详细信息，请参阅 [Azure 中的 IP 地址类型和分配方法][ip-sku]。
 
 ## <a name="create-a-static-ip-address"></a>创建静态 IP 地址
 
-Create a static public IP address with the [az network public ip create][az-network-public-ip-create] command. The following creates a static IP resource named *myAKSPublicIP* in the *myResourceGroup* resource group:
+使用[az network 公共 ip create][az-network-public-ip-create]命令创建静态公共 ip 地址。 下面在*myResourceGroup*资源组中创建名为*MYAKSPUBLICIP*的静态 IP 资源：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -41,9 +41,9 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> If you are using a *Basic* SKU load balancer in your AKS cluster, use *Basic* for the *sku* parameter when defining a public IP. Only *Basic* SKU IPs work with the *Basic* SKU load balancer and only *Standard* SKU IPs work with *Standard* SKU load balancers. 
+> 如果在 AKS 群集中使用*基本*sku 负载平衡器，请在定义公共 IP 时使用*基本*的*sku*参数。 只有*基本*sku ip 适用于*基本*sku 负载均衡器，并且只有*标准*sku ip 适用于*标准*sku 负载均衡器。 
 
-The IP address is displayed, as shown in the following condensed example output:
+将显示 IP 地址，如以下精简版示例输出中所示：
 
 ```json
 {
@@ -55,7 +55,7 @@ The IP address is displayed, as shown in the following condensed example output:
 }
 ```
 
-You can later get the public IP address using the [az network public-ip list][az-network-public-ip-list] command. 指定节点资源组的名称和创建的公共 IP 地址，然后查询 ipAddress，如以下示例中所示：
+稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公共 IP 地址。 指定节点资源组的名称和创建的公共 IP 地址，然后查询 ipAddress，如以下示例中所示：
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -65,7 +65,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用静态 IP 地址创建服务
 
-Before creating a service, ensure the service principal used by the AKS cluster has delegated permissions to the other resource group. 例如：
+在创建服务之前，请确保 AKS 群集使用的服务主体已将权限委派给其他资源组。 例如：
 
 ```azurecli-interactive
 az role assignment create \
@@ -74,7 +74,7 @@ az role assignment create \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-To create a *LoadBalancer* service with the static public IP address, add the `loadBalancerIP` property and the value of the static public IP address to the YAML manifest. 创建名为 `load-balancer-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公用 IP 地址。 The following example also sets the annotation to the resource group named *myResourceGroup*. Provide your own resource group name.
+若要创建具有静态公共 IP 地址的*LoadBalancer*服务，请将 `loadBalancerIP` 属性和静态公共 ip 地址的值添加到 YAML 清单。 创建名为 `load-balancer-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公用 IP 地址。 以下示例还将批注设置为名为*myResourceGroup*的资源组。 提供自己的资源组名称。
 
 ```yaml
 apiVersion: v1
@@ -100,7 +100,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="troubleshoot"></a>故障排除
 
-If the static IP address defined in the *loadBalancerIP* property of the Kubernetes service manifest does not exist, or has not been created in the node resource group and no additional delegations configured, the load balancer service creation fails. To troubleshoot, review the service creation events with the [kubectl describe][kubectl-describe] command. 提供 YAML 清单中指定的服务的名称，如以下示例中所示：
+如果 Kubernetes 服务清单的 *loadBalancerIP* 属性中定义的静态 IP 地址不存在或尚未在节点资源组中创建，并且尚未配置其他托管，则负载均衡器服务创建将失败。 若要排除此故障，请用 [kubectl describe][kubectl-describe] 命令查看服务创建事件。 提供 YAML 清单中指定的服务的名称，如以下示例中所示：
 
 ```console
 kubectl describe service azure-load-balancer
@@ -132,7 +132,7 @@ Events:
 
 ## <a name="next-steps"></a>后续步骤
 
-For additional control over the network traffic to your applications, you may want to instead [create an ingress controller][aks-ingress-basic]. You can also [create an ingress controller with a static public IP address][aks-static-ingress].
+如需获得对流向应用程序的网络流量的额外控制，你需要改为[创建入口控制器][aks-ingress-basic]。 此外，还可以[使用静态公共 IP 地址创建入口控制器][aks-static-ingress]。
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

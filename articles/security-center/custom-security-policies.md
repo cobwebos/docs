@@ -1,6 +1,6 @@
 ---
-title: Create custom security policies in Azure Security Center | Microsoft Docs
-description: Azure custom policy definitions monitored by Azure Security Center.
+title: 在 Azure 安全中心创建自定义安全策略 |Microsoft Docs
+description: Azure 安全中心监视的 azure 自定义策略定义。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -15,60 +15,60 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483970"
 ---
-# <a name="using-custom-security-policies-preview"></a>Using custom security policies (Preview)
+# <a name="using-custom-security-policies-preview"></a>使用自定义安全策略（预览）
 
-To help secure your systems and environment, Azure Security Center generates security recommendations. These recommendations are based on industry best practices, which are incorporated into the generic, default security policy supplied to all customers. They can also come from Security Center's knowledge of industry and regulatory standards.
+为了帮助保护你的系统和环境，Azure 安全中心会生成安全建议。 这些建议基于行业最佳实践，该方案合并到为所有客户提供的通用默认安全策略中。 它们还可以来自安全中心的行业和法规标准知识。
 
-With this preview feature, you can add your own *custom* initiatives. You'll then receive recommendations if your environment doesn't follow the policies you create.
+通过此预览功能，你可以添加自己的*自定义*计划。 如果你的环境不遵循你所创建的策略，则会收到建议。
 
-As discussed [here](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in the Azure Policy documentation, when you specify a location for your custom initiative, it must be a management group or a subscription. 
+如 Azure 策略文档中[所述，](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)当你为自定义计划指定位置时，它必须是管理组或订阅。 
 
-## <a name="to-add-a-custom-initiative-to-your-subscription"></a>To add a custom initiative to your subscription 
+## <a name="to-add-a-custom-initiative-to-your-subscription"></a>向订阅中添加自定义计划 
 
-1. From Security Center's sidebar, open the **Security policy** page.
+1. 在安全中心的边栏中，打开 "**安全策略**" 页。
 
-1. Select a subscription or Management Group to which you would like to add a custom initiative.
+1. 选择要向其添加自定义计划的订阅或管理组。
 
-    [![Selecting a subscription for which you'll create your custom policy](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [选择要为其创建自定义策略的订阅 ![](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > You must add custom standards at the subscription level (or higher) for them to be evaluated and displayed in Security Center. 
+    > 你必须在订阅级别（或更高版本）添加自定义标准，以便在安全中心评估并显示它们。 
     >
-    > When you add a custom standard, it assigns an *initiative* to that scope. We therefore recommend that you select the widest scope required for that assignment.
+    > 添加自定义标准时，它将向该范围分配*计划*。 因此，建议您选择该分配所需的范围最广的作用域。
 
-1. In the Security policy page, under Your custom initiatives (Preview), click **Add a custom initiative**.
+1. 在 "安全策略" 页的 "自定义计划（预览）" 下，单击 "**添加自定义计划**"。
 
-    [![Click **Add a custom initiative**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![单击 "添加自定义计划"](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
-    The following page appears:
+    将显示以下页面：
 
-    ![Create or add a policy](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![创建或添加策略](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. In the Add custom initiatives page, review the list of custom policies already created in your organization. If you see one you want to assign to your subscription, click **Add**. If there isn't an initiative in the list that meets your needs, skip this step.
+1. 在 "添加自定义计划" 页上，查看已在组织中创建的自定义策略的列表。 如果你看到要分配给订阅的一个，请单击 "**添加**"。 如果列表中没有符合需求的计划，则跳过此步骤。
 
-1. To create a new custom initiative:
+1. 若要创建新的自定义计划：
 
-    1. Click **Create new**.
-    1. Enter the definition's location and name.
-    1. Select the policies to include and click **Add**.
-    1. Enter any desired parameters.
-    1. 单击“保存”。
-    1. In the Add custom initiatives page, click refresh and your new initiative will be shown as available.
-    1. Click **Add** and assign it to your subscription.
+    1. 单击 "**新建**"。
+    1. 输入定义的 "位置" 和 "名称"。
+    1. 选择要包括的策略，然后单击 "**添加**"。
+    1. 输入任何所需的参数。
+    1. 单击“ **保存**”。
+    1. 在 "添加自定义计划" 页中，单击 "刷新"，你的新计划将显示为 "可用"。
+    1. 单击 "**添加**" 并将其分配给你的订阅。
 
     > [!NOTE]
-    > Creating new initiatives requires subscription owner credentials. For more information about Azure roles, see [Permissions in Azure Security Center](security-center-permissions.md).
+    > 创建新的计划需要订阅所有者凭据。 有关 Azure 角色的详细信息，请参阅[Azure 安全中心中的权限](security-center-permissions.md)。
 
-1. To see the resulting recommendations for your policy, click **Recommendations** from the sidebar to open the recommendations page. The recommendations will appear with a “Custom” label and be available within approximately one hour.
+1. 若要查看策略的结果建议，请单击边栏中的 "**建议**" 以打开 "建议" 页。 建议将显示 "自定义" 标签，在大约一小时内可用。
 
-    [![Custom recommendations](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>后续步骤
 
-In this article, you learned how to create custom security policies. 
+本文介绍了如何创建自定义安全策略。 
 
-For other related material, see the following articles: 
+有关其他相关材料，请参阅以下文章： 
 
-- [The overview of security policies](tutorial-security-policy.md)
-- [A list of the built-in security policies](security-center-policy-definitions.md)
+- [安全策略概述](tutorial-security-policy.md)
+- [内置安全策略的列表](security-center-policy-definitions.md)

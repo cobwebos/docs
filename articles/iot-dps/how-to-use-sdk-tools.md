@@ -1,5 +1,5 @@
 ---
-title: Use Azure IoT Hub Device Provisioning Service SDKs tools
+title: 使用 Azure IoT 中心设备预配服务 Sdk 工具
 description: 本文档介绍如何使用 Azure IoT 中心设备预配服务 SDK 中提供的工具进行开发
 author: robinsh
 ms.author: robinsh

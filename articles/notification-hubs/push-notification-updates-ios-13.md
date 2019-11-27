@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs iOS 13 updates | Microsoft Docs
-description: Learn about iOS 13 breaking changes in Azure Notification Hubs
+title: Azure 通知中心 iOS 13 更新 |Microsoft Docs
+description: 了解 Azure 通知中心的 iOS 13 重大更改
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/16/2019
@@ -17,19 +17,19 @@ ms.locfileid: "74228145"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>iOS 13 的 Azure 通知中心更新
 
-Apple recently made some changes to their public push service; the changes mostly aligned with the releases of iOS 13 and Xcode. This article describes the impact of these changes on Azure Notification Hubs.
+Apple 最近对其公共推送服务做出了一些更改;这些更改主要与 iOS 13 和 Xcode 的版本一致。 本文介绍这些更改对 Azure 通知中心的影响。
 
-## <a name="apns-push-payload-changes"></a>APNS push payload changes
+## <a name="apns-push-payload-changes"></a>APNS 推送负载更改
 
-### <a name="apns-push-type"></a>APNS push type
+### <a name="apns-push-type"></a>APNS 推送类型
 
-Apple now requires that developers identify notifications as an alert or background notifications through the new `apns-push-type` header in the APNS API. According to [Apple's documentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): "The value of this header must accurately reflect the contents of your notification's payload. 如果两者不匹配，或者在所需的系统上缺少标头，则 APN 可能会返回错误、延迟通知的发送或将其完全删除。”
+Apple 现在要求开发人员通过 APNS API 中的新 `apns-push-type` 标头将通知标识为警报或背景通知。 按照[Apple 的文档](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)： "此标头的值必须准确反映通知的有效负载的内容。 如果两者不匹配，或者在所需的系统上缺少标头，则 APN 可能会返回错误、延迟通知的发送或将其完全删除。”
 
-Developers must now set this header in applications that send notifications through Azure Notification Hubs. Due to a technical limitation, customers must use token-based authentication for APNS credentials with requests that include this attribute. If you are using certificate-based authentication for your APNS credentials, you must switch to using token-based authentication.
+开发人员现在必须在通过 Azure 通知中心发送通知的应用程序中设置此标头。 由于技术限制，客户必须为 APNS 凭据使用基于令牌的身份验证，其中包含此属性的请求。 如果为 APNS 凭据使用基于证书的身份验证，则必须切换到使用基于令牌的身份验证。
 
-The following code samples show how to set this header attribute in notification requests sent through Azure Notification Hubs.
+下面的代码示例演示如何在通过 Azure 通知中心发送的通知请求中设置此标头属性。
 
-#### <a name="template-notifications---net-sdk"></a>Template notifications - .NET SDK
+#### <a name="template-notifications---net-sdk"></a>模板通知-.NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -40,7 +40,7 @@ notification.Headers = headers;
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="native-notifications---net-sdk"></a>Native notifications - .NET SDK
+#### <a name="native-notifications---net-sdk"></a>本机通知-.NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -49,7 +49,7 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="direct-rest-calls"></a>Direct REST calls
+#### <a name="direct-rest-calls"></a>直接 REST 调用
 
 ```csharp
 var request = new HttpRequestMessage(method, $"<resourceUri>?api-version=2017-04");
@@ -58,13 +58,13 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-To help you during this transition, when Azure Notification Hubs detects a notification that doesn't have the `apns-push-type` set, the service infers the push type from the notification request and sets the value automatically. Remember that you must configure Azure Notification Hubs to use token-based authentication to set the required header; for more information, see [Token-based (HTTP/2) Authentication for APNS](notification-hubs-push-notification-http2-token-authentification.md).
+为了在此转换过程中帮助你，当 Azure 通知中心检测到未设置 `apns-push-type` 的通知时，服务将从通知请求中推断出推送类型并自动设置值。 请记住，你必须将 Azure 通知中心配置为使用基于令牌的身份验证来设置所需的标头;有关详细信息，请参阅[APNS 的基于令牌的（HTTP/2）身份验证](notification-hubs-push-notification-http2-token-authentification.md)。
 
-## <a name="apns-priority"></a>APNS priority
+## <a name="apns-priority"></a>APNS 优先级
 
-Another minor change, but one that requires a change to the backend application that sends notifications, is the requirement that for background notifications the `apns-priority` header must now be set to 5. Many applications set the `apns-priority` header to 10 (indicating immediate delivery), or don't set it and get the default value (which is also 10).
+另一小的更改，但需要对发送通知的后端应用程序进行更改的另一项更改是要求后台通知的要求现在必须将 `apns-priority` 标头设置为5。 许多应用程序将 `apns-priority` 标头设置为10（表示立即传递），或不设置它并获取默认值（也是10）。
 
-Setting this value to 10 is no longer allowed for background notifications, and you must set the value for each request. Apple will not deliver background notifications if this value is missing. 例如：
+背景通知不再允许将此值设置为10，并且必须为每个请求设置值。 如果缺少此值，Apple 将不会传递背景通知。 例如：
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -73,6 +73,6 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-## <a name="sdk-changes"></a>SDK changes
+## <a name="sdk-changes"></a>SDK 更改
 
-For years, iOS developers used the `description` attribute of the `deviceToken` data sent to the push token delegate to extract the push token that a backend application uses to send notifications to the device. With Xcode 11, that `description` attribute changed to a different format. Existing code that developers used for this attribute is now broken. We have updated the Azure Notification Hubs SDK to accommodate this change, so please update the SDK used by your applications to version 2.0.4 or newer of the [Azure Notification Hubs iOS SDK](https://github.com/Azure/azure-notificationhubs-ios).
+多年来，iOS 开发人员使用发送到推送令牌委托的 `deviceToken` 数据的 `description` 属性提取推送令牌，后端应用程序使用该令牌将通知发送到设备。 对于 Xcode 11，该 `description` 特性更改为不同的格式。 开发人员用于此属性的现有代码现已中断。 我们更新了 Azure 通知中心 SDK 以适应此更改，因此请将应用程序使用的 SDK 更新为版本2.0.4 或更新版本的[Azure 通知中心 IOS SDK](https://github.com/Azure/azure-notificationhubs-ios)。

@@ -149,7 +149,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。
+7. 单击“ **保存**”。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Zscaler PRIVATE Access （ZPA）** "。
 

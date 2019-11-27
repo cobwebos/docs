@@ -41,7 +41,7 @@ ms.locfileid: "74280886"
 
 如果希望查询文本的所有意图的分数，可以在预测 API 的查询字符串中提供标志。 
 
-|预测 API 版本|标志|
+|预测 API 版本|Flag|
 |--|--|
 |V2|`verbose=true`|
 |V3|`show-all-intents=true`|

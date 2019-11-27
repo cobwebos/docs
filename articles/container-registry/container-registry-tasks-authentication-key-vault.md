@@ -1,6 +1,6 @@
 ---
-title: External authentication from ACR task
-description: Enable a managed identity for Azure Resources in an Azure Container Registry (ACR) task to allow the task to read Docker Hub credentials stored in an Azure key vault.
+title: ACR 任务中的外部身份验证
+description: 在 Azure 容器注册表 (ACR) 任务中启用 Azure 资源的托管标识，使该任务能够读取存储在 Azure Key Vault 中的 Docker Hub 凭据。
 ms.topic: article
 ms.date: 07/12/2019
 ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
@@ -10,45 +10,45 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456219"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>External authentication in an ACR task using an Azure-managed identity 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
 
-In an [ACR task](container-registry-tasks-overview.md), you can [enable a managed identity for Azure resources](container-registry-tasks-authentication-managed-identity.md). The task can use the identity to access other Azure resources, without needing to provide or manage credentials. 
+在 [ACR 任务](container-registry-tasks-overview.md)中，可以[启用 Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 该任务可以使用该标识来访问其他 Azure 资源，而无需提供或管理凭据。 
 
-In this article, you learn how to enable a managed identity in a task that accesses secrets stored in an Azure key vault. 
+本文介绍如何在要访问 Azure Key Vault 中存储的机密的任务中启用托管标识。 
 
-To create the Azure resources, this article requires that you run the Azure CLI version 2.0.68 or later. 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>方案概述
 
-The example task reads Docker Hub credentials stored in an Azure key vault. The credentials are for a Docker Hub account with write (push) permissions to a private repository in Docker Hub. To read the credentials, you configure the task with a managed identity and assign appropriate permissions to it. The task associated with the identity builds an image, and signs into Docker Hub to push the image to the private repo. 
+示例任务将读取存储在 Azure Key Vault 中的 Docker Hub 凭据。 这些凭据适用于对 Docker Hub 中的专用存储库拥有写入（推送）权限的 Docker Hub 帐户。 若要读取凭据，请使用托管标识配置任务，并为其分配适当的权限。 与标识关联的任务将生成一个映像，并登录到 Docker Hub，以将映像推送到专用存储库。 
 
-This example shows steps using either a user-assigned or system-assigned managed identity. Your choice of identity depends on your organization's needs.
+此示例演示了使用用户分配的或系统分配的托管标识的步骤。 选择哪种标识取决于组织的需求。
 
-In a real-world scenario, a company might publish images to a private repo in Docker Hub as part of a build process. 
+在实际方案中，公司可能会在生成过程中将映像发布到 Docker Hub 中的专用存储库。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-You need an Azure container registry in which you run the task. In this article, this registry is named *myregistry*. Replace with your own registry name in later steps.
+需要一个 Azure 容器注册表，将在其中运行任务。 在本文中，此注册表名为 *myregistry*。 在后续步骤中，请将其替换为自己的注册表名称。
 
-If you don't already have an Azure container registry, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md). You don't need to push images to the registry yet.
+如果还没有 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
 
-You also need a private repository in Docker Hub, and a Docker Hub account with permissions to write to the repo. In this example, this repo is named *hubuser/hubrepo*. 
+在 Docker Hub 中需有一个专用存储库，并且有一个有权写入存储库的 Docker Hub 帐户。 在此示例中，此存储库名为 *hubuser/hubrepo*。 
 
-## <a name="create-a-key-vault-and-store-secrets"></a>Create a key vault and store secrets
+## <a name="create-a-key-vault-and-store-secrets"></a>创建 Key Vault 并存储机密
 
-First, if you need to, create a resource group named *myResourceGroup* in the *eastus* location with the following [az group create][az-group-create] command:
+首先，如果需要，请在*eastus*位置创建一个名为*myResourceGroup*的资源组，并在其中包含以下[az group create][az-group-create]命令：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Use the [az keyvault create][az-keyvault-create] command to create a key vault. Be sure to specify a unique key vault name. 
+使用 [az keyvault create][az-keyvault-create] 命令创建 Key Vault。 请务必指定唯一的 Key Vault 名称。 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Store the required Docker Hub credentials in the key vault using the [az keyvault secret set][az-keyvault-secret-set] command. In these commands, the values are passed in environment variables:
+使用 [az keyvault secret set][az-keyvault-secret-set] 命令将所需的 Docker Hub 凭据存储到该 Key Vault 中。 在这些命令中，值将传入到环境变量中：
 
 ```azurecli
 # Store Docker Hub user name
@@ -64,11 +64,11 @@ az keyvault secret set \
   --vault-name mykeyvault
 ```
 
-In a real-world scenario, secrets would likely be set and maintained in a separate process.
+在实际方案中，可能会通过单独的过程设置和维护机密。
 
-## <a name="define-task-steps-in-yaml-file"></a>Define task steps in YAML file
+## <a name="define-task-steps-in-yaml-file"></a>在 YAML 文件中定义任务步骤
 
-The steps for this example task are defined in a [YAML file](container-registry-tasks-reference-yaml.md). Create a file named `dockerhubtask.yaml` in a local working directory and paste the following contents. Be sure to replace the key vault name in the file with the name of your key vault.
+此示例任务的步骤在一个 [YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 在本地工作目录中创建名为 `dockerhubtask.yaml` 的文件，并粘贴以下内容。 请务必将该文件中的 Key Vault 名称替换为自己的 Key Vault 名称。
 
 ```yml
 version: v1.0.0
@@ -88,22 +88,22 @@ steps:
     - {{.Values.PrivateRepo}}:{{.Run.ID}}
 ```
 
-The task steps do the following:
+任务步骤将执行以下操作：
 
-* Manage secret credentials to authenticate with Docker Hub.
-* Authenticate with Docker Hub by passing the secrets to the `docker login` command.
-* Build an image using a sample Dockerfile in the [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) repo.
-* Push the image to the private Docker Hub repository.
+* 管理用于在 Docker Hub 中进行身份验证的机密凭据。
+* 通过向 `docker login` 命令传递机密，在 Docker Hub 中进行身份验证。
+* 使用 [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) 存储库中的示例 Dockerfile 生成映像。
+* 将映像推送到专用 Docker Hub 存储库。
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Option 1: Create task with user-assigned identity
+## <a name="option-1-create-task-with-user-assigned-identity"></a>选项1：创建具有用户分配的标识的任务
 
-The steps in this section create a task and enable a user-assigned identity. If you want to enable a system-assigned identity instead, see [Option 2: Create task with system-assigned identity](#option-2-create-task-with-system-assigned-identity). 
+本部分中的步骤将创建一个任务并启用用户分配的标识。 如果要改为启用系统分配的标识，请参阅[选项2：使用系统分配的标识创建任务](#option-2-create-task-with-system-assigned-identity)。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>创建任务
 
-Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter passes the resource ID of the user-assigned identity. 
+执行以下 *az acr task create* 命令创建 [dockerhubtask][az-acr-task-create] 任务。 该任务无需源代码上下文即可运行，该命令将引用工作目录中的 `dockerhubtask.yaml` 文件。 `--assign-identity` 参数传递用户分配的标识的资源 ID。 
 
 ```azurecli
 az acr task create \
@@ -116,13 +116,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Option 2: Create task with system-assigned identity
+## <a name="option-2-create-task-with-system-assigned-identity"></a>选项2：创建包含系统分配的标识的任务
 
-The steps in this section create a task and enable a system-assigned identity. If you want to enable a user-assigned identity instead, see [Option 1: Create task with user-assigned identity](#option-1-create-task-with-user-assigned-identity). 
+本部分中的步骤将创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项1：使用用户分配的标识创建任务](#option-1-create-task-with-user-assigned-identity)。 
 
 ### <a name="create-task"></a>创建任务
 
-Create the task *dockerhubtask* by executing the following [az acr task create][az-acr-task-create] command. The task runs without a source code context, and the command references the file `dockerhubtask.yaml` in the working directory. The `--assign-identity` parameter with no value enables the system-assigned identity on the task.  
+执行以下 *az acr task create* 命令创建 [dockerhubtask][az-acr-task-create] 任务。 该任务无需源代码上下文即可运行，该命令将引用工作目录中的 `dockerhubtask.yaml` 文件。 不带任何值的 `--assign-identity` 参数将在任务中启用系统分配的标识。  
 
 ```azurecli
 az acr task create \
@@ -135,23 +135,23 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Grant identity access to key vault
+## <a name="grant-identity-access-to-key-vault"></a>为标识授予对 Key Vault 的访问权限
 
-Run the following [az keyvault set-policy][az-keyvault-set-policy] command to set an access policy on the key vault. The following example allows the identity to read secrets from the key vault. 
+运行以下 [az keyvault set-policy][az-keyvault-set-policy] 命令来设置对 Key Vault 的访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
 ```
 
-## <a name="manually-run-the-task"></a>Manually run the task
+## <a name="manually-run-the-task"></a>手动运行任务
 
-To verify that the task in which you enabled a managed identity runs successfully, manually trigger the task with the [az acr task run][az-acr-task-run] command. The `--set` parameter is used to pass the private repo name to the task. In this example, the placeholder repo name is *hubuser/hubrepo*.
+若要验证启用了托管标识的任务是否成功运行，请使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。 `--set` 参数用于将专用存储库名称传递给该任务。 在此示例中，占位符存储库名称为 *hubuser/hubrepo*。
 
 ```azurecli
 az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
 ```
 
-When the task runs successfully, output shows successful authentication to Docker Hub, and the image is successfully built and pushed to the private repo:
+如果该任务成功运行，则输出将显示对 Docker Hub 的身份验证成功，并且映像已成功生成并推送到专用存储库：
 
 ```console
 Queued a run with ID: cf24
@@ -198,12 +198,12 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-To confirm the image is pushed, check for the tag (`cf24` in this example) in the private Docker Hub repo.
+若要确认是否已推送映像，请检查专用 Docker Hub 存储库中的标记（在本示例中为 `cf24`）。
 
 ## <a name="next-steps"></a>后续步骤
 
-* Learn more about [enabling a managed identity in an ACR task](container-registry-tasks-authentication-managed-identity.md).
-* See the [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)
+* 详细了解如何[在 ACR 任务中启用托管标识](container-registry-tasks-authentication-managed-identity.md)。
+* 参阅 [ACR 任务 YAML 参考](container-registry-tasks-reference-yaml.md)
 
 
 <!-- LINKS - Internal -->

@@ -1,5 +1,5 @@
 ---
-title: Azure Functions Runtime Installation
+title: Azure Functions 运行时安装
 description: 如何安装 Azure Functions 运行时预览版 2
 author: apwestgarth
 ms.topic: conceptual
@@ -25,7 +25,7 @@ ms.locfileid: "74226724"
 1. 完成 Azure Functions 运行时预览版 2 的配置。
 1. 在 Azure Functions 运行时预览版中创建第一个函数
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在安装 Azure Functions 运行时预览版之前，必须准备好以下资源：
 
@@ -75,23 +75,23 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版数据库配置][8]
 
-1. Click the **Credentials** tab.  Here, you must create two new credentials for use with a file share for hosting all your function apps.  为**文件共享所有者**和**文件共享用户**指定**用户名**和**密码**组合，并单击“应用”。
+1. 单击 "**凭据**" 选项卡。 在此，你必须创建两个新凭据以用于文件共享，以便托管所有 function app。  为**文件共享所有者**和**文件共享用户**指定**用户名**和**密码**组合，并单击“应用”。
 
     ![Azure Functions 运行时预览版凭据][9]
 
-1. Click the **File Share** tab.  Here you must specify the details of the file share  location.  系统可以创建文件共享，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
+1. 单击 "**文件共享**" 选项卡。 此时，必须指定文件共享位置的详细信息。  系统可以创建文件共享，也可以选择一个现有文件共享并单击“应用”。  如果选择了新的文件共享位置，则必须指定一个目录供 Azure Functions 运行时使用。
 
     ![Azure Functions 运行时预览版文件共享][10]
 
-1. Click the **IIS** tab.  This tab shows the details of the websites in IIS that the Azure Functions Runtime configuration tool creates.  可以在此处为 Azure Functions 运行时预览版门户指定自定义的 DNS 名称。  单击“应用”以完成操作。
+1. 单击 " **IIS** " 选项卡。 此选项卡显示 Azure Functions 运行时配置工具创建的 IIS 中的网站的详细信息。  可以在此处为 Azure Functions 运行时预览版门户指定自定义的 DNS 名称。  单击“应用”以完成操作。
 
     ![Azure Functions 运行时预览版 IIS][11]
 
-1. Click the **Services** tab.  This tab shows the status of the services in your Azure Functions Runtime configuration tool.  完成初始配置后，如果 **Azure Functions 主机激活服务**未运行，请单击“启动服务”
+1. 单击 "**服务**" 选项卡。 此选项卡在 Azure Functions 运行时配置工具中显示服务的状态。  完成初始配置后，如果 **Azure Functions 主机激活服务**未运行，请单击“启动服务”
 
     ![Azure Functions 运行时预览版配置完成][12]
 
-1. 使用 `https://<machinename>.<domain>/` 浏览到 **Azure Functions 运行时门户**。
+1. 使用 **浏览到**Azure Functions 运行时门户`https://<machinename>.<domain>/`。
 
     ![Azure Functions 运行时预览版门户][13]
 
@@ -99,13 +99,13 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
 在 Azure Functions 运行时预览版中创建第一个函数
 
-1. Browse to the **Azure Functions Runtime Portal** as `https://<machinename>.<domain>` for example `https://mycomputer.mydomain.com`.
+1. 以 **的形式浏览到**Azure Functions 运行时门户`https://<machinename>.<domain>`，例如 `https://mycomputer.mydomain.com`。
 
 1. 系统会提示**登录**。如果是在域中部署的，请使用帐户用户名和密码登录；否则，请使用本地帐户用户名和密码登录到门户。
 
     ![Azure Functions 运行时预览版门户登录][14]
 
-1. 若要创建函数应用，必须创建订阅。  In the top left-hand corner of the portal, click the **+** option next to the subscriptions.
+1. 若要创建函数应用，必须创建订阅。  在门户的左上角，单击订阅旁边的 **+** 选项。
 
     ![Azure Functions 运行时预览版门户订阅][15]
 
@@ -113,7 +113,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版门户订阅计划和名称][16]
 
-1. 所有函数应用列在门户的左窗格中。  若要创建新的函数应用，请选择标题“函数应用”，单击 **+** 选项。
+1. 所有函数应用列在门户的左窗格中。  若要创建新的函数应用，请选择标题“函数应用”，单击 **选项+** 。
 
 1. 输入函数应用的名称，选择正确的订阅，选择想要对其编程的 Azure Functions 运行时版本，并单击“创建”
 

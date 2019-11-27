@@ -48,7 +48,7 @@ ms.locfileid: "74304955"
 对于 SDK 2.4 及更低版本，可以请求通过配置文件来传输诊断数据，也可以通过编程方式来进行。 编程方式还可以进行按需传输。
 
 > [!IMPORTANT]
-> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于诊断数据使用的存储资源。
+> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于诊断数据所使用的存储资源。
 > 
 > 
 
@@ -71,7 +71,7 @@ ms.locfileid: "74304955"
 * **"custom"** - 一个自定义容器，其所基于的配置目录受诊断监视器监视。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
-将数据传输到存储后，可以使用多个工具进行查看。 例如：
+将数据传输到存储空间以后，可以使用多个工具来查看这些数据。 例如：
 
 * Visual Studio 中的服务器资源管理器 - 如果安装了 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 有关详细信息，请参阅[使用服务器资源管理器浏览和管理存储资源](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)。
 * [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。

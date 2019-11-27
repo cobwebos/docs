@@ -6,58 +6,58 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 23687ddcfb7911a999ee06ac8df8badf341b41d9
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74484203"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>View deployment history with Azure Resource Manager
+# <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
-Azure Resource Manager enables you to view your deployment history and examine specific operations in past deployments. You can see the resources that were deployed, and get information about any errors.
+使用 Azure 资源管理器可以查看部署历史记录并检查过去部署中的特定操作。 你可以查看已部署的资源，并获取有关任何错误的信息。
 
 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 
 ## <a name="portal"></a>门户
 
-To get details about a deployment from the deployment history.
+从部署历史记录中获取有关部署的详细信息。
 
-1. Select the resource group you want to examine.
+1. 选择要检查的资源组。
 
-1. Select the link under **Deployments**.
+1. 选择“部署”下面的链接。
 
-   ![Select deployment history](./media/resource-manager-deployment-operations/select-deployment-history.png)
+   ![选择部署历史记录](./media/resource-manager-deployment-operations/select-deployment-history.png)
 
-1. Select one of the deployments from the deployment history.
+1. 从部署历史记录中选择一个部署。
 
    ![选择部署](./media/resource-manager-deployment-operations/select-details.png)
 
-1. A summary of the deployment is displayed, including a list of the resources that were deployed.
+1. 将显示部署的摘要，包括已部署资源的列表。
 
     ![部署摘要](./media/resource-manager-deployment-operations/view-deployment-summary.png)
 
-1. To view the template used for the deployment, select **Template**. You can download the template to reuse it.
+1. 若要查看用于部署的模板，请选择 "**模板**"。 您可以下载模板以重复使用它。
 
     ![显示模板](./media/resource-manager-deployment-operations/show-template-from-history.png)
 
-1. If your deployment failed, you see an error message. Select the error message for more details.
+1. 如果部署失败，会显示一条错误消息。 选择错误消息以了解更多详细信息。
 
-    ![View failed deployment](./media/resource-manager-deployment-operations/show-error.png)
+    ![查看失败的部署](./media/resource-manager-deployment-operations/show-error.png)
 
-1. The detailed error message is displayed.
+1. 将显示详细的错误消息。
 
-    ![View error details](./media/resource-manager-deployment-operations/show-details.png)
+    ![查看错误详细信息](./media/resource-manager-deployment-operations/show-details.png)
 
-1. The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
+1. 相关 ID 用于跟踪相关事件，在与技术支持部门合作排查部署问题时非常有用。
 
-    ![Get correlation ID](./media/resource-manager-deployment-operations/get-correlation-id.png)
+    ![获取相关 ID](./media/resource-manager-deployment-operations/get-correlation-id.png)
 
-1. To learn more about the step that failed, select **Operation details**.
+1. 若要了解有关失败步骤的详细信息，请选择 "**操作详细信息**"。
 
-    ![Select deployment operations](./media/resource-manager-deployment-operations/select-deployment-operations.png)
+    ![选择部署操作](./media/resource-manager-deployment-operations/select-deployment-operations.png)
 
-1. You see the details for that step of the deployment.
+1. 你将看到该部署步骤的详细信息。
 
-    ![Show operation details](./media/resource-manager-deployment-operations/show-operation-details.png)
+    ![显示操作详细信息](./media/resource-manager-deployment-operations/show-operation-details.png)
 
 ## <a name="powershell"></a>PowerShell
 
@@ -75,7 +75,7 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
 ```
 
-The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment. 若要获取相关 ID，请使用：
+相关 ID 用于跟踪相关事件，在与技术支持部门合作排查部署问题时非常有用。 若要获取相关 ID，请使用：
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
@@ -121,7 +121,7 @@ targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/p
                        resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
 ```
 
-注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 You'll use the trackingId in the next step to focus on a particular operation.
+注意操作的 serviceRequestId 和 trackingId。 与技术支持人员合作排查部署问题时，serviceRequestId 非常有用。 你将在下一步中使用 trackingId 来重点关注特定操作。
 
 若要获取特定失败操作的状态消息，请使用以下命令：
 
@@ -137,9 +137,9 @@ code           message                                                          
 DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 ```
 
-Azure 中的每个部署操作均包括请求和响应内容。 During deployment, you can use **DeploymentDebugLogLevel** parameter to specify that the request and/or response are logged.
+Azure 中的每个部署操作均包括请求和响应内容。 在部署期间，可以使用**DeploymentDebugLogLevel**参数来指定记录请求和/或响应。
 
-可以使用以下 PowerShell 命令从日志中获取该信息，然后将其保存在本地：
+可以使用以下 PowerShell 命令从日志中获取该信息，并将其保存在本地：
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -149,13 +149,13 @@ Azure 中的每个部署操作均包括请求和响应内容。 During deploymen
 
 ## <a name="azure-cli"></a>Azure CLI
 
-To get the overall status of a deployment, use the **azure group deployment show** command.
+若要获取部署的总体状态，请使用**azure group deployment show**命令。
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment
 ```
   
-The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
+相关 ID 用于跟踪相关事件，在与技术支持部门合作排查部署问题时非常有用。
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
@@ -169,7 +169,7 @@ az group deployment operation list -g ExampleGroup -n ExampleDeployment
 
 ## <a name="rest"></a>REST
 
-The following example shows how to get information about a deployment. For documentation about the latest API version, see the [Deployments - Get](/rest/api/resources/deployments/get) operation.
+下面的示例演示如何获取有关部署的信息。 有关最新 API 版本的文档，请参阅[部署-获取](/rest/api/resources/deployments/get)操作。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -192,7 +192,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 }
 ```
 
-The following example shows how to get deployment operations. For documentation about the latest API version, see the [Deployment Operations - List](/rest/api/resources/deploymentoperations/list) operation.
+下面的示例演示如何获取部署操作。 有关最新 API 版本的文档，请参阅[部署操作-列表](/rest/api/resources/deploymentoperations/list)操作。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}

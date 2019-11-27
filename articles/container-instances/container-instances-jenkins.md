@@ -1,6 +1,6 @@
 ---
-title: Jenkins build on container instance
-description: Learn how to configure a Jenkins server to run build jobs on-demand in Azure Container Instances
+title: 容器实例上的 Jenkins 生成
+description: 了解如何在 Azure 容器实例中将 Jenkins 服务器配置为按需运行生成作业
 ms.topic: article
 ms.date: 08/31/2018
 ms.openlocfilehash: e63ade82d4efeed40a9fba6f11d16131e8c728e7
@@ -14,7 +14,7 @@ ms.locfileid: "74484059"
 
 Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容器化工作负荷。 这些特性使得 ACI 成了大规模运行 Jenkins 生成作业的极佳平台。 本文逐步说明如何部署和使用一个将 ACI 预先配置为生成目标的 Jenkins 服务器。
 
-For more information on Azure Container Instances, see [About Azure Container Instances][about-aci].
+有关 Azure 容器实例的详细信息，请参阅[关于 Azure 容器实例][about-aci]。
 
 ## <a name="deploy-a-jenkins-server"></a>部署 Jenkins 服务器
 
@@ -43,7 +43,7 @@ For more information on Azure Container Instances, see [About Azure Container In
 
    ![Jenkins 门户部署的其他设置](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. For service principal integration, select **Auto(MSI)** to have [managed identities for Azure resources][managed-identities-azure-resources] automatically create an authentication identity for the Jenkins instance. 选择“手动”可提供自己的服务主体凭据。
+4. 对于 "服务主体集成"，选择 "**自动（MSI）** "，让[Azure 资源的托管标识][managed-identities-azure-resources]自动为 Jenkins 实例创建身份验证标识。 选择“手动”可提供自己的服务主体凭据。
 
 5. 云代理将为 Jenkins 生成作业配置基于云的平台。 对于本文档，请选择“ACI”。 使用 ACI 云代理时，每个 Jenkins 生成作业将在容器实例中运行。
 
@@ -129,7 +129,7 @@ For more information on Azure Container Instances, see [About Azure Container In
 
 ## <a name="next-steps"></a>后续步骤
 
-To learn more about Jenkins on Azure, see [Azure and Jenkins][jenkins-azure].
+若要了解有关 Azure 上的 Jenkins 的详细信息，请参阅[azure 和 Jenkins][jenkins-azure]。
 
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md

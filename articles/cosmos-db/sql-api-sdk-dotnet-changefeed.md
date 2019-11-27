@@ -55,7 +55,7 @@ ms.locfileid: "74306770"
   * 添加了新的公共属性： `ChangeFeedProcessorOptions.ChangeFeedTimeout`。 此属性的默认值为10分钟。
   * 添加了新的公共枚举值： `Monitoring.MonitoredOperation.ReadChangeFeed`。 当 `HealthMonitoringRecord.Operation` 的值设置为 `Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2。7
 * 改进了负载均衡策略，适用于获得所有租约所用时间超过租约过期时间间隔的情况，例如，由于网络问题：
   * 在此方案中，用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
   * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并 posponing 获取过期租约以进行下一次负载平衡迭代。
@@ -202,6 +202,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

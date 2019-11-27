@@ -49,7 +49,7 @@ ms.locfileid: "74195766"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 

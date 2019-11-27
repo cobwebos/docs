@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ed08a457ac00da7b40dc267cc1eb3b61db9df297
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 08c459a3c32b44df2d9e5cf783087dd34d660292
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224531"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463310"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将进行扩展和更新，以涵盖更多服务。
@@ -76,6 +76,7 @@ ms.locfileid: "74224531"
 * [事件中心](#event-hubs-limits)
 * [前门服务](#azure-front-door-service-limits)
 * [标识管理器](#identity-manager-limits)
+* [IoT Central](#iot-central-limits)
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [密钥保管库](#key-vault-limits)
@@ -330,6 +331,9 @@ ms.locfileid: "74224531"
 ### <a name="service-bus-limits"></a>服务总线限制
 [!INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
 
+### <a name="iot-central-limits"></a>IoT Central 限制
+[!INCLUDE [iot-central-limits](../includes/iot-central-limits.md)]
+
 ### <a name="iot-hub-limits"></a>IoT 中心限制
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
 
@@ -402,7 +406,7 @@ ms.locfileid: "74224531"
 ### <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [了解 Azure 限制及如何提高限制](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Azure 的虚拟机和云服务大小](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 云服务的大小](cloud-services/cloud-services-sizes-specs.md)

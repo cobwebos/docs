@@ -51,13 +51,13 @@ RAM | 16 GB
 磁盘可用空间 | 提供 600 GB 空间用作进程服务器缓存。
 磁盘可用空间 | 为保留驱动器提供 600 GB 空间。
 操作系统  | Windows Server 2012 R2，或具有桌面体验的 Windows Server 2016 <br/><br> 如果你计划使用此设备的内置主目标来进行故障回复，请确保操作系统版本与复制的项相同或更高。|
-操作系统区域设置 | 英语 (en-us)
+操作系统区域设置 | 美国英语
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。 
 Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。 
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br/> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
 NIC 类型 | VMXNET3（部署为 VMware VM 时）
-IP 地址类型 | 静态
+IP 地址类型 | Static
 端口 | 443，用于控制通道协调<br/>9443，用于数据传输
 
 ## <a name="replicated-machines"></a>复制的计算机
@@ -134,8 +134,8 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | S
 文件系统 | ext3、ext4、XFS
 卷管理器 | - 支持 LVM。<br/> - 从[更新汇总 31](https://support.microsoft.com/help/4478871/)（移动服务版本 9.20）开始支持 LVM 上的 /boot。 早期移动的服务版本不支持它。<br/> - 不支持多个 OS 磁盘。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
-多队列块 IO 设备 | 不支持。
-具有 HP CCISS 存储控制器的物理服务器 | 不支持。
+多队列块 IO 设备 | 不受支持。
+具有 HP CCISS 存储控制器的物理服务器 | 不受支持。
 设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。<br/> 请确保两个设备/装入点的名称不仅仅是只区分大小写。 例如，不支持将同一 VM 的两个设备命名为 *device1* 和 *Device1*。
 目录 | 如果运行的移动服务版本低于 9.20（在[更新汇总 31](https://support.microsoft.com/help/4478871/) 中发布），则存在以下限制：<br/><br/> - 这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br> - /boot 目录应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从版本 9.20 开始，这些限制不适用。 
 启动目录 | - 启动磁盘不能采用 GPT 分区格式。 这是一种 Azure 体系结构限制。 支持将 GPT 磁盘作为数据磁盘。<br/><br/> VM 上不支持多个启动磁盘<br/><br/> - 不支持跨多个磁盘的 LVM 卷上的 /boot。<br/> - 无法复制没有启动磁盘的计算机。
@@ -148,7 +148,7 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 **操作** | **详细信息**
 --- | ---
 调整复制的 VM 上的磁盘大小 | 。
-在复制的 VM 上添加磁盘 | 不支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
+在复制的 VM 上添加磁盘 | 不受支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
 
 ## <a name="network"></a>网络
 
@@ -157,10 +157,10 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
 主机网络 VLAN | 可以。
 主机网络 IPv4 | 可以。
-主机网络 IPv6 | 不能。
-来宾/服务器网络 NIC 组合 | 不能。
+主机网络 IPv6 | 否。
+来宾/服务器网络 NIC 组合 | 否。
 来宾/服务器网络 IPv4 | 可以。
-来宾/服务器网络 IPv6 | 不能。
+来宾/服务器网络 IPv6 | 否。
 来宾/服务器网络静态 IP (Windows) | 可以。
 来宾/服务器网络静态 IP (Linux) | 可以。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
 来宾/服务器网络多个 NIC | 可以。
@@ -253,13 +253,13 @@ HUB | 是
 来宾操作系统 | 验证复制的计算机[支持的操作系统](#replicated-machines)。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 个 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br>复制到存储帐户时高达 4,095 GB| 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
-共享 VHD | 不支持。 | 如果不支持，检查会失败。
-FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
-BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。 |
+共享 VHD | 不受支持。 | 如果不支持，检查会失败。
+FC 磁盘 | 不受支持。 | 如果不支持，检查会失败。
+BitLocker | 不受支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。 |
 VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
 
 ## <a name="resource-group-limits"></a>资源组限制
@@ -304,7 +304,7 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>获取最新组件
 
-**名称** | **说明** | **详细信息**
+**Name** | **说明** | **详细信息**
 --- | --- | ---
 配置服务器 | 在本地安装。<br/> 协调本地 VMware 服务器或物理机与 Azure 之间的通信。 | - [了解](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升级到最新版本。<br/> - [了解](vmware-azure-deploy-configuration-server.md)如何设置配置服务器。 
 进程服务器 | 默认安装在配置服务器上。<br/> 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure。<br/> 随着部署扩大，可以另外添加进程服务器来处理更大的复制流量。 | - [了解](vmware-physical-azure-config-process-server-overview.md)进程服务器。<br/> - [了解](vmware-azure-manage-process-server.md#upgrade-a-process-server)如何升级到最新版本。<br/> - [了解](vmware-physical-large-deployment.md#set-up-a-process-server)如何设置横向扩展进程服务器。

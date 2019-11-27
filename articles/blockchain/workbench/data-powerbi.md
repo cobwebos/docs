@@ -17,7 +17,7 @@ ms.locfileid: "74324799"
 
 本文包含了有关以下操作的分步演练：从 PowerBI Desktop 中连接到 Azure Blockchain Workbench 的 SQL 数据库，创建报表，以及将报表部署到 powerbi.com。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 下载 [Power BI Desktop](https://aka.ms/pbidesktopstore)。
 

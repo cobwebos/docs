@@ -30,7 +30,7 @@ ms.locfileid: "74211001"
 
 域名系统是域的层次结构。 该层次结构从名为“ **.** ”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。 DNS 层次结构中的域遍布全球，由世界各地的 DNS 名称服务器托管。
 
-A domain name registrar is an organization that allows you to purchase a domain name, such as `contoso.com`.  Purchasing a domain name gives you the right to control the DNS hierarchy under that name, for example allowing you to direct the name `www.contoso.com` to your company web site. 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
+域名注册机构是允许您购买域名的组织，如 `contoso.com`。  购买域名后，你可以通过该名称控制 DNS 层次结构，例如，允许你将名称 `www.contoso.com` 定向到你的公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
 
 Azure DNS 提供全球分布的高可用性名称服务器基础结构，可将其用于托管域。 通过在 Azure DNS 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具、计费和支持来管理 DNS 记录。
 
@@ -88,7 +88,7 @@ SOA 记录集在每个区域（名称 =“\@”）的顶点处自动创建，并
 
 用户可以修改 SOA 记录的所有属性，但“主机”属性除外，此属性预配置为引用 Azure DNS 所提供的主名称服务器名。
 
-The zone serial number in the SOA record is not updated automatically when changes are made to the records in the zone. It can be updated manually by editing the SOA record, if necessary.
+当对区域中的记录进行更改时，SOA 记录中的区域序列号不会自动更新。 如果需要，可以通过编辑 SOA 记录手动进行更新。
 
 ### <a name="spf-records"></a>SPF 记录
 
@@ -113,7 +113,7 @@ DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆
 
 ## <a name="tags-and-metadata"></a>标记和元数据
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>标记
 
 标记是名称/值列表，Azure 资源管理器利用它们来标记资源。  Azure 资源管理器使用标记来启用 Azure 帐单的筛选视图，并支持设置需要标记的策略。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
@@ -133,15 +133,15 @@ Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag �
 
 Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给出了它们的行为：
 
-| 标头 | 行为 |
+| Header | 行为 |
 | --- | --- |
-| None |PUT 始终成功（没有 Etag 检查） |
+| 无 |PUT 始终成功（没有 Etag 检查） |
 | If-match \<etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
 | If-match * |只有当资源存在时，PUT 才会成功 |
 | If-none-match * |只有当资源不存在时，PUT 才会成功 |
 
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 使用 Azure DNS 时，以下默认限制适用：
 

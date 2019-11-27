@@ -1,5 +1,5 @@
 ---
-title: 在已扩展的云数据库之间移动数据
+title: 在扩展云数据库之间移动数据
 description: 介绍如何使用弹性数据库 API 通过自托管服务来操作分片和移动数据。
 services: sql-database
 ms.service: sql-database
@@ -18,7 +18,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74421561"
 ---
-# <a name="moving-data-between-scaled-out-cloud-databases"></a>在已扩展的云数据库之间移动数据
+# <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
 如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
 
@@ -184,7 +184,7 @@ ms.locfileid: "74421561"
 
 ### <a name="status-tables"></a>状态表
 
-拆分 / 合并服务在元数据存储数据库中为已完成和正在进行的请求提供 **RequestStatus**  表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
+拆分 / 合并服务在元数据存储数据库中为已完成和正在进行的请求提供 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
 
 - **Timestamp**
 
@@ -219,7 +219,7 @@ ms.locfileid: "74421561"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 针对 NuGet 包所提供的 Web 和辅助角色，若要使用诊断配置启用监视和诊断，请使用 Azure PowerShell 运行以下命令：
 

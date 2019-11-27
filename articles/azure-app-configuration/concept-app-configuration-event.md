@@ -43,7 +43,7 @@ Azure 应用配置事件包含响应数据更改所需的所有信息。 由于�
 > |subject|字符串|作为事件的主题的键-值的 URI。|
 > |eventTime|字符串|生成事件的日期/时间，采用 ISO 8601 格式。|
 > |eventType|字符串|"AppConfiguration. KeyValueModified" 或 "AppConfiguration. KeyValueDeleted"。|
-> |ID|字符串|此事件的唯一标识符。|
+> |Id|字符串|此事件的唯一标识符。|
 > |dataVersion|字符串|数据对象的架构版本。|
 > |metadataVersion|字符串|顶级属性的架构版本。|
 > |数据|对象|Azure 应用配置特定事件数据的集合|

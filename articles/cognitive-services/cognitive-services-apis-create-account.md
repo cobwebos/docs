@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 14157ed22ea40a2157f696e91c59af9b58110bf2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819935"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482867"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -51,7 +51,7 @@ ms.locfileid: "72819935"
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [计算机视觉](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [语音服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式读者](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [异常探测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [必应搜索 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [演讲者识别](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [必应自定义搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
-    | 人脸[](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [必应实体搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
+    | [人脸](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [必应实体搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [手写识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [必应拼写检查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [文本翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
@@ -62,31 +62,32 @@ ms.locfileid: "72819935"
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
+    | **Name** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
-    | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 请记住你的 Azure 位置，因为在调用 Azure 认知服务时可能需要用到它。 |
+    | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **资源组** | 将包含认知服务资源的 Azure 资源组。 可以创建新组或将其添加到预先存在的组。 |
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击“创建”。
+    单击“**创建**”。
 
     #### <a name="single-service-resourcetabsingleservice"></a>[单服务资源](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **名称** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
+    | **Name** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
-    | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 请记住你的 Azure 位置，因为在调用 Azure 认知服务时可能需要用到它。 |
+    | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **资源组** | 将包含认知服务资源的 Azure 资源组。 可以创建新组或将其添加到预先存在的组。 |
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击“创建”。
+    单击“**创建**”。
 
     ***
+
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
@@ -108,7 +109,7 @@ ms.locfileid: "72819935"
 2. 找到包含要删除的资源的资源组
 3. 右键单击资源组列表。 选择“删除资源组”并进行确认。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
 * [什么是 Azure 认知服务？](Welcome.md)

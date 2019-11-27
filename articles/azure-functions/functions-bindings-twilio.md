@@ -19,7 +19,7 @@ ms.locfileid: "74230945"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet 包 1.x 版中提供了 Twilio 绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub 存储库中提供了此包的源代码。
 
@@ -371,7 +371,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 特性。
 
@@ -391,16 +391,16 @@ public static CreateMessageOptions Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `TwilioSms` 特性中设置的绑定配置属性。
+下表解释了在 *function.json* 文件和 `TwilioSms` 特性中设置的绑定配置属性。
 
-| v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |描述|
+| v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
-|类型|类型| 必须设置为 `twilioSms`。|
-|direction|direction| 必须设置为 `out`。|
-|name|name| 在 Twilio 短信的函数代码中使用的变量名。 |
+|**类型**|**类型**| 必须设置为 `twilioSms`。|
+|**direction**|**direction**| 必须设置为 `out`。|
+|**名称**|**名称**| 在 Twilio 短信的函数代码中使用的变量名。 |
 |**accountSid**|**AccountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称，例如 TwilioAccountSid。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
 |**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌的应用设置的名称，例如 TwilioAccountAuthToken。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
-|**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
+|**to**| 不适用 - 在代码中指定 | **To**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
 |**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  
 

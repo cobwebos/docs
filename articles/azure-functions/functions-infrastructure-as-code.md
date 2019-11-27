@@ -1,5 +1,5 @@
 ---
-title: Automate resource deployment for a function app in Azure Functions
+title: 在 Azure Functions 中自动部署函数应用的资源
 description: 了解如何生成用于部署函数应用的 Azure 资源管理器模板。
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
@@ -23,19 +23,19 @@ ms.locfileid: "74230526"
 
 ## <a name="required-resources"></a>所需资源
 
-An Azure Functions deployment typically consists of these resources:
+Azure Functions 部署通常包括以下资源：
 
-| 资源                                                                           | 要求 | Syntax and properties reference                                                         |   |
+| Resource                                                                           | 要求 | 语法和属性参考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函数应用                                                                     | 需要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 存储](../storage/index.yml)帐户                                   | 需要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| An [Application Insights](../azure-monitor/app/app-insights-overview.md) component | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
-| A [hosting plan](./functions-scale.md)                                             | Optional<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| 函数应用                                                                     | 必需    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure 存储](../storage/index.yml)帐户                                   | 必需    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft Insights/组件](/azure/templates/microsoft.insights/components)         |   |
+| [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1</sup>A hosting plan is only required when you choose to run your function app on a [Premium plan](./functions-premium-plan.md) (in preview) or on an [App Service plan](../app-service/overview-hosting-plans.md).
+<sup>1</sup>仅当您选择在[高级计划](./functions-premium-plan.md)（预览中）或[应用服务计划](../app-service/overview-hosting-plans.md)上运行函数应用时，才需要托管计划。
 
 > [!TIP]
-> While not required, it is strongly recommended that you configure Application Insights for your app.
+> 虽然不是必需的，但强烈建议您为应用程序配置 Application Insights。
 
 <a name="storage"></a>
 ### <a name="storage-account"></a>存储帐户
@@ -59,7 +59,7 @@ An Azure Functions deployment typically consists of these resources:
 
 Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内部队列。  未启用 Application Insights 时，运行时使用 `AzureWebJobsDashboard` 连接字符串登录到 Azure 表存储并启动门户中的“监视”选项卡。
 
-这些属性在 `siteConfig` 对象中的 `appSettings` 集合中指定：
+这些属性在 `appSettings` 对象中的 `siteConfig` 集合中指定：
 
 ```json
 "appSettings": [
@@ -76,7 +76,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="application-insights"></a>Application Insights
 
-Application Insights is recommended for monitoring your function apps. The Application Insights resource is defined with the type **Microsoft.Insights/components** and the kind **web**:
+建议使用 Application Insights 来监视函数应用。 该 Application Insights 资源的定义类型为 " **Microsoft Insights/组件**" 和 " **web**：
 
 ```json
         {
@@ -95,7 +95,7 @@ Application Insights is recommended for monitoring your function apps. The Appli
         },
 ```
 
-In addition, the instrumentation key needs to be provided to the function app using the `APPINSIGHTS_INSTRUMENTATIONKEY` application setting. This property is specified in the `appSettings` collection in the `siteConfig` object:
+此外，还需要使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 应用程序设置向函数应用提供检测密钥。 此属性在 `siteConfig` 对象的 `appSettings` 集合中指定：
 
 ```json
 "appSettings": [
@@ -108,14 +108,14 @@ In addition, the instrumentation key needs to be provided to the function app us
 
 ### <a name="hosting-plan"></a>托管计划
 
-The definition of the hosting plan varies, and can be one of the following:
-* [Consumption plan](#consumption) (default)
-* [Premium plan](#premium) (in preview)
+托管计划的定义是变化的，并且可能是下列项之一：
+* [消耗计划](#consumption)（默认值）
+* [高级计划](#premium)（预览版）
 * [应用服务计划](#app-service-plan)
 
 ### <a name="function-app"></a>函数应用
 
-The function app resource is defined by using a resource of type **Microsoft.Web/sites** and kind **functionapp**:
+函数应用资源是使用类型为 **Microsoft.Web/sites** 且种类为 **functionapp** 的资源定义的：
 
 ```json
 {
@@ -131,18 +131,18 @@ The function app resource is defined by using a resource of type **Microsoft.Web
 ```
 
 > [!IMPORTANT]
-> If you are explicitly defining a hosting plan, an additional item would be needed in the dependsOn array: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> 如果你要显式定义托管计划，则 dependsOn 数组中可能将需要一个额外的项：`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
-A function app must include these application settings：
+函数应用必须包括以下应用程序设置：
 
-| 设置名称                 | 描述                                                                               | 示例值                        |
+| 设置名称                 | 说明                                                                               | 示例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | A connection string to a storage account that the Functions runtime for internal queueing | See [Storage account](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | The version of the Azure Functions runtime                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | The language stack to be used for functions in this app                                   | `dotnet`, `node`, `java`, or `python` |
-| WEBSITE_NODE_DEFAULT_VERSION | Only needed if using the `node` language stack, specifies the version to use              | `10.14.1`                             |
+| AzureWebJobsStorage          | Functions 运行时用于内部排队的存储帐户的连接字符串 | 请参阅[存储帐户](#storage)       |
+| FUNCTIONS_EXTENSION_VERSION  | Azure Functions 运行时的版本                                                | `~2`                                  |
+| FUNCTIONS_WORKER_RUNTIME     | 要为此应用中的函数使用的语言堆栈                                   | `dotnet`、`node`、`java` 或 `python` |
+| WEBSITE_NODE_DEFAULT_VERSION | 只有当使用 `node` 语言堆栈时必需，指定要使用的版本              | `10.14.1`                             |
 
-These properties are specified in the `appSettings` collection in the `siteConfig` property:
+这些属性是在 `appSettings` 属性中的 `siteConfig` 集合中指定的：
 
 ```json
 "properties": {
@@ -171,17 +171,17 @@ These properties are specified in the `appSettings` collection in the `siteConfi
 
 <a name="consumption"></a>
 
-## <a name="deploy-on-consumption-plan"></a>Deploy on Consumption plan
+## <a name="deploy-on-consumption-plan"></a>在消耗计划上部署
 
-代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 You don't have to pay for idle VMs, and you don't have to reserve capacity in advance. 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
+代码运行时，消耗计划会自动分配计算能力，根据处理负载的需要进行扩展，然后在代码停止运行时进行缩减。 你不需要为空闲的 VM 付费，也不需要提前保留容量。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md#consumption-plan)。
 
 有关 Azure 资源管理器模板示例，请参阅[基于消耗计划的函数应用]。
 
 ### <a name="create-a-consumption-plan"></a>创建消耗计划
 
-A Consumption plan does not need to be defined. One will automatically be created or selected on a per-region basis when you create the function app resource itself.
+不需要定义消耗计划。 创建函数应用资源本身时，不会基于区域自动创建或选择消耗计划。
 
-The Consumption plan is a special type of "serverfarm" resource. For Windows, you can specify it by using the `Dynamic` value for the `computeMode` and `sku` properties:
+消耗计划是一种特殊的“serverfarm”资源。 对于 Windows，可以通过为 `Dynamic` 和 `computeMode` 属性使用 `sku` 值来指定它：
 
 ```json
 {  
@@ -204,15 +204,15 @@ The Consumption plan is a special type of "serverfarm" resource. For Windows, yo
 ```
 
 > [!NOTE]
-> The Consumption plan cannot be explicitly defined for Linux. It will be created automatically.
+> 不能显式为 Linux 定义消耗计划。 它将自动创建。
 
-If you do explicitly define your consumption plan, you will need to set the `serverFarmId` property on the app so that it points to the resource ID of the plan. You should ensure that the function app has a `dependsOn` setting for the plan as well.
+如果你显式定义你的消耗计划，则需要在应用上设置 `serverFarmId` 属性，以使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
 
-### <a name="create-a-function-app"></a>创建函数应用
+### <a name="create-a-function-app"></a>创建 Function App
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>{1}Windows{2}
 
-On Windows, a Consumption plan requires two additional settings in the site configuration: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` and `WEBSITE_CONTENTSHARE`. 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+在 Windows 上，消耗计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -259,7 +259,7 @@ On Windows, a Consumption plan requires two additional settings in the site conf
 
 #### <a name="linux"></a>Linux
 
-On Linux, the function app must have its `kind` set to `functionapp,linux`, and it must have the `reserved` property set to `true`:
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux`，并且它必须将 `reserved` 属性设置为 `true`：
 
 ```json
 {
@@ -301,13 +301,13 @@ On Linux, the function app must have its `kind` set to `functionapp,linux`, and 
 
 <a name="premium"></a>
 
-## <a name="deploy-on-premium-plan"></a>Deploy on Premium plan
+## <a name="deploy-on-premium-plan"></a>部署高级计划
 
-The Premium plan offers the same scaling as the consumption plan but includes dedicated resources and additional capabilities. To learn more, see [Azure Functions Premium Plan](./functions-premium-plan.md).
+高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅[Azure Functions 高级计划](./functions-premium-plan.md)。
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-A Premium plan is a special type of "serverfarm" resource. You can specify it by using either `EP1`, `EP2`, or `EP3` for the `sku` property value.
+高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1`、`EP2`或 `EP3` 指定 `sku` 属性值来指定它。
 
 ```json
 {
@@ -322,9 +322,9 @@ A Premium plan is a special type of "serverfarm" resource. You can specify it by
 }
 ```
 
-### <a name="create-a-function-app"></a>创建函数应用
+### <a name="create-a-function-app"></a>创建 Function App
 
-A function app on a Premium plan must have the `serverFarmId` property set to the resource ID of the plan created earlier. In addition, a Premium plan requires two additional settings in the site configuration: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` and `WEBSITE_CONTENTSHARE`. 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划中的函数应用必须将 `serverFarmId` 属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： "`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`" 和 "`WEBSITE_CONTENTSHARE`"。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -374,7 +374,7 @@ A function app on a Premium plan must have the `serverFarmId` property set to th
 
 <a name="app-service-plan"></a> 
 
-## <a name="deploy-on-app-service-plan"></a>Deploy on App Service plan
+## <a name="deploy-on-app-service-plan"></a>在应用服务计划上部署
 
 在应用服务计划中，函数应用在基本、标准和高级 SKU 中的专用 VM 上运行，类似于 Web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。
 
@@ -382,7 +382,7 @@ A function app on a Premium plan must have the `serverFarmId` property set to th
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-An App Service plan is defined by a "serverfarm" resource.
+应用服务计划是由“serverfarm”资源定义的。
 
 ```json
 {
@@ -400,7 +400,7 @@ An App Service plan is defined by a "serverfarm" resource.
 }
 ```
 
-To run your app on Linux, you must also set the `kind` to `Linux`:
+若要在 Linux 上运行你的应用，还必须将 `kind` 设置为 `Linux`：
 
 ```json
 {
@@ -419,9 +419,9 @@ To run your app on Linux, you must also set the `kind` to `Linux`:
 }
 ```
 
-### <a name="create-a-function-app"></a>创建函数应用 
+### <a name="create-a-function-app"></a>创建 Function App 
 
-A function app on an App Service plan must have the `serverFarmId` property set to the resource ID of the plan created earlier.
+应用服务计划上的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。
 
 ```json
 {
@@ -460,9 +460,9 @@ A function app on an App Service plan must have the `serverFarmId` property set 
 }
 ```
 
-Linux apps should also include a `linuxFxVersion` property under `siteConfig`. If you are just deploying code, the value for this is determined by your desired runtime stack:
+Linux 应用还应在 `siteConfig`下包含 `linuxFxVersion` 属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
 
-| Stack            | 示例值                                         |
+| 重叠            | 示例值                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
@@ -506,7 +506,7 @@ Linux apps should also include a `linuxFxVersion` property under `siteConfig`. I
 }
 ```
 
-If you are [deploying a custom container image](./functions-create-function-linux-custom-image.md), you must specify it with `linuxFxVersion` and include configuration that allows your image to be pulled, as in [Web App for Containers](/azure/app-service/containers). Also, set `WEBSITES_ENABLE_APP_SERVICE_STORAGE` to `false`, since your app content is provided in the container itself:
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须使用 `linuxFxVersion` 指定该映像，并包括允许提取映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为容器本身中提供了应用内容：
 
 ```json
 {
@@ -562,12 +562,12 @@ If you are [deploying a custom container image](./functions-create-function-linu
 }
 ```
 
-## <a name="customizing-a-deployment"></a>Customizing a deployment
+## <a name="customizing-a-deployment"></a>自定义部署
 
 函数应用有许多可用于部署的子资源，包括应用设置和源代码管理选项。 还可以选择删除 **sourcecontrols** 子资源，改用另一个[部署选项](functions-continuous-deployment.md)。
 
 > [!IMPORTANT]
-> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 **config/appSettings** *之前*部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
+> 若要使用 Azure 资源管理器成功部署应用程序，了解如何在 Azure 中部署资源尤为重要。 在下面的示例中，通过使用 **siteConfig** 应用顶级配置。 请务必在顶级设置这些配置，因为这些配置会将信息传达给 Functions 运行时和部署引擎。 应用 **sourcecontrols/web** 子资源前，需要顶级信息。 虽然可以在子级别 **config/appSettings** 资源中配置这些设置，但在某些情况下，需要在应用 *config/appSettings* **之前**部署函数应用。 比如在[逻辑应用](../logic-apps/index.yml)中使用函数时，函数是另一资源的依赖项。
 
 ```json
 {
@@ -644,7 +644,7 @@ If you are [deploying a custom container image](./functions-create-function-linu
 
 ### <a name="deploy-to-azure-button"></a>“部署到 Azure”按钮
 
-将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 `azuredeploy.json` 文件的原始路径的 [URL 编码](https://www.bing.com/search?q=url+encode)版本。
+将 ```<url-encoded-path-to-azuredeploy-json>``` 替换为 GitHub 中 [ 文件的原始路径的 ](https://www.bing.com/search?q=url+encode)URL 编码`azuredeploy.json`版本。
 
 以下示例使用 Markdown：
 
@@ -658,9 +658,9 @@ If you are [deploying a custom container image](./functions-create-function-linu
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
-### <a name="deploy-using-powershell"></a>使用 PowerShell 部署
+### <a name="deploy-using-powershell"></a>使用 PowerShell 进行部署
 
-The following PowerShell commands create a resource group and deploy a template that create a function app with its required resources. To run locally, you must have [Azure PowerShell](/powershell/azure/install-az-ps) installed. Run [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) to sign in.
+以下 PowerShell 命令创建一个资源组并部署一个模板，该模板创建函数应用及其必需的资源。 若要在本地运行，必须安装 [Azure PowerShell](/powershell/azure/install-az-ps)。 运行 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) 进行登录。
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -677,7 +677,7 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-To test out this deployment, you can use a [template like this one](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) that creates a function app on Windows in a Consumption plan. Replace `<function-app-name>` with a unique name for your function app.
+若要测试此部署，可以使用[这样的模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json)，该模板在消耗计划中在 Windows 上创建函数应用。 将 `<function-app-name>` 替换为你的函数应用的唯一名称。
 
 ## <a name="next-steps"></a>后续步骤
 

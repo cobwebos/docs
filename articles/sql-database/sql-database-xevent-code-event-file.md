@@ -1,6 +1,6 @@
 ---
-title: XEvent Event File code
-description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储空间。
+title: XEvent 事件文件代码
+description: 提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。 完成此方案部分必须用到 Azure 存储。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -34,12 +34,12 @@ ms.locfileid: "74422474"
   - 将 Azure 存储容器分配到事件文件目标。
   - 创建和启动事件会话，等等。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical.
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 - Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - 可以在其中创建表的任何数据库。
@@ -54,7 +54,7 @@ ms.locfileid: "74422474"
 
 - 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175)。
 
-  - The modules provide commands such as - **New-AzStorageAccount**.
+  - 这些模块提供 **New-AzStorageAccount** 等命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储空间容器的 PowerShell 代码
 
@@ -74,7 +74,7 @@ ms.locfileid: "74422474"
 
 ### <a name="powershell-code"></a>PowerShell 代码
 
-This PowerShell script assumes you have already installed the Az module. For information, see [Install the Azure PowerShell module](/powershell/azure/install-Az-ps).
+此 PowerShell 脚本假定你已安装 Az 模块。 有关信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -440,11 +440,11 @@ ALTER EVENT SESSION ... STATE = START;
 GO
 ```
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 One **\<event>** element is displayed which shows one UPDATE statement.
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **\<event>** 元素，其中显示了一个 UPDATE 语句。
 
-Here is one **\<event>** element that was generated during testing:
+下面是测试期间生成的一个 **\<event>** 元素：
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">

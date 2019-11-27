@@ -76,6 +76,6 @@ ms.locfileid: "74273985"
 
 [同意并将应用集成到 AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[AzureAD v2.0 聚合应用的许可和权限](../develop/active-directory-v2-scopes.md)
+[同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

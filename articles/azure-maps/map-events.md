@@ -1,6 +1,6 @@
 ---
-title: Handle events with Azure Maps | Microsoft Docs
-description: How to make an interactive Web SDK map with map events
+title: 用 Azure Maps 处理事件 |Microsoft Docs
+description: 如何使用地图事件创建交互式 Web SDK 地图
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -18,95 +18,95 @@ ms.locfileid: "74484284"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
 
-This article shows you how to use [map class events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) property to highlight events on the map and on different layers of the map. 它还展示了在与 HTML 标记进行交互时如何使用 map 类 events 属性来突出显示事件。
+本文介绍如何使用[map class events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)属性突出显示地图上以及地图的不同层上的事件。 它还展示了在与 HTML 标记进行交互时如何使用 map 类 events 属性来突出显示事件。
 
 ## <a name="interact-with-the-map"></a>与地图交互
 
-Play with the map below, and see the corresponding mouse events highlighted on the right. 可以单击 JS 选项卡，查看和编辑 JavaScript 代码。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 上的代码。
+观看下面的地图，查看右侧突出显示的相应鼠标事件。 可以单击 JS 选项卡，查看和编辑 JavaScript 代码。 还可以单击“编辑 CodePen”按钮，编辑 CodePen 上的代码。
 
 <br/>
 
-<iframe height='600' scrolling='no' title='与地图交互 - 鼠标事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>Interacting with the map - mouse events</a>（与地图交互 - 鼠标事件）。
+<iframe height='600' scrolling='no' title='与地图交互 - 鼠标事件' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Interacting with the map - mouse events</a>（与地图交互 - 鼠标事件）。
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>与地图层交互
 
-The following code highlights the name of the events that get fired up as you interact with the Symbol Layer. The symbol, bubble, line, and polygon layer all support the same set of events. The heat map and tile layers do not support any of these events.
+下面的代码重点介绍当您与符号层交互时触发的事件的名称。 符号、气泡图、线条和多边形层都支持相同的一组事件。 热度地图和图块层不支持这些事件中的任何一个。
 
 <br/>
 
-<iframe height='600' scrolling='no' title='与地图交互 – 层事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Interacting with the map – Layer Events</a>（与地图交互 – 层事件）。
+<iframe height='600' scrolling='no' title='与地图交互 – 层事件' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Interacting with the map – Layer Events</a>（与地图交互 – 层事件）。
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>与 HTML 标记交互
 
-The following code adds Javascript map events to an HTML marker. 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
+下面的代码将 Javascript 映射事件添加到 HTML 标记。 它还突出显示了与 HTML 标记进行交互时触发的事件的名称。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='与地图交互 - HTML 标记事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Interacting with the map - HTML Marker events</a>（与地图交互 - HTML 标记事件）。
+<iframe height='500' scrolling='no' title='与地图交互 - HTML 标记事件' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Interacting with the map - HTML Marker events</a>（与地图交互 - HTML 标记事件）。
 </iframe>
 
-The following table lists all of the supported map class events.
+下表列出了所有支持的地图类事件。
 
-| 事件               | 描述 |
+| 事件               | 说明 |
 |---------------------|-------------|
-| `boxzoomend`        | Fired when a "box zoom" interaction ends.|
-| `boxzoomstart`      | Fired when a "box zoom" interaction starts.|
-| `click`             | Fired when a pointing device is pressed and released at the same point on the map.|
-| `close`             | Fired when the popup is closed manually or programatically.|
-| `contextmenu`       | Fired when the right button of the mouse is clicked.|
-| `data`              | Fired when any map data loads or changes. |
-| `dataadded`         | Fired when shapes are added to the `DataSource`.|
-| `dataremoved`       | Fired when shapes are removed from the `DataSource`.|
-| `datasourceupdated` | Fired when the `DataSource` object is updated.|
-| `dblclick`          | Fired when a pointing device is clicked twice at the same point on the map.|
-| `drag`              | Fired repeatedly during a "drag to pan" interaction on the map, popup, or HTML marker.|
-| `dragend`           | Fired when a "drag to pan" interaction ends on the map, popup, or HTML marker.|
-| `dragstart`         | Fired when a "drag to pan" interaction starts on the map, popup, or HTML marker.|
-| `error`             | Fired when an error occurs.|
-| `idle`              | <p>Fired after the last frame rendered before the map enters an "idle" state:<ul><li>No camera transitions are in progress.</li><li>All currently requested tiles have loaded.</li><li>All fade/transition animations have completed.</li></ul></p>|
-| `keydown`           | Fired when a key is pressed down.|
-| `keypress`          | Fired when a key that produces a typable character (an ANSI key) is pressed.|
-| `keyup`             | Fired when a key is released.|
-| `layeradded`        | Fired when a layer is added to the map.|
-| `layerremoved`      | Fired when a layer is removed from the map.|
-| `load`              | Fired immediately after all necessary resources have been downloaded and the first visually complete rendering of the map has occurred.|
-| `mousedown`         | Fired when a pointing device is pressed within the map or when on top of an element.|
-| `mouseenter`        | Fired when a pointing device is initially moved over the map or an element. |
-| `mouseleave`        | Fired when a pointing device is moved out the map or an element. |
-| `mousemove`         | Fired when a pointing device is moved within the map or an element.|
-| `mouseout`          | Fired when a point device leaves the map's canvas our leaves an element.|
-| `mouseover`         | Fired when a pointing device is moved over the map or an element.|
-| `mouseup`           | Fired when a pointing device is released within the map or when on top of an element.|
-| `move`              | Fired repeatedly during an animated transition from one view to another, as the result of either user interaction or methods.|
-| `moveend`           | Fired just after the map completes a transition from one view to another, as the result of either user interaction or methods.|
-| `movestart`         | Fired just before the map begins a transition from one view to another, as the result of either user interaction or methods.|
-| `open`              | Fired when the popup is opened manually or programatically.|
-| `pitch`             | Fired whenever the map's pitch (tilt) changes as the result of either user interaction or methods.|
-| `pitchend`          | Fired immediately after the map's pitch (tilt) finishes changing as the result of either user interaction or methods.|
-| `pitchstart`        | Fired whenever the map's pitch (tilt) begins a change as the result of either user interaction or methods.|
-| `ready`             | Fired when the minimum required map resources are loaded before the map is ready to be programmatically interacted with.|
-| `render`            | <p>Fired whenever the map is drawn to the screen, as the result of:<ul><li>A change to the map's position, zoom, pitch, or bearing.</li><li>A change to the map's style.</li><li>A change to a `DataSource` source.</li><li>The loading of a vector tile, GeoJSON file, glyph, or sprite.</li></ul></p>|
-| `resize`            | Fired immediately after the map has been resized.|
-| `rotate`            | Fired repeatedly during a "drag to rotate" interaction.|
-| `rotateend`         | Fired when a "drag to rotate" interaction ends.|
-| `rotatestart`       | Fired when a "drag to rotate" interaction starts.|
-| `shapechanged`      | Fired when a shape object property is changed.|
-| `sourcedata`        | Fired when one of the map's sources loads or changes, including if a tile belonging to a source loads or changes. |
-| `sourceadded`       | Fired when a `DataSource` or `VectorTileSource` is added to the map.|
-| `sourceremoved`     | Fired when a `DataSource` or `VectorTileSource` is removed from the map.|
-| `styledata`         | Fired when the map's style loads or changes.|
-| `styleimagemissing` | Fired when a layer tries to load an image from the image sprite that doesn't exist |
-| `tokenacquired`     | Fired when an AAD access token is obtained.|
-| `touchcancel`       | Fired when a touchcancel event occurs within the map.|
-| `touchend`          | Fired when a touchend event occurs within the map.|
-| `touchmove`         | Fired when a touchmove event occurs within the map.|
-| `touchstart`        | Fired when a touchstart event occurs within the map.|
-| `wheel`             | Fired when a mouse wheel event occurs within the map.|
-| `zoom`              | Fired repeatedly during an animated transition from one zoom level to another, as the result of either user interaction or methods.|
-| `zoomend`           | Fired just after the map completes a transition from one zoom level to another, as the result of either user interaction or methods.|
-| `zoomstart`         | Fired just before the map begins a transition from one zoom level to another, as the result of either user interaction or methods.|
+| `boxzoomend`        | 当 "box zoom" 交互结束时激发。|
+| `boxzoomstart`      | 当 "box zoom" 交互开始时激发。|
+| `click`             | 在地图上按下并释放指针设备时激发。|
+| `close`             | 手动或以编程方式关闭弹出窗口时激发。|
+| `contextmenu`       | 单击鼠标右键时激发。|
+| `data`              | 当任何地图数据加载或更改时激发。 |
+| `dataadded`         | 在将形状添加到 `DataSource`时引发。|
+| `dataremoved`       | 在从 `DataSource`中移除形状时引发。|
+| `datasourceupdated` | 更新 `DataSource` 对象时激发。|
+| `dblclick`          | 当在地图上同一点上单击指针设备两次时激发。|
+| `drag`              | 在地图、popup 或 HTML 标记上的 "拖动到平移" 交互过程中重复激发。|
+| `dragend`           | 当地图、popup 或 HTML 标记上的 "拖动到平移" 交互结束时激发。|
+| `dragstart`         | 当 "拖动到平移" 交互从地图、popup 或 HTML 标记开始时激发。|
+| `error`             | 发生错误时激发。|
+| `idle`              | <p>在映射之前呈现的最后一个帧进入 "空闲" 状态之后激发：<ul><li>没有正在进行的照相机转换。</li><li>当前已加载所有请求的磁贴。</li><li>所有淡化/过渡动画都已完成。</li></ul></p>|
+| `keydown`           | 按下某个键时引发。|
+| `keypress`          | 当按下生成 typable 字符（ANSI 键）的键时引发。|
+| `keyup`             | 当释放某个键时引发。|
+| `layeradded`        | 向映射添加层时激发。|
+| `layerremoved`      | 从映射中删除层时激发。|
+| `load`              | 在下载了所有必需的资源并发生了地图的第一个可视化完成呈现时立即触发。|
+| `mousedown`         | 当在地图内按下指针或在元素顶部按下时激发。|
+| `mouseenter`        | 当指针设备最初移到地图或元素上时触发。 |
+| `mouseleave`        | 当指针设备移出地图或元素时引发。 |
+| `mousemove`         | 当指针设备移动到地图或元素内时触发。|
+| `mouseout`          | 当点设备离开地图的画布时激发，这会使元素离开。|
+| `mouseover`         | 当指针设备移到地图或元素上时触发。|
+| `mouseup`           | 当在映射内释放指针设备或在元素顶部时激发。|
+| `move`              | 由于用户交互或方法的结果，在从一个视图到另一个视图的动画转换过程中，会反复激发。|
+| `moveend`           | 当映射完成从一个视图到另一个视图的转换（作为用户交互或方法的结果）时引发。|
+| `movestart`         | 在映射开始从一个视图到另一个视图的转换之前激发，这是因为用户交互或方法。|
+| `open`              | 当手动或以编程方式打开弹出窗口时激发。|
+| `pitch`             | 当地图的间距（倾斜）因用户交互或方法的结果而发生更改时触发。|
+| `pitchend`          | 在地图的螺距（倾斜）之后立即触发，作为用户交互或方法的结果进行更改。|
+| `pitchstart`        | 每当地图的螺距（斜度）开始更改作为用户交互或方法的结果时，就会触发。|
+| `ready`             | 在映射准备好以编程方式交互之前，在加载所需的最小映射资源时引发。|
+| `render`            | <p>在将地图绘制到屏幕上时触发，作为的结果：<ul><li>地图位置、缩放、音调或轴承的更改。</li><li>地图样式的更改。</li><li>`DataSource` 源的更改。</li><li>矢量磁贴、GeoJSON 文件、标志符号或子画面的加载。</li></ul></p>|
+| `resize`            | 调整地图后立即触发。|
+| `rotate`            | 在 "拖动以旋转" 交互的过程中重复激发。|
+| `rotateend`         | "拖动到旋转时" 交互结束时激发。|
+| `rotatestart`       | "拖动到旋转时" 交互开始时激发。|
+| `shapechanged`      | 形状对象属性更改时激发。|
+| `sourcedata`        | 当某个映射的源中的一个加载或更改时（包括属于源的磁贴加载或更改时）触发。 |
+| `sourceadded`       | 将 `DataSource` 或 `VectorTileSource` 添加到映射时激发。|
+| `sourceremoved`     | 从映射中移除 `DataSource` 或 `VectorTileSource` 时引发。|
+| `styledata`         | 当地图的样式加载或更改时激发。|
+| `styleimagemissing` | 当层尝试从不存在的图像子画面中加载图像时激发 |
+| `tokenacquired`     | 获取 AAD 访问令牌时触发。|
+| `touchcancel`       | 在映射内发生 touchcancel 事件时触发。|
+| `touchend`          | 在映射内发生 touchend 事件时触发。|
+| `touchmove`         | 在映射内发生 system.windows.uielement.touchmove> 事件时触发。|
+| `touchstart`        | 在映射内发生 touchstart 事件时触发。|
+| `wheel`             | 在地图内发生鼠标滚轮事件时触发。|
+| `zoom`              | 由于用户交互或方法的结果，从一个缩放级别的动画转换到另一个缩放级别时，会反复激发。|
+| `zoomend`           | 当映射完成从一个缩放级别转换到另一个缩放级别（作为用户交互或方法的结果）时引发。|
+| `zoomstart`         | 当映射从一个缩放级别开始转换到另一个缩放级别（作为用户交互或方法的结果）时引发。|
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -114,7 +114,7 @@ The following table lists all of the supported map class events.
 有关完整代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [Using the Azure Maps Services module](./how-to-use-services-module.md)
+> [使用 Azure Maps Services 模块](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
 > [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

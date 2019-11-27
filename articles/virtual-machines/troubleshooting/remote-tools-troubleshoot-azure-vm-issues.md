@@ -23,11 +23,11 @@ ms.locfileid: "74483698"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
-When you troubleshoot issues on an Azure virtual machine (VM), you can connect to the VM by using the remote tools that are discussed in this article instead of using the Remote Desktop Protocol (RDP).
+当你对 Azure 虚拟机（VM）上的问题进行故障排除时，你可以使用本文中讨论的远程工具（而不是使用远程桌面协议（RDP））连接到 VM。
 
 ## <a name="serial-console"></a>串行控制台
 
-Use a [serial console for Azure Virtual Machines](serial-console-windows.md) to run commands on the remote Azure VM.
+使用[Azure 虚拟机的串行控制台](serial-console-windows.md)在远程 Azure VM 上运行命令。
 
 ## <a name="remote-cmd"></a>远程 CMD
 
@@ -38,28 +38,28 @@ psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* The command must be run on a computer that's in the same virtual network.
->* DIP or HostName can be used to replace \<computer>.
+>* 此命令必须在同一虚拟网络中的计算机上运行。
+>* 可以使用 DIP 或主机名来替换 \<computer>。
 >* -s 参数确保使用系统帐户（管理员权限）调用命令。
->* PsExec 使用 TCP 端口 135 和 445。 As a result, the two ports have to be open on the firewall.
+>* PsExec 使用 TCP 端口 135 和 445。 因此，必须在防火墙上打开两个端口。
 
 ## <a name="run-command"></a>运行命令
 
-For more information about how to use the run command feature to run scripts on the VM, see [Run PowerShell scripts in your Windows VM with run command](../windows/run-command.md).
+有关如何使用运行命令功能在 VM 上运行脚本的详细信息，请参阅[在 WINDOWS VM 中使用 run 命令运行 PowerShell 脚本](../windows/run-command.md)。
 
 ## <a name="custom-script-extension"></a>自定义脚本扩展
 
 可以使用“自定义脚本扩展”功能在目标 VM 上运行自定义脚本。 若要使用此功能，必须符合以下条件：
 
 * VM 已建立连接。
-* Azure Virtual Machine Agent is installed and is working as expected on the VM.
-* The extension wasn't previously installed on the VM.
+* Azure 虚拟机代理已安装，并在 VM 上按预期方式工作。
+* 此扩展先前未安装在 VM 上。
  
-  The extension injects the script only the first time that it's used. If you use this feature later, the extension recognizes that it was already used and doesn't upload the new script.
+  此扩展仅在第一次使用脚本时插入该脚本。 如果以后使用此功能，扩展会识别出它已被使用，并且不会上载新脚本。
 
-Upload your script to a storage account, and generate its own container. 然后，在已连接到 VM 的计算机上的 Azure PowerShell 中运行以下脚本。
+将脚本上传到存储帐户，并生成自己的容器。 然后，在已连接到 VM 的计算机上的 Azure PowerShell 中运行以下脚本。
 
-### <a name="for-classic-deployment-model-vms"></a>For classic deployment model VMs
+### <a name="for-classic-deployment-model-vms"></a>对于经典部署模型 Vm
 
 ```powershell
 #Set up the basic variables.
@@ -87,7 +87,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>For Azure Resource Manager VMs
+### <a name="for-azure-resource-manager-vms"></a>对于 Azure 资源管理器 Vm
 
  
 
@@ -122,21 +122,21 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 >[!NOTE]
 >必须打开 TCP 端口 5986 (HTTPS)，以便能够使用此选项。
 >
->For Azure Resource Manager VMs, you must open port 5986 on the network security group (NSG). 有关详细信息，请参阅“安全组”。 
+>对于 Azure 资源管理器 Vm，必须在网络安全组（NSG）上打开端口5986。 有关详细信息，请参阅“安全组”。 
 >
->对于 RDFE VM，必须有一个配备专用端口 (5986) 和公共端口的终结点。 Then, you also have to open that public-facing port on the NSG.
+>对于 RDFE VM，必须有一个配备专用端口 (5986) 和公共端口的终结点。 然后，还必须在 NSG 上打开该面向公众的端口。
 
 ### <a name="set-up-the-client-computer"></a>设置客户端计算机
 
 若要使用 PowerShell 远程连接到 VM，首先需要设置客户端计算机，以允许建立连接。 为此，请相应地运行以下命令，将 VM 添加到 PowerShell 信任的主机列表。
 
-To add one VM to the trusted hosts list:
+将一个 VM 添加到受信任的主机列表：
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-To add multiple VMs to the trusted hosts list:
+将多个 Vm 添加到受信任的主机列表：
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
@@ -150,7 +150,7 @@ Set-Item wsman:\localhost\Client\TrustedHosts -value *
 
 ### <a name="enable-remoteps-on-the-vm"></a>在 VM 上启用 RemotePS
 
-For VMs created using the classic deployment model, use the Custom Script Extension to run the following script:
+对于使用经典部署模型创建的 Vm，请使用自定义脚本扩展运行以下脚本：
 
 ```powershell
 Enable-PSRemoting -Force
@@ -160,31 +160,31 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-For Azure Resource Manager VMs, use run commands from the portal to run the EnableRemotePS script:
+对于 Azure 资源管理器 Vm，请使用门户中的 "运行命令" 运行 EnableRemotePS 脚本：
 
 ![运行命令](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>连接到 VM
 
-Run the following command based on the client computer location:
+根据客户端计算机位置运行以下命令：
 
-* Outside the virtual network or deployment
+* 在虚拟网络或部署外部
 
-  * For a VM created using the classic deployment model, run the following command:
+  * 对于使用经典部署模型创建的 VM，请运行以下命令：
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * For an Azure Resource Manager VM, first add a DNS name to the public IP address. 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../windows/portal-create-fqdn.md)。 然后，运行以下命令：
+  * 对于 Azure 资源管理器 VM，请首先将 DNS 名称添加到公共 IP 地址。 有关详细步骤，请参阅[在 Azure 门户中创建 Windows VM 的完全限定域名](../windows/portal-create-fqdn.md)。 然后，运行以下命令：
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* Inside the virtual network or deployment, run the following command:
+* 在虚拟网络或部署中运行以下命令：
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -194,7 +194,7 @@ Run the following command based on the client computer location:
 >[!NOTE] 
 >如果设置 SkipCaCheck 标志，则启动会话时无需将证书导入 VM。
 
-You can also use the Invoke-Command cmdlet to run a script on the VM remotely.
+你还可以使用调用命令 cmdlet 远程在 VM 上运行脚本。
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -205,34 +205,34 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >[!NOTE]
 >必须打开 TCP 端口 135 或 445 才能使用此选项。
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. 有关详细信息，请参阅“安全组”。 
+>对于 Azure 资源管理器 Vm，必须在 NSG 上打开端口5986。 有关详细信息，请参阅“安全组”。 
 >
->对于 RDFE VM，必须有一个配备专用端口 5986 和公共端口的终结点。 You also have to open that public-facing port on the NSG.
+>对于 RDFE VM，必须有一个配备专用端口 5986 和公共端口的终结点。 还必须在 NSG 上打开该面向公众的端口。
 
-1. From another VM on the same virtual network, open the registry editor (regedit.exe).
+1. 从同一虚拟网络上的另一个 VM，打开注册表编辑器（regedit.exe）。
 
-2. 选择“文件” > “连接网络注册表”。
+2. 选择“文件” **“连接网络注册表”。**  > 
 
-   ![Registry editor](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![注册表编辑器](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Locate the target VM by **host name** or **dynamic IP** (preferable) by entering it in the **Enter the object name to select** box.
+3. 在 "**输入要选择的对象名称**" 框中输入，按**主机名**或**动态 IP**定位目标 VM （首选）。
 
-   ![Enter the object name to select box](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![输入要选择的对象名称框](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
 4. 输入目标 VM 的凭据。
 
 5. 进行任何必要的注册表更改。
 
-## <a name="remote-services-console"></a>Remote services console
+## <a name="remote-services-console"></a>远程服务控制台
 
 >[!NOTE]
 >必须打开 TCP 端口 135 或 445 才能使用此选项。
 >
->For Azure Resource Manager VMs, you have to open port 5986 on the NSG. 有关详细信息，请参阅“安全组”。 
+>对于 Azure 资源管理器 Vm，必须在 NSG 上打开端口5986。 有关详细信息，请参阅“安全组”。 
 >
->对于 RDFE VM，必须有一个配备专用端口 5986 和公共端口的终结点。 You also have to open that public-facing port on the NSG.
+>对于 RDFE VM，必须有一个配备专用端口 5986 和公共端口的终结点。 还必须在 NSG 上打开该面向公众的端口。
 
-1. From another VM on the same virtual network, open an instance of **Services.msc**.
+1. 从同一虚拟网络上的另一个 VM，打开**services.msc**的实例。
 
 2. 右键单击“服务(本地)”。
 
@@ -240,17 +240,17 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
    ![远程服务](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Enter the dynamic IP of the target VM.
+4. 输入目标 VM 的动态 IP。
 
-   ![Input dynamic IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
+   ![输入动态 IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
 5. 对服务进行任何必要的更改。
 
 ## <a name="next-steps"></a>后续步骤
 
-- For more information about the Enter-PSSession cmdlet, see [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- For more information about the Custom Script Extension for Windows using the classic deployment model, see [Custom Script Extension for Windows](../extensions/custom-script-classic.md).
+- 有关 node.js cmdlet 的详细信息，请参阅[enter-pssession](https://technet.microsoft.com/library/hh849707.aspx)。
+- 有关使用经典部署模型的适用于 Windows 的自定义脚本扩展的详细信息，请参阅[适用于 windows 的自定义脚本扩展](../extensions/custom-script-classic.md)。
 - PsExec 包含在 [PSTools Suite](https://download.sysinternals.com/files/PSTools.zip) 中。
-- For more information about the PSTools Suite, see [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+- 有关 PSTools 套件的详细信息，请参阅[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
 
 

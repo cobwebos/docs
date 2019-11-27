@@ -1,5 +1,5 @@
 ---
-title: Self-service password reset deep dive - Azure Active Directory
+title: 自助式密码重置深入探讨 - Azure Active Directory
 description: 自助密码重置的工作原理
 services: active-directory
 ms.service: active-directory
@@ -34,7 +34,7 @@ ms.locfileid: "74420698"
 
 阅读以下步骤，了解有关密码重置页面背后的逻辑：
 
-1. 用户选择“无法访问帐户”链接或直接转到 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)。
+1. 用户选择“无法访问帐户”链接或直接转到[https://aka.ms/sspr](https://passwordreset.microsoftonline.com)。
    * 根据浏览器的区域设置以相应的语言呈现体验内容。 密码重置体验已本地化为 Office 365 支持的相同语言。
    * 若要以不同的本地化语言查看密码重置门户，请将“?mkt=”追加到密码重置 URL 的末尾，后接本地化为西班牙语的示例 [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)。
 2. 用户输入用户 ID 并传递验证码。
@@ -54,11 +54,11 @@ ms.locfileid: "74420698"
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。 Additional details about the methods listed below can be found in the article [What are authentication methods?](concept-authentication-methods.md).
+如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。 若要更详细地了解下面列出的方法，可参阅[有哪些身份验证方法？](concept-authentication-methods.md)一文。
 
 * 移动应用通知
-* Mobile app code
-* 电子邮件
+* 移动应用代码
+* Email
 * 移动电话
 * 办公电话
 * 安全提问
@@ -66,12 +66,12 @@ ms.locfileid: "74420698"
 仅当用户在管理员已启用的身份验证方法中输入了数据时，他们才能重置其密码。
 
 > [!IMPORTANT]
-> Starting in March of 2019 the phone call options will not be available to MFA and SSPR users in free/trial Azure AD tenants. SMS messages are not impacted by this change. Phone call will continue to be available to users in paid Azure AD tenants. This change only impacts free/trial Azure AD tenants.
+> 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的 MFA 和 SSPR 用户将无法使用电话呼叫选项。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
 
 > [!WARNING]
 > 要使用[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)中定义的方法，将需要具有分配了帐户的 Azure 管理员角色。
 
-![Authentication methods selection in the Azure portal][Authentication]
+![Azure 门户中的身份验证方法选择][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
@@ -81,14 +81,14 @@ ms.locfileid: "74420698"
 
 如果没有为用户注册最少数目的所需方法，他们将看到一个错误页面，让他们请求管理员重置其密码。
 
-#### <a name="mobile-app-and-sspr"></a>Mobile app and SSPR
+#### <a name="mobile-app-and-sspr"></a>移动应用和 SSPR
 
 使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，应注意以下几个注意事项：
 
 * 当管理员要求使用一种方法来重置密码时，验证码是唯一可用的选项。
 * 当管理员要求使用两种方法来重置密码时，用户可以使用通知或验证码进行重置，此外还能使用其他任何已启用的方法。
 
-| 重置所需的方法数 | 一种 | 二 |
+| 重置所需的方法数 | 一种 | 两种 |
 | :---: | :---: | :---: |
 | 可用的移动应用功能 | 代码 | 代码或通知 |
 
@@ -98,10 +98,10 @@ ms.locfileid: "74420698"
 > 必须启用[针对自助服务密码重置和 Azure 多重身份验证的聚合注册（公共预览版）](concept-registration-mfa-sspr-converged.md)，然后用户才能够获取 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) 上的新体验。
 
 > [!IMPORTANT]
-> The authenticator app cannot be selected as the only authentication method when configuring a 1-gate policy. Similarly, the authenticator app and only one additional method cannot be selected when configuring a 2-gates policy.
-> Then, when configuring SSPR policies that include the authenticator app as a method, at least an additional method should be selected when configuring a 1-gate policy, and at least two additional methods should be selected when configuring a 2-gates policy.
-> The reason for this requirement is because the current SSPR registration experience does not include the option to register the authenticator app. The option to register the authenticator app is included with the new [Converged registration for self-service password reset and Azure Multi-Factor Authentication (Public preview)](concept-registration-mfa-sspr-converged.md).
-> Allowing policies that only use the authenticator app (for 1-gate policies), or the authenticator app and only one additional method (for 2-gates policies), could lead to users being blocked from registering for  SSPR until they have been configured to use the new registration experience.
+> 在配置1入口策略时，无法选择身份验证器应用作为唯一的身份验证方法。 同样，在配置双入口策略时，不能选择验证器应用和另一种方法。
+> 然后，在配置包含验证器应用的 SSPR 策略作为方法时，至少应在配置1入口策略时选择其他方法，并且在配置两个关口策略时至少应选择另外两个方法。
+> 此要求的原因是当前 SSPR 注册体验不包含用于注册验证器应用的选项。 用于注册验证器应用的选项随[用于自助密码重置和 Azure 多重身份验证（公共预览版）的新增聚合注册](concept-registration-mfa-sspr-converged.md)一起提供。
+> 如果只使用验证器应用的策略（适用于1入口策略），或验证器应用仅有一种附加方法（对于双入口策略），则可能会导致阻止用户注册 SSPR，直到将其配置为使用新的注册体验。
 
 ### <a name="change-authentication-methods"></a>更改身份验证方法
 
@@ -109,8 +109,8 @@ ms.locfileid: "74420698"
 
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
-| 大于等于 1 | 第 | 能够重置或解锁 |
-| 第 | 2 | 不可重置或解锁 |
+| 大于等于 1 | 1 | 能够重置或解锁 |
+| 1 | 2 | 不可重置或解锁 |
 | 2 或更大 | 2 | 能够重置或解锁 |
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
@@ -126,7 +126,7 @@ ms.locfileid: "74420698"
 
 启用此选项需要用户在使用 Azure AD 登录到任何应用程序时完成密码重置注册。 此工作流包括以下应用程序：
 
-* PowerApps
+* Office 365
 * Azure 门户
 * 访问面板
 * 联合应用程序
@@ -161,7 +161,7 @@ ms.locfileid: "74420698"
 
 如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md)。
 
-![Validating password writeback is enabled and working][Writeback]
+![验证密码写回是否已启用且正常工作][Writeback]
 
 本页提供了本地写回客户端的快速状态，根据当前配置将显示以下消息之一：
 
@@ -198,7 +198,7 @@ Azure AD 自助服务密码重置相当于在 Active Directory 中执行管理�
 * 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
 * **B2B 用户**：使用新的 [Azure AD B2B 功能](../active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
-若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com 。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
+若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
 
 > [!NOTE]
 > 已被授予 Azure AD 租户来宾访问权限的 Microsoft 帐户（例如 Hotmail.com、Outlook.com 的电子邮件地址或其他个人电子邮件地址）无法使用 Azure AD SSPR。 他们需要使用[当你无法登录到 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的信息重置其密码。
@@ -207,17 +207,17 @@ Azure AD 自助服务密码重置相当于在 Active Directory 中执行管理�
 
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
-* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "可用的 Azure AD 身份验证方法和所需数量"

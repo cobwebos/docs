@@ -27,11 +27,11 @@ ms.locfileid: "74225265"
 
 有关对标准负载均衡器使用可用性区域的详细信息，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.17 或更高版本。  要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.17 或更高版本。  若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 > [!NOTE]
 > 选择 Azure 资源、区域和 VM 大小系列时可使用可用性区域支持。 有关如何开始使用以及可以尝试将可用性区域用于哪些 Azure 资源、区域和 VM 大小系列的详细信息，请参阅[可用性区域概述](https://docs.microsoft.com/azure/availability-zones/az-overview)。 若需支持，可以在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) 上寻求帮助或者 [open an Azure support ticket](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（创建 Azure 支持票证）。  
@@ -49,7 +49,7 @@ az group create \
 ```
 
 ## <a name="create-a-zone-redundant-public-ip-standard"></a>创建区域冗余的公共 IP 标准
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 区域冗余的前端由区域中的所有可用性区域同时提供服务。 Create a zone redundant public IP address with [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). 创建标准公共 IP 地址时，该地址默认是区域冗余的。
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 区域冗余的前端由区域中的所有可用性区域同时提供服务。 使用[az network 公共 ip create](/cli/azure/network/public-ip#az-network-public-ip-create)创建区域冗余的公共 ip 地址。 创建标准公共 IP 地址时，该地址默认是区域冗余的。
 
 以下示例在 *myResourceGroupLoadBalancer* 资源组中创建名为 *myPublicIP* 的区域冗余公共 IP 地址。
 
@@ -94,7 +94,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>针对端口 80 创建负载均衡器规则
-负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。
+负载均衡器规则定义传入流量的前端 IP 配置和用于接收流量的后端 IP 池，以及所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myLoadBalancerRuleWeb](/cli/azure/network/lb/rule#az-network-lb-rule-create)，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -114,7 +114,7 @@ az network lb rule create \
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 在 myResourceGroup 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
+使用 *az network vnet create* 在 myResourceGroup 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 [mySubnet](/cli/azure/network/vnet#az-network-vnet-create) 的子网。
 
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
 
-使用 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) 创建名为 *myNetworkSecurityGroup* 的网络安全组，以定义虚拟网络的入站连接。
+使用 *az network nsg create* 创建名为 [myNetworkSecurityGroup](/cli/azure/network/nsg#az-network-nsg-create) 的网络安全组，以定义虚拟网络的入站连接。
 
 ```azurecli-interactive
 az network nsg create \
@@ -135,7 +135,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 针对端口 80 创建名为 *myNetworkSecurityGroupRule* 的网络安全组规则。
+使用 *az network nsg rule create* 针对端口 80 创建名为 [myNetworkSecurityGroupRule](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 的网络安全组规则。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -243,7 +243,7 @@ done
     --query [ipAddress] \
     --output tsv
 ``` 
-然后，可将公共 IP 地址输入 web 浏览器中。 请记住 - 在负载均衡器开始向 VM 分发流量之前，VM 需要几分钟才能准备就绪。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 Web 浏览器中。 请记住 - 在负载均衡器开始向 VM 分发流量之前，VM 需要几分钟才能准备就绪。 随即显示应用，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![运行 Node.js 应用](./media/load-balancer-standard-public-zone-redundant-cli/running-nodejs-app.png)
 

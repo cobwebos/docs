@@ -34,9 +34,9 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 > 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过对注册表（所需的高级 SKU）进行异地复制，可以使用单个注册表的相同映像和标记名称为多个区域提供服务。
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 容器注册表，请创建注册表。 For steps, see [Quickstart: Create a private container registry using the Azure CLI](container-registry-get-started-azure-cli.md).
+如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
 
 若要将映像导入到 Azure 容器注册表，标识必须具有对目标注册表的写入权限（至少是参与者角色）。 请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。 
 
@@ -44,7 +44,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 ### <a name="import-from-docker-hub"></a>从 Docker 中心导入
 
-For example, use the [az acr import][az-acr-import] command to import the multi-architecture `hello-world:latest` image from Docker Hub to a registry named *myregistry*. 由于 `hello-world` 是来自 Docker 中心的官方映像，因此该映像位于默认的 `library` 存储库中。 `--source` 映像参数的值中包含存储库名称和（可选）标记。 （可以选择性根据映像的清单摘要而不是标签来标识映像，这确保映像为特定版本。）
+例如，使用 [az acr import][az-acr-import] 命令将多体系结构 `hello-world:latest` 映像从 Docker Hub 导入到名为 myregistry 的注册表。 由于 `hello-world` 是来自 Docker 中心的官方映像，因此该映像位于默认的 `library` 存储库中。 `--source` 映像参数的值中包含存储库名称和（可选）标记。 （可以选择性根据映像的清单摘要而不是标签来标识映像，这确保映像为特定版本。）
  
 ```azurecli
 az acr import --name myregistry --source docker.io/library/hello-world:latest --image hello-world:latest
@@ -118,7 +118,7 @@ az acr import --name myregistry --source docker.io/sourcerepo/sourceimage:tag --
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你了解了如何从公共注册表或其他专用注册表将容器映像导入 Azure 容器注册表。 For additional image import options, see the [az acr import][az-acr-import] command reference. 
+在本文中，你了解了如何从公共注册表或其他专用注册表将容器映像导入 Azure 容器注册表。 关于其他映像导入选项，请参阅 [az acr import][az-acr-import] 命令参考。 
 
 
 <!-- LINKS - Internal -->

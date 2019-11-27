@@ -32,7 +32,7 @@ ms.locfileid: "74277944"
 
 网络中可能有许多启用了流日志记录的 NSG。 这么大量的日志记录数据导致难以对日志进行分析以及从中获得见解。 本文提供了一个解决方案来使用 Grafana（一个开源绘图工具）、ElasticSearch（一个分布式搜索和分析引擎）和 Logstash（一个开源服务器端数据处理管道）来集中管理这些 NSG 流日志。  
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>应用场景
 
 NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob 存储中。 Logstash 插件用于连接和处理 Blob 存储中的流日志并将其发送到 ElasticSearch。  将流日志存储到 ElasticSearch 中之后，可在 Grafana 中对其进行分析，并在自定义的仪表板中将其可视化。
 

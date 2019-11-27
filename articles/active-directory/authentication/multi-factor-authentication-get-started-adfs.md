@@ -1,5 +1,5 @@
 ---
-title: Two-step verification Azure MFA and ADFS - Azure Active Directory
+title: 双重验证 Azure MFA 和 ADFS-Azure Active Directory
 description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 配合使用。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381166"
 
 <center>
 
-![Azure MFA and ADFS getting started](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
+![Azure MFA 和 ADFS 入门](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 如果组织已使用 AD FS 将本地 Active Directory 与 Azure Active Directory 联合，则使用 Azure 多重身份验证有两个选项。
 

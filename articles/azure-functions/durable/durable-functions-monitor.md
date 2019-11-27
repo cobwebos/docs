@@ -50,11 +50,11 @@ ms.locfileid: "74232861"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
+* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程协调程序函数。 如果 `E3_SendGoodWeatherAlert` 返回 true，则此函数会调用 `E3_GetIsClear`。
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-The following sections explain the configuration and code that is used for C# scripting and JavaScript. 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 本文末尾显示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -79,13 +79,13 @@ The following sections explain the configuration and code that is used for C# sc
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
 5. 创建一个持久计时器，以便在下一个轮询间隔恢复业务流程。 为简便起见，本示例使用了硬编码值。
-6. Continues running until the `CurrentUtcDateTime` (.NET) or `currentUtcDateTime` (JavaScript) passes the monitor's expiration time, or an SMS alert is sent.
+6. 继续运行，直至 `CurrentUtcDateTime` （.NET）或 `currentUtcDateTime` （JavaScript）通过了监视器的过期时间或发送了短信警报。
 
 可以通过发送多个 **MonitorRequests** 来同时运行多个业务流程实例。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-The orchestrator requires multiple pieces of data, so [shared POCO objects](../functions-reference-csharp.md#reusing-csx-code) are used for strongly-typed data transfer in C# and C# script:  
+Orchestrator 需要多个数据段，以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输：  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
@@ -124,7 +124,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 ## <a name="run-the-sample"></a>运行示例
 
-使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
+使用示例中包含的 HTTP 触发函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
 
 ```
 POST https://{host}/orchestrators/E3_Monitor
@@ -169,9 +169,9 @@ RetryAfter: 10
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
+## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
 
-下面的业务流程作为 Visual Studio 项目中的单个 C# 文件：
+下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
 
 > [!NOTE]
 > 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行下面的示例代码。

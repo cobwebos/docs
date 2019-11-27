@@ -1,7 +1,7 @@
 ---
-title: Entity types - LUIS
+title: 实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 'Entities extract data from the utterance. Entity types give you predictable extraction of data. There are two types of entities: machine-learned and non-machine-learned. It is important to know which type of entity you are working with in utterances.'
+description: 实体从话语中提取数据。 实体类型为你提供可预测的数据提取。 有两种类型的实体：机器学习的和非机器学习的。 请务必知道你在话语中使用的是哪种类型的实体。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -18,66 +18,66 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74422581"
 ---
-# <a name="entities-and-their-purpose-in-luis"></a>Entities and their purpose in LUIS
+# <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 
-The primary purpose of entities is to give the client application predictable extraction of data. An _optional_, secondary purpose is to boost the prediction of the intent or other entities with descriptors.
+实体的主要目的是使客户端应用程序可预测的数据提取。 _可选_的辅助目的是通过描述符提高意图或其他实体的预测。
 
-There are two types of entities:
+有两种类型的实体：
 
-* machine-learned - from context
-* non-machine-learned - for exact text matches, pattern matches, or detection by prebuilt entities
+* 计算机-从上下文
+* 非计算机学习-用于精确文本匹配、模式匹配或通过预生成实体检测
 
-Machine-learned entities provide the widest range of data extraction choices. Non-machine-learned entities work by text matching and may be used independently or as a [constraint](#design-entities-for-decomposition) on a machine-learned entity.
+计算机学习的实体提供最广泛的数据提取选择。 非计算机学习实体按文本匹配工作，可以单独使用，也可以作为对计算机获知实体的[约束](#design-entities-for-decomposition)。
 
 ## <a name="entities-represent-data"></a>实体表示数据
 
-Entities are data you want to pull from the utterance, such as names, dates, product names, or any significant group of words. 话语可包括多个实体，也可不包含任何实体。 A client application _may_ need the data to perform its task.
+实体是要从查询文本中提取的数据，例如名称、日期、产品名称或任何重要的单词组。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序_可能_需要数据来执行其任务。
 
-Entities need to be labeled consistently across all training utterances for each intent in a model.
+对于模型中的每个意向，实体都需要在所有定型最谈话中一致地标记。
 
- You can define your own entities or use prebuilt entities to save time for common concepts such as [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md), and [phone number](luis-reference-prebuilt-phonenumber.md).
+ 您可以定义自己的实体，也可以使用预构建的实体来节省常见概念（如[datetimeV2](luis-reference-prebuilt-datetimev2.md)、[序号](luis-reference-prebuilt-ordinal.md)、[电子邮件](luis-reference-prebuilt-email.md)和[电话号码](luis-reference-prebuilt-phonenumber.md)）的时间。
 
 |话语|实体|数据|
 |--|--|--|
 |购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
 |购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>伦敦<br>2018 年 3 月 5 日|
 
-### <a name="entities-are-optional"></a>Entities are optional
+### <a name="entities-are-optional"></a>实体是可选的
 
 意向是必需的，而实体是可选的。 无需为应用中的每个概念创建实体，只需为客户端应用程序操作时所需的概念创建实体。
 
-If your utterances do not have data the client application requires, you do not need to add entities. As your application develops and a new need for data is identified, you can add appropriate entities to your LUIS model later.
+如果最谈话没有客户端应用程序所需的数据，则无需添加实体。 随着应用程序的开发和识别数据的新需要，稍后可以在 LUIS 模型中添加相应的实体。
 
 ## <a name="entity-compared-to-intent"></a>实体与意向
 
-The entity represents a data concept inside the utterance that you want extracted.
+实体表示要提取的查询文本中的数据概念。
 
-An utterance may optionally include entities. By comparison, the prediction of the intent for an utterance is _required_ and represents the entire utterance. LUIS requires example utterances are contained in an intent.
+查询文本可以选择包含实体。 相比之下，查询文本的意图预测是_必需_的，它表示整个查询文本。 LUIS 需要一个意向中包含的示例最谈话。
 
-Consider the following 4 utterances:
+请考虑以下4最谈话：
 
-|话语|预测的意向|Entities extracted|说明|
+|话语|预测的意向|提取的实体|说明|
 |--|--|--|--|
-|帮助|help|-|Nothing to extract.|
-|Send something|sendSomething|-|Nothing to extract. The model has not been trained to extract `something` in this context, and there is no recipient either.|
-|Send Bob a present|sendSomething|`Bob`，`present`|The model has been trained with the [personName](luis-reference-prebuilt-person.md) prebuilt entity, which has extracted the name `Bob`. A machine-learned entity has been used to extract `present`.|
-|Send Bob a box of chocolates|sendSomething|`Bob`，`box of chocolates`|The two important pieces of data, `Bob` and the `box of chocolates`, have been extracted by entities.|
+|Help|help|-|没有要提取的内容。|
+|发送内容|sendSomething|-|没有要提取的内容。 尚未训练该模型来提取此上下文中 `something`，并且不存在任何接收方。|
+|发送小明|sendSomething|`Bob`、`present`|该模型已通过[personName](luis-reference-prebuilt-person.md)预先生成的实体进行定型，该实体已提取 `Bob`的名称。 已使用计算机学习的实体提取 `present`。|
+|向 Bob 发送甜蜜的框|sendSomething|`Bob`、`box of chocolates`|两个重要的数据段（`Bob` 和 `box of chocolates`）已由实体提取。|
 
-## <a name="design-entities-for-decomposition"></a>Design entities for decomposition
+## <a name="design-entities-for-decomposition"></a>为分解设计实体
 
-It is good entity design to make your top-level entity a machine-learned entity. This allows for changes to your entity design over time and the use of **subcomponents** (child entities), optionally with **constraints** and **descriptors**, to decompose the top-level entity into the parts needed by the client application.
+这是一种良好的实体设计，使顶级实体成为计算机学习的实体。 这允许在一段时间内对你的实体设计进行更改 ，并可选择使用**约束**和**描述符**将顶级实体分解为客户端应用程序所需的部件。
 
-Designing for decomposition allows LUIS to return a deep degree of entity resolution to your client application. This allows your client application to focus on business rules and leave data resolution to LUIS.
+针对分解进行设计使 LUIS 可以向客户端应用程序返回更深层的实体解析。 这样，客户端应用程序便可以专注于业务规则并将数据解析 LUIS。
 
-### <a name="machine-learned-entities-are-primary-data-collections"></a>Machine-learned entities are primary data collections
+### <a name="machine-learned-entities-are-primary-data-collections"></a>计算机学习的实体是主数据集合
 
-[**Machine-learned entities**](tutorial-machine-learned-entity.md) are the top-level data unit. Subcomponents are child entities of machine-learned entities.
+[**计算机学习的实体**](tutorial-machine-learned-entity.md)是顶级数据单元。 子组件是计算机学习实体的子实体。
 
-A machine-learned entity triggers based on the context learned through training utterances. **Constraints** are optional rules applied to a machine-learned entity that further constrains triggering based on the exact-text matching definition of a non-machine-learned entity such as a [List](reference-entity-list.md) or [Regex](reference-entity-regular-expression.md). For example, a `size` machine-learned entity can have a constraint of a `sizeList` list entity that constrains the `size` entity to trigger only when values contained within the `sizeList` entity are encountered.
+计算机获知的实体基于通过定型最谈话获知的上下文触发。 **约束**是适用于机器学习的实体的可选规则，这些规则基于未获知计算机的实体（如[列表](reference-entity-list.md)或[Regex](reference-entity-regular-expression.md)）的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习的实体可以具有 `sizeList` 列表实体的约束，该限制仅在遇到 `sizeList` 实体内包含的值时才会触发 `size` 实体。
 
-[**Descriptors**](luis-concept-feature.md) are features applied to boost the relevance of the words or phrases for the prediction. They are called *descriptors* because they are used to *describe* an intent or entity. Descriptors describe distinguishing traits or attributes of data, such as important words or phrases. that LUIS observes and learns through.
+[**描述符**](luis-concept-feature.md)是应用的功能，用于提高预测的单词或短语的相关性。 它们被称为*描述符*，因为它们用于*描述*意向或实体。 描述符描述了数据的特征或属性，例如重要的词或短语。 LUIS 观察和学习。
 
-When you create a phrase list feature in your LUIS app, it is enabled globally by default and applies evenly across all intents and entities. However, if you apply the phrase list as a descriptor (feature) of a machine-learned entity (or *model*), then its scope reduces to apply only to that model and is no longer used with all the other models. Using a phrase list as a descriptor to a model helps decomposition by assisting with the accuracy for the model it is applied to.
+当你在 LUIS 应用程序中创建短语列表功能时，默认情况下它将在全局范围内启用并在所有意向和实体之间平均应用。 但是，如果您将短语列表作为计算机学习的实体（或*模型*）的描述符（功能）应用，则其作用域将减少为仅应用于该模型，而不再与所有其他模型一起使用。 使用短语列表作为模型的描述符有助于分解应用到的模型的准确性。
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -90,54 +90,54 @@ When you create a phrase list feature in your LUIS app, it is enabled globally b
 
 请根据数据的提取方式以及提取后的数据表示方式，来选择实体。
 
-|实体类型|用途|
+|实体类型|目的|
 |--|--|
-|[**Machine-learned**](tutorial-machine-learned-entity.md)|Machine-learned entities learn from context in the utterance. Parent grouping of entities, regardless of entity type. This makes variation of placement in example utterances significant. |
-|[**列表**](reference-entity-list.md)|List of items and their synonyms extracted with **exact text match**.|
+|[**计算机学习**](tutorial-machine-learned-entity.md)|机器学习实体从话语的上下文学习。 实体的父分组，与实体类型无关。 这使得示例话语中的位置差异变得显著。 |
+|[**列表**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|
 |[**Pattern.any**](reference-entity-pattern-any.md)|难以确定末尾部分的实体。 |
-|[**预生成**](luis-reference-prebuilt-entities.md)|Already trained to extract specific kind of data such as URL or email. 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
-|[**正则表达式**](reference-entity-regular-expression.md)|Uses regular expression for **exact text match**.|
+|[**预生成**](luis-reference-prebuilt-entities.md)|已经过培训，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
+|[**正则表达式**](reference-entity-regular-expression.md)|使用正则表达式**精确匹配文本**。|
 
-## <a name="extracting-contextually-related-data"></a>Extracting contextually related data
+## <a name="extracting-contextually-related-data"></a>提取根据上下文相关数据
 
-An utterance may contain two or more occurrences of an entity where the meaning of the data is based on context within the utterance. An example is an utterance for booking a flight that has two locations, origin and destination.
+查询文本可能包含两个或更多实体，其中的数据含义基于查询文本内的上下文。 例如，预订航班具有两个地点（源和目标）的查询文本。
 
 `Book a flight from Seattle to Cairo`
 
-The two examples of a `location` entity need to be extracted. The client-application needs to know the type of location for each in order to complete the ticket purchase.
+需要提取 `location` 实体的两个示例。 客户端应用程序需要知道每个的位置类型才能完成票证购买。
 
-There are two techniques for extracting contextually-related data:
+可以通过两种方法来提取与根据上下文相关的数据：
 
- * The `location` entity is a machine-learned entity and uses two subcomponent entities to capture the  `origin` and `destination` (preferred)
- * The `location` entity uses two **roles** of `origin` and `destination`
+ * `location` 实体是计算机学习的实体，并使用两个子组件实体来捕获 `origin` 和 `destination` （首选）
+ * `location` 实体使用 `origin` 和的两个**角色**`destination`
 
-Multiple entities can exist in an utterance and can be extracted without using decomposition or roles if the context in which they are used has no significance. For example, if the utterance includes a list of locations, `I want to travel to Seattle, Cairo, and London.`, this is a list where each item doesn't have an additional meaning.
+查询文本中可以有多个实体，如果使用它的上下文没有任何意义，则无需使用分解或角色即可提取。 例如，如果查询文本包含位置列表，`I want to travel to Seattle, Cairo, and London.`，则这是一个列表，其中的每个项没有其他含义。
 
-### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Using subcomponent entities of a machine-learned entity to define context
+### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>使用机器学习的实体的子组件实体来定义上下文
 
-You can use a [**machine-learned entity**](tutorial-machine-learned-entity.md) to extract the data that describes the action of booking a flight and then to decompose the top-level entity into the separate parts needed by the client application.
+您可以使用[**机器学习的实体**](tutorial-machine-learned-entity.md)提取描述预订航班操作的数据，然后将顶级实体分解为客户端应用程序所需的单独部件。
 
-In this example, `Book a flight from Seattle to Cairo`, the top-level entity could be `travelAction` and labeled to extract `flight from Seattle to Cairo`. Then two subcomponent entities are created, called `origin` and `destination`, both with a constraint applied of the prebuilt `geographyV2` entity. In the training utterances, the `origin` and `destination` are labeled appropriately.
+在此示例中，`Book a flight from Seattle to Cairo`可以 `travelAction` 顶级实体，并将其标记为 `flight from Seattle to Cairo`提取。 然后，将创建两个子组件实体（称为 `origin` 和 `destination`），并将约束应用于预生成的 `geographyV2` 实体。 在定型最谈话中，`origin` 和 `destination` 都进行了相应的标记。
 
-### <a name="using-entity-role-to-define-context"></a>Using Entity role to define context
+### <a name="using-entity-role-to-define-context"></a>使用实体角色定义上下文
 
-A Role is a named alias for an entity based on context within the utterance. 角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。 In this example, the `location` entity needs two roles of `origin` and `destination` and both need to be marked in the example utterances.
+角色是基于查询文本中的上下文的实体的命名别名。 角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。 在此示例中，`location` 实体需要2个角色的 `origin` 和 `destination`，并且两者都需要在最谈话示例中进行标记。
 
-If LUIS finds the `location` but can't determine the role, the location entity is still returned. The client application would need to follow up with a question to determine which type of location the user meant.
+如果 LUIS 找到 `location` 但无法确定该角色，则仍将返回 location 实体。 客户端应用程序需要跟进问题，以确定用户所代表的位置类型。
 
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>如果所需实体数超过最大实体数
 
-If you need more than the limit, contact support. 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。
+如果你需要超过此限制，请联系支持人员。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。
 
-## <a name="entity-prediction-status"></a>Entity prediction status
+## <a name="entity-prediction-status"></a>实体预测状态
 
-The LUIS portal shows when the entity, in an example utterance, has a different entity prediction than the entity you selected. This different score is based on the current trained model.
+LUIS 门户显示了当实体（在示例中为查询文本）具有不同于所选实体的实体预测时。 这种不同分数基于当前训练的模型。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解关于优良[话语](luis-concept-utterance.md)的概念。
 
-请参阅[添加实体](luis-how-to-add-entities.md)，了解如何将实体添加到 LUIS 应用的详细信息。
+请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
 
-See [Tutorial: Extract structured data from user utterance with machine-learned entities in Language Understanding (LUIS)](tutorial-machine-learned-entity.md) to learn how to extract structured data from an utterance using the machine-learned entity.
+请参阅[教程：从用户查询文本中提取结构化数据和语言理解（LUIS）中的机器学习的实体](tutorial-machine-learned-entity.md)，了解如何使用机器学习的实体从查询文本提取结构化数据。

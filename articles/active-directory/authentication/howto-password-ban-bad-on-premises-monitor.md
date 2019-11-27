@@ -1,5 +1,5 @@
 ---
-title: Password protection monitor and logging- Azure Active Directory
+title: 密码保护监视器和日志记录-Azure Active Directory
 description: 了解 Azure AD 密码保护中的监视和日志记录
 services: active-directory
 ms.service: active-directory
@@ -22,7 +22,7 @@ ms.locfileid: "74381682"
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
-Monitoring and reporting are done either by event log messages or by running PowerShell cmdlets. The DC agent and proxy services both log event log messages. All PowerShell cmdlets described below are only available on the proxy server (see the AzureADPasswordProtection PowerShell module). The DC agent software does not install a PowerShell module.
+监视和报告是通过事件日志消息或通过运行 PowerShell cmdlet 来完成的。 DC 代理和代理服务都记录事件日志消息。 下面所述的所有 PowerShell cmdlet 仅可用于代理服务器（请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 
@@ -96,9 +96,9 @@ PasswordSetErrors               : 1
 
 可以使用 –Forest、-Domain 和 –DomainController 参数之一来影响 cmdlet 的报告范围。 不指定参数表示使用 –Forest。
 
-`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 The following table contains the mappings between each outcome and its corresponding event ID:
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应事件 ID 之间的映射：
 
-|Get-AzureADPasswordProtectionSummaryReport property |Corresponding event ID|
+|Get-AzureADPasswordProtectionSummaryReport property |对应的事件 ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -235,7 +235,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。 目前提供以下性能计数器：
 
-|性能计数器名称 | 描述|
+|性能计数器名称 | 说明|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|
@@ -269,11 +269,11 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应域控制器上的 Azure AD 密码保护 DC 代理未运行或已卸载，或者计算机已降级，不再是域控制器。
 
-If the PasswordPolicyDateUTC value gets stale, this may be a symptom that the Azure AD Password Protection DC Agent on that machine is not working properly.
+如果 PasswordPolicyDateUTC 值过时，这可能是因为该计算机上 Azure AD 的密码保护 DC 代理无法正常运行。
 
-## <a name="dc-agent-newer-version-available"></a>DC agent newer version available
+## <a name="dc-agent-newer-version-available"></a>可用的 DC 代理更新版本
 
-The DC agent service will log a 30034 warning event to the Operational log upon detecting that a newer version of the DC agent software is available, for example:
+检测到新版本的 DC 代理软件可用时，DC 代理服务会将30034警告事件记录到操作日志中，例如：
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,10 +287,10 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
 
 > [!NOTE]
-> Despite the references to "autoupgrade" in the above event message, the DC agent software does not currently support this feature.
+> 尽管上述事件消息中的 "自动升级" 引用，但 DC 代理软件当前不支持此功能。
 
 ## <a name="proxy-service-event-logging"></a>代理服务事件日志记录
 
@@ -335,7 +335,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 导致状态更改的 PowerShell cmdlet（例如，Register-AzureADPasswordProtectionProxy）通常会将结果事件记录到运行日志中。
 
-In addition, most of the Azure AD Password Protection PowerShell cmdlets will write to a text log located under:
+此外，大多数 Azure AD 密码保护 PowerShell cmdlet 会写入以下位置的文本日志：
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
@@ -361,9 +361,9 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应计算机上的 Azure AD 密码保护代理未运行或已卸载。
 
-## <a name="proxy-agent-newer-version-available"></a>Proxy agent newer version available
+## <a name="proxy-agent-newer-version-available"></a>代理更新版本可用
 
-The Proxy service will log a 20002 warning event to the Operational log upon detecting that a newer version of the proxy software is available, for example:
+检测到较新版本的代理软件可用时，代理服务会将20002警告事件记录到操作日志中，例如：
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,9 +378,9 @@ Current version: 1.2.116.0
 .
 ```
 
-The event above does not specify the version of the newer software. You should go to the link in the event message for that information.
+上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
 
-This event will be emitted even if the Proxy agent is configured with autoupgrade enabled.
+即使已将代理程序配置为启用了自动升级，也会发出此事件。
 
 ## <a name="next-steps"></a>后续步骤
 
