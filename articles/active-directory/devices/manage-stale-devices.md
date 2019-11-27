@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure AD 中管理陈旧的设备 | Microsoft Docs
-description: Learn how to remove stale devices from your database of registered devices in Azure Active Directory.
+description: 了解如何从 Azure Active Directory 中的已注册设备的数据库中删除过期设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1829c56f9804c5aa808461db98a5048d63f55446
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207282"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538803"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>How To: Manage stale devices in Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
 理想情况下，若要完成生命周期，应该注销不再需要的已注册设备。 但是，在发生遗失、失窃、设备损坏或 OS 重装等情况下，环境中通常就会出现陈旧的设备。 IT 管理员可能希望通过某种方法来删除陈旧的设备，以便将资源重点投放在真正需要管理的设备上。
 
@@ -30,7 +30,7 @@ ms.locfileid: "74207282"
 陈旧的设备是指已注册到 Azure AD，但在特定的时间范围内未曾用来访问过任何云应用的设备。 陈旧的设备会影响对租户中的设备和用户进行管理和支持，因为： 
 
 - 重复的设备可能使支持人员难以识别哪些设备当前处于活动状态。
-- An increased number of devices creates unnecessary device writebacks increasing the time for Azure AD connect syncs.
+- 增加的设备数会导致不必要的设备写回增加 Azure AD 连接同步的时间。
 - 出于整洁与合规性目的，你可能希望设备保持整齐有序。 
 
 Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常规生命周期策略。
@@ -43,11 +43,11 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 设备尝试身份验证时，会触发活动时间戳的评估。 在以下情况下，Azure AD 会评估活动时间戳：
 
-- A Conditional Access policies requiring [managed devices](../conditional-access/require-managed-devices.md) or [approved client apps](../conditional-access/app-based-conditional-access.md) has been triggered.
+- 已触发需要[托管设备](../conditional-access/require-managed-devices.md)或批准的[客户端应用](../conditional-access/app-based-conditional-access.md)的条件性访问策略。
 - 已加入 Azure AD 或已加入混合 Azure AD 的 Windows 10 设备在网络中处于活动状态。 
 - Intune 受管理设备已签入服务。
 
-If the delta between the existing value of the activity timestamp and the current value is more than 14 days (+/-5 day variance), the existing value is replaced with the new value.
+如果活动时间戳的现有值与当前值之间的增量为14天（+/-5 天方差），则将现有值替换为新值。
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>如何获取活动时间戳？
 
@@ -77,7 +77,7 @@ If the delta between the existing value of the activity timestamp and the curren
 
 ### <a name="timeframe"></a>时间范围
 
-定义作为陈旧设备指标的时间范围。 When defining your timeframe, factor the window noted for updating the activity timestamp into your value. For example, you shouldn't consider a timestamp that is younger than 21 days (includes variance) as an indicator for a stale device. 在某些情况下，某个设备看似是陈旧设备，但实际上并不是。 例如，相关设备的所有者可能正在度假或请了病假。  超过陈旧设备的时间范围。
+定义作为陈旧设备指标的时间范围。 定义时间范围时，请考虑将活动时间戳更新为你的值的窗口。 例如，不应将小于21天（包括方差）的时间戳视为过时设备的指示器。 在某些情况下，某个设备看似是陈旧设备，但实际上并不是。 例如，相关设备的所有者可能正在度假或请了病假。  超过陈旧设备的时间范围。
 
 ### <a name="disable-devices"></a>禁用设备
 
@@ -89,7 +89,7 @@ If the delta between the existing value of the activity timestamp and the curren
 
 ### <a name="system-managed-devices"></a>系统管理的设备
 
-不要删除系统管理的设备。 这些设备通常用于自动试运行等目的。 Once deleted, these devices can't be reprovisioned. 默认情况下，新的 `get-msoldevice` cmdlet 可以排除系统管理的设备。 
+不要删除系统管理的设备。 这些是通常的设备，如 Autopilot。 删除后，这些设备将无法重新预配。 默认情况下，新的 `get-msoldevice` cmdlet 可以排除系统管理的设备。 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
 
@@ -98,13 +98,13 @@ If the delta between the existing value of the activity timestamp and the curren
 清理 Azure AD：
 
 - **Windows 10 设备** - 在本地 AD 中禁用或删除 Windows 10 设备，并让 Azure AD Connect 将更改的设备状态同步到 Azure AD。
-- **Windows 7/8** - Disable or delete Windows 7/8 devices in your on-premises AD first. 无法使用 Azure AD Connect 在 Azure AD 中禁用或删除 Windows 7/8 设备。 Instead, when you make the change in your on-premises, you must disable/delete in Azure AD.
+- **Windows 7/8** -首先在本地 AD 中禁用或删除 Windows 7/8 设备。 无法使用 Azure AD Connect 在 Azure AD 中禁用或删除 Windows 7/8 设备。 相反，当你在本地进行更改时，你必须在 Azure AD 中禁用/删除。
 
 > [!NOTE]
->* Deleting devices in your on-premises AD or Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access). Read additional information on how to [remove registration on the client](faq.md#hybrid-azure-ad-join-faq).
->* Deleting a Windows 10 device only in Azure AD will re-synchronize the device from your on-premises using Azure AD connect but as a new object in "Pending" state. A re-registration is required on the device.
->* Removing the device from sync scope for Windows 10/Server 2016 devices will delete the Azure AD device. Adding it back to sync scope will place a new object in "Pending" state. A re-registration of the device is required.
->* If you not using Azure AD Connect for Windows 10 devices to synchronize (e.g. ONLY using AD FS for registration), you must manage lifecycle similar to Windows 7/8 devices.
+>* 删除本地 AD 或 Azure AD 中的设备不会删除客户端上的注册。 它仅阻止使用设备作为标识（例如条件性访问）访问资源。 阅读有关如何在[客户端上删除注册](faq.md#hybrid-azure-ad-join-faq)的其他信息。
+>* 仅在 Azure AD 中删除 Windows 10 设备将使用 Azure AD connect 从本地重新同步设备，但作为 "挂起" 状态的新对象。 设备上需要重新注册。
+>* 从 Windows 10/服务器2016设备的同步作用域中删除设备将删除 Azure AD 设备。 将其添加回同步作用域会将新对象置于 "挂起" 状态。 需要重新注册设备。
+>* 如果不使用 Windows 10 设备的 Azure AD Connect 进行同步（例如，仅使用 AD FS 进行注册），则必须管理与 Windows 7/8 设备相似的生命周期。
 
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 加入设备
@@ -112,20 +112,20 @@ If the delta between the existing value of the activity timestamp and the curren
 在 Azure AD 中禁用或删除已加入 Azure AD 的设备。
 
 > [!NOTE]
->* Deleting an Azure AD device does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g Conditional Access). 
->* Read more on [how to unjoin on Azure AD](faq.md#azure-ad-join-faq) 
+>* 删除 Azure AD 设备不会删除客户端上的注册。 它只会阻止使用设备作为标识访问资源（例如条件性访问）。 
+>* 阅读有关[如何在 Azure AD](faq.md#azure-ad-join-faq)上分离的详细信息 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD 注册设备
 
 在 Azure AD 中禁用或删除 Azure AD 注册的设备。
 
 > [!NOTE]
->* Deleting an Azure AD registered device in Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access).
->* Read more on [how to remove a registration on the client](faq.md#azure-ad-register-faq)
+>* 删除 Azure AD 中 Azure AD 注册的设备不会删除客户端上的注册。 它仅阻止使用设备作为标识（例如条件性访问）访问资源。
+>* 阅读有关[如何在客户端上删除注册](faq.md#azure-ad-register-faq)的详细信息
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>在 Azure 门户中清理陈旧的设备  
 
-可以在 Azure 门户中清理陈旧的设备，但使用 PowerShell 脚本可以更高效地处理此过程。 在最新的 PowerShell V1 模块中可以使用时间戳筛选器，并可以筛选出系统管理的设备，例如自动试运行设备。 目前不建议使用 PowerShell V2。
+可以在 Azure 门户中清理陈旧的设备，但使用 PowerShell 脚本可以更高效地处理此过程。 使用最新的 PowerShell V1 模块使用时间戳筛选器并筛选出系统托管设备，如 Autopilot。 目前不建议使用 PowerShell V2。
 
 典型的例程包括以下步骤：
 
@@ -144,7 +144,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-If you have a large number of devices in your directory, use the timestamp filter to narrow down the number of returned devices. 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
+如果目录中有大量设备，请使用时间戳筛选器来缩小返回的设备的数量。 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -161,12 +161,12 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 为 Windows 10 设备配置的 BitLocker 密钥存储在 Azure AD 中的设备对象上。 如果删除某个陈旧设备，则也会删除该设备上存储的 BitLocker 密钥。 在删除陈旧设备之前，应该确定清理策略是否与设备的实际生命周期相一致。 
 
-### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Why should I worry about Windows Autopilot devices?
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>为什么要考虑 Windows Autopilot 设备？
 
-When a Azure AD device was associated with a Windows Autopilot object the following three scenarios can occur if the device will be repurposed in future:
-- With Windows Autopilot user-driven deployments without using white glove, a new Azure AD device will be created, but it won’t be tagged with the ZTDID.
-- With Windows Autopilot self-deploying mode deployments, they will fail because an associate Azure AD device cannot be found.  (This is a security mechanism to make sure that no “imposter” devices try to join Azure AD with no credentials.) The failure will indicate a ZTDID mismatch.
-- With Windows Autopilot white glove deployments, they will fail because an associated Azure AD device cannot be found. (Behind the scenes, white glove deployments use the same self-deploying mode process, so they enforce the same security mechanisms.)
+如果 Azure AD 设备与 Windows Autopilot 对象关联，则在将来重新调整设备的用途时，可能会出现以下三种情况：
+- 使用 Windows Autopilot 用户驱动的部署而无需使用白手套，将创建一个新的 Azure AD 设备，但不会使用 ZTDID 标记它。
+- 使用 Windows Autopilot 自行部署模式部署，由于找不到关联 Azure AD 设备，它们将会失败。  （这是一种安全机制，用于确保没有 "入侵者" 设备尝试将 Azure AD 加入无凭据。）失败将指示 ZTDID 不匹配。
+- 对于 Windows Autopilot 纯白手套部署，由于找不到关联 Azure AD 设备，它们将会失败。 （后台手套部署使用相同的自部署模式进程，因此它们强制实施相同的安全机制。）
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何知道所有已加入的设备类型？
 

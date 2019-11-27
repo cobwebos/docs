@@ -143,7 +143,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 除了 CLI 和 YAML 部署，还可以使用 Azure[资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)部署容器组并在容器中装载卷。
 
-首先，在模板的容器组 `volumes` 节中填充 `properties` 数组。 
+首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 
 
 然后，对于要在其中装入卷的每个容器，在容器定义的 `properties` 部分中填充 `volumeMounts` 数组。
 
@@ -251,7 +251,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `volumeMounts` 部分填充 `properties` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
 
 ```JSON
 "volumeMounts": [{

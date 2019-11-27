@@ -40,7 +40,7 @@ ms.locfileid: "74546246"
 
 使用 Azure 门户或 PowerShell 配置作用域内同步设置：
 
-| 操作 | | |
+| 行动 | | |
 |--|--|--|
 | 创建 Azure AD DS 托管域并配置作用域同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | 修改作用域同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |

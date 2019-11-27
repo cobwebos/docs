@@ -24,7 +24,7 @@ ms.locfileid: "74546273"
 
 本文介绍如何在 Azure AD DS 托管域中配置基于资源的 Kerberos 约束委派。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文，需要以下资源：
 
@@ -36,7 +36,7 @@ ms.locfileid: "74546273"
     * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
 * 已加入到 Azure AD DS 托管域的 Windows Server 管理 VM。
     * 如果需要，请完成[创建 Windows SERVER VM 并将其加入托管域][create-join-windows-vm]的教程，然后[安装 AD DS 管理工具][tutorial-create-management-vm]。
-* 用户帐户是 Azure AD 租户中 Azure AD DC 管理员组的成员。
+* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
 
 ## <a name="kerberos-constrained-delegation-overview"></a>Kerberos 约束委派概述
 

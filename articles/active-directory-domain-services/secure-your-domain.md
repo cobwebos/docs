@@ -24,7 +24,7 @@ ms.locfileid: "74546223"
 
 本文介绍如何禁用 NTLM v1 和 TLS v1 密码并禁用 NTLM 密码哈希同步。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文，需要以下资源：
 

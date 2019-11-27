@@ -41,7 +41,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 为了避免这种障碍，请不要定义 Nva 或[用户定义的路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)，这些规则在规划和部署 Linux Pacemaker 群集节点时通过 nva 和类似设备在群集节点和 SBD 设备之间路由流量，SBD 设备。 
+> 在规划和部署 Linux Pacemaker 群集节点与 SBD 设备时，若要实现整个群集配置的整体可靠性，必须做到：所涉及的 VM 与托管 SBD 设备的 VM 之间的路由不通过任何其他设备（例如 [NVA](https://azure.microsoft.com/solutions/network-appliances/)）。 否则，NVA 的问题和维护事件可能会对整个群集配置的稳定性和可靠性产生负面影响。 若要避免此类障碍，请不要定义 Nva 或[用户定义的路由规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)，这些规则在规划和部署 Linux Pacemaker 群集节点和 SBD 设备时通过 nva 和类似设备在群集节点和 SBD 设备之间路由流量。 
 >
 
 ## <a name="sbd-fencing"></a>SBD 隔离
@@ -83,7 +83,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 
 在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
-**`nfs`** 用于标识 NFS 群集， **Ascsnw1**用于标识**NW1**的 ASCS 群集， **dbnw1**用于标识**NW1**的数据库群集， **nfs-0** ， **nfs-1**是其主机名NFS 群集节点， **nw1-xscs-0**和**nw1-xscs**为**nw1** ASCS 群集节点的主机名， **nw1-db-9**和**nw1**是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
+**`nfs`** 用于标识 NFS 群集， **Ascsnw1**用于标识**NW1**的 ASCS 群集。 **dbnw1**用于标识**NW1**的数据库群集， **nfs-0** ， **nfs-1**是 nfs 群集节点的主机名， **NW1-xscs** ， **NW1-xscs**是**NW1** ASCS 群集节点的主机名， **NW1-0**和**NW1-1**是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -567,7 +567,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 单击“添加角色分配”
 1. 选择角色“Linux 隔离代理角色”
 1. 输入前面创建的应用程序名称
-1. 点击“保存”(Save)
+1. 点击“保存”
 
 为第二个群集节点重复上述步骤。
 

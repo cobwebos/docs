@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 注册的应用中添加应用角色并在令牌中接收这些角色
+title: 在 Azure Active Directory 注册的应用中添加应用角色，并在令牌中接收这些角色
 titleSuffix: Microsoft identity platform
 description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
 services: active-directory
@@ -48,9 +48,9 @@ ms.locfileid: "74546848"
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
-     > 此清单中的每个应用角色定义都必须对 `id` 属性具有不同的有效 GUID。 
+     > 此清单中的每个应用角色定义必须具有不同于 `id` 属性的有效 GUID。 
      > 
-     > 每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含，则在保存清单时会收到错误消息。
+     > 每个应用程序角色定义的 `value` 属性应该与应用程序中的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果是这样，则在保存清单时，会收到错误。
      
 1. 保存清单。
 
@@ -100,7 +100,7 @@ ms.locfileid: "74546848"
 "availableToOtherTenants": false,
 ```
 
-定义的角色数会影响应用程序清单的限制。 已在[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)页上对这些限制进行了详细讨论。
+定义的角色数量将影响应用程序清单具有的限制。 它们已在 "[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)" 页上详细讨论。
 
 ### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 

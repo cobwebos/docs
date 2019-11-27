@@ -36,21 +36,21 @@ ms.locfileid: "74538797"
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
 
-Azure AD 提供了一个规则生成器，以便更快地创建和更新重要规则。 规则生成器支持的构造最多为五个表达式。 使用规则生成器可以通过一些简单的表达式轻松形成规则，但是，它不能用于重现每个规则。 如果规则生成器不支持要创建的规则，则可以使用文本框。
+Azure AD 提供了一个规则生成器，以便更快地创建和更新重要规则。 规则生成器支持的构造最多为五个表达式。 规则生成器使使用几个简单的表达式来形成规则变得更加容易，但是，它不能用于重现每个规则。 如果规则生成器不支持要创建的规则，则可以使用文本框。
 
-下面是一些高级规则或语法的示例，我们建议你使用文本框构造这些规则或语法：
+下面是我们建议使用文本框构造的高级规则或语法的一些示例：
 
-- 包含五个以上表达式的规则
+- 具有五个以上表达式的规则
 - 直接下属规则
-- 设置[运算符优先顺序](groups-dynamic-membership.md#operator-precedence)
-- [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions)；例如 `(user.proxyAddresses -any (_ -contains "contoso"))`
+- 设置[运算符优先级](groups-dynamic-membership.md#operator-precedence)
+- [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions);例如 `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会显示一条消息。 规则生成器不会以任何方式更改动态组规则支持的语法、验证或处理。
+> 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
 
 有关分步说明，请参阅[更新动态组](groups-update-rule.md)。
 
-![为动态组添加成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
+![添加动态组的成员身份规则](./media/groups-update-rule/update-dynamic-group-rule.png)
 
 ### <a name="rule-syntax-for-a-single-expression"></a>单个表达式的规则语法
 
@@ -68,9 +68,9 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- 属性
+- properties
 - 运算符
-- 值
+- Value
 
 表达式中各部分的顺序对于避免语法错误至关重要。
 
@@ -78,8 +78,8 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- Boolean
-- String
+- 布尔
+- 字符串
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
@@ -160,7 +160,7 @@ user.department -eq "Sales"
 
 
 ### <a name="using-the--match-operator"></a>使用 -match 运算符 
-**-match** 运算符用于匹配任何正则表达式。 示例:
+**-match** 运算符用于匹配任何正则表达式。 示例：
 
 ```
 user.displayName -match "Da.*"   
@@ -301,7 +301,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 Direct Reports for "{objectID_of_manager}"
 ```
 
-以下是有效规则的示例，其中“62e19b97-8b3d-4d4a-a106-4ce66896a863”是经理的 objectID：
+下面是一个有效规则的示例，其中 "62e19b97-8b3d-4d4a-a106-4ce66896a863" 是经理的 objectID：
 
 ```
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
@@ -318,17 +318,17 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 可使用成员资格规则创建包含租户中所有用户的组。 以后向租户添加用户或从中删除用户时，将自动调整该组的成员资格。
 
-“所有用户”规则是使用 -ne 运算符和 null 值的单一表达式构造的。 此规则将 B2B 来宾用户以及成员用户添加到该组。
+"所有用户" 规则是使用单表达式构造的，使用-ne 运算符和 null 值。 此规则将 B2B 来宾用户以及成员用户添加到该组。
 
 ```
 user.objectid -ne null
 ```
 
-### <a name="create-an-all-devices-rule"></a>创建“所有设备”规则
+### <a name="create-an-all-devices-rule"></a>创建 "所有设备" 规则
 
 可使用成员资格规则创建包含租户中所有设备的组。 以后向租户添加设备或从中删除设备时，将自动调整该组的成员资格。
 
-“所有设备”规则是使用 -ne 运算符和 null 值的单一表达式构造的：
+"所有设备" 规则使用单个表达式构造，使用-ne 运算符和 null 值：
 
 ```
 device.objectid -ne null
@@ -336,7 +336,7 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持扩展属性和自定义扩展属性作为动态成员资格规则中的字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持在动态成员身份规则中将扩展属性和自定义扩展属性作为字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
@@ -365,27 +365,27 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 > [!NOTE]
 > systemlabels 是不能与 Intune 一起设置的只读属性。
 >
-> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：(device.deviceOSVersion -eq "10.0 (17763)")。 可以通过 Get-MsolDevice PowerShell cmdlet 验证格式设置。
+> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：（deviceOSVersion-eq "10.0 （17763）"）。 可以通过 Get-msoldevice PowerShell cmdlet 验证格式设置。
 
 可以使用以下设备属性。
 
  设备属性  | 值 | 示例
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | 任意字符串值 |(device.displayName -eq "Rob iPhone")
- deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -或 (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
+ displayName | 任意字符串值 |（device. displayName-eq "抢 iPhone"）
+ deviceOSType | 任意字符串值 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>（Device.deviceostype-包含 "AndroidEnterprise"）<br>（Device.deviceostype-eq "AndroidForWork"）
  deviceOSVersion | 任意字符串值 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
- enrollmentProfileName | Apple 设备注册配置文件、设备注册 - 企业设备标识符 (Android - Kiosk) 或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Apple 设备注册配置文件、设备注册-企业设备标识符（Android-展台）或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | Autopilot 使用的任何字符串值，如所有 Autopilot 设备、订单 Id 或 PurchaseOrderID  | （devicePhysicalIDs-任意 _-包含 "[ZTDId]"）（devicePhysicalIds-任意 _-eq "[订单 Id]： 179887111881"）（devicePhysicalIds-任意 _-eq "[PurchaseOrderId]： 76222342342"）
- systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | (device.systemLabels -contains "M365Managed")
+ systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （systemLabels-包含 "M365Managed"）
 
 > [!Note]  
 > 对于 deviceOwnership，在创建设备的动态组时，需要将该值设置为“Company”。 而在 Intune 上，设备所有权表示为 Corporate。 请参阅 [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)，了解更多详细信息。 

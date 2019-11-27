@@ -25,11 +25,11 @@ ms.locfileid: "74533931"
 
 [Gen1 到 Gen2 映射](#gen1-gen2-map) | [提供反馈](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 > [!div class="checklist"]
-> * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已启用分层命名空间（HNS）的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
+> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已启用分层命名空间（HNS）的存储帐户。 按照[以下](data-lake-storage-quickstart-create-account.md)说明创建一个。
 > * .NET Framework 安装4.7.2 或更高版本。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 > * PowerShell 版本 `5.1` 或更高版本。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74533931"
 
 1. 打开 Windows PowerShell 命令窗口。
 
-2. 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+2. 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
    ```powershell
    Connect-AzAccount
@@ -81,7 +81,7 @@ ms.locfileid: "74533931"
    $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
    ```
 
-   * 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+   * 将 `<resource-group-name>` 的占位符值替换为资源组的名称。
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 

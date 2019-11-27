@@ -17,7 +17,7 @@ ms.locfileid: "74533645"
 本文档详述了如何使用 Azure 门户和 Azure CLI 收集容器实例的 Azure Monitor 指标。
 
 > [!IMPORTANT]
-> Azure 容器实例中的 Azure Monitor 指标目前为预览版，并且存在某些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> Azure 容器实例中的 Azure Monitor 指标目前为预览版，并且存在某些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="preview-limitations"></a>预览版限制
 

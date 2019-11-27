@@ -20,7 +20,7 @@ ms.locfileid: "74538223"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
 
-本文概述了与 Team Data Science Process (TDSP) 的建模阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
+本文概述了与 Team Data Science Process (TDSP) 的建模阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 生命周期概括了项目通常执行且经常重复的主要阶段：
 
    1. **了解业务**
    2. **数据采集和理解**
@@ -69,7 +69,7 @@ ms.locfileid: "74538223"
 
 我们提供包含 TDSP 的[自动化建模和报告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling)，该工具能够运行多个算法和参数扫描以生成基准模型。 它还会生成基准建模报表，该报表汇总每个模型的性能和参数组合，包括变量重要性。 此过程可以进一步促进功能设计，因为它也是可以迭代的。 
 
-## <a name="artifacts"></a>项目
+## <a name="artifacts"></a>Artifacts
 在此阶段中生成的项目包括：
 
    * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。

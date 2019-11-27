@@ -26,11 +26,11 @@ ms.locfileid: "74547355"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
+Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 可以使用此标识向任何支持 Azure AD 身份验证的服务进行身份验证，而无需在代码中包含凭据。 
 
 本文提供有关获取令牌的各种代码和脚本示例，以及有关处理令牌过期和 HTTP 错误等重要主题的指导。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -70,7 +70,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 Azure 资源的托管标识终结点。 |
@@ -79,7 +79,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。 |
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
-| `mi_res_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 mi_res_id（Azure 资源 ID）。 如果 VM 有用户分配的多个托管标识，则为必需的。 |
+| `mi_res_id` | 可有可无查询字符串参数，指示要令牌的托管标识的 mi_res_id （Azure 资源 ID）。 如果 VM 有用户分配的多个托管标识，则为必需的。 |
 
 使用 Azure 资源托管标识 VM 扩展终结点（计划于 2019 年 1 月弃用）的示例请求：
 
@@ -88,7 +88,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -362,7 +362,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | error   | 错误标识符。 |
 | error_description | 错误的详细说明。 **错误说明随时可能会更改。不要编写根据错误说明中的值进行分支的代码。**|

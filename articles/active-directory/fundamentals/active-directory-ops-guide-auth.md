@@ -207,7 +207,7 @@ ms.locfileid: "74535582"
 
 | **Priority** | **方案** | **建议** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1 | 如果你使用的是 PHS 或 PTA，但未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
+| 第 | 如果你使用的是 PHS 或 PTA，但未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
 | 2 | 如果你是联合的并且未使用 "insideCorporateNetwork" 声明和命名位置， | 定义已命名位置以提高风险事件的检测 |
 | 3 | 如果不在条件访问策略中使用命名位置，并且条件访问策略中没有任何风险或设备控制 | 配置条件访问策略以包含命名位置 |
 | 4 | 如果你是联合的并且使用的是 "insideCorporateNetwork" 声明，并且尚未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
@@ -255,7 +255,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 #### <a name="conditional-access-recommended-reading"></a>建议阅读的条件性访问
 
-- [Azure Active Directory 中的条件访问的最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+- [Azure Active Directory 中的条件性访问的最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
 - [标识和设备访问权限配置](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory 条件访问设置参考](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [常见的条件访问策略](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
@@ -346,7 +346,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 攻击者来自世界各地的各个部分。 使用条件性访问策略和位置作为条件来管理此风险。 使用条件性访问策略的[位置条件](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)，你可以阻止从其登录的位置到的位置的访问。
 
-![创建新命名位置](./media/active-directory-ops-guide/active-directory-ops-img14.png)
+![创建新的命名位置](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
 如果可用，请使用安全信息和事件管理（SIEM）解决方案来分析和查找跨区域的访问模式。 如果不使用 SIEM 产品，或者它不引入 Azure AD 中的身份验证信息，我们建议你使用[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)来确定跨区域的访问模式。
 
@@ -365,7 +365,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 - [Office 365 管理活动 API 参考](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

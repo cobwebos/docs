@@ -22,7 +22,7 @@ ms.locfileid: "74533702"
 
 > [!div class="checklist"]
 > * 随时了解*Azure 认知服务*中的新进展。
-> * 发行说明包含所有发布版的信息。
+> * 发行说明包含所有发布的信息。
 > * 搜索以查看您的问题是否已由社区讨论，或者现有文档是否已存在。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。
 > * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题。
@@ -69,11 +69,11 @@ ms.locfileid: "74533702"
 |-------------------------------|---------------|
 | 异常检测器              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | 必应服务                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| 计算机视觉               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| 计算机影像               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | 内容审查器             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | 自定义视觉                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | 人脸                          | https://cognitive.uservoice.com/forums/430315-face |
-| 形式                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| 表单                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | 引人入胜                     | https://feedback.azure.com/forums/34192--general-feedback |
 | 语言理解 (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | 个性化体验创建服务                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -89,7 +89,7 @@ ms.locfileid: "74533702"
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
 </div>
 
-发布说明在推出新版本后会更新。 说明包含有关新功能、改进和 bug 修复的信息。
+发布说明在推出新版本后会更新。 注释包含有关新功能、改进和 bug 修复的信息。
 
  - [自定义视觉服务](custom-vision-service/release-notes.md)
  - [人脸 API](face/releasenotes.md)
@@ -140,7 +140,7 @@ ms.locfileid: "74533702"
 
 * [Azure 示例-认知服务](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
 
-你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
+您可以创建 bug 报告和功能请求，或提出一般问题并分享最佳实践。 对于 bug 报告，请遵循所提供的模板：
 
 **描述 bug**
 
@@ -169,7 +169,7 @@ ms.locfileid: "74533702"
 **上下文**
 
  - 错误消息、日志信息、堆栈跟踪、...
- - 如果你针对特定的服务交互报告了一个错误，请报告所报告的事件的 SessionId 和时间（包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
+ - 如果针对特定服务交互报告错误，则报告所报告事件的 SessionId 和 time （包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
  - 任何其他附加信息
 
 ## <a name="reddit"></a>Reddit

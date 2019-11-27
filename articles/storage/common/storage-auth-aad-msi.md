@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 833aa7dcce5c429b3005a378e93e2177df1eb0d4
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66d867d33060aa931dbe42c534166e61ee7692fe
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595178"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534515"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限
 
@@ -34,39 +34,92 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 有关托管标识的详细信息，请参阅[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="authenticate-with-the-azure-identity-library-preview"></a>用 Azure 标识库进行身份验证（预览版）
+## <a name="authenticate-with-the-azure-identity-library"></a>通过 Azure 标识库进行身份验证
 
-适用于 .NET 的 Azure 标识客户端库（预览版）对安全主体进行身份验证。 当你的代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。
+Azure 标识客户端库的优点在于，它使你可以使用相同的代码来验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 在 Azure 环境中运行的代码中，客户端库对 Azure 资源的托管标识进行身份验证。 在开发环境中，托管标识不存在，因此，客户端库将对用户或服务主体进行身份验证，以便进行测试。
 
-当代码在开发环境中运行时，可以自动处理身份验证，或者可能需要浏览器登录，具体取决于所使用的工具。 Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
-
-其他开发工具可能会提示您通过 web 浏览器登录。 你还可以使用服务主体从开发环境进行身份验证。 有关详细信息，请参阅[在门户中为 Azure 应用创建标识](../../active-directory/develop/howto-create-service-principal-portal.md)。
+适用于 .NET 的 Azure 标识客户端库对安全主体进行身份验证。 当你的代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。
 
 进行身份验证后，Azure 标识客户端库将获取令牌凭据。 然后，在创建的服务客户端对象中封装此令牌凭据，以对 Azure 存储空间执行操作。 库通过获取适当的令牌凭据，无缝地处理这种情况。
 
 有关 Azure 标识客户端库的详细信息，请参阅[适用于 .net 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。
 
-## <a name="assign-rbac-roles-for-access-to-data"></a>为访问数据分配 RBAC 角色
+### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>分配基于角色的访问控制（RBAC）角色以访问数据
 
 当 Azure AD 安全主体尝试访问 blob 或队列数据时，该安全主体必须具有对资源的权限。 无论安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配允许访问 Azure 存储中的 blob 或队列数据的 RBAC 角色。 有关通过 RBAC 分配权限的信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)权限中标题为**访问权限分配 RBAC 角色**的部分。
 
-## <a name="install-the-preview-packages"></a>安装预览包
+### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
 
-本文中的示例使用适用于 Blob 存储的 Azure 存储客户端库的最新预览版本。 若要安装预览版包，请从 NuGet 包管理器控制台运行以下命令：
+当代码在开发环境中运行时，可以自动处理身份验证，或者可能需要浏览器登录，具体取决于所使用的工具。 Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
 
-```powershell
-Install-Package Azure.Storage.Blobs -IncludePrerelease
+其他开发工具可能会提示您通过 web 浏览器登录。
+
+### <a name="authenticate-a-service-principal-in-the-development-environment"></a>对开发环境中的服务主体进行身份验证
+
+如果开发环境不支持单一登录或通过 web 浏览器登录，则可以使用服务主体从开发环境进行身份验证。
+
+#### <a name="create-the-service-principal"></a>创建服务主体
+
+若要创建具有 Azure CLI 的服务主体并分配一个 RBAC 角色，请调用[az ad sp create for rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)命令。 提供要分配给新服务主体的 Azure 存储数据访问角色。 此外，请提供角色分配的作用域。 有关为 Azure 存储提供的内置角色的详细信息，请参阅[azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+
+如果你没有足够的权限将角色分配给服务主体，你可能需要请求帐户所有者或管理员执行角色分配。
+
+下面的示例使用 Azure CLI 创建新服务主体，并使用帐户范围将**存储 Blob 数据读取器**角色分配给它
+
+```azurecli-interactive
+az ad sp create-for-rbac \
+    --name <service-principal> \
+    --role "Storage Blob Data Reader" \
+    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-本文中的示例还使用[适用于 .net 的 Azure 标识客户端库](https://www.nuget.org/packages/Azure.Identity/)的最新预览版本通过 Azure AD 凭据进行身份验证。 若要安装预览版包，请从 NuGet 包管理器控制台运行以下命令：
+`az ad sp create-for-rbac` 命令返回 JSON 格式的服务主体属性列表。 复制这些值，以便在下一步中使用它们来创建必要的环境变量。
+
+```json
+{
+    "appId": "generated-app-ID",
+    "displayName": "service-principal-name",
+    "name": "http://service-principal-uri",
+    "password": "generated-password",
+    "tenant": "tenant-ID"
+}
+```
+
+> [!IMPORTANT]
+> RBAC 角色分配可能需要几分钟才能传播。
+
+#### <a name="set-environment-variables"></a>设置环境变量。
+
+Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
+
+|环境变量|Value
+|-|-
+|`AZURE_CLIENT_ID`|服务主体的应用 ID
+|`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID
+|`AZURE_CLIENT_SECRET`|为服务主体生成的密码
+
+> [!IMPORTANT]
+> 设置环境变量后，请关闭并重新打开控制台窗口。 如果你使用的是 Visual Studio 或其他开发环境，则可能需要重新启动开发环境才能注册新的环境变量。
+
+有关详细信息，请参阅[在门户中为 Azure 应用创建标识](../../active-directory/develop/howto-create-service-principal-portal.md)。
+
+## <a name="install-client-library-packages"></a>安装客户端库包
+
+本文中的示例使用最新版本的适用于 Blob 存储的 Azure 存储客户端库。 若要安装该包，请从 NuGet 包管理器控制台运行以下命令：
 
 ```powershell
-Install-Package Azure.Identity -IncludePrerelease
+Install-Package Azure.Storage.Blobs
+```
+
+本文中的示例还使用最新版本的适用于[.net 的 Azure 标识客户端库](https://www.nuget.org/packages/Azure.Identity/)通过 Azure AD 凭据进行身份验证。 若要安装该包，请从 NuGet 包管理器控制台运行以下命令：
+
+```powershell
+Install-Package Azure.Identity
 ```
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
 
-将以下 `using` 指令添加到你的代码，以使用 Azure 标识和 Azure 存储客户端库的预览版本。
+将以下 `using` 指令添加到你的代码，以使用 Azure 标识和 Azure 存储客户端库。
 
 ```csharp
 using System;

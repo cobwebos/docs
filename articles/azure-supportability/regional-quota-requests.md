@@ -34,7 +34,7 @@ ms.locfileid: "74531524"
 
 按照下面的说明通过 Azure 的 "帮助 + 支持" 边栏选项卡，在 Azure 门户中创建支持请求。 
 
-1. 在 https://portal.azure.com中，选择 "**帮助 + 支持**"。
+1. 在 https://portal.azure.com 中，选择 "**帮助 + 支持**"。
 
 ![帮助 + 支持](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -67,7 +67,7 @@ ms.locfileid: "74531524"
 
 1. 从 https://portal.azure.com 中选择“订阅”。
 
-![订阅](./media/resource-manager-core-quotas-request/subscriptions.png)
+![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 

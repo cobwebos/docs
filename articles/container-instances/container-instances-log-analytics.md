@@ -22,7 +22,7 @@ Log Analytics 工作区提供了一个集中的位置，用于存储和查询来
 > [!NOTE]
 > 目前，只能将事件数据从 Linux 容器实例发送到 Log Analytics。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要在容器实例中启用日志记录，需具备以下条件：
 
@@ -50,7 +50,7 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 ### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要使用 Azure CLI 进行部署，请在 `--log-analytics-workspace`az container create`--log-analytics-workspace-key` 命令中指定 [ 和 ][az-container-create] 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
+若要使用 Azure CLI 进行部署，请在 [az container create][az-container-create] 命令中指定 `--log-analytics-workspace` 和 `--log-analytics-workspace-key` 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
 
 ```azurecli-interactive
 az container create \
@@ -111,7 +111,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 ![Azure 门户中的“日志搜索”结果][log-search-01]
 
-## <a name="view-events"></a>查看事件
+## <a name="view-events"></a>查看活动
 
 还可以在 Azure 门户中查看容器实例的事件。 事件包括实例的创建时间和启动时间。 若要查看 `ContainerEvent_CL` 表中的事件数据，请执行以下操作：
 

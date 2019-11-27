@@ -31,7 +31,7 @@ ms.locfileid: "74531830"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
@@ -65,7 +65,7 @@ ms.locfileid: "74531830"
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
-![1][1]
+![第][1]
 
 打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。
 
@@ -85,13 +85,13 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
-| GatewayNotFound | 找不到网关，或网关未预配。 |否|
-| PlannedMaintenance |  网关实例处于维护状态。  |否|
-| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。 | 否 |
-| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | 否 |
-| PlatformInActive | 平台出现问题。 | 否|
-| ServiceNotRunning | 底层服务未运行。 | 否|
-| NoConnectionsFoundForGateway | 网关未建立连接。 这只是一条警告。| 否|
+| GatewayNotFound | 找不到网关，或网关未预配。 |No|
+| PlannedMaintenance |  网关实例处于维护状态。  |No|
+| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。 | No |
+| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | No |
+| PlatformInActive | 平台出现问题。 | No|
+| ServiceNotRunning | 底层服务未运行。 | No|
+| NoConnectionsFoundForGateway | 网关未建立连接。 这只是一条警告。| No|
 | ConnectionsNotConnected | 未连接任何连接设备。 这只是一条警告。| 是|
 | GatewayCPUUsageExceeded | 当前网关 CPU 使用率超过 95%。 | 是 |
 
@@ -100,15 +100,15 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
-| GatewayNotFound | 找不到网关，或网关未预配。 |否|
-| PlannedMaintenance | 网关实例处于维护状态。  |否|
-| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。  | 否 |
-| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | 否 |
-| ConnectionEntityNotFound | 缺少连接配置。 | 否 |
-| ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |否|
+| GatewayNotFound | 找不到网关，或网关未预配。 |No|
+| PlannedMaintenance | 网关实例处于维护状态。  |No|
+| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。  | No |
+| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | No |
+| ConnectionEntityNotFound | 缺少连接配置。 | No |
+| ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |No|
 | ConnectionNotConfiguredOnGateway | 未在底层服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配。 | 是|
+| Authentication | 预共享密钥不匹配。 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|

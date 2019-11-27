@@ -119,7 +119,7 @@ ms.locfileid: "74535296"
 - 规划标识安全改进
 - 审查改进措施的成败
 
-![安全功能分数](./media/active-directory-ops-guide/active-directory-ops-img17.png)
+![安全评分](./media/active-directory-ops-guide/active-directory-ops-img17.png)
 
 如果你的组织当前没有可用于监视身份安全分数变化的计划，则建议你实现计划并分配所有者来监视和推动改进操作。 组织应尽快纠正提高操作的得分，使得分超过30。
 
@@ -172,7 +172,7 @@ Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识
 
 使用与域控制器相同的方式锁定对本地标识组件（例如 Azure AD Connect、AD FS 和 SQL 服务）的访问。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全标识基础结构有七个方面。 此列表将帮助你找到为 Azure Active Directory （Azure AD）优化操作而应执行的操作。
 

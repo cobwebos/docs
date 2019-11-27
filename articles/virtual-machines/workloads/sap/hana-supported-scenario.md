@@ -49,7 +49,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 本文档详细介绍每个受支持体系结构中的两个组件：
 
 - 以太网
-- 存储
+- 存储空间
 
 ### <a name="ethernet"></a>以太网
 
@@ -61,7 +61,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - **C**：此接口用于建立节点到存储的连接。
 - **D**：此接口用于建立节点到 ISCSI 设备的连接，以进行 STONITH 设置。 仅在请求 HSR 设置时配置此接口。  
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点 |
@@ -96,7 +96,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 - 应以独占方式使用以太网“D”访问 pacemaker 的 STONITH 设备。 配置 HANA 系统复制 (HSR) 并且希望使用基于 SBD 的设备在操作系统上实现自动故障转移时，需要此接口。
 
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 根据请求的拓扑结构预配置存储。 卷大小和装入点有所不同，具体取决于配置的服务器、SKU 和拓扑的数量。 查看你所需的方案（本文档的后文）以获取详细信息。 如果需要更多存储空间，可按一个 TB 增量购买。
 
 >[!NOTE]
@@ -135,7 +135,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -146,10 +146,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |/hana/shared/SID | HANA 安装 | 
 |/hana/data/SID/mnt00001 | 数据文件安装 | 
@@ -170,7 +170,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -181,10 +181,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |/hana/shared/SID1 | SID1 的 HANA 安装 | 
 |/hana/data/SID1/mnt00001 | SID1 的数据文件安装 | 
@@ -210,7 +210,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -221,10 +221,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |/hana/shared/SID | SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | SID 的数据文件安装 | 
@@ -251,7 +251,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -262,10 +262,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -305,7 +305,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -316,10 +316,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 用于 STONITH |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -353,7 +353,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -364,10 +364,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 用于 STONITH |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主站点的主节点上**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -412,7 +412,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -423,10 +423,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点和备用节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -453,7 +453,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -464,10 +464,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点、辅助节点和备用节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -489,7 +489,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -500,10 +500,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点和辅助节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -528,7 +528,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 HLI |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -539,10 +539,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
@@ -573,7 +573,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -584,10 +584,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装载点是在每个每个的
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |/hana/shared/SID | SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | SID 的数据文件安装 | 
@@ -614,7 +614,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -625,10 +625,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -664,7 +664,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -675,10 +675,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -709,7 +709,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
@@ -720,10 +720,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
@@ -760,7 +760,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 ### <a name="ethernet"></a>以太网
 以下网络接口已预配：
 
-| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 使用案例|
+| NIC 逻辑接口 | SKU 类型 | 带 SUSE 操作系统的名称 | 带 RHEL 操作系统的名称 | 用例|
 | --- | --- | --- | --- | --- |
 | A | 第 I 类 | eth0.tenant | eno1.tenant | 客户端到 B-HLI/HSR |
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
@@ -771,10 +771,10 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 | C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储
+### <a name="storage"></a>存储空间
 以下装入点已预配：
 
-| 装入点 | 使用案例 | 
+| 装入点 | 用例 | 
 | --- | --- |
 |**在主节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 

@@ -29,7 +29,7 @@ ms.locfileid: "74534161"
 * [为 Azure 准备 CentOS 7.0+ 虚拟机](#centos-70)
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -217,7 +217,7 @@ ms.locfileid: "74534161"
     ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
     ```
 
-16. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+16. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
     ```bash
     sudo waagent -force -deprovision
@@ -383,7 +383,7 @@ ms.locfileid: "74534161"
     ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
     ```
 
-13. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
+13. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
     ```bash
     sudo waagent -force -deprovision

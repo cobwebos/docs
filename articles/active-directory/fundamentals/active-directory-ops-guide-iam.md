@@ -191,7 +191,7 @@ Azure Active Directory 通过[基于组](https://docs.microsoft.com/azure/active
 - [使用 IdFix 工具为与 Office 365 同步准备目录属性-Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect：同步过程中的错误疑难解答](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全标识基础结构有五个方面。 此列表将帮助你快速查找和采取必要的措施来保护并管理组织中标识及其权利的生命周期。
 

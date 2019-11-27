@@ -11,9 +11,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74538898"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
+# <a name="view-deployment-history-with-azure-resource-manager"></a>查看 Azure 资源管理器的部署历史记录
 
-使用 Azure 资源管理器可以查看部署历史记录并检查过去部署中的特定操作。 你可以查看已部署的资源，并获取有关任何错误的信息。
+Azure 资源管理器使你能够查看部署历史记录并检查过去部署中的特定操作。 你可以查看已部署的资源，并获取有关任何错误的信息。
 
 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "74538898"
 
 1. 选择要检查的资源组。
 
-1. 选择“部署”下面的链接。
+1. 选择 "**部署**" 下的链接。
 
    ![选择部署历史记录](./media/resource-manager-deployment-operations/select-deployment-history.png)
 

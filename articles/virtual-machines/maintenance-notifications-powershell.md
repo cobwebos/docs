@@ -22,7 +22,7 @@ ms.locfileid: "74535829"
 
 **本文适用于运行 Linux 和 Windows 的虚拟机。**
 
-可以使用 Azure Powershell 来查看何时计划进行[维护](maintenance-notifications.md)的 vm。 使用 [ 参数时可通过 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` cmdlet 获得计划内维护信息。
+可以使用 Azure Powershell 来查看何时计划进行[维护](maintenance-notifications.md)的 vm。 使用 `-status` 参数时可通过 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
   
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
@@ -33,7 +33,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
 
-| 值 | 说明   |
+| Value | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 |
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 |

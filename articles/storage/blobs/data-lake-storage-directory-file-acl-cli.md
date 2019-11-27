@@ -24,11 +24,11 @@ ms.locfileid: "74534296"
 > 本文中所述的 `storage-preview` 扩展目前为公共预览版。
 
  | [Gen1 到 Gen2 映射的](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)[示例](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 > [!div class="checklist"]
-> * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已启用分层命名空间（HNS）的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
+> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已启用分层命名空间（HNS）的存储帐户。 按照[以下](data-lake-storage-quickstart-create-account.md)说明创建一个。
 > * Azure CLI 版本 `2.0.67` 或更高版本。
 
 ## <a name="install-the-storage-cli-extension"></a>安装存储 CLI 扩展

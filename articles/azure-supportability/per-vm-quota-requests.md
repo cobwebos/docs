@@ -35,7 +35,7 @@ ms.locfileid: "74531717"
 
 你还可以通过单个支持案例请求多个区域的配额。 有关详细信息，请参阅下面的步骤11。
 
-1. 在 https://portal.azure.com中，选择 "**帮助 + 支持**"。
+1. 在 https://portal.azure.com 中，选择 "**帮助 + 支持**"。
 
    ![帮助 + 支持](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -89,7 +89,7 @@ ms.locfileid: "74531717"
 
 1. 从 https://portal.azure.com 中选择“订阅”。
 
-   ![订阅](./media/resource-manager-core-quotas-request/subscriptions.png)
+   ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 

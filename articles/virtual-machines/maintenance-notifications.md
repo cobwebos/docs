@@ -69,7 +69,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 - 在两个更新域（UDs）之间需要超过30分钟的 VM 恢复时间。 为了控制更新域之间的时间，一次只能在一个更新域 (UD) 的 VM 上触发维护。
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 
 **问：为什么需要立即重新启动虚拟机？**
@@ -80,7 +80,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **答：** 可用性集或虚拟机规模集中部署的虚拟机具有更新域 (UD) 的概念。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
 
-有关高可用性的详细信息，请参阅 [Azure 中虚拟机的可用性](/linux/availability.md)。
+有关高可用性的详细信息，请参阅[Azure 中虚拟机的可用性](/linux/availability.md)。
 
 **问：如何收到有关计划内维护的通知？**
 
@@ -100,7 +100,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **问：使用虚拟机规模集时的体验如何？**
 
-**答：** 虚拟机规模集现在可使用计划内维护。 有关如何启动自助维护的说明，请参阅[虚拟机规模集的计划内维护](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)文档。
+**答：** 虚拟机规模集现在可使用计划内维护。 有关如何启动自助服务维护的说明，请参阅[虚拟机规模集的计划维护](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)文档。
 
 **问：使用云服务（Web/辅助角色）和 Service Fabric 时的体验如何？**
 

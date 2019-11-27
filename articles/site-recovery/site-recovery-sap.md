@@ -26,7 +26,7 @@ ms.locfileid: "74533849"
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护 SAP NetWeaver 应用程序部署。 本文讨论如何按照一些最佳做法，使用 Site Recovery 将 Azure 上的三层 SAP NetWeaver 部署复制到其他 Azure 数据中心，从而对其进行保护。 此外，介绍支持的方案和配置，以及如何执行测试故障转移（灾难恢复演练）和实际故障转移。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始之前，请确保知道如何执行以下任务：
 
 * [将虚拟机复制到 Azure](azure-to-azure-walkthrough-enable-replication.md)
@@ -78,7 +78,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 
 处理群集的另一种方法是实现文件共享群集。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) 最近修改了 Central Services 部署模式，以允许通过 UNC 路径访问 /sapmnt 全局目录。 但是，我们仍然建议确保 /sapmnt UNC 共享具有高可用性。 这可在 Central Services 实例上实现：将 Windows Server 故障转移群集与 Windows Server 2016 中的横向扩展文件服务器 (SOFS) 和存储空间直通 (S2D) 功能配合使用。 
  > [!NOTE]
- > 当前，Azure Site Recovery 仅支持使用存储空间直通和 SIOS Datakeeper 的被动节点进行虚拟机的崩溃一致点复制
+ > 目前 Azure Site Recovery 仅支持使用 Datakeeper 的存储空间直通和被动节点对虚拟机进行故障一致性点复制
 
 
 ## <a name="disaster-recovery-considerations"></a>灾难恢复注意事项

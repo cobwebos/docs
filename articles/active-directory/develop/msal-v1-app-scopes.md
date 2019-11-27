@@ -26,7 +26,7 @@ ms.locfileid: "74532984"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
-OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客户端应用程序公开的 Azure Active Directory （Azure AD）权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 `oauth2Permissions`Azure Active Directory 应用程序清单参考[中有关 ](reference-app-manifest.md#manifest-reference) 的部分。
+OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客户端应用程序公开的 Azure Active Directory （Azure AD）权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单参考](reference-app-manifest.md#manifest-reference)中有关 `oauth2Permissions` 的部分。
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 

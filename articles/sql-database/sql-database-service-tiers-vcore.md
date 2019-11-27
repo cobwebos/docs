@@ -31,12 +31,12 @@ VCore 模型中的服务层选项包括常规用途、业务关键和超大规�
 
 ||**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
-|最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
-|存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**<br/>5 GB - 3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**：<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 最多支持 100 TB 存储空间。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
-|I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。|
-|可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](sql-database-read-scale-out.md)|
-|备份|[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
-|内存中|不支持|支持|不支持|
+|最适用情况|大多数业务工作负荷。 提供面向预算、平衡和可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有高度可缩放的存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
+|存储空间|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**：<br/>5 GB-3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**：<br/>32 GB - 4 TB |根据需要灵活地自动增长存储。 最多支持 100 TB 的存储空间。 将本地 SSD 存储用于本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终长期数据存储。 |
+|I/o 吞吐量（近似）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别的缓存的多层体系结构。 有效 IOPs 将取决于工作负荷。|
+|可用性|1个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性（HA）|1个读写副本，加上 0-4[个读取缩放副本](sql-database-read-scale-out.md)|
+|备份|[读取访问异地冗余存储（GRS）](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为7天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份是即时的，不会影响计算 i/o 性能。 还原速度很快，并且不是数据大小的操作（花费几分钟而不是几小时或几天）。|
+|内存中|不支持|受支持|不支持|
 |||
 
 
@@ -178,6 +178,6 @@ M 系列在以下区域提供：美国东部、北欧、西欧、美国西部2�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要创建 SQL 数据库，请参阅[使用 Azure 门户创建 sql 数据库](sql-database-single-database-get-started.md)。
-- 有关适用于单一数据库的特定计算大小和存储大小选项，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
-- 有关适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
+- 有关适用于单一数据库的特定计算大小和存储大小选项，请参阅[针对单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
+- 有关弹性池可用的特定计算大小和存储大小选项，请参阅适用于[弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
 - 有关定价的详细信息，请参阅[AZURE SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)。

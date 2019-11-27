@@ -24,11 +24,11 @@ ms.locfileid: "74539042"
 >
 > 载入[Azure Sentinel](../../sentinel/quickstart-onboard.md)时，请指定要在其中安装 Office 365 解决方案的 Log Analytics 工作区。 启用连接器后，该解决方案将在工作区中提供，并使用与已安装的任何其他监视解决方案完全相同的。
 >
-> Azure 政府云的用户必须按照本文中的步骤安装 Office 365，因为 Azure Sentinel 在政府云中尚不可用。
+> Azure 政府版云的用户必须按照本文中的步骤安装 Office 365，因为政府云中尚不提供 Azure Sentinel。
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
 
-- 监视 Office 365 帐户的用户活动，以分析使用模式和确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
+- 监视 Office 365 帐户的用户活动，以分析使用模式并确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
@@ -37,7 +37,7 @@ ms.locfileid: "74539042"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要以下各项才能安装和配置此解决方案。
 
@@ -81,13 +81,13 @@ ms.locfileid: "74539042"
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
 1. 依次选择“Azure Active Directory”和“应用注册”。
-1. 单击“新建注册”。
+1. 单击 "**新建注册**"。
 
     ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序**名称**。 选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”作为**支持的帐户类型**。
+1. 输入应用程序**名称**。 为**支持的帐户类型**选择**任何组织目录中的帐户（任何 Azure AD Directory-多租户）** 。
     
     ![创建应用程序](media/solution-office-365/create-application.png)
-1. 单击“注册”并验证应用程序信息。
+1. 单击 "**注册**" 并验证应用程序信息。
 
     ![已注册的应用](media/solution-office-365/registered-app.png)
 
@@ -96,16 +96,16 @@ ms.locfileid: "74539042"
 
 ### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
 
-1. 选择“身份验证”，并验证在“支持的帐户类型”下是否选择了“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”。
+1. 选择 "**身份验证**"，并验证是否在 "**支持的帐户类型**" 下选择了**任何组织目录中的帐户（任何 Azure AD directory-多租户）** 。
 
     ![设置多租户](media/solution-office-365/settings-multitenant.png)
 
-1. 选择“API 权限”，然后选择“添加权限”。
-1. 单击“Office 365 管理 API”。 
+1. 依次选择 " **API 权限**" 和 "**添加权限**"。
+1. 单击 " **Office 365 管理 api**"。 
 
     ![选择 API](media/solution-office-365/select-api.png)
 
-1. 在“应用程序需要哪种类型的权限?”下为**应用程序权限**和**委托的权限**选择以下选项：
+1. 在**应用程序所需的权限类型**下，为**应用程序权限**和**委托权限**选择以下选项：
    - 读取组织的服务运行状况信息
    - 读取组织的活动数据
    - 读取组织的活动报表
@@ -113,12 +113,12 @@ ms.locfileid: "74539042"
      ![选择 API](media/solution-office-365/select-permissions-01.png)![选择 API](media/solution-office-365/select-permissions-02.png)
 
 1. 单击“添加权限”。
-1. 单击“授予管理员同意”，然后在要求确认时单击“是”。
+1. 单击 "**授予管理员许可**"，然后在要求验证时单击 **"是"** 。
 
 
 ### <a name="add-a-secret-for-the-application"></a>为应用程序添加机密
 
-1. 依次选择“证书和机密”、“新建客户端密码”。
+1. 选择**证书 & 机密**，然后选择**新的客户端密码**。
 
     ![密钥](media/solution-office-365/secret.png)
  
@@ -195,7 +195,7 @@ ms.locfileid: "74539042"
     ![管理员同意](media/solution-office-365/admin-consent.png)
 
 > [!NOTE]
-> 可能会重定向到不存在的页面。 将其视为成功。
+> 可能会被重定向到不存在的页面。 将其视为成功。
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>订阅 Log Analytics 工作区
 
@@ -532,10 +532,10 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | 说明 |
+| 柱形图​​ | 描述 |
 |:--|:--|
-| 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
-| Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
+| Operations | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
+| 交换 | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
 | SharePoint | 显示用户在 SharePoint 文档上执行次数最多的一些活动。 从此磁贴向下钻取时，搜索页会显示这些活动的详细信息，例如目标文档和此活动的位置。 比如，对于文件访问事件，将能够看到正在访问的文档、其关联的帐户名以及 IP 地址。 |
 | Azure Active Directory | 包含一些最活跃的用户活动，例如重置用户密码和登录尝试。 向下钻取时，将能够看到这些活动的详细信息（例如结果状态）。 如果想要监视 Azure Active Directory 上的可疑活动，这通常很有帮助。 |
 
@@ -550,25 +550,25 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
-| 类型 | OfficeActivity |
+| Type | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
-| OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>交换<br>SharePoint|
 | Operation | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>Application<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -580,7 +580,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -594,12 +594,12 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | 所执行操作（由 Operation 属性标识）针对的用户。 |
-| 参与者 | 执行操作的用户或服务主体。 |
+| Actor | 执行操作的用户或服务主体。 |
 | ActorContextId | 参与者所属的组织的 GUID。 |
 | ActorIpAddress | 采用 IPV4 或 IPV6 地址格式的参与者 IP 地址。 |
 | InterSystemsId | 跨 Office 365 服务内的组件跟踪操作的 GUID。 |
@@ -612,7 +612,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -628,24 +628,24 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | 交换 |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  指定 cmdlet 是由组织中的用户运行、由 Microsoft 数据中心人员或数据中心服务帐户运行，还是由委派的管理员运行。 值 False 标识 cmdlet 由组织中的某人运行。 值 True 表示 cmdlet 由数据中心人员、数据中心服务帐户或委派的管理员运行。 |
 | ModifiedObjectResolvedName |  这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| Parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | 交换 |
 | RecordType     | ExchangeItem |
 | ClientInfoString | 用于执行操作的电子邮件客户端的相关信息，例如浏览器版本、Outlook 版本和移动设备信息。 |
 | Client_IPAddress | 记录操作时所用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -666,11 +666,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | 交换 |
 | RecordType     | ExchangeItem |
-| 项目 | 表示对其执行操作的项 | 
+| Item | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |
@@ -681,9 +681,9 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | 交换 |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | 组中每个项的相关信息。 |
 | CrossMailboxOperations | 表示操作是否涉及多个邮箱。 |
@@ -692,15 +692,15 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | DestMailboxOwnerSid | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定目标邮箱的 SID。 |
 | DestMailboxOwnerUPN | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定的目标邮箱所有者的 UPN。 |
 | DestFolder | 针对“移动”等操作的目标文件夹。 |
-| 文件夹 | 一组项所在的文件夹。 |
-| 文件夹 |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
+| Folder | 一组项所在的文件夹。 |
+| Folders |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
 
 
 ### <a name="sharepoint-base"></a>SharePoint Base
 
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -717,7 +717,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -730,7 +730,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -751,10 +751,10 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 下表提供了此解决方案收集的更新记录的示例日志搜索。
 
-| 查询 | 说明 |
+| Query | 描述 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
+|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload = ~ "sharepoint" &#124;汇总 Count （） By SiteUrl \| 按计数 asc 排序|
 |文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

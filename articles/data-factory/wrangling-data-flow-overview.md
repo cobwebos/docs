@@ -42,9 +42,9 @@ ms.locfileid: "74531379"
 
 | 连接器 | 数据格式 | 身份验证类型 |
 | -- | -- | --|
-| [Azure Blob 存储](connector-azure-blob-storage.md) | CSV | 帐户密钥 |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service Principal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | 帐户密钥、服务主体 |
+| [Azure Blob 存储](connector-azure-blob-storage.md) | .CSV | 帐户密钥 |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | .CSV | Service Principal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | .CSV | 帐户密钥、服务主体 |
 | [Azure SQL 数据库](connector-azure-sql-database.md) | - | SQL 身份验证 |
 | [Azure Synapse 分析](connector-azure-sql-data-warehouse.md) | - | SQL 身份验证 |
 

@@ -25,7 +25,7 @@ ms.locfileid: "74548338"
 > * [数据库游标](/azure/kusto/management/databasecursor)。
 > * [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[WEB UI](https://dataexplorer.azure.com/)。

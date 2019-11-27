@@ -43,7 +43,7 @@ ms.locfileid: "74539243"
 
 使用 Azure 机器学习，数据偏移通过数据集或部署来监视。 若要监视数据偏移，请指定基线数据集，这通常是模型的定型数据集。 第二个数据集（通常是从部署中收集的模型输入数据）根据基线数据集进行测试。 这两个数据集都被分析并输入到数据偏移监视服务。 训练机器学习模型来检测两个数据集之间的差异。 模型的性能转换为偏移系数，这会测量两个数据集之间的偏差量。 使用[model interpretability](how-to-machine-learning-interpretability.md)，将计算构成偏移系数的特征。 在数据集配置文件中，将跟踪有关每个功能的统计信息。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -123,7 +123,7 @@ RunDetails(dd_run).show()
 提交 DataDriftDetector 运行后，可以在每次运行迭代中看到为数据偏差任务保存的偏差度量值：
 
 
-|度量值|说明|
+|指标|描述|
 --|--|
 wasserstein_distance|为一维数值分布定义的统计距离。|
 energy_distance|为一维数值分布定义的统计距离。|

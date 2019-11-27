@@ -19,11 +19,11 @@ ms.locfileid: "74538825"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
 
-在 Azure 内容审查器中使用[文本审查 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 扫描文本内容以查找亵渎语言，并将其与自定义和共享列表进行比较。
+使用 Azure 内容审查器中的[文本审核 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)来扫描猥亵语言文本内容，并将其与自定义和共享列表进行比较。
 
 ## <a name="get-your-api-key"></a>获取 API 密钥
 
-需要提供订阅密钥才能在联机控制台中试运行 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="navigate-to-the-api-reference"></a>导航到 API 参考
 
@@ -41,12 +41,12 @@ ms.locfileid: "74538825"
 
 ## <a name="select-the-inputs"></a>选择输入
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
 在文本屏幕中选择要使用的查询参数。 在本例中，使用语言的默认值。 也可以将其留空，因为作为其执行的一部分，该操作将自动检测可能的语言。
 
 > [!NOTE]
-> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
+> 有关 language 参数，分配 `eng` 或留空以查看计算机辅助的分类响应（预览功能）。 **此功能仅支持英语**。
 >
 > 对于**不敬词**检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或将其留空。
 
@@ -68,7 +68,7 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.
 
 ## <a name="analyze-the-response"></a>分析响应
 
-下面的响应显示来自 API 的各种见解。 它包含潜在不雅内容、个人数据、分类（预览）和自动更正版本。
+下面的响应显示来自 API 的各种见解。 它包含潜在的猥亵语言、个人数据、分类（预览）和自动更正版本。
 
 > [!NOTE]
 > 计算机辅助的“分类”功能处于预览状态，仅支持英语。
@@ -167,7 +167,7 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 255.255.
 }
 ```
 
-有关 JSON 响应中各部分的详细说明，请参阅[文本审查](text-moderation-api.md)概念指南。
+有关 JSON 响应中所有部分的详细说明，请参阅[文本审核](text-moderation-api.md)概念性指南。
 
 ## <a name="next-steps"></a>后续步骤
 

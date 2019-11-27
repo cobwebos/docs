@@ -34,7 +34,7 @@ ms.locfileid: "74535686"
 
 2. 根据要缩放的内容，选择 "**常规用途**" 或 "**内存优化**"。 
 
-    ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![更改-定价层](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > 更改层会导致服务器重启。
@@ -90,7 +90,7 @@ ms.locfileid: "74535686"
 
 1. 在 Azure 门户中选择你的服务器。 在 "**概述**" 窗口中选择 "**删除**"。
 
-    ![删除](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. 在输入框中键入服务器的名称，以确认这是要删除的服务器。
 

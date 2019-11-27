@@ -1,5 +1,5 @@
 ---
-title: 如何使用 PowerShell 在虚拟机规模集上配置 Azure 资源的托管标识
+title: 使用 PowerShell 在虚拟机规模集上配置托管标识-Azure AD
 description: 分步说明如何使用 PowerShell 在虚拟机规模集上配置系统分配的托管标识和用户分配的托管标识。
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310000"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547268"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虚拟机规模集上配置 Azure 资源的托管标识
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 此标识可用于通过支持 Azure AD 身份验证的任何服务的身份验证，这样就无需在代码中插入凭据了。 
+Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供了一个自动托管标识。 可以使用此标识向任何支持 Azure AD 身份验证的服务进行身份验证，而无需在代码中包含凭据。 
 
 在本文中，你将了解如何使用 PowerShell 在虚拟机规模集上执行 Azure 资源的托管标识操作：
 - 在虚拟机规模集上启用和禁用系统分配的托管标识
@@ -34,9 +34,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-it-work)。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 - 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
 
@@ -56,7 +56,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 要创建启用了系统分配托管标识的虚拟机规模集，请执行以下操作：
 
-1. 请参阅 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的示例 1，以创建具有系统分配的托管标识的虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
+1. 请参阅[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 参考文章中的*示例 1* ，以使用系统分配的托管标识创建虚拟机规模集。  将参数 `-IdentityType SystemAssigned` 添加到 `New-AzVmssConfig` cmdlet：
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`

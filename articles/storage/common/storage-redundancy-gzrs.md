@@ -93,7 +93,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 
 ### <a name="migrating-from-a-zrs-account"></a>从 ZRS 帐户迁移
 
-若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请务必将占位符值替换为你自己的值：
+若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请记住将占位符值替换为自己的值：
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -SkuName "Standard_RAGZRS"
@@ -142,16 +142,16 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 1. 选择 "**新建支持请求**"。
 2. 根据帐户信息填写“基本信息”。 在 "**服务**" 部分中，选择 "**存储帐户管理**" 并指定要迁移的帐户。
-3. 选择“下一步”。
+3. 选择“**下一步**”。
 4. 在“问题”部分指定以下值：
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
     - **标题**：键入描述性标题，例如 **（RA-） GZRS 帐户迁移**。
     - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_\_ 区域中的 [LRS，GRS] 迁移到 GZRS。" 要从 \_\_ 区域中的 [LRS，RA-GRS] 迁移到 GZRS。 "
-5. 选择“下一步”。
+5. 选择“**下一步**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
-7. 选择“创建”。
+7. 选择**创建**。
 
 支持代表将与你联系以提供帮助。
 

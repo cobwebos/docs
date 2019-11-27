@@ -56,7 +56,7 @@ ms.locfileid: "74535452"
 
 在进行测试时需要特别注意的一些变化，从简单的技术（例如，向外扩展用户的目标子集到在并行测试租户中部署更改）。 如果尚未实现测试策略，则应根据下表中的准则定义测试方法：
 
-| 方案| 建议 |
+| 场景| 建议 |
 |-|-|
 |将身份验证类型从联合更改为 PHS/PTA，反之亦然| 使用[分阶段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)来测试更改身份验证类型的影响。|
 |推出新的条件访问（CA）策略或 Identity Protection 策略|创建新的 CA 策略并将其分配给测试用户。|
@@ -76,17 +76,17 @@ ms.locfileid: "74535452"
 
 随着时间的推移，当用户在不同的团队和位置移动时，用户可能会积累对资源的访问权限。 资源所有者需要定期审查对应用程序的访问权限，并删除在用户生命周期内不再需要的特权，这一点非常重要。 Azure AD[访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)使组织能够有效地管理组成员身份、访问企业应用程序和角色分配。 资源所有者应定期查看用户的访问权限，以确保只有正确的人继续访问。 理想情况下，应考虑对此任务使用 Azure AD 访问评审。
 
-![访问评审启动页](./media/active-directory-ops-guide/active-directory-ops-img15.png)
+![访问评审起始页](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
 > [!NOTE]
-> 与访问评审交互的每个用户都必须拥有付费 Azure AD Premium P2 许可证。
+> 与访问评审交互的每个用户都必须具有付费 Azure AD Premium P2 许可证。
 
 ### <a name="access-reviews-to-external-identities"></a>外部标识的访问评审
 
 在需要时，只需将对外部标识的访问权限限制为所需的资源，这一点至关重要。 使用 Azure AD[访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)，为所有外部标识和应用程序访问建立定期的自动访问评审流程。 如果某个进程已在本地存在，请考虑使用 Azure AD 访问评审。 在应用程序停用或不再使用后，请删除有权访问应用程序的所有外部标识。
 
 > [!NOTE]
-> 与访问评审交互的每个用户都必须拥有付费 Azure AD Premium P2 许可证。
+> 与访问评审交互的每个用户都必须具有付费 Azure AD Premium P2 许可证。
 
 ## <a name="privileged-account-management"></a>特权帐户管理
 
@@ -128,7 +128,7 @@ ms.locfileid: "74535452"
 > [!NOTE]
 > Azure AD 的权利管理要求 Azure AD Premium P2 许可证。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全标识治理有8个方面。 此列表将帮助你确定应执行的操作，以便评估并证明授予对环境的非特权和特权标识、审核和控制更改的访问权限。
 

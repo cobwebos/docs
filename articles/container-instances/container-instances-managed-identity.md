@@ -1,20 +1,14 @@
 ---
-title: 将托管标识与 Azure 容器实例结合使用
-description: 了解如何配合 Azure 容器实例中的其他 Azure 服务使用托管标识进行身份验证。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: 在容器组中启用托管标识
+description: 了解如何在 Azure 容器实例中启用可以使用其他 Azure 服务进行身份验证的托管标识
 ms.topic: article
 ms.date: 10/22/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325929"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533677"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -58,7 +52,7 @@ Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.49 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.49 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
@@ -253,7 +247,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称 (*https:\//mykeyvault.vault.azure.net/* ):
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称（*https：\//mykeyvault.vault.azure.net/* ）：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

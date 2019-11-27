@@ -35,7 +35,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 |S.No  |资源名称  |Azure FarmBeats 组件  |
 |---------|---------|---------|
-|1  |       Azure Cosmos DB   |  数据中心       |
+|第  |       Azure Cosmos DB   |  数据中心       |
 |2  |    Application Insights      |     数据中心/加速器     |
 |3  |用于 Redis 的 Azure 缓存   |数据中心   |
 |4  |       Azure KeyVault    |  数据中心/加速器        |
@@ -91,7 +91,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 带有 sentinel 的帐户可帮助你从其官方网站下载指向你的设备的 sentinel 卫星电视。 按照以下步骤创建免费帐户：
 
-转到 https://scihub.copernicus.eu/dhus/#/self-registration。 在注册页中，提供名字、姓氏、用户名、密码和电子邮件。
+转到  https://scihub.copernicus.eu/dhus/#/self-registration 。 在注册页中，提供名字、姓氏、用户名、密码和电子邮件。
 验证电子邮件将发送到已注册的电子邮件地址进行确认。 选择该链接并确认。 注册过程已完成。
 
 ## <a name="create-azure-ad-app-registration"></a>创建 Azure AD 应用注册
@@ -154,16 +154,16 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 
 准备文件前，请检查参数。
 
-|命令 | 说明|
+|命令 | 描述|
 |--- | ---|
 |sku  | 提供一个选项，用于下载 Azure FarmBeats 的其中一个组件或两个组件。 指定要下载的组件。 若要仅安装数据中心，请使用 "onlydatabhub"。 若要安装数据中心和加速器，请使用 "both"|
 |subscriptionId | 指定用于安装 Azure FarmBeats 的订阅|
 |datahubResourceGroup| 数据中心资源的资源组名称|
-|location |要在其中创建资源的位置|
+|位置 |要在其中创建资源的位置|
 |acceleratorWebsiteName |命名你的数据中心的唯一 URL 前缀|
 |acceleratorResourceGroup  | 用于命名加速器网站的唯一 URL 前缀。|
 |datahubWebsiteName  | UUnique URL 前缀来命名你的数据中心网站。 |
-|sentinelUsername | 用于登录的用户名： https://scihub.copernicus.eu/dhus/#/self-registration。|
+|sentinelUsername | 用于登录的用户名： https://scihub.copernicus.eu/dhus/#/self-registration 。|
 |notificationEmailAddress  | 用于接收你在数据中心内配置的任何警报的通知的电子邮件地址。|
 |updateIfExists|可有可无要包含在输入中的参数。仅当你想要升级现有的 Azure FarmBeats 实例时才使用此参数。 若要进行升级，请提供其他详细信息。 资源组名称、位置等必须相同。|
 |aadAppClientId | [**可选**]要包含在输入中的参数。仅当 Azure AD 应用程序已存在时才包含在 Json 中。  |
@@ -221,7 +221,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
      - 如果同意，请输入 "Y"，然后继续下一步。
      - 如果你不同意这些条款并且部署将终止，请输入 "N"。
 
-6. 然后，系统将提示您输入部署的访问令牌。 复制生成的代码，并以你的 Azure 凭据登录 https://microsoft.com/devicelogin。
+6. 然后，系统将提示您输入部署的访问令牌。 复制生成的代码，并以你的 Azure 凭据登录 https://microsoft.com/devicelogin 。
 
     > [!NOTE]
     > 令牌将在60分钟后过期。 过期后，你可以重新启动，方法是再次键入部署命令。
@@ -281,7 +281,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
     - 如果同意，请输入 "Y"，然后继续下一步。
     - 如果你不同意这些条款并且部署将终止，请输入 "N"。
 
-8. 系统将提示你输入部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
+8. 系统将提示你输入部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin 。
 9. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。 在此期间将 Cloud Shell 上的会话保持为活动状态。
 10. 成功完成部署后，你会收到以下输出链接：
 
@@ -333,7 +333,7 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 按照屏幕上的说明操作：
 
 7. 安装程序会在运行时自动提示所需的输入：
-8. 输入用于部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin。
+8. 输入用于部署的访问令牌。 复制生成的代码，并通过 Azure 凭据登录到 https://microsoft.com/devicelogin 。
 9. Sentinel 密码
 10. 安装程序现在将验证并开始创建资源，这可能需要大约20分钟的时间。
 11. 部署成功后，将收到以下输出链接：

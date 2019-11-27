@@ -88,9 +88,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 创建或缩放计划时，可以在三种实例大小之间进行选择。  将按照内核总数和每秒使用的内存数计费。  应用可根据需要自动向外扩展到多个实例。  
 
-|SKU|核心数|内存|存储|
+|SKU|内核数|内存|存储空间|
 |--|--|--|--|
-|EP1|1|3.5 GB|250GB|
+|EP1|第|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14 GB|250GB|
 
@@ -98,7 +98,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 下面是每个操作系统当前支持的区域。
 
-|区域| Windows | Linux |
+|地区| Windows | Linux |
 |--| -- | -- |
 |澳大利亚中部| ✔<sup>1</sup> | |
 |澳大利亚中部 2| ✔<sup>1</sup> | |
@@ -107,7 +107,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
-|东亚| ✔ |  |
+|亚洲东部| ✔ |  |
 |美国东部 | ✔ | ✔ |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |
@@ -118,10 +118,10 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |北欧| ✔ | ✔ |
 |美国中南部| ✔ |  |
 |印度南部 | ✔ | |
-|东南亚| ✔ | ✔ |
+|亚洲东南部| ✔ | ✔ |
 |英国南部| ✔ | |
 |英国西部| ✔ |  |
-|西欧| ✔ | ✔ |
+|欧洲西部| ✔ | ✔ |
 |印度西部| ✔ |  |
 |美国西部| ✔ | ✔ |
 |美国西部 2| ✔ |  |

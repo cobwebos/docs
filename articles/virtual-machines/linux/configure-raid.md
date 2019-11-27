@@ -215,14 +215,14 @@ ms.locfileid: "74534185"
 
 
 ## <a name="trimunmap-support"></a>TRIM/UNMAP 支持
-某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 这些操作主要适用于标准存储，以通知 Azure 已删除的页不再有效可以丢弃。 如果创建了较大的文件，并将其删除，则放弃页可以节省成本。
+某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 这些操作主要适用于标准存储，以通知 Azure 已删除的页不再有效可以丢弃。 如果创建了较大的文件，然后将其删除，则放弃页可以节省成本。
 
 > [!NOTE]
 > 如果将数组的块区大小设置为小于默认值 (512 KB)，则 RAID 可能不会发出丢弃命令。 这是因为“主机”上的 unmap 粒度也是 512KB。 如果通过 mdadm 的 `--chunk=` 参数修改数组的块区大小，则 TRIM/unmap 请求可能被内核忽略。
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-- 在 `discard` 中使用 `/etc/fstab` 装载选项，例如：
+- 在 `/etc/fstab` 中使用 `discard` 装载选项，例如：
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2

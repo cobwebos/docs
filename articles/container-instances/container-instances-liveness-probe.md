@@ -86,7 +86,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 通过在 Azure 门户中查看事件，在运行情况命令失败时将触发 `Unhealthy` 类型的事件。 后续事件将是 `Killing` 类型的，表示容器已删除，因此可以开始重启。 每次发生此事件时，容器的重启计数都会增加。
 
-重启是就地完成的，因此，诸如公用 IP 地址和节点特定的内容都将保留。
+重启是就地完成的，因此，诸如公共 IP 地址和节点特定的内容都将保留。
 
 ![门户重启计数器][portal-restart]
 

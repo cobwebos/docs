@@ -36,7 +36,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
 
-适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 2147483647 天。 如果未设置保留策略，则会永久保留日志。
+适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 2147483647 天。 如果未设置保留策略，日志将一直保留。
 
 > [!NOTE] 
 > 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
@@ -58,7 +58,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
             * **flows** - 流的集合
                 * **mac** - VM 的 NIC 的 MAC 地址，用于收集流
                 * **flowTuples** - 一个字符串，包含逗号分隔格式的流元组的多个属性
-                    * **Time Stamp** - 此值为时间戳，表示流的发生时间，采用 UNIX epoch 格式
+                    * **时间戳**-此值是在 UNIX epoch 格式中出现流时的时间戳
                     * **Source IP** - 源 IP
                     * **Destination IP** - 目标 IP
                     * **Source Port** - 源端口

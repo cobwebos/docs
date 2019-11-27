@@ -31,7 +31,7 @@ ms.locfileid: "74535231"
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，输入 " **Promapp**"，在结果面板中选择 " **Promapp** "，然后单击 "**添加**" 按钮添加该应用程序。
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Promapp**"。
 
@@ -156,7 +156,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -29,7 +29,7 @@ ms.locfileid: "74546941"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不能。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -155,7 +155,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不能。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
@@ -189,11 +189,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不能。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不能。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

@@ -240,7 +240,7 @@ function validateToDoItemTimestamp() {
 
 预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
 
-注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation` 的 `TriggerOperation.Create` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
+注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation.Create` 的 `TriggerOperation` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
 
 有关如何注册和调用前触发器的示例，请参阅[前触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[后触发器](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 

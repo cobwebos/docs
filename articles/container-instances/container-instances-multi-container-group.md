@@ -15,11 +15,11 @@ ms.locfileid: "74533620"
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [Resource Manager](container-instances-multi-container-group.md)
+> * [资源管理器](container-instances-multi-container-group.md)
 
 Azure 容器实例支持使用[容器组](container-instances-container-groups.md)将多个容器部署到单台主机上。 当生成用于日志记录、监视或服务需要另一个附加进程的任何其他配置的应用程序挎斗时，容器组非常有用。
 
-在本教程中，你将执行以下步骤，通过使用 Azure CLI 部署 Azure 资源管理器模板来运行简单的双容器挎斗配置。 学习如何：
+在本教程中，你将执行以下步骤，通过使用 Azure CLI 部署 Azure 资源管理器模板来运行简单的双容器挎斗配置。 你将学习如何：
 
 > [!div class="checklist"]
 > * 配置多容器组模板

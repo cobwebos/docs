@@ -18,9 +18,9 @@ ms.locfileid: "74534528"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
-Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引和数据源之间的字段到字段映射填充索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
+Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引和数据源之间的字段到字段映射填充索引。 此方法有时称为 "请求模型"，因为服务在中提取数据，无需编写任何将数据添加到索引中的代码。
 
-索引器基于数据源类型或平台，单个索引器适用于 Azure 上的 SQL Server、Cosmos DB、Azure 表存储和 Blob 存储。 Blob 存储索引器有特定于 Blob 内容类型的其他属性。
+索引器基于数据源类型或平台，其中包含用于在 Azure 上进行 SQL Server 的单个索引器、Cosmos DB、Azure 表存储和 Blob 存储。 Blob 存储索引器具有特定于 blob 内容类型的其他属性。
 
 可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
 
@@ -38,11 +38,11 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 ## <a name="permissions"></a>权限
 
-与索引器相关的所有操作（包括对状态或定义的 GET 请求）都需要[管理员 api-key](search-security-api-keys.md)。 
+与索引器相关的所有操作（包括状态或定义的 GET 请求）都需要[管理员 api 密钥](search-security-api-keys.md)。 
 
 <a name="supported-data-sources"></a>
 
-## <a name="supported-data-sources"></a>支持的数据源
+## <a name="supported-data-sources"></a>受支持的数据源
 
 索引器在 Azure 上抓取数据存储。
 
@@ -58,24 +58,24 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
+索引器从*数据源*对象获取数据源连接。 数据源定义提供一个连接字符串和一个可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需按名称和数据类型进行匹配。 有关构造索引的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 有关字段关联的帮助信息，请参阅[Azure 中的字段映射认知搜索索引器](search-indexer-field-mappings.md)。
+索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需要按名称和数据类型匹配。 有关构造索引的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或[索引类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)。 有关字段关联的帮助信息，请参阅[Azure 中的字段映射认知搜索索引器](search-indexer-field-mappings.md)。
 
 > [!Tip]
 > 虽然不能使用索引器来生成索引，但可以使用门户中的**导入数据**向导。 大多数情况下，该向导可以根据源中现有的元数据推断索引架构，提供一个初级索引架构，该架构在向导处于活动状态时可以进行内联编辑。 在服务上创建索引以后，若要在门户中进一步进行编辑，多数情况下只能添加新字段。 可以将向导视为索引的创建工具而非修订工具。 如需手动方式的学习，请一步步完成[门户演练](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步骤 3：创建和计划索引器
-索引器定义是一种构造，它将与数据引入相关的所有元素组合在一起。 必需元素包括数据源和索引。 可选元素包括计划和字段映射。 只有在源字段和索引字段明确对应的情况下，字段映射才是可选的。 有关构造索引器的详细信息，请参阅[创建索引器（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
+索引器定义是将所有与数据引入相关的元素组合在一起的构造。 必需的元素包括数据源和索引。 可选元素包括计划和字段映射。 仅当源字段和索引字段清晰对应时，字段映射才是可选的。 有关构造索引器的详细信息，请参阅[创建索引器（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>按需运行索引器
 
-虽然通常会对索引操作进行计划，但也可使用 [Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)按需调用索引器：
+尽管计划索引的情况很常见，但也可以使用[Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)按需调用索引器：
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
@@ -83,13 +83,13 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 > [!NOTE]
 > “运行 API”成功返回时，已计划索引器调用，但实际处理过程以异步方式发生。 
 
-可以通过门户或“获取索引器状态 API”监视索引器状态。 
+可以在门户中或通过获取索引器状态 API 来监视索引器状态。 
 
 <a name="GetIndexerStatus"></a>
 
 ## <a name="get-indexer-status"></a>获取索引器状态
 
-可以通过[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
+可以通过[获取索引器状态命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06

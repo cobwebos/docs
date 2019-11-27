@@ -27,7 +27,7 @@ ms.locfileid: "74542389"
 
 通过 Azure 机器学习，您可以从训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了预览功能，可将这些机器学习模型生成到可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)中的函数应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。

@@ -91,7 +91,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 ##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能的公共预览版
 
-如果有同步用户仅与 Azure AD 集成服务交互，并且还必须符合密码过期策略，则可以通过启用此*策略来强制他们遵守 Azure AD 密码过期策略EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能。
+如果有同步用户仅与 Azure AD 集成服务交互，并且还必须符合密码过期策略，则可以通过启用*EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能强制他们遵守 Azure AD 密码过期策略。
 
 禁用*EnforceCloudPasswordPolicyForPasswordSyncedUsers*时（这是默认设置），Azure AD Connect 将同步用户的 PasswordPolicies 属性设置为 "DisablePasswordExpiration"。 这是在每次同步用户密码时执行的，并指示 Azure AD 忽略该用户的云密码过期策略。 可以通过以下命令使用 Azure AD PowerShell 模块检查属性的值：
 
@@ -123,7 +123,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
   
 临时密码功能有助于确保在第一次使用时完成凭据的所有权转移，以最大程度地减少多个人员有权了解该凭据的时间。
 
-若要支持同步用户的 Azure AD 中的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用*ForcePasswordResetOnLogonFeature*功能，并将 <AAD Connector Name> 替换为特定于的连接器名称你的环境：
+若要在 Azure AD 为同步用户提供临时密码，可以启用*ForcePasswordResetOnLogonFeature*功能，方法是在 Azure AD Connect 服务器上运行以下命令，并将 <AAD Connector Name> 替换为特定于您的环境的连接器名称：
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 

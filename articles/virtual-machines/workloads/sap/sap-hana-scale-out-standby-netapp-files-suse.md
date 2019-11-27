@@ -247,7 +247,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
     c. 在 "**概述**" 窗格中，选择 "**停止**" 以解除分配虚拟机。  
 
-    d. 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为 `storage` 和 `hana` 子网创建的网络接口。  
+    d.单击“下一步”。 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为 `storage` 和 `hana` 子网创建的网络接口。  
     
     e. 选择“保存”。 
  
@@ -786,7 +786,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   d. 同样，请在当前活动的主节点（即节点**hanadb3**）上终止名称服务器。  
+   d.单击“下一步”。 同样，请在当前活动的主节点（即节点**hanadb3**）上终止名称服务器。  
    
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
