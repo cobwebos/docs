@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/26/2019
 ms.locfileid: "74549354"
 ---
-| 计算目标 | 用途 | GPU 支持 | FPGA 支持 | 说明 |
+| 计算目标 | 用途 | GPU 支持 | FPGA 支持 | 描述 |
 | ----- | ----- | ----- | ----- | ----- |
 | [本地&nbsp;web&nbsp;服务](../articles/machine-learning/service/how-to-deploy-and-where.md#local) | 测试/调试 | &nbsp; | &nbsp; | 用于有限的测试和故障排除。 硬件加速依赖于本地系统中的库使用。
 | [&nbsp;web&nbsp;服务 Azure 机器学习计算实例](../articles/machine-learning/service/how-to-deploy-and-where.md#notebookvm) | 测试/调试 | &nbsp; | &nbsp; | 用于有限的测试和故障排除。
@@ -28,6 +28,6 @@ ms.locfileid: "74549354"
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署和服务 ML 模型。 |
 
 > [!NOTE]
-> 尽管计算目标（如本地）、Azure 机器学习计算实例和 Azure 机器学习计算群集支持 GPU 进行定型和试验，但__在部署为 web 服务时__，仅在 Azure 上支持使用 gpu 进行推理Kubernetes 服务。
+> 尽管计算目标（例如本地、Azure 机器学习计算实例和 Azure 机器学习计算群集）支持 GPU 进行定型和试验，但__在部署为 web 服务时__，仅支持在 Azure Kubernetes 服务中使用 gpu 进行推理。
 >
 > 仅在 Azure 机器学习计算__时__，才支持使用 GPU 进行推理。
