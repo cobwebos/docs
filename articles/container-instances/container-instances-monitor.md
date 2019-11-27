@@ -1,19 +1,14 @@
 ---
-title: 监视 Azure 容器实例中的容器
+title: 监视容器实例
 description: 如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/24/2019
-ms.author: danlep
-ms.openlocfilehash: a26789bb41fb3fb1e7dec376b7e187f45745ea65
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: bd86161bc7840be599eb5ee9a20f6dbf143f5f22
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172261"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533645"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 
@@ -22,13 +17,13 @@ ms.locfileid: "70172261"
 本文档详述了如何使用 Azure 门户和 Azure CLI 收集容器实例的 Azure Monitor 指标。
 
 > [!IMPORTANT]
-> Azure 容器实例中的 Azure Monitor 指标目前为预览版，并且存在某些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> Azure 容器实例中的 Azure Monitor 指标目前为预览版，并且存在某些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="preview-limitations"></a>预览版限制
 
 目前，仅提供了 Linux 容器的 Azure Monitor 指标。
 
-## <a name="available-metrics"></a>可用的指标
+## <a name="available-metrics"></a>可用指标
 
 Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 11/25/2019
 ms.author: szark
-ms.openlocfilehash: 6c3bb16e249d84f1da94b6b827bbaf6f8e9df1a1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1ac2b24649363538d2728f302941b5a4bf5dd357
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171243"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534161"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "73171243"
 * [为 Azure 准备 CentOS 7.0+ 虚拟机](#centos-70)
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -217,7 +217,7 @@ ms.locfileid: "73171243"
     ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
     ```
 
-16. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+16. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
     ```bash
     sudo waagent -force -deprovision
@@ -355,7 +355,7 @@ ms.locfileid: "73171243"
     编辑 `/etc/dracut.conf`，添加内容：
 
     ```console
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
     ```
 
     重新生成 initramfs：
@@ -383,7 +383,7 @@ ms.locfileid: "73171243"
     ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
     ```
 
-13. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+13. 运行以下命令以取消对虚拟机的设置，并对其进行准备以便在 Azure 上进行设置：
 
     ```bash
     sudo waagent -force -deprovision

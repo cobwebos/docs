@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 3aa5660e5b777364ef9d684debe7e06f42acee6e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: HT
+ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482015"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534139"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>为 Nva 创建虚拟 WAN 中心路由表： Azure 门户
 
@@ -31,7 +31,7 @@ ms.locfileid: "74482015"
 
     * 该 NVA 不是部署在虚拟中心内。 它必须部署在单独的 VNet 中。
 
-    *  可将一个或多个虚拟网络连接到 NVA VNet。 本文将 NVA VNet 称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些 VNet 连接到 NVA VNet。 Vnet 对等互连链接通过上图中的黑色箭头进行描述。
+    *  可将一个或多个虚拟网络连接到 NVA VNet。 本文将 NVA VNet 称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些 VNet 连接到 NVA VNet。 Vnet 1、Vnet 2 和 NVA Vnet 之间的上图中的黑色箭头描述了 Vnet 对等互连链接。
 *  已创建 2 个 VNet。 这些 VNet 将用作辐射 VNet。
 
     * 对于本练习，VNet 辐射地址空间为： VNet1： 10.0.2.0/24 和 VNet2： 10.0.3.0/24。 有关如何创建 VNet 的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
@@ -79,7 +79,7 @@ ms.locfileid: "74482015"
 
 ## <a name="connections"></a>5. 创建 VNet 连接
 
-创建从每个间接辐射 VNet（VNet1 和 VNet2）到中心的连接。 然后，创建从 NVA VNet 到中心的连接。 这些 Vnet 连接 dipicted 上图中的蓝色箭头。 
+创建从每个间接辐射 VNet （VNet1 和 VNet2）到中心的 Vnet 连接。 这些 Vnet 连接由上图中的蓝色箭头描述。 然后，创建从 NVA VNet 到集线器的 Vnet 连接（图中的黑色箭头）。 
 
  对于此步骤，可以使用以下值：
 

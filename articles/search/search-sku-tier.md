@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9caadddf281c6df29f6e36057c7b28abcef0e1c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112530"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534482"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -216,7 +216,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 + 允许围绕查询生成指标，并围绕使用模式收集数据（在营业期间执行查询，在非高峰期执行索引编制）。 使用此数据做出明智的服务预配决策。 尽管这种做法不是在每小时或每日都可行，但可以动态调整分区和资源，以应对查询量的计划内变化。 此外，还可以应对计划外的但持续性的变化，前提是变化程度持续足够长的时间，以致有必要采取措施。
 
-+ 请记住，预配不足的唯一缺点是，如果实际要求超出预测，则可能必须关闭某项服务。 为避免服务中断，可以在更高层级的相同订阅中创建新服务，并将其并行运行，直到所有应用和请求都指向新的终结点。
++ 请记住，预配不足的唯一缺点是，如果实际要求超出预测，则可能必须关闭某项服务。 若要避免服务中断，请在更高的层中创建新的服务，并并行运行该服务，直到所有应用和请求都面向新的终结点。
 
 ## <a name="next-steps"></a>后续步骤
 

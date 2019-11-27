@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 5418b378c2c3cff09dbccbaa7b7240c61bbb583e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74221533"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538116"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
@@ -96,12 +96,6 @@ Batch 听录 API 支持以下格式：
 
 批量听录支持使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)来读取音频以及将听录内容写入存储。
 
-## <a name="webhooks"></a>Webhook
-
-脚本状态轮询可能并不高效，或者无法提供最佳用户体验。 若要轮询状态，可以注册回调，以便在长时间运行的脚本任务完成时通知客户端。
-
-有关详细信息，请参阅 [Webhook](webhooks.md)。
-
 ## <a name="speaker-separation-diarization"></a>讲述人分离（分割聚类）
 
 分割聚类是将讲述人语音分隔成音频片段的过程。 Batch 管道支持分割聚类，并且能够识别单声道录制内容中的两个讲述人。
@@ -122,7 +116,7 @@ Batch 听录 API 支持以下格式：
 }
 ```
 
-如上述请求中的参数所示，还必须“启用”文字级别时间戳。
+如上述请求中的参数所示，还必须“启用”文字级别时间戳。 
 
 相应的音频将包含以编号标识的讲述人（目前仅支持两个语音，因此讲述人将标识为“讲述人 1”和“讲述人 2”），后接听录输出。
 
@@ -190,7 +184,7 @@ Batch 听录 API 支持以下格式：
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-示例代码将设置客户端并提交转录请求。 然后它将轮询状态信息并打印关于转录进度的详细信息。
+示例代码将设置客户端并提交脚本请求。 然后它将轮询状态信息并打印关于转录进度的详细信息。
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 

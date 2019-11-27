@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112727"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533975"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用 Blob 索引器为 JSON blob 编制索引认知搜索
 
@@ -33,7 +33,7 @@ Azure Blob 存储中的 JSON blob 通常是单个 JSON 文档（分析模式为 
 
 为 JSON 文档编制索引的最简单方法是使用 [Azure 门户](https://portal.azure.com/)中的向导。 通过分析 Azure Blob 容器中的元数据，[**导入数据**](search-import-data-portal.md)向导可以创建默认索引、将源字段映射到目标索引字段，并以单个操作加载索引。 根据源数据的大小和复杂性，在数分钟内就能创建一个有效的全文搜索索引。
 
-建议为 Azure 认知搜索和 Azure 存储使用相同的 Azure 订阅，最好是在同一区域中。
+建议为 Azure 认知搜索和 Azure 存储使用同一区域或位置以实现较低的延迟，并避免带宽费用。
 
 ### <a name="1---prepare-source-data"></a>1 - 准备源数据
 

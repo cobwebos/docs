@@ -2,19 +2,19 @@
 title: 确定 Azure 市场中的发布选项 | Azure
 description: 本文为希望了解如何将应用发布到 Azure 市场的合作伙伴介绍了合格条件和发布要求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
+author: ellacroi
 manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 967d33cb7a9eb3ec922f9d85cfc2581b85bce537
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ed25b92dc759f687e35a8424558453a830369a57
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825908"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548357"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，选择发布选项和产品/服务类型可定义用户与 marketplace 产品/服务的交互方式。
@@ -41,7 +41,7 @@ ms.locfileid: "73825908"
 
 ## <a name="understand-storefront-selection"></a>了解店面选择
 
-你的产品/服务将显示在商店，Azure Marketplace 和/或 AppSource 将由你的产品/服务详细信息和目标受众以及创建产品/服务时所选的类别和行业自动确定。 
+每个店面都有独特的客户需求。 产品/服务的发布位置将由产品/服务类型确定，提供 "服务" 和 "类别" 和/或 "行业选择" 以面向特定群体。 
 
 >[!Note]
 >"交叉列表" （仅适用于 SaaS 应用）：当基于列表或试用版的产品/服务与技术用户受众的条件同时满足时，你的产品/服务将在两个商店中列出。 详细了解下面的发布选项。

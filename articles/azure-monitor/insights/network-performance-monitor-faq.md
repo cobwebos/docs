@@ -1,18 +1,18 @@
 ---
 title: 常见问题解答 - Azure 中的网络性能监视器解决方案 | Microsoft Docs
-description: 本文捕获有关 Azure 中网络性能监视器的常见问题。 网络性能监视器（NPM）可帮助用户近乎实时地监视网络性能，检测并找到网络性能瓶颈。
+description: 本文收集了有关 Azure 中网络性能监视器的常见问题解答。 网络性能监视器 (NPM) 可帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832003"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538187"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -138,7 +138,7 @@ Microsoft 对等互连
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-是的。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
+可以。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。
@@ -183,6 +183,8 @@ NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不
 * 路由器已配置为隐藏其标识。
 * 网络设备不允许 ICMP_TTL_EXCEEDED 流量。
 * 防火墙阻止了来自网络设备的 ICMP_TTL_EXCEEDED 响应。
+
+当任一终结点位于 Azure 中时，traceroute 会显示未识别的跃点，因为 Azure ndrastructure 不会向 traceroute 显示标识。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到测试运行不正常的警报，但在 NPM 的丢失和延迟图中并没有看到过高的值。 如何实现检查哪些功能不正常？
 如果源和目标之间的端到端延迟超过了它们之间任何路径的阈值，NPM 将引发警报。 某些网络具有连接相同源和目标的多个路径。 如果任何路径不正常，NPM 会引发警报。 图中看到的丢失和延迟是所有路径的平均值，因此可能无法表现单个路径的具体值。 若要了解超出阈值的位置，请查看警报中的“SubType”列。 如果此问题是由路径引起的，则子类型值将为 NetworkPath （用于性能监视器测试）、EndpointPath （适用于服务连接监视器测试）和 ExpressRoutePath （适用于 Expressroute Monitor 测试）。 

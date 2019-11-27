@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/25/2019
-ms.openlocfilehash: 94728f2e4be6a16d048b4ff97bedefd5e32957ed
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 11/27/2019
+ms.openlocfilehash: c5c7883295a30aa217e722abd905f54b982761d3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481288"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547559"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -36,7 +36,7 @@ VCore 模型中的服务层选项包括常规用途、业务关键和超大规�
 |I/O 吞吐量（近似值）|**单一数据库和弹性池**：每个 VCORE 500 iops，最大 iops 为40000。<br/>**托管实例**：依赖于[文件的大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)。|每 vCore 5000 IOPS，最大 IOPS 为320000|超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。|
 |可用性|1 个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性 (HA)|1 个读写副本加 0-4 个[读取缩放副本](sql-database-read-scale-out.md)|
 |备份|[读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算 I/O 性能。 还原速度很快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
-|内存中|不支持|是否支持|不支持|
+|内存中|不支持|支持|不支持|
 |||
 
 
@@ -98,7 +98,7 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 |硬件代次  |计算  |内存  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器<br>-预配多达24个 Vcore （1 vCore = 1 个物理内核）  |-每个 vCore 7 GB<br>-预配高达 168 GB|
-|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
+|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
 |Fsv2 系列     |-Intel 至强白金8168（SkyLake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-设置 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配 136 GB|
 |M 系列     |-Intel E7-8890 v3 2.5 GHz 处理器<br>-设置 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配 3.7 TB|
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 10/02/2019
-ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: 816cf7cc78d3dfcb783b09f039f468ef3b23a06b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823336"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548370"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "73823336"
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
+| 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）处理器，fast NVMe SSD，vCore = 1 LP （超线程） |
 | vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | 最大内存中 OLTP 内存 | 实例限制： 1-1.5 GB/vCore| 实例限制：每 vCore 0.8-1.65 GB |
@@ -43,67 +43,67 @@ ms.locfileid: "73823336"
 
 ### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
 
-[业务关键](sql-database-service-tier-business-critical.md)服务层中的内存中 OLTP 空间量取决于 vcore 和硬件生成的数量。 下表列出了可用于内存中 OLTP 对象的内存限制。
+[业务关键](sql-database-service-tier-business-critical.md)服务层级中的内存中 OLTP 空间量取决于 vCore 数和硬件代次。 下表列出了可用于内存中 OLTP 对象的内存限制。
 
 | 内存中 OLTP 空间  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 Vcore  | 3.14 GB | |   
-| 8 Vcore  | 6.28 GB | 8 GB |
-| 16 Vcore | 15.77 GB | 20 GB |
-| 24 Vcore | 25.25 GB | 36 GB |
-| 32 Vcore | 37.94 GB | |
-| 40 Vcore | 52.23 GB | |
-| 64 Vcore | 99.9 GB    | |
-| 80 Vcore | 131.68 GB| |
+| 4 个 vCore  | 3.14 GB | |   
+| 8 个 vCore  | 6.28 GB | 8 GB |
+| 16 个 vCore | 15.77 GB | 20 GB |
+| 24 个 vCore | 25.25 GB | 36 GB |
+| 32 个 vCore | 37.94 GB | |
+| 40 个 vCore | 52.23 GB | |
+| 64 个 vCore | 99.9 GB    | |
+| 80 个 vCore | 131.68 GB| |
 
 ## <a name="service-tier-characteristics"></a>服务层特征
 
-托管实例有两个服务层：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层提供了[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述。
+托管实例有两个服务层：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层级提供[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述。
 
 > [!Important]
-> 业务关键服务层提供了可用于只读工作负荷的实例（辅助副本）的附加内置副本。 如果可以分离读写查询和只读/分析/报告查询，则会获得相同价格的两倍 Vcore 和内存。 辅助副本可能会在主实例之后滞后几秒钟，因此它旨在卸载不需要精确数据状态的报表/分析工作负荷。 在下表中，**只读查询**是在辅助副本上执行的查询。
+> “业务关键”服务层级提供可用于只读工作负荷的附加内置实例副本（次要副本）。 如果可以隔离读写查询和只读/分析/报告查询，则能够以相同的价格获得两倍的 vCore 和内存。 次要副本可能滞后于主要实例几秒，因此它旨在卸载不需要确切的当前数据状态的报告/分析工作负荷。 在下表中，**只读查询**是在次要副本上执行的查询。
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
-| vCore 数目\* | Gen4：8、16、24<br/>Gen5：4，8，16，24，32，40，64，80 | Gen4：8、16、24 <br/> Gen5：4，8，16，24，32，40，64，80 <br/>\*相同数量的 Vcore 专门用于只读查询。 |
-| 最大内存 | Gen4： 56 GB-168 GB （7GB/vCore）<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 | Gen4： 56 GB-168 GB （7GB/vCore）<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）用于读写查询<br/>+ 其他 20.4 GB-408 GB （5.1 GB/vCore）用于只读查询。<br/>添加更多 vCore 以获得更多内存。 |
-| 最大实例存储大小（保留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4： 1 TB <br/> 第 5 代： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
-| 最大数据库大小 | 当前可用实例大小（最大为 2 TB-8 TB，具体取决于 Vcore 数）。 | 最高当前可用实例大小（最大 1 TB-4 TB，取决于 Vcore 数）。 |
-| 最大 tempDB 大小 | 限制为 24 GB/vCore （96-1920 GB）和当前可用的实例存储大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 最多当前可用的实例存储大小。 |
-| 每个实例的数据库数目上限 | 100，除非已达到实例存储大小限制。 | 100，除非已达到实例存储大小限制。 |
-| 每个实例的数据库文件数目上限 | 最大为280，除非已达到实例存储大小或[Azure 高级磁盘存储空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 每个数据库32767个文件，除非已达到实例存储大小限制。 |
-| 数据文件最大大小 | 仅限当前可用的实例存储大小（最大 2 TB-8 TB）和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 仅限当前可用的实例存储大小（最大为 1 TB-4 TB）。 |
-| 最大日志文件大小 | 仅限 2 TB 和当前可用的实例存储大小。 | 仅限 2 TB 和当前可用的实例存储大小。 |
-| 数据/日志 IOPS（近似） | 每个实例最多 30-40 K IOPS *，500-每文件7500<br/>\*[增大文件大小以获取更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 5.5 k-110 K （1375 IOPS/vCore）<br/>添加更多 vCore 以获得更好的 IO 性能。 |
-| 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
-| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 不受限制。 |
+| vCore 数目\* | Gen4：8、16、24<br/>Gen5：4，8，16，24，32，40，64，80 | Gen4：8、16、24 <br/> Gen5：4，8，16，24，32，40，64，80 <br/>\*相同数量的 vCore 专用于只读查询。 |
+| 最大内存 | Gen4： 56 GB-168 GB （7GB/vCore）<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 | Gen4： 56 GB-168 GB （7GB/vCore）<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）用于读写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
+| 最大实例存储大小（预留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4： 1 TB <br/> 第 5 代： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
+| 最大 tempDB 大小 | 限制为 24 GB/vCore (96 - 1,920 GB) 和当前可用的实例存储大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 不超过当前可用的实例存储大小。 |
+| 每个实例的数据库数目上限 | 除非已达到实例存储大小限制，否则为 100。 | 除非已达到实例存储大小限制，否则为 100。 |
+| 每个实例的数据库文件数目上限 | 除非已达到实例存储大小或 [Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)限制，否则最大为 280。 | 除非已达到实例存储大小限制，否则为每个数据库 32,767 个文件。 |
+| 最大数据文件大小 | 限制为当前可用的实例存储大小（最大 2 TB - 8 TB）和 [Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 限制为当前可用的实例存储大小（最大为 1 TB - 4 TB）。 |
+| 最大日志文件大小 | 限制为 2 TB 和当前可用的实例存储大小。 | 限制为 2 TB 和当前可用的实例存储大小。 |
+| 数据/日志 IOPS（近似） | 每个实例最多 30-40 K IOPS*，每个文件 500 - 7500<br/>\*[增大文件大小以获取更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 5.5 K - 110 K (1375 IOPS/vCore)<br/>添加更多 vCore 以获得更好的 IO 性能。 |
+| 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/s | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
+| 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 无限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
-| 内存中 OLTP | 不支持 | 可用，[大小取决于 vCore 数量](#in-memory-oltp-available-space) |
+| 内存中 OLTP | 不支持 | [可用大小取决于 vCore 数](#in-memory-oltp-available-space) |
 | 最大会话数 | 30000 | 30000 |
 | [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含在价格中） |
 
 > [!NOTE]
-> - **当前可用的实例存储大小**是保留实例大小与已用存储空间之间的差异。
+> - **当前可用实例存储大小**是预留实例大小与已用存储空间之差。
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
-> - 常规用途层上的吞吐量和 IOPS 也依赖于不是由托管实例显式限制的[文件大小](#file-io-characteristics-in-general-purpose-tier)。
+> - “常规用途”层级上的吞吐量和 IOPS 还取决于不受托管实例显式限制的[文件大小](#file-io-characteristics-in-general-purpose-tier)。
 > - 可以使用自动故障转移组在不同的 Azure 区域中创建另一个只读副本。
-> - 最大实例 IOPS 取决于工作负荷的文件布局和分配。 例如，如果你创建 7 x 1GB 文件，其中每个都有最大的每个和7个小文件（小于 128 GB），其中每个都有 500 IOPS，则可以获取每个实例的 38500 IOPS （7x5000 + 7x500）（如果你的工作负荷可以使用所有文件）。 请注意，某些 IOPS 还用于自动备份。
+> - 最大实例 IOPS 取决于工作负荷的文件布局和分布。 例如，如果创建 7 个 1 GB 文件（每个文件最大 5K IOPS）和 7 个小文件（小于 128 GB，每个文件 500 IOPS），并且工作负荷可以使用所有文件，则每个实例可以处理 38500 IOPS (7x5000+7x500)。 请注意，部分 IOPS 还用于自动备份。
 
 > [!NOTE]
 > 有关详细信息，请查看[本文中托管实例池中的资源限制](sql-database-instance-pools.md#instance-pools-resource-limitations)。
 
-### <a name="file-io-characteristics-in-general-purpose-tier"></a>常规用途层中的文件 IO 特征
+### <a name="file-io-characteristics-in-general-purpose-tier"></a>“常规用途”层级中的文件 IO 特征
 
-在常规用途服务层中，每个数据库文件都获取专用的 IOPS 和吞吐量，具体取决于文件大小。 较大的文件会获得更多的 IOPS 和吞吐量。 下表显示了数据库文件的 IO 特征：
+在“常规用途”服务层级中，每个数据库文件可获得专用的 IOPS 和吞吐量（具体取决于文件大小）。 文件越大，获得的 IOPS 和吞吐量越多。 下表显示了数据库文件的 IO 特征：
 
-| 文件大小           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0.5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| 文件大小           | 0 - 128 GiB | 128 - 256 GiB | 256 - 512 GiB | 0.5 - 1 TiB    | 1 - 2 TiB    | 2 - 4 TiB | 4 - 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | 每个文件的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
 | 每个文件的吞吐量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
 
-如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量达到了限制，则可以通过[增加文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
+如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量即将达到限制，可以通过[增大文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
 
-此外，还有一些实例级别的限制（如最大日志写入吞吐量 22 MB/秒），因此你可能无法在整个日志文件中访问文件，因为你达到了实例吞吐量限制。
+此外，还存在一些实例级别的限制（例如，最大日志写入吞吐量为 22 MB/秒），因此，可能无法达到日志文件的文件吞吐量，因为即将达到实例吞吐量限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -178,7 +178,7 @@ ms.locfileid: "73823336"
 
 5. 单击“下一步”。
 6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
-7. 单击“创建”。
+7. 单击“**创建**”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803453"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533001"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
-Azure AD 中的应用程序有两种表示形式： 
+Azure AD 中的应用程序有两种表示形式：
+
 * [应用程序对象](app-objects-and-service-principals.md#application-object) - 尽管存在一些[例外情况](#notes-and-exceptions)，但可将这些应用程序对象视为应用程序的定义。
 * [服务主体](app-objects-and-service-principals.md#service-principal-object) - 可将其视为应用程序的实例。 服务主体通常引用应用程序对象，一个应用程序对象可由不同目录中的多个服务主体引用。
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>什么是应用程序对象，它们来自何处？
-用户可以在 Azure 门户中通过[应用程序注册](https://aka.ms/appregistrations)体验来管理[应用程序对象](app-objects-and-service-principals.md#application-object)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
+
+用户可以在 Azure 门户中通过[应用程序注册](app-objects-and-service-principals.md#application-object)体验来管理[应用程序对象](https://aka.ms/appregistrations)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
+
 * 名称、徽标和发布者
 * 重定向 URI
 * 机密（用于对应用程序进行身份验证的对称和/或非对称密钥）
@@ -45,14 +48,16 @@ Azure AD 中的应用程序有两种表示形式：
 * 代理元数据和配置
 
 可通过多种途径创建应用程序对象，包括：
+
 * Azure 门户中的应用程序注册
 * 使用 Visual Studio 创建新应用程序，并将其配置为使用 Azure AD 身份验证
 * 当管理员从应用库添加应用程序时（这也会创建服务主体）
-* 使用 Microsoft 图形 API、Azure AD 图形 API 或 PowerShell 创建新应用程序
+* 使用 Microsoft Graph API 或 PowerShell 来创建新应用程序
 * 其他许多途径，包括 Azure 中的各种开发人员体验，以及开发人员中心的 API 资源管理器体验
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>什么是服务主体，它们来自何处？
-用户可以在 Azure 门户中通过[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)体验来管理[服务主体](app-objects-and-service-principals.md#service-principal-object)。 服务主体是控制与 Azure AD 相连接的应用程序的对象，可视为目录中应用程序的实例。 任意给定应用程序最多只能有一个应用程序对象（在“home”目录中注册），此外，可以有一个或多个服务主体对象，这些对象表示运行该应用程序的每个目录中的应用程序实例。 
+
+用户可以在 Azure 门户中通过[企业应用程序](app-objects-and-service-principals.md#service-principal-object)体验来管理[服务主体](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)。 服务主体是控制与 Azure AD 相连接的应用程序的对象，可视为目录中应用程序的实例。 任意给定应用程序最多只能有一个应用程序对象（在“home”目录中注册），此外，可以有一个或多个服务主体对象，这些对象表示运行该应用程序的每个目录中的应用程序实例。 
 
 服务主体可以包括：
 
@@ -60,7 +65,7 @@ Azure AD 中的应用程序有两种表示形式：
 * 本地用户和组应用程序角色分配的记录
 * 授予应用程序的本地用户和管理员权限的记录
   * 例如：应用程序访问特定用户电子邮件的权限
-* 本地策略的记录，包括条件性访问策略
+* 本地策略（包括条件访问策略）的记录
 * 应用程序的备用本地设置的记录
   * 声明转换规则
   * 属性映射（用户设置）
@@ -83,7 +88,7 @@ Azure AD 中的应用程序有两种表示形式：
 
 应用程序的主目录中包含一个应用程序对象，该对象由运行该应用程序的每个目录（包括该应用程序的主目录）中的一个或多个服务主体引用。
 
-![显示应用程序对象与服务主体之间的关系][apps_service_principals_directory]
+![显示应用对象与服务主体之间的关系][apps_service_principals_directory]
 
 在上面的关系图中，Microsoft 在内部维护两个用于发布应用程序的目录（左侧显示）：
 

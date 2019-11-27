@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: bc53ed3e3a7fd988464b9100df654920d5589596
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036663"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534185"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘呈现为一个单一的 RAID 设备，是一种常见的情形。 通常，使用这种方法可以改进性能，而且与只使用单独一块磁盘相比，吞吐量也会有所改进。
 
 ## <a name="attaching-data-disks"></a>附加数据磁盘
 配置 RAID 设备需要两个或更多的空数据磁盘。  创建 RAID 设备的主要原因是提高磁盘 IO 的性能。  根据 IO 需求，可以选择附加存储在标准存储且一个磁盘最多具有 500 IO/ps 的磁盘，或高级存储且一个磁盘最多具有 5000 IO/ps 的磁盘。 本文不详细介绍如何为 Linux 虚拟机预配和附加数据磁盘。  请参阅 Microsoft Azure 文章[附加磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，详细了解如何在 Azure 上为 Linux 虚拟机附加空数据磁盘。
+
+> [!IMPORTANT]
+>不要混合使用不同大小的磁盘，这样做会导致 raidset 的性能限制在最慢的磁盘上。 
 
 ## <a name="install-the-mdadm-utility"></a>安装 mdadm 实用程序
 * **Ubuntu**
@@ -208,7 +211,7 @@ ms.locfileid: "74036663"
    
     除了以上参数，还可以使用内核参数“`bootdegraded=true`”来启用系统引导功能，即使发现 RAID 已损坏或降级（例如，由于无意中从虚拟机中移除了数据驱动器而发现这种情况）也无妨。 默认情况下，这样也可能会导致系统无法引导。
    
-    请参阅分发的文档，了解如何正确编辑内核参数。 例如，在许多分发（CentOS、Oracle Linux、SLES 11）中，可以手动将这些参数添加到“`/boot/grub/menu.lst`”文件。  在 Ubuntu 中，可将此参数添加到“/etc/default/grub”的 `GRUB_CMDLINE_LINUX_DEFAULT` 变量。
+    请参阅分发的文档，了解如何正确编辑内核参数。 例如，在许多分发（CentOS、Oracle Linux、SLES 11）中，可以手动将这些参数添加到“`/boot/grub/menu.lst`”文件。  在 Ubuntu 上，此参数可添加到“/etc/default/grub”上的 `GRUB_CMDLINE_LINUX_DEFAULT` 变量中。
 
 
 ## <a name="trimunmap-support"></a>TRIM/UNMAP 支持

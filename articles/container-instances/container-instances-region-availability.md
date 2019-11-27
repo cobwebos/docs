@@ -1,19 +1,14 @@
 ---
-title: Azure 容器实例资源可用性
+title: 按区域的资源可用性
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 05/14/2019
-ms.author: danlep
-ms.openlocfilehash: 24edce511c2d07050db1e77edeae4e587fcd79b0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172398"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533470"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -30,7 +25,7 @@ ms.locfileid: "70172398"
 
 以下区域和资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
 
-| Location | OS | CPU | 内存 (GB) |
+| 位置 | 操作系统 | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |
 | 加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部 2、北欧、美国中南部、东南亚、英国南部、美国西部 | Linux | 4 | 16 |
 | 西欧、美国西部 2 | Linux | 4 | 14 |
@@ -44,7 +39,7 @@ ms.locfileid: "70172398"
 
 以下区域和资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
 
-| Location | OS | CPU | 内存 (GB) |
+| 位置 | 操作系统 | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |
 | 东南亚、北欧、西欧、美国中部、美国东部、美国西部、美国西部 2 | Windows | 4 | 16 |
 | 美国东部 2 | Windows | 2 | 3.5 |

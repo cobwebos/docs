@@ -1,19 +1,14 @@
 ---
-title: 更新 Azure 容器实例中的容器
+title: 更新容器组
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: danlep
-ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f57ebcf050b5563b45f10af57c1721338df88ff9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307715"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533306"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
@@ -71,7 +66,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 * OS 类型
 * CPU
 * 内存
-* 重新启动策略
+* 重启策略
 * 端口
 
 删除再重新创建某个容器组时，不是“重新部署”该组，而是新建一个容器组。 将从注册表中全新提取所有映像层，而不是从前一个部署缓存的配置中提取。 由于部署到不同的基础主机，容器的 IP 地址也可能会更改。

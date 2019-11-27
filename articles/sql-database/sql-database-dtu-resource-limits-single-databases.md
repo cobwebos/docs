@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811284"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539336"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的单一数据库的资源限制
 
@@ -43,6 +43,12 @@ ms.locfileid: "73811284"
 | 最大并发会话数 | 300 |
 |||
 
+> [!IMPORTANT]
+> 基本服务层提供了少于1个 vCore （CPU）。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务层。 
+>
+>对于数据存储，基本服务层位于标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器（HDD）的存储介质，最适合用于开发、测试和其他不太敏感的不太敏感的工作负载，这些工作负荷对性能变化不太敏感。
+>
+
 ### <a name="standard-service-tier"></a>“标准”服务层级
 
 | **计算大小** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ ms.locfileid: "73811284"
 | 最大并发工作线程数（请求数）| 60 | 90 | 120 | 200 |
 | 最大并发会话数 |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> 标准 S0、S1 和 S2 层提供少于1个 vCore （CPU）。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务层。 
+>
+>对于数据存储，标准 S0 和 S1 服务层放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器（HDD）的存储介质，最适合用于开发、测试和其他不太敏感的不太敏感的工作负载，这些工作负荷对性能变化不太敏感。
+>
 
 ### <a name="standard-service-tier-continued"></a>“标准”服务层级（续）
 

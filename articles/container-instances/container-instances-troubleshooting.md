@@ -1,20 +1,15 @@
 ---
-title: Azure 容器实例故障排除
+title: 排查常见问题
 description: 了解如何在部署、运行或管理 Azure 容器实例时排查常见问题
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 09/25/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8b102f31fe25b9c45d85a2dae269fce64be10a5d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147836"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533392"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 5a07f0749b59efc96b67df3ad5ed2fbf353be614
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043943"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538845"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -45,13 +45,13 @@ ms.locfileid: "73043943"
     }
 
 > [!NOTE]
-> 有关 language 参数，分配 `eng` 或留空以查看计算机辅助的分类响应（预览功能）。 **此功能仅支持英语**。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
 > 对于**不敬词**检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或将其留空。
 
 ## <a name="classification"></a>分类
 
-内容审查器的机器辅助**文本分类功能**仅支持**英语**，可帮助检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要检查的内容包括俚语、缩写词、冒犯性言语，以及有意拼写错误的单词。 
+内容审查器的机器辅助**文本分类功能**仅支持**英语**，可帮助检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
 
 以下 JSON 摘录内容显示了示例输出：
 
@@ -73,7 +73,7 @@ ms.locfileid: "73043943"
 - `Category1` 表示可能存在某些情况下被视为色情或成人性质的语言。
 - `Category2` 表示可能存在某些情况下被视为性暗示或过于成熟的语言。
 - `Category3` 表示可能存在某些情况下被视为具攻击性的语言。
-- `Score` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此功能依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
+- `Score` 介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此功能依赖于统计模型，而不是人工编码结果。 我们建议对你自己的内容进行测试，以确定每个类别是否满足你的需求。
 - `ReviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
 ## <a name="personal-data"></a>个人数据
@@ -109,33 +109,33 @@ ms.locfileid: "73043943"
   "Phone":[ 
     { 
       "CountryCode":"US",
-      "Text":"6657789887",
+      "Text":"4255550111",
       "Index":56
     },
     { 
       "CountryCode":"US",
-      "Text":"870 608 4000",
+      "Text":"425 555 0111",
       "Index":212
     },
     { 
       "CountryCode":"UK",
-      "Text":"+44 870 608 4000",
+      "Text":"+123 456 7890",
       "Index":208
     },
     { 
       "CountryCode":"UK",
-      "Text":"0344 800 2400",
+      "Text":"0234 567 8901",
       "Index":228
     },
     { 
       "CountryCode":"UK",
-      "Text":"0800 820 3300",
+      "Text":"0456 789 0123",
       "Index":245
     }
   ],
   "Address":[ 
     { 
-      "Text":"1 Microsoft Way, Redmond, WA 98052",
+      "Text":"1234 Main Boulevard, Panapolis WA 96555",
       "Index":89
     }
   ],

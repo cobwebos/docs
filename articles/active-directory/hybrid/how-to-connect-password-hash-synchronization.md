@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5ca62bc032c12c568e2b8065630dcd8b687513
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: HT
+ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483115"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539011"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -160,7 +160,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD 域服务的密码哈希同步过程
 
-如果使用 Azure AD 域服务为需要使用 Keberos、LDAP 或 NTLM 的应用程序和服务提供旧身份验证，则某些附加的进程是密码哈希同步流的一部分。 Azure AD Connect 使用以下其他过程将密码哈希同步到 Azure AD 以便在 Azure AD 域服务中使用：
+如果使用 Azure AD 域服务为需要使用 Kerberos、LDAP 或 NTLM 的应用程序和服务提供旧身份验证，则某些附加的进程是密码哈希同步流的一部分。 Azure AD Connect 使用以下其他过程将密码哈希同步到 Azure AD 以便在 Azure AD 域服务中使用：
 
 > [!IMPORTANT]
 > 只应安装并配置 Azure AD Connect 以便与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect，以将对象同步回 Azure AD。
@@ -213,7 +213,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
 2. 打开 miiserver.exe.config。
 3. 转到文件末尾的 configuration/runtime 节点。
 4. 添加以下节点：`<enforceFIPSPolicy enabled="false"/>`
-5. 保存更改。
+5. 保存所做更改。
 
 下面显示了此代码片段的大致情况，供参考：
 

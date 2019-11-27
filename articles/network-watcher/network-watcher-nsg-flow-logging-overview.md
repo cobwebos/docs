@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: 490f2e7bb394d6593e51438c1e484a4677c963a3
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277982"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539349"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -87,6 +87,12 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 以下文本是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG 流日志记录注意事项
+
+**存储帐户注意事项**： 
+
+1. 位置：使用的存储帐户必须与 NSG 位于同一区域。
+2. 无防火墙： NSG 流日志不载入为[Azure 存储的受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)。 若要禁用防火墙，请参阅[如何实现禁用我的存储帐户上的防火墙 "](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) 。 
+3. 无服务终结点：由于当前限制，只能通过服务终结点将日志直接发送到存储帐户。 请参阅[如何实现将 NSG Flow 日志与服务终结点一起使用？](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) ，帮助删除现有服务终结点。
 
 **对附加到资源的所有 Nsg 启用 NSG 流日志记录**： Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关网络安全组的详细信息，请参阅[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。 
 

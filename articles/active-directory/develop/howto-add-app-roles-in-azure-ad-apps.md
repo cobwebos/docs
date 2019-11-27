@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 注册的应用中添加应用角色，并在令牌中接收这些角色
+title: 在 Azure Active Directory 注册的应用中添加应用角色并在令牌中接收这些角色
 titleSuffix: Microsoft identity platform
 description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
 services: active-directory
@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473771"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546848"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -43,12 +43,8 @@ ms.locfileid: "73473771"
 1. 在顶栏中选择帐户，然后选择“切换目录”。
 1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。
 1. 选择左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
-1. 在 " **Azure Active Directory** " 窗格中，选择 "**应用注册（旧）** " 查看所有应用程序的列表。
-
-     如果看不到要在此处显示的应用程序，请使用**应用注册（旧）** 列表顶部的各种筛选器限制列表，或向下滚动列表以查找应用程序。
-
-1. 选择一个应用程序，以便在其中定义应用角色。
-1. 在应用程序的边栏选项卡中，选择“清单”。
+1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表。
+1. 选择一个应用程序，以便在其中定义应用角色。 然后选择 "**清单**"。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]

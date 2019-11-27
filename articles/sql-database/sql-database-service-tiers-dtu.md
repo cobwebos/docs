@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6d4c9dd08f2d00bc12f041748cc78363c9abecbd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/26/2019
+ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822524"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539311"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -35,13 +35,19 @@ ms.locfileid: "73822524"
 | :-- | --: |--:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产|
 |运行时间 SLA|99.99%|99.99%|99.99%|
-|最大备份保留|7 天|35 天|35 天|
+|最大备份保留期|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |列存储索引 |不适用|S3 及更高版本|支持|
 |内存中 OLTP|不适用|不适用|支持|
 |||||
+
+> [!IMPORTANT]
+> 基本、标准 S0、S1 和 S2 服务层提供了少于1个 vCore （CPU）。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务层。 
+>
+>对于数据存储，将基本、标准 S0 和 S1 服务层放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器（HDD）的存储介质，最适合用于开发、测试和其他不太敏感的不太敏感的工作负载，这些工作负荷对性能变化不太敏感。
+>
 
 > [!NOTE]
 > 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库，以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。

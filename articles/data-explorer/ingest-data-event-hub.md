@@ -7,21 +7,21 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028494"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539288"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-event-hub.md)
+> * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
+Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,11 +59,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     对下表中未列出的任何设置使用默认值。
 
-    **设置** | **建议的值** | **字段说明**
+    **设置** | 建议的值 | 字段说明
     |---|---|---|
     | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg | 创建新的资源组。 |
-    | Location | *美国西部* | 对于本文，请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
+    | 位置 | *美国西部* | 对于本文，请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
     | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace。 域名 servicebus.windows.net 将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
     | 事件中心名称 | test-hub | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
     | 使用者组名称 | test-group | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
@@ -113,7 +113,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     数据源：
 
-    **设置** | **建议的值** | **字段说明**
+    **设置** | 建议的值 | 字段说明
     |---|---|---|
     | 数据连接名称 | test-hub-connection | 要在 Azure 数据资源管理器中创建的连接的名称。|
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
@@ -127,16 +127,18 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     路由引入数据有两个选项：静态和动态。 
     本文将使用静态路由，需在其中指定表名、数据格式和映射。 因此，请让“我的数据包含路由信息”保留未选中状态。
 
-     **设置** | **建议的值** | **字段说明**
+     **设置** | 建议的值 | 字段说明
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 支持的压缩选项：GZip |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 支持的压缩选项： GZip |
     | 列映射 | TestMapping | 在**TestDatabase**中创建的[映射](/azure/kusto/management/mappings)，用于将传入 JSON 数据映射到**TestTable**的列名称和数据类型。 对于 JSON、多行 JSON 或 AVRO 是必需的，对于其他格式是可选的。|
     | | |
 
     > [!NOTE]
     > * 选择“我的数据包含路由信息”以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
     > * 只有在创建数据连接后排队的事件引入。
+    > * 通过[在 Azure 门户中打开支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)，为静态路由启用 GZip 压缩。 为动态路由启用 GZip 压缩，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)所示。 
+    > * 压缩有效负载不支持 Avro 格式和事件系统属性。
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
@@ -164,7 +166,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. 生成并运行应用。 应用将消息发送到事件中心，并且每十秒显示一次状态。
+1. 构建并运行应用程序。 应用将消息发送到事件中心，并且每十秒显示一次状态。
 
 1. 应用发送一些消息后，继续执行下一步：查看到事件中心和测试表的数据流。
 

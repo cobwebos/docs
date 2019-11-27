@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c413c03c000ef9ff1ebf742359551567d488584b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 092c3b4ac6ce163e9fcf8aaad9e74f398559e9e2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185728"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546325"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -4339,7 +4339,7 @@ ms.locfileid: "74185728"
 > | 操作 | microsoft.operationalinsights/workspaces/rules/read | 获取所有警报规则。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/delete | 删除保存的搜索查询 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
-> | 操作 | microsoft.operationalinsights/workspaces/savedsearches/results/read | 获取保存的搜索结果。 已弃用 |
+> | 操作 | microsoft.operationalinsights/workspaces/savedsearches/results/read | 获取保存的搜索结果。 已放弃 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/delete | 删除计划的搜索操作。 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/read | 获取计划的搜索操作。 |
 > | 操作 | microsoft.operationalinsights/workspaces/savedsearches/schedules/actions/write | 创建或更新计划的搜索操作。 |
@@ -5569,7 +5569,7 @@ ms.locfileid: "74185728"
 > | 操作 | Microsoft.StorSimple/managers/devices/deactivate/action | 停用设备。 |
 > | 操作 | Microsoft.StorSimple/managers/devices/delete | 删除设备 |
 > | 操作 | Microsoft.StorSimple/managers/devices/disks/read | 列出或获取磁盘 |
-> | 操作 | Microsoft.StorSimple/managers/devices/download/action | 下载设备的更新。 |
+> | 操作 | Microsoft.StorSimple/managers/devices/download/action | 下载设备更新。 |
 > | 操作 | Microsoft.StorSimple/managers/devices/failover/action | 设备故障转移。 |
 > | 操作 | Microsoft.StorSimple/managers/devices/failover/operationResults/read | 列出或获取操作结果 |
 > | 操作 | Microsoft.StorSimple/managers/devices/failoverTargets/read | 列出或获取设备的故障转移目标 |

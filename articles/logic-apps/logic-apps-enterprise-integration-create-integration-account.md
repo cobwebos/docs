@@ -9,16 +9,16 @@ author: ecfan
 ms.author: estfan
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 960733b7423ad1e22bd05a75d9b994cd85b1d30c
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: de184b189c00cce64932a3ab17d41ed84e197a7e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680370"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534092"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建和管理 B2B 企业集成的集成帐户
 
-你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-enterprise-integration-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。
+你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-enterprise-integration-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。
 
 例如，您可以创建、存储和管理 B2B 项目，例如贸易合作伙伴、协议、地图、架构、证书和批配置。 此外，你必须先将[集成帐户链接](#link-account)到逻辑应用，然后才能使用这些项目并使用逻辑应用 B2B 连接器。 集成帐户和逻辑应用必须位于*同一*位置或区域。
 
@@ -34,13 +34,13 @@ ms.locfileid: "72680370"
 * 将集成帐户移到另一个 Azure 资源组或订阅。
 * 删除集成帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure PowerShell](https://docs.microsoft.com//powershell/module/azurerm.logicapp/New-AzureRmIntegrationAccount)或[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create)。
+对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)或[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -56,17 +56,17 @@ ms.locfileid: "72680370"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | 名称 | 是 | <integration-account-name> | 集成帐户的名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）和句点（`.`）。 此示例使用 "Fabrikam-集成"。 |
-   | 订阅 | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
+   | **Name** | 是 | <integration-account-name> | 集成帐户的名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）和句点（`.`）。 此示例使用 "Fabrikam-集成"。 |
+   | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 用于组织相关资源的[Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 在此示例中，创建名为 "FabrikamIntegration" 的新资源组。 |
-   | **定价层** | 是 | <*定价级别*> | 可在以后更改的集成帐户的定价层。 对于本示例，请选择 "**免费**"。 有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | 位置 | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意**：若要在[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ISE" 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
-   | **Log Analytics** | No | 关闭，打开 | 对于本示例，请保留**Off**设置。 |
+   | 定价层 | 是 | <*定价级别*> | 可在以后更改的集成帐户的定价层。 对于本示例，请选择 "**免费**"。 有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 选择与逻辑应用相同的位置，或在与集成帐户相同的位置创建逻辑应用。 对于本示例，请使用 "美国西部"。 <p>**注意**：若要在[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请选择 "ISE" 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+   | **Log Analytics** | 否 | 关闭，打开 | 对于本示例，请保留**Off**设置。 |
    |||||
 
-1. 完成后，选择 "**创建**"。
+1. 完成后，选择“创建”。
 
    部署完成后，Azure 将打开你的集成帐户。
 
@@ -247,7 +247,7 @@ ms.locfileid: "72680370"
 
    * 资源组：从 "**资源组**" 列表中，选择目标资源组。 或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
 
-   * 订阅：从 "**订阅**" 列表中，选择目标订阅。 从 "**资源组**" 列表中，选择目标资源组。 或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
+   * 订阅：从 "**订阅**" 列表中，选择目标订阅。 在“资源组”列表中选择目标资源组。 或者，若要创建其他资源组，请选择 "**创建新的资源组**"。
 
 1. 若要确认你的了解，在使用新的资源 Id 更新它们之前，与所移动资源关联的任何脚本或工具都不起作用，请选择确认框，然后选择 **"确定"** 。
 
@@ -255,7 +255,7 @@ ms.locfileid: "72680370"
 
 ## <a name="delete-integration-account"></a>删除集成帐户
 
-对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/Remove-AzureRmIntegrationAccount)。
+对于此任务，您可以按照本部分中的步骤使用 Azure 门户， [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)或[Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount)。
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
