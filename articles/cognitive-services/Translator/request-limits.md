@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671969"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533706"
 ---
 # <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
 
@@ -27,12 +27,12 @@ ms.locfileid: "71671969"
 
 下表列出了文本翻译 API 的每个操作的数组元素和字符限制。
 
-| 操作 | 数组元素的最大大小 |   最大数组元素数 |  最大请求大小（字符数） |
+| Operation | 数组元素的最大大小 |   最大数组元素数 |  最大请求大小（字符数） |
 |:----|:----|:----|:----|
-| 转换 | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
+| 翻译 | 5,000 | 100   | 5,000 |
+| 直译 | 5,000 | 10    | 5,000 |
 | 检测 | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
+| 断句 | 10,000    | 100 | 50,000 |
 | 字典查找| 100 |  10  | 1,000 |
 | 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10|   2,000 |
 
@@ -48,17 +48,17 @@ ms.locfileid: "71671969"
 |------|-----------------|
 | F0 | 每小时 200 万个字符 |
 | S1 | 每小时 4000 万个字符 |
-| S2 / C2 | 每小时 4000 万个字符 |
-| S3 / C3 | 每小时 1.2 亿个字符 |
-| S4 / C4 | 每小时 2 亿个字符 |
+| S2/C2 | 每小时 4000 万个字符 |
+| S3/C3 | 每小时 1.2 亿个字符 |
+| S4/C4 | 每小时 2 亿个字符 |
 
 [多服务订阅](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)的限制与 S1 层相同。
 
 这些限制仅限于 Microsoft 的标准翻译模型。 使用自定义转换器的自定义翻译模型的每秒限制为1800个字符。
 
-## <a name="latency"></a>延迟
+## <a name="latency"></a>Latency
 
-文本翻译 API 在使用标准模型时的最大延迟为 15 秒。 使用自定义模型时，翻译的最大延迟为 25 秒。 此时你将收到结果或超时响应。 通常，将在 150 毫秒至 300 毫秒内返回响应。 响应时间因请求大小和语言对而异。 如果没有在该时间范围内收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)，则应检查网络连接并重试。
+使用标准模型时，文本翻译 API 的最大延迟为15秒，使用自定义模型时为120秒。 通常， *100 字符内的文本*响应会在150毫秒后返回到300毫秒。 自定义转换器模型对于持续的请求速率具有相似的延迟特征，在请求速率为间歇性时可能会有较高的延迟。 响应时间因请求大小和语言对而异。 如果在该时间范围内未收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)，请检查你的代码和你的网络连接，然后重试。 
 
 ## <a name="sentence-length-limits"></a>句子长度限制
 

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 53441f5fedb4fa5e68cd1d8230ffe3ee6122e55b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186681"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544628"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -39,7 +39,7 @@ ZRS 适用于块 blob、非磁盘页 blob、标准文件共享、表和队列。
 - 美国东部 2
 - 美国西部 2
 
-对于 FileStorage 帐户（高级文件共享），ZRS 在以下区域公开提供：
+对于 FileStorage 帐户（高级文件共享）和 BlockBlobStorage 帐户（高级块 blob），ZRS 在以下区域公开提供：
 
 - 西欧
 - 美国东部
@@ -163,7 +163,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 - [Azure 存储复制](storage-redundancy.md)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
 - [异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy-grs.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 602a319ce90e5a6d13829e218899f135413d762d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275943"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531830"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
@@ -31,7 +31,7 @@ ms.locfileid: "74275943"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>应用场景
+## <a name="scenario"></a>方案
 
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
@@ -42,7 +42,7 @@ ms.locfileid: "74275943"
 
 有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
 
-一个关键的配置步骤是配置 IPsec 通信参数，任何不当的配置都会导致本地网络与 Azure 之间的连接断开。 目前，Azure VPN 网关配置为支持第 1 阶段的以下 IPsec 参数。 请注意，如前所述，这些设置不可修改。  如下表中所示，Azure VPN 网关支持的加密算法包括 AES256、AES128、和 3DES。
+一个关键的配置步骤是配置 IPsec 通信参数，任何不当的配置都会导致本地网络与 Azure 之间的连接断开。 目前，Azure VPN 网关配置为支持第 1 阶段的以下 IPsec 参数。 如下表中所示，Azure VPN 网关支持的加密算法包括 AES256、AES128、和 3DES。
 
 ### <a name="ike-phase-1-setup"></a>IKE 第 1 阶段设置
 
@@ -53,7 +53,7 @@ ms.locfileid: "74275943"
 | 身份验证方法 |预共享密钥 |预共享密钥 |
 | 加密算法 |AES256 AES128 3DES |AES256 3DES |
 | 哈希算法 |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
-| 阶段 1 安全关联 (SA) 生命周期（时间） |28,800 秒 |10,800 秒 |
+| 阶段 1 安全关联 (SA) 生命周期（时间） |28,800 秒 |28,800 秒 |
 
 用户需要配置 FortiGate，在 [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt) 上可以找到示例配置。 无意中将 FortiGate 配置为使用 SHA-512 作为哈希算法。 由于基于策略的连接不支持此算法，因此 VPN 连接无法正常工作。
 
@@ -82,7 +82,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 ### <a name="gateway"></a>网关
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
 | GatewayNotFound | 找不到网关，或网关未预配。 |否|
@@ -97,7 +97,7 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 ### <a name="connection"></a>连接
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
 | GatewayNotFound | 找不到网关，或网关未预配。 |否|

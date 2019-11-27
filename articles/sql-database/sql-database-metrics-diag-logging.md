@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/15/2019
-ms.openlocfilehash: 27810f2ee1bc95c924003cd8a5944860df40db14
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: HT
+ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420806"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539188"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -79,7 +79,7 @@ ms.locfileid: "74420806"
 > 弹性池和托管实例具有自己单独的诊断遥测数据（独立于它们包含的数据库）。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
 
 > [!NOTE]
-> 无法从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志（虽然显示在屏幕上）。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和[审核日志 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和[审核日志 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -91,7 +91,7 @@ ms.locfileid: "74420806"
 
 可将弹性池资源设置为收集以下诊断遥测数据：
 
-| Resource | 监视遥测数据 |
+| 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
 | **弹性池** | [基本指标](sql-database-metrics-diag-logging.md#basic-metrics)包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 |
 
@@ -145,7 +145,7 @@ ms.locfileid: "74420806"
 1. 针对要监视的每个数据库重复上述步骤。
 
 > [!NOTE]
-> 无法从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志（虽然显示在屏幕上）。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和[审核日志 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和[审核日志 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
@@ -156,7 +156,7 @@ ms.locfileid: "74420806"
 
 可将托管实例资源设置为收集以下诊断遥测数据：
 
-| Resource | 监视遥测数据 |
+| 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
 | **托管实例** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
@@ -466,7 +466,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：ResourceUsageStats |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：MANAGEDINSTANCES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -492,7 +492,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：QueryStoreRuntimeStatistics |
 |OperationName|操作的名称。 始终是：QueryStoreRuntimeStatisticsEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -543,7 +543,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：QueryStoreWaitStatistics |
 |OperationName|操作的名称。 始终是：QueryStoreWaitStatisticsEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -581,7 +581,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：Errors |
 |OperationName|操作的名称。 始终是：ErrorEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -589,10 +589,10 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ElasticPoolName_s|数据库的弹性池（如果有）名称 |
 |DatabaseName_s|数据库的名称 |
 |ResourceId|资源 URI |
-|Message|纯文本格式的错误消息 |
+|消息|纯文本格式的错误消息 |
 |user_defined_b|是否是用户定义位错误 |
 |error_number_d|错误代码 |
-|Severity|错误的严重性 |
+|严重性|错误的严重性 |
 |state_d|错误的状态 |
 |query_hash_s|失败查询的查询哈希（如果有） |
 |query_plan_hash_s|失败查询的查询计划哈希（如果有） |
@@ -610,7 +610,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：DatabaseWaitStatistics |
 |OperationName|操作的名称。 始终是：DatabaseWaitStatisticsEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -639,7 +639,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：Timeouts |
 |OperationName|操作的名称。 始终是：TimeoutEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -662,7 +662,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：Blocks |
 |OperationName|操作的名称。 始终是：BlockEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -686,7 +686,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：Deadlocks |
 |OperationName|操作的名称。 始终是：DeadlockEvent |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |
@@ -706,7 +706,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |类型|始终是：AzureDiagnostics |
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL |
 |类别|类别的名称。 始终是：AutomaticTuning |
-|Resource|资源名称 |
+|资源|资源名称 |
 |ResourceType|资源类型的名称。 始终是：SERVERS/DATABASES |
 |SubscriptionId|数据库的订阅 GUID |
 |resourceGroup|数据库的资源组名称 |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793677"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534542"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -43,7 +43,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 + 向导不支持迭代或重复使用。 每次遍历向导都会创建一个新的索引、技能组合和索引器配置。 只有数据源可以保存并在向导中重复使用。 若要编辑或修改其他对象，必须使用 REST Api 或 .NET SDK 来检索和修改结构。
 
-+ 源内容必须驻留在同一订阅下的服务中受支持的 Azure 数据源。
++ 源内容必须位于受支持的 Azure 数据源中。
 
 + 采样基于源数据的一个子集。 对于大型数据源，向导可能会丢失字段。 如果采样不足，则可能需要扩展架构或纠正推断的数据类型。
 
@@ -55,19 +55,19 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 ## <a name="data-source-input"></a>数据源输入
 
-**导入数据**向导使用 Azure 认知搜索索引器提供的内部逻辑连接到外部数据源，这些索引器可用于采样源、读取元数据、破解文档以读取内容和结构以及序列化内容作为 JSON，以便以后导入到 Azure 认知搜索。
+**导入数据**向导使用 Azure 认知搜索索引器提供的内部逻辑来连接到外部数据源，这些索引器可用于采样源、读取元数据、破解文档以读取内容和结构，并将内容序列化为 JSON，以便以后导入到 Azure 认知搜索。
 
-您只能从单个表、数据库视图或等效的数据结构导入，但结构可能包含层次结构或嵌套的子结构。 有关详细信息，请参阅[如何为复杂类型建模](search-howto-complex-data-types.md)。
+只能从单个表、数据库视图或等效的数据结构导入，但是，此结构可能包含分层的或嵌套的子结构。 有关详细信息，请参阅[如何为复杂类型建模](search-howto-complex-data-types.md)。
 
 在运行该向导之前应创建此单个表或视图，并且它必须包含内容。 出于明显原因，对空数据源运行 "**导入数据**" 向导并无意义。
 
-|  选项 | 描述 |
+|  选项 | 说明 |
 | ---------- | ----------- |
 | **现有数据源** |如果已在搜索服务中定义索引器，则可能具有可重复使用的现有数据源定义。 在 Azure 认知搜索中，数据源对象仅供索引器使用。 您可以通过编程方式或通过**导入数据**向导来创建数据源对象，并根据需要重新使用它们。|
 | **示例**| Azure 认知搜索提供了两个教程和快速入门中使用的内置示例数据源：一个房地产 SQL 数据库和一个托管在 Cosmos DB 上的酒店数据库。 有关基于酒店样品的演练，请参阅在 Azure 门户快速入门[中创建索引](search-get-started-portal.md)。 |
 | [**Azure SQL 数据库**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |可以在此页上或通过 ADO.NET 连接字符串，指定服务名称、具有读取权限的数据库用户的凭据和数据库名称。 选择要查看或自定义属性的连接字符串选项。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。|
 | **Azure VM 上的 SQL Server** |指定完全限定的服务名、用户 ID 和密码以及数据库作为连接字符串。 若要使用此数据源，以前必须已在加密连接的本地存储中安装了证书。 有关说明，请参阅[SQL VM 与 Azure 认知搜索的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>必须在此页上指定提供行集的表或视图。 连接成功后会显示此选项，并提供下拉列表以便可以进行选择。 |
-| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 您可以定义一个查询以平展或筛选行集，或将查询留空。 不需要在此向导中进行查询。|
+| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|要求包括帐户、数据库和集合。 集合中的所有文档都将包含在索引中。 可以定义查询以平展或筛选行集，或者将查询留空。 在此向导中，不需要查询。|
 | [**Azure Blob 存储**](search-howto-indexing-azure-blob-storage.md) |要求包括存储帐户和容器。 （可选）如果 blob 名称遵循用于分组的虚拟命名约定，可以将名称的虚拟目录部分指定为容器下的某个文件夹。 有关详细信息，请参阅[为 Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md)。 |
 | [**Azure 表存储**](search-howto-indexing-azure-tables.md) |要求包括存储帐户和表名。 （可选）可以指定一个查询来检索表的子集。 有关详细信息，请参阅[为表存储编制索引](search-howto-indexing-azure-tables.md)。 |
 
@@ -75,7 +75,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了一个**导入数据**向
 
 在幕后，向导将创建、配置和调用以下对象。 向导运行完成后，可以在门户页中找到它的输出。 服务的 "概述" 页包含索引、索引器、数据源和技能集的列表。 可以在门户中以完整的 JSON 格式查看索引定义。 对于其他定义，可以使用[REST API](https://docs.microsoft.com/rest/api/searchservice/)获取特定的对象。
 
-| 对象 | 描述 | 
+| 对象 | 说明 | 
 |--------|-------------|
 | [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 将连接信息保存到源数据，包括凭据。 数据源对象专用于索引器。 | 
 | [索引](https://docs.microsoft.com/rest/api/searchservice/create-index) | 用于全文搜索和其他查询的物理数据结构。 | 

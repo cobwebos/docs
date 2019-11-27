@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 99589a4f11f91afa7d3c9f93d844654ccc69aab1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: HT
+ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322963"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532900"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -29,7 +29,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 在此示例中，将 `<RESOURCE_GROUP>` 替换为资源组，并将 `<PLAN_NAME>` 替换为在资源组中唯一的计划的名称。 指定[支持的 `<REGION>`](#regions)。 若要创建支持 Linux 的高级计划，请包含 `--is-linux` 选项。
 
-创建计划后，可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)创建 function app。 在门户中，计划和应用都同时创建。 
+创建计划后，可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)创建 function app。 在门户中，计划和应用都同时创建。 有关完整 Azure CLI 脚本的示例，请参阅[在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
 
 ## <a name="features"></a>功能
 
@@ -94,11 +94,11 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |EP2|2|7GB|250GB|
 |EP3|4|14 GB|250GB|
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>区域
 
 下面是每个操作系统当前支持的区域。
 
-|地区| {1}Windows{2} | Linux |
+|区域| Windows | Linux |
 |--| -- | -- |
 |澳大利亚中部| ✔<sup>1</sup> | |
 |澳大利亚中部 2| ✔<sup>1</sup> | |

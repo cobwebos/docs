@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112741"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74530999"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用索引器对 Cosmos DB 数据编制索引认知搜索 
 
@@ -48,7 +48,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 
 索引 Azure Cosmos DB 项的最简单方法是使用[Azure 门户](https://portal.azure.com/)中的向导。 通过对容器中的数据进行采样和读取元数据，Azure 认知搜索中的 "[**导入数据**](search-import-data-portal.md)" 向导可以创建一个默认索引，将源字段映射到目标索引字段，并在单个操作中加载索引。 根据源数据的大小和复杂性，在数分钟内就能创建一个有效的全文搜索索引。
 
-建议同时对 Azure 认知搜索和 Azure Cosmos DB 使用同一 Azure 订阅，最好是在同一区域中。
+建议为 Azure 认知搜索和 Azure Cosmos DB 使用同一区域或位置，以降低延迟并避免带宽费用。
 
 ### <a name="1---prepare-source-data"></a>1 - 准备源数据
 

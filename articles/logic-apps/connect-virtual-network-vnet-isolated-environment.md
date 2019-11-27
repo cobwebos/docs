@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 883778360bd2315e1424f9f207cbfd994ec1a373
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 11/27/2019
+ms.openlocfilehash: d38874e7cb3fc61e32bd4ecd1fee528c4e5053e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901194"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547172"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -31,10 +31,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 本文介绍如何完成以下任务：
 
-* 请确保虚拟网络上的任何必要端口都已打开，以便流量可以通过 ISE 跨该虚拟网络的子网。
-
+* 为 ISE 启用访问权限。
 * 创建 ISE。
-
 * 向 ISE 添加额外的容量。
 
 > [!IMPORTANT]
@@ -44,7 +42,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 
+* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。
 
   * 虚拟网络需要四个*空*子网，以便在 ISE 中创建和部署资源。 你可以提前创建这些子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。
 
@@ -52,7 +50,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   
   * 如果要通过 Azure 资源管理器模板部署 ISE，请首先确保将一个空子网委托给 integrationServiceEnvironment/。 通过 Azure 门户部署时，无需执行此委派。
 
-  * 请确保虚拟网络[提供这些端口](#ports)，使 ISE 正常工作并保持可访问。
+  * 确保你的虚拟网络[为 ise 启用访问权限](#enable-access)，以便 ise 能够正常运行并保持可访问性。
 
   * 如果使用提供与 Microsoft 云服务的专用连接的[ExpressRoute](../expressroute/expressroute-introduction.md)，则必须创建一个包含以下路由的[路由表](../virtual-network/manage-route-table.md)，并将该表链接到你的 ISE 使用的每个子网：
 
@@ -65,23 +63,31 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > [!IMPORTANT]
   > 如果在创建 ISE 之后更改 DNS 服务器设置，请确保重启 ISE。 有关管理 DNS 服务器设置的详细信息，请参阅[创建、更改或删除虚拟网络](../virtual-network/manage-virtual-network.md#change-dns-servers)。
 
-<a name="ports"></a>
+<a name="enable-access"></a>
 
-## <a name="check-network-ports"></a>检查网络端口
+## <a name="enable-access-for-ise"></a>为 ISE 启用访问权限
 
-将 ISE 与 Azure 虚拟网络一起使用时，常见的安装问题是有一个或多个被阻止的端口。 用于在 ISE 与目标系统之间创建连接的连接器还可能有自己的端口要求。 例如，如果使用 FTP 连接器与 FTP 系统进行通信，请确保在 FTP 系统上使用的端口可用，例如，使用端口21发送命令。 若要确保 ISE 保持可访问且可以正常工作，请打开下表指定的端口。 否则，如果任何所需的端口不可用，ISE 将停止工作。
+将 ISE 与 Azure 虚拟网络一起使用时，常见的安装问题是有一个或多个被阻止的端口。 用于在 ISE 与目标系统之间建立连接的连接器还可能有自己的端口要求。 例如，如果使用 FTP 连接器与 FTP 系统进行通信，则需要提供在 FTP 系统上使用的端口，例如，用于发送命令的端口21。
+
+若要确保 ISE 可以访问，并且此 ISE 中的逻辑应用可以在虚拟网络中的子网之间进行通信，请[打开此表中的端口](#network-ports-for-ise)。 如果任何所需的端口不可用，ISE 将无法正常运行。
+
+* 如果你有多个 ISEs，而你的虚拟网络使用[Azure 防火墙](../firewall/overview.md)或[网络虚拟设备](../virtual-network/virtual-networks-overview.md#filter-network-traffic)，则可以[设置一个单一、出站、公共且可预测的 IP 地址](connect-virtual-network-vnet-set-up-single-ip-address.md)，以便与目标系统进行通信。 这样一来，就不必为目标中的每个 ISE 设置额外的防火墙入口。
+
+* 如果创建了新的 Azure 虚拟网络和子网而没有任何限制，则无需在虚拟网络中设置[网络安全组（nsg）](../virtual-network/security-overview.md#network-security-groups)来控制子网之间的流量。
+
+* 在现有虚拟网络上，你可以*选择*通过[筛选子网中的网络流量](../virtual-network/tutorial-filter-network-traffic.md)来设置 nsg。 如果选择此路由，请在要设置 Nsg 的虚拟网络上确保[打开此表中的端口](#network-ports-for-ise)。 如果使用[NSG 安全规则](../virtual-network/security-overview.md#security-rules)，则需要 TCP 和 UDP 协议。
+
+* 如果你以前已有 Nsg，请确保在[此表中打开端口](#network-ports-for-ise)。 如果使用[NSG 安全规则](../virtual-network/security-overview.md#security-rules)，则需要 TCP 和 UDP 协议。
+
+<a name="network-ports-for-ise"></a>
+
+### <a name="network-ports-used-by-your-ise"></a>ISE 使用的网络端口
+
+此表介绍你的 ISE 使用的 Azure 虚拟网络中的端口以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)代表一组 IP 地址前缀，有助于在创建安全规则时最大程度地降低复杂性。
 
 > [!IMPORTANT]
 > 源端口是暂时的，因此请确保将其设置为所有规则 `*`。
 > 对于子网中的内部通信，ISE 要求打开这些子网中的所有端口。
-
-* 如果创建的新虚拟网络和子网没有任何限制，则无需在虚拟网络中设置[网络安全组（nsg）](../virtual-network/security-overview.md#network-security-groups)来控制子网之间的流量。
-
-* 在现有虚拟网络上，你可以*选择*通过[筛选子网中的网络流量](../virtual-network/tutorial-filter-network-traffic.md)来设置 nsg。 如果选择此路由，请在要设置 Nsg 的虚拟网络上，确保打开下表指定的端口。 如果使用[NSG 安全规则](../virtual-network/security-overview.md#security-rules)，则需要 TCP 和 UDP 协议。
-
-* 如果你之前在虚拟网络中现有 Nsg 或防火墙，请确保打开下表指定的端口。 如果使用[NSG 安全规则](../virtual-network/security-overview.md#security-rules)，则需要 TCP 和 UDP 协议。
-
-下表描述了 ISE 使用的虚拟网络中的端口以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)代表一组 IP 地址前缀，有助于在创建安全规则时最大程度地降低复杂性。
 
 | 目的 | Direction | 目标端口 | 源服务标记 | 目标服务标记 | 说明 |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
@@ -89,8 +95,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | Azure Active Directory | 出站 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
 | Azure 存储依赖项 | 出站 | 80、443 | VirtualNetwork | 存储 | |
 | Intersubnet 通信 | 入站和出站 | 80、443 | VirtualNetwork | VirtualNetwork | 子网之间的通信 |
-| 与 Azure 逻辑应用通信 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 调用逻辑应用中存在的任何请求触发器或 webhook 的计算机或服务的 IP 地址。 关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
-| 逻辑应用运行历史记录 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 从中查看逻辑应用的运行历史记录的计算机的 IP 地址。 尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
+| 与 Azure 逻辑应用通信 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 调用逻辑应用中存在的任何请求触发器或 webhook 的计算机或服务的 IP 地址。 关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
+| 逻辑应用运行历史记录 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 从中查看逻辑应用的运行历史记录的计算机的 IP 地址。 尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
 | 连接管理 | 出站 | 443 | VirtualNetwork  | 应用服务 | |
 | 发布诊断日志和指标 | 出站 | 443 | VirtualNetwork  | AzureMonitor | |
 | 来自 Azure 流量管理器的通信 | 入站 | 443 | AzureTrafficManager | VirtualNetwork | |
@@ -144,11 +150,11 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    **创建子网**
 
    若要在环境中创建和部署资源，ISE 需要四个不委托给任何服务的*空*子网。 创建环境后，*无法*更改这些子网地址。
-   
+
    > [!IMPORTANT]
    > 
    > 子网名称必须以字母字符或下划线（无数字）开头，不能使用以下字符： `<`、`>`、`%`、`&`、`\\`、`?`、`/`。
-   
+
    而且，每个子网都必须满足以下要求：
 
    * 使用无[类别域间路由（CIDR）格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256721"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538969"
 ---
-# <a name="metric-chart-samples"></a>指标图表示例
+# <a name="metric-chart-examples"></a>指标图表示例 
 
 Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)，其中许多指标具有维度。 通过使用[维度筛选器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、应用[拆分](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)生成的图表示例，并说明了配置每个图表的必要步骤。
 
@@ -29,7 +29,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-选择应用服务资源，并找到“CPU 百分比”  指标。 然后单击“应用拆分”  ，并选择“实例”  维度。
+选择应用服务资源，并找到“CPU 百分比”指标。 然后单击“应用拆分”，并选择“实例”维度。
 
 ## <a name="application-availability-by-region"></a>各个区域的应用程序可用性
 
@@ -39,7 +39,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-首先需要启用网站的 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”  维度上应用拆分。
+首先需要启用网站的 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”维度上应用拆分。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>按 API 名称划分的存储帐户事务量
 
@@ -49,7 +49,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-在指标选取器中，选择你的存储帐户和“事务”  指标。 将图表类型切换为“条形图”  。 单击“应用拆分”  并选择“API 名称”  维度。 然后单击“添加筛选器”  ，再次选择“API 名称”  维度。 在筛选器对话框中，选择要在图表上显示的 API。
+在指标选取器中，选择你的存储帐户和“事务”指标。 将图表类型切换为“条形图”。 单击“应用拆分”并选择“API 名称”维度。 然后单击“添加筛选器”，再次选择“API 名称”维度。 在筛选器对话框中，选择要在图表上显示的 API。
 
 ## <a name="next-steps"></a>后续步骤
 
