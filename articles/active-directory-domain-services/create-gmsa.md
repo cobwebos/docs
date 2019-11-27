@@ -1,6 +1,6 @@
 ---
 title: Azure AD 域服务的组托管服务帐户 |Microsoft Docs
-description: 了解如何创建与 Azure Active Directory 域服务托管域一起使用的组托管服务帐户 (gMSA)
+description: 了解如何创建与 Azure Active Directory 域服务托管域一起使用的组托管服务帐户（gMSA）
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898224"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546309"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>在 Azure AD 域服务中创建组托管服务帐户（gMSA）
 
-应用程序和服务通常需要使用标识对其他资源进行身份验证。 例如，web 服务可能需要使用数据库服务进行身份验证。 如果某个应用程序或服务有多个实例（如 web 服务器场），则手动创建和配置这些资源的标识会耗费时间。 相反，可以在 Azure Active Directory 域服务（Azure AD DS）托管域中创建组托管服务帐户（gMSA）。 Windows OS 自动管理 gMSA 的凭据，这简化了大量资源组的管理。
+应用程序和服务通常需要使用标识对其他资源进行身份验证。 例如，web 服务可能需要使用数据库服务进行身份验证。 如果某个应用程序或服务有多个实例（如 web 服务器场），则手动创建和配置这些资源的标识会耗费时间。
 
-本文介绍如何在 Azure AD DS 托管域中创建 gMSA。
+相反，可以在 Azure Active Directory 域服务（Azure AD DS）托管域中创建组托管服务帐户（gMSA）。 Windows OS 自动管理 gMSA 的凭据，这简化了大量资源组的管理。
+
+本文说明如何使用 Azure PowerShell 在 Azure AD DS 托管域中创建 gMSA。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -59,6 +61,9 @@ ms.locfileid: "70898224"
 ## <a name="create-a-gmsa"></a>创建 gMSA
 
 首先，使用[ADOrganizationalUnit][New-AdOrganizationalUnit] cmdlet 创建自定义 OU。 有关创建和管理自定义 Ou 的详细信息，请参阅[AZURE AD DS 中的自定义 ou][create-custom-ou]。
+
+> [!TIP]
+> 若要完成这些步骤以创建 gMSA，请[使用管理 VM][tutorial-create-management-vm]。 此管理 VM 应已具有所需的 AD PowerShell cmdlet 并连接到托管域。
 
 以下示例在名为*contoso.com*的 Azure AD DS 托管域中创建名为*myNewOU*的自定义 OU。 使用你自己的 OU 和托管域名：
 

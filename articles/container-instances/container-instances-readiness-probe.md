@@ -1,21 +1,16 @@
 ---
-title: 在 Azure 容器实例中配置准备情况探测
+title: 在容器实例上设置就绪探测器
 description: 了解如何配置探测，以确保 Azure 容器实例中的容器仅在准备就绪时接收请求
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905571"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533562"
 ---
-# <a name="configure-readiness-probes"></a>配置准备情况探测
+# <a name="configure-readiness-probes"></a>配置就绪情况探测
 
 对于提供流量的容器化应用程序，你可能想要验证容器是否已准备好处理传入的请求。 Azure 容器实例支持包括配置的准备情况探测，以便在某些情况下无法访问容器。 就绪探测器的行为类似于[Kubernetes 的准备情况探测](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)。 例如，容器应用可能需要在启动过程中加载大型数据集，并且你不希望在这段时间内接收请求。
 

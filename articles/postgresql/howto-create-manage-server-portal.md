@@ -1,26 +1,26 @@
 ---
-title: 管理 Azure Database for MariaDB-Azure 门户
-description: 了解如何从 Azure 门户管理 Azure Database for MariaDB 服务器。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+title: 管理 Azure Database for PostgreSQL-Azure 门户
+description: 了解如何从 Azure 门户管理 Azure Database for PostgreSQL 服务器。
+author: rachel-msft
+ms.author: raagyema
+ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 7e09db9308f9ecf623ce0ab0d948ed1056dd21b1
+ms.date: 11/20/2019
+ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
 ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534337"
+ms.locfileid: "74535686"
 ---
-# <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MariaDB 服务器
-本文介绍如何管理 Azure Database for MariaDB 服务器。 管理任务包括计算和存储缩放、管理员密码重置和查看服务器详细信息。
+# <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for PostgreSQL 服务器
+本文介绍如何管理 Azure Database for PostgreSQL 服务器。 管理任务包括计算和存储缩放、管理员密码重置和查看服务器详细信息。
 
 ## <a name="sign-in"></a>登录
 登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-server"></a>创建服务器
-访问[快速入门](quickstart-create-mariadb-server-database-using-azure-portal.md)，了解如何创建 Azure Database for MariaDB 服务器并开始使用。
+访问[快速入门](quickstart-create-server-database-portal.md)，了解如何创建 Azure Database for PostgreSQL 服务器并开始使用。
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
 
@@ -104,4 +104,4 @@ ms.locfileid: "74534337"
 
 ## <a name="next-steps"></a>后续步骤
 - 了解[备份和服务器还原](howto-restore-server-portal.md)
-- 了解[Azure Database for MariaDB 中的优化和监视选项](concepts-monitoring.md)
+- 了解[Azure Database for PostgreSQL 中的优化和监视选项](concepts-monitoring.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8261723f145c7b8ba01e27108e7a309f9f483d2c
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cd0e77d1534bf540376fd397ee3e6d45bf8c424a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993139"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546259"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务中的问题配置电子邮件通知
 
@@ -33,7 +33,7 @@ Azure 平台监视 Azure Active Directory 域服务（Azure AD DS）托管域的
 ![电子邮件通知示例](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> 在单击消息中的链接之前，请始终确保电子邮件来自已验证的 Microsoft 发送方。 电子邮件通知始终来自`azure-noreply@microsoft.com`地址。
+> 在单击消息中的链接之前，请始终确保电子邮件来自已验证的 Microsoft 发送方。 电子邮件通知始终来自 `azure-noreply@microsoft.com` 地址。
 
 ### <a name="why-would-i-receive-email-notifications"></a>为什么我会收到电子邮件通知？
 
@@ -68,7 +68,7 @@ Azure AD DS 的电子邮件收件人列表应由能够管理和更改托管域�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>我收到了有关警报的电子邮件通知，但在登录到 Azure 门户后没有任何警报。 这是怎么回事？
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>我收到了有关警报的电子邮件通知，但在登录到 Azure 门户后没有任何警报。 发生了什么情况？
 
 如果警报已解决，则会从 Azure 门户中清除警报。 最可能的原因是，接收电子邮件通知的其他人已在 Azure AD DS 托管域上解决了警报，或是 Azure 平台自动解决了该警报。
 
@@ -78,7 +78,7 @@ Azure AD DS 的电子邮件收件人列表应由能够管理和更改托管域�
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>我似乎没有收到电子邮件通知，即使已提供我的电子邮件地址也没有收到。 为什么？
 
-检查电子邮件中的 "垃圾邮件" 或 "垃圾邮件" 文件夹中是否有通知， `azure-noreply@microsoft.com`并确保允许的发件人。
+检查电子邮件中的 "垃圾邮件" 或 "垃圾邮件" 文件夹中是否有通知，并确保允许 `azure-noreply@microsoft.com`的发送方。
 
 ## <a name="next-steps"></a>后续步骤
 

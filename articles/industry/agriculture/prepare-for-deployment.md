@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ccd8fc293d284150d7318242b71a46a99fec12fa
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
-ms.translationtype: HT
+ms.openlocfilehash: 0fc7eb6c3b582c4fc95d78397c4cb2820ebb4ea8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406327"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534241"
 ---
 # <a name="deploy-farmbeats"></a>部署 FarmBeats
 
@@ -68,6 +68,9 @@ Azure FarmBeats 部署在订阅中创建以下列出的资源：
 6. 选择 "**关闭**"，然后选择 "我同意" 复选框，然后选择 "**创建**"。
 7. 现已成功在 marketplace 上签署 Azure FarmBeats 的最终用户许可协议（EULA）。  
 7. 若要继续进行部署，请按照本指南中的后续步骤进行操作。
+
+> [!NOTE]
+> Azure Marketplace 中的产品/服务完成仅完成部分设置。 按照以下说明完成 Azure 订阅中的 Azure FarmBeats 部署。
 
 ## <a name="prepare"></a>准备
 

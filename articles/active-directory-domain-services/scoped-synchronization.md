@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842682"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546246"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>将范围内的同步从 Azure AD 配置为 Azure Active Directory 域服务
 
-为了提供身份验证服务，Azure Active Directory 域服务（Azure AD DS）从 Azure AD 同步用户和组。 在混合环境中，可以先使用 Azure AD Connect 将本地 Active Directory 域服务（AD DS）环境中的用户和组同步到 Azure AD，然后同步到 Azure AD DS。 默认情况下，Azure AD 目录中的所有用户和组都将同步到 Azure AD DS 托管域。 如果有特定需求，可以改为选择只同步定义的一组用户。
+为了提供身份验证服务，Azure Active Directory 域服务（Azure AD DS）从 Azure AD 同步用户和组。 在混合环境中，可以先使用 Azure AD Connect 将本地 Active Directory 域服务（AD DS）环境中的用户和组同步到 Azure AD，然后同步到 Azure AD DS。
+
+默认情况下，Azure AD 目录中的所有用户和组都将同步到 Azure AD DS 托管域。 如果有特定需求，可以改为选择只同步定义的一组用户。
 
 本文说明如何创建使用范围内同步的 Azure AD DS 托管域，然后更改或禁用作用域内用户集。
 
@@ -30,7 +32,7 @@ ms.locfileid: "70842682"
 
 下表概述了如何使用作用域内同步：
 
-| 当前状态 | 期望状态 | 所需配置 |
+| 当前状态 | Desired 状态 | 所需配置 |
 | --- | --- | --- |
 | 将现有托管域配置为同步所有用户帐户和组。 | 只需同步属于特定组的用户帐户。 | 不能从同步所有用户更改为使用范围内的同步。 [删除现有托管域](delete-aadds.md)，然后按照本文中的步骤操作，以重新创建已配置作用域同步的 Azure AD DS 托管域。 |
 | 无现有托管域。 | 希望新建托管域，并仅同步属于特定组的用户帐户。 | 按照本文中的步骤，创建一个配置了作用域同步的 Azure AD DS 托管域。 |
@@ -53,7 +55,7 @@ ms.locfileid: "70842682"
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户启用作用域同步
 
-1. 按照[教程创建和配置 AZURE AD DS 实例](tutorial-create-instance.md)。 完成除同步作用域外的所有先决条件和部署步骤。
+1. 按照[教程创建和配置 AZURE AD DS 实例](tutorial-create-instance-advanced.md)。 完成除同步作用域外的所有先决条件和部署步骤。
 1. 在同步步骤中选择 "**作用域**"，然后选择要同步到 Azure AD DS 实例的 Azure AD 组。
 
 Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 门户中，Azure AD DS 托管域的 "**概述**" 页在此部署阶段显示当前状态。
@@ -62,13 +64,13 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
-* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
+* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户修改范围内的同步
 
 若要修改其用户应同步到 Azure AD DS 托管域的组的列表，请完成以下步骤：
 
-1. 在 Azure 门户中，选择 Azure AD DS 实例，如*contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*contoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 若要添加组，请选择顶部的 " **+ 选择组**"，然后选择要添加的组。
 1. 若要从同步作用域中删除组，请从当前同步的组列表中选择它，然后选择 "**删除组**"。
@@ -80,7 +82,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 若要禁用 Azure AD DS 托管域的基于组的作用域同步，请完成以下步骤：
 
-1. 在 Azure 门户中，选择 Azure AD DS 实例，如*contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*contoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 将 "同步作用域"**设置为 "** **全部**作用域"，然后选择 "**保存同步作用域**"。
 
@@ -88,7 +90,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>作用域内同步的 PowerShell 脚本
 
-若要使用 PowerShell 配置作用域同步，请首先将以下脚本保存到`Select-GroupsToSync.ps1`名为的文件。 此脚本将 Azure AD DS 配置为从 Azure AD 同步所选组。 属于指定组的所有用户帐户将同步到 Azure AD DS 托管域。
+若要使用 PowerShell 配置作用域同步，请首先将以下脚本保存到名为 `Select-GroupsToSync.ps1`的文件中。 此脚本将 Azure AD DS 配置为从 Azure AD 同步所选组。 属于指定组的所有用户帐户将同步到 Azure AD DS 托管域。
 
 此脚本用于本文中的其他步骤。
 
@@ -215,7 +217,9 @@ Write-Output "******************************************************************
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
     * 若要配置 DNS，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动配置这些 DNS 设置。
-* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
+* 如果在支持可用性区域的区域中创建了 Azure AD DS 托管域，请创建网络安全组，以限制 Azure AD DS 托管域的虚拟网络中的流量。 创建需要这些规则的 Azure 标准负载均衡器。 此网络安全组保护 Azure AD DS 以及托管域正常工作所需的网络安全组。
+    * 若要创建网络安全组和所需的规则，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动创建和配置网络安全组。
+* [启用 "密码同步" Azure AD 域服务](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>使用 Powershell 修改作用域同步
 

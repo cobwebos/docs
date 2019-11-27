@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075868"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538181"
 ---
 # <a name="speech-service-for-telephony-data"></a>电话服务数据的语音服务
 
@@ -95,7 +95,6 @@ ms.locfileid: "74075868"
 - 语音服务用于转录语音到文本。 需要语音服务的标准订阅（S0）才能使用批处理脚本 API。 免费订阅 (F0) 不可用。
 - 使用 [Azure 存储](https://azure.microsoft.com/services/storage/)来存储电话数据以及批量听录 API 返回的听录内容。 此存储帐户应使用通知，特别是添加新文件时。 这些通知用于触发听录过程。
 - 使用 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 来为每个录制内容创建共享访问签名 (SAS) URI，以及触发启动听录的 HTTP POST 请求。 此外，Azure Functions 用于创建通过批量听录 API 检索和删除听录内容的请求。
-- 听录完成时，使用 [WebHook](webhooks.md) 来接收通知。
 
 在内部，我们使用上述技术来支持批量模式的 Microsoft 客户呼叫。
 ![Batch 体系结构](media/scenarios/call-center-batch-pipeline.png)

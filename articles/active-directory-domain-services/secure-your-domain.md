@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 6d60663e345f297246a423e1b4e7a4fb45f352a5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8eee516beaaf26ed25bd20f9689d26fdb1eb9b40
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754340"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546223"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步，保护 Azure AD 域服务托管域的安全
 
@@ -24,7 +24,7 @@ ms.locfileid: "72754340"
 
 本文介绍如何禁用 NTLM v1 和 TLS v1 密码并禁用 NTLM 密码哈希同步。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要以下资源：
 

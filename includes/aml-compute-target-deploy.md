@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/23/2019
-ms.openlocfilehash: 722893fca90e5a5d0958d1de1698b625af4a5e21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1bf1202a635184ad7f0022cf5baa9d72e8547f14
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496992"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74549354"
 ---
 | 计算目标 | 用途 | GPU 支持 | FPGA 支持 | 说明 |
 | ----- | ----- | ----- | ----- | ----- |
@@ -23,6 +23,7 @@ ms.locfileid: "73496992"
 | [Azure Kubernetes 服务 (AKS)](../articles/machine-learning/service/how-to-deploy-and-where.md#aks) | 实时推理 |  [是](../articles/machine-learning/service/how-to-deploy-inferencing-gpus.md)（web 服务部署） | [是](../articles/machine-learning/service/how-to-deploy-fpga-web-service.md)   |用于大规模生产部署。 提供所部署服务的快速响应时间和自动缩放。 不支持通过 Azure 机器学习 SDK 进行群集自动缩放。 若要更改 AKS 群集中的节点，请在 Azure 门户中使用 AKS 群集的 UI。 AKS 是可用于设计器的唯一选项。 |
 | [Azure 容器实例](../articles/machine-learning/service/how-to-deploy-and-where.md#aci) | 测试或开发 | &nbsp;  | &nbsp; | 用于需要小于 48 GB RAM 的基于 CPU 的低缩放工作负荷。 |
 | [Azure 机器学习计算群集](../articles/machine-learning/service/how-to-run-batch-predictions.md) | 效果批处理&nbsp;推理 | [是](../articles/machine-learning/service/how-to-run-batch-predictions.md)（机器学习管道） | &nbsp;  | 对无服务器计算运行批处理评分。 支持普通 Vm 和低优先级 Vm。 |
+| [Azure Functions](../articles/machine-learning/service/how-to-deploy-functions.md) | 效果实时推理 | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/service/how-to-deploy-and-where.md#iotedge) | 效果IoT&nbsp;模块 |  &nbsp; | &nbsp; | 在 IoT 设备上部署和服务 ML 模型。 |
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署和服务 ML 模型。 |
 

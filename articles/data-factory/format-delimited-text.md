@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: b710492b3416371d8d554945a60160261e5a8c6a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9a1a019e7dea2f0c71b40530baaffff79d003774
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674826"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548290"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
 
@@ -24,7 +24,7 @@ ms.locfileid: "73674826"
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供带分隔符的文本数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供带分隔符的文本数据集支持的属性列表。
 
 | 属性         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
@@ -37,7 +37,7 @@ ms.locfileid: "73674826"
 | firstRowAsHeader | 指定是否要将第一行视为/设为包含列名称的标头行。<br>允许的值为 **true** 和 **true**（默认值）。 | 否       |
 | nullValue        | 指定 null 值的字符串表示形式。 <br>默认值为**空字符串**。 | 否       |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>允许的值如下： "UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、""、""、"IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252 "、" WINDOWS-1253 "、" WINDOWS-1254 "、" WINDOWS-1255 "、" WINDOWS-1256 "、" WINDOWS-1257 "、" WINDOWS-1258 "。<br>注意映射数据流不支持 UTF-7 编码。 | 否       |
-| compressionCodec | 用于读取/写入文本文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 <br>注意当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"。 | 否       |
+| compressionCodec | 用于读取/写入文本文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 <br>注意当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"。 <br>请注意，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，文件将被提取到文件夹： `<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
 | compressionLevel | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **速度最快：** 压缩操作应该尽快完成，即使生成的文件未以最佳方式压缩。<br>- **最佳**：应以最佳方式压缩压缩操作，即使操作需要更长的时间才能完成。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的带分隔符的文本数据集的示例：
@@ -69,11 +69,11 @@ ms.locfileid: "73674826"
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供带分隔符的文本源和接收器支持的属性列表。
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供带分隔符的文本源和接收器支持的属性列表。
 
 ### <a name="delimited-text-as-source"></a>带分隔符的文本作为源 
 
-复制活动的 ***\*source\**** 节支持以下属性。
+复制活动的 ***\*source\**** 部分支持以下属性。
 
 | 属性       | 说明                                                  | 必选 |
 | -------------- | ------------------------------------------------------------ | -------- |
@@ -90,7 +90,7 @@ ms.locfileid: "73674826"
 
 ### <a name="delimited-text-as-sink"></a>带分隔符的文本作为接收器
 
-复制活动的 ***\*sink\**** 节支持以下属性。
+复制活动的 ***\*sink\**** 部分支持以下属性。
 
 | 属性       | 说明                                                  | 必选 |
 | -------------- | ------------------------------------------------------------ | -------- |

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185931"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534487"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -50,7 +50,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
 3.  对于设备版本2.19.11.12，生成的哈希应与这些设置相符。
 
   **算法** | **哈希值**

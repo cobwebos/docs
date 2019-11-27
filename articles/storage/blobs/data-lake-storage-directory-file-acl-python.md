@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a4aebd27e5f71680610ff8cc9ba211dedfe41219
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: HT
+ms.openlocfilehash: a65e8b2c5fbcdd4f6df0f8f39b24fa97b8deeca3
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485102"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534434"
 ---
 # <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>将 Python 用于 Azure Data Lake Storage Gen2 中的 & Acl 的文件（预览）
 
@@ -268,11 +268,11 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)
 * [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [已知功能缺口](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)

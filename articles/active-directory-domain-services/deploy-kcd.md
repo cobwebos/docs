@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842656"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546273"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中配置 Kerberos 约束委派（KCD）
 
 当你运行应用程序时，这些应用程序可能需要在不同用户的上下文中访问资源。 Active Directory 域服务（AD DS）支持一种称为*Kerberos 委派*的机制，该机制可实现此用例。 然后，Kerberos*约束*委派（KCD）建立在此机制上，用于定义可在用户的上下文中访问的特定资源。 Azure Active Directory 域服务（Azure AD DS）托管域更安全地锁定了传统本地 AD DS 环境，因此请使用更安全的*基于资源*的 KCD。
 
-本文介绍如何在 Azure AD DS 托管域中配置 basd Kerberos 约束委派。
+本文介绍如何在 Azure AD DS 托管域中配置基于资源的 Kerberos 约束委派。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,13 +36,15 @@ ms.locfileid: "70842656"
     * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
 * 已加入到 Azure AD DS 托管域的 Windows Server 管理 VM。
     * 如果需要，请完成[创建 Windows SERVER VM 并将其加入托管域][create-join-windows-vm]的教程，然后[安装 AD DS 管理工具][tutorial-create-management-vm]。
-* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
+* 用户帐户是 Azure AD 租户中 Azure AD DC 管理员组的成员。
 
 ## <a name="kerberos-constrained-delegation-overview"></a>Kerberos 约束委派概述
 
 Kerberos 委派允许一个帐户模拟另一个帐户来访问资源。 例如，访问后端 web 组件的 web 应用程序可以在进行后端连接时将其自身模拟为其他用户帐户。 Kerberos 委托不安全，因为它不会限制模拟帐户可以访问的资源。
 
-Kerberos 约束委派（KCD）限制指定的服务器或应用程序在模拟其他标识时可以连接的服务或资源。 传统的 KCD 要求域管理员权限来为服务配置域帐户，并将该帐户限制为在单个域上运行。 传统 KCD 也有一些问题。 例如，在早期版本的操作系统中，服务管理员没有有效的方法来了解哪些前端服务委派给了其拥有的资源服务。 可以委派给资源服务的任何前端服务都是潜在的攻击点。 如果承载配置为委派到资源服务的前端服务的服务器已泄露，则资源服务也会受到损害。
+Kerberos 约束委派（KCD）限制指定的服务器或应用程序在模拟其他标识时可以连接的服务或资源。 传统的 KCD 要求域管理员权限来为服务配置域帐户，并将该帐户限制为在单个域上运行。
+
+传统 KCD 也有一些问题。 例如，在早期版本的操作系统中，服务管理员没有有效的方法来了解哪些前端服务委派给了其拥有的资源服务。 可以委派给资源服务的任何前端服务都是潜在的攻击点。 如果承载配置为委派到资源服务的前端服务的服务器已泄露，则资源服务也会受到损害。
 
 在 Azure AD DS 托管域中，你没有域管理员权限。 因此，不能在 Azure AD DS 中将基于帐户的传统的 KCD 配置为托管域。 可以改为使用基于资源的 KCD，这也更安全。
 

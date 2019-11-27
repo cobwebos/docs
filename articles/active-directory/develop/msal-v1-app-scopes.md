@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2019
+ms.date: 11/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0590614e1c1bc7331246e76fa26a6567a05324e6
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 70a8a5859c7f1e2353b53d01a25a0ca39e0b04dd
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532344"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532984"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
-OAuth2 权限是适用于开发人员的 Azure AD (v1.0) Web API（资源）应用程序向客户端应用程序公开的权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单参考](reference-app-manifest.md#manifest-reference)中有关 `oauth2Permissions` 的部分。
+OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客户端应用程序公开的 Azure Active Directory （Azure AD）权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 `oauth2Permissions`Azure Active Directory 应用程序清单参考[中有关 ](reference-app-manifest.md#manifest-reference) 的部分。
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
-若要获取 v1.0 应用程序（例如 Azure AD Graph，网址为 https:\//graph.windows.net）的特定范围的令牌，需要通过将所需资源标识符与该资源的所需 OAuth2 权限相连接，来创建范围。
+
+若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如，Azure AD 关系图是 https：\//graph.windows.net），需要使用该资源的所需 OAuth2 权限连接所需的资源标识符来创建作用域。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 
@@ -41,7 +42,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 Azure AD Graph API (https:\//graph.windows.net/) 通过 MSAL.NET Azure Active Directory 进行读取和写入，需要按如下所示创建范围列表：
+若要使用 MSAL.NET Azure AD Azure AD 图形 API （https：\//graph.windows.net/）进行读取和写入，需创建范围列表，如以下示例中所示：
 
 ```csharp
 string ResourceId = "https://graph.windows.net/";
@@ -53,7 +54,7 @@ var ResourceId = "https://graph.windows.net/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-若要写入对应于 Azure 资源管理器 API (https:\//management.core.windows.net/) 的范围，需要请求以下范围（请注意有两个斜杠）：
+若要写入与 Azure 资源管理器 API （https：\//management.core.windows.net/）相对应的作用域，需要请求以下作用域（请注意两个斜杠）：
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -67,11 +68,12 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
 下面是 Azure AD 使用的逻辑：
 
-- 对于使用 v1.0 访问令牌（只能使用此类令牌）的 ADAL (v1.0) 终结点，aud=resource
-- 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（Microsoft 标识平台 (v2.0) 终结点），aud=resource.AppId
-- 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https:\//database.windows.net 预期的受众为“https:\//database.windows.net/”，则你需要请求的范围为“https:\//database.windows.net//.default”。 另请参阅 GitHub 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+- 对于具有 v1.0 访问令牌的 ADAL （Azure AD v1.0）终结点（唯一可能的），aud = 资源
+- 对于 MSAL （Microsoft 标识平台（v2.0））终结点，该终结点请求用于接受 v2.0 令牌的资源的访问令牌，`aud=resource.AppId`
+- 对于 MSAL （v2.0 终结点），为接受 v1.0 访问令牌的资源（上述情况）请求访问令牌，Azure AD 通过将最后一个斜杠之前的所有内容并将其用作资源标识符，从请求的作用域分析所需的受众。 因此，如果 https：\//database.windows.net 需要 "https：\//database.windows.net/" 的受众，则需要请求 "https：\//database.windows.net//.default" 范围。 另请参阅 GitHub 问题[#747：省略了资源 url 的尾部反斜杠，导致了 sql 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的所有权限
+
 例如，若要获取 v1.0 应用程序的所有静态范围的令牌，请将“.default”追加到 API 的应用 ID URI：
 
 ```csharp
@@ -84,5 +86,6 @@ var ResourceId = "someAppIDURI";
 var scopes = [ ResourceId + "/.default"];
 ```
 
-## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>针对客户端凭据流/守护程序应用的请求的范围
+## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>请求客户端凭据流/后台应用的范围
+
 使用客户端凭据流时，要传递的范围也是 `/.default`。 这会让 Azure AD 知道管理员在应用程序注册中许可的所有应用级权限。

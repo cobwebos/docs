@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: HT
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186601"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534309"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -86,6 +86,11 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 
 可以将任何现有存储帐户迁移到 GZRS 或 GZRS。 从现有的 ZRS 帐户迁移到 GZRS 或 RA-GZRS 非常简单，同时从 LRS、GRS 或 RA-GRS 帐户进行迁移更为简单。 以下各节介绍了如何在这两种情况下进行迁移。
 
+**已知限制**
+
+- （RA-） GZRS 帐户当前不支持存档层。 有关更多详细信息，请参阅[Azure Blob 存储：热、冷和存档访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。
+- 托管磁盘不支持（RA-） GZRS。 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并在[LRS 和 ZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。
+
 ### <a name="migrating-from-a-zrs-account"></a>从 ZRS 帐户迁移
 
 若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请务必将占位符值替换为你自己的值：
@@ -150,7 +155,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 支持代表将与你联系以提供帮助。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)

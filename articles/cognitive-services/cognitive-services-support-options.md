@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: ca5274113c0c0fd6cb0e81748fbe59320a7c83c8
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
-ms.translationtype: HT
+ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405555"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533702"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务支持和帮助选项
 
@@ -63,7 +63,7 @@ ms.locfileid: "74405555"
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-若要请求新功能，请将其发布到 UserVoice。 分享与使认知服务和伴随的 API 更好地为你开发的应用程序工作相关的想法。 使用我们[不断增长的知识库](https://cognitive.uservoice.com/knowledgebase)查找常见问题的答案：
+若要请求新功能，请将其发布到 UserVoice。 分享你的想法，使认知服务更适合你开发的应用程序：
 
 | 服务                       | 认知服务 UserVoice URL |
 |-------------------------------|---------------|

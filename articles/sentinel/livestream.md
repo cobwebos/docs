@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515117"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546863"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>使用 Azure Sentinel 中的搜寻 Livestream 检测威胁
 
 > [!IMPORTANT]
-> Azure Sentinel 中的搜寻 Livestream 目前为公共预览版。
+> Azure Sentinel 中的搜寻 Livestream 目前为公共预览版，并逐渐推出到租户。
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
@@ -63,7 +63,7 @@ ms.locfileid: "73515117"
     1. 选择**Livestream**选项卡
     2. 选择 "**中转到 Livestream**"。
     
-4. 在 " **Livestream** " 边栏选项卡上：
+4. 在 " **Livestream** " 窗格中：
     
     - 如果从查询启动了 Livestream，请查看查询，并进行所需的任何更改。
     - 如果从头开始 Livestream，请创建查询。 
@@ -96,7 +96,7 @@ ms.locfileid: "73515117"
 
 ![Livestream 的 Azure 门户通知](./media/livestream/notification.png)
 
-选择通知以打开 " **Livestream** " 边栏选项卡。
+选择通知以打开 " **Livestream** " 窗格。
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>将 Livestream 会话提升为警报
 

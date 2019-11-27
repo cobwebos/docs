@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090636"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548338"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -35,7 +35,7 @@ ms.locfileid: "71090636"
 
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在 "**设置**" 中选择 "**配置**"。 
 1. 在 "**配置**" 窗格中，选择 **"打开"** 以启用**流式引入**。
-1. 选择**保存**。
+1. 选择“保存”。
  
     ![流式引入](media/ingest-data-streaming/streaming-ingestion-on.png)
  
@@ -67,14 +67,13 @@ ms.locfileid: "71090636"
 1. 从所有相关的表和数据库中删除[流式处理引入策略](/azure/kusto/concepts/streamingingestionpolicy)。 流式处理引入策略删除触发从初始存储到列存储中的永久存储（区或分片）的流引入数据移动。 数据移动可能会持续几秒钟到几个小时，具体取决于初始存储中的数据量以及群集的 CPU 和内存使用率。
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在 "**设置**" 中选择 "**配置**"。 
 1. 在 "**配置**" 窗格中，选择 "**关闭**" 以禁用**流式引入**。
-1. 选择**保存**。
+1. 选择“保存”。
 
     ![流引入关闭](media/ingest-data-streaming/streaming-ingestion-off.png)
 
 ## <a name="limitations"></a>限制
 
-* VM 和群集大小增加时，流式处理引入性能和容量可扩展性。 对于单个 D14 节点，建议的负载最多为每秒150请求。
-* 目前，支持仅适用于8和16核心 Sku （D13、D14、L8 和 L16）。
+* VM 和群集大小增加时，流式处理引入性能和容量可扩展性。 并发 ingestions 限制为每个内核 6 ingestions。 例如，对于16核 Sku，如 D14 和 L16，支持的最大负载为96并发 ingestions。 对于2核 Sku，如 D11，最大支持负载为12个并发 ingestions。
 * 每个摄取请求的数据大小限制为 4 MB。
 * 架构更新（如创建和修改表和引入映射）可能需要长达5分钟的时间才能进入流式处理引入服务。
 * 即使数据不引入通过流式处理，也要在群集上启用流式引入，使用群集计算机的部分本地 SSD 磁盘来流式处理引入数据，并减少可用于热缓存的存储空间。

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679518"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539137"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -37,10 +37,9 @@ Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示�
 
 我们提供的此示例配置 XML 将执行以下操作：
 
-- 从预览体验频道安装 Office，并在执行时从预览体验频道中提供更新。
+- 从每月频道安装 Office，并在执行时从每月频道中提供更新。
 - 使用 x64 体系结构。
 - 禁用自动更新。
-- 安装 Visio 和项目。
 - 删除 Office 的任何现有安装并迁移其设置。
 - 启用共享计算机激活。
 
@@ -63,40 +62,26 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>示例配置 .xml
 
-下面的 XML 示例将安装预览体验版。
+下面的 XML 示例将安装每月发布。
 
 ```xml
 <Configuration>
-    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Groove" />
-            <ExcludeApp ID="Lync" />
-            <ExcludeApp ID="OneDrive" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-        <Product ID="VisioProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" /> 
-        </Product>
-        <Product ID="ProjectProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-    </Add>
-    <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
-    <Display Level="None" AcceptEULA="TRUE" />
-    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
-    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
-    <Property Value="1" Name="SharedComputerLicensing"/>
-    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
+  <Add OfficeClientEdition="64" Channel="Monthly">
+    <Product ID="O365ProPlusRetail">
+      <Language ID="en-US" />
+      <Language ID="MatchOS" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="Teams" />
+    </Product>
+  </Add>
+  <RemoveMSI/>
+  <Updates Enabled="FALSE"/>
+  <Display Level="None" AcceptEULA="TRUE" />
+  <Logging Level=" Standard" Path="%temp%\WVDOfficeInstall" />
+  <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
+  <Property Name="SharedComputerLicensing" Value="1"/>
 </Configuration>
 ```
 
