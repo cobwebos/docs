@@ -39,7 +39,7 @@ ms.locfileid: "74196273"
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government | 美国政府弗吉尼亚州
+Azure 政府 | 美国政府弗吉尼亚州
 亚太区 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
@@ -136,7 +136,7 @@ vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配�
         - TCP 连接
         - 具有活动连接的进程的名称
         - 运行上述进程的已安装应用程序的名称
-        - 不能。 每个轮询间隔检测到的连接
+        - 否。 每个轮询间隔检测到的连接
 - **基于代理的依赖项可视化**：若要使用基于代理的依赖项可视化，需要在要分析的每台本地计算机上下载并安装以下代理。
     - 需要在每台计算机上安装 Microsoft Monitoring agent （MMA）。 [了解](how-to-create-group-machine-dependencies.md#install-the-mma)有关如何安装 MMA 代理的详细信息。
     - 需要在每台计算机上安装依赖关系代理。 [了解](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
@@ -179,15 +179,15 @@ VirtualMachine.SnapshotManagement.* | 允许创建和管理用于复制的 VM �
 **磁盘大小** | 2 TB 操作系统磁盘;对于数据磁盘为 4 TB。
 **磁盘限制** |  每个虚拟机最多60个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
-**共享磁盘群集** | 不支持。
-**独立磁盘** | 不支持。
+**共享磁盘群集** | 不受支持。
+**独立磁盘** | 不受支持。
 **RDM/传递磁盘** | 如果 Vm 具有 RDM 或传递磁盘，则这些磁盘不会复制到 Azure。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 **iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
-**多路径 IO** | 不支持。
-**存储 vMotion** | 不支持。 如果 VM 使用 storage vMotion，则复制将不起作用。
-**成组 Nic** | 不支持。
-**IPv6** | 不支持。
+**多路径 IO** | 不受支持。
+**存储 vMotion** | 不受支持。 如果 VM 使用 storage vMotion，则复制将不起作用。
+**成组 Nic** | 不受支持。
+**IPv6** | 不受支持。
 **目标磁盘** | Vm 只能迁移到 Azure 中的托管磁盘（标准 HDD、高级 SSD）。
 **同时复制** | 100 Vm/vCenter Server。 如果有更多的，请按批次100进行迁移。
 
@@ -267,7 +267,7 @@ RAM | 16 GB
 可用磁盘空间（保留磁盘） | 600 GB
 **软件设置** |
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
-操作系统区域设置 | 英语 (en-us)
+操作系统区域设置 | 美国英语
 TLS | 应启用 TLS 1.2。
 .NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
@@ -276,7 +276,7 @@ Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域�
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置
 **网络设置** |
-IP 地址类型 | 静态
+IP 地址类型 | Static
 端口 | 443（控制通道协调）<br>9443（数据传输）
 NIC 类型 | VMXNET3
 
@@ -294,7 +294,7 @@ https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
 
 
@@ -325,15 +325,15 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **磁盘大小** | 2 TB 操作系统磁盘;8 TB （适用于数据磁盘）。
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
-**共享磁盘群集** | 不支持。
+**共享磁盘群集** | 不受支持。
 **独立磁盘** | 。
 **传递磁盘** | 。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 **iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
-**多路径 IO** | 不支持。
-**存储 vMotion** | 支持
-**成组 Nic** | 不支持。
-**IPv6** | 不支持。
+**多路径 IO** | 不受支持。
+**存储 vMotion** | 是否支持
+**成组 Nic** | 不受支持。
+**IPv6** | 不受支持。
 
 
 
@@ -374,13 +374,13 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 来宾操作系统 | 使用[无代理复制](#agentless-migration-vmware-vm-requirements)为 vmware vm 和[使用基于代理的复制的 vmware vm](#agent-based-migration-vmware-vm-requirements)验证支持的操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 1 个 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
-共享 VHD | 不支持。 | 如果不支持，检查会失败。
-FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
-BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
+共享 VHD | 不受支持。 | 如果不支持，检查会失败。
+FC 磁盘 | 不受支持。 | 如果不支持，检查会失败。
+BitLocker | 不受支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
 迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” **“允许的应用”中针对所有配置文件允许 RDP** > 。<br/> 对于站点到站点 VPN 访问，在**Windows 防火墙**中启用 rdp 和允许 Rdp -> 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  

@@ -1,10 +1,10 @@
 ---
-title: GitHub Actions & Azure Kubernetes Service
+title: Azure Kubernetes 服务 & GitHub 操作
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Review and test changes from a pull request directly in Azure Kubernetes Service using GitHub Actions and Azure Dev Spaces.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, GitHub Actions, Helm, service mesh, service mesh routing, kubectl, k8s
+description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改。
+keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
 ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
@@ -13,65 +13,65 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74483936"
 ---
-# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview)
+# <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
-Azure Dev Spaces provides a workflow using GitHub Actions that allows you to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch. Having a running application to review changes of a pull request can increase the confidence of both the developer as well as team members. This running application can also help team members such as, product managers and designers, become part of the review process during early stages of development.
+Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请求合并到存储库的主分支之前，直接在 AKS 中测试拉取请求中的更改。 让正在运行的应用程序检查拉取请求的更改会提高开发人员和团队成员的置信度。 此正在运行的应用程序还可以帮助团队成员（如产品经理和设计人员）在开发的早期阶段成为审核过程的一部分。
 
-本指南介绍如何执行以下操作：
+本指南介绍如何：
 
 * 在 Azure 中的托管 Kubernetes 群集上设置 Azure Dev Spaces。
 * 将包含多个微服务的大型应用程序部署到开发空间。
-* Set up CI/CD with GitHub actions.
+* 设置具有 GitHub 操作的 CI/CD。
 * 在完整应用程序的上下文中的隔离开发空间内测试单个微服务。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI][azure-cli-installed]。
-* [Helm 2.13 - 2.16 installed][helm-installed].
-* A GitHub Account with [GitHub Actions enabled][github-actions-beta-signup].
-* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) running on an AKS cluster.
+* [已安装 Helm 2.13-2.16][helm-installed]。
+* [已启用 Github 操作][github-actions-beta-signup]的 github 帐户。
+* 在 AKS 群集上运行的[Azure Dev Spaces 自行车共享示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md)。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 
-Create an Azure Container Registry (ACR):
+创建 Azure 容器注册表（ACR）：
 
 ```cmd
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
 > [!IMPORTANT]
-> The name your ACR must be unique within Azure and contain 5-50 alphanumeric characters. Any letters you use must be lower case.
+> 该名称在 Azure 中必须唯一，并且包含5-50 个字母数字字符。 使用的任何字母都必须为小写。
 
-Save the *loginServer* value from the output because it is used in a later step.
+保存输出的*loginServer*值，因为稍后的步骤中会用到它。
 
-## <a name="create-a-service-principal-for-authentication"></a>Create a service principal for authentication
+## <a name="create-a-service-principal-for-authentication"></a>创建用于身份验证的服务主体
 
-Use [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] to create a service principal. 例如：
+使用[az ad sp 创建-rbac][az-ad-sp-create-for-rbac]创建服务主体。 例如：
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
-Save the JSON output because it is used in a later step.
+保存 JSON 输出，因为后面的步骤中会用到它。
 
 
-Use [az aks show][az-aks-show] to display the *id* of your AKS cluster:
+使用[az aks show][az-aks-show]显示 aks 群集的*id* ：
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-Use [az acr show][az-acr-show] to display the *id* of the ACR:
+使用[az acr show][az-acr-show]显示 acr 的*id* ：
 
 ```cmd
 az acr show --name <acrName> --query id
 ```
 
-Use [az role assignment create][az-role-assignment-create] to give *Contributor* access to your AKS cluster and *AcrPush* access to your ACR.
+使用[az role 分配 create][az-role-assignment-create]为*参与者*授予对你的 AKS 群集的访问权限，并*AcrPush*对你的 ACR 的访问权限。
 
 ```cmd
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
@@ -79,46 +79,46 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
 
 > [!IMPORTANT]
-> You must be the owner of both your AKS cluster and ACR in order to give your service principal access to those resources.
+> 你必须是 AKS 群集和 ACR 的所有者，才能让你的服务主体访问这些资源。
 
-## <a name="configure-your-github-action"></a>Configure your GitHub action
+## <a name="configure-your-github-action"></a>配置 GitHub 操作
 
 > [!IMPORTANT]
-> You must have GitHub Actions enabled for your repository. To enable GitHub Actions for your repository, navigate to your repository on GitHub, click on the Actions tab, and choose to enable actions for this repository.
+> 你必须为存储库启用 GitHub 操作。 若要为存储库启用 GitHub 操作，请导航到 GitHub 上的存储库，单击 "操作" 选项卡，然后选择启用此存储库的操作。
 
-Navigate to your forked repository and click *Settings*. Click on *Secrets* in the left sidebar. Click *Add a new secret* to add each new secret below:
+导航到分叉存储库，然后单击 "*设置*"。 单击左侧边栏中的 "*机密*"。 单击 "*添加新机密*" 添加下面的每个新机密：
 
-1. *AZURE_CREDENTIALS*: the entire output from the service principal creation.
-1. *RESOURCE_GROUP*: the resource group for your AKS cluster, which in this example is *MyResourceGroup*.
-1. *CLUSTER_NAME*: the name of your AKS cluster, which in this example is *MyAKS*.
-1. *CONTAINER_REGISTRY*: the *loginServer* for the ACR.
-1. *HOST*: the host for your Dev Space, which takes the form *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* , which in this example is *dev.bikesharingweb.fedcab0987.eus.azds.io*.
-1. *HOST_SUFFIX*: the host suffix for your Dev Space, which in this example is *fedcab0987.eus.azds.io*.
-1. *IMAGE_PULL_SECRET*: the name of the secret you wish to use, for example *demo-secret*.
-1. *MASTER_SPACE*: the name of your parent Dev Space, which in this example is *dev*.
-1. *REGISTRY_USERNAME*: the *clientId* from the JSON output from the service principal creation.
-1. *REGISTRY_PASSWORD*: the *clientSecret* from the JSON output from the service principal creation.
+1. *AZURE_CREDENTIALS*：服务主体创建的整个输出。
+1. *RESOURCE_GROUP*： AKS 群集的资源组，在本示例中为*MyResourceGroup*。
+1. *CLUSTER_NAME*： AKS 群集的名称，此示例中为*MyAKS*。
+1. *CONTAINER_REGISTRY*： ACR 的*loginServer* 。
+1. *Host*：开发人员空间的主机，其形式 *< MASTER_SPACE > <* APP_NAME > < HOST_SUFFIX >。
+1. *HOST_SUFFIX*：开发人员空间的主机后缀，在本例中为*fedcab0987.eus.azds.io*。
+1. *IMAGE_PULL_SECRET*：要使用的机密的名称，例如*演示密钥*。
+1. *MASTER_SPACE*：父 dev 空间的名称，在本示例中为*dev*。
+1. *REGISTRY_USERNAME*：从服务主体创建的 JSON 输出的*clientId* 。
+1. *REGISTRY_PASSWORD*：从服务主体创建的 JSON 输出中的*clientSecret* 。
 
 > [!NOTE]
-> All of these secrets are used by the GitHub action and are configured in [.github/workflows/bikes.yml][github-action-yaml].
+> GitHub 操作使用所有这些机密，并在[github/工作流/docker-compose.override.yml][github-action-yaml]中进行配置。
 
-## <a name="create-a-new-branch-for-code-changes"></a>Create a new branch for code changes
+## <a name="create-a-new-branch-for-code-changes"></a>为代码更改创建新分支
 
-Navigate to `BikeSharingApp/` and create a new branch called *bike-images*.
+导航到 "`BikeSharingApp/`"，然后创建一个名为 "*自行车-映像*" 的新分支。
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-Edit [Bikes/server.js][bikes-server-js] to remove lines 232 and 233:
+编辑[自行车/node.js][bikes-server-js]以删除行232和233：
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-The section should now look like:
+此部分现在应如下所示：
 
 ```javascript
     var theBike = result;
@@ -126,35 +126,35 @@ The section should now look like:
     delete theBike._id;
 ```
 
-Save the file then use `git add` and `git commit` to stage your changes.
+保存文件，然后使用 `git add` 和 `git commit` 来暂存更改。
 
 ```cmd
 git add Bikes/server.js 
 git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 ```
 
-## <a name="push-your-changes"></a>Push your changes
+## <a name="push-your-changes"></a>推送更改
 
-Use `git push` to push your new branch to your forked repository:
+使用 `git push` 将新分支推送到分叉存储库：
 
 ```cmd
 git push origin bike-images
 ```
 
-After the push is complete, navigate to your forked repository on GitHub to create a pull request with the *master* branch in your forked repository as the base branch compared to the *bike-images* branch.
+推送完成后，请导航到 GitHub 上的分叉存储库，以将分叉存储库中的*主*分支作为基准分支与 "*自行车-映像*" 分支进行比较。
 
-After your pull request is opened, navigate to the *Actions* tab. Verify a new action has started and is building the *Bikes* service.
+在拉取请求打开后，导航到 "*操作*" 选项卡。验证是否已开始新的操作并生成*自行车*服务。
 
-## <a name="view-the-child-space-with-your-changes"></a>View the child space with your changes
+## <a name="view-the-child-space-with-your-changes"></a>查看具有更改的子区域
 
-After the action has completed, you will see a comment with a URL to your new child space based the changes in the pull request.
+操作完成后，你将看到一个注释，其中包含新子空间的 URL，并基于拉取请求中的更改。
 
 > [!div class="mx-imgBorder"]
-> ![GitHub Action Url](../media/github-actions/github-action-url.png)
+> ![GitHub 操作 Url](../media/github-actions/github-action-url.png)
 
-Navigate to the *bikesharingweb* service by opening the URL from the comment. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Verify you no longer see the placeholder image for the bike.
+通过从注释打开 URL，导航到*bikesharingweb*服务。 选择 " *Aurelia meets Briggs （客户）* " 作为用户，然后选择要出租的自行车。 验证是否不再显示自行车的占位符图像。
 
-If you merge your changes into the *master* branch in your fork, another action will run to rebuild and run your entire application in the parent dev space. In this example, the parent space is *dev*. This action is configured in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
+如果将所做的更改合并到分支中的*主*分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为*dev*。 此操作在[github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 

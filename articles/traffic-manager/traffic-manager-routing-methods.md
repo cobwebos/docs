@@ -123,38 +123,38 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 如[流量管理器工作原理](traffic-manager-how-it-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定区域的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
 
-### <a name="faqs"></a>常见问题解答
+### <a name="faqs"></a>常见问题
 
-* [What are some use cases where geographic routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+* [可以在哪些情况下使用地理路由？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
 
-* [How do I decide if I should use Performance routing method or Geographic routing method?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+* [如何决定我应当使用性能路由方法还是应当使用地理路由方法？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
 
-* [What are the regions that are supported by Traffic Manager for geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+* [进行地理路由时，流量管理器支持哪些区域？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
 
-* [How does traffic manager determine where a user is querying from?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+* [流量管理器如何确定用户从何处进行查询？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
 
-* [Is it guaranteed that Traffic Manager can correctly determine the exact geographic location of the user in every case?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+* [是否可以保证流量管理器在每种情况下都可正确确定用户的确切地理位置？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
 
-* [Does an endpoint need to be physically located in the same region as the one it is configured with for geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+* [是否需将终结点与进行地理路由时用来进行配置的终结点置于同一区域？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
 
-* [Can I assign geographic regions to endpoints in a profile that is not configured to do geographic routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+* [是否可以将地理区域分配给某个配置文件中的终结点，而该配置文件尚未进行地理路由所需的配置？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
 
-* [Why am I getting an error when I try to change the routing method of an existing profile to Geographic?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+* [尝试将现有配置文件的路由方法更改为地理路由时，为何会出现错误？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
 
-* [Why is it strongly recommended that customers create nested profiles instead of endpoints under a profile with geographic routing enabled?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+* [为何强烈建议客户创建嵌套式配置文件，而不是将终结点直接置于启用了地理路由的配置文件中？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
 
-* [Are there any restrictions on the API version that supports this routing type?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+* [对于支持此路由类型的 API 版本，是否存在任何限制？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name = "multivalue"></a>多值流量路由方法
-**多值**流量路由方法允许你在单个 DNS 查询响应中获得多个正常运行的终结点。 This enables the caller to do client-side retries with other endpoints in the event of a returned endpoint being unresponsive. 此模式可以提高服务可用性，并降低与新 DNS 查询获取正常运行的终结点相关的延迟。 只有当所有终结点的类型都是“外部”并且指定为 IPv4 或 IPv6 地址时，多值路由方法才有效。 当收到对此配置文件的查询时，会根据可配置的最大返回计数返回所有正常运行的终结点。
+**多值**流量路由方法允许你在单个 DNS 查询响应中获得多个正常运行的终结点。 这使得调用方在返回的某个终结点无法响应时能够通过其他终结点进行客户端重试。 此模式可以提高服务可用性，并降低与新 DNS 查询获取正常运行的终结点相关的延迟。 只有当所有终结点的类型都是“外部”并且指定为 IPv4 或 IPv6 地址时，多值路由方法才有效。 当收到对此配置文件的查询时，会根据可配置的最大返回计数返回所有正常运行的终结点。
 
-### <a name="faqs"></a>常见问题解答
+### <a name="faqs"></a>常见问题
 
-* [What are some use cases where MultiValue routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+* [可以在哪些情况下使用多值路由？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
 
-* [How many endpoints are returned when MultiValue routing is used?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+* [使用多值路由会返回多少终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
 
-* [Will I get the same set of endpoints when MultiValue routing is used?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
+* [使用多值路由时，会收到一组相同的终结点吗？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name = "subnet"></a>子网流量路由方法
 **子网**流量路由方法允许你将一个最终用户 IP 地址范围集映射到配置文件中的特定终结点。 此后，如果流量管理器收到针对该配置文件的 DNS 查询，则它将检查该请求的源 IP 地址（大多数情况下，这是调用方使用的 DNS 解析程序的传出 IP 地址），确定它映射到哪个终结点，并在查询响应中返回该终结点。 
@@ -164,17 +164,17 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 子网路由可以用来为从特定 IP 空间进行连接的用户提供不同的体验。 例如，使用子网路由，客户可以将来自其公司的所有请求路由到一个不同的终结点，他们可以在这里测试其应用的仅限内部版本。 另一种情况是，你可能希望为从特定 ISP 进行连接的用户提供不同的体验（例如，阻止来自给定 ISP 的用户）。
 
-### <a name="faqs"></a>常见问题解答
+### <a name="faqs"></a>常见问题
 
-* [What are some use cases where subnet routing is useful?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+* [可以在哪些情况下使用子网路由？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
 
-* [How does Traffic Manager know the IP address of the end user?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+* [流量管理器如何获取最终用户的 IP 地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
 
-* [How can I specify IP addresses when using Subnet routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+* [使用子网路由时如何指定 IP 地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
 
-* [How can I specify a fallback endpoint when using Subnet routing?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+* [使用子网路由时如何指定回退终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
 
-* [What happens if an endpoint is disabled in a Subnet routing type profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+* [如果在子网路由类型配置文件中禁用终结点会发生什么？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
 ## <a name="next-steps"></a>后续步骤
