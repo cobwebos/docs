@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 门户中创建视频索引器帐户
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: 本文介绍如何在 Azure 门户中创建视频索引器帐户。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815666"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838385"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "68815666"
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。
 
@@ -60,11 +60,11 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 ## <a name="connect-to-azure"></a>连接到 Azure
 
 > [!NOTE]
-> 如果你的 Azure 订阅使用基于证书的多重身份验证, 则必须在安装了所需证书的设备上执行以下步骤。
+> 如果你的 Azure 订阅使用基于证书的多重身份验证，则必须在安装了所需证书的设备上执行以下步骤。
 
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 
-2. 单击 "**创建新帐户**" 按钮:
+2. 单击 "**创建新帐户**" 按钮：
 
     ![连接到 Azure](./media/create-account/connect-to-azure.png)
 
@@ -72,7 +72,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
     ![将视频索引器连接到 Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. 从支持的位置中选择一个 Azure 区域：美国西部 2、北欧或东亚。
+4. 从支持的位置选择一个 Azure 区域：“美国西部 2”、“北欧”或“东亚”。
 5. 在“Azure 媒体服务帐户”下，选择以下选项之一：
 
     * 若要创建新的媒体服务帐户，请选择“创建新资源组”。 提供资源组的名称。
@@ -107,7 +107,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 1. 使用 [Azure](https://portal.azure.com/) 门户创建 Azure 媒体服务帐户，如[创建帐户](../previous/media-services-portal-create-account.md)中所述。
 
-    为媒体服务帐户创建存储帐户时, 为 "复制" 字段选择 " **StorageV2** " 作为 "帐户类型" 和 "**异地冗余 (GRS)** "。
+    为媒体服务帐户创建存储帐户时，为 "复制" 字段选择 " **StorageV2** " 作为 "帐户类型" 和 "**异地冗余（GRS）** "。
 
     ![新建 AMS 帐户](./media/create-account/create-ams-account1.png)
 
@@ -127,7 +127,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
     2. 选择[服务主体身份验证方法](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。
     3. 按[获取客户端 ID 和客户端密码](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret)部分所述，获取客户端 ID 和客户端密码。
 
-        在选择“设置”->“密钥”后，添加“说明”并按“保存”，系统会填充密钥值。
+        在选择“设置” **“密钥”后，添加“说明”并按“保存”，系统会填充密钥值**->。
 
         如果密钥到期，帐户所有者需联系视频索引器支持人员更新密钥。
 
@@ -136,11 +136,11 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 ### <a name="connect-manually"></a>手动连接
 
-在[视频索引器](https://www.videoindexer.ai/)页的“将视频索引器连接到 Azure 订阅”对话框中，选择“切换为手动配置”链接。
+在**视频索引器**页的“将视频索引器连接到 Azure 订阅”对话框中，选择“切换为手动配置”链接[](https://www.videoindexer.ai/)。
 
 在对话框中提供以下信息：
 
-|设置|描述|
+|设置|说明|
 |---|---|
 |视频索引器帐户区域|视频索引器帐户区域的名称。 为了提高性能和降低成本，强烈建议指定 Azure 媒体服务资源和 Azure 存储帐户所在区域的名称。 |
 |Azure Active Directory (AAD) 租户|Azure AD 租户的名称，例如“contoso.onmicrosoft.com”。 可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名上。 找到“域”右侧的名称。|
@@ -173,7 +173,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 ## <a name="next-steps"></a>后续步骤
 
-可以遵照如下说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互：[使用 API](video-indexer-use-apis.md)。
+可以遵照[使用 API](video-indexer-use-apis.md) 中的说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互。
 
 应使用连接到 Azure 时所用的同一 Azure AD 用户。
 

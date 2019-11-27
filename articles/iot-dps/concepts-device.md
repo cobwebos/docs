@@ -3,17 +3,17 @@ title: Azure 设备预配中的设备概念 | Microsoft Docs
 description: 介绍设备预配概念，特定于使用设备预配服务和 IoT 中心的设备
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897581"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720528"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT 中心设备预配服务设备概念
 
@@ -31,7 +31,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 设备预配服务支持以下证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。
 * 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
-* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的“对称密钥”，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于共享访问签名 (SAS) **安全令牌**的“对称密钥”[](../iot-hub/iot-hub-devguide-security.md#security-tokens)，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 
@@ -51,7 +51,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ## <a name="device-id"></a>设备 ID
 
-设备 ID 是设备在 IoT 中心中显示的 ID。 可以在注册项目中设置所需的设备 ID，但不需要进行设置。 如果注册列表中未指定所需设备 ID，注册设备时将使用注册 ID 作为设备 ID。 详细了解 [IoT 中心中的设备 ID](../iot-hub/iot-hub-devguide-identity-registry.md)。
+设备 ID 是设备在 IoT 中心中显示的 ID。 可以在注册项目中设置所需的设备 ID，但不需要进行设置。 只有单个注册才支持设置所需的设备 ID。 如果注册列表中未指定所需设备 ID，注册设备时将使用注册 ID 作为设备 ID。 详细了解 [IoT 中心中的设备 ID](../iot-hub/iot-hub-devguide-identity-registry.md)。
 
 ## <a name="id-scope"></a>ID 范围
 

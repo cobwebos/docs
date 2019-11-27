@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure SQL 数据库的 Query Performance Insight | Microsoft Docs
+title: Query Performance Insight
 description: 查询性能监视可以识别 Azure SQL 数据库中 CPU 消耗最大的查询。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821240"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 
@@ -32,7 +32,7 @@ ms.locfileid: "68567022"
 > [!TIP]
 > 如需对 Azure SQL 数据库进行基本性能监视，我们建议使用 Query Performance Insight。 请注意本文中发布的产品限制。 如需对数据库性能进行大规模高级监视，我们建议使用 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)。 它具有可实现自动化性能故障排除的内置智能。 若要自动调整一些最常见的数据库性能问题，我们建议使用[自动调整](sql-database-automatic-tuning.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 默认情况下，自动为所有 Azure SQL 数据库启用。 如果查询存储未运行，Azure 门户将提示启用它。
 
@@ -52,13 +52,13 @@ ms.locfileid: "68567022"
 查询性能见解很容易使用：
 
 1. 打开 [Azure 门户](https://portal.azure.com/)并找到要检查的数据库。
-2. 在左侧菜单中，打开“智能性能” > “Query Performance Insight”。
+2. 在左侧菜单中，打开“智能性能” **“Query Performance Insight”**  > 。
   
    ![菜单上的 Query Performance Insight](./media/sql-database-query-performance/tile.png)
 
 3. 在第一个选项卡上，查看资源占用排名靠前的查询列表。
 4. 选择单个查询以查看其详细信息。
-5. 打开“智能性能” > “性能建议”，并检查是否有任何性能建议可用。 有关内置性能建议的详细信息，请参阅 [SQL 数据库顾问](sql-database-advisor.md)。
+5. 打开“智能性能” **“性能建议”，并检查是否有任何性能建议可用** > 。 有关内置性能建议的详细信息，请参阅 [SQL 数据库顾问](sql-database-advisor.md)。
 6. 使用滑块或缩放图标更改观察间隔。
 
    ![性能仪表板](./media/sql-database-query-performance/performance.png)
@@ -83,7 +83,7 @@ ms.locfileid: "68567022"
    >
    > 如需进行更精细的比较（最多一分钟），请考虑创建自定义 DTU 利用率图表：
    >
-   > 1. 在 Azure 门户中，选择“Azure SQL 数据库” > “监视”。
+   > 1. 在 Azure 门户中，选择“Azure SQL 数据库” **“监视”**  > 。
    > 2. 选择“指标”。
    > 3. 选择“+添加图表”。
    > 4. 在图表上选择 DTU 百分比。
@@ -175,7 +175,7 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
    >
    > 若要更详细地了解数据库 DTU 消耗（最多一分钟），请考虑在 Azure 门户中创建自定义图表：
    >
-   > 1. 选择“Azure SQL 数据库” > “监视”。
+   > 1. 选择“Azure SQL 数据库” **“监视”**  > 。
    > 2. 选择“指标”。
    > 3. 选择“+添加图表”。
    > 4. 在图表上选择 DTU 百分比。
@@ -236,16 +236,16 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
 
 有两种类型的保留策略：
 
-* **基于大小**：如果此策略设置为“自动”，则会在快要达到最大大小时自动清除数据。
-* **基于时间**：默认情况下，此策略设置为 30 天。 如果查询存储空间不足，则会删除超过 30 天的查询信息。
+* **基于大小**：如果此策略设置为 "**自动**"，则它将在达到最大大小接近最大值时自动清除数据。
+* **基于时间**：默认情况下，此策略设置为30天。 如果查询存储空间不足，则会删除超过 30 天的查询信息。
 
 可将捕获策略设置为：
 
-* **全部**：查询存储会捕获所有查询。
-* **自动**：查询存储会忽略不频繁的查询和包含不重要的编译和执行持续时间的查询。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
-* **无**：查询存储会停止捕获新查询，但仍会收集已捕获查询的运行时统计信息。
+* **All**：查询存储捕获所有查询。
+* **自动**：查询存储忽略不频繁的查询和查询，而不包含无意义的编译和执行持续时间。 执行计数、编译持续时间和运行时持续时间的阈值在内部确定。 这是默认选项。
+* **无**：查询存储停止捕获新查询，但仍收集已捕获查询的运行时统计信息。
 
-我们建议通过从 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 门户执行以下命令，将所有策略设置为“自动”并将清理策略设置为 30 天。 （将 `YourDB` 替换为数据库名称。）
+我们建议通过从 **SSMS** 或 Azure 门户执行以下命令，将所有策略设置为“自动”并将清理策略设置为 30 天[](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。 （将 `YourDB` 替换为数据库名称。）
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -274,7 +274,7 @@ Query Performance Insight 中有两个指标可以帮助找到潜在瓶颈：持
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 Query Performance Insight 可帮助了解查询工作负载的影响以及它与数据库资源消耗的关系。 借助此功能，可了解数据库中消耗排名靠前的查询，并且可在问题出现前找到要优化的查询。
 

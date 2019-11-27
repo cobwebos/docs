@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中设置 HBase 群集复制 - Azure HDInsight
+title: 虚拟网络中的 HBase 群集复制-Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468408"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -36,7 +36,7 @@ ms.locfileid: "71077182"
 * 对应用程序进行负载均衡和分区。
 * 添加高可用性。
 
-可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
+可以使用 [GitHub](../hdinsight-hadoop-customize-cluster-linux.md) 中的[脚本操作](https://github.com/Azure/hbase-utils/tree/master/replication)脚本复制群集。
 
 ## <a name="prerequisites"></a>先决条件
 在开始本文之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -66,9 +66,9 @@ ms.locfileid: "71077182"
 
 **VNet 1**
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
-| Location | 美国西部 |
+| 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -83,9 +83,9 @@ ms.locfileid: "71077182"
 
 **VNet 2**
 
-| 属性 | ReplTest1 |
+| 属性 | 值 |
 |----------|-------|
-| Location | East US |
+| 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -260,11 +260,11 @@ sudo service bind9 status
 使用以下配置在这两个虚拟网络的每一个中创建 [Apache HBase](https://hbase.apache.org/) 群集：
 
 - **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
-- **群集类型**：Hbase
+- **群集类型**：HBase
 - **版本**：HBase 1.1.2 (HDI 3.6)
-- **位置**：使用与虚拟网络相同的位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
+- **位置**：与虚拟网络使用同一位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
 - **存储**：为群集创建新的存储帐户。
-- **虚拟网络**（在门户的“高级设置”中）：选择在上一过程中创建的 vnet1。
+- **虚拟网络**（在门户的“高级”设置中）：选择在上一过程中创建的 vnet1。
 - **子网**：模板中所用的默认名称为 **subnet1**。
 
 若要确保正确配置环境，必须能够在两个群集之间 ping 头节点的 FQDN。
@@ -273,7 +273,7 @@ sudo service bind9 status
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请按照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明进行操作。
+若要创建一个“联系人”表并在其中插入一些数据，请遵照 **Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase** 中的说明。[](apache-hbase-tutorial-get-started-linux.md)
 
 ## <a name="enable-replication"></a>启用复制
 
@@ -301,7 +301,7 @@ sudo service bind9 status
 
 必需参数：
 
-|姓名|描述|
+|名称|说明|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -310,7 +310,7 @@ sudo service bind9 status
 
 可选参数：
 
-|姓名|描述|
+|名称|说明|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -320,7 +320,7 @@ sudo service bind9 status
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
 |-h、--help | 显示用法信息。 |
 
-该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
+该`print_usage()`脚本[的 ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) 节中提供了详细的参数说明。
 
 成功部署脚本操作后，可以使用 SSH 连接到目标 HBase 群集，并验证是否已复制数据。
 
@@ -356,7 +356,7 @@ sudo service bind9 status
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh)的 `print_usage()` 节中提供了详细的参数说明。
+该`print_usage()`脚本[的 ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) 节中提供了详细的参数说明。
 
 ### <a name="scenarios"></a>方案
 
@@ -379,7 +379,7 @@ sudo service bind9 status
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-该[脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
+该`print_usage()`脚本[的 ](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) 节中提供了详细的参数说明。
 
 ### <a name="scenarios"></a>方案
 

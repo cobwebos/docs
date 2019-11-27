@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure Active Directory，Microsoft 365 政府版的 Azure Active Directory 中的新增功能 |Microsoft Docs
-description: 了解如何向 Azure Active Directory (Azure AD) 中 Microsoft 365 政府版云实例，这可能会影响你的某些更改。
+title: Microsoft 365 政府版中 Azure AD 有哪些新功能？ | Microsoft 文档
+description: 了解 Microsoft 365 政府云实例中对 Azure Active Directory （Azure AD）所做的一些更改，这可能会对你产生影响。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,54 +13,54 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258889"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805282"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>什么是 Azure Active Directory，Microsoft 365 政府版中的新增功能
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 政府版中 Azure Active Directory 的新增功能
 
-Microsoft 365 政府版云实例，这适用于使用以下服务的客户中，我们已向 Azure Active Directory (Azure AD) 做出一些更改：
+我们对 Microsoft 365 政府云实例中的 Azure Active Directory （Azure AD）进行了一些更改，该实例适用于使用以下服务的客户：
 
 - Microsoft Azure 政府
 
-- Microsoft 365 政府版 GCC 高
+- Microsoft 365 政府– GCC 高
 
-- Microsoft 365 政府版 DoD
+- Microsoft 365 政府– DoD
 
-本文不能应用于 Microsoft 365 政府版 gcc 高级版的客户。
+本文不适用于 Microsoft 365 政府– GCC 客户。
 
-## <a name="changes-to-the-initial-domain-name"></a>更改到的初始域名
+## <a name="changes-to-the-initial-domain-name"></a>对初始域名的更改
 
-在你的组织最初注册为 Microsoft 365 政府版联机服务，您需要选择组织的域名， `<your-domain-name>.onmicrosoft.com`。 如果已具有.com 后缀的域名，将更改执行任何操作。
+在组织初始注册 Microsoft 365 政府在线服务期间，系统会要求你选择组织的域名，`<your-domain-name>.onmicrosoft.com`。 如果已经有一个具有 .com 后缀的域名，则不会更改任何内容。
 
-但是，如果您要为新的 Microsoft 365 政府版服务注册后，你将需要选择域名称使用`.us`后缀。 因此，它将为`<your-domain-name>.onmicrosoft.us`。
+但是，如果要注册新的 Microsoft 365 政府版服务，系统会要求你选择使用 `.us` 后缀的域名。 因此，它将被 `<your-domain-name>.onmicrosoft.us`。
 
 >[!Note]
->此更改不能应用于任何云服务提供商 (Csp) 托管的客户。
+>此更改不适用于由云服务提供商（Csp）管理的任何客户。
 
-## <a name="changes-to-portal-access"></a>对门户访问权限的更改
+## <a name="changes-to-portal-access"></a>门户访问更改
 
-我们已更新 Microsoft Azure 政府版、 Microsoft 365 政府版 Gcc，和 Microsoft 365 政府版 DoD、 门户终结点，如中所示[终结点映射表](#endpoint-mapping)。
+我们已更新 Microsoft Azure 政府、Microsoft 365 政府版 Microsoft 365 政府– DoD 的门户终结点，如[终结点映射表](#endpoint-mapping)中所示。
 
-以前的客户无法登录使用全球 Azure (portal.azure.com) 和 Office 365 (portal.office.com) 门户。 利用此更新，客户必须现在登录中使用的特定 Microsoft Azure 政府版，Microsoft 365 政府版-Gcc 和 Microsoft 365 政府版-DoD 门户。
+之前的客户可以使用全球 Azure （portal.azure.com）和 Office 365 （portal.office.com）门户登录。 通过此更新，客户现在必须使用特定的 Microsoft Azure 政府、Microsoft 365 政府-GCC 高 Microsoft 365 政府 DoD 门户登录。
 
 ## <a name="endpoint-mapping"></a>终结点映射
 
-下表显示了为所有客户的终结点：
+下表显示了所有客户的终结点：
 
-| Name | 终结点详细信息 |
+| 名称 | 终结点详细信息 |
 |------|------------------|
-| 门户 |Microsoft Azure 政府版： https://portal.azure.us<p>Microsoft 365 政府版 GCC 高： https://portal.office365.us<p>Microsoft 365 政府版 DoD: https://portal.apps.mil |
-| Azure Active Directory 颁发机构终结点 | https://login.microsoftonline.us |
+| 门户 |Microsoft Azure 政府： https://portal.azure.us<p>Microsoft 365 政府– GCC 高： https://portal.office365.us<p>Microsoft 365 政府– DoD： https://portal.apps.mil |
+| Azure Active Directory 机构终结点 | https://login.microsoftonline.us |
 | Azure Active Directory 图形 API | https://graph.windows.net |
-| 适用于 Microsoft 365 政府-gcc 高级版的 Microsoft Graph API 高 | https://graph.microsoft.us |
-| 适用于 Microsoft 365 政府-DoD Microsoft 图形 API | https://dod-graph.microsoft.us |
-| Azure 政府版服务终结点 | 有关详细信息，请参阅[Azure Government 开发人员指南](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 政府版-Gcc 终结点 | 有关详细信息，请参阅[Office 365 美国政府 Gcc 终结点](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 政府版-DoD | 有关详细信息，请参阅[Office 365 美国政府版 DoD 终结点](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Microsoft 365 政府-GCC 高版的 Microsoft Graph API | https://graph.microsoft.us |
+| Microsoft 365 政府-DoD 的 Microsoft Graph API | https://dod-graph.microsoft.us |
+| Azure 政府服务终结点 | 有关详细信息，请参阅[Azure 政府开发人员指南](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
+| Microsoft 365 政府-GCC 高终结点 | 有关详细信息，请参阅[Office 365 美国政府版 GCC 高终结点](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 政府-DoD | 有关详细信息，请参阅[Office 365 美国政府 DoD 终结点](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -68,8 +68,8 @@ Microsoft 365 政府版云实例，这适用于使用以下服务的客户中，
 
 - [什么是 Azure 政府版？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
-- [更新 azure 政府版 AAD 颁发机构终结点](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
+- [Azure 政府 AAD 颁发机构终结点更新](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [美国政府版云中的 Microsoft Graph 终结点](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [在美国政府云中 Microsoft Graph 终结点](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Office 365 美国政府 GCC High 和 DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 美国政府版和 DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

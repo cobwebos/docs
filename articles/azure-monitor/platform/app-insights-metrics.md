@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535033"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887255"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
@@ -22,7 +22,7 @@ ms.locfileid: "69535033"
 * [基于日志的指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
 * [标准指标](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
-由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](metrics-getting-started.md)中使用[命名空间选择器](metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
+由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](metrics-getting-started.md#create-your-first-metric-chart)中使用[命名空间选择器](metrics-getting-started.md)可以在基于日志的指标与标准指标之间切换。
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>本文中的查询的解释和用法
 
@@ -30,13 +30,13 @@ ms.locfileid: "69535033"
 
 在[指标资源管理器](metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
 
-- 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
+- 所选的“时间范围”将转换为额外的 **where timestamp ...** 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)* 。
 
-- 所选**时间粒度**会置于最终*汇总 ...by bin (timestamp, [时间粒度])* 子句。
+- 所选的“时间粒度”将放入最终的 **summarize ... by bin(timestamp, [time grain])** 子句。
 
-- 任何所选“筛选器”维度将转换为额外的 *where* 子句。
+- 任何所选“筛选器”维度将转换为额外的 **where** 子句。
 
-- 所选的“拆分图表”维度将转换为额外的 summarize 属性。 例如, 如果按*位置*拆分图表, 并使用5分钟的时间粒度进行绘制, 则*汇总子句汇总* *...按 bin (时间戳、5 m)、位置*。
+- 所选的“拆分图表”维度将转换为额外的 summarize 属性。 例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
 
 > [!NOTE]
 > 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。 对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../../azure-monitor/log-query/get-started-portal.md) 和 [Azure Monitor](../../azure-monitor/overview.md) 的全部功能的好办法。
@@ -50,7 +50,7 @@ ms.locfileid: "69535033"
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
-|百分比|Average|运行位置、测试名称|
+|百分比|平均值|运行位置、测试名称|
 
 ```Kusto
 availabilityResults 
@@ -93,7 +93,7 @@ availabilityResults
 浏览器指标由 Application Insights JavaScript SDK 从实际的最终用户浏览器收集。 它们提供 Web 应用用户体验的深入见解。 通常不会对浏览器指标采样，这意味着，在用量数字方面，与服务器端指标相比，它们提供的精度更高，而后者的采样可能会导致结果有偏差。
 
 > [!NOTE]
-> 若要收集浏览器指标, 必须通过[Application Insights JAVASCRIPT SDK](../../azure-monitor/app/javascript.md)来检测你的应用程序。
+> 若要收集浏览器指标，必须使用 [Application Insights JavaScript SDK](../../azure-monitor/app/javascript.md) 来检测应用程序。
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>浏览器页面加载时间 (browserTimings/totalDuration)
 
@@ -115,7 +115,7 @@ browserTimings
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|Average、Min、Max|None|
+|毫秒|Average、Min、Max|无|
 
 ```Kusto
 browserTimings
@@ -131,7 +131,7 @@ browserTimings
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|Average、Min、Max|None|
+|毫秒|Average、Min、Max|无|
 
 ```Kusto
 browserTimings
@@ -147,7 +147,7 @@ browserTimings
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|Average、Min、Max|None|
+|毫秒|Average、Min、Max|无|
 
 ```Kusto
 browserTimings
@@ -163,7 +163,7 @@ browserTimings
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
-|毫秒|Average、Min、Max|None|
+|毫秒|Average、Min、Max|无|
 
 ```Kusto
 browserTimings
@@ -200,7 +200,7 @@ exceptions
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|Count|Count|None|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|无|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 dependencies
@@ -225,7 +225,7 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失败的请求数 (请求/失败)
 
-标记为失败的受跟踪服务器请求计数。 默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在[自定义遥测初始化表达式](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
+标记为失败的受跟踪服务器请求计数。 默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在*自定义遥测初始化表达式*中修改请求遥测项的 [success](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) 属性来自定义此逻辑。
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
@@ -255,7 +255,7 @@ exceptions
 
 ## <a name="performance-counters"></a>性能计数器
 
-使用“性能计数器”类别中的指标可以访问 [Application Insights 收集的系统性能计数器](../../azure-monitor/app/performance-counters.md)。
+使用“性能计数器”类别中的指标可以访问 **Application Insights 收集的系统性能计数器**。[](../../azure-monitor/app/performance-counters.md)
 
 ### <a name="available-memory-performancecountersavailablememory"></a>可用内存 (performanceCounters/availableMemory)
 

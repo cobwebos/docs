@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/04/2019
+ms.openlocfilehash: 89b86124d6da0d0d659ed0673585eadbf1008aa3
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104464"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847294"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -34,13 +34,13 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 ### <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
-创建用户分配的托管标识（如果还没有）。 
+创建用户分配的托管标识（如果还没有）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左上角单击 "**创建资源**"。
+1. 在左上角，单击“创建资源”。
 1. 在 "搜索" 框中，键入**user user** ，然后单击 "**用户分配的托管标识**"。
 1. 单击“创建”。
-1. 输入托管标识的名称，选择正确的 "订阅"、"资源组" 和 "位置"。
+1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
 1. 单击“创建”。
 
 有关 Azure HDInsight 中托管标识的工作方式的详细信息，请参阅[Azure hdinsight 中的托管标识](hdinsight-managed-identities.md)。
@@ -49,21 +49,21 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>创建 Data Lake Storage Gen2 帐户
 
-创建 Azure Data Lake Storage Gen2 存储帐户。 
+创建 Azure Data Lake Storage Gen2 存储帐户。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左上角单击 "**创建资源**"。
-1. 在搜索框中，键入 "**存储**"，然后单击 "**存储帐户**"。
+1. 在左上角，单击“创建资源”。
+1. 在搜索框中，键入 **storage**，然后单击 **Storage account**。
 1. 单击“创建”。
-1. 在 "**创建存储帐户**" 屏幕上：
+1. 在“创建存储帐户”屏幕上：
     1. 选择正确的订阅和资源组。
-    1. 输入 Data Lake Storage Gen2 帐户的名称。 有关存储帐户命名约定的详细信息，请参阅[Azure 资源的命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage)。
-    1. 单击 "**高级**" 选项卡。
-    1. 在**Data Lake Storage Gen2**下，单击 "**分层命名空间**" 旁边的 "**启用**"。
+    1. 输入 Data Lake Storage Gen2 帐户的名称。 有关存储帐户命名约定的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/resource-naming#storage)。
+    1. 单击“高级”选项卡。
+    1. 单击 **Data Lake Storage Gen2** 下的“分层命名空间”旁边的“启用”。
     1. 单击“查看 + 创建”。
     1. 单击“创建”
 
-有关存储帐户创建过程中的其他选项的详细信息[，请参阅快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+有关存储帐户创建过程中的其他选项的详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 的存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
 
 ![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
@@ -73,34 +73,34 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
 1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
-    
+
     ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
-    
+
 1. 选择“+ 添加角色分配”按钮以添加一个新角色。
 1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者”角色。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
-    
+
     ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
-    
-1. 选择**保存**。 现在，选定的用户分配的标识会列在选定的角色下。
+
+1. 选择“保存”。 现在，选定的用户分配的标识会列在选定的角色下。
 1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”部分，选择以下选项：
-        
+
     * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2”。
     * 在“选择存储帐户”下，搜索并选择新建的 Data Lake Storage Gen2 存储帐户。
-        
+
         ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
-    
+
     * 在“标识”下，选择正确的订阅和新建的用户分配的托管标识。
 
         ![将 Data Lake Storage Gen2 与 HDInsight 配合使用的标识设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
 > [!Note]
-> 若要添加辅助 Data Lake Storage Gen2 帐户，请在存储帐户级别直接将此前创建的托管标识分配给要添加的新 Data Lake Storage Gen2 存储帐户。请注意，不支持在 HDInsight 上通过“其他存储帐户”边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。 
+> 若要添加辅助 Data Lake Storage Gen2 帐户，请在存储帐户级别直接将此前创建的托管标识分配给要添加的新 Data Lake Storage Gen2 存储帐户。请注意，不支持在 HDInsight 上通过“其他存储帐户”边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>通过 Azure CLI 创建使用 Data Lake Storage Gen2 的群集
 
 可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 在使用下面的模板和 Azure CLI 代码片段之前，请将以下占位符替换为其正确值：
 
-| 占位符 | 描述 |
+| 占位符 | 说明 |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure 订阅的 ID |
 | `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
@@ -113,10 +113,10 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 1. 登录到 Azure 帐户。
 1. 设置要在其中执行创建操作的活动订阅。
-1. 为新的部署活动创建新的资源组。 
+1. 为新的部署活动创建新的资源组。
 1. 创建用户分配的托管标识。
 1. 将一个扩展添加到 Azure CLI，以使用 Data Lake Storage Gen2 的功能。
-1. 使用 `--hierarchical-namespace true` 标志创建新的 Data Lake Storage Gen2 帐户。 
+1. 使用 `--hierarchical-namespace true` 标志创建新的 Data Lake Storage Gen2 帐户。
 
 ```azurecli
 az login
@@ -136,7 +136,7 @@ az storage account create --name <STORAGEACCOUNTNAME> \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-接下来，登录到门户。 根据[使用 Azure 门户](hdinsight-hadoop-use-data-lake-storage-gen2.md)中的步骤 3 所述，将新的用户分配的托管标识添加到存储帐户中的“存储 Blob 数据参与者”角色。
+接下来，登录到门户。 根据**使用 Azure 门户**中的步骤 3 所述，将新的用户分配的托管标识添加到存储帐户中的“存储 Blob 数据参与者”角色。[](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 为用户分配的托管标识分配角色后，使用以下代码片段部署模板。
 
@@ -171,7 +171,87 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 若要为用户设置权限以查询数据，请将 Azure AD 安全组用作 ACL 中分配的主体。 不要直接向单个用户或服务主体分配文件访问权限。 使用 Azure AD 安全组控制权限流时，可以添加和删除用户或服务主体，而无需将 ACL 重新应用到整个目录结构。 只需要从相应的 Azure AD 安全组添加或删除用户。 ACL 不可继承，因此，重新应用 ACL 需要更新针对每个文件和子目录应用的 ACL。
 
+## <a name="access-files-from-the-cluster"></a>从群集访问文件
+
+可以通过多种方式从 HDInsight 群集访问 Data Lake Storage Gen2 中的文件。
+
+* **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
+
+    ```
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
+    ```
+
+* **使用缩短的路径格式**。 利用此方法，你可以将路径替换为群集根路径，如下所示：
+
+    ```
+    abfs:///<file.path>/
+    ```
+
+* **使用相对路径**。 使用此方法时，仅需提供要访问的文件的相对路径。
+
+    ```
+    /<file.path>/
+    ```
+
+### <a name="data-access-examples"></a>数据访问示例
+
+示例基于与群集头节点的[ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 这些示例使用全部三个 URI 方案。 将 `CONTAINERNAME` 和 `STORAGEACCOUNT` 替换为相关值
+
+#### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
+
+1. 在本地存储中创建一个简单文件。
+
+    ```bash
+    touch testFile.txt
+    ```
+
+1. 在群集存储上创建目录。
+
+    ```bash
+    hdfs dfs -mkdir abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -mkdir abfs:///sampledata2/
+    hdfs dfs -mkdir /sampledata3/
+    ```
+
+1. 将数据从本地存储复制到群集存储。
+
+    ```bash
+    hdfs dfs -copyFromLocal testFile.txt  abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -copyFromLocal testFile.txt  abfs:///sampledata2/
+    hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
+    ```
+
+1. 列出群集存储中的目录内容。
+
+    ```bash
+    hdfs dfs -ls abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -ls abfs:///sampledata2/
+    hdfs dfs -ls /sampledata3/
+    ```
+
+#### <a name="creating-a-hive-table"></a>创建 Hive 表
+
+出于说明目的，显示了三个文件位置。 对于实际执行，只使用其中一个 `LOCATION` 条目。
+
+```hql
+DROP TABLE myTable;
+CREATE EXTERNAL TABLE myTable (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE
+LOCATION 'abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/example/data/';
+LOCATION 'abfs:///example/data/';
+LOCATION '/example/data/';
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure HDInsight 与 Data Lake Storage Gen2 预览版集成 - ACL 和安全更新](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Azure Data Lake Storage Gen2 简介](../storage/blobs/data-lake-storage-introduction.md)
+* [教程：使用 Azure HDInsight 中的交互式查询提取、转换和加载数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

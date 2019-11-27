@@ -1,30 +1,30 @@
 ---
-title: 使用 Transact-SQL (T-SQL) 创建和管理 Azure SQL 弹性数据库作业 | Microsoft Docs
+title: 通过 Transact-sql 创建和管理弹性数据库作业（T-sql）
 description: 使用 Transact-SQL (T-SQL) 通过弹性数据库作业跨多个数据库运行脚本。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820597"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。
 
-这些示例使用[作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
+这些示例使用[](#job-stored-procedures)[作业数据库](#job-views)中提供的[存储过程*和*视图](sql-database-job-automation-overview.md#job-database)。
 
-Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理。
+Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 *PowerShell* 创建弹性作业代理[](elastic-jobs-powershell.md#create-the-elastic-job-agent)。
 
 
 ## <a name="create-a-credential-for-job-execution"></a>创建执行作业所需的凭据
@@ -405,7 +405,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|存储过程  |描述  |
+|存储过程  |说明  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     添加新的作业。    |
 |[sp_update_job](#sp_update_job)    |      更新现有的作业。   |
@@ -1192,7 +1192,7 @@ GO
 以下视图在[作业数据库](sql-database-job-automation-overview.md#job-database)中提供。
 
 
-|查看  |描述  |
+|查看  |说明  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
@@ -1205,12 +1205,12 @@ GO
 
 ### <a name="job_executions-view"></a>job_executions 视图
 
-[作业]。[job_executions]
+[jobs].[job_executions]
 
 显示作业执行历史记录。
 
 
-|列名|   数据类型   |描述|
+|列名称|   数据类型   |说明|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1238,7 +1238,7 @@ GO
 
 显示所有作业。
 
-|列名|   数据类型|  描述|
+|列名称|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1256,7 +1256,7 @@ GO
 
 显示所有作业版本。
 
-|列名|   数据类型|  描述|
+|列名称|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1269,7 +1269,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名    |数据类型| 描述|
+|列名称    |数据类型| 说明|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1310,7 +1310,7 @@ GO
 
 列出所有目标组。
 
-|列名|数据类型| 描述|
+|列名称|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1321,7 +1321,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名|数据类型| 描述|
+|列名称|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|
@@ -1329,7 +1329,7 @@ GO
 |**target_type**    |nvarchar(128)| 目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库，或者单个数据库。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’、‘SqlDatabase’ 或 ‘SqlShardMap’。|
 |**target_id**  |uniqueidentifier|  目标组成员的唯一 ID。|
 |**refresh_credential_name**    |nvarchar(128)  |用于连接到目标组成员的数据库范围的凭据的名称。|
-|**subscription_id**    |uniqueidentifier|  订阅的唯一 ID。|
+|subscription_id    |uniqueidentifier|  订阅的唯一 ID。|
 |**resource_group_name**    |nvarchar(128)| 目标组成员所在资源组的名称。|
 |**server_name**    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
 |**database_name**  |nvarchar(128)  |包含在目标组中的数据库的名称。 仅当 target_type 为 ‘SqlDatabase’ 时指定。|
@@ -1339,7 +1339,7 @@ GO
 
 ## <a name="resources"></a>资源
 
- - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [TRANSACT-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [transact-sql 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>后续步骤

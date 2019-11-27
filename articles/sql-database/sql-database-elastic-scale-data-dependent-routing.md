@@ -1,5 +1,5 @@
 ---
-title: 数据依赖型路由与 Azure SQL 数据库 | Microsoft Docs
+title: 数据依赖型路由
 description: 如何将 .NET 应用中的 ShardMapManager 类用于数据相关路由（Azure SQL 数据库中共享数据库的一项功能）
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568486"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823681"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库
 
@@ -35,7 +35,7 @@ ms.locfileid: "68568486"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>在数据依赖型路由应用程序中使用 ShardMapManager
 
-应用程序应使用工厂调用 GetSQLShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）在初始化期间实例化 ShardMapManager。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap**。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))）方法。
+应用程序应使用工厂调用 GetSQLShardMapManager（**Java**、 **.NET**）在初始化期间实例化 ShardMapManager[](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)[](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap**。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))）方法。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -49,7 +49,7 @@ RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap");
 
 ### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>尽可能使用最低特权凭据来获取分片映射
 
-如果应用程序本身无法处理分片映射，在工厂方法中使用的凭据应该对**全局分片映射**数据库具有只读权限。 这些凭据通常与用于到分片映射管理器的开放连接的凭据不同。 另请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
+如果应用程序本身无法处理分片映射，在工厂方法中使用的凭据应该对**全局分片映射**数据库具有只读权限。 这些凭据通常与用于分发到分片映射管理器的开放连接的凭据不同。 另请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
 
 ## <a name="call-the-openconnectionforkey-method"></a>调用 OpenConnectionForKey 方法
 
@@ -67,7 +67,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **key** 参数在分片映射中用作查找键，以确定该请求的相应数据库。
 * **connectionString** 用于仅传递所需连接的用户凭据。 此 connectionString 中不包含数据库名称或服务器名称，因为该方法使用 ShardMap 确定数据库和服务器。
-* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)）应设置为 ConnectionOptions.Validate。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。
+* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（**Java**、[.NET](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)）应设置为 ConnectionOptions.Validate[](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。
 
 如果针对局部分片映射进行的验证失败（指示缓存不正确），分片映射管理器会查询全局分片映射来获取新的正确值以供查找、更新缓存以及获取和返回相应的数据库连接。
 
@@ -172,7 +172,7 @@ Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
 
 ## <a name="transactional-consistency"></a>事务一致性
 
-确保分片的所有局部操作的事务属性。 例如，通过数据依赖路由提交的事务会在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
+确保分片的所有局部操作的事务属性。 例如，通过依赖于数据的路由提交的事务会在目标分片范围内执行以供连接。 此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
 
 ## <a name="next-steps"></a>后续步骤
 

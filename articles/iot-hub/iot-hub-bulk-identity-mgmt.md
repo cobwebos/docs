@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927418"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809199"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
-每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
+每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何从标识注册表批量导入和导出设备标识。 若要查看中C#的工作示例并了解如何在将集线器克隆到其他区域时使用此功能，请参阅[如何克隆 IoT 中心](iot-hub-how-to-clone.md)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "72927418"
 
 * 向用户返回大量数据。
 
-操作将以异步方式为该 IoT 中心创建**作业**，而非在操作结果处进行单一的 API 调用等待或阻塞。 然后，操作立即返回 JobProperties 对象。
+操作将以异步方式为该 IoT 中心创建**作业**，而不是对操作结果进行单一的 API 调用等待或阻塞。 然后，操作立即返回 JobProperties 对象。
 
 以下 C# 代码段演示如何创建导出作业：
 
@@ -87,11 +87,11 @@ while(true)
 
 ## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制
 
-对于所有 IoT 中心层，一次只允许1个活动设备导入或导出作业。 IoT 中心还对作业操作的速率有限制。 若要了解详细信息，请参阅[参考-IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+所有 IoT 中心层级一次只允许 1 个活动的设备导入或导出作业。 IoT 中心也限制作业操作的速率。 若要了解详细信息，请参阅[参考 - IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ## <a name="export-devices"></a>导出设备
 
-使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/common/storage-security-guide.md#authorization)的 [Azure 存储](../storage/index.yml) Blob 容器。
+使用 **ExportDevicesAsync** 方法，将整个 IoT 中心标识注册表导出到使用[共享访问签名](../storage/index.yml)的 [Azure 存储](../storage/common/storage-security-guide.md#authorization) Blob 容器。
 
 使用此方法，可在所控制的 blob 容器中创建可靠的设备信息备份。
 
@@ -131,7 +131,7 @@ while(true)
 
 该作业将其输出以名为 **devices.txt** 的块 Blob 的形式存储在提供的 Blob 容器中。 输出数据包含 JSON 序列化设备数据，每行代表一个设备。
 
-下面的示例演示了输出数据：
+以下示例显示输出数据：
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -215,13 +215,13 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** 方法采用两个参数：
 
-* 一个字符串，其中包含作为作业的输入使用的 [Azure 存储](../storage/index.yml) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
+* 一个字符串，其中包含作为作业的输入[](../storage/index.yml)使用的 *Azure 存储* Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
 
-* 一个字符串，其中包含作为作业中的输出使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 该作业在此容器中创建块 Blob，以存储来自已完成的导入**作业**的任何错误信息。 SAS 令牌必须包含这些权限：
+* 一个字符串，其中包含作为作业中的输出[](https://azure.microsoft.com/documentation/services/storage/)使用的 *Azure 存储* Blob 容器的 URI。 该作业在此容器中创建块 Blob，以存储来自已完成的导入**作业**的任何错误信息。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -231,14 +231,14 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 > [!NOTE]
 > 这两个参数可以指向同一 Blob 容器。 参数不同只会让你更容易掌控数据，因为输出容器需要其他权限。
 
-以下 C# 代码段演示如何启动导入作业：
+以下 C# 代码片段演示如何启动导入作业：
 
 ```csharp
 JobProperties importJob = 
    await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-还可以使用此方法导入设备孪生的数据。 用于数据输入的格式与 **ExportDevicesAsync** 部分中显示的格式相同。 采用此方式，可以重新导入已导出的数据。 **$metadata** 是可选的。
+还可以使用此方法导入设备孪生的数据。 数据输入的格式与 **ExportDevicesAsync** 部分中显示的格式相同。 这样，可以重新导入已导出的数据。 **$metadata** 是可选项。
 
 ## <a name="import-behavior"></a>导入行为
 
@@ -247,24 +247,24 @@ JobProperties importJob =
 * 批量注册新设备
 * 批量删除现有设备
 * 批量更改状态（启用或禁用设备）
-* 批量分配新的设备身份验证密钥
+* 批量分配新设备身份验证密钥
 * 批量自动重新生成设备身份验证密钥
 * 批量更新孪生数据
 
-可以在单一 **ImportDevicesAsync** 调用中执行前面的操作的任意组合。 例如，可以同时注册新设备并删除或更新现有设备。 当与 **ExportDevicesAsync** 方法一起使用时，可以将所有设备完全从一个 IoT 中心迁移到另一个中心。
+可以在单一 **ImportDevicesAsync** 调用中执行前面的操作的任意组合。 例如，可以同时注册新设备并删除或更新现有设备。 与 **ExportDevicesAsync** 方法一起使用时，可以将一个 IoT 中心内的所有设备全部迁移到另一个 IoT 中心。
 
 如果导入文件包括孪生元数据，则此元数据将覆盖现有的孪生元数据。 如果导入文件未包括孪生元数据，则只会使用当前时间更新 `lastUpdateTime` 元数据。
 
 在每个设备的导入序列化数据中使用可选 **importMode** 属性可控制每个设备的导入过程。 **ImportMode** 属性具有以下选项：
 
-| importMode | 描述 |
+| importMode | 说明 |
 | --- | --- |
 | **createOrUpdate** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果该设备已存在，则使用提供的输入数据覆盖现有信息，与 **ETag** 值无关。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
-| **create** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
+| **创建** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则在日志文件中写入错误。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
 | **update** |如果具有指定**ID**的设备已存在，则使用提供的输入数据覆盖现有信息，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **updateIfMatchETag** |如果具有指定**ID**的设备已存在，则只有当**ETag**匹配时，才会使用提供的输入数据覆盖现有信息。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 |
 | **createOrUpdateIfMatchETag** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则只有当 **ETag** 匹配时，才使用提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
-| **delete** |如果具有指定**ID**的设备已存在，则将其删除，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
+| **删除** |如果具有指定**ID**的设备已存在，则将其删除，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **deleteIfMatchETag** |如果具有指定**ID**的设备已存在，则只有当**ETag**匹配时才会将其删除。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |
 
 > [!NOTE]
@@ -272,7 +272,7 @@ JobProperties importJob =
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>导入设备示例 – 批量预配设备
 
-下面的 C# 代码示例说明了如何生成多个执行以下操作的设备标识：
+以下 C# 代码示例说明了如何生成多个具有下述功能的设备标识：
 
 * 包括身份验证密钥。
 * 将该设备信息写入块 blob。
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已学习如何针对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
+在本文中，已学习如何对 IoT 中心内的标识注册表执行批量操作。 其中的许多操作（包括如何将设备从一个集线器移动到另一个集线器）都用在 "[管理注册到 iot 中心的设备" 部分](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)中。 
+
+克隆项目有一个与之关联的工作示例，该示例位于本页的 iot C#示例中：[的C#Azure iot 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)，项目是 ImportExportDevicesSample 的。 您可以下载该示例并进行试用;[如何克隆 IoT 中心](iot-hub-how-to-clone.md)一文中提供了说明。
+
+若要了解有关管理 Azure IoT 中心的详细信息，请查看以下文章：
 
 * [IoT 中心指标](iot-hub-metrics.md)
 * [IoT 中心日志](iot-hub-monitor-resource-health.md)

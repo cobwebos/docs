@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 730ccd7c64ac9ca87fb6da5add130feb3b6ce502
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201952"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582911"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -30,18 +30,18 @@ ms.locfileid: "71201952"
 借助 Azure 管理组，可以对各组订阅高效管理访问、策略和报告，并能对根管理组执行操作，从而有效管理整个 Azure 资产。 每个 Azure AD 租户都指定有一个顶级管理组，称为“根管理组”。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 借助此组，可以在目录一级应用全局策略和 RBAC 分配。 
 
 执行以下任何操作时，都会自动创建根管理组： 
-1. 通过在 [Azure 门户](https://portal.azure.com)中转到“管理组”，选择使用 Azure 管理组。
+1. 通过在 **Azure 门户**中转到“管理组”[](https://portal.azure.com)，选择使用 Azure 管理组。
 2. 通过 API 调用来创建管理组。
 3. 通过 PowerShell 创建管理组。
 
 有关管理组的详细概述，请参阅[使用 Azure 管理组整理资源](../azure-resource-manager/management-groups-overview.md)一文。
 
 ## <a name="create-a-management-group-in-the-azure-portal"></a>在 Azure 门户中创建管理组
-可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都会自动继承应用于管理组的策略。 虽然不一定要在安全中心内创建管理组，但强烈建议至少创建一个管理组，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 有关 PowerShell 说明以及更多信息，请参阅[创建管理组以管理资源和组织](../azure-resource-manager/management-groups-create.md)。
+可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都将自动继承应用于管理组的策略。 虽然不一定要在安全中心内创建管理组，但强烈建议至少创建一个管理组，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 有关 PowerShell 说明以及更多信息，请参阅[创建管理组以管理资源和组织](../azure-resource-manager/management-groups-create.md)。
 
  
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务” > “管理组”。
+2. 选择“所有服务” **“管理组”。**  > 
 3. 在主页上，选择“新建管理组”。 
 
     ![主要组](./media/security-center-management-groups/main.png) 
@@ -168,7 +168,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 
-## <a name="adding-subscriptions-to-a-management-groups"></a>向管理组添加订阅
+## <a name="adding-subscriptions-to-a-management-group"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。 这些步骤不是实现租户级公开范围以及全局策略和访问管理的必需步骤。
 
 1. 在“管理组”下，选择要向其中添加订阅的管理组。

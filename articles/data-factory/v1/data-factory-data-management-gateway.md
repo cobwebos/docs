@@ -1,5 +1,5 @@
 ---
-title: 数据工厂的数据管理网关 |Microsoft Docs
+title: 数据管理用于数据工厂的网关
 description: 设置数据网关，在本地和云之间移动数据。 使用 Azure 数据工厂中的数据管理网关移动数据。
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162727"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682711"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -72,14 +72,14 @@ ms.locfileid: "73162727"
 * 必须**使用网关**，即使数据存储位于 **Azure IaaS VM** 上的云中。
 
 ## <a name="installation"></a>安装
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 * 支持的**操作系统**版本有 Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 当前不支持在域控制器上安装数据管理网关。
 * 要求 .NET framework 4.5.1 或更高版本。 如果正在 Windows 7 计算机上安装网关，请安装 .NET Framework 4.5 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](https://msdn.microsoft.com/library/8z6watww.aspx)。
 * 推荐的网关计算机**配置**至少为 2 GHz，4 核，8 GB RAM 和 80 GB 磁盘。
 * 如果主机计算机进入休眠状态，则网关不响应数据请求。 因此，安装网关之前，请在计算机上配置相应的**电源计划**。 如果计算机配置为休眠，则网关安装程序会提示消息。
 * 只有计算机管理员才能成功安装和配置数据管理网关。 可以将其他用户添加到“数据管理网关用户”本地 Windows 组。 此组成员能够通过数据管理网关配置管理器工具来配置网关。
 
-由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
+由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率很大程度上还取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 
 ### <a name="installation-options"></a>安装选项
 可以通过以下方式安装数据管理网关：
@@ -108,7 +108,7 @@ ms.locfileid: "73162727"
 
 ### <a name="register-gateway-using-key"></a>使用密钥注册网关
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>如果尚未在门户中创建逻辑网关
-若要在门户中创建网关并从“配置”页获取密钥，请遵循[在本地和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文中的演练步骤。
+若要在门户中创建网关并从“配置”页获取密钥，请遵循**在本地和云之间移动数据**一文中的演练步骤[](data-factory-move-data-between-onprem-and-cloud.md)。
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>如果已在门户中创建逻辑网关
 1. 在 Azure 门户中，导航到“数据工厂”页，并单击“链接服务”磁贴。
@@ -141,7 +141,7 @@ ms.locfileid: "73162727"
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-| 域名 | 端口 | 描述 |
+| 域名 | 端口 | 说明 |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
@@ -229,7 +229,7 @@ ms.locfileid: "73162727"
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. 将配置文件保存到原始位置，并重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
+3. 将配置文件保存到原始位置，然后重启数据管理网关主机服务，获得更改。 若要重启服务，请执行以下步骤：从控制面板使用服务小程序，或从“数据管理网关配置管理器” > 依次单击“停止服务”按钮和“启动服务”使用服务小程序。 如果服务未启动，很可能是将错误的 XML 标记语法添加到了编辑过的应用程序配置文件中。
 
 > [!IMPORTANT]
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。
@@ -306,10 +306,10 @@ ms.locfileid: "73162727"
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>配置管理器
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
-1. 在“搜索”窗口中，键入“数据管理网关”，以便访问此实用程序。
+1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
 2. 在以下文件夹中运行可执行文件*ConfigManager* ： *C：\\\\Program Files\\Microsoft 数据管理网关\\2.0\\共享*。
 
 ### <a name="home-page"></a>主页
@@ -363,7 +363,7 @@ ms.locfileid: "73162727"
 
 下表介绍“网关节点”列表中的列：
 
-监视属性 | 描述
+监视属性 | 说明
 :------------------ | :----------
 名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。
@@ -384,7 +384,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 联机 | 节点连接到数据工厂服务。
 脱机 | 节点处于脱机状态。
 正在升级 | 节点正在进行自动更新。
-受限制 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。
+受限 | 由于连接问题而受限。 可能由于 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题而受限。
 非活动 | 节点的配置与其他多数节点的配置不同。<br/><br/> 节点在无法与其他节点连接时可能处于非活动状态。
 
 下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。
@@ -394,7 +394,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
 脱机 | 没有节点处于联机状态。
-受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
+受限 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
 可配置可在单个节点上运行的**并发数据移动作业数**，提升在本地与云数据存储之间移动数据的能力。
@@ -421,7 +421,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. 将“Microsoft 数据管理网关配置管理器”保持为打开状态。
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”。 单击密钥文本旁边的“复制”按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)
@@ -511,7 +511,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹： *C：\\\\程序文件\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 。 运行与本地变量 **$Key** 关联的 *RegisterGateway.ps1*，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹： *C：\\\\程序文件\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* 。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

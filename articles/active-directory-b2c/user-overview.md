@@ -1,31 +1,34 @@
 ---
-title: Azure Active Directory B2C 中的用户帐户概述 | Microsoft Docs
-description: 了解 Azure Active Directory B2C 中的用户帐户。
+title: Azure Active Directory B2C 中的用户帐户概述
+description: 了解可在 Azure Active Directory B2C 中使用的用户帐户的类型。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063142"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620458"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
-在 Azure Active Directory B2C （Azure AD B2C）中，可以使用不同类型的帐户。 可以使用的用户帐户类型中的 Azure Active Directory、Azure Active Directory B2B 和 Azure Active Directory B2C 共享。
+在 Azure Active Directory B2C （Azure AD B2C）中，可以创建多种类型的帐户。 Azure Active Directory、Active Directory B2B 以及可使用的用户帐户类型中的 Active Directory B2C 共享。
 
 可以使用以下类型的帐户：
 
 - 工作帐户 - 工作帐户可以访问租户中的资源，并且通过管理员角色可以管理租户。
 - 来宾帐户 - 来宾帐户只能是一个 Microsoft 帐户或可用于访问应用程序或管理租户的 Azure Active Directory 用户。
-- **使用者帐户** - 通过执行 Azure AD B2C 应用程序中的注册用户流或使用 Azure AD Graph API 创建使用者帐户，并由注册 Azure AD B2C 的应用程序的用户使用。
+- **使用者帐户**-使用 Azure AD B2C 注册的应用程序的用户使用使用者帐户。 可以通过以下方式创建使用者帐户：
+  - 用户通过 Azure AD B2C 应用程序中的注册用户流
+  - 使用 Azure AD 图形 API
+  - 使用 Azure 门户
 
 ## <a name="work-account"></a>工作帐户
 
@@ -73,11 +76,11 @@ ms.locfileid: "71063142"
 
 ## <a name="consumer-user"></a>使用者用户
 
-使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。  使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 使用[注册或登录用户流](../active-directory-b2c/active-directory-b2c-reference-policies.md)创建使用者帐户。
+使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 用户帐户是使用[注册或登录用户流](../active-directory-b2c/active-directory-b2c-reference-policies.md)创建的，使用 Azure AD 图形 API 或使用 Azure 门户创建的。
 
 可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)。
 
-可以使用[使用 Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) 的创建使用者用户帐户部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”部分中的信息来管理帐户的属性。
+可以使用**使用 Azure AD Graph API** 的创建使用者用户帐户[](active-directory-b2c-devquickstarts-graph-dotnet.md)部分中的信息创建 Azure AD B2C 使用者帐户。 还可以使用同一文章中的“更新使用者用户帐户”部分中的信息来管理帐户的属性。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 

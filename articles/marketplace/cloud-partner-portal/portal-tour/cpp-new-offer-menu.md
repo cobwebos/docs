@@ -1,22 +1,23 @@
 ---
 title: Azure Marketplace 的新产品/服务菜单
-description: 概述的新建为 Azure Marketplace 提供云合作伙伴门户中的菜单。
+description: Azure Marketplace 云合作伙伴门户中 "新的产品/服务" 菜单的概述。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pabutler
-ms.openlocfilehash: 8ec1a6a6ec77838ec75666d219d90739bf74517b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c96341d462d541b1c08ce2851acf3a6a4c0bd804
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943273"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821499"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
 
-“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例  。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表  。  选择任一类型即可开始进行产品/服务的创建和发布过程。
+“新产品/服务”菜单可使合作伙伴能够创建**云合作伙伴门户**支持的产品/服务类型的实例[](https://cloudpartner.azure.com)。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表。  选择任一类型即可开始进行产品/服务的创建和发布过程。
 
 |    **新产品/服务菜单项**     |     **相应的文档部分**                       |
 |    -----------------------     |     -----------------------------                       |

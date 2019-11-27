@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure SQL 数据仓库针对租户数据库运行分析查询 | Microsoft Docs
+title: 针对租户数据库运行分析查询
 description: 使用从 Azure SQL 数据库、SQL 数据仓库、Azure 数据工厂或 Power BI 中提取的数据进行跨租户分析查询。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570132"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816769"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
 
@@ -62,7 +62,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 本教程提供了基本示例，演示可从 Wingtip Tickets 数据中收集的见解。 例如，如果 Wingtip Tickets 供应商了解每个会场使用该服务的方式，则他们就能思考如何针对或多或少的活跃会场运用不同的服务计划。 
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -138,14 +138,14 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 
 ![adf_overview](media/saas-tenancy-tenant-analytics/adf-data-factory.PNG)
 
-在概述页中，切换到左侧面板中的“创作”选项卡，并观察是否已创建三个[管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)和三个[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。
+在概述页中，切换到左侧面板中的“创作”选项卡，并观察是否已创建三个**管道**和三个[数据集](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)。[](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-三个嵌套管道为：SQLDBToDW、DBCopy 和 TableCopy。
+三个嵌套的管道为：SQLDBToDW、DBCopy 和 TableCopy。
 
 **管道 1 - SQLDBToDW** 查找目录数据库中存储的租户数据库的名称（表名称：[__ShardManagement].[ShardsGlobal]），查找每个租户数据库，并执行 **DBCopy** 管道。 完成后，将执行提供的 **sp_TransformExtractedData** 存储过程架构。 此存储过程转换临时表中加载的数据，并填充星型架构表。
 
-**管道 2 - DBCopy** 查找 Blob 存储中存储的配置文件中的源表和列的名称。  随后为以下四个表分别运行 **TableCopy** 管道：TicketFacts、CustomerFacts、EventFacts 和 VenueFacts。 对所有 20 个数据库并行执行 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** 活动。 ADF 允许并行运行最多 20 个循环迭代。 请考虑为其他数据库创建多个管道。    
+**管道 2 - DBCopy** 查找 Blob 存储中存储的配置文件中的源表和列的名称。  然后，针对以下四个表中的每一个运行 **TableCopy** 管道：TicketFacts、CustomerFacts、EventFacts 和 VenueFacts。 对所有 20 个数据库并行执行 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** 活动。 ADF 允许并行运行最多 20 个循环迭代。 请考虑为其他数据库创建多个管道。    
 
 **管道 3 - TableCopy** 使用 SQL 数据库中的行版本号 (_rowversion_) 来识别已更改或更新的行。 此活动将会查找用于从源表提取行的起始和结束行版本。 每个租户数据库中存储的 **CopyTracker** 表跟踪在每次运行时从每个源表提取的最后一行。 新的或已更改的行将复制到数据仓库中的相应临时表：**raw_Tickets**、**raw_Customers**、**raw_Venues** 和 **raw_Events**。 最后，将在 **CopyTracker** 表中保存最后一个行版本，用作下次提取操作的初始行版本。 
 
@@ -158,7 +158,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 ### <a name="data-warehouse-pattern-overview"></a>数据仓库模式概述
 SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中使用 PolyBase 将数据载入 SQL 数据仓库。 原始数据载入临时表，这些表中包含一个标识列，用于跟踪已转换为星型架构表的行。 下图显示了加载模式：![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-本示例使用了渐变维度 (SCD) 类型 1 维度表。 每个维度具有一个使用标识列定义的代理键。 为了节省时间，日期维度表已预先填充，这也是一种最佳做法。 对于其他维度表，已使用 CREATE TABLE AS SELECT...(CTAS) 语句创建一个临时表，其中包含现有的已修改和未修改行，以及代理键。 这是使用 IDENTITY_INSERT=ON 实现的。 然后，使用 IDENTITY_INSERT=OFF 将新行插入表中。 为了方便回滚，现有维度表已重命名，并且临时表也已重命名，成为新的维度表。 在每次运行之前，会删除旧维度表。
+本示例使用了渐变维度 (SCD) 类型 1 维度表。 每个维度具有一个使用标识列定义的代理键。 为了节省时间，日期维度表已预先填充，这也是一种最佳做法。 对于其他维度表，CREATE TABLE 为 SELECT .。。（CTAS）语句用于创建一个临时表，其中包含现有的已修改行和非修改行以及代理键。 这是使用 IDENTITY_INSERT=ON 实现的。 然后，使用 IDENTITY_INSERT=OFF 将新行插入表中。 为了方便回滚，现有维度表已重命名，并且临时表也已重命名，成为新的维度表。 在每次运行之前，会删除旧维度表。
 
 维度表在事实数据表之前加载。 这种顺序可确保每次事实数据抵达之前，所有引用的维度已存在。 加载事实数据后，将会匹配每个对应维度的业务键，并将对应的代理键添加到每个事实。
 
@@ -188,13 +188,13 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 使用以下步骤连接到 Power BI，并导入前面创建的视图：
 
 1. 启动 Power BI Desktop。
-2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...” 从菜单中。
+2. 在“开始”功能区上的菜单中，依次选择“获取数据”、“更多...” 。
 3. 在“获取数据”窗口中，选择“Azure SQL 数据库”。
 4. 在数据库登录窗口中，输入服务器名称 (**catalog-dpt-&lt;User&gt;.database.windows.net**)。 为“数据连接模式”选择“导入”，单击“确定”。 
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**"，然后输入 "用户名 =*开发人员*"，并输入 password = *P\@ssword1*"。 单击“连接”。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -248,7 +248,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 部署填充了星型架构的 SQL 数据仓库，以进行租户分析。
