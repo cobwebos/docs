@@ -72,8 +72,6 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: 在模板 VM 上启用嵌套虚拟化
           href: how-to-enable-nested-virtualization-template-vm.md
-        - name: 创建带有模板 VM 内的多个 VM 的环境
-          href: how-to-enable-multi-vm-environment.md
     - name: 连接到课堂实验室中的 VM（学生）
       items:
         - name: 访问教室实验室
