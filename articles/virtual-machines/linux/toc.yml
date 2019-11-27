@@ -126,7 +126,7 @@
     - name: 专用主机
       href: dedicated-hosts.md
     - name: 维护和更新
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 磁盘存储
       items:
         - name: 托管磁盘简介
@@ -298,16 +298,30 @@
               href: ../extensions/agent-linux.md
             - name: 代理更新
               href: update-agent.md
-        - name: 计划内维护
-          href: maintenance-notifications.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: 计划事件
-          href: scheduled-events.md
         - name: 监视元数据
           href: instance-metadata-service.md
         - name: 使用 REST 获取使用情况指标
           href: metrics-vm-usage-rest.md
+    - name: 平台维护
+      items:
+        - name: 维护通知
+          items:
+            - name: 概述
+              href: maintenance-notifications.md
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 门户
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 维护控制
+          items:
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 计划事件
+          href: scheduled-events.md
     - name: 监视 VM
       items:
         - name: 用于 VM 的 Azure Monitor

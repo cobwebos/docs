@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: 排查与内核相关的启动问题
       href: 'https://support.microsoft.com/help/4091524'
+    - name: 恢复配置了 LVM 且无法引导的 VM
+      href: chroot-logical-volume-manager.md
     - name: 排查 fstab 错误
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: 详细的 SSH 故障排除

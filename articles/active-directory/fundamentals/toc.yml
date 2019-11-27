@@ -31,6 +31,18 @@
       href: active-directory-data-storage-eu.md
     - name: Microsoft 365 政府版中的新增功能
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD 操作参考
+      items:
+        - name: 介绍
+          href: active-directory-ops-guide-intro.md
+        - name: 标识和访问管理
+          href: active-directory-ops-guide-iam.md
+        - name: 身份验证管理
+          href: active-directory-ops-guide-auth.md
+        - name: 标识治理
+          href: active-directory-ops-guide-govern.md
+        - name: 操作
+          href: active-directory-ops-guide-ops.md
 - name: 操作指南
   expanded: true
   items:
