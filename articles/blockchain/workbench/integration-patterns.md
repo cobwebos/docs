@@ -1,6 +1,6 @@
 ---
-title: Smart contract integration patterns - Azure Blockchain Workbench
-description: Overview of smart contract integration patterns in Azure Blockchain Workbench Preview.
+title: 智能协定集成模式-Azure 区块链工作台
+description: Azure 区块链工作台预览版中的智能协定集成模式概述。
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
@@ -174,7 +174,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 一种常见的集成方案是在智能合同中包含从传感器检索到的遥测数据。 根据传感器传送的数据，智能合同可以采取明智的措施，并可以更改状态。
 
-例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 If a driver accelerated their car to 100 miles per hour, the resulting sensor information could trigger a cancellation of insurance by their insurance provider. 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了其租赁协议涵盖的地理区域，从而产生罚金。
+例如，如果运送药物的卡车温度飙升到 110 度，同时未在供应链中检测到并消除此问题，则可能会影响药物的效力，并可能造成公共安全问题。 如果驱动程序每小时将汽车的汽车加速为100英里，则生成的传感器信息可能会通过其保险提供商触发保险单的取消。 如果汽车是租赁过来的，GPS 数据可能会指示驾驶员超出了其租赁协议涵盖的地理区域，从而产生罚金。
 
 难点在于，这些传感器可以持续传送数据，但不适合用于将所有这些数据发送到智能合同。 典型的方法是限制发送到区块链的消息数，同时将所有消息传送到辅助存储。 例如，仅当包含的值超出智能合同的议定范围时，才按固定的间隔传送收到的消息（如每小时传送一次）。 检查超出容限的值可以确保接收和执行与合同业务逻辑相关的数据。 按间隔检查值可以确认传感器仍在报告数据。 所有数据发送到辅助报告存储，以进行更广泛的报告、分析和机器学习。 例如，尽管不一定需要每隔一分钟就获取智能合同的 GPS 传感器读数一次，但这些读数能够在报告或地图路线中提供有用的数据。
 

@@ -182,7 +182,7 @@ JavaScript 不支持特性。
 |---------|---------|----------------------|
 |**类型** || 必须设置为 `cosmosDBTrigger`。 |
 |**direction** || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|**name** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**名称** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -1117,7 +1117,7 @@ JavaScript 不支持特性。
 |---------|---------|----------------------|
 |**类型**     || 必须设置为 `documentdb`。        |
 |**direction**     || 必须设置为 `in`。         |
-|**name**     || 表示函数中的文档的绑定参数的名称。  |
+|**名称**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -1143,7 +1143,7 @@ JavaScript 不支持特性。
 
 ---
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
@@ -1456,7 +1456,7 @@ JavaScript 不支持特性。
 |---------|---------|----------------------|
 |**类型**     || 必须设置为 `documentdb`。        |
 |**direction**     || 必须设置为 `out`。         |
-|**name**     || 表示函数中的文档的绑定参数的名称。  |
+|**名称**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/documentdb/)。  |
@@ -1475,7 +1475,7 @@ JavaScript 不支持特性。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
-| 绑定 | 引用 |
+| 绑定 | 参考 |
 |---|---|
 | CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 

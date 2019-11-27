@@ -1,6 +1,6 @@
 ---
-title: Limits and configuration - Azure Logic Apps
-description: Service limits, such as duration, throughput, and capacity, plus configuration values, such as IP addresses to allow, for Azure Logic Apps
+title: 限制和配置 - Azure 逻辑应用
+description: 适用于 Azure 逻辑应用的服务限制（如持续时间、吞吐量和容量）加上配置值（如允许的 IP 地址）
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -18,7 +18,7 @@ ms.locfileid: "74483570"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
-本文介绍使用 Azure 逻辑应用创建和运行自动化工作流的限制和配置的详细信息。 For Power Automate, see [Limits and configuration in Power Automate](https://docs.microsoft.com/flow/limits-and-config).
+本文介绍使用 Azure 逻辑应用创建和运行自动化工作流的限制和配置的详细信息。 有关电源自动功能，请参阅[电源自动执行中的限制和配置](https://docs.microsoft.com/flow/limits-and-config)。
 
 <a name="definition-limits"></a>
 
@@ -26,7 +26,7 @@ ms.locfileid: "74483570"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | Limit | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -48,10 +48,10 @@ ms.locfileid: "74483570"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | Multi-tenant limit | Integration service environment limit | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| 运行持续时间 | 90 天 | 366 days | To change the default limit, see [change run duration](#change-duration). |
-| 存储保留期 | 90 天（从运行开始时间计算） | 366 days | To change the default limit, see [change storage retention](#change-retention). |
+| 运行持续时间 | 90 天 | 366天 | 若要更改默认限制，请参阅[更改运行持续时间](#change-duration)。 |
+| 存储保留期 | 90 天（从运行开始时间计算） | 366天 | 若要更改默认限制，请参阅[更改存储保留期](#change-retention)。 |
 | 最小重复间隔 | 1 秒 | 1 秒 ||
 | 最大重复间隔 | 500 天 | 500 天 ||
 |||||
@@ -61,17 +61,17 @@ ms.locfileid: "74483570"
 
 ### <a name="change-run-duration-and-storage-retention"></a>更改运行持续时间和存储保留期
 
-To change the default limit for run duration and storage retention, follow these steps. To increase the maximum limit, [contact the Logic Apps team](mailto://logicappsemail@microsoft.com) for help with your requirements.
+若要更改运行持续时间和存储保留期的默认限制，请执行以下步骤。 若要增加最大限制，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，以获得满足要求的帮助。
 
-1. In the Azure portal, on your logic app's menu, select **Workflow settings**.
+1. 在 Azure 门户的逻辑应用菜单上，选择 "**工作流设置**"。
 
-1. Under **Runtime options**, from the **Run history retention in days** list, select **Custom**.
+1. 在 "**运行时选项**" 下的 "**运行历史记录保留天数**" 列表中，选择 "**自定义**"。
 
-1. Enter or drag the slider for the number of days that you want. 
+1. 输入或拖动滑块以获取所需的天数。 
 
    > [!NOTE]
-   > For logic apps in multi-tenant Azure, the 90-day default limit is the same as the maximum limit. You can only decrease this value.
-   > For logic apps in an integration service environment, you can decreause or increase the 90-day default limit.
+   > 对于多租户 Azure 中的逻辑应用，90天的默认限制与最大限制相同。 只能减小此值。
+   > 对于 integration service 环境中的逻辑应用，你可以 decreause 或增加90天的默认限制。
 
 <a name="looping-debatching-limits"></a>
 
@@ -79,13 +79,13 @@ To change the default limit for run duration and storage retention, follow these
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | Limit | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**Note**: When concurrency is turned on, the SplitOn limit is reduced to 100 items for [debatching arrays](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
+| 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>**注意**：并发启用后，[解除批处理数组](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制将减少到100项。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
 | Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](../connectors/connectors-native-query.md)筛选更大数组。 |
 | Foreach 并发 | 20 是并发控制关闭时的默认限制。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制是可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
-| SplitOn 项 | * 100,000 without trigger concurrency <p><p>* 100 with trigger concurrency | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**Note**: When concurrency is turned on, the SplitOn limit is reduced to 100 items. |
+| SplitOn 项 | * 100000，无需触发器并发 <p><p>* 100 with 触发器并发 | 对于返回数组的触发器，可指定一个表达式，它使用[将数组项拆分或解除批处理到多个工作流实例](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)进行处理的“SplitOn”属性，而不是使用“Foreach”循环。 此表达式引用要用于为每个数组项创建和运行工作流实例的数组。 <p><p>**注意**：并发启用后，SplitOn 限制将减少到100项。 |
 | Until 迭代 | 5,000 | |
 ||||
 
@@ -95,11 +95,11 @@ To change the default limit for run duration and storage retention, follow these
 
 下面是针对单个逻辑应用定义的限制：
 
-### <a name="multi-tenant-logic-apps-service"></a>Multi-tenant Logic Apps service
+### <a name="multi-tenant-logic-apps-service"></a>多租户逻辑应用服务
 
-| 名称 | Limit | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 操作：每 5 分钟执行的次数 | 100,000 is the default limit, but 300,000 is the maximum limit. | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
+| 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：并发传入调用数 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可根据需要在多个应用中分发工作负荷。 |
@@ -107,56 +107,56 @@ To change the default limit for run duration and storage retention, follow these
 | 每 5 分钟的内容吞吐量 | 600 MB | 可根据需要在多个应用中分发工作负荷。 |
 ||||
 
-### <a name="integration-service-environment-ise"></a>Integration service environment (ISE)
+### <a name="integration-service-environment-ise"></a>Integration service 环境（ISE）
 
-Here are the throughput limits for the Premium SKU:
+下面是高级 SKU 的吞吐量限制：
 
-| 名称 | Limit | 说明 |
+| 名称 | 限制 | 说明 |
 |------|-------|-------|
-| Base unit execution limit | System-throttled when infrastructure capacity reaches 80% | Provides ~4,000 action executions per minute, which is ~160 million action executions per month | |
-| Scale unit execution limit | System-throttled when infrastructure capacity reaches 80% | Each scale unit can provide ~2,000 additional action executions per minute, which is ~80 million more action executions per month | |
-| Maximum scale units that you can add | 10 | |
+| 基本单位执行限制 | 当基础结构容量达到80% 时系统受到限制 | 提供 ~ 4000 每分钟执行的操作，即每月约160000000个操作执行 | |
+| 缩放单位执行限制 | 当基础结构容量达到80% 时系统受到限制 | 每个缩放单位每分钟可提供 ~ 2000 的其他操作执行次数，每月大约80000000个操作执行 | |
+| 可添加的最大缩放单位 | 10 | |
 ||||
 
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 > [!NOTE]
-> The [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) has no published limits as this SKU doesn't have any service-level agreement (SLA) or capabilities for scaling up. Use this SKU only for experimenting, development, and testing, not production or performance testing.
+> 由于此 SKU 没有任何服务级别协议（SLA）或扩展功能，[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)没有发布的限制。 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
 
 <a name="gateway-limits"></a>
 
-## <a name="gateway-limits"></a>Gateway limits
+## <a name="gateway-limits"></a>网关限制
 
-Azure Logic Apps supports write operations, including inserts and updates, through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新）。 但是，这些操作存在[有效负载大小限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。
 
 <a name="request-limits"></a>
 
 ## <a name="http-limits"></a>HTTP 限制
 
-Here are the limits for a single outgoing or incoming HTTP call:
+下面是单个传出或传入 HTTP 调用的限制：
 
 #### <a name="timeout"></a>超时
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | Multi-tenant limit | Integration service environment limit | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| Outbound request | 120 秒 <br>(2 minutes) | 240 seconds <br>(4 minutes) | Examples of outbound requests include calls made by HTTP triggers. <p><p>**Tip**: For longer running operations, use an [asynchronous polling pattern](../logic-apps/logic-apps-create-api-app.md#async-pattern) or an [until loop](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
-| Inbound request | 120 秒 <br>(2 minutes) | 240 seconds <br>(4 minutes) | Examples of inbound requests include calls received by request triggers and webhook triggers. <p><p>**Note**: For the original caller to get the response, all steps in the response must finish within the limit unless you call another logic app as a nested workflow. 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
+| 出站请求 | 120 秒 <br>（2分钟） | 240 秒 <br>（4分钟） | 出站请求的示例包括 HTTP 触发器发出的调用。 <p><p>**提示**：对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或[until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 |
+| 入站请求 | 120 秒 <br>（2分钟） | 240 秒 <br>（4分钟） | 入站请求的示例包括请求触发器和 webhook 触发器接收到的调用。 <p><p>**注意**：对于原始调用方，若要获取响应，则响应中的所有步骤必须在限制范围内完成，除非调用另一个逻辑应用作为嵌套工作流。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
 |||||
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | Multi-tenant limit | Integration service environment limit | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
-| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>For the integration service environment, the Logic Apps engine supports this limit, but connectors have their own chunking limits up to the engine limit, for example, see the [Azure Blob Storage connector's API reference](https://docs.microsoft.com/connectors/azureblob/). For more information chunking, see [Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md). |
+| 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>对于 integration service 环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，直至引擎限制，例如，请参阅[Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
 | 表达式计算限制 | 131,072 个字符 | 131,072 个字符 | `@concat()`、`@base64()`、`@string()` 表达式的长度不能超过此限制。 |
 |||||
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | Limit | 说明 |
+| 名称 | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -169,73 +169,73 @@ Here are the limits for a single outgoing or incoming HTTP call:
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| 名称 | Multi-tenant limit | Integration service environment limit | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 每个 Azure 订阅 1,000 ||
-| Number of requests per minute for a custom connector | 500 requests per minute per connection | 2,000 requests per minute per *custom connector* ||
+| 自定义连接器的每分钟请求数 | 每分钟每个连接 500 个请求 | 每个*自定义连接器*每分钟2000请求 ||
 |||
 
 <a name="managed-identity"></a>
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | Limit |
+| 名称 | 限制 |
 | ---- | ----- |
-| Number of logic apps that have the system-assigned identity in an Azure subscription per region | 100 |
+| 每个区域的 Azure 订阅中具有系统分配的标识的逻辑应用数 | 100 |
 |||
 
 <a name="integration-account-limits"></a>
 
 ## <a name="integration-account-limits"></a>集成帐户限制
 
-Each Azure subscription has these integration account limits:
+每个 Azure 订阅都有以下集成帐户限制：
 
-* One [Free tier](../logic-apps/logic-apps-pricing.md#integration-accounts) integration account per Azure region
+* 每个 Azure 区域一个[免费层](../logic-apps/logic-apps-pricing.md#integration-accounts)集成帐户
 
-* 1,000 total integration accounts, including integration accounts in any [integration service environments (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) across both [Developer and Premium SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+* 1000集成帐户总数，包括[开发人员和高级 sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)上任何[integration SERVICE 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的集成帐户。
 
-* Each ISE, whether [Developer or Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), is limited to 5 total integration accounts:
+* 每个 ISE，无论是[开发人员还是高级版](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，都限于5个集成帐户：
 
   | ISE SKU | 集成帐户限制 |
   |---------|----------------------------|
-  | **高级** | 5 total - [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) accounts only, including one Standard account for free. No Free or Basic accounts are permitted. |
-  | **开发人员** | 5 total - [Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (limited to 1 account) and [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) combined, or all Standard accounts. No Basic accounts are permitted. Use the [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) for experimenting, development, and testing, but not for production or performance testing. |
+  | **高级** | 仅限5个[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)帐户，包括免费的一个标准帐户。 不允许免费帐户或基本帐户。 |
+  | **开发人员** | 5总计-[免费](../logic-apps/logic-apps-pricing.md#integration-accounts)（限制为1个帐户）和[标准](../logic-apps/logic-apps-pricing.md#integration-accounts)组合或所有标准帐户。 不允许使用基本帐户。 使用[开发人员 SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)进行试验、开发和测试，但不适用于生产或性能测试。 |
   |||
 
-Additional costs apply to integration accounts that you add beyond the integration accounts that are included with an ISE. To learn how pricing and billing work for ISEs, see the [Logic Apps pricing model](../logic-apps/logic-apps-pricing.md#fixed-pricing). For pricing rates, see [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps/).
+额外费用适用于你在 ISE 附带的集成帐户之外添加的集成帐户。 若要了解 ISEs 的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 <a name="artifact-number-limits"></a>
 
 ### <a name="artifact-limits-per-integration-account"></a>每个集成帐户的项目限制
 
-Here are the limits on the number of artifacts for each integration account tier. For pricing rates, see [Logic Apps pricing](https://azure.microsoft.com/pricing/details/logic-apps/). To learn how pricing and billing work for integration accounts, see the [Logic Apps pricing model](../logic-apps/logic-apps-pricing.md#integration-accounts).
+下面介绍对每个集成帐户层的项目数量限制。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 若要了解集成帐户的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)。
 
 > [!NOTE]
-> Use the Free tier only for exploratory scenarios, not production scenarios. 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
+> 仅将免费层用于探索应用场景，而非生产应用场景。 此层限制吞吐量和使用情况，并且不具有服务级别协议 (SLA)。
 
-| 项目 | 免费 | 基本 | 标准版 |
+| 项目 | 免费 | 基本 | 标准 |
 |----------|------|-------|----------|
-| EDI 贸易协议 | 10 | 第 | 1,000 |
+| EDI 贸易协议 | 10 | 1 | 1,000 |
 | EDI 参与方 | 25 | 2 | 1,000 |
 | 地图 | 25 | 500 | 1,000 |
 | 架构 | 25 | 500 | 1,000 |
 | 程序集 | 10 | 25 | 1,000 |
 | 证书 | 25 | 2 | 1,000 |
-| 批处理配置 | 5 | 第 | 50 |
+| 批处理配置 | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>项目容量限制
 
-| 项目 | Limit | 说明 |
+| 项目 | 限制 | 说明 |
 | -------- | ----- | ----- |
 | 程序集 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 | 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。 |
 | 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 ||||
 
-| 运行时终结点 | Limit | 说明 |
+| 运行时终结点 | 限制 | 说明 |
 |------------------|-------|-------|
 | 每 5 分钟读取调用 | 60,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
 | 每 5 分钟调用调用 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 |
@@ -247,11 +247,11 @@ Here are the limits on the number of artifacts for each integration account tier
 
 ### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>B2B 协议（AS2、X12、EDIFACT）消息大小
 
-Here are the message size limits that apply to B2B protocols:
+以下消息大小限制适用于 B2B 协议：
 
-| 名称 | Multi-tenant limit | Integration service environment limit | 说明 |
+| 名称 | 多租户限制 | 集成服务环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | 适用于解码和编码 |
+| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2-200 MB <br>v1 - 50 MB | 适用于解码和编码 |
 | X12 | 50 MB | 50 MB | 适用于解码和编码 |
 | EDIFACT | 50 MB | 50 MB | 适用于解码和编码 |
 ||||
@@ -260,33 +260,33 @@ Here are the message size limits that apply to B2B protocols:
 
 ## <a name="disabling-or-deleting-logic-apps"></a>禁用或删除逻辑应用
 
-禁用逻辑应用后，任何新运行都不会实例化。 All in-progress and pending runs continue until they finish, which might take time to complete.
+禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
 
 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 
 <a name="configuration"></a>
 
-## <a name="firewall-configuration-ip-addresses"></a>Firewall configuration: IP addresses
+## <a name="firewall-configuration-ip-addresses"></a>防火墙配置： IP 地址
 
-The IP addresses that Azure Logic Apps uses for incoming and outgoing calls depend on the region where your logic app exists. *All* logic apps that are in the same region use the same IP address ranges.
+Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用所在的区域。 同一区域中的所有逻辑应用都使用相同的 IP 地址范围。
 
 > [!NOTE]
-> Some Power Automate calls, such as **HTTP** and **HTTP + OpenAPI** requests, go directly through the Azure Logic Apps service and come from the IP addresses that are listed here. For more information about IP addresses used by Power Automate, see [Limits and configuration in Power Automate](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration).
+> 某些 Power 自动调用（如**http**和**http + OpenAPI**请求）直接通过 Azure 逻辑应用服务，并来自此处列出的 IP 地址。 有关电源自动化使用的 IP 地址的详细信息，请参阅[电源自动执行中的限制和配置](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)。
 
-* To support the calls that your logic apps directly make with [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md), and other HTTP requests, set up your firewall with *all* the [inbound](#inbound) *and* [outbound](#outbound) IP addresses that are used by the Logic Apps service, based on the regions where your logic apps exist. 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。
+* 若要支持逻辑应用通过 [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 和其他 HTTP 请求直接发出的调用，请根据这些逻辑应用所在的区域，使用逻辑应用服务所用的所有[入站](#inbound)和[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“入站”和“出站”标题下，并按区域进行排序。
 
 * 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。 
 
-* To enable communication for logic apps that run in an integration service environment (ISE), make sure that you [open these ports](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+* 若要为在 integration service 环境（ISE）中运行的逻辑应用启用通信，请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)。
 
-* If your logic apps have problems accessing Azure storage accounts that use [firewalls and firewall rules](../storage/common/storage-network-security.md), you have [various options to enable access](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
+* 如果逻辑应用在访问使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户时遇到问题，则可以使用[各种选项来启用访问](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
-  For example, logic apps can't directly access storage accounts that use firewall rules and exist in the same region. However, if you permit the [outbound IP addresses for managed connectors in your region](../logic-apps/logic-apps-limits-and-config.md#outbound), your logic apps can access storage accounts that are in a different region except when you use the Azure Table Storage or Azure Queue Storage connectors. To access your Table Storage or Queue Storage, you can use the HTTP trigger and actions instead. For other options, see [Access storage accounts behind firewalls](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
+  例如，逻辑应用不能直接访问使用防火墙规则并且存在于同一区域中的存储帐户。 但是，如果你在[区域中允许托管连接器的出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问不同区域中的存储帐户，除非你使用 Azure 表存储或 Azure 队列存储连接器。 若要访问表存储或队列存储，可以改为使用 HTTP 触发器和操作。 有关其他选项，请参阅[访问防火墙后的存储帐户](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 
-* For custom connectors, [Azure Government](../azure-government/documentation-government-overview.md), and [Azure China 21Vianet](https://docs.microsoft.com/azure/china/), fixed or reserved IP addresses aren't available.
+* 对于自定义连接器、 [Azure 政府](../azure-government/documentation-government-overview.md)和[Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)，固定或保留的 IP 地址不可用。
 
 > [!IMPORTANT]
-> If you have firewall configurations that you set up before September 1, 2018, make sure that they match the current IP addresses in these lists for the regions where your logic apps exist.
+> 如果防火墙配置是在 2018 年 9 月 1 日之前设置的，请确保其匹配这些列表中与逻辑应用所在的区域对应的当前 IP 地址。
 
 <a name="inbound"></a>
 
@@ -301,7 +301,7 @@ The IP addresses that Azure Logic Apps uses for incoming and outgoing calls depe
 | 加拿大东部 | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
 | 印度中部 | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
 | 美国中部 | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
-| 亚洲东部 | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
+| 东亚 | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
 | 美国东部 | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
 | 美国东部 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | 法国中部 | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
@@ -316,11 +316,11 @@ The IP addresses that Azure Logic Apps uses for incoming and outgoing calls depe
 | 南非西部 | 102.133.72.190, 102.133.72.145, 102.133.72.184, 102.133.72.173 |
 | 美国中南部 | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
 | 印度南部 | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
-| 亚洲东南部 | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
+| 东南亚 | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | 英国南部 | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
 | 英国西部 | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | 美国中西部 | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
-| 欧洲西部 | 13.95.155.53, 52.174.54.218, 52.174.49.6, 52.174.49.6 |
+| 西欧 | 13.95.155.53, 52.174.54.218, 52.174.49.6, 52.174.49.6 |
 | 印度西部 | 104.211.164.112, 104.211.165.81, 104.211.164.25, 104.211.157.237 |
 | 美国西部 | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
 | 美国西部 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |
@@ -339,7 +339,7 @@ The IP addresses that Azure Logic Apps uses for incoming and outgoing calls depe
 | 加拿大东部 | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255、52.229.120.52、52.229.120.131、52.229.120.178、52.229.123.98、52.229.126.202、52.242.35.152 |
 | 印度中部 | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12、104.211.81.192 - 104.211.81.207、104.211.98.164 |
 | 美国中部 | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95、40.122.49.51、52.173.245.164 |
-| 亚洲东部 | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79、23.99.116.181、52.175.23.169 |
+| 东亚 | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79、23.99.116.181、52.175.23.169 |
 | 美国东部 | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95、40.71.249.205、191.237.41.52 |
 | 美国东部 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223、52.232.188.154、104.208.233.100 |
 | 法国中部 | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2 |
@@ -354,11 +354,11 @@ The IP addresses that Azure Logic Apps uses for incoming and outgoing calls depe
 | 南非西部 | 102.133.72.98, 102.133.72.113, 102.133.75.169, 102.133.72.179, 102.133.72.37, 102.133.72.183, 102.133.72.132, 102.133.75.191 | 13.65.86.57、104.214.19.48 - 104.214.19.63、104.214.70.191 |
 | 美国中南部 | 104.210.144.48, 13.65.82.17, 13.66.52.232, 23.100.124.84, 70.37.54.122, 70.37.50.6, 23.100.127.172, 23.101.183.225 | 13.65.86.57、104.214.19.48 - 104.214.19.63、104.214.70.191 |
 | 印度南部 | 52.172.50.24, 52.172.55.231, 52.172.52.0, 104.211.229.115, 104.211.230.129, 104.211.230.126, 104.211.231.39, 104.211.227.229 | 13.71.125.22、40.78.194.240 - 40.78.194.255、104.211.227.225 |
-| 亚洲东南部 | 13.76.133.155, 52.163.228.93, 52.163.230.166, 13.76.4.194, 13.67.110.109, 13.67.91.135, 13.76.5.96, 13.67.107.128 | 13.67.8.240 - 13.67.8.255、13.76.231.68、52.187.68.19 |
+| 东南亚 | 13.76.133.155, 52.163.228.93, 52.163.230.166, 13.76.4.194, 13.67.110.109, 13.67.91.135, 13.76.5.96, 13.67.107.128 | 13.67.8.240 - 13.67.8.255、13.76.231.68、52.187.68.19 |
 | 英国南部 | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.80.51、51.140.148.0 - 51.140.148.15 |
 | 英国西部 | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15、51.141.47.105 |
 | 美国中西部 | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 13.71.195.32 - 13.71.195.47、52.161.24.128、52.161.26.212、52.161.27.108、52.161.29.35、52.161.30.5、52.161.102.22 |
-| 欧洲西部 | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223、40.115.50.13、52.174.88.118 |
+| 西欧 | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223、40.115.50.13、52.174.88.118 |
 | 印度西部 | 104.211.164.80, 104.211.162.205, 104.211.164.136, 104.211.158.127, 104.211.156.153, 104.211.158.123, 104.211.154.59, 104.211.154.7 | 104.211.146.224 - 104.211.146.239、104.211.161.203、104.211.189.218 |
 | 美国西部 | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 40.112.243.160 - 40.112.243.175、104.40.51.248、104.42.122.49 |
 | 美国西部 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 13.66.140.128 - 13.66.140.143、13.66.218.78、13.66.219.14、13.66.220.135、13.66.221.19、13.66.225.219、52.183.78.157 |

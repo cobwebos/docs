@@ -43,7 +43,7 @@ ms.locfileid: "74424157"
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 点到站点证书身份验证连接需要以下先决条件：
 
@@ -61,25 +61,25 @@ ms.locfileid: "74424157"
 使用以下值创建测试环境，或参考这些值以更好地理解本文中的示例：
 
 - **创建虚拟网络（经典）设置**
-   - **Name**: Enter *VNet1*.
-   - **Address space**: Enter *192.168.0.0/16*. 对于此示例，我们只使用一个地址空间。 可以在 VNet 中使用多个地址空间，如图所示。
-   - **Subnet name**: Enter *FrontEnd*.
-   - **Subnet address range**: Enter *192.168.1.0/24*.
-   - **Subscription**: Select a subscription from the list of available subscriptions.
-   - **Resource group**: Enter *TestRG*. 如果资源组不存在，选择“新建”。
-   - **Location**: Select **East US** from the list.
+   - **名称**：输入*VNet1*。
+   - **地址空间**：输入*192.168.0.0/16*。 对于此示例，我们只使用一个地址空间。 可以在 VNet 中使用多个地址空间，如图所示。
+   - **子网名称**：输入*前端*。
+   - **子网地址范围**：输入*192.168.1.0/24*。
+   - **订阅**：从可用订阅列表中选择一个订阅。
+   - **资源组**：输入*TestRG*。 如果资源组不存在，选择“新建”。
+   - **位置**：从列表中选择 "**美国东部**"。
 
   - **VPN 连接设置**
-    - **Connection type**: Select **Point-to-site**.
-    - **Client Address Space**: Enter *172.16.201.0/24*. 使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自指定池的 IP 地址。
+    - **连接类型**：选择 "**点到站点**"。
+    - **客户端地址空间**：输入*172.16.201.0/24*。 使用此点到站点连接连接到 VNet 的 VPN 客户端接收来自指定池的 IP 地址。
 
 - **网关配置子网设置**
-   - **Name**: Autofilled with *GatewaySubnet*.
-   - **Address range**: Enter *192.168.200.0/24*. 
+   - **名称**：包含*GatewaySubnet*的 Autofilled。
+   - **地址范围**：输入*192.168.200.0/24*。 
 
 - **网关配置设置**：
-   - **Size**: Select the gateway SKU that you want to use.
-   - **Routing Type**: Select **Dynamic**.
+   - **大小**：选择要使用的网关 SKU。
+   - **路由类型**：选择 "**动态**"。
 
 ## <a name="create-a-virtual-network-and-a-vpn-gateway"></a>创建虚拟网络和 VPN 网关
 
@@ -89,7 +89,7 @@ ms.locfileid: "74424157"
 
 如果还没有虚拟网络 (VNet)，请创建一个。 这些屏幕截图仅供参考。 请务必替换成自己的值。 若要使用 Azure 门户创建 VNet，请执行以下步骤：
 
-1. On the [Azure portal](https://portal.azure.com) menu or from the **Home** page, select **Create a resource**. 此时会打开一个“新建”页面。
+1. 在 " [Azure 门户](https://portal.azure.com)" 菜单或从 "**主页**" 上，选择 "**创建资源**"。 此时会打开一个“新建”页面。
 
 2. 在“搜索市场”字段中，输入“虚拟网络”，然后从返回的列表中选择“虚拟网络”。 此时会打开“虚拟网络”页。
 
@@ -113,11 +113,11 @@ ms.locfileid: "74424157"
 
     要添加 DNS 服务器，请从 VNet 页选择“DNS 服务器”。 然后，输入要用的 DNS 服务器的 IP 地址并选择“保存”。
 
-### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>Part 2: Create a gateway subnet and a dynamic routing gateway
+### <a name="part-2-create-a-gateway-subnet-and-a-dynamic-routing-gateway"></a>第2部分：创建网关子网和动态路由网关
 
 本步骤创建网关子网和动态路由网关。 在经典部署模型的 Azure 门户中，通过相同的配置页创建网关子网和网关。 网关子网仅用于网关服务。 切勿将任何资源（例如 VM 或任何其他服务）直接部署到网关子网。
 
-1. In the Azure portal, go to the virtual network for which you want to create a gateway.
+1. 在 Azure 门户中，请前往要为其创建网关的虚拟网络。
 
 2. 在虚拟网络页上，选择“概览”，在“VPN 连接”部分，选择“网关”。
 
@@ -210,7 +210,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 >
 >
 
-1. To connect to your VNet, on the client computer, go to **VPN connections** in the Azure portal and locate the VPN connection that you created. 该 VPN 连接名称与虚拟网络的名称相同。 选择“连接”。 如果显示关于证书的弹出消息，请选择“继续”以使用提升的权限。
+1. 若要连接到 VNet，请在客户端计算机上，中转到 Azure 门户中的 " **vpn 连接**"，然后找到已创建的 vpn 连接。 该 VPN 连接名称与虚拟网络的名称相同。 选择“连接”。 如果显示关于证书的弹出消息，请选择“继续”以使用提升的权限。
 
 2. 在“连接”状态页上，选择“连接”以启动连接。 如果看到“选择证书”屏幕，请验证显示的客户端证书是否正确。 如果错误，请从下拉列表中选择正确的证书，然后选择“确定”。
 
@@ -277,7 +277,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 1. 检索客户端证书指纹。 有关详细信息，请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695.aspx)。
 2. 将信息复制到文本编辑器，删除其中的空格，使之成为连续的字符串。
-3. Go to the classic virtual network. 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页。
+3. 中转到经典虚拟网络。 选择“点到站点 VPN 连接”，然后选择“管理证书”，打开“证书”页。
 4. 选择“吊销列表”，打开“吊销列表”页。 
 5. 选择“添加证书”，打开“将证书添加到吊销列表”页。
 6. 在“指纹”页中，将证书指纹以连续文本行的形式进行粘贴，不留空格。 选择“确定”完成操作。

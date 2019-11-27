@@ -1,5 +1,5 @@
 ---
-title: Migrate Conditional Access policies - Azure Active Directory
+title: 迁移条件访问策略-Azure Active Directory
 description: 了解在 Azure 门户中迁移经典策略所要掌握的知识。
 services: active-directory
 ms.service: active-directory
@@ -18,28 +18,28 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380555"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>What is a policy migration in Azure Active Directory Conditional Access? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的策略迁移是什么？ 
 
-[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active directory (Azure AD) that enables you to control how authorized users access your cloud apps. While the purpose is still the same, the release of the new Azure portal has introduced significant improvements to how Conditional Access works.
+[条件访问](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户访问云应用的方式。 尽管此功能的用途仍未变化，但新版 Azure 门户在条件访问的工作原理方面引入了重大改进。
 
 考虑迁移未在 Azure 门户中创建的策略，因为：
 
 - 现在可以解决以前无法处理的方案。
 - 可以通过合并来减少需要管理的策略数。   
-- You can manage all your Conditional Access policies in one central location.
-- Azure 经典门户将停用。   
+- 可以在一个中心位置管理所有条件访问策略。
+- Azure 经典门户即将停用。   
 
-This article explains what you need to know to migrate your existing Conditional Access policies to the new framework.
+本文介绍在将现有条件访问策略迁移到新框架时所要了解的知识。
  
 ## <a name="classic-policies"></a>经典策略
 
-In the [Azure portal](https://portal.azure.com), the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page is your entry point to your Conditional Access policies. However, in your environment, you might also have Conditional Access policies you have not created using this page. 这些策略称为“经典策略”。 Classic policies are Conditional Access policies, you have created in:
+在 [Azure 门户](https://portal.azure.com)中，[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页是条件访问策略的入口点。 但是，你的环境也可能包含尚未使用此页创建的条件访问策略。 这些策略称为“经典策略”。 经典策略是在以下位置创建的条件访问策略：
 
 - Azure 经典门户
 - Intune 经典门户
 - Intune 应用保护门户
 
-On the **Conditional Access** page, you can access your classic policies by clicking [**Classic policies (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in the **Manage** section. 
+在“条件访问”页上，可以通过单击“管理”部分中的“经典策略(预览)[ **”来访问经典策略。** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
@@ -53,7 +53,7 @@ On the **Conditional Access** page, you can access your classic policies by clic
 
    ![Azure Active Directory](./media/policy-migration/73.png)
    
-- Review the settings of a classic policy (and to disable it).
+- 查看经典策略的设置（以及禁用经典策略）。
 
    ![Azure Active Directory](./media/policy-migration/74.png)
 
@@ -63,19 +63,19 @@ On the **Conditional Access** page, you can access your classic policies by clic
 
 通过更改选定的组或排除特定的组，可以在针对所有包含的用户和组禁用某个策略之前，针对少量测试用户来测试禁用该策略所产生的影响。 
 
-## <a name="azure-ad-conditional-access-policies"></a>Azure AD Conditional Access policies
+## <a name="azure-ad-conditional-access-policies"></a>Azure AD 条件访问策略
 
-With Conditional Access in the Azure portal, you can manage all your policies in one central location. Because the implementation of how Conditional Access has changed, you should familiarize yourself with the basic concepts before migrating your classic policies.
+使用 Azure 门户中的“条件访问”，可以在一个中心位置管理所有策略。 由于条件访问的实现方式已发生变化，在迁移经典策略之前，应熟悉基本的概念。
 
 请参阅：
 
-- [What is Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) to learn about the basic concepts and the terminology.
-- [Best practices for Conditional Access in Azure Active Directory](best-practices.md) to get some guidance on deploying Conditional Access in your organization.
-- [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md) to familiarize yourself with the user interface in the Azure portal.
+- [Azure Active Directory 中的条件访问是什么](../active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
+- [Azure Active Directory 中条件访问的最佳做法](best-practices.md)，获取有关在组织中部署条件访问的一些指导。
+- [通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)，熟悉 Azure 门户中的用户界面。
  
 ## <a name="migration-considerations"></a>迁移注意事项
 
-In this article, Azure AD Conditional Access policies are also referred to as *new policies*.
+在本文中，Azure AD 条件访问策略也称为“新策略”。
 在禁用或删除经典策略之前，这些策略与新策略仍可同时运行。 
 
 在策略整合的上下文中，必须注意以下几个方面：
@@ -104,7 +104,7 @@ In this article, Azure AD Conditional Access policies are also referred to as *n
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端应用条件的[基于应用](technical-reference.md#approved-client-app-requirement)的经典策略允许**受支持**和**不受支持**的[设备平台](technical-reference.md#device-platform-condition)。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](technical-reference.md#device-platform-condition)。 
+Office 365 Exchange Online 的、将 [Exchange Active Sync](technical-reference.md#approved-client-app-requirement) 包含为客户端应用条件的**基于应用**的经典策略允许**受支持**和**不受支持**的[设备平台](technical-reference.md#device-platform-condition)。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](technical-reference.md#device-platform-condition)。 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 

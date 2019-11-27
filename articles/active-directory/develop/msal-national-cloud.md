@@ -1,6 +1,6 @@
 ---
-title: Use Microsoft Authentication Library (MSAL) in national clouds - Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) enables application developers to acquire tokens in order to call secured web APIs. These web APIs can be Microsoft Graph, other Microsoft APIs, partner web APIs, or your own web API. MSAL 支持多个应用程序体系结构和平台。
+title: 使用国家/地区云中的 Microsoft 身份验证库（MSAL）-Microsoft 标识平台
+description: Microsoft 身份验证库（MSAL）使应用程序开发人员能够获取令牌，以便调用受保护的 web Api。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、合作伙伴 web Api 或你自己的 web API。 MSAL 支持多个应用程序体系结构和平台。
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -24,88 +24,88 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481863"
 ---
-# <a name="use-msal-in-a-national-cloud-environment"></a>Use MSAL in a national cloud environment
+# <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
-[National clouds](authentication-national-cloud.md), also known as Sovereign clouds, are physically isolated instances of Azure. These regions of Azure help make sure that data residency, sovereignty, and compliance requirements are honored within geographical boundaries.
+[国内云](authentication-national-cloud.md)（也称为主权云）是 Azure 的物理上独立的实例。 Azure 的这些区域可帮助确保数据驻留、主权和合规性要求在地理边界内有效。
 
-In addition to the Microsoft worldwide cloud, the Microsoft Authentication Library (MSAL) enables application developers in national clouds to acquire tokens in order to authenticate and call secured web APIs. These web APIs can be Microsoft Graph or other Microsoft APIs.
+除了 Microsoft 全球云以外，Microsoft 身份验证库（MSAL）还使国家/地区的应用程序开发人员能够获取令牌，以便进行身份验证和调用受保护的 web Api。 这些 web Api 可以 Microsoft Graph 或其他 Microsoft Api。
 
-Including the global cloud, Azure Active Directory (Azure AD) is deployed in the following national clouds:  
+在以下国家/地区中部署 Azure Active Directory （Azure AD）包括全局云：  
 
-- Azure Government
+- Azure 政府
 - Azure 中国世纪互联
-- Azure 德国
+- Azure Germany
 
-This guide demonstrates how to sign in to work and school accounts, get an access token, and call the Microsoft Graph API in the [Azure Government cloud](https://azure.microsoft.com/global-infrastructure/government/) environment.
+本指南演示如何登录到工作和学校帐户，获取访问令牌，并在[Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/)环境中调用 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-Before you start, make sure that you meet these prerequisites.
+在开始之前，请确保满足以下先决条件。
 
-### <a name="choose-the-appropriate-identities"></a>Choose the appropriate identities
+### <a name="choose-the-appropriate-identities"></a>选择适当的标识
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/) applications can use Azure AD Government identities and Azure AD Public identities to authenticate users. Because you can use any of these identities, you need to decide which authority endpoint you should choose for your scenario:
+[Azure 政府](https://docs.microsoft.com/azure/azure-government/)版应用程序可使用 Azure AD 政府标识，Azure AD 公共标识对用户进行身份验证。 由于可以使用任何这些标识，因此需要决定应为方案选择哪个颁发机构终结点：
 
-- Azure AD Public: Commonly used if your organization already has an Azure AD Public tenant to support Office 365 (Public or GCC) or another application.
-- Azure AD Government: Commonly used if your organization already has an Azure AD Government tenant to support Office 365 (GCC High or DoD) or is creating a new tenant in Azure AD Government.
+- Azure AD 公有：如果你的组织已有一个 Azure AD 公有租户来支持 Office 365 （公有或 GCC）或其他应用程序，则通常使用。
+- Azure AD 政府：如果你的组织已有一个 Azure AD 政府租户支持 Office 365 （GCC 高版或 DoD），或在 Azure AD 政府版中创建新租户，则通常使用此项。
 
-After you decide, a special consideration is where you perform your app registration. If you choose Azure AD Public identities for your Azure Government application, you must register the application in your Azure AD Public tenant.
+确定之后，在执行应用注册的位置需要特别注意。 如果为 Azure 政府版应用程序选择 Azure AD 公共标识，则必须在 Azure AD 公有租户中注册该应用程序。
 
-### <a name="get-an-azure-government-subscription"></a>Get an Azure Government subscription
+### <a name="get-an-azure-government-subscription"></a>获取 Azure 政府版订阅
 
-To get an Azure Government subscription, see [Managing and connecting to your subscription in Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+若要获取 Azure 政府版订阅，请参阅[在 Azure 政府版中管理和连接到你的订阅](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions)。
 
-If you don't have an Azure Government subscription, create a [free account](https://azure.microsoft.com/global-infrastructure/government/request/) before you begin.
+如果你没有 Azure 政府版订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/global-infrastructure/government/request/)。
 
-For details about using a national cloud with a particular programming language, choose the tab matching your language:
+若要详细了解如何使用特定编程语言的国家/地区云，请选择与你的语言相匹配的选项卡：
 
 ## <a name="nettabdonet"></a>[.NET](#tab/donet)
 
-You can use MSAL.NET to sign in users, acquire tokens, and call the Microsoft Graph API in national clouds.
+可以使用 MSAL.NET 登录用户、获取令牌并在国家/地区云中调用 Microsoft Graph API。
 
-The following tutorials demonstrate how to build a .NET Core 2.2 MVC Web app. The app uses OpenID Connect to sign in users with a work and school account in an organization that belongs to a national cloud.
+以下教程演示了如何生成 .NET Core 2.2 MVC Web 应用。 此应用使用 OpenID Connect 通过属于全国云的组织中的工作和学校帐户来登录用户。
 
-- To sign in users and acquire tokens, follow this tutorial: [Build an ASP.NET Core Web app signing-in users in sovereign clouds with the Microsoft identity platform](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
-- To call the Microsoft Graph API, follow this tutorial: [Using the Microsoft identity platform to call the Microsoft Graph API from an An ASP.NET Core 2.x Web App, on behalf of a user signing-in using their work and school account in Microsoft National Cloud](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
+- 若要登录用户和获取令牌，请按照本教程操作：在[主权云中使用 Microsoft 标识平台构建 ASP.NET Core Web 应用登录用户](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)。
+- 若要调用 Microsoft Graph API，请按照本教程操作：[使用 microsoft 标识平台，代表用户使用其在 Microsoft 全国云中的工作和学校帐户登录来调用 Microsoft Graph ASP.NET CORE API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)。
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-To enable your MSAL.js application for sovereign clouds:
+为主权云启用 MSAL 应用程序：
 
 ### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.us/)。
     
-   To find Azure portal endpoints for other national clouds, see [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints).
+   若要查找其他国家云 Azure 门户终结点，请参阅[应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)。
 
-1. If your account gives you access to more than one tenant, select your account in the upper-right corner, and set your portal session to the desired Azure AD tenant.
-1. Go to the [App registrations](https://aka.ms/ra/ff) page on the Microsoft identity platform for developers.
+1. 如果你的帐户允许你访问多个租户，请在右上角选择你的帐户，并将门户会话设置为所需的 Azure AD 租户。
+1. 请参阅面向开发人员的 Microsoft 标识平台上的 "[应用注册](https://aka.ms/ra/ff)" 页。
 1. “注册应用程序”页显示后，请输入应用程序的名称。
-1. Under **Supported account types**, select **Accounts in any organizational directory**.
-1. In the **Redirect URI** section, select the **Web** platform and set the value to the application's URL based on your web server. See the next sections for instructions on how to set and obtain the redirect URL in Visual Studio and Node.
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。
+1. 在 "**重定向 URI** " 部分中，选择**web**平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
 1. 选择“注册”。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。
-1. This tutorial requires you to enable the [implicit grant flow](v2-oauth2-implicit-grant-flow.md). 在已注册的应用程序的左窗格中，选择“身份验证”。
-1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框。 ID tokens and access tokens are required because this app needs to sign in users and call an API.
+1. 本教程要求你启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
+1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框。 ID 令牌和访问令牌是必需的，因为此应用需要登录用户并调用 API。
 1. 选择“保存”。
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>Step 2:  Set up your web server or project
+### <a name="step-2--set-up-your-web-server-or-project"></a>步骤2：设置 web 服务器或项目
 
-- [Download the project files](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) for a local web server, such as Node.
+- 下载本地 web 服务器（如 Node）的[项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
   或
 
-- [Download the Visual Studio project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
+- [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)。
 
-Then skip to [Configure your JavaScript SPA](#step-4-configure-your-javascript-spa) to configure the code sample before running it.
+然后，在运行[JAVASCRIPT SPA](#step-4-configure-your-javascript-spa)之前，将其配置为配置代码示例。
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>Step 3: Use the Microsoft Authentication Library to sign in the user
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>步骤3：使用 Microsoft 身份验证库登录用户
 
-Follow steps in the [JavaScript tutorial](tutorial-v2-javascript-spa.md#create-your-project) to create your project and integrate with MSAL to sign in the user.
+按照[JavaScript 教程](tutorial-v2-javascript-spa.md#create-your-project)中的步骤创建项目，并与 MSAL 集成以登录用户。
 
-### <a name="step-4-configure-your-javascript-spa"></a>Step 4: Configure your JavaScript SPA
+### <a name="step-4-configure-your-javascript-spa"></a>步骤4：配置 JavaScript SPA
 
-在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文的 `<script></script>` 标记顶部添加以下代码：
+在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `<script></script>` 文件正文的 `index.html` 标记顶部添加以下代码：
 
 ```javascript
 const msalConfig = {
@@ -124,39 +124,39 @@ const graphConfig = {
 const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
-In that code:
+在该代码中：
 
-- `Enter_the_Application_Id_here` is the **Application (client) ID** value for the application that you registered.
-- `Enter_the_Tenant_Info_Here` is set to one of the following options:
-    - If your application supports **Accounts in this organizational directory**, replace this value with the tenant ID or tenant name (for example, contoso.microsoft.com).
-    - If your application supports **Accounts in any organizational directory**, replace this value with `organizations`.
+- `Enter_the_Application_Id_here` 是你注册的应用程序的**应用程序（客户端） ID**值。
+- `Enter_the_Tenant_Info_Here` 设置为以下选项之一：
+    - 如果你的应用程序支持**此组织目录中的帐户**，请将此值替换为租户 ID 或租户名称（例如，contoso.microsoft.com）。
+    - 如果你的应用程序支持**任何组织目录中的帐户**，请将此值替换 `organizations`。
     
-    To find authentication endpoints for all the national clouds, see [Azure AD authentication endpoints](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    若要查找所有国家/地区云的身份验证终结点，请参阅[Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 
     > [!NOTE]
-    > Personal Microsoft accounts are not supported in national clouds.
+    > 国内云不支持个人 Microsoft 帐户。
   
-- `graphEndpoint` is the Microsoft Graph endpoint for the Microsoft cloud for US government.
+- `graphEndpoint` 是适用于美国政府的 Microsoft 云的 Microsoft Graph 终结点。
 
-   To find Microsoft Graph endpoints for all the national clouds, see [Microsoft Graph endpoints in national clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   若要查找所有国家云 Microsoft Graph 终结点，请参阅[国家/地区云中的 Microsoft Graph 终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 ## <a name="pythontabpython"></a>[Python](#tab/python)
 
-To enable your MSAL Python application for sovereign clouds:
+为主权云启用 MSAL Python 应用程序：
 
-- Register your application in a specific portal, depending on the cloud. For more information on how to choose the portal refer [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints)
-- Use any of the [samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) from the repo with a few changes to the configuration, depending on the cloud, which is mentioned next.
-- Use a specific authority, depending on the cloud you registered the application in. For more information on authorities for different clouds, refer [Azure AD Authentication endpoints](authentication-national-cloud.md#azure-ad-authentication-endpoints).
+- 在特定门户中注册你的应用程序，具体取决于云。 有关如何选择门户的详细信息，请参阅[应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)
+- 使用存储库中的任何[示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample)，对配置进行一些更改，具体取决于云，接下来会提到。
+- 根据你在其中注册应用程序的云，使用特定权限。 有关不同云的颁发机构的详细信息，请参阅[Azure AD 身份验证终结点](authentication-national-cloud.md#azure-ad-authentication-endpoints)。
 
-    Here's an example authority:
+    下面是一个示例证书颁发机构：
 
     ```json
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
     
-- To call Microsoft graph requires a specific Graph endpoint URL that depends on which cloud you are using. To find Microsoft Graph endpoints for all the national clouds, refer to [Microsoft Graph and Graph Explorer service root endpoints](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
-    Here's an example of a graph endpoint, with scope:
+    下面是一个具有作用域的图形终结点示例：
     
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -165,21 +165,21 @@ To enable your MSAL Python application for sovereign clouds:
     
 ## <a name="javatabjava"></a>[Java](#tab/java)
 
-To enable your MSAL for Java application for sovereign clouds:
+若要为主权云启用 MSAL for Java 应用程序，请执行以下操作：
 
-- Register your application in a specific portal, depending on the cloud. For more information on how to choose the portal refer [App registration endpoints](authentication-national-cloud.md#app-registration-endpoints)
-- Use any of the [samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) from the repo with a few changes to the configuration, depending on the cloud, which are mentioned next.
-- Use a specific authority, depending on the cloud you registered the application in. For more information on authorities for different clouds, refer [Azure AD Authentication endpoints](authentication-national-cloud.md#azure-ad-authentication-endpoints).
+- 在特定门户中注册你的应用程序，具体取决于云。 有关如何选择门户的详细信息，请参阅[应用注册终结点](authentication-national-cloud.md#app-registration-endpoints)
+- 使用存储库中的任何[示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)，对配置进行一些更改，具体取决于云，具体如下所述。
+- 根据你在其中注册应用程序的云，使用特定权限。 有关不同云的颁发机构的详细信息，请参阅[Azure AD 身份验证终结点](authentication-national-cloud.md#azure-ad-authentication-endpoints)。
 
-Here's an example authority:
+下面是一个示例证书颁发机构：
 
 ```json
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- To call Microsoft graph requires a specific Graph endpoint URL that depends on which cloud you are using. To find Microsoft Graph endpoints for all the national clouds, refer to [Microsoft Graph and Graph Explorer service root endpoints](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
-Here's an example of a graph endpoint, with scope:
+下面是一个具有作用域的图形终结点示例：
 
 ```json
 "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -188,9 +188,9 @@ Here's an example of a graph endpoint, with scope:
 
 ## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
-MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+适用于 iOS 和 macOS 的 MSAL 可用于在国家/地区云中获取令牌，但在创建 `MSALPublicClientApplication`时需要进行额外配置。
 
-For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
+例如，如果希望应用程序成为国家/地区云（此处为美国政府）的多租户应用程序，可以编写：
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -211,9 +211,9 @@ MSALPublicClientApplication *application =
 
 ## <a name="swifttabswift"></a>[Swift](#tab/swift)
 
-MSAL for iOS and macOS can be used to acquire tokens in national clouds, but it requires additional configuration when creating `MSALPublicClientApplication`.
+适用于 iOS 和 macOS 的 MSAL 可用于在国家/地区云中获取令牌，但在创建 `MSALPublicClientApplication`时需要进行额外配置。
 
-For instance, if you want your application to be a multi-tenant application in a national cloud (here US Government), you could write:
+例如，如果希望应用程序成为国家/地区云（此处为美国政府）的多租户应用程序，可以编写：
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -228,7 +228,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 了解有关以下方面的详细信息：
 
-- [Authentication in National Clouds](authentication-national-cloud.md)
+- [国家/地区云中的身份验证](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)
 - [Azure 德国](https://docs.microsoft.com/azure/germany/)

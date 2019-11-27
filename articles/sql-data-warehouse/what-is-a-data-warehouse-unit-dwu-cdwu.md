@@ -1,6 +1,6 @@
 ---
-title: Data Warehouse Units (DWUs) in Azure Synapse Analytics (formerly SQL DW)
-description: Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
+title: Azure Synapse Analytics （以前称为 SQL DW）中的数据仓库单位（Dwu）
+description: 建议选择理想的数据仓库单位数（Dwu）来优化价格和性能，以及如何更改单位数量。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -18,21 +18,21 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74420496"
 ---
-# <a name="data-warehouse-units-dwus"></a>Data Warehouse Units (DWUs)
+# <a name="data-warehouse-units-dwus"></a>数据仓库单位（Dwu）
 
-Recommendations on choosing the ideal number of data warehouse units (DWUs) to optimize price and performance, and how to change the number of units.
+建议选择理想的数据仓库单位数（Dwu）来优化价格和性能，以及如何更改单位数量。
 
-## <a name="what-are-data-warehouse-units"></a>What are Data Warehouse Units
+## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-A [SQL pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) represents a collection of analytic resources that are being provisioned when using [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse). Analytic resources are defined as a combination of CPU, memory and IO. These three resources are bundled into units of compute scale called Data Warehouse Units (DWUs). DWU 表示抽象、规范化的计算资源和性能度量值。 A change to your service level alters the number of DWUs that are available to the system, which in turn adjusts the performance, and the cost, of your system.
+[Sql 池](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)表示在使用[sql Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)时要设置的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。 这三个资源被捆绑到称为数据仓库单位（Dwu）的计算规模单元中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
 
-For higher performance, you can increase the number of data warehouse units. For less performance, reduce data warehouse units. 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
+若要提高性能，可以增加数据仓库单位的数量。 若要降低性能，可以减少数据仓库单位数。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
 
-Performance for data warehouse units is based on these workload metrics:
+数据仓库单位的性能基于以下工作负荷指标：
 
-- How fast a standard data warehousing query can scan a large number of rows and then perform a complex aggregation. 这是一种 I/O 和 CPU 密集型操作。
-- How fast the data warehouse can ingest data from Azure Storage Blobs or Azure Data Lake. 这是一种网络和 CPU 密集型操作。
-- How fast the [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL command can copy a table. 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
+- 标准数据仓库查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
+- 数据仓库从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令复制表的速度。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
 
 增加 DWU：
 
@@ -42,9 +42,9 @@ Performance for data warehouse units is based on these workload metrics:
 
 ## <a name="service-level-objective"></a>服务级别目标
 
-服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 The service levels for Gen2 SQL pool are measured in data warehouse units (DWU), for example DW2000c.
+服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 Gen2 SQL 池的服务级别以数据仓库单位（DWU）来度量，例如 DW2000c。
 
-In T-SQL, the SERVICE_OBJECTIVE setting determines the service level for your SQL pool.
+在 T-sql 中，SERVICE_OBJECTIVE 设置确定 SQL 池的服务级别。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -58,7 +58,7 @@ CREATE DATABASE mySQLDW
 
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../sql-database/sql-database-what-is-a-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>How many data warehouse units do I need
+## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。
 
@@ -66,9 +66,9 @@ CREATE DATABASE mySQLDW
 
 1. 首先选择一个较小的 DWU。
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
-3. 确认峰值活动周期的其他要求。 Workloads that show significant peaks and troughs in activity may need to be scaled frequently.
+3. 确认峰值活动周期的其他要求。 显示活动中重要峰值和谷值的工作负荷可能需要频繁缩放。
 
-SQL Analytics is a scale-out system that can provision vast amounts of compute and query sizeable quantities of data. 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
+SQL Analytics 是一种扩展系统，它可以预配大量计算和查询就前往的数据量。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
 > [!NOTE]
 >
@@ -101,19 +101,19 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="azure-portal"></a>Azure 门户
 
-To change DWUs:
+更改 Dwu：
 
 1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”。
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-To change the DWUs, use the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet. The following example sets the service level objective to DW1000c for the database MySQLDW that is hosted on server MyServer.
+若要更改 Dwu，请使用[AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet。 下面的示例将服务器 MyServer 上承载的数据库 MySQLDW 的服务级别目标设置为 DW1000c。
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
@@ -123,12 +123,12 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 
 ### <a name="t-sql"></a>T-SQL
 
-With T-SQL you can view the current DWU settings, change the settings, and check the progress.
+通过 T-sql，你可以查看当前的 DWU 设置，更改设置，并检查进度。
 
 若要更改 DWU，请执行以下操作：
 
 1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
-2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL 语句。 The following example sets the service level objective to DW1000c for the database MySQLDW.
+2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL 语句。 下面的示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -138,7 +138,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 ### <a name="rest-apis"></a>REST API
 
-若要更改 DWU，请使用[创建或更新数据库 REST API](/rest/api/sql/databases/createorupdate)。 The following example sets the service level objective to DW1000c for the database MySQLDW, which is hosted on server MyServer. 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要更改 DWU，请使用[创建或更新数据库 REST API](/rest/api/sql/databases/createorupdate)。 下面的示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000c。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -183,14 +183,14 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
     ;
     ```
     
-This DMV returns information about various management operations on your SQL pool such as the operation and the state of the operation, which is either IN_PROGRESS or COMPLETED.
+此 DMV 返回有关 SQL 池上各种管理操作的信息，如操作和操作的状态（IN_PROGRESS 或已完成）。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流
 
-When you start a scale operation, the system first kills all open sessions, rolling back any open transactions to ensure a consistent state. 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
+启动缩放操作时，系统首先终止所有打开的会话，回退所有打开的事务以确保状态一致。 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
 
-- For a scale-up operation, the system detaches all compute nodes, provisions the additional compute nodes, and then reattaches to the storage layer.
-- For a scale-down operation, the system detaches all compute nodes and then reattaches only the needed nodes to the storage layer.
+- 对于增加操作，系统会分离所有计算节点，预配额外计算节点，然后重新附加到存储层。
+- 对于减少操作，系统会分离所有计算节点，然后仅将所需节点重新附加到存储层。
 
 ## <a name="next-steps"></a>后续步骤
 

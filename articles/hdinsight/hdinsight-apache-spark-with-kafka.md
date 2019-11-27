@@ -17,7 +17,7 @@ ms.locfileid: "74327397"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
-了解如何使用 [Apache Spark](https://spark.apache.org/) 通过 [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) 将数据流式传入或流式传出 [Apache Kafka](https://kafka.apache.org/) on HDInsight。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
+了解如何使用 [Apache Spark](https://spark.apache.org/) 通过 [DStreams](https://kafka.apache.org/) 将数据流式传入或流式传出 [Apache Kafka](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) on HDInsight。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
@@ -29,7 +29,7 @@ ms.locfileid: "74327397"
 
 ## <a name="create-the-clusters"></a>创建群集
 
-Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the public internet. 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -51,17 +51,17 @@ Apache Kafka on HDInsight doesn't provide access to the Kafka brokers over the p
 
 1. 使用以下信息填充“自定义部署”部分中的条目：
 
-    |properties |Value |
+    |属性 |值 |
     |---|---|
-    |Resource group|创建一个组或选择有个现有的组。|
-    |Location|选择在地理上邻近的位置。|
-    |Base Cluster Name|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdistreaming** 将创建名为 __spark-hdistreaming__ 的 Spark 群集和名为 **kafka-hdistreaming** 的 Kafka 群集。|
+    |资源组|创建一个组或选择有个现有的组。|
+    |位置|选择在地理上邻近的位置。|
+    |基本群集名称|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdistreaming** 将创建名为 __spark-hdistreaming__ 的 Spark 群集和名为 **kafka-hdistreaming** 的 Kafka 群集。|
     |群集登录用户名|Spark 和 Kafka 群集的管理员用户名。|
     |群集登录密码|Spark 和 Kafka 群集的管理员用户密码。|
     |SSH 用户名|创建 Spark 和 Kafka 群集的 SSH 用户。|
     |SSH 密码|Spark 和 Kafka 群集的 SSH 用户的密码。|
 
-    ![HDInsight custom deployment parameters](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+    ![HDInsight 自定义部署参数](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
 1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 

@@ -1,6 +1,6 @@
 ---
-title: Learn to audit the contents of virtual machines
-description: Learn how Azure Policy uses the Guest Configuration agent to audit settings inside virtual machines.
+title: 了解如何审核虚拟机的内容
+description: 了解 Azure 策略如何使用来宾配置代理审核虚拟机内的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: f68bbc64ee8f0da02d213895a70e4c533b9a5f63
@@ -12,9 +12,9 @@ ms.locfileid: "74463790"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
-Beyond auditing and [remediating](../how-to/remediate-resources.md) Azure resources, Azure Policy can audit settings inside a machine. 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
+除了审核和[修正](../how-to/remediate-resources.md) Azure 资源以外，Azure Policy 还可以审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
 
-- The configuration of the operating system
+- 操作系统的配置
 - 应用程序配置或状态
 - 环境设置
 
@@ -22,15 +22,15 @@ Beyond auditing and [remediating](../how-to/remediate-resources.md) Azure resour
 
 ## <a name="extension-and-client"></a>扩展和客户端
 
-To audit settings inside a machine, a [virtual machine extension](../../../virtual-machines/extensions/overview.md) is enabled. 该扩展下载适用的策略分配和相应的配置定义。
+为了审核计算机内部的设置，将会启用一个[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
 
-### <a name="limits-set-on-the-extension"></a>Limits set on the extension
+### <a name="limits-set-on-the-extension"></a>在扩展中设置的限制
 
-To limit the extension from impacting applications running inside the machine, the Guest Configuration isn't allowed to exceed more than 5% of CPU utilization. This limitation exists for both built-in and custom definitions.
+为了限制该扩展对计算机内部运行的应用程序造成影响，将不允许 Guest Configuration 的 CPU 利用率超过 5%。 内置定义和自定义定义都存在此限制。
 
 ## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
 
-必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 The resource provider is registered automatically if assignment of a Guest Configuration policy is done through the portal.
+必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果 Guest Configuration 策略的分配是通过门户完成的，则会自动注册资源提供程序。
 
 ### <a name="registration---portal"></a>注册 - 门户
 
@@ -55,117 +55,117 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 ## <a name="validation-tools"></a>验证工具
 
-Inside the machine, the Guest Configuration client uses local tools to run the audit.
+在计算机中，Guest Configuration 客户端使用本地工具运行审核。
 
 下表显示了每个受支持操作系统上本地工具的列表：
 
 |操作系统|验证工具|说明|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
+|{1}Windows{2}|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby 和 Python 由来宾配置扩展安装。 |
 
 ### <a name="validation-frequency"></a>验证频率
 
-来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 This update causes Azure Policy to evaluate the Azure Resource Manager properties. An on-demand Azure Policy evaluation retrieves the latest value from the Guest Configuration resource provider. However, it doesn't trigger a new audit of the configuration within the machine.
+来宾配置客户端每 5 分钟检查一次新内容。 在收到来宾分配后，将按 15 分钟的时间间隔检查设置。 在审核完成后，结果会立即发送到来宾配置资源提供程序。 当策略[评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)执行时，会将计算机状态写入到来宾配置资源提供程序。 此项更新会导致 Azure Policy 评估 Azure 资源管理器属性。 按需 Azure Policy 评估从 Guest Configuration 资源提供程序检索最新值。 但是，它不会触发对计算机中的配置执行新的审核。
 
 ## <a name="supported-client-types"></a>支持的客户端类型
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|名称|版本|
+|发布服务器|名称|版本|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04、16.04、18.04|
+|规范|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
-|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Microsoft|Windows Server|2012 Datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
 |Microsoft|Windows 客户端|Windows 10|
 |OpenLogic|CentOS|7.3、7.4、7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4、7.5|
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Guest Configuration can audit nodes running a supported OS. If you would like to audit virtual machines that use a custom image, you need to duplicate the **DeployIfNotExists** definition and modify the **If** section to include your image properties.
+> Guest Configuration 可以审核运行受支持 OS 的节点。 若要审核使用自定义映像的虚拟机，需要复制 **DeployIfNotExists** 定义，并修改 **If** 节以包含你的映像属性。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
-Windows Server Nano Server isn't supported in any version.
+任何版本都不支持 Windows Server Nano Server。
 
-## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration Extension network requirements
+## <a name="guest-configuration-extension-network-requirements"></a>Guest Configuration 扩展网络要求
 
-To communicate with the Guest Configuration resource provider in Azure, machines require outbound access to Azure datacenters on port **443**. If you're using a private virtual network in Azure that doesn't allow outbound traffic, configure exceptions with [Network Security Group](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) rules. A service tag doesn't currently exist for Azure Policy Guest Configuration.
+若要与 Azure 中的 Guest Configuration 资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心拥有出站访问权限。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 Azure Policy Guest Configuration 目前不存在服务标记。
 
-For IP address lists, you can download [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653). 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 You only need to allow outbound access to the IPs in the regions where your VMs are deployed.
+如需 IP 地址列表，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 VM 的区域中的 IP 进行出站访问。
 
 > [!NOTE]
 > Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-Each audit run by Guest Configuration requires two policy definitions, a **DeployIfNotExists** definition and an **AuditIfNotExists** definition. The **DeployIfNotExists** definition is used to prepare the machine with the Guest Configuration agent and other components to support the [validation tools](#validation-tools).
+Guest Configuration 运行的每个审核需要两个策略定义：**DeployIfNotExists** 定义和 **AuditIfNotExists** 定义。 **DeployIfNotExists** 定义用于在计算机上准备 Guest Configuration 代理，以及其他用于支持[验证工具](#validation-tools)的组件。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
-- Validate the machine has been assigned a configuration to evaluate. If no assignment is currently present, get the assignment and prepare the machine by:
-  - Authenticating to the machine using a [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md)
+- 验证是否为计算机分配了要评估的配置。 如果当前不存在任何分配，请通过以下方式获取分配并准备计算机：
+  - 使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)对计算机进行身份验证
   - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
-If the **DeployIfNotExists** assignment is Non-compliant, a [remediation task](../how-to/remediate-resources.md#create-a-remediation-task) can be used.
+如果 **DeployIfNotExists**  分配不合规，可以使用[修正任务](../how-to/remediate-resources.md#create-a-remediation-task)。
 
-Once the **DeployIfNotExists** assignment is Compliant, the **AuditIfNotExists** policy assignment uses the local validation tools to determine if the configuration assignment is Compliant or Non-compliant. 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
+一旦 **DeployIfNotExists** 分配合规，**AuditIfNotExists** 策略分配就会使用本地验证工具来确定配置分配是合规还是不合规。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
 Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“符合性”节点中报告符合性。 有关详细信息，请参阅[获取符合性数据](../how-to/get-compliance-data.md)。
 
 > [!NOTE]
-> The **DeployIfNotExists** policy is required for the **AuditIfNotExists** policy to return results. Without the **DeployIfNotExists**, the **AuditIfNotExists** policy shows "0 of 0" resources as status.
+> 需有 **DeployIfNotExists** 策略，才能让 **AuditIfNotExists**  策略返回结果。 如果没有 **DeployIfNotExists**，**AuditIfNotExists** 策略会将状态显示为“第 0 个，共 0 个”资源。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 The built-in initiative named _\[Preview\]: Audit Password security settings inside Linux and Windows machines_ contains 18 policies. 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 The [policy definition](definition-structure.md#policy-rule) logic validates that only the target operating system is evaluated.
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 内置计划 _\[预览版\]： Linux 和 Windows 计算机内部的审核密码安全设置_包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑将验证是否只评估目标操作系统。
 
-#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditing operating system settings following industry baselines
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>遵循行业基线审核操作系统设置
 
-One of the initiatives available in Azure Policy provides the ability to audit operating system settings inside virtual machines following a "baseline" from Microsoft. The definition, _\[Preview\]: Audit Windows VMs that do not match Azure security baseline settings_ includes a complete set of audit rules based on settings from Active Directory Group Policy.
+Azure 策略中提供的一项计划提供了从 Microsoft 的 "基准" 下审核虚拟机中的操作系统设置的功能。 "定义" _\[预览\]：不匹配 Azure 安全基线设置的审核 Windows vm_包含一组完整的基于 Active Directory 组策略中的设置的审核规则。
 
-Most of the settings are available as parameters. This functionality allows you to customize what is audited to align the policy with your organizational requirements or to map the policy to third party information such as industry regulatory standards.
+大多数设置都可用作参数。 此功能使你可以自定义要审核的内容以使策略与组织要求相匹配，或将策略映射到第三方信息，如行业法规标准。
 
-Some parameters support an integer value range. For example, the Maximum Password Age parameter can be set using a range operator to give flexibility to machine owners. You could audit that the effective Group Policy setting requiring users to change their passwords should be no more than 70 days, but shouldn't be less than one day. As described in the info-bubble for the parameter, to make this business policy the effective audit value, set the value to "1,70".
+某些参数支持整数值范围。 例如，可以使用范围运算符设置最长密码期限参数，以便为计算机所有者提供灵活性。 可以审核，要求用户更改其密码的有效组策略设置不应超过70天，但不应小于一天。 如参数信息-冒泡中所述，若要使此业务策略成为有效审核值，请将值设置为 "1，70"。
 
-If you assign the policy using an Azure Resource Manager deployment template, you can use a parameters file to manage these settings from source control. Using a tool such as Git to manage changes to Audit policies with comments at each check-in documents evidence as to why an assignment should be an exception to the expected value.
+如果使用 Azure 资源管理器部署模板分配策略，则可以使用参数文件来管理源代码管理中的这些设置。 使用 Git 之类的工具管理每个签入文档中带有注释的审核策略的更改，这就是为什么赋值应该是预期值的例外。
 
-#### <a name="applying-configurations-using-guest-configuration"></a>Applying configurations using Guest Configuration
+#### <a name="applying-configurations-using-guest-configuration"></a>使用来宾配置应用配置
 
-The latest feature of Azure Policy configures settings inside machines. The definition _Configure the time zone on Windows machines_ makes changes to the machine by configuring the time zone.
+Azure 策略的最新功能配置计算机内部的设置。 定义在_Windows 计算机上配置_时区会通过配置时区来更改计算机。
 
-When assigning definitions that begin with _Configure_, you must also assign the definition _Deploy prerequisites to enable Guest Configuration Policy on Windows VMs_. You can combine these definitions in an initiative if you choose.
+分配以_Configure_开头的定义时，还必须分配定义_部署必备组件，才能在 Windows Vm 上启用来宾配置策略_。 如果选择，可以将这些定义组合到计划中。
 
-#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Assigning policies to machines outside of Azure
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>将策略分配给 Azure 之外的计算机
 
-The Audit policies available for Guest Configuration include the **Microsoft.HybridCompute/machines** resource type. Any machines onboarded to [Azure Arc for Servers](../../../azure-arc/servers/overview.md) that are in the scope of the policy assignment are automatically included.
+适用于来宾配置的审核策略包括**HybridCompute/计算机**资源类型。 将自动包括在策略分配范围内载入到[Azure Arc 的](../../../azure-arc/servers/overview.md)任何计算机。
 
-### <a name="multiple-assignments"></a>Multiple assignments
+### <a name="multiple-assignments"></a>多个分配
 
-Guest Configuration policies currently only support assigning the same Guest Assignment once per machine, even if the Policy assignment uses different parameters.
+Guest Configuration 策略目前仅支持为每台计算机分配相同的来宾分配，即使策略分配使用不同的参数，也是如此。
 
-## <a name="built-in-resource-modules"></a>Built-in resource modules
+## <a name="built-in-resource-modules"></a>内置资源模块
 
-When installing the Guest Configuration extension, the 'GuestConfiguration' PowerShell module is included with the latest version of DSC resource modules. This module can be downloaded from the PowerShell Gallery by using the 'Manual Download' link from the module page [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). The '.nupkg' file format can be renamed to '.zip' to uncompress and review.
+安装 Guest Configuration 扩展时，“GuestConfiguration”PowerShell 模块将包含在最新版本的 DSC 资源模块中。 可以使用模块页[GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)中的 "手动下载" 链接从 PowerShell 库下载此模块。 可将“.nupkg”文件格式重命名为“.zip”，以便于解压缩和查看。
 
-## <a name="client-log-files"></a>Client log files
+## <a name="client-log-files"></a>客户端日志文件
 
-The Guest Configuration extension writes log files to the following locations:
+Guest Configuration 扩展将日志文件写入以下位置：
 
 Windows：`C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Where `<version>` refers to the current version number.
+其中 `<version>` 表示当前版本号。
 
-### <a name="collecting-logs-remotely"></a>Collecting logs remotely
+### <a name="collecting-logs-remotely"></a>远程收集日志
 
-The first step in troubleshooting Guest Configuration configurations or modules should be to use the `Test-GuestConfigurationPackage` cmdlet following the steps in [Test a Guest Configuration package](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).
-If that isn't successful, collecting client logs can help diagnose issues.
+排查 Guest Configuration 配置或模块问题的第一步应该是遵循`Test-GuestConfigurationPackage`测试 Guest Configuration 包[中的步骤使用 ](../how-to/guest-configuration-create.md#test-a-guest-configuration-package) cmdlet。
+如果这种做法无效，收集客户端日志可能会有助于诊断问题。
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>{1}Windows{2}
 
-To use the Azure VM Run Command capability to capture information from log files in Windows machines, the following example PowerShell script can be helpful. For more information, see [Run PowerShell scripts in your Windows VM with Run Command](../../../virtual-machines/windows/run-command.md).
+若要使用 Azure VM 的“运行命令”功能从 Windows 计算机中的日志文件捕获信息，可以参考以下示例 PowerShell 脚本。 有关详细信息，请参阅[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../../virtual-machines/windows/run-command.md)。
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -176,7 +176,7 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 
 #### <a name="linux"></a>Linux
 
-To use the Azure VM Run Command capability to capture information from log files in Linux machines, the following example Bash script can be helpful. For more information, see [Run shell scripts in your Linux VM with Run Command](../../../virtual-machines/linux/run-command.md)
+若要使用 Azure VM 的“运行命令”功能从 Linux 计算机中的日志文件捕获信息，可以参考以下示例 Bash 脚本。 有关详细信息，请参阅[使用“运行命令”在 Linux VM 中运行 shell 脚本](../../../virtual-machines/linux/run-command.md)
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -185,19 +185,19 @@ latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfigurati
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
 ```
 
-## <a name="guest-configuration-samples"></a>Guest Configuration samples
+## <a name="guest-configuration-samples"></a>Guest Configuration 示例
 
-Samples for Policy Guest Configuration are available in the following locations:
+以下位置提供了 Policy Guest Configuration 的示例：
 
-- [Samples index - Guest Configuration](../samples/index.md#guest-configuration)
-- [Azure Policy samples GitHub repo](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [示例索引 - Guest Configuration](../samples/index.md#guest-configuration)
+- [Azure 策略示例 GitHub 存储库](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>后续步骤
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看 [Azure Policy 定义结构](definition-structure.md)。
 - 查看[了解策略效果](effects.md)。
-- Understand how to [programmatically create policies](../how-to/programmatically-create.md).
-- Learn how to [get compliance data](../how-to/get-compliance-data.md).
-- Learn how to [remediate non-compliant resources](../how-to/remediate-resources.md).
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

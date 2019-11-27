@@ -22,9 +22,9 @@ ms.locfileid: "74326763"
 通过文本翻译 API 可以标记内容，以便不对其进行翻译。 例如，你可能想要标记本地化后没有意义的代码、品牌名称或单词/短语。
 
 ## <a name="methods-for-preventing-translation"></a>阻止翻译的方法
-1. 转义为 Twitter 标记 @somethingtopassthrough 或 #somethingtopassthrough。 翻译后取消转义。 This is the regular expression for valid twitter tags: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. A tag should start with a "@" sign, followed by a character and then followed by one or many characters, digits or underscore. It is recommended to keep tags short and the opening tag must be preceded by a space.
+1. 转义为 Twitter 标记 @somethingtopassthrough 或 #somethingtopassthrough。 翻译后取消转义。 这是有效 twitter 标记的正则表达式： `\B@[A-Za-z]+[A-Za-z0-9_]+)`。 标记应以 "@" 符号开头，后跟一个字符，然后后跟一个或多个字符、数字或下划线。 建议保留标记简短，并且开始标记前面必须有一个空格。
 
-2. 使用 `notranslate` 标记内容。 It's by design that this works only when the input textType is set as HTML
+2. 使用 `notranslate` 标记内容。 它的设计是，这仅在将输入 textType 设置为 HTML 时才起作用。
 
    示例：
 
@@ -42,7 +42,7 @@ ms.locfileid: "74326763"
 
 4. 不要将字符串传递到文本翻译 API 进行翻译。
 
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. 自定义转换器：[在自定义转换器中使用字典](custom-translator/what-is-dictionary.md)，以规定短语的翻译的概率为100%。
 
 
 ## <a name="next-steps"></a>后续步骤

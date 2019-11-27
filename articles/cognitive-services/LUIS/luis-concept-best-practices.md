@@ -36,7 +36,7 @@ ms.locfileid: "74280930"
 ## <a name="do-and-dont"></a>注意事项
 下面的列表包含 LUIS 应用的最佳做法：
 
-|要|不要|
+|操作|不要|
 |--|--|
 |[应定义不同的意向](#do-define-distinct-intents)<br>[将描述符添加到意向](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单的实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|

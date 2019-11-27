@@ -1,6 +1,6 @@
 ---
-title: Use Python for files & ACLs in Azure Data Lake Storage Gen2 (preview)
-description: Use Python manage directories and file and directory access control lists (ACL) in storage accounts that has hierarchical namespace (HNS) enabled.
+title: 将 Python 用于 Azure Data Lake Storage Gen2 中的 & Acl 的文件（预览）
+description: 使用启用了分层命名空间（HNS）的存储帐户中的 Python 管理目录和文件和目录访问控制列表（ACL）。
 author: normesta
 ms.service: storage
 ms.date: 11/24/2019
@@ -10,46 +10,46 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: a4aebd27e5f71680610ff8cc9ba211dedfe41219
 ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485102"
 ---
-# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Use Python for files & ACLs in Azure Data Lake Storage Gen2 (preview)
+# <a name="use-python-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>将 Python 用于 Azure Data Lake Storage Gen2 中的 & Acl 的文件（预览）
 
-This article shows you how to use Python to create and manage directories, files, and permissions in storage accounts that has hierarchical namespace (HNS) enabled. 
+本文介绍如何使用 Python 在已启用分层命名空间（HNS）的存储帐户中创建和管理目录、文件和权限。 
 
 > [!IMPORTANT]
-> The Azure Data Lake Storage client library for Python is currently in public preview.
+> 用于 Python 的 Azure Data Lake Storage 客户端库当前为公共预览版。
 
-[Package (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/) | [Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+[包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 到 Gen2 映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-> * A storage account that has hierarchical namespace (HNS) enabled. Follow [these](data-lake-storage-quickstart-create-account.md) instructions to create one.
+> * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已启用分层命名空间（HNS）的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 
-Install the Azure Data Lake Storage client library for Python by using [pip](https://pypi.org/project/pip/).
+使用[pip](https://pypi.org/project/pip/)安装适用于 Python 的 Azure Data Lake Storage 客户端库。
 
 ```
 pip install azure-storage-file-datalake --pre
 ```
 
-Add these import statements to the top of your code file.
+将这些 import 语句添加到代码文件的顶部。
 
 ```python
 import os, uuid, sys
 from azure.storage.filedatalake import DataLakeServiceClient
 ```
 
-## <a name="connect-to-the-account"></a>Connect to the account
+## <a name="connect-to-the-account"></a>连接到帐户
 
-To use the snippets in this article, you'll need to create a **DataLakeServiceClient** instance that represents the storage account. The easiest way to get one is to use an account key. 
+若要使用本文中的代码段，需要创建表示存储帐户的**DataLakeServiceClient**实例。 若要获取一个帐户，最简单的方法是使用帐户密钥。 
 
-This example uses an account key to create a **DataLakeServiceClient** instance that represents the storage account. 
+此示例使用帐户密钥创建表示存储帐户的**DataLakeServiceClient**实例。 
 
 ```python
 try:  
@@ -64,13 +64,13 @@ except Exception as e:
  
 - 将 `storage_account_name` 占位符值替换为存储帐户的名称。
 
-- Replace the `storage-account-key` placeholder value with your storage account access key.
+- 将 `storage-account-key` 占位符值替换为你的存储帐户访问密钥。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-A file system acts as a container for your files. You can create one by calling the **FileSystemDataLakeServiceClient.create_file_system** method.
+文件系统充当文件的容器。 可以通过调用**Create_file_system FileSystemDataLakeServiceClient**方法来创建一个。
 
-This example creates a file system named `my-file-system`.
+此示例将创建一个名为 `my-file-system`的文件系统。
 
 ```python
 def create_file_system():
@@ -86,9 +86,9 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>创建目录
 
-Create a directory reference by calling the **FileSystemClient.create_directory** method.
+通过调用**Create_directory FileSystemClient**方法来创建目录引用。
 
-This example adds a directory named `my-directory` to a file system. 
+此示例将名为 `my-directory` 的目录添加到文件系统。 
 
 ```python
 def create_directory():
@@ -99,11 +99,11 @@ def create_directory():
      print(e) 
 ```
 
-## <a name="rename-or-move-a-directory"></a>Rename or move a directory
+## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
-Rename or move a directory by calling the **DataLakeDirectoryClient.rename_directory** method. Pass the path of the desired directory a parameter. 
+通过调用**Rename_directory DataLakeDirectoryClient**方法重命名或移动目录。 传递所需目录的路径。 
 
-This example renames a sub-directory to the name `my-subdirectory-renamed`.
+此示例将子目录重命名为 `my-subdirectory-renamed`的名称。
 
 ```python
 def rename_directory():
@@ -121,9 +121,9 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>删除目录
 
-Delete a directory by calling the **DataLakeDirectoryClient.delete_directory** method.
+通过调用**Delete_directory DataLakeDirectoryClient**方法来删除目录。
 
-This example deletes a directory named `my-directory`.  
+此示例删除名为 `my-directory`的目录。  
 
 ```python
 def delete_directory():
@@ -136,11 +136,11 @@ def delete_directory():
      print(e) 
 ```
 
-## <a name="manage-directory-permissions"></a>Manage directory permissions
+## <a name="manage-directory-permissions"></a>管理目录权限
 
-Get the access control list (ACL) of a directory by calling the **DataLakeDirectoryClient.get_access_control** method and set the ACL by calling the **DataLakeDirectoryClient.set_access_control** method.
+通过调用**Get_access_control DataLakeDirectoryClient**方法来获取目录的访问控制列表（ACL），并通过调用**set_access_control DataLakeDirectoryClient**方法来设置 ACL。
 
-This example gets and sets the ACL of a directory named `my-directory`. The string `rwxr-xrw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+此示例获取并设置名为 `my-directory`的目录的 ACL。 字符串 `rwxr-xrw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 
 ```python
 def manage_directory_permissions():
@@ -165,11 +165,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Upload a file to a directory 
+## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录 
 
-First, create a file reference in the target directory by creating an instance of the **DataLakeFileClient** class. Upload a file by calling the **DataLakeFileClient.append_data** method. Make sure to complete the upload by calling the **DataLakeFileClient.flush_data** method.
+首先，通过创建**DataLakeFileClient**类的实例在目标目录中创建文件引用。 通过调用**Append_data DataLakeFileClient**方法上传文件。 请确保通过调用**Flush_data DataLakeFileClient**方法完成上传。
 
-This example uploads a text file to a directory named `my-directory`.   
+此示例将文本文件上传到名为 `my-directory`的目录。   
 
 ```python
 def upload_file_to_directory():
@@ -192,11 +192,11 @@ def upload_file_to_directory():
       print(e) 
 ```
 
-## <a name="manage-file-permissions"></a>Manage file permissions
+## <a name="manage-file-permissions"></a>管理文件权限
 
-Get the access control list (ACL) of a file by calling the **DataLakeFileClient.get_access_control** method and set the ACL by calling the **DataLakeFileClient.set_access_control** method.
+通过调用**Get_access_control DataLakeFileClient**方法来获取文件的访问控制列表（ACL），并通过调用**set_access_control DataLakeFileClient**方法来设置 ACL。
 
-This example gets and sets the ACL of a file named `my-file.txt`. The string `rwxr-xrw-` gives the owning user read, write, and execute permissions, gives the owning group only read and execute permissions, and gives all others read and write permission.
+此示例获取并设置名为 `my-file.txt`的文件的 ACL。 字符串 `rwxr-xrw-` 提供拥有的用户的 "读取"、"写入" 和 "执行" 权限，为拥有的组授予 "读取" 和 "执行" 权限，并为所有其他用户提供读取和写入权限。
 
 ```python
 def manage_file_permissions():
@@ -223,9 +223,9 @@ def manage_file_permissions():
      print(e) 
 ```
 
-## <a name="download-from-a-directory"></a>Download from a directory 
+## <a name="download-from-a-directory"></a>从目录下载 
 
-Open a local file for writing. Then, create a **DataLakeFileClient** instance that represents the file that you want to download. Call the **DataLakeFileClient.read_file** to read bytes from the file and then write those bytes to the local file. 
+打开用于写入的本地文件。 然后，创建表示要下载的文件的**DataLakeFileClient**实例。 调用**Read_file DataLakeFileClient**从文件中读取字节，然后将这些字节写入本地文件。 
 
 ```python
 def download_file_from_directory():
@@ -249,9 +249,9 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>列出目录内容
 
-List directory contents by calling the **FileSystemClient.get_paths** method, and then enumerating through the results.
+通过调用**Get_paths FileSystemClient**方法并枚举结果来列出目录内容。
 
-This example, prints the path of each subdirectory and file that is located in a directory named `my-directory`.
+此示例将打印位于名为 `my-directory`的目录中的每个子目录和文件的路径。
 
 ```python
 def list_directory_contents():
@@ -268,11 +268,11 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-* [API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
-* [Package (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/)
+* [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
+* [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)
 * [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
-* [Known capability gaps](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+* [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [已知功能缺口](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+* [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)

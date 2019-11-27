@@ -1,6 +1,6 @@
 ---
-title: 'Enable MFA for VPN users: Azure AD authentication'
-description: Enable multi-factor authentication for VPN users
+title: 为 VPN 用户启用 MFA： Azure AD 身份验证
+description: 为 VPN 用户启用多重身份验证
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -14,46 +14,46 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74382208"
 ---
-# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Enable Azure Multi-Factor Authentication (MFA) for VPN users
+# <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>为 VPN 用户启用 Azure 多重身份验证（MFA）
 
-If you want users to be prompted for a second factor of authentication before granting access, you can configure Azure Multi-Factor Authentication (MFA) for your Azure AD tenant. The steps in this article help you enable a requirement for two-step verification.
+如果希望在授予访问权限之前提示用户提供第二个身份验证因素，可以为 Azure AD 租户配置 Azure 多重身份验证（MFA）。 本文中的步骤可帮助你为双重验证启用要求。
 
-## <a name="prereq"></a>Prerequisite
+## <a name="prereq"></a>先决条件
 
-The prerequisite for this configuration is a configured Azure AD tenant using the steps in [Configure a tenant](openvpn-azure-ad-tenant.md).
+此配置的先决条件是使用[配置租户](openvpn-azure-ad-tenant.md)中的步骤配置 Azure AD 租户。
 
-## <a name="mfa"></a>Open the MFA page
+## <a name="mfa"></a>打开 MFA 页
 
 1. 登录到 Azure 门户。
-2. Navigate to **Azure Active Directory -> All users**.
-3. Select **Multi-Factor Authentication** to open the multi-factor authentication page.
+2. 导航到**Azure Active Directory-> 所有用户**"。
+3. 选择 "**多重身份验证**" 打开 "多重身份验证" 页。
 
    ![登录](./media/openvpn-azure-ad-mfa/mfa1.jpg)
 
-## <a name="users"></a> Select users
+## <a name="users"></a>选择用户
 
-1. On the **multi-factor authentication** page, select the user(s) for which you want to enable MFA.
+1. 在 "**多重身份验证**" 页上，选择要为其启用 MFA 的用户。
 2. 选择“启用”。
 
-   ![Select](./media/openvpn-azure-ad-mfa/mfa2.jpg)
+   ![选择](./media/openvpn-azure-ad-mfa/mfa2.jpg)
 
-## <a name="enableauth"></a>Enable authentication
+## <a name="enableauth"></a>启用身份验证
 
-1. Navigate to **Azure Active Directory  -> Enterprise applications -> All applications**.
-2. On the **Enterprise applications - All applications** page, select **Azure VPN**.
+1. 导航到**Azure Active Directory > 企业应用程序-> 所有应用程序**。
+2. 在 "**企业应用程序-所有应用程序**" 页上，选择 " **Azure VPN**"。
 
    ![Directory ID](./media/openvpn-azure-ad-mfa/user1.jpg)
 
-## <a name="enablesign"></a> Configure sign-in settings
+## <a name="enablesign"></a>配置登录设置
 
-On the **Azure VPN - Properties** page, configure sign-in settings.
+在 " **AZURE VPN-属性**" 页上，配置登录设置。
 
-1. Set **Enabled for users to sign-in?** to **Yes**. This allows all users in the AD tenant to connect to the VPN successfully.
-2. Set **User assignment required?** to **Yes** if you want to limit sign-in to only users that have permissions to the Azure VPN.
-3. 保存所做更改。
+1. **是否将 "已启用以便用户登录？** " 设置为 **"是"** 。 这允许 AD 租户中的所有用户成功连接到 VPN。
+2. 是否要将 "**用户分配"** 设置为 **"是"** ，以将登录限制为仅对 Azure VPN 具有权限的用户。
+3. 保存更改。
 
    ![权限](./media/openvpn-azure-ad-mfa/user2.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 
-To connect to your virtual network, you must create and configure a VPN client profile. See [Configure a VPN client for P2S VPN connections](openvpn-azure-ad-client.md).
+若要连接到虚拟网络，必须创建并配置 VPN 客户端配置文件。 请参阅[配置 vpn 客户端以进行 P2S vpn 连接](openvpn-azure-ad-client.md)。

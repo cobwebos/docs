@@ -1,5 +1,5 @@
 ---
-title: Execute commands in running container instance
+title: 执行正在运行的容器实例中的命令
 description: 了解如何在 Azure 容器实例上当前正在运行的容器中执行命令
 ms.topic: article
 ms.date: 03/30/2018
@@ -16,7 +16,7 @@ Azure 容器实例支持在运行的容器中执行命令。 在应用程序开�
 
 ## <a name="run-a-command-with-azure-cli"></a>使用 Azure CLI 运行命令
 
-Execute a command in a running container with [az container exec][az-container-exec] in the [Azure CLI][azure-cli]:
+在[Azure CLI][azure-cli]中使用[az container exec][az-container-exec]在正在运行的容器中执行命令：
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
@@ -80,7 +80,7 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>限制
 
-Azure Container Instances currently supports launching a single process with [az container exec][az-container-exec], and you cannot pass command arguments. 例如，不能像 `sh -c "echo FOO && echo BAR"` 一样串接命令，或执行 `echo FOO`。
+Azure 容器实例目前支持使用[az Container exec][az-container-exec]启动单个进程，并且不能传递命令参数。 例如，不能像 `sh -c "echo FOO && echo BAR"` 一样串接命令，或执行 `echo FOO`。
 
 ## <a name="next-steps"></a>后续步骤
 

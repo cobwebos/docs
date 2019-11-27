@@ -1,6 +1,6 @@
 ---
-title: Access controls in Azure Active Directory Conditional Access
-description: Learn how access controls in Azure Active Directory Conditional Access work.
+title: Azure Active Directory 条件访问中的访问控制
+description: 了解 Azure Active Directory 条件访问中的访问控制的工作原理。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,18 +18,18 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380812"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>What are access controls in Azure Active Directory Conditional Access?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
-With [Azure Active Directory (Azure AD) Conditional Access](../active-directory-conditional-access-azure-portal.md), you can control how authorized users access your cloud apps. In a Conditional Access policy, you define the response ("do this") to the reason for triggering your policy ("when this happens").
+使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。
 
 ![控制](./media/controls/10.png)
 
-In the context of Conditional Access,
+在条件访问的上下文中，
 
 - “出现这种情况时”称为条件
 - “则执行此操作”称为访问控制
 
-The combination of a condition statement with your controls represents a Conditional Access policy.
+条件语句与控制的组合表示一种条件访问策略。
 
 ![控制](./media/controls/61.png)
 
@@ -40,7 +40,7 @@ The combination of a condition statement with your controls represents a Conditi
 - **授权控制** - 旨在限制访问
 - **会话控制** - 旨在限制可以在会话中执行的操作
 
-This topic explains the various controls that are available in Azure AD Conditional Access. 
+本主题介绍了 Azure AD 条件访问中的各种控制。 
 
 ## <a name="grant-controls"></a>授权控制
 
@@ -62,7 +62,7 @@ This topic explains the various controls that are available in Azure AD Conditio
 
 ### <a name="compliant-device"></a>合规的设备
 
-You can configure Conditional Access policies that are device-based. The objective of a device-based Conditional Access policy is to only grant access to the selected cloud apps from [managed devices](require-managed-devices.md). 要求将设备标记为合规是限制对受管理设备的访问可以选择的一个选项。 可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。 
+可以配置基于设备的条件访问策略。 基于设备的条件访问策略旨在仅从[受管理设备](require-managed-devices.md)授予对所选云应用的访问权限。 要求将设备标记为合规是限制对受管理设备的访问可以选择的一个选项。 可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 不支持除 Windows 10 以外的设备 OS 类型第三方 MDM 系统。 
 
 你的设备需要先注册到 Azure AD，然后才能将其标记为合规。 若要注册设备，你有三种选择： 
 
@@ -70,33 +70,33 @@ You can configure Conditional Access policies that are device-based. The objecti
 - Azure AD 加入设备  
 - 混合 Azure AD 加入设备
 
-These three options are discussed in the article [What is a device identity?](../devices/overview.md)
+这三个选项在 "[什么是设备标识" 一](../devices/overview.md)文中进行了讨论。
 
-For more information, see [how to require managed devices for cloud app access with Conditional Access](require-managed-devices.md).
+有关详细信息，请参阅[如何通过条件访问要求使用受管理设备进行云应用访问](require-managed-devices.md)。
 
 ### <a name="hybrid-azure-ad-joined-device"></a>混合 Azure AD 加入设备
 
-Requiring a Hybrid Azure AD joined device is another option you have to configure device-based Conditional Access policies. 此要求是指已加入本地 Active Directory 的 Windows 台式机、笔记本电脑和企业平板电脑。 If this option is selected, your Conditional Access policy grants access to access attempts made with devices that are joined to your on-premises Active Directory and your Azure Active Directory.  
+若要配置基于设备的条件访问策略，还可以要求必须为混合 Azure AD 加入设备。 此要求是指已加入本地 Active Directory 的 Windows 台式机、笔记本电脑和企业平板电脑。 如果选择了此选项，则条件访问策略会授权访问通过加入到本地 Active Directory 和 Azure Active Directory 的设备所做的尝试。  
 
-For more information, see [set up Azure Active Directory device-based Conditional Access policies](require-managed-devices.md).
+有关详细信息，请参阅[设置 Azure Active Directory 基于设备的条件访问策略](require-managed-devices.md)。
 
 ### <a name="approved-client-app"></a>核准客户端应用程序
 
 由于员工使用移动设备执行个人和工作任务，因此可能需要能够保护设备访问的公司数据，即使这些设备不受你管理，也不例外。
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据，而不受任何移动设备管理 (MDM) 解决方案的影响。
 
-利用核准客户端应用程序，可以要求客户端应用程序必须支持 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。 A Conditional Access policy that requires approved client apps is  also known as [app-based Conditional Access policy](app-based-conditional-access.md). 有关支持的核准客户端应用程序列表，请参阅[核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)。
+利用核准客户端应用程序，可以要求客户端应用程序必须支持 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。 要求必须为核准客户端应用程序的条件访问策略亦称为[基于应用程序的条件访问策略](app-based-conditional-access.md)。 有关支持的核准客户端应用程序列表，请参阅[核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)。
 
-### <a name="app-protection-policy-preview"></a>App protection policy (preview)
+### <a name="app-protection-policy-preview"></a>应用保护策略（预览版）
 
 由于员工使用移动设备执行个人和工作任务，因此可能需要能够保护设备访问的公司数据，即使这些设备不受你管理，也不例外。
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据，而不受任何移动设备管理 (MDM) 解决方案的影响。
 
-With app protection policy, you can limit access to client applications that have reported to Azure AD has having received [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy). For example, you can restrict access to Exchange Online to the Outlook app that has an Intune app protection policy. A Conditional Access policy that requires app protection policy is also known as [app protection-based Conditional Access policy](app-protection-based-conditional-access.md). 
+使用应用保护策略时，可以限制对那些已经向 Azure AD 报告已经收到 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)的客户端应用程序的访问。 例如，可以限制为只有设置了 Intune 应用保护策略的 Outlook 应用才能访问 Exchange Outlook。 需要应用保护策略的条件访问策略亦称为[基于应用保护的条件访问策略](app-protection-based-conditional-access.md)。 
 
-Your device must be registered to Azure AD before an application can be marked as policy protected.
+你的设备必须先注册到 Azure AD，然后才能将应用程序标记为受策略保护。
 
-For a list of supported policy protected client apps, see [app protection policy requirement](technical-reference.md#app-protection-policy-requirement).
+有关受支持的策略保护的客户端应用列表，请参阅[应用保护策略要求](technical-reference.md#app-protection-policy-requirement)。
 
 ### <a name="terms-of-use"></a>使用条款
 
@@ -104,9 +104,9 @@ For a list of supported policy protected client apps, see [app protection policy
 
 ## <a name="custom-controls-preview"></a>自定义控件（预览版）
 
-自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory verifies the response and, if the user was successfully authenticated or validated, the user continues in the Conditional Access flow.
+自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 将验证响应，如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。
 
-These controls allow the use of certain external or custom services as Conditional Access controls, and generally extend the capabilities of Conditional Access.
+通过这些控件可以将某些外部或自定义服务用作条件访问控制，并在一般情况下扩展条件访问的功能。
 
 提供商当前提供的兼容服务包括：
 
@@ -125,13 +125,13 @@ These controls allow the use of certain external or custom services as Condition
 
 ### <a name="creating-custom-controls"></a>创建自定义控件
 
-若要创建自定义控件，应首先联系想使用的控件的提供商。 Each non-Microsoft provider has its own process and requirements to sign up, subscribe, or otherwise become a part of the service, and to indicate that you wish to integrate with Conditional Access. 此时，提供商将提供采用 JSON 格式的数据块。 This data allows the provider and Conditional Access to work together for your tenant, creates the new control and defines how Conditional Access can tell if your users have successfully performed verification with the provider.
+若要创建自定义控件，应首先联系想使用的控件的提供商。 每个非 Microsoft 提供商在注册、订阅或以其他方式加入服务以及指示想要与条件访问集成方面都有自己的进程和要求。 此时，提供商将提供采用 JSON 格式的数据块。 使用此数据可使提供商和条件访问一起服务于租户，创建新控件，并确定条件访问如何判断用户是否通过提供商成功执行了验证。
 
-Custom controls cannot be used with Identity Protection's automation requiring multi-factor authentication or to elevate roles in Privileged Identity Manager (PIM).
+自定义控件不能与 Identity Protection 的需要多重身份验证的自动化配合使用，也不能用来提升 Privileged Identity Manager (PIM) 中的角色。
 
 复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
 
-The option to create a custom control is in the **Manage** section of the **Conditional Access** page.
+创建自定义控件的选项位于“条件访问”页的“管理”部分中。
 
 ![控制](./media/controls/82.png)
 
@@ -141,7 +141,7 @@ The option to create a custom control is in the **Manage** section of the **Cond
 
 ### <a name="deleting-custom-controls"></a>删除自定义控件
 
-To delete a custom control, you must first ensure that it isn’t being used in any Conditional Access policy. 完成后：
+若要删除自定义控件，必须先确定它未在任何条件访问策略中使用。 完成后：
 
 1. 转到“自定义控件”列表
 1. 单击...  

@@ -1,6 +1,6 @@
 ---
 title: 在 Microsoft Excel 中使用 Azure Blockchain Workbench 数据
-description: Learn how to load and view Azure Blockchain Workbench Preview SQL DB data in Microsoft Excel.
+description: 了解如何在 Microsoft Excel 中加载和查看 Azure 区块链工作台预览 SQL 数据库数据。
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri

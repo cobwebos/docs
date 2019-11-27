@@ -1,6 +1,6 @@
 ---
-title: Clustering point data in Azure Maps | Microsoft Docs
-description: How to cluster point data in the Web SDK
+title: Azure Maps 中的聚集点数据 |Microsoft Docs
+description: 如何在 Web SDK 中分类点数据
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -16,17 +16,17 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74480554"
 ---
-# <a name="clustering-point-data"></a>Clustering point data
+# <a name="clustering-point-data"></a>聚类数据
 
-When visualizing many data points on the map, points overlap each other, the map looks cluttered and it becomes difficult to see and use. Clustering of point data can be used to improve this user experience. Clustering point data is the process of combining point data that are near each other and representing them on the map as a single clustered data point. As the user zooms into the map, the clusters break apart into their individual data points.
+当在地图上可视化多个数据点时，点彼此重叠，地图看起来显得有些混乱，因而难以查看和使用。 可使用点数据的聚类分析来改善此用户的体验。 聚类数据是将相邻的点数据组合在一起并将其作为单个群集数据点表示在地图上的过程。 当用户放大到地图中时，分类将分成各自的数据点。
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="enabling-clustering-on-a-data-source"></a>Enabling clustering on a data source
+## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用群集功能
 
-Clustering can easily be enabled on the `DataSource` class by setting the `cluster` option to true. Additionally, the pixel radius to select nearby points to combine into a cluster can be set using the `clusterRadius` and a zoom level can be specified at which to disable the clustering logic using the `clusterMaxZoom` option. Here is an example of how to enable clustering in a data source.
+可以通过将 `cluster` 选项设置为 true，在 `DataSource` 类上轻松启用群集。 此外，还可以使用 `clusterRadius` 设置像素半径来选择要合并到群集中的相邻点，还可以使用 "`clusterMaxZoom`" 选项指定缩放级别，以禁用群集逻辑。 下面的示例演示如何在数据源中启用群集。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,83 +44,83 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> If two data points are close together on the ground, it is possible the cluster will never break apart, no matter how close the user zooms in. To address this, you can set the `clusterMaxZoom` option of the data source which specifies at the zoom level to disable the clustering logic and simply display everything.
+> 如果两个数据点在地面上彼此接近，则群集可能永远不会中断，无论用户在多长时间内进行放大。 若要解决此情况，您可以设置数据源的 `clusterMaxZoom` 选项，该选项在缩放级别指定以禁用聚集逻辑，只显示所有内容。
 
-The `DataSource` class also has the following methods related to clustering:
+`DataSource` 类还具有以下与聚类分析相关的方法：
 
-| 方法 | 返回类型 | 描述 |
+| 方法 | 返回类型 | 说明 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves the children of the given cluster on the next zoom level. These children may be a combination of shapes and subclusters. The subclusters will be features with properties matching ClusteredProperties. |
-| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | Calculates a zoom level at which the cluster will start expanding or break apart. |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Retrieves all points in a cluster. Set the `limit` to return a subset of the points, and use the `offset` to page through the points. |
+| getClusterChildren （clusterId： number） | 承诺&lt;数组&lt;功能&lt;几何，任何&gt; \| 形状&gt;&gt; | 在下一个缩放级别检索给定分类的子项。 这些子级可以是形状和 subclusters 的组合。 Subclusters 将是具有与 ClusteredProperties 匹配的属性的功能。 |
+| getClusterExpansionZoom （clusterId： number） | 承诺&lt;号&gt; | 计算群集开始展开或分离的缩放级别。 |
+| getClusterLeaves （clusterId： number，limit： number，offset： number） | 承诺&lt;数组&lt;功能&lt;几何，任何&gt; \| 形状&gt;&gt; | 检索群集中的所有点。 设置 `limit` 以返回部分点，并使用 `offset` 逐页浏览点。 |
 
-## <a name="display-clusters-using-a-bubble-layer"></a>Display clusters using a bubble layer
+## <a name="display-clusters-using-a-bubble-layer"></a>使用气泡图层显示分类
 
-A bubble layer is a great way to render clustered points as you can easily scale the radius and change the color them based on the number of points in the cluster by using an expression. When displaying clusters using a bubble layer, you should also use a separate layer for rendering unclustered data points. It is often nice to also be able to display the size of the cluster on top of the bubbles. A symbol layer with text and no icon can be used to achieve this behavior. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Basic bubble layer clustering" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic bubble layer clustering</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="display-clusters-using-a-symbol-layer"></a>Display clusters using a symbol layer
-
-When visualizing the point data using the Symbol layer, by default it will automatically hide symbols that overlap each other to create a cleaner experience, however this may not be the desired experience if you want to see the density of data points on the map. Setting the `allowOverlap` option of the Symbol layers `iconOptions` property to `true` disables this experience but will result in all the symbols being displayed. Using clustering allows you to see the density of all the data while creating a nice clean user experience. In this sample, custom symbols will be used to represent clusters and individual data points.
+气泡图层是一种呈现聚类的好方法，因为可以轻松地缩放半径，并使用表达式根据分类中的点数更改颜色。 使用气泡图层显示群集时，还应使用单独的层来呈现非群集的数据点。 还可以在气泡顶部显示群集的大小，这也是一种很好的方法。 带有文本和无图标的符号层可用于实现此行为。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clustered Symbol layer" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Clustered Symbol layer</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本气泡层群集" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）对<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本气泡层进行聚类分析</a>。
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>Clustering and the heat maps layer
+## <a name="display-clusters-using-a-symbol-layer"></a>使用符号层显示群集
 
-Heat maps are a great way to display the density of data on the map. This visualization can handle a large number of data points on its own, but it can handle even more data if the data points are clustered and the cluster size is used as the weight of the heat map. Set the `weight` option of the heat map layer to `['get', 'point_count']` to achieve this. When the cluster radius is small, the heat map will look nearly identical to a heat map using the unclustered data points but will perform much better. However, the smaller the cluster radius, the more accurate the heat map will be but with less of a performance benefit.
+使用符号层可视化点数据时，默认情况下，它会自动隐藏彼此重叠的符号，以创建更清晰的体验，但如果您想要查看地图上数据点的密度，这可能不是所需的体验。 将 "符号层 `iconOptions`" 属性 `allowOverlap` 选项设置为 "`true` 禁用此体验，但将导致显示所有符号。 使用聚类分析可查看所有数据的密度，同时创建良好的干净用户体验。 在此示例中，自定义符号将用于表示群集和各个数据点。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster weighted Heat Map" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Cluster weighted Heat Map</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="聚集符号层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）将笔<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>聚集符号层</a>。
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>Mouse events on clustered data points
+## <a name="clustering-and-the-heat-maps-layer"></a>聚类分析和热度地图层
 
-When mouse events occur on a layer that contain clustered data points, the clustered data point will be returned to the event as a GeoJSON point feature object. This point feature will have the following properties:
+热度地图是在地图上显示数据密度的好方法。 此可视化效果可以自行处理大量数据点，但如果数据点是聚集的，则可以处理更多的数据，并将群集大小用作热度地图的权重。 将热度地图层的 `weight` 选项设置为 `['get', 'point_count']` 以实现此目的。 当群集的 radius 较小时，热度地图看起来几乎与使用非群集数据点的热度地图完全相同，但性能会更好。 然而，分类半径越小，热度地图就越精确，但性能优势也就越小。
 
-| 属性名称 | Type | 描述 |
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集加权热度地图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>绘制笔群集加权热度地图</a>。
+</iframe>
+
+## <a name="mouse-events-on-clustered-data-points"></a>群集数据点上的鼠标事件
+
+当鼠标事件发生在包含群集数据点的层上时，群集数据点将作为 GeoJSON 点功能对象返回到事件。 此点功能将具有以下属性：
+
+| 属性名 | 类型 | 说明 |
 |---------------|------|-------------|
-| cluster | boolean | Indicates if feature represents a cluster. |
-| cluster_id | 字符串 | A unique ID for the cluster that can be used with the DataSource `getClusterExpansionZoom`, `getClusterChildren`, and `getClusterLeaves` methods. |
-| point_count | 数字 | The number of points the cluster contains. |
-| point_count_abbreviated | 字符串 | A string that abbreviates the `point_count` value if it is long. (for example, 4,000 becomes 4K) |
+| cluster | boolean | 指示功能是否表示群集。 |
+| cluster_id | 字符串 | 可以与 DataSource 一起使用的群集的唯一 ID `getClusterExpansionZoom`、`getClusterChildren`和 `getClusterLeaves` 方法。 |
+| point_count | number | 群集包含的点数。 |
+| point_count_abbreviated | 字符串 | 一个字符串，如果 `point_count` 值过长，则该字符串缩写。 （例如，4000变为4K） |
 
-This example takes a bubble layer that renders cluster points and adds a click event that when triggered, calculate, and zoom the map to the next zoom level at which the cluster will break apart using the `getClusterExpansionZoom` method of the `DataSource` class and the `cluster_id` property of the clicked clustered data point. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="display-cluster-area"></a>Display cluster area 
-
-The point data that a cluster represents is spread over an area. In this sample when the mouse is hovered over a cluster, the individual data points it contains (leaves) will be used to calculate a convex hull and displayed on the map to show the area. All points contained in a cluster can be retrieved from the data source using the `getClusterLeaves` method. A convex hull is a polygon that wraps a set of points like an elastic band and can be calculated using the `atlas.math.getConvexHull` method.
+此示例采用一个呈现分类点的气泡图层，并添加一个单击事件，当触发、计算并缩放地图到下一个缩放级别时，将会使用 `DataSource` 类的 `getClusterExpansionZoom` 方法和已单击的群集数据点的 `cluster_id` 属性来分离该地图。 
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Cluster area convex hull" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的 getClusterExpansionZoom by Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的笔<a href='https://codepen.io/azuremaps/pen/moZWeV/'>群集</a>。
 </iframe>
 
-## <a name="aggregating-data-in-clusters"></a>Aggregating data in clusters
+## <a name="display-cluster-area"></a>显示群集区域 
 
-Often clusters are represented using a symbol with the number of points that are within the cluster, however sometimes it is desirable to further customize the style of clusters based on some metric, like the total revenue of all points within a cluster. With cluster aggregates custom properties can be created and populated using an [aggregate expression](data-driven-style-expressions-web-sdk.md#aggregate-expression) calculation.  Cluster aggregates can be defined in `clusterProperties` option of the `DataSource`.
+分类所代表的点数据分散在某个区域。 在此示例中，当鼠标悬停在群集上时，它包含的各个数据点（叶）将用于计算凸形，并显示在地图上以显示区域。 可以使用 `getClusterLeaves` 方法从数据源中检索包含在群集中的所有点。 凸形凸形是一种用于包装一组点（如弹性带区）并可使用 `atlas.math.getConvexHull` 方法进行计算的多边形。
 
-The following sample uses an aggregate expression to calculate a count based on the entity type property of each data point in a cluster.
+<br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster aggregates" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-See the Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) on <a href='https://codepen.io'>CodePen</a>.
+ <iframe height="500" style="width: 100%;" scrolling="no" title="群集区域凸凸" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）进行的<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>凸</a>形凸形凸形凸形。
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>聚合群集中的数据
+
+通常使用带有群集内点数的符号来表示分类，但有时需要根据某个指标进一步自定义分类的样式，如群集中所有点的总收入。 使用分类聚合自定义属性可以使用[聚合表达式](data-driven-style-expressions-web-sdk.md#aggregate-expression)计算来创建和填充。  可以在 `DataSource``clusterProperties` 选项中定义群集聚合。
+
+下面的示例使用聚合表达式来计算基于群集中每个数据点的实体类型属性的计数。
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="群集聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>群集聚合</a>按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -128,13 +128,13 @@ See the Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregate
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [DataSource class](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+> [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [atlas.math namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [阿特拉斯命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
 请参阅向应用添加功能的代码示例：
 
@@ -145,4 +145,4 @@ See the Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregate
 > [添加符号层](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Add a heat map layer](map-add-heat-map-layer.md)
+> [添加热度地图层](map-add-heat-map-layer.md)

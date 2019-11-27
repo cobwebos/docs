@@ -95,7 +95,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |群集数|4|
 |主节点数|2|
-|辅助角色节点数|100 个|
+|辅助角色节点数|100|
 |边缘节点数| 5|
 |总磁盘空间|100 TB|
 |主节点配置|m/y、cpu、磁盘等。|
@@ -138,9 +138,9 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |**主题**：元数据|||
 |Hive 数据库类型|Mysql、Postgres||
 |Hive 元存储的数目|2||
-|Hive 表的数目|100 个||
+|Hive 表的数目|100||
 |Ranger 策略的数目|20||
-|Oozie 工作流的数目|100 个||
+|Oozie 工作流的数目|100||
 |**主题**：缩放|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
@@ -154,7 +154,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |**主题**：人员|||
 |管理员的数目|2||
 |开发人员的数目|10||
-|最终用户的数目|100 个||
+|最终用户的数目|100||
 |技能|Hadoop、Spark||
 |可用于迁移工作的资源数目|2||
 |**主题**：限制|||
@@ -180,7 +180,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
-|要同步的 AD 用户数？|          100 个||
+|要同步的 AD 用户数？|          100||
 |确定将密码同步到云？|    是||
 |仅云用户？|                 是||
 |需要 MFA？|                       否|| 

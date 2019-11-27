@@ -36,11 +36,11 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
  
 1. 选择“设置”。 可以在此处编辑必填字段“服务名称”。
   
-    |目标|行动|
+    |目标|操作|
     |--|--|
     |添加 URL|可以通过单击“管理知识库”- >“+ 添加 URL”链接，添加新的 URL，以便向知识库添加新的常见问题解答内容。|
     |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
-    |Refresh content|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”复选框。 This will update the knowledge base with latest URL content once. This is not setting a regular schedule of updates.|
+    |刷新内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”复选框。 这将更新包含最新 URL 内容一次的知识库。 这不会设置定期更新计划。|
     |添加文件|可以通过选择“管理知识库”并选择“+ 添加文件”将受支持的文件文档添加为知识库的一部分。|
     |导入|还可以通过选择“导入知识库”按钮导入任何现有知识库。 |
     |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
@@ -54,7 +54,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="add-a-qna-pair"></a>添加 QnA 对
 
-On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge base table.
+在 "**编辑**" 页上，选择 "**添加 QnA 对**" 以将新行添加到知识库表。
 
 ![添加 QnA 对](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,7 +72,7 @@ On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge 
 
 ## <a name="add-metadata"></a>添加元数据
 
-Add metadata pairs by first selecting **View options**, then selecting **Show metadata**. This displays the metadata column. Next, select the **+** sign to add a metadata pair. This pair consists of one key and one value.
+首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -81,15 +81,15 @@ Add metadata pairs by first selecting **View options**, then selecting **Show me
 
 ## <a name="manage-large-knowledge-bases"></a>管理大型知识库
 
-* **Data source groups**: The QnAs are grouped by the data source from which they were extracted. 你可以展开或折叠数据源。
+* **数据源组**： qna 按从中提取它们的数据源进行分组。 你可以展开或折叠数据源。
 
     ![使用 QnA Maker 数据源栏来折叠和展开数据源问题和解答](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Search knowledge base**: You can search the knowledge base by typing in the text box at the top of the Knowledge Base table. 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
+* **搜索知识库**：您可以通过在知识库表顶部的文本框中键入来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
 
     ![使用问题和解答上方的 QnA Maker 搜索框可将视图缩小为仅筛选匹配项](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Pagination**: Quickly move through data sources to manage large knowledge bases
+* **分页**：在数据源中快速移动以管理大型知识库
 
     ![使用问题和解答上方的 QnA Maker 分页功能可浏览问题和解答页面](../media/qnamaker-how-to-edit-kb/pagination.png)
 

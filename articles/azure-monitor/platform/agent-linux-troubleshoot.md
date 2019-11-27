@@ -28,7 +28,7 @@ ms.locfileid: "74306552"
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要的日志位置和日志收集器工具
 
- 文件 | 路径
+ 文件 | Path
  ---- | -----
  Log Analytics Linux 代理日志文件 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理配置日志文件 | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -153,7 +153,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 在载入期间指定的代理不正确
 * Azure Monitor 和 Azure 自动化服务终结点不在数据中心的允许列表中 
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Azure Monitor。 它允许通过代理服务器连接到 Azure Monitor 的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
@@ -174,7 +174,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * Linux 服务器上的日期和时间不正确 
 * 使用的工作区 ID 和工作区密钥不正确
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
 1. 使用 date 命令检查 Linux 服务器上的时间。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要纠正此问题，请更新 Linux 服务器的日期和/或时区。 
 2. 验证你是否安装了最新版本的 Log Analytics Linux 代理。  如果时间偏差导致了载入故障，最新版本现在会发出通知。
@@ -218,7 +218,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 - 已阻止连接到 Azure Monitor
 - Log Analytics Linux 代理数据已备份
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 通过检查是否存在以下文件，来检查是否已成功载入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. 使用 `omsadmin.sh` 命令行指令重新载入
 3. 如果使用代理，请参阅之前提供的代理解决方法步骤。
@@ -235,7 +235,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Syslog 未正确转发到 Linux 服务器
 * 每秒转发的消息数太大，Log Analytics Linux 代理基本配置无法处理
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 * 验证 Syslog 的 Log Analytics 工作区中的配置是否具有所有设施和正确的日志级别。 查看[在 Azure 门户中配置 Syslog 收集](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * 验证本机 Syslog 消息守护程序（`rsyslog`、`syslog-ng`）是否能够接收转发的消息
 * 检查 Syslog 服务器的防火墙设置，以确保未阻止消息
@@ -248,7 +248,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 ### <a name="probable-causes"></a>可能的原因
 此错误指出 Linux 诊断扩展 (LAD) 与 Log Analytics Linux VM 扩展并行安装，并且它使用 syslog 数据收集所用的端口作为 omsagent。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 以 root 身份执行以下命令（请注意，25224 只是举例，你可能在自己的环境中看到 LAD 使用不同的端口号）：
 
     ```
@@ -270,7 +270,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Linux 诊断扩展已安装
 * Linux 诊断扩展已安装和卸载，但你仍会看到以下相关错误：omsagent 已被 mdsd 使用，无法删除。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 卸载 Linux 诊断扩展 (LAD)。
 2. 如果 Linux 诊断扩展文件出现在以下位置，请从计算机中删除：`/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` 和 `/var/opt/microsoft/omsagent/LAD/`。
 
@@ -280,7 +280,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Omsagent 用户没有权限从 Nagios 日志文件中读取
 * Nagios 源和筛选器未从 omsagent.conf 文件中注释掉
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 遵循以下这些[说明](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)添加 omsagent 用户以从 Nagios 文件读取。
 2. 在 Log Analytics Linux 代理常规配置文件的 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 处，确保 Nagios 源和筛选器**均已**被注释掉。
 
@@ -308,7 +308,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Log Analytics 代理数据已备份
 * DSC 日志*当前配置不存在。使用-Path 参数执行 Start-dscconfiguration 命令，以指定配置文件并首先创建当前配置。* （在 `omsconfig.log` 日志文件中），但不存在关于 `PerformRequiredConfigurationChecks` 操作的日志消息。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 安装 auditd 程序包等所有依赖项。
 2. 通过检查是否存在以下文件，来检查是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。  如果它不存在，使用 omsadmin.sh 命令行[指令](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新载入。
 4. 如果使用代理服务器，请检查上述代理服务器故障排除步骤。
@@ -373,7 +373,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * Log Analytics Linux 代理未获取最新配置
 * 未应用门户中的已更改设置
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 背景：`omsconfig` 是每隔五分钟便会查找新门户端配置的 Log Analytics Linux 配置代理。 然后，此配置会应用到位于以下位置的 Log Analytics Linux 代理配置文件中：/etc/opt/microsoft/omsagent/conf/omsagent.conf。
 
 * 在某些情况下，Log Analytics Linux 配置代理可能无法与导致未应用最新配置的门户配置服务通信。
@@ -392,7 +392,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
  * `[DATETIME] [error]: file not accessible by omsagent.`
 * 已知的争用条件问题在 Log Analytics Linux 代理版本 1.1.0-217 中已修复
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 1. 通过检查是否存在以下文件，验证是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。 如果不存在，则可以：  
 
   1. 使用 omsadmin.sh 命令行[指令](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新载入。
@@ -427,7 +427,7 @@ sudo sh ./onboard_agent.sh --purge
 * 已从操作系统中删除 log Analytics 代理
 * Log Analytics 代理服务已关闭、已禁用或未配置
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>分辨率 
 执行以下步骤来更正问题。
 1. 从 Azure 门户中删除扩展。
 2. 按照[说明](../../azure-monitor/learn/quick-collect-linux-computer.md)安装代理。
@@ -441,7 +441,7 @@ sudo sh ./onboard_agent.sh --purge
 
 主机上的 Log Analytics 代理程序包已过期。
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>分辨率 
 执行以下步骤来更正问题。
 
 1. 查看[页面](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/)上的最新版本。

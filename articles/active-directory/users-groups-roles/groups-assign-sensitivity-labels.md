@@ -1,5 +1,5 @@
 ---
-title: Assign sensitivity labels to groups - Azure AD | Microsoft Docs
+title: 将敏感度标签分配给组-Azure AD |Microsoft Docs
 description: 如何创建成员资格规则以自动填充组和规则引用。
 services: active-directory
 documentationcenter: ''
@@ -21,23 +21,23 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74404807"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Assign sensitivity labels to Office 365 groups in Azure Active Directory (preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>将敏感度标签分配到 Azure Active Directory 中的 Office 365 组（预览）
 
-Azure Active Directory (Azure AD) supports applying sensitivity labels published by the [Microsoft 365 compliance center](https://sip.protection.office.com/homepage) to Office 365 groups. Sensitivity labels apply to group across services like Outlook, Microsoft Teams, and SharePoint. 此功能目前处于公开预览状态。
+Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。
 
 > [!IMPORTANT]
-> Using Azure AD sensitivity labels for Office 365 groups requires an Azure Active Directory Premium P1 license.
+> 使用 Office 365 组 Azure AD 敏感度标签需要 Azure Active Directory Premium P1 许可证。
 
-## <a name="group-settings-controlled-by-labels"></a>Group settings controlled by labels
+## <a name="group-settings-controlled-by-labels"></a>按标签控制的组设置
 
-There are two settings that can be associated with a label:
+可以将两个设置与标签关联：
 
-- **Privacy**: Admins can associate a privacy setting with the label to control whether a group is public or private.
-- **Guest access**: Admins can enforce the guest policy for all groups that have the label assigned. This policy specifies whether guests can be added as members or not. If the guest policy is configured for a label, any groups that you assign the label to won't allow the AllowToAddGuests setting to be changed.
+- **隐私**：管理员可以将隐私设置与标签相关联，以控制组是公用组还是专用组。
+- **来宾访问**：管理员可对分配了标签的所有组强制执行来宾策略。 此策略指定来宾是否可以添加为成员。 如果为标签配置了来宾策略，则向其分配标签的任何组都不允许更改 AllowToAddGuests 设置。
 
-## <a name="enable-sensitivity-label-support-in-powershell"></a>Enable sensitivity label support in PowerShell
+## <a name="enable-sensitivity-label-support-in-powershell"></a>在 PowerShell 中启用敏感度标签支持
 
-To apply published labels to groups, you must first enable the feature. These steps enable the feature in Azure AD.
+若要将已发布的标签应用于组，必须首先启用此功能。 这些步骤在 Azure AD 中启用该功能。
 
 1. 在计算机上打开 Windows PowerShell 窗口。 无需提升的权限即可打开该窗口。
 1. 运行以下命令，准备运行 cmdlet。
@@ -47,127 +47,127 @@ To apply published labels to groups, you must first enable the feature. These st
     Connect-AzureAD
     ```
 
-    In the **Sign in to your account** page, enter your admin account and password to connect you to your service, and select **Sign in**.
-1. Fetch the current group settings for the Azure AD organization.
+    在 "**登录你的帐户**" 页上，输入你的管理员帐户和密码以连接到你的服务，然后选择 "**登录**"。
+1. 提取 Azure AD 组织的当前组设置。
 
     ```PowerShell
     $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
     ```
 
     > [!NOTE]
-    > If no group settings have been created for this Azure AD organization, you must first create the settings. Follow the steps in [Azure Active Directory cmdlets for configuring group settings](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) to create group settings for this Azure AD organization.
+    > 如果没有为此 Azure AD 组织创建组设置，则必须先创建设置。 按照 Azure Active Directory cmdlet 中的步骤[配置组设置](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets)，为此 Azure AD 组织创建组设置。
 
-1. Next, display the current group settings.
+1. 接下来，显示当前组设置。
 
     ```PowerShell
     $Setting.Values
     ```
 
-1. Then enable the feature:
+1. 然后启用此功能：
 
     ```PowerShell
     $Setting["EnableMIPLabels"] = "True"
     ```
 
-1. Then save the changes and apply the settings:
+1. 然后保存更改并应用设置：
 
     ```PowerShell
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-就是这么简单。 You've enabled the feature and you can apply published labels to groups.
+就这么简单。 已启用该功能，可以将已发布的标签应用于组。
 
-## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Assign a label to a new group in Azure portal
+## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>在 Azure 门户中为新组分配标签
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com).
-1. Select **Groups**, and then select **New group**.
-1. On the **New Group** page, select **Office 365**, and then fill out the required information for the new group and select a sensitivity label from the list.
+1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 选择 "**组**"，然后选择 "**新建组**"。
+1. 在 "**新建组**" 页上，选择 " **Office 365**"，然后填写新组所需的信息，然后从列表中选择一个灵敏度标签。
 
-   ![Assign a sensitivity label in the New groups page](./media/groups-assign-sensitivity-labels/new-group-page.png)
+   ![在 "新建组" 页中分配敏感度标签](./media/groups-assign-sensitivity-labels/new-group-page.png)
 
-1. Save your changes and select **Create**.
+1. 保存更改，然后选择 "**创建**"。
 
-Your group is created and the policies associated with the selected label are then automatically enforced.
+创建组后，将自动强制实施与选定标签关联的策略。
 
-## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Assign a label to an existing group in Azure portal
+## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>为 Azure 门户中的现有组分配标签
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
+1. 使用全局管理员帐户或组管理员帐户或作为组所有者登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“组”。
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a sensitivity label from the list.
+1. 从 "**所有组**" 页中，选择要标记的组。
+1. 在选定组的页上，选择 "**属性**"，然后从列表中选择一个灵敏度标签。
 
-   ![Assign a sensitivity label on the overview page for a group](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
+   ![在组的 "概述" 页上分配敏感度标签](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
 1. 选择“保存”以保存更改。
 
-## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>Remove a label from an existing group in Azure portal
+## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>从 Azure 门户中的现有组中删除标签
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global admin or Groups admin account, or as a group owner.
+1. 使用全局管理员帐户或组管理员帐户或作为组所有者登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“组”。
-1. From the **All groups** page, select the group that you want to remove the label from.
-1. On the **Group** page, select **Properties**.
+1. 从 "**所有组**" 页中，选择要从中删除标签的组。
+1. 在 "**组**" 页上，选择 "**属性**"。
 1. 选择“删除”。
 1. 单击“保存”应用所做的更改。
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365 app support for sensitivity labels
+## <a name="office-365-app-support-for-sensitivity-labels"></a>适用于敏感度标签的 Office 365 应用支持
 
-The following Office 365 apps and services support the sensitivity labels in this preview:
+以下 Office 365 应用和服务支持此预览版中的灵敏度标签：
 
-- Azure AD admin center
-- Microsoft 365 compliance center
+- Azure AD 管理中心
+- Microsoft 365 相容性中心
 - SharePoint
-- Outlook on the web
+- Web 上的 Outlook
 - 团队
-- SharePoint admin center
+- SharePoint 管理中心
 
-For more information about Office 365 apps support, see [Office 365 support for sensitivity labels](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
+有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)。
 
-## <a name="using-classic-azure-ad-classifications"></a>Using classic Azure AD classifications
+## <a name="using-classic-azure-ad-classifications"></a>使用经典 Azure AD 分类
 
-After you enable this feature, Office 365 no longer supports the “classic” classifications for new groups. Classic classifications are the old classifications you set up by defining values for the `ClassificationList` setting in Azure AD PowerShell. When this feature is enabled, those classifications will not be applied to groups.
+启用此功能后，Office 365 不再支持新组的 "经典" 分类。 经典分类是通过在 Azure AD PowerShell 中为 `ClassificationList` 设置定义值来设置的旧分类。 启用此功能后，这些分类将不会应用于组。
 
-## <a name="troubleshooting-issues"></a>Troubleshooting issues
+## <a name="troubleshooting-issues"></a>排查问题
 
-### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>Sensitivity labels are not available for assignment on a group
+### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>敏感度标签不适用于组
 
-The sensitivity label option is only displayed for groups when all the following conditions are met:
+仅当满足以下所有条件时，才会为组显示敏感度标签选项：
 
-1. Labels are published in the Microsoft 365 Compliance Center for this tenant.
-1. The feature is enabled, EnableMIPLabels is set to True in PowerShell.
-1. The group is an Office 365 group.
-1. The tenant has an active Azure Active Directory Premium P1 license.
-1. The current signed-in user has access to published labels.
-1. The current signed-in user has sufficient privileges to assign labels. The user must be either a Global Administrator, Group Administrator, or the group owner.
-1. The current signed-in user has an Office 365 license assigned. For more information about license requirements, see [Sensitivity labels in Office apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
+1. 在此租户的 Microsoft 365 符合性中心中发布标签。
+1. 启用此功能后，PowerShell 中的 EnableMIPLabels 设置为 True。
+1. 组是 Office 365 组。
+1. 租户具有活动的 Azure Active Directory Premium P1 许可证。
+1. 当前已登录用户有权访问已发布标签。
+1. 当前登录的用户具有足够的权限来分配标签。 用户必须是全局管理员、组管理员或组所有者。
+1. 当前已登录用户分配了 Office 365 许可证。 有关许可证要求的详细信息，请参阅[Office 应用中的敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps)。
 
-Please make sure all the conditions are met in order to assign labels to a group.
+请确保满足所有条件，以便将标签分配给组。
 
-### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>The label I want to assign is not in the list
+### <a name="the-label-i-want-to-assign-is-not-in-the-list"></a>列表中没有要分配的标签
 
-If the label you are looking for is not in the list, this could be the case for one of the following reasons:
+如果要查找的标签不在列表中，则可能是以下原因之一：
 
-- The label might not be published in the Microsoft 365 Compliance Center. This could also apply to labels that are no longer published. Please check with your administrator for more information.
-- The label may be published, however, it is not available to the user that is signed-in. Please check with your administrator for more information on how to get access to the label.
+- 此标签可能不会在 Microsoft 365 相容性中心发布。 这也适用于不再发布的标签。 请咨询管理员以获取详细信息。
+- 但可以发布标签，而不能用于已登录的用户。 有关如何访问标签的详细信息，请咨询管理员。
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>How can I change the label on a group?
+### <a name="how-can-i-change-the-label-on-a-group"></a>如何更改组中的标签？
 
-Labels can be swapped at any time using the same steps as assigning a label to an existing group, as follows:
+可以使用将标签分配给现有组的相同步骤随时交换标签，如下所示：
 
-1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a Global or Group administrator account or as group owner.
+1. 使用全局或组管理员帐户或作为组所有者登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“组”。
-1. From the **All groups** page, select the group that you want to label.
-1. On the selected group's page, select **Properties** and select a new sensitivity label from the list.
+1. 从 "**所有组**" 页中，选择要标记的组。
+1. 在选定组的页上，选择 "**属性**"，然后从列表中选择一个新的敏感度标签。
 1. 选择“保存”。
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Group setting changes to published labels are not updated on the groups
+### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>组设置对已发布标签所做的更改不会在组中更新
 
-As a best practice, we don't recommend that you change group settings for a label after the label is applied to groups. When you make changes to group settings associated with published labels in [Microsoft 365 compliance center](https://sip.protection.office.com/homepage), those policy changes aren't automatically applied on the impacted groups.
+最佳做法是，我们不建议您在将标签应用于组之后更改标签的组设置。 当你对与[Microsoft 365 相容性中心](https://sip.protection.office.com/homepage)内的已发布标签关联的组设置进行更改时，这些策略更改不会自动应用于受影响的组。
 
-If you must make a change, use an [Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) to manually apply updates to the impacted groups. This method makes sure that all existing groups enforce the new setting.
+如果必须进行更改，请使用[Azure AD PowerShell 脚本](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)将更新手动应用到受影响的组。 此方法可确保所有现有组都强制实施新的设置。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Use sensitivity labels with Microsoft Teams, Office 365 groups, and SharePoint sites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
-- [Update groups after label policy change manually with Azure AD PowerShell script](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
+- [结合使用敏感度标签和 Microsoft 团队、Office 365 组和 SharePoint 站点](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [标签策略后更新组 Azure AD PowerShell 脚本手动更改](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [编辑组设置](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [使用 PowerShell 命令管理组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

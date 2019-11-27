@@ -1,7 +1,7 @@
 ---
-title: Schedule Azure Machine Learning pipelines
+title: 计划 Azure 机器学习管道
 titleSuffix: Azure Machine Learning
-description: Schedule Azure Machine Learning pipelines using the Azure Machine Learning SDK for Python. Scheduled pipelines allow you to automate routine, time-consuming tasks such as data processing, training, and monitoring.
+description: 使用用于 Python 的 Azure 机器学习 SDK 来计划 Azure 机器学习管道。 计划的管道使你能够自动执行日常的日常任务，如数据处理、定型和监视。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -16,21 +16,21 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74406530"
 ---
-# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Schedule machine learning pipelines with Azure Machine Learning SDK for Python
+# <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
-In this article, you'll learn how to programmatically schedule a pipeline to run on Azure. You can choose to create a schedule based on elapsed time or on file-system changes. Time-based schedules can be used to take care of routine tasks, such as monitoring for data drift. Change-based schedules can be used to react to irregular or unpredictable changes, such as new data being uploaded or old data being edited. After learning how to create schedules, you'll learn how to retrieve and deactivate them.
+本文介绍如何以编程方式安排要在 Azure 上运行的管道。 你可以选择基于运行时间或文件系统更改创建计划。 基于时间的计划可用于处理日常任务，如监视数据偏移。 基于更改的计划可用于对异常或不可预测的更改（例如上传的新数据或正在编辑的旧数据）做出反应。 在了解如何创建计划后，你将了解如何检索和停用它们。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
-* A Python environment in which the Azure Machine Learning SDK for Python is installed. For more information, see [Create and manage reusable environments for training and deployment with Azure Machine Learning.](how-to-use-environments.md)
+* 用于安装 Python Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于定型和部署的可重复使用的环境。](how-to-use-environments.md)
 
-* A Machine Learning workspace with a published pipeline. You can use the one built in [Create and run machine learning pipelines with Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
+* 带有已发布管道的机器学习工作区。 可以使用 Azure 机器学习 SDK 中内置的[创建和运行机器学习管道](how-to-create-your-first-pipeline.md)。
 
-## <a name="initialize-the-workspace--get-data"></a>Initialize the workspace & get data
+## <a name="initialize-the-workspace--get-data"></a>& 获取数据初始化工作区
 
-To schedule a pipeline, you'll need a reference to your workspace, the identifier of your published pipeline, and the name of the experiment in which you wish to create the schedule. You can get these values with the following code:
+若要计划管道，需要对工作区、已发布管道的标识符以及要在其中创建计划的实验的名称进行引用。 可以通过以下代码获取这些值：
 
 ```Python
 import azureml.core
@@ -52,15 +52,15 @@ experiment_name = "MyExperiment"
 pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" 
 ```
 
-## <a name="create-a-schedule"></a>Create a schedule
+## <a name="create-a-schedule"></a>创建计划
 
-To run a pipeline on a recurring basis, you'll create a schedule. A `Schedule` associates a pipeline, an experiment, and a trigger. The trigger can either be a`ScheduleRecurrence` that describes the wait between runs or a Datastore path that specifies a directory to watch for changes. In either case, you'll need the pipeline identifier and the name of the experiment in which to create the schedule.
+若要定期运行管道，你将创建一个计划。 `Schedule` 将管道、试验和触发器关联起来。 触发器可以是描述等待的时间间隔的`ScheduleRecurrence`，或用于指定监视更改的目录的数据存储路径。 在任一情况下，都需要管道标识符和要在其中创建计划的实验的名称。
 
-### <a name="create-a-time-based-schedule"></a>Create a time-based schedule
+### <a name="create-a-time-based-schedule"></a>创建基于时间的计划
 
-The `ScheduleRecurrence` constructor has a required `frequency` argument that must be one of the following strings: "Minute", "Hour", "Day", "Week", or "Month". It also requires an integer `interval` argument specifying how many of the `frequency` units should elapse between schedule starts. Optional arguments allow you to be more specific about starting times, as detailed in the [ScheduleRecurrence SDK docs](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
+`ScheduleRecurrence` 构造函数具有必需的 `frequency` 参数，该参数必须为以下字符串之一： "Minute"、"Hour"、"Day"、"Week" 或 "Month"。 它还需要一个整数 `interval` 参数，该参数指定在计划开始之前应经过的 `frequency` 单位数。 可选参数使你可以更具体地了解开始时间，如[按 SDK 文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)中所述。
 
-Create a `Schedule` that begins a run every 15 minutes:
+创建一个每15分钟开始一次运行的 `Schedule`：
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -71,15 +71,15 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
                             recurrence=recurrence)
 ```
 
-### <a name="create-a-change-based-schedule"></a>Create a change-based schedule
+### <a name="create-a-change-based-schedule"></a>创建基于更改的计划
 
-Pipelines that are triggered by file changes may be more efficient than time-based schedules. For instance, you may want to perform a preprocessing step when a file is changed, or when a new file is added to a data directory. You can monitor any changes to a datastore or changes within a specific directory within the datastore. If you monitor a specific directory, changes within subdirectories of that directory will _not_ trigger a run.
+文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能想要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，则该目录的子目录中的更改_不_会触发运行。
 
-To create a file-reactive `Schedule`, you must set the `datastore` parameter in the call to [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). To monitor a folder, set the `path_on_datastore` argument.
+若要创建文件反应性的 `Schedule`，必须在 "[计划](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)" 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
-The `polling_interval` argument allows you to specify, in minutes, the frequency at which the datastore is checked for changes.
+`polling_interval` 参数允许你指定检查数据存储更改的频率（以分钟为单位）。
 
-If the pipeline was constructed with a [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), you can set that variable to the name of the changed file by setting the `data_path_parameter_name` argument.
+如果管道是使用[数据路径](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)构造的，则可以通过设置 `data_path_parameter_name` 参数将该变量设置为更改后的文件的名称。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -88,28 +88,28 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 
-### <a name="optional-arguments-when-creating-a-schedule"></a>Optional arguments when creating a schedule
+### <a name="optional-arguments-when-creating-a-schedule"></a>创建计划时的可选参数
 
-In addition to the arguments discussed previously, you may set the `status` argument to `"Disabled"` to create an inactive schedule. Finally, the `continue_on_step_failure` allows you to pass a Boolean that will override the pipeline's default failure behavior.
+除了前面所述的参数，您还可以将 `status` 参数设置为 `"Disabled"` 以创建非活动计划。 最后，`continue_on_step_failure` 允许传递一个布尔值，该布尔值将重写管道的默认失败行为。
 
-## <a name="view-your-scheduled-pipelines"></a>View your scheduled pipelines
+## <a name="view-your-scheduled-pipelines"></a>查看预定管道
 
-In your Web browser, navigate to Azure Machine Learning. From the **Endpoints** section of the navigation panel, choose **Pipeline endpoints**. This takes you to a list of the pipelines published in the Workspace.
+在 Web 浏览器中，导航到 Azure 机器学习。 从导航面板的 "**终结点**" 部分中，选择 "**管道终结点**"。 这会转到工作区中发布的管道的列表。
 
-![Pipelines page of AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
+![AML 的管道页](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
-In this page you can see summary information about all the pipelines in the Workspace: names, descriptions, status, and so forth. Drill in by clicking in your pipeline. On the resulting page, there are more details about your pipeline and you may drill down into individual runs.
+在此页中，可以查看工作区中所有管道的摘要信息：名称、说明、状态等。 单击管道中的 "钻取"。 在生成的页面上，提供有关管道的更多详细信息，并且可以向下钻取到各个运行中。
 
-## <a name="deactivate-the-pipeline"></a>Deactivate the pipeline
+## <a name="deactivate-the-pipeline"></a>停用管道
 
-If you have a `Pipeline` that is published, but not scheduled, you can disable it with:
+如果已发布但未计划 `Pipeline`，可以使用以下方法禁用它：
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
 pipeline.disable()
 ```
 
-If the pipeline is scheduled, you must cancel the schedule first. Retrieve the schedule's identifier from the portal or by running:
+如果安排了管道，则必须先取消计划。 从门户或通过运行以下方法检索计划的标识符：
 
 ```python
 ss = Schedule.list(ws)
@@ -117,7 +117,7 @@ for s in ss:
     print(s)
 ```
 
-Once you have the `schedule_id` you wish to disable, run:
+获得要禁用的 `schedule_id` 后，请运行：
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -128,16 +128,16 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule(ws, schedule_id)
 ```
 
-If you then run `Schedule.list(ws)` again, you should get an empty list.
+如果随后再次运行 `Schedule.list(ws)`，则应该会获得一个空列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-In this article, you used the Azure Machine Learning SDK for Python to schedule a pipeline in two different ways. One schedule recurs based on elapsed clock time. The other schedule runs if a file is modified on a specified `Datastore` or within a directory on that store. You saw how to use the portal to examine the pipeline and individual runs. Finally, you learned how to disable a schedule so that the pipeline stops running.
+本文介绍了如何使用适用于 Python 的 Azure 机器学习 SDK 以两种不同的方式安排管道。 基于已用的时钟时间重复一个计划。 如果在指定的 `Datastore` 上或在该存储区的某个目录内修改了某个文件，则其他计划将运行。 你了解了如何使用门户来检查管道和单个运行。 最后，您学习了如何禁用计划以便管道停止运行。
 
 有关详细信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [Use Azure Machine Learning Pipelines for batch scoring](tutorial-pipeline-batch-scoring-classification.md)
+> [使用 Azure 机器学习管道进行批处理评分](tutorial-pipeline-batch-scoring-classification.md)
 
-* Learn more about [pipelines](concept-ml-pipelines.md)
-* Learn more about [exploring Azure Machine Learning with Jupyter](samples-notebooks.md)
+* 了解有关[管道](concept-ml-pipelines.md)的详细信息
+* 了解有关[通过 Jupyter 浏览 Azure 机器学习的](samples-notebooks.md)详细信息

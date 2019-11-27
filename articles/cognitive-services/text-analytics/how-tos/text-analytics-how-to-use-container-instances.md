@@ -1,7 +1,7 @@
 ---
-title: Run Azure Container Instances - Text Analytics
+title: 运行 Azure 容器实例-文本分析
 titleSuffix: Azure Cognitive Services
-description: Deploy the text analytics containers to the Azure Container Instance, and test it in a web browser.
+description: 将文本分析容器部署到 Azure 容器实例，并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -17,13 +17,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383528"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Deploy a Text Analytics container to Azure Container Instances
+# <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>将文本分析容器部署到 Azure 容器实例
 
-Learn how to deploy the Cognitive Services [Text Analytics][install-and-run-containers] container to Azure [Container Instances][container-instances]. This procedure exemplifies the creation of a Text Analytics resource, the creation of an associated Sentiment Analysis image and the ability to exercise this orchestration of the two from a browser. Using containers can shift the developers' attention away from managing infrastructure to instead focusing on application development.
+了解如何将认知服务[文本分析][install-and-run-containers]容器部署到 Azure[容器实例][container-instances]。 该过程演示了创建文本分析资源的方法、创建关联的情绪分析映像的方法，以及在浏览器中练习前两项的相关业务流程的功能。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 使用 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
 [!INCLUDE [Create a Cognitive Services Text Analytics resource](../includes/create-text-analytics-resource.md)]
 
@@ -46,7 +46,7 @@ Learn how to deploy the Cognitive Services [Text Analytics][install-and-run-cont
 ## <a name="next-steps"></a>后续步骤 
 
 * 使用更多[认知服务容器](../../cognitive-services-container-support.md)
-* Use the [Text Analytics Connected Service](../vs-text-connected-service.md)
+* 使用[文本分析连接服务](../vs-text-connected-service.md)
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

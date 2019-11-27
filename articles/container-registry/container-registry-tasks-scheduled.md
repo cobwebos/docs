@@ -1,6 +1,6 @@
 ---
-title: Tutorial - Schedule an ACR task
-description: In this tutorial, learn how to run an Azure Container Registry Task on a defined schedule by setting one or more timer triggers
+title: 教程-计划 ACR 任务
+description: 在本教程中，了解如何通过设置一个或多个计时器触发器按定义的计划运行 Azure 容器注册表任务
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
@@ -10,40 +10,40 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454676"
 ---
-# <a name="run-an-acr-task-on-a-defined-schedule"></a>Run an ACR task on a defined schedule
+# <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
 
-This tutorial shows you how to run an [ACR Task](container-registry-tasks-overview.md) on a schedule. Schedule a task by setting up one or more *timer triggers*. Timer triggers can be used alone, or in combination with other task triggers.
+本教程介绍如何按计划运行[ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个计时器触发器来计划任务。 计时器触发器可以单独使用，也可以与其他任务触发器一起使用。
 
-In this tutorial, learn about scheduling tasks and:
+在本教程中，了解计划任务和：
 
 > [!div class="checklist"]
-> * Create a task with a timer trigger
-> * Manage timer triggers
+> * 创建具有计时器触发器的任务
+> * 管理计时器触发器
 
-Scheduling a task is useful for scenarios like the following:
+任务计划适用于如下所述的方案：
 
-* Run a container workload for scheduled maintenance operations. For example, run a containerized app to remove unneeded images from your registry.
-* Run a set of tests on a production image during the workday as part of your live-site monitoring.
+* 运行容器工作负荷来执行计划性维护操作。 例如，运行容器化应用以从注册表中删除不需要的映像。
+* 在工作日针对要在现场监视的生产映像运行一组测试。
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the examples in this article. If you'd like to use it locally, version 2.0.68 or later is required. 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 
-## <a name="about-scheduling-a-task"></a>About scheduling a task
+## <a name="about-scheduling-a-task"></a>关于计划任务
 
-* **Trigger with cron expression** - The timer trigger for a task uses a *cron expression*. The expression is a string with five fields specifying the minute, hour, day, month, and day of week to trigger the task. Frequencies of up to once per minute are supported.
+* **使用 cron 表达式的触发器** - 任务的计时器触发器使用 cron 表达式。 该表达式是包含五个字段的字符串，这些字段指定要触发任务的分钟、小时、日期、月份和星期。 支持的最高频率为每分钟一次。
 
-  For example, the expression `"0 12 * * Mon-Fri"` triggers a task at noon UTC on each weekday. See [details](#cron-expressions) later in this article.
-* **Multiple timer triggers** - Adding multiple timers to a task is allowed, as long as the schedules differ.
-    * Specify multiple timer triggers when you create the task, or add them later.
-    * Optionally name the triggers for easier management, or ACR Tasks will provide default trigger names.
-    * If timer schedules overlap at a time, ACR Tasks triggers the task at the scheduled time for each timer.
-* **Other task triggers** - In a timer-triggered task, you can also enable triggers based on [source code commit](container-registry-tutorial-build-task.md) or [base image updates](container-registry-tutorial-base-image-update.md). Like other ACR tasks, you can also [manually trigger][az-acr-task-run] a scheduled task.
+  例如，表达式 `"0 12 * * Mon-Fri"` 在每个工作日的中午（UTC 时间）触发任务。 请参阅本文稍后所述的[详细信息](#cron-expressions)。
+* **多个计时器触发器** - 允许将多个计时器添加到g wh 任务，前提是计划不同。
+    * 可在创建任务时指定多个计时器触发器，也可以在以后添加。
+    * （可选）为触发器命名以便于管理，否则 ACR 任务将提供默认的触发器名称。
+    * 如果多个计时器计划在某个时间发生重叠，ACR 任务将在每个计时器的计划时间触发任务。
+* **其他任务触发器** - 在计时器触发的任务中，还可以基于[源代码提交](container-registry-tutorial-build-task.md)或[基础映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样，也可以[手动触发][az-acr-task-run]计划任务。
 
-## <a name="create-a-task-with-a-timer-trigger"></a>Create a task with a timer trigger
+## <a name="create-a-task-with-a-timer-trigger"></a>创建具有计时器触发器的任务
 
-When you create a task with the [az acr task create][az-acr-task-create] command, you can optionally add a timer trigger. Add the `--schedule` parameter and pass a cron expression for the timer.
+使用 [az acr task create][az-acr-task-create] 命令创建任务时，可以选择性地添加计时器触发器。 添加 `--schedule` 参数并为计时器传递 cron 表达式。
 
-As a simple example, the following command triggers running the `hello-world` image from Docker Hub every day at 21:00 UTC. The task runs without a source code context.
+举个简单的例子，以下命令将会触发每天 21:00（UTC 时间）从 Docker Hub 运行 `hello-world` 映像的任务。 该任务无需源代码上下文即可运行。
 
 ```azurecli
 az acr task create \
@@ -54,7 +54,7 @@ az acr task create \
   --context /dev/null
 ```
 
-Run the [az acr task show][az-acr-task-show] command to see that the timer trigger is configured. By default, the base image update trigger is also enabled.
+运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。 默认情况下，还启用了基础映像更新触发器。
 
 ```console
 $ az acr task show --name mytask --registry registry --output table
@@ -63,13 +63,13 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-Trigger the task manually with [az acr task run][az-acr-task-run] to ensure that it is set up properly:
+使用 [az acr task run][az-acr-task-run] 手动触发任务，以确保正确设置该任务：
 
 ```azurecli
 az acr task run --name mytask --registry myregistry
 ```
 
-If the container runs successfully, the output is similar to the following:
+如果容器成功运行，输出将如下所示：
 
 ```console
 Queued a run with ID: cf2a
@@ -84,13 +84,13 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-After the scheduled time, run the [az acr task list-runs][az-acr-task-list-runs] command to verify that the timer triggered the task as expected:
+在计划的时间之后，运行 [az acr task list-runs][az-acr-task-list-runs] 命令验证计时器是否按预期触发了任务：
 
 ```azurecli
 az acr task list-runs --name mytask --registry myregistry --output table
 ```
 
-When the timer is successful, output is similar to the following:
+如果计时器成功，输出将如下所示：
 
 ```console
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
@@ -100,13 +100,13 @@ cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
 
-## <a name="manage-timer-triggers"></a>Manage timer triggers
+## <a name="manage-timer-triggers"></a>管理计时器触发器
 
-Use the [az acr task timer][az-acr-task-timer] commands to manage the timer triggers for an ACR task.
+使用 [az acr task timer][az-acr-task-timer] 命令管理 ACR 任务的计时器触发器。
 
-### <a name="add-or-update-a-timer-trigger"></a>Add or update a timer trigger
+### <a name="add-or-update-a-timer-trigger"></a>添加或更新计时器触发器
 
-After a task is created, optionally add a timer trigger by using the [az acr task timer add][az-acr-task-timer-add] command. The following example adds a timer trigger name *timer2* to *mytask* created previously. This timer triggers the task every day at 10:30 UTC.
+创建任务后，可以选择性地使用 [az acr task timer add][az-acr-task-timer-add] 命令添加计时器触发器。 以下示例将名为 *timer2* 的计时器触发器添加到前面创建的 *mytask*。 此计时器每日 10:30（UTC 时间）触发任务。
 
 ```azurecli
 az acr task timer add \
@@ -116,7 +116,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-Update the schedule of an existing trigger, or change its status, by using the [az acr task timer update][az-acr-task-timer-update] command. For example, update the trigger named *timer2* to trigger the task at 11:30 UTC:
+使用 [az acr task timer update][az-acr-task-timer-update] 命令更新现有触发器的计划或更改其状态。 例如，更新名为 *timer2* 的触发器，以在 11:30（UTC 时间）触发任务：
 
 ```azurecli
 az acr task timer update \
@@ -126,9 +126,9 @@ az acr task timer update \
   --schedule "30 11 * * *"
 ```
 
-### <a name="list-timer-triggers"></a>List timer triggers
+### <a name="list-timer-triggers"></a>列出计时器触发器
 
-The [az acr task timer list][az-acr-task-timer-list] command shows the timer triggers set up for a task:
+[az acr task timer list][az-acr-task-timer-list] 命令可显示针对任务设置的计时器触发器：
 
 ```azurecli
 az acr task timer list --name mytask --registry myregistry
@@ -151,9 +151,9 @@ az acr task timer list --name mytask --registry myregistry
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Remove a timer trigger
+### <a name="remove-a-timer-trigger"></a>删除计时器触发器
 
-Use the [az acr task timer remove][az-acr-task-timer-remove] command to remove a timer trigger from a task. The following example removes the *timer2* trigger from *mytask*:
+使用 [az acr task timer remove][az-acr-task-timer-remove] 命令从任务中删除计时器触发器。 以下示例从 *mytask* 中删除 *timer2* 触发器：
 
 ```azurecli
 az acr task timer remove \
@@ -162,49 +162,49 @@ az acr task timer remove \
   --timer-name timer2
 ```
 
-## <a name="cron-expressions"></a>Cron expressions
+## <a name="cron-expressions"></a>Cron 表达式
 
-ACR Tasks uses the [NCronTab](https://github.com/atifaziz/NCrontab) library to interpret cron expressions. Supported expressions in ACR Tasks have five required fields separated by white space:
+ACR 任务使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 cron 表达式。 ACR 任务支持的表达式包含空格分隔的五个必需字段：
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-The time zone used with the cron expressions is Coordinated Universal Time (UTC). Hours are in 24-hour format.
+cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制。
 
 > [!NOTE]
-> ACR Tasks does not support the `{second}` or `{year}` field in cron expressions. If you copy a cron expression used in another system, be sure to remove those fields, if they are used.
+> ACR 任务不支持在 cron 表达式中使用 `{second}` 或 `{year}` 字段。 如果复制其他系统中使用的 cron 表达式，请确保删除这些字段（如果已使用）。
 
 每个字段可以具有下列类型之一的值：
 
-|Type  |示例  |何时触发  |
+|类型  |示例  |何时触发  |
 |---------|---------|---------|
-|一个具体值 |<nobr>`"5 * * * *"`</nobr>|every hour at 5 minutes past the hour|
-|所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|every minute of the hour beginning 5:00 UTC (60 times a day)|
-|一个范围（`-` 运算符）|<nobr>`"0 1-3 * * *"`</nobr>|3 times per day, at 1:00, 2:00, and 3:00 UTC|
-|一组值（`,` 运算符）|<nobr>`"20,30,40 * * * *"`</nobr>|3 times per hour, at 20 minutes, 30 minutes, and 40 minutes past the hour|
-|一个间隔值（`/` 运算符）|<nobr>`"*/10 * * * *"`</nobr>|6 times per hour, at 10 minutes, 20 minutes, and so on, past the hour
+|一个具体值 |<nobr>`"5 * * * *"`</nobr>|每小时的第 5 分钟|
+|所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|从 5:00 UTC 开始每隔一分钟（每天 60 次）|
+|一个范围（`-` 运算符）|<nobr>`"0 1-3 * * *"`</nobr>|每天 1:00、2:00 和 3:00 UTC，触发 3 次|
+|一组值（`,` 运算符）|<nobr>`"20,30,40 * * * *"`</nobr>|每小时的第 20 分钟、30 分钟和 40 分钟，触发 3 次|
+|一个间隔值（`/` 运算符）|<nobr>`"*/10 * * * *"`</nobr>|每小时的第 10 分钟、20 分钟...，触发 6 次
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Cron examples
+### <a name="cron-examples"></a>Cron 示例
 
 |示例|何时触发  |
 |---------|---------|
 |`"*/5 * * * *"`|每五分钟一次|
 |`"0 * * * *"`|每小时一次（在每小时的开头）|
 |`"0 */2 * * *"`|每两小时一次|
-|`"0 9-17 * * *"`|once every hour from 9:00 to 17:00 UTC|
-|`"30 9 * * *"`|at 9:30 UTC every day|
-|`"30 9 * * 1-5"`|at 9:30 UTC every weekday|
-|`"30 9 * Jan Mon"`|at 9:30 UTC every Monday in January|
+|`"0 9-17 * * *"`|从 9:00 到 17:00 UTC 每小时触发一次|
+|`"30 9 * * *"`|每天 9:30 UTC|
+|`"30 9 * * 1-5"`|每个工作日的 9:30 UTC|
+|`"30 9 * Jan Mon"`|一月份的每个星期一 9:30 UTC|
 
 
 ## <a name="next-steps"></a>后续步骤
 
-In this tutorial, you learned how to create Azure Container Registry tasks that are automatically triggered by a timer. 
+本教程介绍了如何创建由计时器自动触发的 Azure 容器注册表任务。 
 
-For an example of using a scheduled task to clean up repositories in a registry, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
+有关使用计划任务清理注册表中的存储库的示例，请参阅[自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
 
-For examples of tasks triggered by source code commits or base image updates, see other articles in the [ACR Tasks tutorial series](container-registry-tutorial-quick-task.md).
+有关由源代码提交或基本映像更新触发的任务的示例，请参阅[ACR 任务教程系列](container-registry-tutorial-quick-task.md)中的其他文章。
 
 
 

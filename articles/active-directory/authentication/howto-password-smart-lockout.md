@@ -1,5 +1,5 @@
 ---
-title: Preventing attacks using smart lockout - Azure Active Directory
+title: 使用智能锁定 Azure Active Directory 阻止攻击
 description: Azure Active Directory 智能锁定功能可帮助保护组织免受试图猜出密码的暴力攻击
 services: active-directory
 ms.service: active-directory
@@ -29,11 +29,11 @@ ms.locfileid: "74381531"
  > [!NOTE]
  > 对于启用了直通身份验证的客户，哈希跟踪功能不可用，因为身份验证是在本地而不是在云中进行的。
 
-Federated deployments using AD FS 2016 and AF FS 2019 can enable similar benefits using [AD FS Extranet Lockout and Extranet Smart Lockout](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
+使用 AD FS 2016 和 AF FS 2019 的联合部署可使用[AD FS Extranet 锁定和 Extranet 智能锁定](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)实现类似的好处。
 
-智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 自定义智能锁定设置（其中包含特定于你组织的值）需要为你的用户付费 Azure AD 许可证。
 
-Using smart lockout does not guarantee that a genuine user will never be locked out. When smart lockout locks a user account, we try our best to not lockout the genuine user. 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。  
+使用智能锁定并不保证真实用户永远不会被锁定。当智能锁定锁定用户帐户时，我们将尽力尝试不锁定正版用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。  
 
 * 每个 Azure Active Directory 数据中心都会独立地跟踪锁定。 如果用户访问每个数据中心，则用户将具有 (threshold_limit * datacenter_count) 次尝试。
 * 智能锁定使用熟悉的位置与不熟悉的位置来区分不良参与者与真正的用户。 不熟悉的位置和熟悉的位置都将具有独立的锁定计数器。
@@ -43,12 +43,12 @@ Using smart lockout does not guarantee that a genuine user will never be locked 
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，需要确保：
 
 * Azure AD 的锁定阈值小于Active Directory 的帐户锁定阈值。 请设置此值，以便使 Active Directory 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。 
-* The Azure AD lockout duration must be set longer than the Active Directory reset account lockout counter after duration. Be aware that the Azure AD duration is set in seconds, while the AD duration is set in minutes. 
+* Azure AD 锁定持续时间设置的时间必须长于 Active Directory 重置帐户锁定计数器的持续时间。 请注意，Azure AD 持续时间以秒为单位，而 AD 持续时间设置为分钟。 
 
-For example, if you want your Azure AD counter to be higher than AD, then Azure AD would be 120 seconds (2 minutes) while your on-premises AD is set to 1 minute (60 seconds).
+例如，如果你希望 Azure AD 计数器高于 AD，则在本地 AD 设置为1分钟（60秒）时 Azure AD 为120秒（2分钟）。
 
 > [!IMPORTANT]
-> Currently, an administrator can't unlock the users' cloud accounts if they have been locked out by the Smart Lockout capability. 管理员必须等到锁定持续时间到期。 However, the user can unlock by using self-service password reset (SSPR) from a trusted device or location.
+> 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法解除其锁定。 管理员必须等到锁定持续时间到期。 但是，用户可以通过使用受信任的设备或位置的自助密码重置（SSPR）来解锁。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>验证本地帐户锁定策略
 
@@ -59,16 +59,16 @@ For example, if you want your Azure AD counter to be higher than AD, then Azure 
 3. 浏览到“计算机配置” > “策略” > “Windows 设置” > “安全设置” > “帐户策略” > “帐户锁定策略”。
 4. 验证“帐户锁定阈值”和“在此后重置帐户锁定计数器”值。
 
-![Modify the on-premises Active Directory account lockout policy](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>管理 Azure AD 智能锁定值
 
-根据组织的要求，可能需要自定义智能锁定值。 Customization of the smart lockout settings, with values specific to your organization, requires paid Azure AD licenses for your users.
+根据组织的要求，可能需要自定义智能锁定值。 自定义智能锁定设置（其中包含特定于你组织的值）需要为你的用户付费 Azure AD 许可证。
 
 要检查或修改组织的智能锁定值，请按以下步骤操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”。 Select **Authentication methods** > **Password protection**.
+1. 搜索并选择“Azure Active Directory”。 选择 "**身份验证方法** > **密码保护**"。
 1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”。 默认值为 10。
 1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）。 默认值为 60 秒（一分钟）。
 
@@ -77,11 +77,11 @@ For example, if you want your Azure AD counter to be higher than AD, then Azure 
 
 ![在 Azure 门户中自定义 Azure AD 智能锁定策略](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>How to determine if the Smart lockout feature is working or not
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>如何确定智能锁定功能是否正常工作
 
-When the smart lockout threshold is triggered, you will get the following message while the account is locked:
+触发智能锁定阈值时，帐户被锁定时，会收到以下消息：
 
-**Your account is temporarily locked to prevent unauthorized use. Try again later, and if you still have trouble, contact your admin.**
+**你的帐户已暂时锁定，以防止未经授权的使用。请稍后重试，如果问题仍然存在，请与管理员联系。**
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -92,7 +92,7 @@ ms.locfileid: "74278918"
 
 2. 从可用方法的下拉列表中选择“电话 - 短信 (**your_phone_number *)”，然后选择“确认”*** 。
 
-    ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+    ![选择默认登录方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
     用于登录的默认方法更改为“电话 - 短信 (**your_phone_number *)”*** 。
 

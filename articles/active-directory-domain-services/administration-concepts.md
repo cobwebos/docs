@@ -1,6 +1,6 @@
 ---
-title: Management concepts for Azure AD Domain Services | Microsoft Docs
-description: Learn about how to administer an Azure Active Directory Domain Services managed domain and the behavior of user accounts and passwords
+title: Azure AD 域服务的管理概念 |Microsoft Docs
+description: 了解如何管理 Azure Active Directory 域服务托管域以及用户帐户和密码的行为
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -17,66 +17,66 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74481009"
 ---
-# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Management concepts for user accounts, passwords, and administration in Azure Active Directory Domain Services
+# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中的用户帐户、密码和管理的管理概念
 
-When you create and run an Azure Active Directory Domain Services (AD DS) managed domain, there are some differences in behavior compared to a traditional on-premises AD DS environment. You use the same administrative tools in Azure AD DS as a self-managed domain, but you can't directly access the domain controllers (DC). There's also some differences in behavior for password policies and password hashes depending on the source of the user account creation.
+当你创建并运行 Azure Active Directory 域服务（AD DS）托管域时，与传统的本地 AD DS 环境相比，行为存在一些差异。 在 Azure AD DS 中使用的管理工具与自行托管域相同，但不能直接访问域控制器（DC）。 根据用户帐户创建的源，密码策略和密码哈希的行为也存在一些差异。
 
-This conceptual article details how to administer an Azure AD DS managed domain and the different behavior of user accounts depending on the way they're created.
+此概念文章详细介绍了如何管理 Azure AD DS 托管域和用户帐户的不同行为，具体取决于创建的方式。
 
-## <a name="domain-management"></a>Domain management
+## <a name="domain-management"></a>域管理
 
-In Azure AD DS, the domain controllers (DCs) that contain all the resources like users and groups, credentials, and policies are part of the managed service. For redundancy, two DCs are created as part of an Azure AD DS managed domain. You can't sign in to these DCs to perform management tasks. Instead, you create a management VM that's joined to the Azure AD DS managed domain, then install your regular AD DS management tools. You can use the Active Directory Administrative Center or Microsoft Management Console (MMC) snap-ins like DNS or Group Policy objects, for example.
+在 Azure AD DS 中，包含所有资源（如用户和组、凭据和策略）的域控制器（Dc）都是托管服务的一部分。 为实现冗余，会创建两个 Dc 作为 Azure AD DS 托管域的一部分。 你无法登录到这些 Dc 来执行管理任务。 相反，你创建一个加入到 Azure AD DS 托管域的管理 VM，然后安装常规 AD DS 管理工具。 例如，可以使用 Active Directory 管理中心或 Microsoft 管理控制台（MMC）管理单元（如 DNS 或组策略对象）。
 
-## <a name="user-account-creation"></a>User account creation
+## <a name="user-account-creation"></a>用户帐户创建
 
-User accounts can be created in Azure AD DS in multiple ways. Most user accounts are synchronized in from Azure AD, which can also include user account synchronized from an on-premises AD DS environment. You can also manually create accounts directly in Azure AD DS. Some features, like initial password synchronization or password policy, behave differently depending on how and where user accounts are created.
+可以通过多种方式在 Azure AD DS 中创建用户帐户。 大多数用户帐户是在中从 Azure AD 同步的，也可能包括从本地 AD DS 环境同步的用户帐户。 你还可以在 Azure AD DS 中直接手动创建帐户。 某些功能（如初始密码同步或密码策略）的行为方式不同，具体取决于创建用户帐户的方式和位置。
 
-* The user account can be synchronized in from Azure AD. This includes cloud-only user accounts created directly in Azure AD, and hybrid user accounts synchronized from an on-premises AD DS environment using Azure AD Connect.
-    * The majority of user accounts in Azure AD DS are created through the synchronization process from Azure AD.
-* The user account can be manually created in an Azure AD DS managed domain, and doesn't exist in Azure AD.
-    * If you need to create service accounts for applications that only run in Azure AD DS, you can manually create them in the managed domain. As synchronization is one-way from Azure AD, user accounts created in Azure AD DS aren't synchronized back to Azure AD.
+* 可以从 Azure AD 同步用户帐户。 这包括直接在 Azure AD 中创建的仅限云的用户帐户，以及使用 Azure AD Connect 从本地 AD DS 环境同步的混合用户帐户。
+    * Azure AD DS 中的大部分用户帐户是通过 Azure AD 中的同步过程创建的。
+* 可以在 Azure AD DS 托管域中手动创建用户帐户，并且 Azure AD 中不存在该帐户。
+    * 如果需要为仅在 Azure AD DS 中运行的应用程序创建服务帐户，你可以在托管域中手动创建它们。 由于同步是 Azure AD 单向的，因此在 Azure AD DS 中创建的用户帐户不会同步回 Azure AD。
 
 ## <a name="password-policy"></a>密码策略
 
-Azure AD DS includes a default password policy that defines settings for things like account lockout, maximum password age, and password complexity. Settings like account lockout policy apply to all users in Azure AD DS, regardless of how the user was created as outlined in the previous section. A few settings, like minimum password length and password complexity, only apply to users created directly in Azure AD DS.
+Azure AD DS 包括一个默认密码策略，该策略定义帐户锁定、最长密码期限和密码复杂性等设置。 帐户锁定策略的设置适用于 Azure AD DS 中的所有用户，而不考虑上一节中所述的用户创建方式。 一些设置（如最小密码长度和密码复杂性）仅适用于直接在 Azure AD DS 中创建的用户。
 
-You can create your own custom password policies to override the default policy in Azure AD DS. These custom policies can then be applied to specific groups of users as needed.
+你可以创建自己的自定义密码策略来覆盖 Azure AD DS 中的默认策略。 然后，可以根据需要将这些自定义策略应用到特定的用户组。
 
-For more information on the differences in how password policies are applied depending on the source of user creation, see [Password and account lockout policies on managed domains][password-policy].
+有关如何根据用户创建的源应用密码策略的详细信息，请参阅[托管域上的密码和帐户锁定策略][password-policy]。
 
-## <a name="password-hashes"></a>Password hashes
+## <a name="password-hashes"></a>密码哈希
 
 若要对托管域上的用户进行身份验证，Azure AD DS 需要密码哈希，其格式适用于 NT LAN Manager (NTLM) 和 Kerberos 身份验证。 除非为租户启用了 Azure AD DS，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式生成或存储密码哈希。 出于安全考虑，Azure AD 也不以明文形式存储任何密码凭据。 因此，Azure AD 无法基于用户的现有凭据自动生成这些 NTLM 或 Kerberos 密码哈希。
 
 对于仅限云的用户帐户，用户必须更改其密码才能使用 Azure AD DS。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。
 
-For users synchronized from an on-premises AD DS environment using Azure AD Connect, [enable synchronization of password hashes][hybrid-phs].
+对于使用 Azure AD Connect 从本地 AD DS 环境同步的用户，[启用密码哈希同步][hybrid-phs]。
 
 > [!IMPORTANT]
-> Azure AD Connect only synchronizes legacy password hashes when you enable Azure AD DS for your Azure AD tenant. Legacy password hashes aren't used if you only use Azure AD Connect to synchronize an on-premises AD DS environment with Azure AD.
+> 仅当你为 Azure AD 租户启用 Azure AD DS 时，Azure AD Connect 才同步旧密码哈希。 如果仅使用 Azure AD Connect 将本地 AD DS 环境与 Azure AD 同步，则不使用旧密码哈希。
 >
-> If your legacy applications don't use NTLM authentication or LDAP simple binds, we recommend that you disable NTLM password hash synchronization for Azure AD DS. For more information, see [Disable weak cipher suites and NTLM credential hash synchronization][secure-domain].
+> 如果旧版应用程序不使用 NTLM 身份验证或 LDAP 简单绑定，则建议你禁用 Azure AD DS 的 NTLM 密码哈希同步。 有关详细信息，请参阅[禁用弱密码套件和 NTLM 凭据哈希同步][secure-domain]。
 
-经过适当的配置后，可用的密码哈希将存储在 Azure AD DS 托管域中。 删除 Azure AD DS 托管域也会删除其中存储的所有密码哈希。 Synchronized credential information in Azure AD can't be reused if you later create an Azure AD DS managed domain - you must reconfigure the password hash synchronization to store the password hashes again. 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的 Azure AD DS 托管域中生成并存储密码哈希。 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][azure-ad-password-sync]。
+经过适当的配置后，可用的密码哈希将存储在 Azure AD DS 托管域中。 删除 Azure AD DS 托管域也会删除其中存储的所有密码哈希。 如果之后创建 Azure AD DS 托管域，Azure AD 中的同步凭据信息将无法重复使用-你必须重新配置密码哈希同步，以再次存储密码哈希。 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的 Azure AD DS 托管域中生成并存储密码哈希。 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][azure-ad-password-sync]。
 
 > [!IMPORTANT]
-> Azure AD Connect should only be installed and configured for synchronization with on-premises AD DS environments. It's not supported to install Azure AD Connect in an Azure AD DS managed domain to synchronize objects back to Azure AD.
+> 只应安装并配置 Azure AD Connect 以便与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect，以将对象同步回 Azure AD。
 
 ## <a name="forests-and-trusts"></a>林和信任
 
-A *forest* is a logical construct used by Active Directory Domain Services (AD DS) to group one or more *domains*. The domains then store objects for user or groups, and provide authentication services.
+*林*是 Active Directory 域服务（AD DS）用于对一个或多个*域*进行分组的逻辑构造。 然后，域存储用户或组的对象，并提供身份验证服务。
 
-In Azure AD DS, the forest only contains one domain. On-premises AD DS forests often contain many domains. In large organizations, especially after mergers and acquisitions, you may end up with multiple on-premises forests that each then contain multiple domains.
+在 Azure AD DS 中，林只包含一个域。 本地 AD DS 林通常包含多个域。 在大型组织中，特别是合并和收购后，最终可能会得到多个本地林，每个林都包含多个域。
 
-By default, an Azure AD DS managed domain is created as a *user* forest. This type of forest synchronizes all objects from Azure AD, including any user accounts created in an on-premises AD DS environment. User accounts can directly authenticate against the Azure AD DS managed domain, such as to sign in to a domain-joined VM. A user forest works when the password hashes can be synchronized and users aren't using exclusive sign-in methods like smart card authentication.
+默认情况下，将 Azure AD DS 托管域创建为*用户*林。 这种类型的林将同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的任何用户帐户。 用户帐户可以直接针对 Azure AD DS 托管域进行身份验证，例如登录到已加入域的 VM。 用户林可用于同步密码哈希，并且用户不使用类似于智能卡身份验证的专用登录方法。
 
-In an Azure AD DS *resource* forest, users authenticate over a one-way forest *trust* from their on-premises AD DS. With this approach, the user objects and password hashes aren't synchronized to Azure AD DS. The user objects and credentials only exist in the on-premises AD DS. This approach lets enterprises host resources and application platforms in Azure that depend on classic authentication such LDAPS, Kerberos, or NTLM, but any authentication issues or concerns are removed. Azure AD DS resource forests are currently in preview.
+在 Azure AD DS*资源*林中，用户从本地 AD DS 对单向林*信任*进行身份验证。 采用此方法时，用户对象和密码哈希不会同步到 Azure AD DS。 仅本地 AD DS 中存在用户对象和凭据。 此方法允许企业在 Azure 中托管依赖于经典身份验证（例如 LDAPS、Kerberos 或 NTLM）的资源和应用程序平台，但会删除任何身份验证问题或问题。 Azure AD DS 资源林目前处于预览阶段。
 
-For more information about forest types in Azure AD DS, see [What are resource forests?][concepts-forest] and [How do forest trusts work in Azure AD DS?][concepts-trust]
+有关 Azure AD DS 中的林类型的详细信息，请参阅[什么是资源林？][concepts-forest]和[林信任如何在 Azure AD DS 中工作？][concepts-trust]
 
 ## <a name="next-steps"></a>后续步骤
 
-To get started, [create an Azure AD DS managed domain][create-instance].
+若要开始，请[创建 AZURE AD DS 托管域][create-instance]。
 
 <!-- INTERNAL LINKS -->
 [password-policy]: password-policy.md

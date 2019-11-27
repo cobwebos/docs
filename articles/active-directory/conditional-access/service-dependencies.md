@@ -1,6 +1,6 @@
 ---
-title: Conditional Access service dependencies - Azure Active Directory
-description: Learn how conditions are used in Azure Active Directory Conditional Access to trigger a policy.
+title: 条件访问服务依赖项-Azure Active Directory
+description: 了解如何在 Azure Active Directory 条件访问中使用条件来触发策略。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -18,48 +18,48 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74380018"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>What are service dependencies in Azure Active Directory Conditional Access? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项是什么？ 
 
-With Conditional Access policies, you can specify access requirements to websites and services. For example, your access requirements can include requiring multi-factor authentication (MFA) or [managed devices](require-managed-devices.md). 
+使用条件访问策略时，可以指定网站和服务的访问要求。 例如，访问要求可以包括要求进行多重身份验证 (MFA)，或者要求使用[托管设备](require-managed-devices.md)。 
 
-When you access a site or service directly, the impact of a related policy is typically easy to assess. For example, if you have a policy that requires MFA for SharePoint Online configured, MFA is enforced for each sign-in to the SharePoint web portal. However, it is not always straight-forward to assess the impact of a policy because there are cloud apps with dependencies to other cloud apps. For example, Microsoft Teams can provide access to resources in SharePoint Online. So, when you access Microsoft Teams in our current scenario, you are also subject to the SharePoint MFA policy.   
+直接访问站点或服务时，通常容易评估相关策略的影响。 例如，如果策略要求对配置的 SharePoint Online 进行 MFA，则每次登录到 SharePoint Web 门户时，都会强制执行 MFA。 但是，评估某项策略的影响并非始终是直截了当的，因为某些云应用依赖于其他云应用。 例如，可以通过 Microsoft Teams 访问 SharePoint Online 中的资源。 因此，你在访问当前方案中的 Microsoft Teams 时，也会受 SharePoint MFA 策略的约束。   
 
 ## <a name="policy-enforcement"></a>策略强制执行 
 
-If you have a service dependency configured, the policy may be applied using early-bound or late-bound enforcement. 
+如果配置了服务依赖项，则可使用早期绑定或后期绑定强制来应用此策略。 
 
-- **Early-bound policy enforcement** means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into MS Teams. 
-- **Late-bound policy enforcement** occurs after the user signs into the calling app. Enforcement is deferred to when calling app requests, a token for the downstream service. Examples include MS Teams accessing Planner and Office.com accessing SharePoint. 
+- **早期绑定策略强制**意味着用户必须在访问调用应用之前满足依赖的服务策略。 例如，在登录 MS Teams 之前，用户必须满足 SharePoint 策略要求。 
+- **后期绑定策略强制**发生在用户登录到调用应用以后。 强制会延迟到调用应用请求时（下游服务的令牌）。 示例包括 MS Teams 访问 Planner，以及 Office.com 访问 SharePoint。 
 
-The diagram below illustrates MS Teams service dependencies. Solid arrows indicate early-bound enforcement the dashed arrow for Planner indicates late-bound enforcement. 
+下图演示了 MS Teams 服务依赖关系。 Planner 的实线箭头表示早期绑定强制，虚线箭头表示后期绑定强制。 
 
-![MS Teams service dependencies](./media/service-dependencies/01.png)
+![MS Teams 服务依赖关系](./media/service-dependencies/01.png)
 
-As a best practice, you should set common policies across related apps and services whenever possible. Having a consistent security posture provides you with the best user experience. For example, setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for business significantly reduces unexpected prompts that may arise from different policies being applied to downstream services. 
+最佳做法是，尽可能跨相关的应用和服务设置常用策略。 安全态势一致可以为你提供最佳用户体验。 例如，跨 Exchange Online、SharePoint Online、Microsoft Teams 和 Skype for Business 设置常用策略可以显著减少意外提示数（为下游服务应用不同策略时，可能会出现这些提示）。 
 
-The below table lists additional service dependencies, where the client apps must satisfy  
+下表列出了客户端应用必须满足的其他服务依赖项  
 
-| 客户端应用         | Downstream service                          | Enforcement |
+| 客户端应用         | 下游服务                          | 强制 |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Classroom | 交换                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| Microsoft Teams     | 交换                                    | Early-bound |
-|                     | MS Planner                                  | Late-bound  |
-|                     | SharePoint                                  | Early-bound |
-|                     | Skype for Business Online                   | Early-bound |
-| Office Portal       | 交换                                    | Late-bound  |
-|                     | SharePoint                                  | Late-bound  |
-| Outlook groups      | 交换                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| PowerApp           | Microsoft Azure Management (portal and API) | Early-bound |
-|                     | Microsoft Azure Active Directory              | Early-bound |
-| Project             | Dynamics CRM                                | Early-bound |
-| Skype for Business  | 交换                                    | Early-bound |
-| Visual Studio       | Microsoft Azure Management (portal and API) | Early-bound |
-| Microsoft Forms     | 交换                                    | Early-bound |
-|                     | SharePoint                                  | Early-bound |
-| 微软待办     | 交换                                    | Early-bound |
+| Azure Data Lake     | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+| Microsoft Classroom | Exchange                                    | 早期绑定 |
+|                     | SharePoint                                  | 早期绑定 |
+| Microsoft Teams     | Exchange                                    | 早期绑定 |
+|                     | MS Planner                                  | 后期绑定  |
+|                     | SharePoint                                  | 早期绑定 |
+|                     | Skype for Business Online                   | 早期绑定 |
+| Office 门户       | Exchange                                    | 后期绑定  |
+|                     | SharePoint                                  | 后期绑定  |
+| Outlook 组      | Exchange                                    | 早期绑定 |
+|                     | SharePoint                                  | 早期绑定 |
+| PowerApps           | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+|                     | Microsoft Azure Active Directory              | 早期绑定 |
+| Project             | Dynamics CRM                                | 早期绑定 |
+| Skype for Business  | Exchange                                    | 早期绑定 |
+| Visual Studio       | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+| Microsoft Forms     | Exchange                                    | 早期绑定 |
+|                     | SharePoint                                  | 早期绑定 |
+| 微软待办     | Exchange                                    | 早期绑定 |
 
 ## <a name="next-steps"></a>后续步骤
 

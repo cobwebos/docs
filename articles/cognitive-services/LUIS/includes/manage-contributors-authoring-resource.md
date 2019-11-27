@@ -17,13 +17,13 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/23/2019
 ms.locfileid: "74451539"
 ---
-If your apps need to be authored by other people, you need to add the associated email addresses in the Azure portal's authoring resource.
+如果你的应用需要由其他人创作，则需要在 Azure 门户的创作资源中添加关联的电子邮件地址。
 
-If you are the **owner or administrator of your Azure subscription**, you can add a contributor to the resource. 
+如果你是**Azure 订阅的所有者或管理员**，则可将参与者添加到资源。 
 
-If you are **not the owner or administrator of your Azure subscription**, your Azure account needs to have `Microsoft.Authorization/roleAssignments/write` permissions.
+如果你**不是 azure 订阅的所有者或管理员**，你的 azure 帐户需要具有 `Microsoft.Authorization/roleAssignments/write` 的权限。
 
-If you have trouble with this role assignment, review: 
+如果在执行此角色分配时遇到问题，请查看： 
 
-* [Azure role assignments](../../../role-based-access-control/role-assignments-portal.md)
- * [Azure access control troubleshooting](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Azure 角色分配](../../../role-based-access-control/role-assignments-portal.md)
+ * [Azure 访问控制故障排除](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)

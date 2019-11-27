@@ -1,6 +1,6 @@
 ---
-title: Manage users and devices Azure MFA - Azure Active Directory
-description: How can administrators change user settings such as forcing the users to do the proof-up process again.
+title: 管理用户和设备 Azure MFA-Azure Active Directory
+description: 管理员如何更改用户设置，例如，强制用户再次完成验证过程。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -26,32 +26,32 @@ ms.locfileid: "74404172"
 * 删除应用密码
 * 在所有信任的设备上要求 MFA
 
-## <a name="manage-authentication-methods"></a>Manage authentication methods
+## <a name="manage-authentication-methods"></a>管理身份验证方法
 
-As an administrator assigned the Authentication Administrator role you can require users to reset their password, re-register for MFA, or revoke existing MFA sessions from their user object.
+作为被分配“身份验证管理员”角色的管理员，你可以要求用户重置其密码、重新注册 MFA，或者从其用户对象撤消现有的 MFA 会话。
 
-![Manage authentication methods from the Azure portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+![从 Azure 门户管理身份验证方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
-1. Choose the user you wish to perform an action on and select **Authentication methods**.
-   - **Reset Password** will reset the user's password and assign a temporary password that must be changed on the next sign in.
-   - **Require Re-register MFA** will make it so that when the user signs in next time, they will be requested to setup a new MFA authentication method.
-   - **Revoke MFA Sessions** clears the user's remembered MFA sessions and requires them to perform MFA the next time it is required by the policy on the device.
+1. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >  > 。
+1. 选择要在其上执行操作的用户，然后选择“身份验证方法”。
+   - “重置密码”会重置用户的密码并分配一个必须在下次登录时更改的临时密码。
+   - “要求重新注册 MFA”在生效后，会请求用户在下次登录时设置一个新的 MFA 身份验证方法。
+   - “撤消 MFA 会话”会清除用户的被系统记住的 MFA 会话，并要求用户下一次登录时执行 MFA。这是设备上的策略要求的。
 
 ## <a name="delete-users-existing-app-passwords"></a>删除用户现有的应用密码
 
-此设置会删除用户创建的所有应用密码。 与这些应用密码关联的非浏览器应用将会停止工作，直到创建新应用密码为止。 Global administrator permissions are required to perform this action.
+此设置会删除用户创建的所有应用密码。 与这些应用密码关联的非浏览器应用将会停止工作，直到创建新应用密码为止。 需要全局管理员权限才能执行此操作。
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+2. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >  > 。
 3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。
-4. 选中要管理的用户或用户旁的框。 A list of quick step options appears on the right.
+4. 选中要管理的用户或用户旁的框。 右侧会显示快速步骤选项列表。
 5. 选择“管理用户设置”。
 6. 选中“删除选定用户生产的所有现有应用密码”框。
-   ![Delete all existing app passwords](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+   ![删除所有现有的应用密码](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. 单击“保存”。
 8. 单击“关闭”。
 

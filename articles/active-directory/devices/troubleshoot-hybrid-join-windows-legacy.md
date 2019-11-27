@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot legacy hybrid Azure Active Directory joined devices
+title: 排除旧版混合 Azure Active Directory 联接设备的故障
 description: 排查已加入混合 Azure Active Directory 的下层设备问题。
 services: active-directory
 ms.service: active-directory
@@ -32,7 +32,7 @@ ms.locfileid: "74379119"
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
-- Device-based Conditional Access
+- 基于设备的条件性访问
 
 本文提供有关如何解决潜在问题的故障排除指导。  
 
@@ -69,11 +69,11 @@ ms.locfileid: "74379119"
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
    - Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 可能的原因如下：AD FS 缺少或配置不当（对于联合域）、Azure AD 无缝单一登录缺少或配置不当（对于托管域）或者网络存在问题。 
-   - It could be that multi-factor authentication (MFA) is enabled/configured for the user and WIAORMULTIAUTHN is not configured at the AD FS server. 
+   - 这可能是因为为用户启用了多重身份验证（MFA），并且未在 AD FS 服务器上配置 WIAORMULTIAUTHN。 
    - 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 **autoworkplace.exe** 以无提示方式请求令牌。
    - 客户端的 IE 的 intranet 区域中可能缺少 AD FS 和 Azure AD URL。
    - 网络连接问题可能阻止 **autoworkplace.exe** 访问 AD FS 或 Azure AD URL。 
-   - **Autoworkplace.exe** requires the client to have direct line of sight from the client to the organization's on-premises AD domain controller, which means that hybrid Azure AD join succeeds only when the client is connected to organization's intranet.
+   - **了 autoworkplace.exe**要求客户端能够从客户端直接连接到组织的本地 AD 域控制器，这意味着仅当客户端连接到组织的 intranet 时，混合 Azure AD 联接才会成功。
    - 你的组织使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在 `https://autologon.microsoftazuread-sso.com` 或 `https://aadg.windows.net.nsatc.net`，未对 Intranet 区域启用“允许通过脚本更新状态栏”。
 - 登录身份不是域用户
 

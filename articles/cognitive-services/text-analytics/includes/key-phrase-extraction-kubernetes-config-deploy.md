@@ -1,7 +1,7 @@
 ---
-title: Key Phrase Extraction Kubernetes config and deploy steps
+title: 关键短语提取 Kubernetes 配置和部署步骤
 titleSuffix: Azure Cognitive Services
-description: Key Phrase Extraction Kubernetes config and deploy steps
+description: 关键短语提取 Kubernetes 配置和部署步骤
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -16,39 +16,39 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383495"
 ---
-### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Deploy the Key Phrase Extraction container to an AKS cluster
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>将关键短语提取容器部署到 AKS 群集
 
-1. Open the Azure CLI, and sign in to Azure.
+1. 打开 Azure CLI，并登录到 Azure。
 
     ```azurecli
     az login
     ```
 
-1. Sign in to the AKS cluster. Replace `your-cluster-name` and `your-resource-group` with the appropriate values.
+1. 登录到 AKS 群集。 用适当的值替换 `your-cluster-name` 和 `your-resource-group`。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    After this command runs, it reports a message similar to the following:
+    运行此命令后，它将报告类似于以下内容的消息：
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > If you have multiple subscriptions available to you on your Azure account and the `az aks get-credentials` command returns with an error, a common problem is that you're using the wrong subscription. Set the context of your Azure CLI session to use the same subscription that you created the resources with and try again.
+    > 如果在 Azure 帐户上有多个可用订阅，而 `az aks get-credentials` 命令返回错误，则表明你使用了错误的订阅，这是一个常见问题。 将 Azure CLI 会话的上下文设置为使用创建资源时使用的同一订阅，然后重试。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. Open the text editor of choice. This example uses Visual Studio Code.
+1. 打开所选的文本编辑器。 此示例使用 Visual Studio Code。
 
     ```azurecli
     code .
     ```
 
-1. Within the text editor, create a new file named *keyphrase.yaml*, and paste the following YAML into it. Be sure to replace `billing/value` and `apikey/value` with your own information.
+1. 在文本编辑器中，创建一个名为*关键短语. yaml*的新文件，并将以下 yaml 粘贴到其中。 请确保将 `billing/value` 和 `apikey/value` 替换为自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "74383495"
         app: keyphrase-app
     ```
 
-1. Save the file, and close the text editor.
-1. Run the Kubernetes `apply` command with the *keyphrase.yaml* file as its target:
+1. 保存该文件并关闭文本编辑器。
+1. 运行 Kubernetes `apply` 命令，并将*关键短语*文件作为其目标：
 
     ```console
     kubectl apply -f keyphrase.yaml
     ```
 
-    After the command successfully applies the deployment configuration, a message appears similar to the following output:
+    在该命令成功应用部署配置后，会显示一条类似于以下输出的消息：
 
     ```console
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
-1. Verify that the pod was deployed:
+1. 验证是否已部署 pod：
 
     ```console
     kubectl get pods
     ```
 
-    The output for the running status of the pod:
+    Pod 的运行状态的输出：
 
     ```console
     NAME                         READY     STATUS    RESTARTS   AGE
     keyphrase-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. Verify that the service is available, and get the IP address.
+1. 验证服务是否可用，并获取 IP 地址。
 
     ```console
     kubectl get services
     ```
 
-    The output for the running status of the *keyphrase* service in the pod:
+    Pod 中*关键短语*服务的运行状态的输出：
 
     ```console
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

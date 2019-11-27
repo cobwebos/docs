@@ -15,15 +15,15 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/25/2019
 ms.locfileid: "74485426"
 ---
-| 资源 | 默认限制 |
+| Resource | 默认限制 |
 | --- | :--- |
-| Maximum clusters per subscription | 100 |
-| Maximum nodes per cluster with Virtual Machine Availability Sets and Basic Load Balancer SKU  | 100 |
-| Maximum nodes per cluster with Virtual Machine Scale Sets and [Standard Load Balancer SKU][standard-load-balancer] | 800 (100 nodes per [node pool][node-pool]) |
-| Maximum pods per node: [Basic networking][basic-networking] with Kubenet | 110 |
-| Maximum pods per node: [Advanced networking][advanced-networking] with Azure Container Networking Interface | Azure CLI 部署：30<sup>1</sup><br />Azure Resource Manager template: 30<sup>1</sup><br />门户部署：30 |
+| 每个订阅的最大群集数 | 100 |
+| 虚拟机可用性集和基本负载均衡器 SKU 每个群集的最大节点数  | 100 |
+| 虚拟机规模集和[标准负载均衡器 SKU][standard-load-balancer]每个群集的最大节点数 | 800（每个[节点池][node-pool]100 个节点） |
+| 每个节点最多箱数：[基本网络][basic-networking]与 Kubenet | 110 |
+| 每个节点的最大 pod 数：通过 Azure 容器网络接口的[高级网络][advanced-networking] | Azure CLI 部署：30<sup>1</sup><br />Azure 资源管理器模板： 30<sup>1</sup><br />门户部署：30 |
 
-<sup>1</sup>When you deploy an Azure Kubernetes Service (AKS) cluster with the Azure CLI or a Resource Manager template, this value is configurable up to 250 pods per node. You can't configure maximum pods per node after you've already deployed an AKS cluster, or if you deploy a cluster by using the Azure portal.<br />
+<sup>1</sup>使用 Azure CLI 或资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集时，此值是可以配置的，最大可以配置为每节点 250 个 Pod。 在部署 AKS 群集以后，或者在使用 Azure 门户部署群集的情况下，不能配置每节点的最大 Pod 数。<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

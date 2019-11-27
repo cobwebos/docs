@@ -22,32 +22,32 @@ ms.locfileid: "74456806"
 
 若要详细了解 IoT Edge 运行时，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-This article lists the steps to install the Azure IoT Edge runtime on your Windows x64 (AMD/Intel) system using Windows containers.
+本文列出了使用 Windows 容器在 Windows x64 (AMD/Intel) 系统上安装 Azure IoT Edge 运行时的步骤。
 
 > [!NOTE]
-> A known Windows operating system issue prevents transition to sleep and hibernate power states when IoT Edge modules (process-isolated Windows Nano Server containers) are running. This issue impacts battery life on the device.
+> 当 IoT Edge 模块（进程隔离的 Windows Nano Server 容器）正在运行时，一个已知的 Windows 操作系统问题会阻止转换到睡眠和休眠电源状态。 此问题会影响设备的电池寿命。
 >
-> As a workaround, use the command `Stop-Service iotedge` to stop any running IoT Edge modules before using these power states. 
+> 作为解决方法，在使用这些电源状态之前，请使用 `Stop-Service iotedge` 命令停止任何正在运行的 IoT Edge 模块。 
 
-不推荐或支持在 Windows 系统上使用 Linux 容器作为 Azure IoT Edge 的生产配置。 但可将其用于开发和测试。 To learn more, see [Use IoT Edge on Windows to run Linux containers](how-to-install-iot-edge-windows-with-linux.md).
+不推荐或支持在 Windows 系统上使用 Linux 容器作为 Azure IoT Edge 的生产配置。 但可将其用于开发和测试。 有关详细信息，请参阅[使用 Windows 上的 IoT Edge 运行 Linux 容器](how-to-install-iot-edge-windows-with-linux.md)。
 
-For information about what's included in the latest version of IoT Edge, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
+有关最新 IoT Edge 版本包含的功能的信息，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。 
 
 ### <a name="supported-windows-versions"></a>支持的 Windows 版本
 
-For development and test scenarios, Azure IoT Edge with Windows containers can be installed on any version of Windows 10 or Windows Server 2019 (build 17763) that supports the containers feature. For information about which operating systems are currently supported for production scenarios, see [Azure IoT Edge supported systems](support.md#operating-systems). 
+对于开发和测试方案，包含 Windows 容器的 Azure IoT Edge 可以安装在支持容器功能的任何版本的 Windows 10 或 Windows Server 2019（内部版本 17763）上。 有关生产方案目前支持哪些操作系统的信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。 
 
-IoT Core devices must include the IoT Core- Windows Containers optional feature to support the IoT Edge runtime. Use the following command in a [remote PowerShell session](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) to check that Windows containers are supported on your device: 
+IoT Core 设备必须包括 IoT Core Windows 容器可选功能以支持 IoT Edge 运行时。 在[远程 PowerShell 会话](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)中使用以下命令来检查设备是否支持 Windows 容器： 
 
 ```powershell
 Get-Service vmcompute
 ```
 
-If the service is present, you should get a successful response with the service status listed as **running**. If the vmcompute service is not found, then your device does not meet the requirements for IoT Edge. Contact your hardware provider to ask about support for this feature. 
+如果存在该服务，则应该会收到成功的响应，其中服务状态列为“正在运行”。 如果找不到 vmcompute 服务，则设备不满足 IoT Edge 的要求。 请与硬件提供商联系，询问此功能是否支持。 
 
 ### <a name="prepare-for-a-container-engine"></a>为容器引擎做好准备 
 
@@ -61,19 +61,19 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
 
 >[!TIP]
->For IoT Core devices, we recommend running the installation commands using a RemotePowerShell session. For more information, see [Using PowerShell for Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
+>对于 IoT Core 设备，我们建议使用 RemotePowerShell 会话运行安装命令。 有关详细信息，请参阅[将 PowerShell 用于 Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)。
 
-首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 A single IoT Edge device can be provisioned manually using a device connection string provided by IoT Hub. Or, you can use the Device Provisioning Service (DPS) to automatically provision devices, which is helpful when you have many devices to set up. 根据预配选项，选择合适的安装脚本。 
+首次在设备上安装 IoT Edge 运行时时，需要使用 IoT 中心内的标识预配该设备。 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务 (DPS) 自动预配设备，需要设置多个设备时，这种做法非常有用。 根据预配选项，选择合适的安装脚本。 
 
 以下部分介绍新设备上 IoT Edge 安装脚本的常见用例和参数。 
 
 ### <a name="option-1-install-and-manually-provision"></a>选项 1：安装和手动预配
 
-In this first option, you provide a **device connection string** generated by IoT Hub to provision the device. 
+在这第一个选项中，提供 IoT 中心生成的、用于预配设备的**设备连接字符串**。 
 
-This example demonstrates a manual installation with Windows containers:
+此示例演示使用 Windows 容器进行的手动安装：
 
-1. If you haven't already, register a new IoT Edge device and retrieve the **device connection string**. Copy the connection string to use later in this section. You can complete this step using the following tools:
+1. 注册新的 IoT Edge 设备并检索**设备连接字符串**（如果尚未这样做）。 复制连接字符串，以便稍后在本部分中使用。 可以使用以下工具完成此步骤：
 
    * [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
@@ -88,14 +88,14 @@ This example demonstrates a manual installation with Windows containers:
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. The **Deploy-IoTEdge** command checks that your Windows machine is on a supported version, turns on the containers feature, and then downloads the moby runtime and the IoT Edge runtime. The command defaults to using Windows containers. 
+3. **Deploy-IoTEdge** 命令检查 Windows 计算机是否使用了支持的版本，启用容器功能，然后下载 moby 运行时和 IoT Edge 运行时。 该命令默认使用 Windows 容器。 
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-4. At this point, IoT Core devices may restart automatically. Other Windows 10 or Windows Server devices may prompt you to restart. If so, restart your device now. Once your device is ready, run PowerShell as an administrator again.
+4. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
 5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 
 
@@ -104,11 +104,11 @@ This example demonstrates a manual installation with Windows containers:
    Initialize-IoTEdge
    ```
 
-6. When prompted, provide the device connection string that you retrieved in step 1. The device connection string associates the physical device with a device ID in IoT Hub. 
+6. 出现提示时，请提供在步骤 1 中检索到的设备连接字符串。 该设备连接字符串会将物理设备与 IoT 中心内的设备 ID 相关联。 
 
-   The device connection string takes the following format, and should not include quotation marks: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   该设备连接字符串采用以下格式（不包括引号）：`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-7. Use the steps in [Verify successful installation](#verify-successful-installation) to check the status of IoT Edge on your device. 
+7. 使用[验证安装是否成功](#verify-successful-installation)中的步骤检查设备上的 IoT Edge 状态。 
 
 手动安装和预配设备时，可以使用附加的参数来修改安装，包括：
 
@@ -116,16 +116,16 @@ This example demonstrates a manual installation with Windows containers:
 * 将安装程序指向某个脱机目录
 * 声明特定的代理容器映像，并提供凭据（如果该映像位于专用注册表中）
 
-For more information about these installation options, skip ahead to learn about [all installation parameters](#all-installation-parameters).
+有关这些安装选项的详细信息，请直接跳到[所有安装参数](#all-installation-parameters)。
 
 ### <a name="option-2-install-and-automatically-provision"></a>选项 2：安装和自动预配
 
-在这第二个选项中，使用 IoT 中心设备预配服务来预配设备。 Provide the **Scope ID** from a Device Provisioning Service instance along with any other information specific to your preferred [attestation mechanism](../iot-dps/concepts-security.md#attestation-mechanism):
+在这第二个选项中，使用 IoT 中心设备预配服务来预配设备。 提供设备预配服务实例的**范围 ID** 以及特定于首选[证明机制](../iot-dps/concepts-security.md#attestation-mechanism)的任何其他信息：
 
-* [Create and provision a simulated IoT Edge device with a virtual TPM on Windows](how-to-auto-provision-simulated-device-windows.md)
-* [Create and provision an IoT Edge device using symmetric key attestation](how-to-auto-provision-symmetric-keys.md)
+* [使用 Windows 上的虚拟 TPM 创建和预配模拟 IoT Edge 设备](how-to-auto-provision-simulated-device-windows.md)
+* [使用对称密钥证明创建和预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)
 
-When you install and provision a device automatically, you can use additional parameters to modify the installation including:
+自动安装和预配设备时，可以使用附加的参数来修改安装，包括：
 
 * 定向流量，使其通过代理服务器
 * 将安装程序指向某个脱机目录
@@ -135,79 +135,79 @@ When you install and provision a device automatically, you can use additional pa
 
 ## <a name="offline-installation"></a>脱机安装
 
-During installation two files are downloaded:
+在安装过程中，将下载两个文件：
 
-* Microsoft Azure IoT Edge cab, which contains the IoT Edge security daemon (iotedged), Moby container engine, and Moby CLI.
+* Microsoft Azure IoT Edge cab，其中包含 IoT Edge 安全守护程序 (iotedged)、Moby 容器引擎和 Moby CLI。
 * Visual C++ Redistributable Package（VC 运行时）msi 文件
 
-You can download one or both of these files ahead of time to the device, then point the installation script at the directory that contains the files. 安装程序首先会检查该目录，然后仅下载未找到的组件。 If all the files are available offline, you can install with no internet connection. You can also use this feature to install a specific version of the components.  
+可以提前将其中的一个或两个文件下载到设备，然后将安装脚本指向包含这些文件的目录。 安装程序首先会检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则无需连接到 Internet 连接即可安装。 还可以使用此功能来安装特定版本的组件。  
 
-For the latest IoT Edge installation files along with previous versions, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
+有关最新的 IoT Edge 安装文件以及旧版本，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-To install with offline components, use the `-OfflineInstallationPath` parameter as part of the Deploy-IoTEdge command and provide the absolute path to the file directory. 例如，
+若要使用脱机组件进行安装，请使用 `-OfflineInstallationPath` 参数作为 Deploy-IoTEdge 命令的一部分，并提供文件目录的绝对路径。 例如，应用于对象的
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-You can also use the offline installation path parameter with the Update-IoTEdge command, introduced later in this article. 
+还可以在 Update-IoTEdge 命令中使用脱机安装路径参数，本文稍后将予以介绍。 
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
-检查 IoT Edge 服务的状态。 It should be listed as running.  
+检查 IoT Edge 服务的状态。 该服务应列为“正在运行”。  
 
 ```powershell
 Get-Service iotedge
 ```
 
-检查过去 5 分钟的服务日志。 If you just finished installing the IoT Edge runtime, you may see a list of errors from the time between running **Deploy-IoTEdge** and **Initialize-IoTEdge**. These errors are expected, as the service is trying to start before being configured. 
+检查过去 5 分钟的服务日志。 如果刚刚完成了 IoT Edge 运行时的安装，可能会看到运行 **Deploy-IoTEdge** 之后、运行 **Initialize-IoTEdge** 之前发生的错误列表。 这些错误在预料之中，因为该服务在经过配置之前会尝试启动。 
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Run an automated check for the most common configuration and networking errors.
+运行自动检查以查找最常见的配置和网络错误。
 
 ```powershell
 iotedge check
 ```
 
-列出正在运行的模块。 After a new installation, the only module you should see running is **edgeAgent**. After you [deploy IoT Edge modules](how-to-deploy-modules-portal.md) for the first time, the other system module, **edgeHub**, will start on the device too. 
+列出正在运行的模块。 完成新的安装后，应会看到唯一运行的模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。 
 
 ```powershell
 iotedge list
 ```
 
-## <a name="manage-module-containers"></a>Manage module containers
+## <a name="manage-module-containers"></a>管理模块容器
 
-The IoT Edge service requires a container engine running on your device. When you deploy a module to a device, the IoT Edge runtime uses the container engine to pull the container image from a registry in the cloud. The IoT Edge service enables you to interact with your modules and retrieve logs, but sometimes you may want to use the container engine to interact with the container itself. 
+IoT Edge 服务要求在设备上运行容器引擎。 将模块部署到设备时，IoT Edge 运行时将使用容器引擎从云中的注册表提取容器映像。 IoT Edge 服务允许与模块交互和检索日志，但有时，你可能想要使用容器引擎来与容器本身交互。 
 
-For more information about module concepts, see [Understand Azure IoT Edge modules](iot-edge-modules.md). 
+有关模块概念的详细信息，请参阅[了解 Azure IoT Edge 模块](iot-edge-modules.md)。 
 
-If you're running Windows containers on your Windows IoT Edge device, then the IoT Edge installation included the Moby container engine. The Moby engine was based on the same standards as Docker, and was designed to run in parallel on the same machine as Docker Desktop. For that reason, if you want to target containers managed by the Moby engine, you have to specifically target that engine instead of Docker. 
+如果在 Windows IoT Edge 设备上运行 Windows 容器，则 IoT Edge 安装中已包含 Moby 容器引擎。 Moby 引擎所基于的标准与 Docker 相同，可在 Docker Desktop 所在的同一台计算机上同时运行。 因此，若要以 Moby 引擎管理的容器为目标，则必须专门将该引擎指定为目标，而不要以 Docker 为目标。 
 
-For example, to list all Docker images, use the following command:
+例如，若要列出所有 Docker 映像，可使用以下命令：
 
 ```powershell
 docker images
 ```
 
-To list all Moby images, modify the same command with a pointer to the Moby engine: 
+若要列出所有 Moby 映像，可以使用指向 Moby 引擎的指针修改上述命令： 
 
 ```powershell
 docker -H npipe:////./pipe/iotedge_moby_engine images
 ```
 
-The engine URI is listed in the output of the installation script, or you can find it in the container runtime settings section for the config.yaml file. 
+引擎 URI 将在安装脚本的输出中列出，也可以在 config.yaml 文件的容器运行时设置节中找到它。 
 
-![moby_runtime uri in config.yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+![config.yaml 中的 moby_runtime uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
-For more information about commands you can use to interact with containers and images running on your device, see [Docker command-line interfaces](https://docs.docker.com/engine/reference/commandline/docker/).
+若要详细了解可以使用哪些命令来与设备上运行的容器和映像交互，请参阅 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/docker/)。
 
 ## <a name="update-an-existing-installation"></a>更新现有安装
 
-If you've already installed the IoT Edge runtime on a device before and provisioned it with an identity from IoT Hub, then you can update the runtime without having to reenter your device information. 
+如果之前已在设备上安装了 IoT Edge 运行时，并已使用 IoT 中心提供的标识对其进行预配，则无需重新输入设备信息即可更新运行时。 
 
 有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
@@ -218,15 +218,15 @@ If you've already installed the IoT Edge runtime on a device before and provisio
 Update-IoTEdge
 ```
 
-When you update IoT Edge, you can use additional parameters to modify the update, including:
+更新 IoT Edge 时，可以使用附加的参数来修改更新，包括：
 
-* Direct traffic to go through a proxy server, or
+* 定向流量，使其通过代理服务器，或者
 * 将安装程序指向某个脱机目录 
-* Restarting without a prompt if necessary
+* 在无提示的情况下根据需要重启
 
-You can't declare an IoT Edge agent container image with script parameters because that information is already set in the configuration file from the previous installation. 若要修改代理容器映像，请在 config.yaml 文件中修改。 
+无法使用脚本参数声明 IoT Edge 代理容器映像，因为该信息已在前面的安装的配置文件中进行设置。 若要修改代理容器映像，请在 config.yaml 文件中修改。 
 
-For more information about these update options, use the command `Get-Help Update-IoTEdge -full` or refer to [all installation parameters](#all-installation-parameters).
+有关这些更新选项的详细信息，请使用命令 `Get-Help Update-IoTEdge -full`，或参考[所有安装参数](#all-installation-parameters)。
 
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
 
@@ -237,39 +237,39 @@ For more information about these update options, use the command `Get-Help Updat
 Uninstall-IoTEdge
 ```
 
-The Uninstall-IoTEdge command does not work on Windows IoT Core. To remove IoT Edge from Windows IoT Core devices, you need to redeploy your Windows IoT Core image. 
+Uninstall-IoTEdge 命令在 Windows IoT Core 中无法运行。 若要从 Windows IoT Core 设备中删除 IoT Edge，需要重新部署 Windows IoT Core 映像。 
 
-For more information about uninstallation options, use the command `Get-Help Uninstall-IoTEdge -full`. 
+有关卸载选项的详细信息，请使用命令 `Get-Help Uninstall-IoTEdge -full`。 
 
 ## <a name="all-installation-parameters"></a>所有安装参数
 
-前面几个部分介绍了常见安装方案，并举例说明了如何使用参数来修改安装脚本。 This section provides reference tables of the common parameters used to install, update, or uninstall IoT Edge. 
+前面几个部分介绍了常见安装方案，并举例说明了如何使用参数来修改安装脚本。 本部分提供用于安装、更新或卸载 IoT Edge 的通用参数的参考表格。 
 
 ### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
-The Deploy-IoTEdge command downloads and deploys the IoT Edge Security Daemon and its dependencies. The deployment command accepts these common parameters, among others. For the full list, use the command `Get-Help Deploy-IoTEdge -full`.  
+Deploy-IoTEdge 命令下载并部署 IoT Edge 安全守护程序及其依赖项。 该部署命令接受这些通用参数，此外还接受其他一些参数。 有关完整列表，请使用命令 `Get-Help Deploy-IoTEdge -full`。  
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** 或 **Linux** | If no container operating system is specified, Windows is the default value.<br><br>For Windows containers, IoT Edge uses the moby container engine included in the installation. 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
+| **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 是默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的 moby 容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
-| **OfflineInstallationPath** | 目录路径 | If this parameter is included, the installer will check the listed directory for the IoT Edge cab and VC Runtime MSI files required for installation. Any files not found in the directory are downloaded. If both files are in the directory, you can install IoT Edge without an internet connection. You can also use this parameter to use a specific version. |
+| **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
-| **RestartIfNeeded** | 无 | This flag allows the deployment script to restart the machine without prompting, if necessary. |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-The Initialize-IoTEdge command configures IoT Edge with your device connection string and operational details. Much of the information generated by this command is then stored in the iotedge\config.yaml file. The initialization command accepts these common parameters, among others. For the full list, use the command `Get-Help Initialize-IoTEdge -full`. 
+Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 IoT Edge。 然后，此命令生成的许多信息将存储在 iotedge\config.yaml 文件中。 该初始化命令接受这些通用参数，此外还接受其他一些参数。 有关完整列表，请使用命令 `Get-Help Initialize-IoTEdge -full`。 
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **手动** | None | **开关参数**。 If no provisioning type is specified, manual is the default value.<br><br>声明你要提供设备连接字符串来手动预配设备 |
-| **Dps** | None | **开关参数**。 If no provisioning type is specified, manual is the default value.<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
+| **手动** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
+| **Dps** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
 | **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | 对于手动安装，此参数是**必需**的。 如果未在脚本参数中提供连接字符串，则安装期间系统会提示你提供连接字符串。 |
 | **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | 对于 DPS 安装，此参数是**必需**的。 如果未在脚本参数中提供范围 ID，则安装期间系统会提示你提供范围 ID。 |
-| **RegistrationId** | 设备生成的注册 ID | **Required** for DPS installation if using TPM or symmetric key attestation. |
-| **SymmetricKey** | The symmetric key used to provision the IoT Edge device identity when using DPS | **Required** for DPS installation if using symmetric key attestation. |
-| **ContainerOs** | **Windows** 或 **Linux** | If no container operating system is specified, Windows is the default value.<br><br>For Windows containers, IoT Edge uses the moby container engine included in the installation. 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
+| **RegistrationId** | 设备生成的注册 ID | 如果使用 TPM 或对称密钥证明，则是 DPS 安装所**必需**的。 |
+| **SymmetricKey** | 使用 DPS 时用于预配 IoT Edge 设备标识的对称密钥 | 如果使用对称密钥证明，则是 DPS 安装所**必需**的。 |
+| **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 是默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的 moby 容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **AgentImage** | IoT Edge 代理映像 URI | 默认情况下，新的 IoT Edge 安装使用 IoT Edge 代理映像的最新滚动标记。 使用此参数可为映像版本设置特定的标记，或者提供自己的代理映像。 有关详细信息，请参阅[了解 IoT Edge 标记](how-to-update-iot-edge.md#understand-iot-edge-tags)。 |
 | **用户名** | 容器注册表用户名 | 仅当针对专用注册表中的容器设置了 -AgentImage 参数时，才使用此参数。 提供有权访问注册表的用户名。 |
@@ -279,18 +279,18 @@ The Initialize-IoTEdge command configures IoT Edge with your device connection s
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** 或 **Linux** | If no container OS is specified, Windows is the default value. 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
+| **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器 OS，则 Windows 是默认值。 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
-| **OfflineInstallationPath** | 目录路径 | If this parameter is included, the installer will check the listed directory for the IoT Edge cab and VC Runtime MSI files required for installation. Any files not found in the directory are downloaded. If both files are in the directory, you can install IoT Edge without an internet connection. You can also use this parameter to use a specific version. |
-| **RestartIfNeeded** | 无 | This flag allows the deployment script to restart the machine without prompting, if necessary. |
+| **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **Force** | 无 | This flag forces the uninstallation in case the previous attempt to uninstall was unsuccessful. 
-| **RestartIfNeeded** | 无 | This flag allows the uninstall script to restart the machine without prompting, if necessary. |
+| **Force** | 无 | 在上次尝试卸载失败时，此标志会强制卸载。 
+| **RestartIfNeeded** | 无 | 此标志可让卸载脚本在无提示的情况下根据需要重启计算机。 |
 
 ## <a name="next-steps"></a>后续步骤
 

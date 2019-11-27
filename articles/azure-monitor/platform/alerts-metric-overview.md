@@ -28,16 +28,16 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
-- Condition Type: Static
-- 时间聚合（基于原始指标值运行的统计信息。 Supported time aggregations are Min, Max, Avg, Total, Count): Average
-- Period (The look back window over which metric values are checked): Over the last 5 mins
-- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
-- Operator: Greater Than
+- 条件类型：静态
+- 时间聚合（基于原始指标值运行的统计信息。 支持的时间聚合是最小值、最大值、平均值、总计、计数）：平均值
+- 句点（检查其指标值的 "查看" 窗口）：过去5分钟
+- Frequency （指标警报检查是否满足条件的频率）：1分钟
+- 运算符：大于
 - 阈值：70
 
 从创建警报规则的时间开始，监视器将每隔 1 分钟运行，查看过去 5 分钟的指标值，并检查这些值的平均值是否超过 70。 如果符合条件（即，过去 5 分钟的平均 CPU 百分比超过 70），则警报规则将激发激活的通知。 如果在与警报规则关联的操作组中配置了电子邮件或 Webhook，则两者都会收到激活的通知。
 
-When you are using multiple conditions in one rule, the rule "ands" the conditions together.  That is, the alert fires when all the conditions in the alert evaluate as true and resolve when one of the conditions is no longer true. And example of this type of alert would be alert when "CPU higher than 90%" and "queue length is over 300 items". 
+在一条规则中使用多个条件时，该规则会将这些条件使用“and”连接在一起。  也就是说，当警报中的所有条件均评估为 true 时触发警报，并在其中一个条件不再为 true 时解除警报。 此类警报的一个示例是，当“CPU 高于 90%”且“队列长度超过 300 项”时触发警报。 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>使用动态条件类型的警报规则
 
@@ -45,14 +45,14 @@ When you are using multiple conditions in one rule, the rule "ands" the conditio
 
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
-- Condition Type: Dynamic
-- 时间聚合（基于原始指标值运行的统计信息。 Supported time aggregations are Min, Max, Avg, Total, Count): Average
-- Period (The look back window over which metric values are checked): Over the last 5 mins
-- Frequency (The frequency with which the metric alert checks if the conditions are met): 1 min
-- Operator: Greater Than
-- Sensitivity: Medium
-- Look Back Periods: 4
-- Number of Violations: 4
+- 条件类型：动态
+- 时间聚合（基于原始指标值运行的统计信息。 支持的时间聚合是最小值、最大值、平均值、总计、计数）：平均值
+- 句点（检查其指标值的 "查看" 窗口）：过去5分钟
+- Frequency （指标警报检查是否满足条件的频率）：1分钟
+- 运算符：大于
+- 敏感度：中型
+- 回顾期：4
+- 冲突数：4
 
 创建警报规则后，动态阈值机器学习算法将获取可用的历史数据，计算最适合指标系列行为模式的阈值，并基于新数据持续学习，使阈值更准确。
 
@@ -64,7 +64,7 @@ When you are using multiple conditions in one rule, the rule "ands" the conditio
 
 假设在后续的检查中，“myVM”上的用量持续超过阈值，则在解决这种状况之前，警报规则不会再次激发。
 
-After some time, the usage on "myVM" comes back down to normal (goes below the threshold). 则警报规则将再监视条件两次，然后发出“已解决”通知。 如果在三个连续的期限内都不符合警报条件，则警报规则会发出“已解决”/“已停用”消息，以便在不稳定的环境中减少干扰。
+一段时间后，“myVM”上的用量回归正常（低于阈值）。 则警报规则将再监视条件两次，然后发出“已解决”通知。 如果在三个连续的期限内都不符合警报条件，则警报规则会发出“已解决”/“已停用”消息，以便在不稳定的环境中减少干扰。
 
 通过 Webhook 或电子邮件发出“已解决”通知后，Azure 门户中警报实例的状态（称为“监视状态”）也会设置为“已解决”。
 
@@ -76,7 +76,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - 目标资源：myAppServicePlan
 - 指标：CPU 百分比
-- Condition Type: Static
+- 条件类型：静态
 - 维度
   - 实例 = InstanceName1、InstanceName2
 - 时间聚合：平均值
@@ -91,7 +91,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - 目标资源：myAppServicePlan
 - 指标：CPU 百分比
-- Condition Type: Static
+- 条件类型：静态
 - 维度
   - 实例 = *
 - 时间聚合：平均值
@@ -108,16 +108,16 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - 目标资源：myAppServicePlan
 - 指标：CPU 百分比
-- Condition Type: Dynamic
+- 条件类型：动态
 - 维度
   - 实例 = *
 - 时间聚合：平均值
 - 期限：过去 5 分钟
 - 频率：1 分钟
 - 运算符：大于
-- Sensitivity: Medium
-- Look Back Periods: 1
-- Number of Violations: 1
+- 敏感度：中型
+- 查看回退周期：1
+- 冲突数：1
 
 此规则会监视过去 5 分钟的平均 CPU 使用率是否超过每个实例的预期行为。 同一规则可以在实例联机时对其进行监视，而无需再次修改指标警报规则。 每个实例将获得一个符合指标系列行为模式的阈值，并基于新数据持续进行更改，使阈值更准确。 如前所述，每个实例单独受到监视，而你会分别收到不同的通知。
 

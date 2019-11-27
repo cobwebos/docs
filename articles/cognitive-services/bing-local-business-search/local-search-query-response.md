@@ -1,5 +1,5 @@
 ---
-title: Sending and using API queries and responses - Bing Local Business Search
+title: 发送和使用 API 查询和响应-必应本地业务搜索
 titleSuffix: Azure Cognitive Services
 description: 在本文中了解如何通过必应当地企业搜索 API 发送和使用搜索查询。
 services: cognitive-services

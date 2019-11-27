@@ -95,7 +95,7 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 * 函数
 * 云服务
 * VNet
-* 子网
+* Subnet
 * NIC
 * NSG
 * 批处理帐户

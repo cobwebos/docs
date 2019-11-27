@@ -1,6 +1,6 @@
 ---
-title: Connectivity Architecture
-description: This document explains the Azure SQL connectivity architecture for database connections from within Azure or from outside of Azure.
+title: 连接体系结构
+description: 本文档介绍了用于从 Azure 内部或 Azure 外部进行数据库连接的 Azure SQL 连接体系结构。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -39,15 +39,15 @@ ms.locfileid: "74483723"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **Redirect (recommended):** Clients establish connections directly to the node hosting the database, leading to reduced latency and improved throughout. For connections to use this mode clients need to
-   - Allow inbound and outbound communication from the client to all Azure IP addresses in the region on ports in the range of 11000 11999.  
-   - Allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
+- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并在整个过程中得到改进。 对于要使用此模式的连接，客户端需要
+   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure IP 地址的入站和出站通信。  
+   - 允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的入站和出站通信。
 
-- **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways,leading to increased latency and reduced throughout. For connections to use this mode clients need to allow inbound and outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
+- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行代理，从而提高延迟并缩短整个时间。 对于使用此模式的连接，客户端需要允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的入站和出站通信。
 
-- **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is`Redirect` for all client connections originating inside of Azure (e.g. from an Azure Virtual Machine) and `Proxy`for all client connections originating inside ( e.g. connections from your local workstation)
+- **默认值：** 这是在创建之后对所有服务器生效的连接策略，除非显式将连接策略更改为 `Proxy` 或 `Redirect`。 对于来自 Azure 内部的所有客户端连接（例如，从 Azure 虚拟机）`Redirect` 默认策略，并为源自内部的所有客户端连接 `Proxy`（例如，来自本地工作站的连接）
 
- We highly recommend the `Redirect` connection policy over the `Proxy` connection policy for the lowest latency and highest throughput.However, you will need to meet the additional requirements for allowing network traffic as outlined above. If the client is an Azure Virtual Machine you can accomplish this using Network Security Groups (NSG) with [service tags](../virtual-network/security-overview.md#service-tags). If the client is connecting from a workstation on-premises then you may need to work with your network admin to allow network traffic through your corporate firewall.
+ 强烈建议对 `Proxy` 连接策略进行 `Redirect` 连接策略，以实现最低的延迟和最高的吞吐量。但是，你将需要满足如上所述允许网络流量的其他要求。 如果客户端是 Azure 虚拟机，则可以通过使用网络安全组（NSG）和[服务标记](../virtual-network/security-overview.md#service-tags)来实现此目的。 如果客户端从本地工作站进行连接，则你可能需要与网络管理员合作，以允许网络流量通过你的企业防火墙。
 
 ## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
 
@@ -62,20 +62,20 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Additionally open ports 14000-14999 to enable [Connecting with DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 另外，打开端口14000-14999 以启用[与 DAC 的连接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
-The table below lists the IP Addresses of Gateways by region. To connect to an Azure SQL Database, you need to allow network traffic to & from **all** Gateways for the region.
+下表按区域列出了网关的 IP 地址。 若要连接到 Azure SQL 数据库，需要允许到/来自该区域的**所有**网关的网络流量。
 
-Details of how traffic shall be migrated to new Gateways in specific regions are in the following article: [Azure SQL Database traffic migration to newer Gateways](sql-database-gateway-migration.md)
+以下文章介绍了如何将流量迁移到特定区域中的新网关： [AZURE SQL 数据库流量迁移到更新的网关](sql-database-gateway-migration.md)
 
 
-| 区域名称          | Gateway IP Addresses |
+| 区域名称          | 网关 IP 地址 |
 | --- | --- |
 | 澳大利亚中部    | 20.36.105.0 |
-| Australia Central2   | 20.36.113.0 |
+| 澳大利亚 Central2   | 20.36.113.0 |
 | 澳大利亚东部       | 13.75.149.87, 40.79.161.1 |
 | 澳大利亚东南部 | 191.239.192.109, 13.73.109.251 |
 | 巴西南部         | 104.41.11.5, 191.233.200.14 |
@@ -86,9 +86,9 @@ Details of how traffic shall be migrated to new Gateways in specific regions are
 | 中国东部 2         | 40.73.82.1         |
 | 中国北部          | 139.219.15.17      |
 | 中国北部 2        | 40.73.50.0         |
-| 亚洲东部            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
+| 东亚            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
 | 美国东部              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| 美国东部 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0,  191.239.224.107, 104.208.150.3 | 
+| 美国东部 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | 法国中部       | 40.79.137.0, 40.79.129.1 |
 | 德国中部      | 51.4.144.100       |
 | 德国东北部   | 51.5.144.179       |
@@ -104,13 +104,13 @@ Details of how traffic shall be migrated to new Gateways in specific regions are
 | 南非北部   | 102.133.152.0      |
 | 南非西部    | 102.133.24.0       |
 | 美国中南部     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
-| 亚洲东南部      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
+| 东南亚      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | 阿拉伯联合酋长国中部          | 20.37.72.64        |
-| 阿拉伯联合酋长国北部            | 65.52.248.0        |
+| 阿联酋北部            | 65.52.248.0        |
 | 英国南部             | 51.140.184.11      |
 | 英国西部              | 51.141.8.11        |
 | 美国中西部      | 13.78.145.25       |
-| 欧洲西部          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
+| 西欧          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | 美国西部              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | 美国西部 2            | 13.66.226.202      |
 |                      |                    |
@@ -126,7 +126,7 @@ Details of how traffic shall be migrated to new Gateways in specific regions are
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> The PowerShell Azure Resource Manager module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. For these cmdlets, see [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. The following script requires the [Azure PowerShell module](/powershell/azure/install-az-ps).
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 以下 PowerShell 脚本演示如何更改连接策略。
 
@@ -149,12 +149,12 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in a bash shell
+### <a name="azure-cli-in-a-bash-shell"></a>bash shell 中的 Azure CLI
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-The following CLI script shows how to change the connection policy in a bash shell.
+以下 CLI 脚本演示如何在 bash shell 中更改连接策略。
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -170,12 +170,12 @@ az resource show --ids $ids
 az resource update --ids $ids --set properties.connectionType=Proxy
 ```
 
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI from a Windows command prompt
+### <a name="azure-cli-from-a-windows-command-prompt"></a>从 Windows 命令提示符运行 Azure CLI
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-The following CLI script shows how to change the connection policy from a Windows command prompt (with Azure CLI installed).
+以下 CLI 脚本演示如何从 Windows 命令提示符（安装了 Azure CLI）更改连接策略。
 
 ```azurecli
 # Get SQL Server ID and set URI

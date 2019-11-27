@@ -88,7 +88,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | mailNickname |displayName |
 | members |members |
 | objectId |ID |
-| ProxyAddresses |emails[type eq "other"].Value |
+| proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>步骤2：了解 Azure AD SCIM 实现
 > [!IMPORTANT]
@@ -437,7 +437,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
 ##### <a name="request-6"></a>需要
 
-*DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
+*删除/Users/5171a35d82074e068ce2 HTTP/1。1*
 
 ##### <a name="response-6"></a>回复
 
@@ -540,7 +540,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
 ##### <a name="request-10"></a>需要
 
-*PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
+*PATCH/Groups/fa2ce26709934589afc5 HTTP/1。1*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -606,7 +606,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
 ##### <a name="request-13"></a>需要
 
-*DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
+*删除/Groups/cdb1ce18f65944079d37 HTTP/1。1*
 
 ##### <a name="response-13"></a>回复
 

@@ -1,6 +1,6 @@
 ---
-title: We're moving virtual machine (VM) images to managed disk storage in the Azure Marketplace
-description: To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+title: 我们正在将虚拟机（VM）映像迁移到 Azure Marketplace 中的托管磁盘存储
+description: 若要为新的 marketplace 特性和功能提供更快、更可靠的存储和支持，我们要将 marketplace VM 映像迁移到托管磁盘存储。
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
@@ -15,48 +15,48 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74456681"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>We’re moving virtual machine (VM) images on Azure Marketplace to managed disk storage
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我们正在将 Azure Marketplace 中的虚拟机（VM）映像迁移到托管磁盘存储
 
-To provide faster, more reliable storage and support for new marketplace features and capabilities, we’re moving marketplace VM images to managed disk storage.
+若要为新的 marketplace 特性和功能提供更快、更可靠的存储和支持，我们要将 marketplace VM 映像迁移到托管磁盘存储。
 
-Starting on January 2, 2020, we’ll move VM images to managed disk storage in phases. In the first phase, we’ll only move images with no new deployments or running VMs in the previous 90 days. Before we move any of the images, we’ll send an email to let the publisher know which images will move and when they’ll be moved.
+从2020年1月2日开始，我们将 VM 映像迁移到托管磁盘存储。 在第一阶段，我们将仅在以前的90天内移动没有新部署或正在运行的 Vm 的映像。 在移动任何图像之前，我们将发送一封电子邮件，让发布者知道将移动哪些图像以及何时移动图像。
 
-Publishers or consumers don’t need to take any action, and users won’t be affected. The marketplace offers will remain available and customers will still be able to deploy managed VMs from these images, during and after the move.
+发布者或使用者不需要执行任何操作，用户也不会受到影响。 Marketplace 产品/服务将保持可用，并且在移动过程中和之后，客户仍将能够从这些映像部署托管 Vm。
 
-If you have any questions, please [contact us](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+如果你有任何疑问，请[联系我们](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)。
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Would the users of my VM images experience an outage?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>我的 VM 映像的用户是否会遇到中断？
 
-Users of the VM images will not experience an outage. 
+VM 映像的用户将不会遇到中断。 
 
-In the first phase, we will only move VM images that have no running VMs. As there are no users for these images, there will not be any impact. For the subsequent phases too, there will be no impact on the users.
+在第一个阶段中，只会移动没有运行的 Vm 的 VM 映像。 由于这些映像没有用户，因此不会有任何影响。 对于后续阶段，用户不会有任何影响。
 
-### <a name="how-long-does-it-take-for-the-process-to-complete"></a>How long does it take for the process to complete?
+### <a name="how-long-does-it-take-for-the-process-to-complete"></a>完成此过程需要多长时间？
 
-It may take up to 24 hours to complete the migration.
+完成迁移可能需要长达24小时。
 
-### <a name="do-i-need-to-take-any-action"></a>Do I need to take any action?
+### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-不。 Publishers or consumers don’t need to take any action.
+否。 发布者或使用者不需要执行任何操作。
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Do I have to update my system to call the Cloud Portal APIs in a different way after they are moved to Managed Disk storage?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-不。 Your existing API calls will continue to work.
+否。 你的现有 API 调用将继续工作。
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Would all my VM images be moved to Managed Disk at the same time?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 
-We will be moving all your VM images on the same day. We will notify you once they have been moved.
+我们将在同一天移动所有 VM 映像。 移动这些用户后，我们会通知你。
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Can I request to schedule the move of my VM images to a later time?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>我能否请求将我的 VM 映像迁移到以后一段时间？
 
-We recommend moving the images on the scheduled date. However, if you have concerns, please reach out to us to reschedule the move.
+建议在计划日期移动图像。 但是，如果你有疑问，请联系我们来重新安排搬迁。
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Can I publish updates to my VM Images during the move?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>能否在移动过程中将更新发布到我的 VM 映像？
 
-Updates to the VM images cannot be made during the move.
+移动期间无法对 VM 映像进行更新。
 
 ## <a name="next-steps"></a>后续步骤
 
-Visit the [virtual machine offer publisher guide](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) page.
+请访问[虚拟机产品/服务发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)页。
