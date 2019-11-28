@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929659"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228424"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择“设计器”。 
 
-    ![显示如何访问设计器的可视工作区屏幕截图](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![显示如何访问设计器的可视工作区屏幕截图](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
 1. 选择“易用的预生成模块”。 
 
@@ -69,7 +69,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择数据集“汽车价格数据(原始)”，然后将其拖到画布上  。
 
-   ![将数据拖到画布上](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![将数据拖到画布上](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>可视化数据
 
@@ -81,7 +81,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择图形图标以可视化数据。
 
-    ![可视化数据](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![可视化数据](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
 1. 选择数据窗口中的不同列，查看有关每个列的信息。
 
@@ -105,7 +105,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
     > 将一个模块的输出端口连接到另一个模块的输入端口时，即可通过管道创建数据流。
     >
 
-    ![连接模块](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![连接模块](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
 1. 选择“在数据集中选择列”模块。 
 
@@ -119,7 +119,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 在右下角，选择“保存”以关闭列选择器。 
 
-    ![排除列](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![排除列](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
     属性窗格显示 **normalized-losses** 列已排除。
 
@@ -144,7 +144,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
     管道现在应如下所示：
     
-    ![选择列](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![选择列](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
 ## <a name="train-a-machine-learning-model"></a>训练机器学习模型
 
@@ -188,7 +188,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 将“拆分数据”模块的训练数据输出（左侧端口）连接到“训练模型”模块的右侧输入。  
 
-    ![显示“训练模型”模块的正确配置的屏幕截图。 “线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![显示“训练模型”模块的正确配置的屏幕截图。 “线性回归”模块将连接到“训练模型”模块的左端口，“拆分数据”模块将连接到“训练模型”的右端口](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
 1. 选择**训练模型**模块。
 
@@ -200,7 +200,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
     管道应如下所示：
 
-    ![显示添加“训练模型”模块后管道的正确配置的屏幕截图。](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![显示添加“训练模型”模块后管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
 ## <a name="evaluate-a-machine-learning-model"></a>评估机器学习模型
 
@@ -216,7 +216,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
     最终的管道应如下所示：
 
-    ![显示管道的正确配置的屏幕截图。](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![显示管道的正确配置的屏幕截图。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>运行管道
 
@@ -232,7 +232,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
     在此处可以看到从测试数据预测的价格和实际价格。
 
-    ![输出可视化效果的屏幕截图，其中突出显示了“评分标签”列](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![输出可视化效果的屏幕截图，其中突出显示了“评分标签”列](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
 1. 选择“评估模型”模块以查看其输出。 
 

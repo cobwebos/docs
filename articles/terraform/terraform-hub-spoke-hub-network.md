@@ -1,17 +1,14 @@
 ---
 title: 教程 - 在 Azure 中使用 Terraform 创建中心虚拟网络
 description: 本教程将介绍如何在 Azure 中创建可充当其他网络之间的常用连接点的中心虚拟网络
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 25c4d6fa881f7ec6c96dd5ea7c935544374bc57d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077704"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159045"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>教程：在 Azure 中使用 Terraform 创建中心虚拟网络
 

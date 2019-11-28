@@ -3,17 +3,13 @@ title: 教程 - 使用 Ansible 配置 Azure 资源的动态库存
 description: 了解如何使用 Ansible 管理 Azure 动态库存
 keywords: ansible, azure, devops, bash, cloudshell, 动态库存
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990670"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156173"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教程：使用 Ansible 配置 Azure 资源的动态库存
 

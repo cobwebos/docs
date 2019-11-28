@@ -3,17 +3,13 @@ title: 教程 - 使用 Ansible 更新 Azure 虚拟机规模集的自定义映像
 description: 了解如何在 Azure 中使用 Ansible 更新虚拟机规模集的自定义映像
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241330"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155844"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>教程：使用 Ansible 更新 Azure 虚拟机规模集的自定义映像
 

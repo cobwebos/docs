@@ -1,22 +1,16 @@
 ---
 title: 使用 JavaScript 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
-services: functions
-documentationcenter: na
 author: ColbyTresness
-manager: jeconnoc
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/07/2018
-ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614574"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231317"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 

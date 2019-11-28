@@ -1,6 +1,6 @@
 ---
 title: 教程：跨可用性区域对 VM 进行负载均衡 - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本指南演示了如何使用 Azure 门户创建包含区域冗余前端的标准负载均衡器，以便对跨可用性区域的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 2079ec95b582ed724583112f7af4865af66eef9d
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 6f9368dfa230817e985de09b1ee398c55693e425
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048871"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214816"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 

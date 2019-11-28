@@ -12,12 +12,12 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 9a17b96da376843c07a4324856bf8943aa385cac
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 951f03f581906e45946ef75742421ba27d405267
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212466"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406979"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户的通知中心设置推送通知
 
@@ -47,7 +47,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
    * 输入“密钥 ID”、“绑定 ID”、“团队 ID”和“令牌”的值     。
    * 选择“沙盒”  模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式  。
 
-     ![Azure 门户中 APNS 令牌配置的屏幕截图](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Azure 门户中 APNS 令牌配置的屏幕截图](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
 有关详细信息，请参阅[通过 Azure 通知中心向 iOS 推送通知](notification-hubs-ios-apple-push-notification-apns-get-started.md)。
 

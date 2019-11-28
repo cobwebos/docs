@@ -1,5 +1,5 @@
 ---
-title: 教程：创建第一个 ML 试验：设置
+title: 教程：创建第一个 ML 试验
 titleSuffix: Azure Machine Learning
 description: 在本教程中，你将开始使用 Jupyter Notebook 中运行的 Azure 机器学习 Python SDK。  在第 1 部分中，你将创建一个用于管理试验和 ML 模型的工作区。
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d2247ba965c5e6db6e2da0218859d207d2fc61b8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049136"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276627"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

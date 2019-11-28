@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: b7888215a2d463c8007168e215179ace898ca1cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5d090add7bdb2c3ee08f4c186bd57d63f14ab113
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821026"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422554"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库
 
@@ -32,27 +32,45 @@ ms.locfileid: "73821026"
 
 [!code-json[create-azure-sql-database-server-and-database](~/resourcemanager-templates/SQLServerAndDatabase/azuredeploy.json)]
 
-1. 从以下 PowerShell 代码块中选择“试用”  以打开 Azure Cloud Shell。
+从以下 PowerShell 代码块中选择“试用”  以打开 Azure Cloud Shell。
 
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-    $location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
-    $adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
-    $adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    $resourceGroupName = "${projectName}rg"
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
 
+$resourceGroupName = "${projectName}rg"
 
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" -projectName $projectName -adminUser $adminUser -adminPassword $adminPassword
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" -projectName $projectName -adminUser $adminUser -adminPassword $adminPassword
 
-    Read-Host -Prompt "Press [ENTER] to continue ..."
-    ```
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
 
-1. 选择“复制”  将 PowerShell 脚本复制到剪贴板。
-1. 右键单击 shell 窗格，然后选择“粘贴”  。
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    创建数据库服务器和数据库需要一些时间。
+```azurecli-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+$adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+$adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
+
+$resourceGroupName = "${projectName}rg"
+
+az group create --location $location --name $resourceGroupName
+
+az group deployment create -g $resourceGroupName --template-uri "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" `
+    --parameters 'projectName=' + $projectName \
+                 'adminUser=' + $adminUser \
+                 'adminPassword=' + $adminPassword
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+* * *
 
 ## <a name="query-the-database"></a>查询数据库
 
@@ -62,16 +80,24 @@ ms.locfileid: "73821026"
 
 如果希望转到[后续步骤](#next-steps)，请保留此资源组、数据库服务器和单一数据库。 后续步骤展示了如何使用各种方法连接和查询数据库。
 
-使用 Azure Powershell 删除资源组：
+若要删除资源组，请执行以下操作：
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name"
-$resourceGroupName = "${projectName}rg"
-
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
+* * *
 
 ## <a name="next-steps"></a>后续步骤
 

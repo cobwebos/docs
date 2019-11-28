@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: c2d6a5acba304d7421b000cab2ee5cee5b85e5ce
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241355"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327277"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据
 
@@ -180,7 +180,7 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，了解了如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。 请前进到下一篇文章，了解如何将在 Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。
+在本教程中，了解了如何使用 [Microsoft Power BI](https://powerbi.microsoft.com/) 在 Azure HDInsight 中可视化 [Apache Spark](https://azure.microsoft.com/services/hdinsight/) 群集中的数据。 请继续学习下一篇文章，试着创建一个机器学习应用程序。
 
 > [!div class="nextstepaction"]
-> [运行 Apache Spark 流式处理作业](apache-spark-eventhub-streaming.md)
+> [创建机器学习应用程序](./apache-spark-ipython-notebook-machine-learning.md)

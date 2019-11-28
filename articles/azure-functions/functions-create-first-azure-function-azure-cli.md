@@ -1,20 +1,16 @@
 ---
 title: 使用 Azure CLI 创建第一个函数
 description: 了解如何使用 Azure CLI 和 Azure Functions Core Tools 创建第一个可无服务器执行的 Azure Function。
-author: ggailey777
-ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329644"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230837"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>快速入门：使用 Azure CLI 通过命令行创建第一个函数
 

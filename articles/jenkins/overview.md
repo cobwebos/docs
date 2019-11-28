@@ -1,19 +1,15 @@
 ---
 title: Jenkins 和 Azure 概述
 description: 在 Azure 中托管 Jenkins 生成和部署自动化服务器，并使用 Azure 计算和存储资源来扩展持续集成及部署 (CI/CD) 管道。
-ms.service: jenkins
 keywords: jenkins, azure, devops, 概述
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 9b4ceb144408e0ac1886aa3a7e0e0f48ac4baba3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881949"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479341"
 ---
 # <a name="azure-and-jenkins"></a>Azure 和 Jenkins
 
@@ -33,7 +29,7 @@ ms.locfileid: "72881949"
 
 ## <a name="scale-your-build-automation-on-demand"></a>按需扩展生成自动化
 
-将生成代理添加到现有 Jenkins 部署来扩展 Jenkins 生成能力，因为作业和管道的生成数量及复杂性都在增加。 你可以通过使用 [Azure VM 代理插件](jenkins-azure-vm-agents.md)在 Azure 虚拟机上运行这些生成代理。 请参阅我们的[教程](/azure/jenkins/jenkins-azure-vm-agents)，了解详细信息。
+将生成代理添加到现有 Jenkins 部署来扩展 Jenkins 生成能力，因为作业和管道的生成数量及复杂性都在增加。 你可以通过使用 [Azure VM 代理插件](https://plugins.jenkins.io/azure-vm-agents)在 Azure 虚拟机上运行这些生成代理。 请参阅我们的[教程](/azure/jenkins/jenkins-azure-vm-agents)，了解详细信息。
 
 配置 [Azure 服务主体](/azure/azure-resource-manager/resource-group-overview)后，Jenkins 作业和管道可以使用此凭据执行以下操作：
 

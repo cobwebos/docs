@@ -1,22 +1,18 @@
 ---
 title: 创建与 Azure 逻辑应用集成的函数
 description: 创建一个与 Azure 逻辑应用和 Azure 认知服务集成的函数，对推文情绪进行分类，并在情绪较差时发送通知。
-services: functions, logic-apps, cognitive-services
-keywords: 工作流, 云应用, 云服务, 业务流程, 系统集成, 企业应用程序集成, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480036"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226607"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 

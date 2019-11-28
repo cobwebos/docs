@@ -3,17 +3,13 @@ title: 教程 - 使用 Ansible 从 Azure 共享映像库创建 VM 或虚拟机�
 description: 了解如何使用 Ansible，以便根据共享映像库中的通用化映像创建 VM 或虚拟机规模集。
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, 共享映像库
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808942"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155838"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>教程：使用 Ansible 从 Azure 共享映像库创建 VM 或虚拟机规模集
 

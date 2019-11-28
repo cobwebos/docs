@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715511"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158646"
 ---
 # <a name="assess-servers-using-imported-data"></a>使用导入的数据评估服务器
 
-> [!NOTE]
-> 如果在 Azure Migrate 门户中看不到此功能，请等待一段时间。 大约在一周后，它就会出现。
-
-本文介绍如何通过使用 CSV 导入服务器元数据，利用 [Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)来评估本地服务器。 使用此评估方法，无需设置 Azure Migrate 设备即可创建评估。 这在下列情况下非常有用： 
+本文介绍如何通过使用 CSV 导入服务器元数据，利用 [Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)来评估本地服务器。 使用此评估方法，无需设置 Azure Migrate 设备即可创建评估。 这在下列情况下非常有用：
 
 - 在部署设备之前，你需要创建快速初始评估。
 - 你无法在组织中部署 Azure Migrate 设备。
@@ -49,7 +46,7 @@ ms.locfileid: "73715511"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>为 Azure Migrate 设置 Azure 权限 
+## <a name="set-azure-permissions-for-azure-migrate"></a>为 Azure Migrate 设置 Azure 权限
 
 你的 Azure 帐户需要有权创建 Azure Migrate 项目。
 
@@ -116,7 +113,7 @@ ms.locfileid: "73715511"
 
 **字段名称** | **必需** | **详细信息**
 --- | --- | ---
-**服务器名称** | 是 | 建议指定 FQDN。 
+**服务器名称** | 是 | 建议指定 FQDN。
 IP 地址  | 否 | 服务器地址。
 **内核数** | 是 | 分配给服务器的处理器内核数。
 **内存** | 是 | 分配给服务器的总 RAM (MB)。
@@ -144,7 +141,7 @@ IP 地址  | 否 | 服务器地址。
 **Virtual Machine Manager** | 否 | 这是 InstanceUUid（对于 VMWare vCenter）  。 Hyper-V 不需要此项。
 **MAC 地址**| 否 | 服务器 MAC 地址。
 **BIOS ID** | 否 | 服务器 BIOS ID。
-**自定义服务器 ID**| 否 | 本地唯一服务器 ID。 <br/> 用于按本地 ID 跟踪导入的服务器。 
+**自定义服务器 ID**| 否 | 本地唯一服务器 ID。 <br/> 用于按本地 ID 跟踪导入的服务器。
 **应用程序 1 名称** | 否 | 服务器上运行的工作负载的名称。<br/> 可以通过在模板中[添加列](#add-multiple-applications)来添加更多应用程序的详细信息。 最多可添加五个应用程序。
 **应用程序 1 类型** | 否 | 服务器中运行的工作负载的类型
 **应用程序 1 版本** | 否 | 服务器上运行的工作负载的版本。
@@ -162,7 +159,7 @@ IP 地址  | 否 | 服务器地址。
 
 ### <a name="add-multiple-disks"></a>添加多个磁盘
 
-模板为第一个磁盘提供默认字段。  可以为多达 8 个磁盘添加类似的列。 
+模板为第一个磁盘提供默认字段。  可以为多达 8 个磁盘添加类似的列。
 
 例如，若要指定第二个磁盘的所有字段，请添加列：
 
@@ -192,10 +189,10 @@ IP 地址  | 否 | 服务器地址。
 
 1. 在“Azure Migrate”>“发现计算机”  中，浏览到已填充的模板。
 2. 单击“导入”  。
-3. 将显示导入状态。 
+3. 将显示导入状态。
     - 如果状态中出现警告，则可以修复它们，也可以继续操作而不解决它们。
     - 按警告中建议的方式改进服务器信息可提高评估准确性。
-    - 若要查看并修复出现的警告，请单击“下载警告详细信息 .CSV”  。 这会下载 CSV，并添加警告。 可以查看警告，并根据需要解决问题。 
+    - 若要查看并修复出现的警告，请单击“下载警告详细信息 .CSV”  。 这会下载 CSV，并添加警告。 可以查看警告，并根据需要解决问题。
     如果状态中出现错误（导入状态为“失败”  ），则需要修复这些错误，然后才能继续导入。 为此，请下载此时已添加错误详细信息的 CSV。 查看并根据需要处理错误。 然后重新上载修改后的文件。
 4. 如果导入状态为“已完成”  ，则服务器信息已导入。
 
@@ -205,7 +202,7 @@ IP 地址  | 否 | 服务器地址。
 
 ## <a name="updating-server-information"></a>更新服务器信息
 
-可以通过使用相同的服务器名称再次上载服务器的数据来更新服务器信息  。 不能修改“服务器名称”  字段。 
+可以通过使用相同的服务器名称再次上载服务器的数据来更新服务器信息  。 不能修改“服务器名称”  字段。
 
 目前不支持删除服务器。
 
@@ -300,21 +297,21 @@ IP 地址  | 否 | 服务器地址。
 
 Name | Name
 --- | ---
-**A - H** | 
+**A - H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I - R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I - R** |
 IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
+
 
 ## <a name="next-steps"></a>后续步骤
 

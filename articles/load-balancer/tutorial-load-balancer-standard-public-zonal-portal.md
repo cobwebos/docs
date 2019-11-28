@@ -1,6 +1,6 @@
 ---
 title: 教程：区域中的负载均衡器 VM - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本教程演示如何使用 Azure 门户创建包含区域前端的标准负载均衡器，以便对可用性区域中的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273388"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225169"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教程：通过 Azure 门户使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -56,7 +56,7 @@ ms.locfileid: "68273388"
     | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupZLB   。|
     | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
-    | Type          | 选择“公共”。                                         |
+    | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
     | 公共 IP 地址 | 选择“新建”。  |
     | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |

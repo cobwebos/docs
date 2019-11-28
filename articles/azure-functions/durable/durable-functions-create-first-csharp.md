@@ -1,21 +1,16 @@
 ---
 title: 使用 C# 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio 创建并发布 Azure 持久函数。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jeconnoc
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615007"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231514"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 

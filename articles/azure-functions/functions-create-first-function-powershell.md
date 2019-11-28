@@ -2,18 +2,16 @@
 title: 在 Azure 中创建首个 PowerShell 函数
 description: 了解如何使用 Visual Studio Code 在 Azure 中创建第一个 PowerShell 函数
 author: joeyaiello
-manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.service: azure-functions
-ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f77083ae0107ed9f9c5e3943cfcec25846ff087
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469409"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227199"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>在 Azure 中创建首个 PowerShell 函数
 

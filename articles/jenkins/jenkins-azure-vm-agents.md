@@ -1,19 +1,15 @@
 ---
 title: 使用 Azure VM 代理缩放 Jenkins 部署。
 description: 使用安装了 Jenkins Azure VM 代理插件的 Azure 虚拟机将额外的容量添加到 Jenkins 管道。
-ms.service: jenkins
 keywords: jenkins, azure, devops, 虚拟机, 代理
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074659"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158530"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
@@ -43,17 +39,17 @@ ms.locfileid: "54074659"
 > [!TIP]
 > 如果已使用[解决方案模版](install-jenkins-solution-template.md)在 Azure 上部署了 Jenkins，那么已经安装 Azure VM 代理插件。
 
-1. 在 Jenkins 仪表板中，选择“管理 Jenkins”，然后选择“管理插件”。
-1. 选择“可用”选项卡，然后搜索“Azure VM 代理”。 选择插件项旁的复选框，然后在仪表盘底部选择“安装后不重启”。
+1. 在 Jenkins 仪表板中，选择“管理 Jenkins”  ，然后选择“管理插件”  。
+1. 选择“可用”  选项卡，然后搜索“Azure VM 代理”  。 选择插件项旁的复选框，然后在仪表盘底部选择“安装后不重启”  。
 
 ## <a name="configure-the-azure-vm-agents-plugin"></a>配置 Azure VM 代理插件
 
-1. 在 Jenkins 仪表板中，选择“管理 Jenkins”，再选择“配置系统”。
-1. 滚动到页面底部，找到有“添加新的云”下拉列表的“云”部分，选择“Microsoft Azure VM 代理”。
-1. 从“Azure 凭据”部分中的“添加”下拉列表，选择一个现有的服务主体。 如果没有列出内容，请执行以下步骤，为 Azure 帐户[创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)并将其添加到 Jenkins 配置：   
+1. 在 Jenkins 仪表板中，选择“管理 Jenkins”  ，再选择“配置系统”  。
+1. 滚动到页面底部，找到有“添加新的云”  下拉列表的“云”  部分，选择“Microsoft Azure VM 代理”  。
+1. 从“Azure 凭据”  部分中的“添加”  下拉列表，选择一个现有的服务主体。 如果没有列出内容，请执行以下步骤，为 Azure 帐户[创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)并将其添加到 Jenkins 配置：   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“Azure 凭据”旁的“添加”，然后选择“Jenkins”。   
-    b. 在“添加凭据”对话框中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”。   
+    a. 选择“Azure 凭据”  旁的“添加”  ，然后选择“Jenkins”  。   
+    b. 在“添加凭据”对话框中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”    。   
     c. 使用 Azure CLI 或 [Cloud Shell](/azure/cloud-shell/overview) 创建 Active Directory 服务主体。
     
     ```azurecli-interactive
@@ -69,7 +65,7 @@ ms.locfileid: "54074659"
         "tenant": "CCCCCCCC-CCCC-CCCC-CCCCCCCCCCC"
     }
     ```
-    d. 将服务主体的凭据输入到“添加凭据”对话框。 如果不知道 Azure 订阅 ID，则可以从 CLI 中查询：
+    d. 将服务主体的凭据输入到“添加凭据”对话框。  如果不知道 Azure 订阅 ID，则可以从 CLI 中查询：
      
      ```azurecli-interactive
      az account list
@@ -89,54 +85,54 @@ ms.locfileid: "54074659"
             }
      ```
 
-    完成的服务主体应使用 `id` 字段作为**订阅 ID**，使用 `appId` 值作为**客户端 ID**，使用 `password` 作为**客户端密码**，并使用 `tenant` 作为**租户 ID**。 选择“添加”添加服务主体，然后配置插件以使用新创建的凭据。
+    完成的服务主体应使用 `id` 字段作为**订阅 ID**，使用 `appId` 值作为**客户端 ID**，使用 `password` 作为**客户端密码**，并使用 `tenant` 作为**租户 ID**。 选择“添加”  添加服务主体，然后配置插件以使用新创建的凭据。
 
     ![配置 Azure 服务主体](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
     
 
-1. 在“资源组名称”部分中，选择“创建新项”，然后输入 `myJenkinsAgentGroup`。
-1. 选择“验证配置”连接到 Azure 以测试配置文件设置。
-1. 选择“应用”更新插件配置。
+1. 在“资源组名称”  部分中，选择“创建新项”  ，然后输入 `myJenkinsAgentGroup`。
+1. 选择“验证配置”  连接到 Azure 以测试配置文件设置。
+1. 选择“应用”  更新插件配置。
 
 ## <a name="configure-agent-resources"></a>配置代理资源
 
 配置用于定义 Azure VM 代理的模板。 此模板定义每个代理创建时具有的计算资源。
 
-1. 选择“添加 Azure 虚拟机模板”旁的“添加”。
-1. 对于“名称”，请输入 `defaulttemplate`
-1. 对于“标签”，请输入 `ubuntu`
+1. 选择“添加 Azure 虚拟机模板”  旁的“添加”  。
+1. 对于“名称”  ，请输入 `defaulttemplate`
+1. 对于“标签”  ，请输入 `ubuntu`
 1. 从组合框中选择所需 [Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-1. 从“虚拟机大小”下的下拉列表中选择 [VM 大小](/azure/virtual-machines/linux/sizes)。 通用 `Standard_DS1_v2` 大小对本教程来说就可以了。   
-1. 将“保留时间” 设为 `60`。 此设置定义 Jenkins 在解除分配闲置代理前可等待的分钟数。 如果不希望自动删除闲置代理，请指定为 0。
+1. 从“虚拟机大小”  下的下拉列表中选择 [VM 大小](/azure/virtual-machines/linux/sizes)。 通用 `Standard_DS1_v2` 大小对本教程来说就可以了。   
+1. 将“保留时间”  设为 `60`。 此设置定义 Jenkins 在解除分配闲置代理前可等待的分钟数。 如果不希望自动删除闲置代理，请指定为 0。
 
    ![常规 VM 配置](./media/jenkins-azure-vm-agents/general-config.png)
 
 ## <a name="configure-agent-operating-system-and-tools"></a>配置代理操作系统和工具
 
-在插件配置的“映像配置”中，选择“Ubuntu 16.04 LTS”。 选中“安装 Git (最新版本)”、“安装 Maven (V3.5.0)”和“安装 Docker” 旁的复选框，以在新创建的代理上安装这些工具。
+在插件配置的“映像配置”  中，选择“Ubuntu 16.04 LTS”  。 选中“安装 Git (最新版本)”  、“安装 Maven (V3.5.0)”  和“安装 Docker”  旁的复选框，以在新创建的代理上安装这些工具。
 
 ![创建 VM OS 和工具](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 
-选择“管理员凭据”旁的“添加”，然后选择“Jenkins”。 输入登录代理使用的用户名和密码，请确保它们满足 Azure VM 上管理者帐户的[用户名和密码策略](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
+选择“管理员凭据”  旁的“添加”  ，然后选择“Jenkins”  。 输入登录代理使用的用户名和密码，请确保它们满足 Azure VM 上管理者帐户的[用户名和密码策略](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
 
-选择“验证模板”验证配置，然后选择“保存”保存更改并返回到 Jenkins 仪表板。
+选择“验证模板”  验证配置，然后选择“保存”  保存更改并返回到 Jenkins 仪表板。
 
 ## <a name="create-a-job-in-jenkins"></a>在 Jenkins 中创建作业
 
-1. 在 Jenkins 仪表板中，单击“新建项目”。 
-1. 输入 `demoproject1` 作为名称，然后依次选择“自由风格项目” “确定”。
-1. 在“常规”选项卡中，选择“限制可运行项目的位置”，并在“标签表达式”中键入 `ubuntu`。 将看到一条消息，确认标签由上一步创建的云配置提供。 
+1. 在 Jenkins 仪表板中，单击“新建项目”  。 
+1. 输入 `demoproject1` 作为名称，然后依次选择“自由风格项目”  “确定”  。
+1. 在“常规”  选项卡中，选择“限制可运行项目的位置”  ，并在“标签表达式”  中键入 `ubuntu`。 将看到一条消息，确认标签由上一步创建的云配置提供。 
    ![设置作业](./media/jenkins-azure-vm-agents/job-config.png)
-1. 在“源代码管理”选项卡中，选择“Git”，然后将以下 URL 添加到“存储库 URL”字段：`https://github.com/spring-projects/spring-petclinic.git`
-1. 在“生成”选项卡中，选择“添加生成步骤”，再选择“调用顶级 Maven 目标”。 在“目标”字段中输入 `package`。
-1. 选择“保存”保存作业定义。
+1. 在“源代码管理”  选项卡中，选择“Git”  ，然后将以下 URL 添加到“存储库 URL”字段：`https://github.com/spring-projects/spring-petclinic.git` 
+1. 在“生成”  选项卡中，选择“添加生成步骤”  ，再选择“调用顶级 Maven 目标”  。 在“目标”字段中输入 `package`  。
+1. 选择“保存”  保存作业定义。
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>在 Azure VM 代理上生成新作业
 
 1. 返回 Jenkins 仪表板。
-1. 选择上一步创建的作业，然后单击“立即生成”。 新的生成加入队列但不会开始，除非在 Azure 订阅中已代理 VM。
-1. 生成完成后，转到“控制台输出”。 可看到该生成在 Azure 代理上远程执行。
+1. 选择上一步创建的作业，然后单击“立即生成”  。 新的生成加入队列但不会开始，除非在 Azure 订阅中已代理 VM。
+1. 生成完成后，转到“控制台输出”  。 可看到该生成在 Azure 代理上远程执行。
 
 ![控制台输出](./media/jenkins-azure-vm-agents/console-output.png)
 

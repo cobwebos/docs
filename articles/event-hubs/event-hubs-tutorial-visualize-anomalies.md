@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717996"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307352"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>运行应用以生成测试事件数据
 
-[GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含一个可以生成测试数据的[异常检测程序应用](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector)。 该应用通过以下方式模拟信用卡的使用：将信用卡交易写入事件中心，并偶尔在多个位置写入同一张信用卡发生的多笔交易，以便将这些交易标记为异常。 若要运行此应用，请遵循以下步骤： 
+[GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含一个可以生成测试数据的[异常检测程序应用](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector)。 该应用通过以下方式模拟信用卡的使用：将信用卡交易写入事件中心，并偶尔在多个位置写入同一张信用卡发生的多笔交易，以便将这些交易标记为异常。 若要运行此应用，请遵循以下步骤： 
 
 1. 从 GitHub 下载 [Azure 事件中心示例](https://github.com/Azure/azure-event-hubs/archive/master.zip)，并在本地将其解压缩。
 

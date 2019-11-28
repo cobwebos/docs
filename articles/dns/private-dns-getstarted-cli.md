@@ -2,17 +2,17 @@
 title: 快速入门 - 使用 Azure CLI 创建 Azure 专用 DNS 区域
 description: 在本快速入门中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure CLI 创建和管理你的第一个专用 DNS 区域和记录的分步指南。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: 8cd5986d61765680698b6c682567dd6388d80a2a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: allensu
+ms.openlocfilehash: 3c580eebd19eb2f2028768059140731fa24f4664
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158859"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210923"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 DNS 区域
 

@@ -4,14 +4,14 @@ description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582709"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168572"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -64,6 +64,7 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 ![门户中缓存创建“正在部署”和“通知”页的屏幕截图](media/hpc-cache-deploy-status.png)
 
 创建完成后，将显示一条通知，其中包含指向新的 Azure HPC 缓存实例的链接，并且缓存将显示在订阅的**资源**列表中。
+<!-- double check on notification -->
 
 ![Azure 门户中的 Azure HPC 缓存实例的屏幕截图](media/hpc-cache-new-overview.png)
 

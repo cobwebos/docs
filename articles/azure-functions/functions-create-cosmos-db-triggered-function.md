@@ -1,22 +1,16 @@
 ---
-title: 创建由 Azure Cosmos DB 触发的函数 | Microsoft Docs
+title: 创建由 Azure Cosmos DB 触发的函数
 description: 使用 Azure Functions 创建当数据添加到 Azure Cosmos DB 调用的无服务器函数。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/02/2018
-ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086355"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230927"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 

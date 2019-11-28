@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36f85b0906b67c5bee61b9e22101f7a0d117878a
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126483"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484427"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>配置站点到站点 VPN 以与 Azure 文件存储一起使用
 你可以使用站点到站点 (S2S) VPN 连接从本地网络中通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 你可以使用 [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)设置站点到站点 VPN，该网关是提供 VPN 服务的 Azure 资源，与存储帐户或其他 Azure 资源一起部署在资源组中。
@@ -100,7 +100,7 @@ ms.locfileid: "73126483"
 - **连接类型**：由于这是 S2S 连接，因此请在下拉列表中选择“站点到站点(IPSec)”  。
 - **虚拟网络网关**：此字段将自动选定到连接中的 VPN 网关，并且无法更改。
 - **本地网络网关**：这是要连接到 VPN 网关的本地网络网关。 将打开选择窗格，其名称与上面创建的本地网络网关相同。
-- **共享密钥 (PSK)** ：字母和数字的组合，用于为连接实现加密。 虚拟网络网关和本地网络网关必须使用同一共享密钥。 如果网关设备没有提供密钥，可以在此处创建一个密钥，并将其提供给设备。
+- **共享密钥(PSK)** ：字母和数字的组合，用于为连接实现加密。 虚拟网络网关和本地网络网关必须使用同一共享密钥。 如果网关设备没有提供密钥，可以在此处创建一个密钥，并将其提供给设备。
 
 单击“确定”以创建连接  。 可通过“连接”页面验证是否已成功完成连接  。
 
@@ -113,5 +113,5 @@ ms.locfileid: "73126483"
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 文件存储网络概述](storage-files-networking-overview.md)
-- [在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-windows.md)
+- [在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-windows.md)
 - [在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-linux.md)

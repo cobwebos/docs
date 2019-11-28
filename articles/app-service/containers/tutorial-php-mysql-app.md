@@ -8,15 +8,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: php
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 11/25/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6d9ef67f39a67fd06a5b42afe4432b5a0156fead
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4fade03d798096e250cb5b56fbb2003ea4b58e1b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549825"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481317"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -105,7 +105,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>配置 MySQL 连接
 
-在存储库根路径中，创建名为 .env 的文件。 复制下列变量到 .env 文件。 请将 &lt;root_password> 占位符替换为 MySQL 根用户的密码。
+在存储库根路径中，创建名为 .env 的文件  。 复制下列变量到 .env 文件  。 请将 &lt;root_password> 占位符替换为 MySQL 根用户的密码  。
 
 ```txt
 APP_ENV=local
@@ -119,11 +119,11 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-有关 Laravel 如何使用 .env 文件的信息，请参阅 [Laravel 环境配置](https://laravel.com/docs/5.4/configuration#environment-configuration)。
+有关 Laravel 如何使用 .env 文件的信息，请参阅 [Laravel 环境配置](https://laravel.com/docs/5.4/configuration#environment-configuration)  。
 
 ### <a name="run-the-sample-locally"></a>在本地运行示例
 
-运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations 目录。
+运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations  目录。
 
 ```bash
 php artisan migrate
@@ -161,7 +161,7 @@ php artisan serve
 
 使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) 命令在 Azure Database for MySQL 中创建一个服务器。
 
-在下列命令中，用唯一的服务器名称替换 \<mysql-server-name> 占位符，用用户名替换 \<admin-user> 占位符，并用密码替换 \<admin-password> 占位符。 此服务器名称用作 MySQL 终结点 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，因此需在 Azure 的所有服务器中保持唯一。 有关选择 MySQL DB SKU 的详细信息，请参阅[为 MySQL 服务器创建 Azure 数据库](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)。
+在下列命令中，用唯一的服务器名称替换 \<mysql-server-name> 占位符，用用户名替换 \<admin-user> 占位符，并用密码替换 \<admin-password> 占位符    。 此服务器名称用作 MySQL 终结点 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，因此需在 Azure 的所有服务器中保持唯一。 有关选择 MySQL DB SKU 的详细信息，请参阅[为 MySQL 服务器创建 Azure 数据库](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 >
 
-在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
+在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问  。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -202,7 +202,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>在本地连接到生产 MySQL 服务器
 
-在终端窗口中，连接到 Azure 中的 MySQL 服务器。 对于 &lt;admin-user> 和 &lt;mysql-server-name>，请使用前面指定的值。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
+在终端窗口中，连接到 Azure 中的 MySQL 服务器。 对于 &lt;admin-user> 和 &lt;mysql-server-name>，请使用前面指定的值   。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -218,7 +218,7 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>创建具有权限的用户
 
-创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权。
+创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权  。
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
@@ -239,7 +239,7 @@ quit
 
 ### <a name="configure-the-database-connection"></a>配置数据库连接
 
-在存储库根路径中创建一个 .env.production 文件，并在其中复制以下变量。 替换占位符 &lt;mysql-server-name>。
+在存储库根路径中创建一个 .env.production 文件，并在其中复制以下变量  。 替换占位符 &lt;mysql-server-name>  。
 
 ```txt
 APP_ENV=production
@@ -257,20 +257,20 @@ MYSQL_SSL=true
 保存更改。
 
 > [!TIP]
-> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env 文件。
+> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore  排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env  文件。
 >
 
 ### <a name="configure-ssl-certificate"></a>配置 SSL 证书
 
 默认情况下，用于 MySQL 的 Azure 数据库强制执行来自客户端的 SSL 连接。 若要连接到 Azure 中的 MySQL 数据库，必须使用 [Azure Database for MySQL 提供的 _.pem_ 证书](../../mysql/howto-configure-ssl.md)。
 
-打开 config/database.php 并添加 sslmode 和 options 参数到 `connections.mysql`，如下面的代码所示。
+打开 config/database.php 并添加 sslmode 和 options 参数到 `connections.mysql`，如下面的代码所示    。
 
 ```php
 'mysql' => [
     ...
     'sslmode' => env('DB_SSLMODE', 'prefer'),
-    'options' => (env('MYSQL_SSL')) ? [
+    'options' => (env('MYSQL_SSL') && extension_loaded('pdo_mysql')) ? [
         PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem',
     ] : []
 ],
@@ -280,7 +280,7 @@ MYSQL_SSL=true
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
-使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
+使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息  。
 
 ```bash
 php artisan migrate --env=production --force
@@ -339,9 +339,9 @@ Laravel 应用程序在 _/public_ 目录中启动。 适用于应用服务的默
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置  。
 
-使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql-server-name>。
+使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql-server-name>   。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -370,7 +370,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
+使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_ 。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -443,7 +443,7 @@ remote: Running deployment command...
 php artisan make:migration add_complete_column --table=tasks
 ```
 
-此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它。
+此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它  。
 
 将 `up`方法替换为以下代码：
 
@@ -475,11 +475,11 @@ public function down()
 php artisan migrate
 ```
 
-根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php）默认映射到 `tasks` 表。
+根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php  ）默认映射到 `tasks` 表。
 
 ### <a name="update-application-logic"></a>更新应用程序逻辑
 
-打开 routes/web.php 文件。 应用程序在此处定义其路由和业务逻辑。
+打开 routes/web.php  文件。 应用程序在此处定义其路由和业务逻辑。
 
 在文件末尾，添加包含以下代码的路由：
 
@@ -502,7 +502,7 @@ Route::post('/task/{id}', function ($id) {
 
 ### <a name="update-the-view"></a>更新视图
 
-打开 resources/views/tasks.blade.php 文件。 找到 `<tr>` 开始标记并将其替换为：
+打开 resources/views/tasks.blade.php  文件。 找到 `<tr>` 开始标记并将其替换为：
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -577,7 +577,7 @@ git push azure master
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 
