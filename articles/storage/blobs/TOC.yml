@@ -276,6 +276,8 @@
               href: storage-blob-containers-list.md
             - name: 管理属性和元数据 (.NET)
               href: storage-blob-container-properties-metadata.md
+            - name: 设置和管理不可变性策略
+              href: storage-blob-immutability-policies-manage.md
         - name: 创建并管理 blob
           items:
             - name: 列出 Blob (.NET)

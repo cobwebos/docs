@@ -4,19 +4,19 @@ description: 了解如何通过 Azure 帐户中心更改 Azure 订阅并切换�
 author: bandersmsft
 manager: amberb
 tags: billing,top-support-issue
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: fc10f3a6d3067e881b857db6205a019f816ca742
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709636"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226167"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>将 Azure 订阅更改为其他套餐
 

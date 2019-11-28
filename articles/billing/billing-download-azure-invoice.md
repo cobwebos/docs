@@ -5,19 +5,19 @@ keywords: 帐单发票, 发票下载, azure 发票, azure 使用情况
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375756"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224025"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
 
@@ -32,7 +32,7 @@ ms.locfileid: "72375756"
 - 读取器
 - 发票管理者
 
-如果签订了 Microsoft 合作伙伴协议 (MPA)，则必须是合作伙伴组织中的全局管理员或管理员代理，才能查看和下载 Azure 发票。 [检查计费帐户类型](#check-your-billing-account-type)以确定需要哪些权限。 
+如果签订了 Microsoft 合作伙伴协议 (MPA)，则必须是合作伙伴组织中的全局管理员或管理员代理，才能查看和下载 Azure 发票。 [检查计费帐户类型](#check-your-billing-account-type)以确定需要哪些权限。
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ ms.locfileid: "72375756"
 
 - 你无权查看发票。 如果签订了 MCA 或 MPA，则必须是计费对象信息所有者、参与者、读者或发票管理者。 对于其他订阅，如果不是帐户管理员，则可能看不到旧发票。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
 
-- 如果你的订阅有免费试用或每月信用额度，则仅当超过月度信用额度时才会收到发票。 如果签订了 Microsoft 客户协议或 Microsoft 合作伙伴协议，则始终会收到发票。 
+- 如果你的订阅有免费试用或每月信用额度，则仅当超过月度信用额度时才会收到发票。 如果签订了 Microsoft 客户协议或 Microsoft 合作伙伴协议，则始终会收到发票。
 
 ## <a name="download-invoices-in-the-azure-portal"></a>可以在 Azure 门户中下载发票
 

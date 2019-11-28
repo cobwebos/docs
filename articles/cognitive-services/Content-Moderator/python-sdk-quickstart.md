@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ee3f59bc9e9f8c7950d005b16433cde9267fea9a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744407"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539006"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>快速入门：适用于 Python 的内容审查器客户端库
 
@@ -104,8 +104,8 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 以下代码使用内容审查器客户端分析文本的正文，并将结果输出到控制台。 首先，在项目的根目录中创建 **text_files/** 文件夹，并在其中添加 *content_moderator_text_moderation.txt* 文件。 将你自己的文本添加到此文件中，或使用以下示例文本：
 
 ```
-Is this a grabage email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
-Crap is the profanity here. Is this information PII? phone 3144444444
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 2065550111
 ```
 
 添加对新文件夹的引用。

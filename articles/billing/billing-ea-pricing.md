@@ -4,7 +4,7 @@ description: 了解如何查看和下载定价或使用组织的定价估计成�
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b32c1be93e2fb16da9ce9ebb65b664017e70cac6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72375777"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223939"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>查看和下载组织的 Azure 定价
 

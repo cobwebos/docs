@@ -4,19 +4,19 @@ description: 了解如何在 Azure 帐单上避免意外费用。 将成本跟�
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375677"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223910"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -68,11 +68,11 @@ ms.locfileid: "72375677"
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>通过预算和成本警报跟踪成本
 
-创建[预算](../cost-management/tutorial-acm-create-budgets.md)来管理成本，并创建[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)来自动通知利益干系人支出异常和超支。 
+创建[预算](../cost-management/tutorial-acm-create-budgets.md)来管理成本，并创建[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)来自动通知利益干系人支出异常和超支。
 
 ### <a name="costs"></a> 使用成本分析探究和分析成本
 
-运行 Azure 服务后，请定期检查成本以跟踪 Azure 支出。 可以使用成本分析了解 Azure 使用情况成本的来源。 
+运行 Azure 服务后，请定期检查成本以跟踪 Azure 支出。 可以使用成本分析了解 Azure 使用情况成本的来源。
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
@@ -166,7 +166,7 @@ ms.locfileid: "72375677"
 
 若要请求额度：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。 如果你有多个帐户，请确保使用受 Azure 停机影响的帐户。 
+1. 登录到 [Azure 门户](https://portal.azure.com/)。 如果你有多个帐户，请确保使用受 Azure 停机影响的帐户。
 2. 创建新的支持请求。
 3. 在“问题类型”下，选择“计费”。  
 4. 在“请求类型”下，选择“退款请求”。  

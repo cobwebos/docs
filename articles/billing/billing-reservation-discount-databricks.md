@@ -4,16 +4,16 @@ description: 了解 Azure Databricks 预购折扣如何适用于你的使用情�
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 9651a61cb7b5c995a46571b7628d5416c08f4161
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 813bb27a04b86e63ed491f2d7fbbc25281f79c4c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719668"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225961"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>如何应用 Azure Databricks 预购折扣
 

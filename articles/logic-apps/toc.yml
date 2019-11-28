@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: 排查错误
           href: logic-apps-diagnosing-failures.md
+    - name: 访问 Azure 虚拟网络
+      items:
+        - name: 连接到带有集成服务环境的虚拟网络
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 为多个集成服务环境设置访问权限
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: 向集成服务环境添加项目
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: 访问本地数据
+      items:
+        - name: 安装数据网关
+          href: logic-apps-gateway-install.md
+        - name: 连接到本地数据
+          href: logic-apps-gateway-connection.md
     - name: 针对 B2B 方案进行开发
       items:
         - name: 创建集成帐户
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: 生成灾难恢复计划
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: 连接到带隔离环境的虚拟网络
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: 向集成服务环境添加项目
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: 访问本地数据
-      items:
-        - name: 安装数据网关
-          href: logic-apps-gateway-install.md
-        - name: 连接到本地数据
-          href: logic-apps-gateway-connection.md
     - name: 连接器 - 深入的主题
       items:
         - name: AS2

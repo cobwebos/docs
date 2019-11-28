@@ -3,19 +3,19 @@ title: 创建 Azure 免费帐户包含的免费服务
 description: 了解如何创建 Azure 免费帐户包含的服务。
 author: amberbhargava
 manager: amberb
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 07bd127125e30ffb8ca365b8c34a27691394c619
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375804"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225057"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>创建 Azure 免费帐户包含的服务
 

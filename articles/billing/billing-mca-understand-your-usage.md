@@ -4,19 +4,19 @@ description: 了解如何阅读并理解计费对象信息的 Azure 使用情况
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: c0c43c779affb4edca78def95906f5adfcc6fac4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: b46c635b28d693cb0d6ab9e643a8a1ee9e55fc64
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709472"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226083"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议的 Azure 使用情况和费用文件中的术语
 

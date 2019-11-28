@@ -4,23 +4,23 @@ description: 了解 Azure 免费帐户产生费用的原因。 了解如何避�
 author: amberbhargava
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ca685e70fea8d02a16485b135d82575069889bfa
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375900"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226442"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
 
-使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以在前 30 天获得 200 美元的 Azure 额度，并在 12 个月内获得有限数量的免费服务。 若要了解有关免费服务的限值，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。 只要有未过期的额度或只使用限制内的免费服务，就不会收费。 
+使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以在前 30 天获得 200 美元的 Azure 额度，并在 12 个月内获得有限数量的免费服务。 若要了解有关免费服务的限值，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。 只要有未过期的额度或只使用限制内的免费服务，就不会收费。
 
 让我们来看看可能会让 Azure 免费帐户产生费用的一些原因。
 

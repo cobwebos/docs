@@ -4,19 +4,19 @@ description: 了解如何读取使用情况，以了解如何为采用即用即�
 author: bandersmsft
 manager: yashr
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f16fabf86cebc41f8d057f5bfab2e0d776d73395
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709447"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225775"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解采用即用即付费率的个人订阅的 Azure 预留使用情况
 

@@ -3,7 +3,7 @@ title: 排查 Azure 企业成本查看问题
 description: 了解如何解决 Azure 门户中可能遇到的有关组织成本查看的任何问题。
 author: bandersmsft
 manager: amberb
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
@@ -11,12 +11,12 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 7b4f7fbba83d9d336e42e1de60822a0aa9107269
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8266296bcf77a5889f6a747b990bd47f4d5ff252
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709643"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223934"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
 

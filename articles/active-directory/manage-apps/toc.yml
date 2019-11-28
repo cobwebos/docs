@@ -72,8 +72,14 @@
       items:
         - name: 规划自动用户预配部署
           href: plan-auto-user-provisioning.md
+        - name: 对启用 SCIM 的应用自动执行预配
+          href: use-scim-to-provision-users-and-groups.md
         - name: 手动预配与自动预配
           href: application-provisioning-config-how-to.md
+    - name: 云 HR 预配
+      items:
+        - name: 规划云 HR 用户预配部署
+          href: plan-cloud-hr-provision.md
     - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理

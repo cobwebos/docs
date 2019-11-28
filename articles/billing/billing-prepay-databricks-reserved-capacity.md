@@ -4,16 +4,16 @@ description: 了解如何预付 Azure Databricks 费用，以便通过预留容�
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 5ceef76bd5a5f6a2904d3619f310020e90cbec0e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719689"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223634"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>通过预购优化 Azure Databricks 成本
 

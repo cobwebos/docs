@@ -8,19 +8,19 @@ author: adpick
 manager: adpick
 editor: ''
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: 8a3d1a3a6b1dce1d729942715bbe5962837ff093
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 87c31e663529ea20d119753094133941b02e2756
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60918323"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226268"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>导出并查看顶层订阅信息
 如果需要查看与用户凭据关联的订阅 ID 集合，请[从 Azure 帐户中心下载具有订阅信息的 .json 文件](https://account.azure.com/subscriptions/download)。

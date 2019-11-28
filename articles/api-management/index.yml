@@ -53,3 +53,4 @@ sections:
         items:
           - html: <a href="/azure/api-management/policy-samples">策略</a>
           - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
+          - html: '<a href="https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration">参考体系结构</a>'

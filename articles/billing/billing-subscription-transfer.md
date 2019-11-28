@@ -5,7 +5,7 @@ keywords: 转移 Azure 订阅, Azure 转移订阅, 将 Azure 订阅转移到另�
 author: bandersmsft
 manager: amberb
 tags: billing,top-support-issue
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: beef37b0ece9cf57c86927b9f57d85ad4a25dbd1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a858ef9918135bfb660c059d80f4c7c49e1e3364
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73746313"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223562"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 

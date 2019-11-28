@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709623"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223821"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
 你可以在 Azure 门户中向其他人提供对你帐户的账单信息的访问权限。 计费角色的类型以及提供计费信息访问权限的说明因计费帐户的类型而异。 若要确定计费帐户的类型，请参阅[检查计费帐户的类型](#check-the-type-of-your-billing-account)。
 
-本文适用于使用 Microsoft 联机服务程序帐户的客户。 如果你是签订了企业协议 (EA) 的 Azure 客户，并且是企业管理员，则可在 Enterprise Portal 中将权限授予部门管理员和帐户所有者。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。 如果你是 Microsoft 客户协议客户，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](billing-understand-mca-roles.md)。 
+本文适用于使用 Microsoft 联机服务程序帐户的客户。 如果你是签订了企业协议 (EA) 的 Azure 客户，并且是企业管理员，则可在 Enterprise Portal 中将权限授予部门管理员和帐户所有者。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。 如果你是 Microsoft 客户协议客户，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](billing-understand-mca-roles.md)。
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Microsoft 联机服务程序帐户的帐户管理员
 
@@ -60,9 +60,9 @@ ms.locfileid: "71709623"
 1. 在“成本管理 + 计费”  中进行搜索。
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. 从左侧窗格中选择“订阅”  。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
- 
+
     ![显示选择订阅的屏幕截图](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. 选择“发票”  ，然后选择“访问发票”  。
@@ -88,7 +88,7 @@ ms.locfileid: "71709623"
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. 从左侧窗格中选择“订阅”  。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
- 
+
     ![显示选择订阅的屏幕截图](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. 选择“访问控制 (IAM)”  。

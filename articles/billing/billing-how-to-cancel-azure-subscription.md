@@ -5,23 +5,23 @@ author: bandersmsft
 manager: amberb
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0c681a3374529c4f973c7cd247ad8d387682b564
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7ddd5d2aa4352dda6a9fe0ec27d2ea607dbb9f74
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719719"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223877"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
-如果不再需要订阅，可以在 Azure 门户中取消 Azure 订阅。 
+如果不再需要订阅，可以在 Azure 门户中取消 Azure 订阅。
 
 在取消订阅之前，请执行以下操作：
 * 备份数据。 例如，若要在 Azure 存储或 SQL 中存储数据，请下载一个副本。 如果有虚拟机，请在本地保存该虚拟机的映像。

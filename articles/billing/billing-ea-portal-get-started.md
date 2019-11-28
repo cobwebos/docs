@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/07/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 567beb9de0c0a8039d774270bdf61a7db437091e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d5fe93f1d3297fbdfb879a515c502025b49eab1e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888379"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223994"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA 门户入门
 
@@ -397,7 +397,7 @@ MSDN 订阅自动转换为 MSDN 开发/测试套餐，EA 套餐所有现有的�
 
 ### <a name="advanced-report-download"></a>高级报表下载
 
-如需特定日期范围或特定帐户的报表，可以使用高级报表下载功能。 为了容纳较大的记录集，自 2016 年 8 月 30 日起，输出文件的格式从 .xlsx 变为 .csv。
+如需特定日期范围或帐户的报表，可以使用高级报表下载功能。 从 2016 年 8 月 30 日起，输出文件的格式从 .xlsx 变为 .csv，以便容纳较大的记录集。
 
 1. 选择“高级报表下载”  。
 1. 选择适当的日期范围  。

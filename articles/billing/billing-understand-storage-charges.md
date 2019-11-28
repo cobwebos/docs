@@ -2,16 +2,16 @@
 title: 了解如何将预留折扣应用于 Azure 存储 | Microsoft Docs
 description: 了解如何向块 blob 和 Azure Data Lake Storage Gen2 资源应用 Azure 存储预留容量折扣。
 author: tamram
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
-ms.openlocfilehash: ebef727cfa291744b3c97299da2a1340f34f5d72
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4dd224036989b4ce78ee382b539e99c12015128e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73746268"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225751"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>了解如何将预留折扣应用于 Azure 存储
 
