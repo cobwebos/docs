@@ -1,17 +1,14 @@
 ---
 title: 教程 - 为 Terraform 配置 Azure Cloud Shell
 description: 将 Terraform 与 Azure Cloud Shell 结合使用可简化身份验证和模板配置。
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1259d5004bd547e33f65571333b6d0721d1253c0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: db9edfadbe01edc1ee9df09c284e3895ee11f3d3
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078725"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159126"
 ---
 # <a name="tutorial-configure-azure-cloud-shell-for-terraform"></a>教程：为 Terraform 配置 Azure Cloud Shell
 

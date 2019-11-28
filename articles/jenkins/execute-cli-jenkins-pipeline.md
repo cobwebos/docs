@@ -1,19 +1,15 @@
 ---
 title: 使用 Jenkins 执行 Azure CLI
 description: 了解如何使用 Azure CLI 通过 Jenkins 管道将 Java Web 应用部署到 Azure
-ms.service: jenkins
 keywords: jenkins, azure, devops, 应用服务, cli
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882119"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158819"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
 若要将 Java Web 应用部署到 Azure，可以通过 [Jenkins 管道](https://jenkins.io/doc/book/pipeline/)使用 Azure CLI。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：

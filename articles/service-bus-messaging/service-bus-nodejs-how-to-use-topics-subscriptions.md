@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 80ca9589e7181518874dc26a9a42b57774f60498
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111778"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561579"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入门：如何通过 Node.js 和 azure-sb 包使用服务总线主题与订阅
 > [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
@@ -349,7 +349,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Azure portal]: https://portal.azure.com
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [创建 Node.js 应用程序并将其部署到 Azure 网站]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md

@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: afe6ae001712db6d2a0dfa676daf847a2c4cf86e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e63892962802d38ac7337a99a9a33f3770785ad2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438682"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170265"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建 Azure 数据工厂和管道
 
@@ -351,7 +351,7 @@ def main():
 
     # Create an Azure blob dataset (input)
     ds_name = 'ds_in'
-    ds_ls = LinkedServiceReference(ls_name)
+    ds_ls = LinkedServiceReference(reference_name=ls_name)
     blob_path = 'adfv2tutorial/input'
     blob_filename = 'input.txt'
     ds_azure_blob = AzureBlobDataset(

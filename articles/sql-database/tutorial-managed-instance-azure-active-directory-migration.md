@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807175"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227924"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>教程：使用 T-SQL DDL 语法将 SQL Server 本地 Windows 用户和组迁移到 Azure SQL 数据库托管实例
 
@@ -250,7 +250,7 @@ go
     select * from test; 
     go 
      
-    -- Check that the SQL on-premise Windows user/group exists  
+    -- Check that the SQL on-premises Windows user/group exists  
     select * from sys.database_principals; 
     go 
     -- the old user aadsqlmi\testUser1 should be there 

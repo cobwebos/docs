@@ -3,17 +3,13 @@ title: 教程 - 使用 Ansible 在 Azure Database for MySQL 中配置数据库
 description: 了解如何使用 Ansible 创建和配置 Azure Database for MySQL 服务器
 keywords: ansible, azure, devops, bash, playbook, mysql, 数据库
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1b6c9a9aa3abbda7ffd72db0ecb137b3c9da1a6c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241828"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156530"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>教程：使用 Ansible 在 Azure Database for MySQL 中配置数据库
 

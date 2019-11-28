@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: 13add6614af8d3ad76e820228b748c0084a29876
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9f61b2a74639b36ebef4c5af627d5da93de1393c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039806"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326341"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 将托管磁盘的快照复制到同一订阅或不同订阅
 
@@ -46,7 +46,7 @@ ms.locfileid: "74039806"
 | 命令 | 说明 |
 |---|---|
 | [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | 创建用于创建快照的快照配置。 它包括父快照的资源 Id 以及与父快照相同的位置。  |
-| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用作为参数传递的快照配置、快照名称和资源组名称创建快照。 |
+| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | 使用作为参数传递的快照配置、快照名称和资源组名称创建快照。 |
 
 ## <a name="next-steps"></a>后续步骤
 

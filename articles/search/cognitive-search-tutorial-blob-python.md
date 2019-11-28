@@ -3,18 +3,18 @@ title: 教程：使用 REST API 在 Python 中创建技能组
 titleSuffix: Azure Cognitive Search
 description: 本教程通过一个示例分步说明如何使用 Jupyter Python 笔记本在 Azure 认知搜索中完成数据提取、自然语言和图像 AI 处理。 提取的数据会编制索引并通过查询轻松访问。
 manager: nitinme
-author: LisaLeib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113678"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406414"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>教程：使用 REST 和 Python 创建 AI 扩充管道
 

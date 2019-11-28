@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123821"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384081"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入门：使用 Maven 插件启动 Azure Spring Cloud 应用
 
@@ -38,16 +38,7 @@ ms.locfileid: "74123821"
 1. [安装 Git](https://git-scm.com/)。
 2. [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 3. [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)。
-4. [安装 Azure CLI 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-5. [注册免费的 Azure 订阅](https://azure.microsoft.com/free/)。
-
-## <a name="install-the-azure-cli-extension"></a>安装 Azure CLI 扩展
-
-使用以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展：
-
-```Azure CLI
-az extension add --name spring-cloud
-```
+4. [注册免费的 Azure 订阅](https://azure.microsoft.com/free/)。
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>在 Azure 门户中预配服务实例
 

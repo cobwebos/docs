@@ -6,13 +6,13 @@ ms.author: kgremban
 ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, seodec18
-ms.openlocfilehash: fcb272a6161ecae99f969fbf6689944ea85a1384
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.custom: mvc
+ms.openlocfilehash: 7fbbe32efcedd4fa2635db1cc21f7ce98557515b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114027"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452529"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 

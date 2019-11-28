@@ -1,19 +1,15 @@
 ---
 title: Azure 区块链服务的区块链数据管理器是什么
 description: 用于捕获、转换区块链数据并将其传送到事件网格主题的区块链数据管理器。
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 94534d9b98f6c93d1d439775d3269df71f587ca4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577489"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326201"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Azure 区块链服务的区块链数据管理器是什么？
 

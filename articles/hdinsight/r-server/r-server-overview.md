@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665289"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321659"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
 
@@ -130,7 +130,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 最新版本的 HDInsight 在边缘节点上提供 RStudio Server 的默认安装，作为基于浏览器的 IDE。 使用 RStudio Server 作为 IDE 来开发和执行 R 脚本，与仅使用 R 控制台相比，可以大幅提高生产力。
 
-此外，可以安装桌面 IDE，并使用它通过远程 MapReduce 或 Spark 计算上下文来访问群集。 选项包括 Microsoft 的[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS)、RStudio 和 Walware 的基于 Eclipse 的 [StatET](http://www.walware.de/goto/statet)。
+此外，可以安装桌面 IDE，并使用它通过远程 MapReduce 或 Spark 计算上下文来访问群集。 选项包括 Microsoft 的[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio 和 Walware 的基于 Eclipse 的 [StatET](http://www.walware.de/goto/statet)。
 
 此外，通过 SSH 或 PuTTY 连接后，在 Linux 命令提示符下键入 R 即可访问边缘节点上的 R 控制台  。 如果在另一个窗口中运行 R 脚本开发的文本编辑器，可根据需要将脚本部分剪切并粘贴到 R 控制台，以便于使用控制台界面。
 

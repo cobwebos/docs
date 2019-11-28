@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建基本负载均衡器 - Azure CLI
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure CLI 创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
-ms.openlocfilehash: 67d137039778b7ec8d5e65acb017b84ad6df5cb2
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 49bd66a5ff3cc9d3cddcb0577e335794550ffd17
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274228"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214846"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建负载均衡器以对 VM 进行负载均衡
 

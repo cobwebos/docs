@@ -1,19 +1,15 @@
 ---
 title: 在 Linux 上使用自定义映像创建 Azure Functions
 description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
-author: ggailey777
-ms.author: glenga
 ms.date: 09/27/2019
 ms.topic: tutorial
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082833"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484387"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
@@ -36,7 +32,6 @@ ms.locfileid: "74082833"
 > * 启用持续部署。
 > * 与容器建立 SSH 连接。
 > * 添加队列存储输出绑定。 
-> * 添加 Application Insights 监视。
 
 支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。 
 

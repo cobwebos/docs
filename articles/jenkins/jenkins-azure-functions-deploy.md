@@ -1,19 +1,15 @@
 ---
 title: 使用 Jenkins Azure Functions 插件部署到 Azure Functions
 description: 了解如何使用 Jenkins Azure Functions 插件部署到 Azure Functions
-ms.service: jenkins
 keywords: jenkins, azure, devops, java, azure functions
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882041"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158772"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
 

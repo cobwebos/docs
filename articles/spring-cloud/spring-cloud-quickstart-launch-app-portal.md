@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133254"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560065"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用程序
 
@@ -92,20 +92,6 @@ az extension add --name spring-cloud
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-
-1. 登录到 Azure CLI 并活动的订阅。
-
-    ```azurecli
-    # Login to Azure CLI
-    az login
-
-    # List all subscriptions
-    az account list -o table
-
-    # Set active subscription
-    az account set --subscription <target subscription ID>
-    ```
-
 1. 为资源组和服务指定名称。 请务必将以下占位符替换为之前在本教程中预配的资源组名称和服务名称。
 
     ```azurecli

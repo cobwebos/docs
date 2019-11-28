@@ -1,21 +1,16 @@
 ---
 title: 使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
 description: 创建一个 OpenAPI 定义，使其他应用和服务可以在 Azure 中调用函数。
-keywords: OpenAPI, Swagger, 云服务, 云应用,
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
-ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533542"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226824"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
 

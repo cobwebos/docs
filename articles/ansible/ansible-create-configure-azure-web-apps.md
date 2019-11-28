@@ -3,17 +3,13 @@ title: 教程 - 使用 Ansible 在 Azure 应用服务中配置应用
 description: 了解如何使用 Java 8 和 Tomcat 容器运行时在 Azure 应用服务中创建应用
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5104db6bd7fa57600c7212e041263971ca4c91d4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242051"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156570"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>教程：使用 Ansible 在 Azure 应用服务中配置应用
 

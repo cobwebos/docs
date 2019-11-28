@@ -3,17 +3,13 @@ title: 快速入门 - 通过 Azure Cloud Shell 中的 Bash 运行 Ansible Playbo
 description: 本快速入门介绍如何使用 Azure Cloud Shell 中的 Bash 执行各种 Ansible 任务
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 10f71d5bcb7134ca0560e4fac617e6835cb3d48c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241526"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155973"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>快速入门：通过 Azure Cloud Shell 中的 Bash 运行 Ansible Playbook
 

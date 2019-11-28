@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 10/12/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 070844cbf8f6a550b92d764ddb8a31afec12f437
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374595"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229833"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 

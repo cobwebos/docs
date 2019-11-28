@@ -1,20 +1,16 @@
 ---
 title: 持久实体 - Azure Functions
 description: 了解持久实体的概念，以及如何在 Azure Functions 的 Durable Functions 扩展中使用持久实体。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d62281b4ccb522b3a784428bcf0284730f120628
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: aa4d1c4bfab349659c42a34ca5a73f676a2ea2b8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904028"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232933"
 ---
 # <a name="entity-functions"></a>实体函数
 

@@ -1,17 +1,14 @@
 ---
 title: 教程 - 使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 description: 使用 Terraform 通过 Packer 生成的自定义映像配置 Azure 虚拟机规模集（配有虚拟网络和托管的附加磁盘）并对其进行版本控制。
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077815"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159281"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教程：使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 

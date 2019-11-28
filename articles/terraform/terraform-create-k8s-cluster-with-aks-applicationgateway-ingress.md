@@ -1,17 +1,14 @@
 ---
 title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 31faedf247f8dd0799a4ee52cabc8386f0363ff6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082572"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159088"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 

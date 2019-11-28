@@ -1,18 +1,14 @@
 ---
 title: 通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件
 description: 了解如何在持续集成管道中使用 Azure Dev Spaces 插件。
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881886"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209673"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教程：通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
 
@@ -131,7 +127,7 @@ ms.locfileid: "72881886"
     Dev Spaces CLI 的 `azds prep` 命令使用默认设置生成 Docker 和 Kubernetes 资产。 这些文件在项目的生命周期内持续保留，并且可自定义为：
 
     * `./Dockerfile` 和 `./Dockerfile.develop` 描述应用的容器映像，以及如何在容器内生成和运行源代码。
-    * `./charts/webfrontend` 下面的 [Helm 图表](https://helm.sh/docs/developing_charts/)描述如何将容器部署到 Kubernetes。
+    * `./charts/webfrontend` 下面的 [Helm 图表](https://helm.sh/docs/topics/charts/)描述如何将容器部署到 Kubernetes。
     * `./azds.yaml` 是 Azure Dev Spaces 的配置文件。
 
     若要了解详情，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)。

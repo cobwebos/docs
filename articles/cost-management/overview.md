@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/14/2019
 ms.topic: overview
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 8b989e5cf5b66d21c19d58f2f64fbba1927f5d69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 70951bfdafb9e54a63c2645d4993233fc4b8446c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792799"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230016"
 ---
 # <a name="what-is-the-cloudyn-service"></a>什么是 Cloudyn 服务？
 
@@ -41,7 +41,7 @@ Microsoft 收购了 Cloudyn，并将其成本管理功能从 Cloudyn 门户本�
 | --- | --- |
 | Azure 企业协议 | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure Web Direct (PAYG/MSDN) | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Government  | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Government | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
 | 对 AWS 的跨云成本分析支持（预览版） | [Azure 成本管理](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | AWS 建议 | [Cloudyn](https://azure.cloudyn.com) |

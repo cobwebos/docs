@@ -2,18 +2,15 @@
 title: 教程：将 Java 函数与 Azure Cosmos DB 和事件中心配合使用
 description: 本教程介绍如何使用事件中心的事件，通过以 Java 编写的函数在 Azure Cosmos DB 中进行更新。
 author: KarlErickson
-manager: barbkess
-ms.service: azure-functions
-ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: 172dda0a79620431d41a5be7e872b6b1507a6c81
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 04cb91a62536c493240998270b5bd8d29fd331ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608300"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230626"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
 

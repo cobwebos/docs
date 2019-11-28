@@ -1,21 +1,17 @@
 ---
 title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 8b31a5ab716b58d167a0d16579b44aa7df95a0ff
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614786"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232846"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 

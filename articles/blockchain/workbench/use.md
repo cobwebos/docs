@@ -1,21 +1,15 @@
 ---
 title: 在 Azure Blockchain Workbench 中使用应用程序
 description: 介绍如何在 Azure Blockchain Workbench 预览版中使用应用程序合同的教程。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328950"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324043"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中使用应用程序
 

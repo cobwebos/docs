@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 95d1292374e1ec408c107245cde4cd1e12270f50
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f35541d01b9463112caf48bd8249469f97158c9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967219"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229939"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
@@ -29,20 +29,20 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 ## <a name="register-with-cloudyn"></a>注册 Cloudyn
 
-1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
-2. 在“概览”下，单击“Cloudyn”  
+1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”  。
+2. 在“概览”  下，单击“Cloudyn”   
     ![显示在 Azure 门户中的 Cloudyn 页](./media/quick-register-ea/cost-mgt-billing-service.png)
-3. 在“Cloudyn”页上，单击“转到 Cloudyn”，以在新窗口中打开 Cloudyn 注册页。
-4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 企业合约管理员”。  
+3. 在“Cloudyn”  页上，单击“转到 Cloudyn”  ，以在新窗口中打开 Cloudyn 注册页。
+4. 在 Cloudyn 门户试用注册页上，键入公司名称，然后选择“Azure 企业合约管理员”  。  
 5. 输入企业门户注册 API 密钥。 如果手边没有密钥，请单击[企业门户](https://ea.azure.com)链接并执行以下步骤：  
     ![在“计费”选项卡上粘贴 API 密钥](./media/quick-register-ea/trial-reg.png)
-   1. 登录 Azure Enterprise 网站并单击“报告”，单击“API 访问密钥”，然后复制主密钥。  
+   1. 登录 Azure Enterprise 网站并单击“报告”  ，单击“API 访问密钥”  ，然后复制主密钥。  
     ![EA 门户中的 EA API 密钥示例](./media/quick-register-ea/ea-key.png)
    3. 返回到注册页并粘贴 API 密钥。
-6. 同意“使用条款”，并验证密钥。 单击“下一步”，授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
+6. 同意“使用条款”，并验证密钥。 单击“下一步”  ，授权 Cloudyn 收集 Azure 资源数据。 收集的数据包括订阅的使用情况、性能、计费和标记数据。  
     ![成功的 EA API 密钥验证示例](./media/quick-register-ea/ea-key-validated.png)
-7. 在“邀请其他利益干系人”下，可以通过键入其电子邮件地址来添加用户。 完成后，单击“下一步”。 将所有计费数据添加到 Cloudyn 可能需要长达 24 小时的时间，具体取决于 Azure 注册的大小。
-8. 单击“转到 Cloudyn”打开 Cloudyn 门户，然后在“云帐户管理”页上，应看到已注册的 EA 帐户信息。
+7. 在“邀请其他利益干系人”  下，可以通过键入其电子邮件地址来添加用户。 完成后，单击“下一步”  。 将所有计费数据添加到 Cloudyn 可能需要长达 24 小时的时间，具体取决于 Azure 注册的大小。
+8. 单击“转到 Cloudyn”  打开 Cloudyn 门户，然后在“云帐户管理”  页上，应看到已注册的 EA 帐户信息。
 
 若要观看有关注册企业协议的教程视频，请参阅[如何在 Cloudyn 中查找要使用的 EA 注册 ID 和 API 密钥](https://youtu.be/u_phLs_udig)。
 
