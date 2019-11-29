@@ -8,26 +8,27 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 8/21/2019
+ms.date: 11/11/2019
 ms.author: dapine
-ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: a35ceed4cefa47b903ceec915388b4831cd9e69b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146819"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173773"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
-Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择部署和托管随附 [Docker 容器](https://www.docker.com/what-container)的服务的位置。 目前已在 Azure 认知服务的子集中发布容器支持预览版，这些服务包括：
+Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择部署和托管随附 [Docker 容器](https://www.docker.com/what-container)的服务的位置。 容器支持当前适用于 Azure 认知服务的一部分，包括以下各部分：
 
-* [异常探测器][ad-containers]
-* [计算机视觉][cv-containers]
-* [人脸][fa-containers]
-* [表单识别器][fr-containers]
-* [语言理解 (LUIS)][lu-containers]
-* [语音服务 API][sp-containers]
-* [文本分析][ta-containers]
+> [!div class="checklist"]
+> * [异常探测器][ad-containers]
+> * [计算机视觉][cv-containers]
+> * [人脸][fa-containers]
+> * [表单识别器][fr-containers]
+> * [语言理解 (LUIS)][lu-containers]
+> * [语音服务 API][sp-containers]
+> * [文本分析][ta-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
@@ -37,28 +38,31 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 
 ## <a name="features-and-benefits"></a>功能和优势
 
-- **对数据的控制**：允许客户选择认知服务在何处处理其数据。 对于不能将数据发送到云，但需要访问认知服务技术的客户，此功能非常重要。 支持混合环境中的一致性 - 跨数据、管理、标识和安全性。
+- **不可变基础结构**：使 DevOps 的团队能够利用一组一致、可靠的已知系统参数，同时适应变化。 容器可灵活地在可预测生态系统内进行透视，并避免了配置偏移。
+- **对数据的控制**：允许客户选择这些认知服务处理数据的位置。 对于不能将数据发送到云，但需要访问认知服务技术的客户，此功能非常重要。 支持混合环境中的一致性 - 跨数据、管理、标识和安全性。
 - **对模型更新的控制**：为客户提供其解决方案中部署的模型的版本控制和更新方面的灵活性。
-- **可移植的体系结构**：支持创建可在 Azure、本地和边缘部署的可移植应用程序体系结构。 可直接将容器部署到 [Azure Kubernetes 服务](../aks/index.yml)、[Azure 容器实例](../container-instances/index.yml)，或部署到 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
-- **高吞吐量/低延迟**：通过使以物理方式运行的认知服务更深入了解其应用程序逻辑和数据，为客户提供缩放功能，以满足高吞吐量和低延迟扩展要求。 容器不限制每秒综合事务数 (TPS)，如果提供了必要的硬件资源，它还可进行纵向或横向扩展，来应对需求。 
+- **可移植体系结构**：允许创建可在 Azure、本地和边缘部署的可移植应用程序体系结构。 可直接将容器部署到 [Azure Kubernetes 服务](../aks/index.yml)、[Azure 容器实例](../container-instances/index.yml)，或部署到 [Azure Stack](https://kubernetes.io/) 的 [Kubernetes](/azure-stack/operator) 集群。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+- **高吞吐量/低延迟**：使客户能够通过使认知服务与应用程序逻辑和数据物理接近，来扩展高吞吐量和低延迟要求。 容器不限制每秒综合事务数 (TPS)，如果提供了必要的硬件资源，它还可进行纵向或横向扩展，来应对需求。
+- **可伸缩性**：随着容器化和容器业务流程软件的日益普及（如 Kubernetes），可伸缩性是技术进步的最前沿。 在可缩放的群集基础上构建，应用程序开发适用于高可用性。
 
 ## <a name="containers-in-azure-cognitive-services"></a>Azure 认知服务中的容器
 
 Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集：
 
-| 服务 | 支持的定价层 | 容器 | 描述 |
+| 服务 | 支持的定价层 | 容器 | 说明 |
 |---------|----------|----------|-------------|
-|[异常检测器][ad-containers] |F0、S0|**异常检测器** |通过异常检测器 API，可使用机器学习监视和检测时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
-|[计算机视觉][cv-containers] |F0、S1|**读取** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还检测图像中的*手写文本*，并提供 PDF/TIFF/多页面支持。<br/><br/>**重要提示：** Read 容器当前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[计算机视觉][cv-containers] |F0、S1|**识别文本** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[人脸][fa-containers] |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[异常检测器][ad-containers] |F0、S0|**异常检测器** |可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
+|[计算机视觉][cv-containers] |F0、S1|**读取** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还检测图像中的*手写文本*，并提供 PDF/TIFF/多页面支持。<br/><br/>**重要提示：** Read 容器当前仅适用于英语。|
+|[人脸][fa-containers] |F0、S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 此外，还可以使用共享视觉特征将类似人脸组织成组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[表单识别器][fr-containers] |F0、S0|**表单识别器** |表单理解应用机器学习技术从表单中识别和提取键值对和表。<br>[请求访问权限](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0、S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
-|[语音服务 API][sp-containers] |F0、S0|**语音转文本** |将连续的实时语音转换为文本。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
-|[语音服务 API][sp-containers] |F0、S0|**文本转语音** |将文本转换为自然发音的语音。<br>[请求访问权限](https://aka.ms/speechcontainerspreview/)|
-|[文本分析][ta-containers] |F0、S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
-|[文本分析][ta-containers]|F0、S|语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
-|[文本分析][ta-containers]|F0、S|情绪分析（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） |分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
+|[语音服务 API][sp-containers-stt] |F0、S0|**语音转文本** |将连续的实时语音转换为文本。|
+|[语音服务 API][sp-containers-cstt] |F0、S0|**自定义语音到文本** |使用自定义模型将连续实时语音转录为文本。|
+|[语音服务 API][sp-containers-tts] |F0、S0|**文本转语音** |将文本转换为自然发音的语音。|
+|[语音服务 API][sp-containers-ctts] |F0、S0|**自定义文本到语音转换** |使用自定义模型将文本转换为自然声音。|
+|[文本分析][ta-containers-keyphrase] |F0、S|关键短语提取（**映像**）[](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409) |提取关键短语，以标识主要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
+|[文本分析][ta-containers-language]|F0、S|语言检测（**映像**）[](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409) |针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
+|[文本分析][ta-containers-sentiment]|F0、S|情绪分析（**映像**）[](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409) |分析原本文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](./text-analytics/language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -80,7 +84,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 > * [异常检测器](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [人脸](Face/face-how-to-install-containers.md)
 > * [表单识别器](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
-> * [识别文本](Computer-vision/computer-vision-how-to-install-containers.md)
+> * [读取](computer-vision/computer-vision-how-to-install-containers.md)
 > * [语音到文本和文本到语音转换](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
@@ -89,7 +93,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 使用 Azure 认知服务容器之前，必须先满足以下先决条件：
 
-**Docker 引擎**：必须在本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器直接部署到 [Azure Kubernetes 服务](../aks/index.yml)或 [Azure 容器实例](../container-instances/index.yml)。
+**Docker 引擎**：必须本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器直接部署到 [Azure Kubernetes 服务](../aks/index.yml)或 [Azure 容器实例](../container-instances/index.yml)。
 
 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。
 
@@ -105,7 +109,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 ## <a name="next-steps"></a>后续步骤
 
-了解可用于认知服务的[容器食谱](containers/container-reuse-recipe.md)。
+了解可以用于认知服务的[容器配方](containers/container-reuse-recipe.md)。
 
 安装和浏览 Azure 认知服务中的容器提供的功能：
 
@@ -126,4 +130,11 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
+[sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
+[sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
+[sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
+[ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+[ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+[ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment

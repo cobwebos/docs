@@ -9,18 +9,18 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 03/12/2019
+ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 5b02b79980ebe5ea91a1cf16d3ea453ebef3bf08
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9b8b3600acc33e177e65002ba69dcf98a20c2253
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279781"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555327"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
-通过将事件中心与[虚拟网络（VNet）服务终结点][vnet-sep]相集成，可以安全地访问工作负荷（例如，绑定到虚拟网络的虚拟机）中的消息传送功能，同时在这两个计算机上保护网络流量路径结尾.
+通过将事件中心与[虚拟网络（VNet）服务终结点][vnet-sep]相集成，可以安全地访问工作负荷（例如，绑定到虚拟网络的虚拟机）中的消息传送功能，同时保护两端的网络流量路径。
 
 一旦配置为至少绑定到一个虚拟网络子网服务终结点，各自的事件中心命名空间就不再接受来自虚拟网络中的任何位置但获得授权的子网的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
@@ -33,6 +33,7 @@ ms.locfileid: "74279781"
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
+> - 与 Azure Monitor 集成。 不能将**其他**Azure 服务中的诊断日志流式传输到事件中心。 但是，可以在事件中心本身上启用 Azure 诊断日志。 当你启用了防火墙（IP 筛选）时，这种情况是相同的。
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
@@ -183,7 +184,7 @@ ms.locfileid: "74279781"
   }
 ```
 
-若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
+若要部署模板，请按照[Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

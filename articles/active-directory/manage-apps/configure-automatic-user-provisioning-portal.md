@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285621"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558581"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
@@ -85,4 +85,4 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 将**预配状态**更改为 "**关闭**" 以暂停预配服务。 在此状态下，Azure 不会创建、更新或删除应用程序中的任何用户或组对象。 将状态改回 "**开**"，然后服务从中断的位置继续。
 
-**清除当前状态，重新启动同步**会触发初始周期。 然后，该服务将再次评估源系统中的所有用户，并确定它们是否处于预配的作用域中。 当应用程序当前处于隔离中或者需要更改属性映射时，这会很有用。 不应使用它来触发删除或禁用请求，因为这些事件可以在触发 clear 状态和重新启动时删除。 由于需要计算的对象数，初始周期还需要更长时间才能完成。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)详细了解初始和增量循环的性能。 
+**清除当前状态，重新启动同步**会触发初始周期。 然后，该服务将再次评估源系统中的所有用户，并确定它们是否处于预配的作用域中。 当应用程序当前处于隔离中或者需要更改属性映射时，这会很有用。 请注意，由于需要计算对象的数量，初始周期的完成时间比典型增量周期长。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)详细了解初始和增量循环的性能。 

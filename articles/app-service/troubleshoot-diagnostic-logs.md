@@ -1,6 +1,6 @@
 ---
 title: 为应用启用诊断日志记录 - Azure 应用服务
-description: 了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。
+description: 了解如何启用诊断日志记录和将检测添加到应用程序中，以及如何访问由 Azure 记录的信息。
 services: app-service
 author: cephalin
 manager: gwallace
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958050"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558569"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -30,7 +30,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 >
 
-|类型|平台|位置|说明|
+|Type|平台|Location|描述|
 |-|-|-|-|
 | 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 blob | 记录由应用程序代码生成的消息。 这些消息可以由你选择的 web 框架或你的应用程序代码使用你的语言的标准日志模式直接生成。 为每条消息分配以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择要进行日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 blob| 采用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息都包括 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
@@ -66,7 +66,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 | 级别 | 包含的类别 |
 |-|-|
-|**已禁用** | 无 |
+|**已禁用** | None |
 |**错误** | “错误”、“严重” |
 |**警告** | “警告”、“错误”、“严重”|
 |**信息** | “信息”、“警告”、“错误”、“严重”|
@@ -170,7 +170,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于 Windows 应用，ZIP 文件包含应用服务文件系统中*D:\Home\LogFiles*目录的内容。 其结构如下：
 
-| 日志类型 | Directory | 说明 |
+| 日志类型 | 目录 | 描述 |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所使用的日志提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 文件和一个 XSL 文件。 您可以在浏览器中查看格式化的 XML 文件。 |
@@ -189,7 +189,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux 支持 | 说明 |
+| 日志类型 | Windows 支持 | Linux （Docker）支持 | 描述 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |

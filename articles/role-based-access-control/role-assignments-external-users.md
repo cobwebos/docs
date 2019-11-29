@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802691"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555551"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限
 
@@ -45,7 +45,7 @@ ms.locfileid: "71802691"
 
 1. 确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作和管理可以邀请来宾的人员](../active-directory/b2b/delegate-invitations.md)。
 
-1. 在 Azure 门户中，单击 " **Azure Active Directory** > **用户** > " "**新建来宾用户**"。
+1. 在 Azure 门户中，单击 " **Azure Active Directory** > **用户** > "**新来宾用户**"。
 
     ![Azure 门户中的新来宾用户功能](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "71802691"
 
 1.  选择访问应用到的资源集，也称为 "作用域"。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
-1. 单击特定的资源。
+1. 单击特定资源。
 
 1. 单击“访问控制(IAM)”。
 
@@ -105,7 +105,7 @@ ms.locfileid: "71802691"
 
 1.  选择访问应用到的资源集，也称为 "作用域"。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
-1. 单击特定的资源。
+1. 单击特定资源。
 
 1. 单击“访问控制(IAM)”。
 
@@ -163,7 +163,7 @@ ms.locfileid: "71802691"
 
    ![删除来宾用户](./media/role-assignments-external-users/delete-guest-user.png)
 
-1. 在出现的删除消息中单击“是”。
+1. 在出现的 "删除" 消息中，单击 **"是"** 。
 
 ## <a name="troubleshoot"></a>故障排除
 
@@ -206,4 +206,4 @@ ms.locfileid: "71802691"
 - [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B 协作用户的属性](../active-directory/b2b/user-properties.md)
 - [B2B 协作邀请电子邮件的元素-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
-- [添加来宾用户作为共同管理员](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)
+- [添加来宾用户作为共同管理员](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

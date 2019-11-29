@@ -1,45 +1,46 @@
 ---
-title: 教程：使用适用于 C# 的语音 SDK 从语音中识别意向
+title: 如何使用语音 SDK 从语音识别意向C#
 titleSuffix: Azure Cognitive Services
-description: 本教程介绍如何使用适用于 C# 的语音 SDK 从语音中识别意向。
+description: 在本指南中，你将了解如何使用的语音 SDK 从语音识别意向C#。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464623"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110157"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用的语音 SDK 从语音识别意向C#
 
 认知服务[语音 SDK](speech-sdk.md) 与[语言理解服务 (LUIS)](https://www.luis.ai/home) 相集成，以提供**意向识别**。 意向是用户想要做的某件事：预订航班、查看天气预报或拨打电话。 用户可以使用任何普通字词。 LUIS 使用机器学习将用户请求映射到定义的意向。
 
 > [!NOTE]
 > LUIS 应用程序定义所要识别的意向和实体。 它与使用语音服务的 C# 应用程序不同。 在本文中，“应用”是指 LUIS 应用，“应用程序”是指 C# 代码。
 
-在本教程中，我们将使用语音 SDK 开发一个 C# 控制台应用程序，用于通过设备的麦克风从用户话语中派生意图。 将了解如何执行以下操作：
+在本指南中，你将使用 Speech SDK 来开发C#一个控制台应用程序，该应用程序通过设备的麦克风从用户最谈话派生意向。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 创建引用语音 SDK NuGet 包的 Visual Studio 项目
-> * 创建语音配置并获取意向识别器
-> * 获取 LUIS 应用的模型并添加所需的意向
-> * 指定用于语音识别的语言
-> * 从文件中识别语音
-> * 使用异步的事件驱动的连续识别
+>
+> - 创建引用语音 SDK NuGet 包的 Visual Studio 项目
+> - 创建语音配置并获取意向识别器
+> - 获取 LUIS 应用的模型并添加所需的意向
+> - 指定用于语音识别的语言
+> - 从文件中识别语音
+> - 使用异步的事件驱动的连续识别
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始阅读本教程之前，请务必准备好以下各项：
+在开始本指南之前，请确保你具有以下各项：
 
-* 一个 LUIS 帐户。 可以通过 [LUIS 门户](https://www.luis.ai/home)免费创建一个帐户。
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（版本不限）。
+- 一个 LUIS 帐户。 可以通过 [LUIS 门户](https://www.luis.ai/home)免费创建一个帐户。
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)（版本不限）。
 
 ## <a name="luis-and-speech"></a>LUIS 和语音
 
@@ -47,30 +48,30 @@ LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服�
 
 LUIS 使用三种密钥：
 
-|密钥类型|目的|
-|--------|-------|
-|创作|用于以编程方式创建和修改 LUIS 应用|
-|入门|仅允许使用纯文本测试 LUIS 应用程序|
-|终结点 |授权访问特定的 LUIS 应用|
+| 密钥类型  | 目的                                               |
+| --------- | ----------------------------------------------------- |
+| 创作 | 用于以编程方式创建和修改 LUIS 应用 |
+| 入门   | 仅允许使用纯文本测试 LUIS 应用程序   |
+| 终结点  | 授权访问特定的 LUIS 应用            |
 
-对于本教程，需要使用终结点密钥类型。 本教程使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
+对于本指南，需要终结点密钥类型。 本指南使用示例 Home Automation LUIS 应用，该应用可以按照[使用预构建的 Home automation 应用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)快速入门教程创建。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 
-当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不会启用语音服务集成，因此不适用于本教程。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 在本教程中，可以使用免费订阅层。
+当你创建 LUIS 应用时，LUIS 会自动生成一个初学者密钥，让你使用文本查询测试该应用。 此密钥不启用语音服务集成，也不能与本指南一起使用。 在 Azure 仪表板中创建 LUIS 资源并将其分配给 LUIS 应用。 你可以使用本指南的免费订阅层。
 
-在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。   最后，在侧栏中选择“密钥和终结点”。 
+在 Azure 仪表板中创建 LUIS 资源之后，请登录到 [LUIS 门户](https://www.luis.ai/home)，在“我的应用”页上选择自己的应用程序，然后切换到应用的“管理”页。 最后，在侧栏中选择“密钥和终结点”。
 
 ![LUIS 门户密钥和终结点设置](media/sdk/luis-keys-endpoints-page.png)
 
-在“密钥和终结点”设置页上： 
+在“密钥和终结点”设置页上：
 
-1. 向下滚动到“资源和密钥”部分，选择“分配资源”。  
-1. 在“将密钥分配到应用”对话框中进行以下更改： 
+1. 向下滚动到“资源和密钥”部分，选择“分配资源”。
+1. 在“将密钥分配到应用”对话框中进行以下更改：
 
-   * 在“租户”下选择“Microsoft”。  
-   * 在“订阅名称”下，选择包含所要使用的 LUIS 资源的 Azure 订阅。 
-   * 在“密钥”下，选择要在应用中使用的 LUIS 资源。 
+   - 在“租户”下选择“Microsoft”。
+   - 在“订阅名称”下，选择包含所要使用的 LUIS 资源的 Azure 订阅。
+   - 在“密钥”下，选择要在应用中使用的 LUIS 资源。
 
-   片刻之后，新订阅将显示在页面底部的表格中。 
+   片刻之后，新订阅将显示在页面底部的表格中。
 
 1. 选择密钥旁边的图标将其复制到剪贴板。 （可以使用其中的任一密钥。）
 
@@ -84,7 +85,7 @@ LUIS 使用三种密钥：
 
 接下来，将代码添加到项目。
 
-1. 在“解决方案资源管理器”中，打开文件“Program.cs”。  
+1. 在“解决方案资源管理器”中，打开文件“Program.cs”。
 
 1. 将该文件开头位置的 `using` 语句块替换为以下声明：
 
@@ -112,13 +113,13 @@ LUIS 使用三种密钥：
 
 1. 将此方法中的占位符替换为你的 LUIS 订阅密钥、区域和应用 ID，如下所示。
 
-   |占位符|替换为|
-   |-----------|------------|
-   |`YourLanguageUnderstandingSubscriptionKey`|LUIS 终结点密钥。 同样，必须从 Azure 仪表板而不是“初学者密钥”获取此项。 可以在 [LUIS 门户](https://www.luis.ai/home)中应用的“密钥和终结点”页上（在“管理”下）找到此密钥。  |
-   |`YourLanguageUnderstandingServiceRegion`|LUIS 订阅所在区域的短标识符，例如 `westus` 表示“美国西部”。 请参阅[区域](regions.md)。|
-   |`YourLanguageUnderstandingAppId`|LUIS 应用 ID。 可以在 [LUIS 门户](https://www.luis.ai/home)中应用的“设置”页上找到此 ID。 |
+   | 占位符 | 替换为 |
+   | ----------- | ------------ |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS 终结点密钥。 同样，必须从 Azure 仪表板而不是“初学者密钥”获取此项。 可以在 **LUIS 门户**中应用的“密钥和终结点”页上（在“管理”下）找到此密钥。[](https://www.luis.ai/home) |
+   | `YourLanguageUnderstandingServiceRegion` | LUIS 订阅所在区域的短标识符，例如 `westus` 表示“美国西部”。 请参阅[区域](regions.md)。 |
+   | `YourLanguageUnderstandingAppId` | LUIS 应用 ID。 可以在 **LUIS 门户**中应用的“设置”页上找到此 ID。[](https://www.luis.ai/home) |
 
-完成这些更改后，可以生成 (**Ctrl+Shift+B**) 和运行 (**F5**) 教程应用程序。 出现提示时，请尝试对着电脑麦克风说出“关灯”。 应用程序会在控制台窗口中显示结果。
+进行这些更改后，可以生成（**ctrl + Shift + B**）并运行应用程序（**F5**）。 出现提示时，请尝试对着电脑麦克风说出“关灯”。 应用程序会在控制台窗口中显示结果。
 
 以下部分包含代码的讨论。
 
@@ -137,12 +138,12 @@ LUIS 使用三种密钥：
 
 若要添加意向，必须提供三个参数：LUIS 模型（已创建并命名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
 
-|`AddIntent()`&nbsp;参数|目的|
-|--------|-------|
-|intentName|LUIS 应用中定义的意向的名称。 此值必须与 LUIS 意向名称完全匹配。|
-|intentID|语音 SDK 分配给已识别的意向的 ID。 此值可以是任何内容；不需要对应于 LUIS 应用中定义的意向名称。 例如，如果多个意向由相同的代码处理，则可以对这些意向使用相同的 ID。|
+| `AddIntent()`&nbsp;参数 | 目的 |
+| --------------------------- | ------- |
+| `intentName` | LUIS 应用中定义的意向的名称。 此值必须与 LUIS 意向名称完全匹配。 |
+| `intentID` | 语音 SDK 分配给已识别的意向的 ID。 此值可以是任何内容；不需要对应于 LUIS 应用中定义的意向名称。 例如，如果多个意向由相同的代码处理，则可以对这些意向使用相同的 ID。 |
 
-家庭自动化 LUIS 应用具有两个意向：一个意向是打开设备，另一个意向是关闭设备。 以下代码行将这些意向添加到识别器；请将 `RecognizeIntentAsync()` 方法中的三个 `AddIntent` 代码行替换为以下代码。
+家庭自动化 LUIS 应用具有两个意向：一个意向是打开设备，另一个意向是关闭设备。 以下代码行将这些意向添加到识别器；请将 `AddIntent` 方法中的三个 `RecognizeIntentAsync()` 代码行替换为以下代码。
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
@@ -155,24 +156,24 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 
 创建识别器并添加意向后，可以开始识别。 语音 SDK 支持单次识别和连续识别。
 
-|识别模式|要调用的方法|结果|
-|----------------|-----------------|---------|
-|单次|`RecognizeOnceAsync()`|返回在一个话语后面识别的意向（如果有）。|
-|连续|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|识别多个言语。有可用结果时发出事件（例如 `IntermediateResultReceived`）。|
+| 识别模式 | 要调用的方法 | 结果 |
+| ---------------- | --------------- | ------ |
+| 单次 | `RecognizeOnceAsync()` | 返回在一个话语后面识别的意向（如果有）。 |
+| 连续 | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | 识别多个言语。有可用结果时发出事件（例如 `IntermediateResultReceived`）。 |
 
-教程应用程序使用单次模式，因此调用 `RecognizeOnceAsync()` 开始识别。 结果是包含有关已识别的意向的信息的 `IntentRecognitionResult` 对象。 使用以下表达式提取 LUIS JSON 响应：
+应用程序使用单步模式，因此调用 `RecognizeOnceAsync()` 开始识别。 结果是包含有关已识别的意向的信息的 `IntentRecognitionResult` 对象。 使用以下表达式提取 LUIS JSON 响应：
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-教程应用程序不会分析 JSON 结果。 它只在控制台窗口中显示 JSON 文本。
+应用程序不会分析 JSON 结果。 它只在控制台窗口中显示 JSON 文本。
 
 ![单一 LUIS 识别结果](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>指定识别语言
 
-默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，创建识别器之前在教程应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 可以识别德语中的意向。 有关详细信息，请参阅[支持的语言](language-support.md#speech-to-text)。
+默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，在创建识别器之前，在应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 以识别德语中的意向。 有关详细信息，请参阅[支持的语言](language-support.md#speech-to-text)。
 
 ## <a name="continuous-recognition-from-a-file"></a>从文件中连续识别
 
@@ -196,4 +197,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [快速入门：从麦克风识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

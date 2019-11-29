@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044341"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559095"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -69,7 +69,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ### <a name="using-data-volume-metrics"></a>使用数据量度量值
 <a id="understanding-ingested-data-volume"></a>
 
-若要了解有关数据量的详细信息，请选择 Application Insights 资源的**度量值**，然后添加一个新图表。 对于图表度量值，请在 "**基于日志的指标**" 下选择 "**数据点卷**"。 单击 "**应用拆分**"，然后选择 "按**Telemetryitem 类型**分组"。
+若要了解有关数据量的详细信息，请选择 Application Insights 资源的**度量值**，然后添加一个新图表。 对于图表度量值，请在 "**基于日志的指标**" 下选择 "**数据点卷**"。 单击 "**应用拆分**"，然后选择 "分组依据" **`Telemetryitem` 类型**。
 
 ![使用度量值查看数据量](./media/pricing/10-billing.png)
 
@@ -124,7 +124,7 @@ dependencies
 Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（对于 Application Insights 的 "insights/组件"）将允许您跟踪您的支出。
 
 通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。
-在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过第一次筛选 "计量类别" 列以显示 "Application Insights" 和 "Log Analytics" 来查找 Application Insights 资源的用法，然后在 "Instance ID" 列中添加筛选器，这是 "containsmicrosoft insights/组件 "。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过 "计量类别" 列中的第一个筛选来找到 Application Insights 资源的使用情况，以便显示 "Application Insights" 和 "Log Analytics"，然后在 "Instance ID" 列中添加一个筛选器，该筛选器为 "包含 microsoft Insights/组件"。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 
 ## <a name="managing-your-data-volume"></a>管理数据卷 
@@ -203,7 +203,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-还可以使用 Powershell 以[编程](powershell.md#set-the-data-retention)方式使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，并应小心使用。 
+还可以使用 Powershell 通过使用 `retentionInDays` 参数以[编程方式设置](powershell.md#set-the-data-retention)保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，并应小心使用。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间，以设置 `dailyQuotaResetTime` 参数。 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 的数据传输费用
 
@@ -229,7 +229,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 > [!NOTE]
-> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)、如何根据使用模式[评估移到此模型的影响](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)以及[如何选择加入该新模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 深入了解[新的定价模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)、如何根据使用模式[评估移到此模型的影响](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs)以及[如何选择加入该新模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model)
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>每个节点层和 Operations Management Suite 订阅权利
 

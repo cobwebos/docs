@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc178661cf4db8505a444d1f5575bb3d0375979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547524"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554134"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -185,7 +185,7 @@ In | 有权执行的操作
 
 此角色中的用户可以读取基本的目录信息。 此角色应用于：
 * 授予一组特定的来宾用户读取访问权限，而不是将其授予所有来宾用户。
-* 将特定的一组非管理员用户授予 Azure 门户的访问权限： "仅限管理员访问 Azure AD 门户" 设置为 "是"。
+* 如果将一组特定的非管理员用户 "仅限管理员访问 Azure AD 门户" 设置为 "是"，则授予对 Azure 门户的访问权限。
 * 向服务主体授予对目录读取权限的目录的访问权限。全部不是一个选项。
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[目录同步帐户](#directory-synchronization-accounts-permissions)
@@ -238,7 +238,7 @@ In | 有权执行的操作
 >- [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)-全局读取器无法读取企业应用的预配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读者无法读取客户密码箱请求。 在 M365 管理中心的左窗格中，你将找不到 "**支持**" 下的 "**客户密码箱请求**" 选项卡。
 >- [M365 安全中心](https://security.microsoft.com/homepage)-全球读者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中找不到**灵敏度标签**、**保留标签**和**标签分析**选项卡。
->- [Office 安全与合规中心](https://protection.microsoft.com)-全局读取器无法读取 SCC 审核日志或执行内容搜索。
+>- [Office 安全与合规中心](https://sip.protection.office.com/homepage)-全局读取器无法读取 SCC 审核日志或执行内容搜索。
 >- [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读**团队生命周期**、**分析 & 报表**、 **IP 电话设备管理**和**应用程序目录**。
 >- [Privileged Access Management （PAM）](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
 >- [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)-仅支持[适用于中央报告的](https://docs.microsoft.com/azure/information-protection/reports-aip)全局读取器，以及在 Azure AD 组织不在[统一标签平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时。
@@ -248,7 +248,7 @@ In | 有权执行的操作
 
 ### <a name="group-administratorgroup-administrator"></a>[组管理员](#group-administrator)
 
-此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 必须了解的是，将用户分配到此角色后，他们能够跨各种工作负荷（如团队、SharePoint、Yammer）以及 Outlook 管理租户中的所有组。 此外，用户还可以在不同的管理门户（如 Microsoft 管理中心、Azure 门户和特定于工作负荷的团队和 SharePoint 管理中心）中管理各种组设置。
+此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 必须了解的是，将用户分配到此角色后，他们能够跨各种工作负荷（如团队、SharePoint、Yammer）以及 Outlook 管理租户中的所有组。 此外，用户还能够跨各种管理门户（如 Microsoft 管理中心、Azure 门户以及工作负荷（如团队和 SharePoint 管理中心）管理各种组设置。
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)
 

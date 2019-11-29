@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930581"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554965"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门： Python 中长格式音频的异步合成（预览版）
 
@@ -24,13 +24,13 @@ ms.locfileid: "73930581"
 > [!NOTE]
 > 用于长格式音频的异步合成只能与[自定义神经语音](../../how-to-custom-voice.md#custom-neural-voices)一起使用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本快速入门需要：
 
 * Python 2.7. x 或1.x。
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、 [Visual Studio Code](https://code.visualstudio.com/download)或你喜欢的文本编辑器。
-* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建一个 Azure 帐户](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)，并[创建一个语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)以获取密钥。 创建语音资源时，请确保将定价层设置为**S0**，并将位置设置为[受支持的区域](../../regions.md#standard-and-neural-voices)。
+* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建一个 Azure 帐户](../../get-started.md#try-the-speech-service-using-a-new-azure-account)，并[创建一个语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)以获取密钥。 创建语音资源时，请确保将定价层设置为**S0**，并将位置设置为[受支持的区域](../../regions.md#standard-and-neural-voices)。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 

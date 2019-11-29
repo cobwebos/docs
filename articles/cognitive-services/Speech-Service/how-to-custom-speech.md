@@ -1,7 +1,7 @@
 ---
 title: 自定义语音语音服务入门
 titleSuffix: Azure Cognitive Services
-description: 自定义语音是一组联机工具，可用于评估和改进我们的应用程序、工具和产品的语音到文本的准确性。 开始使用的只是一些测试音频文件。 请遵循以下链接开始创建自定义语音转文本体验。
+description: 自定义语音是一组联机工具，可用于评估和改进我们的应用程序、工具和产品的语音到文本的准确性。 开始使用的只是一些测试音频文件。 请按照以下链接开始创建自定义语音到文本体验。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881527"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554973"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
-[自定义语音](https://aka.ms/customspeech)是一组联机工具，可用于评估和改善 Microsoft 的应用程序、工具和产品的语音到文本准确性。 开始使用的只是一些测试音频文件。 请遵循以下链接开始创建自定义语音转文本体验。
+[自定义语音](https://aka.ms/customspeech)是一组联机工具，可用于评估和改善 Microsoft 的应用程序、工具和产品的语音到文本准确性。 开始使用的只是一些测试音频文件。 请按照以下链接开始创建自定义语音到文本体验。
 
 ## <a name="whats-in-custom-speech"></a>自定义语音有哪些？
 
@@ -41,16 +41,16 @@ ms.locfileid: "70881527"
 
 6. [部署模型](how-to-custom-speech-deploy-model.md)-为语音到文本模型创建自定义终结点，并在应用程序、工具或产品中使用该终结点。
 
-## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
+## <a name="set-up-your-azure-account"></a>设置你的 Azure 帐户
 
-需要语音服务订阅，然后才能使用[自定义语音门户](https://speech.microsoft.com/customspeech)创建自定义模型。 按照以下说明创建标准语音服务订阅：[创建语音订阅](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)。
+需要语音服务订阅，然后才能使用[自定义语音门户](https://speech.microsoft.com/customspeech)创建自定义模型。 按照以下说明创建标准语音服务订阅：[创建语音订阅](get-started.md#try-the-speech-service-using-a-new-azure-account)。
 
 > [!NOTE]
 > 请确保创建标准（S0）订阅，不支持免费试用（F0）订阅。
 
 创建 Azure 帐户和语音服务订阅后，需要登录到[自定义语音门户](https://speech.microsoft.com/customspeech)并连接订阅。
 
-1. 在 Azure 门户中获取语音服务订阅密钥。
+1. 从 Azure 门户获取语音服务订阅密钥。
 2. 登录到[自定义语音门户](https://aka.ms/custom-speech)。
 3. 选择需要使用的订阅，并创建一个语音项目。
 4. 如果你想要修改你的订阅，请使用位于顶部导航栏中的**齿轮**图标。
@@ -59,7 +59,7 @@ ms.locfileid: "70881527"
 
 数据、模型、测试和终结点等内容组织到[自定义语音门户](https://speech.microsoft.com/customspeech)中的**项目**中。 每个项目都是特定于域和国家/地区的。 例如，你可以为在美国中使用英语的呼叫中心创建项目。
 
-若要创建第一个项目，请选择 "**语音到文本"/"自定义" 语音**，然后单击 "**新建项目**"。 遵照向导中的说明创建项目。 创建项目后，应该会看到四个选项卡：**数据**、**测试**、**培训**和**部署**。 使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
+若要创建第一个项目，请选择 "**语音到文本"/"自定义" 语音**，然后单击 "**新建项目**"。 按照向导提供的说明创建项目。 创建项目后，应该会看到四个选项卡：**数据**、**测试**、**定型**和**部署**。 使用[后续步骤](#next-steps)中提供的链接来了解如何使用各个选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 批处理测试-LUIS
+title: 如何执行批处理测试-LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 批处理测试集来查找意向和实体不正确的话语。
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932877"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904358"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
  批处理测试是对当前已训练的模型进行的全面测试，以衡量其 LUIS 性能。 用于批处理测试的数据集不应包括意向中的示例话语或从预测运行时终结点接收的话语。 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
@@ -30,7 +32,7 @@ ms.locfileid: "68932877"
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 选择“导入数据集”。 此时会显示“导入新数据集”对话框。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000。
+2. 选择“导入数据集”。 此时会显示“导入新数据集”对话框。 选择“选择文件”并找到具有正确 **JSON 格式**的 JSON 文件，该文件包含的待测试话语数量不超过 1,000[](luis-concept-batch-test.md#batch-file-format)。
 
     浏览器顶部的红色通知栏中将报告导入错误。 导入出现错误时，不会创建任何数据集。 有关详细信息，请参阅[常见错误](luis-concept-batch-test.md#common-errors-importing-a-batch)。
 

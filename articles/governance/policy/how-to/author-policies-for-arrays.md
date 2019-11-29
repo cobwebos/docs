@@ -1,32 +1,34 @@
 ---
-title: Author policies for array properties on resources
-description: Learn to work with array parameters and array language expressions, evaluate the [*] alias, and to append elements with Azure Policy definition rules.
-ms.date: 03/06/2019
+title: 针对资源的阵列属性创作策略
+description: 了解如何使用数组参数和数组语言表达式、如何计算 [*] 别名，以及如何使用 Azure 策略定义规则附加元素。
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 96598918f0dbcc2f56e8ccc316844ee768306b75
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463503"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555167"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Author policies for array properties on Azure resources
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源的阵列属性创作策略
 
-Azure Resource Manager properties are commonly defined as strings and booleans. When a one-to-many relationship exists, complex properties are instead defined as arrays. In Azure Policy, arrays are used in several different ways:
+Azure 资源管理器属性通常定义为字符串和布尔值。 如果存在一对多关系，则将复杂属性改为定义为数组。 在 Azure 策略中，使用几种不同的方式来使用数组：
 
-- The type of a [definition parameter](../concepts/definition-structure.md#parameters), to provide multiple options
-- Part of a [policy rule](../concepts/definition-structure.md#policy-rule) using the conditions **in** or **notIn**
-- Part of a policy rule that evaluates the [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) to evaluate specific scenarios such as **None**, **Any**, or **All**
-- In the [append effect](../concepts/effects.md#append) to replace or add to an existing array
+- [定义参数](../concepts/definition-structure.md#parameters)的类型，用于提供多个选项
+- 使用或**notIn** **中**的条件的[策略规则](../concepts/definition-structure.md#policy-rule)的一部分
+- 策略规则的一部分，它计算要评估的[\[\*\] 别名](../concepts/definition-structure.md#understanding-the--alias)：
+  - 方案，如 "**无**"、"**任何**" 或 "**全部**"
+  - 具有**计数**的复杂方案
+- 用于替换或添加到现有数组的[追加效果](../concepts/effects.md#append)
 
-This article covers each use by Azure Policy and provides several example definitions.
+本文介绍 Azure 策略的每个使用情况，并提供几个示例定义。
 
-## <a name="parameter-arrays"></a>Parameter arrays
+## <a name="parameter-arrays"></a>参数数组
 
-### <a name="define-a-parameter-array"></a>Define a parameter array
+### <a name="define-a-parameter-array"></a>定义参数数组
 
-Defining a parameter as an array allows the policy flexibility when more than one value is needed.
-This policy definition allows any single location for the parameter **allowedLocations** and defaults to _eastus2_:
+如果将参数定义为数组，则在需要多个值时可以实现策略的灵活性。
+此策略定义允许参数**allowedLocations**的任何单个位置，并默认为_eastus2_：
 
 ```json
 "parameters": {
@@ -42,9 +44,9 @@ This policy definition allows any single location for the parameter **allowedLoc
 }
 ```
 
-As **type** was _string_, only one value can be set when assigning the policy. If this policy is assigned, resources in scope are only allowed within a single Azure region. Most policies definitions need to allow for a list of approved options, such as allowing _eastus2_, _eastus_, and _westus2_.
+因为**类型**是_字符串_，所以，在分配策略时只能设置一个值。 如果分配了此策略，则仅允许在单个 Azure 区域内使用范围内的资源。 大多数策略定义需要允许使用批准的选项的列表，例如允许使用_eastus2_、 _eastus_和_westus2_。
 
-To create the policy definition to allow multiple options, use the _array_ **type**. The same policy can be rewritten as follows:
+若要创建策略定义以允许多个选项，请使用_数组_**类型**。 可以重写相同的策略，如下所示：
 
 ```json
 "parameters": {
@@ -67,17 +69,17 @@ To create the policy definition to allow multiple options, use the _array_ **typ
 ```
 
 > [!NOTE]
-> Once a policy definition is saved, the **type** property on a parameter can't be changed.
+> 保存策略定义后，无法更改参数的**类型**属性。
 
-This new parameter definition takes more than one value during policy assignment. With the array property **allowedValues** defined, the values available during assignment are further limited to the predefined list of choices. Use of **allowedValues** is optional.
+在策略分配过程中，此新参数定义使用多个值。 定义了数组属性**allowedValues**后，在赋值期间可用的值将进一步限制为预定义的选项列表。 **AllowedValues**的使用是可选的。
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Pass values to a parameter array during assignment
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>在赋值期间将值传递给参数数组
 
-When assigning the policy through the Azure portal, a parameter of **type** _array_ is displayed as a single textbox. The hint says "Use ; to separate values. (e.g. London;New York)". To pass the allowed location values of _eastus2_, _eastus_, and _westus2_ to the parameter, use the following string:
+通过 Azure 门户分配策略时，**类型**为_array_的参数显示为一个文本框。 提示显示 "Use;分隔值。 （例如，伦敦;纽约） "。 若要将_eastus2_、 _eastus_和_westus2_的允许位置值传递给参数，请使用以下字符串：
 
 `eastus2;eastus;westus2`
 
-The format for the parameter value is different when using Azure CLI, Azure PowerShell, or the REST API. The values are passed through a JSON string that also includes the name of the parameter.
+使用 Azure CLI、Azure PowerShell 或 REST API 时，参数值的格式不同。 值通过同时包含参数名称的 JSON 字符串传递。
 
 ```json
 {
@@ -91,18 +93,18 @@ The format for the parameter value is different when using Azure CLI, Azure Powe
 }
 ```
 
-To use this string with each SDK, use the following commands:
+若要将此字符串与每个 SDK 一起使用，请使用以下命令：
 
-- Azure CLI: Command [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) with parameter **params**
-- Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with parameter **PolicyParameter**
-- REST API: In the _PUT_ [create](/rest/api/resources/policyassignments/create) operation as part of the Request Body as the value of the **properties.parameters** property
+- Azure CLI：命令[az policy 赋值 create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) **with parameter parameter**
+- Azure PowerShell： Cmdlet [AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)与参数**PolicyParameter**
+- REST API：在_PUT_ [create](/rest/api/resources/policyassignments/create)操作中作为请求正文的一部分作为 properties 属性的值 **。 parameters**属性
 
-## <a name="policy-rules-and-arrays"></a>Policy rules and arrays
+## <a name="policy-rules-and-arrays"></a>策略规则和数组
 
-### <a name="array-conditions"></a>Array conditions
+### <a name="array-conditions"></a>数组条件
 
-The policy rule [conditions](../concepts/definition-structure.md#conditions) that an _array_
-**type** of parameter may be used with is limited to `in` and `notIn`. Take the following policy definition with condition `equals` as an example:
+可在其中使用_数组_
+**类型**参数的策略规则[条件](../concepts/definition-structure.md#conditions)仅限于 `in` 和 `notIn`。 使用以下策略定义和条件 `equals` 作为示例：
 
 ```json
 {
@@ -130,20 +132,20 @@ The policy rule [conditions](../concepts/definition-structure.md#conditions) tha
 }
 ```
 
-Attempting to create this policy definition through the Azure portal leads to an error such as this error message:
+尝试通过 Azure 门户创建此策略定义会导致错误，如以下错误消息：
 
-- "The policy '{GUID}' could not be parameterized because of validation errors. Please check if policy parameters are properly defined. The inner exception 'Evaluation result of language expression '[parameters('allowedLocations')]' is type 'Array', expected type is 'String'.'."
+- 由于验证错误，无法对策略 "{GUID}" 进行参数化。 请检查是否正确定义了策略参数。 语言表达式 "[parameters （' allowedLocations '）]" 的内部异常 "计算结果" 为类型 "Array"，应为 "String" 类型。 "。"
 
-The expected **type** of condition `equals` is _string_. Since **allowedLocations** is defined as **type** _array_, the policy engine evaluates the language expression and throws the error. With the `in` and `notIn` condition, the policy engine expects the **type** _array_ in the language expression. To resolve this error message, change `equals` to either `in` or `notIn`.
+`equals` 的预期条件**类型**为_string_。 由于**allowedLocations**定义为**类型**_数组_，因此策略引擎将计算语言表达式，并引发错误。 在 `in` 和 `notIn` 条件下，策略引擎需要语言表达式中的**类型**_数组_。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
 
-### <a name="evaluating-the--alias"></a>Evaluating the [*] alias
+### <a name="evaluating-the--alias"></a>评估 [*] 别名
 
-Aliases that have **[\*]** attached to their name indicate the **type** is an _array_. Instead of evaluating the value of the entire array, **[\*]** makes it possible to evaluate each element of the array. There are three scenarios this per item evaluation is useful in: None, Any, and All.
+具有附加到其名称的 **\[\*\]** 的别名指示该**类型**是一个_数组_。 **\[\*\]** 可以计算数组的每个元素，而不是计算整个数组的值。 每个项目评估有三个标准方案，分别用于： None、Any 和 All。 对于复杂方案，请使用[count](../concepts/definition-structure.md#count)。
 
-The policy engine triggers the **effect** in **then** only when the **if** rule evaluates as true.
-This fact is important to understand in context of the way **[\*]** evaluates each individual element of the array.
+**仅当** **if**规则评估为 true 时，策略引擎才会触发中的**效果**。
+在 **\[\*\]** 计算数组中每个元素的方式的情况下，必须了解这一点。
 
-The example policy rule for the scenario table below:
+下面的方案表的示例策略规则：
 
 ```json
 "policyRule": {
@@ -162,7 +164,7 @@ The example policy rule for the scenario table below:
 }
 ```
 
-The **ipRules** array is as follows for the scenario table below:
+以下方案表的**ipRules**数组如下所示：
 
 ```json
 "ipRules": [
@@ -177,35 +179,35 @@ The **ipRules** array is as follows for the scenario table below:
 ]
 ```
 
-For each condition example below, replace `<field>` with `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+对于下面的每个条件示例，请将 `<field>` 替换为 `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`。
 
-The following outcomes are the result of the combination of the condition and the example policy rule and array of existing values above:
+以下结果是条件和示例策略规则与上述现有值的数组的组合的结果：
 
 |条件 |业务成效 |说明 |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_ and the effect is triggered. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |One array element evaluates as false (127.0.0.1 != 127.0.0.1) and one as true (127.0.0.1 != 192.168.1.1), so the **notEquals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Both array elements evaluate as true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1), so the **notEquals** condition is _true_. The logical operator evaluates as false (**not** _true_), so the effect isn't triggered. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`{<field>,"notEquals":"127.0.0.1"}` |没 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_ ，并且不触发该效果。 |
+|`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 and 10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_ ，并触发该效果。 |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |策略效果 |一个数组元素的计算结果为 true （127.0.0.1 = = 127.0.0.1），另一个数组元素为 false （127.0.0.1 = = 192.168.1.1），因此**Equals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果都为 false （10.0.4.1 = = 127.0.0.1，10.0.4.1 = = 192.168.1.1），因此**Equals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |策略效果 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |没 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 和10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_。 逻辑运算符的计算结果为 false （**not** _true_），因此不会触发该效果。 |
+|`{<field>,"Equals":"127.0.0.1"}` |没 |一个数组元素的计算结果为 true （127.0.0.1 = = 127.0.0.1），另一个数组元素的值为 false （127.0.0.1 = = 192.168.1.1），因此**Equals**条件为_false_且不触发该效果。 |
+|`{<field>,"Equals":"10.0.4.1"}` |没 |这两个数组元素的计算结果都为 false （10.0.4.1 = = 127.0.0.1，10.0.4.1 = = 192.168.1.1），因此**Equals**条件为_false_ ，并且不会触发该效果。 |
 
-## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
+## <a name="the-append-effect-and-arrays"></a>追加效果和数组
 
-The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **[\*]** alias or not.
+[追加效果](../concepts/effects.md#append)的行为会有所不同，具体取决于**详细信息。字段**是 **\[\*\]** 别名。
 
-- When not a **[\*]** alias, append replaces the entire array with the **value** property
-- When a **[\*]** alias, append adds the **value** property to the existing array or creates the new array
+- 如果不是 **\]别名 \*\[** ，则 append 会将整个数组替换为**value**属性
+- 如果 **\[\*\]** 别名，则 append 将**value**属性添加到现有数组，或创建新数组
 
-For more information, see the [append examples](../concepts/effects.md#append-examples).
+有关详细信息，请参阅[追加示例](../concepts/effects.md#append-examples)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- Understand how to [programmatically create policies](programmatically-create.md).
-- Learn how to [remediate non-compliant resources](remediate-resources.md).
+- 了解如何以[编程方式创建策略](programmatically-create.md)。
+- 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

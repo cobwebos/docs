@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的自适应网络强化 |Microsoft Docs
-description: " 了解如何在 Azure 安全中心启用自适应网络强化。 "
+description: 了解如何根据实际流量模式、网络安全组（NSG）规则进行强化，并进一步改善安全状况。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255241"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559272"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在 Azure 安全中心配置自适应网络强化。
@@ -37,13 +37,13 @@ ms.locfileid: "72255241"
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看自适应网络强化警报和规则
 
-1. 在安全中心中，选择 "**网络** -> **自适应网络强化**"。 网络 Vm 在三个不同的选项卡下列出：
-   * 不**正常资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的虚拟机。 
-   * **正常资源**：没有警报和建议的虚拟机。
-   * 未**扫描的资源**：自适应网络强化算法无法在其上运行的 Vm，原因如下：
-      * **Vm 为经典 vm**：仅支持 Azure 资源管理器 Vm。
-      * **没有足够的数据可用**：为了生成准确的流量强化建议，安全中心至少需要30天的流量数据。
-      * **VM 未按 ASC 标准进行保护**：只有设置为安全中心标准定价层的 Vm 才有资格享受此功能。
+1. 在安全中心中，选择 "**网络**" -> **自适应网络强化**。 网络 Vm 在三个不同的选项卡下列出：
+   * 不**正常的资源**：当前具有通过运行自适应网络强化算法触发的建议和警报的 vm。 
+   * **正常资源**：没有警报和建议的 vm。
+   * 未**扫描的资源**：自适应网络强化算法无法在其上运行的 vm，原因如下：
+      * **Vm 为经典 vm**：仅支持 Azure 资源管理器 vm。
+      * **数据不足**：若要生成准确的流量强化建议，安全中心需要至少30天的流量数据。
+      * **VM 未按 ASC 标准进行保护**：仅设置为安全中心标准定价层的 vm 有资格使用此功能。
 
      ![不正常资源](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "72255241"
 * 不能将 "允许" 规则更改为 "拒绝" 规则。 
 
   > [!NOTE]
-  > 创建和修改 "拒绝" 规则是直接在 NSG 上执行的。有关更多详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+  > 创建和修改 "拒绝" 规则是直接在 NSG 上完成的。 有关详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
 * "**拒绝所有流量**" 规则是此处列出的唯一 "拒绝" 规则类型，不能修改。 不过，您可以删除它（请参阅[删除规则](#delete-rule)）。
   > [!NOTE]
@@ -111,7 +111,7 @@ ms.locfileid: "72255241"
 可以添加安全中心不推荐的 "允许" 规则。
 
 > [!NOTE]
-> 此处只能添加 "允许" 规则。 如果要添加 "拒绝" 规则，可以直接在 NSG 上执行此操作。 有关更多详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+> 此处只能添加 "允许" 规则。 如果要添加 "拒绝" 规则，可以直接在 NSG 上执行此操作。 有关详细信息，请参阅[创建、更改或删除网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
 *添加自适应网络强化规则：*
 

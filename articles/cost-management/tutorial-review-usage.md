@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 2b701e618bdcbd50709360c55cfb9ceb68781ebc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 41abf9d0675e7ea620a15656f97fcaed4fd0ff66
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969096"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229789"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -109,7 +109,7 @@ Azure 成本管理也为 Azure 服务提供成本节省建议 有关详细信息
 
 ![基于支出阈值显示红色和黄色警报的示例](./media/tutorial-review-usage/schedule-alert01.png)
 
-还可以选择“成本百分比与预算”阈值指标来创建警报。  这样就可以将阈值指定为预算的百分比而不是货币值。
+还可以选择“成本百分比与预算”阈值指标来创建警报。** 这样就可以将阈值指定为预算的百分比而不是货币值。
 
 ## <a name="export-data"></a>导出数据
 

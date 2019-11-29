@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0fc23a63ba9c54896212f0a3f398b33514fbb5f1
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029998"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555347"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -27,7 +27,7 @@ ms.locfileid: "72029998"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -47,16 +47,16 @@ ms.locfileid: "72029998"
 
 ## <a name="create-the-service-app"></a>创建服务应用
 
-在本部分中，将创建一个 Python 控制台应用，该应用将位置元数据添加到与 **{Device ID}** 关联的设备孪生。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，将创建一个 Python 控制台应用，用于将位置元数据添加到与 **{DEVICE ID}** 关联的设备克隆中。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 在工作目录中，打开命令提示符并安装安装适用于 Python 的 Azure IoT 中心服务 SDK。
+1. 在工作目录中，打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
 
    ```cmd/sh
    pip install azure-iothub-service-client
    ```
 
    > [!NOTE]
-   > azure-iothub-service-client 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
+   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS，请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
    >
 
 2. 使用文本编辑器，新建一个 **AddTagsAndQuery.py** 文件。
@@ -70,7 +70,7 @@ ms.locfileid: "72029998"
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. 添加以下代码。 将 `[IoTHub Connection String]` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `[Device Id]` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下代码。 将 `[IoTHub Connection String]` 替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将 `[Device Id]` 替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -128,7 +128,7 @@ ms.locfileid: "72029998"
             print ( "IoTHub sample stopped" )
     ```
 
-    **Registry** 对象公开从该服务与设备孪生交互所需的所有方法。 此代码将首先初始化 **Registry** 对象，然后更新 **deviceId** 的设备孪生，最后运行两个查询。 第一个查询仅选择位于 **Redmond43** 工厂的设备的设备孪生，第二个查询将查询细化为仅选择还要通过移动电话网络连接的设备。
+    **Registry** 对象公开从服务与设备孪生进行交互所需的所有方法。 此代码将首先初始化 **Registry** 对象，然后更新 **deviceId** 的设备孪生，最后运行两个查询。 第一个查询仅选择位于 **Redmond43** 工厂的设备的设备孪生，第二个查询将查询细化为仅选择还要通过移动电话网络连接的设备。
 
 6. 在 **AddTagsAndQuery.py** 的末尾添加以下代码来实现 **iothub_service_sample_run** 函数：
 
@@ -147,7 +147,7 @@ ms.locfileid: "72029998"
 
     在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
 
-    ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/service-1.png)
+    ![显示 Redmond 中所有设备的第一个查询](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
@@ -171,7 +171,7 @@ ms.locfileid: "72029998"
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. 添加以下代码。 将 `[IoTHub Device Connection String]` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
+4. 添加以下代码。 将 `[IoTHub Device Connection String]` 占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -238,7 +238,7 @@ ms.locfileid: "72029998"
     python AddTagsAndQuery.py
     ```
 
-    这一次，两个查询结果中应当都会显示你的 **{Device ID}** 。
+    这一次，你的 **{DEVICE ID}** 应出现在两个查询结果中。
 
     ![第二个查询](./media/iot-hub-python-twin-getstarted/service-2.png)
 
@@ -252,4 +252,4 @@ ms.locfileid: "72029998"
 
 * 使用[所需属性配置设备](tutorial-device-twins.md)教程，使用设备克隆的所需属性配置设备。
 
-* 通过[使用直接方法](quickstart-control-device-python.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。
+* 通过[使用直接方法](quickstart-control-device-python.md)教程，以交互方式控制设备（例如从用户控制的应用打开风扇）。

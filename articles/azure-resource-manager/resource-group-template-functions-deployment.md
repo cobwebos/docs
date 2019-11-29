@@ -2,17 +2,17 @@
 title: 模板函数-部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230237"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561452"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
-Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
+资源管理器提供了以下用于获取与当前部署相关的值的函数：
 
 * [deployment](#deployment)
 * [环境](#environment)
@@ -21,7 +21,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](resource-group-template-functions-resource.md)（资源函数）。
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>部署
 
 `deployment()`
 
@@ -141,7 +141,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 ### <a name="return-value"></a>返回值
 
-此函数返回当前 Azure 环境的属性。
+此函数返回当前 Azure 环境的属性。 以下示例显示了全局 Azure 的属性。 主权云可能返回略有不同的属性。
 
 ```json
 {
@@ -237,9 +237,9 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -326,15 +326,15 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| stringOutput | String | option 1 |
-| intOutput | int | 1 |
-| objectOutput | Object | {"one": "a", "two": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | option 1 |
+| stringOutput | 字符串 | option 1 |
+| intOutput | Int | 第 |
+| objectOutput | 对象 | {"one": "a", "two": "b"} |
+| arrayOutput | 数组 | [1, 2, 3] |
+| crossOutput | 字符串 | option 1 |
 
-如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
+有关使用参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -342,11 +342,11 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| variableName |是 |String |要返回的变量名称。 |
+| variableName |是 |字符串 |要返回的变量名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -418,14 +418,14 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
+| exampleOutput1 | 字符串 | myVariable |
+| exampleOutput2 | 数组 | [1, 2, 3, 4] |
+| exampleOutput3 | 字符串 | myVariable |
+| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
 
-如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
+有关使用变量的详细信息，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

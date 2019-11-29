@@ -1,6 +1,6 @@
 ---
-title: Azure 开发测试实验室基础设施治理
-description: 本文提供有关监管 Azure 开发测试实验室基础结构的指导。
+title: Azure 开发测试实验室基础结构-资源的管理
+description: 本文介绍了组织内 Azure 开发测试实验室的资源的对齐与管理。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561638"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561644"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
 本文介绍组织中开发测试实验室的资源调配和管理。 
@@ -28,7 +28,7 @@ ms.locfileid: "60561638"
 ### <a name="question"></a>问题
 如何调配 Azure 订阅中的开发测试实验室资源？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 在组织开始使用 Azure 进行一般性的应用程序开发之前，IT 规划人员首先应该评审如何在整个服务产品组合中引入功能。 评审的各个方面应可解决以下问题：
 
 - 如何衡量与应用程序开发生命周期关联的成本？
@@ -53,7 +53,7 @@ ms.locfileid: "60561638"
 ### <a name="question"></a>问题
 如何在整个开发测试实验室环境中保留命名约定？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 你可能需要将当前企业命名约定扩展到 Azure 运营，并在整个开发测试实验室环境中保持这种命名约定的一致性。
 
 部署开发测试实验室时，我们建议使用特定的起始策略。 通过中心脚本和 JSON 模板部署这些策略，以实施一致性。 可以通过在订阅级别应用的 Azure 策略来实施命名策略。 有关 Azure Policy 的 JSON 示例，请参阅 [Azure Policy 示例](../governance/policy/samples/index.md)。
@@ -63,7 +63,7 @@ ms.locfileid: "60561638"
 ### <a name="question"></a>问题 
 如何确定每个实验室的用户数与整个组织中所需实验室总数的比？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 我们建议将同一开发项目关联的业务单位和开发组关联到同一实验室。 这样，便可以对这两个组应用相同类型的策略、映像和关闭策略。 
 
 可能还需要考虑地理边界。 例如，美国 (US) 东北部的开发人员可能会使用美国东部 2 区域中预配的实验室。 另外，位于德克萨斯州达拉斯市和科罗拉多州丹佛市的开发人员可能会定向为使用美国中南部的资源。 如果能够与外部第三方展开协作，则可为这些开发人员分配未由内部开发人员使用的实验室。 
@@ -75,16 +75,16 @@ ms.locfileid: "60561638"
 ### <a name="question"></a>问题
 如何防止删除实验室中的资源？
 
-### <a name="answer"></a>Answer
-我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。  开发人员主管或基础结构主管应是“开发测试实验室所有者”。  我们建议仅指定两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
+### <a name="answer"></a>答案
+我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。 开发人员主管或基础结构主管应是“开发测试实验室所有者”。 我们建议仅指定两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
 
 ## <a name="move-lab-to-another-resource-group"></a>将实验室移到另一个资源组 
 
 ### <a name="question"></a>问题
 是否支持将实验室移到另一个资源组？
 
-### <a name="answer"></a>Answer
-是的。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。  创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
+### <a name="answer"></a>答案
+可以。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 参阅[管理成本和所有权](devtest-lab-guidance-governance-cost-ownership.md)。

@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的置信度评分 | Microsoft Docs
-description: " 了解如何使用 Azure 安全中心置信度评分。 "
+description: 安全中心将生成置信度分数，以帮助你的团队确定威胁是否合法，以及如何对警报进行分类和设置优先级。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202377"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558967"
 ---
 # <a name="alert-confidence-score"></a>警报置信度分数 
 
@@ -50,7 +50,7 @@ ms.locfileid: "71202377"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用置信度评分来设定警报调查的优先级。 若要了解有关安全中心的详细信息，请参阅以下文章：
+本文介绍了如何使用置信度评分来设定警报调查的优先级。 若要了解有关安全中心的详细信息，请参阅以下内容：
 
 * [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。

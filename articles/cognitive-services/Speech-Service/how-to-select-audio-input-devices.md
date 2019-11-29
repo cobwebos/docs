@@ -1,7 +1,7 @@
 ---
-title: 如何使用语音 SDK 语音服务选择音频输入设备
+title: 如何使用语音 SDK 选择音频输入设备
 titleSuffix: Azure Cognitive Services
-description: 了解如何在语音 SDK 中选择音频输入设备。
+description: 了解如何通过获取连接到系统的音频设备 idC++在C#语音 SDK 中选择音频输入设备（、、Python、目标-C、Java 和 JavaScript）。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562724"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109974"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>使用语音 SDK 选择音频输入设备
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用语音 SDK 选择音频输入设备
 
-语音 SDK 1.3.0 版引入了一个 API，用于选择音频输入。
-本文介绍如何获取连接到系统的音频设备的 ID。
-然后，可以通过 `AudioConfig` 对象配置音频设备，以便在语音 SDK 中使用这些项目：
+语音 SDK 1.3.0 版引入了一个 API，用于选择音频输入。 本文介绍如何获取连接到系统的音频设备的 ID。 然后，可以通过 `AudioConfig` 对象配置音频设备，以便在语音 SDK 中使用这些项目：
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,12 +44,14 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```JavaScript
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
->[!Note]
+
+> [!Note]
 > 在 Node.js 中运行的 JavaScript 无法使用麦克风
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>在 Windows 桌面版应用程序上的音频设备 ID
 
-可以从 Windows 桌面版应用程序中的 [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) 对象中检索音频设备[终结点 ID 字符串](/windows/desktop/CoreAudio/endpoint-id-strings)。
+可以从 Windows 桌面版应用程序中的 [](/windows/desktop/CoreAudio/endpoint-id-strings)[ 对象中检索音频设备`IMMDevice`终结点 ID 字符串](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice)。
+
 下面的代码示例说明了如何使用它在 C++ 中枚举音频设备：
 
 ```cpp
@@ -175,7 +175,8 @@ namespace ConsoleApp
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 上的音频设备 ID
 
-在通用 Windows 平台 (UWP) 上，音频输入设备可以使用相应 [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) 对象的 `Id()` 属性来获取。
+在通用 Windows 平台 (UWP) 上，音频输入设备可以使用相应 `Id()`[`DeviceInformation` 对象的 ](/uwp/api/windows.devices.enumeration.deviceinformation) 属性来获取。
+
 以下代码示例演示了如何在 C++ 和 C# 中执行此操作：
 
 ```cpp
@@ -226,13 +227,16 @@ namespace helloworld {
 ## <a name="audio-device-ids-on-linux"></a>Linux 上的音频设备 ID
 
 设备 ID 是使用标准 ALSA 设备 ID 进行选择的。
+
 附加到系统的输入的 ID 包含在命令 `arecord -L` 的输出中。
 也可使用 [ALSA C 库](https://www.alsa-project.org/alsa-doc/alsa-lib/)来获取它们。
+
 示例 ID 为 `hw:1,0` 和 `hw:CARD=CC,DEV=0`。
 
 ## <a name="audio-device-ids-on-macos"></a>macOS 上的音频设备 ID
 
 在 Objective-C 中实现的以下函数可创建一个列表，其中包含附加到 Mac 的音频设备的名称和 ID。
+
 `deviceUID` 字符串用于标识 macOS 版语音 SDK 中的设备。
 
 ```objc
@@ -361,8 +365,8 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>iOS 上的音频设备 ID
 
-iOS 不支持通过语音 SDK 来选择音频设备。
-但是，使用 SDK 的应用可以通过 [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework 影响音频路由。
+iOS 不支持通过语音 SDK 来选择音频设备。 但是，使用 SDK 的应用可以通过 [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) Framework 影响音频路由。
+
 例如，可以按照说明
 
 ```objc
@@ -381,7 +385,7 @@ iOS 不支持通过语音 SDK 来选择音频设备。
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

@@ -22,7 +22,7 @@ ms.locfileid: "74076083"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>使用 Azure CLI 创建具有区域性前端的标准负载均衡器
 
-本文分步指导你创建具有区域性前端的公用[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 具有区域性前端意味着，任何入站或出站流都将由某个地区中的单个区域提供服务。 可以通过在负载均衡器的前端配置中使用区域性的标准公用 IP 地址来创建具有区域性前端的负载均衡器。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
+本文分步指导你创建具有区域性前端的公用[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 具有区域性前端意味着，任何入站或出站流都将由某个地区中的单个区域提供服务。 可以通过在负载均衡器的前端配置中使用区域性的标准公共 IP 地址来创建具有区域性前端的负载均衡器。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
 
 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroupZLB --location westeurope
 
 ## <a name="create-a-public-standard-ip-address"></a>创建公共标准 IP 地址
 
-使用以下命令创建区域性标准公用 IP 地址：
+使用以下命令创建区域性标准公共 IP 地址：
 
 ```azurecli-interactive
 az network public-ip create --resource-group myResourceGroupZLB --name myPublicIPZonal --sku Standard --zone 1

@@ -2,31 +2,28 @@
 title: 在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 配合使用 - Azure
 description: 了解如何在 Azure HDInsight 中通过 Apache Hadoop 使用 C# 创建 MapReduce 解决方案。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1cdf029d296bd6ff11b6531cd47dc6a7fd3163c3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930266"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561804"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
 了解如何在 HDInsight 上使用 C# 创建 MapReduce 解决方案。
 
-> [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅[HDInsight 上的 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
-
 Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或可执行文件运行 MapReduce 作业。 在本示例中，.NET 用于为单词计数解决方案实现映射器和化简器。
 
 ## <a name="net-on-hdinsight"></a>HDInsight 上的 .NET
 
-*基于 Linux 的 HDInsight* 群集使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅[不同 hdinsight 版本中提供的 Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。 
+HDInsight 群集使用[Mono （ https://mono-project.com)](https://mono-project.com)运行 .net 应用程序。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关 HDInsight 随附的 Mono 版本的详细信息，请参阅[不同 hdinsight 版本中提供的 Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。
 
 有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
 
@@ -37,12 +34,12 @@ Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或
 1. Hadoop 在 STDIN 上将数据传递到映射器（在本例中为*映射*器）。
 2. 映射器处理数据，并向 STDOUT 发出制表符分隔的键/值对。
 3. 输出由 Hadoop 读取，然后传递到 STDIN 上的化简器（在本示例中为*化简器*）。
-4. 化简器将读取制表符分隔的键/值对、处理数据，并将结果作为制表符分隔的键/值对在 STDOUT 上发出。
+4. 化简器将读取制表符分隔的键/值对、处理数据，然后将结果作为制表符分隔的键/值对在 STDOUT 上发出。
 5. 该输出由 Hadoop 读取，并写入输出目录。
 
 有关流式处理的详细信息，请参阅 [Hadoop 流式处理](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Visual Studio。
 
@@ -50,9 +47,14 @@ Apache Hadoop 流式处理是一个实用工具，通过它可以使用脚本或
 
 * 将 .exe 文件上传到群集的方法。 本文档中的各个步骤都使用针对 Visual Studio 的 Data Lake 工具将文件上传到群集的主要存储。
 
-* Azure PowerShell 或安全外壳（SSH）客户端。
+* 如果使用 PowerShell，则需要[Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
-* HDInsight 群集上的 Hadoop。 有关创建群集的详细信息，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
+* SSH 客户端（可选）。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+
+* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，这将是 `wasb://`，对于 Azure Data Lake Storage Gen2，这将是 `abfs://`，对于 Azure Data Lake Storage Gen1，这将是 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将分别为 `wasbs://` 或 `abfss://`，另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+
 
 ## <a name="create-the-mapper"></a>创建映射器
 
@@ -150,11 +152,9 @@ namespace reducer
 
 1. 在 Visual Studio 中，选择 "**查看** > **服务器资源管理器**"。
 
-2. 依次展开“Azure”和“HDInsight”。
+1. 右键单击 " **Azure**"，选择 "**连接到 Microsoft Azure 订阅 ...** "，然后完成登录过程。
 
-3. 如果系统提示，请输入你的 Azure 订阅凭据，然后选择 "**登录**"。
-
-4. 展开要将此应用程序部署到的 HDInsight 群集。 将列出带有文本“（默认存储帐户）”的条目。
+1. 展开要将此应用程序部署到的 HDInsight 群集。 将列出带有文本“（默认存储帐户）”的条目。
 
    ![存储帐户，HDInsight 群集，服务器资源管理器，Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
@@ -162,13 +162,13 @@ namespace reducer
 
    * 如果无法展开 " **（默认存储帐户）** " 条目，则使用**Azure Data Lake Storage**作为群集的默认存储。 若要查看该群集的默认存储上的文件，请双击“（默认存储帐户）”条目。
 
-5. 若要上传 .exe 文件，请使用以下方法之一：
+1. 若要上传 .exe 文件，请使用以下方法之一：
 
-    * 如果使用的是**Azure 存储帐户**，请选择 "**上传 Blob** " 图标。 
+    * 如果使用的是**Azure 存储帐户**，请选择 "**上传 Blob** " 图标。
 
         ![用于映射器、Visual Studio 的 HDInsight 上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        在 "**上载新文件**" 对话框中的 "**文件名**" 下，选择 "**浏览**"。 在 "**上传 Blob** " 对话框中，前往*映射*器项目的*bin\debug*文件夹，然后选择映射器 *.exe*文件。 最后，选择 "**打开**"，然后选择 **"确定"** 完成上传。 
+        在 "**上载新文件**" 对话框中的 "**文件名**" 下，选择 "**浏览**"。 在 "**上传 Blob** " 对话框中，前往*映射*器项目的*bin\debug*文件夹，然后选择映射器 *.exe*文件。 最后，选择 "**打开**"，然后选择 **"确定"** 完成上传。
 
     * 若要**Azure Data Lake Storage**，请右键单击文件列表中的空白区域，然后选择 "**上传**"。 最后，选择*映射器 .exe*文件，然后选择 "**打开**"。
 
@@ -178,15 +178,19 @@ namespace reducer
 
 下面的过程介绍如何使用 SSH 会话运行 MapReduce 作业：
 
-1. 使用 SSH 连接到 HDInsight 群集。 （例如，运行命令 `ssh sshuser@<clustername>-ssh.azurehdinsight.net`。）有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 将 CLUSTERNAME 替换为群集名称，然后输入以下命令，以编辑以下命令：
 
-2. 使用以下命令之一启动 MapReduce 作业：
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. 使用以下命令之一启动 MapReduce 作业：
 
    * 如果默认存储为**Azure 存储**：
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
-            -files wasb:///mapper.exe,wasb:///reducer.exe \
+            -files wasbs:///mapper.exe,wasbs:///reducer.exe \
             -mapper mapper.exe \
             -reducer reducer.exe \
             -input /example/data/gutenberg/davinci.txt \
@@ -218,7 +222,7 @@ namespace reducer
    以下列表描述了每个参数和选项表示的内容：
 
    * *hadoop-streaming.jar*：指定包含流式处理 MapReduce 功能的 jar 文件。
-   * `-files`：指定此作业的*映射器 .exe*和*化简器*文件。 每个文件前的 `wasb:///`、`adl:///`或 `abfs:///` 协议声明是群集的默认存储根目录的路径。
+   * `-files`：指定此作业的*映射器 .exe*和*化简器*文件。 每个文件前的 `wasbs:///`、`adl:///`或 `abfs:///` 协议声明是群集的默认存储根目录的路径。
    * `-mapper`：指定实现映射器的文件。
    * `-reducer`：指定实现化简器的文件。
    * `-input`：指定输入数据。

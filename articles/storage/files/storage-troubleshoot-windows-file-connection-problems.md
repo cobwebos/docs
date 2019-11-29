@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 261816e42c8de670cd7888af726a70e1a6e5b228
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269361"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560133"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -37,7 +37,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 1. 从支持 SMB 加密的客户端（Windows 8、Windows Server 2012 或更高版本）进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
-2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
+2. 如果客户端不支持 SMB 加密，请确保在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则 
 
@@ -62,7 +62,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 
 若要检查防火墙或 ISP 是否阻止端口 445，请使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) 工具或 `Test-NetConnection` cmdlet。 
 
-若要使用 `Test-NetConnection` cmdlet，则必须安装 Azure PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
+若要使用 `Test-NetConnection` cmdlet，必须安装 Azure PowerShell 模块，有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -101,10 +101,10 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 ) ，从 Windows 访问 Azure 文件。
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口445，帮助你联系 ISP/IT 管理员
-与 IT 部门或 ISP 配合，向 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)开放端口 445 出站通信。
+与你的 IT 部门或 ISP 合作，打开到[AZURE IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的出站端口445。
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>解决方案 4-使用存储资源管理器/Powershell 等基于 REST API 的工具
-除了 SMB，Azure 文件存储还支持 REST。 REST 访问可以通过端口 443 进行（标准 tcp）。 有许多工具是用 REST API 编写的，可以给用户带来丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，然后将其连接到 Azure 文件存储支持的文件共享。 也可使用 [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell)，此工具也使用 REST API。
+除了 SMB 外，Azure 文件还支持 REST。 REST 访问通过端口443（标准 tcp）工作。 使用 REST API 编写的各种工具可实现丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，并连接到 Azure 文件支持的文件共享。 还可以使用[PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) ，它也是用户 REST API。
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因2： NTLMv1 已启用
 
@@ -133,15 +133,15 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 
 关闭一些句柄，减少并发打开句柄的数量，再重试。 有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-若要查看文件共享、目录或文件的打开句柄，请使用 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
+若要查看文件共享、目录或文件的打开句柄，请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet。  
 
-若要关闭文件共享、目录或文件的打开句柄，请使用 [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
+若要关闭文件共享、目录或文件的打开句柄，请使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet。
 
 > [!Note]  
-> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现“授权失败”错误
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>浏览到门户中的 Azure 文件共享时出现 "授权失败" 错误
 
 浏览到门户中的 Azure 文件共享时，可能会收到以下错误：
 
@@ -164,18 +164,18 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>无法删除 Azure 文件共享中的文件或目录
 
 ### <a name="cause"></a>原因
-如果该文件或目录有一个打开的句柄，通常会出现此问题。 
+如果文件或目录具有打开的句柄，通常会发生此问题。 
 
 ### <a name="solution"></a>解决方案
 
-如果 SMB 客户端关闭了所有打开的句柄，但问题仍然出现，请执行以下操作：
+如果 SMB 客户端已关闭所有打开的句柄，但问题仍然存在，请执行以下操作：
 
-- 使用 [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开的句柄。
+- 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 查看打开句柄。
 
-- 使用 [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 关闭打开的句柄。 
+- 使用[AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 关闭打开的句柄。 
 
 > [!Note]  
-> Get-AzStorageFileHandle 和 Close-AzStorageFileHandle cmdlet 包括在 Az PowerShell 模块 2.4 或更高版本中。 若要安装最新 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+> Az PowerShell 模块2.4 版或更高版本中包含 AzStorageFileHandle 和 AzStorageFileHandle cmdlet。 若要安装最新的 Az PowerShell 模块，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>在 Windows 中将文件复制到 Azure 文件以及从中复制文件时速度缓慢
@@ -204,7 +204,7 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 > 自 2015 年 12 月起，Azure 市场中的 Windows Server 2012 R2 映像将默认安装修补程序 KB3114025。
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>“我的电脑”或“这台电脑”中没有带驱动器号的文件夹
+## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>"我的电脑" 或 "这台电脑" 中没有驱动器号的文件夹
 
 如果使用 net use 以管理员身份映射 Azure 文件共享，共享似乎会丢失。
 
@@ -295,17 +295,29 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
  
 例如，可将其设置为 0x100000，并查看性能是否有所提高。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>为 Azure 文件存储启用 Azure Active Directory 身份验证时，出现错误 AadDsTenantNotFound：“找不到具有租户 ID aad-tenant-id 的活动租户”
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>为 Azure 文件启用 Azure Active Directory 域服务（AAD DS）身份验证时出错 AadDsTenantNotFound 找不到租户 Id 为 aad-id 的活动租户
 
 ### <a name="cause"></a>原因
 
-如果存储帐户在关联订阅的 AAD 租户上未创建 [AAD Domain Service(AAD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)则在该帐户上[为 Azure 文件存储启用 Azure Active Directory 身份验证](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)时，会发生错误 AadDsTenantNotFound。  
+当你尝试为存储帐户上的[Azure 文件启用 Azure Active Directory 域服务（AAD ds）身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)时，如果未在关联订阅的 aad 租户上创建[aad 域服务（aad ds）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ，则会发生错误 AadDsTenantNotFound。  
 
 ### <a name="solution"></a>解决方案
 
 在部署存储帐户的订阅的 AAD 租户上启用 AAD DS。 需要 AAD 租户的管理员权限才能创建托管域。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 在启用 Azure Active Directory 域服务（AAD DS）身份验证的情况对文件共享的 SMB 访问接收到的内部错误
+
+### <a name="cause"></a>原因
+
+出现错误 "系统错误1359。 当你尝试使用 AAD ds 身份验证（以数字字符开头的域 DNS 名称）连接到你的文件共享时，将发生内部错误。 例如，如果 AAD DS 域 DNS 名称为 "1domain"，则在尝试使用 AAD 凭据装载文件共享时，会收到此错误。 
+
+### <a name="solution"></a>解决方案
+
+目前，可以考虑使用适用于以下规则的新域 DNS 名称重新部署 AAD DS：
+- 名称不能以数字字符开头。
+- 名称长度必须介于3到63个字符之间。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

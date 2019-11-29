@@ -1,7 +1,7 @@
 ---
 title: 沉浸式读者 SDK 参考
 titleSuffix: Azure Cognitive Services
-description: 沉浸式读者 SDK 参考
+description: 沉浸式读者 SDK 是一个 JavaScript 库，可用于将沉浸式读者集成到 web 应用程序中。
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889311"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903114"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式读者 SDK 参考指南
 
@@ -39,14 +39,14 @@ SDK 公开函数：
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | `token` | 字符串 | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
-| `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
+| `options` | [](#options)选项 | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 
 ### <a name="returns"></a>返回值
 
@@ -78,7 +78,7 @@ close(): void;
 renderButtons(options?: RenderButtonsOptions): void;
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 | 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 | --------- | ----------- |
 | text/plain | 纯文本。 |
 | text/html | HTML 内容。 [了解详细信息](#html-support)|
-| application/mathml + xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/mathml+xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
 | application/vnd.apple.mpegurl. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml | Microsoft Word .docx 格式的文档。
 
 ### <a name="html-support"></a>HTML 支持

@@ -1,30 +1,29 @@
 ---
-title: 委托应用程序管理员创建和管理权限 - Azure Active Directory | Microsoft Docs
+title: 委托应用程序管理管理 perms-Azure AD |Microsoft Docs
 description: 在 Azure Active Directory 中授予应用程序访问管理权限
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025514"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024858"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
-本文介绍如何使用 Azure Active Directory （Azure AD）中的自定义角色授予的权限来满足你的应用程序管理需求。 在 Azure AD 中，可以通过以下方式委托应用程序的创建和管理权限：
+本文介绍如何使用 Azure Active Directory (Azure AD) 中的自定义角色授予的权限来满足应用程序管理需求。 在 Azure AD中，可以通过以下方式委托应用程序创建和管理权限：
 
 - [限制谁可以创建应用程序](#restrict-who-can-create-applications)和管理他们创建的应用程序。 默认情况下，Azure AD 中的所有用户都可以注册应用程序，并全方面地管理他们创建的应用程序。 可将此权限限制为选定的人员。
 - [将一个或多个所有者分配到应用程序](#assign-application-owners)。 这是向用户授予全方面管理特定应用程序的 Azure AD 配置的权限的一种简单方法。
@@ -61,7 +60,7 @@ ms.locfileid: "72025514"
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
 
-1. 使用符合组织中应用管理员或云应用管理员条件的帐户登录到 [Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 使用符合组织中应用管理员或云应用管理员条件的帐户登录到[](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)Azure AD 组织 。
 1. 在组织的 [应用注册页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择某个应用以打开该应用的“概述”页。 
 1. 选择“所有者”，以查看应用所有者列表。
 1. 选择“添加”，以选择一个或多个要添加到应用的所有者。
@@ -75,8 +74,8 @@ ms.locfileid: "72025514"
 
 Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有应用程序的配置管理访问权限。 建议使用这些角色向 IT 专家授予管理广泛应用程序配置权限的访问权限，这样就无需授予管理与应用程序配置无关的其他 Azure AD 部分的访问权限。
 
-- 应用程序管理员：充当此角色的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
-- 云应用程序管理员：充当角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
+- 应用程序管理员：此角色中的用户可创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
+- 云应用程序管理员：此角色中的用户具有与应用程序管理员角色相同的权限，不包括管理应用程序代理的功能。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 有关详细信息以及如何查看这些角色的说明，请参阅 [可用的角色](directory-assign-admin-roles.md#available-roles)。
 
@@ -90,8 +89,8 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 
 创建自定义角色和分配自定义角色是不同的步骤：
 
-- [创建自定义角色定义](roles-create-custom.md)，并[通过预设列表为该角色添加权限](roles-custom-available-permissions.md)。 这些权限与内置角色中使用的权限相同。
-- [创建角色分配以分配自定义角色](roles-assign-powershell.md)。
+- [创建自定义角色定义 *，并*通过预设列表为该角色添加权限](roles-create-custom.md)。[](roles-custom-available-permissions.md) 这些权限与内置角色中使用的权限相同。
+- [创建角色分配以分配自定义角色 *。* ](roles-assign-powershell.md)
 
 借助这种隔离可以创建单个角色定义，然后在不同的范围多次分配该角色。 可以在组织范围分配自定义角色，或者在单个 Azure AD 对象范围分配自定义角色。 例如，单个应用注册就属于对象范围。 使用不同的范围可为 Sally 分配对组织中所有应用注册的相同角色定义，并只为 Naveen 分配对 Contoso Expense Reports 应用注册的角色定义。
 

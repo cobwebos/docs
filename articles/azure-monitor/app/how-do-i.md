@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817372"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928421"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -26,7 +26,7 @@ ms.locfileid: "72817372"
 
 应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
+如果想要针对“服务器异常”设置警报，可能需要执行**其他一些设置**才能看到数据。[](../../azure-monitor/app/asp-net-exceptions.md)
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -72,7 +72,7 @@ ms.locfileid: "72817372"
 [使用 PowerShell 创建新警报](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>使用 PowerShell 管理 Application Insights
-* [创建新资源](../../azure-monitor/app/powershell-script-create-resource.md)
+* [创建新资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [创建新警报](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
@@ -98,11 +98,11 @@ ms.locfileid: "72817372"
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
-如果你的用户登录，你可以设置[经过身份验证的用户 id](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。（不会自动发生。）
+如果你的用户登录，你可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 （不会自动设置此 ID。）
 
 然后，可以：
 
-* 按特定的用户 ID 搜索
+* 搜索特定的用户 Id
 
 ![](./media/how-do-i/110-search.png)
 
@@ -114,12 +114,12 @@ ms.locfileid: "72817372"
 创建[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 这样，便可以先修改或筛选遥测数据，然后将它从应用程序发送到 Application Insights。
 
 ## <a name="list-specific-users-and-their-usage"></a>列出特定的用户及其用法
-如果只想[搜索特定的用户](#search-specific-users)，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
+如果只是想要[搜索特定用户](#search-specific-users)，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
 
 如果想要查看用户列表以及他们查看过哪些页面或登录频率等相关数据，可以使用两个选项：
 
-* [设置经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)，[导出到数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)，并使用适当的工具分析用户数据。
-* 如果只有少量的用户，可以发送自定义事件或指标，并在其中使用所需的数据作为指标值或事件名称，将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选和细分指标，并按用户 ID 执行搜索。
+* [设置经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)，[导出到数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)，并使用合适的工具来分析那里的用户数据。
+* 如果只有少量用户，则发送自定义事件或指标，使用感兴趣的数据作为指标值或事件名称，并将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 若要分析服务器端遥测数据，请使用遥测初始值设定项将用户 ID 添加到所有服务器遥测。 然后，你可以筛选并分段指标，并搜索用户 ID。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>减少从应用到 Application Insights 的流量
 * 在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中，禁用所有不需要用到的模块，例如性能计数器收集器。
@@ -141,15 +141,15 @@ ms.locfileid: "72817372"
 ```
 
 ### <a name="other-applications"></a>其他应用程序
-不建议使用控制台上 `TelemetryConfiguration.Active` 单一实例或 ASP.NET Core 应用程序。
-如果自行创建 `TelemetryConfiguration` 实例-将 `DisableTelemetry` 设置为 "`true`"。
+建议不要在控制台或 ASP.NET Core 应用程序中使用 `TelemetryConfiguration.Active` 单一实例。
+如果自行创建了 `TelemetryConfiguration` 实例，请将 `DisableTelemetry` 设置为 `true`。
 
-对于 ASP.NET Core 应用程序，你可以使用[ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)访问 `TelemetryConfiguration` 实例。 请在[applicationinsights.config for ASP.NET Core 应用程序](../../azure-monitor/app/asp-net-core.md)一文中找到更多详细信息。
+对于 ASP.NET Core 应用程序，可以使用 `TelemetryConfiguration`ASP.NET Core 依赖项注入[来访问 ](/aspnet/core/fundamentals/dependency-injection/) 实例。 请在[适用于 ASP.NET Core 应用程序的 Application Insights](../../azure-monitor/app/asp-net-core.md)一文中找到更多详细信息。
 
 ## <a name="disable-selected-standard-collectors"></a>禁用选定的标准收集器
-可以禁用标准收集器（例如性能计数器、HTTP 请求或依赖项）
+可以禁用标准收集器（例如，性能计数器、HTTP 请求或依赖项）
 
-* **ASP.NET 应用程序**-在[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中删除或注释掉相关行
+* **ASP.NET 应用程序** - 删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相关行
 * **ASP.NET Core 应用程序**-遵循 applicationinsights.config 中的遥测模块配置选项[ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器

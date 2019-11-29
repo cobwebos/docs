@@ -1,6 +1,6 @@
 ---
 title: 教程：创建内部负载均衡器 - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本教程展示了如何使用 Azure 门户创建内部的基本负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273493"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225224"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -95,7 +95,7 @@ ms.locfileid: "68273493"
     | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
     | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
-    | Type          | 选择“内部”。                                         |
+    | 类型          | 选择“内部”。                                         |
     | SKU           | 选择“基本”。                           |
     | 虚拟网络           | 选择“MyVNet”  。                          |    
     | IP 地址分配              | 选择“静态”  。   |

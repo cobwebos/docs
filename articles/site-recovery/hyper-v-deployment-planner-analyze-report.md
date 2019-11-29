@@ -1,5 +1,5 @@
 ---
-title: 分析 Azure Site Recovery 部署规划器报告，以便将 Hyper-V VM 灾难恢复到 Azure | Microsoft Docs
+title: 在 Azure Site Recovery 中分析 Hyper-v 部署规划器报表
 description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便将 Hyper-V VM 灾难恢复到 Azure。
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693588"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084951"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -179,7 +179,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **VM 名称**：生成报表时在 VMListFile 中使用的 VM 名称。 此列还列出附加到 VM 的磁盘 (VHD)。 这些名称包括 Hyper-V 主机名，其中的 VM 是此工具在分析期间发现它们时放置的。
 
-**VM 兼容性**：值为“是”和“是\*”。 “是\*”针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
+**VM 兼容性**：值为“是”和“是 **”。** \* “**是” **\*针对 VM 适用于[高级 SSD](../virtual-machines/windows/disks-types.md) 的情况。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15。
 * 256 GB 到 512 GB 为 P20。
@@ -187,7 +187,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 * 1,025 GB 到 2,048 GB 为 P40。
 * 2,049 GB 到 4,095 GB 为 P50。
 
-例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是\*”。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
+例如，如果某个磁盘按工作负荷特征应归入 P20 或 P30 类别，但按大小应归入较低的高级存储磁盘类型，则此工具会将该 VM 标记为“是 **”。** \* 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
 **存储类型**：标准或高级。
 
@@ -274,8 +274,8 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 **复制存储目标** | **源 VM 平均 I/O 大小** |**源 VM 平均数据变动量** | **每天的总源 VM 数据变动量**
 ---|---|---|---
 标准存储 | 8 KB | 每个 VM 2 MB/秒 | 每个 VM 168 GB
-高级存储器 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB
-高级存储器 | 16 KB 或更高| 每个 VM 20 MB/秒 | 每个虚拟机 1684 GB
+高级存储 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB
+高级存储 | 16 KB 或更高| 每个 VM 20 MB/秒 | 每个虚拟机 1684 GB
 
 这些限制是在假设存在 30% 的 I/O 重叠的情况下给出的平均数。 Site Recovery 能够根据重叠率、较大的写入大小和实际工作负荷 I/O 行为处理更高的吞吐量。 上述数字假定通常情况下存在大约 5 分钟的积压工作。 也就是说，数据在上传后会在 5 分钟内进行处理并创建恢复点。
 

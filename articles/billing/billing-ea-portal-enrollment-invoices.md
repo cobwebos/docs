@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/07/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 6bd70a58552a0217cff82cad10b11783aec64347
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2e9611995a233f9890aebb90fc3b8deaeed8efc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888404"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226331"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企业注册发票
 
@@ -32,7 +32,7 @@ Azure EA 门户会自动生成默认的采购订单 (PO) 编号，除非 EA 管�
 1. 选择“Azure 服务”单选按钮  。
 1. 从日期范围下拉菜单中选择一个“发票期间”  。 在收到发票通知后最多七日或者在对发票付款前（以先到者为准）可以编辑 PO 编号。
 1. 在“PO 编号”字段中输入新的 PO 编号。 ****  
-1. 单击“保存”以提交更改。**   **
+1. 单击“保存”以提交更改。 ****  
 
 ### <a name="to-update-the-marketplace-purchase-order-number"></a>更新市场采购订单编号：
 
@@ -41,7 +41,7 @@ Azure EA 门户会自动生成默认的采购订单 (PO) 编号，除非 EA 管�
 1. 选择“市场”单选按钮 
 1. 从日期范围下拉菜单中选择一个“发票期间”  。 在收到发票通知后最多七日或者在对发票付款前（以先到者为准）可以编辑 PO 编号。
 1. 在“PO 编号”字段中输入新的 PO 编号。 ****  
-1. 单击“保存”以提交更改。**   **
+1. 单击“保存”以提交更改。 ****  
 
 ## <a name="cadence-of-azure-ea-billing"></a>Azure EA 计费周期
 

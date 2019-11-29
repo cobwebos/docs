@@ -1,5 +1,5 @@
 ---
-title: 将语言分析器添加到索引中的字符串字段
+title: 将语言分析器添加到字符串字段
 titleSuffix: Azure Cognitive Search
 description: Azure 认知搜索中的非英语查询和索引的多语言词法文本分析。
 manager: nitinme
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790143"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111810"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>将语言分析器添加到 Azure 认知搜索索引
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
-语言分析器是特定类型的[文本分析器](search-analyzers.md)，可以使用目标语言的语言规则执行词法分析。 每个可搜索字段都有一个“分析器”属性。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
+语言分析器是特定类型的*文本分析器*，可以使用目标语言的语言规则执行词法分析[](search-analyzers.md)。 每个可搜索字段都有一个“分析器”属性。 如果索引包含翻译的字符串，例如针对英文文本和中文文本的单独字段，则可在每个字段上指定语言分析器，以便访问这些分析器的丰富语言功能。  
 
 Azure 认知搜索支持由 Lucene 支持的35分析器，以及由 Office 和必应使用的专有 Microsoft 自然语言处理技术支持的50分析器。
 
@@ -89,7 +89,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |爱尔兰语||ga.lucene|  
 |意大利语|it.microsoft|it.lucene|  
 |日语|ja.microsoft|ja.lucene|  
-|卡纳达语|kn||  
+|卡纳达语|kn.microsoft||  
 |韩语|ko.microsoft|ko.lucene|  
 |拉脱维亚语|lv.microsoft|lv.lucene|  
 |立陶宛语|lt.microsoft||  
@@ -99,7 +99,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |挪威语|nb.microsoft|no.lucene|  
 |波斯语||fa.lucene|  
 |波兰语|pl.microsoft|pl.lucene|  
-|葡萄牙语（巴西）|pt-Br.microsoft|pt-Br.lucene|  
+|葡萄牙语(巴西)|pt-Br.microsoft|pt-Br.lucene|  
 |葡萄牙语(葡萄牙)|pt-Pt.microsoft|pt-Pt.lucene|  
 |旁遮普语|pa.microsoft||  
 |罗马尼亚语|ro.microsoft|ro.lucene|  

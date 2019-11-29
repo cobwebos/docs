@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心故障排除指南 | Microsoft Docs
-description: 本文档可帮助解决 Azure 安全中心中的问题。
+description: 本指南面向需要排查 Azure 安全中心相关问题的 IT 专业人员、安全分析师和云管理员。
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 073e500028634e3c35a482d8efc5f9ae169145e3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b9650c3c30d95c85f505b640564ff416931676ea
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257687"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559215"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -62,7 +62,7 @@ ms.locfileid: "71257687"
 
 如果打开服务管理控制台 (services.msc)，还会看到 Microsoft Monitoring Agent 服务正在运行，如下所示：
 
-![Services](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
+![服务](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
 若要查看拥有的代理版本，请打开“任务管理器”，在“进程”选项卡中找到“Microsoft Monitoring Agent 服务”，右键单击此选项，然后单击“属性”。 在“详细信息”选项卡中，查看文件版本，如下所示：
 
@@ -74,7 +74,7 @@ ms.locfileid: "71257687"
 
 * 安全中心自动安装代理：在此方案中，可在“安全中心”和“日志搜索”这两个位置查看警报。 你将收到电子邮件通知，该通知指向资源所属订阅的安全策略中配置的电子邮件地址。
 
-* 在**位于 Azure 中的 VM 上手动安装的代理**：在这种情况下，如果使用的是在2017年2月之前手动下载和安装的代理，则只有在对工作区进行筛选时，才可以在安全中心门户中查看警报属于。 如果筛选资源所属的订阅，则不会看到任何警报。 你将收到电子邮件通知，其中显示工作区所属订阅的安全策略中配置的电子邮件地址。
+* 在**位于 Azure 中的 VM 上手动安装的代理**：在这种情况下，如果使用的是在2017年2月之前手动下载和安装的代理，则只有在工作区所属的订阅上进行筛选时，才可以在安全中心门户中查看警报。 如果筛选资源所属的订阅，则不会看到任何警报。 你将收到电子邮件通知，其中显示工作区所属订阅的安全策略中配置的电子邮件地址。
 
 > [!NOTE]
 > 若要避免第二个方案中所述的行为，请确保下载最新版本的代理。
@@ -138,11 +138,11 @@ ms.locfileid: "71257687"
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 在本文档中，已经学习了如何在 Azure 安全中心中配置安全策略。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
-* [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心。
+* [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) （Azure 安全中心规划和操作指南）- 了解如何规划并理解设计注意事项，以便采用 Azure 安全中心。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
 * [了解 Azure 安全中心内的安全警报](security-center-alerts-type.md)

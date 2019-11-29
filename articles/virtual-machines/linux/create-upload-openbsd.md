@@ -1,5 +1,5 @@
 ---
-title: 创建 OpenBSD VM 映像并上传到 Azure | Microsoft Docs
+title: 创建 OpenBSD VM 映像并将其上传到 Azure
 description: 了解如何通过 Azure CLI 创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD) 以创建 Azure 虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 53acab4128d01c92c54c8c01a5e611d313e617d4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083567"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036452"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 
 ## <a name="prerequisites"></a>先决条件
-本文假设拥有以下项目：
+本文假定你拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
-* Azure CLI - 确保已安装了最新的 [Azure CLI](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
+* Azure CLI - 确保已安装了最新的 **Azure CLI** 并已使用 [az login](/cli/azure/install-azure-cli) 登录到 Azure 帐户[](/cli/azure/reference-index)。
 * **安装在 .vhd 文件中的 OpenBSD 操作系统** - 必须将受支持的 OpenBSD 操作系统（[6.2 版 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)）安装到虚拟硬盘中。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "70083567"
     > cat /var/log/waagent.log
     > ```
 
-7. 取消设置系统可清除系统并使其适用于重新设置。 以下命令还会删除上次预配的用户帐户和关联数据：
+7. 取消预配系统以清除系统并使其适用于重新预配。 以下命令还会删除上次预配的用户帐户和关联数据：
 
     ```sh
     waagent -deprovision+user -force

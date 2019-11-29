@@ -30,7 +30,7 @@ ms.locfileid: "73748635"
 
 ## <a name="cause"></a>原因
 
-Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求来自 Azure 公共 IP 地址。 在强制隧道方案中，激活失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP。
+Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求来自 Azure 公共 IP 地址。 在强制隧道方案中，激活失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP 地址。
 
 ## <a name="solution"></a>解决方案
 

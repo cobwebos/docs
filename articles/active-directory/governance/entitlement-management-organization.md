@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174136"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561919"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中添加连接的组织
 
@@ -33,7 +33,7 @@ Azure AD 的权利管理使你可以与组织外的人员进行协作。 如果�
 
 例如，假设你在 Woodgrove Bank 中工作，并且想要与两个外部组织协作：图形设计研究所和 Contoso。 你已在图形设计研究所向你的联系人通知了 Azure AD，并且该图形设计研究所的用户的用户主体名称以 `graphicdesigninstitute.com`结尾。 你的联系人已在 Contoso 那里通知他们尚未使用 Azure AD，但 Contoso 用户的用户主体名称以 `contoso.com`结尾。
 
-你可以配置两个已连接组织--一个用于具有域 `graphicdesigninstitute.com`的图形设计研究所，另一个用于 Contoso 域 `contoso.com`。 如果然后将这两个已连接组织添加到策略中，则每个组织中具有与该策略相匹配的用户主体名称的用户都可以请求访问包。 此外，由于图形设计研究所已被标识为使用 Azure AD，因此，如果图形设计研究所随后具有子域（如 `graphicdesigninstitute.example`），则具有该用户主体名称的用户还将能够使用相同的策略。
+你可以配置两个已连接组织--一个用于具有域 `graphicdesigninstitute.com`的图形设计研究所，另一个用于 Contoso 域 `contoso.com`。 如果然后将这两个已连接组织添加到策略中，则每个组织中具有与该策略相匹配的用户主体名称的用户都可以请求访问包。 此外，由于图形设计研究所已被标识为使用 Azure AD，因此，如果图形设计研究所随后具有子域（如 `graphicdesigninstitute.example`），则具有该用户主体名称的用户也可以使用相同的策略请求访问包。
 
 ![连接的组织示例](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -42,6 +42,10 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
 - Azure AD
 - [直接联合](../b2b/direct-federation.md)
 - [一次性密码](../b2b/one-time-passcode.md)（域）
+
+有关如何添加连接的组织的演示，请观看以下视频：
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>添加连接的组织
 

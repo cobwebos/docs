@@ -99,7 +99,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 ## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>为托管磁盘和 IP 地址确认区域
 
-当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公用 IP 地址。 以下示例可获取有关这些资源的信息。
+当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公共 IP 地址。 以下示例可获取有关这些资源的信息。
 
 若要验证 VM 的托管磁盘是否在可用性区域中，请使用[az VM show](/cli/azure/vm)命令返回磁盘 ID。 在此示例中，磁盘 ID 存储在稍后的步骤中使用的变量中。 
 

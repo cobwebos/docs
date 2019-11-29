@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建标准负载均衡器 - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 Azure 门户创建标准负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c8df0daac25a79bbbd67577c30b0a2da62d037da
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d15223dfe6d9ce710f2a3d402a49203ef169132e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273831"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225193"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -45,7 +45,7 @@ ms.locfileid: "68273831"
     | Resource group         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
     | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
-    | Type          | 选择“公共”。                                         |
+    | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
     | 公共 IP 地址 | 选择“新建”。  |
     | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
@@ -133,7 +133,7 @@ ms.locfileid: "68273831"
    - 在“实例详细信息” > “可用性选项”中，选择“可用性区域”。    
    - 在“实例详细信息” > “可用性区域”中，选择“1”。   
    - 管理员帐户 > 输入用户名、密码和确认密码信息     。
-   - 选择“网络”选项卡，或选择  **“下一步:磁盘”，然后选择“下一步:网络”** 。
+   - 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
   
 1. 在“网络”选项卡中，确保选中以下项  ：
    - **虚拟网络**：*myVnet*

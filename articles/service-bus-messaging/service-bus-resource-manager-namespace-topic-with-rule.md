@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: 6631528c9d1f2dfc6dcd3e9d6da81115a9ece637
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dc61fb8e066c6189b5607a6e1cd479cb812466f7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832083"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561568"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
 
@@ -29,10 +29,10 @@ ms.locfileid: "73832083"
 
 有关 Azure 资源命名约定的实践和模式的详细信息，请参阅[azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
 
-有关完整模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
+有关完整的模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
 
 > [!NOTE]
-> 以下 Azure Resource Manager 模板可供下载和部署。
+> 以下 Azure 资源管理器模板可供下载和部署。
 > 
 > * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
@@ -109,7 +109,7 @@ ms.locfileid: "73832083"
        }
 ```
 ## <a name="resources-to-deploy"></a>要部署的资源
-创建类型为 **Messaging**的包含主题、订阅和规则的标准服务总线命名空间。
+创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
 
 ```json
  "resources": [{
@@ -179,9 +179,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下主题，其中演示了如何创建订阅筛选器：[使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
-
-通过查看以下文章了解如何管理这些资源：
+查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)

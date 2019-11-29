@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174909"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74553993"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
 
@@ -76,6 +76,24 @@ ms.locfileid: "73174909"
 1. 单击 "**添加**" 以将所选用户直接分配到访问包。
 
     几分钟后，单击 "**刷新**" 以查看 "分配" 列表中的用户。
+
+## <a name="remove-an-assignment"></a>删除分配
+
+**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理器
+
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
+
+1. 在左侧菜单中，单击 "**访问包**"，然后打开访问包。
+
+1. 在左侧菜单中，单击 "**分配**"。
+ 
+1. 单击要删除其分配的用户旁边的复选框。 
+
+1. 单击左侧窗格顶部附近的 "**删除**" 按钮。 
+ 
+    ![分配-从 access 包中删除用户](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    将显示一条通知，告知你分配已删除。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab4b57513f90a5cbe80724d4937f8d0f87b5517
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381783"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558538"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -24,11 +24,11 @@ ms.locfileid: "74381783"
 
 [Azure 多重身份验证（MFA）](concept-mfa-howitworks.md)可帮助保护对数据和应用程序的访问。 它使用第二种形式的身份验证提供额外的安全层。 组织可以使用[条件性访问](../conditional-access/overview.md)来使解决方案满足其特定需求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始部署 Azure 多重身份验证之前，需要考虑必备项。
 
-| 应用场景 | 先决条件 |
+| 场景 | 先决条件 |
 | --- | --- |
 | 具有新式身份验证的**仅限云**的标识环境 | **无其他先决条件任务** |
 | **混合**标识方案 | 部署[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ，并且用户标识与 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
@@ -228,10 +228,10 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 1. 在“用户和组”下：
    * 在“包括”选项卡上，选中“所有用户”单选按钮
    * 在 "**排除**" 选项卡上，选中 "**用户和组**" 旁边的框，然后选择紧急访问帐户。
-   * 单击“Done”（完成）。
+   * 单击“完成”。
 1. 在“云应用”下，选中“所有云应用”单选按钮。
    * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。
-   * 单击“Done”（完成）。
+   * 单击“完成”。
 1. 在“条件”部分下：
    * 可选：如果已启用 Azure 标识保护，则可以选择在实施该策略的过程中评估登录风险。
    * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
@@ -240,7 +240,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
     * 单击“选择”。
 1. 跳过“会话”部分。
 1. 将“启用策略”开关设置为“开”。
-1. 单击“**创建**”。
+1. 单击“创建”。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>规划与本地系统的集成
 
@@ -277,13 +277,13 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 选择在未注册 MFA 的用户尝试进行身份验证时所发生的情况。 使用注册表路径中的注册表设置 `REQUIRE_USER_MATCH` `HKLM\Software\Microsoft\AzureMFA` 控制功能行为。 此设置包含一个配置选项。
 
-| Key | 值 | 默认 |
+| 密钥 | Value | 默认 |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE/FALSE | 未设置（相当于 TRUE） |
 
 此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 下表列出了更改此设置的效果。
 
-| 设置 | 用户 MFA 状态 | Effects |
+| 设置 | 用户 MFA 状态 | 结果 |
 | --- | --- | --- |
 | 项不存在 | 未注册 | MFA 质询失败 |
 | 值设置为 True/未设置 | 未注册 | MFA 质询失败 |
@@ -347,7 +347,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报表 | 位置 | 说明 |
+| 报告 | Location | 描述 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

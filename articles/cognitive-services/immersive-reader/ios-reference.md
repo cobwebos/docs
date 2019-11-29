@@ -1,7 +1,7 @@
 ---
 title: 沉浸式读者 iOS SDK 参考
 titleSuffix: Azure Cognitive Services
-description: 沉浸式读者 iOS SDK 参考
+description: 沉浸式读者 iOS SDK 是一个 Swift CocoaPod，可让你将沉浸式读者集成到 iOS 应用程序中。
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388120"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903126"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>适用于 iOS 的沉浸式读者 SDK 参考
 
 沉浸式读者 iOS SDK 是一个 Swift CocoaPod，可让你将沉浸式读者集成到 iOS 应用程序中。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>函数
 
 SDK 公开单个函数 `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`。
 
@@ -32,15 +32,15 @@ SDK 公开单个函数 `launchImmersiveReader(navController, token, subdomain, c
 public func launchImmersiveReader(navController: UINavigationController, token: String, subdomain: String, content: Content, options: Options?, onSuccess: @escaping () -> Void, onFailure: @escaping (_ error: Error) -> Void)
 ```
 
-#### <a name="parameters"></a>parameters
+#### <a name="parameters"></a>Parameters
 
-| 名称 | Type | 描述 |
+| 名称 | 类型 | 说明 |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | 从中调用函数的 iOS 应用程序的导航控制器。 |
-| `token` | 字符串 | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
-| `subdomain` | 字符串 | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
+| `token` | String | Azure AD 身份验证令牌。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
+| `subdomain` | String | Azure 中沉浸式读者资源的自定义子域。 请参阅[Azure AD authentication 操作方法](./azure-active-directory-authentication.md)。 |
 | `content` | [内容](#content) | 一个对象，该对象包含要在沉浸式读取器中显示的内容。 |
-| `options` | [选项](#options) | 用于配置沉浸式读者的某些行为的选项。 可选。 |
+| `options` | [](#options)选项 | 用于配置沉浸式读者的某些行为的选项。 可选。 |
 | `onSuccess` | （）-> Void | 当沉浸式阅读器成功启动时调用的闭包。 |
 | `onFailure` | （_ 错误：[错误](#error)）-> Void | 当沉浸式读取器加载失败时调用的闭包。 此闭包返回一个[`Error`](#error)对象，该对象表示与失败相关联的错误代码和错误消息。 有关详细信息，请参阅[错误代码](#error-codes)。 |
 
@@ -59,10 +59,10 @@ struct Content: Encodable {
 
 #### <a name="supported-mime-types"></a>支持的 MIME 类型
 
-| MIME 类型 | 描述 |
+| MIME 类型 | 说明 |
 | --------- | ----------- |
 | text/plain | 纯文本。 |
-| application/mathml + xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/mathml+xml | 数学标记语言（MathML）。 [了解详细信息](https://developer.mozilla.org/en-US/docs/Web/MathML)。
 
 ### <a name="options"></a>选项
 
@@ -88,7 +88,7 @@ struct Error {
 
 #### <a name="error-codes"></a>错误代码
 
-| 代码 | 描述 |
+| 代码 | 说明 |
 | ---- | ----------- |
 | BadArgument | 提供的参数无效，有关详细信息，请参阅 `message`。 |
 | 超时 | 沉浸式读取器无法在指定的超时内加载。 |

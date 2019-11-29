@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008903"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566213"
 ---
 写入加速器是 M 系列虚拟机 (VM) 的磁盘功能，且只能与 Azure 托管磁盘一起在高级存储上使用。 顾名思义，该功能的目的是改善对 Azure 高级存储的写入操作的 I/O 延迟。 写入加速器非常适合需要更新日志文件，并以高性能方式将现代数据库保存到磁盘的情况。
 
@@ -46,12 +46,13 @@ ms.locfileid: "74008903"
 
 | VM SKU | 写入加速器磁盘数 | 每个 VM 的写入加速器磁盘 IOPS |
 | --- | --- | --- |
+| M416ms_v2，M416s_v2| 16 | 20000 |
 | M208ms_v2，M208s_v2| 8 | 10000 |
-| M128ms、128s | 16 | 20000 |
+| M128ms、M128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
-| M8ms、M8s | 1 个 | 1250 |
+| M8ms、M8s | 第 | 1250 |
 
 IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 
@@ -59,7 +60,7 @@ IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有�
 
 以下几个部分介绍如何在 Azure 高级存储 VHD 上启用写入加速器。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 目前，使用写入加速器必须满足以下先决条件：
 

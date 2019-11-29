@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 985746989af39aa55d5d8af735edf62f4c4b77b7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612218"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932289"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -34,7 +34,7 @@ ms.locfileid: "67612218"
 -   IoT 中心（需要使用 PARTITION BY 关键字显式设置分区键）
 -   Blob 存储
 
-### <a name="outputs"></a>outputs
+### <a name="outputs"></a>Outputs
 
 处理流分析时，可利用输出中的分区：
 -   Azure Data Lake 存储
@@ -56,11 +56,11 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>易并行作业
-易并行作业是 Azure 流分析中最具可缩放性的方案  。 它将查询的一个实例的输入的一个分区连接到输出的一个分区。 实现此并行需满足以下要求：
+易并行作业是 Azure 流分析中最具可缩放性的方案。 它将查询的一个实例的输入的一个分区连接到输出的一个分区。 实现此并行需满足以下要求：
 
 1. 如果查询逻辑取决于同一个查询实例正在处理的相同键，则必须确保事件转到输入的同一个分区。 对于事件中心或 IoT 中心，这意味着事件数据必须已设置 **PartitionKey** 值。 或者，可以使用已分区的发件人。 对于 Blob 存储，这意味着事件将发送到相同的分区文件夹。 如果查询逻辑不需要由同一个查询实例处理相同的键，则可忽略此要求。 举例来说，简单的选择项目筛选器查询就体现了此逻辑。  
 
-2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY  。 允许采用多个步骤，但必须使用相同的键对其进行分区。 1\.0 和 1.1 的兼容级别，分区键必须设置为**PartitionId**顺序来实现完全并行作业。 对于包含 1.2 或更高的兼容性级别的作业，可以将自定义列指定为分区键中的输入设置，而作业 paralellized automoatically 甚至不带 PARTITION BY 子句。
+2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY。 允许采用多个步骤，但必须使用相同的键对其进行分区。 在兼容性级别 1.0 和 1.1 中，必须将分区键设置为 **PartitionId** 才能实现完全并行作业。 对于 compatility 级别为1.2 和更高的作业，可以在输入设置中将自定义列指定为分区键，并且即使没有 PARTITION BY 子句，也会自动 paralellized 作业。 对于事件中心输出，必须将属性 "分区键列" 设置为使用 "PartitionId"。
 
 3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 有关详细信息，请参阅[输出部分](#outputs)。
 
@@ -77,7 +77,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 ### <a name="simple-query"></a>简单查询
 
 * 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心
+* 输出：具有8个分区的事件中心（"分区键列" 必须设置为使用 "PartitionId"）
 
 查询：
 
@@ -87,7 +87,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
     WHERE TollBoothId > 100
 ```
 
-此查询是一个简单的筛选器。 因此，无需担心对发送到事件中心的输入进行分区。 请注意，作业使用兼容级别之前必须包括 1.2, **PARTITION BY PartitionId**子句，因此其满足上述要求 #2。 对于输出，需要在作业中配置事件中心输出，将分区键设置为“PartitionId”  。 最后一项检查是确保输入分区数等于输出分区数。
+此查询是一个简单的筛选器。 因此，无需担心对发送到事件中心的输入进行分区。 请注意，使用版本低于 1.2 的兼容性级别的作业必须包含 **PARTITION BY PartitionId** 子句才能满足上述要求 #2。 对于输出，需要在作业中配置事件中心输出，将分区键设置为“PartitionId”。 最后一项检查是确保输入分区数等于输出分区数。
 
 ### <a name="query-with-a-grouping-key"></a>带分组键的查询
 
@@ -102,9 +102,9 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-此查询具有分组键。 因此，组合在一起的事件必须被发送到相同事件中心分区。 由于在此示例中我们按 TollBoothID 进行分组，因此应确保在将事件发送到事件中心时，将 TollBoothID 用作分区键。 然后在 ASA 中，可以使用 PARTITION BY PartitionId  继承此分区方案并启用完全并行化。 由于输出是 Blob 存储，因此如要求 #4 所述，无需担心如何配置分区键值。
+此查询具有分组键。 因此，组合在一起的事件必须被发送到相同事件中心分区。 由于在此示例中我们按 TollBoothID 进行分组，因此应确保在将事件发送到事件中心时，将 TollBoothID 用作分区键。 然后在 ASA 中，可以使用 PARTITION BY PartitionId 继承此分区方案并启用完全并行化。 由于输出是 Blob 存储，因此如要求 #4 所述，无需担心如何配置分区键值。
 
-## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>不  易并行的示例方案
+## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>不易并行的示例方案
 
 上一节介绍了一些易并行方案。 本节将介绍不满足实现易并行所需全部要求的方案。 
 
@@ -116,7 +116,7 @@ Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-
 
 ### <a name="query-using-non-partitioned-output"></a>使用非分区输出进行查询
 * 输入：具有 8 个分区的事件中心
-* 输出：Power BI
+* 输出： Power BI
 
 Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
@@ -142,9 +142,9 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 前述示例介绍了一些符合（或不符合）易并行拓扑的流分析作业。 如果符合易并行拓扑，则有可能达到最大规模。 对于不适合其中一个配置文件的作业，未来更新中将提供缩放指南。 现在，请使用以下各节中的常规指南。
 
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>兼容性级别 1.2-使用不同 PARTITION BY 值的多步骤查询 
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>兼容性级别 1.2 - 使用不同 PARTITION BY 值的多步骤查询 
 * 输入：具有 8 个分区的事件中心
-* 输出：具有 8 个分区的事件中心
+* 输出：具有8个分区的事件中心（"分区键列" 必须设置为使用 "TollBoothId"）
 
 查询：
 
@@ -160,13 +160,13 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-兼容性级别 1.2，则默认情况下并行查询的执行。 例如，从上一节的查询将 parttioned，只要"TollBoothId"列集作为输入分区键。 分区通过 ParttionId 子句不是必需的。
+默认情况下，兼容性级别 1.2 会启用并行查询执行。 例如，只要将“TollBoothId”列设置为输入分区键，就会将上一部分所述的查询分区。 不需要 PARTITION BY ParttionId 子句。
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>计算作业的最大流式处理单位数
 流分析作业所能使用的流式处理单位总数取决于为作业定义的查询中的步骤数，以及每一步的分区数。
 
 ### <a name="steps-in-a-query"></a>查询中的步骤
-查询可以有一个或多个步骤。 每一步都是由 WITH 关键字定义的子查询  。 位于 WITH 关键字外的查询（仅 1 个查询）也计为一步，例如以下查询中的 SELECT 语句   ：
+查询可以有一个或多个步骤。 每一步都是由 WITH 关键字定义的子查询。 位于 WITH 关键字外的查询（仅 1 个查询）也计为一步，例如以下查询中的 SELECT 语句：
 
 查询：
 
@@ -192,15 +192,15 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 * 输入源必须进行分区。 
 * 查询的 **SELECT** 语句必须从分区的输入源读取。
-* 步骤中的查询必须有 PARTITION BY  关键字。
+* 步骤中的查询必须有 PARTITION BY 关键字。
 
 对查询进行分区后，需在独立的分区组中处理和聚合输入事件，并为每个组生成输出事件。 如果需要对聚合进行组合，则必须创建另一个不分区的步骤来进行聚合。
 
 ### <a name="calculate-the-max-streaming-units-for-a-job"></a>计算作业的最大流式处理单位数
 所有未分区的步骤总共可将每个流分析作业增加到最多 6 个流式处理单元 (SU)。 除此之外，可以在分区步骤中为每个分区添加 6 个 SU。
-下表是一些示例  。
+下表是一些示例。
 
-| Query                                               | 作业的最大 SU 数 |
+| 查询                                               | 作业的最大 SU 数 |
 | --------------------------------------------------- | ------------------- |
 | <ul><li>该查询包含一个步骤。</li><li>该步骤未分区。</li></ul> | 6 |
 | <ul><li>输入数据流被分为 16 个分区。</li><li>该查询包含一个步骤。</li><li>该步骤已分区。</li></ul> | 96（6 * 16 个分区） |
@@ -225,9 +225,9 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当“分组方式”字段不是分区键时，执行分区可能会导致某些意外的结果  。 例如，在前面的查询中，TollBoothId 字段不是 Input1 的分区键   。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
+对查询进行分区后，会在独立的分区组中处理和聚合输入事件。 此外，还会为每个组生成输出事件。 在输入数据流中，当“分组方式”字段不是分区键时，执行分区可能会导致某些意外的结果。 例如，在前面的查询中，TollBoothId 字段不是 Input1 的分区键。 因此，可以将 TollBooth #1 中的数据分布到多个分区。
 
-流分析会分开处理每个 Input1 分区  。 因此，将在相同的翻转窗口为同一收费亭创建多个关于车辆数的记录。 如果不能更改输入分区键，则可通过添加不分区步骤以跨分区聚合值来解决此问题，如下例所示：
+流分析会分开处理每个 Input1 分区。 因此，将在相同的翻转窗口为同一收费亭创建多个关于车辆数的记录。 如果不能更改输入分区键，则可通过添加不分区步骤以跨分区聚合值来解决此问题，如下例所示：
 
 ```SQL
     WITH Step1 AS (
@@ -248,41 +248,41 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 > 
 > 
 
-## <a name="achieving-higher-throughputs-at-scale"></a>在规模较大可实现更高的吞吐量
+## <a name="achieving-higher-throughputs-at-scale"></a>大规模实现更高吞吐量
 
-[易并行](#embarrassingly-parallel-jobs)作业是必需的但不是足够，可承受更高的吞吐量规模。 每个存储系统和其对应的 Stream Analytics 输出包含有关如何实现最可能的写入吞吐量变体。 作为任何在缩放方案中，有一些难题就可解决使用正确的配置。 本部分中讨论的一些常见的输出配置，并提供示例以保持每秒 1 K、 5 K 和 10k 事件的引入速率。
+[易并行](#embarrassingly-parallel-jobs)作业是必要的，但并不足以大规模保持较高吞吐量。 每个存储系统及其对应的流分析输出在如何尽量实现最佳写入吞吐量方面各不相同。 对于任何大规模方案，都可以使用适当的配置来解决一些难题。 本部分讨论几个常见输出的配置，并通过示例来说明如何保持每秒 1K、5K 和 10K 个事件的引入速率。
 
-以下观察值与无状态 （直通） 查询中，基本 JavaScript UDF 将写入到事件中心、 Azure SQL DB 或 Cosmos DB 使用 Stream Analytics 作业。
+以下观测值使用包含无状态（直通）查询的流分析作业。该查询是一个基本的 JavaScript UDF，可将数据写入事件中心、Azure SQL 数据库或 Cosmos DB。
 
 #### <a name="event-hub"></a>事件中心
 
-|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |--------|---------|---------|
-| 1K     |    1    |  2 个 TU   |
+| 1K     |    1 个    |  2 TU   |
 | 5K     |    6    |  6 TU   |
-| 10K    |    12   |  10 个 TU  |
+| 10K    |    12   |  10 TU  |
 
-[事件中心](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs)解决方案的可进行线性伸缩方面流式处理单元 (SU) 数和吞吐量、 进行最有效和高效地进行分析和流式传输超出 Stream Analytics 的数据。 作业可以扩展到 192 个 SU，这大约会转换为最多 200 MB/秒或每日 19 万亿个事件的处理。
+[事件中心](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs)解决方案在流单元 (SU) 和吞吐量方面可线性缩放，因此，它是分析和流式传输流分析中的数据的最有效方式。 作业可扩展到 192 SU，这大致相当于处理能力高达 200 MB/秒，即，每天可处理 19 万亿个事件。
 
 #### <a name="azure-sql"></a>Azure SQL
-|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |---------|------|-------|
 |    1K   |   3  |  S3   |
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)编写并行的支持，分区继承被调用，但它默认不启用。 但是，完全并行查询，以及启用继承分区可能不足以实现更高的吞吐量。 SQL 写入吞吐量显著取决于您的 SQL Azure 数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)项目的更多详细信息，可以最大程度提高写入吞吐量的参数。 如中所述[到 Azure SQL 数据库的 Azure Stream Analytics 输出](./stream-analytics-sql-output-perf.md#azure-stream-analytics)文章中，此解决方案不会超过 8 个分区的完全并行管道线性缩放，可能需要重新分区之前 SQL 输出 (请参阅[到](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count))。 高级 Sku 所需承受高 IO 率，以及从日志备份每隔几个开销分钟。
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) 支持并行写入（称为继承分区），但默认不会启用此功能。 不过，结合完全并行查询启用继承分区可能并不足以实现更高的吞吐量。 SQL write 吞吐量在很大程度上取决于 SQL Azure 数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)一文详细介绍了可最大程度提高写入吞吐量的参数。 如[从 Azure 流分析输出到 Azure SQL 数据库](./stream-analytics-sql-output-perf.md#azure-stream-analytics)一文中所述，此解决方案无法作为完全并行的管道线性扩展到 8 个分区以上，可能需要在 SQL 输出之前重新分区（请参阅 [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)）。 需要使用高级 SKU 来维持较高的 IO 速率，同时，每隔几分钟就会产生日志备份的开销。
 
 #### <a name="cosmos-db"></a>Cosmos DB
-|引入速率 （每秒事件数） | 流式处理单位数 | 输出资源  |
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |-------|-------|---------|
 |  1K   |  3    | 20K RU  |
 |  5K   |  24   | 60K RU  |
 |  10K  |  48   | 120K RU |
 
-[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)输出从 Stream Analytics 具有已更新为使用在本机集成[兼容性级别 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)。 兼容性级别 1.2 可以非常高的吞吐量并降低 RU 消耗与 1.1，它是新的作业的默认兼容级别。 该解决方案使用 CosmosDB 容器进行分区 /deviceId 和解决方案的其余部分相同配置。
+流分析的 [Cosmos DB 输出](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)已更新为使用[兼容性级别 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) 中的本机集成。 与 1.1 相比，兼容性级别 1.2 明显提高了吞吐量，并减少了 RU 消耗，它是新作业的默认兼容性级别。 解决方案使用 /deviceId 上分区的 CosmosDB 容器，解决方案的剩余部分可以采用相同的配置。
 
-所有[流式处理在扩展 azure 示例](https://github.com/Azure-Samples/streaming-at-scale)使用负载测试客户端模拟作为输入通过填充事件中心。 每个输入的事件是一个为 1 KB JSON 文档，轻松地转换到吞吐率 （1 MB/秒、 5 MB/秒和 10 MB/秒） 的已配置的引入速率。 事件的最大为 1 万台设备模拟 IoT 设备发送的以下 JSON 数据 （在一种简短格式）：
+所有[大规模流式处理 Azure 示例](https://github.com/Azure-Samples/streaming-at-scale)都使用模拟测试客户端的负载馈送的事件中心作为输入。 每个输入事件是一个 1KB JSON 文档，可轻松地将配置的引入速率转化为吞吐率（1MB/秒、5MB/秒和 10MB/秒）。 事件可以模拟某个 IoT 设备来发送最多 1K 个设备的以下 JSON 数据（以简写形式显示）：
 
 ```
 {
@@ -299,15 +299,15 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 ```
 
 > [!NOTE]
-> 配置会有变动情况下，由于解决方案中使用的各种组件。 一个更准确的估计，自定义以适合你方案的示例。
+> 由于解决方案中使用了不同的组件，这些配置可能会发生更改。 若要获得更准确的估算值，请根据具体的方案自定义示例。
 
-### <a name="identifying-bottlenecks"></a>找出瓶颈问题
+### <a name="identifying-bottlenecks"></a>识别瓶颈
 
-使用 Azure Stream Analytics 作业中度量值窗格来确定在管道中的瓶颈。 审阅**输入/输出事件**吞吐量和["水印延迟"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或**囤积的事件**以确定是否作业使用输入速率保持。 对于事件中心指标，寻找**中止请求**并相应地调整阈值单位。 有关 Cosmos DB 指标，查看**每个分区键范围的最大使用 RU/s**统一使用吞吐量，从而确保您的分区键范围下。 对于 Azure SQL DB，监视**日志 IO**并**CPU**。
+使用 Azure 流分析作业中的“指标”窗格可识别管道中的瓶颈。 查看针对吞吐量的“输入/输出事件”，以及 **“水印延迟”** 或“积压事件”，可以确定作业是否跟得上输入速率。[](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) 对于事件中心指标，请查看“受限制的请求数”并相应地调整阈值单位。 对于 Cosmos DB 指标，请查看“吞吐量”下的“每个分区键范围的最大 RU/秒消耗量”，以确保均匀消耗分区键范围。 对于 Azure SQL 数据库，请监视“日志 IO”和“CPU”。
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

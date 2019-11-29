@@ -11,18 +11,18 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046437"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555431"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍了具有支持 Azure SQL 数据仓库的官方数据集成解决方案的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| 合作伙伴 | 说明 | 网站/产品链接 |
+| Partner | 描述 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> Alooma 是一种 ETL 解决方案，使数据团队能够实时将各种数据接收器的数据集成、丰富并流式传输到 SQL 数据仓库。 |[产品页][alooma_website] |
 | ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页][alteryx_designer_website]<br>[Azure 市场][alteryx_marketplace]<br>|
@@ -36,9 +36,10 @@ ms.locfileid: "74046437"
 | ![Skyvia][11] |**Skyvia （数据集成）**<br>Skyvia 数据集成提供了一个向导，可自动导入数据。 此向导允许您在不同类型的源之间迁移数据-Crm、应用程序数据库、CSV 文件等。 |[产品页][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 平台使客户能够快速将数据传入和传出 Microsoft Azure SQL 数据仓库。 它可以在一个解决方案中集成数百个应用程序、服务和 IoT 方案。|[产品页][snaplogic_website]<br>[Azure 市场][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**Streamsets data collector**<br>Streamsets data collector 提供了用于 DataOps 的数据集成平台。 它 operationalizes 将数据集成到 Azure SQL 数据仓库的完整的设计部署-操作生命周期。 你不能通过流式处理、批处理或更改的数据捕获数据交付方法快速引入数据并将其与仓库集成，还可以确保具有智能数据管道的连续操作，这些管道提供端到端的数据流可见性和复原.|[产品页][streamsets_website]|
-| ![Talend][12] |**Talend 云**<br>Talend 云是一个企业数据集成平台，用于在云中或本地连接、访问和转换任何数据。 这是一个集成平台即服务（iPaaS）产品/服务，提供广泛的连接、内置数据质量以及对最新的大数据和云技术的本机支持 |[产品页][talend_website]<br> [Azure 市场][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织浏览各种不同的数据，并将其结合起来进行分析。 Trifacta Wrangler 设计用于处理需要支持大规模数据和大量最终用户的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure 市场][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape 红色**<br> WhereScape RED 是一个 IDE，它为团队提供自动化工具来简化 ETL 工作流。 IDE 为常用数据目标提供最佳实践优化的本机代码。 使用 WhereScape RED 缩短开发、部署和操作你的数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure 市场][wherescape_marketplace] |
+| ![Talend][12] |**Talend 云**<br>Talend 云是一个企业数据集成平台，用于在云中或本地连接、访问和转换任何数据。 这是一个集成平台即服务（iPaaS）产品/服务，提供广泛的连接、内置的数据质量以及对最新的大数据和云技术的本机支持。 |[产品页][talend_website]<br> [Azure 市场][talend_marketplace] |
+| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender 的发现中心提供集成的数据管理平台，可帮助公司构建最新的数据，最多可加快10倍的数据见解。 通过在单个平台中提供数据访问、数据建模和合规性的自动化和功能，超越日常提取、转换和加载（ETL）或提取、加载和转换（ELT）。 发现中心为云规模分析提供了一种统一的数据结构，使你能够连接和集成各种数据接收器、目录、模型、移动和文档数据以便进行分析和 AI。 | [产品页][timextender_website] |
+| ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织浏览各种不同的数据，并将其结合起来进行分析。 Trifacta Wrangler 设计用于处理需要支持大规模数据和大量最终用户的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure 市场][trifacta_marketplace] |
+| ![WhereScape][15] |**Wherescape 红色**<br> WhereScape RED 是一个 IDE，它为团队提供自动化工具来简化 ETL 工作流。 IDE 为常用数据目标提供最佳实践优化的本机代码。 使用 WhereScape RED 缩短开发、部署和操作你的数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure 市场][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -64,9 +65,10 @@ ms.locfileid: "74046437"
 [10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
 [11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
-[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
-[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
-[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/timextender-logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[16]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
 
 
 
@@ -86,6 +88,7 @@ ms.locfileid: "74046437"
 [segment_website]:https://segment.com/
 [skyvia_website]:https://skyvia.com/
 [talend_website]:https://www.talend.com/
+[timextender_website]:https://www.timextender.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
 [streamsets_website]:https://streamsets.com/partners/microsoft

@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心中的数据收集 | Microsoft Docs
-description: " 了解如何启用 Azure 安全中心中的数据收集。 "
+description: 本文介绍如何安装 Log Analytics 代理，以及如何设置 Log Analytics 工作区来存储所收集的数据。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162688"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559060"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
 
-必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护启用情况，以及运行状况和威胁检测结果。 
+需要收集数据才能查看缺少的更新、配置错误的 OS 安全设置、endpoint protection 状态和运行状况和威胁检测。 
 
 本文介绍如何安装 Log Analytics 代理，以及如何设置 Log Analytics 工作区来存储所收集的数据。 这两项操作都需要启用数据收集。 
 

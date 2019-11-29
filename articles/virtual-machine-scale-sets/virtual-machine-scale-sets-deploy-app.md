@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166210"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960727"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
@@ -37,11 +37,11 @@ ms.locfileid: "72166210"
 
 
 ## <a name="already-provisioned"></a>使用自定义脚本扩展安装应用
-自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 若要深入了解如何通过规模集创建和使用自定义 VM 映像，请参阅以下教程：
+自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 有关如何使用自定义脚本扩展安装应用的详细信息，请参阅以下教程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
-- [Azure Resource Manager 模板](tutorial-install-apps-template.md)
+- [Azure 资源管理器模板](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 将应用安装到 Windows VM
@@ -49,7 +49,7 @@ ms.locfileid: "72166210"
 
 通过 PowerShell DSC 扩展，可使用 PowerShell 在规模集中自定义 VM 实例。 以下示例：
 
-- 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip
+- 指示 VM 实例从 GitHub 下载 DSC 包 - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - 设置用于运行安装脚本的扩展 - `configure-http.ps1`
 - 使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 获取有关规模集的信息
 - 使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 将扩展应用到 VM 实例
@@ -96,7 +96,7 @@ Update-AzVmss `
 
 Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
-有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)。
+有关详细信息，包括示例 cloud-init.txt 文件，请参阅*使用 cloud-init 自定义 Azure VM*[](../virtual-machines/linux/using-cloud-init.md)。
 
 若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例。 按如下所示输入自己的名称：
 

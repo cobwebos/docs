@@ -1,6 +1,6 @@
 ---
 title: 发现托管实例管理终结点
-description: 了解如何获取 Azure SQL 数据库托管实例管理终结点公用 IP 地址并验证其内置防火墙保护
+description: 了解如何获取 Azure SQL 数据库托管实例管理终结点公共 IP 地址并验证其内置防火墙保护
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance

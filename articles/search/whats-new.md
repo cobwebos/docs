@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f35fcc2604866c2ff5a330b65ae844be0eed9476
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422394"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555144"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -46,7 +46,7 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 
 24 2019 年7月
 
-+ 在[Azure 政府版云中](https://docs.microsoft.com/azure/azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)公开发布。
++ 在[Azure 政府版云中](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)公开发布。
 
 ## <a name="service-updates"></a>服务更新
 

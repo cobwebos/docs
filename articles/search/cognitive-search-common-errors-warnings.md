@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286993"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555045"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -32,12 +32,12 @@ ms.locfileid: "74286993"
 
 从 API 版本 `2019-05-06`开始，会构建项级索引器错误和警告，使其更清晰地围绕原因和后续步骤。 它们包含以下属性：
 
-| 属性 | 说明 | 示例 |
+| properties | 描述 | 示例 |
 | --- | --- | --- |
-| key | 受错误或警告影响的文档的文档 id。 | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| key | 受错误或警告影响的文档的文档 ID。 | https：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | 描述错误或警告出现位置的操作名称。 这是由以下结构生成的： [category]。[子类别]。[resourceType]。ResourceName | DocumentExtraction myBlobContainerName 扩充. WebApiSkill mySkillName SearchIndex OutputFieldMapping myOutputFieldName SearchIndex MergeOrUpload myIndexName.KnowledgeStore. myTableName |
 | message | 错误或警告的高级说明。 | 无法执行技能，因为 Web Api 请求失败。 |
-| details | 可能有助于诊断问题的任何其他详细信息，例如，在执行自定义技能失败时的 WebApi 响应。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source，Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` 。堆栈跟踪的其余部分 。 |
+| 详细信息 | 可能有助于诊断问题的任何其他详细信息，例如，在执行自定义技能失败时的 WebApi 响应。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source，Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` 。堆栈跟踪的其余部分 。 |
 | documentationLink | 指向相关文档的链接，其中包含用于调试和解决问题的详细信息。 此链接通常指向本页的下列部分之一。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -46,7 +46,7 @@ ms.locfileid: "74286993"
 
 索引器无法从数据源中读取文档。 这可能是由于以下原因导致的：
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | 不同文档中的字段类型不一致 | 值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在作者列中。  预期类型为 JArray。 | 确保每个字段的类型在不同的文档中是相同的。 例如，如果第一个文档 `'startTime'` 字段是日期时间，在第二个文档中为字符串，则会命中此错误。 |
 | 来自数据源的基础服务的错误 | （从 Cosmos DB） `{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
@@ -57,7 +57,7 @@ ms.locfileid: "74286993"
 ## <a name="error-could-not-extract-document-content"></a>错误：无法提取文档内容
 具有 Blob 数据源的索引器无法从文档中提取内容（例如，PDF 文件）。 这可能是由于以下原因导致的：
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | blob 大于大小限制 | 文档是 `'150441598'` 字节，超过了当前服务层的文档提取的最大大小 `'134217728'` 字节。 | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 的内容类型不受支持 | 文档具有不受支持的内容类型 `'image/png'` | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ ms.locfileid: "74286993"
 ## <a name="error-could-not-parse-document"></a>错误：无法分析文档
 索引器从数据源中读取文档，但将文档内容转换为指定的字段映射架构时出现问题。 这可能是由于以下原因导致的：
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
@@ -81,7 +81,7 @@ ms.locfileid: "74286993"
 ## <a name="error-could-not-execute-skill"></a>错误：无法执行技能
 索引器无法在技能组合中运行技能。
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | 暂时性连接问题 | 发生暂时性错误。 请稍后重试。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 | 潜在的产品 bug | 发生了意外错误。 | 这表示未知的失败类别，并可能表示存在产品错误。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
@@ -140,7 +140,7 @@ ms.locfileid: "74286993"
 
 文档已读取并处理，但索引器无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
 | 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
@@ -156,7 +156,7 @@ ms.locfileid: "74286993"
 
 文档已读取和处理，但由于索引字段的配置与索引器提取的数据的性质不匹配，因此无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
-| Reason | 详细信息/示例
+| 原因 | 详细信息/示例
 | --- | ---
 | 索引器提取的字段的数据类型与相应目标索引字段的数据模型不兼容。 | 带有键 "_data_" 的文档中的数据字段 "_data_" 具有无效值 "" 的类型 "Edm. 字符串"。 预期类型为 "Collection （Edm）"。 |
 | 未能从字符串值中提取任何 JSON 实体。 | 无法将字段 "_data_" 的类型 "Edm. 字符串" "的值" 分析为 JSON 对象。 错误：在分析值后，遇到意外的字符： ""。 路径 "_path_"，第1行，位置3162。 |
@@ -195,7 +195,7 @@ ms.locfileid: "74286993"
 }
 ```
 
-| Reason | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | 技能输入的类型错误 | 所需的技能输入 `X` 不是所需的类型 `String`。 所需的技能输入 `X` 未采用预期格式。 | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 是一个字符串。 如果输入指定非字符串值，则不会执行技能，也不会生成任何输出。 确保你的数据集在类型中具有一致的输入值，或使用[自定义的 WEB API 技能](cognitive-search-custom-skill-web-api.md)对输入进行预处理。 如果要在数组上循环访问技能，请检查技能上下文和输入在正确位置 `*`。 通常，上下文和输入源都应以数组的 `*` 结束。 |
 | 缺少技能输入 | 缺少必需的技能输入 `X`。 | 如果你的所有文档均收到此警告，则很可能是输入路径中有一个拼写错误，你应仔细检查属性名称大小写、路径中的多余或缺失 `*`，以及来自数据源的文档定义所需的输入。 |
@@ -208,7 +208,7 @@ ms.locfileid: "74286993"
 
 如果你知道数据集全部使用一种语言，则应删除[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 `languageCode` 技能输入，并改为使用该技能 `defaultLanguageCode` 技能参数，前提是该技术支持该语言。
 
-如果你知道你的数据集包含多种语言，因而你需要[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 `languageCode` 输入，请考虑添加[ConditionalSkill](cognitive-search-skill-conditional.md)以筛选出不受支持的语言的文本，然后传入向下游技能文本。  下面是有关 EntityRecognitionSkill 的示例：
+如果你知道你的数据集包含多种语言，因而你需要[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 `languageCode` 输入，请考虑添加[ConditionalSkill](cognitive-search-skill-conditional.md) ，以使用在将文本传递到下游技能之前不受支持的语言筛选掉文本。  下面是有关 EntityRecognitionSkill 的示例：
 
 ```json
 {

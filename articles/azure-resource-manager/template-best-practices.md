@@ -1,23 +1,20 @@
 ---
-title: Azure 资源管理器模板的最佳做法
+title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: tomfitz
-ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983825"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150297"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
 本文提供有关如何构造资源管理器模板的建议。 这些建议有助于在使用模板部署解决方案时避免出现常见问题。
 
-有关如何管理 Azure 订阅的建议，请参阅 [Azure Enterprise 基架：出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+有关如何管理 Azure 订阅的建议，请参阅[azure 企业基架：规范性订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
 
 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
 
@@ -39,7 +36,7 @@ ms.locfileid: "70983825"
 
 将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
 
-如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
+如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
 ## <a name="parameters"></a>Parameters
 
@@ -98,7 +95,7 @@ ms.locfileid: "70983825"
 
 * 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 **New-AzResourceGroupDeployment** cmdlet 中的“ResourceGroupName”[](/powershell/module/az.resources/new-azresourcegroupdeployment)参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -207,7 +204,7 @@ ms.locfileid: "70983825"
    }
    ```
    
-   如果在创建的同一模板中部署存储帐户，且存储帐户的名称不与模板中的其他资源共享，则在引用资源时，无需指定 provider 命名空间或 apiVersion。 下面的示例显示了简化的语法：
+   如果存储帐户部署在正在创建的同一模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 apiVersion。 下面的示例显示了简化的语法：
    
    ```json
    "diagnosticsProfile": {
@@ -280,7 +277,7 @@ ms.locfileid: "70983825"
    > 
    > 
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Outputs
 
 如果使用模板创建公共 IP 地址，请包含 [outputs 节](template-outputs.md)，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
 

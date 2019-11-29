@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836999"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559006"
 ---
-# <a name="disclosure-design-patterns"></a>泄露设计模式
+# <a name="disclosure-design-patterns"></a>披露设计模式
 现在，你&#39;已经确定了适合你的综合语音体验的正确[级别的披露](concepts-disclosure-guidelines.md#disclosure-assessment)，&#39;接下来可以探索潜在的设计模式。
 ## <a name="overview"></a>概述
 你可以将各种公开的设计模式应用于综合语音体验。 如果披露评估的结果是 "高泄漏"，我们建议[**显式公开**](#explicit-disclosure)，这意味着完全传达合成语音的起源。 [**隐式泄漏**](#implicit-disclosure)包括一些提示和交互模式，这些模式可受益于语音体验，无论所需的公开级别是高还是低。
@@ -167,7 +167,7 @@ ms.locfileid: "73836999"
 
 ![隐式提示的一致性](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>&amp; 反馈的隐式提示
+### <a name="implicit-cues--feedback"></a>& 反馈的隐式提示
 
 Anthropomorphism 可以采用不同的方式，从代理的实际视觉对象表示形式到声音、声音、光模式、弹跳形状甚至设备振动。 定义角色时，请利用隐式提示和反馈模式，而不是瞄准非常类似的头像。 这是最大程度地减少对更显式泄露的需求的一种方法。
 

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/01/2019
+ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802314"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554223"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
 
@@ -32,7 +32,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 > [!TIP]
 > 如果用户需要使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
 
-1. 以服务管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以服务管理员或共同管理员身份登录到[Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
@@ -52,9 +52,17 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
     ![添加协同管理员的屏幕截图](./media/classic-administrators/add-coadmin.png)
 
-### <a name="adding-a-guest-user-as-a-co-administrator"></a>将来宾用户添加为共同管理员
+## <a name="add-a-guest-user-as-a-co-administrator"></a>添加来宾用户作为共同管理员
 
-已分配共同管理员角色的[来宾用户](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md)与具有共同管理员角色的成员用户之间可能有一些区别。 请考虑以下方案：
+若要将来宾用户添加为共同管理员，请执行前面的[添加共同管理员](#add-a-co-administrator)部分中所述的相同步骤。 来宾用户必须满足以下条件：
+
+- 来宾用户必须在你的目录中存在。 这意味着用户已被邀请到你的目录并接受邀请。
+
+有关如何将来宾用户添加到目录的详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](../active-directory/b2b/add-users-administrator.md)。
+
+### <a name="differences-for-guest-users"></a>来宾用户的差异
+
+与具有共同管理员角色的成员用户相比，已分配有共同管理员角色的来宾用户可能会看到一些不同之处。 请考虑以下方案：
 
 - 具有 Azure AD 帐户（工作或学校帐户）的用户 A 是 Azure 订阅的服务管理员。
 - 用户 B 是 Microsoft 帐户。
@@ -63,13 +71,15 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 你希望用户 B 可以管理所有内容。 此区别的原因在于，Microsoft 帐户作为来宾用户（而不是成员用户）添加到订阅。 与成员用户相比，来宾用户在 Azure AD 中具有不同的默认权限。 例如，成员用户可以在 Azure AD 中读取其他用户，而来宾用户不能。 成员用户可以在 Azure AD 中注册新的服务主体，而来宾用户不能。
 
-如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 管理员角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
+如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 管理员角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限](role-assignments-external-users.md)。
 
 请注意，[Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
+有关对成员用户和来宾用户进行比较的信息，请参阅[Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
+
 ## <a name="remove-a-co-administrator"></a>删除共同管理员
 
-1. 以服务管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以服务管理员或共同管理员身份登录到[Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
@@ -93,7 +103,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 请查看服务管理员变更限制，确保自己的方案受支持。
+1. 通过检查更改服务管理员的限制，确保你的方案受支持。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -111,7 +121,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="account-center"></a>帐户中心
 
-1. 请查看服务管理员变更限制，确保自己的方案受支持。
+1. 通过检查更改服务管理员的限制，确保你的方案受支持。
 
 1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
 
@@ -133,10 +143,10 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 | 帐户管理员帐户 | 是否可以将服务管理员更改为其他 Microsoft 帐户？ | 是否可以将服务管理员更改为同一目录中的 Azure AD 帐户？ | 是否可以将服务管理员更改为其他目录中的 Azure AD 帐户？ |
 | --- | --- | --- | --- |
-| Microsoft 帐户 | 是 | 否 | 否 |
-| Azure AD 帐户 | 是 | 是 | 否 |
+| Microsoft 帐户 | 是 | No | No |
+| Azure AD 帐户 | 是 | 是 | No |
 
-如果帐户管理员是 Azure AD 帐户，则可以将服务管理员更改为同一目录中的 Azure AD 帐户，但不能更改为其他目录。 例如，abby@contoso.com 会将服务管理员更改为 bob@contoso.com，但无法将服务管理员更改为 john@notcontoso.com，除非 john@notcontoso.com 在 contoso.com 目录中存在。
+如果帐户管理员是 Azure AD 帐户，则可以将服务管理员更改为同一目录中的 Azure AD 帐户，但不能更改为其他目录。 例如，abby@contoso.com 可以将服务管理员更改为 bob@contoso.com，但无法将服务管理员更改为 john@notcontoso.com，除非 john@notcontoso.com 在 contoso.com 目录中存在。
 
 有关 Microsoft 帐户和 Azure AD 帐户的详细信息，请参阅[什么是 Azure Active Directory？](../active-directory/fundamentals/active-directory-whatis.md)。
 

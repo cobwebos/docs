@@ -1,5 +1,5 @@
 ---
-title: 用于搜索索引的 Azure SQL 虚拟机 VM 连接
+title: 用于搜索索引的 Azure SQL VM 连接
 titleSuffix: Azure Cognitive Search
 description: 启用加密连接，并将防火墙配置为允许从 Azure 认知搜索上的索引器连接到 Azure 虚拟机（VM）上的 SQL Server。
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792148"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111889"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>在 Azure VM 上配置从 Azure 认知搜索索引器到 SQL Server 的连接
 
-如[使用索引器将 AZURE SQL 数据库连接到 azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，azure 认知搜索支持为**azure vm 上的 SQL Server**创建索引器（或短期的**SQL Azure vm** ），但有一些需要首先处理的安全相关先决条件。 
+如[使用索引器将 AZURE SQL 数据库连接到 azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，azure 认知搜索支持对**azure vm 上的 SQL Server**创建索引器（或简短的**SQL Azure vm** ），但需要先处理一些与安全相关的先决条件。 
 
 从 Azure 认知搜索到 VM 上 SQL Server 的连接是一种公共 internet 连接。 对于这些连接通常会遵循的所有安全措施在此处也适用：
 
@@ -27,7 +27,7 @@ ms.locfileid: "72792148"
 ## <a name="enable-encrypted-connections"></a>启用加密连接
 Azure 认知搜索需要通过公共 internet 连接的所有索引器请求使用加密通道。 本部分列出了实现此目的的步骤。
 
-1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 [Azure 门户](https://portal.azure.com/)中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”字段中）。
+1. 查看证书的属性，验证使用者名称是否是 Azure VM 的完全限定的域名 (FQDN)。 可以使用 CertUtils 等工具或证书管理单元查看属性。 可从 **Azure 门户**中 VM 服务边栏选项卡的“基本要素”部分中获取 FQDN（位于“公共 IP 地址/DNS 名称标签”[](https://portal.azure.com/)字段中）。
    
    * 对于使用较新的资源管理器模板创建的 VM，FQDN 的格式设置为 `<your-VM-name>.<region>.cloudapp.azure.com`
    * 对于创建为**经典** VM 的较旧 VM，FQDN 的格式设置为 `<your-cloud-service-name.cloudapp.net>`。

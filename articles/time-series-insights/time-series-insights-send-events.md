@@ -1,6 +1,6 @@
 ---
-title: 向 Azure 时序见解环境发送事件 | Microsoft Docs
-description: 了解如何配置事件中心，并运行示例应用程序来推送可以在 Azure 时序见解中查看的事件。
+title: 向环境发送事件-Azure 时序见解 |Microsoft Docs
+description: 了解如何配置事件中心、运行示例应用程序，以及如何将事件发送到 Azure 时序见解环境。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,78 +11,78 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cdcd64b5281ce16002720072db3b5f29f1978cac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991130"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014830"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
-本文介绍如何在 Azure 事件中心中创建和配置事件中心。 还介绍了如何运行示例应用程序，将事件从事件中心推送到 Azure 时序见解。 如果现有事件中心具有 JSON 格式的事件，请跳过本教程并在[Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
+本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./time-series-insights-update-create-environment.md)中查看你的环境。
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
 1. 若要了解如何创建事件中心，请参阅[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
 1. 在搜索框中，搜索“事件中心”。 在返回的列表中选择“事件中心”。
 1. 选择事件中心。
-1. 创建事件中心时，会创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单上的 "**实体**" 下，创建一个事件中心。  
+1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。  
 
     [![事件中心列表](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. 创建事件中心后，请在事件中心列表中选择它。
-1. 在菜单中的 "**实体**" 下，选择 "**事件中心**"。
+1. 在菜单中的“实体”下，选择“事件中心”。
 1. 选择事件中心的名称对其进行配置。
-1. 在 "**概述**" 下，选择 "**使用者组**"，然后选择 "**使用者组**"。
+1. 在“概述”下选择“使用者组”，然后选择“使用者组”。
 
     [![创建使用者组](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
-1. 请确保创建专用于时序见解事件源的使用者组。
+1. 请确保创建一个使用者组，由时序见解事件源独占使用。
 
     > [!IMPORTANT]
-    > 请确保此使用者组未被任何其他服务使用，如 Azure 流分析作业或其他时序见解环境。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组。
+    > 请确保该使用者组没有被任何其他服务（例如 Azure 流分析作业或其他时序见解环境）使用。 如果使用者组由其他服务使用，则此环境和其他服务的读取操作会受到负面影响。 如果使用 $Default 作为使用者组，则其他读者可能会重复使用使用者组。
 
-1. 在菜单上的 "**设置**" 下，选择 "**共享访问策略**"，然后选择 "**添加**"。
+1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”。
 
-    [![选择 "共享访问策略"，然后选择 "添加" 按钮](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![选择“共享访问策略”，然后选择“添加”按钮](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
-1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 此共享访问策略用于在本文后面的C#示例中发送事件。
+1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 将使用此共享访问策略在本文后面的 C# 示例中发送事件。
 
-    [![在 "策略名称" 框中，输入 MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [![在“策略名称”框中输入 MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
-1. 在 "**声明**" 下，选中 "**发送**" 复选框。
+1. 在“声明”下选择“发送”复选框。
 
 ## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
-时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据。 本文稍后部分中使用的示例 windmills 项目的时序**ID**是 `id`。 若要了解有关时序见解实例和**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是`id`。 若要详细了解时序见解实例和时间序列 ID，请参阅**时序模型**[](./time-series-insights-update-tsm.md)。
 
 ### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 
 1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅**时序模型**[](./time-series-insights-update-tsm.md)。
 
-### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 示例
+### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 的示例
 
 1. 在搜索栏中搜索“事件中心”。 在返回的列表中选择“事件中心”。
 
 1. 选择事件中心实例。
 
-1. 请访问 > **MySendPolicy**的**共享访问策略**。 复制 "**连接字符串-主键**" 的值。
+1. 转到“共享访问策略” > “MySendPolicy”。 复制“连接字符串 - 主密钥”的值。
 
-    [![复制 primary key 连接字符串的值](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![复制主密钥连接字符串的值](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
-1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 运行模拟 windmill 设备。
-1. 在网页上的 "**事件中心连接字符串**" 框中，粘贴在[windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串。
+1. 转到 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 URL 运行模拟 windmill 设备。
+1. 在网页上的“事件中心连接字符串”框中，粘贴在 **windmill 输入字段**中复制的连接字符串[](#push-events-to-windmills-sample)。
   
-    [![在 "事件中心连接字符串" 框中粘贴主密钥连接字符串](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
 
-1. 返回到 Azure 门户中的事件中心。 在 "**概述**" 页上，可以看到事件中心收到的新事件。
+1. 返回到 Azure 门户中的事件中心。 在“概述”页面上，可以看到事件中心收到的新事件：
 
-    [![显示事件中心指标的事件中心概述页](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [![显示事件中心指标的事件中心“概述”页](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
 ## <a name="supported-json-shapes"></a>支持的 JSON 形状
 
@@ -192,11 +192,11 @@ ms.locfileid: "72991130"
 
     |位置|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压力|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|压强|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|振动|abs G|217.09|
 
 ## <a name="next-steps"></a>后续步骤
 
 - 在时序见解资源管理器中[查看环境](https://insights.timeseries.azure.com)。
 
-- 阅读有关[IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)的详细信息
+- 阅读有关 [IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)的详细信息

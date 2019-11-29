@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 46975cf7762e2d92e5112911bd491f372cb22a31
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544628"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555472"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>用于构建高度可用的 Azure 存储应用程序的区域冗余存储（ZRS）
 
@@ -22,9 +22,9 @@ ms.locfileid: "74544628"
 
 ## <a name="support-coverage-and-regional-availability"></a>支持覆盖范围和区域可用性
 
-ZRS 目前支持标准常规用途 v2 和 FileStorage 存储帐户类型。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
+ZRS 目前支持标准常规用途 v2、FileStorage 和 BlockBlobStorage 存储帐户类型。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
-ZRS 适用于块 blob、非磁盘页 blob、标准文件共享、表和队列。
+常规用途 v2 ZRS 帐户支持块 blob、非磁盘页 blob、标准文件共享、表和队列。
 
 对于常规用途 v2 帐户，ZRS 已在以下区域公开发布：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 54f3d76704a1f9bf7fec2f3c6c68c88fffd993b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932271"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936202"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -68,7 +68,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 5. 单击“创建”。
 
-部署解决方案资源时，窗口右上角会显示通知。
+部署解决方案资源后，会在窗口的右上角出现一个通知。
 
 
 ## <a name="creating-an-itsm--connection"></a>创建 ITSM 连接
@@ -131,7 +131,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 6. 从下拉列表菜单中选择“工作项”类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
-7. 单击 **“确定”** 。
+7. 单击“确定”。
 
 创建/编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 警报触发时，会在 ITSM 工具中创建/更新工作项。
 
@@ -179,10 +179,10 @@ ServiceDeskWorkItemType_s="Incident"
 
 - 服务台连接名称
 - 服务台 ID
-- 状况
+- 状态
 - 紧急性
 - 影响
-- 优先级
+- Priority
 - 升级
 - 创建者
 - 解决者
@@ -191,12 +191,12 @@ ServiceDeskWorkItemType_s="Incident"
 - 分配给
 - 类别
 - 标题
-- 描述
+- 说明
 - 创建日期
 - 关闭日期
 - 解决日期
 - 上次修改日期
-- Computer
+- 计算机
 
 
 **工作项：** **更改请求**
@@ -211,13 +211,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Source
 - 分配给
 - 标题
-- Type
+- 类型
 - 类别
-- 状况
+- 状态
 - 升级
 - 冲突状态
 - 紧急性
-- 优先级
+- Priority
 - 风险
 - 影响
 - 分配给
@@ -229,18 +229,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 计划结束日期
 - 工作开始日期
 - 工作结束日期
-- 描述
-- Computer
+- 说明
+- 计算机
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
 
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状况 |
+| IncidentState_s | 状态 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
-| Priority_s | 优先级 |
+| Priority_s | Priority |
 | CreatedBy_s | 打开者 |
 | ResolvedBy_s | 解决者|
 | ClosedBy_s  | 关闭者 |
@@ -250,9 +250,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  简短说明 |
 | Description_s|  说明 |
 | CreatedDate_t|  已打开 |
-| ClosedDate_t| 已关闭|
+| ClosedDate_t| closed|
 | ResolvedDate_t|已解决|
-| Computer  | 配置项 |
+| 计算机  | 配置项 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
 
@@ -263,11 +263,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
-| Type_s|  Type |
+| Type_s|  类型 |
 | Category_s|  类别 |
-| CRState_s|  状况|
+| CRState_s|  状态|
 | Urgency_s|  紧急性 |
-| Priority_s| 优先级|
+| Priority_s| Priority|
 | Risk_s| 风险|
 | Impact_s| 影响|
 | RequestedDate_t  | 请求日期 |
@@ -276,8 +276,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   计划结束日期 |
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
-| Description_s | 描述 |
-| Computer  | 配置项 |
+| Description_s | 说明 |
+| 计算机  | 配置项 |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
@@ -286,16 +286,16 @@ ServiceDeskWorkItemType_s="ChangeRequest"
    - 请确保正确输入每个连接的用户名、密码、客户端 ID 和客户端密码。  
    - 检查在相应 ITSM 产品中是否拥有建立连接的足够权限。  
    - 对于 Service Manager 连接，  
-   - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功与本地 Service Manager 计算机建立了连接，请访问用于建立[混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)的文档中详细介绍的 WEB 应用 URL。  
+   - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。  
 
 2. 如果未向 Log Analytics 同步来自 ServiceNow 的数据，请确保 ServiceNow 实例处于非休眠状态。 如果 ServiceNow 开发实例长时间处于空闲状态，有时会进入休眠状态。 否则，请报告问题。
 3. 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
    -  ITSMC：此解决方案显示连接/工作项/计算机等的摘要。单击显示 "**连接器状态**" 的磁贴，该磁贴会使你通过相关查询来**记录搜索**。 查看含有 LogType_S as ERROR 的日志记录，了解详细信息。
-   - “日志搜索”页：`*`使用 ServiceDeskLog_CL`*` 查询直接查看错误/相关信息。
+   - “日志搜索”页：使用 ServiceDeskLog_CL 查询直接查看错误/相关信息`*``*`。
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web 应用部署故障排除
 1.  如果 Web 应用部署出现任何问题，请确保在订阅中拥有提及的足够权限，以能够创建/部署资源。
-2.  如果在运行[脚本](itsmc-service-manager-script.md)时出现“对象引用未设置为某个对象的实例”消息，请确保在“用户配置”部分下输入有效的值。
+2.  如果在运行**脚本**时出现“对象引用未设置为某个对象的实例”[](itsmc-service-manager-script.md)消息，请确保在“用户配置”部分下输入有效的值。
 3.  如果未能创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请手动从 Azure 门户创建服务总线中继命名空间。 从 Azure 门户[创建混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)时，也可进行创建。
 
 

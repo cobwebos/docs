@@ -1,17 +1,14 @@
 ---
-title: Azure 资源管理器模板函数 - 逻辑 | Microsoft Docs
+title: 模板函数-逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: df8433d167a166fe94d965f81e42cd0b3e8f0e54
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194788"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150687"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -23,7 +20,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 * [not](#not)
 * [or](#or)
 
-## <a name="and"></a>与
+## <a name="and"></a>and
 
 `and(arg1, arg2, ...)`
 
@@ -31,11 +28,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
-| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
+| arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
+| arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |布尔值 |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -69,7 +66,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -83,9 +80,9 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
+| arg1 |是 |string 或 int |要转换为布尔值的值。 |
 
 ### <a name="return-value"></a>返回值
 转换后的值的布尔值。
@@ -122,7 +119,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 上面具有默认值的示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -137,9 +134,9 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
+| 条件 |是 |布尔值 |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
 | falseValue |是 | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
 
@@ -180,11 +177,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
-| objectOutput | Object | { "test": "value1" } |
+| objectOutput | 对象 | { "test": "value1" } |
 
 以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
 
@@ -242,9 +239,9 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |要转换的值。 |
+| arg1 |是 |布尔值 |要转换的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -278,13 +275,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 **not** 和 [equals](resource-group-template-functions-comparison.md#equals)。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 not 和 **equals**[](resource-group-template-functions-comparison.md#equals)。
 
 ```json
 {
@@ -302,7 +299,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -314,11 +311,11 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
-| 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
+| arg1 |是 |布尔值 |第一个值，需检查其是否为 true。 |
+| arg2 |是 |布尔值 |第二个值，需检查其是否为 true。 |
+| 其他参数 |否 |布尔值 |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -352,7 +349,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 姓名 | 类型 | ReplTest1 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

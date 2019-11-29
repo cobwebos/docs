@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 9c6e4c66d96b02c2d5b4b4fe70fe6e6798c4e2c6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285931"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554860"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
@@ -20,16 +20,61 @@ ms.locfileid: "74285931"
 
 ## <a name="common-user-errors"></a>常见用户错误
 
-| Error                                | 错误消息                    | 可能的原因                                              | 建议的操作                                           |
-| ------------------------------------ | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| UserErrorInOpeningHanaOdbcConnection | 未能连接到 HANA 系统 | SAP HANA 实例可能已关闭。 <br> 未设置 Azure 备份与 HANA 数据库进行交互所需的权限。 | 检查 SAP HANA 数据库是否已启动。 如果数据库已启动并正在运行，请检查是否设置了所有必需的权限。 如果缺少任何权限，请运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)以添加缺少的权限。 |
-| UserErrorHanaInstanceNameInvalid | 指定的 SAP HANA 实例无效或找不到 | 无法备份单个 Azure VM 上的多个 SAP HANA 实例。 | 在要备份的 SAP HANA 实例上运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)。 如果问题仍然存在，请联系 Microsoft 支持部门。 |
-| UserErrorHanaUnsupportedOperation | 不支持指定的 SAP HANA 操作 | 适用于 SAP HANA 的 Azure 备份不支持对 SAP HANA 本机客户端（Studio/考核中心考核中心）执行增量备份和操作 | 有关详细信息，请参阅[此处](sap-hana-backup-support-matrix.md#scenario-support)。 |
-| UserErrorHANAPODoesNotSupportBackupType | 此 SAP HANA 数据库不支持所请求的备份类型 | Azure 备份不支持使用快照进行增量备份和备份 | 有关详细信息，请参阅[此处](sap-hana-backup-support-matrix.md#scenario-support)。 |
-| UserErrorHANALSNValidationFailure | 备份日志链中断 | 日志备份目标可能已从 backint 更新为文件系统，或者可能已更改 backint 可执行文件 | 触发完整备份以解决此问题 |
-| UserErrorIncomaptibleSrcTargetSystsemsForRestore | 用于还原的源系统和目标系统不兼容 | 用于还原的目标系统与源系统不兼容 | 请参阅 SAP 说明[1642148](https://launchpad.support.sap.com/#/notes/1642148) ，了解当前支持的还原类型 |
-| UserErrorSDCtoMDCUpgradeDetected | 检测到 MDC 升级 SDC | SAP HANA 实例已从 SDC 升级到 MDC。 更新后，备份会失败。 | 按照[从 SAP HANA 1.0 到2.0 部分](#upgrading-from-sap-hana-10-to-20)中列出的步骤进行操作以解决问题 |
-| UserErrorInvalidBackintConfiguration | 检测到无效的 backint 配置 | 不正确地为 Azure 备份指定了后备参数 | 检查是否设置了以下（backint）参数： <br> * [catalog_backup_using_backint： true] <br>  * [enable_accumulated_catalog_backup： false] <br> * [parallel_data_backup_backint_channels： 1] <br>* [log_backup_timeout_s：900）] <br> * [backint_response_timeout： 7200] <br> 如果主机中存在基于 backint 的参数，请将其删除。 如果参数不存在于主机级别，但在数据库级别手动修改，请将它们还原到前面所述的相应值。 或者，运行 "[停止保护" 并保留](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)Azure 门户中的备份数据，然后选择 "**恢复备份**"。 |
+###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+
+| 错误消息      | 未能连接到 HANA 系统                             |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | SAP HANA 实例可能已关闭。<br/>未设置 Azure 备份与 HANA 数据库进行交互所需的权限。 |
+| 建议的操作 | 检查 SAP HANA 数据库是否已启动。 如果数据库已启动并正在运行，请检查是否设置了所有必需的权限。 如果缺少任何权限，请运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)以添加缺少的权限。 |
+
+###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+
+| 错误消息      | 指定的 SAP HANA 实例无效或找不到 |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | 无法备份单个 Azure VM 上的多个 SAP HANA 实例。 |
+| 建议的操作 | 在要备份的 SAP HANA 实例上运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)。 如果问题仍然存在，请联系 Microsoft 支持部门。 |
+
+###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+
+| 错误消息      | 不支持指定的 SAP HANA 操作             |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | 适用于 SAP HANA 的 Azure 备份不支持对 SAP HANA 本机客户端（Studio/考核中心考核中心）执行增量备份和操作 |
+| 建议的操作 | 有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)。 |
+
+###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+
+| 错误消息      | 此 SAP HANA 数据库不支持所请求的备份类型 |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | Azure 备份不支持使用快照进行增量备份和备份 |
+| 建议的操作 | 有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)。 |
+
+###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+
+| 错误消息      | 备份日志链中断                                   |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | 日志备份目标可能已从 backint 更新为文件系统，或者可能已更改 backint 可执行文件 |
+| 建议的操作 | 触发完整备份以解决此问题                   |
+
+###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+
+| 错误消息      | 用于还原的源系统和目标系统不兼容   |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | 用于还原的目标系统与源系统不兼容 |
+| 建议的操作 | 请参阅 SAP 说明[1642148](https://launchpad.support.sap.com/#/notes/1642148) ，了解当前支持的还原类型 |
+
+###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+
+| 错误消息      | 检测到 MDC 升级 SDC                                  |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | SAP HANA 实例已从 SDC 升级到 MDC。 更新后，备份会失败。 |
+| 建议的操作 | 按照[从 SAP HANA 1.0 到2.0 部分](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)中列出的步骤进行操作以解决问题 |
+
+###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+
+| 错误消息      | 检测到无效的 backint 配置                       |
+| ------------------ | ------------------------------------------------------------ |
+| 可能的原因    | 不正确地为 Azure 备份指定了后备参数 |
+| 建议的操作 | 检查是否设置了以下（backint）参数：<br/>\* [catalog_backup_using_backint： true]<br/>\* [enable_accumulated_catalog_backup： false]<br/>\* [parallel_data_backup_backint_channels： 1]<br/>\* [log_backup_timeout_s：900）]<br/>\* [backint_response_timeout： 7200]<br/>如果主机中存在基于 backint 的参数，请将其删除。 如果参数不存在于主机级别，但在数据库级别手动修改，请将它们还原到前面所述的相应值。 或者，运行 "[停止保护" 并保留](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database)Azure 门户中的备份数据，然后选择 "**恢复备份**"。 |
 
 ## <a name="restore-checks"></a>还原检查
 

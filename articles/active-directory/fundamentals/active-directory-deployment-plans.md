@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17e6708225262349d56c6e261895882e9c31677f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473279"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558534"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在寻找有关部署 Azure Active Directory （Azure AD）功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -29,7 +29,7 @@ ms.locfileid: "73473279"
 
 角色可能包括以下 
 
-|角色 |说明 |
+|角色 |描述 |
 |-|-|
 |最终用户|将为其实施功能的代表用户组。 经常预览试点计划中的更改。
 |IT 支持经理|IT 支持组织代表，他们可以从支持人员的角度提供此更改的可支持性的输入。  
@@ -59,7 +59,7 @@ ms.locfileid: "73473279"
 
 ## <a name="deploy-authentication"></a>部署身份验证
 
-| 功能 | 说明|
+| 功能 | 描述|
 | -| -|
 | [多重身份验证](https://aka.ms/deploymentplans/mfa)| Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法，Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 |
 | [条件性访问](https://aka.ms/deploymentplans/ca)| 使用条件性访问，你可以根据条件，实现可访问云应用的用户的自动访问控制决策。 |
@@ -68,7 +68,7 @@ ms.locfileid: "73473279"
 
 ## <a name="deploy-application-management"></a>部署应用程序管理
 
-| 功能 | 说明|
+| 功能 | 描述|
 | -| - |
 | [单一登录](https://aka.ms/deploymentplans/sso)| 单一登录可帮助用户访问在只登录一次时需要执行业务的应用和资源。 登录后，他们可以从 Microsoft Office 到 SalesForce 到 Box，再到内部应用程序，而无需再次输入凭据。 |
 | [访问面板](https://aka.ms/deploymentplans/accesspanel)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 使用自助服务功能，例如请求访问应用和组，或者代表其他人管理对资源的访问权限，从而提高工作效率。 |
@@ -76,23 +76,23 @@ ms.locfileid: "73473279"
 
 ## <a name="deploy-hybrid-scenarios"></a>部署混合方案
 
-| 功能 | 说明|
+| 功能 | 描述|
 | -| -|
 | [使用 ADFS 进行密码哈希同步](https://aka.ms/deploymentplans/adfs2phs)| 通过密码哈希同步，用户密码的哈希将从本地 Active Directory 同步到 Azure AD，让 Azure AD 对不与本地的交互的用户进行身份验证 Active Directory |
 | [使用 ADFS 进行直通身份验证](https://aka.ms/deploymentplans/adfs2pta)| Azure AD 传递身份验证可帮助用户使用相同的密码登录到本地和基于云的应用程序。 此功能为用户提供更好的体验-需要记住的密码越少，并且减少了 IT 支持人员的成本，因为用户不太可能忘记登录的方式。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。 |
 | [Azure AD 应用程序代理](https://aka.ms/deploymentplans/appproxy)| 现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地公司应用。 Azure AD 应用程序代理可实现此强大的访问，而无需昂贵、复杂的虚拟专用网络（Vpn）或外围区域（Dmz）。 |
-| [无缝 SSO](https://aka.ms/SeamlessSSODPDownload)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 利用此功能，用户无需键入密码即可登录 Azure AD，通常不需要输入用户名。 此功能为授权用户提供轻松访问基于云的应用程序的权限，而无需其他任何本地组件。 |
+| [无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 利用此功能，用户无需键入密码即可登录 Azure AD，通常不需要输入用户名。 此功能为授权用户提供轻松访问基于云的应用程序的权限，而无需其他任何本地组件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署用户预配
 
-| 功能 | 说明|
+| 功能 | 描述|
 | -| -|
 | [用户预配](https://aka.ms/deploymentplans/userprovisioning)| 可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 |
-| [Workday 驱动的入站用户预配](https://aka.ms/WorkdayDeploymentPlan)| Workday 驱动的到 Active Directory 的入站用户预配为正在进行的标识管理奠定了基础，并提高了依赖权威标识数据的业务流程的质量。 使用此功能，你可以通过配置将 Leaver 流程（如 "创建"、"终止"、"转移"）映射到 IT 预配操作（如 "创建"、"启用"、禁用 |
+| [Cloud HR 用户预配](https://aka.ms/deploymentplans/cloudhr)| Cloud HR 用户预配到 Active Directory 为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。 将此功能与云 HR 产品（如 Workday 或 Successfactors）结合使用，可以通过配置规则来映射员工和临时工作人员的标识生命周期，这种规则将映射 Leaver 流程（如新员工、终止、传输）到 IT 预配操作（如创建、启用、禁用） |
 
 ## <a name="deploy-governance-and-reporting"></a>部署管理和报告
 
-| 功能 | 说明|
+| 功能 | 描述|
 | -| -|
 | [Privileged Identity Management](https://aka.ms/deploymentplans/pim)| Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资源和其他 Microsoft 联机服务管理特权管理角色。 PIM 提供实时访问、请求审批工作流和完全集成的访问评审等解决方案，让用户可以实时识别、发现并防止特权角色的恶意活动。 |
 | [报告和监视](https://aka.ms/deploymentplans/reporting)| Azure AD 报告和监视解决方案的设计取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项，并指导您正确部署策略。 |

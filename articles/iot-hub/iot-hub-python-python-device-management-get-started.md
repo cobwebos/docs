@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000453"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555522"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -35,7 +35,7 @@ ms.locfileid: "71000453"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -63,10 +63,6 @@ ms.locfileid: "71000453"
     pip install azure-iot-device
     ```
 
-   > [!NOTE]
-   > 适用于 azure iothub 的 pip 包仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
-   >
-
 2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_device**的文件。
 
 3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
@@ -78,7 +74,7 @@ ms.locfileid: "71000453"
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. 添加**CONNECTION_STRING**变量。 将`{deviceConnectionString}`占位符值替换为设备连接字符串。 你之前在[IoT 中心内注册了](#register-a-new-device-in-the-iot-hub)此连接字符串。  
+4. 添加**CONNECTION_STRING**变量。 将 `{deviceConnectionString}` 占位符值替换为设备连接字符串。 你之前在[IoT 中心内注册了](#register-a-new-device-in-the-iot-hub)此连接字符串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -161,7 +157,7 @@ ms.locfileid: "71000453"
     ```
 
    > [!NOTE]
-   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
+   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS，请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
    >
 
 2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_service**的文件。
@@ -175,7 +171,7 @@ ms.locfileid: "71000453"
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-4. 添加以下变量声明。 将`{IoTHubConnectionString}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将`{deviceId}`占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下变量声明。 将 `{IoTHubConnectionString}` 占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

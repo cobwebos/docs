@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173702"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554097"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>请求访问 Azure AD 权限管理中的访问包
 
@@ -35,7 +35,7 @@ ms.locfileid: "73173702"
 
 **必备角色：** 者
 
-1. 查找使用的项目或业务经理发来的电子邮件或消息。 电子邮件应该包含指向需要访问的访问包的链接。 该链接从 `myaccess` 开始，包括一个目录提示，以访问包 ID 结尾。
+1. 查找使用的项目或业务经理发来的电子邮件或消息。 电子邮件应该包含指向需要访问的访问包的链接。 该链接从 `myaccess`开始，包括一个目录提示，并以访问包 ID 结尾。
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -80,6 +80,30 @@ ms.locfileid: "73173702"
 如果你请求访问具有多个应用策略的访问包，则可能会要求你选择策略。 例如，访问包管理器可能会配置访问包，其中包含两组内部员工的两个策略。 第一个策略可能允许访问60天，需要批准。 第二个策略可能允许访问2天，无需批准。 如果遇到这种情况，则必须选择要使用的策略。
 
 ![我的访问门户-请求访问-多个策略](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>重新提交请求
+
+当你请求访问访问包时，你的请求可能会被拒绝，或者当审批者未及时响应时，你的请求可能会过期。 如果需要访问权限，可以重试，并重新提交请求。 以下过程说明如何重新提交访问请求：
+
+**必备角色：** 者
+
+1. 登录到 "**我的访问**门户"。
+
+1. 单击左侧导航菜单中的 "**请求历史记录**"。
+
+1. 查找要重新提交请求的访问包。
+
+1. 单击复选标记以选择访问包。
+
+1. 单击所选访问包右侧的蓝色**视图**链接。
+    
+    ![选择访问包和视图链接](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    将使用访问包的请求历史记录向右打开一个窗格。
+    
+    ![选择 "重新提交" 按钮](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. 单击窗格底部的 "**重新提交**" 按钮。
 
 ## <a name="cancel-a-request"></a>取消请求
 

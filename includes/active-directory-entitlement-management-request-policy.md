@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: fb72ed337219f58481c094d68342dbf6f26493c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260649"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566214"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
-如果希望允许目录中的用户请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户或更常见的用户组。 例如，组织可能已经有一个组（例如“所有员工”）。  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
+如果希望允许目录中的用户请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户或更常见的用户组。 例如，你的组织可能已有一个组，例如 "**所有员工**"。  如果为可请求访问的用户在策略中添加该组，则该组的任何成员都可以请求访问。
 
 1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。
 
@@ -37,20 +37,20 @@ ms.locfileid: "74260649"
 
 1. 如果选择了 "**特定用户和组**"，请单击 "**添加用户和组**"。
 
-1. 在“选择用户和组”窗格中，选择要添加的用户和组。
+1. 在 "选择用户和组" 窗格中，选择要添加的用户和组。
 
     ![访问包-请求-选择用户和组](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. 单击“选择”以添加用户和组。
+1. 单击 "**选择**" 添加用户和组。
 
 1. 向下跳到 "[审批](#approval)" 部分。
 
-## <a name="for-users-not-in-your-directory"></a>适用于不在目录中的用户
+## <a name="for-users-not-in-your-directory"></a>对于不在你的目录中的用户
 
  **不在目录中的用户**是指位于另一个 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到你的目录。 必须将 Azure AD 目录配置为允许在**协作限制**中加入邀请。 有关详细信息，请参阅[启用 B2B 外部协作和管理可以邀请来宾的人员](../articles/active-directory/b2b/delegate-invitations.md)。
 
 > [!NOTE]
-> 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
+> 将为你的请求已获批准或自动批准的用户创建来宾用户帐户。 将邀请来宾，但不会收到邀请电子邮件。 相反，在传递其访问包分配时，他们将收到一封电子邮件。 默认情况下，当来宾用户不再具有任何访问包分配时，因为他们的上次分配已过期或已被取消，则将阻止该来宾用户帐户登录并随后将其删除。 如果希望来宾用户无限期地保留在目录中，你可以更改你的授权管理配置的设置。 有关来宾用户对象的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
 
 如果要允许不在目录中的用户请求此访问包，请执行以下步骤：
 
@@ -84,7 +84,7 @@ ms.locfileid: "74260649"
 
 1. 向下跳到 "[审批](#approval)" 部分。
 
-## <a name="none-administrator-direct-assignments-only"></a>无(仅限管理员直接分配)
+## <a name="none-administrator-direct-assignments-only"></a>无（仅限管理员直接分配）
 
 如果要跳过访问请求并允许管理员直接将特定用户分配到此访问包，请执行以下步骤。 用户无需请求访问包。 你仍可以设置生命周期设置，但没有请求设置。
 
@@ -92,7 +92,7 @@ ms.locfileid: "74260649"
 
     ![访问包-请求-仅限管理员直接分配](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    创建访问包后，可以直接将特定的内部和外部用户分配到该访问包。 如果指定外部用户，将在目录中创建来宾用户帐户。 有关直接分配用户的信息，请参阅[查看、添加和删除访问包的分配](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)。
+    创建访问包后，可以直接将特定的内部和外部用户分配到访问包。 如果指定外部用户，则将在目录中创建来宾用户帐户。 有关直接分配用户的信息，请参阅[查看、添加和删除访问包的分配](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)。
 
 1. 向下跳到 "[启用请求](#enable-requests)" 部分。
 
@@ -104,18 +104,25 @@ ms.locfileid: "74260649"
 - 每个阶段中只有一个选定的审批者需要批准两阶段审批的请求。
 - 审批者可以是经理、内部主办方或外部赞助者，具体取决于策略管理访问的人员。
 - 单个或两个阶段的审批不需要审批每个选定的审批者。
-- 审批决定以第一个评审请求的审批者为准。
+- 批准决策基于每个审批者首先查看请求。
+
+有关如何向请求策略添加审批者的演示，请观看以下视频：
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
+
+有关如何向请求策略添加多阶段批准的演示，请观看以下视频：
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
 
 按照以下步骤为访问包的请求指定批准设置：
 
-1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。 或者，若要自动批准请求，请将切换设置为 "**否**"。
+1. 若要要求从所选用户批准请求，请将 "**需要审批**" 切换设置为 **"是"** 。 或者，若要自动批准请求，请将切换设置为 "**否**"。
 
 1. 若要要求用户提供理由来请求访问包，请将 "**需要请求者对齐**方式" 切换为 **"是"** 。
     
 1. 现在，确定请求是需要单一还是2阶段批准。 设置单阶段批准切换为**1**的**阶段数**，或将切换到**2**阶段批准。
 
     ![访问包-请求-批准设置](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 
 选择所需的阶段数后，请使用以下步骤添加审批者： 
 
@@ -192,10 +199,10 @@ ms.locfileid: "74260649"
 
 1. 如果希望访问包立即可供请求策略中的用户使用，请单击 **"是"** 以启用。
 
-    创建完访问包后，将来始终可以启用该策略。
+    在完成创建访问包后，你始终可以启用它。
 
     如果选择了 "**无" （仅限管理员直接分配）** ，并将 "启用" 设置为 "**否**"，则管理员无法直接分配此访问包。
 
-    ![访问包 - 策略 - 启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![访问包-策略-启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. 单击“下一步”。

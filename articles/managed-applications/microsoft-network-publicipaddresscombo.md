@@ -22,14 +22,14 @@ ms.locfileid: "74151486"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
 
-一组用于选择新的或现有公用 IP 地址的控件。
+一组用于选择新的或现有公共 IP 地址的控件。
 
 ## <a name="ui-sample"></a>UI 示例
 
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- 如果用户针对公用 IP 地址选择了“None”，则域名标签文本框会被隐藏。
-- 如果用户选择了一个现有公用 IP 地址，则域名标签文本框会被禁用。 它的值是所选 IP 地址的域名标签。
+- 如果用户针对公共 IP 地址选择了“None”，则域名标签文本框会被隐藏。
+- 如果用户选择了一个现有公共 IP 地址，则域名标签文本框会被禁用。 它的值是所选 IP 地址的域名标签。
 - 域名后缀（例如 westus.cloudapp.azure.com）会基于所选位置自动更新。
 
 ## <a name="schema"></a>架构

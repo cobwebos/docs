@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Python) | Microsoft Docs
-description: 逼 ﹚ Azure IoT 中心作业调用多个设备上的直接方法，请按照。 使用 Azure IoT SDK for Python 实现模拟设备应用以及用于运行作业的服务应用。
+description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Python 实现模拟设备应用以及用于运行作业的服务应用。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: f1fbfcaa80a3d1781878fe3d6eb14558a3b298a5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999524"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555575"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -31,7 +31,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-python-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-python.md)
+* 直接方法： [IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -53,7 +53,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -74,10 +74,6 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     ```cmd/sh
     pip install azure-iot-device
     ```
-
-   > [!NOTE]
-   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
-   >
 
 2. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件。
 
@@ -160,19 +156,19 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 若要创建授予**服务连接**、**注册表读取**和**注册表写入**权限的共享访问策略，以及获取此策略的连接字符串，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中打开 IoT 中心。 若要转到 IoT 中心，最简单的方法是选择“资源组”，接着选择 IoT 中心所在的资源组，然后从资源列表中选择该 IoT 中心。
+1. 在[Azure 门户](https://portal.azure.com)中打开 IoT 中心。 若要访问 IoT 中心，最简单的方法是选择 "**资源组**"，选择 iot 中心所在的资源组，然后从资源列表中选择 iot 中心。
 
-2. 在 IoT 中心的左侧窗格中，选择“共享访问策略”。
+2. 在 IoT 中心的左侧窗格中，选择 "**共享访问策略**"。
 
-3. 从策略列表上方的顶部菜单中选择“添加”。
+3. 从策略列表上方的顶部菜单中，选择 "**添加**"。
 
 4. 在 "**添加共享访问策略**" 窗格中，输入策略的描述性名称;例如： *serviceAndRegistryReadWrite*。 在 "**权限**" 下，选择 "**服务连接**" 和 "**注册表写入**" （选择 "**注册表写入**时，自动选择**注册表读取**"）。 然后选择“创建”。
 
     ![显示如何添加新的共享访问策略](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
-5. 回到“共享访问策略”窗格，从策略列表中选择新的策略。
+5. 返回 "**共享访问策略**" 窗格，从策略列表中选择新策略。
 
-6. 在“共享访问密钥”下，选择“连接字符串 - 主密钥”所对应的“复制”图标并保存该值。
+6. 在 "**共享访问密钥**" 下，选择连接字符串的复制图标 **--primary key**并保存值。
 
     ![显示如何检索连接字符串](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 
@@ -189,12 +185,12 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     ```
 
    > [!NOTE]
-   > 用于 azure iothub 和 azure iothub 设备客户端的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
+   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac OS，请参阅为[Python 发布准备开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)中的 linux 和 Mac OS 特定部分。
    >
 
 2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件。
 
-3. 在 scheduleJobService.py 文件`import`的开头添加以下语句和变量。 将占位符替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 `{IoTHubConnectionString}` 将`{deviceId}`占位符替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID：
+3. 在**scheduleJobService.py**文件的开头添加以下 `import` 语句和变量。 将 `{IoTHubConnectionString}` 占位符替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将 `{deviceId}` 占位符替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID：
 
     ```python
     import sys
@@ -346,4 +342,4 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-若要继续完成 IoT 中心和设备管理模式（如远程无线固件更新）的入门内容，请参阅[如何更新固件](tutorial-firmware-update.md)。
+若要继续了解 IoT 中心和设备管理模式（如远程通过无线固件更新）的入门，请参阅[如何执行固件更新](tutorial-firmware-update.md)。

@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure Maps 中呈现光栅地图上的自定义数据 |Microsoft Docs
-description: Azure Maps 中的光栅地图上呈现自定义数据。
+description: 在本文中，你将了解如何使用 Azure Maps 静态图像服务在光栅地图上呈现自定义数据。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915760"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559980"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在光栅地图上呈现自定义数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "70915760"
 若要呈现自定义图钉、标签和几何叠加，可以使用 Postman 应用程序。 您可以使用 Azure Maps[数据服务 api](https://docs.microsoft.com/rest/api/maps/data)来存储和渲染覆盖区。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
@@ -35,7 +35,7 @@ ms.locfileid: "70915760"
 > [!Note]
 > 本部分中的过程需要定价层 S0 或 S1 中的 Azure Maps 帐户。
 
-Azure Maps 帐户 S0 层仅支持`pins`参数的单个实例。 使用该功能，可以在 URL 请求中使用自定义图像最多呈现五个图钉。
+Azure Maps 帐户 S0 层仅支持 `pins` 参数的单个实例。 使用该功能，可以在 URL 请求中使用自定义图像最多呈现五个图钉。
 
 若要呈现带标签和自定义图像的图钉，请完成以下步骤：
 
@@ -48,7 +48,7 @@ Azure Maps 帐户 S0 层仅支持`pins`参数的单个实例。 使用该功能�
 3. 在 "生成器" 选项卡上选择 "获取 HTTP" 方法，然后输入以下 URL 创建 GET 请求。
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     生成的图像如下所示：
 
@@ -68,7 +68,7 @@ Azure Maps 帐户 S0 层仅支持`pins`参数的单个实例。 使用该功能�
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. 在 "**参数**" 选项卡上，输入以下键/值对，用于 POST 请求 URL。 将`subscription-key`该值替换为你的 Azure Maps 订阅密钥。
+2. 在 "**参数**" 选项卡上，输入以下键/值对，用于 POST 请求 URL。 将 `subscription-key` 值替换为 Azure Maps 订阅密钥。
     
     ![Postman 中的键/值参数](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -154,7 +154,7 @@ Azure Maps 帐户 S0 层仅支持`pins`参数的单个实例。 使用该功能�
    }
    ```
 
-7. 使用从数据上传 API 接收到的值在地图上呈现功能。`udId` 为此，请在上一节中创建的集合中打开新选项卡。 在 "生成器" 选项卡上选择 "获取 HTTP" 方法，然后输入此 URL 以发出 GET 请求：
+7. 使用从数据上传 API 接收到的 `udId` 值在地图上呈现功能。 为此，请在上一节中创建的集合中打开新选项卡。 在 "生成器" 选项卡上选择 "获取 HTTP" 方法，然后输入此 URL 以发出 GET 请求：
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -190,7 +190,7 @@ Azure Maps 帐户 S0 层仅支持`pins`参数的单个实例。 使用该功能�
 > 本部分中的过程需要定价层 S1 中的 Azure Maps 帐户。
 
 
-您可以使用`sc`缩放样式修饰符使图钉及其标签更大或更小。 此修饰符采用大于零的值。 值为 1 即为标准比例。 大于 1 的值将使图钉变大，而小于 1 的值将使图钉变小。 有关样式修饰符的详细信息，请参阅[静态图像服务路径参数](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)。
+可以使用 `sc` 缩放样式修饰符，使图钉及其标签更大或更小。 此修饰符采用大于零的值。 值为 1 即为标准比例。 大于 1 的值将使图钉变大，而小于 1 的值将使图钉变小。 有关样式修饰符的详细信息，请参阅[静态图像服务路径参数](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)。
 
 
 请按照以下步骤使用自定义标签呈现圆形和图钉：

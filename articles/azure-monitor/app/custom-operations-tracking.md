@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677471"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554924"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -30,7 +30,7 @@ Azure Application Insights SDK 自动跟踪传入的 HTTP 请求和对依赖服�
 ## <a name="overview"></a>概述
 操作是由应用程序运行的一项逻辑工作。 它具有名称、开始时间、持续时间、结果和执行上下文（如用户名、属性和结果）。 如果操作 A 由操作 B 启动，则操作 B 设置为 A 的父级。一个操作只能有一个父操作，但可以有许多子操作。 有关操作和遥测关联的详细信息，请参阅 [Azure Application Insights 遥测关联](correlation.md)。
 
-在 Application Insights.NET SDK 中，操作由抽象类 [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) 及其后代 [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) 描述。
+在 Application Insights.NET SDK 中，操作由抽象类 [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) 及其后代 [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) 描述。
 
 ## <a name="incoming-operations-tracking"></a>传入操作跟踪 
 Application Insights Web SDK 自动收集 ASP.NET 应用程序（在 IIS 管道中运行）和所有 ASP.NET Core 应用程序的 HTTP 请求。 有其他平台和框架的社区支持解决方案。 但是，如果应用程序不受任何标准或社区支持解决方案的支持，则可手动进行检测。

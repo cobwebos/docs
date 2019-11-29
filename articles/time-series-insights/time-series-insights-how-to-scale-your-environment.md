@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006809"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561161"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 
@@ -34,19 +34,19 @@ ms.locfileid: "74006809"
 
 1. 在 Azure 门户中，找到并选择自己的时序见解环境。
 
-1. 在时序见解环境的菜单中，选择“配置”。
+1. 在时序见解环境的菜单中，选择 "**存储配置**"。
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![配置时序见解容量](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. 调整“容量”滑块来选择满足入口速率和存储容量需求的容量。 请注意，**入口速率**、**存储容量**和**估计成本**会动态更新，以显示更改产生的影响。
 
-   [![滑块](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [使用容量滑块 ![配置环境](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    或者，可以在滑块右侧的文本框中键入容量乘数的数字。
 
 1. 选择“保存”以缩放环境。 在提交更改之前，进度指示器会短暂显示。
 
-1. 检查新容量是否[足以防止出现限制情况](time-series-insights-diagnose-and-solve-problems.md)。
+1. 验证新容量是否[足以防止](time-series-insights-diagnose-and-solve-problems.md)阻止。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,4 +54,4 @@ ms.locfileid: "74006809"
 
 - 了解如何[在 Azure 时序见解中配置数据保留期](time-series-insights-how-to-configure-retention.md)。
 
-- 了解如何[规划环境](time-series-insights-environment-planning.md)。
+- 了解如何[规划您的环境](time-series-insights-environment-planning.md)。

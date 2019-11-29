@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579630"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554996"
 ---
 # <a name="audio-content-creation"></a>音频内容创建
 
@@ -23,7 +23,7 @@ ms.locfileid: "73579630"
 
 音频内容创建工具基于[语音合成标记语言（SSML）](speech-synthesis-markup.md)。 为了简化自定义和优化，音频内容创建使你能够以可视方式实时检查文本到语音输出。
 
-## <a name="how-does-it-work"></a>工作原理
+## <a name="how-does-it-work"></a>它是如何工作的？
 
 此图显示了优化和导出自定义的语音到文本输出所需要执行的步骤。 使用以下链接了解有关每个步骤的详细信息。
 
@@ -43,7 +43,7 @@ ms.locfileid: "73579630"
 
 按照以下步骤创建语音资源，并将其连接到 Speech Studio。
 
-1. 按照以下说明[注册 Azure 帐户](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)并[创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
+1. 按照以下说明[注册 Azure 帐户](get-started.md#try-the-speech-service-using-a-new-azure-account)并[创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
 2. 登录到[音频内容创建](https://aka.ms/audiocontentcreation)。
 3. 选择一个现有项目，或单击 "**新建**"。
 4. 你随时都可以通过 "**设置**" 选项修改订阅，该选项位于顶部导航栏中。
@@ -63,7 +63,7 @@ ms.locfileid: "73579630"
 1. 登录到[音频内容创建](https://aka.ms/audiocontentcreation)后，单击 "**上载**" 以导入一个或多个文本文件。 支持纯文本和 SSML。
 2. 上传文本文件时，请确保内容满足这些要求。
 
-   | 属性 | 值/注释 |
+   | properties | 值/注释 |
    |----------|---------------|
    | 文件格式 | 纯文本 (.txt)<br/> SSML 文本（.txt）<br/> 不支持 Zip 文件 |
    | 编码格式 | UTF-8 |
@@ -95,7 +95,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 选择优化音频的输出格式。 下面提供了支持的格式和采样速率的列表。
 3. 可以在 "**导出任务**" 选项卡上查看任务的状态。如果任务失败，请参阅详细信息页获取完整的报表。
 4. 完成该任务后，可以在 "**音频库**" 选项卡上下载音频。
-5. 单击“下载”。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
+5. 单击“**下载**”。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
 
 ### <a name="supported-audio-formats"></a>支持的音频格式
 
