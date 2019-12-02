@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API
+title: 教程：使用 Windows VM 托管标识访问 Azure AD Graph
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API 的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997778"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183019"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API
 
@@ -38,7 +38,7 @@ ms.locfileid: "59997778"
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-- 向 VM 标识授予 Azure AD Graph 访问权限的帐户需在 Azure AD 中分配有“全局管理员”角色。
+- 向 VM 标识授予 Azure AD Graph 访问权限的帐户需在 Azure AD 中分配有“全局管理员”角色。 
 - 安装最新的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)（如果尚未安装）。 
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD
@@ -83,7 +83,7 @@ Azure AD Graph：
    ```powershell
    Connect-AzureAD
    ```
-   若要连接到特定 Azure Active Directory，请使用 TenantId 参数，如下所示：
+   若要连接到特定 Azure Active Directory，请使用 TenantId 参数，如下所示  ：
 
    ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
@@ -144,8 +144,8 @@ Azure AD Graph：
 
 若要使用 VM 的系统分配的托管标识在 Azure AD Graph 中进行身份验证，需从该 VM 发出此请求。
 
-1. 在门户中导航到“虚拟机”，转到自己的 Windows VM，然后在“概述”边栏选项卡中单击“连接”。  
-2. 输入创建 Windows VM 时使用的“用户名”和“密码”。
+1. 在门户中导航到“虚拟机”，转到自己的 Windows VM，然后在“概述”边栏选项卡中单击“连接”    。  
+2. 输入创建 Windows VM 时使用的“用户名”  和“密码”  。
 3. 现在已与虚拟机建立远程桌面连接，请在远程会话中打开 PowerShell。  
 4. 使用 PowerShell 的 Invoke-WebRequest 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure AD Graph 的访问令牌。
 

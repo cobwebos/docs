@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API
+title: 教程：使用 Linux VM 托管标识访问 Azure AD Graph API
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API 的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445393"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183644"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API
 
@@ -42,7 +42,7 @@ ms.locfileid: "58445393"
 
 - [安装最新版本的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-- 向 VM 标识授予 Azure AD Graph 访问权限的帐户需在 Azure AD 中分配有“全局管理员”角色。
+- 向 VM 标识授予 Azure AD Graph 访问权限的帐户需在 Azure AD 中分配有“全局管理员”角色。 
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD
 
@@ -134,8 +134,8 @@ Azure AD Graph：
 
 若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
-2. 使用所选的 SSH 客户端连接到 VM。 
+1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。  
+2. 使用所选的 SSH 客户端连接  到 VM。 
 3. 在终端窗口中，使用 CURL 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure AD Graph 的访问令牌。  
     
    ```bash
