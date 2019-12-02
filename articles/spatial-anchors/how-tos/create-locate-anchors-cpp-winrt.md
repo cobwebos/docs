@@ -1,19 +1,19 @@
 ---
-title: 如何使用 Azure 空间定位点在 C++/WinRT 中创建和查找定位点 | Microsoft Docs
+title: 在 C++/WinRT 中创建和查找定位点
 description: 深入介绍如何使用 Azure 空间定位点在 C++/WinRT 中创建和查找定位点。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8cacb443a9fc13d742f84b92136be7428375fc6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9da98c0908f2164b8b03db5ec0e67802e782e2c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669223"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270242"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>如何使用 Azure 空间定位点在 C++/WinRT 中创建和查找定位点
 

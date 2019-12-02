@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70213612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232123"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>教程：将 Adaptive Insights 与 Azure Active Directory 集成
 
@@ -195,7 +195,7 @@ ms.locfileid: "70213612"
    c. 单击“提交”  。
 
 > [!NOTE]
-> 可以使用其他任何 Adaptive Insights 用户帐户创建工具或 Adaptive Insights 提供的 API 来预配 AAD 用户帐户。
+> 可使用其他任何 Adaptive Insights 用户帐户创建工具或 Adaptive Insights 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-sso"></a>测试 SSO 
 

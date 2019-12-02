@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ba2f59799629873553fe261abebf59529ad94d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "73570622"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Freshservice 集成
 
@@ -159,7 +159,7 @@ ms.locfileid: "73570622"
 
 5. 在“客户门户”中单击“安全”。  
 
-    ![安全](./media/freshservice-tutorial/ic790815.png "安全")
+    ![安全性](./media/freshservice-tutorial/ic790815.png "安全")
 
 6. 在“安全”  部分中，执行以下步骤：
 
@@ -191,15 +191,15 @@ ms.locfileid: "73570622"
 
 3. 在“用户管理”部分，单击“请求者”   。
 
-    ![请求者](./media/freshservice-tutorial/ic790818.png "请求者")
+    ![申请者](./media/freshservice-tutorial/ic790818.png "请求者")
 
 4. 单击“新建申请者”。 
 
-    ![新建请求者](./media/freshservice-tutorial/ic790819.png "New Requesters")
+    ![新建申请者](./media/freshservice-tutorial/ic790819.png "新建请求者")
 
 5. 在“新建请求者”  部分中，执行以下步骤：
 
-    ![新建请求者](./media/freshservice-tutorial/ic790820.png "新建请求者")  
+    ![新建申请者](./media/freshservice-tutorial/ic790820.png "新建请求者")  
 
     a. 在相关文本框中输入要预配的有效 Azure Active Directory 帐户的“名字”和“电子邮件”属性。  
 
@@ -210,7 +210,7 @@ ms.locfileid: "73570622"
     >  
 
 > [!NOTE]
-> 可以使用 FreshService 提供的任何其他 FreshService 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 FreshService 提供的任何其他 FreshService 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO
 

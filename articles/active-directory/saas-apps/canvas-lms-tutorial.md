@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab998b6d9aec663123f0bd2428e4c6f1767f1846
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158733"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
 
@@ -249,7 +249,7 @@ ms.locfileid: "73158733"
    e. 单击“添加用户”  。
 
 > [!NOTE]
-> 可以使用 Canvas 提供的任何其他 Canvas 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Canvas 提供的任何其他 Canvas 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

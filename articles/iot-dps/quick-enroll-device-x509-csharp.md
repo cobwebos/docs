@@ -1,5 +1,5 @@
 ---
-title: 快速入门：如何使用 C# 将 X.509 设备注册到 Azure 设备预配服务
+title: 使用 C# 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册。 本快速入门介绍如何使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903439"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423349"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 
@@ -80,13 +79,13 @@ ms.locfileid: "73903439"
 
 1. 打开 Visual Studio 并选择“创建新项目”  。 在“创建新项目”中，为 C# 项目模板选择“控制台应用(.NET Core)”，然后选择“下一步”。   
 
-1. 将项目命名为 *CreateEnrollmentGroup*，然后选择“创建”。 
+1. 将项目命名为 *CreateEnrollmentGroup*，然后按“创建”  。
 
     ![配置 Visual C# Windows 经典桌面项目](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. 在“解决方案资源管理器”中，右键单击“CreateEnrollmentGroup”项目，然后选择“管理 NuGet 包”。   
+1. 解决方案在 Visual Studio 中打开时，在“解决方案资源管理器”窗格中，右键单击“CreateEnrollmentGroup”项目，然后选择“管理 NuGet 包”    。
 
-1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择 **Microsoft.Azure.Devices.Provisioning.Service**，然后选择“安装”。   
+1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择“Microsoft.Azure.Devices.Provisioning.Service”，然后按“安装”     。
 
     ![“NuGet 包管理器”窗口](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -103,12 +102,12 @@ ms.locfileid: "73903439"
 1. 将以下字段添加到 `Program` 类，并按所列内容进行更改。  
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private static string EnrollmentGroupId = "enrollmentgrouptest";
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * 将 `ProvisioningConnectionString` 占位符值替换为需要为其创建注册的预配服务的连接字符串。
+   * 将 `ProvisioningServiceConnectionString` 占位符值替换为需要为其创建注册的预配服务的连接字符串。
 
    * 将 `X509RootCertPath` 占位符值替换为 .pem 或 .cer 文件的路径。 此文件代表中间或根 CA X.509 证书的公用部分，而该证书此前已通过预配服务上传和验证。
 
@@ -168,7 +167,7 @@ ms.locfileid: "73903439"
 
 ## <a name="run-the-enrollment-group-sample"></a>运行注册组示例
   
-运行 Visual Studio 中的示例，创建注册组。 成功创建后，命令提示符窗口会显示新注册组的属性。
+运行 Visual Studio 中的示例，创建注册组。 系统将显示命令提示符窗口并开始显示确认消息。 成功创建后，命令提示符窗口会显示新注册组的属性。
 
 可以验证注册组是否已创建。 转到设备预配服务的摘要，依次选择“管理注册”、“注册组”。   此时会看到一个新的注册条目，对应于示例中使用的注册 ID。
 
@@ -182,9 +181,9 @@ ms.locfileid: "73903439"
 
 1. 关闭计算机上的 C# 示例输出窗口。
 
-1. 在 Azure 门户中导航到设备预配服务，依次选择“管理注册”、“注册组”。   选择使用本快速入门创建的注册条目的“注册 ID”，然后选择“删除”。  
+1. 在 Azure 门户中导航到设备预配服务，依次选择“管理注册”、“注册组”。   选择使用本快速入门创建的注册项的“注册 ID”，然后按“删除”   。
 
-1. 在 Azure 门户上的设备预配服务中选择“证书”，选择为本快速入门上传的证书，然后选择“证书详细信息”顶部的“删除”。     
+1. 在 Azure 门户上的设备预配服务中选择“证书”，选择为本快速入门上传的证书，然后按“证书详细信息”顶部的“删除”    。  
 
 ## <a name="next-steps"></a>后续步骤
 

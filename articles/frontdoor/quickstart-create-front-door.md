@@ -1,5 +1,5 @@
 ---
-title: Azure 快速入门 - 使用 Azure 门户创建 Front Door 配置文件以确保应用程序的高度可用性
+title: 快速入门：创建 Front Door 配置文件以实现应用程序的高可用性
 description: 本快速入门文章介绍如何创建 Front Door，以实现高度可用的高性能全局 Web 应用程序。
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461980"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184519"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入门：创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -39,8 +39,8 @@ ms.locfileid: "61461980"
 
      | 设置         | 值     |
      | ---              | ---  |
-     | 名称           | 输入 Web 应用的唯一名称  |
-     | 资源组          | 选择“新建”  ，然后键入 myResourceGroupFD1  |
+     | Name           | 输入 Web 应用的唯一名称  |
+     | Resource group          | 选择“新建”  ，然后键入 myResourceGroupFD1  |
      | 应用服务计划/位置         | 选择“新建”  。  在应用服务计划中，输入 *myAppServicePlanEastUS*，然后选择“确定”。  
      |      位置  |   美国东部        |
     |||
@@ -51,8 +51,8 @@ ms.locfileid: "61461980"
 
      | 设置         | 值     |
      | ---              | ---  |
-     | 名称           | 输入 Web 应用的唯一名称  |
-     | 资源组          | 选择“新建”  ，然后键入 myResourceGroupFD2  |
+     | Name           | 输入 Web 应用的唯一名称  |
+     | Resource group          | 选择“新建”  ，然后键入 myResourceGroupFD2  |
      | 应用服务计划/位置         | 选择“新建”  。  在应用服务计划中，输入 *myAppServicePlanWestEurope*，然后选择“确定”。  
      |      位置  |   西欧      |
     |||

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Java 将查询发送到必应当地企业搜索 API
+title: 快速入门 - 使用 Java 将查询发送到 API - 必应当地企业搜索
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: eee5bc8d9d2587251b5564ecbd9f0ab1eaa44fcc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075679"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326748"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
 

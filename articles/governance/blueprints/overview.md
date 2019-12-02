@@ -1,16 +1,16 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-ms.date: 08/26/2019
+ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048287"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321763"
 ---
-# <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
+# <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
 正如工程师或建筑师使用蓝图勾勒出项目的设计参数一样，通过 Azure 蓝图，云架构师和中心信息技术组同样可以定义一组可重复的 Azure 资源，这些资源实现并遵守组织的标准、模式和要求。 通过 Azure 蓝图，开发团队可以快速生成和构建新环境，并确信这些生成的环境符合组织规定，还可以使用一组有助于加快开发和交付过程的内置组件（如网络）。
 
@@ -62,7 +62,8 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 ### <a name="blueprint-parameters"></a>蓝图参数
 
 蓝图可以将参数传递给策略/计划或 Azure 资源管理器模板。
-将任意项目添加到蓝图时，由创建者决定为每个蓝图分配提供定义的值，或者让每个蓝图分配在分配时提供一个值  。 这种灵活性让创建者可以为蓝图的所有使用定义预定值或者在分配时做出该决定。
+将任意项目添加到蓝图时，由创建者决定为每个蓝图分配提供定义的值，或者让每个蓝图分配在分配时提供一个值  。
+这种灵活性让创建者可以为蓝图的所有使用定义预定值或者在分配时做出该决定。
 
 > [!NOTE]
 > 蓝图可以有自己的参数，但目前只能为从 REST API 而不是从门户生成的蓝图创建这些参数。
@@ -71,7 +72,8 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ### <a name="blueprint-publishing"></a>蓝图发布
 
-首次创建蓝图时，将视其为处于“草稿”模式  。 准备分配蓝图时，它必须处于“已发布”模式  。 发布需要定义“版本”字符串（字母、数字和连字符，最大长度为 20 个字符）以及可选的“更改注释”   。 该版本将其与针对同一蓝图的未来更改进行区别，并允许分配每个版本  。 此版本控制也意味着可将同一蓝图的不同版本分配给同一订阅  。 对蓝图进行其他更改时，除未发布的更改外，已发布版本仍然存在    。 更改完成后，更新的蓝图是使用新的唯一版本发布的，现也可进行分配   。
+首次创建蓝图时，将视其为处于“草稿”模式  。 准备分配蓝图时，它必须处于“已发布”模式  。 发布需要定义“版本”字符串（字母、数字和连字符，最大长度为 20 个字符）以及可选的“更改注释”   。 该版本将其与针对同一蓝图的未来更改进行区别，并允许分配每个版本  。 此版本控制也意味着可将同一蓝图的不同版本分配给同一订阅  。 对蓝图进行其他更改时，除未发布的更改外，已发布
+版本仍然存在    。 更改完成后，更新的蓝图是使用新的唯一版本发布的，现也可进行分配   。
 
 ## <a name="blueprint-assignment"></a>蓝图分配
 
@@ -135,5 +137,6 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建蓝图 - 门户](create-blueprint-portal.md)
-- [创建蓝图 - REST API](create-blueprint-rest-api.md)
+- [创建蓝图 - 门户](./create-blueprint-portal.md)。
+- [创建蓝图 - PowerShell](./create-blueprint-powershell.md)。
+- [创建蓝图 - REST API](./create-blueprint-rest-api.md)。

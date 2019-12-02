@@ -1,19 +1,19 @@
 ---
-title: 教程 - 有关使用 Azure 空间定位点创建新 Android 应用的分步说明 | Microsoft Docs
+title: 教程：创建新的 Android 应用
 description: 本教程介绍如何使用 Azure 空间定位点创建新的 Android 应用。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6386ef775f897ca56d2660adf72a885672c8dfd2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092066"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276935"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 

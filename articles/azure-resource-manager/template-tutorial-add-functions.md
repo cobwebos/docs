@@ -1,19 +1,16 @@
 ---
-title: 教程 - 将模板函数添加到 Azure 资源管理器模板
+title: 教程 - 添加模板函数
 description: 将模板函数添加到 Azure 资源管理器模板以构造值。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca6e7f326ba67eac33e4dee5fa844d7676ab864b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 03a38178ec66c1c1a10934975d20778369d80dbe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963654"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405955"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>教程：将模板函数添加到资源管理器模板
 
@@ -25,9 +22,9 @@ ms.locfileid: "71963654"
 
 必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
-## <a name="review-your-template"></a>审阅模板
+## <a name="review-template"></a>审阅模板
 
-在上一教程的末尾，模板有以下 JSON：
+在上一篇教程的结束时，模板包含以下 JSON：
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
 
@@ -49,7 +46,7 @@ ms.locfileid: "71963654"
 
 在前面的教程中，你创建的存储帐户位于“美国东部”，但资源组创建于“美国中部”。 在本教程中，存储帐户与资源组在同一区域创建。 请使用位置的默认值，这样就不需提供该参数值。 必须为存储帐户提供新名称，因为是在另一位置创建存储帐户。 例如，使用 **store2** 而不是 **store1** 作为前缀。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假定你已将 **templateFile** 变量设置为模板文件的路径，如[第一个教程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -73,20 +70,20 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>验证部署
+## <a name="verify-deployment"></a>验证部署
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 从左侧菜单中，选择“资源组”  。
+1. 在左侧菜单中选择“资源组”。 
 1. 选择已将内容部署到其中的资源组。
 1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要继续完成下一教程，则不需删除资源组。
+若要继续学习下一篇教程，则不需删除该资源组。
 
-如果现在要停下来，则可能需要通过删除资源组来清理部署的资源。
+如果你不打算继续学习，请删除该资源组以清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。 

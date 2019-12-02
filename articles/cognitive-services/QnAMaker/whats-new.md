@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 10/14/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 0ce44429c7222e4eaa0ef523dadf0fa08723e975
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327899"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325878"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -24,6 +24,12 @@ ms.locfileid: "72327899"
 ## <a name="release-notes"></a>发行说明 
 
 了解 QnA Maker 的新增功能。
+
+### <a name="november-2019"></a>2019 年 11 月
+
+* 适用于 QnA Maker 的[美国政府云支持](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
+* GA 中的[多轮次](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation)功能
+* 第 1 层语言中可用的[闲聊支持](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
 
 ### <a name="october-2019"></a>2019 年 10 月
 

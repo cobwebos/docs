@@ -1,14 +1,14 @@
 ---
 title: 示例 - 如果扩展不存在，则进行审核
-description: 如果虚拟机未部署扩展，此示例策略定义会进行审核。
+description: 如果参数中定义的扩展未部署到虚拟机，此示例策略定义会进行审核。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 72d7728ef89678998a5fc3726d643142e3842635
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0b81a5f7b59d236cd8edb30cf0cb4f59ed9a7eab
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071453"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463396"
 ---
 # <a name="sample---audit-if-extension-does-not-exist"></a>示例 - 如果扩展不存在，则进行审核
 

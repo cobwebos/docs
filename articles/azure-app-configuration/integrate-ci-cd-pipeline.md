@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357013"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185107"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
 
@@ -29,7 +29,7 @@ ms.locfileid: "68357013"
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>使用应用程序部署应用程序配置数据
 
-如果应用程序依赖于 Azure 应用程序配置且无法访问它，则应用程序可能无法运行。 可以增强应用程序的复原能力来应对此类事件，不过，这种情况不太可能发生。 为此，请将当前配置数据打包到与应用程序一起部署的文件中，并在其启动期间在本地加载。 这种方法可保证应用程序至少有默认设置值。 当应用程序配置存储区可用时，这些值将被应用程序配置存储区中的任何新更改覆盖。
+如果应用程序依赖于 Azure 应用程序配置且无法访问它，则应用程序可能无法运行。 可以增强应用程序的复原能力来应对此类事件，不过，这种情况不太可能发生。 为此，请将当前配置数据打包到与应用程序一起部署的文件中，并在其启动期间在本地加载。 这种方法可保证应用程序至少有默认设置值。 当应用程序配置存储区可用时，这些值将被应用程序配置存储区中的任何较新的更改覆盖。
 
 使用 Azure 应用程序配置的[导出](./howto-import-export-data.md#export-data)功能，可以将当前配置数据的检索过程自动化为单个文件。 然后将此文件嵌入到持续集成和持续部署 (CI/CD) 管道的生成或部署步骤中。
 
@@ -54,7 +54,7 @@ ms.locfileid: "68357013"
     </Target>
     ```
 
-    添加与应用程序配置存储区相关联的 ConnectionString 作为环境变量  。
+    添加与应用程序配置存储区关联的 *ConnectionString* 作为环境变量。
 
 2. 打开 *Program.cs* 并更新 `CreateWebHostBuilder` 方法以通过调用 `config.AddJsonFile()` 方法使用导出的 JSON 文件。
 
@@ -74,7 +74,7 @@ ms.locfileid: "68357013"
 
 ### <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

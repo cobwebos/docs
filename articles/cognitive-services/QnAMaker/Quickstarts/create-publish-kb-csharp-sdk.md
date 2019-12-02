@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 80dab733d5a4e7c04ee75e289a0bc33b88cc811f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1c403d4d9b5c95c1cb1079b951a26dcaabb805fe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597170"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405873"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>快速入门：适用于 .NET 的 QnA Maker 客户端库
 
@@ -49,15 +49,15 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 
 在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。 
 
-在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `qna-maker-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：`Program.cs`。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `qna-maker-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。 
 
-```console
+```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
 将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -75,7 +75,7 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的 QnA Maker 客户端库：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 1.0.0
 ```
 
@@ -189,11 +189,11 @@ var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionK
 
 ## <a name="run-the-application"></a>运行应用程序
 
-从应用程序目录，使用 dotnet `run` 命令运行应用程序。
+从应用程序目录使用 `dotnet run` 命令运行应用程序。
 
 本文中的所有代码片段均[可用](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)，并且可以作为单个文件运行。
 
-```console
+```dotnetcli
 dotnet run
 ```
 

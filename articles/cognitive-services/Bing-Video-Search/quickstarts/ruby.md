@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 Ruby 来搜索视频
+title: 快速入门：使用 REST API 和 Ruby 搜索视频 - 必应视频搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用 Ruby 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 1303abb204881833413bf0465909582e49535e1c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 1f1cde38aa49488a73ce98cc1a9210ed22ebee73
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500647"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378641"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>快速入门：使用必应视频搜索 REST API 和 Ruby 来搜索视频
 

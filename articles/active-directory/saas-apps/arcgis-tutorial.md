@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158023"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232093"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -223,7 +223,7 @@ ms.locfileid: "73158023"
    
      ![添加和查看](./media/arcgis-tutorial/ic784749.png "添加和查看")
     
-     a. 输入想要预配的有效 AAD 帐户的“电子邮件”  、“名字”  和“姓氏”  。
+     a. 输入想要预配的有效 Azure AD 帐户的“电子邮件”、“名字”和“姓氏”    。
   
      b. 单击“添加和查看”  。
 5. 查看输入的数据，然后单击“添加成员”  。

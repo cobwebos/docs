@@ -1,18 +1,18 @@
 ---
 title: 什么是 Azure 专用 DNS？
-description: Microsoft Azure 上的专用 DNS 托管服务概述。
+description: 本文概述 Microsoft Azure 上的专用 DNS 托管服务。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: victorh
-ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959356"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210651"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory 用户身份验证 - Azure Active Directory
+title: 对用户进行身份验证并保护用户 - Azure Active Directory
 description: 作为 Azure AD 管理员，如何保护用户身份验证，同时降低对最终用户造成的影响？
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ccbb754f03f77ce0571912a5443dc9b18c66b463
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997270"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381102"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>有哪些方法可用来进行身份验证？
 
@@ -35,7 +35,7 @@ ms.locfileid: "65997270"
 
 Azure MFA 和 Azure AD 自助服务密码重置允许管理员使用 Azure AD 和 Azure 门户来控制配置、策略、监视和报告以保护其组织。
 
-## <a name="self-service-password-reset"></a>自助密码重置
+## <a name="self-service-password-reset"></a>自助式密码重置
 
 自助服务密码重置允许用户在需要时重置其密码，不需要管理员干预。
 

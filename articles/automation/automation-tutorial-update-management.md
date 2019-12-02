@@ -1,20 +1,20 @@
 ---
 title: 管理 Azure VM 的更新和修补程序
-description: 本文概述了如何使用 Azure 自动化更新管理来管理 Azure Windows VM 的更新和修补程序。
+description: 本文概述了如何使用 Azure 自动化更改管理来管理 Azure VM 和非 Azure VM 的更新和修补程序。
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469726"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278781"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -51,15 +51,15 @@ ms.locfileid: "73469726"
 1. 选择要启用更新管理的 VM。
 1. 在 VM 页的“操作”  下选择“更新管理”  。 “启用更新管理”窗格随即打开。 
 
-执行验证，确定是否为该 VM 启用了更新管理。 此验证包括针对 Azure Log Analytics 工作区和链接的自动化帐户进行检查，并检查更新管理解决方案是否在工作区中。
+执行验证，确定是否为该 VM 启用了更新管理。 此验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及是否在工作区中启用了更新管理解决方案。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
+[Log Analytics](../azure-monitor/platform/data-platform-logs.md) 工作区用于收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。 此代理用于与 Azure 自动化通信并获取关于更新状态的信息。 代理要求打开端口 443 以便与 Azure 自动化服务进行通信以及下载更新。
+验证过程还会检查 VM 是否预配了 Log Analytics 代理和自动化混合 Runbook 辅助角色。 此代理用于与 Azure 自动化通信并获取关于更新状态的信息。 代理要求打开端口 443 以便与 Azure 自动化服务进行通信以及下载更新。
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md) 工作区
 * [自动化帐户](./automation-offering-get-started.md)
 * [混合 Runbook 辅助角色](./automation-hybrid-runbook-worker.md)（在 VM 上启用）
 
@@ -71,9 +71,9 @@ ms.locfileid: "73469726"
 
 ## <a name="view-update-assessment"></a>查看更新评估
 
-启用“更新管理”后，“更新管理”窗格随即打开。  如果缺少更新，则会在“缺失更新”  选项卡上显示缺失更新的列表。
+启用“更新管理”后，“更新管理”窗格随即打开。  如果发现缺少任何更新，则会在“缺少的更新”选项卡上显示缺少的更新列表  。
 
-在“信息链接”下选择更新链接即可在新窗口中打开更新的支持文章。  可以在此窗口中了解有关更新的重要信息。
+在“信息链接”下选择更新链接即可打开更新的支持文章  。 可以了解有关更新的重要信息。
 
 ![查看更新状态](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: aahi
 zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: 8b07e6b08e34e701aa4c3b254aee7245926085b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93912ef93ab1065bf3b7c5010c485f99229a06a6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750138"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220785"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-detecting-language"></a>快速入门：使用文本分析客户端库来检测语言
+# <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
 从文本分析客户端库开始操作。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 

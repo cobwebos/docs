@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a8a60f23511f71128bea4cc560ad8401b238732d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b9d4c6447b8030c2ae5f7dc22857f77b57f91ea
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223642"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185312"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -28,11 +28,11 @@ ms.locfileid: "58223642"
 | | |
 |-|-|
 |**创建**||
-| [创建应用配置存储区](./scripts/cli-create-service.md) | 创建资源组和应用配置存储区实例。  |
+| [创建应用程序配置存储区](./scripts/cli-create-service.md) | 创建资源组和应用程序配置存储区实例。  |
 |**使用**||
 | [处理键值](./scripts/cli-work-with-keys.md) | 创建、查看、更新和删除键值。 |
 | [导入键值](./scripts/cli-import.md) | 从其他源导入键值。 |
 | [导出键值](./scripts/cli-export.md) | 将键值导出到其他目标。 |
 |**删除**||
-| [应用配置存储区](./scripts/cli-delete-service.md) | 删除应用配置存储区实例。  |
+| [删除应用程序配置存储区](./scripts/cli-delete-service.md) | 删除应用程序配置存储区实例。  |
 | | |

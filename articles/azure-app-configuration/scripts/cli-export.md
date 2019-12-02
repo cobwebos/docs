@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444457"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184891"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>从 Azure 应用配置存储区导出
 
@@ -48,14 +48,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令导出应用配置存储区。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令从应用程序配置存储区导出。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | 从应用配置存储区资源导出。 |
+| [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | 从应用程序配置存储区资源导出。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-可在 [Azure 应用配置文档](../cli-samples.md)中查找其他应用配置 CLI 脚本示例。
+可在 [Azure 应用程序配置 CLI 示例](../cli-samples.md)中找到其他应用程序配置 CLI 脚本示例。

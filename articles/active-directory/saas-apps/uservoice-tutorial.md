@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087634"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>教程：Azure Active Directory 与 UserVoice 集成
 
@@ -140,7 +140,7 @@ ms.locfileid: "67087634"
 
 3. 在“Web 门户”  选项卡的“用户身份验证”  部分中，单击“编辑”  以打开“编辑用户身份验证”  对话框页
    
-    ![Web 门户选项卡](./media/uservoice-tutorial/ic777520.png "Web 门户")
+    ![“Web 门户”选项卡](./media/uservoice-tutorial/ic777520.png "Web 门户")
 
 4. 在“编辑用户身份验证”  对话框页上，执行以下步骤：
    
@@ -237,7 +237,7 @@ ms.locfileid: "67087634"
     b. 单击“邀请”。 
 
 > [!NOTE]
-> 可以使用 UserVoice 提供的任何其他 UserVoice 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 UserVoice 提供的任何其他 UserVoice 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

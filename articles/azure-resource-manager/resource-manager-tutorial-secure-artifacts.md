@@ -1,24 +1,16 @@
 ---
-title: 安全项目 - Azure 资源管理器模板
+title: 保护模板中的项目
 description: 了解如何保护 Azure 资源管理器模板中使用的项目。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528271"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326442"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
@@ -41,7 +33,7 @@ ms.locfileid: "72528271"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)。 请参阅[安装扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 * 查看[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)。 本教程中使用的模板是在该教程中开发的。 本文提供了已完成模板的下载链接。
 * 若要增强安全性，请使用为 SQL Server 管理员帐户生成的密码。 以下是密码生成示例：
 

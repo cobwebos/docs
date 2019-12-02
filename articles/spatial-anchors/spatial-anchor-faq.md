@@ -1,19 +1,19 @@
 ---
-title: 有关 Azure 空间定位点的常见问题解答 | Microsoft Docs
-description: Azure 空间定位点是一个托管云服务和开发人员平台，可跨 HoloLens、iOS 和 Android 设备实现跨设备、多用户的混合现实体验。 这些常见问题解答从技术角度解决有关服务的问题。
+title: 常见问题
+description: 有关 Azure 空间定位点服务的常见问题解答。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 06936a196813dacfc1fc9d02945bee4119b7eea8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac7fefd8ecabd40070b422c169befe64c08f12a8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927498"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277080"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 

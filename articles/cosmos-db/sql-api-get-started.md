@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132561"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173909"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -259,7 +259,7 @@ ms.locfileid: "74132561"
 1. 选择 F5 来运行应用程序。
 
    > [!NOTE]
-   > 如果收到“503 服务不可用异常”，则直接模式所需的[端口](performance-tips.md#networking)可能已被防火墙阻止。 若要解决此问题，请打开所需的[端口](performance-tips.md#networking)，或尝试使用网关模式，如下所示。
+   > 如果收到“503 服务不可用异常”错误，则直接连接模式所需的[端口](performance-tips.md#networking)可能已被防火墙阻止。 若要解决此问题，打开所需端口或使用网关模式连接，如以下代码所示：
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

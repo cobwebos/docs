@@ -1,24 +1,15 @@
 ---
-title: 部署 Azure 资源管理器模板 - IntelliJ IDEA
+title: 部署模板 - IntelliJ IDEA
 description: 了解如何使用 IntelliJ IDEA 创建第一个 Azure 资源管理器模板，以及如何部署该模板。
-services: azure-resource-manager
-documentationcenter: ''
-author: yucwan
-manager: ''
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
-ms.author: yucwan
-ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 62ea27236eec1a63b2a07dcb532f91cea7ead70b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533661"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149465"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>快速入门：使用 IntelliJ IDEA 创建和部署 Azure 资源管理器模板
 

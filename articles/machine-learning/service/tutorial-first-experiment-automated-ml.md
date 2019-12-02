@@ -1,5 +1,5 @@
 ---
-title: 创建第一个自动化 ML 分类试验
+title: 创建第一个自动化 ML 试验
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习工作室中使用自动化机器学习训练和部署分类模型。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581596"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270723"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

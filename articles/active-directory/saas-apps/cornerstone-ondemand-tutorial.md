@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25b1da7a91dc52aed680bc587dfc20aaee876c4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989571"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227636"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone OnDemand 的集成
 
@@ -120,12 +120,12 @@ ms.locfileid: "68989571"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-cornerstone-ondemand-sso"></a>配置 Cornerstone OnDemand SSO
@@ -141,7 +141,7 @@ ms.locfileid: "68989571"
 若要配置用户预配，请将要预配的 Azure AD 用户相关信息（例如：姓名、电子邮件）发送给 [Cornerstone OnDemand 支持团队](mailto:moreinfo@csod.com)。
 
 >[!NOTE]
->可以使用 Cornerstone OnDemand 提供的任何其他 Cornerstone OnDemand 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+>可使用 Cornerstone OnDemand 提供的任何其他 Cornerstone OnDemand 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

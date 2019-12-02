@@ -1,19 +1,16 @@
 ---
 title: 将 Azure 部署管理器与资源管理器模板配合使用 | Microsoft Docs
 description: 配合使用资源管理器模板与 Azure 部署管理器来部署 Azure 资源。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285877"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307015"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（公共预览版）
 
@@ -56,7 +53,7 @@ ms.locfileid: "72285877"
 
 * 在开发 [Azure 资源管理器模板](./resource-group-overview.md)方面有一定的经验。
 * Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
-* 部署管理器 cmdlet。 若要安装这些预发行版 cmdlet，需要最新版本的 PowerShellGet。 若要获取最新版本，请参阅[安装 PowerShellGet](/powershell/gallery/installing-psget)。 安装 PowerShellGet 后，关闭 PowerShell 窗口。 打开新的提升的 PowerShell 窗口并使用以下命令：
+* 部署管理器 cmdlet。 若要安装这些预发行版 cmdlet，需要最新版本的 PowerShellGet。 若要获取最新版本，请参阅[安装 PowerShellGet](/powershell/scripting/gallery/installing-psget)。 安装 PowerShellGet 后，关闭 PowerShell 窗口。 打开新的提升的 PowerShell 窗口并使用以下命令：
 
     ```powershell
     Install-Module -Name Az.DeploymentManager
@@ -189,9 +186,6 @@ Write-Host $url
 
 需要创建用户分配的托管标识，并为订阅配置访问控制。
 
-> [!IMPORTANT]
-> 用户分配的托管标识必须与[实施](#create-the-rollout-template)项目位于同一位置。 目前，只能在美国中部或美国东部 2 区域中创建部署管理器资源，包括实施。 但是，这仅适用于部署管理器资源（例如服务拓扑、服务、服务单元、推出和步骤）。 可以将目标资源部署到任何支持的 Azure 区域。 例如，在本教程中，部署管理器资源部署到美国中部，但服务部署到美国东部和美国西部。 此限制将来会取消。
-
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 创建[用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 3. 在门户的左侧菜单中选择“订阅”，然后选择自己的订阅。 
@@ -214,7 +208,7 @@ Write-Host $url
 模板包含以下参数：
 
 * **projectName**：此名称用于创建部署管理器资源的名称。 例如，如果使用“jdoe”，则服务拓扑名称为 **jdoe**ServiceTopology。  资源名称在此模板的 variables 节中定义。
-* **azureResourcelocation**：为了简化教程，除非另行指定，否则所有资源共享此位置。 目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
+* **azureResourcelocation**：为了简化教程，除非另行指定，否则所有资源共享此位置。
 * **artifactSourceSASLocation**：存储要部署的服务单元模板和参数文件的 Blob 容器的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
 * **templateArtifactRoot**：与存储模板和参数的 Blob 容器之间的偏移路径。 默认值为 **templates/1.0.0.0**。 除非你要更改[准备项目](#prepare-the-artifacts)中所述的文件夹结构，否则请不要更改此值。 本教程使用相对路径。  完整路径是通过连接 **artifactSourceSASLocation**、**templateArtifactRoot** 和 **templateArtifactSourceRelativePath**（或 **parametersArtifactSourceRelativePath**）来构造的。
 * **targetSubscriptionID**：部署管理器资源要部署到的并从中计费的订阅 ID。 本教程使用你的订阅 ID。
@@ -269,7 +263,7 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
 ![Azure 部署管理器教程 - 实施模板参数](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
 * **projectName**：此名称用于创建部署管理器资源的名称。 例如，如果使用“jdoe”，则实施名称为 **jdoe**Rollout。  名称在模板的 variables 节中定义。
-* **azureResourcelocation**：为了简化教程，除非另行指定，否则所有部署管理器资源共享此位置。 目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
+* **azureResourcelocation**：为了简化教程，除非另行指定，否则所有部署管理器资源共享此位置。
 * **artifactSourceSASLocation**：存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
 * **binaryArtifactRoot**：默认值为 **binaries/1.0.0.0**。 除非你要更改[准备项目](#prepare-the-artifacts)中所述的文件夹结构，否则请不要更改此值。 本教程使用相对路径。  完整路径是通过连接 CreateWebApplicationParameters.json 中指定的 **artifactSourceSASLocation**、**binaryArtifactRoot** 和 **deployPackageUri** 来构造的。  请参阅[准备项目](#prepare-the-artifacts)。
 * **managedIdentityID**：用户分配的托管标识，用于执行部署操作。 请参阅[创建用户分配的托管标识](#create-the-user-assigned-managed-identity)。
@@ -311,7 +305,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 2. 填充参数值：
 
     * **projectName**：输入包含 4-5 个字符的字符串。 此名称用于创建唯一的 Azure 资源名称。
-    * **azureResourceLocation**：目前，只能在“美国中部”或“美国东部 2”区域中创建 Azure 部署管理器资源。  
+    * **azureResourceLocation**：指定 Azure 位置。
     * **artifactSourceSASLocation**：输入用于存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
     * **binaryArtifactRoot**：除非你要更改项目的文件夹结构，否则请在本教程中使用 **binaries/1.0.0.0**。
     * **managedIdentityID**：输入用户分配的托管标识。 请参阅[创建用户分配的托管标识](#create-the-user-assigned-managed-identity)。 语法为：

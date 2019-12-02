@@ -1,14 +1,14 @@
 ---
-title: 基于蓝图示例创建环境
-description: 使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
-ms.date: 03/05/2019
+title: 教程：从蓝图示例到新环境
+description: 在本教程，你将使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960276"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321735"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
@@ -183,9 +183,7 @@ ms.locfileid: "73960276"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](../concepts/lifecycle.md)
-- 了解如何使用[静态和动态参数](../concepts/parameters.md)
-- 了解如何使用[蓝图资源锁定](../concepts/resource-locking.md)
-- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题
+在本教程中，你已了解如何通过示例定义创建新的蓝图。 若要详细了解 Azure 蓝图，请继续学习蓝图生命周期文章。
+
+> [!div class="nextstepaction"]
+> [了解蓝图生命周期](../concepts/lifecycle.md)

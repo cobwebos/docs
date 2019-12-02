@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553576"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213196"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "72553576"
 * [安装 Service Fabric SDK](service-fabric-get-started.md)。
 
 > [!NOTE]
-> 免费帐户可能不满足创建虚拟机的要求。 这会阻止完成本教程。
+> 免费帐户可能不满足创建虚拟机的要求。 这会阻止完成本教程。 此外，在与群集关联的密钥保管库上创建证书时，非工作或非学校帐户可能会遇到权限问题。 如果遇到与证书创建相关的错误，请改用门户来创建群集。 
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 

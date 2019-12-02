@@ -1,16 +1,16 @@
 ---
 title: Azure Resource Graph 概述
-description: 了解如何使用 Azure Resource Graph 服务对资源进行大规模的复杂查询。
+description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958733"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406686"
 ---
-# <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
+# <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
 Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和高性能的资源浏览来扩展 Azure 资源管理器，它能够跨给定的订阅组进行大规模查询，使你能够有效地管理环境。 这些查询提供以下功能：
 
@@ -92,6 +92,3 @@ Resource Graph 支持 Azure CLI、Azure PowerShell、用于 .NET 的 Azure SDK �
 - 使用 [Azure 门户](first-query-portal.md)运行第一个查询。
 - 使用 [Azure CLI](first-query-azurecli.md) 运行第一个查询。
 - 使用 [Azure PowerShell](first-query-powershell.md) 运行第一个查询。
-- 获取有关[查询语言](./concepts/query-language.md)的详细信息。
-- 从[初学者查询](./samples/starter.md)开始。
-- 增强对[高级查询](./samples/advanced.md)的理解。

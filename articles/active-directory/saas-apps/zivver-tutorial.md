@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: cc78b08c25ada2bf1ed67f4c27246bc873823516
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68943120"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教程：Azure Active Directory 与 ZIVVER 集成
 
@@ -118,7 +118,7 @@ ms.locfileid: "68943120"
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >如果使用由本地 Active Directory 和 Azure AD Connect 工具组成的混合设置，值应设置为 `user.objectGUID`
+    >如果使用由本地 Active Directory 和 Azure AD Connect 工具组成的混合设置，“值”应设置为 `user.objectGUID`
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门 - 使用 Azure Active Directory B2C 为单页应用设置登录
-description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例单页应用程序。
+description: 在本快速入门中，运行一个使用 Azure Active Directory B2C 提供帐户登录的示例单页应用程序。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 22cdfaf1d48c4e93e57f46482eacb66742a6c9d6
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7dc3a52ca9f227f8476cf74286be917b5b6ba021
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515694"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420184"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 

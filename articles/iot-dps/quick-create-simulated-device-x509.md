@@ -1,5 +1,5 @@
 ---
-title: 快速入门：本快速入门介绍如何使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
+title: 使用 C 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 本快速入门使用单独注册。 在本快速入门中，我们将使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 X.509 设备。
 author: wesmc7777
 ms.author: wesmc
@@ -7,14 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dbbdfb9ead31d11c760e6cbb0280ed1c4e5f3b24
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5d0b634de9d296bc56d18b2e7a4a92e6340b07c3
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904764"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423160"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -89,8 +88,6 @@ Azure IoT 设备预配服务支持两类注册：
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
 <a id="portalenroll"></a>
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>创建自签名的 X.509 设备证书
@@ -117,14 +114,14 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>在门户中创建设备注册项
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-2. 选择“管理注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
-3. 在“添加注册”中输入以下信息，然后单击“保存”按钮。  
+3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
     - **机制：** 选择“X.509”  作为标识证明机制  。
-    - **主要证书 .pem 或 .cer 文件：** 单击“选择文件”，选择前面创建的证书文件 X509testcert.pem  。
+    - **主要证书 .pem 或 .cer 文件：** 选择“选择文件”，以选择前面创建的证书文件 X509testcert.pem  。
     - **IoT 中心设备 ID：** 输入 test-docs-cert-device 作为设备的 ID  。
 
       [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
@@ -141,7 +138,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值   。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -163,7 +160,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 5. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出示例显示预配设备客户端示例成功启动，然后连接到预配服务实例来获取 IoT 中心信息并注册：
 
@@ -180,18 +177,18 @@ Azure IoT 设备预配服务支持两类注册：
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. 在门户中导航到已链接到预配服务的 IoT 中心，然后单击“IoT 设备”选项卡。  将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    你可能需要单击顶部的“刷新”按钮  。 
+7. 在门户中导航到已链接到预配服务的 IoT 中心，然后选择“IoT 设备”选项卡  。将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    。 你可能需要按顶部的“刷新”按钮  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后单击“个人注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后选择“个人注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 ## <a name="next-steps"></a>后续步骤
 

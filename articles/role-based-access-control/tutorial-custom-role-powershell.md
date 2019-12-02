@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure PowerShell 为 Azure 资源创建自定义角色 | Microsoft Docs
-description: 开始使用 Azure PowerShell 为 Azure 资源创建自定义角色。
+title: 教程 - 使用 Azure PowerShell 为 Azure 资源创建自定义角色
+description: 在本教程中，开始使用 Azure PowerShell 为 Azure 资源创建自定义角色。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158869"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419744"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 为 Azure 资源创建自定义角色
 
@@ -272,7 +272,7 @@ ms.locfileid: "66158869"
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
 
-1. 系统要求确认时，请键入“Y”。
+1. 系统要求确认时，请键入“Y”  。
 
 ## <a name="next-steps"></a>后续步骤
 

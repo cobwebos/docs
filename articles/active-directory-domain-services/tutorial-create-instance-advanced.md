@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172559"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208675"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -56,7 +56,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 若要启动“启用 Azure AD 域服务”  向导，请完成以下步骤：
 
-1. 在 Azure 门户的左上角选择“+ 创建资源”。 
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。  
 1. 在“Azure AD 域服务”页上选择“创建”。  “启用 Azure AD 域服务”  向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”  。
@@ -93,6 +93,10 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
+
+1. *林*是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关*资源*林的详细信息，包括为何使用资源林以及如何在本地 AD DS 域中创建林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+
+    对于本教程，请选择创建用户林  。
 
     ![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -242,7 +246,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
-[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

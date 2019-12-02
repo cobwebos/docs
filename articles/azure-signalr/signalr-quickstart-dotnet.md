@@ -1,5 +1,5 @@
 ---
-title: 介绍如何将 Azure SignalR 服务与 ASP.NET 配合使用的快速入门
+title: 通过 ASP.NET 进行开发 - Azure SignalR 服务
 description: 有关如何使用 Azure SignalR 服务通过 ASP.NET 框架创建聊天室的快速入门。
 author: sffamily
 ms.service: signalr
@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: 8dfb74fc941a9bb6d235093287ac47983c0e0564
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931825"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158170"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入门：使用 ASP.NET 和 SignalR 服务创建聊天室
 

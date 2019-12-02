@@ -1,22 +1,22 @@
 ---
-title: 快速入门 - 在访问受 Azure Active Directory 条件访问保护的云应用之前要求接受使用条款 | Microsoft Docs
+title: 条件访问要求接受使用条款 - Azure Active Directory
 description: 本快速入门介绍如何在 Azure Active Directory 条件访问授予对所选云应用的访问权限之前，要求接受使用条款。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506916"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380103"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款
 
@@ -105,7 +105,7 @@ ms.locfileid: "67506916"
 
 1. 在“新建”页上的“名称”文本框中，键入“要求 Isabella 接受 TOU”。   
 
-   ![名称](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. 在“分配”部分中，单击“用户和组”。  
 

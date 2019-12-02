@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予用户对 Azure 资源的访问权限。
+title: 教程 - 使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限
+description: 在本教程中了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予用户对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343470"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418627"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限
 
@@ -48,8 +48,8 @@ ms.locfileid: "56343470"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 用户<br>（RBAC 教程用户） | [读取者](built-in-roles.md#reader) | 订阅 |
-| 用户<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
+| 用户<br>（RBAC 教程用户） | [读取者](built-in-roles.md#reader) | Subscription |
+| 用户<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![用户的角色分配](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 
@@ -224,11 +224,11 @@ ms.locfileid: "56343470"
 
 ## <a name="optional-list-access-using-the-azure-portal"></a>（可选）使用 Azure 门户列出访问权限
 
-1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。
+1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。 
 
     ![用户在订阅范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-subscription-user.png)
 
-1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。
+1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。 
 
     ![用户在资源组范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-resource-group-user.png)
 
@@ -268,7 +268,7 @@ ms.locfileid: "56343470"
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. 系统要求确认时，请键入“Y”。只需数秒钟即可删除。
+1. 系统要求确认时，请键入“Y”  。只需数秒钟即可删除。
 
 1. 使用 [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser) 命令删除用户。
 

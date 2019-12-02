@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
+title: 快速入门：使用适用于 C# 的 SDK 执行新闻搜索 - 必应新闻搜索
 titleSuffix: Azure Cognitive Services
 description: 按照本快速入门使用适用于 C# 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 626596cc88b1b3b1067d7d6d157a548f92fb621a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 03f582b4ba5b3321f46af370a0bb4adfa005046c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206019"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379020"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
 

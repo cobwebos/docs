@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125420"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414640"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 * [Go](https://golang.org/) 编程语言  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 公共应用 ID：df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* 公共应用 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>获取 LUIS 密钥
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125420"
 
 ## <a name="get-intent-programmatically"></a>以编程方式获取意向
 
-使用 Go 查询预测终结点 GET [API](https://aka.ms/luis-apim-v3-prediction) 来获取预测结果。
+使用 Go 查询[预测终结点](https://aka.ms/luis-apim-v3-prediction)并获取预测结果。
 
 1. 创建名为 `predict.go` 的新文件。 添加以下代码：
     
@@ -85,8 +85,8 @@ ms.locfileid: "74125420"
 
 1. 替换以下值：
 
-    * 将 `YOUR-KEY` 替换为初学者密钥
-    * `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
+    * 将 `YOUR-KEY` 替换为初学者密钥。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`westus2.api.cognitive.microsoft.com` 。
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来编译 Go 文件：
 

@@ -1,19 +1,19 @@
 ---
-title: 如何使用 Azure 空间定位点创建并查找定位点 | Microsoft Docs
+title: 创建和查找定位点概述
 description: 深入解释如何使用 Azure 空间定位点创建并找到定位点。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bbb2eb6cca09c496328d35e075b7d2e548898b4c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964739"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270448"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>如何使用 Azure 空间定位点创建并查找定位点
 

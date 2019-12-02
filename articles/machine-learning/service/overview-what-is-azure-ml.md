@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 488616ab2068337331d589bbf5c61ae06b299f5d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824064"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173978"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -54,7 +54,6 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 甚至可以使用 [MLflow 跟踪指标并部署模型](how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
-
 ## <a name="build-ml-models-in-python-or-r"></a>在 Python 或 R 中生成 ML 模型
 
 开始使用 Azure 机器学习 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> 或 <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> 在本地计算机上训练。 然后，横向扩展到云。 
@@ -69,7 +68,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + **Azure 机器学习设计器（预览版）**
 
-  使用设计器可在不编写任何代码的情况下准备数据、训练、测试、部署、管理和跟踪机器学习模型。 不需要编程，只需以可视方式连接数据集和模块即可构建模型。   尝试[设计器教程](tutorial-designer-automobile-price-train-score.md)。
+  使用设计器可在不编写任何代码的情况下准备数据、训练、测试、部署、管理和跟踪机器学习模型。 不需要编程，只需以可视方式连接数据集和模块即可构建模型。 尝试[设计器教程](tutorial-designer-automobile-price-train-score.md)。
 
   有关详细信息，请参阅 [Azure 机器学习设计器概述文章](concept-designer.md)。 
 
@@ -91,13 +90,31 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 使用高级[机器学习管道](concept-ml-pipelines.md)，可以在每一步（从数据准备、模型训练和评估一直到部署）进行协作。 使用 Pipelines 可以：
 
 * 自动完成云中的端到端机器学习过程
-* 重用组件，并仅在需要时重新运行步骤
+* 重用组件并仅在需要时重新运行步骤
 * 在每个步骤中使用不同的计算资源
 * 运行批量评分任务
 
 如果要使用脚本自动执行机器学习工作流，[机器学习 CLI](reference-azure-machine-learning-cli.md) 提供了执行常见任务（如提交训练运行或部署模型）的命令行工具。
 
 若要开始使用 Azure 机器学习，请参阅[后续步骤](#next-steps)。
+
+## <a name="integration-with-other-services"></a>与其他服务集成
+
+Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与诸如 Git 和 MLFlow 之类的开源工具集成。
+
++ 如 __Azure Kubernetes 服务__、__Azure 容器实例__、__Azure Databricks__、__Azure Data Lake Analytics__和 __Azure HDInsight__ 这样的计算目标。 有关计算目标的详细信息，请参阅[什么是计算目标？](concept-compute-target.md)。
++ __Azure 事件网格__。 有关详细信息，请参阅[使用 Azure 机器学习事件](concept-event-grid-integration.md)。
++ __Azure Monitor__。 有关详细信息，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
++ 如 __Azure 存储帐户__、__Azure Data Lake Storage__、__Azure SQL 数据库__、__Azure Database for PostgreSQL__ 和 __Azure 开放数据集__ 这样的数据存储。 有关详细信息，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)和[使用 Azure 开放数据集创建数据集](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)。
++ __Azure 虚拟网络__。 有关详细信息，请参阅[虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)。
++ __Azure Pipelines__。 有关详细信息，请参阅[定型和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)。
++ __Git 存储库日志__。 有关详细信息，请参阅 [Git 集成](concept-train-model-git-integration.md)。
++ __MLFlow__。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](how-to-use-mlflow.md) 
++ __Kubeflow__。 有关详细信息，请参阅[构建端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
+
+### <a name="secure-communications"></a>安全通信
+
+Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地用于定型模型并执行推理。 有关详细信息，请参阅[虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)。
 
 ## <a name="sku"></a>Basic 和 Enterprise Edition
 

@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR 服务常见问题解答
-description: Azure SignalR 服务的常见问题解答。
+description: 可以快速访问有关 Azure SignalR 服务的常见问题解答，这些问题涉及故障排除和典型使用方案。
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9a8c3fd6c591f25aadc696c3c71f8c4cdfca745f
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578684"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157565"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 

@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
+description: 此门户快速入门介绍如何使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890009"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406999"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -25,14 +25,7 @@ ms.locfileid: "73890009"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-使用门户可以在数分钟内快速了解概念，并针对索引编写有趣的查询。
-
-> [!div class="checklist"]
-> * 从 Azure 上托管的免费公共示例数据集开始
-> * 在 Azure 认知搜索中运行“导入数据”向导以加载数据并生成索引 
-> * 监视门户中的索引进度
-> * 查看现有索引和修改索引的选项
-> * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索 
+使用门户的“导入数据”向导和“搜索资源管理器”工具，可以在数分钟内快速了解概念，并针对索引编写有趣的查询   。
 
 如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 认知搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman](search-get-started-postman.md)。 
 
@@ -265,7 +258,7 @@ ms.locfileid: "73890009"
 
 还学习了如何在门户中查找索引、索引器和数据源。 如果将来有任何新的数据源，则可轻松地通过门户快速查看其定义或字段集合。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
@@ -275,8 +268,7 @@ ms.locfileid: "73890009"
 
 ## <a name="next-steps"></a>后续步骤
 
-可以使用编程工具浏览 Azure 认知搜索的更多内容：
+该门户对于初始探索和小任务非常有用，而尽早查看 API 有助于更深入地了解概念和工作流：
 
-* [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [使用 Postman/Fiddler 和 Azure 认知搜索 REST API 创建索引](search-get-started-postman.md)
+> [!div class="nextstepaction"]
+> [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

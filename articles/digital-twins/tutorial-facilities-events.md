@@ -1,5 +1,5 @@
 ---
-title: 教程：捕获 Azure 数字孪生空间的事件
+title: 教程：从 IoT 空间捕获设备事件 - Azure 数字孪生 | Microsoft Docs
 description: 了解如何使用本教程中的步骤将 Azure 数字孪生与逻辑应用集成，以便从空间接收通知。
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129238"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383259"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 

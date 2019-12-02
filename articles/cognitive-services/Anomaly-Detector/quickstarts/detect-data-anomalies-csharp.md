@@ -8,30 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 222fb5d37065bc40e9c96a9ff3487a7ea8ad0570
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 76308e2167cbedae9572f1fb5037dfb394ce4b17
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554771"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483413"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常 
 
 参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 C# 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
-| API 请求                                        | 应用程序输出                                                                                                                         |
-|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| API 请求                                        | 应用程序输出                                                                                                                                         |
+|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 以批的形式检测异常                        | JSON 响应包含时序数据中每个数据点的异常状态（和其他数据），以及检测到的任何异常所在的位置。 |
-| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                                                                                                                         |
+| 检测最新数据点的异常状态 | JSON 响应包含时序数据中最新数据点的异常状态（和其他数据）。                                        |
 
- 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+ 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) 上找到本快速入门的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)、
-
+- 异常检测器密钥和终结点
 - [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要在 Visual Studio 中以 NuGet 包的形式安装 Newtonsoft.Json，请执行以下操作：
     
     1. 在**解决方案资源管理器**中右键单击你的项目。
@@ -55,11 +55,11 @@ ms.locfileid: "72554771"
 
 2. 为订阅密钥和终结点创建变量。 下面是可用于异常检测的 URI。 稍后会将这些 URL 追加到服务终结点，以创建 API 请求 URL。
 
-    |检测方法  |URI  |
-    |---------|---------|
-    |批量检测    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |对最新数据点进行检测     | `/anomalydetector/v1.0/timeseries/last/detect`        |
-    
+    | 检测方法                   | URI                                              |
+    |------------------------------------|--------------------------------------------------|
+    | 批量检测                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
+    | 对最新数据点进行检测 | `/anomalydetector/v1.0/timeseries/last/detect`   |
+        
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
@@ -91,8 +91,8 @@ ms.locfileid: "72554771"
 
 2. 反序列化 JSON 对象，并将其写入控制台。
 
-[!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
-
+    [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
+ 
 ## <a name="load-your-time-series-data-and-send-the-request"></a>加载时序数据并发送请求
 
 1. 在应用程序的 main 方法中，使用 `File.ReadAllText()` 加载 JSON 时序数据。 
@@ -107,11 +107,4 @@ ms.locfileid: "72554771"
 * [批量检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新数据点检测响应示例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
->[使用 Azure Databricks 流式处理异常检测](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* 什么是[异常检测器 API？](../overview.md)
-* 使用异常检测器 API 时的[最佳做法](../concepts/anomaly-detection-best-practices.md)。
-* 可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) 上找到此示例的源代码。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

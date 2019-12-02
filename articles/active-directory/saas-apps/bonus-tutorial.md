@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442771"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教程：Azure Active Directory 与 Bonusly 集成
 
@@ -207,7 +207,7 @@ ms.locfileid: "67442771"
 为了使 Azure AD 用户能够登录 Bonusly，必须将其预配到 Bonusly 中。 就 Bonusly 来说，预配任务需要手动完成。
 
 > [!NOTE]
-> 可使用其他任何 Bonusly 用户帐户创建工具或 Bonusly 提供的 API 预配 AAD 用户帐户。 
+> 可使用其他任何 Bonusly 用户帐户创建工具或 Bonusly 提供的 API 预配 Azure AD 用户帐户。 
 
 **若要配置用户设置，请执行以下步骤：**
 

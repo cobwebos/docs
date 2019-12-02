@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159233"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
 
@@ -273,7 +273,7 @@ ms.locfileid: "73159233"
    
     d. 单击“保存并邀请”按钮。 
 
-5. AAD 帐户持有者将收到一封电子邮件，并打开其中的链接以在激活帐户前确认帐户。 可以使用 Deputy 提供的任何其他 Deputy 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+5. Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。 可以使用 Deputy 提供的任何其他 Deputy 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -1,14 +1,14 @@
 ---
-title: 使用 PowerShell 运行第一个查询
-description: 本文将指导你完成为 Azure PowerShell 启用 Resource Graph 模块并运行首个查询的步骤。
-ms.date: 10/18/2019
+title: 快速入门：第一个 PowerShell 查询
+description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模块并运行第一个查询的步骤。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 6aaddcfc6cae16501ba6544f9789aa3ac1d13136
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958785"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304137"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -16,7 +16,11 @@ ms.locfileid: "73958785"
 
 在此过程结束时，应该已将模块添加到所选的 Azure PowerShell 安装中，并运行首个 Resource Graph 查询。
 
+## <a name="prerequisites"></a>先决条件
+
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>添加 Resource Graph 模块
 
@@ -28,7 +32,7 @@ Azure Resource Graph 模块需要以下软件：
 
 - Azure PowerShell 1.0.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
 
-- PowerShellGet 2.0.1 或更高版本。 若尚未安装或更新，请遵循[这些说明](/powershell/gallery/installing-psget)。
+- PowerShellGet 2.0.1 或更高版本。 若尚未安装或更新，请遵循[这些说明](/powershell/scripting/gallery/installing-psget)。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -103,10 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取有关[查询语言](./concepts/query-language.md)的详细信息。
-- 详细了解如何[浏览资源](./concepts/explore-resources.md)。
-- 使用 [Azure 门户](first-query-portal.md)运行第一个查询。
-- 使用 [Azure CLI](first-query-azurecli.md) 运行第一个查询。
-- 查看[初级查询](./samples/starter.md)的示例。
-- 查看[高级查询](./samples/advanced.md)的示例。
-- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈。
+本快速入门介绍了如何将 Resource Graph 模块添加到 Azure PowerShell 环境并运行第一个查询。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
+
+> [!div class="nextstepaction"]
+> [获取有关查询语言的详细信息](./concepts/query-language.md)

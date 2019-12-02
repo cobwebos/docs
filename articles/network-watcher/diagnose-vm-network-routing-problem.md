@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络路由问题 - 教程 - Azure 门户 | Microsoft Docs
+title: 教程：诊断 VM 网络路由问题 - Azure 门户
+titleSuffix: Azure Network Watcher
 description: 本教程介绍如何使用 Azure 网络观察程序的“下一跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684517"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276042"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
 
@@ -50,10 +51,10 @@ ms.locfileid: "64684517"
 
     |设置|值|
     |---|---|
-    |名称|myVm|
+    |Name|myVm|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |订阅| 选择订阅。|
+    |Subscription| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -85,7 +86,7 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 
     |设置                  |值                                                   |
     |---------                |---------                                               |
-    | 资源组          | 选择 myResourceGroup                                 |
+    | Resource group          | 选择 myResourceGroup                                 |
     | 虚拟机         | 选择 myVm                                            |
     | 网络接口       | myvm - 你的网络接口名称可能有所不同。   |
     | 源 IP 地址       | 10.0.0.4                                               |

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建 Azure 防火墙测试环境
-description: Azure PowerShell 脚本示例 - 创建 Azure 防火墙测试环境。
+title: 创建 Azure 防火墙测试环境
+description: 此脚本示例创建防火墙和测试网络环境。 网络具有一个包含三个子网的 VNet。
 services: virtual-network
 author: vhorne
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 8/13/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: df7897e5b0941f1763f1a10e51d49827bd2ca63d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839268"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195884"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>创建 Azure 防火墙测试环境
 

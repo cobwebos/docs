@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 门户中创建和共享查询
-description: 在本教程中，了解如何在 Azure 门户中创建 Resource Graph 查询并将其与其他人共享。
-ms.date: 10/23/2019
+title: 教程：在 Azure 门户中管理查询
+description: 在本教程中，你会在 Azure 门户中创建 Resource Graph 查询并将这个新查询与其他人共享。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958558"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303955"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询
 
-使用 Azure Resource Graph 资源管理器可以直接在 Azure 门户中保存 Resource Graph 查询。 查询有两种：_专用_和_共享_。 专用查询保存在 Azure 门户设置中。 而共享查询是资源管理器资源，可以使用基于角色的访问控制 (RBAC) 进行管理，并使用资源锁进行保护。
+使用 Azure Resource Graph 资源管理器可以直接在 Azure 门户中保存 Resource Graph 查询。 查询有两种：_专用_和_共享_。 专用查询保存在 Azure 门户设置中。 而共享查询是资源管理器资源，可以使用基于角色的访问控制 (RBAC) 进行管理，并使用资源锁进行保护。 这两种类型的查询都是静态加密的。
 
 通过将查询保存在 Azure 门户中，可以在查找收藏夹查询或常用查询时节省时间。 共享查询时，可以通过重复操作来帮助你的团队实现一致性和高效的目标。
 
@@ -54,7 +54,7 @@ ms.locfileid: "73958558"
 1. 选择“打开查询”  。 确保该类型为“专用查询”  。 已保存的名称“按 OS 对 VM 进行计数”  现在会显示在“查询名称”  列表中。 选择已保存查询的标题链接后，会将其加载到具有该查询的名称的新选项卡中。
 
    > [!NOTE] 
-   >当已保存的查询处于打开状态且选项卡显示其名称时，选择“保存”  按钮将使用所做的任何更改来更新它。 若要从这一打开的查询中创建新保存的查询，请选择“另存为”  并继续操作，就像保存全新的查询一样。
+   > 当已保存的查询处于打开状态且选项卡显示其名称时，选择“保存”  按钮将使用所做的任何更改来更新它。 若要从这一打开的查询中创建新保存的查询，请选择“另存为”  并继续操作，就像保存全新的查询一样。
 
 1. 若要删除已保存的查询，请再次选择“打开查询”  ，并验证“类型”  字段是否设置为“专用查询”  。 在已保存的 `Count VMs by OS` 查询的行上，选择“删除”  （回收站图标）。 在确认对话框中，选择“是”  以完成查询删除。
    然后，关闭“打开查询”  窗格。
@@ -153,9 +153,7 @@ Resources
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 [Azure 门户](../first-query-portal.md)运行第一个查询。
-- 获取有关[查询语言](../concepts/query-language.md)的详细信息。
-- 了解有关如何[浏览资源](../concepts/explore-resources.md)的详细信息。
-- 查看[初学者查询](../samples/starter.md)的示例。
-- 查看[高级查询](../samples/advanced.md)的示例。
-- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈。
+在本教程中，你已创建专用查询和共享查询。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
+
+> [!div class="nextstepaction"]
+> [获取有关查询语言的详细信息](../concepts/query-language.md)

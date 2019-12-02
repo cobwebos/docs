@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089166"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
 
@@ -240,7 +240,7 @@ ms.locfileid: "67089166"
     d. 单击“添加用户”  。
 
 > [!NOTE]
-> 可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 AAD 用户帐户。
+> 可以使用任何其他 TalentLMS 用户帐户创建工具或 TalentLMS 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

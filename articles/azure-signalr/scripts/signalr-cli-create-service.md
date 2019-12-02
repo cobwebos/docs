@@ -1,19 +1,19 @@
 ---
 title: Azure CLI 脚本示例 - 创建 SignalR 服务
-description: Azure CLI 脚本示例 - 创建 SignalR 服务
+description: 继续学习示例脚本，在名称随机生成的新资源组中创建新的 Azure SignalR 服务。
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: c6adda618282370b291ea2037ebee959628c9e93
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578955"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158081"
 ---
 # <a name="create-a-signalr-service"></a>创建 SignalR 服务 
 

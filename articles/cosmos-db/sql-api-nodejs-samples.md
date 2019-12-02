@@ -1,5 +1,5 @@
 ---
-title: 用于 Azure Cosmos DB 的 Node.js 示例
+title: 管理 Azure Cosmos 数据库中数据的 Node.js 示例
 description: 在 GitHub 上查找用于 Azure Cosmos DB 中常见任务的 Node.js 示例，包括 CRUD 操作。
 author: deborahc
 ms.service: cosmos-db
@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: c009084c4623391c299239feb5f95d7c2b4d2061
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170121"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220154"
 ---
-# <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js 示例
+# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中数据的 Node.js 示例
+
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK 示例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 示例](sql-api-dotnet-v3sdk-samples.md)

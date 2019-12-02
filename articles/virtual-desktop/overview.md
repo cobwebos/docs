@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 11/19/2019
 ms.author: helohr
-ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119993"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227704"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -124,7 +124,7 @@ Windows 虚拟桌面目前支持以下 x64 操作系统映像：
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows 虚拟桌面不支持 x86（32 位）操作系统映像。
+Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windows 10 企业版 KN 操作系统映像。
 
 可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
 

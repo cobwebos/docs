@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521232"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196451"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>使用“Azure Migrate:服务器评估”评估 VMware VM
 
@@ -108,8 +108,8 @@ ms.locfileid: "73521232"
 
   **算法** | **哈希值**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>创建设备 VM
@@ -172,7 +172,7 @@ ms.locfileid: "73521232"
 
 ### <a name="specify-vcenter-server-details"></a>指定 vCenter Server 详细信息
 1. 在“指定 vCenter Server 详细信息”中，指定 vCenter Server 的名称 (FQDN) 或 IP 地址。  可以保留默认端口，或指定 vCenter Server 侦听的自定义端口。
-2. 在“用户名”和“密码”中，指定设备用来发现 vCenter Server 上的 VM 的只读帐户凭据。   请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)。 可以通过相应地限制对 vCenter 帐户的访问，来限定发现范围；在[此处](tutorial-assess-vmware.md#scoping-discovery)详细了解如何限定发现范围。
+2. 在“用户名”和“密码”中，指定设备用来发现 vCenter 服务器上的 VM 的 vCenter Server 帐户凭据   。 请确保该帐户拥有[所需的发现权限](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)。 可以通过相应地限制对 vCenter 帐户的访问，来限定发现范围；在[此处](tutorial-assess-vmware.md#scoping-discovery)详细了解如何限定发现范围。
 3. 单击“验证连接”，确保设备可以连接到 vCenter Server。 
 
 ### <a name="specify-vm-credentials"></a>指定 VM 凭据
@@ -222,7 +222,7 @@ ms.locfileid: "73521232"
 
     同样，对于“服务器迁移”，必须为 vCenter 用户帐户应用对要迁移的 VM 所在的所有父对象的用户定义的、分配了这些[特权](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)的角色（可命名为 <em>Azure_Migrate</em>）。
 
-![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
+  ![分配权限](./media/tutorial-assess-vmware/assign-perms.png)
 
 - 替代方法是在数据中心级别分配用户帐户和角色，再将其传播到子对象。 然后，对于不想要发现/迁移的每个对象（例如 VM），为帐户提供“无访问权限”角色。  此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
 

@@ -1,19 +1,19 @@
 ---
-title: 如何借助 C++/NDK 来使用 Azure 空间定位点创建和查找定位点 | Microsoft Docs
+title: 在 C++/NDK 中创建和查找定位点
 description: 深入介绍如何借助 C++/NDK 来使用 Azure 空间定位点创建和查找定位点。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562550"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270281"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>如何借助 C++/NDK 来使用 Azure 空间定位点创建和查找定位点
 

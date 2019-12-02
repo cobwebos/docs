@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029795"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184902"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>创建 Azure 应用配置存储区
 
@@ -71,16 +71,16 @@ echo "$connstring"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建新资源组和应用配置存储区。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建新资源组和应用程序配置存储区。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig) | 创建应用配置存储区资源。 |
-| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/kv) | 列出存储在应用配置存储区中的密钥。 |
+| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | 创建应用程序配置存储区资源。 |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | 列出存储在应用程序配置存储区中的密钥。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-可在 [Azure 应用配置文档](../cli-samples.md)中查找其他应用配置 CLI 脚本示例。
+可在 [Azure 应用程序配置 CLI 示例](../cli-samples.md)中查找其他应用程序配置 CLI 脚本示例。

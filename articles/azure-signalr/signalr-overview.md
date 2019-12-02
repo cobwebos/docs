@@ -1,17 +1,17 @@
 ---
 title: 什么是 Azure SignalR 服务？
-description: Azure SignalR 服务概述。
+description: 更好地了解使用 Azure SignalR 的典型用例方案，并了解 Azure SignalR 的主要优势。
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 06/20/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: e7bdc62f7fa46bbacce7f264d8f331ea64b05430
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273691"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157582"
 ---
 # <a name="what-is-azure-signalr-service"></a>什么是 Azure SignalR 服务？
 

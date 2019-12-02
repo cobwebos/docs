@@ -1,19 +1,16 @@
 ---
-title: 教程 - 将标记添加到 Azure 资源管理器模板中的资源
+title: 教程 - 将标记添加到模板中的资源
 description: 将标记添加到在 Azure 资源管理器模板中部署的资源。 可以通过标记对资源进行逻辑组织。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 078d85b3120baf5b8bea9c305fb1f97763f8df59
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177573"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406062"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>教程：在资源管理器模板中添加标记
 
@@ -25,7 +22,7 @@ ms.locfileid: "72177573"
 
 必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
-## <a name="review-your-template"></a>审阅模板
+## <a name="review-template"></a>审阅模板
 
 以前的模板部署了存储帐户、应用服务计划和 Web 应用。
 
@@ -41,11 +38,11 @@ ms.locfileid: "72177573"
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-template"></a>部署模板
 
 可以部署模板并查看结果了。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假定你已将 **templateFile** 变量设置为模板文件的路径，如[第一个教程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -71,12 +68,12 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>验证部署
+## <a name="verify-deployment"></a>验证部署
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 从左侧菜单中，选择“资源组”  。
+1. 在左侧菜单中选择“资源组”。 
 1. 选择已将内容部署到其中的资源组。
 1. 选择一项资源，例如存储帐户资源。 可以看到，它现在有标记。
 
@@ -84,9 +81,9 @@ az group deployment create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要继续完成下一教程，则不需删除资源组。
+若要继续学习下一篇教程，则不需删除该资源组。
 
-如果现在要停下来，则可能需要通过删除资源组来清理部署的资源。
+如果你不打算继续学习，请删除该资源组以清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。 

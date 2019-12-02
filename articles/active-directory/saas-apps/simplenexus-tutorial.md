@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f8041ecea7c297c6eafdedfbedaae62f61e0e8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d368b6cd809ccf4e428974bf7c82c01bc5e035b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090584"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>教程：Azure Active Directory 与 SimpleNexus 集成
 
@@ -186,7 +186,7 @@ ms.locfileid: "67090584"
 若要使 Azure AD 用户能够登录 SimpleNexus，必须将这些用户预配到 SimpleNexus 中。 对于 SimpleNexus，预配是由租户管理员执行的一项手动任务。
 
 > [!NOTE]
-> 可以使用任何其他 SimpleNexus 用户帐户创建工具或 SimpleNexus 提供的 API 来预配 AAD 用户帐户。
+> 可以使用 SimpleNexus 提供的任何其他 SimpleNexus 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

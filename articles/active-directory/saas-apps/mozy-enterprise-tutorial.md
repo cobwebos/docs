@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f1aca75045f674fa45f5ad00c14a37c1abe7aea
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7d3b7f8982a24856818cbb6ce86060beac969fc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160427"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>教程：Azure Active Directory 与 Mozy Enterprise 集成
 
@@ -208,7 +208,7 @@ ms.locfileid: "73160427"
 为了使 Azure AD 用户能够登录到 Mozy Enterprise，必须将其预配到 Mozy Enterprise 中。 对于 Mozy Enterprise，需要手动执行预配。
 
 >[!NOTE]
->可以使用 Mozy Enterprise 提供的任何其他 Mozy Enterprise 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+>可以使用 Mozy Enterprise 提供的任何其他 Mozy Enterprise 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 **若要预配用户帐户，请执行以下步骤：**
 

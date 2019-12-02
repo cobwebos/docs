@@ -1,5 +1,5 @@
 ---
-title: 如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点 | Microsoft Docs
+title: C++/WinRT 中的粗略重新局部化
 description: 深入介绍如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8ea4abe8dee22a50fc50e8d58f99f382a135b70b
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 8402ed5f120c9d1fc6f751587b7346b323592a6d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093083"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277377"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点
 

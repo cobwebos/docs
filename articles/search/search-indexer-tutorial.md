@@ -1,21 +1,21 @@
 ---
-title: C# 教程：为 Azure SQL 数据库中的数据编制索引
+title: 教程：以 C# 为 Azure SQL 数据库中的数据编制索引
 titleSuffix: Azure Cognitive Search
-description: 本 C# 代码示例演示如何连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 认知搜索索引中。
+description: 在本 C# 教程中，连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 认知搜索索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113320"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406715"
 ---
-# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C# 教程：使用 Azure 认知搜索索引器导入 Azure SQL 数据库
+# <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>教程：使用 Azure 认知搜索索引器以 C# 导入 Azure SQL 数据库
 
 了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 认知搜索组件，用于对外部数据源进行抓取，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
 
