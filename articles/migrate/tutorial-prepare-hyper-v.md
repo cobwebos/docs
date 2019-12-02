@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure Migrate 准备好要评估并迁移到 Azure 的 Hyper-V VM | Microsoft Docs
-description: 介绍如何使用 Azure Migrate 准备好要评估并迁移到 Azure 的 Hyper-V VM。
+title: 使用 Azure Migrate 准备 Hyper-V VM 以进行评估/迁移
+description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/16/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f93528e2a35661f8a233aea476a958a079d7cd59
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010307"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196258"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
 本文介绍如何使用 [Azure Migrate](migrate-services-overview.md) 准备好要评估并迁移到 Azure 的本地 Hyper-V VM。
 
-[Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
+[Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
 本教程是介绍如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第一篇文章。 本教程介绍如何执行下列操作：
 
@@ -42,7 +42,7 @@ ms.locfileid: "71010307"
 
 需要为 Azure Migrate 部署设置权限。
 
-- 你的 Azure 帐户需要有权创建 Azure Migrate 项目。 
+- 你的 Azure 帐户需要有权创建 Azure Migrate 项目。
 - 你的帐户需要有权注册 Azure Migrate 设备。 该设备用于 Hyper-V 发现和迁移。 在设备注册过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用用于唯一标识设备：
     - 第一个应用将与 Azure Migrate 服务终结点通信。
     - 第二个应用访问注册期间创建的 Azure Key Vault，以存储 Azure AD 应用信息和设备配置设置。
@@ -70,7 +70,7 @@ ms.locfileid: "71010307"
 值得注意的是：
 
 - 除上述权限外，应用对订阅不拥有任何其他访问权限。
-- 只有在注册新的设备时，你才需要这些权限。 设置设备后可以删除这些权限。 
+- 只有在注册新的设备时，你才需要这些权限。 设置设备后可以删除这些权限。
 
 
 #### <a name="grant-account-permissions"></a>授予帐户权限
@@ -87,7 +87,7 @@ ms.locfileid: "71010307"
 
 
 
-#### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色 
+#### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色
 
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
@@ -98,7 +98,7 @@ ms.locfileid: "71010307"
 
 1. 验证 Hyper-V 主机设置。
 2. 在每台主机上设置 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。
-3. 如果 VM 磁盘位于远程 SMB 存储中，则需要委托凭据。 
+3. 如果 VM 磁盘位于远程 SMB 存储中，则需要委托凭据。
     - 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
     - 允许每台主机充当设备的代理，如下所述。
     - 稍后在设置设备时，将在设备上启用委托。
@@ -122,7 +122,7 @@ ms.locfileid: "71010307"
 - 检查主机是否正在运行受支持的 Hyper-V 版本，并检查 Hyper-V 角色。
 - 启用 WinRM 服务，并在主机上打开端口 5985 (HTTP) 和 5986 (HTTPS)（收集元数据时需要使用这些端口）。
 - 在主机上启用 PowerShell 远程控制。
-- 检查主机管理的所有 VM 上是否已启用 Hyper-V 集成服务。 
+- 检查主机管理的所有 VM 上是否已启用 Hyper-V 集成服务。
 - 根据需要在主机上启用 CredSSP。
 
 按如下所示运行脚本：
@@ -133,7 +133,7 @@ ms.locfileid: "71010307"
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
-    用法示例： 
+    用法示例：
     ```
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
@@ -215,7 +215,7 @@ Azure Migrate 需要拥有发现本地 VM 的权限。
 
 应在每个 VM 上启用 Integration Services，使 Azure Migrate 能够捕获 VM 上的操作系统信息。
 
-在要发现和评估的每个 VM 上，启用 [Hyper-V Integration Services](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。 
+在要发现和评估的每个 VM 上，启用 [Hyper-V Integration Services](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
 
 ## <a name="prepare-for-hyper-v-migration"></a>准备 Hyper-V 迁移
 
@@ -226,12 +226,12 @@ Azure Migrate 需要拥有发现本地 VM 的权限。
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍以下操作：
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * 设置 Azure 帐户权限。
 > * 准备要评估和迁移的 Hyper-V 主机与 VM。
 
 继续学习下一篇教程以创建 Azure Migrate 项目，并评估要迁移到 Azure 的 Hyper-V Vm
 
-> [!div class="nextstepaction"] 
-> [评估 Hyper-V VM](./tutorial-assess-hyper-v.md) 
+> [!div class="nextstepaction"]
+> [评估 Hyper-V VM](./tutorial-assess-hyper-v.md)

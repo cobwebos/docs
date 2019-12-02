@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB
+title: 教程`:`使用托管标识访问 Azure Cosmos DB - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b79c4e1ddb84213ce9000236727d9bca298a0cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66231880"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183341"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 

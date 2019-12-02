@@ -1,20 +1,22 @@
 ---
-title: 使用 Azure Resource Graph Explorer 运行第一个查询
-description: 本文逐步引导你在 Azure 门户中使用 Azure Resource Graph Explorer 运行第一个查询。
-ms.date: 10/21/2019
+title: 快速入门：第一个门户查询
+description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9cb8fdfcc68e2ef8e19a8fce2545d2939ac13e06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958827"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406801"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
 可以直接在 Azure 门户中通过 Azure Resource Graph Explorer 使用 Azure Resource Graph 的强大功能。 Resource Graph Explorer 提供有关可查询的 Azure 资源管理器资源类型和属性的可浏览信息。 Resource Graph Explorer 还提供一个整洁的界面用于处理多个查询、评估结果，甚至是将某些查询的结果转换为可固定到 Azure 仪表板的图表。
 
 在本快速入门结束时，你已使用 Azure 门户和 Resource Graph Explorer 运行第一个 Resource Graph 查询，并已将结果固定到仪表板。
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -117,9 +119,7 @@ ms.locfileid: "73958827"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取有关[查询语言](./concepts/query-language.md)的详细信息。
-- 详细了解如何[浏览资源](./concepts/explore-resources.md)。
-- 使用 [Azure CLI](first-query-azurecli.md) 运行第一个查询。
-- 查看[初级查询](./samples/starter.md)的示例。
-- 查看[高级查询](./samples/advanced.md)的示例。
-- 在 [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) 上提供反馈。
+本快速入门已介绍如何使用 Azure Resource Graph 资源管理器运行第一个查询，并提供了 Resource Graph 支持的仪表板示例。 若要详细了解 Resource Graph 语言，请继续阅读查询语言详细信息页。
+
+> [!div class="nextstepaction"]
+> [获取有关查询语言的详细信息](./concepts/query-language.md)

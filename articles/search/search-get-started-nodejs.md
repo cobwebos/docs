@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 在 Node.js 中创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 适用于 Azure 认知搜索的 Node.js 示例，演示如何通过 JavaScript 创建索引、将数据载入索引以及查询索引。
+description: 在此 Node.js 快速入门中，了解如何使用 JavaScript 和 REST API 对 Azure 认知搜索创建索引、加载数据和运行查询。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719987"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406936"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -684,11 +684,12 @@ async queryAsync(searchTerm) {
 
 `run` 函数的总体行为是删除 Azure 认知搜索索引（如果存在）、创建索引、添加一些数据，并执行一些查询。  
 
-## <a name="clean-up"></a>清理 
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
 ## <a name="next-steps"></a>后续步骤

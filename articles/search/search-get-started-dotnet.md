@@ -1,7 +1,7 @@
 ---
 title: 快速入门：通过 .NET 在 C# 中创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 介绍如何使用 C# 和 Azure 认知搜索 .NET SDK 创建索引、加载数据和运行查询。
+description: 此 C# 快速入门介绍如何使用 Azure 认知搜索 .NET SDK 创建索引、加载数据以及运行查询。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112024"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406763"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -548,7 +548,7 @@ ms.locfileid: "74112024"
 
     输出包含与以前相同的消息，并添加了查询信息和结果。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

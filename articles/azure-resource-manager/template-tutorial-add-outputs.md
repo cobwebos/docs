@@ -1,19 +1,16 @@
 ---
-title: 教程 - 将输出添加到 Azure 资源管理器模板
+title: 教程 - 将输出添加到模板
 description: 将输出添加到 Azure 资源管理器模板以简化语法。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 654d3f7cbf6362d982549c86e6f54fea1e890cfc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001537"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406000"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>教程：将输出添加到资源管理器模板
 
@@ -25,9 +22,9 @@ ms.locfileid: "72001537"
 
 必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
-## <a name="review-your-template"></a>审阅模板
+## <a name="review-template"></a>审阅模板
 
-在上一教程的末尾，模板有以下 JSON：
+在上一篇教程的结束时，模板包含以下 JSON：
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
 
@@ -49,11 +46,11 @@ ms.locfileid: "72001537"
 
 最后，它从存储帐户返回 **primaryEndpoints** 属性
 
-## <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-template"></a>部署模板
 
 现在可以部署模板并查看返回的值了。
 
-如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假定你已将 **templateFile** 变量设置为模板文件的路径，如[第一个教程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +95,7 @@ az group deployment create \
 现在，让我们来看一下资源组和部署历史记录。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 从左侧菜单中，选择“资源组”  。
+1. 在左侧菜单中选择“资源组”。 
 1. 选择已将内容部署到其中的资源组。
 1. 我们会在资源组中有至少一个（也可能有多个）存储帐户，具体取决于所执行的步骤。
 1. 此外还会在历史记录中列出多个成功的部署。 选择该链接。
@@ -123,9 +120,9 @@ az group deployment create \
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要继续完成下一教程，则不需删除资源组。
+若要继续学习下一篇教程，则不需删除该资源组。
 
-如果现在要停下来，则可能需要通过删除资源组来清理部署的资源。
+如果你不打算继续学习，请删除该资源组以清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。 

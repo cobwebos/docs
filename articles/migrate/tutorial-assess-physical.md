@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123509"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280553"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>使用 Azure Migrate：服务器评估服务器评估”评估 VMware VM
-
-> [!NOTE]
-> 如果在 Azure Migrate 门户中看不到此功能，请等待一段时间。 大约在一周后，它就会出现。
- 
 
 本文介绍如何使用“Azure Migrate:服务器评估”工具评估本地 VMware VM。
 
@@ -108,11 +104,12 @@ ms.locfileid: "74123509"
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
 
-3.  对于设备版本 1.19.05.10，生成的哈希应与这些设置匹配。
+3.  对于最新设备版本，生成的哈希应与这些设置匹配。
 
   **算法** | **哈希值**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 96fd99581072c400aa605ab036a0a7c0
+  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 
@@ -135,7 +132,7 @@ ms.locfileid: "74123509"
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-脚本将在成功完成时启动设备 Web 应用程序。 
+脚本将在成功完成时启动设备 Web 应用程序。
 
 如果出现任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志以进行故障排除。
 
@@ -166,7 +163,7 @@ ms.locfileid: "74123509"
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 单击“登录”。  如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
-2. 在新的标签页中，使用 Azure 凭据登录。 
+2. 在新的标签页中，使用 Azure 凭据登录。
     - 使用用户名和密码登录。
     - 不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。
@@ -188,7 +185,7 @@ ms.locfileid: "74123509"
     - 若要删除服务器，请选择 >“删除”  。
 4. 验证之后，单击“保存并启动发现”以启动发现过程。 
 
-随即会启动发现。 每台服务器大约需要 1.5 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。 
+随即会启动发现。 每台服务器大约需要 1.5 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。
 
 ### <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 

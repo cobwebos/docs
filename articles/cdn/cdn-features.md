@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127924"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278076"
 ---
 # <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
@@ -41,11 +41,11 @@ Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azur
 | [全局服务器负载均衡 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [快速清除](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** ，目前 Akamai 的 Azure CDN 不支持全部清除和通配符清除 |**&#x2713;** |**&#x2713;** |
 | [资产预加载](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| 缓存/标头设置（使用[缓存规则](cdn-caching-rules.md)）  |  |**&#x2713;** |**&#x2713;** | |
-| 可自定义的基于规则的内容交付引擎（使用[规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| 缓存/标头设置（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| URL 重定向/重写（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
-| 移动设备规则（使用 [规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
+| 缓存/标头设置（使用[缓存规则](cdn-caching-rules.md)）  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| 可自定义的、基于规则的内容分发引擎 |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[规则引擎](cdn-rules-engine.md) |
+| 缓存/标头设置  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
+| URL 重定向/重写 |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
+| 移动设备规则  |**&#x2713;** 使用[标准规则引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[高级规则引擎](cdn-rules-engine.md) |
 | [查询字符串缓存](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 双协议栈 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 支持](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |

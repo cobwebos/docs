@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 96d212df51a58125e3b959a18f5cf2ac9d391d30
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793248"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422376"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Office 365 组
 
@@ -31,7 +31,7 @@ ms.locfileid: "58793248"
 
 角色 | 权限
 --------- | ---------
-全局管理员、合作伙伴 2 级支持人员和 Intune 管理员 | 可以还原任何已删除的 Office 365 组
+全局管理员、组管理员、合作伙伴 2 级支持人员和 Intune 管理员 | 可以还原任何已删除的 Office 365 组
 用户管理员与合作伙伴 1 级支持人员 | 可以还原任何已删除的 Office 365 组，但分配给公司管理员角色的组除外
 用户 | 可以还原他们拥有的任何已删除 Office 365 组
 
@@ -39,14 +39,14 @@ ms.locfileid: "58793248"
 
 1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 选择“组”，然后选择“已删除的组”，查看可还原的已删除组。
+2. 选择“组”，然后选择“已删除的组”，查看可还原的已删除组   。
 
     ![查看可供还原的组](media/groups-lifecycle/deleted-groups3.png)
 
-3. 可以在“已删除的组”边栏选项卡上执行以下操作：
+3. 可以在“已删除的组”边栏选项卡上执行以下操作  ：
 
-   - 选择“还原组”，从而还原已删除的组及其内容。
-   - 选择“永久删除”，从而永久删除已删除的组。 只有管理员才能永久删除某个组。
+   - 选择“还原组”，从而还原已删除的组及其内容  。
+   - 选择“永久删除”，从而永久删除已删除的组  。 只有管理员才能永久删除某个组。
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>使用 Powershell 查看可还原的已删除 Office 365 组
 

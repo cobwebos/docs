@@ -1,27 +1,29 @@
 ---
-title: 快速入门：使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心
-description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
+title: 使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: d6cb5740da53f9132613c2c03a1c9b88c2ce923b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0bd47de8862be4e66914b9748a00ce907acda526
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904805"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555503"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 以下步骤演示了如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用 Python 代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
+
+> [!IMPORTANT]
+> 本文仅适用于已弃用的 V1 Python SDK。 V2 中尚不提供用于 IoT 中心设备预配服务的设备和服务客户端。 该团队目前正在努力使 V2 具有功能奇偶一致性。
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
@@ -32,9 +34,6 @@ Azure IoT 设备预配服务支持两类注册：
 本文将演示单个注册。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
-
-> [!NOTE]
-> 本指南仅适用于现已弃用的 V1 Python SDK。 V2 尚不支持模拟 X.509 设备。 该团队目前正在努力使 V2 具有功能奇偶一致性。
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
@@ -94,18 +93,18 @@ Azure IoT 设备预配服务支持两类注册：
  
 4. 在 Windows 计算机上创建名为 **_X509testcertificate.pem_** 的文件，在所选编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存文件。 
 
-5. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开预配服务  。
+5. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开预配服务  。
 
-6. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
+6. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
-7. 在“添加注册”面板下  ，输入以下信息：
+7. 在“添加注册”面板中，输入以下信息  ：
    - 选择“X.509”  作为标识证明机制  。
-   - 在“主要证书 .pem 或 .cer 文件”下，单击“选择文件”选择在前述步骤中创建的证书文件 X509testcertificate.pem。   
+   - 在“主要证书 .pem 或 .cer 文件”下，选择“选择文件”以选择在前述步骤中创建的证书文件 X509testcertificate.pem    。
    - （可选）可以提供以下信息：
      - 选择与预配服务链接的 IoT 中心。
      - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。 
      - 使用设备所需的初始配置更新“初始设备孪生状态”  。
-   - 完成后，单击“保存”按钮  。 
+   - 完成后，按“保存”按钮  。 
 
      [![在门户中为 X.509 证明添加单个注册](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
@@ -113,16 +112,16 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="simulate-the-device"></a>模拟设备
 
-1. 在设备预配服务摘要边栏选项卡上，选择“概览”。  记下“ID 范围”和“全局服务终结点”。  
+1. 在“设备预配服务”菜单中，选择“概述”  。 记下“ID 范围”和“全局服务终结点”。  
 
     ![服务信息](./media/python-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
 2. 下载并安装 [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip  - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
     
     > [!NOTE] 
-    > 如果使用的是 Windows，还需要安装 [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/download/confirmation.aspx?id=48145)。 pip 包需要可再发行组件，才能加载/执行 C DLL。
+    > 如果使用的是 Windows，还需要安装 [Visual C++ Redistributable for Visual Studio 2015](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 pip 包需要可再发行组件，才能加载/执行 C DLL。
 
-3. 按照[这些说明](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)生成 Python 包。
+3. 按照[这些说明](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)生成 Python 包。
 
    > [!NOTE]
    > 如果使用 `pip`，请确保也安装 `azure-iot-provisioning-device-client` 包。
@@ -152,7 +151,7 @@ Azure IoT 设备预配服务支持两类注册：
 
     ![成功注册](./media/python-quick-create-simulated-device-x509/enrollment-success.png)
 
-8. 在门户中导航到已链接到预配服务的 IoT 中心，然后打开“Device Explorer”边栏选项卡。  将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“Device Explorer”边栏选项卡上，“状态”为“已启用”。    如果在运行示例设备应用程序之前已打开边栏选项卡，则可能需要单击顶部的“刷新”按钮。  
+8. 在门户中导航到已链接到预配服务的 IoT 中心，然后打开“Device Explorer”边栏选项卡。  将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“Device Explorer”边栏选项卡上，“状态”为“已启用”。    如果在运行示例设备应用程序之前已打开边栏选项卡，则可能需要按顶部的“刷新”按钮  。 
 
     ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device-x509/registration.png) 
 
@@ -162,11 +161,11 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
-2. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后单击“单个注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
-3. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
+2. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+3. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 ## <a name="next-steps"></a>后续步骤
 

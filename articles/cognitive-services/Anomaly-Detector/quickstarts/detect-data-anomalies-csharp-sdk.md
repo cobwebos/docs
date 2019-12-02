@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/15/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 67d6bb0bf880de0b4bf6878128e2ed27e130b18d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719005"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483066"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>快速入门：适用于 .NET 的异常检测器客户端库
 
@@ -26,12 +26,13 @@ ms.locfileid: "73719005"
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
 
-[库参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [代码示例](https://github.com/Azure-Samples/anomalydetector)
+[库参考文档](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本
+* 异常检测器密钥和终结点
 
 ## <a name="setting-up"></a>设置
 
@@ -41,15 +42,15 @@ ms.locfileid: "73719005"
 
 ### <a name="create-a-new-net-core-application"></a>创建新的 .NET Core 应用程序
 
-在控制台窗口（例如 CMD、PowerShell 或 Bash）中，使用 dotnet `new` 命令创建名为 `anomaly-detector-quickstart` 的新控制台应用。 此命令将创建包含单个 C# 源文件的简单“Hello World”项目：*Program.cs*。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `anomaly-detector-quickstart` 的新控制台应用。 此命令将创建包含单个 C# 源文件的简单“Hello World”项目：*Program.cs*。 
 
-```console
+```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
 ```
 
 将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -67,7 +68,7 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的异常检测器客户端库：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
 ```
 
@@ -131,24 +132,10 @@ dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0
 
 ## <a name="run-the-application"></a>运行应用程序
 
-从应用程序目录，使用 dotnet `run` 命令运行应用程序。
+从应用程序目录使用 `dotnet run` 命令运行应用程序。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>清理资源
-
-如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与资源组相关联的任何其他资源。
-
-* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
->[使用 Azure Databricks 流式处理异常检测](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* 什么是[异常检测器 API？](../overview.md)
-* 使用异常检测器 API 时的[最佳做法](../concepts/anomaly-detection-best-practices.md)。
-* 可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) 上找到此示例的源代码。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

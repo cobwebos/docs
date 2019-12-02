@@ -1,24 +1,16 @@
 ---
-title: 排查资源管理器部署问题 | Microsoft Docs
+title: 对部署进行故障排除
 description: 了解如何监视和排查 Azure 资源管理器模板部署问题。 显示活动日志和部署历史记录。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32f3f55df2b87b35672d811c63a21b956a8a4b52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390214"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325356"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>教程：排查资源管理器模板部署问题
 
@@ -26,7 +18,7 @@ ms.locfileid: "72390214"
 
 有两种类型的错误与模板部署相关：
 
-- **验证错误**源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。 
+- **验证错误**源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。
 - **部署错误**源于部署过程中发生的条件。 原因包括尝试访问并行部署的资源。
 
 两种类型的错误都会返回用于对部署进行故障排除的错误代码。 两种类型的错误都会显示在活动日志中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
@@ -47,7 +39,7 @@ ms.locfileid: "72390214"
 
 若要完成本文，需要做好以下准备：
 
-- 包含[资源管理器工具扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)的 [Visual Studio Code](https://code.visualstudio.com/)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 

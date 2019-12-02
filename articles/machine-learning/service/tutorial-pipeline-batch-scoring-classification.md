@@ -1,7 +1,7 @@
 ---
 title: 教程：用于批量评分的 ML 管道
 titleSuffix: Azure Machine Learning
-description: 生成机器学习管道，用于对 Azure 机器学习中的图像分类模型运行批量评分。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在专业技术和机器学习，而不是在基础结构和自动化上。
+description: 本教程介绍如何生成机器学习管道，用于对 Azure 机器学习中的图像分类模型运行批量评分。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在专业技术和机器学习，而不是在基础结构和自动化上。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 11d57031405939e37afade9a9452c5d3a8b9e1e4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796697"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483294"
 ---
-# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>生成和使用用于批量评分的 Azure 机器学习管道
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

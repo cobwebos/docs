@@ -1,22 +1,17 @@
 ---
-title: Azure CLI 示例 - Azure Functions | Microsoft Docs
+title: Azure CLI 示例 - Azure Functions
 description: Azure CLI 示例 - Azure Functions
-services: functions
-documentationcenter: functions
 author: syntaxc4
-manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: azure-functions
 ms.topic: sample
 ms.date: 01/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a5cfa6e7a054003750536fbb5c8206ebabafe966
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 8de245dc6307890c872bfc4b8b66371775e1ad12
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514440"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532875"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -27,7 +22,9 @@ ms.locfileid: "66514440"
 | 创建应用 | 说明 |
 |---|---|
 | [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建 Function App。  |
-| [在应用服务计划中创建 Function App](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
+| [创建无服务器 Python 函数应用](scripts/functions-cli-create-serverless-python.md) | 在专用应用服务计划中创建 Function App。 |
+| [在可缩放的高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md) | 在专用应用服务计划中创建 Function App。 |
+| [在专用（应用服务）计划中创建函数应用](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
 
 | 集成 | 说明|
 |---|---|
@@ -38,15 +35,3 @@ ms.locfileid: "66514440"
 |---|---|
 | [从 GitHub 进行部署](scripts/functions-cli-create-function-app-github-continuous.md) | 创建从 GitHub 存储库部署的 Function App。  |
 | [从 Azure DevOps 部署](scripts/functions-cli-create-function-app-vsts-continuous.md) | 创建从 Azure DevOps 存储库部署的函数应用。  |
-
-| 配置应用 | 说明 |
-|---|---|
-| [将自定义域映射到 Function App](scripts/functions-cli-configure-custom-domain.md) | 定义函数的自定义域。  |
-| [将 SSL 证书绑定到 Function App](scripts/functions-cli-configure-ssl-certificate.md)  |  将函数的 SSL 证书上传到自定义域中。 |
-
-<!---
-
-|**Scale app**||
-
-|**Connect app to resources**||
--->

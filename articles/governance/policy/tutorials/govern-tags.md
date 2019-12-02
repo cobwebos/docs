@@ -1,14 +1,14 @@
 ---
-title: 管理标记治理
-description: 使用 Azure Policy 的修改效果来创建和执行新资源和现有资源上的标记治理模型。
-ms.date: 11/04/2019
+title: 教程：管理标记治理
+description: 本教程使用 Azure Policy 的修改效果来创建和执行新资源和现有资源上的标记治理模型。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069657"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482261"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教程：通过 Azure Policy 管理标记治理
 
@@ -21,7 +21,16 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 - 已经拥有数以千计的资源，但没有标记治理经验
 - 已经具有需要更改的现有分类
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+在本教程中，你将完成以下任务：
+
+> [!div class="checklist"]
+> - 确定业务要求
+> - 将每个要求映射到策略定义
+> - 将标记策略分组为一个计划
+
+## <a name="prerequisites"></a>先决条件
+
+需要一个 Azure 订阅才能完成此教程。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="identify-requirements"></a>确定要求
 
@@ -184,6 +193,16 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 创建上述标记策略后，将它们加入到标记治理的单个计划中，并将其分配给管理组或订阅。 该计划和包含的策略随后会评估现有资源的合规性，并改变与策略规则中的“if”属性相匹配的新资源或更新资源的请求  。 但是，该策略不会自动使用定义的标记更改更新现有的不合规资源。
 
 与 [deployIfNotExists](../concepts/effects.md#deployifnotexists) 策略一样，“修改”策略使用修正任务来更改现有的不合规资源  。 按照有关[如何修正资源](../how-to/remediate-resources.md)的说明来识别不合规的“修改”资源，然后将标记更正为已定义的分类  。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
+
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）    。
+
+1. 搜索要删除的新计划或策略定义（或分配）。
+
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。  
 
 ## <a name="review"></a>审阅
 

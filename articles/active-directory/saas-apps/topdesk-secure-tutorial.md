@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3125f5b9075a69289bd6a44d62c3d06d5e6d910d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161121"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>教程：Azure Active Directory 与 TOPdesk - Secure 集成
 
@@ -270,7 +270,7 @@ ms.locfileid: "73161121"
     e. 单击“ **保存**”。
 
 > [!NOTE]
-> 可以使用任何其他 TOPdesk - Secure 用户帐户创建工具或 TOPdesk - Secure 提供的 API 来预配 AAD 用户帐户。
+> 可使用任何其他 TOPdesk - Secure 用户帐户创建工具或 TOPdesk - Secure 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 ASE/SQL 工作负荷蓝图示例 - 控制映射
+title: ISO 27001 ASE/SQL 工作负荷蓝图示例控件
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例到 Azure Policy 和 RBAC 的控制映射。
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: ff27f0d2076fc86454f547aaa67a112ed3c30f73
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032168"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546778"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作负荷蓝图示例的控制映射
 

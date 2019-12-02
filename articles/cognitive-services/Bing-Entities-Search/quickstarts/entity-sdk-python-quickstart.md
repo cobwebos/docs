@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用适用于 Python 的必应实体搜索 SDK 搜索实体
+title: 快速入门：使用适用于 Python 的 SDK 搜索实体 - 必应实体搜索
 titleSuffix: Azure Cognitive Services
 description: 按照本快速入门使用适用于 Python 的必应实体搜索 SDK 搜索实体。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 0a4a4e3ce6f318a693b8ee760a0d892eaecb2c82
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 7720304cc017db86b052cee39ca0430e5c1bf9c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479008"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327130"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>快速入门：通过 Python 使用必应实体搜索 SDK
 

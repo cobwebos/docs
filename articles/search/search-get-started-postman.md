@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 REST API 在 Postman 中创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用 Postman 调用 Azure 认知搜索 REST API 并了解示例数据和定义。
+description: 在本 REST API 快速入门中，了解如何使用 Postman 调用 Azure 认知搜索 REST API 并了解示例数据和定义。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/04/2019
-ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792282"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406942"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -288,7 +288,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 请注意，api-version 语法有所不同。 对于此请求，请使用 `?` 来追加 api-version。 `?` 将 URL 路径与查询字符串分隔开，而 & 将查询字符串中的每个“名称=值”对分隔开。 就此查询来说，api-version 是查询字符串中的第一个项，也是唯一项。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

@@ -1,19 +1,19 @@
 ---
-title: 如何借助 Java 来使用 Azure 空间定位点创建和查找定位点 | Microsoft Docs
+title: 借助 Java 创建和查找定位点
 description: 深入介绍如何借助 Java 来使用 Azure 空间定位点创建和查找定位点。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7bc4a2251fa07f201d35e385806d2eb49cd8851e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e03fb8bfc221edf209fd2480eedad822983d59a9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562530"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270174"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>如何借助 Java 来使用 Azure 空间定位点创建和查找定位点
 

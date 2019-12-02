@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: fd75cc392bb30d15b665190eef8fbea39d692ee3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dfa5fbcf5df8ee314aab3e4a8228d81e7e14565b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160339"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>教程：Azure Active Directory 与 New Relic 集成
 
@@ -225,7 +225,7 @@ ms.locfileid: "73160339"
     c. 单击“添加此用户”。 
 
 >[!NOTE]
->可以使用任何其他 New Relic 用户帐户创建工具或 New Relic 提供的 API 来预配 AAD 用户帐户。
+>可以使用任何其他 New Relic 用户帐户创建工具或 New Relic 提供的 API 来预配 Azure AD 用户帐户。
 > 
 
 ### <a name="test-single-sign-on"></a>测试单一登录 

@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 添加来宾用户的快速入门 - Azure Active Directory | Microsoft Docs
+title: 快速入门：使用 PowerShell 添加来宾用户 - Azure AD
 description: 本快速入门介绍如何使用 PowerShell 向外部 Azure AD B2B 协作用户发送邀请。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5325529acb66735db0c27c0f5bdfca819e8ec4d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812304"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273359"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入门：使用 PowerShell 添加来宾用户
 
@@ -56,7 +56,7 @@ Get-Module -ListAvailable AzureAD*
    Install-Module AzureADPreview 
   ```
 
-你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
+你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块  。
 
 ### <a name="get-a-test-email-account"></a>获取测试电子邮件帐户
 
@@ -69,13 +69,13 @@ Get-Module -ListAvailable AzureAD*
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```
-例如，`Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`。
+例如，`Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"` 。
 
 在系统提示时输入凭据。
 
 ## <a name="send-an-invitation"></a>发送邀请
 
-1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和“sanda\@fabrikam.com”替换为你的测试电子邮件帐户名和电子邮件地址）： 
+1. 要向测试电子邮件帐户发送邀请，请运行以下 PowerShell 命令（将“Sanda”和“sanda\@fabrikam.com”替换为你的测试电子邮件帐户名和电子邮件地址）   ： 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. 查看输出，确保已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式。 例如，sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织。
+3. 查看输出，确保已列出受邀用户，其中用户主体名称 (UPN) 采用 emailaddress#EXT#\@domain 的格式   。 例如，sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com，其中 contoso.onmicrosoft.com 是你从其发送邀请的组织  。
 
    ![显示已添加的来宾用户的 PowerShell 输出](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

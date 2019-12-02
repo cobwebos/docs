@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 1848f7230ed189f139a223020f08db150295132d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2b095f76eb2c2c9ca420e0049ced3e7af1e742c4
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647489"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405906"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>快速入门：适用于 .NET 的人脸客户端库
 
@@ -53,13 +53,13 @@ Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使
 
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `face-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。 
 
-```console
+```dotnetcli
 dotnet new console -n face-quickstart
 ```
 
 将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -85,7 +85,7 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的人脸客户端库：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0-preview.1
 ```
 
@@ -174,7 +174,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0
 
 ### <a name="print-matches"></a>输出匹配项
 
-以下代码将匹配详细信息输出到控制台。
+以下代码将匹配详细信息输出到控制台：
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
@@ -287,7 +287,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0
 
 从应用程序目录使用 `dotnet run` 命令运行应用程序。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048014"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479715"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central（预览版功能）是什么？
 
@@ -51,7 +51,7 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 不支持数组架构类型。
 - 不支持应用程序模板导出和应用程序复制。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
-- 它仅适用于欧洲北部和美国中部地区。
+- 仅在美国和欧洲地区提供。
 - 必须在同一文件中以内联方式定义设备功能模型的所有接口。
 
 ## <a name="personas"></a>角色
@@ -140,6 +140,10 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 作为解决方案构建者，你可以定义对连接设备的数据流进行操作的自定义规则和操作。 操作员可以在设备级别启用或禁用这些规则来控制和自动执行应用程序中的任务。
 
 管理员通过[用户角色和权限](howto-administer.md)管理对应用程序的访问权限。
+
+## <a name="quotas"></a>配额
+
+每个 Azure 订阅具有默认的配额，这些配额可能影响 IoT 解决方案的范围。 目前，IoT Central 将可在单个订阅中部署的应用程序数限制为 10 个。 如果需要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
 
 ## <a name="next-steps"></a>后续步骤
 

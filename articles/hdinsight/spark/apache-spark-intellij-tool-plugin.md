@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494243"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533923"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -336,8 +336,6 @@ ms.locfileid: "73494243"
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
 
-它仅在 IntelliJ 2018.2 和 2018.3 上受支持。
-
 1. 在菜单栏中，导航到“运行” > “编辑配置...”。  
 
 2. 在“运行/调试配置”窗口中的左窗格内，导航到“HDInsight 上的 Apache Spark” > “[HDInsight 上的 Spark] myApp”。   
@@ -366,6 +364,25 @@ ms.locfileid: "73494243"
 可以通过将一些代码发送到 Local Console 或 Livy Interactive Session Console (Scala) 来方便地预测脚本结果。 可以突出显示 Scala 文件中的一些代码，然后右键单击“将选定内容发送到 Spark Console”。  选定代码将发送到控制台并执行。 结果将显示在控制台中的代码之后。 如果存在错误，则控制台将检查错误。  
 
    ![将选定内容发送到 Spark Console](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>与 HDInsight Identity Broker (HIB) 集成 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>连接带有 ID 代理的 HDInsight ESP 群集 (HIB)
+可以按照常规步骤登录到 Azure 订阅，以连接带有 ID 代理的 HDInsight ESP 群集 (HIB)。 登录后，可以在 Azure 资源管理器中看到群集列表。 有关详细信息，请参阅[连接到 HDInsight 群集](#connect-to-your-hdinsight-cluster)。
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Spark Scala 应用程序
+可以按照常规步骤将作业提交到带有 ID 代理的 HDInsight ESP 群集 (HIB)。 有关更多说明，请参阅[在 HDInsight Spark 群集中运行 Spark Scala 应用程序](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)。
+
+我们会将所需的文件上传到与你的登录帐户同名的文件夹，你还可以在配置文件中看到上传路径。
+
+   ![配置中的上传路径](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>带有 ID 代理的 HDInsight ESP 群集 (HIB) 上的 Spark 控制台
+可以在带有 ID 代理的 HDInsight ESP 群集 (HIB) 上运行 Spark Local Console(Scala) 或运行 Spark Livy Interactive Session Console(Scala)。 如需查看更详尽的说明，请参阅 [Spark 控制台](#spark-console)。
+
+   > [!NOTE]  
+   > 带有 ID 代理的 HDInsight ESP 群集 (HIB) 目前尚不支持[链接群集](#link-a-cluster)以及[远程调试 Apache Spark 应用程序](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster)。
+
 
 ## <a name="reader-only-role"></a>仅限读取者角色
 

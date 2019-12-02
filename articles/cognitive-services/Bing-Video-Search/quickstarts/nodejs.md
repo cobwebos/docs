@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
+title: 快速入门：使用 REST API 和 Node.js 搜索视频 - 必应视频搜索
 titleSuffix: Azure Cognitive Services
 description: 通过本快速入门使用 JavaScript 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932956"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383802"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 

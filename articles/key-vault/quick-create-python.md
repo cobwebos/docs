@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3be246402c4acd63aee3518f2333d50ec307e9c0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: eea929d68c824ac7cf8045aa6a7ce60430952d03
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647888"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546877"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 
@@ -53,7 +53,7 @@ pip install azure.identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
 
-本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](quick-create-cli.md)、[Azure PowerShell 快速入门](quick-create-powershell.md)或 [Azure 门户快速入门](quick-create-portal.md)中的步骤创建 Key Vault。 或者，只需运行以下 Azure CLI 命令。
+本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](quick-create-cli.md)、[Azure PowerShell 快速入门](quick-create-powershell.md)或 [Azure 门户快速入门](quick-create-portal.md)中的步骤创建 Key Vault。 或者，可运行以下 Azure CLI 命令。
 
 > [!Important]
 > 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
@@ -103,7 +103,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>设置环境变量
 
-应用程序中的 DefaultAzureCredential 方法依赖于三个环境变量：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 请使用 `export VARNAME=VALUE` 格式将这些变量设置为在上述[创建服务主体](#create-a-service-principal)步骤中记下的 clientId、clientSecret 和 tenantId 值。 （这只为当前 shell 和从 shell 创建的进程设置变量；若要将这些变量永久添加到环境中，请编辑 `/etc/environment ` 文件。） 
+应用程序中的 DefaultAzureCredential 方法依赖于三个环境变量：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 请使用 `export VARNAME=VALUE` 格式将这些变量设置为在上述[创建服务主体](#create-a-service-principal)步骤中记下的 clientId、clientSecret 和 tenantId 值。 （该方法只为当前 shell 和从 shell 创建的进程设置变量；若要将这些变量永久添加到环境中，请编辑 `/etc/environment ` 文件。） 
 
 还需要将密钥保管库名称另存为名为 `KEY_VAULT_NAME` 的环境变量。
 
@@ -147,7 +147,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>保存机密
 
-应用程序通过身份验证后，你可以使用 [client.SetSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
+应用程序通过身份验证后，你可以使用 client.SetSecret 方法](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)将机密放入 keyvault。此操作需要使用机密的名称，本示例中使用“mySecret”。  
 
 ```python
 client.set_secret(secretName, secretValue);
@@ -203,14 +203,13 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-secretName = "mySecret";
-
 keyVaultName = os.environ["KEY_VAULT_NAME"];
 KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 credential = DefaultAzureCredential()
-
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
+
+secretName = "mySecret";
 
 print("Input the value of your secret > ");
 secretValue = raw_input();
@@ -239,9 +238,7 @@ print(" done.");
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个 Key Vault、存储了一个机密，然后检索了该机密。 请查看 [GitHub 中的整个控制台应用](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app)。
-
-若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+在本快速入门中，你创建了一个 Key Vault、存储了一个机密，然后检索了该机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](key-vault-overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)

@@ -1,14 +1,14 @@
 ---
-title: 使用门户创建策略以审核资源
-description: 本文引导你完成创建策略定义的步骤，以识别不合规的资源。
-ms.date: 12/06/2018
+title: 快速入门：通过门户进行新策略分配
+description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
+ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: ef89ea43ff3179877c0ac636083ed68946b6cc91
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: ac876b546ea3bda7541db61e0ab68842a3845541
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128918"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482289"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>快速入门：创建策略分配以识别不合规资源
 
@@ -16,6 +16,8 @@ ms.locfileid: "74128918"
 本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。
 
 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -88,7 +90,7 @@ ms.locfileid: "74128918"
 
 1. 选择“Azure Policy”页面左侧中的“符合性”（或“分配”）并找到你创建的“审核未使用托管磁盘的 VM”策略分配。   
 
-1. 右键单击“审核未使用托管磁盘的 VM”策略分配并选择“删除分配”。  
+1. 右键单击“审核不使用托管磁盘的 VM”策略分配并选择“删除分配”。  
 
    ![从“符合性”页中删除分配](./media/assign-policy-portal/delete-assignment.png)
 

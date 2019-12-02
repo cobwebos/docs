@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建和管理 Azure S2S VPN 连接 | Microsoft Docs
+title: Azure VPN 网关：创建和管理 S2S VPN 连接：教程
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 S2S VPN 连接
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 1f2cbe447508ca6939fcdb997a9536ea91a7953f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 64da55c3dba4b617458b68a8b54a509bab4264d2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495632"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152160"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教程：使用 PowerShell 创建和管理 S2S VPN 连接
 

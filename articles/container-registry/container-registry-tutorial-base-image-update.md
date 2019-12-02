@@ -1,20 +1,15 @@
 ---
-title: 教程 - 在基础映像更新时触发映像生成 - Azure 容器注册表
+title: 教程 - 在基础映像更新时触发映像生成
 description: 本教程介绍在更新基础映像时，如何配置 Azure 容器注册表任务以自动触发云中的容器映像生成。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/12/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1beb66d8491b7dac84e9531558f8967e22086575
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b89bf0364165822368647b4c5b773bf422902aec
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931685"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456141"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
@@ -272,10 +267,10 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已了解在更新映像的基础映像后，如何使用任务来自动触发容器映像生成。 现在，继续了解适用于容器注册表的身份验证。
+在本教程中，我们已了解在更新映像的基础映像后，如何使用任务来自动触发容器映像生成。 现在，请转到下一个教程学习如何按照定义的计划触发任务。
 
 > [!div class="nextstepaction"]
-> [Azure 容器注册表中身份验证](container-registry-authentication.md)
+> [按计划运行任务](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

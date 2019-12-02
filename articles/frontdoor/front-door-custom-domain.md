@@ -1,5 +1,5 @@
 ---
-title: 教程 - 将自定义域添加到 Azure Front Door 配置 | Microsoft Docs
+title: 教程 - 将自定义域添加到 Azure Front Door 配置
 description: 本教程介绍如何将自定义域载入 Azure Front Door。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3c98359950bd9539ea75f5a031ac1ce9f2ebe812
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb9e369bbba72cd3a1dd7fcc864e2845e3a979e9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002709"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184623"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教程：将自定义域添加到 Front Door
 本教程介绍如何将自定义域添加到 Front Door。 使用 Azure Front Door 服务进行应用程序交付时，如果希望自己的域名在最终用户请求中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
@@ -58,19 +58,19 @@ ms.locfileid: "58002709"
 
 1. 登录到你的自定义域的域提供商的网站。
 
-2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。 
+2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。    
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源                    | Type  | 目标                     |
+    | 源                    | 类型  | 目标                     |
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域。 例如 afdverify.www.contoso.com。
+    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域  。 例如 afdverify.www.contoso.com。
 
     - 键入：输入 *CNAME*。
 
-    - 目标：采用 afdverify.&lt;终结点名称&gt;.azurefd.net 格式输入默认 Front Door 前端主机，包括 afdverify 子域。 例如 afdverify.contoso.azurefd.net。
+    - 目标：采用 afdverify.&lt;终结点名称&gt;.azurefd.net 格式输入默认 Front Door 前端主机，包括 afdverify 子域  。 例如 afdverify.contoso.azurefd.net。
 
 4. 保存所做更改。
 
@@ -78,23 +78,23 @@ ms.locfileid: "58002709"
 
 1. 登录后选择要使用的自定义域。
 
-2. 在“域”部分选择“管理所有项”，然后选择“DNS” | “管理区域”。
+2. 在“域”部分选择“管理所有项”，然后选择  “DNS”   |   “管理区域”。
 
-3. 对于“域名”，请输入自定义域，然后选择“搜索”。
+3. 对于“域名”，  请输入自定义域，然后选择“搜索”。 
 
-4. 在“DNS 管理”页中选择“添加”，然后在“类型”列表中选择“CNAME”。
+4. 在“DNS 管理”  页中选择“添加”  ，然后在“类型”列表中选择“CNAME”   。
 
 5. 完成 CNAME 条目的以下字段：
 
-    - 键入：让“CNAME”保留选中状态。
+    - 键入：让“CNAME”  保留选中状态。
 
     - 主机：输入要使用的自定义域的子域，包括 afdverify 子域名称。 例如 afdverify.www。
 
     - 指向：输入默认 Front Door 前端主机的主机名，包括 afdverify 子域名称。 例如 afdverify.contoso.azurefd.net。 
 
-    - TTL：让“1 小时”保留选中状态。
+    - TTL：让“1 小时”保留选中状态。 
 
-6. 选择“保存”。
+6. 选择“保存”。 
  
     此时会将 CNAME 条目添加到 DNS 记录表。
 
@@ -105,11 +105,11 @@ ms.locfileid: "58002709"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，浏览到 Front Door，其中包含需要映射到自定义域的前端主机。
     
-2. 在“Front Door 设计器”页上，单击“+”添加自定义域。
+2. 在“Front Door 设计器”页上，单击“+”添加自定义域  。
     
-3. 指定“自定义域”。 
+3. 指定“自定义域”  。 
 
-4. 对于“前端主机”，用作 CNAME 记录的目标域的前端主机已预先填充，并派生自 Front Door ：&lt;默认主机名&gt;.azurefd.net。 无法进行更改。
+4. 对于“前端主机”，用作 CNAME 记录的目标域的前端主机已预先填充，并派生自 Front Door ：&lt;默认主机名&gt;.azurefd.net   。 无法进行更改。
 
 5. 对于**自定义主机名**，请输入自定义域（包括子域），以用作 CNAME 记录的源域。 例如，www\.contoso.com 或 cdn.contoso.com。 请勿使用 afdverify 子域名称。
 
@@ -118,13 +118,13 @@ ms.locfileid: "58002709"
    Azure 会验证所输入的自定义域名是否存在 CNAME 记录。 如果该 CNAME 正确，会验证自定义域。
 
 >[!WARNING]
-> 必须确保 Front Door 中的每个前端主机（包括自定义域）都具有传递规则，且其中包含与之关联的默认路径 ('/\*')。 也就是说，在所有传递规则中，默认路径 ('/\*') 中定义的每个前端主机必须至少有一个路由规则。 如果不这样做，可能会导致最终用户流量无法正确路由。
+> 必须确保 Front Door 中的每个前端主机（包括自定义域）都具有传递规则，且其中包含与之关联的默认路径 ('/\*')  。 也就是说，在所有传递规则中，默认路径 ('/\*') 中定义的每个前端主机必须至少有一个路由规则。 如果不这样做，可能会导致最终用户流量无法正确路由。
 
 ## <a name="verify-the-custom-domain"></a>验证自定义域
 
 完成自定义域的注册后，请验证该自定义域是否引用默认 Front Door 前端主机。
  
-在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 robotics.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//robotics.contoso.com/my-public-container/my-file.jpg。 验证其结果是否与直接从 &lt;Front Door 主机&gt;.azurefd.net 访问 Front Door 的结果相同。
+在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 robotics.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//robotics.contoso.com/my-public-container/my-file.jpg。 验证其结果是否与直接从 &lt;Front Door 主机&gt;.azurefd.net 访问 Front Door 的结果相同  。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>映射永久自定义域
@@ -135,11 +135,11 @@ ms.locfileid: "58002709"
 
 1. 登录到你的自定义域的域提供商的网站。
 
-2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。 
+2. 查阅提供商的文档，或者在网站中搜索标有“域名”、“DNS”或“名称服务器管理”的区域，找到用于管理 DNS 记录的页面。    
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | 源          | Type  | 目标           |
+    | 源          | 类型  | 目标           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -147,7 +147,7 @@ ms.locfileid: "58002709"
 
    - 键入：输入 *CNAME*。
 
-   - 目标：输入默认 Front Door 前端主机。 必须采用 &lt;主机名&gt;.azurefd.net 格式。 例如 contoso.azurefd.net.
+   - 目标：输入默认 Front Door 前端主机。 必须采用 &lt;主机名&gt;.azurefd.net 格式  。 例如 contoso.azurefd.net.
 
 4. 保存所做更改。
 
@@ -159,29 +159,29 @@ ms.locfileid: "58002709"
 
 1. 登录后选择要使用的自定义域。
 
-2. 在“域”部分选择“管理所有项”，然后选择“DNS” | “管理区域”。
+2. 在“域”部分选择“管理所有项”，然后选择  “DNS”   |   “管理区域”。
 
-3. 对于“域名”，请输入自定义域，然后选择“搜索”。
+3. 对于“域名”，  请输入自定义域，然后选择“搜索”。 
 
-4. 在“DNS 管理”页中选择“添加”，然后在“类型”列表中选择“CNAME”。
+4. 在“DNS 管理”  页中选择“添加”  ，然后在“类型”列表中选择“CNAME”   。
 
 5. 完成 CNAME 条目的字段：
 
-    - 键入：让“CNAME”保留选中状态。
+    - 键入：让“CNAME”  保留选中状态。
 
     - 主机：输入要使用的自定义域的子域， 例如 www 或配置文件。
 
     - 指向：输入 Front Door 的默认主机名。 例如 contoso.azurefd.net. 
 
-    - TTL：让“1 小时”保留选中状态。
+    - TTL：让“1 小时”保留选中状态。 
 
-6. 选择“保存”。
+6. 选择“保存”。 
  
     此时会将 CNAME 条目添加到 DNS 记录表。
 
 7. 如果有 afdverify CNAME 记录，请选择其旁边的铅笔图标，然后选择回收站图标。
 
-8. 选择“删除”，以便删除 CNAME 记录。
+8. 选择“删除”  ，以便删除 CNAME 记录。
 
 
 ## <a name="clean-up-resources"></a>清理资源

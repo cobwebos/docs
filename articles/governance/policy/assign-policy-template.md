@@ -1,14 +1,14 @@
 ---
-title: 使用资源管理器模板创建分配
-description: 本文逐步讲解如何使用资源管理器模板创建策略分配，以识别不合规的资源。
-ms.date: 03/13/2019
+title: 快速入门：带有模板的新策略分配
+description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
+ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0695f0b5993f996ff35296be609d9978f57907f1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960149"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482338"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -16,6 +16,8 @@ ms.locfileid: "73960149"
 本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。
 
 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -29,7 +31,7 @@ ms.locfileid: "73960149"
 [!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
-> Azure Policy 服务是免费的。  有关详细信息，请参阅 [Azure Policy 概述](./overview.md)。
+> Azure Policy 服务是免费的。 有关详细信息，请参阅 [Azure Policy 概述](./overview.md)。
 
 1. 选择下图登录到 Azure 门户并打开模板：
 
@@ -40,7 +42,7 @@ ms.locfileid: "73960149"
    | Name | 值 |
    |------|-------|
    | Subscription | 选择 Azure 订阅。 |
-   | Resource group | 选择“新建”，指定名称，然后选择“确定”。   在屏幕截图中，资源组名称为 mypolicyquickstart\<MMDD 格式的日期>rg  。 |
+   | Resource group | 选择“新建”，指定名称，然后选择“确定”。   在此屏幕截图中，资源组名称为 mypolicyquickstart\<MMDD 格式的日期\>rg  。 |
    | 位置 | 选择区域。 例如“美国中部”。  |
    | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。  |
    | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]** 。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
@@ -53,7 +55,7 @@ ms.locfileid: "73960149"
 
 - 若要查找更多示例模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)。
 - 若要查看模板参考，请转到 [Azure 模板参考](/azure/templates/microsoft.authorization/allversions)。
-- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
+- 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/resource-group-overview.md)。
 - 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/deploy-to-subscription.md)。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源

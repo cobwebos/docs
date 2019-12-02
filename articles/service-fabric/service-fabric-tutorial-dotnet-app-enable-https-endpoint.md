@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 69aa140fcecae13aae0d7a165c9f7bea0ab87ca1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e38822e1d774cc32590a13239edb34d7a15e2d02
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301025"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545760"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -362,47 +362,10 @@ if ($cert -eq $null)
 
 在导出向导中，选择“是，导出私钥”，然后选择“个人信息交换(PFX)”格式。   将文件导出到 *C:\Users\sfuser\votingappcert.pfx*。
 
-接下来，使用 [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) cmdlet 在远程群集上安装证书。
+接下来，使用[提供的 Powershell 脚本](./scripts/service-fabric-powershell-add-application-certificate.md)在远程群集上安装此证书。
 
 > [!Warning]
 > 对于开发和测试应用程序，自签名证书已足够。 对于生产应用程序，请使用[证书颁发机构 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的证书，而不是自签名证书。
-
-```powershell
-Connect-AzAccount
-
-$vaultname="sftestvault"
-$certname="VotingAppPFX"
-$certpw="!Password321#"
-$groupname="voting_RG"
-$clustername = "votinghttps"
-$ExistingPfxFilePath="C:\Users\sfuser\votingappcert.pfx"
-
-$appcertpwd = ConvertTo-SecureString -String $certpw -AsPlainText -Force
-
-Write-Host "Reading pfx file from $ExistingPfxFilePath"
-$cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2 $ExistingPfxFilePath, $certpw
-
-$bytes = [System.IO.File]::ReadAllBytes($ExistingPfxFilePath)
-$base64 = [System.Convert]::ToBase64String($bytes)
-
-$jsonBlob = @{
-   data = $base64
-   dataType = 'pfx'
-   password = $certpw
-   } | ConvertTo-Json
-
-$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
-$content = [System.Convert]::ToBase64String($contentbytes)
-
-$secretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
-
-# Upload the certificate to the key vault as a secret
-Write-Host "Writing secret to $certname in vault $vaultname"
-$secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
-
-# Add a certificate to all the VMs in the cluster.
-Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
-```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>在 Azure 负载均衡器中打开端口 443
 

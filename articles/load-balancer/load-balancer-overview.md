@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 负载均衡器？
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Azure 负载均衡器功能、体系结构和实现概述。 了解负载均衡器工作原理，并在云中对其进行利用。
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: be293a925e507468d96be4c9f6b47f30eea5f025
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888670"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423902"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -41,7 +41,9 @@ Azure 负载均衡器提供了两个定价层或 SKU  ：“基本”和“标�
 * 使用公共负载均衡器为虚拟网络中的 VM 提供[出站连接](load-balancer-outbound-connections.md)。
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[什么是 Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)。 若要寻求全局 DNS 负载均衡，请查看[什么是流量管理器](../traffic-manager/traffic-manager-overview.md)。 端到端场景可从结合这些解决方案中受益。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 如果正在查找寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[什么是 Azure 应用程序网关？](../application-gateway/overview.md) 如果正在查找全局 DNS 负载均衡，请查看[什么是流量管理器？](../traffic-manager/traffic-manager-overview.md) 端到端场景可从结合这些解决方案中受益。
+>
+> 有关 Azure 负载平衡选项的比较，请参阅 [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)（Azure 中的负载平衡选项概述）。
 
 ## <a name="what-are-load-balancer-resources"></a>什么是负载均衡器资源？
 

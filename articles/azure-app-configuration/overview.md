@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129700"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185071"
 ---
 # <a name="what-is-azure-app-configuration"></a>什么是 Azure 应用程序配置？
 
@@ -58,12 +58,12 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 
 ## <a name="use-app-configuration"></a>使用应用程序配置
 
-将应用配置存储区添加到应用程序的最简单方法是通过 Microsoft 提供的客户端库。 根据编程语言和框架，你可使用以下最佳方法。
+将应用程序配置存储区添加到应用程序的最简单方法是通过 Microsoft 提供的客户端库。 根据编程语言和框架，你可使用以下最佳方法。
 
 | 编程语言和框架 | 如何连接 |
 |---|---|
 | .NET Core 和 ASP.NET Core | 面向 .NET Core 的应用程序配置提供程序 |
-| .NET 和 ASP.NET | 面向 .NET 的应用程序配置生成器 |
+| .NET Framework 和 ASP.NET | 面向 .NET 的应用程序配置生成器 |
 | Java Spring | 面向 Spring Cloud 的应用程序配置客户端 |
 | 其他 | 应用程序配置 REST API |
 
@@ -72,7 +72,7 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 * [ASP.NET Core 快速入门](./quickstart-aspnet-core-app.md)
 * [.NET Core 快速入门](./quickstart-dotnet-core-app.md)
 * [.NET Framework 快速入门](./quickstart-dotnet-app.md)
-* [Azure 函数快速入门](./quickstart-azure-function-csharp.md)
+* [Azure Functions 快速入门](./quickstart-azure-functions-csharp.md)
 * [Java Spring 快速入门](./quickstart-java-spring-app.md)
 * [ASP.NET Core 功能标志快速入门](./quickstart-feature-flag-aspnet-core.md)
 * [Spring Boot 功能标志快速入门](./quickstart-feature-flag-spring-boot.md)

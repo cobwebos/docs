@@ -1,20 +1,15 @@
 ---
-title: 教程 - 准备用于 Azure 容器实例的容器注册表
+title: 教程 - 准备容器注册表以部署映像
 description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表并推送映像
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d8a14acb196b257d96792444fe41e7e9f6b73592
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325605"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533318"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>教程：部署 Azure 容器注册表并推送容器映像
 

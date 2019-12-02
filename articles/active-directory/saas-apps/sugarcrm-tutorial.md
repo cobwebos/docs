@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 150c4b458724562fc35ef97e190c898a289c6122
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102925"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成
 
@@ -151,11 +151,11 @@ ms.locfileid: "71102925"
 
 1. 在“管理”  部分中，单击“密码管理”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795889.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795889.png "管理")
 
 1. 选择“启用 SAML 身份验证”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795890.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795890.png "管理")
 
 1. 在“SAML 身份验证”  部分中，执行以下步骤：
 
@@ -183,15 +183,15 @@ ms.locfileid: "71102925"
 
 1. 在“管理”  部分中，单击“用户管理”  。
 
-    ![管理](./media/sugarcrm-tutorial/ic795893.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795893.png "管理")
 
 1. 转到“用户”\>“创建新用户”  。
 
-    ![创建新用户](./media/sugarcrm-tutorial/ic795894.png "Create New User")
+    ![创建新用户](./media/sugarcrm-tutorial/ic795894.png "创建新用户")
 
 1. 在“用户配置文件”  选项卡上，执行以下步骤：
 
-    ![新建用户](./media/sugarcrm-tutorial/ic795895.png "New User")
+    ![新建用户](./media/sugarcrm-tutorial/ic795895.png "新建用户")
 
     * 在相关文本框中键入有效 Azure Active Directory 用户的用户名、姓氏和电子邮件地址。   
   
@@ -199,14 +199,14 @@ ms.locfileid: "71102925"
 
 1. 在“密码”选项卡中，执行以下步骤：
 
-    ![新建用户](./media/sugarcrm-tutorial/ic795896.png "New User")
+    ![新建用户](./media/sugarcrm-tutorial/ic795896.png "新建用户")
 
     a. 在相关文本框中键入密码。
 
     b. 单击“ **保存**”。
 
 > [!NOTE]
-> 可以使用 Sugar CRM 提供的任何其他 Sugar CRM 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Sugar CRM 提供的任何其他 Sugar CRM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

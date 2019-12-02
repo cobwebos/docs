@@ -1,25 +1,22 @@
 ---
-title: 教程 - 为 Azure Front Door 服务配置地区筛选 Web 应用程序防火墙策略
+title: 教程 - 配置地区筛选 WAF 策略 - Azure Front Door 服务
 description: 本教程介绍如何创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联
 services: frontdoor
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
+author: teresayao
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud
-ms.reviewer: tyao
-ms.openlocfilehash: e40e99aa57d10bd69143efc8db38ac0071d8952f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tyao
+ms.openlocfilehash: 393d7790aadc87237081aa5437f8316eda59c52e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827769"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184523"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何为 Front Door 设置地区筛选 WAF 策略
 本教程介绍如何使用 Azure PowerShell 创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联。 此示例地区筛选策略会阻止除美国之外的所有其他国家/地区的请求。

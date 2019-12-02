@@ -1,24 +1,16 @@
 ---
-title: 使用 Azure Pipelines 进行持续集成 | Microsoft Docs
+title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 457d2a8868283eed2e211ff26ce77156eee68e01
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052206"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326413"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -50,7 +42,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 * **GitHub 帐户**，用于为模板创建存储库。 如果没有帐户，可以[免费创建一个帐户](https://github.com)。 有关使用 GitHub 存储库的详细信息，请参阅[构建 GitHub 存储库](/azure/devops/pipelines/repos/github)。
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell   。 如需说明，请参阅[安装 Git]( https://www.atlassian.com/git/tutorials/install-git)。
 * **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
-* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[安装扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
 

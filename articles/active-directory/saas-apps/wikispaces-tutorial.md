@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d2c03143eca9f335c440dfcaee766e205b5c0730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a683923ba48b1f354f90ac94d746cb92f359e7a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087150"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教程：Azure Active Directory 与 Wikispaces 集成
 
@@ -200,7 +200,7 @@ ms.locfileid: "67087150"
    
     ![邀请人员](./media/wikispaces-tutorial/ic787208.png "邀请人员")
    
-    a. 在相关文本框中键入要预配的有效 AAD 帐户的“用户名或电子邮件地址”  。
+    a. 在相关文本框中键入要预配的有效 Azure AD 帐户的“用户名或电子邮件地址”  。
    
     b. 单击“Send”  。  
       
@@ -208,7 +208,7 @@ ms.locfileid: "67087150"
     > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
     
 > [!NOTE]
-> 可以使用 Wikispaces 提供的任何其他 Wikispaces 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Wikispaces 提供的任何其他 Wikispaces 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

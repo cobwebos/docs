@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 41e61376d12d447dd480a39ef7200db6af7cca89
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 3a1d99ad282190c61f652179dd08a810c9444064
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172863"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481177"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -51,6 +51,9 @@ ms.locfileid: "73172863"
 若要对托管域上的用户进行身份验证，Azure AD DS 需要密码哈希，其格式适用于 NTLM 和 Kerberos 身份验证。 除非为租户启用了 Azure AD DS，否则 Azure AD 不会以 NTLM 或 Kerberos 身份验证所需的格式存储密码哈希。 出于安全考虑，Azure AD 也不以明文形式存储任何密码凭据。 因此，Azure AD 无法基于用户的现有凭据自动生成这些 NTLM 或 Kerberos 密码哈希。
 
 可将 Azure AD Connect 配置为同步 Azure AD DS 所需的 NTLM 或 Kerberos 密码哈希。 确保已完成[为密码哈希同步启用 Azure AD Connect][enable-azure-ad-connect] 的步骤。 如果你有 Azure AD Connect 的现有实例，请[下载并更新到最新版本][azure-ad-connect-download]，以确保可以同步 NTLM 和 Kerberos 的旧密码哈希。 此功能不可用于早期的 Azure AD Connect 版本或旧式 DirSync 工具。 需要 Azure AD Connect *1.1.614.0* 或更高版本。
+
+> [!IMPORTANT]
+> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
 
 ## <a name="enable-synchronization-of-password-hashes"></a>启用密码哈希同步
 

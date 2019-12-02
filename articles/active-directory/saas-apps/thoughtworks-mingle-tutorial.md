@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ea2a88c92dcd52e99bb98563cf76d2c5501ef6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a12d4dca61734275ef0e56dfe2a800c64dc52540
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088750"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 的集成
 
@@ -130,11 +130,11 @@ ms.locfileid: "67088750"
 
 2. 单击“管理员”  选项卡，并单击“SSO 配置”  。
    
-    ![管理员选项卡](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO 配置")
+    ![“管理员”选项卡](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO 配置")
 
 3. 在“SSO 配置”  部分中，执行以下步骤：
    
-    ![SSO 配置](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
+    ![SSO 配置](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO 配置")
     
     a. 若要上传元数据文件，请单击“选择文件”。  
 
@@ -200,7 +200,7 @@ ms.locfileid: "67088750"
 
 2. 单击“配置文件”  。
    
-    ![第一个项目](./media/thoughtworks-mingle-tutorial/ic785160.png "Your First Project")
+    ![第一个项目](./media/thoughtworks-mingle-tutorial/ic785160.png "第一个项目")
 
 3. 单击“管理员”  选项卡，并单击“用户”  。
    
@@ -208,11 +208,11 @@ ms.locfileid: "67088750"
 
 4. 单击“新建用户”  。
    
-    ![新建用户](./media/thoughtworks-mingle-tutorial/ic785162.png "New User")
+    ![新建用户](./media/thoughtworks-mingle-tutorial/ic785162.png "新建用户")
 
 5. 在“新建用户”  对话框页上，执行以下步骤：
    
-    ![新建用户对话框](./media/thoughtworks-mingle-tutorial/ic785163.png "新建用户")  
+    ![“新建用户”对话框](./media/thoughtworks-mingle-tutorial/ic785163.png "新建用户")  
  
     a. 将要预配的有效 Azure AD 帐户的**登录名**、**显示名称**、**选择密码**、**确认密码**键入到相关文本框中。 
 
@@ -221,7 +221,7 @@ ms.locfileid: "67088750"
     c. 单击“创建此配置文件”  。
 
 >[!NOTE]
->可以使用任何其他 Thoughtworks Mingle 用户帐户创建工具或 Thoughtworks Mingle 提供的 API 来预配 AAD 用户帐户。
+>可以使用 Thoughtworks Mingle 提供的任何其他 Thoughtworks Mingle 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 > 
 
 ### <a name="test-single-sign-on"></a>测试单一登录 

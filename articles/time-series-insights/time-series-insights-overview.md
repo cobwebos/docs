@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/10/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa15e9c50cb5cd694a7a6adad352459536292b85
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 042e969b4a0dfea0910a0ef81fae264792cfd85f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012588"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327662"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
@@ -84,13 +84,16 @@ Azure 时序见解会捕获每一个新事件并将其存储为一行，所做�
 1. 上传参考数据。 这不是一项附加服务。
 1. 使用时序见解资源管理器，几分钟内就可以看到你的数据。
 
-## <a name="time-series-insights-explorer"></a>时序见解资源管理器
+## <a name="explorer"></a>资源管理器
 
-此图显示了通过时序见解资源管理器查看时序见解数据的示例。
+使用 Azure 时序见解资源管理器查看、分析和发现数据趋势。
 
-![时序见解资源管理器](media/time-series-insights-explorer/explorer4.png)
+![时序见解资源管理器](media/overview/time-series-insights-explorer-panel.png)
+
+了解如何使用 [Azure 时序见解资源管理器](time-series-insights-explorer.md)获取数据趋势。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 探索 Azure 时序见解正式发行版[免费演示环境](./time-series-quickstart.md)。
+
 - 详细了解如何[规划时序见解](time-series-insights-environment-planning.md)环境。

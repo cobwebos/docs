@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299932"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185092"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -216,7 +216,7 @@ ms.locfileid: "72299932"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要详细了解如何使用应用配置，请继续学习下一教程，该教程演示如何将 Web 应用配置为动态刷新配置设置。
+在本快速入门中，你创建了一个新的应用程序配置存储区，并通过[应用程序配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要了解如何配置 ASP.NET Core 应用以动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
-> [在 ASP.NET Core 应用中使用动态配置](./enable-dynamic-configuration-aspnet-core.md)
+> [启用动态配置](./enable-dynamic-configuration-aspnet-core.md)

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过适用于 Java 的必应实体搜索 SDK 来搜索实体
+title: 快速入门：通过适用于 Java 的 SDK 搜索实体 - 必应实体搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门通过适用于 Java 的必应实体搜索 SDK 来搜索实体
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 63312dcbad515f364bd4b66c5541f1db90af85b6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479043"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327144"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应实体搜索 SDK 来发送搜索请求
 

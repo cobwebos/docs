@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 82f662dd00805cf53c0581fb0a2b3322a0207a11
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e17205af1ede845ea77b04f6f2b4c6babf3bc450
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005714"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482147"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -249,7 +249,7 @@ ms.locfileid: "74005714"
 * VPN 设备页上的说明不是针对虚拟 WAN 编写的，但你可以使用配置文件中的虚拟 WAN 值来手动配置 VPN 设备。 
 * 适用于 VPN 网关的可下载设备配置脚本并不适用于虚拟 WAN，因为配置不同。
 * 新的虚拟 WAN 可以同时支持 IKEv1 和 IKEv2。
-* 虚拟 WAN 只能使用基于路由的 VPN 设备和设备说明。
+* 虚拟 WAN 可以使用基于策略和基于路由的 VPN 设备和设备说明。
 
 ## <a name="viewwan"></a>查看虚拟 WAN
 

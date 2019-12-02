@@ -1,5 +1,5 @@
 ---
-title: 教程：第一个使用 R 的 ML 试验
+title: 教程：通过 R 训练和部署你的第一个 ML 模型
 titleSuffix: Azure Machine Learning
 description: 本教程介绍 Azure 机器学习 (ML) 中的基础设计模式，并使用 R 包 azuremlsdk 和 caret 训练一个逻辑回归模型，以预测交通事故中的死亡几率。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092264"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307287"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>教程：使用 Azure 机器学习在 R 中训练和部署第一个模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

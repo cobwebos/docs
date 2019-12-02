@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208614"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -92,6 +92,10 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
+
+1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造  。 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 资源林仅同步直接在 Azure AD 中创建的用户和组  。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]  。
+
+    对于本教程，请选择创建用户林  。
 
     ![为 Azure AD 域服务实例配置基本设置](./media/tutorial-create-instance/basics-window.png)
 
@@ -192,6 +196,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
+[skus]: overview.md
+[resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->

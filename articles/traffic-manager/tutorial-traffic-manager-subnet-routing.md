@@ -1,6 +1,6 @@
 ---
-title: 教程：配置子网流量路由 - Azure 流量管理器
-description: 本文介绍了如何配置流量管理器以将流量从用户子网路由到特定终结点。
+title: 教程 - 使用 Azure 流量管理器配置子网流量路由
+description: 本教程介绍如何配置流量管理器以将流量从用户子网路由到特定终结点。
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 00bc453ebb0e467f48bd886fc7c6b6c422693864
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048810"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420254"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 

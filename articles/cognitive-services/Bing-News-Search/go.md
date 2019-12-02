@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
 ms.author: aahi
-ms.openlocfilehash: c3d18852086e202d9f818f2cac2c90fa4f464211
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110804"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222121"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>快速入门：使用必应新闻搜索 REST API 和 Go 获取新闻结果
 

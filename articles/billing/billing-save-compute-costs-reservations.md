@@ -3,16 +3,16 @@ title: 什么是 Azure 预留项？
 description: 了解 Azure 预留项和定价以节省虚拟机、SQL 数据库、Azure Cosmos DB 和其他资源的成本。
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580094"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420140"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -36,6 +36,12 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 - **SQL 数据库预留 vCore** - 预留项仅包含计算成本。 许可证单独计费。
 - **SQL 数据仓库** - 预留项涵盖 cDWU 用量。 它不涵盖与 SQL 数据仓库用量相关的存储或网络费用。
 - **应用服务印花费** - 预留项涵盖印花使用费。 它不适用于辅助角色，因此与印花相关的任何其他资源将单独收费。
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure 数据资源管理器
+- 高级 SSD 托管磁盘
+
 
 对于 Windows 虚拟机和 SQL 数据库，可以利用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。
 

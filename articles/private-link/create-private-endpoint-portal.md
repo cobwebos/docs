@@ -1,20 +1,20 @@
 ---
-title: 管理 Azure 中的专用终结点
-description: 了解如何使用 Azure 门户创建专用终结点
+title: 快速入门 - 管理 Azure 中的专用终结点
+description: 在本快速入门中了解如何使用 Azure 门户创建专用终结点
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.author: allensu
+ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372240"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419763"
 ---
-# <a name="create-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户创建专用终结点
+# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本快速入门介绍如何使用 Azure 门户在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，可以从该 VM 安全访问该 SQL 数据库服务器。
 
@@ -241,4 +241,3 @@ ms.locfileid: "72372240"
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你已在虚拟网络中创建一个 VM，并创建了一个 SQL 数据库服务器，以及一个用于私密访问的专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与 SQL 数据库服务器通信。 若要详细了解专用终结点，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
-

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 C# 将查询发送到必应当地企业搜索 API
+title: 快速入门 - 在 C# 中将查询发送到 API - 必应当地企业搜索
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: rosh
-ms.openlocfilehash: d14e9dd8d02db7ca0131927682804fe81b750d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 439f775fb6124c847631467caabe3f48cfa6b645
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072325"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326713"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
 

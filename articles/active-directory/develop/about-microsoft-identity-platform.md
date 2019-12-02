@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625351"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533105"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展
 
@@ -52,7 +52,7 @@ Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台�
 
 Azure 门户[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)  体验是用于管理已与 Microsoft 标识平台集成的所有应用程序的一种门户体验。 如果你一直使用的是应用程序注册门户，请开始改为使用 Azure 门户应用注册体验。
 
-要与 Azure AD B2C 集成（对社交或本地身份进行身份验证时），需要在 B2C 租户中注册应用程序。 这种体验也是 Azure 门户的一部分。
+要与 Azure AD B2C 集成（对社交或本地身份进行身份验证时），需要在 Azure AD B2C 租户中注册应用程序。 这种体验也是 Azure 门户的一部分。
 
 Microsoft Graph 中的应用程序 API 当前处于预览阶段  。 使用此 API 以编程方式配置与 Microsoft 标识平台集成的应用程序，以对 Microsoft 标识进行身份验证。 但是，在此 API 发布正式版之前，应使用 Azure AD Graph 1.6 API 和应用程序清单。
 

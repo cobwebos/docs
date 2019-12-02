@@ -1,14 +1,14 @@
 ---
 title: 示例 - 强制实施 like 模式
-description: 此示例策略定义要求资源符合用于命名约定的 like 模式。
+description: 此示例策略定义要求资源符合参数中定义的用于命名约定的 like 模式。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 34013753c18ad3b84a29b04fead9ea83aeb03d7b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df72db59e0370e82ca9f4aff199498ffdf06d834
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076311"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463608"
 ---
 # <a name="sample---enforce-like-pattern-for-naming-conventions"></a>示例 - 强制实施用于命名约定的 like 模式
 

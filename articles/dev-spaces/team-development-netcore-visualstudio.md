@@ -1,8 +1,6 @@
 ---
-title: 使用 .NET Core 和 Visual Studio 通过 Azure Dev Spaces 进行团队开发
-titleSuffix: Azure Dev Spaces
+title: 使用 .NET Core 和 Visual Studio 进行团队开发
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 author: DrEsteban
@@ -11,14 +9,14 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442924"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325538"
 ---
-# <a name="team-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行团队开发
+# <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>使用 .NET Core 和 Visual Studio 通过 Azure Dev Spaces 进行团队开发
 
 本教程介绍开发人员团队如何同时使用 Dev Spaces 在同一个 Kubernetes 群集中进行协作。
 
@@ -123,7 +121,7 @@ ms.locfileid: "67442924"
 
 使用 Azure Dev Spaces 的内置功能可在共享环境中对代码进行端到端测试，而无需每个开发人员在其空间中重新创建完整的服务堆栈。 如本指南的上一步骤中所示，此路由需要在应用代码中转发传播标头。
 
-### <a name="test-code-running-in-the-devscott-space"></a>测试 _dev/scott_ 空间中运行的代码
+### <a name="test-code-running-in-the-_devscott_-space"></a>测试 _dev/scott_ 空间中运行的代码
 若要结合 *webfrontend* 测试 *mywebapi* 的新版本，请在浏览器中打开 *webfrontend* 的公共接入点 URL (例如 http://dev.webfrontend.123456abcdef.eus.azds.io) 并转到“关于”页。 应会看到原始消息“Hello from webfrontend and Hello from mywebapi”。
 
 现在，请将“scott.s.” 部分添加到 URL，这样它就可以读取类似于 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io 的内容，并刷新浏览器。 随后应会命中 *mywebapi* 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，_dev/scott_ 中已更新的代码的路径正在 *mywebapi* 空间中运行。

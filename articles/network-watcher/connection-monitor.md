@@ -1,6 +1,6 @@
 ---
-title: 监视网络通信 - 教程 - Azure 门户 | Microsoft Docs
-description: 了解如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
+title: 教程：使用 Azure 门户监视网络通信
+description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233886"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419697"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -51,10 +51,10 @@ ms.locfileid: "66233886"
 
     |设置|值|
     |---|---|
-    |名称|myVM1|
+    |Name|myVM1|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-    |订阅| 选择订阅。|
+    |Subscription| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“美国东部” |
 
@@ -74,9 +74,9 @@ ms.locfileid: "66233886"
 |步骤|设置|值|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
-| 3 | 名称                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | 身份验证类型                   | 粘贴 SSH 公钥，或者在选择“密码”后输入密码。  |
-| 3 | 资源组                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
+| 3 | Resource group                        | 选择“使用现有资源组”，再选择“myResourceGroup”   。                 |
 | 6 | 扩展                            | **适用于 Linux 的网络观察程序代理**                                             |
 
 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
@@ -93,7 +93,7 @@ ms.locfileid: "66233886"
 
     | 设置                  | 值               |
     | ---------                | ---------           |
-    | 名称                     | myVm1-myVm2(22)     |
+    | Name                     | myVm1-myVm2(22)     |
     | 源                   |                     |
     | 虚拟机          | myVM1               |
     | 目标              |                     |
@@ -152,7 +152,7 @@ ms.locfileid: "66233886"
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
     | 优先度                | 100            |
-    | 名称                    | DenySshInbound |
+    | Name                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
 

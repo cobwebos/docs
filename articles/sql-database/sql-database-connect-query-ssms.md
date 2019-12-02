@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 69a6939cdbcc9b2c4e496c8d47aa20c9f6e85d57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ed33d50da84347f55d355802e7767c8477c30e87
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826938"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482163"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
@@ -77,7 +77,7 @@ Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数�
 
    ![连接到服务器](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. 选择“连接到服务器”对话框中的“选项”   。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase”   。
+3. 选择“连接到服务器”对话框中的“选项”   。 在“连接到数据库”下拉菜单中，选择 mySampleDatabase。如果将下拉菜单保留为默认值，则将连接到主数据库    。
 
    ![连接到服务器上的 DB](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 

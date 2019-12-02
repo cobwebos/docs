@@ -1,21 +1,20 @@
 ---
-title: 快速入门：使用 C# 将 TPM 设备注册到 Azure 设备预配服务
-description: Azure 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
+title: 使用 C# 将 TPM 设备注册到 Azure 设备预配服务
+description: 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a95a50e5931f42e442e11fe593a151dd273449e8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904736"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423007"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>快速入门：使用 C# 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -52,13 +51,13 @@ ms.locfileid: "73904736"
 
 1. 打开 Visual Studio 并选择“创建新项目”  。 在“创建新项目”中，为 C# 项目模板选择“控制台应用(.NET Core)”，然后选择“下一步”。   
 
-1. 将项目命名为 *CreateTpmEnrollment*，然后选择“创建”。 
+1. 将项目命名为“CreateTpmEnrollment”，然后按“创建”   。
 
     ![配置 Visual C# Windows 经典桌面项目](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. 在“解决方案资源管理器”中，右键单击“CreateTpmEnrollment”项目，然后选择“管理 NuGet 包”。   
+1. 在 Visual Studio 中打开该解决方案后，在“解决方案资源管理器”窗格中右键单击“CreateTpmEnrollment”项目   。 选择“管理 NuGet 包”。 
 
-1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择 **Microsoft.Azure.Devices.Provisioning.Service**，然后选择“安装”。   
+1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择“Microsoft.Azure.Devices.Provisioning.Service”，然后按“安装”     。
 
    ![“NuGet 包管理器”窗口](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
@@ -71,10 +70,10 @@ ms.locfileid: "73904736"
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. 将以下字段添加到 `Program` 类，并按所列内容进行更改。
+1. 将以下字段添加到 `Program` 类，并进行下列更改。
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private const string RegistrationId = "sample-registrationid-csharp";
    private const string TpmEndorsementKey =
        "AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUS" +
@@ -88,7 +87,7 @@ ms.locfileid: "73904736"
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * 将 `ProvisioningConnectionString` 占位符值替换为需要为其创建注册的预配服务的连接字符串。
+   * 将 `ProvisioningServiceConnectionString` 占位符值替换为需要为其创建注册的预配服务的连接字符串。
 
    * 可以选择更改注册 ID、认可密钥、设备 ID 和预配状态。
 
@@ -143,7 +142,7 @@ ms.locfileid: "73904736"
   
 在 Visual Studio 中运行此示例，为 TPM 设备创建单个注册。
 
-成功创建后，命令提示符窗口会显示新的单个注册的属性。
+系统将显示命令提示符窗口并开始显示确认消息。 成功创建后，命令提示符窗口会显示新的单个注册的属性。
 
 可以验证是否已创建单个注册。 转到设备预配服务的摘要，依次选择“管理注册”、“单个注册”。   此时会看到一个新的注册条目，对应于示例中使用的注册 ID。
 
@@ -159,13 +158,13 @@ ms.locfileid: "73904736"
 
 1. 关闭计算机上的 C# 示例输出窗口。
 
-1. 在 Azure 门户中导航到你的设备预配服务，选择“管理注册”，然后选择“单个注册”选项卡。   选择使用本快速入门创建的注册条目的“注册 ID”，然后选择“删除”。  
+1. 在 Azure 门户中导航到你的设备预配服务，选择“管理注册”，然后选择“单个注册”选项卡。   选中通过本快速入门创建的注册项的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。
 
 1. 如果已按照[使用 C# 设备 SDK 创建和预配模拟的 TPM 设备](quick-create-simulated-device-tpm-csharp.md)中的步骤创建模拟的 TPM 设备，请执行以下步骤：
 
     1. 关闭 TPM 模拟器窗口以及模拟设备的示例输出窗口。
 
-    1. 在 Azure 门户中，导航到预配了设备的 IoT 中心。 在“资源管理器”下的菜单中选择“IoT 设备”，选中设备旁边的复选框，然后选择“删除”。   
+    1. 在 Azure 门户中，导航到预配了设备的 IoT 中心。 在“资源管理器”下的菜单中，选择“IoT 设备”，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮     。
 
 ## <a name="next-steps"></a>后续步骤
 

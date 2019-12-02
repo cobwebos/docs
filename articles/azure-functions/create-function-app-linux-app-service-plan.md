@@ -1,18 +1,14 @@
 ---
-title: 通过 Azure 门户在 Linux 上创建函数应用 | Microsoft Docs
+title: 通过 Azure 门户在 Linux 上创建函数应用
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.author: glenga
-ms.openlocfilehash: 89755e8b70a490f1c5746b23e0d36c5d90b624c1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571654"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233091"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure 应用服务计划中创建 Linux 上的函数应用
 

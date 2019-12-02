@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予组对 Azure 资源的访问权限。
+title: 教程 - 使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
+description: 在本教程中了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予组对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f080682baf42c5852e167a20bfbad7f00fe8bd3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fb26e603ebb867bda47a93162ffef9bf716d3db6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343683"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418587"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
 
@@ -48,8 +48,8 @@ ms.locfileid: "56343683"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 组<br>（RBAC 教程组） | [读取者](built-in-roles.md#reader) | 订阅 |
-| 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
+| 组<br>（RBAC 教程组） | [读取者](built-in-roles.md#reader) | Subscription |
+| 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![组的角色分配](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 
@@ -237,11 +237,11 @@ ms.locfileid: "56343683"
 
 ## <a name="optional-list-access-using-the-azure-portal"></a>（可选）使用 Azure 门户列出访问权限
 
-1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。
+1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。 
 
     ![组在订阅范围的角色分配](./media/tutorial-role-assignments-group-powershell/role-assignments-subscription.png)
 
-1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。
+1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。 
 
     ![组在资源组范围的角色分配](./media/tutorial-role-assignments-group-powershell/role-assignments-resource-group.png)
 
@@ -281,7 +281,7 @@ ms.locfileid: "56343683"
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. 系统要求确认时，请键入“Y”。只需数秒钟即可删除。
+1. 系统要求确认时，请键入“Y”  。只需数秒钟即可删除。
 
 1. 使用 [Remove-AzureADGroup](/powershell/module/azuread/remove-azureadgroup) 命令删除组。
 

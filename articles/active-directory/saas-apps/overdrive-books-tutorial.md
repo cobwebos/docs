@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a6d3c53206d917b5b87f26b7fb351bc5acf5937
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 391ae72a9e2bc78ed120cf4f5fdf844a6248566a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095221"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>教程：Azure Active Directory 与 Overdrive 的集成
 
@@ -186,7 +186,7 @@ ms.locfileid: "67095221"
 在本部分，我们将在 Overdrive 中创建一个名为 Britta Simon 的用户。 Overdrive 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 Overdrive 中不存在用户，则会在身份验证后创建一个新用户。
 
 >[!NOTE]
->可以使用任何其他 OverDrive 用户帐户创建工具或 OverDrive 提供的 API 来预配 AAD 用户帐户。
+>可以使用任何其他 OverDrive 用户帐户创建工具或 OverDrive 提供的 API 来预配 Azure AD 用户帐户。
 >
 
 ### <a name="test-single-sign-on"></a>测试单一登录 

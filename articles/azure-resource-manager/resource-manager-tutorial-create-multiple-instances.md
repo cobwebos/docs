@@ -1,24 +1,16 @@
 ---
-title: 创建多个资源实例 - Azure 资源管理器
+title: 创建多个资源实例
 description: 了解如何创建 Azure 资源管理器模板，以用于创建多个 Azure 资源实例。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: df41094d163b8e3ecb78827df1a52dafab0aec1f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528264"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326522"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
 
@@ -39,7 +31,7 @@ ms.locfileid: "72528264"
 
 若要完成本文，需要做好以下准备：
 
-* 包含[资源管理器工具扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)的 [Visual Studio Code](https://code.visualstudio.com/)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
@@ -57,7 +49,7 @@ ms.locfileid: "72528264"
 
 ## <a name="edit-the-template"></a>编辑模板
 
-现有模板创建一个存储帐户。 请通过自定义模板来创建三个存储帐户。  
+现有模板创建一个存储帐户。 请通过自定义模板来创建三个存储帐户。
 
 从 Visual Studio Code 中，进行以下四个更改：
 

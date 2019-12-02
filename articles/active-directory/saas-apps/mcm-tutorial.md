@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f8663d59c263b6fa24e23e286f8eb4e75b888da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159429"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
 
@@ -186,7 +186,7 @@ ms.locfileid: "73159429"
 在本部分中，会在 MCM 中创建一个名为 Britta Simon 的用户。 请与  [MCM 支持团队](https://mcmtechnology.com/support/)协作，将用户添加到 MCM 平台中。 使用单一登录前，必须先创建并激活用户。
 
 >[!NOTE]
->可以使用 MCM 提供的任何其他 MCM 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+>可以使用 MCM 提供的任何其他 MCM 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

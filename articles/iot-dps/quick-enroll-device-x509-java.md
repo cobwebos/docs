@@ -1,5 +1,5 @@
 ---
-title: 快速入门：如何使用 Java 将 X.509 设备注册到 Azure 设备预配服务
+title: 使用 Java 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册和单独注册。 在本快速入门中，需使用 Java 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 983e410c6f6298c6b251fdc2a4aff5c677d26906
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904784"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423063"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -203,11 +202,11 @@ ms.locfileid: "73904784"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算学习 Java 服务示例，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的 Java 示例输出窗口。
 1. 关闭计算机上的“X509 证书生成器”  窗口。
-1. 在 Azure 门户中导航到设备预配服务，单击“管理注册”，然后选择“注册组”选项卡。    选择通过本快速入门注册的 X.509 设备的“组名称”，然后单击边栏选项卡顶部的“删除”按钮。   
+1. 在 Azure 门户中导航到设备预配服务，选择“管理注册”，然后选择“注册组”选项卡   。选中通过本快速入门注册的 X.509 设备的“组名称”旁边的复选框，然后按窗格顶部的“删除”按钮   。  
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你将模拟的 X.509 设备组注册到了设备预配服务。 若要深入了解设备预配，请继续学习本教程有关如何在 Azure 门户中进行设备预配服务设置的内容。 

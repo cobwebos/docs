@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933029"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278613"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
@@ -239,4 +239,7 @@ Perf
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[编写搜索查询](search-queries.md)
+- 有关在日志查询中使用字符串数据的详细信息，请参阅[在 Azure Monitor 日志查询中使用字符串](string-operations.md)。
+- 有关在日志查询中聚合数据的详细信息，请参阅 [Azure Monitor 日志查询中的高级聚合](advanced-aggregations.md)。
+- 有关如何联接多个表中的数据的信息，请参阅 [Azure Monitor 日志查询中的联接](joins.md)。
+- 在 [KQL 语言参考](/azure/kusto/query/)中获取有关完整 Kusto 查询语言的文档。

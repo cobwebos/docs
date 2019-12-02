@@ -1,5 +1,5 @@
 ---
-title: 快速入门：如何通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心
+title: 快速入门 - 通过 C 使用对称密钥将模拟设备预配到 Azure IoT 中心
 description: 在本快速入门中，你将使用 C 设备 SDK 创建一个将对称密钥和 Azure IoT 中心设备预配服务结合使用的模拟设备
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4d1e1ff5312cfb5aa0b2e378a24d5e0db7fb3605
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904862"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423550"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -90,27 +90,25 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>在门户中创建设备注册项
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-2. 选择“管理注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
-3. 在“添加注册”中输入以下信息，然后单击“保存”按钮。  
+3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
    - **机制**：选择“对称密钥”作为标识证明“机制”   。
 
    - **自动生成密钥**：选中此框。
 
-   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，`symm-key-device-007` 。
+   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，symm-key-device-007  。
 
    - **IoT 中心设备 ID：** 输入设备标识符。 例如：device-007  。
 
      ![在门户中为对称密钥证明添加单个注册](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. 保存注册后，将生成“主要密钥”  和“辅助密钥”  ，并将其添加到注册条目。 对称密钥设备注册会在“单独注册”  选项卡的“注册 ID”  列下显示为 symm-key-device-007  。 
+4. 保存注册后，将生成“主要密钥”和“辅助密钥”，并将其添加到注册条目   。 对称密钥设备注册会在“单独注册”  选项卡的“注册 ID”  列下显示为 symm-key-device-007  。 
 
     打开注册并复制生成的“主要密钥”  的值。
 
@@ -124,7 +122,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值。  
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，记下“ID 范围”的值   。
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -169,7 +167,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 
@@ -187,18 +185,18 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     Press enter key to exit:
     ```
 
-9. 在门户中，导航到模拟设备分配到的 IoT 中心，然后单击“IoT 设备”  选项卡。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”  边栏选项卡上，“状态”为“已启用”   。 你可能需要单击顶部的“刷新”按钮  。 
+9. 在门户中，导航到模拟设备分配到的 IoT 中心，然后选择“IoT 设备”选项卡  。将模拟设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”  边栏选项卡上，“状态”为“已启用”   。 你可能需要按顶部的“刷新”按钮  。 
 
-    ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
+    ![设备注册到 IoT 中心](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后单击“个人注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后选择“个人注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 ## <a name="next-steps"></a>后续步骤
 

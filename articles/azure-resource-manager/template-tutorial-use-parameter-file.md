@@ -1,19 +1,16 @@
 ---
-title: 教程 - 使用参数文件来帮助部署 Azure 资源管理器模板
+title: 教程 - 使用参数文件部署模板
 description: 使用参数文件，其中包含的值可用于部署 Azure 资源管理器模板。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1b01e9ece2d194d76c7184a676f17d626c41a011
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177554"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405973"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
 
@@ -25,7 +22,7 @@ ms.locfileid: "72177554"
 
 必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
-## <a name="review-your-template"></a>审阅模板
+## <a name="review-template"></a>审阅模板
 
 模板有许多可以在部署过程中提供的参数。 在上一教程的末尾，模板如下所示：
 
@@ -49,7 +46,7 @@ ms.locfileid: "72177554"
 
 此文件是用于生产环境的参数文件。 请注意，它将 Standard_GRS 用于存储帐户，使用 **contoso** 前缀为资源命名，并将 **Environment** 标记设置为 **Production**。 在实际生产环境中，还需要将应用服务与非免费版 SKU 配合使用，但在本教程中，我们将继续使用该免费版 SKU。
 
-## <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-template"></a>部署模板
 
 使用 Azure CLI 或 Azure PowerShell 来部署模板。
 
@@ -119,7 +116,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>验证部署
+## <a name="verify-deployment"></a>验证部署
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a57258dfe112c1b2d03bc43738c92272a156f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160849"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
 
@@ -264,7 +264,7 @@ ms.locfileid: "73160849"
     ![新建用户](././media/zendesk-tutorial/ic773633.png "新建用户")
 
 > [!NOTE]
-> 可以使用 Zendesk 提供的任何其他 Zendesk 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Zendesk 提供的任何其他 Zendesk 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

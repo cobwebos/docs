@@ -32,7 +32,7 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 |                   |            | 512 x 512 像素 @30 fps |                       |
 |                   |            | 1024x1024 像素 @15 fps |                       |
 | **连接** | 数据 | USB3.1 Gen 1，附带 USB Type-C  | USB 3.1 Gen 1|
-|  | 幂 | 外部 PSU 或 USB-C | 外部 PSU |
+|  | 电源 | 外部 PSU 或 USB-C | 外部 PSU |
 |  | 同步 | RGB 和深度内部同步，外部设备到设备同步| 仅限 RGB 和深度内部同步 |
 | **物理规格** | 维度 | 103 x 39 x 126 毫米 | 249 x 66 x 67 毫米 |
 |  | 重量 | 440 克 | 970 克 |

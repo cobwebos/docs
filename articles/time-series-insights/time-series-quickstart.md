@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006420"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167605"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
 
@@ -38,45 +38,47 @@ Azure 时序见解是一种完全托管的分析、存储和可视化效果服�
 
 1. 此时会显示时序见解快速教程页面。 选择“下一步”  开始快速教程。
 
-   [![选择“下一步”](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![欢迎使用快速入门 - 选择下一步](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>浏览演示环境
 
 1. 显示“时间选择面板”  。 使用该面板选择期限，进行可视化。
 
-   [![时间选项面板](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [![时间选项面板](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. 选择一个期限，将其拖至区域中。 然后选择“搜索”。 
 
-   [![选择期限](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![选择期限](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    时序见解显示指定期限的图表可视化效果。 可以在折线图中执行各种操作。 例如，可以筛选、固定、排序和堆叠。
 
    要返回到“时间选择面板”，请选择如下所示的向下键  ：
 
-   [![图表](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![图表](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. 在“术语面板”中，选择“添加”，添加新的搜索词   。
 
-   [![添加项](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![添加搜索术语面板](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. 在此图表中，可以选择一个区域，右键单击该区域，然后选择“浏览事件”  。
 
-   [![浏览事件](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![浏览事件](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    正在探索的区域将显示原始数据的网格。
 
-   [![网格视图](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [![浏览事件 - 网格数据视图](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>选择和筛选数据
 
 1. 编辑术语以更改图表中的值。 添加另一个术语来交叉关联不同类型的值。
 
-   [![添加术语](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![添加术语](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. 在“筛选器系列”对话框中输入筛选器术语，进行临时系列筛选  。 对于本快速入门，输入“Station5”交叉关联此站的温度和压力  。
+1. 将“筛选器系列”框留空以查看选中的所有搜索术语，或在“筛选器系列”框中输入筛选器术语以进行简单的系列筛选   。
 
-   [![筛选器系列](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![筛选器系列](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   对于本快速入门，输入“Station5”交叉关联此站的温度和压力  。
 
 完成快速入门后，可尝试用示例数据集创建不同的可视化效果。
 

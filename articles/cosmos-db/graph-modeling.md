@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 94df90db4a715d2540dfc5ec0aa521d76d22f757
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624213"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559131"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 
@@ -45,7 +45,7 @@ ms.locfileid: "69624213"
 
 以下是图形对象中属性的最佳实践：
 
-| Object | 属性 | Type | 说明 |
+| Object | 属性 | 类型 | 说明 |
 | --- | --- | --- |  --- |
 | 顶点 | ID | String | 每个分区唯一强制执行。 如果插入时未提供值，则将存储自动生成的 GUID。 |
 | 顶点 | label | String | 此属性用于定义顶点表示的实体类型。 如果未提供值，则将使用默认值 vertex。 |

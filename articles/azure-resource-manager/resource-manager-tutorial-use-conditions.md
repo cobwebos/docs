@@ -1,24 +1,16 @@
 ---
-title: 在 Azure 资源管理器模板中使用条件 | Microsoft Docs
+title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7aecc25daed8f73e903b181d782e53c0ea5acd74
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390195"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325333"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
 
@@ -49,7 +41,7 @@ ms.locfileid: "72390195"
 
 若要完成本文，需要做好以下准备：
 
-* 包含[资源管理器工具扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)的 [Visual Studio Code](https://code.visualstudio.com/)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```azurecli-interactive

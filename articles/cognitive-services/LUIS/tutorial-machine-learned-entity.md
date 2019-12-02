@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 36b75f33b4fc9062d09fbc670a509594142f09bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 913fa3c846ea00649a584be02975fdde449dc7cf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828254"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383282"
 ---
-# <a name="tutorial-extract-structured-data-with-machine-learned-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器学习实体提取结构化数据
+# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器习得实体从用户言语中提取结构化数据
 
 在本教程中，使用机器学习实体从言语中提取结构化数据。 
 
@@ -58,11 +58,11 @@ ms.locfileid: "73828254"
 
 当你开始使用应用时，你可能不知道你需要实体的详细程度，最佳做法是从机器学习实体开始，然后随着应用的成熟，分解为子组件。
 
-在实际情况下，你将创建一个机器学习实体来表示披萨订单应用。 该订单应具有完成订单所需的所有部分。 若要开始，实体将包含所有与订单相关的文本，并专门提取大小和数量。 
+在实际情况下，你将创建一个机器学习实体来表示披萨订单应用。 该订单应具有完成订单所需的所有部分。 开始时，实体将提取与订单相关的文本，从而提炼出大小和数量信息。 
 
-`deliver one large cheese pizza` 的言语应按订单提取整个言语，然后提取 `1` 和 `large`。 
+言语 `Please deliver one large cheese pizza to me` 应提取 `one large cheese pizza` 作为订单，然后提取 `1` 和 `large`。 
 
-还可以进一步分解，例如浇汁或酥皮。 在本教程中，你应该自信地将这些子组件添加到现有 `Order` 实体。
+还可添加进一步分解，例如创建针对浇汁或酥皮的子组件。 在本教程中，你应该自信地将这些子组件添加到现有 `Order` 实体。
 
 ## <a name="import-example-json-to-begin-app"></a>导入示例 .json 以开始应用
 
@@ -70,12 +70,12 @@ ms.locfileid: "73828254"
 
 1. 在[预览 LUIS 门户](https://preview.luis.ai)上的“我的应用”  页上，选择“导入”  ，然后选择“导入为 JSON”  。 查找上一步中保存的 JSON 文件。 无需更改应用的名称。 选择“完成” 
 
-1. 在“管理”  部分的“版本”  选项卡上，选择版本，然后选择“克隆”  以克隆版本，并将其命名为 `mach-learn`。 然后选择“完成”  完成克隆过程。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+1. 在“管理”部分的“版本”选项卡上，选择版本，然后选择“克隆”以克隆版本，并将其命名为 `mach-learn`，接下来选择“完成”，完成克隆流程     。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
     > [!TIP] 
-    > 在修改应用之前，克隆是最佳做法。 完成一个版本后，将版本导出为 .json 或 .lu 文件，并将其签入到源代码管理中。
+    > 在修改应用前，最佳做法是将某个版本克隆到新版本。 完成针对某个版本的操作后，将该版本导出为 .json 或 .lu 文件，然后将文件签入源代码管理系统中。
 
-1. 选择“生成”  ，然后选择“意向”  ，以查看 LUIS 应用的主要构建块“意向”。
+1. 选择“生成”，然后选择“意向”，以查看意向（LUIS 应用的主要构建基块）   。
 
     ![从“版本”页切换到“意向”页。](media/tutorial-machine-learned-entity/new-version-imported-app.png)
 
@@ -96,9 +96,9 @@ ms.locfileid: "73828254"
     ![标记完整订单文本的开头和结尾](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
-    > 实体不一定是整个言语。 在此具体案例中，`pickup` 指示如何接收订单，因此它应是订单的标记实体的一部分。 
+    > 实体不一定是整个言语。 在此特定示例中，`pickup` 指示如何接收订单。 从概念角度来看，`pickup` 应是订单的已标记实体的一部分。 
 
-1. 在“选择实体类型”  框中，选择“添加结构”  ，然后选择“下一步”  。 结构是允许子组件（如大小和数量等）所必需的。
+1. 在“选择实体类型”  框中，选择“添加结构”  ，然后选择“下一步”  。 结构是添加子组件（例如大小和数量）所必需的。
 
     ![向实体添加结构](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "73828254"
 
 1. 在“创建新短语列表描述符”  框中，输入名称 `SizeDescriptor`，然后输入 `small`、`medium` 和 `large` 值。 当填充“建议”  框时，选择 `extra large` 和 `xl`。 选择“完成”以创建新的短语列表  。 
 
-    此短语列表描述符通过提供示例词语，帮助 `Size` 子组件来查找与大小相关的词语。 此列表不需要包含每个大小的词语，而应当包含预期指示大小的词语。 
+    此短语列表描述符通过提供示例字词，帮助 `Size` 子组件查找与大小相关的字词。 此列表不需要包含每个大小的词语，而应当包含预期指示大小的词语。 
 
     ![为大小子组件创建描述符](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
 
@@ -133,11 +133,11 @@ ms.locfileid: "73828254"
     ![在所有剩余示例言语中生成实体和子组件。](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
 
     > [!CAUTION]
-    > 如何处理暗示数据（如字母 `a` 暗示单个披萨）？ 或者缺少 `pickup` 和 `delivery` 来指出需要披萨的地点？ 或者缺少一个大小来指出默认大小、小或者大？ 考虑将暗示数据处理视为客户端应用程序中的业务规则的一部分。 
+    > 如何处理暗示数据（如字母 `a` 暗示单个披萨）？ 或者缺少 `pickup` 和 `delivery` 来指出需要披萨的地点？ 或者缺少一个大小来指出默认大小：小或者大？ 考虑将暗示数据处理视为客户端应用程序中的业务规则的一部分，而不是 LUIS 的一部分，或将其视为除 LUIS 以外的一部分。 
 
 1. 若要训练应用，请选择“训练”  。 训练会将更改（如新实体和已标记的言语）应用于活动模型。
 
-1. 训练后，添加新的示例言语，以了解 LUIS 对机器学习实体的理解程度。 
+1. 进行训练后，添加新的示例言语到意向，以查看 LUIS 对机器习得实体的理解程度。 
 
     |订单示例言语|
     |--|
@@ -147,19 +147,19 @@ ms.locfileid: "73828254"
 
     ![通过实体预测的新示例言语](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-    虚线链接表示预测。 
+    虚线表示预测。 
 
-1. 在“将预测更改为已标记实体”中，选择该行，然后选择“确认实体预测”  。
+1. 若要将预测更改为已标记实体，选择该行，然后选择“确认实体预测”  。
 
     ![通过选择“确认实体预测”接受预测。](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
 
-    此时，机器学习实体正在工作，因为它可以在新的示例言语中找到该实体。 添加示例言语时，如果未正确预测实体，请标记实体和子组件。 如果正确预测实体，请确保确认预测。 
+    此时，机器学习实体正在工作，因为它可以在新的示例言语中找到该实体。 添加示例言语时，如果未正确预测实体，请标记实体和子组件。 如果正确预测了实体，请确保确认预测。 
 
-## <a name="add-prebuilt-number-to-app-to-help-extract-data"></a>向应用中添加预生成的数字以帮助提取数据
+## <a name="add-prebuilt-number-to-help-extract-data"></a>添加预生成数字来帮助提取数据
 
-订单信息还应包含订单中的项的数量，例如，多少个披萨。 若要提取此数据，需要将一个新的机器学习子组件添加到 `Order`，该组件需要预生成数字的约束。 通过将实体限制到预生成数字，实体将查找并提取数字，无论文本是数字 `2` 还是文本 `two`。
+订单信息还应包含订单中的项的数量，例如多少个披萨。 若要提取此数据，需要将一个新的机器学习子组件添加到 `Order`，该组件需要预生成数字的约束。 通过将实体限制到预生成数字，实体将查找并提取数字，无论文本是数字 `2` 还是文本 `two`。
 
-首先将预生成的数字添加到应用。 
+首先将预生成数字实体添加到应用。 
 
 1. 从左侧菜单中选择“实体”  ，然后选择“+ 添加预生成实体”  。 
 
@@ -175,6 +175,8 @@ ms.locfileid: "73828254"
 
 约束作为文本匹配应用，该匹配项具有完全匹配（如列表实体）或通过正则表达式匹配（如正则表达式实体或预生成的实体）。 
 
+通过使用约束，仅与该约束匹配的文本会被提取。 
+
 1. 选择“实体”  ，然后选择 `Order` 实体。 
 1. 选择“+ 添加组件”  ，输入名称 `Quantity`，然后选择 Enter 以将新实体添加到应用。
 1. 成功通知后，选择 `Quantity` 子组件，然后选择“约束”铅笔图标。
@@ -182,12 +184,14 @@ ms.locfileid: "73828254"
 
     ![创建具有预生成数字作为约束的数量实体。](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
+    当且仅当找到与预生成数字实体匹配的文本时，才会应用 `Quantity` 实体。
+
     已创建具有约束的实体，但该实体尚未应用于示例言语。
 
     > [!NOTE]
     > 子组件最多可以嵌套到 5 层的子组件中。 尽管本文中未显示这一点，但可从门户和 API 获得。  
 
-## <a name="label-example-utterance-with-subcomponent-for-quantity-to-teach-luis-about-the-entity"></a>标记具有数量子组件的示例言语以向 LUIS 提供有关实体的情况
+## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>用于教授 LUIS 关于实体的信息的标签示例言语
 
 1. 在左侧导航栏中选择“意向”，然后选择“OrderPizza”意向   。 以下言语中的三个数字均被标记，但在 `Order` 实体行的下方可见。 这一较低级别表示找到实体，但不会将其视为与 `Order` 实体分离。
 

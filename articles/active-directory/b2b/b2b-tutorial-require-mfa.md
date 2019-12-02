@@ -1,6 +1,6 @@
 ---
-title: 教程：适用于 B2B 的多重身份验证 - Azure Active Directory | Microsoft Docs
-description: 了解如何在使用 Azure AD B2B 与外部用户和合作伙伴组织协作时要求进行多重身份验证 (MFA)。
+title: 教程 - 针对 B2B 的多重身份验证 - Azure AD
+description: 本教程介绍如何在使用 Azure AD B2B 与外部用户和合作伙伴组织协作时要求进行多重身份验证 (MFA)。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16a2438133f545c57d1046a0c4db94135f8a426d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113183"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420591"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
 

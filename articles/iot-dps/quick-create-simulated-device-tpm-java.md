@@ -1,21 +1,20 @@
 ---
-title: 快速入门：使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+title: 快速入门 - 使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: d8dfb9bb74e1159c9e37f60595a74ae0d0d8f2f6
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: fce7eca055150ce7a2d8503efa4e1f71fffb0c7c
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904877"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423489"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -68,7 +67,7 @@ Azure IoT 设备预配服务支持两类注册：
     cd provisioning/provisioning-samples/provisioning-tpm-sample
     ```
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。 记下“ID 范围”和“预配服务全局终结点”。  
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。 记下“ID 范围”和“预配服务全局终结点”。  
 
     ![设备预配服务信息](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
@@ -79,8 +78,9 @@ Azure IoT 设备预配服务支持两类注册：
     private static final String globalEndpoint = "[Your Provisioning Service Global Endpoint here]";
     private static final ProvisioningDeviceClientTransportProtocol PROVISIONING_DEVICE_CLIENT_TRANSPORT_PROTOCOL = ProvisioningDeviceClientTransportProtocol.HTTPS;
     ```
+    保存文件。
 
-1. 生成项目。 导航到目标文件夹，然后执行创建的 jar 文件。
+1. 使用以下命令生成项目，导航到目标文件夹，然后执行创建的 .jar 文件。 将 `version` 占位符替换为你的 Java 版本的占位符。
 
     ```cmd/sh
     mvn clean install
@@ -88,24 +88,25 @@ Azure IoT 设备预配服务支持两类注册：
     java -jar ./provisioning-tpm-sample-{version}-with-deps.jar
     ```
 
-1. 程序开始运行。 记下用于下一部分的“认可密钥”和“注册 ID”，让程序保持运行。  
+1. 程序开始运行。 记下用于下一部分的“认可密钥”和“注册 ID”，让程序保持运行   。
 
     ![Java TPM 设备程序](./media/java-quick-create-simulated-device/program.png)
     
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
+1. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
-1. 在“添加注册”下  ，输入以下信息：
+1. 在“添加注册”面板中，输入以下信息  ：
    - 选择“TPM”  作为标识证明*机制*。
-   - 输入 TPM 设备的“注册 ID”  和“认可密钥”  ，如前所述。 
+   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
    - 选择与预配服务链接的 IoT 中心。
-   - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
-   - 使用设备所需的初始配置更新“初始设备孪生状态”  。
-   - 完成后，单击“保存”按钮  。 
+   - （可选）可以提供以下信息：
+       - 输入唯一“设备 ID”  。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
+       - 使用设备所需的初始配置更新“初始设备孪生状态”  。
+   - 完成后，按“保存”按钮  。 
 
      ![在门户边栏选项卡中输入设备注册信息](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -114,25 +115,25 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="simulate-the-device"></a>模拟设备
 
-1. 在计算机上运行 Java 示例代码的命令窗口中单击 Enter，继续运行应用程序。 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。  
+1. 在计算机上运行 Java 示例代码的命令窗口中按 Enter，继续运行应用程序  。 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。  
 
     ![最终的 Java TPM 设备程序](./media/java-quick-create-simulated-device/program-final.png)
 
-1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。 
+1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上  。
 
     ![设备注册到 IoT 中心](./media/java-quick-create-simulated-device/hubregistration.png) 
 
-    如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
+    如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后单击“单个注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 ## <a name="next-steps"></a>后续步骤
 

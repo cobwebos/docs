@@ -1,19 +1,16 @@
 ---
-title: 教程 - 将参数添加到 Azure 资源管理器模板
+title: 教程 - 将参数添加到模板
 description: 将参数添加到 Azure 资源管理器模板，使其可重复使用。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001500"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406078"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>教程：将参数添加到资源管理器模板
 
@@ -25,7 +22,7 @@ ms.locfileid: "72001500"
 
 必须已安装带有资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
-## <a name="review-your-template"></a>检查模板
+## <a name="review-template"></a>审阅模板
 
 在上一篇教程的结束时，模板包含以下 JSON：
 
@@ -33,7 +30,7 @@ ms.locfileid: "72001500"
 
 可能已注意到此模板有一个问题。 存储帐户名称已经过硬编码。 每次只能使用此模板部署同一个存储帐户。 若要使用不同的名称部署存储帐户，必须创建新的模板，这显然不是实现自动化部署的实用方法。
 
-## <a name="make-your-template-reusable"></a>使模板可重复使用
+## <a name="make-template-reusable"></a>使模板可重复使用
 
 为了使模板可重复使用，让我们添加一个可用于传入存储帐户名称的参数。 以下示例中突出显示的 JSON 演示了模板中发生的更改。 **storageName** 参数已标识为字符串。 最大长度设置为 24 个字符，以防止名称过长。
 
@@ -41,7 +38,7 @@ ms.locfileid: "72001500"
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-template"></a>部署模板
 
 让我们部署该模板。 以下示例使用 Azure CLI 或 PowerShell 来部署模板。 请注意，需要为部署命令中的某个值提供存储帐户名称。 对于存储帐户名称，请提供前一篇教程中所用的相同名称。
 
@@ -87,7 +84,7 @@ az group deployment create \
 
 **storageSKU** 参数有默认值。 如果在部署过程中未指定值，将使用此默认值。 它还有允许值列表。 这些值与创建存储帐户所需的值相匹配。 你不希望模板用户传入没有作用的 SKU。
 
-## <a name="redeploy-the-template"></a>重新部署模板
+## <a name="redeploy-template"></a>重新部署模板
 
 现在可以重新部署。 由于默认 SKU 设置为 **Standard_LRS**，因此不需要提供该参数的值。
 

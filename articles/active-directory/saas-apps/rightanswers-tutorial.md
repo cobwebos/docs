@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: f242b2e33b50aa955446ae2b1f62421d39e58418
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b1f7590e13be97841aae95ec47eaaa61ab004a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098904"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>教程：Azure Active Directory 与 RightAnswers 集成
 
@@ -191,7 +191,7 @@ ms.locfileid: "70098904"
 如有必要，在第一次尝试单一登录时会自动创建用户。
 
 > [!NOTE]
-> 可以使用任何其他 Rally Software 用户帐户创建工具或 RightAnswers 提供的 API 来预配 AAD 用户帐户。
+> 可使用任何其他 Rally Software 用户帐户创建工具或 RightAnswers 提供的 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

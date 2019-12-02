@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819679"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559024"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -67,7 +67,12 @@ Linux 上的应用服务仅支持[免费、基本、标准和高级](https://azu
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 若要从容器记录 `stdout` 和 `stderr`，需要在“应用服务日志”下启用“Docker 容器日志记录”。   设置立即生效。 应用服务会检测更改，并自动重启容器。
+> [!NOTE]
+> [Azure Monitor（预览版）](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview)提供新的集成日志记录功能。 
+>
+>
+
+如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。 若要从容器记录 `stdout` 和 `stderr`，需要在“应用服务日志”下启用“应用程序日志记录”   。 设置立即生效。 应用服务会检测更改，并自动重启容器。
 
 可从“开发工具”  菜单中的“高级工具”  访问 SCM 站点。
 

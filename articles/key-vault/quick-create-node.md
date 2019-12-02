@@ -1,202 +1,263 @@
 ---
-title: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
-description: 在本快速入门中，你将使用 Node Web 应用在 Azure Key Vault 中设置和检索机密
-services: key-vault
+title: 快速入门 - 适用于 Node.js 的 Azure Key Vault 客户端库 (v4)
+description: 了解如何使用 Node.js 客户端库在 Azure 密钥保管库中创建、检索和删除机密
 author: msmbaldwin
-manager: rkarlin
+ms.author: mbaldwin
+ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/03/2010
-ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6555e61bab4ee668578b50cd27860fde1909c4dd
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003509"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546901"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入门：适用于 Node.js 的 Azure Key Vault 客户端库 (v4)
 
-本快速入门介绍如何在 Azure Key Vault 中存储机密，以及如何使用 Web 应用来检索该机密。 可以通过 Key Vault 来确保信息的安全。 若要查看机密值，必须在 Azure 上运行本快速入门。 本快速入门使用 Node.js 和 Azure 资源的托管标识。 学习如何：
+本快速入门将介绍适用于 Node.js 的 Azure Key Vault 客户端库。 请遵循以下步骤安装包并试用基本任务的示例代码。
 
-* 创建密钥保管库。
-* 在密钥保管库中存储机密。
-* 从密钥保管库检索机密。
-* 创建 Azure Web 应用程序。
-* 为 Web 应用启用[托管标识](../active-directory/managed-service-identity/overview.md)。
-* 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 使用适用于 Node.js 的 Key Vault 客户端库可以：
 
-在继续操作之前，请确保熟悉 [Key Vault 的基本概念](basic-concepts.md)。
+- 提高安全性以及控制密钥和密码。
+- 在几分钟内创建并导入加密密钥。
+- 通过云扩展和全局冗余减少延迟。
+- 简化和自动化与 SSL/TLS 证书相关的任务。
+- 使用 FIPS 140-2 第 2 级验证的 HSM。
 
-> [!NOTE]
-> Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序和用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密需要定期轮换。 
->
-> 使用 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)，在 Azure 中运行的应用程序将获得由 Azure 自动管理的标识。 这有助于解决*机密采用问题*，这样用户和应用程序就可以遵循最佳做法，而不必担心轮换第一个机密。
+[API 参考文档](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [包 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Node.js](https://nodejs.org/en/)
-* [Git](https://www.git-scm.com/)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 或更高版本。 本快速入门要求在本地运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest)。
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 适用于操作系统的当前 [Node.js](https://nodejs.org)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="log-in-to-azure"></a>登录 Azure
+本快速入门假设你在 Linux 终端窗口中运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-若要使用 Azure CLI 登录到 Azure，请输入：
+## <a name="setting-up"></a>设置
+
+### <a name="install-the-package"></a>安装包
+
+在控制台窗口中，安装适用于 Node.js 的 Azure Key Vault 机密库。
+
+```console
+npm install @azure/keyvault-secrets
+```
+
+本快速入门还需要安装 azure.identity 包：
+
+```console
+npm install @azure/identity
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>创建资源组和 Key Vault
+
+本快速入门使用预先创建的 Azure Key Vault。 可以遵循 [Azure CLI 快速入门](quick-create-cli.md)、[Azure PowerShell 快速入门](quick-create-powershell.md)或 [Azure 门户快速入门](quick-create-portal.md)中的步骤创建 Key Vault。 或者，只需运行以下 Azure CLI 命令。
+
+> [!Important]
+> 每个密钥保管库必须具有唯一的名称。 在以下示例中，将 <your-unique-keyvault-name> 替换为密钥保管库的名称。
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+### <a name="create-a-service-principal"></a>创建服务主体
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+对基于云的应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault](managed-identity.md)。 不过，为简单起见，本快速入门将创建一个控制台应用程序。 在 Azure 中对桌面应用程序进行身份验证需要使用服务主体和访问控制策略。
 
-选择一个资源组名称，然后将其填充在占位符中。
-以下示例在“美国东部”位置创建一个资源组。
+使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建服务主体：
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-刚刚创建的资源组将在整篇文章中使用。
-
-## <a name="create-a-key-vault"></a>创建 key vault
-
-接下来，使用在上一步骤创建的资源组创建一个 Key Vault。 必须对 Key Vault 使用唯一的名称。本文使用“ContosoKeyVault”作为名称。 提供以下信息：
-
-* Key Vault 名称。
-* 资源组名称。 名称必须是 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和连字符 (-)。
-* 位置：**美国东部**。
+此操作将返回一系列键/值对。 
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
 ```
 
-目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
+请记下 clientId 和 clientSecret，因为在下面的[设置环境变量](#set-environmental-variables)步骤中将要用到。
 
-## <a name="add-a-secret-to-the-key-vault"></a>向密钥保管库添加机密
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>为服务主体授予对 Key Vault 的访问权限
 
-我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。 在本教程中，密码名为 **AppSecret**，将在其中存储 **MySecret** 的值。
-
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
+通过将 clientId 传递给 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，为密钥保管库创建授予服务主体权限的访问策略。 授予服务主体对密钥和机密的 get、list 和 set 权限。
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-若要查看机密中包含的纯文本形式的值，请执行以下命令：
+#### <a name="set-environmental-variables"></a>设置环境变量
+
+应用程序中的 DefaultAzureCredential 方法依赖于三个环境变量：`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID`。 请使用 `export VARNAME=VALUE` 格式将这些变量设置为在上述[创建服务主体](#create-a-service-principal)步骤中记下的 clientId、clientSecret 和 tenantId 值。 （这只为当前 shell 和从 shell 创建的进程设置变量；若要将这些变量永久添加到环境中，请编辑 `/etc/environment ` 文件。） 
+
+还需要将密钥保管库名称另存为名为 `KEY_VAULT_NAME` 的环境变量。
+
+```console
+export AZURE_CLIENT_ID=<your-clientID>
+
+export AZURE_CLIENT_SECRET=<your-clientSecret>
+
+export AZURE_TENANT_ID=<your-tenantId>
+
+export KEY_VAULT_NAME=<your-key-vault-name>
+````
+
+## <a name="object-model"></a>对象模型
+
+使用适用于 Node.js 的 Azure Key Vault 客户端库可以管理密钥和相关的资产（例如证书和机密）。 以下代码示例演示如何创建客户端以及设置、检索和删除机密。
+
+[https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app ) 中提供了整个控制台应用。
+
+## <a name="code-examples"></a>代码示例
+
+### <a name="add-directives"></a>添加指令
+
+将以下指令添加到代码的顶部：
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+```
+
+### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
+
+向密钥保管库进行身份验证和创建密钥保管库客户端依赖于上面[设置环境变量](#set-environmental-variables)步骤中的环境变量以及 [SecretClient 构造函数](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-)。 
+
+密钥保管库的名称将扩展为密钥保管库 URI，格式为 `https://<your-key-vault-name>.vault.azure.net`。 
+
+```javascript
+const keyVaultName = process.env["KEY_VAULT_NAME"];
+const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+const credential = new DefaultAzureCredential();
+const client = new SecretClient(KVUri, credential);
+```
+
+### <a name="save-a-secret"></a>保存机密
+
+应用程序通过身份验证后，你可以使用 [client.setSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-)将机密放入密钥保管库。此操作需要使用机密的名称，本示例中使用“mySecret”。  
+
+```javascript
+await client.setSecret(secretName, secretValue);
+```
+
+可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否设置了机密：
 
 ```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-此命令显示机密信息，包括 URI。 完成这些步骤后，密钥保管库中会出现某个机密的 URI。 请记下此信息， 后面的步骤需要用到。
+### <a name="retrieve-a-secret"></a>检索机密
 
-## <a name="clone-the-repo"></a>克隆存储库
+现在，可以使用 [client.getSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-)检索以前设置的值。
 
-克隆存储库，以便创建一个可以在其中编辑源的本地副本。 运行以下命令：
+```javascript
+const retrievedSecret = await client.getSecret(secretName);
+ ```
 
+机密现已保存为 `retrievedSecret.value`。
+
+### <a name="delete-a-secret"></a>删除机密
+
+最后，使用 [client.beginDeleteSecret 方法](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-)从密钥保管库中删除机密。
+
+```javascript
+await client.beginDeleteSecret(secretName)
 ```
-git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
-```
 
-## <a name="install-dependencies"></a>安装依赖项
-
-运行以下命令安装依赖项：
-
-```
-cd key-vault-node-quickstart
-npm install
-```
-
-此项目使用两个 Node 模块：[ms-rest-azure](https://www.npmjs.com/package/ms-rest-azure) 和 [azure-keyvault](https://www.npmjs.com/package/azure-keyvault)。
-
-## <a name="publish-the-web-app-to-azure"></a>将 Web 应用发布到 Azure
-
-创建 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)计划。 可以在此计划中存储多个 Web 应用。
-
-    ```
-    az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
-    ```
-接下来创建 Web 应用。 在以下示例中，请将 `<app_name>` 替换为全局唯一的应用名称（有效字符为 a-z、0-9 和 -）。 运行时设置为 NODE|6.9。 若要查看所有受支持的运行时，请运行 `az webapp list-runtimes`。
-
-    ```
-    # Bash
-    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    ```
-创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
-
-    ```
-    {
-      "availabilityState": "Normal",
-      "clientAffinityEnabled": true,
-      "clientCertEnabled": false,
-      "cloningInfo": null,
-      "containerSize": 0,
-      "dailyMemoryTimeQuota": 0,
-      "defaultHostName": "<app_name>.azurewebsites.net",
-      "enabled": true,
-      "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-      < JSON data removed for brevity. >
-    }
-    ```
-浏览到新建的 Web 应用，应会看到它正在运行。 将 `<app_name>` 替换为唯一应用名称。
-
-    ```
-    http://<app name>.azurewebsites.net
-    ```
-以上命令还会创建一个支持 Git 的应用，可将该应用从本地 Git 存储库部署到 Azure。 本地 Git 存储库是使用此 URL 配置的：`https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`。
-
-完成上述命令后，可将 Azure 远程功能添加到本地 Git 存储库。 请将 `<url>` 替换为 Git 存储库的 URL。
-
-    ```
-    git remote add azure <url>
-    ```
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>为 Web 应用启用托管标识
-
-虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
-
-运行 assign-identity 命令，为此应用程序创建标识：
+可以使用 [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) 命令来验证是否已删除机密：
 
 ```azurecli
-az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”   。
+## <a name="clean-up-resources"></a>清理资源
 
-### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
-
-记下上述命令的输出。 它应采用以下格式：
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-然后，使用 Key Vault 的名称和 **principalId** 的值运行以下命令：
+可以使用 Azure CLI 或 Azure PowerShell 来删除不再需要的 Key Vault 和相应的资源组。
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
+az group delete -g "myResourceGroup" -l "EastUS" 
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>将 Node 应用部署到 Azure 并检索机密值
-
-运行以下命令，将应用部署到 Azure：
-
-```
-git push azure master
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-然后，在浏览到 `https://<app_name>.azurewebsites.net` 时，即可看到机密值。 确保已将名称 `<YourKeyVaultName>` 替换为保管库名称。
+## <a name="sample-code"></a>代码示例
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+
+const readline = require('readline');
+
+function askQuestion(query) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise(resolve => rl.question(query, ans => {
+        rl.close();
+        resolve(ans);
+    }))
+}
+
+async function main() {
+
+  const keyVaultName = process.env["KEY_VAULT_NAME"];
+  const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+  const credential = new DefaultAzureCredential();
+  const client = new SecretClient(KVUri, credential);
+
+  const secretName = "mySecret";
+  var secretValue = await askQuestion("Input the value of your secret > ");
+
+  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+  await client.setSecret(secretName, secretValue);
+
+  console.log("Done.");
+
+  console.log("Forgetting your secret.");
+  secretValue = "";
+  console.log("Your secret is '" + secretValue + "'.");
+
+  console.log("Retrieving your secret from " + keyVaultName + ".");
+
+  const retrievedSecret = await client.getSecret(secretName);
+
+  console.log("Your secret is '" + retrievedSecret.value + "'.");
+  console.log("Deleting your secret from " + keyVaultName + " ...");
+
+  await client.beginDeleteSecret(secretName);
+
+  console.log("Done.");
+
+}
+
+main()
+
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+在本快速入门中，你创建了一个 Key Vault、存储了一个机密，然后检索了该机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](key-vault-overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)

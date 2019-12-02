@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 RBAC 和资源管理器模板授予用户对 Azure 资源的访问权限 | Microsoft Docs
-description: 了解如何通过 Azure 资源管理器模板使用基于角色的访问控制 (RBAC) 授予用户对 Azure 资源的访问权限。
+title: 教程 - 使用 RBAC 和 Azure 资源管理器模板授予用户对 Azure 资源的访问权限
+description: 本教程介绍如何通过 Azure 资源管理器模板使用基于角色的访问控制 (RBAC) 授予用户对 Azure 资源的访问权限。
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: edb20221862e6439b3bc574995f4037cbc95f8f9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668884"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418488"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教程：使用 RBAC 和 Azure 资源管理器模板授予用户对 Azure 资源的访问权限
 

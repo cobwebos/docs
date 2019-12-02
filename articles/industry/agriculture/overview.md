@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797153"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538142"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Azure FarmBeats 概述
 
@@ -36,11 +36,11 @@ Azure FarmBeats 提供了一种强大而简单的方法来执行以下操作：
 - 根据聚合数据集构建 AI/ML 模型，以此获取可操作见解。
 - 通过提供农场健康咨询来构建或补充数字农业解决方案。
 
-本文的以下各节中讨论了 Azure FarmBeat 组件。
+本文的以下各部分中讨论了 Azure FarmBeats 组件。
 
 ## <a name="data-hub"></a>数据中心
 
-一个 API 层，可以跨提供商对各种农业数据集进行聚合、规范化和语境化。 在本预览版中，可以使用两个传感器提供商（[Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)），一个卫星图像提供商（[Sentinel-2](https://sentinel.esa.int/web/sentinel/home)）和两个无人机图像提供商（[senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)）。 数据中心被设计为 API 平台，我们将与更多提供商合作以与 Azure FarmBeats 集成，因此在构建解决方案时你拥有更多选择。
+Azure FarmBeats 数据中心一个 API 层，可以跨提供商对各种农业数据集进行聚合、规范化和语境化。 在本预览版中，可以使用两个传感器提供商（[Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)），一个卫星图像提供商（[Sentinel-2](https://sentinel.esa.int/web/sentinel/home)）和三个无人机图像提供商（[senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)）。 数据中心被设计为 API 平台，我们将与更多提供商合作以与 Azure FarmBeats 集成，因此在构建解决方案时你拥有更多选择。
 
 ## <a name="accelerator"></a>加速器
 
@@ -48,8 +48,8 @@ Azure FarmBeats 提供了一种强大而简单的方法来执行以下操作：
 
 ## <a name="resources"></a>资源
 
-请访问 FarmBeats [博客](https://aka.ms/AzureFarmBeats)和[论坛](https://aka.ms/FarmBeatsMSDN)。
+请访问 Azure FarmBeats [博客](https://aka.ms/AzureFarmBeats)和[论坛](https://aka.ms/FarmBeatsMSDN)以了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure FarmBeats，请访问 [Azure 市场](https://aka.ms/FarmBeatsMarketplace)进行部署。
+若要开始使用 Azure FarmBeats，请访问 [Azure 市场](https://aka.ms/FarmBeatsMarketplace)以开始部署过程。

@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669677"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278579"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-本快速入门将在 [LUIS 门户](https://www.luis.ai)中生成新应用。 首先创建应用的基本部件、**意向**和**实体**。 然后，通过在交互式测试面板中提供用于获取预测的意向的示例用户话语，对应用进行测试。
+本快速入门介绍如何在 LUIS 门户中生成新应用。 首先创建应用的基本部件、**意向**和**实体**。 然后，通过在交互式测试面板中提供用于获取预测的意向的示例用户话语，对应用进行测试。
 
 生成应用是免费的操作，不需要 Azure 订阅。 做好部署应用的准备以后，请参阅[有关如何部署应用的快速入门](get-started-portal-deploy-app.md)。 该快速入门介绍如何创建 Azure 认知服务资源并将其分配到应用。
 

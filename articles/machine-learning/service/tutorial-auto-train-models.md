@@ -1,7 +1,7 @@
 ---
-title: 回归模型教程：自动化机器学习
+title: 回归教程：自动化机器学习
 titleSuffix: Azure Machine Learning
-description: 了解如何使用自动化机器学习生成机器学习模型。 Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习来部署最终的模型。
+description: 本教程介绍如何使用自动化机器学习生成机器学习模型。 Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2a47b6851d9c3250913783c8a63b666e8a8474d9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582460"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483544"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -706,7 +706,7 @@ green_taxi_df.describe()
   </thead>
   <tbody>
     <tr>
-      <th>计数</th>
+      <th>count</th>
       <td>48000.00</td>
       <td>48000.00</td>
       <td>48000.00</td>

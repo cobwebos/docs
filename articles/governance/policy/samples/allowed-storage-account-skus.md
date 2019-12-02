@@ -1,14 +1,14 @@
 ---
 title: 示例 - 允许的存储帐户 SKU
-description: 此示例策略定义要求存储帐户使用已批准的 SKU。
+description: 此示例策略定义要求存储帐户使用在参数中定义的已批准的 SKU。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 34f6e15bb89a74855462ce9426cd05cd78340f9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 843c06b4c7b18e130b325c9ccd37a4fe70fc471f
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071657"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463699"
 ---
 # <a name="sample---allowed-storage-account-skus"></a>示例 - 允许的存储帐户 SKU
 

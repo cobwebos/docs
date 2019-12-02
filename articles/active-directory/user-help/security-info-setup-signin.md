@@ -1,6 +1,6 @@
 ---
-title: 从登录提示设置安全信息（预览版）- Azure AD
-description: 如何根据组织登录页中的提示，为工作或学校帐户设置安全信息。
+title: 根据登录提示设置安全信息（预览）- Azure AD
+description: 如何在组织的登录页上出现提示后为工作或学校帐户设置安全信息（预览）。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820288"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278977"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>根据登录页提示设置安全信息（预览）
+# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>根据登录提示设置安全信息（预览）
 
 如果在你登录到工作或学校帐户后，紧接着出现设置安全信息的提示，你可以遵循以下步骤进行设置。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089536"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>教程：Azure Active Directory 与 SumoLogic 的集成
 
@@ -233,13 +233,13 @@ ms.locfileid: "67089536"
 
     ![用户](./media/sumologic-tutorial/ic778561.png "用户")
 
-1. 单击 **“添加”** 。
+1. 单击“添加”  。
 
     ![用户](./media/sumologic-tutorial/ic778562.png "用户")
 
 1. 在“新建用户”  对话框中，执行以下步骤：
 
-    ![新建用户](./media/sumologic-tutorial/ic778563.png "New User") 
+    ![新建用户](./media/sumologic-tutorial/ic778563.png "新建用户") 
 
     a. 将要预配的 Azure AD 帐户的相关信息键入到“名字”  、“姓氏”  和“电子邮件”  文本框中。
   
@@ -250,7 +250,7 @@ ms.locfileid: "67089536"
     d. 单击“ **保存**”。
 
 > [!NOTE]
-> 可以使用 SumoLogic 提供的任何其他 SumoLogic 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 SumoLogic 提供的任何其他 SumoLogic 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

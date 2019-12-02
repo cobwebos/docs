@@ -1,5 +1,5 @@
 ---
-title: 如何在 Java 中使用设备上的传感器创建和查找定位点 | Microsoft Docs
+title: Java 中的粗略重新局部化
 description: 深入介绍如何在 Java 中使用设备上的传感器创建和查找定位点。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f10251dc0b21e8ca3cd0761652633fe579416ac9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 2aafaed67e68b5842767de32893eddd829b43164
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093053"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277212"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-java"></a>如何在 Java 中使用设备上的传感器创建和查找定位点
 
@@ -25,7 +25,7 @@ ms.locfileid: "74093053"
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Azure 空间定位点可以将设备上的定位传感器数据与你创建的定位点相关联。 此数据还可用于快速确定设备附近是否有任何定位点。 有关详细信息，请参阅[粗略重新局部化](../concepts/coarse-reloc.md)。
+Azure 空间定位点可以将设备上的定位传感器数据与所创建的定位点相关联。 此数据还可用于快速确定设备附近是否有任何定位点。 有关详细信息，请参阅[粗略重新局部化](../concepts/coarse-reloc.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

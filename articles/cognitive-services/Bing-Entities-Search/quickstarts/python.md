@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Python 向必应实体搜索 REST API 发送搜索请求
+title: 快速入门：使用 Python 向 REST API 发送搜索请求 - 必应实体搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 Python 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: fa306ecd7690085d96f561fcf7e043064013344d
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 52695cca2fe49829705ac2283c9f083ada8ae0b0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478945"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327092"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>快速入门：使用 Python 向必应实体搜索 REST API 发送搜索请求
 

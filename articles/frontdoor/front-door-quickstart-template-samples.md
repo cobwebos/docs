@@ -1,5 +1,5 @@
 ---
-title: Azure 资源管理器模板示例 - Azure Front Door 服务 | Microsoft Docs
+title: Azure 资源管理器模板示例 - Azure Front Door 服务
 description: 适用于 Azure Front Door 服务的 Azure 资源管理器模板示例
 services: frontdoor
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2018
 ms.author: sharadag
-ms.openlocfilehash: 7e40a847b6ea4daa640a7ae6bc69fd25daa86a5b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2684c9852cb3e946d8ec1840fc166053204dfae0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575794"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184599"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>适用于 Front Door 的 Azure 资源管理器部署模型模板
 

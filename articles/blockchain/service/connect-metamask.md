@@ -1,21 +1,15 @@
 ---
 title: 将 MetaMask 连接到 Azure 区块链服务网络
 description: 使用 MetaMask 连接到 Azure 区块链服务网络并部署智能合同。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.reviewer: janders
+ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966571"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456002"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>快速入门：使用 MetaMask 进行连接并部署智能合同
 
@@ -144,4 +138,4 @@ Remix 是一个基于浏览器的 Solidity 开发环境。 将 MetaMask 与 Remi
 在本快速入门中，你使用 MetaMask 浏览器扩展连接到了 Azure 区块链服务事务节点，部署了智能合同，并向区块链发送了一个事务。 尝试下一个教程，使用适用于 Ethereum 的 Azure 区块链开发工具包和 Truffle 通过事务创建、生成、部署和执行智能合同函数。
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)
+> [在 Azure 区块链服务中创建、生成和部署智能合同](send-transaction.md)

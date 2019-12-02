@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
+title: 快速入门：使用 REST API 和 PHP 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
 description: 此简单的 PHP 应用程序将向必应拼写检查 API 发送请求并返回一系列建议的更正。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8c95f0960c098ad56affc641996f1b52681d473e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110787"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383850"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 

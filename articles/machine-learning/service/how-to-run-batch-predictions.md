@@ -1,5 +1,5 @@
 ---
-title: 对大量数据运行批处理推理
+title: 对大数据运行批量预测
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的批处理推理对大量数据进行异步推理。 批处理推理提供现成的并行处理功能，可针对大数据用例优化高吞吐量、触发后不理推理。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929558"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276730"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

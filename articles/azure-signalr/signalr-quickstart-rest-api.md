@@ -1,17 +1,17 @@
 ---
 title: 快速入门 - Azure SignalR 服务 REST API
-description: 有关使用 Azure SignalR 服务 REST API 的快速入门。
+description: 通过以下示例了解如何将 REST API 与 Azure SignalR 服务结合使用。 查找 REST API 规范的详细信息。
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724663"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157678"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
 

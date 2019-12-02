@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063055"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561897"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 - **主体 ID** - 托管标识的服务主体对象的对象 ID，用于授予对 Azure 资源的基于角色的访问权限。
 - **Azure 实例元数据服务 (IMDS)** - 一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 该终结点位于已知不可路由的 IP 地址 (169.254.169.254)，该地址只能从 VM 中访问。
 
-## Azure 资源托管标识的工作原理<a name="how-does-it-work"></a>
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Azure 资源托管标识的工作原理
 
 托管标识分为两种类型：
 

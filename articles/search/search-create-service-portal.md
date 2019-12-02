@@ -1,19 +1,19 @@
 ---
 title: 快速入门：在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 门户中预配 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
+description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112114"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534566"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -41,7 +41,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="choose-a-subscription"></a>选择订阅
 
-第一步是设置订阅 ID 和资源组。 如果有多个订阅，则选择一个同样具有数据或文件存储服务的订阅。 Azure 认知搜索可以自动检测 Azure 表和 Blob 存储、SQL 数据库和 Azure Cosmos DB，以通过[*索引器*](search-indexer-overview.md)编制索引，但仅限于同一订阅中的服务。
+如果有多个订阅，请选择一个用于搜索服务。
 
 ## <a name="set-a-resource-group"></a>设置资源组
 

@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 Apache Hive on Azure HDInsight 执行提取、转换、加载 (ETL) 操作
+title: 教程：使用 Azure HDInsight 提取、转换和加载数据
 description: 本教程介绍如何从原始 CSV 数据集提取数据，使用 Apache Hive on Azure HDInsight 将其转换，然后使用 Sqoop 将已转换的数据加载到 Azure SQL 数据库。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992252"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327563"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
 本教程执行 ETL 操作：提取、转换和加载数据。 有了原始 CSV 数据文件以后，将其导入 Azure HDInsight 群集，使用 Apache Hive 对其进行转换，然后使用 Apache Sqoop 将其加载到 Azure SQL 数据库。
 
@@ -234,7 +234,7 @@ ms.locfileid: "69992252"
 
 4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
 
-    ![获取 Azure SQL 服务器的详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器的详细信息")
+    ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
     有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](https://www.freetds.org/)。
 

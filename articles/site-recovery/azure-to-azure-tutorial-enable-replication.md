@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961500"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561486"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
@@ -143,7 +143,7 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
     **目标位置** | 用于灾难恢复的目标区域。<br/><br/> 建议选择与 Site Recovery 保管库位置匹配的目标位置。
     **目标资源组** | 故障转移后，目标区域中用于容纳 Azure VM 的资源组。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有“asr”后缀的新资源组。 目标资源组的位置可以是除托管源虚拟机区域以外的任何区域。
     **目标虚拟网络** | 故障转移后，目标区域中 VM 所位于的网络。<br/><br/> 默认情况下，Site Recovery 会在目标位置中创建一个带有“asr”后缀的新虚拟网络（以及子网）。
-    **缓存存储帐户** | Site Recovery 使用源区域中的一个存储帐户。 复制到目标位置之前，对源 VM 的更改将发送到此帐户。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请确保启用“允许受信任的 Microsoft 服务”。  [了解详细信息。](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **缓存存储帐户** | Site Recovery 使用源区域中的一个存储帐户。 复制到目标位置之前，对源 VM 的更改将发送到此帐户。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请确保启用“允许受信任的 Microsoft 服务”。  [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。 同时，确保允许访问至少一个源 Vnet 子网。
     **目标存储帐户(源 VM 使用非托管磁盘)** | 默认情况下，Site Recovery 会在目标区域中创建新存储帐户，从而形成源 VM 存储帐户的镜像。<br/><br/> 如果使用支持防火墙的缓存存储帐户，请启用“允许受信任的 Microsoft 服务”。 
     **副本托管磁盘(如果源 VM 使用托管磁盘)** | 默认情况下，Site Recovery 在目标区域中创建副本托管磁盘，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。 只能自定义磁盘类型 
     **目标可用性集** | 默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有“asr”后缀（针对源区域中可用性集的 VM 部分）的新可用性集。 如果 Azure Site Recovery 创建的可用性集已存在，则会重复使用。

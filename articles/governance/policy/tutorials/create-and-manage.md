@@ -1,14 +1,14 @@
 ---
-title: 创建和管理策略以强制实施符合性
-description: 使用 Azure Policy 强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
-ms.date: 02/04/2019
+title: 教程：构建策略以强制实施符合性
+description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959547"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482360"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -20,7 +20,11 @@ ms.locfileid: "73959547"
 > - 解决不符合或遭拒绝的资源
 > - 在组织中实施新策略
 
-若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。
+
+## <a name="prerequisites"></a>先决条件
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
@@ -443,7 +447,7 @@ az policy definition list
 
 1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。  
 
-## <a name="next-steps"></a>后续步骤
+## <a name="review"></a>审阅
 
 在本教程中，你已成功完成以下任务：
 
@@ -452,6 +456,8 @@ az policy definition list
 > - 创建并分配计划定义，跟踪多个资源的符合性
 > - 解决不符合或遭拒绝的资源
 > - 在组织中实施新策略
+
+## <a name="next-steps"></a>后续步骤
 
 若要了解有关策略定义结构的详细信息，请查看以下文章：
 

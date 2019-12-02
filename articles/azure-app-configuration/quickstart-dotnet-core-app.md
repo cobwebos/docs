@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 986bda4ab95985820e61c93bbe82431fb50c983b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709414"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185018"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -84,7 +84,7 @@ ms.locfileid: "71709414"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -110,7 +110,7 @@ ms.locfileid: "71709414"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 .NET Core 控制台应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
+本快速入门介绍了如何创建新的应用程序配置存储区，以及如何通过[应用程序配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其与 .NET Core 控制台应用配合使用。 若要了解如何配置 .NET Core 应用来动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [启用动态配置](./enable-dynamic-configuration-dotnet-core.md)

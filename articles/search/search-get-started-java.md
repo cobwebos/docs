@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 REST API 在 Java 中创建搜索索引
 titleSuffix: Azure Cognitive Search
-description: 介绍如何使用 Java 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
+description: 此 Java 快速入门介绍如何使用 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
 manager: nitinme
-author: lisaleib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792817"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406733"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -817,7 +817,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
     查看每个查询的摘要及其结果。 运行完成时，应会显示 BUILD SUCCESS 消息以及零 (0) 退出代码。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
@@ -827,10 +827,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
 ## <a name="next-steps"></a>后续步骤
 
-在此 Java 快速入门中，你已完成一系列任务：创建索引、使用文档加载索引，以及运行查询。 如果你熟悉基本概念，我们建议参阅以下文章来加深了解。
+在此 Java 快速入门中，你已完成一系列任务：创建索引、使用文档加载索引，以及运行查询。 如果你熟悉基本概念，则建议参阅下文，其中列出了 REST 中的索引器操作。
 
-+ [索引操作](/rest/api/searchservice/index-operations)
-
-+ [文档操作](/rest/api/searchservice/document-operations)
-
-+ [索引器操作](/rest/api/searchservice/indexer-operations)
+> [!div class="nextstepaction"]
+> [索引器操作](/rest/api/searchservice/indexer-operations)

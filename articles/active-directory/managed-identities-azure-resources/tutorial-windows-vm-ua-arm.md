@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 用户分配的托管标识访问 Azure 资源管理器
+title: 教程`:`使用托管标识访问 Azure 资源管理器 - Windows - Azure AD
 description: 本教程介绍了使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器的过程。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520857"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224221"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -50,7 +50,7 @@ ms.locfileid: "59520857"
 - 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](/azure/role-based-access-control/role-assignments-portal)。
 - [安装最新版本的 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
 - 运行 `Connect-AzAccount`，创建与 Azure 的连接。
-- 安装[最新版本的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+- 安装[最新版本的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
 - 运行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以获得 `PowerShellGet` 模块的预发布版本（运行此命令安装 `Az.ManagedServiceIdentity` 模块后，可能需要从当前 PowerShell 会话中退出`Exit`）。
 - 运行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 来安装 `Az.ManagedServiceIdentity` 模块的预发布版本，以执行本文中用户分配的标识操作。
 
@@ -120,11 +120,11 @@ CanDelegate: False
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
-2. 在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中单击“连接”。
+2. 在门户中，导航到“虚拟机”  并转到 Windows 虚拟机，然后在“概述”  中单击“连接”  。
 
-3. 输入创建 Windows VM 时使用的“用户名”和“密码”。
+3. 输入创建 Windows VM 时使用的“用户名”  和“密码”  。
 
-4. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。
+4. 现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell  。
 
 5. 使用 Powershell 的 `Invoke-WebRequest`，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。  `client_id` 值是[创建用户分配的托管标识](#create-a-user-assigned-identity)时返回的值。
 

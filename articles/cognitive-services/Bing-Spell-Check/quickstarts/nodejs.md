@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
+title: 快速入门：使用 REST API 和 Node.js 检查拼写 - 必应拼写检查
 titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: aahill
-ms.openlocfilehash: c45e9e7743aca2d091b62caed6a7c5a724bacebf
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423506"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378809"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>快速入门：使用必应拼写检查 REST API 和 Node.js 检查拼写
 

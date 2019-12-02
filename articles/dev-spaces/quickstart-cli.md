@@ -1,23 +1,19 @@
 ---
-title: 使用 Azure Dev Spaces 在 Kubernetes 上部署应用程序
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 在 Kubernetes 上开发应用程序
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: 使用 Azure Dev Spaces 在 AKS 上部署微服务
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815828"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325644"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上开发应用程序
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>快速入门：在 Kubernetes 上开发应用程序 - Azure Dev Spaces
 本指南介绍如何：
 
 - 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。

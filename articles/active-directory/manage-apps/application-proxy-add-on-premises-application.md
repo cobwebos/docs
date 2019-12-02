@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中添加本地应用 - 应用程序代理 | Microsoft Docs
+title: 教程 - 添加本地应用 - Azure AD 中的应用程序代理
 description: Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登录来访问本地应用程序的应用程序代理服务。 本教程介绍如何准备环境以与应用程序代理配合使用。 然后将介绍如何使用 Azure 门户将本地应用程序添加到 Azure AD 租户。
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73943817"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420449"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 

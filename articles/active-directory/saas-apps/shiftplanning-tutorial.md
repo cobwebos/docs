@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fd7cfe93aa39982836944230f860c603c7117ceb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159973"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>教程：Azure Active Directory 与 Humanity 的集成
 
@@ -229,12 +229,12 @@ ms.locfileid: "73159973"
 
     ![保存员工](./media/shiftplanning-tutorial/iC786625.png "保存员工")
 
-    a. 将要预配的有效 AAD 帐户的“名字”  、“姓氏”  和“电子邮件”  键入到相关文本框中。
+    a. 将要预配的有效 Azure AD 帐户的名字、姓氏和电子邮件键入相关文本框    。
 
     b. 单击“保存员工”  。
 
 > [!NOTE]
-> 可以使用 Humanity 提供的任何其他 Humanity 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Humanity 提供的任何其他 Humanity 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

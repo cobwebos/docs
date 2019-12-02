@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a51276cd54a88c5e566afef0d06673f14b5862cf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572031"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422314"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -26,6 +26,11 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
 这种类型的路由称为应用程序层（OSI 层 7）负载均衡。 Azure 应用程序网关可以执行基于 URL 的路由等操作。
+
+>[!NOTE]
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 如需高性能、低延迟的 4 层负载均衡，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) 如果正在查找全局 DNS 负载均衡，请查看[什么是流量管理器？](../traffic-manager/traffic-manager-overview.md) 端到端场景可从结合这些解决方案中受益。
+>
+> 有关 Azure 负载平衡选项的比较，请参阅 [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)（Azure 中的负载平衡选项概述）。
 
 以下功能是 Azure 应用程序网关附带的：
 

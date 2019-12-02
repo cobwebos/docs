@@ -1,14 +1,14 @@
 ---
 title: 示例 - 确保存储文件加密
-description: 此示例策略定义要求对存储帐户启用文件加密。
+description: 此示例策略定义要求对所有 Azure 存储帐户启用文件加密。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0c0bb16d05b733ca7eabd665eab2ffea77de2b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e10c9a83b0a523848a7c50bc7e2161e92afbca07
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070051"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463434"
 ---
 # <a name="sample---ensure-storage-file-encryption"></a>示例 - 确保存储文件加密
 

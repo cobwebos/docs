@@ -1,14 +1,14 @@
 ---
 title: 示例 - 允许使用来自资源组的自定义 VM 映像
-description: 此示例策略定义要求自定义映像来自已批准的资源组。
+description: 此示例策略定义要求自定义映像来自参数中定义的已批准资源组。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 4956b01dfc48014a047e61aa4961cc4da418f6ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 788098998bb5a1f268203e8e37fd671bdfbd6425
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076498"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463778"
 ---
 # <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>示例 - 允许使用来自资源组的自定义 VM 映像
 

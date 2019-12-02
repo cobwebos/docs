@@ -1,14 +1,14 @@
 ---
-title: 示例 - SWIFT CSP-CSCF v2020 蓝图 - 控制映射
+title: SWIFT CSP-CSCF v2020 蓝图示例控件
 description: SWIFT CSP-CSCF v2020 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 09/24/2019
 ms.topic: sample
-ms.openlocfilehash: 0e5b45ec86acbe7c55aed0aa1611f499316e9118
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1826e4820f06fc3a858ce6cd5f8906baaa9808cc
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037828"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546513"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 蓝图示例的控制映射。
 

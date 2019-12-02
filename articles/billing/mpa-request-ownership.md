@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376784"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561057"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
-若要针对托管服务和 Azure 消耗情况提供单个合并发票，云解决方案提供商 (CSP) 可以通过企业协议 (EA) 从客户处接管 Azure 订阅的计费所有权。
+若要针对托管服务和 Azure 使用情况提供单一合并发票，云解决方案提供商 (CSP) 可通过直接企业协议 (EA) 从客户处接管 Azure 订阅的计费所有权。
 
 此功能仅适用于以 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 形式认证的 CSP 直接计费合作伙伴。 它遵循 Microsoft 的治理和策略规定，某些客户可能需要评审和批准。
 

@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821624"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185235"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教程：在 .NET Framework 应用中使用动态配置
 
@@ -31,9 +31,8 @@ ms.locfileid: "72821624"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置应用程序，使其能够按需使用应用配置存储更新配置。
-> * 在应用程序的控制器中注入最新配置。
-
+> * 设置 .NET Framework 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
+> * 在应用程序中注入最新配置。
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
@@ -52,7 +51,7 @@ ms.locfileid: "72821624"
 
     暂时将“标签”和“内容类型”保留为空   。
 
-## <a name="create-a-net-console-app"></a>创建 .NET 控制台应用
+## <a name="create-a-net-framework-console-app"></a>创建 .NET Framework 控制台应用
 
 1. 启动 Visual Studio，并选择“文件” > “新建” > “项目”    。
 
@@ -99,7 +98,7 @@ ms.locfileid: "72821624"
         PrintMessage().Wait();
     }
     ```
-    `ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用配置存储更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
+    `ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
 
     > [!NOTE]
     > 配置设置的默认缓存过期时间为 30 秒，但是，可以通过调用作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项上的 `SetCacheExpiration` 方法来重写该过期时间。
@@ -156,7 +155,7 @@ ms.locfileid: "72821624"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，通过添加 Azure 托管服务标识简化了应用配置访问并改进了应用凭据管理。 若要了解如何添加 Azure 托管服务标识来简化对应用配置的访问，请继续学习下一篇教程。
+在本教程中，你已启用 .NET Framework 应用，以通过应用程序配置动态刷新配置设置。 若要了解如何使用 Azure 托管标识来简化对应用程序配置的访问，请继续学习下一篇教程。
 
 > [!div class="nextstepaction"]
 > [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

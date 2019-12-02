@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329795"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185059"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
@@ -96,7 +96,7 @@ ms.locfileid: "72329795"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 将名为 ConnectionString 的环境变量设置为应用配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
+1. 将名为 ConnectionString 的环境变量设置为应用程序配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -112,7 +112,7 @@ ms.locfileid: "72329795"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已经创建了一个新的应用程序配置存储区，并将其用于 .NET Framework 控制台应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
+在本快速入门中，你已经创建了一个新的应用程序配置存储区，并将其用于 .NET Framework 控制台应用。 在应用程序启动后，`ConfiguratoinManager` 的值 `AppSettings` 不会更改。 应用程序配置 .NET Standard 配置提供程序库，但也可在 .NET Framework 应用中使用。 若要了解如何启用 .NET Framework 应用以动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [启用动态配置](./enable-dynamic-configuration-dotnet.md)

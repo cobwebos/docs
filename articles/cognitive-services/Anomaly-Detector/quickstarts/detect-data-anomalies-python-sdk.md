@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/15/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 926d7043ea6f56c1ba6d13fd4586fc6f6d59cfa8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554698"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483338"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>快速入门：适用于 Python 的异常检测器客户端库
 
@@ -26,11 +26,12 @@ ms.locfileid: "72554698"
 * 以批请求的形式检测整个时序数据集中的异常
 * 在时序中检测最新数据点的异常状态
 
-[库参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [代码示例](https://github.com/Azure-Samples/anomalydetector)
+[库参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [在 GitHub 上查找示例代码](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* 异常检测器密钥和终结点
 * [Python 3.x](https://www.python.org/)
 * [Pandas 数据分析库](https://pandas.pydata.org/)
  
@@ -114,18 +115,4 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 使用 `python` 命令和文件名运行应用程序。
  
-## <a name="clean-up-resources"></a>清理资源
-
-如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与资源组相关联的任何其他资源。
-
-* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
->[使用 Azure Databricks 流式处理异常检测](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* 什么是[异常检测器 API？](../overview.md)
-* 使用异常检测器 API 时的[最佳做法](../concepts/anomaly-detection-best-practices.md)。
-* 可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) 上找到此示例的源代码。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

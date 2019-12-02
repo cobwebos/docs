@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: victorh
-ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580186"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267955"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什么是 Azure 防火墙管理器预览版？
 
@@ -75,6 +75,7 @@ Azure 防火墙管理器预览版存在以下已知问题：
 |当前不支持流量拆分|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|当前正在调查中心的流量拆分。
 |每个区域一个中心|每个区域最多只有一个中心|可在一个区域中创建多个虚拟 WAN。|
 |基本策略必须与本地策略位于同一区域中|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|当前正在调查。|
+|中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|当前正在调查。|
 
 ## <a name="next-steps"></a>后续步骤
 

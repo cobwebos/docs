@@ -1,17 +1,17 @@
 ---
-title: 教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
+title: 教程：使用 Azure Functions 进行身份验证 - Azure SignalR
 description: 本教程介绍如何针对 Azure Functions 绑定，为 Azure SignalR 服务客户端进行身份验证
 author: sffamily
 ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278819"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158147"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -45,24 +45,24 @@ ms.locfileid: "59278819"
 
 将在本地生成并测试 Azure Functions 应用。 该应用将访问 Azure 中需要提前创建的 SignalR 服务实例。
 
-1. 单击用于创建新 Azure 资源的“创建资源”(**+**) 按钮。
+1. 单击用于创建新 Azure 资源的“创建资源”( **+** ) 按钮。 
 
-1. 搜索“SignalR 服务”并将其选中。 单击“创建”。
+1. 搜索“SignalR 服务”并将其选中。  单击“创建”。 
 
     ![新建 SignalR 服务](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. 输入以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 资源名称 | SignalR 服务实例的唯一名称 |
-    | 资源组 | 创建具有唯一名称的新资源组 |
+    | Resource group | 创建具有唯一名称的新资源组 |
     | 位置 | 选择靠近自己的位置 |
     | 定价层 | 免费 |
 
-1. 单击“创建”。
+1. 单击“创建”。 
 
-1. 部署该实例后，在门户中打开它并找到其“设置”页。 将服务模式设置更改为“无服务器”。
+1. 部署该实例后，在门户中打开它并找到其“设置”页。 将服务模式设置更改为“无服务器”  。
 
     ![SignalR 服务模式](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -74,10 +74,10 @@ ms.locfileid: "59278819"
 1. 在新的 VS Code 窗口，使用菜单中的 `File > Open Folder` 在适当的位置创建一个空文件夹并将其打开。 这是要生成的应用程序的主项目文件夹。
 
 1. 使用 VS Code 中的 Azure Functions 扩展初始化主项目文件夹中的函数应用。
-   1. 在 VS Code 的菜单中选择“视图”>“命令面板”（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）打开命令面板。
-   1. 搜索“Azure Functions: Create New Project”命令并将其选中。
+   1. 在 VS Code 的菜单中选择“视图”>“命令面板”（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）打开命令面板。 
+   1. 搜索“Azure Functions:  Create New Project”命令并将其选中。
    1. 此时应会显示主项目文件夹。 选择该文件夹（或使用“浏览”找到它）。
-   1. 当系统提示选择语言时，请选择“JavaScript”。
+   1. 当系统提示选择语言时，请选择“JavaScript”。 
 
       ![创建函数应用](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "59278819"
 
 本教程使用 Azure Functions 绑定来与 Azure SignalR 服务交互。 与其他大多数绑定一样，SignalR 服务绑定可用作扩展，需要先通过 Azure Functions Core Tools CLI 安装该扩展才能使用它。
 
-1. 在 VS Code 的菜单中选择“视图”>“终端”(Ctrl-\`) 打开一个终端。
+1. 在 VS Code 的菜单中选择“视图”>“终端”(Ctrl-\`) 打开一个终端。 
 
 1. 确保当前目录是主项目文件夹。
 
@@ -99,7 +99,7 @@ ms.locfileid: "59278819"
 
 在本地运行和调试 Azure Functions 运行时时，将从 **local.settings.json** 读取应用程序设置。 使用前面创建的 SignalR 服务实例的连接字符串更新此文件。
 
-1. 在 VS Code 的“资源管理器”窗格中选择“local.settings.json”并将其打开。
+1. 在 VS Code 的“资源管理器”窗格中选择“local.settings.json”并将其打开。 
 
 1. 将该文件的内容替换为以下内容。
 
@@ -119,7 +119,7 @@ ms.locfileid: "59278819"
     }
     ```
 
-   * 在名为 `AzureSignalRConnectionString` 的设置中输入 Azure SignalR 服务连接字符串。 在 Azure 门户中，从 Azure SignalR 服务资源的“密钥”页中获取该值；可以使用主连接字符串或辅助连接字符串。
+   * 在名为 `AzureSignalRConnectionString` 的设置中输入 Azure SignalR 服务连接字符串。 在 Azure 门户中，从 Azure SignalR 服务资源的“密钥”页中获取该值；可以使用主连接字符串或辅助连接字符串。 
    * 不会在本地使用 `WEBSITE_NODE_DEFAULT_VERSION` 设置，但部署到 Azure 时需要此设置。
    * `Host` 节配置本地 Functions 主机的端口和 CORS 设置（在 Azure 中运行时，此设置不起作用）。
 
@@ -134,27 +134,27 @@ ms.locfileid: "59278819"
 
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>创建一个用于在 SignalR 服务中验证用户身份的函数
 
-当聊天应用在浏览器中首次打开时，需要使用有效的连接凭据连接到 Azure SignalR 服务。 我们将在函数应用中创建名为 negotiate 的 HTTP 触发的函数，以返回此连接信息。
+当聊天应用在浏览器中首次打开时，需要使用有效的连接凭据连接到 Azure SignalR 服务。 我们将在函数应用中创建名为 negotiate  的 HTTP 触发的函数，以返回此连接信息。
 
 > [!NOTE]
-> 此函数必须命名为 negotiate，因为 SignalR 客户端需要以 `/negotiate` 结束的终结点。
+> 此函数必须命名为 negotiate  ，因为 SignalR 客户端需要以 `/negotiate` 结束的终结点。
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: Create Function”命令。
+1. 搜索并选择“Azure Functions:  Create Function”命令。
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | 名称 | negotiate |
+    | Name | negotiate |
     | 授权级别 | 匿名 |
 
-    将创建包含新函数的名为 negotiate 的文件夹。
+    将创建包含新函数的名为 negotiate  的文件夹。
 
-1. 打开 negotiate/function.json 以配置函数的绑定。 按如下所示修改该文件的内容。 这会添加一个用于生成有效凭据的输入绑定，使客户端能够连接到名为 `chat` 的 Azure SignalR 服务中心。
+1. 打开 negotiate/function.json  以配置函数的绑定。 按如下所示修改该文件的内容。 这会添加一个用于生成有效凭据的输入绑定，使客户端能够连接到名为 `chat` 的 Azure SignalR 服务中心。
 
     ```json
     {
@@ -184,7 +184,7 @@ ms.locfileid: "59278819"
 
     `signalRConnectionInfo` 绑定中的 `userId` 属性用于创建已经过身份验证的 SignalR 服务连接。 在本地开发期间，请将该属性保留为空。 将函数应用部署到 Azure 时，将会使用该属性。
 
-1. 打开 negotiate/index.js 查看函数的正文。 按如下所示修改该文件的内容。
+1. 打开 negotiate/index.js  查看函数的正文。 按如下所示修改该文件的内容。
 
     ```javascript
     module.exports = async function (context, req, connectionInfo) {
@@ -200,15 +200,15 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: Create Function”命令。
+1. 搜索并选择“Azure Functions:  Create Function”命令。
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | 名称 | SendMessage |
+    | Name | SendMessage |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 **SendMessage** 的文件夹。
@@ -289,7 +289,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 按 **F5** 在本地运行函数应用，并附加一个调试程序。
 
-1. 打开 **index.html** 后，通过打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）并选择“Live Server: 使用 Live Server 打开”来启动 Live Server。 Live Server 将在浏览器中打开该应用程序。
+1. 打开 **index.html** 后，通过打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）并选择“Live Server:  使用 Live Server 打开”来启动 Live Server。 Live Server 将在浏览器中打开该应用程序。
 
 1. 应用程序已打开。 在聊天框中输入一条消息并按 Enter。 刷新应用程序以查看新消息。 由于未配置身份验证，所有消息将以“匿名”方式发送。
 
@@ -301,7 +301,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure: Sign in”命令。
+1. 搜索并选择“Azure:  Sign in”命令。
 
 1. 在浏览器中遵照说明完成登录过程。
 
@@ -309,16 +309,16 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 在 Azure 中运行的函数应用需要 Azure 存储帐户。 你还会使用 Azure 存储的静态网站功能托管聊天 UI 的网页。
 
-1. 在 Azure 门户中，单击用于创建新 Azure 资源的“创建资源”(+) 按钮。
+1. 在 Azure 门户中，单击用于创建新 Azure 资源的“创建资源”(+  ) 按钮。 
 
-1. 选择“存储”类别，然后选择“存储帐户”。
+1. 选择“存储”  类别，然后选择“存储帐户”  。
 
 1. 输入以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
-    | 订阅 | 选择包含 SignalR 服务实例的订阅 |
-    | 资源组 | 选择相同资源组 |
+    | Subscription | 选择包含 SignalR 服务实例的订阅 |
+    | Resource group | 选择相同资源组 |
     | 资源名称 | 存储帐户的唯一名称 |
     | 位置 | 选择其他资源所在的同一位置 |
     | 性能 | 标准 |
@@ -326,21 +326,21 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
     | 复制 | 本地冗余存储 (LRS) |
     | 访问层 | 热 |
 
-1. 单击“查看 + 创建”，然后单击“创建”。
+1. 单击“查看 + 创建”  ，然后单击“创建”  。
 
 ### <a name="configure-static-websites"></a>配置静态网站
 
 1. 创建存储帐户后，在 Azure 门户中打开它。
 
-1. 选择“静态网站”。
+1. 选择“静态网站”  。
 
-1. 选择“启用”以启用静态网站功能。
+1. 选择“启用”以启用静态网站功能。 
 
-1. 在“索引文档名称”中，输入 index.html。
+1. 在“索引文档名称”  中，输入 index.html  。
 
 1. 单击“ **保存**”。
 
-1. “主终结点”随即出现。 请记下此值。 配置函数应用需要它。
+1. “主终结点”  随即出现。 请记下此值。 配置函数应用需要它。
 
 ### <a name="configure-function-app-for-authentication"></a>为函数应用配置身份验证
 
@@ -367,17 +367,17 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 ### <a name="deploy-function-app-to-azure"></a>将函数应用部署到 Azure
 
-1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`），然后选择“Azure Functions: 部署到函数应用”。
+1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`），然后选择“Azure Functions:  部署到函数应用”。
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 要部署的文件夹 | 选择主项目文件夹 |
-    | 订阅 | 选择订阅 |
-    | 函数应用 | 选择“创建新函数应用” |
+    | Subscription | 选择订阅 |
+    | 函数应用 | 选择“创建新函数应用”  |
     | 函数应用名称 | 输入唯一的名称 |
-    | 资源组 | 选择 SignalR 服务实例所在的同一资源组 |
+    | Resource group | 选择 SignalR 服务实例所在的同一资源组 |
     | 存储帐户 | 选择前面创建的存储帐户 |
 
     随即会在 Azure 中创建新的函数应用，并开始部署。 等待部署完成。
@@ -386,17 +386,17 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: 上传本地设置”命令。
+1. 搜索并选择“Azure Functions:  上传本地设置”命令。
 
 1. 出现提示时，请提供以下信息。
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
     | 本地设置文件 | local.settings.json |
-    | 订阅 | 选择订阅 |
+    | Subscription | 选择订阅 |
     | 函数应用 | 选择前面部署的函数应用 |
 
-本地设置将上传到 Azure 中的函数应用。 如果系统提示是否要覆盖现有设置，请选择“全是”。
+本地设置将上传到 Azure 中的函数应用。 如果系统提示是否要覆盖现有设置，请选择“全是”。 
 
 
 ### <a name="enable-app-service-authentication"></a>启用应用服务身份验证
@@ -405,17 +405,17 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: 在门户中打开”命令。
+1. 搜索并选择“Azure Functions:  在门户中打开”命令。
 
 1. 选择订阅和函数应用的名称，在 Azure 门户中打开该函数应用。
 
-1. 在已在门户中打开的函数应用中，找到“平台功能”选项卡，并选择“身份验证/授权”。
+1. 在已在门户中打开的函数应用中，找到“平台功能”选项卡，并选择“身份验证/授权”。  
 
-1. 启用应用服务身份验证。
+1. 启用应用服务身份验证。 
 
-1. 在“请求未经过身份验证时需执行的操作”中，选择“使用 {前面选择的身份验证提供程序} 登录”。
+1. 在“请求未经过身份验证时需执行的操作”中，选择“使用 {前面选择的身份验证提供程序} 登录”。 
 
-1. 在“允许的外部重定向 URL”中，输入前面记下的存储帐户主要 Web 终结点的 URL。
+1. 在“允许的外部重定向 URL”中，输入前面记下的存储帐户主要 Web 终结点的 URL。 
 
 1. 遵循所选登录提供程序的文档完成配置。
 
@@ -445,17 +445,17 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure 存储:部署到静态网站”命令。
+1. 搜索并选择“Azure 存储:  部署到静态网站”命令。
 
 1. 输入以下值：
 
-    | 名称 | 值 |
+    | Name | 值 |
     |---|---|
-    | 订阅 | 选择订阅 |
+    | Subscription | 选择订阅 |
     | 存储帐户 | 选择前面创建的存储帐户 |
-    | 要部署的文件夹 | 选择“浏览”，然后选择“内容”文件夹 |
+    | 要部署的文件夹 | 选择“浏览”  ，然后选择“内容”  文件夹 |
 
-“内容”文件夹中的文件现在应部署到静态网站。
+“内容”  文件夹中的文件现在应部署到静态网站。
 
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>启用函数应用跨域资源共享 (CORS)
 
@@ -463,23 +463,23 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 在 Azure 门户中打开函数应用。
 
-1. 在“平台功能”选项卡下，选择“CORS”。
+1. 在“平台功能”  选项卡下，选择“CORS”  。
 
     ![找到“CORS”](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. 在“允许的来源”部分中，添加一个将静态网站项主终结点作为值的条目（删除尾部 /）。
+1. 在“允许的来源”  部分中，添加一个将静态网站项主终结点  作为值的条目（删除尾部 /  ）。
 
 1. 为了使 SignalR JavaScript SDK 可从浏览器调用函数应用，必须启用 CORS 中对凭据的支持。 选中“启用 Access-Control-Allow-Credentials”复选框。
 
     ![启用 Access-Control-Allow-Credentials](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
 
-1. 单击“保存”以保存 CORS 设置。
+1. 单击“保存”以保存 CORS 设置  。
 
 ### <a name="try-the-application"></a>尝试运行应用程序
 
 1. 在浏览器中，导航到存储帐户的主要 Web 终结点。
 
-1. 选择“登录”，使用所选的身份验证提供程序进行身份验证。
+1. 选择“登录”，使用所选的身份验证提供程序进行身份验证。 
 
 1. 在主要聊天框中输入公共消息并发送这些消息。
 

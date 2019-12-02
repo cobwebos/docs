@@ -1,23 +1,15 @@
 ---
-title: 创建用于连接到 Azure Cosmos DB 的 Azure Function | Microsoft Docs
+title: 创建连接到 Azure Cosmos DB 的函数应用 - Azure CLI
 description: Azure CLI 脚本示例 - 创建用于连接到 Azure Cosmos DB 的 Azure Function
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15a7cc1940a01486c6b660ec65b47f072dc7996e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d881a5eb6132f95239418f032da51d002af01905
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970660"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532864"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>创建用于连接到 Azure Cosmos DB 的 Azure Function
 
@@ -43,14 +35,17 @@ ms.locfileid: "52970660"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 使用相关位置创建资源组 |
-| [az storage accounts create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../functions-scale.md#consumption-plan)中创建函数应用。 |
-| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 数据库。 |
+| [az group create](/cli/azure/group#az-group-create) | 使用相关位置创建资源组 |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在无服务器[消耗计划](../functions-scale.md#consumption-plan)中创建函数应用。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Azure Cosmos DB 数据库。 |
+| [az cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| 获取数据库帐户连接。 |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| 获取数据库密钥。 |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 将连接字符串设置为函数应用中的应用设置。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Functions 文档](../functions-cli-samples.md)中找到其他 Azure Functions CLI 脚本示例。
 

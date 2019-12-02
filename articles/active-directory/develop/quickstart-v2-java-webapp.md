@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6645fa30772d7e1556f7a1aae76c7189577c3c1d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832130"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452615"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -136,7 +136,7 @@ ms.locfileid: "73832130"
 
 ### <a name="getting-msal"></a>获取 MSAL
 
-MSAL4J 是一个 Java 库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。
+MSAL for Java (MSAL4J) 是一个 Java 库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。
 
 可以使用 Maven 或 Gradle 将 MSAL4J 添加到应用程序，以通过对应用程序的 pom.xml (Maven) 或 build.gradle (Gradle) 文件进行以下更改来管理依赖项。
 
@@ -154,7 +154,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 
 ### <a name="msal-initialization"></a>MSAL 初始化
 
-通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL4J 的引用：
+通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL for Java 的引用：
 
 ```Java
 import com.microsoft.aad.msal4j.*;

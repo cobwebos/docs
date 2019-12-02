@@ -1,19 +1,19 @@
 ---
-title: 如何借助 Swift 来使用 Azure 空间定位点创建和查找定位点 | Microsoft Docs
+title: 借助 Swift 创建和查找定位点
 description: 深入介绍如何借助 Swift 来使用 Azure 空间定位点创建和查找定位点。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f4646c55d2e9c4d7c0a9d21b39c759aea06272e1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f72e648d8f7cba0af01e7f87827d38368dba698d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672024"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277322"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>如何借助 Swift 来使用 Azure 空间定位点创建和查找定位点
 

@@ -1,22 +1,22 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory 条件访问要求针对特定应用进行多重身份验证 (MFA) | Microsoft Docs
+title: 要求提供具有条件访问的 Azure MFA - Azure Active Directory
 description: 本快速入门介绍如何使用 Azure Active Directory (Azure AD) 条件访问将身份验证要求与所访问的云应用类型相关联。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 01/30/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55c9188a1320b92aafa5fc67a253b42b6b107711
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474021"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381078"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA
 

@@ -1,14 +1,14 @@
 ---
 title: 示例 - 在资源组强制执行标记及值
-description: 此示例策略定义要求对资源组使用标记和值。
+description: 此示例策略定义要求在资源组的参数中定义标记和值。
 ms.date: 01/31/2019
 ms.topic: sample
-ms.openlocfilehash: 1a4bf9d27971b149e3df422987f58d0f184181c2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d04c48e2633e1a23990723c91a66cf8ec219b160
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076269"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463623"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>示例 - 在资源组强制执行标记及其值
 

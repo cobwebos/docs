@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 安全中心？| Microsoft Docs
-description: 了解 Azure 安全中心及其主要功能和工作原理。
+description: 此页介绍安全中心的主要优点 - 发现安全状态，并通过云和本地涵盖的资源来改善此状态。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202111"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558636"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 

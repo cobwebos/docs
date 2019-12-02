@@ -1,21 +1,15 @@
 ---
 title: Azure 区块链服务概述
 description: Azure 区块链服务概述
-services: azure-blockchain
-keywords: 区块链
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/21/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577185"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455906"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -31,7 +25,7 @@ Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用 
 
 ## <a name="network-deployment-and-operations"></a>网络部署和操作
 
-可以通过 Azure门户、Azure CLI 以及使用 Azure 区块链扩展的 Visual Studio 代码来完成 Azure 区块链服务的部署。  简化了部署，包括预配置事务和验证器节点，用于安全隔离的 Azure 虚拟网络以及服务托管的存储。  此外，在部署新的区块链成员时，用户也可以创建或加入联盟。  联盟使不同 Azure 订阅中的多个参与方能够实现在共享区块链上安全地相互通信。  这种简化的部署将区块链网络的部署从几天缩短到几分钟。
+可通过 Azure门户、Azure CLI 或使用 Azure 区块链扩展通过 Visual Studio Code 来完成 Azure 区块链服务的部署。 简化了部署，包括预配置事务和验证器节点，用于安全隔离的 Azure 虚拟网络以及服务托管的存储。  此外，在部署新的区块链成员时，用户也可以创建或加入联盟。  联盟使不同 Azure 订阅中的多个参与方能够实现在共享区块链上安全地相互通信。  这种简化的部署将区块链网络的部署从几天缩短到几分钟。
 
 ### <a name="performance-and-service-tiers"></a>性能和服服务层级
 
@@ -43,13 +37,13 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”   。 �
 
 ### <a name="security-and-maintenance"></a>安全性和维护
 
-预配第一个区块链成员后，便可以向成员添加其他事务节点。  默认情况下，事务节点通过防火墙规则进行保护，并且需要对其进行配置才能进行访问。  此外，所有事务节点均通过 TLS 加密移动中的数据。  我们提供了多种用于保护事务节点访问的选项，其中包括防火墙规则、基本身份验证、访问密钥以及 Azure Active Directory 集成。 有关详细信息，请参阅[配置事务节点](configure-transaction-nodes.md)和[配置 Azure Active Directory 访问](configure-aad.md)。
+预配第一个区块链成员后，便可以向成员添加其他事务节点。  默认情况下，事务节点通过防火墙规则进行保护，并需要进行访问配置。  此外，所有事务节点均通过 TLS 加密移动中的数据。  我们提供多种用于保护事务节点访问的选项，其中包括防火墙规则、基本身份验证、访问密钥以及 Azure Active Directory 集成。 有关详细信息，请参阅[配置事务节点](configure-transaction-nodes.md)和[配置 Azure Active Directory 访问](configure-aad.md)。
 
 作为一项托管服务，Azure 区块链服务可确保为区块链成员的节点修补最新的主机操作系统和账本软件堆栈更新，并针对高可用性进行配置（仅限标准层），从而无需传统 IaaS 区块链节点所需的许多 DevOps。  有关修补和更新的详细信息，请参阅[支持的 Azure 区块链服务账本版本](ledger-versions.md)。
 
 ### <a name="monitoring-and-logging"></a>监视和日志记录
 
-此外，Azure 区块链服务通过 Azure Monitor Service 提供了丰富的指标，让你能够深入了解节点的 CPU、内存和存储使用情况，并有助于深入了解区块链网络活动，例如事务和区块挖掘、事务队列深度以及活动连接。  可以自定义指标，以提供对区块链应用程序至关重要的见解的视图。  此外，可以通过警报定义阈值，使用户能够触发操作，例如发送电子邮件或短信，运行逻辑应用、Azure Functions 或发送到自定义 Webhook。
+此外，Azure 区块链服务通过 Azure Monitor 服务提供丰富的指标，使你能够深入了解节点的 CPU、内存和存储使用情况。  Azure Monitor 还提供关于区块链网络活动（例如挖掘的事务和区块、事务队列深度和活动连接）的有用见解。  可以自定义指标，以提供对区块链应用程序至关重要的见解的视图。  此外，可以通过警报定义阈值，使用户能够触发操作，例如发送电子邮件或短信，运行逻辑应用、Azure Functions 或发送到自定义 Webhook。
 
 ![度量值](./media/overview/metrics.png)
 
@@ -65,7 +59,11 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”   。 �
 
 ## <a name="develop-using-familiar-development-tools"></a>使用常用的开发工具进行开发
 
-基于开放源代码 Quorum Ethereum 账本，可以像使用现有 Ethereum 应用程序一样开发 Azure 区块链服务应用程序。 Azure 区块链开发工具包 Visual Studio Code 扩展通过与领先的行业合作伙伴合作，使开发人员可以利用 Truffle Suite 等常用工具来构建智能合同。 使用 Azure 区块链开发工具包扩展，开发人员可以创建或连接到现有联盟，以便可以在一个 IDE 中构建和部署智能合同。 使用 Azure 区块链 Visual Studio Code 扩展，可以创建或连接到现有联盟，以便可以在一个 IDE 中生成和部署智能合同。 有关详细信息，请参阅 [VS Code 商城中的 Azure 区块链开发工具包](https://aka.ms/vscodebcextension)和 [Azure 区块链开发工具包用户指南](https://aka.ms/vscodebcextensionwiki )。
+基于开放源代码 Quorum Ethereum 账本，可以像使用现有 Ethereum 应用程序一样开发 Azure 区块链服务应用程序。 Azure 区块链开发工具包 Visual Studio Code 扩展通过与领先的行业合作伙伴合作，使开发人员可以利用 Truffle Suite 等常用工具来构建智能合同。 使用 Azure 区块链开发工具包扩展，开发人员可以创建或连接到现有联盟，以便可以在一个 IDE 中构建和部署智能合同。 使用 Azure 区块链 Visual Studio Code 扩展，可以创建或连接到现有联盟，以便可以在一个 IDE 中生成和部署智能合同。 有关详细信息，请参阅 [VS Code 商城中的 Azure 区块链开发工具包](https://aka.ms/vscodebcextension)和 [Azure 区块链开发工具包用户指南](https://aka.ms/vscodebcextensionwiki)。
+
+## <a name="publish-blockchain-data"></a>发布区块链数据
+
+适用于 Azure 区块链服务的区块链数据管理器可捕获、转换 Azure 区块链服务事务数据并将其传送到 Azure 事件网格主题，提供与 Azure 服务的可靠、可缩放的区块链账本集成。 可使用区块链数据管理器集成链外应用程序和数据存储。 有关详细信息，请参阅[适用于 Azure 区块链服务的区块链数据管理器](data-manager.md)。
 
 ## <a name="support-and-feedback"></a>支持和反馈
 

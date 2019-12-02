@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 09/28/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: ce70260c6033d22b20675d6f3872c2ffa6368252
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495621"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406204"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 应用程序防火墙
 
@@ -92,16 +92,16 @@ Azure 托管的规则集可轻松针对一组常见的安全威胁来部署保�
 在评估默认规则集中的规则之前，自定义规则始终适用。 如果请求与自定义规则匹配，则应用相应的规则操作，并且请求将受阻或传递到后端，且无需调用任何其他自定义规则或默认规则集中的规则。 此外，可以选择删除 WAF 策略中的默认规则集。
 
 
-### <a name="bot-protection-rule-preview"></a>机器人防护规则（预览版）
+### <a name="bot-protection-rule-set-preview"></a>机器人防护规则集（预览版）
 
-可为 WAF 启用托管机器人防护规则集，以便针对来自已知恶意 IP 地址的请求采取自定义操作。 IP 地址源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。
+可为 WAF 启用托管机器人防护规则集，以便针对来自已知机器人类别的请求采取自定义操作。 支持三种机器人类别：恶意机器人、善意机器人和未知的机器人。 机器人签名由 WAF 平台管理和动态更新。 恶意机器人的恶意 IP 地址源于 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) 为 Microsoft 威胁智能助力，它已得到 Azure 安全中心等多项服务的运用。 善意机器人包括经过验证的搜索引擎。 未知类别包括其他机器人组。 你可以为不同类型的机器人设置自定义操作以阻止、允许、记录或重定向。
 
 ![机器人防护规则集](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
 > 机器人防护规则集当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如果启用了机器人防护，则与恶意机器人的客户端 IP 匹配的传入请求将记录在 FrontdoorWebApplicationFirewallLog 日志中。 可从存储帐户、事件中心或日志分析访问 WAF 日志。 
+如果启用了机器人防护，则与机器人规则匹配的传入请求将记录在 FrontdoorWebApplicationFirewallLog 日志中。 可从存储帐户、事件中心或日志分析访问 WAF 日志。
 
 ## <a name="configuration"></a>配置
 

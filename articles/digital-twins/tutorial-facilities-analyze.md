@@ -1,5 +1,5 @@
 ---
-title: 教程：分析 Azure 数字孪生设置中的事件
+title: 教程：在时序见解中分析事件 - Azure 数字孪生 | Microsoft Docs
 description: 了解如何根据本教程中的步骤使用 Azure 时序见解可视化和分析 Azure 数字孪生空间中的事件。
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107686"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383065"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生中的事件
 
@@ -54,6 +54,8 @@ ms.locfileid: "74107686"
 
 1. 搜索并选择“事件中心”  。 选择“创建”  。
 
+    [![创建事件中心命名空间](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+
 1. 为事件中心命名空间输入一个“名称”  。 选择“标准”  作为**定价层**，然后选择你的**订阅**、用于数字孪生实例的**资源组**，以及**位置**。 选择“创建”  。
 
 1. 在事件中心命名空间部署中，选择“概述”  窗格，然后选择“转到资源”  。
@@ -77,7 +79,10 @@ ms.locfileid: "74107686"
 
     [![事件中心连接字符串](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. 打开已创建的 ManageSend 策略，将“连接字符串--主键”和“连接字符串--辅助键”的值复制到一个临时文件中。   在下一部分，将需要这些值来创建事件中心的终结点。
+    > [!TIP]
+    > 确保你正在为事件中心实例而不是名称空间创建 SAS 策略。
+
+1. 打开已创建的 ManageSend 策略，将“连接字符串--主键”和“连接字符串--辅助键”的值复制到一个临时文件中。    在下一部分，将需要这些值来创建事件中心的终结点。
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>为事件中心创建终结点
 
@@ -105,13 +110,13 @@ ms.locfileid: "74107686"
 
 1. 将占位符 `Primary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--主键”的值。  确保此连接字符串的格式如下：
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. 将占位符 `Secondary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--辅助键”的值。  确保此连接字符串的格式如下： 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

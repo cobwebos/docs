@@ -1,14 +1,14 @@
 ---
-title: 使用蓝图锁保护新资源
-description: 本教程介绍如何使用 Azure 蓝图资源锁选项“只读”和“不要删除”来保护新部署的资源。
-ms.date: 03/28/2019
+title: 教程：使用锁保护新资源
+description: 在本教程中，你将使用 Azure 蓝图资源锁选项“只读”和“不要删除”来保护新部署的资源。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960257"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327451"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>教程：使用 Azure 蓝图资源锁保护新资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "73960257"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要一个 Azure 订阅才能完成此教程。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
 ## <a name="create-a-blueprint-definition"></a>创建蓝图定义
 
@@ -53,9 +53,10 @@ ms.locfileid: "73960257"
    1. 选择“添加”  将此项目添加到蓝图中。
 
 1. 在资源组下添加模板：
-   1. 在“RGtoLock”条目下选择“添加项目”行   。 
-   1. 在“项目类型”下选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空      。 
-   1. 在“模板”  选项卡上，将以下资源管理器模板粘贴到编辑器框中。 粘贴模板后，选择“添加”将此项目添加到蓝图。 
+   1. 在“RGtoLock”条目下选择“添加项目”行   。
+   1. 在“项目类型”下选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空      。
+   1. 在“模板”  选项卡上，将以下资源管理器模板粘贴到编辑器框中。
+      粘贴模板后，选择“添加”将此项目添加到蓝图。 
 
    ```json
    {
@@ -224,9 +225,7 @@ ms.locfileid: "73960257"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](../concepts/lifecycle.md)。
-- 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 了解如何使用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
-- 在分配蓝图期间[排查问题](../troubleshoot/general.md)。
+在本教程中，你了解了如何保护使用 Azure 蓝图部署的新资源。 若要详细了解 Azure 蓝图，请继续学习蓝图生命周期文章。
+
+> [!div class="nextstepaction"]
+> [了解蓝图生命周期](../concepts/lifecycle.md)

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 61e176314c655ef6380a196043fb3159d003cb6e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646927"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273956"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -25,7 +25,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 简化和自动化与 SSL/TLS 证书相关的任务。
 - 使用 FIPS 140-2 第 2 级验证的 HSM。
 
-[API 参考文档](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API 参考文档](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,10 +39,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ### <a name="create-new-net-console-app"></a>创建新的 .NET 控制台应用
 
-在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
-
-在控制台窗口中，使用 `dotnet new` 命令创建名为 `akv-dotnet` 的新控制台应用。
-
+在控制台窗口中，使用 `dotnet new` 命令新建名为 `akv-dotnet` 的 .NET 控制台应用。
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -160,7 +157,7 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-向密钥保管库进行身份验证和创建密钥保管库客户端，依赖于上面[设置环境变量](#set-environmental-variables)步骤中的环境变量。 密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://<你的密钥保管库名称>.vault.azure.net”。
+向密钥保管库进行身份验证和创建密钥保管库客户端，依赖于上面[设置环境变量](#set-environmental-variables)步骤中的环境变量。 密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.net”。
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

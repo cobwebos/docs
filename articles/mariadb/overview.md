@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 08/13/2019
-ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/25/2019
+ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177980"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484152"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 
@@ -53,11 +53,7 @@ Azure 行业领先的 99.99% 可用性 SLA 由 Microsoft 管理的数据中心�
 
 ## <a name="secure-your-data"></a>保护数据
 
-Azure 数据库服务沿袭了 Azure Database for MariaDB 的若干数据安全性功能。 Azure Database for MariaDB 提供的功能可以限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
-
-Azure Database for MariaDB 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码。 密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
-
-默认情况下，将 Azure Database for MariaDB 服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止连接到数据库服务时的 SSL 要求。
+Azure 数据库服务沿袭了 Azure Database for MariaDB 的若干数据安全性功能。 Azure Database for MariaDB 提供的功能可以限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/trustcenter/security)。 有关 Azure Database for MySQL 安全功能的详细信息，请参阅[安全概述](concepts-security.md)。
 
 ## <a name="contacts"></a>联系人
 

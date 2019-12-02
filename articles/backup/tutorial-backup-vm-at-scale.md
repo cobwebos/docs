@@ -1,20 +1,15 @@
 ---
-title: 大规模备份 Azure 虚拟机
+title: 教程 - 大规模备份 Azure 虚拟机
 description: 在本教程中，了解如何创建恢复服务保管库、定义备份策略以及同时备份多个虚拟机。
-keywords: 虚拟机备份; 虚拟机备份; 备份 vm; 备份 vm; 备份 Azure vm; 备份和灾难恢复
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747018"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171854"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -37,7 +32,7 @@ ms.locfileid: "73747018"
 
 1. 在左侧菜单上，选择“所有服务”，然后在服务列表中键入“恢复服务”   。 键入时，系统将筛选出资源列表。 看见列表中的恢复服务保管库时，请将其选中以打开“恢复服务保管库”菜单。
 
-    ![打开“恢复服务保管库”菜单](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![打开“恢复服务保管库”菜单](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. 在“恢复服务保管库”菜单中，单击“添加”，打开恢复服务保管库菜单   。
 

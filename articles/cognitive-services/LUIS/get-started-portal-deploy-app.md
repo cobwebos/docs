@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669424"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278542"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -29,6 +29,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 * 获取 [Azure 订阅](https://azure.microsoft.com/free)。
 * 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
+* 如果应用将 Azure 资源身份验证的日期提前，则[迁移到 Azure 资源](luis-migration-authoring.md)。 电子邮件身份验证生效时，某些门户页面的外观会有所不同。
 
 ## <a name="create-the-endpoint-resource"></a>创建终结点资源
 
@@ -60,7 +61,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 每次为 LUIS 创建新资源时，都需要将资源分配给 LUIS 应用。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
 
-1. 登录 [LUIS 门户](https://www.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
+1. 登录 [LUIS 门户](https://preview.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
 
 1. 在右上角菜单中选择“管理”  ，然后选择“Azure 资源”  。
 
@@ -86,7 +87,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 ## <a name="prediction-endpoint-request"></a>预测终结点请求
 
-URL 末尾的 `query=` 是用户言语追加到 GET 请求的位置。 在 `query=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
+在预览门户中，URL 末尾的 `query=` 为用户言语追加到 GET 请求的位置。 在 `query=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
 
 ```Is there a form named hrf-234098```
 

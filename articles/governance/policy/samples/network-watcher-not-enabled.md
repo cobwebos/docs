@@ -1,14 +1,14 @@
 ---
 title: 示例 - 无网络观察程序的区域审核
-description: 如果未对指定区域启用网络观察程序，则此示例策略定义会进行审核
+description: 如果未对参数中定义的指定区域启用网络观察程序，则此示例策略定义会进行审核。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 8d820cfea34eec91c7d4b050d58046b357f2ddd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7efc9894e3158dcf2f1535e34d31c4abf0c4aa8
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069995"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463289"
 ---
 # <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>示例 - 如果未对区域启用网络观察程序，则进行审核
 

@@ -1,22 +1,18 @@
 ---
-title: 使用 Node.js 和 VS Code 运行多个依赖的服务
-titleSuffix: Azure Dev Spaces
+title: 运行多个依赖服务：Node.js 和 Visual Studio Code
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 136d48f1c420ac71896eaafa0daab476c7fba6fa
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 357a03e154e3c0146d3275e8cba64bc2d966f5b8
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503072"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325658"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行多服务开发
+# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>运行多个依赖服务：将 Node.js 和 Visual Studio Code 与 Azure Dev Spaces 配合使用
 
 在本教程中，你将了解如何使用 Azure Dev Spaces 开发多服务应用程序，并了解 Dev Spaces 提供的一些附加优势。
 

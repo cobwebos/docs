@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973784"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422679"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker 服务是什么？
 
@@ -26,9 +26,9 @@ QnA Maker 的客户端应用程序是能够以自然语言与用户通信并回�
 ## <a name="when-to-use-qna-maker"></a>何时使用 QnA Maker
 
 * **包含静态信息时** - 如果回答知识库中包含静态信息，可使用 QnA Maker。 此知识库是根据你的需要自定义的，其内容是使用 [PDF 和 URL](../concepts/data-sources-supported.md) 等文档生成的。
-* **想要对某个请求、问题或命令提供相同的回答时** - 不同的用户提交相同的问题时，将对这些问题返回相同的回答。 
+* **想要对某个请求、问题或命令提供相同的回答时** - 如果不同的用户提交相同的问题，则返回相同的回答。 
 * **想要基于元信息筛选静态信息时** - 添加[元数据](../how-to/metadata-generateanswer-usage.md)标记，以提供与客户端应用程序的用户和信息相关的附加筛选选项。 常见的元数据信息包括[聊天内容](../how-to/chit-chat-knowledge-base.md)、内容类型或格式、内容目的和内容新鲜度。
-* **想要管理包含静态信息的机器人聊天时** - 知识将提取用户的聊天文本或命令，并予以回答。 如果回答是预先确定的聊天流（在知识库中使用[多轮次上下文](../how-to/multiturn-conversation.md)表示）的一部分，则机器人可以轻松提供此流。  
+* **想要管理包含静态信息的机器人聊天时** - 知识库提取用户的聊天文本或命令，并予以回答。 如果回答是预先确定的聊天流（在知识库中使用[多轮次上下文](../how-to/multiturn-conversation.md)表示）的一部分，则机器人可以轻松提供此流。  
 
 ## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>在聊天机器人中使用 QnA Maker 知识库
 
@@ -40,14 +40,17 @@ QnA Maker 的客户端应用程序是能够以自然语言与用户通信并回�
 |:--|:--|
 |1|客户端应用程序将用户的问题（用他们自己的语言表达的文本）“如何以编程方式更新我的知识库？”  发送到你的知识库终结点。|
 |2|QnA Maker 使用经过训练的知识库提供正确的回答，并提供可用于具体化搜索以获得最佳回答的任何后续提示。 QnA Maker 返回 JSON 格式的响应。|
-|3|客户端应用程序使用 JSON 响应在如何继续聊天方面做出决策。 这些决策可能包括显示最相关的回答，或提供更多选项来具体化搜索以获得最佳回答。 |
+|3|客户端应用程序使用 JSON 响应在如何继续聊天方面做出决策。 这些决策可能包括显示最相关的回答，以及提供更多选项用于优化搜索以获得最佳回答。 |
 |||
 
 ## <a name="what-is-a-knowledge-base"></a>知识库是什么？ 
 
-QnA Maker [将内容导入](../concepts/data-sources-supported.md)问题和回答集知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答集之间的关系。 可以编辑这些问题与回答集，或添加新集。  
+QnA Maker [将内容导入](../concepts/data-sources-supported.md)问题和回答集知识库。 导入过程提取有关结构化和半结构化内容部分之间的关系的信息，以暗示问题与回答集之间的关系。 可编辑这些问题与回答集，或添加新集。  
 
-问题和回答集的内容包括特定回答的所有备选问题、用于在搜索过程中筛选回答选项的元数据标记，以及用于继续具体化搜索的后续提示。
+问题与回答集的内容包括：
+* 问题的所有替代形式
+* 用于在搜索期间筛选回答选择的元数据标记
+* 用于继续优化搜索的跟进提示
 
 ![带有元数据的示例问题和回答](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
@@ -55,7 +58,7 @@ QnA Maker [将内容导入](../concepts/data-sources-supported.md)问题和回�
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>在不使用代码的情况下创建、管理和发布到机器人
 
-QnA Maker 门户提供完整的知识库创作体验。 可将文档以其当前格式导入到知识库。 这些文档（例如 FAQ、产品手册、电子表格或网页）将转换为问题和回答集。 系统将分析每个集以提供后续提示并将其连接到其他集。 最终的 markdown 格式支持丰富的表示形式，包括图像和链接。 
+QnA Maker 门户提供完整的知识库创作体验。 可将文档以其当前格式导入到知识库。 这些文档（例如 FAQ、产品手册、电子表格或网页）将转换为问题和回答集。 系统将分析每个集以提供后续提示并将其连接到其他集。 最终的 _markdown_ 格式支持丰富的表示形式，包括图像和链接。 
 
 编辑知识库后，无需编写任何代码即可将知识库发布到正常工作的 [Azure Web 应用机器人](https://azure.microsoft.com/services/bot-service/)。 在 [Azure 门户](https://portal.azure.com)中测试机器人，或下载并继续进行开发。 
 
@@ -81,9 +84,9 @@ QnA Maker 提供可集成到整个开发生命周期的创作、训练、发布�
 
 **步骤 2**：在 [QnA Maker](https://www.qnamaker.ai) 门户中创建一个知识库。 添加用于创建知识库的[文件和 URL](../concepts/data-sources-supported.md)。  
 
-**步骤 3**：发布知识库，并使用 [cURL](../quickstarts/get-answer-from-kb-using-curl.md) 或 [Postman](../quickstarts/get-answer-from-kb-using-postman.md) 从自定义终结点进行测试。 
+**步骤 3**：发布知识库，并使用 [cURL 或 Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) 通过自定义终结点进行测试。 
 
-**步骤 4**：在客户端应用程序中，以编程方式调用知识库的终结点，并读取 JSON 响应以向用户显示最佳回答。  
+**步骤 4**：通过客户端应用程序，以编程方式调用知识库的终结点。 客户端应用程序处理 JSON 响应，以向用户显示最佳回答。  
 
 ## <a name="next-steps"></a>后续步骤
 QnA Maker 提供生成、管理和部署自定义知识库所需的全部功能。 

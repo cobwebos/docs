@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159313"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
 
@@ -241,7 +241,7 @@ ms.locfileid: "73159313"
     >
 
 >[!NOTE]
->可以使用 Coupa 提供的任何其他 Coupa 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+>可以使用 Coupa 提供的任何其他 Coupa 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

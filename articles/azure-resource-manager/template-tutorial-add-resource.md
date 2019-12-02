@@ -1,18 +1,16 @@
 ---
-title: 教程 - 将资源添加到 Azure 资源管理器模板
+title: 教程 - 将资源添加到模板
 description: 介绍创建第一个 Azure 资源管理器模板的步骤。 了解模板文件语法，以及如何部署存储帐户。
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963574"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148192"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教程：将资源添加到资源管理器模板
 

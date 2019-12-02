@@ -1,5 +1,5 @@
 ---
-title: 如何在 Swift 中使用设备上的传感器创建和查找定位点 | Microsoft Docs
+title: Swift 中的粗略重新局部化
 description: 深入介绍如何在 Swift 中使用设备上的传感器创建和查找定位点。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1d1cd8be740c4d1cbaefcc6b03a42ca188eb26ac
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 1381f6340d1b85376ad5be9e00c596aa921d957f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093043"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277185"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-swift"></a>如何在 Swift 中使用设备上的传感器创建和查找定位点
 

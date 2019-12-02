@@ -1,27 +1,23 @@
 ---
-title: 使用 Azure Migrate 服务器评估准备物理服务器以进行评估
-description: 介绍如何使用 Azure Migrate 服务器评估准备评估物理服务器并将其迁移到 Azure。
+title: 准备好要通过 Azure Migrate 进行评估/迁移的物理服务器
+description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的物理服务器。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091905"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196402"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
 本文介绍如何使用 [Azure Migrate](migrate-services-overview.md) 准备评估本地物理服务器。
-
-
-> [!NOTE]
-> 如果在 Azure Migrate 门户中看不到其中的某些功能，请等待一段时间。 大约在一周后，它们就会出现。
 
 [Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
@@ -45,7 +41,7 @@ ms.locfileid: "74091905"
 
 需要为 Azure Migrate 部署设置权限。
 
-- 你的 Azure 帐户需要有权创建 Azure Migrate 项目。 
+- 你的 Azure 帐户需要有权创建 Azure Migrate 项目。
 - 你的帐户需要有权注册 Azure Migrate 设备。 该设备用于 Hyper-V 发现和迁移。 在设备注册过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用用于唯一标识设备：
     - 第一个应用将与 Azure Migrate 服务终结点通信。
     - 第二个应用访问注册期间创建的 Azure Key Vault，以存储 Azure AD 应用信息和设备配置设置。
@@ -73,7 +69,7 @@ ms.locfileid: "74091905"
 值得注意的是：
 
 - 除上述权限外，应用对订阅不拥有任何其他访问权限。
-- 只有在注册新的设备时，你才需要这些权限。 设置设备后可以删除这些权限。 
+- 只有在注册新的设备时，你才需要这些权限。 设置设备后可以删除这些权限。
 
 
 #### <a name="grant-account-permissions"></a>授予帐户权限
@@ -88,7 +84,7 @@ ms.locfileid: "74091905"
 > [!NOTE]
 > 这是不受影响的默认设置。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
-#### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色 
+#### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色
 
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
@@ -124,12 +120,12 @@ Azure Migrate 需要拥有发现本地服务器的权限。
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍以下操作：
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * 设置 Azure 帐户权限。
 > * 准备物理服务器以进行评估。
 
 继续学习下一篇教程以创建 Azure Migrate 项目，并评估要迁移到 Azure 的物理服务器
 
-> [!div class="nextstepaction"] 
-> [评估物理服务器](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [评估物理服务器](./tutorial-assess-physical.md)

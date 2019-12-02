@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 门户为 Azure Front Door 创建 Web 应用程序防火墙策略
+title: 教程：为 Azure Front Door 创建 WAF 策略 - Azure 门户
 description: 本教程介绍如何使用 Azure 门户创建 Web 应用程序防火墙 (WAF) 策略。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508901"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186729"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure Front Door 上创建 Web 应用程序防火墙策略
 

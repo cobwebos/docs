@@ -1,23 +1,16 @@
 ---
-title: Azure CLI 脚本示例 - 在应用服务计划中创建 Function App | Microsoft Docs
+title: 在应用服务计划中创建 Function App - Azure CLI
 description: Azure CLI 脚本示例 - 在应用服务计划中创建 Function App
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 85fe8e567cd00decbefe79c77c11f777820080ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325674"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532849"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>在应用服务计划中创建 Function App
 
@@ -43,13 +36,13 @@ ms.locfileid: "60325674"
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | 在应用服务计划中创建函数应用。 |
+| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 创建高级计划。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在应用服务计划中创建函数应用。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Functions 文档](../functions-cli-samples.md)中找到其他 Azure Functions CLI 脚本示例。

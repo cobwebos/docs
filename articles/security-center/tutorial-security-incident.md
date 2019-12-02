@@ -1,6 +1,6 @@
 ---
 title: 事件响应教程 - Azure 安全中心
-description: Azure 安全中心教程 - 响应安全事件
+description: 在本教程中，你将了解如何会审安全警报、确定事件的根本原因和范围，以及搜索安全数据。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663644"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559186"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
 安全中心使用高级分析和威胁智能来持续分析混合云工作负荷，在存在恶意活动时发出警报。 另外，你可以将其他安全产品和服务中的警报集成到安全中心，并根据自己的指示器或智能源创建自定义警报。 生成警报后，需采取快速行动进行调查和修正。 在本教程中，将了解如何：

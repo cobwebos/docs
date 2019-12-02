@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: e56aba81b2e6b8e66aeb2c3e5284843055713826
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316074"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185194"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
@@ -33,8 +33,8 @@ ms.locfileid: "71316074"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置应用程序，使其能够按需使用应用配置存储更新配置。
-> * 在应用程序的控制器中注入最新配置。
+> * 设置 .NET Core 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
+> * 在应用程序中使用最新配置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -90,7 +90,7 @@ class Program
 }
 ```
 
-`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用配置存储更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
+`ConfigureRefresh` 方法用于指定在刷新操作触发时通过应用程序配置存储区更新配置数据所用的设置。 可以在提供给 `AddAzureAppConfiguration` 方法的选项上调用 `GetRefresher` 方法，以便检索 `IConfigurationRefresher` 的实例，然后可以使用此实例上的 `Refresh` 方法在代码中的任意位置触发刷新操作。
     
 > [!NOTE]
 > 配置设置的默认缓存过期时间为 30 秒，但是，可以通过对作为参数传递到 `ConfigureRefresh` 方法的选项初始值设定项调用 `SetCacheExpiration` 方法来重写该过期时间。
@@ -140,7 +140,7 @@ class Program
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，通过添加 Azure 托管服务标识简化了应用配置访问并改进了应用凭据管理。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
+在本教程中，你已启用 .NET Core 应用，以通过应用程序配置动态刷新配置设置。 若要了解如何使用 Azure 托管标识来简化对应用程序配置的访问，请继续学习下一篇教程。
 
 > [!div class="nextstepaction"]
-> [CLI 示例](./cli-samples.md)
+> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

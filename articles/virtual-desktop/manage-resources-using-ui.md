@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904911"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384286"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>教程：部署管理工具
 
@@ -63,10 +63,9 @@ ms.locfileid: "73904911"
 ### <a name="guidance-for-template-parameters"></a>有关模板参数的指导
 下面说明了如何输入用于配置工具的参数：
 
-- 这是 RD 代理 URL：https:\//rdbroker.wvd.microsoft.com/
-- 这是资源 URL： https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
-- 在已禁用 MFA 的情况下使用 AAD 凭据登录到 Azure。 请参阅[运行 Azure 资源管理器模板所要做好的准备](#what-you-need-to-run-the-azure-resource-manager-template)。
-- 对要注册到管理工具的 Azure Active Directory 中的应用程序使用唯一名称，例如 Apr3UX。
+- 对于 isServicePrincipal 参数，选择 false   。
+- 对于凭据，输入已禁用多重身份验证的 Azure Active Directory 凭据。 这些凭据将用于登录到 Azure 并创建 Azure AD 应用程序和 Azure Web 应用资源。 若要了解详细信息，请参阅[运行 Azure 资源管理器模板所要做好的准备](#what-you-need-to-run-the-azure-resource-manager-template)。
+- 对于 applicationName，为要在 Azure Active Directory 中注册的应用使用唯一的名称  。 此名称还将用于 Web 应用 URL。 例如，可以使用类似于“Apr3UX”的名称。
 
 ## <a name="provide-consent-for-the-management-tool"></a>为管理工具提供许可
 

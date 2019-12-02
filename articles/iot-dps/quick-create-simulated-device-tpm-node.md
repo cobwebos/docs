@@ -1,20 +1,19 @@
 ---
-title: 快速入门：使用 Node.js 将模拟的 TPM 设备预配到 Azure IoT 中心
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+title: 快速入门 - 使用 Node.js 将模拟的 TPM 设备预配到 Azure IoT 中心
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1495b8b62f775fcc8ae68fe08d9736beb72d67c6
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 942bc64153e1c35e3fb9c5bbb989607b7e443e9a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903537"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423461"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -136,18 +135,18 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="create-a-device-entry"></a>创建设备条目
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
+1. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮。   
 
-1. 在“添加注册”下  ，输入以下信息：
+1. 在“添加注册”面板中  ，输入以下信息：
    - 选择“TPM”  作为标识证明*机制*。
-   - 输入 TPM 设备的*注册 ID* 和*认可密钥*。
+   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
+   - 选择与预配服务链接的 IoT 中心。
    - （可选）可以提供以下信息：
-       - 选择与预配服务链接的 IoT 中心。
-       - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
+       - 输入唯一“设备 ID”  。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
        - 使用设备所需的初始配置更新“初始设备孪生状态”  。
-   - 完成后，单击“保存”按钮  。 
+   - 完成后，按“保存”按钮  。 
 
      ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
@@ -244,12 +243,12 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请通过以下步骤删除通过本快速入门创建的所有资源。
+如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后单击“单个注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡。   选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 
 ## <a name="next-steps"></a>后续步骤

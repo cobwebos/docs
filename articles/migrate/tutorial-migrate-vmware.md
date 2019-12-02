@@ -1,18 +1,18 @@
 ---
-title: 使用无代理 Azure Migrate 服务器迁移工具将本地 VMware VM 迁移到 Azure | Microsoft Docs
-description: 介绍如何使用 Azure Migrate 以无代理方法将本地 VMware VM 迁移到 Azure。
+title: 通过无代理 Azure Migrate 服务器迁移功能迁移 VMware VM
+description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁移。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ec7d10a1d9fec43c149c068fb408211db76d19eb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309384"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196417"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -48,12 +48,11 @@ ms.locfileid: "70309384"
 
 开始学习本教程之前，应做好以下准备：
 
-1. [了解](migrate-architecture.md) VMware 迁移体系结构。
-2. 完成本教程系列的[第一篇教程](tutorial-prepare-vmware.md)来设置 Azure 和 VMware，以便能够完成迁移。 具体而言，在本教程中，需要：
+1. 完成本教程系列的[第一篇教程](tutorial-prepare-vmware.md)来设置 Azure 和 VMware，以便能够完成迁移。 具体而言，在本教程中，需要：
     - [准备 Azure](tutorial-prepare-vmware.md#prepare-azure)，以便能够完成迁移。
     - [准备本地环境](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)，以便能够完成迁移。
     
-3. 在将 VMware VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 若要设置评估，请完成本教程系列的[第二篇教程](tutorial-assess-vmware.md)。 如果你不想要评估 VM，可以跳过此教程。 尽管我们建议你尝试运行评估，但在迁移之前不一定非要这样做。
+2. 在将 VMware VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 若要设置评估，请完成本教程系列的[第二篇教程](tutorial-assess-vmware.md)。 如果你不想要评估 VM，可以跳过此教程。 尽管我们建议你尝试运行评估，但在迁移之前不一定非要这样做。
 
 
 

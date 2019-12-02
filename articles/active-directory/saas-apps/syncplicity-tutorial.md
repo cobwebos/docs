@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a8a25e88d4193562c818f30efd5eb017c372fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089292"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233285"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>教程：将 Syncplicity 与 Azure Active Directory 集成
 
@@ -122,7 +122,7 @@ ms.locfileid: "67089292"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，将在 Azure 门户中创建一个名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
@@ -142,17 +142,17 @@ ms.locfileid: "67089292"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-syncplicity-test-user"></a>创建 Syncplicity 测试用户
 
-要使 AAD 用户能够登录，必须将这些用户预配到 Syncplicity 应用程序中。 本部分介绍如何在 Syncplicity 中创建 AAD 用户帐户。
+要使 Azure AD 用户能够登录，必须将这些用户预配到 Syncplicity 应用程序中。 本部分介绍如何在 Syncplicity 中创建 Azure AD 用户帐户。
 
 **要将用户帐户预配到 Syncplicity，请执行以下步骤：**
 
@@ -167,7 +167,7 @@ ms.locfileid: "67089292"
     ![帐户信息](./media/syncplicity-tutorial/ic769765.png "帐户信息")
 
     > [!NOTE]
-    > AAD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。
+    > Azure AD 帐户持有者将收到一封电子邮件，其中包含用于确认和激活帐户的链接。
 
 1. 选择新用户应属于你的公司中的哪个组，然后单击“下一步”。 
 
@@ -181,7 +181,7 @@ ms.locfileid: "67089292"
     ![Syncplicity 文件夹](./media/syncplicity-tutorial/ic769773.png "Syncplicity 文件夹")
 
 > [!NOTE]
-> 可以使用 Syncplicity 提供的任何其他 Syncplicity 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Syncplicity 提供的任何其他 Syncplicity 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-sso"></a>测试 SSO
 

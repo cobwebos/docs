@@ -1,24 +1,16 @@
 ---
-title: 包含依赖的资源的 Azure 资源管理器模板
+title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533501"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325393"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -41,7 +33,7 @@ ms.locfileid: "72533501"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)。  请参阅[安装扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./resource-manager-tools-vs-code.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```azurecli-interactive
@@ -92,7 +84,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 3. 展开第二个资源。 资源类型为 `Microsoft.Network/publicIPAddresses`。 将资源定义和[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)进行比较。
 
     ![Visual Studio Code Azure 资源管理器模板公共 IP 地址定义](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. 展开第四个资源。 资源类型为 `Microsoft.Network/networkInterfaces`：  
+4. 展开第四个资源。 资源类型为 `Microsoft.Network/networkInterfaces`：
 
     ![Visual Studio Code Azure 资源管理器模板 dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -118,14 +110,14 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 可通过多种方法来部署模板。  本教程从 Azure 门户使用 Cloud Shell。
 
-1. 登录到 [Cloud Shell](https://shell.azure.com)。 
+1. 登录到 [Cloud Shell](https://shell.azure.com)。
 2. 选择 Cloud Shell 左上角的“PowerShell”  ，然后选择“确认”。   在本教程中，请使用 PowerShell。
 3. 在 Cloud Shell 中选择“上传文件”： 
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
 
-    还可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。 
+    还可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。
 
 5. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用适用于 Node.js 的必应视频搜索 SDK 来搜索视频
+title: 快速入门：使用适用于 Node.js 的 SDK 搜索视频 - 必应视频搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用适用于 Node.js 的必应视频搜索 SDK 来发送视频搜索请求
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c8bd4ccadcc3c1947905e6bd74b48045a62ab57
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358887"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383737"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应视频搜索 SDK 执行视频搜索
 

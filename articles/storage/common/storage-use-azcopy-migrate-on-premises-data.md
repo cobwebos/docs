@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft 文档
+title: 教程：使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft Docs
 description: 在本教程中，请使用 AzCopy 将数据迁移或复制到 Blob、表和文件内容或从其中迁移或复制出数据。 轻松将本地存储中的数据迁移到 Azure 存储中。
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5f09ae7dc625ad579e31fd49d70331f30e6a708a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844902"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327513"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
 AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数据复制到 Azure Blob 存储、Azure 文件和 Azure 表存储或从其中复制出数据。 这些命令旨在实现最佳性能。 使用 AzCopy，可在文件系统和存储帐户之间或在存储帐户之间复制数据。 AzCopy 可以用来将数据从本地复制到存储帐户。
 

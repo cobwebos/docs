@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: cba0a9a003b53eeb102e14c00cb91f344ebbe3d6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821874"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184974"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 
@@ -91,7 +91,7 @@ ms.locfileid: "72821874"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 将名为 ConnectionString 的环境变量设置为应用配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
+1. 将名为 ConnectionString 的环境变量设置为应用程序配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

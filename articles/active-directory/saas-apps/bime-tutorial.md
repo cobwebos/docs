@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157682"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
 
@@ -231,7 +231,7 @@ ms.locfileid: "73157682"
     d. 单击“ **保存**”。
 
 > [!NOTE]
-> 可使用其他任何 Bime 用户帐户创建工具或 Bime 提供的 API 预配 AAD 用户帐户。
+> 可使用其他任何 Bime 用户帐户创建工具或 Bime 提供的 API 预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

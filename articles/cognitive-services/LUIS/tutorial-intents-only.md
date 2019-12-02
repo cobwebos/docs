@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822758"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325935"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用，以确定用户意向
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
 在本教程中，创建一个自定义应用，以便根据言语（文本）预测用户的意向。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "73822758"
 
 ## <a name="create-a-new-intent"></a>创建新意向 
 
-1. 在[预览 LUIS 门户](https://preview.luis.ai)中，在应用的“生成”  部分中，选择“+ 创建”  。 输入下面列出的新意向名称，然后选择“完成”  。
+1. 在门户中应用的“生成”部分，选择“+ 创建”   。 输入新意向名称 `OrderPizza`，然后选择“完成”  。
 
     在用户想要订购披萨时，预测 `OrderPizza` 意向。 
 
@@ -122,7 +122,7 @@ ms.locfileid: "73822758"
 
     这与示例示例言语并不完全相同，因此，要查看 LUIS 是否可以了解通过此意向预测的内容。
 
-    最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `OrderPizza` 意向（评分最高的意向）。 
+    最后一个查询字符串参数为 `query`，表示陈述查询 (**q**uery)。 此话语不同于任何示例话语。 它非常适合用于测试，测试结果应返回 `OrderPizza` 意向（评分最高的意向）。 
 
     ```JSON
     {
@@ -148,7 +148,7 @@ ms.locfileid: "73822758"
     }
     ```
 
-    实体数组为空，因为此应用当前没有任何实体。 
+    实体数组为空，因为此应用当前没有任何实体（言语中可供提取的数据单元）。 
 
     JSON 结果中标识了评分最高的意向作为 **`prediction.topIntent`** 属性。 所有评分介于 1 和 0 之间，评分越接近 1 越好。 
 
@@ -205,4 +205,4 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 本教程创建了 LUIS 应用、创建了意向、向每个意向添加了示例言语、向 None 意向添加了示例言语，并在终结点上进行了训练、发布和测试操作。 这些是生成 LUIS 模型的基本步骤。 
 
 > [!div class="nextstepaction"]
-> [将预生成的意向和实体添加到此应用](tutorial-machine-learned-entity.md)
+> [将可分解实体添加到此应用](tutorial-machine-learned-entity.md)

@@ -1,20 +1,20 @@
 ---
-title: 教程：使用 Azure CDN 通过 SSL 在静态网站上启用自定义域 - Azure 存储
+title: 教程：在 Azure 中启用静态网站的自定义域和 SSL
 description: 了解如何为静态网站托管功能配置自定义域。
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847003"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327500"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>教程：使用 Azure CDN 通过 SSL 为静态网站启用自定义域
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>教程：在 Azure 中启用静态网站的自定义域和 SSL
 
 本教程是一个系列中的第二部分。 本教程介绍如何通过 SSL 为静态网站启用自定义域终结点。 
 

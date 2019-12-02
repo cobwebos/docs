@@ -1,16 +1,16 @@
 ---
 title: 初学者查询示例
 description: 使用 Azure 资源图来运行一些初学者查询，包括计算资源数、对资源进行排序或按特定标记排序。
-ms.date: 10/21/2019
-ms.topic: quickstart
-ms.openlocfilehash: ca7fc2ba3e952f93f85c677eb8a8a7322901c7d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 11/21/2019
+ms.topic: sample
+ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076119"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279446"
 ---
-# <a name="starter-resource-graph-queries"></a>初学者资源图表查询
+# <a name="starter-resource-graph-query-samples"></a>初学者 Resource Graph 查询示例
 
 了解使用 Azure 资源图表进行查询的第一步是对[查询语言](../concepts/query-language.md)有基本的了解。 如果还不熟悉 [Kusto 查询语言 (KQL)](/azure/kusto/query/index)，建议查看 [KQL 的教程](/azure/kusto/query/tutorial)，了解如何撰写所需资源的请求。
 
@@ -64,6 +64,8 @@ Search-AzGraph -Query "Resources | summarize count()"
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -94,6 +96,8 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -124,6 +128,8 @@ Search-AzGraph -Query "Resources | project name, type, location | order by name 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -155,6 +161,8 @@ Search-AzGraph -Query "Resources | project name, location, type| where type =~ '
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -186,6 +194,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -217,6 +227,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -246,6 +258,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -278,6 +292,8 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -312,6 +328,8 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -342,6 +360,8 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -372,6 +392,8 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -400,6 +422,8 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -430,6 +454,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -464,6 +490,8 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -495,6 +523,8 @@ Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachine
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 
@@ -526,6 +556,8 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 ![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
 
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![在新窗口图标中打开链接](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![在新窗口中打开链接](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![在新窗口中打开链接](../../media/new-window.png)
 
 ---
 

@@ -1,21 +1,17 @@
 ---
-title: 使用 Visual Studio Code - Azure 区块链服务
+title: 创建、生成和部署智能合同教程 - Azure 区块链服务
 description: 此教程介绍如何在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展，在 Azure 区块链服务上创建、生成和部署智能合同。
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329245"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325171"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>教程：使用 Visual Studio Code 创建、生成和部署智能合约
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>教程：在 Azure 区块链服务中创建、生成和部署智能合同
 
 此教程介绍如何在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展，在 Azure 区块链服务上创建、生成和部署智能合同。 还可以使用 Truffle 通过事务执行智能合同函数。
 
@@ -32,6 +28,21 @@ ms.locfileid: "72329245"
 ## <a name="prerequisites"></a>先决条件
 
 * 完整[快速入门：使用 Visual Studio Code 连接到 Azure 区块链服务联盟网络](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [适用于 Ethereum 的 Azure 区块链开发工具包扩展](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x 或更高版本](https://nodejs.org/download)
+* [Git 2.10.x 或更高版本](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) 将 python.exe 添加到路径中。 Azure 区块链开发工具包需要路径中的 Python 版本 2.7.15。
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+在 Windows 上，node-gyp 模块需要使用已安装的 C++ 编译器。 可以使用 MSBuild 工具：
+
+* 如果安装了 Visual Studio 2017，则将 npm 配置为通过命令 `npm config set msvs_version 2017 -g` 使用 MSBuild 工具
+* 如果安装了 Visual Studio 2019，则为 npm 设置 MSBuild 工具路径。 例如： `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* 如果都不是，则在提升的*以管理员身份运行*命令外壳中，使用 `npm install --global windows-build-tools` 安装独立的 VS Build 工具。
+
+有关 node-gyp 的详细信息，请参阅 [GitHub 上的 node-gyp 存储库](https://github.com/node-gyp)。
 
 ## <a name="create-a-smart-contract"></a>创建智能合同
 
@@ -165,7 +176,7 @@ Truffle 将针对区块链网络执行脚本。
 
 ![脚本输出](./media/send-transaction/execute-get.png)
 
-请注意，该值不是 **Hello, blockchain!** 。 返回的值是一个占位符。 更改和部署合同时，合同将获取新的合同地址，并在智能合同构造函数中为状态变量赋值。 Truffle 示例 **2_deploy_contracts.js** 迁移脚本将部署智能合同，并将占位符值作为参数传递。 构造函数将 **RequestMessage** 状态变量设置为占位符值，这正是返回的值。
+请注意，该值不是 **Hello, blockchain!** 。 返回的值是一个占位符。 更改和部署合同时，更改的合同将部署到新地址，并在智能合同构造函数中为状态变量赋值。 Truffle 示例 **2_deploy_contracts.js** 迁移脚本将部署智能合同，并将占位符值作为参数传递。 构造函数将 **RequestMessage** 状态变量设置为占位符值，这正是返回的值。
 
 1. 若要设置 **RequestMessage** 状态变量并查询值，请再次运行 **sendrequest.js** 和 **getmessage.js** 脚本。
 

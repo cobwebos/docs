@@ -4,22 +4,25 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/08/2019
-ms.openlocfilehash: a7ae6cb1231e4c202dfd0a39602c03b33099d088
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5089af4a4e1714d49b844a1b6823487a3f6a8dcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554724"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483007"
 ---
 通过创建下面的 Azure 资源之一开始使用异常检测器服务。
 
-* [试用资源](https://azure.microsoft.com/try/cognitive-services/#decision)（不需要 Azure 订阅）： 
+* <a href="https://azure.microsoft.com/try/cognitive-services/#decision" target="_blank" rel="noopener">创建试用资源（在新选项卡中打开）</a>
+    * 无需任何 Azure 订阅： 
     * 有效期为七天，免费。 注册后，试用密钥和终结点将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上可用。 
     * 如果你想尝试异常检测器，但没有 Azure 订阅，这是一个很好的选择。
 
-* [异常检测器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)：
-    * 在删除资源之前，可通过 [Azure 门户](https://ms.portal.azure.com#blade/HubsExtension/BrowseResourceGroupBlade)使用。
+* <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank" rel="noopener">创建异常检测器资源（在新选项卡中打开）</a>：
+    * 在删除资源前，可通过 Azure 门户使用。
     * 使用免费定价层试用该服务，稍后升级到用于生产的付费层。
+
+
 
 ### <a name="create-an-environment-variable"></a>创建环境变量
 
@@ -37,8 +40,8 @@ ms.locfileid: "72554724"
 #### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```console
-setx ANOMALY_DETECTOR_KEY your-anomaly-detector-key
-setx ANOMALY_DETECTOR_ENDPOINT your-anomaly-detector-endpoint
+setx ANOMALY_DETECTOR_KEY <replace-with-your-anomaly-detector-key>
+setx ANOMALY_DETECTOR_ENDPOINT <replace-with-your-anomaly-detector-endpoint>
 ```
 
 添加环境变量后，请重启控制台窗口。
@@ -46,8 +49,8 @@ setx ANOMALY_DETECTOR_ENDPOINT your-anomaly-detector-endpoint
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
-export ANOMALY_DETECTOR_KEY=your-anomaly-detector-key
-export ANOMALY_DETECTOR_ENDPOINT=your-anomaly-detector-endpoint
+export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>
+export ANOMALY_DETECTOR_ENDPOINT=<replace-with-your-anomaly-detector-endpoint>
 ```
 
 添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
@@ -57,8 +60,8 @@ export ANOMALY_DETECTOR_ENDPOINT=your-anomaly-detector-endpoint
 编辑 `.bash_profile`，然后添加环境变量：
 
 ```bash
-export ANOMALY_DETECTOR_KEY=your-anomaly-detector-key
-export ANOMALY_DETECTOR_ENDPOINT=your-anomaly-detector-endpoint
+export ANOMALY_DETECTOR_KEY=<replace-with-your-anomaly-detector-key>
+export ANOMALY_DETECTOR_ENDPOINT=<replace-with-your-anomaly-detector-endpoint>
 ```
 
 添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。

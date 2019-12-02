@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure | Microsoft Docs
-description: 本文介绍如何使用 Azure Migrate 服务器迁移将本地 Hyper-V VM 迁移到 Azure
+title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
+description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 755bb6d019418cf9dae22ebf7ee6a3c94af3c750
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: be5d519269739f09b4a4264292f578b1d7051d26
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309449"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196313"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -39,7 +39,7 @@ ms.locfileid: "70309449"
 
 开始学习本教程之前，应做好以下准备：
 
-1. [查看](migrate-architecture.md) Hyper-V 迁移体系结构。
+1. [查看](hyper-v-migration-architecture.md) Hyper-V 迁移体系结构。
 2. 完成本教程系列的[第一篇教程](tutorial-prepare-hyper-v.md)来设置 Azure 和 Hyper-V，以便能够完成迁移。 在第一篇教程中，你已：
     - [准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure)，以便能够完成迁移。
     - [准备本地环境](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)，以便能够完成迁移。

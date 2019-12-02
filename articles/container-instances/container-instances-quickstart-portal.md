@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - 门户
+title: 快速入门 - 将 Docker 容器部署到容器实例 - 门户
 description: 本快速入门将使用 Azure 门户快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bf3bea07fa2fcb67a467d4087ea9e2ccbfd95206
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325801"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533525"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 

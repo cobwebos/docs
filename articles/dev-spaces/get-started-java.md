@@ -1,8 +1,6 @@
 ---
-title: 使用 Java 和 VS Code 在云中创建 Kubernetes 开发空间
-titleSuffix: Azure Dev Spaces
+title: 创建 Kubernetes 开发空间：Visual Studio Code 和 Java
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
@@ -10,14 +8,14 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ec1c2b385797b1219814e584a9db7da82d111e2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1dc7005ac0d1cb520e4c0452196a2b47665f9b5c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704098"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325829"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>通过 Java 开始使用 Azure Dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Java 与 Azure Dev Spaces 结合使用
 
 本指南介绍如何：
 

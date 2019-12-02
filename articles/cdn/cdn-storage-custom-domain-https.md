@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083019"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279119"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob
 
@@ -43,11 +43,15 @@ Azure CDN 会忽略添加到 SAS 令牌的任何限制。 例如，所有 SAS �
 如果为同一 Blob 终结点创建了多个 SAS URL，请考虑启用查询字符串缓存。 这样做可以确保每个 URL 都被视为一个唯一的实体。 有关详细信息，请参阅[控制 Azure CDN 对查询字符串的缓存行为](cdn-query-string.md)。
 
 ## <a name="http-to-https-redirection"></a>HTTP 到 HTTPS 重定向
-可以选择将 HTTP 流量重定向到 HTTPS，只需使用 [Azure CDN 规则引擎](cdn-verizon-premium-rules-engine.md)创建[URL 重定向规则](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)即可。 此选项要求**来自 Verizon 的 Azure CDN Premium** 配置文件。
+可以选择将 HTTP 流量重定向到 HTTPS，实现方法是使用[标准规则引擎](cdn-standard-rules-engine.md)或 [Verizon 高级规则引擎](cdn-verizon-premium-rules-engine.md)创建 URL 重定向规则。 标准规则引擎仅适用于来自 Microsoft 的 Azure CDN 配置文件，而 Verizon 高级规则引擎仅适用于来自 Verizon 的高级 Azure CDN 配置文件。
 
-![URL 重定向规则](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft 重定向规则](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-在此规则中，*Cdn-endpoint-name* 是指为 CDN 终结点配置的名称，它可以从下拉列表中选择。 *origin-path* 的值是指源存储帐户内静态内容所在的路径。 若要在一个容器中托管所有静态内容，请将 *origin-path* 替换为相应容器的名称。
+在上述规则中，保留主机名、路径、查询字符串和片段将使得传入值用于重定向过程中。 
+
+![Verizon 重定向规则](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+在上述规则中，Cdn-endpoint-name 是指为 CDN 终结点配置的名称，它可以从下拉列表中选择  。 *origin-path* 的值是指源存储帐户内静态内容所在的路径。 若要在一个容器中托管所有静态内容，请将 *origin-path* 替换为相应容器的名称。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 通过 Azure CDN 访问 Blob 时，将按 [Blob 存储价格](https://azure.microsoft.com/pricing/details/storage/blobs/)为 POP 服务器与原始存储（Blob 存储）之间的流量付费，按 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)为从 POP 服务器访问的数据付费。

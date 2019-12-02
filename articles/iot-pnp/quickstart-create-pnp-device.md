@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72927dd89a81d2440bf78ba24402f5ce283006da
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931915"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405813"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>快速入门：使用设备功能模型创建 IoT 即插即用预览设备 (Windows)
 
@@ -46,46 +46,15 @@ _设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>准备 IoT 中心
-
-Azure 订阅中还需要有一个 Azure IoT 中心才能完成本快速入门。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 如果你没有 IoT 中心，请遵照[此处的说明创建一个](../iot-hub/iot-hub-create-using-cli.md)。
-
-> [!IMPORTANT]
-> 在公共预览版期间，IoT 即插即用功能仅适用于在美国中部、欧洲北部和日本东部区域中创建的 IoT 中心    。
-
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例：
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-运行以下命令，在 IoT 中心创建设备标识。 将 **YourIoTHubName** 和 **YourDevice** 占位符替换为实际名称。
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-运行以下命令，获取刚注册设备的设备连接字符串： 
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-运行以下命令，获取中心的 IoT 中心连接字符串： 
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>获取适用于 C 的 Azure IoT 设备 SDK
-
-在本快速入门中，你将通过 [Vcpkg](https://github.com/microsoft/vcpkg) 安装 Azure IoT C 设备 SDK 来准备开发环境。
+本快速入门将使用 [Vcpkg](https://github.com/microsoft/vcpkg) 库管理器在开发环境中安装 Azure IoT C 设备 SDK。
 
 1. 打开命令提示符。 执行以下命令以安装 Vcpkg：
 
-    ```cmd/sh
+    ```cmd
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
 
@@ -94,13 +63,13 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
     然后，若要挂接用户范围的[集成](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)，运行以下命令（注意：首次使用时需要管理员）：
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe integrate install
     ```
 
 1. 安装 Azure IoT C 设备 SDK Vcpkg：
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
@@ -151,14 +120,14 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 在 `sample_device` 文件夹中创建 `cmake` 子目录，并导航到该文件夹：
 
-    ```cmd\sh
+    ```cmd
     mkdir cmake
     cd cmake
     ```
 
 1. 运行以下命令，构建生成的代码存根（将占位符替换为 Vcpkg 存储库的目录）：
 
-    ```cmd\sh
+    ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
@@ -166,7 +135,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
     
     > [!NOTE]
     > 如果使用 Visual Studio 2017 或 2015，则需要根据所使用的生成工具指定 CMake 生成器：
-    >```cmd\sh
+    >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
     ># or
@@ -178,7 +147,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 成功完成生成后，运行应用程序并将 IoT 中心设备连接字符串作为参数传递。
 
-    ```cmd\sh
+    ```cmd
     .\Debug\sample_device.exe "<device connection string>"
     ```
 
@@ -212,11 +181,11 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 输入 IoT 中心连接字符串，然后选择“连接”。  
 
-1. 连接后，将看到设备概述页。
+1. 连接后，将看到“设备”概述页  。
 
 1. 若要添加公司存储库，请依次选择“设置”、“+ 添加模块定义源”、“公司存储库”    。 添加公司模型存储库连接字符串，然后选择“保存并连接”  。
 
-1. 在设备概述页上，找到前面创建的设备标识，然后选择该标识以查看更多详细信息。
+1. 回到“设备”概述页上，找到前面创建的设备标识  。 如果设备应用程序仍在命令提示符中运行，请检查设备 Azure IoT 资源管理器中的“连接状态”是否为“已连接”（如果不是，请点击“刷新”直至状态为“已连接”）    。 选择该设备可查看更多详细信息。
 
 1. 展开 ID 为 urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1 的接口，以查看 IoT 即插即用基元 - 属性、命令和遥测  。 将显示的接口名称是在创建模型时输入的名称。
 
@@ -226,7 +195,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 选择“属性(可写)”页查看可以更新的可写属性。 
 
-1. 展开属性“名称”，更新为新名称，然后选择“更新可写属性”   。
+1. 展开属性“名称”，更新为新名称，然后选择“更新可写属性”   。 
 
 1. 若要查看“报告的属性”列中显示的新名称，请选择页面顶部的“刷新”按钮。  
 
@@ -235,6 +204,8 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 1. 展开 **blink** 命令并设置新的闪烁时间间隔。 选择“发送命令”以调用设备上的命令  。
 
 1. 转到模拟设备命令提示符并通读打印的确认消息，以验证命令是否按预期执行。
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

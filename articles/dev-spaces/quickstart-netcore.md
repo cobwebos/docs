@@ -1,23 +1,19 @@
 ---
-title: 通过 Azure Dev Spaces 在 Kubernetes 上使用 Visual Studio Code 和 .NET Core 进行调试和循环访问 (Visual Studio Code)
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 .NET Core
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b65dc5ed5d6d69ecde2108fcc322e27999704123
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815843"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325586"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>快速入门：通过 Azure Dev Spaces 在 Kubernetes 上使用 Visual Studio Code 和 .NET Core 进行调试和循环访问 (Visual Studio Code)
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
 本指南介绍如何：
 

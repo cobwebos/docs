@@ -1,27 +1,19 @@
 ---
 title: 什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？ - Azure
 description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Microsoft Flow、逻辑应用、Functions 和 WebJobs。
-services: functions, logic-apps
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: microsoft flow、流、逻辑应用、azure functions、函数、azure webjobs、webjobs，事件处理、动态计算、无服务器体系结构
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e599ff280481549f68822d96f97b85f2516b1593
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082750"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278630"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
-本文比较了以下 Microsoft 云服务：
-
+本文比较了以下 Microsoft 云 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -57,7 +49,7 @@ Microsoft Flow 构建在逻辑应用的基础之上。 它们有相同的工作�
 对于 Azure Functions，通过编写代码并使用 [Durable Functions 扩展](durable/durable-functions-overview.md)来开发业务流程。 对于逻辑应用，你通过使用 GUI 或通过编辑配置文件来创建业务流程。
 
 在构建业务流程、从逻辑应用中调用函数以及从函数中调用逻辑应用时，可以混合使用各种服务。 可以根据服务功能或你的个人喜好选择如何构建每个业务流程。 下表列出了这些服务之间的一些主要区别：
- 
+
 |  | Durable Functions | 逻辑应用 |
 | --- | --- | --- |
 | 开发 | 代码优先（命令性） | 设计器优先（声明性） |

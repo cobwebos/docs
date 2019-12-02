@@ -6,13 +6,13 @@ ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 05/06/2019
-ms.openlocfilehash: 9d4389ed2c0cc5d7b632380fba691ae2e9a6b257
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/25/2019
+ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466749"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481657"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系型数据库服务。 它基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本，提供两部署选项：单一服务器和超大规模 (Citus)。
@@ -20,13 +20,14 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
 “单一服务器”部署选项提供：
 
-- 没有额外费用的内置高可用性 (99.99% SLA)
+- 没有额外费用的内置[高可用性](concepts-high-availability.md) (99.99% SLA)
 - 使用非独占即用即付定价，实现可预测性能
-- 根据需要在数秒内进行垂直缩放
-- 通过监视和警报功能快速评估缩放的影响
-- 保护静态和动态敏感数据的安全
-- 长达 35 天的自动备份和时间点还原
+- [根据需要在数秒内进行垂直缩放](concepts-pricing-tiers.md)
+- 用于评估服务器的[监视和警报](concepts-monitoring.md)
 - 企业级安全性和符合性
+- [保护](concepts-security.md)静态和动态敏感数据的安全
+- 长达 35 天的[自动备份和时间点还原](concepts-business-continuity.md)
+
 
 所有这些功能几乎都不需要进行任何管理，并且都是在不另外收费的情况下提供的。 借助这些功能，用户可将注意力集中在如何快速进行应用程序开发、加快推向市场，而不需要投入宝贵的时间和资源来管理虚拟机与基础结构。 可以使用所选的开源工具和平台继续开发应用程序，不需学习新技能。
 
@@ -42,11 +43,6 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 - 为多租户应用程序提供卓越的支持，并支持实时运营分析以及高吞吐量事务工作负荷
 
 针对 PostgreSQL 构建的应用程序可以在超大规模 (Citus) 部署的基础上运行分布式查询，使用标准的[连接库](./concepts-connection-libraries.md)，基本不需要什么更改。
-
-## <a name="data-security"></a>数据安全
-Azure Database for PostgreSQL 沿袭了 Azure 数据库服务的数据安全传统。 其功能包括限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://azure.microsoft.com/overview/trusted-cloud/)。
-
-Azure Database for PostgreSQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。 默认情况下，Azure Database for PostgreSQL 服务需要建立安全的连接才能在网络中以及在数据库和客户端应用程序之间移动数据。
 
 ## <a name="contacts"></a>联系人
 如果有任何关于使用 Azure Database for PostgreSQL 的问题或建议，请向 Azure Database for PostgreSQL 团队 ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) 发送电子邮件。 该地址处理常规问题，不处理支持票证。

@@ -1,24 +1,20 @@
 ---
-title: 使用 NET Core 和 Visual Studio 运行多个依赖的服务
-titleSuffix: Azure Dev Spaces
+title: 运行多个依赖服务：.NET Core 和 Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: dd90dee2f973bb26a43706eb77f15778cb9116a0
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9fb6993c913454d67e2118cd3ff5a4b8fea6464b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502976"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325690"
 ---
-# <a name="multi-service-development-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 进行多服务开发
+# <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>运行多个依赖服务：通过 Azure Dev Spaces 使用 .NET Core 和 Visual Studio 运行
 
 在本教程中，你将了解如何使用 Azure Dev Spaces 开发多服务应用程序，并了解 Dev Spaces 提供的一些附加优势。
 

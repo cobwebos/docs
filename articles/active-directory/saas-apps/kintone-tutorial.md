@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a9245ab5a2d51ee3995ff0c614cafaebdc20d00f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098806"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>教程：Azure Active Directory 与 Kintone 集成
 
@@ -145,7 +145,7 @@ ms.locfileid: "67098806"
 
 1. 在“系统管理”\>“安全性”下  ，单击“登录”  。
 
-    ![登录名](./media/kintone-tutorial/ic785881.png "登录名")
+    ![登录名](./media/kintone-tutorial/ic785881.png "登录")
 
 1. 单击“启用 SAML 身份验证”  。
 
@@ -247,7 +247,7 @@ ms.locfileid: "67098806"
     b. 单击“ **保存**”。
 
 > [!NOTE]
-> 可以使用 Kintone 提供的任何其他 Kintone 用户帐户创建工具或 API 来预配 AAD 用户帐户。
+> 可以使用 Kintone 提供的任何其他 Kintone 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

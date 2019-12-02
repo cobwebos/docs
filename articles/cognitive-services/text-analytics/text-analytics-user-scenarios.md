@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742733"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280673"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -41,7 +41,7 @@ ms.locfileid: "73742733"
 
 ## <a name="monitor-your-products-social-media-feeds"></a>监视产品的社交媒体源
 
-在产品的 Twitter 或 Facebook 页面监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。
+在产品的 Twitter 或 Facebook 页面监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Flow 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 

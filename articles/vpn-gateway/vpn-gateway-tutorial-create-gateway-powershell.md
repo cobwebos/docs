@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建和管理 Azure VPN 网关 | Microsoft Docs
+title: 教程 - 使用 Azure VPN 网关创建和管理网关
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 VPN 网关
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495649"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424145"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
@@ -20,7 +20,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 > [!div class="checklist"]
 > * 创建 VPN 网关
-> * 查看公用 IP 地址
+> * 查看公共 IP 地址
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 
@@ -98,7 +98,7 @@ $vnet   = New-AzVirtualNetwork `
             -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>为 VPN 网关请求一个公用 IP 地址
+## <a name="request-a-public-ip-address-for-the-vpn-gateway"></a>为 VPN 网关请求一个公共 IP 地址
 
 Azure VPN 网关通过 Internet 与本地 VPN 设备进行通信，执行 IKE（Internet 密钥交换）协商并建立 IPsec 隧道。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 和 [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) 创建一个公共 IP 地址并将其分配给 VPN 网关，如以下示例中所示：
 
@@ -182,7 +182,7 @@ Remove-AzResourceGroup -Name $RG1
 
 > [!div class="checklist"]
 > * 创建 VPN 网关
-> * 查看公用 IP 地址
+> * 查看公共 IP 地址
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 

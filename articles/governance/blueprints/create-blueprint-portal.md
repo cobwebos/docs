@@ -1,26 +1,20 @@
 ---
-title: 在门户中创建蓝图
-description: 通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 03/11/2019
+title: 快速入门：在门户中创建蓝图
+description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960456"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321944"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
 了解如何创建和分配蓝图时，可以定义常见的模式，以便根据 Azure 资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务。 这些任务包括：
 
-> [!div class="checklist"]
-> - 新建蓝图并添加各种受支持的项目
-> - 对仍处于“草稿”状态的现有蓝图进行更改 
-> - 使用“已发布”将蓝图标记为分配就绪 
-> - 向现有订阅分配蓝图
-> - 检查已分配蓝图的状态和进度
-> - 删除已向订阅分配的蓝图
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -296,9 +290,7 @@ ms.locfileid: "73960456"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](./concepts/lifecycle.md)。
-- 了解如何使用[静态和动态参数](./concepts/parameters.md)。
-- 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)。
-- 了解如何利用[蓝图资源锁定](./concepts/resource-locking.md)。
-- 了解如何[更新现有分配](./how-to/update-existing-assignments.md)。
-- 使用[一般故障排除](./troubleshoot/general.md)在蓝图的分配期间解决问题。
+本快速入门介绍了如何使用 Azure 门户创建、分配和删除蓝图。 若要详细了解 Azure 蓝图，请继续学习蓝图生命周期文章。
+
+> [!div class="nextstepaction"]
+> [了解蓝图生命周期](./concepts/lifecycle.md)

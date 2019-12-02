@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过适用于 C# 的必应实体搜索 SDK 来搜索实体
+title: 快速入门：通过适用于 C# 的 SDK 搜索实体 - 必应实体搜索
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门通过适用于 C# 的必应实体搜索 SDK 来搜索实体。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 20f76c0adfcbd756c71769979214ea975cb5d6d9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: f9036e78934ac14017a0437583109c91732ce4b3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360585"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323827"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>通过适用于 C# 的必应实体搜索 SDK 来发送搜索请求
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用适用于 Go 的自定义视觉 SDK 创建对象检测项目
+title: 快速入门：使用适用于 Go 的 SDK 创建物体检测项目 - 自定义视觉
 titleSuffix: Azure Cognitive Services
 description: 使用 Go SDK 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: 050d0593f64c939c687601eb25677f2356f4ba51
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d0734763ca1dd5ab3162ca00748361bee29cefc1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73519091"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378744"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>快速入门：使用自定义视觉 Go SDK 创建对象检测项目
 

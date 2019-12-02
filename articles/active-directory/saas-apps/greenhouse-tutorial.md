@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: cd5a52ea47d7166c6f197b233d1a10ff063ff7c5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1cf60e13f7b3ad13d204d67cb7c538d1d11a5dbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159176"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -186,7 +186,7 @@ ms.locfileid: "73159176"
 要使 Azure AD 用户能够登录 Greenhouse，必须将其预配到 Greenhouse。 对于 Greenhouse，需要手动执行预配。
 
 >[!NOTE]
->可以使用 Greenhouse 提供的任何其他 Greenhouse 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
+>可以使用 Greenhouse 提供的任何其他 Greenhouse 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。 
 
 **若要预配用户帐户，请执行以下步骤：**
 

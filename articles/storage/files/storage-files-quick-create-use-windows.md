@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260401"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305829"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
 
@@ -173,7 +173,7 @@ ms.locfileid: "71260401"
 
 1. 选择“还原”。  此操作以递归方式将整个目录的内容复制到创建共享快照时所在的原始位置。
 
-   ![警告消息中的“还原”按钮](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   ![警告消息中的“还原”按钮](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) 注意：如果文件未更改，则不会看到该文件的之前版本，因为该文件的版本与快照的版本相同。 这与 Windows 文件服务器上的工作原理一致。
 
 ## <a name="clean-up-resources"></a>清理资源
 

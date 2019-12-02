@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073616"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538262"
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
@@ -57,7 +57,7 @@ ms.locfileid: "70073616"
     | 需要批准        | 如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中“需要审批”  。 如果未选中此框，则会自动批准订阅尝试。                                                                                                                         |
     | 订阅计数限制 | 若要限制多个同步订阅的计数，请输入订阅限制。                                                                                                                                                                                                                                |
     | 法律条款              | 可以包含产品的使用条款，订阅者必须接受这些条款才能使用该产品。                                                                                                                                                                                                             |
-    | API                     | 产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/> 可以在创建产品期间添加现有的 API。 以后，可以通过产品的“设置”页上或者在创建 API 时将 API 添加到产品。  |
+    | API                     | 产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/> 可以在创建产品期间添加现有的 API。 之后可以通过产品的“设置”页或者在创建 API 时将 API 添加到产品  。 |
 
 3. 单击“创建”创建新产品。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "70073616"
 
 通过“订阅”选项卡查看/添加产品的订阅者。 
 
-通过“访问控制”  选项卡为开发人员或来宾设置产品的可见性。
+通过“访问控制”选项卡为开发人员或来宾设置产品的可见性  。
 
 ## <a name="add-apis"> </a>将 API 添加到产品
 

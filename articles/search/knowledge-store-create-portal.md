@@ -2,18 +2,18 @@
 title: 在 Azure 门户中创建知识存储（预览版）
 titleSuffix: Azure Cognitive Search
 description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。 此功能目前处于公开预览状态。
-author: lisaleib
+author: HeidiSteen
+ms.author: heidist
 manager: nitinme
-ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720106"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533956"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
 
@@ -56,7 +56,7 @@ ms.locfileid: "73720106"
 
 <!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
 
-1. [创建 Azure 认知搜索服务](search-create-service-portal.md)或在同一订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
+1. [创建 Azure 认知搜索服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 现在可以在“导入数据”向导中转到下一步。
 

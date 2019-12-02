@@ -1,25 +1,19 @@
 ---
-title: 使用 Truffle 进行连接
+title: 使用 Truffle 连接到 Azure 区块链服务
 description: 使用 Truffle 连接到 Azure 区块链服务网络
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.reviewer: janders
+ms.openlocfilehash: 9ea96aa32072775fe6fb9563442f5e3564d37ea5
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932597"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455793"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>快速入门：使用 Truffle 连接到事务节点
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>快速入门：使用 Truffle 连接到 Azure 区块链服务
 
-Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链服务事务节点。
+在本快速入门中，你将使用 Truffle 连接到 Azure 区块链服务事务节点。 然后使用 Truffle 交互式控制台调用 web3 方法，实现与区块链网络的交互  。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -58,12 +52,15 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 
 若要配置 Truffle 项目，需要从 Azure 门户获取一些事务节点信息。
 
-### <a name="transaction-node-endpoint-addresses"></a>事务节点终结点地址
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 转到你的 Azure 区块链服务成员。 选择“事务节点”  和默认事务节点链接。
 
-1. 在 Azure 门户中，导航到默认事务节点并选择“事务节点”>“连接字符串”。 
-1. 复制并保存“HTTPS (访问密钥 1)”中的终结点 URL  。 稍后在本教程中，需要在智能合同配置文件中提供终结点地址。
+    ![选择默认事务节点](./media/connect-truffle/transaction-nodes.png)
 
-    ![事务终结点地址](./media/connect-truffle/endpoint.png)
+1. 选择“连接字符串”  。
+1. 从“HTTPS(访问密钥 1)”  中复制连接字符串。 下一部分中需要使用此字符串。
+
+    ![连接字符串](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>编辑配置文件
 
@@ -100,7 +97,7 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 
     Truffle 连接到默认事务节点并提供交互式控制台。
 
-    你可以调用 **web3** 对象上的方法来与事务节点进行交互。
+    可以调用该 web3 对象中的方法来与区块链网络进行交互  。
 
 1. 调用 **getBlockNumber** 方法来返回当前的块编号。
 
@@ -122,9 +119,9 @@ Truffle 是一个区块链开发环境，可以用来连接到 Azure 区块链�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个 Truffle 项目来连接到你的 Azure 区块链服务默认事务节点。
+在本快速入门中，你使用了 Truffle 连接到 Azure 区块链服务默认事务节点，并使用了交互式控制台返回当前区块链块编号。
 
-尝试下一个教程，使用适用于 Ethereum 的 Azure 区块链开发工具包和 Truffle 通过事务创建、生成、部署和执行智能合同函数。
+尝试下一个教程，使用适用于 Ethereum 的 Azure 区块链开发工具包通过事务创建、生成、部署和执行智能合同函数。
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)
+> [在 Azure 区块链服务中创建、生成和部署智能合同](send-transaction.md)

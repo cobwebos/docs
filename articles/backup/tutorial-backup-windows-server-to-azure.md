@@ -1,20 +1,15 @@
 ---
-title: 将 Windows Server 备份到 Azure
+title: 教程 - 将 Windows Server 备份到 Azure
 description: 本教程详细介绍了如何将本地 Windows Server 备份到恢复服务保管库。
-author: dcurwin
-manager: carmonm
-keywords: windows server 备份; 备份 windows server; 备份和灾难恢复
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073950"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226481"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -28,7 +23,7 @@ ms.locfileid: "74073950"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 Azure 门户 (<https://portal.azure.com.>)
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

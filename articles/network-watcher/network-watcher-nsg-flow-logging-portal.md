@@ -1,6 +1,7 @@
 ---
-title: 记录出入 VM 的网络流量 - 教程 - Azure 门户 | Microsoft Docs
-description: 了解如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量。
+title: 教程 - 使用 Azure 门户记录出入 VM 的网络流量流
+titleSuffix: Azure Network Watcher
+description: 本教程介绍如何使用网络观察程序的 NSG 流日志功能记录出入 VM 的网络流量流。
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -17,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3e5490a4d74f10532764029f7a83788e3e39b592
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636217"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419632"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 

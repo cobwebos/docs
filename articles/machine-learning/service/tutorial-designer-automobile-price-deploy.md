@@ -1,7 +1,7 @@
 ---
 title: 教程：使用设计器部署机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
+description: 此教程介绍如何在 Azure 机器学习设计器中生成预测分析解决方案。 通过使用拖放式模块定型、评分和部署机器学习模型。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 31b06f3ad102f39d1a9f95dee2bd98b5d0a3b310
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932043"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483315"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教程：使用设计器部署机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "73932043"
 
     管道现在应如下所示： 
 
-   ![显示做好部署准备后管道的预期配置的屏幕截图](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![显示做好部署准备后管道的预期配置的屏幕截图](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
     选择“创建推理管道”时，会发生一些事情： 
     
@@ -70,7 +70,7 @@ ms.locfileid: "73932043"
 
 1. 在导航功能区中，选择“推理群集” > “+ 新建”   。
 
-    ![显示如何转到新的推理群集窗格的屏幕截图](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![显示如何转到新的推理群集窗格的屏幕截图](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
 1. 在推理群集窗格中，配置新的 Kubernetes 服务。
 
@@ -96,7 +96,7 @@ ms.locfileid: "73932043"
 
 1. 选择“部署”。 
 
-    ![屏幕截图，显示如何设置新的实时终结点](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![屏幕截图，显示如何设置新的实时终结点](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
     部署完成后，将在画布上方显示成功通知。 这可能需要几分钟时间。
 
@@ -106,7 +106,7 @@ ms.locfileid: "73932043"
 
 1. 在“终结点”页上，选择已部署的终结点。 
 
-    ![显示“实时终结点”选项卡的屏幕截图，其中突出显示了最近创建的终结点](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![显示“实时终结点”选项卡的屏幕截图，其中突出显示了最近创建的终结点](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
 1. 选择“测试”。 
 
@@ -114,7 +114,7 @@ ms.locfileid: "73932043"
 
     门户会将测试请求提交到终结点并显示结果。 尽管为输入数据生成了价格值，但它不用于生成预测值。
 
-    ![显示如何测试实时终结点的屏幕截图，其中突出显示了价格的评分标签](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![显示如何测试实时终结点的屏幕截图，其中突出显示了价格的评分标签](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
