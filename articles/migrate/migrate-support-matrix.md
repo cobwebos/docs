@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666267"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669155"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -54,7 +54,7 @@ Azure Migrate 服务器迁移 | NA | 迁移[VMware vm](tutorial-migrate-vmware.m
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | NA
 [Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
-[RackWare](https://www.rackwareinc.com/cloud-migration) | NA | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | NA
 [Webapp 迁移助手](https://appmigration.microsoft.com/) | 评估 web 应用 | 迁移 web 应用。

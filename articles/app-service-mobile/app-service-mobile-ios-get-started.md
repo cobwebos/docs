@@ -1,34 +1,26 @@
 ---
-title: 在 Azure 应用服务移动应用中创建 iOS 应用 | Microsoft Docs
-description: 遵循本教程开始使用 Azure 移动应用后端以 Objective-C 或 Swift 进行 iOS 开发
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
+title: 创建 iOS 应用程序
+description: 遵循本教程，开始使用适用于后端或 Swift 的 iOS 开发 Azure 移动应用。
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: a0b73ba248ae9a12f9ee01f591ddbbedecc25f70
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d933319d22fe7622f0409e8931c41a801fcd18ca
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388671"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668793"
 ---
 # <a name="create-an-ios-app"></a>创建 iOS 应用程序
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 

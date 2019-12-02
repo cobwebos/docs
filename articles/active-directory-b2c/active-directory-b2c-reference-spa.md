@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ab8c8a582b90976ada20b1e970c9e9648d14b2a9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c8ac3b2ada99634f8f35c211f2dd7695f9174ce9
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596437"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667977"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流的单页登录
 
@@ -53,7 +53,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 |组织| 是 | Azure AD B2C 租户的名称|
-|政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
+|政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | response_type | 是 | 必须包含 OpenID Connect 登录的 `id_token`。 也可以包含响应类型 `token`。 如果使用 `token`，则应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri | No | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
@@ -166,7 +166,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
 |组织| 需要 | Azure AD B2C 租户的名称|
-政策| 需要| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
+政策| 需要| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
 | client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |需要 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |推荐 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
@@ -249,5 +249,5 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 GitHub 上的此示例旨在帮助你开始在使用[node.js][github-hello-js]和使用弹出式样式身份验证构建的简单 web 应用程序中 Azure AD B2C。
 
 <!-- Links - EXTERNAL -->
-[github-hello-js-example]: https://github.com/azure-ad-b2c/apps/tree/master/spa/javascript-hellojs-singlepageapp-popup
+[github-hello-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp
 [github-hello-js]: https://github.com/MrSwitch/hello.js

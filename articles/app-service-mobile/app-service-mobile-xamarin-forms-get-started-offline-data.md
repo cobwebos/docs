@@ -1,33 +1,25 @@
 ---
-title: 为 Azure 移动应用启用脱机同步 (Xamarin.Forms) | Microsoft Docs
-description: 了解如何在 Xamarin.Forms 应用程序中使用应用服务移动应用缓存和同步脱机数据
-documentationcenter: xamarin
-author: elamalani
-manager: yochayk
-editor: ''
-services: app-service\mobile
+title: 启用脱机同步（Xamarin） |Microsoft Docs
+description: 了解如何使用应用服务移动应用在 Xamarin. Forms 应用程序中缓存和同步脱机数据。
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 65bd619a95b102c4ad4be57f1661a89fbae43e22
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 85cb39de40d72d4fb4629d055d016e8a3dca23bd
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388425"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668283"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.Forms 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程服务同步。

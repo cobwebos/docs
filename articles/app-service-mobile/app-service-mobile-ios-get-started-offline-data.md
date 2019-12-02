@@ -1,25 +1,17 @@
 ---
-title: 启用与 iOS 移动应用进行脱机同步 | Microsoft 文档
+title: 启用脱机同步（iOS）
 description: 了解如何使用 Azure 应用服务移动应用来缓存和同步 iOS 应用程序中的脱机数据。
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388759"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668481"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -43,7 +35,7 @@ ms.locfileid: "72388759"
 
 在 **QSTodoService.m** (Objective-C) 或 **ToDoTableViewController.swift** (Swift) 中，请注意成员 **syncTable** 的类型为 **MSSyncTable**。 脱机同步使用此同步表接口而不是 **MSTable**。 使用同步表时，所有操作会转到本地存储，而且只会与具有显式推送和提取操作的远程后端同步。
 
- 若要获取对同步表的引用，请对 **使用**syncTableWithName`MSClient` 方法。 若要删除脱机同步功能，请改用 **tableWithName**。
+ 若要获取对同步表的引用，请对 `MSClient` 使用 **syncTableWithName** 方法。 若要删除脱机同步功能，请改用 **tableWithName**。
 
 表操作之前，必须初始化本地存储区。 下面是相关的代码：
 
@@ -134,7 +126,7 @@ ms.locfileid: "72388759"
 
 在 Objective-C 和 Swift 版本中，可以使用 **pullWithQuery** 方法指定查询，筛选想要检索的记录。 在此示例中，查询会检索远程 `TodoItem` 表中的所有记录。
 
-**PullWithQuery**的第二个参数是用于*增量同步*的查询 ID。增量同步仅检索自上次同步以来修改的记录，使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`。）查询 ID 应为应用中每个逻辑查询唯一的描述性字符串。 若不进行增量同步，请将 `nil` 作为查询 ID 传递。 此方法可能会降低效率，因为它会检索每个提取操作的所有记录。
+**PullWithQuery**的第二个参数是用于*增量同步*的查询 ID。增量同步仅检索自上次同步以来修改的记录，使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`。）查询 ID 应为应用中每个逻辑查询唯一的描述性字符串。 若选择不使用增量同步，请传递 `nil` 作为查询 ID。 此方法可能会降低效率，因为它会检索每个提取操作的所有记录。
 
 在修改或添加数据时，在用户执行刷新手势时，以及在启动时，Objective-C 应用会同步。
 
@@ -143,7 +135,7 @@ ms.locfileid: "72388759"
 由于每当修改数据 (Objective-C) 或启动应用（Objective-C 和 Swift）时应用就会同步，因此，应用假设用户已联机。 在后面的一个部分中，我们将更新应用，以便即使在脱机时用户也能进行编辑。
 
 ## <a name="review-core-data"></a>查看 Core Data 模型
-在使用 Core Data 脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 本节我们逐步介绍这些表及其用法。
+在使用 Core Data 脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 在本部分中，我们会逐步介绍这些表以便说明其用法。
 
 打开 **QSDataModel.xcdatamodeld**。 已定义四个表，其中三个由 SDK 使用，一个用于待办事项本身：
   * MS_TableOperations：跟踪需要与服务器同步的项。
@@ -160,57 +152,57 @@ ms.locfileid: "72388759"
 
 ### <a name="system-tables"></a>系统表
 
-MS_TableOperations  
+**MS_TableOperations**  
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
-| id | Integer 64 |
-| itemId | String |
-| properties | 二进制数据 |
-| 表 | String |
+| id | 64 位整数 |
+| itemId | 字符串 |
+| 属性 | 二进制数据 |
+| 表 | 字符串 |
 | tableKind | 16 位整数 |
 
 
-MS_TableOperationErrors
+**MS_TableOperationErrors**
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
-| id |String |
-| operationId |Integer 64 |
-| properties |二进制数据 |
+| id |字符串 |
+| operationId |64 位整数 |
+| 属性 |二进制数据 |
 | tableKind |16 位整数 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | 类型 |
+| 属性 | Type |
 | --- | --- |
-| id |String |
-| key |String |
-| keyType |Integer 64 |
-| 表 |String |
-| value |String |
+| id |字符串 |
+| key |字符串 |
+| keyType |64 位整数 |
+| 表 |字符串 |
+| 值 |字符串 |
 
 ### <a name="data-table"></a>数据表
 
 **TodoItem**
 
-| 属性 | 类型 | 注意 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
-| complete | Boolean | 待办事项字段 |
-| text |String |待办事项字段 |
+| complete | 布尔 | 待办事项字段 |
+| text |字符串 |待办事项字段 |
 | createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | String | （可选）用于检测冲突，映射到版本 |
+| 版本 | 字符串 | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
-本节将修改应用，使其在启动应用或插入和更新项时不进行同步。 仅当按刷新手势按钮时，应用才会同步。
+在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
 
 **Objective-C**：
 
@@ -231,7 +223,7 @@ MS_TableOperationErrors
 
 **Swift**：
 
-在 `viewDidLoad`ToDoTableViewController.swift**中的** 内，注释掉以下两行，停止在应用启动时同步。 在编写本文时，当某人添加或完成某个项时，Swift Todo 应用不会更新服务。 它仅在应用启动时更新服务。
+在 **ToDoTableViewController.swift** 中的 `viewDidLoad` 内，注释掉以下两行，停止在应用启动时同步。 在编写本文时，当某人添加或完成某个项时，Swift Todo 应用不会更新服务。 它仅在应用启动时更新服务。
 
    ```swift
   self.refreshControl?.beginRefreshing()
@@ -241,7 +233,7 @@ MS_TableOperationErrors
 ## <a name="test-app"></a>测试应用
 在本部分，将连接到无效的 URL，以模拟脱机方案。 添加数据项时，数据项将保存在本地 Core Data 存储中，而不会与移动应用后端同步。
 
-1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，并再次运行该应用：
+1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，然后再次运行该应用：
 
    **Objective-C**。 在 QSTodoService.m 中：
    ```objc
@@ -259,14 +251,14 @@ MS_TableOperationErrors
 
 4. 验证新项是否*未*与服务器同步。
 
-5. 将 **QSTodoService.m** 中的 URL 更改回正确的 URL，并重新运行应用。
+5. 将 **QSTodoService.m** 中的 URL 更改回正确的 URL，然后重新运行应用。
 
 6. 通过下拉项列表来执行刷新手势。  
-此时显示进度盘。
+此时会显示进度微调控件。
 
 7. 再次查看 **TodoItem** 数据。 现在应显示新的和更改的待办事项。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 为了支持脱机同步功能，我们使用了 `MSSyncTable` 接口，并使用本地存储初始化了 `MSClient.syncContext`。 在这种情况下，本地存储是基于 Core Data 的数据库。
 
 使用 Core Data 本地存储时，必须使用[正确的系统属性](#review-core-data)定义多个表。

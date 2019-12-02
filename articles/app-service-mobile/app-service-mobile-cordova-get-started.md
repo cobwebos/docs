@@ -1,35 +1,26 @@
 ---
-title: 在 Azure 应用服务移动应用中创建 Cordova 应用 | Microsoft Docs
+title: 创建 Cordova 应用
 description: 遵循本教程开始使用 Azure 移动应用后端进行 Apache Cordova 开发
-services: app-service\mobile
-documentationcenter: javascript
-author: elamalani
-manager: crdun
-editor: ''
-tags: ''
 keywords: cordova,javascript,移动,客户端
 ms.assetid: 0b08fc12-0a80-42d3-9cc1-9b3f8d3e3a3f
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: a1baa26fee46a4bba5db9652cf1e65e9d473284a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35670543b9716cad8165d5b5ea48f3888786f0a2
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388830"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668876"
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程说明如何使用 Azure 移动应用后端向 Apache Cordova 移动应用添加基于云的后端服务。  将创建一个新的移动应用后端以及一个简单的*待办事项列表* Apache Cordova 应用，此应用将应用数据存储在 Azure 中。

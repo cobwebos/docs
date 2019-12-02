@@ -1,33 +1,25 @@
 ---
-title: 使用应用服务移动应用托管的客户端库 | Microsoft Docs
+title: 使用托管客户端库
 description: 了解如何在 Windows 和 Xamarin 应用中使用 Azure 应用服务移动应用的 .NET 客户端库。
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 1a56c6eed8b6a78587ea272c44f01d16e8a2b88d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388716"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668467"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本指南说明如何在 Windows 应用和 Xamarin 应用中使用 Azure 应用服务移动应用的托管客户端库执行常见方案。 如果你不熟悉移动应用，则应考虑首先完成[Azure 移动应用快速入门][1]教程。 在本指南中，我们侧重于客户端托管的 SDK。 若要了解有关适用于移动应用的服务器端 Sdk 的详细信息，请参阅[.Net SERVER sdk][2]或 NODE.JS[服务器 sdk][3]的文档。
@@ -73,7 +65,7 @@ public class TodoItem
 使用以下方法之一从[NuGet][9]安装适用于移动应用的托管客户端 SDK 包：
 
 * **Visual Studio** 右键单击项目，单击“管理 NuGet 包”，搜索 `Microsoft.Azure.Mobile.Client` 包，并单击“安装”。
-* **Xamarin Studio**右键单击项目，单击 "**添加**>**添加 NuGet 包**"，搜索 `Microsoft.Azure.Mobile.Client` 包，然后单击 "**添加包**"。
+* **Xamarin Studio**右键单击项目，单击 "**添加**" > "**添加 NuGet 包**"，搜索 `Microsoft.Azure.Mobile.Client` 包，然后单击 "**添加包**"。
 
 在主活动文件中，请记得添加以下 **using** 语句：
 

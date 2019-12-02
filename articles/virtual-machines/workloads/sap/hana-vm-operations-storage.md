@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/25/2019
+ms.date: 11/27/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8419ce5c5c7144008027a93f985d1f6ffdc1ced4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934925"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669111"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -42,9 +42,9 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 - Azure Ultra 磁盘至少适用于/hana/log 卷。 可以在没有 Azure 写入加速器或的情况下将/hana/data 卷置于高级 SSD
 - 适用于/hana/log**和**/Hana/data. 的 Azure NetApp 文件之上的**NFS** v2.0 卷 /Hana/shared 的数量可以使用 NFS v3 或 NFS v2.0 协议。 NFS v2.0 协议对于/hana/data 和/hana/日志卷是必需的。
 
-某些存储类型可以组合在一起。 例如，可以将/hana/data 放在高级存储上，而/hana/log 可放置在超小型磁盘存储上，以便达到所需的低延迟。 但是，不建议混合使用 NFS 卷进行/hana/data，并使用/hana/log 的其他认证存储类型之一。
+某些存储类型可以组合在一起。 例如，可以将/hana/data 放在高级存储上，而/hana/log 可放置在超小型磁盘存储上，以便达到所需的低延迟。 但是，如果使用基于和 for/hana/data 的 NFS v2.0，则需要使用基于和 for/hana/log 的另一个 NFS v2.0 卷 **不支持**在和上将 NFS 用于某个卷（如/hana/data）和 Azure 高级存储或超磁盘（如/hana/log）。
 
-在本地环境中，很少需要关心 i/o 子系统及其功能。 原因在于，设备供应商会确保满足 SAP HANA 的最低存储要求。 当你自行构建 Azure 基础结构时，应注意其中的某些要求。 要求的某些最小吞吐量特征是：
+在本地环境中，很少需要关心 i/o 子系统及其功能。 原因在于，设备供应商会确保满足 SAP HANA 的最低存储要求。 当你自行构建 Azure 基础结构时，你应该了解其中一些 SAP 颁发的要求。 SAP 所需的某些最小吞吐量特征导致需要：
 
 - 启用读/写， **/hana/log**为 250 mb/秒，大小为 1 mb i/o
 - 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 400 MB/秒的读取活动
@@ -96,7 +96,7 @@ Azure 写入加速器是一项仅适用于 Azure M 系列 Vm 的功能。 顾名
 > [!NOTE]
 > 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
 
-
+建议经常超出 SAP 最低要求，如本文前面所述。 列出的建议是 SAP 大小建议和不同 VM 类型提供的最大存储吞吐量之间的折衷。
 
 **建议：生产方案的推荐配置如下所示：**
 
@@ -114,7 +114,7 @@ Azure 写入加速器是一项仅适用于 Azure M 系列 Vm 的功能。 顾名
 | M416s_v2 | 5700 GiB | 2000 MB/秒 | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
 | M416ms_v2 | 11400 GiB | 2000 MB/秒 | 8 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P50 |
 
-Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 检查不同建议的卷的存储吞吐量是否符合你要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 使用比列出的 Vhd 更多的卷调整容量可在 Azure 虚拟机类型限制范围内提高 IOPS 和 i/o 吞吐量。
+检查不同建议的卷的存储吞吐量是否符合你要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 使用比列出的 Vhd 更多的卷调整容量可在 Azure 虚拟机类型限制范围内提高 IOPS 和 i/o 吞吐量。
 
 只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)使用 Azure 写入加速器。 因此，至少需要将构成 **/hana/log** 卷的 Azure 高级存储磁盘部署为托管磁盘。
 
@@ -140,6 +140,7 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 > [!NOTE]
 > 对于成本意识解决方案，以前的建议的更改是从[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)转移到更好的性能和更可靠的[Azure 标准 SSD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)
 
+建议经常超出 SAP 最低要求，如本文前面所述。 列出的建议是 SAP 大小建议和不同 VM 类型提供的最大存储吞吐量之间的折衷。
 
 | VM SKU | RAM | 每个 VM I/O<br /> 吞吐量 | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
@@ -161,7 +162,7 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 | M416ms_v2 | 11400 GiB | 2000 MB/秒 | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
 
 
-Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
+根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
 检查不同建议的卷的存储吞吐量是否符合你要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 使用比列出的 Vhd 更多的卷调整容量可在 Azure 虚拟机类型限制范围内提高 IOPS 和 i/o 吞吐量。 
 
 > [!NOTE]
@@ -189,6 +190,8 @@ Microsoft 正在推出一种新的 Azure 存储类型（称为[Azure Ultra 磁�
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>使用纯超高磁盘配置的生产推荐存储解决方案
 在此配置中，你需要单独保留/hana/data 和/hana/log 卷。 建议的值派生于 SAP 必须根据[SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中的建议认证 SAP HANA 和存储配置的 VM 类型。
 
+建议经常超出 SAP 最低要求，如本文前面所述。 列出的建议是 SAP 大小建议和不同 VM 类型提供的最大存储吞吐量之间的折衷。
+
 | VM SKU | RAM | 每个 VM I/O<br /> 吞吐量 | /hana/data 卷 | /hana/data i/o 吞吐量 | /hana/data IOPS | /hana/log 卷 | /hana/log i/o 吞吐量 | /hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1200 MB/秒 | 600 GB | 700 MBps | 7,500 | 512 GB | 500 MBps  | 2,000 |
@@ -204,13 +207,15 @@ Microsoft 正在推出一种新的 Azure 存储类型（称为[Azure Ultra 磁�
 | M416s_v2 | 5700 GiB | 2000 MB/秒 | 7200 GB | 1500 MBps | 9,000 | 512 GB | 800 MBps  | 3,000 | 
 | M416ms_v2 | 11400 GiB | 2000 MB/秒 | 14400 GB | 1500 MBps | 9,000 | 512 GB | 800 MBps  | 3,000 |   
 
-Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 列出的值旨在作为起点，需要根据实际需求进行评估。 Azure Ultra 磁盘的优点是，可以对 IOPS 和吞吐量的值进行调整，而无需关闭 VM 或停止应用到系统的工作负载。   
+列出的值旨在作为起点，需要根据实际需求进行评估。 Azure Ultra 磁盘的优点是，可以对 IOPS 和吞吐量的值进行调整，而无需关闭 VM 或停止应用到系统的工作负载。   
 
 > [!NOTE]
 > 到目前为止，使用超高磁盘存储的存储快照不可用。 这会阻止使用 Azure 备份服务的 VM 快照
 
-### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>使用纯超高磁盘配置的生产推荐存储解决方案
-在此配置中，/hana/data 和/hana/log 卷位于同一磁盘上。 建议的值派生于 SAP 必须根据[SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中的建议认证 SAP HANA 和存储配置的 VM 类型。
+### <a name="cost-conscious-storage-solution-with-pure-ultra-disk-configuration"></a>具有纯超高磁盘配置的注重成本的存储解决方案
+在此配置中，/hana/data 和/hana/log 卷位于同一磁盘上。 建议的值派生于 SAP 必须根据[SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中的建议认证 SAP HANA 和存储配置的 VM 类型。 
+
+建议经常超出 SAP 最低要求，如本文前面所述。 列出的建议是 SAP 大小建议和不同 VM 类型提供的最大存储吞吐量之间的折衷。
 
 | VM SKU | RAM | 每个 VM I/O<br /> 吞吐量 | /Hana/data 和/log 的卷 | /hana/data 和日志 i/o 吞吐量 | /hana/data 和日志 IOPS |
 | --- | --- | --- | --- | --- | --- |
@@ -227,13 +232,13 @@ Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 列出的值旨在作�
 | M416s_v2 | 5700 GiB | 2000 MB/秒 | 7700 GB | 1，800MBps | 12,000 |  
 | M416ms_v2 | 11400 GiB | 2000 MB/秒 | 15000 GB | 1800 MBps | 12,000 |    
 
-Microsoft 还不会向公众提供 M416xx_v2 VM 类型。 列出的值旨在作为起点，需要根据实际需求进行评估。 Azure Ultra 磁盘的优点是，可以对 IOPS 和吞吐量的值进行调整，而无需关闭 VM 或停止应用到系统的工作负载。  
+列出的值旨在作为起点，需要根据实际需求进行评估。 Azure Ultra 磁盘的优点是，可以对 IOPS 和吞吐量的值进行调整，而无需关闭 VM 或停止应用到系统的工作负载。  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp 文件上的 NFS v2.0 卷
 Azure NetApp 文件提供可用于/hana/shared、/hana/data 和/hana/log 卷的本机 NFS 共享。 对/hana/data 和/hana/log 卷使用基于和的 NFS 共享需要使用版本 4.1 NFS 协议。 如果在和上基于共享，则不支持使用 NFS 协议 v3 作为/hana/data 和/hana/log 卷。 
 
 > [!IMPORTANT]
-> 不支持在 Azure NetApp 文件上实现的 NFS v3 协议用于/hana/data 和/hana/log 从功能角度来看，NFS 4.1 对于/hana/data 和/hana/log 卷是必需的。 但对于/hana/shared 卷，NFS v3 或 NFS v2.0 协议可从功能角度来使用。
+> **不**支持在 Azure NetApp 文件上实现的 NFS v3 协议用于/hana/data 和/hana/log 从功能角度来看，NFS 4.1 对于/hana/data 和/hana/log 卷是必需的。 但对于/hana/shared 卷，NFS v3 或 NFS v2.0 协议可从功能角度来使用。
 
 ### <a name="important-considerations"></a>重要注意事项
 考虑用于 SAP Netweaver 和 SAP HANA 的 Azure NetApp 文件时，请注意以下重要事项：
@@ -245,20 +250,20 @@ Azure NetApp 文件提供可用于/hana/shared、/hana/data 和/hana/log 卷的�
 - Azure NetApp 卷的吞吐量是卷配额和服务级别的功能，如[Azure NetApp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量符合 HANA 系统要求。  
 - Azure NetApp 文件提供[导出策略](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)：可控制允许的客户端、访问类型（读取 & 写入、只读等）。 
 - Azure NetApp 文件功能尚不能识别区域。 目前，azure NetApp 文件功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域中潜在的延迟影响。  
-- 将部署的虚拟机接近于 Azure NetApp 存储非常重要，以实现低延迟。 对于 SAP HANA 工作负荷低延迟是至关重要的。 与你的 Microsoft 代表合作，以确保虚拟机和 Azure NetApp 文件卷在接近邻近性时进行部署。  
+- 将部署的虚拟机接近于 Azure NetApp 存储非常重要，以实现低延迟。 
 - 用于虚拟机上的<b>sid</b>Adm 和组 `sapsys` Id 的用户 id 必须与 Azure NetApp 文件中的配置相匹配。 
 
 > [!IMPORTANT]
-> 对于 SAP HANA 工作负荷低延迟是至关重要的。 与你的 Microsoft 代表合作，以确保虚拟机和 Azure NetApp 文件卷在接近邻近性时进行部署。  
+> 对于 SAP HANA 工作负荷，低延迟是至关重要的。 与你的 Microsoft 代表合作，以确保虚拟机和 Azure NetApp 文件卷在接近邻近性时进行部署。  
 
 > [!IMPORTANT]
-> 如果<b>sid</b>Adm 的用户 id 与虚拟机和 Azure NetApp 配置之间 `sapsys` 的组 id 不匹配，则在虚拟机上装载的 Azure netapp 卷上的文件的权限将显示为 `nobody`。 [在将新系统](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)加入 Azure NetApp 文件时，请确保为<b>Sid</b>ADM 和组 `sapsys` ID 指定正确的用户 id。
+> 如果<b>sid</b>Adm 的用户 id 与虚拟机和 Azure NetApp 配置之间 `sapsys` 的组 id 不匹配，则在虚拟机上装载的 Azure netapp 卷上的文件的权限将显示为 `nobody`。 [在将新系统](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)加入 Azure NetApp 文件时，请确保为<b>Sid</b>ADM 和组 `sapsys`ID 指定正确的用户 id。
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>在 Azure NetApp 文件上调整 HANA 数据库的大小
 
 Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azure Netapp 文件的服务级别](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)中所述。 
 
-在 Azure 中设计 SAP 基础结构时，应注意 SAP 的一些最低存储要求，这些要求转换为最小吞吐量特征：
+在 Azure 中设计 SAP 基础结构时，应注意到 SAP 的一些最低存储吞吐量要求，这些要求转换为的最小吞吐量特征：
 
 - 启用读/写，/hana/log 为 250 MB/秒，大小为 1 MB i/o  
 - 对于/hana/data，为 16 MB 和 64 MB i/o 大小启用至少 400 MB/秒的读取活动  
@@ -268,7 +273,7 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
 - 高级存储层-64 MiB/秒  
 - 超存储层-128 MiB/秒  
 
-为了满足数据和日志的 SAP 最小吞吐量要求，并根据 `/hana/shared` 的准则，建议的大小如下所示：
+为了满足数据和日志的 SAP 最小吞吐量要求，并根据 `/hana/shared`的准则，建议的大小如下所示：
 
 | 数据量(Volume) | 大小<br /> 高级存储层 | 大小<br /> 超存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
@@ -276,23 +281,16 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
 | /hana/data | 6.3 TiB | 3.2 TiB | 4。1 |
 | /hana/shared | 每4个辅助角色节点最大（512 GB，1xRAM） | 每4个辅助角色节点最大（512 GB，1xRAM） | v3 或4。1 |
 
-本文中介绍的布局的 SAP HANA 配置使用的是 Azure NetApp 文件 Ultra 存储层，如下所示：
-
-| 数据量(Volume) | 大小<br /> 超存储层 | 支持的 NFS 协议 |
-| --- | --- |
-| /hana/log/mnt00001 | 2 TiB | 4。1 |
-| /hana/log/mnt00002 | 2 TiB | 4。1 |
-| /hana/data/mnt00001 | 3.2 TiB | 4。1 |
-| /hana/data/mnt00002 | 3.2 TiB | 4。1 |
-| /hana/shared | 2 TiB | v3 或4。1 |
 
 > [!NOTE]
 > 此处所述的 Azure NetApp 文件大小建议旨在满足 SAP 向其基础结构提供商提供的最低要求。 在实际的客户部署和工作负载情况下，这可能不够。 使用这些建议作为起点并根据具体工作负载的要求进行调整。  
 
+因此，可以考虑为已列出的和卷部署类似的吞吐量。 还应考虑为不同 VM Sku 的卷列出的大小，就像在 "超小型磁盘" 表中所做的那样。
+
 > [!TIP]
 > 你可以动态地重新调整 Azure NetApp 文件卷的大小，而无需 `unmount` 卷、停止虚拟机或停止 SAP HANA。 这样就可以灵活地满足应用程序预期和无法预料的吞吐量需求。
 
-有关如何使用在 SAP HANA 和中托管的[Azure 虚拟机上的备用节点在 Azure vm 上使用备用节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)部署具有备用节点的 SAP HANA 横向扩展配置的文档，请参阅 SUSE Linux Enterprise Server 上的 Azure NetApp 文件。
+有关如何使用在和中托管的[Azure 虚拟机上的备用节点在 Azure vm 上使用备用节点](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)部署具有备用节点的 SAP HANA 横向扩展配置的文档 SAP HANA，请参阅 SUSE Linux Enterprise Server 上的 Azure NetApp 文件。
 
 
 ## <a name="next-steps"></a>后续步骤

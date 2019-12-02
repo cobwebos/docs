@@ -1,32 +1,24 @@
 ---
-title: Azure 移动应用中的脱机数据同步 | Microsoft Docs
+title: 脱机数据同步
 description: Azure 移动应用脱机数据同步功能的概念参考和概述
-documentationcenter: windows
 author: conceptdev
-manager: crdun
-editor: ''
-services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: dcab966aed125e43fff49299a46a2e8bbb938d66
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388596"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668417"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
 脱机数据同步是 Azure 移动应用的客户端和服务器 SDK 功能，可让开发人员创建不需要网络连接就能正常运行的应用。

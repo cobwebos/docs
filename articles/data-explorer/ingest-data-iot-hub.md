@@ -7,30 +7,28 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028473"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667414"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入 Azure 数据资源管理器（预览版）
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-iot-hub.md)
+> * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供来自 IoT 中心的引入（数据加载），这是一个大型数据流式处理平台和 IoT 引入服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * 使用数据库名称*testdb*创建[一个测试群集和数据库](create-cluster-database-portal.md)。
-
 * 用于模拟设备的[示例应用程序](https://github.com/Azure-Samples/azure-iot-samples-csharp)和文档。
-
 * 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="create-an-iot-hub"></a>创建 Iot 中心
@@ -160,8 +158,8 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![显示引入数据结果](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)。 
-    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)。 
+    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为5分钟或 500 MB 的数据，因此可能会遇到延迟。 请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)以获取聚合选项。 
+    > * 将表配置为支持流式传输，并在响应时间中删除 lag。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,33 +1,25 @@
 ---
-title: 适用于 Xamarin.Android 应用的 Azure 移动应用入门
-description: 按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
+title: Xamarin Android 应用入门
+description: 按照本教程开始使用 Azure 移动应用进行 Xamarin Android 开发。
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 038ca0bd7690ac90470d9a739a47d0f634f1297b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1bac9ac03971765f1afc4f15ff3de6cc4b7d3883
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388478"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668672"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
-> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程说明如何向 Xamarin.Android 应用添加基于云的后端服务。 有关详细信息，请参阅 [什么是移动应用](app-service-mobile-value-prop.md)。
@@ -57,9 +49,9 @@ ms.locfileid: "72388478"
 ## <a name="run-the-xamarinandroid-app"></a>运行 Xamarin Android 应用
 1. 打开 Xamarin Android 项目。
 
-2. 转到[Azure 门户](https://portal.azure.com/)，导航到所创建的移动应用。 在 `Overview` 边栏选项卡上，查找作为移动应用程序的公共终结点的 URL。 示例-我的应用名称 "test123" 的 sitename 将 https://test123.azurewebsites.net 。
+2. 转到[Azure 门户](https://portal.azure.com/)，导航到所创建的移动应用。 在 "`Overview`" 边栏选项卡上，查找作为你的移动应用程序的公共终结点的 URL。 示例-我的应用名称 "test123" 的 sitename 将 https://test123.azurewebsites.net 。
 
-3. 打开此文件夹中 `ToDoActivity.cs` 的文件-ToDoActivity/ZUMOAPPNAME/。 应用程序名称为 `ZUMOAPPNAME`。
+3. 打开此文件夹中 `ToDoActivity.cs` 文件-xamarin/ZUMOAPPNAME/ToDoActivity。 应用程序名称为 `ZUMOAPPNAME`。
 
 4. 在 `ToDoActivity` 类中，将 `ZUMOAPPURL` 变量替换为上面的公共终结点。
 

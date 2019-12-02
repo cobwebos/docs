@@ -7,34 +7,30 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 741232bb7ed6ecf3d20711c1f6248f8e6d6215e8
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cf2a274b4f48b31739d6abba5cf87fa2a10d4ca1
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031677"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667692"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>使用为 Azure 数据资源管理器创建事件中心数据连接C#
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-event-hub.md)
+> * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-event-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用C#为 Azure 数据资源管理器创建事件中心数据连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
-
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * 创建[群集和数据库](create-cluster-database-csharp.md)
-
 * 创建[表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
-
 * [使用用于引入的数据创建事件中心](ingest-data-event-hub.md#create-an-event-hub)。 
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
@@ -93,6 +89,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | dataFormat | *.csv* | 消息的数据格式。|
 | eventHubResourceId | *资源 ID* | 包含用于引入的数据的事件中心的资源 ID。 |
 | consumerGroup | *$Default* | 事件中心的使用者组。|
-| location | 美国中部 | 数据连接资源的位置。|
+| 位置 | *美国中部* | 数据连接资源的位置。|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

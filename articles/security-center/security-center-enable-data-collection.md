@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ae645f15672693466ba87f2364c756ed164ce629
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559060"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669164"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
@@ -211,7 +211,7 @@ ms.locfileid: "74559060"
 - 存在现有的 VM 扩展<br>
     - 当监视代理安装为扩展时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储来自 VM 的安全数据，前提是已在其上安装了 "安全" 或 "securityFree" 解决方案。 在此过程中，安全中心可以将扩展版本升级到最新版本。  
     - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者，你可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。 
-    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告，请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表，确保你的操作系统受. 有关详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
+    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告，请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表，以确保你的操作系统受支持。 有关详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
  
 ### 关闭自动预配 <a name="offprovisioning"></a>
 随时可以关闭资源的自动预配，在安全策略中关闭此设置即可。 
@@ -288,7 +288,7 @@ ms.locfileid: "74559060"
 
       - 在 Windows VM 上安装时：
         
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
       - 在 Linux VM 上安装时：
         

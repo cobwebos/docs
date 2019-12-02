@@ -1,34 +1,26 @@
 ---
-title: 如何使用用于移动应用的 Node.js 后端服务器 SDK | Microsoft Docs
+title: 使用 node.js 后端服务器 SDK
 description: 了解如何使用适用于 Azure 应用服务移动应用的 Node.js 后端服务器 SDK。
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: elamalani
-editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a3883d233bd621607ec724e0c85734b508195340
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388657"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668765"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
 >
->  如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+>  如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本文提供详细的信息和示例，说明如何在 Azure 应用服务的移动应用功能中使用 Node.js 后端。
 
@@ -140,7 +132,7 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 
     保存文件。
 
-1. 在本地运行应用程序（API 在 `http://localhost:3000`）或发布到 Azure。
+1. 在本地运行应用程序（API 在 `http://localhost:3000`上提供）或发布到 Azure。
 
 ### <a name="create-node-backend-portal"></a>使用 Azure 门户创建 Node.js 后端
 

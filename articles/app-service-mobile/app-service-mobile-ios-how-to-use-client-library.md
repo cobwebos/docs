@@ -1,24 +1,17 @@
 ---
-title: 如何使用适用于 Azure 移动应用的 iOS SDK
+title: 使用 iOS SDK
 description: 如何使用适用于 Azure 移动应用的 iOS SDK
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435397"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668442"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
@@ -30,7 +23,7 @@ ms.locfileid: "72435397"
 > 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
-本指南介绍如何使用最新的 [Azure 移动应用 iOS SDK][1] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 iOS Xcode 项目。 本指南侧重于客户端 iOS SDK。 有关用于后端的服务器端 SDK，请参阅 Server SDK 操作方法。
+本指南介绍如何使用最新的[Azure 移动应用 IOS SDK][1]执行常见方案。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 iOS Xcode 项目。 本指南侧重于客户端 iOS SDK。 有关用于后端的服务器端 SDK，请参阅 Server SDK 操作方法。
 
 ## <a name="reference-documentation"></a>参考文档
 
@@ -178,7 +171,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 * 指定请求中的自定义查询字符串参数
 * 应用其他函数
 
-通过对对象调用 `MSQuery` 来执行 `readWithCompletion` 查询。
+通过对对象调用 `readWithCompletion` 来执行 `MSQuery` 查询。
 
 ## <a name="sorting"></a>如何使用 MSQuery 对数据排序
 
@@ -441,7 +434,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。
 
-若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  若要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil` （因为 GET 请求没有消息正文。）如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
+若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，请[使用 `invokeAPI`的其他重载][5]。  若要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil` （因为 GET 请求没有消息正文。）如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
 
 **Objective-C**：
 
@@ -516,13 +509,13 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-出于安全性考虑，将去除所有请求的标记。  若要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
+出于安全性考虑，将去除所有请求的标记。  若要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .net 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请使用[通知中心 api][3]。
 
 ## <a name="errors"></a>如何处理错误
 
 在调用 Azure 应用服务移动后端时，完成块包含 `NSError` 参数。 如果出错，此参数为非 nil 值。 在代码中，应检查此参数，并根据需要处理错误，如上面代码片段中所示。
 
-文件 [`<WindowsAzureMobileServices/MSError.h>`][6] 定义常量 `MSErrorResponseKey`、`MSErrorRequestKey` 和 `MSErrorServerItemKey`。 获取更多与错误相关的数据：
+文件[`<WindowsAzureMobileServices/MSError.h>`][6] `MSErrorResponseKey`、`MSErrorRequestKey`和 `MSErrorServerItemKey`定义常量。 获取更多与错误相关的数据：
 
 **Objective-C**：
 
@@ -554,7 +547,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用标识提供者 SDK 的客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
-1. 根据[如何为 Active Directory 登录配置应用服务][7]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，我们推荐重定向 URI 的格式为 `<app-scheme>://<bundle-id>`。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
+1. 根据[如何为 Active Directory 登录配置应用服务][7]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，我们推荐重定向 URI 的格式为 `<app-scheme>://<bundle-id>`。 有关详细信息，请参阅[ADAL iOS 快速入门][8]。
 2. 使用 Cocoapods 安装 ADAL。 编辑 Podfile 以包含以下定义，将 **YOUR-PROJECT** 替换为 Xcode 项目的名称：
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -568,10 +561,10 @@ if (error.code == MSErrorPreconditionFailed) {
 3. 使用终端，从包含项目的目录运行 `pod install`，并打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
-   * 将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点（使用 HTTPS 方案）。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
+   * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
 
 **Objective-C**：
 

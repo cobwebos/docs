@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8dec673408b706a92a29f418af3bef4cc05a8d2d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838216"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668578"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>将 Azure 数据资源管理器部署到虚拟网络（预览版）
 
@@ -48,7 +48,7 @@ Azure 数据资源管理器支持将群集部署到虚拟网络（VNet）中的�
 
 IP 地址的总数：
 
-| 使用 | 地址数 |
+| 用途 | 地址数 |
 | --- | --- |
 | 引擎服务 | 每个实例1个 |
 | 数据管理服务 | 2 |
@@ -64,6 +64,9 @@ IP 地址的总数：
 [Azure 服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)可让你将 azure 多租户资源保护到虚拟网络。
 若要在子网中部署 Azure 数据资源管理器群集，可以在限制 Azure 数据资源管理器子网的基础资源的情况下，设置[事件中心](/azure/event-hubs/event-hubs-about)或[事件网格](/azure/event-grid/overview)的数据连接。
 
+> [!NOTE]
+> 将 EventGrid 安装程序与[存储](/azure/storage/common/storage-introduction)和 [事件中心] 结合使用时，可以使用服务终结点将订阅中使用的存储帐户锁定到 Azure 数据资源管理器的子网，同时允许在[防火墙配置](/azure/storage/common/storage-network-security)中使用受信任的 azure 平台服务，但是事件中心无法启用服务终结点，因为它不支持受信任的[azure 平台服务](/azure/event-hubs/event-hubs-service-endpoints)。
+
 ## <a name="dependencies-for-vnet-deployment"></a>VNet 部署的依赖项
 
 ### <a name="network-security-groups-configuration"></a>网络安全组配置
@@ -72,16 +75,16 @@ IP 地址的总数：
 
 #### <a name="inbound-nsg-configuration"></a>入站 NSG 配置
 
-| **使用**   | **From**   | **如果**   | **协议**   |
+| **使用**   | **From**   | **收件人**   | 协议   |
 | --- | --- | --- | --- |
 | 管理  |[ADX 管理地址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子网：443  | TCP  |
 | 运行状况监视  | [ADX 运行状况监视地址](#health-monitoring-addresses)  | ADX 子网：443  | TCP  |
-| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | All  |
+| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | 所有  |
 | 允许 Azure 负载均衡器入站（运行状况探测）  | AzureLoadBalancer  | ADX 子网：80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>出站 NSG 配置
 
-| **使用**   | **From**   | **如果**   | **协议**   |
+| **使用**   | **From**   | **收件人**   | 协议   |
 | --- | --- | --- | --- |
 | 依赖于 Azure 存储  | ADX 子网  | 存储：443  | TCP  |
 | 依赖关系 Azure Data Lake  | ADX 子网  | AzureDataLake：443  | TCP  |
@@ -90,14 +93,14 @@ IP 地址的总数：
 | Azure Monitor 配置下载  | ADX 子网  | [Azure Monitor 配置终结点地址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
 | Active Directory （如果适用） | ADX 子网 | AzureActiveDirectory：443 | TCP |
 | 证书颁发机构 | ADX 子网 | Internet：80 | TCP |
-| 内部通信  | ADX 子网  | ADX 子网：所有端口  | All  |
+| 内部通信  | ADX 子网  | ADX 子网：所有端口  | 所有  |
 | 用于 `sql\_request` 和 `http\_request` 插件的端口  | ADX 子网  | Internet：自定义  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相关 IP 地址
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>Azure 数据资源管理器管理 IP 地址
 
-| 区域 | 地址 |
+| 地区 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 20.37.26.134 |
 | 澳大利亚 Central2 | 20.39.99.177 |
@@ -109,7 +112,7 @@ IP 地址的总数：
 | 印度中部 | 40.81.249.251 |
 | 美国中部 | 40.67.188.68 |
 | 美国中部 EUAP | 40.89.56.69 |
-| 东亚 | 20.189.74.103 |
+| 亚洲东部 | 20.189.74.103 |
 | 美国东部 | 52.224.146.56 |
 | 美国东部 2 | 52.232.230.201 |
 | 东 2 EUAP | 52.253.226.110 |
@@ -124,7 +127,7 @@ IP 地址的总数：
 | 南非北部 | 102.133.129.138 |
 | 南非西部 | 102.133.0.97 |
 | 美国中南部 | 20.45.3.60 |
-| 东南亚 | 40.119.203.252 |
+| 亚洲东南部 | 40.119.203.252 |
 | 印度南部 | 40.81.72.110 |
 | 英国南部 | 40.81.154.254 |
 | 英国西部 | 40.81.122.39 |
@@ -136,7 +139,7 @@ IP 地址的总数：
 
 #### <a name="health-monitoring-addresses"></a>运行状况监视地址
 
-| 区域 | 地址 |
+| 地区 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 191.239.64.128 |
 | 澳大利亚中部 2 | 191.239.64.128 |
@@ -148,7 +151,7 @@ IP 地址的总数：
 | 印度中部 | 23.99.5.162 |
 | 美国中部 | 168.61.212.201 |
 | 美国中部 EUAP | 168.61.212.201 |
-| 东亚 | 168.63.212.33 |
+| 亚洲东部 | 168.63.212.33 |
 | 美国东部 | 137.116.81.189 |
 | 美国东部 2 | 137.116.81.189 |
 | 美国东部 2 EUAP | 137.116.81.189 |
@@ -164,7 +167,7 @@ IP 地址的总数：
 | 南非西部 | 104.211.224.189 |
 | 美国中南部 | 23.98.145.105 |
 | 印度南部 | 23.99.5.162 |
-| 东南亚 | 168.63.173.234 |
+| 亚洲东南部 | 168.63.173.234 |
 | 英国南部 | 23.97.212.5 |
 | 英国西部 | 23.97.212.5 |
 | 美国中西部 | 168.61.212.201 |
@@ -175,7 +178,7 @@ IP 地址的总数：
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor 配置终结点地址
 
-| 区域 | 地址 |
+| 地区 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 52.148.86.165 |
 | 澳大利亚中部2 | 52.148.86.165 |
@@ -251,7 +254,7 @@ crl3.digicert.com:80
 
 例如，对于**美国西部**区域，必须定义以下 udr：
 
-| 名称 | 地址前缀 | 下一跃点 |
+| 名称 | 地址前缀 | 下一个跃点 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

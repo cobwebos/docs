@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 11ae18714d1806aac1cc4f55ce6511fc12498440
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 16f944146cf97666fd9866607ff436a49d5fb031
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800438"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667727"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器的事件网格数据连接
 
@@ -20,19 +20,16 @@ ms.locfileid: "72800438"
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager 模板](data-connection-event-grid-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用 Python 创建 Azure 数据资源管理器的事件网格数据连接。
 
 ## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * 创建[群集和数据库](create-cluster-database-csharp.md)
-
 * 创建[表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
-
 * [使用事件网格订阅创建存储帐户](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)。
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1750267b5780dcfbb227ffcd6bb98e2f77ff1511
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539288"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667439"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -20,17 +20,15 @@ ms.locfileid: "74539288"
 > * [Portal](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-event-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，你将创建一个事件中心，从 Azure 数据资源管理器连接到该中心，并查看整个系统的数据流。
 
 ## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * [一个测试群集和数据库](create-cluster-database-portal.md)。
-
 * 生成数据并将其发送到事件中心的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 将示例应用下载到系统。
-
 * 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户

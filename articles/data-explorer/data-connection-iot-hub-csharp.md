@@ -7,34 +7,30 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: bcc80000be5e061a37601f05a2a245aac031fc15
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031651"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667385"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>使用C# （预览）为 Azure 数据资源管理器创建 IoT 中心数据连接
 
 > [!div class="op_single_selector"]
-> * [门户](ingest-data-iot-hub.md)
+> * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用C#创建适用于 Azure 数据资源管理器的 IoT 中心数据连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
-
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * 创建[群集和数据库](create-cluster-database-csharp.md)
-
 * 创建[表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-
 * 设置[数据库和表策略](database-table-policies-csharp.md)（可选）
-
 * 创建[配置了共享访问策略的 IoT 中心](ingest-data-iot-hub.md#create-an-iot-hub)。
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
@@ -96,6 +92,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | iotHubResourceId | *资源 ID* | 包含用于引入的数据的 IoT 中心的资源 ID。 |
 | sharedAccessPolicyName | *iothubforread* | 共享访问策略的名称，该策略定义设备和服务连接到 IoT 中心的权限。 |
 | consumerGroup | *$Default* | 事件中心的使用者组。|
-| location | 美国中部 | 数据连接资源的位置。|
+| 位置 | *美国中部* | 数据连接资源的位置。|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]
