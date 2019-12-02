@@ -1,26 +1,26 @@
 ---
-title: 从 Azure 门户配置用于 Azure 存储加密的客户托管密钥
-description: 了解如何使用 Azure 门户配置用于 Azure 存储加密的客户托管密钥。 使用客户管理的密钥可以创建、轮换、禁用和撤消访问控制。
+title: 使用 Azure 门户将客户托管的密钥配置 Azure Key Vault 使用 Azure 存储
+description: 了解如何使用 Azure 门户使用 Azure 存储加密的 Azure Key Vault 来配置客户管理的密钥。 使用客户管理的密钥可以创建、轮换、禁用和撤消访问控制。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 74ca6f15baeeb9fe8adad4bda80e313a4b4cf03a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: b72f30a636d0177edb8b3254d14be941b2d4e6bc
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376228"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665895"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>从 Azure 门户配置用于 Azure 存储加密的客户托管密钥
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-the-azure-portal"></a>使用 Azure 门户配置 Azure 存储的客户托管密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用[Azure 门户](https://portal.azure.com/)配置包含客户管理密钥的密钥保管库。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure Key Vault 设置和检索机密](../../key-vault/quick-create-portal.md)。 
+本文说明如何使用[Azure 门户](https://portal.azure.com/)配置使用客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure Key Vault 设置和检索机密](../../key-vault/quick-create-portal.md)。
 
 > [!IMPORTANT]
 > 将客户托管的密钥用于 Azure 存储加密要求在 key vault 上设置两个属性，**软删除**并不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。

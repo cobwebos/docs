@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090818"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666420"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
 本文回答了有关 Azure 存储迁移的常见问题。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 如何创建一个脚本来将文件从一个容器复制到另一个容器？
 
@@ -38,7 +38,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **在相同区域内同一个存储帐户上的两个文件共享之间复制数据是否有任何费用？**
 
-否。 此过程不会产生任何费用。
+不。 此过程不会产生任何费用。
 
 **如何实现将整个存储帐户备份到其他存储帐户？**
 
@@ -69,7 +69,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 如何将数据从一个存储容器复制到另一个？
 
-请执行以下步骤：
+执行以下步骤：
 
 1.  在目标 blob 中创建容器（文件夹）。
 
@@ -83,7 +83,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 使用 AzCopy 将大型 .csv 文件上传到 Azure 存储。 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)和[使用 AzCopy on Linux 传输数据](storage-use-azcopy-linux.md)。
 
-**我必须每天将驱动器 D 中的日志移动到我的 Azure 存储帐户。** 如何自动执行该操作？
+**我必须每天将日志从驱动器 D 移动到我的 Azure 存储帐户。如何实现自动执行此过程吗？**
 
 你可以使用 AzCopy，并在任务计划程序中创建任务。 使用 AzCopy 批处理脚本将文件上传到 Azure 存储帐户。 有关详细信息，请参阅[如何配置和运行云服务的启动任务](../../cloud-services/cloud-services-startup-tasks.md)。
 
@@ -121,7 +121,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-请执行以下步骤：
+执行以下步骤：
 
 1.  停止托管磁盘附加到的虚拟机。
 
@@ -194,7 +194,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
 
-否。 
+不。 
 
 如何访问 Azure 文件冗余存储？
 
@@ -202,7 +202,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **如何从高级存储帐户移动到标准存储帐户？**
 
-请执行以下步骤：
+执行以下步骤：
 
 1.  创建标准存储帐户。 （或在订阅中使用现有标准存储帐户。）
 
@@ -229,7 +229,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 Azure 文件共享上不允许使用高级存储。
 
-**如何从标准存储帐户升级到高级存储帐户？如何实现从高级存储帐户降级到标准存储帐户？**
+**如何实现从标准存储帐户升级到高级存储帐户？如何实现从高级存储帐户降级到标准存储帐户？**
 
 必须创建目标存储帐户，将数据从源帐户复制到目标帐户，然后删除源帐户。 可使用 AzCopy 等工具复制数据。
 
@@ -237,7 +237,7 @@ Azure 文件共享上不允许使用高级存储。
 
 **如何实现从经典存储帐户迁移到 Azure 资源管理器存储帐户？**
 
-可以使用“Move-AzStorageAccount”cmdlet。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
+可以使用 Move-AzureStorageAccount cmdlet。 此 cmdlet 有多个步骤（验证、准备、提交）。 移动之前，可先进行验证。
 
 如果有虚拟机，则在迁移存储帐户数据之前，还需要执行其他步骤。 有关详细信息，请参阅[使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)。
 
@@ -277,13 +277,13 @@ AzCopy 安装在什么位置？
 
 -   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用以下方法之一：  
       
-    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如：  
+    - **AzCopy**：为 URL 中的存储帐户名追加 -secondary 以访问辅助终结点。 例如：  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使 "https：\//mystorageaccountname.blob.core.windows.net/images/image.gif" 显示为 "https：\//www.contoso.com/images/image.gif"？**
+**如何实现将 HTTPS 自定义域与我的存储帐户一起使用？例如，如何使 "https：\//mystorageaccountname.blob.core.windows.net/images/image.gif" 显示为 "https：\//www.contoso.com/images/image.gif"？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。

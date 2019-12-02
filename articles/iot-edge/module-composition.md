@@ -1,5 +1,5 @@
 ---
-title: 使用部署清单声明模块和路由 - Azure IoT Edge | Microsoft Docs
+title: 部署模块 & 路由部署清单-Azure IoT Edge
 description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
 manager: philmea
@@ -8,23 +8,23 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 935cdbf54360dc0e2a98936d9c589405040cd85d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 31a83d3edb1bc297fc53b089384ab940482e5b28
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457449"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665825"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
-每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可以为任意数量的进程运行多个附加模块。 使用部署清单告诉设备要安装哪些模块，以及如何将它们配置为协同工作。 
+每个 IoT Edge 设备至少运行两个模块：$edgeAgent 和 $edgeHub，它们构成了 IoT Edge 运行时。 IoT Edge 设备可为任意数量的进程运行多个其他模块。 使用部署清单告诉设备要安装哪些模块以及如何配置它们一起工作。 
 
 部署清单是一个 JSON 文档，用于描述以下内容：
 
-* **IoT Edge 代理**模块孪生，其中包含三个组件。 
-  * 在设备上运行的每个模块的容器映像。
+* **IoT Edge 代理**模块，其中包括三个组件。 
+  * 设备上运行的每个模块的容器映像。
   * 用于访问包含模块映像的专用容器注册表的凭据。
-  * 有关如何创建和管理每个模块的说明。
+  * 说明如何创建和管理每个模块。
 * **IoT Edge 中心**模块孪生：描述消息如何在模块之间流动，并最终传送到 IoT 中心。
 * （可选）任何附加模块孪生的所需属性。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74457449"
 
 定义 IoT Edge 运行时如何在部署中安装模块。 IoT Edge 代理是管理 IoT Edge 设备的安装、更新和状态报告的运行时组件。 因此，$edgeAgent 模块孪生需要所有模块的配置和管理信息。 此信息包括 IoT Edge 代理本身的配置参数。 
 
-有关可以或必须包含的属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
+有关可以或必须包含的属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 $edgeAgent 属性遵循此结构：
 
@@ -134,26 +134,26 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 每个路由需要源和接收器，但条件是可用于筛选消息的可选片断。 
 
 
-### <a name="source"></a>source
+### <a name="source"></a>Source
 
-源指定消息来自何处。 IoT Edge 可以路由来自模块或叶设备的消息。 
+源指定消息来自何处。 IoT Edge 可以从模块或叶设备路由消息。 
 
-通过 IoT SDK，模块可以使用 ModuleClient 类为其消息声明特定的输出队列。 输出队列不是必需的，但对于管理多条路由很有帮助。 叶设备可以使用 IoT SDK 的 DeviceClient 类向 IoT Edge 网关设备发送消息，就像它们将消息发送到 IoT 中心一样。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+使用 IoT Sdk，模块可以使用 ModuleClient 类为其消息声明特定的输出队列。 输出队列不是必需的，但对于管理多个路由非常有用。 叶设备可以使用 IoT Sdk 的 DeviceClient 类，以将消息发送到 IoT 中心的相同方式将消息发送到 IoT Edge 网关设备。 有关详细信息，请参阅[了解和使用 Azure IoT 中心 sdk](../iot-hub/iot-hub-devguide-sdks.md)。
 
 源属性可采用以下任何值：
 
-| source | 说明 |
+| Source | 描述 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
-| `/messages/*` | 由模块或叶设备通过某种输出或不通过任何输出发送的任何设备到云的消息 |
+| `/messages/*` | 模块通过某些输出或叶设备发送的任何设备到云的消息 |
 | `/messages/modules/*` | 由带部分输出或不带输出的模块发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/*` | 由特定模块通过某种输出或不通过任何输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/*` | 由特定模块通过某种输出发送的任何设备到云的消息 |
 | `/messages/modules/<moduleId>/outputs/<output>` | 由特定模块通过特定输出发送的任何设备到云的消息 |
 
 ### <a name="condition"></a>条件
-条件在路由声明中是可选的。 若要将所有消息从源传递到接收器，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
+条件在路由声明中是可选的。 如果要将所有消息从源传递到接收器，只需将**WHERE**子句完全省略即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
 
 在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数。 
 
@@ -176,14 +176,14 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 接收器属性可采用以下任何值：
 
-| 接收器 | 说明 |
+| 接收器 | 描述 |
 | ---- | ----------- |
 | `$upstream` | 将消息发送到 IoT 中心 |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 将消息发送到特定模块的特定输入 |
 
-IoT Edge 提供至少一次保证。 IoT Edge 中心在本地存储消息，以防路由无法将消息传送到其接收器。 例如，如果 IoT Edge 中心无法连接到 IoT 中心，或者目标模块未连接。
+IoT Edge 提供至少一次保证。 IoT Edge 中心将消息存储在本地，以防路由无法将消息传送到其接收器。 例如，如果 IoT Edge 集线器无法连接到 IoT 中心，或者目标模块未连接，则为。
 
-IoT Edge 中心会一直存储消息，直到达到在 `storeAndForwardConfiguration.timeToLiveSecs`IoT Edge 中心所需属性[的 ](module-edgeagent-edgehub.md) 属性中指定的时间。
+IoT Edge 中心将消息存储到[IoT Edge 中心所需属性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 属性中指定的时间。
 
 ## <a name="define-or-update-desired-properties"></a>定义或更新所需属性 
 
@@ -277,6 +277,6 @@ IoT Edge 中心会一直存储消息，直到达到在 `storeAndForwardConfigura
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关在 $edgeAgent 和 $edgeHub 中可以或必须包含的属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
+* 有关 $edgeAgent 和 $edgeHub 中可以或必须包含的属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 * 至此，你已了解如何使用 IoT Edge 模块，接下来请继续[了解开发 IoT Edge 模块的要求和工具](module-development.md)。

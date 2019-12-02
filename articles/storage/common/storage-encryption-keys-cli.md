@@ -1,26 +1,26 @@
 ---
-title: 从 Azure CLI 配置用于 Azure 存储加密的客户托管密钥
-description: 了解如何使用 Azure CLI 配置用于 Azure 存储加密的客户托管密钥。 使用客户管理的密钥可以创建、轮换、禁用和撤消访问控制。
+title: 使用 Azure CLI Azure 存储配置 Azure Key Vault 的客户托管密钥
+description: 了解如何使用 Azure CLI 通过 Azure Key Vault Azure 存储加密来配置客户管理的密钥。 使用客户管理的密钥可以创建、轮换、禁用和撤消访问控制。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 11/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374275"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665961"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>从 Azure CLI 配置用于 Azure 存储加密的客户托管密钥
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>使用 Azure CLI 配置 Azure 存储的客户托管密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 Azure CLI 配置使用客户托管密钥的密钥保管库。
+本文说明如何使用 Azure CLI 配置使用客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 Azure CLI 从 Azure Key Vault 设置和检索机密](../../key-vault/quick-create-cli.md)。
 
 > [!IMPORTANT]
 > 将客户托管的密钥用于 Azure 存储加密要求在 key vault 上设置两个属性，**软删除**并不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。

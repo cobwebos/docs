@@ -1,36 +1,20 @@
 ---
 title: Azure Marketplace 的 "所有发布者" 页
-description: Azure Marketplace 云合作伙伴门户中所有发布服务器的概述。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: 不推荐使用的 CPP 文章，指向 PC 文章;是 "对 Azure Marketplace 云合作伙伴门户中所有发布服务器的概述"。
+services: Azure, Marketplace, Cloud Partner Portal, Partner Center
+author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c713beaafb47b2e6481ef9358b206dbc2b2e2cf1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.author: v-chjen
+ms.openlocfilehash: eb932841d01d61b2753195de30d1b41a13242935
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821564"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665723"
 ---
 # <a name="all-publishers-page"></a>所有发布者页面
 
-[所有发布者**页面显示所有已注册的 Microsoft 云发布者列表，包括他们的发行商唯一名称和显示名称**](https://cloudpartner.azure.com/#publishers)。 可以按列对结果进行排序，也可以指定一个字符串来筛选结果。  此页还显示“添加发布者”按钮，但仅门户管理员可以启用此按钮。  选择列表中的一个发布者将会显示其配置文件。  有关详细信息，请参阅[管理发布者配置文件](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)。
-
-
-## <a name="example-page"></a>示例页
-
-下图显示了按字符串 contoso` 筛选的发布者。  
-
-![所有发布者页面](./media/all-publishers-page1.png)
-
-单击第一个条目将显示 Contoso 的配置文件页面。  只能编辑自己的发布者配置文件。
-
-![Contoso 发布者配置文件页面](./media/all-publishers-page2.png)
-
-
-## <a name="next-steps"></a>后续步骤
-
-下一步的导航菜单栏项显示[用户页面](./cpp-users-page.md)，其中列出了所有已注册的用户。 
+此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[在合作伙伴中心创建商业 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。

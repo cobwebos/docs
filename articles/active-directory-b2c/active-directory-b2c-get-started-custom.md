@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643625"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664057"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -23,7 +23,7 @@ ms.locfileid: "73643625"
 
 [自定义策略](active-directory-b2c-overview-custom.md)是定义 Azure Active Directory B2C （Azure AD B2C）租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 你还要准备好环境以添加标识提供者。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 如果还没有，请创建一个链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
 - 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，以便它可以与 Azure AD B2C 通信。
@@ -32,9 +32,9 @@ ms.locfileid: "73643625"
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 使用顶部菜单中的“目录 + 订阅”筛选器来选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
-1. 在“概述”页上选择“标识体验框架”。
+1. 使用顶部菜单中的 "**目录 + 订阅**" 筛选器选择包含 Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 在 "概述" 页上，从 "**策略**" 窗格中选择 "**标识体验框架**"。
 
 ### <a name="create-the-signing-key"></a>创建签名密钥
 
@@ -43,7 +43,7 @@ ms.locfileid: "73643625"
 1. 在“名称”中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择“创建”。
+1. 选择**创建**。
 
 ### <a name="create-the-encryption-key"></a>创建加密密钥
 
@@ -52,7 +52,7 @@ ms.locfileid: "73643625"
 1. 在“名称”中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“加密”。
-1. 选择“创建”。
+1. 选择**创建**。
 
 ### <a name="create-the-facebook-key"></a>创建 Facebook 密钥
 
@@ -63,17 +63,17 @@ ms.locfileid: "73643625"
 1. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
 1. 在 "**密钥**" 中，输入 Facebook 应用程序在 developers.facebook.com 中的*应用机密*。 此值是机密，而不是应用程序 ID。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择“创建”。
+1. 选择**创建**。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
-Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户进行注册和登录： *IdentityExperienceFramework*、web API 和*ProxyIdentityExperienceFramework*，这是一个具有委托权限的本机应用IdentityExperienceFramework 应用。 用户可以使用电子邮件地址或用户名和密码注册，以访问租户注册的应用程序，该应用程序将创建 "本地帐户"。 本地帐户只存在于你的 Azure AD B2C 租户中。
+Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户进行注册和登录： *IdentityExperienceFramework*、web API 和*ProxyIdentityExperienceFramework*，这是一个具有 IdentityExperienceFramework 应用程序的委托权限的本机应用程序。 用户可以使用电子邮件地址或用户名和密码注册，以访问租户注册的应用程序，该应用程序将创建 "本地帐户"。 本地帐户只存在于你的 Azure AD B2C 租户中。
 
 只需在 Azure AD B2C 租户中注册这两个应用程序一次。
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-若要在 Azure AD B2C 租户中注册应用程序，你可以使用当前**应用程序**体验或我们的新的统一**应用注册（预览版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
+若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
@@ -85,27 +85,27 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“Web 应用/API”。
 1. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
-1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 选择 "**应用注册（预览版）** "，然后选择 "**新注册**"。
+1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
 1. 在 "**支持的帐户类型**" 下，选择 "**仅限此组织目录中的帐户**"。
 1. 在 "**重定向 URI**" 下，选择 " **Web**"，然后输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是 Azure AD B2C 租户域名。
-1. 在 "**权限**" 下，选中 "向*管理员同意 openid 和 offline_access 权限*" 复选框。
+1. 在“权限”下，选择“授予对 openid 和 office_access 权限的管理员许可”复选框。
 1. 选择“注册”。
-1. 记录**应用程序（客户端） ID** ，以便在后面的步骤中使用。
+1. 记下“应用程序(客户端) ID”，以便在后续步骤中使用。
 
 接下来，通过添加作用域公开 API：
 
-1. 在 "**管理**" 下，选择 "**公开 API**"。
+1. 在“管理”下，选择“公开 API”。
 1. 选择 "**添加范围**"，然后选择 "**保存并继续**" 以接受默认的应用程序 ID URI。
 1. 输入以下值以创建允许在 Azure AD B2C 租户中执行自定义策略的作用域：
-    * **作用域名称**： `user_impersonation`
-    * **管理员许可显示名称**： `Access IdentityExperienceFramework`
-    * **管理员同意说明**： `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
-1. 选择**添加作用域**
+    * **范围名称**：`user_impersonation`
+    * **管理员许可显示名称**：`Access IdentityExperienceFramework`
+    * **管理员许可说明**：`Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+1. 选择“添加范围”
 
 * * *
 
@@ -117,41 +117,41 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“本机”。
 1. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
-1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 1. 选择 "**设置**"，然后选择 "**所需权限**"，然后选择 "**添加**"。
 1. 选择 "**选择 API**"，搜索并选择 " **IdentityExperienceFramework**"，然后单击 "**选择**"。
 1. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
 1. 选择 "**授予权限**"，然后选择 **"是"** 进行确认。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 选择 "**应用注册（预览版）** "，然后选择 "**新注册**"。
+1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 1. 在 "**支持的帐户类型**" 下，选择 "**仅限此组织目录中的帐户**"。
-1. 在 "**重定向 URI**" 下，使用下拉选择 "**公用客户端/本机（移动 & 桌面）** "。
+1. 在“重定向 URI”下，使用下拉选择“公共客户端/本机(移动和桌面)”。
 1. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
-1. 在 "**权限**" 下，选中 "向*管理员同意 openid 和 offline_access 权限*" 复选框。
+1. 在“权限”下，选择“授予对 openid 和 office_access 权限的管理员许可”复选框。
 1. 选择“注册”。
-1. 记录**应用程序（客户端） ID** ，以便在后面的步骤中使用。
+1. 记下“应用程序(客户端) ID”，以便在后续步骤中使用。
 
 接下来，指定应用程序应被视为公共客户端：
 
-1. 在 "**管理**" 下选择 "**身份验证**"。
-1. 选择 **"试用新体验**（如果已显示）"。
+1. 在“管理”下，选择“身份验证”。
+1. 选择“尝试新体验”（如果已显示）。
 1. 在 "**高级设置**" 下，启用 "**将应用程序视为公共客户端**" （选择 **"是"** ）。
 1. 选择“保存”。
 
 现在，将权限授予你之前在*IdentityExperienceFramework*注册中公开的 API 范围：
 
-1. 在 "**管理**" 下，选择 " **API 权限**"。
-1. 在 "**配置的权限**" 下，选择 "**添加权限**"。
+1. 在“管理”下选择“API 权限”。
+1. 在“已配置权限”下，选择“添加权限”。
 1. 选择 "**我的 api** " 选项卡，然后选择**IdentityExperienceFramework**应用程序。
 1. 在 "**权限**" 下，选择前面定义的**user_impersonation**范围。
-1. 选择“添加权限”。 按照指示，请等待几分钟，然后再继续下一步。
-1. 选择 "**授予管理员同意（你的租户名称）** "。
-1. 选择当前已登录的管理员帐户，或者使用 Azure AD B2C 租户中至少分配了*云应用程序管理员*角色的帐户登录。
+1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
+1. 选择“向(租户名称)授予管理员许可”。
+1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
 1. 选择“接受”。
-1. 选择 "**刷新**"，然后验证 "授权给 ..."同时出现在这两个作用域的**状态**下方。 传播权限可能需要几分钟时间。
+1. 选择“刷新”，然后确认两个范围的“状态”下是否均显示“已授予...”。 传播权限可能需要几分钟时间。
 
 * * *
 

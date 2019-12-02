@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279694"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664941"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>容器的 Azure Monitor 运行状况监视器配置指南
 
@@ -35,7 +35,7 @@ ms.locfileid: "74279694"
 
 ## <a name="types-of-monitors"></a>监视器类型
 
-|监视 | 说明 | 
+|监视 | 描述 | 
 |--------|-------------|
 | 单元监视器 |单元监视器测量资源或应用程序的某个方面。 这可能会检查性能计数器以确定资源的性能或其可用性。 |
 |聚合监视器 | 聚合监视器将多个监视器组合在一起，以提供单个运行状况聚合运行状况状态。 单元监视器通常在特定聚合监视器下进行配置。 例如，节点聚合监视器汇总节点的 CPU 使用率、内存使用率和节点状态的状态。
@@ -82,7 +82,7 @@ ms.locfileid: "74279694"
 |节点（节点池的父节点） |这是所有节点池的聚合监视器。 其状态基于子监视器的最差状态（即群集中存在的节点池）。 |最差 |
 |群集（节点的父节点/<br> Kubernetes 基础结构） |这是与具有最差运行状况状态的子监视器的状态相匹配的父监视器，即 kubernetes 基础结构和节点。 |最差 |
 |Kubernetes 基础结构 |此监视器报告群集的托管基础结构组件的运行状况状态。 其状态计算为子监视器状态的 "最差"，即 kube 工作负荷和 API 服务器状态。 |最差|
-|系统工作负荷 |此监视器报告 kube 工作负荷的运行状况状态。 此监视器将子监视器的状态与最差的运行状况状态（即**就绪状态监视器中**的 pod 和工作负荷中的容器）相匹配。 |最差 |
+|系统工作负荷 |此监视器报告 kube 工作负荷的运行状况状态。 此监视器与运行状况状态最差的子监视器的状态相匹配，该状态为 "**就绪" 状态**下的 "监视器" 和 "工作负荷中的容器"。 |最差 |
 |容器 |此监视器报告给定工作负荷中的容器的总体运行状况状态。 此监视器与运行状况状态最差的子监视器的状态（即 " **CPU 使用率**" 和 "**内存使用率**" 监视器）相匹配。 |最差 |
 
 ## <a name="next-steps"></a>后续步骤

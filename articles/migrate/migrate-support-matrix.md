@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: raynew
-ms.openlocfilehash: e752d52d0f792d39f417031c26d923fce07ccdf8
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13a4fbb119ae9aceb8731e53f7123375a6e5c106
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747982"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666267"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -45,18 +45,18 @@ ms.locfileid: "73747982"
 **工具** | **评估** | **迁移** 
 --- | --- | ---
 Azure Migrate 服务器评估 | 评估[VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和[物理服务器](tutorial-prepare-physical.md)。 |  不可用（NA）
-Azure Migrate 服务器迁移 | 不可用 | 迁移[VMware vm](tutorial-migrate-vmware.md)、 [hyper-v vm](tutorial-migrate-hyper-v.md)和[物理服务器](tutorial-migrate-physical-virtual-machines.md)。
-[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | 不可用 | 迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 
-[Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
+Azure Migrate 服务器迁移 | NA | 迁移[VMware vm](tutorial-migrate-vmware.md)、 [hyper-v vm](tutorial-migrate-hyper-v.md)和[物理服务器](tutorial-migrate-physical-virtual-machines.md)。
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | 迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 |  迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。
-[设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| 不可用
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | 不可用
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | 不可用 | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | 不可用
-[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | 不可用
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | 不可用 | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
-[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
-[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | 不可用
+[设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | NA
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
+[RackWare](https://www.rackwareinc.com/cloud-migration) | NA | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | NA
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | NA
 [Webapp 迁移助手](https://appmigration.microsoft.com/) | 评估 web 应用 | 迁移 web 应用。
 
 
@@ -64,7 +64,7 @@ Azure Migrate 服务器迁移 | 不可用 | 迁移[VMware vm](tutorial-migrate-v
 
 **支持** | **详细信息**
 --- | ---
-订阅 | 一个订阅中可以有多个 Azure Migrate 项目。
+Subscription | 一个订阅中可以有多个 Azure Migrate 项目。
 Azure 权限 | 你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
 VMware VM  | 在单个项目中最多评估35000个 VMware Vm。
 Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
@@ -77,8 +77,8 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government | 美国政府弗吉尼亚州
-亚太区 | 东亚或东南亚
+Azure Government | 美国弗吉尼亚州政府
+亚太 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
 加拿大 | 加拿大中部或加拿大东部

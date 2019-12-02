@@ -1,5 +1,5 @@
 ---
-title: 持续集成和持续部署 - Azure IoT Edge | Microsoft Docs
+title: 持续集成 & 持续部署-Azure IoT Edge
 description: 设置持续集成和持续部署 - Azure IoT Edge 以及 Azure DevOps、Azure Pipelines
 author: shizn
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 85f77d1132af63681ee92cfd2bde82a71d8ed999
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 463de1f49ad8fd21c355395bec3a55d9d40474e6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457243"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666352"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -21,13 +21,13 @@ ms.locfileid: "74457243"
 
 ![示意图 - 用于开发和生产的 CI 和 CD 分支](./media/how-to-ci-cd/cd.png)
 
-在本文中，你将学习如何使用 Azure Pipelines 的内置 Azure IoT Edge 任务为 IoT Edge 解决方案创建两个管道。 可以在 Azure IoT Edge 任务中使用四项操作。
-   - **Azure IoT Edge - 生成模块映像**使用 IoT Edge 解决方案代码并生成容器映像。
-   - **Azure IoT Edge - 推送模块映像**将模块映像推送到指定的容器注册表。
-   - **Azure IoT Edge - 生成部署清单**使用 deployment.template.json 文件和变量来生成最终的 IoT Edge 部署清单文件。
-   - **Azure IoT Edge - 部署到 IoT Edge 设备**用于创建 IoT Edge 部署，此类部署可部署到单个/多个 IoT Edge 设备。
+在本文中，你将学习如何使用 Azure Pipelines 的内置 Azure IoT Edge 任务为 IoT Edge 解决方案创建两个管道。 Azure IoT Edge 任务可以使用四种操作。
+   - **Azure IoT Edge 生成模块映像**采用 IoT Edge 解决方案代码，并生成容器映像。
+   - **Azure IoT Edge 推送模块映像**将模块映像推送到指定的容器注册表。
+   - **Azure IoT Edge 生成部署清单**使用一个部署. 模板 json 文件和变量，然后生成最终的 IoT Edge 部署清单文件。
+   - **Azure IoT Edge 部署到 IoT Edge 设备**有助于创建 IoT Edge 为单/多 IoT Edge 设备的部署。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure Repos 存储库。 如果没有存储库，可[在项目中创建一个新的 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav)。
 * 提交 IoT Edge 解决方案并将其推送到存储库。 如果要为测试本文创建新的示例解决方案，请按照[在 Visual Studio Code 中开发和调试模块](how-to-vs-code-develop-module.md)或[在 Visual Studio 中开发和调试 C# 模块](how-to-visual-studio-develop-csharp-module.md)中的步骤进行操作。
@@ -49,7 +49,7 @@ ms.locfileid: "74457243"
 >
 >有关详细信息，请参阅[创建生成管道](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)。
 
-1. 登录 Azure DevOps 组织 (**https:\//dev.azure.com/{your organization}/** ) 并打开包含 IoT Edge 解决方案存储库的项目。
+1. 登录到 Azure DevOps 组织（**https：\//dev.azure.com/{your 组织}/** ），并打开包含 IoT Edge 解决方案存储库的项目。
 
    在本文中，我们创建了名为“IoTEdgeRepo”的存储库。 该存储库包含“IoTEdgeSolution”，其中包含名为“filtermodule”的模块代码。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "74457243"
 
    * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)。
 
-   * 如果想在平台 arm32v7 或 arm64 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)。
+   * 如果要在平台 arm32v7 或 arm64 for Linux 容器中生成模块，需在[linux 上设置自托管代理](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)。
     
      ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "74457243"
 
    ![添加 Azure IoT Edge 任务](./media/how-to-ci-cd/add-iot-edge-task.png)
 
-   添加所有四个任务后，代理作业如下所示：
+   添加四个任务后，代理作业如以下示例所示：
     
    ![生成管道中的三个任务](./media/how-to-ci-cd/add-tasks.png)
 
-6. 选择第一个“Azure IoT Edge”任务进行编辑。 此任务通过指定的目标平台生成解决方案中的所有模块。
+6. 选择第一个“Azure IoT Edge”任务进行编辑。 此任务用指定的目标平台生成解决方案中的所有模块。
 
    * **显示名称**：接受默认**Azure IoT Edge 生成模块映像**。
    * **操作**：接受默认**生成模块映像**。 
@@ -105,17 +105,17 @@ ms.locfileid: "74457243"
 
    如果有多个用于托管模块映像的容器注册表，则需重复此任务，选择其他容器注册表，并使用高级设置中的“绕过模块”来绕过不适用于此特定注册表的映像。
 
-8. 选择“复制文件”任务进行编辑。 使用此任务将文件复制到项目暂存目录。
+8. 选择 "**复制文件**" 任务进行编辑。 使用此任务可将文件复制到项目暂存目录。
 
    * **显示名称**：将文件复制到：放置文件夹。
-   * **内容**：在此部分中放置两行，`deployment.template.json` 和 `**/module.json`。 这两类文件是生成 IoT Edge 部署清单所需的输入。 需复制到项目暂存文件夹并进行发布，用于发布管道。
-   * **目标文件夹**：将变量放 `$(Build.ArtifactStagingDirectory)`。 请参阅[生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)，了解相关说明。
+   * **内容**：在此部分中放置两行，`deployment.template.json` 和 `**/module.json`。 这两种类型的文件是 IoT Edge 部署清单生成的输入。 需要复制到项目暂存文件夹并为发布管道发布。
+   * **目标文件夹**：将变量放 `$(Build.ArtifactStagingDirectory)`。 有关说明，请参阅[生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)。
 
-9. 选择“发布生成项目”任务进行编辑。 提供到任务的项目暂存目录路径，使该路径可以发布到发布管道。
+9. 选择“发布生成项目”任务进行编辑。 提供任务的项目暂存目录路径，以便可以将路径发布到发布管道。
    
    * **显示名称**：发布项目： drop。
-   * **要发布的路径**：将变量放入 `$(Build.ArtifactStagingDirectory)`。 请参阅[生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)，了解相关说明。
-   * **项目名称**：放置。
+   * **要发布的路径**：将变量放入 `$(Build.ArtifactStagingDirectory)`。 有关说明，请参阅[生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables)。
+   * **项目名称**： drop。
    * **项目发布位置**： Azure Pipelines。
 
 
@@ -130,7 +130,7 @@ ms.locfileid: "74457243"
 ## <a name="configure-continuous-deployment"></a>配置持续部署
 在本部分中，会创建一个发布管道，此管道配置为在生成管道放置项目时自动运行，并且它将在 Azure Pipelines 中显示部署日志。
 
-创建新管道，然后添加新阶段 
+创建新管道并添加新阶段 
 
 1. 在“发布”选项卡上，选择“+ 新键管道”。 或者，如果已有发布管道，则选择“+ 新建”按钮并选择“+ 新建发布管道”。  
 
@@ -140,7 +140,7 @@ ms.locfileid: "74457243"
 
     ![从空作业开始](./media/how-to-ci-cd/start-with-empty-job.png)
 
-3. 新版本管道初始化为一个阶段，称为“阶段 1”。 将阶段 1 重命名为“dev”，并将其视为测试环境。 通常，连续部署管道有多个阶段，包括**开发**、**过渡**和**生产**。你可以根据 DevOps 的做法创建更多。 重命名后关闭阶段详细信息窗口。 
+3. 新版本管道初始化为一个阶段，称为“阶段 1”。 将阶段1重命名为 "**开发**"，并将其视为测试环境。 通常，连续部署管道有多个阶段，包括**开发**、**过渡**和**生产**。你可以根据 DevOps 的做法创建更多。 重命名后关闭阶段详细信息窗口。 
 
 4. 将发布链接到生成管道发布的生成项目。 在项目区域中，单击“添加”。
 
@@ -154,25 +154,25 @@ ms.locfileid: "74457243"
 
    ![配置“持续部署”触发器](./media/how-to-ci-cd/add-a-trigger.png)
 
-7. “dev”阶段预先配置了一个作业和零个任务。 从管道菜单中，选择“任务”，然后选择“dev”阶段。  选择作业和任务计数以在此阶段配置任务。
+7. **开发**阶段预配置了一个作业和零个任务。 从 "管道" 菜单中选择 "**任务**"，然后选择 "**开发**阶段"。  选择作业和任务计数以在此阶段配置任务。
 
-    ![配置 dev 任务](./media/how-to-ci-cd/view-stage-tasks.png)
+    ![配置开发任务](./media/how-to-ci-cd/view-stage-tasks.png)
 
-8. 在 **dev** 阶段，会看到默认的“代理作业”。 可配置有关代理作业的详细信息，但部署任务对平台不敏感，因此可在“代理池”（或你自己管理的任何其他代理）中使用“托管 VS2017”或“托管 Ubuntu 1604”。 
+8. 在**开发**阶段，应会看到默认**代理作业**。 可配置有关代理作业的详细信息，但部署任务对平台不敏感，因此可在“代理池”（或你自己管理的任何其他代理）中使用“托管 VS2017”或“托管 Ubuntu 1604”。 
 
-9. 选择加号 ( **)，添加两个任务+** 。 搜索并添加“Azure IoT Edge”两次。
+9. 选择加号（ **+** ）以添加两个任务。 搜索并添加两次**Azure IoT Edge** 。
 
-    ![添加 dev 任务](./media/how-to-ci-cd/add-task-qa.png)
+    ![为开发人员添加任务](./media/how-to-ci-cd/add-task-qa.png)
 
-10. 选择第一个 **Azure IoT Edge** 任务，并使用以下值对其进行配置：
+10. 选择第一个**Azure IoT Edge**任务并对其配置以下值：
 
     * **显示名称**：当操作字段更改时，显示名称自动更新。 
     * **操作**：使用下拉列表选择 "**生成部署清单**"。 更改操作值还会更新要匹配的任务显示名称。
-    * **template json file**： Put 路径 `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`。 路径从生成管道发布。
+    * **template json file**： Put 路径 `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`。 该路径从生成管道发布。
     * **默认平台**：生成模块映像时，请选择相同的值。
-    * **输出路径**：放置路径 `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`。 此路径是最终的 IoT Edge 部署清单文件。
+    * **输出路径**：放置路径 `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`。 此路径是最后一个 IoT Edge 部署清单文件。
 
-    这些配置有助于替换 `deployment.template.json` 文件中的模块映像 URL。 “生成部署清单”也有助于将变量替换为在 `deployment.template.json` 文件中定义的具体值。 在 VS/VS Code 中，你是在 `.env` 文件中指定实际值。 在 Azure Pipelines 中，你可以在 "释放管道变量" 选项卡中设置值。移动到 "变量" 选项卡，并按如下所示配置名称和值。
+    这些配置有助于替换 `deployment.template.json` 文件中的模块图像 Url。 **生成部署清单**还有助于将变量替换为在 `deployment.template.json` 文件中定义的准确值。 在 VS/VS Code 中，您将在 `.env` 文件中指定实际值。 在 Azure Pipelines 中，你可以在 "释放管道变量" 选项卡中设置值。移动到 "变量" 选项卡，并按如下所示配置名称和值。
 
     * **ACR_ADDRESS**： Azure 容器注册表地址。 
     * **ACR_PASSWORD**： Azure 容器注册表密码。
@@ -182,7 +182,7 @@ ms.locfileid: "74457243"
 
     ![配置发布管道的变量](./media/how-to-ci-cd/configure-variables.png)
 
-10. 选择第二个 **Azure IoT Edge** 任务，并使用以下值对其进行配置：
+10. 选择第二个**Azure IoT Edge**任务并对其配置以下值：
 
     * **显示名称**：当操作字段更改时，显示名称自动更新。 
     * **操作**：使用下拉列表选择 "**部署到 IoT Edge 设备**"。 更改操作值还会更新要匹配的任务显示名称。
@@ -190,8 +190,8 @@ ms.locfileid: "74457243"
     * **Iot 中心名称**：选择 iot 中心。 
     * **选择 "单一/多设备**"：选择是否希望发布管道部署到一个或多个设备。 
       * 如果部署到单个设备，请输入“IoT Edge设备 ID”。 
-      * 如果要部署到多个设备，请指定设备“目标条件”。 目标条件是用于在 IoT 中心匹配一组 IoT Edge 设备的筛选器。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 在高级设置中更新“IoT Edge 部署 ID”和“IoT Edge 部署优先级”。 有关为多个设备创建部署的详细信息，请参阅[了解 IoT Edge 自动部署](module-deployment-monitoring.md)。
-    * 展开“高级设置”，选择“IoT Edge 部署 ID”，然后放置变量 **。** `$(System.TeamProject)-$(Release.EnvironmentName)` 这样会将项目和发布名称映射为你的 IoT Edge 部署 ID。
+      * 如果要部署到多个设备，请指定设备“目标条件”。 目标条件是一个筛选器，用于匹配 IoT 中心内一组 IoT Edge 设备。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 在高级设置中更新“IoT Edge 部署 ID”和“IoT Edge 部署优先级”。 有关为多个设备创建部署的详细信息，请参阅[了解 IoT Edge 自动部署](module-deployment-monitoring.md)。
+    * 展开 "高级设置"，选择 " **IoT Edge 部署 ID**"，将变量 `$(System.TeamProject)-$(Release.EnvironmentName)`。 这会将项目和发布名称映射为你的 IoT Edge 部署 ID。
 
 11. 选择“保存”，将更改保存到新发布管道。 从菜单中选择“管道”，返回管道视图。 
     
@@ -205,21 +205,21 @@ ms.locfileid: "74457243"
 
     ![手动触发器](./media/how-to-ci-cd/manual-trigger.png)
 
-3. 选择生成作业以查看其进度。 如果生成管道成功完成，则会触发到“dev”阶段的发布。 
+3. 选择生成作业以查看其进度。 如果生成管道已成功完成，则会触发发布到**开发**阶段。 
 
     ![生成日志](./media/how-to-ci-cd/build-logs.png)
 
-4. **dev** 发布成功以后，会创建 IoT Edge 部署，部署到目标 IoT Edge 设备。
+4. 成功的**开发**版本创建了 IoT Edge 部署到目标 IoT Edge 设备。
 
-    ![发布到 dev](./media/how-to-ci-cd/pending-approval.png)
+    ![发布到开发](./media/how-to-ci-cd/pending-approval.png)
 
-5. 单击 **dev** 阶段即可查看发布日志。
+5. 单击 "**开发**阶段" 以查看发布日志。
 
-    ![发布日志](./media/how-to-ci-cd/release-logs.png)
+    ![版本日志](./media/how-to-ci-cd/release-logs.png)
 
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关 IoT Edge DevOps 最佳做法示例，请参阅[用于 IoT Edge 的 Azure DevOps 项目](how-to-devops-project.md)
+* IoT Edge [Azure DevOps 项目中的](how-to-devops-project.md)DevOps 最佳实践示例 IoT Edge
 * 在[了解单设备 IoT Edge 部署或大规模 IoT Edge 部署](module-deployment-monitoring.md)中了解 IoT Edge 部署
 * 阅读[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，详细了解创建、更新或删除部署的步骤。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: e194b7070d338e9a5c56e9f0cc913f6e8b20bb52
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545700"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665638"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -41,6 +41,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 美国中西部
 * 美国中北部
 * 美国东部
+* 美国东部 2
 * 日本东部
 * 亚洲东南部
 * 澳大利亚东南部

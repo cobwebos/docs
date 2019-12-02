@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cd26ed446ce676bcec85d8e413d3ec37ac236869
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: f994f4ec6d41fa0aab37e36d713eaefb22e85b28
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521990"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665045"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>导出安全警报和建议（预览）
 
-Azure 安全中心生成详细的安全警报和建议。 可以在门户中或通过编程工具查看这些项。 你可能还需要导出此信息，或将其发送到你环境中的其他监视工具。 
+Azure 安全中心生成详细的安全警报和建议。 可以在门户中或通过编程工具查看它们。 你可能还需要导出此信息，或将其发送到你环境中的其他监视工具。 
 
 本文介绍了一套（预览版）工具，通过这些工具，您可以手动或以持续的连续方式导出警报和建议。
 
@@ -73,6 +73,29 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 安全警报和建议分别存储在*SecurityAlert*和*SecurityRecommendations*表中。 包含这些表的 Log Analytics 解决方案的名称取决于你是在 "免费" 层还是 "标准" 级别（请参阅[定价](security-center-pricing.md)）： Security 或 SecurityCenterFree。
 
 ![Log Analytics 中的 * SecurityAlert * 表](./media/continuous-export/log-analytics-securityalert-solution.png)
+
+###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>在 Azure Monitor 中查看导出的安全警报和建议
+
+在某些情况下，你可以选择在[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)中查看导出的安全警报和/或建议。 
+
+Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标警报以及基于 Log Analytics 工作区查询的自定义警报。
+
+若要在 Azure Monitor 中查看安全中心的警报和建议，请根据 Log Analytics 查询（日志警报）配置警报规则：
+
+1. 在 Azure Monitor 的 "**警报**" 页中，单击 "**新建警报规则**"。
+
+    ![Azure Monitor 的 "警报" 页](./media/continuous-export/azure-monitor-alerts.png)
+
+1. 在 "创建规则" 页中，配置新规则（与在 Azure Monitor 中配置[日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)的方式相同）：
+
+    * 对于 "**资源**"，请选择要向其中导出安全警报和建议的 "Log Analytics" 工作区。
+
+    * 对于 "**条件**"，选择 "**自定义日志搜索**"。 在出现的页中，配置查询、lookback 周期和频率时间段。 在搜索查询中，你可以键入*SecurityAlert*或*SecurityRecommendation* ，以在你启用连续导出到 Log Analytics 功能时查询安全中心持续导出到的数据类型。 
+    
+    * 还可以配置要触发的[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 操作组可以触发电子邮件发送、ITSM 票证、Webhook 等。
+    ![Azure Monitor 预警规则](./media/continuous-export/azure-monitor-alert-rule.png)
+
+你现在可以在 Azure Monitor 警报中看到新的 Azure 安全中心警报或建议（具体取决于你的配置），并自动触发操作组（如果已提供）。
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>手动一次性导出安全警报
 

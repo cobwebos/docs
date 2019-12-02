@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561474"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666149"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限
 
@@ -103,19 +103,7 @@ Azure 标识客户端库会在运行时读取三个环境变量中的值，以�
 
 有关详细信息，请参阅[在门户中为 Azure 应用创建标识](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-## <a name="install-client-library-packages"></a>安装客户端库包
-
-本文中的示例使用最新版本的适用于 Blob 存储的 Azure 存储客户端库。 若要安装该包，请从 NuGet 包管理器控制台运行以下命令：
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-本文中的示例还使用最新版本的适用于[.net 的 Azure 标识客户端库](https://www.nuget.org/packages/Azure.Identity/)通过 Azure AD 凭据进行身份验证。 若要安装该包，请从 NuGet 包管理器控制台运行以下命令：
-
-```powershell
-Install-Package Azure.Identity
-```
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
 

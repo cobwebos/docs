@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 9c3f054a1bae745e4ee7ce9e3bddca3c9bf31083
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535998"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664159"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
 
@@ -204,7 +204,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ![高级](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-如果需要，请将**内核**
+如果需要，请删除或升级**内核**
 ![高级](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 

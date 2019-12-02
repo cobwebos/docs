@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/29/2019
 ms.author: juliako
-ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839143"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666471"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -31,7 +31,7 @@ ms.locfileid: "73839143"
 
 ## <a name="uploading-considerations-and-limitations"></a>上传注意事项和限制
  
-- 视频的名称长度不得超过80个字符。
+- 视频的名称长度不得超过 80 个字符。
 - 基于 URL 上传视频时（首选），终结点必须通过 TLS 1.2 （或更高版本）进行保护。
 - 带有 URL 选项的上传大小限制为30GB。
 - 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
@@ -61,7 +61,7 @@ ms.locfileid: "73839143"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|说明|
+        |名称|描述|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
@@ -69,7 +69,7 @@ ms.locfileid: "73839143"
 - 在视频中标识的人：
   - 属性
     
-      |名称|说明|
+      |名称|描述|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
@@ -87,9 +87,10 @@ ms.locfileid: "73839143"
 
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
 
-- `Default` - 使用音频和视频编制见解的索引和提取见解
 - `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
+- `Default` - 使用音频和视频编制见解的索引和提取见解
 - `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
+- 仅使用视频 `VideoOnly` 索引和提取见解 
 
 价格取决于所选索引编制选项。  
 
@@ -285,7 +286,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|说明|
+|状态代码|ErrorType（在响应正文中）|描述|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|
