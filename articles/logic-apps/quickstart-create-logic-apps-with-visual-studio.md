@@ -119,7 +119,7 @@ ms.locfileid: "73796892"
    | 用户帐户 | Fabrikam <br> sophia-owen@fabrikam.com | 登录 Visual Studio 时使用的帐户 |
    | **订阅** | 即用即付 <br> (sophia-owen@fabrikam.com) | Azure 订阅的名称以及关联的帐户 |
    | **资源组** | MyLogicApp-RG <br> （美国西部） | 用于存储和部署逻辑应用资源的 Azure 资源组和位置 |
-   | **位置** | 与资源组相同  | 用于部署逻辑应用的位置类型和特定位置。 位置类型可以是 Azure 区域，也可以是现有的[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>对于本快速入门，请将“位置类型”设置为“区域”，并将“位置”设置为“与资源组相同” ** **。 <p>**注意**：创建资源组项目后，可以[更改位置类型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置类型会以不同的方式影响逻辑应用。 |
+   | **位置** | **与资源组相同** | 用于部署逻辑应用的位置类型和特定位置。 位置类型可以是 Azure 区域，也可以是现有的[集成服务环境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>对于本快速入门，请将“位置类型”设置为“区域”，并将“**位置**”设置为“**与资源组相同**”。 <p>**注意**：创建资源组项目后，可以[更改位置类型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置类型会以不同的方式影响逻辑应用。 |
    ||||
 
 1. 逻辑应用设计器会打开一个页面，其中显示了介绍视频和常用的触发器。 向下滚动，越过视频和触发器，找到“模板”  ，然后选择“空白逻辑应用”  。

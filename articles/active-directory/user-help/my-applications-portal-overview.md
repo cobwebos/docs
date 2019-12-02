@@ -37,7 +37,7 @@ ms.locfileid: "73573818"
 |------|------------|
 | [访问和使用“我的应用”（预览）门户中的应用](my-applications-portal-access.md) | 说明如何根据设备访问和使用“我的应用”  Web 门户，以便查看和启动组织的基于云的应用。 |
 | [访问和使用“我的应用”（预览）门户中的工作区](my-applications-portal-workspaces.md) | 说明如何使用“我的应用”Web 门户将基于云的应用组织到组织的类别中  。 |
-| [在“我的应用”（预览）门户中编辑或撤销应用程序权限](my-applications-portal-permissions-saved-accounts.md) | 说明如何在“我的应用”Web 门户中查看和管理应用权限以及保存的帐户凭据** **。 |
+| [在“我的应用”（预览）门户中编辑或撤销应用程序权限](my-applications-portal-permissions-saved-accounts.md) | 说明如何在“**我的应用**”Web 门户中查看和管理应用权限以及保存的帐户凭据。 |
 
 ## <a name="related-articles"></a>相关文章
 
