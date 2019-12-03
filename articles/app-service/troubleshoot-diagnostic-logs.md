@@ -1,23 +1,16 @@
 ---
-title: 为应用启用诊断日志记录 - Azure 应用服务
+title: 启用诊断日志记录
 description: 了解如何启用诊断日志记录和将检测添加到应用程序中，以及如何访问由 Azure 记录的信息。
-services: app-service
-author: cephalin
-manager: gwallace
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/17/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558569"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684255"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述

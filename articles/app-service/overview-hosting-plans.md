@@ -1,30 +1,21 @@
 ---
-title: 应用服务计划概述 - Azure | Microsoft Docs
-description: 了解针对 Azure 应用服务的应用服务计划的工作原理，以及如何利用它们进行管理。
+title: 应用服务计划
+description: 了解应用服务计划如何在 Azure App Service 中工作，如何向客户收取费用，以及如何根据需要进行缩放。
 keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应用服务计划, 应用服务成本
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470241"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672282"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
-在应用服务中，应用在应用服务计划中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
+在应用服务中，应用在_应用服务计划_中运行。 应用服务计划为要运行的 Web 应用定义一组计算资源。 这些计算资源类似于传统 Web 托管方案中的[_服务器场_](https://wikipedia.org/wiki/Server_farm)。 可将一个或多个应用配置为在相同的计算资源中（或相同的应用服务计划中）运行。
 
 在特定的区域（例如“西欧”）中创建应用服务计划时，将在该区域中为该计划创建一组计算资源。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。 每个应用服务计划定义：
 
@@ -46,7 +37,7 @@ ms.locfileid: "73470241"
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> 与“标准”层相比，新的“高级 V2”层提供 **Dv2 系列 VM**，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。[](../virtual-machines/windows/sizes-general.md#dv2-series) **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”层中提供的所有功能。
+> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/windows/sizes-general.md#dv2-series)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。 **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”层中提供的所有功能。
 >
 > 类似于其他专用层，以下三种 VM 大小可用于此层：
 >
@@ -77,7 +68,7 @@ ms.locfileid: "73470241"
 除“免费”层外，应用服务计划会根据所用的计算资源量产生小时费用。
 
 - 在“共享”层中，每个应用遵循 CPU 分钟配额，因此，每个应用会根据 CPU 配额产生小时费用。
-- 在专用计算层（“基本”、“标准”、“高级”、“高级 V2”）中，应用服务计划定义了应用可缩放到的 VM 实例数，因此，应用服务计划中的每个 VM 实例会产生小时费用。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
+- 在专用计算层（"**基本**"、"**标准**"、"**高级**"、" **PremiumV2**"）中，应用服务计划定义了应用扩展到的 vm 实例数，因此，应用服务计划中的_每个 vm 实例_都按小时计费。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
 - 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色按小时计费。 此外，运行应用服务环境本身也会产生一笔基本的小时费用。
 
 使用随附的应用服务功能（配置自定义域、SSL 证书、部署槽位、备份等）不会产生费用。 例外情况包括：
@@ -110,7 +101,7 @@ ms.locfileid: "73470241"
 在以下情况下，请将应用隔离到新应用服务计划中：
 
 - 该应用占用大量资源。
-- 想要独立于现有计划中的其他应用缩放该应用。
+- 你想要独立于现有计划中的其他应用缩放应用。
 - 该应用需要其他地理区域中的资源。
 
 这样一来，可以为应用分配新的资源集，并更好地控制应用。

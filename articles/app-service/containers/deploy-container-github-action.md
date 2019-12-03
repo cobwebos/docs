@@ -1,24 +1,17 @@
 ---
-title: 使用 GitHub 操作从 CI/CD 管道部署容器-Azure App Service |Microsoft Docs
-description: 了解如何使用 GitHub 操作将容器部署到应用服务
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: GitHub 操作中的自定义容器 CI/CD
+description: 了解如何使用 GitHub 操作通过 CI/CD 管道将自定义 Linux 容器部署到应用服务。
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620231"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671808"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
 
@@ -71,7 +64,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 1. 在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 "> 添加新密钥**
 
-2. 将以下 `az cli` 命令的内容粘贴为 "机密变量" 的值。 例如，`AZURE_CREDENTIALS`。
+2. 将以下 `az cli` 命令的内容粘贴为 "机密变量" 的值。 例如，`AZURE_CREDENTIALS` 。
 
     
     ```azurecli
@@ -136,7 +129,7 @@ jobs:
 | **槽名称** | 可有可无输入生产槽以外的现有槽 |
 | **images** | 请求指定完全限定的容器映像名称。 例如，"myregistry.azurecr.io/nginx:latest" 或 "python： 3.7.2-alpine/"。 对于多容器应用程序，可以提供多个容器映像名称（多行分隔） |
 | **配置-文件** | 可有可无Docker 合成文件的路径。 应为完全限定的路径或相对于默认工作目录。 对于多容器应用是必需的。 |
-| **容器-命令** | 可有可无输入启动命令。 例如， dotnet run 或 dotnet filename .dll |
+| **容器-命令** | 可有可无输入启动命令。 对于 ex dotnet run 或 dotnet filename .dll |
 
 下面是用于生成 node.js 应用并将其部署到应用服务中的自定义容器的示例工作流。
 

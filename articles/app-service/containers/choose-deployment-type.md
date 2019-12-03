@@ -1,33 +1,25 @@
 ---
-title: 部署自定义映像、多容器或内置映像 - Azure 应用服务 | Microsoft Docs
-description: 对于 Linux 上的应用服务，如何在自定义 Docker 容器部署、多容器和内置应用程序框架之间做出选择
+title: Linux 容器的部署选项
+description: 在 Linux 上的应用服务的自定义 Docker 容器部署、多容器和内置应用程序框架之间做出决定。
 keywords: azure 应用服务, web 应用, linux, oss
-services: app-service
-documentationCenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+author: msangapu-msft
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c4025e393c196fb98455bac26e94e5f252840b9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066794"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687516"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>自定义映像、多容器还是内置平台映像？
 
 [Linux 上 的应用服务](app-service-linux-intro.md)提供了三种不同的方法来获取发布到 Web 的应用程序：
 
 - **自定义映像部署**：将应用 Docker 化为 Docker 映像，映像中包含可运行包中的所有文件和依赖项。
-- **多容器部署**：使用 Docker Compose 配置文件跨多个容器 "docker 化" 应用。
+- **多容器部署**：使用 Docker Compose 配置文件在多个容器之间 "docker 化" 应用。
 - **使用内置平台映像的应用部署**：我们的内置平台映像包含常见 Web 应用运行时和依赖项，如 Node 和 PHP。 使用任意一种 [Azure App Service 部署方法](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)将应用部署到 Web 应用的存储，然后使用内置平台映像运行应用。
 
 ## <a name="which-method-is-right-for-your-app"></a>你的应用适合哪种方法？ 
@@ -45,13 +37,13 @@ ms.locfileid: "70066794"
 
 ## <a name="next-steps"></a>后续步骤
 
-自定义容器:
+自定义容器：
 * [运行自定义容器](quickstart-docker-go.md)
 
-多容器:
+多容器：
 * [创建多容器应用](quickstart-multi-container.md)
 
-以下文章介绍了在 Linux 上使用内置平台映像的应用服务入门:
+以下文章介绍了在 Linux 上使用内置平台映像的应用服务入门：
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](quickstart-php.md)

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720012"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688078"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
 
@@ -28,7 +28,7 @@ Active Directory 用户可以使用其域凭据登录到群集节点。 他们�
 
 ## <a name="access-the-ambari-management-page"></a>访问 Ambari 管理页
 
-要访问 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 上的 Ambari 管理页面，请浏览到 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** 。 输入创建群集时定义的群集管理员用户名和密码。 接下来，在 Ambari 仪表板中，选择“管理”菜单下面的“管理 Ambari”：
+若要转到[Apache Ambari WEB UI](hdinsight-hadoop-manage-ambari.md)上的**Ambari 管理页**，请浏览到 `https://CLUSTERNAME.azurehdinsight.net`。 输入创建群集时定义的群集管理员用户名和密码。 接下来，在 Ambari 仪表板中，选择“管理”菜单下面的“管理 Ambari”：
 
 ![Apache Ambari 仪表板管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +46,7 @@ Active Directory 用户可以使用其域凭据登录到群集节点。 他们�
 
 ### <a name="add-users-through-powershell"></a>通过 PowerShell 添加用户
 
-使用适当的值替换 `CLUSTERNAME`，`NEWUSER`，并 `PASSWORD` 来编辑下面的变量。
+使用适当的值替换 `CLUSTERNAME`、`NEWUSER`和 `PASSWORD`，以编辑以下变量。
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +135,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>通过卷添加用户
 
-使用适当的值替换 `CLUSTERNAME`，`ADMINPASSWORD`，`NEWUSER`，并 `USERPASSWORD` 来编辑下面的变量。 此脚本设计为与 bash 一起执行。 在 Windows 命令提示符下，需要进行少许修改。
+使用适当的值替换 `CLUSTERNAME`、`ADMINPASSWORD`、`NEWUSER`和 `USERPASSWORD` 来编辑下面的变量。 此脚本设计为与 bash 一起执行。 在 Windows 命令提示符下，需要进行少许修改。
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -240,7 +240,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 ![Apache Ambari 角色阻止视图](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
-### <a name="list-view"></a>列表视图
+### <a name="list-view"></a>“列表”视图
 
 “列表”视图提供两种类别的快速编辑功能：“用户”和“组”。
 
@@ -248,7 +248,7 @@ Ambari 随附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
     ![Apache Ambari 角色列表视图-用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-*  “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[在启用了 ESP 的情况下创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)。
+* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[在启用了 ESP 的情况下创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)。
 
     ![Apache Ambari 角色列表视图-组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

@@ -1,25 +1,22 @@
 ---
-title: 从 Linux 上的 Azure 存储提供内容 - 应用服务
-description: 如何从 Linux 上的应用服务中的 Azure 存储配置并提供内容。
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: 在 Linux 上附加自定义存储容器
+description: 了解如何在 Azure App Service 中将自定义网络共享附加到 Linux 容器。 在应用之间共享文件、远程管理静态内容和本地访问等。
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018279"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671788"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>将 Azure 存储容器附加到 Linux 容器
 
-本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
+本指南演示如何使用[Azure 存储](/azure/storage/common/storage-introduction)将网络共享附加到 Linux 上的应用服务。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 现有的 Web 应用（Linux 上的应用服务或用于容器的 Web 应用）。
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。
@@ -74,9 +71,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-custom-storage-in-docker-compose"></a>在 Docker Compose 中使用自定义存储
 
-可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)运行。
+可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请运行[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
 
-在*docker-compose.yml*文件中，将`volumes`选项映射到。 `custom-id` 例如：
+在*docker-compose.override.yml*文件中，将 `volumes` 选项映射到 "`custom-id`"。 例如：
 
 ```yaml
 wordpress:

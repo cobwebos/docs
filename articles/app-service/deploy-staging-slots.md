@@ -1,209 +1,199 @@
 ---
-title: 为 Azure 应用服务中的 Web 应用设置过渡环境 | Microsoft Docs
-description: 了解如何对 Azure 应用服务中的 Web 应用使用分阶段发布。
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: 设置过渡环境
+description: 了解如何将应用部署到非生产槽和 autoswap 到生产环境中。 提高可靠性并从部署中消除应用程序停机时间。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382272"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671753"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
+如果将 web 应用、Linux 上的 web 应用、移动后端或 API 应用部署到[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)，则在**标准**、**高级**或**独立**应用服务计划层中运行时，可以使用单独的部署槽而不是默认的生产槽。 部署槽是具有自己的主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 
 
 将应用程序部署到非生产槽具有以下优点：
 
 * 可以在分阶段部署槽中验证应用更改，然后将其与生产槽交换。
-* 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
+* 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 在不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动执行整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
-每种应用服务计划层支持不同数量的部署槽。 There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
+每种应用服务计划层支持不同数量的部署槽。 使用部署槽位不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)。 
 
-To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
+若要将应用扩展到其他层，请确保目标层支持应用已使用的槽数。 例如，如果您的应用程序具有五个以上的槽，则无法将其缩小到**标准**层，因为**标准**级别仅支持五个部署槽。 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Add a slot
+## <a name="add-a-slot"></a>添加槽
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
 
-2. In the left pane, select **Deployment slots** > **Add Slot**.
+2. 在左窗格中，选择 "**部署槽**" > "**添加槽**"。
    
     ![添加新部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
+   > 如果应用尚未处于 "**标准**"、"**高级**" 或 "**独立**" 层中，你将收到一条消息，指示用于启用过渡发布的支持层。 此时，可以选择 "**升级**" 并在应用程序的 "**缩放**" 选项卡上继续操作。
    > 
 
-3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
+3. 在 "**添加槽**" 对话框中，为槽指定一个名称，并选择是否要从另一个部署槽克隆应用配置。 选择 "**添加**" 以继续。
    
-    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![配置源](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    You can clone a configuration from any existing slot. 可以克隆的设置包括应用设置、连接字符串、语言框架版本、Web 套接字、HTTP 版本和平台位数。
+    你可以从任何现有槽克隆配置。 可以克隆的设置包括应用设置、连接字符串、语言框架版本、Web 套接字、HTTP 版本和平台位数。
 
-4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
+4. 添加槽后，选择 "**关闭**" 以关闭对话框。 新槽现在显示在 "**部署槽**" 页上。 默认情况下，新槽的**流量%** 设置为0，所有客户流量都路由到生产槽。
 
-5. Select the new deployment slot to open that slot's resource page.
+5. 选择新的部署槽位以打开该槽的资源页。
    
-    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![部署槽位标题](./media/web-sites-staged-publishing/StagingTitle.png)
 
     过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 槽的名称将出现在页面顶部，提醒你正在查看部署槽位。
 
-6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
+6. 选择槽资源页上的 "应用 URL"。 部署槽具有其自己的主机名，并且也是一个实时应用。 若要限制对部署槽的公共访问权限，请参阅[AZURE APP SERVICE IP 限制](app-service-ip-restrictions.md)。
 
-即使从其他槽克隆设置，新部署槽位也无内容。 For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). 可以从其他存储库分支或不同的存储库部署到槽。 
+即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[通过 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>What happens during a swap
+## <a name="what-happens-during-a-swap"></a>交换期间发生的情况
 
-### <a name="swap-operation-steps"></a>Swap operation steps
+### <a name="swap-operation-steps"></a>交换操作步骤
 
-When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
+将两个槽（通常从暂存槽到生产槽）交换时，应用服务会执行以下操作，以确保目标槽不会遇到停机时间：
 
-1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
-    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
-    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
-    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
+1. 将以下设置从目标槽（例如，生产槽）应用到源槽的所有实例： 
+    - [槽特定的](#which-settings-are-swapped)应用设置和连接字符串（如果适用）。
+    - [持续部署](deploy-continuous-deployment.md)设置（如果已启用）。
+    - [应用服务身份验证](overview-authentication-authorization.md)设置（如果已启用）。
     
-    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
+    其中的任何情况都会触发源槽中的所有实例重新启动。 在[交换和预览](#Multi-Phase)期间，会标记第一个阶段的结束。 交换操作已暂停，你可以通过目标槽的设置验证源槽是否正常工作。
 
-1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
+1. 等待源槽中的每个实例完成重新启动。 如果任何实例无法重新启动，则交换操作会将所有更改恢复到源槽并停止操作。
 
-1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
+1. 如果启用了[本地缓存](overview-local-cache.md)，请在源槽的每个实例上向应用程序根（"/"）发出 HTTP 请求，以触发本地缓存初始化。 等待，直到每个实例返回任何 HTTP 响应。 本地缓存初始化会导致每个实例上重新启动一次。
 
-1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
+1. 如果使用[自定义预热](#Warm-up)启用[自动交换](#Auto-Swap)，则会通过对源槽的每个实例发出 HTTP 请求来触发应用程序根（"/"），触发[应用程序启动](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)。
 
-    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
+    如果未指定 `applicationInitialization`，将触发对每个实例上的源槽的应用程序根的 HTTP 请求。 
     
-    If an instance returns any HTTP response, it's considered to be warmed up.
+    如果实例返回任何 HTTP 响应，则会将其视为准备好。
 
-1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
+1. 如果源槽上的所有实例都已成功准备好，则通过切换两个槽的路由规则来交换两个槽。 执行此步骤后，目标槽（例如，生产槽）包含先前在源槽中准备好的应用。
 
-1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
+1. 现在源槽具有以前在目标槽中的预交换应用，请通过应用所有设置并重新启动实例来执行相同的操作。
 
-At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
+在交换操作的任意一点，初始化交换应用的所有工作都将在源槽上发生。 当源槽正在准备并准备好时，目标槽保持联机，而不考虑交换成功或失败的位置。 若要将过渡槽交换到生产槽，请确保生产槽始终是目标槽。 这样，交换操作不会影响生产应用。
 
 ### <a name="which-settings-are-swapped"></a>交换哪些设置？
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
+若要将应用设置或连接字符串配置为坚持使用特定插槽（不交换），请前往该槽的**配置**页。 添加或编辑设置，然后选择 "**部署槽设置**"。 如果选中此复选框，则会告诉应用程序该设置不可交换。 
 
 ![槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
 ## <a name="swap-two-slots"></a>交换两个槽 
-You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
+可以在应用的 "**部署槽**" 页和 "**概述**" 页上交换部署槽位。 有关槽交换的技术详细信息，请参阅[交换过程中发生的情况](#AboutConfiguration)。
 
 > [!IMPORTANT]
-> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
+> 在将应用从部署槽交换到生产环境之前，请确保 "生产" 是目标槽，并且源槽中的所有设置都已准确配置为要在生产中使用它们。
 > 
 > 
 
-To swap deployment slots:
+若要交换部署槽：
 
-1. Go to your app's **Deployment slots** page and select **Swap**.
+1. 转到应用的**部署槽位**页面，并选择 "**交换**"。
    
-    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![交换按钮](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
+    "**交换**" 对话框显示所选源槽和目标槽中要更改的设置。
 
-2. 选择所需的“源”和“目标”槽。 目标通常是生产槽。 Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
+2. 选择所需的“源”和“目标”槽。 目标通常是生产槽。 此外，选择 "**源更改**" 和 "**目标更改**" 选项卡，并验证是否需要配置更改。 完成后，可以通过选择 "**交换**" 来立即交换槽。
 
     ![完成交换](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
+    若要查看在实际发生交换之前目标槽如何以新设置运行，请不要选择 "**交换**"，但请按照 "[带预览的交换](#Multi-Phase)" 中的说明进行操作。
 
-3. When you're finished, close the dialog box by selecting **Close**.
+3. 完成后，选择 "**关闭**" 以关闭该对话框。
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+如果有任何问题，请参阅[排查交换](#troubleshoot-swaps)问题。
 
 <a name="Multi-Phase"></a>
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>带预览的交换（多阶段交换）
 
-Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
+作为目标槽交换到生产环境之前，请验证应用是否以交换的设置运行。 源槽还会在交换完成前准备好，这是任务关键型应用程序所必需的。
 
-When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
+当你执行带预览的交换时，应用服务执行相同的[交换操作](#AboutConfiguration)，但在第一步后暂停。 然后，你可以在完成交换前验证过渡槽上的结果。 
 
-If you cancel the swap, App Service reapplies configuration elements to the source slot.
+如果取消交换，应用服务会将配置元素重新应用到源槽。
 
-To swap with preview:
+若要交换预览版：
 
-1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
+1. 按照[交换部署槽位](#Swap)中的步骤操作，并选择 "**执行带预览的交换**"。
 
     ![带预览的交换](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
+    此对话框显示了源槽中的配置在阶段1中的更改，以及源槽和目标槽在阶段2中的变化情况。
 
-2. When you're ready to start the swap, select **Start Swap**.
+2. 准备好开始交换时，请选择 "**开始交换**"。
 
-    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    阶段1完成后，会在对话框中收到通知。 转到 `https://<app_name>-<source-slot-name>.azurewebsites.net`预览源槽中的交换。 
 
-3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
+3. 准备完成挂起的交换后，选择 "**完成**交换"**操作**并选择 "**完成交换**"。
 
-    To cancel a pending swap, select **Cancel Swap** instead.
+    若要取消挂起的交换，请选择 "**取消交换**"。
 
-4. When you're finished, close the dialog box by selecting **Close**.
+4. 完成后，选择 "**关闭**" 以关闭该对话框。
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+如果有任何问题，请参阅[排查交换](#troubleshoot-swaps)问题。
 
 若要自动执行多阶段交换，请参阅[使用 PowerShell 进行自动化操作](#automate-with-powershell)。
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Roll back a swap
+## <a name="roll-back-a-swap"></a>回滚交换
 如果在槽交换后目标槽（例如，生产槽）中发生任何错误，请通过立即交换相同的两个槽以将槽恢复到其交换前状态。
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Configure auto swap
+## <a name="configure-auto-swap"></a>配置自动交换
 
 > [!NOTE]
-> Auto swap isn't supported in web apps on Linux.
+> 在 Linux 上的 web 应用中不支持自动交换。
 
-Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
+自动交换简化了 Azure DevOps 方案，在这些方案中，你希望在应用程序的客户无冷启动和零停机时间的情况下持续部署你的应用程序。 如果从槽到生产环境启用了自动交换，则每次将代码更改推送到该槽时，应用服务会在源槽中准备好后，自动[将该应用交换到生产](#swap-operation-steps)中。
 
    > [!NOTE]
-   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
+   > 在为生产槽配置自动交换之前，请考虑在非生产目标槽上测试自动交换。
    > 
 
-To configure auto swap:
+配置自动交换：
 
-1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
+1. 中转到应用的资源页。 选择 "**部署槽位**" >  *\<所需的源槽，>*  > **配置** > "**常规设置**"。
    
-2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
+2. **启用自动交换**时，请选择 **"打开"** 。 然后，为**自动交换部署槽**选择所需的目标槽，并在命令栏上选择 "**保存**"。 
    
-    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![用于配置自动交换的选项](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. 执行代码推送到源槽。 Auto swap happens after a short time, and the update is reflected at your target slot's URL.
+3. 执行代码推送到源槽。 短时间之后会自动交换，并且更新将反映在目标槽的 URL 上。
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+如果有任何问题，请参阅[排查交换](#troubleshoot-swaps)问题。
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Specify custom warm-up
+## <a name="specify-custom-warm-up"></a>指定自定义预热
 
-Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
+某些应用可能需要自定义的预热操作才能进行交换。 Web.config 中的 `applicationInitialization` 配置元素允许你指定自定义初始化操作。 [交换操作](#AboutConfiguration)将等待此自定义预热完成，然后再交换目标槽。 下面是 web.config 片段的示例。
 
     <system.webServer>
         <applicationInitialization>
@@ -212,23 +202,23 @@ Some apps might require custom warm-up actions before the swap. The `application
         </applicationInitialization>
     </system.webServer>
 
-For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+有关自定义 `applicationInitialization` 元素的详细信息，请参阅[最常见的部署槽交换失败及其修复方法](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)。
 
-You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
+你还可以通过以下一个或两个[应用设置](configure-common.md)自定义预热行为：
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如 `/statuscheck`。 默认值为 `/`。 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. 默认情况下，所有响应代码都是有效的。
+- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于预热站点的 ping 的路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如 `/statuscheck`。 默认值为 `/`。 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 `200,202` 的示例。 如果返回的状态代码不在列表中，则预热和交换操作将停止。 默认情况下，所有响应代码都是有效的。
 
 > [!NOTE]
-> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
+> `<applicationInitialization>` 配置元素是每个应用程序启动的一部分，而两个预热行为应用设置仅适用于槽交换。
 
-If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
+如果有任何问题，请参阅[排查交换](#troubleshoot-swaps)问题。
 
-## <a name="monitor-a-swap"></a>Monitor a swap
+## <a name="monitor-a-swap"></a>监视交换
 
-If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+如果[交换操作](#AboutConfiguration)需要很长时间才能完成，可在[活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中获取有关交换操作的信息。
 
-On your app's resource page in the portal, in the left pane, select **Activity log**.
+在门户的 "资源" 页上的左窗格中，选择 "**活动日志**"。
 
 交换操作在日志查询中显示为 `Swap Web App Slots`。 可以将其展开，然后选择一个子操作或错误来查看详细信息。
 
@@ -238,47 +228,47 @@ On your app's resource page in the portal, in the left pane, select **Activity l
 
 ### <a name="route-production-traffic-automatically"></a>自动路由生产流量
 
-To route production traffic automatically:
+自动路由生产流量：
 
-1. Go to your app's resource page and select **Deployment slots**.
+1. 请在应用的资源页上，选择 "**部署槽位**"。
 
 2. 在要路由到的槽的“流量 %”列中，指定一个百分比（介于 0 到 100 之间）以表示要路由的总流量。 选择“保存”。
 
-    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![设置流量百分比](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
+保存设置后，指定百分比的客户端将随机路由到非生产槽。 
 
-After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
+将客户端自动路由到特定的槽后，它将在该客户端会话的生命周期内 "固定" 到该槽。 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
 
    > [!NOTE]
-   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
+   > 在 Azure 门户旁边，还可以使用 Azure CLI 中的 " [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) " 命令，设置 DevOps 管道或其他自动化系统等 CI/CD 工具中的路由百分比。
    > 
 
 ### <a name="route-production-traffic-manually"></a>手动路由生产流量
 
-除了自动流量路由以外，应用服务也可以将请求路由到特定槽。 This is useful when you want your users to be able to opt in to or opt out of your beta app. 若要手动路由生产流量，请使用 `x-ms-routing-name` 查询参数。
+除了自动流量路由以外，应用服务也可以将请求路由到特定槽。 如果希望用户能够选择加入或退出 beta 应用，这会很有用。 若要手动路由生产流量，请使用 `x-ms-routing-name` 查询参数。
 
-To let users opt out of your beta app, for example, you can put this link on your webpage:
+例如，若要让用户选择退出 beta 应用，可以在网页上放置此链接：
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-字符串 `x-ms-routing-name=self` 指定生产槽。 After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
+字符串 `x-ms-routing-name=self` 指定生产槽。 客户端浏览器访问链接后，会重定向到生产槽。 每个后续请求都具有将会话固定到生产槽的 `x-ms-routing-name=self` cookie。
 
-To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. 下面是一个示例：
+若要让用户选择加入 beta 应用，请将相同的查询参数设置为非生产槽的名称。 下面是一个示例：
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
+默认情况下，将为新的槽给定路由规则 `0%`，以灰色显示。 如果将此值显式设置为 `0%` （显示为黑色文本），则用户可以通过使用 `x-ms-routing-name` 查询参数手动访问过渡槽。 但不会自动将它们路由到插槽，因为路由百分比设置为0。 这是一种高级方案，你可以在其中 "隐藏" 过渡槽，同时允许内部团队测试槽上的更改。
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Delete a slot
+## <a name="delete-a-slot"></a>删除槽
 
-Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
+中转到应用的资源页。 选择要删除 > **概述** * > \<槽的***部署槽位**。 在命令栏上选择 "**删除**"。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -301,20 +291,20 @@ New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location
 ```
 
 ---
-### <a name="create-a-slot"></a>Create a slot
+### <a name="create-a-slot"></a>创建槽
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>启动带预览的交换（多阶段交换）并将目标槽配置应用到源槽
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>取消挂起的交换（带复查的交换）并还原源槽配置
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
@@ -326,27 +316,27 @@ $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
+### <a name="monitor-swap-events-in-the-activity-log"></a>监视活动日志中的交换事件
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Delete a slot
+### <a name="delete-a-slot"></a>删除槽
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automate with ARM templates
+## <a name="automate-with-arm-templates"></a>通过 ARM 模板自动执行
 
-[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
+[ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)是声明性的 JSON 文件，用于自动部署和配置 Azure 资源。 若要使用 ARM 模板交换槽，请在 " *microsoft/站点/槽*" 和 " *microsoft 网站/站点*" 资源上设置两个属性：
 
-- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
+- `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如： "v1"、"1.0.0.1" 或 "20T11：53： 25.2887393-07： 00"。
+- `targetBuildVersion`：这是一个字符串属性，它指定了槽应使用的 `buildVersion`。 如果 targetBuildVersion 不等于当前 `buildVersion`，则会通过查找具有指定 `buildVersion`的槽来触发交换操作。
 
-### <a name="example-arm-template"></a>Example ARM Template
+### <a name="example-arm-template"></a>ARM 模板示例
 
-The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
+以下 ARM 模板将更新过渡槽的 `buildVersion`，并在生产槽上设置 `targetBuildVersion`。 这将交换两个槽。 该模板假设已有使用名为 "过渡" 的槽创建的 webapp。
 
 ```json
 {
@@ -390,27 +380,27 @@ The following ARM template will update the `buildVersion` of the staging slot an
 }
 ```
 
-This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
+此 ARM 模板是幂等的，这意味着它可以重复执行，并生成相同的槽状态。 第一次执行后，`targetBuildVersion` 将与当前 `buildVersion`匹配，因此不会触发交换。
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automate with the CLI
+## <a name="automate-with-the-cli"></a>通过 CLI 自动执行
 
 有关用于部署槽的 [Azure CLI](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
 
-## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
+## <a name="troubleshoot-swaps"></a>交换疑难解答
 
-If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
+如果[槽交换](#AboutConfiguration)期间发生任何错误，则会将其记录在*D:\home\LogFiles\eventlog.xml*中。 它还记录在特定于应用程序的错误日志中。
 
-Here are some common swap errors:
+下面是一些常见的交换错误：
 
-- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
+- 对应用程序根的 HTTP 请求已超时。 交换操作会等待每个 HTTP 请求90秒，并重试最多5次。 如果所有重试均已超时，则交换操作将停止。
 
-- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
+- 当应用内容超出为本地缓存指定的本地磁盘配额时，本地缓存初始化可能会失败。 有关详细信息，请参阅[本地缓存概述](overview-local-cache.md)。
 
-- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
+- 在[自定义预热](#Warm-up)期间，会在内部发出 HTTP 请求（不通过外部 URL）。 *在 web.config 中，* 它们可能会失败，并会出现某些 URL 重写规则。例如，重定向域名或强制 HTTPS 的规则可能会阻止预热请求到达应用代码。 若要解决此问题，请添加以下两个条件来修改重写规则：
 
     ```xml
     <conditions>
@@ -419,7 +409,7 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
+- 如果没有自定义的预热，URL 重写规则仍可阻止 HTTP 请求。 若要解决此问题，请添加以下条件来修改重写规则：
 
     ```xml
     <conditions>
@@ -427,9 +417,9 @@ Here are some common swap errors:
       ...
     </conditions>
     ```
-- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
+- 某些[IP 限制规则](app-service-ip-restrictions.md)可能会阻止交换操作向你的应用程序发送 HTTP 请求。 以 `10.` 开头且 `100.` 的 IPv4 地址范围在部署内部。 你应允许它们连接到你的应用程序。
 
-- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
+- 槽交换后，应用可能会遇到意外的重新启动。 这是因为，在交换之后，主机名绑定配置会不同步，而不会导致重新启动。 但是，某些基础存储事件（例如存储卷故障转移）可以检测到这些差异并强制重新启动所有工作进程。 若要最大程度地减少这种重新启动类型，请在*所有槽*上设置 " [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` 应用" 设置](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)。 但是，此应用*设置不适用于*WINDOWS COMMUNICATION FOUNDATION （WCF）应用。
 
 ## <a name="next-steps"></a>后续步骤
 [阻止对非生产槽进行访问](app-service-ip-restrictions.md)

@@ -1,29 +1,22 @@
 ---
-title: 控制应用服务环境的入站流量 - Azure
-description: 了解如何配置网络安全规则，以控制发往应用服务环境的入站流量。
-services: app-service
-documentationcenter: ''
+title: 控制入站流量 v1
+description: 了解如何控制到应用服务环境的入站流量。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070409"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687394"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
-可以在 Azure 资源管理器虚拟网络 **或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的详细信息, 请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
+可以**在 Azure**资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
 
 应用服务环境始终必须在子网中创建，由于子网提供网络边界用于锁定上游设备和服务后面的入站流量，因此只接受来自特定上游 IP 地址的 HTTP 和 HTTPS 流量。
 
@@ -38,10 +31,10 @@ ms.locfileid: "70070409"
 
 以下是应用服务环境使用的端口列表。 所有端口都是 **TCP**，除非另有明确的说明：
 
-* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 80：默认端口，用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
-* 443：默认端口，用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 80：用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 443：用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 21：FTP 的控制通道。  如果未使用 FTP，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 990：FTPS 的控制通道。  如果未使用 FTPS，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 10001-10020：FTP 的数据通道。  和控制通道一样，如果未使用 FTP，则可以放心地阻止这些端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
@@ -50,16 +43,16 @@ ms.locfileid: "70070409"
 * 4020：用于 Visual Studio 2015 的远程调试。  如果未使用该功能，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>出站连接和 DNS 要求
-若要让应用服务环境正常运行，还需具有对各个终结点的出站访问权限。 [ExpressRoute 的网络配置](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) 一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
+若要让应用服务环境正常运行，还需具有对各个终结点的出站访问权限。 [Network Configuration for ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)（ExpressRoute 的网络配置）一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
 
-应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后因为任何原因而更改，开发人员可以强制应用服务环境选择新的 DNS 配置。  使用位于[Azure 门户][NewPortal]中应用服务环境管理边栏选项卡顶部的 "重启" 图标触发滚动环境重启, 将导致环境选取新的 DNS 配置。
+应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后因为任何原因而更改，开发人员可以强制应用服务环境选择新的 DNS 配置。  使用位于[Azure 门户][NewPortal]中应用服务环境管理边栏选项卡顶部的 "重启" 图标触发滚动环境重启，将导致环境选取新的 DNS 配置。
 
 此外，还建议事先在 VNet 上设置任何自定义 DNS 服务器，并创建应用服务环境。  如果在创建应用服务环境时更改虚拟网络的 DNS 配置，会导致应用服务环境创建过程失败。  同样地，如果自定义 DNS 服务器存在于 VPN 网关的另一端，且 DNS 服务器无法连接或无法使用，则应用服务环境创建过程也会失败。
 
 ## <a name="creating-a-network-security-group"></a>创建网络安全组
-有关网络安全组工作原理的完整详细信息, 请参阅以下[信息][NetworkSecurityGroups]。  以下 Azure 服务管理示例涉及网络安全组的要点，着重讲解如何配置网络安全组并将其应用到包含应用服务环境的子网。
+有关网络安全组工作原理的完整详细信息，请参阅以下[信息][NetworkSecurityGroups]。  以下 Azure 服务管理示例涉及网络安全组的要点，着重讲解如何配置网络安全组并将其应用到包含应用服务环境的子网。
 
-**注意：** 可使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
+**注意：** 可以使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
 
 网络安全组最初创建为与订阅关联的独立实体。 由于网络安全组是在 Azure 区域中创建的，因此请确保在与应用服务环境相同的区域中创建网络安全组。
 
@@ -114,12 +107,12 @@ ms.locfileid: "70070409"
 
 可以从门户用户界面的应用服务环境的详细信息 UX 边栏选项卡中找到每个 IP-SSL 地址所使用的单个端口对。  选择“所有设置”-->“IP 地址”。  “IP 地址”边栏选项卡显示应用服务环境的所有显式配置的 IP-SSL 地址表，以及用于路由与每个 IP-SSL 地址关联的 HTTP 和 HTTPS 流量的特殊端口对。  在网络安全组中配置规则时，需要针对 DestinationPortRange 参数使用此端口对。
 
-当 ASE 中的应用程序配置为使用 IP-SSL 时，外部客户看不到也无需担心特殊的端口对映射。  发往应用程序的流量正常情况下将流向已配置的 IP-SSL 地址。  在将流量路由到包含 ASE 的子网的最后阶段，会在内部自动发生到特殊端口对的转换。 
+当 ASE 中的应用程序配置为使用 IP-SSL 时，外部客户将看不到也无需担心特殊的端口对映射。  发往应用程序的流量正常情况下将流向已配置的 IP-SSL 地址。  在将流量路由到包含 ASE 的子网的最后阶段，会在内部自动发生到特殊端口对的转换。 
 
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅 [Introduction to App Service Environment][IntroToAppServiceEnvironment]（应用服务环境简介）
 
-有关从应用服务环境安全地连接到后端资源的详细信息, 请参阅[从应用服务环境安全连接到后端资源][SecurelyConnecttoBackend]
+有关从应用服务环境安全地连接到后端资源的详细信息，请参阅[从应用服务环境安全连接到后端资源][SecurelyConnecttoBackend]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

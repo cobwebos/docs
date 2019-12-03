@@ -1,18 +1,18 @@
 ---
-title: 开发脚本操作自定义 Azure HDInsight 群集
-description: 了解如何使用 Bash 脚本来自定义 HDInsight 群集。 脚本操作可让您更改群集配置设置或安装其他软件的群集创建期间或之后运行脚本。
+title: 开发脚本操作以自定义 Azure HDInsight 群集
+description: 了解如何使用 Bash 脚本自定义 HDInsight 群集。 脚本操作可让你在创建群集期间或之后运行脚本，以更改群集配置设置或安装其他软件。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2019
+ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687446"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687728"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -34,7 +34,7 @@ ms.locfileid: "64687446"
 
 有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="bestPracticeScripting"></a>脚本开发最佳实践
+## <a name="bestPracticeScripting"></a>脚本开发最佳做法
 
 在针对 HDInsight 群集开发自定义脚本时，有些最佳做法要铭记于心：
 
@@ -60,7 +60,7 @@ ms.locfileid: "64687446"
 
 HDInsight 的不同版本取决于 Ubuntu 的特定版本。 不同 OS 版本之间存在不同，必须在脚本中检查。 例如，可能需要安装与 Ubuntu 版本相关的二进制文件。
 
-若要检查 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
+若要查看 OS 版本，请使用 `lsb_release`。 例如，以下脚本演示如何根据 OS 版本引用特定的 tar 文件：
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -73,9 +73,9 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="bps10"></a> 确定针对的操作系统版本
+### <a name="bps10"></a>目标操作系统版本
 
-基于 Linux 的 HDInsight 取决于 Ubuntu Linux 分发。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
+HDInsight 基于 Ubuntu Linux 分布。 不同版本的 HDInsight 依赖不同版本的 Ubuntu，这可能会改变脚本的行为方式。 例如，HDInsight 3.4 及更早版本取决于使用 Upstart 的 Ubuntu 版本。 版本 3.5 和更高版本取决于使用 Systemd 的 Ubuntu 16.04。 Systemd 和 Upstart 依赖不同的命令，因此编写的脚本应该同时使用两者。
 
 HDInsight 3.4 和 3.5 的另一个重要区别在于 `JAVA_HOME` 现在指向 Java 8。 以下代码演示如何确定脚本是在 Ubuntu 14 还是 16 上运行：
 
@@ -137,7 +137,7 @@ fi
 
 ### <a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只有一个头节点，请不要在两个头节点上安装组件。
+基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只需要一个头节点，请不要在两个头节点上都安装这些组件。
 
 > [!IMPORTANT]  
 > 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
@@ -146,7 +146,7 @@ fi
 
 在群集上安装的组件可能具有使用 Apache Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Storage 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
 
-对于大多数操作，不需要指定文件系统。 例如，以下脚本将 hadoop-common.jar 文件从本地文件系统复制到群集存储：
+对于大多数操作，无需指定文件系统。 例如，以下将 hadoop-common 文件从本地文件系统复制到群集存储：
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
@@ -161,13 +161,13 @@ HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 A
 > [!NOTE]  
 > 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建期间使用脚本操作但创建失败，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)的故障排除部分，以了解访问所记录信息的其他方式。
 
-大多数实用工具和安装包已将信息写入 STDOUT 和 STDERR，不过你可能需要添加更多日志记录。 若要将文本发送到 STDOUT，请使用 `echo`。 例如：
+大多数实用工具和安装包会将信息写入 STDOUT 和 STDERR，不过你可能想要添加更多日志记录。 若要将文本发送到 STDOUT，可使用 `echo`。 例如：
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-默认情况下，`echo` 会将字符串发送到 STDOUT。 若要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
+默认情况下，`echo` 会将字符串发送到 STDOUT。 要将它定向到 STDERR，请在 `echo` 的前面添加 `>&2`。 例如：
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -177,7 +177,7 @@ echo "Getting ready to install Foo"
 
 有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
+### <a name="bps8"></a>将文件另存为包含 LF 行尾的 ASCII
 
 应将 Bash 脚本存储为 ASCII 格式，该格式以 LF 作为行尾。 存储为 UTF-8 或者使用 CRLF 作为行尾的文件可能失败并返回以下错误：
 
@@ -186,9 +186,9 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a> 使用重试逻辑从暂时性错误中恢复
+### <a name="bps9"></a>使用重试逻辑从暂时性错误中恢复
 
-下载文件、使用 apt-get 安装包或者执行通过 Internet 传输数据的其他操作时，可能会由于暂时性网络错误而失败。 例如，与你通信的远程资源可能正在故障转移到备份节点。
+下载文件、使用 apt 或通过 internet 传输数据的其他操作安装包时，操作可能会由于暂时性网络错误而失败。 例如，要与之通信的远程资源可能正在故障转移到备份节点。
 
 若要使脚本能够从暂时性错误中恢复，可以实现重试逻辑。 以下示例函数演示如何实现重逻辑。 它在失败之前重试操作三次。
 
@@ -237,7 +237,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 | 帮助器用法 | 描述 |
 | --- | --- |
-| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有的文件。 |
+| `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |将文件从源 URI 下载到指定的文件路径。 默认情况下，它不会覆盖现有文件。 |
 | `untar_file TARFILE DESTDIR` |将 tar 文件（使用 `-xf`）解压缩到目标目录。 |
 | `test_is_headnode` |如果在群集头节点上运行，则返回 1；否则返回 0。 |
 | `test_is_datanode` |如果当前节点是数据（辅助角色）节点，则返回 1；否则返回 0。 |
@@ -256,7 +256,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 在某些情况下，脚本可能需要参数。 例如，使用 Ambari REST API 时，可能需要群集的管理员密码。
 
-传递给脚本的参数称为“位置参数”  ，将分配到 `$1` 作为第一个参数，分配到 `$2` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
+传递给脚本的参数称为“位置参数”，将分配到 `$2` 作为第一个参数，分配到 `$1` 作为第二个参数，依此类推。 `$0` 包含该脚本本身的名称。
 
 作为参数传递给脚本的值应括在单引号 (') 中。 这样可以确保将传递的值视为文本。
 
@@ -288,7 +288,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * __可公开读取的 URI__。 例如，在 OneDrive、Dropbox 或其他文件托管服务中存储的数据的 URL。
 
-* 与 HDInsight 群集关联的 __Azure Data Lake Storage 帐户__。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+* 与 HDInsight 群集关联的 __Azure Data Lake Storage 帐户__。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的详细信息，请参阅[快速入门：在 hdinsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
     > [!NOTE]  
     > 用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
@@ -329,7 +329,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 
 ## <a name="troubleshooting"></a>故障排除
 
-使用开发的脚本时可能会遇到以下错误：
+使用已开发的脚本时，可能会遇到以下错误：
 
 **错误**：`$'\r': command not found`。 有时后面会接着出现“`syntax error: unexpected end of file`”。
 
@@ -337,7 +337,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 参阅�
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
-*解决方法*：如果文本编辑器提供了选项，请选择 Unix 格式或以 LF 作为行尾。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
+*解决方法*：如果是文本编辑器中的选项，请选择 "Unix 格式" 或 "LF" 作为行尾。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
 
 > [!NOTE]  
 > 以下命令大致相当于将 CRLF 行尾更改为 LF。 根据系统中提供的实用工具选择一种解决方法。

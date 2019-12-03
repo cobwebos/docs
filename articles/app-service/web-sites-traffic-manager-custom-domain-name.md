@@ -1,25 +1,16 @@
 ---
-title: 为使用流量管理器的应用配置 DNS 名称 - Azure 应用服务
-description: 为 Azure 应用服务中包含流量管理器（用于负载均衡）的 Web 应用使用自定义域名。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 通过流量管理器配置 DNS 名称
+description: 了解如何为与流量管理器集成以实现负载平衡的 Azure App Service 应用配置自定义域。
 ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e6a59d519ae8bb515ab16632bd39509682959f50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9139b83f1f2920da47b4a0d440f622626d41c938
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074035"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689280"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -57,7 +48,7 @@ ms.locfileid: "70074035"
 虽然各个域提供商的具体情况不同，但你都需从自定义域名（例如 **contoso.com**）映射到与 Web 应用集成的流量管理器域名 (**contoso.trafficmanager.net**)。
 
 > [!NOTE]
-> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如, 若要提前将**www\.contoso.com**绑定到 web 应用, 请创建从**awverify**到**contoso.trafficmanager.net**的 CNAME 记录。 然后, 你可以将 "\.www contoso.com" 添加到 Web 应用, 而无需更改 "www" CNAME 记录。 有关详细信息, 请参阅[在自定义域中为 web 应用创建 DNS 记录][CREATEDNS]。
+> 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，若要提前将**www\.contoso.com**绑定到 web 应用，请创建从**awverify**到**contoso.trafficmanager.net**的 CNAME 记录。 然后，你可以将 "www\.contoso.com" 添加到 Web 应用，而无需更改 "www" CNAME 记录。 有关详细信息，请参阅[在自定义域中为 web 应用创建 DNS 记录][CREATEDNS]。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
 

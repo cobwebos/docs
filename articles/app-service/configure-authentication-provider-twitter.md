@@ -1,25 +1,16 @@
 ---
-title: 配置 Twitter 身份验证 - Azure 应用服务
-description: 了解如何为应用服务应用配置 Twitter 身份验证。
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: syntaxc4
-editor: ''
+title: 配置 Twitter 身份验证
+description: 了解如何将 Twitter 身份验证配置为应用服务应用的标识提供者。
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/19/2018
-ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176959"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670800"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>将应用服务应用配置为使用 Twitter 登录
 
@@ -33,7 +24,7 @@ ms.locfileid: "72176959"
 
 1. 登录到[Azure 门户]并中转到你的应用程序。 复制 **URL**。 你将使用它来配置你的 Twitter 应用。
 1. 请前往[Twitter 开发人员]网站，用你的 Twitter 帐户凭据登录，并选择 "**创建新应用**"。
-1. 输入新应用的**名称**和**描述**。 将应用程序的**URL**粘贴到 "**网站**" 字段。 在 "**回调 url** " 字段中，输入应用服务应用的 URL，并将路径追加 `/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback`。 请确保使用 HTTPS 方案。
+1. 输入新应用的**名称**和**描述**。 将应用程序的**URL**粘贴到 "**网站**" 字段。 在 "**回调 url** " 字段中，输入应用服务应用的 URL，并将路径追加 `/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 请确保使用 HTTPS 方案。
 1. 在页面底部，阅读并接受条款。 选择 "**创建 Twitter 应用程序**"。 将显示应用程序详细信息。
 1. 选择 "**设置**" 选项卡，选中 "**允许使用此应用程序通过 Twitter 登录**"，然后选择 "**更新设置**"。
 1. 选择“密钥和访问令牌”选项卡。

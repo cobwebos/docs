@@ -1,17 +1,17 @@
 ---
 title: 访问 Azure Cosmos DB 中的更改源
 description: 本文介绍了可用来读取和访问 Azure Cosmos DB 中的更改源的各种选项。
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754873"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688117"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
 
@@ -31,7 +31,13 @@ Azure Functions 是最简单且建议使用的选项。 为 Cosmos DB 创建 Azu
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>使用 Azure Cosmos DB SQL API SDK
 
-使用 SDK，你可以对更改源进行低层控制。 您可以管理检查点、访问特定逻辑分区键等。如果有多个读取器，则可以使用 `ChangeFeedOptions` 将读取负载分配给不同的线程或不同的客户端。 
+使用 SDK，你可以对更改源进行低层控制。 您可以管理检查点、访问特定逻辑分区键等。如果有多个读取器，则可以使用 `ChangeFeedOptions` 将读取负载分配给不同的线程或不同的客户端。
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>更改 Cassandra 和 MongoDB 的 Api 中的源
+
+更改源功能作为 MongoDB API 中的更改流出现，并在 Cassandra API 中通过谓词进行查询。 若要了解有关 MongoDB API 的实现细节的详细信息，请参阅[AZURE COSMOS DB API For mongodb 中的更改流](mongodb-change-streams.md)。
+
+本机 Apache Cassandra 提供了变更数据捕获（CDC），一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间时拒绝写入这些表。 Azure Cosmos DB API for Cassandra 中的更改源功能增强了通过 CQL 查询具有谓词的更改的功能。 若要了解有关实现的详细信息，请参阅[Cassandra 的 AZURE COSMOS DB API 中的更改源](cassandra-change-feed.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

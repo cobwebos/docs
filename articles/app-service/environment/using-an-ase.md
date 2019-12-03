@@ -1,24 +1,18 @@
 ---
-title: 使用应用服务环境 - Azure
-description: 如何在 Azure 应用服务环境中创建、发布和缩放应用
-services: app-service
-documentationcenter: na
+title: 使用和管理 ASE
+description: 如何在 Azure App Service 环境中创建、发布和缩放应用程序。 在一个文档中查找常见任务。
 author: ccompy
-manager: stefsch
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470588"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687099"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -34,7 +28,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 >
 >
 
-可以使用外部或内部 VIP 来部署 ASE（ASEv1 和 ASEv2）进行应用访问。 使用外部 VIP 的部署通常称为外部 ASE。 内部版本称为 ILB ASE，因为它使用内部负载均衡器 (ILB)。 若要详细了解 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
+可以使用外部或内部 VIP 来部署 ASE（ASEv1 和 ASEv2）进行应用访问。 使用外部 VIP 的部署通常称为外部 ASE。 内部版本称为 ILB ASE，因为它使用内部负载均衡器 (ILB)。 若要详细了解 ILB ASE，请参阅[创建和使用 ILB ase][MakeILBASE]。
 
 ## <a name="create-an-app-in-an-ase"></a>在 ASE 中创建应用 ##
 
@@ -43,7 +37,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 - 不要选择某个地理位置来部署应用，而应该选择 ASE 作为位置。
 - 在 ASE 中创建的所有应用服务计划必须在“隔离”定价层中。
 
-如果没有 ASE，可以根据[创建应用服务环境][MakeExternalASE]中的说明创建一个。
+如果没有 ASE，可以根据[创建应用服务环境][MakeExternalASE]中的说明创建一个 ASE。
 
 在 ASE 中创建应用：
 
@@ -61,13 +55,13 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 1. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
-    a. 选择“新建”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“新建”。
 
     b. 输入应用服务计划的名称。
 
     c. 在“位置”下拉列表中选择自己的 ASE。 
     
-    d. 选择“隔离”定价层。 选择“选择”。
+    d.单击“下一步”。 选择“隔离”定价层。 选择“选择”。
 
     e. 选择“确定”。
     
@@ -77,7 +71,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
     > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
     >
 
-2. 选择“创建”。
+2. 选择**创建**。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 
@@ -99,7 +93,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 在 ASEv2 中扩展应用服务计划时，会自动添加工作线程来支持这些计划。 创建的每个 ASE 包含两个前端。 此外，前端还会自动扩展，扩展的速率是针对应用服务计划中的每 15 个实例扩展一个前端。 例如，如果有 15 个实例，则会获得 3 个前端。 如果扩展到 30 个实例，则会获得 4 个前端，依此类推。
 
-在大多数情况下，前端数目应该足够。 但是，可以按更快的速率扩展。 可以将比率改到最小，即针对每 5 个实例扩展一个前端。 更改比率不会产生费用。 有关详细信息，请参阅 [Azure 应用服务定价][Pricing]。
+在大多数情况下，前端数目应该足够。 但是，可以按更快的速率扩展。 可以将比率改到最小，即针对每 5 个实例扩展一个前端。 更改比率不会产生费用。 有关详细信息，请参阅[Azure App Service 定价][Pricing]。
 
 前端资源是 ASE 的 HTTP/HTTPS 终结点。 使用默认前端配置时，每个前端的内存使用率一致地保持在大约 60%。 客户工作负荷不会在前端上运行。 在缩放方面，前端的一个关键因素是 CPU（主要取决于 HTTPS 流量）。
 
@@ -112,7 +106,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 URL contoso.scm.external-ase.p.azurewebsites.net 用于访问 Kudu 控制台，或通过 Web 部署发布应用。 有关 Kudu 控制台的信息，请参阅[Kudu console for Azure App Service][Kudu]。 Kudu 控制台提供 Web UI，可在其中进行调试、上传文件、 编辑文件及执行其他许多操作。
 
-在 ILB ASE 中，可在部署时确定域。 有关如何创建 ILB ASE 的详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。 如果指定类似于 _ilb-ase.info_ 的域名，则在创建应用的过程中，该 ASE 中的应用将使用该域。 对于名为 _contoso_ 的应用，URL 为：
+在 ILB ASE 中，可在部署时确定域。 有关如何创建 ILB ASE 的详细信息，请参阅[创建和使用 ILB ase][MakeILBASE]。 如果指定类似于 _ilb-ase.info_ 的域名，则在创建应用的过程中，该 ASE 中的应用将使用该域。 对于名为 _contoso_ 的应用，URL 为：
 
 - contoso.ilb-ase.info
 - contoso.scm.ilb-ase.info
@@ -129,13 +123,13 @@ URL contoso.scm.external-ase.p.azurewebsites.net 用于访问 Kudu 控制台，�
 
 使用外部 ASE 时，这些发布选项的行为都是相同的。 有关详细信息，请参阅[Azure App Service 中的部署][AppDeploy]。 
 
-在发布方面，主要差别在于 ILB ASE。 使用 ILB ASE 时，只能通过 ILB 访问所有发布终结点。 ILB 位于虚拟网络中 ASE 子网内的专用 IP 上。 如果无法通过网络访问 ILB，则无法在该 ASE 上发布任何应用。 根据[创建和使用 ILB ASE][MakeILBASE] 中所述，需要在系统中配置应用的 DNS。 这包括 SCM 终结点。 如果未正确定义 DNS，则无法发布。 IDE 也需要能够通过网络访问 ILB 才能直接在 ASE 中发布应用。
+在发布方面，主要差别在于 ILB ASE。 使用 ILB ASE 时，只能通过 ILB 访问所有发布终结点。 ILB 位于虚拟网络中 ASE 子网内的专用 IP 上。 如果无法通过网络访问 ILB，则无法在该 ASE 上发布任何应用。 如[创建和使用 ILB ASE][MakeILBASE]中所述，需要在系统中为应用配置 DNS。 这包括 SCM 终结点。 如果未正确定义 DNS，则无法发布。 IDE 也需要能够通过网络访问 ILB 才能直接在 ASE 中发布应用。
 
-现成的基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不支持 ILB ASE，因为发布终结点不可访问 Internet。 对于 Azure DevOps，可以通过在可访问 ILB 的内部网络中安装自托管版的代理来解决此问题。 或者，可以利用某个使用提取模型的 CI 系统，例如 Dropbox。
+基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不能用于 ILB ASE，因为发布终结点不可访问 Internet。 对于 Azure DevOps，可以通过在内部网络中安装可访问 ILB 的自承载发布代理来解决此情况。 另外，还可以使用使用请求模型的 CI 系统，如 Dropbox。
 
-ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用门户的边栏选项卡中查看此信息（在“概述” **“软件包”以及“属性”中查看）**  > 。 
+ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用门户的边栏选项卡中查看此信息（在“概述” > “软件包”以及“属性”中查看）。 
 
-## <a name="pricing"></a>定价 ##
+## <a name="pricing"></a>价格 ##
 
 创建了名为 Isolated 的定价 SKU，仅用于与 ASEv2 一起使用。 ASEv2 中托管的所有应用服务计划都在“隔离”定价 SKU 中。 独立应用服务计划费率可能因区域而异。 
 
@@ -147,7 +141,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 
 如果将前端的大小调整为 2 个核心，但不调整比率，则需要为额外的核心付费。  对于使用 2 个前端创建的 ASE，即使低于自动缩放阈值，也需在将大小增加到 2 个核心的前端时为 2 个额外的核心付费。
 
-有关详细信息，请参阅 [Azure 应用服务定价][Pricing]。
+有关详细信息，请参阅[Azure App Service 定价][Pricing]。
 
 ## <a name="delete-an-ase"></a>删除 ASE ##
 

@@ -1,25 +1,16 @@
 ---
-title: 安全性概述 - Azure 应用服务 | Microsoft Docs
+title: “安全”
 description: 了解应用服务如何帮助保护应用，以及如何进一步锁定应用使其免受威胁。
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470096"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688559"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -53,7 +44,7 @@ ms.locfileid: "73470096"
 
 为了保护应用免受所有未加密 (HTTP) 连接的攻击，应用服务提供一键式配置以实施 HTTPS。 不安全的请求在到达你的应用程序代码之前就会被拒绝。 有关详细信息，请参阅[实施 HTTPS](configure-ssl-bindings.md#enforce-https)。
 
-[PCI DSS](https://wikipedia.org/wiki/Transport_Layer_Security) 等行业标准已不再将 [TLS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) 来禁用过时的协议。
+[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) 等行业标准已不再将 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 视为安全协议。 应用服务允许通过[实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions) 来禁用过时的协议。
 
 应用服务支持使用 FTP 和 FTPS 来部署文件。 但是，如果可能的话，应使用 FTPS 而不是 FTP。 如果未使用这两种协议或其中一种协议，则应[将其禁用](deploy-ftp.md#enforce-ftps)。
 
@@ -94,7 +85,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure 虚拟网络中的资源
 
-应用可以通过[虚拟网络集成](/azure/virtual-network/)访问 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)中的资源。 该集成通过点到站点 VPN 随虚拟网络一起建立。 之后，应用可以使用虚拟网络资源的专用 IP 地址来访问这些资源。 但是，点到站点连接仍然会遍历 Azure 中的共享网络。 
+应用可以通过[虚拟网络集成](web-sites-integrate-with-vnet.md)访问 [Azure 虚拟网络](/azure/virtual-network/)中的资源。 该集成通过点到站点 VPN 随虚拟网络一起建立。 之后，应用可以使用虚拟网络资源的专用 IP 地址来访问这些资源。 但是，点到站点连接仍然会遍历 Azure 中的共享网络。 
 
 若要将资源连接与 Azure 中的共享网络完全隔离，请在[应用服务环境](environment/intro.md)中创建应用。 由于应用服务环境始终部署到专用虚拟网络，因此，应用与虚拟网络资源之间的连接是完全隔离的。 有关应用服务环境中网络安全的其他方面，请参阅[网络隔离](#network-isolation)。
 
@@ -114,7 +105,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ## <a name="network-isolation"></a>网络隔离
 
-除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的**应用服务环境**中运行应用，[独立](environment/intro.md)层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。 它允许： 
+除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的[应用服务环境](environment/intro.md)中运行应用，**独立**层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。 它允许： 
 
 - 通过专用的公共终结点为应用提供专用前端。
 - 使用内部负载均衡器 (ILB) 为内部应用程序提供服务，该内部负载均衡器仅允许从 Azure 虚拟网络内部进行访问。 ILB 有一个来自专用子网的 IP 地址，它可以让应用与 Internet 完全隔离。

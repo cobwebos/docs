@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/16/2019
-ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 12/02/2019
+ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677502"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689218"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -30,9 +30,12 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
    | 设置        |  Value           | 描述  |
    | ------------- |:-------------|:-----|
-   | 名称      | 全局唯一值 | 标识要监视的应用程序的名称。 |
+   | 名称      | 唯一值 | 标识要监视的应用程序的名称。 |
    | **资源组**     | myResourceGroup      | 新的或现有资源组的名称以托管 App Insights 数据。 |
    | 位置 | 美国东部 | 选择附近的位置，或接近应用程序的托管位置。 |
+
+> [!NOTE]
+> 虽然你可以在不同的资源组中使用相同的资源名称，但使用全局唯一名称可能会很有用。 如果你计划[执行跨资源查询](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，因为它可以简化所需的语法，这会很有用。
 
 在必填字段中输入适当的值，然后选择 "**查看 + 创建**"。
 

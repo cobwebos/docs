@@ -1,26 +1,20 @@
 ---
-title: 应用程序性能常见问题解答 - Azure 应用服务 | Microsoft Docs
-description: 获取有关 Azure 应用服务的 Web 应用功能中的可用性、性能和应用程序问题的常见问题解答。
-services: app-service\web
-documentationcenter: ''
+title: 应用程序性能常见问题
+description: 获取有关 Azure App Service 中的可用性、性能和应用程序问题的常见问题解答。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122070"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671705"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -38,11 +32,11 @@ ms.locfileid: "71122070"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何对高 CPU 使用率情况进行故障排除？
 
-在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高的服务层，以便应用程序获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何对高内存使用率情况进行故障排除？
 
-在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高的服务层，以便应用程序获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发器的高内存消耗是一个由两部分组成的过程。 首先，创建一个进程转储，然后分析该进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 自动执行应用服务 Web 应用？
 
@@ -87,7 +81,7 @@ ms.locfileid: "71122070"
 * 在门户中停止了 Web 应用。
 * Web 应用已达到可能应用于免费或共享缩放服务计划的资源配额限制。
 
-若要了解导致错误的原因并解决问题，请按照 [Web 应用：“错误 403 - 此 Web 应用已停止”](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)中的步骤执行。
+若要了解导致错误的原因并解决问题，请按照 [Web 应用：“错误 403 – 此 Web 应用已停止”](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/)中的步骤执行。
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>我可以在何处详细了解各种应用服务计划的配额和限制？
 
@@ -179,7 +173,7 @@ Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行�
 
 如果使用应用服务的本地缓存功能，则应用服务实例的日志文件和数据文件夹的文件夹结构会受影响。 使用本地缓存时，会在存储日志文件和数据文件夹中创建子文件夹。 子文件夹使用命名模式“唯一标识符”+ 时间戳。 每个子文件夹都对应于一个 VM 实例，其中的 Web 应用正在运行或已运行。
 
-若要确定是否在使用本地缓存，请检查应用服务“应用程序设置”选项卡。如果使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
+若要确定是否正在使用本地缓存，请检查应用服务**应用程序设置**选项卡。如果正在使用本地缓存，则应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 设置为 `Always`。
 
 如果未使用本地缓存并且遇到此问题，请提交支持请求。
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595131"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687643"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -65,7 +65,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 您可以使用 `cap-mbps` 标志将上限设置为吞吐量数据速率。 例如，以下命令的大写吞吐量为每秒 `10` 兆字节（MB）。
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
 传输小文件时吞吐量可能会下降。 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量来提高吞吐量。 此变量指定可能发生的并发请求数。  
@@ -97,7 +97,7 @@ azcopy cap-mbps 10
 
 AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并解决任何潜在问题。 
 
-日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED` 和 `DOWNLOADFAILED`）、完整路径和失败的原因。
+日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED`和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
 默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE$\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但你可以根据需要更改该位置。
 
@@ -181,7 +181,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 默认情况下，AzCopy 日志级别设置为 `INFO`。 如果要减少日志详细级别以节省磁盘空间，请使用 ``--log-level`` 选项覆盖此设置。 
 
-可用的日志级别有： `NONE`、`DEBUG`、`INFO`、`WARNING`、`ERROR`、`PANIC` 和 `FATAL`。
+可用的日志级别有： `NONE`、`DEBUG`、`INFO`、`WARNING`、`ERROR`、`PANIC`和 `FATAL`。
 
 ## <a name="remove-plan-and-log-files"></a>删除计划和日志文件
 

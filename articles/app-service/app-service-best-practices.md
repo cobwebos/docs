@@ -1,27 +1,20 @@
 ---
-title: 最佳做法 - Azure 应用服务
-description: 了解有关 Azure 应用服务的最佳实践和故障排除步骤。
-services: app-service
-documentationcenter: ''
+title: 最佳实践
+description: 了解 Azure App Service 中运行的应用程序的最佳实践和常见故障排除方案。
 author: dariagrigoriu
-manager: erikre
-editor: mollybos
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071616"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671493"
 ---
-# <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
+# <a name="best-practices-for-azure-app-service"></a>Azure 应用服务最佳实践
 本文汇总了有关使用 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)的最佳实践。 
 
 ## <a name="colocation"></a>共置
@@ -38,7 +31,7 @@ ms.locfileid: "70071616"
 ## <a name="CPUresources"></a>当应用占用的 CPU 比预期更多时
 如果通过监视或者参考服务建议，发现应用消耗的 CPU 超出预期，或者反复出现 CPU 高峰，请考虑向上缩放或向外缩放应用服务计划。 如果应用程序是有状态的，则纵向扩展是唯一选项；如果应用程序是无状态的，则横向扩展提供更高的灵活性和更大的缩放潜力。 
 
-有关“有状态”与“无状态”应用程序的详细信息，可以观看此视频：[在 Azure 应用服务上计划可缩放的端到端多层应用程序](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 有关应用服务缩放和自动缩放选项的详细信息，请参阅[在 Azure 应用服务中缩放 Web 应用](manage-scale-up.md)。  
+有关 "有状态" 与 "无状态" 应用程序的详细信息，请观看此视频：[在 Azure App Service 上规划可缩放的端到端多层应用程序](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 有关应用服务缩放和自动缩放选项的详细信息，请参阅[在 Azure 应用服务中缩放 Web 应用](manage-scale-up.md)。  
 
 ## <a name="socketresources"></a>当套接字资源耗尽时
 耗尽出站 TCP 连接的一个常见原因是使用的客户端库，未实施为重复使用 TCP 连接，或者使用了较高级别的协议（如 HTTP），因而未使用 Keep-Alive。 请查看应用服务计划中的应用引用的每个库，以确保在代码中配置或访问这些库时，能够有效地重复使用出站连接。 此外，请遵循有关正确执行创建和发布或清理操作的库指导文档，以避免连接泄漏。 在展开此类客户端库调查的过程中，可以通过向外扩展到多个实例来消除影响。

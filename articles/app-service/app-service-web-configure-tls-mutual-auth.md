@@ -1,37 +1,28 @@
 ---
-title: 配置 TLS 相互身份验证 - Azure 应用服务
-description: 了解如何将应用配置为使用 TLS 客户端证书身份验证。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: 配置 TLS 相互身份验证
+description: 了解如何在 TLS 上通过身份验证的客户端证书。 Azure App Service 可以使客户端证书可用于验证的应用程序代码。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/01/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: aa4d0b5089c07cbbeb3d40224518b9eb9a927585
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271698"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672126"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure App Service 配置 TLS 相互身份验证
 
-通过为 Azure 应用服务应用启用不同类型的身份验证可以限制对网站的访问。 若要实现此目的，一种方法是通过 TLS/SSL 发送客户端请求时请求客户端证书，然后验证该证书。 此机制称为 TLS 相互身份验证或客户端证书身份验证。 本文介绍如何将应用设置为使用客户端证书身份验证。
+通过为 Azure 应用服务应用启用不同类型的身份验证可以限制对网站的访问。 执行此操作的一种方法是在客户端请求通过 TLS/SSL 并验证证书时请求客户端证书。 此机制称为 TLS 相互身份验证或客户端证书身份验证。 本文介绍如何将应用设置为使用客户端证书身份验证。
 
 > [!NOTE]
-> 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。
+> 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则不应允许通过 HTTP 对应用程序发出请求。
 >
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
+若要将应用设置为需要客户端证书，需要将应用的 `clientCertEnabled` 设置设置为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -48,11 +39,11 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 
-在应用服务中，请求的 SSL 终端是在前端负载均衡器上发生的。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
+在应用服务中，请求的 SSL 终止发生在前端负载均衡器上。 在[启用客户端证书](#enable-client-certificates)的情况下，将请求转发到应用代码时，应用服务会使用客户端证书注入 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而是将其转发到你的应用。 应用代码负责验证客户端证书。
 
-对于 ASP.NET，可以通过 **HttpRequest.ClientCertificate** 属性提供客户端证书。
+对于 ASP.NET，客户端证书通过**HttpRequest. ClientCertificate**属性提供。
 
-对于其他应用程序堆栈（Node.js、PHP 等），可以通过 `X-ARR-ClientCert` 请求标头中的 base64 编码值在应用中提供客户端证书。
+对于其他应用程序堆栈（node.js、PHP 等），可通过 `X-ARR-ClientCert` 请求标头中的 base64 编码值在应用中使用客户端证书。
 
 ## <a name="aspnet-sample"></a>ASP.NET 示例
 
@@ -180,7 +171,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="nodejs-sample"></a>Node.js 示例
 
-以下 Node.js 示例代码获取 `X-ARR-ClientCert` 标头，并使用 [node-forge](https://github.com/digitalbazaar/forge) 将 base64 编码的 PEM 字符串转换为证书对象，然后验证该对象：
+以下 node.js 示例代码获取 `X-ARR-ClientCert` 的标头，并使用[节点伪造](https://github.com/digitalbazaar/forge)将 base64 编码的 PEM 字符串转换为证书对象并对其进行验证：
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';

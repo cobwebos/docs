@@ -1,25 +1,18 @@
 ---
-title: 网络部署功能-Azure App Service |Microsoft Docs
-description: 如何使用各种应用服务网络功能
+title: 网络功能
+description: 了解 Azure App Service 中的网络功能，以及网络所需的安全或功能所需的功能。
 author: ccompy
-manager: stefsch
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928510"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672334"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -34,7 +27,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 入站功能 | 出站功能 |
 |---------------------|-------------------|
 | 应用分配的地址 | 混合连接 |
-| 访问限制 | 需要网关的 VNet 集成 |
+| 访问限制 | 网关所需的 VNet 集成 |
 | 服务终结点 | VNet 集成（预览版） |
 
 除非另有说明，否则所有功能都可以一起使用。 可以混合使用这些功能来解决各种问题。
@@ -43,7 +36,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 对于任何给定用例，可以通过几种方法解决此问题。  使用正确的功能有时是由于仅用例本身之外的原因。 下面的入站用例建议如何使用应用服务网络功能来解决有关控制传入应用的流量的问题。 
  
-| 入站用例 | 功能 |
+| 入站用例 | Feature |
 |---------------------|-------------------|
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 不共享、应用的专用入站地址 | 应用分配的地址 |
@@ -57,10 +50,10 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 以下出站用例建议如何使用应用服务网络功能来解决应用的出站访问需求。 
 
-| 出站用例 | 功能 |
+| 出站用例 | Feature |
 |---------------------|-------------------|
 | 在同一区域中访问 Azure 虚拟网络流入量中的资源 | VNet 集成 </br> ASE |
-| 网络流入量不同的区域访问 Azure 虚拟中的资源 | 需要网关的 VNet 集成 </br> ASE 和 VNet 对等互连 |
+| 网络流入量不同的区域访问 Azure 虚拟中的资源 | 网关所需的 VNet 集成 </br> ASE 和 VNet 对等互连 |
 | 访问通过服务终结点保护的资源 | VNet 集成 </br> ASE |
 | 访问未连接到 Azure 的专用网络中的资源 | 混合连接 |
 | 跨 ExpressRoute 线路访问资源 | VNet 集成（目前限制为 RFC 1918 地址） </br> ASE | 
@@ -137,11 +130,11 @@ Azure App Service 扩展单元支持每个部署中的多个客户。 免费和�
 
 尽管混合连接适用于开发，但也可用于众多的生产应用程序。 它非常适合用于访问 web 服务或数据库，但不适用于涉及创建多个连接的情况。 
 
-### <a name="gateway-required-vnet-integration"></a>需要网关的 VNet 集成 
+### <a name="gateway-required-vnet-integration"></a>网关所需的 VNet 集成 
 
 通过网关所需的应用服务 VNet 集成功能，你的应用可以向 Azure 虚拟网络发出**出站**请求。 此功能的工作原理是将应用运行所在的主机连接到 VNet 上具有点到站点 VPN 的虚拟网络网关。 当你配置该功能时，你的应用将获取分配给每个实例的点到站点地址之一。 此功能可让你访问任何区域中的经典或资源管理器 Vnet 中的资源。 
 
-![需要网关的 VNet 集成](media/networking-features/gw-vnet-integration.png)
+![网关所需的 VNet 集成](media/networking-features/gw-vnet-integration.png)
 
 此功能解决了访问其他 Vnet 中的资源的问题，甚至可用于通过 VNet 连接到其他 Vnet 甚至本地。 它不适用于 ExpressRoute 连接的 Vnet，但会与站点到站点 VPN 连接网络一起使用。 从应用服务环境（ASE）中的应用程序中使用此功能通常是不正确的，因为 ASE 已在 VNet 中。 此功能的解决用例如下：
 

@@ -1,26 +1,17 @@
 ---
-title: 身份验证和授权 - Azure 应用服务 | Microsoft Docs
-description: 概念性参考和概述：Azure 应用服务的身份验证/授权功能
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: 身份验证和授权
+description: 了解 Azure App Service 中内置的身份验证和授权支持，并了解它如何帮助保护应用免受未经授权的访问。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808754"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672249"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中执行身份验证和授权
 
@@ -32,8 +23,10 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
-> [!NOTE]
-> 无需使用应用服务进行身份验证和授权。 许多 Web 框架绑定了安全功能，你可以根据需要使用不同的功能。 如果所需的灵活性超出了应用服务能够提供的范畴，还可以编写自己的实用工具。  
+> [!IMPORTANT]
+> 对于身份验证/AuthO，无需使用应用服务。 许多 Web 框架绑定了安全功能，你可以根据需要使用不同的功能。 如果所需的灵活性超出了应用服务能够提供的范畴，还可以编写自己的实用工具。  
+>
+> 但是，如果你与任何非应用服务选项进行远程身份验证，请记住， [Chrome 80 对 cookie 的 SameSite 实现（](https://www.chromestatus.com/feature/5088147346030592) 2020 年3月版的发布日期）进行重大更改，并且你的应用程序的身份验证机制可能会在客户端浏览器更新时中断。 ASP.NET Core 文档包含有关如何在应用中处理此操作的信息，请参阅[HTTP： Browser SameSite 更改影响身份验证](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication)。 它包含有关如何针对主要浏览器测试此重大更改的有用指导，而不考虑是否使用 ASP.NET Core。
 >
 
 有关特定于本机移动应用的信息，请参阅[使用 Azure 应用服务对移动应用进行用户身份验证和授权](../app-service-mobile/app-service-mobile-auth.md)。

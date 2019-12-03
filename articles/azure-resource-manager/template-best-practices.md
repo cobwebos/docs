@@ -1,14 +1,14 @@
 ---
-title: 模板最佳实践
+title: 模板的最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d4cf4364b2e835db3d53fa64682a99710ceb2b29
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150297"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689105"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -20,7 +20,7 @@ ms.locfileid: "74150297"
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 
+将模板大小限制为 4 MB，每个参数文件大小限制为 64 KB。 4 MB 的限制适用于通过迭代资源定义和变量和参数的值展开后，模板的最终状态。 
 
 还将受限于：
 
@@ -32,13 +32,13 @@ ms.locfileid: "74150297"
 
 通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](resource-group-linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](resource-manager-objects-as-parameters.md)。
 
-## <a name="resource-group"></a>资源组
+## <a name="resource-group"></a>Resource group
 
-将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
+将资源部署到资源组时，资源组将存储资源的相关元数据。 元数据存储在资源组的位置。
 
 如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -93,9 +93,9 @@ ms.locfileid: "74150297"
 
 * 请勿为资源类型的 API 版本使用参数。 资源的属性和值可能会因版本号的不同而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 并且会在模板中将 API 版本硬编码。
 
-* 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
+* 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果使用 `allowedValues` 过于广泛，则可能会阻止列表保持最新状态，从而阻止有效的部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 **New-AzResourceGroupDeployment** cmdlet 中的“ResourceGroupName”[](/powershell/module/az.resources/new-azresourcegroupdeployment)参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -144,7 +144,7 @@ ms.locfileid: "74150297"
 
 使用[变量](template-variables.md)时，以下信息可以提供帮助：
 
-* 对变量名称使用混合大小写。
+* 对变量名称使用 camel 大小写。
 
 * 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
 
@@ -204,7 +204,7 @@ ms.locfileid: "74150297"
    }
    ```
    
-   如果存储帐户部署在正在创建的同一模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 apiVersion。 下面的示例显示了简化的语法：
+   如果在创建的同一模板中部署存储帐户，且存储帐户的名称不与模板中的其他资源共享，则在引用资源时，无需指定 provider 命名空间或 apiVersion。 下面的示例显示了简化的语法：
    
    ```json
    "diagnosticsProfile": {
@@ -276,23 +276,6 @@ ms.locfileid: "74150297"
    > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 **protectedSettings** 属性。
    > 
    > 
-
-## <a name="outputs"></a>Outputs
-
-如果使用模板创建公共 IP 地址，请包含 [outputs 节](template-outputs.md)，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="next-steps"></a>后续步骤
 

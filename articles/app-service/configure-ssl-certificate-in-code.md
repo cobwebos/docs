@@ -1,35 +1,26 @@
 ---
-title: 在代码 Azure App Service 中使用 SSL 证书 |Microsoft Docs
-description: 了解如何使用客户端证书连接到需要它们的远程资源。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 在代码中使用 SSL 证书
+description: 了解如何在代码中使用客户端证书。 使用客户端证书向远程资源进行身份验证，或使用它们运行加密任务。
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271281"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671896"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在代码中使用 SSL 证书 Azure App Service
 
-在应用程序代码中，你可以访问[添加到应用服务的公共或私有证书](configure-ssl-certificate.md)。 应用代码可充当客户端和访问需要证书身份验证的外部服务，或者可能需要执行加密任务。 本操作方法指南介绍如何在应用程序代码中使用公共或专用证书。
+在应用程序代码中，你可以访问[添加到应用服务的公共或私有证书](configure-ssl-certificate.md)。 应用代码可充当客户端和访问需要证书身份验证的外部服务，或者可能需要执行加密任务。 本操作方法指南演示如何在应用程序代码中使用公共或私有证书。
 
-这种在代码中使用证书的方法利用应用服务中的 SSL 功能，要求应用位于“基本”层或更高层。 如果你的应用处于 "**免费**" 或 "**共享**" 层，你可以[在应用存储库中包含该证书文件](#load-certificate-from-file)。
+在代码中使用证书的这种方法将使用应用服务中的 SSL 功能，这要求你的应用位于**基本**层或更高级别。 如果你的应用处于 "**免费**" 或 "**共享**" 层，你可以[在应用存储库中包含该证书文件](#load-certificate-from-file)。
 
 让应用服务管理 SSL 证书时，可以分开维护证书和应用程序代码，并保护敏感数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 按照本操作方法指南操作：
 
@@ -38,7 +29,7 @@ ms.locfileid: "74271281"
 
 ## <a name="find-the-thumbprint"></a>查找指纹
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” **“** app-name>” >  **\<** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”。
 
 在应用程序的左侧导航栏中，选择 " **TLS/SSL 设置**"，然后选择 "**私钥证书（.pfx）** " 或 "**公钥证书（.cer）** "。
 
@@ -46,7 +37,7 @@ ms.locfileid: "74271281"
 
 ![复制证书指纹](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="make-the-certificate-accessible"></a>使证书可供访问
+## <a name="make-the-certificate-accessible"></a>使证书可访问
 
 若要在应用代码中访问证书，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将其指纹添加到 `WEBSITE_LOAD_CERTIFICATES` 应用设置：
 
@@ -54,7 +45,7 @@ ms.locfileid: "74271281"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-若要使所有证书可供访问，请将值设置为 `*`。
+若要使所有证书都可访问，请将值设置为 `*`。
 
 ## <a name="load-certificate-in-windows-apps"></a>在 Windows 应用中加载证书
 
@@ -133,7 +124,7 @@ var cert = new X509Certificate2(bytes);
 
 ## <a name="load-certificate-from-file"></a>从文件加载证书
 
-例如，如果需要加载手动上传的证书文件，则最好使用[FTPS](deploy-ftp.md)而不是[Git](deploy-local-git.md)来上载证书。 应将专用证书之类的敏感信息置于源代码管理之外。
+例如，如果需要加载手动上传的证书文件，则最好使用[FTPS](deploy-ftp.md)而不是[Git](deploy-local-git.md)来上载证书。 你应将敏感数据（如私有证书）从源代码管理中排除。
 
 > [!NOTE]
 > 即使您从文件中加载证书，Windows 上的 ASP.NET 和 ASP.NET Core 也必须访问证书存储区。 若要在 Windows .NET 应用中加载证书文件，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中使用以下命令加载当前用户配置文件：
@@ -142,7 +133,7 @@ var cert = new X509Certificate2(bytes);
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
 >
-> 这种在代码中使用证书的方法利用应用服务中的 SSL 功能，要求应用位于“基本”层或更高层。
+> 在代码中使用证书的这种方法将使用应用服务中的 SSL 功能，这要求你的应用位于**基本**层或更高级别。
 
 以下C#示例从应用中的相对路径加载公共证书：
 

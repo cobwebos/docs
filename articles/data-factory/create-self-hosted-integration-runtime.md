@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4662e5047e981c74d2422830bc5b152dae738337
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559287"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672295"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -105,6 +105,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | properties                                                    | 描述                                                  | 需要 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | No       |
+| **RegisterNewNode**"`<AuthenticationKey>`"`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | No       |
 | **EnableRemoteAccess**"`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问以设置高可用性群集。 或者对自承载 IR 直接设置凭据，而无需通过 Azure 数据工厂。 使用 AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet 从同一网络中的远程计算机执行后一**项**操作。 | No       |
 | **EnableRemoteAccessInContainer**"`<port>`" ["`<thumbprint>`"] | 当节点在容器中运行时，允许对当前节点进行远程访问。 | No       |
 | **DisableRemoteAccess**                                         | 禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 仍可正常工作。 只要在与自承载 IR 节点相同的计算机上执行 cmdlet，就会执行此行为。 | No       |
@@ -119,7 +120,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | No       |
 | **TurnOffAutoUpdate**                                           | 关闭自承载集成运行时自动更新。       | No       |
 | **SwitchServiceAccount**"`<domain\user>`" ["`<password>`"]           | 将 DIAHostService 设置为作为新帐户运行。 对于系统帐户和虚拟帐户，使用空密码 ""。 | No       |
-| **Loglevel** `<logLevel>`                                       | 将 Windows 事件跟踪（ETW）日志级别设置为 "**关闭**"、"**错误**"、"**详细**" 或 "**全部**"。 此属性主要由 Microsoft 支持部门工程师在调试安装时使用。 | No       |
+
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
 

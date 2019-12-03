@@ -1,33 +1,25 @@
 ---
-title: 从应用服务环境安全地连接到后端资源 - Azure
-description: 了解如何从应用服务环境安全连接到后端资源。
-services: app-service
-documentationcenter: ''
+title: 连接到后端 v1
+description: 了解如何从应用服务环境安全连接到后端资源。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069957"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687297"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>从应用服务环境安全地连接到后端资源
-## <a name="overview"></a>概述
-由于应用服务环境始终在 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建, 因此, 从应用服务环境到其他后端资源的出站连接可以独占方式通过虚拟网络进行流式传输。  随着 2016 年 6 月的最新更改，可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。  
+由于**始终在 Azure**资源管理器虚拟网络**或**经典部署模型[虚拟][virtualnetwork]网络中创建应用服务环境，因此，从应用服务环境到其他后端资源的出站连接可以独占方式通过虚拟网络进行流式传输。  随着 2016 年 6 月的最新更改，可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。  
 
 例如，SQL Server 可能在已锁定端口 1433 的虚拟机群集上运行。  此终结点可能已纳入 ACL，只允许从相同虚拟网络上的其他资源进行访问。  
 
-另一个示例是, 敏感终结点可能在本地运行, 并通过[站点到站点][SiteToSite]或[azure ExpressRoute][ExpressRoute]连接连接到 Azure。  因此，只有虚拟网络中已连接到站点到站点或 ExpressRoute 隧道的资源能够访问本地终结点。
+另一个示例是，敏感终结点可能在本地运行，并通过[站点到站点][SiteToSite]或[azure ExpressRoute][ExpressRoute]连接连接到 Azure。  因此，只有虚拟网络中已连接到站点到站点或 ExpressRoute 隧道的资源能够访问本地终结点。
 
 在上述这些方案中，在应用服务环境上运行的应用能够安全地连接到各种服务器和资源。  从应用服务环境中运行的应用程序发往相同虚拟网络中专用终结点（或连接到相同的虚拟网络）的出站流量，只通过虚拟网络发送。  发往专用终结点的出站流量不通过公共 Internet 发送。
 
@@ -49,7 +41,7 @@ ms.locfileid: "70069957"
 
 有两种方法可限制发往此终结点的流量：
 
-* [网络访问控制列表][NetworkAccessControlLists](网络 Acl)
+* [网络访问控制列表][NetworkAccessControlLists]（网络 acl）
 * [网络安全组][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>使用网络 ACL 限制访问
@@ -87,7 +79,7 @@ ms.locfileid: "70069957"
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅 [Introduction to App Service Environment][IntroToAppServiceEnvironment]（应用服务环境简介）
 
-有关控制到应用服务环境的入站流量的详细信息, 请参阅[控制到应用服务环境的入站流量][ControlInboundASE]
+有关控制到应用服务环境的入站流量的详细信息，请参阅[控制到应用服务环境的入站流量][ControlInboundASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

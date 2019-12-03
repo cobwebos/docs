@@ -26,6 +26,8 @@
       href: spring-cloud-tutorial-scale-manual.md
     - name: 使用分布式跟踪功能和 App Insights 监视应用程序
       href: spring-cloud-tutorial-distributed-tracing.md
+    - name: 使用警报和操作组监视 Spring Cloud 资源
+      href: spring-cloud-tutorial-alerts-action-groups.md
     - name: 将应用程序绑定到 Azure CosmosDB
       href: spring-cloud-tutorial-bind-cosmos.md
     - name: 将应用程序与 Azure Redis 缓存绑定

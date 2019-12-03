@@ -1,25 +1,16 @@
 ---
-title: 使用 ZIP 或 WAR 文件部署代码 - Azure 应用服务 | Microsoft Docs
+title: 使用 ZIP 或 WAR 文件部署代码
 description: 了解如何使用 ZIP 文件（或者对于 Java 开发人员而言使用 WAR 文件）将应用部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 83951f6408094b8d1e04d19650a5f2ef596be988
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801144"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670227"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -31,7 +22,7 @@ ms.locfileid: "70801144"
 - 启用默认生成过程的选项，包括包还原。
 - [部署自定义](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)，包括运行部署脚本。  
 - 部署日志。 
-- 文件大小上限是 2048 MB。
+- 文件大小限制为 2048 MB。
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
@@ -39,7 +30,7 @@ WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本文中的步骤：
 
@@ -55,7 +46,7 @@ WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件�
 
 此目录应包含 Web 应用的入口文件，例如 _index.html_、_index.php_ 和 _app.js_。 它还可能包含包管理文件，如 _project.json_、_composer.json_、_package.json_、_bower.json_ 和 _requirements.txt_。
 
-创建一个包含项目中的所有内容的 zip 存档。 以下命令使用您终端中的默认工具执行操作：
+创建一个包含项目所有内容的 zip 文件。 以下命令使用您终端中的默认工具执行操作：
 
 ```
 # Bash
@@ -82,7 +73,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。
 
-默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用与[Git 部署](deploy-local-git.md)相同的生成自动化，请在`SCM_DO_BUILD_DURING_DEPLOYMENT` [Cloud Shell](https://shell.azure.com)中运行以下命令，设置应用设置：
+默认情况下，部署引擎假定 ZIP 文件已准备就绪，可以按原样运行，不会运行任何生成自动化。 若要启用与[Git 部署](deploy-local-git.md)相同的生成自动化，请在[Cloud Shell](https://shell.azure.com)中运行以下命令，设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -96,7 +87,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="deploy-war-file"></a>部署 WAR 文件
 
-若要将 WAR 文件部署到应用服务，请将 POST 请求`https://<app_name>.scm.azurewebsites.net/api/wardeploy`发送到。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。
+若要将 WAR 文件部署到应用服务，请将 POST 请求发送到 `https://<app_name>.scm.azurewebsites.net/api/wardeploy`。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。
 
 对于 HTTP 基本身份验证，需使用应用服务部署凭据。 若要了解如何设置部署凭据，请参阅[设置和重置用户级别凭据](deploy-configure-credentials.md#userscope)。
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128777"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672577"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -21,6 +21,7 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 ## <a name="before-you-begin"></a>开始之前
 
 在继续阅读本文之前，请确保已安装 FarmBeats，并从 IoT 收集了历史数据。
+你还需要启用合作伙伴访问权限，如以下步骤中所述。
 
 ## <a name="enable-partner-access"></a>启用合作伙伴访问
 
@@ -81,16 +82,16 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 |  ProductCode                    |  设备产品代码或型号名称/编号。 例如，EnviroMonitor # 6800。  |
 |            端口          |     端口名称和类型（数字/模拟）
 |     名称                 |  标识资源的名称。 例如，模型名称/产品名称。
-      说明     | 提供模型的有意义说明
+      描述     | 提供模型的有意义说明
 |    属性          |    制造商提供的其他属性   |
 |    **设备**             |                      |
 |   DeviceModelId     |     关联设备模型的 ID  |
 |  hardwareId          | 设备的唯一 ID，如 MAC 地址等。
 |  reportingInterval        |   报告间隔（秒）
-|  位置            |  设备纬度（-90 到 + 90）/Longitude （-180 至180）/Elevation （米）   
+|  Location            |  设备纬度（-90 到 + 90）/Longitude （-180 至180）/Elevation （米）   
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则相同的用户定义名称应传播到 FarmBeats。|
-|     说明       |      提供有意义的说明  |
+|     描述       |      提供有意义的说明  |
 |     属性    |  制造商提供的其他属性
 |     **传感器型号**        |          |
 |       类型（模拟、数字）          |      传感器类型（模拟或数字）       |
@@ -102,16 +103,16 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 |        SensorMeasures > 单元              | 传感器遥测数据的单位。 以下是系统定义的单位： NoUnit、摄氏、华氏、开氏度、Rankine、Pascal、水星、PSI、毫米、厘米、米、英寸、英尺、英里、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、学位、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole，MilliSiemensPerCentiMeter，Centibar，DeciSiemensPerMeter，KiloPascal，VolumetricIonContent，升，MilliLiter，Seconds，UnixTimestamp，MicroMolPerMeterSquaredPerSecond，InchesPerHour，若要添加更多，请参阅/ExtendedType API。|
 |    SensorMeasures > aggregationType    |  值可以是 "无"、"平均值"、"最大值" 或 "StandardDeviation"  |
 |          名称            | 标识资源的名称。 例如，模型名称/产品名称。  |
-|    说明        | 提供模型的有意义说明  |
+|    描述        | 提供模型的有意义说明  |
 |   属性       |  制造商提供的其他属性  |
 |    **器**      |          |
 | hardwareId          |   制造商设置的传感器的唯一 ID |
 |  sensorModelId     |    关联的传感器型号的 ID   |
-| location          |  传感器纬度（-90 到 + 90）/Longitude （-180-180）/Elevation （米）|
+| 位置          |  传感器纬度（-90 到 + 90）/Longitude （-180-180）/Elevation （米）|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
 |    DeviceID  |    传感器连接到的设备的 ID     |
 | 名称            |   标识资源的名称。 例如，"传感器名称/产品名称" 和 "型号/产品代码"。|
-|    说明      | 提供有意义的说明 |
+|    描述      | 提供有意义的说明 |
 |    属性        |制造商提供的其他属性 |
 
 有关对象的详细信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。

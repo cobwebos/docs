@@ -1,31 +1,25 @@
 ---
-title: 排查域和 SSL 证书问题 - Azure 应用服务 | Microsoft Docs
-description: 排查 Azure 应用服务中的域和 SSL 证书问题
-services: app-service\web
-documentationcenter: ''
+title: 域和 SSL 证书疑难解答
+description: 查找在 Azure App Service 中配置域或 SSL 证书时可能遇到的常见问题的解决方案。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470146"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688340"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
 本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,7 +32,7 @@ ms.locfileid: "73470146"
 
 添加 SSL 绑定时出现以下错误消息：
 
-“未能添加 SSL 绑定。 无法设置现有 VIP 的证书，因为另一个 VIP 已使用该证书。”
+“未能添加 SSL 绑定。 无法设置现有 VIP 的证书，因为另一个 VIP 已使用此证书。”
 
 #### <a name="cause"></a>原因
 
@@ -90,13 +84,13 @@ ms.locfileid: "73470146"
 - 订阅已达到允许的购买限制。
 
     **解决方法**：对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 应用服务证书标记为欺诈。 收到以下错误消息：“证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
+- 应用服务证书标记为欺诈。 收到以下错误消息：“证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果在24小时内证书不会变得可用，请联系 Azure 支持。 "
 
     **解决方法**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请遵循以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。
-    3. 选择“证书配置” **“步骤 2: 验证”** “域验证”。 >  >  此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    3. 选择“证书配置” > “步骤 2: 验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 
@@ -118,7 +112,7 @@ ms.locfileid: "73470146"
 
 - 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
 - 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
-- 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突，并阻止域解析。 
+- 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突并防止域被解析。 
 
 **原因 2** 
 
@@ -137,7 +131,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 #### <a name="solution"></a>解决方案
 
 - 咨询订阅管理员，确保有权将主机名添加到应用。
-- 如果需要更多子域，我们建议将域托管服务更改为 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 如果需要更多的子域，建议你将托管的域更改为 Azure 域名服务（DNS）。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
 
 ### <a name="dns-cant-be-resolved"></a>无法解析 DNS
 
@@ -167,7 +161,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 订阅所有者可能意外删除了该域。
 
 #### <a name="solution"></a>解决方案
-如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请确保在搜索框中键入准确的域名。）此域不会再为你收费。 如果该域的删除时间超过七天，请求助 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来还原该域。
+如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请确保在搜索框中键入准确的域名。）此域不会再为你收费。 如果域以前被删除了7天以上，请联系[Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)部门以获取有关还原域的帮助。
 
 ## <a name="domain-problems"></a>域问题
 
@@ -217,7 +211,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 1.  创建名为 {Domain Verification Token}.html 的 HTML 文件。 此文件的内容应为域验证令牌的值。
 3.  将此文件上传到托管域的 Web 服务器的根目录。
-4.  选择“刷新”，检查证书状态。 验证可能需要几分钟才能完成。
+4.  选择“刷新”检查证书状态。 验证可能需要几分钟才能完成。
 
 例如，如果为 azure.com 购买了域验证令牌为 1234abcd 的标准证书，则对 https://azure.com/1234abcd.html 发出的 Web 请求应返回 1234abcd。 
 
@@ -272,58 +266,58 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
-**购买网站的自定义域后是否必须配置该域？**
+**购买我的网站后，是否需要为我的网站配置我的自定义域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请观看[Azure App Service 自助：在 Channel9 上添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。
+从 Azure 门户购买域时，应用服务应用程序将自动配置为使用该自定义域。 无需执行任何其他步骤。 有关详细信息，请观看[Azure App Service 自助：在 Channel9 上添加自定义域名](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)。
 
-**是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
+**是否可以使用在 Azure 门户中购买的域来改为指向 Azure VM？**
 
-是的，可将该域指向 VM。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
+是的，你可以将域指向 VM。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
 **我的域是由 GoDaddy 还是 Azure DNS 托管？**
 
-应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 
+应用服务域使用 GoDaddy 进行域注册，并 Azure DNS 来托管域。 
 
 **我已启用自动续订，但仍通过电子邮件收到域的续订通知。我该怎么办？**
 
-如果你已启用自动续订，则不需要执行任何操作。 电子邮件通知旨在告诉你该域即将过期，如果未启用自动续订，则需要手动续订。
+如果已启用自动续订，则无需执行任何操作。 提供了通知电子邮件，通知你域接近过期，如果未启用自动续订，则手动续订。
 
-**在 Azure DNS 中托管域是否要付费？**
+**是否需要为域托管 Azure DNS 收费？**
 
-最初的域购买费用仅适用于域注册。 除了注册费用以外，Azure DNS 还会根据用量收费。 有关详细详细，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+域购买的初始成本仅适用于域注册。 除注册开销外，还会根据你的使用情况产生 Azure DNS 的费用。 有关详细信息，请参阅[Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)了解更多详细信息。
 
 **我之前从 Azure 门户购买了域，并希望从 GoDaddy 托管到 Azure DNS 托管。如何执行此操作？**
 
-不一定非要迁移到 Azure DNS 托管。 如果你确实想要迁移到 Azure DNS，Azure 门户中的域管理体验会提供有关转移到 Azure DNS 的步骤信息。 如果域通过应用服务购买的，则从 GoDaddy 托管迁移到 Azure DNS 的过程相对较为顺畅。
+迁移到 Azure DNS 托管并不是必需的。 如果你确实想要迁移到 Azure DNS，Azure 门户中的域管理体验提供了有关迁移到 Azure DNS 所需步骤的信息。 如果域是通过应用服务购买的，则从 GoDaddy 托管到 Azure DNS 的迁移是相对无缝的过程。
 
-**如果通过应用服务域购买域，是否可以在 GoDaddy 而不是 Azure DNS 中托管该域？**
+**我想从应用服务域购买我的域，但可以在 GoDaddy 上（而不是 Azure DNS）托管域？**
 
-从 2017 年 7 月 24 日开始，在门户中购买的应用服务域将托管在 Azure DNS 中。 如果你想要使用其他托管提供商，则必须转到其网站以获取域托管解决方案。
+从2017年7月24日开始，在门户中购买的应用服务域托管在 Azure DNS 上。 如果希望使用不同的托管提供商，则必须访问其网站以获取域托管解决方案。
 
-**是否需要支付域的隐私保护费用？**
+**我是否需要为域的隐私保护付费？**
 
-通过 Azure 门户购买域时，可以选择免费添加隐私保护。 这是通过 Azure 应用服务购买域所能获得的权益之一。
+通过 Azure 门户购买域时，可以选择添加隐私，无需额外付费。 这是通过 Azure App Service 购买域的优点之一。
 
-**如果我不再想要使用我的域，是否可以获得退款？**
+**如果我决定不再需要我的域，是否可以恢复我的资金？**
 
-购买域时，你可以免费试用 5 天，在此期间，可以决定是否要继续使用。 如果在这五天内你决定不需要该域，则不会产生费用。 （.uk 域例外。 购买 .uk 域会立即产生费用，而不能获得退款）。
+当你购买某个域时，你不需要支付5天的费用，在这段时间内，你可以决定不需要该域。 如果你确定不希望该域处于5天内，则不会向你收费。 （英国域是此情况的例外情况。 如果购买的是英国域，则会立即向你收费，并且你无法退还。）
 
-**是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
+**能否在我的订阅中的另一个 Azure App Service 应用中使用该域？**
 
-是的。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
+可以。 在 Azure 门户中访问 "自定义域和 SSL" 边栏选项卡时，将看到已购买的域。 你可以将应用程序配置为使用这些域中的任何一个。
 
-**是否可将域从一个订阅转移到另一个订阅？**
+**是否可以将一个订阅中的域转移到另一个订阅？**
 
-可以使用 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域转移到另一个订阅/资源组。
+可以使用[AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域移到另一个订阅/资源组。
 
-**如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
+**如果当前没有 Azure App Service 应用，如何管理我的自定义域？**
 
 即使没有应用服务 Web 应用，也可以管理域。 域可用于 Azure 服务，例如虚拟机、存储等。如果要将域用于应用服务 Web 应用，则需要包含不在免费应用服务计划中的 Web 应用，以便将域绑定到你的 Web 应用。
 
-**是否可将使用自定义域的 Web 应用移到另一个订阅，或者将其从应用服务环境 v1 移到 v2？**
+**是否可以将包含自定义域的 web 应用移到另一个订阅或从应用服务环境 v1 迁移到 V2？**
 
-是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
+是的，你可以跨订阅移动 web 应用。 按照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导进行操作。 移动 web 应用时有一些限制。 有关详细信息，请参阅[移动应用服务资源的限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
 
-移动 Web 应用之后，自定义域设置中的域的主机名绑定应保持不变。 无需执行额外的步骤即可配置主机名绑定。
+移动 web 应用后，自定义域中的域的主机名绑定应保持不变。 配置主机名绑定不需要执行其他步骤。
