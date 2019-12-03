@@ -1,25 +1,16 @@
 ---
-title: 在 Azure 中购买自定义域名 - 应用服务
-description: 了解如何在 Azure 应用服务中购买 Web 应用的自定义域名。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 购买自定义域名
+description: 了解如何购买应用服务域，并将其用作应用 Azure App Service 的自定义域。
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470398"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672382"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -42,7 +33,7 @@ ms.locfileid: "73470398"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-打开 [Azure 门户](https://portal.azure.com)，并使用 Azure 帐户登录。
+打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
 ### <a name="navigate-to-the-app-in-the-azure-portal"></a>导航到 Azure 门户中的应用
 
@@ -82,7 +73,7 @@ ms.locfileid: "73470398"
 有关 Azure App Service 域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到 "应用服务域"。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
-打开 [Azure 门户](https://portal.azure.com/)，并使用 Azure 帐户登录。
+打开 [Azure 门户](https://portal.azure.com/)，然后使用 Azure 帐户登录。
 
 ### <a name="launch-buy-domains"></a>启动“购买域”
 在“应用服务”选项卡中，单击应用的名称，选择“设置”，并选择“自定义域”
@@ -100,7 +91,7 @@ ms.locfileid: "73470398"
 
 ### <a name="configure-the-domain-purchase"></a>配置域购买
 
-在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 **。** `Enter` 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。
+在“应用服务域”页上的“搜索域”框中，键入要购买的域名并按 `Enter`。 文本框的正下方会显示建议的可用域。 选择要购买的一个或多个域。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
@@ -115,7 +106,7 @@ ms.locfileid: "73470398"
 
 接下来，选择域的所需选项。 参阅下表中的说明：
 
-| 设置 | 建议的值 | 说明 |
+| 设置 | 建议的值 | 描述 |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
 | 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
@@ -125,7 +116,7 @@ ms.locfileid: "73470398"
 单击“法律条款”查看条款和费用，再单击“购买”。
 
 > [!NOTE]
-> 应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+> 应用服务域使用 GoDaddy 进行域注册，并 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 >
 >
 
@@ -244,7 +235,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户的左侧菜单中，选择“所有服务” **“应用服务域”。**  > 
+在 Azure 门户的左侧菜单中，选择“所有服务” > “应用服务域”。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -264,7 +255,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户的左侧菜单中，选择“所有服务” **“应用服务域”。**  > 
+在 Azure 门户的左侧菜单中，选择“所有服务” > “应用服务域”。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -278,7 +269,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 只有在删除所有主机名绑定之后，才能删除应用服务域。
 
-通过选择“...” **“删除”来删除每个主机名绑定。**  >  删除所有绑定后，选择“保存”。
+通过选择“...” > “删除”来删除每个主机名绑定。 删除所有绑定后，选择“保存”。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 

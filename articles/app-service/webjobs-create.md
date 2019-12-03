@@ -1,21 +1,19 @@
 ---
-title: 通过 Web 作业运行后台任务-Azure App Service
-description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
+title: 使用 WebJob 运行后台任务
+description: 了解如何使用 Web 作业在 Azure App Service 中运行后台任务。 从各种脚本格式中进行选择，并使用 CRON 表达式运行它们。
 author: ggailey777
-manager: gwallace
-s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
-ms.service: app-service
+ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 293227352f27a724228136532c88e35fe877feb2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312169"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684199"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure App Service 中通过 Web 作业运行后台任务
 
@@ -79,7 +77,7 @@ when making changes in one don't forget the other two.
 
    | 设置      | 示例值   | 描述  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
+   | 名称 | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
    | 类型 | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **缩放** | 多实例 | 仅适用于连续 Web 作业。 确定程序或脚本是在所有实例还是只在一个实例上运行。 指定要在多个实例上运行的选项不适用于免费或共享[定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
@@ -117,7 +115,7 @@ when making changes in one don't forget the other two.
 
    | 设置      | 示例值   | 描述  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
+   | 名称 | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
    | 类型 | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **触发器** | 手动 | |
@@ -155,7 +153,7 @@ when making changes in one don't forget the other two.
 
    | 设置      | 示例值   | 描述  |
    | ------------ | ----------------- | ------------ |
-   | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
+   | 名称 | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
    | 类型 | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **触发器** | 计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
@@ -169,7 +167,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB 表达式
 
-可以在门户中输入 [NCRONTAB 表达式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
+可以在门户中输入[NCRONTAB 表达式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)，也可以在 web 作业 *.zip*文件的根目录中包含 `settings.job` 文件，如以下示例中所示：
 
 ```json
 {
@@ -177,7 +175,7 @@ when making changes in one don't forget the other two.
 }
 ```
 
-若要了解详细信息，请参阅[计划触发的 Web 作业](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
+若要了解详细信息，请参阅[计划触发的 WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 

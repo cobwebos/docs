@@ -3,12 +3,12 @@ title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463953"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689261"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "74463953"
 载入过程要求从服务提供商的租户和客户的租户中执行操作。 上述所有步骤均可参见本文。
 
 > [!IMPORTANT]
-> 目前，如果订阅使用 Azure Databricks，则无法将订阅（或订阅内的资源组）载入到 Azure 委托资源管理。 同样，如果订阅已注册为通过 Microsoft.ManagedServices 资源提供程序加入，则目前无法为该订阅创建 Databricks 工作区。
+> 目前，如果订阅使用 Azure Databricks，则无法为 Azure 委托资源管理载入订阅（或订阅内的资源组）。 同样，如果订阅已注册要向 Microsoft.ManagedServices 资源提供程序载入，则此时无法为此订阅创建 Databricks 工作区。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租户和订阅详细信息
 
@@ -108,7 +108,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/)模板。 在 Azure 门户的**服务提供商页**中查看产品/服务详细信息时，客户可以看到 **mspOfferName** 和 [mspOfferDescription](view-manage-service-providers.md) 值。
+若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/)模板。 在 Azure 门户的[服务提供商页](view-manage-service-providers.md)中查看产品/服务详细信息时，客户可以看到 **mspOfferName** 和 **mspOfferDescription** 值。
 
 |字段  |定义  |
 |---------|---------|
@@ -121,8 +121,8 @@ az role definition list --name "<roleName>" | grep name
 
 |加入此内容  |使用此 Azure 资源管理器模板  |修改此参数文件 |
 |---------|---------|---------|
-|订阅   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|资源组   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Subscription   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Resource group   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
 |订阅内的多个资源组   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |订阅（使用发布到 Azure 市场的产品/服务时）   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
@@ -335,10 +335,10 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
-- 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。
+- 访问 Azure 门户中的“我的客户”，[查看和管理客户](view-manage-customers.md)。

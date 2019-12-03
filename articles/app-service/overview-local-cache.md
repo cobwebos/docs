@@ -1,27 +1,17 @@
 ---
-title: 本地缓存概述 - Azure 应用服务 | Microsoft Docs
-description: 本文介绍如何针对 Azure 应用服务本地缓存功能执行启用、大小调整和状态查询操作。
-services: app-service
-documentationcenter: app-service
-author: cephalin
-manager: jpconnock
-editor: ''
+title: 本地缓存
+description: 了解本地缓存在 Azure App Service 中的工作原理，以及如何启用、调整大小和查询应用本地缓存的状态。
 tags: optional
-keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
-ms.service: app-service
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/04/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: bce0620ed6be4937c95a2ce01f3d4c175c8bc18d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819661"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687077"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 

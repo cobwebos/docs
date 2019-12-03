@@ -1,25 +1,18 @@
 ---
-title: Azure 应用服务诊断概述 | Microsoft Docs
-description: 了解如何通过应用服务诊断排查应用问题。
+title: 诊断和解决工具
+description: 了解如何通过 Azure 门户中的 "诊断和解决" 工具 Azure App Service 来解决应用程序的问题。
 keywords: 应用服务, azure 应用服务, 诊断, 支持, web 应用, 故障排除, 自助服务
-services: app-service
-documentationcenter: ''
 author: jen7714
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755520"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671636"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 

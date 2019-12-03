@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131975"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672583"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -39,7 +39,17 @@ ms.locfileid: "74131975"
 3. 如果没有**传入消息**，请联系你的设备伙伴。  
 4. 如果有**传入消息**，请联系 farmbeatssupport@microsoft.com 数据中心和加速器日志以及捕获的遥测数据。
 
-请参阅文档中的 "[日志" 部分](#collect-logs-manually)，了解如何下载日志。    
+请参阅文档中的 "[日志" 部分](#collect-logs-manually)，了解如何下载日志。  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>没有 Eventhub 连接字符串
+
+**纠正操作**：访问 Datahub swagger 并执行以下步骤：
+1. 导航到合作伙伴 API
+2. 单击 "> 试用" > 执行
+3. 记下所需的传感器合作伙伴的合作伙伴 id
+4. 返回到合作伙伴 API，并单击 GET/{id}
+5. 指定步骤3中的 id，并单击 "执行"
+6. API 响应应包含 EventHub 连接字符串
 
 ### <a name="device-appears-offline"></a>设备显示脱机
 
@@ -84,7 +94,7 @@ ms.locfileid: "74131975"
 
 ## <a name="accelerator-troubleshooting"></a>加速器疑难解答
 
-### <a name="access-control"></a>Access Control
+### <a name="access-control"></a>访问控制
 
 **添加角色分配时出错**
 
@@ -130,7 +140,7 @@ ms.locfileid: "74131975"
 **作业失败消息**：抱歉，出现了问题。 您尝试访问的页面暂时不可用。 
 
 **纠正操作**：
-1.  在浏览器中打开 Sentinel URL （ https://scihub.copernicus.eu/dhus/)，并检查是否可以访问网站。 
+1.  在浏览器中打开 Sentinel URL （ https://scihub.copernicus.eu/dhus/) ，并检查是否可以访问网站。 
 2.  如果无法访问网站，请检查是否有任何防火墙/公司网络等。正在阻止网站并执行必要的步骤以允许上述 URL。 
 3.  请重新运行失败的作业，或在5-7 天的日期范围内运行附属索引作业，并检查作业是否成功。  
 

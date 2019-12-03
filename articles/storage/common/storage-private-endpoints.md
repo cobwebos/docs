@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227883"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672523"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -31,6 +31,8 @@ ms.locfileid: "74227883"
 专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
 
 VNet 中的应用程序可以**使用相同的连接字符串和要使用的授权机制**，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
+
+可以在使用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 因此，子网中的客户端可以使用专用终结点连接到一个存储帐户，同时使用服务终结点访问其他终结点。
 
 在 VNet 中创建用于存储服务的专用终结点时，会将一个申请批准的许可请求发送到存储帐户所有者。 如果请求创建专用终结点的用户也是存储帐户的所有者，则会自动批准此同意请求。
 
@@ -70,13 +72,13 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 ## <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
-具有专用终结点的存储帐户的 DNS CNAME 资源记录将更新为具有前缀 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建附加到 VNet 的[专用 DNS 区域](../../dns/private-dns-overview.md)，该区域对应于前缀为 "*privatelink*" 的子域，其中包含用于专用终结点的 DNS a 资源记录。
+创建专用终结点时，存储帐户的 DNS CNAME 资源记录将更新为具有前缀 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建一个[专用 dns 区域](../../dns/private-dns-overview.md)，该区域与 "*privatelink*" 子域相对应，其中 dns a 用于专用终结点的资源记录。
 
 当你通过专用终结点在 VNet 外部解析存储终结点 URL 时，它将解析为存储服务的公共终结点。 当从承载专用终结点的 VNet 解析时，存储终结点 URL 解析为专用终结点的 IP 地址。
 
 对于上面所示的示例，存储帐户 "StorageAccountA" 的 DNS 资源记录在托管专用终结点的 VNet 之外进行解析时将为：
 
-| 名称                                                  | 类型  | 值                                                 |
+| 名称                                                  | Type  | Value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<存储服务公共终结点\>                   |
@@ -86,14 +88,14 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 托管专用终结点的 VNet 中的客户端解析后，StorageAccountA 的 DNS 资源记录将为：
 
-| 名称                                                  | 类型  | 值                                                 |
+| 名称                                                  | Type  | Value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
 利用此方法，可以对承载专用终结点的 VNet 中的客户端以及 VNet 外部的客户端**使用相同的连接字符串**来访问存储帐户。
 
-如果在网络上使用自定义 DNS 服务器，则客户端必须能够将存储帐户终结点的 FQDN 解析到专用终结点 IP 地址。 为此，你必须将你的 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或使用专用终结点 IP 地址为 "*StorageAccountA.privatelink.blob.core.windows.net*" 配置 A 记录。 
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将存储帐户终结点的 FQDN 解析到专用终结点 IP 地址。 应将 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或使用专用终结点 IP 地址配置 "*StorageAccountA.privatelink.blob.core.windows.net*" 的 A 记录。
 
 > [!TIP]
 > 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将 "privatelink" 子域中的存储帐户名称解析为专用终结点 IP 地址。 为此，可以将 "privatelink" 子域委托给 VNet 的专用 DNS 区域，或在 DNS 服务器上配置 DNS 区域并添加 DNS A 记录。
@@ -111,12 +113,12 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 #### <a name="resources"></a>资源
 
-有关配置自己的 DNS 服务器以支持专用终结点的其他指导，请参阅以下文章：
+有关配置自己的 DNS 服务器以支持专用终结点的详细信息，请参阅以下文章：
 
 - [Azure 虚拟网络中资源的名称解析](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [专用终结点的 DNS 配置](/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 
@@ -125,9 +127,6 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 ### <a name="copy-blob-support"></a>复制 Blob 支持
 
 在预览期间，我们不支持在源存储帐户受防火墙保护时，发布到通过专用终结点访问的存储帐户的 "[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) " 命令。
-
-### <a name="subnets-with-service-endpoints"></a>包含服务终结点的子网
-目前，无法在具有服务终结点的子网中创建专用终结点。 作为一种解决方法，你可以在服务终结点和专用终结点的同一 VNet 中创建单独的子网。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有专用终结点的 Vnet 中客户端的存储访问约束
 

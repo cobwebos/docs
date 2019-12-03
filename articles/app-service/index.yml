@@ -3,15 +3,10 @@ documentType: LandingData
 title: 应用服务文档
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: Azure 应用服务文档 - 教程和 API 参考
-  meta.description: 'Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.'
-  services: app-service
-  author: georgewallace
-  manager: gwallace
-  ms.service: app-service
+  title: Azure 应用服务文档
+  meta.description: 'Host websites, web apps, RESTful APIs, and mobile back ends in Azure App Service. Find quickstarts, tutorials, and samples to help you succeed with App Service.'
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: gwallace
 abstract:
   description: 使用 Azure 应用服务可以采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
   aside:

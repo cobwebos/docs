@@ -1,26 +1,18 @@
 ---
-title: 使用 Azure CLI 管理用于容器的 Web 应用 - Azure 应用服务 | Microsoft Docs
-description: 使用 Azure CLI 管理用于容器的 Web 应用。
+title: 通过 CLI 管理自定义 Linux 容器
+description: 了解如何在 Azure App Service 从命令行管理自定义 Linux 容器。 自动执行应用预配或维护。
 keywords: azure app service、Web 应用、cli、linux、oss
-services: app-service
-documentationCenter: ''
 author: ahmedelnably
-manager: cfowler
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 773c8036a345383162013f9f7103164b0f382f12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071315"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689060"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用
 
@@ -107,5 +99,5 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
 * [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell（预览版）](../../cloud-shell/overview.md)
-* [设置过渡环境，在 Azure 应用服务](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [使用用于容器的 Web 应用进行持续部署](app-service-linux-ci-cd.md)

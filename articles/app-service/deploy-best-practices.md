@@ -1,44 +1,36 @@
 ---
-title: Deployment best practices - Azure App Service | Microsoft Docs
-description: Learn about the key components of deploying to Azure App Service.
-keywords: azure app service, web app, deploy, deployment, pipelines, build
-services: app-service
-documentationcenter: ''
+title: 部署最佳实践
+description: 了解部署到 Azure App Service 的关键机制。 查找特定于语言的建议和其他注意事项。
+keywords: azure 应用服务，web 应用，部署，部署，管道，生成
 author: jasonfreeberg
-manager: ''
-editor: ''
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.custom: ''
-ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199485"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670087"
 ---
-# <a name="deployment-best-practices"></a>Deployment Best Practices
+# <a name="deployment-best-practices"></a>部署最佳实践
 
-Every development team has unique requirements that can make implementing an efficient deployment pipeline difficult on any cloud service. This article introduces the three main components of deploying to App Service: deployment sources, build pipelines, and deployment mechanisms. This article also covers some best practices and tips for specific language stacks.
+每个开发团队都有独特的要求，这使得在任何云服务上都难以实现有效的部署管道。 本文介绍了部署到应用服务的三个主要组件：部署源、生成管道和部署机制。 本文还介绍了特定语言堆栈的一些最佳实践和提示。
 
-## <a name="deployment-components"></a>Deployment Components
+## <a name="deployment-components"></a>部署组件
 
-### <a name="deployment-source"></a>Deployment Source
+### <a name="deployment-source"></a>部署源
 
-A deployment source is the location of your application code. For production apps, the deployment source is usually a repository hosted by version control software such as [GitHub, BitBucket, or Azure Repos](deploy-continuous-deployment.md). For development and test scenarios, the deployment source may be [a project on your local machine](deploy-local-git.md). App Service also supports [OneDrive and Dropbox folders](deploy-content-sync.md) as deployment sources. While cloud folders can make it easy to get started with App Service, it is not typically recommended to use this source for enterprise-level production applications. 
+部署源是应用程序代码的位置。 对于生产应用，部署源通常是由版本控制软件（例如[GitHub、BitBucket 或 Azure Repos](deploy-continuous-deployment.md)）托管的存储库。 对于开发和测试方案，部署源可以是[本地计算机上的项目](deploy-local-git.md)。 应用服务还支持[OneDrive 和 Dropbox 文件夹](deploy-content-sync.md)作为部署源。 尽管云文件夹可以轻松地开始使用应用服务，但通常不建议将此源用于企业级的生产应用程序。 
 
-### <a name="build-pipeline"></a>Build Pipeline
+### <a name="build-pipeline"></a>生成管道
 
-Once you decide on a deployment source, your next step is to choose a build pipeline. A build pipeline reads your source code from the deployment source and executes a series of steps (such as compiling code, minifying HTML and JavaScript, running tests, and packaging components) to get the application in a runnable state. The specific commands executed by the build pipeline depend on your language stack. These operations can be executed on a build server such as Azure Pipelines, or executed locally.
+确定部署源后，下一步是选择生成管道。 生成管道从部署源读取源代码，并执行一系列步骤（如编译代码、缩小 HTML 和 JavaScript、运行测试和打包组件）以使应用程序处于可运行状态。 生成管道执行的特定命令取决于你的语言堆栈。 这些操作可在 Azure Pipelines 的生成服务器上执行，或在本地执行。
 
-### <a name="deployment-mechanism"></a>Deployment Mechanism
+### <a name="deployment-mechanism"></a>部署机制
 
-The deployment mechanism is the action used to put your built application into the */home/site/wwwroot* directory of your web app. The */wwwroot* directory is a mounted storage location shared by all instances of your web app. When the deployment mechanism puts your application in this directory, your instances receive a notification to sync the new files. App Service supports the following deployment mechanisms:
+部署机制是用于将生成的应用程序放入 web 应用程序的 */home/site/wwwroot 中*目录的操作。 */Wwwroot*目录是由 web 应用的所有实例共享的已装载存储位置。 当部署机制将应用程序放在此目录中时，实例会收到同步新文件的通知。 应用服务支持以下部署机制：
 
 - Kudu 终结点： [Kudu](https://github.com/projectkudu/kudu/wiki)是一种开源开发人员生产力工具，它作为 Windows 应用服务中的单独进程运行，并作为 Linux 应用服务中的第二个容器运行。 Kudu 处理连续部署并提供用于部署的 HTTP 终结点，如 zipdeploy。
 - FTP 和 WebDeploy：使用您的[站点或用户凭据](deploy-configure-credentials.md)，可以[通过 FTP](deploy-ftp.md)或 WebDeploy 上传文件。 这些机制不会经过 Kudu。  

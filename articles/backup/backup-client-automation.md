@@ -2,13 +2,13 @@
 title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172448"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689194"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -18,7 +18,7 @@ ms.locfileid: "74172448"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要开始操作，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
+若要开始，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -36,7 +36,7 @@ ms.locfileid: "74172448"
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 
-3. 使用 **New-AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+3. 使用**AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
@@ -56,9 +56,9 @@ ms.locfileid: "74172448"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
+使用**AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
 
-运行 **Get-AzRecoveryServicesVault** 命令即可列出订阅中的所有保管库。
+运行命令**AzRecoveryServicesVault**，并列出订阅中的所有保管库。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -97,7 +97,7 @@ MARSAgentInstaller.exe /q
 
 这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
 
-若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
+若要查看已安装的程序列表，请转到“**控制面板** > **程序** > **程序和功能**”。
 
 ![已安装代理](./media/backup-client-automation/installed-agent-listing.png)
 
@@ -133,9 +133,9 @@ $CredsPath = "C:\downloads"
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 -Path $CredsPath
 ```
 
-### <a name="registering-using-the-ps-az-module"></a>使用 PS Az 模块注册
+### <a name="registering-using-the-ps-az-module"></a>使用 PS Az module 注册
 
-在 Powershell 的最新 Az 模块中，由于底层平台限制，下载保管库凭据需要自签名证书。 以下示例演示如何提供自签名证书并下载保管库凭据。
+由于基本平台限制，在 Powershell 的最新 Az 模块中，下载保管库凭据需要自签名证书。 下面的示例演示如何提供自签名证书并下载保管库凭据。
 
 ```powershell
 $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
@@ -207,7 +207,7 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
-必须在 Azure 门户的“恢复服务保管库”部分的“设置” > “属性” > “安全 PIN”下选择“生成”来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
+你必须通过在 Azure 门户的 "**恢复服务保管库**" 部分中的 "**设置**" > **属性**" > **安全 pin** " 下选择 "**生成**" 生成安全 pin。 然后，将其用作命令中的 `generatedPIN`：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -299,7 +299,7 @@ PolicyState     : Valid
 
 ### <a name="including-and-excluding-files-to-be-backed-up"></a>包含和排除要备份的文件
 
-`OBFileSpec` 对象定义要在备份中包含与排除的文件。 这组规则可划分出计算机上要保护的文件和文件夹。 可设置任意数量的文件包含或排除规则，并将其与策略相关联。 创建新的 OBFileSpec 对象时，可以：
+`OBFileSpec` 对象定义要在备份中包含与排除的文件。 这组规则可划分出计算机上要保护的文件和文件夹。 可以设置任意数量的文件包含或排除规则，并将其与策略相关联。 创建新的 OBFileSpec 对象时，可以：
 
 * 指定要包含的文件和文件夹
 * 指定要排除的文件和文件夹
@@ -411,7 +411,7 @@ PolicyState     : Valid
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>保留
+### <a name="retention"></a>保留期
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
@@ -431,7 +431,7 @@ Get-OBSystemStatePolicy
 
 ### <a name="applying-the-policy"></a>应用策略
 
-现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请使用[OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示用户确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
+现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请使用[OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -565,11 +565,11 @@ The backup operation completed successfully.
 
 ## <a name="restore-data-from-azure-backup"></a>从 Azure 备份还原数据
 
-本部分引导用户完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
+本部分将引导完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
 
 1. 选取源卷
 2. 选择要还原的备份点
-3. 选择要还原的项
+3. 指定要还原的项
 4. 触发还原过程
 
 ### <a name="picking-the-source-volume"></a>选取源卷
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>选择要从中还原的备份点
 
-结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们将选择源卷 *D:* 的最新备份点，并使用它来恢复特定的文件。
+结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们将选择源卷*C：* 的最新备份点，并使用它来恢复特定文件。
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 对象 `$Rps` 是备份点数组。 第一个元素是最新备份点，第 N 个元素是最旧的备份点。 为了选择最新的点，我们将使用 `$Rps[0]`。
 
-### <a name="choosing-an-item-to-restore"></a>选择要还原的项
+### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
-为了识别要还原的确切文件或文件夹，请以递归方式使用 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet。 这样，只需使用 `Get-OBRecoverableItem` 便可浏览文件夹层次结构。
-
-在本示例中，如果我们要还原文件 *finances.xls*，可以使用对象 `$FilesFolders[1]` 来引用该文件。
+若要还原特定的文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-也可以使用 ```Get-OBRecoverableItem``` cmdlet 来搜索要还原的项。 在本示例中，为了搜索 *finances.xls*，我们可以运行以下命令来获取该文件上的句柄：
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
@@ -692,7 +658,7 @@ $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -Sear
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-现在，请对 [ cmdlet 输出中的选定 ](https://technet.microsoft.com/library/hh770402.aspx) 使用 `$Item`Start-OBRecovery`Get-OBRecoverableItem` 命令来触发还原过程：
+现在，请对 `Get-OBRecoverableItem` cmdlet 输出中的选定 `$Item` 使用 [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) 命令来触发还原过程：
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -719,9 +685,9 @@ The recovery operation completed successfully.
 
 * 这会从计算机中删除文件筛选器，并停止跟踪更改。
 * 将从计算机中删除所有策略信息，但服务中会继续存储这些策略信息。
-* 所有备份计划都会被删除，且不会进一步创建备份。
+* 将删除所有备份计划，且不会进一步创建备份。
 
-不过，根据设置的保留策略继续保留 Azure 中存储的数据。 较旧的恢复点会自动过时。
+不过，Azure 中存储的数据会根据你设置的保留策略继续保留。 较旧的恢复点会自动过时。
 
 ## <a name="remote-management"></a>远程管理
 

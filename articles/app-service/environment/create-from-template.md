@@ -1,24 +1,18 @@
 ---
-title: 使用资源管理器模板创建应用服务环境 - Azure
-description: 阐释如何使用资源管理器模板创建外部或 ILB Azure 应用服务环境
-services: app-service
-documentationcenter: na
+title: 使用 ARM 创建 ASE
+description: 了解如何使用 Azure 资源管理器模板创建外部或 ILB 应用服务环境。
 author: ccompy
-manager: stefsch
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 60c9d89bc0ab7c63e779a7cadece863540e827aa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dccefa47789b4658a7bca828b5a820db0d448e5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470608"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688661"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -28,7 +22,7 @@ ms.locfileid: "73470608"
 
 可通过能访问 Internet 的终结点或 Azure 虚拟网络 (VNet) 内部地址上的终结点创建 Azure 应用服务环境 (ASE)。 使用内部终结点创建时，该终结点由被称为内部负载均衡器 (ILB) 的 Azure 组件提供。 内部 IP 地址上的 ASE 被称为 ILB ASE。 具有公共终结点的 ASE 被称为外部 ASE。 
 
-可使用 Azure 门户或 Azure 资源管理器模板创建 ASE。 本文介绍使用资源管理器模板创建外部 ESE 或 ILB ASE 所需的步骤和语法。 要了解如何在 Azure 门户中创建 ASE，请参阅[创建外部 ASE][MakeExternalASE] 或[创建 ILB ASE][MakeILBASE]。
+可使用 Azure 门户或 Azure 资源管理器模板创建 ASE。 本文介绍使用资源管理器模板创建外部 ESE 或 ILB ASE 所需的步骤和语法。 若要了解如何在 Azure 门户中创建 ASE，请参阅创建[外部 ASE][MakeExternalASE]或创建[ILB ase][MakeILBASE]。
 
 在 Azure 门户中创建 ASE 时，可同时创建自己的 VNet 或选择要部署到的预先存在的 VNet。 基于模板创建 ASE 时，必须首先具有： 
 
@@ -48,9 +42,9 @@ ms.locfileid: "73470608"
 
 
 ## <a name="create-the-ase"></a>创建 ASE
-有关用于创建 ASE 的资源管理器模板及其关联的参数文件，可参阅 GitHub 上的[示例][quickstartasev2create]。
+GitHub 上[的示例中][quickstartasev2create]提供了用于创建 ASE 及其关联参数文件的资源管理器模板。
 
-要创建 ILB ASE，请使用这些资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。 创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
+如果要创建 ILB ASE，请使用以下资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。 创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
 * *internalLoadBalancingMode*：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
 * dnsSuffix：此参数定义要分配给 ASE 的默认根域。 在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。 由于 ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域。 而应当具有适合在公司的内部虚拟网络中使用的默认根域。 例如，Contoso Corporation 可能会将 internal-contoso.com 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
@@ -86,7 +80,7 @@ SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默
 * 将 .pfx 文件转换为 base64 编码的字符串。
 * 将 base64 编码的字符串保存到单独的文件。 
 
-base64 编码的 PowerShell 代码改写自 [PowerShell 脚本博客][examplebase64encoding]：
+此适用于 base64 编码的 PowerShell 代码是从[PowerShell 脚本博客][examplebase64encoding]中修改的：
 
 ```powershell
 $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
@@ -102,16 +96,16 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-成功生成 SSL 证书并转换为 base64 编码字符串后，使用 GitHub 上的示例资源管理器模板[配置默认 SSL 证书][quickstartconfiguressl]。 
+成功生成 SSL 证书并转换为 base64 编码的字符串后，请使用示例资源管理器模板在 GitHub 上[配置默认的 SSL 证书][quickstartconfiguressl]。 
 
 azuredeploy.parameters.json 文件中的参数如下所列：
 
 * appServiceEnvironmentName：要配置的 ILB ASE 的名称。
 * existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如“美国中南部”。
 * pfxBlobString：.pfx 文件的 based64 编码字符串表示形式。 使用先前所示的代码片段并复制“exportedcert.pfx.b64”中包含的字符串。 将其作为 pfxBlobString 属性的值进行粘贴。
-* *password*：用于保护 .pfx 文件的密码。
+* password：用于保护 .pfx 文件的密码。
 * certificateThumbprint：证书的指纹。 如果从 Powershell 中检索到此值（例如先前代码片段中的 $certificate.Thumbprint），可按原样使用此值。 如果从 Windows 证书对话框复制此值，请记得去除多余的空格。 certificateThumbprint 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE。
-* certificateName：用户自己选择的易记字符串标识符，用于标识证书。 此名称用作 Microsoft.Web/certificates 实体（表示 SSL 证书）的资源管理器唯一标识符的一部分。 名称必须以下述后缀结尾：*yourASENameHere_InternalLoadBalancingASE*\_。 此后缀由 Azure 门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
+* certificateName：用户自己选择的易记字符串标识符，用于标识证书。 此名称用作 Microsoft.Web/certificates 实体（表示 SSL 证书）的资源管理器唯一标识符的一部分。 名称必须以下述后缀结尾：\_yourASENameHere_InternalLoadBalancingASE。 此后缀由 Azure 门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
 
 azuredeploy.parameters.json 的缩写示例如下所示：
 

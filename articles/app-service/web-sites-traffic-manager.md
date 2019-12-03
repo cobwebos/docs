@@ -1,26 +1,16 @@
 ---
-title: 使用流量管理器控制流量 - Azure 应用服务
-description: 本文提供了有关 Azure 流量管理器的摘要信息，因为它与 Azure 应用服务相关。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: erikre
-editor: mollybos
+title: 利用流量管理器控制流量
+description: 查找在将 Azure 流量管理器与 Azure App Service 进行集成时配置 Azure 流量管理器的最佳做法。
 ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cd53c3c0b3e9acbb8a5a88c7696e8b3089c50c9
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483386"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684104"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]
@@ -28,7 +18,7 @@ ms.locfileid: "74483386"
 > 
 > 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 可以使用 Azure 流量管理器来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，Azure 流量管理器会跟踪应用服务的状态（正在运行、已停止或已删除），以便确定那些终结点中有哪些应该接收流量。
 
 ## <a name="routing-methods"></a>路由方法
@@ -42,7 +32,7 @@ Azure 流量管理器使用四种不同的路由方法。 下面的列表中介�
 有关详细信息，请参阅[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>应用服务和流量管理器配置文件
-要通过配置来控制应用服务应用流量，则需要在 Azure 流量管理器中创建一个使用前述四种负载均衡方法之一的配置文件，然后将要控制其流量的终结点（在此例中为应用服务）添加到该配置文件。 应用状态（正在运行、已停止或已删除）会定期传送到该配置文件，以便 Azure 流量管理器可以相应地对流量进行定向。
+若要配置应用服务应用流量的控制，请在 Azure 流量管理器中创建一个配置文件，该配置文件使用前面所述的四种负载平衡方法之一，然后添加要控制其流量的终结点（在此例中为应用服务）简介. 应用状态（正在运行、已停止或已删除）会定期传送到该配置文件，以便 Azure 流量管理器可以相应地对流量进行定向。
 
 将 Azure 流量管理器与 Azure 一起使用时，请记住以下几点：
 

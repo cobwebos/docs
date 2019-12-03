@@ -1,25 +1,18 @@
 ---
-title: 在应用服务环境 v1 中创建 Web 应用 - Azure
-description: 了解如何在应用服务环境 v1 中创建 Web 应用和应用服务计划
-services: app-service
-documentationcenter: ''
+title: 在 ASE v1 中创建 web 应用
+description: 了解如何在应用服务环境 v1 中创建 web 应用。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8fb121999176e43f07283e970d7336a7c569eaca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069847"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688706"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -35,7 +28,7 @@ ms.locfileid: "70069847"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本教程假设已创建一个应用服务环境。 如果尚未创建，请参阅[创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
@@ -65,7 +58,7 @@ ms.locfileid: "70069847"
     在 ASE 创建过程中选择 ASP 后，可在“名称”下看到子域更新
 
 ## <a name="createplan"></a>创建应用服务计划
-在应用服务环境中创建应用服务计划时，由于 ASE 中没有共享的辅助角色，因此辅助角色的选择会有所不同。  必须使用的辅助角色也就是由管理员分配给 ASE 的辅助角色。这意味着在创建新的计划时，分配给 ASE 辅助角色池的辅助角色数，必须超过该辅助角色池中所有计划的实例总数。  如果 ASE 辅助角色池中没有足够的辅助角色来创建计划，则需要与 ASE 管理员合作来添加辅助角色。
+在应用服务环境中创建应用服务计划时，由于 ASE 中没有共享的辅助角色，因此辅助角色的选择会有所不同。  必须使用的辅助角色是管理员分配给 ASE 的辅助角色。 这意味着，若要创建新计划，你需要将更多的工作线程分配给 ASE 辅助角色池，而不是该辅助池中所有计划的实例总数。  如果 ASE 辅助角色池中没有足够的辅助角色来创建计划，则需要与 ASE 管理员合作来添加辅助角色。
 
 而应用服务环境托管的应用服务计划还有另一项差异，那就是缺少定价选项。  如果拥有应用服务环境，是在为系统所用的计算资源付费，且该环境中的计划不产生附加的费用。  一般说来，创建应用服务计划时即选择了决定计费的定价计划。  应用服务环境本质上是一个可以在其中创建内容的专用位置。  只为环境付费而不为托管内容付费。
 

@@ -1,27 +1,18 @@
 ---
-title: 排查性能降低问题 - Azure 应用服务 | Microsoft Docs
-description: 本文帮助排查 Azure 应用服务中应用性能缓慢的问题。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 性能降低的疑难解答
+description: 了解如何解决 Azure App Service 中的应用程序性能缓慢问题，包括监视应用程序行为、收集数据和缓解此问题。
 tags: top-support-issue
 keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066527"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688315"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
@@ -39,7 +30,7 @@ ms.locfileid: "70066527"
 * 应用程序的内存/CPU 使用率过高
 * 应用程序因异常而崩溃
 
-## <a name="troubleshooting-steps"></a>疑难解答步骤
+## <a name="troubleshooting-steps"></a>故障排除步骤
 故障排除可划分为三种不同的任务，依次为：
 
 1. [观察和监视应用程序行为](#observe)
@@ -50,7 +41,7 @@ ms.locfileid: "70066527"
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
+### <a name="1-observe-and-monitor-application-behavior"></a>1. 观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
@@ -63,7 +54,7 @@ ms.locfileid: "70066527"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* 请求
+* Requests
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -95,7 +86,7 @@ ms.locfileid: "70066527"
 
 <a name="collect" />
 
-### <a name="2-collect-data"></a>2.收集数据
+### <a name="2-collect-data"></a>2. 收集数据
 应用服务为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 此信息分为 Web 服务器诊断和应用程序诊断。
 
 #### <a name="enable-web-server-diagnostics"></a>启用 Web 服务器诊断
@@ -150,7 +141,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3.缓解问题
+### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -161,7 +152,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使您的应用程序不是 .NET 应用程序, 这些设置的工作方式也相同。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使您的应用程序不是 .NET 应用程序，这些设置的工作方式也相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

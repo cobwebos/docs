@@ -1,30 +1,24 @@
 ---
-title: 将 ILB 应用服务环境与应用程序网关集成 - Azure
-description: 有关如何将 ILB 应用服务环境中的应用与应用程序网关集成的演练
-services: app-service
-documentationcenter: na
+title: 与应用程序网关集成
+description: 了解如何在本端到端演练中将 ILB 应用服务环境中的应用与应用程序网关集成。
 author: ccompy
-manager: stefsch
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069471"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687142"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
 [应用服务环境](./intro.md)是客户的 Azure 虚拟网络子网中的 Azure 应用服务部署。 可通过应用访问的公共或专用终结点来进行部署。 具有专用终结点（即，内部负载平衡器）的应用服务环境的部署称为 ILB 应用服务环境。  
 
-Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 可从 Azure marketplace 获取 WAF 设备, 也可使用[Azure 应用程序网关][appgw]。
+Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 可从 Azure marketplace 获取 WAF 设备，也可使用[Azure 应用程序网关][appgw]。
 
 Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡、SSL 卸载以及 Web 应用程序防火墙 (WAF) 保护。 可侦听公共 IP 地址和将流量路由到应用程序终结点。 以下信息描述了如何将 WAF 配置的应用程序网关与 ILB 应用服务环境中的应用进行集成。  
 
@@ -39,7 +33,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 * 配置应用，以遵循自定义域名。
 * 编辑指向应用程序网关的公共 DNS 主机名。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要将应用程序网关与 ILB 应用服务环境集成，需要：
 
@@ -52,7 +46,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
     
 * 稍后用于指向应用程序网关的公共 DNS 名称。 
 
-有关如何创建 ILB 应用服务环境的详细信息, 请参阅[创建和使用 ILB 应用服务环境][ilbase]。
+有关如何创建 ILB 应用服务环境的详细信息，请参阅[创建和使用 ILB 应用服务环境][ilbase]。
 
 本文假定你在部署了应用服务环境的 Azure 虚拟网络中需要一个应用程序网关。 在开始创建应用程序网关之前，请选择或创建一个将用来承载网关的子网。 
 
@@ -66,13 +60,13 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
 2. 在“基本信息”区域中：
 
-   a. 对于“名称”，输入应用程序网关的名称。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“名称”，输入应用程序网关的名称。
 
    b. 对于“层级”，选择“WAF”。
 
    c. 对于“订阅”，选择应用服务环境虚拟网络使用的相同订阅。
 
-   d. 对于“资源组”，创建或选择资源组。
+   d.单击“下一步”。 对于“资源组”，创建或选择资源组。
 
    e. 对于“位置”，选择应用服务环境虚拟网络使用的位置。
 
@@ -80,13 +74,13 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
 3. 在“设置”区域中：
 
-   a. 对于“虚拟网络”，选择应用服务环境虚拟网络。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“虚拟网络”，选择应用服务环境虚拟网络。
 
    b. 对于“子网”，选择需要将应用程序网关部署到的子网。 请勿使用 GatewaySubnet，因为它会阻止创建 VPN 网关。
 
    c. 对于“IP 地址类型”，选择“公共”。
 
-   d. 对于“公共 IP 地址”，选择一个公共 IP 地址。 如果没有，请立即创建一个。
+   d.单击“下一步”。 对于“公共 IP 地址”，选择一个公共 IP 地址。 如果没有，请立即创建一个。
 
    e. 对于“协议”，选择“HTTP”或“HTTPS”。 如果要配置 HTTPS，需要提供 PFX 证书。
 
@@ -108,7 +102,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
    ![配置 HTTP 设置][6]
     
-8. 转到应用程序网关的“概述”部分，并复制应用程序网关使用的公用 IP 地址。 将该 IP 地址设置为应用域名的 A 记录，或在 CNAME 记录中使用该地址的 DNS 名称。 从公用 IP 地址 UI 选择公用 IP 地址并复制此地址，比从应用程序网关的“概述”部分上的链接进行复制更为简单。 
+8. 转到应用程序网关的“概述”部分，并复制应用程序网关使用的公共 IP 地址。 将该 IP 地址设置为应用域名的 A 记录，或在 CNAME 记录中使用该地址的 DNS 名称。 从公共 IP 地址 UI 选择公共 IP 地址并复制此地址，比从应用程序网关的“概述”部分上的链接进行复制更为简单。 
 
    ![应用程序网关门户][7]
 

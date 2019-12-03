@@ -1,32 +1,24 @@
 ---
-title: 应用服务环境的网络体系结构概述 - Azure
-description: 应用服务网络拓扑的体系结构概述。
-services: app-service
-documentationcenter: ''
+title: 网络体系结构 v1
+description: 应用服务环境的网络拓扑的体系结构概述。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070071"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687352"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
-## <a name="introduction"></a>简介
 始终在[虚拟网络][virtualnetwork]的子网中创建应用服务环境-在应用服务环境中运行的应用可以与位于同一虚拟网络拓扑中的专用终结点通信。  由于客户可能锁定了其虚拟网络基础结构的组件，因此请务必了解与应用服务环境发生的网络通信流类型。
 
 ## <a name="general-network-flow"></a>常规网络流
-当应用服务环境 (ASE) 将公共虚拟 IP 地址 (VIP) 用于应用时，所有入站流量都将到达该公共 VIP。  包括应用的 HTTP 和 HTTPS 流量，以及 FTP、远程调试功能和 Azure 管理操作的其他流量。  有关公共 VIP 上可用特定端口 (必需和可选) 的完整列表, 请参阅有关控制到应用服务环境的[入站流量][controllinginboundtraffic]的文章。 
+当应用服务环境 (ASE) 将公共虚拟 IP 地址 (VIP) 用于应用时，所有入站流量都将到达该公共 VIP。  包括应用的 HTTP 和 HTTPS 流量，以及 FTP、远程调试功能和 Azure 管理操作的其他流量。  有关公共 VIP 上可用特定端口（必需和可选）的完整列表，请参阅有关控制到应用服务环境的[入站流量][controllinginboundtraffic]的文章。 
 
 应用服务环境还支持运行只绑定到一个虚拟网络内部地址（也称为 ILB，即内部负载均衡器）地址的应用。  在启用 ILB 的 ASE 上，应用和远程调试调用的 HTTP 和 HTTPS 流量都将到达 ILB 地址。  对于最常见的 ILB-ASE 配置，FTP/FTPS 流量也将到达 ILB 地址。  但是 Azure 管理操作仍将流传输到启用 ILB 的 ASE 的公共 VIP 上的端口 454/455。
 
@@ -43,9 +35,9 @@ ms.locfileid: "70070071"
 
 应用服务环境还能与管理和操作应用服务环境所需的 Sql DB 与 Azure 存储资源进行通信。  与应用服务环境通信的一些 SQL 和存储资源位于与应用服务环境相同的区域中，有些则位于远程 Azure 区域中。  因此，只有与 Internet 建立了出站连接，应用服务环境才能正常工作。 
 
-由于应用服务环境是在子网中部署的，因此可以使用网络安全组来控制发往子网的入站流量。  有关如何控制到应用服务环境的入站流量的详细信息, 请参阅以下[文章][controllinginboundtraffic]。
+由于应用服务环境是在子网中部署的，因此可以使用网络安全组来控制发往子网的入站流量。  有关如何控制到应用服务环境的入站流量的详细信息，请参阅以下[文章][controllinginboundtraffic]。
 
-有关如何允许来自应用服务环境的出站 Internet 连接的详细信息, 请参阅以下有关使用[Express Route][ExpressRoute]的文章。  此文章所述的方法同样适用于使用站点到站点连接以及使用强制隧道的情况。
+有关如何允许来自应用服务环境的出站 Internet 连接的详细信息，请参阅以下有关使用[Express Route][ExpressRoute]的文章。  此文章所述的方法同样适用于使用站点到站点连接以及使用强制隧道的情况。
 
 ## <a name="outbound-network-addresses"></a>出站网络地址
 应用服务环境执行出站调用时，IP 地址始终与出站调用相关联。  使用的特定 IP 地址取决于所调用的终结点是位于虚拟网络拓扑内部还是外部。
@@ -72,7 +64,7 @@ ms.locfileid: "70070071"
 ## <a name="calls-between-app-service-environments"></a>在应用服务环境之间调用
 如果在相同的虚拟网络中部署多个应用服务环境，并从一个应用服务环境传出调用到另一个应用服务环境，则可能会出现更复杂的情景。  这些跨应用服务环境的调用也被视为“Internet”调用。
 
-下图显示了一个分层体系结构示例，其中应用在一个应用服务环境上（例如“前端”Web 应用）调用第二个应用服务环境上的应用（例如：内部后端 API 应用不需要可从 Internet 访问）。 
+下图显示了一个分层体系结构的示例，其中的应用程序在一台应用服务环境（例如，"前门" web 应用）调用另一个应用服务环境上的应用（例如，不打算从 Internet 访问的内部后端 API 应用）。 
 
 ![在应用服务环境之间调用][CallsBetweenAppServiceEnvironments] 
 

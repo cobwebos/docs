@@ -1,25 +1,19 @@
 ---
-title: 配置常见问题解答 - Azure 应用服务 | Microsoft Docs
-description: 获取有关 Azure App Service 的 Web 应用功能的配置和管理问题的常见问题解答。
-services: app-service\web
-documentationcenter: ''
+title: 配置常见问题解答
+description: 获取有关 Azure App Service 的配置和管理问题的常见问题解答。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470530"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672501"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -59,7 +53,7 @@ ms.locfileid: "73470530"
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>我可以在何处找到指导清单并详细了解资源移动操作？
 
-[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)说明如何将资源移到新订阅或同一订阅的新资源组中。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
+[应用服务限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)演示如何将资源移到新订阅，或移到同一个订阅中的新资源组。 可以获取有关资源移动清单的信息、了解支持移动操作的服务以及详细了解应用服务限制和其他主题。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>如何为 Web 应用设置服务器时区？
 
@@ -75,7 +69,7 @@ ms.locfileid: "73470530"
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
-默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可打开“Always On”设置，保持 Web 应用一直处于已加载的状态。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
+默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的出站 IP 地址？
 
@@ -107,7 +101,7 @@ ms.locfileid: "73470530"
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>当我尝试备份 Web 应用时，为何看到消息“已部分成功”？
 
-备份失败的一个常见原因是某些文件在由应用程序使用。 执行备份时，在使用的文件会锁定。 这会阻止备份这些文件，可能会导致“已部分成功”状态。 可以通过从备份过程中排除文件来防止此情况发生。 可以选择仅备份所需文件。 有关详细信息，请参阅[仅随 Azure Web 应用备份站点的重要部分](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)。
+备份失败的一个常见原因是某些文件在由应用程序使用。 执行备份时，在使用的文件会锁定。 这会阻止备份这些文件，可能会导致“已部分成功”状态。 可以通过从备份过程中排除文件来防止此情况发生。 可以选择仅备份所需内容。 有关详细信息，请参阅[仅随 Azure Web 应用备份站点的重要部分](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/)。
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何从 HTTP 响应中删除标头？
 
@@ -151,9 +145,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 该异常是由于混合连接管理器存在问题而导致，该问题现已修复。 请务必[更新混合连接管理器](https://go.microsoft.com/fwlink/?LinkID=841308)以解决此问题。
 
-## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重写规则？
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何实现添加 URL 重写规则？
 
-若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅[Azure 应用 Services：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要添加 URL 重写规则，请创建一个 web.config 文件，其中包含**wwwroot**文件夹中的相关配置条目。 有关详细信息，请参阅[Azure 应用 Services：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制应用服务的入站流量？
 
@@ -179,7 +173,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="f12-http-trace"></a>F12 HTTP 跟踪
 
-1. 在 Internet Explorer 中，转到网站。 请务必先登录，然后再执行后续步骤。 否则，F12 跟踪会捕获敏感的登录数据。
+1. 在 Internet Explorer 中，转到你的网站。 请务必先登录，然后再执行后续步骤。 否则，F12 跟踪会捕获敏感的登录数据。
 2. 按 F12。
 3. 验证是否选择了“网络”选项卡，然后选择绿色的“播放”按钮。
 4. 执行再现问题的步骤。
@@ -191,7 +185,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 1. 选择“控制台”选项卡。
 2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
 3. 在窗格的消息区域中右键单击，然后选择“全部复制”。
-4. 将复制的文本粘贴到文件中，然后保存该文件。
+4. 在文件中粘贴复制的文本，然后保存文件。
 
 若要查看 HAR 文件，可以使用 [HAR 查看器](https://www.softwareishard.com/har/viewer/)。
 
@@ -239,7 +233,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 可以使用 Cron 表达式创建计划 Web 作业：
 
 1. 创建 settings.job 文件。
-2. 在此 JSON 文件中，使用 Cron 表达式将计划属性包括在内： 
+2. 在此 JSON 文件中，使用 Cron 表达式包含计划属性： 
     ```json
     { "schedule": "{second}
     {minute} {hour} {day}
@@ -288,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 
@@ -300,7 +294,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>为何自动缩放有时只部分缩放？
 
-当指标超过预配置边界时，会触发自动缩放。 有时可能会发现，与预期相比，仅填充了部分容量。 当所需数量的实例不可用时，可能会发生这种情况。 在这种情况下，自动缩放使用可用数量的实例进行部分填充。 自动缩放随后运行重新平衡逻辑以获取更多容量。 它会分配剩余实例。 请注意，这可能需要几分钟。
+当指标超过预配置边界时，会触发自动缩放。 有时，你可能会注意到与期望相比，只填充了部分容量。 当所需数量的实例不可用时，可能会发生这种情况。 在这种情况下，自动缩放使用可用数量的实例进行部分填充。 自动缩放随后运行重新平衡逻辑以获取更多容量。 它会分配剩余实例。 请注意，这可能需要几分钟。
 
 如果在几分钟后未看到预期数量的实例，则可能是因为部分重填已足以使指标处于边界内。 或者，自动缩放可能已减少，因为它已达到指标下限。
 

@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 11/19/2019
+ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: ee8dabcc957364bade36608067aad568662c24ae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232717"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689037"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -22,7 +22,7 @@ ms.locfileid: "74232717"
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包针对 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .NET Core 2.0 或更高版本，以及 .NET Framework 4.7.2 或更高版本中使用。
+> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包针对[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .net Core 2.0 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
 
 ## <a name="getting-started"></a>入门
 
@@ -47,7 +47,7 @@ telemetryClient.TrackTrace("Hello World!");
 > 提到了 **ApplicationInsights.config** 的说明仅适用于以 .NET Framework 为目标的应用，不适用于 .NET Core 应用程序。
 
 ### <a name="using-config-file"></a>使用配置文件
-默认情况下，创建 `ApplicationInsights.config` 时，Application Insights SDK 在工作目录中查找 `TelemetryConfiguration` 文件
+默认情况下，创建 `TelemetryConfiguration` 时，Application Insights SDK 在工作目录中查找 `ApplicationInsights.config` 文件
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -95,7 +95,7 @@ var telemetryClient = new TelemetryClient(configuration);
 
 ### <a name="configuring-telemetry-collection-from-code"></a>通过代码配置遥测集合
 > [!NOTE]
-> .NET Core 不支持读取配置文件。 可以考虑使用[适用于 ASP.NET Core 的 Application Insights SDK](../../azure-monitor/app/asp-net-core.md)
+> .NET Core 不支持读取配置文件。 可以考虑使用[APPLICATION INSIGHTS SDK ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
 * 在应用程序启动期间创建并配置 `DependencyTrackingTelemetryModule` 实例 - 该实例必须是单一实例，并在应用程序生存期中保留。
 
@@ -124,13 +124,13 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-如果使用普通 `TelemetryConfiguration()` 构造函数创建了配置，则还需要另外启用相关支持。 如果从文件读取配置，则**不需要它**，使用了 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`。
+如果使用纯 `TelemetryConfiguration()` 构造函数创建了配置，则还需要启用相关支持。 如果从文件中读取配置、使用 `TelemetryConfiguration.CreateDefault()` 或 `TelemetryConfiguration.Active`，则**不需要此方法**。
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* 还可能需要安装并初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
+* 你可能还希望安装和初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
 
 
 #### <a name="full-example"></a>完整示例
@@ -189,7 +189,7 @@ namespace ConsoleApp
             module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");
 
             // enable known dependency tracking, note that in future versions, we will extend this list. 
-            // please check default settings in https://github.com/Microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
+            // please check default settings in https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/DependencyCollector/DependencyCollector/ApplicationInsights.config.install.xdt
 
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.ServiceBus");
             module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");

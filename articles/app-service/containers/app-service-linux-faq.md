@@ -1,26 +1,18 @@
 ---
-title: Linux 上的应用服务常见问题解答 - Azure | Microsoft Docs
-description: Linux 上的 Azure 应用服务常见问题解答。
+title: 运行内置容器常见问题
+description: 查找有关 Azure App Service 中内置 Linux 容器的常见问题的解答。
 keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss, 用于容器的 Web 应用, 多容器, 多容器
-services: app-service
-documentationCenter: ''
 author: msangapu-msft
-manager: stefsch
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066901"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687593"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -30,7 +22,7 @@ ms.locfileid: "70066901"
 
 ## <a name="built-in-images"></a>内置映像
 
-**我想对平台提供的内置 Docker 容器进行分叉。在哪里可以找到这些文件？**
+**我想要分叉平台提供的内置 Docker 容器。在哪里可以找到这些文件？**
 
 可以在 [GitHub](https://github.com/azure-app-service) 上找到所有 Docker 文件。 可以在 [Docker Hub](https://hub.docker.com/u/appsvc/) 上找到所有 Docker 容器。
 
@@ -38,15 +30,15 @@ ms.locfileid: "70066901"
 
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-| 堆栈           | 预期值                                                                         |
+| 重叠           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用于启动 JAR 应用的命令 (例如`java -jar my-app.jar --server.port=80`) |
-| Tomcat、Wildfly | 用于执行任何所需配置的脚本的位置 (例如, `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | 用于启动 JAR 应用的命令（例如 `java -jar my-app.jar --server.port=80`） |
+| Tomcat、Wildfly | 用于执行任何所需配置的脚本的位置（例如 `/home/site/deployments/tools/startup_script.sh`）          |
 | Node.js         | PM2 配置文件或脚本文件                                |
-| .NET Core       | 已编译的 DLL 名称`dotnet <myapp>.dll`                                 |
+| .NET Core       | 作为 `dotnet <myapp>.dll` 的已编译的 DLL 名称                                 |
 | Ruby            | 要用于初始化应用的 Ruby 脚本                     |
 
-这些命令或脚本在内置 Docker 容器启动后, 但在启动应用程序代码之前执行。
+这些命令或脚本在内置 Docker 容器启动后，但在启动应用程序代码之前执行。
 
 ## <a name="management"></a>管理
 
@@ -68,25 +60,25 @@ ms.locfileid: "70066901"
 
 ## <a name="continuous-integration-and-deployment"></a>持续集成和部署
 
-**更新 Docker Hub 上的映像后，我的 Web 应用仍使用旧的 Docker 容器映像。是否支持自定义容器的持续集成和部署？**
+**更新 Docker Hub 上的映像后，我的 web 应用仍使用旧的 Docker 容器映像。是否支持自定义容器的持续集成和部署？**
 
 支持，若要设置 Azure 容器注册表或 DockerHub 的持续集成/部署，请查阅以下文章：[使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
 
 **是否支持过渡环境？**
 
-是的。
+可以。
 
 **是否可以使用 *WebDeploy/MSDeploy* 来部署 Web 应用？**
 
 可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 *false*。
 
-**使用 Linux Web 应用时，应用程序的 Git 部署失败。如何解决此问题？**
+**使用 Linux web 应用时，应用程序的 Git 部署失败。如何解决此问题？**
 
 如果 Linux Web 应用的 Git 部署失败，可选择以下选项之一部署应用程序代码：
 
-- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或 GitHub 存储库中存储应用的源代码, 以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持续交付（预览）功能：可以将应用的源代码存储在 Azure DevOps Git 存储库或 GitHub 存储库中，以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
-- 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
+- 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：若要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
@@ -108,7 +100,7 @@ const io = require('socket.io')(server,{
 
 **是否支持未编译的 .NET Core 应用？**
 
-是的。
+可以。
 
 **是否支持将 Composer 用作 PHP 应用的依赖关系管理器？**
 
@@ -118,7 +110,7 @@ const io = require('socket.io')(server,{
 
 **我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录。**
 
-如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其设置为 true `/home/` , 则将跨缩放实例**共享**该目录, 并且写入**的文件将**在重新启动后保持。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`为*false*将禁用装入。
+如果**未指定**`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置或将其设置为*true*，则 `/home/` 目录将跨缩放实例**共享**，并且写入**的文件将**在重新启动后保持。 将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为*false*将禁用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -144,7 +136,7 @@ const io = require('socket.io')(server,{
 
 SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件系统或正在运行的进程。
 
-**我的自定义容器侦听除端口 80 以外的端口。如何配置我的应用将请求路由到该端口？**
+**自定义容器侦听端口80以外的端口。如何将应用配置为将请求路由到该端口？**
 
 我们提供自动端口检测。 也可以指定名为 *WEBSITES_PORT* 的应用设置，并为其提供所需的端口号值。 以前，平台使用 *PORT* 应用设置。 我们计划弃用此应用设置，改为独占使用 *WEBSITES_PORT*。
 
@@ -156,12 +148,12 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 **如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上, 你将需要创建应用程序设置, 然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上，你将需要创建应用程序设置，然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
 
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (完整 URL, 例如: `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io`）
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：
@@ -200,5 +192,5 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-- [设置过渡环境，在 Azure 应用服务](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

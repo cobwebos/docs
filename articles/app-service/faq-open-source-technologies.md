@@ -1,34 +1,28 @@
 ---
-title: 开放源代码技术常见问题解答 - Azure 应用服务 | Microsoft Docs
-description: 获取有关 Azure 应用服务的 Web 应用功能的开放源代码技术常见问题解答。
-services: app-service\web
-documentationcenter: ''
+title: 开源技术常见问题
+description: 获取 Azure App Service 中的开源技术常见问题的解答。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169683"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672429"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的开放源代码技术常见问题解答
 
-本文对 [Azure App Service Web 应用功能](https://azure.microsoft.com/services/app-service/web/)开源技术常见问题 (FAQ) 进行了解答。
+本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的开放源代码技术问题的常见问题 (FAQ) 解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何启用 PHP 日志记录以便对 PHP 问题进行故障排除？
+## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何打开 PHP 日志记录以对 PHP 问题进行故障排除？
 
 打开 PHP 日志记录：
 
@@ -41,7 +35,7 @@ ms.locfileid: "72169683"
 7. 选择 **.user.ini** 旁的铅笔图标。
 8. 在文件中，添加以下代码：`log_errors=on`
 9. 选择“保存”。
-10. 选择“wp-config.php”旁边的铅笔图标。
+10. 选择 **wp-config.php** 旁的铅笔图标。
 11. 将文本更改为以下代码：
     ```php
     //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
@@ -216,6 +210,6 @@ WordPress Buddy+ 是一个 Azure 站点扩展，可以用于直接在数据库�
 
 确保 MySQL 应用内正在运行之后，尝试使用 PHPMyAdmin。
 
-## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>在尝试使用 PHPMyadmin 导入或导出 MySQL 应用内数据库时，收到了 HTTP 403 错误。 如何解决此问题？
+## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>我在尝试使用 PHPMyadmin 导入或导出 MySQL 应用内数据库时遇到 HTTP 403 错误。 如何解决此问题？
 
 如果使用较旧版本的 Chrome，则可能会遇到一个已知 bug。 若要解决该问题，请升级到较新版本的 Chrome。 另请尝试使用不会出现该问题的不同浏览器，如 Internet Explorer 或 Microsoft Edge。

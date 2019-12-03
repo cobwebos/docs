@@ -1,24 +1,14 @@
 ---
-title: 配置自定义容器-Azure App Service |Microsoft Docs
-description: 了解如何配置要在 Azure App Service 中使用的 node.js 应用
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: 配置自定义 Linux 容器
+description: 了解如何在 Azure App Service 中配置自定义 Linux 容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 7290e2b09c316a97bfb88744307e185aef72852a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668986"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671869"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure App Service 配置自定义 Linux 容器
 
@@ -75,7 +65,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
 
     此配置不允许外部连接到容器。 SSH 仅通过 `https://<app-name>.scm.azurewebsites.net` 提供，并使用发布凭据进行身份验证。
 
-- 将[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)添加到映像存储库，并使用[copy](https://docs.docker.com/engine/reference/builder/#copy)指令将文件复制到 */etc/ssh/* 目录。 有关*sshd_config*文件的详细信息，请参阅[OpenBSD 文档](https://man.openbsd.org/sshd_config)。
+- 将[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)添加到映像存储库，并使用[copy](https://docs.docker.com/engine/reference/builder/#copy)指令将文件复制到 */etc/ssh/* 目录中。 有关*sshd_config*文件的详细信息，请参阅[OpenBSD 文档](https://man.openbsd.org/sshd_config)。
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -149,7 +139,7 @@ wordpress:
 - command
 - entrypoint
 - 环境
-- 图像
+- image
 - ports
 - restart
 - services

@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644599"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688194"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>使用一键式引入将数据引入 Azure 数据资源管理器
 
-本文介绍如何使用一键式引入快速将新表从存储的 json 或 csv 格式引入到 Azure 数据资源管理器中。 引入数据后，可以使用 Web UI 编辑表并运行查询。
+本文介绍如何使用一键式引入快速引入 json 格式的新表或本地文件中的 csv 格式的新表或 Azure 数据资源管理器中的新表。 使用直观的向导，在几分钟内，你的数据是引入的，你可以编辑表，并使用 Web UI 运行查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[应用程序](https://dataexplorer.azure.com/)。

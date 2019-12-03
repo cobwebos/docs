@@ -1,25 +1,16 @@
 ---
-title: 应用服务中的操作系统功能 - Azure
-description: 了解可供 Azure 应用服务上的 Web 应用、移动应用后端和 API 应用使用的 OS 功能
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: 操作系统功能
+description: 了解 Windows Azure App Service 上的操作系统功能。 了解应用获取哪些类型的文件、网络和注册表访问权限。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066770"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671610"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -64,7 +55,7 @@ ms.locfileid: "70066770"
 
 - 应用可能会引发错误，指示磁盘上没有足够的空间。
 - 浏览到 Kudu 控制台时，可能会看到磁盘错误。
-- 从 Azure DevOps 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
+- 从 Azure DevOps 或 Visual Studio 部署可能因 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`而失败。
 - 你的应用可能会出现性能下降。
 
 <a id="NetworkDrives"></a>
@@ -95,7 +86,7 @@ ms.locfileid: "70066770"
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>网络访问
-应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 中的服务；例如，建立与 SQL 数据库的 HTTPS 连接即是如此。
+应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同的协议连接到 Azure 内的服务，例如，通过建立与 SQL 数据库的 HTTPS 连接。
 
 还有有限容量以便为应用建立一个本地环回连接，并且让应用侦听该本地环回套接字。 此功能存在主要是为了实现作为其功能的一部分侦听本地环回套接字的应用。 每个应用监视一个“专用”环回连接。 应用“A”无法侦听应用“B”创建的本地环回套接字。
 

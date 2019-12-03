@@ -1,30 +1,21 @@
 ---
-title: 使用 FTP/S 部署内容 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 使用 FTP/S 部署内容
+description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服务。 通过禁用未加密的 FTP 来改善网站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098073"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671726"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
-本文介绍了如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)。
+本文演示如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。
 
 应用的 FTP / S 终结点已处于活动状态。 无需配置即可启用 FTP / S 部署。
 
@@ -45,11 +36,11 @@ ms.locfileid: "71098073"
 建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
 
 > [!NOTE]
-> 使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名： 
+> 使用用户级凭据对 FTP/FTPS 终结点进行身份验证时，请使用以下格式 requirers 用户名： 
 >
 >`<app-name>\<user-name>`
 >
-> 由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
+> 由于用户级凭据链接到用户，而不是特定资源，因此用户名必须采用以下格式才能将登录操作定向到正确的应用终结点。
 >
 
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure
@@ -72,7 +63,7 @@ ms.locfileid: "71098073"
 
 为了增强安全性，只应启用基于 SSL 的 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
-在[Azure 门户](https://portal.azure.com)的应用的资源页面中，从左侧导航栏中选择 "**配置** > **常规设置**"。
+在[Azure 门户](https://portal.azure.com)的应用的资源页面中，从左侧导航栏中选择 "**配置**" > "**常规设置**"。
 
 若要禁用未加密的 FTP，请仅在**ftp 状态**中选择**FTPS** 。 若要完全禁用 FTP 和 FTPS，请选择 "**禁用**"。 完成后，单击“保存”。 如果**仅使用 FTPS**，则必须通过导航到 web 应用的 " **TLS/SSL 设置**" 边栏选项卡来强制使用 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支持“仅 FTPS”。
 
@@ -89,7 +80,7 @@ ms.locfileid: "71098073"
 ## <a name="troubleshoot-ftp-deployment"></a>排查 FTP 部署问题
 
 - [如何排查 FTP 部署问题？](#how-can-i-troubleshoot-ftp-deployment)
-- [我无法通过 FTP 来发布代码。如何解决此问题？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [我无法 FTP 和发布我的代码。如何解决此问题？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [如何在 Azure 应用服务中通过被动模式连接到 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何排查 FTP 部署问题？

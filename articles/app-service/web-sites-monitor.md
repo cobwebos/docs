@@ -1,25 +1,18 @@
 ---
-title: 监视应用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用 Azure 门户在 Azure 应用服务中监视应用。
-services: app-service
-documentationcenter: ''
+title: 监视应用
+description: 了解如何使用 Azure 门户在 Azure 应用服务中监视应用。 了解所报告的配额和指标。
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4c0d3822b5000611d1b5229924cb44d055795468
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546200"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688280"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。

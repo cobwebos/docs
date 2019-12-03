@@ -1,26 +1,19 @@
 ---
-title: Node.js 的最佳做法和故障排除 - Azure 应用服务
-description: 了解 Azure 应用服务上节点应用程序的最佳做法和故障排除步骤。
-services: app-service\web
-documentationcenter: nodejs
+title: Node.js 最佳实践和故障排除
+description: 了解 Azure App Service 中运行的 node.js 应用程序的最佳做法和故障排除步骤。
 author: ranjithr
-manager: wadeh
-editor: ''
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: bwren
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cf691ae3a199ea82cb8cfa23c386d30551dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024227"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672045"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 

@@ -1,24 +1,16 @@
 ---
-title: 备份应用 - Azure 应用服务
-description: 了解如何在 Azure 应用服务中创建应用备份。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 备份应用
+description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划的备份。 通过包含附加的数据库来自定义备份。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886063"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671657"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 你可以将备份配置为保持不变的时间。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
@@ -74,7 +66,7 @@ ms.locfileid: "73886063"
 
 2. 在 "**备份**" 页上，选择 "**未配置备份"。单击此处配置应用的备份**。
 
-    ![单击“配置”](./media/manage-backup/configure-start.png)
+    ![单击 "配置"](./media/manage-backup/configure-start.png)
 
 3. 在 "**备份配置**" 页上，单击 "**未配置存储**" 来配置存储帐户。
 
@@ -126,7 +118,7 @@ ms.locfileid: "73886063"
 > 备份中的单个数据库的最大大小为4GB，但备份的总最大大小为10GB
 
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
-假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `_backup.filter` 文件夹中创建一个 `D:\home\site\wwwroot` 文件。 指定要在此文件中排除的文件和文件夹列表。 
+假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 
 
 可以通过导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`来访问文件。 如果出现系统提示，请登录到你的 Azure 帐户。
 
@@ -142,7 +134,7 @@ ms.locfileid: "73886063"
 \site\wwwroot\Images\2013
 ```
 
-使用 `_backup.filter`ftp`D:\home\site\wwwroot\` 或任何其他方法，将 [ 文件上传到站点的 ](deploy-ftp.md) 目录。 如果需要，可以使用 Kudu 直接创建文件 `DebugConsole` 并在那里插入内容。
+使用 [ftp](deploy-ftp.md) 或任何其他方法，将 `_backup.filter` 文件上传到站点的 `D:\home\site\wwwroot\` 目录。 如果需要，可以使用 Kudu 直接创建文件 `DebugConsole` 并在那里插入内容。
 
 采用通常使用的相同方式运行备份，即[手动](#create-a-manual-backup)或[自动](#configure-automated-backups)。 现在，`_backup.filter` 中指定的任何文件和文件夹已从计划启动或手动启动的将来备份中排除。 
 
@@ -165,7 +157,7 @@ ms.locfileid: "73886063"
 > 
 > 
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动备份管理。
 

@@ -1,25 +1,17 @@
 ---
-title: 迁移活动 DNS 名称 - Azure 应用服务 | Microsoft Docs
+title: 迁移活动 DNS 名称
 description: 了解如何在不停机的情况下，将已分配到实时站点的自定义 DNS 域名迁移到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/21/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470360"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672361"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -37,7 +29,7 @@ ms.locfileid: "73470360"
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
-提前绑定自定义域时，请先完成下面的两项操作，再对 DNS 记录进行更改：
+提前绑定自定义域时，对 DNS 记录进行任何更改之前，需要完成以下两项操作：
 
 - 验证域所有权
 - 启用应用的域名
@@ -48,15 +40,15 @@ ms.locfileid: "73470360"
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
-若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify._subdomain>&lt;_ 映射到 _appname>.azurewebsites.net&lt;_ 。 
+若要验证域所有权，请添加 TXT 记录。 TXT 记录从 awverify.&lt;subdomain> 映射到 &lt;appname>.azurewebsites.net。 
 
 你需要的 TXT 记录取决于要迁移的 DNS 记录。 有关示例，请参阅下表（`@` 通常表示根域）：
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | awverify | _appname>.azurewebsites.net&lt;_ |
-| www（子域） | awverify.www | _appname>.azurewebsites.net&lt;_ |
-| \*（通配符） | awverify. _\*_ | _appname>.azurewebsites.net&lt;_ |
+| \@（根） | awverify | &lt;appname>.azurewebsites.net |
+| www（子域） | awverify.www | &lt;appname>.azurewebsites.net |
+| \*（通配符） | awverify.\* | &lt;appname>.azurewebsites.net |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 
@@ -73,7 +65,7 @@ ms.locfileid: "73470360"
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页中，选择“添加主机名” **+旁的**  图标。
+在“自定义域”页中，选择“添加主机名”旁的 + 图标。
 
 ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -89,7 +81,7 @@ ms.locfileid: "73470360"
 
 ![将 DNS 名称添加到应用](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页中。 请尝试刷新浏览器来更新数据。
+新主机名可能需要经过一段时间后才会反映在应用的“自定义域”页面中。 请尝试刷新浏览器来更新数据。
 
 ![已添加 CNAME 记录](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -119,11 +111,11 @@ ms.locfileid: "73470360"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | 值 |
+| FQDN 示例 | 记录类型 | 主机 | Value |
 | - | - | - | - |
-| contoso.com（根域） | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
-| www\.contoso.com (sub) | CNAME | `www` | _appname>.azurewebsites.net&lt;_ |
-| \*.contoso.com（通配符域） | CNAME | _\*_ | _appname>.azurewebsites.net&lt;_ |
+| contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
+| www\.contoso.com （sub） | CNAME | `www` | &lt;appname>.azurewebsites.net |
+| \*.contoso.com（通配符域） | CNAME | _\*_ | &lt;appname>.azurewebsites.net |
 
 保存设置。
 

@@ -1,25 +1,18 @@
 ---
-title: 使用 PowerShell 克隆应用 - Azure 应用服务
-description: 了解如何使用 PowerShell 将“应用服务”应用克隆到新的应用。
-services: app-service\web
-documentationcenter: ''
+title: 使用 PowerShell 克隆应用
+description: 了解如何使用 PowerShell 将“应用服务”应用克隆到新的应用。 涵盖各种克隆方案，包括流量管理器集成。
 author: ahmedelnably
-manager: stefsch
-editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983695"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671434"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 
@@ -30,7 +23,7 @@ ms.locfileid: "70983695"
 标准、高级、高级 V2 和独立应用服务计划支持应用克隆。 新功能使用与应用服务备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份应用](manage-backup.md)。
 
 ## <a name="cloning-an-existing-app"></a>克隆现有应用
-场景：用户想要将位于美国中南部区域的现有应用内容克隆到位于美国中北部区域的新应用。 结合 `-SourceWebApp` 选项使用 Azure 资源管理器版本的 PowerShell cmdlet 来创建新的应用，即可实现此目的。
+方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到位于美国中北部区域的新应用。 结合 `-SourceWebApp` 选项使用 Azure 资源管理器版本的 PowerShell cmdlet 来创建新的应用，即可实现此目的。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
 
@@ -44,13 +37,13 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-`New-AzWebApp`使用命令，可在美国中北部区域创建新应用，并将其绑定到现有的应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
+使用 `New-AzWebApp` 命令，可在美国中北部区域创建新应用，并将其绑定到现有应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。  请注意， `IncludeSourceWebAppSlots`只支持使用该参数克隆整个应用，包括其所有槽。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
+要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。  请注意，仅支持克隆包含其所有槽的整个应用程序的 `IncludeSourceWebAppSlots` 参数。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -63,7 +56,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>将现有应用克隆到应用服务环境
-场景：用户想要将位于美国中南部区域的现有应用内容克隆到现有应用服务环境 (ASE) 的新应用中。
+方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到现有应用服务环境（ASE）的新应用。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
 
@@ -80,7 +73,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 由于使用了旧版本，需要提供 `Location` 参数，但在 ASE 中创建应用时，可忽略该参数。 
 
 ## <a name="cloning-an-existing-app-slot"></a>克隆现有的应用槽
-场景：希望将应用的现有部署槽位克隆到新应用或新槽位。 新的应用可与原始应用槽位于相同或不同的区域。
+方案：你要将应用的现有部署槽克隆到新应用或新槽。 新的应用可与原始应用槽位于相同或不同的区域。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取与 `source-app` 相关的源应用的槽位信息（在本例中，该应用名为 `source-appslot`）：
 
@@ -98,14 +91,14 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 通过创建多区域应用和配置 Azure 流量管理器来将流量路由到所有这些应用是一个重要的方案，可确保客户应用的高可用性。 克隆现有应用时，可以选择将两个应用都连接到新的或现有的流量管理器配置文件。 仅支持 Azure 资源管理器版本的流量管理器。
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>在克隆应用时创建新的流量管理器配置文件
-场景：用户想要将应用克隆到另一个区域，同时配置包含这两个应用的 Azure 资源管理器流量管理器配置文件。 以下命令演示如何在新应用中创建源应用的克隆，同时配置新的流量管理器配置文件：
+方案：你要将应用克隆到另一个区域，同时配置包含两个应用的 Azure 资源管理器流量管理器配置文件。 以下命令演示如何在新应用中创建源应用的克隆，同时配置新的流量管理器配置文件：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-app-to-an-existing-traffic-manager-profile"></a>将新克隆的应用添加到现有的流量管理器配置文件
-场景：用户已有一个 Azure 资源管理器流量管理器配置文件，现在想要将两个应用都添加为终结点。 要执行此操作，首先需要组合现有流量管理器配置文件 ID。 需要订阅 ID、资源组名称和现有流量管理器配置文件名称。
+方案：你已有 Azure 资源管理器流量管理器配置文件，并且想要将两个应用添加为终结点。 要执行此操作，首先需要组合现有流量管理器配置文件 ID。 需要订阅 ID、资源组名称和现有流量管理器配置文件名称。
 
 ```powershell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
@@ -131,7 +124,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 如果克隆到不同的缩放单元，出站 IP 地址会更改
 * 不适用于 Linux 应用
 
-### <a name="references"></a>参考资料
+### <a name="references"></a>参考
 * [应用服务克隆](app-service-web-app-cloning.md)
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure 资源管理器的支持](../traffic-manager/traffic-manager-powershell-arm.md)

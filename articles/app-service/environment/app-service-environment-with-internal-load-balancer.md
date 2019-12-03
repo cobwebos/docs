@@ -1,25 +1,18 @@
 ---
-title: 在应用服务环境中创建和使用内部负载均衡器 - Azure | Microsoft Docs
-description: 创建 ASE 并将其与 ILB 搭配使用
-services: app-service
-documentationcenter: ''
+title: 创建 ILB ASE v1
+description: 创建和使用 ILB 的 ASE。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069899"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688727"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -27,7 +20,7 @@ ms.locfileid: "70069899"
 > 本文介绍应用服务环境 v1。 应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
 >
 
-应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地了解应用服务环境提供的功能, 请阅读[什么是应用服务环境][WhatisASE]文档。 如果你不知道在 VNet 中操作的优点, 请阅读[Azure 虚拟网络常见问题解答][virtualnetwork]。 
+应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地了解应用服务环境提供的功能，请阅读[什么是应用服务环境][WhatisASE]文档。 如果你不知道在 VNet 中操作的优点，请阅读[Azure 虚拟网络常见问题解答][virtualnetwork]。 
 
 ## <a name="overview"></a>概述
 可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 要将 IP 地址设置为 VNet 地址，需搭配内部负载均衡器 (ILB) 来部署 ASE。 使用 ILB 配置 ASE 时，需提供：
@@ -50,7 +43,7 @@ ms.locfileid: "70069899"
 * 通过门户购买证书并搭配应用使用。 当然也可以直接通过证书颁发机构获取证书并搭配应用使用，但是无法通过 Azure 门户这样做。
 
 ## <a name="creating-an-ilb-ase"></a>创建 ILB ASE
-创建 ILB ASE 通常与创建 ASE 没有太大差异。 有关创建 ASE 的更深入讨论, 请参阅[如何创建应用服务环境][HowtoCreateASE]。 无论是在 ASE 创建期间创建 VNet 还是选择现有 VNet，创建 ILB ASE 的过程是相同的。 若要创建 ILB ASE，请执行以下操作： 
+创建 ILB ASE 通常与创建 ASE 没有太大差异。 有关创建 ASE 的更深入讨论，请参阅[如何创建应用服务环境][HowtoCreateASE]。 无论是在 ASE 创建期间创建 VNet 还是选择现有 VNet，创建 ILB ASE 的过程是相同的。 若要创建 ILB ASE，请执行以下操作： 
 
 1. 在 Azure 门户中选择“创建资源”->“Web + 移动”->“应用服务环境”。
 2. 选择订阅。
@@ -75,7 +68,7 @@ ms.locfileid: "70069899"
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择“创建”。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。 
+6. 选择**创建**。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。 
 
 ![][2]
 
@@ -111,14 +104,14 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 #### <a name="network-security-groups"></a>网络安全组
 可以使用 ILB ASE 针对应用进行网络隔离。 无法通过 Internet 来访问应用，甚至无法通过 Internet 来感知应用。 此方法非常适用于托管 Intranet 站点，例如业务线应用程序。 当需要更进一步地限制访问时，仍然可以使用网络安全组 (NSG) 来控制网络级别的访问。 
 
-如果想使用 NSG 进一步限制访问，则必须确保不会中断 ASE 运行所需的通信。 即使 HTTP/HTTPS 访问只通过 ASE 所使用的 ILB 进行，ASE 仍需依赖 VNet 外部资源。 若要查看仍需要哪些网络访问权限, 请参阅使用 ExpressRoute[控制到应用服务环境的入站流量][ControlInbound]和[应用服务环境的网络配置详细信息][ExpressRoute]。 
+如果想使用 NSG 进一步限制访问，则必须确保不会中断 ASE 运行所需的通信。 即使 HTTP/HTTPS 访问只通过 ASE 所使用的 ILB 进行，ASE 仍需依赖 VNet 外部资源。 若要查看仍需要哪些网络访问权限，请参阅使用 ExpressRoute[控制到应用服务环境的入站流量][ControlInbound]和[应用服务环境的网络配置详细信息][ExpressRoute]。 
 
 若要配置 NSG，必须知道 Azure 所使用的 IP 地址，以管理 ASE。 如果该 IP 地址发出 Internet 请求，它也会成为 ASE 的出站 IP 地址。 ASE 的出站 IP 地址在 ASE 的生命周期中保持静态。 删除并重新创建 ASE 后，将获得新的 IP 地址。 若要查找此 IP 地址，请转到“设置”->“属性”并查找“出站 IP 地址”。 
 
 ![][5]
 
 #### <a name="general-ilb-ase-management"></a>常规 ILB ASE 管理
-管理 ILB ASE 通常与管理 ASE 大致相同。 必须增加工作线程池来托管更多 ASP 实例，并增加前端服务器来处理增加的 HTTP/HTTPS 流量。 有关管理 ASE 配置的常规信息, 请参阅[配置应用服务环境][ASEConfig]。 
+管理 ILB ASE 通常与管理 ASE 大致相同。 必须增加工作线程池来托管更多 ASP 实例，并增加前端服务器来处理增加的 HTTP/HTTPS 流量。 有关管理 ASE 配置的常规信息，请参阅[配置应用服务环境][ASEConfig]。 
 
 其他管理项为证书管理和 DNS 管理。 创建 ILB ASE 之后，必须获取并上传用于 HTTPS 的证书，并在其到期前进行替换。 Azure 拥有基础域，因此可以使用外部 VIP 提供 ASE 的证书。 ILB ASE 所使用的子域可以是任何内容，因此你必须提供自己的 HTTPS 证书。 
 
@@ -130,7 +123,7 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
 
 ## <a name="getting-started"></a>入门
-若要开始应用服务环境, 请参阅[应用服务环境简介][WhatisASE]
+若要开始应用服务环境，请参阅[应用服务环境简介][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

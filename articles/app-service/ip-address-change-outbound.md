@@ -1,22 +1,15 @@
 ---
-title: 为出站 IP 地址更改做准备 - Azure 应用服务
+title: 准备出站 IP 地址更改
 description: 如果出站 IP 地址将要更改，请了解如何在更改后继续运行应用。
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269714"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671669"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何为出站 IP 地址更改做准备
 
@@ -36,13 +29,13 @@ ms.locfileid: "61269714"
 
 1.  打开 [Azure 门户](https://portal.azure.com)。
 
-2.  在左侧导航菜单中选择“应用服务”。 
+2.  在左侧导航菜单中选择“应用服务”。
 
 3.  从列表中选择自己的应用服务应用。
 
 1.  如果应用是一个函数应用，请参阅[函数应用出站 IP 地址](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)。
 
-4.  在“设置”  标题下，单击左侧导航栏中的“属性”  ，找到标有“出站 IP 地址”  的部分。
+4.  在“设置”标题下，单击左侧导航栏中的“属性”，找到标有“出站 IP 地址”的部分。
 
 5. 复制 IP 地址，并将其添加到对出站流量的特殊处理中，例如筛选器或允许列表。 请勿删除列表中的现有 IP 地址。
 

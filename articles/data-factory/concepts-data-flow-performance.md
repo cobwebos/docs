@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681536"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671591"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -66,7 +66,7 @@ ms.locfileid: "73681536"
 * 通过设置查询，可以在源中的行到达数据流进行处理之前对其进行筛选。 这可以使初始数据采集更快。 如果使用查询，可以为 Azure SQL DB 添加可选的查询提示，如 "未提交读"。
 * 未提交读将提供更快的源转换查询结果
 
-![源](media/data-flow/source4.png "源")
+![源](media/data-flow/source4.png "Source")
 
 ### <a name="sink-batch-size"></a>接收器批大小
 
@@ -120,6 +120,14 @@ ms.locfileid: "73681536"
 ```DateFiles/*_201907*.txt```
 
 使用通配符时，管道将只包含一个数据流活动。 这比针对 Blob 存储进行查找更好，然后使用 ForEach 循环访问所有匹配文件，并在内部使用 "执行数据流" 活动。
+
+### <a name="optimizing-for-cosmosdb"></a>针对 CosmosDB 进行优化
+
+在 CosmosDB 接收器上设置吞吐量和批属性仅在从管道数据流活动执行该数据流时生效。 在数据流执行之后，原始集合设置将被 CosmosDB。
+
+* 批大小：计算数据的粗略行大小，并确保行大小 * 批大小小于2000000。 如果是，请增加批大小以获得更好的吞吐量
+* 吞吐量：在此处设置更高的吞吐量设置，以允许文档更快写入 CosmosDB。 请记住，基于高吞吐量设置的 RU 成本较高。
+*   写入吞吐量预算：使用小于每分钟的总 ru 数的值。 如果有大量 Spark partitiongs 的数据流，则设置预算吞吐量会允许对这些分区进行更多的均衡。
 
 ## <a name="next-steps"></a>后续步骤
 

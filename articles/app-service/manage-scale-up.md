@@ -1,26 +1,18 @@
 ---
-title: 纵向扩展功能和容量 - Azure 应用服务 | Microsoft Docs
-description: 了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: 扩展功能和容量
+description: 了解如何在 Azure App Service 中纵向扩展应用。 获取更多 CPU、内存、磁盘空间和额外功能。
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/19/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089460"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672311"
 ---
-# <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用
+# <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure App Service 中纵向扩展应用
 
 本文介绍如何在 Azure 应用服务中缩放应用。 缩放的工作流有两种：纵向扩展和横向扩展；本文介绍纵向扩展工作流。
 
@@ -44,34 +36,33 @@ ms.locfileid: "74089460"
 ## <a name="scale-up-your-pricing-tier"></a>向上缩放定价层
 
 > [!NOTE]
-> 要纵向扩展到 PremiumV2 层，请参阅****[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)。
-
+> 要纵向扩展到 PremiumV2 层，请参阅[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)。
 >
 
 1. 在浏览器中，打开 [Azure 门户][portal]。
 
-1. 在应用服务应用页的左侧菜单中，选择“纵向扩展(应用服务计划)”。
+1. 在应用服务应用页的左侧菜单中，选择 "**纵向扩展（应用服务计划）** "。
    
-3. 选择层，然后选择“应用”。 选择不同的类别（例如“生产”），并选择“查看其他选项”以显示更多层。
+3. 选择层，然后选择 "**应用**"。 选择不同的类别（例如，"**生产**"），并**查看其他选项**以显示更多层。
    
     ![导航以纵向扩展 Azure 应用规模。][ChooseWHP]
 
-    操作完成后，会看到一个包含绿色勾选标记（成功）的通知弹出窗口。
+    操作完成后，会看到一个通知弹出窗口，其中包含绿色的 "成功" 复选标记。
 
 <a name="ScalingSQLServer"></a>
 
 ## <a name="scale-related-resources"></a>与缩放相关的资源
 如果应用依赖于其他服务，如 Azure SQL 数据库或 Azure 存储，则可单独对这些资源进行纵向扩展。 这些资源不由应用服务计划管理。
 
-1. 在应用的“概述”页中，选择“资源组”链接。
+1. 在应用的 "**概述**" 页中，选择 "**资源组**" 链接。
    
     ![与向上缩放 Azure 应用相关的资源](./media/web-sites-scale/RGEssentialsLink.png)
 
-2. 在“资源组”页的“摘要”部分，选择要缩放的资源。 以下屏幕截图显示了 SQL 数据库资源。
+2. 在 "**资源组**" 页的 "**摘要**" 部分中，选择要缩放的资源。 以下屏幕截图显示了 SQL 数据库资源。
    
     ![导航到资源组页面对 Azure 应用进行纵向扩展](./media/web-sites-scale/ResourceGroup.png)
 
-    若要纵向扩展相关资源，请参阅特定资源类型的文档。 例如，若要纵向扩展单个 SQL 数据库，请参阅[缩放 Azure SQL 数据库中的单一数据库资源](../sql-database/sql-database-single-database-scale.md)。 若要纵向扩展 Azure Database for MySQL 资源，请参阅[缩放 MySQL 资源](../mysql/concepts-pricing-tiers.md#scale-resources)。
+    若要纵向扩展相关资源，请参阅特定资源类型的文档。 例如，若要纵向扩展单个 SQL 数据库，请参阅[在 AZURE SQL 数据库中缩放单一数据库资源](../sql-database/sql-database-single-database-scale.md)。 若要纵向扩展 Azure Database for MySQL 资源，请参阅[缩放 MySQL 资源](../mysql/concepts-pricing-tiers.md#scale-resources)。
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>
