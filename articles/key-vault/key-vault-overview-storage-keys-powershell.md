@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204218"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707106"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -44,11 +44,11 @@ Key Vault 是在所有 Azure AD 租户中预先注册的 Microsoft 应用程序�
 
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
-| Azure AD | Azure 政府 | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本指南，必须首先执行以下操作：
 
@@ -74,7 +74,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>设置变量
 
-首先，在以下步骤中设置 PowerShell cmdlet 要使用的变量。 请确保<YourResourceGroupName>更新、 <YourStorageAccountName>和<YourKeyVaultName>占位符，并将 $keyVaultSpAppId 设置为`cfa8b339-82a2-471a-a3c9-0fc0be7a4093` （在上面的[服务主体应用程序 ID](#service-principal-application-id)中指定）。
+首先，在以下步骤中设置 PowerShell cmdlet 要使用的变量。 请确保更新 <YourResourceGroupName>、<YourStorageAccountName>和 <YourKeyVaultName> 占位符，并将 $keyVaultSpAppId 设置为 `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` （在上面的[服务主体应用程序 ID](#service-principal-application-id)中指定）。
 
 我们还将使用 Azure PowerShell [AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0)和[AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) cmdlet 来获取你的用户 ID 和 Azure 存储帐户的上下文。
 
@@ -191,12 +191,12 @@ Tags                :
 
 - 设置帐户共享访问签名定义。 
 - 为 Blob、文件、表和队列服务创建帐户共享访问签名令牌。 为资源类型服务、容器和对象创建令牌。 令牌是通过 https 上的所有权限创建的，并且具有指定的开始日期和结束日期。
-- 在保管库中设置 Key Vault 托管存储共享访问签名定义。 定义具有创建的共享访问签名令牌的模板 URI。 定义具有共享访问签名类型`account` ，且有效期为 N 天。
+- 在保管库中设置 Key Vault 托管存储共享访问签名定义。 定义具有创建的共享访问签名令牌的模板 URI。 定义 `account` 的共享访问签名类型，且有效期为 N 天。
 - 验证共享访问签名是否已作为机密保存在密钥保管库中。
 - 
 ### <a name="set-variables"></a>设置变量
 
-首先，在以下步骤中设置 PowerShell cmdlet 要使用的变量。 请确保更新<YourStorageAccountName>和<YourKeyVaultName>占位符。
+首先，在以下步骤中设置 PowerShell cmdlet 要使用的变量。 请确保更新 <YourStorageAccountName> 和 <YourKeyVaultName> 占位符。
 
 我们还将使用 Azure PowerShell [AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) cmdlet 来获取 Azure 存储帐户的上下文。
 
@@ -225,7 +225,7 @@ $SasToken 的值将与此类似。
 
 ### <a name="generate-a-shared-access-signature-definition"></a>生成共享访问签名定义
 
-使用 Azure PowerShell [AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet 来创建共享访问签名定义。  您可以为`-Name`参数提供您选择的名称。
+使用 Azure PowerShell [AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet 来创建共享访问签名定义。  您可以为 `-Name` 参数提供您选择的名称。
 
 ```azurepowershell-interactive
 Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
@@ -238,7 +238,7 @@ Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -Vaul
 首先，在密钥保管库中查找共享的访问签名定义。
 
 ```azurepowershell-interactive
-Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
 对应于 SAS 定义的机密将具有以下属性：
@@ -251,7 +251,7 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-你现在可以使用[AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) cmdlet 和 secret `Name`属性来查看该机密的内容。
+你现在可以使用[AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) cmdlet 和 secret `Name` 属性来查看该机密的内容。
 
 ```azurepowershell-interactive
 $secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>

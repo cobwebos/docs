@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105286"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706498"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
 当第一次调用执行组件的任何方法时即可激活该执行组件。 如果在可配置的一段时间内未使用执行组件，则此执行组件将停用（执行组件运行时对其进行垃圾回收）。 还可以在任何时候手动删除执行组件及其状态。
@@ -27,9 +27,9 @@ ms.locfileid: "62105286"
 ## <a name="actor-activation"></a>执行组件激活
 当激活了某个执行组件，将出现以下情况：
 
-* 当调用执行组件时，如果执行组件尚未处于活动状态，则创建新的执行组件。
+* 当调用执行组件时，如果执行组件尚未处于活动状态，则将创建新的执行组件。
 * 如果执行组件为维护状态，则加载此执行组件的状态。
-* 将调用 `OnActivateAsync` (C#) 或 `onActivateAsync` (Java) 方法（这些方法可以在执行组件实现中被重写）。
+* 将调用 `OnActivateAsync` (C#) 或 `onActivateAsync` (Java) 方法（该方法可以在执行组件实现中被覆盖）。
 * 现在该执行组件被视为处于活动状态。
 
 ## <a name="actor-deactivation"></a>执行组件停用
@@ -52,7 +52,7 @@ ms.locfileid: "62105286"
 * 正在调用的 `IRemindable.ReceiveReminderAsync` 方法（仅当执行组件使用提醒时该方法才可用）
 
 > [!NOTE]
-> 如果执行组件使用计时器，且计时器回调得到调用，则不  计为“正在使用”。
+> 如果执行组件使用计时器，且计时器回调得到调用，则不计为“正在使用”。
 >
 >
 
@@ -94,7 +94,7 @@ public class Program
     }
 }
 ```
-对于每个活动的执行组件，执行组件运行时会持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对它执行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则对其予以回收。
+对于每个活动的执行组件，执行组件运行时会持续跟踪其处于空闲状态（即未使用）的时间。 执行组件运行时每个 `ScanIntervalInSeconds` 检查每个执行组件，以查看是否可以对其进行垃圾回收，并且如果它已空闲 `IdleTimeoutInSeconds`，则标记该执行组件。
 
 任何时候只要使用了执行组件，其空闲时间都会重置为 0。 此后，仅在此执行组件再次空闲 `IdleTimeoutInSeconds`，才会对其执行垃圾回收。 如果执行执行组件接口方法或执行组件提醒回调，则想到执行组件被视为已使用。 如果执行其计时器回调，则执行组件**不**被视为已使用。
 
@@ -122,7 +122,7 @@ public class Program
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

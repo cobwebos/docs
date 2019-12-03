@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473332"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706230"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -27,7 +27,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)，以更好地了解功能。
 
-## <a name="learn"></a>学习
+## <a name="learn"></a>了解
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -72,9 +72,9 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 | 点播网络研讨会| [利用 Azure AD 管理企业应用程序](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>了解 Azure AD 如何帮助你为企业 SaaS 应用程序实现 SSO，并了解控制访问的最佳做法。 |
 | 视频| [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) <br> [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) <br> [将 Salesforce 与 Azure AD 集成：如何实现用户预配](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | 在线课程| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
-| 书籍| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
+| 帐簿| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
 | 教程| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。 |
-| 常见问题| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
+| 常见问题解答| [有关自动](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)用户预配的常见问题 |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 
@@ -98,7 +98,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>仅限云的企业的自动用户预配
 
-在此示例中，用户创建发生在 Azure AD 中，Azure AD 预配服务管理目标（SaaS）应用程序的自动用户预配：
+在此示例中，用户创建发生在 Azure AD 中，Azure AD 预配服务管理目标（SaaS）应用程序的自动用户预配。
 
 ![图片2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -112,16 +112,17 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>云 HR 应用程序的自动用户预配 
 
-在此示例中，用户和或组是在 cloud HR 应用程序（如 Workday）中创建的。
+在此示例中，用户和或组在云 HR 应用程序（如 Workday 和 SuccessFactors）中创建。 Azure AD 预配服务和 Azure AD Connect 预配代理将用户数据从云 HR 应用租户预配到 AD 中。 在 AD 中更新帐户后，该帐户将通过 Azure AD Connect 与 Azure AD 同步，并且电子邮件地址和用户名属性可以写回到云 HR 应用租户。
 
 ![图片2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Cloud HR system 中创建的帐户
-1. 数据通过 Azure AD 预配服务和预配代理流入本地 AD。
-1. 将数据同步到 Azure AD Azure AD Connect
-1. 电子邮件和用户名属性可以写回到云 HR 应用程序。
-
-有关解决方案体系结构和部署的详细信息，请参阅[教程：为 Workday 配置自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)。
+1.  **Hr 团队**在 cloud HR app 租户中执行事务。
+2.  **Azure AD 预配服务**运行来自 cloud HR 应用租户的计划周期，并标识需要处理以便与 AD 同步的更改。
+3.  **Azure AD 预配服务**使用包含 AD 帐户创建/更新/启用/禁用操作的请求负载调用 Azure AD Connect 预配代理。
+4.  **Azure AD Connect 预配代理**使用服务帐户来管理 AD 帐户数据。
+5.  **Azure AD Connect**运行增量同步以获取 AD 中的更新。
+6.  **AD**更新与 Azure AD 同步。 
+7.  **Azure AD 预配服务**回写电子邮件属性和用户名从 Azure AD 到云 HR 应用租户。
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 
@@ -133,7 +134,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
+通信对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
 
 ### <a name="plan-a-pilot"></a>规划试点
 

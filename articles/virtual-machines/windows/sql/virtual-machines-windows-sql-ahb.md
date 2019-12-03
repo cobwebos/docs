@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 06d7b7abe7741c465f3d40a90340e03b2c24f258
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900691"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707500"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>更改 Azure 中 SQL Server 虚拟机的许可证型号
 本文介绍如何使用新的 SQL VM 资源提供程序**SqlVirtualMachine**在 Azure 中更改 SQL Server 虚拟机（VM）的许可证模型。
@@ -37,16 +37,17 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 
 - 使用 Azure Marketplace 中的自带许可证 SQL Server 映像预配虚拟机。 此选项仅适用于具有企业协议的客户。
 - 使用 Azure Marketplace 中的即用即付 SQL Server 映像预配虚拟机，并激活 Azure 混合权益。
-- 在 Azure VM 上自行安装 SQL Server，手动[注册 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md)并激活 Azure 混合权益。
+- 在 Azure VM 上自行安装 SQL Server，[使用 SQL VM 资源提供程序手动注册](virtual-machines-windows-sql-register-with-resource-provider.md)，并激活 Azure 混合权益。
 
-预配 VM 时，将设置 SQL Server 的许可证类型。 您可以在以后随时对其进行更改。 在许可证模型之间切换不会造成停机，不会重新启动 VM，无需额外付费，并且立即生效。 事实上，激活 Azure 混合权益*降低了*成本。
+预配 VM 时，将设置 SQL Server 的许可证类型。 您可以在以后随时对其进行更改。 在许可证模型之间切换不会造成停机，也不会重新启动 VM 或 SQL Server 服务，不会添加任何额外的费用，并且立即生效。 事实上，激活 Azure 混合权益*降低了*成本。
 
 ## <a name="prerequisites"></a>必备组件
 
-使用 SQL VM 资源提供程序需要 SQL Server IaaS 扩展。 因此，你需要以下各项：
+更改 SQL Server VM 的许可模式具有以下要求： 
+
 - [Azure 订阅帐户](https://azure.microsoft.com/free/)。
-- [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)。 
 - 向[SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)注册的[SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) 。
+- [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)是利用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)的必要条件。 
 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>更改已注册到资源提供程序的 Vm 的许可证 

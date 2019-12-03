@@ -7,14 +7,14 @@ ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: e2b1da8dd870231b7f8cb3ab3c3782378fd55b73
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a5b8fe6f37e4320dd2a8de15b928dbdec51d4b1d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512647"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705518"
 ---
-# <a name="premium-ssd-bursting"></a>高级 SSD 突发
+# <a name="premium-ssd-bursting-preview"></a>高级 SSD 突发（预览版）
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 

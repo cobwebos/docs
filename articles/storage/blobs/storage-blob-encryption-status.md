@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 28a387b77c9a4db4be151dffc853617c426c6927
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666554"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707597"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>检查 blob 的加密状态
 
@@ -72,7 +72,7 @@ az storage blob show \
 
 ---
 
-### <a name="force-encryption-of-a-blob"></a>强制对 blob 进行加密
+## <a name="force-encryption-of-a-blob"></a>强制对 blob 进行加密
 
 如果在2017年10月20日之前创建的 blob 尚未经过后台进程的加密，则可以通过下载并重新上传 blob 来强制进行加密。 实现此目的的简单方法是使用 AzCopy。
 

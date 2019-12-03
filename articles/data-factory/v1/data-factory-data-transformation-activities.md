@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b3e2db9b9769dee7599a2446b272e04cc0bedf7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682613"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703392"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "73682613"
 
 本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为预测和见解。 转换活动在计算环境（例如 Azure HDInsight 群集或 Azure Batch）中执行。 其提供了相关文章链接，内附各转换活动的详细信息。
 
-数据工厂支持以下数据转换活动，这些活动既可以单独添加到[管道](data-factory-create-pipelines.md)，也可以与其他活动关联在一起添加。
+数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](data-factory-create-pipelines.md)，还可与其他活动关联在一起。
 
 > [!NOTE]
 > 有关分步说明演练，请参阅[使用 Hive 转换创建管道](data-factory-build-your-first-pipeline.md)。  
@@ -73,7 +73,7 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 ## <a name="net-custom-activity"></a>.NET 自定义活动
 如果需要采用数据工厂不支持的方式转换数据，可以使用自己的数据处理逻辑创建自定义活动，并在管道中使用该活动。 可以使用 Azure Batch 服务或 Azure HDInsight 群集配置要运行的自定义 .NET 活动。 有关详细信息，请参阅[使用自定义活动](data-factory-use-custom-activities.md)文章。 
 
-可以创建一项自定义活动，在安装了 R 的 HDInsight 群集上运行 R 脚本。 请参阅 [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)（使用 Azure 数据工厂运行 R 脚本）。 
+可以创建一项自定义活动，在安装了 R 的 HDInsight 群集上运行 R 脚本。 请参阅 [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)（使用 Azure 数据工厂运行 R 脚本）。 
 
 ## <a name="compute-environments"></a>计算环境
 为计算环境创建链接服务，并在定义转换活动时使用该服务。 数据工厂支持两类计算环境。 
@@ -83,7 +83,7 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 
 有关数据工厂支持的计算服务列表，请参阅 [计算链接服务](data-factory-compute-linked-services.md)文章。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这些活动可单独添加到管道，也可与其他活动关联在一起。
 
 | 数据转换活动 | 计算环境 |

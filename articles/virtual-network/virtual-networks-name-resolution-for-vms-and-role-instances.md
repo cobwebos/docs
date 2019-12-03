@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707577"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -206,7 +206,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) 指定 DNS 服务器。
 
 > [!NOTE]
-> 如果更改已部署的虚拟网络或虚拟机的 DNS 设置，则需重启每个受影响的 VM，所做的更改才会生效。
+> 如果更改已部署的虚拟网络或虚拟机的 DNS 设置，使新的 DNS 设置生效，则必须对虚拟网络中所有受影响的 Vm 执行 DHCP 租约续订。 对于运行 Windows OS 的 Vm，可以通过直接在 VM 中键入 `ipconfig /renew` 来实现此目的。 具体步骤因操作系统而异。 请参阅适用于你的操作系统类型的相关文档。 
 >
 >
 

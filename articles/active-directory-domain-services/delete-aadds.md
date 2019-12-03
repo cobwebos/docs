@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: ee4c41ca3179eead0e4fd470a02a5cdfa4a6d43a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705243"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>使用 Azure 门户删除 Azure Active Directory 域服务托管域
 
@@ -35,7 +35,7 @@ ms.locfileid: "74546292"
 若要删除 Azure AD DS 托管域，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。
-1. 选择 Azure AD DS 托管域的名称，例如*contoso.com*。
+1. 选择 Azure AD DS 托管域的名称，例如*aadds.contoso.com*。
 1. 在“概览”页上，选择“删除”。 若要确认删除，请再次键入托管域的域名，然后选择 "**删除**"。
 
 删除 Azure AD DS 托管域可能需要15-20 分钟或更长时间。

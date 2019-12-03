@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 87179cbce9fa99d4c3422ce88b630312b5080481
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270150"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706239"
 ---
 # <a name="coarse-relocalization"></a>粗略重新局部化
 
@@ -128,8 +128,8 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 |             | 室内 | 室外 |
 |-------------|---------|----------|
-| GPS         | 关闭 | 启用 |
-| WiFi        | 启用 | 启用（可选） |
+| GPS         | 关闭 | 开 |
+| WiFi        | 开 | 启用（可选） |
 | BLE 信标 | 开启（可选，请参阅下文） | 关闭 |
 
 
@@ -495,7 +495,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure 空间锚点将只跟踪列表中的蓝牙信标。 不过，用白名单的 Uuid 编程的恶意信标仍会对服务质量产生负面影响。 出于此原因，只应在特选空间中使用信标来控制它们的部署。
+Azure 空间锚点将只跟踪列表中的蓝牙信标。 不过，被设计为具有允许列表的 Uuid 的恶意信标仍会对服务质量产生负面影响。 出于此原因，只应在特选空间中使用信标来控制它们的部署。
 
 ## <a name="querying-with-sensor-data"></a>查询传感器数据
 
@@ -665,7 +665,7 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | 不适用 | 支持通过[LocationManager][3] API （GPS 和网络） | 通过[CLLocationManager][4] api 支持 |
+| GPS         | N/A | 支持通过[LocationManager][3] API （GPS 和网络） | 通过[CLLocationManager][4] api 支持 |
 | WiFi        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
 | BLE 信标 | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] |
 

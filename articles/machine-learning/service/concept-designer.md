@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196194"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707690"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览）？ 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
     + 发布**批处理推理管道**，以使用以前训练的模型对新数据进行预测。
 + 将**实时推理管道**[部署](#deploy)到实时终结点，以对新数据进行实时预测。
 
-![设计器中用于定型、批处理推理和实时推理的工作流关系图](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![设计器中用于定型、批处理推理和实时推理的工作流关系图](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>管道
 
@@ -80,7 +80,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 
 模块可能提供一组参数用于配置模块的内部算法。 选择画布上的模块时，模块的参数将显示在画布右侧的 "属性" 窗格中。 可以在该窗格中修改参数来调整模型。 可以在设计器中设置各个模块的计算资源。 
 
-![模块属性](media/ui-concept-visual-interface/properties.png)
+![模块属性](media/concept-designer/properties.png)
 
 有关在可用的机器学习算法库中导航的帮助，请参阅[算法 & 模块参考概述](../algorithm-module-reference/module-reference.md)
 
@@ -107,7 +107,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 
 还可以将管道发布到**管道终结点**。 与实时终结点类似，管道终结点允许你使用 REST 调用从外部应用程序提交新的管道运行。 但是，不能使用管道端点实时发送或接收数据。
 
-已发布的管道是灵活的，它们可用于定型或重新训练模型、执行批处理推断、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
+已发布的管道是灵活的，它们可用于定型或重新训练模型、[执行批处理推断](how-to-run-batch-predictions-designer.md)、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
 
 已发布的管道在每个模块的管道草稿中定义的计算资源上运行。
 

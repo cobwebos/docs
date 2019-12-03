@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/27/2019
-ms.openlocfilehash: db5ac9465e6b897690c54484de25fde462741fb3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548396"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707624"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -250,7 +250,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
 
-- 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 本快速入门介绍如何将备份文件上传到 Azure 博客存储并使用共享访问签名 (SAS) 密钥对其进行保护。
+- 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 本快速入门介绍了如何将备份文件上传到 Azure blob 存储，并使用共享访问签名（SAS）密钥对其进行保护。
 - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。
 
 > [!IMPORTANT]

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114729"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705975"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>可视化 Power BI 中时序见解的数据
 
@@ -29,10 +29,13 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
 如果还没有 Azure 订阅，请确保注册[免费订阅](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 下载并安装最新版本的[Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* 具有或创建[Azure 时序见解 GA 实例](time-series-insights-get-started.md)或[Azure 时序见解预览版实例](time-series-insights-update-how-to-manage.md)
+* 具有或创建[Azure 时序见解预览版实例](time-series-insights-update-how-to-manage.md)
+
+> [!IMPORTANT]
+> 目前，在为**热商店**配置的时序见解预览即*用即付*环境中目前支持 Power BI 连接器。
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>将数据从时序见解连接到 Power BI
 
@@ -45,7 +48,7 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
 ### <a name="export-data-into-power-bi-desktop"></a>将数据导出到 Power BI 桌面
 
-开始操作：
+开始使用：
 
 1. 打开时序见解预览资源管理器并组织你的数据。
 1. 创建满意的视图后，导航到 "**更多操作**" 下拉菜单，并单击 "**连接到 Power BI**"。 
@@ -65,12 +68,12 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
        [![连接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果尚未为热商店配置时序见解实例，则会收到警告。
+   1. 如果尚未为**热商店**配置时序见解实例，则会收到警告。
 
        [![连接](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > 可以在 Azure 门户中为热存储配置现有实例。
+       > 可以在 Azure 门户中为**热存储**配置现有实例。
 
 1. 选择 "**将查询复制到剪贴板**"。
 1. 现在，启动 Power BI Desktop。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030602"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705550"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -27,7 +27,7 @@ ms.locfileid: "72030602"
 
 ## <a name="solution"></a>解决方案
 
-本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 它是一种启用 Windows 防火墙组件的 Microsoft 最佳做法。 如何配置防火墙规则取决于对 VM 所需的访问级别。
+本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 Microsoft 最佳做法是启用 Windows 防火墙组件。 配置防火墙规则的方式取决于对所需 VM 的访问级别。
 
 ### <a name="online-solutions"></a>联机解决方案 
 

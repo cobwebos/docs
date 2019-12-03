@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052518"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706260"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -90,7 +90,7 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 但 Microsoft 支持部门团队仅在以下情况下才会提供支持：
 
-- 加载脚本时发生的问题或错误。 在执行自定义脚本期间发生的任何错误都不在支持票证的范围之内。
+- 加载脚本时发生的问题或错误。 执行自定义脚本过程中出现的任何错误都超出了支持票证的范围。
 
 - 作为群集创建过程的一部分的其他应用程序。 
 
@@ -180,6 +180,11 @@ Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小
 - 边缘节点：可将其他边缘节点添加到群集，如在[HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)中所述。
 
 - 独立节点：可以将独立虚拟机添加到相同的子网，并使用专用终结点 `https://<CLUSTERNAME>-int.azurehdinsight.net`从该虚拟机访问群集。 有关详细信息，请参阅[控制网络流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)。
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>是否应将数据存储在边缘节点的本地磁盘上？
+
+不是，将数据存储在本地磁盘上并不是个好主意。 如果该节点发生故障，则本地存储的所有数据都将丢失。 建议在 Azure Data Lake Storage Gen2 或 Azure Blob 存储中存储数据，或通过装载 Azure 文件共享来存储数据。
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>是否可以将现有 HDInsight 群集添加到另一个虚拟网络？
 
@@ -317,8 +322,8 @@ HDInsight 群集，或者在创建群集时到新群集。 有关详细信息，
 
 你可以使用以下 REST 终结点以 JSON 格式请求所需的信息。 使用基本身份验证标头发出请求。
 
-- Tez 查询视图： *https：\//\<群集名称 >/ws/v1/timeline/HIVE_QUERY_ID/*
-- Tez Dag 视图： *https：\//\<群集名称 >. net/ws/v1/timeline/TEZ_DAG_ID/*
+- Tez 查询视图： *https：\//\<群集名称 > clustername>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID* /
+- Tez Dag 视图： *https：\//\<群集名称 >. net/ws/v1/timeline/TEZ_DAG_ID* /
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何实现使用 Azure Active Directory 用户从 HDI 群集中检索配置详细信息吗？
 

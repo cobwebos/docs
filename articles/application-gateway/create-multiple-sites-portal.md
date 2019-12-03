@@ -220,7 +220,7 @@ ms.locfileid: "74075154"
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-1. 在浏览器的地址栏中输入域名。 例如 [http://40.121.222.19](`http://www.contoso.com`)。
+1. 在浏览器的地址栏中输入域名。 例如 `http://www.contoso.com`。
 
     ![在应用程序网关中测试 contoso 站点](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

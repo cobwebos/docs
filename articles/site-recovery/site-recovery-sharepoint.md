@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622412"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706366"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
 
@@ -34,7 +34,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保了解以下知识：
 
@@ -47,7 +47,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 体系结构
 
-可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，并将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
+可以使用分层拓扑和服务器角色在一个或多个服务器上部署 SharePoint，实现符合特定目标的场设计。 支持大量并发用户和大量内容项的典型大型高要求 SharePoint 服务器场使用服务分组作为可伸缩性策略的一部分。 此方法涉及到在专用服务器上运行服务，将这些服务组合在一起，然后将服务器扩展为一个组。 以下拓扑演示了三层 SharePoint 服务器场的服务和服务器分组。 请参阅 SharePoint 文档和产品线体系结构，了解有关不同 SharePoint 拓扑的详细指导。 可在[此文档](https://technet.microsoft.com/library/cc303422.aspx)中找到有关 SharePoint 2013 部署的更多详细信息。
 
 
 
@@ -56,7 +56,7 @@ Microsoft SharePoint 是一个功能强大的应用程序，可帮助小组或�
 
 ## <a name="site-recovery-support"></a>Site Recovery 支持
 
-Site Recovery 与应用程序无关，应与在受支持的计算机上运行的任何版本的 SharePoint 配合使用。 制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。
+Site Recovery 与应用程序无关，应与在支持的计算机上运行的任何 SharePoint 版本配合使用。 制作本文时，使用了装有 Windows Server 2012 R2 Enterprise 的 VMware 虚拟机。 使用了 SharePoint 2013 Enterprise Edition 和 SQL server 2014 Enterprise Edition。
 
 ### <a name="source-and-target"></a>源和目标
 
@@ -65,7 +65,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | 不可用 | 是
+**Azure** | NA | 是
 
 
 ### <a name="things-to-keep-in-mind"></a>要点
@@ -82,7 +82,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 * 有关保护 Active Directory 和 DNS 的指导，请参阅[保护 Active Directory 和 DNS](site-recovery-active-directory.md) 文档。
 
-* 有关保护 SQL 服务器上运行的数据库层的指导，请参阅[保护 SQL Server](site-recovery-active-directory.md) 文档。
+* 有关保护 SQL 服务器上运行的数据库层的指导，请参阅[保护 SQL Server](site-recovery-sql.md) 文档。
 
 ## <a name="networking-configuration"></a>网络配置
 
@@ -189,7 +189,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 有关针对 AD 和 DNS 执行测试故障转移的指导，指参阅[针对 AD 和 DNS 的测试故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)文档。
 
-有关为 SQL Always ON 可用性组执行测试故障转移的指导，请参阅[使用 Azure Site Recovery 执行应用程序 DR 并执行测试故障转移](site-recovery-sql.md#disaster-recovery-of-an-application)一文。
+有关为 SQL Always ON 可用性组执行测试故障转移的指导，请参阅[Azure Site Recovery 执行应用程序灾难恢复和测试故障转移](site-recovery-sql.md#disaster-recovery-of-an-application)文档。
 
 ## <a name="doing-a-failover"></a>执行故障转移
 执行故障转移时，请遵循[此指南](site-recovery-failover.md)。

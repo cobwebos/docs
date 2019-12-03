@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/27/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8419ce5c5c7144008027a93f985d1f6ffdc1ced4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669111"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707476"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -65,7 +65,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 在确定 VM 大小或决定 VM 时，还要考虑总体 VM I/O 吞吐量。 [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)一文中记录了总体 VM 存储吞吐量。
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O 计划程序模式
-Linux 提供多种不同的 I/O 计划模式。 通过 Linux 供应商和 SAP 的常见建议是将磁盘卷的 i/o 调度器模式从**cfq**模式重新配置为**noop**模式。 请参考 [SAP 说明 #1984798](https://launchpad.support.sap.com/#/notes/1984787) 中的详细信息。 
+Linux 提供多种不同的 I/O 计划模式。 通过 Linux 供应商和 SAP 的常见建议是将磁盘卷的 i/o 调度器模式从**cfq**模式重新配置为**noop**模式。 详细信息在[SAP 说明 #1984787](https://launchpad.support.sap.com/#/notes/1984787)中引用。 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>适用于 Azure M 系列虚拟机的高级存储和 Azure 写入加速器的解决方案

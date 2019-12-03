@@ -12,19 +12,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139301"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703156"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
 > [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
-> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
@@ -39,7 +39,7 @@ ms.locfileid: "70139301"
 数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习以下教程：[构建第一个数据管道](data-factory-build-your-first-pipeline.md)。  
+> 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
 
 ## <a name="introduction"></a>简介
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
@@ -112,12 +112,12 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
    可使用 HDInsight MapReduce 活动在 HDInsight 群集中运行任何 MapReduce jar 文件。 在管道的以下示例 JSON 定义中，配置了HDInsight 活动，以便运行 Mahout JAR 文件。
 
 ## <a name="sample-on-github"></a>GitHub 上的示例
-可从以下资源下载使用 HDInsight MapReduce 活动的示例：[GitHub 上的数据工厂示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)。  
+可从 [GitHub 上的数据工厂示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)中下载使用 HDInsight MapReduce 活动的示例。  
 
 ## <a name="running-the-word-count-program"></a>运行字数统计程序
 此示例中的管道在 Azure HDInsight 群集上运行字数统计 Map/Reduce 程序。   
 
-### <a name="linked-services"></a>链接的服务
+### <a name="linked-services"></a>链接服务
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”和“帐户密钥”替换为自己的 Azure 存储 的名称和密钥。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
@@ -179,9 +179,9 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ```
 
 ### <a name="pipeline"></a>管道
-此示例中的管道仅包含一个活动，其类型为：HDInsightMapReduce。 JSON 中的一些重要属性有： 
+此示例中的管道仅具有一个 HDInsightMapReduce 类型的活动。 JSON 中的一些重要属性有： 
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | type |类型必须设置为 **HDInsightMapReduce**。 |
 | className |类名为：**wordcount** |
@@ -245,10 +245,10 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 [Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: https://portal.azure.com
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
-* [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+* [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
-* [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6ab1e3e01f66e071e3d16b196b3ecdcd30c2620
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363176"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701815"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -26,7 +26,7 @@ ms.locfileid: "61363176"
 
 本文介绍：
 
-* 模块孪生的结构：标记、所需的属性和报告的属性    。
+* 模块孪生的结构：标记、所需的属性和报告的属性。
 * 模块和后端可在模块孪生上执行的操作。
 
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
@@ -47,9 +47,9 @@ ms.locfileid: "61363176"
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备上的模块不可见。 设置的标记用于查询目的。
 
-* **所需属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
+* **所需的属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
 
-* **报告属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告的属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **模块标识属性**。 模块孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应模块标识的只读属性。
 
@@ -176,14 +176,14 @@ ms.locfileid: "61363176"
 
   - 属性
 
-    | Name | 值 |
+    | 名称 | Value |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
     $iothub-message-source | twinChangeEvents |
     $content-encoding | utf-8 |
     deviceId | 设备 ID |
-    moduleId | 模块 的 ID |
+    moduleId | 模块 ID |
     hubName | IoT 中心的名称 |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
     iothub-message-schema | deviceLifecycleNotification |
@@ -191,7 +191,7 @@ ms.locfileid: "61363176"
 
     消息系统属性以 `$` 符号为前缀。
 
-  - 正文
+  - Body
         
     本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
@@ -214,7 +214,7 @@ ms.locfileid: "61363176"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限  。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限。
 
 除了上述操作以外，解决方案后端还可以使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询模块孪生。
 
@@ -228,7 +228,7 @@ ms.locfileid: "61363176"
 
 * **观察所需属性**。 当前连接的模块可以选择在所需属性发生更新时接收通知。 模块收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限  。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。
 
@@ -266,7 +266,7 @@ ms.locfileid: "61363176"
 
 ## <a name="module-twin-size"></a>模块孪生大小
 
-IoT 中心对 `tags`、`properties/desired` 和 `properties/reported`（不包括只读元素）的各个总值强制实施 8KB 大小限制。
+IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素互斥。
 
 该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
 

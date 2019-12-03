@@ -12,19 +12,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666992"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703356"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
-> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
@@ -72,17 +72,17 @@ ms.locfileid: "73666992"
 }
 ```
 ## <a name="syntax-details"></a>语法详细信息
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 | --- | --- | --- |
 | name |活动名称 |是 |
-| 说明 |描述活动用途的文本 |否 |
+| description |描述活动用途的文本 |No |
 | type |HDinsightHive |是 |
-| inputs |Hive 活动使用的输入 |否 |
+| inputs |Hive 活动使用的输入 |No |
 | outputs |Hive 活动生成的输出 |是 |
 | linkedServiceName |参考在数据工厂中注册为链接服务的 HDInsight 群集 |是 |
-| 脚本 |指定 Hive 脚本内联 |否 |
-| scriptPath |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
-| 定义 |使用“hiveconf”在 Hive 脚本中指定参数作为密钥/值对，以便参考 |否 |
+| 脚本 |指定 Hive 脚本内联 |No |
+| scriptPath |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |No |
+| 定义 |使用“hiveconf”在 Hive 脚本中指定参数作为密钥/值对，以便参考 |No |
 
 ## <a name="example"></a>示例
 请考虑游戏日志分析的示例，在此示例中，你想要确定用户用于玩公司发行的游戏的时间。 
@@ -177,7 +177,7 @@ FROM HiveSampleIn Group by ProfileID
 
 若要使用参数化的 Hive 脚本，请执行以下操作
 
-* 定义**定义**中的参数。
+* 定义 **defines** 中的参数。
 
     ```JSON  
     {
@@ -244,7 +244,7 @@ FROM HiveSampleIn Group by ProfileID
   ## <a name="see-also"></a>另请参阅
 * [Pig 活动](data-factory-pig-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)
-* [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+* [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
-* [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

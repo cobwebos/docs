@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 8b1c3184ada743fddb78e1a3d0ce8d67f1f1a94f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693327"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704548"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>解决现有 Azure AD 域服务托管域的不匹配目录错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "71693327"
 
 ## <a name="what-causes-this-error"></a>导致此错误的原因是什么？
 
-当 Azure AD DS 托管域和虚拟网络属于两个不同的 Azure AD 租户时，会发生不匹配的目录错误。 例如，你可能有一个名为*contoso.com*的 Azure AD DS 托管域，该域在 contoso 的 Azure AD 租户中运行。 但是，托管域的 Azure 虚拟网络属于 Fabrikam Azure AD 租户。
+当 Azure AD DS 托管域和虚拟网络属于两个不同的 Azure AD 租户时，会发生不匹配的目录错误。 例如，你可能有一个名为*aadds.contoso.com*的 Azure AD DS 托管域，该域在 contoso 的 Azure AD 租户中运行。 但是，托管域的 Azure 虚拟网络属于 Fabrikam Azure AD 租户。
 
 Azure 使用基于角色的访问控制（RBAC）来限制对资源的访问。 在 Azure AD 租户中启用 Azure AD DS 时，凭据哈希将同步到托管域。 此操作要求你是 Azure AD 目录的租户管理员，并且必须控制对凭据的访问。 若要将资源部署到 Azure 虚拟网络并控制流量，你必须对部署 Azure AD DS 的虚拟网络具有管理权限。
 

@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ebc616d07c24a02b71010e315f288543dfd92b74
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012568"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705948"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用 C# 管理 Azure 时序见解正式版环境的参考数据
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用管理 Azure 时序见解环境的 GA 引用数据C#
 
 本文介绍可以进行编译以管理 Azure 时序见解环境参考数据的 C# 示例项目。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在编译和运行示例代码之前，请完成以下步骤：
 
@@ -35,7 +35,7 @@ ms.locfileid: "74012568"
 1. 编辑示例代码，以替换在代码开始处的 #DUMMY# 中指定的示例常数。
 
 > [!NOTE]
-> 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 中的正式版示例代码。
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)上查看 GA 示例代码。
 
 ## <a name="project-dependencies"></a>项目依赖项
 
@@ -246,4 +246,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[参考数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。
+- 读取[引用数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。

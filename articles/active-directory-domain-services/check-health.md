@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898243"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705412"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>检查 Azure Active Directory 域服务托管域的运行状况
 
@@ -29,7 +29,7 @@ Azure Active Directory 域服务（Azure AD DS）运行一些后台任务，以�
 使用 Azure 门户查看 Azure AD DS 托管域的运行状况状态。 可以查看有关上次备份时间和与 Azure AD 同步的信息，以及指示托管域的运行状况问题的任何警报。 若要查看 Azure AD DS 托管域的运行状况状态，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。
-1. 选择 Azure AD DS 托管域，如*contoso.com*。
+1. 选择 Azure AD DS 托管域，如*aadds.contoso.com*。
 1. 在 Azure AD DS 资源 "窗口的左侧，选择"**运行状况**"。 以下示例屏幕截图显示了一个运行状况良好 Azure AD DS 托管域，以及上次备份和 Azure AD 同步的状态：
 
     ![Azure 门户显示 Azure Active Directory 域服务状态的运行状况页面概述](./media/check-health/health-page.png)

@@ -9,18 +9,18 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5946a1484a62b041772f388b0629d131afe37b92
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3729bedf7591ffecc558b88660486f7e336fa717
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012553"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705910"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C# 查询 Azure 时序见解正式版环境中的数据
+# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用从 Azure 时序见解 GA 环境查询数据C#
 
-本 C# 示例演示如何查询 Azure 时序见解正式版环境中的数据。
+此C#示例演示如何从 Azure 时序见解 GA 环境查询数据。
 
 该示例演示了多个基本的查询 API 使用示例：
 
@@ -30,11 +30,11 @@ ms.locfileid: "74012553"
 1. 以 Web 套接字请求为例，可以为感兴趣的环境请求事件聚合数据。 会请求整个可用性时间范围的数据。
 
 > [!NOTE]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 中提供了示例代码。
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)中提供了示例代码。
 
 ## <a name="project-dependencies"></a>项目依赖项
 
-添加 NuGet 包 `Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`。
+`Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`中添加 NuGet 包。
 
 ## <a name="c-example"></a>C# 示例
 
@@ -42,6 +42,6 @@ ms.locfileid: "74012553"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解查询，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
+- 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 
-- 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到时序见解](https://github.com/microsoft/tsiclient)。
+- 了解如何[使用客户端 SDK 将 JavaScript 应用程序连接](https://github.com/microsoft/tsiclient)到时序见解。

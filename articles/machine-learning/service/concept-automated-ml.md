@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f8a83fccefe3310fe1a582ef44d72cfbef7e9469
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1320448b88fa3851196a3dfcb3107921721d364d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133085"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707684"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -82,7 +82,7 @@ ms.locfileid: "74133085"
 
 在每个自动机器学习试验中，数据会自动缩放或规范化，以帮助算法正常执行。  在模型定型过程中，将对每个模型应用以下缩放或规范化技术之一。
 
-|&nbsp;标准化 &缩放&nbsp;| 说明 |
+|&nbsp;标准化 &缩放&nbsp;| 描述 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来实现功能标准化  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过按列的最小值和最大值缩放每个特征来转换特征  |
@@ -98,7 +98,7 @@ ms.locfileid: "74133085"
 
 + Azure 机器学习 studio：在**配置运行**部分中选择 "**查看特征化设置**" [，并执行以下步骤](how-to-create-portal-experiments.md)。
 
-+ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
++ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
 
 
 ## <a name="time-series-forecasting"></a>时序预测
@@ -142,7 +142,7 @@ ms.locfileid: "74133085"
 
 此外，自动 ML 运行自动生成以下图表，这有助于了解模型分类的正确性，并识别可能会受到不均衡数据影响的模型。
 
-图表| 说明
+图表| 描述
 ---|---
 [混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签计算正确分类的标签。 
 [精度-撤回](how-to-understand-automated-ml.md#precision-recall-chart)| 计算正确标签与数据的找到标签实例比率的比率 
@@ -164,7 +164,7 @@ ms.locfileid: "74133085"
 
 自动 ML 还可用于其他 Microsoft 解决方案，如：
 
-|集成|说明|
+|集成|描述|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 与 ML.NET 自动 ML （预览版）配合使用的 .NET 应用中的自动模型选择和培训。|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|并行在 HDInsight 群集中的 Spark 上横向扩展自动 ML 培训作业。|

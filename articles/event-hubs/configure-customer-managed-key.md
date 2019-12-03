@@ -6,17 +6,20 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809383"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705469"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>使用 Azure 门户（预览版）配置客户托管的密钥，以便静态加密 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密（Azure SSE）提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
+
+>[!NOTE]
+> 此功能目前处于预览状态。 建议你不要在生产环境中使用中的。
 
 ## <a name="overview"></a>概述
 Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的密钥（创建自己的密钥– BYOK）来加密静态数据。 此功能使你能够创建、轮换、禁用和撤消对用于静态 Azure 事件中心数据加密的客户托管密钥的访问权限。
@@ -110,7 +113,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 | ActivityId | 用于跟踪的内部 ID。 |
 | category | 定义任务的分类。 例如，如果密钥保管库中的密钥处于禁用状态，则它将是信息类别; 如果密钥无法解包，则可能发生错误。 |
 | resourceId | Azure 资源管理器资源 ID |
-| KeyVault | 密钥保管库的完整名称。 |
+| keyVault | 密钥保管库的完整名称。 |
 | key | 用于加密事件中心命名空间的密钥名称。 |
 | 版本 | 所使用的密钥的版本。 |
 | operation | 对密钥保管库中的密钥执行的操作。 例如，禁用/启用密钥、包装或解包 |

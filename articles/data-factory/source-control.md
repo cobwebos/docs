@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: naF
 ms.topic: conceptual
 ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703835"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 
@@ -71,7 +71,7 @@ Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体
 
 "配置" 窗格显示以下 Azure Repos 代码存储库设置：
 
-| 设置 | 说明 | 值 |
+| 设置 | 描述 | Value |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
@@ -142,10 +142,10 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。 | GitHub |
 | **使用 GitHub Enterprise** | 用于选择 GitHub Enterprise 的复选框 | 未选择（默认值） |
-| **GitHub Enterprise URL** | GitHub Enterprise 根 URL。 例如： https://github.mydomain.com。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
-| **GitHub 帐户** | GitHub 帐户名。 可从 https:\//github.com/{account name}/{repository name} 找到此名称。 导航到此页时，系统会提示输入 GitHub 帐户的 GitHub OAuth 凭据。 | `<your GitHub account name>` |
+| **GitHub Enterprise URL** | GitHub Enterprise 根 URL。 例如： https://github.mydomain.com 。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
+| **GitHub 帐户** | GitHub 帐户名。 可从 https：\//github.com/{account name}/{repository name} 中找到此名称。 导航到此页时，系统会提示输入 GitHub 帐户的 GitHub OAuth 凭据。 | `<your GitHub account name>` |
 | **存储库名称**  | GitHub 代码存储库名称。 GitHub 帐户包含用于管理源代码的 Git 存储库。 可以创建新存储库，或使用帐户中现有的存储库。 | `<your repository name>` |
-| **协作分支** | 将用于发布的 GitHub 协作分支。 默认情况下，它的主节点。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch>` |
+| **协作分支** | 将用于发布的 GitHub 协作分支。 默认情况下，它是 master。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch>` |
 | **根文件夹** | GitHub 协作分支中的根文件夹。 |`<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否将现有数据工厂资源从 UX 创作画布导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支** | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项 |  |
@@ -236,7 +236,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 ### <a name="using-passwords-from-azure-key-vault"></a>使用 Azure Key Vault 中的密码
 
-建议使用 Azure Key Vault 将任何连接字符串或密码存储到数据工厂链接服务。 出于安全原因，我们不会在 Git 中存储任何此类机密信息，因此对链接服务所做的任何更改都会立即发布到 Azure 数据工厂服务。
+建议使用 Azure Key Vault 来存储用于数据工厂链接服务的任何连接字符串或密码。 出于安全原因，我们不会在 Git 中存储任何此类机密信息，因此对链接服务所做的任何更改都会立即发布到 Azure 数据工厂服务。
 
 使用 Key Vault 还可以更轻松地进行持续集成和部署，因为在资源管理器模板部署期间不必提供这些机密。
 

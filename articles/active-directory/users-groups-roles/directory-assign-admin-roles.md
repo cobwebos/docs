@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5d4bdd554fb7c8817ada80a294f3ecb1c6c85b00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554134"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707030"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -246,7 +246,7 @@ In | 有权执行的操作
 > 这些功能目前正在开发中。
 >
 
-### <a name="group-administratorgroup-administrator"></a>[组管理员](#group-administrator)
+### <a name="group-administratorgroup-administrator-permissions"></a>[组管理员](#group-administrator-permissions)
 
 此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 必须了解的是，将用户分配到此角色后，他们能够跨各种工作负荷（如团队、SharePoint、Yammer）以及 Outlook 管理租户中的所有组。 此外，用户还能够跨各种管理门户（如 Microsoft 管理中心、Azure 门户以及工作负荷（如团队和 SharePoint 管理中心）管理各种组设置。
 
@@ -279,7 +279,9 @@ In | 有权执行的操作
 
 ### <a name="intune-administratorintune-service-administrator-permissions"></a>[Intune 管理员](#intune-service-administrator-permissions)
 
-具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
+具有此角色的用户具有 Microsoft Intune Online 内的全局权限（如果该服务存在）。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关 Microsoft Intune 的[基于角色的管理控制（RBAC）](https://docs.microsoft.com/intune/role-based-access-control)的详细信息。
+
+此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新租户中所有 Office 组的所有者或成员身份。 但是，他/她可以管理他创建的 Office 组作为其最终用户权限的一部分。 因此，该用户创建的任何 Office 组（而非安全组）应根据其配额250进行计数。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“Intune 管理员”。
@@ -1081,8 +1083,8 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | office365. webPortal/allEntities/standard/read   | 读取 office365. webPortal 中所有资源的标准属性。 |
 
-### <a name="group-administrator"></a>组管理员
-可以管理组和组设置的所有方面，如命名和过期策略
+### <a name="group-administrator-permissions"></a>组管理员权限
+可以管理组和组设置的所有方面，如命名和过期策略。
 
 | **操作** | **说明** |
 | --- | --- |

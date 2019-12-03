@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755688"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705003"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -92,8 +92,8 @@ ms.locfileid: "72755688"
     | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
     | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
     | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如*myvm*。 |
-    | VM 大小                   | 指定 VM 大小（如*Standard_DS2_v2*）。 |
-    | 要加入的域            | Azure AD DS 托管域 DNS 名称，例如*contoso.com*。 |
+    | VM 大小                   | 指定 VM 大小，如*Standard_DS2_v2*。 |
+    | 要加入的域            | Azure AD DS 托管域 DNS 名称，例如*aadds.contoso.com*。 |
     | 域用户名           | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
     | 域密码           | 在上一个设置中指定的用户帐户的密码。 |
     | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |

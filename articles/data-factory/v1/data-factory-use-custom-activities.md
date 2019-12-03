@@ -13,16 +13,16 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990649"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703321"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
-> * [第 1 版](data-factory-use-custom-activities.md)
+> * [版本 1](data-factory-use-custom-activities.md)
 > * [版本 2（当前版本）](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "72990649"
 - [数据移动活动](data-factory-data-movement-activities.md)：在[支持的源与接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据。
 - [数据转换活动](data-factory-data-transformation-activities.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。
 
-要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，并在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。
+要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。
 
 可将自定义活动配置为在虚拟机的“Azure Batch”池中运行。 使用 Azure Batch 时，只能使用现有的 Azure Batch 池。
 
@@ -43,7 +43,7 @@ ms.locfileid: "72990649"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 * Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -52,7 +52,7 @@ ms.locfileid: "72990649"
 
 本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
 
-1. 使用 **Azure 门户**创建 [Azure Batch 帐户](https://portal.azure.com)。 有关说明，请参阅[创建和管理 Azure Batch 帐户一][batch-create-account]文。
+1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户一][batch-create-account]文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
     1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
@@ -370,10 +370,10 @@ public IDictionary<string, string> Execute(
 10. 编译该项目。 在菜单中单击“生成”，并单击“生成解决方案”。
 
     > [!IMPORTANT]
-    > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，并单击“属性”设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
+    > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
 11. 启动 **Windows 资源管理器**，并根据版本类型导航到 **bin\debug** 或 **bin\release** 文件夹。
-12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 **project folder**\bin\Debug 文件夹中的所有二进制文件\<\>。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
+12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 \<project folder\>\bin\Debug 文件夹中的所有二进制文件。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
@@ -507,7 +507,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    稍后在本演练中创建管道，开始时间：2016-11-16T00:00:00Z，结束时间：2016-11-16T05:00:00Z。 计划按小时生成数据，因此存在 5 个输入/输出切片 (**00**:00:00 -> **05**:00:00)。
 
-   输入数据集的**频率**和**间隔**设置为**小时**和 **1**, ，这意味着输入切片的可用状态按小时执行。 在此示例中，它是 intputfolder 中的相同文件 (file.txt)。
+   输入数据集的**频率**和**间隔**设置为**小时**和 **1**，这意味着每小时皆可使用输入切片。 在此示例中，它是 intputfolder 中的相同文件 (file.txt)。
 
    以下是每个切片的开始时间，在上面的 JSON 代码段中由 SliceStart 系统变量表示。
 3. 单击工具栏上的“部署”，创建并部署 **InputDataset**。 确认编辑器标题栏中显示了“已成功创建表”消息。
@@ -550,7 +550,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    | 切片 | 开始时间 | 输出文件 |
    |:--- |:--- |:--- |
-   | 1 个 |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 第 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
@@ -610,15 +610,15 @@ test custom activity Microsoft test custom activity Microsoft
 
     注意以下几点：
 
-   * 将**并发**设置为 **2**以便在 Azure Batch 池通过 2 个 VM 并行处理 2 个切片。
+   * **Concurrency** 设置为 **2**，以便在 Azure Batch 池中通过 2 个 VM 并行处理 2 个切片。
    * 在活动部分中包含一个活动，其类型为：**DotNetActivity**。
    * **AssemblyName** 设置为 DLL 的名称：**MyDotnetActivity.dll**。
    * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。
    * **PackageLinkedService** 设置为 **AzureStorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的 Azure 存储帐户，则需创建另一个 Azure 存储链接服务。 本文假定使用相同的 Azure 存储帐户。
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：containerforthezip/nameofthezip.zip。
    * 自定义活动采用 **InputDataset** 作为输入，采用 **OutputDataset** 作为输出。
-   * 自定义活动的 linkedServiceName 属性指向 **AzureBatchLinkedService**它将告诉 Azure 数据工厂自定义活动需要在 Azure Batch VM 上运行。
-   * **isPaused** 属性默认设置为 **false**。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 true 以暂停管道，并将其设置回 false 以重新启动。
+   * 自定义活动的 linkedServiceName 属性指向 **AzureBatchLinkedService**，它告知 Azure 数据工厂自定义活动需要在 Azure Batch VM 上运行。
+   * **isPaused** 属性默认设置为 **false**。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 true 以暂停管道，然后将其设置回 false 以重新启动。
    * **start** 时间和 **end** 时间相隔 **5** 小时且切片按小时生成，因此管道将生成五个切片。
 3. 若要部署管道，请在命令栏上单击“部署”。
 
@@ -632,7 +632,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 应会看到 5 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。
 
    ![输出切片](./media/data-factory-use-custom-activities/OutputSlices.png)
-4. 请验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
+4. 验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
 
    ![自定义活动的输出][image-data-factory-output-from-custom-activity]
 5. 打开输出文件，应看到如下所示的输出：
@@ -719,10 +719,10 @@ test custom activity Microsoft test custom activity Microsoft
    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。
 
 ## <a name="update-custom-activity"></a>更新自定义活动
-如果要更新自定义活动的代码，请生成该代码，并将包含新二进制文件的 zip 文件上传到 blob 存储。
+如果要更新自定义活动的代码，请生成该代码，然后将包含新二进制文件的 zip 文件上传到 blob 存储。
 
 ## <a name="appdomain-isolation"></a>Appdomain 隔离
-请参阅[跨 AppDomain 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample)，其中介绍了如何创建一个不受数据工厂启动器使用的程序集版本（例如 WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x 等）限制的自定义活动。
+请参阅[跨 AppDomain 示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample)，其中介绍了如何创建一个不受数据工厂启动器使用的程序集版本（例如 WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x 等）限制的自定义活动。
 
 ## <a name="access-extended-properties"></a>访问扩展属性
 可以在活动 JSON 中声明扩展属性，如以下示例中所示：
@@ -742,7 +742,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 本示例中有两个扩展属性：**SliceStart** 和 **DataFactoryName**。 SliceStart 的值基于 SliceStart 系统变量。 有关受支持的系统变量列表，请参阅[系统变量](data-factory-functions-variables.md)。 DataFactoryName 的值硬编码为 CustomActivityFactory。
 
-若要访问**执行**方法中的这些扩展属性，请使用以下类似代码：
+若要访问 **Execute** 方法中的这些扩展属性，请使用如下类似代码：
 
 ```csharp
 // to get extended properties (for example: SliceStart)

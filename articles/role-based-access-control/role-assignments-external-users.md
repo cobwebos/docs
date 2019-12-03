@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限 |Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 管理组织外部用户对 Azure 资源的访问。
+title: 使用 Azure RBAC 和 Azure 门户添加或删除外部来宾用户的角色分配
+description: 了解如何使用 Azure 基于角色的访问控制（RBAC）为组织外部的用户授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555551"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707880"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除外部来宾用户的角色分配
 
-基于角色的访问控制（RBAC）为大型组织以及与外部协作者、供应商或需要访问您的环境中的特定资源的兼职人员合作的中小型企业提供更好的安全管理，但不一定是整个基础结构或任何计费相关范围。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，你可以使用 RBAC 仅授予来宾用户在你的环境中所需的权限。
+使用[Azure 基于角色的访问控制（RBAC）](overview.md) ，可以更好地管理大型组织，适用于需要访问环境中的特定资源，但不一定要访问整个基础结构或任何与计费相关范围的外部协作者、供应商或兼职的中小型企业。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，你可以使用 RBAC 仅授予来宾用户在你的环境中所需的权限。
+
+## <a name="prerequisites"></a>必备组件
+
+若要添加或删除角色分配，必须具备：
+
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>何时邀请来宾用户？
 
@@ -61,9 +67,9 @@ ms.locfileid: "74555551"
 
 有关邀请过程的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
 
-## <a name="grant-access-to-a-guest-user"></a>向来宾用户授予访问权限
+## <a name="add-a-role-assignment-for-a-guest-user"></a>为来宾用户添加角色分配
 
-在 RBAC 中，若要授予访问权限，请分配角色。 若要向来宾用户授予访问权限，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。 请按照以下步骤向不同范围内的来宾用户授予访问权限。
+在 RBAC 中，若要授予访问权限，请分配角色。 若要为来宾用户添加角色分配，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。 按照以下步骤为不同范围内的来宾用户添加角色分配。
 
 1. 在 Azure 门户中，单击“所有服务”。
 
@@ -95,9 +101,9 @@ ms.locfileid: "74555551"
 
     ![虚拟机参与者的角色分配](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>向来宾用户授予对你的目录的访问权限
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>为尚未在你的目录中的来宾用户添加角色分配
 
-在 RBAC 中，若要授予访问权限，请分配角色。 若要向来宾用户授予访问权限，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。
+若要为来宾用户添加角色分配，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。
 
 如果来宾用户还不在你的目录中，你可以直接从 "添加角色分配" 窗格邀请用户。
 
@@ -179,7 +185,7 @@ ms.locfileid: "74555551"
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>来宾用户不能浏览用户、组或服务主体来分配角色
 
-来宾用户的目录权限受到限制。 即使来宾用户是作用域的[所有者](built-in-roles.md#owner)，如果他们尝试创建角色分配来向其他人授予访问权限，他们也无法浏览用户、组或服务主体的列表。
+来宾用户的目录权限受到限制。 即使来宾用户是作用域的[所有者](built-in-roles.md#owner)，如果他们尝试添加角色分配来向其他人授予访问权限，他们也无法浏览用户、组或服务主体的列表。
 
 ![来宾用户无法浏览安全主体来分配角色](./media/role-assignments-external-users/directory-no-browse.png)
 

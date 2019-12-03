@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528026"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707553"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure 堡垒
 
@@ -58,7 +58,7 @@ Azure 堡垒专门部署到 AzureBastionSubnet。
 * **诊断日志记录和其他：** 从443到 AzureCloud 的出站。 尚不支持此服务标记内的区域标记。
 * **目标 VM：** 用于3389和22到 VirtualNetwork 的出站
 
-可在本[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)中参考 NSG 规则示例。
+可在本[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中参考 NSG 规则示例。
 
 ## <a name="next-steps"></a>后续步骤
 

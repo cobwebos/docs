@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546246"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704384"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>将范围内的同步从 Azure AD 配置为 Azure Active Directory 域服务
 
@@ -70,7 +70,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 若要修改其用户应同步到 Azure AD DS 托管域的组的列表，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aadds.contoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 若要添加组，请选择顶部的 " **+ 选择组**"，然后选择要添加的组。
 1. 若要从同步作用域中删除组，请从当前同步的组列表中选择它，然后选择 "**删除组**"。
@@ -82,7 +82,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 若要禁用 Azure AD DS 托管域的基于组的作用域同步，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aadds.contoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 将 "同步作用域"**设置为 "** **全部**作用域"，然后选择 "**保存同步作用域**"。
 
@@ -194,11 +194,11 @@ Write-Output "******************************************************************
 
 1. 现在，创建 Azure AD DS 托管域，并启用基于组的作用域同步。 在 *-Properties*参数中包括 *"filteredSync" = "Enabled"* 。
 
-    设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*contoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。 将资源组名称、虚拟网络名称和区域设置为之前步骤中使用的值，以创建支持的 Azure 资源：
+    设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*aadds.contoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。 将资源组名称、虚拟网络名称和区域设置为之前步骤中使用的值，以创建支持的 Azure 资源：
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso.com"
+   $ManagedDomainName = "aadds.contoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

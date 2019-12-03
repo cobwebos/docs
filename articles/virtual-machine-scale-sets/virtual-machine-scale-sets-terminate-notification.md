@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264681"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705923"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虚拟机规模集实例的终止通知（预览）
 规模集实例可以选择接收实例终止通知，并将预定义的延迟超时设置为终止操作。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 预览解决方案会将另一个事件（终止–）添加到 Scheduled Events 列表中，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
@@ -67,7 +67,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 >仅可通过 API 版本2019-03-01 及更高版本启用规模集实例上的终止通知
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-创建新规模集时，可以使用[AzVmssVM](/powershell/module/az.compute/new-azvmss) cmdlet 在规模集上启用终止通知。
+创建新规模集时，可以使用[AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 在规模集上启用终止通知。
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 上面的示例创建了一个新的规模集，其中启用了终止通知，默认超时为5分钟。 创建新规模集时，参数*TerminateScheduledEvents*不需要值。 若要更改超时值，请通过*TerminateScheduledEventNotBeforeTimeoutInMinutes*参数指定所需的超时值。
 
-使用[AzVmssVM](/powershell/module/az.compute/update-azvmss) cmdlet 在现有规模集上启用终止通知。
+使用[AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 在现有规模集上启用终止通知。
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -157,7 +157,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 -   无强制等待超时–您可以在收到事件之后、事件的*NotBefore*时间到期之前随时开始终止操作。
 -   在超时时间强制删除–预览不提供在生成事件后扩展超时值的任何功能。 超时到期后，将处理挂起的终止事件，并删除 VM。
 -   可修改超时值–可以在删除实例之前随时修改超时值，方法是修改规模集模型中的*notBeforeTimeout*属性，并将 VM 实例更新到最新模型。
--   批准所有挂起的删除-如果 VM_1 上有一个挂起的删除未批准，并且你已在 VM_2 上批准了另一个终止事件，则在 VM_1 的 "终止" 事件获得批准或已超时之前，不会删除 VM_2。 批准 VM_1 的终止事件后，会删除 VM_1 和 VM_2。
+-   批准所有挂起的删除-如果 VM_1 上有一个挂起的删除未批准，并且你已在 VM_2 上批准了另一个终止事件，则在 VM_1 的 "终止" 事件被批准或已过超时之前，不会删除 VM_2。 批准 VM_1 的终止事件之后，将删除 VM_1 和 VM_2。
 -   批准所有同时删除–扩展上面的示例，如果 VM_1 和 VM_2 具有相同的*NotBefore*时间，则必须批准两个终止事件，否则在超时过期之前，都不会删除 VM。
 
 ## <a name="troubleshoot"></a>故障排除

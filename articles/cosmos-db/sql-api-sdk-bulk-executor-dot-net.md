@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2019
+ms.date: 12/02/2019
 ms.author: ramkris
-ms.openlocfilehash: b6685f8524dc1f3ac080abe81389d091c7cf6f1b
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2d573d329ad27a4801c091d0dcfb10c5f530169f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306750"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707274"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -28,12 +28,12 @@ ms.locfileid: "74306750"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [大容量执行程序-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序-Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
+| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以将 Azure Cosmos 容器中的现有数据大容量更新为修补程序。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **GitHub 中的批量执行程序库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
@@ -72,6 +72,10 @@ ms.locfileid: "74306750"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * 添加了 .NET Standard 2.0 作为受支持的目标框架之一，使批量执行器库可用于 .NET Core 应用程序。
+
+### <a name="a-name186186"></a><a name="1.8.6"/>1.8。6
+
+* MongoBulkExecutor 现在实现 IDisposable，并应在使用后将其释放。
 
 ### <a name="a-name185185"></a><a name="1.8.5"/>1.8。5
 
@@ -143,6 +147,6 @@ ms.locfileid: "74306750"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解批量执行程序 Java 库，请参阅以下文章：
+若要了解批量执行器 Java 库，请参阅以下文章：
 
-[Java 批量执行程序库 SDK 和发行信息](sql-api-sdk-bulk-executor-java.md)
+[Java 大容量执行器库 SDK 和发布信息](sql-api-sdk-bulk-executor-java.md)

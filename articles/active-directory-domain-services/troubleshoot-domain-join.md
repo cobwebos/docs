@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827245"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703656"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>排查 Azure AD 域服务托管域的域加入问题
 
@@ -32,10 +32,10 @@ ms.locfileid: "71827245"
 
 1. 确保 VM 连接到为 Azure AD DS 启用的相同或对等互连虚拟网络。 如果没有，则 VM 无法找到并连接到域，因此无法加入域。
     * 如果 VM 未连接到同一个虚拟网络，请确认虚拟网络对等互连或 VPN 连接处于*活动状态*还是*已连接*，以允许流量正常流动。
-1. 尝试使用 Azure AD DS 托管域的域名来 ping 域，如 `ping contoso.com`。
+1. 尝试使用 Azure AD DS 托管域的域名来 ping 域，如 `ping aadds.contoso.com`。
     * 如果 ping 响应失败，请尝试对 Azure AD DS 托管域的门户的 "概述" 页上显示的域的 IP 地址进行 ping 操作，如 `ping 10.0.0.4`。
     * 如果可以成功地对 IP 地址进行 ping 操作，但不能对域进行 ping 操作，则可能会错误地配置 DNS。 请确保已为虚拟网络配置 Azure AD DS 托管域 DNS 服务器。
-1. 请尝试刷新虚拟机上的 DNS 解析程序缓存，例如 `ipconfig /flushdns`。
+1. 请尝试刷新虚拟机上的 DNS 解析程序缓存，如 `ipconfig /flushdns`。
 
 ### <a name="network-security-group-nsg-configuration"></a>网络安全组（NSG）配置
 

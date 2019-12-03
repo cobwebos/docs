@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512660"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705538"
 ---
-高级 Ssd 支持任何磁盘大小的突发 < = 512 GiB （P20 或更低）。 这些磁盘大小支持最大程度的突发，并使用信用系统来管理突发。 如果磁盘流量低于预配的性能目标，则信用额度将在突发存储桶中累积，并在流量超出目标时使用信用额度。 磁盘流量针对预配目标中的 IOPS 和带宽进行跟踪。
+磁盘突发目前是高级 Ssd 的预览功能。 任何高级 SSD 磁盘大小都支持突发 < = 512 GiB （P20 或更低）。 这些磁盘大小支持最大程度的突发，并使用信用系统来管理突发。 如果磁盘流量低于预配的性能目标，则信用额度将在突发存储桶中累积，并在流量超出目标时使用信用额度。 磁盘流量针对预配目标中的 IOPS 和带宽进行跟踪。
 
 默认情况下，磁盘突发在支持它的磁盘大小的新部署上处于启用状态。 如果现有磁盘大小支持磁盘突发，则可以通过以下任一方法启用突发：
 

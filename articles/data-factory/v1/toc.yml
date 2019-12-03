@@ -150,9 +150,9 @@
         - name: .NET 自定义活动
           href: data-factory-use-custom-activities.md
         - name: 调用 R 脚本
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: 在 Azure Analysis Services 中重新处理模型
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: 计算链接服务
           href: data-factory-compute-linked-services.md
     - name: 开发

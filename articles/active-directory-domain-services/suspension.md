@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704274"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>了解运行状况状态和解决 Azure Active Directory 域服务中挂起的域
 
@@ -35,13 +35,13 @@ Azure AD DS 托管域可处于以下状态之一：
 * [正在运行](#running-state)
 * [需要注意](#needs-attention-state)
 * [状态](#suspended-state)
-* [删除](#deleted-state)
+* [已删除](#deleted-state)
 
 ## <a name="running-state"></a>运行状态
 
 配置正确且运行不正常的 Azure AD DS 托管域处于*运行*状态。 这是托管域的所需状态。
 
-### <a name="what-to-expect"></a>预期结果
+### <a name="what-to-expect"></a>你的期望
 
 * Azure 平台会定期监视托管域的运行状况。
 * 托管域的域控制器会定期进行修补和更新。
@@ -56,7 +56,7 @@ Azure AD DS 托管域可处于以下状态之一：
 
 有关详细信息，请参阅[如何对 AZURE AD DS 托管域的警报进行故障排除][resolve-alerts]。
 
-### <a name="what-to-expect"></a>预期结果
+### <a name="what-to-expect"></a>你的期望
 
 当 Azure AD DS 托管域处于*需要注意*状态时，Azure 平台可能不会定期监视、修补、更新或备份数据。 在某些情况下（如使用无效网络配置），可能无法访问托管域的域控制器。
 
@@ -72,12 +72,12 @@ Azure AD DS 托管域可处于以下状态之一：
 由于以下原因之一，Azure AD DS 托管域进入**挂起**状态：
 
 * 一个或多个严重警报未在 15 天内得到解决。
-    * 严重警报可能由阻止访问 Azure AD DS 所需资源的错误配置引起。 例如，托管域中的警报 [AADDS104: 网络错误][alert-nsg]超过 15 天未解决。
+    * 严重警报可能由阻止访问 Azure AD DS 所需资源的错误配置引起。 例如，如果托管域中的警报 [AADDS104: 网络错误][alert-nsg]超过 15 天未解决。
 * Azure 订阅存在计费问题，或 Azure 订阅已过期。
 
 当 Azure 平台无法管理、监视、修补或备份域时，托管域将挂起。 托管域处于*挂起*状态15天。 若要保持对托管域的访问，请立即解决关键警报。
 
-### <a name="what-to-expect"></a>预期结果
+### <a name="what-to-expect"></a>你的期望
 
 当 Azure AD DS 托管域处于*挂起*状态时，将出现以下行为：
 
@@ -96,7 +96,7 @@ Azure AD DS 托管域可处于以下状态之一：
 若要还原处于*挂起*状态 Azure AD DS 托管域的运行状况，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择 "**域服务**"。
-1. 从列表中选择 Azure AD DS 托管域（如*contoso.com*），然后选择 "**运行状况**"。
+1. 从列表中选择 Azure AD DS 托管域（如*aadds.contoso.com*），然后选择 "**运行状况**"。
 1. 选择警报，如*AADDS503*或*AADDS504*，具体取决于挂起的原因。
 1. 选择警报中提供的解决方法链接，然后按照步骤进行解决。
 
@@ -108,7 +108,7 @@ Azure AD DS 托管域可处于以下状态之一：
 
 如果 Azure AD DS 托管域在15天内保持*挂起*状态，则会将其删除。 此进程不可恢复。
 
-### <a name="what-to-expect"></a>预期结果
+### <a name="what-to-expect"></a>你的期望
 
 当 Azure AD DS 托管域进入*已删除*状态时，将出现以下行为：
 

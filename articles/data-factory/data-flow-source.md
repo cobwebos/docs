@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702041"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>映射数据流的源转换 
 
@@ -31,7 +31,7 @@ ms.locfileid: "74217731"
 * Azure Data Lake Storage Gen1 （JSON，Avro，Text，Parquet）
 * Azure Data Lake Storage Gen2 （JSON，Avro，Text，Parquet）
 * Azure SQL 数据仓库
-* Azure SQL 数据库
+* Azure SQL Database
 * Azure CosmosDB
 
 Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
@@ -123,7 +123,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 所有源设置都可以使用[映射数据流的转换表达式语言](data-flow-expression-functions.md)指定为表达式。 若要添加动态内容，请在 "设置" 面板中的字段内单击或悬停。 单击 "**添加动态内容**" 的超链接。 这将启动表达式生成器，可在其中使用表达式、静态文本值或参数动态设置值。
 
-![参数](media/data-flow/params6.png "参数")
+![参数](media/data-flow/params6.png "parameters")
 
 ## <a name="sql-source-options"></a>SQL 源选项
 
@@ -131,7 +131,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 **输入：** 选择是将源指向某个表（等效于 ```Select * from <table-name>```）还是输入自定义 SQL 查询。
 
-**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 示例：```Select * from MyTable where customerId > 1000 and customerId < 2000```
+**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 示例： ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **批大小**：输入用于将大型数据拆分为读取的批大小。
 
@@ -156,7 +156,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 ### <a name="import-schema"></a>导入架构
 
-支持复杂数据结构的 Avro 和 CosmosDB 之类的数据集不需要架构定义存在于数据集中。 因此，您将能够单击 "导入架构" 按钮，查看这些类型的源的 "投影" 选项卡。
+支持复杂数据结构的 Avro 和 CosmosDB 之类的数据集不需要架构定义存在于数据集中。 因此，你将能够在这些类型的源的 "**投影**" 选项卡上单击 "**导入架构**" 按钮。
 
 ## <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
 

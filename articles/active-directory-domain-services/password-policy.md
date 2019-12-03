@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704529"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 
@@ -87,7 +87,7 @@ ms.locfileid: "72893437"
 
 1. 从 "开始" 屏幕中，选择 "**管理工具**"。 其中显示了在[创建管理 VM][tutorial-create-management-vm]教程中安装的可用管理工具列表。
 1. 若要创建和管理 Ou，请从管理工具列表中选择 " **Active Directory 管理中心**"。
-1. 在左窗格中，选择 Azure AD DS 托管域，如*contoso.com*。
+1. 在左窗格中，选择 Azure AD DS 托管域，如*aadds.contoso.com*。
 1. 打开 "**系统**" 容器，然后**密码设置容器**"。
 
     将显示 Azure AD DS 托管域的内置密码策略。 你无法修改此内置策略。 而是创建一个自定义密码策略来替代默认策略。
@@ -112,7 +112,7 @@ ms.locfileid: "72893437"
 
     ![选择要对其应用密码策略的用户和组](./media/how-to/fgpp-applies-to.png)
 
-1. 密码策略只能应用于组。 在 "**位置**" 对话框中，展开域名（如*contoso.com*），然后选择 " **AADDC 用户**" 之类的 OU。 如果你有一个自定义 OU，其中包含要应用的用户组，请选择该 OU。
+1. 密码策略只能应用于组。 在 "**位置**" 对话框中，展开域名（如*aadds.contoso.com*），然后选择 " **AADDC 用户**" 之类的 OU。 如果你有一个自定义 OU，其中包含要应用的用户组，请选择该 OU。
 
     ![选择该组所属的 OU](./media/how-to/fgpp-container.png)
 
