@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 0dd07b3394e385b3931e01867d467af7559b4f8b
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664159"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684135"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
 
@@ -211,6 +211,29 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 ### <a name="example-3---enable-serial-console"></a>示例 3-启用串行控制台
 如果无法访问 Azure 串行控制台，请验证 Linux VM 的 GRUB 配置参数并更正它们。 可[在此文档中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)找到详细信息
 
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>示例 4-具有有问题的 LVM 交换卷的内核加载
+
+VM 可能无法完全启动并进入**dracut**提示符。
+有关失败的更多详细信息，可从 Azure 串行控制台定位，或导航到 Azure 门户 > 启动诊断-> 串行日志
+
+
+可能出现类似于下面的错误：
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+在此示例中配置了 grub，以加载名称为 " **VG/SwapVol** " 且 VM 无法找到此项的 LV。 此行显示了如何加载内核引用 LV SwapVol
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ 从/etc/default/grub 配置中删除有问题的 LV 并重建 grub2
+
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>退出 chroot 并交换 OS 磁盘
 
@@ -247,4 +270,8 @@ umount /rescue
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解[Azure 串行控制台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+了解详细信息
+
+ [Azure 串行控制台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[单用户模式](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
