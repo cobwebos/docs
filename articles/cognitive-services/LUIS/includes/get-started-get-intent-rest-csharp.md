@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2d3a000040ff1b4f6e0ae548b578e8be014dc06a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125423"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414543"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 * [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 公共应用 ID：df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* 公共应用 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>获取 LUIS 密钥
 
@@ -27,20 +27,22 @@ ms.locfileid: "74125423"
 
 ## <a name="get-intent-programmatically"></a>以编程方式获取意向
 
-使用 C# 查询预测终结点 GET [API](https://aka.ms/luis-apim-v3-prediction) 来获取预测结果。 
+使用 C# (.NET Core) 查询[预测终结点](https://aka.ms/luis-apim-v3-prediction)并获取预测结果。
 
-1. 创建一个面向 C# 语言的新控制台应用程序，项目和文件夹名称为 `predict-with-rest`。 
+1. 使用项目和名为 `predict-with-rest` 的文件夹创建一个面向 C# 语言的新控制台应用程序。 
 
     ```console
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. 使用以下 dotnet CLI 命令安装所需的依赖项。
+1. 更改为刚才创建的 `predict-with-rest` 目录，并使用以下命令安装所需的依赖项：  
 
     ```console
+    cd predict-with-rest
     dotnet add package System.Net.Http
     ```
-1. 将 Program.cs 改写为以下代码：
+
+1. 在喜好的 IDE 或编辑器中打开 `Program.cs`。 然后使用以下代码覆盖 `Program.cs`：
     
    ```csharp
     using System;
@@ -102,10 +104,10 @@ ms.locfileid: "74125423"
 
 1. 替换以下值：
 
-    * 将 `YOUR-KEY` 替换为初学者密钥
-    * 将 `YOUR-ENDPOINT` 替换为终结点，例如 `westus2.api.cognitive.microsoft.com`
+    * 将 `YOUR-KEY` 替换为初学者密钥。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`westus2.api.cognitive.microsoft.com` 。
 
-1. 生成控制台应用程序。 
+1. 使用以下命令生成控制台应用程序： 
 
     ```console
     dotnet build
@@ -117,7 +119,7 @@ ms.locfileid: "74125423"
     dotnet run
     ```
 
-1. 查看 JSON 格式的预测响应：
+1. 查看以 JSON 形式返回的预测响应：
 
     ```console
     Hit ENTER to exit...

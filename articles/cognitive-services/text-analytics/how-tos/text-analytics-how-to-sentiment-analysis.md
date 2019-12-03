@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/23/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 33c9c708adcc196bc7d9b2e8a066d18e4dd20608
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031464"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326621"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>示例：使用文本分析检测情绪
 
@@ -36,7 +36,7 @@ ms.locfileid: "74031464"
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
 
-[下一版本的情绪分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)现在为公共预览版， 在 API 的文本分类和计分的准确度和细节方面有了显著改进。
+下一版本的情绪分析现在提供公共预览版， 在 API 的文本分类和计分的准确度和细节方面有了显著改进。 使用 [API 测试控制台](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)试用。
 
 > [!NOTE]
 > * 情绪分析 v3 的请求格式和[数据限制](../overview.md#data-limits)与上一版本相同。

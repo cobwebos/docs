@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125417"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280426"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,8 @@ ms.locfileid: "74125417"
 
 > [!div class="checklist"]
 >
-> * [创建 Azure 语音资源](../../../../get-started.md)
-> * [创建 LUIS 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
+> * [创建语言理解 (LUIS) 应用程序并获取终结点密钥](../../../../quickstarts/create-luis.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [创建一个空示例项目](../../../../quickstarts/create-project.md?tabs=windows)
 

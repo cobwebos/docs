@@ -10,12 +10,12 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 47913f86edcf83825254775705e38310f3c2c6b4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647458"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325940"
 ---
 若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到终结点。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "73647458"
 
     ![LUIS 发布到终结点](../media/howto-publish/publish-app-popup.png)
 
-3. 当网站顶部出现确认成功的绿色状态栏时，表示发布已完成。
+3. 当页面顶部出现确认成功的状态栏时，表示发布已完成。
 
     ![LUIS 发布到终结点](../media/howto-publish/publish-endpoint-success.png)
 

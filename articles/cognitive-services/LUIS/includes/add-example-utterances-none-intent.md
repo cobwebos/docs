@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: bbe40083159d433c0b5746834e1c530b23b03851
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648087"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325914"
 ---
-客户端应用程序需要知道某个话语是否对应用程序没有意义或不合适。 在创建过程中，“None”  意向将添加到每个应用程序，以确定客户端应用程序是否无法回答某个话语。
+客户端应用程序需要知道某个话语是否对应用程序没有意义或不合适。 在创建过程中，**None** 意向会添加到每个应用程序，以确定客户端应用程序是否不应回答某个言语。
 
 如果 LUIS 对于某个话语返回“None”  意向，客户端应用程序可以询问用户是否要结束聊天或提供更多指示以继续聊天。 
 
@@ -25,10 +25,12 @@ ms.locfileid: "73648087"
 
 1. 在左侧面板中选择“意向”。 
 
-1. 选择“None”意向。  添加用户可能会输入的、但与应用无关的三条陈述：
+1. 选择“None”意向。  添加用户可能会输入，但与披萨订购应用无关的 3 个言语：
 
     |`None` 示例言语|
     |--|
     |`Barking dogs are annoying`|
     |`Order a pizza for me`|
     |`Penguins in the ocean`|
+
+    这些示例不应使用预期在主题域中出现的字词，例如 `pizza`、`cheese`、`crust`、`pickup` `deliver`。
