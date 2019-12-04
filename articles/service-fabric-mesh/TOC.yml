@@ -77,6 +77,8 @@
   items:
     - name: Service Fabric 网格资源提供程序 REST API
       href: /rest/api/servicefabric/sfmeshrp-index
+    - name: Service Fabric 网格 CLI 参考
+      href: /cli/azure/ext/mesh
     - name: Service Fabric 客户端资源 REST API
       href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
     - name: Service Fabric Maven CLI 参考
