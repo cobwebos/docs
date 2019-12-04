@@ -7,23 +7,26 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 2afe3da8b4d4bee31b17320ad976e795e91d410a
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997236"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667278"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>使用 Python 为 Azure 数据资源管理器创建数据库和表策略
 
+> [!div class="op_single_selector"]
+> * [C#](database-table-policies-csharp.md)
+> * [Python](database-table-policies-python.md)
+>
+
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 本文介绍如何使用 Python 创建 Azure 数据资源管理器的数据库和表策略。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-
 * [测试群集和数据库](create-cluster-database-python.md)
-
 * [测试表](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>安装数据库
@@ -34,8 +37,8 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>身份验证
-为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 您可以使用相同的 Azure AD 应用程序从[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用不同的 Azure AD 应用程序，请参阅[创建 Azure AD 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)程序以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。 可能需要在数据库中添加新的 Azure AD 应用程序作为主体，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)。    
+## <a name="authentication"></a>Authentication
+为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 您可以使用相同的 Azure AD 应用程序从[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用不同的 Azure AD 应用程序，请参阅[创建 Azure AD 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)程序以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。 可能需要在数据库中添加新的 Azure AD 应用程序作为主体，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)。    
 
 ## <a name="alter-database-retention-policy"></a>更改数据库保留策略
 设置包含10天软删除期的保留策略。
