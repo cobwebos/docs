@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Azure AD Connect 云预配文档
+summary: 云预配通过将所有内容保存在云中来帮助简化和自动化本地用户管理。
+metadata:
+  author: billmath
+  description: 云预配通过用于从现有 AD 林同步 Azure AD 用户的云托管规则来帮助简化和自动化这些用户的管理。
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
+  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74795235"
+landingContent:
+- title: 关于云预配
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Connect 云预配？
+      url: what-is-cloud-provisioning.md
+- title: 了解如何实现用于管理用户和组的生命周期的最佳解决方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将单个 AD 林与单个 Azure AD 租户集成
+      url: tutorial-single-forest.md
+    - text: 将现有林和新林与单个 Azure AD 租户集成
+      url: tutorial-existing-forest.md
+    - text: 为现有已同步的 AD 林试点云预配
+      url: tutorial-pilot-aadc-aadccp.md
+- title: 云预配入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Connect 云预配先决条件
+      url: how-to-prerequisites.md
+    - text: 安装 Azure AD Connect 云预配
+      url: how-to-install.md
+    - text: Azure AD Connect 云预配代理配置
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: 支持的拓扑和方案
+      url: plan-cloud-provisioning-topologies.md

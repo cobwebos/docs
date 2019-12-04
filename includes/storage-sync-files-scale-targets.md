@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c04875f92ee58c24567fbb4d73d8d01697810f99
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391558"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795740"
 ---
 | 资源 | 确定目标 | 硬限制 |
 |----------|--------------|------------|
@@ -23,12 +23,11 @@ ms.locfileid: "72391558"
 | 每个同步组的云终结点 | 1 个云终结点 | 是 |
 | 每个同步组的服务器终结点 | 50 个服务器终结点 | No |
 | 每个服务器的服务器终结点数 | 30 个服务器终结点 | 是 |
-| 每个同步组的文件系统对象数（目录和文件） | 50000000对象 | No |
+| 每个同步组的文件系统对象数（目录和文件） | 100000000对象 | No |
 | 目录中的最大文件系统对象（目录和文件）数 | 5000000对象 | 是 |
 | 最大对象（目录和文件）安全描述符大小 | 64 KiB | 是 |
 | 文件大小 | 100 GiB | No |
-| 要进行分层的文件的最小文件大小 | 64 KiB | 是 |
-| 并发同步会话 | V4 代理和更高版本：限制因可用系统资源而异。 <BR> V3 agent：每个处理器有两个活动的同步会话，每个服务器最多八个活动的同步会话。 | 是
+| 要进行分层的文件的最小文件大小 | V9.x：基于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为4kb，则文件的最小大小为8kb。<br> V8 及更早版本： 64 KiB  | 是 |
 
 > [!Note]  
 > Azure 文件同步终结点可以扩展到 Azure 文件共享的大小。 如果达到 Azure 文件共享大小限制，同步将无法运行。

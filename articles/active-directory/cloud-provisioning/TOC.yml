@@ -1,0 +1,66 @@
+- name: 云预配
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是标识预配？
+      href: what-is-provisioning.md
+    - name: 什么是 Azure AD Connect 云预配？
+      href: what-is-cloud-provisioning.md
+      maintainContext: true
+- name: 教程
+  expanded: true
+  items:
+    - name: 将单个 AD 林与单个 Azure AD 租户集成
+      href: tutorial-single-forest.md
+    - name: 将现有林和新林与单个 Azure AD 租户集成
+      href: tutorial-existing-forest.md
+    - name: 为现有已同步的 AD 林试点云预配
+      href: tutorial-pilot-aadc-aadccp.md
+- name: 概念
+  items:
+    - name: 什么是密码哈希同步？
+      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+    - name: 了解 Azure AD 架构、属性和表达式
+      href: concept-attributes.md
+    - name: 在 Azure Active Directory 中编写属性映射的表达式
+      href: reference-expressions.md
+- name: 操作指南
+  items:
+    - name: 安装和升级
+      items:
+        - name: 安装先决条件
+          href: how-to-prerequisites.md
+        - name: 安装 Azure AD Connect 云预配代理
+          href: how-to-install.md
+        - name: 云预配配置
+          href: how-to-configure.md
+    - name: 规划和设计
+      items:
+        - name: Azure AD Connect 云预配拓扑和方案
+          href: plan-cloud-provisioning-topologies.md
+    - name: 管理
+      items:
+        - name: 代理自动升级
+          href: how-to-automatic-upgrade.md
+    - name: 开发
+      items:
+        - name: 转换
+          href: how-to-transformation.md
+        - name: Azure AD 同步 API
+          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+    - name: 故障排除
+      items:
+        - name: 云预配故障排除
+          href: how-to-troubleshoot.md
+        - name: 重复的属性
+          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+- name: 引用
+  items:
+    - name: Azure AD Connect 云预配代理版本历史记录
+      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Azure AD Connect 云预配常见问题解答
+      href: reference-cloud-provisioning-faq.md
+    - name: 同步的属性
+      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: 基本 Active Directory 和 Azure AD 环境
+      href: tutorial-basic-ad-azure.md

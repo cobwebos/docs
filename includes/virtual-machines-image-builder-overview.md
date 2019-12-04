@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 04/30/2019
+ms.date: 11/25/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391562"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795621"
 ---
 标准化的虚拟机（VM）映像允许组织迁移到云，并确保部署中的一致性。 映像通常包括预定义的安全和配置设置以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器时，只需提供一个描述映像的简单配置，将其提交给服务，然后构建并分发映像。
  
@@ -45,7 +45,7 @@ Azure 映像生成器服务将在这些区域提供预览版。 可以在这些�
 AIB 将支持 Azure Marketplace 基础操作系统映像：
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
+- RHEL 7。6
 - CentOS 7。6
 - Windows 10 RS5 企业/专业/企业版虚拟桌面（EVD） 
 - Windows 2016
@@ -58,7 +58,7 @@ AIB 将支持 RHEL ISO，作为的源：
 
 RHEL 7.6 Iso 不受支持，但正在进行测试。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 
 ![Azure 映像生成器的概念图](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -73,7 +73,7 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 
 1. 以一个 json 文件的形式创建图像模板。 此 json 文件包含有关映像源、自定义和分发的信息。 [Azure 映像生成器 GitHub 存储库](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中提供了多个示例。
 1. 将其提交给服务，这将在指定的资源组中创建一个映像模板项目。 在后台，映像生成器将根据需要下载源映像或 ISO，以及脚本。 它们存储在订阅中自动创建的单独资源组中，格式为： IT_\<DestinationResourceGroup > _\<TemplateName >。 
-1. 一旦创建了映像模板，就可以生成映像。 在背景图像生成器中，使用模板和源文件在 IT_ 中创建一个 VM （D1v2）、网络、公共 IP 和存储\<DestinationResourceGroup > _\<TemplateName > 资源组。
+1. 一旦创建了映像模板，就可以生成映像。 在背景图像生成器中，使用模板和源文件在 IT_\<DestinationResourceGroup > _\<TemplateName > 资源组中创建 VM （默认大小： Standard_D1_v2）、网络、公共 IP、NSG 和存储。
 1. 在创建映像时，图像生成器会根据模板对其进行处理，然后删除 IT_\<DestinationResourceGroup > _\<TemplateName > 为该进程创建的资源组中的其他资源。
 
 
