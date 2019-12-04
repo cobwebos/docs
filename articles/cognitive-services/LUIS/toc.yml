@@ -46,10 +46,10 @@
         - name: 2. 提取用户数据
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. 从用户话语获取情绪
+          href: tutorial-publish-settings.md
     - name: 构建应用
       items:
-        - name: 从用户话语获取情绪
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: 通过正则表达式获取具有严格格式的数据
           href: luis-quickstart-intents-regex-entity.md
         - name: 通过列表获取确切的文本匹配项
