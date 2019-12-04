@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
-    - name: 了解角色定义
-      href: role-definitions.md
     - name: 适用于 Azure 资源的 PIM
       href: pim-azure-resource.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
 - name: 操作指南
   items:
-    - name: 管理访问权限
+    - name: 列出角色定义
+      items:
+        - name: 概述
+          href: role-definitions.md
+        - name: 列出角色定义
+          href: role-definitions-list.md
+        - name: 内置角色
+          href: built-in-roles.md
+    - name: 列出角色分配
+      items:
+        - name: 门户
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: CLI
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: 添加或删除角色分配
       items:
         - name: 门户
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: 模板
           href: role-assignments-template.md
-    - name: 拒绝访问
+    - name: 列出拒绝分配
       items:
-        - name: 拒绝分配
+        - name: 概述
           href: deny-assignments.md
         - name: 门户
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: 自定义角色
+    - name: 创建自定义角色
       items:
         - name: 概述
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: 查看活动日志
       href: change-history-report.md
-    - name: 提升访问权限来管理所有订阅
+    - name: 提升访问权限
       href: elevate-access-global-admin.md
     - name: 经典管理员
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: 引用
   items:
-    - name: 内置角色
-      href: built-in-roles.md
     - name: 资源提供程序操作
       href: resource-provider-operations.md
     - name: RBAC 限制

@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 故障排除
       items:
-        - name: 例外
+        - name: 故障排除指南
           href: service-bus-messaging-exceptions.md
 - name: 引用
   items:

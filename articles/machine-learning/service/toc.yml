@@ -300,7 +300,7 @@
         - name: 运行批量预测
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
-        - name: 将设计器用于批量预测
+        - name: 设计器批量预测
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
     - name: 监视模型

@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: 配置客户管理的密钥以加密静态数据
+        - name: 配置客户管理的密钥以加密静态数据（预览版）
           href: configure-customer-managed-key.md
     - name: 故障排除
       items:

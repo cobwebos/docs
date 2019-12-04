@@ -1,5 +1,5 @@
 - name: 必应新闻搜索文档
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概述
   expanded: true
   items:

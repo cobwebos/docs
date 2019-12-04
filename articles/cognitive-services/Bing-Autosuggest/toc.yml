@@ -1,5 +1,5 @@
 - name: 必应自动建议文档
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概述
   items:
     - name: 什么是必应自动建议？

@@ -1,5 +1,5 @@
 - name: 必应实体搜索文档
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概述
   items:
     - name: 什么是必应实体搜索？
