@@ -1,20 +1,19 @@
 ---
-title: 贸易合作伙伴协议-Azure 逻辑应用
+title: 贸易合作伙伴协议
 description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 创建和管理贸易合作伙伴之间的协议
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680422"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790739"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建和管理贸易合作伙伴协议
 
@@ -29,7 +28,7 @@ ms.locfileid: "72680422"
 
 若要创建用于交换 RosettaNet 消息的协议，请参阅[Exchange rosettanet 消息](../logic-apps/logic-apps-enterprise-integration-rosettanet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -58,14 +57,14 @@ ms.locfileid: "72680422"
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | 属性 | 必选 | 值 | 说明 |
+   | properties | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
-   | **名称** | 是 | <*agreement-name*> | 协议名称 |
+   | 名称 | 是 | <*协议-名称*> | 协议名称 |
    | **协议类型** | 是 | **AS2**、 **X12**或**EDIFACT** | 协议的协议类型。 创建协议文件时，该文件中的内容必须与协议类型匹配。 | |  
-   | **主机伙伴** | 是 | <*host-partner-name*> | 主机伙伴表示指定协议的组织 |
-   | **主机标识** | 是 | <*host-partner-identifier*> | 主机伙伴的标识符 |
-   | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
-   | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
+   | **主机伙伴** | 是 | <*主机伙伴名称*> | 主机伙伴表示指定协议的组织 |
+   | **主机标识** | 是 | <*主机伙伴标识符*> | 主机伙伴的标识符 |
+   | **来宾合作伙伴** | 是 | <*guest-name*> | 托管方代表与管理方进行交易的组织 |
+   | **来宾标识** | 是 | <*来宾-合作伙伴标识符*> | 来宾合作伙伴的标识符 |
    | **接收设置** | 多种多样 | 多种多样 | 这些属性指定主机伙伴如何从协议中的来宾合作伙伴接收所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
    | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机伙伴如何向协议中的来宾合作伙伴发送所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
    |||||

@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 门户重启 Azure Database for PostgreSQL - 单一服务器
-description: 本文介绍了如何使用 Azure 门户重启 Azure Database for PostgreSQL - 单一服务器。
+title: 重新启动服务器-Azure 门户-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍如何使用 Azure 门户重新启动 Azure Database for PostgreSQL 单台服务器。
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52ffb3943e6e3f209fd236216cc44026dff59dad
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65066840"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770078"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 门户重启 Azure Database for PostgreSQL - 单一服务器
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>重新启动 Azure Database for PostgreSQL 使用 Azure 门户的单一服务器
 本主题介绍如何重启 Azure Database for PostgreSQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
 如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
@@ -28,13 +28,13 @@ ms.locfileid: "65066840"
 
 可通过以下步骤重启 PostgreSQL 服务器：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure Database for PostgreSQL 服务器。
+1. 在[Azure 门户](https://portal.azure.com/)中，选择 Azure Database for PostgreSQL 服务器。
 
-2. 在服务器“概述”页的工具栏中，单击“重启”   。
+2. 在服务器“概述”页的工具栏中，单击“重启”。
 
    ![Azure Database for PostgreSQL - 概述 - “重启”按钮](./media/howto-restart-server-portal/2-server.png)
 
-3. 单击“是”以确认重启服务器  。
+3. 单击“是”以确认重启服务器。
 
    ![Azure Database for PostgreSQL - 重启确认](./media/howto-restart-server-portal/3-restart-confirm.png)
 

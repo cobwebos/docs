@@ -7,23 +7,23 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495972"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791703"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
-常规用途 v2 存储帐户支持最新的 Azure 存储功能，并合并了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。
+常规用途 v2 存储帐户支持最新的 Azure 存储功能，并合并了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 一般-目的 v2 帐户支持 "热"、"冷" 或 "存档" 之间的 "热"、"冷" 和 "blob" 级别分层的默认帐户访问层
 
 从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 存储帐户很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。
 
 > [!IMPORTANT]
 > 将常规用途 v1 或 Blob 存储帐户升级为常规用途 v2 是永久性的，无法撤消。
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
@@ -40,19 +40,19 @@ ms.locfileid: "73495972"
 
 若要使用 PowerShell 将常规用途 v1 帐户升级为常规用途 v2 帐户，请首先更新 PowerShell，以使用最新版本的**Az. Storage**模块。 请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)，了解如何安装 PowerShell。
 
-接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
+接下来，调用以下命令来升级帐户，并替换资源组名称、存储帐户名称和所需的帐户访问层。
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请首先安装 Azure CLI 的最新版本。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
 
-接下来，调用以下命令来升级帐户，使用自己的资源组和存储帐户的名称来代替相应项：
+接下来，调用以下命令来升级帐户，并替换资源组名称、存储帐户名称和所需的帐户访问层。
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
@@ -72,7 +72,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-将 v1 存储帐户升级为常规用途 v2 帐户是免费的。 但是，更改存储访问层可能会导致帐单更改。 
+将 v1 存储帐户升级为常规用途 v2 帐户是免费的。 在升级过程中，可以指定所需的帐户层。 如果在升级时未指定帐户层，将 `Hot`升级帐户的默认帐户层。 但是，在升级后更改存储访问层可能会导致帐单更改，因此建议在升级过程中指定新的帐户层。
 
 所有存储帐户使用的定价模型都适用于 Blob 存储，具体取决于每个 Blob 的层。 使用存储帐户时，需要考虑到以下计费因素：
 
@@ -123,7 +123,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 若要对数据使用和访问模式进行准确的估算，建议为指标选择一个可代表日常使用情况的保留期，并进行推断。 一种选择是让指标数据保留七天，每周收集一次数据，并在月底进行分析。 另一种选择是让指标数据保留 30 天，在 30 天到期以后再收集和分析数据。
 
-如需详细了解如何启用、收集和查看指标数据，请参阅[存储分析指标](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要详细了解如何启用、收集和查看度量值数据，请参阅[存储分析度量值](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 存储、访问和下载分析数据也会收费，就像使用常规用户数据一样。
@@ -156,7 +156,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 * 从存储帐户检索的数据量可以通过查看主要为 'GetBlob' 和 'CopyBlob' 操作的 'TotalEgress' 计得之和来估算。
 
-* 写入到存储帐户的数据量可以通过查看主要为 *'PutBlob'* 、 *'PutBlock'* 、 *'CopyBlob'* 和 *'AppendBlock'* 操作的 *'TotalIngress'* 计算之和来估算。
+* 写入到存储帐户的数据量可以通过查看主要为 'PutBlob'、'PutBlock'、'CopyBlob' 和 'AppendBlock' 操作的 'TotalIngress' 计得之和来估算。
 
 在使用 GRS 或 RA-GRS 存储帐户时，也可以通过所写入数据量的估算值来计算 Blob 存储帐户的异地复制数据传输费用。
 

@@ -1,20 +1,19 @@
 ---
-title: 错误和异常处理-Azure 逻辑应用
+title: 错误和异常处理
 description: 了解 Azure 逻辑应用中的错误和异常处理模式
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208176"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792088"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -28,12 +27,12 @@ ms.locfileid: "70208176"
 
 重试策略类型如下所示： 
 
-| 类型 | 描述 | 
+| Type | 描述 | 
 |------|-------------| 
 | **默认** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 | 
-| **无**  | 不重新发送请求。 | 
+| 无  | 不重新发送请求。 | 
 ||| 
 
 要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#request-limits)。 
@@ -70,19 +69,19 @@ ms.locfileid: "70208176"
 
 *必需*
 
-| ReplTest1 | 类型 | 描述 |
+| Value | Type | 描述 |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
-| <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
-| <*retry-attempts*> | 整数 | 重试尝试次数，它必须介于 1 和 90 之间 | 
+| <*retry-policy-type*> | 字符串 | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
+| <*retry-interval*> | 字符串 | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
+| <*retry-attempts*> | Integer | 重试尝试次数，它必须介于 1 和 90 之间 | 
 ||||
 
 可选
 
-| ReplTest1 | 类型 | 描述 |
+| Value | Type | 描述 |
 |-------|------|-------------|
-| <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
-| <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
+| <*minimum-interval*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
+| <*maximum-interval*> | 字符串 | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
 |||| 
 
 下面详细介绍不同的策略类型。
@@ -152,7 +151,7 @@ ms.locfileid: "70208176"
 
 | 重试次数 | 最小间隔 | 最大间隔 |
 |--------------|------------------|------------------|
-| 1 | max(0, <minimum-interval>) | min(interval, <maximum-interval>) |
+| 第 | max(0, <minimum-interval>) | min(interval, <maximum-interval>) |
 | 2 | max(interval, <minimum-interval>) | min(2 * interval, <maximum-interval>) |
 | 3 | max(2 * interval, <minimum-interval>) | min(4 * interval, <maximum-interval>) |
 | 4 | max(4 * interval, <minimum-interval>) | min(8 * interval, <maximum-interval>) |
@@ -224,9 +223,9 @@ ms.locfileid: "70208176"
 
 尽管从作用域中捕获失败非常有用，但可能还需要借助上下文来确切了解失败的操作以及返回的任何错误或状态代码。
 
-[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)函数提供有关作用域中所有操作的结果的上下文。 `result()`函数接受单个参数, 即作用域的名称, 并返回一个数组, 该数组包含该范围内的所有操作结果。 这些操作对象包含与`@actions()`对象相同的属性, 例如操作的开始时间、结束时间、状态、输入、相关 id 和输出。 若要为作用域内任何失败的操作发送上下文, 可以轻松地将`@result()`表达式`runAfter`与属性配对。
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result)函数提供有关作用域中所有操作的结果的上下文。 `result()` 函数接受一个参数（作用域的名称），并返回一个数组，该数组包含该范围内的所有操作结果。 这些操作对象包含与 `@actions()` 对象相同的属性，例如操作的开始时间、结束时间、状态、输入、相关 Id 和输出。 若要为作用域内任何失败的操作发送上下文，可以轻松地将 `@result()` 表达式与 `runAfter` 属性配对。
 
-若要针对具有**失败**结果的作用域中的每个操作运行操作, 并将结果数组筛选为失败的操作, 可以将`@result()`表达式与[**筛选数组**](../connectors/connectors-native-query.md)操作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 可采用筛选的结果数组并使用 For Each 循环对每个失败执行操作。
+若要针对具有**失败**结果的作用域中的每个操作运行操作，并将结果数组筛选为失败的操作，可以将 `@result()` 表达式与[**筛选数组**](../connectors/connectors-native-query.md)操作和[**for each**](../logic-apps/logic-apps-control-flow-loops.md)循环配对。 可采用筛选的结果数组并使用 For Each 循环对每个失败执行操作。
 
 以下示例（后附详细说明）发送一个 HTTP POST 请求，其中包含范围内“My_Scope”中失败的任何操作的响应正文：
 
@@ -318,7 +317,7 @@ ms.locfileid: "70208176"
 }
 ```
 
-若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 可选择在范围外执行单个异常处理操作，使此操作接受筛选后的整个失败数组，然后再删除 For Each 操作。 如前面所述，还可以包含 **\@result()** 响应中其他有用的属性。
+若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 可选择在范围外执行单个异常处理操作，使此操作接受筛选后的整个失败数组，然后再删除 For Each 操作。 如前面所述，还可以包含 **\@结果（）** 响应中的其他有用属性。
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure 诊断和指标
 

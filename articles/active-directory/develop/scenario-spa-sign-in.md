@@ -1,6 +1,6 @@
 ---
 title: 单页应用程序（登录）-Microsoft 标识平台
-description: 了解如何生成单页应用程序（登录）
+description: 了解如何生成单页面应用程序（登录）
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,36 +17,36 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bf614a5523e78fc72918db973ef8d738a171fff
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e0fd546724b8d684746a9f4d63a03bc6b58ded52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031791"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764638"
 ---
-# <a name="single-page-application---sign-in"></a>单页应用程序 - 登录
+# <a name="single-page-application-sign-in"></a>单页应用程序：登录
 
-了解如何将登录添加到单页应用程序的代码中。
+了解如何在单页面应用程序的代码中添加登录。
 
-在应用程序中获取用于访问 API 的令牌之前，需要经身份验证的用户上下文。 可以在 MSAL.js 中以两种方式将用户登录到应用程序：
+你需要经过身份验证的用户上下文，然后才能获取令牌来访问应用程序中的 Api。 可以通过两种方式将用户登录到 MSAL 中的应用程序：
 
-* 使用 `loginPopup`方法 [通过弹出窗口登录](#sign-in-with-a-pop-up-window)
-* 使用 `loginRedirect`方法 [通过重定向登录](#sign-in-with-redirect)
+* [弹出式窗口](#sign-in-with-a-pop-up-window)，方法是使用 `loginPopup` 方法
+* 使用 `loginRedirect` 方法进行[重定向](#sign-in-with-redirect)
 
-也可选择传递 API 的作用域，该作用域需在用户登录时获得用户许可。
+你还可以选择传递你在登录时需要用户同意的 Api 的作用域。
 
 > [!NOTE]
-> 如果应用程序已经可以访问经身份验证的用户上下文或 ID 令牌，则可跳过登录步骤，直接获取令牌。 有关更多详细信息，请参阅[在不使用 msal.js 登录名的情况下进行 SSO](msal-js-sso.md#sso-without-msaljs-login)。
+> 如果你的应用程序已有权访问经过身份验证的用户上下文或 ID 令牌，则可以跳过该登录步骤并直接获取令牌。 有关详细信息，请参阅[没有 MSAL 登录名的 SSO](msal-js-sso.md#sso-without-msaljs-login)。
 
-## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>在弹出窗口或重定向体验之间进行选择
+## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>在弹出或重定向体验之间进行选择
 
-不能在应用程序中将弹出窗口和重定向方法组合在一起使用。 在弹出窗口和重定向体验之间进行的选择取决于应用程序流。
+不能在应用程序中同时使用弹出和重定向方法。 弹出或重定向体验之间的选择取决于你的应用程序流：
 
-* 如果不希望用户在身份验证期间从主应用程序页以导航的方式离开，建议使用弹出窗口方法。 由于身份验证重定向发生在弹出窗口中，因此会保留主应用程序的状态。
+* 如果你不希望用户在身份验证过程中从主应用程序页面移开，则建议你执行弹出方法。 由于身份验证重定向发生在弹出窗口中，因此将保留主应用程序的状态。
 
-* 在某些情况下，可能需要使用重定向方法。 如果应用程序用户的浏览器约束或策略禁用了弹出窗口，则可使用重定向方法。 请对 Internet Explorer 浏览器使用重定向方法，因为在处理弹出窗口时存在某些 [Internet Explorer 已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)。
+* 如果用户具有禁用弹出窗口的浏览器约束或策略，则可以使用重定向方法。 在 Internet Explorer 浏览器中使用重定向方法，因为[Internet explorer 上的弹出窗口存在已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)。
 
-## <a name="sign-in-with-a-pop-up-window"></a>通过弹出窗口登录
+## <a name="sign-in-with-a-pop-up-window"></a>使用弹出窗口登录
 
 ### <a name="javascript"></a>JavaScript
 
@@ -66,7 +66,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 
 ### <a name="angular"></a>Angular
 
-有了 MSAL Angular 包装器，只需将 `MsalGuard` 添加到路由定义即可确保应用程序中特定路由的安全。 访问该路由时，此防护会调用用于登录的方法。
+可以通过将 `MsalGuard` 添加到路由定义，来保护应用程序中的特定路由。 此防护将调用方法，以便在访问该路由时进行登录。
 
 ```javascript
 // In app.routes.ts
@@ -78,7 +78,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
   { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
 ```
 
-对于弹出窗口体验，请启用 `popUp` 配置选项。 也可传递需要许可的作用域，如下所示：
+对于弹出窗口体验，启用 `popUp` 配置选项。 你还可以传递需要许可的作用域，如下所示：
 
 ```javascript
 //In app.module.ts
@@ -91,11 +91,11 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
          })
 ```
 
-## <a name="sign-in-with-redirect"></a>使用重定向登录
+## <a name="sign-in-with-redirect"></a>重定向的登录
 
 ### <a name="javascript"></a>JavaScript
 
-重定向方法不会返回承诺，因为已经通过导航从主应用离开。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回叫。
+重定向方法不会返回承诺，因为这是从主应用中移开的。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回调。
 
 ```javascript
 function authCallback(error, response) {
@@ -113,16 +113,16 @@ userAgentApplication.loginRedirect(loginRequest);
 
 ### <a name="angular"></a>Angular
 
-此处的代码与上述代码（位于使用弹出窗口登录的部分）相同。 默认流为重定向。
+此处的代码与有关使用弹出窗口登录的部分中所述的代码相同。 默认流为 "重定向"。
 
 > [!NOTE]
-> ID 令牌不包含许可的作用域，仅代表经身份验证的用户。 许可的作用域在访问令牌中返回，该令牌会在下一步获取。
+> ID 令牌不包含许可范围并仅代表经过身份验证的用户。 许可范围在访问令牌中返回，你将在下一步中获取该令牌。
 
 ## <a name="sign-out"></a>注销
 
-MSAL 库提供一个 `logout` 方法，该方法会清除浏览器中的缓存并将注销请求发送到 Azure AD。 在注销后，它会默认重定向回应用程序启动页。
+MSAL 库提供了一个 `logout` 方法，该方法可在浏览器存储中清除缓存并向 Azure Active Directory （Azure AD）发送注销请求。 注销后，默认情况下，库将重定向回应用程序起始页。
 
-可以通过设置 `postLogoutRedirectUri` 来配置此 URI（在注销后应该重定向到此 URI）。 还应该在应用程序注册中将此 URI 注册为“注销 URI”。
+您可以通过设置 `postLogoutRedirectUri`来配置在注销后应重定向到的 URI。 此 URI 还应在应用程序注册中注册为注销 URI。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -159,4 +159,4 @@ this.authService.logout();
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [获取应用的令牌](scenario-spa-acquire-token.md)
+> [正在获取应用的令牌](scenario-spa-acquire-token.md)

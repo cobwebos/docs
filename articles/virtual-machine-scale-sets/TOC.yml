@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: 将规模集模板转换为使用托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: 使用低优先级
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: 使用点实例
+          href: use-spot.md
     - name: 管理
       items:
         - name: 常见管理任务

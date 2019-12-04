@@ -1,23 +1,23 @@
 ---
-title: Azure Database for PostgreSQL（单一服务器）中的服务器概念
-description: 本文提供配置和管理 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
+title: 服务器-Azure Database for PostgreSQL-单服务器
+description: 本文提供了有关配置和管理 Azure Database for PostgreSQL 单服务器的注意事项和指南。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029968"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768157"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
-本文提供使用 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
+本文提供了有关使用 Azure Database for PostgreSQL 单服务器的注意事项和指南。
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>什么是 Azure Database for PostgreSQL 服务器？
-Azure Database for PostgreSQL（单一服务器）部署选项中的服务器是多个数据库的中心管理点。 它的 PostgreSQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，PostgreSQL 服务是托管的服务，它提供性能保证、公开服务器级访问权限和功能。
+Azure Database for PostgreSQL-单服务器部署选项中的服务器是多个数据库的中心管理点。 它的 PostgreSQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，PostgreSQL 服务是托管的服务，它提供性能保证、公开服务器级访问权限和功能。
 
 Azure Database for PostgreSQL 服务器：
 

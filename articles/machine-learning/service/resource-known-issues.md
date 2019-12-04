@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286987"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784606"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -54,7 +54,7 @@ Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
-错误消息： **`ERROR: No matching distribution found for azureml-dataprep-native`**
+错误消息：`ERROR: No matching distribution found for azureml-dataprep-native`
 
 Anaconda 的 Python 3.7.4 分发有一个破坏 azureml-sdk 安装的缺陷。 此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题，可通过使用此命令创建新的 Conda 环境来解决此问题：
 ```bash
@@ -78,7 +78,7 @@ conda create -n <env-name> python=3.7.3
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动化机器学习
+## <a name="automated-machine-learning"></a>自动执行机器学习
 
 Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
@@ -278,10 +278,10 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 
 手动刷新页面。 初始化应大约每秒大约20个数据点。 缺少 autorefresh 是一个已知问题。 
 
-### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>边界框无法绘制到图像的右边缘 
-
-尝试调整浏览器窗口的大小。 我们正在研究确定此行为的原因。 
-
 ### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>查看图像时，不会显示新标记的图像
 
 若要加载所有标记的图像，请选择**第一个**按钮。 **第一个**按钮将返回到列表的前面，但会加载所有标记的数据。
+
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>如果在为对象检测标记时按 Esc 键，则会在左上角创建一个0大小的标签。 提交处于此状态的标签失败。
+
+单击标签旁边的交叉标记，删除标签。

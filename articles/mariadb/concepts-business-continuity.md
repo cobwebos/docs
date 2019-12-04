@@ -1,23 +1,23 @@
 ---
-title: 了解 Azure Database for MariaDB 中的业务连续性
+title: 业务连续性-Azure Database for MariaDB
 description: 使用 Azure Database for MariaDB 服务时，了解业务连续性（时间点还原、数据中心中断、异地还原）。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d364c3a5fafaca514baade25cd3f5b4c0f10dc26
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 76e749b26be5a5204b247d294f26da169f84094c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973601"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773011"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 中的业务连续性
 
 本文介绍 Azure Database for MariaDB 提供的用于业务连续性和灾难恢复的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来提供业务连续性的功能
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用来保证业务连续性的功能
 
 Azure Database for MariaDB 提供了业务连续性功能，这包括自动备份和允许用户启动异地还原的功能。 每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 了解这些选项后，便可从中进行选择，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在破坏性事件发生后完全恢复前的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从破坏性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
 

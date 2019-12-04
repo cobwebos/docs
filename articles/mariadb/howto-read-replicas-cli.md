@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Database for MariaDB AZURE CLI 中创建和管理读取副本 REST API
+title: 管理读取副本-Azure CLI、REST API-Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中设置和管理读取副本。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: e9353bb5d472cc8dc798e7e09aed2183e48124ed
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122762"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765828"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中创建和管理读取副本
 
@@ -20,13 +20,13 @@ ms.locfileid: "71122762"
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 创建和管理读取副本。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 - [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- 将用作主服务器的 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。 
+- 将用作主服务器的[Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。 
 
 > [!IMPORTANT]
-> 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
+> 读取副本功能仅适用于常规用途或内存优化定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
 
@@ -44,7 +44,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
 
-若要创建跨区域只读副本，请使用 `--location` 参数。 
+若要创建跨区域读取副本，请使用 `--location` 参数。 
 
 > [!NOTE]
 > 跨区域复制处于预览阶段。
@@ -79,7 +79,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 ### <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
 
 > [!IMPORTANT]
-> 停止复制到服务器操作不可逆。 一旦主服务器和副本服务器之间的复制停止，无法撤消。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
+> 停止复制到服务器操作不可逆。 一旦主服务器和副本服务器之间的复制停止，无法撤消。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为到副本服务器。
 
 可以使用以下命令停止复制到只读副本服务器：
 
@@ -96,7 +96,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 ### <a name="delete-a-replica-server"></a>删除副本服务器
 
-可以通过运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令删除只读副本服务器。
+可以通过运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令来删除读取副本服务器。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -107,7 +107,7 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoreplicase
 > [!IMPORTANT]
 > 删除主服务器会停止复制到所有副本服务器，并删除主服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
-若要删除主服务器，可以运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令。
+若要删除主服务器，可运行 **[az mariadb server delete](/cli/azure/mariadb/server)** 命令。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
@@ -136,7 +136,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
 
-如果尚未在“常规用途”或“内存优化”主服务器上将 `azure.replication_support` 参数设置为 **REPLICA** 并重启服务器，将会收到错误。 请在创建副本之前完成这两个步骤。
+如果未在常规用途或内存优化的主服务器上将 `azure.replication_support` 参数设置为**副本**，然后重新启动服务器，则会收到错误。 在创建副本之前完成这两个步骤。
 
 使用与 master 相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
 

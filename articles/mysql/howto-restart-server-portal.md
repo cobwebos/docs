@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure 门户重启 Azure Database for MySQL 服务器
-description: 本文介绍了如何使用 Azure 门户重启 Azure Database for MySQL 服务器。
+title: 重新启动服务器-Azure 门户-Azure Database for MySQL
+description: 本文介绍如何使用 Azure 门户重新启动 Azure Database for MySQL 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 1857c67a77b9600f3d8f7c222a8e06f899fba728
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422521"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774045"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 门户重启 Azure Database for MySQL 服务器
 本主题介绍如何重启 Azure Database for MySQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
@@ -30,11 +30,11 @@ ms.locfileid: "61422521"
 
 1. 在 Azure 门户中，选择 Azure Database for MySQL 服务器。
 
-2. 在服务器“概述”页的工具栏中，单击“重启”   。
+2. 在服务器“概述”页的工具栏中，单击“重启”。
 
    ![Azure Database for MySQL -“概述”-“重启”按钮](./media/howto-restart-server-portal/2-server.png)
 
-3. 单击“是”以确认重启服务器  。
+3. 单击“是”以确认重启服务器。
 
    ![Azure Database for MySQL - 重启确认](./media/howto-restart-server-portal/3-restart-confirm.png)
 

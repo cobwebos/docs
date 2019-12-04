@@ -1,17 +1,17 @@
 ---
-title: 使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
+title: 随转储和还原一起迁移-Azure Database for MariaDB
 description: 本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MariaDB 中备份和还原数据库的两种常见方式。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 12/02/2019
+ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845059"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775999"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
 本文介绍了在 Azure Database for MariaDB 中备份和还原数据库的两种常见方式
@@ -41,7 +41,7 @@ ms.locfileid: "70845059"
    ```
 - 若要避免任何兼容性问题，请确保转储数据库时，源和目标系统上所使用的 MariaDB 版本相同。 例如，如果现有 MariaDB 服务器版本是 10.2，那么应迁移到配置为运行版本 10.2 的 Azure Database for MariaDB 中。 在 Azure Database for MariaDB 服务器中，`mysql_upgrade` 命令不起作用，也不受支持。 如果需要跨 MariaDB 版本进行升级，应先将低版本数据库转储或导出到自己环境中更高版本的 MariaDB 中。 然后运行 `mysql_upgrade`，再尝试迁移到 Azure Database for MariaDB 中。
 
-## <a name="performance-considerations"></a>性能注意事项
+## <a name="performance-considerations"></a>性能考虑
 若要优化性能，请在转储大型数据库时留意这些注意事项：
 -   转储数据库时，请使用 mysqldump 中的 `exclude-triggers` 选项。 从转储文件中排除触发器，避免在还原数据期间触发触发器命令。 
 -   使用 `single-transaction` 选项，将事务隔离模式设置为 REPEATABLE READ 并在转储数据之前将 START TRANSACTION SQL 语句发送到服务器。 在单个事务中转储多个表会在还原过程中占用一些额外的存储空间。 选项 `single-transaction` 和 `lock-tables` 互斥，因为 LOCK TABLES 导致所有挂起的事务均为隐式提交。 若要转储大型表，请结合使用选项 `single-transaction` 和 `quick`。 

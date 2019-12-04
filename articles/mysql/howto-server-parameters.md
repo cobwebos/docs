@@ -1,17 +1,17 @@
 ---
-title: 如何在 Azure Database for MySQL 中配置服务器参数
+title: 配置服务器参数-Azure 门户-Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置 MySQL 服务器参数。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: d589800f62f96510a09d23cb6e8794177121c6dd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.date: 12/02/2019
+ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419717"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764910"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -37,9 +37,9 @@ ms.locfileid: "74419717"
 
 InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-tiers.md)。
 
-|定价层|**vCore(s)**|**InnoDB 缓冲池大小（MB <br>）（支持多达 4 TB 存储的服务器）**| **InnoDB 缓冲池大小（MB <br>）（支持高达 16 TB 存储的服务器）**|
+|**定价层**|**vCore(s)**|**InnoDB 缓冲池大小（MB <br>）（支持多达 4 TB 存储的服务器）**| **InnoDB 缓冲池大小（MB <br>）（支持高达 16 TB 存储的服务器）**|
 |:---|---:|---:|---:|
-|基本| 1| 832| |
+|基本| 第| 832| |
 |基本| 2| 2560| |
 |常规用途| 2| 3584| 7168|
 |常规用途| 4| 7680| 15360|
@@ -57,9 +57,9 @@ InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-ti
 
 |**Parameter**|**固定值**|
 | :------------------------ | :-------- |
-|基本层中的 innodb_file_per_table|熄灭|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
+|基本层中的 innodb_file_per_table|OFF|
+|innodb_flush_log_at_trx_commit|第|
+|sync_binlog|第|
 |innodb_log_file_size|512MB|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。

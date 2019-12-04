@@ -1,21 +1,19 @@
 ---
-title: 为 EDIFACT 消息解码 - Azure 逻辑应用 | Microsoft 文档
+title: 为 EDIFACT 消息解码
 description: 使用 EDIFACT 消息解码器为带有 Enterprise Integration Pack 的 Azure 逻辑应用验证 EDI 并生成确认
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696195"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790667"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
@@ -23,20 +21,20 @@ ms.locfileid: "64696195"
 
 ## <a name="before-you-start"></a>开始之前
 
-需要具有以下各项：
+下面是需要准备好的项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
-* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已定义的与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
+* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
 
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
+2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
 
-3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。 
+3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
    
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -46,12 +44,12 @@ ms.locfileid: "64696195"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-4. 在完成连接创建时，选择“创建”  。 连接详细信息应如此示例所示：
+4. 在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
 
     ![集成帐户详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -81,13 +79,13 @@ ms.locfileid: "64696195"
   * 针对交换中的其他组控制编号检查组控制编号。 
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为事务集-出错时挂起事务集：将交换拆分为事务集并分析每个事务集。 
+  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为事务集-出错时挂起交换：将交换拆分为事务集并分析每个事务集。 
+  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
-  * 保留交换-出错时挂起事务集：保留交换并处理整个批量的交换。 
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换-出错时挂起交换：保留交换并处理整个批量的交换。 
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
   * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。

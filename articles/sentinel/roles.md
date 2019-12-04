@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762696"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -30,9 +30,9 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 
 有三个特定的内置 Azure Sentinel 角色。  
 **所有 Azure Sentinel 内置角色都授予对 Azure Sentinel 工作区中数据的读取访问权限。**
-- **Azure Sentinel 读取器**：有关详细信息，请参阅[内置角色](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
-- **Azure Sentinel 响应**程序：有关详细信息，请参阅[内置角色](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- **Azure Sentinel 参与者**：有关详细信息，请参阅[内置角色](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
+- [Azure Sentinel 读取器](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel 响应程序](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel 参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 除了 Azure Sentinel 专用 RBAC 角色外，还可以使用 Azure 和 Log Analytics RBAC 角色，这些角色可授予一组更广泛的权限，包括对 Azure Sentinel 工作区和其他资源的访问权限：
 

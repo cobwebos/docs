@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548317"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793363"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -48,14 +48,12 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>用于 SDK、Powershell 和 CLI 的 Data Lake Storage 客户端库的 API 范围
-
-### <a name="filesystem-support-in-sdks"></a>Sdk 中的文件系统支持
+## <a name="filesystem-support-in-sdks"></a>Sdk 中的文件系统支持
 
 - .NET、Java 和 Python 均为公共预览版。 当前不支持其他 Sdk。
 - Get 和 Set Acl 操作当前不是递归的。
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell 和 Azure CLI 中的文件系统支持
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell 和 Azure CLI 中的文件系统支持
 
 Get 和 Set Acl 操作当前不是递归的。
 
@@ -77,7 +75,6 @@ Get 和 Set Acl 操作当前不是递归的。
 | **诊断日志记录** |支持诊断日志（预览）。<br><br>当前不支持在 Azure 门户中启用日志。 下面是如何使用 PowerShell 启用日志的示例。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请确保指定 `Blob` 作为 `-ServiceType` 参数的值，如本示例中所示。 <br><br>目前，Azure 存储资源管理器不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 Sdk。
 | **不可变存储** |尚不支持 <br><br>不可变的存储提供了将数据存储在[蠕虫（写入一次，读取多个）](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态的能力。|
 | **对象级层** |支持冷层和存档层。 存档层处于预览阶段。 目前尚不支持所有其他访问层。 <br><br> 当前有一些影响存档访问层的 bug。  在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)注册存档访问层的预览。|
-| **Powershell 和 CLI 支持** | 功能受限 <br><br>支持 Blob 操作。 尚不支持使用目录和设置访问控制列表（Acl）。 |
 | **静态网站** |尚不支持 <br><br>具体而言，是将文件提供给[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)的功能。|
 | **第三方应用程序** | 有限支持 <br><br>如果将使用 REST Api 的第三方应用程序与 Data Lake Storage Gen2 一起使用，则该应用程序将继续正常工作。 <br>调用 Blob Api 的应用程序可能会起作用。|
 |**软删除** |尚不支持|

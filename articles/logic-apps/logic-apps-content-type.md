@@ -1,20 +1,17 @@
 ---
-title: 处理内容类型 - Azure 逻辑应用
+title: 处理内容类型
 description: 了解逻辑应用在设计时和运行时如何处理内容类型
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 75d9285c4a838c2057c0f23841c3a2f465789c7c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868909"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791535"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型
 
@@ -60,9 +57,9 @@ ms.locfileid: "67868909"
   
   如果没有架构，可以生成架构。 
   
-  1. 在请求触发器中，选择“使用示例有效负载生成架构”。   
+  1. 在请求触发器中，选择“使用示例有效负载生成架构”。  
   
-  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。   例如： 
+  2. 在“输入或粘贴示例 JSON 有效负载”下，提供示例有效负载并选择“完成”。 例如： 
 
      ![提供示例 JSON 有效负载](./media/logic-apps-content-type/request-trigger.png)
 
@@ -139,13 +136,13 @@ ms.locfileid: "67868909"
 
 此列表描述了使用这些[函数](../logic-apps/workflow-definition-language-functions-reference.md)时逻辑应用如何转换内容：
 
-* `json()`：将数据强制转换为`application/json`
-* `xml()`：将数据强制转换为`application/xml`
-* `binary()`：将数据强制转换为`application/octet-stream`
-* `string()`：将数据强制转换为`text/plain`
+* `json()`：将数据强制转换为 `application/json`
+* `xml()`：将数据强制转换为 `application/xml`
+* `binary()`：将数据强制转换为 `application/octet-stream`
+* `string()`：将数据强制转换为 `text/plain`
 * `base64()`：将内容转换为 base64 编码的字符串
-* `base64toString()`：将 base64 编码的字符串转换为`text/plain`
-* `base64toBinary()`：将 base64 编码的字符串转换为`application/octet-stream`
+* `base64toString()`：将 base64 编码的字符串转换为 `text/plain`
+* `base64toBinary()`：将 base64 编码的字符串转换为 `application/octet-stream`
 * `dataUri()`：将字符串转换为数据 URI
 * `dataUriToBinary()`：将数据 URI 转换为二进制字符串
 * `dataUriToString()`：将数据 URI 转换为字符串

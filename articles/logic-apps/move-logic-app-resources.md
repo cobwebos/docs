@@ -1,20 +1,17 @@
 ---
-title: 跨订阅、资源组或区域移动逻辑应用-Azure 逻辑应用
+title: 跨订阅、资源组或区域移动逻辑应用
 description: 将逻辑应用或集成帐户迁移到其他 Azure 订阅、资源组或位置（区域）
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: de646c790fc21ef17bf78789e0531503f2f32052
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679113"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790789"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源移到其他 Azure 订阅、资源组或区域
 

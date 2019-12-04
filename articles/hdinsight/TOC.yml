@@ -49,6 +49,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: 群集容量规划
           href: ./hdinsight-capacity-planning.md
+        - name: 群集管理最佳做法
+          href: ./cluster-management-best-practices.md
         - name: 可用性和可靠性
           href: ./hdinsight-high-availability-linux.md
         - name: 比较存储选项

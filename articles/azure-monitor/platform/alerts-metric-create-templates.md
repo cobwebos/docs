@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099759"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775732"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建度量警报
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > 虽然可以在与目标资源不同的资源组中创建指标警报，但建议使用与目标资源相同的资源组。
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>用于更高级静态阈值指标警报的模板
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>用于监视多个条件的静态阈值指标警报模板
 
-较新的指标警报支持根据多维指标发出警报，且支持多个标准。 可以使用以下模板创建根据维度指标发出的更高级指标警报，并指定多个标准。
+较新的指标警报支持根据多维指标发出警报，且支持多个标准。 您可以使用以下模板根据维度指标创建更高级的指标警报规则，并指定多个条件。
+
+请注意，当警报规则包含多个条件时，维度的使用限制为每个条件内的每个维度的一个值。
 
 为进行本次演练，请将下面的 json 保存为 advancedstaticmetricalert.json。
 
@@ -757,7 +759,7 @@ az group deployment create \
 ```
 
 
-可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报
+可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报。
 
 使用 Azure PowerShell
 ```powershell
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 虽然可以在与目标资源不同的资源组中创建指标警报，但建议使用与目标资源相同的资源组。
+> 如果警报规则包含多个条件，则每个条件中维度的使用限制为每个维度一个值。
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>用于更高级动态阈值指标警报的模板
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>用于监视多个维度的静态指标警报模板
 
-可以使用以下模板创建基于维度指标的更高级动态阈值指标警报。 目前不支持多个标准。
+您可以使用以下模板根据维度指标创建静态指标警报规则。
 
-动态阈值警报规则可以一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
+单个警报规则可以一次监视多个指标时间序列，从而减少要管理的警报规则。
+
+在下面的示例中，警报规则将监视 "**事务**" 指标的 " **ResponseType** " 和 " **ApiName** " 维度的维度值组合：
+1. **ResponsType** -使用 "\*" 通配符意味着对于**ResponseType**维度的每个值（包括未来值），将单独监视不同时序。
+2. **ApiName** -将仅监视**GetBlob**和**PutBlob**维度值的不同时序。
+
+例如，此警报规则将监视几个可能的时间序列：
+- 公制 = 个*事务*，ResponseType = *Success*，ApiName = *GetBlob*
+- 公制 = 个*事务*，ResponseType = *Success*，ApiName = *PutBlob*
+- 公制 = 个*事务*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- 公制 = 个*事务*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
+
+出于本演练的目的，将下面的 json 保存为 multidimensionalstaticmetricalert。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+可以将上述模板与下面提供的参数文件配合使用。 
+
+出于本演练的目的，将下面的 json 保存并修改为 multidimensionalstaticmetricalert。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报。
+
+使用 Azure PowerShell
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+使用 Azure CLI
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>用于监视多个维度的动态阈值指标警报模板
+
+您可以使用以下模板根据维度指标创建更高级的动态阈值指标警报规则。
+
+单个动态阈值警报规则可以为数百个指标时序（甚至不同类型）创建定制阈值，从而减少要管理的警报规则。
+
+在下面的示例中，警报规则将监视 "**事务**" 指标的 " **ResponseType** " 和 " **ApiName** " 维度的维度值组合：
+1. **ResponsType** -对于**ResponseType**维度的每个值（包括未来值），将单独监视不同的时间序列。
+2. **ApiName** -将仅监视**GetBlob**和**PutBlob**维度值的不同时序。
+
+例如，此警报规则将监视几个可能的时间序列：
+- 公制 = 个*事务*，ResponseType = *Success*，ApiName = *GetBlob*
+- 公制 = 个*事务*，ResponseType = *Success*，ApiName = *PutBlob*
+- 公制 = 个*事务*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- 公制 = 个*事务*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
 
 为进行本次演练，请将下面的 json 保存为 advanceddynamicmetricalert.json。
 
@@ -936,7 +1168,7 @@ az group deployment create \
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ az group deployment create \
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ az group deployment create \
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -970,7 +1202,7 @@ az group deployment create \
 ```
 
 
-可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报
+可以根据当前工作目录，通过 PowerShell 或 Azure CLI 使用模板和参数文件创建指标警报。
 
 使用 Azure PowerShell
 ```powershell
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 虽然可以在与目标资源不同的资源组中创建指标警报，但建议使用与目标资源相同的资源组。
+> 使用动态阈值的指标警报规则目前不支持多个条件。
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报模板
 
-上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机和 Databox Edge 设备。
+上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL 数据库、SQL 弹性池和 Databox Edge 设备。
 
 动态阈值警报规则还可以帮助一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
@@ -1836,6 +2068,7 @@ az group deployment create \
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

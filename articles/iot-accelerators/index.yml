@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure IoT 解决方案加速器文档
+summary: Azure IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，用于实现远程监视等常见 IoT 方案。
+metadata:
+  title: Azure IoT 解决方案加速器文档
+  description: IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 这些方案包括远程监视、连接工厂、预测性维护和设备模拟。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781620"
+landingContent:
+- title: 关于 IoT 解决方案加速器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT 解决方案加速器是什么？
+      url: about-iot-accelerators.md
+    - text: AzureIoTSolutions.com 网站
+      url: iot-accelerators-permissions.md
+- title: 远程监视入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 远程监视解决方案加速器概述
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: 尝试基于云的远程监视解决方案
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 监视设备
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: 检测设备问题
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: 工业 IoT 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 工业 IoT 概述
+      url: overview-iot-industrial.md
+    - text: OPC 孪生概述
+      url: overview-opc-twin.md
+    - text: OPC 保管库概述
+      url: overview-opc-vault.md
+    - text: OPC 发布服务器概述
+      url: overview-opc-publisher.md
+    - text: 什么是工业 IoT？
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: 尝试基于云的联网工厂解决方案
+      url: quickstart-connected-factory-deploy.md
+- title: 设备模拟入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 设备模拟解决方案加速器概述
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 尝试设备模拟解决方案
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 创建并运行 IoT 设备模拟
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: 创建自定义模拟设备
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: 预见性维护入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 预测性维护解决方案加速器概述
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: 尝试预测性维护解决方案
+      url: quickstart-predictive-maintenance-deploy.md

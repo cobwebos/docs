@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure CLI 配置和访问 PostgreSQL - 单一服务器的服务器日志
-description: 本文介绍了如何使用 Azure CLI 命令行配置和访问 Azure Database for PostgreSQL - 单一服务器中的服务器日志。
+title: 管理日志-Azure CLI-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍如何使用 Azure CLI 在 Azure Database for PostgreSQL 单服务器中配置和访问服务器日志（.log 文件）。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023620"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763566"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用命令行接口 (Azure CLI) 下载 PostgreSQL 服务器错误日志。 但是，访问事务日志不受支持。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 命令行实用工具或浏览器中的 Azure Cloud Shell

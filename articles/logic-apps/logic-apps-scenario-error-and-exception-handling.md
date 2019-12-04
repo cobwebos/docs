@@ -1,21 +1,18 @@
 ---
-title: 异常处理 & 错误日志记录方案-Azure 逻辑应用
+title: 异常处理 & 错误日志记录方案
 description: Azure 逻辑应用中高级异常处理和错误日志记录的实际用例和方案
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: estfan
-ms.reviewer: LADocs
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680155"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792980"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 

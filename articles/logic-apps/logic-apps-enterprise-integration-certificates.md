@@ -1,22 +1,19 @@
 ---
-title: 使用证书保护 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
+title: 使用证书保护 B2B 消息
 description: 使用 Enterprise Integration Pack 在 Azure 逻辑应用中添加证书来保护 B2B 消息
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-manager: jeconnoc
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997838"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790688"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>使用证书保护 B2B 消息
 
@@ -47,10 +44,10 @@ ms.locfileid: "69997838"
 
 3. 在“证书”下，选择“添加”。 在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   | 属性 | 值 | 说明 | 
+   | properties | Value | 描述 | 
    |----------|-------|-------------|
-   | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
-   | **证书类型** | 公开 | 你的证书的类型 |
+   | 名称 | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
+   | **证书类型** | 公共 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
    ||||
 
@@ -86,11 +83,11 @@ ms.locfileid: "69997838"
 
 5. 在“证书”下，选择“添加”。 在“添加证书”下，提供证书的这些详细信息。 完成后，选择“确定”。
 
-   | 属性 | 值 | 说明 | 
+   | properties | Value | 描述 | 
    |----------|-------|-------------|
-   | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
-   | **证书类型** | 专用 | 你的证书的类型 |
-   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 为私钥使用 key vault 时, 上传的文件将是公共证书。 | 
+   | 名称 | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
+   | **证书类型** | Private | 你的证书的类型 |
+   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 为私钥使用 key vault 时，上传的文件将是公共证书。 | 
    | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
    | **Key Vault** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
    | **密钥名称** | <*key-name*> | 你的密钥的名称 |

@@ -1,20 +1,17 @@
 ---
-title: 创建、编辑或扩展逻辑应用定义-Azure 逻辑应用
+title: 创建、编辑或扩展逻辑应用定义
 description: 如何在 Azure 逻辑应用中编写、编辑和扩展逻辑应用 JSON 定义
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680022"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792588"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用定义创建、编辑或扩展 JSON
 
@@ -61,7 +58,7 @@ ms.locfileid: "72680022"
 
 ## <a name="parameters"></a>parameters
 
-部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值，或根据你的部署需求而异的值，则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，以便还可以自动执行逻辑应用部署. 
+部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值，或根据你的部署需求而异的值，则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，以便你还可以自动执行逻辑应用部署。 
 
 请按照以下常规步骤*将这些值参数化*或定义并使用参数。 然后，你可以在将这些值传递给模板的单独参数文件中提供值。 这样，你就可以更轻松地更改这些值，而无需更新和重新部署逻辑应用。 有关完整详细信息，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 

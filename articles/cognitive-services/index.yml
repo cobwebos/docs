@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554941"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775517"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -111,34 +111,37 @@ conceptualContent:
   - title: 搜索
     summary: 将必应搜索 API 添加到应用，并利用该功能通过单个 API 调用实现数十亿网页、图像、视频和新闻的梳理。
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: 必应搜索 API 中心页
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: 自动建议搜索词
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: 自定义搜索
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: 实体搜索
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: 图像搜索
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: 当地企业搜索（预览版）
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: 新闻搜索
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: 拼写检查
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: 视频搜索
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: 视觉搜索
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Web 搜索
   - title: 认知服务容器
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: 使用 Docker Compose 部署多个容器
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: 认知服务容器映像标记
     - url: ./containers/container-faq.md
       itemType: reference
       text: 认知服务容器常见问题解答
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: 其他资源
       links:
-      - text: 支持和帮助选项
-        url: cognitive-services-support-options.md
       - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST API
       links:
       - text: 认知服务管理

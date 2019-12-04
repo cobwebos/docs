@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a1280fb4a91d7ba45f2d0cfe92e604cd66ff0b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672583"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793280"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -34,12 +34,12 @@ ms.locfileid: "74672583"
 
 **纠正操作**：访问 Azure 门户并执行以下步骤：
 
-1. 中转到你的 FarmBeats 数据中心资源组。   
-2. 选择**事件中心**（DatafeedEventHubNamespace） 并检查传入消息数。   
+1. 中转到你的 FarmBeats 数据中心资源组。   
+2. 选择**事件中心**（DatafeedEventHubNamespace），并检查传入消息数。   
 3. 如果没有**传入消息**，请联系你的设备伙伴。  
 4. 如果有**传入消息**，请联系 farmbeatssupport@microsoft.com 数据中心和加速器日志以及捕获的遥测数据。
 
-请参阅文档中的 "[日志" 部分](#collect-logs-manually)，了解如何下载日志。  
+请参阅文档中的 "[日志" 部分](#collect-logs-manually)，了解如何下载日志。  
 
 ### <a name="dont-have-the-eventhub-connection-string"></a>没有 Eventhub 连接字符串
 
@@ -55,7 +55,7 @@ ms.locfileid: "74672583"
 
 **症状**：设备已安装，并且你已将 FarmBeats 链接到设备伙伴。 设备处于联机状态并发送遥测数据，但它们显示为脱机状态。
 
-**纠正操作**：没有为此设备配置报告间隔。 请与设备制造商联系以设置报告间隔。 
+**纠正操作**：没有为此设备配置报告间隔。 请与设备制造商联系以设置报告间隔。 
 
 ### <a name="error-deleting-a-resource"></a>删除资源时出错
 
@@ -135,44 +135,44 @@ ms.locfileid: "74672583"
 
 **纠正操作**：重新运行失败的作业或运行5-7 天日期范围的卫星索引作业，并检查作业是否成功。
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Sentinel 中心错误 URL 或无法访问 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Sentinel 中心错误 URL 或无法访问 
 
-**作业失败消息**：抱歉，出现了问题。 您尝试访问的页面暂时不可用。 
+**作业失败消息**：抱歉，出现了问题。 您尝试访问的页面暂时不可用。 
 
 **纠正操作**：
-1.  在浏览器中打开 Sentinel URL （ https://scihub.copernicus.eu/dhus/) ，并检查是否可以访问网站。 
-2.  如果无法访问网站，请检查是否有任何防火墙/公司网络等。正在阻止网站并执行必要的步骤以允许上述 URL。 
+1.  在浏览器中打开 Sentinel URL （ https://scihub.copernicus.eu/dhus/) ，并检查是否可以访问网站。 
+2.  如果无法访问网站，请检查是否有任何防火墙/公司网络等。正在阻止网站并执行必要的步骤以允许上述 URL。 
 3.  请重新运行失败的作业，或在5-7 天的日期范围内运行附属索引作业，并检查作业是否成功。  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>用于维护的 Sentinel 服务器关闭
 
-**作业失败消息**： Copernicus 开放式访问中心即将恢复！ 抱歉，我们目前正在进行维护。 稍后我们将重新联机！ 
+**作业失败消息**： Copernicus 开放式访问中心即将恢复！ 抱歉，我们目前正在进行维护。 稍后我们将重新联机！ 
 
 **纠正操作**：
 
-1.  如果在 Sentinel 服务器上执行了任何维护活动，则会出现此问题。 
-2.  如果任何作业/管道因上述原因而失败，请在一段时间后重新提交作业。 
-3.  用户可以访问 https://scihub.copernicus.eu/news/ 来检查有关任何计划内/计划内 Sentinel 维护活动的信息。  
+1.  如果在 Sentinel 服务器上执行了任何维护活动，则会出现此问题。 
+2.  如果任何作业/管道因上述原因而失败，请在一段时间后重新提交作业。 
+3.  用户可以访问 https://scihub.copernicus.eu/news/ 来检查有关任何计划内/计划内 Sentinel 维护活动的信息。  
 4.  请重新运行失败的作业，或在5-7 天的日期范围内运行附属索引作业，并检查作业是否成功。
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel 达到的最大连接数
 
-**作业失败消息**：用户 "<username>" 实现的两个并发流的最大数目 
+**作业失败消息**：用户 "<username>" 实现的两个并发流的最大数目 
 
 **纠正操作**
-1.  如果任何作业因上述原因而失败，则在另一个部署/软件中使用相同的 sentinel 帐户。 
+1.  如果任何作业因上述原因而失败，则在另一个部署/软件中使用相同的 sentinel 帐户。 
 2.  用户可以创建新的 sentinel 帐户，并重新运行安装程序，以便通过新的 sentinel 用户名和密码升级数据中心。  
 3.  请重新运行失败的作业或运行5-7 天日期范围的卫星索引作业，并检查作业是否成功。
 
-### <a name="sentinel-server-refused-connection"></a>Sentinel 服务器拒绝连接 
+### <a name="sentinel-server-refused-connection"></a>Sentinel 服务器拒绝连接 
 
 **作业失败消息**：
 
-服务器拒绝连接： http://172.30.175.69:8983/solr/dhus 
+服务器拒绝连接： http://172.30.175.69:8983/solr/dhus 
 
-**纠正操作**：如果在 Sentinel 服务器上执行任何维护活动，则会出现此问题。 
-1.  如果任何作业/管道因上述原因而失败，请在一段时间后重新提交作业。 
-2.  用户可以访问 https://scihub.copernicus.eu/news/ 来检查有关任何计划内/计划内 Sentinel 维护活动的信息。  
+**纠正操作**：如果在 Sentinel 服务器上执行任何维护活动，则会出现此问题。 
+1.  如果任何作业/管道因上述原因而失败，请在一段时间后重新提交作业。 
+2.  用户可以访问 https://scihub.copernicus.eu/news/ 来检查有关任何计划内/计划内 Sentinel 维护活动的信息。  
 3.  请重新运行失败的作业或运行5-7 天日期范围的卫星索引作业，并检查作业是否成功。
 
 
@@ -281,11 +281,11 @@ ms.locfileid: "74672583"
 
 ## <a name="high-cpu-usage"></a>CPU 使用率较高
 
-**错误**：收到有关 CPU 使用率高的电子邮件警报。 
+**错误**：收到有关 CPU 使用率高的电子邮件警报。 
 
-**纠正操作**： 
+**纠正操作**： 
 1.  中转到你的 FarmBeats 数据中心资源组。
-2.  选择应用服务。  
+2.  选择应用服务。  
 3.  请参阅 "扩展（应用服务计划）"，并选择适当的[定价层](https://azure.microsoft.com/pricing/details/app-service/windows/)
 
 ## <a name="next-steps"></a>后续步骤

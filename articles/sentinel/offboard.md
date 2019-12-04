@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464136"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777428"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>从租户中删除 Azure Sentinel
+# <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
 
-如果不再想要使用 Azure Sentinel，本文介绍了如何将其从租户中删除。
+如果不再想要使用 Azure Sentinel，本文介绍了如何将其从工作区中删除。
 
 ## <a name="how-to-delete-azure-sentinel"></a>如何删除 Azure Sentinel
 
@@ -49,7 +49,7 @@ ms.locfileid: "74464136"
 确定断开连接后，将开始脱离进程。
 
 **这些连接器的配置已删除：**
--   Office 365
+-   PowerApps
 
 -   AWS
 
@@ -67,7 +67,7 @@ ms.locfileid: "74464136"
 
 -   事件（包括调查元数据）
 
--   警报规则
+-   预警规则
 
 -   书签
 

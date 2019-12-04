@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7097faa64319a46b1efc91233e30ea992d064246
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687643"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786837"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -54,7 +54,7 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 |    |     |
 |--------|-----------|
 | **语法** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **示例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+| **示例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 此命令通过将测试数据上传到指定目标来运行性能基准测试。 在测试完成后，将在内存中生成测试数据，将其上传到目标，然后从目标中删除这些数据。 可以通过使用可选的命令参数来指定要生成的文件数以及要使用的文件大小。
 

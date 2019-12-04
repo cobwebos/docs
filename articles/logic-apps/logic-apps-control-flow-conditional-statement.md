@@ -1,24 +1,21 @@
 ---
-title: 将条件语句添加到工作流 - Azure 逻辑应用 | Microsoft Docs
+title: 向工作流添加条件语句
 description: 如何在 Azure 逻辑应用中创建控制工作流操作的条件
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684736"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793252"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建控制工作流操作的条件语句
 
-若要仅在通过指定条件后在逻辑应用程序中运行指定操作，请添加条件语句  。 此控制结构将工作流中的数据与特定值或字段进行比较。 然后，可以指定基于数据是否符合条件运行的不同操作。 可以将一个条件嵌套在另一个条件中。
+若要仅在通过指定条件后在逻辑应用程序中运行指定操作，请添加条件语句。 此控制结构将工作流中的数据与特定值或字段进行比较。 然后，可以指定基于数据是否符合条件运行的不同操作。 可以将一个条件嵌套在另一个条件中。
 
 例如，假设你有一个逻辑应用，当网站的 RSS 源中出现新项时，该应用发送的电子邮件过多。 你可以添加一个条件语句，以便仅在新项包含特定字符串时才发送电子邮件。 
 
@@ -39,17 +36,17 @@ ms.locfileid: "60684736"
 
 1. 在所需的位置添加条件。 
 
-   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的**加号** ( **+** )，然后选择“添加操作”  。 例如：
+   若要在步骤之间添加条件，请将指针移到要添加条件的箭头上。 选择出现的**加号** ( **+** )，然后选择“添加操作”。 例如：
 
    ![在步骤之间添加操作](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   如果想要在工作流末尾添加条件，请在逻辑应用的底部选择“新建步骤”  >“添加操作”  。
+   如果想要在工作流末尾添加条件，请在逻辑应用的底部选择“新建步骤”>“添加操作”。
 
 1. 在搜索框中，输入“条件”作为筛选器。 选择此操作：**条件 - 控制**
 
    ![添加条件](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
-1. 在“条件”  框中，构建条件。 
+1. 在“条件”框中，构建条件。 
 
    1. 在左侧框中，指定要比较的数据或字段。
 
@@ -59,7 +56,7 @@ ms.locfileid: "60684736"
       ![构建条件](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    1. 在中间的框中，选择要执行的操作。 
-   对于此示例，请选择“包含”  。 
+   对于此示例，请选择“包含”。 
 
    1. 在右侧框中，指定作为条件的值或字段。 
    对于此示例，请指定此字符串：**Microsoft**
@@ -68,16 +65,16 @@ ms.locfileid: "60684736"
 
    ![完整条件](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   若要在条件中添加其他行，请选择“添加”   > “添加行”  。 
-   若要添加包含子条件的组，请选择“添加”   > “添加组”  。 
-   若要对现有行进行分组，请选中这些行的复选框，选择任意行的省略号 (...) 按钮，然后选择“生成组”  。
+   若要在条件中添加其他行，请选择“添加” > “添加行”。 
+   若要添加包含子条件的组，请选择“添加” > “添加组”。 
+   若要对现有行进行分组，请选中这些行的复选框，选择任意行的省略号 (...) 按钮，然后选择“生成组”。
 
-1. 在“如果为 true”和“如果为 false”下，根据是否符合条件添加要执行的步骤   。 例如：
+1. 在“如果为 true”和“如果为 false”下，根据是否符合条件添加要执行的步骤。 例如：
 
    ![具有“如果为 true”和“如果为 false”路径的条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > 可将现有操作拖动到“如果为 true”和“如果为 false”路径   。
+   > 可将现有操作拖动到“如果为 true”和“如果为 false”路径。
 
 1. 保存逻辑应用。
 

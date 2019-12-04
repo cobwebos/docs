@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure CLI 自动增长 Azure Database for MySQL 存储
+title: 自动增长存储-Azure CLI-Azure Database for MySQL
 description: 本文介绍如何使用 Azure Database for MySQL 中的 Azure CLI 来启用自动增长存储。
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 8/7/2019
-ms.openlocfilehash: c9faaa5d011a32dfbaa5a841d3bce824f7ba5c9d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: fb39c3afa2977038df7c9a233ba6720771f545dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390560"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770622"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for MySQL 存储
-本文介绍如何将 Azure Database for MySQL 服务器存储配置为在不影响工作负荷的情况下增长。
+本文介绍如何在不影响工作负荷的情况下，将 Azure Database for MySQL 服务器存储配置为扩展。
 
-服务器[达到存储限制](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit)时，将设置为只读。 如果启用了 "存储自动增长"，则对于预配的存储空间小于 100 GB 的服务器，预配的存储大小将在可用存储空间超过 1 GB 或 10% 的预配存储时立即增加 5 GB。 对于预配的存储大小大于 100 GB 的服务器，可用存储空间小于预配的存储大小的 5% 时，预配的存储大小就会增加 5%。 [此处](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)所指定的最大存储限制适用。
+服务器[达到存储限制](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit)时，将设置为只读。 如果启用了 "存储自动增长"，则对于预配的存储空间小于 100 GB 的服务器，预配的存储大小将在可用存储空间超过 1 GB 或10% 的预配存储时立即增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用存储空间低于预配的存储大小的5% 时，预配的存储大小将增加5%。 [此处](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)指定的最大存储限制为 "应用"。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本操作指南，需要：
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -43,4 +43,4 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --a
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-on-metric.md)。
+了解[如何创建有关指标的警报](howto-alert-on-metric.md)。

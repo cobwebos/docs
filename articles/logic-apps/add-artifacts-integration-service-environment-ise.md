@@ -1,20 +1,17 @@
 ---
-title: 向 integration service 环境添加项目-Azure 逻辑应用
+title: 向 integration service 环境添加项目
 description: 将逻辑应用、集成帐户和自定义连接器添加到 integration service 环境（ISE）以访问 Azure 虚拟网络（Vnet）
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680512"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793306"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将项目添加到 integration service 环境（ISE）
 
@@ -63,13 +60,13 @@ ms.locfileid: "72680512"
 
 若要创建使用 ISE 的集成帐户，请遵循以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**"  >  "**添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**" > "**添加**"。
 
    ![向 ISE 中添加新的集成帐户](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
    -或-
 
-   在 Azure 主菜单中，选择 "**创建资源**"  > **Integration**  > **集成帐户**"。
+   在 Azure 主菜单中，选择 "**创建资源**" > **Integration** > **集成帐户**"。
 
 1. 提供要用于集成帐户的名称、Azure 订阅、Azure 资源组（新的或现有的）和定价层。
 
@@ -105,7 +102,7 @@ ms.locfileid: "72680512"
 
 若要在 ISE 中使用自定义连接器，请直接在 ISE 中创建这些自定义连接器。
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器**"  > **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器**" > **添加**"。
 
    ![创建自定义连接器](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

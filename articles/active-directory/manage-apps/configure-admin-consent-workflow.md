@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180415"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786429"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>配置管理员许可工作流（预览）
 
@@ -33,10 +33,10 @@ ms.locfileid: "73180415"
 
 若要启用管理员许可工作流并选择审阅者：
 
-1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com) 。
-2. 单击左侧导航菜单顶部的 " **所有服务**" 。  **Azure Active Directory 扩展** 打开。
-3. 在筛选器搜索框中键入 "**Azure Active Directory**"，并选择**Azure Active Directory** 项。
-4. 在导航菜单中，单击 " **企业应用程序**"。 
+1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧导航菜单的顶部单击“所有服务”。 此时会打开“Azure Active Directory 扩展”。
+3. 在筛选器搜索框中键入 "**Azure Active Directory**"，并选择**Azure Active Directory**项。
+4. 在导航菜单中，单击“企业应用程序”。 
 5. 在 "**管理**" 下选择 "**用户设置**"。
 6. 在 "**管理员同意请求（预览版）** " 下，设置 "**用户可以向他们**授予许可的管理员许可 **"** 。
 
@@ -74,10 +74,10 @@ ms.locfileid: "73180415"
 
 若要查看管理员同意请求并采取措施：
 
-1. 登录到 [Azure 门户](https://portal.azure.com) 为管理员许可工作流的一个已注册的审阅者。
-2. 选择左侧导航菜单顶部 "**所有服务**"。  **Azure Active Directory 扩展** 打开。
-3. 在筛选器搜索框中键入 "**Azure Active Directory**"，并选择 **Azure Active Directory** 项。
-4. 在导航菜单中，单击 " **企业应用程序**"。
+1. 以管理员许可工作流的一个已注册审阅者身份登录到[Azure 门户](https://portal.azure.com)。
+2. 选择左侧导航菜单顶部的 "**所有服务**"。 此时会打开“Azure Active Directory 扩展”。
+3. 在筛选器搜索框中键入 "**Azure Active Directory**"，并选择**Azure Active Directory**项。
+4. 在导航菜单中，单击“企业应用程序”。
 5. 在 "**活动**" 下，选择 "**管理员同意请求（预览）** "。
 
    > [!NOTE]
@@ -118,16 +118,16 @@ ms.locfileid: "73180415"
 > 当前所有方案中都缺少 audit 参与者的用户上下文。 这是预览版本中的一个已知限制。
 
 
-|方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
+|场景  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|
-|启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
-|管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |
-|管理员更新许可工作流配置        |访问评审           |UserManagement           |更新调控策略模板          |应用上下文            |当前找不到用户上下文           |
-|最终用户创建对应用程序的管理员同意请求       |访问评审           |策略         |创建请求           |应用上下文            |当前找不到用户上下文           |
-|审批管理员同意请求的审阅者       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            |目前找不到已授予管理员许可的用户上下文或应用 ID。           |
-|审阅者拒绝管理员同意请求       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            | 当前找不到拒绝管理员同意请求的执行组件的用户上下文          |
+|启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
+|管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |
+|管理员更新许可工作流配置        |访问评审           |UserManagement           |更新调控策略模板          |应用上下文            |当前找不到用户上下文           |
+|最终用户创建对应用程序的管理员同意请求       |访问评审           |策略         |创建请求           |应用上下文            |当前找不到用户上下文           |
+|审批管理员同意请求的审阅者       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            |目前找不到已授予管理员许可的用户上下文或应用 ID。           |
+|审阅者拒绝管理员同意请求       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            | 当前找不到拒绝管理员同意请求的执行组件的用户上下文          |
 
-## <a name="faq"></a>常见问题 
+## <a name="faq"></a>常见问题解答 
 
 **我打开了此工作流，但在测试功能时，为什么看不到允许我请求访问的新 "需要审批" 提示？**
 
@@ -155,6 +155,6 @@ ms.locfileid: "73180415"
 
 [同意并将应用集成到 AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
-[AzureAD v2.0 聚合应用的许可和权限](../develop/active-directory-v2-scopes.md)
+[同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

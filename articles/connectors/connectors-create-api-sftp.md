@@ -1,21 +1,19 @@
 ---
-title: 连接到 SFTP 帐户-Azure 逻辑应用
+title: 连接到 SFTP 帐户
 description: 使用 Azure 逻辑应用通过 SSH 自动完成用于监视、创建、管理、发送和接收 SFTP 服务器文件的任务与流程
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: divswa, klam, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837107"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789267"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -31,11 +29,11 @@ ms.locfileid: "73837107"
 
 可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>限制
+## <a name="limits"></a>Limits
 
-SFTP 连接器仅处理 *50 MB 或更小*的文件，不支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 对于较大的文件，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)。 有关 SFTP 连接器和 SFTP-SSH 连接器之间的差异，请查看 SFTP-SSH 文章中的[比较 SFTP-SSH 与 SFTP](../connectors/connectors-sftp-ssh.md#comparison)。
+SFTP 连接器仅处理*50 MB 或更小*的文件，不支持[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 对于较大的文件，请使用[SFTP SSH 连接器](../connectors/connectors-sftp-ssh.md)。 有关 SFTP 连接器与 SFTP SSH 连接器之间的差异，请参阅 SFTP SSH 一文中的 "[比较 sftp-ssh 与 sftp](../connectors/connectors-sftp-ssh.md#comparison) "。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -53,14 +51,14 @@ SFTP 连接器仅处理 *50 MB 或更小*的文件，不支持[消息分块](../
 
 * 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
 
-## <a name="how-sftp-triggers-work"></a>SFTP 触发器的工作原理
+## <a name="how-sftp-triggers-work"></a>SFTP 触发器如何工作
 
-SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询后已更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
+SFTP 触发器的工作方式是轮询 SFTP 文件系统，并查找自上次轮询以来发生更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
 
-| SFTP 客户端 | 操作 |
+| SFTP 客户端 | 行动 |
 |-------------|--------|
-| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >  >  >  >  |
-| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >  >  |
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -90,7 +88,7 @@ SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询
 
    1. 在文本编辑器中打开 SSH 私钥文件。 这些步骤以记事本为例。
 
-   1. 在记事本的“编辑”菜单中，选择“全选”。
+   1. 在记事本的 "**编辑**" 菜单上，选择 "全**选**"。
 
    1. 选择“编辑” > “复制”。
 
@@ -98,7 +96,7 @@ SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询
 
 1. 输入完连接详细信息后，选择“创建”。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="examples"></a>示例
 

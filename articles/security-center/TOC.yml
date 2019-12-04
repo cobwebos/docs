@@ -127,8 +127,12 @@
           href: security-center-monitoring.md
         - name: 保护计算机和应用
           href: security-center-virtual-machine-protection.md
+        - name: 计算机和应用建议参考
+          href: recommendations-compute-and-apps.md
         - name: 保护网络资源
           href: security-center-network-recommendations.md
+        - name: 网络建议参考
+          href: recommendations-network.md
         - name: 保护数据和存储服务
           href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限

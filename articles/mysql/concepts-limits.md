@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL 中的限制
+title: 限制-Azure Database for MySQL
 description: 本文介绍了 Azure Database for MySQL 中的限制，例如连接数和存储引擎选项。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/6/2018
-ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/2/2019
+ms.openlocfilehash: 07feb3ebf9720d70da441486fd0b2e6e274b68e4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551881"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770911"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -19,7 +19,7 @@ ms.locfileid: "65551881"
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示： 
 
-|**定价层**|**vCore(s)**| 最大连接数 |
+|**定价层**|**vCore(s)**| 最大连接数|
 |---|---|---|
 |基本| 第| 50|
 |基本| 2| 100|
@@ -36,11 +36,11 @@ ms.locfileid: "65551881"
 |内存优化| 32| 10000|
 
 当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004)：连接过多
+> 错误 1040 (08004): 连接过多
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 
-### <a name="supported"></a>支持
+### <a name="supported"></a>受支持
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 - [MEMORY](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
@@ -55,11 +55,11 @@ ms.locfileid: "65551881"
 ### <a name="unsupported"></a>不支持
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。 
 - SUPER 特权：[SUPER 特权](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)同样也受到限制。
-- DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+- DEFINER：需要超级权限才能创建和受限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
-### <a name="supported"></a>支持
+### <a name="supported"></a>受支持
 - 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。
 
 ### <a name="unsupported"></a>不支持

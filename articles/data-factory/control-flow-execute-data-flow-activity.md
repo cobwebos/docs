@@ -1,6 +1,6 @@
 ---
 title: Azure 数据工厂中的数据流活动
-description: 如何在数据工厂管道中执行数据流。
+description: 如何从数据工厂管道内部执行数据流。
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679948"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769569"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -49,12 +49,12 @@ ms.locfileid: "73679948"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
 integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReference | 是
 暂存。 linkedService | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | LinkedServiceReference | 仅当数据流读取或写入 SQL DW 时
-暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | String | 仅当数据流读取或写入 SQL DW 时
+暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | 字符串 | 仅当数据流读取或写入 SQL DW 时
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 
@@ -67,7 +67,7 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure 集成运行时")
 
 > [!NOTE]
-> 数据流活动中的 Integration Runtime 选择仅适用于管道的已触发执行。 在调试会话中指定的群集上运行数据流时，调试管道。
+> "数据流" 活动中的 Integration Runtime 选择仅适用于管道的*触发*执行。 在调试会话中指定的群集上运行数据流时，调试管道。
 
 ### <a name="polybase"></a>PolyBase
 
@@ -99,6 +99,43 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 
 数据流活动具有特殊的监视体验，你可以在其中查看分区、阶段时间和数据沿袭信息。 通过 "**操作**" 下的 "眼镜" 图标打开 "监视" 窗格。 有关详细信息，请参阅[监视数据流](concepts-data-flow-monitoring.md)。
 
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在后续活动中使用数据流活动结果
+
+数据流活动输出有关写入每个接收器的行数和从每个源读取的行数的指标。 这些结果将在活动运行结果的 `output` 部分中返回。 返回的度量值的格式为以下 json。
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+例如，若要获取写入到名为 "dataflowActivity" 的活动中名为 "sink1" 的接收器的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`。
+
+若要获取从该接收器中使用的名为 "source1" 的源中读取的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`。
+
+> [!NOTE]
+> 如果接收器写入的行数为零，则它不会显示在指标中。 可以使用 `contains` 函数来验证是否存在。 例如，`contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 将检查是否有任何行写入 sink1。
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅数据工厂支持的控制流活动： 
@@ -107,6 +144,6 @@ integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReferenc
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

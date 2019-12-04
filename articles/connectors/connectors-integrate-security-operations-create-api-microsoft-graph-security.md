@@ -1,21 +1,20 @@
 ---
-title: 集成和管理安全操作-Azure 逻辑应用 & Microsoft Graph 安全性
+title: 集成和管理安全操作 & Microsoft Graph 安全性
 description: '& Azure 逻辑应用的 Microsoft Graph 安全提高应用的威胁防护、检测和响应'
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7e9cc2d8d38af7e5e6cf26ccc3659ee58ef17e59
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679099"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789046"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 

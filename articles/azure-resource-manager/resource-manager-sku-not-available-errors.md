@@ -3,12 +3,12 @@ title: SKU 不可用错误
 description: 介绍如何在使用 Azure 资源管理器部署资源时排除 "SKU 不可用" 错误。
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.openlocfilehash: 56afca6b6a59ca08f3fd59c4d9b3ebf12bda415a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 0b3696d3207a88d87b11e65f4697473963f960d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150493"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769126"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
@@ -29,6 +29,8 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 ## <a name="cause"></a>原因
 
 当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。
+
+如果要部署 Azure 点 VM 或点规模集实例，此位置中的 Azure 位置没有任何容量。 有关详细信息，请参阅[污点错误消息](../virtual-machines/error-codes-spot.md)。
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 

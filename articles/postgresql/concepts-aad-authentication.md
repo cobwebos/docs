@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL 单一服务器 Azure Active Directory 身份验证
+title: Active Directory authentication-Azure Database for PostgreSQL-单一服务器
 description: 了解 Azure Active Directory 用于 Azure Database for PostgreSQL 单一服务器进行身份验证的概念
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 47637396581beeafb0748066cd6a66f011e8eaa1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769908"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 通过 PostgreSQL 进行身份验证
 
@@ -86,7 +86,7 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 > [!NOTE]
 > 在令牌过期之前（从令牌发出到60分钟），仍可以完成已删除 Azure AD 用户的登录。  如果还从 Azure Database for PostgreSQL 删除用户，则会立即撤消此访问权限。
 - 如果从服务器中删除 Azure AD 管理员，则服务器将不再与 Azure AD 租户关联，因此将为服务器禁用所有 Azure AD 登录名。 从同一租户添加新的 Azure AD 管理员将重新启用 Azure AD 登录名。
-- Azure Database for PostgreSQL 使用用户的唯一 Azure AD 用户 ID （而不是使用用户名）将访问令牌与 Azure Database for PostgreSQL 角色匹配。 这意味着，如果在 Azure AD 中删除 Azure AD 用户，并且创建了一个同名的新用户，Azure Database for PostgreSQL 会认为该用户是不同的用户。 因此，如果从 Azure AD 删除了某个用户，然后添加了具有相同名称的新用户，则新用户将无法连接到现有角色。 为此，Azure Database for PostgreSQL Azure AD 管理员必须撤消并向用户授予角色 "azure_ad_user"，才能刷新 Azure AD 的用户 ID。
+- Azure Database for PostgreSQL 使用用户的唯一 Azure AD 用户 ID （而不是使用用户名）将访问令牌与 Azure Database for PostgreSQL 角色匹配。 这意味着，如果在 Azure AD 中删除 Azure AD 用户，并且创建了一个同名的新用户，Azure Database for PostgreSQL 会认为该用户是不同的用户。 因此，如果从 Azure AD 删除了某个用户，然后添加了具有相同名称的新用户，则新用户将无法连接到现有角色。 为此，Azure Database for PostgreSQL Azure AD 管理员必须撤消并向用户授予角色 "azure_ad_user" 才能刷新 Azure AD 用户 ID。
 
 ## <a name="next-steps"></a>后续步骤
 

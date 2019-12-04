@@ -1,5 +1,5 @@
 ---
-title: 语音转文本 - 语音服务
+title: 语音到文本语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用 "语音到文本" 功能，可将实时传输音频流到文本中，应用程序、工具或设备可以使用、显示该文本，并作为命令输入执行操作。 此服务可与文本到语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
@@ -8,47 +8,49 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/03/2019
 ms.author: erhopf
-ms.openlocfilehash: 49bfa4a0dbf0adc498d545a2908c20f0ffa35b4b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f04ad388922ad7f73bf4409f9a846291cbb08da3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075733"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774002"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
-使用 Azure 语音服务中的语音转文本功能，可将音频流实时听录成可由应用程序、工具或设备根据命令输入使用、显示和处理的文本。 此服务以 Microsoft 对 Cortana 和 Office 产品使用的相同识别技术为后盾，可与翻译和文本转语音功能无缝配合。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)。
+来自 Azure 语音服务的语音到文本（也称为语音到文本）使实时传输音频流成为文本，应用程序、工具或设备可以使用、显示该文本，并作为命令输入执行操作。 此服务由 Microsoft 为 Cortana 和 Office 产品使用的同一识别技术提供支持，并与翻译和文本到语音功能无缝协作。 有关可用的语音到文本语言的完整列表，请参阅[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text)。
 
-默认情况下，语音转文本服务使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。
+默认情况下，语音到文本服务使用通用语言模型。 此模型是使用 Microsoft 拥有的数据训练的，部署在云中。 这对于对话和听写方案是最佳的。 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。
 
-可以轻松通过麦克风捕获音频，读取流中的数据，或使用语音 SDK 和 REST API 访问存储中的音频文件。 语音 SDK 支持在 WAV/PCM 16 位 16 kHz/8 kHz 单声道音频中进行语音识别。 可以使用[语音转文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批量听录服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)支持其他音频格式。
+你可以轻松地从麦克风捕获音频，从流中读取，或使用语音 SDK 和 REST Api 从存储访问音频文件。 语音 SDK 支持 WAV/PCM 16 位 16 kHz/8 kHz 的单通道音频以进行语音识别。 使用[语音到文本 REST 终结点](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)或[批处理服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)时，支持其他音频格式。
 
 ## <a name="core-features"></a>核心功能
 
-下面是可以通过语音 SDK 和 REST API 获得的功能：
+下面是通过语音 SDK 和 REST Api 提供的功能：
 
-| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
+| 用例 | SDK | REST |
 |--------- | --- | ---- |
-| 听录简短言语（15 秒以下）。 仅支持最终听录结果。 | 是 | 是 |
-| 持续听录较长言语和流音频（15 秒以上）。 支持临时和最终听录结果。 | 是 | 否 |
-| 使用 [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) 从识别结果中派生意向。 | 是 | 否\* |
-| 以异步方式批量听录音频文件。 | 否  | 是\*\* |
-| 创建和管理语音模型。 | 否 | 是\*\* |
-| 创建和管理自定义模型部署。 | 否  | 是\*\* |
-| 创建准确度测试，以测量基线模型与自定义模型的准确度。 | 否  | 是\*\* |
-| 管理订阅。 | 否  | 是\*\* |
+| 转录 short 最谈话（< 15 秒）。 仅支持一个最终的脚本结果。 | 是 | 是\* |
+| 持续处理长最谈话和流式传输音频（> 15 秒）。 支持临时和最终的脚本结果。 | 是 | No |
+| 通过[LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis)从识别结果派生。 | 是 | 无\*\* |
+| 异步批处理音频文件。 | No  | 是\*\*\* |
+| 创建和管理语音模型。 | No | 是\*\*\* |
+| 创建和管理自定义模型部署。 | No  | 是\*\*\* |
+| 创建准确性测试来度量基线模型与自定义模型的准确性。 | No  | 是\*\*\* |
+| 管理订阅。 | No  | 是\*\*\* |
 
-_可以使用单独的 LUIS 订阅来派生 \*LUIS 意向和实体。对于此订阅，SDK 可以为你调用 LUIS，并提供实体和意向结果。利用 REST API，你可以自己调用 LUIS，以通过 LUIS 订阅派生意向和实体。_
+\*_使用 REST 功能，你可以最多传输60秒的音频，并收到最终的脚本结果。_
 
-\*\*_使用 cris.ai 终结点可提供这些服务。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。_
+\*\*_LUIS 意向和实体可以使用单独的 LUIS 订阅派生。对于此订阅，SDK 为你调用 LUIS，并提供实体和意向结果。通过 REST API，你可以自己调用 LUIS，通过 LUIS 订阅派生意向和实体。_
 
-## <a name="get-started-with-speech-to-text"></a>语音转文本入门
+\*\*\*_使用 cris.ai 终结点可提供这些服务。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。_
 
-我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 [此表](https://aka.ms/csspeech#5-minute-quickstarts)包含按平台和语言组织的语音 SDK 快速入门的完整列表。 还可以在[此处](https://aka.ms/csspeech#reference)找到 API 参考。
+## <a name="get-started-with-speech-to-text"></a>开始语音到文本
 
-如果你偏向于使用语音转文本 REST 服务，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
+我们提供了适用于大多数流行编程语言的快速入门，旨在帮助你在 10 分钟以内运行代码。 [此表](https://aka.ms/csspeech#5-minute-quickstarts)包含按平台和语言组织的语音 SDK 快速入门的完整列表。 还可以在[此处](https://aka.ms/csspeech#reference)找到 API 引用。
+
+如果希望使用语音到文本 REST 服务，请参阅[REST api](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 ## <a name="tutorials-and-sample-code"></a>教程和示例代码
 
@@ -58,7 +60,7 @@ _可以使用单独的 LUIS 订阅来派生 \*LUIS 意向和实体。对于此�
 
 GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。
 
-- [语音转文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [语音到文本示例（SDK）](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
 ## <a name="customization"></a>自定义
@@ -73,7 +75,7 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 > [!WARNING]
 > 必应语音于2019年10月15日停用。
 
-如果你的应用程序、工具或产品正在使用必应语音 API 或自定义语音，请参阅我们制作的指南迁移到语音服务。
+如果你的应用程序、工具或产品正在使用必应语音 Api 或自定义语音，我们已创建了可帮助你迁移到语音服务的指南。
 
 - [从必应语音迁移到语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
 - [从自定义语音迁移到语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)

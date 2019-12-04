@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL-单服务器中的防火墙规则
-description: 本文介绍 Azure Database for PostgreSQL 单服务器的防火墙规则。
+title: 防火墙规则-Azure Database for PostgreSQL-单服务器
+description: 本文介绍如何使用防火墙规则连接到 Azure Database for PostgreSQL 单服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 6b4896d78bcc6e9fc1f5d9cd47e60e3df7eba325
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 28c8bccaf6be49b7220a32c781b79f106ad86e52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965271"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768633"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的防火墙规则
 在指定哪些计算机具有权限之前，Azure Database for PostgreSQL 服务器防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。

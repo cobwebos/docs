@@ -1,24 +1,42 @@
 - name: IoT 解决方案加速器文档
-  href: index.md
+  href: index.yml
 - name: 概述
-  expanded: true
   items:
     - name: IoT 解决方案加速器是什么
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: 远程监视
-  items:
-    - name: 概述
+    - name: 远程监视
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: 工业 IoT
+      href: overview-iot-industrial.md
       items:
-        - name: 体系结构选择
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: 快速入门
-      items:
-        - name: 尝试远程监视解决方案
-          href: quickstart-remote-monitoring-deploy.md
-    - name: 教程
+        - name: 什么是 OPC 孪生
+          href: overview-opc-twin.md
+        - name: 什么是 OPC 保管库
+          href: overview-opc-vault.md
+        - name: 什么是 OPC 发布服务器
+          href: overview-opc-publisher.md
+        - name: 什么是互联工厂
+          href: iot-accelerators-connected-factory-features.md
+    - name: 设备模拟
+      href: iot-accelerators-device-simulation-overview.md
+    - name: 预见性维护
+      href: iot-accelerators-predictive-walkthrough.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 尝试远程监视解决方案
+      href: quickstart-remote-monitoring-deploy.md
+    - name: 尝试连接工厂解决方案
+      href: quickstart-connected-factory-deploy.md
+    - name: 尝试设备模拟解决方案
+      href: quickstart-device-simulation-deploy.md
+    - name: 尝试预测性维护解决方案
+      href: quickstart-predictive-maintenance-deploy.md
+- name: 教程
+  items:
+    - name: 远程监视
       items:
         - name: 监视 IoT 设备
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: 检测边缘异常
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: 操作指南
+    - name: 设备模拟
+      items:
+        - name: 创建和运行模拟
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: 创建自定义模拟设备
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: 概念
+  items:
+    - name: 远程监视
+      items:
+        - name: 体系结构
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: 设备模型架构
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: 设备模型行为
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: 工业 IoT
+      items:
+        - name: OPC 孪生体系结构
+          href: overview-opc-twin-architecture.md
+        - name: OPC 保管库体系结构
+          href: overview-opc-vault-architecture.md
+- name: 操作指南
+  items:
+    - name: 远程监视
       items:
         - name: 部署解决方案
           items:
@@ -107,51 +149,7 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: 集成 SIM 数据
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: 引用
-      items:
-        - name: 设备模型架构
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: 设备模型行为
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: 资源
-      items:
-        - name: 开发人员参考指南 (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: 开发人员参考指南 (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: 开发人员故障排除指南
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub 存储库 (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub 存储库 (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: 远程监视常见问题解答
-          href: iot-accelerators-faq-rm-v2.md
-- name: 工业 IoT
-  items:
-    - name: 概述
-      items:
-        - name: 什么是工业 IoT
-          href: overview-iot-industrial.md
-        - name: 什么是 OPC 孪生
-          href: overview-opc-twin.md
-        - name: 什么是 OPC 保管库
-          href: overview-opc-vault.md
-        - name: 什么是 OPC 发布服务器
-          href: overview-opc-publisher.md
-        - name: 什么是互联工厂
-          href: iot-accelerators-connected-factory-features.md
-    - name: 快速入门
-      items:
-        - name: 尝试连接工厂解决方案
-          href: quickstart-connected-factory-deploy.md
-    - name: 概念
-      items:
-        - name: OPC 孪生体系结构
-          href: overview-opc-twin-architecture.md
-        - name: OPC 保管库体系结构
-          href: overview-opc-vault-architecture.md
-    - name: 操作指南
+    - name: 工业 IoT
       items:
         - name: 互连工厂
           items:
@@ -185,27 +183,7 @@
               href: howto-opc-publisher-configure.md
             - name: 运行 OPC 发布服务器
               href: howto-opc-publisher-run.md
-    - name: 资源
-      items:
-        - name: GitHub 存储库
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: 连接的工厂常见问题解答
-          href: iot-accelerators-faq-cf.md
-- name: 设备模拟
-  items:
-    - name: 概述
-      href: iot-accelerators-device-simulation-overview.md
-    - name: 快速入门
-      items:
-        - name: 尝试设备模拟解决方案
-          href: quickstart-device-simulation-deploy.md
-    - name: 教程
-      items:
-        - name: 创建和运行模拟
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: 创建自定义模拟设备
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: 操作指南
+    - name: 设备模拟
       items:
         - name: 使用现有 IoT 中心
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -217,44 +195,10 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: 部署自定义 Docker 映像
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: 资源
-      items:
-        - name: 开发人员参考指南
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub 存储库
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: 预测性维护
-  items:
-    - name: 概述
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: 快速入门
-      items:
-        - name: 尝试预测性维护解决方案
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: 资源
-      items:
-        - name: GitHub 存储库
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: 参考体系结构
-  items:
-    - name: 概述
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
-    - name: 合作伙伴实现
-      items:
-        - name: Intel 连接的物流平台
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Edge 测力计分析
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: 数字标牌解决方案
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: 相关内容
   items:
-    - name: 解决方案
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
     - name: 平台服务
       items:
         - name: IoT 中心
@@ -277,8 +221,47 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 远程监视
+      items:
+        - name: 开发人员参考指南 (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: 开发人员参考指南 (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: 开发人员故障排除指南
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub 存储库 (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub 存储库 (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: 远程监视常见问题解答
+          href: iot-accelerators-faq-rm-v2.md
+    - name: 工业 IoT
+      items:
+        - name: GitHub 存储库
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 连接的工厂常见问题解答
+          href: iot-accelerators-faq-cf.md
+    - name: 设备模拟
+      items:
+        - name: 开发人员参考指南
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub 存储库
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: 预测性维护 GitHub 存储库
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: 参考体系结构
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: 下载
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: 合作伙伴实现
+          items:
+            - name: Intel 连接的物流平台
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Edge 测力计分析
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: 数字标牌解决方案
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: 常见问题解答
       href: iot-accelerators-faq.md
     - name: 堆栈溢出

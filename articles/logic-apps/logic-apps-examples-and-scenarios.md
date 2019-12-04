@@ -1,20 +1,17 @@
 ---
-title: 示例 & 常见方案-Azure 逻辑应用
+title: 常见方案 & 示例
 description: 查找适用于 Azure 逻辑应用的示例、常见方案、教程和演练
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 9e245d1a0054d9de5b8b524416c8c92eb02353a7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025526"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792137"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 

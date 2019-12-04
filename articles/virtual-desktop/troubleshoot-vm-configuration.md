@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607396"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791153"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -123,7 +123,7 @@ ms.locfileid: "73607396"
 1. 在会话主机 VM 上下载新版本的代理。
 2. 启动任务管理器，在 "服务" 选项卡上，停止 RDAgentBootLoader 服务。
 3. 运行 Windows 虚拟桌面代理新版本的安装程序。
-4. 当系统提示输入注册令牌时，删除条目 INVALID_TOKEN，并按 "下一步" （不需要新的令牌）。
+4. 当系统提示输入注册令牌时，删除条目 INVALID_TOKEN，然后按 "下一步" （不需要新的令牌）。
 5. 完成安装向导。
 6. 打开任务管理器并启动 RDAgentBootLoader 服务。
 
@@ -233,7 +233,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 按照以下说明从同一子网和域运行修正：
 
 1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
-2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec下载 PsExec。
+2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec 下载 PsExec。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到在其中解压缩了 PsExec 的文件夹。
@@ -309,7 +309,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 
-通过在 VM 中打开组策略编辑器并导航到**管理模板** > **Windows 组件** > **远程桌面服务** > 来检查组策略设置**远程桌面会话主机** > **授权** > **设置远程桌面授权模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
+通过在 VM 中打开组策略编辑器并导航到**管理模板** > **Windows 组件**"，并导航到" 组策略 "设置 > **远程桌面服务** > **远程桌面会话主机 > ** "**许可** > **设置 "远程桌面授权" 模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
 
 >[!NOTE]
 >如果通过域设置组策略，则在面向这些 Windows 10 企业多会话 Vm 的策略上禁用此设置。
@@ -333,7 +333,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="version-1903"></a>版本1903
 
-如果版本号显示 "1903"，则安装[KB4517211 更新](https://support.microsoft.com/help/4517211)。
+通过 Azure 库中的最新版本的 Windows 10 版本1903映像重新部署主机操作系统。
 
 ## <a name="next-steps"></a>后续步骤
 

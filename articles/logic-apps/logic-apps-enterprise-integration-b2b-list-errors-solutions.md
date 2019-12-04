@@ -1,20 +1,19 @@
 ---
-title: B2B 方案的错误和解决方案 - Azure 逻辑应用 | Microsoft Docs
+title: B2B 方案的错误和解决方案
 description: 在 Azure 逻辑应用中查找 B2B 方案的错误和解决方案
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 176bc3642f7c923b50cbf2f7a97096f88dc02817
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60998799"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790696"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure 逻辑应用的 B2B 错误和解决方案
 
@@ -34,7 +33,7 @@ ms.locfileid: "60998799"
 
 |   |   | 
 |---|---|
-| 错误说明 | 没有找到具有标识的协议：AS2Identity:: Partner1 和 AS2Identity:: Partner3 | 
+| 错误说明 | 没有找到具有标识 'AS2Identity'::'Partner1' and'AS2Identity'::'Partner3' 的协议 | 
 | 用户操作 | 协议配置无效的 AS2-From 或 AS2-To。 </br>更正 AS2 消息和“AS2-From”或“AS2-To”标头或协议，以匹配具有协议配置的 AS2 消息标头中的 AS2 ID。 |
 |   |   |     
 
@@ -145,7 +144,7 @@ ms.locfileid: "60998799"
 
 |   |   | 
 |---|---|
-| 错误说明 | InvalidTemplate。 无法处理模板语言表达式中操作 Flat_File_Decoding 输入在行"1"和列"1902":需要 content 属性需要一个值，但没有为 null。 路径 ''.'. |
+| 错误说明 | InvalidTemplate。 无法处理操作 "Flat_File_Decoding" 输入中的行 "1" 和列 "1902" 处的模板语言表达式：所需属性“内容”应该有一个值，但为空。 路径 ''.'. |
 | 用户操作 | 此错误表明输入的消息不包含正文。 |
 |   |   | 
 

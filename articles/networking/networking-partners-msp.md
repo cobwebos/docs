@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824369"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766476"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
-[Azure 网络托管服务提供商（MSP）合作伙伴计划](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可让网络服务重点 Msp、Telcos 和系统集成商（si）提供围绕 Azure 的网络产品组合的云和混合网络服务和服务。
+[Azure 网络托管服务提供商（MSP）合作伙伴计划](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可让网络服务重点 Msp、Telcos 和系统集成商（si）提供围绕 Azure 的网络产品和服务组合的云和混合网络服务。
 
 Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合网络的各个方面的企业云网络需求和挑战。 托管网络服务包括以下一项或多项服务：网络体系结构、规划、部署、操作、维护和优化。
 
@@ -28,12 +28,13 @@ Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合
 
 使用此部分中的链接，了解有关 Azure 网络 MSP 合作伙伴提供的托管云网络服务的详细信息。 如果你的云网络服务合作伙伴未在以下部分中列出，请提供提供商联系我们。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
 
-| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** | **托管网络安全服务** |**托管网络边缘计算** |
+| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** | **托管网络安全服务** |**托管的多访问边缘计算** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||是|
 |[ANS 组 UK](https://www.ans.co.uk/)|是|是||||
 |[Aryaka networks、网络](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|是 |是 |是 | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|是|是|是|||
+|[Coevolve](https://www.coevolve.com/services/azure-networking-services/)|是||是|是||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|是|||||
 |[维度数据](https://www.dimensiondata.com/)|是|||||
 |[Equinix](https://www.equinix.com/)|是|是||||

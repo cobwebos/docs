@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084090"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792177"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -41,7 +41,7 @@ ms.locfileid: "74084090"
 - Azure 可用性集保存所有资源。
 
 >[!NOTE]
->图中的所有 Azure 资源位于同一资源组中。
+>关系图中的所有 Azure 资源位于同一资源组中。
 
 有关存储空间直通的详细信息，请参阅[Windows Server 2016 Datacenter edition 存储空间直通](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)。
 
@@ -81,9 +81,7 @@ ms.locfileid: "74084090"
 - [Azure 资源组](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> 目前，Azure 虚拟机上 SQL Server 故障转移群集实例仅受[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理模式支持。 从参与故障转移群集的虚拟机中卸载完全扩展，然后在轻型模式下向 SQL VM 资源提供程序注册该扩展。
->
-> 完整扩展支持自动备份、修补和高级门户管理等功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Server Vm 将不起作用。
+> 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)。 若要从完全扩展模式更改为轻型，请删除相应 Vm 的**Sql 虚拟机**资源，然后在轻型模式下向 sql VM 资源提供程序注册这些虚拟机资源。 使用 Azure 门户删除**SQL 虚拟机**资源时，请**清除正确虚拟机旁边的复选框**。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
 
 ### <a name="what-to-have"></a>准备工作
 
@@ -93,7 +91,7 @@ ms.locfileid: "74084090"
 - Azure 虚拟机上的 Windows 域。
 - 有权在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 具有足够 IP 地址空间的 Azure 虚拟网络和子网：
-   - 两个虚拟机。
+   - 两台虚拟机。
    - 故障转移群集的 IP 地址。
    - 每个 FCI 的 IP 地址。
 - 在 Azure 网络上配置的、指向域控制器的 DNS。
@@ -112,7 +110,7 @@ ms.locfileid: "74084090"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。
    1. 选择 "**可用性集**"。
-   1. 选择“创建”。
+   1. 选择**创建**。
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -153,7 +151,7 @@ ms.locfileid: "74084090"
       - **BYOLWindows Server 2016 Datacenter 上的 SQL Server 2016 标准**
 
    >[!IMPORTANT]
-   >创建虚拟机后，请删除预装的独立 SQL Server 实例。 在设置故障转移群集和存储空间直通之后，你将使用预先安装的 SQL Server 媒体来创建 SQL Server FCI。
+   >创建虚拟机后，删除预装的独立 SQL Server 实例。 在设置故障转移群集和存储空间直通之后，你将使用预先安装的 SQL Server 媒体来创建 SQL Server FCI。
 
    或者，你可以使用只包含操作系统的 Azure Marketplace 映像。 在设置故障转移群集和存储空间直通后，选择**Windows Server 2016 Datacenter**映像并安装 SQL SERVER 的 FCI。 此映像不包含 SQL Server 安装介质。 将 SQL Server 安装媒体放在一个可在其中运行每个服务器的位置。
 
@@ -176,7 +174,7 @@ ms.locfileid: "74084090"
 
    在每个虚拟机上，在 Windows 防火墙上打开以下端口：
 
-   | 目的 | TCP 端口 | 说明
+   | 用途 | TCP 端口 | 说明
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。  
@@ -367,9 +365,9 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 Azure 门户中，请前往包含虚拟机的资源组。
 
-1. 选择“添加”。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
+1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择“创建”。
+1. 选择**创建**。
 
 1. 为负载均衡器配置以下属性：
 
@@ -393,7 +391,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 "**后端池**"，然后选择 "**添加**"。
 
-1. 将该后端池与包含 VM 的可用性集进行关联。
+1. 将后端池与包含 VM 的可用性集相关联。
 
 1. 在 "**目标网络 IP 配置**" 下，选择 "**虚拟机**" 并选择将作为群集节点加入的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。
 
@@ -403,13 +401,13 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 "负载均衡器" 边栏选项卡中选择 "**运行状况探测**"。
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
 1. 在 "**添加运行状况探测**" <a name="probe"></a>边栏选项卡中，设置运行状况探测参数。
 
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
-   - **端口**：在[此步骤](#ports)中，将设置为在防火墙中为运行状况探测创建的端口。 在本文中，示例使用了 TCP 端口 `59999`。
+   - **端口**：在[此步骤](#ports)中，将设置为在防火墙中为运行状况探测创建的端口。 在本文中，此示例使用 TCP 端口 `59999`。
    - **间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
@@ -419,7 +417,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 "负载均衡器" 边栏选项卡上，选择 "**负载均衡规则**"。
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
 1. 设置负载均衡规则参数：
 

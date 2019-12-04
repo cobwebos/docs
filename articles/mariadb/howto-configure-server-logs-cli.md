@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure CLI 访问 Azure Database for MariaDB 中的服务器日志
-description: 本文介绍如何使用 Azure CLI 命令行实用工具访问 Azure Database for MariaDB 中的服务器日志。
-author: rachel-msft
-ms.author: raagyema
+title: 访问慢查询日志-Azure CLI-Azure Database for MariaDB
+description: 本文介绍如何使用 Azure CLI 命令行实用程序访问 Azure Database for MariaDB 中的慢速日志。
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023617"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767375"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
-可以使用 Azure CLI（Azure 的命令行实用工具）下载 Azure Database for MariaDB 服务器日志。
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问慢速查询日志
+可以使用 Azure 命令行实用程序 Azure CLI 下载 Azure Database for MariaDB 慢速查询日志。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 或浏览器中的 Azure Cloud Shell
@@ -38,7 +38,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器的日志
-若要列出服务器的可用慢查询日志文件，请运行 [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) 命令。
+若要列出服务器的可用缓慢查询日志文件，请运行[az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list)命令。
 
 可以列出资源组“myresourcegroup”下的服务器“mydemoserver.mariadb.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure Database for MariaDB 中的慢查询日志](concepts-server-logs.md)。
+- 了解[Azure Database for MariaDB 中的慢速查询日志](concepts-server-logs.md)。

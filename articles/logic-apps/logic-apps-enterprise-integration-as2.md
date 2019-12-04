@@ -1,20 +1,19 @@
 ---
-title: 为 B2B 发送和接收 AS2 消息-Azure 逻辑应用
+title: 针对 B2B 发送和接收 AS2 消息
 description: 使用 Azure 逻辑应用交换 B2B 企业集成方案的 AS2 消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680388"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790711"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 

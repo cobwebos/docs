@@ -1,25 +1,25 @@
 ---
-title: Azure Database for MySQL 中的只读副本。
-description: 了解 Azure Database for MySQL 中的只读副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
+title: 读取副本-Azure Database for MySQL。
+description: 了解 Azure Database for MySQL 中的读取副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158309"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790093"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
 使用只读副本功能可将数据从 Azure Database for MySQL 服务器复制到只读服务器。 可将主服务器中的数据复制到最多 5 个副本。 使用 MySQL 引擎的基于本机二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
-副本是新的服务器，可以像管理普通的 Azure Database for MySQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
+副本是您管理的与常规 Azure Database for MySQL 服务器相似的新服务器。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
-如需了解有关 MySQL 复制功能和问题的详细信息，请参阅 [MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
+若要了解有关 MySQL 复制功能和问题的详细信息，请参阅[MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
 
@@ -29,25 +29,27 @@ ms.locfileid: "74158309"
 
 由于副本是只读的，它们不能直接缓解主服务器上的写入容量负担。 此功能并非面向写入密集型工作负荷。
 
-只读副本功能使用 MySQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
+读取副本功能使用 MySQL 异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
 ## <a name="cross-region-replication"></a>跨区域复制
-可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
+可以在主服务器所在的不同区域中创建读取副本。 跨区域复制有助于进行灾难恢复规划或使数据更接近用户的情况。
 
-可以在任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
+可以在任何[Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中拥有主服务器。  主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
 [![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 您可以在以下任何区域中创建读取副本，而不管您的主服务器位于何处。 支持的通用副本区域包括：
 
-澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2。
+澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部。
+
+\* 美国西部2暂时不可用作跨区域副本位置。
 
 
 ### <a name="paired-regions"></a>配对区域
 除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对，可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
 
-如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
+如果你使用跨区域副本进行灾难恢复计划，则建议在配对区域中创建副本，而不是在另一个区域中创建。 配对区域避免同时进行更新，并划分物理隔离和数据驻留的优先级。  
 
 但是，有一些限制： 
 
@@ -59,11 +61,11 @@ ms.locfileid: "74158309"
 
 ## <a name="create-a-replica"></a>创建副本
 
-如果主服务器没有现有的副本服务器，主服务器会先重启，以自行准备复制。
+如果主服务器没有现有的副本服务器，则会先重新启动主服务器以准备复制。
 
-启动“创建副本”工作流时，将创建空白的 Azure Database for MySQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
+启动 "创建副本" 工作流时，将创建一个空白 Azure Database for MySQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
-每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 自动增长功能允许副本与复制到它的数据保持同步，并防止由于存储空间不足错误而导致的复制中断。
+为存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)启用了每个副本。 使用自动增长功能，副本可与复制到它的数据保持同步，防止因存储空间不足而导致的复制中断。
 
 了解如何[在 Azure 门户中创建只读副本](howto-read-replicas-portal.md)。
 
@@ -73,7 +75,7 @@ ms.locfileid: "74158309"
 
 副本从主服务器继承其管理员帐户。 主服务器上的所有用户帐户将复制到只读副本。 只能使用主服务器上可用的用户帐户连接到只读副本。
 
-可以使用主机名和有效的用户帐户连接到副本，就像在常规的 Azure Database for MySQL 服务器上连接一样。 对于名称为 **myreplica**、管理员用户名为 **myadmin** 的服务器，可以使用 mysql CLI 连接到副本：
+您可以使用副本的主机名和有效用户帐户连接到副本，就像在常规 Azure Database for MySQL 服务器上一样。 对于名为**myreplica**的服务器和管理员用户名**myadmin**，可以使用 mysql CLI 连接到副本：
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -83,17 +85,17 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。 此指标仅适用于副本。
+Azure Database for MySQL 提供 Azure Monitor 中的**复制滞后时间（秒）** 。 此指标仅适用于副本。
 
-此指标是使用 MySQL 的 `seconds_behind_master` 命令中提供的 `SHOW SLAVE STATUS` 指标计算的。
+此指标是使用 MySQL 的 `SHOW SLAVE STATUS` 命令中可用 `seconds_behind_master` 指标计算得出的。
 
-请设置警报，以便在复制滞后时间达到工作负荷不可接受的值时收到通知。
+设置警报以在复制滞后达到工作负荷不可接受的值时通知你。
 
 ## <a name="stop-replication"></a>停止复制
 
 可以停止主服务器与副本之间的复制。 在主服务器与只读副本之间停止复制后，副本将成为独立服务器。 独立服务器中的数据是启动“停止复制”命令时副本上可用的数据。 独立服务器与主服务器不同步。
 
-选择停止复制到副本时，副本会丢失指向其以前的主服务器和其他副本的所有链接。 在主服务器与其副本之间无法自动进行故障转移。
+当你选择停止复制到副本时，它将丢失到其以前的主副本和其他副本的所有链接。 主副本与其副本之间没有自动故障转移。
 
 > [!IMPORTANT]
 > 独立服务器不能再次成为副本。
@@ -109,11 +111,11 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 
 ### <a name="master-server-restart"></a>主服务器重启
 
-如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+为没有现有副本的主副本创建副本时，会先重新启动主副本以准备复制的副本。 请考虑这一点，并在非高峰期执行这些操作。
 
 ### <a name="new-replicas"></a>新副本
 
-只读副本创建为新的 Azure Database for MySQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
+读取副本创建为新的 Azure Database for MySQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
 
 ### <a name="replica-configuration"></a>副本配置
 
@@ -126,7 +128,7 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 
 ### <a name="stopped-replicas"></a>停止的副本
 
-如果停止主服务器与只读副本之间的复制，已停止的副本将成为可接受读取和写入的独立服务器。 独立服务器不能再次成为副本。
+如果在主服务器和读取副本之间停止复制，则已停止的副本将成为接受读取和写入的独立服务器。 独立服务器不能再次成为副本。
 
 ### <a name="deleted-master-and-standalone-servers"></a>删除的主服务器和独立服务器
 
@@ -140,11 +142,11 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 
 为了防止数据变得不同步，以及为了避免可能发生的数据丢失或损坏情况，在使用只读副本时，某些服务器参数因为锁定而无法更新。
 
-将在主服务器和副本服务器上锁定以下的服务器参数：
+以下服务器参数在主服务器和副本服务器上都处于锁定状态：
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-将在副本服务器上锁定 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 参数。 
+副本服务器上的[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)参数被锁定。 
 
 ### <a name="other"></a>其他
 
@@ -157,4 +159,4 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[使用 Azure 门户创建和管理只读副本](howto-read-replicas-portal.md)
-- 了解如何[通过 Azure CLI 和 REST API 创建和管理只读副本](howto-read-replicas-cli.md)
+- 了解如何[使用 Azure CLI 和 REST API 创建和管理读取副本](howto-read-replicas-cli.md)

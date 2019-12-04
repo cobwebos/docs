@@ -8,17 +8,17 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113601"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790932"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure 认知搜索中的增量索引是什么？
 
 > [!IMPORTANT] 
-> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前没有门户或 .NET SDK 支持。
 
 增量索引是 Azure 认知搜索的一项新功能，它将缓存和状态添加到认知技能组合中增强的内容，使你可以控制扩充管道中的单个步骤的处理和重新处理。 这不仅会保留你的资金投入，还会使系统更有效。 缓存结构和内容时，索引器可以确定哪些技能发生了变化，并且仅运行了已修改的技能以及任何下游相关技能。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "74113601"
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 
@@ -83,7 +83,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 
 ### <a name="invalidating-changes"></a>使更改失效
 
-使更改失效的情况很少见，但对扩充管道的状态会造成重大影响。 使更改失效意味着整个缓存不再有效。 例如，在更新数据源时就存在使更改失效的情况。 如果你知道更改不应使缓存失效（例如，在存储帐户上循环密钥），则应将 `ignoreResetRequirement` querystring 参数设置为在特定资源的更新操作 `true`，以确保操作不被拒绝。
+使更改失效的情况很少见，但对扩充管道的状态会造成重大影响。 使更改失效意味着整个缓存不再有效。 例如，在更新数据源时就存在使更改失效的情况。 如果你知道更改不应使缓存失效（例如，在存储帐户上轮换密钥），则应将 `ignoreResetRequirement` querystring 参数设置为在特定资源的更新操作 `true`，以确保不会拒绝该操作。
 
 下面是使缓存失效的更改的完整列表：
 
@@ -142,7 +142,7 @@ REST `api-version=2019-05-06-Preview` 为增量索引提供 Api，并添加到�
 
 Datasources 不支持任何新操作，但支持一个新的查询字符串参数：如果更新操作不应使缓存失效，则应将 `ignoreResetRequirement` 设置为 `true`。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 增量索引的建议使用方法是通过在新索引器中设置缓存属性来配置增量索引，或者重置现有索引器并设置缓存属性。
 

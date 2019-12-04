@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 944ecaaceedbff6ed1f86c4b8eb5786ce2b5bae5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706230"
+ms.locfileid: "74786412"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -90,11 +90,11 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 1. 用户/组是在本地 HR 应用程序/系统（例如 SAP）中创建的。 
 
-1. Azure AD Connect 代理将从本地 AD 到 Azure AD 的标识（用户和组）的计划同步运行。
+1. **Azure AD Connect 代理**将从本地 AD 到 Azure AD 的标识（用户和组）的计划同步运行。
 
-1. Azure AD 预配服务开始针对源系统和目标系统的[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
+1. **Azure AD 预配服务**开始针对源系统和目标系统的[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
 
-1. Azure AD 预配服务在源系统中查询自初始周期以来发生更改的任何用户和组，并推送[增量循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)中的更改。
+1. **Azure AD 预配服务**在源系统中查询自初始周期以来发生更改的任何用户和组，并推送[增量循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)中的更改。
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>仅限云的企业的自动用户预配
 
@@ -106,9 +106,9 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 1. 用户/组是在 Azure AD 中创建的。
 
-1. Azure AD 预配服务开始针对源系统和目标系统的[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
+1. **Azure AD 预配服务**开始针对源系统和目标系统的[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。 
 
-1. Azure AD 预配服务会查询自初始周期以来更新的任何用户和组的源系统，并执行任何[增量周期](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+1. **Azure AD 预配服务**会查询自初始周期以来更新的任何用户和组的源系统，并执行任何[增量周期](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>云 HR 应用程序的自动用户预配 
 

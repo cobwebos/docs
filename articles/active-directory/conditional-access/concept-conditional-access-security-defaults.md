@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 420a046ddf66270f52001d4ff4f3ad49895d4c11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784539"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -56,7 +56,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 ### <a name="protecting-all-users"></a>保护所有用户
 
-我们往往认为管理员帐户是唯一需要额外身份验证层的帐户。 管理员对敏感信息拥有广泛的访问权限，并且可以更改订阅范围的设置。 但攻击者往往会以最终用户为目标。 
+我们往往认为管理员帐户是唯一需要额外身份验证层的帐户。 管理员对敏感信息具有广泛的访问权限，并且可以更改订阅范围的设置。 但攻击者往往会以最终用户为目标。 
 
 这些攻击者获得访问权限后，可以代表原始帐户持有者请求对特权信息的访问权限。 它们甚至可以下载整个目录，对整个组织执行网络钓鱼攻击。 
 
@@ -81,7 +81,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 - Azure PowerShell 
 - Azure CLI
 
-使用 Azure 资源管理器来管理服务是需要很高特权的操作。 Azure 资源管理器可以更改租户范围的配置，例如服务设置和订阅计费。 单因素身份验证容易受到各种攻击，如仿冒和密码喷涂。 
+使用 Azure 资源管理器来管理服务是一种高度特权的操作。 Azure 资源管理器可以改变租户范围的配置，例如服务设置和订阅计费。 单因素身份验证容易受到各种攻击，如仿冒和密码喷涂。 
 
 验证要访问 Azure 资源管理器和更新配置的用户的标识很重要。 在允许访问之前，通过要求额外的身份验证来验证其身份。
 
@@ -102,7 +102,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 > [!WARNING]
 > 在启用此设置之前，请确保你的管理员没有使用较旧的身份验证协议。 有关详细信息，请参阅[如何离开旧身份验证](concept-conditional-access-block-legacy-authentication.md)。
 
-### <a name="conditional-access"></a>条件性访问
+### <a name="conditional-access"></a>条件访问
 
 可以使用条件性访问来配置策略，这些策略提供的行为由安全默认值启用。 如果使用条件访问，并且在您的环境中启用了条件性访问策略，则不能使用安全默认值。 如果你的许可证提供条件性访问，但你的环境中未启用任何条件性访问策略，则欢迎使用安全默认设置，直至你启用条件性访问策略。
 
@@ -110,9 +110,9 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 下面是有关如何使用条件性访问来配置等效策略的分步指南：
 
-- [要求对管理员执行 MFA](howto-conditional-access-policy-admin-mfa.md)
-- [要求将 MFA 用于 Azure 管理](howto-conditional-access-policy-azure-management.md)
-- [阻止旧式身份验证](howto-conditional-access-policy-block-legacy.md)
+- [需要对管理员的 MFA](howto-conditional-access-policy-admin-mfa.md)
+- [需要 MFA 进行 Azure 管理](howto-conditional-access-policy-azure-management.md)
+- [阻止旧身份验证](howto-conditional-access-policy-block-legacy.md)
 - [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)
 - [需要 AZURE MFA 注册](../identity-protection/howto-identity-protection-configure-mfa-policy.md)-需要 Azure AD Identity Protection
 
@@ -126,8 +126,22 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 1. 设置 "**启用安全默认**设置" 切换为 **"是"** 。
 1. 选择“保存”。
 
+## <a name="disabling-security-defaults"></a>禁用安全默认值
+
+选择实现替换安全默认设置的条件性访问策略的组织必须禁用安全性默认值。 
+
+![警告消息禁用安全默认设置以启用条件访问](./media/concept-conditional-access-security-defaults/security-defaults-disable-before-conditional-access.png)
+
+若要在目录中禁用安全默认值：
+
+1. 以安全管理员、条件性访问管理员或全局管理员身份登录到 [Azure 门户](https://portal.azure.com) 。
+1. 浏览到 **Azure Active Directory** >" **属性**"。
+1. 选择 "**管理安全性默认值**"。
+1. 将 "**启用安全默认**设置" 切换为 "**否**"。
+1. 选择“保存”。
+
 ## <a name="next-steps"></a>后续步骤
 
 [常见的条件访问策略](concept-conditional-access-policy-common.md)
 
-[什么是条件访问？](overview.md)
+[什么是条件性访问？](overview.md)

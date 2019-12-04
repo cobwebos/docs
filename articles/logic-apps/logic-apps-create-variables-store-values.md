@@ -1,21 +1,17 @@
 ---
-title: 创建和管理用于存储值的变量-Azure 逻辑应用
+title: 创建和管理用于存储值的变量
 description: 如何在 Azure 逻辑应用中使用变量来存储和管理值
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180787"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793169"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值
 
@@ -33,13 +29,13 @@ ms.locfileid: "71180787"
 > [!IMPORTANT]
 > 默认情况下，将并行运行 "For each" 循环中的循环。 使用循环中的变量时，[按顺序](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)运行循环，以便变量返回可预测的结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，请[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要在其中创建变量的逻辑应用
 
-  如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  如果不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * 用作逻辑应用中第一个步骤的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
@@ -61,19 +57,19 @@ ms.locfileid: "71180787"
 
      ![添加操作](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号 **+** （）。 选择加号，然后选择 "**添加操作**"。
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在 "**选择操作**" 下的 "搜索" 框`variables`中，输入作为筛选器。 从 "操作" 列表中，选择 "**初始化变量**"。
+1. 在“选择操作”下的搜索框中，输入 `variables` 作为筛选器。 从 "操作" 列表中，选择 "**初始化变量**"。
 
    ![选择操作](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
 1. 按如下所述提供变量的相关信息：
 
-   | 属性 | 必填 | Value |  说明 |
+   | properties | 需要 | Value |  描述 |
    |----------|----------|-------|--------------|
-   | **名称** | 是 | <*variable-name*> | 要递增的变量的名称 |
+   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 |
    | 类型 | 是 | <*variable-type*> | 变量的数据类型 |
-   | **ReplTest1** | 否 | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 |
+   | **值** | No | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 |
    |||||
 
    例如：
@@ -101,7 +97,7 @@ ms.locfileid: "71180787"
 ```
 
 > [!NOTE]
-> 尽管 "**初始化变量**" 操作具有`variables`结构化为数组的部分，但该操作一次只能创建一个变量。 每个新变量都需要单独的**初始化变量**操作。
+> 尽管 "**初始化变量**" 操作具有结构化为数组的 `variables` 节，但该操作一次只能创建一个变量。 每个新变量都需要单独的**初始化变量**操作。
 
 下面是其他一些变量类型示例：
 
@@ -183,7 +179,7 @@ ms.locfileid: "71180787"
 
 若要检索或引用变量的内容，也可以在逻辑应用设计器和代码视图编辑器中使用 [variables() 函数](../logic-apps/workflow-definition-language-functions-reference.md#variables)。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。
 
-例如，下面的`variables()`表达式使用函数获取[本文前面创建](#append-value)的数组变量中的项。 `string()`函数以字符串格式返回变量的内容：`"1, 2, 3, red"`
+例如，此表达式使用 `variables()` 函数获取[本文前面创建](#append-value)的数组变量中的项。 `string()` 函数以字符串格式返回变量的内容： `"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -209,10 +205,10 @@ ms.locfileid: "71180787"
 
 1. 提供用于递增变量的以下信息：
 
-   | 属性 | 必填 | Value |  说明 |
+   | properties | 需要 | Value |  描述 |
    |----------|----------|-------|--------------|
-   | **名称** | 是 | <*variable-name*> | 要递增的变量的名称 |
-   | **ReplTest1** | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 |
+   | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 |
+   | **值** | No | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 |
    ||||
 
    例如：
@@ -236,7 +232,7 @@ ms.locfileid: "71180787"
 },
 ```
 
-## <a name="example-create-loop-counter"></a>例如：创建循环计数器
+## <a name="example-create-loop-counter"></a>示例：创建循环计数器
 
 变量通常用于统计某个循环的运行次数。 本示例通过创建一个统计电子邮件中附件数的循环，来演示如何创建和使用变量完成此任务。
 
@@ -251,7 +247,7 @@ ms.locfileid: "71180787"
 
    ![检查和包含附件](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. 添加[“初始化变量”操作](#create-variable)。 创建一个名为`Count`的整数变量，该变量的起始值为零。
+1. 添加[“初始化变量”操作](#create-variable)。 创建一个名为 `Count` 的整数变量，该变量的起始值为零。
 
    ![为“初始化变量”添加操作](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -259,7 +255,7 @@ ms.locfileid: "71180787"
 
    1. 在 "**初始化变量**" 操作下，选择 "**新建步骤**"。
 
-   1. 在“选择操作”下，选择“内置”。 在 "搜索" 框中`for each` ，输入作为搜索筛选器，并选择 " **For each**"。
+   1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `for each` 作为搜索筛选器，并选择 " **For each**"。
 
       ![添加“for each”循环](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -290,7 +286,7 @@ ms.locfileid: "71180787"
 
 ### <a name="test-your-logic-app"></a>测试逻辑应用
 
-1. 如果未启用逻辑应用，请在逻辑应用菜单上选择 "**概述**"。 在工具栏中选择“启用”。
+1. 如果未启用逻辑应用，请在逻辑应用菜单上选择 "**概述**"。 在工具栏上，选择 "**启用**"。
 
 1. 在逻辑应用设计器工具栏上，选择 "**运行**"。 此步骤会手动启动逻辑应用。
 
@@ -330,10 +326,10 @@ ms.locfileid: "71180787"
 
 下面是“递减变量”操作的属性：
 
-| 属性 | 必填 | Value |  说明 |
+| properties | 需要 | Value |  描述 |
 |----------|----------|-------|--------------|
-| **名称** | 是 | <*variable-name*> | 要递减的变量的名称 | 
-| **ReplTest1** | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 |
+| 名称 | 是 | <*variable-name*> | 要递减的变量的名称 | 
+| **值** | No | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 |
 ||||| 
 
 如果从设计器切换到代码视图编辑器，则可以通过以下方式在逻辑应用定义（采用 JSON 格式）内显示**减量变量**操作。
@@ -363,10 +359,10 @@ ms.locfileid: "71180787"
 
 下面是“设置变量”操作的属性：
 
-| 属性 | 必填 | Value |  说明 |
+| properties | 需要 | Value |  描述 |
 |----------|----------|-------|--------------|
-| **名称** | 是 | <*variable-name*> | 要更改的变量的名称 |
-| **ReplTest1** | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 |
+| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 |
+| **值** | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 |
 ||||| 
 
 > [!NOTE]
@@ -378,7 +374,7 @@ ms.locfileid: "71180787"
 >
 > 3. 将“并行度”滑块拖到 **1**。
 
-如果从设计器切换到 "代码视图编辑器"，则此处将显示 "**设置变量**" 操作在逻辑应用定义（采用 JSON 格式）内显示的方式。 此示例将`Count`变量的当前值更改为另一个值。
+如果从设计器切换到 "代码视图编辑器"，则此处将显示 "**设置变量**" 操作在逻辑应用定义（采用 JSON 格式）内显示的方式。 此示例将 `Count` 变量的当前值更改为另一个值。
 
 ```json
 "actions": {
@@ -421,10 +417,10 @@ ms.locfileid: "71180787"
 
 下面是“追加到...”操作的属性：
 
-| 属性 | 必填 | Value |  说明 |
+| properties | 需要 | Value |  描述 |
 |----------|----------|-------|--------------|
-| **名称** | 是 | <*variable-name*> | 要更改的变量的名称 |
-| **ReplTest1** | 是 | <*append-value*> | 要追加的值，可以是任何类型 |
+| 名称 | 是 | <*variable-name*> | 要更改的变量的名称 |
+| **值** | 是 | <*append-value*> | 要追加的值，可以是任何类型 |
 |||||
 
 如果从设计器切换到 "代码视图编辑器"，则在逻辑应用定义内显示 "**追加到数组变量**" 操作的方式，该操作采用 JSON 格式。 本示例创建一个数组变量，并将另一个值添加为数组中的最后一个项。 结果是包含此数组的已更新变量：`[1,2,3,"red"]`

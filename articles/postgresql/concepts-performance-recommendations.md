@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL 中的性能建议-单服务器
+title: 性能建议-Azure Database for PostgreSQL-单服务器
 description: 本文介绍 Azure Database for PostgreSQL-单服务器中的性能建议功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764668"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768463"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的性能建议-单服务器
 
@@ -39,7 +39,7 @@ ms.locfileid: "70764668"
 
 ## <a name="recommendation-types"></a>建议类型
 
-目前支持两种类型的建议：*Create index*和*Drop index*。
+目前支持两种类型的建议： *Create index*和*Drop index*。
 
 ### <a name="create-index-recommendations"></a>创建索引建议
 *Create Index*建议建议使用新索引来加快工作负荷中最常运行或耗时的查询。 此建议类型需要启用[查询存储](concepts-query-store.md)。 查询存储收集查询信息并提供分析用于提出建议的详细查询运行时和频率统计信息。

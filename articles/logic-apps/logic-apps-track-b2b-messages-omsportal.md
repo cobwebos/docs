@@ -1,24 +1,23 @@
 ---
-title: 用 Azure Monitor 日志跟踪 B2B 消息-Azure 逻辑应用 |Microsoft Docs
+title: 使用 Azure Monitor 日志跟踪 B2B 消息
 description: 使用 Azure Log Analytics 跟踪集成帐户和 Azure 逻辑应用的 B2B 通信
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997845"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792927"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure Monitor 日志跟踪 B2B 消息
 
-在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查这些消息是否得到正确处理, 可以通过[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)来跟踪这些消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查这些消息是否得到正确处理，可以通过[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)来跟踪这些消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
 
 * 消息计数和状态
 * 确认状态
@@ -31,19 +30,19 @@ ms.locfileid: "69997845"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
-* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为集成帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
+* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为该帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
 
-* 如果尚未这样做, 请[将诊断数据发布到 Azure Monitor 日志](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+* 如果尚未这样做，请[将诊断数据发布到 Azure Monitor 日志](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 * 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 ## <a name="install-logic-apps-b2b-solution"></a>安装逻辑应用 B2B 解决方案
 
-在你可以让 Azure Monitor 日志跟踪逻辑应用的 B2B 消息之前, 请将**逻辑应用 B2B**解决方案添加到 Azure Monitor 日志。 详细了解[如何将解决方案添加到 Azure Monitor 日志](../azure-monitor/learn/quick-create-workspace.md)。
+在你可以让 Azure Monitor 日志跟踪逻辑应用的 B2B 消息之前，请将**逻辑应用 B2B**解决方案添加到 Azure Monitor 日志。 详细了解[如何将解决方案添加到 Azure Monitor 日志](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中查找“log analytics”，并选择“Log Analytics”。
 
@@ -51,7 +50,7 @@ ms.locfileid: "69997845"
 
 1. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
+   ![选择“Log Analytics 工作区”](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
 1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
 
@@ -146,17 +145,17 @@ ms.locfileid: "69997845"
 
 下面列出了各个 AS2 消息的属性说明。
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 AS2 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 AS2 协议的“发送设置”中指定的来宾合作伙伴 |
-| 逻辑应用 | 设置了 AS2 操作的逻辑应用 |
+| 逻辑应用程序 | 设置了 AS2 操作的逻辑应用 |
 | 状态 | AS2 消息状态 <br>成功 = 收到或发送了有效的 AS2 消息。 未设置 MDN。 <br>成功 = 收到或发送了有效的 AS2 消息。 设置并收到了 MDN，或已发送 MDN。 <br>失败 = 收到的 AS2 消息无效。 未设置 MDN。 <br>挂起 = 收到或发送了有效的 AS2 消息。 已设置 MDN，且 MDN 符合预期。 |
 | Ack | MDN 消息状态 <br>已接受 = 收到或发送了肯定的 MDN。 <br>挂起 = 等待接收或发送 MDN。 <br>已拒绝 = 收到或发送了否定的 MDN。 <br>不需要 = 协议中未设置 MDN。 |
-| 方向 | AS2 消息传送方向 |
-| 相关 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
+| Direction | AS2 消息传送方向 |
+| 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息 ID | AS2 消息头中的 AS2 消息 ID |
-| 时间戳 | AS2 操作处理消息的时间 |
+| Timestamp | AS2 操作处理消息的时间 |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -177,19 +176,19 @@ ms.locfileid: "69997845"
 
 下面列出了各个 X12 消息的属性说明。
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 X12 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 X12 协议的“发送设置”中指定的来宾合作伙伴 |
-| 逻辑应用 | 设置了 X12 操作的逻辑应用 |
+| 逻辑应用程序 | 设置了 X12 操作的逻辑应用 |
 | 状态 | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
 | Direction | X12 消息传送方向 |
-| 相关 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
+| 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDI X12 消息类型 |
 | ICN | X12 消息的交换控制编号 |
 | TSCN | X12 消息的交易集控制编号 |
-| 时间戳 | X12 操作处理消息的时间 |
+| Timestamp | X12 操作处理消息的时间 |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -210,19 +209,19 @@ ms.locfileid: "69997845"
 
 下面列出了各个 EDIFACT 消息的属性说明。
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | 发送方 | “接收设置”中指定的来宾合作伙伴，或 EDIFACT 协议的“发送设置”中指定的托管合作伙伴 |
 | 接收方 | “接收设置”中指定的托管合作伙伴，或 EDIFACT 协议的“发送设置”中指定的来宾合作伙伴 |
-| 逻辑应用 | 设置了 EDIFACT 操作的逻辑应用 |
+| 逻辑应用程序 | 设置了 EDIFACT 操作的逻辑应用 |
 | 状态 | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
-| Ack | 功能确认 (CONTRL) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
+| Ack | 功能确认（CONTRL）状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
 | Direction | EDIFACT 消息传送方向 |
-| 相关 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
+| 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDIFACT 消息类型 |
 | ICN | EDIFACT 消息的交换控制编号 |
 | TSCN | EDIFACT 消息的交易集控制编号 |
-| 时间戳 | EDIFACT 操作处理消息的时间 |
+| Timestamp | EDIFACT 操作处理消息的时间 |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>

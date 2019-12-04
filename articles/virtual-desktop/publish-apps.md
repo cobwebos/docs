@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 26ebcc7f2196267719a5f49aeeb8de00d48b9c3e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483731"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769653"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中发布内置应用
 
@@ -45,5 +45,8 @@ ms.locfileid: "74483731"
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
 ```
 
+## <a name="next-steps"></a>后续步骤
 
+- 了解如何配置源，以组织为[Windows 虚拟桌面用户自定义源](customize-feed-for-virtual-desktop-users.md)中的用户显示应用程序的方式。
+- 了解[设置 .msix 应用附加](app-attach.md)的 .msix 应用附加功能。
 

@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure CLI 自动增长 Azure Database for PostgreSQL 存储-单一服务器
-description: 本文介绍如何使用 Azure Database for PostgreSQL 单一服务器中的 Azure CLI 来启用自动增长存储。
+title: 自动增长存储-Azure CLI-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍如何使用 Azure Database for PostgreSQL 单一服务器中的 Azure CLI 配置存储自动增长。
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
-ms.openlocfilehash: 272b26050288e63181c8d0c71dc2c1851f09f3c9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390833"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767936"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for PostgreSQL 存储-单一服务器
-本文介绍如何将 Azure Database for PostgreSQL 服务器存储配置为在不影响工作负荷的情况下增长。
+本文介绍如何在不影响工作负荷的情况下，将 Azure Database for PostgreSQL 服务器存储配置为扩展。
 
-服务器[达到存储限制](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)时，将设置为只读。 如果启用了 "存储自动增长"，则对于预配的存储空间小于 100 GB 的服务器，预配的存储大小将在可用存储空间超过 1 GB 或 10% 的预配存储时立即增加 5 GB。 对于预配的存储大小大于 100 GB 的服务器，可用存储空间小于预配的存储大小的 5% 时，预配的存储大小就会增加 5%。 [此处](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)所指定的最大存储限制适用。
+服务器[达到存储限制](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#reaching-the-storage-limit)时，将设置为只读。 如果启用了 "存储自动增长"，则对于预配的存储空间小于 100 GB 的服务器，预配的存储大小将在可用存储空间超过 1 GB 或10% 的预配存储时立即增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用存储空间低于预配的存储大小的5% 时，预配的存储大小将增加5%。 [此处](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)指定的最大存储限制为 "应用"。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本操作指南，需要：
 - [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-azure-cli.md)
 
@@ -43,4 +43,4 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-on-metric.md)。
+了解[如何创建有关指标的警报](howto-alert-on-metric.md)。

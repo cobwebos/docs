@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL 驱动程序和管理工具兼容性
+title: 驱动程序和工具兼容性-Azure Database for MySQL
 description: 本文介绍与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720139"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765335"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 本文介绍与 Azure Database for MySQL 兼容的驱动程序和管理工具。
@@ -26,7 +26,7 @@ Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。
 | .NET | MySQL 连接器/NET | https://github.com/mysql/mysql-connector-net | 8.0、7.0、6.10 |  | 编码错误可能会导致某些非 UTF8 Windows 系统的连接失败。 |
 | Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> 来自 NPM 的安装包：<br> 从 NPM 运行 `npm install mysql` | 2.15 | 2.14.1 及以下版本 | |
 | Node.js | 节点-mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
-| Go | 转向 MySQL 驱动程序 | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 及以下版本 | 在版本 1.3 的连接字符串中使用 `allowNativePasswords=true`。 版本 1.4 包含修补程序，不再需要 `allowNativePasswords=true`。 |
+| Go | 转向 MySQL 驱动程序 | https://github.com/go-sql-driver/mysql/releases | 1.3、1。4 | 1.2 及以下版本 | 在版本1.3 的连接字符串中使用 `allowNativePasswords=true`。 版本1.4 包含一个修补程序，并且不再需要 `allowNativePasswords=true`。 |
 | Python | MySQL 连接器/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3，2.0，2.1，2.2，使用 8.0.16 + with MySQL 8。0  | 1.2.2 及以下版本 | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11、0.8.0、0.8.1、0.9.3 + | 0.9.0-0.9.2 （回归 in web2py） | |
 | Java | MariaDB 连接器/J | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 及以下版本 | | 

@@ -1,44 +1,44 @@
 ---
-title: 了解 Azure 更新管理中的 Windows 代理检查结果
-description: 了解如何排查更新管理代理问题。
+title: 了解 Azure 中的 Windows 混合 Runbook 辅助角色运行状况更新管理
+description: 了解如何排查支持更新管理的 Windows 上的混合 Runbook 辅助角色的问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 72fdfe912a5560ce0c0e3886dd3c56cf9534dc22
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bb5b5214c96162147e1bd005e994ec04e0a1ddb7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480779"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763651"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
+# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>了解更新管理中的 Windows 混合 Runbook 辅助角色运行状况
 
-可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
+可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
 
 下表列出计算机可能处于的三个就绪状态：
 
-* **就绪** - 更新代理已部署且距上次查看不超过 1 小时。
-* **断开连接** - 更新代理已部署且距上次查看超过 1 小时。
-* **未配置** - 未找到更新代理或尚未完成载入。
+* **就绪**-已部署混合 Runbook 辅助角色，最后发现它不到1小时前。
+* 已**断开连接**-混合 Runbook 辅助角色已部署，最后一次在1小时前查看。
+* **未配置**-混合 Runbook 辅助角色找不到或未完成加入。
 
 > [!NOTE]
 > 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
+对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，此链接会将你带入本文。 请参阅[脱机说明](#troubleshoot-offline)，对非 Azure 计算机进行故障排除。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮。
+> 若要查看混合 Runbook 辅助角色的运行状况，VM 必须正在运行。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除。 疑难解答使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
 
 ![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "74480779"
 
 ### <a name="operating-system"></a>操作系统
 
-操作系统检查，用于验证混合 Runbook 辅助角色是否正在运行以下操作系统之一：
+操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一：
 
 |操作系统  |说明  |
 |---------|---------|
@@ -206,4 +206,3 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>后续步骤
 
 若要排查混合 Runbook 辅助角色的更多问题，请参阅[混合 Runbook 辅助角色的故障排除](hybrid-runbook-worker.md)。
-

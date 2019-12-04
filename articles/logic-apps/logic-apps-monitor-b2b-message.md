@@ -1,20 +1,19 @@
 ---
-title: 通过 Azure Monitor-Azure 逻辑应用监视 B2B 消息
+title: 用 Azure Monitor 监视 B2B 消息
 description: 使用 Azure Monitor 在 Azure 逻辑应用中为 AS2、X12 和 EDIFACT 消息设置诊断日志记录
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680192"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791940"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>使用 Azure Monitor 在 Azure 逻辑应用中为 B2B 消息设置诊断日志记录
 

@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure CLI 重启 Azure Database for PostgreSQL - 单一服务器
-description: 本文介绍了如何使用 Azure CLI 重启 Azure Database for PostgreSQL - 单一服务器
+title: 重新启动服务器-Azure CLI-Azure Database for PostgreSQL-单一服务器
+description: 本文介绍如何使用 Azure CLI 重新启动 Azure Database for PostgreSQL 单个服务器
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b26b545f9e95ce2457e4f8d9cf32da59cd91e6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068981"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770146"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for PostgreSQL - 单一服务器
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>重新启动 Azure Database for PostgreSQL 使用 Azure CLI 的单一服务器
 本主题介绍如何重启 Azure Database for PostgreSQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
 如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
@@ -32,7 +32,7 @@ ms.locfileid: "65068981"
 
 ## <a name="restart-the-server"></a>重启服务器
 
-使用以下命令重启服务器：
+用以下命令重新启动服务器：
 
 ```azurecli-interactive
 az postgres server restart --name mydemoserver --resource-group myresourcegroup

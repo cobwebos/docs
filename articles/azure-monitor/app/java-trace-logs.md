@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819340"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784589"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -22,27 +22,41 @@ ms.locfileid: "72819340"
 
 ## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights Java 代理
 
-可以通过在 `AI-Agent.xml` 文件中启用该功能，将 Application Insights Java 代理配置为自动捕获日志：
+默认情况下，Application Insights Java 代理会自动捕获在 `WARN` 级别和更高级别上执行的日志记录。
+
+可以更改使用 `AI-Agent.xml` 文件捕获的日志记录的阈值：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-或者，您可以按照以下说明进行操作。
+您可以使用 `AI-Agent.xml` 文件禁用 Java 代理的日志记录捕获：
 
-## <a name="install-the-java-sdk"></a>安装 Java SDK
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者，你可以按照以下说明进行操作（而不是使用 Java 代理）
+
+### <a name="install-the-java-sdk"></a>安装 Java SDK
 
 如果尚未执行此操作，请按照说明安装[APPLICATION INSIGHTS SDK For Java][java]。
 
-## <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
+### <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
 *为项目选择适当的方式。*
 
 #### <a name="if-youre-using-maven"></a>如果使用 Maven...
@@ -123,7 +137,7 @@ ms.locfileid: "72819340"
 | Log4j v1.2 |[Log4J v1.2 追加器 Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
+### <a name="add-the-appender-to-your-logging-framework"></a>将追加器添加到日志记录框架
 要开始跟踪，请将相关的代码片段合并到 Log4J 或 Logback 配置文件： 
 
 *Logback*

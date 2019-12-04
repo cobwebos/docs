@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083671"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793322"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -35,14 +35,14 @@ ms.locfileid: "74083671"
 
 加速网络的优势仅适用于已启用该功能的 VM。 为获得最佳效果，最好是在连接到同一个 Azure 虚拟网络 (VNet) 的最少两个 VM 上启用此功能。 跨 VNet 通信或者在本地连接时，此功能对总体延迟的影响极小。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>优势
 * **更低的延迟/更高的每秒数据包数 (pps)：** 从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
 * **减少抖动：** 虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，省去了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
 * **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理网络流量的 CPU 资源。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-从 Azure 库即可支持以下分发： 
-* **具有 linux-azure 内核的 Ubuntu 14.04**
+Azure 库现成支持以下分发版本： 
+* **带有 linux 的 Ubuntu 14.04-azure 内核**
 * **Ubuntu 16.04 或更高版本** 
 * **SLES12 SP3 或更高版本** 
 * **RHEL 7.4 或更高版本**
@@ -51,7 +51,7 @@ ms.locfileid: "74083671"
 * **Debian“Stretch”（backport 内核）**
 * **Oracle Linux 7.4 及更高版本与 Red Hat 兼容内核（RHCK）**
 * **Oracle Linux 7.5 及更高版本，UEK 版本5**
-* **FreeBSD 10.4、11.1 和 12.0**
+* **FreeBSD 10.4，11.1 & 12。0**
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
@@ -61,6 +61,9 @@ ms.locfileid: "74083671"
 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 支持的系列为： D/Dsv3、E/Esv3、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
 有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+
+### <a name="custom-images"></a>自定义映像
+如果你使用的是自定义映像，并且映像支持加速网络，请确保具有所需的驱动程序，可与 Azure 上的 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 配合使用。
 
 ### <a name="regions"></a>区域
 在所有公共 Azure 区域和 Azure 政府云中均可用。
@@ -75,11 +78,11 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>创建具有 Azure 加速网络的 Linux VM
 ## <a name="portal-creation"></a>在门户中创建
-尽管本文提供了使用 Azure CLI 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，请在 "**创建虚拟机**" 边栏选项卡中选择 "**网络**" 选项卡。 在此选项卡中，有一个用于**加速网络**的选项。  如果已选择[支持的操作系统](#supported-operating-systems)和 [VM 大小](#supported-vm-instances)，此选项将自动填充为“打开”。  如果没有选择，它将填充加速网络的“关闭”选项，并为用户提供未启用它的原因。   
+尽管本文提供了使用 Azure CLI 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，请在 "**创建虚拟机**" 边栏选项卡中选择 "**网络**" 选项卡。 在此选项卡中，有一个用于**加速网络**的选项。  如果已选择[受支持的操作系统](#supported-operating-systems)和[VM 大小](#supported-vm-instances)，则此选项会自动填充到 "打开"。  如果不是，它将填充加速网络的 "关闭" 选项，并为用户提供不启用此功能的原因。   
 
-* *注意：* 只有受支持的操作系统才能通过门户启用。  如果使用的是自定义映像，并且映像支持加速网络，请使用 CLI 或 Powershell 创建 VM。 
+* *注意：* 只有受支持的操作系统才能通过门户启用。  如果你使用的是自定义映像，并且映像支持加速网络，请使用 CLI 或 Powershell 创建 VM。 
 
-创建虚拟机后，可以按照[确认已启用加速网络](#confirm-that-accelerated-networking-is-enabled)中的说明确认已启用加速网络。
+创建虚拟机后，可以按照[确认启用加速网络已启用](#confirm-that-accelerated-networking-is-enabled)中的说明，确认已启用加速网络。
 
 ## <a name="cli-creation"></a>CLI 创建
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
@@ -189,7 +192,7 @@ az vm create \
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>确认已启用加速网络
 
-使用以下命令来与 VM 建立 SSH 会话。 将 `<your-public-ip-address>` 替换为分配给所创建虚拟机的公共 IP 地址，并替换 azureuser（如果在创建 VM 时使用了  *以外的值）。* `--admin-username`
+使用以下命令来与 VM 建立 SSH 会话。 将 `<your-public-ip-address>` 替换为分配给所创建虚拟机的公共 IP 地址，并替换 azureuser（如果在创建 VM 时使用了 `--admin-username` 以外的值）。
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -225,9 +228,9 @@ vf_tx_dropped: 0
 ```
 现在已为 VM 启用加速网络。
 
-## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>处理虚拟函数的动态绑定和吊销 
-应用程序必须通过 VM 中公开的合成 NIC 运行。 如果应用程序直接通过 VF NIC 运行，它不会收到发往 VM 的**所有**包，因为一些包通过合成接口显示。
-如果通过合成 NIC 运行应用程序，它保证应用程序收到发往它的**所有**数据包。 它还可以确保应用程序保持运行，即使在为主机提供服务时 VF 已吊销也是如此。 对于利用**加速网络**的所有应用程序，绑定到合成 NIC 的应用程序是**强制性**要求。
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>处理虚函数的动态绑定和吊销 
+应用程序必须在虚拟机中公开的合成 NIC 上运行。 如果应用程序直接通过 VF NIC 运行，则它不会接收目标为 VM 的**所有**数据包，因为某些数据包会通过合成接口显示。
+如果在综合 NIC 上运行应用程序，则可保证应用程序接收到该应用程序的**所有**目标。 它还可确保应用程序保持运行，即使在维护主机时，也会撤消 VF。 对于利用**加速网络**的所有应用程序，绑定到合成 NIC 的应用程序是**必需**的。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>在现有 VM 上启用加速网络
 如果创建的 VM 没有加速网络，则可在现有 VM 上启用此功能。  VM 必须支持加速网络，前提是满足以下先决条件（上文亦有列出）：

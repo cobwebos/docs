@@ -2,21 +2,18 @@
 title: 将流从电源自动执行导出到 Azure 逻辑应用
 description: 通过导出为 Azure 资源管理器模板，将流从电源自动迁移到 Azure 逻辑应用
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583251"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792643"
 ---
-# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从电源自动化导出流并将其部署到 Azure 逻辑应用
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
 若要扩展和扩展流的功能，可以将该流从[电源自动](https://flow.microsoft.com)迁移到[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。 可以将流导出为逻辑应用的 Azure 资源管理器模板，将该逻辑应用模板部署到 Azure 资源组，然后在逻辑应用设计器中打开该逻辑应用。
 
@@ -25,7 +22,7 @@ ms.locfileid: "73583251"
 >
 > 当前不支持将基于 OpenAPI 的流从电源自动部署导出为逻辑应用模板。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -150,7 +147,7 @@ ms.locfileid: "73583251"
 
    如果逻辑应用中的任何连接需要你输入，则会在后台打开一个 PowerShell 窗口，并提示你提供所需的密码或密钥。 输入该信息后，部署会继续。
 
-   ![身份验证连接](./media/export-from-microsoft-flow-logic-app-template/logic-apps-powershell-window.png)
+   ![验证连接](./media/export-from-microsoft-flow-logic-app-template/logic-apps-powershell-window.png)
 
    部署完成后，将发布逻辑应用，但不会在 Azure 门户中激活。
 
@@ -163,4 +160,4 @@ ms.locfileid: "73583251"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[Azure 逻辑应用的连接器](../connectors/apis-list.md)
-* 详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)
+* 了解有关[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)的详细信息

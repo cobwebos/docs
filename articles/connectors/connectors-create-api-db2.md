@@ -1,35 +1,32 @@
 ---
-title: 连接到 IBM DB2-Azure 逻辑应用
+title: 连接到 IBM DB2
 description: 使用 IBM DB2 REST API 和 Azure 逻辑应用管理资源
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: plarsen, LADocs
+ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051037"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789907"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM DB2 资源
 
 使用 Azure 逻辑应用和 IBM DB2 连接器，可以基于 DB2 数据库中存储的资源创建自动化的任务和工作流。 工作流可以连接到数据库中的资源、读取和列出数据库表、添加行、更改行、删除行，以及执行其他操作。 可在逻辑应用中包含操作，用于从数据库获取响应，并使输出可供其他操作使用。
 
-本文介绍如何创建一个可执行各种数据库操作的逻辑应用。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+本文介绍如何创建一个可执行各种数据库操作的逻辑应用。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="supported-platforms-and-versions"></a>支持的平台和版本
 
-DB2 连接器包含一个可以通过 TCP/IP 网络来与远程 DB2 服务器通信的 Microsoft 客户端。 此连接器可用于访问云数据库, 如在 Azure 虚拟化中运行的用于 Windows 的 IBM DB2。 此外，可在[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-connection.md)之后访问本地 DB2 数据库。
+DB2 连接器包含一个可以通过 TCP/IP 网络来与远程 DB2 服务器通信的 Microsoft 客户端。 此连接器可用于访问云数据库，如在 Azure 虚拟化中运行的用于 Windows 的 IBM DB2。 此外，可在[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-connection.md)之后访问本地 DB2 数据库。
 
-IBM DB2 连接器支持以下 IBM DB2 平台和版本, 以及支持分布式关系数据库体系结构 (DRDA) SQL 访问管理器 (SQLAM) 版本10和11的 IBM DB2 兼容产品:
+IBM DB2 连接器支持以下 IBM DB2 平台和版本，以及支持分布式关系数据库体系结构（DRDA） SQL 访问管理器（SQLAM）版本10和11的 IBM DB2 兼容产品：
 
-| 平台 | Version | 
+| 平台 | 版本 | 
 |----------|---------|
 | IBM DB2 for z/OS | 11.1、10.1 |
 | IBM DB2 for i | 7.3、7.2、7.1 |
@@ -43,14 +40,14 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 | 数据库操作 | 连接器操作 |
 |--------------------|------------------|
 | 列出数据库表 | 获取表 |
-| 使用 SELECT 读取一行 | 获取单行 |
-| 使用 SELECT 读取全部行 | 获取多行 |
+| 使用 SELECT 读取一行 | 获取行 |
+| 使用 SELECT 读取全部行 | 获取行 |
 | 使用 INSERT 添加一行 | 插入行 |
 | 使用 UPDATE 编辑一行 | 更新行 |
 | 使用 DELETE 删除一行 | 删除行 |
 |||
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -65,7 +62,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 ## <a name="add-db2-action---get-tables"></a>添加 DB2 操作 - 获取表
 
-1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 在触发器下，选择“新建步骤”。
 
@@ -83,12 +80,12 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 若要设置连接，请按提示提供以下连接详细信息，选择“创建”，然后保存逻辑应用：
 
-| 属性 | 必填 | 描述 |
+| properties | 需要 | 描述 |
 |----------|----------|-------------|
-| **通过本地网关连接** | 否 | 仅适用于本地连接。 |
+| **通过本地网关连接** | No | 仅适用于本地连接。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” |
-| **服务** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server.cloudapp.net:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 |
-| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串： <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
+| **服务器** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server.cloudapp.net:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 |
+| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串。 <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
 | **用户名** | 是 | 数据库的用户名 <p><p>**注意**：此值是一个字符串，其长度基于特定的数据库： <p><p>- DB2 for z/OS 接受 8 字节字符串。 <br>- DB2 for i 接受 10 字节字符串。 <br>- DB2 for Linux/UNIX 接受 8 字节字符串。 <br>- DB2 for Windows 接受 30 字节字符串。 |
 | **密码** | 是 | 数据库的密码 |
 ||||
@@ -103,12 +100,12 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 在创建连接之前，必须已安装本地数据网关。 否则无法完成连接设置。 如果已安装网关，请继续提供这些连接详细信息，然后选择“创建”。
 
-| 属性 | 必填 | 描述 |
+| properties | 需要 | 描述 |
 |----------|----------|-------------|
 | **通过本地网关连接** | 是 | 适用于创建本地连接，将显示本地连接属性。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” | 
-| **服务** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 |
-| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串： <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
+| **服务器** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server:50000” <p><p>**注意**：此值是表示 TCP/IP 地址或别名的字符串，采用 IPv4 或 IPv6 格式，后接冒号和 TCP/IP 端口号。 |
+| **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 关系数据库名称 (RDBNAM) 的字符串。 <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
 | **身份验证** | 是 | 连接的身份验证类型，例如“Basic” <p><p>**注意**：从列表中选择此值，包括“Basic”或“Windows (Kerberos)”。 |
 | **用户名** | 是 | 数据库的用户名 <p><p>**注意**：此值是一个字符串，其长度基于特定的数据库： <p><p>- DB2 for z/OS 接受 8 字节字符串。 <br>- DB2 for i 接受 10 字节字符串。 <br>- DB2 for Linux/UNIX 接受 8 字节字符串。 <br>- DB2 for Windows 接受 30 字节字符串。 |
 | **密码** | 是 | 数据库的密码 |
@@ -142,7 +139,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    ![查看输出表](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
 
-## <a name="get-row"></a>获取单行
+## <a name="get-row"></a>获取行
 
 若要提取 DB2 数据库表中的一条记录，请在逻辑应用中使用“获取一行”操作。 此操作运行 DB2 `SELECT WHERE` 语句，例如 `SELECT FROM AREA WHERE AREAID = '99999'`。
 
@@ -154,7 +151,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 包含所需记录的表，在本示例中为“AREA” |
    | **地区 ID** | 是 | 所需记录的 ID，在本示例中为“99999” |
@@ -183,7 +180,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    ![查看输出行](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
 
-## <a name="get-rows"></a>获取多行
+## <a name="get-rows"></a>获取行
 
 若要提取 DB2 数据库表中的所有记录，请在逻辑应用中使用“获取多行”操作。 此操作运行 DB2 `SELECT` 语句，例如 `SELECT * FROM AREA`。
 
@@ -234,7 +231,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要将记录添加到的表，例如“AREA” |
    | **地区 ID** | 是 | 要添加的地区的 ID，例如“99999” |
@@ -281,7 +278,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中更新记录的表，例如“AREA” |
    | **行 ID** | 是 | 要更新的记录的 ID，例如“99999” |
@@ -329,7 +326,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中删除记录的表，例如“AREA” |
    | **行 ID** | 是 | 要删除的记录的 ID，例如“99999” |
@@ -362,7 +359,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅[连接器的参考页](/connectors/db2/)。
+如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/db2/)。
 
 ## <a name="next-steps"></a>后续步骤
 

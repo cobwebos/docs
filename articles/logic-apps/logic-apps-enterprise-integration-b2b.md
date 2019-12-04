@@ -1,21 +1,19 @@
 ---
-title: 创建 B2B 企业集成 - Azure 逻辑应用 | Microsoft Docs
+title: 创建 B2B 企业集成
 description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中接收 B2B 数据
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39966b8171296a8608b9436485f7682d114c8410
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60998982"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793096"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 接收 B2B 数据
 
@@ -31,11 +29,11 @@ ms.locfileid: "60998982"
 
 1. 创建一个逻辑应用，然后[将应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)。
 
-2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”  触发器。
+2. 向逻辑应用添加“请求 - 当收到 HTTP 请求时”触发器。
 
     ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
 
-3. 若要添加“解码 AS2”  操作，请选择“添加操作”  。
+3. 若要添加“解码 AS2”操作，请选择“添加操作”。
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
 
@@ -43,19 +41,19 @@ ms.locfileid: "60998982"
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-5.png)
 
-5. 选择“AS2 - 解码 AS2 消息”  操作。
+5. 选择“AS2 - 解码 AS2 消息”操作。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
 6. 添加要用作输入的**正文**。 
-   在此示例中，选择触发逻辑应用的 HTTP 请求的正文。 或者在“标头”  字段中输入用于输入标头的表达式：
+   在此示例中，选择触发逻辑应用的 HTTP 请求的正文。 或者在“标头”字段中输入用于输入标头的表达式：
 
     @triggerOutputs()['headers']
 
 7. 为 AS2 添加所需的**标头**，这些标头可在 HTTP 请求标头中找到。 
    在此示例中，选择触发逻辑应用的 HTTP 请求的标头。
 
-8. 现在添加“解码 X12 消息”操作。 选择“添加操作”  。
+8. 现在添加“解码 X12 消息”操作。 选择“添加操作”。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-9.png)
 
@@ -63,7 +61,7 @@ ms.locfileid: "60998982"
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-10.png)
 
-10. 选择“X12 - 解码 X12 消息”  操作。
+10. 选择“X12 - 解码 X12 消息”操作。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
@@ -71,26 +69,26 @@ ms.locfileid: "60998982"
     此输入是前面的 AS2 操作的输出。
 
     实际的消息内容在 JSON 对象中并且经过 base64 编码，因此，必须指定一个表达式作为输入。 
-    在“要解码的 X12 平面文件消息”  输入字段中输入以下表达式：
+    在“要解码的 X12 平面文件消息”输入字段中输入以下表达式：
     
     @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
 
     现在，添加相应步骤解码从贸易合作伙伴收到的 X12 数据，并在 JSON 对象中输出项目。 
     若要通知合作伙伴已收到数据，可以在 HTTP 响应操作中发送回包含 AS2 消息处置通知 (MDN) 的响应。
 
-12. 若要添加“响应”  操作，请选择“添加操作”  。
+12. 若要添加“响应”操作，请选择“添加操作”。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 
-13. 若要在所有操作中筛选出要使用的操作，请在搜索框中输入“响应”  一词。
+13. 若要在所有操作中筛选出要使用的操作，请在搜索框中输入“响应”一词。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-15.png)
 
-14. 选择“响应”  操作。
+14. 选择“响应”操作。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-16.png)
 
-15. 若要从“解码 X12 消息”  操作的输出访问 MDN，请使用以下表达式设置响应“正文”  字段：
+15. 若要从“解码 X12 消息”操作的输出访问 MDN，请使用以下表达式设置响应“正文”字段：
 
     @base64ToString(body('Decode_AS2_message')?['OutgoingMdn']?['Content'])
 
@@ -109,5 +107,5 @@ ms.locfileid: "60998982"
 * B2B 操作可帮助你轻松地在集成帐户中创建合作伙伴和协议并在逻辑应用中使用它们。
 * 使用其他操作扩展逻辑应用时，可以在其他应用和服务（如 SalesForce）之间发送和接收数据。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md)

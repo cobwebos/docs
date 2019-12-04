@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage 上的多协议访问 |Microsoft Docs
-description: 使用 Blob API 和将 Blob API 与 Azure Data Lake Storage Gen2 配合使用的应用程序。
+description: 使用 Blob Api 和应用程序将 Blob Api 与 Azure Data Lake Storage Gen2 配合使用。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033982"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769806"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 上的多协议访问
 
-Blob API 现在兼容有分层命名空间的帐户。 这可以将工具、应用程序和服务的生态系统和多个 Blob 存储功能与具有分层命名空间的帐户解除锁定。
+Blob Api 现在适用于具有分层命名空间的帐户。 这可以将工具、应用程序和服务的生态系统和多个 Blob 存储功能与具有分层命名空间的帐户解除锁定。
 
-你可能一直必须保留独立的存储解决方案进行对象存储和分析存储，直到最近这种情况才发生改变。 这是因为 Azure Data Lake Storage Gen2 的生态系统支持有限。 它访问 Blob 服务功能（例如诊断日志记录）的权限也有限。 分段存储解决方案难以维护，因为必须在帐户之间移动数据才能完成各种方案。 你再也不需要这样做了。
+最近，你可能必须为对象存储和分析存储维护单独的存储解决方案。 这是因为 Azure Data Lake Storage Gen2 有有限的生态系统支持。 它还限制了对 Blob 服务功能的访问，如诊断日志记录。 零碎的存储解决方案难于维护，因为您必须在帐户之间移动数据才能完成各种方案。 您不必再这样做了。
 
-通过 Data Lake Storage 上的多协议访问，你可以使用工具、应用程序和服务的生态系统来处理数据。 这还包括第三方工具和应用程序。 可以将它们指向具有分层命名空间的帐户，不需修改它们。 这些应用程序即使在调用 Blob API 的情况下也“按原样”运行，因为 Blob API 现在可以对具有分层命名空间的帐户中的数据进行操作。
+通过 Data Lake Storage 上的多协议访问，你可以使用工具、应用程序和服务的生态系统来处理数据。 这还包括第三方工具和应用程序。 您可以将它们指向具有分层命名空间的帐户，而无需修改它们。 即使应用程序调用 Blob Api，这些应用程序*也能正常工作，* 因为 Blob api 现在可以对具有分层命名空间的帐户中的数据进行操作。
 
-Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层级](storage-blob-storage-tiers.md)、[Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在适用于具有分层命名空间的帐户。 因此，你可以在 blob 存储帐户上启用分层命名空间，而不会失去对这些重要功能的访问权限。 
+Blob 存储功能（如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和[blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在适用于具有分层命名空间的帐户。 因此，你可以在 blob 存储帐户上启用分层命名空间，而不会失去对这些重要功能的访问权限。 
 
 > [!NOTE]
 > Data Lake Storage 上的多协议访问已公开发布，并在所有区域提供。 多协议访问启用的某些 Azure 服务或 blob 存储功能仍处于预览状态。 有关详细信息，请参阅本文每一节中的表。 
 
-## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Data Lake Storage 多协议访问的工作原理
+## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Data lake 存储上的多协议访问的工作原理
 
-Blob API 和 Data Lake Storage Gen2 API 可以对具有分层命名空间的存储帐户中的相同数据进行操作。 Data Lake Storage Gen2 通过分层命名空间来路由 Blob API，因此你可以获得一流目录操作和兼容 POSIX 的访问控制列表 (ACL) 的优势。 
+Blob Api 和 Data Lake Storage Gen2 Api 可对具有分层命名空间的存储帐户中的同一数据进行操作。 Data Lake Storage Gen2 通过分层命名空间路由 Blob Api，使你可以获得第一类目录操作和与 POSIX 兼容的访问控制列表（Acl）的好处。 
 
-![Data Lake Storage 多协议访问概念](./media/data-lake-storage-interop/interop-concept.png) 
+![Data Lake Storage 概念上的多协议访问](./media/data-lake-storage-interop/interop-concept.png) 
 
-使用 Blob API 的现有工具和应用程序会自动获得这些优势。 开发人员不需修改它们。 Data Lake Storage Gen2 会以一致方式应用目录和文件级别 ACL，而不管工具和应用程序使用什么协议来访问数据。 
+使用 Blob API 的现有工具和应用程序会自动获得这些优势。 开发人员无需修改它们。 Data Lake Storage Gen2 一致地应用目录和文件级 Acl，而不考虑工具和应用程序用于访问数据的协议。 
 
 ## <a name="blob-storage-feature-support"></a>Blob 存储功能支持
 
@@ -48,10 +48,13 @@ Data Lake Storage 上的多协议访问使你能够将更多 Blob 存储功能�
 |Blob 存储功能 | 支持级别 |
 |---|---|
 |[冷访问层](storage-blob-storage-tiers.md)|正式发布|
+|Blob REST Api|正式发布|
 |Blob Sdk |正式发布|
-|Blob REST Api|公开|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |正式发布|
-|[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |正式发布|
+|[PowerShell （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |正式发布|
+|[CLI （Blob）](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |正式发布|
+|具有文件系统语义的 Blob Sdk （[.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java)）|预览|
+|[具有文件系统语义的 PowerShell](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|预览|
+|[具有文件系统语义的 CLI](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|预览|
 |[诊断日志](../common/storage-analytics-logging.md)| 预览|
 |[生命周期管理策略](storage-lifecycle-management-concepts.md)| 预览|
 |[通过 Azure 事件网格通知](data-lake-storage-events.md)|预览|
@@ -88,7 +91,7 @@ Data Lake Storage 上的多协议访问使你能够将更多 Blob 存储功能�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[已知问题](data-lake-storage-known-issues.md)
+查看[已知问题](data-lake-storage-known-issues.md)
 
 
 

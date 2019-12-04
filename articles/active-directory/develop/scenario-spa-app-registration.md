@@ -1,6 +1,6 @@
 ---
-title: 单页面应用程序 （应用程序注册）-Microsoft 标识平台
-description: 了解如何生成单页面应用程序 （应用程序注册）
+title: 单页应用程序（应用程序注册）-Microsoft 标识平台
+description: 了解如何生成单页面应用程序（应用程序注册）
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,36 +15,36 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074825"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764689"
 ---
-# <a name="single-page-application---app-registration"></a>单页面应用程序-应用注册
+# <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
-此页说明单页面应用程序 (SPA) 应用程序注册详细信息。
+此页介绍了单页应用程序（SPA）的应用注册细节。
 
-请按照步骤进行[注册新的应用程序与 Microsoft 标识平台](quickstart-register-app.md)，然后选择你的应用程序的受支持的帐户。 SPA 方案可以在你的组织或任何组织和个人 Microsoft 帐户支持使用帐户进行身份验证。
+按照以下步骤向[Microsoft 标识平台注册新应用程序](quickstart-register-app.md)，并为应用程序选择支持的帐户。 SPA 方案可支持对组织中的帐户或任何组织和个人 Microsoft 帐户进行身份验证。
 
-接下来，了解适用于单页面应用程序的应用程序注册的特定方面。
+接下来，了解适用于单页应用程序的应用程序注册的特定方面。
 
-## <a name="register-a-redirect-uri"></a>注册的重定向 URI
+## <a name="register-a-redirect-uri"></a>注册重定向 URI
 
-隐式流将在重定向令牌发送到 web 浏览器中运行的单页面应用程序。 因此，它是一项重要的要求，若要注册的重定向你的应用程序可以在其中接收令牌的 URI。 请确保重定向 URI 完全与你的应用程序的 URI 相匹配。
+隐式流将重定向中的令牌发送到 web 浏览器上运行的单页面应用程序。 因此，请务必注册应用程序可以接收令牌的重定向 URI。 确保重定向 URI 完全匹配应用程序的 URI。
 
-中[Azure 门户](https://go.microsoft.com/fwlink/?linkid=2083908)，导航到已注册应用程序，在**身份验证**应用程序，选择的页**Web**平台和输入的值中的应用程序的重定向 URI**重定向 URI**字段。
+在[Azure 门户](https://go.microsoft.com/fwlink/?linkid=2083908)中，请切换到已注册的应用程序。 在应用程序的 "**身份验证**" 页上，选择 " **Web**平台"。 在 "**重定向 uri** " 字段中输入应用程序的重定向 uri 的值。
 
 ## <a name="enable-the-implicit-flow"></a>启用隐式流
 
-在同一**身份验证**页面上，在**高级设置**，则还必须启用**隐式授权**。 如果应用程序仅执行登录的用户并获取 ID 令牌，则足以让**ID 令牌**复选框。
+在同一 "**身份验证**" 页上的 "**高级设置**" 下，还必须启用**隐式授予**。 如果你的应用程序只是登录用户并获取 ID 令牌，则可以选择 " **id 令牌**" 复选框。
 
-如果你的应用程序还需要获取访问令牌来调用 Api，请确保启用**访问令牌**也复选框。 有关详细信息，请参阅[ID 令牌](./id-tokens.md)并[的访问令牌](./access-tokens.md)。
+如果你的应用程序还需要获取访问令牌来调用 Api，请确保同时选中 "**访问令牌**" 复选框。 有关详细信息，请参阅[ID 令牌](./id-tokens.md)和[访问令牌](./access-tokens.md)。
 
 ## <a name="api-permissions"></a>API 权限
 
-单页面应用程序可代表已登录用户调用 Api。 他们需要请求委托的权限。 有关详细信息，请参阅[添加权限以访问 web Api](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
+单页应用程序可以代表已登录用户调用 Api。 它们需要请求委托的权限。 有关详细信息，请参阅[添加访问 Web api 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 
 ## <a name="next-steps"></a>后续步骤
 

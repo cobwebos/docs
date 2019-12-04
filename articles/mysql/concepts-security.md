@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL 中的安全性-单一服务器
-description: Azure Database for MySQL-单服务器中的安全功能概述。
+title: 安全-Azure Database for MySQL
+description: Azure Database for MySQL 中的安全功能的概述。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764961"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL 中的安全性-单一服务器
+# <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的安全性
 
 有多个安全层可用于保护 Azure Database for MySQL 服务器上的数据。 本文概述了这些安全选项。
 

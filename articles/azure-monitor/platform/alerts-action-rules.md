@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: a858388a11cfdf36bacb1e5840f00fc6ef097867
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555702"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767681"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "72555702"
 
 ### <a name="suppression-of-alerts"></a>禁止显示警报
 
-在许多情况下，禁止显示警报生成的通知很有用。 这些方案的范围包括：在计划内维护时段内禁止显示，在非营业时间内抑制。 例如，负责**ContosoVM**的团队希望在即将到来的周末禁止警报通知，因为**ContosoVM**正在进行计划内维护。 
+在许多情况下，禁止显示警报生成的通知很有用。 这些方案的范围包括在计划内维护时段内禁止显示，在非工作时间内抑制。 例如，负责**ContosoVM**的团队希望在即将到来的周末禁止警报通知，因为**ContosoVM**正在进行计划内维护。 
 
 尽管团队可以禁用在**ContosoVM**上手动配置的每个警报规则（并在维护后再次启用它），但这并不是一个简单的过程。 操作规则可帮助你按比例定义警报抑制，并可灵活地配置抑制时间段。 在上面的示例中，团队可以在**ContosoVM**上定义一个操作规则，以便取消周末的所有警报通知。
 

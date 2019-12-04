@@ -1,6 +1,6 @@
 ---
-title: JavaScript 单页应用程序方案概述 - Microsoft 标识平台
-description: 了解如何构建集成 Microsoft 标识平台的单页应用程序（方案概述）。
+title: JavaScript 单页应用程序方案概述-Microsoft 标识平台
+description: 了解如何使用 Microsoft 标识平台构建单页应用程序（方案概述）。
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,43 +15,45 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c4e671473ff6c6fecdc13fe61dbde1d3fb3809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 77f59e8c628d7ba37aaf258541664e40e1d4a2dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852516"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764672"
 ---
-# <a name="scenario-single-page-application"></a>方案:单页应用程序
+# <a name="scenario-single-page-application"></a>方案：单页应用程序
 
-了解生成单页应用程序 (SPA) 所需的一切。
+了解你需要构建单页应用程序（SPA）。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
-可以按 JavaScript SPA 快速入门创建第一个应用程序：
+可以按照 JavaScript SPA 快速入门中的步骤创建第一个应用程序：
 
 > [!div class="nextstepaction"]
 > [快速入门：单页应用程序](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概述
 
-许多新式 Web 应用程序都是使用 Angular、Vue.js 和 React.js 等 JavaScript 或 SPA 框架编写的客户端单页应用程序。 这些应用程序在 Web 浏览器中运行，与传统的服务器端 Web 应用程序相比，它们具有不同的身份验证特征。 Microsoft 标识平台可让单页应用程序使用 [OAuth 2.0 隐式流](./v2-oauth2-implicit-grant-flow.md)将用户登录，并获取用于访问后端服务或 Web API 的令牌。 隐式流允许应用程序获取 ID 令牌来表示已经过身份验证的用户以及调用受保护 API 所需的访问令牌。
+许多新式 web 应用程序都是作为客户端单页面应用程序构建的。 开发人员使用 JavaScript 或 SPA 框架（如角度、Vue 和反应）编写它们。 这些应用程序在 web 浏览器上运行，并具有不同于传统服务器端 web 应用程序的身份验证特征。 
+
+Microsoft 标识平台使单页应用程序能够使用[OAuth 2.0 隐式流](./v2-oauth2-implicit-grant-flow.md)登录用户和获取令牌，以便访问后端服务或 web api。 隐式流允许应用程序获取 ID 令牌来表示经过身份验证的用户，还可以访问调用受保护的 Api 所需的令牌。
 
 ![单页应用程序](./media/scenarios/spa-app.svg)
 
-此身份验证流不包括使用 Electron、React-Native 之类的跨平台 JavaScript 框架的应用程序方案。 因为它们需要使用其他功能才能与本机平台交互。
+此身份验证流不包括使用跨平台 JavaScript 框架（如 Electron 和响应本机）的应用程序方案。 它们需要更多的功能来与本机平台进行交互。
 
-## <a name="specifics"></a>详情
+## <a name="specifics"></a>细节
 
-若要为应用程序启用此方案，以下方面是必需的：
+若要为应用程序启用此方案，需要：
 
-* 通过 Azure AD 进行应用程序注册涉及启用隐式流并设置重定向 URI，方便令牌返回。
-* 带有注册的应用程序属性（例如应用程序 ID）的应用程序配置。
-* 使用 MSAL 库完成身份验证流，以便登录并获取令牌。
+* 应用程序注册 Azure Active Directory （Azure AD）。 此注册涉及启用隐式流和将重定向 URI 设置为要返回的令牌。
+* 应用程序配置，其中包含已注册的应用程序属性，如应用程序 ID。
+* 使用 Microsoft 身份验证库（MSAL）执行身份验证流以登录并获取令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

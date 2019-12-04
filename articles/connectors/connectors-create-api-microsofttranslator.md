@@ -1,24 +1,21 @@
 ---
-title: 连接到 Microsoft Translator - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Microsoft Translator
 description: 使用 Microsoft Translator REST API 和 Azure 逻辑应用翻译文本和执行其他语言任务
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105779"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789546"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator 连接器入门
+
 连接到 Microsoft Translator，翻译文本、检测语言等。 通过 Microsoft Translator，可以： 
 
 * 根据从 Microsoft Translator 中获取的数据生成业务流。 
@@ -27,6 +24,7 @@ ms.locfileid: "62105779"
 若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-microsoft-translator"></a>创建到 Microsoft Translator 的连接
+
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 

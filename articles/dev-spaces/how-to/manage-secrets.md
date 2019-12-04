@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Dev Space 时如何管理机密
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
+description: 使用 Azure 上的容器和微服务进行快速的 Kubernetes 开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280012"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790167"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
 
 你的服务可能需要适用于某些服务（例如数据库或其他安全的 Azure 服务）的特定密码、连接字符串和其他机密。 在配置文件中设置这些机密的值即可让其以环境变量的形式在代码中使用。  必须小心处理，以免机密的安全性受损。
 
-Azure Dev Spaces 提供了两个建议的简化选项，可用于在 Azure Dev Spaces 客户端工具生成的 Helm 图表中存储机密： yaml 文件中和直接内联 azds。 建议不要将机密存储在 values.yaml 中。 在本文中定义的客户端工具所生成的两种 Helm 图方法之外，如果您创建自己的 Helm 图表，则可以直接使用 Helm 图表来管理和存储机密。
+Azure Dev Spaces 提供了两个建议的简化选项，用于在 Azure Dev Spaces 客户端工具生成的 Helm 图表中存储机密：在 `values.dev.yaml` 文件中，并直接在 `azds.yaml`中内联。 不建议在 `values.yaml`中存储机密。 在本文中定义的客户端工具所生成的两种 Helm 图方法之外，如果您创建自己的 Helm 图表，则可以直接使用 Helm 图表来管理和存储机密。
 
 ## <a name="method-1-valuesdevyaml"></a>方法 1：values.dev.yaml
 1. 使用为 Azure Dev Spaces 启用的项目打开 VS Code。
@@ -62,7 +62,7 @@ Azure Dev Spaces 提供了两个建议的简化选项，可用于在 Azure Dev S
 7. 确保将 _values.dev.yaml_ 添加到 _.gitignore_ 文件，避免在源代码管理中提交机密。
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>方法 2：以内联方式直接存储在 azds.yaml 中
+## <a name="method-2-azdsyaml"></a>方法2： azds. yaml
 1.  在 _azds.yaml_ 的 yaml 节 configurations/develop/install 下设置机密。 虽然可以直接在该处输入机密值，但建议不要这样做，因为 _azds.yaml_ 会签入源代码管理中。 请改用 "$PLACEHOLDER" 语法来添加占位符。
 
     ```yaml
@@ -104,6 +104,44 @@ Azure Dev Spaces 提供了两个建议的简化选项，可用于在 Azure Dev S
     ```
     kubectl get secret --namespace default -o yaml
     ```
+
+## <a name="passing-secrets-as-build-arguments"></a>将机密作为生成参数传递
+
+前面几节介绍了如何在容器运行时传递要使用的机密。 你还可以使用 `azds.yaml`在容器构建时传递机密，如专用 NuGet 的密码。
+
+在 `azds.yaml`中，使用 `<variable name>: ${secret.<secret name>.<secret key>}` 语法在*配置*中设置生成时间机密。 例如：
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+在上面的示例中， *mynugetsecret*是一个现有的机密， *pattoken*是一个现有密钥。
+
+>[!NOTE]
+> 机密名称和密钥可能包含 `.` 字符。 将机密作为生成参数传递时，使用 `\` 对 `.` 进行转义。 例如，若要传递名为*foo*的机密，请使用*令牌*： `MYTOKEN: ${secret.foo\.bar.token}`。 此外，还可以通过前缀和后缀文本来评估机密。 例如，`MYURL: eus-${secret.foo\.bar.token}-version1` 。 此外，可以将父代和祖父空间中提供的机密作为生成参数进行传递。
+
+在 Dockerfile 中，使用*ARG*指令来使用机密，并稍后在 Dockerfile 中使用该相同的变量。 例如：
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+使用这些更改更新在群集中运行的服务。 在命令行上运行以下命令：
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484261"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775715"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -37,7 +37,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 从创建警报规则的时间开始，监视器将每隔 1 分钟运行，查看过去 5 分钟的指标值，并检查这些值的平均值是否超过 70。 如果符合条件（即，过去 5 分钟的平均 CPU 百分比超过 70），则警报规则将激发激活的通知。 如果在与警报规则关联的操作组中配置了电子邮件或 Webhook，则两者都会收到激活的通知。
 
-在一条规则中使用多个条件时，该规则会将这些条件使用“and”连接在一起。  也就是说，当警报中的所有条件均评估为 true 时触发警报，并在其中一个条件不再为 true 时解除警报。 此类警报的一个示例是，当“CPU 高于 90%”且“队列长度超过 300 项”时触发警报。 
+在一个规则中使用多个条件时，规则会将条件一起 "ands"。  也就是说，当警报中的所有条件的评估结果为 true 时，将触发警报，并在其中一个条件不再为 true 时进行解析。 当 "CPU 高于 90%" 和 "队列长度超过300个项目" 时，此类警报的示例将发出警报。 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>使用动态条件类型的警报规则
 
@@ -64,7 +64,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 假设在后续的检查中，“myVM”上的用量持续超过阈值，则在解决这种状况之前，警报规则不会再次激发。
 
-一段时间后，“myVM”上的用量回归正常（低于阈值）。 则警报规则将再监视条件两次，然后发出“已解决”通知。 如果在三个连续的期限内都不符合警报条件，则警报规则会发出“已解决”/“已停用”消息，以便在不稳定的环境中减少干扰。
+经过一段时间后，"myVM" 上的用法会恢复正常状态（低于阈值）。 则警报规则将再监视条件两次，然后发出“已解决”通知。 如果在三个连续的期限内都不符合警报条件，则警报规则会发出“已解决”/“已停用”消息，以便在不稳定的环境中减少干扰。
 
 通过 Webhook 或电子邮件发出“已解决”通知后，Azure 门户中警报实例的状态（称为“监视状态”）也会设置为“已解决”。
 
@@ -133,7 +133,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
 - 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
 
-创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。
+创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。
 
 ## <a name="typical-latency"></a>典型延迟
 

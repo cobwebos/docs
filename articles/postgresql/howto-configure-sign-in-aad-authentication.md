@@ -1,17 +1,17 @@
 ---
-title: 为 Azure Database for PostgreSQL 单一服务器配置和登录 Azure AD
-description: 了解如何设置 Azure Active Directory 以 Azure Database for PostgreSQL 单一服务器进行身份验证
+title: 使用 Azure Active Directory Azure Database for PostgreSQL-单一服务器
+description: 了解如何设置 Azure Database for PostgreSQL 单一服务器的身份验证 Azure Active Directory （AAD）
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516027"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763634"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 通过 PostgreSQL 进行身份验证
 
@@ -45,7 +45,7 @@ ms.locfileid: "73516027"
 1. 首先确保 Azure AD 用户 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租户中的有效用户。
 2. 以 Azure AD 管理员用户身份登录到你的 Azure Database for PostgreSQL 实例。
 3. 在 Azure Database for PostgreSQL 中创建角色 `<user>@yourtenant.onmicrosoft.com`。
-4. 使 `<user>@yourtenant.onmicrosoft.com` 成为 azure_ad_user 角色的成员。 必须仅向 Azure AD 用户提供此。
+4. 使 `<user>@yourtenant.onmicrosoft.com` 成为角色 azure_ad_user 的成员。 必须仅向 Azure AD 用户提供此。
 
 **示例：**
 
@@ -193,7 +193,7 @@ GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 
 ### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>案例2： PostgreSQL 用户名与 Azure AD 用户主体名称不同
 
-如果 PostgreSQL 用户在 Azure AD 中不存在或者具有不同的用户名，你可以使用 Azure AD 组作为此 PostgreSQL 用户进行身份验证。 可以通过以下方式将现有 Azure Database for PostgreSQL 用户迁移到 Azure AD：创建一个名称与 PostgreSQL 用户匹配的 Azure AD 组，然后将 role azure_ad_user 授予现有 PostgreSQL 用户：
+如果 PostgreSQL 用户在 Azure AD 中不存在或者具有不同的用户名，你可以使用 Azure AD 组作为此 PostgreSQL 用户进行身份验证。 可以通过创建一个名称与 PostgreSQL 用户匹配的 Azure AD 组，然后将角色 azure_ad_user 授予现有的 PostgreSQL 用户，来将现有 Azure Database for PostgreSQL 用户迁移到 Azure AD 中：
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";

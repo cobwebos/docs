@@ -1,17 +1,17 @@
 ---
-title: 将数据复制到 Azure Database for MariaDB
-description: 了解如何使用数据传入复制从外部服务器同步到 Azure Database for MariaDB 服务。
+title: 数据复制-Azure Database for MariaDB
+description: 了解如何使用数据复制从外部服务器同步到 Azure Database for MariaDB 服务。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 826a6db289bf8b938e85d270f91836b3d8790206
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: e98f0dffe1ae004905c2b0969d825a1bca89014a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973635"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772632"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>将数据复制到 Azure Database for MariaDB
 
@@ -34,10 +34,10 @@ ms.locfileid: "71973635"
 - 每个表都必须有主键。
 - 主服务器应使用 InnoDB 引擎。
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
-- 如果主服务器启用了 SSL，请确保为域提供的 SSL CA 证书已包含在 `mariadb.az_replication_change_master` 存储过程中。 请参阅以下[示例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
+- 如果主服务器已启用 SSL，请确保在 `mariadb.az_replication_change_master` 存储过程中包含为域提供的 SSL CA 证书。 请参阅下面的[示例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
 - 确保主服务器的 IP 地址已添加到 Azure Database for MariaDB 副本服务器的防火墙规则中。 使用 [Azure 门户](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) 更新防火墙规则。
 - 确保托管主服务器的计算机在端口 3306 上允许入站和出站流量。
-- 请确保主服务器具有**公共 IP 地址**，DNS 可公开访问，或具有完全限定的域名 (FQDN)。
+- 请确保主服务器具有**公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名（FQDN）。
 
 ### <a name="other"></a>其他
 - 仅可在常规用途和优化内存定价层中使用数据传入复制功能。

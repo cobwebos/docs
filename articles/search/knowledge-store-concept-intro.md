@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720094"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790026"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -32,7 +32,7 @@ ms.locfileid: "73720094"
 
 ## <a name="benefits-of-knowledge-store"></a>知识存储的优势
 
-知识存储提供了结构、上下文和实际内容，这些收集自非结构化和半结构化数据文件（如 Blob）、已经过分析的图像文件，或甚至收集自已整形到新表单中的结构化数据。 在分步[演练](knowledge-store-howto.md)中，你可以看到密集 JSON 文档如何分区到子结构中，重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷.
+知识存储提供了结构、上下文和实际内容，这些收集自非结构化和半结构化数据文件（如 Blob）、已经过分析的图像文件，或甚至收集自已整形到新表单中的结构化数据。 在分步[演练](knowledge-store-howto.md)中，你可以看到密集 JSON 文档如何分区到子结构中、重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷。
 
 尽管了解 AI 扩充管道可以生成什么十分有用，但知识存储的真正强大之处是能够整形数据。 你可以从基本技能集入手，然后循环访问它以添加越来越多的结构级别，这样就能将它们合并成新结构，可用于除 Azure 认知搜索以外的其他应用。
 
@@ -61,7 +61,9 @@ ms.locfileid: "73720094"
 
 + 连接到 Azure 认知搜索所在的同一区域中的存储帐户。 
 
-+ 投影是表-对象对。 `Tables` 定义扩充文档在 Azure 表存储中的物理表达形式。 `Objects` 定义 Azure Blob 存储中的物理对象。
++ 投影可以是表格、JSON 对象或文件。 `Tables` 定义扩充文档在 Azure 表存储中的物理表达形式。 `Objects` 在 Azure Blob 存储中定义物理 JSON 对象。 `Files` 是从要保存的文档中提取的二进制文件，例如图像。
+
++ 投影是投影对象的集合，每个投影对象可以包含 `tables`、`objects` 和 `files`。 即使在类型（表、对象或文件）中投影时，根据中的投影也是相关的。 跨投影对象的投影不相关并且是独立的。 同一形状可以投影碰到多个投影对象。
 
 ```json
 {
@@ -109,7 +111,10 @@ ms.locfileid: "73720094"
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ ms.locfileid: "73720094"
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+此示例不包含任何图像，有关如何使用文件预测的示例，请参见使用[投影](knowledge-store-projection-overview.md)。
 ### <a name="sources-of-data-for-a-knowledge-store"></a>知识存储的数据源
 
 如果知识存储是 AI 扩充管道的输出，那么输入是什么？ 要提取、扩充并最终保存到知识存储的原始数据可能源自于搜索索引器支持的任何 Azure 数据源： 
@@ -146,16 +155,16 @@ ms.locfileid: "73720094"
 
 只有两个 API 具有创建知识存储所需的扩展（“创建技能集”和“创建索引器”）。 其他 API 按原样使用。
 
-| 对象 | REST API | 说明 |
+| 对象 | REST API | 描述 |
 |--------|----------|-------------|
 | 数据源 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部 Azure 数据源的资源，数据源提供用于创建扩充文档的源数据。  |
 | 技能集 | [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在编制索引期间协调扩充管道中所用[内置技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的资源。 技能集使用 `knowledgeStore` 定义作为子元素。 |
-| index | [创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)  | 表示搜索索引的架构。 索引中的字段映射到源数据中的字段，或扩充阶段生成的字段（例如，实体识别创建的组织名称的字段）。 |
+| 索引 | [创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)  | 表示搜索索引的架构。 索引中的字段映射到源数据中的字段，或扩充阶段生成的字段（例如，实体识别创建的组织名称的字段）。 |
 | 索引器 | [创建索引器 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 定义索引编制期间使用的组件（包括数据源、技能、从源和中间数据结构到目标索引的字段关联，以及索引本身）的资源。 运行索引器会触发数据引入和扩充。 输出是基于索引架构的搜索索引，其中填充有源数据，并通过技能集进行了扩充。  |
 
 ### <a name="physical-composition-of-a-knowledge-store"></a>知识存储的物理组合
 
- 投影（ *定义的元素）阐述输出的架构和结构，使其与目标用途相符。* `knowledgeStore` 如果你的应用程序使用不同格式和形状的数据，则可以定义多个投影。 
+ 投影（`knowledgeStore` 定义的元素）阐述输出的架构和结构，使其与目标用途相符。 如果你的应用程序使用不同格式和形状的数据，则可以定义多个投影。 
 
 投影可以表述为对象或表：
 

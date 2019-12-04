@@ -1,20 +1,17 @@
 ---
-title: 限制和配置-Azure 逻辑应用
+title: 限制和配置
 description: 适用于 Azure 逻辑应用的服务限制（如持续时间、吞吐量和容量）加上配置值（如允许的 IP 地址）
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 89b4a08a3ecb85abd56f0b2ae852123ac2883364
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 13bced5cb692366f46032d51c3b635533110d781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547536"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791977"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -71,7 +68,7 @@ ms.locfileid: "74547536"
 
    > [!NOTE]
    > 对于多租户 Azure 中的逻辑应用，90天的默认限制与最大限制相同。 只能减小此值。
-   > 对于 integration service 环境中的逻辑应用，你可以 decreause 或增加90天的默认限制。
+   > 对于 integration service 环境中的逻辑应用，可以减少或增加90天的默认限制。
 
 <a name="looping-debatching-limits"></a>
 

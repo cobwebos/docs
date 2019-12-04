@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382024"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785988"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -36,13 +36,16 @@ ms.locfileid: "74382024"
 
 若要配置基于证书的身份验证，以下语句必须为真：
 
-- 仅使用新式身份验证 (ADAL) 的浏览器应用程序或本机客户端的联合环境支持基于证书的身份验证 (CBA)。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
+- 仅适用于浏览器应用程序、使用新式身份验证（ADAL）或 MSAL 库的本机客户端的联合环境支持基于证书的身份验证（CBA）。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
 - 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。
 - 对于 Exchange ActiveSync 客户端，客户端证书的“使用者可选名称”字段的主体名称或 RFC822 名称必须为 Exchange Online 中用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
 - 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。
 - 用于客户端身份验证的客户端证书必须已颁发给客户端。
+
+>[!IMPORTANT]
+>用于成功下载和缓存的 Azure Active Directory CRL 的最大大小为20MB，下载 CRL 所需的时间不得超过10秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书的基于证书的身份验证将失败。 确保 CRL 文件在大小限制范围内的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。 
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 
@@ -119,7 +122,7 @@ ms.locfileid: "74382024"
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>删除
+### <a name="remove"></a>移除
 
 若要删除受信任的证书颁发机构，请使用 [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet：
 
@@ -166,7 +169,7 @@ ms.locfileid: "74382024"
 
 ### <a name="testing-your-certificate"></a>测试证书
 
-作为第一个配置测试，应尝试使用[设备内置的浏览器](https://outlook.office365.com)登录 [Outlook Web Access](https://microsoft.sharepoint.com) 或 **SharePoint Online**。
+作为第一个配置测试，应尝试使用**设备内置的浏览器**登录 [Outlook Web Access](https://outlook.office365.com) 或 [SharePoint Online](https://microsoft.sharepoint.com)。
 
 如果登录成功，则表示：
 

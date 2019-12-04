@@ -1,20 +1,17 @@
 ---
-title: 设置多个 ISEs 的访问权限-Azure 逻辑应用
+title: 设置多个 ISEs 的访问权限
 description: 对于多个 integration services 环境（ISEs），可以设置单个公共出站 IP 地址，以便从 Azure 逻辑应用访问外部系统
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f35b6836012df7ac3879070f7a85fbfb21b456c0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74549240"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792699"
 ---
 # <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>在 Azure 逻辑应用中设置多个 integration service 环境的访问权限
 

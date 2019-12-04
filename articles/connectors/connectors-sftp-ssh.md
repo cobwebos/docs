@@ -1,25 +1,23 @@
 ---
-title: 通过 SSH 连接到 SFTP 服务器-Azure 逻辑应用
+title: 通过 SSH 连接到 SFTP 服务器
 description: 使用 SSH 和 Azure 逻辑应用自动完成用于监视、创建、管理、发送和接收 SFTP 服务器文件的任务
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837139"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786872"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
-若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/sftp/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/protocol/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
+若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
 
 * 添加或更改文件时进行监视。
 * 获取、创建、复制、重命名、更新、列出和删除文件。
@@ -31,7 +29,7 @@ ms.locfileid: "73837139"
 
 有关 SFTP SSH 连接器与 SFTP 连接器之间的差异，请参阅本主题后面的[比较 sftp-SSH 与 sftp](#comparison)部分。
 
-## <a name="limits"></a>限制
+## <a name="limits"></a>Limits
 
 * 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 为了处理大于 15 MB 的文件，SFTP SSH 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)，但 "复制文件" 操作除外，它只能处理 15 MB 的文件。 "**获取文件内容**" 操作隐式使用消息块。
 
@@ -47,7 +45,7 @@ ms.locfileid: "73837139"
 
 下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
 
-* 使用 [SSH.NET 库](https://github.com/sshnet/SSH.NET)，该库是支持 .NET 的开源安全外壳 (SSH) 库。
+* 使用[SSH.NET 库](https://github.com/sshnet/SSH.NET)，它是支持 .net 的开源安全外壳（SSH）库。
 
 * 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。
 
@@ -59,7 +57,7 @@ ms.locfileid: "73837139"
 
 * 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -86,10 +84,10 @@ ms.locfileid: "73837139"
 
 SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上次轮询以来发生更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
 
-| SFTP 客户端 | 操作 |
+| SFTP 客户端 | 行动 |
 |-------------|--------|
-| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >  >  >  >  |
-| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >  >  |
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -156,7 +154,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
    1. 在文本编辑器中打开 SSH 私钥文件。 这些步骤以记事本为例。
 
-   1. 在记事本的“编辑”菜单中，选择“全选”。
+   1. 在记事本的 "**编辑**" 菜单上，选择 "全**选**"。
 
    1. 选择“编辑” > “复制”。
 

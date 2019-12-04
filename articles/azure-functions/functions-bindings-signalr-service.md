@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1de59ebb5ef0d7f5522a388aa9a2f5818495a9f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231024"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786327"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR 服务绑定
 
@@ -20,14 +20,15 @@ ms.locfileid: "74231024"
 
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
-The SignalR Service bindings are provided in the [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) NuGet package, version 1.*. [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub 存储库中提供了此包的源代码。
+[SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) Nuget 包（版本 1. *）中提供了 SignalR 服务绑定。 [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
+有关如何配置和使用 SignalR Service 并 Azure Functions 一起使用的详细信息，Azure Functions 请参阅[使用 Azure SignalR 服务进行开发和配置](../azure-signalr/signalr-concept-serverless-development-config.md)。
 
-### <a name="java-annotations"></a>Java annotations
+### <a name="annotations-library-java-only"></a>批注库（仅 Java）
 
-To use the SignalR Service annotations in Java functions, you need to add a dependency to the *azure-functions-java-library-signalr* artifact (version 1.0 or higher) to your pom.xml.
+若要在 Java 函数中使用 SignalR 服务注释，需要向 pom 添加对*SignalR*项目的依赖关系（版本1.0 或更高版本）。
 
 ```xml
 <dependency>
@@ -37,26 +38,13 @@ To use the SignalR Service annotations in Java functions, you need to add a depe
 </dependency>
 ```
 
-> [!NOTE]
-> 若要在 Java 中使用 SignalR 服务绑定，请确保使用的是 Azure Functions Core Tools（主机版本 2.0.12332）2.4.419 版或更高版本。
-
-## <a name="using-signalr-service-with-azure-functions"></a>Using SignalR Service with Azure Functions
-
-For details on how to configure and use SignalR Service and Azure Functions together, refer to [Azure Functions development and configuration with Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md).
-
-## <a name="signalr-connection-info-input-binding"></a>SignalR 连接信息输入绑定
+## <a name="input"></a>输入
 
 客户端在连接到 Azure SignalR 服务之前，必须检索服务终结点 URL 和有效的访问令牌。 *SignalRConnectionInfo* 输入绑定生成 SignalR 服务终结点 URL 和有效的令牌，这两者可以用来连接到服务。 由于此令牌有时间限制，并且可以用来对需要连接的特定用户进行身份验证，因此不应缓存此令牌，也不应在客户端之间共享它。 使用此绑定的 HTTP 触发器可供客户端用来检索连接信息。
 
-参阅语言特定的示例：
+有关如何使用此绑定创建 SignalR 客户端 SDK 可以使用的 "协商" 功能的详细信息，请参阅 SignalR 服务概念文档中的[Azure Functions 开发和配置一文](../azure-signalr/signalr-concept-serverless-development-config.md)。
 
-* [2.x C#](#2x-c-input-examples)
-* [2.x JavaScript](#2x-javascript-input-examples)
-* [2.x Java](#2x-java-input-examples)
-
-For more information on how this binding is used to create a "negotiate" function that can be consumed by a SignalR client SDK, see the [Azure Functions development and configuration article](../azure-signalr/signalr-concept-serverless-development-config.md) in the SignalR Service concepts documentation.
-
-### <a name="2x-c-input-examples"></a>2.x C# input examples
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)，该函数使用输入绑定获取 SignalR 连接信息，并通过 HTTP 将其返回。
 
@@ -70,26 +58,37 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-#### <a name="authenticated-tokens"></a>已进行身份验证的令牌
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-如果此函数由经过身份验证的客户端触发，则可向生成的令牌添加用户 ID 声明。 You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+下面的示例演示*函数 json*文件中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[ C#脚本函数](functions-reference-csharp.md)。
 
-应用服务身份验证会设置名为 `x-ms-client-principal-id` 和 `x-ms-client-principal-name`（分别包含经身份验证的用户的客户端主体 ID 和名称）的 HTTP 标头。 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。 
+下面是 *function.json* 文件中的绑定数据：
+
+示例 function.json：
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+脚本代码如下C#所示：
 
 ```cs
-[FunctionName("negotiate")]
-public static SignalRConnectionInfo Negotiate(
-    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
-    [SignalRConnectionInfo
-        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
-        SignalRConnectionInfo connectionInfo)
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
 {
-    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
     return connectionInfo;
 }
 ```
 
-### <a name="2x-javascript-input-examples"></a>2.x JavaScript input examples
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [JavaScript 函数](functions-reference-node.md)。
 
@@ -115,11 +114,114 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-#### <a name="authenticated-tokens"></a>已进行身份验证的令牌
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-如果此函数由经过身份验证的客户端触发，则可向生成的令牌添加用户 ID 声明。 You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+下面的示例演示了*函数 json*文件中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[Python 函数](functions-reference-python.md)。
 
-应用服务身份验证会设置名为 `x-ms-client-principal-id` 和 `x-ms-client-principal-name`（分别包含经身份验证的用户的客户端主体 ID 和名称）的 HTTP 标头。 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。 
+下面是 *function.json* 文件中的绑定数据：
+
+示例 function.json：
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+下面是 Python 代码：
+
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+下面的示例演示一个[Java 函数](functions-reference-java.md)，该函数使用输入绑定获取 SignalR 的连接信息，并通过 HTTP 返回该信息。
+
+```java
+@FunctionName("negotiate")
+public SignalRConnectionInfo negotiate(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> req,
+        @SignalRConnectionInfoInput(
+            name = "connectionInfo",
+            hubName = "chat") SignalRConnectionInfo connectionInfo) {
+    return connectionInfo;
+}
+```
+
+---
+
+### <a name="authenticated-tokens"></a>已进行身份验证的令牌
+
+如果此函数由经过身份验证的客户端触发，则可向生成的令牌添加用户 ID 声明。 可以使用[应用服务身份验证](../app-service/overview-authentication-authorization.md)轻松将身份验证添加到 function app。
+
+应用服务身份验证会设置名为 `x-ms-client-principal-id` 和 `x-ms-client-principal-name`（分别包含经身份验证的用户的客户端主体 ID 和名称）的 HTTP 标头。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。
+
+```cs
+[FunctionName("negotiate")]
+public static SignalRConnectionInfo Negotiate(
+    [HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req, 
+    [SignalRConnectionInfo
+        (HubName = "chat", UserId = "{headers.x-ms-client-principal-id}")]
+        SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
+
+示例 function.json：
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
+}
+```
+
+脚本代码如下C#所示：
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo connectionInfo)
+{
+    // connectionInfo contains an access key token with a name identifier
+    // claim set to the authenticated user
+    return connectionInfo;
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
 示例 function.json：
 
@@ -144,29 +246,41 @@ module.exports = async function (context, req, connectionInfo) {
 };
 ```
 
-### <a name="2x-java-input-examples"></a>2.x Java input examples
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-The following example shows a [Java function](functions-reference-java.md) that acquires SignalR connection information using the input binding and returns it over HTTP.
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
-```java
-@FunctionName("negotiate")
-public SignalRConnectionInfo negotiate(
-        @HttpTrigger(
-            name = "req",
-            methods = { HttpMethod.POST },
-            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> req,
-        @SignalRConnectionInfoInput(
-            name = "connectionInfo",
-            hubName = "chat") SignalRConnectionInfo connectionInfo) {
-    return connectionInfo;
+示例 function.json：
+
+```json
+{
+    "type": "signalRConnectionInfo",
+    "name": "connectionInfo",
+    "hubName": "chat",
+    "userId": "{headers.x-ms-client-principal-id}",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "direction": "in"
 }
 ```
 
-#### <a name="authenticated-tokens"></a>已进行身份验证的令牌
+下面是 Python 代码：
 
-如果此函数由经过身份验证的客户端触发，则可向生成的令牌添加用户 ID 声明。 You can easily add authentication to a function app using [App Service Authentication](../app-service/overview-authentication-authorization.md).
+```python
+def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+    # connectionInfo contains an access key token with a name identifier
+    # claim set to the authenticated user
+    return func.HttpResponse(
+        connectionInfoJson,
+        status_code=200,
+        headers={
+            'Content-type': 'application/json'
+        }
+    )
+```
 
-应用服务身份验证会设置名为 `x-ms-client-principal-id` 和 `x-ms-client-principal-name`（分别包含经身份验证的用户的客户端主体 ID 和名称）的 HTTP 标头。 可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `UserId` 属性设置为任一标头中的值。
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+可以使用[绑定表达式](./functions-bindings-expressions-patterns.md) `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 将绑定的 `userId` 属性设置为任一标头中的值。
 
 ```java
 @FunctionName("negotiate")
@@ -183,23 +297,19 @@ public SignalRConnectionInfo negotiate(
 }
 ```
 
-## <a name="signalr-output-binding"></a>SignalR 输出绑定
+---
+
+## <a name="output"></a>输出
 
 使用 Azure SignalR 服务，通过 *SignalR* 输出绑定发送一条或多条消息。 可以将消息广播给所有连接的客户端，也可以将消息仅广播给已针对给定用户进行身份验证的已连接客户端。
 
-You can also use it to manage the groups that a user belongs to.
+你还可以使用它来管理用户所属的组。
 
-参阅语言特定的示例：
+### <a name="broadcast-to-all-clients"></a>广播到所有客户端
 
-* [2.x C#](#2x-c-send-message-output-examples)
-* [2.x JavaScript](#2x-javascript-send-message-output-examples)
-* [2.x Java](#2x-java-send-message-output-examples)
+下面的示例演示一个函数，该函数使用输出绑定将消息发送到所有连接的客户端。 *目标*是要在每个客户端上调用的方法的名称。 *参数*是零个或多个要传递给客户端方法的对象的数组。
 
-### <a name="2x-c-send-message-output-examples"></a>2.x C# send message output examples
-
-#### <a name="broadcast-to-all-clients"></a>广播到所有客户端
-
-以下示例演示一个 [C# 函数](functions-dotnet-class-library.md)，该函数使用输出绑定将一条消息发送给所有连接的客户端。 `Target` 是需要在每个客户端上调用的方法的名称。 `Arguments` 属性是一个数组，其中包含要传递给客户端方法的零个或多个对象。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -216,106 +326,42 @@ public static Task SendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>发送给用户
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-可以设置 SignalR 消息的 `UserId` 属性，以便将消息只发送给已针对某个用户进行身份验证的连接。
+下面是 *function.json* 文件中的绑定数据：
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+脚本代码如下C#所示：
 
 ```cs
-[FunctionName("SendMessage")]
-public static Task SendMessage(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message, 
-    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
 {
     return signalRMessages.AddAsync(
         new SignalRMessage 
         {
-            // the message will only be sent to this user ID
-            UserId = "userId1",
-            Target = "newMessage",
-            Arguments = new [] { message }
+            Target = "newMessage", 
+            Arguments = new [] { message } 
         });
 }
 ```
 
-#### <a name="send-to-a-group"></a>Send to a group
-
-You can send a message only to connections that have been added to a group by setting the `GroupName` property of the SignalR message.
-
-```cs
-[FunctionName("SendMessage")]
-public static Task SendMessage(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message,
-    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
-{
-    return signalRMessages.AddAsync(
-        new SignalRMessage
-        {
-            // the message will be sent to the group with this name
-            GroupName = "myGroup",
-            Target = "newMessage",
-            Arguments = new [] { message }
-        });
-}
-```
-
-### <a name="2x-c-group-management-output-examples"></a>2.x C# group management output examples
-
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalR` output binding to manage a user's group membership.
-
-#### <a name="add-user-to-a-group"></a>Add user to a group
-
-The following example adds a user to a group.
-
-```csharp
-[FunctionName("addToGroup")]
-public static Task AddToGroup(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
-    ClaimsPrincipal claimsPrincipal,
-    [SignalR(HubName = "chat")]
-        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
-{
-    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
-    return signalRGroupActions.AddAsync(
-        new SignalRGroupAction
-        {
-            UserId = userIdClaim.Value,
-            GroupName = "myGroup",
-            Action = GroupAction.Add
-        });
-}
-```
-
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
-
-The following example removes a user from a group.
-
-```csharp
-[FunctionName("removeFromGroup")]
-public static Task RemoveFromGroup(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
-    ClaimsPrincipal claimsPrincipal,
-    [SignalR(HubName = "chat")]
-        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
-{
-    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
-    return signalRGroupActions.AddAsync(
-        new SignalRGroupAction
-        {
-            UserId = userIdClaim.Value,
-            GroupName = "myGroup",
-            Action = GroupAction.Remove
-        });
-}
-```
-
-> [!NOTE]
-> In order to get the `ClaimsPrincipal` correctly bound, you must have configured the authentication settings in Azure Functions.
-
-### <a name="2x-javascript-send-message-output-examples"></a>2.x JavaScript send message output examples
-
-#### <a name="broadcast-to-all-clients"></a>广播到所有客户端
-
-以下示例演示 *function.json* 文件中的一个 SignalR 输出绑定以及使用该绑定通过 Azure SignalR 服务发送消息的 [JavaScript 函数](functions-reference-node.md)。 将输出绑定设置为一个数组，其中包含一条或多条 SignalR 消息。 SignalR 消息包含一个 `target` 属性，用于指定要在每个客户端上调用的方法的名称；以及一个 `arguments` 属性，该属性是一个数组，其中包含要作为参数传递给客户端方法的对象。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -342,143 +388,34 @@ module.exports = async function (context, req) {
 };
 ```
 
-#### <a name="send-to-a-user"></a>发送给用户
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-可以设置 SignalR 消息的 `userId` 属性，以便将消息只发送给已针对某个用户进行身份验证的连接。
+下面是 *function.json* 文件中的绑定数据：
 
-*function.json* 保持不变。 JavaScript 代码如下所示：
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this user ID
-        "userId": "userId1",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-#### <a name="send-to-a-group"></a>Send to a group
-
-You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
-
-*function.json* 保持不变。 JavaScript 代码如下所示：
-
-```javascript
-module.exports = async function (context, req) {
-    context.bindings.signalRMessages = [{
-        // message will only be sent to this group
-        "groupName": "myGroup",
-        "target": "newMessage",
-        "arguments": [ req.body ]
-    }];
-};
-```
-
-### <a name="2x-javascript-group-management-output-examples"></a>2.x JavaScript group management output examples
-
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalR` output binding to manage a user's group membership.
-
-#### <a name="add-user-to-a-group"></a>Add user to a group
-
-The following example adds a user to a group.
-
-*function.json*
+示例 function.json：
 
 ```json
 {
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
 }
 ```
 
-*index.js*
+下面是 Python 代码：
 
-```javascript
-module.exports = async function (context, req) {
-  context.bindings.signalRGroupActions = [{
-    "userId": req.query.userId,
-    "groupName": "myGroup",
-    "action": "add"
-  }];
-};
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
 ```
 
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
-
-The following example removes a user from a group.
-
-*function.json*
-
-```json
-{
-  "disabled": false,
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "signalR",
-      "name": "signalRGroupActions",
-      "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
-      "hubName": "chat",
-      "direction": "out"
-    }
-  ]
-}
-```
-
-*index.js*
-
-```javascript
-module.exports = async function (context, req) {
-  context.bindings.signalRGroupActions = [{
-    "userId": req.query.userId,
-    "groupName": "myGroup",
-    "action": "remove"
-  }];
-};
-```
-
-### <a name="2x-java-send-message-output-examples"></a>2.x Java send message output examples
-
-#### <a name="broadcast-to-all-clients"></a>广播到所有客户端
-
-The following example shows a [Java function](functions-reference-java.md) that sends a message using the output binding to all connected clients. `target` 是需要在每个客户端上调用的方法的名称。 `arguments` 属性是一个数组，其中包含要传递给客户端方法的零个或多个对象。
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -496,9 +433,123 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-user"></a>发送给用户
+---
 
-可以设置 SignalR 消息的 `userId` 属性，以便将消息只发送给已针对某个用户进行身份验证的连接。
+### <a name="send-to-a-user"></a>发送给用户
+
+可以通过在 SignalR 消息中设置*用户 ID* ，将消息只发送到已通过用户身份验证的连接。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cs
+[FunctionName("SendMessage")]
+public static Task SendMessage(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message, 
+    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage",
+            Arguments = new [] { message }
+        });
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+脚本代码如下C#所示：
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+JavaScript 代码如下所示：
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this user ID
+        "userId": "userId1",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+下面是 *function.json* 文件中的绑定数据：
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+下面是 Python 代码：
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this user ID
+        'userId': 'userId1',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -517,9 +568,123 @@ public SignalRMessage sendMessage(
 }
 ```
 
-#### <a name="send-to-a-group"></a>Send to a group
+---
 
-You can send a message only to connections that have been added to a group by setting the `groupName` property of the SignalR message.
+### <a name="send-to-a-group"></a>发送到组
+
+您只能将消息发送到已添加到组的连接，方法是在 SignalR 消息中设置*组名称*。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```cs
+[FunctionName("SendMessage")]
+public static Task SendMessage(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message,
+    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage",
+            Arguments = new [] { message }
+        });
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+脚本代码如下C#所示：
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+JavaScript 代码如下所示：
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this group
+        "groupName": "myGroup",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+下面是 *function.json* 文件中的绑定数据：
+
+示例 function.json：
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+下面是 Python 代码：
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this group
+        'groupName': 'myGroup',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
 @FunctionName("sendMessage")
@@ -538,13 +703,263 @@ public SignalRMessage sendMessage(
 }
 ```
 
-### <a name="2x-java-group-management-output-examples"></a>2.x Java group management output examples
+---
 
-SignalR Service allows users to be added to groups. Messages can then be sent to a group. You can use the `SignalRGroupAction` class with the `SignalROutput` output binding to manage a user's group membership.
+### <a name="group-management"></a>组管理
 
-#### <a name="add-user-to-a-group"></a>Add user to a group
+SignalR 服务允许将用户添加到组。 然后，可以将消息发送到组。 你可以使用 `SignalR` 输出绑定来管理用户的组成员身份。
 
-The following example adds a user to a group.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+#### <a name="add-user-to-a-group"></a>将用户添加到组
+
+下面的示例将用户添加到组。
+
+```csharp
+[FunctionName("addToGroup")]
+public static Task AddToGroup(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    [SignalR(HubName = "chat")]
+        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+#### <a name="remove-user-from-a-group"></a>从组中删除用户
+
+下面的示例从组中删除用户。
+
+```csharp
+[FunctionName("removeFromGroup")]
+public static Task RemoveFromGroup(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    [SignalR(HubName = "chat")]
+        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> 为了正确绑定 `ClaimsPrincipal`，必须在 Azure Functions 中配置身份验证设置。
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+#### <a name="add-user-to-a-group"></a>将用户添加到组
+
+下面的示例将用户添加到组。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*运行 run.csx*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+#### <a name="remove-user-from-a-group"></a>从组中删除用户
+
+下面的示例从组中删除用户。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*运行 run.csx*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> 为了正确绑定 `ClaimsPrincipal`，必须在 Azure Functions 中配置身份验证设置。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="add-user-to-a-group"></a>将用户添加到组
+
+下面的示例将用户添加到组。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*index.js*
+
+```javascript
+module.exports = async function (context, req) {
+  context.bindings.signalRGroupActions = [{
+    "userId": req.query.userId,
+    "groupName": "myGroup",
+    "action": "add"
+  }];
+};
+```
+
+#### <a name="remove-user-from-a-group"></a>从组中删除用户
+
+下面的示例从组中删除用户。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*index.js*
+
+```javascript
+module.exports = async function (context, req) {
+  context.bindings.signalRGroupActions = [{
+    "userId": req.query.userId,
+    "groupName": "myGroup",
+    "action": "remove"
+  }];
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+#### <a name="add-user-to-a-group"></a>将用户添加到组
+
+下面的示例将用户添加到组。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*\_\_init. py__*
+
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'add'
+    }))
+```
+
+#### <a name="remove-user-from-a-group"></a>从组中删除用户
+
+下面的示例从组中删除用户。
+
+示例*函数。 json*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*\_\_init. py__*
+
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'remove'
+    }))
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+#### <a name="add-user-to-a-group"></a>将用户添加到组
+
+下面的示例将用户添加到组。
 
 ```java
 @FunctionName("addToGroup")
@@ -564,9 +979,9 @@ public SignalRGroupAction addToGroup(
 }
 ```
 
-#### <a name="remove-user-from-a-group"></a>Remove user from a group
+#### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-The following example removes a user from a group.
+下面的示例从组中删除用户。
 
 ```java
 @FunctionName("removeFromGroup")
@@ -585,6 +1000,8 @@ public SignalRGroupAction removeFromGroup(
     return action;
 }
 ```
+
+---
 
 ## <a name="configuration"></a>配置
 

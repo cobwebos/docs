@@ -1,20 +1,17 @@
 ---
-title: 工作流定义语言架构-Azure 逻辑应用
+title: 工作流定义语言的架构
 description: Azure 逻辑应用中工作流定义语言的架构参考
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 64c01baf0852e7e09ce9ffed2d079b47e95f7190
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680082"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790812"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构参考指南
 
@@ -46,7 +43,7 @@ ms.locfileid: "72680082"
 | `contentVersion` | No | 工作流定义的版本号，默认为“1.0.0.0”。 为了帮助在部署工作流时识别并确认正确的定义，请指定要使用的值。 |
 | `outputs` | No | 要从工作流运行返回的输出的定义。 有关详细信息，请参阅[输出](#outputs)。 <p><p>输出数目上限：10 |
 | `parameters` | No | 传递要在逻辑应用的运行时中使用的值的一个或多个参数的定义。 有关详细信息，请参阅[参数](#parameters)。 <p><p>参数数目上限：50 |
-| `staticResults` | No | 当对这些操作启用静态结果时，由操作返回的一个或多个静态结果的定义。 在每个操作定义中，`runtimeConfiguration.staticResult.name` 特性引用 `staticResults` 内的相应定义。 有关详细信息，请参阅[静态结果](#static-results)。 |
+| `staticResults` | No | 当对这些操作启用静态结果时，由操作返回的一个或多个静态结果的定义。 在每个操作定义中，`runtimeConfiguration.staticResult.name` 特性引用 `staticResults`内的相应定义。 有关详细信息，请参阅[静态结果](#static-results)。 |
 | `triggers` | No | 用于实例化工作流的一个或多个触发器的定义 可以定义多个触发器，但只能使用工作流定义语言来定义，而不能通过逻辑应用设计器以可视方式进行定义。 有关详细信息，请参阅[触发器和操作](#triggers-actions)。 <p><p>触发器数目上限：10 |
 ||||
 
@@ -79,20 +76,20 @@ ms.locfileid: "72680082"
 
 | 属性 | 需要 | Type | 描述 |
 |-----------|----------|------|-------------|
-| <*参数-name* > | 是 | 字符串 | 要定义的参数的名称 |
+| <*参数-name*> | 是 | 字符串 | 要定义的参数的名称 |
 | <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不返回这些类型。 有关保护参数的详细信息，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
-| <*默认参数值*> | 是 | 与 `type` 相同 | 在工作流实例化时，如果未指定任何值，则使用默认参数值。 @No__t_0 属性是必需的，以便逻辑应用设计器可以正确地显示参数，但你可以指定一个空值。 |
+| <*默认参数值*> | 是 | 与 `type` 相同 | 在工作流实例化时，如果未指定任何值，则使用默认参数值。 `defaultValue` 属性是必需的，以便逻辑应用设计器可以正确地显示参数，但你可以指定一个空值。 |
 | <*允许数组-参数值*> | No | 数组 | 包含参数可接受的值的数组 |
 | <*参数-说明*> | No | JSON 对象 | 任何其他参数详细信息，如参数的说明 |
 ||||
 
-接下来，为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，定义接受部署时所需值的模板参数，将对模板或工作流定义参数的引用替换为适当的，并在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储要在部署时使用的值。 这样，就可以更轻松地通过参数文件更改这些值，而无需更新和重新部署逻辑应用。 对于敏感或必须保护的信息（例如用户名、密码和机密），可以将这些值存储在 Azure Key Vault 中，并让参数文件从密钥保管库中检索这些值。 有关在模板和工作流定义级别定义参数的详细信息和示例，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+接下来，为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)，定义可接受部署中所需值的模板参数，并根据需要将硬编码值替换为对模板或工作流定义参数的引用，并在单独的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)中存储要使用的值。 这样，就可以更轻松地通过参数文件更改这些值，而无需更新和重新部署逻辑应用。 对于敏感或必须保护的信息（例如用户名、密码和机密），可以将这些值存储在 Azure Key Vault 中，并让参数文件从密钥保管库中检索这些值。 有关在模板和工作流定义级别定义参数的详细信息和示例，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
 <a name="static-results"></a>
 
 ## <a name="static-results"></a>静态结果
 
-在 `staticResults` 特性中，定义操作的模拟 `outputs` 并 `status` 当操作的静态结果设置为 on 时，该操作返回。 在操作的定义中，`runtimeConfiguration.staticResult.name` 属性在 `staticResults` 内引用静态结果定义的名称。 了解如何[通过设置静态结果来使用模拟数据测试逻辑应用](../logic-apps/test-logic-apps-mock-data-static-results.md)。
+在 `staticResults` 特性中，定义操作的模拟 `outputs` 并 `status` 当操作的静态结果设置为 on 时，该操作返回。 在操作的定义中，`runtimeConfiguration.staticResult.name` 属性在 `staticResults`内引用静态结果定义的名称。 了解如何[通过设置静态结果来使用模拟数据测试逻辑应用](../logic-apps/test-logic-apps-mock-data-static-results.md)。
 
 ```json
 "definition": {
@@ -118,13 +115,13 @@ ms.locfileid: "72680082"
 | 属性 | 需要 | Type | 描述 |
 |-----------|----------|------|-------------|
 | <*静态-结果定义-名称*> | 是 | 字符串 | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>您可以使用所需的任何唯一名称。 默认情况下，此唯一名称追加一个数字，该数字在必要时递增。 |
-| <*返回的输出-属性-值*> | 是 | 多种多样 | 这些属性的要求因不同的条件而异。 例如，当 `Succeeded` `status` 时，`outputs` 特性包含由操作返回的模拟输出的属性和值。 如果 `status` `Failed`，则 `outputs` 属性包含 `errors` 特性，该属性是一个包含一个或多个错误的数组，`message` 包含错误信息的对象。 |
+| <*返回的输出-属性-值*> | 是 | 多种多样 | 这些属性的要求因不同的条件而异。 例如，当 `Succeeded``status` 时，`outputs` 特性包含由操作返回的模拟输出的属性和值。 如果 `status` `Failed`，则 `outputs` 属性包含 `errors` 特性，该属性是一个包含一个或多个错误的数组，`message` 包含错误信息的对象。 |
 | <*header-values*> | No | JSON | 操作返回的任何标头值 |
 | <*返回状态代码*> | 是 | 字符串 | 操作返回的状态代码 |
 | <*操作-状态*> | 是 | 字符串 | 操作的状态，例如 `Succeeded` 或 `Failed` |
 |||||
 
-例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name` 属性在定义了该操作的模拟输出的 `staticResults` 属性中引用 `HTTP0`。 @No__t_0 特性指定 HTTP 操作上 `Enabled` 静态结果设置。
+例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name` 属性在定义了该操作的模拟输出的 `staticResults` 属性中引用 `HTTP0`。 `runtimeConfiguration.staticResult.staticResultOptions` 特性指定 HTTP 操作上 `Enabled` 静态结果设置。
 
 ```json
 "actions": {
@@ -145,7 +142,7 @@ ms.locfileid: "72680082"
 },
 ```
 
-HTTP 操作返回 `staticResults` 内 `HTTP0` 定义中的输出。 在此示例中，对于状态代码，模拟输出是 `OK`。 对于标头值，模拟输出是 `"Content-Type": "application/JSON"`。 对于操作的状态，将 `Succeeded` mock 输出。
+HTTP 操作返回 `staticResults`内 `HTTP0` 定义中的输出。 在此示例中，对于状态代码，模拟输出是 `OK`。 对于标头值，模拟输出是 `"Content-Type": "application/JSON"`。 对于操作的状态，将 `Succeeded`mock 输出。
 
 ```json
 "definition": {
@@ -282,7 +279,7 @@ HTTP 操作返回 `staticResults` 内 `HTTP0` 定义中的输出。 在此示例
 |-----------|----------|------|-------------|
 | <*key-name*> | 是 | 字符串 | 输出返回值的密钥名称 |
 | <*键类型*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
-| <*key-value*> | 是 | 与 <*键类型*相同 > | 输出返回值 |
+| <*key-value*> | 是 | 与 <*键类型*相同> | 输出返回值 |
 |||||
 
 若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。

@@ -1,17 +1,17 @@
 ---
-title: 配置复制中数据以将数据复制到 Azure Database for MySQL。
+title: 配置数据复制-Azure Database for MySQL
 description: 本文介绍如何为 Azure Database for MySQL 设置复制中数据。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459030"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774290"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
 
@@ -60,7 +60,7 @@ ms.locfileid: "61459030"
 
    在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档以了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
 
-   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
+   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser@'%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 
    **SQL 命令**
 
@@ -84,15 +84,15 @@ ms.locfileid: "61459030"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。   然后单击“添加帐户”  。 
+   若要在 MySQL Workbench 中创建复制角色，请从“管理”面板打开“用户和特权”面板。 然后单击“添加帐户”。 
  
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
-   在“登录名”字段中键入用户名。  
+   在“登录名”字段中键入用户名。 
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
  
-   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。    然后单击“应用”创建复制角色。 
+   单击“管理角色”面板，然后从“全局特权”列表中选择“复制从属角色”。 然后单击“应用”创建复制角色。
 
    ![复制从属角色](./media/howto-data-in-replication/replicationslave.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "61459030"
        - 建议以变量形式传入此参数。 有关详细信息，请参阅以下示例。
 
 > [!NOTE]
-> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置  。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
+> 如果主服务器托管在 Azure VM 中，请将“允许访问 Azure 服务”设置为“启用”，以允许主服务器和副本服务器相互通信。 从“连接安全性”选项可更改此设置。 请参阅[使用门户管理防火墙规则](howto-manage-firewall-using-portal.md)获取详细信息。
 
    **示例**
 

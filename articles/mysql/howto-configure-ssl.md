@@ -1,17 +1,17 @@
 ---
-title: 配置 SSL 连接性以安全连接到 Azure Database for MySQL
+title: 配置 SSL-Azure Database for MySQL
 description: 介绍了如何正确配置 Azure Database for MySQL 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: 590e2e7e735af55f8c7ad96f87f947115f8783fc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359445"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770554"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -22,20 +22,20 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database
 
 ## <a name="step-2-bind-ssl"></a>步骤 2：绑定 SSL
 
-有关特定的编程语言连接字符串, 请参阅下面的[示例代码](howto-configure-ssl.md#sample-code)。
+有关特定的编程语言连接字符串，请参阅下面的[示例代码](howto-configure-ssl.md#sample-code)。
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 通过 SSL 连接到服务器
 配置 MySQL Workbench，以便安全地通过 SSL 连接。 
 
 1. 从“设置新连接”对话框，导航到“SSL”选项卡。 
 
-1. 将“使用 SSL”字段更新为“必需”。
+1. 将 "**使用 SSL** " 字段更新为 "需要"。
 
-1. 在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置。 
+1. 在 " **SSL CA 文件：** " 字段中，输入**baltimorecybertrustroot.crt.pem**的文件位置。 
     
     ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”选项卡，并绑定证书文件。
+对于现有连接，可以通过右键单击连接图标来绑定 SSL，然后选择 "编辑"。 然后导航到“SSL”选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
 绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
@@ -65,7 +65,7 @@ mysql> status
 ```
 通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例：
 
 ### <a name="php"></a>PHP
@@ -77,7 +77,7 @@ if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
-### <a name="php-using-pdo"></a>PHP（使用 PDO）
+### <a name="php-using-pdo"></a>PHP （使用 PDO）
 ```phppdo
 $options = array(
     PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
@@ -105,7 +105,7 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
                        ssl={'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 
-### <a name="django-pymysql"></a>Django (PyMySQL)
+### <a name="django-pymysql"></a>Django （PyMySQL）
 ```python
 DATABASES = {
     'default': {
@@ -145,7 +145,7 @@ var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
 ```
-### <a name="java-mysql-connector-for-java"></a>Java（适用于 Java 的 MySQL 连接器）
+### <a name="java-mysql-connector-for-java"></a>Java （用于 Java 的 MySQL 连接器）
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -172,7 +172,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="java-mariadb-connector-for-java"></a>Java（适用于 Java 的 MariaDB 连接器）
+### <a name="java-mariadb-connector-for-java"></a>Java （适用于 Java 的 MariaDB 连接器）
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -200,7 +200,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
+### <a name="net-mysqlconnector"></a>.NET （MySqlConnector）
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

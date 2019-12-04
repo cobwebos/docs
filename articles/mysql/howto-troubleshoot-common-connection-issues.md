@@ -1,18 +1,18 @@
 ---
-title: 排查 Azure Databases for MySQL 的连接问题
+title: 排查连接问题-Azure Database for MySQL
 description: 了解如何对 Azure Database for MySQL 的连接问题进行故障排除，包括需要重试、防火墙问题和中断的暂时性错误。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a0203ceeb36352a16814345f5ecdff8271691fd0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 8c1c521488270ff0bfe3b306470345bc2cd885ce
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972846"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773524"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>排查 Azure Databases for MySQL 的连接问题
 
@@ -46,9 +46,9 @@ ms.locfileid: "71972846"
 
 如果应用程序一直无法连接到 Azure Database for MySQL，通常表示下列其中一项出现了问题：
 
-* 服务器防火墙配置：请确保 Azure Database for MySQL 服务器防火墙配置为允许来自客户端（包括代理服务器和网关）的连接。
-* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。
-* 用户错误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
+* 服务器防火墙配置：确保 Azure Database for MySQL 服务器防火墙配置为允许来自客户端的连接，包括代理服务器和网关。
+* 客户端防火墙配置：客户端上的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。
+* 用户错误：您可能键入了错误的连接参数（例如连接字符串中的服务器名称或用户名中缺少 *\@servername*后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

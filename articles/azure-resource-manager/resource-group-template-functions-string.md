@@ -3,12 +3,12 @@ title: 模板函数-字符串
 description: 介绍可在 Azure 资源管理器模板中用来处理字符串的函数。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 37bf03f2934980d143edeec327a0c424216fd8a1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149607"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784504"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
 
@@ -54,9 +54,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回输入字符串的 base64 表示形式。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要以 base64 表示形式返回的值。 |
 
@@ -107,10 +107,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -119,9 +119,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将 base64 表示形式转换为 JSON 对象。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为 JSON 对象的 base64 表示形式。 |
 
@@ -172,10 +172,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -184,9 +184,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将 base64 表示形式转换为字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为字符串的 base64 表示形式。 |
 
@@ -237,10 +237,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -249,14 +249,17 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 合并多个字符串值并返回串联的字符串，或合并多个数组并返回串联的数组。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字符串或数组 |串联的第一个值。 |
-| 其他参数 |否 |字符串 |按顺序排列的串联的其他值。 |
+| arg1 |是 |字符串或数组 |要串联的第一个字符串或数组。 |
+| 其他参数 |No |字符串或数组 |附加字符串或数组按顺序排列。 |
+
+此函数可以使用任意数量的参数，并可接受字符串或数组作为参数。 但是，不能同时为参数提供数组和字符串。 字符串只与其他字符串连接。
 
 ### <a name="return-value"></a>返回值
+
 串联值的字符串或数组。
 
 ### <a name="examples"></a>示例
@@ -285,9 +288,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字符串 | prefix-5yj4yjf5mbg72 |
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)演示如何组合两个数组。
 
@@ -326,9 +329,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| 返回 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| 返回 | 数组 | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>contains
 
@@ -336,12 +339,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
-| itemToFind |是 |string 或 int |要查找的值。 |
+| itemToFind |是 |字符串或整数 |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -402,14 +405,14 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True |
-| stringFalse | Bool | False |
-| objectTrue | Bool | True |
-| objectFalse | Bool | False |
-| arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| stringTrue | Bool | 正确 |
+| stringFalse | Bool | 错误 |
+| objectTrue | Bool | 正确 |
+| objectFalse | Bool | 错误 |
+| arrayTrue | Bool | 正确 |
+| arrayFalse | Bool | 错误 |
 
 ## <a name="datauri"></a>dataUri
 
@@ -417,9 +420,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将值转换为数据 URI。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字符串 |要转换为数据 URI 的值。 |
 
@@ -461,10 +464,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -472,9 +475,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 将采用数据 URI 格式的值转换为字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字符串 |要转换的数据 URI 值。 |
 
@@ -516,10 +519,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -527,11 +530,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
+| itemToTest |是 |数组、对象或字符串 |要检查其是否为空的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -580,11 +583,11 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True |
-| objectEmpty | Bool | True |
-| stringEmpty | Bool | True |
+| arrayEmpty | Bool | 正确 |
+| objectEmpty | Bool | 正确 |
+| stringEmpty | Bool | 正确 |
 
 ## <a name="endswith"></a>endsWith
 
@@ -592,9 +595,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 确定某个字符串是否以某个值结尾。 比较不区分大小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -643,14 +646,14 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True |
-| startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
-| endsTrue | Bool | True |
-| endsCapTrue | Bool | True |
-| endsFalse | Bool | False |
+| startsTrue | Bool | 正确 |
+| startsCapTrue | Bool | 正确 |
+| startsFalse | Bool | 错误 |
+| endsTrue | Bool | 正确 |
+| endsCapTrue | Bool | 正确 |
+| endsFalse | Bool | 错误 |
 
 ## <a name="first"></a>first
 
@@ -658,9 +661,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串的第一个字符，或数组的第一个元素。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -699,28 +702,28 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字符串 | 一 |
+| stringOutput | 字符串 | O |
 
-## <a name="format"></a>格式
+## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
-基于输入值创建带格式的字符串。
+从输入值创建带格式的字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| formatString | 是 | 字符串 | 复合格式字符串。 |
+| 说明符 | 是 | 字符串 | 复合格式字符串。 |
 | arg1 | 是 | 字符串、整数或布尔值 | 要包含在带格式字符串中的值。 |
-| 其他参数 | 否 | 字符串、整数或布尔值 | 要包含在带格式字符串中的附加值。 |
+| 其他参数 | No | 字符串、整数或布尔值 | 要包含在带格式字符串中的其他值。 |
 
 ### <a name="remarks"></a>备注
 
-使用此函数来为模板中的字符串设置格式。 此函数使用的格式设置选项与 .NET 中的 [System.String.Format](/dotnet/api/system.string.format) 方法相同。
+使用此函数可以设置模板中的字符串的格式。 它使用与 .NET 中的[system.string](/dotnet/api/system.string.format)方法相同的格式设置选项。
 
 ### <a name="examples"></a>示例
 
@@ -757,9 +760,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| formatTest | String | Hello, User。 格式化数字：8175133 |
+| formatTest | 字符串 | 你好，用户。 格式化数字：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -767,18 +770,18 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 基于以参数形式提供的值创建一个采用全局唯一标识符格式的值。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字符串 |哈希函数中用于创建 GUID 的值。 |
-| 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| 根据需要使用其他参数 |No |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
 当需要以全局唯一标识符格式创建值时，此功能十分有用。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。
 
-返回的值不是随机字符串，而是参数中哈希函数的结果。 返回的值长度为 36 个字符。 此值并非全局唯一。 若要创建不是基于该参数哈希值的新 GUID，请使用 [newGuid](#newguid) 函数。
+返回的值不是随机字符串，而是参数的哈希函数的结果。 返回的值长度为 36 个字符。 它不是全局唯一的。 若要创建不基于该哈希值的新 GUID，请使用[newGuid](#newguid)函数。
 
 以下示例演示如何使用 guid 创建常用级别唯一值。
 
@@ -838,16 +841,16 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串中某个值的第一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
 
-一个整数，表示要查找的项的位置。 该值从零开始。 如果未找到该项，则返回 -1。
+一个整数，表示要查找的项的位置。 该值从零开始。 如果找不到该项，则返回-1。
 
 ### <a name="examples"></a>示例
 
@@ -885,13 +888,13 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| firstT | int | 0 |
-| lastT | int | 3 |
-| firstString | int | 2 |
-| lastString | int | 0 |
-| notFound | int | -1 |
+| firstT | Int | 0 |
+| lastT | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
 ## <a name="last"></a>last
 
@@ -899,9 +902,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串的最后一个字符，或数组的最后一个元素。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -940,10 +943,10 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字符串 | 三 |
+| stringOutput | 字符串 | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -951,16 +954,16 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 返回字符串中某个值的最后一个位置。 比较不区分大小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
 
-一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果未找到该项，则返回 -1。
+一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果找不到该项，则返回-1。
 
 ### <a name="examples"></a>示例
 
@@ -998,25 +1001,25 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| firstT | int | 0 |
-| lastT | int | 3 |
-| firstString | int | 2 |
-| lastString | int | 0 |
-| notFound | int | -1 |
+| firstT | Int | 0 |
+| lastT | Int | 3 |
+| firstString | Int | 2 |
+| lastString | Int | 0 |
+| notFound | Int | -1 |
 
 ## <a name="length"></a>length
 
 `length(string)`
 
-返回字符串中的字符数、数组中的元素数或对象中的根级属性数。
+返回字符串中的字符数、数组中的元素或对象中的根级属性。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
+| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组，要用于获取字符数的字符串，或用于获取根级别属性数的对象的数组。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1076,29 +1079,29 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayLength | int | 3 |
-| stringLength | int | 13 |
-| objectLength | int | 4 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
 `newGuid()`
 
-以全局唯一标识符的格式返回一个值。 **此函数只能在参数的默认值中使用。**
+返回采用全局唯一标识符格式的值。 **此函数只能用于参数的默认值。**
 
 ### <a name="remarks"></a>备注
 
-只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
+对于参数的默认值，只能在表达式中使用此函数。 在模板中的其他任何位置使用此函数将返回错误。 此函数不能在模板的其他部分中使用，因为它会在每次调用时返回不同的值。 用相同的参数部署同一模板不会产生相同的结果。
 
-newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。 每次结合相同的参数调用 guid 都会返回相同的标识符。 需要为特定的环境可靠地生成相同的 GUID 时，请使用 guid。 如果每次需要不同的标识符（例如，将资源部署到测试环境），请使用 newGuid。
+NewGuid 函数不同于[guid](#guid)函数，因为它不采用任何参数。 如果调用具有相同参数的 guid，则每次都返回相同的标识符。 如果需要为特定环境可靠地生成相同的 GUID，请使用 guid。 每次需要不同的标识符（例如，将资源部署到测试环境）时，请使用 newGuid。
 
-如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 newGuid 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
+如果使用[选项来重新部署以前的成功部署](rollback-on-error.md)，并且以前的部署包含使用 newGuid 的参数，则不会重新评估参数。 相反，会自动在回滚部署中重复使用之前部署中的参数值。
 
-在测试环境中，可能需要重复部署生存期较短的资源。 无需构造唯一的名称，可以结合 [uniqueString](#uniquestring) 使用 newGuid 来创建唯一的名称。
+在测试环境中，可能需要重复部署只是短时间运行的资源。 可以将 newGuid 与[uniqueString](#uniquestring)配合使用来创建唯一名称，而不是构造唯一名称。
 
-重新部署依赖于 newGuid 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
+请小心地重新部署依赖于 newGuid 函数的默认值的模板。 重新部署并不提供参数的值时，将重新计算函数。 如果要更新现有的资源而不是创建新的资源，请传入之前部署的参数值。
 
 ### <a name="return-value"></a>返回值
 
@@ -1106,7 +1109,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="examples"></a>示例
 
-以下示例模板演示一个带有新标识符的参数。
+下面的示例模板显示了具有新标识符的参数。
 
 ```json
 {
@@ -1129,13 +1132,13 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 }
 ```
 
-上述示例的输出根据每个部署的不同而异，但类似于：
+前面示例的输出对于每个部署都是不同的，但如下所示：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
 | guidOutput | 字符串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-以下示例使用 newGuid 函数创建存储帐户的唯一名称。 此模板可能适用于其中的存储帐户生存期较短且未重新部署的测试环境。
+下面的示例使用 newGuid 函数为存储帐户创建唯一名称。 此模板可能适用于存储帐户在较短时间存在且不重新部署的测试环境。
 
 ```json
 {
@@ -1172,9 +1175,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 }
 ```
 
-上述示例的输出根据每个部署的不同而异，但类似于：
+前面示例的输出对于每个部署都是不同的，但如下所示：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
 | nameOutput | 字符串 | storagenziwvyru7uxie |
 
@@ -1185,13 +1188,13 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 通过向左侧添加字符直至到达指定的总长度返回右对齐的字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| valueToPad |是 |string 或 int |要右对齐的值。 |
+| valueToPad |是 |字符串或整数 |要右对齐的值。 |
 | totalLength |是 |int |返回字符串中的字符总数。 |
-| paddingCharacter |否 |单个字符 |要用于向左填充直到达到总长度的字符。 默认值为空格。 |
+| paddingCharacter |No |单个字符 |要用于向左填充直到达到总长度的字符。 默认值为空格。 |
 
 如果原始字符串的长度超过要填充的字符数，则不会添加任何字符。
 
@@ -1225,9 +1228,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | 字符串 | 0000000123 |
 
 ## <a name="replace"></a>replace
 
@@ -1235,9 +1238,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |字符串 |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
 | oldString |是 |字符串 |要从原始字符串中删除的字符串。 |
@@ -1277,10 +1280,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | 字符串 | 1231231234 |
+| secondOutput | 字符串 | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1288,12 +1291,12 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回一个字符串，其中包含指定字符数后面的所有字符；或者返回一个数组，其中包含指定元素数后面的所有元素。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
-| numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
+| numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果大于数组或字符串的长度，则返回空数组或字符串。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1345,10 +1348,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| arrayOutput | 数组 | ["three"] |
+| stringOutput | 字符串 | two three |
 
 ## <a name="split"></a>split
 
@@ -1356,9 +1359,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回包含输入字符串的子字符串的字符串数组，其中的子字符串使用指定的分隔符进行分隔。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要拆分的字符串。 |
 | delimiter |是 |字符串或字符串数组 |用于拆分字符串的分隔符。 |
@@ -1404,10 +1407,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| firstOutput | Array | ["one", "two", "three"] |
-| secondOutput | Array | ["one", "two", "three"] |
+| firstOutput | 数组 | ["one", "two", "three"] |
+| secondOutput | 数组 | ["one", "two", "three"] |
 
 ## <a name="startswith"></a>startsWith
 
@@ -1415,9 +1418,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 确定某个字符串是否以某个值开头。 比较不区分大小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -1466,14 +1469,14 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True |
-| startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
-| endsTrue | Bool | True |
-| endsCapTrue | Bool | True |
-| endsFalse | Bool | False |
+| startsTrue | Bool | 正确 |
+| startsCapTrue | Bool | 正确 |
+| startsFalse | Bool | 错误 |
+| endsTrue | Bool | 正确 |
+| endsCapTrue | Bool | 正确 |
+| endsFalse | Bool | 错误 |
 
 ## <a name="string"></a>字符串
 
@@ -1481,9 +1484,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的值转换为字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
 
@@ -1540,11 +1543,11 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | 字符串 | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | 字符串 | ["a","b","c"] |
+| intOutput | 字符串 | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1552,13 +1555,13 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回从指定的字符位置开始且包含指定数量的字符的子字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |是 |字符串 |从中提取子字符串的原始字符串。 |
-| startIndex |否 |int |子字符串的从零开始的字符位置。 |
-| length |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 必须为零或更大值。 |
+| startIndex |No |int |子字符串的从零开始的字符位置。 |
+| length |No |int |子字符串的字符数。 必须引用该字符串内的一个位置。 必须为零或更大值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1603,9 +1606,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | 字符串 | 二 |
 
 ## <a name="take"></a>take
 
@@ -1613,12 +1616,12 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符；或返回一个数组，其中包含从数组开头位置算起的指定数目的元素。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
-| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
+| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1670,10 +1673,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| arrayOutput | 数组 | ["one", "two"] |
+| stringOutput | 字符串 | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1681,9 +1684,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的字符串转换为小写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为小写的值。 |
 
@@ -1721,10 +1724,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1732,9 +1735,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 将指定的字符串转换为大写。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为大写的值。 |
 
@@ -1772,10 +1775,10 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1783,9 +1786,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 从指定的字符串中删除所有前导和尾随空白字符。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字符串 |要剪裁的值。 |
 
@@ -1819,9 +1822,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| 返回 | String | one two three |
+| 返回 | 字符串 | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1829,18 +1832,18 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 根据作为参数提供的值创建确定性哈希字符串。 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字符串 |哈希函数中用于创建唯一字符串的值。 |
-| 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| 根据需要使用其他参数 |No |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
 当需要创建资源的唯一名称时，此函数很有帮助。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。 
 
-返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 此值并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
+返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 它不是全局唯一的。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
 
     tcvhiyu5h2o5o
 
@@ -1864,7 +1867,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-以下示例演示显示如何根据资源组创建存储帐户的唯一名称。 在资源组中，如果构造方式相同，则名称不唯一。
+以下示例演示显示如何根据资源组创建存储帐户的唯一名称。 在资源组中，如果以相同方式构造，则名称不唯一。
 
 ```json
 "resources": [{ 
@@ -1873,7 +1876,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
     ...
 ```
 
-如果每次部署模板都需要创建新的唯一名称并且不希望更新资源，可以结合 uniqueString 使用 [utcNow](#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](#utcnow)。
+如果需要在每次部署模板时创建新的唯一名称，而不打算更新资源，则可以将[utcNow](#utcnow)函数与 uniqueString 一起使用。 你可以在测试环境中使用此方法。 有关示例，请参阅[utcNow](#utcnow)。
 
 ### <a name="return-value"></a>返回值
 
@@ -1907,9 +1910,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 通过组合 baseUri 和 relativeUri 字符串来创建绝对 URI。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseUri |是 |字符串 |基本 uri 字符串。 请注意观察与处理尾部反斜杠（'/'）有关的行为，如下表所述。  |
 | relativeUri |是 |字符串 |要添加到基本 uri 字符串的相对 uri 字符串。 |
@@ -1975,11 +1978,11 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1987,9 +1990,9 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 将 URI 编码。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字符串 |要编码的值。 |
 
@@ -2030,11 +2033,11 @@ URI 编码值的字符串。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2042,9 +2045,9 @@ URI 编码值的字符串。
 
 返回 URI 编码值的字符串。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字符串 |要转换为字符串的 URI 编码值。 |
 
@@ -2085,39 +2088,39 @@ URI 编码值的解码字符串。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
-以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
+返回指定格式的当前（UTC）日期时间值。 如果未提供格式，则使用 ISO 8601 （yyyyMMddTHHmmssZ）格式。 **此函数只能用于参数的默认值。**
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| 格式 |否 |字符串 |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format |No |字符串 |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>备注
 
-只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
+对于参数的默认值，只能在表达式中使用此函数。 在模板中的其他任何位置使用此函数将返回错误。 此函数不能在模板的其他部分中使用，因为它会在每次调用时返回不同的值。 用相同的参数部署同一模板不会产生相同的结果。
 
-如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
+如果使用[选项来重新部署以前的成功部署](rollback-on-error.md)，并且以前的部署包含使用 utcNow 的参数，则不会重新评估参数。 相反，会自动在回滚部署中重复使用之前部署中的参数值。
 
-重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
+请小心地重新部署依赖于 utcNow 函数的默认值的模板。 重新部署并不提供参数的值时，将重新计算函数。 如果要更新现有的资源而不是创建新的资源，请传入之前部署的参数值。
 
 ### <a name="return-value"></a>返回值
 
-当前的 UTC 日期时间值。
+当前 UTC 日期时间值。
 
 ### <a name="examples"></a>示例
 
-以下示例模板演示日期时间值的不同格式。
+下面的示例模板显示了日期时间值的不同格式。
 
 ```json
 {
@@ -2156,15 +2159,15 @@ URI 编码值的解码字符串。
 }
 ```
 
-上述示例的输出根据每个部署的不同而异，但类似于：
+前面示例的输出对于每个部署都是不同的，但如下所示：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
 | utcOutput | 字符串 | 20190305T175318Z |
 | utcShortOutput | 字符串 | 03/05/2019 |
 | utcCustomOutput | 字符串 | 3 5 |
 
-以下示例演示在设置标记值时如何使用函数中的值。
+下一个示例演示如何在设置标记值时使用函数中的值。
 
 ```json
 {

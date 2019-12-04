@@ -1,20 +1,19 @@
 ---
-title: 用于 B2B 集成的 RosettaNet 消息-Azure 逻辑应用
+title: 用于 B2B 集成的 RosettaNet 消息
 description: 在 Azure 逻辑应用中通过 Enterprise Integration Pack 交换 RosettaNet 消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 570c7907f320b881e2db0bd45cdce311490f4f45
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680334"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792417"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure 逻辑应用中用于 B2B 企业集成的 Exchange RosettaNet 消息
 

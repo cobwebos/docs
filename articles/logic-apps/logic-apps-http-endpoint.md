@@ -1,20 +1,17 @@
 ---
-title: 调用、触发或嵌套逻辑应用-Azure 逻辑应用
+title: 调用、触发或嵌套逻辑应用
 description: 设置 HTTP 终结点，以便在 Azure 逻辑应用中调用、触发或嵌套逻辑应用工作流
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833911"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792031"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
 
@@ -31,7 +28,7 @@ ms.locfileid: "73833911"
 
 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -43,7 +40,7 @@ ms.locfileid: "73833911"
 
    此示例使用请求触发器，但你可以使用任何可接收传入 HTTP 请求的触发器。 所有原则均相同适用于这些触发器。 有关请求触发器的详细信息，请参阅[使用 Azure 逻辑应用接收和响应传入 HTTPS 调用](../connectors/connectors-native-reqres.md)。
 
-1. 在搜索框下，选择 "**内置**"。 在搜索框中，输入 "`request`" 作为筛选器。 从 "触发器" 列表中，选择**接收 HTTP 请求的时间**。
+1. 在搜索框下，选择 "**内置**"。 在搜索框中，输入 `request` 作为筛选器。 从 "触发器" 列表中，选择**接收 HTTP 请求的时间**。
 
    ![查找并选择请求触发器](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -109,7 +106,7 @@ ms.locfileid: "73833911"
 
    还可以从逻辑应用的 "**概述**" 窗格中获取 HTTP 终结点 URL。
 
-   1. 在逻辑应用的菜单中，选择“概述”。
+   1. 在逻辑应用的菜单上，选择 "**概述**"。
 
    1. 在 "**摘要**" 部分，选择 "**查看触发器历史记录**"。
 
@@ -157,7 +154,7 @@ ms.locfileid: "73833911"
 
    1. 在请求触发器下，选择 "**新建步骤**" > "**添加操作**"。
 
-   1. 在 "**选择操作**" 下的 "搜索" 框中，输入 `response` 作为筛选器。
+   1. 在“选择操作”下的搜索框中，输入 `response` 作为筛选器。
 
    1. 从 "操作" 列表中，选择 "**响应**" 操作。
 
@@ -181,7 +178,7 @@ ms.locfileid: "73833911"
     https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
     ```
 
-1. 要测试 HTTP 终结点，请将更新的 URL 复制并粘贴到另一个浏览器窗口（但要将 `{postalCode}` 替换为 `123456`），并按 Enter。
+1. 要测试 HTTP 终结点，请将更新的 URL 复制并粘贴到另一个浏览器窗口（但要将 `{postalCode}` 替换为 `123456`），然后按 Enter。
 
    你的浏览器将显示以下文本： `Postal Code: 123456`
 
@@ -231,7 +228,7 @@ ms.locfileid: "73833911"
 
 1. 在要调用另一个逻辑应用的步骤下，选择 "**新建步骤**" > "**添加操作**"。
 
-1. 在 "**选择操作**" 下，选择 "**内置**"。 在搜索框中，输入 "`logic apps`" 作为筛选器。 从 "操作" 列表中，选择 "**选择逻辑应用工作流**"。
+1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `logic apps` 作为筛选器。 从 "操作" 列表中，选择 "**选择逻辑应用工作流**"。
 
    ![在当前逻辑应用中嵌套逻辑应用](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -278,7 +275,7 @@ ms.locfileid: "73833911"
 
 响应具有以下属性：
 
-| 属性（显示） | 属性（JSON） | 说明 |
+| 属性（显示） | 属性（JSON） | 描述 |
 |--------------------|-----------------|-------------|
 | **状态代码** | `statusCode` | 要在传入请求的响应中使用的 HTTP 状态代码。 该代码可以是以 2xx、4xx 或 5xx 开头的任何有效状态代码。 但是，不允许使用 3xx 状态代码。 |
 | **标头** | `headers` | 要包括在响应中的一个或多个标头 |

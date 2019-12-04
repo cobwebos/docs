@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240668"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777411"
 ---
 # <a name="connect-data-from-office-365-logs"></a>连接 Office 365 日志中的数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "71240668"
 > [!IMPORTANT]
 > 如果有 E3 许可证，则必须先为 Office 365 组织启用统一审核日志记录，然后才能通过 Office 365 管理活动 API 访问数据。 可以通过打开 Office 365 审核日志来完成此操作。 有关说明，请参阅[打开或关闭 Office 365 审核日志搜索](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)。 有关详细信息，请参阅[Office 365 管理活动 API 参考](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 你必须是租户的全局管理员或安全管理员
 - 在你登录到 Azure Sentinel 以创建连接的计算机上，确保端口4433已打开 web 流量。 成功建立连接后，可以再次关闭此端口。
@@ -42,7 +42,7 @@ ms.locfileid: "71240668"
 
 1. 在 Azure Sentinel 中，选择 "**数据连接器**"，然后单击 " **Office 365** " 磁贴。
 
-2. 如果尚未启用此功能，请在 "**连接**" 下，使用 "**启用**" 按钮启用 Office 365 解决方案。 如果已启用，则会在 "连接" 屏幕中将其标识为已启用。
+2. 如果尚未启用此功能，可以转到 "**数据连接器**" 边栏选项卡并选择 " **Office 365**连接器"。 在此处，你可以单击 "**打开连接器" 页**，然后在 "配置" 部分中，在**你的工作区上启用 Office 365 解决方案**，使用 "**安装解决方案**" 按钮启用它。 如果已启用，则会在 "连接" 屏幕中将其标识为已启用。
 1. Office 365 使你能够将来自多个租户的数据流式传输到 Azure Sentinel。 对于想要连接到的每个租户，在 "**将租户连接到 Azure" Sentinel**下添加租户。 
 1. 此时将打开一个 Active Directory 屏幕。 系统将提示你向要连接到 Azure Sentinel 的每个租户上的全局管理员用户进行身份验证，并向 Azure Sentinel 提供权限来读取其日志。 
 5. 在 "Stream Office 365 活动日志" 下，单击 "**选择**" 以选择要流式传输到 Azure Sentinel 的日志类型。 目前，Azure Sentinel 支持 Exchange 和 SharePoint。
@@ -54,6 +54,6 @@ ms.locfileid: "71240668"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Office 365 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 

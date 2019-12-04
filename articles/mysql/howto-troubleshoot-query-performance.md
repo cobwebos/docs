@@ -1,17 +1,17 @@
 ---
-title: 如何对 Azure Database for MySQL 中的查询性能问题进行故障排除
+title: 查询性能故障排除-Azure Database for MySQL
 description: 了解如何使用说明来解决 Azure Database for MySQL 中的查询性能问题。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 02/28/2018
-ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 5bfefe3215558a94396e729a318e0746a4fb3aec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972858"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764791"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 分析 Azure Database for MySQL 中的查询性能
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。
@@ -120,7 +120,7 @@ possible_keys: covered
 如上面的 EXPLAIN 所表明，MySQL 现在使用涵盖索引并避免了创建临时表。 
 
 ## <a name="combined-index"></a>组合索引
-组合索引由来自多个列的值组成，并且可以包含行数组，其中的行按已编制索引的列的串联值排序。 可以在 **GROUP BY** 语句中使用此方法。
+组合索引由来自多个列的值组成，并且可以包含行数组，其中的行按已编制索引的列的串联值排序。 此方法在**GROUP BY**语句中非常有用。
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
@@ -167,4 +167,4 @@ EXPLAIN 现在表明，MySQL 能够使用组合索引避免额外的排序，因
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [MSDN 论坛](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若要查找同行对你最关心的问题的解答或者发布新的问题/解答，请访问 [MSDN 论坛](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) 或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

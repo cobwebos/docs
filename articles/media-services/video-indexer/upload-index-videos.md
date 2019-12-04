@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/29/2019
+ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: d06be1b5301889a1fcb8ff1390d8618bbb88c03f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a1fd37b65c3449e7000db6189c8c71def1f96b0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666471"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790055"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -120,12 +120,28 @@ ms.locfileid: "74666471"
 
 以下 C# 代码片段演示了如何将所有的视频索引器 API 结合使用。
 
+### <a name="instructions-for-running-this-code-sample"></a>有关运行此代码示例的说明
+
+将此代码复制到开发平台后，需要提供两个参数： API 管理身份验证密钥和视频 URL。
+
+* API 密钥– API 密钥是你的个人 API 管理订阅密钥，将允许你获取访问令牌，以便对视频索引器帐户执行操作。 
+
+    若要获取 API 密钥，请完成以下流程：
+
+    * 导航到 https://api-portal.videoindexer.ai/
+    * 登录
+    *  -> **授权订阅**中转到 "**产品**" -> **授权**
+    * 复制**主密钥**
+* 视频 URL-要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。
+
+成功运行代码示例的结果将包括一个见解小组件 URL 和一个播放机小组件 URL，该 URL 允许你分别检查见解和视频上传。 
+
+
 ```csharp
 public async Task Sample()
 {
     var apiUrl = "https://api.videoindexer.ai";
-    var location = "westus2";
-    var apiKey = "...";
+    var apiKey = "..."; // replace with API key taken from https://aka.ms/viapi
 
     System.Net.ServicePointManager.SecurityProtocol =
         System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -146,7 +162,9 @@ public async Task Sample()
     HttpResponseMessage result = await client.GetAsync($"{apiUrl}/auth/trial/Accounts?{queryParams}");
     var json = await result.Content.ReadAsStringAsync();
     var accounts = JsonConvert.DeserializeObject<AccountContractSlim[]>(json);
-    // take the relevant account, here we simply take the first
+    
+    // take the relevant account, here we simply take the first, 
+    // you can also get the account via accounts.First(account => account.Id == <GUID>);
     var accountInfo = accounts.First();
 
     // we will use the access token from here on, no need for the apim key
@@ -154,7 +172,7 @@ public async Task Sample()
 
     // upload a video
     var content = new MultipartFormDataContent();
-    Debug.WriteLine("Uploading...");
+    Console.WriteLine("Uploading...");
     // get the video from URL
     var videoUrl = "VIDEO_URL"; // replace with the video URL
 
@@ -180,9 +198,9 @@ public async Task Sample()
 
     // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
-    Debug.WriteLine("Uploaded");
-    Debug.WriteLine("Video ID:");
-    Debug.WriteLine(videoId);
+    Console.WriteLine("Uploaded");
+    Console.WriteLine("Video ID:");
+    Console.WriteLine(videoId);
 
     // wait for the video index to finish
     while (true)
@@ -201,16 +219,16 @@ public async Task Sample()
 
         string processingState = JsonConvert.DeserializeObject<dynamic>(videoGetIndexResult)["state"];
 
-        Debug.WriteLine("");
-        Debug.WriteLine("State:");
-        Debug.WriteLine(processingState);
+        Console.WriteLine("");
+        Console.WriteLine("State:");
+        Console.WriteLine(processingState);
 
         // job is finished
         if (processingState != "Uploaded" && processingState != "Processing")
         {
-            Debug.WriteLine("");
-            Debug.WriteLine("Full JSON:");
-            Debug.WriteLine(videoGetIndexResult);
+            Console.WriteLine("");
+            Console.WriteLine("Full JSON:");
+            Console.WriteLine(videoGetIndexResult);
             break;
         }
     }
@@ -225,9 +243,9 @@ public async Task Sample()
 
     var searchRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/Search?{queryParams}");
     var searchResult = await searchRequestResult.Content.ReadAsStringAsync();
-    Debug.WriteLine("");
-    Debug.WriteLine("Search:");
-    Debug.WriteLine(searchResult);
+    Console.WriteLine("");
+    Console.WriteLine("Search:");
+    Console.WriteLine(searchResult);
 
     // Generate video access token (used for get widget calls)
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
@@ -245,8 +263,8 @@ public async Task Sample()
         });
     var insightsWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/InsightsWidget?{queryParams}");
     var insightsWidgetLink = insightsWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("Insights Widget url:");
-    Debug.WriteLine(insightsWidgetLink);
+    Console.WriteLine("Insights Widget url:");
+    Console.WriteLine(insightsWidgetLink);
 
     // get player widget url
     queryParams = CreateQueryString(
@@ -256,9 +274,16 @@ public async Task Sample()
         });
     var playerWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/PlayerWidget?{queryParams}");
     var playerWidgetLink = playerWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("");
-    Debug.WriteLine("Player Widget url:");
-    Debug.WriteLine(playerWidgetLink);
+     Console.WriteLine("");
+     Console.WriteLine("Player Widget url:");
+     Console.WriteLine(playerWidgetLink);
+     Console.WriteLine("\nPress Enter to exit...");
+     String line = Console.ReadLine();
+     if (line == "enter")
+     {
+         System.Environment.Exit(0);
+     }
+
 }
 
 private string CreateQueryString(IDictionary<string, string> parameters)

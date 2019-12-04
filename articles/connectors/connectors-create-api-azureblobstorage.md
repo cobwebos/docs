@@ -1,22 +1,18 @@
 ---
-title: 连接到 Azure Blob 存储-Azure 逻辑应用
+title: 连接到 Azure Blob 存储
 description: 使用 Azure 逻辑应用创建和管理 Azure 存储帐户中的 blob
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/28/2019
 tags: connectors
-ms.openlocfilehash: c431f917f6fc1ac080b13184bd9ce205a20afbaa
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199657"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789920"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Azure Blob 存储中的 blob
 

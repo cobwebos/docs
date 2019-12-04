@@ -1,28 +1,24 @@
 ---
-title: 从 Azure 逻辑应用连接到 SMTP | Microsoft Docs
+title: 从 Azure 逻辑应用连接到 SMTP
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以通过 SMTP（简单邮件传输协议）帐户发送电子邮件
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050743"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789148"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
-使用 Azure 逻辑应用和简单邮件传输协议 (SMTP) 连接器，可以创建从 SMTP 帐户发送电子邮件的自动化任务和工作流。 还可以让其他操作使用来自 SMTP 操作的输出。 例如，在 SMTP 发送电子邮件后，你可以通过 Slack 连接器通知你在 Slack 中的团队。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+使用 Azure 逻辑应用和简单邮件传输协议 (SMTP) 连接器，可以创建从 SMTP 帐户发送电子邮件的自动化任务和工作流。 还可以让其他操作使用来自 SMTP 操作的输出。 例如，在 SMTP 发送电子邮件后，你可以通过 Slack 连接器通知你在 Slack 中的团队。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -34,15 +30,15 @@ ms.locfileid: "70050743"
 
 * 要在其中访问 SMTP 帐户的逻辑应用。 若要使用 SMTP 操作，请使用触发器启动逻辑应用，例如，如果你有 Salesforce 帐户，则可使用 Salesforce 触发器。
 
-  例如，可以使用 Salesforce 触发器**当创建了记录时**来启动逻辑应用。 
-  每当在 Salesforce 中创建了新记录（例如潜在顾客）时，此触发器都会触发。 
+  例如，可以使用“创建记录时”Salesforce 触发器来启动逻辑应用。 
+  每当在 Salesforce 中创建新记录（例如潜在顾客）时，此触发器都会激发。 
   在此触发器后，可以跟随执行 SMTP **发送电子邮件**操作。 这样一来，当创建了新记录时，逻辑应用都会从你的 SMTP 帐户发送一封关于新记录的电子邮件。
 
 ## <a name="connect-to-smtp"></a>连接到 SMTP
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 在要添加 SMTP 操作的最后一个步骤下，选择“新建步骤”。 
 
@@ -53,14 +49,14 @@ ms.locfileid: "70050743"
 
 1. 出现提示时，提供此连接信息：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
    | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 
    | **用户名** | 是 | SMTP 帐户的用户名 | 
    | **密码** | 是 | SMTP 帐户的密码 | 
-   | **SMTP 服务器端口** | 否 | SMTP 服务器上你要使用的特定端口 | 
-   | **启用 SSL?** | 否 | 启用或禁用 SSL 加密。 | 
+   | **SMTP 服务器端口** | No | SMTP 服务器上你要使用的特定端口 | 
+   | **启用 SSL?** | No | 启用或禁用 SSL 加密。 | 
    |||| 
 
 1. 为所选操作提供必要的详细信息。 

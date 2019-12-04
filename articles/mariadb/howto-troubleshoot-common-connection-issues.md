@@ -1,17 +1,17 @@
 ---
-title: 解决 Azure Databases for MariaDB 的连接问题
+title: 排查连接问题-Azure Database for MariaDB
 description: 了解如何对 Azure Database for MariaDB 的连接问题进行故障排除，包括需要重试、防火墙问题和中断的暂时性错误。
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 11/09/2018
-ms.openlocfilehash: a8354cdc364f221a086f4d2f4ec7da95c55baf6e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973518"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765726"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>解决 Azure Databases for MariaDB 的连接问题
 
@@ -46,8 +46,8 @@ ms.locfileid: "71973518"
 如果应用程序一直无法连接到 Azure Database for MariaDB，通常表示下列其中一项出现了问题：
 
 * 防火墙配置：Azure Database for MariaDB 服务器或客户端防火墙正在阻止连接。
-* 客户端上的网络重新配置：已添加新的 IP 地址或代理服务器。
-* 用户错误：例如，连接参数的键入错误（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
+* 在客户端重新配置了网络：例如，添加了新的 IP 地址或代理服务器。
+* 用户错误：例如，你可能键入了错误的连接参数（例如连接字符串中的服务器名称或用户名中缺少 *\@servername*后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

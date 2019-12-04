@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404211"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785851"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -25,7 +25,7 @@ ms.locfileid: "74404211"
 > [!TIP]
 > 建议使用条件性访问策略启用 Azure 多重身份验证。 不建议更改用户状态，除非你的许可证不包含条件性访问，因为你的许可证会要求用户在每次登录时执行 MFA。
 
-## <a name="choose-how-to-enable"></a>选择如何启用
+## <a name="choose-how-to-enable"></a>选择启用方法
 
 **通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户在**每次登录时**执行双重验证，并覆盖条件访问策略。
 
@@ -41,11 +41,14 @@ ms.locfileid: "74404211"
 
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
-| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
-|:---:|:---:|:---:|:--:|:--:|
-| 已禁用 |没有在 Azure MFA 中注册某个新用户的默认状态。 |否 |否 |否 |
-| Enabled |用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 |否。  它们继续工作，直到注册过程完成。 | 可以。 会话过期后，会要求进行 Azure MFA 注册。| 可以。 访问令牌过期后，会要求进行 Azure MFA 注册。 |
-| 强制 |用户已加入，并已完成 Azure MFA 的注册过程。 |可以。 应用需要应用密码。 |可以。 在登录时会要求进行 Azure MFA。 | 可以。 在登录时会要求进行 Azure MFA。 |
+> [!IMPORTANT]
+> 通过条件性访问策略启用 Azure MFA 将不会更改用户的状态。 不会发出警报，用户显示为禁用状态。 条件访问不会更改状态。 **如果组织使用条件性访问策略，则不应启用或强制用户。**
+
+| 状态 | 描述 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+|:---:| --- |:---:|:--:|:--:|
+| Disabled | 没有在 Azure MFA 中注册某个新用户的默认状态。 | No | No | No |
+| 已启用 | 用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不。  它们继续工作，直到注册过程完成。 | 可以。 会话过期后，会要求进行 Azure MFA 注册。| 可以。 访问令牌过期后，会要求进行 Azure MFA 注册。 |
+| 强制 | 用户已加入，并已完成 Azure MFA 的注册过程。 | 可以。 应用需要应用密码。 | 可以。 在登录时会要求进行 Azure MFA。 | 可以。 在登录时会要求进行 Azure MFA。 |
 
 用户的状态反映管理员是否已在 Azure MFA 中登记用户以及用户是否已完成注册过程。
 
@@ -66,10 +69,10 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 1. 使用前文的步骤访问 Azure 多重身份验证“用户”页面。
 2. 找到希望对其启用 Azure MFA 的用户。 可能需要在顶部更改视图。
-   ![从“用户”选项卡选择要更改状态的用户](./media/howto-mfa-userstates/enable1.png)
+   ![在 "用户" 选项卡中选择要更改其状态的用户](./media/howto-mfa-userstates/enable1.png)
 3. 勾选用户名称旁边的框。
 4. 在右侧，在“快速步骤”下，选择“启用”或“禁用”。
-   ![通过在快速步骤菜单上单击“启用”来启用所选用户](./media/howto-mfa-userstates/user1.png)
+   ![通过单击 "快速步骤" 菜单上的 "启用" 来启用选定的用户](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > “已启用”的用户在注册 Azure MFA 后会自动切换到“强制”。 不应手动将用户状态更改为“强制”。
@@ -82,9 +85,9 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 若要使用 [Azure AD PowerShell](/powershell/azure/overview) 更改用户状态，请更改 `$st.State`。 有三种可能的状态：
 
-* Enabled
+* 已启用
 * 强制
-* 已禁用  
+* Disabled  
 
 不要直接将用户移动到“强制”状态。 如果这样做了，则非基于浏览器的应用将停止工作，因为用户尚未完成 Azure MFA 注册并获得[应用密码](howto-mfa-mfasettings.md#app-passwords)。
 
@@ -180,5 +183,5 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ## <a name="next-steps"></a>后续步骤
 
 * 为什么会提示或不会提示用户执行 MFA？ 请参阅[“Azure 多重身份验证中的报告”一文中的“Azure AD 登录报告”部分](howto-mfa-reporting.md#azure-ad-sign-ins-report)。
-* 若要配置其他设置（如受信任 IP、自定义语音消息和欺诈警报），请参阅[配置 Azure 多重身份验证设置](howto-mfa-mfasettings.md)一文
+* 若要配置其他设置（例如受信任的 IP、自定义语音消息和欺诈警报），请参阅[配置 Azure 多重身份验证设置](howto-mfa-mfasettings.md)一文
 * 有关管理 Azure 多重身份验证的用户设置的信息，请参阅[管理云中 Azure 多重身份验证的用户设置](howto-mfa-userdevicesettings.md)一文

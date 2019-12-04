@@ -1,17 +1,17 @@
 ---
-title: 为 Azure Database for PostgreSQL 计算资源预付预留容量
+title: 保留计算定价-Azure Database for PostgreSQL-单服务器
 description: 为 Azure Database for PostgreSQL 计算资源预付预留容量
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 634ab645ea49c29bb5624afd82e549dfbc8d0fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123870"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769891"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>为 Azure Database for PostgreSQL 计算资源预付预留容量
 
@@ -25,7 +25,7 @@ ms.locfileid: "74123870"
 可以在[Azure 门户](https://portal.azure.com/)中购买 Azure Database for PostgreSQL 保留容量。 购买保留容量：
 
 * 对于至少一个企业或个人订阅，你必须以即用即付费率作为所有者角色。
-* 对于企业订阅，必须在 **EA 门户**中启用“添加预留实例”[](https://ea.azure.com/)。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
+* 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”。 或者，如果禁用了该设置，则你必须是订阅的 EA 管理员。
 * 对于云解决方案提供商（CSP）程序，只有管理代理或销售代理可以购买 Azure Database for PostgreSQL 保留容量。 </br>
 
 有关预留购买如何针对企业客户和即用即付客户进行计费的详细信息，请参阅[了解适用于企业合约的 Azure 预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)和[了解即用即付订阅的 Azure 预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
@@ -51,14 +51,14 @@ ms.locfileid: "74123870"
 
 下表描述了必填字段。
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | :------------ | :------- |
-| 订阅   | 用于支付 Azure Database for PostgreSQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for PostgreSQL 预留容量预留的前期成本。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或使用即用即付定价的单个协议（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
+| Subscription   | 用于支付 Azure Database for PostgreSQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for PostgreSQL 预留容量预留的前期成本。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或使用即用即付定价的单个协议（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
 | 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for PostgreSQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for PostgreSQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for PostgreSQL 服务器，以及该订阅内的所选资源组。
-| 区域 | Azure Database for PostgreSQL 保留容量保留所涵盖的 Azure 区域。
+| 地区 | Azure Database for PostgreSQL 保留容量保留所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预订的 Azure Database for PostgreSQL 资源类型。
 | 性能层 | Azure Database for PostgreSQL 服务器的服务层。
-| 术语 | 一年
+| 条款 | 一年
 | 数量 | 在 Azure Database for PostgreSQL 保留容量保留内购买的计算资源量。 该数量是所选 Azure 区域和正在保留的性能层中的 Vcore 数，将获得计费折扣。 例如，如果你正在运行或计划运行具有 Gen5 16 Vcore 的总计算能力的 Azure Database for PostgreSQL 服务器，则会将数量指定为16，以最大程度地提高所有服务器的权益。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
@@ -71,14 +71,14 @@ vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="next-steps"></a>后续步骤
 
 VCore 预订折扣将自动应用于与 Azure Database for PostgreSQL 保留容量预留范围和属性匹配的 Azure Database for PostgreSQL 服务器数。 可以通过 Azure 门户、PowerShell、CLI 或通过 API，更新 Azure database for PostgreSQL reserved 容量预留的作用域。 </br></br>
 若要了解如何管理 Azure Database for PostgreSQL 预留容量，请参阅管理 Azure Database for PostgreSQL 保留容量。
 
-若要了解有关 Azure 预订的详细信息，请参阅以下文章：
+若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
 * [什么是 Azure 保留](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)？
 * [管理 Azure 预留项](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)

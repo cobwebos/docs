@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
-description: 了解如何自动备份和还原 Azure Database for PostgreSQL 服务器 - 单一服务器。
+title: 备份和还原-Azure Database for PostgreSQL-单服务器
+description: 了解自动备份并还原 Azure Database for PostgreSQL server-单台服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cbd434f2f9e1217a3a481a28988f4e1d855ba08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209640"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769857"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的备份和还原
 
 Azure Database for PostgreSQL 可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 备份可以用来将服务器还原到某个时间点。 备份和还原是任何业务连续性策略的基本组成部分，因为它们可以保护数据免遭意外损坏或删除。
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL 获取数据文件和事务日志的备份。 根�
 
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，对于最大支持存储空间为 4 TB 的服务器，每日执行一次差异备份。 对于支持的最大存储为 16 TB 的服务器，快照备份每天至少进行一次。 两种情况下，事务日志备份每五分钟进行一次。 创建服务器后，立即计划完整备份的第一个快照。 在较大的还原服务器上，初始完整备份的时间可能更长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 随着快照 instantanious，可将最多 16 TB 存储空间的服务器恢复到创建时间。
+通常情况下，完整备份每周进行一次，对于最大支持存储空间为 4 TB 的服务器，每日执行一次差异备份。 对于支持的最大存储为 16 TB 的服务器，快照备份每天至少进行一次。 两种情况下，事务日志备份每五分钟进行一次。 创建服务器后，立即计划完整备份的第一个快照。 在较大的还原服务器上，初始完整备份的时间可能更长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 因为快照是瞬时的，所以最多可以将支持 16 TB 存储的服务器还原到创建时间。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -79,6 +79,6 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用  [Azure 门户](howto-restore-server-portal.md)进行还原。
-- 了解如何使用  [Azure CLI](howto-restore-server-cli.md) 进行还原。
+- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)进行还原。
+- 了解如何使用 [Azure CLI](howto-restore-server-cli.md)进行还原。
 - 若要详细了解业务连续性，请参阅 [业务连续性概述](concepts-business-continuity.md)。

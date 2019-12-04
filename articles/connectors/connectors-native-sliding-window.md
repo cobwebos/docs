@@ -1,20 +1,17 @@
 ---
-title: 计划任务来处理连续数据-Azure 逻辑应用
+title: 计划处理连续数据的任务
 description: 通过在 Azure 逻辑应用中使用滑动窗口来创建和运行处理连续数据的周期性任务
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 0312d9480d00d4430cd5d42dc22ef9dac005ee2e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679060"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786905"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用滑动窗口触发器来计划和运行连续数据的任务
 

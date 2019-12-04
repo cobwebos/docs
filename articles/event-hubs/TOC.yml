@@ -168,7 +168,7 @@
           href: configure-customer-managed-key.md
     - name: 故障排除
       items:
-        - name: 例外
+        - name: 故障排除指南
           href: event-hubs-messaging-exceptions.md
 - name: 引用
   items:

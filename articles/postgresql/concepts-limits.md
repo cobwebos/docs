@@ -1,29 +1,29 @@
 ---
-title: Azure Database for PostgreSQL（单一服务器）中的限制
-description: 本文介绍了 Azure Database for PostgreSQL（单一服务器）中的限制，例如连接数和存储引擎选项。
+title: 限制-Azure Database for PostgreSQL-单个服务器
+description: 本文介绍 Azure Database for PostgreSQL 单服务器中的限制，例如连接数和存储引擎选项。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9cef4753b6fd324b38d7254139fe288463a0c0c
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123893"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768531"
 ---
-# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
-下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器的限制
+下列各部分介绍数据库服务中的容量和功能限制。 如需了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
 
 
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示： 
 
-|定价层| **vCore(s)**| 最大连接数 | **最大用户连接数** |
+|**定价层**| **vCore(s)**| 最大连接数 | **最大用户连接数** |
 |---|---|---|---|
-|基本| 1| 55 | 50|
+|基本| 第| 55 | 50|
 |基本| 2| 105 | 100|
 |常规用途| 2| 150| 145|
 |常规用途| 4| 250| 245|
@@ -50,11 +50,11 @@ Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服�
 ### <a name="server-version-upgrades"></a>服务器版本升级
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。 如果要升级到下一主要版本，请将其[转储和还原](./howto-migrate-using-dump-and-restore.md)到使用新引擎版本创建的服务器。
 
-> 请注意，在 PostgreSQL 版本 10 之前，[PostgreSQL 版本控制策略](https://www.postgresql.org/support/versioning/)将_主版本_升级视为第一个_或_第二个数字的增加（例如，9.5 到 9.6 视为_主_版本升级）。
-> 从版本 10 开始，只有第一个数字的更改才视为主版本升级（例如，10.0 到 10.1 是_次要_版本升级，10 到 11 是_主_版本升级）。
+> 请注意，在 PostgreSQL 版本10之前， [PostgreSQL 版本控制策略](https://www.postgresql.org/support/versioning/)视为_第一个_ _或_第二个数字的增加（例如，9.5 到9.6 被视为_主要_版本升级）。
+> 从版本10开始，只有第一个数字中的更改被视为主要版本升级（例如，10.0 到10.1 是_次_版本升级，10到11是_主要_版本升级）。
 
 ### <a name="vnet-service-endpoints"></a>VNet 服务终结点
-- 对 VNet 服务终结点的支持仅适用于常规用途和内存优化的服务器。
+- 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 ### <a name="restoring-a-server"></a>还原服务器
 - 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的定价层配置创建新服务器。

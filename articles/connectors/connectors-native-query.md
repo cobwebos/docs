@@ -1,27 +1,21 @@
 ---
-title: 在逻辑应用中添加查询操作 | Microsoft Docs
-description: 用于执行筛选数组等操作的查询操作的概述。
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+title: 在逻辑应用中添加查询操作
+description: 用于执行筛选数组等操作的查询操作概述
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973753"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787126"
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
+
 通过使用查询操作，可使用批处理和数组完成工作流，以便：
 
 * 为来自数据库的所有高优先级记录创建任务。
@@ -30,6 +24,7 @@ ms.locfileid: "71973753"
 若要开始在逻辑应用中使用查询操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-query-action"></a>使用查询操作
+
 操作是由在逻辑应用中定义的工作流执行的操作。 
 [了解有关操作的详细信息](../connectors/apis-list.md)。  
 
@@ -55,7 +50,7 @@ ms.locfileid: "71973753"
 ## <a name="query-action"></a>Query 操作
 下面是此连接器支持的操作的详细信息。 连接器具有一个可能的操作。
 
-| 操作 | 描述 |
+| 行动 | 描述 |
 | --- | --- |
 | 筛选数组 |为数组中的每个项目评估条件并返回结果 |
 
@@ -66,7 +61,7 @@ ms.locfileid: "71973753"
 下面是操作的输入字段，该操作发出 HTTP 出站请求。
 \* 表示它是必填字段。
 
-| Display name | 属性名 | 描述 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 来自* |from |要筛选的数组 |
 | 条件* |其中 |要为每个项目评估的条件 |
@@ -76,9 +71,9 @@ ms.locfileid: "71973753"
 ### <a name="output-details"></a>输出详细信息
 下面是 HTTP 响应的输出详细信息。
 
-| 属性名 | 数据类型 | 描述 |
+| 属性名称 | 数据类型 | 描述 |
 | --- | --- | --- |
-| 已筛选的数组 |array |为每个已筛选的结果包含一个对象的数组 |
+| 已筛选的数组 |数组 |为每个已筛选的结果包含一个对象的数组 |
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。

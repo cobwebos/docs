@@ -1,20 +1,17 @@
 ---
-title: 将身份验证添加到自定义 API - Azure 逻辑应用 | Microsoft Docs
+title: 向自定义 Api 添加身份验证
 description: 通过 Azure 逻辑应用为调用自定义 API 设置身份验证
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039129"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793159"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -54,9 +51,9 @@ ms.locfileid: "74039129"
 2. 确认所在目录与 Web 应用或 API 应用相同。
 
    > [!TIP]
-   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” **“切换目录”**  > 。
+   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” > “切换目录”。
 
-3. 在目录菜单的“管理”下，选择“应用注册” **“新建应用程序注册”**  > 。
+3. 在目录菜单的“管理”下，选择“应用注册” > “新建应用程序注册”。
 
    > [!TIP]
    > 默认情况下，应用注册列表显示目录中的所有应用注册。 若要仅查看应用注册，请在搜索框旁选择“我的应用”。 
@@ -200,7 +197,7 @@ ms.locfileid: "74039129"
 }
 ```
 
-| 属性 | 必选 | 说明 | 
+| properties | 需要 | 描述 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -251,10 +248,10 @@ ms.locfileid: "74039129"
 } 
 ```
 
-| 属性 | 必选 | 说明 |
+| properties | 需要 | 描述 |
 | -------- | -------- | ----------- |
 | `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
-| `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
+| `password` | No | 用于访问客户端证书（PFX 文件）的密码 |
 | `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
 ||||
 
@@ -274,7 +271,7 @@ ms.locfileid: "74039129"
 }
 ```
 
-| 属性 | 必选 | 说明 | 
+| properties | 需要 | 描述 | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

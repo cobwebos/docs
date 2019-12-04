@@ -1,6 +1,6 @@
 ---
-title: 单页面应用程序 （调用 web API）-Microsoft 标识平台
-description: 了解如何生成单页面应用程序 （调用 web API）
+title: 单页应用程序（调用 web API）-Microsoft 标识平台
+description: 了解如何生成单页面应用程序（调用 web API）
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,22 +15,22 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545607"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766151"
 ---
-# <a name="single-page-application---call-a-web-api"></a>单页面应用程序的一个 web API 的调用
+# <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 web API
 
-我们建议您调用`acquireTokenSilent`方法获取，或调用 web API 之前续订访问令牌。 一旦您有一个令牌，就可以调用受保护的 web API。
+建议调用 `acquireTokenSilent` 方法，以便在调用 web API 之前获取或续订访问令牌。 获得令牌后，可以调用受保护的 web API。
 
 ## <a name="call-a-web-api"></a>调用 Web API
 
 ### <a name="javascript"></a>JavaScript
 
-使用作为持有者 HTTP 请求中获取的访问令牌调用 Microsoft 图形 API 等任何 web API。 例如：
+使用获取的访问令牌作为 HTTP 请求中的持有者来调用任何 web API，例如 Microsoft Graph API。 例如：
 
 ```javascript
     var headers = new Headers();
@@ -50,9 +50,9 @@ ms.locfileid: "65545607"
 
 ### <a name="angular"></a>Angular
 
-如中所述[获取令牌部分](scenario-spa-acquire-token.md)，MSAL Angular 包装器利用 HTTP 侦听器，以便自动以无提示方式获取访问令牌并将它们附加到 Api 收到的 HTTP 请求。
+MSAL 角包装充分利用 HTTP 拦截器自动获取访问令牌，并将其附加到 Api 的 HTTP 请求。 有关详细信息，请参阅[获取用于调用 API 的令牌](scenario-spa-acquire-token.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-spa-production.md)
+> [转到生产](scenario-spa-production.md)

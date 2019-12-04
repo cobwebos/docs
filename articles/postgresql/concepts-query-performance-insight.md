@@ -1,19 +1,19 @@
 ---
-title: Query Performance Insight Azure Database for PostgreSQL 单服务器
+title: Query Performance Insight-Azure Database for PostgreSQL-单一服务器
 description: 本文介绍 Azure Database for PostgreSQL 单服务器中的 Query Performance Insight 功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764436"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768378"
 ---
-# <a name="query-performance-insight"></a>Query Performance Insight 
+# <a name="query-performance-insight"></a>查询性能洞察 
 
 **适用于：** Azure Database for PostgreSQL-单服务器版本9.6、10、11
 
@@ -22,7 +22,7 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 ## <a name="permissions"></a>权限
 查看 Query Performance Insight 中查询文本所需的“所有者”或“参与者”权限。 读者可以查看图表和表格，但不能查看查询文本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要运行 Query Performance Insight，数据必须存在于[查询存储](concepts-query-store.md)中。
 
 ## <a name="viewing-performance-insights"></a>查看性能见解

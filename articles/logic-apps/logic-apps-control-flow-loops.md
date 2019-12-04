@@ -1,20 +1,17 @@
 ---
-title: 添加循环以重复操作-Azure 逻辑应用
+title: 添加循环以重复操作
 description: 在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 31885749a7194a94a403e5c156220b3fceab951d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680453"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791744"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -235,7 +232,7 @@ ms.locfileid: "72680453"
 
       | properties | Value | 描述 |
       | -------- | ----- | ----------- | 
-      | **收件人** | *\<email-address \@domain >* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+      | **收件人** | *\<电子邮件地址\@域 >* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
       | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
       | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
       |||| 

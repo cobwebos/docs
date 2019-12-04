@@ -1,25 +1,25 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器中的高可用性概念
-description: 本文提供了使用 Azure Database for PostgreSQL - 单一服务器时的高可用性信息。
+title: 高可用性-Azure Database for PostgreSQL-单服务器
+description: 本文提供了有关 Azure Database for PostgreSQL 单服务器中的高可用性的信息。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073437"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768565"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的高可用性概念
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的高可用性概念
 Azure Database for PostgreSQL 服务提供有保证的高级别可用性。 财务备份服务级别协议 (SLA) 一定是通用版本。 使用此服务期间，几乎没有应用程序故障时间。
 
 ## <a name="high-availability"></a>高可用性
-高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 硬件故障或响应服务部署都有可能会导致节点级中断发生。
+高可用性 (HA) 模型以节点级中断发生时的内置故障转移机制为依据。 硬件故障或响应服务部署均可导致发生节点级别中断。
 
-在任何时候，对 Azure Database for PostgreSQL 数据库服务器做出的更改都发生在事务的上下文中。 更改会在事务提交时同步记录到 Azure 存储中。 如果发生节点级中断，数据库服务器会自动新建节点，并将数据存储附加到新节点。 这会删除任何活动连接，并且不会提交任何即时事务。
+在任何时候，对 Azure Database for PostgreSQL 数据库服务器做出的更改都发生在事务的上下文中。 在提交事务时，将在 Azure 存储中同步记录所做的更改。 如果发生节点级中断，数据库服务器会自动新建节点，并将数据存储附加到新节点。 这会删除任何活动连接，并且不会提交任何即时事务。
 
 ## <a name="application-retry-logic-is-essential"></a>应用程序重试逻辑至关重要
 必须构建 PostgreSQL 数据库应用程序，以检测和重试已删除的连接和失败的事务，这一点很重要。 当应用程序重试时，应用程序的连接会在透明状态下重定向到新创建的实例，以取代失败实例。

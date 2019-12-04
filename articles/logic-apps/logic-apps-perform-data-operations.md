@@ -1,21 +1,17 @@
 ---
-title: 对数据执行操作-Azure 逻辑应用
+title: 对数据执行操作
 description: 在 Azure 逻辑应用中转换、管理和操作数据输出与格式
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990563"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793116"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -497,7 +493,7 @@ Oranges,2
 
    `@actionBody('Filter_array')`
 
-   此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含来自**ActionBody （"Filter_array"）** 表达式的输出：
+   此示例使用 Office 365 Outlook 的 "**发送电子邮件**" 操作，并在电子邮件的正文中包含来自**actionBody （"Filter_array"）** 表达式的输出：
 
    !["筛选数组" 操作的操作输出](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 

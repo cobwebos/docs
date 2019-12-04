@@ -1,22 +1,18 @@
 ---
-title: 连接到 Office 365 Outlook - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 Office 365 Outlook
 description: 使用 Office 365 REST API 和 Azure 逻辑应用管理电子邮件、联系人和日历
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105048"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789609"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook 连接器入门
 Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使用此连接器创建、编辑和更新联系人和日历项，还可以获取、发送和回复电子邮件。
@@ -66,9 +62,9 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 4. **保存**更改（工具栏的左上角）。 逻辑应用将保存，并且可能自动启用。
 
 ## <a name="use-an-action"></a>使用操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 选择加号。 看到多个选项：**添加操作**，**添加条件**，或某个**详细**选项。
+1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
    
     ![](./media/connectors-create-api-office365-outlook/add-action.png)
 2. 选择“添加操作”。
@@ -92,5 +88,5 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 在[连接器详细信息](/connectors/office365connector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

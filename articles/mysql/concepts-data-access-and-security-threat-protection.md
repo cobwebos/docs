@@ -1,21 +1,21 @@
 ---
-title: 高级威胁防护概念-Azure Database for MySQL
+title: 高级威胁防护-Azure Database for MySQL
 description: 了解有关高级威胁防护的概念，它会检测到异常数据库活动，指示数据库存在潜在的安全威胁。
-author: bolzmj
-ms.author: mbolz
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 23f8679a2ae7d9dc299db42e45b5b06d42f94536
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 747e2f088b545026775feed45535b1f9bc90209f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970455"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770996"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 高级威胁防护
 
-Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
+Azure Database for MySQL 的高级威胁防护服务检测到异常活动，这表示有人在访问或利用数据库时行为异常且可能有害。
 
 > [!NOTE]
 > 高级威胁防护是公开预览版。
@@ -23,7 +23,7 @@ Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有�
 高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中**不可用**：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护？
@@ -34,11 +34,11 @@ Azure Database for MySQL 高级威胁防护提供了一个新的安全层，它�
 
 ## <a name="advanced-threat-protection-alerts"></a>高级威胁防护警报 
 Azure Database for MySQL 高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试，并可以触发以下警报：
-- **来自异常位置的访问**：当 Azure Database for MySQL 服务器的访问模式发生更改、有人从异常地理位置登录 Azure Database for MySQL 服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
-- **来自异常 Azure 数据中心的访问**：当 Azure Database for MySQL 服务器的访问模式发生更改、最近一段时间在此服务器上发现有人从异常 Azure 数据中心登录服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（在 Azure、Power BI 或 Azure Database for MySQL 查询编辑器中发布新应用程序）。 在其他情况下，警报会检测通过 Azure 资源/服务执行的恶意操作（以前的员工、外部攻击者）。
-- **来自陌生主体的访问**：当 Azure Database for MySQL 服务器的访问模式发生更改、有人使用异常主体（Azure Database for MySQL 用户）登录服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
-- **来自可能有害的应用程序的访问**：当使用可能有害的应用程序访问数据库时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测使用常见攻击工具执行的攻击。
-- **暴力破解 Azure Database for MySQL 凭据**：当有人使用不同的凭据异常登录并失败很多次时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测暴力破解攻击。
+- **从异常位置访问**：当 Azure Database for MySQL 服务器的访问模式发生更改，有人从异常的地理位置登录到 Azure Database for MySQL 服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
+- **从异常的 Azure 数据中心访问**：当 Azure Database for MySQL 服务器的访问模式发生更改，有人从最近一段时间在此服务器上看到的异常 Azure 数据中心登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（在 Azure、Power BI 或 Azure Database for MySQL 查询编辑器中发布新应用程序）。 在其他情况下，警报会检测通过 Azure 资源/服务执行的恶意操作（以前的员工、外部攻击者）。
+- **从不熟悉的主体访问**：当 Azure Database for MySQL 服务器的访问模式发生更改，有人使用异常主体（Azure Database for MySQL 用户）登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
+- **从可能有害的应用程序访问**：当使用可能有害的应用程序访问数据库时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测使用常见攻击工具执行的攻击。
+- **暴力破解 Azure Database for MySQL 凭据**：当有人使用不同的凭据异常登录失败很多次时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测暴力破解攻击。
 
 ## <a name="next-steps"></a>后续步骤
 

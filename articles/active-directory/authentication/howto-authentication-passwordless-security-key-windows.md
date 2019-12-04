@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452947"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766355"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>启用无密码安全密钥登录到 Windows 10 设备（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "74452947"
 
 |     |
 | --- |
-| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="requirements"></a>要求
@@ -56,7 +56,7 @@ ms.locfileid: "74452947"
 组织可能会选择使用以下一种或多种方法来根据组织的要求，使用安全密钥进行 Windows 登录。
 
 - [使用 Intune 启用](#enable-with-intune)
-   - [面向 Intune 部署](#targeted-intune-deployment)
+- [面向 Intune 部署](#targeted-intune-deployment)
 - [使用预配包启用](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>使用 Intune 启用
@@ -67,7 +67,7 @@ ms.locfileid: "74452947"
 
 用于登录的安全密钥配置不依赖于配置 Windows Hello 企业版。
 
-#### <a name="targeted-intune-deployment"></a>面向 Intune 部署
+### <a name="targeted-intune-deployment"></a>面向 Intune 部署
 
 若要以特定的设备组为目标以启用凭据提供程序，请通过 Intune 使用以下自定义设置。
 
@@ -94,7 +94,7 @@ ms.locfileid: "74452947"
 1. 启动 Windows 配置设计器。
 1. 选择 "**文件**" > "**新建项目**"。
 1. 为项目指定一个名称，并记下创建项目的路径。
-1. 选择“下一步”。
+1. 选择“**下一步**”。
 1. 选择 "**预配包**" 作为**选定的项目工作流**，然后选择 "**下一步**"。
 1. 选择**要查看和配置的设置**，然后**选择 "** **下一步**"。
 1. 选择“完成”。
@@ -120,7 +120,7 @@ ms.locfileid: "74452947"
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>管理安全密钥生物识别、PIN 或重置安全密钥
 
 * Windows 10 版本1903或更高版本
-   * 用户可以在其设备上打开**Windows 设置**>**帐户** > **安全密钥**
+   * 用户可以在其设备上打开**Windows 设置** **帐户** > **安全密钥**
    * 用户可以更改其 PIN、更新生物识别或重置其安全密钥
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈

@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823017"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791348"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商业市场交易功能和注意事项
 
@@ -66,7 +66,7 @@ ms.locfileid: "73823017"
 
 * 即用即付：软件许可证费用将根据所用的 Azure 基础结构显示为每小时每个核心 (vCPU) 定价费率。 这仅适用于虚拟机和 Azure 应用程序。
 
-* •订阅定价：软件许可证费用以每月或每年的形式显示，按固定费率或每位客户计费的周期性费用。 这仅适用于 SaaS 应用和 Azure 应用程序托管的应用。
+* 订阅定价：软件许可费用以每月或每年的形式显示，按固定费率或按座位计费。 这仅适用于 SaaS 应用和 Azure 应用程序托管的应用。
 
 * 免费软件试用版：免费使用软件许可证 30 天或 90 天。
 
@@ -163,7 +163,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 例如，如果客户使用信用卡购买：
 
-|说明    |    Date  |
+|描述    |    日期  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -177,7 +177,7 @@ Microsoft 使客户能够订购、许可和使用出版商软件，经受 Micros
 
 如果客户使用企业协议购买：
 
-| 说明 |    Date  |
+| 描述 |    日期  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |

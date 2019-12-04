@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112571"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790499"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>如何在 Azure 中设置增强的文档的增量索引认知搜索
 
 > [!IMPORTANT] 
-> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 增量索引当前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前没有门户或 .NET SDK 支持。
 
 本文介绍如何将状态和缓存添加到通过 Azure 认知搜索扩充管道移动的大量文档，以便可以从任何支持的数据源增量索引文档。 默认情况下，技能组合是无状态的，并且更改其组合的任何部分都需要完全重新运行索引器。 通过增量索引，索引器可以确定管道的哪些部分发生了更改，为未更改的部分重复使用现有的根据，并为确实发生变化的步骤修改根据。 缓存的内容放置在 Azure 存储中。
 
@@ -41,13 +41,32 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>步骤2：添加缓存属性
 
-编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，这是 Azure 存储帐户的连接字符串。
+< < < < < < < HEAD 编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，`storageConnectionString` 是存储帐户的连接字符串。 = = = = = = = = 编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，这是 Azure 存储帐户的连接字符串。
+>>>>>>> 3519a330aa86b6827d31403690529105825b1b16
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>启用 reporocessing
+
+您可以选择在缓存中设置 `enableReprocessing` 布尔属性，该属性默认设置为 true。 `enableReprocessing` 标志允许您控制索引器的行为。 在您希望索引器将新文档添加到索引的情况下，您可以将标志设置为 false。 当索引器与新文档一起捕获后，将该标志翻转为 true 后，就可以使索引器开始驱动现有文档以实现最终一致性。 在将 `enableReprocessing` 标志设置为 false 时，索引器只写入缓存，但不会基于标识的扩充管道更改处理任何现有文档。
 
 ### <a name="step-3-reset-the-indexer"></a>步骤3：重置索引器
 

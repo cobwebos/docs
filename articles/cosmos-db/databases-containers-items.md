@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176929"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786939"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的数据库、容器和项
 
@@ -56,7 +56,7 @@ Azure Cosmos 容器是预配吞吐量和存储的可伸缩性单元。 容器会
 * **共享预配的吞吐量模式**：这些容器与同一数据库中的其他容器共享预配的吞吐量（不包括已配置专用预配吞吐量的容器）。 换句话说，在所有 "共享吞吐量" 容器之间共享数据库的预配吞吐量。 若要了解详细信息，请参阅[如何在 Azure Cosmos 数据库上预配吞吐量](how-to-provision-database-throughput.md)。
 
 > [!NOTE]
-> 仅在创建数据库和容器时，才能配置共享和专用吞吐量。 若要在创建容器后从专用吞吐量模式切换到共享吞吐量模式（反之亦然），必须创建一个新容器，并将数据迁移到新的容器。 你可以使用 Azure Cosmos DB 更改源功能迁移数据。
+> 仅在创建数据库和容器时，才能配置共享和专用吞吐量。 在创建容器后，若要从专用吞吐量模式切换到共享吞吐量模式（以及反过来进行操作），必须创建一个新容器，然后将数据迁移到新容器。 你可以使用 Azure Cosmos DB 更改源功能迁移数据。
 
 无论是使用专用还是共享预配的吞吐量模式创建容器，Azure Cosmos 容器都可以缩放弹性。
 
@@ -82,7 +82,7 @@ Azure Cosmos 容器包含一组系统定义的属性。 根据所使用的 API�
 
 | 系统定义的属性 | 系统生成的或用户可配置的 | 用途 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | 系统生成 | 容器的唯一标识符 | 是 | No | No | No | No |
+|\_rid | 系统生成 | 容器的唯一标识符 | 是 | No | No | No | No |
 |\_etag | 系统生成 | 用于乐观并发控制的实体标记 | 是 | No | No | No | No |
 |\_ts | 系统生成 | 容器上次更新的时间戳 | 是 | No | No | No | No |
 |\_self | 系统生成 | 容器的可寻址 URI | 是 | No | No | No | No |

@@ -1,26 +1,26 @@
 ---
-title: 处理 Azure Database for PostgreSQL - 单一服务器的暂时性连接错误
-description: 了解如何处理 Azure Database for PostgreSQL - 单一服务器的暂时性连接错误。
+title: 处理暂时性连接错误-Azure Database for PostgreSQL-单服务器
+description: 了解如何处理 Azure Database for PostgreSQL 单服务器的暂时性连接错误。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe5b772946bece165a4e09f170355dc7b595a48f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073511"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768837"
 ---
-# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>处理 Azure Database for PostgreSQL - 单一服务器的暂时性连接错误
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>处理 Azure Database for PostgreSQL 单服务器的暂时性连接错误
 
-本文介绍了如何处理 Azure Database for PostgreSQL 的暂时性连接错误。
+本文介绍如何处理与 Azure Database for PostgreSQL 连接的暂时性错误。
 
 ## <a name="transient-errors"></a>暂时性错误
 
-暂时性错误也称为暂时性故障，是一种可以自行解决的错误。 这些错误往往表现为与数据库服务器的连接断开。 此外，无法与服务器建立的新连接。 例如，在发生硬件或网络故障时，可能会出现暂时性错误。 另一个可能的原因是正在推出 PaaS 服务的新版本。系统在 60 秒以内可自动解决其中的大部分事件。 设计和开发云中的应用程序时，预料到会出现暂时性错误是最佳做法。 假设这些错误随时可能在任意组件中发生，并部署相应的逻辑来应对这种情况。
+暂时性错误也称为暂时性故障，是一种可以自行解决的错误。 这些错误往往表现为与数据库服务器的连接断开。 此外，无法与服务器建立的新连接。 例如，在发生硬件或网络故障时，可能会出现暂时性错误。 另一个原因可能是要推出的 PaaS 服务的新版本。在60秒内，系统会自动降低其中的大多数事件。 设计和开发云中的应用程序时，预料到会出现暂时性错误是最佳做法。 假设这些错误随时可能在任意组件中发生，并部署相应的逻辑来应对这种情况。
 
 ## <a name="handling-transient-errors"></a>处理暂时性错误
 

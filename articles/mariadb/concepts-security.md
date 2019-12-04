@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB 中的安全性-单一服务器
-description: Azure Database for MariaDB-单服务器中的安全功能概述。
+title: 安全-Azure Database for MariaDB
+description: Azure Database for MariaDB 中的安全功能的概述。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485180"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772141"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Azure Database for MariaDB 中的安全性-单一服务器
+# <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的安全性
 
 有多个安全层可用于保护 Azure Database for MariaDB 服务器上的数据。 本文概述了这些安全选项。
 

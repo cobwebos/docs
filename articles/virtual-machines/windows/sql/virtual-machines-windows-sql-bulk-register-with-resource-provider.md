@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489079"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790550"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>利用 SQL VM 资源提供程序在 Azure 中大容量注册 SQL 虚拟机
 
@@ -198,7 +198,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 每次使用 `Register-SqlVMs` cmdlet 时都会生成报告文件和日志文件。 
 
-### <a name="report"></a>报表
+### <a name="report"></a>报告
 
 报表生成为名为 `RegisterSqlVMScriptReport<Timestamp>.txt` 的 `.txt` 文件，其中时间戳是启动 cmdlet 的时间。 该报表列出了以下详细信息：
 
@@ -222,7 +222,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 使用提供的脚本向资源提供程序注册 SQL Server Vm 时，请考虑以下事项：
 
-- 向资源提供程序注册需要在 SQL Server VM 上运行一个来宾代理。 Windows Server 2008 映像没有来宾代理，因此这些虚拟机将失败，必须使用[NoAgent 管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)手动注册。
+- 向资源提供程序注册需要在 SQL Server VM 上运行一个来宾代理。 Windows Server 2008 映像没有来宾代理，因此这些虚拟机将失败，必须使用[NoAgent 管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)手动注册。
 - 已内置重试逻辑来克服透明错误。 如果成功注册了虚拟机，则这是一个快速操作。 但是，如果注册失败，则会重试每个虚拟机。  因此，您应该留出足够的时间来完成注册过程，但实际时间要求取决于错误的类型和数量。 
 
 ## <a name="full-script"></a>完整脚本

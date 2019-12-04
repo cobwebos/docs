@@ -1,22 +1,20 @@
 ---
-title: 连接到 Dynamics 365-Azure 逻辑应用
+title: 连接到 Dynamics 365
 description: 使用 Dynamics 365（联机）REST API 和 Azure 逻辑应用创建和管理记录
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
-manager: carmonm
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051010"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789885"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
 
@@ -25,7 +23,7 @@ ms.locfileid: "70051010"
 本文介绍如何生成一个逻辑应用，每当在 Dynamics 365 中创建新的潜在顾客记录时，该逻辑应用就会在 Dynamics 365 中创建一个任务。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -43,7 +41,7 @@ ms.locfileid: "70051010"
 
 1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开空白逻辑应用（如果尚未打开）。
 
-1. 在搜索框中，输入“Dynamics 365”作为筛选器。 对于本示例, 在 "触发器" 列表下选择 "此触发器:**创建记录时**
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”
 
    ![选择触发器](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -51,7 +49,7 @@ ms.locfileid: "70051010"
 
 1. 提供以下触发器详细信息：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要监视的组织 Dynamics 365 实例的名称，例如“Contoso” |
    | **实体名称** | 是 | 要监视的实体的名称，例如“Leads” | 
@@ -67,13 +65,13 @@ ms.locfileid: "70051010"
 
 1. 在触发器下，选择“新建步骤”。
 
-1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择此操作：**新建记录**
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择以下操作：“创建新记录”
 
    ![选择操作](./media/connectors-create-api-crmonline/select-action.png)
 
 1. 提供以下操作详细信息：
 
-   | 属性 | 必填 | 描述 |
+   | properties | 需要 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的 Dynamics 365 实例，不一定是触发器中的同一实例；在本示例中为“Contoso” |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -123,10 +121,10 @@ ms.locfileid: "70051010"
 
 | 字段类型 | 所需数据类型 | 描述 | 
 |------------|--------------------|-------------|
-| 文本字段 | 单个文本行 | 这些字段需要单行文本，或者文本类型的动态内容。 <p><p>*示例字段*:**说明**和**类别** | 
-| 整数字段 | 整数 | 某些字段需要整数，或者整数类型的动态内容。 <p><p>*示例字段*:**完成百分比**和**持续时间** | 
-| 数据字段 | 日期和时间 | 某些字段需要 mm/dd/yyyy 格式的日期，或者日期类型的动态内容。 <p><p>*示例字段*:**创建**日期、**开始日期**、**实际开始时间**、**实际结束**时间和**截止日期** | 
-| 需要记录 ID 和查找类型的字段 | 主要密钥 | 某些引用另一实体记录的字段需要记录 ID 和查找类型。 | 
+| 文本字段 | 单个文本行 | 这些字段需要单行文本，或者文本类型的动态内容。 <p><p>示例字段：“说明”和“类别” | 
+| 整数字段 | 整数 | 某些字段需要整数，或者整数类型的动态内容。 <p><p>示例字段：“完成百分比”和“持续时间” | 
+| 数据字段 | 日期和时间 | 某些字段需要 mm/dd/yyyy 格式的日期，或者日期类型的动态内容。 <p><p>示例字段：“创建日期”、“开始日期”、“实际开始日期”、“实际结束日期”和“截止日期” | 
+| 需要记录 ID 和查找类型的字段 | 主密钥 | 某些引用另一实体记录的字段需要记录 ID 和查找类型。 | 
 ||||
 
 下面是 Dynamics 365 触发器和操作中的一些示例字段，它们在上述字段类型的基础上有所延伸，需要记录 ID 和查找类型。 此项要求意味着，从动态列表中选择的值不起作用。
@@ -134,11 +132,11 @@ ms.locfileid: "70051010"
 | 字段 | 描述 |
 |-------|-------------|
 | **所有者** | 必须是有效的用户 ID 或团队记录 ID。 |
-| **所有者类型** | 必须是`systemusers`或`teams`。 |
+| **所有者类型** | 必须是 `systemusers` 或 `teams`。 |
 | **相关** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
-| **相关类型** | 必须是查找类型, 如`accounts`或。 `contacts` |
+| **相关类型** | 必须是查找类型，如 `accounts` 或 `contacts`。 |
 | **客户** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
-| **客户类型** | 必须是查找类型, 如`accounts`或。 `contacts` |
+| **客户类型** | 必须是查找类型，如 `accounts` 或 `contacts`。 |
 |||
 
 在本示例中，名为“创建新记录”的操作将创建新的任务记录：
@@ -188,7 +186,7 @@ ms.locfileid: "70051010"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅[连接器的参考页](/connectors/dynamicscrmonline/)。
+如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/dynamicscrmonline/)。
 
 ## <a name="next-steps"></a>后续步骤
 

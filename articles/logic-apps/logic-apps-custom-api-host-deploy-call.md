@@ -1,21 +1,17 @@
 ---
-title: 从 Azure 逻辑应用部署和调用 Web API 与 REST API | Microsoft Docs
-description: 在 Azure 逻辑应用中为系统集成工作流部署和调用 Web API 与 REST API
+title: 从 Azure 逻辑应用部署和调用 web Api & REST Api
+description: 在 Azure 逻辑应用中为系统集成工作流部署和调用 web Api & REST Api
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, stepsic, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740369"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790748"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>从 Azure 逻辑应用中的工作流部署和调用自定义 API
 
@@ -29,13 +25,13 @@ ms.locfileid: "60740369"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 Web 应用或 API 应用。
 
-2. 在打开的应用菜单的 API 下方，选择“API 定义”   。 将“API 定义位置”设置为 OpenAPI swagger.json 文件的 URL  。
+2. 在打开的应用菜单的 API 下方，选择“API 定义”。 将“API 定义位置”设置为 OpenAPI swagger.json 文件的 URL。
 
    通常，URL 的格式为：`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![链接到自定义 API 的 OpenAPI 文件](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. 在“API”下，选择“CORS”   。 将“允许的源”  的 CORS 策略设置为 **'*'** （允许所有）。
+3. 在“API”下，选择“CORS”。 将“允许的源”的 CORS 策略设置为 **'*'** （允许所有）。
 
    此设置允许来自逻辑应用设计器的请求。
 

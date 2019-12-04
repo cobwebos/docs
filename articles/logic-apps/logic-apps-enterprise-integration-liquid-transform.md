@@ -1,20 +1,19 @@
 ---
-title: 使用 Liquid 转换转换 JSON 数据 - Azure 逻辑应用 | Microsoft Docs
+title: 转换 JSON 数据与液体转换
 description: 使用逻辑应用和 Liquid 模板创建用于高级 JSON 转换的转换或映射
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900658"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792512"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
@@ -22,7 +21,7 @@ ms.locfileid: "70900658"
 
 在逻辑应用中执行液体转换之前，必须先使用液体模板来定义 JSON 到 JSON 的映射，并将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
@@ -68,9 +67,9 @@ ms.locfileid: "70900658"
 
 4. 选择“添加”，并为映射提供以下详细信息：
 
-   | 属性 | 值 | 说明 | 
+   | properties | Value | 描述 | 
    |----------|-------|-------------|
-   | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
+   | 名称 | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 |
    ||| 
@@ -84,7 +83,7 @@ ms.locfileid: "70900658"
 2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#add-request)。
 
 3. 在触发器下，选择“新建步骤”。 
-   在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
+   在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：“将 JSON 转换为 JSON-Liquid”
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -153,5 +152,5 @@ Liquid 并非仅可用于 JSON 转换。 下面列出了使用 Liquid 的其他�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
-* [了解有关映射的详细信息](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")  
+* [详细了解映射](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成地图")  
 

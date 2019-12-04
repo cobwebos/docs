@@ -3,19 +3,19 @@ title: 披露设计准则
 titleSuffix: Azure Cognitive Services
 description: 公开设计准则和评估披露级别的介绍。
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837375"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776379"
 ---
 # <a name="disclosure-design-guidelines"></a>披露设计准则
 了解如何通过对你的语音体验的综合性质透明，来构建和维护与客户的信任。

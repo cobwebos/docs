@@ -1,20 +1,17 @@
 ---
-title: 访问 Azure 虚拟网络-Azure 逻辑应用
+title: 访问 Azure 虚拟网络
 description: 概述 integration service 环境（ISEs）如何帮助逻辑应用访问 Azure 虚拟网络（Vnet）
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: e06ac0c0647d9a9a6b5adee289b497f2fe94b222
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9c4dca6dc5def1b1c458f28aa2d3ab992bd705d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889375"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792729"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -78,7 +75,7 @@ ISE 还为运行持续时间、存储保留、吞吐量、HTTP 请求和响应�
 
 * **高级**
 
-  提供了可用于生产的 ISE，并包括 SLA 支持、内置触发器和操作、标准连接器、企业连接器、单个[标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户、用于扩展容量的选项，以及在回收固定的每月价格。
+  提供了一种可用于生产的 ISE，并包括 SLA 支持、内置触发器和操作、标准连接器、企业连接器、单个[标准层](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)集成帐户、用于扩展容量的选项，以及回收期间的冗余（固定的每月价格）。
 
 > [!IMPORTANT]
 > SKU 选项仅在创建 ISE 时可用，不能在以后更改。

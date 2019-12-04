@@ -1,30 +1,30 @@
 ---
-title: 使用 Azure CLI 访问 Azure Database for MySQL 中的慢查询日志
-description: 本文介绍如何使用 Azure CLI 访问 Azure Database for MySQL 中的慢查询日志。
+title: 访问慢查询日志-Azure CLI-Azure Database for MySQL
+description: 本文介绍如何使用 Azure CLI 访问 Azure Database for MySQL 中的慢速查询日志。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 12/02/2019
+ms.openlocfilehash: 44c35d6e997b4a9a6d3dfcf3e7eba5328b125fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030637"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770588"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问慢查询日志
-可以使用 Azure CLI（Azure 命令行实用工具）下载 Azure Database for MySQL 慢查询日志。
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问慢速查询日志
+可以使用 Azure 命令行实用程序 Azure CLI 下载 Azure Database for MySQL 慢速查询日志。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) 或浏览器中的 Azure Cloud Shell
 
 ## <a name="configure-logging"></a>配置日志记录
 通过执行下列步骤，可以对服务器进行配置以访问 MySQL 慢查询日志：
-1. 通过将 slow\_query\_log 参数设置为 ON 启用慢查询日志记录。
+1. 通过将**慢速\_查询\_log**参数设置为 on，打开慢速查询日志记录。
 2. 调整其他参数，例如 long\_query\_time 和 log\_slow\_admin\_statements。
 
 若要了解如何通过 Azure CLI 设置这些参数的值，请参阅[如何配置服务器参数](howto-configure-server-parameters-using-cli.md)。
@@ -38,7 +38,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的日志
-若要列出服务器的可用慢查询日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) 命令。
+若要列出服务器的可用缓慢查询日志文件，请运行[az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list)命令。
 
 可以列出资源组“myresourcegroup”下的服务器“mydemoserver.mysql.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件。
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure Database for MySQL 中的慢查询日志](concepts-server-logs.md)。
+- 了解[Azure Database for MySQL 中的慢速查询日志](concepts-server-logs.md)。

@@ -1,17 +1,17 @@
 ---
-title: 使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
+title: 使用转储和还原进行迁移-Azure Database for MySQL
 description: 本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MySQL 中备份和还原数据库的两种常见方式。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: a2a879ed677b981adcd50aea0468e0c5976c2a8a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390546"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770928"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -39,7 +39,7 @@ ms.locfileid: "70390546"
    ```
 - 若要避免任何兼容性问题，请确保转储数据库时，源和目标系统上所使用的 MySQL 版本相同。 例如，如果现有 MySQL 服务器版本是 5.7，那么应迁移到配置为运行版本 5.7 的 Azure Database for MySQL 中。 在 Azure Database for MySQL 中，`mysql_upgrade` 命令不起作用，也不受支持。 如果需要跨 MySQL 版本进行升级，应先将低版本数据库转储或导出到自己环境中更高版本的 MySQL 中。 然后运行 `mysql_upgrade`再尝试迁移到 Azure Database for MySQL 中。
 
-## <a name="performance-considerations"></a>性能注意事项
+## <a name="performance-considerations"></a>性能考虑
 若要优化性能，请在转储大型数据库时留意这些注意事项：
 -   转储数据库时，请使用 mysqldump 中的 `exclude-triggers` 选项。 从转储文件中排除触发器，避免在还原数据期间触发触发器命令。 
 -   使用 `single-transaction` 选项，将事务隔离模式设置为 REPEATABLE READ 并在转储数据之前将 START TRANSACTION SQL 语句发送到服务器。 在单个事务中转储多个表会在还原过程中占用一些额外的存储空间。 选项 `single-transaction` 和 `lock-tables` 互斥，因为 LOCK TABLES 导致所有挂起的事务均为隐式提交。 若要转储大型表，请结合使用选项 `single-transaction` 和 `quick`。 
@@ -49,7 +49,7 @@ ms.locfileid: "70390546"
 -   适当时使用已分区表。
 -   并行加载数据。 避免太多将导致达到资源限制的并行度，并通过使用 Azure 门户中提供的指标监视资源。 
 -   转储数据库时，使用 mysqlpump 中的 `defer-table-indexes` 选项，以便在加载表数据后创建索引。
--   使用 mysqlpump `skip-definer`中的选项可从 create 语句中省略视图和存储过程的 definer 和 SQL SECURITY 子句。  重新加载转储文件时，它会创建使用默认 DEFINER 和 SQL 安全值的对象。
+-   使用 mysqlpump 中的 `skip-definer` 选项可从 create 语句获取视图和存储过程的 definer 和 SQL 安全条款。  重新加载转储文件时，它会创建使用默认 DEFINER 和 SQL 安全值的对象。
 -   将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>使用 mysqldump 从命令行创建备份文件

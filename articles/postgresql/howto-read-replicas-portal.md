@@ -1,50 +1,50 @@
 ---
-title: 通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本
-description: 了解如何通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本。
+title: 管理读取副本-Azure 门户-Azure Database for PostgreSQL-单一服务器
+description: 了解如何从 Azure 门户管理 Azure Database for PostgreSQL 单一服务器的读取副本。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995458"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770214"
 ---
-# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure Database for PostgreSQL 单服务器中的读取副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 可以通过设置 azure.replication_support 参数对主服务器进行复制准备。 更改此复制参数后，需重启服务器才能使更改生效。 在 Azure 门户中，可以通过单个“启用复制支持”按钮执行这两个步骤。
+必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 主服务器已准备好通过设置 azure. replication_support 参数进行复制。 更改复制参数时，需要重新启动服务器才能使更改生效。 在 Azure 门户中，这两个步骤通过一个按钮进行封装，**启用复制支持**。
 
 1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
-2. 在服务器边栏中的“设置”下，选择“复制”。
+2. 在服务器边栏上的 "**设置**" 下，选择 "**复制**"。
 
-3. 选择“启用复制支持”。 
+3. 选择 "**启用复制支持**"。 
 
    ![启用复制支持](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. 确认你需要启用复制支持。 此操作会重启主服务器。 
+4. 确认你要启用复制支持。 此操作将重新启动主服务器。 
 
    ![确认启用复制支持](./media/howto-read-replicas-portal/confirm-enable-replication.png)
    
-5. 操作完成后，会收到两个 Azure 门户通知。 一个通知是关于更新服务器参数的。 另一个通知是关于随后立即进行的服务器重启的。
+5. 操作完成后，你会收到两个 Azure 门户通知。 有一个更新服务器参数的通知。 现在会出现另一个有关服务器重启的通知。
 
-   ![成功通知 - 启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![成功通知-启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-6. 刷新 Azure 门户页，更新“复制”工具栏。 现在可以为此服务器创建只读副本。
+6. 刷新 Azure 门户页面以更新复制工具栏。 你现在可以为此服务器创建读取副本。
 
    ![更新的工具栏](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-启用复制支持是在每个主服务器上进行的一次性操作。 提供“禁用复制支持”按钮是为了方便用户操作。 不建议禁用复制支持，除非你确定再也不会在此主服务器上创建副本。 如果主服务器有现有的副本，则不能禁用复制支持。
+为每个主服务器启用复制支持一次。 为方便起见，提供了**禁用复制支持**按钮。 我们不建议禁用复制支持，除非你确定不会在此主服务器上创建副本。 如果你的主服务器有现有副本，则无法禁用复制支持。
 
 
 ## <a name="create-a-read-replica"></a>创建只读副本
@@ -52,7 +52,7 @@ ms.locfileid: "70995458"
 
 1. 选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。 
 
-2. 在服务器边栏中的“设置”下，选择“复制”。
+2. 在服务器边栏上的 "**设置**" 下，选择 "**复制**"。
 
 3. 选择“添加副本”。
 
@@ -64,7 +64,7 @@ ms.locfileid: "70995458"
 
 5. 选择副本的位置。 默认位置与主服务器的位置相同。
 
-    ![选择位置](./media/howto-read-replicas-portal/location-replica.png)
+    ![选择一个位置](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
    > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 

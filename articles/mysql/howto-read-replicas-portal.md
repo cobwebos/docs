@@ -1,23 +1,23 @@
 ---
-title: 创建 & 管理读取副本（Azure 门户）-Azure Database for MySQL
+title: 管理读取副本-Azure 门户-Azure Database for MySQL
 description: 了解如何使用 Azure 门户在 Azure Database for MySQL 中设置和管理读取副本。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56dc2df243c7ebc8e6aedf655795173c478ef99b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972874"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762600"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 
-本文介绍如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理只读副本。
+在本文中，你将学习如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理读取副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
@@ -40,16 +40,16 @@ ms.locfileid: "71972874"
 
 5. 输入副本服务器的名称。
 
-    ![Azure Database for MySQL - 副本名称](./media/howto-read-replica-portal/replica-name.png)
+    ![Azure Database for MySQL-副本名称](./media/howto-read-replica-portal/replica-name.png)
 
 6. 选择副本服务器的位置。 默认位置与主服务器的位置相同。
 
-    ![Azure Database for MySQL - 副本位置](./media/howto-read-replica-portal/replica-location.png)
+    ![Azure Database for MySQL-副本位置](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
    > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
 
-7. 选择“确定”以确认创建该副本。
+7. 选择 **"确定"** 以确认创建副本。
 
 > [!NOTE]
 > 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
@@ -61,7 +61,7 @@ ms.locfileid: "71972874"
 ## <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
 
 > [!IMPORTANT]
-> 停止复制到服务器操作不可逆。 一旦主服务器和副本服务器之间的复制停止，无法撤消。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
+> 停止复制到服务器操作不可逆。 一旦主服务器和副本服务器之间的复制停止，无法撤消。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为到副本服务器。
 
 若要从 Azure 门户停止主服务器和副本服务器之间的复制，请使用以下步骤：
 

@@ -1,21 +1,19 @@
 ---
-title: 为 X12 消息编码 - Azure 逻辑应用 | Microsoft 文档
+title: 编码 X12 消息
 description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用 X12 消息编码器验证 EDI 并转换 XML 编码的消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792348"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中编码 X12 消息
 
@@ -24,20 +22,20 @@ ms.locfileid: "64705699"
 
 ## <a name="before-you-start"></a>开始之前
 
-需要具有以下各项：
+下面是需要准备好的项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 X12 消息连接器。
-* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已定义的与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用编码 X12 消息连接器。
+* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [X12 协议](logic-apps-enterprise-integration-x12.md)
 
 ## <a name="encode-x12-messages"></a>编码 X12 消息
 
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 编码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
+2. 编码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 编码为 X12 消息(按协议名称)”，或者选择“X12 - 编码为 X 12 消息(按标识)”。  
+3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 编码为 X12 消息(按协议名称)”，或者选择“X12 - 编码为 X 12 消息(按标识)”。
    
     ![搜索“x12”](./media/logic-apps-enterprise-integration-x12-encode/x12decodeimage1.png) 
 
@@ -47,12 +45,12 @@ ms.locfileid: "64705699"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
 
     ![集成帐户连接已创建](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
@@ -62,7 +60,7 @@ ms.locfileid: "64705699"
 
 #### <a name="encode-x12-messages-by-agreement-name"></a>编码 X12 消息(按协议名称)
 
-如果选择了按协议名称编码 X12 消息，请打开“X12 协议的名称”  列表，输入或选择现有的 X12 协议。 输入要编码的 XML 消息。
+如果选择了按协议名称编码 X12 消息，请打开“X12 协议的名称”列表，输入或选择现有的 X12 协议。 输入要编码的 XML 消息。
 
 ![输入 X12 协议名称和要编码的 XML 消息](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 

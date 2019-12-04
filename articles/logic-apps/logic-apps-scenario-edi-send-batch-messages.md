@@ -1,19 +1,18 @@
 ---
-title: 将 EDI 消息作为组进行批处理-Azure 逻辑应用
+title: 批处理将 EDI 消息作为一个组进行处理
 description: 在 Azure 逻辑应用中以批处理、组或集合的形式发送和接收 EDI 消息
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680187"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792999"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>使用 Azure 逻辑应用将 EDI 消息以批的形式发送到参与方
 

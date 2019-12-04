@@ -1,18 +1,18 @@
 ---
 title: 预付 Azure 数据资源管理器标记以节省资金
 description: 了解如何购买 Azure 数据资源管理器保留容量以节省 Azure 数据资源管理器成本。
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681629"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769092"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>为 Azure 数据资源管理器标记单位预付 Azure 数据资源管理器保留容量
 
@@ -23,7 +23,7 @@ ms.locfileid: "73681629"
 可以在[Azure 门户](https://portal.azure.com)中购买 Azure 数据资源管理器保留容量。 购买 Azure 数据资源管理器保留的容量：
 
 * 你必须是至少一个企业或即用即付订阅的所有者。
-* 对于企业订阅，必须在 **EA 门户**中启用“添加预留实例”[](https://ea.azure.com)。 或者，如果禁用此设置，则必须是订阅上的 EA 管理员。
+* 对于企业订阅，必须在 [EA 门户](https://ea.azure.com)中启用“添加预留实例”。 或者，如果禁用此设置，则必须是订阅上的 EA 管理员。
 * 对于云解决方案提供商（CSP）程序，只有管理代理或销售代理可以购买 Azure 数据资源管理器保留容量。
 
 若要详细了解企业客户和即用即付客户对预订购买的费用，请参阅：
@@ -48,11 +48,11 @@ ms.locfileid: "73681629"
 1. 选择“购买”。
 1. 选择“查看此预订”以查看购买的状态。
 
-## <a name="cancellations-and-exchanges"></a>取消和更换
+## <a name="cancellations-and-exchanges"></a>取消和交换
 
 如果需要取消 Azure 数据资源管理器保留的容量预留，可能会提前终止12%。 退款基于购买价格的最低价格或预订的当前价格。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”创建支持请求。
 
-如果需要将 Azure 数据资源管理器保留的容量保留更改为其他项，可以将其与具有相同或更大值的其他保留进行交换。 新预留的期限开始日期不是从交换的预留延续。 1 年或 3 年期限从创建新预留开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”创建支持请求。
+如果需要将 Azure 数据资源管理器保留的容量保留更改为其他项，可以将其与具有相同或更大值的其他保留进行交换。 新订购项目的期限开始日期不是从交换的订购项目延续。 1 年或 3 年期限从创建新预留开始算起。 若要请求交换，请在 Azure 门户中访问该预留，并选择“交换”创建支持请求。
 
 有关如何交换或退款预订的详细信息，请参阅[保留交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
@@ -67,9 +67,9 @@ Azure 数据资源管理器标记单位预订折扣将自动应用于与 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预订的详细信息，请参阅以下文章：
+若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
-* [什么是 Azure 预订？](../billing/billing-save-compute-costs-reservations.md)
+* [什么是 Azure 预留？](../billing/billing-save-compute-costs-reservations.md)
 * [管理 Azure 预留项](../billing/billing-manage-reserved-vm-instance.md)
 * [了解 Azure 预留折扣](../billing/billing-understand-reservation-charges.md)
 * [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)
@@ -78,4 +78,4 @@ Azure 数据资源管理器标记单位预订折扣将自动应用于与 Azure �
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

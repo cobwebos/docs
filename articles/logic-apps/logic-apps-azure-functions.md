@@ -1,24 +1,21 @@
 ---
-title: 从 Azure 逻辑应用添加和调用 Azure 函数
+title: 在 Azure 逻辑应用中添加和调用 Azure 函数
 description: 从逻辑应用添加和运行 Azure 函数
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901057"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792577"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
-若要在逻辑应用中运行执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建自己的函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还能[从 Azure Functions 内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
+如果要运行在逻辑应用中执行特定作业的代码，可以使用[Azure Functions](../azure-functions/functions-overview.md)创建自己的函数。 此服务可帮助你创建 node.js、 C#和F#函数，使你无需生成一个完整的应用程序或基础结构来运行代码。 还能[从 Azure Functions 内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
 
 * 通过 Node.js 或 C# 函数扩展逻辑应用的行为。
 * 在逻辑应用工作流中执行计算。
@@ -27,43 +24,43 @@ ms.locfileid: "73901057"
 若要运行代码片段而不创建 Azure 函数，请了解如何[添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
-> 在逻辑应用和 Azure Functions 之间集成目前不适用于槽已启用的情况。
+> 逻辑应用与 Azure Functions 的集成当前不适用于启用槽。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 一个 Azure 函数应用，它是 Azure Functions 和你的 Azure 函数的容器。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
+* Azure function app，它是 Azure 函数的容器，以及 Azure 功能。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后，你可以在 Azure 门户中的逻辑应用外或逻辑应用设计器[内的逻辑应用](#create-function-designer)中创建函数。
 
-* 使用逻辑应用时，同样的要求适用于函数应用和函数，不管它们是现有的还是全新的：
+* 使用逻辑应用时，相同的要求适用于函数应用和函数，无论它们是现有的还是新的：
 
-  * 函数应用和逻辑应用必须使用同一 Azure 订阅。
+  * 函数应用和逻辑应用必须使用相同的 Azure 订阅。
 
-  * 新的函数应用必须使用 .NET 或 JavaScript 作为运行时堆栈。 将新函数添加到现有的函数应用时，可以选择 C# 或 JavaScript。
+  * 新函数应用必须使用 .NET 或 JavaScript 作为运行时堆栈。 将新函数添加到现有函数应用时，可以选择C#或 JavaScript。
 
-  * 你的函数使用 **HTTP 触发器**模板。
+  * 函数使用**HTTP 触发器**模板。
 
-    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 将 Azure 函数添加到逻辑应用中时，逻辑应用设计器在 Azure 订阅内显示基于此模板创建的自定义函数。
+    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 将 Azure 函数添加到逻辑应用时，逻辑应用设计器会显示在 Azure 订阅中从此模板创建的自定义函数。
 
   * 除非定义了[OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)），否则函数不会使用自定义路由。
 
-  * 如果已经有函数的 OpenAPI 定义，逻辑应用设计器会提供更丰富的函数参数使用体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
+  * 如果你具有函数的 OpenAPI 定义，则逻辑应用设计器可让你在处理函数参数时获得更丰富的体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
 
 * 要在其中添加函数的逻辑应用（加入[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)是逻辑应用中的第一步）
 
-  在添加运行函数的操作之前，必须使用触发器启动逻辑应用。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  你的逻辑应用必须以触发器开头，然后才能添加运行函数的操作。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="function-swagger"></a>
 
-## <a name="find-functions-that-have-openapi-descriptions"></a>查找有 OpenAPI 说明的函数
+## <a name="find-functions-that-have-openapi-descriptions"></a>查找具有 OpenAPI 说明的函数
 
 若要在逻辑应用设计器中使用函数参数时获得更丰富的体验，请为函数[生成 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)）。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
 
-1. 确保函数应用正在运行。
+1. 请确保函数应用正在运行。
 
-1. 按照以下步骤，在函数应用中，设置[跨源资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 以便允许所有来源：
+1. 在 function app 中，设置[跨域资源共享（CORS）](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) ，以便可以通过执行以下步骤来允许所有来源：
 
-   1. 从“函数应用”列表中选择自己的函数应用。 在右侧窗格中，选择“平台功能” > “CORS”。
+   1. 从 "**函数应用**" 列表中，选择函数应用。 在右侧窗格中，选择 "**平台功能** > **CORS**"。
 
       ![选择函数应用 >“平台功能”>“CORS”](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
@@ -86,13 +83,13 @@ function convertToDateString(request, response){
 
 下面是此函数内部发生的情况：
 
-1. 该函数创建 `data` 变量并将 `body` 对象内的 `request` 对象分配给该变量。 该函数使用点 (.) 运算符引用 `body` 对象内的 `request` 对象：
+1. 该函数创建 `data` 变量并将 `request` 对象内的 `body` 对象分配给该变量。 该函数使用点 (.) 运算符引用 `request` 对象内的 `body` 对象：
 
    ```javascript
    var data = request.body;
    ```
 
-1. 该函数现在可以通过 `date` 变量访问 `data` 属性，并通过调用 `ToDateString()` 函数将该属性值从 DateTime 类型转换为 DateString 类型。 该函数还通过函数响应中的 `body` 属性返回结果：
+1. 该函数现在可以通过 `data` 变量访问 `date` 属性，并通过调用 `ToDateString()` 函数将该属性值从 DateTime 类型转换为 DateString 类型。 该函数还通过函数响应中的 `body` 属性返回结果：
 
    ```javascript
    body: data.date.ToDateString();
@@ -104,7 +101,7 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-若要在逻辑应用编辑器中从逻辑应用内部创建 Azure 函数，必须先具备一个 Azure 函数应用，这是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+使用逻辑应用设计器从逻辑应用内部开始创建 Azure 函数之前，必须先拥有 Azure function app，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -126,17 +123,17 @@ function convertToDateString(request, response){
 
    1. 在“函数名称”框中提供函数的名称。
 
-   1. 在“代码”框中，将代码添加至函数模板，包括函数运行完成后想返回至逻辑应用的响应和有效负载。 完成操作后，选择“创建”。
+   1. 在 "**代码**" 框中，将你的代码添加到函数模板，包括你希望在函数完成运行后返回给逻辑应用的响应和有效负载。 完成操作后，选择“创建”。
 
    例如：
 
    ![定义函数](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   模板代码中的  *对象表示逻辑应用通过后续步骤中“请求正文”字段发送的消息`context`* 。 要从函数内访问 `context` 对象的属性，请使用如下语法：
+   模板代码中的 `context` 对象表示逻辑应用通过后续步骤中“请求正文”字段发送的消息。 要从函数内访问 `context` 对象的属性，请使用如下语法：
 
    `context.body.<property-name>`
 
-   例如，要引用 `content` 对象内的 `context` 属性，请使用如下语法：
+   例如，要引用 `context` 对象内的 `content` 属性，请使用如下语法：
 
    `context.body.content`
 
@@ -181,7 +178,7 @@ function convertToDateString(request, response){
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌。 此示例指定上下文负载包含一个名为 `content` 的属性，该属性具有来自 email 触发器的**from**标记的值。
+   此输入是逻辑应用发送到函数的上下文对象或消息。 当你在 "**请求正文**" 字段中单击时，将显示动态内容列表，以便你可以为前面步骤中的输出选择令牌。 此示例指定上下文负载包含一个名为 `content` 的属性，该属性具有来自 email 触发器的**from**标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 

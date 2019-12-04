@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7889ee66ec80ee0b77b92efc5755e1a84a5cbf04
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f6e3e370201b49da149c09d87ed7cec63fef8ebf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073285"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792246"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -44,10 +44,10 @@ ms.locfileid: "74073285"
 使用计划事件，应用程序可以发现维护的发生，并触发任务以限制其影响。 启用计划事件可在执行维护活动之前为虚拟机提供最少的时间。 有关详细信息，请参阅下面的“事件计划”部分。
 
 预定事件提供以下用例中的事件：
-- [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
+- [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新启动、实时迁移或保留主机更新的内存）
 - 降级的硬件
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-- 规模集内的[低优先级 VM 逐出](https://azure.microsoft.com/blog/low-priority-scale-sets)
+- [点 VM](spot-vms.md)和[点规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -65,9 +65,9 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
-| 2017-11-01 | 正式版 | All | <li> 添加了对低优先级 VM 逐出 EventType“Preempt”<br> | 
-| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All |<li>初始版本
+| 2017-11-01 | 常规可用性 | 所有 | <li> 添加了对低优先级 VM 逐出事件 \ "Preempt" 的支持<br> | 
+| 2017-08-01 | 常规可用性 | 所有 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 所有 |<li>初始版本
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
@@ -90,7 +90,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 ### <a name="query-for-events"></a>查询事件
 只需进行以下调用即可查询计划事件：
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
 curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
@@ -115,10 +115,10 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @
 DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查自上次查询以来事件有效负载是否已更改。
 
 ### <a name="event-properties"></a>事件属性
-|属性  |  说明 |
+|properties  |  描述 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除低优先级虚拟机（临时磁盘将丢失）。|
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会挂起，但不会影响内存或打开的文件。 <li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除低优先级虚拟机（临时磁盘将丢失）。|
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 保证包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | 事件状态 | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 未提供 `Completed` 或相似状态；事件完成后，将不再返回。
@@ -132,7 +132,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
-| Preempt | 30 秒 |
+| 优先于 | 30 秒 |
 
 ### <a name="event-scope"></a>事件作用域     
 计划的事件传送到：
@@ -145,7 +145,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 
 ### <a name="starting-an-event"></a>启动事件 
 
-了解即将发生的事件并完成正常关闭逻辑后，可通过使用 `POST` 对元数据服务进行 `EventId` 调用，审核未完成事件。 这表明 Azure 可缩短最短通知时间（如有可能）。 
+了解即将发生的事件并完成正常关闭逻辑后，可通过使用 `EventId` 对元数据服务进行 `POST` 调用，审核未完成事件。 这表明 Azure 可缩短最短通知时间（如有可能）。 
 
 下面是 `POST` 请求正文中所需的 json。 请求应包含 `StartRequests` 列表。 每个 `StartRequest` 包含想要加速的事件的 `EventId`：
 ```
@@ -158,7 +158,7 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 }
 ```
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 ```
 curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 7bd9fe4044dace4061285c016cb08562b556b98e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 6f35bd5f28ae1512726c242cf004e1b97f81b1f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483623"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776633"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure 串行控制台中的常见错误
 Azure 串行控制台中有一组已知错误。 这是这些错误的列表以及这些错误的缓解步骤。
 
 ## <a name="common-errors"></a>常见错误
 
-Error                             |   缓解措施
+错误                             |   缓解措施
 :---------------------------------|:--------------------------------------------|
 "Azure 串行控制台要求启用启动诊断。 单击此处配置虚拟机的启动诊断。 ![启动诊断错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | 请确保 VM 或虚拟机规模集已启用[启动诊断](boot-diagnostics.md)。 如果在虚拟机规模集实例上使用串行控制台，请确保实例具有最新的模型。
 "Azure 串行控制台要求虚拟机运行。 使用上面的 "启动" 按钮启动您的虚拟机。 ![已释放错误](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | VM 或虚拟机规模集实例必须处于已启动状态才能访问串行控制台（你的 VM 不得停止或解除分配）。 请确保 VM 或虚拟机规模集实例正在运行，然后重试。
@@ -37,6 +37,7 @@ Error                             |   缓解措施
 尚未成功预配此 VM。 请确保已完全部署 VM，并重试串行控制台连接。 | 你的 VM 或虚拟机规模集可能仍在进行设置。 请等待一段时间，然后重试。
 你没有写入此 VM 的启动诊断存储帐户所需的权限。 请确保在 "" 上至少具有 VM 参与者权限。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅[概述页](serial-console-overview.md)。
 无法确定启动诊断存储帐户 *&lt;STORAGEACCOUNTNAME&gt;* 的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 串行控制台访问需要启动诊断存储帐户的参与者级别访问权限。 有关详细信息，请参阅[概述页](serial-console-overview.md)。
+与 VM 的串行控制台连接遇到错误： "错误的请求" （400） | 如果启动诊断 URI 不正确，可能会发生这种情况。 例如，使用了 "http://" 而不是 "https://"。 可以通过以下命令修复启动诊断 URI： `az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Web 套接字已关闭或无法打开。 | 可能需要将防火墙访问权限添加到 `*.console.azure.com`。 更详细但更好的方法是允许防火墙访问[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)，这种范围会定期发生变化。
 串行控制台不能使用具有分层命名空间的 Azure Data Lake Storage Gen2 的存储帐户。 | 这是分层命名空间的已知问题。 若要缓解此情况，请确保不使用 Azure Data Lake Storage Gen2 创建 VM 的启动诊断存储帐户。 仅可在创建存储帐户时设置此选项。 你可能需要创建单独的启动诊断存储帐户，而不启用 Azure Data Lake Storage Gen2 来缓解此问题。
 

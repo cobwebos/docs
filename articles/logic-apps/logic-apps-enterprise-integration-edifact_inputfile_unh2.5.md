@@ -1,20 +1,19 @@
 ---
-title: EDIFACT 消息中的 UNH 2.5 段-Azure 逻辑应用
+title: EDIFACT 消息中的 UNH 2.5 段
 description: 通过 Enterprise Integration Pack 在 Azure 逻辑应用中通过 UNH 2.5 段解析 EDIFACT 消息
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679928"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792538"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理具有 UNH2.5 段的 EDIFACT 文档
 
@@ -30,7 +29,7 @@ ms.locfileid: "72679928"
 
 ## <a name="update-the-schema"></a>更新架构
 
-若要处理消息，需要部署具有 UNH 2.5 根节点名称的架构。 例如，`EFACT_D03B_ORDERS_EAN008` 示例 UNH 字段的架构根名称。 对于具有不同 UNH 2.5 段的每个 `D03B_ORDERS`，你必须部署一个单独的架构。
+若要处理消息，需要部署具有 UNH 2.5 根节点名称的架构。 例如，`EFACT_D03B_ORDERS_EAN008`示例 UNH 字段的架构根名称。 对于具有不同 UNH 2.5 段的每个 `D03B_ORDERS`，你必须部署一个单独的架构。
 
 ## <a name="add-schema-to-edifact-agreement"></a>向 EDIFACT 协议添加架构
 

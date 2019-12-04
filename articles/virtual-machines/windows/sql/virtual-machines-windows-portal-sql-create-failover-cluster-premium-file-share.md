@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 10a3c2bf421c7182dca00dfcbf7c3f559141a745
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084077"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792204"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>使用 Azure 虚拟机上的高级文件共享配置 SQL Server 故障转移群集实例
 
@@ -45,9 +45,7 @@ ms.locfileid: "74084077"
 - [Azure 资源组](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> 目前，Azure 虚拟机上 SQL Server 故障转移群集实例仅受[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理模式支持。 若要从完全扩展模式更改为轻型模式，请删除相应 Vm 的**Sql 虚拟机**资源，然后在[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)模式下向 sql VM 资源提供程序注册这些虚拟机资源。 使用 Azure 门户删除**SQL 虚拟机**资源时，请清除正确虚拟机旁边的复选框。
->
-> 完整扩展支持自动备份、修补和高级门户管理等功能。 在[轻型](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理模式下重新安装代理后，这些功能对 SQL Server vm 将不起作用。
+> 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)。 若要从完全扩展模式更改为轻型，请删除相应 Vm 的**Sql 虚拟机**资源，然后在轻型模式下向 sql VM 资源提供程序注册这些虚拟机资源。 使用 Azure 门户删除**SQL 虚拟机**资源时，请**清除正确虚拟机旁边的复选框**。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
 
 高级文件共享提供了 IOPS，还提供了可满足多个工作负荷需求的所有容量。 对于 IO 密集型工作负荷，请考虑将[故障转移群集实例与存储空间直通 SQL Server](virtual-machines-windows-portal-sql-create-failover-cluster.md)基于托管高级磁盘或超磁盘。  
 
@@ -73,7 +71,7 @@ ms.locfileid: "74084077"
 
 具有高级文件共享的故障转移群集不支持 Filestream。 若要使用 filestream，请使用[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)部署群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在完成本文中的步骤之前，你应该已经：
 
@@ -102,7 +100,7 @@ ms.locfileid: "74084077"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。
    1. 选择 "**可用性集**"。
-   1. 选择“创建”。
+   1. 选择**创建**。
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -131,7 +129,7 @@ ms.locfileid: "74084077"
    Azure 库中的官方 SQL Server 映像包括已安装的 SQL Server 实例、SQL Server 安装软件和所需的密钥。
 
    >[!IMPORTANT]
-   > 创建虚拟机后，请删除预装的独立 SQL Server 实例。 将故障转移群集和高级文件共享设置为存储后，将使用预装 SQL Server 媒体创建 SQL Server FCI。
+   > 创建虚拟机后，删除预装的独立 SQL Server 实例。 将故障转移群集和高级文件共享设置为存储后，将使用预装 SQL Server 媒体创建 SQL Server FCI。
 
    或者，你可以使用只包含操作系统的 Azure Marketplace 映像。 选择**Windows Server 2016 Datacenter**映像，并在将故障转移群集和高级文件共享设置为存储后安装 SQL Server FCI。 此映像不包含 SQL Server 安装介质。 将 SQL Server 安装媒体放在一个可在其中运行每个服务器的位置。
 
@@ -154,7 +152,7 @@ ms.locfileid: "74084077"
 
    在每个虚拟机上，在 Windows 防火墙上打开以下端口：
 
-   | 目的 | TCP 端口 | 说明
+   | 用途 | TCP 端口 | 说明
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。
@@ -177,7 +175,7 @@ ms.locfileid: "74084077"
 1. 使用 RDP 通过你的 SQL Server FCI 将用于服务帐户的帐户连接到 SQL Server VM。
 1. 打开管理 PowerShell 命令控制台。
 1. 运行你在门户中工作时之前保存的命令。
-1. 使用文件资源管理器或 "**运行**" 对话框（Windows 徽标键 + r）前往共享。 使用网络路径 `\\storageaccountname.file.core.windows.net\filesharename`。 例如 `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
+1. 使用文件资源管理器或 "**运行**" 对话框（Windows 徽标键 + r）前往共享。 使用网络路径 `\\storageaccountname.file.core.windows.net\filesharename`。 例如： `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
 1. 至少在新连接的文件共享上创建一个文件夹，将 SQL 数据文件放置到其中。
 1. 在将参与群集的每个 SQL Server VM 上重复这些步骤。
@@ -326,9 +324,9 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 Azure 门户中，请前往包含虚拟机的资源组。
 
-1. 选择“添加”。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
+1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择“创建”。
+1. 选择**创建**。
 
 1. 使用以下值设置负载均衡器：
 
@@ -353,7 +351,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 选择 "**后端池**"，然后选择 "**添加**"。
 
-1. 将该后端池与包含 VM 的可用性集进行关联。
+1. 将后端池与包含 VM 的可用性集相关联。
 
 1. 在 "**目标网络 IP 配置**" 下，选择 "**虚拟机**" 并选择将作为群集节点加入的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。
 
@@ -363,13 +361,13 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 "负载均衡器" 边栏选项卡中选择 "**运行状况探测**"。
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
 1. 在 "**添加运行状况探测**" <a name="probe"></a>边栏选项卡上，设置以下运行状况探测参数。
 
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
-   - **端口**：在防火墙中为运行状况探测在[此步骤](#ports)中创建的端口。 在本文中，示例使用了 TCP 端口 `59999`。
+   - **端口**：在防火墙中为运行状况探测在[此步骤](#ports)中创建的端口。 在本文中，此示例使用 TCP 端口 `59999`。
    - **间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
@@ -379,7 +377,7 @@ Cloud 见证是存储在 Azure 存储 blob 中的一种新型群集仲裁见证�
 
 1. 在 "负载均衡器" 边栏选项卡上，选择 "**负载均衡规则**"。
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
 1. 设置负载均衡规则参数：
 
