@@ -75,3 +75,11 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.netapp/allversions
+- name: 资源
+  items:
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: 视频
+      href: azure-netapp-files-videos.md

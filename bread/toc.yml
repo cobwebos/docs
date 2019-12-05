@@ -21,7 +21,7 @@
         - name: 条件性访问
           tocHref: /azure/active-directory/conditional-access/
           topicHref: /azure/active-directory/conditional-access/
-        - name: 身份验证
+        - name: Authentication
           tocHref: /azure/active-directory/authentication/
           topicHref: /azure/active-directory/authentication/
         - name: 开发

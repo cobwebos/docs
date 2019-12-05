@@ -21,6 +21,8 @@
   items:
     - name: 部署 FarmBeats
       href: prepare-for-deployment.md
+    - name: 管理用户
+      href: manage-users.md
     - name: 管理场
       href: manage-farms.md
     - name: 获取传感器数据
