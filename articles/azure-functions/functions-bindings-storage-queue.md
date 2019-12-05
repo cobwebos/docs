@@ -19,7 +19,7 @@ ms.locfileid: "74231002"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub 存储库中提供了此包的源代码。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74231002"
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
-以下示例演示可在每次处理某个队列项之后轮询 `myqueue-items` 队列并写入日志的 [C# 函数](functions-dotnet-class-library.md)。
+以下示例演示可在每次处理某个队列项之后轮询 [ 队列并写入日志的 ](functions-dotnet-class-library.md)C# 函数`myqueue-items`。
 
 ```csharp
 public static class QueueFunctions
@@ -69,9 +69,9 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
-以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
+以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 *C# 脚本 (.csx)* 代码[](functions-reference-csharp.md)。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -120,13 +120,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-[用法](#trigger---usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
+[用法](#trigger---usage)部分解释了 function.json 中的 `myQueueItem` 属性命名的 `name`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
 
 ### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
 
 以下示例演示 *function.json* 文件中的一个队列触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -165,7 +165,7 @@ module.exports = async function (context, message) {
 };
 ```
 
-[用法](#trigger---usage)部分解释了 function.json 中的 `name` 属性命名的 `myQueueItem`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
+[用法](#trigger---usage)部分解释了 function.json 中的 `myQueueItem` 属性命名的 `name`。  [消息元数据部分](#trigger---message-metadata)解释了所有其他所示变量。
 
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
@@ -185,9 +185,9 @@ module.exports = async function (context, message) {
 
 ### <a name="trigger---python-example"></a>触发器 - Python 示例
 
-The following example demonstrates how to read a queue message passed to a function via a trigger.
+下面的示例演示如何通过触发器读取传递给函数的队列消息。
 
-A Storage queue trigger is defined in *function.json* where *type* is set to `queueTrigger`.
+存储队列触发器在 function.json 中定义，其中 type 设置为 `queueTrigger`。
 
 ```json
 {
@@ -204,7 +204,7 @@ A Storage queue trigger is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-The code *_\_init_\_.py* declares a parameter as `func.ServiceBusMessage` which allows you to read the queue message in your function.
+*_init\__ .py\_* 中的代码将参数声明为 `func.ServiceBusMessage`，以允许你在函数中读取队列消息。
 
 ```python
 import logging
@@ -282,20 +282,20 @@ def main(msg: func.QueueMessage):
 要使用的存储帐户按以下顺序确定：
 
 * `QueueTrigger` 特性的 `Connection` 属性。
-* 作为 `QueueTrigger` 特性应用到同一参数的 `StorageAccount` 特性。
+* 作为 `StorageAccount` 特性应用到同一参数的 `QueueTrigger` 特性。
 * 应用到函数的 `StorageAccount` 特性。
 * 应用到类的 `StorageAccount` 特性。
 * “AzureWebJobsStorage”应用设置。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
+下表解释了在 *function.json* 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
+|**类型** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**名称** | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
 |**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
@@ -303,7 +303,7 @@ def main(msg: func.QueueMessage):
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `string paramName` 等方法参数访问消息数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+在 C# 和 C# 脚本中，可以使用 `string paramName` 等方法参数访问消息数据。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 可以绑定到以下任何类型：
 
 * 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
 * `string`
@@ -318,9 +318,9 @@ def main(msg: func.QueueMessage):
 
 [队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 类的属性。
 
-|properties|Type|描述|
+|属性|类型|说明|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
+|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 `name`function.json*中* 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
 |`ExpirationTime`|`DateTimeOffset`|消息过期的时间。|
 |`Id`|`string`|队列消息 ID。|
@@ -336,7 +336,7 @@ def main(msg: func.QueueMessage):
 
 ## <a name="trigger---polling-algorithm"></a>触发器 - 轮询算法
 
-队列触发器实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，运行时将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 可以通过 [host.json 文件](functions-host-json.md#queues)中的 `maxPollingInterval` 属性配置最大等待时间。
+队列触发器实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，运行时将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 可以通过 `maxPollingInterval`host.json 文件[中的 ](functions-host-json.md#queues) 属性配置最大等待时间。
 
 ## <a name="trigger---concurrency"></a>触发器 - 并发
 
@@ -348,9 +348,9 @@ def main(msg: func.QueueMessage):
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
-[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 See the [host.json settings](#hostjson-settings) section for details regarding available settings.
+[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](#hostjson-settings)部分。
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 使用 Azure 队列存储输出绑定可将消息写入队列。
 
@@ -384,9 +384,9 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>输出 - C# 脚本示例
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 *C# 脚本 (.csx)* 代码[](functions-reference-csharp.md)。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -445,9 +445,9 @@ public static void Run(
 
 ### <a name="output---javascript-example"></a>输出 - JavaScript 示例
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数针对收到的每个 HTTP 请求创建一个队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 *JavaScript 函数*[](functions-reference-node.md)。 该函数针对收到的每个 HTTP 请求创建一个队列项。
 
-function.json 文件如下所示：
+*function.json* 文件如下所示：
 
 ```json
 {
@@ -513,9 +513,9 @@ module.exports = function(context) {
 
 ### <a name="output---python-example"></a>输出 - Python 示例
 
-The following example demonstrates how to output single and multiple values to storage queues. The configuration needed for *function.json* is the same either way.
+下面的示例演示如何将单个值和多个值输出到存储队列。 无论哪种方式，function.json 所需的配置都是相同的。
 
-A Storage queue binding is defined in *function.json* where *type* is set to `queue`.
+存储队列绑定在 function.json 中定义，其中 type 设置为 `queue`。
 
 ```json
 {
@@ -547,7 +547,7 @@ A Storage queue binding is defined in *function.json* where *type* is set to `qu
 }
 ```
 
-To set a individual message on the queue, you pass a single value to the `set` method.
+若要在队列中设置单个消息，请向 `set` 方法传递单个值。
 
 ```python
 import azure.functions as func
@@ -561,7 +561,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-To create multiple messages on the queue, declare a parameter as the appropriate list type and pass an array of values (that match the list type) to the `set` method.
+若要在队列中创建多个消息，请将参数声明为适当的列表类型，并将值的数组（与列表类型匹配）传递给 `set` 方法。
 
 ```python
 import azure.functions as func
@@ -606,13 +606,13 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `Queue` 特性中设置的绑定配置属性。
+下表解释了在 *function.json* 文件和 `Queue` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
+|**类型** | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**名称** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
 |**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
@@ -620,7 +620,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `out T paramName` 等方法参数编写一条队列消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
+在 C# 和 C# 脚本中，可以使用 `out T paramName` 等方法参数编写一条队列消息。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
 * 可序列化为 JSON 的对象
 * `string`
@@ -670,9 +670,9 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 ```
 
 
-|properties  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 Minimum is 00:00:00.100 (100 ms) and increments up to 00:01:00 (1 min).  In 1.x the data type is milliseconds, and in 2.x it is a TimeSpan.|
+|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在 1.x 中，数据类型是毫秒，在 2.x 中，数据类型是 TimeSpan。|
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
 |batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
 |maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|

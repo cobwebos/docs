@@ -34,7 +34,7 @@ ms.locfileid: "74463958"
 ![使用 AOBO 和 Azure 委派资源管理进行租户管理](../media/csp-2.jpg)
 
 > [!NOTE]
-> [Azure 门户中的“我的客户”页](../how-to/view-manage-customers.md)现在包含“云解决方案提供程序(预览版)”部分，该部分显示了已[签署 Microsoft 客户协议 (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) 并且处于 Azure 计划下的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
+> [Azure 门户中的“我的客户”页**现在包含“云解决方案提供程序(预览版)”部分，该部分显示了已**签署 Microsoft 客户协议 (MCA)](../how-to/view-manage-customers.md) 并且处于 Azure 计划下的 CSP 客户的帐单信息和资源[](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
 >
 > 无论是否已载入 Azure 委托资源管理，CSP 客户都可能出现在此部分中。 如果已载入，则它们也会显示在“客户”部分中，如[查看和管理客户和委托的资源](../how-to/view-manage-customers.md)中所述。
 

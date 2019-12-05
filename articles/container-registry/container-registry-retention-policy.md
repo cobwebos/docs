@@ -1,6 +1,6 @@
 ---
-title: Policy to retain untagged manifests
-description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
+title: 用于保留未标记清单的策略
+description: 了解如何启用 Azure 容器注册表中的保留策略，以在定义的时间段后自动删除未标记清单。
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
@@ -10,99 +10,99 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/24/2019
 ms.locfileid: "74454816"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>设置未标记清单的保留策略
 
-Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
+Azure 容器注册表使你可以选择为不包含任何关联标记（未标记*清单*）的已存储映像清单设置*保留策略*。 启用保留策略后，会在你设置的天数后自动删除注册表中的未标记清单。 此功能可防止注册表填满不需要的项目，并有助于节省存储成本。 如果未标记的清单的 `delete-enabled` 属性设置为 `false`，则无法删除清单，且不应用保留策略。
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装运行本文中的命令示例。 如果要在本地使用，则需要版本2.0.74 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
 
 > [!WARNING]
-> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. 删除无标的记映像后，这些系统即无法从注册表拉取映像。 Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
+> 设置保留策略--删除的映像数据不可恢复。 如果你的系统按清单摘要（而不是映像名称）提取映像，则不应为未标记的清单设置保留策略。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用*建议的最佳做法*，即“唯一标记”方案[](container-registry-image-tag-version.md)。
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
-* You can only set a retention policy for untagged manifests.
-* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
+* 只有**高级**容器注册表才能使用保留策略进行配置。 有关注册表服务层的信息，请参阅[Azure 容器注册表 sku](container-registry-skus.md)。
+* 只能为未标记的清单设置保留策略。
+* 保留策略目前仅适用于启用策略*后*未标记的清单。 注册表中的现有未标记清单不受策略限制。 若要删除现有未标记的清单，请参阅在[Azure 容器注册表中删除容器映像](container-registry-delete.md)中的示例。
 
-## <a name="about-the-retention-policy"></a>About the retention policy
+## <a name="about-the-retention-policy"></a>关于保留策略
 
-Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
+Azure 容器注册表对注册表中的清单进行引用计数。 当清单未加标签时，它会检查保留策略。 如果启用保留策略，则会根据策略中设置的天数，将清单删除操作排入队列，使用特定的日期。
 
-A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
+单独的队列管理作业会持续处理消息，并根据需要进行缩放。 例如，假设你在注册表中将两个清单分别标记为1小时，保留策略为30天。 两条消息将被排入队列。 然后，大约30天后，将从队列中检索消息并进行处理，假设策略仍有效。
 
-## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
+## <a name="set-a-retention-policy---cli"></a>设置保留策略-CLI
 
-The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
+下面的示例演示如何使用 Azure CLI 为注册表中未标记的清单设置保留策略。
 
-### <a name="enable-a-retention-policy"></a>Enable a retention policy
+### <a name="enable-a-retention-policy"></a>启用保留策略
 
-By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
+默认情况下，容器注册表中未设置保留策略。 若要设置或更新保留策略，请在 Azure CLI 中运行[az acr config 留成 update][az-acr-config-retention-update]命令。 可以指定介于0到365之间的天数，以保留未标记清单。 如果未指定天数，则该命令会将默认值设置为7天。 保持期结束后，注册表中所有未标记的清单将自动删除。
 
-The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
+以下示例在注册表*myregistry*中为未标记的清单设置30天的保留策略：
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
+下面的示例将策略设置为在无标记后立即删除注册表中的所有清单。 通过将保留期设置为0天来创建此策略。 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Validate a retention policy
+### <a name="validate-a-retention-policy"></a>验证保留策略
 
-If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
+如果在保留期为0天的情况下启用上述策略，则可以快速验证是否已删除未标记的清单：
 
-1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
-1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
+1. 将测试映像 `hello-world:latest` 映像推送到注册表，或替换所选的另一个测试映像。
+1. `hello-world:latest` 取消标记，例如，使用[az acr repository 取消标记][az-acr-repository-untag]命令。 未标记的清单将保留在注册表中。
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
+1. 几秒钟内，未标记的清单将被删除。 可以通过列出存储库中的清单（例如，使用[az acr 存储库 show-清单][az-acr-repository-show-manifests]命令）来验证删除。 如果测试映像只是存储库中的映像，则会删除存储库本身。
 
-### <a name="disable-a-retention-policy"></a>Disable a retention policy
+### <a name="disable-a-retention-policy"></a>禁用保留策略
 
-To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
+若要查看注册表中设置的保留策略，请运行[az acr config 保持显示][az-acr-config-retention-show]命令：
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
+若要在注册表中禁用保留策略，请运行[az acr config 留成 update][az-acr-config-retention-update]命令并设置 `--status disabled`：
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
+## <a name="set-a-retention-policy---portal"></a>设置保留策略-门户
 
-You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
+你还可以在[Azure 门户](https://portal.azure.com)中设置注册表的保留策略。 下面的示例演示如何使用门户为注册表中的未标记清单设置保留策略。
 
-### <a name="enable-a-retention-policy"></a>Enable a retention policy
+### <a name="enable-a-retention-policy"></a>启用保留策略
 
-1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
-1. In **Status**, select **Enabled**.
-1. Select a number of days between 0 and 365 to retain the untagged manifests. 选择“保存”。
+1. 导航到 Azure 容器注册表。 在 "**策略**" 下，选择 "**保留**（预览版）"。
+1. 在 "**状态**" 中，选择 "**已启用**"。
+1. 选择0到365之间的天数，以保留未标记清单。 选择“保存”。
 
-![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![启用 Azure 门户的保留策略](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Disable a retention policy
+### <a name="disable-a-retention-policy"></a>禁用保留策略
 
-1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
-1. In **Status**, select **Disabled**. 选择“保存”。
+1. 导航到 Azure 容器注册表。 在 "**策略**" 下，选择 "**保留**（预览版）"。
+1. 在 "**状态**" 中，选择 "**禁用**"。 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 
-* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
+* 了解有关删除 Azure 容器注册表中的[映像和存储库](container-registry-delete.md)的选项的详细信息
 
-* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
+* 了解如何从注册表[自动清除](container-registry-auto-purge.md)所选的映像和清单
 
-* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
+* 了解有关在注册表中[锁定图像和清单](container-registry-image-lock.md)的选项的详细信息
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -1,7 +1,7 @@
 ---
 title: 结合使用实体识别和文本分析 API
 titleSuffix: Azure Cognitive Services
-description: Learn how to identify and disambiguate the identity of an entity found in text with the Text Analytics REST API.
+description: 了解如何使用文本分析 REST API 识别和消除文本中找到的实体的标识。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -17,23 +17,23 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/22/2019
 ms.locfileid: "74326626"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>How to use Named Entity Recognition in Text Analytics
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-The [Named Entity Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) takes unstructured text, and for each JSON document, returns a list of disambiguated entities with links to more information on the web (Wikipedia and Bing).
+[命名实体识别 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 需要使用非结构化文本，并对每个 JSON 文档返回已消除歧义的实体列表，其中包含网上（维基百科和必应）详细信息的链接。
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>实体链接和命名实体识别
 
-The Text Analytics' `entities` endpoint supports both named entity recognition (NER) and entity linking.
+文本分析的 `entities` 终结点支持命名实体识别 (NER) 和实体链接。
 
 ### <a name="entity-linking"></a>实体链接
 实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定“Mars”是用作行星还是用作罗马战神）。 此过程需要用到已识别实体链接到的知识库 — Wikipedia 用作 `entities` 终结点文本分析的知识库。
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
-Named entity recognition (NER) is the ability to identify different entities in text and categorize them into pre-defined classes, or types. 
+命名实体识别（NER）是一种能够识别文本中的不同实体并将它们分类为预定义的类或类型的能力。 
 
-## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 public preview
+## <a name="named-entity-recognition-v3-public-preview"></a>命名实体识别 v3 公共预览版
 
-The next version of Named Entity Recognition is now available for public preview. It provides updates to both entity linking and Named Entity Recognition. Try it using the [API test console](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
+下一版本的命名实体识别现可用于公共预览。 它提供实体链接和命名实体识别的更新。 尝试使用[API 测试控制台](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)。
 
 :::row:::
     :::column span="":::
@@ -46,92 +46,92 @@ The next version of Named Entity Recognition is now available for public preview
 <!-- expanded types and subtypes row-->
 :::row:::
     :::column span="":::
-        Expanded entity types and subtypes
+        扩展的实体类型和子类型
     :::column-end:::
     :::column span="":::
-     Expanded classification and detection for several named entity types.
+     扩展了多个命名实体类型的分类和检测。
     :::column-end:::
 :::row-end:::
 <!-- separate endpoints row-->
 :::row:::
     :::column span="":::
-        Separate request endpoints 
+        单独的请求终结点 
     :::column-end:::
     :::column span="":::
-        Separate endpoints for sending entity linking and NER requests.
+        用于发送实体链接和 NER 请求的不同终结点。
     :::column-end:::
 :::row-end:::
 <!-- model-version row -->
 :::row:::
     :::column span="":::
-        `model-version` parameter
+        `model-version` 参数
     :::column-end:::
     :::column span="":::
-        An optional parameter for choosing a version of the Text Analytics model. Currently only the default model is available for use.
+        用于选择文本分析模型版本的可选参数。 目前只有默认模型可供使用。
     :::column-end:::
 :::row-end:::
 
 ### <a name="entity-types"></a>实体类型
 
-Named Entity Recognition v3 provides expanded detection across multiple types. Currently, NER v3 can recognize the following categories of entities. For a detailed list of supported entities and languages, see the [Named entity types](../named-entity-types.md) article.
+命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER v3 可以识别以下类别的实体。 有关支持的实体和语言的详细列表，请参阅[命名实体类型](../named-entity-types.md)一文。
 
 * 一般信息
-* Personal Information 
+* 个人信息 
 
-### <a name="request-endpoints"></a>Request endpoints
+### <a name="request-endpoints"></a>请求终结点
 
-Named Entity Recognition v3 uses separate endpoints for NER and entity linking requests. Use a URL format below based on your request:
+命名实体识别 v3 对 NER 和实体链接请求使用不同的终结点。 根据你的请求使用下面的 URL 格式：
 
 NER
-* General entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+* 常规实体-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
 
-* Personal information entities - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+* 个人信息实体-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
 
-Entity linking
+实体链接
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
 ### <a name="model-versioning"></a>模型版本控制
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-## <a name="supported-types-for-named-entity-recognition-v2"></a>Supported Types for Named Entity Recognition v2
+## <a name="supported-types-for-named-entity-recognition-v2"></a>命名实体识别 v2 支持的类型
 
 > [!NOTE]
-> The following entities are supported by Named Entity Recognition(NER) version 2. [NER v3](#named-entity-recognition-v3-public-preview) is in public preview, and greatly expands the number and depth of the entities recognized in text.   
+> 命名实体识别（NER）版本2支持以下实体。 [NER v3](#named-entity-recognition-v3-public-preview)为公共预览版，并大大扩展了文本中识别的实体数量和深度。   
 
-| Type  | 子类型 | 示例 |
+| 类型  | SubType | 示例 |
 |:-----------   |:------------- |:---------|
 | 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
-| Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
+| 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
 | 组织  | 暂无\*         | “Microsoft”   |
 | 数量      | Number        | “6”、“six”     |
 | 数量      | 百分比    | “50%”、“fifty percent”|
-| 数量      | 序号       | “2nd”、“second”     |
-| 数量      | 年龄           | “90 day old”、“30 years old”    |
+| 数量      | Ordinal       | “2nd”、“second”     |
+| 数量      | Age           | “90 day old”、“30 years old”    |
 | 数量      | 货币      | “$10.99”     |
 | 数量      | 维度     | “10 miles”、“40 cm”     |
 | 数量      | 温度   | “32 degrees”    |
-| 日期/时间      | 暂无\*         | “6:30PM February 4, 2012”      |
-| 日期/时间      | 日期          | “May 2nd, 2017”、“05/02/2017”   |
-| 日期/时间      | 时间          | “8am”、“8:00”  |
-| 日期/时间      | 日期范围     | “May 2nd to May 5th”    |
-| 日期/时间      | 时间范围     | “6pm to 7pm”     |
-| 日期/时间      | Duration      | “1 minute and 45 seconds”   |
-| 日期/时间      | 设置           | “every Tuesday”     |
+| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      |
+| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   |
+| DateTime      | 时间          | “8am”、“8:00”  |
+| DateTime      | DateRange     | “May 2nd to May 5th”    |
+| DateTime      | TimeRange     | “6pm to 7pm”     |
+| DateTime      | 持续时间      | “1 minute and 45 seconds”   |
+| DateTime      | 设置           | “every Tuesday”     |
 | URL           | 暂无\*         | "https:\//www.bing.com"    |
-| 电子邮件         | 暂无\*         | "support@contoso.com" |
-| US Phone Number  | 暂无\*         | (US phone numbers only) "(312) 555-0176" |
-| IP 地址    | 暂无\*         | "10.0.0.100" |
+| Email         | 暂无\*         | "support@contoso.com" |
+| 美国电话号码  | 暂无\*         | （仅限美国电话号码）"（312） 555-0176" |
+| IP 地址    | 暂无\*         | 10.0.0.100 |
 
-\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  All the supported entity types listed are available only for the English, Chinese-Simplified, French, German, and Spanish languages.
+\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有支持的实体类型仅适用于英语、简体中文、法语、德语和西班牙语。
 
 ### <a name="language-support"></a>语言支持
 
-使用各种语言的实体链接需要使用每种语言的相应知识库。 对于文本分析中的实体链接，这意味着 `entities` 终结点支持的每种语言都将链接到该语言的相应 Wikipedia 语料库。 由于语料库的大小因语言而异，因此，实体链接功能的召回率应该也有所不同。 See the [language support](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) article for more information.
+使用各种语言的实体链接需要使用每种语言的相应知识库。 对于文本分析中的实体链接，这意味着 `entities` 终结点支持的每种语言都将链接到该语言的相应 Wikipedia 语料库。 由于语料库的大小因语言而异，因此，实体链接功能的召回率应该也有所不同。 有关详细信息，请参阅[语言支持](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)一文。
 
 ## <a name="preparation"></a>准备工作
 
-You must have JSON documents in this format: ID, text, language
+你必须具有以下格式的 JSON 文档： ID、文本、语言
 
 有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
 
@@ -158,16 +158,16 @@ You must have JSON documents in this format: ID, text, language
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 Review the API documentation for this request: [Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ 创建 POST 请求。 查看此请求的 API 文档：[实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 You must include `/text/analytics/v2.1/entities`. 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`。
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 必须包含 `/text/analytics/v2.1/entities`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`。
 
-+ Set a request header to include [the access key](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) for Text Analytics operations.
++ 设置请求标头以包括文本分析操作[的访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开**文档**中的“API 测试控制台”来构造请求并将其 POST 到该服务[](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
@@ -179,7 +179,7 @@ You must have JSON documents in this format: ID, text, language
 
 所有 POST 请求都将返回 JSON 格式的响应，其中包含 ID 和检测到的属性。
 
-系统会立即返回输出。 可以将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
 下面展示了实体链接的输出示例：
 
@@ -339,9 +339,9 @@ You must have JSON documents in this format: ID, text, language
     }
 ```
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>Summary
 
-在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 摘要：
+在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 
 + [实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。

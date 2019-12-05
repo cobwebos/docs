@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: f32a67dc6d3b3f869afaa532403c05b218588552
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786385"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277309"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
-利用服务总线与[虚拟网络（VNet）服务终结点][vnet-sep]的集成，可以安全地从绑定到虚拟网络的虚拟机等工作负荷访问消息传送功能，同时在这两个网络流量路径上保护网络流量路径结尾.
+通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
 配置为绑定到至少一个虚拟网络子网服务终结点后，相应的服务总线命名空间将不再接受授权虚拟网络以外的任何位置的流量。 从虚拟网络的角度来看，通过将服务总线命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。
 
@@ -31,15 +31,13 @@ ms.locfileid: "72786385"
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
 > 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure Monitor
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
-> - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
-> - Azure App Service
+> - Azure 应用服务
 > - Azure Functions
 
 > [!IMPORTANT]
@@ -61,7 +59,7 @@ ms.locfileid: "72786385"
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 服务总线服务器接受来自特定虚拟网络子网的连接。
 
-将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网中创建一个**虚拟网络服务终结点**，并为 "node.js" 启用该终结点，如[服务终结点概述][vnet-sep]中所述。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
+将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照**服务终结点概述**中的说明为“Microsoft.ServiceBus”启用该终结点[][vnet-sep]。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
 
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
@@ -188,7 +186,7 @@ ms.locfileid: "72786385"
   }
 ```
 
-若要部署模板，请按照[Azure 资源管理器][lnk-deploy]的说明进行操作。
+若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

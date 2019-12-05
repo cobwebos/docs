@@ -49,42 +49,42 @@ ms.locfileid: "74462017"
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
 >[!IMPORTANT]
->The Azure AD Connect server contains critical identity data and should be treated as a Tier 0 component as documented in [the Active Directory administrative tier model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+>Azure AD Connect 服务器包含关键标识数据，应将其视为第 0 层组件，如 [Active Directory 管理层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述
 
 * 不能在 Small Business Server 或 2019 版以前的 Windows Server Essentials（支持 Windows Server Essentials 2019）上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。
-* Installing Azure AD Connect on a Domain Controller is not recommended due to security practices and more restrictive settings that can prevent Azure AD Connect from installing correctly.
+* 建议不要在域控制器上安装 Azure AD Connect，因为安全措施和较严格的设置可能会阻碍正确安装 Azure AD Connect。
 * 必须在 Azure AD Connect 服务器上安装完整的 GUI。 **不支持**在服务器核心上安装 GUI。
 >[!IMPORTANT]
->Installing Azure AD Connect on small business server, server essentials, or server core is not supported.
+>不支持在 Small Business Server、Server Essentials 或 Server Core 上安装 Azure AD Connect。
 
-* Azure AD Connect 必须安装在 Windows Server 2008 R2 或更高版本上。 This server must be domain joined and may be a domain controller or a member server.
+* Azure AD Connect 必须安装在 Windows Server 2008 R2 或更高版本上。 此服务器必须加入域，并且可以是域控制器或成员服务器。
 * 如果在 Windows Server 2008 R2 上安装 Azure AD Connect，请确保从 Windows 更新应用最新的修补程序。 在未修补的服务器上无法启动安装。
 * 如果打算使用**密码同步**功能，则必须在 Windows Server 2008 R2 SP1 或更高版本上安装 Azure AD Connect 服务器。
 * 如果打算使用**组托管服务帐户**，则 Azure AD Connect 服务器必须位于 Windows Server 2012 或更高版本上。
 * Azure AD Connect 服务器必须安装 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本和 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
-* The Azure AD Connect server must not have PowerShell Transcription Group Policy enabled if you are using Azure AD Connect wizard to manage ADFS configuration. 如果使用 Azure AD Connect 向导来管理同步配置，则可以启用 PowerShell 脚本。
+* 如果使用 Azure AD Connect 向导来管理 ADFS 配置，则 Azure AD Connect 服务器不能组策略启用 PowerShell 脚本。 如果使用 Azure AD Connect 向导来管理同步配置，则可以启用 PowerShell 脚本。
 * 如果正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。 必须在这些服务器上启用 [Windows 远程管理](#windows-remote-management)才能进行远程安装。
 * 若要部署 Active Directory 联合身份验证服务，需要使用 [SSL 证书](#ssl-certificate-requirements)。
 * 若要部署 Active Directory 联合身份验证服务，需要配置[名称解析](#name-resolution-for-federation-servers)。
 * 如果全局管理员已启用 MFA，URL **https://secure.aadcdn.microsoftonline-p.com** 必须在受信任的站点列表中。 在显示 MFA 质询提示之前，系统会先提示将此站点添加到受信任的站点列表中（如果尚未添加）。 可以使用 Internet Explorer 将它添加到受信任的站点。
-* Microsoft recommends hardening your Azure AD Connect server to decrease the security attack surface for this critical component of your IT environment.  Following the recommendations below will decrease the security risks to your organization.
+* Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。  遵循以下建议可降低你的组织的安全风险。
 
-* Deploy Azure AD Connect on a domain joined server and restrict administrative access to domain administrators or other tightly controlled security groups.
+* 将 Azure AD Connect 部署在已加入域的服务器上，并仅限域管理员或其他严格受控的安全组进行管理性访问。
 
 若要了解更多信息，请参阅以下文章： 
 
-* [Securing administrators groups](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [保护管理员组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [Securing built-in administrator accounts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [保护内置的管理员帐户](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Security improvement and sustainment by reducing attack surfaces](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [通过减小攻击面改进并维护安全性](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [Reducing the Active Directory attack surface](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [减小 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect 使用的 SQL Server
-* Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认安装 SQL Server 2012 Express LocalDB（轻量版本的 SQL Server Express）。 SQL Server Express 有 10GB 的大小限制，允许管理大约 100,000 个对象。 如果需要管理更多的目录对象，则需要将安装向导指向不同的 SQL Server 安装。 The type of SQL Server installation can impact the [performance of Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
-* If you use a different installation of SQL Server, then these requirements apply:
-  * Azure AD Connect supports all versions of Microsoft SQL Server from 2008 R2 (with latest Service Pack) to SQL Server 2019. **不支持**将 Microsoft Azure SQL 数据库用作数据库。
+* Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 默认安装 SQL Server 2012 Express LocalDB（轻量版本的 SQL Server Express）。 SQL Server Express 有 10GB 的大小限制，允许管理大约 100,000 个对象。 如果需要管理更多的目录对象，则需要将安装向导指向不同的 SQL Server 安装。 SQL Server 安装的类型可能会影响 [Azure AD Connect 的性能](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)。
+* 如果使用不同的 SQL Server 安装，则以下要求适用：
+  * Azure AD Connect 支持从 2008 R2（包含最新的 Service Pack）到 SQL Server 2019 的所有 Microsoft SQL Server 版本。 **不支持**将 Microsoft Azure SQL 数据库用作数据库。
   * 必须使用不区分大小写的 SQL 排序规则。 可通过其名称中的 \_CI_ 识别排序规则。 **不支持**使用区分大小写的排序规则，可通过其名称中的 \_CS_ 识别。
   * 每个 SQL 实例只能有一个同步引擎。 **不支持**与 FIM/MIM Sync、DirSync 或 Azure AD Sync 共享 SQL 实例。
 
@@ -93,7 +93,7 @@ ms.locfileid: "74462017"
 * 如果使用快速设置或者从 DirSync 升级，则必须创建本地 Active Directory 的企业管理员帐户。
 * [Active Directory 中的帐户](reference-connect-accounts-permissions.md)：如果为本地 Active Directory 使用自定义设置安装路径或企业管理员帐户。
 
-### <a name="connectivity"></a>连接性
+### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 和 Azure AD 终结点。
 * 如果 Intranet 有防火墙，而需要开放 Azure AD Connect 服务器与域控制器之间的端口。请参阅 [Azure AD Connect 端口](reference-connect-ports.md)了解详细信息。
 * 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
@@ -114,7 +114,7 @@ ms.locfileid: "74462017"
     </system.net>
 ```
 
-* 如果代理服务器要求身份验证，则[服务帐户](reference-connect-accounts-permissions.md#adsync-service-account)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](how-to-connect-install-custom.md#install-required-components)。 You also need a different change to machine.config. With this change in machine.config, the installation wizard and sync engine respond to authentication requests from the proxy server. 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的[服务帐户](reference-connect-accounts-permissions.md#adsync-service-account)。 machine.config 节应如下所示。
+* 如果代理服务器要求身份验证，则[服务帐户](reference-connect-accounts-permissions.md#adsync-service-account)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](how-to-connect-install-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。 在安装向导结束时的“配置”页上，上下文将切换到创建的**服务帐户**。[](reference-connect-accounts-permissions.md#adsync-service-account) machine.config 节应如下所示。
 
 ```
     <system.net>
@@ -137,21 +137,21 @@ ms.locfileid: "74462017"
 * 可选：一个用于验证同步的测试用户帐户。
 
 ## <a name="component-prerequisites"></a>组件先决条件
-### <a name="powershell-and-net-framework"></a>PowerShell and .NET Framework
+### <a name="powershell-and-net-framework"></a>PowerShell 和 .NET Framework
 Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服务器上需要安装此版本或更高版本。 请根据 Windows Server 版本执行以下操作：
 
 * Windows Server 2012R2
-  * 已默认安装 Microsoft PowerShell。 无需执行任何操作。
+  * 已默认安装 Microsoft PowerShell。 不需要执行任何操作。
   * .NET Framework 4.5.1 和更高版本通过 Windows 更新提供。 请确保已在控制面板中安装 Windows Server 的最新更新。
 * Windows Server 2008 R2 和 Windows Server 2012
-  * 可从 [Microsoft 下载中心](https://www.microsoft.com/downloads)获取的 **Windows Management Framework 4.0** 中获得最新的 Microsoft PowerShell 版本。
+  * 可从 **Microsoft 下载中心**获取的 [Windows Management Framework 4.0](https://www.microsoft.com/downloads) 中获得最新的 Microsoft PowerShell 版本。
   * .NET Framework 4.5.1 和更高版本可从 [Microsoft 下载中心](https://www.microsoft.com/downloads)获取。
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>为 Azure AD Connect 启用 TLS 1.2
-在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎服务器和 Azure AD 之间的通信进行加密。 You can change this by configuring .NET applications to use TLS 1.2 by default on the server. 有关 TLS 1.2 的详细信息，请参阅 [Microsoft 安全通报 2960358](https://technet.microsoft.com/security/advisory/2960358)。
+在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎服务器和 Azure AD 之间的通信进行加密。 可以通过配置 .NET 应用程序在服务器上默认使用 TLS 1.2 来更改此项。 有关 TLS 1.2 的详细信息，请参阅 [Microsoft 安全通报 2960358](https://technet.microsoft.com/security/advisory/2960358)。
 
-1. TLS 1.2 cannot be enabled prior to Windows Server 2008 R2 or earlier. Make sure you have the .NET 4.5.1 hotfix installed for your operating system, see [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358). 在服务器上可能已经安装了此修补程序或更高版本。
+1. 在 Windows Server 2008 R2 或更早版本之前，无法启用 TLS 1.2。 请确保已为操作系统安装了 .NET 4.5.1 修补程序，请参阅 [Microsoft 安全通报 2960358](https://technet.microsoft.com/security/advisory/2960358)。 在服务器上可能已经安装了此修补程序或更高版本。
 2. 如果使用 Windows Server 2008 R2，请确保已启用 TLS 1.2。 Windows Server 2012 服务器及更高版本上应该已经启用了 TLS 1.2。
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
@@ -213,15 +213,15 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服�
 
 | Active Directory 中的对象数目 | CPU | 内存 | 硬盘驱动器大小 |
 | --- | --- | --- | --- |
-| 少于 10,000 个 |1.6 GHz |4GB |70 GB |
-| 10,000–50,000 |1.6 GHz |4GB |70 GB |
+| 少于 10,000 个 |1.6 GHz |4 GB |70 GB |
+| 10,000–50,000 |1.6 GHz |4 GB |70 GB |
 | 50,000–100,000 |1.6 GHz |16 GB |100 GB |
 | 如果对象数超过 100,000 个，则需要使用完全版本的 SQL Server | | | |
 | 100,000–300,000 |1.6 GHz |32 GB |300 GB |
 | 300,000–600,000 |1.6 GHz |32 GB |450 GB |
 | 超过 600,000 个 |1.6 GHz |32 GB |500 GB |
 
-The minimum requirements for computers running AD FS or Web Application Proxy Servers is the following:
+运行 AD FS 或 Web 应用程序代理服务器的计算机的最低要求如下：
 
 * CPU：双核 1.6 GHz 或更高
 * 内存：2 GB 或更高

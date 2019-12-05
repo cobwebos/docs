@@ -10,7 +10,7 @@ ms.service: automation
 manager: carmonm
 ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
 ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74231539"
@@ -33,17 +33,17 @@ ms.locfileid: "74231539"
 
 #### <a name="resolution"></a>分辨率
 
-若要解决此问题，必须使用 [Remove-AzureRmAutomationModule](/powershell/module/azurerm.automation/remove-azurermautomationmodule) cmdlet 删除停滞在“正在导入”状态的模块。 然后，可以重试导入模块。
+若要解决此问题，必须使用 **Remove-AzureRmAutomationModule** cmdlet 删除停滞在“正在导入”[](/powershell/module/azurerm.automation/remove-azurermautomationmodule)状态的模块。 然后，可以重试导入模块。
 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Scenario: AzureRM modules are stuck importing after trying to update them
+### <a name="update-azure-modules-importing"></a>方案：尝试更新 AzureRM 模块后，它们会停滞导入
 
 #### <a name="issue"></a>问题
 
-A banner with the following message stays in your account after trying to update your AzureRM modules:
+尝试更新 AzureRM 模块后，会在你的帐户中保留一条包含以下消息的横幅：
 
 ```error
 Azure modules are being updated
@@ -51,11 +51,11 @@ Azure modules are being updated
 
 #### <a name="cause"></a>原因
 
-There is a known issue with updating the AzureRM modules in an Automation Account that is in a resource group with a numeric name that starts with 0.
+更新自动化帐户中的 AzureRM 模块的已知问题，该帐户所在的资源组的名称以0开头。
 
 #### <a name="resolution"></a>分辨率
 
-To update your Azure modules in your Automation Account, it must be in a resource group that has an alphanumeric name. Resource groups with numeric names starting with 0 are unable to update AzureRM modules at this time.
+若要在自动化帐户中更新 Azure 模块，该模块必须位于具有字母数字名称的资源组中。 名称以0开头的资源组目前无法更新 AzureRM 模块。
 
 ### <a name="module-fails-to-import"></a>场景：模块无法导入，或者 cmdlet 在导入后无法执行
 
@@ -80,7 +80,7 @@ To update your Azure modules in your Automation Account, it must be in a resourc
 * 打开 .psd1 文件，看模块是否有任何依赖项。 如果有，则将这些模块上传到自动化帐户。
 * 确保任何引用的 .dll 都存在于模块文件夹中。
 
-### <a name="all-modules-suspended"></a>Scenario: Update-AzureModule.ps1 suspends when updating modules
+### <a name="all-modules-suspended"></a>方案： Update-AzureModule 更新模块时暂停
 
 #### <a name="issue"></a>问题
 
@@ -97,7 +97,7 @@ To update your Azure modules in your Automation Account, it must be in a resourc
 > [!NOTE]
 > 避免导入 **AzureRM** 模块。 导入 **AzureRM** 模块会导致导入所有 **AzureRM.\*** 模块，因此不建议这样做。
 
-如果更新过程暂停，则需要向 `Update-AzureModules.ps1` 脚本添加 `SimultaneousModuleImportJobCount` 参数，并提供低于默认值 10 的值。 如果实现此逻辑，建议先从值 3 或 5 开始。 `SimultaneousModuleImportJobCount` 是用于更新 Azure 模块的 `Update-AutomationAzureModulesForAccount` 系统 runbook 的参数。 这项更改会延长该过程的运行时间，但会提高其完成几率。 以下示例显示了该参数及其在 runbook 中的放置位置：
+如果更新过程暂停，则需要向 `SimultaneousModuleImportJobCount` 脚本添加 `Update-AzureModules.ps1` 参数，并提供低于默认值 10 的值。 如果实现此逻辑，建议先从值 3 或 5 开始。 `SimultaneousModuleImportJobCount` 是用于更新 Azure 模块的 `Update-AutomationAzureModulesForAccount` 系统 runbook 的参数。 这项更改会延长该过程的运行时间，但会提高其完成几率。 以下示例显示了该参数及其在 runbook 中的放置位置：
 
  ```powershell
          $Body = @"
@@ -118,7 +118,7 @@ To update your Azure modules in your Automation Account, it must be in a resourc
 
 ## <a name="run-as-accounts"></a>运行方式帐户
 
-### <a name="unable-create-update"></a>Scenario: You're unable to create or update a Run As account
+### <a name="unable-create-update"></a>方案：无法创建或更新运行方式帐户
 
 #### <a name="issue"></a>问题
 
@@ -138,11 +138,11 @@ You do not have permissions to create…
 
 如果该问题是由某个锁引起的，请确保可以删除该锁。 然后导航到锁定的资源，右键单击该锁并选择“删除”以删除该锁。
 
-### <a name="iphelper"></a>Scenario: You receive the error "Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'" when executing a runbook.
+### <a name="iphelper"></a>方案：在执行 runbook 时，收到错误 "找不到 DLL ' iplpapi ' 中名为 ' GetPerAdapterInfo ' 的入口点"。
 
 #### <a name="issue"></a>问题
 
-When executing a runbook you receive the following exception:
+执行 runbook 时，会收到以下异常：
 
 ```error
 Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
@@ -150,11 +150,11 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>原因
 
-This error is most likely caused by an incorrectly configured [Run As Account](../manage-runas-account.md).
+此错误很可能是由不正确配置的[运行方式帐户](../manage-runas-account.md)导致的。
 
 #### <a name="resolution"></a>分辨率
 
-Make sure your [Run As Account](../manage-runas-account.md) is properly configured. Once it is configured correctly, ensure you have the proper code in your runbook to authenticate with Azure. The following example shows a snippet of code to authenticate to Azure in a runbook using a Run As Account.
+请确保正确配置了[运行方式帐户](../manage-runas-account.md)。 正确配置后，请确保在 runbook 中使用正确的代码对 Azure 进行身份验证。 下面的示例演示使用运行方式帐户在 runbook 中对 Azure 进行身份验证的代码段。
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -168,4 +168,4 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

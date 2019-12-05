@@ -1,6 +1,6 @@
 ---
 title: 了解资源锁定
-description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
+description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
@@ -12,19 +12,19 @@ ms.locfileid: "74406407"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
-仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
+仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及_拒绝分配_的应用，请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
-Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
+锁定模式适用于蓝图分配，它有三个选项： "**不锁定**"、"**只读**" 或 "不**删除**"。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
 但是，不能在蓝图外部更改锁定模式。
 
-Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
+蓝图分配中的项目创建的资源具有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|Mode|项目资源类型|状况|描述|
+|Mode|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
-|只读|Resource group|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
+|只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 |只读|非资源组|只读|以任何方式都无法更改资源 -- 无更改且无法将其删除。|
 |不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 
@@ -45,23 +45,23 @@ Resources created by artifacts in a blueprint assignment have four states: **Not
 
 ## <a name="how-blueprint-locks-work"></a>蓝图锁定的工作原理
 
-如果蓝图分配选择了“只读”或“不要删除”选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
+如果蓝图分配选择了“只读”[](../../../role-based-access-control/deny-assignments.md)或“不要删除”选项，则会在分配期间将 RBAC **拒绝分配**拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
 
-![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
+![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
 
-The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
+每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
 |Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|只读 |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
-|不要删除 |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|只读 |**\*** |**\*/read** |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|不要删除 |**\*/delete** | |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>从拒绝分配中排除主体
 
-In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
+在某些设计或安全方案中，可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 这是在 REST API 中完成的，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多五个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面是包含**excludedPrincipals**的请求正文示例：
 
 ```json
 {
@@ -105,7 +105,7 @@ In some design or security scenarios, it may be necessary to exclude a principal
 
 ## <a name="next-steps"></a>后续步骤
 
-- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
+- 按照[保护新资源](../tutorials/protect-new-resources.md)教程操作。
 - 了解[蓝图生命周期](lifecycle.md)。
 - 了解如何使用[静态和动态参数](parameters.md)。
 - 了解如何自定义[蓝图排序顺序](sequencing-order.md)。

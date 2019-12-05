@@ -1,5 +1,5 @@
 ---
-title: How to provision devices for multitenancy in Azure IoT Hub Device Provisioning Service
+title: 如何在 Azure IoT 中心设备预配服务中为多租户预配设备
 description: 如何使用你的设备预配服务实例来预配多租户的设备
 author: wesmc7777
 ms.author: wesmc
@@ -36,7 +36,7 @@ ms.locfileid: "74228791"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74228791"
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“eastus”区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
+2. 在 Azure Cloud Shell 中，使用 **az iot hub create** 命令在“eastus”[](/cli/azure/iot/hub#az-iot-hub-create)区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
 
     以下示例在“eastus”位置创建名为“contoso-east-hub”的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-east-hub。
 
@@ -67,7 +67,7 @@ ms.locfileid: "74228791"
     
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“westus”区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
+3. 在 Azure Cloud Shell 中，使用 **az iot hub create** 命令在“westus”[](/cli/azure/iot/hub#az-iot-hub-create)区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
 
     以下示例在“westus”位置创建名为“contoso-west-hub”的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-west-hub。
 
@@ -303,7 +303,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
     ![从门户边栏选项卡中提取设备预配服务终结点信息](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. 打开 ~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c，在这两个 VM 上进行编辑。
+1. 打开 ~/azure-iot-sdk-c/provisioning**client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c\_** ，在这两个 VM 上进行编辑。
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -326,7 +326,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. 在两个 VM 上，在 **prov\_dev\_client\_sample.c** 中找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
+1. 在两个 VM 上，在 `prov_dev_set_symmetric_key_info()`prov**dev\_client\_sample.c\_ 中找到已注释掉的对**  的调用。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -356,7 +356,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. 成功生成后，在这两个 VM 上运行 prov\_dev\_client\_sample.exe，以模拟来自每个区域的租户设备。 请注意，每个设备将被分配到最邻近模拟设备区域的租户 IoT 中心。
+1. 成功生成后，在这两个 VM 上运行 prov**dev\_client\_sample.exe\_** ，以模拟来自每个区域的租户设备。 请注意，每个设备将被分配到最邻近模拟设备区域的租户 IoT 中心。
 
     运行模拟：
     ```bash
@@ -419,8 +419,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>后续步骤
 
-- To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
-- To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
+- 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

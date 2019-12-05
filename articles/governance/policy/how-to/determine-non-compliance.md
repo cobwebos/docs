@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959619"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279416"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -81,7 +81,7 @@ ms.locfileid: "73959619"
 
 以下矩阵将每个可能的原因映射到策略定义中的控制条件：[](../concepts/definition-structure.md#conditions)
 
-|原因 | 条件 |
+|Reason | 条件 |
 |-|-|
 |当前值必须包含目标值作为键。 |containsKey，或 notContainsKey 的**求反** |
 |当前值必须包含目标值。 |contains，或 notContains 的**求反** |
@@ -216,6 +216,6 @@ _视觉差异_可帮助识别资源的更改。 检测到的更改可能与资�
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取合规性数据](getting-compliance-data.md)。
-- 了解如何[修正不合规的资源](remediate-resources.md)。
+- 了解如何[获取符合性数据](get-compliance-data.md)。
+- 了解如何[修正不符合的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

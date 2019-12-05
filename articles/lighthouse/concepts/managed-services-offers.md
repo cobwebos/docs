@@ -12,7 +12,7 @@ ms.locfileid: "74463996"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
-本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
+本文介绍 **Azure 市场**中的“新托管服务产品”类型[](https://azuremarketplace.microsoft.com)。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
 
 ## <a name="understand-managed-services-offers"></a>了解托管服务产品
 

@@ -1,5 +1,5 @@
 ---
-title: Create and manage claimable VMs in Azure DevTest Labs | Microsoft Docs
+title: 在 Azure 开发测试实验室中创建和管理可认领 Vm |Microsoft Docs
 description: 了解如何向 Azure 开发测试实验室中的实验室添加可声明的虚拟机
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -22,7 +22,7 @@ ms.lasthandoff: 11/22/2019
 ms.locfileid: "74383954"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建和管理可认领 VM
-使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[市场映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
+使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为*自定义映像*、[公式](devtest-lab-create-template.md)或[市场映像](devtest-lab-manage-formulas.md)的“基”添加[](devtest-lab-configure-marketplace-images.md)。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM 的步骤
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
@@ -72,7 +72,7 @@ ms.locfileid: "74383954"
   ![请求任意可认领 VM。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-After a user claims a VM, DevTest Labs will start the machine and move it up into lab user's list of "My virtual machines". This means the lab user will now have owner privileges on this machine. The time required for this step may vary depending on start up times as well as any other custom actions being performed during the claim event. Once claimed, the machine is no longer available in the claimable pool.  
+用户声明 VM 后，开发测试实验室将启动该计算机，并将其移动到实验室用户的 "我的虚拟机" 列表中。 这意味着，实验室用户现在将拥有此计算机的所有者权限。 此步骤所需的时间可能不同，具体取决于启动时间以及在声明事件期间执行的任何其他自定义操作。 一旦声明后，计算机将不再在可认领池中可用。  
 
 ## <a name="unclaim-a-vm"></a>取消认领 VM
 
@@ -86,7 +86,7 @@ After a user claims a VM, DevTest Labs will start the machine and move it up int
 
   ![在 VM 的管理窗格中取消认领 VM。](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-When a user unclaims a VM, they no longer have owner permissions for that specific lab VM and it is available to be claimed by any other lab user in the state that it was retured to the pool. 
+当用户取消认领某个 VM 时，他们将不再拥有该特定实验室 VM 的所有者权限，并且该虚拟机可供任何其他实验室用户使用 retured 到该池的状态。 
 
 ### <a name="transferring-the-data-disk"></a>转移数据磁盘
 如果某个可认领 VM 具有附加到它的数据磁盘，并且用户取消认领了该 VM，则数据磁盘仍然跟随该 VM。 然后，当另一用户认领该 VM 时，该新用户同时认领了该数据磁盘和 VM。

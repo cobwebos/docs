@@ -23,7 +23,7 @@ ms.locfileid: "74533269"
 * 容器通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 与本地资源通信
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 
 ## <a name="virtual-network-deployment-limitations"></a>虚拟网络部署限制
@@ -292,8 +292,8 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 本文简要介绍了多个虚拟网络资源和功能。 Azure 虚拟网络文档全面介绍了这些主题：
 
-* [虚拟网络](../virtual-network/manage-virtual-network.md)
-* [子网](../virtual-network/virtual-network-manage-subnet.md)
+* 虚拟网络[](../virtual-network/manage-virtual-network.md)
+* 子网[](../virtual-network/virtual-network-manage-subnet.md)
 * [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
 * [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [ExpressRoute](../expressroute/expressroute-introduction.md)

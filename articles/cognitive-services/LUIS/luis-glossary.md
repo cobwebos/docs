@@ -1,5 +1,5 @@
 ---
-title: Glossary - LUIS
+title: 术语表 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 services: cognitive-services
@@ -22,36 +22,36 @@ ms.locfileid: "74325944"
 
 ## <a name="active-version"></a>活动版本
 
-活动 LUIS 版本是接收所有模型更改的版本。 In the [LUIS](luis-reference-regions.md) portal, if you want to make changes to a version that is not the active version, you need to first set that version as active.
+活动 LUIS 版本是接收所有模型更改的版本。 在[LUIS](luis-reference-regions.md)门户中，如果要对非活动版本的版本进行更改，则需要先将该版本设置为 "活动"。
 
 ## <a name="authoring"></a>创作
 
-Authoring is the ability to create, manage and deploy a [LUIS app](#luis-app), either using the [LUIS](luis-reference-regions.md) portal or the [authoring APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
+创作是指使用[LUIS](luis-reference-regions.md)门户或[创作 api](https://go.microsoft.com/fwlink/?linkid=2092087)创建、管理和部署[LUIS 应用程序](#luis-app)的功能。
 
 ## <a name="authoring-key"></a>创作密钥
 
 以前名为“编程”密钥。 用于创作应用。 不用于生产级别的终结点查询。 有关详细信息，请参阅[密钥限制](luis-boundaries.md#key-limits)。
 
-## <a name="batch-test-json-file"></a>Batch test JSON file
+## <a name="batch-test-json-file"></a>批处理测试 JSON 文件
 
-Batch testing is the ability to validate a current LUIS app's model with a consistent and known test set of user utterances. The batch test is defined in a [JSON formatted file](luis-concept-batch-test.md#batch-file-format).
+批处理测试是使用一组一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](luis-concept-batch-test.md#batch-file-format)中定义。
 
 另请参阅：
 * [概念](luis-concept-batch-test.md)
-* [How-to](luis-how-to-batch-test.md)
+* [操作说明](luis-how-to-batch-test.md)
 * [教程](luis-tutorial-batch-testing.md)
 
 ## <a name="collaborator"></a>协作者
 
-A collaborator/contributor, is not the [owner](#owner) of the app, but has the same permissions to add, edit, and delete the intents, entities, utterances.
+协作者/参与者不是应用的[所有者](#owner)，但具有用于添加、编辑和删除意向、实体、最谈话的相同权限。
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>讨论
 
-A contributor is the same thing as a [collaborator](#collaborator).
+参与者与[协作](#collaborator)者的工作方式相同。
 
-## <a name="descriptor"></a>Descriptor
+## <a name="descriptor"></a>描述符
 
-A descriptor is a [feature](#features) applied to a model at training time, including [phrase lists](#phrase-list) and [entities](#entity). 
+描述符是在定型时间应用于模型的一种[功能](#features)，其中包括[短语列表](#phrase-list)和[实体](#entity)。 
 
 ## <a name="domain"></a>域
 
@@ -69,17 +69,17 @@ A descriptor is a [feature](#features) applied to a model at training time, incl
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，它是有关测试准确度的一个度量值。
 
-## <a name="false-negative"></a>False negative (FN)
+## <a name="false-negative"></a>假负（FN）
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的缺失。
 
-## <a name="false-positive"></a>False positive (FP)
+## <a name="false-positive"></a>假正（FP）
 
 在[批处理测试](luis-interactive-test.md#batch-testing)中，数据点表示某些话语，其中，应用错误地预测了目标意向/实体的存在。
 
 ## <a name="features"></a>特征
 
-在机器学习中，[特征](luis-concept-feature.md)是系统观察到的数据的特征或特有属性。
+在机器学习中，特征是系统观察到的数据的不同特征或属性[](luis-concept-feature.md)。
 
 ## <a name="intent"></a>意向
 
@@ -87,11 +87,11 @@ A descriptor is a [feature](#features) applied to a model at training time, incl
 
 ## <a name="labeling"></a>标记
 
-Labeling, or marking, is the process of associating a word or phrase in an intent's [utterance](#utterance) with an [entity](#entity) (datatype).
+标记或标记是将意图[查询文本](#utterance)中的词或短语与[实体](#entity)（数据类型）关联的过程。
 
 ## <a name="luis-app"></a>LUIS 应用
 
-A LUIS app is a collection of language models for natural language processing including [intents](#intent), [entities](#entity), and labeled [utterances](#utterance).
+LUIS 应用是一系列用于自然语言处理的语言模型，包括[意向](#intent)、[实体](#entity)和标记[最谈话](#utterance)。
 
 ## <a name="owner"></a>所有者
 
@@ -121,7 +121,7 @@ A LUIS app is a collection of language models for natural language processing in
 
 ## <a name="publish"></a>发布
 
-Publishing means making a LUIS active version available on either the staging or production [endpoint](#endpoint).  
+发布是指使 LUIS 活动版本在过渡或生产[终结点](#endpoint)上可用。  
 
 ## <a name="quota"></a>配额
 
@@ -146,15 +146,15 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="starter-key"></a>初学者密钥
 
-A free key to use when first starting out using LUIS.
+首次开始使用 LUIS 时要使用的可用密钥。
 
-## <a name="structure"></a>Structure
+## <a name="structure"></a>构造
 
-Add structure to a machine-learned entity to provide subcomponents with descriptors (features) and constraints (regular expression or list entities).
+向计算机学习的实体添加结构，以便为子组件提供描述符（功能）和约束（正则表达式或列表实体）。
 
 ## <a name="subscription-key"></a>订阅密钥
 
-The subscription key is the **prediction endpoint** key associated with the LUIS service [you created in Azure](luis-how-to-azure-subscription.md). 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。
+订阅密钥是与[在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS **网站中的**“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥[](luis-reference-regions.md)。 它是“subscription-key”名称/值对的值。
 
 ## <a name="test"></a>测试
 
@@ -171,7 +171,7 @@ The subscription key is the **prediction endpoint** key associated with the LUIS
 
 ## <a name="train"></a>训练
 
-Training is the process of teaching LUIS about any changes to the active version since the last training.
+训练是在上一次培训后，对活动版本的任何更改进行 LUIS 的过程。
 
 ## <a name="true-negative"></a>实报 (TN)
 

@@ -8,44 +8,44 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: adc4a894f4617f681cefbc8049e453d004ce417e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260656"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566206"
 ---
-Incremental snapshots (preview) are point in time backups for managed disks that, when taken, consist only of all the changes since the last snapshot. When you attempt to download or otherwise use an incremental snapshot, the full VHD is used. This new capability for managed disk snapshots can potentially allow them to be more cost effective, since you are no longer required to store the entire disk with each individual snapshot, unless you choose to. Just like regular snapshots, incremental snapshots can be used to create a full managed disk or, to make a regular snapshot.
+增量快照（预览版）是托管磁盘的时间点备份，在这种情况下，只包含自上一次快照以来所做的所有更改。 尝试下载或使用增量快照时，将使用完整的 VHD。 托管磁盘快照的这一新功能可能会使它们更加经济高效，因为你不再需要在每个单独的快照中存储整个磁盘，除非你选择。 与常规快照一样，增量快照可用于创建完全托管的磁盘，或创建一个常规快照。
 
-There are a few differences between an incremental snapshot and a regular snapshot. Incremental snapshots will always use standard HDDs storage, irrespective of the storage type of the disk, whereas regular snapshots can use premium SSDs. If you are using regular snapshots on Premium Storage to scale up VM deployments, we recommend you use custom images on standard storage in the [Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md). It will help you to achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). If ZRS is available in the selected region, an incremental snapshot will use ZRS automatically. If ZRS is not available in the region, then the snapshot will default to [locally-redundant storage](../articles/storage/common/storage-redundancy-lrs.md) (LRS). You can override this behavior and select one manually but, we do not recommend that.
+增量快照和常规快照之间存在一些差异。 增量快照始终使用标准 Hdd 存储，而不考虑磁盘的存储类型，而常规快照可以使用高级 Ssd。 如果你在高级存储上使用常规快照来扩展 VM 部署，我们建议你在[共享映像库](../articles/virtual-machines/linux/shared-image-galleries.md)中的标准存储上使用自定义映像。 它将帮助你以较低的成本实现更大的规模。 此外，增量快照可能会通过[区域冗余存储](../articles/storage/common/storage-redundancy-zrs.md)（ZRS）提供更好的可靠性。 如果 ZRS 在所选区域中可用，则增量快照将自动使用 ZRS。 如果 ZRS 在区域中不可用，则快照将默认为[本地冗余存储](../articles/storage/common/storage-redundancy-lrs.md)（LRS）。 您可以重写此行为，并手动选择一个，但我们不建议这样做。
 
-Incremental snapshots also offer a differential capability, which is uniquely available to managed disks. They enable you to get the changes between two incremental snapshots of the same managed disks, down to the block level. You can use this capability to reduce your data footprint when copying snapshots across regions.
+增量快照还提供了独特的功能，可用于托管磁盘。 它们使你能够在相同的托管磁盘的两个增量快照之间进行更改，减小到块级别。 跨区域复制快照时，可以使用此功能来减少数据占用量。
 
-If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview.
+如果尚未注册预览，并且想要开始使用增量快照，请通过电子邮件向我们发送 AzureDisks@microsoft.com 以访问公共预览版。
 
 ## <a name="restrictions"></a>限制
 
-- Incremental snapshots are currently only available in West Central US and North Europe.
-- Incremental snapshots currently cannot be created after you've changed the size of a disk.
-- Incremental snapshots currently cannot be moved between subscriptions.
-- You can currently only generate SAS URIs of up to five snapshots of a particular snapshot family at any given time.
-- You cannot create an incremental snapshot for a particular disk outside of that disk's subscription.
-- Up to seven incremental snapshots per disk can be created every five minutes.
-- A total of 200 incremental snapshots can be created for a single disk.
+- 增量快照目前仅在美国东部、美国中部、加拿大中部、美国西部和北欧提供。
+- 更改磁盘大小时，当前无法创建增量快照。
+- 当前不能在订阅之间移动增量快照。
+- 在任何给定时间，当前最多只能生成一个特定快照系列的最多五个快照的 SAS Uri。
+- 不能为该磁盘的订阅之外的特定磁盘创建增量快照。
+- 每个磁盘最多可以创建7个增量快照，每5分钟一次。
+- 总共可以为单个磁盘创建200个增量快照。
 
 ## <a name="powershell"></a>PowerShell
 
-You can use Azure PowerShell to create an incremental snapshot. You will need the latest version of Azure PowerShell, the following command will either install it or update your existing installation to latest:
+您可以使用 Azure PowerShell 来创建增量快照。 你将需要最新版本的 Azure PowerShell，以下命令将安装它或将现有安装更新到最新版本：
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Once that is installed, login to your PowerShell session with `az login`.
+安装之后，请登录到 PowerShell 会话并 `az login`。
 
-To create an incremental snapshot with Azure PowerShell, set the configuration with [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) with the `-Incremental` parameter and then pass that as a variable to [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) through the `-Snapshot` parameter.
+若要使用 Azure PowerShell 创建增量快照，请使用 AzSnapshot 参数将 `-Incremental` [AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0)设置为，并通过 `-Snapshot` 参数将其作为变量传递到[](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) 。
 
-Replace `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, and `<yourDesiredSnapShotNameHere>` with your values, then you can use the following script to create an incremental snapshot:
+将 `<yourDiskNameHere>`、`<yourResourceGroupNameHere>`和 `<yourDesiredSnapShotNameHere>` 替换为你的值，然后可以使用以下脚本创建增量快照：
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -56,9 +56,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
+可以通过快照的 "`SourceResourceId`" 和 "`SourceUniqueId`" 属性来标识同一磁盘中的增量快照。 `SourceResourceId` 是父磁盘的 Azure 资源管理器资源 ID。 `SourceUniqueId` 是从磁盘的 `UniqueId` 属性继承的值。 如果要删除某一磁盘，然后创建同名的新磁盘，则 `UniqueId` 属性的值将更改。
 
-You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `<yourResourceGroupNameHere>` with your value and then you can use the following example to list your existing incremental snapshots:
+你可以使用 `SourceResourceId` 和 `SourceUniqueId` 来创建与特定磁盘关联的所有快照的列表。 将 `<yourResourceGroupNameHere>` 替换为你的值，然后可以使用以下示例列出现有增量快照：
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -78,15 +78,17 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>CLI
 
-You can create an incremental snapshot with the Azure CLI, you will need the latest version of Azure CLI. The following command will either install or update your existing installation to the latest version:
+你可以使用 Azure CLI 创建增量快照，你将需要 Azure CLI 的最新版本。 
 
+在 Windows 上，以下命令会将现有安装安装或更新到最新版本：
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
+在 Linux 上，CLI 安装根据操作系统版本的不同而异。  请参阅安装特定 Linux 版本[的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 。
 
-To create an incremental snapshot, use [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) with the `--incremental` parameter.
+若要创建增量快照，请将[az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create)与 `--incremental` 参数一起使用。
 
-The following example creates an incremental snapshot, replace `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, and `<exampleLocation>` with your own values, then run the example:
+下面的示例创建一个增量快照，将 `<yourDesiredSnapShotNameHere>`、`<yourResourceGroupNameHere>`、`<exampleDiskName>`和 `<exampleLocation>` 替换为你自己的值，然后运行该示例：
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -98,13 +100,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
+可以通过快照的 "`SourceResourceId`" 和 "`SourceUniqueId`" 属性来标识同一磁盘中的增量快照。 `SourceResourceId` 是父磁盘的 Azure 资源管理器资源 ID。 `SourceUniqueId` 是从磁盘的 `UniqueId` 属性继承的值。 如果要删除某一磁盘，然后创建同名的新磁盘，则 `UniqueId` 属性的值将更改。
 
-You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. The following example will list all incremental snapshots associated with a particular disk but, it requires some setup.
+你可以使用 `SourceResourceId` 和 `SourceUniqueId` 来创建与特定磁盘关联的所有快照的列表。 下面的示例将列出与特定磁盘关联的所有增量快照，但需要进行一些设置。
 
-This example uses jq for querying the data. To run the example, you must [install jq](https://stedolan.github.io/jq/download/).
+此示例使用 jq 来查询数据。 若要运行该示例，必须[安装 jq](https://stedolan.github.io/jq/download/)。
 
-Replace `<yourResourceGroupNameHere>` and `<exampleDiskName>` with your values, then you can use the following example to list your existing incremental snapshots, as long as you've also installed jq:
+将 `<yourResourceGroupNameHere>` 和 `<exampleDiskName>` 替换为你的值，然后可以使用以下示例列出现有增量快照，前提是你还安装了 jq：
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -118,7 +120,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager 模板
 
-You can also use Azure Resource Manager templates to create an incremental snapshot. You'll need to make sure the apiVersion is set to **2019-03-01** and that the incremental property is also set to true. The following snippet is an example of how to create an incremental snapshot with Resource Manager templates:
+还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为**2019-03-01** ，并且增量属性也设置为 true。 以下代码片段举例说明了如何使用资源管理器模板创建增量快照：
 
 ```json
 {
@@ -154,8 +156,8 @@ You can also use Azure Resource Manager templates to create an incremental snaps
 
 ## <a name="next-steps"></a>后续步骤
 
-1. If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview. 
+1. 如果尚未注册预览，并且想要开始使用增量快照，请通过电子邮件向我们发送 AzureDisks@microsoft.com 以访问公共预览版。 
 
-2. Explore the following samples for cross-region copy of incremental snapshots using differential capability   
+2. 使用差分功能浏览增量快照跨区域副本的以下示例   
 
-    - [Using Azure .Net SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+    - [使用 Azure .Net Sdk](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

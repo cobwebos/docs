@@ -1,7 +1,7 @@
 ---
 title: 在 LUIS 门户中测试应用
 titleSuffix: Azure Cognitive Services
-description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
+description: 使用语言理解智能服务 (LUIS) 持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -20,7 +20,7 @@ ms.locfileid: "74221739"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
-[Testing](luis-concept-test.md) an app is an iterative process. 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新，然后重新进行训练和测试。 
+[测试](luis-concept-test.md)应用程序是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,20 +30,20 @@ ms.locfileid: "74221739"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>Train before testing
+## <a name="train-before-testing"></a>测试前训练
 
-In order to test against the most recent version of the active app, select **Train** from the top menu, before testing. 
+若要针对活动应用的最新版本进行测试，请在测试前从顶部菜单中选择 "**训练**"。 
 
 ## <a name="test-an-utterance"></a>测试陈述
 
-The test utterance should not be exactly the same as any example utterances in the app. The test utterance should include word choice, phrase length, and entity usage you expect for a user. 
+测试查询文本不应与应用中的任何示例最谈话完全相同。 测试查询文本应包括用户预期的 word 选择、短语长度和实体使用情况。 
 
-1. 在“我的应用”页面上选择应用名称以访问应用。 
+1. 在“我的应用”页面选择应用的名字以访问应用。 
 
 1. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
 
     > [!div class="mx-imgBorder"]
-    > ![Train & Test App page](./media/luis-how-to-interactive-test/test.png)
+    > ![训练 & 测试应用程序 "页](./media/luis-how-to-interactive-test/test.png)
 
 1. 在文本框中输入陈述，然后按 Enter。 虽然在“测试”中可键入任意数量的测试陈述，但一次只能键入一个。
 
@@ -73,7 +73,7 @@ The test utterance should not be exactly the same as any example utterances in t
 
 ## <a name="view-sentiment-results"></a>查看情绪结果
 
-如果在[发布](luis-how-to-publish-app.md#enable-sentiment-analysis)页面上配置了“情绪分析”，则测试结果会包括在该陈述中发现的情绪。 
+如果在**发布**页面上配置了“情绪分析”，则测试结果会包括在该陈述中发现的情绪 **[](luis-how-to-publish-app.md#enable-sentiment-analysis)** 。 
 
 ![包含情绪分析的“测试”窗格的图像](./media/luis-how-to-interactive-test/sentiment.png)
 
@@ -100,7 +100,7 @@ The test utterance should not be exactly the same as any example utterances in t
 如果有多个 LUIS 终结点，请使用测试的“已发布”窗格上的“其他设置”链接来更改用于测试的终结点。 如果不确定要使用哪个终结点，请选择默认的“Starter_Key”。 
 
 > [!div class="mx-imgBorder"]
-> ![Test panel with Additional Settings link highlighted](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
+> 突出显示了其他设置链接 ![测试面板](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
 <!--
 ###  View Bing Spell Check corrections in test panel

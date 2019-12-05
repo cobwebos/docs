@@ -1,5 +1,5 @@
 ---
-title: Manage connections in Azure Functions
+title: 管理 Azure Functions 中的连接
 description: 了解如何通过使用静态连接客户端来避免 Azure Functions 中的性能问题。
 ms.topic: conceptual
 ms.date: 02/25/2018
@@ -10,28 +10,28 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74226494"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Manage connections in Azure Functions
+# <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
-Functions in a function app share resources. Among those shared resources are connections: HTTP connections, database connections, and connections to services such as Azure Storage. 当许多函数同时运行时，可能会耗尽可用的连接。 This article explains how to code your functions to avoid using more connections than they need.
+函数应用中的函数共享资源。 这些共享资源包括连接： HTTP 连接、数据库连接以及与 Azure 存储等服务的连接。 当许多函数同时运行时，可能会耗尽可用的连接。 本文介绍如何编写函数，避免使用超出需要的连接数。
 
-## <a name="connection-limit"></a>Connection limit
+## <a name="connection-limit"></a>连接限制
 
-The number of available connections is limited partly because a function app runs in a [sandbox environment](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). One of the restrictions that the sandbox imposes on your code is a limit on the number of outbound connections, which is currently 600 active (1,200 total) connections per instance. When you reach this limit, the functions runtime writes the following message to the logs: `Host thresholds exceeded: Connections`. For more information, see the [Functions service limits](functions-scale.md#service-limits).
+可用连接数量受到限制，部分原因是函数应用在[沙盒环境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中运行。 沙盒对代码施加的限制之一是对出站连接数量进行限制，目前每个实例的活动连接数上限为 600 个（总共 1,200 个连接）。 达到此限制时，函数运行时会将以下消息写入日志：`Host thresholds exceeded: Connections`。 有关详细信息，请参阅 [Functions 服务限制](functions-scale.md#service-limits)。
 
-This limit is per instance. When the [scale controller adds function app instances](functions-scale.md#how-the-consumption-and-premium-plans-work) to handle more requests, each instance has an independent connection limit. That means there's no global connection limit, and you can have much more than 600 active connections across all active instances.
+此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
-When troubleshooting, make sure that you have enabled Application Insights for your function app. Application Insights lets you view metrics for your function apps like executions. For more information, see [View telemetry in Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+进行故障排除时，请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标，如执行。 有关详细信息，请参阅[在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
-## <a name="static-clients"></a>Static clients
+## <a name="static-clients"></a>静态客户端
 
-为了避免占用的连接数超过实际所需，可重复使用客户端实例，而不是在每次调用函数时创建新的实例。 We recommend reusing client connections for any language that you might write your function in. For example, .NET clients like the [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-), and Azure Storage clients can manage connections if you use a single, static client.
+为了避免占用的连接数超过实际所需，可重复使用客户端实例，而不是在每次调用函数时创建新的实例。 不管编写函数时使用什么语言，建议重复使用客户端连接。 例如，如果使用单个静态客户端，[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) 和 Azure 存储客户端等 .NET 客户端可以管理连接。
 
-Here are some guidelines to follow when you're using a service-specific client in an Azure Functions application:
+在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
-- *Do not* create a new client with every function invocation.
-- *Do* create a single, static client that every function invocation can use.
-- *Consider* creating a single, static client in a shared helper class if different functions use the same service.
+- 不要在每次调用函数时创建新的客户端。
+- 应创建一个可在每次调用函数时使用的静态客户端。
+- 如果不同的函数使用相同的服务，请考虑在共享帮助程序类中创建单个静态客户端。
 
 ## <a name="client-code-examples"></a>客户端代码示例
 
@@ -39,7 +39,7 @@ Here are some guidelines to follow when you're using a service-specific client i
 
 ### <a name="httpclient-example-c"></a>HttpClient 示例 (C#)
 
-Here's an example of C# function code that creates a static [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) instance:
+下面是用于创建静态 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 实例的 C# 函数代码示例：
 
 ```cs
 // Create a single, static HttpClient
@@ -52,19 +52,19 @@ public static async Task Run(string input)
 }
 ```
 
-A common question about [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .NET is "Should I dispose of my client?" In general, you dispose of objects that implement `IDisposable` when you're done using them. But you don't dispose of a static client because you aren't done using it when the function ends. 你需要将静态客户端一直保留到应用程序生存期结束。
+关于 .NET 中的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 的一个常见问题是“我应该释放我的客户端吗？” 一般情况下，在使用对象实现了 `IDisposable` 之后，你会释放这些对象。 但是，你不会释放静态客户端，因为在函数结束后还需要使用它。 你需要将静态客户端一直保留到应用程序生存期结束。
 
-### <a name="http-agent-examples-javascript"></a>HTTP agent examples (JavaScript)
+### <a name="http-agent-examples-javascript"></a>HTTP 代理示例 (JavaScript)
 
-因为它提供了更好的连接管理选项，所以你应当使用本机 [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) 类而不应当使用非本机方法，例如 `node-fetch` 模块。 Connection parameters are configured through options on the `http.agent` class. For detailed options available with the HTTP agent, see [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
+因为它提供了更好的连接管理选项，所以你应当使用本机 [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) 类而不应当使用非本机方法，例如 `node-fetch` 模块。 连接参数通过 `http.agent` 类上的选项配置。 有关 HTTP 代理的可用详细选项，请参阅 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
-The global `http.globalAgent` class used by `http.request()` has all of these values set to their respective defaults. 在 Functions 中配置连接限制的建议方法是全局设置一个最大数量。 以下示例为函数应用设置最大 socket 数量：
+`http.globalAgent` 使用的全局 `http.request()` 类将这些值全部设置为各自的默认值。 在 Functions 中配置连接限制的建议方法是全局设置一个最大数量。 以下示例为函数应用设置最大 socket 数量：
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- The following example creates a new HTTP request with a custom HTTP agent only for that request:
+ 以下示例创建一个新的 HTTP 请求，并采用仅用于该请求的自定义 HTTP 代理：
 
 ```js
 var http = require('http');
@@ -105,8 +105,8 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>CosmosClient code example (JavaScript)
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) connects to an Azure Cosmos DB instance. Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](../cosmos-db/performance-tips.md#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient 代码示例 (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) 连接到 Azure Cosmos DB 实例。 Azure Cosmos DB 文档建议[在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端](../cosmos-db/performance-tips.md#sdk-usage)。 以下示例展示了在函数中执行该操作的一种模式：
 
 ```javascript
 const cosmos = require('@azure/cosmos');
@@ -126,14 +126,14 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 连接
 
-Your function code can use the .NET Framework Data Provider for SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) to make connections to a SQL relational database. This is also the underlying provider for data frameworks that rely on ADO.NET, such as [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). 与 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) 连接不同，ADO.NET 默认实现连接池。 But because you can still run out of connections, you should optimize connections to the database. 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
+函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架（例如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)）的基础提供程序。 与 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> Some data frameworks, such as Entity Framework, typically get connection strings from the **ConnectionStrings** section of a configuration file. 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 If you're creating an instance of [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in your function code, you should store the connection string value in **Application settings** with your other connections.
+> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 **local.settings.json 文件**中[](functions-run-local.md#local-settings-file)。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
 
 ## <a name="next-steps"></a>后续步骤
 
-For more information about why we recommend static clients, see [Improper instantiation antipattern](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+有关为何建议静态客户端的详细信息，请参阅不[正确的实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

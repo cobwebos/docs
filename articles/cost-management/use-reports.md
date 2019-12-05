@@ -51,7 +51,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 部分成本分析报表不按资源标记对成本分组。 另外，只有在使用 [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) 创建成本模型以分摊成本后，报表中才会显示基于标记的计费信息。
 
-使用 [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) 创建成本模型后，会提供成本分摊报表。 Cloudyn 处理成本和计费数据，并将这些数据与云帐户的用量和标记数据进行_匹配_。 若要匹配数据，Cloudyn 需要能够访问用量数据。 如果帐户缺少凭据，会将其标记为未分类资源。
+使用 _Cost Allocation 360_ 创建成本模型后，会提供成本分摊[](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs)报表。 Cloudyn 处理成本和计费数据，并将这些数据与云帐户的用量和标记数据进行_匹配_。 若要匹配数据，Cloudyn 需要能够访问用量数据。 如果帐户缺少凭据，会将其标记为未分类资源。
 
 ## <a name="dashboards"></a>仪表板
 
@@ -198,7 +198,7 @@ Cloudyn 通过应用_帐户关联_，确保分配结果保持每个链接帐户�
 7. 在“日期”中，如果选择了一次性费用，那么，在“生效日期”中，输入支付费用的日期。 如果选择了周期性费用，请输入包括费用开始日期和结束日期的日期范围。
 8. 在“实体树”中，选择想要应用该费用的实体，然后选择“启用”。
 
-_When charges are assigned to an entity, users can't change them. Charges that are added by an administrator to a parent entity are read-only._
+_向实体分配了费用后，用户将无法对其进行更改。管理员向父实体添加的费用为只读。_
 
 查看自定义费用：
 
@@ -210,9 +210,9 @@ _When charges are assigned to an entity, users can't change them. Charges that a
 
 有关创建自定义成本模型的详细信息，请参阅[教程：使用 Cloudyn 来管理成本](tutorial-manage-costs.md)。
 
-### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Budget Over Time report
+### <a name="cost-vs-budget-over-time-report"></a>成本与基于时间的预算报表
 
-The Cost vs. Budget Over Time report allows you to compare the main cost contributors against your budget. 报表中显示已分配的预算，可以查看随时间推移的（超出/低于/标准）预算使用量。 使用报表顶部的“显示/隐藏字段”，可以选择查看成本、预算、累计成本或总预算。
+成本与基于时间的预算报表允许您将主要开销因素与预算进行比较。 报表中显示已分配的预算，可以查看随时间推移的（超出/低于/标准）预算使用量。 使用报表顶部的“显示/隐藏字段”，可以选择查看成本、预算、累计成本或总预算。
 
 ### <a name="current-month-projected-cost-report"></a>本月预测成本报表
 
@@ -246,7 +246,7 @@ The Cost vs. Budget Over Time report allows you to compare the main cost contrib
 
 若要将已完成的预算导出为 CSV 文件，请选择“操作”下的“导出”来下载文件。
 
-When completed, your budget is shown in Cost Analysis reports and in the Cost vs. Budget Over Time report. 还可以根据预算阈值安排生成报表。
+完成后，你的预算将显示在成本分析报表和 "成本与预算随时间" 报表中。 还可以根据预算阈值安排生成报表。
 
 ### <a name="azure-resource-explorer-report"></a>Azure 资源浏览器报表
 
@@ -440,7 +440,7 @@ RDS RI 购买建议报表会建议何时使用 RDS RI（而不使用按需实例
 - 查看候选的缩小对象的所有实例列表。
 - 导出包含实例名称和 ID 的报表列表。
 
-若要查看特定实例的建议详细信息，请单击“+”展开详细信息。 “建议详细信息”部分提供了建议的概述。
+若要查看特定实例的建议详细信息，请单击“ **”+** 展开详细信息。 “建议详细信息”部分提供了建议的概述。
 
 “标记”部分提供所选实例的标记键和值的列表。 在左侧窗格中使用“标记”可筛选出该部分。
 
@@ -481,7 +481,7 @@ RDS RI 购买建议报表会建议何时使用 RDS RI（而不使用按需实例
 
 若要随时间推移的特定实例指标，请执行以下操作：
 
-- 转到实例指标资源管理器报表，然后单击“+”查看详细信息。
+- 转到实例指标资源管理器报表，然后单击“ **”+** 查看详细信息。
 
 ### <a name="rds-sizing-recommendations-report"></a>RDS 大小调整建议报表
 

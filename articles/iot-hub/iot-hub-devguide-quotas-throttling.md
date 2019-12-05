@@ -16,7 +16,7 @@ ms.locfileid: "74228260"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
-This article explains the quotas for an IoT Hub, and provides information to help you understand how throttling works.
+本文介绍 IoT 中心的配额，所提供的信息有助于你理解限制的工作原理。
 
 ## <a name="quotas-and-throttling"></a>配额和限制
 
@@ -28,95 +28,95 @@ This article explains the quotas for an IoT Hub, and provides information to hel
 
 ### <a name="iot-plug-and-play"></a>IoT 即插即用
 
-During public preview, IoT Plug and Play devices will send separate messages per interface, which may increase the number of messages counted towards your message quota.
+在公开预览期间，IoT 即插即用设备将为每个接口发送单独的消息，这可能会增加计入消息配额的消息数量。
 
 ## <a name="operation-throttles"></a>操作限制
 
-Operation throttles are rate limitations that are applied in minute ranges and are intended to prevent abuse. They're also subject to [traffic shaping](#traffic-shaping).
+操作限制是在分钟范围内应用的速率限制，主要是为了防止不当使用。 它们还受[流量整形](#traffic-shaping)的约束。
 
 下表显示了强制限制。 值与单个中心相关。
 
 | 限制 | 免费、B1 和 S1 | B2 和 S2 | B3 和 S3 | 
 | -------- | ------- | ------- | ------- |
-| [Identity registry operations](#identity-registry-operations-throttle) (create, retrieve, list, update, delete) | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/sec/unit (5,000/min/unit) |
-| [New device connections](#device-connections-throttle) (this limit applies to the rate of _new connections_, not the total number of connections) | 高于 100/秒或 12/秒/单位 <br/> 例如，两个 S1 单位是 2\*12 = 24 个新连接/秒，但你的单位至少有 100 个新连接/秒。 如果有 9 个 S1 单位，则你的单位就有 108 个新连接/秒 (9\*12)。 | 120 个新连接/秒/单位 | 6,000 new connections/sec/unit |
-| 设备到云的发送 | Higher of 100 send operations/sec or 12 send operations/sec/unit <br/> For example, two S1 units are 2\*12 = 24/sec, but you have at least 100 send operations/sec across your units. With nine S1 units, you have 108 send operations/sec (9\*12) across your units. | 120 send operations/sec/unit | 6,000 send operations/sec/unit |
-| 云到设备的发送<sup>1</sup> | 1.67 send operations/sec/unit (100 messages/min/unit) | 1.67 send operations/sec/unit (100 send operations/min/unit) | 83.33 send operations/sec/unit (5,000 send operations/min/unit) |
-| 云到设备的接收<sup>1</sup> <br/> （仅当设备使用 HTTPS 时）| 16.67 receive operations/sec/unit (1,000 receive operations/min/unit) | 16.67 receive operations/sec/unit (1,000 receive operations/min/unit) | 833.33 receive operations/sec/unit (50,000 receive operations/min/unit) |
-| 文件上传 | 1.67 file upload initiations/sec/unit (100/min/unit) | 1.67 file upload initiations/sec/unit (100/min/unit) | 83.33 file upload initiations/sec/unit (5,000/min/unit) |
+| [标识注册表操作](#identity-registry-operations-throttle)（创建、检索、列出、更新、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5,000/分钟/单位） |
+| [新设备连接](#device-connections-throttle)（此限制适用于建立_新连接_的速率，而不是连接总数） | 高于 100/秒或 12/秒/单位 <br/> 例如，两个 S1 单位是 2\*12 = 24 个新连接/秒，但你的单位至少有 100 个新连接/秒。 如果有 9 个 S1 单位，则你的单位就有 108 个新连接/秒 (9\*12)。 | 120 个新连接/秒/单位 | 6,000 个新连接/秒/单位 |
+| 设备到云的发送 | 100 个发送操作/秒或 12 个发送操作/秒/单位，具体取决于哪一个更高 <br/> 例如，两个 S1 单位是 2\*12 = 24/秒，但是在所有单位中至少有 100 个发送操作/秒。 如果有 9 个 S1 单位，则你的单位就有 108 个发送操作/秒 (9\*12)。 | 120 个发送操作/秒/单位 | 6,000 个发送操作/秒/单位 |
+| 云到设备的发送<sup>1</sup> | 1.67 个发送操作/秒/单位（100 条消息/分钟/单位） | 1.67 个发送操作/秒/单位（100 个发送操作/分钟/单位） | 83.33 个发送操作/秒/单位（5,000 个发送操作/分钟/单位） |
+| 云到设备的接收<sup>1</sup> <br/> （仅当设备使用 HTTPS 时）| 16.67 个接收操作/秒/单位（1,000 个接收操作/分钟/单位） | 16.67 个接收操作/秒/单位（1,000 个接收操作/分钟/单位） | 833.33 个接收操作/秒/单位（50,000 个接收操作/分钟/单位） |
+| 文件上传 | 1.67 次文件上传启动/秒/单位（100/分钟/单位） | 1.67 次文件上传启动/秒/单位（100/分钟/单位） | 83.33 次文件上传启动/秒/单位（5,000/分钟/单位） |
 | 直接方法<sup>1</sup> | 160KB/秒/单位<sup>2</sup> | 480KB/秒/单位<sup>2</sup> | 24MB/秒/单位<sup>2</sup> | 
-| 查询 | 20/min/unit | 20/min/unit | 1,000/min/unit |
-| 孪生（设备和模块）读取<sup>1</sup> | 100/sec | Higher of 100/sec or 10/sec/unit | 500/sec/unit |
-| 孪生更新（设备和模块）<sup>1</sup> | 50/sec | Higher of 50/sec or 5/sec/unit | 250/sec/unit |
-| 作业操作<sup>1</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/sec/unit (5,000/min/unit) |
+| 查询 | 20/分钟/单位 | 20/分钟/单位 | 1,000/分钟/单位 |
+| 孪生（设备和模块）读取<sup>1</sup> | 100/秒 | 高于 100/秒或 10/秒/单位 | 500/秒/单位 |
+| 孪生更新（设备和模块）<sup>1</sup> | 50/秒 | 高于 50/秒或 5/秒/单位 | 250/秒/单位 |
+| 作业操作<sup>1</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5,000/分钟/单位） |
 | 作业设备操作<sup>1</sup> <br/> （更新孪生、调用直接方法） | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 配置和 Edge 部署<sup>1</sup> <br/> （创建、更新、列表、删除） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） |
-| Device stream initiation rate<sup>1</sup> | 5 个新流/秒 | 5 个新流/秒 | 5 个新流/秒 |
-| Maximum number of concurrently connected device streams<sup>1</sup> | 50 | 50 | 50 |
-| Maximum device stream data transfer<sup>1</sup> (aggregate volume per day) | 300 MB | 300 MB | 300 MB |
+| 设备流启动率<sup>1</sup> | 5 个新流/秒 | 5 个新流/秒 | 5 个新流/秒 |
+| 最大并发连接设备流数<sup>1</sup> | 50 | 50 | 50 |
+| 最大设备流数据传输<sup>1</sup>（每日聚合量） | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>Throttling meter size is 4 KB.
+<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>限制计量大小为 4 KB。
 
-### <a name="throttling-details"></a>Throttling Details
+### <a name="throttling-details"></a>限制详细信息
 
-* The meter size determines at what increments your throttling limit is consumed. If your direct call's payload is between 0 and 4 KB, it is counted as 4 KB. You can make up to 40 calls per second per unit before hitting the limit of 160 KB/sec/unit.
+* 计量大小决定了以什么样的增量来使用限制。 如果直接调用的有效负载为 0 到 4 KB，则将其计为 4 KB。 可以每个单位每秒进行高达 40 次的调用，然后才会达到 160 KB/秒/单位的限制。
 
-   Similarly, if your payload is between 4 KB and 8 KB, each call accounts for 8 KB and you can make up to 20 calls per second per unit before hitting the max limit.
+   同样，如果有效负载为 4 KB 到 8 KB，则每个调用计为 8 KB，可以每个单位每秒进行高达 20 次的调用，然后才会达到最大限制。
 
-   Finally, if your payload size is between 156KB and 160 KB, you'll be able to make only 1 call per second per unit in your hub before hitting the limit of 160 KB/sec/unit.
+   最后，如果有效负载为 156 KB 到 160 KB，则在中心只能每个单位每秒进行 1 次调用，然后就会达到 160 KB/秒/单位的限制。
 
-*  For *Jobs device operations (update twin, invoke direct method)* for tier S2, 50/sec/unit only applies to when you invoke methods using jobs. If you invoke direct methods directly, the original throttling limit of 24 MB/sec/unit (for S2) applies.
+*  就 S2 层级的作业设备操作（更新孪生、调用直接方法）来说，50/秒/单位仅适用于使用作业来调用方法的情况。 如果直接调用直接方法，则适用原始的 24 MB/秒/单位（针对 S2）限制。
 
-*  **Quota** is the aggregate number of messages you can send in your hub *per day*. You can find your hub's quota limit under the column **Total number of messages /day** on the [IoT Hub pricing page](https://azure.microsoft.com/pricing/details/iot-hub/).
+*  **配额**是每天可以在中心发送的聚合消息数。 可以在 **IoT 中心定价页**上的“消息总数/天”列下找到中心的配额限制。[](https://azure.microsoft.com/pricing/details/iot-hub/)
 
-*  Your cloud-to-device and device-to-cloud throttles determine the maximum *rate* at which you can send messages -- number of messages irrespective of 4 KB chunks. Each message can be up to 256 KB which is the [maximum message size](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  云到设备和设备到云限制决定了发送消息的最大速率（在不考虑 4 KB 区块情况下的消息数）。 每条消息最大可以为 256 KB（[最大消息大小](iot-hub-devguide-quotas-throttling.md#other-limits)）。
 
-*  It's a good practice to throttle your calls so that you don't hit/exceed the throttling limits. If you do hit the limit, IoT Hub responds with error code 429 and the client should back-off and retry. These limits are per hub (or in some cases per hub/unit). For more information, refer to [Manage connectivity and reliable messaging/Retry patterns](iot-hub-reliability-features-in-sdks.md#retry-patterns).
+*  最好是限制调用数，这样就不会达到/超过限制。 如果你达到限制，IoT 中心会以错误代码 429 进行响应，客户端应回退并重试。 这些限制是按中心（在某些情况下，按中心/单位）应用的。 有关详细信息，请参阅[管理连接和可靠的消息传送/重试模式](iot-hub-reliability-features-in-sdks.md#retry-patterns)。
 
-### <a name="traffic-shaping"></a>Traffic shaping
+### <a name="traffic-shaping"></a>流量整形
 
-To accommodate burst traffic, IoT Hub accepts requests above the throttle for a limited time. The first few of these requests are processed immediately. However, if the number of requests continues violate the throttle, IoT Hub starts placing the requests in a queue and processed at the limit rate. This effect is called *traffic shaping*. Furthermore, the size of this queue is limited. If the throttle violation continues, eventually the queue fills up, and IoT Hub starts rejecting requests with `429 ThrottlingException`.
+为了应对突发流量，IoT 中心可在有限的一段时间内接受超出限制的请求。 其中的前几个请求会立即得到处理。 但是，如果请求数持续违反限制，IoT 中心会开始将请求放入队列，并以限制速率对其进行处理。 此效应称为“流量整形”。 此外，此队列的大小受到限制。 如果违反限制的情况持续出现，队列最终将会填满，而 IoT 中心会开始拒绝请求并引发 `429 ThrottlingException`。
 
-For example, you use a simulated device to send 200 device-to-cloud messages per second to your S1 IoT Hub (which has a limit of 100/sec D2C sends). For the first minute or two, the messages are processed immediately. However, since the device continues to send more messages than the throttle limit, IoT Hub begins to only process 100 messages per second and puts the rest in a queue. You start noticing increased latency. Eventually, you start getting `429 ThrottlingException` as the queue fills up, and the "number of throttle errors" in [IoT Hub's metrics](iot-hub-metrics.md) starts increasing.
+例如，如果你使用模拟设备每秒将 200 条设备到云的消息发送到 S1 IoT 中心（它限制为每秒发送 100 条 D2C 消息）。 在前一两分钟，消息会立即得到处理。 但是，由于设备发送的消息数持续超过限制，IoT 中心随后将每秒处理 100 条消息，并将剩余的消息放入队列。 此时你会注意到延迟增大。 最终，在队列填满后，你会开始收到 `429 ThrottlingException`，并且 [IoT 中心指标](iot-hub-metrics.md)中的“限制错误数”会开始增加。
 
-### <a name="identity-registry-operations-throttle"></a>Identity registry operations throttle
+### <a name="identity-registry-operations-throttle"></a>标识注册表操作限制
 
-Device identity registry operations are intended for run-time use in device management and provisioning scenarios. 通过[导入和导出作业](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)可以支持读取或更新大量的设备标识。
+设备标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)可以支持读取或更新大量的设备标识。
 
-### <a name="device-connections-throttle"></a>Device connections throttle
+### <a name="device-connections-throttle"></a>设备连接限制
 
 “设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 “设备连接”速率限制取决于为 IoT 中心预配的单位数。
 
-例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 Therefore, to connect 100,000 devices, it takes at least 1,000 seconds (approximately 16 minutes). 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
+例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此，若要连接 100,000 台设备，至少需要花费 1,000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
 ## <a name="other-limits"></a>其他限制
 
 IoT 中心强制实施的其他操作限制：
 
-| Operation | Limit |
+| Operation | 限制 |
 | --------- | ----- |
-| 设备 | The total number of devices plus modules that can be registered to a single IoT hub is capped at 1,000,000. The only way to increase this limit is to contact [Microsoft Support](https://azure.microsoft.com/support/options/).|
-| 文件上传 | 10 concurrent file uploads per device. |
-| 作业<sup>1</sup> | Maximum concurrent jobs is 1 (for Free and S1), 5 (for S2), and 10 (for S3). However, the max concurrent [device import/export jobs](iot-hub-bulk-identity-mgmt.md) is 1 for all tiers. <br/>Job history is retained up to 30 days. |
+| 设备 | 可注册到单个 IoT 中心的设备和模块的总数上限为 1,000,000。 只能联系 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)来提高此限制。|
+| 文件上传 | 每个设备 10 个并发文件上传。 |
+| 作业<sup>1</sup> | 最大并发作业数为 1（对于“免费”层和 S1）、5（对于 S2）和 10（对于 S3）。 但是，所有层的最大并发[设备导入/导出作业数](iot-hub-bulk-identity-mgmt.md)为 1。 <br/>作业历史记录最多保留 30 天。 |
 | 额外终结点 | 付费 SKU 中心可能有 10 个额外终结点。 免费 SKU 中心可能有 1 个额外终结点。 |
-| Message routing queries | Paid SKU hubs may have 100 routing queries. Free SKU hubs may have five routing queries. |
-| 消息扩充 | Paid SKU hubs can have up to 10 message enrichments. Free SKU hubs can have up to 2 message enrichments.|
+| 消息路由查询 | 付费 SKU 中心可能有 100 个路由查询。 免费 SKU 中心可包含 5 个路由查询。 |
+| 消息扩充 | 付费 SKU 中心可能有最多 10 个消息扩充。 免费 SKU 中心可能有最多 2 个消息扩充。|
 | 设备到云的消息传递 | 最大消息大小为 256 KB |
-| 云到设备的消息传递<sup>1</sup> | 最大消息大小为 64 KB。 Maximum pending messages for delivery is 50 per device. |
+| 云到设备的消息传递<sup>1</sup> | 最大消息大小为 64 KB。 最大传递挂起消息数为每个设备 50 个。 |
 | 直接方法<sup>1</sup> | 直接方法有效负载的最大大小为 128 KB。 |
 | 自动设备配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
-| IoT Edge automatic deployments<sup>1</sup> | 每个部署 20 个模块。 每个付费 SKU 中心 100 个部署。 10 deployments per free SKU hub. |
-| 孪生<sup>1</sup> | Maximum size of desired properties and reported properties sections are 32 KB each. Maximum size of tags section is 8 KB. |
+| IoT Edge 自动部署<sup>1</sup> | 每个部署 20 个模块。 每个付费 SKU 中心 100 个部署。 每个免费 SKU 中心 10 个部署。 |
+| 孪生<sup>1</sup> | 所需属性和报告属性部分的最大大小为 32 KB。 标记的最大大小部分为 8 KB。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
-## <a name="increasing-the-quota-or-throttle-limit"></a>Increasing the quota or throttle limit
+## <a name="increasing-the-quota-or-throttle-limit"></a>提高配额或限制
 
-At any given time, you can increase quotas or throttle limits by [increasing the number of provisioned units in an IoT hub](iot-hub-upgrade.md).
+无论何时，都可通过[增加 IoT 中心内的预配单位数](iot-hub-upgrade.md)来提高配额或限制。
 
-## <a name="latency"></a>延迟
+## <a name="latency"></a>Latency
 
-IoT 中心致力于降低所有操作的延迟。 However, due to network conditions and other unpredictable factors it cannot guarantee a certain latency. 在设计解决方案时，应该：
+IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和其他不可预测因素，它不能保证特定的延迟。 在设计解决方案时，应该：
 
 * 避免对任何 IoT 中心操作的最大延迟进行假定。
 * 在离设备最近的 Azure 区域预配 IoT 中心。

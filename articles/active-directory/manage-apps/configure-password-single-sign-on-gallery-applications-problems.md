@@ -1,5 +1,5 @@
 ---
-title: 为 Azure AD 库应用配置密码单一登录时遇到问题 |Microsoft Docs
+title: 为 Azure AD 库应用配置密码 SSO 时出现问题
 description: 了解在为 Azure AD 应用程序库中所列应用程序配置密码单一登录时人们面对的常见问题
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381126"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274194"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
@@ -39,13 +39,13 @@ ms.locfileid: "68381126"
 
 - 先让用户使用为他们保存的凭据尝试**直接登录应用程序网站**。
 
-  * 如果登录有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为最新的已知用户名和密码。
+  * 如果登录有效，再让用户在**应用程序访问面板**“应用”部分的“应用程序磁贴”上，单击“更新凭据”[](https://myapps.microsoft.com/)，以将凭据更新为最新的已知用户名和密码。
 
   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 - 如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”，如果已经过期，直接登录应用程序**更新过期密码**。
 
-  * 密码在应用程序中更新好后，要求用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
+  * 密码在应用程序中更新好后，要求用户在**应用程序访问面板**“应用”部分中的“应用程序磁贴”上，单击“更新凭据”[](https://myapps.microsoft.com/)按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
 
   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 

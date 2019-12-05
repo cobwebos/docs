@@ -1,6 +1,6 @@
 ---
-title: Multi-step task to build, test & patch image
-description: Introduction to multi-step tasks, a feature of ACR Tasks in Azure Container Registry that provides task-based workflows for building, testing, and patching container images in the cloud.
+title: 用于生成、测试 & 修补程序映像的多步骤任务
+description: 多步骤任务简介，Azure 容器注册表中的 ACR 任务的一项功能，可提供基于任务的工作流，用于在云中构建、测试和修补容器映像。
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
@@ -26,7 +26,7 @@ ms.locfileid: "74456166"
 1. 如果测试通过，则生成 Helm 图表存档包
 1. 使用新的 Helm 图表存档包执行 `helm upgrade`
 
-所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 For information on pricing, see the **Container Build** section in [Azure Container Registry pricing][pricing].
+所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价的信息，请参阅 **Azure 容器注册表定价**中的“容器生成”部分[][pricing]。
 
 
 ## <a name="common-task-scenarios"></a>常见任务方案
@@ -79,13 +79,13 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-See [task examples](container-registry-tasks-samples.md) for multi-step task YAML files and Dockerfiles for several scenarios.
+有关多个方案，请参阅多步骤任务 YAML 文件和 Dockerfile 的[任务示例](container-registry-tasks-samples.md)。
 
 ## <a name="run-a-sample-task"></a>运行示例任务
 
 任务既支持手动执行（称作“快速运行”），也支持在提交 Git 或更新基础映像时的自动执行。
 
-To run a task, you first define the task's steps in a YAML file, then execute the Azure CLI command [az acr run][az-acr-run].
+若要运行某个任务，请先在 YAML 文件中定义该任务的步骤，然后执行 Azure CLI 命令 [az acr run][az-acr-run]。
 
 以下示例 Azure CLI 命令使用示例任务 YAML 文件运行一个任务。 其任务的步骤生成映像，然后推送该映像。 在运行该命令之前，请使用自己的 Azure 容器注册表名称更新 `\<acrName\>`。
 
@@ -150,7 +150,7 @@ Run ID: yd14 was successful after 19s
 可在以下资源中找到多步骤任务的参考信息和示例：
 
 * [任务参考](container-registry-tasks-reference-yaml.md) - 任务步骤的类型、属性和用法。
-* [Task examples](container-registry-tasks-samples.md) - Example `task.yaml` and Docker files for several scenarios, simple to complex.
+* [任务示例](container-registry-tasks-samples.md)-示例 `task.yaml` 和 Docker 文件，用于多个方案，简单到复杂。
 * [命令存储库](https://github.com/AzureCR/cmd) - 作为 ACR 任务命令的容器集合。
 
 <!-- IMAGES -->

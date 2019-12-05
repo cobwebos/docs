@@ -12,7 +12,7 @@ ms.locfileid: "74483175"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
-本文介绍如何使用[云合作伙伴门户](https://cloudpartner.azure.com/)将公共或专用托管服务产品发布到 [Azure 市场](https://azuremarketplace.microsoft.com)，从而使购买产品的客户能够加入 Azure 委托资源管理的资源。
+本文介绍如何使用[云合作伙伴门户](https://azuremarketplace.microsoft.com)将公共或专用托管服务产品发布到 [Azure 市场](https://cloudpartner.azure.com/)，从而使购买产品的客户能够加入 Azure 委托资源管理的资源。
 
 > [!NOTE]
 > 若要创建和发布这些产品/服务，需要拥有有效的[合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。 如果还没有帐户，[注册过程](https://aka.ms/joinmarketplace)将引导你按照步骤在合作伙伴中心创建帐户并注册商业市场计划。 你的 Microsoft 合作伙伴网络 (MPN) ID 将[自动关联](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)你发布的产品/服务，以跟踪你在客户参与中的影响。
@@ -30,17 +30,17 @@ ms.locfileid: "74483175"
 
 1. 登录[云合作伙伴平台](https://cloudpartner.azure.com/)。
 2. 从左侧导航菜单中，选择“新建产品/服务”，然后选择“托管服务”。
-3. You'll see an **Editor** section for your offer with four parts to fill in: **Offer Settings**, **Plans**, **Marketplace**, and **Support**. 请继续阅读，了解如何填写这些部分。
+3. 你将看到你的产品/服务的 "**编辑**" 部分，其中包含四个部分用于填写：**提供设置**、**计划**、 **Marketplace**和**支持**。 请继续阅读，了解如何填写这些部分。
 
 ## <a name="enter-offer-settings"></a>输入产品/服务设置
 
 在“产品/服务设置”部分中，提供以下信息：
 
-|字段  |描述  |
+|字段  |说明  |
 |---------|---------|
-|**套餐 ID**     | （发布者配置文件内）产品/服务的唯一标识符。 此 ID 只能包含小写字母数字字符、短划线和下划线，且不得超过 50 个字符。 请记住，客户可能会在产品 URL 和计费报表等位置看到产品/服务 ID。 一旦发布产品/服务，即无法更改此值。        |
+|**产品/服务 ID**     | （发布者配置文件内）产品/服务的唯一标识符。 此 ID 只能包含小写字母数字字符、短划线和下划线，且不得超过 50 个字符。 请记住，客户可能会在产品 URL 和计费报表等位置看到产品/服务 ID。 一旦发布产品/服务，即无法更改此值。        |
 |**发布者 ID**     | 将与产品/服务关联的发布者 ID。 如果拥有多个发布者 ID，可选择要用于此产品/服务的 ID。       |
-|名称     | 你的产品/服务将在 Azure 市场和 Azure 门户中向客户显示的名称（不超过 50 个字符）。 请使用客户能理解的可识别的品牌名称 - 如果正在通过自己的网站推广此产品/服务，请确保在此处使用完全相同的名称。        |
+|**Name**     | 你的产品/服务将在 Azure 市场和 Azure 门户中向客户显示的名称（不超过 50 个字符）。 请使用客户能理解的可识别的品牌名称 - 如果正在通过自己的网站推广此产品/服务，请确保在此处使用完全相同的名称。        |
 
 完成后，选择“保存”。 现在，可继续转到“计划”部分。
 
@@ -54,7 +54,7 @@ ms.locfileid: "74483175"
 
 完成“计划详细信息”部分中的以下部分：
 
-|字段  |描述  |
+|字段  |说明  |
 |---------|---------|
 |**标题**     | 要显示的计划的易记名称。 最大长度为 50 个字符。        |
 |**摘要**     | 标题下显示的计划的简洁说明。 最大长度为 100 个字符。        |
@@ -77,10 +77,10 @@ ms.locfileid: "74483175"
 
 对于每个授权，你需要提供以下信息。 然后，可根据需要多次选择“新授权”，以添加更多用户和角色定义。
 
-- **Azure AD Object ID**: The Azure AD identifier of a user, user group, or application which will be granted certain permissions (as described by the Role Definition) to your customers' resources.
-- **Azure AD Object Display Name**: A friendly name to help the customer understand the purpose of this authorization. 在委派资源时，客户将看到此名称。
-- **Role Definition**: Select one of the available Azure AD built-in roles from the list. 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)和 [Azure 委派的资源管理的角色支持](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-- **Assignable Roles**: This is required only if you have selected User Access Administrator in the **Role Definition** for this authorization. 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
+- **Azure AD 对象 ID**：用户、用户组或应用程序的 Azure AD 标识符，将向客户的资源授予特定权限（如角色定义所述）。
+- **Azure AD 对象显示名称**：一个友好名称，可帮助客户了解此授权的用途。 在委派资源时，客户将看到此名称。
+- **角色定义**：从列表中选择一个可用 Azure AD 内置角色。 此角色将确定“Azure AD 对象 ID”字段中的用户对客户资源拥有的权限。 有关这些角色的说明，请参阅[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)和 [Azure 委派的资源管理的角色支持](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+- 可**分配角色**：只有在此授权的**角色定义**中选择了 "用户访问管理员" 时，才需要执行此操作。 如果是这样，则必须在此处添加一个或多个可分配角色。 “Azure AD 对象 ID”字段中的用户能够将这些“可分配角色”分配给**托管标识**，这是**部署可修正的策略**所必需的[](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)[](deploy-policy-remediation.md)。 请注意，通常与用户访问管理员角色关联的其他权限均不适用于此用户。 如果未在此处选择一个或多个角色，则你的提交将无法通过认证。 （如果未为此用户的角色定义选择用户访问管理员，则此字段无效。）
 
 > [!TIP]
 > 在大多数情况下，需要将权限分配给 Azure AD 用户组或服务主体，而不是分配给一系列单独的用户帐户。 这样，便可添加或删除单位用户的访问权限，而无需在访问要求更改时更新和重新发布计划。 有关其他建议，请参阅 [Azure Lighthouse 方案中的租户、角色和用户](../concepts/tenants-users-roles.md)。
@@ -93,20 +93,20 @@ ms.locfileid: "74483175"
 
 在“概述”部分中填写以下字段：
 
-|字段  |描述  |
+|字段  |说明  |
 |---------|---------|
 |**标题**     |  套餐的标题，通常是较长的正式名称。 此标题将在市场中突出显示。 最大长度为 50 个字符。 大多数情况下，此名称应与你在“产品/服务设置”部分输入的名称相同。       |
 |**摘要**     | 产品/服务用途或功能的简要说明。 通常显示在标题下方。 最大长度为 100 个字符。        |
 |**长摘要**     | 产品/服务用途或功能的详细摘要。 最大长度为 256 个字符。        |
 |**说明**     | 有关产品/服务的详细信息。 此字段不得超过 3000 个字符，且支持简单的 HTML 格式。 必须在说明中的某个位置包含“托管服务”字样。       |
-|**营销标识符**     | 唯一的 URL 友好标识符。 This identifier can only contain lowercase alphanumeric characters and dashes. It will be used in Marketplace URLs for this offer. 例如，如果发布者 ID 为 contoso，营销标识符为 sampleApp，则产品/服务在 Azure 市场中的 URL 为 https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp。        |
+|**营销标识符**     | 唯一的 URL 友好标识符。 此标识符只能包含小写字母数字字符和短划线。 它将用于此产品/服务的 Marketplace Url。 例如，如果发布者 ID 为 contoso，营销标识符为 sampleApp，则产品/服务在 Azure 市场中的 URL 为 *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* 。        |
 |**预览订阅 ID**     | 添加 1 到 100 个订阅标识符。 在产品/服务上线之前，与这些订阅关联的客户将可在 Azure 市场中查看此产品/服务。 建议在此处包含你自己的订阅，以便在向客户提供产品/服务之前，可预览其在 Azure 市场中的显示方式。  （在此预览期间，Microsoft 支持和工程团队也将能够查看你的产品/服务。）   |
 |**有用链接**     | 与你的产品/服务相关的 URL，例如文档、发行说明、常见问题解答等等。        |
 |**建议的类别（最多 5 个）**     | 适用于你的产品/服务的一个或多个类别（最多 5 个）。 这些类别可帮助客户在 Azure 市场和 Azure 门户中发现你的产品/服务。        |
 
 在“营销项目”部分，可上传徽标和其他资产，使其与产品/服务一起显示。 可选择性地上传屏幕截图或视频链接，帮助客户了解你的产品/服务。
 
-Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (115x115)** , and **Wide (255x115)** . 请遵守徽标适用的下述准则：
+需要四种徽标大小：**小（40x40）** 、**中（90x90）** 、**大（115x115）** 和**宽（255x115）** 。 请遵守徽标适用的下述准则：
 
 - Azure 设计具有简单的调色板。 限制徽标上的主要和次要颜色数。
 - 门户的主题颜色为白色和黑色。 请勿将这些颜色用作徽标的背景色。 使用可使徽标在门户中更为突出的颜色。 建议使用简单的主颜色。
@@ -133,7 +133,7 @@ Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (
 
 添加此信息后，请选择“保存”。
 
-## <a name="publish-your-offer"></a>发布产品
+## <a name="publish-your-offer"></a>发布产品/服务
 
 完成所有部分后，下一步就是将产品/服务发布到 Azure 市场。 选择“发布”按钮启动产品/服务上线过程。 有关此过程的详细信息，请参阅[发布 Azure 市场和 AppSource 产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)。
 
@@ -141,7 +141,7 @@ Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (
 
 ## <a name="the-customer-onboarding-process"></a>客户加入过程
 
-客户添加你的产品/服务后，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户[“服务提供商”](view-manage-service-providers.md)页中“提供商产品/服务”部分的顶部看到备注。
+客户添加你的产品/服务后，他们将能够[委托一个或多个特定订阅或资源组](view-manage-service-providers.md#delegate-resources)，然后将加入这些订阅或资源组以进行 Azure 委托资源管理。 如果客户已接受产品/服务但尚未委托任何资源，则他们会在 Azure 门户 **“服务提供商”** [**页中“提供商产品/服务”部分的顶部看到备注**](view-manage-service-providers.md)。
 
 > [!IMPORTANT]
 > 委托必须由客户租户中的非来宾帐户完成，该帐户对于正在载入的订阅（或包含正在载入的资源组的订阅）拥有[所有者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)。
@@ -154,4 +154,4 @@ Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
-- 访问 Azure 门户中的“我的客户”，[查看和管理客户](view-manage-customers.md)。
+- 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。

@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035531"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185148"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管身份集成
+# <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
 
-Azure Active Directory [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可帮助简化云应用程序的机密管理。 使用托管标识，你可以设置代码以使用为其运行的 Azure 计算服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
+Azure Active Directory [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可帮助简化云应用程序的机密管理。 使用托管标识，你可以将代码设置为使用为它在其上运行的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
 
-Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随附内置的托管服务标识 (MSI) 支持。 虽然并非必须使用 MSI，但借助它便无需再使用包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需担心泄露任何机密。
+Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库附带了托管标识支持。 尽管不需要使用它，但托管标识不再需要包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需担心泄露任何机密。
 
-本教程介绍如何利用 MSI 访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
+本教程演示如何利用托管标识访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
-此外，本教程还会显示如何将 MSI 与应用配置的 Key Vault 引用结合使用。 这使你能够无缝地访问存储在 Key Vault 中的机密和应用配置中的配置值。 如果希望探索此功能，请先完成[使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
+此外，本教程还会显示如何将托管标识与应用配置的 Key Vault 引用结合使用。 这使你能够无缝地访问存储在 Key Vault 中的机密和应用配置中的配置值。 如果希望探索此功能，请先完成[使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
@@ -64,7 +64,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
 ## <a name="grant-access-to-app-configuration"></a>授予对应用配置的访问权限
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**所有资源**"，并选择在快速入门中创建的应用配置存储。
 
 1. 选择“访问控制 (IAM)”。
 
@@ -78,7 +78,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
     ![添加托管标识](./media/add-managed-identity.png)
 
-1. 可选：如果还想要授予对 Key Vault 的访问权限，请按照[使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)中的说明进行操作。
+1. 可选：如果希望同时授予对 Key Vault 的访问权限，请按照[使用托管标识提供 Key Vault 身份验证](https://docs.microsoft.com/azure/key-vault/managed-identity)中的说明进行操作。
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
@@ -92,7 +92,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
     }
     ```
 
-1. 如果只想要访问直接存储在应用配置中的值，请打开*Program.cs*，并通过替换 `config.AddAzureAppConfiguration()` 方法更新 `CreateWebHostBuilder` 方法。
+1. 如果只希望访问直接存储在应用程序配置中的值，请打开*Program.cs*，并通过替换 `config.AddAzureAppConfiguration()` 方法来更新 `CreateWebHostBuilder` 方法。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -106,7 +106,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
             .UseStartup<Startup>();
     ```
 
-1. 如果要使用应用配置值和 Key Vault 引用，请打开*Program.cs*，并按如下所示更新 `CreateWebHostBuilder` 方法。 这将创建一个新 `KeyVaultClient`，其中使用 `AzureServiceTokenProvider`，并将此引用传递给对 `UseAzureKeyVault` 方法的调用。
+1. 如果要使用应用配置值和 Key Vault 引用，请打开*Program.cs*，并按如下所示更新 `CreateWebHostBuilder` 方法。 这将创建一个使用 `AzureServiceTokenProvider` 的新 `KeyVaultClient`，并将此引用传递给对 `UseAzureKeyVault` 方法的调用。
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -122,7 +122,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
                 .UseStartup<Startup>();
     ```
 
-    你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用你配置的 @no__t 0 来进行身份验证，Key Vault 并检索值。
+    你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用你配置的 `KeyVaultClient` 进行身份验证，以 Key Vault 并检索值。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -151,7 +151,7 @@ git commit -m "Initial version"
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-要改为创建启用 Git 的应用，请使用 `--deployment-local-git` 参数在 Cloud Shell 中运行 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)。
+要改为创建启用 Git 的应用，请使用 [ 参数在 Cloud Shell 中运行 `az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)`--deployment-local-git`。
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
@@ -177,7 +177,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>部署项目
 
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 使用从[启用应用的 Git](#enable-local-git-with-kudu)中获取的 Git 远程 URL 替换 \<url>。
+回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 使用从_启用应用的 Git\<中获取的 Git 远程 URL 替换_ url>[](#enable-local-git-with-kudu)。
 
 ```bash
 git remote add azure <url>
@@ -203,7 +203,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
 
-适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 在这些情况下，配置提供程序时使用应用程序配置存储区的 URL 终结点而不用其完整连接字符串。 例如，对于快速入门中创建的 .NET Framework 控制台应用，请在 App.config 文件中指定以下设置：
+适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 在这些情况下，请在配置提供程序时使用应用配置存储的 URL 终结点，而不是其完整的连接字符串。 例如，对于快速入门中创建的 .NET Framework 控制台应用，请在 App.config 文件中指定以下设置：
 
 ```xml
     <configSections>
@@ -228,6 +228,7 @@ http://<app_name>.azurewebsites.net
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
+在本教程中，你添加了 Azure 托管标识，以简化对应用配置的访问并改善应用的凭据管理。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
 > [CLI 示例](./cli-samples.md)

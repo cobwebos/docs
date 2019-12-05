@@ -1,5 +1,5 @@
 ---
-title: PowerShell V2 examples for managing groups - Azure AD  | Microsoft Docs
+title: 用于管理组的 PowerShell V2 示例-Azure AD |Microsoft Docs
 description: 本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组
 keywords: Azure AD, Azure Active Directory, PowerShell, 组, 组管理
 services: active-directory
@@ -130,7 +130,7 @@ ms.locfileid: "74233115"
 ```
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter。
+> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅**使用 OData 终结点的 OData 系统查询选项**中的 $filter[](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)。
 
 ## <a name="create-groups"></a>创建组
 
@@ -170,7 +170,7 @@ ms.locfileid: "74233115"
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-Now, if we find the group again, we see the Description property is updated to reflect the new value:
+现在，如果我们再次找到该组，我们会看到 Description 属性已更新以反映新值：
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -284,7 +284,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
-The -ObjectId parameter is the ObjectID of the group to which we want to add an owner, and the -RefObjectId is the ObjectID of the user or service principal we want to add as an owner of the group.
+-ObjectId 参数是要将所有者添加到的组的 ObjectID，-RefObjectId 是要作为组所有者添加的用户或服务主体的 ObjectID。
 
 若要检索组的所有者，请使用 Get-AzureADGroupOwner cmdlet：
 
@@ -292,7 +292,7 @@ The -ObjectId parameter is the ObjectID of the group to which we want to add an 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-The cmdlet returns the list of owners (users and service principals) for the specified group:
+该 cmdlet 将返回指定组的所有者（用户和服务主体）的列表：
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -308,7 +308,7 @@ The cmdlet returns the list of owners (users and service principals) for the spe
 
 ## <a name="reserved-aliases"></a>保留的别名
 
-创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 Groups with the following highly privileged email aliases can only be created by an Azure AD global administrator. 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 具有以下高度特权电子邮件别名的组只能由 Azure AD 全局管理员创建。 
   
 * abuse
 * admin
@@ -317,20 +317,20 @@ The cmdlet returns the list of owners (users and service principals) for the spe
 * majordomo
 * postmaster
 * root
-* 安全
-* 安全性
+* secure
+* security
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>Group writeback to on-premises (preview)
+## <a name="group-writeback-to-on-premises-preview"></a>组写回到本地（预览）
 
-Today, many groups are still managed in on-premises Active Directory. To answer requests to sync cloud groups back to on-premises, Office 365 groups writeback feature for Azure AD is now available for preview.
+如今，许多组仍在本地 Active Directory 管理。 为了应答将云组同步回本地的请求，Office 365 组写回功能 Azure AD 现在可供预览。
 
-Office 365 groups are created and managed in the cloud. The writeback capability allows you to write back Office 365 groups as distribution groups to an Active Directory forest with Exchange installed. Users with on-premises Exchange mailboxes can then send and receive emails from these groups. The group writeback feature doesn't support Azure AD security groups or distribution groups.
+Office 365 组在云中创建和管理。 使用写回功能，可以将 Office 365 组作为分发组写入到安装了 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
 
-For more details, please refer to documentation for the [Azure AD Connect sync service](../hybrid/how-to-connect-syncservice-features.md).
+有关更多详细信息，请参阅[Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
 
-Office 365 group writeback is a public preview feature of Azure Active Directory (Azure AD) and is available with any paid Azure AD license plan. For some legal information about previews, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Office 365 组写回是 Azure Active Directory （Azure AD）的公共预览功能，适用于任何付费的 Azure AD 许可计划。 有关预览的一些法律信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="next-steps"></a>后续步骤
 

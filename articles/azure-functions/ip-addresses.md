@@ -78,7 +78,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- 有关此文件何时更新以及 IP 地址何时更改的信息，请展开[下载中心页](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的“详细信息”部分。
+ 有关此文件何时更新以及 IP 地址何时更改的信息，请展开**下载中心页**的“详细信息”部分。[](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 
 ## <a name="inbound-ip-address-changes"></a>入站 IP 地址更改
 
