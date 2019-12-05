@@ -40,6 +40,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: 为用户 VPN 配置证书（点到站点）
       href: certificates-point-to-site.md
+    - name: 为用户 VPN 配置 Azure AD 租户
+      href: openvpn-azure-ad-tenant.md
+    - name: 为用户 VPN 启用多重身份验证 (MFA)
+      href: openvpn-azure-ad-mfa.md
     - name: 为用户 VPN 配置 Azure AD 身份验证（预览版）
       href: virtual-wan-point-to-site-azure-ad.md
     - name: 配置自动化（虚拟 WAN 合作伙伴）
