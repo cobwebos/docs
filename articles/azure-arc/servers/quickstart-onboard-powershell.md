@@ -10,12 +10,12 @@ keywords: azure 自动化、DSC、powershell、所需状态配置、更新管理
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668467"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786344"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>快速入门：使用用于服务器的 Azure Arc 将计算机连接到 Azure - PowerShell
 
@@ -175,7 +175,7 @@ azcmagent connect \
 对于 Linux，如果服务器需要代理服务器，则可以执行以下操作之一  ：
 
 * 通过 `--proxy`，从上面的[安装代理](#download-and-install-the-agent)部分运行 `install_linux_hybrid_agent.sh` 脚本。
-* 如果已安装代理，请执行命令 `/opt/azcmagent/bin/hybridrp_proxy add https://{proxy-url}:{proxy-port}`，以配置代理并重启代理。
+* 如果已安装代理，请执行命令 `/opt/azcmagent/bin/hybridrp_proxy add http://{proxy-url}:{proxy-port}`，以配置代理并重启代理。
 
 #### <a name="windows"></a>Windows
 
@@ -183,7 +183,7 @@ azcmagent connect \
 
 ```powershell
 # If a proxy server is needed, execute these commands with actual proxy URL
-[Environment]::SetEnvironmentVariable("https_proxy", "{https:\\proxy-url:proxyport}", "Machine")
+[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
 $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
 # The agent service needs to be restarted after the proxy environment variable is set in order for the changes to take effect.
 Restart-Service -Name himds

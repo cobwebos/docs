@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/29/2019
+ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076838"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775344"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight：Java 示例
 
@@ -27,11 +27,11 @@ ms.locfileid: "71076838"
 * 有关群集创建任务的示例链接。
 * 有关其他管理任务的参考内容链接。
 
-## <a name="prerequisites"></a>先决条件
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [用于 Java 的 Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>先决条件
+
+[用于 Java 的 Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 

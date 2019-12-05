@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8402ed5f120c9d1fc6f751587b7346b323592a6d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd759ed4cbda936b00ce2ac0946184f9f6581c78
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277377"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790370"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>如何在 C++/WinRT 中使用设备上的传感器创建和查找定位点
 
@@ -39,13 +39,8 @@ Azure 空间定位点可以将设备上的定位传感器数据与所创建的�
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 
 ```cpp
-// Create the ASA factory
-SpatialAnchorsFactory m_asaFactory { nullptr };
-// . . .
-
 // Create the sensor fingerprint provider
-PlatformLocationProvider sensorProvider;
-sensorProvider = m_asaFactory.CreatePlatformLocationProvider();
+PlatformLocationProvider sensorProvider = PlatformLocationProvider();
 
 // Allow GPS
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -71,12 +66,12 @@ sensors.KnownBeaconProximityUuids(uuids);
 cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 // Configure the near-device criteria
-NearDeviceCriteria nearDeviceCriteria = m_asaFactory.CreateNearDeviceCriteria();
+NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
 nearDeviceCriteria.DistanceInMeters(5.0f);
 nearDeviceCriteria.MaxResultCount(25);
 
 // Set the session's locate criteria
-anchorLocateCriteria = m_asaFactory.CreateAnchorLocateCriteria();
+anchorLocateCriteria = AnchorLocateCriteria();
 anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 ```

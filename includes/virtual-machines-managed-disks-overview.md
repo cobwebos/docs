@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796292"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829040"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -37,7 +37,7 @@ ms.locfileid: "73796292"
 
 ### <a name="azure-backup-support"></a>Azure 备份支持
 
-若要防范区域灾难，可以使用 [Azure 备份](../articles/backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行简单的 VM 还原。 目前，Azure 备份支持高达 4 TB (TiB) 的磁盘大小。  Azure 备份支持备份和还原托管磁盘。 [详细了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
+若要防范区域灾难，可以使用 [Azure 备份](../articles/backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行简单的 VM 还原。 Azure 备份支持备份和还原托管磁盘。 [详细了解](../articles/backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 

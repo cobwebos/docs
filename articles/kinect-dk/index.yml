@@ -13,7 +13,7 @@ abstract:
   description: null
 sections:
   - items:
-      html: '<img src="./media/index/device-image.jpg" style="max-width:100%" alt="Azure Kinect device">'
+      - html: '<img src="./media/index/device-image.jpg" style="max-width:100%" alt="Azure Kinect device">'
   - items:
       - type: paragraph
         text: Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 888f3b1a53ba2e31195e3b9d577a475df441e972
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49b3b5890fe38f6c635e7ba420a1adf5d778de0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683009"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703939"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -543,7 +543,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 如果进行部署，则在将实体部署到 Azure 数据工厂服务之前，请使用配置文件中的值设置 JSON 文件中的属性。   
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
-不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
+不建议将敏感数据（例如连接字符串）提交到代码存储库，这样做违反安全策略。 请参阅 GitHub 上的 [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) 示例，了解在发布数据工厂实体时，如何将敏感信息存储在 Azure Key Vault 中并进行使用。 使用适用于 Visual Studio 的 Secure Publish 扩展，可以将机密存储在 Key Vault 中，仅在链接的服务/部署配置中指定这些机密的引用。 向 Azure 发布数据工厂实体时，会对这些引用进行解析。 然后即可将这些文件提交到源存储库，不会公开任何机密。
 
 ## <a name="summary"></a>摘要
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：  

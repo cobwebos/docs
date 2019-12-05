@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e33fce7b3fc19d6dfa83f95b6a9bcb43588945d1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228075"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671542"
 ---
 # <a name="what-is-azure-private-link-preview"></a>什么是 Azure 专用链接？ （预览版）
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
@@ -38,11 +38,11 @@ Azure 专用链接提供以下优势：
 ## <a name="availability"></a>可用性 
  下表列出了专用链接服务及其适用的区域。 
 
-|场景  |支持的服务   |可用区域 | 状态   |
-|---------|---------|---------|---------|
-|客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 所有公共区域  |  预览  |
-|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览         |
-|  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览         |
+|场景  |支持的服务  |可用区域 | 状态  |
+|:---------|:-------------------|:-----------------|:--------|
+|客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 所有公共区域  | 预览  |
+|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)。  |
+|  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)。  |
 |  |  Azure SQL 数据库         | 所有公共区域      |   预览      |
 ||Azure SQL 数据仓库| 所有公共区域 |预览|
 ||Azure Cosmos DB| 美国中西部、美国西部、美国中北部 |预览|

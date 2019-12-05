@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326748"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665179"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
 
@@ -35,7 +35,7 @@ ms.locfileid: "74326748"
 
 下面的代码创建 `WebRequest`、设置访问密钥标头，并为“hotel in Bellevue”添加查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -58,7 +58,7 @@ ms.locfileid: "74326748"
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;

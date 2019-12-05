@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d0efbaec6905d0d24d9dc1c310d472958011960
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228424"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702081"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Azure 机器学习管道可将多个相关的机器学习和数据处理步骤�
 
 1. 选择“设计器”。 
 
-    ![显示如何访问设计器的可视工作区屏幕截图](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
+    ![显示如何访问设计器的可视工作区屏幕截图](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
 1. 选择“易用的预生成模块”。 
 

@@ -3,19 +3,19 @@ title: 使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索
 titleSuffix: Azure Cognitive Services
 description: 通过使用必应新闻搜索，可使应用和服务能够利用作用于 Web 的无广告搜索引擎的强大功能。
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111498"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771064"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>教程：使用 Visual Studio 和 C# 中的连接服务连接到必应新闻搜索 API
 
@@ -268,4 +268,4 @@ ms.locfileid: "74111498"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解必应新闻搜索 API，请参阅[什么是必应新闻搜索？](index.yml)。
+若要详细了解必应新闻搜索 API，请参阅[什么是必应新闻搜索？](search-the-web.md)。

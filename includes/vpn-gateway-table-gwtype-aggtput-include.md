@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075437"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828923"
 ---
 |VPN<br>网关 **<br>代系** |**SKU**   | S2S/VNet 到 VNet<br>隧道  | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** |  聚合<br>吞吐量基准 | **BGP** | **区域冗余** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -27,12 +27,12 @@ ms.locfileid: "74075437"
 |        |            |            |           |                |           |           |     |
 |**第 2 代**|VpnGw2   | 最大 30*   | 最大 128  | 最大 500       | 1.25 Gbps | 支持 | 否 |
 |**第 2 代**|VpnGw3   | 最大 30*   | 最大 128  | 最大 1000      | 2.5 Gbps  | 支持 | 否 |
-|**第 2 代**|**VpnGw4**  | 最大 30*   | 最大 128  | 最大 1000      | 5 Gbps    | 支持 | 否 |
-|**第 2 代**|**VpnGw5**  | 最大 30*   | 最大 128  | 最大 1000      | 10 Gbps   | 支持 | 否 |
+|**第 2 代**|**VpnGw4**  | 最大 30*   | 最大 128  | 最大 5000      | 5 Gbps    | 支持 | 否 |
+|**第 2 代**|**VpnGw5**  | 最大 30*   | 最大 128  | 最大 10000      | 10 Gbps   | 支持 | 否 |
 |**第 2 代**|**VpnGw2AZ**| 最大 30*   | 最大 128  | 最大 500       | 1.25 Gbps | 支持 | 是 |
 |**第 2 代**|**VpnGw3AZ**| 最大 30*   | 最大 128  | 最大 1000      | 2.5 Gbps  | 支持 | 是 |
-|**第 2 代**|**VpnGw4AZ**| 最大 30*   | 最大 128  | 最大 1000      | 5 Gbps    | 支持 | 是 |
-|**第 2 代**|**VpnGw5AZ**| 最大 30*   | 最大 128  | 最大 1000      | 10 Gbps   | 支持 | 是 |
+|**第 2 代**|**VpnGw4AZ**| 最大 30*   | 最大 128  | 最大 5000      | 5 Gbps    | 支持 | 是 |
+|**第 2 代**|**VpnGw5AZ**| 最大 30*   | 最大 128  | 最大 10000      | 10 Gbps   | 支持 | 是 |
 
 (*) 如果需要 30 个以上 S2S VPN 隧道，请使用[虚拟 WAN](../articles/virtual-wan/virtual-wan-about.md)。
 

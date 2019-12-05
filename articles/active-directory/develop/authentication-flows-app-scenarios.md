@@ -17,12 +17,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6a36d66d6094bbac1b3e39a4ee5cea55737971
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 24c891c3de9126de6b833dea30c78c14b709384d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473828"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687756"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -261,14 +261,14 @@ MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以
 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
-   <td><a href=scenario-daemon-overview.md">调用 Web API 的守护程序应用</a></td>
+   <td><a href="scenario-daemon-overview.md">调用 Web API 的守护程序应用</a></td>
    <td><a href="v2-oauth2-client-creds-grant-flow.md">客户端凭据</a></td>
    <td>不涉及用户的仅限应用的权限，仅用于 Azure AD 组织</td>
  </tr>
 
   <tr>
-   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
-   <td><a href=scenario-web-api-call-api-overview.md">调用 Web API 的 Web API</a></td>
+   <td><a href="scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href="scenario-web-api-call-api-overview.md">调用 Web API 的 Web API</a></td>
    <td><a href="v2-oauth2-on-behalf-of-flow.md">代表</a></td>
    <td>工作或学校帐户和个人帐户</td>
  </tr>

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: 439f775fb6124c847631467caabe3f48cfa6b645
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326713"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665672"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
 
@@ -34,7 +34,7 @@ ms.locfileid: "74326713"
 
 下面的代码创建 `WebRequest`、设置访问密钥标头，并添加针对“restaurant in Bellevue”的查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -60,7 +60,7 @@ ms.locfileid: "74326713"
 3. 将 accessKey 值替换为对你的订阅有效的访问密钥。
 4. 运行该程序。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;
