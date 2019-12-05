@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195937"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812907"
 ---
 # <a name="about-voice-assistants"></a>关于语音助手
 
-语音助手使用 Azure 语音服务为开发人员助力，使开发人员可以为其应用程序和体验创建自然的、类似于人类的对话界面。
+使用语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
 
 语音助手服务在设备和助手实现之间提供快速、可靠的交互，使用（1）机器人框架的直接线路语音通道或（2）用于任务完成的集成自定义命令（预览版）服务。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74195937"
 
 ## <a name="choosing-an-assistant-solution"></a>选择助手解决方案
 
-创建语音助手的第一步是确定其用途。 Azure Speech Services 提供多种补充性解决方案，用于起草助手交互。 无论你是否希望在简单的方案中，通过机器人框架的[直接线路语音](direct-line-speech.md)通道提供的灵活性和多功能性，还是简单的[自定义命令（预览）](custom-commands.md) ，选择合适的工具即可开始。
+创建语音助手的第一步是确定其用途。 语音服务提供了多种补充性解决方案，用于编制助手交互。 无论你是否希望在简单的方案中，通过机器人框架的[直接线路语音](direct-line-speech.md)通道提供的灵活性和多功能性，还是简单的[自定义命令（预览）](custom-commands.md) ，选择合适的工具即可开始。
 
 | 是否要... | 然后考虑 。 | 例如 。 |
 |-------------------|------------------|----------------|
@@ -49,16 +49,16 @@ ms.locfileid: "74195937"
 | 类别 | 功能 |
 |----------|----------|
 |[Custom 关键字](speech-devices-sdk-create-kws.md) | 用户可以使用 "你好 Contoso" 等自定义关键字开始与助手对话。 应用使用 Speech SDK 中的自定义关键字引擎来完成此工作，可以使用[可在此处生成](speech-devices-sdk-create-kws.md)的自定义关键字对其进行配置。 语音助手可以使用服务端关键字验证来提高关键字激活的准确性（与设备独立）。
-|[语音到文本](speech-to-text.md) | 语音助手使用 Azure 语音服务的[语音到文本](speech-to-text.md)将实时音频转换为可识别的文本。 此文本在助手实现和客户端应用程序中转录。
-|[文本到语音转换](text-to-speech.md) | 使用来自 Azure Speech Services 的[文本到语音转换](text-to-speech.md)，来自你的助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供了构建你自己的自定义优质神经 TTS 声音的功能，可为你的品牌提供一种语音。 若要了解详细[信息，请联系我们。](mailto:mstts@microsoft.com)
+|[语音到文本](speech-to-text.md) | 语音助手使用语音服务的[语音到文本](speech-to-text.md)将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
+|[文本到语音转换](text-to-speech.md) | 使用来自语音服务的[文本到语音转换](text-to-speech.md)，来自助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供了构建你自己的自定义优质神经 TTS 声音的功能，可为你的品牌提供一种语音。 若要了解详细[信息，请联系我们。](mailto:mstts@microsoft.com)
 
 ## <a name="getting-started-with-voice-assistants"></a>语音助手入门
 
-我们专门提供了快速入门来帮助你在 10 分钟内运行代码。 此表包含按语言组织的语音助手快速入门列表。
+我们提供了快速入门，旨在让你在不到10分钟的时间内运行代码。 此表包含按语言组织的语音助手快速入门列表。
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#、UWP | {1}Windows{2} | [Browse](https://aka.ms/csspeech/csharpref) |
+| C#，UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
 | Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
 
@@ -75,7 +75,7 @@ GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖
 
 ## <a name="customization"></a>自定义
 
-使用 Azure 语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
+使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322735"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803668"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件性访问：要求受信任的位置进行 MFA 注册
 
@@ -26,7 +26,7 @@ ms.locfileid: "74322735"
 
 以下策略适用于所有选定的用户，这些用户尝试使用组合注册体验进行注册，并阻止访问，除非它们从标记为受信任网络的位置进行连接。
 
-1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **条件性访问**。
+1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **安全** > **条件性访问**。
 1. 选择“新策略”。
 1. 在 "名称" 中，输入此策略的名称。 例如，**受信任的网络上的合并安全信息注册**。
 1. 在 "**分配**" 下，单击 "**用户和组**"，然后选择你想要将此策略应用到的用户和组。
@@ -49,6 +49,6 @@ ms.locfileid: "74322735"
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问常见策略](concept-conditional-access-policy-common.md)
+[条件访问公用策略](concept-conditional-access-policy-common.md)
 
-[使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

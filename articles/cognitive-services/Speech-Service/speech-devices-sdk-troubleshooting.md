@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558903"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815561"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>排查语音设备 SDK 问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "68558903"
 
 ## <a name="certificate-failures"></a>证书错误
 
-如果你在使用语音服务时遇到证书错误, 请确保你的设备具有正确的日期和时间:
+如果你在使用语音服务时收到证书失败，请确保你的设备具有正确的日期和时间：
 
 1. 转到“设置”。 在“系统”下选择“日期和时间”。
 

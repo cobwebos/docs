@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb4b7d2cb34855208eb54c6d30b29e4bbff636b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766610"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814933"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -127,7 +127,8 @@ Azure AD 支持每个注册域单独的密码过期策略。
 
 `Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
-注意事项：强制用户在下次登录时更改其密码需要同时更改密码。  AD Connect 不会自行选取强制密码更改标志，它是在密码哈希同步过程中检测到的密码更改的补充。
+> [!NOTE]
+> 强制用户在下次登录时更改其密码需要同时更改密码。  AD Connect 不会自行选取强制密码更改标志;它是在密码哈希同步过程中检测到的密码更改的补充。
 
 > [!CAUTION]
 > 如果未 Azure AD 在中启用自助服务密码重置（SSPR），则当用户在 Azure AD 中重置其密码时，将有一个令人困惑的体验，然后尝试使用新密码登录 Active Directory，因为新密码在 Active Directory 中无效. 仅当对租户启用了 SSPR 和密码写回时，才应使用此功能。

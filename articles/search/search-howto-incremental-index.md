@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 348bc2d92f636d1f3c3b50ea31334355da59a60f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790499"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806756"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>如何在 Azure 中设置增强的文档的增量索引认知搜索
 
@@ -41,8 +41,7 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>步骤2：添加缓存属性
 
-< < < < < < < HEAD 编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，`storageConnectionString` 是存储帐户的连接字符串。 = = = = = = = = 编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，这是 Azure 存储帐户的连接字符串。
->>>>>>> 3519a330aa86b6827d31403690529105825b1b16
+编辑 GET 请求的响应，将 `cache` 属性添加到索引器。 缓存对象只需要一个属性，`storageConnectionString` 是存储帐户的连接字符串。 
 
 ```json
 {

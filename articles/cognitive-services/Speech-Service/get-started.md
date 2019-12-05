@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 30bdbf9fa0ea346892622c3e7f24f9f31652a650
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ddba414ef1801b812d157ad734847099a8a9f25
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280502"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806178"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
@@ -80,10 +80,10 @@ ms.locfileid: "74280502"
 
    - 为新资源提供唯一的名称。 名称有助于区分同一服务的多个订阅。
    - 选择新资源关联的 Azure 订阅，以确定计费方式。
-   - 选择将使用资源的[区域](regions.md)。
+   - 选择将使用该资源的[区域](regions.md)。
    - 选择免费（F0）或付费（S0）定价层。 有关每个层的定价和使用配额的完整信息，请选择 "**查看完整的定价详细信息**"。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
-   - 选择“创建”。 这会将你转到部署概述并显示部署进度消息。
+   - 选择**创建**。 这会将你转到部署概述并显示部署进度消息。
 
 部署新的语音资源需要花费几分钟时间。 部署完成后，选择 "**转到资源**"，然后在左侧导航窗格中选择 "**密钥**"，以显示语音服务订阅密钥。 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要快速复制/粘贴代码编辑器或其他位置的密钥，请选择每个项旁边的 "复制" 按钮，切换 windows 将剪贴板内容粘贴到所需位置。
 

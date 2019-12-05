@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1eeb2e7ccf5c365fedd02a8de4c6b442dd3d5bc8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075816"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806056"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人机标记的转录
 
@@ -31,7 +31,7 @@ ms.locfileid: "74075816"
 
 | 要避免的字符 | 替换字符 | 说明 |
 | ------------------- | ------------ | ----- |
-| "Hello world" | "Hello world" | 开始和结束引号已替换为适当的 ASCII 字符。 |
+| "Hello world" | “Hello world” | 开始和结束引号已替换为适当的 ASCII 字符。 |
 | John’s day | John's day | 撇号已替换为适当的 ASCII 字符。 |
 | it was good—no, it was great! | it was good--no, it was great! | 用两个连字符替换长划线。 |
 

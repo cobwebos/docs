@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278658"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806501"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -25,7 +25,7 @@ ms.locfileid: "74278658"
 - 计划安装所需的更新
 - 查看部署结果，验证是否已成功将更新应用到所有启用了“更新管理”的虚拟机
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用“更新管理”，需要具备以下条件：
 
@@ -99,12 +99,12 @@ ms.locfileid: "74278658"
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 是否支持 | 说明 |
+| 连接的源 | 受支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
 | Operations Manager 管理组 |是 |“更新管理”从已连接的管理组中的代理收集有关系统更新的信息。 |
-| Azure 存储帐户 |否 |Azure 存储不包含有关系统更新的信息。 |
+| Azure 存储器帐户 |No |Azure 存储不包含有关系统更新的信息。 |
 
 ### <a name="collection-frequency"></a>收集频率
 
@@ -119,6 +119,10 @@ ms.locfileid: "74278658"
 ## <a name="schedule-an-update-deployment"></a>计划更新部署
 
 若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
+
+>[!NOTE]
+>计划更新部署时，它将创建一个链接到**MicrosoftOMSComputers** runbook 的[计划](shared-resources/schedules.md)资源，该 runbook 用于处理目标计算机上的更新部署。 如果你从 Azure 门户删除计划资源，或在创建部署后使用 PowerShell，则会中断计划的更新部署，并在你尝试从门户中重新配置它时显示错误。 仅可通过删除相应的部署计划来删除计划资源。
+>
 
 若要为一台或多台虚拟机计划新的更新部署，请在“更新管理”下选择“计划更新部署”。
 
@@ -141,7 +145,7 @@ ms.locfileid: "74278658"
   - 安全更新
   - 更新汇总
   - 功能包
-  - Service Pack
+  - 服务包
   - 定义更新
   - 工具
   - 更新
@@ -159,7 +163,7 @@ ms.locfileid: "74278658"
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|说明|
+   |选项|描述|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
    |始终重新启动|无论是否需要重启，都会开始重启。 |
@@ -173,7 +177,7 @@ ms.locfileid: "74278658"
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 
-在计划性部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。
+在计划的部署开始后，可以在“更新管理”下的“更新部署”选项卡上查看该部署的状态。
 
 如果部署当前正在运行，则其状态为“正在进行”。 部署成功完成以后，其状态更改为“成功”。
 

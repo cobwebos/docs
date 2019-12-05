@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033451"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819063"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -65,7 +65,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 * 故障转移时创建的 VM 要连接到的 Azure 虚拟网络。 Azure 虚拟网络必须位于 Site Recovery 运行所在的同一区域。
 * 存储复制日志的 Azure 标准存储帐户。 可以是要迁移的 VM 磁盘的同一存储帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在上一部分中了解相关的迁移方案组件。
 * 了解 [Site Recovery 中的故障转移](../../site-recovery/site-recovery-failover.md)，规划停机时间。
@@ -77,15 +77,15 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 ### <a name="step-1-create-a-recovery-services-vault"></a>步骤 1：创建恢复服务保管库
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-2. 选择“创建资源” **“管理”** “备份和 Site Recovery (OMS)” >  > 。 或者，可以选择“浏览” **“恢复服务保管库”** “添加” >  > 。
+2. 选择“创建资源” > “管理” > “备份和 Site Recovery (OMS)”。 或者，可以选择“浏览” > “恢复服务保管库” > “添加”。
    >[!NOTE]
-   >备份和 Site Recovery 以前是 ![OMS 套件](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)的一部分。
+   >备份和 Site Recovery 以前是 [OMS 套件](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)的一部分。
 1. 指定将 VM 复制到的区域。 若要在同一区域中迁移，请选择源 VM 和源存储帐户所在的区域。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>步骤 2：选择保护目标 
 
 1. 在想要安装配置服务器的 VM 上，打开 [Azure 门户](https://portal.azure.com)。
-2. 转到“恢复服务保管库” **“设置”** “Site Recovery” > “步骤 1: 准备基础结构” **“保护目标”**  >  >  > 。
+2. 转到“恢复服务保管库” > “设置” > “Site Recovery” > “步骤 1: 准备基础结构” > “保护目标”。
 
    ![浏览到“保护目标”窗格][2]
 
@@ -95,7 +95,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>步骤 3：设置源环境（配置服务器）
 
-1. 转到“准备基础结构” **“准备源”** “添加服务器”窗格，下载 Azure Site Recovery 统一安装程序和保管库注册密钥 >  > 。 
+1. 转到“准备基础结构” > “准备源” > “添加服务器”窗格，下载 Azure Site Recovery 统一安装程序和保管库注册密钥。 
  
    需要使用保管库注册密钥来运行统一安装程序。 生成的密钥有效期为 5 天。
 
@@ -128,7 +128,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ### <a name="step-4-set-up-the-target-environment"></a>步骤 4：设置目标环境
 
-选择“准备基础结构” **“目标”，并指定要在故障转移后用于 VM 的部署模型** > 。 可以根据方案选择“经典”或“Resource Manager”。
+选择“准备基础结构” > “目标”，并指定要在故障转移后用于 VM 的部署模型。 可以根据方案选择“经典”或“Resource Manager”。
 
 ![“目标”窗格][10]
 
@@ -157,7 +157,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
    故障转移 VM 包含两个临时磁盘：一个磁盘来自主 VM，另一个磁盘是在恢复区域中预配 VM 期间创建的。 若要在复制之前排除临时磁盘，请在启用复制之前安装移动服务。 若要详细了解如何排除临时磁盘，请参阅[从复制中排除磁盘](../../site-recovery/vmware-walkthrough-overview.md)。
 
 2. 请按如下所述启用复制：
-   1. 选择“复制应用程序” **“源”**  > 。 首次启用复制后，请在保管库中选择“+复制”，对其他计算机启用复制。
+   1. 选择“复制应用程序” > “源”。 首次启用复制后，请在保管库中选择“+复制”，对其他计算机启用复制。
    2. 在步骤 1 中，将“源”设置为进程服务器。
    3. 在步骤 2 中，指定故障转移后的部署模型、要迁移到的高级存储帐户、用于保存日志的标准存储帐户，以及要故障转移到的虚拟网络。
    4. 在步骤 3 中，按 IP 地址添加受保护的 VM。 （要找到它们可能需要用到内部 IP 地址。）
@@ -178,14 +178,14 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 
 ### <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 
-要检查复制是否完成，请选择“Site Recovery”实例，并单击“设置” **“已复制的项”**  > 。 此时会显示复制过程的状态和完成百分比。 
+要检查复制是否完成，请选择“Site Recovery”实例，并单击“设置” > “已复制的项”。 此时会显示复制过程的状态和完成百分比。 
 
 初始复制完成后，请运行测试故障转移来验证复制策略。 有关测试故障转移的详细步骤，请参阅 [在 Site Recovery 中运行测试故障转移](../../site-recovery/vmware-walkthrough-overview.md)。 
 
 > [!NOTE]
 > 运行故障转移之前，请确保 VM 和复制策略满足要求。 有关运行测试故障转移的详细信息，请阅读[在 Site Recovery 中执行到 Azure 的测试故障转移](../../site-recovery/site-recovery-test-failover-to-azure.md)。
 
-可在“设置” **“作业”** “YOUR_FAILOVER_PLAN_NAME”中查看测试故障转移的状态 >  > 。 在窗格中，可以看到具体的步骤，以及成功/失败结果。 如果测试故障转移在执行任一步骤时失败，请选择该步骤查看错误消息。 
+可在“设置” > “作业” > “YOUR_FAILOVER_PLAN_NAME”中查看测试故障转移的状态。 在窗格中，可以看到具体的步骤，以及成功/失败结果。 如果测试故障转移在执行任一步骤时失败，请选择该步骤查看错误消息。 
 
 ### <a name="step-9-run-a-failover"></a>步骤 9：运行故障转移
 

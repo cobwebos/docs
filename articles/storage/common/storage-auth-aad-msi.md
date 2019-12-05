@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3e24cb2d4b5b82f6878647cdd631bd8ebca16199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666149"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806571"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限
 
@@ -36,13 +36,13 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>通过 Azure 标识库进行身份验证
 
-Azure 标识客户端库的优点在于，它使你可以使用相同的代码来验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 在 Azure 环境中运行的代码中，客户端库对 Azure 资源的托管标识进行身份验证。 在开发环境中，托管标识不存在，因此，客户端库将对用户或服务主体进行身份验证，以便进行测试。
+Azure 标识客户端库为[AZURE SDK](https://github.com/Azure/azure-sdk)提供 azure Azure AD 令牌身份验证支持。 适用于 .NET、Java、Python 和 JavaScript 的 Azure 存储客户端库的最新版本与 Azure 标识库集成，提供一种简单而安全的方法来获取用于授权 Azure 存储请求的 OAuth 2.0 令牌。
 
-适用于 .NET 的 Azure 标识客户端库对安全主体进行身份验证。 当你的代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。
+Azure 标识客户端库的优点在于，它使你可以使用相同的代码来验证你的应用程序是在开发环境中运行还是在 Azure 中运行。 适用于 .NET 的 Azure 标识客户端库对安全主体进行身份验证。 当你的代码在 Azure 中运行时，安全主体是 Azure 资源的托管标识。 在开发环境中，托管标识不存在，因此，客户端库将对用户或服务主体进行身份验证，以便进行测试。
 
 进行身份验证后，Azure 标识客户端库将获取令牌凭据。 然后，在创建的服务客户端对象中封装此令牌凭据，以对 Azure 存储空间执行操作。 库通过获取适当的令牌凭据，无缝地处理这种情况。
 
-有关 Azure 标识客户端库的详细信息，请参阅[适用于 .net 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。
+有关适用于 .NET 的 Azure 标识客户端库的详细信息，请参阅[适用于 .net 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 有关 Azure 标识客户端库的参考文档，请参阅[azure Identity 命名空间](/dotnet/api/azure.identity)。
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>分配基于角色的访问控制（RBAC）角色以访问数据
 
@@ -50,7 +50,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
 
-当代码在开发环境中运行时，可以自动处理身份验证，或者可能需要浏览器登录，具体取决于所使用的工具。 Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
+当代码在开发环境中运行时，可以自动处理身份验证，或者可能需要浏览器登录，具体取决于所使用的工具。 例如，Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
 
 其他开发工具可能会提示您通过 web 浏览器登录。
 
@@ -161,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Azure 存储的 RBAC 角色的详细信息，请参阅[使用 Rbac 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
-- 若要了解如何使用 Azure AD 凭据运行 Azure CLI 和 PowerShell 命令，请参阅[使用 Azure AD 凭据运行 Azure CLI 或 powershell 命令以访问 blob 或队列数据](storage-auth-aad-script.md)。
+- [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)。
+- [将 Azure AD 用于存储应用程序](storage-auth-aad-app.md)。
+- [使用 Azure AD 凭据运行 Azure CLI 或 PowerShell 命令以访问 blob 或队列数据](storage-auth-aad-script.md)。

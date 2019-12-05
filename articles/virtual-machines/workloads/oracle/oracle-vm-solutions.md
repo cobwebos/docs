@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891454"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806943"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM 映像及其在 Microsoft Azure 上的部署
 
@@ -59,7 +59,7 @@ Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLo
 用户还可选择将自定义映像作为解决方案的基础，自定义映像可以是用户在 Azure 中从头创建的映像，也可以是从本地环境上传的映像。
 
 ## <a name="oracle-database-vm-images"></a>Oracle 数据库 VM 映像
-Oracle 支持在 Azure 上的基于 Oracle Linux 的虚拟机映像上运行 Oracle DB 12.1 和更高版本的标准版和企业版。  若要获得在 Azure 上 Oracle DB 的生产工作负荷的最佳性能，请确保正确调整 VM 映像的大小并使用高级 SSD 或超级 SSD 托管磁盘。 有关如何使用 Oracle 发布的 VM 映像在 Azure 中快速启动并运行 Oracle DB 的说明，[请查看 Oracle DB 快速入门演练](oracle-database-quick-create.md)。
+Oracle 支持在 Azure 上的基于 Oracle Linux 的虚拟机映像上运行 Oracle Database 12.1 和更高版本的标准版和企业版。  若要获得在 Azure 上 Oracle Database 的生产工作负荷的最佳性能，请确保正确调整 VM 映像的大小并使用高级 SSD 或超级 SSD 托管磁盘。 有关如何使用 Oracle 已发布的 VM 映像在 Azure 中快速启动和运行 Oracle Database 的说明，请[尝试 Oracle Database 快速入门演练](oracle-database-quick-create.md)。
 
 ### <a name="attached-disk-configuration-options"></a>附加磁盘配置选项
 
@@ -79,13 +79,13 @@ Azure NetApp 文件旨在满足在云中运行高性能工作负荷（如数据�
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 上的 Oracle Database & 软件授权
 Microsoft Azure 是一种用于运行 Oracle Database 的授权云环境。 在云中授权 Oracle 数据库时，Oracle Core 系数表不适用。 相反，当使用启用了企业版数据库的超线程技术的 Vm 时，如果启用了超线程（如策略文档中所述），则应将两个个 vcpu 视为等效于一个 Oracle 处理器许可证。 可在[此处](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)找到策略详细信息。
-Oracle 数据库通常需要更高的内存和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 vm](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) 。 为了进一步优化工作负荷，建议使用[受约束的核心个 vcpu](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) ，以便 Oracle DB 需要高内存、存储和 i/o 带宽，但不是高核心计数的工作负载。
+Oracle 数据库通常需要更高的内存和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 vm](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) 。 为了进一步优化工作负荷，建议使用[受约束的核心个 vcpu](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) ，以便 Oracle Database 需要高内存、存储和 i/o 带宽，但不是高核心计数的工作负载。
 
 将 Oracle 软件和工作负荷从本地迁移到 Microsoft Azure 时，Oracle 提供了许可移动性，如[Oracle On AZURE 常见问题](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)中所述
 
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，则需要第三方软件来实现这些技术。 有关 Oracle RAC 的详细信息，请参阅[FlashGrid SkyCluster 页面](https://www.flashgrid.io/oracle-rac-in-azure/)。
+Oracle Real 应用程序群集（Oracle RAC）旨在缓解本地多节点群集配置中单一节点的故障。 它依赖于网络多播和共享磁盘这两项本地技术，而这两项技术并非源自超大规模公有云环境。 如果数据库解决方案需要 Azure 中的 Oracle RAC，则需要第三方软件来实现这些技术。 有关 Oracle RAC 的详细信息，请参阅[FlashGrid SkyCluster 页面](https://www.flashgrid.io/oracle-rac-in-azure/)。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 在 Azure 中使用 Oracle 数据库时，负责实现高可用性和灾难恢复解决方案，以避免任何停机。 
@@ -107,31 +107,31 @@ Oracle Real RAC 可用于减少本地多节点群集配置中单一节点的故�
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 虚拟机映像
 
-* **群集仅在 Enterprise Edition 上受支持。** 仅在使用 WebLogic Server 的 Enterprise Edition 时许可使用 WebLogic 群集。 不要将群集用于 WebLogic Server 标准版。
-* **不支持 UDP 多播。** Azure 支持 UDP 单播，但不支持多播和广播。 WebLogic Server 能够依赖于 Azure 的 UDP 单播功能。 为了获得依赖于 UDP 单播的最佳结果，建议将 WebLogic 群集大小保留静态，或者保留不超过10个托管服务器。
-* **WebLogic Server 预期 T3 访问（例如，使用企业 JavaBean 时）的公用端口和专用端口是相同的。** 请考虑多层方案，其中服务层（EJB）应用程序运行在 WebLogic Server 群集中，该群集包含名为*SLWLS*的虚拟网络中的两个或更多 vm。 客户端层位于同一虚拟网络中的不同子网中，它运行尝试在服务层中调用 EJB 的简单 Java 程序。 由于有必要对服务层进行负载均衡，因此需要为 WebLogic Server 群集中的虚拟机创建公共负载平衡终结点。 如果指定的专用端口不同于公用端口（例如，7006:7008），则会发生下面这样的错误：
+* **群集仅在 Enterprise Edition 上受支持。** 仅当使用 Oracle WebLogic Server Enterprise Edition 时，才许可你使用 WebLogic 群集。 不要将群集用于 Oracle WebLogic Server Standard 版本。
+* **不支持 UDP 多播。** Azure 支持 UDP 单播，但不支持多播和广播。 Oracle WebLogic Server 能够依赖于 Azure UDP 单播功能。 为了获得依赖于 UDP 单播的最佳结果，建议将 WebLogic 群集大小保留静态，或者保留不超过10个托管服务器。
+* **Oracle WebLogic Server 需要为 T3 访问（例如，使用企业 Javabean 时）使用公用和专用端口。** 请考虑多层方案，其中服务层（EJB）应用程序在包含两个或更多 Vm 的 Oracle WebLogic Server 群集上的一个名为*SLWLS*的虚拟网络中运行。 客户端层位于同一虚拟网络中的不同子网中，它运行尝试在服务层中调用 EJB 的简单 Java 程序。 由于有必要对服务层进行负载均衡，因此需要为 Oracle WebLogic Server 群集中的虚拟机创建公共负载平衡终结点。 如果指定的专用端口不同于公用端口（例如，7006:7008），则会发生下面这样的错误：
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-   这是因为对于任何远程 T3 访问，WebLogic Server 都要求负载均衡器端口和 WebLogic 托管服务器端口是相同的。 在上面的示例中，客户端访问端口 7006（负载均衡器端口），托管服务器侦听 7008（专用端口）。 此限制仅适用于 T3 访问，而不适用于 HTTP。
+   这是因为，对于任何远程 T3 访问，Oracle WebLogic Server 都需要负载均衡器端口和 WebLogic 托管服务器端口是相同的。 在上面的示例中，客户端访问端口 7006（负载均衡器端口），托管服务器侦听 7008（专用端口）。 此限制仅适用于 T3 访问，而不适用于 HTTP。
 
    若要避免此问题，请使用下列解决方法之一：
 
   * 对于专用于 T3 访问的负载均衡终结点，可使用相同的专用和公用端口号。
-  * 启动 WebLogic Server 时，请包括以下 JVM 参数：
+  * 启动 Oracle WebLogic Server 时，请包括以下 JVM 参数：
 
     ```
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-如需相关信息，请参阅位于 **的知识库文章**860340.1<https://support.oracle.com>。
+如需相关信息，请参阅位于 <https://support.oracle.com> 的知识库文章 **860340.1**。
 
-* **动态群集和负载均衡限制。** 假设要在 WebLogic Server 中使用动态群集并通过 Azure 中单个公共负载均衡终结点公开它。 只要对每个托管服务器使用固定的端口号（不是从范围中动态分配的），就可以完成此操作，并且不会启动比管理员正在跟踪的计算机更多的托管服务器。 也就是说，每个虚拟机上不存在多个托管服务器）。 如果你的配置导致启动的服务器比虚拟机多（即，多个 WebLogic 服务器实例共享同一虚拟机的虚拟机）的 WebLogic，则不可能有多个 WebLogic 服务器的实例绑定到给定端口号。 该虚拟机上的其他虚拟机将失败。
+* **动态群集和负载均衡限制。** 假设你想要在 Oracle WebLogic Server 中使用动态群集并通过 Azure 中单个公共负载均衡终结点公开它。 只要对每个托管服务器使用固定的端口号（不是从范围中动态分配的），就可以完成此操作，并且不会启动比管理员正在跟踪的计算机更多的托管服务器。 也就是说，每个虚拟机上不存在多个托管服务器）。 如果你的配置导致启动的 Oracle WebLogic 服务器比虚拟机更多（即，多个 Oracle WebLogic Server 实例共享同一虚拟机），则这些实例中的多个要绑定到给定端口号的 Oracle WebLogic 服务器。 该虚拟机上的其他虚拟机将失败。
 
    如果将管理服务器配置为自动向其托管服务器分配唯一端口号，则负载均衡将不可能，因为 Azure 不支持从单个公用端口映射到多个专用端口，而这是此配置所必需的。
-* **虚拟机上的多个 WebLogic Server 实例。** 根据部署的要求，如果虚拟机足够大，可以考虑在同一虚拟机上运行多个 WebLogic Server 实例。 例如，在包含两个内核的中等大小虚拟机上，可以选择运行两个 WebLogic Server 实例。 但是，我们仍建议避免在体系结构中引入单点故障，如果只使用了一个运行多个 WebLogic Server 实例的虚拟机，就会出现这种情况。 至少使用两个虚拟机可能是更好的方法，并且每个虚拟机可以运行多个 WebLogic Server 实例。 WebLogic 服务器的每个实例仍可以是同一个群集的一部分。 但是，目前不能使用 Azure 对同一个虚拟机中此类 WebLogic Server 部署公开的终结点进行负载均衡，因为 Azure 负载均衡器需要将负载均衡服务器分布到唯一虚拟机。
+* **虚拟机上的 Oracle WebLogic Server 的多个实例。** 如果虚拟机足够大，可以考虑在同一虚拟机上运行 Oracle WebLogic Server 的多个实例，具体取决于部署的要求。 例如，在包含两个内核的中等大小虚拟机上，可以选择运行两个 Oracle WebLogic 服务器实例。 但是，我们仍建议避免在体系结构中引入单点故障，如果只使用了一个运行多个 Oracle WebLogic Server 实例的虚拟机，就会出现这种情况。 至少使用两个虚拟机可能是更好的方法，并且每个虚拟机可以运行 Oracle WebLogic Server 的多个实例。 Oracle WebLogic Server 的每个实例仍可以是同一个群集的一部分。 但是，目前不能使用 Azure 对同一个虚拟机中的 Oracle WebLogic Server 部署公开的终结点进行负载均衡，因为 Azure 负载均衡器需要将负载均衡服务器分布到唯一虚拟机。
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK 虚拟机映像
 * **JDK 6 和 7 最新更新。** 尽管建议使用最新公开支持的 Java 版本（当前为 Java 8），但 Azure 还提供 JDK 6 和 7 的映像。 这适用于尚未准备好升级到 JDK 8 的旧版应用程序。 虽然对旧版 JDK 映像的更新不再提供给公众，但是鉴于 Microsoft 与 Oracle 的合作关系，由 Azure 提供的 JDK 6 和 7 的映像将包含最近的非公开更新，该更新通常由 Oracle 只向一组 Oracle 支持的选定客户提供。 随着时间推移，将使用 JDK 6 和 7 的更新版本提供 JDK 映像的新版本。

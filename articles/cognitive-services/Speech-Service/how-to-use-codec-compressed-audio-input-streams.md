@@ -1,7 +1,7 @@
 ---
-title: 使用语音 SDK 流式传输编解码器压缩的音频 - 语音服务
+title: 通过 Speech SDK-语音服务流式处理编解码器压缩音频
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音 SDK 将压缩音频流式传输到 Azure 语音服务。 适用于C++适用C#于 Linux 的、和 java、Android 中的 java 和 iOS 中的目标-C。
+description: 了解如何通过语音 SDK 将压缩音频流式传输到语音服务。 适用于C++适用C#于 Linux 的、和 java、Android 中的 java 和 iOS 中的目标-C。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464362"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805818"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-语音 SDK 的**压缩音频输入流** API 提供了一种使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
+语音 SDK 的**压缩音频输入流**API 提供了使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
 > 目前，Linux （ubuntu 16.04、ubuntu C++18.04 C#、Debian 9）上的、和 Java 支持流式传输的输入音频。 它[在 Android](how-to-use-codec-compressed-audio-input-streams-android.md)和[iOS 平台中](how-to-use-codec-compressed-audio-input-streams-ios.md)的适用于 Java 的 Java 也是支持的。
 > 需要语音 SDK 版本1.7.0 或更高版本。
 
-有关 wav/PCM，请参阅主线语音文档。  在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
+对于 wav/PCM，请参阅主线语音文档。  在 wav/PCM 外部，支持以下编解码器压缩输入格式：
 
 - MP3
 - OPUS/OGG
@@ -43,9 +43,9 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的示例代码
 
-若要以压缩音频格式流式传输到语音服务，请创建 `PullAudioInputStream` 或 `PushAudioInputStream`。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
+若要以压缩的音频格式流式传输到语音服务，请创建 `PullAudioInputStream` 或 `PushAudioInputStream`。 然后，通过指定流的压缩格式，从 stream 类的实例创建 `AudioConfig`。
 
-让我们假设你有一个名为 `myPushStream` 的输入流类，并且使用 OPUS/OGG。 你的代码可能如下所示：
+假设你有一个名为 `myPushStream` 的输入流类，并使用 OPUS/OGG。 代码可能如下所示：
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

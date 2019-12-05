@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e9781d9c277d19257d9b00bea3106adb3b04ffd6
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672523"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806875"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -32,7 +32,7 @@ ms.locfileid: "74672523"
 
 VNet 中的应用程序可以**使用相同的连接字符串和要使用的授权机制**，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
 
-可以在使用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 因此，子网中的客户端可以使用专用终结点连接到一个存储帐户，同时使用服务终结点访问其他终结点。
+可以在使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 因此，子网中的客户端可以使用专用终结点连接到一个存储帐户，同时使用服务终结点访问其他终结点。
 
 在 VNet 中创建用于存储服务的专用终结点时，会将一个申请批准的许可请求发送到存储帐户所有者。 如果请求创建专用终结点的用户也是存储帐户的所有者，则会自动批准此同意请求。
 
@@ -115,8 +115,8 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 有关配置自己的 DNS 服务器以支持专用终结点的详细信息，请参阅以下文章：
 
-- [Azure 虚拟网络中资源的名称解析](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [专用终结点的 DNS 配置](/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 虚拟网络中资源的名称解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [专用终结点的 DNS 配置](/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>价格
 

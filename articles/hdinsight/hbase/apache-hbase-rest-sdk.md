@@ -2,22 +2,22 @@
 title: 使用 HBase .NET SDK - Azure HDInsight
 description: 使用 HBase .NET SDK 创建和删除表，以及读取和写入数据。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077169"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806654"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) 提供了两个用于处理数据的主要选项：[Apache Hive 查询和调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
+[Apache HBase](apache-hbase-overview.md) 提供两种主要的数据处理选择：[Apache Hive 查询，以及调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
 
 对于 C# 和 .NET 应用程序，[用于 .NET 的 Microsoft HBase REST 客户端库](https://www.nuget.org/packages/Microsoft.HBase.Client/)提供基于 HBase REST API 的客户端库。
 
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-此新表有两个列系列：t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
+此新表有两列系列： t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
 
 ## <a name="delete-a-table"></a>删除表
 
@@ -112,7 +112,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下所示：
+HBase 实现了[Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
 
 ![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 

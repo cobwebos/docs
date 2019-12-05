@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 5adb342b733563fd0b062dd263a4fdd83259d166
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792039"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815158"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -70,7 +70,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 1. 在 Azure 门户搜索框中输入 "本地数据网关"，并选择 "**本地数据**网关"。
 
-   ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   ![查找“本地数据网关”](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. 在 **"本地数据网关**" 下，选择 "**添加**"。
 
@@ -89,7 +89,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
    下面是一个示例，显示与网关资源位于同一区域的网关安装，并链接到同一个 Azure 帐户：
 
-   ![提供详细信息以创建数据网关资源](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![提供详细信息以创建数据网关资源](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -128,7 +128,7 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 1. 若要仅查找逻辑应用的所有 API 连接，请在逻辑应用的菜单的 "**开发工具**" 下选择 " **API 连接**"。
 
-   ![在逻辑应用菜单上，选择 "API 连接"](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![在逻辑应用菜单上，选择 "API 连接"](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. 选择所需的网关连接，然后选择 "**编辑 API 连接**"。
 
@@ -137,8 +137,8 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 查找与 Azure 订阅关联的所有 API 连接：
 
-* 在 Azure 主菜单中，转到“所有服务” > “Web” > “API 连接”。
-* 或者，在 Azure 主菜单中转到“所有资源”。 将 "**类型**筛选器" 设置为 " **API 连接**"。
+* 从 "Azure 门户" 菜单中，选择 "**所有服务**" > **Web** > **API 连接**"。
+* 或者，从 "Azure 门户" 菜单中选择 "**所有资源**"。 将 "**类型**筛选器" 设置为 " **API 连接**"。
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -146,13 +146,13 @@ Azure 逻辑应用支持通过数据网关进行的读取和写入操作。 但�
 
 若要创建其他网关资源，请将网关安装链接到不同的网关资源，或删除网关资源，而不会影响网关安装。
 
-1. 在 Azure 主菜单中，选择 "**所有资源**"。 找到并选择所需的网关资源。
+1. 从 "Azure 门户" 菜单中，选择 "**所有资源**"，或从任意页面搜索并选择 "**所有资源**"。 找到并选择所需的网关资源。
 
 1. 如果尚未选择，请在网关资源菜单中选择“本地数据网关”。 在 "网关资源" 工具栏上，选择 "**删除**"。
 
    例如：
 
-   ![删除 Azure 中的网关资源](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![删除 Azure 中的网关资源](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

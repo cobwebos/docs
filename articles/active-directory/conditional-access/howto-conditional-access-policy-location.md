@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26299ca12071b521fc825a0b1ab1425f24af67e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150880"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803591"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件性访问：按位置阻止访问
 
@@ -25,20 +25,20 @@ ms.locfileid: "73150880"
 ## <a name="define-locations"></a>定义位置
 
 1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **条件性访问**。
+1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
 1. 选择 "**新位置**"。
 1. 为你的位置命名。
 1. 如果你知道构成该位置或**国家/地区**的特定于外部的可访问 IPv4 地址范围，请选择 " **IP 范围**"。
    1. 提供**IP 范围**或为指定的位置选择**国家/地区**。
       * 如果选择了 "国家/地区"，则可以选择包含未知区域。
-1. 选择**保存**
+1. 选择“保存”
 
 有关条件访问中的位置条件的详细信息，请参阅文章中[的位置条件 Azure Active Directory 条件访问中的位置条件](location-condition.md)
 
-## <a name="create-a-conditional-access-policy"></a>创建条件性访问策略
+## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
 1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **条件性访问**。
+1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
 1. 选择“新策略”。
 1. 为策略指定一个名称。 建议组织为其策略名称创建有意义的标准。
 1. 在 "**分配**" 下，选择 "**用户和组**"

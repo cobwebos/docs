@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f617bed0d2d93d8c8586d5708e0e356934817f4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091207"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816635"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -40,9 +40,9 @@ ms.locfileid: "74091207"
 
 可将以下参数包含在 REST 请求的查询字符串中。
 
-| 参数 | 说明 | 必需/可选 |
+| 参数 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 需要 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的亵渎内容。 接受的值为 `masked`，它将猥亵替换为星号 `removed`，这会从结果中删除所有猥亵或 `raw`，其中包括结果中的猥亵语言。 默认设置为 `masked`。 | 可选 |
 
@@ -50,13 +50,13 @@ ms.locfileid: "74091207"
 
 下表列出了语音转文本请求的必需和可选标头。
 
-|标头| 说明 | 必需/可选 |
+|标头| 描述 | 必需/可选 |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | 你的语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
+| `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 需要 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
-| `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务会确认初始请求并等待额外的数据。| 如果发送分块的音频数据，则是必需的。 |
+| `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务提供 JSON 格式的结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
 
 ## <a name="audio-formats"></a>音频格式
@@ -69,7 +69,7 @@ ms.locfileid: "74091207"
 | OGG | OPUS | 16 位 | 16 kHz，单声道 |
 
 >[!NOTE]
->通过语音服务中 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
+>通过语音服务 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md) 目前仅支持使用 PCM 编解码器的 WAV 格式。
 
 ## <a name="sample-request"></a>示例请求
 
@@ -89,10 +89,10 @@ Expect: 100-continue
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | 说明 | 可能的原因 |
+| HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 100 个 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
-| 200 | OK | 请求成功；响应正文是一个 JSON 对象。 |
+| 100 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
+| 200 | 确定 | 请求成功；响应正文是一个 JSON 对象。 |
 | 400 | 错误的请求 | 语言代码未提供、不支持的语言、无效的音频文件等。 |
 | 401 | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
 | 403 | 禁止 | 缺少订阅密钥或授权令牌。 |
@@ -144,7 +144,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 结果以 JSON 格式提供。 `simple` 格式包含以下顶级字段。
 
-| 参数 | 说明  |
+| 参数 | 描述  |
 |-----------|--------------|
 |`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
 |`DisplayText`|大小写、标点、反向文本规范化（口述文本转换为较短的窗体，例如 200 "200" 或 "Dr. smith"）和猥亵屏蔽的已识别文本。 仅在成功时提供。|
@@ -153,7 +153,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `RecognitionStatus` 字段可包含以下值：
 
-| 状态 | 说明 |
+| 状态 | 描述 |
 |--------|-------------|
 | `Success` | 识别成功并且存在 `DisplayText` 字段。 |
 | `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
@@ -164,17 +164,17 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
-`detailed` 格式包括与 `simple` 格式相同的数据以及 `NBest`，这是同一识别结果的替代解释列表。 这些结果从最可能到最小可能的结果进行排序。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `DisplayText` 形式为 `Display` 列表中的每条结果提供 `NBest`。
+`detailed` 格式包括与 `simple` 格式相同的数据以及 `NBest`，这是同一识别结果的替代解释列表。 这些结果从最可能到最小可能的结果进行排序。 第一个条目与主要识别结果相同。  使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
 `NBest` 列表中的每个对象包括：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |-----------|-------------|
 | `Confidence` | 条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信） |
 | `Lexical` | 已识别文本的词法形式：识别的实际单词。 |
 | `ITN` | 已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。 |
 | `MaskedITN` | 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。 |
-| `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `DisplayText` 时提供的 `simple` 相同。 |
+| `Display` | 已识别文本的显示形式，其中添加了标点符号和大小写形式。 此参数与将格式设置为 `simple` 时提供的 `DisplayText` 相同。 |
 
 ## <a name="sample-responses"></a>示例响应
 

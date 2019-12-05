@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559328"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805750"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -241,12 +241,12 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 | 逻辑服务器的 "管理备份" 窗格不显示将从 SQL server 筛选超大规模数据库  | 超大规模具有用于管理备份的单独方法，因此，长期保留期和时间点备份保留设置不适用/无效。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。 |
 | 时间点还原 | 将数据库迁移到超大规模服务层后，不支持在迁移之前还原到某个时间点。|
 | 将非超大规模 DB 还原到 Hypserscale，反之亦然 | 不能将超大规模数据库还原到非超大规模数据库中，也不能将非超大规模数据库还原到超大规模数据库中。|
-| 如果数据库的一个或多个数据文件大于 1 TB，则迁移将失败 | 在某些情况下，可以通过将大文件收缩为小于 1 TB 来解决此问题。 如果迁移在迁移过程中使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| 如果数据库的一个或多个数据文件大于 1 TB，则迁移将失败 | 在某些情况下，可以通过将大文件收缩为小于 1 TB 来解决此问题。 如果迁移在迁移过程中使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`；|
 | 托管实例 | 超大规模数据库当前不支持 Azure SQL 数据库托管实例。 |
 | 弹性池 |  当前不支持对 SQL 数据库超大规模进行弹性池。|
 | 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从超大规模迁移到非超大规模的唯一方法是使用 BACPAC 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。|
 | 迁移具有持久性内存中对象的数据库 | 超大规模仅支持非持久性内存中对象（表类型、本机 Sp 和函数）。  在将数据库迁移到超大规模服务层之前，必须删除持久性内存中表和其他对象，并将其重新创建为非内存对象。|
-| 更改跟踪 | 你还不能使用 Azure SQL 超大规模数据库配置和使用更改跟踪。 |
+| 更改跟踪 | 更改跟踪当前为公共预览版，可以在新的或现有的超大规模数据库上启用。 |
 | 异地复制  | 你尚未配置 Azure SQL 数据库超大规模的异地复制。 |
 | 数据库复制 | 你还不能使用数据库副本在 Azure SQL 超大规模中创建新数据库。 |
 | TDE/AKV 集成 | 对于 Azure SQL 数据库超大规模，尚不支持使用 Azure Key Vault （通常称为 "自带密钥" 或 BYOK）的透明数据库加密，但是，完全支持具有服务托管密钥的 TDE。 |

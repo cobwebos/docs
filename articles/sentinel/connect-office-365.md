@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a38beb0700e470d325545a2523143ecdab9f6dfb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74777411"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815784"
 ---
 # <a name="connect-data-from-office-365-logs"></a>连接 Office 365 日志中的数据
 
@@ -42,12 +42,12 @@ ms.locfileid: "74777411"
 
 1. 在 Azure Sentinel 中，选择 "**数据连接器**"，然后单击 " **Office 365** " 磁贴。
 
-2. 如果尚未启用此功能，可以转到 "**数据连接器**" 边栏选项卡并选择 " **Office 365**连接器"。 在此处，你可以单击 "**打开连接器" 页**，然后在 "配置" 部分中，在**你的工作区上启用 Office 365 解决方案**，使用 "**安装解决方案**" 按钮启用它。 如果已启用，则会在 "连接" 屏幕中将其标识为已启用。
+2. 如果尚未启用此功能，可以转到 "**数据连接器**" 边栏选项卡并选择 " **Office 365**连接器"。 在此处，你可以单击 "**打开连接器" 页**，然后在 "配置" 部分中标记为 **"在你的工作区上启用 Office 365 解决方案** **"。** 如果已启用，则会在 "连接" 屏幕中将其标识为已启用。
 1. Office 365 使你能够将来自多个租户的数据流式传输到 Azure Sentinel。 对于想要连接到的每个租户，在 "**将租户连接到 Azure" Sentinel**下添加租户。 
 1. 此时将打开一个 Active Directory 屏幕。 系统将提示你向要连接到 Azure Sentinel 的每个租户上的全局管理员用户进行身份验证，并向 Azure Sentinel 提供权限来读取其日志。 
-5. 在 "Stream Office 365 活动日志" 下，单击 "**选择**" 以选择要流式传输到 Azure Sentinel 的日志类型。 目前，Azure Sentinel 支持 Exchange 和 SharePoint。
+5. 在租户列表下，你会看到 Exchange 和 Sharepoint 日志的 Azure AD 目录 ID （租户 ID）和两个复选框。 你可以选择要在 Sentinel 中引入的任何或所有列出的服务。 目前，Azure Sentinel 支持现有 Office365 服务中的 Exchange 和 SharePoint 日志。
 
-4. 单击 "**应用更改**"。
+4. 选择服务（Exchange、sharepoint 等）后，可以在页面上的租户添加框架中单击 "保存"。 
 
 3. 若要在 Office 365 日志 Log Analytics 中使用相关架构，请搜索**OfficeActivity**。
 

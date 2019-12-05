@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110073"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806144"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>如何：在客户端上通过语音 SDK 完成命令（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "74110073"
 - 从自定义命令应用程序定义并发送自定义 JSON 有效负载
 - 从C# UWP Speech SDK 客户端应用程序接收和可视化自定义 JSON 负载内容
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - 用于语音服务的 Azure 订阅密钥
@@ -49,7 +49,7 @@ ms.locfileid: "74110073"
    > [!div class="mx-imgBorder"]
    > ![发送活动完成规则](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 设置 | 建议的值 | 说明 |
+   | 设置 | 建议的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 规则名称 | UpdateDeviceState | 描述规则用途的名称 |
    | 条件 | 必需参数-`OnOff` 和 `SubjectDevice` | 确定何时可以运行规则的条件 |
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 1. 启动应用程序
 1. 选择启用麦克风

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535881"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807079"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护
 
@@ -29,7 +29,7 @@ Azure 会定期更新其平台，以提高虚拟机的主机基础结构的可�
 
 本页介绍 Azure 如何执行两种类型的维护。 有关计划外事件（中断）的详细信息，请参阅管理适用于 [Windows 的 vm 的可用性](./windows/manage-availability.md)或适用于[Linux](./linux/manage-availability.md)的相应文章。
 
-在 VM 中，你可以[使用适用于 Windows](/windows/scheduled-events.md)或[Linux](/linux/scheduled-events.md)的 Scheduled Events 获取有关即将发生的维护的通知。
+在 VM 中，你可以[使用适用于 Windows](./windows/scheduled-events.md)或[Linux](./linux/scheduled-events.md)的 Scheduled Events 获取有关即将发生的维护的通知。
 
 
 
@@ -43,12 +43,12 @@ Azure 会定期更新其平台，以提高虚拟机的主机基础结构的可�
 
 不需要重新启动的这些维护操作一次应用一个容错域。 如果它们收到任何警告运行状况信号，则会停止。 
 
-这些类型的更新可能会影响某些应用程序。 将 VM 实时迁移到另一台主机时，某些敏感的工作负荷可能会在几分钟内导致 VM 暂停，这会稍微降低性能。 若要准备 VM 维护并降低 Azure 维护期间的影响，请尝试为此类应用程序[使用适用于 Windows](/windows/scheduled-events.md)或[Linux](/linux/scheduled-events.md)的 Scheduled Events。 
+这些类型的更新可能会影响某些应用程序。 将 VM 实时迁移到另一台主机时，某些敏感的工作负荷可能会在几分钟内导致 VM 暂停，这会稍微降低性能。 若要准备 VM 维护并降低 Azure 维护期间的影响，请尝试为此类应用程序[使用适用于 Windows](./windows/scheduled-events.md)或[Linux](./linux/scheduled-events.md)的 Scheduled Events。 
 
 公共预览版中还提供了一项功能、维护控制，可帮助管理不需要重新启动的维护。 必须使用[Azure 专用主机](./linux/dedicated-hosts.md)或[独立 VM](../security/fundamentals/isolation-choices.md)。 维护控制允许在35天滚动窗口中选择跳过平台更新，并在选择的时间应用更新。 有关详细信息，请参阅[控制包含维护控制的更新和 Azure CLI](maintenance-control-cli.md)。
 
 
-### <a name="live-migration"></a>实时迁移
+### <a name="live-migration"></a>Live migration
 
 实时迁移是不需要重新启动并保留 VM 内存的操作。 这会导致暂停或冻结，通常不超过5秒。 除 G、M、N 和 H 系列外，所有基础结构即服务（IaaS） Vm 均适用于实时迁移。 符合条件的 Vm 表示部署到 Azure 汽油的 IaaS Vm 超过90%。 
 

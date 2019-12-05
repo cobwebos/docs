@@ -18,20 +18,20 @@ ms.author: abpati
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148b9a4a890b22db63f03c673f5d779547a589e1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485024"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803642"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>用于 Python 的 MSAL 中的 Active Directory 联合身份验证服务支持
 
-Windows Server 中的 Active Directory 联合身份验证服务（AD FS）允许使用适用于 Python 的 Microsoft 身份验证库（MSAL）向应用添加 OpenID Connect 和 OAuth 2.0 身份验证和授权。 使用用于 Python 库的 MSAL，应用可以直接对用户进行身份验证，AD FS。 有关方案的详细信息，请参阅面向[开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)。
+Windows Server 中的 Active Directory 联合身份验证服务（AD FS）允许使用适用于 Python 的 Microsoft 身份验证库（MSAL）向应用添加 OpenID Connect 和 OAuth 2.0 身份验证和授权。 使用用于 Python 库的 MSAL，应用可以直接对用户进行身份验证，AD FS。 有关方案的详细信息，请参阅面向[开发人员的 AD FS 方案](/windows-server/identity/ad-fs/ad-fs-development)。
 
 通常有两种方法可以对 AD FS 进行身份验证：
 
-- MSAL Python 与 Azure Active Directory 进行通信，后者本身与其他标识提供者联合。 联合通过 AD FS 发生。 MSAL Python 连接到 Azure AD，这些用户以 Azure AD （托管用户）或其他标识提供者（例如 AD FS，联合用户）管理的用户身份登录。 MSAL Python 不知道用户是联合的。 它只是与 Azure AD 进行通信。 在本案例中使用的[机构](msal-client-application-configuration.md#authority)是普通的机构（机构主机名 + 租户、通用机构或组织）。
+- MSAL Python 与 Azure Active Directory 进行通信，后者本身与其他标识提供者联合。 联合通过 AD FS 发生。 MSAL Python 连接到 Azure AD，这些用户以 Azure AD （托管用户）或其他标识提供者（例如 AD FS，联合用户）管理的用户身份登录。 MSAL Python 不知道用户是联合的。 它只是与 Azure AD 进行通信。 在这种情况下，您使用的[颁发机构](msal-client-application-configuration.md#authority)是通常的授权机构（颁发机构主机名称 + 租户、公用或组织）。
 - MSAL Python 直接与 AD FS 机构讨论。 仅 AD FS 2019 及更高版本支持此版本。
 
 ## <a name="connect-to-active-directory-federated-with-ad-fs"></a>连接到 Active Directory 与 AD FS 联合
@@ -43,7 +43,7 @@ Windows Server 中的 Active Directory 联合身份验证服务（AD FS）允许
 调用 `acquire_token_by_authorization_code` 或 `acquire_token_by_device_flow`时，用户体验通常如下所示：
 
 1. 用户输入其帐户 ID。
-2. Azure AD 会短暂显示 "将你转到组织的页面" 消息，并将用户重定向到标识提供者的登录页。 登录页通常已使用组织的徽标进行自定义。
+2. Azure AD 会短暂显示 "将你转到组织的页面" 消息，并将用户重定向到标识提供者的登录页。 登录页通常是用组织徽标进行自定义的。
 
 此联合方案中受支持的 AD FS 版本如下：
 - Active Directory 联合身份验证服务 FS v2

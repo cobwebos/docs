@@ -1,5 +1,5 @@
 ---
-title: 区域 - 语音服务
+title: 区域-语音服务
 titleSuffix: Azure Cognitive Services
 description: 用于语音服务的可用区域和终结点的列表，包括语音到文本、文本到语音和语音翻译。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072442"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816662"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -28,11 +28,11 @@ ms.locfileid: "74072442"
 
 在[语音 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中用作 `SpeechConfig.FromSubscription` 的参数）。
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>语音转文本、文本转语音和翻译
+### <a name="speech-to-text-text-to-speech-and-translation"></a>语音到文本、文本到语音转换和翻译
 
-可以在以下区域使用语音 SDK，以进行**语音识别**、**文本转语音**和**翻译**：
+语音 SDK 在这些区域提供**语音识别**、**文本到语音** **转换和翻译**：
 
-| 区域           | 语音 SDK 参数 | 语音自定义门户    |
+| 地区           | 语音 SDK 参数 | 语音自定义门户    |
 | ---------------- | -------------------- | ------------------------------ |
 | 美国西部          | `westus`             | https://westus.cris.ai         |
 | 美国西部 2        | `westus2`            | https://westus2.cris.ai        |
@@ -42,14 +42,14 @@ ms.locfileid: "74072442"
 | 美国中北部 | `northcentralus`     | https://northcentralus.cris.ai |
 | 美国中南部 | `southcentralus`     | https://southcentralus.cris.ai |
 | 印度中部    | `centralindia`       | https://centralindia.cris.ai   |
-| 东亚        | `eastasia`           | https://eastasia.cris.ai       |
-| 东南亚   | `southeastasia`      | https://southeastasia.cris.ai  |
+| 亚洲东部        | `eastasia`           | https://eastasia.cris.ai       |
+| 亚洲东南部   | `southeastasia`      | https://southeastasia.cris.ai  |
 | 日本东部       | `japaneast`          | https://japaneast.cris.ai      |
 | 韩国中部    | `koreacentral`       | https://koreacentral.cris.ai   |
 | 澳大利亚东部   | `australiaeast`      | https://australiaeast.cris.ai  |
 | 加拿大中部   | `canadacentral`      | https://canadacentral.cris.ai  |
 | 北欧     | `northeurope`        | https://northeurope.cris.ai    |
-| 西欧      | `westeurope`         | https://westeurope.cris.ai     |
+| 欧洲西部      | `westeurope`         | https://westeurope.cris.ai     |
 | 英国南部         | `uksouth`            | https://uksouth.cris.ai        |
 | 法国中部   | `francecentral`      | https://francecentral.cris.ai  |
 
@@ -57,20 +57,20 @@ ms.locfileid: "74072442"
 
 通过语音 SDK 实现**意向识别**的可用区域如下：
 
-| 全球区域 | 区域           | 语音 SDK 参数 |
+| 全球区域 | 地区           | 语音 SDK 参数 |
 | ------------- | ---------------- | -------------------- |
-| 亚洲          | 东亚        | `eastasia`           |
-| 亚洲          | 东南亚   | `southeastasia`      |
+| 亚洲          | 亚洲东部        | `eastasia`           |
+| 亚洲          | 亚洲东南部   | `southeastasia`      |
 | 澳大利亚     | 澳大利亚东部   | `australiaeast`      |
 | 欧洲        | 北欧     | `northeurope`        |
-| 欧洲        | 西欧      | `westeurope`         |
+| 欧洲        | 欧洲西部      | `westeurope`         |
 | 北美 | 美国东部          | `eastus`             |
 | 北美 | 美国东部 2        | `eastus2`            |
 | 北美 | 美国中南部 | `southcentralus`     |
 | 北美 | 美国中西部  | `westcentralus`      |
 | 北美 | 美国西部          | `westus`             |
 | 北美 | 美国西部 2        | `westus2`            |
-| 南美洲 | 巴西南部     | `brazilsouth`        |
+| 南美 | 巴西南部     | `brazilsouth`        |
 
 这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 
@@ -78,15 +78,15 @@ ms.locfileid: "74072442"
 
 [语音 SDK](speech-sdk.md)支持以下区域中的**语音助手**功能：
 
-| 区域         | 语音 SDK 参数 |
+| 地区         | 语音 SDK 参数 |
 | -------------- | -------------------- |
 | 美国西部        | `westus`             |
 | 美国西部 2      | `westus2`            |
 | 美国东部        | `eastus`             |
 | 美国东部 2      | `eastus2`            |
-| 西欧    | `westeurope`         |
+| 欧洲西部    | `westeurope`         |
 | 北欧   | `northeurope`        |
-| 东南亚 | `southeastasia`      |
+| 亚洲东南部 | `southeastasia`      |
 
 ## <a name="rest-apis"></a>REST API
 
@@ -100,6 +100,6 @@ ms.locfileid: "74072442"
 
 ### <a name="text-to-speech"></a>文本转语音
 
-有关文本转语音的参考文档，请参阅[文本转语音 REST API](rest-text-to-speech.md)。
+有关文本到语音的参考文档，请参阅[文本到语音 REST API](rest-text-to-speech.md)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

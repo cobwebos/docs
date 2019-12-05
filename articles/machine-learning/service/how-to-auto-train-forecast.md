@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f516b3d3840262d9221db772f2c186650462e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580708"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807385"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "73580708"
 本文介绍如何使用 Azure 机器学习中的自动化机器学习来训练时序预测回归模型。 配置预测模型类似于使用自动机器学习设置标准回归模型，但存在某些配置选项和预处理步骤来处理时序数据。 下面的示例演示如何执行以下操作：
 
 * 准备时序建模的数据
-* 在[`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)对象中配置特定的时序参数
+* 在[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)对象中配置特定的时序参数
 * 运行带有时序数据的预测
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -57,7 +57,7 @@ ms.locfileid: "73580708"
 
 自动回归集成的移动平均线（ARIMA）是时序预测的常用统计方法。 此预测技术通常用于短期预测方案，其中的数据显示了循环（如循环）的证据，这可能是不可预测的，很难建模或预测。 自动 ARIMA 将数据转换为静态数据，以获得一致、可靠的结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 * 本文假设基本熟悉如何设置自动化机器学习试验。 按照[教程](tutorial-auto-train-models.md)或操作[方法](how-to-configure-auto-train.md)，查看基本的自动化机器学习试验设计模式。
@@ -113,7 +113,7 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` 对象定义自动机器学习任务所需的设置和数据。 与回归问题类似，定义了标准定型参数，如任务类型、迭代数、定型数据和交叉验证次数。 对于预测任务，还必须设置其他参数，这些参数会影响试验。 下表说明了每个参数及其用法。
 
-| Param | 说明 | 必选 |
+| Param | 描述 | 需要 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中的日期时间列，这些数据用于生成时序并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义颗粒，则假定数据集为一系列时间。||
@@ -122,7 +122,7 @@ test_labels = test_data.pop(label).values
 |`target_rolling_window_size`|*n*用于生成预测值的历史时间段，< = 定型集大小。 如果省略，则*n*为完全定型集的大小。 如果只想在训练模型时考虑一定数量的历史记录，请指定此参数。||
 |`enable_dnn`|启用预测 Dnn。||
 
-有关详细信息，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。
+有关详细信息，请参阅[参考文档](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。
 
 将时间序列设置创建为字典对象。 将 `time_column_name` 设置为数据集中的 `day_datetime` 字段。 定义 `grain_column_names` 参数以确保为数据创建**两个单独的时序组**;用于存储 A 和 B. 最后，将 `max_horizon` 设置为50，以便预测整个测试集。 使用 `target_rolling_window_size`将预测时段设置为10个周期，并使用 `target_lags` 参数在2个句点之前指定一个滞后时间。
 
@@ -140,7 +140,7 @@ time_series_settings = {
 > [!NOTE]
 > 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
-通过在上述代码片段中定义 `grain_column_names`，AutoML 将创建两个单独的时序组，也称为多个时间序列。 如果未定义任何颗粒，AutoML 将假定该数据集是单个时间系列。 若要了解有关单个时间系列的详细信息，请参阅[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
+通过在上述代码片段中定义 `grain_column_names`，AutoML 将创建两个单独的时序组，也称为多个时间序列。 如果未定义任何颗粒，AutoML 将假定该数据集是单个时间系列。 若要详细了解单个时间系列，请参阅[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
 
 现在，创建标准 `AutoMLConfig` 对象，指定 `forecasting` 任务类型，然后提交试验。 模型完成后，检索最佳的运行迭代。
 

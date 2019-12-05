@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8aa6a8bfb690b00ee21980f4aa64d950abec2f3c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d30195cb9aceac0e785f01ce8c2ce78d7a9d4da7
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152666"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805767"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
@@ -31,7 +31,7 @@ ms.locfileid: "74152666"
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -83,7 +83,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，输入 " **RingCentral**"，在结果面板中选择 " **RingCentral** "，然后单击 "**添加**" 按钮添加该应用程序。
 
@@ -94,7 +94,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 RingCentral 中创建、更新和禁用用户和/或组。
 
 > [!TIP]
-> 你还可以选择按照[RingCentral 单一登录教程](https://docs.microsoft.comazure/active-directory/saas-apps/ringcentral-tutorial)中提供的说明为 RingCentral 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 你还可以选择按照[RingCentral 单一登录教程](ringcentral-tutorial.md)中提供的说明为 RingCentral 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 > [!NOTE]
 > 若要了解有关 RingCentral 的 SCIM 终结点的详细信息，请参阅[RINGCENTRAL API 参考](https://developers.ringcentral.com/api-reference)。
@@ -156,7 +156,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

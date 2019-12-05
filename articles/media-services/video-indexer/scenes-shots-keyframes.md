@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860232"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806690"
 ---
 # <a name="scenes-shots-and-keyframes"></a>场景、镜头和关键帧
 
@@ -38,9 +38,71 @@ ms.locfileid: "70860232"
 
 选择最能表示快照的帧。 关键帧是基于美观属性从整个视频中选择的代表帧（例如，对比度和 stableness）。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以提取关键帧缩略图。 
 
-关键帧与输出 JSON 中的快照相关联。 
+### <a name="extracting-keyframes"></a>提取关键帧
+
+若要提取视频的高分辨率关键帧，必须先上传视频并为其编制索引。
+
+![关键帧](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>视频索引器网站
+
+若要使用视频索引器网站提取关键帧，请上传视频并为其编制索引。 索引作业完成后，单击 "**下载**" 按钮，然后选择 "**项目（ZIP）** "。 这会将项目文件夹下载到你的计算机。 
+
+![关键帧](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+解压缩并打开该文件夹。 在 *_KeyframeThumbnail*文件夹中，你将找到从视频中提取的所有关键帧。 
+
+#### <a name="with-the-video-indexer-api"></a>带有视频索引器 API
+
+若要使用视频索引器 API 获取关键帧，请使用[上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)呼叫上传和索引视频。 索引作业完成后，调用[获取视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)。 这将为你介绍视频索引器从 JSON 文件中的内容中提取的所有见解。  
+
+你将获得关键帧 Id 列表作为每个拍摄的元数据的一部分。 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+现在需要在[获取缩略图](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)调用上运行每个关键帧 id。 这会将每个关键帧映像下载到计算机。 
 
 ## <a name="editorial-shot-type-detection"></a>编辑快照类型检测
+
+关键帧与输出 JSON 中的快照相关联。 
 
 与 insights JSON 中的个别截图关联的拍摄类型表示其编辑类型。 在编辑视频到剪辑、尾部或搜索特定的关键帧样式以实现艺术时，可能会发现这些拍摄类型特征非常有用。 根据每个拍摄的第一个关键帧的分析来确定不同的类型。 照片按其第一个关键帧中显示的面部的规模、大小和位置进行标识。 
 
@@ -63,6 +125,7 @@ ms.locfileid: "70860232"
 
 * 两个抓图：显示两个人的中等大小。
 * 多面面：多于两人。
+
 
 ## <a name="next-steps"></a>后续步骤
 

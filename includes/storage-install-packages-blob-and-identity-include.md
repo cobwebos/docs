@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 0adf1280fa50e9ee594f3025dff70786f5ba2199
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: de79ea50d12ab322d1e28d0ad650df30ecc0c222
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666150"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806570"
 ---
 ## <a name="install-client-library-packages"></a>安装客户端库包
 
@@ -31,5 +31,3 @@ Install-Package Azure.Storage.Blobs
 ```powershell
 Install-Package Azure.Identity
 ```
-
-若要详细了解如何使用 azure 存储空间中的 Azure 标识客户端库进行身份验证，请**参阅在**[使用 azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限](/azure/storage/common/storage-auth-aad-msi?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)。

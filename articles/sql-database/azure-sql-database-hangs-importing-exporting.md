@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808281"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807062"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database 导入/导出服务需要很长时间才能导入或导出数据库
 
@@ -22,7 +22,7 @@ ms.locfileid: "73808281"
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database 导入/导出服务
 
-Azure SQL Database 导入/导出服务是一项基于 REST 的 web 服务，可在每个 Azure 数据中心运行。 使用 "[导入数据库](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal)" 或 "[导出](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal)" 选项在 Azure 门户中移动 SQL 数据库时，将调用此服务。 该服务提供免费的请求队列和计算服务，用于在 Azure SQL 数据库和 Azure Blob 存储之间执行导入和导出。
+Azure SQL Database 导入/导出服务是一项基于 REST 的 web 服务，可在每个 Azure 数据中心运行。 使用 "[导入数据库](sql-database-import.md#using-azure-portal)" 或 "[导出](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal)" 选项在 Azure 门户中移动 SQL 数据库时，将调用此服务。 该服务提供免费的请求队列和计算服务，用于在 Azure SQL 数据库和 Azure Blob 存储之间执行导入和导出。
 
 导入和导出操作不表示传统的物理数据库备份，而是使用特殊 BACPAC 格式的数据库的逻辑备份。 BACPAC 格式使你可以避免使用可能因不同版本的 Microsoft SQL Server 和 Azure SQL 数据库而异的物理格式。 因此，您可以使用它安全地将数据库还原到 SQL Server 数据库和 SQL 数据库。
 

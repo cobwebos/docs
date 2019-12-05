@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801540"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806090"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音准确性
 
@@ -23,23 +23,23 @@ ms.locfileid: "70801540"
 
 ## <a name="what-is-word-error-rate-wer"></a>什么是 Word 错误率（WER）？
 
-度量模型准确性的行业标准是*Word 错误率*（WER）。 WER 计算在识别期间标识的错误单词数，然后除以用户标记的脚本中提供的字数。 最后，此数字乘以 100% 来计算 WER。
+度量模型准确性的行业标准是*Word 错误率*（WER）。 WER 计算在识别期间标识的错误单词数，然后除以用户标记的脚本中提供的字数。 最后，此数字乘以100% 来计算 WER。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 
 错误识别的单词分为三个类别：
 
-* 插入（I）：在假设脚本中错误添加的字词
+* 插入（I）：在假设脚本中错误添加的单词
 * 删除（D）：在假设脚本中未检测到的字词
 * 替换：在 reference 和假设间替换的单词
 
-以下是一个示例：
+下面是一个示例：
 
 ![错误标识单词的示例](./media/custom-speech/custom-speech-dis-words.png)
 
 ## <a name="resolve-errors-and-improve-wer"></a>解决错误并改善 WER
 
-你可以从计算机识别结果使用 WER 来评估你在应用、工具或产品中使用的模型的质量。 5%-10% 的 WER 被视为良好的质量，并且已准备好使用。 可接受 20% 的 WER，但你可能需要考虑其他培训。 30% 或更多信号的 WER 质量较差，需要自定义和培训。
+你可以从计算机识别结果使用 WER 来评估你在应用、工具或产品中使用的模型的质量。 5%-10% 的 WER 被视为良好的质量，并且已准备好使用。 可接受20% 的 WER，但你可能需要考虑其他培训。 30% 或更多信号的 WER 质量较差，需要自定义和培训。
 
 如何分发错误非常重要。 遇到许多删除错误时，通常是由于音频信号强度弱导致的。 若要解决此问题，需要收集离源更近的音频数据。 插入错误意味着音频记录在干扰环境中并且可能出现 crosstalk，从而导致识别问题。 当以人为标记的转录或相关文本提供的域特定术语的示例不足时，通常会遇到替换错误。
 

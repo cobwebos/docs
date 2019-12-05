@@ -1,5 +1,5 @@
 ---
-title: 什么是对话脚本（预览版）-语音服务
+title: 什么是对话脚本（预览版）？ -语音服务
 titleSuffix: Azure Cognitive Services
 description: 对话脚本是一种语音到文本解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为 diarization），以提供任何引.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075852"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806280"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>什么是对话脚本（预览版）？
 
-对话脚本是一种[语音到文本](speech-to-text.md)解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为_diarization_），以提供实时和/或异步进行任何会话。 对话脚本将会话中的发言人区分开来，以确定谁说什么和何时，并使开发人员能够轻松地将语音到文本添加到执行多发言人 diarization 的应用程序。
+对话脚本是一种[语音到文本](speech-to-text.md)解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为_diarization_），以提供任何会话的实时和/或异步方式。 对话脚本将会话中的发言人区分开来，以确定谁说什么和何时，并使开发人员能够轻松地将语音到文本添加到执行多发言人 diarization 的应用程序。
 
 ## <a name="key-features"></a>主要功能
 
@@ -44,15 +44,15 @@ ms.locfileid: "74075852"
 
 会议参与者可以将精力集中在会议上，并对对话进行记录。 参与者随时可以参加会议，并通过使用脚本而不是记笔记并在会议期间可能会遗漏一些内容来快速跟进后续步骤。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 这是会话脚本工作原理的简要概述。
 
-![导入对话听录示意图](media/scenarios/conversation-transcription-service.png)
+![导入对话对话](media/scenarios/conversation-transcription-service.png)
 
 ## <a name="expected-inputs"></a>预期输入
 
-- **多通道音频流**–有关规范和设计的详细信息，请参阅[MICROSOFT Speech Device SDK 麦克风](https://aka.ms/cts/microphone)。 若要详细了解或购买开发工具包，请参阅[获取 Microsoft 语音设备 SDK](https://aka.ms/cts/getsdk)。
+- **多通道音频流**–有关规范和设计的详细信息，请参阅[MICROSOFT Speech Device SDK 麦克风](https://aka.ms/cts/microphone)。 若要了解详细信息或购买开发工具包，请参阅[获取 Microsoft Speech 设备 SDK](https://aka.ms/cts/getsdk)。
 - **用户语音示例**–对话要求在会话前需要用户配置文件。 需要从每个用户那里收集音频记录，然后将录制发送到[签名生成服务](https://aka.ms/cts/signaturegenservice)，以验证音频和生成用户配置文件。
 
 ## <a name="real-time-vs-asynchronous"></a>实时与异步

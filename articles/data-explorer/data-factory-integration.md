@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093756"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819145"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成
 
@@ -71,7 +71,7 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 
 ### <a name="copying-data-to-azure-data-explorer"></a>将数据复制到 Azure 数据资源管理器
 
-可以使用复制活动或引入命令（例如从[查询](/azure/kusto/management/data-ingestion/ingest-from-query)中引入（`.set-or-append`、`.set-or-replace`、`.set`、`.replace)`和[从存储](/azure/kusto/management/data-ingestion/ingest-from-storage)引入）将数据复制到 Azure 数据资源管理器。`.ingest` 
+可以使用复制活动或引入命令（例如从[查询](/azure/kusto/management/data-ingestion/ingest-from-query)中引入（`.set-or-append`、`.set-or-replace`、`.set`、`.replace)`和[从存储](/azure/kusto/management/data-ingestion/ingest-from-storage)引入）将数据复制到 Azure 数据资源管理器。 
 
 请参阅下表，了解复制活动的比较，并引入用于将数据复制到 Azure 数据资源管理器的命令。
 
@@ -93,13 +93,13 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 | 步骤 | Operation | 最低权限级别 | 说明 |
 |---|---|---|---|
 | **创建链接服务** | 数据库导航 | *数据库查看器* <br>使用 ADF 的登录用户应该获得读取数据库元数据的权限。 | 用户可以手动提供数据库名称。 |
-| | 测试连接 | *数据库监视器*或*表引入器* <br>应授予服务主体 `.show` 命令或表级别引入执行数据库级别的权限。 | <ul><li>TestConnection 验证与群集的连接，而不是与数据库的连接。 即使数据库不存在，也可能会成功。</li><li>表管理员权限不足。</li></ul>|
+| | “测试连接” | *数据库监视器*或*表引入器* <br>应授予服务主体 `.show` 命令或表级别引入执行数据库级别的权限。 | <ul><li>TestConnection 验证与群集的连接，而不是与数据库的连接。 即使数据库不存在，也可能会成功。</li><li>表管理员权限不足。</li></ul>|
 | **创建数据集** | 表导航 | *数据库监视器* <br>使用 ADF 登录的用户必须有权执行数据库级别 `.show` 命令。 | 用户可以手动提供表名称。|
 | **创建数据集**或**复制活动** | 预览数据 | *数据库查看器* <br>必须授权服务主体读取数据库元数据。 | | 
 |   | 导入架构 | *数据库查看器* <br>必须授权服务主体读取数据库元数据。 | 当 ADX 是表格到表格副本的源时，ADF 会自动导入架构，即使用户没有显式导入架构也是如此。 |
 | **ADX 作为接收器** | 创建按名称列映射 | *数据库监视器* <br>必须授权服务主体 `.show` 命令执行数据库级别。 | <ul><li>所有必需的操作都适用于*表引入器*。</li><li> 某些可选操作可能会失败。</li></ul> |
 |   | <ul><li>在表上创建 CSV 映射</li><li>删除映射</li></ul>| *表引入器*或*数据库管理* <br>必须授权服务主体对表进行更改。 | |
-|   | 引入数据 | *表引入器*或*数据库管理* <br>必须授权服务主体对表进行更改。 | | 
+|   | 插入数据 | *表引入器*或*数据库管理* <br>必须授权服务主体对表进行更改。 | | 
 | **作为源的 ADX** | 执行查询 | *数据库查看器* <br>必须授权服务主体读取数据库元数据。 | |
 | **Kusto 命令** | | 根据每个命令的权限级别。 |
 
@@ -114,11 +114,13 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
 | **组件地理位置邻近** | 将所有组件置于同一区域：<ul><li>源和接收器数据存储。</li><li>ADF 集成运行时。</li><li>你的 ADX 群集。</li></ul>请确保至少集成运行时与 ADX 群集位于同一区域。 |
 | **DIUs 数** | 1个 VM，适用于 ADF 使用的每4个 DIUs。 <br>如果源是包含多个文件的基于文件的存储，则增加 DIUs 将会有所帮助。 然后，每个 VM 将并行处理不同的文件。 因此，复制单个大型文件比复制多个较小的文件时的延迟更高。|
 |**ADX 群集的数量和 SKU** | 大量 ADX 节点将提高引入处理时间。|
-| **度** | 若要从数据库复制大量数据，请对数据进行分区，然后使用以并行方式复制每个分区或使用[从数据库大容量复制到 Azure 数据资源管理器模板](data-factory-template.md)的 ForEach 循环。 注意： "复制" 活动中的 "**设置**" > **并行度**与 ADX 无关。 |
+| **Parallelism** | 若要从数据库复制大量数据，请对数据进行分区，然后使用以并行方式复制每个分区或使用[从数据库大容量复制到 Azure 数据资源管理器模板](data-factory-template.md)的 ForEach 循环。 注意： "复制" 活动中的 "**设置**" > **并行度**与 ADX 无关。 |
 | **数据处理复杂性** | 根据源文件格式、列映射和压缩，延迟会有所不同。|
 | **运行集成运行时的 VM** | <ul><li>对于 Azure 副本，无法更改 ADF Vm 和计算机 Sku。</li><li> 对于 "本地到 Azure" 副本，确定托管自承载 IR 的 VM 是否足够强。</li></ul>|
 
-## <a name="monitor-activity-progress"></a>监视活动进度
+## <a name="tips-and-common-pitfalls"></a>提示和常见缺陷
+
+### <a name="monitor-activity-progress"></a>监视活动进度
 
 * 当监视活动进度时，"*数据写入*" 属性可能比 "*数据读取*" 属性大得多，因为*数据读取*是根据二进制文件大小计算的，而*写入*的数据会根据内存中的大小计算，然后再对数据进行反序列化和解压缩。
 
@@ -126,12 +128,87 @@ Azure 数据工厂复制活动用于在数据存储之间传输数据。 Azure �
     * 第一阶段读取源数据，将其拆分为 900 MB，并将每个区块上传到 Azure Blob。 第一阶段显示在 ADF 活动进度视图中。 
     * 将所有数据上传到 Azure Blob 后，第二个阶段开始。 Azure 数据资源管理器引擎节点下载 blob 并将数据引入接收器表。 然后，Azure 数据资源管理器表中会显示该数据。
 
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>由于转义不当而未能引入 CSV 文件
+
+Azure 数据资源管理器需要 CSV 文件才能与[RFC 4180](https://www.ietf.org/rfc/rfc4180.txt)一致。
+它期望：
+* 包含需要转义的字符的字段（如 "和新行）应以 **"** 字符（不含空格）开头和结尾。 使用 double **"** 字符（ **" "** ）对字段*内部***的所有字符**进行转义。 例如， _"Hello"，"world"_ "" 是一个有效的 CSV 文件，其中的单个记录包含带有内容 _"世界"_ 的单个列或字段。
+* 文件中的所有记录必须具有相同的列数和字段数。
+
+Azure 数据工厂允许反斜杠（转义符）字符。 如果使用 Azure 数据工厂生成带有反斜杠字符的 CSV 文件，则将文件引入 Azure 数据资源管理器将会失败。
+
+#### <a name="example"></a>示例
+
+以下文本值： Hello、"World"<br/>
+ABC 定义<br/>
+"ABC\D" EF<br/>
+"ABC 定义<br/>
+
+应按如下所示在相应的 CSV 文件中显示： "Hello，" "World" ""<br/>
+"ABC 定义"<br/>
+"" ABC 定义 "<br/>
+"" "ABC\D" "EF"<br/>
+
+通过使用默认的转义符（反斜杠），以下 CSV 将无法使用 Azure 数据资源管理器： "Hello，\"World\""<br/>
+"ABC 定义"<br/>
+"\"ABC 定义"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>嵌套 JSON 对象
+
+将 JSON 文件复制到 Azure 数据资源管理器时，请注意：
+* 不支持数组。
+* 如果 JSON 结构包含对象数据类型，Azure 数据工厂将平展对象的子项，并尝试将每个子项映射到 Azure 数据资源管理器表中的其他列。 若要将整个对象项映射到 Azure 中的单个列数据资源管理器：
+    * 将整个 JSON 行引入 Azure 数据资源管理器中的单个动态列。
+    * 使用 Azure 数据工厂的 JSON 编辑器手动编辑管道定义。 在**映射**中
+       * 删除为每个子项创建的多个映射，并添加将对象类型映射到表列的单个映射。
+       * 在右方括号后面添加一个逗号，后跟：<br/>
+       `"mapComplexValuesToString": true`。
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>复制到 Azure 时指定 AdditionalProperties 数据资源管理器
+
+> [!NOTE]
+> 此功能当前可通过手动编辑 JSON 有效负载来使用。 
+
+在复制活动的 "sink" 部分下添加一行，如下所示：
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+值的转义可能比较棘手。 使用以下代码片段作为参考：
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+打印值：
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[使用 Azure 数据工厂将数据复制到 azure 数据资源管理器](data-factory-load-data.md)。
 * 了解如何使用[Azure 数据工厂模板从数据库大容量复制到 Azure 数据资源管理器](data-factory-template.md)。
 * 了解如何使用[Azure 数据工厂命令活动运行 azure 数据资源管理器控制命令](data-factory-command-activity.md)。
-* 了解用于查询数据的 [Azure 数据资源管理器查询](/azure/data-explorer/web-query-data)。
+* 了解用于数据查询的[Azure 数据资源管理器查询](/azure/data-explorer/web-query-data)。
 
 
 

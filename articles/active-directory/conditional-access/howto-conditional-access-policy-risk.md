@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102371f8af45a1a51715dbfb11afc3f0f4e457d7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e4130b05be1a4abb2166514b730c3d21bd5ece97
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150695"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803574"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>条件性访问：基于风险的条件性访问
 
@@ -84,4 +84,4 @@ Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他
 
 [工作原理：Azure 多重身份验证](../authentication/concept-mfa-howitworks.md)
 
-[什么是 Azure Active Directory Identity Protection？](../identity-protection/overview.md)
+[Azure Active Directory 标识保护是什么？](../identity-protection/overview.md)

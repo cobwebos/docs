@@ -1,7 +1,7 @@
 ---
-title: 支持和帮助选项 - 语音服务
+title: 支持和帮助选项-语音服务
 titleSuffix: Azure Cognitive Services
-description: 在创建与语音服务集成的应用程序时，如何针对所遇到的问题获取帮助和支持
+description: 如何获取与语音服务集成的应用程序时遇到的问题和问题的帮助和支持
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422605"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815455"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
 你是否刚开始探索语音服务的功能？ 你是否正在为你的应用程序实现一项新功能？ 下面是一些提示，作为开发人员你可以从中获得帮助。
 
 > [!div class="checklist"]
-> * 随时获取 Azure 认知服务中新开发的最新消息或查找与语音服务相关的最新消息。
-> * 发行说明包含所有发布版的信息。
+> * 随时了解*Azure 认知服务*中的新发展，或查找与*语音服务*相关的最新新闻。
+> * 发行说明包含所有发布的信息。
 > * 搜索以查看社区是否讨论你的问题，或者是否已存在有关要实现的功能的现有文档。
 > * 如果未找到满意答案，请在 Stack Overflow 上提问。
 > * 如果发现 GitHub 上的某个示例有问题，请提交 GitHub 问题。
@@ -31,11 +31,11 @@ ms.locfileid: "74422605"
 
 ## <a name="stay-informed"></a>随时获取最新信息
 
-有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新消息，请关注[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
+有关认知服务的新闻，请关注[认知服务博客](https://azure.microsoft.com/blog/topics/cognitive-services/)。 有关语音服务的最新信息，请跟踪[语音服务博客](https://azure.microsoft.com/blog/tag/speech-service/)。
 
 ## <a name="release-notes"></a>发行说明
 
-推出新版本后，将立即更新[发行说明](https://aka.ms/csspeech/whatsnew)。 说明包含有关新功能、改进和 bug 修复的信息。
+推出新版本后，将立即更新[发行说明](https://aka.ms/csspeech/whatsnew)。 注释包含有关新功能、改进和 bug 修复的信息。
 
 ## <a name="search"></a>搜索
 
@@ -76,7 +76,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 * [语音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [语音设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
+您可以创建 bug 报告和功能请求，或提出一般问题并分享最佳实践。 对于 bug 报告，请遵循所提供的模板：
 
 **描述 bug**
 
@@ -105,7 +105,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 **其他上下文**
 
  - 错误消息、日志信息、堆栈跟踪、...
- - 如果你针对特定的服务交互报告了一个错误，请报告所报告的事件的 SessionId 和时间（包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
+ - 如果针对特定服务交互报告错误，则报告所报告事件的 SessionId 和 time （包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
  - 任何其他附加信息
 
 

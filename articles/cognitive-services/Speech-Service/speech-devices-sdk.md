@@ -1,7 +1,7 @@
 ---
 title: 关于语音设备 SDK-语音服务
 titleSuffix: Azure Cognitive Services
-description: 语音设备 SDK 入门。 “语音服务”适用于多种设备和音频源。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
+description: 语音设备 SDK 入门。 语音服务适用于各种设备和音频源。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072384"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815529"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 
-[语音服务](overview.md)适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
+[语音服务](overview.md)适用于各种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 
 语音设备 SDK 有助于：
 
@@ -37,16 +37,16 @@ ms.locfileid: "74072384"
 
 ### <a name="android"></a>Android
 
-对于 Android 设备，请下载最新版本的 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
+对于 Android 设备，请下载最新版本的[Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
 
 ### <a name="windows"></a>Windows
 
-对于 Windows，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
+对于 Windows，示例应用程序是以跨平台的 Java 应用程序的形式提供的。 下载最新版本的[JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Windows 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 ### <a name="linux"></a>Linux
 
-对于 Linux，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
+对于 Linux，示例应用程序是以跨平台的 Java 应用程序的形式提供的。 下载最新版本的[JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 ## <a name="next-steps"></a>后续步骤

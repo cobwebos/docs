@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085312"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805682"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>带有通知的 Azure 托管应用程序
 
@@ -75,9 +75,9 @@ PUT | 已接受 | 在应用程序放置后，已成功创建并预测了托管�
 PUT | 已成功 | 完成托管应用程序的完全预配后成功完成。
 PUT | 已失败 | 在任何时候都不能设置应用程序实例。
 PATCH | 已成功 | 在托管应用程序实例上成功修补后，以更新标记、jit 访问策略或托管标识。
-删除 | 正在删除 | 一旦用户启动了托管应用程序实例的删除。
-删除 | Deleted | 在完全和成功删除托管应用程序之后。
-删除 | 已失败 | 在取消预配过程中的任何错误之后阻止删除。
+DELETE | 正在删除 | 一旦用户启动了托管应用程序实例的删除。
+DELETE | 已删除 | 在完全和成功删除托管应用程序之后。
+DELETE | 已失败 | 在取消预配过程中的任何错误之后阻止删除。
 ## <a name="notification-schema"></a>通知架构
 当您加速 webhook 终结点以处理通知时，您需要分析有效负载以获取重要属性，然后对通知进行操作。 服务目录和 Marketplace 托管应用程序通知提供很多与下面所述的小差异相同的属性。
 
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -172,19 +178,20 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-参数 | 说明
+参数 | 描述
 ---|---
 eventType | 触发通知的事件类型。 （例如 "PUT"、"PATCH"、"DELETE"）
 applicationId | 触发通知的托管应用程序的完全限定的资源标识符。 
 EventTime | 触发通知的事件的时间戳。 （UTC ISO 8601 格式的日期和时间。）
-ProvisioningState | 托管应用程序实例的设置状态。 （例如 "成功"、"失败"、"删除"、"已删除"）
+provisioningState | 托管应用程序实例的设置状态。 （例如 "成功"、"失败"、"删除"、"已删除"）
+billingDetails | 托管应用程序实例的计费详细信息。 包含可用于在 marketplace 中查询使用情况详细信息的 resourceUsageId。
 error | *仅在 ProvisioningState 失败时指定*。 包含错误代码、消息以及导致失败的问题的详细信息。
 applicationDefinitionId | *仅为服务目录托管应用程序指定*。 表示为其预配了托管应用程序实例的应用程序定义的完全限定的资源标识符。
 计划 | *仅为 Marketplace 托管应用程序指定*。 表示托管应用程序实例的发布者、产品/服务、sku 和版本。
 
 ## <a name="endpoint-authentication"></a>终结点身份验证
 保护 webhook 终结点并确保通知的真实性：
-- 在 https://your-endpoint.com?sig=Guid的 webhook URI 的顶层提供查询参数。 对于每个通知，请快速检查查询参数 `sig` 是否具有预期的值 `Guid`。
+- 在 https://your-endpoint.com?sig=Guid 的 webhook URI 的顶层提供查询参数。 对于每个通知，请快速检查查询参数 `sig` 是否具有预期的值 `Guid`。
 - 使用 applicationId 发出对托管应用程序实例的 GET。 验证 provisioningState 是否符合通知的 provisioningState，以确保一致性。
 
 ## <a name="notification-retries"></a>通知重试次数

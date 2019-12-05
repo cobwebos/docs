@@ -1,5 +1,5 @@
 ---
-title: 关于语音 SDK - 语音服务
+title: 关于语音 SDK-语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 本文提供了有关适用于 Windows、Linux 和 Android 的 SDK 的其他详细信息。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468778"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819122"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
-使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发支持语音的软件更为容易。 目前，Sdk 提供对**语音到文本**、**文本到语音**、**语音翻译**、**意向识别**和**机器人框架的直接线路语音通道**的访问。 有关功能和支持平台的一般概述，请参阅文档[进入页](https://aka.ms/csspeech)。
+使用语音软件开发工具包 (SDK)，应用程序可以访问语音服务的功能，这使得开发启用了语音的软件更为容易。 目前，Sdk 提供对**语音到文本**、**文本到语音**、**语音翻译**、**意向识别**和**机器人框架的直接线路语音通道**的访问。 有关功能和支持的平台的一般概述，请参阅文档[条目页](https://aka.ms/csspeech)。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "73468778"
 > - x64 和 ARM64 for Java
 > - x64 for .NET Core 和 Python
 
-通过运行以下 shell 命令确保你安装了必需的库：
+请确保已通过运行以下 shell 命令来安装所需的库：
 
 在 Ubuntu 上：
 
@@ -69,9 +69,9 @@ sudo apt-get install libssl1.0.2 libasound2
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到你选择的一个目录中。 下表显示了 SDK 文件夹结构：
 
-  |路径|说明|
+  |路径|描述|
   |-|-|
-  |`license.md`|许可证|
+  |`license.md`|许可|
   |`ThirdPartyNotices.md`|第三方声明|
   |`include`|用于 C 和 C++ 的头文件|
   |`lib/x64`|用于与应用程序链接的本机 x64 库|
@@ -81,7 +81,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `https://csspeechstorage.blob.core.windows.net/maven/` 托管在 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 的 Maven 存储库中。
+将适用于 Android 的 Java SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
 
 若要从你的 Android Studio 项目中使用该包，请进行以下更改：
 

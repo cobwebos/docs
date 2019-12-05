@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 0bcfd40510352abc9e64782255d3c8349b8ad87e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f4200a0a43507a335f0e4e59e5a794d2bc4d6142
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072419"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816548"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "74072419"
 
 认知服务语音 SDK 在 Windows 10 和 Windows Server 2016 上进行测试。
 
-认知服务语音 SDK 要求系统上安装有 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 可在此处下载最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 安装程序：
+认知服务语音 SDK 需要在系统上安装[适用于 Visual Studio 2019 的 Microsoft visual C++可再发行组件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 可在此处下载最新版 `Microsoft Visual C++ Redistributable for Visual Studio 2019` 安装程序：
 
 - [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
@@ -45,14 +45,14 @@ ms.locfileid: "74072419"
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | 对于托管部署是必需的                      |
 
 > [!NOTE]
-> 从版本 1.3.0 开始，不再需要 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` 文件（在以前的版本中提供）。 此功能现在集成到核心 SDK 中。
+> 从 release 1.3.0 开始，不再需要文件 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` （在以前的版本中随附）。 此功能现已在核心 SDK 中集成。
 
 > [!NOTE]
-> 对于 Windows 窗体应用 (.NET Framework) C# 项目，请确保项目的部署设置中包含这些库。 你可以在 `Properties -> Publish Section` 下查看此内容。 单击 "`Application Files`" 按钮，然后从滚动列表中查找相应的库。 请确保将值设置为 `Included`。 Visual Studio 将在发布/部署项目时包含该文件。
+> 对于 Windows 窗体应用（.NET Framework） C#项目，请确保项目的部署设置中包含这些库。 可以在 `Properties -> Publish Section`下检查此情况。 单击 "`Application Files`" 按钮，然后从滚动列表中查找相应的库。 请确保将值设置为 `Included`。 发布/部署项目时，Visual Studio 将包括该文件。
 
 ## <a name="linux"></a>Linux
 
-语音 SDK 目前支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 发行版。
+语音 SDK 目前支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 分发版。
 对于本机应用程序，需要交付语音 SDK 库 `libMicrosoft.CognitiveServices.Speech.core.so`。
 请确保选择与应用程序匹配的版本（x86、x64）。 根据 Linux 版本，可能还需要包括以下依赖项：
 

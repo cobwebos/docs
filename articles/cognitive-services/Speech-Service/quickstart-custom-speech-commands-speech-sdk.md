@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: da90e1fb8ab6241cbe0bfa583e1b4a3fbe338ad8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111153"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812962"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -26,14 +26,14 @@ ms.locfileid: "74111153"
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 id）
 - 使用语音 SDK 创建一个客户端应用，以允许你与自定义命令应用程序对话
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在前面的快速入门中执行此操作：
 
 - [快速入门：创建自定义命令（预览）](./quickstart-custom-speech-commands-create-new.md)
 - [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
 
-还需要：
+您还会需要：
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)

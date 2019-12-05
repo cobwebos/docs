@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110157"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805886"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用的语音 SDK 从语音识别意向C#
 
@@ -35,7 +35,7 @@ ms.locfileid: "74110157"
 > - 从文件中识别语音
 > - 使用异步的事件驱动的连续识别
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始本指南之前，请确保你具有以下各项：
 
@@ -48,7 +48,7 @@ LUIS 与语音服务集成，可从语音中识别意向。 不需要语音服�
 
 LUIS 使用三种密钥：
 
-| 密钥类型  | 目的                                               |
+| 密钥类型  | 用途                                               |
 | --------- | ----------------------------------------------------- |
 | 创作 | 用于以编程方式创建和修改 LUIS 应用 |
 | 入门   | 仅允许使用纯文本测试 LUIS 应用程序   |
@@ -115,9 +115,9 @@ LUIS 使用三种密钥：
 
    | 占位符 | 替换为 |
    | ----------- | ------------ |
-   | `YourLanguageUnderstandingSubscriptionKey` | LUIS 终结点密钥。 同样，必须从 Azure 仪表板而不是“初学者密钥”获取此项。 可以在 **LUIS 门户**中应用的“密钥和终结点”页上（在“管理”下）找到此密钥。[](https://www.luis.ai/home) |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS 终结点密钥。 同样，必须从 Azure 仪表板而不是“初学者密钥”获取此项。 可以在 [LUIS 门户](https://www.luis.ai/home)中应用的“密钥和终结点”页上（在“管理”下）找到此密钥。 |
    | `YourLanguageUnderstandingServiceRegion` | LUIS 订阅所在区域的短标识符，例如 `westus` 表示“美国西部”。 请参阅[区域](regions.md)。 |
-   | `YourLanguageUnderstandingAppId` | LUIS 应用 ID。 可以在 **LUIS 门户**中应用的“设置”页上找到此 ID。[](https://www.luis.ai/home) |
+   | `YourLanguageUnderstandingAppId` | LUIS 应用 ID。 可以在 [LUIS 门户](https://www.luis.ai/home)中应用的“设置”页上找到此 ID。 |
 
 进行这些更改后，可以生成（**ctrl + Shift + B**）并运行应用程序（**F5**）。 出现提示时，请尝试对着电脑麦克风说出“关灯”。 应用程序会在控制台窗口中显示结果。
 
@@ -128,7 +128,7 @@ LUIS 使用三种密钥：
 首先，需要基于 LUIS 终结点密钥和区域创建语音配置。 可以使用语音配置来创建语音 SDK 的各种功能的识别器。 语音配置提供多种方式用于指定所要使用的订阅；此处我们使用了采用订阅密钥和区域的 `FromSubscription`。
 
 > [!NOTE]
-> 请使用 LUIS 订阅而不是语音服务订阅的密钥和区域。
+> 使用 LUIS 订阅的密钥和区域，而不是语音服务订阅。
 
 接下来，使用 `new IntentRecognizer(config)` 创建意向识别器。 由于配置已知道要使用哪个订阅，因此，在创建识别器时无需再次指定订阅密钥和终结点。
 
@@ -138,12 +138,12 @@ LUIS 使用三种密钥：
 
 若要添加意向，必须提供三个参数：LUIS 模型（已创建并命名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
 
-| `AddIntent()`&nbsp;参数 | 目的 |
+| `AddIntent()`&nbsp;参数 | 用途 |
 | --------------------------- | ------- |
 | `intentName` | LUIS 应用中定义的意向的名称。 此值必须与 LUIS 意向名称完全匹配。 |
 | `intentID` | 语音 SDK 分配给已识别的意向的 ID。 此值可以是任何内容；不需要对应于 LUIS 应用中定义的意向名称。 例如，如果多个意向由相同的代码处理，则可以对这些意向使用相同的 ID。 |
 
-家庭自动化 LUIS 应用具有两个意向：一个意向是打开设备，另一个意向是关闭设备。 以下代码行将这些意向添加到识别器；请将 `AddIntent` 方法中的三个 `RecognizeIntentAsync()` 代码行替换为以下代码。
+家庭自动化 LUIS 应用具有两个意向：一个意向是打开设备，另一个意向是关闭设备。 以下代码行将这些意向添加到识别器；请将 `RecognizeIntentAsync()` 方法中的三个 `AddIntent` 代码行替换为以下代码。
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");

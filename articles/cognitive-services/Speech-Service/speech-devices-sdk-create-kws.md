@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184830"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815290"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>使用语音服务创建自定义关键字
 
@@ -50,7 +50,7 @@ ms.locfileid: "74184830"
 
 1. 转到[Speech Studio](https://aka.ms/sdsdk-speechportal)并**登录**，如果还没有语音订阅，请选择 "[**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
 
-1. 在 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页上，键入所选关键字，并单击 "**添加关键字**"。 我们有一些[准则](#choose-an-effective-keyword)，可以帮助你选择有效的关键字。 目前仅支持 en-us 语言。
+1. 在 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页上，键入所选关键字，并单击 "**添加关键字**"。 我们有一些[指导原则](#choose-an-effective-keyword)来帮助选择有效的关键字。 目前仅支持 en-us 语言。
 
     ![输入关键字](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
 

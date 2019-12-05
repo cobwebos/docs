@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: edee0e2efadd8e92ebf3533f0716c82029a0c680
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791703"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806960"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
-常规用途 v2 存储帐户支持最新的 Azure 存储功能，并合并了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 一般-目的 v2 帐户支持 "热"、"冷" 或 "存档" 之间的 "热"、"冷" 和 "blob" 级别分层的默认帐户访问层
+常规用途 v2 存储帐户支持最新的 Azure 存储功能，并合并了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 常规用途 v2 帐户支持 "热"、"冷" 或 "存档" 之间的 "热"、"冷" 和 "blob" 级别分层的默认帐户访问层。
 
 从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 存储帐户很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。
 
@@ -59,11 +59,11 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>指定 Blob 数据的访问层
 
-常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 Blob。 升级到常规用途 v2 存储帐户时，可以指定 blob 数据的访问层。
+常规用途 v2 帐户支持所有 Azure 存储服务和数据对象，但访问层仅适用于 Blob 存储中的块 blob。 升级到常规用途 v2 存储帐户时，可以指定 "热" 或 "冷" 的默认帐户访问层，这表示将上传 blob 数据的默认层，就像未指定各个 blob 访问层参数一样。
 
-有了访问层，就可以根据预期的使用模式选择最经济有效的存储。 块 Blob 可以存储在热层、冷层或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热存储层、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
+使用 Blob 访问层可以根据预期的使用模式选择最经济高效的存储。 块 blob 可以存储在热、冷或存档层中。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热存储层、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
-默认情况下，将在热访问层中创建新的存储帐户，并将常规用途 v1 存储帐户升级到热访问层。 若要探索将哪个访问层用于升级后数据，请考虑一下你的方案。 迁移到常规用途 v2 帐户有两种典型的用户方案：
+默认情况下，会在 "热访问" 层中创建新的存储帐户，并将常规用途 v1 存储帐户升级到 "热" 或 "冷" 帐户层。 如果升级时未指定帐户访问层，则默认情况下，它将升级到 "热"。 如果要探索用于升级的访问层，请考虑当前的数据使用方案。 迁移到常规用途 v2 帐户有两种典型的用户方案：
 
 * 你有一个现有的通用 v1 存储帐户，并想要评估到常规用途 v2 存储帐户的升级，并为 blob 数据提供适当的存储访问层。
 * 你已决定使用常规用途 v2 存储帐户，或者已经有了一个，并想要评估是否应使用适用于 blob 数据的热或冷存储访问层。

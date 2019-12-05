@@ -1,7 +1,7 @@
 ---
 title: 实时对话脚本（预览）-语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何通过语音 SDK 使用实时对话。 适用于 C++、C# 和 Java。
+description: 了解如何通过语音 SDK 使用实时对话。 适用于C++、 C#和 Java。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608048"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805801"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>实时对话脚本（预览）
 
@@ -35,7 +35,7 @@ ms.locfileid: "73608048"
 - [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
 - [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 语音服务订阅。 如果你没有[语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)，则可以获取它。
 

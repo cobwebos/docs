@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802538"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806107"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 
@@ -34,7 +34,7 @@ ms.locfileid: "70802538"
 
 接下来，选择“创建”。 此操作会将您返回到 "**部署**" 页。 该表现在包含对应于自定义终结点的项。 终结点的状态显示其当前状态。 使用自定义模型来实例化新的终结点最多可能需要30分钟。 部署状态更改为 "**完成**" 时，终结点可供使用。
 
-部署终结点后，其名称将以链接的形式显示。 单击此链接可显示特定于该终结点的信息，例如终结点密钥、终结点 URL 和示例代码。
+部署终结点后，终结点名称将显示为链接。 单击此链接可显示特定于你的终结点的信息，例如终结点密钥、终结点 URL 和示例代码。
 
 ## <a name="view-logging-data"></a>查看日志记录数据
 
