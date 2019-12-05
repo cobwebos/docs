@@ -1,7 +1,7 @@
 ---
-title: 发行说明 - 语音服务
+title: 发行说明-语音服务
 titleSuffix: Azure Cognitive Services
-description: 参阅语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
+description: 请参阅语音服务的运行中的功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
 author: BrianMouncer
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: f38e23f0648d802ba7b09391d6f6bbd0c093d989
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888175"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816601"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -81,51 +81,51 @@ ms.locfileid: "73888175"
 
 **示例**
 
-- UWP 和 Unity 上的文本转语音快速入门示例
-- iOS 上的 Swift 快速入门示例
-- 语音和意向识别及翻译 Unity 示例
+- UWP 和 Unity 上的文本到语音的快速入门示例
+- IOS 上的 Swift 快速入门示例
+- 用于语音 & 意向识别和翻译的 Unity 示例
 - 更新了 DialogServiceConnector 的快速入门示例
 
 **改进 / 更改**
 
-- 对话命名空间：
+- 对话框命名空间：
   - SpeechBotConnector 已重命名为 DialogServiceConnector
   - BotConfig 已重命名为 DialogServiceConfig
-  - BotConfig::FromChannelSecret() 已重新映射到 DialogServiceConfig::FromBotSecret()
-  - 重命名后，仍旧支持所有现有的 Direct Line 语音客户端
-- 更新了 TTS REST 适配器以支持代理和持久连接
-- 改写了传递无效区域时出现的错误消息
-- Swift/Objective-C：
-  - 改进了错误报告：可能导致错误的方法现在存在于两个版本中：一个用于公开用于错误处理的 `NSError` 对象，另一个则引发异常。 前者向 Swift 公开。 此项更改需要对现有的 Swift 代码进行改编。
-  - 改进了事件处理
+  - BotConfig：： FromChannelSecret （）已重新映射到 DialogServiceConfig：： FromBotSecret （）
+  - 重命名后继续支持所有现有的直接连线语音客户端
+- 更新 TTS REST 适配器以支持代理，永久连接
+- 如果传递了无效的区域，则改进错误消息
+- Swift/目标-C：
+  - 改进了错误报告：可能导致错误的方法现在存在于两个版本中：一个用于公开用于错误处理的 `NSError` 对象，另一个则引发异常。 前者向 Swift 公开。 此更改需要适应现有的 Swift 代码。
+  - 改进事件处理
 
 **Bug 修复**
 
-- TTS 的修复：SpeakTextAsync 不等到音频完成渲染就会提前返回
-- 修复了 C# 中的封送字符串，以支持完整语言
-- 修复了示例中的 .NET Core 应用问题，以使用 net461 目标框架加载核心库
-- 修复了示例中的偶发性问题，以将本机库部署到输出文件夹
-- 修复了 Web 套接字可靠关闭的问题
-- 修复了在 Linux 负载极高的情况下打开连接时可能发生崩溃的问题
-- 修复了 macOS 框架捆绑包中缺少元数据的问题
-- 修复了 Windows 上的 `pip install --user` 问题
+- TTS 的修复： SpeakTextAsync 的未来返回，无需等到音频完成呈现
+- 修复中C#的封送字符串以启用完整语言支持
+- 修复 .NET core 应用问题，以在示例中加载包含 net461 目标框架的核心库
+- 解决在示例中将本机库部署到输出文件夹的偶尔问题
+- 修补 web socket 可靠地关闭
+- 在 Linux 上的负载很重的情况下打开连接时修复可能的故障
+- 修复框架捆绑包中缺少的元数据 macOS
+- 解决 Windows `pip install --user` 的问题
 
-## <a name="speech-sdk-151"></a>语音 SDK 1.5.1
+## <a name="speech-sdk-151"></a>Speech SDK 1.5。1
 
-这是一个 Bug 修复版本，只影响本机/托管 SDK。 它不影响 SDK 的 JavaScript 版本。
+这是一个 bug 修复版本，仅影响本机/托管的 SDK。 它不会影响 SDK 的 JavaScript 版本。
 
 **Bug 修复**
 
-- 修复了 FromSubscription 与对话听录一起使用时出现的问题。
+- 解决与会话脚本一起使用时的 FromSubscription。
 - 修复关键字发现中的 bug 以获取语音助手。
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0 _： 2019-可能发布
 
 **新功能**
 
-- 关键字发现（KWS）现在适用于 Windows 和 Linux。 KWS 功能可能适用于任何麦克风类型，不过，官方的 KWS 支持目前仅限于 Azure Kinect DK 硬件或语音设备 SDK 中的麦克风阵列。
-- 短语提示功能通过 SDK 提供。 有关详细信息，请参阅[此文](how-to-phrase-lists.md)。
-- 对话听录功能通过 SDK 提供。 参阅[此处](conversation-transcription-service.md)。
+- 关键字发现（KWS）现在适用于 Windows 和 Linux。 KWS 功能可能适用于任何麦克风类型，但官方 KWS 支持目前仅限于在 Azure Kinect 深色硬件或语音设备 SDK 中找到的麦克风阵列。
+- 短语提示功能可通过 SDK 获得。 有关详细信息，请参阅[此文](how-to-phrase-lists.md)。
+- 会话脚本功能可通过 SDK 获得。 参阅[此处](conversation-transcription-service.md)。
 - 添加对使用语音助手的语音助手的支持。
 
 **示例**
@@ -134,68 +134,68 @@ ms.locfileid: "73888175"
 
 **改进 / 更改**
 
-- 添加了各种识别器属性，以调整服务行为或服务结果（例如屏蔽猥亵内容等）。
-- 现在，即使你创建了识别器 `FromEndpoint`，也能通过标准配置属性来配置识别器。
-- Objective-C：已将 `OutputFormat` 属性添加到 SPXSpeechConfiguration。
-- SDK 现在支持将 Debian 9 用作 Linux 分发版。
+- 添加了各种识别器属性以调整服务行为或服务结果（如屏蔽猥亵和其他）。
+- 你现在可以通过标准配置属性配置识别器，即使 `FromEndpoint`创建了识别器。
+- 目标-C： `OutputFormat` 属性已添加到 SPXSpeechConfiguration。
+- SDK 现在支持 Debian 9 作为 Linux 分发版。
 
 **Bug 修复**
 
-- 修复了文本转语音中过早销毁讲述人资源的问题。
+- 修复了在文本到语音转换中，发言人资源销毁过早的问题。
 
-## <a name="speech-sdk-142"></a>语音 SDK 1.4.2
+## <a name="speech-sdk-142"></a>Speech SDK 1.4。2
 
-这是一个 Bug 修复版本，只影响本机/托管 SDK。 它不影响 SDK 的 JavaScript 版本。
+这是一个 bug 修复版本，仅影响本机/托管的 SDK。 它不会影响 SDK 的 JavaScript 版本。
 
-## <a name="speech-sdk-141"></a>语音 SDK 1.4.1
+## <a name="speech-sdk-141"></a>Speech SDK 1.4。1
 
 这是一个仅限 JavaScript 的版本。 未增加任何功能。 进行了以下修复：
 
-- 阻止 Web 包加载 https-proxy-agent。
+- 阻止 web 包加载 https 代理。
 
 ## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0： 2019-4 月发行版
 
 **新功能**
 
-- SDK 现在支持 beta 版本的文本转语音服务。 Windows 和 Linux 桌面版中的 C++ 和 C# 支持该版本。 有关详细信息，请查看[文本转语音概述](text-to-speech.md#get-started-with-text-to-speech)。
-- SDK 现在支持将 MP3 和 Opus/OGG 音频文件用作流输入文件。 此功能只能通过 C++ 和 C# 在 Linux 上使用，目前为 beta 版（更多详细信息请参见[此处](how-to-use-codec-compressed-audio-input-streams.md)）。
-- 适用于 Java、.NET Core C++和 Objective-C 的语音 SDK 已获得 macOS 支持。 macOS 的 Objective-C 支持目前以 beta 版提供。
+- SDK 现在支持使用文本到语音服务作为 beta 版本。 它在C++和C#的 Windows 和 Linux 桌面上都受支持。 有关详细信息，请查看[文本到语音转换概述](text-to-speech.md#get-started-with-text-to-speech)。
+- SDK 现在支持 MP3 和 Opus/OGG 音频文件作为流输入文件。 此功能仅适用于C++和C#中的 Linux，当前为 beta 版（更多[详细信息）](how-to-use-codec-compressed-audio-input-streams.md)。
+- Speech SDK for Java、.NET core C++和目标-C 已获得 macOS 支持。 针对 macOS 的目标-C 支持当前为 beta 版本。
 - iOS：适用于 iOS 的语音 SDK （目标-C）现在也作为 CocoaPod 发布。
 - JavaScript：支持非默认麦克风作为输入设备。
 - JavaScript：针对 node.js 的代理支持。
 
 **示例**
 
-- 添加了有关在 macOS 上的 C++ 和 Objective-C 中使用语音 SDK 的示例。
-- 已添加用于演示文本转语音服务用法的示例。
+- 添加了在 macOS 上将语音C++ SDK 与和结合使用的示例。
+- 演示如何添加文本到语音服务的示例。
 
 **改进 / 更改**
 
 - Python：现在，通过 `properties` 属性公开了识别结果的附加属性。
-- 若要获得更多开发和调试支持，可将 SDK 日志记录和诊断信息重定向到日志文件中（更多详细信息请参见[此处](how-to-use-logging.md)）。
+- 若要获得更多的开发和调试支持，可将 SDK 日志记录和诊断信息重定向到日志文件中（更多详细[信息）。](how-to-use-logging.md)
 - JavaScript：提高音频处理性能。
 
 **Bug 修复**
 
 - Mac/iOS：在无法建立到语音服务的连接时，导致长时间等待的 bug 已修复。
-- Python：改进了 Python 回调中的参数的错误处理。
+- Python：改进 Python 回调中的参数的错误处理。
 - JavaScript：修复了 RequestSession 上语音的错误状态报告。
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1： 2019-2 月刷新
 
-这是一个 Bug 修复版本，只影响本机/托管 SDK。 它不影响 SDK 的 JavaScript 版本。
+这是一个 bug 修复版本，仅影响本机/托管的 SDK。 它不会影响 SDK 的 JavaScript 版本。
 
 **Bug 修复**
 
-- 修复了使用麦克风输入时出现的内存泄漏问题。 基于流的输入或文件输入不受影响。
+- 修复了使用麦克风输入时的内存泄漏。 基于流或文件输入不受影响。
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0： 2019-2 月发行版
 
 **新功能**
 
-- 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这样，便可以将音频数据从非默认麦克风流式传输到语音服务。 有关详细信息，请参阅介绍[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 此功能在 JavaScript 中尚不可用。
-- 语音 SDK 目前在 beta 版本中支持 Unity。 请通过 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中的问题部分来提供反馈。 此版本支持在 Windows x86 和 x64（桌面或通用 Windows 平台应用程序）以及 Android（ARM32/64，x86）上使用 Unity。 [Unity 快速入门](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)中提供了更多信息。
-- 不再需要 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` 文件（在以前的版本中提供）。 此功能现在集成到核心 SDK 中。
+- 语音 SDK 支持通过 AudioConfig 类来选择输入麦克风。 这允许你从非默认麦克风将音频数据流式传输到语音服务。 有关详细信息，请参阅说明[音频输入设备选择](how-to-select-audio-input-devices.md)的文档。 此功能尚不能通过 JavaScript 提供。
+- 语音 SDK 目前在 beta 版本中支持 Unity。 通过[GitHub 示例存储库](https://aka.ms/csspeech/samples)中的问题部分提供反馈。 此版本支持在 Windows x86 和 x64（桌面或通用 Windows 平台应用程序）以及 Android（ARM32/64，x86）上使用 Unity。 [Unity 快速入门](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)中提供了更多信息。
+- 不再需要文件 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` （在以前的版本中随附）。 此功能现已集成到 core SDK。
 
 **示例**
 
@@ -224,12 +224,12 @@ ms.locfileid: "73888175"
   - 首次支持并实现了短语提示。
   - 随服务 JSON 返回属性集合以用于识别
 - Windows DLL 现在包含一个版本资源。
-- 如果创建识别器 `FromEndpoint`，则可将参数直接添加到终结点 URL。 使用 `FromEndpoint` 时，无法通过标准的配置属性来配置识别器。
+- 如果创建了一个识别器 `FromEndpoint` 可以直接将参数添加到终结点 URL。 使用 `FromEndpoint` 无法通过标准配置属性配置识别器。
 
 **Bug 修复**
 
 - 过去无法正确处理空的代理用户名和代理密码。 在此版本中，如果将代理用户名和代理密码设置为空字符串，则在连接到代理时不会提交它们。
-- 对于某些语言&nbsp;/ 环境，由 SDK 创建的 SessionId 并非总是真正随机的。 已添加了随机生成器初始化来修复此问题。
+- 对于某些语言&nbsp;/ 环境，由 SDK 创建的 SessionId 并非总是真正随机的。 添加了随机生成器初始化，以解决此问题。
 - 改进了对授权令牌的处理。 如果希望使用授权令牌，请在 SpeechConfig 中进行指定并将订阅密钥保留为空。 然后，像往常一样创建识别器。
 - 过去，在某些情况下，连接对象不能正确释放。 现在已修复此问题。
 - JavaScript 示例已修复，在 Safari 上也支持用于翻译合成的音频输出。
@@ -249,14 +249,14 @@ ms.locfileid: "73888175"
 **新功能**
 
 - Python
-  - 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请参阅此文](quickstart-python.md)。
+  - 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请参阅此处] （快速入门-python.md）。
 - JavaScript
   - 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
   - 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
   - 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
 - 连接对象
-  - 可以从识别器中访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
-    （此功能在 JavaScript 和 Python 中尚不可用。）
+  - 从识别器，你可以访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
+    （此功能尚不适用于 JavaScript 和 Python。）
 - 支持 Ubuntu 18.04。
 - Android
   - 在生成 APK 期间启用了 ProGuard 支持。
@@ -264,7 +264,7 @@ ms.locfileid: "73888175"
 **改进**
 
 - 改进了内部线程的使用，减少了线程、锁和互斥的数量。
-- 改进了错误报告 / 信息。 在某些情况下，错误消息没有完全传播出去。
+- 改进了错误报告 / 信息。 在某些情况下，错误消息尚未全部传播出去。
 - 更新了 JavaScript 中的开发依赖项来使用最新模块。
 
 **Bug 修复**
@@ -273,7 +273,7 @@ ms.locfileid: "73888175"
 - 在某些情况下，异常会被泄露。
 - 修复了翻译事件参数中的内存泄漏。
 - 修复了长时间运行的会话中与重新连接相关的锁定问题。
-- 修复了可能会导致失败的翻译缺少最终结果的问题。
+- 修复了可能导致转换失败的最终结果的问题。
 - C#：如果在主线程中未等待异步操作，则可能会在异步任务完成之前释放识别器。
 - Java：修复了导致 Java VM 崩溃的问题。
 - 目标-C：固定枚举映射;返回了 RecognizedIntent 而不是 RecognizingIntent。
@@ -282,7 +282,7 @@ ms.locfileid: "73888175"
 
 **示例**
 
-- 更新并修复了几个示例（例如，翻译的输出语音，等等）。
+- 更新并修复了多个示例（例如，用于转换的输出声音，等等）。
 - 在[示例存储库](https://aka.ms/csspeech/samples)中添加了 Node.js 示例。
 
 ## <a name="speech-sdk-110"></a>语音 SDK 1.1.0
@@ -301,7 +301,7 @@ ms.locfileid: "73888175"
 
 **Bug 修复**
 
-- 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为已取消事件。
+- 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为取消事件。
 - 修复了属性管理中的内存泄漏。
 - 修复了音频输入文件可能会导致识别器发生故障的 bug。
 - 修复了在会话停止事件后无法检索事件的 bug。
@@ -339,7 +339,7 @@ ms.locfileid: "73888175"
 
 **重大更改**
 
-- 该版本中推出了大量重大更改。
+- 在此版本中，引入了大量的重大更改。
   有关详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>认知服务语音 SDK 0.6.0：2018 年 8 月版本
@@ -419,7 +419,7 @@ ms.locfileid: "73888175"
 
 **重大更改**
 
-- 将 C# 中的 `SpeechRecognitionResult.Text` 更改为 `SpeechRecognitionResult.RecognizedText`。
+- 将 C# 中的 `SpeechRecognitionResult.RecognizedText` 更改为 `SpeechRecognitionResult.Text`。
 
 **Bug 修复**
 

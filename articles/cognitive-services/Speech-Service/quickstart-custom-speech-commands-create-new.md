@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111369"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815818"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>快速入门：创建自定义命令（预览）
 
 本文介绍如何创建和测试托管自定义命令应用程序。
 该应用程序将识别查询文本，例如 "打开电视"，并使用简单消息 "正常，打开电视" 来做出响应。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 语音订阅。 [免费试用语音服务](~/articles/cognitive-services/speech-service/get-started.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74111369"
 
 - [语言理解](https://www.luis.ai/home)（LUIS）创作密钥：
   1. 打开 web 浏览器并导航到[Azure 门户](https://portal.azure.com)
-  1. 选择“创建资源”
+  1. 选择创建资源
   1. 搜索并选择[语言理解](https://aka.ms/sc-luis-all)
   1. 选择创建选项中的创作
   1. 部署资源后，请从 "快速启动" 或 "密钥" 部分中转到资源并复制该密钥。
@@ -78,10 +78,10 @@ ms.locfileid: "74111369"
 
 命令是一组：
 
-| 组            | 说明                                                                                                                 |
+| 组            | 描述                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 例句 | 示例最谈话用户可以说触发此命令                                                                 |
-| Parameters       | 完成命令所需的信息                                                                                |
+| parameters       | 完成命令所需的信息                                                                                |
 | 完成规则 | 要执行以执行命令的操作。 例如，要响应用户或与其他 web 服务通信 |
 | 高级规则   | 用于处理更为具体或复杂的情况的其他规则                                                              |
 
@@ -102,13 +102,13 @@ turn on the tv
 > [!div class="mx-imgBorder"]
 > ![创建完成规则](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-| 设置    | 建议的值                        | 说明                                        |
+| 设置    | 建议的值                        | 描述                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | 规则名称  | "ConfirmationResponse"                 | 描述规则用途的名称          |
-| 条件 | 无                                   | 确定何时可以运行规则的条件    |
+| 条件 | None                                   | 确定何时可以运行规则的条件    |
 | 操作    | SpeechResponse "确定，打开电视" | 规则条件为 true 时要执行的操作 |
 
-## <a name="try-it-out"></a>试用
+## <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为。
 

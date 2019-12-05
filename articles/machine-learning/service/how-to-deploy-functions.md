@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 9fba3221656405f2bf2b1654b43d687f1915cca6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d35f0bbc057c97ed4f8b6429c0573fa6bcf3742f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74542389"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807368"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions （预览版）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -234,7 +234,7 @@ print(blob.location)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何在[函数](https://docs.microsoft.com/azure/azure-functions/functions-create-function-linux-custom-imag)文档中配置函数应用。
+* 了解如何在[函数](/azure/azure-functions/functions-create-function-linux-custom-image)文档中配置函数应用。
 * 了解有关 Blob 存储的详细信息，请参阅[Azure blob 存储绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)。
 * [将模型部署到 Azure App Service](how-to-deploy-app-service.md)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

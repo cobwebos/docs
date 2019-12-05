@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535803"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807402"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -80,7 +80,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **答：** 可用性集或虚拟机规模集中部署的虚拟机具有更新域 (UD) 的概念。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
 
-有关高可用性的详细信息，请参阅[Azure 中虚拟机的可用性](/linux/availability.md)。
+有关高可用性的详细信息，请参阅[Azure 中虚拟机的可用性](./linux/availability.md)。
 
 **问：如何收到有关计划内维护的通知？**
 
@@ -92,7 +92,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **问：有什么方法可以知道虚拟机将受到影响的确切时间？**
 
-**答：** 设置计划时，我们定义了长达几天的时间窗口。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](/linux/scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
+**答：** 设置计划时，我们定义了长达几天的时间窗口。 但是，服务器（和 VM）在此时间窗口内的确切排序是未知的。 想要知道其 VM 确切时间的客户可以使用[计划事件](./linux/scheduled-events.md)并从虚拟机中查询，这样就会在 VM 重启前 15 分钟收到通知。
 
 **问：重新启动虚拟机需要多长时间？**
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ec402cf2c741d88d230e5734485bf9eb0dd1b03
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: c0eafc12f9207ca93651363316c06eeadb7c8436
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381811"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74813184"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -59,7 +59,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 1. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
 1. 通过 RD 网关授予用户访问所请求的网络资源的权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本部分将详细介绍将 Azure MFA 与远程桌面网关集成之前的必备条件。 开始集成之前，必须具备以下先决条件：  
 
@@ -68,7 +68,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 * Windows Server 软件
 * 网络策略和访问服务 (NPS) 角色
 * 将 Azure Active Directory 与本地 Active Directory 同步
-* Azure Active Directory GUID ID
+* Azure Active Directory  GUID ID
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>远程桌面服务 (RDS) 基础结构
 
@@ -95,7 +95,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 要使用 NPS 扩展，本地用户必须与 Azure AD 同步并启用 MFA。 本部分内容假设内部部署用户使用 AD Connect 与 Azure AD 同步。 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory  GUID ID
 
 若要安装 NPS 扩展，需要知道 Azure AD 的 GUID。 下面提供了用于查找 Azure AD 的 GUID 的说明。
 
@@ -233,7 +233,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 ### <a name="verify-connection-request-policies"></a>验证连接请求策略
 
-默认情况下，当将 RD 网关配置为使用中央策略存储进行授权策略连接时，RD 网关配置为将 CAP 请求转发到 NPS 服务器。 安装了 Azure MFA 扩展的 NPS 服务器处理 RADIUS 访问请求。 以下步骤显示如何验证默认连接请求策略。
+默认情况下，当将 RD 网关配置为使用中央策略存储进行授权策略连接时，RD 网关配置为将 CAP 请求转发到 NPS 服务器。 安装了 Azure MFA 扩展的 NPS 服务器处理 RADIUS 访问请求。 以下步骤显示如何验证默认连接请求策略。  
 
 1. 在 RD 网关的“NPS (本地)”控制台中，展开“策略”，然后选择“连接请求策略”。
 1. 双击“TS 网关授权策略”。
@@ -243,6 +243,9 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
    ![配置指定服务器组的身份验证设置](./media/howto-mfa-nps-extension-rdg/image15.png)
 
 1. 单击“取消”。
+
+>[!NOTE]
+> 有关创建连接请求策略的详细信息，请参阅[配置连接请求策略](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy)文档的相关文章。 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>在安装了 NPS 扩展的服务器上配置 NPS
 
@@ -298,7 +301,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 单击 **“确定”** 。 当系统提示查看相应帮助主题时，请单击“否”。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)

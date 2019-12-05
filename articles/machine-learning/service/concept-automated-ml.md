@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 4ed27009a3549757881c84d92b3b29b60ecbfbc1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d8628bd62df650d76b0666b650af88038dbbda1f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790561"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807113"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -23,18 +23,18 @@ ms.locfileid: "74790561"
 
 传统的机器学习模型开发需要大量资源，需要大量的域知识和时间来生成和比较数十个模型。 如果希望 Azure 机器学习使用指定的目标度量值定型和调整模型，请应用自动 ML。 然后，该服务会循环访问与功能选择配对的 ML 算法，其中，每次迭代都会生成一个包含定型分数的模型。 分数越高，模型被视为 "拟合" 数据就越好。
 
-使用自动化机器学习，你将加快获取生产就绪 ML 模型所需的时间，使其更轻松、更高效。
+借助自动化机器学习，将能够轻松高效地缩短获得生产就绪 ML 模型所需的时间。
 
-## <a name="when-to-use-automated-ml"></a>何时使用自动 ML
+## <a name="when-to-use-automated-ml"></a>何时使用自动化 ML
 
-自动 ML 大众化机器学习模型开发过程，并使其用户无论其数据科学知识，都可以识别出任何问题的端到端机器学习管道。
+自动化 ML 可使机器学习模型开发过程大众化，无论用户的数据科学专业知识水平如何，他们都能够针对任何问题确定端到端的机器学习管道。
 
-跨行业的数据科学家、分析人员和开发人员可以使用自动 ML 执行以下操作：
+借助自动化 ML，各个行业的数据科学家、分析人员和开发人员可以实现以下目的：
 
 + 无需大量编程知识即可实现机器学习解决方案
 + 节省时间和资源
 + 利用数据科学最佳做法
-+ 提供灵活的问题解决
++ 提供灵活的问题解决方案
 
 下表列出了常见的自动 ML 用例。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "74790561"
 [欺诈检测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[CPU 性能预测](https://github.com/Azure/MachineLearningNotebooks/blob/37541b10714f9337dbbae721bea494272dc7d151/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) |[需求预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
 [市场营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[材料持续性预测](https://github.com/Azure/MachineLearningNotebooks/blob/37541b10714f9337dbbae721bea494272dc7d151/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)|[销售预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
 
-## <a name="how-automated-ml-works"></a>自动 ML ML 的工作方式
+## <a name="how-automated-ml-works"></a>自动化 ML 的工作原理
 
 使用**Azure 机器学习**，可以使用以下步骤来设计和运行自动 ML 培训试验：
 
@@ -98,7 +98,7 @@ ms.locfileid: "74790561"
 
 + Azure 机器学习 studio：在**配置运行**部分中选择 "**查看特征化设置**" [，并执行以下步骤](how-to-create-portal-experiments.md)。
 
-+ Python SDK：指定[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
++ Python SDK：指定[`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
 
 ## <a name="prevent-over-fitting"></a>阻止过度调整
 
@@ -206,11 +206,11 @@ ms.locfileid: "74790561"
 
 - 使用性能指标，可更好地处理不均衡数据。 例如，F1 分数是精度和召回的加权平均值。 精度度量值分类器的 exactness--低精度表示大量误报--,，而召回度量值为分类器的完整性-低召回表示很多假负。 
 
-## <a name="use-with-onnx-in-c-apps"></a>在应用中C#使用 with ONNX
+## <a name="use-with-onnx-in-c-apps"></a>在 C# 应用中与 ONNX 一起使用
 
 使用 Azure 机器学习，可以使用自动 ML 来构建 Python 模型，并将其转换为 ONNX 格式。 ONNX 运行时支持C#，因此你可以使用在C#应用程序中自动生成的模型，而无需进行无编码或 REST 终结点引入的任何网络延迟。 [在此 Jupyter 笔记本中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-with-onnx/auto-ml-classification-with-onnx.ipynb)试用此流的示例。
 
-## <a name="automated-ml-across-microsoft"></a>跨 Microsoft 自动 ML
+## <a name="automated-ml-across-microsoft"></a>Microsoft 中的自动化 ML
 
 自动 ML 还可用于其他 Microsoft 解决方案，如：
 

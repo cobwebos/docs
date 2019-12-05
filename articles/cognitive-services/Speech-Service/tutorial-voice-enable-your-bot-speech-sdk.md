@@ -1,5 +1,5 @@
 ---
-title: 教程：使用语音 SDK 语音启用机器人
+title: 教程：语音启用机器人使用语音 SDK-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将使用 Microsoft Bot Framework 创建一个回显机器人，将其部署到 Azure，并将其注册到机器人框架直接线路语音通道。 然后，你将配置一个适用于 Windows 的示例客户端应用程序，该应用程序可让你与机器人联系，并听到它回复你。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836969"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815205"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -39,7 +39,7 @@ ms.locfileid: "73836969"
 ![关系图-标记](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "语音通道流")
 
 > [!NOTE]
-> 本教程中的步骤不需要付费服务。 作为新的 Azure 用户，你将能够使用免费的 Azure 试用版订阅和免费的语音服务层来完成本教程。
+> 本教程中的步骤不需要付费服务。 作为新的 Azure 用户，你将能够使用免费的 Azure 试用版订阅和语音服务的免费层来完成本教程。
 
 本教程的内容：
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ ms.locfileid: "73836969"
 > * 添加自定义关键字激活
 > * 了解如何更改识别语音的语言
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 下面是完成本教程所需的操作：
 
@@ -71,7 +71,7 @@ ms.locfileid: "73836969"
    * 将 "**订阅**" 设置为 "**免费试用**" （也可以使用现有订阅）。
    * 输入**资源组**的名称。 建议**SpeechEchoBotTutorial**。
    * 从 "**区域**" 下拉箭头中，选择 "**美国西部**"。
-1. 单击 "**查看和创建**"。 应该会看到一个横幅，其中显示了已**通过的验证**。
+1. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已**通过的验证**。
 1. 单击“创建”。 创建资源组可能需要几分钟的时间。
 1. 与稍后在本教程中创建的资源一样，最好将此资源组固定到仪表板以便于访问。 如果要固定此资源组，请单击仪表板右上角的 "固定" 图标。
 
@@ -89,13 +89,13 @@ ms.locfileid: "73836969"
 
 在**美国西部**区域中有一个资源组后，下一步就是为你将在本教程中使用的每项服务创建单独的资源。
 
-### <a name="create-a-speech-services-resource"></a>创建语音服务资源
+### <a name="create-a-speech-service-resource"></a>创建语音服务资源
 
 按照以下说明创建语音资源：
 
 1. 中转到[Azure 门户](https://portal.azure.com)，并从左侧导航栏中选择 "**创建资源**"。
 2. 在搜索栏中，键入 "**语音**"。
-3. 选择 "**语音**"，然后单击 "**创建**"。
+3. 选择“语音”，然后单击“创建”。
 4. 系统将提示你提供一些信息：
    * 为资源指定**名称**。 建议**SpeechEchoBotTutorial**
    * 对于 "**订阅**"，请确保选择 "**免费试用**"。
@@ -107,7 +107,7 @@ ms.locfileid: "73836969"
 
 此时，请检查资源组（**SpeechEchoBotTutorial**）是否有语音资源：
 
-| 名称 | 类型  | LOCATION |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-语音 | 认知服务 | 美国西部 |
 
@@ -125,12 +125,12 @@ ms.locfileid: "73836969"
    * 对于 "**操作系统**"，选择 " **Windows**"。
    * 对于 "**区域**"，选择 "**美国西部**"。
    * 对于 "**定价层**"，请确保选择 "**标准 S1** "。 这应该是默认值。 如果不是这样，请确保将**操作系统**设置为**Windows** ，如上所述。
-5. 单击 "**查看和创建**"。 应该会看到一个横幅，其中显示了已**通过的验证**。
+5. 单击“审阅并创建”。 应该会看到一个横幅，其中显示了已**通过的验证**。
 6. 单击“创建”。 创建资源组可能需要几分钟的时间。
 
 此时，请检查资源组（**SpeechEchoBotTutorial**）是否有两个资源：
 
-| 名称 | 类型  | LOCATION |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | 应用服务计划 | 美国西部 |
 | SpeechEchoBotTutorial-语音 | 认知服务 | 美国西部 |
@@ -207,7 +207,7 @@ ms.locfileid: "73836969"
 1. 默认浏览器应打开并显示一个页面，其中显示 "你的机器人已就绪！"。
 1. 此时，请在 Azure 门户中检查资源组**SpeechEchoBotTutorial** ，并确认有三个资源：
 
-| 名称 | 类型  | LOCATION |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | 应用服务计划 | 美国西部 |
@@ -249,11 +249,11 @@ ms.locfileid: "73836969"
 
 此时，请查看 Azure 门户中的资源组**SpeechEchoBotTutorial** 。 它现在应显示四个资源：
 
-| 名称 | 类型  | LOCATION |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | 应用服务计划 | 美国西部 |
-| SpeechEchoBotTutorial-BotRegistration | 机器人频道注册 | 全局 |
+| SpeechEchoBotTutorial-BotRegistration | 机器人通道注册 | 全球 |
 | SpeechEchoBotTutorial-语音 | 认知服务 | 美国西部 |
 
 > [!IMPORTANT]
@@ -295,7 +295,7 @@ ms.locfileid: "73836969"
 
 如果在主应用窗口中收到错误消息，请使用此表来确定并解决该错误：
 
-| 错误 | 您该怎么办？ |
+| 错误 | 该怎么办？ |
 |-------|----------------------|
 |错误 AuthenticationFailure： WebSocket 升级失败，出现身份验证错误（401）。 检查正确的订阅密钥（或授权令牌）和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
 |错误 ConnectionFailure：远程主机关闭了连接。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|

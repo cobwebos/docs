@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110698"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814855"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -65,11 +65,32 @@ ms.locfileid: "74110698"
 
 如果已调整并部署了具有基线 V1.0 的模型，该部署将保持原样。 客户可使用基线的较新版本和重新部署，来 readapt 部署的模型。
 
+问：是否可以下载模型并在本地运行？
+
+答：无法下载模型并在本地执行。
+
+问：是否记录了我的请求？
+
+答：你可以在创建部署以关闭跟踪时进行选择。 此时，不会记录任何音频或听录。 否则，通常会将请求以安全存储方式记录在 Azure 中。
+
+问：我的请求是否受到请求？
+
+答：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
+
+**问：如何对双通道音频收费？**
+
+**答**：如果单独提交每个通道（每个通道位于其自己的文件中），将按文件的持续时间向你收费。 如果您提交一个文件，其中每个通道都多路复用，则会向您收取单个文件的持续时间。
+
+> [!IMPORTANT]
+> 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
+
+## <a name="increasing-concurrency"></a>增加并发
+
 问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？
 
 答：以 20 个并发请求为增量纵向扩展模型。
 
-如果需要更高的规模，请联系[语音支持](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)。
+使用所需的信息，在[Azure 支持门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中创建支持请求。 请勿在 "[支持" 页](support.md)上提到的任何公共频道（GitHub、Stackoverflow、...）上发布信息。
 
 若要增加***自定义模型***的并发性，需要提供以下信息：
 
@@ -85,7 +106,7 @@ ms.locfileid: "74110698"
 
 - 你的服务的区域，
 
-和
+或者 AI 对流程转型
 
 - 订阅的访问令牌（请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)），
 
@@ -97,25 +118,6 @@ ms.locfileid: "74110698"
   - 从显示的服务中，选择要为其增加并发的语音服务，
   - 显示此服务的 `Properties`，
   - 复制完整的 `Resource ID`。
-
-问：是否可以下载模型并在本地运行？
-
-答：无法下载模型并在本地执行。
-
-问：是否记录了我的请求？
-
-答：你可以在创建部署以关闭跟踪时进行选择。 此时，不会记录任何音频或听录。 否则，通常会将请求以安全存储方式记录在 Azure 中。
-
-问：我的请求是否受到请求？
-
-答：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
-
-**问：如何对双通道音频收费？**
-
-**答**：如果单独提交每个通道（每个通道位于其自己的文件中），将按文件的持续时间向你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
-
-> [!IMPORTANT]
-> 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="importing-data"></a>导入数据
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507172"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806197"
 ---
 # <a name="about-direct-line-speech"></a>关于直接行语音
 
@@ -37,7 +37,7 @@ ms.locfileid: "73507172"
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#、UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| C#，UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
 | Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
 
@@ -45,12 +45,12 @@ ms.locfileid: "73507172"
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 
-* [语音助手示例（SDK）](https://aka.ms/csspeech/samples)
+* [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
 * [教程：通过语音 SDK 使用语音启用助手，C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>自定义
 
-使用 Azure 语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
+使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。

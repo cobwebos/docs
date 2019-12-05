@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579704"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806297"
 ---
-# <a name="custom-commands-preview"></a>自定义命令（预览）
+# <a name="custom-commands-preview"></a>自定义命令（预览版）
 
 [语音助手](voice-assistants.md)会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK 的 `DialogServiceConnector` 对象连接到助手。
 
@@ -35,7 +35,7 @@ ms.locfileid: "73579704"
 
    ![自定义命令的创作流（预览）](media/voice-assistants/custom-commands-flow.png "自定义命令（预览）创作流")
 
-我们专门提供了快速入门来帮助你在 10 分钟内运行代码。
+我们提供了快速入门，旨在让你在不到10分钟的时间内运行代码。
 
 * [创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-new.md)
 * [使用参数创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-parameters.md)
@@ -45,11 +45,11 @@ ms.locfileid: "73579704"
 
 GitHub 上提供了用于通过自定义命令（预览版）创建语音助手的示例代码。
 
-* [语音助手示例（SDK）](https://aka.ms/csspeech/samples)
+* [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customization"></a>自定义
 
-使用 Azure 语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
+使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。

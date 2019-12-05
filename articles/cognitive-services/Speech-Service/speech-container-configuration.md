@@ -1,7 +1,7 @@
 ---
 title: 配置语音容器
 titleSuffix: Azure Cognitive Services
-description: 语音服务为每个容器提供通用的配置框架，以便你可以轻松地配置和管理容器的存储、日志记录和遥测以及安全设置。
+description: 语音服务为每个容器提供一个通用的配置框架，以便你可以轻松地配置和管理容器的存储、日志记录和遥测以及安全设置。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: f68bf989202c209f89ea273fee8d7610a49415ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075739"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816578"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
-语音容器使客户能够构建一个经过优化的语音应用程序体系结构，以利用强大的云功能和边缘位置。 现在，我们支持的四个语音容器为：**语音到文本**、**自定义语音到文本**、**文本到语音**转换和**自定义文本到语音转换**。
+语音容器使客户能够构建一种经过优化的语音应用程序体系结构，以利用强大的云功能和边缘区域。 现在，我们支持的四个语音容器为：**语音到文本**、**自定义语音到文本**、**文本到语音**转换和**自定义文本到语音转换**。
 
-**语音**容器运行时环境使用 `docker run` 命令参数进行配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
+使用 `docker run` 命令参数配置**语音**容器运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -32,7 +32,7 @@ ms.locfileid: "74075739"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为[ 配置设置指定的语音`Billing`](#billing-configuration-setting)资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，并且值必须是为[`Billing`](#billing-configuration-setting)配置设置指定的_语音_资源的有效键。
 
 可以在以下位置找到此设置：
 
@@ -44,15 +44,15 @@ ms.locfileid: "74075739"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的语音资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上语音资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器的计费信息的_语音_资源的终结点 URI。 您必须为此配置设置指定一个值，并且该值必须是 Azure 上的_语音_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
 - Azure 门户：**语音**概述，标记 `Endpoint`
 
-| 必选 | 名称 | 数据类型 | 说明 |
+| 需要 | 名称 | 数据类型 | 描述 |
 | -------- | ---- | --------- | ----------- |
-| 是 | `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+| 是 | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -72,16 +72,16 @@ ms.locfileid: "74075739"
 
 ## <a name="mount-settings"></a>装载设置
 
-使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 `--mount`docker run[ 命令中指定 ](https://docs.docker.com/engine/reference/commandline/run/) 选项来指定输入装载或输出装载。
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
 
 标准语音容器不使用输入或输出装入来存储定型或服务数据。 但是，自定义语音容器依赖于卷装入。
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#the-host-computer)的装载位置。
 
-| 可选 | 名称 | 数据类型 | 说明 |
+| 可选 | 名称 | 数据类型 | 描述 |
 | -------- | ---- | --------- | ----------- |
-| 不允许 | `Input` | String | 标准语音容器不使用此功能。 自定义语音容器使用[卷装入](#volume-mount-settings)。                                                                                    |
-| 可选 | `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
+| 不允许 | `Input` | 字符串 | 标准语音容器不使用此功能。 自定义语音容器使用[卷装入](#volume-mount-settings)。                                                                                    |
+| 可选 | `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>卷装入设置
 
@@ -115,16 +115,16 @@ ms.locfileid: "74075739"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | Value | 格式或示例 |
 | ----------- | ----- | ----------------- |
-| **{API_KEY}** | “Azure `Speech` 密钥”页上的 `Speech` 资源的终结点密钥。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
-| **{ENDPOINT_URI}** | Azure `Speech`“概览”页面上提供了账单终结点值。 | 有关显式示例，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 |
+| **{API_KEY}** | Azure `Speech` 密钥页上的 `Speech` 资源的终结点键。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
+| **{ENDPOINT_URI}** | "计费终结点" 值在 "Azure `Speech` 概述" 页上提供。 | 有关显式示例，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。 有关详细信息，请参阅[计费](#billing-configuration-setting)。
-> ApiKey 值是来自“ Azure 语音资源密钥”页的“密钥”。
+> ApiKey 值是 "Azure 语音资源密钥" 页中的**密钥**。
 
 ## <a name="speech-container-docker-examples"></a>语音容器 Docker 示例
 

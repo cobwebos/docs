@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1c282b1b9a4693da2aa71831a503d443660b65c1
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666632"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806994"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>使用 .NET 为 Blob 存储的请求指定客户提供的密钥
 
@@ -23,6 +23,8 @@ ms.locfileid: "74666632"
 本文介绍如何使用 .NET 为请求指定客户提供的密钥。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
+
+若要详细了解如何使用 azure 存储空间中的 Azure 标识客户端库进行身份验证，请**参阅在**[使用 azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)。
 
 ## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>示例：使用客户提供的密钥上传 blob
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538181"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806314"
 ---
 # <a name="speech-service-for-telephony-data"></a>电话服务数据的语音服务
 

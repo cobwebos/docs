@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8deb8ed16186862349cecf70c9d617a4ad30399
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227956"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806892"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -21,13 +21,13 @@ Azure Data Lake Storage Gen2 [支持分层命名空间](data-lake-storage-introd
 
 本文演示如何使用 Azure 门户、Azure PowerShell 或通过 Azure CLI 创建帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
 |           | 先决条件 |
 |-----------|--------------|
-|门户     | 无         |
+|门户     | None         |
 |PowerShell | 本文需要 PowerShell 模块 Az. Storage **0.7**或更高版本。 若要查找当前版本，请运行 `Get-Module -ListAvailable Az.Storage` 命令。 如果在运行此命令后，没有显示任何结果，或者如果出现 0.7 以下的版本，则必须升级 powershell 模块。 请参阅本指南的[升级 powershell 模块](#upgrade-your-powershell-module)部分。
 |CLI        | 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令： <ul><li>可以在 Azure 门户的 Azure Cloud Shell 中运行 CLI 命令 </li><li>可以安装 CLI 并在本地运行 CLI 命令</li></ul>|
 
@@ -49,7 +49,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>创建启用了 Azure Data Lake Storage Gen2 的存储帐户
 
-Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为你的 Azure 存储数据提供了一个唯一的命名空间，可以从世界上的任何位置通过 HTTP 或 HTTPS 访问该命名空间。 Azure 存储帐户中的数据是持久的，高度可用、安全且可大规模缩放。
+Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 存储帐户为 Azure 存储数据提供唯一的命名空间，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 Azure 存储帐户中的数据是持久的、高度可用的、安全且高度可缩放的。
 
 > [!NOTE]
 > 必须将新的存储帐户创建为 **StorageV2(常规用途 v2 )** 类型才能利用 Data Lake Storage Gen2 功能。  
@@ -62,7 +62,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新的资源组。
 
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
@@ -199,7 +199,7 @@ az storage account create `
     --location westus2 `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>清理资源

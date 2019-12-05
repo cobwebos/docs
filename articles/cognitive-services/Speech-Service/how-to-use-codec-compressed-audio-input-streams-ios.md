@@ -1,7 +1,7 @@
 ---
 title: 在 iOS 上通过语音 SDK 流式处理编解码器压缩音频
 titleSuffix: Azure Cognitive Services
-description: 了解如何在 iOS 上通过语音 SDK 将压缩音频流式传输到 Azure Speech Services。
+description: 了解如何在 iOS 上通过语音 SDK 将压缩音频流式传输到语音服务。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109581"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805852"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>如何：在 iOS 上对 Speech SDK 使用编解码器压缩的音频输入
 
 语音 SDK 的**压缩音频输入流**API 提供了一种使用请求或推送流将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 在 iOS 上流式传输压缩音频需要语音 SDK 版本 1.7.0 或更高版本。 [ C++Linux （ubuntu 16.04、ubuntu C#18.04、Debian 9）](how-to-use-codec-compressed-audio-input-streams.md)和 Android 上的 java 还支持、和 java [。](how-to-use-codec-compressed-audio-input-streams-android.md)
+> 在 iOS 上流式传输压缩音频需要语音 SDK 版本1.7.0 或更高版本。 [ C++Linux （ubuntu 16.04、ubuntu C#18.04、Debian 9）](how-to-use-codec-compressed-audio-input-streams.md)和 Android 上的 java 还支持、和 java [。](how-to-use-codec-compressed-audio-input-streams-android.md)
 
-有关 wav/PCM，请参阅主线语音文档。 在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
+对于 wav/PCM，请参阅主线语音文档。 在 wav/PCM 外部，支持以下编解码器压缩输入格式：
 
 - MP3
 - OPUS/OGG
@@ -32,7 +32,7 @@ ms.locfileid: "74109581"
 - Wav 容器中的 ALAW
 - Wav 容器中的 MULAW
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 处理压缩音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，这些功能不能随 SDK 一起提供，但包含这些函数的包装库需要由应用程序开发人员构建并使用 SDK 随应用一起提供。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74109581"
 
 生成步骤将生成动态框架包，其中包含具有 `GStreamerWrapper.framework`名称的所有必需体系结构的动态库。
 
-在将压缩的音频流与语音服务 SDK 结合使用的所有应用中，都必须包含此框架。
+此框架必须包含在通过语音服务 SDK 使用压缩音频流的所有应用中。
 
 若要完成此操作，请在 Xcode 项目中应用以下设置：
 

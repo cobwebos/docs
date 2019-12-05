@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: df65267924cfbfdc856b81928c4b6d7029f61184
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665961"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806620"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>使用 Azure CLI 配置 Azure 存储的客户托管密钥
 
@@ -91,7 +91,7 @@ az keyvault key create
 
 默认情况下，Azure 存储加密使用 Microsoft 托管密钥。 为客户管理的密钥配置 Azure 存储帐户，并指定与存储帐户关联的密钥。
 
-若要更新存储帐户的加密设置，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)。 此示例还会查询密钥保管库 URI 和密钥版本，这两个值都需要与存储帐户相关联。 请记得将占位符值替换为您自己的值。
+若要更新存储帐户的加密设置，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)。 此示例还查询密钥保管库 URI 和最新密钥版本，这两个值都是将密钥与存储帐户相关联所需要的。 请记得将占位符值替换为您自己的值。
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

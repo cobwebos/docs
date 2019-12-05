@@ -11,12 +11,12 @@ ms.date: 12/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95a0cbdc02f7adacf2e3ffa8ca21491f44fe4b7f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 33b7db8d08c285056e637eb962b28eef0e74fc94
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793842"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814102"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -51,23 +51,30 @@ ms.locfileid: "74793842"
    - 对于证书验证，请取消阻止以下 Url： **mscrl.microsoft.com:80**、 **crl.microsoft.com:80**、 **ocsp.msocsp.com:80**和**www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
-1. 使用企业管理员权限登录到要使用的服务器。  如果你使用的是 "[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)" 教程，则应为 DC1。
-2. [在此处](https://go.microsoft.com/fwlink/?linkid=2109037)下载 Azure AD Connect 预配代理。
-3. 运行 Azure AD Connect 设置代理（AADConnectProvisionin
-4. gAgent）
-3. 在初始屏幕上，**接受**许可条款，然后单击 "**安装**"。</br>
-![欢迎屏幕](media/how-to-install/install1.png)</br>
+1. 登录到已加入域的服务器。  如果你使用的是 "[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)" 教程，则应为 DC1。
+2. 使用仅限云的全局管理员凭据登录到 Azure 门户。
+3. 在左侧选择 " **Azure Active Directory**"，单击 " **Azure AD Connect**"，然后在中心选择 "**管理预配（预览版）** "。
 
-4. 此操作完成后，将启动配置向导。  用 Azure AD 全局管理员帐户登录。  请注意，如果启用了 IE 增强安全性，则会阻止登录。  如果是这种情况，请关闭安装，在服务器管理器中禁用 IE 增强安全性，然后单击 " **AAD 连接设置代理向导**" 以重新启动安装。
-5. 在 "**连接 Active Directory** " 屏幕上，单击 "**添加目录**"，然后用 Active Directory 域管理员帐户登录。  注意：域管理员帐户不应具有密码更改要求。 如果密码过期或发生更改，则需要用新凭据重新配置代理。 此操作将添加你的本地目录。  单击“下一步”。</br>
-![欢迎屏幕](media/how-to-install/install3.png)</br>
+   ![Azure 门户](media/how-to-install/install6.png)
 
-6. 在 "**配置完成**" 屏幕上，单击 "**确认**"。  此操作将注册并重新启动代理。</br>
-![欢迎屏幕](media/how-to-install/install4.png)</br>
+4. 单击 "**下载代理**"。
+5. 运行 Azure AD Connect 设置代理。
+6. 在初始屏幕上，**接受**许可条款，然后单击 "**安装**"。
 
-7. 完成此操作后，你会看到一个通知：**已成功验证你的代理配置。**  可单击 "**退出**"。</br>
+   ![欢迎屏幕](media/how-to-install/install1.png)
+
+7. 此操作完成后，将启动配置向导。  用 Azure AD 全局管理员帐户登录。  请注意，如果启用了 IE 增强安全性，则会阻止登录。  如果是这种情况，请关闭安装，在服务器管理器中禁用 IE 增强安全性，然后单击 " **AAD 连接设置代理向导**" 以重新启动安装。
+8. 在 "**连接 Active Directory** " 屏幕上，单击 "**添加目录**"，然后用 Active Directory 域管理员帐户登录。  注意：域管理员帐户不应具有密码更改要求。 如果密码过期或发生更改，则需要用新凭据重新配置代理。 此操作将添加你的本地目录。  单击“下一步”。
+
+   ![欢迎屏幕](media/how-to-install/install3.png)
+
+9. 在 "**配置完成**" 屏幕上，单击 "**确认**"。  此操作将注册并重新启动代理。
+
+   ![欢迎屏幕](media/how-to-install/install4.png)
+
+10. 完成此操作后，你会看到一个通知：**已成功验证你的代理配置。**  可单击 "**退出**"。</br>
 ![欢迎屏幕](media/how-to-install/install5.png)</br>
-8. 如果仍看到初始初始屏幕，请单击 "**关闭**"。
+11. 如果仍看到初始初始屏幕，请单击 "**关闭**"。
 
 
 ## <a name="verify-agent-installation"></a>验证代理安装

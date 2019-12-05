@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: edb8f25ff1e4fa01e905c3ae5c7d0ec7ab58f8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705937"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805733"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux Java 应用
 
@@ -247,6 +247,9 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
+- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>手动初始化并加载密钥存储
 
@@ -616,7 +619,7 @@ Web 应用实例是无状态的，因此在启动时必须配置每个新实例�
 
 6. 使用 Azure CLI 向应用服务添加保存数据库连接信息的设置。 将 `<resource group>` 和 `<webapp name>` 替换为应用服务使用的值。 将 `<database server name>`、`<database name>`、`<admin name>`和 `<admin password>` 替换为你的数据库连接信息。 可以从 Azure 门户获取应用服务和数据库信息。
 
-    **PostgreSQL**
+    PostgreSQL：
 
     ```bash
     az webapp config appsettings set \

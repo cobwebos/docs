@@ -4,17 +4,17 @@ description: 本文介绍如何使用 Azure 更新管理解决方案来管理 Wi
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690889"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806535"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -132,7 +132,7 @@ ms.locfileid: "72690889"
 
 启用此解决方案以后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为此解决方案中包括的 Runbook 提供支持。
 
-此解决方案管理的每台 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 这些解决方案使用*HOSTNAME FQDN_GUID*命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试失败。 这些组仅用于为管理解决方案提供支持。
+此解决方案管理的每台 Windows 计算机都会作为自动化帐户的一个“系统混合辅助角色组”列在“混合辅助角色组”窗格中。 解决方案使用*主机名 FQDN_GUID*命名约定。 不能在帐户中通过 Runbook 将这些组作为目标进行操作。 如果尝试，则尝试失败。 这些组仅用于为管理解决方案提供支持。
 
 如果为解决方案和混合 Runbook 辅助角色组成员身份使用同一帐户，则可以将 Windows 计算机添加到自动化帐户中的混合 Runbook 辅助角色组来为自动化 Runbook 提供支持。 此功能是在 7.2.12024.0 版本的混合 Runbook 辅助角色中添加的。
 

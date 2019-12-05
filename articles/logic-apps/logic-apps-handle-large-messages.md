@@ -6,13 +6,13 @@ ms.suite: integration
 author: shae-hurst
 ms.author: shhurst
 ms.topic: article
-ms.date: 4/27/2018
-ms.openlocfilehash: e583bf53021d772db54c30ed5a4c9ea2a029e093
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792016"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815087"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
@@ -39,6 +39,9 @@ ms.locfileid: "74792016"
 与逻辑应用通信的服务可以有其自己的消息大小限制。 这些限制通常小于逻辑应用限制。 例如，假定某个连接器支持分块，该连接器可能会将 30 MB 的消息视为大型消息，而逻辑应用则不会。 为了与此连接器的限制保持一致，逻辑应用会将任何大于 30 MB 的消息拆分成更小型的区块。
 
 支持分块的连接器的基础分块协议对最终用户不可见。 但是，并非所有连接器都支持分块，因此当传入消息超出连接器的大小限制时，这些不支持分块的连接器就会生成运行时错误。
+
+> [!NOTE]
+> 对于使用分块的操作，不能通过触发器主体，也不能在这些操作中使用诸如 `@triggerBody()?['Content']` 的表达式。 相反，对于文本或 JSON 文件内容，可以尝试使用[**撰写**操作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)或[创建变量](../logic-apps/logic-apps-create-variables-store-values.md)来处理该内容。 如果触发器正文包含其他内容类型，如媒体文件，则需要执行其他步骤来处理该内容。
 
 <a name="set-up-chunking"></a>
 

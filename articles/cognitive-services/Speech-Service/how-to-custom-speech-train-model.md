@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072498"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806022"
 ---
 # <a name="train-a-model-for-custom-speech"></a>为自定义语音定型模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "74072498"
 
 如果你遇到与模型有关的识别问题，则使用带标签的脚本和相关数据进行其他训练有助于提高准确性。 使用此表来确定用于解决问题的数据集：
 
-| 使用案例 | 数据类型 |
+| 用例 | 数据类型 |
 | -------- | --------- |
 | 提高特定于行业的词汇和语法的识别准确性，如医疗术语或 IT 术语。 | 相关文本（句子/最谈话） |
 | 定义包含非标准发音（如产品名称或首字母缩写词）的单词或字词的拼音和显示形式。 | 相关文本（发音） |
@@ -40,14 +40,14 @@ ms.locfileid: "74072498"
 
 1. 登录到[自定义语音门户](https://speech.microsoft.com/customspeech)。
 2. 导航到 "**语音到文本" > 自定义语音 > "培训**"。
-3. 单击“训练模型”。
+3. 单击 "**训练模型**"。
 4. 接下来，为训练指定**名称**和**说明**。
 5. 从 "**方案和基线模型**" 下拉菜单中，选择最适合你的域的方案。 如果你不确定选择哪种方案，请选择 "**常规**"。 基线模型是定型的起点。 如果没有首选项，可以使用最新的。
 6. 从 "**选择定型数据**" 页中，选择一个或多个要用于定型的音频和人标记的脚本数据集。
 7. 完成培训后，您可以选择对新训练的模型执行准确性测试。 此步骤是可选的。
 8. 选择 "**创建**" 以生成自定义模型。
 
-“训练”表将显示对应于此新建模型的新条目。 该表还显示状态： "正在处理"、"已成功" 和 "失败"。
+定型表显示与这个新创建的模型相对应的新条目。 该表还显示状态： "正在处理"、"已成功" 和 "失败"。
 
 ## <a name="evaluate-the-accuracy-of-a-trained-model"></a>评估定型模型的准确性
 
