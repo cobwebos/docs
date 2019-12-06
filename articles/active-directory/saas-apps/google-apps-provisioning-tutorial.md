@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167863"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842673"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "74167863"
 - 已更新 G Suite 目标属性名称以匹配[此处](https://developers.google.com/admin-sdk/directory)定义的名称。
 - 已更新默认属性映射。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 G Suite 的集成，需要准备好以下各项：
 
@@ -90,7 +90,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![键入域名][22]
 
-    d. 选择“继续验证域所有权”。 然后按步骤验证你拥有该域名。 有关如何通过 Google 验证你的域的全面说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
+    d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何通过 Google 验证你的域的全面说明，请参阅[验证站点所有权](https://support.google.com/webmasters/answer/35179)。
 
     e. 对要添加到 G Suite 的任何其他域重复上述步骤。
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中输入 " **g suite**"，在结果面板中选择 " **g suite** "，然后单击 "**添加**" 按钮添加该应用程序。
 
@@ -178,7 +178,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![G Suite 组映射](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的组属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+12. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 G Suite 的组属性。 选为 "**匹配**" 属性的属性用于匹配 G Suite 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 UI 显示 Azure AD 和 G Suite 之间的一组默认属性映射。 可以通过单击 "添加新映射"，选择添加其他属性，例如组织单位。 
 
     ![G Suite 组属性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
@@ -203,7 +203,10 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="common-issues"></a>常见问题
+* 如果用于建立连接的帐户不是 GSuite 中的管理员，则可能会发生授权失败。 确保用于授权访问权限的帐户对用户需要预配的**所有域**都具有管理员权限。 
 
 ## <a name="next-steps"></a>后续步骤
 

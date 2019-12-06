@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: dffdffdfa80d940c4a50d0a6630c665164f24d5c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230458"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849184"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -30,7 +30,7 @@ ms.locfileid: "74230458"
 3. 为代理提供一个名称。
 4. 通过指定**路由模板**和 **HTTP 方法**配置在此 Function App 上公开的终结点。 这些参数的行为取决于 [HTTP 触发器]的规则。
 5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
-6. 单击“**创建**”。
+6. 单击“创建”。
 
 代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用最喜欢的 HTTP 客户端对其进行测试来试验新代理。
 
@@ -100,7 +100,7 @@ ms.locfileid: "74230458"
 
 通过将标志 `"debug":true` 添加到 `proxies.json` 中的任何代理，将启用调试日志记录。 日志存储在 `D:\home\LogFiles\Application\Proxies\DetailedTrace` 中，可通过高级工具 (kudu) 访问。 任何 HTTP 响应也将包含 `Proxy-Trace-Location` 标头，其中包含用于访问日志文件的 URL。
 
-可以通过添加设置为 `Proxy-Trace-Enabled` 的 `true` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
+可以通过添加设置为 `true` 的 `Proxy-Trace-Enabled` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
 
 ### <a name="block-proxy-traces"></a>阻止代理跟踪
 
@@ -184,7 +184,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 requestOverrides 对象定义调用后端资源时对请求所做的更改。 该对象由以下属性定义：
 
 * **backend.request.method**：用于调用后端的 HTTP 方法。
-* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
+* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 请注意，如果提供了空字符串，则该参数仍包含在后端请求中。
 * **backend.request.headers.\<HeaderName\>** ：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
 
 值可以引用应用程序设置和原始客户端请求中的参数。

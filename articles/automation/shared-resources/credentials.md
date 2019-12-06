@@ -4,21 +4,21 @@ description: Azure 自动化中的凭据资产包含可用于向 Runbook 或 DSC
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44bc49d10c492822c1b5d30ad5794ac2522cb918
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 582645919825c308fce4fe3211fa601955aaf37d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478151"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850170"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
-自动化凭据资产包含一个对象，该对象包含用户名和密码等安全凭据。 Runbook 和 DSC 配置可能会使用在身份验证时接受 PSCredential 对象的 cmdlet，也可能会提取 PSCredential 对象的用户名和密码，以便提供给需要进行身份验证的某些应用程序或服务。 在 Azure 自动化中安全地存储凭据的属性，并可以在 Runbook 或 DSC 配置中通过 [Get-AutomationPSCredential](#activities) 活动访问这些属性。
+自动化凭据资产包含一个对象，该对象包含诸如用户名和密码等安全凭据。 Runbook 和 DSC 配置可能会使用在身份验证时接受 PSCredential 对象的 cmdlet，也可能会提取 PSCredential 对象的用户名和密码，以便提供给需要进行身份验证的某些应用程序或服务。 在 Azure 自动化中安全地存储凭据的属性，并可以在 Runbook 或 DSC 配置中通过 [Get-AutomationPSCredential](#activities) 活动访问这些属性。
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "67478151"
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Azure 经典 PowerShell cmdlet
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  它们作为[Azure PowerShell 模块](/powershell/azure/overview)的一部分附带，可在自动化 RUNBOOK 和 DSC 配置中使用。
 
 | Cmdlet | 描述 |
 |:--- |:--- |
@@ -38,20 +38,20 @@ ms.locfileid: "67478151"
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 
-对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
+对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  它们作为[AzureRM 模块](/powershell/azure/overview)的一部分提供，可在自动化 RUNBOOK 和 DSC 配置中使用。
 
 | Cmdlet | 描述 |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |检索有关凭据资产的信息。 此 cmdlet 不会返回 PSCredential 对象。  |
+| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |检索有关凭据资产的信息。 这不会返回 PSCredential 对象。  |
 | [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |创建新的自动化凭据。 |
 | [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |删除自动化凭据。 |
 | [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |设置现有自动化凭据的属性。 |
 
-## <a name="activities"></a>activities
+## <a name="activities"></a>活动
 
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| activities | 描述 |
+| 活动 | 描述 |
 |:--- |:--- |
 | Get-AutomationPSCredential |在 Runbook 或 DSC 配置中获取要使用的凭据。 返回 [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) 对象。 |
 
@@ -73,9 +73,9 @@ ms.locfileid: "67478151"
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>使用 Azure 门户新建凭据资产
 
-1. 从自动化帐户中，选择“共享资源”  下的“凭据”  。
-1. 单击“+ 添加凭据”  。
-1. 完成表单，并单击“创建”  以保存新凭据。
+1. 从自动化帐户中，选择“共享资源”下的“凭据”。
+1. 单击“+ 添加凭据”。
+1. 完成表单，并单击“创建”以保存新凭据。
 
 > [!NOTE]
 > 不支持将使用多重身份验证的用户帐户用于 Azure 自动化。
@@ -96,7 +96,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回 [PSCredential 对象](/dotnet/api/system.management.automation.pscredential)，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象，该对象将提供该密码的不安全版本。
 
 > [!NOTE]
-> **Get-AzureRmAutomationCredential** 不会返回可用于身份验证的 **PSCredential**。 它仅提供有关凭据的信息。 如果需要在 runbook 中使用凭据，则必须使用 **Get-AutomationPSCredential** 检索 **PSCredential** 对象。
+> **Get-azurermautomationcredential**不会返回可用于身份验证的**PSCredential** 。 它仅提供有关凭据的信息。 如果需要在 runbook 中使用凭据，则必须使用**get-automationpscredential**检索**PSCredential**对象。
 
 ### <a name="textual-runbook-sample"></a>文本 Runbook 示例
 
@@ -109,7 +109,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-也可使用凭据通过 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 向 Azure 进行身份验证。 大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)并使用 [Get-AutomationConnection](../automation-connections.md) 来检索它。
+你还可以使用[add-azurermaccount](/powershell/module/azurerm.profile/connect-azurermaccount)在 Azure 中使用凭据进行身份验证。 在大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)，并使用[get-automationconnection](../automation-connections.md)进行检索。
 
 ```azurepowershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -124,17 +124,17 @@ Connect-AzureRmAccount -Credential $myPsCred
 
 ### <a name="graphical-runbook-sample"></a>图形 Runbook 示例
 
-通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”  ，将 **Get-AutomationPSCredential** 活动添加到图形 Runbook。
+通过在图形编辑器的“库”窗格中右键单击凭据并选择“添加到画布”，将 **Get-AutomationPSCredential** 活动添加到图形 Runbook。
 
 ![将凭据添加到画布](../media/credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，Add-AzureAccount  活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。  在这种情况下，它用于为 runbook 提供对 Azure 资源的身份验证，如[使用 Azure AD 用户帐户对 Runbook 进行身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后，Add-AzureAccount 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。  
 
 ![将凭据添加到画布](../media/credentials/get-credential.png)
 
 ## <a name="using-a-powershell-credential-in-dsc"></a>在 DSC 中使用 PowerShell 凭据
 
-尽管 Azure 自动化中的 DSC 配置可以使用 **Get-AutomationPSCredential**引用凭据资产，但如果需要，也可以通过参数传入凭据资产。 有关详细信息，请参阅[在 Azure 自动化 DSC 中编译配置](../automation-dsc-compile.md#credential-assets)。
+尽管 Azure Automation 中的 DSC 配置可以使用**get-automationpscredential**引用凭据资产，但也可以通过参数（如果需要）传入凭据资产。 有关详细信息，请参阅[在 Azure 自动化 DSC 中编译配置](../automation-dsc-compile.md#credential-assets)。
 
 ## <a name="using-credentials-in-python2"></a>在 Python2 中使用凭据
 
@@ -154,6 +154,6 @@ print cred["password"]
 
 * 若要详细了解图形创作中的链接，请参阅[图形创作中的链接](../automation-graphical-authoring-intro.md#links-and-workflow)
 * 若要了解使用自动化的不同身份验证方法，请参阅 [Azure 自动化安全性](../automation-security-overview.md)
-* 若要开始使用图形 Runbook，请参阅 [My first graphical runbook](../automation-first-runbook-graphical.md)
+* 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](../automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](../automation-first-runbook-textual.md)
 * 若要开始使用 Python2 Runbook，请参阅[第一个 Python2 Runbook](../automation-first-runbook-textual-python2.md) 

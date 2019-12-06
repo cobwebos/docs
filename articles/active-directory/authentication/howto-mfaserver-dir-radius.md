@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f773914fcdd205e9cb6b7e3505904eb9550f16
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9dd2aa7d804b4609e3e2fc1e38b6e29056b5d5ac
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404261"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848045"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -48,7 +48,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 6. 如果所有用户均已导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器或者将免除进行双重验证，请使该框处于未选中状态。
 7. 如果想使用移动身份验证应用中的 OATH 密码作为备份方法，请选中“启用回退 OATH 令牌”框。
-8. 单击“确定”。
+8. 单击 **“确定”** 。
 
 重复执行步骤 4 到步骤 8，添加所需的其他 RADIUS 客户端。
 
@@ -64,7 +64,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
    Azure多重身份验证服务器和 RADIUS 服务器上的共享机密必须相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
 
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 1. 在其他 RADIUS 服务器中将 Azure MFA 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure MFA 服务器发送给它的访问请求。 使用 Azure 多重身份验证服务器中配置的共享机密。
 
 重复上述步骤，添加更多 RADIUS 服务器。 使用“上移”和“下移”按钮配置 Azure MFA 服务器调用这些 RADIUS 服务器时应使用的顺序。
@@ -77,7 +77,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 * 将设备/服务器配置为通过 RADIUS 向 Azure 多重身份验证服务器的 IP 地址进行身份验证，后者充当 RADIUS 服务器。
 * 使用之前配置的共享机密。
-* 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行双重验证、接收其响应，并对 RADIUS 访问请求做出响应。
+* 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行双重验证、接收其响应，然后对 RADIUS 访问请求做出响应。
 
 ## <a name="next-steps"></a>后续步骤
 

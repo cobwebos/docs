@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e073b4ff366c05cdf429f81d46647cd330604057
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 28d4dd3f0d4432930d62bb499fe72533b79d2a08
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081573"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848725"
 ---
 # <a name="passwordless-authentication-options"></a>无密码身份验证选项
 
@@ -62,14 +62,14 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 | # | 功能/扩展信任 | 为什么需要此功能或扩展？ |
 | --- | --- | --- |
-| 1 个 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
+| 第 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
 | 3 | hmac-secret | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 Microsoft 鼓励客户通过联系供应商和 FIDO 联盟来评估这些密钥的安全属性。
 
-| 提供程序 | 联系人 |
+| 提供商 | 联系人 |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f2a60367a8b76464611878e850fff0c4ba8803
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381385"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847382"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>结合安全信息注册疑难解答（预览）
 
@@ -35,16 +35,16 @@ ms.locfileid: "74381385"
 
 下表列出了通过组合注册生成的所有审核事件：
 
-| activities | 状态 | Reason | 说明 |
+| 活动 | 状态 | 原因 | 描述 |
 | --- | --- | --- | --- |
-| 用户已注册所有必需的安全信息 | 成功 | 用户已注册所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
+| 用户已注册所有必需的安全信息 | Success | 用户已注册所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
 | 用户已注册所有必需的安全信息 | 失败 | 用户取消了安全信息注册。 | 当用户取消注册中断模式时发生此事件。|
-| 用户已注册安全信息 | 成功 | 用户注册*方法*。 | 当用户注册单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
-| 用户审阅的安全信息 | 成功 | 用户已成功查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 "**良好**" 时，将发生此事件。|
+| 用户已注册安全信息 | Success | 用户注册*方法*。 | 当用户注册单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
+| 用户审阅的安全信息 | Success | 用户已成功查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 "**良好**" 时，将发生此事件。|
 | 用户审阅的安全信息 | 失败 | 用户无法查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 "**良好**" 但在后端失败时，将发生此事件。|
-| 用户删除的安全信息 | 成功 | 用户删除*方法*。 | 当用户删除单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
+| 用户删除的安全信息 | Success | 用户删除*方法*。 | 当用户删除单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
 | 用户删除的安全信息 | 失败 | 用户无法删除*方法*。 | 当用户尝试删除某方法，但出于某种原因尝试失败时，将发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
-| 用户更改的默认安全信息 | 成功 | 用户更改了*方法*的默认安全信息。 | 当用户更改默认方法时发生此事件。 *方法*可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
+| 用户更改的默认安全信息 | Success | 用户更改了*方法*的默认安全信息。 | 当用户更改默认方法时发生此事件。 *方法*可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
 | 用户更改的默认安全信息 | 失败 | 用户无法更改*方法*的默认安全信息。 | 当用户尝试更改默认方法，但出于某种原因尝试失败时，将发生此事件。 *方法*可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
 
 ## <a name="troubleshooting-interrupt-mode"></a>中断模式疑难解答
@@ -73,7 +73,7 @@ ms.locfileid: "74381385"
 
 接下来的步骤将帮助你回滚用户或用户组。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 
 1. 安装适当的 Azure AD PowerShell 模块。 在 PowerShell 窗口中，运行以下命令以安装模块：
 
@@ -144,7 +144,7 @@ ms.locfileid: "74381385"
    }
    ```
 
-#### <a name="rollback"></a>回退
+#### <a name="rollback"></a>回滚
 
 在 PowerShell 窗口中运行以下命令，并提供脚本和用户文件位置。 出现提示时，输入全局管理员凭据。 该脚本将输出每个用户更新操作的结果。
 

@@ -1,22 +1,22 @@
 ---
-title: Azure AD SSPR 数据要求的 Azure Active Directory
+title: Azure AD SSPR 数据需求-Azure Active Directory
 description: Azure AD 自助密码重置的数据要求，以及如何满足这些要求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1c00d0f4ba365442762df6e041f02ea0a39f099
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358017"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847297"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -25,7 +25,7 @@ ms.locfileid: "60358017"
 * 在本地目录中正确设置数据的格式。
 * [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
 
-若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式  ，例如，+1 4255551234。
+若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
 
 > [!NOTE]
 > 在国家/地区代码和电话号码之间需要有一个空格。
@@ -47,7 +47,7 @@ ms.locfileid: "60358017"
 
 全局管理员可以手动为用户设置身份验证联系人信息，如以下屏幕截图中所示。
 
-![身份验证在 Azure AD 中联系人的用户信息][Contact]
+![Azure AD 中用户的身份验证联系信息][Contact]
 
 如果“电话”字段已填充且在 SSPR 策略中启用了“移动电话”，则用户将在密码重置注册页和密码重置工作流中看到该号码。
 
@@ -69,7 +69,7 @@ ms.locfileid: "60358017"
 * **身份验证电子邮件**
 * **安全问题和答案**
 
-如果提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。   此外，用户在首次注册时会看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。  
+如果提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。 此外，用户在首次注册时会看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>通过 PowerShell 设置和读取身份验证数据
 
@@ -155,7 +155,7 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
@@ -164,7 +164,7 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "全局管理员可以修改用户的身份验证联系人信息"
