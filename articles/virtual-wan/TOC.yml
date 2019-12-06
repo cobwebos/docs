@@ -24,8 +24,6 @@
           href: migrate-from-hub-spoke-topology.md
         - name: 全球传输网络体系结构
           href: virtual-wan-global-transit-network-architecture.md
-        - name: 虚拟 WAN 中的 Office 365 控制平面
-          href: virtual-wan-office365-overview.md
 - name: 操作指南
   items:
     - name: 将虚拟网络网关连接到虚拟 WAN

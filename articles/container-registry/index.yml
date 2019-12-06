@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: ace70edef26be143d8e2367818a3c4cc15bd769e
-  ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+  ms.openlocfilehash: f73794898f00d78c5253c19f985f8ff531ae3c11
+  ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/17/2019
-  ms.locfileid: "74150086"
+  ms.lasthandoff: 12/06/2019
+  ms.locfileid: "74895527"
 landingContent:
 - title: 关于 Azure 容器注册表
   linkLists:
@@ -31,9 +31,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 部署容器注册表 - CLI
+    - text: 创建容器注册表 - CLI
       url: container-registry-get-started-azure-cli.md
-    - text: 部署容器注册表 - 门户
+    - text: 创建容器注册表 - 门户
       url: container-registry-get-started-portal.md
     - text: 通过 Docker 推送和拉取映像
       url: container-registry-get-started-docker-cli.md
