@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af0c2ecde539c9737249e4251f7eab276affb9c
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b95ea51db4f0c6bcdbfa905ff8b57a5a330411e6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381922"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848538"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -57,7 +57,7 @@ ms.locfileid: "74381922"
 * 虚域存在（例如 contoso.com）；或
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
@@ -69,7 +69,7 @@ ms.locfileid: "74381922"
 
 需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于同步到云的本地 Active Directory 用户帐户，又适用于仅限云的用户帐户的策略：
 
-| 属性 | UserPrincipalName 要求 |
+| properties | UserPrincipalName 要求 |
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的“\@\"”字符。</li> <li>不能包含紧靠在“\@\"”符号前面的点字符“.”</li></ul> |
@@ -77,16 +77,16 @@ ms.locfileid: "74381922"
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>仅适用于云用户帐户的密码策略
 
-下表描述了适用于在 Azure AD 中创建和管理的用户帐户的密码策略设置：
+下表描述了应用于在 Azure AD 中创建和管理的用户帐户的密码策略设置：
 
-| 属性 | 要求 |
+| properties | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空格</li></ul> |
 | 不允许的字符 | Unicode 字符。 |
-| 密码限制 |<ul><li>至少 8 个字符，最多包含 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
-| 密码过期期限（最长密码期限） |<ul><li>默认值：**90** 天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
-| 密码过期通知（何时通知用户密码过期） |<ul><li>默认值：**14** 天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
-| 密码过期（密码是否过期） |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
+| 密码限制 |<ul><li>最少8个字符，最多256个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
+| 密码过期持续时间（最长密码期限） |<ul><li>默认值：**90** 天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
+| 密码到期通知（当用户通知密码过期时） |<ul><li>默认值：**14** 天（密码到期前）。</li><li>可使用 `Set-MsolPasswordPolicy` cmdlet 配置该值。</li></ul> |
+| 密码过期（密码过期） |<ul><li>默认值：**false** 天（指示已启用密码到期）。</li><li>可使用 `Set-MsolUser` cmdlet 配置单个用户帐户的值。</li></ul> |
 | 密码更改历史记录 | 用户更改密码时，上一个密码*不能*再次使用。 |
 | 密码重置历史记录 | 用户重置忘记的密码时，上一个密码*可以*再次使用。 |
 | 帐户锁定 | 使用错误密码 10 次登录尝试失败之后，用户会被锁定一分钟。 后续的错误登录尝试会增加用户被锁定的时间。 [智能锁定](howto-password-smart-lockout.md)跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。 |
@@ -106,7 +106,7 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>检查密码过期策略
 
-1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用你的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
    * 若要查看单个用户的密码是否设置为永不过期，请使用 UPN （例如， *aprilr\@contoso.onmicrosoft.com*）或要查看的用户的用户 ID 运行以下 cmdlet：
@@ -115,7 +115,7 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * 若要查看所有用户的“密码永不过期”设置，请运行以下 cmdlet：
+   * 若要查看所有用户的 "**密码永不过期**" 设置，请运行以下 cmdlet：
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -123,10 +123,10 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
 
 ### <a name="set-a-password-to-expire"></a>设置密码过期
 
-1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用你的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要将某一用户的密码设置为过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
+   * 若要将一个用户的密码设置为过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
@@ -140,10 +140,10 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
 
 ### <a name="set-a-password-to-never-expire"></a>将密码设置为永不过期
 
-1. 使用用户管理员或公司管理员凭据连接到 Windows PowerShell。
+1. 使用你的用户管理员或公司管理员凭据连接到 Windows PowerShell。
 1. 执行以下命令之一：
 
-   * 若要将某一用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
+   * 若要将一个用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
@@ -162,14 +162,14 @@ Microsoft 云服务的全局管理员或用户管理员可以使用用于 Window
 
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

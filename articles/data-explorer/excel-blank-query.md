@@ -7,18 +7,18 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 55198e0c38c2922d69b68d9ce62e16ea25e9cc44
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 4999000e2084922b43b8085034f545d4b5c644a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173724"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849082"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>使用导入到 Microsoft Excel 中的 Azure 数据资源管理器 Kusto 查询来可视化数据
 
 Azure 数据资源管理器提供两个选项用于连接到 Excel 中的数据：使用本机连接器或从 Azure 数据资源管理器导入查询。 本文介绍如何将查询从 Azure 数据资源管理器导入到 Excel 中，以可视化数据。 将 Kusto 查询添加为 Excel 数据源，以便对数据执行其他计算或可视化。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 作为 Azure Active directory 成员的组织电子邮件帐户，因此你可以连接到[azure 数据资源管理器帮助群集](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
@@ -68,3 +68,7 @@ Azure 数据资源管理器提供两个选项用于连接到 Excel 中的数据�
 1. 现在，你的数据在 Excel 中。 选择 "**刷新**" 按钮以刷新查询。
 
     ![在 excel 中查看数据](media/excel-blank-query/data-in-excel.png)
+
+## <a name="next-steps"></a>后续步骤
+
+[使用适用于 Excel 的 Azure 数据资源管理器连接器实现数据的可视化效果](excel-connector.md)

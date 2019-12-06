@@ -1,5 +1,5 @@
 ---
-title: 用 Azure Monitor 工作簿 + 文本参数创建交互式报表 |Microsoft 文档
+title: Azure Monitor 工作簿文本参数
 description: 利用预生成的自定义参数化工作簿，简化复杂的报告工作。 了解有关工作簿文本参数的详细信息。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: ee3e24444b87c461841b591176774d4e945e4fcc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165155"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872768"
 ---
 # <a name="workbook-text-parameters"></a>工作簿文本参数
 

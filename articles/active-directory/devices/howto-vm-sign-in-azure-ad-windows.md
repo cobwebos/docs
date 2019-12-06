@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842401"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "74420540"
 
 |     |
 | --- |
-| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 使用 Azure AD 身份验证登录到 Azure 中的 Windows Vm 有很多好处，包括：
@@ -116,6 +116,9 @@ az vm create \
     --admin-username azureuser \
     --admin-password yourpassword
 ```
+
+> [!NOTE]
+> 必须先在虚拟机上启用系统分配的托管标识，然后才能安装 Azure AD 登录 VM 扩展。
 
 创建 VM 和支持的资源需要几分钟时间。
 
@@ -230,17 +233,17 @@ az role assignment create \
 
    | 要运行的命令 | 预期输出 |
    | --- | --- |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | 更正有关 Azure VM 的信息 |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | 与 Azure 订阅关联的有效租户 ID |
-   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | 更正有关 Azure VM 的信息 |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | 与 Azure 订阅关联的有效租户 ID |
+   | 卷曲的元数据： true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
 
    > [!NOTE]
    > 使用[http://calebb.net/](http://calebb.net/)之类的工具可以对访问令牌进行解码。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。
 
 1. 请确保使用命令行从 VM 访问所需的终结点：
    
-   - 卷 https://login.microsoftonline.com/-D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>`/-D –
+   - 卷 https://login.microsoftonline.com/ -D –
+   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
 
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。
@@ -274,8 +277,8 @@ az role assignment create \
 
 1. 使用命令行验证是否可以从 VM 访问所需的终结点：
 
-   - 卷 https://login.microsoftonline.com/-D –
-   - 卷 https://login.microsoftonline.com/`<TenantID>`/-D –
+   - 卷 https://login.microsoftonline.com/ -D –
+   - 卷 https://login.microsoftonline.com/`<TenantID>` /-D –
    
    > [!NOTE]
    > 将 `<TenantID>` 替换为与 Azure 订阅关联的 Azure AD 租户 ID。 如果需要查找租户 ID，你可以将鼠标悬停在帐户名称上以获取目录/租户 ID，或在 Azure 门户中选择 Azure Active Directory > 属性 > 目录 ID。

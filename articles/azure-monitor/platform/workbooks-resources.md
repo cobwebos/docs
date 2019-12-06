@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 工作簿创建交互式报表 |资源参数 |Microsoft 文档
+title: Azure Monitor 工作簿资源参数
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cd170fdc3bed04a81c66d83b9e75ed77e3c0a5a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: adc9855d30a3b286cfbc3489ec639ab8b460e314
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165844"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872802"
 ---
 # <a name="workbook-resource-parameters"></a>工作簿资源参数
 

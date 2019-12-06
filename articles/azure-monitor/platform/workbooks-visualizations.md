@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 工作簿可视化效果创建交互式报表 |Microsoft 文档
+title: Azure Monitor 工作簿可视化效果
 description: 了解所有 Azure Monitor 工作簿可视化组件，包括文本、图表、网格、树和关系图。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165051"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872785"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor 工作簿可视化效果
 
@@ -96,7 +96,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 | `Size` | 控件的垂直大小 | 小型、中型或大型 |
 | `Color palette` | 要在图表中使用的调色板。 如果使用 `Split by` 参数，则忽略此参数 | 蓝色、绿色、红色等。 |
 
-## <a name="grids"></a>置
+## <a name="grids"></a>网格
 
 网格或表是向用户显示数据的常用方法。 工作簿允许用户单独对网格中的列进行样式，以便为报表提供丰富的 UI。
 
@@ -138,7 +138,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 6. 将可视化效果设置为**磁贴**
 7. 单击 "**磁贴设置**" 按钮可打开 "设置" 窗格
 8. 在 "**磁贴字段**" 中，设置：
-    * 标题： `name`
+    * 标题：`name`
     * Left： `Requests`，呈现器： `Big Number`，调色板： `Green to Red`，最小值： `0`
     * 下： `appName`
 9. 单击窗格底部的 "**保存并关闭**" 按钮。
@@ -149,7 +149,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 
 ![磁贴摘要视图的屏幕截图](./media/workbooks-visualizations/tiles-read-mode.png)
 
-## <a name="trees"></a>林中
+## <a name="trees"></a>Trees
 
 工作簿通过树-网格支持分层视图。 树允许将一些行扩展到下一级别以实现向下钻取体验。
 
@@ -205,7 +205,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 
 ![磁贴摘要视图的屏幕截图](./media/workbooks-visualizations/graph.png)
 
-### <a name="adding-a-graph"></a>添加关系图
+### <a name="adding-a-graph"></a>添加图表
 1. 单击 "_编辑_" 工具栏项，将工作簿切换到编辑模式。
 2. 使用 "**添加查询**" 链接向工作簿添加日志查询控件。 
 3. 选择 "**日志**"、"资源类型" （例如 Application Insights）和 "要作为目标的资源" 的查询类型。
