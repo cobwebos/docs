@@ -1,28 +1,24 @@
 ---
-title: 应用的服务条款和隐私声明 | Azure
+title: 适用于应用的服务条款和隐私声明 |Microsoft
 description: 了解如何为注册为使用 Azure AD 的应用配置服务条款和隐私声明。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482855"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842794"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
@@ -61,15 +57,15 @@ ms.locfileid: "67482855"
 * [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
 
 ### <a name="azure-portal"></a>使用 Azure 门户
-请按照下列步骤在 Azure 门户中。
+在 Azure 门户中执行以下步骤。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 导航到“应用注册”部分并选择应用  。
-3. 打开**品牌**窗格。
-4. 填写“服务条款 URL”和“隐私声明 URL”字段   。
+2. 导航到“应用注册”部分并选择应用。
+3. 打开 "**品牌**" 窗格。
+4. 填写“服务条款 URL”和“隐私声明 URL”字段。
 5. 保存所做更改。
 
-    ![应用属性包含服务和隐私语句 Url 中的条款](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![应用属性包含服务条款和隐私声明 Url](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>使用应用对象 JSON
 

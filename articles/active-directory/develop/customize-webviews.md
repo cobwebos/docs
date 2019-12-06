@@ -3,27 +3,23 @@ title: 自定义浏览器和 WebView
 titleSuffix: Microsoft identity platform
 description: 了解如何自定义 MSAL for iOS 和 macOS 用来登录用户的浏览器体验
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803378"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843319"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 Webview
 
@@ -72,9 +68,9 @@ MacOS 的 MSAL 仅支持 `WKWebView`。
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 及更高 | macOS 10.15 及更高 | 是 | 仅限 iOS | w/Safari 实例
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 及更高 | N/A | 是 | 仅限 iOS |  w/Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 及更高 | N/A | No | 仅限 iOS | 否 * *
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 及更高 | N/A | No | 仅限 iOS | 否**
 | **SFSafariViewController** | 系统 | iOS10 | N/A | 是 | 仅限 iOS |  w/Safari 实例
-| **WKWebView**  | 应用内 | iOS8 及更高 | macOS 10.10 及更高 | No | iOS 和 macOS | 否 * *
+| **WKWebView**  | 应用内 | iOS8 及更高 | macOS 10.10 及更高 | No | iOS 和 macOS | 否**
 
 \* * 要使 SSO 正常工作，需要在应用之间共享标记。 这需要令牌缓存或代理应用程序，如适用于 iOS 的 Microsoft Authenticator。
 

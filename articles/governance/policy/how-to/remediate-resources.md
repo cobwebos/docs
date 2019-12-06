@@ -2,22 +2,22 @@
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure 策略中的策略不符合的资源的修正。
 ms.date: 09/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267362"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873040"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合**deployIfNotExists**或**修改**策略的资源可通过**修正**置于符合状态。 修正是通过指示 Azure 策略对现有资源运行**deployIfNotExists**效果或已分配策略的标记**操作**来完成的。 本文介绍了使用 Azure Policy 了解并完成修正需要执行的步骤。
+不符合**deployIfNotExists**或**修改**策略的资源可通过**修正**置于符合状态。 修正是通过指示 Azure 策略对现有资源运行**deployIfNotExists**效果或已分配策略的标记**操作**来完成的。 本文介绍了了解和完成 Azure 策略更正所需的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
-当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 为每个分配创建一个托管标识，但必须具有有关授予托管标识哪些角色的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，启动分配后，Azure Policy 将自动授予托管标识所列的角色。
+当 Azure 策略在**deployIfNotExists**策略定义中运行该模板时，它将使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)执行此操作。
+Azure 策略为每个分配创建托管标识，但必须具有有关授予托管标识的角色的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，Azure 策略将在启动分配后自动向托管标识授予所列角色。
 
 ![托管标识 - 缺少角色](../media/remediate-resources/missing-role.png)
 
@@ -46,7 +46,7 @@ az role definition list --name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>手动配置托管标识
 
-使用门户创建分配时，Azure Policy 会生成托管标识并向它授予 roleDefinitionIds 中定义的角色。 在以下情况下，必须手动执行步骤以创建托管标识，并向其分配权限：
+使用门户创建分配时，Azure 策略将生成托管标识，并向其授予在**roleDefinitionIds**中定义的角色。 在以下情况下，必须手动执行步骤以创建托管标识，并向其分配权限：
 
 - 在使用 SDK 时（如 Azure PowerShell）
 - 当模板修改分配范围以外的资源
@@ -132,7 +132,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   ![在“策略”页上选择“修正”](../media/remediate-resources/select-remediation.png)
+   ![在 "策略" 页上选择 "修正"](../media/remediate-resources/select-remediation.png)
 
 1. 具有不符合资源的所有**deployIfNotExists**和**modify**策略分配都包含在 "**要修正的策略**" 选项卡和数据表中。 单击其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
 
@@ -141,11 +141,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在“新修正任务”页上，通过使用“范围”省略号从分配策略的位置选取子资源（包括下面的单个资源对象）来筛选要修正的资源。 此外，使用“位置”下拉列表来进一步筛选资源。 仅对表中列出的资源进行修正。
 
-   ![修正 - 选择要修正的资源](../media/remediate-resources/select-resources.png)
+   ![修正-选择要修正的资源](../media/remediate-resources/select-resources.png)
 
 1. 筛选资源后，通过单击“修正”来启动修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。
 
-   ![修正 - 修正任务的进度](../media/remediate-resources/task-progress.png)
+   ![修正-修正任务的进度](../media/remediate-resources/task-progress.png)
 
 1. 单击“策略符合性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
@@ -166,7 +166,7 @@ if ($roleDefinitionIds.Count -gt 0)
 az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-有关其他修正命令和示例，请参阅 [az policy remediation](/cli/azure/policy/remediation) 命令。
+有关其他更正命令和示例，请参阅[az policy 更正](/cli/azure/policy/remediation)命令。
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>通过 Azure PowerShell 创建修正任务
 
@@ -179,13 +179,13 @@ az policy remediation create --name myRemediation --policy-assignment '/subscrip
 Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-有关其他修正 cmdlet 和示例，请参阅 [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) 模块。
+有关其他修补 cmdlet 和示例，请参阅[PolicyInsights](/powershell/module/az.policyinsights/#policy_insights)模块。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取符合性数据](get-compliance-data.md)。
+- 了解如何以[编程方式创建策略](programmatically-create.md)。
+- 了解如何[获取相容性数据](get-compliance-data.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

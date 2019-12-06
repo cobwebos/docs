@@ -2,17 +2,17 @@
 title: 从门户更新现有分配
 description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
 ms.date: 11/21/2019
-ms.topic: conceptual
-ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: 3cce84127475b2f11388b4ad4eb48dedec19cd1d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406382"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873159"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
-分配蓝图时可以更新分配。 众多原因导致要更新现有分配，其中包括：
+分配蓝图时可更新分配。 众多原因导致要更新现有分配，其中包括：
 
 - 添加或删除[资源锁定](../concepts/resource-locking.md)
 - 更改[动态参数](../concepts/parameters.md#dynamic-parameters)的值

@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure Monitor 工作簿下拉参数的详细信息 |Microsoft 文档
+title: Azure Monitor 工作簿下拉参数
 description: 通过包含 dropdown 参数的预生成的自定义参数化工作簿简化复杂报表
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 20a1c5f4b4ef12f81e801769a2ee1b5f08860e38
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: df30b71e6ec9e982988ed75b187db08255e24b61
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165207"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872870"
 ---
 # <a name="workbook-drop-down-parameters"></a>工作簿下拉参数
 
@@ -133,7 +133,7 @@ dependencies
 | `{DependencyName:label}` | 所选标签 | 🌐获取 fabrikamaccount |
 | `{DependencyName:value}` | 选定值 | 获取 fabrikamaccount |
 
-## <a name="multiple-selection"></a>多重选择
+## <a name="multiple-selection"></a>多选
 到目前为止，这些示例将参数显式设置为仅在下拉中选择一个值。 下拉参数还支持 `multiple selection`-启用此功能与检查 `Allow multiple selection` 选项一样简单。 
 
 用户还可以选择通过 "`delimiter`" 和 "`quote with`" 设置来指定结果集的格式。 默认情况下，在此窗体中以集合的形式返回值： "a"、"b"、"c"。 它们还可以选择限制选择的数目。

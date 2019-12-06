@@ -2,13 +2,13 @@
 title: 适用于 Visual Studio Code 的 Azure 策略扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure 策略扩展查找资源管理器别名。
 ms.date: 11/04/2019
-ms.topic: conceptual
-ms.openlocfilehash: cbc0e14ed70fbacc297126aef58cd722d2235a3d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.topic: how-to
+ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072040"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873108"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Azure Policy extension 进行 Visual Studio Code
 
@@ -21,11 +21,11 @@ ms.locfileid: "74072040"
 > [!NOTE]
 > 在 Visual Studio Code 的 Azure 策略扩展中查看的策略所做的更改不会同步到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本文中的步骤需要具有以下项：
 
-- Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - [Visual Studio Code](https://code.visualstudio.com)。
 
 ## <a name="install-azure-policy-extension"></a>安装 Azure 策略扩展
@@ -34,19 +34,19 @@ ms.locfileid: "74072040"
 
 1. 打开 Visual Studio Code。
 
-1. 在菜单栏中，转到“视图” **“扩展”。**  > 
+1. 从菜单栏中转到 "**查看** > **扩展**"。
 
 1. 在搜索框中，输入 " **Azure 策略**"。
 
 1. 从搜索结果中选择 " **Azure 策略**"，然后选择 "**安装**"。
 
-1. 根据需要选择“重载”。
+1. 如果需要，请选择 "**重新加载**"。
 
 ## <a name="set-the-azure-environment"></a>设置 Azure 环境
 
 对于国家云用户，请按照以下步骤设置 Azure 环境：
 
-1. 选择“文件”>“首选项”>“设置”。
+1. 选择**File\Preferences\Settings**。
 
 1. 搜索以下字符串： _Azure： Cloud_
 
@@ -72,7 +72,7 @@ ms.locfileid: "74072040"
 
      ![用于从命令面板 Visual Studio Code 的 Azure 云登录](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
 
-1. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。
+1. 按照登录说明登录到 Azure。 连接后，Azure 帐户名称将显示在 "Visual Studio Code" 窗口底部的状态栏中。
 
 ## <a name="select-subscriptions"></a>选择订阅
 
@@ -155,9 +155,9 @@ Azure 策略扩展会列出策略类型和策略分配，作为选择要在 "**�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
+- 了解如何以[编程方式创建策略](programmatically-create.md)。
 - 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

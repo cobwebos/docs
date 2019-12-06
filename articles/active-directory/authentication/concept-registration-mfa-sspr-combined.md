@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3221e6424b449066510667f8067e3bc6d8aec12a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2b484acc0dc1a92a857f254ed37392ffb29eddb8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381957"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848623"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合安全信息注册（预览）
 
@@ -49,15 +49,15 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 |   | 注册 | 更改 | 删除 |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | 是（最多5个） | 否 | 是 |
-| 其他验证器应用 | 是（最多5个） | 否 | 是 |
-| 硬件令牌 | 否 | 否 | 是 |
-| Phone | 是 | 是 | 是 |
+| Microsoft Authenticator | 是（最多5个） | No | 是 |
+| 其他验证器应用 | 是（最多5个） | No | 是 |
+| 硬件令牌 | No | No | 是 |
+| 手机 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
-| 办公电话 | 否 | 否 | 否 |
-| Email | 是 | 是 | 是 |
-| 安全提问 | 是 | 否 | 是 |
-| 应用密码 | 是 | 否 | 是 |
+| 办公电话 | No | No | No |
+| 电子邮件 | 是 | 是 | 是 |
+| 安全提问 | 是 | No | 是 |
+| 应用密码 | 是 | No | 是 |
 
 > [!NOTE]
 > 应用密码仅适用于已强制执行多重身份验证的用户。 对于通过条件性访问策略启用多重身份验证的用户，不能使用应用密码。

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dfd035f73ea529ddb55bac6ce601185fda51a4d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381943"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848589"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -24,22 +24,22 @@ ms.locfileid: "74381943"
 
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
-自助式密码重置用户在密码重置门户中有一个“联系管理员”链接可供他们使用。 如果用户选择此链接，它将执行以下两个操作之一：
+自助服务密码重置用户在密码重置门户中提供 "联系你的管理员" 链接。 如果用户选择此链接，它将执行以下两个操作之一：
 
 * 如果处于默认状态：
-   * 将向管理员发送电子邮件，请求他们提供更改用户密码的帮助。 请参阅下面的[示例电子邮件](#sample-email)。
-* 如果已自定义：
+   * 电子邮件将发送给你的管理员，并要求他们在更改用户密码时提供帮助。 请参阅下面的[示例电子邮件](#sample-email)。
+* 如果自定义：
    * 将用户发送到管理员指定的网页或电子邮件地址以获得帮助。
 
 > [!TIP]
-> 如果自定义此设置，我们建议将其设置为用户已经熟悉的内容以获得支持
+> 如果你自定义此功能，我们建议将其设置为用户已熟悉支持的内容。
 
 > [!WARNING]
 > 如果你使用需要密码重置的电子邮件地址和帐户自定义此设置，则用户可能无法请求协助。
 
 ### <a name="sample-email"></a>示例电子邮件
 
-![发送给管理员的重置电子邮件的示例请求][Contact]
+![用于重置发送到管理员的电子邮件的示例请求][Contact]
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
@@ -90,17 +90,17 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "联系管理员请求帮忙重置密码的电子邮件示例"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "与管理员联系以获取有关重置密码电子邮件示例的帮助"

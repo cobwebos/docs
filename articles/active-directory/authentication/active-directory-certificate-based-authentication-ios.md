@@ -1,22 +1,22 @@
 ---
-title: iOS 上基于证书的身份验证 - Azure Active Directory
+title: IOS 上基于证书的身份验证-Azure Active Directory
 description: 了解 iOS 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d2f9e7d71ab660c4df6f65d6bebe1d3854086bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415987"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848793"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,16 +35,16 @@ ms.locfileid: "60415987"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
-| Intune 公司门户 |![对号，表示支持此应用程序][1] |
-| Microsoft Teams |![对号，表示支持此应用程序][1] |
-| OneNote |![对号，表示支持此应用程序][1] |
-| OneDrive |![对号，表示支持此应用程序][1] |
-| Outlook |![对号，表示支持此应用程序][1] |
-| Power BI |![对号，表示支持此应用程序][1] |
-| Skype for Business |![对号，表示支持此应用程序][1] |
-| Word/Excel/PowerPoint |![对号，表示支持此应用程序][1] |
-| Yammer |![对号，表示支持此应用程序][1] |
+| Azure 信息保护应用 |![表示支持此应用程序的复选标记][1] |
+| Intune 公司门户 |![表示支持此应用程序的复选标记][1] |
+| Microsoft Teams |![表示支持此应用程序的复选标记][1] |
+| OneNote |![表示支持此应用程序的复选标记][1] |
+| OneDrive |![表示支持此应用程序的复选标记][1] |
+| Outlook |![表示支持此应用程序的复选标记][1] |
+| Power BI |![表示支持此应用程序的复选标记][1] |
+| Skype for Business |![表示支持此应用程序的复选标记][1] |
+| Word/Excel/PowerPoint |![表示支持此应用程序的复选标记][1] |
+| Yammer |![表示支持此应用程序的复选标记][1] |
 
 ## <a name="requirements"></a>要求
 
@@ -68,7 +68,7 @@ iOS 设备上的 Office 应用程序需要安装 Microsoft Authenticator。
 
 有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）    。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 只需将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”即可。  
+某些 Office 应用（启用了新式身份验证）在请求中向 Azure AD 发送“*prompt=login*”。 默认情况下，Azure AD 会将向 ADFS 发出的请求中的“prompt=login”转换为“wauth=usernamepassworduri”（要求 ADFS 执行 U/P 身份验证）和“wfresh=0”（要求 ADFS 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 只需将联盟域设置中的“PromptLoginBehavior”设置为“已禁用”即可。
 可使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

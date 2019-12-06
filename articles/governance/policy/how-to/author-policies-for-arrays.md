@@ -2,13 +2,13 @@
 title: 针对资源的阵列属性创作策略
 description: 了解如何使用数组参数和数组语言表达式、如何计算 [*] 别名，以及如何使用 Azure 策略定义规则附加元素。
 ms.date: 11/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.topic: how-to
+ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555167"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873091"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源的阵列属性创作策略
 
@@ -185,14 +185,14 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 如果存在�
 
 |条件 |业务成效 |说明 |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |没 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_ ，并且不触发该效果。 |
+|`{<field>,"notEquals":"127.0.0.1"}` |无 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_ ，并且不触发该效果。 |
 |`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 and 10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_ ，并触发该效果。 |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |策略效果 |一个数组元素的计算结果为 true （127.0.0.1 = = 127.0.0.1），另一个数组元素为 false （127.0.0.1 = = 192.168.1.1），因此**Equals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果都为 false （10.0.4.1 = = 127.0.0.1，10.0.4.1 = = 192.168.1.1），因此**Equals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |策略效果 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_。 逻辑运算符的计算结果为 true （**不**是_false_），因此将触发该效果。 |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |没 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 和10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_。 逻辑运算符的计算结果为 false （**not** _true_），因此不会触发该效果。 |
-|`{<field>,"Equals":"127.0.0.1"}` |没 |一个数组元素的计算结果为 true （127.0.0.1 = = 127.0.0.1），另一个数组元素的值为 false （127.0.0.1 = = 192.168.1.1），因此**Equals**条件为_false_且不触发该效果。 |
-|`{<field>,"Equals":"10.0.4.1"}` |没 |这两个数组元素的计算结果都为 false （10.0.4.1 = = 127.0.0.1，10.0.4.1 = = 192.168.1.1），因此**Equals**条件为_false_ ，并且不会触发该效果。 |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |无 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 和10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_。 逻辑运算符的计算结果为 false （**not** _true_），因此不会触发该效果。 |
+|`{<field>,"Equals":"127.0.0.1"}` |无 |一个数组元素的计算结果为 true （127.0.0.1 = = 127.0.0.1），另一个数组元素的值为 false （127.0.0.1 = = 192.168.1.1），因此**Equals**条件为_false_且不触发该效果。 |
+|`{<field>,"Equals":"10.0.4.1"}` |无 |这两个数组元素的计算结果都为 false （10.0.4.1 = = 127.0.0.1，10.0.4.1 = = 192.168.1.1），因此**Equals**条件为_false_ ，并且不会触发该效果。 |
 
 ## <a name="the-append-effect-and-arrays"></a>追加效果和数组
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 工作簿创建交互式报表 | Microsoft docs
+title: Azure Monitor 工作簿概述
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cbc128e59472e36e2b5685efdf4cd02144edf15
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165922"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872853"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -43,9 +43,9 @@ ms.locfileid: "73165922"
 * [Text](workbooks-visualizations.md#text)
 * [图表](workbooks-visualizations.md#charts)
 * [置](workbooks-visualizations.md#grids)
-* [翻牌](workbooks-visualizations.md#tiles)
+* [磁贴](workbooks-visualizations.md#tiles)
 * [林中](workbooks-visualizations.md#trees)
-* [图形](workbooks-visualizations.md#graphs)
+* [图表](workbooks-visualizations.md#graphs)
 
 ![示例工作簿可视化效果](./media/workbooks-overview/visualizations.png)
 

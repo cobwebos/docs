@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685926"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851734"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -24,15 +24,15 @@ ms.locfileid: "73685926"
 
 ## <a name="what-are-resource-classes"></a>什么是资源类
 
-查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以针对并发运行的查询数以及分配给每个查询的计算资源量设置限制，从而帮助管理工作负荷。  我们需要在内存和并发性之间进行权衡。
+查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以通过对分配给每个查询的计算资源上并发运行的查询数设置限制，来帮助你为查询配置资源。  内存与并发性之间的权衡。
 
 - 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
-- 较大的资源类可以增加每个查询的最大内存量，但同时会降低并发性。
+- 较大的资源类会增加每个查询的最大内存，但会降低并发性。
 
 有两种类型的资源类：
 
 - 静态资源类：非常适用于在数据集大小固定的情况下提高并发性。
-- 动态资源类：非常适用于大小和性能随着服务级别的扩展而增加和提升的数据集。
+- 动态资源类，非常适合于增长大小并且需要提高性能的数据集，因为服务级别已扩展。
 
 资源类使用并发性槽位来测量资源消耗。  本文稍后将介绍[并发性槽位](#concurrency-slots)。
 
@@ -65,14 +65,18 @@ ms.locfileid: "73685926"
 - largerc
 - xlargerc
 
-**无论服务级别**如何，每个资源类的内存分配都如下所示。  还列出了最小并发查询。  对于某些服务级别，可以达到最小并发性。
+每个资源类的内存分配如下所示。 
 
-| 资源类 | 内存百分比 | 最小并发查询数 |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
-| mediumrc       | 10%               | 10                     |
-| largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| 服务级别  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
+| DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
+| DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
+| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
+| DW1000c<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+
+
 
 ### <a name="default-resource-class"></a>默认资源类
 
@@ -105,6 +109,8 @@ ms.locfileid: "73685926"
 
 > [!NOTE]  
 > 针对动态管理视图 (DMV) 或其他系统视图执行的 SELECT 语句不受任何并发限制的约束。 用户可以对系统进行监视，而不用考虑在系统中执行的查询的数目。
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>资源类不会控制的操作
 
@@ -113,7 +119,7 @@ ms.locfileid: "73685926"
 以下语句属于资源类的例外情况，始终在 smallrc 中运行：
 
 - CREATE 或 DROP TABLE
-- ALTER TABLE ...SWITCH、SPLIT 或 MERGE PARTITION
+- ALTER TABLE .。。SWITCH、SPLIT 或 MERGE PARTITION
 - ALTER INDEX DISABLE
 - DROP INDEX
 - CREATE、UPDATE 或 DROP STATISTICS
@@ -142,7 +148,7 @@ Removed as these two are not confirmed / supported under SQL DW
 - 使用 10 个并发槽位运行的查询可以访问的计算资源，是使用 2 个并发槽位运行的查询的 5 倍。
 - 如果每个查询需要 10 个并发槽位并且有 40 个并发槽位，则只有 4 个查询可以并发运行。
 
-只有受资源控制的查询消耗并发槽位。 系统查询和一些不重要的查询不消耗任何槽位。 消耗的确切并发槽位数由查询的资源类决定。
+只有受资源控制的查询消耗并发槽位。 系统查询和一些不重要的查询不消耗任何槽。 所使用的并发槽的准确数目由查询的资源类决定。
 
 ## <a name="view-the-resource-classes"></a>查看资源类
 
@@ -156,15 +162,15 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 ## <a name="change-a-users-resource-class"></a>更改用户的资源类
 
-资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果某个用户是 staticrc10 数据库角色的成员，则其查询将使用较小的内存量来运行。 如果某个数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将使用较大的内存量来运行。
+资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果用户是 staticrc10 数据库角色的成员，则其查询将运行少量内存。 如果数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将运行大量内存。
 
-若要提高用户的资源类，请使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 将用户添加到大型资源类的数据库角色。  以下代码将用户添加到 largerc 数据库角色。  每个请求获取 22% 的系统内存。
+若要增加用户的资源类，请使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)将该用户添加到大型资源类的数据库角色。  下面的代码将用户添加到 largerc 数据库角色。  每个请求获取系统内存的22%。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  如果“loaduser”不是成员或任何其他资源类，则会转到具有 3% 内存授予的默认 smallrc 资源类。  
+若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  如果 "loaduser" 不是成员或任何其他资源类，它们将进入具有3% 内存授予的默认 smallrc 资源类。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -179,27 +185,32 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 ## <a name="recommendations"></a>建议
 
-我们建议创建一个专门用于运行特定类型的查询或负载操作的用户。 为该用户提供永久性的资源类，而不是频繁更改资源类。 静态资源类对工作负荷提供的整体控制度更高，因此，我们建议先使用静态资源类，然后再考虑动态资源类。
+>[!NOTE]
+>考虑利用工作负荷管理功能（[工作负荷隔离](sql-data-warehouse-workload-isolation.md)、[分类](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)）来更好地控制工作负荷和可预测的性能。  
+>
+>
+
+建议创建专用于运行特定类型的查询或加载操作的用户。 为该用户指定永久资源类，而不是经常更改资源类。 静态资源类对工作负荷拥有更大的整体控制，因此建议在考虑动态资源类之前使用静态资源类。
 
 ### <a name="resource-classes-for-load-users"></a>负载用户的资源类
 
-`CREATE TABLE` 默认使用聚集列存储索引。 将数据压缩成列存储索引是一种内存密集型操作，内存压力可能会降低索引质量。 加载数据时，内存压力可能导致需要更高的资源类。 为确保负载具有足够的内存，可以创建一个专门用于运行负载的用户，并将该用户分配到较高的资源类。
+`CREATE TABLE` 默认使用聚集列存储索引。 将数据压缩成列存储索引是一种内存密集型操作，内存压力可能会降低索引质量。 内存压力可能会导致在加载数据时需要更高的资源类。 为确保负载具有足够的内存，可以创建一个专门用于运行负载的用户，并将该用户分配到较高的资源类。
 
 有效处理负载所需的内存量取决于所加载表的性质以及数据大小。 有关内存要求的详细信息，请参阅[最大程度地提高行组的质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 确定内存要求后，选择是要将负载用户分配到静态还是动态资源类。
 
 - 当表的内存要求在特定的范围以内时，可使用静态资源类。 负载将使用适当的内存来运行。 扩展数据仓库时，负载不需要更多的内存。 使用静态资源类时，内存分配会保持恒定。 这种一致性可以节省内存，并允许更多的查询并发运行。 我们建议在新解决方案中先使用静态资源类，因为这些资源类提供更高的控制度。
-- 当表的内存要求差别很大时，可使用动态资源类。 负载所需的内存量可能超过了当前 DWU 或者 cDWU 级别能够提供的内存量。 扩展数据仓库可为负载操作添加更多的内存，从而使负载的执行速度加快。
+- 当表的内存要求差别很大时，可使用动态资源类。 负载所需的内存量可能超过了当前 DWU 或者 cDWU 级别能够提供的内存量。 缩放数据仓库会将更多的内存添加到加载操作，从而使负载的执行速度更快。
 
 ### <a name="resource-classes-for-queries"></a>查询的资源类
 
-有些查询是计算密集型的，有些则不是。  
+有些查询是计算密集型的，有些则不然。  
 
-- 当查询较为复杂但不需要高并发性时，可以选择动态资源类。  例如，生成每日或每周报告只是偶尔需要资源。 如果报告要处理大量的数据，则扩展数据仓库可将更多的内存提供给用户的现有资源类。
-- 当一天中的资源预期有变化时，可选择静态资源类。 例如，如果有许多人查询数据仓库，则静态资源类就很合适。 缩放数据仓库时，分配给用户的内存量不会变化。 因此，可在系统中同时执行多个查询。
+- 如果查询很复杂，但不需要高并发性，请选择动态资源类。  例如，生成每日或每周报告只是偶尔需要资源。 如果报告要处理大量的数据，则扩展数据仓库可将更多的内存提供给用户的现有资源类。
+- 当一天中的资源预期有变化时，可选择静态资源类。 例如，如果有许多人查询数据仓库，则静态资源类就很合适。 缩放数据仓库时，分配给用户的内存量不会改变。 因此，可在系统中同时执行多个查询。
 
-适当的内存授予取决于许多因素，例如，查询的数据量、表架构的性质，以及各种联接、选择和组合谓词。 一般而言，分配更多的内存可让查询更快完成，但同时会降低整体并发性。 如果并发性不是个问题，则过度分配内存不会给吞吐量带来坏处。
+适当的内存授予取决于许多因素，例如查询的数据量、表架构的性质，以及各种联接、选择和组合谓词。 一般而言，分配更多的内存可让查询更快完成，但同时会降低整体并发性。 如果并发性不是个问题，则过度分配内存不会给吞吐量带来坏处。
 
 若要优化性能，可使用不同的资源类。 下一部分提供了一个可以帮助推算最佳资源类的存储过程。
 
@@ -210,16 +221,16 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 下面是此存储过程的用途：
 
 1. 用于查看每个资源类的、根据给定 SLO 推算的并发性和内存授予。 如此示例中所示，用户需要为架构和表名提供 NULL。  
-2. 用于查看根据给定的资源类推算对非分区 CCI 表执行内存密集型 CCI 操作（加载、复制表、重建索引等）时可用的最佳资源类。 该存储过程使用表架构来找出所需的内存授予。
+2. 若要查看给定资源类的非分区 CCI 表中内存密集型 CCI 操作（加载、复制表、重建索引等）的最佳资源类，请参阅。 该存储过程使用表架构来找出所需的内存授予。
 
-### <a name="dependencies--restrictions"></a>依赖关系和限制
+### <a name="dependencies--restrictions"></a>依赖关系 & 限制
 
-- 此存储过程并不旨在计算分区 CCI 表的内存要求。
-- 此存储过程不会针对 CTAS/INSERT-SELECT 的 SELECT 部分考虑内存要求，而是假设它是一个 SELECT。
+- 此存储过程不用于计算分区的 cci 表的内存需求。
+- 此存储过程不会对 CTAS/INSERT select 部分考虑内存要求，而是将其假定为 SELECT。
 - 此存储过程使用其创建时所在的会话中提供的临时表。
-- 此存储过程依赖于当前的供应值（例如硬件配置、DMS 配置），如果其中的任何值发生更改，则此存储过程将无法正常工作。  
-- 此存储过程依赖于现有的并发限制选项，如果这些选项发生更改，则此存储过程将无法正常工作。  
-- 此存储过程依赖于现有的资源类选项，如果这些选项发生更改，则此存储过程将无法正常工作。  
+- 此存储过程取决于当前产品（例如，硬件配置、DMS 配置），如果有任何更改，则此存储过程无法正常工作。  
+- 此存储过程依赖于现有并发限制选项，如果这些更改，则此存储过程无法正常工作。  
+- 此存储过程依赖于现有的资源类产品，如果这些更改，则此存储过程无法正常工作。  
 
 >[!NOTE]  
 >如果结合提供的参数执行存储过程后未获得输出，则可能存在两种情况。
@@ -234,7 +245,7 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 语法：  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: 提供空参数以从 DW DB 提取当前 DWU，或以 "DW100c" 的形式提供任何支持的 DWU
+1. @DWU: 提供一个 NULL 参数以从 DW DB 提取当前 DWU，或以 "DW100c" 的形式提供任何支持的 DWU
 2. @SCHEMA_NAME: 提供表的架构名称
 3. @TABLE_NAME: 提供相关的表名
 
@@ -583,7 +594,7 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅 [保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库][Secure a database in SQL Data Warehouse]。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 <!--Image references-->
 

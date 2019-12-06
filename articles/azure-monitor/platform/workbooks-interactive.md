@@ -1,5 +1,5 @@
 ---
-title: 用 Azure Monitor 工作簿自定义参数创建交互式报表 |Microsoft 文档
+title: Azure Monitor 包含自定义参数的工作簿
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: eeb6eb5d8b3ad6498ff90a9afe1fa4f2c18d30e5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19fd8c108e8075d30ca494ca75d52952849c284a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165948"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872836"
 ---
 # <a name="interactive-workbooks"></a>交互式工作簿
 
@@ -46,7 +46,7 @@ ms.locfileid: "73165948"
 7. 检查设置： "`When an item is selected, export a parameter`
     1. 要导出的字段： `Request`
     2. 参数名称： `SelectedRequest`
-    3. 默认值： `All requests`
+    3. 默认值：30`All requests`
     
     ![显示高级编辑器，其中包含用于将字段导出为参数的设置的图像](./media/workbooks-interactive/advanced-settings.png)
 

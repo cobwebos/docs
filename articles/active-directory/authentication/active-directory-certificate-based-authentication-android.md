@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effa03f042b44890fccd474128e75bd1c0f782a3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381986"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848810"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,16 +35,16 @@ ms.locfileid: "74381986"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
-| Intune 公司门户 |![对号，表示支持此应用程序][1] |
-| Microsoft Teams |![对号，表示支持此应用程序][1] |
-| OneNote |![对号，表示支持此应用程序][1] |
-| OneDrive |![对号，表示支持此应用程序][1] |
-| Outlook |![对号，表示支持此应用程序][1] |
-| Power BI |![对号，表示支持此应用程序][1] |
-| Skype for Business |![对号，表示支持此应用程序][1] |
-| Word/Excel/PowerPoint |![对号，表示支持此应用程序][1] |
-| Yammer |![对号，表示支持此应用程序][1] |
+| Azure 信息保护应用 |![表示支持此应用程序的复选标记][1] |
+| Intune 公司门户 |![表示支持此应用程序的复选标记][1] |
+| Microsoft Teams |![表示支持此应用程序的复选标记][1] |
+| OneNote |![表示支持此应用程序的复选标记][1] |
+| OneDrive |![表示支持此应用程序的复选标记][1] |
+| Outlook |![表示支持此应用程序的复选标记][1] |
+| Power BI |![表示支持此应用程序的复选标记][1] |
+| Skype for Business |![表示支持此应用程序的复选标记][1] |
+| Word/Excel/PowerPoint |![表示支持此应用程序的复选标记][1] |
+| Yammer |![表示支持此应用程序的复选标记][1] |
 
 ### <a name="implementation-requirements"></a>实现要求
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 工作簿创建交互式报表 |时间参数 |Microsoft 文档
+title: Azure Monitor 工作簿时间参数
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 906ebcc49eca72744abf5854a1b320407d0384dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165506"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872751"
 ---
 # <a name="workbook-time-parameters"></a>工作簿时间参数
 
