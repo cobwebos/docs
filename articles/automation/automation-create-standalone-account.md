@@ -4,21 +4,21 @@ description: 本文逐步讲解如何在 Azure 自动化中创建、测试和使
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0dcfcfe5bc6e59eeb4ccb7272ed3f68edc9c4172
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146643"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850391"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
-本文介绍如何在 Azure 门户中创建 Azure 自动化帐户。 可以使用门户自动化帐户来评估和了解自动化，无需使用其他管理解决方案，也无需与 Azure Monitor 日志集成。 以后随时可以添加这些管理解决方案或者与 Azure Monitor 日志集成，以进行 Runbook 作业的高级监视。
+本文介绍如何在 Azure 门户中创建 Azure 自动化帐户。 你可以使用门户自动化帐户来评估和了解自动化，而无需使用其他管理解决方案或与 Azure Monitor 日志集成。 你可以添加这些管理解决方案或与 Azure Monitor 日志集成，以便在将来的任意时间点对 runbook 作业进行高级监视。
 
 使用自动化帐户，可以对在 Azure 资源管理器部署或经典部署中管理资源的 Runbook 进行身份验证。 一个自动化帐户可以跨所有区域和订阅管理给定租户的资源。
 
@@ -35,8 +35,8 @@ ms.locfileid: "71146643"
 
 若要创建或更新自动化帐户，并完成本文所述的任务，必须具有以下特权和权限：
 
-* 若要创建自动化帐户，必须将 Azure AD 用户帐户添加到一个角色，该角色的权限相当于 **Microsoft.Automation** 资源的所有者角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
-* 在 Azure 门户的“Azure Active Directory” > “管理” > “用户设置”下，如果“应用注册”设置为“是”，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
+* 若要创建自动化帐户，你的 Azure AD 用户帐户必须添加到权限与 Microsoft 所有者角色等效的角色 **。自动化**资源。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
+* 在 Azure 门户中，在 " **Azure Active Directory** > **管理** > **用户设置**" 下，如果**应用注册**设置为 **"是"** ，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
 如果在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”页中会显示此消息：“你无权创建”。
 
@@ -68,7 +68,7 @@ ms.locfileid: "71146643"
    >
    > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 *自动化帐户名称在每个区域和资源组中是唯一的。已删除的自动化帐户的名称可能无法立即使用。*
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。
 1. 对于“位置”，请选择一个 Azure 数据中心位置。
@@ -88,7 +88,7 @@ ms.locfileid: "71146643"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| Resource | 描述 |
+| 资源 | 描述 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |

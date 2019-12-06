@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c0d49c3ce06f6fa72daf7aff466ef65e09ced09a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241800"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851530"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
@@ -40,12 +40,14 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 有关 Windows 更新错误和缓解措施的详细信息，请参阅[按组件 Windows 更新错误代码](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)和 TechNet 文章[Windows 更新代理-错误代码](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)。
 
+有关此任务的 YAML 配置的信息，请查看我们的[反恶意软件 YAML 选项](yaml-configuration.md#anti-malware-scanner-task)
+
 ## <a name="binskim-task"></a>BinSkim 任务
 
 > [!NOTE]
 > 你的生成必须满足以下条件之一，然后才能运行 BinSkim 任务：
->    - 您的生成从托管代码生成二进制项目。
->    - 已提交要使用 BinSkim 进行分析的二进制项目。
+>  - 您的生成从托管代码生成二进制项目。
+>  - 已提交要使用 BinSkim 进行分析的二进制项目。
 
 以下屏幕截图和列表中显示了任务配置的详细信息。
 
@@ -58,8 +60,8 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 - 在 "**目标**" 中，为文件、目录或筛选器模式输入一个或多个说明符。 这些说明符解析为要分析的一个或多个二进制文件：
     - 多个指定的目标必须用分号（;) 分隔。
     - 说明符可以是单个文件，也可以包含通配符。
-    - 目录规范必须始终以\\* 结尾。
-    - 例如：
+    - 目录规范必须始终以 \\* 结尾。
+    - 示例：
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
@@ -75,9 +77,11 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > 如果为\\目标指定目录，则尾随 * 非常重要。
+          > 如果为目标指定目录，则尾随 \\* 非常重要。
 
 有关 BinSkim 命令行参数、按 ID 或退出代码的规则的详细信息，请参阅[BinSkim 用户指南](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)。
+
+有关此任务的 YAML 配置的信息，请查看我们的[BINSKIM YAML 选项](yaml-configuration.md#binskim-task)
 
 ## <a name="credential-scanner-task"></a>凭据扫描器任务
 
@@ -89,49 +93,54 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
   - **输出格式**：可用值包括**TSV**、 **CSV**、 **SARIF**和**PREfast**。
   - **工具版本**：建议选择 "**最新**"。
-  - **扫描文件夹**：要扫描的存储库文件夹。
-  - **Searchers 文件类型**：用于查找用于扫描的 searchers 文件的选项。
-  - **禁止显示文件**：[JSON](https://json.org/)文件可以在输出日志中取消显示问题。 有关抑制方案的详细信息，请参阅本文的 "常见问题解答" 部分。
+  - **Scan 文件夹**：要扫描的存储库文件夹。
+  - **Searchers 文件类型**：用于查找用于扫描的 Searchers 文件的选项。
+  - **禁止显示文件**： [JSON](https://json.org/)文件可以在输出日志中取消显示问题。 有关抑制方案的详细信息，请参阅本文的 "常见问题解答" 部分。
   - **详细输出**：一目了然。
   - **批大小**：用于运行凭据扫描程序的并发线程数。 默认值为 20。 可能的值介于1到2147483647之间。
   - **匹配超时**：在放弃检查之前，尝试搜索者匹配所用的时间（以秒为单位）。
   - **文件扫描读取缓冲区大小**：读取内容时使用的缓冲区大小（以字节为单位）。 默认值为524288。  
-  - **最大文件扫描读取字节数**：内容分析期间要从文件中读取的最大字节数。 默认值为104857600。
-  - **控制选项** > **运行此任务**：指定将运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
-  - **版本**：Azure DevOps 中的生成任务版本。 此选项不经常使用。
+  - **最大文件扫描读取字节**数：内容分析期间要从文件中读取的最大字节数。 默认值为104857600。
+  -  > **运行此任务**的**控件选项**：指定将运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
+  - **版本**： Azure DevOps 中的生成任务版本。 此选项不经常使用。
+
+有关此任务的 YAML 配置的信息，请查看[凭据扫描器 YAML 选项](yaml-configuration.md#credential-scanner-task)
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft 安全风险检测任务
 
 > [!NOTE]
 > 使用 MSRD 任务之前，必须创建和配置具有 Microsoft 安全风险检测（MSRD）服务的帐户。 此服务需要单独的载入过程。 与此扩展中的大多数其他任务不同，此任务需要单独的订阅和 MSRD。
 >
-> 请参阅[microsoft 安全风险检测](https://aka.ms/msrddocs)和[microsoft 安全风险检测：](https://docs.microsoft.com/security-risk-detection/how-to/)如何获取说明。
+> 请参阅[Microsoft 安全风险检测](https://aka.ms/msrddocs)和[Microsoft 安全风险检测：如何](https://docs.microsoft.com/security-risk-detection/how-to/)了解相关说明。
 
 以下列表显示了配置此任务的详细信息。 对于任何 UI 元素，您可以将鼠标悬停在该元素上以获得帮助。
 
-   - **MSRD 的 Azure DevOps 服务终结点名称**：Azure DevOps 服务终结点的泛型类型将载入 MSRD 实例 URL 和 REST API 访问令牌存储在一起。 如果已创建此类终结点，则可以在此处指定。 否则，请选择 "**管理**" 链接，为此 MSRD 任务创建和配置新的服务终结点。
+   - **适用于 MSRD 的 Azure DevOps 服务终结点名称**： azure DevOps 服务终结点的泛型类型存储载入 MSRD 实例 URL 和 REST API 访问令牌。 如果已创建此类终结点，则可以在此处指定。 否则，请选择 "**管理**" 链接，为此 MSRD 任务创建和配置新的服务终结点。
    - **帐户 ID**：可以从 MSRD 帐户 URL 检索的 GUID。
-   - **二进制文件的 url**：以分号分隔的公开可用 Url 列表。 模糊化计算机使用这些 Url 下载二进制文件。
-   - **Seed 文件的 url**：以分号分隔的公开可用 Url 列表。 模糊化计算机使用这些 Url 下载种子。 如果将 seed 文件与二进制文件一起下载，则指定此值是可选的。
+   - **二进制文件的 url**：以分号分隔的公开可用 url 列表。 模糊化计算机使用这些 Url 下载二进制文件。
+   - **Seed 文件的 url**：以分号分隔的公开可用 url 列表。 模糊化计算机使用这些 Url 下载种子。 如果将 seed 文件与二进制文件一起下载，则指定此值是可选的。
    - **操作系统平台类型**：运行模糊化作业的计算机的操作系统（OS）平台。 可用值为**Windows**和**Linux**。
-   - **Windows edition/Linux 版**：运行模糊化作业的计算机的操作系统版本。 如果计算机具有不同的操作系统版本，则可以覆盖默认值。
+   - **Windows edition/Linux 版本**：运行模糊化作业的计算机的操作系统版本。 如果计算机具有不同的操作系统版本，则可以覆盖默认值。
    - **包安装脚本**：要在测试计算机上运行的脚本。 此脚本在提交模糊化作业之前安装测试目标程序及其依赖项。
    - **作业提交参数**：
-       - **种子目录**：模糊计算机上包含种子的目录的路径。
+       - **种子目录**：包含种子的模糊计算机上的目录的路径。
        - **Seed Extension**：种子的文件扩展名。
-       - **测试驱动程序可执行文件**：模糊计算机上目标可执行文件的路径。
-       - **测试驱动程序可执行体系结构**：目标可执行文件的体系结构。 可用值为**x86**和**amd64**。
-       - **测试驱动程序参数**：传递给测试可执行文件的命令行参数。 参数 "% testfile.txt%" （包括引号）自动替换为目标文件的完整路径。 此文件由测试驱动程序分析并且是必需的。
-       - 测试**完成后，测试驱动程序进程退出**：如果测试驱动程序在完成后终止，则选中此复选框。 如果需要强行关闭测试驱动程序，请将其清除。
-       - **最长持续时间（秒）** ：预计目标程序分析输入文件所需的预期时间最长的时间。 估算越精确，模糊化应用运行的效率就越高。
-       - **测试驱动程序可以重复运行**：如果测试驱动程序可以重复运行，则不依赖于持久性或共享全局状态，请选中此复选框。
-       - **可重命名测试驱动程序**：如果可以重命名测试驱动程序可执行文件，但仍能正常工作，请选中此复选框。
-       - **模糊化应用程序作为单个 OS 进程运行**：如果测试驱动程序在单个操作系统进程下运行，则选中此复选框。 如果测试驱动程序产生额外的进程，请清除此方法。
+       - **测试驱动程序可执行**文件：模糊化计算机上目标可执行文件的路径。
+       - **测试驱动程序可执行文件体系结构**：目标可执行文件的体系结构。 可用值为**x86**和**amd64**。
+       - **测试驱动程序参数**：传递到测试可执行文件的命令行参数。 参数 "% testfile.txt%" （包括引号）自动替换为目标文件的完整路径。 此文件由测试驱动程序分析并且是必需的。
+       - 测试**完成后，测试驱动程序进程退出**：如果测试驱动程序在完成后终止，则选择此复选框。 如果需要强行关闭测试驱动程序，请将其清除。
+       - **最长持续时间（以秒为单位）** ：预计目标程序分析输入文件所需的最长预期时间。 估算越精确，模糊化应用运行的效率就越高。
+       - **可以重复运行测试驱动程序**：如果测试驱动程序可以重复运行（不依赖于持久性或共享的全局状态），请选中此复选框。
+       - **可以重命名测试驱动程序**：如果可以重命名测试驱动程序可执行文件，但仍能正常工作，请选中此复选框。
+       - **模糊化应用程序作为单个 Os 进程运行**：如果测试驱动程序在单个操作系统进程下运行，则选择此复选框。 如果测试驱动程序产生额外的进程，请清除此方法。
+
+有关此任务的 YAML 配置的信息，请查看[Microsoft 安全风险检测 YAML 选项](yaml-configuration.md#microsoft-security-risk-detection-task)
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn 分析器任务
 
 > [!NOTE]
 > 你的生成需要满足以下条件，然后才能运行 Roslyn 分析器任务：
+>
 > - 您的生成定义包含内置的 MSBuild 或 VSBuild 生成任务以编译C#或 Visual Basic 代码。 分析器任务依赖于内置任务的输入和输出来运行启用了 Roslyn 分析器的 MSBuild 编译。
 > - 运行此生成任务的生成代理安装了 Visual Studio 2017 版本15.5 或更高版本，因此它使用编译器版本2.6 或更高版本。
 
@@ -139,12 +148,13 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 可用选项包括：
 
-- **规则集**：值为 " **Sdl 要求**"、" **sdl 建议**" 或您自己的自定义规则集。
+- **规则集**：值为**sdl 必需**、 **sdl 建议**或你自己的自定义规则集。
 - **分析器版本**：建议选择 "**最新**"。
-- **编译器警告禁止显示文件**：带有禁止显示的警告 Id 列表的文本文件。
-- **控制选项** > **运行此任务**：指定将运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
+- **编译器警告禁止显示文件**：一个文本文件，其中包含已取消显示的警告 id 的列表。
+-  > **运行此任务**的**控件选项**：指定将运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
 
 > [!NOTE]
+>
 > - Roslyn 分析器与编译器集成，只能作为 csc 编译的一部分运行。 因此，此任务需要重播或再次运行在生成中运行的编译器命令。 此重播或运行通过查询 MSBuild 生成任务日志 Visual Studio Team Services （VSTS）来完成。
 >
 >   任务不能通过其他方式可靠地从生成定义获取 MSBuild 编译命令行。 建议添加一个自由格式文本框，使用户能够输入其命令行。 但这样做很难使这些命令行保持最新，并与主版本同步。
@@ -161,12 +171,16 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 你可以在 NuGet 页[CodeAnalysis](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)上找到此生成任务安装并使用的分析器包。
 
+有关此任务的 YAML 配置的信息，请查看我们的[Roslyn 分析器 YAML 选项](yaml-configuration.md#roslyn-analyzers-task)
+
 ## <a name="tslint-task"></a>TSLint 任务
 
 有关 TSLint 的详细信息，请参阅[TSLint GitHub](https://github.com/palantir/tslint)存储库。
 
 >[!NOTE] 
 >如您所知， [TSLint GitHub](https://github.com/palantir/tslint)存储库主页指出 TSLint 将在2019的某个时间被弃用。 Microsoft 正在调查[ESLint](https://github.com/eslint/eslint)作为备用任务。
+
+有关此任务的 YAML 配置的信息，请查看我们的[TSLINT YAML 选项](yaml-configuration.md#tslint-task)
 
 ## <a name="publish-security-analysis-logs-task"></a>发布安全分析日志任务
 
@@ -175,8 +189,10 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 ![配置发布安全分析日志生成任务](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
 - **项目名称**：任何字符串标识符。
-- **项目类型**：根据所做的选择，可以将日志发布到 Azure DevOps 服务器或生成代理可以访问的共享文件。
-- **工具**：您可以选择保留特定工具的日志，也可以选择**所有工具**来保留所有日志。
+- **项目类型**：根据您的选择，您可以将日志发布到您的 Azure DevOps Server 或生成代理可以访问的共享文件。
+- **工具**：你可以选择保留特定工具的日志，也可以选择**所有工具**来保留所有日志。
+
+有关此任务的 YAML 配置的信息，请查看[发布安全日志 YAML 选项](yaml-configuration.md#publish-security-analysis-logs-task)
 
 ## <a name="security-report-task"></a>安全报告任务
 
@@ -186,8 +202,10 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 - **报表**：选择**管道控制台**、 **TSV 文件**和**Html 文件**格式中的任何一种。 为每个选定的格式创建一个报表文件。
 - **工具**：在生成定义中选择要为其提供检测到的问题摘要的工具。 对于所选的每个工具，可能会有选择是仅显示错误还是查看摘要报表中的错误和警告。
-- **高级选项**：如果选择的某个工具没有日志，可以选择记录警告或错误。 如果记录错误，任务将失败。
-- **基本日志文件夹**：你可以自定义要在其中找到日志的基本日志文件夹。 但通常不会使用此选项。
+- **高级选项**：如果未选择任何一个工具的日志，则可以选择记录警告或错误。 如果记录错误，任务将失败。
+- **基本日志文件夹**：可以自定义要在其中找到日志的基本日志文件夹。 但通常不会使用此选项。
+
+有关此任务的 YAML 配置的信息，请查看[安全报告 YAML 选项](yaml-configuration.md#security-report-task)
 
 ## <a name="post-analysis-task"></a>分析后任务
 
@@ -196,9 +214,13 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 ![配置后期分析生成任务](./media/security-tools/a-post-analysis600.png)
 
 - **工具**：选择您要为其有条件地注入生成中断的生成定义中的工具。 对于所选的每个工具，可能会有选择是只中断错误，还是仅中断错误和警告。
-- **报表**：您可以选择写入导致生成中断的结果。 结果将写入 Azure DevOps 控制台窗口和日志文件。
-- **高级选项**：如果选择的某个工具没有日志，可以选择记录警告或错误。 如果记录错误，任务将失败。
+- **报表**：可以选择写入导致生成中断的结果。 结果将写入 Azure DevOps 控制台窗口和日志文件。
+- **高级选项**：如果未选择任何一个工具的日志，则可以选择记录警告或错误。 如果记录错误，任务将失败。
+
+有关此任务的 YAML 配置的信息，请查看我们的[Post 分析 YAML 选项](yaml-configuration.md#post-analysis-task)
 
 ## <a name="next-steps"></a>后续步骤
+
+有关基于 YAML 的配置的信息，请参阅我们的[YAML 配置指南](yaml-configuration.md)。
 
 如果你对安全代码分析扩展和提供的工具有其他疑问，请查看[我们的常见问题页面](security-code-analysis-faq.md)。

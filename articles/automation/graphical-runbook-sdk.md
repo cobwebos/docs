@@ -4,23 +4,23 @@ description: 本文介绍如何使用 Azure 自动化图形 Runbook SDK
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e4229079a1fa50295eef85b42f91bbc1b4a21fc3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a06c190931fdd0f49132f815b153c08ece68c9f3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478587"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849541"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自动化图形 Runbook SDK
 
 [图形 Runbook](automation-graphical-authoring-intro.md) 是帮助管理基础 Windows PowerShell 或 PowerShell 工作流代码复杂性的 Runbook。 Microsoft Azure 自动化图形创作 SDK 可让开发人员创建和编辑用于 Azure 自动化服务的图形 Runbook。 以下代码片段演示通过代码创建图形 Runbook 的基本流程。
 
-## <a name="pre-requisites"></a>先决条件
+## <a name="pre-requisites"></a>必备组件
 
 若要开始，请将 `Microsoft.Azure.Automation.GraphicalRunbook.Model` 包导入到项目中。
 
@@ -95,7 +95,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 
 活动由 `Orchestrator.GraphRunbook.Model` 命名空间中的以下类实现：
 
-|类  |activities  |
+|类  |活动  |
 |---------|---------|
 |CommandActivity     | 调用 PowerShell 命令（cmdlet、函数等）。        |
 |InvokeRunbookActivity     | 调用另一个内联 Runbook。        |
@@ -103,7 +103,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 |WorkflowScriptActivity     | 在 Runbook 的上下文中执行 PowerShell 或 PowerShell 工作流代码的块（具体取决于 Runbook 类型）。 这是一个强大的工具，但不要滥用：UI 将以文本形式显示此脚本块；执行引擎会将提供的块视为黑盒，并且不会尝试分析其内容，但基本语法检查除外。 如果只需调用单个 PowerShell 命令，请优先使用 CommandActivity。        |
 
 > [!NOTE]
-> 请勿从提供的类派生自己的活动：Azure 自动化将无法使用具有自定义活动类型的 runbook。
+> 不要从提供的类派生自己的活动：Azure 自动化无法对自定义活动类型使用 Runbook。
 
 必须以值描述符而不是直接值的形式提供 CommandActivity 和 InvokeRunbookActivity 参数。 值描述符指定如何生成实际参数值。 目前提供以下值描述符：
 
@@ -119,7 +119,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 |PowerShellExpressionValueDescriptor     | 指定自由格式的 PowerShell 表达式，调用活动之后，会紧接着计算该表达式。  <br/>这是一个强大的工具，但不要滥用：UI 将以文本形式显示此表达式；执行引擎会将提供的块视为黑盒，并且不会尝试分析其内容，但基本语法检查除外。 如果可能，请优先使用更具体的值描述符。      |
 
 > [!NOTE]
-> 请勿从提供的类派生自己的值描述符：Azure 自动化将无法使用具有自定义值描述符类型的 runbook。
+> 不要从提供的类派生自己的值描述符：Azure 自动化无法对自定义值描述符类型使用 Runbook。
 
 实例化连接活动的链接，并将其添加到 Runbook：
 

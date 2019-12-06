@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828252"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851513"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 有问题？ 有关详细信息，请查看以下常见问题解答。
@@ -26,7 +26,7 @@ ms.locfileid: "71828252"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
-不能。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
+不。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>我是否必须在生成时运行 Microsoft 安全代码分析？ 
 
@@ -55,7 +55,7 @@ ms.locfileid: "71828252"
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>能否在 Azure DevOps 生成中跨多个存储库运行一个生成任务（例如凭据扫描程序）？
 
-不能。 不支持在单个管道中跨多个存储库运行安全开发工具。
+不。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建指定的输出文件，或者找不到指定的输出文件
 
@@ -88,9 +88,9 @@ ms.locfileid: "71828252"
 
 在其安装过程中，扩展提供的安全生成任务将可供组织中的所有用户使用。 当你创建或编辑 Azure 管道时，"生成-任务集合" 列表中会提供这些任务。 否则，在 Azure DevOps 组织中安装扩展不起作用。 安装不会修改任何帐户设置、项目设置或管道。
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装扩展是否会修改现有的 Azure 管道？ 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装扩展是否会修改现有 Azure Pipelines？ 
 
-不能。 安装扩展会使安全生成任务可用于添加到管道。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
+不。 安装扩展会使安全生成任务可用于添加到管道。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
 
 ## <a name="task-specific-faq"></a>任务特定的常见问题
 
@@ -192,7 +192,7 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 
 完整的错误消息：
 
-"错误：使用 NETCore 版本1.x 还原了项目，但使用当前设置时，将*改用版本为 y* *的版本。* 若要解决此问题，请确保使用相同的设置进行还原，并进行后续操作，例如生成或发布。 通常，如果在生成或发布过程中设置了 Runtimeidentifiers 属性，但在还原过程中未设置此属性，则会出现此问题。
+"错误：使用 NETCore 版本1.x 还原了项目，但使用当前设置时，将*改用版本为 y* *的版本。* 若要解决此问题，请确保将相同的设置用于 restore 和后续操作，例如 build 或 publish。 如果在 build 或 publish 期间设置了 RuntimeIdentifier 属性，而没有在 restore 过程中设置，通常就会出现此问题。”
 
 由于 Roslyn 分析器任务作为编译的一部分运行，因此生成计算机上的源树需要处于可生成状态。
 
@@ -222,9 +222,6 @@ Roslyn 分析器生成任务需要从 MSBuild 生成任务中查询 MSBuild 日�
 
 如果需要更多帮助，Microsoft 安全代码分析支持将于太平洋标准时间上午9:00 到晚上5:00 的星期五提供。
 
-  - 载入：请联系你的技术客户经理，开始。
+- 载入：请参阅我们的[载入文档](security-code-analysis-onboard.md)
   
-  - 支持：通过电子邮件发送[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)团队。
-
-  >[!NOTE] 
-  >你可能没有与 Microsoft 的付费支持关系。 或者，你可能有一个支持产品，它阻止你从 Phoenix 目录购买服务。 如果满足上述任一条件，请访问我们的[支持服务主页](https://www.microsoft.com/enterprise/services/support)获取详细信息。
+- 支持：通过电子邮件发送[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)团队

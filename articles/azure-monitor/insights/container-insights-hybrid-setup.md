@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514610"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841568"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>为容器配置混合 Kubernetes 群集 Azure Monitor
 
@@ -30,7 +30,7 @@ ms.locfileid: "73514610"
     >不支持对同一 Log Analytics 工作区使用同一群集名称监视多个群集。 群集名称必须是唯一的。
     >
 
-* 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理对工作区和日志数据的访问](../platform/manage-access.md)
+* 你是**Log Analytics 参与者角色**的成员，用于启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理对工作区和日志数据的访问](../platform/manage-access.md)
 
 * [HELM client](https://helm.sh/docs/using_helm/) ，为指定的 Kubernetes 群集载入容器的 Azure Monitor 图表。
 
@@ -40,7 +40,7 @@ ms.locfileid: "73514610"
     |------|---------|   
     |*.ods.opinsights.azure.com |端口 443 |  
     |*.oms.opinsights.azure.com |端口 443 |  
-    |*.blob.core.windows.net |端口 443 |  
+    |\* .blob.core.windows.net |端口 443 |  
     |*. dc.services.visualstudio.com |端口 443 | 
 
 * 容器化代理需要在群集中的所有节点上打开 `cAdvisor port: 10255` 以收集性能指标。
@@ -78,14 +78,14 @@ ms.locfileid: "73514610"
 
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 版本2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
 此方法包含两个 JSON 模板。 一个模板指定用于启用监视的配置，另一个模板包含参数值，通过配置这些参数值可指定：
 
 - **workspaceResourceId** -Log Analytics 工作区的完整资源 ID。
 - **workspaceRegion** -创建工作区的区域，在 Azure 门户中查看时也称为工作区属性中的**位置**。
 
-若要首先标识**containerSolutionParams**文件中 `workspaceResourceId` 参数值所需的 Log Analytics 工作区的完整资源 ID，请执行以下步骤，然后运行 PowerShell cmdlet 或 Azure CLI 命令将解决方案.
+若要首先标识**containerSolutionParams**文件中 `workspaceResourceId` 参数值所需的 Log Analytics 工作区的完整资源 ID，请执行以下步骤，然后运行 PowerShell cmdlet 或 Azure CLI 命令添加解决方案。
 
 1. 使用以下命令列出你有权访问的所有订阅：
 
@@ -101,15 +101,15 @@ ms.locfileid: "73514610"
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    复制 **SubscriptionId** 的值。
+    复制 " **SubscriptionId**" 的值。
 
-2. 使用以下命令切换到托管 Log Analytics 工作区的订阅：
+2. 使用以下命令切换到承载 Log Analytics 工作区的订阅：
 
     ```azurecli
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. 以下示例以默认 JSON 格式显示订阅中的工作区列表。 
+3. 下面的示例以默认 JSON 格式显示订阅中的工作区列表。 
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
@@ -224,7 +224,7 @@ ms.locfileid: "73514610"
        provisioningState       : Succeeded
        ```
 
-   * 若要使用 Azure CLI 进行部署，请运行下列命令：
+   * 若要 Azure CLI 部署，请运行以下命令：
     
        ```azurecli
        az login
@@ -282,6 +282,25 @@ ms.locfileid: "73514610"
 
 >[!NOTE]
 >从代理到 Azure Log Analytics 工作区中的提交，引入延迟时间大约为5到10分钟。 群集的状态显示值 "**无数据**" 或 "**未知**"，直到所有必需的监视数据在 Azure Monitor 中可用。 
+
+## <a name="troubleshooting"></a>故障排除
+
+如果尝试为混合 Kubernetes 群集启用监视时遇到错误，请将 PowerShell 脚本复制[TroubleshootError_nonAzureK8s ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) ，并将其保存到计算机上的文件夹中。 提供此脚本是为了帮助检测和解决遇到的问题。 用于检测和尝试更正的问题如下所示：
+
+* 指定的 Log Analytics 工作区有效 
+* Log Analytics 工作区配置有容器解决方案的 Azure Monitor。 如果不是，请配置工作区。
+* OmsAgent replicaset pod 正在运行
+* OmsAgent daemonset pod 正在运行
+* OmsAgent 运行状况服务正在运行 
+* 容器化代理上配置的 Log Analytics 工作区 Id 和密钥与用于配置见解的工作区匹配。
+* 验证所有 Linux 辅助角色节点都有 `kubernetes.io/role=agent` 标签来计划 rs pod。 如果它不存在，请添加它。
+* 验证是否已在群集中的所有节点上打开 `cAdvisor port: 10255`。
+
+若要使用 Azure PowerShell 执行，请在包含脚本的文件夹中使用以下命令：
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>后续步骤
 

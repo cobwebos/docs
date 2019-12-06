@@ -7,17 +7,24 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/17/2017
-ms.openlocfilehash: 7083ecf01666deecccada9ab0c93e88af53d252b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 02c4d6ff9000e9f9e1f427144fed237d609a463d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173652"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841670"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK 发行说明 - Application Insights
 以下是 SDK 的详细发行说明和更新说明：
 
-* [.NET Sdk （包括 ASP.NET、ASP.Net Core 和日志记录适配器）](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+
+* .NET SDK
+    - 对于版本2.12 和更高版本： [.Net sdk （包括 ASP.NET、ASP.NET Core 和日志记录适配器）](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+    - 对于较旧版本：
+      - [ASP.NET Web Server SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
+      - [.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+      - [.NET 日志记录适配器](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
+      - [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [其他平台](https://github.com/Microsoft/ApplicationInsights-Home)

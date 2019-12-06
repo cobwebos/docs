@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 27aec53fd2e92e19f1c749e833217fb8b5deae57
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 0ab2ba2c49dd0d0f946358c8f52a6daaf7428dd1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672577"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851411"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -27,7 +27,7 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 
 需要启用与 Azure FarmBeats 实例的合作伙伴集成。 此步骤将创建一个客户端，该客户端将有权访问你的 Azure FarmBeats 作为你的设备伙伴，并提供后续步骤中所需的以下值。
 
-- API 终结点–这是数据中心 URL，例如， https://<datahub>。 azurewebsites.net
+- API 终结点–这是数据中心 URL，例如， https://\<datahub > appname>.azurewebsites.net。
 - 租户 ID
 - 客户端 ID
 - 客户端机密
@@ -86,8 +86,8 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 |    属性          |    制造商提供的其他属性   |
 |    **设备**             |                      |
 |   DeviceModelId     |     关联设备模型的 ID  |
-|  hardwareId          | 设备的唯一 ID，如 MAC 地址等。
-|  reportingInterval        |   报告间隔（秒）
+|  HardwareId          | 设备的唯一 ID，如 MAC 地址等。
+|  ReportingInterval        |   报告间隔（秒）
 |  Location            |  设备纬度（-90 到 + 90）/Longitude （-180 至180）/Elevation （米）   
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则相同的用户定义名称应传播到 FarmBeats。|
@@ -106,7 +106,7 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 |    描述        | 提供模型的有意义说明  |
 |   属性       |  制造商提供的其他属性  |
 |    **器**      |          |
-| hardwareId          |   制造商设置的传感器的唯一 ID |
+| HardwareId          |   制造商设置的传感器的唯一 ID |
 |  sensorModelId     |    关联的传感器型号的 ID   |
 | 位置          |  传感器纬度（-90 到 + 90）/Longitude （-180-180）/Elevation （米）|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
@@ -119,7 +119,7 @@ FarmBeats 中常见的情况是引入（IoT）用于资源（如设备和传感�
 
 **用于创建元数据的 API 请求**
 
-若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL、要查询的资源的 URI、提交数据以创建或删除请求以及添加一个或多个 HTTP 请求标头组合起来。 API 服务的 URL 是 API 终结点，即数据中心 URL （ https://<yourdatahub>. azurewebsites.net）  
+若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL、要查询的资源的 URI、提交数据以创建或删除请求以及添加一个或多个 HTTP 请求标头组合起来。 API 服务的 URL 是 API 终结点，即数据中心 URL （ https://\<yourdatahub >. appname>.azurewebsites.net）  
 
 **身份验证**：
 
@@ -135,11 +135,33 @@ FarmBeats 数据中心使用持有者身份验证，此身份验证需要我们�
 headers = *{"Authorization": "Bearer " + access_token, …}*
 ```
 
+下面是提供访问令牌的示例 Python 代码，可用于对 FarmBeats 的后续 API 调用： 
+
+```python
+import azure 
+
+from azure.common.credentials import ServicePrincipalCredentials 
+import adal 
+#FarmBeats API Endpoint 
+ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
+CLIENT_ID = "<Your Client ID>"   
+CLIENT_SECRET = "<Your Client Secret>"   
+TENANT_ID = "<Your Tenant ID>" 
+AUTHORITY_HOST = 'https://login.microsoftonline.com' 
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
+#Authenticating with the credentials 
+context = adal.AuthenticationContext(AUTHORITY) 
+token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
+#Should get an access token here 
+access_token = token_response.get('accessToken') 
+```
+
+
 **HTTP 请求标头**：
 
 以下是在对 FarmBeats 数据中心进行 API 调用时需要指定的最常见请求标头：
 
-- Content-type： application/json
+- Content-Type: application/json
 - 授权：持有者 < 访问令牌 >
 - 接受： application/json
 
@@ -271,6 +293,26 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 **将遥测消息作为客户端发送**
 
 建立作为 EventHub 客户端的连接后，可以将消息作为 json 发送到 EventHub。  
+
+下面是一个示例 Python 代码，它将遥测作为客户端发送到指定的事件中心：
+
+```python
+import azure
+from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
+EVENTHUBNAME = "<EventHub Name provided by customer>"
+
+write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+sender = write_client.add_sender(partition="0")
+write_client.run()
+for i in range(5):
+    telemetry = "<Canonical Telemetry message>"
+    print("Sending telemetry: " + telemetry)
+    sender.send(EventData(telemetry))
+write_client.stop()
+
+```
+
 将历史传感器数据格式转换为 Azure FarmBeats 了解的规范格式。 规范消息格式如下所示：  
 
 ```json

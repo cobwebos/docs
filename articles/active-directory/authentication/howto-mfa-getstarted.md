@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558538"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848385"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -218,7 +218,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 必须防止无意中锁定 Azure AD 租户，这一点很重要。 可以通过[在租户中创建两个或更多紧急访问帐户](../users-groups-roles/directory-emergency-access.md)并将其从条件访问策略中排除，来减轻这种意外的管理访问权限。
 
-### <a name="create-conditional-access-policy"></a>创建条件性访问策略
+### <a name="create-conditional-access-policy"></a>创建条件访问策略
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到“Azure Active Directory”、“条件访问”。
@@ -283,12 +283,12 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 下表列出了更改此设置的效果。
 
-| 设置 | 用户 MFA 状态 | 结果 |
+| 设置 | 用户 MFA 状态 | Effects |
 | --- | --- | --- |
 | 项不存在 | 未注册 | MFA 质询失败 |
 | 值设置为 True/未设置 | 未注册 | MFA 质询失败 |
 | 项设置为 False | 未注册 | 无 MFA 身份验证 |
-| 键设置为 False 或 True | 参加 | 必须通过 MFA 进行身份验证 |
+| 键设置为 False 或 True | 已注册 | 必须通过 MFA 进行身份验证 |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>与 Active Directory 联合身份验证服务集成
 

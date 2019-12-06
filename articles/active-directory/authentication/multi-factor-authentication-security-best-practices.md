@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208434"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846821"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
 
@@ -33,7 +33,7 @@ ms.locfileid: "74208434"
 
 ![向用户应用许可证，启用，通知](./media/multi-factor-authentication-security-best-practices/ems.png)
 
-如果拥有 Azure AD Premium 或企业移动性 + 安全性许可证，则已拥有了 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，就可以启用 MFA。
+如果拥有 Azure AD Premium 或企业移动性 + 安全性许可证，则已拥有了 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，然后便可以启用 MFA。
 
 设置多重身份验证时，请注意以下提示：
 
@@ -75,7 +75,7 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 
 * 如果使用 Active Directory 联合身份验证服务 (AD FS) 来保护 Azure AD 资源，则第一个验证步骤是使用 AD FS 在本地执行的。 遵循声明在本地执行第二步。
 * 不需要在 AD FS 联合服务器上安装 Azure 多重身份验证服务器。 但是，必须在运行 AD FS 的 Windows Server 2012 R2 上安装用于 AD FS 的多重身份验证适配器。 可以将服务器安装在其他计算机上（只要它是受支持的版本），并将 AD FS 适配器单独安装在 AD FS 联合服务器上。 
-* 多重身份验证 AD FS 适配器安装向导将在 Active Directory 中创建名为 PhoneFactor Admins 的安全组，并将 AD FS 服务帐户添加到此组。 检查是否在域控制器上创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 需要时，在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor 管理员组。
+* 多重身份验证 AD FS 适配器安装向导会在 Active Directory 中创建名为 PhoneFactor Admins 的安全组，然后将 AD FS 服务帐户添加到此组。 检查是否在域控制器上创建了 PhoneFactor Admins 组，以及 AD FS 服务帐户是否是此组的成员。 需要时，在域控制器上手动将 AD FS 服务帐户添加到 PhoneFactor 管理员组。
 
 ### <a name="user-portal"></a>用户门户
 

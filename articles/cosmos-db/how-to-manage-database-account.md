@@ -1,17 +1,17 @@
 ---
 title: 了解如何在 Azure Cosmos DB 中管理数据库帐户
-description: 了解如何在 Azure Cosmos DB 中管理数据库帐户
+description: 了解如何使用 Azure 门户、PowerShell、CLI 和 Azure 资源管理器模板管理 Azure Cosmos DB 资源
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582621"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873669"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 
@@ -43,7 +43,7 @@ ms.locfileid: "73582621"
 
 1. 导航到 Azure Cosmos 帐户，打开“全局复制数据”菜单。
 
-1. 要添加区域，请在地图上选择包含与所需区域对应的 **+** 标签的六边形。 另外，若要添加某个区域，请选择“+ 添加区域”选项，然后从下拉菜单中选择一个区域。
+1. 要添加区域，请在地图上选择包含与所需区域对应的 + 标签的六边形。 另外，若要添加某个区域，请选择“+ 添加区域”选项，然后从下拉菜单中选择一个区域。
 
 1. 若要删除区域，请选择带对号的蓝色六边形以从地图中清除一个或多个区域。 或者选择右侧位于区域旁边的“废纸篓”(🗑) 图标。
 
@@ -57,11 +57,11 @@ ms.locfileid: "73582621"
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
-请参阅[使用 Azure CLI 添加或删除区域](manage-with-cli.md#add-or-remove-regions)
+请参阅[添加或删除带有 Azure CLI 的区域](manage-with-cli.md#add-or-remove-regions)
 
 ### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 添加或删除区域](manage-with-powershell.md#update-account)
+请参阅[在 Powershell 中添加或删除区域](manage-with-powershell.md#update-account)
 
 ## <a id="configure-multiple-write-regions"></a>配置多个写入区域
 
@@ -73,13 +73,13 @@ ms.locfileid: "73582621"
 
 ### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-请参阅[使用 Azure CLI 启用多写入区域](manage-with-cli.md#enable-multiple-write-regions)
+请参阅[使用 Azure CLI 启用多写区域](manage-with-cli.md#enable-multiple-write-regions)
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 启用多写入区域](manage-with-powershell.md#multi-master)
+请参阅[使用 Powershell 启用多写区域](manage-with-powershell.md#multi-master)
 
-### <a id="configure-multiple-write-regions-arm"></a>Resource Manager 模板
+### <a id="configure-multiple-write-regions-arm"></a>资源管理器模板
 
 可通过部署用于创建帐户的资源管理器模板和设置 `enableMultipleWriteLocations: true` 来将一个帐户从单主数据库迁移到多主数据库。 以下 Azure 资源管理器模板是一个极简模板，它将为 SQL API 部署 Azure Cosmos 帐户，并启用两个区域和多个写入位置。
 
@@ -190,11 +190,11 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-请参阅[使用 Azure CLI 设置故障转移优先级](manage-with-cli.md#set-failover-priority)
+请参阅[设置故障转移优先级与 Azure CLI](manage-with-cli.md#set-failover-priority)
 
 ### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 设置故障转移优先级](manage-with-powershell.md#modify-failover-priority)
+请参阅[设置故障转移优先级和 Powershell](manage-with-powershell.md#modify-failover-priority)
 
 ## <a id="manual-failover"></a>在 Azure Cosmos 帐户上执行手动故障转移
 
@@ -222,11 +222,11 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 ### <a id="enable-manual-failover-via-cli"></a>Azure CLI
 
-请参阅[使用 Azure CLI 触发手动故障转移](manage-with-cli.md#trigger-manual-failover)
+请参阅[触发与 Azure CLI 的手动故障转移](manage-with-cli.md#trigger-manual-failover)
 
 ### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 触发手动故障转移](manage-with-powershell.md#trigger-manual-failover)
+请参阅[通过 Powershell 触发手动故障转移](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>后续步骤
 

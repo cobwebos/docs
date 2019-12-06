@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中预配数据库吞吐量
-description: 了解如何在 Azure Cosmos DB 中预配数据库级别的吞吐量
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和其他各种 Sdk 在 Azure Cosmos DB 中的数据库级别设置吞吐量。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 64a8bc9f4c9f5192dad22cb55cb4d2c4816d4fa5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575145"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873652"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配吞吐量
 
@@ -34,9 +34,9 @@ ms.locfileid: "73575145"
 
     ![“新建数据库”对话框屏幕截图](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 预配吞吐量
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 设置吞吐量
 
-若要创建具有共享吞吐量的数据库，请参阅：
+若要创建具有共享吞吐量的数据库，请参阅。
 
 * [使用 Azure CLI 创建数据库](manage-with-cli.md#create-a-database-with-shared-throughput)
 * [使用 Powershell 创建数据库](manage-with-powershell.md#create-db-ru)

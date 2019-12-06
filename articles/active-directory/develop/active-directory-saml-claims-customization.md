@@ -3,27 +3,24 @@ title: 在 Azure AD 中自定义企业应用的 SAML 令牌声明
 titleSuffix: Microsoft identity platform
 description: 了解如何为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声明。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1490a25e69ff22fde1f5c870868f20ea6f9a1cf7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5e9dd48695ab28879b151c4b3a37b72c551f9c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046985"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844781"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -59,7 +56,7 @@ ms.locfileid: "74046985"
 
 从 "**选择名称标识符格式**" 下拉列表中，可以选择以下选项之一。
 
-| NameID 格式 | 说明 |
+| NameID 格式 | 描述 |
 |---------------|-------------|
 | **默认** | Azure AD 将使用默认的源格式。 |
 | **式** | Azure AD 将使用永久性格式作为 NameID 格式。 |
@@ -73,9 +70,9 @@ ms.locfileid: "74046985"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| Email | 用户的电子邮件地址 |
+| 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称（UPN） |
 | onpremisessamaccount | 已从本地 Azure AD 同步的 SAM 帐户名 |
 | objectid | Azure AD 中的用户的 Objectid |
@@ -103,7 +100,7 @@ ms.locfileid: "74046985"
 
 你还可以使用声明转换函数。
 
-| 函数 | 说明 |
+| 函数 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **Join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
@@ -130,7 +127,7 @@ ms.locfileid: "74046985"
 
 您可以使用以下函数来转换声明。
 
-| 函数 | 说明 |
+| 函数 | 描述 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **Join()** | 通过联接两个属性来创建新的值。 或者，您可以在两个属性之间使用分隔符。 对于 NameID 声明转换，该联接限制为已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
