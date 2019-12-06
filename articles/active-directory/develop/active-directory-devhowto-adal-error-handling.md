@@ -1,26 +1,23 @@
 ---
-title: Azure AD 身份验证库 (ADAL) 客户端的错误处理最佳做法
+title: 处理 Azure AD 身份验证库（ADAL）客户端的最佳实践时出错
 description: 提供适用于 ADAL 客户端应用程序的错误处理指南和最佳做法。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374191"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845189"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -46,13 +43,13 @@ AcquireTokenSilent 在保证最终用户不会看到用户界面 (UI) 的情况�
 ### <a name="application-scenarios"></a>应用程序方案
 
 - [本机客户端](developer-glossary.md#native-client)应用程序（iOS、Android、.NET 桌面或 Xamarin）
-- 调用[资源](developer-glossary.md#web-client) (.NET) 的 [Web 客户端](developer-glossary.md#resource-server)应用程序
+- 调用[资源](developer-glossary.md#resource-server) (.NET) 的 [Web 客户端](developer-glossary.md#web-client)应用程序
 
 ### <a name="error-cases-and-actionable-steps"></a>错误情况和操作步骤
 
 从根本上说，存在两种 AcquireTokenSilent 错误情况：
 
-| 案例 | 说明 |
+| 案例 | 描述 |
 |------|-------------|
 | **情况 1**：通过交互式登录可解决错误 | 对于因缺少有效令牌而导致的错误，执行交互式请求是必要的。 具体而言，缓存查找和无效/过期的刷新令牌必须通过 AcquireToken 调用才能解决。<br><br>在这些情况下，需提示最终用户进行登录。 应用程序可以选择是在最终用户交互（如点击登录按钮）后立即执行交互式请求，还是稍后执行。 这一选择取决于应用程序所需的行为。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。|
 | **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序还可以在稍后的某个时间点重试，但当和如何依赖于应用程序行为和所需的最终用户体验时。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |
@@ -577,16 +574,17 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>相关内容
 
-* [Azure AD Developer's Guide][AAD-Dev-Guide]（Azure AD 开发人员指南）
+* [Azure AD 开发人员指南][AAD-Dev-Guide]
 * [Azure AD 身份验证库][AAD-Auth-Libraries]
 * [Azure AD 身份验证方案][AAD-Auth-Scenarios]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 
 欢迎通过下方的“评论”部分提供反馈，帮助我们改进内容。
 
-[![显示“使用 Microsoft 登录”按钮][AAD-Sign-In]][AAD-Sign-In]
+[![显示 "Microsoft 登录" 按钮][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

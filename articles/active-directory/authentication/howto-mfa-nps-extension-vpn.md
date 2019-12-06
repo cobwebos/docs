@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 6c2ccfc2219c063a9cef25f82cef33f446993a02
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404695"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848368"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -72,7 +72,7 @@ ms.locfileid: "74404695"
 7. 对连接尝试进行身份验证和授权之后，在其上安装了扩展的 NPS 会将 RADIUS“访问接受”消息发送到 VPN 服务器（RADIUS 客户端）。
 8. 用户被授予对 VPN 服务器上虚拟端口的访问权限，并建立加密的 VPN 隧道。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本部分详细介绍必须完成的先决条件，然后才能将 MFA 与 VPN 集成。 开始集成之前，必须具备以下先决条件：
 
@@ -82,7 +82,7 @@ ms.locfileid: "74404695"
 * Windows Server 软件
 * 库
 * 将 Azure Active Directory (Azure AD) 与本地 Active Directory 同步
-* Azure Active Directory GUID ID
+* Azure Active Directory  GUID ID
 
 ### <a name="vpn-infrastructure"></a>VPN 基础结构
 
@@ -119,7 +119,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 有关 Azure AD 连接的信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 
-### <a name="azure-active-directory-guid-id"></a>Azure Active Directory GUID ID
+### <a name="azure-active-directory-guid-id"></a>Azure Active Directory  GUID ID
 
 若要安装 NPS 扩展，则需要知道 Azure Active Directory 的 GUID。 下一节中提供了有关查找 Azure Active Directory 的 GUID 的说明。
 
@@ -178,7 +178,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
     ![指定用户组窗口以允许或拒绝访问](./media/howto-mfa-nps-extension-vpn/image7.png)
 
-9. 选择“下一步”。
+9. 选择“**下一步**”。
 
 10. 在“指定 IP 筛选器”窗口中，选择“下一步”。
 
@@ -228,9 +228,9 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 2. 在“服务器管理器”中，选择“工具”，然后选择“路由和远程访问”。
 
-3. 在“路由和远程访问”窗口中，右键单击“**服务器名称> (本地)”，然后选择“属性”。** **\<**
+3. 在“路由和远程访问”窗口中，右键单击“\<服务器名称> (本地)”，然后选择“属性”。
 
-4. 在“**服务器名称> (本地) 属性”窗口中，选择“安全”选项卡。\<**
+4. 在“\<服务器名称> (本地) 属性”窗口中，选择“安全”选项卡。
 
 5. 在“安全”选项卡的“身份验证提供程序”下，选择“RADIUS 身份验证”，然后选择“配置”。
 

@@ -1,24 +1,24 @@
 ---
-title: Azure 多重身份验证常见问题解答 - Azure Active Directory
+title: Azure 多重身份验证常见问题-Azure Active Directory
 description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 11/18/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4b15389f25b54a377f75baca7993565b41e65462
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167772"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847110"
 ---
-# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
+# <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
@@ -28,7 +28,7 @@ ms.locfileid: "74167772"
 
 使用多重身份验证服务器时，用户数据只存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双重验证时，多重身份验证服务器将数据发送到 Azure 多重身份验证云服务执行身份验证。 多重身份验证服务器与多重身份验证云服务之间的通信在出站端口 443 上使用安全套接字层 (SSL) 或传输层安全性 (TLS)。
 
-当身份验证请求发送到云服务时，会收集数据用于身份验证和使用情况报告。 双重验证日志中包含的数据字段如下：
+当身份验证请求发送到云服务时，收集的数据用于身份验证和使用情况报告。 双重验证日志中包含的数据字段如下：
 
 * **唯一 ID**（用户名或本地多重身份验证服务器 ID）
 * **姓名**（可选）
@@ -61,7 +61,7 @@ ms.locfileid: "74167772"
 
 Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外，Microsoft 不支持国家/地区的短代码。
 
-## <a name="billing"></a>账单
+## <a name="billing"></a>计费
 
 可以参考多[重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)或者有关[如何获取 Azure 多重身份验证](concept-mfa-licensing.md)的文档解答大多数计费问题。
 
@@ -111,7 +111,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果组织使用基于使用量的计费模式，则 Azure Active Directory 是可选而不是必需的。 如果 MFA 提供程序未链接到 Azure AD 租户，只能在本地部署 Azure 多重身份验证服务器。
 
-许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证会添加到 Azure AD 租户。
+许可模式需要 Azure Active Directory，因为在购买许可证并将其分配给目录中的用户时，许可证将添加到 Azure AD 租户。
 
 ## <a name="manage-and-support-user-accounts"></a>管理和支持用户帐户
 
@@ -166,7 +166,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 **问：是否可以在 Azure 多重身份验证服务器上使用硬件令牌？**
 
-如果使用的是 Azure 多重身份验证服务器，可以导入第三方基于时间的一次性密码 (TOTP) 开放式身份验证 (OATH) 令牌，并将其用于双重验证。
+如果使用的是 Azure 多重身份验证服务器，可以导入第三方基于时间的一次性密码 (TOTP) 开放式身份验证 (OATH) 令牌，然后将其用于双重验证。
 
 如果将机密密钥放在可以导入 Azure 多重身份验证服务器的 CSV 文件中，可以使用充当 OATH TOTP 令牌的 ActiveIdentity 令牌。 可将 OATH 令牌与以下服务配合使用：Active Directory 联合身份验证服务 (ADFS)、基于 Internet Information Server (IIS) 表单的身份验证和远程身份验证拨入用户服务 (RADIUS)（只要客户端系统能够接受用户输入）。
 
@@ -196,11 +196,11 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 - 组织已创建并启用一个 MFA 注册策略，该策略已应用到该用户。
 - 该用户以前已注册 MFA，但选择的验证方法后来被管理员禁用。 因此，该用户必须再次完成 MFA 注册，以选择新的默认验证方法。
 
-## <a name="errors"></a>错误
+## <a name="errors"></a>Errors
 
 **问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
 
-告诉他们按照此过程从移动应用中删除其帐户，并重新添加：
+告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 
 1. 转到 [Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户登录。
 2. 选择“其他安全性验证”。
@@ -215,7 +215,7 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果此处未解答问题，请将其留在页面底部的评论中。 或者，通过一些其他方法获得帮助：
+如果此处未解答问题，请在页面底部留言。 或者，通过一些其他方法获得帮助：
 
 * 在 [Microsoft 支持知识库](https://support.microsoft.com)中搜索常见技术问题的解决方法。
 * 在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)中搜索和浏览来自社区的技术问题与解答，或者提出自己的问题。

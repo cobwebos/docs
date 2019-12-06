@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b7db8d08c285056e637eb962b28eef0e74fc94
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814102"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868722"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "74814102"
      | --- | --- |
      | **80** | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
-     | **8080**（可选） | 如果443端口8080不可用，代理将通过端口每10分钟报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
+     | **8080**（可选） | 如果443端口8080不可用，代理将通过端口每10分钟报告其状态。 此状态显示在 Azure AD 门户上。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
    - 如果你的防火墙或代理允许你指定安全后缀，则将连接 t 添加到 **\*msappproxy.net**和 **\*。** 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。

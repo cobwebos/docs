@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704293"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848879"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>为 Azure Active Directory 域服务（预览版）启用安全审核
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
 Azure Active Directory 域服务（Azure AD DS）安全审核允许 Azure 将安全事件流式传输到目标资源。 这些资源包括 Azure 存储、Azure Log Analytics 工作区或 Azure 事件中心。 启用安全审核事件后，Azure AD DS 将所选类别的所有已审核事件发送到目标资源。 可以使用 Azure 事件中心将事件存档到 Azure 存储中，并将事件流式传输到安全信息和事件管理（SIEM）软件（或等效项），也可以执行自己的分析并使用 Azure 门户中的 Azure Log Analytics 工作区。
 
@@ -83,7 +83,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 选择托管域，如*aadds.contoso.com*。
-1. 在 "Azure AD DS" 窗口中，选择左侧的 "**诊断设置（预览）** "。
+1. 在 "Azure AD DS" 窗口中，选择左侧的 "**诊断设置**"。
 1. 默认情况下不配置任何诊断。 若要开始，请选择 "**添加诊断设置**"。
 
     ![为 Azure AD 域服务添加诊断设置](./media/security-audit-events/add-diagnostic-settings.png)

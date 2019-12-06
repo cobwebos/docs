@@ -5,17 +5,17 @@ keywords: powershell dsc, 所需状态配置, powershell dsc azure, 复合资源
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9d16d9d9967af5bf8f9e13406e13d5637325f52
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e9552adad1f15422eb60c34f2548324aeb03ee74
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243356"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849558"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>使用复合资源在 Azure Automation State Configuration (DSC) 中编译 DSC 配置
 
@@ -36,16 +36,16 @@ Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md#com
    ![撰写配置页面的基本部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. 源代码步骤显示所选复合资源的组合配置。 可以看到所有参数的合并以及将它们传递给复合资源的方式。 查看所有新的源代码后，单击“下一步”或单击“参数”。
    ![撰写配置页面的源代码部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. 在“参数”中，公开了每个复合资源所具有的参数，以便可以提供它们。 如果参数有说明，将显示在参数字段旁边。 如果某个字段是 PSCredential 类型的参数，要配置的下拉框会提供当前自动化帐户中 Credential 对象的列表。 还可以使用“+ 添加凭据”选项。 提供所有必需的参数后，单击“保存和编译”。
+1. 在“参数”中，公开了每个复合资源所具有的参数，以便可以提供它们。 如果参数有说明，将显示在参数字段旁边。 如果某个字段是 PSCredential 类型的参数，要配置的下拉框会提供当前自动化帐户中 Credential 对象的列表。 此外还提供了一个 " **+ 添加凭据**" 选项。 提供所有必需的参数后，单击“保存和编译”。
    ![撰写配置页面的参数部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 保存新配置后，将它提交以进行编译。 可以像任何导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#viewing-a-compilation-job)。
 
-编译成功完成后，新配置显示在“已编译配置”选项卡。显示在此选项卡中后，可以使用[为节点重新分配其他节点配置](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)中的步骤将其分配给托管节点。
+成功完成编译后，新的配置将出现在 "**已编译的配置**" 选项卡中。在此选项卡中可见后，可以使用将[节点重新分配到另一个节点配置](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)中的步骤将其分配给托管节点。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
+- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
 - 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 33ee7351e547ee5ef57ef07f67ba6f5f4410b57f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384146"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851649"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
@@ -38,41 +38,42 @@ ms.locfileid: "74384146"
 
 
 
-| 标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可与 Azure 防火墙一起使用？ |
+| 标记 | 用途 | 可以使用入站或出站？ | 可以是区域？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | APIM 专用部署的管理流量。 | 两者 | 否 | 是 |
+| **ApiManagement** | APIM 专用部署的管理流量。 | 两者 | No | 是 |
 | **AppService**    | 应用服务服务。 建议将此标记用于 WebApp 前端的出站安全规则。 | 出站 | 是 | 是 |
-| **AppServiceManagement** | 应用服务环境专用部署的管理流量。 | 两者 | 否 | 是 |
-| **AzureActiveDirectory** | Azure Active Directory 服务。 | 出站 | 否 | 是 |
-| **AzureActiveDirectoryDomainServices** | 用于 Azure Active Directory 域服务专用部署的管理流量。 | 两者 | 否 | 是 |
-| **AzureBackup** |Azure 备份服务。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 否 | 是 |
+| **AppServiceManagement** | 应用服务环境专用部署的管理流量。 | 两者 | No | 是 |
+| **AzureActiveDirectory** | Azure Active Directory 服务。 | 出站 | No | 是 |
+| **AzureActiveDirectoryDomainServices** | 用于 Azure Active Directory 域服务专用部署的管理流量。 | 两者 | No | 是 |
+| **AzureBackup** |Azure 备份服务。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | No | 是 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 | 出站 | 是 | 是 |
 | **AzureConnectors** | 用于探测/后端连接的逻辑应用连接器。 | 入站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表服务。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos 数据库服务。 | 出站 | 是 | 是 |
-| **AzureDataLake** | Azure Data Lake 服务。 | 出站 | 否 | 是 |
-| **AzureIoTHub** | Azure IoT 中心服务。 | 出站 | 否 | 否 |
+| **AzureDataLake** | Azure Data Lake 服务。 | 出站 | No | 是 |
+| **Clustername>.azurehdinsight.net** | Azure HDInsight 服务。 | 入站 | 是 | No |
+| **AzureIoTHub** | Azure IoT 中心服务。 | 出站 | No | No |
 | **AzureKeyVault** | Azure KeyVault 服务。<br/><br/>*注意：* 此标记依赖于**AzureActiveDirectory**标记。 | 出站 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 两者 | 否 | 否 |
-| **AzureMachineLearning** | Azure 机器学习服务。 | 出站 | 否 | 是 |
-| **AzureMonitor** | Log Analytics、App Insights、AzMon 和自定义指标（g 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记与**存储**标记相关。 | 出站 | 否 | 是 |
-| **AzurePlatformDNS** | 基本基础结构（默认） DNS 服务。<br/><br>您可以使用此标记来禁用默认 DNS。 请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
-| **AzurePlatformIMDS** | IMDS，它是一个基本基础结构服务。<br/><br/>您可以使用此标记来禁用默认 IMDS。  请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
-| **AzurePlatformLKM** | Windows 许可或密钥管理服务。<br/><br/>您可以使用此标记来禁用许可的默认值。 请在使用此标记时务必小心。  建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | 否 | 否 |
-| **AzureTrafficManaged** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | 否 | 是 |  
-| **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 两者 | 否 | 是 |
-| **CognitiveServicesManagement** | 认知服务的流量的地址范围 | 出站 | 否 | 否 |
-| **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
+| **AzureLoadBalancer** | Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 两者 | No | No |
+| **AzureMachineLearning** | Azure 机器学习服务。 | 出站 | No | 是 |
+| **AzureMonitor** | Log Analytics、App Insights、AzMon 和自定义指标（g 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记与**存储**标记相关。 | 出站 | No | 是 |
+| **AzurePlatformDNS** | 基本基础结构（默认） DNS 服务。<br/><br>您可以使用此标记来禁用默认 DNS。 请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | No | No |
+| **AzurePlatformIMDS** | IMDS，它是一个基本基础结构服务。<br/><br/>您可以使用此标记来禁用默认 IMDS。  请在使用此标记时务必小心。 建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | No | No |
+| **AzurePlatformLKM** | Windows 许可或密钥管理服务。<br/><br/>您可以使用此标记来禁用许可的默认值。 请在使用此标记时务必小心。  建议阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 建议在使用此标记之前进行测试。 | 出站 | No | No |
+| **AzureTrafficManaged** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | No | 是 |  
+| **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 两者 | No | 是 |
+| **CognitiveServicesManagement** | 认知服务的流量的地址范围 | 出站 | No | No |
+| **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | No |
 | **EventHub** | Azure EventHub 服务。 | 出站 | 是 | 是 |
-| **GatewayManager** | VPN/应用网关专用部署的管理流量。 | 入站 | 否 | 否 |
-| **Internet** | 虚拟网络外部的 IP 地址空间，并可通过公共 Internet 访问。<br/><br/>地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 两者 | 否 | 否 |
+| **GatewayManager** | VPN/应用网关专用部署的管理流量。 | 入站 | No | No |
+| **Internet** | 虚拟网络外部的 IP 地址空间，并可通过公共 Internet 访问。<br/><br/>地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 两者 | No | No |
 | **MicrosoftContainerRegistry** | Microsoft 容器注册表服务。 | 出站 | 是 | 是 |
 | **ServiceBus** | 使用高级服务层的 Azure 服务总线服务。 | 出站 | 是 | 是 |
-| **ServiceFabric** | Service Fabric 服务。 | 出站 | 否 | 否 |
+| **ServiceFabric** | Service Fabric 服务。 | 出站 | No | No |
 | **Transact-sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure SQL 数据仓库服务。<br/><br/>*注意：* 此标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 | 出站 | 是 | 是 |
-| **SqlManagement** | 针对 SQL 专用部署的管理流量。 | 两者 | 否 | 是 |
+| **SqlManagement** | 针对 SQL 专用部署的管理流量。 | 两者 | No | 是 |
 | **存储** | Azure 存储服务。 <br/><br/>*注意：* 标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
-| **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)虚拟网络或连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络（[虚拟 IP）](security-overview.md#azure-platform-considerations)[用户定义路由](virtual-networks-udr-overview.md)上使用的主机和地址前缀的地址。 请注意，此标记可能还包含默认路由。 | 两者 | 否 | 否 |
+| **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)虚拟网络或连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络、[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations)和用于[用户定义的路由](virtual-networks-udr-overview.md)的地址前缀。 请注意，此标记可能还包含默认路由。 | 两者 | No | No |
 
 >[!NOTE]
 >在*经典*（Azure 预 Azure 资源管理器）环境中工作时，支持一组选择的上述标记。  它们使用替代拼写：

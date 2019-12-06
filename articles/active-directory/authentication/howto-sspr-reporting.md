@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786717"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847212"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -81,7 +81,7 @@ ms.locfileid: "72786717"
 * [重置密码(由管理员)](#activity-type-reset-password-by-admin)：表示管理员通过 Azure 门户代表用户执行了密码重置。
 * [重置密码(自助服务)](#activity-type-reset-password-self-service)：表示用户已成功通过 [Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)重置其密码。
 * [自助密码重置流活动进度](#activity-type-self-serve-password-reset-flow-activity-progress)：表示密码重置过程中用户执行的每个特定步骤（例如，传递特定的密码重置身份验证门限）。
-* [解锁用户帐户（自助服务）](#activity-type-unlock-a-user-account-self-service)）：表示用户已成功解锁其 Active Directory 帐户，但未使用帐户解锁的 Active Directory 功能重置[Azure AD 密码重置门户](https://passwordreset.microsoftonline.com)的密码不重置。
+* [解锁用户帐户（自助服务）](#activity-type-unlock-a-user-account-self-service)）：表示用户已成功解锁其 Active Directory 帐户，但未使用帐户解锁的 Active Directory 功能重置其[Azure AD](https://passwordreset.microsoftonline.com)密码，而无需重置。
 * [用户已注册自助密码重置](#activity-type-user-registered-for-self-service-password-reset)：表示用户已注册全部所需的信息，可以根据当前指定的租户密码重置策略重置其密码。
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>活动类型：被自助密码重置功能阻止

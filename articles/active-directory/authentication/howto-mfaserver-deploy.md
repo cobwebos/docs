@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e751c7aefe888d16e6d86a0184a1a59437d665f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404252"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848130"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -29,7 +29,7 @@ ms.locfileid: "74404252"
 > [!IMPORTANT]
 > 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
-## <a name="plan-your-deployment"></a>规划部署
+## <a name="plan-your-deployment"></a>计划部署
 
 > [!WARNING]
 > 2019年3月开始的 MFA 服务器下载仅适用于付费租户。 免费/试用租户将无法再下载或生成和使用激活凭据。
@@ -40,7 +40,7 @@ ms.locfileid: "74404252"
 
 | 用户 | RAM |
 | ----- | --- |
-| 1-10,000 | 4 GB |
+| 1-10,000 | 4GB |
 | 10,001-50,000 | 8 GB |
 | 50,001-100,000 | 12 GB |
 | 100,000-200,001 | 16 GB |
@@ -54,7 +54,7 @@ ms.locfileid: "74404252"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | 说明 |
+| Azure 多重身份验证服务器要求 | 描述 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
 | 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
@@ -121,7 +121,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
    ![跳过使用身份验证配置向导](./media/howto-mfaserver-deploy/skip2.png)
 
-5. 返回下载服务器的页面，单击“生成激活凭据”按钮。 在提供的框中，将此信息复制到“Azure MFA 服务器”，并单击“激活”。
+5. 返回下载服务器的页面，单击“生成激活凭据”按钮。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活”。
 
 ## <a name="send-users-an-email"></a>向用户发送电子邮件
 
@@ -180,7 +180,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 除了上述字段，验证结果（成功/拒绝）和任何拒绝的原因还与身份验证数据一起存储，可通过身份验证/使用情况报告获取。
 
 > [!IMPORTANT]
-> 从2019年3月开始，电话呼叫选项对于免费/试用 Azure AD 租户中的 MFA 服务器用户将不可用。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
+> 从2019年3月开始，电话呼叫选项对于免费/试用 Azure AD 租户中的 MFA 服务器用户将不可用。 SMS 消息不受此更改的影响。 电话呼叫将继续为付费 Azure AD 租户中的用户提供。 此更改仅影响免费/试用 Azure AD 租户。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>备份和还原 Azure MFA 服务器
 
@@ -200,7 +200,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 
-升级到或安装 MFA 服务器版本 8.x 或更高版本后，建议禁用或删除较旧和较弱的密码套件，除非你的组织需要这些套件。 可以在[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文中找到有关如何完成此任务的信息。
+升级到或安装 MFA 服务器版本 8.x 或更高版本后，建议禁用或删除较旧和较弱的密码套件，除非你的组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的 SQL 常量
-description: 了解 Azure Cosmos DB 中的 SQL 常量
+description: 了解如何使用 Azure Cosmos DB 中的 SQL 查询常量来表示特定数据值
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: 41cafeb76b7b9481a78ffcff179676d0aa7bf6fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002049"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873414"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
 
@@ -22,12 +22,12 @@ ms.locfileid: "71002049"
 |类型|值顺序|  
 |-|-|  
 |未定义|单个值：未定义|  
-|**Null**|单个值：null|  
-|布尔值|值："false"、"true"。|  
-|**数字**|双精度浮点数，IEEE 754 标准。|  
-|字符串|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
-|数组|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
-|**对象**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
+|Null|单个值：null|  
+|**布尔值**|值："false"、"true"。|  
+|**Number**|双精度浮点数，IEEE 754 标准。|  
+|**字符串**|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
+|数组|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但**Undefined**除外。|  
+|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
   
 ## <a name="bk_syntax"></a>语法
   

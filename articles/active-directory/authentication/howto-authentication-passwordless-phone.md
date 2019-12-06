@@ -6,30 +6,30 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76aa0ca7cbda3f2db564c220ba12fec60f60509
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381865"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848470"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
 使用 Microsoft Authenticator 应用可以登录到任何 Azure AD 帐户，且无需输入密码。 类似于 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 的技术，Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备的用户凭据，并使用生物识别特征或 PIN。 此身份验证方法可用于任何设备平台（包括移动设备）以及与 Microsoft 身份验证库集成的任何应用程序或网站。 
 
-![要求用户批准登录的浏览器登录示例](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![请求用户批准登录的浏览器登录示例](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
 输入用户名后，从 Microsoft Authenticator 应用启用手机登录的用户将看到一条消息，告知他们在其应用中点击某个数字，而不是在输入用户名后看到密码提示。 在应用中，该用户必须输入匹配的数字，选择“批准”，提供 PIN 或生物识别特征，然后身份验证将会完成。
 
 > [!NOTE]
 > 自2017年3月起，此功能已在 Microsoft Authenticator 应用中，因此，如果为目录启用了该策略，用户可能会立即遇到此流，如果策略未启用，则会看到一条错误消息。 请注意这一点，并让用户为此更改做好准备。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 多重身份验证，允许将推送通知作为验证方法 
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。

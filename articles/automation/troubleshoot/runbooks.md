@@ -2,32 +2,32 @@
 title: Azure 自动化 Runbook 错误故障排除
 description: 了解如何解决 Azure 自动化 Runbook 的问题
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 326a2dbf644cd5792a45dbf40d9574982053aae1
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743898"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850136"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
-在 Azure 自动化中执行 Runbook 出现错误时，可使用以下步骤来诊断问题。
+如果在 Azure Automation 中执行 runbook 时出现错误，则可以使用以下步骤来帮助诊断问题。
 
-1. **确保 Runbook 脚本在本地计算机上执行成功：** 请参阅 [PowerShell 文档](/powershell/scripting/overview)或 [Python 文档](https://docs.python.org/3/)，了解语言参考和学习模块。
+1. **确保你的 runbook 脚本在本地计算机上成功执行：** 参阅[PowerShell 文档](/powershell/scripting/overview)或[Python 文档](https://docs.python.org/3/)，了解语言参考和学习模块。
 
-   在本地执行脚本即可发现并解决常见错误，例如：
+   在本地执行脚本可以发现和解决常见错误，如：
 
    - **缺少模块**
    - **语法错误**
    - **逻辑错误**
 
-2. **调查 runbook**特定消息的[错误流](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)，并将其与以下错误进行比较。
+2. **调查**特定消息的 runbook[错误流](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output)，并将其与以下错误进行比较。
 
 3. **确保节点和自动化工作区具有所需的模块：** 如果你的 runbook 导入任何模块，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤确保它们可用于你的自动化帐户。 按照在[Azure 自动化中更新 azure 模块中](..//automation-update-azure-modules.md)的说明，将模块更新到最新版本。 有关疑难解答的详细信息，请参阅[排查模块问题](shared-resources.md#modules)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "70743898"
 * [将其他输出添加](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams)到 runbook，以标识在挂起 runbook 之前会发生的情况。
 * 处理作业引发的[任何异常](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions)。
 
-## <a name="login-azurerm"></a>场景：运行 Add-azurermaccount 登录
+## <a name="login-azurerm"></a>方案：运行登录-Add-azurermaccount 以登录
 
 ### <a name="issue"></a>问题
 
@@ -71,7 +71,7 @@ Run Login-AzureRMAccount to login.
 1. 复制订阅的名称以进行下一步。
 1. 你现在可以使用以下 runbook 代码来测试从自动化帐户到其他订阅的权限。
 
-    将 "\<CertificateThumbprint\>" 替换为在步骤 #1 中复制的值以及在步骤\<#4\>中复制的 "SubscriptionName" 值。
+    将 "\<CertificateThumbprint\>" 替换为在步骤 #1 中复制的值以及在步骤\>中复制的 "\<SubscriptionName #4" 值。
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -98,7 +98,7 @@ Run Login-AzureRMAccount to login.
 The subscription named <subscription name> cannot be found.
 ```
 
-### <a name="error"></a>Error
+### <a name="error"></a>错误
 
 以下情况下可能发生此错误：
 
@@ -144,7 +144,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[通过 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
-## <a name="get-serializationsettings"></a>场景：作业流中出现了关于 get_SerializationSettings 方法的错误
+## <a name="get-serializationsettings"></a>方案：在作业流中看到关于 get_SerializationSettings 方法的错误
 
 ### <a name="issue"></a>问题
 
@@ -170,7 +170,7 @@ At line:16 char:1
 
 不能在同一 runbook 中同时导入并使用 Az 和 AzureRM cmdlet，若要详细了解 Azure 自动化中对 Az 的支持，请参阅 [Azure 自动化中的 Az 模块支持](../az-modules.md)。
 
-## <a name="task-was-cancelled"></a>场景：Runbook 失败并显示错误：任务已取消
+## <a name="task-was-cancelled"></a>场景：Runbook 失败且出现错误：取消了一个任务
 
 ### <a name="issue"></a>问题
 
@@ -190,7 +190,7 @@ Exception: A task was canceled.
 
 在自动化帐户中，单击“模块”，然后单击“更新 Azure 模块”。 更新需要花费大约 15 分钟，完成后，重新运行失败的 Runbook。 若要了解有关更新模块的详细信息，请参阅[在 Azure 自动化中更新 Azure 模块](../automation-update-azure-modules.md)。
 
-## <a name="runbook-auth-failure"></a>场景：处理多个订阅时，Runbook 失败
+## <a name="runbook-auth-failure"></a>方案： Runbook 在处理多个订阅时失败
 
 ### <a name="issue"></a>问题
 
@@ -231,7 +231,7 @@ Start-AzureRmAutomationRunbook `
 
 有关详细信息，请参阅[使用多个订阅](../automation-runbook-execution.md#working-with-multiple-subscriptions)。
 
-## <a name="not-recognized-as-cmdlet"></a>场景：字词未被识别为 cmdlet、函数、脚本的名称
+## <a name="not-recognized-as-cmdlet"></a>方案：字词未被识别为 cmdlet、函数、脚本的名称
 
 ### <a name="issue"></a>问题
 
@@ -276,9 +276,9 @@ The job was tried three times but it failed
 
 * 模块不兼容。 如果模块依赖关系不正确，则可能会发生此错误，并且如果它们不正确，则 runbook 通常会返回“找不到命令”或“无法绑定参数”消息。
 
-* Runbook 尝试调用在 Azure 沙盒中运行的 Runbook 中的可执行文件或子过程。 Azure 沙盒不支持此方案。
+* Runbook 尝试在运行于 Azure 沙盒中的 runbook 中调用可执行文件或子进程。 Azure 沙盒不支持此方案。
 
-* runbook 尝试向输出流写入太多异常数据。
+* Runbook 尝试将过多的异常数据写入输出流。
 
 ### <a name="resolution"></a>分辨率
 
@@ -292,13 +292,13 @@ The job was tried three times but it failed
 
 * 如果需要在 Runbook 中调用进程（如 .exe 或 subprocess.call），则需要在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 Runbook。
 
-* 作业输出流限制为 1MB。 请确保在 try/catch 块中包含对可执行文件或子进程的调用。 如果这些调用引发异常，请将该异常中的消息写入自动化变量中。 这将防止将其写入作业输出流中。
+* 作业输出流的限制为1MB。 确保将对可执行文件或子进程的调用放入 try/catch 块中。 如果它们引发异常，则将此异常中的消息写入自动化变量中。 这会阻止将其写入作业输出流中。
 
 ## <a name="sign-in-failed"></a>场景：登录 Azure 帐户失败
 
 ### <a name="issue"></a>问题
 
-使用`Add-AzureAccount` 或`Connect-AzureRmAccount` cmdlet 时，会收到以下错误之一：
+使用 `Add-AzureAccount` 或 `Connect-AzureRmAccount` cmdlet 时，会收到以下错误之一：
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -357,7 +357,7 @@ No certificate was found in the certificate store with thumbprint
 
 ### <a name="issue"></a>问题
 
-使用 `-Wait` 开关调用子 runbook 并且输出流包含对象时，会收到以下错误：
+当使用 `-Wait` 开关调用子 runbook 并且输出流包含对象时，会收到以下错误：
 
 ```error
 Object reference not set to an instance of an object
@@ -435,7 +435,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 如果想要每月使用 500 分钟以上的处理时间，则需将订阅从免费层改为基本层。 可以通过下述步骤升级到基本层：
 
-1. 登录到 Azure 订阅
+1. 登录 Azure 订阅
 2. 选择要升级的自动化帐户
 3. 单击“设置” > “定价”。
 4. 单击页面底部的“启用”，以将帐户升级到“基本”层。
@@ -463,7 +463,7 @@ Runbook 作业失败并显示错误：
 * 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 **ModuleName\CmdletName**。
 * 如果是在本地执行混合辅助角色组中的 runbook，则请确保模块和 cmdlet 已安装在托管混合辅助角色的计算机上。
 
-## <a name="long-running-runbook"></a>场景：长时间运行的 Runbook 无法完成
+## <a name="long-running-runbook"></a>方案：长时间运行的 runbook 无法完成
 
 ### <a name="issue"></a>问题
 
@@ -493,7 +493,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) - 在子 runbook 完成后，如果需要执行操作，可使用此 cmdlet 检查每个子 runbook 的作业状态。
 
-## <a name="expired webhook"></a>场景：状态：调用 Webhook 时显示 400 错误请求
+## <a name="expired webhook"></a>情况：状态：调用 webhook 时出现错误的请求（400）
 
 ### <a name="issue"></a>问题
 
@@ -511,7 +511,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用 Webhook。 如果 Webhook 已过期，需要删除并重新创建 Webhook。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#renew-webhook)。
 
-## <a name="429"></a>场景：429：当前的请求速率过大。 请重试
+## <a name="429"></a>方案：429：请求速率目前太大。 请重试
 
 ### <a name="issue"></a>问题
 
@@ -532,11 +532,11 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 * 编辑 Runbook，并减少它发出的作业流数量。
 * 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以为 `Get-AzureRmAutomationJobOutput` cmdlet 指定 `-Stream Output` 参数以仅检索输出流。 
 
-## <a name="cannot-invoke-method"></a>场景：PowerShell 作业失败，出现错误：无法调用方法
+## <a name="cannot-invoke-method"></a>方案： PowerShell 作业失败并出现错误：无法调用方法
 
 ### <a name="issue"></a>问题
 
-在 Runbook（在 Azure 中运行）中启动 PowerShell 作业时，收到以下错误消息：
+在 Azure 中运行的 runbook 中启动 PowerShell 作业时，会收到以下错误消息：
 
 ```error
 Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
@@ -544,16 +544,16 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>原因
 
-在 Runbook（在 Azure 中运行）中启动 PowerShell 作业时，可能会发生此错误。 出现此行为可能是因为在 Azure 沙盒中运行的 Runbook 可能未在[完整语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)下运行。
+当你在 Azure 中运行的 runbook 中启动 PowerShell 作业时，可能会发生此错误。 出现这种情况的原因可能是，在 Azure 沙盒中运行的 runbook 可能不会在[完整语言模式下](/powershell/module/microsoft.powershell.core/about/about_language_modes)运行）。
 
 ### <a name="resolution"></a>分辨率
 
 可通过两种方法来解决此错误：
 
-* 使用 `Start-AzureRmAutomationRunbook` 而不是 `Start-Job` 来启动 Runbook
-* 如果 Runbook 出现此错误消息，请在混合 Runbook 辅助角色上运行它
+* 使用 `Start-AzureRmAutomationRunbook` 启动 runbook，而不使用 `Start-Job`。
+* 如果 runbook 有此错误消息，请在混合 Runbook 辅助角色上运行它
 
-若要详细了解 Azure 自动化 Runbook 的此行为和其他行为，请参阅 [Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
+若要了解有关此行为以及 Azure 自动化 Runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
 
 ## <a name="other"></a>我的问题未在上面列出
 

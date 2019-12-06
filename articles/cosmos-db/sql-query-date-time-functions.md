@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的日期和时间函数
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数的日期和时间。
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数的日期和时间，以执行日期时间和时间戳操作。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 763cac8736109952fdb32500dc669ace2ae7b585
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 93b3e90deb5e3764cb5402938c5d0e14cadb7883
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351225"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873380"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和时间函数（Azure Cosmos DB）
 

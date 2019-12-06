@@ -3,28 +3,24 @@ title: 适用于应用程序的品牌准则
 titleSuffix: Microsoft identity platform
 description: 介绍面向开发人员的 Azure Active Directory 资源的综合性指南
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b247bde8e1d3dbf73dcd1ff1d3f8b3ca3d3f16
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803872"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842979"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 

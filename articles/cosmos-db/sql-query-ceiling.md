@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言的天花板
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数上限。
+description: 了解 Azure Cosmos DB 中的天花板 SQL 系统函数如何返回 y/x 的反正切值（以弧度表示）
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7056cfd1773e0d98fa134c9fdec3ad6a43af1bcf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18462b152b698e7c6bc4c6c1e59511b4bacaa611
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351115"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873431"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>天花板（Azure Cosmos DB）
  返回大于或等于指定数值表达式的最小整数值。  

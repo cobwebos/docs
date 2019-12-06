@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707254"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851496"
 ---
 # <a name="onboarding-and-installing"></a>载入和安装
 
@@ -31,23 +31,23 @@ Microsoft 安全代码分析入门的先决条件：
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>载入 Microsoft 安全代码分析扩展
 
 - 如果你有以下支持服务之一，请联系你的技术客户经理，以购买或交换现有小时以访问扩展：
-   - 统一支持高级层
-   - 统一的支持性能级别
-   - 面向开发人员的顶级支持
-   - 合作伙伴顶级支持
-   - 适用于企业的顶级支持
+  - 统一支持高级层
+  - 统一的支持性能级别
+  - 面向开发人员的顶级支持
+  - 合作伙伴顶级支持
+  - 适用于企业的顶级支持
 - 如果你安装了以下支持服务之一或没有 Microsoft 支持计划，则必须升级到符合条件的支持产品/服务：
-   - 针对合作伙伴的 Azure 支持
-   - Azure 基本支持
-   - Azure 开发人员支持
-   - Azure 标准支持
-   - Azure 专业直接
-   - 统一的支持核心层
+  - 针对合作伙伴的 Azure 支持
+  - Azure 基本支持
+  - Azure 开发人员支持
+  - Azure 标准支持
+  - Azure 专业直接
+  - 统一的支持核心层
 - 若要购买合格的支持产品/服务，请参阅我们的[支持服务主页](https://www.microsoft.com/enterprise/services/support)。
 - 支持合同准备就绪后，请与你的技术客户经理联系以帮助你开始使用并帮助你收集所有必需的详细信息。
 
 >[!NOTE]
-> 如果你是在 Microsoft 合作伙伴网络中注册的合作伙伴，则有资格购买顶级支持合作伙伴。 否则，你必须购买前面提到的一个符合要求的支持产品。
+>如果你没有支持合同，我们也会致力于合作伙伴购买计划，在此计划中，你可以利用第三方合作伙伴来购买扩展，而无需购买统一的支持计划。 请[向我们发送电子邮件](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request)。 告诉我们你对此选项感兴趣。 我们会记下你的兴趣，并在此选项可用时立即返回给你。
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安装 Microsoft 安全代码分析扩展
 
@@ -61,7 +61,7 @@ Microsoft 安全代码分析入门的先决条件：
 >[!NOTE]
 > 即使您没有安装该扩展的访问权限，也可以继续执行安装步骤。 你可以在安装过程中请求 Azure DevOps 组织管理员的访问权限。
 
-安装该扩展后，安全开发生成任务将可见，并且可添加到 Azure 管道。
+安装该扩展后，安全开发生成任务将可见，并且可添加到 Azure Pipelines 中。
 
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>将特定生成任务添加到 Azure DevOps 管道
 
@@ -87,6 +87,6 @@ Microsoft 安全代码分析入门的先决条件：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关配置生成任务的详细信息，请参阅我们的[配置指南](security-code-analysis-customize.md)。
+有关配置生成任务的详细信息，请参阅我们的[配置指南](security-code-analysis-customize.md)或[YAML 配置指南](yaml-configuration.md)。
 
 如果你有关于扩展和提供的工具的更多问题，请查看我们的[常见问题页面](security-code-analysis-faq.md)。

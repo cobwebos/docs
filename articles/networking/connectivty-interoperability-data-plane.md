@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：数据平面分析 | Microsoft Docs
+title: Azure 后端连接性功能的互操作性：数据平面分析 | Microsoft Docs
 description: 本文提供测试设置的数据平面分析，可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性。
 documentationcenter: na
 services: networking
@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425455"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873822"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接功能中的互操作性：数据平面分析
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接性功能的互操作性：数据平面分析
 
-本文介绍了[测试设置][Setup]的数据平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
+本文介绍了[测试设置][Setup]的数据平面分析。 您还可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
 
 数据平面分析检查数据包从一个本地网络（LAN 或虚拟网络）遍历到拓扑中的另一个本地网络所采用的路径。 两个本地网络之间的数据路径不一定是对称的。 因此，本文将单独从反向路径的角度来分析从一个本地网络到另一个网络的正向路径。
 
@@ -40,7 +40,7 @@ ms.locfileid: "60425455"
 下图显示了 Azure 网络观察程序中的 VNet 和辐射 VNet 的图形连接视图：
 
 
-[![1]][1]
+![1][1]
 
 ### <a name="path-to-the-branch-vnet"></a>分支 VNet 的路径
 
@@ -60,11 +60,11 @@ ms.locfileid: "60425455"
 
 下图显示了网络观察程序中的中心 VNet 和分支 VNet 的图形连接视图：
 
-[![2]][2]
+![2][2]
 
 对于相同的连接，下图显示了网络观察程序中的网格视图：
 
-[![3]][3]
+![3][3]
 
 ### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
 
@@ -302,7 +302,7 @@ ms.locfileid: "60425455"
 
 下图显示本地位置 1 VM 通过 ExpressRoute 与中心 VNet 中的 VM 建立连接的拓扑视图：
 
-[![4]][4]
+![4][4]
 
 如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 为了测试备份数据路径，让我们在本地位置 1 主要 CE 路由器和相应的 MSEE 之间引发一个 ExpressRoute 链接故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
 
@@ -318,7 +318,7 @@ ms.locfileid: "60425455"
 
 下图显示当 ExpressRoute 连接断开时，本地位置 1 VM 通过站点到站点 VPN 连接与中心 VNet 中的 VM 建立连接的拓扑视图：
 
-[![5]][5]
+![5][5]
 
 ### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
 
@@ -356,7 +356,7 @@ ms.locfileid: "60425455"
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实： 
+当我们在[控制平面分析][Control-Analysis]中讨论时，本地位置1对于每个网络配置无法查看本地位置2。 以下 ping 结果确认了这一事实： 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -420,7 +420,7 @@ ms.locfileid: "60425455"
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>分支 VNet、本地位置 1 和远程 VNet 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet、本地位置 1 或远程 VNet 看不到本地位置 1。 
+正如我们在[控制平面分析][Control-Analysis]中讨论的那样，本地位置1对于分支 VNet 没有任何可见性，对于本地位置1，或每个网络配置到远程 VNet。 
 
 ## <a name="data-path-from-the-remote-vnet"></a>远程 VNet 中的数据路径
 
@@ -454,7 +454,7 @@ ms.locfileid: "60425455"
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>分支 VNet 和本地位置 2 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet 或本地位置 2 看不到远程 VNet。 
+当我们在[控制平面分析][Control-Analysis]中讨论时，远程 VNet 对于分支 VNet 或每个网络配置的本地位置2都不可见。 
 
 ### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
 
@@ -476,7 +476,7 @@ ms.locfileid: "60425455"
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连在隧道模式下配置站点到站点 IPsec VPN 的详细信息，请参阅[通过 Expressroute microsoft 对等互连建立的站点到站点 vpn][S2S-Over-ExR]。 
 
 配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
@@ -484,7 +484,7 @@ ms.locfileid: "60425455"
 
 ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
-有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
+有关如何配置 ExpressRoute 连接和站点到站点 VPN 的详细信息，请参阅[expressroute 和站点到站点共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
@@ -503,18 +503,18 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
+请参阅[EXPRESSROUTE 常见问题解答][ExR-FAQ]，了解：
 -   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
 -   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
--   了解 ExpressRoute 的其他缩放限制。
+-   ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "网络观察程序中从中心 VNet 到辐射 VNet 的连接视图"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "网络观察程序中从中心 VNet 到分支 VNet 的连接视图"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "网络观察程序中从中心 VNet 到分支 VNet 的网格视图"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "网络性能监视器中通过 ExpressRoute 1 从位置 1 VM 连接到中心 VNet 的视图"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "网络性能监视器中通过站点都站点 VPN 从位置 1 VM 连接到中心 VNet 的视图"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "从集线器 VNet 到分支 VNet 的连接的网络观察程序视图"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "从集线器 VNet 到分支 VNet 的连接的网络观察程序视图"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "从中心 VNet 连接到分支 VNet 的网络观察程序网格视图"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "通过 ExpressRoute 1 将从位置 1 VM 到中心 VNet 的连接网络性能监视器视图"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "通过站点到站点 VPN 网络性能监视器从位置 1 VM 连接到集线器 VNet 的连接视图"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

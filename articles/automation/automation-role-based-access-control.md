@@ -5,17 +5,17 @@ keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477722"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850782"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -100,7 +100,7 @@ ms.locfileid: "67477722"
 
 ### <a name="automation-job-operator"></a>自动化作业操作员
 
-自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 下表显示了授予角色的权限：
+自动化作业操作员角色是在自动化帐户范围内授予的。 这允许操作员权限为帐户中的所有 runbook 创建和管理作业。 下表显示了授予角色的权限：
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -118,7 +118,7 @@ ms.locfileid: "67477722"
 
 ### <a name="automation-runbook-operator"></a>自动化 Runbook 操作员
 
-自动化 Runbook 操作员角色在 Runbook 范围授予。 自动化 Runbook 操作员可以查看 Runbook 的名称和属性。  将此角色与“自动化作业操作员”角色组合使用时，也会使操作员能够为 Runbook 创建和管理作业。 下表显示了授予角色的权限：
+自动化 Runbook 操作员角色在 Runbook 范围授予。 自动化 Runbook 操作员可以查看 Runbook 的名称和属性。  此角色与 "自动化作业操作员" 角色结合在一起后，操作员还可以为 runbook 创建和管理作业。 下表显示了授予角色的权限：
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -156,7 +156,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取除密码外的所有类型的资源。|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|管理 Azure Monitor 日志中的查询。|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|在 Azure Monitor 日志中管理查询。|
 |Microsoft.OperationalInsights/workspaces/search/action|搜索 Azure Monitor 日志数据。|
 |Microsoft.Support/*|创建和管理支持票证。|
 |**无操作**| |
@@ -175,7 +175,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Insights/components/*|管理 Application Insights 组件。|
 |Microsoft.Insights/DiagnosticSettings/*|管理诊断设置。|
 |Microsoft.Insights/eventtypes/*|列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。|
-|Microsoft.Insights/LogDefinitions/*|需要通过门户访问活动日志的用户必须拥有此权限。 列出活动日志中的日志类别。|
+|Microsoft.Insights/LogDefinitions/*|此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。|
 |Microsoft.Insights/MetricDefinitions/*|读取指标定义（资源的可用指标类型的列表）。|
 |Microsoft.Insights/Metrics/*|读取资源的指标。|
 |Microsoft.Insights/Register/Action|注册 Microsoft.Insights 提供程序。|
@@ -208,20 +208,20 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Authorization/*|管理授权|
 |Microsoft.Support/*|创建和管理支持票证|
 
-## <a name="onboarding"></a>登记
+## <a name="onboarding"></a>加入
 
 下表显示了更改跟踪的载入虚拟机所需的最小所需权限或更新管理解决方案。
 
 ### <a name="onboarding-from-a-virtual-machine"></a>从虚拟机加入
 
-|**Action**  |权限   |**最小范围**  |
+|**Action**  |权限  |**最小范围**  |
 |---------|---------|---------|
-|写入新部署      | Microsoft.Resources/deployments/*          |订阅          |
-|写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | 订阅          |
-|创建新的默认工作区      | Microsoft.OperationalInsights/workspaces/write         | 资源组         |
-|创建新帐户      |  Microsoft.Automation/automationAccounts/write        |资源组         |
+|写入新部署      | Microsoft.Resources/deployments/*          |Subscription          |
+|写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | Subscription          |
+|创建新的默认工作区      | Microsoft.OperationalInsights/workspaces/write         | Resource group         |
+|创建新帐户      |  Microsoft.Automation/automationAccounts/write        |Resource group         |
 |链接工作区和帐户      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|工作区</br>自动化帐户
-|创建解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |资源组          |
+|创建解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Resource group          |
 |创建 MMA 扩展      | Microsoft.Compute/virtualMachines/write         | 虚拟机         |
 |创建保存的搜索      | Microsoft.OperationalInsights/workspaces/write          | 工作区         |
 |创建范围配置      | Microsoft.OperationalInsights/workspaces/write          | 工作区         |
@@ -231,18 +231,18 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |加入状态检查 - 读取解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | 解决方案         |
 |加入状态检查 - 读取 VM      | Microsoft.Compute/virtualMachines/read         | 虚拟机         |
 |加入状态检查 - 读取帐户      | Microsoft.Automation/automationAccounts/read  |  自动化帐户   |
-| 加入工作区中检查 vm<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | 订阅         |
-| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
+| VM<sup>1</sup>的加入工作区检查       | Microsoft.OperationalInsights/workspaces/read         | Subscription         |
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | Subscription|
 
-<sup>1</sup>载入通过虚拟机门户体验需要此权限。
+<sup>1</sup>需要此权限才能通过 VM 门户体验。
 
 ### <a name="onboarding-from-automation-account"></a>从自动化帐户加入
 
-|**Action**  |权限  |**最小范围**  |
+|**Action**  |权限 |**最小范围**  |
 |---------|---------|---------|
-|新建部署     | Microsoft.Resources/deployments/*        | 订阅         |
-|新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | 订阅        |
-|AutomationOnboarding 边栏选项卡 - 创建新工作区     |Microsoft.OperationalInsights/workspaces/write           | 资源组        |
+|新建部署     | Microsoft.Resources/deployments/*        | Subscription         |
+|新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | Subscription        |
+|AutomationOnboarding 边栏选项卡 - 创建新工作区     |Microsoft.OperationalInsights/workspaces/write           | Resource group        |
 |AutomationOnboarding 边栏选项卡 - 读取链接的工作区     | Microsoft.Automation/automationAccounts/read        | 自动化帐户       |
 |AutomationOnboarding 边栏选项卡 - 读取解决方案     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | 解决方案        |
 |AutomationOnboarding 边栏选项卡 - 读取工作区     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | 工作区        |
@@ -252,7 +252,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |创建/编辑范围配置     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |将解决方案链接到范围配置      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解决方案         |
-| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | Subscription|
 |**步骤 2 - 加入多个 VM**     |         |         |
 |VMOnboarding 边栏选项卡 - 创建 MMA 扩展     | Microsoft.Compute/virtualMachines/write           | 虚拟机        |
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write           | 工作区        |
@@ -267,7 +267,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |自动化帐户     | Log Analytics 参与者       | 自动化帐户        |
 |自动化帐户    | 虚拟机参与者        | 帐户的资源组        |
 |Log Analytics 工作区     | Log Analytics 参与者| Log Analytics 工作区        |
-|Log Analytics 工作区 |Log Analytics 读者| 订阅|
+|Log Analytics 工作区 |Log Analytics 读者| Subscription|
 |解决方案     |Log Analytics 参与者         | 解决方案|
 |虚拟机     | 虚拟机参与者        | 虚拟机        |
 
@@ -278,27 +278,27 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 ### <a name="configure-rbac-using-the-azure-portal"></a>使用 Azure 门户配置 RBAC
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”页打开自动化帐户。
-2. 单击右上角的“访问控制(IAM)”控件  。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色  。
-3. 单击“角色分配”  选项卡。
+2. 单击右上角的“访问控制(IAM)”控件。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。
+3. 单击“角色分配”选项卡。
 
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>添加新用户并分配角色
 
-1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色    。
+1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色。
 
 2. 从可用角色列表中选择一个角色。 可以选择自动化帐户所支持的任何可用的内置角色，或者定义的任何自定义角色。
 
-3. 在“选择”字段中键入要对其授予权限的用户的用户名  。 从列表中选择用户，然后单击“保存”  。
+3. 在“选择”字段中键入要对其授予权限的用户的用户名。 从列表中选择用户，然后单击“保存”。
 
    ![添加用户](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   现在，应当会看到该用户已添加到“用户”  页并且分配有所选角色
+   现在，应当会看到该用户已添加到“用户”页并且分配有所选角色
 
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)
 
-   也可以通过“角色”页向用户分配角色  。
-4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页    。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
+   也可以通过“角色”页向用户分配角色。
+4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
 
     ![从用户页分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
@@ -309,9 +309,9 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤：
 
-1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”   。
-2. 单击“分配详细信息”页中的“删除”按钮  。
-3. 单击“是”以确认删除  。
+1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”。
+2. 单击“分配详细信息”页中的“删除”按钮。
+3. 单击“是”以确认删除 。
 
    ![删除用户](media/automation-role-based-access-control/automation-08-remove-users.png)
 
@@ -387,7 +387,7 @@ ObjectType         : User
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为帐户详细信息。 出现提示时选择“是”  以在继续删除用户角色分配前确认。
+在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为帐户详细信息。 出现提示时选择“是” 以在继续删除用户角色分配前确认。
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>自动化操作员角色的用户体验 - 自动化帐户
 
@@ -418,7 +418,7 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job 
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-一旦运行，用户可以登录到 Azure 门户并查看“所有资源”  。 在列表中，他们会看到他们在其中被添加为“自动化 Runbook 操作员”  的 Runbook。
+一旦运行，用户可以登录到 Azure 门户并查看“所有资源”。 在列表中，他们会看到他们在其中被添加为“自动化 Runbook 操作员”的 Runbook。
 
 ![门户中的 Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

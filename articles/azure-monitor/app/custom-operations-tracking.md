@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作 | Microsoft Docs
+title: 通过 Azure 应用程序 Insights .NET SDK 跟踪自定义操作
 description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554924"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872649"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 

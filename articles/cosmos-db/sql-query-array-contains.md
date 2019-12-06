@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ARRAY_CONTAINS
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ARRAY_CONTAINS。
+description: 了解数组中包含 SQL 系统函数的方式 Azure Cosmos DB 返回一个布尔值，该值指示数组是否包含指定的值
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247956ccc2718c9bf192b4d704a48014753c00dc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348705"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873482"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS （Azure Cosmos DB）
 返回一个布尔，它指示数组是否包含指定的值。 可以通过在命令中使用布尔表达式来检查对象的部分匹配或完全匹配。 
@@ -40,7 +40,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ARRAY_CONTAINS` 检查数组中的成员身份。  
+  下面的示例演示如何使用 `ARRAY_CONTAINS`检查数组中的成员身份。  
   
 ```sql
 SELECT   

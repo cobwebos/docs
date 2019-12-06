@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151309"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851694"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
@@ -31,13 +31,13 @@ ms.locfileid: "74151309"
 
 IoT 中心将发布以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 |
 | Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 |
-| Microsoft.Devices.DeviceTelemetry | 将设备遥测消息发送到 IoT 中心时发布。 |
+| Microsoft.Devices.DeviceTelemetry | 在将设备遥测消息发送到 IoT 中心时发布 |
 
 使用 Azure 门户或 Azure CLI 配置从每个 IoT 中心发布的事件。 例如，请尝试学习教程[使用逻辑应用发送关于 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
 
@@ -72,11 +72,11 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 ### <a name="device-telemetry-schema"></a>设备遥测架构
 
-设备遥测消息必须采用有效的 JSON 格式，并且在消息**系统属性**中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 [UTF-8](iot-hub-devguide-routing-query-syntax.md#system-properties)。 这两个属性都不区分大小写。 如果未设置内容编码，则 IoT 中心将以 base 64 编码格式写入消息。
+设备遥测消息必须是有效的 JSON 格式，其中 contentType 设置为**application/JSON** ，而 contentEncoding 设置为消息[系统属性](iot-hub-devguide-routing-query-syntax.md#system-properties)中的**utf-8** 。 这两个属性都不区分大小写。 如果未设置内容编码，则 IoT 中心将以基本64编码格式编写消息。
 
-在通过选择终结点作为事件网格来将设备遥测事件发布到事件网格之前，你可以扩充设备遥测事件。 有关详细信息，请参阅[消息扩充概述](iot-hub-message-enrichments-overview.md)。
+通过选择终结点作为事件网格，可以在将设备遥测事件发布到事件网格之前对其进行扩充。 有关详细信息，请参阅[Message 根据概述](iot-hub-message-enrichments-overview.md)。
 
-以下示例显示了设备遥测事件的架构：
+下面的示例演示设备遥测事件的架构：
 
 ```json
 [{  
@@ -160,13 +160,13 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 }]
 ```
 
-有关各属性的详细说明，请参阅 [IoT 中心的 Azure 事件网格事件架构](../event-grid/event-schema-iot-hub.md)。
+有关每个属性的详细说明，请参阅[IoT 中心的 Azure 事件网格事件架构](../event-grid/event-schema-iot-hub.md)。
 
 ## <a name="filter-events"></a>筛选事件
 
-IoT 中心事件订阅可以根据事件类型、数据内容和使用者（即设备名称）来筛选事件。
+IoT 中心事件订阅可以根据事件类型、数据内容和使用者（设备名称）来筛选事件。
 
-事件网格启用了基于事件类型、使用者和数据内容的[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选择的 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
+事件网格可对事件类型、主题和数据内容进行[筛选](../event-grid/event-filtering.md)。 创建事件网格订阅时，可以选择订阅所选 IoT 事件。 事件网格中的使用者筛选器基于“开头为”（前缀）和“结尾为”（后缀）匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。
 
 IoT 事件使用者使用的格式：
 
@@ -174,33 +174,31 @@ IoT 事件使用者使用的格式：
 devices/{deviceId}
 ```
 
-事件网格还允许基于每个事件的属性（包括数据内容）进行筛选。 这允许你选择基于遥测消息的内容传送哪些事件。 请参阅[高级筛选](../event-grid/event-filtering.md#advanced-filtering)来查看示例。 若要对遥测消息正文进行筛选，必须在消息**系统属性**中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 [UTF-8](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)。 这两个属性都不区分大小写。
+事件网格还允许筛选每个事件的属性，包括数据内容。 这允许您选择基于遥测消息内容传递的事件。 请参阅[高级筛选](../event-grid/event-filtering.md#advanced-filtering)以查看示例。 对于遥测消息正文的筛选，必须在消息[系统属性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中将 contentType 设置为**application/Json** ，将 contentEncoding 设置为**utf-8** 。 这两个属性都不区分大小写。
 
-对于非遥测事件，例如 DeviceConnected、DeviceDisconnected、DeviceCreated 和 DeviceDeleted，在创建订阅时，可以使用事件网格筛选。 对于遥测事件，除了在事件网格中进行筛选之外，用户还可以通过消息路由查询基于设备孪生、消息属性和正文进行筛选。 
+对于非遥测事件（如 DeviceConnected、DeviceDisconnected、DeviceCreated 和 DeviceDeleted），可以在创建订阅时使用事件网格筛选。 对于遥测事件，除了在事件网格中筛选以外，用户还可以通过消息路由查询来筛选设备孪生、消息属性和正文。 
 
 通过事件网格订阅遥测事件时，IoT 中心会创建一个默认消息路由，用于向事件网格发送数据源类型设备消息。 有关消息路由的详细信息，请参阅[IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)。 此路由将在门户中的 "IoT 中心" 下显示 > 消息路由 "。 无论为遥测事件创建了多少个订阅，都只会创建一个到事件网格的路由。 因此，如果您需要多个具有不同筛选器的订阅，可以在同一路由上对这些查询使用 OR 运算符。 通过事件网格通过遥测事件的订阅控制路由的创建和删除。 不能使用 IoT 中心消息路由创建或删除到事件网格的路由。
 
-若要在发送遥测数据之前筛选消息，可以更新你的[路由查询](iot-hub-devguide-routing-query-syntax.md)。 请注意，只有当消息正文为 JSON 时，才能将路由查询应用于消息正文。 还必须在消息**系统属性**中将 contentType 设置为 **application/json**，将 contentEncoding 设置为 [UTF-8](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)。
+若要在发送遥测数据之前筛选消息，可以更新[路由查询](iot-hub-devguide-routing-query-syntax.md)。 请注意，仅当正文为 JSON 时，路由查询才能应用于消息正文。 还必须在消息[系统属性](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)中将 contentType 设置为**application/json** ，并将 contentEncoding 设置为**utf-8** 。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>设备已连接和设备已断开连接事件的限制
 
-若要接收设备已连接和设备已断开连接事件，必须为设备打开 D2C 链路或 C2D 链路。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) 来打开 C2D 链路。
+若要接收设备连接状态事件，设备必须使用 Iot 中心执行 "对 ' 发送遥测数据" 或 "C2D 接收消息" 操作。 但请注意，如果设备使用 AMQP 协议连接到 Iot 中心，则建议它们执行 "C2D 接收消息" 操作，否则其连接状态通知可能会延迟几分钟。 如果设备使用的是 MQTT 协议，IoT 中心将保持 C2D 链路打开。 对于 AMQP，可以通过调用用于 IoT 中心C# SDK 的 "[接收异步 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)" 或 "用于 AMQP 的[设备客户端](iot-hub-amqp-support.md#device-client)" 打开 "C2D" 链接。
 
 如果正在发送遥测数据，则 D2C 链路是打开的。 
 
-如果设备连接闪烁（这意味着设备会频繁连接和断开），则不会发送每个连接状态，但会发布*最后一个*连接状态，该状态最终是一致的。 例如，如果设备最初处于连接状态，则连接会闪烁几秒钟，然后恢复到已连接状态。 自初始连接状态后，不会发布新的设备连接状态事件。 
-
-如果 IoT 中心发生服务中断，我们将在服务中断结束后立即发布设备连接状态。 如果设备在服务中断期间断开连接，则设备已断开连接事件将在 10 分钟内发布。
+如果设备连接闪烁，这意味着设备会频繁地进行连接和断开连接，则不会发送每个连接状态，但会在定期快照上发布所创建的当前连接状态，直到闪烁继续。 接收具有不同序列号或不同连接状态事件的相同连接状态事件均意味着设备连接状态发生变化。
 
 ## <a name="tips-for-consuming-events"></a>使用事件的提示
 
 处理 IoT 中心事件的应用程序应遵循以下建议的操作：
 
-* 可以配置多个订阅将事件路由至同一事件处理程序，因此不可假定事件均来自某个特定的源。 始终通过检查消息主题，保证事件来自预期的 IoT 中心。
+* 可以将多个订阅配置为将事件路由到相同的事件处理程序，因此不会假设事件来自特定的源。 始终通过检查消息主题，保证事件来自预期的 IoT 中心。
 
 * 请勿假定所接收的事件均为预期的类型。 在处理消息前，总是先检查 eventType。
 
-* 消息可能不按顺序到达，或者延迟达到。 对于设备已创建或设备已删除事件，请使用 ETag 字段来了解对象的信息是否是最新的。
+* 消息可能不按顺序到达，或者延迟达到。 使用 etag 字段来了解有关对象的信息对于设备创建或设备删除事件是否是最新的。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381161"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847246"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回
 
@@ -65,8 +65,8 @@ ms.locfileid: "74381161"
 
 * **重置密码** 
 * **更改密码** 
-* 对  **的写入权限**`lockoutTime`
-* 对  **的写入权限**`pwdLastSet`
+* 对 `lockoutTime` 的写入权限
+* 对 `pwdLastSet` 的写入权限
 * 对以下任一项的扩展权限：
    * 相应林中各个域的根对象
    * 要纳入 SSPR 范围的用户组织单位 (OU)

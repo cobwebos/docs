@@ -1,17 +1,17 @@
 ---
 title: 如何在 Azure Cosmos DB 中配置多主数据库
-description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主数据库。
+description: 了解如何使用 Azure Cosmos DB 中的不同 Sdk 为应用程序配置多主机。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093106"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873635"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
@@ -114,4 +114,4 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [全局缩放预配的吞吐量](scaling-throughput.md)
-* [全局分发：揭秘](global-dist-under-the-hood.md)
+* [全局分发：在幕后](global-dist-under-the-hood.md)

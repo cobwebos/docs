@@ -2,28 +2,23 @@
 title: 了解如何为 Azure AD 应用提供可选声明
 titleSuffix: Microsoft identity platform
 description: 有关如何将自定义或附加的声明添加到 Azure Active Directory 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 的指南。
-documentationcenter: na
 author: rwike77
-services: active-directory
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803406"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844713"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：为 Azure AD 应用提供可选声明
 
@@ -218,10 +213,10 @@ ms.locfileid: "72803406"
 
 2. 通过更改 groupMembershipClaim 启用组成员身份声明
 
-   有效值为：
+   有效值包括：
 
-   - 一切
-   - SecurityGroup
+   - “全部”
+   - "SecurityGroup"
    - DistributionList
    - DirectoryRole
 
@@ -258,16 +253,16 @@ ms.locfileid: "72803406"
    | 可选声明架构 | Value |
    |----------|-------------|
    | **路径名** | 必须是 "groups" |
-   | **源程序** | 不使用。 省略或指定 null |
-   | **或缺** | 不使用。 省略或指定 false |
+   | **源程序** | 未使用。 省略或指定 null |
+   | **或缺** | 未使用。 省略或指定 false |
    | **AdditionalProperties** | 其他属性的列表。  有效选项为 "sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"、"emit_as_roles" |
 
-   在 additionalProperties 中，只需要 "sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name" 中的一个。  如果存在多个，则将使用第一个，而忽略其他任何其他项。
+   在 additionalProperties 中，只需要 "sam_account_name"、"dns_domain_and_sam_account_name" 和 "netbios_domain_and_sam_account_name" 中的一个。  如果存在多个，则将使用第一个，而忽略其他任何其他项。
 
    某些应用程序需要角色声明中有关用户的组信息。  若要将声明类型从组声明更改为角色声明，请将 "emit_as_roles" 添加到其他属性。  组值将在角色声明中发出。
 
    > [!NOTE]
-   > 如果使用 "emit_as_roles"，则配置了用户分配的任何应用程序角色将不会出现在角色声明中
+   > 如果使用 "emit_as_roles"，则配置了用户分配的任何应用程序角色都不会出现在角色声明中
 
 **示例：** 以 dnsDomainName\sAMAccountName 格式将组作为 OAuth 访问令牌中的组名发出
 

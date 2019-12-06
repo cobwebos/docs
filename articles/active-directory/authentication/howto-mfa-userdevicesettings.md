@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd03ea807e48f6f0e287bb4497e4d20268995db
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404172"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848249"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 
@@ -28,16 +28,16 @@ ms.locfileid: "74404172"
 
 ## <a name="manage-authentication-methods"></a>管理身份验证方法
 
-作为被分配“身份验证管理员”角色的管理员，你可以要求用户重置其密码、重新注册 MFA，或者从其用户对象撤消现有的 MFA 会话。
+管理员分配了身份验证管理员角色后，你可以要求用户重置其密码，为 MFA 重新注册，或从其用户对象撤消现有的 MFA 会话。
 
 ![从 Azure 门户管理身份验证方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >  > 。
-1. 选择要在其上执行操作的用户，然后选择“身份验证方法”。
-   - “重置密码”会重置用户的密码并分配一个必须在下次登录时更改的临时密码。
-   - “要求重新注册 MFA”在生效后，会请求用户在下次登录时设置一个新的 MFA 身份验证方法。
-   - “撤消 MFA 会话”会清除用户的被系统记住的 MFA 会话，并要求用户下一次登录时执行 MFA。这是设备上的策略要求的。
+1. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 选择要对其执行操作的用户，然后选择 "**身份验证方法**"。
+   - **重置密码**将重置用户的密码，并分配在下一次登录时必须更改的临时密码。
+   - **需要重新注册 MFA**才能进行，以便在下次用户登录时，他们将被请求设置新的 MFA 身份验证方法。
+   - **REVOKE Mfa 会话**会清除用户记住的 mfa 会话，并要求他们在下次设备上的策略要求时执行 mfa。
 
 ## <a name="delete-users-existing-app-passwords"></a>删除用户现有的应用密码
 
@@ -46,12 +46,12 @@ ms.locfileid: "74404172"
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” **“用户”** “所有用户” >  > 。
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
 3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。
-4. 选中要管理的用户或用户旁的框。 右侧会显示快速步骤选项列表。
+4. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项的列表。
 5. 选择“管理用户设置”。
 6. 选中“删除选定用户生产的所有现有应用密码”框。
-   ![删除所有现有的应用密码](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+   ![删除所有现有应用密码](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. 单击“保存”。
 8. 单击“关闭”。
 

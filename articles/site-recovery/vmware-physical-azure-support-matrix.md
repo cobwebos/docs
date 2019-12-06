@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb76f41b4272392c1aeebe83d9a8fd3aaea3cb0b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792264"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851751"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -74,10 +74,10 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) （移动服务版本9.22）开始支持。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2/Windows Server 2012 | 。
-Windows Server 2008 R2 （带 SP1）。 | 。<br/><br/> 在移动服务代理的版本9:30 （预计从 11 2019 月1日开始）上，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。 2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更高版本（64位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的版本9:30 （预计从11月2019版开始），需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4493730)和[sha-1 更新](h https://support.microsoft.com/help/4474419)。 2019年9月不支持 ISHA-1; 如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 R2 （带 SP1）。 | 。<br/><br/> 在移动服务代理的版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。 2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 SP2 或更高版本（64位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)中，需要在 WINDOWS 2008 SP2 计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4493730)和[sha-1 更新](h https://support.microsoft.com/help/4474419)。 2019年9月不支持 ISHA-1; 如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10、Windows 8.1、Windows 8 | 。
-带 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) （移动服务版本9.22）开始支持。 </br></br> 在移动服务代理的版本9:30 （预计从11月2019版开始），需要在 Windows 7 SP1 计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
+带 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) （移动服务版本9.22）开始支持。 </br></br> 在移动服务代理的[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)中，你需要在 WINDOWS 7 SP1 计算机上安装[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
 Linux | 仅支持64位系统。 不支持32位系统。<br/><br/>每个 Linux 服务器都应安装[linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 在测试故障转移/故障转移后，需要在 Azure 中启动该服务器。 如果缺少 .LIS 组件，请确保在为要在 Azure 中启动的计算机启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [详细了解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)Azure 中对 Linux 和开源技术的支持。
 Linux Red Hat Enterprise | 5.2 到 5.11</b><br/> 6.1 到 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> 运行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
 Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 至7。6<br/> <br/> 运行 CentOS 5.2-5.11 & 6.1-6.10 的服务器未预装[Linux Integration Services （.lis）组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装[组件](https://www.microsoft.com/download/details.aspx?id=55106)，以便在 Azure 中启动计算机。
@@ -209,7 +209,7 @@ Docker 磁盘配置 | No
 来宾/服务器 - 排除磁盘 | 是
 来宾/服务器多路径 (MPIO) | No
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/) （移动服务版本9.25）开始支持五个分区。 之前仅支持 4 个。
-引用 | 移动服务版本9.23 或更高版本支持复原文件系统
+ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 来宾/服务器 EFI/UEFI 引导 | -支持 Windows Server 2012 或更高版本，具有移动代理版本9.30 的 SLES 12 SP4 和 RHEL 8。0<br/> -不支持安全 UEFI 启动类型。 
 
 ## <a name="replication-channels"></a>复制通道

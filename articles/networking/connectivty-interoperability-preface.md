@@ -10,26 +10,26 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811131"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873789"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure 后端连接功能中的互操作性：测试设置
 
 本文介绍可用于分析 Azure 网络服务如何在控制平面级别和数据平面级别进行互操作的测试设置。 下面是 Azure 网络组件的概观：
 
--   **Azure ExpressRoute**：使用 Azure ExpressRoute 中的专用对等互连将本地网络中的专用 IP 空间直接连接到 Azure 虚拟网络部署。 ExpressRoute 有助于实现更高的带宽和专用连接。 许多 ExpressRoute 生态合作伙伴提供 ExpressRoute 连接并以 SLA 作为保障。 若要详细了解 ExpressRoute 及其配置方式，请参阅 [ExpressRoute 简介][ExpressRoute]。
+-   **Azure ExpressRoute**：使用 Azure ExpressRoute 中的专用对等互连将本地网络中的专用 IP 空间直接连接到 Azure 虚拟网络部署。 ExpressRoute 有助于实现更高的带宽和专用连接。 许多 ExpressRoute 生态合作伙伴提供 ExpressRoute 连接并以 SLA 作为保障。 若要了解有关 ExpressRoute 的详细信息以及如何配置 ExpressRoute 的详细信息，请参阅[Expressroute 简介][ExpressRoute]。
 -   **站点到站点 VPN**：可以使用 Azure VPN 网关作为站点到站点 VPN，通过 Internet 或 ExpressRoute 将本地网络安全连接到 Azure。 若要了解如何配置站点到站点 VPN 以连接到 Azure，请参阅[配置 VPN 网关][VPN]。
--   **VNet 对等互连**：使用虚拟网络 (VNet) 对等互连在 Azure 虚拟网络中的 VNet 之间建立连接。 若要详细了解 VNet 对等互连，请参阅[有关 VNet 对等互连的教程][VNet]。
+-   **VNet 对等互连**：使用虚拟网络 (VNet) 对等互连在 Azure 虚拟网络中的 VNet 之间建立连接。 若要详细了解 VNet 对等互连，请参阅[VNet 对等互连教程][VNet]。
 
 ## <a name="test-setup"></a>测试设置
 
 下图演示了测试设置：
 
-[![1]][1]
+![1][1]
 
 测试设置的中心部分是 Azure 区域 1 中的中心 VNet。 中心 VNet 按以下方式连接到不同的网络：
 
@@ -43,7 +43,7 @@ ms.locfileid: "60811131"
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连在隧道模式下配置站点到站点 IPsec VPN 的详细信息，请参阅[通过 Expressroute microsoft 对等互连建立的站点到站点 vpn][S2S-Over-ExR]。 
 
 配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
@@ -51,7 +51,7 @@ ms.locfileid: "60811131"
 
 ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
-有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
+有关如何配置 ExpressRoute 连接和站点到站点 VPN 的详细信息，请参阅[expressroute 和站点到站点共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
@@ -71,18 +71,18 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 了解测试拓扑的[配置详细信息][Configuration]。
 
-了解测试设置的[控制平面分析][Control-Analysis]，以及拓扑中不同 VNet 或 VLAN 的视图。
+了解测试设置的[控制平面分析][Control-Analysis]以及拓扑中不同 Vnet 或 vlan 的视图。
 
-了解测试设置的[数据平面分析][Data-Analysis]，以及 Azure 网络监视功能视图。
+了解测试设置和 Azure 网络监视功能视图的[数据平面分析][Data-Analysis]。
 
-参阅 [ExpressRoute 常见问题解答][ExR-FAQ]，了解：
+请参阅[EXPRESSROUTE 常见问题解答][ExR-FAQ]，了解：
 -   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
 -   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
 -   ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/TestSetup.png "测试拓扑图"
+[1]: ./media/backend-interoperability/TestSetup.png "测试拓扑示意图"
 
 <!--Link References-->
 [ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction

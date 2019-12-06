@@ -4,17 +4,17 @@ description: 汇总了可用于在 Azure 自动化中启动 Runbook 的不同方
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6ef8d81e8a2845e62bf25d0bba4d6967cca65a4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886497"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849405"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -50,7 +50,7 @@ ms.locfileid: "73886497"
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureRmAutomationRunbook 将返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪 Runbook 的状态。 然后可结合使用此作业对象和 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob)，以确定作业的状态，也可以结合使用此作业对象和 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput)，以获取作业的输出。 以下示例代码将启动名为 Test-Runbook 的 Runbook，等待它完成，并显示其输出。
+Start-AzureRmAutomationRunbook 将返回一个作业对象，启动 Runbook 后，可以使用该对象来跟踪 Runbook 的状态。 然后可以搭配使用此作业对象和 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob)，以确定作业的状态，也可以搭配使用此作业对象和 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput)，以获取作业的输出。 以下示例代码将启动名为 Test-Runbook 的 Runbook，等待它完成，并显示其输出。
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -186,5 +186,5 @@ jsmith
 ## <a name="next-steps"></a>后续步骤
 
 * 本文中的 Runbook 体系结构提供了在本地和 Azure 中使用混合 Runbook 辅助角色管理资源的 Runbook 的高级概述。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。
-* 若要详细了解如何创建模块化 Runbook，供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
-* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 若要详细了解如何创建模块化 Runbook，以供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
+* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅[Powershell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

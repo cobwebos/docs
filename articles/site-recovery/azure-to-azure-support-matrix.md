@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530956"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873771"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 区域之间 Azure VM 灾难恢复的支持矩阵
 
@@ -73,7 +73,7 @@ Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚�
 --- | --- | ---
 常规用途 V2 存储帐户（热存储层和冷存储层） | 受支持 | 不建议使用 GPv2，因为 V2 的事务成本明显高于 V1 存储帐户。
 高级存储器 | 不支持 | 标准存储帐户用于缓存存储，有助于优化成本。
-虚拟网络的 Azure 存储防火墙  | 受支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。<br></br>另外，请确保允许访问至少一个源 Vnet 子网。
+虚拟网络的 Azure 存储防火墙  | 受支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。<br></br>同时，确保允许访问至少一个源 Vnet 子网。
 
 
 ## <a name="replicated-machine-operating-systems"></a>复制的计算机操作系统
@@ -89,12 +89,11 @@ Windows Server 2019 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2016  | 支持的服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2 | 。
 Windows Server 2012 | 。
-Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 对于 Azure Vm 的移动服务扩展，从版本9:30 （预计从11月2019版开始），需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
-带 SP2 的 Windows Server 2008 | 对于 Azure Vm 的移动服务扩展，从版本9:30 （预计从 11 2019 月1日开始发布）开始，你需要在运行 Windows Server 2008 SP2 的计算机上安装 Windows[服务堆栈更新（SSU）](https://support.microsoft.com/help/4493730)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 在 Azure Vm 的移动服务扩展版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)中，需要在运行 windows Server 2008 R2 SP1/SP2 的计算机上安装 windows[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 。
 Windows 8.1 （x64） | 。
-Windows 8 （x64） | 。
-带 SP1 的 Windows 7 （x64） | 对于 Azure Vm 的移动服务扩展，从版本9:30 （预计从 11 2019 月1日开始发布）开始，你需要在运行 Windows 7 SP1 的计算机上安装 Windows[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
+Windows 8 (x64) | 。
+带 SP1 的 Windows 7 （x64） | 在 Azure Vm 的移动服务扩展版本[9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)中，需要在运行 WINDOWS 7 SP1 的计算机上安装 windows[服务堆栈更新（SSU）](https://support.microsoft.com/help/4490628)和[sha-1 更新](https://support.microsoft.com/help/4474419)。  2019年9月不支持 SHA-1，如果未启用 SHA-1 代码签名，则代理扩展不会按预期安装/升级。 详细了解[sha-1 升级和要求](https://aka.ms/SHA-2KB)。
 
 
 
@@ -213,7 +212,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 受支持 |
 热添加 | 受支持 | 使用托管磁盘的 Vm 支持为添加到复制的 Azure VM 的数据磁盘启用复制。
 热删除磁盘 | 不支持 | 如果在 VM 上删除数据磁盘，则需要禁用复制，并再次为 VM 启用复制。
-排除磁盘 | 支持. 必须使用[Powershell](azure-to-azure-exclude-disks.md)进行配置。 |  默认情况下会排除临时磁盘。
+排除磁盘 | 支持。 必须使用[Powershell](azure-to-azure-exclude-disks.md)进行配置。 |  默认情况下会排除临时磁盘。
 Storage Spaces Direct  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 横向扩展文件服务器  | 崩溃一致恢复点支持。 不支持应用程序一致恢复点。 |
 LRS | 受支持 |

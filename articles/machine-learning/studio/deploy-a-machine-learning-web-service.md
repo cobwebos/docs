@@ -1,5 +1,5 @@
 ---
-title: 部署 Web 服务
+title: 部署一个 Web 服务
 titleSuffix: ML Studio (classic) - Azure
 description: 如何将训练实验转换为预测实验，为部署做好准备，然后将其部署为 Azure 机器学习 Studio （经典） web 服务。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837734"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851088"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习 Studio （经典） web 服务
 
@@ -53,7 +53,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 通过转换为预测实验，可将训练的模型部署为评分 Web 服务。 Web 服务的用户会将输入的数据发送到模型，模型返回预测结果。 转换为预测实验后，需记住自己期望别人如何使用模型。
 
-要将训练实验转换为预测实验，请单击实验画布底部的“运行”，并单击“设置 Web 服务”，选择“预测 Web 服务”。
+要将训练实验转换为预测实验，请单击实验画布底部的“运行”，然后单击“设置 Web 服务”，选择“预测 Web 服务”。
 
 ![转换为评分实验](./media/publish-a-machine-learning-web-service/figure-1.png)
 
@@ -121,7 +121,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ### <a name="manage-your-new-web-service"></a>管理新 Web 服务
 
-可以机器学习 Studio （经典） Web 服务门户管理新的 web services。 在[主门户页](https://services.azureml-test.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 要监视特定服务，请单击该服务，并单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
+你可以使用机器学习 Studio （经典） Web 服务门户管理新的 web 服务。 在[主门户页](https://services.azureml.net/)中，单击“Web 服务”。 在 Web 服务页中，可删除或复制服务。 要监视特定服务，请单击该服务，并单击“仪表板”。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”。
 
 ### <a id="multi-region"></a> 将新的 Web 服务部署到多个区域
 

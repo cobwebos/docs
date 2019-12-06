@@ -2,13 +2,13 @@
 title: 通过 PowerShell 导入和导出蓝图
 description: 了解如何以代码的形式使用蓝图定义。 使用导出和导入命令进行共享、源控制和管理。
 ms.date: 09/03/2019
-ms.topic: conceptual
-ms.openlocfilehash: 2822fd1aea1911ba264113d43595346a612ebc50
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.topic: how-to
+ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406354"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873193"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>通过 PowerShell 导入和导出蓝图定义
 
@@ -23,7 +23,7 @@ ms.locfileid: "74406354"
 
 无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何使用[Az](https://powershellgallery.com/packages/Az.Blueprint/)模块中的 `Import-AzBlueprintWithArtifact` 和 `Export-AzBlueprintWithArtifact` 命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假定使用 Azure 蓝图的中等实践知识。 如果尚未执行此操作，请完成以下文章：
 

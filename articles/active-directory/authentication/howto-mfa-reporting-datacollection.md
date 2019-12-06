@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381766"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848283"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
 
@@ -89,7 +89,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 分机
+- 扩展
 - 清理分机号
 - 已阻止
 - 阻止原因
@@ -109,7 +109,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 分机
+- 扩展
 - 清理分机号
 - 绕过原因
 - 完成时间戳

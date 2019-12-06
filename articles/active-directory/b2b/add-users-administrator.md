@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7176101a1e6c1da54ddd8b5f22b61b91fbc5115a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267937"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869287"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -36,11 +36,11 @@ ms.locfileid: "74267937"
 若要将 B2B 协作用户添加到目录，请执行以下步骤：
 
 1. 以分配有有限管理员目录角色或来宾邀请者角色的用户身份登录到[Azure 门户](https://portal.azure.com)。
-2. 在导航窗格中选择“Azure Active Directory”。
+2. 搜索并从任意页面中选择**Azure Active Directory** 。
 3. 在“管理”下，选择“用户”。
 4. 选择“新来宾用户”。
 
-   ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/NewGuestUser-Directory.png) 
+   ![显示“新来宾用户”在 UI 中的位置](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
    > [!NOTE]
    > “组织关系”页上也提供了“新来宾用户”选项。 在 Azure Active Directory 中的“管理”下，选择“组织关系”。
@@ -67,7 +67,7 @@ ms.locfileid: "74267937"
 如果需要手动将 B2B 协作用户添加到组，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在导航窗格中选择“Azure Active Directory”。
+2. 搜索并从任意页面中选择**Azure Active Directory** 。
 3. 在“管理”下，选择“组”。
 4. 选择一个组（或单击“新建组”创建一个新组）。 最好是输入组说明，指出该组包含 B2B 来宾用户。
 5. 选择“成员”。 
@@ -84,8 +84,8 @@ ms.locfileid: "74267937"
 若要将 B2B 协作用户添加到应用程序，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“企业应用程序” **“所有应用程序”**  > 。
+2. 搜索并从任意页面中选择**Azure Active Directory** 。
+3. 在“管理”下，选择“企业应用程序” > “所有应用程序”。
 4. 选择要将来宾用户添加到的应用程序。
 5. 在应用程序的仪表板上，选择“用户总数”以打开“用户和组”窗格。
 
@@ -112,13 +112,13 @@ ms.locfileid: "74267937"
 如果来宾用户尚未兑换其邀请，你可以重新发送邀请电子邮件。
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 在导航窗格中选择“Azure Active Directory”。
+2. 搜索并从任意页面中选择**Azure Active Directory** 。
 3. 在“管理”下，选择“用户”。
 5. 选择用户帐户。
 6. 在“管理”下，选择“配置文件”。
 7. 如果该用户尚未接受邀请，则会显示“重新发送邀请”选项。 选择此按钮可以重新发送邀请。
 
-   ![用户配置文件中的“重新发送邀请”选项](./media/add-users-administrator/Resend-Invitation.png)
+   ![用户配置文件中的“重新发送邀请”选项](./media/add-users-administrator/b2b-user-resend-invitation.png)
 
 > [!NOTE]
 > 请注意，如果重新发送的邀请最初将用户定向到了特定的应用，新邀请中的链接会使该用户转到顶级访问面板。

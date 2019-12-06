@@ -2,28 +2,24 @@
 title: 在 Azure Active Directory 应用程序库中列出应用程序 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 应用库中列出支持单一登录的应用程序
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374073"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842772"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -38,7 +34,7 @@ ms.locfileid: "72374073"
 - 共同客户可以获得分步配置教程。
 - 使用系统进行跨域标识管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)）的客户可以使用同一应用的预配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 对于联合应用程序（开放 ID 和 SAML/WS 进纸），应用程序必须支持 "软件即服务" （SaaS）模型，才能在 Azure AD 应用库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现[Azure AD 许可框架](consent-framework.md)。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。

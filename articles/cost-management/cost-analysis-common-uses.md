@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219489"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849099"
 ---
 # <a name="common-cost-analysis-uses"></a>常见成本分析使用
 
@@ -64,6 +64,8 @@ Azure 成本管理用户通常需要对许多其他人提出的问题的解答�
 ## <a name="view-costs-for-a-specific-tag"></a>查看特定标记的成本
 
 许多 Azure 用户会将标记应用到其资源，如成本中心或开发环境（生产和测试），以更好地分类费用。 标记在成本分析中显示为维度。 您可以使用该维度深入了解自定义标记分类。
+
+对标记的支持适用于在将标记应用到资源*之后*报告的使用情况。 标记不适用于成本汇总以追溯方式。
 
 1. 在 Azure 门户中，导航到你的作用域的成本分析。 例如：**成本管理 + 计费** > **成本管理** > **成本分析**。
 1. 为标记选择 "**分组依据**"。

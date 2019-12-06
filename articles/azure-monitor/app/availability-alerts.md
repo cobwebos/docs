@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ea2bec541c13ec1615113cef184eb5ad502b158c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: a1637ac82c33c2a541bcec9f2848a248c29d56ca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678286"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872666"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
@@ -64,7 +64,7 @@ ms.locfileid: "72678286"
 
 ## <a name="automate-alerts"></a>自动执行警报
 
-若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert)文档。
+若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -73,4 +73,4 @@ ms.locfileid: "72678286"
 ## <a name="next-steps"></a>后续步骤
 
 * [多步骤 web 测试](availability-multistep.md)
-* [Url ping web 测试](monitor-web-app-availability.md)
+* [URL ping Web 测试](monitor-web-app-availability.md)

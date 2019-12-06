@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ACOS
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ACOS。
+description: 了解 Azure Cosmos DB 中的 ACOS （arccosice） SQL 系统函数如何返回以弧度表示的角度，其余弦为指定数值表达式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c9d29fba6b5dc55a98bf90cfafe0940d7bf9674
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348743"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873516"
 ---
-# <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
+# <a name="acos-azure-cosmos-db"></a>ACOS （Azure Cosmos DB）
  返回角度（弧度），其余弦是指定的数值表达式；也被称为反余弦。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ ACOS(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  以下示例返回 -1 的 `ACOS`。  
+  下面的示例返回-1 的 `ACOS`。  
   
 ```sql
 SELECT ACOS(-1) AS acos 

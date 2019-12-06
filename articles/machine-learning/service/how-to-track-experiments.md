@@ -1,7 +1,7 @@
 ---
 title: 记录 ML 试验 & 度量值
 titleSuffix: Azure Machine Learning
-description: 监视 Azure ML 试验和监视运行指标，以增强模型创建过程。 将日志记录添加到定型脚本并查看运行的记录结果。  请使用 start_logging 或 ScriptRunConfig。
+description: 监视 Azure ML 试验和监视运行指标，以增强模型创建过程。 将日志记录添加到定型脚本并查看运行的记录结果。  使用 run .log、start_logging 或 ScriptRunConfig。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a60691222c6f5f31a5b5c97df029790c1fd690ed
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873858"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,13 +34,13 @@ ms.locfileid: "73584532"
 
 训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细列表，请参阅 [Run 类参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
 
-|类型| Python 函数 | 说明|
+|Type| Python 函数 | 说明|
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
 |行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
-|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
+|图像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
 |上传文件或目录|函数：<br>`run.upload_file(name, path_or_stream)`<br> <br> 示例：<br>run.upload_file("best_model.pkl", "./model.pkl") | 将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
 
@@ -232,6 +232,25 @@ ms.locfileid: "73584532"
 
 ## <a name="view-run-details"></a>查看运行详细信息
 
+### <a name="view-activequeued-runs-from-the-browser"></a>查看浏览器中的活动/排队运行
+
+用于训练模型的计算目标是共享资源。 因此，它们可能会在给定时间内排队或处于活动状态。 若要从浏览器查看特定计算目标的运行，请执行以下步骤：
+
+1. 在[Azure 机器学习 studio](https://ml.azure.com/)中，选择工作区，然后从页面左侧选择 "__计算__"。
+
+1. 选择 "__定型群集__" 可以显示用于定型的计算目标的列表。 然后选择群集。
+
+    ![选择定型群集](./media/how-to-track-experiments/select-training-compute.png)
+
+1. 选择 "__运行__"。 此时将显示使用此群集的运行列表。 若要查看特定运行的详细信息，请使用 "__运行__" 列中的链接。 若要查看试验的详细信息，请使用__试验__列中的链接。
+
+    ![为定型群集选择运行](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > 运行可以包含子运行，因此，一个训练作业可能会产生多个条目。
+
+运行完成后，它将不再显示在此页上。 若要查看已完成运行的信息，请访问 studio 的__试验__部分，并选择 "试验" 和 "运行"。 有关详细信息，请参阅[查询运行度量](#queryrunmetrics)部分。
+
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>监视器运行方式 Jupyter 笔记本小组件
 使用**ScriptRunConfig**方法提交运行时，可以使用[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)观看运行进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
 
@@ -271,6 +290,7 @@ print(run.get_portal_url())
 
 模型定型和监视在后台进行，以便在等待时可运行其他任务。 也可以先耐心等待模型完成定型，然后再运行其它代码。 使用 ScriptRunConfig 时，可以使用 ```run.wait_for_completion(show_output = True)``` 在模型定型完成时进行显示。 使用 ```show_output``` 标志可查看详细输出。 
 
+<a id="queryrunmetrics"></a>
 
 ### <a name="query-run-metrics"></a>查询运行指标
 
@@ -299,7 +319,7 @@ print(run.get_portal_url())
 |记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
 
 
-## <a name="example-notebooks"></a>示例笔记本
+## <a name="example-notebooks"></a>示例 Notebook
 下面的笔记本展示了本文中的概念：
 * [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)

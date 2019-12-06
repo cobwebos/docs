@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798123"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851445"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>生成土潮湿热度地图
 
@@ -24,7 +24,7 @@ ms.locfileid: "73798123"
 
 ## <a name="before-you-begin"></a>开始之前
 
-请确保以下各项：  
+确保以下信息：  
 
 - Azure 订阅。
 - Azure FarmBeats 的运行实例。
@@ -85,7 +85,7 @@ ms.locfileid: "73798123"
 
 1. 在 "**作业**" 页上，检查你在上一个过程中创建的作业的**作业状态**。
 2. 当作业状态显示为 "*成功*" 时，单击菜单上的 "**映射**"。
-3. 按照 "moisture_MyFarm_YYYY" 的格式搜索地图的创建日期，< 格式为 >。
+3. 按 < "中 moisture_MyFarm_YYYY" > 的格式搜索地图的创建日期。
 4. 在 "**名称**" 列中选择一个映射，随即会显示一个弹出窗口，其中包含所选映射的预览。
 5. 选择“下载”。 下载地图，并将其存储在计算机的本地文件夹中。
 
@@ -93,4 +93,4 @@ ms.locfileid: "73798123"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已成功生成了土料湿气热度地图，接下来了解如何[生成传感器位置](generate-maps.md#sensor-placement-maps)并引入[历史遥测数据](ingest-historical-telemetry-data.md)。 
+现在，你已成功生成了土料湿气热度地图，接下来了解如何[生成传感器位置](generate-maps.md#sensor-placement-map)并引入[历史遥测数据](ingest-historical-telemetry-data.md)。 
