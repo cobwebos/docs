@@ -1,5 +1,5 @@
 ---
-title: 安装 Azure AD Connect 预配代理
+title: 安装 Azure AD Connect 云设置代理
 description: 本主题分步介绍如何安装预配代理。
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf479d4962f6d7aa9a0ba43b48f99bd67566fb6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794479"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846226"
 ---
-# <a name="install-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
+# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>安装 Azure AD Connect 云设置代理
 本文档将指导你完成 Azure AD Connect 预配代理的安装过程，以及如何在 Azure 门户中进行初始配置。
 
 >[!IMPORTANT]

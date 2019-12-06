@@ -1,22 +1,22 @@
 ---
 title: 将 MongoDB 应用程序连接到 Azure Cosmos DB
-description: 了解如何将 MongoDB 应用连接到 Azure Cosmos DB。
+description: 了解如何通过从 Azure 门户中获取连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 30b37b86bbe0e91887932423fa1884d8bd49333c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0f2cd1b7228f2cc9cadb84232222f658a512a81f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757010"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872156"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
-了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB。 然后，可以使用 Azure Cosmos 数据库作为 MongoDB 应用的数据存储。 
+了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB。 然后，可使用 Azure Cosmos 数据库作为 MongoDB 应用的数据存储。 
 
 本教程提供了两种方法来检索连接字符串信息：
 

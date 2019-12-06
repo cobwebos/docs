@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的 CONCAT
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数串联。
+description: 了解 Azure Cosmos DB 中的 CONCAT SQL 系统函数如何返回一个字符串，该字符串是连接两个或更多字符串值的结果
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1e61d61a3d64ca7d7808619159e4dfc8e8b33d68
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351260"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871544"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT （Azure Cosmos DB）
  返回一个字符串，该字符串是连接两个或多个字符串值的结果。  
@@ -26,7 +26,7 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   要连接到其他值的字符串表达式。 @No__t-0 函数需要至少两个*str_expr*参数。  
+   要连接到其他值的字符串表达式。 `CONCAT` 函数需要至少两个*str_expr*参数。  
   
 ## <a name="return-types"></a>返回类型
   

@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中预配容器吞吐量
-description: 了解如何在 Azure Cosmos DB 中预配容器级别的吞吐量
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和其他各种 Sdk 在 Azure Cosmos DB 中的容器级别预配吞吐量。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147606"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872037"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
@@ -35,7 +35,7 @@ ms.locfileid: "74147606"
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI 或 PowerShell
 
-若要创建具有专用吞吐量的容器，请参阅
+若要创建具有专用吞吐量的容器，请参阅。
 
 * [使用 Azure CLI 创建容器](manage-with-cli.md#create-a-container)
 * [使用 Powershell 创建容器](manage-with-powershell.md#create-container)

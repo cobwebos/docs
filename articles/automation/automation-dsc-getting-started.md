@@ -4,25 +4,25 @@ description: Azure Automation State Configuration (DSC) 中最常见任务的说
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243613"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850952"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
 本文说明如何使用 Azure Automation State Configuration 执行最常见的任务，例如创建、导入、编译配置，加入要管理的计算机和查看报告。 有关 Azure Automation State Configuration 的概述，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
 
-本文提供有关如何使用 Azure Automation State Configuration 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下资源管理器模板：[Azure 自动化托管的节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 Azure Automation State Configuration 环境，包括一个由 Azure Automation State Configuration 管理的 Azure VM。
+本文提供有关如何使用 Azure Automation State Configuration 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下资源管理器模板：[Azure 自动化托管节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 Azure Automation State Configuration 环境，包括一个由 Azure Automation State Configuration 管理的 Azure VM。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文中的示例，需要具备以下条件：
 
@@ -176,7 +176,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
 1. 在“自动化帐户”边栏选项卡上的“配置管理”下，单击“State configuration (DSC)”。
-1. 在“State Configuration (DSC)”页上，单击“节点”选项卡。在此处，可以查看配置状态的概述，以及每个节点的详细信息。
+1. 在 "**状态配置（DSC）** " 页上，单击 "**节点**" 选项卡。在这里，你可以看到配置状态概述以及每个节点的详细信息。
 
    ![“节点”页的屏幕截图](./media/automation-dsc-getting-started/NodesTab.png)
 

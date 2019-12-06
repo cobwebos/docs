@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278164"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849134"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 Slack 和取消其预配所需在 Slack 和 Azure 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure Active Directory 租户
 * 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户
@@ -66,19 +66,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 4. 将“预配模式”设置为“自动”。
 
-   ![Slack 预配](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Slack 预配](./media/slack-provisioning-tutorial/slack1.png)
 
 5. 在“管理员凭据”部分下，单击“授权”。 这会在新的浏览器窗口中打开“Slack 授权”对话框。
 
 6. 在新窗口中，使用团队管理员帐户登录到 Slack。 在显示的授权对话框中，选择要启用预配的 Slack 团队，并选择“授权”。 完成后，返回到 Azure 门户完成预配配置。
 
-    ![授权对话框](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![授权对话框](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Slack 应用。 如果连接失败，请确保 Slack 帐户具有团队管理员权限，并重试“授权”步骤。
 
 8. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Slack”。
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 要为 Slack 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-13. 单击“ **保存**”。
+13. 单击“保存”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Slack。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 10 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 Slack 应用执行的所有操作。
 
@@ -102,7 +102,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 在“属性映射”部分中，查看将从 Azure AD 同步到 Slack 的组属性。 请注意，选为**匹配**属性的属性用于在更新操作中匹配 Slack 中的组。 
 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
 这会导致“用户和组”部分中分配到 Slack 的任何组对象从 Azure AD 完全同步到 Slack。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Slack 应用执行的所有操作。
 
@@ -127,4 +127,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)

@@ -113,6 +113,8 @@
           href: batch-user-accounts.md
         - name: 提交大量任务
           href: large-number-tasks.md
+        - name: 检查作业和任务错误
+          href: batch-job-task-error-checking.md
     - name: 创建资源文件
       href: resource-files.md
     - name: 持久性作业和任务输出

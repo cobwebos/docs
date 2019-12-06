@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4fc0654aab1c68888e86dc95de658bc69a01e02d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a5d01978d8a4883d760e7ecf84afa381dfd563d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123973"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868552"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Azure Kubernetes 服务与安全中心的集成（预览版）
 Azure Kubernetes Service （AKS）是 Microsoft 的托管服务，用于开发、部署和管理容器化应用程序。 
@@ -41,7 +41,7 @@ Azure Kubernetes Service （AKS）是 Microsoft 的托管服务，用于开发�
 
 * **环境强化**-安全中心持续监视 Kubernetes 群集的配置，并生成反映行业标准的安全建议。
 
-* **运行时保护**-通过连续分析以下 AKS 源，安全中心会提醒你在主机*和*AKS 群集级别检测到威胁和恶意活动（有关详细信息，请参阅[Azure 容器服务](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)):
+* **运行时保护**-通过连续分析以下 AKS 源，安全中心会提醒你在主机*和*AKS 群集级别检测到威胁和恶意活动（有关详细信息，请参阅[Azure 容器的威胁检测](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)）：
     * 原始安全事件，如网络数据和进程创建
     * Kubernetes 审核日志
 

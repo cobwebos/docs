@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480337"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851326"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
 
@@ -53,7 +53,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 "Azure
 
 输入应用程序的名称时，系统会自动创建应用程序 URL。 可以根据需要为应用程序选择另一个 URL。 每个 Azure IoT Central URL 在 Azure IoT Central 中必须唯一。 如果所选 URL 已被使用，则会看到一条错误消息。
 
-## <a name="directory"></a>Directory
+## <a name="directory"></a>目录
 
 由于 Azure IoT Central 有你用于管理已在 Microsoft 合作伙伴门户中选择的客户的上下文，因此在“目录”字段中只显示该客户的 Azure Active Directory 租户。 
 
@@ -74,7 +74,7 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 选择要在其中创建 Azure IoT Central 应用程序的区域或[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择最接近设备的区域，以获得最佳性能。
 
 > [!NOTE]
-> 预览应用程序模板目前仅适用于**欧洲**和**美国**位置。
+> 预览应用程序模板当前仅在**欧洲**和**美国**位置提供。
 
 若要了解详细信息，请参阅[azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)和[azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。
 
@@ -87,7 +87,7 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 可以为新的 Azure IoT Central 应用程序选择一个可用的应用程序模板。 应用程序模板可能包含入门所需的预定义项目（例如设备模板和仪表板）。
 
-| 应用程序模板 | 说明 |
+| 应用程序模板 | 描述 |
 | -------------------- | ----------- |
 | 自定义应用程序   | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
 | 示例 Contoso       | 创建一个应用程序，其中包含用于简单的已连接设备的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |

@@ -4,17 +4,17 @@ description: 了解如何在引发 Azure 警报时触发 Runbook 运行。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c818114df436dbbd3ac1a51b6eeec00b9eec4d3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c4afcbced2879a2a6d50112b6388cdf5c8098b1d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915729"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850374"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -29,13 +29,13 @@ ms.locfileid: "70915729"
 * 准实时指标警报
 
 > [!NOTE]
-> 通用警报架构将目前 Azure 中的警报通知的使用体验进行了标准化。 从历史上看，目前 Azure 中的三种警报类型（指标、日志、活动日志）一直有其自己的电子邮件模板、Webhook 架构等。若要了解详细信息，请参阅[通用警报架构](../azure-monitor/platform/alerts-common-schema.md)
+> 常见的警报架构会在 Azure 中标准化警报通知的使用体验。 如今，Azure 中的三种警报类型（指标、日志和活动日志）都有自己的电子邮件模板、webhook 架构等。若要了解详细信息，请参阅[常见警报架构](../azure-monitor/platform/alerts-common-schema.md)
 
 当警报调用 Runbook 时，实际调用是对 Webhook 的 HTTP POST 请求。 该 POST 请求的正文包含一个 JSON 格式的对象，该对象包含与警报相关的有用属性。 下表列出了每种警报类型的有效负载架构的相应链接：
 
 |警报  |描述|负载架构  |
 |---------|---------|---------|
-|[常见警报](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|通用警报架构将目前 Azure 中的警报通知的使用体验进行了标准化。|常见警报负载架构|
+|[常见警报](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|目前在 Azure 中标准化警报通知的消耗体验的常见警报架构。|常见警报负载架构|
 |[活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 **Active** 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
 |[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
@@ -56,7 +56,7 @@ ms.locfileid: "70915729"
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 Runbook”页上，输入 **Stop-AzureVmInResponsetoVMAlert** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。  
+4. 在 "**添加 runbook** " 页上，输入**stop-azurevminresponsetovmalert**作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。  
 5. 将以下 PowerShell 示例复制到“编辑”页中。
 
     ```powershell-interactive
@@ -172,26 +172,26 @@ ms.locfileid: "70915729"
 
 ## <a name="create-the-alert"></a>创建警报
 
-警报使用操作组，后者是警报触发的操作的集合。 Runbook 只是操作组包含的诸多操作之一。
+警报使用操作组，操作组是警报触发的操作的集合。 Runbook 只是操作组包含的诸多操作之一。
 
-1. 在自动化帐户的“监视”下选择“警报”。
+1. 在自动化帐户中，选择 "**监视**" 下的**警报**。
 1. 选择“+ 新建警报规则”。
-1. 在“资源”下单击“选择”。 在“选择资源”页上选择要对其发出警报的 VM，然后单击“完成”。
-1. 在“条件”下单击“添加条件”。 选择要使用的信号（例如“CPU 百分比”），然后单击“完成”。
-1. 在“配置信号逻辑”页的“警报逻辑”下输入“阈值”，然后单击“完成”。
+1. 单击 "**资源**" 下的 "**选择**"。 在 "**选择资源**" 页上，选择要从其发出警报的 VM，然后单击 "**完成**"。
+1. 单击 "**条件**" 下的 "**添加条件**"。 选择要使用的信号，例如 " **CPU 百分比**"，然后单击 "**完成**"。
+1. 在 "**配置信号逻辑**" 页上，在 "**警报逻辑**" 下输入**阈值**，并单击 "**完成**"。
 1. 在“操作组”下，选择“新建”。
-1. 在“添加操作组”页上，为操作组提供一个名称和一个短名称。
-1. 为操作指定一个名称。 选择“自动化 Runbook”作为操作类型。
-1. 选择“编辑详细信息”。 在“配置 Runbook”页上的“Runbook 源”下，选择“用户”。  
+1. 在 "**添加操作组**" 页上，为操作组指定名称和短名称。
+1. 为操作指定一个名称。 对于 "操作类型"，请选择 "**自动化 Runbook**"。
+1. 选择 "**编辑详细信息**"。 在“配置 Runbook”页上的“Runbook 源”下，选择“用户”。  
 1. 选择**订阅**和**自动化帐户**，然后选择 **Stop-AzureVmInResponsetoVMAlert** Runbook。  
-1. 对于“启用通用警报架构”，请选择“是”。
+1. 选择 **"是"** **启用常见的警报架构**。
 1. 若要创建操作组，请选择“确定”。
 
     ![“添加操作组”页](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
     可以在创建的[活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)和[准实时警报](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json)中使用此操作组。
 
-1. 在“警报详细信息”下添加警报规则名称和说明，然后单击“创建警报规则”。
+1. 在 "**警报详细信息**" 下，添加警报规则名称和说明，然后单击 "**创建警报规则**"。
 
 ## <a name="next-steps"></a>后续步骤
 

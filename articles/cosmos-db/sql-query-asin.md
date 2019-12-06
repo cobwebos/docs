@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ASIN
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ASIN。
+description: 了解 Azure Cosmos DB 中的反正弦（ASIN） SQL 系统函数如何返回以弧度表示的角，其正弦是指定的数值表达式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5a64fc8d8f87d38f001bf2bc9dd581692c97fe64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3e790eb5ae5eb780637b199a1a65dec2dd02d1bc
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348490"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871732"
 ---
-# <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB)
+# <a name="asin-azure-cosmos-db"></a>ASIN （Azure Cosmos DB）
  返回角度（弧度），其正弦是指定的数值表达式。 也被称为反正弦。  
   
 ## <a name="syntax"></a>语法
@@ -34,7 +34,7 @@ ASIN(<numeric_expr>)
   
 ## <a name="examples"></a>示例
   
-  以下示例返回 -1 的 `ASIN`。  
+  下面的示例返回-1 的 `ASIN`。  
   
 ```sql
 SELECT ASIN(-1) AS asin  

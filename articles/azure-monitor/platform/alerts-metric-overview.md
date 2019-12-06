@@ -3,16 +3,16 @@ title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
 author: rboucher
 ms.author: robb
-ms.date: 11/18/2019
+ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775715"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850051"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -125,7 +125,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
-到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 目前仅虚拟机支持此功能。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
+到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 目前仅在虚拟机、SQL server 数据库、SQL server 弹性池和数据 box 边缘设备上支持此功能。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
 
 可以通过以下三种方式之一指定单个指标警报的监视范围：
 

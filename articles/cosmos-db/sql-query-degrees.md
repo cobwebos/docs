@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的度数
-description: 了解 Azure Cosmos DB 中的 SQL 系统功能度。
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数的角度，以弧度为单位返回相应的角度（以度为单位）
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d8c2109c2c11f137b1966741a95d1d0c02895016
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351208"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871323"
 ---
 # <a name="degrees-azure-cosmos-db"></a>度（Azure Cosmos DB）
  返回指定角度（弧度）的相应角度（度）。  

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229421"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851190"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户
 
@@ -29,17 +29,17 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 在本部分中，将创建一个虚拟网络和子网来托管用于访问专用链接资源的 VM （本示例中为 Azure Cosmos 帐户）。
 
-1. 在屏幕的左上方，选择“创建资源” **“网络”** “虚拟网络” >  > 。
+1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”。
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择“WestCentralUS”。|
+    | Subscription | 选择订阅。|
+    | Resource group | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
+    | Location | 选择“WestCentralUS”。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     |||
@@ -52,16 +52,16 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
+    | Subscription | 选择订阅。 |
+    | Resource group | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
     | 地区 | 选择“WestCentralUS”。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
-    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
+    | 图像 | 选择“Windows Server 2019 Datacenter”。 |
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选的用户名。 |
@@ -79,11 +79,11 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
-    | Subnet | 保留默认值“mySubnet (10.1.0.0/24)”。|
+    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
     | 公共 IP | 保留默认值“(new) myVm-ip”。 |
     | 公共入站端口 | 选择“允许所选端口”。 |
     | 选择入站端口 | 选择 HTTP 和 RDP。|
@@ -103,7 +103,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-从 internet 连接到 VM *myVm* ，如下所示：
+从 Internet 连接到 VM *myVm*，如下所示：
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
@@ -118,7 +118,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
 
 1. 选择“确定”。
 
@@ -129,9 +129,6 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>从 VM 私下访问 Azure Cosmos 帐户
 
 在本部分中，将使用专用终结点将专用连接到 Azure Cosmos 帐户。 
-
-> [!IMPORTANT]
-> Azure Cosmos 帐户的 DNS 配置需要在 hosts 文件上手动修改才能包含特定帐户的 FQDN。 在生产方案中，你要将 DNS 服务器配置为使用专用 IP 地址。 但出于演示目的，可以使用 VM 上的管理员权限，并修改 `c:\Windows\System32\Drivers\etc\hosts` 文件（在 Windows 上）或 `/etc/hosts` 文件（在 Linux 上），以包括 IP 地址和 DNS 映射。
 
 1. 若要包含 IP 地址和 DNS 映射，请登录到虚拟机*myVM*，打开 `c:\Windows\System32\Drivers\etc\hosts` 文件，并按以下格式包括上一步中的 DNS 信息：
 
@@ -154,7 +151,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 通过粘贴之前复制的信息来输入连接字符串。
 
-1. 选择“下一步”。
+1. 选择“**下一步**”。
 
 1. 选择“连接”。
 

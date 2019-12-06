@@ -4,17 +4,17 @@ description: 介绍从 Azure 自动化中的一个 Runbook 启动另一个 Runbo
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64d9246284be58c8378ab102db25ab7e5220c9eb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477965"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850442"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "67477965"
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>使用内联执行调用子 Runbook
 
-若要从另一个 Runbook 调用某个内嵌 Runbook，请使用被调用 Runbook 的名称并提供其参数值，就像使用活动或 cmdlet 时一样。  同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 Runbook 将等待子 Runbook 完成，并转移到下一行，并直接向父级返回任何输出。
+若要从另一个 Runbook 调用某个内嵌 Runbook，请使用被调用 Runbook 的名称并提供其参数值，就像使用活动或 cmdlet 时一样。  同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 Runbook 将等待子 Runbook 完成，然后转移到下一行，并直接向父级返回任何输出。
 
 在调用某个内联 Runbook 时，它会在与父 Runbook 所在的同一个作业中运行。 父 Runbook 运行的子 Runbook 的作业历史记录中不会提供相应的指示。 子 Runbook 发生的任何异常和任何流输出将与父级关联。 此行为减少了作业数，简化了作业的跟踪，并便于排查自从子 Runbook 引发任何异常以及将其流输出与父作业关联以来发生的问题。
 
@@ -42,7 +42,7 @@ ms.locfileid: "67477965"
 
 * Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
 
-在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 .\\  ，以指定脚本位于本地目录中。
+在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，只需使用 Runbook 的名称。  调用 PowerShell 子 runbook 时，必须在其名称前面添加 .\\，以指定脚本位于本地目录中。
 
 ### <a name="example"></a>示例
 
@@ -67,7 +67,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 可以根据[使用 Windows PowerShell 启动 Runbook](start-runbooks.md#start-a-runbook-with-powershell) 中所述，使用 [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) cmdlet 来启动 Runbook。 使用此 cmdlet 的模式有两种。  在第一个模式中，cmdlet 会在子 Runbook 的子作业创建时返回作业 ID。  在第二个模式（通过指定 **-wait** 参数启用）中，cmdlet 会等待子作业完成，并且会返回子 Runbook 的输出。
 
-使用 cmdlet 启动的子 Runbook 的作业会在父 Runbook 的某个独立作业中运行。 此行为会导致比启动内联 Runbook 更多的作业，并使这些作业更难以跟踪。不过，父级可以异步启动多个子 Runbook，而无需等待每个子 Runbook 完成。 对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](automation-powershell-workflow.md#parallel-processing)。
+使用 cmdlet 启动的子 Runbook 的作业会在父 Runbook 的某个独立作业中运行。 此行为会导致更多的作业，而不是以内联方式启动 runbook，并使它们更难以跟踪。父项可以异步启动多个子 runbook，而无需等待每个子 runbook 完成。 对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](automation-powershell-workflow.md#parallel-processing)。
 
 由于时间原因，子 Runbook 的输出不会可靠地返回到父 Runbook。 另外，某些变量（如 $VerbosePreference、$WarningPreference 等）可能不会传播到子 Runbook。 为避免这些问题，可以结合 `-Wait` 开关使用 `Start-AzureRmAutomationRunbook` cmdlet 将子 Runbook 作为单独的自动化作业调用。 这会阻止父 Runbook，直到子 Runbook 完成。
 
@@ -81,7 +81,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ### <a name="example"></a>示例
 
-以下示例将启动一个包含参数的子 Runbook，并使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
+以下示例将启动一个包含参数的子 Runbook，然后使用 Start-AzureRmAutomationRunbook -wait 参数等待其完成。 完成后，将从子 Runbook 收集其输出。 若要使用 `Start-AzureRmAutomationRunbook`，必须向 Azure 订阅进行身份验证。
 
 ```azurepowershell-interactive
 # Ensures you do not inherit an AzureRMContext in your runbook
@@ -115,8 +115,8 @@ Start-AzureRmAutomationRunbook `
 |  | 内联 | Cmdlet |
 |:--- |:--- |:--- |
 | 作业 |子 Runbook 在父级所在的同一个作业中运行。 |为子 Runbook 创建单独的作业。 |
-| 执行 |父 Runbook 等待子 Runbook 完成，然后再继续。 |父 Runbook 会在子 Runbook 启动后立刻继续运行，或  父 Runbook 会等待子作业完成。 |
-| Output |父 Runbook 可以直接从子 Runbook 获取输出。 |父 Runbook 必须检索子 Runbook 作业的输出，或  父 Runbook 可以直接从子 Runbook 获取输出。 |
+| 执行 |父 Runbook 等待子 Runbook 完成，然后再继续。 |父 Runbook 会在子 Runbook 启动后立刻继续运行，或父 Runbook 会等待子作业完成。 |
+| 输出 |父 Runbook 可以直接从子 Runbook 获取输出。 |父 Runbook 必须检索子 Runbook 作业的输出，或父 Runbook 可以直接从子 Runbook 获取输出。 |
 | parameters |子 Runbook 参数的值需单独指定，并且可以使用任意数据类型。 |子 Runbook 参数的值必须组合成单个哈希表。 此哈希表只能包含简单数据类型、数组和利用 JSON 序列化的对象数据类型。 |
 | 自动化帐户 |父 Runbook 只能使用同一自动化帐户中的子 Runbook。 |父 Runbook 可以使用同一 Azure 订阅甚至（已连接的）不同订阅中的任何自动化帐户内的子 Runbook。 |
 | 发布 |在发布父 Runbook 之前必须先发布子 Runbook。 |必须在启动父 Runbook 前的任意时间发布子 Runbook。 |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384300"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851173"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -28,16 +28,6 @@ Citrix 扩展了 Windows 虚拟桌面的价值和强大的企业工具，以提�
 
 - [请参阅合作伙伴网站](https://more.citrix.com/wvd)。
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse 徽标](./media/partners/cloudhouse.png)
-
-Cloudhouse 是一个 Windows 虚拟桌面增值服务提供程序，它为客户提供了一个全包式应用程序迁移服务，该服务可以将所有应用程序（包括与新式 Windows 操作系统不兼容的应用程序）移动到 Windows虚拟桌面环境，使客户能够真正利用多会话 Windows 10。 
-
-通过利用行之有效的 Cloudhouse 容器化技术，Cloudhouse 服务将获取所有应用程序，包括为 Windows XP、Windows 7 或 Windows 8 设计的应用程序，并将其部署到新式 Windows 虚拟桌面，而无需更改代码或影响用户体验。 Cloudhouse 通过将应用程序与基础操作系统隔离，进一步增加了 Windows 虚拟桌面的值，从而允许在不影响容器化应用程序的情况下推出 Windows 服务更新。 
-
-- [请参阅合作伙伴网站](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)。
-
 ## <a name="vmware"></a>VMware
 
 ![VMware 徽标](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft 
 
 - [在 Microsoft Azure 上注册适用于地平线云的技术预览版](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse 徽标](./media/partners/cloudhouse.png)
+
+Cloudhouse 是一个 Windows 虚拟桌面增值服务提供程序，它为客户提供了一个全包式应用程序迁移服务，该服务可以将所有应用程序（包括与新式 Windows 操作系统不兼容的应用程序）移动到 Windows虚拟桌面环境，使客户能够真正利用多会话 Windows 10。 
+
+通过利用行之有效的 Cloudhouse 容器化技术，Cloudhouse 服务将获取所有应用程序，包括为 Windows XP、Windows 7 或 Windows 8 设计的应用程序，并将其部署到新式 Windows 虚拟桌面，而无需更改代码或影响用户体验。 Cloudhouse 通过将应用程序与基础操作系统隔离，进一步增加了 Windows 虚拟桌面的值，从而允许在不影响容器化应用程序的情况下推出 Windows 服务更新。 
+
+- [请参阅合作伙伴网站](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)。
 
 ## <a name="cloudjumper"></a>CloudJumper
 

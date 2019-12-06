@@ -2,28 +2,24 @@
 title: 从 Azure 访问控制服务迁移 | Microsoft Docs
 description: 了解用于从 Azure 访问控制服务 (ACS) 迁移应用和服务的选项。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835518"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845546"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -137,7 +133,7 @@ https://<mynamespace>.accesscontrol.windows.net
 | Azure 托管缓存 | [迁移到用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
 | Azure DataMarket | [迁移到认知服务 API](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
+| Azure Media Services | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure 备份 | [升级 Azure 备份代理](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
@@ -149,11 +145,11 @@ https://<mynamespace>.accesscontrol.windows.net
 
 ### <a name="sharepoint-customers"></a>SharePoint 客户
 
-对于云、本地和混合方案, SharePoint 2013、2016和 SharePoint Online 客户使用 ACS 进行身份验证。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
+对于云、本地和混合方案，SharePoint 2013、2016和 SharePoint Online 客户使用 ACS 进行身份验证。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
 
-| 功能 | 指南 |
+| Feature | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在, 你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
 | [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
@@ -190,27 +186,27 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 大致看来，如果只允许用户使用 Microsoft 工作或学校帐户进行登录，那么迁移到 Azure Active Directory 或许是最佳选择。
 
-| 能力 | 访问控制支持 | Azure AD 支持 |
+| 功能 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
 | **帐户类型** | | |
-| Microsoft 工作或学校帐户 | 支持 | 支持 |
+| Microsoft 工作或学校帐户 | 受支持 | 受支持 |
 | Windows Server Active Directory 和 ADFS 帐户 |- 支持（通过与 Azure AD 租户联合） <br />- 支持（通过与 AD FS 直接联合） | 支持（只通过与 Azure AD 租户联合） | 
 | 其他企业标识管理系统帐户 |- 可能支持（通过与 Azure AD 租户联合） <br />- 支持（通过直接联合） | 支持（通过与 Azure AD 租户联合） |
-| 供个人使用的 Microsoft 帐户 | 支持 | 支持（只通过 Azure AD v2.0 OAuth 协议） | 
-| Facebook、Google、Yahoo 帐户 | 支持 | 都不支持 |
+| 供个人使用的 Microsoft 帐户 | 受支持 | 支持（只通过 Azure AD v2.0 OAuth 协议） | 
+| Facebook、Google、Yahoo 帐户 | 受支持 | 都不支持 |
 | **协议和 SDK 兼容性** | | |
-| WIF | 支持 | 支持，但说明有限 |
-| WS 联合身份验证 | 支持 | 支持 |
+| WIF | 受支持 | 支持，但说明有限 |
+| WS 联合身份验证 | 受支持 | 受支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
-| WS-Trust | 支持 | 不支持 |
+| WS-Trust | 受支持 | 不支持 |
 | **令牌格式** | | |
-| JWT | 支持 beta 版本 | 支持 |
-| SAML 1.1 | 支持 | 预览 |
-| SAML 2.0 | 支持 | 支持 |
-| SWT | 支持 | 不支持 |
+| JWT | 支持 beta 版本 | 受支持 |
+| SAML 1.1 | 受支持 | 预览 |
+| SAML 2.0 | 受支持 | 受支持 |
+| SWT | 受支持 | 不支持 |
 | **自定义** | | |
 | 可自定义的主页领域发现/帐户选取 UI | 可以合并到应用的可下载代码 | 不支持 |
-| 上传自定义令牌签名证书 | 支持 | 支持 |
+| 上传自定义令牌签名证书 | 受支持 | 受支持 |
 | 自定义令牌中的声明 |- 传递标识提供者提供的输入声明<br />- 以声明形式获取标识提供者提供的访问令牌<br />- 根据输入声明值颁发输出声明<br />- 颁发含常数值的输出声明 |- 无法传递联合标识提供者提供的声明<br />- 无法以声明形式获取标识提供者提供的访问令牌<br />- 无法根据输入声明值颁发输出声明<br />- 可以颁发含常数值的输出声明<br />- 可以根据同步到 Azure AD 的用户属性颁发输出声明 |
 | **自动化** | | |
 | 自动执行配置和管理任务 | 支持（通过访问控制管理服务） | 支持（通过 Microsoft Graph 和 Azure AD 图形 API） |
@@ -241,27 +237,27 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 下表对与 Web 应用程序相关的访问控制功能和 Azure AD B2C 中提供的功能进行了比较。 粗略来看，如果应用面向使用者或支持许多不同类型的帐户，那么正确选择可能是迁移到 Azure AD B2C。
 
-| 能力 | 访问控制支持 | Azure AD B2C 支持 |
+| 功能 | 访问控制支持 | Azure AD B2C 支持 |
 | ---------- | ----------- | ---------------- |
 | **帐户类型** | | |
-| Microsoft 工作或学校帐户 | 支持 | 支持（通过自定义策略）  |
+| Microsoft 工作或学校帐户 | 受支持 | 支持（通过自定义策略）  |
 | Windows Server Active Directory 和 ADFS 帐户 | 支持（通过使用 AD FS 进行直接联合） | 支持（通过使用自定义策略实现 SAML 联合） |
 | 其他企业标识管理系统帐户 | 支持（通过使用 WS 联合身份验证进行直接联合） | 支持（通过使用自定义策略实现 SAML 联合） |
-| 供个人使用的 Microsoft 帐户 | 支持 | 支持 | 
-| Facebook、Google、Yahoo 帐户 | 支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
+| 供个人使用的 Microsoft 帐户 | 受支持 | 受支持 | 
+| Facebook、Google、Yahoo 帐户 | 受支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
 | **协议和 SDK 兼容性** | | |
-| Windows Identity Foundation (WIF) | 支持 | 不支持 |
-| WS 联合身份验证 | 支持 | 不支持 |
+| Windows Identity Foundation (WIF) | 受支持 | 不支持 |
+| WS 联合身份验证 | 受支持 | 不支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
-| WS-Trust | 支持 | 不支持 |
+| WS-Trust | 受支持 | 不支持 |
 | **令牌格式** | | |
-| JWT | 支持 beta 版本 | 支持 |
-| SAML 1.1 | 支持 | 不支持 |
-| SAML 2.0 | 支持 | 不支持 |
-| SWT | 支持 | 不支持 |
+| JWT | 支持 beta 版本 | 受支持 |
+| SAML 1.1 | 受支持 | 不支持 |
+| SAML 2.0 | 受支持 | 不支持 |
+| SWT | 受支持 | 不支持 |
 | **自定义** | | |
 | 可自定义的主页领域发现/帐户选取 UI | 可以合并到应用的可下载代码 | 完全可自定义 UI（通过自定义 CSS） |
-| 上传自定义令牌签名证书 | 支持 | 自定义签名密钥（而不是证书），支持（通过自定义策略） |
+| 上传自定义令牌签名证书 | 受支持 | 自定义签名密钥（而不是证书），支持（通过自定义策略） |
 | 自定义令牌中的声明 |- 传递标识提供者提供的输入声明<br />- 以声明形式获取标识提供者提供的访问令牌<br />- 根据输入声明值颁发输出声明<br />- 颁发含常数值的输出声明 |- 可传递标识提供者提供的声明；某些声明要求自定义政策<br />- 无法以声明形式获取标识提供者提供的访问令牌<br />- 可以通过自定义策略根据输入声明值颁发输出声明<br />- 可以通过自定义策略颁发含常数值的输出声明 |
 | **自动化** | | |
 | 自动执行配置和管理任务 | 支持（通过访问控制管理服务） |- 允许通过 Azure AD 图形 API 创建用户<br />- 无法以编程方式创建 B2C 租户、应用程序或策略 |
@@ -287,7 +283,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 |     |     |
 | --- | --- |
 | ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -320,7 +316,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 也可使用 Azure AD 进行服务器间身份验证（通过使用 OAuth 客户端凭据授权的 Azure AD 实现）。 下表对服务器间身份验证中的访问控制功能和 Azure AD 中提供的功能进行了比较。
 
-| 能力 | 访问控制支持 | Azure AD 支持 |
+| 功能 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
 | 如何注册 Web 服务 | 在访问控制管理门户中创建信赖方 | 在 Azure 门户中创建 Azure AD Web 应用程序 |
 | 如何注册客户端 | 在访问控制管理门户中创建服务标识 | 在 Azure 门户中创建另一个 Azure AD Web 应用程序 |
@@ -349,7 +345,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 |     |     |
 | --- | --- |
 | ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，它支持与 ACS 相同的许多功能，而 PingFederate 是一种类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 

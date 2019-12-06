@@ -2,18 +2,18 @@
 title: 排查更新管理问题
 description: 了解如何解决更新管理的问题。
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786058"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849235"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "72786058"
 
 混合辅助角色代理的代理疑难解答可确定基本问题。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。 对于所有其他问题，请使用以下故障排除指南。
 
-如果尝试在虚拟机（VM）上载入解决方案时遇到问题，请检查本地计算机上的**应用程序和服务日志**下的**Operations Manager**日志中是否存在事件 ID 4502 的事件和包含的事件详细信息**EnterpriseManagement. 运行状况服务. AzureAutomation. eventmessage 以及**。
+如果你在尝试将解决方案载入虚拟机（VM）时遇到问题，请检查本地计算机上的**应用程序和服务日志**下的**Operations Manager**日志中是否存在事件 ID 为4502的事件，以及包含**AzureAutomation eventmessage 以及**的事件详细信息。
 
 以下部分重点介绍了每个特定的错误消息和可能的解决方法。 有关其他载入问题，请参阅[解决解决方案载入](onboarding.md)问题。
 
@@ -108,7 +108,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 ### <a name="cause"></a>原因
 
-发生此错误的原因如下：
+出现该错误的原因可能如下：
 
 - 与自动化帐户的通信被阻止。
 - 要载入的 VM 可能来自克隆的计算机，该计算机未与安装的 Microsoft Monitoring Agent （MMA）经过系统准备。
@@ -187,7 +187,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>分辨率
 
-如果适用，请使用[动态组](../automation-update-management-groups.md)作为更新部署。 附加
+如果适用，请使用[动态组](../automation-update-management-groups.md)作为更新部署。 另外：
 
 * 验证计算机是否仍然存在并且可以访问。 如果它不存在，请编辑部署并删除计算机。
 * 请参阅[网络规划](../automation-update-management.md#ports)部分，了解更新管理所需的端口和地址列表，并验证计算机是否满足这些要求。

@@ -1,17 +1,17 @@
 ---
 title: 为 Azure Cosmos 容器定义唯一键
-description: 了解如何为 Azure Cosmos 容器定义唯一键
+description: 了解如何使用 Azure 门户、PowerShell、.Net、Java 和其他各种 Sdk 定义 Azure Cosmos 容器的唯一密钥。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 2f61afd12a50b1b135419585bfada52d7ef98f3a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811642"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872105"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 
@@ -35,7 +35,7 @@ ms.locfileid: "71811642"
 
     ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-powershell"></a>使用 PowerShell
+## <a name="use-powershell"></a>使用 Powershell
 
 若要创建具有唯一密钥的容器，请参阅[创建具有唯一密钥和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
 

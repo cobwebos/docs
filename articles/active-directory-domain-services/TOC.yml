@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: 配置密码和帐户锁定策略
           href: password-policy.md
-        - name: 启用安全审核事件（预览版）
+        - name: 启用安全审核事件
           href: security-audit-events.md
     - name: 将 VM 加入域
       items:

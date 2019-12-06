@@ -1,22 +1,22 @@
 ---
 title: 在 Azure Cosmos DB 中使用唯一键
-description: 了解如何使用 Azure Cosmos 数据库中的唯一键
+description: 了解如何为 Azure Cosmos 数据库定义和使用唯一键。 本文还介绍如何使用唯一键来添加数据完整性层。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/02/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4a929566d464f8548c4bffeb9f89099e77722e67
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756789"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869827"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键约束
 
-唯一键在 Azure Cosmos 容器中添加一个数据完整性层。 在创建 Azure Cosmos 容器时将创建唯一键策略。 使用唯一键可确保逻辑分区内一个或多个值的唯一性。 此外，可以保证每个[分区键](partition-data.md)的唯一性。 
+唯一键在 Azure Cosmos 容器中添加一个数据完整性层。 在创建 Azure Cosmos 容器时将创建唯一键策略。 使用唯一键可确保逻辑分区内一个或多个值的唯一性。 此外，可以保证每个[分区键](partition-data.md)的唯一性。
 
 使用唯一键策略创建容器后，会阻止创建新的或更新现有项，从而导致逻辑分区中出现重复项，如 unique key 约束所指定。 分区键与唯一键的组合可保证某个项在容器范围内的唯一性。
 
@@ -45,13 +45,13 @@ ms.locfileid: "72756789"
 
 * 若要为现有容器设置唯一键，请使用唯一键约束创建新容器。 使用适当的数据迁移工具将数据从现有容器移到新容器。 对于 SQL 容器，请使用[数据迁移工具](import-data.md)来移动数据。 对于 MongoDB 容器，请使用 [mongoimport.exe 或 mongorestore.exe](mongodb-migrate.md) 来移动数据。
 
-* 一个唯一键策略最多可以包含 16 个路径值。 例如，值可以是 `/firstName`、`/lastName` 和 `/address/zipCode`。 每个唯一键策略可以具有最多 10 个唯一键约束或组合。 每个唯一索引约束的组合路径不得超过 60 字节。 在前面的示例中，名字、姓氏和电子邮件地址共同构成了一个约束。 此约束使用 16 个可能路径中的 3 个。
+* 一个唯一键策略最多可以包含 16 个路径值。 例如，值可以是 `/firstName`、`/lastName`和 `/address/zipCode`。 每个唯一键策略可以具有最多 10 个唯一键约束或组合。 每个唯一索引约束的组合路径不得超过 60 字节。 在前面的示例中，名字、姓氏和电子邮件地址共同构成了一个约束。 此约束使用 16 个可能路径中的 3 个。
 
 * 如果容器具有唯一键策略，则创建、更新和删除项的[请求单位（RU）](request-units.md)费用略高。
 
 * 不支持稀疏的唯一键。 如果缺少某些唯一路径值，这些值将被视为 null 值，并参与唯一性约束。 因此，若要符合此约束，只能有一个项为 null 值。
 
-* 唯一键名称区分大小写。 例如，请考虑将 unique key 约束设置为 `/address/zipcode` 的容器。 如果数据中有一个名为 "`ZipCode`" 的字段，则 Azure Cosmos DB 会将 "null" 插入为唯一键，因为 `zipcode` 与 `ZipCode` 不同。 由于区分大小写，无法插入包含 ZipCode 的其他所有记录，因为重复的“null”违反唯一键约束。
+* 唯一键名称区分大小写。 例如，请考虑将 unique key 约束设置为 `/address/zipcode`的容器。 如果数据中有一个名为 "`ZipCode`" 的字段，则 Azure Cosmos DB 会将 "null" 插入为唯一键，因为 `zipcode` 与 `ZipCode`不同。 由于区分大小写，无法插入包含 ZipCode 的其他所有记录，因为重复的“null”违反唯一键约束。
 
 ## <a name="next-steps"></a>后续步骤
 

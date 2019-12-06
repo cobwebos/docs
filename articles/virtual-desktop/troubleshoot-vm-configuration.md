@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791153"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869521"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -81,10 +81,10 @@ ms.locfileid: "74791153"
 按照以下说明确认是否已安装组件并检查是否有错误消息。
 
 1. 检查 "**控制面板**" > **程序**" > "**程序和功能**"，确认是否安装了这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
-2. 打开**文件资源管理器**并导航到**C:\Windows\Temp\scriptlogs.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
-3. 如果文件**C:\Windows\Temp\scriptlogs.log**存在，请将其打开，并检查错误消息。
+2. 打开**文件资源管理器**并导航到**C:\Windows\Temp\ScriptLog.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
+3. 如果文件**C:\Windows\Temp\ScriptLog.log**存在，请将其打开，并检查错误消息。
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>错误：缺少 Windows 虚拟桌面代理和 Windows 虚拟桌面代理启动加载程序。 也缺少 C:\Windows\Temp\scriptlogs.log
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>错误：缺少 Windows 虚拟桌面代理和 Windows 虚拟桌面代理启动加载程序。 也缺少 C:\Windows\Temp\ScriptLog.log
 
 **原因1：** 在 Azure 资源管理器模板的输入过程中提供的凭据不正确或权限不足。
 
@@ -98,7 +98,7 @@ ms.locfileid: "74791153"
 - 确认租户名称正确，并且租户存在于 Windows 虚拟桌面中。
 - 确认帐户至少具有 RDS 参与者权限。
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>错误：身份验证失败，C:\Windows\Temp\scriptlogs.log 中出错
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>错误：身份验证失败，C:\Windows\Temp\ScriptLog.log 中出错
 
 **原因：** PowerShell DSC 可以执行，但无法连接到 Windows 虚拟桌面。
 

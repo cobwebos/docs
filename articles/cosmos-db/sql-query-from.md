@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB 中的 FROM 子句
-description: 了解 Azure Cosmos DB 的 SQL FROM 子句
+description: 了解 SQL 语法，并了解 Azure Cosmos DB 的 FROM 子句的示例。 本文还演示了如何使用 FROM 子句来确定结果的范围并获取子项目。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326997"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873363"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
-FROM (`FROM <from_specification>`) 子句是可选的，除非稍后在查询中对源进行筛选或投影。 `SELECT * FROM Families` 之类的查询枚举整个 `Families` 容器。 还可以对容器使用特殊标识符 ROOT，而无需使用容器名称。
+FROM （`FROM <from_specification>`）子句是可选的，除非稍后在查询中对源进行筛选或投影。 例如 `SELECT * FROM Families` 枚举整个 `Families` 容器。 你还可以使用容器的特殊标识符根，而不是使用容器名称。
 
-FROM 子句对每个查询强制实施以下规则：
+FROM 子句强制执行每个查询的以下规则：
 
-* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-aliasing.md)。  
+* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处 `f` 是 `Families`的别名。 AS 是用于[别名](sql-query-aliasing.md)标识符的可选关键字。  
 
-* 指定别名后，无法绑定原始的源名称。 例如，`SELECT Families.id FROM Families f` 在语法上是无效的，原因是标识符 `Families` 已指定别名，因此不再可以解析。  
+* 别名后，不能绑定原始源名称。 例如，`SELECT Families.id FROM Families f` 在语法上无效，因为标识符 `Families` 已化名为别名，无法再解析。  
 
-* 所有被引用的属性必须完全限定，以避免在不严格遵守架构时出现任何有歧义的绑定。 例如，`SELECT id FROM Families f` 在语法上是无效的，因为未绑定属性 `id`。
+* 所有引用的属性都必须是完全限定的，以便在没有严格的架构遵从性时避免任何不明确的绑定。 例如，`SELECT id FROM Families f` 在语法上无效，因为 `id` 未绑定属性。
 
 ## <a name="syntax"></a>语法
   
@@ -107,7 +107,7 @@ FROM <from_specification>
 
 ### <a name="get-subitems-by-using-the-from-clause"></a>使用 FROM 子句获取子项
 
-FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子树，子根可能会变成源，如以下示例所示：
+FROM 子句可以将源减少到更小的子集。 若要仅枚举每个项中的子树，subroot 可以成为源，如以下示例中所示：
 
 ```sql
     SELECT *
@@ -147,7 +147,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     ]
 ```
 
-上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 下面的示例将排除没有 `address.state` 值的 `Families`。
+上述查询使用数组作为源，但也可以将对象用作源。 查询会将源中的任何有效的、已定义的 JSON 值视为包含在结果中。 下面的示例将排除没有 `address.state` 值的 `Families`。
 
 ```sql
     SELECT *

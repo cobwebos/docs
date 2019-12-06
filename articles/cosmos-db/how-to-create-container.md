@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中创建容器
-description: 了解如何在 Azure Cosmos DB 中创建容器
+description: 了解如何使用 Azure 门户、.Net、Java、Python、node.js 和其他 Sdk 在 Azure Cosmos DB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242410"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873703"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
 
@@ -25,7 +25,7 @@ ms.locfileid: "72242410"
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建容器”。 接下来，请提供以下详细信息：
+1. 打开 "**数据资源管理器**" 窗格，然后选择 "**新建容器**"。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器 ID。
@@ -33,7 +33,7 @@ ms.locfileid: "72242410"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
-    ![“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    !["数据资源管理器" 窗格的屏幕截图，其中突出显示了新容器](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 
@@ -41,7 +41,7 @@ ms.locfileid: "72242410"
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建容器”。 接下来，请提供以下详细信息：
+1. 打开 "**数据资源管理器**" 窗格，然后选择 "**新建容器**"。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器 ID。
@@ -49,7 +49,7 @@ ms.locfileid: "72242410"
    * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
-    ![Azure Cosmos DB API for MongoDB“添加容器”对话框的屏幕截图](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    ![MongoDB Azure Cosmos DB API 的屏幕截图，"添加容器" 对话框](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 
@@ -116,7 +116,7 @@ ms.locfileid: "72242410"
 * [使用 Azure CLI 创建 Gremlin 图](./scripts/cli/gremlin/create.md)
 * [使用 Azure CLI 创建表 API 表](./scripts/cli/table/create.md)
 
-## 使用 PowerShell<a id="ps-sql"></a>创建容器 <a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## 使用 PowerShell<a id="ps-sql"> </a><a id="ps-mongodb"><a id="ps-cassandra"></a>创建容器<a id="ps-gremlin"><a id="ps-table"></a>
 
 以下链接显示了如何使用 PowerShell 为 Azure Cosmos DB 创建容器资源。
 

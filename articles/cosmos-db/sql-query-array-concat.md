@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ARRAY_CONCAT
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ARRAY_CONCAT。
+description: 了解 Azure Cosmos DB 中的数组串联 SQL 系统函数如何返回数组，该数组是连接两个或更多数组值的结果
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ad973650ac205313f9045c170f99e15e385a82d1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 10370e16c95f4fc747dd3a66a56794da38562972
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348711"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871816"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT （Azure Cosmos DB）
  返回一个数组，该数组是连接两个或更多数组值的结果。  
@@ -26,7 +26,7 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>参数
   
 *arr_expr*  
-   用于连接到其他值的数组表达式。 @No__t-0 函数需要至少两个*arr_expr*参数。  
+   用于连接到其他值的数组表达式。 `ARRAY_CONCAT` 函数需要至少两个*arr_expr*参数。  
   
 ## <a name="return-types"></a>返回类型
   

@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB 查询语言中的 LOWER
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 LOWER。
+title: Azure Cosmos DB 查询语言中较低
+description: 了解 Azure Cosmos DB 中的较低 SQL 系统函数在将大写字符数据转换为小写后返回字符串表达式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349701"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873295"
 ---
-# <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
+# <a name="lower-azure-cosmos-db"></a>LOWER （Azure Cosmos DB）
  返回在将大写字符数据转换为小写后的字符串表达式。  
   
 ## <a name="syntax"></a>语法
@@ -26,7 +26,7 @@ LOWER(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   是一个字符串表达式。  
+   字符串表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ LOWER(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  以下示例演示如何在查询中使用 `LOWER`。  
+  下面的示例演示如何在查询中使用 `LOWER`。  
   
 ```sql
 SELECT LOWER("Abc") AS lower

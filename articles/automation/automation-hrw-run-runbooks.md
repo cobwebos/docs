@@ -4,25 +4,25 @@ description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c7084954fe58351a6f9af40552714faa34685ad
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887046"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849711"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
 运行在 Azure 自动化中的 runbook 和运行在混合 Runbook 辅助角色上的 runbook 没有结构上的区别。 但在这两类 runbook 彼此之间可能会有很大差异。 存在这种差异是因为面向混合 Runbook 辅助角色的 runbook 通常管理本地计算机本身的资源，或者管理它所在的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。
 
-创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上，这意味着你必须确保 `nxautomation` 帐户可以访问你存储模块的位置。 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请将 **AllUsers** 指定为 `-Scope` 参数，以确认 `nxautomation` 帐户具有访问权限。
+创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 `nxautomation` 下运行的作业。 在 Linux 上，这意味着你必须确保 `nxautomation` 帐户有权访问你在其中存储模块的位置。 使用[Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请为 `-Scope` 参数指定**AllUsers** ，以确认 `nxautomation` 帐户有权访问。
 
-有关 Linux 上 PowerShell 的详细信息，请参阅[非 Windows 平台上 PowerShell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
+有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 powershell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)。
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中启动 runbook
 
@@ -47,7 +47,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 默认情况下，在本地计算机上，Runbook 在本地系统帐户（对于 Windows）和特殊用户帐户 `nxautomation`（对于 Linux）的上下文中运行，因此，必须针对要访问的资源进行身份验证。
 
-可以在包含 cmdlet 的 Runbook 中使用[凭据](automation-credentials.md)和[证书](automation-certificates.md)资产，这些 cmdlet 可以让你指定凭据，方便你向不同资源进行身份验证。 下面的示例显示了用于重新启动计算机的 Runbook 的一部分。 它从凭据资产检索凭据，从变量资产检索计算机的名称，然后将这些值用于 Restart-Computer cmdlet。
+可以在包含 cmdlet 的 Runbook 中使用[凭据](automation-credentials.md)和[证书](automation-certificates.md)资产，这些 cmdlet 可以让你指定凭据，方便你向不同资源进行身份验证。 下面的示例显示了用于重新启动计算机的 Runbook 的一部分。 它从凭据资产检索凭据，从变量资产检索计算机的名称，并将这些值用于 Restart-Computer cmdlet。
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -60,7 +60,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 ### <a name="runas-account"></a>RunAs 帐户
 
-默认情况下，混合 Runbook 辅助角色使用本地系统（对于 Windows）和特殊用户帐户 `nxautomation`（对于 Linux）来执行 Runbook。 不需要让 Runbook 将自身的身份验证提供给本地资源，而可以针对混合辅助角色组指定 **RunAs** 帐户。 指定有权访问本地资源的[凭据资产](automation-credentials.md)，包括证书存储和在组中的混合 Runbook 辅助角色上运行时在这些凭据下运行的所有 runbook。
+默认情况下，混合 Runbook 辅助角色使用本地系统（对于 Windows）和特殊用户帐户 `nxautomation`（对于 Linux）来执行 Runbook。 不需要让 Runbook 将自身的身份验证提供给本地资源，而可以针对混合辅助角色组指定 **RunAs** 帐户。 在组中的混合 Runbook 辅助角色上运行时，你可以指定有权访问本地资源的[凭据资产](automation-credentials.md)，包括证书存储和所有 runbook 在这些凭据下运行。
 
 凭据的用户名必须采用以下格式之一：
 
@@ -315,4 +315,4 @@ gpg –-clear-sign <runbook name>
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
 * 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell runbook，请参阅[在 Azure 自动化中编辑 runbook](automation-edit-textual-runbook.md)
 * 如果 runbook 未成功完成，请查看 [runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
-* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅[Powershell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

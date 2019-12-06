@@ -2,27 +2,24 @@
 title: Microsoft 标识平台帐户和租户配置文件（Android） |Microsoft
 description: 适用于 Android 的 Microsoft 标识平台帐户概述
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 9af7d8c5a1793b34dd609c2cfd68fb468884ef8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679836"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845716"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
@@ -32,10 +29,10 @@ Microsoft 身份验证库（MSAL） API 将*用户*替换为术语 "*帐户*"。
 
 Microsoft 标识平台中的帐户包括：
 
-  - 唯一标识符。
-  - 用于演示帐户所有权/控制的一个或多个凭据。
-  - 一个或多个配置文件，包括以下属性：
-    - 图片，名称，系列名称，职务，办公室位置
+- 一个唯一标识符。  
+- 用于演示帐户所有权/控制的一个或多个凭据。
+- 一个或多个配置文件，包括以下属性：
+  - 图片，名称，系列名称，职务，办公室位置
 - 帐户有一个或一条记录的源。 这是在其中创建帐户的系统，以及与该帐户关联的凭据的存储位置。 在多租户系统（如 Microsoft 标识平台）中，记录的系统是在其中创建帐户的 `tenant`。 此租户也称为 `home tenant`。
 - Microsoft 标识平台中的帐户具有以下记录系统：
   - Azure Active Directory，包括 Azure Active Directory B2C。
@@ -49,7 +46,6 @@ Microsoft 标识平台中的帐户包括：
   - 此本地记录（这是帐户的表示形式）绑定到原始帐户。
   - MSAL 公开此本地记录作为 `Tenant Profile`。
   - 租户配置文件可以具有适用于本地上下文的不同属性，例如职务、办公室位置、联系信息等。
- 
 - 由于一个帐户可能出现在一个或多个租户中，因此一个帐户可以有多个配置文件。
 
 > [!NOTE]
@@ -102,7 +98,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 除了请求访问令牌外，MSAL 还始终从每个租户请求一个 ID 令牌。 它通过总是请求以下范围来实现此操作：
 
 - openid
-- 个人资料
+- profile
 
 ID 令牌包含声明的列表。 `Claims` 是有关帐户的名称/值对，用于发出请求。
 

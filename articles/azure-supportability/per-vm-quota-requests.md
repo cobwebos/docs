@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531717"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850034"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>标准配额：按 VM 序列 vCPU 限制增加
 
-资源管理器支持为虚拟机提供两种类型的 vCPU 配额。 即用**即付 vm 和保留 Vm 实例**使用标准配额。 **低优先级 vm**使用低优先级配额。 对于每个区域中的每个订阅，在两个级别上强制实施即用即付和保留 VM 实例的标准 vCPU 配额
+资源管理器支持为虚拟机提供两种类型的 vCPU 配额。 即用**即付 vm 和保留 Vm 实例**使用标准配额。 **污点 vm**使用点配额。 对于每个区域中的每个订阅，在两个级别上强制实施即用即付和保留 VM 实例的标准 vCPU 配额
 
 第一层是**区域个 vcpu 限制**（跨所有 VM 系列），第二层是**每个 vm 系列个 vcpu 限制**（例如 Dv3 系列个 vcpu）。 每当部署新 VM 时，该 VM 系列的新的和现有个 vcpu 使用的总和不得超过为该特定 VM 系列批准的 vCPU 配额。 此外，在所有 VM 系列上部署的新的和现有的 vCPU 计数不应超过为订阅批准的总区域个 vcpu 配额。 如果超过了上述任一配额，将不允许部署 VM。
 可以从 Azure 门户中为 VM 序列请求增加个 vcpu 配额限制。 VM 序列配额增加会自动增加相同数量的区域个 vcpu 限制。 
@@ -25,7 +25,7 @@ ms.locfileid: "74531717"
 
 若要详细了解如何为标准配额增加区域 vCPU 限制，请参阅[此处](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)。 
 
-[在此处](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)了解有关**增加低优先级 VM vCPU 限制**的详细信息。
+[在此处](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)了解有关**增加位置 VM vCPU 限制**的详细信息。
 
 可以通过 "**帮助 + 支持**" 边栏选项卡或门户中的 "**使用情况 + 配额**" 边栏选项卡，请求增加**每个 VM 系列的标准 vCPU 配额限制**。
 
@@ -63,7 +63,7 @@ ms.locfileid: "74531717"
 
    ![配额详细信息 DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. 对于所选位置，选择 "**类型**值" 作为 **"标准"** 。 您可以通过 "**类型**" 字段上的多选支持从单个支持案例请求标准和低优先级配额类型。 详细了解在 **< > "页**上**提高低优先级配额限制**。
+8. 对于所选位置，选择 "**类型**值" 作为 **"标准"** 。 您可以通过 "**类型**" 字段上的多选支持从单个支持案例请求标准和点配额类型。 了解有关增加此[页](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)上的**位置配额限制**的详细信息
 
    ![SKU 系列](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "74531717"
 
    ![“配额问题”边栏选项卡](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. 对于所选位置，选择 "**类型**值" 作为 **"标准"** 。 您可以通过 "**类型**" 字段上的多选支持从单个支持案例请求标准和低优先级配额类型。 了解更多有关在此[页](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)上**提高低优先级个 vcpu 限制**的信息。
+7. 对于所选位置，选择 "**类型**值" 作为 **"标准"** 。 您可以通过 "**类型**" 字段上的多选支持从单个支持案例请求标准和低优先级配额类型。 详细了解如何增加此[页面](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)上的**个 vcpu 限制**。
 
    ![选择的 SKU 系列](./media/resource-manager-core-quotas-request/1-1-7.png)
    

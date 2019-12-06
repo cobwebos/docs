@@ -1,31 +1,31 @@
 ---
 title: Azure Cosmos DB 中的 SQL 查询执行
-description: 了解 Azure Cosmos DB 中的 SQL 查询执行
+description: 了解如何创建 SQL 查询并在 Azure Cosmos DB 中执行它。 本文介绍如何使用 REST API、.Net SDK、JavaScript SDK 和其他各种 Sdk 来创建和执行 SQL 查询。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999917"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871255"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
 
-能够发出 HTTP/HTTPS 请求的任何语言都可以调用 Cosmos DB REST API。 Cosmos DB 还为 .NET、Node.js、JavaScript 和 Python 编程语言提供编程库。 REST API 和库全部支持通过 SQL 执行的查询，.NET SDK 还支持 [LINQ 查询](sql-query-linq-to-sql.md)。
+任何能够发出 HTTP/HTTPS 请求的语言都可以调用 Cosmos DB REST API。 Cosmos DB 还提供适用于 .NET、node.js、JavaScript 和 Python 编程语言的编程库。 REST API 和库均支持通过 SQL 进行查询，.NET SDK 还支持[LINQ 查询](sql-query-linq-to-sql.md)。
 
-以下示例演示了如何对 Cosmos 数据库帐户创建和提交该查询。
+下面的示例演示如何创建查询并根据 Cosmos 数据库帐户提交查询。
 
 ## <a id="REST-API"></a>REST API
 
-Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。 
+Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由一个数据库帐户下的一组资源组成，Azure 订阅会预配这些资源。 数据库帐户由一组数据库组成，其中每个*数据库*都可以包含多个*容器*，后者又包含*项*、udf 和其他资源类型。 每个 Cosmos DB 资源均可使用逻辑和稳定的 URI 进行寻址。 一组资源称为一个*源*。 
 
-这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST` 和 `DELETE` 及其标准解释实现的。 使用 `POST` 可以创建新的资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
+具有这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST`和 `DELETE`，它们具有标准的解释。 使用 `POST` 创建新资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
 
-以下示例演示了如何根据示例项针对 SQL API 查询发出 `POST`。 该查询对 JSON `name` 属性应用一个简单的筛选器。 `x-ms-documentdb-isquery` 和 Content-Type: `application/query+json` 标头表示该操作是一个查询。 请将 `mysqlapicosmosdb.documents.azure.com:443` 替换为 Cosmos DB 帐户的 URI。
+下面的示例演示针对示例项的 SQL API 查询的 `POST`。 查询对 JSON `name` 属性有一个简单的筛选器。 `x-ms-documentdb-isquery` 和 Content-type： `application/query+json` 标头表示该操作是一个查询。 将 `mysqlapicosmosdb.documents.azure.com:443` 替换为 Cosmos DB 帐户的 URI。
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -91,7 +91,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-下面这个更复杂的查询从某个联接操作返回多个结果：
+接下来，更复杂的查询从联接返回多个结果：
 
 ```json
     POST https://https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -143,19 +143,19 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-如果查询的结果无法包含在一页中，则 REST API 会通过 `x-ms-continuation-token` 响应标头返回继续标记。 客户端可以通过在后续结果中包含该标头对结果进行分页。 也可以通过 `x-ms-max-item-count` 数字标头控制每页的结果数。
+如果查询的结果不能容纳在单个页面中，则 REST API 通过 `x-ms-continuation-token` response 标头返回继续标记。 客户端可以通过在后续结果中包含标头来对结果进行分页。 还可以通过 `x-ms-max-item-count` 编号标头控制每页的结果数。
 
-如果查询包含 COUNT 等聚合函数，则查询页可以仅通过一个结果页返回部分聚合的值。 客户端必须对这些结果执行二级聚合才能生成最终结果。 例如，将各个页中返回的计数求和可以返回总计数。
+如果查询有一个聚合函数（如 COUNT），则查询页可能会在一个结果页上返回部分聚合的值。 客户端必须对这些结果执行二级聚合，才能生成最终结果。 例如，对各个页面中返回的计数进行求和以返回总计数。
 
-若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别][一致性级别]。
+若要管理查询的数据一致性策略，请在所有 REST API 请求中使用 `x-ms-consistency-level` 标头。 会话一致性还需要回显查询请求中最新的 `x-ms-session-token` cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 对于容器的默认索引策略设置，索引始终是项内容的最新，查询结果与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别] [一致性级别]。
 
-如果容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器会返回 400“错误的请求”。 使用从索引中显式排除的路径执行查询时，将返回此错误消息。 可以指定 `x-ms-documentdb-query-enable-scan` 标头，以便在索引不可用时允许查询执行扫描。
+如果容器中配置的索引策略不能支持指定的查询，则 Azure Cosmos DB 服务器返回 400 "错误的请求"。 对于具有从索引中显式排除的路径的查询，将返回此错误消息。 您可以指定 `x-ms-documentdb-query-enable-scan` 标头以允许查询在索引不可用时执行扫描。
 
-可以通过将 `x-ms-documentdb-populatequerymetrics` 标头设置为 `true` 来获取有关查询执行的详细指标。 有关详细信息，请参阅 [Azure Cosmos DB 的 SQL 查询指标](sql-api-query-metrics.md)。
+可以通过将 `x-ms-documentdb-populatequerymetrics` 标头设置为 `true`来获取有关查询执行的详细指标。 有关详细信息，请参阅 [Azure Cosmos DB 的 SQL 查询指标](sql-api-query-metrics.md)。
 
-## <a name="c-net-sdk"></a>C# (.NET SDK)
+## <a name="c-net-sdk"></a>C#（.NET SDK）
 
-.NET SDK 支持 LINQ 和 SQL 查询。 以下示例演示如何使用 .NET 执行前面所示的筛选查询：
+.NET SDK 支持 LINQ 和 SQL 查询。 下面的示例演示如何通过 .NET 执行上述筛选器查询：
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -189,7 +189,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-以下示例比较了每个项内等式的两个属性，并使用匿名投影。
+下面的示例比较每个项内是否相等的两个属性，并使用匿名投影。
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -217,7 +217,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-以下示例演示通过 LINQ `SelectMany` 表达的联接。
+下一个示例演示通过 LINQ `SelectMany`表示的联接。
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -241,17 +241,17 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#REST-API) 部分介绍的查询选项也适用于在 `CreateDocumentQuery` 方法中使用 `FeedOptions` 和 `FeedResponse` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
+.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 使用 `CreateDocumentQuery` 方法中的 `FeedOptions` 和 `FeedResponse` 类，还可以在 .NET SDK 中使用[REST API](#REST-API)部分介绍的查询选项。 您可以使用 `MaxItemCount` 设置来控制页数。
 
-还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
+还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，然后读取 `ResponseContinuationToken` 值并将它们作为 `FeedOptions`中的 `RequestContinuationToken` 传递回来，来显式控制分页。 当配置的索引策略不支持查询时，可将 `EnableScanInQuery` 设置为启用扫描。 对于分区容器，可以使用 `PartitionKey` 来针对单个分区运行查询，不过 Azure Cosmos DB 可以自动从查询文本中提取此内容。 您可以使用 `EnableCrossPartitionQuery` 对多个分区运行查询。
 
-有关更多包含查询的 .NET 示例，请参阅 GitHub 中的 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
+有关包含查询的更多 .NET 示例，请参阅 GitHub 中的[Azure Cosmos DB .net 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript 服务器端 API
 
-Azure Cosmos DB 提供一种编程模型，用于通过存储过程和触发器对容器直接[执行基于 JavaScript 的应用程序](stored-procedures-triggers-udfs.md)逻辑。 然后，在容器级别注册的 JavaScript 逻辑可以针对给定容器中的、包装在环境 ACID 事务中的项发出数据库操作。
+Azure Cosmos DB 提供了一个编程模型，用于使用存储过程和触发器直接在容器上[执行基于 JavaScript 的应用程序](stored-procedures-triggers-udfs.md)逻辑。 然后，在容器级别注册的 JavaScript 逻辑就可以对给定容器的项（包装在环境 ACID 事务中）发出数据库操作。
 
-以下示例演示了如何在 JavaScript 服务器 API 中使用 `queryDocuments` 从存储过程和触发器内部进行查询。
+下面的示例演示如何使用 JavaScript 服务器 API 中的 `queryDocuments` 从存储过程和触发器中执行查询：
 
 ```javascript
     function findName(givenName, familyName) {

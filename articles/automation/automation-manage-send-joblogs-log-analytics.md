@@ -1,30 +1,30 @@
 ---
 title: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
-description: 本文演示如何将作业状态和 Runbook 作业流发送到 Azure Monitor 日志，以提供更多见解和管理信息。
+description: 本文演示如何将作业状态和 runbook 作业流发送到 Azure Monitor 日志，以提供更多见解和管理。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ff455ed355d4412bcf042208d2fd1e7a2a11b965
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186782"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849728"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>将作业状态和作业流从自动化转发到 Azure Monitor 日志
 
-自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 此过程不涉及工作区链接，并且完全独立。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，可以使用 Azure Monitor 日志执行以下操作：
+自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 此过程不涉及工作区链接，并且完全独立。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在有了 Azure Monitor 日志，您可以：
 
 * 获取有关自动化作业的见解。
 * 基于 Runbook 作业状态（例如失败或暂停）触发电子邮件或警报。
-* 编写跨作业流的高级查询。
+* 针对所有作业流编写高级查询。
 * 跨自动化帐户关联作业。
-* 可视化不同时间段的作业历史记录。
+* 显示不同时间段的作业历史记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -32,8 +32,8 @@ ms.locfileid: "70186782"
 
 若要开始将自动化日志发送到 Azure Monitor 日志，需要：
 
-* 最新版本的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)。
-* Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 日志入门](../log-analytics/log-analytics-get-started.md)。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)的最新版本。
+* Log Analytics 工作区。 有关详细信息，请参阅[Azure Monitor 日志入门](../log-analytics/log-analytics-get-started.md)。
 * Azure 自动化帐户的 ResourceId。
 
 若要查找 Azure 自动化帐户的 ResourceId，请执行以下操作：
@@ -66,9 +66,9 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
    Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
 
-运行此脚本后，可能需要一小时才能开始在 Azure Monitor 日志中看到写入新 JobLogs 或 JobStreams 的记录。
+运行此脚本后，可能需要一小时才能开始在写入 Azure Monitor 日志中查看记录。
 
-若要查看日志，请在 Log Analytics 日志搜索中运行以下查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+若要查看日志，请在 log analytics 日志搜索中运行以下查询： `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>验证配置
 
@@ -85,33 +85,33 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor 日志记录
 
-来自 Azure 自动化的诊断将在 Azure Monitor 日志中创建两种类型的记录，并将其标记为 **AzureDiagnostics**。 以下查询使用升级的 Azure Monitor 日志查询语言。 有关旧查询语言与新 Azure Kusto 查询语言之间的共有查询的相关信息，请访问[新旧 Azure Kusto 查询语言速查表](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)。
+Azure Automation 中的诊断在 Azure Monitor 日志中创建两种类型的记录，并将其标记为**AzureDiagnostics**。 以下查询使用升级的查询语言来 Azure Monitor 日志。 有关旧查询语言和新的 Azure Kusto 查询语言之间的常见查询的信息，请访问[新的 Azure Kusto 查询语言](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)备忘单
 
 ### <a name="job-logs"></a>作业日志
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
 | Caller_s |谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。 |
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
-| ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>- Created（已创建）<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
-| Category | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
+| ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>-已创建<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |描述 Runbook 作业结果状态。 可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
 | ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| 资源组 | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 
 ### <a name="job-streams"></a>作业流
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -120,21 +120,21 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |
-| Category | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |包括来自 Runbook 的输出流。 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
 | ResourceId |指定 Runbook 的 Azure 自动化帐户资源 ID。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| 资源组 | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>在 Azure Monitor 日志中查看自动化日志
 
-开始将自动化作业日志发送到 Azure Monitor 日志后，让我们看一下在 Azure Monitor 日志中可对这些日志执行哪些操作。
+现在，你已开始将自动化作业日志发送到 Azure Monitor 日志，接下来让我们看看可以在 Azure Monitor 日志中对这些日志执行哪些操作。
 
 若要查看日志，请运行以下查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -143,8 +143,8 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 若要创建警报规则，首先请针对应该调用警报的 Runbook 作业记录创建日志搜索。 单击“警报”按钮以创建和配置警报的规则。
 
-1. 在“Log Analytics 工作区概述”页中，单击“查看日志”。
-2. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`；也可以使用以下命令按 RunbookName 分组：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+1. 在 Log Analytics 工作区概述 "页中，单击"**查看日志**"。
+2. 通过在查询字段中键入以下搜索，为警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  还可以使用以下命令按 RunbookName 分组：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    如果设置了在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 可以在 JobLogs 搜索中的“资源”字段中找到自动化帐户名称。
 3. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅 [Azure 中的日志警报](../azure-monitor/platform/alerts-unified-log.md)。
@@ -152,7 +152,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>查找已完成但出错的所有作业
 除了在失败时发出警报外，还可以发现 Runbook 作业何时发生非终止错误。 在这些情况下，PowerShell 会生成一个错误流，但非终止错误不会导致作业暂停或失败。
 
-1. 在 Log Analytics 工作区中单击“日志”。
+1. 在 Log Analytics 工作区中，单击 "**日志**"。
 2. 在“查询”字段中键入 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g`，然后单击“搜索”。
 
 ### <a name="view-job-streams-for-a-job"></a>查看作业的作业流
@@ -178,17 +178,17 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="summary"></a>总结
 
-将自动化作业状态和流数据发送到 Azure Monitor 日志后，可执行以下操作来更好地洞察自动化作业的状态：
+通过将自动化作业状态和流数据发送到 Azure Monitor 日志，可以通过以下方式更好地了解自动化作业的状态：
 + 设置警报，以便在出现问题时获得通知。
 + 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。
 
-Azure Monitor 日志可以更直观地显示自动化作业的运行情况，并且可以帮助更快地解决事件。
+Azure Monitor 日志可为自动化作业提供更高的操作可见性，有助于更快地解决事件。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Log Analytics 故障排除的帮助, 请参阅[排查 Log Analytics 不再收集数据的原因](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)。
-* 若要详细了解如何使用 Azure Monitor 日志构造不同的搜索查询和查看自动化作业日志，请参阅 [Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
+* 有关 Log Analytics 故障排除的帮助，请参阅[排查 Log Analytics 不再收集数据的原因](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)。
+* 若要详细了解如何构建不同的搜索查询，以及如何在 Azure Monitor 日志中查看自动化作业日志，请参阅[Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
 * 若要了解如何通过 Runbook 创建和检索输出及错误消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)。
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
-* 若要了解有关 Azure Monitor 日志和数据收集源的详细信息，请参阅[在 Azure Monitor 日志中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+* 若要详细了解 Azure Monitor 日志和数据收集源，请参阅[在 Azure Monitor 日志中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
 

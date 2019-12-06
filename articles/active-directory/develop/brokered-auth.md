@@ -1,32 +1,27 @@
 ---
 title: Android 中的中转身份验证 |Microsoft
+titlesuffix: Microsoft identity platform
 description: Microsoft 标识平台中适用于 Android 的中转身份验证 & 授权概述
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175653"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843710"
 ---
-# <a name="brokered-auth-in-android"></a>Android 中的中转身份验证
-
-## <a name="introduction"></a>简介
+# <a name="brokered-authentication-in-android"></a>Android 中的中转身份验证
 
 必须使用 Microsoft 的一个身份验证代理参与设备范围的单一登录（SSO），并满足组织的条件性访问策略。 与 broker 集成具有以下优势：
 

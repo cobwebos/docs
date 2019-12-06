@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. 从用户话语获取情绪
           href: tutorial-publish-settings.md
-    - name: 构建应用
+    - name: 创建和使用实体
       items:
-        - name: 通过正则表达式获取具有严格格式的数据
-          href: luis-quickstart-intents-regex-entity.md
-        - name: 通过列表获取确切的文本匹配项
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: 使用实体角色获取相关数据
+        - name: 正则表达式实体
+          href: tutorial-regex-entity.md
+        - name: 列表实体
+          href: tutorial-list-entity.md
+        - name: 实体角色
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: 通过复合实体将相关的数据分组并进行提取

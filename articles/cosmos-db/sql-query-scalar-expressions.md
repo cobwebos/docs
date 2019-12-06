@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB SQL 查询中的标量表达式
-description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。
+description: 了解 Azure Cosmos DB 的标量表达式 SQL 语法。 本文还介绍了如何使用运算符将标量表达式组合成复杂的表达式。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003529"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870728"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
 
-[SELECT 子句](sql-query-select.md)支持标量表达式。 标量表达式是符号和运算符的组合，经计算后可获得单个值。 标量表达式的示例包括：常量、属性引用、数组元素引用、别名引用或函数调用。 可以使用运算符将标量表达式组合成复杂表达式。
+[SELECT 子句](sql-query-select.md)支持标量表达式。 标量表达式是符号和运算符的组合，经计算后可获得单个值。 标量表达式的示例包括：常量、属性引用、数组元素引用、别名引用或函数调用。 标量表达式可以使用运算符组合成复杂的表达式。
 
 ## <a name="syntax"></a>语法
   
@@ -59,11 +59,11 @@ ms.locfileid: "71003529"
   
 - `<scalar_expression>.property_name`  
   
-   表示对象的属性值。 如果该属性不存在或在非对象的值上引用了该属性，则表达式的求值结果为“未定义”值。  
+   表示对象的属性值。 如果该属性不存在，或者引用了不是对象的值，则表达式的计算结果为**未定义**的值。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   表示名为 `property_name` 的属性的值或数组中索引为 `array_index` 的数组元素的值。 如果不存在属性/数组索引，或对非对象/数组的值引用了属性/数组索引，则表达式的求值结果为未定义值。  
+   使用数组的索引 `array_index` 表示名称 `property_name` 或数组元素的属性的值。 如果不存在属性/数组索引，或对非对象/数组的值引用了属性/数组索引，则表达式的求值结果为未定义值。  
   
 - `unary_operator <scalar_expression>`  
   
@@ -99,7 +99,7 @@ ms.locfileid: "71003529"
   
 ## <a name="remarks"></a>备注
   
-  调用内置的或用户定义的标量函数时，必须定义所有参数。 如果未定义任何参数，则不会调用该函数，且结果也将为未定义。  
+  调用内置或用户定义的标量函数时，必须定义所有参数。 如果未定义任何参数，则不会调用该函数，且结果也将为未定义。  
   
   创建对象时，将跳过任何已分配未定义值的属性，并且在创建的对象中不包含该属性。  
   
@@ -119,7 +119,7 @@ ms.locfileid: "71003529"
     }]
 ```
 
-在以下查询中，标量表达式的结果是一个布尔值：
+在下面的查询中，标量表达式的结果是布尔值：
 
 ```sql
     SELECT f.address.city = f.address.state AS AreFromSameCityState

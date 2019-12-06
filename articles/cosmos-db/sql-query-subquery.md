@@ -1,51 +1,51 @@
 ---
 title: Azure Cosmos DB 的 SQL 子查询
-description: 了解 Azure Cosmos DB 中的 SQL 子查询及其常见用例
+description: 了解 SQL 子查询及其常见用例和不同类型的子查询在 Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003478"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870558"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
 
-子查询是嵌套在另一个查询中的查询。 子查询也称为内部查询或内部选择。 包含子查询的语句通常称为外部查询。
+子查询是嵌套在其他查询内的查询。 子查询也称为内部查询或内部选择。 包含子查询的语句通常称为外部查询。
 
-本文介绍 Azure Cosmos DB 中的 SQL 子查询及其常见用例。 本文档中的所有示例查询都可以针对预加载在 [Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)上的营养数据集运行。
+本文介绍了 Azure Cosmos DB 中的 SQL 子查询及其常见用例。 此文档中的所有示例查询均可针对[Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)上预加载的营养数据集运行。
 
 ## <a name="types-of-subqueries"></a>子查询的类型
 
-有两种主要类型的子查询：
+子查询有两种主要类型：
 
-* **相关**：引用外部查询中的值的子查询。 将针对外部查询处理的每个行求值该子查询一次。
-* **非相关**：独立于外部查询的子查询。 它可以独立运行，而不依赖于外部查询。
+* **相关**：引用外部查询中的值的子查询。 对于外部查询处理的每一行，将计算子查询一次。
+* **非相关**：独立于外部查询的子查询。 它可以独立运行，而无需依赖于外部查询。
 
 > [!NOTE]
 > Azure Cosmos DB 仅支持相关子查询。
 
-可以根据子查询返回的行数和列数进一步分类子查询。 有三种类型：
+可以根据查询返回的行数和列数进一步对子查询进行分类。 有三种类型：
 * **Table**：返回多个行和多个列。
-* **多值**：返回多个行和单个列。
-* **标量**：返回单个行和单个列。
+* **多值**：返回多个行和单列。
+* **标量**：返回单个行和单列。
 
-Azure Cosmos DB 中的 SQL 查询始终返回单个列（一个简单的值，或一个复杂文档）。 因此，Azure Cosmos DB 中仅适用多值子查询和标量子查询。 只能在 FROM 子句中将多值子查询用作关系表达式。 可以在 SELECT 或 WHERE 子句中将标量子查询用作标量表达式，或者在 FROM 子句中用作关系表达式。
+Azure Cosmos DB 中的 SQL 查询始终返回单个列（简单值或复杂文档）。 因此，只有多值和标量子查询适用于 Azure Cosmos DB。 只能在 FROM 子句中将多值子查询用作关系表达式。 您可以在 SELECT 或 WHERE 子句中使用标量查询作为标量表达式，或在 FROM 子句中将其用作关系表达式。
 
 ## <a name="multi-value-subqueries"></a>多值子查询
 
 多值子查询返回一组文档，始终在 FROM 子句中使用。 它们用于：
 
-* 优化 JOIN 表达式。 
-* 求值高开销的表达式一次，并多次引用。
+* 优化联接表达式。 
+* 计算一次昂贵的表达式并多次引用。
 
-## <a name="optimize-join-expressions"></a>优化 JOIN 表达式
+## <a name="optimize-join-expressions"></a>优化联接表达式
 
-多值子查询可以通过在 WHERE 子句中的每个 select-many 表达式后面（而不是所有 cross-join 后面）推送谓词，来优化 JOIN 表达式。
+多值子查询可以优化联接表达式，方法是在每个 select-多个表达式之后（而不是在 WHERE 子句中的所有交叉联接之后）推送谓词。
 
 请考虑下列查询：
 
@@ -59,11 +59,11 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-对于此查询，索引将匹配包含名为“infant formula”的标记的任一文档。 它是一个值为 0 到 10 的 nutrient 项，以及数量大于 1 的 serving 项。 此处的 JOIN 表达式将针对应用任何筛选器之前的每个匹配文档，执行所有 tags、nutrients 和 servings 数组项的叉积计算。 
+对于此查询，索引将匹配任何标记名称为 "幼儿 formula" 的文档。 它是一个 nutrient 项，其值介于0和10之间，并且为大于1的服务项。 此处的联接表达式将在应用任何筛选器之前，对每个匹配的文档执行标记、nutrients 和 servings 数组的所有项的叉积。 
 
-然后，WHERE 子句将针对每个 <c, t, n, s> 元组应用筛选谓词。 例如，如果在匹配文档的三个数组中，每个数组包含 10 个项，则此子句将扩展为 1 x 10 x 10 x 10（即 1,000）个元组。 在与下一个表达式联接之前，使用此处的子查询可帮助筛选出联接的数组项。
+然后，WHERE 子句会对每个 < c、t、n、s > 元组应用筛选器谓词。 例如，如果匹配文档每三个数组中的每个都有10个项，则它将扩展为 1 x 10 x 10 x 10 （即1000）元组。 使用此处的子查询，可以在联接到下一个表达式之前，帮助筛选出联接的数组项。
 
-此查询等效于前面的查询，但使用了子查询：
+此查询等效于前面的查询，但使用子查询：
 
 ```sql
 SELECT Count(1) AS Count
@@ -73,13 +73,13 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-假设 tags 数组中只有一个项与筛选器相匹配，而 nutrients 和 servings 数组各有 5 个项。 那么，JOIN 表达式将扩展为 1 x 1 x 5 x 5 = 25 个项，而不是第一个查询中的 1,000 个项。
+假设标记数组中只有一个项与筛选器匹配，并且 nutrients 和 servings 数组都有五项。 然后，联接表达式将扩展到 1 x 1 x 5 x 5 = 25 项，而不是第一个查询中的1000项。
 
-## <a name="evaluate-once-and-reference-many-times"></a>求值一次，引用多次
+## <a name="evaluate-once-and-reference-many-times"></a>计算一次并引用多次
 
-子查询可以帮助优化包含高开销表达式（例如，用户定义的函数 (UDF)、复杂字符串或算术表达式）的查询。 可以结合 JOIN 表达式使用子查询，以求值该表达式一次，但引用它多次。
+子查询可以帮助优化具有昂贵表达式的查询，例如用户定义的函数（Udf）、复杂字符串或算术表达式。 您可以使用子查询以及联接表达式来计算表达式一次，但多次引用。
 
-以下查询执行 UDF `GetMaxNutritionValue` 两次：
+以下查询运行两次 UDF `GetMaxNutritionValue`：
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -87,7 +87,7 @@ FROM c
 WHERE udf.GetMaxNutritionValue(c.nutrients) > 100
 ```
 
-下面是一个等效的查询，但它仅运行该 UDF 一次：
+下面是仅运行 UDF 一次的等效查询：
 
 ```sql
 SELECT TOP 1000 c.id, MaxNutritionValue
@@ -97,10 +97,10 @@ WHERE MaxNutritionValue > 100
 ``` 
 
 > [!NOTE] 
-> 请注意 JOIN 表达式的叉积行为。 如果 UDF 表达式可能会求值为 undefined（未确定），则应该通过从子查询返回对象，而不是直接返回值，来确保 JOIN 表达式始终生成单个行。
+> 请记住联接表达式的跨产品行为。 如果 UDF 表达式的计算结果为 undefined，则应通过从子查询返回一个对象而不是直接返回值来确保联接表达式始终产生单个行。
 >
 
-下面是返回对象而不是返回值的类似示例：
+下面是一个返回对象的示例，而不是返回值：
 
 ```sql
 SELECT TOP 1000 c.id, m.MaxNutritionValue
@@ -109,7 +109,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-此方法并不局限于 UDF， 而是适用于任何可能存在较高开销的表达式。 例如，可以对数学函数 `avg` 采用相同的方法：
+此方法并不局限于 Udf。 它适用于任何可能的昂贵表达式。 例如，可以采用与数学函数相同的方法 `avg`：
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -120,32 +120,32 @@ WHERE AvgNutritionValue > 80
 
 ## <a name="mimic-join-with-external-reference-data"></a>模拟与外部引用数据的联接
 
-你可能经常需要引用极少发生变化的静态数据，例如度量单位或国家/地区代码。 最好不要为每个文档重复此类数据。 避免这种复制可以节省存储空间，并通过保持较小的文档大小来提高写入性能。 可以使用子查询通过引用数据的集合来模拟内部联接语义。
+可能经常需要引用很少更改的静态数据，如度量单位或国家/地区代码。 最好不要为每个文档重复此类数据。 避免这种重复项将节省存储空间，并通过保持文档大小减小，提高写入性能。 您可以使用子查询来模拟包含引用数据集合的内部联接语义。
 
-例如，假设存在以下引用数据集：
+例如，请考虑下面这组引用数据：
 
-| **单位** | **名称**            | **乘数** | **基础单位** |
+| **单位** | 名称            | **乘数** | **基本单位** |
 | -------- | ------------------- | -------------- | ------------- |
-| ng       | 纳克            | 1.00E-09       | 克          |
-| µg       | 微克           | 1.00E-06       | 克          |
-| mg       | 毫克           | 1.00E-03       | 克          |
-| g        | 克                | 1.00E+00       | 克          |
-| kg       | 千克            | 1.00E+03       | 克          |
-| Mg       | 兆克            | 1.00E+06       | 克          |
-| Gg       | 千兆克            | 1.00E+09       | 克          |
-| nJ       | 纳焦           | 1.00E-09       | 焦耳         |
-| µJ       | 微焦          | 1.00E-06       | 焦耳         |
-| mJ       | 毫焦          | 1.00E-03       | 焦耳         |
-| J        | 焦耳               | 1.00E+00       | 焦耳         |
-| kJ       | 千焦           | 1.00E+03       | 焦耳         |
-| MJ       | 兆焦           | 1.00E+06       | 焦耳         |
-| GJ       | 千兆焦           | 1.00E+09       | 焦耳         |
-| cal      | 卡路里             | 1.00E+00       | 卡路里       |
-| kcal     | 卡路里             | 1.00E+03       | 卡路里       |
+| ng       | Nanogram            | 1.00E-09       | 元语法          |
+| µg       | Microgram           | 1.00E-06       | 元语法          |
+| mg       | Milligram           | 1.00E-03       | 元语法          |
+| g        | 元语法                | 1.00E+00       | 元语法          |
+| 千克       | 千克            | 1.00 e + 03       | 元语法          |
+| Mg       | Megagram            | 1.00E+06       | 元语法          |
+| Gg       | Gigagram            | 1.00E+09       | 元语法          |
+| nJ       | Nanojoule           | 1.00E-09       | Joule         |
+| µJ       | Microjoule          | 1.00E-06       | Joule         |
+| mJ       | Millijoule          | 1.00E-03       | Joule         |
+| J        | Joule               | 1.00E+00       | Joule         |
+| kJ       | Kilojoule           | 1.00 e + 03       | Joule         |
+| MJ       | Megajoule           | 1.00E+06       | Joule         |
+| GJ       | Gigajoule           | 1.00E+09       | Joule         |
+| cal      | 热量             | 1.00E+00       | 热量       |
+| kcal     | 热量             | 1.00 e + 03       | 热量       |
 | IU       | 国际单位 |                |               |
 
 
-以下查询模拟与此数据的联接，以便于将单位名称添加到输出：
+下面的查询模拟与此数据的联接，以便将单位名称添加到输出：
 
 ```sql
 SELECT TOP 10 n.id, n.description, n.nutritionValue, n.units, r.name
@@ -177,17 +177,17 @@ WHERE n.units = r.unit
 
 ## <a name="scalar-subqueries"></a>标量子查询
 
-标量子查询表达式是求值为单个值的子查询。 标量子查询表达式的值是该子查询的投影（SELECT 子句）值。  可以在标量表达式有效的多个位置使用标量子查询表达式。 例如，可以在 SELECT 和 WHERE 子句中的任一表达式内使用标量子查询。
+标量子查询表达式是计算结果为单个值的子查询。 标量子查询表达式的值是子查询的投影（SELECT 子句）的值。  可以在很多位置使用标量子查询表达式，其中标量表达式是有效的。 例如，可以在 SELECT 和 WHERE 子句中的任何表达式中使用标量子查询。
 
-不过，使用标量子查询并不总是有助于优化。 例如，将标量子查询作为参数传递给系统定义的或用户定义的函数并不能在资源单位 (RU) 消耗量与延迟方面带来好处。
+不过，使用标量查询并不一定能帮助优化。 例如，将标量子查询作为参数传递给系统或用户定义的函数不会对资源单位（RU）消耗或延迟提供任何好处。
 
-标量子查询可以进一步分类为：
+标量子查询可以进一步归类为：
 * 简单表达式标量子查询
 * 聚合标量子查询
 
 ## <a name="simple-expression-scalar-subqueries"></a>简单表达式标量子查询
 
-简单表达式标量子查询属于相关子查询，其中的某个 SELECT 子句不包含任何聚合表达式。 这些子查询不能提供优化方面的优势，因为编译器会将其转换为一个较大的简单表达式。 内部与外部查询之间没有相关的上下文。
+简单表达式的标量子查询是一个相关子查询，它具有不包含任何聚合表达式的 SELECT 子句。 这些子查询不提供优化优点，因为编译器会将它们转换为一个更大的简单表达式。 内部和外部查询之间没有关联的上下文。
 
 以下是几个示例：
 
@@ -197,13 +197,13 @@ WHERE n.units = r.unit
 SELECT 1 AS a, 2 AS b
 ```
 
-可以使用简单表达式标量子查询将此查询重写为：
+您可以使用简单表达式的标量子查询将此查询重写为：
 
 ```sql
 SELECT (SELECT VALUE 1) AS a, (SELECT VALUE 2) AS b
 ```
 
-这两个查询生成以下输出：
+这两个查询均产生以下输出：
 
 ```json
 [
@@ -218,7 +218,7 @@ SELECT TOP 5 Concat('id_', f.id) AS id
 FROM food f
 ```
 
-可以使用简单表达式标量子查询将此查询重写为：
+您可以使用简单表达式的标量子查询将此查询重写为：
 
 ```sql
 SELECT TOP 5 (SELECT VALUE Concat('id_', f.id)) AS id
@@ -244,7 +244,7 @@ SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : und
 FROM food f
 ```
 
-可以使用简单表达式标量子查询将此查询重写为：
+您可以使用简单表达式的标量子查询将此查询重写为：
 
 ```sql
 SELECT TOP 10 f.id, (SELECT f.description WHERE Contains(f.description, 'fruit')).description
@@ -265,11 +265,11 @@ FROM food f
 
 ### <a name="aggregate-scalar-subqueries"></a>聚合标量子查询
 
-聚合标量子查询在其投影或筛选器中包含一个求值为单个值的聚合函数。
+聚合标量子查询是一个子查询，其投影或筛选器中的聚合函数的计算结果为单个值。
 
 **示例 1：**
 
-以下子查询在其投影中包含单个聚合函数表达式：
+下面是一个子查询，其投影中包含一个聚合函数表达式：
 
 ```sql
 SELECT TOP 5 
@@ -318,7 +318,7 @@ FROM food f
 
 **示例 3**
 
-下面是在投影和筛选器中包含聚合子查询的查询：
+下面是一个查询，其中包含投影和筛选器中的聚合子查询：
 
 ```sql
 SELECT TOP 5 
@@ -340,7 +340,7 @@ WHERE (SELECT VALUE Count(1) FROM n IN f.nutrients WHERE n.units = 'mg') > 20
 ]
 ```
 
-编写此查询的更好方法是在子查询中进行联接，并在 SELECT 和 WHERE 子句中引用子查询别名。 此查询更有效，因为你只需执行 join 语句中的子查询，而无需同时执行投影和筛选器中的子查询。
+若要编写此查询，更好的方法是联接子查询，并同时引用 SELECT 和 WHERE 子句中的子查询别名。 此查询更高效，因为只需在联接语句中执行子查询，而不是在投影和筛选器中执行。
 
 ```sql
 SELECT TOP 5 f.id, count_mg
@@ -351,26 +351,26 @@ WHERE count_mg > 20
 
 ## <a name="exists-expression"></a>EXISTS 表达式
 
-Azure Cosmos DB 支持 EXISTS 表达式。 这是 Azure Cosmos DB SQL API 中内置的聚合标量子查询。 EXISTS 是一个布尔表达式，它采用某个子查询表达式，如果该子查询返回任何行，则 EXISTS 返回 true。 否则返回 false。
+Azure Cosmos DB 支持 EXISTS 表达式。 这是 Azure Cosmos DB SQL API 中内置的聚合标量子查询。 EXISTS 是一个布尔表达式，该表达式采用子查询表达式，如果子查询返回任何行，则返回 true。 否则，返回 false。
 
-由于 Azure Cosmos DB SQL API 不区分布尔表达式和其他任何标量表达式，因此，可以同时在 SELECT 和 WHERE 子句中使用 EXISTS。 T-SQL 则与此不同，其中的布尔表达式（例如 EXISTS、BETWEEN 和 IN）限制为筛选器。
+由于 Azure Cosmos DB SQL API 不区分布尔表达式和任何其他标量表达式，因此可以在 SELECT 和 WHERE 子句中使用 EXISTS。 这不同于 T-sql，其中布尔表达式（例如，EXISTS、BETWEEN 和 IN）仅限筛选器。
 
-如果 EXISTS 子查询返回未定义的单个值，则 EXISTS 将求值为 false。 例如，假设以下查询求值为 false：
+如果 EXISTS 子查询返回未定义的单个值，则 EXISTS 的计算结果将为 false。 例如，请考虑以下计算结果为 false 的查询：
 ```sql
 SELECT EXISTS (SELECT VALUE undefined)
 ```   
 
 
-如果省略上述子查询中的 VALUE 关键字，则该查询将求值为 true：
+如果省略前面的子查询中的 VALUE 关键字，则查询的计算结果将为 true：
 ```sql
 SELECT EXISTS (SELECT undefined) 
 ```
 
-该子查询在对象中的选定列表内括住值列表。 如果选定的列表没有值，子查询将返回单个值 "{}"。 此值已定义，因此 EXISTS 求值为 true。
+子查询将在对象的所选列表中包含值列表。 如果选定的列表没有值，子查询将返回单个值 "{}"。 定义此值后，其计算结果为 true。
 
-### <a name="example-rewriting-array_contains-and-join-as-exists"></a>例如：将 ARRAY_CONTAINS 和 JOIN 重写为 EXISTS
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>示例：重写 ARRAY_CONTAINS 并将联接作为 EXISTS
 
-ARRAY_CONTAINS 的一个常见用例是根据某个项在数组中的存在性筛选某个文档。 在本例中，我们将检查 tags 数组是否包含名为“orange”的项。
+ARRAY_CONTAINS 的一个常见用例是通过数组中的某个项来筛选文档。 在这种情况下，我们要检查标记数组是否包含名为 "橙色" 的项。
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -378,7 +378,7 @@ FROM food f
 WHERE ARRAY_CONTAINS(f.tags, {name: 'orange'})
 ```
 
-可将上述查询重写为使用 EXISTS：
+您可以重新编写相同的查询以使用 EXISTS：
 
 ```sql
 SELECT TOP 5 f.id, f.tags
@@ -386,9 +386,9 @@ FROM food f
 WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 ```
 
-此外，ARRAY_CONTAINS 只能检查某个值是否等于数组中的任何元素。 如果需要在数组属性中包含更复杂的筛选器，请使用 JOIN。
+此外，ARRAY_CONTAINS 只能检查某个值是否等于数组中的任何元素。 如果需要更复杂的数组属性筛选器，请使用 JOIN。
 
-假设以下查询根据数组中的 units 和 `nutritionValue` 属性进行筛选： 
+请考虑以下查询，该查询基于数组中的单位和 `nutritionValue` 属性进行筛选： 
 
 ```sql
 SELECT VALUE c.description
@@ -397,9 +397,9 @@ JOIN n IN c.nutrients
 WHERE n.units= "mg" AND n.nutritionValue > 0
 ```
 
-对于集合中的每个文档，将使用其数组元素执行叉积计算。 使用此 JOIN 操作可以根据数组中的属性进行筛选。 但是，此查询的 RU 消耗将很重要。 例如，如果 1,000 个文档包含每个数组中的 100 个项，则它会扩展为 1,000 x 100（即 100,000）个元组。
+对于集合中的每个文档，将使用其数组元素来执行跨产品。 此联接操作使您可以对数组中的属性进行筛选。 但是，此查询的 RU 消耗将很重要。 例如，如果1000的文档在每个数组中有100项，则会将其扩展到 1000 x 100 （即100000）元组。
 
-使用 EXISTS 可以帮助避免这种高开销的叉积计算：
+使用 EXISTS 有助于避免这一价格高昂的跨产品：
 
 ```sql
 SELECT VALUE c.description
@@ -411,9 +411,9 @@ WHERE EXISTS(
 )
 ```
 
-在本例中，你将根据 EXISTS 子查询中的数组元素进行筛选。 如果某个数组元素与筛选器匹配，则你需要投影该元素，而 EXISTS 将求值为 true。
+在这种情况下，将筛选 EXISTS 子查询内的数组元素。 如果数组元素与筛选器匹配，则将其投影，并且 EXISTS 的计算结果为 true。
 
-还可以指定 EXISTS 的别名，并在投影中引用它：
+你还可以有别名并在投影中引用它：
 
 ```sql
 SELECT TOP 1 c.description, EXISTS(
@@ -434,9 +434,9 @@ FROM c
 ]
 ```
 
-## <a name="array-expression"></a>ARRAY 表达式
+## <a name="array-expression"></a>数组表达式
 
-可以使用 ARRAY 表达式将查询结果投影为数组。 只能在查询的 SELECT 子句中使用此表达式。
+您可以使用数组表达式将查询结果投影为数组。 只能在查询的 SELECT 子句中使用此表达式。
 
 ```sql
 SELECT TOP 1   f.id, ARRAY(SELECT VALUE t.name FROM t in f.tags) AS tagNames
@@ -459,7 +459,7 @@ FROM  food f
 ]
 ```
 
-与使用其他子查询时一样，可以使用包含 ARRAY 表达式的筛选器。
+与其他子查询一样，具有数组表达式的筛选器是可能的。
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t FROM t in c.tags WHERE t.name != 'infant formula') AS tagNames
@@ -493,7 +493,7 @@ FROM c
 ]
 ```
 
-Array 表达式还可以跟在子查询中的 FROM 子句后面。
+数组表达式也可以位于子查询的 FROM 子句之后。
 
 ```sql
 SELECT TOP 1 c.id, ARRAY(SELECT VALUE t.name FROM t in c.tags) as tagNames

@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 创建包含主题、订阅和规则的命名空间
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: 安全
+      items:
+        - name: 配置客户管理的密钥以进行静态加密（预览版）
+          href: configure-customer-managed-key.md
     - name: 故障排除
       items:
         - name: 故障排除指南

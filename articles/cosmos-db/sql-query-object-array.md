@@ -1,25 +1,25 @@
 ---
 title: 在 Azure Cosmos DB 中使用数组和对象
-description: 了解 Azure Cosmos DB 的数组和对象创建 SQL 语法。
+description: 了解用于在 Azure Cosmos DB 中创建数组和对象的 SQL 语法。 本文还提供了一些示例，用于对数组对象执行操作
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 17a0e4ddf5acd267a4cfbb68c218fe9409a91d57
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003922"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870915"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 
-Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。
+Azure Cosmos DB SQL API 的一项重要功能是数组和对象创建。
 
 ## <a name="arrays"></a>数组
 
-可以构造数组，如以下示例所示：
+可以构造数组，如下面的示例中所示：
 
 ```sql
     SELECT [f.address.city, f.address.state] AS CityState
@@ -45,7 +45,7 @@ Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。
     ]
 ```
 
-还可以使用 [ARRAY 表达式](sql-query-subquery.md#array-expression)根据[子查询](sql-query-subquery.md)的结果构造数组。 此查询获取数组中子项的所有不同给定名称。
+您还可以使用[数组表达式](sql-query-subquery.md#array-expression)从[子查询的](sql-query-subquery.md)结果中构造一个数组。 此查询获取数组中的子级的所有非重复的给定名称。
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -54,7 +54,7 @@ FROM f
 
 ## <a id="Iteration"></a>迭代
 
-SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关键字](sql-query-keywords.md#in)添加一个新的构造。 在以下示例中：
+SQL API 为循环访问 JSON 数组提供了支持，并通过 FROM source 中的[IN 关键字](sql-query-keywords.md#in)添加了一个新构造。 在以下示例中：
 
 ```sql
     SELECT *
@@ -90,7 +90,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     ]
 ```
 
-下一个查询循环访问 `Families` 容器中的 `children`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
+下一个查询在 `Families` 容器中的 `children` 执行迭代。 输出数组与前面的查询不同。 此示例将 `children`拆分，并将结果平展到单个数组中：  
 
 ```sql
     SELECT *
@@ -122,7 +122,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     ]
 ```
 
-可以进一步筛选该数组的每个条目，如以下示例所示：
+可以进一步筛选数组的每个单独条目，如以下示例中所示：
 
 ```sql
     SELECT c.givenName
@@ -138,7 +138,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     }]
 ```
 
-还可基于数组迭代的结果进行聚合。 例如，以下查询计数所有家庭中的孩子数目。
+您还可以对数组迭代的结果进行聚合。 例如，以下查询对所有家庭中的子节点数进行计数：
 
 ```sql
     SELECT COUNT(child)

@@ -5,17 +5,17 @@ keywords: azure powershell, powershell 脚本教程, powershell 自动化
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/27/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae9daaf797d3d82200ee094b63bad1f5c1ff68cc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f950a2fed2fbd355fc99453f09b655463e67102d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743821"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850867"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "70743821"
 
 本教程介绍了如何在 Azure 自动化中创建 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 。 从一个简单的 Runbook 开始，将测试和发布该 Runbook，同时了解如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 最后，通过添加 Runbook 参数使此 Runbook 更稳健。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -57,7 +57,7 @@ ms.locfileid: "70743821"
 
 2. 通过单击“保存”保存 Runbook。
 
-## <a name="step-3---test-the-runbook"> </a> 测试 runbook
+## <a name="step-3---test-the-runbook"></a>测试 runbook
 
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
 
@@ -94,7 +94,7 @@ ms.locfileid: "70743821"
 1. 关闭“输出”页。
 1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到“Hello World”，但此输出也可以显示 tunbook 作业的其他流，例如，“详细”和“错误”（如果 runbook 向其写入）。
 
-   ![全部日志](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
+   ![所有日志](media/automation-first-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
 
 1. 关闭“流”页和“作业”页以返回到 MyFirstRunbook-PowerShell 页。
 1. 在“详细信息”下单击“作业”打开此 Runbook 的“作业”窗格。 此页列出此 runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
@@ -163,7 +163,7 @@ ms.locfileid: "70743821"
 1. 单击“测试”窗格，以便测试 Runbook。
 1. 单击“启动”以启动测试 。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此输出确认运行方式帐户有效。
 
-   ![验证](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
+   ![身份验证](media/automation-first-runbook-textual-powershell/runbook-auth-output.png)
 
 ## <a name="add-code-to-start-a-virtual-machine"></a>添加代码以启动虚拟机
 
@@ -244,7 +244,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅[Powershell 文档](/powershell/scripting/overview)。
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)

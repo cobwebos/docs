@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120546"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849167"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Salesforce 以及取消其预配而需要在 Salesforce 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure Active Directory 租户
 * Salesforce.com 租户
@@ -129,10 +129,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 * **SalesforceDuplicateUserName：** 无法设置用户，因为它具有在其他 Salesforce.com 租户中重复的 Salesforce.com "Username"。  在 Salesforce.com 中，"Username" 特性的值在所有 Salesforce.com 租户中必须是唯一的。  默认情况下，用户在 Salesforce.com 中的 userPrincipalName Azure Active Directory 成为其 "Username"。   您有两种选择。  一种选择是在其他 Salesforce.com 租户中查找和重命名具有重复 "Username" 的用户（如果也管理该其他租户）。  另一种方法是删除 Azure Active Directory 用户对你的目录集成到的 Salesforce.com 租户的访问权限。 我们将在下一次同步尝试时重试此操作。 
 * **SalesforceRequiredFieldMissing：** Salesforce 要求用户提供某些属性，已成功创建或更新用户。 此用户缺少所需的属性之一。 确保在要预配到 Salesforce 的所有用户上填充了电子邮件和别名等属性。 你可以使用[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)来确定不具有这些属性的用户的作用域。 
 * 预配到 Salesforce 的默认属性映射包括 SingleAppRoleAssignments 表达式，以将 Azure AD 中的 appRoleAssignments 映射到 Salesforce 中的 ProfileName。 确保用户在 Azure AD 中没有多个应用角色分配，因为属性映射仅支持预配一个角色。 
+* Salesforce 要求电子邮件更新在进行更改之前手动批准。 因此，你可能会在预配日志中看到多个条目来更新用户的电子邮件（直到电子邮件更改获得批准）。
 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

@@ -4,23 +4,23 @@ description: 本文提供了有关对更改跟踪进行故障排除的信息
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 482b263b7c8427276d4fdb8681372c2be1ae69ee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564850"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849388"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>对更改跟踪和清单进行故障排除
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>场景：更改跟踪记录不在 Windows 计算机中显示
+### <a name="records-not-showing-windows"></a>方案：不显示 Windows 计算机更改跟踪记录
 
 #### <a name="issue"></a>问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "68564850"
 3. 用于更改跟踪的管理包未下载。
 4. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
 
-#### <a name="resolution"></a>解决
+#### <a name="resolution"></a>分辨率
 
 1. 验证 **Microsoft Monitoring Agent** (HealthService.exe) 是否正在计算机上运行。
 1. 检查计算机上的**事件查看器**并查看包含 `changetracking` 一词的任何事件。

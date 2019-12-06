@@ -2,28 +2,24 @@
 title: Microsoft 标识平台中的身份验证 | Azure
 description: 了解 Microsoft 标识平台（v2.0）中身份验证的基础知识。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167792"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843982"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -143,7 +139,7 @@ Microsoft 标识平台：
 
 Web 应用开发人员可以指示是所有页面还是仅某些页面都要求身份验证。 例如，在 ASP.NET/ASP.NET Core 中，这是通过将 `[Authorize]` 特性添加到控制器操作来完成的。 
 
-此属性会导致 ASP.NET 检查是否存在包含用户标识的会话 cookie。 如果 cookie 不存在，ASP.NET 会将身份验证重定向到指定的标识提供者。 如果 Azure AD 标识提供者，则 web 应用会将身份验证重定向到 https://login.microsoftonline.com，这会显示登录对话框。
+此属性会导致 ASP.NET 检查是否存在包含用户标识的会话 cookie。 如果 cookie 不存在，ASP.NET 会将身份验证重定向到指定的标识提供者。 如果 Azure AD 标识提供者，则 web 应用会将身份验证重定向到 https://login.microsoftonline.com ，这会显示登录对话框。
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Web 应用如何委托登录 Azure AD 和获取令牌
 

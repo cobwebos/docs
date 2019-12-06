@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033663"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842052"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -31,7 +31,7 @@ ms.locfileid: "74033663"
 
 Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像的计算机。 有关 Sysprep 的信息，请参阅 [Sysprep 概述](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅[Sysprep 对服务器角色的支持](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。
 
 > [!IMPORTANT]
 > 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
@@ -70,9 +70,9 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 
 
-1. 打开 [Azure 门户](https://portal.azure.com)。
+1. 请参阅[Azure 门户](https://portal.azure.com)以管理 VM 映像。 搜索并选择 "**虚拟机**"。
 
-2. 在左侧菜单中，选择“虚拟机”，然后从列表中选择 VM。
+2. 从列表中选择你的 VM。
 
 3. 在 VM 的“虚拟机”页面的上方菜单中，选择“捕获”。
 
@@ -80,7 +80,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 4. 对于“名称”，可以使用预填充的名称或输入想要为映像使用的名称。
 
-5. 对于“资源组”，选择“新建”并输入名称，或选择“使用现有”并从下拉列表中选择要使用的资源组。
+5. 对于 "**资源组**"，选择 "**新建**" 并输入名称，或者从下拉列表中选择要使用的资源组。
 
 6. 如果想要在创建映像后删除源 VM，选择“创建映像后自动删除此虚拟机”。
 
@@ -88,7 +88,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 8. 选择“创建”以创建映像。
 
-9. 创建映像后，在资源组的资源列表中，你会看到它作为“映像”资源而出现。
+创建映像后，在资源组的资源列表中，你会看到它作为“映像”资源而出现。
 
 
 
@@ -98,7 +98,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 直接从 VM 创建映像，可确保映像包含所有与该 VM 关联的磁盘，包括 OS 磁盘和任何数据磁盘。 本示例演示如何从使用托管磁盘的 VM 创建托管映像。
 
-在开始之前，请确保有最新版本的 Azure PowerShell 模块。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+在开始之前，请确保具有最新版本的 Azure PowerShell 模块。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 
 > [!NOTE]
@@ -218,7 +218,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>使用存储帐户从 VM 创建映像
 
-若要从不使用托管磁盘的 VM 创建托管映像，需要使用存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename*. 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
+若要从不使用托管磁盘的 VM 创建托管映像，需要使用存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename*。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
 
 
 1.  创建若干变量。

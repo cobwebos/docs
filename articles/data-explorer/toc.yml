@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: 部署
       items:
-        - name: 将群集部署到 VNet 中
+        - name: 将群集部署到虚拟网络
           href: vnet-deployment.md
     - name: 监视
       items:

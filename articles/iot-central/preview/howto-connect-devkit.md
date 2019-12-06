@@ -3,17 +3,17 @@ title: 将 DevKit 设备连接到 Azure IoT Central 应用程序 | Microsoft Doc
 description: 作为设备开发人员，了解如何使用 IoT 即插即用将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930131"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848920"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序（预览功能）
 
@@ -25,7 +25,7 @@ ms.locfileid: "73930131"
 - 准备设备并将其连接到 IoT Central 应用程序。
 - 查看 IoT Central 中设备的遥测和属性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文中的步骤，需要以下资源：
 
@@ -34,9 +34,21 @@ ms.locfileid: "73930131"
 
 ## <a name="get-device-connection-details"></a>获取设备连接详细信息
 
-在 Azure IoT Central 应用程序中，选择 "**管理**" 选项卡，然后选择 "**设备连接**"。 记下 "**作用域 ID** **" 和 "主密钥"** （在 "**查看密钥**" 链接中）。 确保启用**自动批准**。
+1. 在 Azure IoT Central 应用程序中，选择 "**设备模板**" 选项卡，并选择 "**新建**"。 在 "**使用预配置的设备模板**" 部分中，从列表中选择 " **MXChip IoT DevKit** "。 然后选择 "**下一步：自定义**和**创建**"。
 
-![设备组连接详细信息](media/howto-connect-devkit/device-group-connection-details.png)
+    ![MXChip IoT DevKit 的设备模板](media/howto-connect-devkit/device-template.png)
+
+1. 选择**设备**"选项卡，在" 设备 "列表中，选择" **MXChip IoT DevKit** "，并选择"**新建**"以从设备模板创建新设备。
+
+    ![新设备](media/howto-connect-devkit/new-device.png)
+
+1. 在弹出窗口中，输入 `SampleDevKit` 的**设备 ID** ，并将**设备名称**输入为 `MXChip IoT DevKit - Sample`。 确保**模拟**选项处于关闭状态。 然后选择“创建”。
+
+    ![设备 ID 和名称](media/howto-connect-devkit/device-id-name.png)
+
+1. 单击刚刚创建的设备，然后选择 "**连接**"。 记下 " **Id 范围**"、"**设备 ID** "**和 "主密钥"** 。
+
+    ![设备连接信息](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>准备设备
 
@@ -61,7 +73,7 @@ ms.locfileid: "73930131"
 
     - WiFi 网络（SSID）的名称。
     - WiFi 网络密码。
-    - 连接详细信息：你可以自行选择的**设备 id** ，以及你之前记下的**作用域 ID**和**组 SAS 主密钥**。
+    - 连接详细信息：输入先前记下的**设备 id**、 **ID 作用域**和**SAS**主密钥。
 
     > [!NOTE]
     > 目前，IoT DevKit 只能连接到 2.4 GHz Wi-fi，因为硬件限制，不支持 5 GHz。
@@ -86,7 +98,7 @@ DevKit 首先在 IoT Central 应用程序中注册新设备，然后开始发送
 
 ## <a name="review-the-code"></a>查看代码
 
-若要查看代码或修改并编译代码，请参阅[MXChip IoT DevKit 示例代码 GitHub 存储库](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)。
+若要查看代码或修改并编译代码，请参阅[代码示例](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)。
 
 ## <a name="next-steps"></a>后续步骤
 

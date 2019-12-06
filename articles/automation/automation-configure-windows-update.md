@@ -4,17 +4,17 @@ description: 本文介绍配置为使用 Azure 更新管理的 Windows 更新设
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690844"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850408"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>为更新管理配置 Windows 更新设置
 
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>禁用自动安装
 
-默认情况下，会在 Azure 虚拟机（Vm）上启用更新的自动安装。 这可能会导致在计划安装之前安装更新，更新管理。 您可以通过将 `NoAutoUpdate` 的注册表项设置为 `1` 来禁用此行为。 以下 PowerShell 代码片段显示了如何执行此操作：
+默认情况下，会在 Azure 虚拟机（Vm）上启用更新的自动安装。 这可能会导致在计划安装之前安装更新，更新管理。 您可以通过将 `NoAutoUpdate` 的注册表项设置为 `1`来禁用此行为。 以下 PowerShell 代码片段显示了如何执行此操作：
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -43,7 +43,7 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>配置重新启动设置
 
-[通过编辑](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)[用于管理重启](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)的注册表和注册表项来配置自动更新中列出的注册表项可能会导致计算机重新启动，即使在**更新部署**设置中指定了 "**从不重新启动**" 也是如此. 应将这些注册表项配置为最适合您的环境。
+[通过编辑](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)[用于管理重启](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)的注册表和注册表项来配置自动更新中列出的注册表项可能会导致计算机重新启动，即使在**更新部署**设置中指定了 "**从不重新启动**" 也是如此。 应将这些注册表项配置为最适合您的环境。
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
 

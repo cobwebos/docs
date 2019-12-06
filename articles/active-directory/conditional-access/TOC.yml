@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: 检测到会话风险时阻止访问
       href: app-sign-in-risk.md
-- name: 教程
-  items:
-    - name: 迁移经典 MFA 策略
-      href: policy-migration-mfa.md
 - name: 概念
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 经典策略迁移
+      href: policy-migration.md
     - name: 基线保护策略
       href: concept-baseline-protection.md
 - name: 操作指南
@@ -83,7 +81,7 @@
     - name: 登录频率和浏览器持久性控制
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: 采用条件访问
       href: howto-conditional-access-adoption-kit.md
     - name: 故障排除

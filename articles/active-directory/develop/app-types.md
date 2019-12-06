@@ -2,27 +2,23 @@
 title: v1.0 中的应用程序类型 | Azure
 description: 介绍 Azure Active Directory v2.0 终结点支持的应用和方案类型。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7e4228febb5b49ad14a89ceec5482c277fca5fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374061"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844203"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 

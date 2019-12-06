@@ -1,24 +1,24 @@
 ---
 title: Azure Cosmos DB 查询语言中的数学函数
-description: 了解 Azure Cosmos DB 中的数学 SQL 系统函数。
+description: 了解 Azure Cosmos DB 中的数学函数，根据作为参数提供的输入值执行计算，并返回一个数值。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fe4a84db3f2cbcfc2d9841caf520404afec2a297
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349672"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873261"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数（Azure Cosmos DB）  
 
 每个数学函数均执行一个计算，基于作为参数提供的输出值，并返回数值。
 
-可以运行以下示例所示的查询：
+可以按以下示例所示运行查询：
 
 ```sql
     SELECT VALUE ABS(-4)
@@ -45,7 +45,7 @@ ms.locfileid: "71349672"
 |[SIGN](sql-query-sign.md)|[SIN](sql-query-sin.md)|[SQRT](sql-query-sqrt.md)|
 |[SQUARE](sql-query-square.md)|[TAN](sql-query-tan.md)|[TRUNC](sql-query-trunc.md)||  
   
-除 RAND 之外的所有数学函数都是确定性函数。 这意味着，每次使用一组特定的输入值调用它们时，它们都将返回相同的结果。
+除 RAND 以外的所有数学函数都为确定性函数。 这意味着在每次使用特定的输入值集调用这些函数时，它们都将返回相同的结果。
 
 ## <a name="next-steps"></a>后续步骤
 

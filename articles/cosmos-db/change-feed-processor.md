@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 中的更改源处理器库
-description: 使用 Azure Cosmos DB 更改源处理器库。
+description: 了解如何使用 Azure Cosmos DB 更改源处理器库读取更改源、更改源处理器的组件以及实现生命周期
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ea2b72e926923357e9ee7dac87720292fbbf9696
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757043"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872224"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
 
@@ -39,7 +39,7 @@ ms.locfileid: "72757043"
 
 ## <a name="implementing-the-change-feed-processor"></a>实现更改源处理器
 
-从调用 `GetChangeFeedProcessorBuilder` 的 `Container` 实例中，入口点始终是监视的容器：
+从调用 `GetChangeFeedProcessorBuilder`的 `Container` 实例中，入口点始终是监视的容器：
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,9 +49,9 @@ ms.locfileid: "72757043"
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-最后，使用 `WithInstanceName` 定义此处理器实例的名称，该名称是用于维护 `WithLeaseContainer` 的租约状态的容器。
+最后，使用 `WithInstanceName` 定义此处理器实例的名称，该名称是用于维护 `WithLeaseContainer`的租约状态的容器。
 
-调用 `Build` 将为你指定可通过调用 `StartAsync` 来启动的处理器实例。
+调用 `Build` 将为你指定可通过调用 `StartAsync`来启动的处理器实例。
 
 ## <a name="processing-life-cycle"></a>处理生命周期
 

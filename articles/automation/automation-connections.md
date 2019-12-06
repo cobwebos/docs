@@ -4,17 +4,17 @@ description: Azure 自动化中的连接资产包含从 Runbook 或 DSC 配置�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90b2234607ad120c43e241fe4ae5222fe285803e
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001658"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850425"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -46,11 +46,11 @@ Azure 自动化中有三种类型的内置连接：
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|删除现有连接。|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|设置现有连接的一个特定字段的值。|
 
-## <a name="activities"></a>activities
+## <a name="activities"></a>活动
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|activities|描述|
+|活动|描述|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
@@ -61,7 +61,7 @@ Azure 自动化中有三种类型的内置连接：
 ## <a name="python2-functions"></a>Python2 函数
 下表中的函数用于在 Python2 Runbook 中访问连接。
 
-| Functions | 描述 |
+| 函数 | 描述 |
 |:---|:---|
 | automationassets.get_automation_connection | 检索连接。 返回包括该连接属性的字典。 |
 

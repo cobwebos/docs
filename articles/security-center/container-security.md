@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769211"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868484"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -59,8 +59,7 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 
 安全中心为容器化环境提供实时威胁检测，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
-我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器服务](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
-
+我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁检测](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>查看容器相关资源的安全状况
 1.  打开安全中心的 "**计算 & 应用**" 页。

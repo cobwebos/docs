@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ARRAY_SLICE
-description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ARRAY_SLICE。
+description: 了解 Azure Cosmos DB 如何返回数组表达式的一部分的数组切片 SQL 系统函数
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1df4177bb8b56bc98977af0f5180e8df5affb257
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348547"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871782"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE （Azure Cosmos DB）
  返回部分数组表达式。
@@ -39,7 +39,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ARRAY_SLICE` 获取数组的不同切片。  
+  下面的示例演示如何使用 `ARRAY_SLICE`获取数组的不同切片。  
   
 ```sql
 SELECT

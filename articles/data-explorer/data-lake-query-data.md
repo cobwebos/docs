@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383365"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849065"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据（预览版）
 
@@ -21,20 +21,15 @@ Azure Data Lake Storage 是一种高度可缩放且经济高效的 data Lake 解
 Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2 集成，提供对 Lake 中数据的快速、缓存和索引访问。 无需先引入 Azure 数据资源管理器，即可在 lake 中分析和查询数据。 你还可以同时跨引入和 uningested 本机 lake 数据进行查询。  
 
 > [!TIP]
-> 最佳查询性能要求将数据引入到 Azure 数据资源管理器中。 Azure Data Lake Storage Gen2 在没有预先引入的情况下查询中的数据的功能只能用于不常查询的历史数据或数据。
+> 最佳查询性能要求将数据引入到 Azure 数据资源管理器中。 Azure Data Lake Storage Gen2 在没有预先引入的情况下查询中的数据的功能只能用于不常查询的历史数据或数据。 [在 lake 中优化查询性能](#optimize-your-query-performance)以获得最佳结果。
  
-## <a name="optimize-query-performance-in-the-lake"></a>在 lake 中优化查询性能 
-
-* 对数据进行分区以改进性能和优化查询时间。
-* 压缩数据以提高性能（gzip 以实现最佳压缩，lz4 为获得最佳性能）。
-* 将 Azure Blob 存储或 Azure Data Lake Storage Gen2 与 Azure 数据资源管理器群集使用同一区域。 
 
 ## <a name="create-an-external-table"></a>创建外部表
 
  > [!NOTE]
  > 当前支持的存储帐户是 Azure Blob 存储或 Azure Data Lake Storage Gen2。 当前支持的数据格式为 json、csv、tsv 和 txt。
 
-1. `.create external table`使用命令在 Azure 数据资源管理器中创建外部表。 [外部表命令](/azure/kusto/management/externaltables)中记录了`.show`诸如`.drop`、和`.alter`之类的其他外部表命令。
+1. 使用 `.create external table` 命令在 Azure 数据资源管理器中创建外部表。 [外部表命令](/azure/kusto/management/externaltables)中记录了诸如 `.show`、`.drop`和 `.alter` 之类的其他外部表命令。
 
     ```Kusto
     .create external table ArchivedProducts(
@@ -50,7 +45,7 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
     > * 更精细的分区需要提高性能。 例如，对于具有每月分区表的外部表的查询，性能比包含月度分区表的查询更好。
     > * 使用分区定义外部表时，存储结构应是相同的。
 例如，如果使用 yyyy/MM/dd 格式（默认值）将表定义为 DateTime 分区，则 URI 存储文件路径应为*container1/yyyy/MM/dd/all_exported_blobs*。 
-    > * 如果外部表按日期时间列进行分区，则始终在查询中包含已关闭范围的时间筛选器（例如，查询- `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`应比此（打开的`ArchivedProducts | where Timestamp > ago(1h)`范围）1）。 
+    > * 如果外部表按日期时间列进行分区，则始终在查询中包含已关闭范围的时间筛选器（例如，查询 `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-应比此（打开的范围）一 `ArchivedProducts | where Timestamp > ago(1h)`）更好。 
 
 1. 外部表显示在 Web UI 的左窗格中
 
@@ -60,7 +55,7 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
 
 您可以使用 json 格式创建外部表。 有关详细信息，请参阅[外部表命令](/azure/kusto/management/externaltables)
 
-1. 使用命令创建名为 ExternalTableJson 的表： `.create external table`
+1. 使用 `.create external table` 命令创建名为*ExternalTableJson*的表：
 
     ```kusto
     .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
@@ -91,7 +86,7 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
  
 ## <a name="query-an-external-table"></a>查询外部表
  
-若要查询外部表，请使用`external_table()`函数，并提供表名称作为函数参数。 查询的其余部分是标准 Kusto 查询语言。
+若要查询外部表，请使用 `external_table()` 函数，并提供表名称作为函数参数。 查询的其余部分是标准 Kusto 查询语言。
 
 ```Kusto
 external_table("ArchivedProducts") | take 100
@@ -102,7 +97,7 @@ external_table("ArchivedProducts") | take 100
 
 ### <a name="query-an-external-table-with-json-format"></a>使用 json 格式查询外部表
 
-若要查询具有 json 格式的外部表，请`external_table()`使用函数，并提供表名称和映射名称作为函数参数。 在下面的查询中，如果未指定*mappingName* ，则将使用之前创建的映射。
+若要查询具有 json 格式的外部表，请使用 `external_table()` 函数，并提供表名称和映射名称作为函数参数。 在下面的查询中，如果未指定*mappingName* ，则将使用之前创建的映射。
 
 ```kusto
 external_table(‘ExternalTableJson’, ‘mappingName’)
@@ -110,7 +105,7 @@ external_table(‘ExternalTableJson’, ‘mappingName’)
 
 ## <a name="query-external-and-ingested-data-together"></a>同时查询外部数据和引入数据
 
-您可以在同一查询中查询外部表和引入数据表。 你[`join`](/azure/kusto/query/joinoperator) [或`union`](/azure/kusto/query/unionoperator)包含来自 Azure 数据资源管理器、SQL server 或其他源的其他数据的外部表。 [`let( ) statement`](/azure/kusto/query/letstatement)使用将速记名称分配给外部表引用。
+您可以在同一查询中查询外部表和引入数据表。 你[`join`](/azure/kusto/query/joinoperator)或[`union`](/azure/kusto/query/unionoperator)外部表中包含来自 Azure 数据资源管理器、SQL server 或其他源的其他数据。 使用[`let( ) statement`](/azure/kusto/query/letstatement)将速记名称分配给外部表引用。
 
 在下面的示例中，*产品*是一个引入数据表， *ArchivedProducts*是一个外部表，其中包含 Azure Data Lake Storage Gen2 中的数据：
 
@@ -226,11 +221,42 @@ external_table("TaxiRides")
 | render piechart
 ```
 
-此查询使用分区，这会优化查询时间和性能。 查询筛选已分区的列（pickup_datetime），并在几秒钟后返回结果。
+此查询使用分区，这会优化查询时间和性能。 查询筛选已分区列（pickup_datetime），并在几秒钟后返回结果。
 
 ![呈现分区查询](media/data-lake-query-data/taxirides-with-partition.png)
   
 您可以编写其他查询以在外部表*TaxiRides*上运行，并了解有关数据的更多信息。 
+
+## <a name="optimize-your-query-performance"></a>优化查询性能
+
+使用以下用于查询外部数据的最佳做法，在 lake 中优化查询性能。 
+ 
+### <a name="data-format"></a>数据格式
+ 
+使用列式格式进行分析查询，自开始：
+* 只能读取与查询相关的列。 
+* 列编码技术可显著减少数据大小。  
+Azure 数据资源管理器支持 Parquet 和 ORC 纵栏格式。 由于优化了实现，因此建议采用 Parquet 格式。 
+ 
+### <a name="azure-region"></a>Azure 区域 
+ 
+确定外部数据位于 Azure 数据资源管理器群集所在的同一 Azure 区域中。 这可以降低成本和数据提取时间。
+ 
+### <a name="file-size"></a>文件大小
+ 
+最佳文件大小为每个文件数百 Mb （高达 1 Gb）。 避免使用需要不必要开销的许多小文件，如文件枚举过程和有限的列式格式使用。 请注意，文件数必须大于 Azure 数据资源管理器群集中的 CPU 内核数。 
+ 
+### <a name="compression"></a>压缩
+ 
+使用压缩可以减少从远程存储提取的数据量。 对于 Parquet 格式，请使用内部 Parquet 压缩机制，单独压缩列组，从而允许单独读取列组。 若要验证使用压缩机制，请检查文件的名称是否如下所示：<filename>"gz. parquet" 或<filename>"parquet"，而不是<filename>"parquet"）。 
+ 
+### <a name="partitioning"></a>分区
+ 
+使用 "文件夹" 分区组织你的数据，该分区允许查询跳过无关的路径。 在规划分区时，请考虑查询中的文件大小和常见筛选器，例如时间戳或租户 ID。
+ 
+### <a name="vm-size"></a>VM 大小
+ 
+选择包含更多内核和更高网络吞吐量的 VM Sku （内存不太重要）。 有关详细信息，请参阅[为 Azure 数据资源管理器群集选择正确的 VM SKU](manage-cluster-choose-sku.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

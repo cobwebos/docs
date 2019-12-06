@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: f3e8495671b56eda804e33b78667cf75cc2f8e70
-  ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
+  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/29/2019
-  ms.locfileid: "68607627"
+  ms.lasthandoff: 12/05/2019
+  ms.locfileid: "74842300"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -95,6 +95,20 @@ conceptualContent:
       text: Azure AD B2C 中的自定义策略
     footerLink:
       url: ../active-directory-b2c/index.yml
+      text: 另请参阅
+  - title: 云预配
+    links:
+    - url: ./cloud-provisioning/what-is-cloud-provisioning.md
+      itemType: overview
+      text: 什么是云预配？
+    - url: ./cloud-provisioning/tutorial-single-forest.md
+      itemType: tutorial
+      text: 将单个林与单个 Azure AD 租户集成
+    - url: ./cloud-provisioning/how-to-install.md
+      itemType: how-to-guide
+      text: 安装 Azure AD Connect 云预配代理
+    footerLink:
+      url: ./cloud-provisioning/index.yml
       text: 另请参阅
   - title: 条件性访问
     links:

@@ -182,6 +182,8 @@
                   href: virtual-network-deploy-static-pip-arm-cli.md
             - name: 将公共 IP 地址添加到现有 VM
               href: associate-public-ip-address-vm.md
+            - name: 将公共 IP 地址与 VM 取消关联
+              href: remove-public-ip-address-vm.md
             - name: 创建 VM - 静态专用 IP 地址
               items:
                 - name: Azure 门户

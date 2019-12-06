@@ -2,27 +2,23 @@
 title: 授权代理和如何启用它们 |Microsoft
 description: 了解 Microsoft 身份验证库（MSAL）允许 Android 应用使用的不同授权代理，以及如何启用它们。
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/05/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7daf40d6c6e552d6b76e424359f57f031641039
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679810"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843897"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
 
@@ -83,15 +79,15 @@ MSAL 检索设备上安装的浏览器的完整列表，以选择要使用的浏
 
 | | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| 结点4（API 17） | 穿过 | 穿过 |不适用 |不适用 |不适用 |不适用 |
-| Samsung S7 （API 25） | 穿过 | 穿过 | 穿过 | 穿过 | 失败 |穿过 |
-| Huawei （API 26） |pass * * | 穿过 | 失败 | 穿过 | 穿过 |穿过 |
-| Vivo （API 26） |穿过|穿过|穿过|穿过|穿过|失败|
-| 象素2（API 26） |穿过 | 穿过 | 穿过 | 穿过 | 失败 |穿过 |
-| Oppo | 穿过 | 不适用 * * * |不适用  |不适用 |不适用 | 不适用|
-| OnePlus （API 25） |穿过 | 穿过 | 穿过 | 穿过 | 失败 |穿过 |
-| 结点（API 28） |穿过 | 穿过 | 穿过 | 穿过 | 失败 |穿过 |
-|MI | 穿过 | 穿过 | 穿过 | 穿过 | 失败 |穿过 |
+| 结点4（API 17） | 通过 | 通过 |不适用 |不适用 |不适用 |不适用 |
+| Samsung S7 （API 25） | 穿过 | 通过 | 通过 | 通过 | 未通过 |通过 |
+| Huawei （API 26） |pass * * | 通过 | 未通过 | 通过 | 通过 |通过 |
+| Vivo （API 26） |通过|通过|通过|通过|通过|未通过|
+| 象素2（API 26） |通过 | 通过 | 通过 | 通过 | 未通过 |通过 |
+| Oppo | 通过 | 不适用 * * * |不适用  |不适用 |不适用 | 不适用|
+| OnePlus （API 25） |通过 | 通过 | 通过 | 通过 | 未通过 |通过 |
+| 结点（API 28） |通过 | 通过 | 通过 | 通过 | 未通过 |通过 |
+|MI | 通过 | 通过 | 通过 | 通过 | 未通过 |通过 |
 
 \* Samsung 的内置浏览器是 Samsung Internet。  
 \* * Huawei 的内置浏览器是 Huawei 浏览器。  

@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB 中的 OFFSET LIMIT 子句
-description: 了解 Azure Cosmos DB 的 OFFSET LIMIT 子句。
+title: Azure Cosmos DB 中的偏移限制子句
+description: 了解如何在中查询时使用 OFFSET LIMIT 子句跳过并采用某些值 Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 68515c51862ada0b1aa794c09b3a6730504a57ee
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326872"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873244"
 ---
-# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 OFFSET LIMIT 子句
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的偏移限制子句
 
-OFFSET LIMIT 子句是一个可选子句，可以跳过它，然后从查询中获取一些值。 必须在 OFFSET LIMIT 子句中指定 OFFSET 计数和 LIMIT 计数。
+OFFSET LIMIT 子句是一个可选子句，用于跳过查询中的一些值。 偏移量限制和限制计数在偏移限制子句中是必需的。
 
-将 OFFSET LIMIT 与 ORDER BY 子句结合使用时，将通过跳过然后提取排序值来生成结果集。 如果不使用 ORDER BY 子句，则会生成值的确定顺序。
+当 OFFSET 限制与 ORDER BY 子句结合使用时，将通过执行 skip 并采用有序值生成结果集。 如果未使用 ORDER BY 子句，则将导致值的确定性顺序。
 
 ## <a name="syntax"></a>语法
   
@@ -29,19 +29,19 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   指定查询结果应跳过的项数（整数）。
+   指定查询结果应跳过的项数。
 
 - `<limit_amount>`
   
-   指定查询结果应包含的项数（整数）
+   指定查询结果应包含的项的整数数量
 
 ## <a name="remarks"></a>备注
   
-  必须在 OFFSET LIMIT 子句中同时指定 OFFSET 计数和 LIMIT 计数。 如果使用可选的 `ORDER BY` 子句，将会通过跳过排序值来生成结果集。 否则，查询将返回固定顺序的值。 目前，只有单个分区中的查询支持此子句，跨分区查询尚不支持它。
+  偏移量限制子句和限制计数都是必需的。 如果使用了可选的 `ORDER BY` 子句，则通过跳过有序值来生成结果集。 否则，查询将返回固定的值顺序。 目前，只有单个分区中的查询支持此子句，跨分区查询尚不支持。
 
 ## <a name="examples"></a>示例
 
-例如，以下查询跳过第一个值并返回第二个值（按居住城市名称的顺序）：
+例如，下面的查询将跳过第一个值，并返回第二个值（按居民姓名的顺序）：
 
 ```sql
     SELECT f.id, f.address.city
@@ -61,7 +61,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     ]
 ```
 
-以下查询跳过第一个值并返回第二个值（不排序）：
+下面的查询将跳过第一个值，并返回第二个值（不排序）：
 
 ```sql
    SELECT f.id, f.address.city

@@ -126,9 +126,6 @@
         - name: 初始化群集节点
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: 自定义容器
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: 启用了 GPU 的群集
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: 数据
       items:
-        - name: Databricks 文件系统 (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: 数据库和表
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: ZIP 文件
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Databricks 文件系统 (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: 使用 TensorFlow 进行模型推理
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: 模型推理性能调优
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: 分布式图像模型推理的参考解决方案
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: 群集配置概述
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: 启用容器服务
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: 启用用于基因组学的 Databricks Runtime
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: 配置设置覆盖默认设置
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: 基于单核执行程序运行 JNI 库
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: 覆盖 log4j 配置
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: 平台发行说明
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019 年 12 月
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: 2019 年 11 月
               href: /azure/databricks/release-notes/product/2019/november
