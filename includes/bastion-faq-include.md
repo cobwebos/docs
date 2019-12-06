@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795624"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875455"
 ---
 ### <a name="regions"></a>面向哪些区域提供？
 
@@ -59,3 +59,7 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 
 不是。 Azure Bastion 子网不支持 UDR。
 对于在同一虚拟网络中同时包含 Azure Bastion 和 Azure 防火墙/网络虚拟设备 (NVA) 的方案，无需强制流量从 Azure Bastion 子网发往 Azure 防火墙，因为 Azure Bastion 与 VM 之间的通信是专用的。 有关更多详细信息，请参阅[通过 Bastion 访问 Azure 防火墙后的 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
+
+### <a name="filetransfer"></a>Azure Bastion RDP 会话是否支持文件传输？
+
+我们正在努力添加新功能。 目前还不支持文件传输，但它是我们路线图的一部分。 请随时在 [Azure Bastion 反馈页](https://feedback.azure.com/forums/217313-networking?category_id=367303)上分享有关新功能的反馈。
