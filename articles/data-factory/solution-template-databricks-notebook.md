@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用 Databricks 转换数据
+title: 使用 Databricks 转换数据
 description: 了解如何使用解决方案模板，通过在 Azure 数据工厂中使用 Databricks 笔记本转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b39e354d503910d20141ce19c625eb79b4a7353
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684253"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890991"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Databricks 转换数据
 
@@ -31,11 +31,11 @@ ms.locfileid: "73684253"
 
 模板不会创建计划的触发器，以确保此模板简单好用。 如有必要，可添加触发器。
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![第](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-1.  创建一个“blob 存储帐户”和一个将用作“接收器”的名为  **的容器**`sinkdata`。 记下“存储帐户名称”、“容器名称”和“访问密钥”，因为稍后将在模板中引用它们。
+1.  创建一个“blob 存储帐户”和一个将用作“接收器”的名为 `sinkdata` 的容器。 记下“存储帐户名称”、“容器名称”和“访问密钥”，因为稍后将在模板中引用它们。
 
 2.  确保已拥有“Azure Databricks 工作区”或创建一个新工作区。
 

@@ -3,18 +3,18 @@ title: 通过自定义规则和通知扩展 Azure IoT Central |Microsoft Docs
 description: 作为解决方案开发人员，配置一个 IoT Central 应用程序，以便在设备停止发送遥测数据时发送电子邮件通知。 此解决方案使用 Azure 流分析、Azure Functions 和 SendGrid。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895860"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895734"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>使用流分析、Azure Functions 和 SendGrid （预览功能）通过自定义规则扩展 Azure IoT Central
 
@@ -34,27 +34,27 @@ ms.locfileid: "73895860"
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ### <a name="iot-central-application"></a>IoT Central 应用程序
 
 使用以下设置在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建 IoT Central 应用程序：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
-| 付款计划 | 即用即付 |
+| 付款计划 | 现用现付 |
 | 应用程序模板 | 应用商店内分析-条件监视 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
-| Directory | 你的 Azure Active Directory 租户 |
+| 目录 | 你的 Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 区域 | 最近的区域 |
+| 地区 | 最近的区域 |
 
 本文中的示例和屏幕截图使用**美国**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
 
 此应用程序模板包含两个用于发送遥测的模拟恒温器设备。
 
-### <a name="resource-group"></a>资源组
+### <a name="resource-group"></a>Resource group
 
 使用 Azure 门户创建名为**DetectStoppedDevices**的[资源组](https://portal.azure.com/#create/Microsoft.ResourceGroup)，以包含您创建的其他资源。 在 IoT Central 应用程序所在的同一位置创建 Azure 资源。
 
@@ -62,55 +62,55 @@ ms.locfileid: "73895860"
 
 使用 Azure 门户创建具有以下设置的[事件中心命名空间](https://portal.azure.com/#create/Microsoft.EventHub)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
-| 订阅 | 订阅 |
-| 资源组 | DetectStoppedDevices |
-| 位置 | 美国东部 |
-| 吞吐量单位 | 1 |
+| Subscription | 你的订阅 |
+| Resource group | DetectStoppedDevices |
+| Location | 美国东部 |
+| 吞吐量单位 | 第 |
 
 ### <a name="stream-analytics-job"></a>流分析作业
 
 使用 Azure 门户创建具有以下设置的[流分析作业](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
 | 名称    | 选择作业名称 |
-| 订阅 | 订阅 |
-| 资源组 | DetectStoppedDevices |
-| 位置 | 美国东部 |
+| Subscription | 你的订阅 |
+| Resource group | DetectStoppedDevices |
+| Location | 美国东部 |
 | 宿主环境 | 云 |
-| 流式处理单位 | 3 |
+| 流式处理单元 | 3 |
 
 ### <a name="function-app"></a>函数应用
 
 使用 Azure 门户创建具有以下设置的[函数应用](https://portal.azure.com/#create/Microsoft.FunctionApp)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
 | 应用程序名称    | 选择函数应用名称 |
-| 订阅 | 订阅 |
-| 资源组 | DetectStoppedDevices |
-| 操作系统 | Windows |
+| Subscription | 你的订阅 |
+| Resource group | DetectStoppedDevices |
+| OS | Windows |
 | 托管计划 | 消耗计划 |
-| 位置 | 美国东部 |
+| Location | 美国东部 |
 | 运行时堆栈 | .NET |
-| 存储 | 新建 |
+| 存储空间 | 新建 |
 
 ### <a name="sendgrid-account"></a>SendGrid 帐户
 
 使用 Azure 门户创建具有以下设置的[SendGrid 帐户](https://portal.azure.com/#create/Sendgrid.sendgrid)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
 | 名称    | 选择你的 SendGrid 帐户名称 |
 | 密码 | 创建密码 |
-| 订阅 | 订阅 |
-| 资源组 | DetectStoppedDevices |
+| Subscription | 你的订阅 |
+| Resource group | DetectStoppedDevices |
 | 定价层 | F1 免费 |
-| 联系信息 | 填写所需信息 |
+| 联系人信息 | 填写所需信息 |
 
 创建所有必需的资源后， **DetectStoppedDevices**资源组将如以下屏幕截图所示：
 
@@ -159,7 +159,7 @@ ms.locfileid: "73895860"
 1. 选择 "**集成**"，选择 "输出**HTTP （$return）** "，然后选择 "**删除**"。
 1. 选择 " **+ 新建输出**"，然后选择 " **SendGrid**"，然后选择 "**选择**"。 选择 "**安装**" 以安装 SendGrid 扩展。
 1. 安装完成后，选择 "**使用函数返回值**"。 添加有效的**到地址**以接收电子邮件通知。  添加有效**的 "发**件人" 地址，以用作电子邮件发件人。
-1. 选择 " **SENDGRID API 密钥应用设置**" 旁边的 "**新建**"。 输入**SendGridAPIKey**作为密钥，并将之前记下的 SendGrid API 密钥作为值。 然后，选择“创建”。
+1. 选择 " **SENDGRID API 密钥应用设置**" 旁边的 "**新建**"。 输入**SendGridAPIKey**作为密钥，并将之前记下的 SendGrid API 密钥作为值。 然后选择“创建”。
 1. 选择 "**保存**" 以保存函数的 SendGrid 绑定。
 
 集成设置类似于以下屏幕截图：
@@ -244,20 +244,20 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 在 Azure 门户中，导航到流分析作业，在 "**作业拓扑**" 下，选择 "**输入**"，选择 " **+ 添加流输入**"，然后选择 "**事件中心**"。
 1. 使用下表中的信息，使用之前创建的事件中心配置输入，然后选择 "**保存**"：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 输入别名 | centraltelemetry |
-    | 订阅 | 订阅 |
+    | Subscription | 你的订阅 |
     | 事件中心命名空间 | 事件中心命名空间 |
     | 事件中心名称 | 使用现有- **centralexport** |
 
 1. 在 "**作业拓扑**" 下，选择 "**输出**"，选择 " **+ 添加**"，然后选择 " **Azure 函数**"。
 1. 使用下表中的信息来配置输出，然后选择 "**保存**"：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 输出别名 | emailnotification |
-    | 订阅 | 订阅 |
+    | Subscription | 你的订阅 |
     | 函数应用 | 函数应用 |
     | 函数  | HttpTrigger1 |
 
@@ -305,7 +305,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 选择“保存”。
 1. 若要启动流分析作业，请依次选择 "**概述**"、"**启动**"、"开始 **" 和 "** **启动**"：
 
-    ![流分析](media/howto-create-custom-rules/stream-analytics.png)
+    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
 
 ## <a name="configure-export-in-iot-central"></a>在 IoT Central 中配置导出
 
@@ -314,13 +314,13 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 导航到**数据导出**页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出，然后选择 "**保存**"：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | Enabled | 启用 |
+    | 已启用 | 开 |
     | 事件中心命名空间 | 事件中心命名空间名称 |
     | 事件中心 | centralexport |
-    | 度量 | 启用 |
+    | 度量 | 开 |
     | 设备 | 关闭 |
     | 设备模板 | 关闭 |
 

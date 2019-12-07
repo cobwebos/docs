@@ -1,5 +1,5 @@
 ---
-title: 用 Databricks Python 转换数据-Azure
+title: 用 Databricks Python 转换数据
 description: 了解如何通过运行 Databricks Python 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1acc484b8843fc1fe1acae5759a24f923396e003
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683933"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893937"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 
@@ -62,15 +62,15 @@ ms.locfileid: "73683933"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必选|
+|properties|描述|需要|
 |---|---|---|
 |name|管道中活动的名称。|是|
-|说明|描述活动用途的文本。|否|
+|description|描述活动用途的文本。|No|
 |type|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|是|
 |linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|是|
-|参数|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|否|
-|库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|否|
+|参数|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|No|
+|库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|No|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 

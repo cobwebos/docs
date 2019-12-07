@@ -1,7 +1,7 @@
 ---
 title: 有关视频索引器的常见问题解答 - Azure
 titleSuffix: Azure Media Services
-description: 获取有关视频索引器的常见问题的解答。
+description: 本文提供了有关 Azure 媒体服务视频索引器的常见问题的解答。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fc5457fd44bd27731cad6269ee95aed838a3d755
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838231"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892781"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -71,7 +71,7 @@ ms.locfileid: "73838231"
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以创建自定义工作流来自动化视频索引器的流程？
 
-是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/services/logic-apps/)可以找到有关适用于视频索引器的[逻辑应用](https://flow.microsoft.com/en-us/)和 [Flow](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) 连接器的更多详细信息。 
+是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)可以找到有关适用于视频索引器的[逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Flow](https://flow.microsoft.com/en-us/) 连接器的更多详细信息。 
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>视频索引器在哪些 Azure 区域是可用的？
 

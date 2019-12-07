@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555682"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893580"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报[已计划停用](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)。  
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报已[停](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)用，但对于尚不支持新警报的资源仍有限制。 
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
 
-## <a name="old-and-new-alerting-capabilities"></a>旧式和新式警报功能
+## <a name="old-and-new-alerting-capabilities"></a>新旧警报功能
 
 在过去的 Azure Monitor 中，Application Insights，Log Analytics 和服务运行状况都有单独的警报功能。 随着时间推移，Azure 改进并组合了用户界面和不同的警报方法。 整合仍在进行中。
 
@@ -54,7 +54,7 @@ ms.locfileid: "72555682"
 
 * **经典活动日志警报** - 当某个活动日志事件条目与筛选条件匹配时将触发的流式处理日志警报。 这些警报只有一个状态，即“已激活”。 警报引擎只是简单地将筛选条件应用于任何新事件。 它不会进行搜索来查找更早的条目。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，这些警报可发出通知。
 
-对于通过 Azure Monitor 提供的诊断日志数据，建议将数据路由到 Log Analytics（之前为 OMS）并使用 Log Analytics 查询警报。 Log Analytics 现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
+对于通过 Azure Monitor 提供的资源日志数据，请将数据路由到 Log Analytics 并使用日志查询警报。 Log Analytics 现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
 
 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 

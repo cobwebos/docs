@@ -3,12 +3,12 @@ title: 容器组的 YAML 引用
 description: 引用 Azure 容器实例支持的 YAML 文件以配置容器组
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533489"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896566"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML 引用： Azure 容器实例
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:
@@ -166,7 +166,7 @@ properties: # Properties of container group
 |  containers | 数组 | 是 | 容器组中的容器。 - [容器对象](#Container) |
 |  imageRegistryCredentials | 数组 | No | 从中创建容器组的图像注册表凭据。 - [ImageRegistryCredential 对象](#ImageRegistryCredential) |
 |  restartPolicy | 枚举 | No | 重启容器组中所有容器的策略。 - `Always` 始终重启-在失败时重新启动 `OnFailure`-`Never` 从不重新启动。 -Always、OnFailure、Never |
-|  地址 | 对象 | No | 容器组的 IP 地址类型。 - [IpAddress 对象](#IpAddress) |
+|  ipAddress | 对象 | No | 容器组的 IP 地址类型。 - [IpAddress 对象](#IpAddress) |
 |  osType | 枚举 | 是 | 容器组中的容器所需的操作系统类型。 -Windows 或 Linux |
 |  volumes | 数组 | No | 此容器组中的容器可以装载的卷的列表。 - [卷对象](#Volume) |
 |  诊断 | 对象 | No | 容器组的诊断信息。 - [ContainerGroupDiagnostics 对象](#ContainerGroupDiagnostics) |
@@ -203,7 +203,7 @@ properties: # Properties of container group
 |  ---- | ---- | ---- | ---- |
 |  ports | 数组 | 是 | 容器组中公开的端口列表。 - [端口对象](#Port) |
 |  type | 枚举 | 是 | 指定是否向公共 internet 或专用 VNET 公开 IP。 -Public 或 Private |
-|  lip | 字符串 | No | 公开给公共 internet 的 IP。 |
+|  ip | 字符串 | No | 公开给公共 internet 的 IP。 |
 |  dnsNameLabel | 字符串 | No | IP 的 Dns 名称标签。 |
 
 

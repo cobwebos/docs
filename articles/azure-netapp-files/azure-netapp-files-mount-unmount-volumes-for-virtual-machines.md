@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 84496fbc8a415171172d0a138f647ecb0310b6c7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173581"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894090"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -41,6 +41,12 @@ ms.locfileid: "74173581"
     * `$ANFIP` 是在 "卷属性" 边栏选项卡中找到的 Azure NetApp 文件卷的 IP 地址。
     * `$FILEPATH` 是 Azure NetApp 文件卷的导出路径。
     * `$MOUNTPOINT` 是在 Linux 主机上创建的用于装载 NFS 导出的目录。
+
+4. 如果要使用 NFS 将卷装载到 Windows，请执行以下操作：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 首先将卷装载到 Unix 或 Linux VM。  
+    b. 对卷运行 `chmod 777` 或 `chmod 775` 命令。  
+    c. 通过 Windows 上的 NFS 客户端装载卷。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,22 +1,21 @@
 ---
-title: Azure 数据工厂中映射数据流功能的表达式函数
+title: 映射数据流中的表达式函数
 description: 了解用于映射数据流的表达式函数。
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f384c440dab06660c95f635dde02ced5b3e54d94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596970"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896309"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式 
-
-
 
 ## <a name="expression-functions"></a>表达式函数
 
@@ -122,7 +121,7 @@ ___
 ___
 ### <code>byName</code>
 <code><b>byName(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-在流中按名称选择列值。 可以将可选流名称作为第二个参数传递。 如果有多个匹配项，则返回第一个匹配项。 如果没有匹配项，则返回 NULL 值。 返回的值必须是由一个类型转换函数（TO_DATE，TO_STRING ...）转换的类型。 设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换
+在流中按名称选择列值。 可以将可选流名称作为第二个参数传递。 如果有多个匹配项，则返回第一个匹配项。 如果没有匹配项，则返回 NULL 值。 返回的值必须是由某种类型转换函数（TO_DATE、TO_STRING ...）转换的类型。 设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换
 
 * ``toString(byName('parent'))``
 
@@ -986,7 +985,7 @@ ___
 ___
 ### <code>not</code>
 <code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
-逻辑求反运算符
+逻辑非运算符
 
 * ``not(true) -> false``
 
@@ -1143,7 +1142,7 @@ ___
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-在给定可选比例和可选舍入模式的情况下舍入数值。 如果省略小数位数，则默认为0。  如果省略模式，则默认为 ROUND_HALF_UP （5）。 用于舍入的值包括 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8-ROUND_UNNECESSARY
+在给定可选比例和可选舍入模式的情况下舍入数值。 如果省略小数位数，则默认为0。  如果省略模式，则默认为 ROUND_HALF_UP （5）。 舍入的值包括 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR ROUND_HALF_UP ROUND_HALF_DOWN ROUND_HALF_EVEN ROUND_UNNECESSARY
 
 * ``round(100.123) -> 100.0``
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275739"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900410"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户设置的状态
 
@@ -40,7 +40,7 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 
 设置周期完成后，"**统计信息截止日期**" 部分显示已设置为 "日期" 的用户和组的累计数量，以及最后一个周期的完成日期和持续时间。 **活动 ID**唯一标识最新的设置周期。 **作业 ID**是预配作业的唯一标识符，特定于租户中的应用。
 
-可以在 Azure 门户的**Azure Active Directory &gt; 企业应用 &gt; \[** \] 的 "预配" 选项卡中查看设置进度。&gt;
+可以在 Azure 门户的**Azure Active Directory &gt; 企业应用 &gt; \[** \] 的 "预配" 选项卡中查看设置进度。
 
 ![设置页进度栏](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -101,6 +101,8 @@ Azure AD 预配服务对源系统和目标系统运行初始设置周期，后�
 - 目标系统实现的请求速率限制。 某些目标系统实现请求速率限制和限制，这可能会影响大型同步操作期间的性能。 在这些情况下，太快地接收太多请求的应用可能会拖慢其响应速率或关闭连接。 为提高性能，连接器需要进行调整，以不高于应用可以应对的处理速率的速率来向应用发送请求。 Microsoft 构建的预配连接器进行此调整。 
 
 - 已分配的组的数量和大小。 同步已分配的组比同步用户花费的时间要长。 已分配的组的数量和大小都会影响性能。 如果应用程序[为组对象同步启用了映射](customize-application-attributes.md#editing-group-attribute-mappings)，则除了用户之外，还会同步组名称和成员身份等组属性。 这些额外的同步比仅同步用户对象需要花费更长的时间。
+
+- 如果性能成为问题，并且你正在尝试预配租户中的大部分用户和组，请使用范围筛选器。 使用范围筛选器，可优化预配服务通过筛选用户（基于特定属性值）从 Azure AD 提取的数据。 有关范围筛选器的详细信息，请参阅[使用范围筛选器进行基于属性的应用程序预配](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure Active Directory 自动化 SaaS 应用程序用户预配和取消预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

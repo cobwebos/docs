@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 10/19/2019
-ms.openlocfilehash: a068ea3f51e4faa6497c7b1a93192a924753c7c9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/27/2019
+ms.openlocfilehash: 9be8fbad8811d758f9ac4205c0d1e60e0d82e07f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895093"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895491"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
 
@@ -67,10 +67,10 @@ RuuviTag 通过 BLE （蓝牙低能耗）进行通信，并要求网关设备与
 创建模拟 RuuviTag：
 
 1. 选择**RuuviTag 的设备 >** 。
-1. 选择 " **+ 新建**"。
+1. 选择“+ 新建”。
 1. 指定唯一的**设备 ID**和友好**设备名称**。  
 1. 启用**模拟**设置。
-1. 选择“创建”。  
+1. 选择**创建**。  
 
 ## <a name="next-steps"></a>后续步骤
 

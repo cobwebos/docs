@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple 是一种生存期产品，Azure 文件同步是迁移到的解决方案。 了解迁移概念并了解自定义迁移帮助 AzureFiles@microsoft.com。
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666658"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895081"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>StorSimple 到 Azure 文件同步的迁移
 
@@ -26,7 +26,7 @@ StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务
 需要注意的是，需要从 StorSimple 迁移到 Azure 文件同步的客户无需自行进行迁移。
 
 > [!IMPORTANT]
-> Microsoft 致力于帮助客户完成其迁移。 用于自定义迁移计划的电子邮件 AzureFiles@microsoft.com，以及迁移过程中的帮助。
+> Microsoft 致力于帮助客户完成其迁移。 电子邮件 AzureFiles@microsoft .com 用于自定义的迁移计划，并在迁移过程中提供帮助。
 
 ## <a name="migration-approach"></a>迁移方法
 迁移到 Azure 文件同步将以对本地和有限停机时间的最小影响来开始云端。
@@ -35,7 +35,7 @@ StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务
 与 AzureFiles@microsoft.com 联系，我们将帮助你组织适当数量的 loaner 设备。
 
 ### <a name="general-approach"></a>常规方法
-![替代](media/storage-sync-files-storsimple-migration/storsimple-docs-overview-concept.png "通过临时虚拟设备和 Windows Server 向新的本地 Windows Server 替换本地 StorSimple 设备，阐释云端迁移")
+![Alt](media/storage-sync-files-storsimple-migration/storsimple-docs-overview-concept.png "通过临时虚拟设备和 Windows Server 向新的本地 Windows Server 替换本地 StorSimple 设备，阐释云端迁移")
 
 1. 获取本地 StorSimple 设备的卷克隆，并将其装载到临时 StorSimple 虚拟设备。
 2. 通过 iSCSI 将虚拟设备连接到临时 Azure VM。
@@ -61,13 +61,13 @@ StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务
 下图中描述了您所遗留的内容。 标准 Azure 文件同步部署通过 Azure 文件同步，为多个 Azure 文件共享和 Windows Server 连接到它们。请记住，单台服务器可以同时将不同的本地文件夹连接到不同的文件共享。
 此外，一个 Azure 文件共享可以同步到多个不同的服务器，在这种情况下，你需要在分支机构中缓存数据。 还要检查是否可以优化云分层策略，以更有效地利用本地存储空间。
 
-![替代](media/storage-sync-files-storsimple-migration/storsimple-docs-goal.PNG "显示迁移完成后的目标的插图。它描述了将多个文件共享同步到本地 Windows Server，以及访问云中或 Windows Server 上的文件的用户和应用程序。")
+![Alt](media/storage-sync-files-storsimple-migration/storsimple-docs-goal.PNG "显示迁移完成后的目标的插图。它描述了将多个文件共享同步到本地 Windows Server，以及访问云中或 Windows Server 上的文件的用户和应用程序。")
 
 ## <a name="next-steps"></a>后续步骤
 熟悉 Azure 文件和 Azure 文件同步。务必了解成功迁移的 Azure 文件同步术语和部署模式。 本概述文章中的每个步骤都提供了更多详细信息。 在规划和执行迁移过程中，请务必联系 Microsoft 获取自定义帮助。
 
 > [!IMPORTANT]
-> Microsoft 致力于帮助客户完成其迁移。 用于自定义迁移计划的电子邮件 AzureFiles@microsoft.com，以及迁移过程中的帮助。
+> Microsoft 致力于帮助客户完成其迁移。 电子邮件 AzureFiles@microsoft .com 用于自定义的迁移计划，并在迁移过程中提供帮助。
 
 ## <a name="additional-resources"></a>其他资源
 如果你不熟悉 Azure 文件同步，作为目标服务，Azure 文件同步会提供两个基本文档。

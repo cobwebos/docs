@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: kumud
-ms.openlocfilehash: beb2655b0796adbe289b0af104dead2d15e584db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1c27af30f97ea967d170b2cccaefb2e95f8fedaf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900744"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>从 Azure VM 取消关联公共 IP 地址 
 
@@ -51,7 +51,7 @@ ms.locfileid: "74852154"
     --name ipconfigmyVM \
     --resource-group myResourceGroup \
     --nic-name myVMVMNic \
-    --remove PublicIpAdress
+    --remove PublicIpAddress
    ```
 
    如果你不知道连接到 VM 的网络接口的名称，请使用[az VM nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list)命令查看它们。 例如，以下命令将列出连接到名为*myResourceGroup*的资源组中名为*myVM*的 VM 的网络接口的名称：
@@ -68,11 +68,18 @@ ms.locfileid: "74852154"
 
      在上面的示例中， *myVMVMNic*是网络接口的名称。
 
-   - 如果不知道网络接口的 IP 配置的名称，请使用[az network nic IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list)命令来检索它们。 例如，以下命令将列出名为*myResourceGroup*的资源组中名为*myVMVMNic*的网络接口的 IP 配置的名称：
+   - 如果不知道网络接口的 IP 配置的名称，请使用[az network nic IP-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list)命令来检索它们。 例如，以下命令将列出名为*myResourceGroup*的资源组中名为*myVMVMNic*的网络接口的公共 IP 配置的名称：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
+
+   - 如果不知道网络接口的公共 IP 配置的名称，请使用[az network nic IP-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show)命令检索它们。 例如，以下命令将列出名为*myResourceGroup*的资源组中名为*myVMVMNic*的网络接口的公共 IP 配置的名称：
+
+     ```azurecli-interactive
+     az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id
+     ```
+
 
 ## <a name="powershell"></a>PowerShell
 
@@ -106,13 +113,13 @@ ms.locfileid: "74852154"
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
-     $nic.IPConfigurations
+     $nic.IPConfigurations.id
      ```
 
      输出包含一个或多个与下面的示例类似的行。 在示例输出中， *ipconfigmyVM*是 IP 配置的名称。
   
      ```
-     Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
+     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"
      ```
 
 ## <a name="next-steps"></a>后续步骤

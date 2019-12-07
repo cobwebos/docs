@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815290"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896432"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>使用语音服务创建自定义关键字
 
@@ -50,17 +50,29 @@ ms.locfileid: "74815290"
 
 1. 转到[Speech Studio](https://aka.ms/sdsdk-speechportal)并**登录**，如果还没有语音订阅，请选择 "[**创建订阅**](https://go.microsoft.com/fwlink/?linkid=2086754)"。
 
-1. 在 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页上，键入所选关键字，并单击 "**添加关键字**"。 我们有一些[指导原则](#choose-an-effective-keyword)来帮助选择有效的关键字。 目前仅支持 en-us 语言。
+1. 在 "[自定义关键字](https://aka.ms/sdsdk-wakewordportal)" 页上，创建一个**新项目**。 
 
-    ![输入关键字](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. 输入**名称**和可选**描述**，并选择语言。 每种语言都需要一个项目，并且支持目前仅限于 en-us 语言。
 
-1. 门户现在将为关键字创建候选发音。 通过单击 "播放" 按钮来倾听每个候选项，并删除任何不正确的发音旁边的检查。 仅选中好发音后，选择 "**提交**" 以开始生成关键字。 如果要更改关键字，请先通过单击显示在该行右侧的 "删除" 按钮删除现有的关键字，然后将鼠标悬停在该行的右侧。
+    ![描述关键字项目](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![查看关键字](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. 从列表中选择你的项目。 
 
-1. 生成模型最多可能需要一分钟时间。 系统将提示您下载该文件。
+    ![选择关键字项目](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![下载关键字](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. 若要启动新的关键字模型，请单击 "**训练模型**"。
+
+1. 为关键字模型输入**名称**和可选**说明**，并键入所选**关键字**，并单击 "**下一步**"。 我们有一些[指导原则](#choose-an-effective-keyword)来帮助选择有效的关键字。
+
+    ![输入关键字](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. 门户现在将为关键字创建候选发音。 通过单击 "播放" 按钮来倾听每个候选项，并删除任何不正确的发音旁边的检查。 仅选中好发音后，单击 "**训练**" 开始生成关键字。 
+
+    ![查看关键字](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. 生成模型最多可能需要10分钟时间。 模型完成后，关键字列表将从**处理**更改为**成功**。 然后，你可以下载该文件。
+
+    ![查看关键字](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. 将 .zip 文件保存到计算机。 需要此文件将自定义关键字部署到设备。
 

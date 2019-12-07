@@ -1,20 +1,21 @@
 ---
-title: 使用 PowerShell （预览版）为容器或 blob 创建用户委托 SAS-Azure 存储
-description: 了解如何使用 PowerShell 在 Azure 存储中使用 Azure Active Directory 凭据创建共享访问签名（SAS）。
+title: 使用 PowerShell 为容器或 blob 创建用户委托 SAS
+titleSuffix: Azure Storage
+description: 了解如何使用 PowerShell 创建具有 Azure Active Directory 凭据的用户委托 SAS （预览版）。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673341"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892509"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>使用 PowerShell （预览版）为容器或 blob 创建用户委托 SAS
 

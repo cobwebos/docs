@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bd3e33fde3f4249064bfbe1973ee95f680630673
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851156"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899804"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点将专用连接到存储帐户
 Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。
@@ -132,7 +132,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     | 子网 | 选择“mySubnet”。 ** |
     | **专用 DNS 集成**|  |
     | 与专用 DNS 区域集成  | 保留默认值 **"是"** 。 |
-    | 专用 DNS 区域  | 保留默认值 * * （New） privatelink.blob.core.windows.net * *。 |
+    | 专用 DNS 区域  | 保留默认值 " **privatelink.blob.core.windows.net**"。 |
     |||
 7. 选择“确定”。 
 8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
@@ -151,7 +151,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 1. 选择“下载 RDP 文件”。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机。
 
-1. 打开下载的 .rdp* 文件。
+1. 打开*下载的 .rdp*文件。
 
     1. 出现提示时，选择“连接”。
 

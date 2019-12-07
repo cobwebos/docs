@@ -1,20 +1,21 @@
 ---
-title: 使用 Azure CLI （预览版）为容器或 blob 创建用户委托 SAS-Azure 存储
-description: 了解如何使用 Azure CLI 在 Azure 存储中使用 Azure Active Directory 凭据创建用户委托 SAS。
+title: 使用 Azure CLI 为容器或 blob 创建用户委托 SAS
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure CLI 创建具有 Azure Active Directory 凭据的用户委托 SAS （预览版）。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 077fe69d80ec433d8e37f18e04120102fc8ca390
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 85f49799472c92770cc8a503a5a1be0b496387f7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673322"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892543"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>使用 Azure CLI （预览版）为容器或 blob 创建用户委托 SAS
 

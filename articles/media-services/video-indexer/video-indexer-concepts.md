@@ -1,7 +1,7 @@
 ---
 title: 视频索引器概念
 titleSuffix: Azure Media Services
-description: 本主题介绍视频索引器服务的一些概念。
+description: 本文介绍 Azure 媒体服务视频索引器服务的一些概念。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839579"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900680"
 ---
 # <a name="video-indexer-concepts"></a>视频索引器概念
  

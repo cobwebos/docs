@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811146"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901244"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模性能疑难解答诊断
 
@@ -30,7 +30,7 @@ ms.locfileid: "73811146"
 
 以下等待类型（在[sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)中）描述了在主要计算副本上可限制日志速率的原因：
 
-|Wait 类型    |说明                         |
+|等待类型    |描述                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | 由于页面服务器上延迟的日志消耗导致超大规模数据库主计算节点日志生成速率被阻止时发生。         |
 |RBIO_RG_DESTAGE        | 当超大规模数据库计算节点日志生成速率由于长期日志存储延迟的日志消耗而受到限制时发生。         |
@@ -44,13 +44,14 @@ ms.locfileid: "73811146"
  
 在计算副本上发出读取时，如果数据不存在于缓冲池或本地 RBPEX 缓存中，则会发出 getPage （pageId，LSN）函数调用，并从相应的页面服务器获取页面。 页面服务器上的读取是远程读取，因此比从本地 RBPEX 读取更慢。 排查与 IO 相关的性能问题时，我们需要能够通过相对较慢的远程页面服务器读取来了解已完成的 Io 数。
 
-多个 Dmv 和扩展事件都有列和字段，它们指定了可以与总读取数进行比较的页服务器远程读取数。 
+多个 Dmv 和扩展事件都有列和字段，它们指定了可以与总读取数进行比较的页服务器远程读取数。 查询存储还捕获远程读取作为查询运行时统计信息的一部分。
 
-- 用于报表页服务器读取的列可用于执行 Dmv，如：
+- 用于报表页服务器读取的列在执行 Dmv 和目录视图中可用，例如：
     - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-    - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - 页面服务器读取操作将添加到以下扩展事件中：
     - sql_statement_completed
     - sp_statement_completed

@@ -1,7 +1,7 @@
 ---
 title: 管理视频索引器帐户
 titleSuffix: Azure Media Services
-description: 本文介绍如何管理已连接到 Azure 的视频索引器帐户。
+description: 本文演示如何管理连接到 Azure 的视频索引器帐户。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838975"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892764"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理已连接到 Azure 的视频索引器帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "73838975"
 > [!NOTE]
 > 只有视频索引器帐户所有者才能执行本主题中所述的帐户配置调整。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 根据[连接到 Azure](connect-to-azure.md) 中所述，将自己的视频索引器帐户连接到 Azure。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "73838975"
 
 * 事件网格
 
-    必须使用 Azure 门户注册事件网格资源提供程序。 在 [Azure 门户](https://portal.azure.com/)中，转到“订阅”>“[订阅]”>“ResourceProviders” **“Microsoft.EventGrid”。**  >  如果该提供程序不是处于“已注册”状态，请单击“注册”。 注册需要花费几分钟时间。 
+    必须使用 Azure 门户注册事件网格资源提供程序。 在 [Azure 门户](https://portal.azure.com/)中，转到“订阅”>“[订阅]”>“ResourceProviders” > “Microsoft.EventGrid”。 如果该提供程序不是处于“已注册”状态，请单击“注册”。 注册需要花费几分钟时间。 
 
 * 流式处理终结点
 

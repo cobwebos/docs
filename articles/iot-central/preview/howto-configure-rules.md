@@ -3,23 +3,23 @@ title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本操作指南文章介绍了如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: vavilla
 ms.author: vavilla
-ms.date: 11/11/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76a9d8302d53d50bc3c1e306e31fbb26ed230436
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484907"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895745"
 ---
 # <a name="configure-rules-preview-features"></a>配置规则（预览功能）
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-本文适用于操作员、构建者和管理员。
+*本文适用于操作员、构建者和管理员。*
 
 IoT Central 中的规则充当可自定义的响应工具，该工具会在来自连接设备的主动监视事件上触发。 以下部分介绍如何计算规则。
 
@@ -41,7 +41,7 @@ IoT Central 中的规则充当可自定义的响应工具，该工具会在来�
 
 规则将聚合时间窗口评估为翻转 windows。 在下面的屏幕截图中，时间窗口为5分钟。 每隔五分钟，规则将在过去五分钟的数据上计算。 数据只在其对应的窗口中计算一次。
 
-![翻转 Windows](media/howto-configure-rules/tumbling-window.png)
+![翻转窗口](media/howto-configure-rules/tumbling-window.png)
 
 ## <a name="use-rules-with-iot-edge-modules"></a>将规则用于 IoT Edge 模块
 

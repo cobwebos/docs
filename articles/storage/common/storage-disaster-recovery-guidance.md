@@ -1,22 +1,23 @@
 ---
-title: 灾难恢复和存储帐户故障转移（预览版）- Azure 存储
+title: 灾难恢复和存储帐户故障转移（预览版）
+titleSuffix: Azure Storage
 description: Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过帐户故障转移，可以在主终结点不可用时为存储帐户启动故障转移过程。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775922"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895354"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure 存储中的灾难恢复和存储帐户故障转移（预览版）
+# <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）
 
 Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果应用程序需要复原能力，Microsoft 建议使用异地冗余存储，这样就可以将数据复制到另一个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。 
 

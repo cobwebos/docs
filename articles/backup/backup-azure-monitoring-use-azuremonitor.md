@@ -4,12 +4,12 @@ description: 监视 Azure 备份工作负荷，并使用 Azure Monitor 创建自
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554878"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894056"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -51,7 +51,8 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>使用 Log Analytics 查看 Azure 备份数据
 
-部署模板后，Azure 备份中用于监视和报告的解决方案将显示在工作区摘要区域中。 若要访问摘要，请遵循以下路径之一：
+> [!IMPORTANT]
+> LA 报表模板目前支持 AzureDiagnostics 模式下的旧事件 AzureBackupReport 中的数据。 若要使用此模板，你将需要[在 Azure 诊断模式下配置保管库诊断设置](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)。 
 
 - **Azure Monitor**：在 "**见解**" 部分中，选择 "**更多**"，然后选择相关工作区。
 - **Log Analytics 工作区**：选择相关工作区，然后在 "**常规**" 下选择 "**工作区摘要**"。
@@ -213,7 +214,7 @@ Azure 资源管理器资源，如恢复服务保管库，记录有关计划操�
 
 可以在 Azure Monitor 中查看从活动日志和 Log Analytics 工作区创建的所有警报。 只需打开左侧的 "**警报**" 窗格。
 
-尽管可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics 而不是活动日志进行大规模监视。 原因如下：
+尽管可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics 而不是活动日志进行大规模监视。 原因是：
 
 - **有限方案**：通过活动日志的通知仅适用于 Azure VM 备份。 必须为每个恢复服务保管库设置通知。
 - **定义大小**：计划的备份活动不适用于活动日志的最新定义。 相反，它会与[资源日志](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)对齐。 当流过活动日志通道的数据发生变化时，此对齐方式会导致意外的影响。

@@ -1,6 +1,6 @@
 ---
-title: 媒体服务发行说明 | Microsoft Docs
-description: 媒体服务发行说明
+title: Azure 媒体服务发行说明 |Microsoft Docs
+description: 本文讨论 Microsoft Azure 媒体服务 v2 发行说明。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7c6cac925ad53e08ecc10c828765153c905f1c1d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f798a1eff8d9c90a58856a12b84061ece7e3720d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423886"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885665"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "74423886"
 ## <a name="a-idissuesknown-issues"></a><a id="issues"/>已知问题
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | 说明 |
+| 问题 | 描述 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
@@ -41,7 +41,7 @@ ms.locfileid: "74423886"
 | 查询实体时，一次返回的实体数限制为 1,000 个，因为公共 REST 第 2 版将查询结果数限制为 1,000 个。 |使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 Skip 和 Take (.NET)/ top (REST)。 |
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
-|尝试获取资产或帐户级别筛选器时，REST API 会以一条错误消息做出响应，指出“此版本的 REST API 无法访问筛选器”。|该筛选器是使用比尝试获取该筛选器所使用的 API 版本更高的 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两个 API 版本。|
+|尝试获取资产或帐户级别筛选器时，REST API 会出现一条错误消息，指出 "此版本的 REST Api 无法访问筛选器"。|此筛选器是使用比用于尝试获取筛选器的新 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两种 API 版本。|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
@@ -60,15 +60,15 @@ ms.locfileid: "74423886"
 
 我们宣布不推荐在2020年3月31日停用的*Windows Azure 媒体编码器*（WAME）和*Azure 媒体编码器*（AME）媒体处理器。
 
-有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334)并[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-Azure 媒体服务的 Media Hyperlapse 预览功能已弃用。
+Azure 媒体服务的媒体 Hyperlapse 预览功能已弃用。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-Azure 媒体服务的 Media Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+Azure 媒体服务的媒体 Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -203,7 +203,7 @@ Azure 媒体编修器正式推出 - 此媒体处理器将会通过模糊化所�
 
  将在 Media Encoder Standard 发布后大约 12 个月内开始弃用媒体编码器。
 
-### <a name="azure-sdk-for-php"></a>内置 Web 服务器
+### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 包，其中包含媒体服务的更新与新功能。 具体而言，适用于 PHP 的媒体服务 SDK 现支持最新[内容保护](media-services-content-protection-overview.md)功能。 使用 AES 和 DRM（PlayReady 和 Widevine）对这些功能进行动态加密（可以使用也可不使用标记限制）。 还支持缩放[编码单位](media-services-dotnet-encoding-units.md)。
 
 有关详细信息，请参阅：
@@ -233,7 +233,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)。
   
 可以通过[媒体服务 .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/)（从版本 3.5.1 开始）或 REST API 来配置 AssetDeliveryConfiguration 以使用 Widevine。 
-* 媒体服务增加了对 Apple ProRes 视频的支持。 现在可以上传使用 Apple ProRes 或其他编解码器的 QuickTime 源视频文件。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)。
+* 媒体服务增加了对 Apple ProRes 视频的支持。 你现在可以上传使用 Apple ProRes 或其他编解码器的 QuickTime 源视频文件。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)。
 * 现可使用 Media Encoder Standard 来执行子剪辑和实时存档提取操作。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)。
 * 在筛选方面做了以下更新： 
   

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00a99a31a4543ef45c90a86820e627134d8963
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043378"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888693"
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>处理 Azure 托管应用程序的托管资源组中的资源
 
 本文介绍如何更新已部署为托管应用程序的一部分的资源。 托管应用程序的发布者有权访问托管资源组中的资源。 若要更新这些资源，需要找到与托管应用程序关联的托管资源组，并访问该资源组中的资源。
 
-本文假设已部署[包含 Azure 管理服务的托管 Web 应用程序 (IaaS)](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) 示例项目中的托管应用程序。 该托管应用程序包含一个 **Standard_D1_v2** 虚拟机。 如果尚未部署该托管应用程序，仍可以使用本文来熟悉更新托管资源组的步骤。
+本文假设已部署[包含 Azure 管理服务的托管 Web 应用程序 (IaaS)](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app) 示例项目中的托管应用程序。 该托管应用程序包含一个 **Standard_D1_v2** 虚拟机。 如果尚未部署该托管应用程序，仍可以使用本文来熟悉更新托管资源组的步骤。
 
 下图显示了已部署的托管应用程序。
 

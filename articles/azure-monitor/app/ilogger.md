@@ -4,29 +4,30 @@ description: 将 Azure 应用程序 Insights ILogger 提供程序与 ASP.NET Cor
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0e93e2a98d96ca7f436f20e579ab625341024686
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c561ecf8e47a6792626353fef65ce94f1fd0330a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819476"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893325"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core ILogger 日志
 
 ASP.NET Core 支持使用各种内置和第三方日志记录提供程序的日志记录 API。 日志记录是通过在*ILogger*实例上调用**日志（）** 或其变体来完成的。 本文演示如何使用*ApplicationInsightsLoggerProvider*来捕获控制台和 ASP.NET Core 应用程序中的 ILogger 日志。 本文还介绍了 ApplicationInsightsLoggerProvider 如何与其他 Application Insights 遥测数据集成。
 有关详细信息，请参阅[登录 ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
 
-## <a name="aspnet-core-applications"></a>ASP.NET Core 应用程序
+## <a name="aspnet-core-applications"></a>ASP.NET Core应用程序
 
-默认情况下，ApplicationInsightsLoggerProvider 在[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.7.0-beta3 （及更高版本）中通过任一标准方法启用常规 Application Insights 监视时启用：
-- 通过对 IWebHostBuilder 调用 **.useapplicationinsights**扩展方法 
+默认情况下，ApplicationInsightsLoggerProvider 在[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1 （及更高版本）中通过以下任一标准方法启用常规 Application Insights 监视：
+
+- 通过对 IWebHostBuilder 调用 **.useapplicationinsights**扩展方法
 - 通过对 IServiceCollection 调用**AddApplicationInsightsTelemetry**扩展方法
 
-ILogger 记录 ApplicationInsightsLoggerProvider 捕获的配置与所收集的任何其他遥测的配置相同。 它们具有相同的一组 TelemetryInitializers 和 TelemetryProcessors，使用同一 TelemetryChannel，并与其他遥测的方式关联和采样。 如果使用 2.7.0-beta3 或更高版本，则无需执行任何操作即可捕获 ILogger 日志。
+ILogger 记录 ApplicationInsightsLoggerProvider 捕获的配置与所收集的任何其他遥测的配置相同。 它们具有相同的一组 TelemetryInitializers 和 TelemetryProcessors，使用同一 TelemetryChannel，并与其他遥测的方式关联和采样。 如果使用版本2.7.1 或更高版本，则不需要执行任何操作来捕获 ILogger 日志。
 
 默认情况下，仅将*警告*或更高版本的 ILogger 日志（来自所有类别）发送到 Application Insights。 但是，您可以[应用筛选器来修改此行为](#control-logging-level)。 从**Program.cs**或**Startup.cs**捕获 ILogger 日志需要执行其他步骤。 （请参阅[在 ASP.NET Core 应用程序中捕获 Startup.cs 和 Program.cs 中的 ILogger 日志](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)。）
 
@@ -109,7 +110,7 @@ public class ValuesController : ControllerBase
 > [!NOTE]
 > 在 ASP.NET Core 3.0 及更高版本中，将无法在 Startup.cs 和 Program.cs 中注入 `ILogger`。 有关详细信息，请参阅 https://github.com/aspnet/Announcements/issues/353 。
 
-新的 ApplicationInsightsLoggerProvider 可以在应用程序启动管道的早期捕获日志。 尽管 ApplicationInsightsLoggerProvider 自动在 Application Insights 中启用（从版本 2.7.0-beta3 开始），但它在管道中的后面没有设置检测密钥。 因此，只会捕获**控制器**其他类中的日志。 若要捕获每个以**Program.cs**和**Startup.cs**本身开头的日志，必须显式启用 ApplicationInsightsLoggerProvider 的检测密钥。 此外，当你从**Program.cs**或**Startup.cs**本身记录时， *TelemetryConfiguration*未完全设置。 因此，这些日志将具有使用 InMemoryChannel 的最小配置，不使用采样，并且没有标准遥测初始值设定项或处理器。
+新的 ApplicationInsightsLoggerProvider 可以在应用程序启动管道的早期捕获日志。 尽管 ApplicationInsightsLoggerProvider 会自动在 Application Insights 中启用（从版本2.7.1 开始），但它不会将检测密钥设置到后面的管道中。 因此，只会捕获**控制器**其他类中的日志。 若要捕获每个以**Program.cs**和**Startup.cs**本身开头的日志，必须显式启用 ApplicationInsightsLoggerProvider 的检测密钥。 此外，当你从**Program.cs**或**Startup.cs**本身记录时， *TelemetryConfiguration*未完全设置。 因此，这些日志将具有使用 InMemoryChannel 的最小配置，不使用采样，并且没有标准遥测初始值设定项或处理器。
 
 下面的示例演示了**Program.cs**和**Startup.cs**的这一功能。
 
@@ -203,7 +204,7 @@ public class Startup
 
 ## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>从旧的 ApplicationInsightsLoggerProvider 迁移
 
-2\.7.0-beta2 之前的 Applicationinsights.config SDK 版本支持现已过时的日志记录提供程序。 此提供程序通过 ILoggerFactory 的**AddApplicationInsights （）** 扩展方法启用。 建议迁移到新提供程序，这涉及两个步骤：
+2\.7.1 之前的 Applicationinsights.config SDK 版本支持现在已过时的日志记录提供程序。 此提供程序通过 ILoggerFactory 的**AddApplicationInsights （）** 扩展方法启用。 建议迁移到新提供程序，这涉及两个步骤：
 
 1. 从 ILoggerFactory **（）** 方法中删除*AddApplicationInsights （）* 调用，以避免双重日志记录。
 2. 重新应用代码中的任何筛选规则，因为新提供程序不会遵守这些规则。 *ILoggerFactory. AddApplicationInsights （）* 的重载采用最少的 LogLevel 或 filter 函数。 对于新的提供程序，筛选是日志记录框架自身的一部分。 Application Insights 提供程序不会执行此操作。 因此，应删除通过*ILoggerFactory （）* 重载提供的所有筛选器。 并且应按照[控件日志记录级别](#control-logging-level)说明提供筛选规则。 如果使用*appsettings*筛选日志记录，它将继续使用新的提供程序，因为这两种方法都使用相同的提供程序别名*applicationinsights.config*。
@@ -221,8 +222,7 @@ public class Startup
 ## <a name="console-application"></a>控制台应用程序
 
 > [!NOTE]
-> 有一个名为 Applicationinsights.config 的新 beta Application Insights SDK [WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ，可用于为任何控制台应用程序启用 Application Insights （ILogger 和其他 Application Insights 遥测）。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。
-释放此新包的稳定版本后，将弃用下面的示例。
+> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights （ILogger 和其他 Application Insights 遥测）。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。
 
 下面的代码演示一个示例控制台应用程序，该应用程序配置为将 ILogger 跟踪发送到 Application Insights。
 
@@ -366,11 +366,11 @@ ASP.NET Core *ILogger*具有用于应用[日志筛选](https://docs.microsoft.co
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>ApplicationInsightsLoggerProvider 的旧版本和新版本有哪些？
 
-[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)包含内置 ApplicationInsightsLoggerProvider （applicationinsights.config），该内置通过 ApplicationInsightsLoggerProvider 启用了这一功能。扩展方法。 此提供程序被标记为 "已过时，版本 2.7.0-beta2"。 在下一次主版本更改时将完全删除它。 [Applicationinsights.config. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)包本身未过时。 需要启用对请求、依赖项等的监视。
+[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)包括了内置 ApplicationInsightsLoggerProvider （applicationinsights.config），该内置通过**ApplicationInsightsLoggerProvider**扩展方法启用了该功能。 此提供程序被标记为已过时，版本2.7.1。 在下一次主版本更改时将完全删除它。 [Applicationinsights.config. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)包本身未过时。 需要启用对请求、依赖项等的监视。
 
-建议的替代项为新的独立包[applicationinsights.config](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights)，其中包含改进的 ApplicationInsightsLoggerProvider （Applicationinsights.config. ApplicationInsightsLoggerProvider）和 ILoggerBuilder 上的扩展方法，用于启用该功能。
+建议的替代项为新的独立包[applicationinsights.config](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights)，其中包含改进的 ApplicationInsightsLoggerProvider （applicationinsights.config ApplicationInsightsLoggerProvider）和 ILoggerBuilder 上用于启用该功能的扩展方法。
 
-[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.7.0-beta3 依赖于新包，并自动启用 ILogger 捕获。
+[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1 会依赖于新包，并自动启用 ILogger 捕获。
 
 ### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>为什么某些 ILogger 日志在 Application Insights 中显示了两次？
 
@@ -396,7 +396,7 @@ ASP.NET Core *ILogger*具有用于应用[日志筛选](https://docs.microsoft.co
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-270-beta3-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新到[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.7.0-beta3，并自动捕获来自 ILogger 的日志。 如何实现完全关闭此功能？
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新到[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，并自动捕获来自 ILogger 的日志。 如何实现完全关闭此功能？
 
 请参阅[控件日志记录级别](../../azure-monitor/app/ilogger.md#control-logging-level)部分，了解如何筛选日志。 若要关闭 ApplicationInsightsLoggerProvider，请使用 `LogLevel.None`：
 
@@ -454,7 +454,7 @@ ApplicationInsightsLoggerProvider 捕获 ILogger 日志并从中创建 TraceTele
 
 ### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>我未安装 SDK，并使用 Azure Web 应用扩展为 ASP.NET Core 应用程序启用 Application Insights。 如何实现使用新的提供程序吗？ 
 
-Azure Web Apps 中的 Application Insights 扩展使用旧的提供程序。 可以在应用程序的*appsettings*文件中修改筛选规则。 若要利用新的提供程序，请通过对 SDK 进行 NuGet 依赖关系来使用生成时检测。 当扩展切换为使用新的提供程序时，将更新本文。
+Azure Web Apps 中的 Application Insights 扩展使用新的提供程序。 可以在应用程序的*appsettings*文件中修改筛选规则。
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>我使用的是独立包 Applicationinsights.config，并通过调用生成器启用 Application Insights 提供程序 **。AddApplicationInsights （"ikey"）** 。 是否有从配置中获取检测密钥的选项？
 

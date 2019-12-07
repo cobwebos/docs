@@ -1,5 +1,5 @@
 ---
-title: 通过 Databricks 笔记本转换数据-Azure
+title: 用 Databricks 笔记本转换数据
 description: 了解如何通过运行 Databricks Notebook 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0768c16562a3931249dbbbc8f836ae14e7d0958b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683927"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893988"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 
@@ -57,15 +57,15 @@ ms.locfileid: "73683927"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必选|
+|properties|描述|需要|
 |---|---|---|
 |name|管道中活动的名称。|是|
-|说明|描述活动用途的文本。|否|
+|description|描述活动用途的文本。|No|
 |type|对于 Databricks Notebook 活动，活动类型是 DatabricksNotebook。|是|
 |linkedServiceName|Databricks 链接服务的名称，Databricks Notebook 在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |notebookPath|要在 Databricks 工作区中运行的 Notebook 的绝对路径。 此路径必须以斜杠开头。|是|
-|baseParameters|一个键/值对的数组。 基参数可用于运行每个活动。 如果 Notebook 采用的参数未指定，则将使用 Notebook 中的默认值。 有关参数的更多信息，请参阅 [Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)。|否|
-|库|要安装在将执行作业的群集上的库列表。 它可以是 \<string, object> 数组。|否|
+|baseParameters|一个键/值对的数组。 基参数可用于运行每个活动。 如果 Notebook 采用的参数未指定，则将使用 Notebook 中的默认值。 有关参数的更多信息，请参阅 [Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)。|No|
+|库|要安装在将执行作业的群集上的库列表。 它可以是 \<string, object> 数组。|No|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活动支持的库
@@ -123,7 +123,7 @@ ms.locfileid: "73683927"
 2. 您可以使用表达式（如 `'@activity('databricks notebook activity name').output.runOutput'`）在数据工厂中使用输出。 
 
    > [!IMPORTANT]
-   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例：`'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
+   > 如果要传递 JSON 对象，可以通过追加属性名称来检索值。 示例： `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>如何上传 Databricks 中的库
 

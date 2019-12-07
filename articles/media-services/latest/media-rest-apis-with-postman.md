@@ -1,6 +1,6 @@
 ---
 title: 配置 Postman 以便进行 Azure 媒体服务 REST API 调用
-description: 了解如何为媒体服务 REST API 调用配置 Postman。
+description: 本文介绍如何配置 Postman，以便可以使用它调用 Azure 媒体服务（AMS） REST Api。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,28 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2019
+ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: eee46bd8642f5ad4a8d036b9f6bf9a464c0d09f3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888098"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
 
 本文演示如何配置 **Postman**，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。 本文说明如何将环境和集合文件导入到 **Postman**。 集合包含调用 Azure 媒体服务 (AMS) REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
 
-开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)。
+开始开发之前，请查看[通过媒体服务 V3 api 进行开发](media-services-apis-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他可使用的工具有：具有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
 
 > [!IMPORTANT]
 > 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
@@ -49,12 +49,12 @@ ms.locfileid: "73839584"
 
 ### <a name="configure-the-environment"></a>配置环境 
 
-1. 打开**Postman**应用。
+1. 打开 **Postman** 应用。
 2. 在屏幕的右侧，选择“管理环境”选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
 4. 从“管理环境”对话框中，单击“导入”。
-2. 浏览到克隆 `Azure Media Service v3 Environment.postman_environment.json` 时下载的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 文件。
+2. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Azure Media Service v3 Environment.postman_environment.json` 文件。
 6. **Azure Media Service v3 Environment** 环境已添加。
 
     > [!Note]
@@ -69,7 +69,7 @@ ms.locfileid: "73839584"
 ### <a name="configure-the-collection"></a>配置集合
 
 1. 单击“导入”导入该集合文件。
-1. 浏览到克隆 `Media Services v3.postman_collection.json` 时下载的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 文件
+1. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Media Services v3.postman_collection.json` 文件
 3. 选择 **Media Services v3.postman_collection.json** 文件。
 
     ![导入文件](./media/develop-with-postman/postman-import-collection.png)

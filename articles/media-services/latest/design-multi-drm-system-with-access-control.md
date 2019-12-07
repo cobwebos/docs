@@ -1,6 +1,6 @@
 ---
 title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft 文档
-description: 了解如何为 Microsoft 平滑流式处理客户端移植工具包授权。
+description: 本文提供了有关如何使用 Azure 媒体服务设计多 DRM 内容保护系统的详细说明。
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310328"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896174"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -27,7 +27,7 @@ ms.locfileid: "68310328"
 
 本文档的目标读者是使用 OTT 或在线流/多屏解决方案的 DRM 子系统的工程师，或对于 DRM 子系统有兴趣的读者。 假设读者熟悉市场上的至少一种 DRM 技术，例如 PlayReady、Widevine、FairPlay 或 Adobe Access。
 
-在本次讨论中，借助多 DRM，我们介绍 Azure 媒体服务支持的 3 个 DRM：PlayReady 和 Widevine 的通用加密 (CENC)、FairPlay 以及 AES-128 明文密钥加密。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
+在本次讨论中，，我们通过多重 DRM 加入了 Azure 媒体服务支持的 3 个 DRM：适用于 PlayReady 和 Widevine 的通用加密 (CENC)、FairPlay 以及 AES-128 明文密钥加密。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
 
 使用原生多重 DRM 保护内容的好处包括：
 
@@ -116,11 +116,11 @@ DRM 子系统可能包含以下组件：
 
 如果针对许可证传送使用公有云，持久性和非持久性许可证对于许可证传送成本有直接影响。 下面演示了两种不同的设计方案：
 
-* 月度订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
+* 每月订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = 1
 
-* 月度订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
+* 每月订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = [观看影片数] x [会话数]
 
@@ -176,7 +176,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。  DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -229,7 +229,7 @@ DRM 子系统可能包含以下组件：
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。  对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
@@ -241,11 +241,11 @@ DRM 子系统可能包含以下组件：
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
-    "groupMembershipClaims":"All"   （默认值为 null）
+    "groupMembershipClaims": "All"（默认值为 null）
 
 * 创建限制要求时，请设置适当的 TokenType。
 

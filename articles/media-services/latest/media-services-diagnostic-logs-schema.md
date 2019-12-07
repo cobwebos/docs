@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2f5fcf4d9106bf37bcc81388e48afe689f4ef4d6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261086"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896046"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
@@ -38,10 +38,10 @@ ms.locfileid: "71261086"
 
 这些属性特定于密钥传送日志架构。
 
-|姓名|描述|
+|名称|描述|
 |---|---|
 |keyId|请求的密钥的 ID。|
-|keyType|可以是以下值之一：清除 "（无加密）"、"FairPlay"、"PlayReady" 或 "Widevine"。|
+|keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
 |policyName|策略的 Azure 资源管理器名称。|
 |tokenType|令牌类型。|
 |statusMessage|状态消息。|

@@ -4,12 +4,12 @@ description: 了解 Azure 容器实例中的容器组，它是共享生命周期
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706330"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896586"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -68,7 +68,9 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 ## <a name="networking"></a>网络
 
-容器组共享 IP 地址和该 IP 地址上的端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 组内的容器可以通过其公开端口上的 localhost 相互联系，即使这些端口未在组的 IP 地址外部公开。
+容器组可以在该 IP 地址上共享面向外部的 IP 地址和端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 
+
+在容器组内，容器实例可以通过任意端口上的 localhost 互相连接，即使这些端口未在组的 IP 地址或容器中对外公开。
 
 （可选）将容器组部署到[Azure 虚拟网络][virtual-network]（预览版）中，以允许容器与虚拟网络中的其他资源安全通信。
 

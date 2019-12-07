@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d22bfb0743bc18102e665a63f7e36ed75dd39cab
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716098"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900313"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>试验中的版本和跟踪数据集
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,7 +146,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>在试验中跟踪数据集
 
-对于每个机器学习试验，可以通过已注册模型的 `Run` 对象轻松跟踪用作输入的数据集。
+对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
+
+下面的代码使用[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)方法跟踪试验运行时所使用的输入数据集：
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+还可以通过使用[Azure 机器学习 Studio](https://ml.azure.com/)查找试验 `input_datasets`。 
+
+下图显示了在何处查找 Azure 机器学习 Studio 中实验的输入数据集。 在此示例中，请参阅**试验**窗格，并打开试验的特定运行的 "**属性**" 选项卡，`keras-mnist`。
+
+![输入数据集](media/how-to-version-datasets/input-datasets.png)
 
 使用以下代码向数据集注册模型：
 
@@ -156,26 +173,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，可以使用 Python 或[Azure 机器学习 Studio](https://ml.azure.com/)来查看向数据集注册的模型列表。
-
-下面的代码使用[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)方法跟踪试验运行时所使用的输入数据集：
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-还可以通过使用[Azure 机器学习 Studio](https://ml.azure.com/)查找试验 `input_datasets`。 
-
-下图显示了在何处查找 Azure 机器学习 Studio 中实验的输入数据集。 在此示例中，请参阅**试验**窗格，并打开试验的特定运行的 "**属性**" 选项卡，`keras-mnist`。
-
-![输入数据集](media/how-to-version-datasets/input-datasets.png)
-
-您还可以找到使用您的数据集的模型。 以下视图来自 "**资产**" 下的 "**数据集**" 窗格。 选择数据集，然后选择 "**模型**" 选项卡以查看正在使用该数据集的模型的列表。 
+注册后，可以使用 Python 或[Azure 机器学习 Studio](https://ml.azure.com/)来查看向数据集注册的模型列表。 以下视图来自 "**资产**" 下的 "**数据集**" 窗格。 选择数据集，然后选择 "**模型**" 选项卡，获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](media/how-to-version-datasets/dataset-models.png)
 

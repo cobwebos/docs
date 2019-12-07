@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899213"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889101"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault Analytics 解决方案
 
@@ -51,7 +51,7 @@ ms.locfileid: "72899213"
 8. 单击 "*保存*" 以启用到 Log Analytics 工作区的诊断日志记录。
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>使用 PowerShell 启用 Key Vault 诊断
-以下 PowerShell 脚本提供如何使用 `Set-AzDiagnosticSetting` 为 Key Vault 启用诊断日志记录的示例：
+下面的 PowerShell 脚本提供一个示例，说明如何使用 `Set-AzDiagnosticSetting` 来启用 Key Vault 的资源日志记录：
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

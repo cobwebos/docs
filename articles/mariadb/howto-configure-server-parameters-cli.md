@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 6616bd8172e9bc049a6e0e2c687390197de2f391
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 707f4eca440c0e8461420ff0bbc5e67f8e5ad69d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767307"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888506"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
@@ -67,6 +67,9 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 你应重新启动服务器，以确保正确填充时区表。 若要重新启动服务器，请使用[Azure 门户](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

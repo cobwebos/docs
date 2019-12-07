@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务来保护内容 | Microsoft 文档
-description: 本文概述了如何使用媒体服务来保护内容。
+description: 本文概述了如何使用 Azure 媒体服务 v2 进行内容保护。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8259b58c7f30b63084e970bd9aed99642a43226f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d71a7b010e91776a28330cfc32278c7060aab6
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216163"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901251"
 ---
 # <a name="content-protection-overview"></a>内容保护概述 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "61216163"
 
 播放器请求流时，媒体服务将通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器从媒体服务密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与DRM
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与 DRM
 客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两种系统之间的主要区别是，使用 AES 加密时，内容密钥以未加密格式（“明文”）传输到客户端。 因此，可以通过网络跟踪在客户端上明文查看用于加密内容的密钥。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，员工查看公司内分发的加密公司视频）。
 
 与 AES-128 明文密钥加密相比，PlayReady、Widevine 和 FairPlay 均提供更高等级的加密。 内容密钥以加密格式传输。 此外，解密是操作系统级别在安全的环境中处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
@@ -84,9 +84,9 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 * 如果仅向资产应用了一种加密，则无需在 URL 中指定加密类型。
 * 加密类型不区分大小写。
 * 可以指定以下加密类型：
-  * **cenc**：用于 PlayReady 或 Widevine（通用加密）
-  * **cbcs-aapl**：用于 FairPlay（AES CBC 加密）
-  * **cbc**：用于 AES 信封加密
+  * **cenc**：对于 PlayReady 或 Widevine（通用加密）
+  * **cbcs-aapl**：对于 FairPlay（AES CBC 加密）
+  * **cbc**：对于 AES 信封加密
 
 ## <a name="next-steps"></a>后续步骤
 下列文章介绍了可帮助你掌握内容保护入门知识的后续步骤：

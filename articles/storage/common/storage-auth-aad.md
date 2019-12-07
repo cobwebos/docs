@@ -1,22 +1,23 @@
 ---
-title: 使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限 |Microsoft Docs
+title: 使用 Active Directory 授予对 blob 和队列的访问权限
+titleSuffix: Azure Storage
 description: 使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598106"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891807"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 blob 和队列的访问权限
 
 Azure 存储支持使用 Azure Active Directory （AD）对 Blob 和队列存储的请求进行授权。 使用 Azure AD，你可以使用基于角色的访问控制（RBAC）向安全主体授予权限，这可能是用户、组或应用程序服务主体。 通过 Azure AD 对安全主体进行身份验证，以返回 OAuth 2.0 令牌。 令牌可用于授权请求访问 Blob 或队列存储中的资源。
 
@@ -56,7 +57,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 有关调用特定 Blob 或队列服务操作所需的权限的详细信息，请参阅[调用 Blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
-## <a name="resource-scope"></a>资源范围
+## <a name="resource-scope"></a>资源作用域
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 

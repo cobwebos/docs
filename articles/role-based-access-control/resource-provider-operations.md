@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b00e699eb49d88e41dff18d6c86024c9b0537e50
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e8a3397cd8229a84103fdcbb116bf61648a6ba22
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872309"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895564"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -5534,14 +5534,14 @@ ms.locfileid: "74872309"
 > | 行动 | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | 列出给定数据库的敏感度标签 |
 > | 行动 | ManagedInstances/recommendedSensitivityLabels/write | 批处理更新建议的敏感度标签 |
 > | 行动 | ManagedInstances/restoreDetails/read | 当还原正在进行时，返回托管数据库还原详细信息。 |
-> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/read | 获取托管数据库架构。 |
-> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | 获取托管数据库列 |
+> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/read | 获取托管数据库架构。 （仅限架构） |
+> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/read | 获取托管数据库列（仅限架构） |
 > | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | 删除给定列的敏感度标签 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | 对给定列禁用敏感性建议 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | 对给定列启用敏感性建议 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | 获取给定列的敏感度标签 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | 创建或更新给定列的敏感度标签 |
-> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/read | 获取托管数据库表 |
+> | 行动 | Microsoft.Sql/managedInstances/databases/schemas/tables/read | 获取托管数据库表（仅限架构） |
 > | 行动 | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | 检索为指定服务器配置的托管数据库威胁检测策略的列表 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/write | 更改给定托管数据库的数据库威胁检测策略 |
 > | 行动 | Microsoft.Sql/managedInstances/databases/securityEvents/read | 检索托管数据库安全事件 |
@@ -5680,14 +5680,14 @@ ms.locfileid: "74872309"
 > | 行动 | Microsoft.Sql/servers/databases/restorePoints/delete | 删除数据库的还原点。 |
 > | 行动 | Microsoft.Sql/servers/databases/restorePoints/read | 返回数据库的还原点。 |
 > | 行动 | Microsoft.Sql/servers/databases/resume/action | 恢复 Azure SQL 数据仓库数据库 |
-> | 行动 | Microsoft.Sql/servers/databases/schemas/read | 获取数据库架构。 |
-> | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/read | 获取数据库列。 |
+> | 行动 | Microsoft.Sql/servers/databases/schemas/read | 获取数据库架构（仅限架构）。 |
+> | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/read | 获取数据库列（仅限架构）。 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | 删除给定列的敏感度标签 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | 对给定列禁用敏感性建议 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | 对给定列启用敏感性建议 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | 获取给定列的敏感度标签 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | 创建或更新给定列的敏感度标签 |
-> | 行动 | Microsoft.Sql/servers/databases/schemas/tables/read | 获取数据库表。 |
+> | 行动 | Microsoft.Sql/servers/databases/schemas/tables/read | 获取数据库表（仅限架构）。 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/read | 检索数据库上的索引建议列表 |
 > | 行动 | Microsoft.Sql/servers/databases/schemas/tables/recommendedIndexes/write | 应用索引建议 |
 > | 行动 | Microsoft.Sql/servers/databases/securityAlertPolicies/read | 检索为给定的服务器配置的数据库威胁检测策略的列表 |

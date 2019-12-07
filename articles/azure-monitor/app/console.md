@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 9e198d3ea24383a532c5fbc3bfdcb1d1d7e49a92
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689037"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889135"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -27,7 +27,7 @@ ms.locfileid: "74689037"
 ## <a name="getting-started"></a>入门
 
 * 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md)。 对于应用程序类型，选择“常规”。
-* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。 
+* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
 
@@ -39,6 +39,10 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
+> [!NOTE]
+> 遥测不会立即发送。 遥测项由 Applicationinsights.config SDK 进行批处理和发送。 在调用 `Track()` 方法之后，控制台应用程序中会立即退出，除非 `Flush()` 和 `Sleep` 在应用退出之前完成，如本文后面的[完整示例](#full-example)中所示。
+
+
 * 安装最新版本的 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) 包 - 它可自动跟踪 HTTP、SQL 或一些其他外部依赖项调用。
 
 可通过代码或 `ApplicationInsights.config` 文件初始化和配置 Application Insights。 请确保尽早进行初始化。 
@@ -47,6 +51,7 @@ telemetryClient.TrackTrace("Hello World!");
 > 提到了 **ApplicationInsights.config** 的说明仅适用于以 .NET Framework 为目标的应用，不适用于 .NET Core 应用程序。
 
 ### <a name="using-config-file"></a>使用配置文件
+
 默认情况下，创建 `TelemetryConfiguration` 时，Application Insights SDK 在工作目录中查找 `ApplicationInsights.config` 文件
 
 ```csharp

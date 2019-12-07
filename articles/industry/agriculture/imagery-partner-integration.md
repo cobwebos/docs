@@ -1,31 +1,31 @@
 ---
 title: 图像合作伙伴集成
-description: 介绍了图像合作伙伴集成
+description: 本文介绍了图像合作伙伴集成。
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 6ef800e7c5ecdfd6805fb8405caca8393a47ff83
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132021"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896558"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
-本文介绍如何使用 Azure FarmBeats 转换器组件将图像数据发送到 FarmBeats。 农业图像数据可以来自各种源，包括 multispectral 相机、卫星和无人机。 农业图像合作伙伴可与 FarmBeats 集成，为客户提供其场的自定义生成的地图。
+本文介绍如何使用 Azure FarmBeats 转换器组件将图像数据发送到 FarmBeats。 可以从各种源（如 multispectral 相机、卫星和无人机）生成农业的图像数据。 农业图像合作伙伴可与 FarmBeats 集成，为客户提供其场的自定义生成的地图。
 
-数据一经提供，就可以通过 FarmBeats 加速器进行可视化，并可能用于由农业企业或客户系统集成商构建的数据合成和（机器学习/人工智能） ML/AI 模型。
+数据一经提供，就可以通过 FarmBeats 加速器进行可视化，并可能用于由农业企业或客户系统集成商构建的数据合成和机器学习/人工智能（ML/AI）模型。
 
 FarmBeats 提供以下功能：
 
-- 使用扩展类型 Api 定义自定义图像类型、源、文件格式
-- 通过场景 & SceneFile Api，从各种源引入图像数据。
+- 使用/ExtendedType Api 定义自定义图像类型、源和文件格式。
+- 通过/Scene 和/SceneFile Api 从不同源引入图像数据。
 
-以下信息重点介绍如何在 FarmBeats 系统中获取任何形式的图像。
+以下信息重点介绍如何在 FarmBeats 系统中获取图像的任何形式。
 
-选择 "无人机图像" 部分时，会打开一个弹出窗口，显示无人机 orthomosaic 的高分辨率图像。 你可以访问合作伙伴软件，该软件有助于规划无人机航班和获取原始数据。 你将继续使用合作伙伴的软件进行路径规划和 orthomosaic 图像拼接。
+选择 "**无人机图像**" 部分时，会打开一个弹出窗口，显示无人机 orthomosaic 的高分辨率图像。 你可以访问合作伙伴软件，该软件有助于规划无人机航班和获取原始数据。 你将继续使用合作伙伴的软件进行路径规划和 orthomosaic 图像拼接。
 
 无人机合作伙伴需要使客户能够将其客户帐户与其在 Azure 上的 FarmBeats 实例链接在一起。
 
@@ -38,28 +38,27 @@ FarmBeats 提供以下功能：
 
 ## <a name="api-development"></a>API 开发
 
-Api 包含 Swagger 技术文档。 查看[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)以获取有关 api 和相应请求/响应的信息。
+Api 包含 Swagger 技术文档。 有关 Api 和相应的请求或响应的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
-FarmBeats 利用 Microsoft Azure 的[Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 Azure App Service 提供内置身份验证和授权支持。 
+FarmBeats 使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。 Azure App Service 提供内置身份验证和授权支持。 
 
-有关的详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
+有关 Azure AD 的详细信息，请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
 
-FarmBeats 数据中心使用持有者身份验证，需要以下凭据：
+FarmBeats Datahub 使用持有者身份验证，需要以下凭据：
 
 - 客户端 ID
 - 客户端机密
 - 租户 ID
 
-使用上述凭据，调用方可以在标头部分中请求需要在后续 API 请求中发送的访问令牌，如下所示：
+使用以前的凭据，调用方可以在标头部分中请求需要在后续 API 请求中发送的访问令牌，如下所示：
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-下面是一个用于检索访问令牌的 Python 代码示例。 然后，可以使用该令牌对 FarmBeat：  的后续 API 调用  
-导入 azure 
+以下 Python 代码示例检索访问令牌。 然后，可以使用该令牌对 FarmBeats 的后续 API 调用。
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials 
@@ -80,18 +79,23 @@ access_token = token_response.get('accessToken') 
 
 ## <a name="http-request-headers"></a>HTTP 请求标头
 
-以下是在对 FarmBeats 数据中心进行 API 调用时需要指定的最常见请求标头：
+下面是在对 FarmBeats Datahub 进行 API 调用时需要指定的最常见请求标头。
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type  | FarmBeats 数据中心 API 格式的请求格式（Content-type： application/<format>）为 json。 Content-type： application/json
+Content-Type  | 请求格式（Content-type： application/<format>）。 对于 FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 < 访问令牌 >
-Accept  | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 json Accept： application/json
+接受  | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接受： application/json
 
 
 ## <a name="api-requests"></a>API 请求
 
-若要发出 REST API 请求，请将 HTTP 方法（GET/POST/PUT）、API 服务的 URL、资源 URI （用于查询、提交数据、更新或删除）以及一个或多个 HTTP 请求标头组合在一起。
+若要发出 REST API 请求，请结合以下内容：
+
+- HTTP 方法（GET、POST 和 PUT）。
+- API 服务的 URL。
+- 用于查询、提交数据、更新或删除的资源 URI。
+- 一个或多个 HTTP 请求标头。
 
 或者，您可以在 GET 调用中包含查询参数以筛选、限制的大小，并对响应中的数据进行排序。
 
@@ -105,7 +109,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 大多数 GET、POST 和 PUT 调用都需要 JSON 请求正文。
 
-下面的示例请求是创建一个设备（它具有带有请求正文的输入 JSON）。
+下面的示例请求是创建设备。 此示例包含一个带有请求正文的输入 JSON。
 
 
 ```bash
@@ -118,32 +122,32 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>数据格式
 
-JSON （JavaScript 对象表示法）是一种与语言无关的公共数据格式，提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON org](https://JSON.org)。
+JSON 是一种与语言无关的公共数据格式，提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON org](https://JSON.org)。
 
-## <a name="ingesting-imagery-into-farmbeats"></a>引入图像进入 FarmBeats
+## <a name="ingest-imagery-into-farmbeats"></a>将图像引入 FarmBeats
 
-合作伙伴有权连接到 FarmBeats 数据中心后，该合作伙伴会在转换器组件中执行以下操作：
+合作伙伴有权连接到 FarmBeats Datahub 后，合作伙伴会在转换器组件中执行以下步骤。
 
 1.  根据要上传的图像的类型，为以下字段创建新的扩展类型：
 
-    - 场景源：例如，< drone_partner_name >
-    - 场景类型：例如，<drone>
-    - 场景文件类型：例如，<chlorophyll index>
-    - 场景文件内容类型：例如，< image/tiff >
+    - **场景源**：例如，drone_partner_name
+    - **场景类型**：例如，无人机
+    - **场景文件类型**：例如，chlorophyll index
+    - **场景文件内容类型**：例如，image/tiff
 
-2.  调用场 API，从 Azure FarmBeats 系统中获取场列表。
+2.  调用/Farms API，从 Azure FarmBeats 系统中获取场列表。
 3.  让客户能够从场列表中选择单个场。
 
     合作伙伴系统必须在合作伙伴软件中显示场，才能执行路径规划和无人机航班和图像收集。
 
-4.  调用场景 API 并提供所需的详细信息，以使用唯一 SceneID 创建新场景。
-5.  接收 Blob SAS URL，以将所需的映像上传到 FarmBeats 数据中心（在所选场的上下文中）到 FarmBeats 系统。
+4.  调用/Scene API 并提供所需的详细信息，以创建具有唯一场景 ID 的新场景。
+5.  接收一个 blob SAS URL，以将所需的映像上传到 FarmBeats Datahub 中所选场的上下文中。
 
-下面是 API 调用的详细流：
+下面是有关 API 调用的详细流。
 
 ### <a name="step-1-extendedtype"></a>步骤1： ExtendedType
 
-如果类型和文件源在 FarmBeats 上可用，请查看 ExtendedType API。 可以通过在/ExtendedType API 上调用 GET 来实现此目的。
+签入/ExtendedType API，以查看类型和文件源在 FarmBeats 上是否可用。 为此，请在/ExtendedType API 上调用 GET。
 
 以下是系统定义的值：
 
@@ -327,9 +331,9 @@ JSON （JavaScript 对象表示法）是一种与语言无关的公共数据格�
 }
 ```
 
-这将是一次性设置，此新 scenetype 的范围限制为在其中部署 FarmBeats 项目的订阅。
+此步骤是一次性设置。 此新场景类型的作用域仅限于在其中部署 FarmBeats 项目的订阅。
 
-示例：若要添加 SceneSource： "SlantRange"，请将/ExtendedType 的 ID 放在输入负载为 "SceneSource" 的上：
+例如，若要添加 SceneSource： "SlantRange"，请在/ExtendedType API 的 ID 上输入密钥 "SceneSource" 输入有效负载。
 
 ```json
 {
@@ -349,9 +353,9 @@ JSON （JavaScript 对象表示法）是一种与语言无关的公共数据格�
 
 绿色字段是系统定义的场景源值的新添加项。
 
-### <a name="step-2-get-farmdetails"></a>步骤2：获取 FarmDetails
+### <a name="step-2-get-farm-details"></a>步骤2：获取场详细信息
 
-幕后（tiff 或 .csv 文件）将位于场的上下文中。 你需要通过执行 get on/Farm API 获取场详细信息。 API 将返回 FarmBeats 中提供的场列表，你可以选择要为其引入数据的场。
+幕后（tiff 或 .csv 文件）位于场的上下文中。 你需要通过在/Farm API 上执行 GET 来获取场详细信息。 API 返回 FarmBeats 中可用的场列表。 您可以选择要为其引入数据的场。
 
 获取/Farm 响应：
 
@@ -399,13 +403,13 @@ JSON （JavaScript 对象表示法）是一种与语言无关的公共数据格�
 }
  ```
 
-### <a name="step-3-create-ascene-id-post-call"></a>步骤3：创建/场景 ID （post 调用）
+### <a name="step-3-create-a-scene-id-post-call"></a>步骤3：创建场景 ID （POST 呼叫）
 
-使用给定的信息创建新的场景（tiff 或 .csv 文件），提供与该场景关联的日期、序列和场 ID。 可以在 "属性" 下定义与场景关联的元数据，包括 "持续时间" 和 "度量值" 类型。
+使用给定的信息创建一个新的场景（tiff 或 .csv 文件），该信息提供与该场景关联的日期、序列和场 ID。 可以在 "属性" 下定义与场景关联的元数据，其中包括 "度量值" 的 "持续时间" 和 "类型"。
 
-这将创建一个新的 SceneID，它将与场关联。 创建 SceneID 后，用户可以使用相同的创建新文件（tiff 或 .csv） & 存储文件的内容。
+创建新场景会创建一个与场关联的新场景 ID。 创建场景 ID 后，用户可以使用相同的创建新文件（tiff 或 .csv），并存储该文件的内容。
 
-/场景 API 上的 Post 调用的示例输入负载
+/Scene API 上的 POST 调用的输入有效负载示例：
 
 ```json
 {
@@ -441,13 +445,13 @@ API 响应：
 
 ```
 
-**Create/SceneFile**
+**创建场景文件**
 
-步骤3中返回的场景 ID 是 SceneFile 的输入。 SceneFile 返回一个 SAS URL 令牌，该令牌的有效时间为24小时。
+步骤3中返回的场景 ID 是场景文件的输入。 场景文件返回一个 SAS URL 令牌，该令牌的有效时间为24小时。
 
-如果用户需要以编程方式上传图像流，则可以使用 blob 存储 SDK 来定义使用 Scenefile ID、location & URL 的方法。
+如果用户需要以编程方式上传图像流，则可以使用 blob 存储 SDK 通过使用场景文件 ID、位置和 URL 来定义方法。
 
-/Scenefile API 上的 Post 调用的示例输入负载：
+/SceneFile API 上的 POST 调用的输入有效负载示例：
 
 ```json
 {
@@ -483,9 +487,9 @@ API 响应：
 
 ```
 
-对/SceneFile API 的 Post 调用返回一个 SAS 上载 URL，该 URL 可用于使用 Azure Blob 存储客户端/库上传 csv 或 tiff 文件。
+对/SceneFile API 的 POST 调用返回一个 SAS 上载 URL，该 URL 可用于通过使用 Azure Blob 存储客户端或库上传 .csv 或 tiff 文件。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于 Rest API 的集成详细信息的详细信息，请参阅[REST API](references-for-farmbeats.md#rest-api)。
+有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](references-for-farmbeats.md#rest-api)。

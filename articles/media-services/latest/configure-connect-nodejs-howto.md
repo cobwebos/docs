@@ -1,6 +1,6 @@
 ---
-title: 连接到 Azure 媒体服务 v3 API - Node.js
-description: 了解如何使用 Node.js 连接到媒体服务 v3 API。
+title: 连接到 Azure 媒体服务 v3 API-node.js
+description: 本文演示如何通过 node.js 连接到媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5361a820da0caa336ccc95ae657407889443268c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048422"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896102"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API-node.js
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 node.js SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 安装 [Node.js](https://nodejs.org/en/download/)。
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。
+- [创建媒体服务帐户](create-account-cli-how-to.md)。 请确保记住资源组名称和媒体服务帐户名。
 
 > [!IMPORTANT]
 > 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
 
-## <a name="create-packagejson"></a>创建 package.json
+## <a name="create-packagejson"></a>创建包。 json
 
-1. 使用偏好的编辑器创建一个 package.json 文件。
-1. 打开该文件并粘贴以下代码：
+1. 使用偏好的编辑器创建包文件。
+1. 打开文件并粘贴以下代码：
 
 ```json
 {
@@ -54,23 +54,23 @@ ms.locfileid: "74048422"
 
 应指定以下包：
 
-|程序包|说明|
+|程序包|描述|
 |---|---|
-|`azure-arm-mediaservices`|Azure 媒体服务 SDK。 <br/>为确保使用的是最新的 Azure 媒体服务包，请选中 [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)。|
+|`azure-arm-mediaservices`|Azure 媒体服务 SDK。 <br/>若要确保使用的是最新的 Azure 媒体服务包，请选中 " [NPM 安装 windowsazure.mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)"。|
 |`azure-storage`|存储 SDK。 将文件上传到资产时使用。|
 |`ms-rest-azure`| 用于登录。|
 
-可以运行以下命令以确保使用的是最新的包：
+您可以运行以下命令，确保使用的是最新的包：
 
 ```
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>连接到 Node.js 客户端
+## <a name="connect-to-nodejs-client"></a>连接到 node.js 客户端
 
 1. 使用偏好的编辑器创建一个 .js 文件。
 1. 打开该文件并粘贴以下代码。
-1. 将“终结点配置”部分中的值设置为从[访问 API](access-api-cli-how-to.md) 获得的值。
+1. 将 "终结点配置" 部分的值设置为从[访问 api](access-api-cli-how-to.md)获取的值。
 
 ```js
 'use strict';

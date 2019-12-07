@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 866b682c9e1ebcb1b3458d26c638237905d06b05
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803668"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889728"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件性访问：要求受信任的位置进行 MFA 注册
 
-使用条件性访问策略中的用户操作，可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 在需要用户在 HR 载入期间从中心位置注册 Azure 多重身份验证和 SSPR （如受信任的网络位置）的组织中，可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息，请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+使用条件性访问策略中的用户操作，可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure 多重身份验证和 SSPR 的访问，组织中可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息，请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158944"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892628"
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
+# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 以在运行 Windows 的虚拟机中启用 Azure 诊断
 
 Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用诊断扩展从运行 Windows 的 Azure 虚拟机 (VM) 中收集诊断数据（例如应用程序日志或性能计数器）。 
 
@@ -52,7 +52,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
     Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-该 cmdlet 返回 *PublicSettings*，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
+该 cmdlet 返回 PublicSettings，其中包含诊断配置。 支持两种类型的配置：WadCfg 和 xmlCfg。 WadCfg 是 JSON 配置，而 xmlCfg 是 Base64 编码格式的 XML 配置。 要读取该 XML，需将其解码。
 
     $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
@@ -64,9 +64,9 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>在使用经典部署模型的情况下启用诊断扩展
 在通过经典部署模型创建的 VM 上，可以使用 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 启用诊断扩展。 以下示例演示如何通过经典部署模型创建启用诊断扩展的新 VM。
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 若要在通过典型部署模型创建的现有 VM 上启用诊断扩展，请先使用 [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) cmdlet 获取 VM 配置。 然后，通过使用 [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) cmdlet 更新 VM 配置，以包括诊断扩展。 最后，使用 [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm) 将更新的配置应用到 VM。
@@ -80,7 +80,7 @@ Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的�
 
 需要对该配置进行更新，以便包括以下内容：
 
-* *Metrics* 元素的 **resourceID** 属性需要使用 VM 的资源 ID 进行更新。
+* **Metrics** 元素的 *resourceID* 属性需要使用 VM 的资源 ID 进行更新。
   
   * 资源 ID 可以使用以下模式构造：“/subscriptions/{*VM 订阅的订阅 ID*}/resourceGroups/{*VM 的资源组名称*}/providers/Microsoft.Compute/virtualMachines/{*VM 名称*}”。
   * 例如，如果在其中运行 VM 的订阅的订阅 ID 为 **11111111-1111-1111-1111-111111111111**，资源组的资源组名称为 **MyResourceGroup**，VM 名称为 **MyWindowsVM**，则 *resourceID* 的值为：

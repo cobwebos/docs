@@ -1,6 +1,7 @@
 ---
-title: 使用共享密钥授权调用 Azure 存储 REST API 操作 | Microsoft Docs
-description: 通过 Azure 存储 REST API 来使用共享密钥授权向 Blob 存储发出请求。
+title: 通过共享密钥授权调用 REST API 操作
+titleSuffix: Azure Storage
+description: 使用 Azure 存储 REST API 向使用共享密钥授权的 Blob 存储发出请求。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,24 +10,24 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 05f71d4952d5f500a93adbb740739a46e9036ac1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803072"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895164"
 ---
-# <a name="using-the-azure-storage-rest-api"></a>使用 Azure 存储 REST API
+# <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
-本文介绍如何调用 Azure 存储 REST API，包括如何构建授权标头。 本文内容是从对 REST 无甚了解、而且也不知道如何进行 REST 调用的开发人员角度编写的。 了解如何调用 REST 操作后，即可利用这一知识使用任何其他的 Azure 存储 REST 操作。
+本文介绍如何调用 Azure 存储空间 REST Api，包括如何构成 Authorization 标头。 它是从对 REST 一无所知的开发人员角度编写的，并不知道如何进行 REST 调用。 了解如何调用 REST 操作后，可以利用此知识来使用任何其他 Azure 存储 REST 操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 示例应用程序列出了存储帐户的 blob 容器。 若要尝试本文中的代码，需准备以下各项： 
 
-- 安装 [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)（包含 **Azure 开发**工作负荷）。
+- 安装[Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)和**Azure 开发**工作负荷。
 
-- Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 - 通用存储帐户。 如果还没有存储帐户，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
@@ -46,11 +47,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 ## <a name="about-rest"></a>关于 REST
 
-REST 表示 *representational state transfer*（表述性状态转移）。 有关具体定义，请参阅 [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer)。
+REST 代表*具象状态传输*。 有关具体定义，请参阅 [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer)。
 
-REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）与服务交互。 REST 独立于在服务器或客户端上运行的软件。 可以从任何支持 HTTP/HTTPS 的平台调用 REST API。 你可以编写一个在 Mac、Windows、Linux、Android 手机或平板电脑、iPhone、iPod 或网站上运行的应用程序，并为所有这些平台使用相同的 REST API。
+REST 是一种体系结构，使你能够通过 internet 协议（如 HTTP/HTTPS）与服务进行交互。 REST 与服务器或客户端上运行的软件无关。 可以从支持 HTTP/HTTPS 的任何平台调用 REST API。 你可以编写一个在 Mac、Windows、Linux、Android 手机或平板电脑、iPhone、iPod 或网站上运行的应用程序，并为所有这些平台使用相同的 REST API。
 
-调用 REST API 的操作包含由客户端发出请求，以及由服务返回响应。 在请求中，你发送一个 URL，其中说明了你要调用哪个操作、要在其上执行操作的资源、任何查询参数和标头，以及数据的有效负载（取决于已调用的操作）。 服务的响应包括状态代码、一组响应标头，以及数据的有效负载（取决于已调用的操作）。
+对 REST API 的调用包括客户端发出的请求，以及由服务返回的响应。 在请求中，你将发送一个 URL，其中包含有关你要调用哪个操作、要对其执行操作的资源、任何查询参数和标头，以及一个数据负载，具体取决于所调用的操作。 来自服务的响应包括状态代码、一组响应标头以及一个数据负载，具体取决于所调用的操作。
 
 ## <a name="about-the-sample-application"></a>关于示例应用程序
 
@@ -58,13 +59,13 @@ REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）
 
 若参阅 [Blob 服务 REST API](/rest/api/storageservices/Blob-Service-REST-API)，你将会了解到所有可以在 blob 存储中执行的操作。 存储客户端库是 REST API 的包装器 – 它们可使你轻松访问存储而无需直接使用 REST API。 但如上所述，有时你会想要使用 REST API 而不是存储客户端库。
 
-## <a name="rest-api-reference-list-containers-api"></a>REST API 参考：列出容器 API
+## <a name="list-containers-operation"></a>列出容器操作
 
-查看 REST API 参考中的 [ListContainers](/rest/api/storageservices/List-Containers2) 操作页面。 该信息可以让你了解请求中某些字段的出处并进行响应。
+查看[ListContainers](/rest/api/storageservices/List-Containers2)操作的参考。 此信息将帮助你了解某些字段在请求和响应中的位置。
 
 请求方法：GET。 此谓词是你指定为请求对象属性的 HTTP 方法。 此谓词的其他值包括 HEAD、PUT 和 DELETE，具体将取决于正在调用的 API。
 
-**请求 URI**：`https://myaccount.blob.core.windows.net/?comp=list`。  请求 URI 是从 blob 存储帐户终结点创建的，`http://myaccount.blob.core.windows.net` 和资源字符串 `/?comp=list`。
+**请求 URI**： `https://myaccount.blob.core.windows.net/?comp=list`。  请求 URI 是从 blob 存储帐户终结点创建的，`http://myaccount.blob.core.windows.net` 和资源字符串 `/?comp=list`。
 
 [URI 参数](/rest/api/storageservices/List-Containers2#uri-parameters)：调用 ListContainers 时可以使用的其他查询参数。 其中有些参数为调用超时（以秒计）和前缀，后者用于筛选。
 
@@ -88,9 +89,9 @@ REST 是一种体系结构，用于通过 Internet 协议（例如 HTTP/HTTPS）
 
 ## <a name="creating-the-rest-request"></a>创建 REST 请求
 
-为了确保在生产中运行时的安全，请始终使用 HTTPS 而不是 HTTP。 出于本次练习的目的，应使用 HTTP 以便查看请求和响应数据。 若要查看实际 REST 调用中的请求和响应信息，可以下载 [Fiddler](https://www.telerik.com/fiddler) 或类似应用。 在 Visual Studio 解决方案中，存储帐户名称和密钥是在类中硬编码的。 ListContainersAsyncREST 方法会将存储帐户名称和存储帐户密钥传递给用于创建 REST 请求各个组件的方法。 在实际应用中，存储帐户名称和密钥将驻留在配置文件、环境变量中，或从 Azure Key Vault 中检索。
+在生产环境中运行时，请始终使用 HTTPS 而不是 HTTP。 出于本次练习的目的，应使用 HTTP 以便查看请求和响应数据。 若要查看实际 REST 调用中的请求和响应信息，可以下载 [Fiddler](https://www.telerik.com/fiddler) 或类似应用。 在 Visual Studio 解决方案中，存储帐户名称和密钥在类中硬编码。 ListContainersAsyncREST 方法将存储帐户名称和存储帐户密钥传递到用于创建 REST 请求的各种组件的方法。 在实际应用中，存储帐户名称和密钥将驻留在配置文件、环境变量中，或从 Azure Key Vault 中检索。
 
-在我们的示例项目中，用于创建授权标头的代码位于单独的类中。 这样做是为了让你可以获取整个类并将其添加到你自己的解决方案中，然后“按原样”使用。 授权标头代码适用于 Azure 存储的大多数 REST API 调用。
+在我们的示例项目中，用于创建授权标头的代码位于单独的类中。 其思路是您可以使用整个类并将其添加到您自己的解决方案中，并按 "原样" 使用它。 授权标头代码适用于 Azure 存储的大多数 REST API 调用。
 
 要生成请求（这是一个 HttpRequestMessage 对象），请转到 Program.cs 中的 ListContainersAsyncREST。 用于生成请求的步骤如下： 
 
@@ -129,32 +130,32 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-添加 `x-ms-date` 和 `x-ms-version` 的请求标头。 此代码中的这个位置也是你在其中添加调用所需的任何其他请求标头的位置。 在此示例中，没有其他标头。 例如，“设置容器 ACL”操作是一个 API，它传入额外的标头。 此 API 调用会添加名为“x-ms-blob-public-acces”的标头和访问级别的值。
+为 `x-ms-date` 和 `x-ms-version`添加请求标头。 此代码中的这个位置也是你在其中添加调用所需的任何其他请求标头的位置。 在此示例中，没有其他标头。 传入了额外标头的 API 的一个示例是设置容器 ACL 操作。 此 API 调用将添加名为 "x-ms-blob-公共访问" 的标头和访问级别的值。
 
 ```csharp
-    // Add the request headers for x-ms-date and x-ms-version.
-    DateTime now = DateTime.UtcNow;
-    httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
-    // If you need any additional headers, add them here before creating
-    //   the authorization header.
+// Add the request headers for x-ms-date and x-ms-version.
+DateTime now = DateTime.UtcNow;
+httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
+httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
+// If you need any additional headers, add them here before creating
+//   the authorization header.
 ```
 
 调用创建授权标头的方法，并将其添加到请求标头。 本文的后面部分将介绍如何创建授权标头。 方法名称为 GetAuthorizationHeader，你可以在此代码段中看到：
 
 ```csharp
-    // Get the authorization header and add it.
-    httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
-        storageAccountName, storageAccountKey, now, httpRequestMessage);
+// Get the authorization header and add it.
+httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
+    storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
 此时，`httpRequestMessage` 包含 REST 请求，并带有授权标头。
 
-## <a name="call-the-rest-api-with-the-request"></a>使用请求调用 REST API
+## <a name="send-the-request"></a>发送请求
 
-至此，你已经有了请求，接下来即可调用 SendAsync 来发送 REST 请求。 SendAsync 调用 API，并获取响应。 检查响应状态代码（可以是 200），然后分析响应。 在这种情况下，你将获取到一个容器的 XML 列表。 让我们看一下用于调用 GetRESTRequest 方法的代码，以创建请求、执行请求，然后检查对容器列表的响应。
+构造请求后，可以调用 SendAsync 方法将其发送到 Azure 存储。 检查响应状态代码的值是否为200，这意味着操作已成功。 接下来，分析响应。 在这种情况下，你将获取到一个容器的 XML 列表。 让我们看一下用于调用 GetRESTRequest 方法的代码，以创建请求、执行请求，然后检查对容器列表的响应。
 
-```csharp 
+```csharp
     // Send the request.
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
@@ -266,9 +267,9 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>创建授权标头
 
 > [!TIP]
-> 现在，Azure 存储支持将 Azure Active Directory (Azure AD) 集成用于 blob 和队列。 Azure AD 提供更简单的 Azure 存储请求授权体验。 有关如何使用 Azure AD 授权 REST 操作的详细信息，请参阅[使用 Azure Active Directory 进行授权](/rest/api/storageservices/authorize-with-azure-active-directory)。 有关 Azure AD 与 Azure 存储集成的概述，请参阅[使用 Azure Active Directory 对 Azure 存储的访问权限进行身份验证](storage-auth-aad.md)。
+> Azure 存储现在支持 blob 和队列的 Azure Active Directory （Azure AD）集成。 Azure AD 提供更简单的 Azure 存储请求授权体验。 有关使用 Azure AD 授权 REST 操作的详细信息，请参阅[使用 Azure Active Directory 进行授权](/rest/api/storageservices/authorize-with-azure-active-directory)。 有关 Azure AD 与 Azure 存储集成的概述，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](storage-auth-aad.md)。
 
-有一篇文章从概念上（无代码）说明了如何[授权对 Azure 存储的请求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
+有一篇文章在概念上（无代码）说明了如何对[Azure 存储空间的请求进行授权](/rest/api/storageservices/authorize-requests-to-azure-storage)。
 
 让我们就基于此篇文章准确提取所需的内容并显示代码。
 
@@ -358,7 +359,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 /contosorest/\ncomp:list
 ```
 
-如果你有查询参数，此示例也包括这些参数。 以下是代码，该代码还处理其他查询参数和具有多个值的查询参数。 请记住，你正在生成此代码以使其适用于所有 REST API。 你需要包括所有可能性，即使 ListContainers 方法不需要所有这些参数。
+如果有查询参数，则此示例也包含这些参数。 以下是代码，该代码还处理其他查询参数和具有多个值的查询参数。 请记住，你要构建此代码以适用于所有 REST Api。 即使 ListContainers 方法不需要所有这些都是必需的，也要包含所有可能性。
 
 ```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -414,7 +415,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-运行此代码时，生成的 MessageSignature 如以下示例所示：
+在运行此代码时，生成的 MessageSignature 如下例所示：
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
@@ -428,11 +429,11 @@ SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 
 AuthorizationHeader 是发出响应前放置在请求标头中的最后一个标头。
 
-这涵盖了你需要知道的所有信息，可以将一个类组合在一起，创建一个用于调用存储服务 REST API 的请求。
+这涵盖了将类组合在一起时需要知道的所有内容，你可以创建调用存储服务 REST Api 的请求。
 
 ## <a name="example-list-blobs"></a>示例：列出 blob
 
-让我们看一下如何更改代码，以便对容器 container-1 调用“列出 Blob”操作。 此代码与清单容器的代码几乎完全相同，唯一的区别在于 URI 以及解析响应的方式。
+让我们看看如何更改代码以调用容器容器的列表 Blob 操作 *-1*。 此代码与列出容器的代码几乎完全相同，唯一的差别在于 URI 以及如何分析响应。
 
 如果查看 [ListBlobs](/rest/api/storageservices/List-Blobs) 的参考文档，将发现该方法是 GET，RequestURI 为：
 
@@ -562,9 +563,9 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-在本文中，你学习了如何向 Blob 存储 REST API 发出请求。 可以通过该请求检索容器列表或容器中 Blob 的列表。 此外，你还学习了如何创建 REST API 调用的授权签名，以及如何在 REST 请求中使用它。 最后，你学习了如何检查该响应。
+本文介绍了如何发出 REST API blob 存储的请求。 使用请求时，可以检索容器的列表或容器中的 blob 列表。 已了解如何创建 REST API 调用的授权签名，以及如何在 REST 请求中使用它。 最后，您学习了如何检查响应。
 
 ## <a name="next-steps"></a>后续步骤
 

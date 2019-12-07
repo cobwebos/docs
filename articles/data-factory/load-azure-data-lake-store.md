@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
+title: 将数据加载到 Azure Data Lake Storage Gen1
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen1 中
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: adad770926b23e0529d5a6e08605a338d958ae09
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672715"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892951"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
 
@@ -36,7 +36,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 > [!NOTE]
 > 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Data Lake Storage Gen1 复制数据](connector-azure-data-lake-store.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅：如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Data Lake Storage Gen1 帐户：如果没有 Data Lake Storage Gen1 帐户，请参阅[创建 Data Lake Storage Gen1 帐户](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的说明。
@@ -58,7 +58,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Storage Gen1、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”。
+3. 选择**创建**。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
    ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -79,7 +79,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
     
     选择“Amazon S3”，然后选择“继续”
     
-    ![“源数据存储 s3”页](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    ![“源数据存储 S3”页](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
 4. 在“指定 Amazon S3 连接”页中，执行以下步骤： 
    1. 指定“访问密钥 ID”值。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932570"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894141"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -40,10 +40,10 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 ### <a name="agent-upload-frequency"></a>代理上传频率
 为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Azure Monitor。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Azure Monitor 引入点的延迟产生负面影响。
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure 活动日志、诊断日志和指标
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure 活动日志，资源日志和指标
 Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可用于处理：
 
-- 诊断日志中的数据需要 2 到 15 分钟，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
+- 资源日志中的数据需要2-15 分钟的时间，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
 - 将 Azure 平台指标发送到 Log Analytics 引入点需要 3 分钟。
 - 将活动日志数据发送到 Log Analytics 引入点大约需要 10 到 15 分钟。
 
@@ -58,7 +58,7 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
-一旦将日志记录引入到 Azure Monitor 的管道中（在[_TimeReceived](log-standard-properties.md#_timereceived)属性中标识），就会将它们写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
+一旦将日志记录引入到 Azure Monitor 管道（如[_TimeReceived](log-standard-properties.md#_timereceived)属性中所示），就会将它们写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
 从[自定义日志](data-sources-custom-logs.md)或[数据收集器 API ](data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
@@ -78,12 +78,12 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 
 | 步骤 | 属性或函数 | 注释 |
 |:---|:---|:---|
-| 数据源中创建的记录 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
+| 数据源中创建的记录 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则将其设置为与 _TimeReceived 相同的时间。 |
 | Azure Monitor 摄取终结点接收的记录 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| 存储在工作区中的记录，可用于查询 | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
+| 存储在工作区中的记录，可用于查询 | [ingestion_time （）](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟
-可以通过将[ingestion_time （）](/azure/kusto/query/ingestiontimefunction)函数的结果与_TimeGenerated_属性进行比较来度量特定记录的滞后时间。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
+您可以通过将[ingestion_time （）](/azure/kusto/query/ingestiontimefunction)函数的结果与_TimeGenerated_属性进行比较来度量特定记录的滞后时间。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
 例如，以下查询将显示在之前8小时内哪些计算机的引入时间最长： 
 

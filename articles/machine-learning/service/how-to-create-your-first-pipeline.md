@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 329fa301917fec368b0e76ab970d8ece72aa66c5
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 85c80a5b9f2c0ac7b73fb51fd8138e3aae0b0221
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561401"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894671"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -366,7 +366,7 @@ dataframe = iris_dataset.to_pandas_dataframe()
 提交管道时，Azure 机器学习会检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也作为工作区试验的一部分存储。
 
 > [!IMPORTANT]
-> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 >
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -526,10 +526,9 @@ p.disable()
 
 为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如，您可以选择：
 + 通过在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置 `allow_reuse=False` 来**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时，重复使用是关键的，因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
-+ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 为其他文件和目录包含绝对路径或相对路径 source_directory 
 + **为运行中的所有步骤强制执行输出**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-默认情况下，将启用 `allow_reuse` 的步骤，并且仅对主脚本文件进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），则会重复使用上一步运行的输出，该作业不会提交到计算，而以前运行的结果立即可用于下一步骤。  
+默认情况下，将启用步骤 `allow_reuse`，并对步骤定义中指定的 `source_directory` 进行哈希处理。 因此，如果给定步骤的脚本与` source_directory` （`script_name`、输入和参数）保持不变，并且中的任何其他内容都已更改，则会重复使用上一步运行的输出，而不会将作业提交到计算，而以前运行的结果立即可用于下一步骤。
 
 ```python
 step = PythonScriptStep(name="Hello World",

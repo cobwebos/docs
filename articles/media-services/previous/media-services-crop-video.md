@@ -1,6 +1,6 @@
 ---
 title: 如何使用 Media Encoder Standard 裁剪视频 - Azure | Microsoft 文档
-description: 本文说明如何使用 Media Encoder Standard 裁剪视频。
+description: 裁剪是指在视频帧内选择一个矩形窗口并且只编码该窗口内的像素的过程。 本文演示如何通过 Media Encoder Standard 来裁剪视频。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016616"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887758"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频  
 
@@ -27,7 +27,7 @@ ms.locfileid: "69016616"
 
 ![裁剪视频](./media/media-services-crop-video/media-services-crop-video01.png)
 
-假设作为输入的视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 可以使用 MES 裁剪或去掉黑色长条，并编码 1440x1080 区域。
+假设作为输入的视频的分辨率为 1920x1080 像素（16:9 纵横比），不过因为左侧和右侧有黑色长条（圆柱框），导致包含活动视频的区域只有 4:3 窗口或 1440x1080 像素。 可以使用 MES 裁剪或去掉黑色长条，然后编码 1440x1080 区域。
 
 MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪参数适用于原始输入视频。 编码是后续阶段，因此，宽度/高度设置适用于*经过预先处理的*视频，而非原始视频。 在设计预设值时，需要执行以下操作：(a) 根据原始输入视频选择裁剪参数；(b) 根据裁剪后的视频选择编码设置。 如果编码设置与裁剪后的视频不匹配，输出会不如预期。
 
@@ -128,7 +128,7 @@ MES 中的裁剪是预处理阶段，因此，编码预设​​值中的裁剪�
 
 
 ## <a name="restrictions-on-cropping"></a>裁剪的限制
-裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量，以此确定针对该特定视频调整的编码预设值等。此功能的本意并非实现诸如自动检测及删除输入视频黑边之类的功能。
+裁剪功能仅供手动操作。 需要将输入视频加载到合适的编辑工具中，以便选择感兴趣的帧、定位光标以确定裁剪矩形的偏移量、确定为该特定视频调整的编码预设值等。此功能并不旨在实现：自动检测和删除输入视频中的黑色黑边/黑边边框。
 
 裁剪功能受到以下限制。 如果不符合以下情况，编码任务可能会失败或生成非预期的输出。
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792095"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893653"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -86,14 +86,6 @@ ms.locfileid: "74792095"
 
 1. [在本地计算机上下载并运行网关安装程序](https://aka.ms/on-premises-data-gateway-installer)。
 
-1. 安装程序打开后，选择 "**下一步**"。
-
-   ![网关安装程序简介屏幕](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. 选择 **"本地数据网关（推荐）** "，这是标准模式，然后选择 "**下一步**"。
-
-   ![选择数据网关的运行模式](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
-
 1. 查看最低要求，保留默认的安装路径，接受使用条款，然后选择 "**安装**"。
 
    ![查看要求并接受使用条款](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
@@ -104,7 +96,7 @@ ms.locfileid: "74792095"
 
    网关安装只能链接到一个 Azure 帐户。
 
-1. 选择 **"在此计算机上注册新网关 > "** **下一步**"。 此步骤将你的网关安装注册到[网关云服务](#gateway-cloud-service)。
+1. 选择“在此计算机上注册一个新网关” > “下一步”。 此步骤将你的网关安装注册到[网关云服务](#gateway-cloud-service)。
 
    ![在本地计算机上注册网关](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -234,7 +226,7 @@ ms.locfileid: "74792095"
 
 1. 结果将从数据源发回给网关，并发送到网关云服务。 网关云服务随后使用结果。
 
-### <a name="authentication-to-on-premises-data-sources"></a>对本地数据源进行身份验证
+### <a name="authentication-to-on-premises-data-sources"></a>向本地数据源进行身份验证
 
 存储的凭据用于从网关连接到本地数据源。 无论使用哪种用户，网关都将使用存储的凭据进行连接。 对于特定服务（如 DirectQuery 和 LiveConnect），可能存在针对 Power BI 中 Analysis Services 的身份验证例外。
 
@@ -246,7 +238,7 @@ Microsoft 云服务使用[Azure AD](../active-directory/fundamentals/active-dire
 
 如果你不是域管理员，你可能不知道你的 UPN。 若要查找帐户的 UPN，请从工作站运行 `whoami /upn` 命令。 尽管结果类似于电子邮件地址，但结果是本地域帐户的 UPN。
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>使用 Azure AD 同步本地 Active Directory
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>将本地 Active Directory 与 Azure AD 同步
 
 本地 Active Directory 帐户和 Azure AD 帐户的 UPN 必须相同。 因此，请确保每个本地 Active Directory 帐户都与 Azure AD 帐户相匹配。 云服务仅了解 Azure AD 中的帐户。 因此，无需将帐户添加到本地 Active Directory。 如果 Azure AD 中不存在该帐户，则不能使用该帐户。
 
@@ -265,7 +257,7 @@ Microsoft 云服务使用[Azure AD](../active-directory/fundamentals/active-dire
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>常见问题和故障排除
+## <a name="faq-and-troubleshooting"></a>常见问题和疑难解答
 
 有关详细信息，请参阅以下主题：
 

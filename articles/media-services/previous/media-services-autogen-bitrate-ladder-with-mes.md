@@ -1,6 +1,6 @@
 ---
 title: 使用 Media Encoder Standard 自动生成比特率阶梯-Azure |Microsoft Docs
-description: 本主题介绍如何使用 Media Encoder Standard (MES) 根据输入分辨率和比特率自动生成比特率阶梯。 不会超过输入分辨率和比特率。 例如，如果输入在 3Mbps 时为 720p，则输出最多会保持 720p，并且会以低于 3Mbps 的速率开始。
+description: 本主题介绍如何使用 Media Encoder Standard (MES) 根据输入分辨率和比特率自动生成比特率阶梯。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543551"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896020"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Media Encoder Standard 自动生成比特率阶梯  
 
@@ -43,7 +43,7 @@ ms.locfileid: "69543551"
 - 向作业添加一个编码任务，指定使用“自适应流式处理”预设。 
 - 创建包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
-- 提交作业。
+- 提交该作业。
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -176,7 +176,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|1080|1920|6780|
+|第|1080|1920|6780|
 |2|720|1280|3520|
 |3|540|960|2210|
 |4|360|640|1150|
@@ -188,7 +188,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|720|1280|2940|
+|第|720|1280|2940|
 |2|540|960|1850|
 |3|360|640|960|
 |4|270|480|600|
@@ -199,7 +199,7 @@ namespace AdaptiveStreamingMESPresest
 
 |层|高度|宽度|比特率 (kbps)|
 |---|---|---|---|
-|1|360|640|700|
+|第|360|640|700|
 |2|270|480|440|
 |3|180|320|230|
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
@@ -208,6 +208,6 @@ namespace AdaptiveStreamingMESPresest
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [媒体服务编码概述](media-services-encode-asset.md)
 

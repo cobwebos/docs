@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596363"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900369"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -44,10 +44,11 @@ ms.locfileid: "72596363"
 | 设备标识类型 | 标识基础结构 | Windows 设备 | VDI 平台版本 | 受支持 |
 | --- | --- | --- | --- | --- |
 | 已加入混合 Azure AD | 联合 | Windows 当前 * * * 和 Windows 下层 * * * * | 永久 | 是 |
-|   |   |   | 非持久 | 是 |
-|   | 托管 * * | Windows 当前和 Windows 下层 | 永久 | 是 |
-|   |   | Windows 下层设备 | 非持久 | 是 |
 |   |   | Windows 当前 | 非持久 | No |
+|   |   | Windows 下层设备 | 非持久 | 是 |
+|   | 托管 * * | Windows 当前和 Windows 下层 | 永久 | 是 |
+|   |   | Windows 当前 | 非持久 | No |
+|   |   | Windows 下层设备 | 非持久 | 是 |
 | 已加入 Azure AD | 联合 | Windows 当前 | 永久 | No |
 |   |   |   | 非持久 | No |
 |   | 托管 | Windows 当前 | 永久 | No |
@@ -59,11 +60,11 @@ ms.locfileid: "72596363"
 
 \***联合**标识基础结构环境表示具有标识提供者的环境，如 AD FS 或其他第三方 IDP。
 
-\* \***托管**标识基础结构环境表示一个环境，Azure AD 作为使用[密码哈希同步（PHS）](../hybrid/whatis-phs.md)或[传递身份验证（PTA）](../hybrid/how-to-connect-pta.md) [部署的标识提供者无缝单一登录](../hybrid/how-to-connect-sso.md)。
+\*\***托管**标识基础结构环境表示一个环境，Azure AD 作为使用[密码哈希同步（PHS）](../hybrid/whatis-phs.md)或[直通身份验证（PTA）（](../hybrid/how-to-connect-pta.md)具有[无缝单一登录](../hybrid/how-to-connect-sso.md)）部署的标识提供者。
 
-\* \* \* **windows 当前**设备表示 windows 10、windows server 2016 和 windows server 2019。
+\*\*\* **windows 当前**设备表示 windows 10、windows server 2016 和 windows server 2019。
 
-\* \* \* \* **windows 下层**设备表示 windows 7、Windows 8.1、windows Server 2008 R2、windows server 2012 和 windows Server 2012 R2。 有关 Windows 7 的支持信息，请参阅对[windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。 有关 Windows Server 2008 R2 的支持信息，请参阅[准备 Windows server 2008 终止支持](https://www.microsoft.com/cloud-platform/windows-server-2008)。
+\*\*\*\* **windows 下层**设备表示 windows 7、Windows 8.1、windows Server 2008 R2、windows server 2012 和 windows Server 2012 R2。 有关 Windows 7 的支持信息，请参阅对[windows 7 的支持正在结束](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。 有关 Windows Server 2008 R2 的支持信息，请参阅[准备 Windows server 2008 终止支持](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 ## <a name="microsofts-guidance"></a>Microsoft 指南
 
@@ -79,8 +80,7 @@ ms.locfileid: "72596363"
 部署非持久性 VDI 时，IT 管理员应密切关注如何管理 Azure AD 中的过时设备。 Microsoft 建议 IT 管理员执行以下指导。 如果不这样做，会导致目录中有大量过时混合 Azure AD 联接的设备，这些设备已从非持久性 VDI 平台注册。
 
 - 为计算机的显示名称创建并使用一个前缀，将桌面指定为基于 VDI 的计算机。
-- 在注销脚本中实现以下命令。 这些命令将触发对 Azure AD 删除设备的尽力操作调用。
-   - 对于 Windows 当前设备– dsregcmd.exe/leave
+- 在注销脚本中实现以下命令。 此命令将触发对 Azure AD 删除设备的尽力操作调用。
    - 对于 Windows 下层设备–了 autoworkplace.exe/leave
 - 定义并实现[管理过时设备](manage-stale-devices.md)的过程。
    - 一旦你有策略来识别你的非持久性混合 Azure AD 联接设备，你就可以更积极地在这些设备上进行清理，以确保你的目录不会被大量过时设备使用。

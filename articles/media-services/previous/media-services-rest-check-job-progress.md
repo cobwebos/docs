@@ -1,6 +1,6 @@
 ---
 title: 如何使用 REST API 检查作业进度 | Microsoft Docs
-description: 了解如何跟踪作业进度。
+description: 本文演示如何使用 Azure 媒体服务 v2 REST API 来检查作业进度。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869495"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901498"
 ---
 # <a name="how-to-check-job-progress"></a>如何：检查作业进度
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 运行作业时，通常需要采用某种方式来跟踪作业进度。 可以使用作业的 State 属性来查看该作业的状态。 有关 State 属性的详细信息，请参阅[作业实体属性](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)。
 

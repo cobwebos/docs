@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152939"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893563"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自动缩放疑难解答
  
@@ -115,7 +115,7 @@ Azure Monitor 自动缩放功能可帮助你使用适当数量的资源来处理
 
 ![自动缩放诊断设置](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-上图显示 Azure 门户自动缩放诊断设置。 可以在其中选择 "诊断日志" 选项卡并启用日志收集和路由。 你还可以使用 REST API、CLI、PowerShell、资源管理器模板为诊断设置执行相同的操作，方法是选择 "资源类型" 作为 " *AutoscaleSettings*"。 
+上图显示 Azure 门户自动缩放诊断设置。 可以在其中选择 "诊断/资源日志" 选项卡，并启用日志收集和路由。 你还可以使用 REST API、CLI、PowerShell、资源管理器模板为诊断设置执行相同的操作，方法是选择 "资源类型" 作为 " *AutoscaleSettings*"。 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>使用自动缩放日志进行故障排除 
 

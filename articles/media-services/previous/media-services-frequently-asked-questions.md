@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务常见问题 | Microsoft 文档
-description: 常见问题 (FAQ)
+description: 本文提供了有关 Azure 媒体服务的常见问题的解答。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3164445dc28a2436d8492902d865414da8d75702
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aeff680392fbe966682b57ca1318fac9f0d1d93
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463890"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895987"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -26,7 +26,7 @@ ms.locfileid: "61463890"
 
 ## <a name="general-ams-faqs"></a>一般性的 AMS 常见问题
 
-问：如何流式传输到 Apple iOS 设备？
+问：你如何流式传输到 Apple iOS 设备？
 
 答：向 URL 的“/Manifest”部分添加“(format=m3u8-aapl)”路径，告知流式处理源服务器返回供 Apple iOS 本机设备使用的 HLS 内容（有关详细信息，请参阅[传送内容](media-services-deliver-content-overview.md)）。
 
@@ -36,7 +36,7 @@ ms.locfileid: "61463890"
 
 问：我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
-答：最常见的原因之一是，没有“正在运行”  状态下从其播放的流式处理终结点。  
+答：最常见的原因之一是，你没有尝试**播放的流式**处理终结点。  
 
 问：我是否可以在实时流上进行合成操作？
 
@@ -56,11 +56,11 @@ ms.locfileid: "61463890"
 
 问：AMS 支持使用哪些字符来为文件命名？
 
-答：生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
+答：当为流内容生成 Url 时（例如，http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters），媒体服务将使用 IAssetFile.Name 属性的值。出于此原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
 
 问：如何使用 REST 进行连接？
 
-答：若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+答：有关如何连接到 AMS API 的信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
 问：如何在编码过程中旋转视频？
 

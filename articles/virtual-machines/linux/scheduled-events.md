@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 818ebbf15cdbc985c7a1cc14597dc538e62894cf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c0b30ecb9bc2b029141e528139f2b8a308c3a8dd
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793393"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892832"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -76,7 +76,7 @@ ms.locfileid: "74793393"
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2017-11-01 | 常规可用性 | 所有 | <li> 添加了对低优先级 VM 逐出事件 \ "Preempt" 的支持<br> | 
+| 2017-11-01 | 常规可用性 | 所有 | <li> 添加了对点 VM 逐出事件 \ "Preempt" 的支持<br> | 
 | 2017-08-01 | 常规可用性 | 所有 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | 所有 | <li>初始版本
 
@@ -129,7 +129,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |properties  |  描述 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会挂起，但不会影响内存或打开的文件。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除低优先级虚拟机（临时磁盘将丢失）。|
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会挂起，但不会影响内存或打开的文件。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除点虚拟机（临时磁盘将丢失）。|
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 此列表确保包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务执行实时传送视频流以创建多比特率流 | Microsoft Docs
-description: 本主题介绍如何设置频道，以从本地编码器接收单比特率实时流，并使用媒体服务执行实时编码以将其转换为自适应比特率流。 然后，该流可使用以下自适应流式传输协议之一，通过一个或多个流式传输终结点传送给客户端播放应用程序：HLS、平滑流、MPEG DASH。
+description: 本主题介绍如何设置频道，以从本地编码器接收单比特率实时流，并使用媒体服务执行实时编码以将其转换为自适应比特率流。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598304"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895912"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -342,7 +342,7 @@ Default720p 会将视频编码为以下 6 层。
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
 ## <a name="next-step"></a>后续步骤
 

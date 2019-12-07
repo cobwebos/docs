@@ -1,6 +1,6 @@
 ---
 title: 连接到 Azure 媒体服务 v3 API-.NET
-description: 了解如何通过 .NET 连接到媒体服务 v3 API。
+description: 本文演示如何通过 .NET 连接到媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122883"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899896"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 .NET SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请确保记住资源组名称和媒体服务帐户名
 - 安装要用于 .NET 开发的工具。 本文中的步骤演示如何使用[Visual Studio 2019 社区版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，请[参阅C#使用](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用其他代码编辑器。
@@ -35,17 +35,17 @@ ms.locfileid: "71122883"
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio。 
-1. 在 "**文件**" 菜单中，单击 "**新建** > **项目**"。 
+1. 在 "**文件**" 菜单上，单击 "**新建** > **项目**"。 
 1. 创建 **.Net Core**控制台应用程序。
 
-本主题中的示例应用程序为`netcoreapp2.0`目标。 此代码使用从C# 7.1 开始提供的 "async main"。 有关更多详细信息，请参阅此[博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)。
+本主题中的示例应用程序以 `netcoreapp2.0`为目标。 此代码使用从C# 7.1 开始提供的 "async main"。 有关更多详细信息，请参阅此[博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)。
 
 ## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
 
-1. 在 Visual Studio 中选择 "**工具** > " "**nuget 包管理器** > " "**nuget 管理器控制台**"。
-2. 在 "**程序包管理器控制台**" 窗口`Install-Package`中，使用命令添加以下 NuGet 包。 例如， `Install-Package Microsoft.Azure.Management.Media` 。
+1. 在 Visual Studio 中，选择 "**工具**" > Nuget**包管理器** > " **nuget 管理器控制台**"。
+2. 在 "**程序包管理器控制台**" 窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。 例如，`Install-Package Microsoft.Azure.Management.Media` 。
 
-|package|描述|
+|程序包|描述|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒体服务 SDK。 <br/>若要确保使用最新的 Azure 媒体服务包，请检查 " [Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)媒体服务"。|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|适用于 Azure SDK for NET 的 ADAL 身份验证库|
@@ -57,20 +57,20 @@ ms.locfileid: "71122883"
 
 ### <a name="create-appsettingsjson"></a>创建 appsettings
 
-1. 中转**一般** > **文本文件**。
+1. 开始**常规** > **文本文件**。
 1. 将其命名为 "appsettings"。
 1. 将该文件的 "复制到输出目录" 属性设置为 "如果较新则复制" （以便应用程序能够在发布时进行访问）。
 
 ### <a name="set-values-in-appsettingsjson"></a>设置 appsettings 中的值
 
-运行命令，如[access api](access-api-cli-how-to.md)中所述。 `az ams account sp create` 此命令将返回应复制到 "appsettings" 中的 json。
+运行 `az ams account sp create` 命令，如[Access api](access-api-cli-how-to.md)中所述。 此命令将返回应复制到 "appsettings" 中的 json。
  
 ## <a name="add-configuration-file"></a>添加配置文件
 
 为方便起见，请添加负责从 "appsettings" 读取值的配置文件。
 
 1. 将一个新的 .cs 类添加到项目。 将它命名为 `ConfigWrapper`。 
-1. 将以下代码粘贴到此文件中（本示例假定您具有命名空间`ConsoleApp1`）。
+1. 将以下代码粘贴到此文件中（此示例假定已 `ConsoleApp1`命名空间。）
 
 ```csharp
 using System;
@@ -228,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
-- [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
-- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+- [教程：上传、编码和流式处理视频-.NET](stream-files-tutorial-with-api.md) 
+- [教程：通过媒体服务进行实时流式处理 v3-.NET](stream-live-tutorial-with-api.md)
+- [教程：通过媒体服务 v3-.NET 分析视频](analyze-videos-tutorial-with-api.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
 - [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [.NET 参考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 有关更多代码示例，请参阅[.NET SDK 示例](https://github.com/Azure-Samples/media-services-v3-dotnet)存储库。

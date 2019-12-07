@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555583"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893529"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor CLI 快速入门示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
@@ -160,7 +160,7 @@ az monitor log-profiles delete --name <profile name>
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>创建诊断日志设置 
+### <a name="create-a-diagnostic-setting"></a>创建诊断设置 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

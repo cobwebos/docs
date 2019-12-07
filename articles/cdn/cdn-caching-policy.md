@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 媒体服务中管理 Azure CDN 缓存策略 | Microsoft Docs
-description: 了解如何在 Azure 媒体服务中管理 Azure CDN 缓存策略。
+description: 本文介绍如何在 Azure 媒体服务中管理 Azure CDN 缓存策略。
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61069430"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892566"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒体服务中管理 Azure CDN 缓存策略
 Azure 媒体服务提供基于 HTTP 的自适应流式处理和渐进式下载。 基于 HTTP 的流式处理是高度可缩放的功能，具有可以在代理和 CDN 层中缓存以及在客户端缓存的优点。 流式处理终结点提供常用的流式处理功能以及针对 HTTP 缓存标头的配置。 流式处理终结点设置 HTTP Cache-Control: max-age 和 Expires 标头。 可以从 [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) 获取更多有关 HTTP 缓存标头的信息。

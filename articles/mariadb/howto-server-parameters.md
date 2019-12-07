@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3477820cb20d856c2e979cdfbe5528113bf4b562
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 59d18ea11699ed77763c162e4930b159fcd19fe2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769398"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888659"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
@@ -77,6 +77,8 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 CALL mysql.az_load_timezone();
 ```
 
+> [!IMPORTANT]
+> 你应重新启动服务器，以确保正确填充时区表。 若要重新启动服务器，请使用[Azure 门户](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 要查看可用的时区值，请运行以下命令：
 
 ```sql

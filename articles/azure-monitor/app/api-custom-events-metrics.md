@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030699"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893376"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -30,7 +30,7 @@ ms.locfileid: "74030699"
 | [`TrackMetric`](#trackmetric) |性能度量，例如与特定事件不相关的队列长度。 |
 | [`TrackException`](#trackexception) |记录诊断的异常。 跟踪与其他事件的相关性，以及检查堆栈跟踪。 |
 | [`TrackRequest`](#trackrequest) |记录服务器请求的频率和持续时间以进行性能分析。 |
-| [`TrackTrace`](#tracktrace) |诊断日志消息。 还可以捕获第三方日志。 |
+| [`TrackTrace`](#tracktrace) |资源诊断日志消息。 还可以捕获第三方日志。 |
 | [`TrackDependency`](#trackdependency) |记录对应用依赖的外部组件的调用持续时间和频率。 |
 
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
@@ -146,9 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-`customEvents`Application Insights Analytics[ 的 ](analytics.md) 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
+[Application Insights Analytics](analytics.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
 
-如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
+如果正在进行[采样](../../azure-monitor/app/sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 为获取自定义事件的正确计数，应使用诸如 `customEvents | summarize sum(itemCount)`的代码。
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -242,7 +242,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 不是发送指标的首选方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现自己的预聚合逻辑，则可以使用 TrackMetric() 方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
+> Applicationinsights.config. TelemetryClient. TrackMetric 不是发送指标的首选方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现自己的预聚合逻辑，可以使用 TrackMetric （）方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
 
 Application Insights 可绘制未附加到特定事件的指标。 例如，可以定期监视队列长度。 对指标而言，变化和趋势比单个度量值更具价值，因此统计图表非常实用。
 
@@ -287,7 +287,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
-`customMetrics`Application Insights Analytics[ 的 ](analytics.md) 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
+[Application Insights Analytics](analytics.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
 
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
 * `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
@@ -574,7 +574,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 记录诊断事件，例如进入或离开某个方法。
 
- 参数 | 说明
+ 参数 | 描述
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
 `properties` | 字符串到字符串的映射：用于筛选门户中的[异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
@@ -705,7 +705,7 @@ dependencies
 
 ## <a name="flushing-data"></a>刷新数据
 
-通常，SDK 以固定的间隔（通常为 30 秒）或每当缓冲区已满（通常为 500 项）时发送数据。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
+通常，SDK 会按固定的时间间隔（通常为30秒）发送数据，或在缓冲区已满时（通常为500项）发送数据。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
 
 *C#*
 
@@ -1011,7 +1011,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 可以先通过编写代码来处理遥测数据，再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
-通过实现 [ ](../../azure-monitor/app/api-filtering-sampling.md#add-properties)将属性添加到`ITelemetryInitializer`遥测。 例如，可添加版本号或从其他属性计算得出的值。
+通过实现 `ITelemetryInitializer` [将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
 [筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
 
@@ -1077,7 +1077,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-对于 Node.js，可以启用开发人员模式，方法是通过 `setInternalLogging` 启用内部日志记录，并将 `maxBatchSize` 设置为 0，从而在收集到遥测数据后立即发送。
+对于 node.js，可以通过 `setInternalLogging` 启用内部日志记录并将 `maxBatchSize` 设置为0来启用开发人员模式，这会导致遥测收集后立即发送。
 
 ```js
 applicationInsights.setup("ikey")
@@ -1168,7 +1168,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
 * **User**：用户信息。
 
-## <a name="limits"></a>限制
+## <a name="limits"></a>Limits
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 

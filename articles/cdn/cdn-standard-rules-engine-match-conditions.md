@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171611"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900179"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 的标准规则引擎中的匹配条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "74171611"
 ---------|----------------
 等于，不等于 | 2.0、1.1、1.0、0.9、全部
 
-### <a name="request-cookies"></a>请求 cookie
+### <a name="request-cookies"></a>请求 Cookie
 
 标识基于传入请求中的 cookie 信息的请求。
 
@@ -58,11 +58,11 @@ ms.locfileid: "74171611"
 
 Cookie 名称 | 运算符 | Cookie 值 | 大小写转换
 ------------|----------|--------------|---------------
-String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 #### <a name="key-information"></a>重要信息
 
-- 指定 cookie 名称时，不能使用通配符值（包括星号（\*））;以下使用准确的 cookie 名称。
+- 指定 cookie 名称时，不能使用通配符值（包括星号（\*））;必须使用精确的 cookie 名称。
 - 对于此匹配条件的每个实例，只能指定一个 cookie 名称。
 - Cookie 名称比较不区分大小写。
 - 若要指定多个 cookie 值，请在每个 cookie 值之间使用一个空格。 
@@ -77,7 +77,7 @@ String | [标准操作员列表](#standard-operator-list) | String、Int | 无�
 
 参数名称 | 运算符 | 参数值 | 大小写转换
 --------------|----------|----------------|---------------
-String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 ### <a name="query-string"></a>查询字符串
 
@@ -97,10 +97,10 @@ String | [标准操作员列表](#standard-operator-list) | String、Int | 无�
 
 运算符 | 支持的值
 ---------|-----------------
-任意 | 不适用
+任意 | N/A
 地域匹配 | 国家/地区代码
 IP 匹配 | IP 地址（以空格分隔）
-不是任何 | 不适用
+不是任何 | N/A
 非地理匹配 | 国家/地区代码
 不匹配 IP | IP 地址（以空格分隔）
 
@@ -109,7 +109,7 @@ IP 匹配 | IP 地址（以空格分隔）
 - 使用 CIDR 表示法。
 - 若要指定多个 IP 地址和 IP 地址块，请在值之间使用一个空格：
   - **IPv4 示例**： *1.2.3.4 10.20.30.40*匹配来自地址1.2.3.4 或10.20.30.40 的任何请求。
-  - **IPv6 示例**： *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 匹配来自地址1:2:3:4:5:6:7:8 或10:20:30:40:50:60:70:80 的任何请求。
+  - **IPv6 示例**： *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80*匹配来自地址1:2:3:4:5:6:7:8 或10:20:30:40:50:60:70:80 的任何请求。
 - IP 地址块的语法为 IP 基址后跟正斜杠和前缀大小。 例如：
   - **IPv4 示例**： *5.5.5.64/26*匹配来自通过5.5.5.127 的地址5.5.5.64 的任何请求。
   - **IPv6 示例**： *1:2:3:/48*匹配来自地址1:2:3:0:0:0:0:0 到1：2：3： ffff： ffff： ffff： ffff： ffff： ffff： ffff： ffff： ffff： ffff： ffff 的所有请求。
@@ -132,7 +132,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 标头名称 | 运算符 | 标头值 | 大小写转换
 ------------|----------|--------------|---------------
-String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 ### <a name="request-method"></a>请求方法
 
@@ -178,7 +178,7 @@ String | [标准操作员列表](#standard-operator-list) | String、Int | 无�
 
 #### <a name="required-fields"></a>必填字段
 
-运算符 | 分机 | 大小写转换
+运算符 | 扩展 | 大小写转换
 ---------|-----------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
@@ -206,7 +206,7 @@ String | [标准操作员列表](#standard-operator-list) | String、Int | 无�
 
 #### <a name="required-fields"></a>必填字段
 
-运算符 | 值 | 大小写转换
+运算符 | Value | 大小写转换
 ---------|-------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 

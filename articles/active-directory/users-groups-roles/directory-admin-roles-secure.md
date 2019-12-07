@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028456"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900790"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -76,7 +76,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 ## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>阶段 1：建议立即执行的关键项目
 
-![阶段 1 要首先完成的关键项目](./media/directory-admin-roles-secure/stage-one.png)
+![第1阶段要首先执行的关键项目](./media/directory-admin-roles-secure/stage-one.png)
 
 路线图的阶段 1 着重于那些执行速度快且容易的关键任务。 建议在第一个 24-48 小时内快速执行这些项目，确保安全地进行基本级别的特权访问。 此阶段的安全特权访问路线图包括以下操作：
 
@@ -94,7 +94,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 2. 若要选择的租户是需要在其中使用 Privileged Identity Management 的租户，请选择 Azure 门户右上角的用户名。
 
-3. 选择“所有服务”，然后从列表中筛选出“Azure AD Privileged Identity Management”。
+3. 在 "Azure 门户" 菜单上，选择 "**所有服务**" 并筛选**Azure AD Privileged Identity Management**列表。
 
 4. 打开“所有服务”列表中的 Open Privileged Identity Management，将其固定到仪表板。
 
@@ -102,7 +102,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>对特许权限高的角色中的帐户进行标识和分类 
 
-启用 Azure AD Privileged Identity Management 后，请查看目录角色为“全局管理员”、“特权角色管理员”、“Exchange Online 管理员”和“SharePoint Online 管理员”的用户。 如果租户中没有 Azure AD PIM，则可使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为该角色是通用的：分配了此管理员角色的用户在组织已订阅的所有云服务中具有相同的权限，不管该角色是通过 Microsoft 365 管理中心或 Azure 门户分配的，还是通过用于 Microsoft PowerShell 的 Azure AD 模块分配的。 
+启用 Azure AD Privileged Identity Management 后，请查看目录角色为“全局管理员”、“特权角色管理员”、“Exchange Online 管理员”和“SharePoint Online 管理员”的用户。 如果租户中没有 Azure AD PIM，则可使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 开始使用全局管理员角色，因为此角色是通用的：分配了此管理员角色的用户在组织已订阅的所有云服务中具有相同的权限，无论是否已在 Microsoft 365 中为其分配了此角色管理中心、Azure 门户或使用 Microsoft PowerShell 的 Azure AD 模块。 
 
 删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 
@@ -127,7 +127,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>阶段 2：减轻最常用攻击手段的危害
 
-![阶段 2 减轻常用攻击的危害](./media/directory-admin-roles-secure/stage-two.png)
+![阶段2减少经常使用的攻击](./media/directory-admin-roles-secure/stage-two.png)
 
 路线图的阶段 2 着重于减轻进行凭据窃取和滥用时最常用的攻击手段导致的危害，并且可在约 2-4 周内实现。 此阶段的安全特权访问路线图包括以下操作。
 
@@ -139,7 +139,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 * 标识具有管理角色的用户及其可以在其中进行管理的服务。
 * 通过 Azure AD PIM 找出组织中哪些用户具有 Azure AD 的管理员访问权限，包括未在阶段 1 中列出的其他角色。
-* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常见业务功能，并向组织中的人员授予在[Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 通过 Microsoft 365 管理中心找出组织中哪些用户可以通过管理员身份来访问 Office 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全方面的最佳做法](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
+* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常见业务功能，并向组织中的人员授予在[Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 使用 Microsoft 365 管理中心了解你的组织中哪些用户具有对 Office 365 的管理员访问权限，包括通过未在 Azure AD 中托管的角色。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全方面的最佳做法](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 在组织所依赖的其他服务（例如 Azure、Intune 或 Dynamics 365）中执行清单操作。
 * 确保管理员帐户（用于管理目的的帐户，不只是用户的日常帐户）有附加的工作电子邮件地址，并且已注册使用 Azure MFA 或使用本地 MFA。
 * 要求用户提供进行管理访问的业务理由。
@@ -169,7 +169,7 @@ Azure AD 建议你要求对所有用户进行多重身份验证 (MFA)，这包�
 
 启用以下功能：
 
-* [使用条件访问策略的 MFA](../authentication/howto-mfa-getstarted.md)，适用于组织中的所有用户。
+* 为组织中的所有用户[使用条件性访问策略](../authentication/howto-mfa-getstarted.md)。
 
 如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。 
 
@@ -187,7 +187,7 @@ Azure AD 标识保护是一种基于算法的监视和报告工具，可以用�
 
 #### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>配置 Office 365 活动监视（如果使用 Office 365）
 
-可以监视组织中的人员如何使用 Office 365 服务，以便标识那些具有管理帐户但因未登录到相关门户而可能不需要 Office 365 访问权限的用户。 有关详细信息，请参阅 [Microsoft 365 管理中心中的活动报表](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
+可以监视组织中的人员如何使用 Office 365 服务，以便标识那些具有管理帐户但因未登录到相关门户而可能不需要 Office 365 访问权限的用户。 有关详细信息，请参阅[Microsoft 365 管理中心中的活动报表](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>确定事件/紧急情况响应计划所有者
 
@@ -205,7 +205,7 @@ Azure AD 标识保护是一种基于算法的监视和报告工具，可以用�
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>从管理员角色中删除 Microsoft 帐户
 
-不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，将其替换为 Azure Active Directory 工作或学校帐户（例如，chris@contoso.com）。
+不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，并将替换为 Azure Active Directory （例如 chris@contoso.com）工作或学校帐户。
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
@@ -215,12 +215,12 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="configure-conditional-access-policies"></a>配置条件访问策略
 
-为本地应用程序和托管在云中的应用程序准备条件访问策略。 如果你有用户加入工作区的设备，请[通过使用 Azure Active Directory 设备注册来获取有关设置本地条件性访问](../active-directory-device-registration-on-premises-setup.md)的详细信息。
+为本地应用程序和云托管应用程序准备条件性访问策略。 如果你有用户加入工作区的设备，请[通过使用 Azure Active Directory 设备注册来获取有关设置本地条件性访问](../active-directory-device-registration-on-premises-setup.md)的详细信息。
 
 
 ## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>阶段 3：构建管理活动的可见性并对其进行完全控制
 
-![阶段 3 控制管理活动](./media/directory-admin-roles-secure/stage-three.png)
+![阶段3控制管理活动](./media/directory-admin-roles-secure/stage-three.png)
 
 阶段 3 以阶段 2 的缓解措施为基础，按设计应在大约 1-3 个月内实施。 此阶段的安全特权访问路线图包括以下组件。
 
@@ -261,7 +261,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>确定是否向基于密码的登录协议公开（如果使用 Exchange Online）
 
-在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在，随着云中的网络攻击风险的增加，建议你确定每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户，通过实施强身份验证要求和条件访问，阻止其通过用户名/密码登录电子邮件。 可以[使用条件访问来阻止旧式身份验证](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)。 如需查看详细信息，请参阅[如何通过 Exchange Online 阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。 
+在过去，协议假定用户名/密码组合已嵌入设备中、电子邮件帐户中、电话中，等等。 但现在，对于云中网络攻击的风险，我们建议你确定每个可能的用户，如果他们的凭据已泄露，则可能会向组织造成灾难性后果，并使他们无法通过执行强身份验证要求和条件访问来通过用户名/密码登录电子邮件。 可以[使用条件性访问阻止旧身份验证](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)。 请查看有关如何通过 Exchange online[阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)的详细信息。 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>针对 Office 365 角色完成角色审核评估（如果使用 Office 365）
 
@@ -306,7 +306,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="configure-conditional-access"></a>配置条件访问
 
-根据组、位置和应用程序敏感性为 [SaaS 应用](https://azure.microsoft.com/overview/what-is-saas/)和 Azure AD 连接应用配置条件访问。 
+基于组、位置和应用程序敏感性为[SaaS 应用](https://azure.microsoft.com/overview/what-is-saas/)和 Azure AD 连接的应用配置条件访问。 
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>监视连接的云应用中的活动
 
@@ -322,7 +322,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>阶段 4：持续构建防御，采取更主动的安全姿态
 
-![阶段 4 采取主动的安全姿态](./media/directory-admin-roles-secure/stage-four.png)
+![阶段4采用主动安全状况](./media/directory-admin-roles-secure/stage-four.png)
 
 路线图的阶段 4 以阶段 3 的可见性为基础，按设计应在 6 个月或更长时间内实施。 完成路线图有助于制定强大的特权访问保护措施，以便防范那些目前已知存在的可能攻击。 遗憾的是，安全威胁手段始终在发展且不断变化，因此建议你不断地查看安全状况，重点提高以你的环境为目标的攻击者的攻击成本，降低其成功率。
 
@@ -367,7 +367,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>“不受限”紧急措施：在紧急情况下需要做的事情
 
-![适用于不受限紧急访问的帐户](./media/directory-admin-roles-secure/emergency.jpeg)
+![用于紧急中断玻璃访问的帐户](./media/directory-admin-roles-secure/emergency.jpeg)
 
 1. 将事件相关信息通知给主要的管理员和安全官。
 

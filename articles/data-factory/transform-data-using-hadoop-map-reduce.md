@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
+title: 使用 Hadoop MapReduce 活动转换数据
 description: 了解如何通过从 Azure 数据工厂在 Azure HDInsight 群集上运行 Hadoop MapReduce 程序来处理数据。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 49e00d9a47f92fb30a29e7051cba35f54bde3700
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8f66062f5de514390a8e4a3fdea85dd645ff0da1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683859"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893801"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -60,19 +60,19 @@ ms.locfileid: "73683859"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性          | 说明                              | 必选 |
+| properties          | 描述                              | 需要 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | 活动名称                     | 是      |
-| 说明       | 描述活动用途的文本 | 否       |
+| description       | 描述活动用途的文本 | No       |
 | type              | 对于 MapReduce 活动，活动类型是 HDinsightMapReduce | 是      |
 | linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | className         | 要执行的类的名称         | 是      |
-| jarLinkedService  | 对 Azure 存储链接服务的引用，该服务用于存储 Jar 文件。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
+| jarLinkedService  | 对 Azure 存储链接服务的引用，该服务用于存储 Jar 文件。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | No       |
 | jarFilePath       | 提供由 jarLinkedService 引用的 Azure 存储中存储的 Jar 文件的路径。 文件名称需区分大小写。 | 是      |
-| jarlibs           | 作业引用的 Jar 库文件路径的字符串数组，该作业存储在 jarLinkedService 中定义的 Azure 存储中。 文件名称需区分大小写。 | 否       |
-| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）jarLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
-| arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
-| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       |
+| jarlibs           | 作业引用的 Jar 库文件路径的字符串数组，该作业存储在 jarLinkedService 中定义的 Azure 存储中。 文件名称需区分大小写。 | No       |
+| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）jarLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | No       |
+| arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | No       |
+| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | No       |
 
 
 

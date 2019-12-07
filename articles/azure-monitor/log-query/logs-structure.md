@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894252"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893631"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速获取数据的见解是 Azure Monitor 的一项强大功能。 若要创建有效的有用查询，您应该了解一些基本概念，如您所需的数据所在的位置和结构的结构。 本文提供了入门所需的基本概念。
@@ -27,7 +27,7 @@ Azure Monitor 日志中的数据存储在 Log Analytics 工作区或 Application
 ![表](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-除 Application Insights 以外 Azure Monitor 日志收集的所有数据都存储在[Log Analytics 工作区](../platform/manage-access.md)中。 你可以根据特定要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（例如，来自 Azure 资源的活动日志和诊断日志、虚拟机上的代理以及来自见解和监视解决方案的数据）会将数据写入你作为其载入的一部分配置的一个或多个工作区。 其他服务（例如[Azure 安全中心](/azure/security-center/)和[azure Sentinel](/azure/sentinel/) ）还使用 Log Analytics 工作区来存储其数据，以便可以使用日志查询以及监视来自其他源的数据进行分析。
+除 Application Insights 以外 Azure Monitor 日志收集的所有数据都存储在[Log Analytics 工作区](../platform/manage-access.md)中。 你可以根据特定要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（例如，来自 Azure 资源的活动日志和资源日志、虚拟机上的代理以及来自 insights 和监视解决方案的数据）会将数据写入你作为其载入部分配置的一个或多个工作区。 其他服务（例如[Azure 安全中心](/azure/security-center/)和[azure Sentinel](/azure/sentinel/) ）还使用 Log Analytics 工作区来存储其数据，以便可以使用日志查询以及监视来自其他源的数据进行分析。
 
 不同类型的数据存储在工作区中的不同表中，每个表都具有唯一的属性集。 创建工作区时，将一组标准表添加到工作区，并为不同的数据源、解决方案和服务载入添加新表。 你还可以使用[数据收集器 API](../platform/data-collector-api.md)创建自定义表。
 
@@ -43,7 +43,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-有关其创建的表的详细信息，请参阅每个数据源的文档。 示例包括用于[代理数据源](../platform/agent-data-sources.md)、[诊断日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
+有关其创建的表的详细信息，请参阅每个数据源的文档。 示例包括用于[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作区权限
 请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)以了解访问控制策略和建议，以提供对工作区中数据的访问。 除了授予对工作区本身的访问权限外，还可以使用[表级别 RBAC](../platform/manage-access.md#table-level-rbac)限制对各个表的访问。
@@ -59,8 +59,8 @@ union withsource = table *
 | browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
 | customEvents        | 应用程序创建的自定义事件。 |
 | customMetrics       | 应用程序创建的自定义指标。 |
-| 项        | 从应用程序到外部组件的调用。 |
-| 不同          | 应用程序运行时引发的异常。 |
+| 依赖项        | 从应用程序到外部组件的调用。 |
+| 异常          | 应用程序运行时引发的异常。 |
 | pageViews           | 有关每个网站视图的数据与浏览器信息。 |
 | performanceCounters | 支持应用程序的计算资源的性能度量。 |
 | 请求            | 每个应用程序请求的详细信息。  |

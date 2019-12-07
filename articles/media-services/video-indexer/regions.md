@@ -1,7 +1,7 @@
 ---
 title: 提供了视频索引器的区域 - Azure
 titleSuffix: Azure Media Services
-description: 本文介绍了提供了视频索引器的 Azure 区域。
+description: 本文介绍 Azure 媒体服务视频索引器可用的 Azure 区域。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b67c89e02091d57b4f2dc901005c2dae36deafc2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838204"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892747"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>存在视频索引器的 Azure 区域
 

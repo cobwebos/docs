@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899149"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893308"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -45,7 +45,7 @@ Azure Monitor 提供了以下用于监视网络的解决方案：
 
 可为应用程序网关和/或网络安全组启用诊断和相应的解决方案。
 
-如果未针对特定资源类型启用诊断日志记录但安装了解决方案，该资源的仪表板边栏选项卡将为空白并显示错误消息。
+如果没有为特定资源类型启用诊断资源日志记录，但安装解决方案，该资源的仪表板边栏选项卡将为空，并显示一条错误消息。
 
 > [!NOTE]
 > 2017年1月，从应用程序网关和网络安全组向 Log Analytics 的工作区发送日志的支持方式已更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。
@@ -100,7 +100,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-以下 PowerShell 脚本提供如何为应用程序网关启用诊断日志记录的示例。
+下面的 PowerShell 脚本提供了有关如何为应用程序网关启用资源日志记录的示例。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,7 +141,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > 网络安全组分析解决方案正迁往社区支持，因为其功能已被[流量分析](../../network-watcher/traffic-analytics.md)取代。
 > - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/)目前提供该解决方案，但该解决方案很快将从 Azure 市场下架。
 > - 对于已向其工作区添加该解决方案的现有客户，它将继续运行，不会有任何变化。
-> - Microsoft 将继续支持使用“诊断设置”将 NSG 诊断日志发送到你的工作区。
+> - Microsoft 将继续支持使用诊断设置将 NSG 资源日志发送到你的工作区。
 
 网络安全组支持以下日志：
 
@@ -171,7 +171,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-以下 PowerShell 脚本提供如何为网络安全组启用诊断日志记录的示例
+下面的 PowerShell 脚本提供如何为网络安全组启用资源日志记录的示例
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

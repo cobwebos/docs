@@ -1,6 +1,6 @@
 ---
-title: 从本地文件创建 Azure 媒体服务作业输入 | Microsoft Docs
-description: 本主题介绍如何从本地文件创建作业输入。
+title: 从本地文件创建 Azure 媒体服务作业输入 |Microsoft Docs
+description: 本文演示如何从本地文件创建 Azure 媒体服务作业输入。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: 94ac332867d46deb426672fbc40cc72cc121fe64
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: a91305f1c5bfb50e0354dc0054d1a149182d921f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998139"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888438"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>从本地文件创建作业输入
 
@@ -32,11 +32,11 @@ ms.locfileid: "69998139"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-以下代码片段将创建一个输出资产 (如果它尚不存在):
+以下代码片段将创建一个输出资产（如果它尚不存在）：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAssetAsync)]
 
-以下代码片段将提交编码作业:
+以下代码片段将提交编码作业：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 

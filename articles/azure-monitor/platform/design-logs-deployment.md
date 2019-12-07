@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 09/20/2019
-ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932350"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894209"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -80,7 +80,7 @@ Log Analytics 工作区可提供：
 
     ![从工作区 Log Analytics 上下文](./media/design-logs-deployment/query-from-workspace.png)
 
-* **资源上下文**：当你访问特定资源、资源组或订阅的工作区时，例如，当你从 Azure 门户中的资源菜单中选择 "**日志**" 时，你只能查看具有的所有表中的资源的日志访问。 此模式中的查询仅限于与该资源关联的数据。 此模式还启用粒度 RBAC。
+* **资源上下文**：当你访问特定资源、资源组或订阅的工作区时，例如，当你从 Azure 门户中的资源菜单中选择**日志**时，只能查看你有权访问的所有表中的资源的日志。 此模式中的查询仅限于与该资源关联的数据。 此模式还启用粒度 RBAC。
 
     ![从资源 Log Analytics 上下文](./media/design-logs-deployment/query-from-resource.png)
 
@@ -90,7 +90,7 @@ Log Analytics 工作区可提供：
     > - Service Fabric
     > - Application Insights
     >
-    > 你可以通过运行查询并检查你感兴趣的记录来测试日志是否与资源正确关联。 如果正确的资源 ID 在[_ResourceId](log-standard-properties.md#_resourceid)属性中，则数据可用于以资源为中心的查询。
+    > 你可以通过运行查询并检查你感兴趣的记录来测试日志是否与资源正确关联。 如果[_ResourceId](log-standard-properties.md#_resourceid)属性中有正确的资源 ID，则数据可用于以资源为中心的查询。
 
 Azure Monitor 根据你执行日志搜索的上下文，自动确定正确的模式。 范围始终显示在 Log Analytics 的左上方。
 
@@ -147,7 +147,7 @@ Operation
 
 所有资源、监视解决方案和见解（如 Application Insights 和用于 VM 的 Azure Monitor）、支持由不同团队维护的基础结构和应用程序配置为将收集的日志数据转发给 IT 组织集中式共享工作区。 为每个团队的用户授予对其访问权限的资源的访问权限。
 
-部署工作区体系结构后，可以使用[Azure 策略](../../governance/policy/overview.md)在 azure 资源上强制实施此策略。 它提供一种方法来定义策略并确保符合 Azure 资源，以便将所有诊断日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集，可以使用评估工作区相容性和报告结果的现有策略，或自定义以在不符合条件下进行修正。  
+部署工作区体系结构后，可以使用[Azure 策略](../../governance/policy/overview.md)在 azure 资源上强制实施此策略。 它提供一种方法来定义策略并确保符合 Azure 资源，以便将其所有资源日志发送到特定的工作区。 例如，使用 Azure 虚拟机或虚拟机规模集，可以使用评估工作区相容性和报告结果的现有策略，或自定义以在不符合条件下进行修正。  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>工作区合并迁移策略
 
@@ -160,7 +160,7 @@ Operation
 * 确定授予应用程序团队资源的访问权限，并在开发环境中进行测试，然后再在生产环境中实施。
 * 将工作区配置为启用 "**使用资源" 或 "工作区" 权限**。
 * 删除 "应用程序团队" 权限以读取和查询工作区。
-* 启用和配置任何监视解决方案，如 Azure Monitor 容器和/或用于 VM 的 Azure Monitor、你的自动化帐户和管理解决方案（例如，更新管理、启动/停止 Vm 等）部署在原始空间.
+* 启用和配置任何监视解决方案，如 Azure Monitor 容器和/或用于 VM 的 Azure Monitor、你的自动化帐户和管理解决方案（例如，更新管理、启动/停止 Vm 等）部署在原始工作区中。
 
 ## <a name="next-steps"></a>后续步骤
 

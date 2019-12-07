@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂管道中执行 Azure 机器学习管道
+title: 执行 Azure 机器学习管道
 description: 了解如何在 Azure 数据工厂管道中运行 Azure 机器学习管道。
 services: data-factory
 documentationcenter: ''
@@ -7,15 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/10/2019
-author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: a257c7d3f288f9a2e1998bf0679b7146b089cb50
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: djpmsft
+manager: anandsub
+ms.date: 10/10/2019
+ms.openlocfilehash: b9b7ce4b215e3182279b7ffe16124c466ac0dd25
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683889"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893903"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
@@ -44,16 +45,16 @@ ms.locfileid: "73683889"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
-name | 管道中活动的名称 | String | 是
-type | Activity 的类型为 "AzureMLExecutePipeline" | String | 是
+name | 管道中活动的名称 | 字符串 | 是
+type | Activity 的类型为 "AzureMLExecutePipeline" | 字符串 | 是
 linkedServiceName | 链接服务到 Azure 机器学习 | 链接服务引用 | 是
 mlPipelineId | 已发布的 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
-experimentName | 运行历史记录试验机器学习管道运行的名称 | 字符串（或带有 resultType 字符串的表达式） | 否
-mlPipelineParameters | 要传递到已发布 Azure 机器学习管道终结点的键、值对。 键必须与已发布机器学习管道中定义的管道参数的名称匹配 | 具有键值对的对象（或具有 resultType 对象的表达式） | 否
-mlParentRunId | 父 Azure 机器学习管道运行 ID | 字符串（或带有 resultType 字符串的表达式） | 否
-continueOnStepFailure | 如果步骤失败，是否在机器学习管道中继续执行其他步骤 | 布尔值 | 否
+ExperimentName | 运行历史记录试验机器学习管道运行的名称 | 字符串（或带有 resultType 字符串的表达式） | No
+mlPipelineParameters | 要传递到已发布 Azure 机器学习管道终结点的键、值对。 键必须与已发布机器学习管道中定义的管道参数的名称匹配 | 具有键值对的对象（或具有 resultType 对象的表达式） | No
+mlParentRunId | 父 Azure 机器学习管道运行 ID | 字符串（或带有 resultType 字符串的表达式） | No
+continueOnStepFailure | 如果步骤失败，是否在机器学习管道中继续执行其他步骤 | boolean | No
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章了解如何以其他方式转换数据：

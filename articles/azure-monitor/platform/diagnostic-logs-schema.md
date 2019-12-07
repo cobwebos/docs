@@ -1,18 +1,18 @@
 ---
 title: Azure 资源日志支持的服务和架构
-description: 了解 Azure 诊断日志支持的服务和事件架构。
+description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 09d1a25b83f405b45bbefd39766c82565ea86925
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476675"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894073"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -25,7 +25,7 @@ ms.locfileid: "73476675"
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| 名称 | 必需/可选 | 说明 |
+| 名称 | 必需/可选 | 描述 |
 |---|---|---|
 | time | 需要 | 事件时间戳 (UTC)。 |
 | resourceId | 需要 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -39,10 +39,10 @@ ms.locfileid: "73476675"
 | durationMs | 可选 | 操作持续时间，以毫秒为单位。 |
 | callerIpAddress | 可选 | 调用方 IP 地址，如果该操作对应于来自具有公开 IP 地址的实体的 API 调用。 |
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
-| identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
+| 标识 | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
-| location | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
-| properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
+| 位置 | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
+| 属性 | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>资源日志的服务特定架构
 资源诊断日志的架构因资源和日志类别而异。 此列表显示了所有可用的资源日志和链接到服务的服务和特定于类别的架构的服务。
@@ -53,8 +53,8 @@ ms.locfileid: "73476675"
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API 管理 | [API 管理资源日志](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的日志记录](../../application-gateway/application-gateway-diagnostics.md) |
-| Azure 自动化 |[适用于 Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure Batch |[Azure Batch 日志记录](../../batch/batch-diagnostics.md) |
+| Azure 自动化 |[Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure 批处理 |[Azure Batch 日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 日志](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Azure 数据资源管理器 | [Azure 数据资源管理器日志](../../data-explorer/using-diagnostic-logs.md) |
@@ -62,14 +62,14 @@ ms.locfileid: "73476675"
 | 容器注册表 | [Azure 容器注册表的日志记录](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | 内容分发网络 | [用于 CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/logging.md) |
-| Data Factory | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
-| 数据湖分析 |[访问 Azure Data Lake Analytics 的日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| 数据工厂 | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
+| Data Lake 分析 |[访问 Azure Data Lake Analytics 的日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的日志](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中心 |[Azure 事件中心日志](../../event-hubs/event-hubs-diagnostic-logs.md) |
-| Express Route | 架构不可用。 |
+| 快速路由 | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| 密钥保管库 |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md) |
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-master-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
@@ -79,8 +79,8 @@ ms.locfileid: "73476675"
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL 数据库 | [Azure SQL Database 日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
-| 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| SQL Database | [Azure SQL Database 日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Stream Analytics |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |
@@ -109,8 +109,8 @@ ms.locfileid: "73476675"
 |BatchAI/工作区|BaiClusterEvent|BaiClusterEvent|
 |BatchAI/工作区|BaiClusterNodeEvent|BaiClusterNodeEvent|
 |BatchAI/工作区|BaiJobEvent|BaiJobEvent|
-|区块链/blockchainMembers|BlockchainApplication|区块链应用程序|
-|区块链/blockchainMembers|代理|代理|
+|Microsoft.Blockchain/blockchainMembers|BlockchainApplication|区块链应用程序|
+|Microsoft.Blockchain/blockchainMembers|代理|代理|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 |Microsoft.ClassicNetwork/networksecuritygroups|网络安全组规则流事件|网络安全组规则流事件|
 |Microsoft.CognitiveServices/accounts|审核|审核日志|
@@ -137,9 +137,9 @@ ms.locfileid: "73476675"
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
 |Microsoft.DataFactory/factories|TriggerRuns|触发器运行日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
-|Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
+|Microsoft.DataLakeAnalytics/accounts|Requests|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.DataLakeStore/accounts|Requests|请求日志|
 |DataShare/帐户|共享|共享|
 |DataShare/帐户|ShareSubscriptions|共享订阅|
 |DataShare/帐户|SentShareSnapshots|已发送共享快照|
@@ -152,14 +152,14 @@ ms.locfileid: "73476675"
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL 查询存储运行时统计信息|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL 查询存储等待统计信息|
-|DesktopVirtualization/工作区|Checkpoint|Checkpoint|
+|DesktopVirtualization/工作区|检查点|检查点|
 |DesktopVirtualization/工作区|错误|错误|
 |DesktopVirtualization/工作区|管理|管理|
 |DesktopVirtualization/工作区|源|源|
-|DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
+|DesktopVirtualization/applicationGroups|检查点|检查点|
 |DesktopVirtualization/applicationGroups|错误|错误|
 |DesktopVirtualization/applicationGroups|管理|管理|
-|DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
+|DesktopVirtualization/hostPools|检查点|检查点|
 |DesktopVirtualization/hostPools|错误|错误|
 |DesktopVirtualization/hostPools|管理|管理|
 |DesktopVirtualization/hostPools|连接|连接|
@@ -170,7 +170,7 @@ ms.locfileid: "73476675"
 |Microsoft.Devices/IotHubs|DeviceIdentityOperations|设备标识操作|
 |Microsoft.Devices/IotHubs|FileUploadOperations|文件上传操作|
 |Microsoft.Devices/IotHubs|路由|路由|
-|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft.Devices/IotHubs|D2C 孪生操作|D2C 孪生操作|
 |Microsoft.Devices/IotHubs|C2DTwinOperations|C2D 孪生操作|
 |Microsoft.Devices/IotHubs|TwinQueries|孪生查询|
 |Microsoft.Devices/IotHubs|JobsOperations|作业操作|
@@ -187,7 +187,7 @@ ms.locfileid: "73476675"
 |Microsoft.DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
 |EnterpriseKnowledgeGraph/服务|AuditEvent|AuditEvent 日志|
 |EnterpriseKnowledgeGraph/服务|DataIssue|DataIssue 日志|
-|EnterpriseKnowledgeGraph/服务|请求|配置日志|
+|EnterpriseKnowledgeGraph/服务|Requests|配置日志|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
@@ -202,7 +202,7 @@ ms.locfileid: "73476675"
 |Microsoft.IoTSpaces/Graph|可运行|可运行|
 |Microsoft.IoTSpaces/Graph|审核|审核|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|流入量|流入量|
+|Microsoft.IoTSpaces/Graph|入口|入口|
 |Microsoft.IoTSpaces/Graph|流出量|流出量|
 |Microsoft.KeyVault/vaults|AuditEvent|审核日志|
 |Microsoft.Kusto/Clusters|SucceededIngestion|成功引入操作|
@@ -265,9 +265,9 @@ ms.locfileid: "73476675"
 |Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
-|Microsoft.Sql/servers/databases|错误|错误|
+|Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
-|Microsoft.Sql/servers/databases|Timeouts|Timeouts|
+|Microsoft.Sql/servers/databases|超时|超时|
 |Microsoft.Sql/servers/databases|Blocks|Blocks|
 |Microsoft.Sql/servers/databases|死锁数|死锁数|
 |Microsoft.Sql/servers/databases|审核|审核日志|
@@ -282,7 +282,7 @@ ms.locfileid: "73476675"
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
-|Microsoft.Sql/managedInstances/databases|错误|错误|
+|Microsoft.Sql/managedInstances/databases|Errors|Errors|
 |Microsoft.Storage/storageAccounts/tableServices|StorageRead|StorageRead|
 |Microsoft.Storage/storageAccounts/tableServices|StorageWrite|StorageWrite|
 |Microsoft.Storage/storageAccounts/tableServices|StorageDelete|StorageDelete|

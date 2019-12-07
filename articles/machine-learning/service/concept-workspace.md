@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 14fc91feb16fb45eee1fe2e757a717e04ef07f99
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580752"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894725"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -73,8 +73,8 @@ ms.locfileid: "73580752"
 |---------------------------|---------|---------|------------|------------|
 | 创建工作区        | **&check;**     | | **&check;** | **&check;** |
 | 管理工作区访问    | **&check;**   || |  **&check;**    |
-| 升级到 Enterprise edition    | **&check;** |  | |     |
-| 创建和管理计算资源    |   | **&check;** | **&check;** |  **&check;**   |
+| 升级到 Enterprise edition    | **&check;** | **&check;**  | |     |
+| 创建和管理计算资源    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | 创建笔记本 VM |   | **&check;** | |     |
 
 

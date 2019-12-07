@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 v3 中的配额和限制 | Microsoft Docs
-description: 本主题介绍 Azure 媒体服务 v3 中的配额和限制
+description: 本主题介绍 Microsoft Azure 媒体服务 v3 中的配额和限制。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2a530d6a1a447ccde448259623da6faeaa6a4d72
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598358"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888421"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -34,11 +34,11 @@ ms.locfileid: "72598358"
 | 每个媒体服务帐户的作业数 | 500,000 <sup>(2)</sup>（固定）|
 | 每个媒体服务帐户的直播活动数 |5|
 | 单个订阅中的媒体服务帐户数 | 25（固定） |
-| 每个实时事件的实时输出 |3 <sup>（3）</sup> |
+| 每个实时事件的实时输出 |3 <sup>(3)</sup> |
 | 最大实时输出持续时间 | 25小时 |
 | 存储帐户 | 100<sup>(4)</sup>（固定） |
 | 每个媒体服务帐户的流式处理端点（已停止或正在运行）|2（固定）|
-| 流式处理策略 | 100 <sup>（5）</sup> |
+| 流式处理策略 | 100 <sup>(5)</sup> |
 | 每个媒体服务帐户的转换数 | 100（固定）|
 | 一次与一个资产关联的唯一流式处理定位符 | 100<sup>（6）</sup> （固定） |
 | 每个内容密钥策略的选项 |30 | 

@@ -1,6 +1,6 @@
 ---
 title: Azure 平台日志概述 |Microsoft Docs
-description: 概述 Azure 中的诊断日志，提供有关 Azure 资源操作的丰富、频繁的数据。
+description: Azure Monitor 中的日志概述，提供有关 Azure 资源操作的丰富、频繁的数据。
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1602b9beb5e667caf1688901c7ae4e67e5f5839
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 480c028f11de9a7c44168b217ad3553d721d01e1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262565"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894550"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
 平台日志提供有关 Azure 资源及其依赖的 Azure 平台的详细诊断和审核信息。 它们是自动生成的，不过你需要将某些平台日志配置为转发到要保留的一个或多个目标。 本文概述了平台日志，包括这些日志提供的信息以及如何将它们配置为收集和分析。
@@ -34,10 +34,10 @@ ms.locfileid: "71262565"
 您可以查看[活动日志](activity-log-view.md)，并[Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md) Azure 门户中的日志。 您必须向[目标](#destinations)发送资源日志以查看它们。
 
 
-## <a name="destinations"></a>目标
+## <a name="destinations"></a>Destinations
 你可以根据监视要求将平台日志发送到下表中的一个或多个目标。 
 
-| Destination | 应用场景 | 参考资料 |
+| 目标 | 场景 | 参考 |
 |:---|:---|:---|:---|
 | Log Analytics 工作区 | 使用其他监视数据分析日志，并利用日志查询和警报等 Azure Monitor 功能。 | [资源日志](resource-logs-collect-storage.md)<br>[活动日志](activity-log-collect.md)<br>[Azure 活动目录日志](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure 存储 | 存档日志以进行审核、静态分析或备份。 |[资源日志](archive-diagnostic-logs.md)<br>[活动日志](activity-log-export.md)<br>[Azure 活动目录日志](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |

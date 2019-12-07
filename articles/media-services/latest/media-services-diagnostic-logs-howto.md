@@ -1,6 +1,6 @@
 ---
 title: 通过 Azure Monitor 监视 Media Services 诊断日志 |Microsoft Docs
-description: 本文介绍如何通过 Azure Monitor 路由和查看诊断日志。
+description: 本文演示如何通过 Azure Monitor 路由和查看诊断日志。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786aefbd8657046f18042defd71dfcb38528eecf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261102"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887945"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -26,7 +26,7 @@ ms.locfileid: "71261102"
 
 本文介绍如何将数据路由到存储帐户，并查看数据。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 - 查看[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
@@ -55,7 +55,7 @@ ms.locfileid: "71261102"
 
 ## <a name="route-data-to-the-storage-account-using-the-cli"></a>使用 CLI 将数据路由到存储帐户
 
-若要在存储帐户中存储诊断日志，请运行以下`az monitor diagnostic-settings` CLI 命令： 
+若要在存储帐户中存储诊断日志，请运行以下 `az monitor diagnostic-settings` CLI 命令： 
 
 ```cli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -174,7 +174,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)
 * [Azure Monitor 诊断日志](../../azure-monitor/platform/resource-logs-overview.md)

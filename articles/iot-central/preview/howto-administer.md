@@ -3,17 +3,17 @@ title: 更改 Azure IoT Central 应用程序设置 |Microsoft Docs
 description: 作为管理员，如何通过更改应用程序名称、URL、上传映像和删除应用程序来管理 Azure IoT Central 应用程序
 author: viv-liu
 ms.author: viviali
-ms.date: 10/10/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5d14ed31b41deb0db44ba452470c45d69a0ec781
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 016e356e306468441fc9308d2853f5c44a37379e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896055"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895507"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
 
@@ -41,7 +41,7 @@ ms.locfileid: "73896055"
 > [!Note]
 > 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
-## <a name="manage-programmatically"></a>以编程方式管理
+## <a name="manage-programmatically"></a>以编程方式进行管理
 
 IoT Central Azure 资源管理器 SDK 程序包适用于 Node、Python、C#、Ruby、Java 和 Go。 你可以使用这些包来创建、列出、更新或删除 IoT Central 应用程序。 这些包包括用于管理身份验证和错误处理的帮助程序。
 

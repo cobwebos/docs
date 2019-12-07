@@ -2,13 +2,13 @@
 title: 逻辑组织的标记资源
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: c0a34204b5eb7080c6444e69def9d82d0193783b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/05/2019
+ms.openlocfilehash: a0ba5ba89b966de4aa1d1394f7d90c99f8352115
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850595"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893019"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -62,34 +62,34 @@ Dept                           IT
 Environment                    Test
 ```
 
-若要查看具有指定资源 ID 的资源的现有标记，请使用：
-
-```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
-```
-
-或者，若要查看具有指定名称和资源组的资源的现有标记，请使用：
+若要查看*具有指定名称和资源组的资源*的现有标记，请使用：
 
 ```azurepowershell-interactive
 (Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-若要获取具有特定标记的资源组，请使用：
+或者，如果有资源的资源 ID，可以传递该资源 ID 以获取标记。
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
+(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
-若要获取具有特定标记的资源，请使用：
+若要获取*具有特定标记名称和值的资源组*，请使用：
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ Dept="Finance"}).Name
+(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+```
+
+若要获取*具有特定标记名称和值的资源*，请使用：
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
 ```
 
 若要获取具有特定标记名称的资源，请使用：
 
 ```azurepowershell-interactive
-(Get-AzResource -TagName Dept).Name
+(Get-AzResource -TagName "Dept").Name
 ```
 
 每次将标记应用到某个资源或资源组时，都会覆盖该资源或资源组中的现有标记。 因此，必须根据该资源或资源组是否包含现有标记来使用不同的方法。
@@ -97,7 +97,7 @@ Environment                    Test
 若要将标记添加到*不包含现有标记的资源组*，请使用：
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
+Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
 ```
 
 若要将标记添加到包含现有标记的资源组，请检索现有标记，添加新标记，然后重新应用标记：
@@ -111,32 +111,36 @@ Set-AzResourceGroup -Tag $tags -Name examplegroup
 若要将标记添加到*不包含现有标记的资源*，请使用：
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+```
+
+资源组中可能存在多个具有相同名称的资源。 在这种情况下，可以通过以下命令设置每个资源：
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
 ```
 
 若要将标记添加到包含现有标记的资源，请使用：
 
 ```azurepowershell-interactive
-$r = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
+$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$resource.Tags.Add("Status", "Approved")
+Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
 ```
 
 若要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
 
 ```azurepowershell-interactive
-$groups = Get-AzResourceGroup
-foreach ($g in $groups)
-{
-    Get-AzResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
-}
+$group = Get-AzResourceGroup -Name examplegroup
+Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
 ```
 
 若要将资源组中的所有标记应用于其资源，并*将现有标记保留在不重复的资源上*，请使用以下脚本：
 
 ```azurepowershell-interactive
-$group = Get-AzResourceGroup "examplegroup"
+$group = Get-AzResourceGroup -Name examplegroup
 if ($null -ne $group.Tags) {
     $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
     foreach ($r in $resources)

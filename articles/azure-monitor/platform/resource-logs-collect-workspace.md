@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200502"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894516"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中 Log Analytics 工作区收集 Azure 资源日志
 Azure 中的[资源日志](resource-logs-overview.md)提供有关 Azure 资源内部操作的丰富、频繁的数据。 本文介绍如何在 Log Analytics 工作区中收集资源日志，以便使用功能强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，还可以 Azure Monitor 利用警报和可视化效果. 
@@ -54,10 +54,10 @@ AzureDiagnostics 表将如下所示：
 | ResourceProvider    | 类别     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Service1 | ErrorLogs    |    |    |    | 第 | w1 | e1 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j1 | 版 k1 | L1 |
+| Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
+| Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
 | Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | 6mb |
+| Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
 | Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
@@ -70,24 +70,24 @@ AzureDiagnostics 表将如下所示：
 
     | 资源提供程序 | 类别 | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | y1 | z1 |
-    | Service1 | AuditLogs | x5 | y5 | z5 |
+    | 服务 1 | AuditLogs | x1 | y1 | z1 |
+    | 服务 1 | AuditLogs | x5 | y5 | z5 |
     | ... |
 
 - 表*Service1ErrorLogs*如下所示：  
 
     | 资源提供程序 | 类别 | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  第 | w1 | e1 |
-    | Service1 | ErrorLogs |  q2 | w2 | e2 |
+    | 服务 1 | ErrorLogs |  q1 | w1 | e1 |
+    | 服务 1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
 - 表*Service2AuditLogs*如下所示：  
 
     | 资源提供程序 | 类别 | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | AuditLogs | j1 | 版 k1 | L1|
-    | Service2 | AuditLogs | j3 | k3 | 6mb|
+    | 服务2 | AuditLogs | j1 | k1 | l1|
+    | 服务2 | AuditLogs | j3 | k3 | l3|
     | ... |
 
 
@@ -110,7 +110,7 @@ AzureDiagnostics 表将如下所示：
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics 中的列限制
 对于 Azure Monitor 日志中的任何表，都存在500的属性限制。 达到此限制后，将在引入时删除任何包含第一个500之外的属性的数据的行。 *AzureDiagnostics*表特别受此限制的限制，因为它包含向其写入的所有 Azure 服务的属性。
 
-如果要从多个服务收集诊断日志， _AzureDiagnostics_可能超过此限制，将丢失数据。 在所有 Azure 服务都支持特定于资源的模式之前，应将资源配置为写入多个工作区，以降低达到500列限制的可能性。
+如果要从多个服务收集资源日志， _AzureDiagnostics_可能超过此限制，将丢失数据。 在所有 Azure 服务都支持特定于资源的模式之前，应将资源配置为写入多个工作区，以降低达到500列限制的可能性。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 Azure 数据工厂是一组非常详细的日志，它是已知写入大量列并可能导致_AzureDiagnostics_超出其限制的一种服务。 对于在启用特定于资源的模式之前配置的任何诊断设置，将为任何活动的每个唯一命名的 user 参数创建一个新列。 由于活动输入和输出的详细特性，将创建更多列。

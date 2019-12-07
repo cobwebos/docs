@@ -1,6 +1,6 @@
 ---
-title: 是试验性预设识别内容的编码-Azure |Microsoft Docs
-description: 本文介绍 Azure 媒体服务中的内容识别的编码
+title: 内容感知编码的实验性预设-Azure |Microsoft Docs
+description: 本文介绍 Microsoft Azure 媒体服务 v3 中的内容感知编码。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151010"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896144"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>实验性识别内容的编码预设
+# <a name="experimental-preset-for-content-aware-encoding"></a>内容感知编码的实验预设
 
-若要准备传送的内容[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，视频需要经过编码的多个比特率 （从高到低）。 为了确保妥善降级的质量，如降低比特率，因此是视频的分辨率。 这会导致所谓的编码阶梯 – 的分辨率和比特率; 表请参阅 Media Services[内置的编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
+若要为[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)准备传递内容，需要以多个比特率（从高到低）对视频进行编码。 为了确保质量的质量下降，因为比特率降低，因此视频的分辨率。 这会生成一个所谓的编码阶梯，即一个解决方案表和一个比特率;请参阅媒体服务[内置的编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
 ## <a name="overview"></a>概述
 
-关注移动出一个预设的适合-all-视频方法增加 Netflix 发布后其[博客](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2)在 2015 年 12 月。 从那时起，识别内容的编码的多个解决方案已在发布 marketplace;请参阅[这篇文章](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx)概述。 其理念是内容的需要注意 — — 自定义或优化的各个视频复杂性的编码之。 每个分辨率、 没有超出该任何增加的质量不角度 – 在此获得最佳的比特率值进行操作编码器的比特率。 下一级别的优化是选择基于内容的解决方法 – 例如，PowerPoint 演示文稿的视频不会获得如下 720p 的流。 更进一步，可以对编码器需要负责以优化视频中每个快照的设置。 所述的 Netflix[这种方法](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830)2018年中。
+在 Netflix 2015 年12月发布其[博客](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2)后，超出一种全视频式的视频方法的兴趣。 自那时起，在 marketplace 中发布了多个用于内容识别编码的解决方案;有关概述，请参阅[此文](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx)。 其思路是要了解内容-自定义编码方法，并将其调整为单独视频的复杂性。 在每个解决方法中，有比特率更高的比特率敏锐–编码器以此最佳比特率进行操作。 下一级别的优化是选择基于内容的解决方案–例如，PowerPoint 演示文稿的视频不会受益于下面的720p。 接下来，可以对编码器进行优化，以优化视频中每个拍摄的设置。 Netflix 在2018中介绍[了这种方法](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830)。
 
-2017 年初，Microsoft 发布了[自适应流式处理](autogen-bitrate-ladder.md)预设以解决问题的变化程度的质量和源视频的分辨率。 我们的客户都具有不同各种各样的内容、 一些在 1080p、 720p，其他人和多个在 SD 和较低的分辨率。 此外，并非所有源内容都已从电影或电视演播室高质量 mezzanines。 通过确保永远不会比特率阶梯超过分辨率或输入夹层的平均比特率流式处理预设的地址这些问题的自适应。
+在早期版本2017中，Microsoft 发布了[自适应流式处理](autogen-bitrate-ladder.md)预设，以解决源视频的质量和分辨率发生变化的问题。 我们的客户有不同的内容组合，某些位置为1080p，其他的是 而且，并非所有源内容都是从胶片或电视工作室获得高质量的 mezzanines。 自适应流式处理预设通过确保比特率阶梯从不超过输入夹层的分辨率或平均比特率来解决这些问题。
 
-实验性识别内容的编码预设扩展该机制，通过将合并自定义逻辑，可让编码器查找最佳的比特率值对于给定的解析，而无需大量计算的分析。 最终结果是此新预设会生成具有低的比特率比自适应流式处理预设中，但在更高质量的输出。 请参阅以下示例关系图显示使用类似的质量度量值的比较[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)并[VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)。 源已通过串联的电影的高的复杂性截图短小的剪辑和电视节目，旨在强调编码器。 根据定义，改变内容到内容 – 此预设会生成结果它也意味着某些内容可能不会出现显著降低比特率或质量的改进。
+试验性内容识别编码预设通过合并自定义逻辑来扩展该机制，使编码器能够查找给定解析的最佳比特率值，但不需要进行大量的计算分析。 最终结果是，此新预设产生比自适应流式处理预设低比特率更高的输出，但质量更高。 请参阅以下示例图形，其中显示了使用[PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio)和[VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)之类的质量指标进行比较。 源是通过连接电影和电视节目中的高复杂性照片的简短剪辑来创建的，目的是为了强调编码器。 按照定义，此预设会生成与内容不同的结果-这也意味着对于某些内容，可能不会显著降低比特率或质量提高。
 
-![使用 PSNR 速率扭曲 (RD) 曲线](media/cae-experimental/msrv1.png)
+![使用 PSNR 的速率失真（RD）曲线](media/cae-experimental/msrv1.png)
 
-图 1：**为高的复杂性源使用 PSNR 指标的速率扭曲 (RD) 曲线**
+**图1：使用 PSNR 度量值为高复杂性源的速率失真（RD）曲线**
 
-![使用 VMAF 速率扭曲 (RD) 曲线](media/cae-experimental/msrv2.png)
+![使用 VMAF 的速率失真（RD）曲线](media/cae-experimental/msrv2.png)
 
-图 2：**为高的复杂性源使用 VMAF 指标的速率扭曲 (RD) 曲线**
+**图2：使用 VMAF 度量值为高复杂性源的速率失真（RD）曲线**
 
-当前预设已优化了高的复杂性，高质量源视频 （电影、 电视节目）。 工作正在进行中以适应较低的复杂性内容 （例如，PowerPoint 演示文稿），以及不佳质量视频。 此预设还使用一组相同的解决方法，如自适应流式处理预设。 Microsoft 正致力于方法来选择最小的基于内容的解决方法集。 按如下所示是结果另一种类别的源内容编码器已能够确定输入是低质量 （许多由于低比特率压缩项目）。 请注意，进行实验性预设，编码器决定生成一个输出层 – 足够低的比特率，因此大多数客户端能够而无需停止播放流。
+目前预先优化了高复杂性、高质量源视频（电影、电视节目）的预设。 正在进行工作以适应低复杂性内容（例如，PowerPoint 演示文稿）以及质量较差的视频。 此预设还使用与自适应流式处理预设相同的一组分辨率。 Microsoft 正在致力于根据内容选择最少的一组解决方案。 下面是其他类别的源内容的结果，编码器能够确定输入的质量质量较差（由于低比特率，很多压缩项目）。 请注意，在实验性预设情况下，编码器确定只生成一个输出层–低比特率，以便大多数客户端能够在不使用停止的情况下播放流。
 
-![使用 PSNR RD 曲线](media/cae-experimental/msrv3.png)
+![使用 PSNR 的 RD 曲线](media/cae-experimental/msrv3.png)
 
-图 3： **（在 1080p) 的低质量输入使用 PSNR RD 曲线**
+**图3：使用 PSNR 进行低质量输入的 RD 曲线（以1080p 为限）**
 
-![使用 VMAF RD 曲线](media/cae-experimental/msrv4.png)
+![使用 VMAF 的 RD 曲线](media/cae-experimental/msrv4.png)
 
-图 4： **（在 1080p) 的低质量输入使用 VMAF RD 曲线**
+**图4：使用 VMAF 进行低质量输入的 RD 曲线（以1080p 为限）**
 
-## <a name="use-the-experimental-preset"></a>使用实验性预设
+## <a name="use-the-experimental-preset"></a>使用实验预设
 
-您可以创建使用此预设，如下所示的转换。 如果使用的教程，说明如何[如下](stream-files-tutorial-with-api.md)，你可以更新代码，如下所示：
+可以创建使用此预设的转换，如下所示。 如果使用[此类](stream-files-tutorial-with-api.md)教程，则可以更新代码，如下所示：
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -70,8 +70,8 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> 此处使用"实验"前缀以指示基础算法仍在发展。 那里可以并且将随时间用于生成比特率阶梯，目的是为了聚合算法的功能强大，并能够适应各种输入条件的逻辑会更改。 编码作业使用此预设的将仍是计费基于的输出分钟，并且可以从在协议，如 DASH 和 HLS 流式处理终结点传递输出资产。
+> 此处使用前缀 "实验性" 来表明底层算法仍在发展中。 随着时间的推移，可能会随时间变化而用来生成比特率 ladders，并将其作为一种可靠的算法进行聚合，并适应各种输入条件。 使用此预设的编码作业仍将根据输出分钟数计费，并且可从我们的流式处理终结点（如短划线和 HLS）传递输出资产。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解有关优化视频的此新选项，我们邀请您试试看。可以向我们发送反馈链接使用本文中，结束时，也可以与我们更直接地在合作<amsved@microsoft.com>。
+现在，你已了解优化视频的这一新选项，我们会邀请你试用。你可以使用本文末尾的链接向我们发送反馈，也可以直接在 <amsved@microsoft.com>与我们联系。

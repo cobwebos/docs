@@ -4,17 +4,17 @@ description: Azure 存储通过在将数据保存到云之前自动对其进行�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 63fa30b4cf4c5887e8fb44b357eb22e55fe230e7
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666131"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895133"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -38,7 +38,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 您可以依赖于 Microsoft 托管的密钥来加密您的存储帐户，也可以通过自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，则有两个选项：
 
-- 你可以使用 Azure Key Vault 指定*客户托管的密钥*，以便在存储帐户中对所有数据进行加密和解密。 客户管理的密钥用于对存储帐户中的所有服务中的所有数据进行加密。
+- 你可以使用 Azure Key Vault 指定*客户托管的密钥*，以便在 Blob 存储和 Azure 文件中对数据进行加密和解密。
 - 可以在 Blob 存储操作上指定*客户提供的密钥*。 对 Blob 存储进行读取或写入请求的客户端可以在请求中包含加密密钥，以精细控制如何对 blob 数据进行加密和解密。
 
 下表比较了 Azure 存储加密的密钥管理选项。
@@ -62,7 +62,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>客户托管的密钥与 Azure Key Vault
 
-可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 在存储帐户级别指定客户托管密钥时，该密钥用于加密和解密存储帐户中的所有数据，包括 blob、队列、文件和表数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
+可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 在存储帐户级别指定客户托管密钥时，该密钥用于加密和解密存储帐户中的所有 blob 和文件数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
 
 必须使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
@@ -159,9 +159,9 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 - [设置 Blob 属性](/rest/api/storageservices/set-blob-properties)
 - [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata)
 - [获取 Blob](/rest/api/storageservices/get-blob)
-- [获取 Blob 属性](/rest/api/storageservices/get-blob-properties)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)（获取 Blob 属性）
 - [获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)
-- [快照 Blob](/rest/api/storageservices/snapshot-blob)
+- [拍摄 Blob 快照](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>旋转客户提供的密钥
 

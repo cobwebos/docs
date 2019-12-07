@@ -4,15 +4,15 @@ description: 在 Application Insights 中监视系统和自定义 .NET/.NET Core
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889118"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -59,7 +59,7 @@ Application Insights 支持收集 `EventCounters` 及其 `EventCounterCollection
 
 ## <a name="customizing-counters-to-be-collected"></a>自定义要收集的计数器
 
-下面的示例演示如何添加/删除计数器。 使用 `AddApplicationInsightsTelemetry()` 或 `AddApplicationInsightsWorkerService()` 启用 Application Insights 遥测收集后，将在应用程序的 `ConfigureServices` 方法中完成此自定义。 下面是 ASP.NET Core 应用程序的示例代码。 对于其他类型的应用程序，请参阅[本](worker-service.md#configuring-or-removing-default-telemetrymodules)文档。
+下面的示例演示如何添加/删除计数器。 使用 `AddApplicationInsightsTelemetry()` 或 `AddApplicationInsightsWorkerService()`启用 Application Insights 遥测收集后，将在应用程序的 `ConfigureServices` 方法中完成此自定义。 下面是 ASP.NET Core 应用程序的示例代码。 对于其他类型的应用程序，请参阅[本](worker-service.md#configuring-or-removing-default-telemetrymodules)文档。
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -98,7 +98,7 @@ Application Insights 支持收集 `EventCounters` 及其 `EventCounterCollection
 若要在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)中查看 EventCounter 指标，请选择 Application Insights 资源，并选择 "基于日志的指标" 作为 "指标命名空间"。 然后，EventCounter 度量值将显示在 "PerformanceCounter" 类别下。
 
 > [!div class="mx-imgBorder"]
-> Application Insights ](./media/event-counters/metrics-explorer-counter-list.png) 中报告 ![Event 计数器
+> Application Insights](./media/event-counters/metrics-explorer-counter-list.png) 中报告 ![事件计数器
 
 ## <a name="event-counters-in-analytics"></a>分析中的事件计数器
 
@@ -111,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> Application Insights ](./media/event-counters/analytics-event-counters.png) 中报告 ![Event 计数器
+> Application Insights](./media/event-counters/analytics-event-counters.png) 中报告 ![事件计数器
 
 若要获取特定计数器的图表（例如： `ThreadPool Completed Work Item Count`），请运行以下查询。
 
@@ -123,7 +123,7 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> Application Insights 中单个计数器的 ![Chat ](./media/event-counters/analytics-completeditems-counters.png)
+> 在 Application Insights 中 ![聊天单个计数器](./media/event-counters/analytics-completeditems-counters.png)
 
 与其他遥测一样，**performanceCounters** 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上面的查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 

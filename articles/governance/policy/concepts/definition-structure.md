@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555174"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894308"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -566,7 +566,7 @@ Azure 策略支持以下类型的影响：
 
 以下函数可在策略规则中使用，但不同于 Azure 资源管理器模板中的使用：
 
-- addDays （dateTime，numberOfDaysToAdd）
+- addDays(dateTime, numberOfDaysToAdd)
   - **dateTime**： [Required] 通用 ISO 8601 dateTime 格式 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： fffffffZ" 中的字符串
   - **numberOfDaysToAdd**： [必需] 整数-要添加的天数
 - utcNow （）-与资源管理器模板不同，此值可在 defaultValue 之外使用。
@@ -597,6 +597,31 @@ Azure 策略支持以下类型的影响：
 可以使用属性别名来访问资源类型的特定属性。 通过别名，可限制允许用于资源属性的值和条件。 每个别名会映射到给定资源类型不同 API 版本的路径。 在策略评估期间，策略引擎会获取该 API 版本的属性路径。
 
 别名列表始终不断增长。 若要找出 Azure Policy 当前支持哪些别名，请使用以下方法之一：
+
+- 适用于 Visual Studio Code 的 Azure 策略扩展（推荐）
+
+  使用[适用于 Visual Studio Code 的 Azure 策略扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
+
+  ![适用于 Visual Studio Code 的 Azure 策略扩展](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+
+- Azure Resource Graph
+
+  使用 `project` 运算符可显示资源的**别名**。
+
+  ```kusto
+  Resources
+  | where type=~'microsoft.storage/storageaccounts'
+  | limit 1
+  | project aliases
+  ```
+  
+  ```azurecli-interactive
+  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
+  
+  ```azurepowershell-interactive
+  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+  ```
 
 - Azure PowerShell
 

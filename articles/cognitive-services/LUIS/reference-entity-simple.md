@@ -1,5 +1,5 @@
 ---
-title: 简单实体类型 - LUIS
+title: 简单实体类型-LUIS
 titleSuffix: Azure Cognitive Services
 description: 简单实体介绍了机器学习的上下文中的单个概念。 使用简单实体来改善结果时添加短语列表。
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671515"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894763"
 ---
-# <a name="simple-entity"></a>简单实体 
+# <a name="simple-entity"></a>简单实体
 
-简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。 
+简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。
 
-**在以下情况下，非常适合使用此实体：**
+**实体适用于以下情况：**
 
-* 数据格式不一致，但指示相同的事物。 
+* 数据格式不一致，但指示相同的事物。
 
 ![简单实体](./media/luis-concept-entities/simple-entity.png)
 
@@ -86,12 +86,13 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
-|数据对象|实体名称|值|
+|数据对象|实体名称|Value|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](luis-quickstart-primary-and-secondary-data.md)中，请使用**简单实体**从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个[短语列表](luis-concept-feature.md)，其中包含特定于简单实体的术语。
+> [!div class="nextstepaction"]
+> [了解模式语法](reference-pattern-syntax.md)

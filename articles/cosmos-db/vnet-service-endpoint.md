@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: b91e235824085977f1570e664b43d028a905407b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0023710ff3cfe180b628d1da14b8a3ea9c136026
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869793"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896235"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -42,9 +42,9 @@ ms.locfileid: "74869793"
 
 ### <a name="are-additional-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Azure Cosmos 帐户是否需要具有 VNET 服务终结点的其他 RBAC 权限？
 
-将 VNET 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要对 Azure Cosmos 帐户上配置的所有 Vnet 的 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作具有访问权限。 此操作是必需的，因为在评估任何属性之前，授权过程会验证与数据库和虚拟网络资源对应的操作。
+将 VNet 服务终结点添加到 Azure Cosmos 帐户后，若要对帐户设置进行任何更改，需要对 Azure Cosmos 帐户上配置的所有 Vnet 的 `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` 操作具有访问权限。 此权限是必需的，因为在评估任何属性之前，授权过程会验证对资源（例如数据库和虚拟网络资源）的访问。
  
-即使用户不使用 Azure CLI 指定 VNET Acl，授权也会验证操作。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的参数之一是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 将执行 get 数据库调用以检索 `virtualNetworkRules` 并在更新调用中使用此值。
+即使用户不使用 Azure CLI 指定 VNET Acl，授权也会验证 VNet 资源操作的权限。 目前，Azure Cosmos 帐户的控制平面支持设置 Azure Cosmos 帐户的完整状态。 控制平面调用的参数之一是 `virtualNetworkRules`。 如果未指定此参数，Azure CLI 将执行 get 数据库调用以检索 `virtualNetworkRules` 并在更新调用中使用此值。
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>对等互连的虚拟网络是否也有权访问 Azure Cosmos 帐户？ 
 只有已添加到 Azure Cosmos 帐户的虚拟网络及其子网才拥有此访问权限。 将对等互连的虚拟网络中的子网添加到帐户之后，对等互连的 VNet 才可以访问该帐户。

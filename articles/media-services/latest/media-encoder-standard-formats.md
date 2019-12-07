@@ -1,6 +1,6 @@
 ---
 title: 标准编码器格式和编解码器-Azure
-description: 本主题概述了标准编码器格式和编解码器。
+description: 本文包含最常见的导入和导出文件格式的列表，你可以将这些格式用于 StandardEncoderPreset。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 195bbb70ac5062c6bbf6034e6a6e9abac018c62f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677972"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888064"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 
@@ -27,7 +27,7 @@ ms.locfileid: "68677972"
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
 
-| 文件格式（文件扩展名） | 支持 |
+| 文件格式（文件扩展名） | 受支持 |
 | --- | --- |
 | FLV（使用 H.264 和 AAC 编解码器）(.flv) |是 |
 | MXF    (.mxf) |是 |
@@ -43,7 +43,7 @@ ms.locfileid: "68677972"
 
 ### <a name="audio-formats-in-input-containers"></a>输入容器中的音频格式
 
-标准编码器支持在输入容器中携带以下音频格式:
+标准编码器支持在输入容器中携带以下音频格式：
 
 * MXF、GXF 和 QuickTime 文件，其中的音频曲目具有交错的立体声或 5.1 示例
 
@@ -52,7 +52,7 @@ ms.locfileid: "68677972"
 * MXF、GXF 和 QuickTime 文件，其中的音频以独立 PCM 轨道的形式携带，但可以从文件元数据推导频道映射（到立体声或 5.1 的映射）
 
 ## <a name="input-video-codecs"></a>输入视频编解码器
-| 输入视频编解码器 | 支持 |
+| 输入视频编解码器 | 受支持 |
 | --- | --- |
 | AVC 8 位/10 位，最高支持 4:2:2，包括 AVCIntra |8 位 4:2:0 和 4:2:2 |
 | Avid DNxHD（MXF 格式） |是 |
@@ -62,7 +62,7 @@ ms.locfileid: "68677972"
 | MPEG-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体） |最高支持 422 Profile |
 | MPEG-1 |是 |
 | VC-1/WMV9 |是 |
-| Canopus HQ/HQX |否 |
+| Canopus HQ/HQX |No |
 | Mpeg-4 第 2 部分 |是 |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |是 |
 | YUV420（未压缩或夹层） |是 |
@@ -75,9 +75,9 @@ ms.locfileid: "68677972"
 | HEVC/H.265| Main Profile|
 
 ## <a name="input-audio-codecs"></a>输入音频编解码器
-| 输入音频编解码器 | 支持 |
+| 输入音频编解码器 | 受支持 |
 | --- | --- |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |
@@ -86,10 +86,10 @@ ms.locfileid: "68677972"
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR（自适应多速率） |是 |
-| AES（SMPTE 331M 和 302M、AES3-2003） |否 |
-| Dolby® E |否 |
-| Dolby® Digital (AC3) |否 |
-| Dolby® Digital Plus (E-AC3) |否 |
+| AES（SMPTE 331M 和 302M、AES3-2003） |No |
+| Dolby® E |No |
+| Dolby® Digital (AC3) |No |
+| Dolby® Digital Plus (E-AC3) |No |
 
 ## <a name="output-formats-and-codecs"></a>输出格式和编解码器
 下表列出了导出操作支持的编解码器和文件格式。

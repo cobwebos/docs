@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e3a9b733b055469e22d3b107c0f9f49b768756c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775827"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895250"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -98,7 +98,7 @@ RBAC 角色可以包含管理或数据层访问权限。 例如，"读者" 角�
 1. 在左侧垂直工具栏上，打开 "**设置**"。 在 "设置" 面板中，切换到 "**应用程序** > **登录**"。 启用 **"使用设备代码流登录"** 。
 2. 打开 "**连接**" 对话框（通过左侧垂直条上的 "插入" 图标或选择 "帐户" 面板上的 "**添加帐户**"）。
 3. 选择要登录到的环境。
-4. 选择 **"登录"** 。
+4. 选择“登录”。
 5. 按照下一个面板上的说明进行操作。
 
 如果你无法登录要使用的帐户，因为默认浏览器已登录到不同的帐户，请执行以下操作之一：
@@ -301,7 +301,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 这些包是在 Linux 上存储资源管理器的最常见要求：
 
-* [.NET Core 2.0 运行时](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.2 运行时](https://docs.microsoft.com/en-us/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` 或 `libgnome-keyring-dev`
 * `libgnome-keyring-common`

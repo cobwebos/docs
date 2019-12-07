@@ -1,30 +1,29 @@
 ---
-title: 使用 Azure 数据工厂从/向 SAP Cloud for Customer 复制数据
+title: 从/向 SAP Cloud for Customer 复制数据
 description: 了解如何使用数据工厂将数据从 SAP Cloud for Customer 复制到支持的接收器数据存储，（或）从支持的源数据存储复制到 SAP Cloud for Customer。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 5c47eead8bc8428f533374b2d4892ed684c1f3c7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 56f4c8094e8b1e763a10cef3a87a5801d72794b4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680267"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896325"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 SAP Cloud for Customer (C4C) 复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂中的复制活动从/向 SAP Cloud for Customer (C4C) 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含详细介绍、比较和指导。
+>若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -47,7 +46,7 @@ ms.locfileid: "73680267"
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
@@ -87,10 +86,10 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
-| path | 指定 SAP C4C OData 实体的路径。 |是 |
+| 路径 | 指定 SAP C4C OData 实体的路径。 |是 |
 
 **示例：**
 
@@ -113,16 +112,16 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SAP Cloud for Customer 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 SAP Cloud for Customer 源支持的属性列表。
 
 ### <a name="sap-c4c-as-source"></a>以 SAP C4C 作为源
 
-若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动**source**部分支持以下属性：
+若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
-| 查询 | 指定用于读取数据的自定义 OData 查询。 | 否 |
+| 查询 | 指定用于读取数据的自定义 OData 查询。 | No |
 
 用于获取特定天数据的示例查询：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -162,11 +161,11 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
-| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不能。 默认值为“Insert”。 |
-| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 不能。 默认值为 10。 |
+| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不。 默认值为“Insert”。 |
+| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 不。 默认值为 10。 |
 
 **示例：**
 
@@ -216,23 +215,23 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | DateTime |
+| Edm.DateTime | 日期/时间 |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | Single |
-| Edm.Guid | Guid |
+| Edm.Single | 单一 |
+| Edm.Guid | GUID |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

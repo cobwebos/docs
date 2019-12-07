@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 952485a3bb8feb1434f4f4705f6c07176dd1e1f6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559068"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894466"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
 Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和本地的完整堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将其用于不同的监视方案，你可能需要将其发送到环境中的其他监视工具。 在大多数情况下，最有效的方法是将监视数据流式处理到外部工具使用[Azure 事件中心](/azure/event-hubs/)。 本文简要介绍了如何将来自不同源的监视数据流式传输到事件中心，并提供详细指南链接。
@@ -30,7 +30,6 @@ Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和�
 * 对于 Azure 活动日志，选择一个事件中心命名空间，并 Azure Monitor 在该命名空间中创建一个名为 " _insights-日志-操作-_ 日志" 的事件中心。 对于其他日志类型，可以选择现有的事件中心，或让 Azure Monitor 按日志类别创建事件中心。
 * 通常，在使用事件中心的数据的计算机或 VNET 上，必须打开出站端口5671和5672。
 
-
 ## <a name="monitoring-data-available"></a>可用的监视数据
 [Azure Monitor 的监视数据源](data-sources.md)介绍了适用于 Azure 应用程序的数据层和每个数据的监视数据的不同层。 下表列出了每个层，并说明了如何将数据流式传输到事件中心。 请按照提供的链接了解更多详细信息。
 
@@ -38,7 +37,7 @@ Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和�
 |:---|:---|:---|
 | [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 | [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 活动日志导出到存储或 Azure 事件中心](activity-log-export.md)。 |
-| [Azure 资源](data-sources.md#azure-resources) | 平台指标<br>诊断日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 诊断日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
+| [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 资源日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
 | [操作系统（来宾）](data-sources.md#operating-system-guest) | Azure 虚拟机 | 在 Azure 中的 Windows 和 Linux 虚拟机上安装[Azure 诊断扩展](diagnostics-extension-overview.md)。 有关 Windows Vm 的详细信息，请参阅[使用事件中心流式传输 Azure 诊断热路径中的数据](diagnostics-extension-stream-event-hubs.md)，并[使用 linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)以了解 Linux vm 的详细信息。 |
 | [应用程序代码](data-sources.md#application-code) | Application Insights | Application Insights 不提供直接方法将数据流式传输到事件中心。 可以将 Application Insights 数据[连续导出](../../azure-monitor/app/export-telemetry.md)到存储帐户，然后使用逻辑应用将数据发送到事件中心，如[使用逻辑应用进行手动流式传输](#manual-streaming-with-logic-app)中所述。 |
 

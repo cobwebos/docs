@@ -1,5 +1,5 @@
 ---
-title: 在虚拟网络中创建 Azure Databricks 工作区
+title: 在自己的虚拟网络快速入门中创建 Azure Databricks 工作区
 description: 本文介绍如何将 Azure Databricks 部署到虚拟网络。
 services: azure-databricks
 author: mamccrea
@@ -7,19 +7,21 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/04/2019
+ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791546"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893397"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>快速入门：在虚拟网络中创建 Azure Databricks 工作区
+# <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>快速入门：在自己的虚拟网络中创建 Azure Databricks 工作区
 
-本快速入门介绍如何在虚拟网络中创建 Azure Databricks 工作区。 你还将在该工作区中创建 Apache Spark 群集。
+Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。 本快速入门演示如何改为在自己的虚拟网络中创建 Azure Databricks 工作区。 还会在该工作区中创建 Apache Spark 群集。 
 
-如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
+若要详细了解如何选择在自己的虚拟网络中创建 Azure Databricks 工作区，请参阅 [在 Azure 虚拟网络中部署 Azure Databricks （VNet 注入）] （/databricks/administration-guide/cloud-configurations/azure/vnet-inject）。
+
+如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/databricks/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -31,16 +33,18 @@ ms.locfileid: "72791546"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在 Azure 门户中，选择 "**创建资源** > **网络** > **虚拟网络**"。
+1. 在 Azure 门户菜单中，选择“创建资源”。 然后选择 "**网络 > 虚拟网络**"。
+
+    ![在 Azure 门户上创建虚拟网络](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
 2. 在 "**创建虚拟网络**" 下，应用以下设置： 
 
     |设置|建议的值|描述|
     |-------|---------------|-----------|
-    |名称|databricks-快速入门|选择虚拟网络的名称。|
-    |地址空间|10.1.0.0/16|以 CIDR 表示法表示的虚拟网络地址范围。|
+    |名称|databricks-quickstart|选择虚拟网络的名称。|
+    |地址空间|10.1.0.0/16|以 CIDR 表示法表示的虚拟网络地址范围。 CIDR 范围必须介于/16 和/24 之间|
     |Subscription|用户的订阅\<\>|选择要使用的 Azure 订阅。|
-    |Resource group|databricks-快速入门|选择 "**新建**"，然后输入帐户的新资源组名称。|
+    |Resource group|databricks-quickstart|选择 "**新建**"，然后输入帐户的新资源组名称。|
     |Location|\<选择离用户最近的区域\>|选择可以在其中托管虚拟网络的地理位置。 使用最靠近用户的位置。|
     |子网名称|default|为虚拟网络中的默认子网选择名称。|
     |子网地址范围|10.1.0.0/24|以 CIDR 表示法表示的子网地址范围， 它必须包含在虚拟网络的地址空间中。 无法编辑正在使用的子网的地址范围。|
@@ -53,23 +57,25 @@ ms.locfileid: "72791546"
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-1. 在 Azure 门户中，选择 "**创建资源**" > **Analytics** > **Databricks**。
+1. 在 Azure 门户菜单中，选择“创建资源”。 然后选择 " **Analytics > Databricks**"。
+
+    ![在 Azure 门户上创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
 2. 在 " **Azure Databricks 服务**" 下，应用以下设置：
 
     |设置|建议的值|描述|
     |-------|---------------|-----------|
-    |工作区名称|databricks-快速入门|为 Azure Databricks 工作区选择一个名称。|
+    |工作区名称|databricks-quickstart|为 Azure Databricks 工作区选择一个名称。|
     |Subscription|用户的订阅\<\>|选择要使用的 Azure 订阅。|
-    |Resource group|databricks-快速入门|选择用于虚拟网络的同一资源组。|
+    |Resource group|databricks-quickstart|选择用于虚拟网络的同一资源组。|
     |Location|\<选择离用户最近的区域\>|选择与虚拟网络相同的位置。|
     |定价层|选择 "标准" 或 "高级"。|有关定价层的详细信息，请参阅[Databricks 定价页](https://azure.microsoft.com/pricing/details/databricks/)。|
-    |在虚拟网络中部署 Azure Databricks 工作区|是|此设置允许你在虚拟网络中部署 Azure Databricks 工作区。|
-    |虚拟网络|databricks-快速入门|选择在上一部分中创建的虚拟网络。|
-    |公共子网名称|公共-子网|使用默认的公共子网名称。|
-    |公共子网 CIDR 范围|10.179.64.0/18|此子网的 CIDR 范围应介于/18 和/26 之间。|
-    |专用子网名称|专用-子网|使用默认的专用子网名称。|
-    |专用子网 CIDR 范围|10.179.0.0/18|此子网的 CIDR 范围应介于/18 和/26 之间。|
+    |在虚拟网络（VNet）中部署 Azure Databricks 工作区|是|此设置允许你在虚拟网络中部署 Azure Databricks 工作区。|
+    |虚拟网络|databricks-quickstart|选择在上一部分中创建的虚拟网络。|
+    |公共子网名称|public-subnet|使用默认的公共子网名称。|
+    |公共子网 CIDR 范围|10.179.64.0/18|使用 CIDR 范围，最高可包含/26。|
+    |专用子网名称|private-subnet|使用默认的专用子网名称。|
+    |专用子网 CIDR 范围|10.179.0.0/18|使用 CIDR 范围，最高可包含/26。|
 
     ![在 Azure 门户上创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -77,7 +83,7 @@ ms.locfileid: "72791546"
 
     ![Azure 门户中的 Azure Databricks 概述](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-overview-portal.png)
 
-    托管资源组包含存储帐户（DBFS）、工作线程（网络安全组）、工作线程-vnet （虚拟网络）的物理位置。 它也是将创建虚拟机、磁盘、IP 地址和网络接口的位置。 默认情况下，此资源组处于锁定状态;但是，当群集在虚拟网络中启动时，会在托管资源组中的辅助角色和 "中心" 虚拟网络之间创建一个网络接口。
+    托管资源组不可修改，并且不用于创建虚拟机。 只能在所管理的资源组中创建虚拟机。
 
     ![Azure Databricks 托管资源组](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
 

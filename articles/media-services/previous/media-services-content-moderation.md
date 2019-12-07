@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 | Microsoft Docs
-description: 视频审查可以帮助检测视频中可能存在的成人和猥亵内容。
+description: Azure 媒体内容审查器媒体处理器可帮助检测视频中可能存在的成人和猥亵内容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465671"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896000"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
 
@@ -46,7 +46,7 @@ ms.locfileid: "61465671"
 
 | 元素 | 描述 |
 | --- | --- |
-| version |内容审查器的版本。 |
+| 版本 |内容审查器的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
 | offset |时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此值将始终为 0。 此值在将来可能会更改。 |
 | 帧速率 |视频的每秒帧数。 |
@@ -71,7 +71,7 @@ ms.locfileid: "61465671"
 | reviewRecommended | `true` 或 `false`，具体取决于 **adultScore** 或 **racyScore** 是否超出了内部阈值。 |
 | adultScore | 可能的成人内容的可信度分数，范围为 0.00 到 0.99。 |
 | racyScore | 可能的猥亵内容的可信度分数，范围为 0.00 到 0.99。 |
-| index | 帧的索引，处于从第一个帧索引到最后一个帧索引这一范围内。 |
+| 索引 | 帧的索引，处于从第一个帧索引到最后一个帧索引这一范围内。 |
 | timestamp | 帧的位置，以“刻度”为单位。 |
 | shotIndex | 父快照的索引。 |
 

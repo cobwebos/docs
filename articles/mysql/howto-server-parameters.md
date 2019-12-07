@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f803b7cccf3520c309e6b33d99b5565cfc4fdd01
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764910"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893138"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -76,6 +76,9 @@ InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-ti
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 你应重新启动服务器，以确保正确填充时区表。 若要重新启动服务器，请使用[Azure 门户](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

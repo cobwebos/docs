@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Media Player 进行播放 - Azure | Microsoft Docs
-description: 本主题提供了 Azure Media Player 的概述。
+description: Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和设备中播放 Microsoft Azure 媒体服务中的媒体内容。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311828"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900352"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -35,11 +35,11 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 可以使用 [Azure Media Player 演示页](https://aka.ms/azuremediaplayer)播放 Azure 媒体服务示例或你自己的流。  
 
-若要播放新视频，请粘贴一个不同的 URL，然后按“更新”  。
+若要播放新视频，请粘贴一个不同的 URL，然后按“更新”。
 
-若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”  。
+若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”。
 
-![Azure Media Player](./media/azure-media-player/home-page.png)
+![Azure 媒体播放器](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>监视视频流的诊断
 

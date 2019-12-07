@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务概述 | Microsoft Docs
-description: 本部分提供 Azure 媒体服务的概述
+description: Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开发人员可以构建可缩放的媒体管理和交付应用程序。 本文提供了 Azure 媒体服务的概述。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937257"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895880"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
-> [!div class="op_single_selector" title1="选择正在使用的媒体服务的版本："]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本："]
 > * [第 3 版](../latest/media-services-overview.md)
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -35,9 +35,9 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="prerequisites"></a>必备组件
 
-若要开始使用 Azure 媒体服务，应该具备以下条件：
+要开始使用 Azure 媒体服务，应该具备以下条件：
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * （可选）设置开发环境。 为开发环境选择“.NET”或“REST API”。 有关详细信息，请参阅 [设置环境](media-services-dotnet-how-to-use.md)。
 
@@ -46,7 +46,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="sdks-and-tools"></a>SDK 和工具
 
-若要构建媒体服务解决方案，可以使用：
+要构建媒体服务解决方案，可以使用：
 
 * [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 可用的客户端 SDK 之一：
@@ -67,7 +67,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="code-samples"></a>代码示例
 
-在  “Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+在“Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts"></a>概念
 

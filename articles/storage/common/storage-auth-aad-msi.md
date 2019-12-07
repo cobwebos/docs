@@ -1,22 +1,23 @@
 ---
-title: 使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限-Azure 存储
-description: Azure Blob 和队列存储支持使用 Azure 资源的 Azure Active Directory 和托管标识授权访问资源。 可以使用 Azure 资源的托管标识，通过 Azure 虚拟机中运行的应用程序、函数应用、虚拟机规模集和其他资源来授予对 blob 和队列的访问权限。
+title: 使用托管标识授予对数据的访问权限
+titleSuffix: Azure Storage
+description: 了解如何使用 Azure 资源的托管标识来授予对 Azure 虚拟机中运行的应用程序、函数应用、虚拟机规模集和其他数据的 blob 和队列数据的访问权限。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c0b07cc001f65ff369f87954779634b8b49ba4ec
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806571"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892045"
 ---
-# <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>使用 Azure 资源的 Azure Active Directory 和托管标识授予对 blob 和队列的访问权限
+# <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源的托管标识授予对 blob 和队列数据的访问权限
 
 Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以使用 Azure 虚拟机（Vm）、函数应用、虚拟机规模集和其他服务中运行的应用程序的 Azure AD 凭据，授权对 blob 和队列数据的访问。 通过将 Azure 资源的托管标识与 Azure AD authentication 一起使用，你可以避免将凭据存储在云中运行的应用程序。  
 

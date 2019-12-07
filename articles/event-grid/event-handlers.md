@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169322"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900735"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "74169322"
 
 使用 Azure 自动化通过自动化的 Runbook 来处理事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 |[教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 
@@ -34,7 +34,7 @@ ms.locfileid: "74169322"
 
 使用 Azure Functions 作为处理程序时，请使用事件网格触发器而不是通用 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用泛型 HTTP 触发器时，必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [快速入门：通过函数处理事件](custom-event-to-function.md) | 将自定义事件发送到函数以进行处理。 |
 | [Azure Functions 的事件网格触发器](../azure-functions/functions-bindings-event-grid.md) | 在 Functions 中使用事件网格触发器概述。 |
@@ -48,7 +48,7 @@ ms.locfileid: "74169322"
 
 事件中心可以充当事件源或事件处理程序。 以下文章展示了如何将事件中心用作处理程序。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心](custom-event-to-eventhub.md) | 将自定义事件发送到事件中心以供应用程序处理。 |
 | [资源管理器模板：自定义主题和事件中心终结点](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| 用于创建自定义主题的订阅的资源管理器模板。 它将事件发送到 Azure 事件中心。 |
@@ -59,15 +59,15 @@ ms.locfileid: "74169322"
 
 使用 Azure 中继混合连接将事件发送到企业网络内没有可公开访问的终结点的应用程序。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [教程：将事件发送到混合连接](custom-event-to-hybrid-connection.md) | 将自定义事件发送到现有混合连接以供侦听器应用程序处理。 |
 
-## <a name="logic-apps"></a>逻辑应用
+## <a name="logic-apps"></a>Logic Apps
 
 使用逻辑应用自动执行事件响应业务流程。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
 | [教程：使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
@@ -79,7 +79,7 @@ ms.locfileid: "74169322"
 
 您可以将事件网格中的事件直接路由到服务总线队列，以便在企业应用程序中的缓冲或命令 & 控件方案中使用。
 
-在 Azure 门户中，在创建事件订阅时，选择 "服务总线队列" 作为终结点类型，然后单击 "选择和终结点" 以便选择服务总线队列。
+在 Azure 门户中，在创建事件订阅时，选择 "服务总线队列" 作为终结点类型，然后单击 "选择终结点" 以便选择服务总线队列。
 
 #### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>使用 CLI 添加服务总线队列处理程序
 
@@ -123,7 +123,7 @@ az eventgrid event-subscription create \
 
 使用队列存储接收需拉取的事件。 如果正在运行的进程需要很长时间才能响应，可能会使用队列存储。 通过向队列存储发送事件，应用程序可以按照自己的计划拉取和处理事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储](custom-event-to-queue-storage.md) | 说明如何将自定义事件发送到队列存储。 |
 
@@ -131,7 +131,7 @@ az eventgrid event-subscription create \
 
 将 Webhook 用于可响应事件的可自定义终结点。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | 快速入门：使用 [Azure CLI](custom-event-quickstart.md)、[PowerShell](custom-event-quickstart-powershell.md) 和[门户](custom-event-quickstart-portal.md)创建和路由自定义事件。 | 展示了如何将自定义事件发送到 WebHook。 |
 | 快速入门：使用 [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)、[PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) 和[门户](blob-event-quickstart-portal.md)将 Blob 存储事件路由到自定义 Web 终结点。 | 展示了如何将 Blob 存储事件发送到 WebHook。 |

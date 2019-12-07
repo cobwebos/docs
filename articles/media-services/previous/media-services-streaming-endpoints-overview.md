@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务流式处理终结点概述 | Microsoft 文档
-description: 本主题提供 Azure 媒体服务流式处理终结点的概述。
+description: 本文概述了 Azure 媒体服务流式处理终结点。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016445"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885613"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述  
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-在 Microsoft Azure 媒体服务 (AMS)中，“流式处理终结点”表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户都会包括 2.0 版的 **默认** StreamingEndpoint。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
+在 Microsoft Azure 媒体服务 (AMS)中，“流式处理终结点”表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户将包括版本 2.0 的**默认**流式处理终结点。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
 
-Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnProvider**、 **CdnProfile**、 **StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[本主题](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
+Azure 媒体服务已将以下属性添加到流式处理终结点实体： **CdnProvider**、 **CdnProfile**、 **StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[本主题](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
 
 用户创建 Azure 媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认标准流式处理终结点。 无法删除默认流式处理终结点。 根据目标区域中的 Azure CDN 可用性，默认情况下新创建的默认流式处理终结点还提供“StandardVerizon”CDN 提供程序集成。 
                 
@@ -47,15 +47,15 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 
 ### <a name="standardpremium-types-version-20"></a>标准/高级类型（版本 2.0）
 
-从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：**标准**（预览版）和**高级**。 这些类型属于流式处理终结点版本“2.0”。
+从 Media Services 的2017年1月版开始，你有两种流式处理类型：**标准**（预览）和**高级**。 这些类型属于流式处理终结点版本“2.0”。
 
 
-|type|描述|
+|Type|描述|
 |--------|--------|  
-|**标准**|默认的流式处理终结点是“标准”类型，可以通过调整流单元更改为“高级”类型。|
-|**高级** |此选项适用于需要更高级缩放或控制的专业方案。 可以通过调整流单元转到“高级”类型。<br/>专用流式处理终结点存在于隔离环境中，不会争用资源。|
+|**标准**|默认流式处理终结点是**标准**类型，可以通过调整流式处理单位更改为高级类型。|
+|**高级** |此选项适用于需要更高级缩放或控制的专业方案。 可以通过调整流式处理单位移动到**高级**类型。<br/>专用的流式处理终结点位于独立环境中，不会争用资源。|
 
-对于希望将内容传递给大型 internet 受众的客户, 我们建议你在流式处理终结点上启用 CDN。
+对于希望将内容传递给大型 internet 受众的客户，我们建议你在流式处理终结点上启用 CDN。
 
 有关更多详细信息，请参阅以下部分[比较流式处理类型](#comparing-streaming-types)。
 
@@ -75,45 +75,45 @@ Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnPro
 
 ### <a name="versions"></a>版本
 
-|type|StreamingEndpointVersion|ScaleUnits|CDN|帐单|
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|计费|
 |--------------|----------|-----------------|-----------------|-----------------|
-|经典|1.0|0|不可用|免费|
-|标准流式处理终结点（预览版）|2.0|0|是|付费版|
-|高级流单元|1.0|>0|是|付费版|
-|高级流单元|2.0|>0|是|付费版|
+|经典|1.0|0|NA|免费|
+|标准流式处理终结点（预览）|2.0|0|是|付费|
+|高级流式处理单元|1.0|>0|是|付费|
+|高级流式处理单元|2.0|>0|是|付费|
 
 ### <a name="features"></a>功能
 
-功能|标准|高级
+Feature|标准版|高级
 ---|---|---
-吞吐量 |使用 CDN 时, 高达 600 Mbps, 可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时, 可以提供更高的有效吞吐量。
+吞吐量 |使用 CDN 时，高达 600 Mbps，可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
 按比例计费| 每天|每天
 动态加密|是|是
 动态打包|是|是
-调整|自动增加到目标吞吐量。|额外流单元。
+调整规模|自动增加到目标吞吐量。|其他流式处理单位。
 IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 渐进式下载|是|是
 建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。 
 
-<sup>1</sup>仅当未在终结点上启用 CDN 时, 才直接在流式处理终结点上使用。<br/>
+<sup>1</sup>仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
 
-有关 SLA 的信息，请参阅[定价和 SLA](https://azure.microsoft.com/pricing/details/media-services/)。
+有关 SLA 信息，请参阅[定价和 SLA](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="migration-between-types"></a>类型之间的迁移
 
-从 | 结束时间 | Action
+起价 | 目标 | 行动
 ---|---|---
-经典|标准|需要选择加入
+经典|标准版|需要选择加入
 经典|高级| 缩放（额外流单元）
 标准/高级|经典|不可用（如果流式处理终结点版本为 1.0， 允许通过将 scaleunits 设置为“0”更改为经典）
 标准（带/不带 CDN）|具有相同配置的高级类型|在**已启动**状态下允许。 （通过 Azure 门户）
 高级（带/不带 CDN）|具有相同配置的标准类型|在**已启动**状态下允许（通过 Azure 门户）
 标准（带/不带 CDN）|具有不同配置的高级类型|在**已停止**状态下允许（通过 Azure 门户）。 在“正在运行”状态下不允许。
 高级（带/不带 CDN）|具有不同配置的标准类型|在**已停止**状态下允许（通过 Azure 门户）。 在“正在运行”状态下不允许。
-版本 1.0 且 SU >= 1，使用 CDN|不带 CDN 的标准/高级类型|在 **已停止** 状态下允许。 在**已启动**状态下不允许。
+版本 1.0 且 SU >= 1，使用 CDN|不带 CDN 的标准/高级类型|在**已停止**状态下允许。 在**已启动**状态下不允许。
 版本 1.0 且 SU >= 1，使用 CDN|标准（带/不带 CDN）|在**已停止**状态下允许。 在**已启动**状态下不允许。 将删除 1.0 版 CDN，然后创建新的 CDN 并将其启动。
-版本 1.0 且 SU >= 1，使用 CDN|高级（带/不带 CDN）|在 **已停止** 状态下允许。 在 **已启动** 状态下不允许。 将删除经典 CDN，然后创建新的 CDN 并将其启动。
+版本 1.0 且 SU >= 1，使用 CDN|高级（带/不带 CDN）|在**已停止**状态下允许。 在**已启动**状态下不允许。 将删除经典 CDN，然后创建新的 CDN 并将其启动。
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

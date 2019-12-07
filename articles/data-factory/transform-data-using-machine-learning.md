@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂创建预测数据管道
+title: 创建预测数据管道
 description: 了解如何使用 Azure 机器学习创建预测管道 - Azure 数据工厂中的批处理执行活动。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dc2104495f231a316a1354100ecc105e8fda5bb4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683766"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893835"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -66,7 +66,7 @@ ms.locfileid: "73683766"
 
 请参阅[计算链接服务](compute-linked-services.md)一文，获取有关 JSON 定义中的属性的说明。
 
-Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
+Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net ，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
 
 ![Azure 机器学习 Web 服务](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -124,15 +124,15 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 }
 ```
 
-| 属性          | 说明                              | 必选 |
+| properties          | 描述                              | 需要 |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | 管道中活动的名称     | 是      |
-| 说明       | 描述活动用途的文本。  | 否       |
+| description       | 描述活动用途的文本。  | No       |
 | type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 AzureMLBatchExecution。 | 是      |
 | linkedServiceName | Azure 机器学习链接服务的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
-| webServiceInputs  | 映射 Azure 机器学习 Web 服务输入名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输入参数匹配。 值是 Azure 存储链接服务和指定输入 Blob 位置的 FilePath 属性对。 | 否       |
-| webServiceOutputs | 映射 Azure 机器学习 Web 服务输出名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输出参数匹配。 值是 Azure 存储链接服务和指定输出 Blob 位置的 FilePath 属性对。 | 否       |
-| globalParameters  | 要传递到 Azure 机器学习工作室批处理执行服务终结点的键/值对。 键必须与已发布的 Azure 机器学习工作室 Web 服务中定义的 Web 服务参数名称匹配。 值是在 Azure 机器学习工作室批处理执行请求的 GlobalParameters 属性中传递的 | 否       |
+| webServiceInputs  | 映射 Azure 机器学习 Web 服务输入名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输入参数匹配。 值是 Azure 存储链接服务和指定输入 Blob 位置的 FilePath 属性对。 | No       |
+| webServiceOutputs | 映射 Azure 机器学习 Web 服务输出名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输出参数匹配。 值是 Azure 存储链接服务和指定输出 Blob 位置的 FilePath 属性对。 | No       |
+| globalParameters  | 要传递到 Azure 机器学习工作室批处理执行服务终结点的键/值对。 键必须与已发布的 Azure 机器学习工作室 Web 服务中定义的 Web 服务参数名称匹配。 值是在 Azure 机器学习工作室批处理执行请求的 GlobalParameters 属性中传递的 | No       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>方案 1：使用 Web 服务输入/输出（引用 Azure Blob 存储中的数据）的试验
 

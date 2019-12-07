@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555144"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901329"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -29,7 +29,11 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 
 ## <a name="feature-announcements"></a>功能公告
 
-2019年11月4日-Ignite 会议
+### <a name="december-2019"></a>2019年12月
+
++ "[创建应用" （预览版）](search-create-app-portal.md)是门户中的一个新向导，用于生成可下载的 HTML 文件。 该文件附带嵌入的脚本，该脚本可呈现操作 "localhost" 样式的 web 应用，并将其绑定到搜索服务中的索引。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和 typeahead 查询支持。 您可以将 HTML 脱机修改为扩展或自定义工作流或外观。
+
+### <a name="november-2019---ignite-conference"></a>2019年11月-Ignite 会议
 
 + 在对扩充管道进行修改时，可以通过[增量索引（预览版）](cognitive-search-incremental-indexing-conceptual.md)来选择要重新处理的步骤。 如果你具有以前分析的图像内容，则增量索引会很有用。 将存储成本高昂分析的输出，然后将其用作附加索引或扩充的基础。
 
@@ -44,7 +48,7 @@ API 版本、Nuget 包、命名空间和终结点保持不变。 现有的搜索
 
 + 索引器中现在支持[Azure Data Lake Storage Gen2 （预览版）](search-howto-index-azure-data-lake-storage.md)、 [Cosmos DB Gremlin API （预览）](search-howto-index-cosmosdb.md)和[Cosmos DB Cassandra API （预览版）](search-howto-index-cosmosdb.md) 。 你可以使用[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)进行注册。 一旦您接受了预览计划，您将收到一封确认电子邮件。
 
-24 2019 年7月
+### <a name="july-2019"></a>2019 年 7 月
 
 + 在[Azure 政府版云中](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)公开发布。
 

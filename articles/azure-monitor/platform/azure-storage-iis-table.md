@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 04/12/2017
-ms.openlocfilehash: 8f70ecc96269783c29c566fb89bd617f034316b1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2d2d8d43cb5ee91810d639c4ee8925d185987954
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932677"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893546"
 ---
-# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>从 Azure 存储收集 Azure 诊断日志
+# <a name="collect-azure-resource-logs-from-azure-storage"></a>从 Azure 存储收集 Azure 资源日志
 
 Azure Monitor 可以读取将诊断写入到表存储或写入到 blob 存储的 IIS 日志的以下服务的日志：
 

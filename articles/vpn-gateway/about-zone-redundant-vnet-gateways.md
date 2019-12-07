@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725588"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896649"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
@@ -39,21 +39,9 @@ ms.locfileid: "68725588"
 
 ## <a name="gwskus"></a>网关 SKU
 
-区域冗余网关和区域网关以新的网关 SKU 的形式提供。 我们已在 Azure AZ 区域中添加了新的虚拟网络网关 SKU。 这些 SKU 与 ExpressRoute 网关和 VPN 网关的相应现有 SKU 类似，不同之处在于它们是区域冗余网关和区域网关的专用 SKU。
+区域冗余网关和区域网关以新的网关 SKU 的形式提供。 我们已在 Azure AZ 区域中添加了新的虚拟网络网关 SKU。 这些 SKU 与 ExpressRoute 网关和 VPN 网关的相应现有 SKU 类似，不同之处在于它们是区域冗余网关和区域网关的专用 SKU。 可以通过 SKU 名称中的 "AZ" 标识这些 Sku。
 
-新增的网关 SKU 包括：
-
-### <a name="vpn-gateway"></a>VPN 网关
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+有关网关 Sku 的信息，请参阅[VPN 网关 sku](vpn-gateway-about-vpngateways.md#gwsku)和[ExpressRoute 网关 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
 
 ## <a name="pipskus"></a>公共 IP SKU
 
@@ -86,7 +74,7 @@ ms.locfileid: "68725588"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-Azure 区域中提供了新的 Sku, 其中包含 Azure 可用性区域美国、法国中部、北欧、西欧和美国西部2区域、美国东部、美国东部2、东南亚、日本东部、英国南部。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
+Azure 区域中提供了新的 Sku，其中包含 Azure 可用性区域美国、法国中部、北欧、西欧和美国西部2区域、美国东部、美国东部2、东南亚、日本东部、英国南部。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

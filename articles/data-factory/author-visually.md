@@ -1,23 +1,21 @@
 ---
-title: Azure 数据工厂中的视觉对象创作
+title: 视觉对象创作
 description: 了解如何在 Azure 数据工厂中使用视觉对象创作
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 71f0e283c9609e949cc9b09f20a16c6f5c9c3e50
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.date: 01/09/2019
+ms.openlocfilehash: 734a9de3eaa44a149c10d1a268d09024f3ef279d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681617"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891620"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 
@@ -35,17 +33,17 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ## <a name="expressions-and-functions"></a>表达式和函数
 
-可以使用表达式和函数代替静态值来指定 Azure 数据工厂中的许多属性。
+可以使用表达式和函数代替静态值来指定 Azure 数据工厂中的多个属性。
 
-若要指定属性值的表达式，请选择“添加动态内容”或在焦点在字段上时单击 **Alt + P**。
+若要指定属性值的表达式，请选择 "**添加动态内容**"，或者单击 " **Alt + P** "，同时将焦点放在字段上。
 
 ![添加动态内容](media/author-visually/dynamic-content-1.png)
 
-这将打开**数据工厂表达式生成器**，你可以从支持的系统变量、活动输出、函数和用户指定的变量或参数构建表达式。 
+这将打开 "**数据工厂表达式生成器**"，您可以在其中从受支持的系统变量、活动输出、函数和用户指定的变量或参数生成表达式。 
 
 ![表达式生成器](media/author-visually/dynamic-content-2.png)
 
-有关表达式语言的信息，请参阅 [Azure 数据工厂中的表达式和函数](control-flow-expression-language-functions.md)。
+有关表达式语言的信息，请参阅[Azure 数据工厂中的表达式和函数](control-flow-expression-language-functions.md)。
 
 ## <a name="provide-feedback"></a>提供反馈
 

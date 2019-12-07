@@ -1,6 +1,6 @@
 ---
 title: Azure 按需媒体编码器概述 |Microsoft Docs
-description: 本主题概述 Azure 点播媒体编码器。
+description: Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。 本文提供 Azure 点播媒体编码器的概述。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019037"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901510"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 按需媒体编码器概述 
 
@@ -32,7 +32,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 媒体服务所提供的动态打包，允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
 
-创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 当终结点处于**运行**状态时, 将发生流式处理终结点的计费。
+创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 当终结点处于**运行**状态时，将发生流式处理终结点的计费。
 
 媒体服务支持会在本文中介绍的以下按需编码器：
 
@@ -43,7 +43,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以预留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码预留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 
-## <a name="media-encoder-standard"></a>媒体编码器标准
+## <a name="media-encoder-standard"></a>媒体编码器标准版
 
 ### <a name="how-to-use"></a>如何使用
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
@@ -52,7 +52,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>预设
-Media Encoder Standard 使用 [此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 [此处](media-services-input-metadata-schema.md)说明了编码器输入元数据。
@@ -68,10 +68,10 @@ Media Encoder Standard 使用 [此处](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>创建覆盖层
 有关信息，请参阅[如何使用 Media Encoder Standard 创建覆盖层](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>请参阅
+### <a name="see-also"></a>另请参阅
 [媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
-## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium Workflow
+## <a name="media-encoder-premium-workflow"></a>媒体编码器高级工作流
 ### <a name="overview"></a>概述
 [在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 

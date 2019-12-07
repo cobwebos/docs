@@ -1,7 +1,7 @@
 ---
 title: 什么是视频索引器？
 titleSuffix: Azure Media Services
-description: Azure 媒体服务视频索引器服务的概述。
+description: 本文概述了 Azure 媒体服务视频索引器服务。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575115"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892696"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -33,7 +33,7 @@ ms.locfileid: "73575115"
 
 * *深度搜索*：使用从视频中提取的见解增强视频库中的搜索体验。 例如，编制口述字词和脸的索引可以使搜索体验在视频中查找时间，在此视频中，某人会说出某些词，或者两个人同时出现。 基于视频的此类见解的搜索适用于新闻机构、教育院校、广播、娱乐内容所有者、企业 LOB 应用，以及具有用户需要进行搜索的视频库的任何行业。
 * *内容创建*：创建尾端、突出显示重现片段、社交媒体内容或基于 Insights 视频索引器的新闻剪辑从内容中提取。 对于 "人员" 和 "标签" 外观，关键帧、场景标记和时间戳会使创建过程更流畅、更轻松，并使你能够访问你所创建的内容所需的视频部分。
-* *辅助功能*：无论你是要为残障人士提供内容还是希望将内容分发到使用不同语言的不同区域，你都可以使用视频提供的脚本和翻译多语言的索引器。
+* *辅助功能*：无论你是要使你的内容可用于残障人士，还是希望将内容分发到使用不同语言的不同区域，你都可以使用多种语言的视频索引器提供的脚本和翻译。
 * *盈利*：视频索引器有助于增加视频的价值。 例如，依赖于广告收入（新闻媒体、社交媒体等）的行业可以通过使用提取的见解作为 ad 服务器的其他信号来提供相关广告。
 * *内容裁决*：使用文本和视觉对象审核模型，使用户不受不良内容的保障，并验证发布的内容是否与组织的值匹配。 可以自动阻止某些视频，或提醒用户有关内容的信息。
 * *建议*：通过将相关视频时间与用户进行突出显示，可使用视频见解来改善用户参与。 通过使用其他元数据标记每个视频，你可以建议用户使用最相关的视频，并突出显示与需要匹配的视频部分。

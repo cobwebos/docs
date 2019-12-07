@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d2e86c06cca26da2776459f3c20bf921a02ed89b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818462"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894712"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,9 +30,9 @@ ms.locfileid: "73818462"
 * [在定型过程中访问数据](#train)
 * [将数据移到 Azure](#move)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 - 使用[Azure Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或[azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的 azure 存储帐户。
 
@@ -58,7 +58,7 @@ ms.locfileid: "73818462"
 
 所有寄存器方法都在[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类上，格式为 register_azure_ *。
 
-填充 register （）方法所需的信息可通过[Azure 机器学习 studio](https://ml.azure.com)找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证信息，如帐户密钥或 SAS 令牌，请在左侧的 "**设置**" 窗格下导航到 "**帐户密钥**"。 
+填充 register （）方法所需的信息可通过[Azure 门户](https://portal.azure.com)找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证信息，如帐户密钥或 SAS 令牌，请在左侧的 "**设置**" 窗格下导航到 "**帐户密钥**"。 
 
 以下示例演示如何将 Azure Blob 容器或 Azure 文件共享注册为数据存储。
 
@@ -97,12 +97,12 @@ ms.locfileid: "73818462"
 
 在 Azure 机器学习 studio 中的几个步骤中创建新的数据存储。
 
-1. 登录到[Azure 机器学习 studio](https://ml.azure.com/)。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在 "**管理**" 下的左窗格中选择 "**数据存储**"。
 1. 选择 " **+ 新建数据存储**"。
 1. 完成 "新建数据存储" 窗体。 表单基于 Azure 存储类型和身份验证类型选择智能地进行更新。
   
-填充窗体所需的信息可通过[Azure 机器学习 studio](https://ml.azure.com)来找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证项（如帐户密钥或 SAS 令牌），请导航到左侧 "**设置**" 窗格下的 "**帐户密钥**"。
+填充窗体所需的信息可通过[Azure 门户](https://portal.azure.com)找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证项（如帐户密钥或 SAS 令牌），请导航到左侧 "**设置**" 窗格下的 "**帐户密钥**"。
 
 下面的示例演示创建 Azure blob 数据存储时窗体的外观。 
     
@@ -147,7 +147,7 @@ ws.set_default_datastore('your datastore name')
 ## <a name="upload--download-data"></a>上载 & 下载数据
 以下示例中所述的[`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-)和[`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)方法特定于和对[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)和[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)类具有相同的作用。
 
-### <a name="upload"></a>上传
+### <a name="upload"></a>上载
 
  使用 Python SDK 将目录或单个文件上传到数据存储。
 
@@ -187,11 +187,11 @@ datastore.download(target_path='your target path',
 
 下表列出了一些方法，这些方法告诉计算目标如何在运行期间使用数据存储。 
 
-同样|方法|说明|
+道路|方法|描述|
 ----|-----|--------
 装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| 用于在计算目标上装载数据存储。
 下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|使用将数据存储的内容下载到 `path_on_compute`指定的位置。 <br><br> 此下载在运行之前发生。
-上传|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从 `path_on_compute` 指定的位置上传到数据存储。 <br><br> 此上传在运行之后发生。
+上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从 `path_on_compute` 指定的位置上传到数据存储。 <br><br> 此上传在运行之后发生。
 
 若要引用数据存储中的特定文件夹或文件并使其在计算目标上可用，请使用数据存储[`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-)方法。
 
@@ -244,14 +244,14 @@ est = Estimator(source_directory='your code directory',
 
 |计算|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
-| Local|[as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)， [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)， [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|不适用         |不适用                                                                         |
-| Azure 机器学习计算 |[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、 [ML&nbsp;管道](concept-ml-pipelines.md)|[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、 [ML&nbsp;管道](concept-ml-pipelines.md)|不适用         |不适用                                                                         |
-| 虚拟机               |[as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)， [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |不适用         |不适用                                                                         |
-| HDInsight                      |[as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |不适用         |不适用                                                                         |
-| 数据传输                  |[ML&nbsp;管道](concept-ml-pipelines.md)                                               |不适用                                           |[ML&nbsp;管道](concept-ml-pipelines.md)            |[ML&nbsp;管道](concept-ml-pipelines.md)                                                                            |
-| Databricks                     |[ML&nbsp;管道](concept-ml-pipelines.md)                                              |不适用                                           |[ML&nbsp;管道](concept-ml-pipelines.md)             |不适用                                                                         |
-| Azure Batch                    |[ML&nbsp;管道](concept-ml-pipelines.md)                                               |不适用                                           |不适用         |不适用                                                                         |
-| Azure DataLake 分析       |不适用                                           |不适用                                           |[ML&nbsp;管道](concept-ml-pipelines.md)             |不适用                                                                         |
+| 本地|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|N/A         |N/A                                                                         |
+| Azure 机器学习计算 |[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、 [ML&nbsp;管道](concept-ml-pipelines.md)|[as_mount （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、 [as_download （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、 [as_upload （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、 [ML&nbsp;管道](concept-ml-pipelines.md)|N/A         |N/A                                                                         |
+| 虚拟机               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
+| HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |N/A         |N/A                                                                         |
+| 数据传输                  |[ML&nbsp;管道](concept-ml-pipelines.md)                                               |N/A                                           |[ML&nbsp;管道](concept-ml-pipelines.md)            |[ML&nbsp;管道](concept-ml-pipelines.md)                                                                            |
+| Databricks                     |[ML&nbsp;管道](concept-ml-pipelines.md)                                              |N/A                                           |[ML&nbsp;管道](concept-ml-pipelines.md)             |N/A                                                                         |
+| Azure 批处理                    |[ML&nbsp;管道](concept-ml-pipelines.md)                                               |N/A                                           |N/A         |N/A                                                                         |
+| Azure DataLake 分析       |N/A                                           |N/A                                           |[ML&nbsp;管道](concept-ml-pipelines.md)             |N/A                                                                         |
 
 > [!NOTE]
 > 在某些情况下，使用 `as_download()` 而不是 `as_mount()`，可以更快地运行高度迭代、大型数据进程。这可以 experimentally 进行验证。
@@ -271,7 +271,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure 机器学习提供多种方法来使用模型进行评分。 其中一些方法不提供对数据存储的访问权限。 使用下表来了解在评分期间允许访问数据存储的方法：
 
-| 方法 | 数据存储访问 | 说明 |
+| 方法 | 数据存储访问 | 描述 |
 | ----- | :-----: | ----- |
 | [批处理预测](how-to-run-batch-predictions.md) | ✔ | 异步对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 web 服务。 |

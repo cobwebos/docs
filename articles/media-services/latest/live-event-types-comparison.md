@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 LiveEvent 类型 | Microsoft Docs
-description: 本文显示比较 LiveEvent 类型的详细表。
+description: 在 Azure 媒体服务中，实时事件可以是以下两种类型之一：实时编码和传递。 本文显示比较实时事件类型的详细表。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802244"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888387"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -32,15 +32,15 @@ ms.locfileid: "70802244"
 * **LiveEventEncodingType** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 如果贡献源的分辨率为720p 或更高，则**Default720p**预设将编码一组6分辨率/比特率对（详细信息将在本文稍后介绍）。
 * **LiveEventEncodingType. Premium1080p** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（详细信息将在本文稍后介绍）。 
 
-| 功能 | 直通直播活动 | 标准或 Premium1080p 实时事件 |
+| Feature | 直通直播活动 | 标准或 Premium1080p 实时事件 |
 | --- | --- | --- |
-| 单比特率输入在云中被编码为多比特率 |否 |是 |
+| 单比特率输入在云中被编码为多比特率 |No |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
 | 贡献源中建议的最大层数|最大为 12|1 个音频|
 | 输出中的最大层数| 与输入相同|最多6个（请参阅下面的系统预设）|
-| 贡献源的最大聚合带宽|60 Mbps|不可用|
+| 贡献源的最大聚合带宽|60 Mbps|N/A|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
-| 支持多语言音轨|是|否|
+| 支持多语言音轨|是|No|
 | 支持的输入视频编解码器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
 | 支持的输出视频编解码器|与输入相同|H.264/AVC|
 | 支持的视频位深、输入和输出|最多 10 位，包括 HDR 10/HLG|8 位|
@@ -52,13 +52,13 @@ ms.locfileid: "70802244"
 | 价格|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|
 | 最长运行时间| 24 小时 x 365 天，实时线性 | 24小时 x 365 天，实时线性（预览）|
 | 传递嵌入式 CEA 608/708 字幕数据的能力|是|是|
-| 支持插入静态图像|否|否|
-| 支持通过 API 发出广告指示| 否|否|
+| 支持插入静态图像|No|No|
+| 支持通过 API 发出广告指示| No|No|
 | 支持通过带内 SCTE35 消息发出广告指示|是|是|
 | 能够从贡献源出现的短时停顿中恢复|是|部分|
 | 支持非一致性输入 GOP|是|否 – 输入必须具有固定的 GOP 持续时间|
 | 支持可变帧率输入|是|否 - 输入必须是固定的帧速率。 轻微的帧率变化是容许的，例如在高速运动情况下出现的轻微帧率变化。 但贡献源不能丢弃帧速率（例如，15帧/秒）。|
-| 输入源丢失时，会自动关闭直播活动|否|12 小时后，如果没有运行的 LiveOutput|
+| 输入源丢失时，会自动关闭直播活动|No|12 小时后，如果没有运行的 LiveOutput|
 
 ## <a name="system-presets"></a>系统预设
 
@@ -71,7 +71,7 @@ ms.locfileid: "70802244"
 
 如果贡献源的分辨率为720p 或更高，则**Default720p**预设会将源编码到以下6层中。 在下表中，比特率为 kbps，MaxFPS 表示允许的最大帧速率（在帧/秒）中，配置文件表示使用的 H-p 配置文件。
 
-| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 个人资料 |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |
 | 2200 |960 |540 |30 |高 |
@@ -88,7 +88,7 @@ ms.locfileid: "70802244"
 
 如果贡献源的分辨率为1080p，则**Default1080p**预设会将源编码到以下6层中。
 
-| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 个人资料 |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |高 |
 | 3000 |1280 |720 |30 |高 |

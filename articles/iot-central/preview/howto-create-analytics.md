@@ -3,21 +3,21 @@ title: 分析 Azure IoT Central 应用程序中的设备数据 |Microsoft Docs
 description: 分析 Azure IoT Central 应用程序中的设备数据。
 author: ankitgup
 ms.author: ankitgup
-ms.date: 10/17/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 77ee15d581cfc17af01ae0fa53139edc331a4fea
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4cf4469833e28a594996b981a47a964131026a7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896003"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895714"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析来分析设备数据
 
-本文适用于操作员、构建者和管理员。
+*本文适用于操作员、构建者和管理员。*
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -56,7 +56,7 @@ Azure IoT Central 提供丰富的分析功能，用于分析历史趋势，并�
 
     ![时间编辑器](media/howto-create-analytics/timeeditorpanel.png)
 
-    - **内部日期范围滑块工具**：通过将两个端点控件拖动到所需的时间范围内来使用。 此内部日期范围内受外部日期范围滑块控件约束。
+    - **内部日期范围滑块工具**：通过将两个端点控件拖动到所需的时间范围内来使用。 此内部日期范围受外部日期范围滑块控件约束。
     
    
     - **外部日期范围滑块控件**：使用端点控件选择外部日期范围，该范围将可用于内部日期范围控件。

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 2a53debb72cfd5da73c2bceb7993288eb828237a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/05/2019
+ms.openlocfilehash: 0250810d25b0abb5bf675d8c91f3c0678d895c37
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770520"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893155"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
@@ -63,6 +63,9 @@ az mysql server configuration set --name slow_query_log --resource-group myresou
 ```sql
 CALL mysql.az_load_timezone();
 ```
+
+> [!IMPORTANT]
+> 你应重新启动服务器，以确保正确填充时区表。 若要重新启动服务器，请使用[Azure 门户](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 要查看可用的时区值，请运行以下命令：
 

@@ -1,18 +1,19 @@
 ---
-title: 在 Azure 门户中管理存储帐户设置 - Azure 存储| Microsoft Docs
+title: 在 Azure 门户中管理存储帐户设置
+titleSuffix: Azure Storage
 description: 了解如何在 Azure 门户中管理存储帐户设置，包括配置访问控制设置、重新生成帐户访问密钥、更改访问层或修改帐户使用的复制类型。 还将了解如何在门户中删除存储帐户。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748985"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892373"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>在 Azure 门户中管理存储帐户设置
 
@@ -20,11 +21,11 @@ ms.locfileid: "73748985"
 
 ## <a name="access-control"></a>访问控制
 
-Azure 存储支持通过基于角色的访问控制 (RBAC)，针对 Blob 存储和队列存储使用 Azure Active Directory 进行授权。 有关使用 Azure AD 进行授权的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](storage-auth-aad.md)。
+Azure 存储通过基于角色的访问控制（RBAC）支持通过 Azure Active Directory 用于 Blob 存储和队列存储。 有关使用 Azure AD 授权的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](storage-auth-aad.md)。
 
-Azure 门户中的“访问控制”设置提供了一种将 RBAC 角色分配给用户、组、服务主体和托管标识的简单方法。 有关分配 RBAC 角色的详细信息，请参阅[使用 RBAC 管理 blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
+Azure 门户中的“访问控制”设置提供了一种将 RBAC 角色分配给用户、组、服务主体和托管标识的简单方法。 有关分配 RBAC 角色的详细信息，请参阅[使用 RBAC 管理对 blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 Azure 存储支持 Azure 资源管理器标记，以使用自定义分类组织 Azure 资源。 可将标记应用于存储帐户，以便以逻辑方式在订阅中对其进行分组。
 
@@ -60,7 +61,7 @@ Microsoft 建议定期重新生成访问密钥，这有助于确保存储帐户�
 
 ## <a name="account-configuration"></a>帐户配置
 
-创建存储帐户后，可修改其配置。 例如，可更改数据的复制方式，或将帐户的访问层从热访问层更改为冷访问层。 在 [Azure 门户](https://portal.azure.com)中导航到自己的存储帐户，找到并单击“设置”下的“配置”以查看和/或更改帐户配置。
+创建存储帐户后，可修改其配置。 例如，可更改数据的复制方式，或将帐户的访问层从热访问层更改为冷访问层。 在 [Azure 门户](https://portal.azure.com)中，导航到存储帐户，然后找到并单击“设置”下的“配置”以查看和/或更改帐户配置。
 
 更改存储帐户配置可能会导致成本增加。 有关更多详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)页。
 

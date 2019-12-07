@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
+title: 使用 Hadoop 流式处理活动转换数据
 description: 说明如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过在 HDInsight 群集上运行 Hadoop 流式处理程序来转换数据。
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6977f7a6ad7fd79a51083bf2ef71c539e04837e5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 01237218e30859015b1c8f0a5adeebd8b9bdf7eb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683786"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893784"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -68,22 +68,22 @@ ms.locfileid: "73683786"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性          | 说明                              | 必选 |
+| properties          | 描述                              | 需要 |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | 活动名称                     | 是      |
-| 说明       | 描述活动用途的文本 | 否       |
+| description       | 描述活动用途的文本 | No       |
 | type              | 对于 Hadoop 流式处理活动，活动类型是 HDInsightStreaming | 是      |
 | linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | mapper            | 指定映射器可执行文件的名称 | 是      |
 | reducer           | 指定化简器可执行文件的名称 | 是      |
-| combiner          | 指定合并器可执行文件的名称 | 否       |
-| fileLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的映射器、合并器和化简器程序。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
+| combiner          | 指定合并器可执行文件的名称 | No       |
+| fileLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的映射器、合并器和化简器程序。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | No       |
 | filePath          | 提供由 fileLinkedService 引用的 Azure 存储中存储的映射器、合并器和化简器程序的路径数组。 该路径区分大小写。 | 是      |
 | input             | 指定映射器输入文件的 WASB 路径。 | 是      |
 | output            | 指定化简器输出文件的 WASB 路径。 | 是      |
-| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
-| arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
-| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       | 
+| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | No       |
+| arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | No       |
+| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | No       | 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章了解如何以其他方式转换数据： 

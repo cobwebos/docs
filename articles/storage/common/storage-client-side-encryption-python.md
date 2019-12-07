@@ -1,23 +1,25 @@
 ---
-title: 针对 Microsoft Azure 存储使用 Python 的客户端加密 | Microsoft Docs
+title: 通过 Python 进行客户端加密
+titleSuffix: Azure Storage
 description: 适用于 Python 的 Azure 存储客户端库支持客户端加密，实现 Azure 存储应用程序的最高安全性。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-ms.date: 05/11/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cd8ba51b960703fa25371d874ed2bb50e7df2fde
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360041"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895373"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Python 的客户端加密
+# <a name="client-side-encryption-with-python"></a>通过 Python 进行客户端加密
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
@@ -57,7 +59,7 @@ ms.locfileid: "68360041"
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
 > [!WARNING]
-> 如果要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
+> 如果您要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
 > 
 > 
 
@@ -117,7 +119,7 @@ ms.locfileid: "68360041"
 > * 如果在已加密的 Blob 上设置元数据，则可能会覆盖解密所需的与加密相关的元数据，因为设置元数据不是累加性的。 这也适用于快照；避免在创建已加密的 Blob 的快照时指定元数据。 如果必须设置元数据，务必调用 **get_blob_metadata** 方法首先获取当前加密元数据，并在设置元数据时避免并发写入。
 > * 对于只处理加密数据的用户，请在服务对象中启用 **require_encryption** 标志。 有关详细信息，请参阅下文。
 
-存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后会集成到此库中。
+存储客户端库要求提供的 KEK 和密钥解析程序实现以下接口。 用于 Python KEK 管理的 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)支持正在筹备中，开发完成后将集成到此库中。
 
 ## <a name="client-api--interface"></a>客户端 API/接口
 创建存储服务对象（例如 blockblobservice）后，用户可以向构成加密策略的字段赋值：key_encryption_key、key_resolver_function 和 require_encryption。 用户可仅提供 KEK 或解析程序，或同时提供两者。 key_encryption_key 是使用密钥标识符进行标识的基本密钥类型，它提供包装/解包逻辑。 key_resolver_function 用于在解密过程中解析密钥。 在指定了密钥标识符的情况下，它将返回有效的 KEK。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
@@ -128,7 +130,7 @@ KEK 必须实现以下方法才能成功加密数据：
 * get_key_wrap_algorithm()：返回用于包装密钥的算法。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
   KEK 必须实现以下方法才能成功解密数据：
-* unwrap_key(cek, algorithm)：使用字符串指定的算法返回指定 CEK 的解包形式。
+* unwrap_key(cek, algorithm)：使用字符串指定的算法返回解包形式的指定 CEK。
 * get_kid()：返回此 KEK 的字符串密钥 ID。
 
 密钥解析程序必须至少实现一个方法，以便在指定密钥 ID 的情况下，返回用于实现上述接口的相应 KEK。 只会将此方法分配到服务对象中的 key_resolver_function 属性。
@@ -139,7 +141,7 @@ KEK 必须实现以下方法才能成功加密数据：
   * 如果指定为获取密钥，则将调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则将引发错误。
   * 如果未指定解析程序，但指定了密钥，则在该密钥的标识符与所需密钥标识符匹配时使用该密钥。 如果标识符不匹配，则将引发错误。
 
-    azure.storage.samples 中的加密示例演示了针对 blob、队列和表的更详细端到端方案。
+    Azure 中的加密示例演示了针对 blob、队列和表的更详细端到端方案。
       KEK 和密钥解析程序的示例实现在示例文件中分别以 KeyWrapper 和 KeyResolver 提供。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式

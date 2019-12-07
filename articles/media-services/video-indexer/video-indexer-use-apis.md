@@ -1,7 +1,7 @@
 ---
 title: 使用视频索引器 API
 titleSuffix: Azure Media Services
-description: Azure 媒体服务视频索引器 API 入门教程。
+description: 本文介绍如何开始处理 Azure 媒体服务视频索引器 API。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e1fcfcd9e6bcb6108573f032d81f10ccc2be1e57
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839621"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892679"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
 

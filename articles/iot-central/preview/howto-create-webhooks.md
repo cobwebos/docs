@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 中基于规则创建 Webhook | Microsoft Docs
 description: 在 Azure IoT Central 中创建 Webhook，以便在规则触发时自动通知其他应用程序。
 author: viv-liu
 ms.author: viviali
-ms.date: 10/21/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d1f99be5f21cbf8f1dcfe4a32595a639d3760494
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 206c93c291654d22e945c3064e3c581dceb50cea
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929938"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895470"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>针对 Azure IoT Central 中的规则创建 webhook 操作（预览功能）
 

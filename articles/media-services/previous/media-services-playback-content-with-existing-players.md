@@ -1,6 +1,6 @@
 ---
 title: 使用现有播放器播放内容 - Azure | Microsoft 文档
-description: 本主题列出了可以用来播放内容的现有播放器。
+description: 本文列出了可以用来播放内容的现有播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69015295"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895860"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
-Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题列出了可用于测试流的现有播放器。
+Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 门户媒体服务内容播放器
 **Azure** 门户提供可用于测试视频的内容播放器。
@@ -35,11 +35,11 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 
 ![AMSPlayer][AMSPlayer]
 
-### <a name="azure-media-player"></a>Azure Media Player
+### <a name="azure-media-player"></a>Azure 媒体播放器
 
 使用 [Azure Media Player](https://aka.ms/azuremediaplayer)按以下列任意格式播放内容（清除或受保护）：
 
-* 平滑流式处理
+* 平滑流
 * MPEG DASH
 * HLS
 * 渐进式 MP4

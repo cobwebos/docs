@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c8337d18b5c6b484e45e6cefaec98e2684155a02
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641501"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900428"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -72,18 +72,18 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 - **源属性** - 来自源系统的用户属性（例如 Azure Active Directory）。
 - **目标属性** – 目标系统中的用户属性（例如 ServiceNow）。
 - **使用此属性匹配对象**–是否应使用此映射唯一标识源系统和目标系统之间的用户。 它通常在 Azure AD 中的 userPrincipalName 或 mail 属性上设置，该属性通常映射到目标应用程序中的用户名字段。
-- 匹配优先级 – 可设置多个匹配属性。 如果有多个，则按此字段定义的顺序对它们进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+- **匹配优先顺序** – 可设置多个匹配属性。 如果有多个，则按此字段定义的顺序对它们进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**
   - **始终**–在用户的创建和更新操作中应用此映射。
   - **仅在创建过程中**-仅在用户创建操作时应用此映射。
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>匹配源系统和目标系统中的用户
-Azure AD 预配服务可以部署在这两个领域中（用户不会在目标系统中退出）和要重建 mqtt （目标系统中已存在用户）方案。 为了同时支持这两种方案，预配服务使用匹配属性的概念。 匹配属性允许您确定如何唯一标识源中的用户并匹配目标中的用户。 在规划部署的过程中，确定可用于唯一标识源系统和目标系统中的用户的属性。 注意事项：
+可以在 "领域" 方案（其中用户不会在目标系统中退出）和 "要重建 mqtt" 方案（其中用户已存在于目标系统中）部署 "Azure AD 预配服务"。 为了同时支持这两种方案，预配服务使用匹配属性的概念。 匹配属性允许您确定如何唯一标识源中的用户并匹配目标中的用户。 在规划部署的过程中，确定可用于唯一标识源系统和目标系统中的用户的属性。 注意事项：
 
 - **匹配的属性应是唯一的：** 客户通常使用 userPrincipalName、mail 或对象 ID 等属性作为匹配属性。
-- **多个属性可用作匹配属性：** 您可以定义要在匹配用户和计算顺序时进行评估的多个属性（在 UI 中定义为匹配优先级）。 例如，如果将三个属性定义为匹配属性，并且在计算前两个属性后，用户将被唯一匹配，则该服务将不会 evaluat 第三个属性。 服务将按指定的顺序评估匹配的属性，并在找到匹配项时停止计算。  
+- **多个属性可用作匹配属性：** 您可以定义要在匹配用户和计算顺序时进行评估的多个属性（在 UI 中定义为匹配优先级）。 例如，如果将三个属性定义为匹配属性，并且在计算前两个属性后，用户将被唯一匹配，则该服务将不会计算第三个属性。 服务将按指定的顺序评估匹配的属性，并在找到匹配项时停止计算。  
 - **源和目标中的值不必完全匹配：** 目标中的值可以是源中值的一些简单函数。 因此，可以在源和目标中有一个 emailAddress 属性，并按 emailAddress 属性的函数进行匹配，将一些字符替换为一些常量值。  
-- **不支持基于属性组合的匹配：** 大多数应用程序不支持基于两个属性的查询，并且因此不能基于属性的组合匹配。 可以在一个之后计算单个属性。
+- **不支持基于属性组合的匹配：** 大多数应用程序不支持基于两个属性进行查询。 因此，不能基于特性的组合匹配。 可以在一个之后计算单个属性。
 - **所有用户都必须具有至少一个匹配属性的值：** 如果定义了一个匹配属性，则所有用户都必须具有源系统中该属性的值。 例如，如果您将 userPrincipalName 定义为匹配属性，则所有用户都必须具有 userPrincipalName。 如果定义多个匹配属性（例如 extensionAttribute1 和 mail），则并非所有用户都必须具有相同的匹配属性。 一个用户可以有一个 extensionAttribute1，而不是邮件，而另一个用户可以拥有邮件，但不能包含 extensionAttribute1。 
 - **目标应用程序必须支持对匹配属性进行筛选：** 应用程序开发人员允许在其用户或组 API 上筛选属性的子集。 对于库中的应用程序，我们确保默认属性映射适用于目标应用程序的 API 支持筛选的属性。 更改目标应用程序的默认匹配属性时，请检查第三方 API 文档以确保可以筛选属性。  
 
@@ -134,7 +134,61 @@ Azure AD 预配服务可以部署在这两个领域中（用户不会在目标�
 - **API 表达式**-不使用，除非通过特定预配连接器（如 Workday）的文档的指示执行此操作。
 - **被引用的对象特性**-如果它是引用类型属性，则可以使用此菜单选择包含与属性关联的值的目标应用程序中的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)进行编辑。
 
-若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后，需要重新加载 "**预配**" 选项卡，以便新属性在 "属性映射编辑器" 中变得可用。
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>将自定义扩展属性预配到符合 SCIM 的应用程序
+SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，以满足应用程序的需求。 向 SCIM 应用程序添加自定义属性：
+   1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)，选择 "**企业应用程序**"，选择应用程序，然后选择 "**设置**"。
+   2. 在 "**映射**" 下，选择要为其添加自定义属性的对象（用户或组）。
+   3. 在页面底部，选择 "**显示高级选项**"。
+   4. 选择 "编辑*应用程序*的属性列表"。
+   5. 在属性列表的底部，在提供的字段中输入自定义属性的相关信息。 然后选择 "**添加属性**"。
+
+对于 SCIM 应用程序，属性名称必须遵循以下示例中所示的模式。 可以根据应用程序的要求自定义 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架构：扩展：2.0： CustomExtensionName： CustomAttribute
+
+这些说明仅适用于启用了 SCIM 的应用程序。 使用 SCIM 的应用程序（如 ServiceNow 和 Salesforce）不与 Azure AD 集成，因此，在添加自定义属性时，它们不需要此特定的命名空间。
+
+自定义属性不能是引用属性或多值属性。 当前，库中的应用程序仅支持自定义多值扩展属性。  
+ 
+**具有扩展属性的用户的示例表示形式：**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>将角色预配到 SCIM 应用
 使用以下步骤将用户的角色预配到应用程序。 请注意，以下说明特定于自定义的 SCIM 应用程序。 对于 Salesforce 和 ServiceNow 等库应用程序，请使用预定义的角色映射。 以下项目符号介绍了如何将 AppRoleAssignments 属性转换为应用程序所需的格式。
 

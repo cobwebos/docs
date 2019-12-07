@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体分析进行面部修订 | Microsoft Docs
-description: 本主题演示如何使用 Azure 媒体分析检测面部。
+description: Azure 媒体编修器是一种在云中提供可缩放的人脸密文的 Azure 媒体分析媒体处理器。 本文演示如何通过 Azure 媒体分析为人脸标记。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016021"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900304"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订 
 ## <a name="overview"></a>概述
@@ -135,7 +135,7 @@ ms.locfileid: "69016021"
 
 ## <a name="blur-types"></a>模糊类型
 
-在“合并”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
+在“组合”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”。 默认情况下使用“中”。
 
 可以查找以下模糊类型的示例。
 
@@ -157,9 +157,9 @@ ms.locfileid: "69016021"
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>框
+#### <a name="box"></a>Box
 
-![框](./media/media-services-face-redaction/blur4.png)
+![Box](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>黑色
 

@@ -1,5 +1,5 @@
 ---
-title: 计算目标：在何处定型和部署模型
+title: 什么是计算目标
 titleSuffix: Azure Machine Learning
 description: 定义要将模型定型或部署到 Azure 机器学习的位置。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd4ac07ddf94bd7fc12a2673ce76fb0b9f4d2ccb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580584"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901423"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标？ 
 
@@ -67,6 +67,6 @@ Azure 机器学习在不同的计算资源中具有不同的支持。  你还可
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何：
+了解如何操作：
 * [设置计算目标以训练模型](how-to-set-up-training-targets.md)
 * [将模型部署到计算目标](how-to-deploy-and-where.md)

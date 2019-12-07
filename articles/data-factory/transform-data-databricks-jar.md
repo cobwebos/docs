@@ -1,5 +1,5 @@
 ---
-title: 用 Databricks Jar 转换数据-Azure
+title: 用 Databricks Jar 转换数据
 description: 了解如何通过运行 Databricks Jar 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a01a21259c4957b6f497bf213a3ef53f940bab7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683955"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893954"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
 
@@ -56,18 +56,18 @@ ms.locfileid: "73683955"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必选|
+|properties|描述|需要|
 |:--|---|:-:|
 |name|管道中活动的名称。|是|
-|说明|描述活动用途的文本。|否|
+|description|描述活动用途的文本。|No|
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
 |linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。|是|
-|参数|将传递到主要方法的参数。  这是一个字符串数组。|否|
+|参数|将传递到主要方法的参数。  这是一个字符串数组。|No|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|是（至少有一个包含 mainClassName 方法）|
 
 > [!NOTE]
-> **已知问题**-使用相同的[交互式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)运行并发 Databricks Jar 活动（无需群集重新启动）时，Databricks 中存在一个已知问题，其中，第一个活动的参数将由以下活动使用也是如此。 因此，将错误传递给后续作业的参数。 若要缓解这种情况，请改用[作业群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
+> **已知问题**-使用相同的[交互式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)运行并发 Databricks Jar 活动（无需群集重新启动）时，在 Databricks 中存在一个已知问题，以下活动将使用第一个活动的参数。 因此，将错误传递给后续作业的参数。 若要缓解这种情况，请改用[作业群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 

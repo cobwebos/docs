@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 10/19/2019
-ms.openlocfilehash: 4559bb87369309882ebdaa0d3b408786feb586b5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 11/27/2019
+ms.openlocfilehash: 164fc4eef245a2b9ea610179c3cf2e78b7b1b389
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896029"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895690"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>将 Rigado Cascade 500 网关设备连接到 Azure IoT Central 应用程序
 
@@ -28,7 +28,7 @@ Cascade 500 IoT 网关是 Rigado 中的一项硬件服务，包含在其级联�
 
 Cascade 500 预认证适用于 Azure IoT 即插即用（PnP），使我们的解决方案构建者可以轻松地将设备集成到端到端解决方案。 使用级联网关可以通过无线方式连接到接近网关设备的各种状况监视传感器。 可以通过网关设备将这些传感器载入到 IoT Central。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要以下资源：
 
 * Rigado Cascade 500 设备。 有关详细信息，请访问[Rigado](https://www.rigado.com/)。

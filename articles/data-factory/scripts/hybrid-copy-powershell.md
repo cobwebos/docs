@@ -1,22 +1,21 @@
 ---
-title: 'PowerShell 脚本：使用数据工厂将数据从本地复制到 Azure '
+title: 通过 PowerShell 将数据从本地复制到 Azure
 description: 此 PowerShell 脚本将数据从本地 SQL Server 数据库复制到其他 Azure Blob 存储。
 services: data-factory
-author: linda33wj
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: d7f8d67291c0b6b2a384331c014fdd5cd247ceae
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.date: 10/31/2017
+ms.openlocfilehash: f75c4316383120e198ab57501e31c0c42a8917f2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684340"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890838"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 创建用于将数据从本地复制到 Azure 的数据工厂管道
 
@@ -26,7 +25,7 @@ ms.locfileid: "73684340"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。
 - **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
@@ -85,7 +84,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 | [New-AzDataFactoryV2LinkedServiceEncryptCredential](/powershell/module/az.datafactory/new-Azdatafactoryv2linkedserviceencryptedcredential) | 在链接的服务中对凭据进行加密，并使用加密凭据生成新的链接服务定义。 
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在数据工厂中创建链接服务。 链接服务可将数据存储或计算链接到数据工厂。 |
 | [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在数据工厂中创建数据集。 数据集表示管道中活动的输入/输出。 | 
-| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 一个管道包含一个或多个执行某项操作的活动。 在此管道中，复制活动在 Azure Blob 存储中将数据从一个位置复制到另一个位置。 |
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 一个管道包含一个或多个可执行特定操作的活动。 在此管道中，复制活动在 Azure Blob 存储中将数据从一个位置复制到另一个位置。 |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 为管道创建运行。 换而言之，就是运行管道。 |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 获取管道中活动的运行（活动运行）的相关详细信息。 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |

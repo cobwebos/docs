@@ -1,19 +1,20 @@
 ---
-title: 启用对 Azure Blob 存储中容器和 blob 的公共读取访问 | Microsoft Docs
+title: 管理容器和 blob 的公共读取访问权限
+titleSuffix: Azure Storage
 description: 了解如何使容器和 blob 可供匿名访问，以及如何对其进行程序式访问。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 09/19/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: d0e3121fe773a9725eb7cfd9e8b14d0ed86f3fbb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673301"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892476"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
 
@@ -23,30 +24,30 @@ ms.locfileid: "71673301"
 
 ## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>授予对容器和 Blob 的匿名用户权限
 
-默认情况下，只有拥有相应权限的用户才能访问容器及其包含的任何 Blob。 若要授予匿名用户对容器及其 Blob 的读取访问权限，可以设置容器公共访问级别。 如果授予对容器的公共访问权限，则匿名用户可以读取可公开访问的容器中的 Blob，而无需对请求进行授权。
+默认情况下，容器和其中的任何 Blob 只能由已获得适当权限的用户访问。 要授予匿名用户对容器及其 Blob 的读取权限，可以设置容器公共访问级别。 授予对容器的公共访问权限时，匿名用户可以读取可公开访问的容器中的 blob，而无需对请求进行授权。
 
 可为容器配置以下权限：
 
-- **无公共读取访问权限：** 只有存储帐户所有者可以访问容器及其 Blob。 这是所有新容器的默认权限。
-- **仅限对 Blob 的公共读取访问权限：** 可以通过匿名请求读取该容器中的 Blob，但容器数据不可用。 匿名客户端无法枚举容器中的 Blob。
-- **对容器及其 Blob 的公共读取访问权限：** 可以通过匿名请求读取所有容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
+- 非公共读取访问：只有存储帐户所有者可以访问容器及其 Blob。 这是所有新容器的默认权限。
+- 仅针对 Blob 的公共读取访问：可通过匿名请求读取容器中的 Blob，但容器数据不可用。 匿名客户端无法枚举容器中的 Blob。
+- **容器及其 blob 的公共读取访问权限：** 所有容器和 blob 数据可通过匿名请求读取。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 ### <a name="set-container-public-access-level-in-the-azure-portal"></a>在 Azure 门户中设置容器公共访问级别
 
-在 [Azure 门户](https://portal.azure.com)中，可以更新一个或多个容器的公共访问级别：
+在[Azure 门户](https://portal.azure.com)中，可以更新一个或多个容器的公共访问级别：
 
 1. 在 Azure 门户中导航到存储帐户概述。
-1. 在菜单边栏选项卡上的“Blob 服务”下，选择“Blob”。
-1. 选择要对其设置公共访问级别的容器。
-1. 使用“更改访问级别”按钮显示公共访问权限设置。
-1. 从“公共访问级别”下拉列表中选择所需的公共访问级别，然后单击“确定”按钮应用对选定容器所做的更改。
+1. 在菜单边栏选项卡上的 " **blob 服务**" 下，选择 " **blob**"。
+1. 选择要为其设置公共访问级别的容器。
+1. 使用 "**更改访问级别**" 按钮显示公共访问设置。
+1. 从 "**公共访问级别**" 下拉列表中选择所需的公共访问级别，然后单击 "确定" 按钮，将更改应用到所选容器。
 
-以下屏幕截图显示如何更改选定容器的公共访问级别。
+以下屏幕截图显示了如何更改所选容器的公共访问级别。
 
 ![显示如何在门户中设置公共访问级别的屏幕截图](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 > [!NOTE]
-> 无法更改单个 Blob 的公共访问级别。 只能在容器级别设置公共访问级别。
+> 不能更改单个 blob 的公共访问级别。 公共访问级别仅在容器级别设置。
 
 ### <a name="set-container-public-access-level-with-net"></a>使用 .NET 设置容器公共访问级别
 
@@ -77,11 +78,11 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 
 ## <a name="access-containers-and-blobs-anonymously"></a>匿名访问容器和 Blob
 
-如果某个客户端需要以匿名方式访问容器和 Blob，该客户端则可以使用不需要凭据的构造函数。 以下示例演示如何通过多种不同的方法以匿名方式引用容器和 Blob。
+如果某个客户端需要以匿名方式访问容器和 Blob，该客户端则可以使用不需要凭据的构造函数。 下面的示例演示了以匿名方式引用容器和 blob 的几种不同方式。
 
 ### <a name="create-an-anonymous-client-object"></a>创建匿名客户端对象
 
-通过提供帐户的 Blob 存储终结点，可以创建一个可匿名访问的新服务客户端对象。 但是，也必须要知道该帐户中允许进行匿名访问的容器的名称。
+可以通过提供帐户的 Blob 存储终结点，为匿名访问创建新的服务客户端对象。 但是，也必须要知道该帐户中允许进行匿名访问的容器的名称。
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -137,5 +138,5 @@ public static void DownloadBlobAnonymously()
 ## <a name="next-steps"></a>后续步骤
 
 - [授权访问 Azure 存储](../common/storage-auth.md)
-- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
+- [使用共享访问签名（SAS）授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
 - [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)

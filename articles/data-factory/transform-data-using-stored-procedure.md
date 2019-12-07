@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中使用存储过程活动转换数据
+title: 使用存储过程活动转换数据
 description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 5ebb2b9cdcbef59e07476dbebd289bb4402ca5fa
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 59bfdc5d2d57b2c05a2c7676d83d8771142ca285
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683719"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893767"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -29,7 +29,7 @@ ms.locfileid: "73683719"
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
-- Azure SQL 数据库
+- Azure SQL Database
 - Azure SQL 数据仓库
 - SQL Server 数据库。  如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装自托管集成运行时。 自托管集成运行时是一种以安全托管方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[自托管集成运行时](create-self-hosted-integration-runtime.md)一文。
 
@@ -65,22 +65,22 @@ ms.locfileid: "73683719"
 
 下表描述了其中的 JSON 属性：
 
-| 属性                  | 说明                              | 必选 |
+| properties                  | 描述                              | 需要 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
-| 说明               | 描述活动用途的文本 | 否       |
+| description               | 描述活动用途的文本 | No       |
 | type                      | 对于存储过程活动，活动类型是 SqlServerStoredProcedure | 是      |
 | linkedServiceName         | 引用注册为数据工厂中的链接服务的 Azure SQL 数据库或 Azure SQL 数据仓库或 SQL Server。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | storedProcedureName       | 指定要调用的存储过程的名称。 | 是      |
-| storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
+| storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | No       |
 
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
-为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例
+为参数指定的数据类型是 Azure 数据工厂类型，它映射到所使用数据源中的数据类型。 可以在 "连接器" 区域中找到数据源的数据类型映射。 一些示例
 
 | 数据源          | 数据类型映射 |
 | ---------------------|-------------------|
 | Azure SQL 数据仓库 | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL 数据库   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Azure SQL Database   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
 | Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
@@ -96,7 +96,7 @@ ms.locfileid: "73683719"
 * [Hive 活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
+* [Hadoop Streaming 活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [机器学习批处理执行活动](transform-data-using-machine-learning.md)
