@@ -3,17 +3,17 @@ title: Azure IoT Central 中的体系结构概念 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/12/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013847"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895766"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览功能）
 
@@ -36,7 +36,7 @@ ms.locfileid: "74013847"
 
 ## <a name="azure-iot-edge-devices"></a>Azure IoT Edge 设备
 
-同时[，还可以将](https://github.com/Azure/azure-iot-sdks) [Azure IoT Edge 设备](../../iot-edge/about-iot-edge.md)连接到 IoT Central 应用程序。 IoT Edge 使你可以直接在 IoT Central 管理的 IoT 设备上运行云智能和自定义逻辑。 IoT Edge 运行时使你能够：
+除了使用 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 创建的设备之外，还可以将 [Azure IoT Edge 设备](../../iot-edge/about-iot-edge.md)连接到 IoT Central 应用程序。 IoT Edge 使你可以直接在 IoT Central 管理的 IoT 设备上运行云智能和自定义逻辑。 IoT Edge 运行时使你能够：
 
 - 在设备上安装和更新工作负荷。
 - 在设备上维护 IoT Edge 安全标准。
@@ -70,7 +70,7 @@ IoT Central 为 IoT Edge 设备启用以下功能：
 IoT Central 分类 IoT Edge 设备类型，如下所示：
 
 - 叶设备。 IoT Edge 设备可以具有下游叶设备，但不会在 IoT Central 中设置这些设备。
-- 具有下游设备的网关设备。 网关设备和下游设备在 IoT Central 中进行预配
+- 具有下游设备的网关设备。 网关设备和下游设备均在 IoT Central 中进行预配
 
 ![IoT Central 与 IoT Edge 概述](./media/concepts-architecture/gatewayedge.png)
 
