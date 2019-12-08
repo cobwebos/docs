@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: 按提供商列出的位置
           href: expressroute-locations.md
-    - name: 虚拟网络网关和 FastPath
+    - name: 关于虚拟网络网关
       href: expressroute-about-virtual-network-gateways.md
     - name: 先决条件
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: 关于将线路从经典部署移动到资源管理器部署
       href: expressroute-move.md
+    - name: 关于 ExpressRoute FastPath
+      href: about-fastpath.md
     - name: 关于 ExpressRoute Direct
       href: expressroute-erdirect-about.md
     - name: 关于 ExpressRoute Global Reach
