@@ -17,6 +17,14 @@
   items:
     - name: 标识安全分数
       href: identity-secure-score.md
+    - name: 安全
+      items:
+        - name: 启用 MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: 安全默认值
+          href: concept-fundamentals-security-defaults.md
+        - name: 阻止传统身份验证
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: 组和访问管理
       href: active-directory-manage-groups.md
     - name: 基于组的许可

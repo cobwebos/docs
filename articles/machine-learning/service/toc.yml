@@ -152,7 +152,7 @@
     - name: 处理数据
       items:
         - name: 从数据存储中获取数据
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: 添加和注册数据集
           displayName: 'data, dataset'

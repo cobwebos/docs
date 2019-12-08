@@ -17,8 +17,6 @@
   items:
     - name: 常用条件访问策略
       href: concept-conditional-access-policy-common.md
-    - name: 安全默认值
-      href: concept-conditional-access-security-defaults.md
     - name: 条件访问策略组件
       href: concept-conditional-access-policies.md
     - name: 条件
