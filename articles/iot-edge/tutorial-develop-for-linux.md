@@ -1,5 +1,5 @@
 ---
-title: 教程：开发适用于 Linux 设备的模块 - Azure IoT Edge
+title: 教程 - 使用 Azure IoT Edge 开发用于 Linux 设备的模块
 description: 本教程详细介绍如何设置开发计算机和云资源来使用适用于 Linux 设备的 Linux 容器开发 IoT Edge 模块
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114051"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701886"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 

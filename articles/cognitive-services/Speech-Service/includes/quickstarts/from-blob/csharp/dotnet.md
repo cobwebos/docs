@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 77ab519ae966ab6b3dfc9fd309ce9a5740a5ce0f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 96062057a139e4ab2c91792b5c451e093f7f4c96
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505889"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829020"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "73505889"
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [创建一个空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
@@ -67,7 +67,7 @@ ms.locfileid: "73505889"
 
 ## <a name="create-and-configure-an-http-client"></a>创建和配置 Http 客户端
 首先，我们需要具有正确的基本 URL 和身份验证集的 Http 客户端。
-将代码插入 `TranscribeAsync`[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=46-50)]
+将此代码插入 `TranscribeAsync` [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=46-50)]
 
 ## <a name="generate-a-transcription-request"></a>生成听录请求
 接下来，我们将生成听录请求。 将此代码添加到 `TranscribeAsync`[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=52-57)]
@@ -100,7 +100,7 @@ ms.locfileid: "73505889"
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
 2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
-3. “开始识别”- 它将提示你说英语短语  。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
+3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤
 

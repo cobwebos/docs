@@ -1,18 +1,18 @@
 ---
 title: 教程 - 使用 IoT 中心事件触发 Azure 逻辑应用
-description: 教程 - 使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
+description: 本教程介绍如何使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 70ad74715446a54605a23a049ebc92a81d7ee673
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423749"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706430"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 

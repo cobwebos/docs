@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383065"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790334"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生中的事件
 
@@ -82,7 +82,7 @@ ms.locfileid: "74383065"
     > [!TIP]
     > 确保你正在为事件中心实例而不是名称空间创建 SAS 策略。
 
-1. 打开已创建的 ManageSend 策略，将“连接字符串--主键”和“连接字符串--辅助键”的值复制到一个临时文件中。    在下一部分，将需要这些值来创建事件中心的终结点。
+1. 打开已创建的 ManageSend 策略，将“连接字符串—主键”和“连接字符串—辅助键”的值复制到一个临时文件中。    在下一部分，将需要这些值来创建事件中心的终结点。
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>为事件中心创建终结点
 
@@ -108,13 +108,13 @@ ms.locfileid: "74383065"
       path: Name_of_your_Event_Hub
     ```
 
-1. 将占位符 `Primary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--主键”的值。  确保此连接字符串的格式如下：
+1. 将占位符 `Primary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串—主键”的值。  确保此连接字符串的格式如下：
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. 将占位符 `Secondary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--辅助键”的值。  确保此连接字符串的格式如下： 
+1. 将占位符 `Secondary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串—辅助键”的值。  确保此连接字符串的格式如下： 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -145,7 +145,7 @@ ms.locfileid: "74383065"
 
     [![用于创建时序见解实例的选择](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. 在“事件源”  选项卡中，输入**名称**，选择“事件中心”  作为**源类型**，并确保正确选择其他值。 选择 **ManageSend** 作为“事件中心访问策略名称”，  ，然后选择在上一部分创建的使用者组，作为“事件中心使用者组”。  选择“查看 + 创建”  。
+1. 在“事件源”  选项卡中，输入一个**名称**，选择“事件中心”  作为“源类型”  ，并确保正确选择其他值以引用所创建的事件中心。 选择 **ManageSend** 作为“事件中心访问策略名称”，  ，然后选择在上一部分创建的使用者组，作为“事件中心使用者组”。  选择“查看 + 创建”  。
 
     [![用于创建事件源的选择](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 

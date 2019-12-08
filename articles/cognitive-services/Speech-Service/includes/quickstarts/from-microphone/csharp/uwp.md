@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d1da9a9ef32aed1975595bb15909b9531ab2400
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5f83f249228c96021979edc14c092eded03b96e4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505617"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818868"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+准备工作：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=uwp)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=uwp)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。
 

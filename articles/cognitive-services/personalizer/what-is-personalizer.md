@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467188"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707953"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
-Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其集体实时行为中学习信息。
+Azure 个性化体验创建服务是基于云的 API 服务，可让应用程序选择要显示给用户的最佳体验，并从其集体实时行为中进行学习。
 
 * 提供有关用户和内容的信息，并接收要显示给用户的排名最高的操作。 
 * 无需清理和标记数据即可使用个性化体验创建服务。
@@ -60,8 +60,8 @@ Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要
 
 个性化体验创建服务有两个 API：
 
-* 发送有关用户的信息（特征）以及要个性化的内容（操作）。   个性化体验创建服务使用排名最高的操作做出响应。
-* 向个性化体验创建服务发送有关排名作为[奖励评分](concept-rewards.md)的效果如何的反馈。 
+* 排名  ：使用排名 API 来确定在当前上下文中要显示的具体操作。   操作以 JSON 对象数组的形式发送，包含每个对象的 ID 和信息（功能  ）；上下文以另一 JSON 对象的形式发送。 API 返回应该由应用程序呈现给用户的 actionId。
+* *回馈*：在用户与应用程序交互以后，即可以 0 到 1 之间的某个数字来度量个性化的效果，并将其作为[奖励评分](concept-rewards.md)发送。 
 
 ![个性化事件的基本顺序](media/what-is-personalizer/personalization-intro.png)
 

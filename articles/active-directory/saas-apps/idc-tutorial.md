@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 9fc7ccb1d619e36990fbc1b654a2b7be36a287e1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273588"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705982"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IDC 集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "71273588"
     在“登录 URL”文本框中，键入 URL：`https://www.idc.com/saml-welcome/<SamlWelcomeCode>` 
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [IDC 客户端支持团队](mailto:webchanneldev@idc.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 IDC 客户端支持团队以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -135,7 +135,7 @@ ms.locfileid: "71273588"
 
 ## <a name="configure-idc-sso"></a>配置 IDC SSO
 
-若要在 IDC  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [IDC 支持团队](mailto:webchanneldev@idc.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 IDC  端配置单一登录，请将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 IDC 支持团队。 IDC 会对此设置进行配置，以在两端正确设置 SAML SSO 连接。
 
 ### <a name="create-idc-test-user"></a>创建 IDC 测试用户
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 0319e3aec71d37b49a094861fdcbb3b96b6def67
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 394ca0c244db751645eb56f50e7023fcee229876
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585434"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807453"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -37,7 +37,7 @@ ms.locfileid: "73585434"
 
 在开始配置之前，请验证你是否符合以下条件：
 
-* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 若要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
+* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
 * 虚拟网络不包含任何虚拟网络网关。 如果虚拟网络包含网关（VPN 或 ExpressRoute），则必须删除所有网关。 此配置要求将虚拟网络改为连接到虚拟 WAN 中心网关。
 
@@ -50,7 +50,7 @@ ms.locfileid: "73585434"
 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”  以打开“创建 WAN”页。
+2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
 3. 在“创建 WAN”  页的“基本”  选项卡上，填写以下字段：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
@@ -61,7 +61,7 @@ ms.locfileid: "73585434"
    * **名称** - 键入要用于称呼 WAN 的名称。
    * **类型：** 标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
 4. 填写完字段后，单击“审阅 + 创建”  。
-5. 验证通过后，选择“创建”  以创建虚拟 WAN。
+5. 验证通过后，选择“创建”以创建虚拟 WAN  。
 
 ## <a name="site"></a>创建空虚拟中心
 
@@ -134,7 +134,7 @@ P2S 配置定义连接远程客户端的参数。
 1. 从官方网站下载并安装 OpenVPN 客户端。
 2. 下载网关的 VPN 配置文件。 这可以通过 Azure 门户中的“用户 VPN 配置”选项卡或 PowerShell 中的 New-AzureRmVpnClientConfiguration 来完成。
 3. 解压缩该配置文件。 从记事本中的 OpenVPN 文件夹中打开 vpnconfig.ovpn 配置文件。
-4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解如何导出证书以获取已编码的公钥。
+4. 使用 base64 中的 P2S 客户端证书公钥填写 P2S 客户端证书部分。 在 PEM 格式的证书中，可以直接打开 .cer 文件并在证书标头之间复制 base64 密钥。 请参阅此处，了解[如何导出证书以获取已编码的公钥](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)。
 5. 使用 base64 中的 P2S 客户端证书私钥填写私钥部分。 请参阅此处，了解如何提取私钥。
 6. 不要更改任何其他字段。 使用客户端输入中的已填充的配置连接到 VPN。
 7. 将 vpnconfig.ovpn 文件复制到 C:\Program Files\OpenVPN\config 文件夹。
@@ -145,7 +145,7 @@ P2S 配置定义连接远程客户端的参数。
 1. 根据 Windows 计算机的体系结构选择 VPN 客户端配置文件。 对于 64 位处理器体系结构，请选择“VpnClientSetupAmd64”安装程序包。 对于 32 位处理器体系结构，请选择“VpnClientSetupX86”安装程序包。
 2. 双击所需的包进行安装。 如果显示 SmartScreen 弹出窗口，请单击“更多信息”，并单击“仍要运行”。
 3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。
-4. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关如何生成证书的详细信息，请参阅“生成证书”。 有关如何安装客户端证书的信息，请参阅“安装客户端证书”。
+4. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关生成证书的详细信息，请参阅[生成证书](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)。 有关如何安装客户端证书的信息，请参阅“安装客户端证书”。
 
 ## <a name="viewwan"></a>查看虚拟 WAN
 
@@ -164,7 +164,7 @@ P2S 配置定义连接远程客户端的参数。
 如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

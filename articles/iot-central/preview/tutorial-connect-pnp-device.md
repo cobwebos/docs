@@ -1,6 +1,6 @@
 ---
-title: 将 IoT 即插即用预览版设备连接到 Azure IoT Central | Microsoft Docs
-description: 使用设备功能模型生成设备代码。 然后运行设备代码，查看设备是否可连接到 IoT Central 应用程序，并使用自动生成的视图。
+title: 教程 - 将 IoT 即插即用预览版设备连接到 Azure IoT Central
+description: 本教程介绍如何使用设备功能模型生成设备代码。 然后运行设备代码，查看设备是否可连接到 IoT Central 应用程序，并使用自动生成的视图。
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702863"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>教程：使用设备功能模型创建 IoT 即插即用设备并将其连接到 IoT Central 应用程序
 

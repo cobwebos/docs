@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e003b8358931b4891af6ce97ab82710b241c3da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a8b8f05195f829507b83df5d968358749a290aa
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504729"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816763"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -114,7 +114,7 @@ ms.locfileid: "73504729"
 
 1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
 
-1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会转换并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
+1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 
 ````
 Say something...

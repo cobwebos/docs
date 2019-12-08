@@ -1,27 +1,20 @@
 ---
-title: 在 Windows 上创建 Java Web 应用 - Azure 应用服务
-description: 本快速入门介绍如何在数分钟内在 Windows 上的 Azure 应用服务中部署第一个 Java Hello World。
+title: 快速入门：在 Windows 上创建 Java 应用
+description: 在数分钟内将第一个 Java Hello World 部署到 Windows 上的 Azure 应用服务。 可以通过应用服务的 Maven 插件方便地部署 Java 应用。
 keywords: azure, 应用服务, web 应用, windows, java, maven, 快速入门
-services: app-service\web
-documentationcenter: ''
 author: msangapu-msft
-manager: jeconnoc
-editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d119ffdcb952405f17e0df152c817df9a8a63110
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c511ed3f432c8e54a820c01839269712271774bd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833646"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672161"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 

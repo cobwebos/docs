@@ -1,26 +1,17 @@
 ---
-title: Azure CLI 示例 - 应用服务 | Microsoft 文档
-description: Azure CLI 示例 - 应用服务
-services: app-service
-documentationcenter: app-service
-author: syntaxc4
-manager: erikre
-editor: ggailey777
+title: CLI 示例
+description: 查找某些常用应用服务方案的 Azure CLI 示例。 了解如何自动完成应用服务部署或管理任务。
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: app-service
 ms.date: 12/12/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: dc8a08c61250994b6083e3936820e1e6025593a6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 06f03e0005c4f98370bb1f6430fff506f9145d5a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066700"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688516"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>针对 Azure 应用服务的 CLI 示例
 

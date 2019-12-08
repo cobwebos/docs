@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 门户设计 Azure Database for PostgreSQL - 单个服务器
+title: 教程：设计 Azure Database for PostgreSQL - 单一服务器 - Azure 门户
 description: 本教程演示如何使用 Azure 门户设计你的第一个 Azure Database for PostgreSQL - 单个服务器。
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 421d5cde46b466c0c13a52755abdf137e52f2f6b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 11276d532f0f978b127f48924e383b7aeb7f4ad5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443102"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770095"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL - 单个服务器
 
@@ -50,8 +50,8 @@ ms.locfileid: "67443102"
 
     设置|建议的值|说明
     ---|---|---
-    订阅|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    资源组| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
+    Subscription|订阅名称|要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    Resource group| myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
     服务器名称 |*mydemoserver*|用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。 域名 *postgres.database.azure.com* 附加到提供的服务器名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 该名称必须至少包含 3 到 63 个字符。
     数据源 | 无  | 选择“无”，从头开始创建新的服务器  。 （如果是从现有 Azure Database for PostgreSQL 服务器的异地备份创建服务器，则会选择“备份”  ）。
     管理员用户名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。

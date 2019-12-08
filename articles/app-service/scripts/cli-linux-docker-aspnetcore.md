@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 脚本示例 - 从 Docker 中心创建 ASP.NET Core 应用 | Microsoft Docs
-description: Azure CLI 脚本示例 - 从 Docker 中心在应用服务中创建 ASP.NET Core 应用
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：从 Docker 创建 ASP.NET Core 应用
+description: 了解如何使用 Azure CLI 自动部署和管理应用服务应用。 此示例演示了如何从 Docker 中心创建 ASP.NET Core 应用。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 136d0d6976b046244ee9e6a24e68d5304a5c352b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80190fa767da6c593b99d79a71ebce661d561253
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136700"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685990"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>使用 Azure CLI 从 Docker 中心在 Docker 容器中创建 ASP.NET Core 应用
 

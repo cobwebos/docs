@@ -1,6 +1,6 @@
 ---
 title: 教程：创建和部署自定义模块 - Azure IoT Edge 上的机器学习
-description: 教程：通过机器学习模型创建和部署基于叶设备处理数据的 IoT Edge 模块，然后将见解发送到 IoT 中心。
+description: 本教程演示如何通过机器学习模型创建和部署基于叶设备处理数据的 IoT Edge 模块，然后将见解发送到 IoT 中心。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106563"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701845"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 

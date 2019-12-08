@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504897"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818315"
 ---
 > [!NOTE]
 > Unity 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）。
@@ -25,7 +25,7 @@ ms.locfileid: "73504897"
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=unity)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=unity)
 
@@ -83,7 +83,7 @@ ms.locfileid: "73504897"
 ## <a name="run-the-application-in-the-unity-editor"></a>在 Unity 编辑器中运行应用程序
 
 * 在菜单栏下方的 Unity 编辑器工具栏中选择“播放”按钮。 
-* 应用启动后，在输入字段中输入一些文本，然后选择该按钮。 文本会传输到语音服务并合成为语音，以在扬声器上播放。
+* 应用启动后，在输入字段中输入一些文本，然后选择该按钮。 你的文本将传输到语音服务，并合成为语音，以在扬声器上播放。
 
   [![Unity 游戏窗口中运行的快速入门应用程序的屏幕截图](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 

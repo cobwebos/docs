@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10445aba9c52c5367a8ea03729462d14e2d51085
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467177"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707186"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -220,6 +220,7 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 
 最后，使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令或 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet，为 AD 组授予对 Key Vault 的权限。 有关示例，请参阅前面的[为应用程序、Azure AD 组或用户授予对 Key Vault 的访问权限](#give-the-principal-access-to-your-key-vault)。
 
+应用程序还需要将至少一个标识和访问管理 (IAM) 角色分配给密钥保管库。 否则，它将无法登录并且会失败，因为没有足够权限来访问订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

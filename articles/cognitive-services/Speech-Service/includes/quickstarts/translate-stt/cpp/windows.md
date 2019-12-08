@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将语音转换为文本，C++ (Windows) - 语音服务
+title: 快速入门：将语音翻译为文本，C++ (Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d23e6a75486439d38d94294aaeebd84f9394144c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: efbd38d130a3ad88389d524946ed21cb66d06b7c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504681"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816836"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=windows)
 
@@ -113,7 +113,7 @@ ms.locfileid: "73504681"
 
 1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
 
-1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会转换并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
+1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 
 ````
 Say something...

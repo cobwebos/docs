@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996694"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665249"
 ---
 # <a name="what-is-bing-local-business-search"></a>什么是必应当地企业搜索？
 必应当地企业搜索 API 是一种 RESTful 服务，该服务使应用程序可以基于搜索查询找到有关当地企业的信息。 例如，`q=<business-name> in Redmond, Washington` 或 `q=Italian restaurants near me`。 
@@ -36,9 +36,9 @@ ms.locfileid: "70996694"
 4. 分析 JSON 响应 
 
 > [!NOTE]
-> 当前，当地企业搜索仅支持 `en-US` 市场。 
-> [!NOTE]
-> 目前，当地企业搜索不支持自动建议。 
+> 目前，本地业务搜索具有以下特点： 
+> * 仅支持 `en-US` 市场。 
+> * 不支持必应自动建议。 
 
 ## <a name="next-steps"></a>后续步骤
 - [查询和响应](local-search-query-response.md)

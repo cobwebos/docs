@@ -1,26 +1,19 @@
 ---
-title: Linux 应用服务简介 - Azure | Microsoft Docs
-description: 了解 Linux 上的 Azure 应用服务。
+title: 在默认的 Linux 容器上运行代码
+description: Azure 应用服务可以在预先构建的 Linux 容器上运行代码。 了解如何在 Azure 上运行 Linux Web 应用程序。
 keywords: azure 应用服务, linux, oss
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559024"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687611"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 

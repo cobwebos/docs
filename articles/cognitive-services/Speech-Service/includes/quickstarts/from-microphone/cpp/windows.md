@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 1a08a5413ae41ef8c17e817a01be9e9efcb7ff99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74bc77fbb9436983c26c572b521d96795f14cfcd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505713"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818909"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+准备工作：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=windows)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -39,6 +40,9 @@ ms.locfileid: "73505713"
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，免费试用版订阅的 `westus`）。
 
 1. 在菜单栏中，选择“文件”   > “全部保存”  。
+
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 

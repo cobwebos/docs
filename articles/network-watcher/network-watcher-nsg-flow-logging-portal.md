@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419632"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766593"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -127,7 +127,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
    ![下载流日志](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 选择在[启用 NSG 流日志](#enable-nsg-flow-log)的步骤 2 中配置的存储帐户。
-4. 在“Blob 服务”下选择“Blob”，然后选择“insights-logs-networksecuritygroupflowevent”容器    。
+4. 在“Blob 服务”下选择“容器”，然后选择“insights-logs-networksecuritygroupflowevent”容器    。
 5. 在容器中，导航浏览文件夹层次结构，直至找到 PT1H.json 文件，如下图所示。 日志文件写入遵循以下命名约定的文件夹层次结构： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![流日志](./media/network-watcher-nsg-flow-logging-portal/log-file.png)

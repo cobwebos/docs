@@ -1,19 +1,19 @@
 ---
-title: 教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
+title: 教程：创建 Azure Database for MySQL - Azure 资源管理器模板
 description: 本教程介绍如何使用 Azure 资源管理器模板预配并自动执行 Azure Database for MySQL 服务器部署。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163906"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771081"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
 

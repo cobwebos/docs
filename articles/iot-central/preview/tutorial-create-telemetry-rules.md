@@ -1,6 +1,6 @@
 ---
-title: 在 Azure IoT Central 应用程序中创建和管理规则 | Microsoft Docs
-description: 可以通过 Azure IoT Central 规则近乎实时地监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
+title: 教程 - 在 Azure IoT Central 应用程序中创建和管理规则
+description: 本教程介绍如何通过 Azure IoT Central 规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e2ec01e372ebda79272b585ea6f1708029ea7b13
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958150"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702544"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知（预览功能）
 
@@ -21,7 +21,7 @@ ms.locfileid: "73958150"
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-可以使用 Azure IoT Central 对连接的设备进行远程监视。 通过 Azure IoT Central 规则，你可以近乎实时地监视设备并自动调用操作（例如，发送电子邮件）。 只需单击几下，即可定义条件来监视来自设备的遥测并配置相应的操作。 本文介绍如何创建规则来监视设备发送的遥测数据。
+可以使用 Azure IoT Central 对连接的设备进行远程监视。 通过 Azure IoT Central 规则，你可以近乎实时地监视设备并自动调用操作（例如，发送电子邮件）。 只需单击几下，即可定义条件来监视来自设备的遥测数据并配置相应的操作。 本文介绍如何创建规则来监视设备发送的遥测数据。
 
 设备使用遥测从设备发送数值数据。 选定的设备遥测超过指定阈值时会触发规则。
 
@@ -39,7 +39,7 @@ ms.locfileid: "73958150"
 
 ## <a name="create-a-rule"></a>创建规则
 
-若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本教程使用发送温度和湿度遥测的环境传感器设备。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 80 度时发送电子邮件。
+若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本教程使用可发送温度和湿度遥测数据的环境传感器设备。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 80 度时发送电子邮件。
 
 1. 在左窗格中，选择“规则”  。
 
@@ -57,7 +57,7 @@ ms.locfileid: "73958150"
 
 ### <a name="configure-the-rule-conditions"></a>配置规则条件
 
-条件定义了规则监视的条件。 在本教程中，你将配置在温度超过 80&deg; F 时触发的规则。
+条件可定义规则监视的条件。 在本教程中，请配置在温度超过 80&deg; F 时触发的规则。
 
 1. 在“遥测”下拉列表中选择“温度”   。
 
@@ -65,14 +65,14 @@ ms.locfileid: "73958150"
 
     ![条件](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
-1. （可选）可以设置“时间聚合”  。 选择时间聚合时，还必须从聚合下拉列表中选择一种聚合类型（例如，平均值或总和）。
+1. （可选）可以设置“时间聚合”  。 选择时间聚合时，还必须从聚合下拉列表中选择一种聚合类型（例如，平均值或求和）。
 
     * 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果规则配置为在温度高于 80 华氏度时触发，则当设备报告温度高于 80 华氏度时，该规则会在瞬间触发。
     * 使用聚合时，如果时间窗口中遥测数据点的聚合值满足条件，将触发规则。 例如，如果将规则配置为在温度高于 80 华氏度时触发，将时间聚合设置为 10 分钟，并且将聚合类型设置为“平均值”，那么该规则将在设备报告平均温度高于 80 华氏度时触发（以 10 分钟以上为间隔进行计算）。
 
      ![聚合条件](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
-选择“+ 条件”以将多个条件添加到规则中  。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件都由一个隐式 `AND` 子句联接。 如果在多个条件下使用时间聚合，则必须聚合所有遥测值。
+选择“+ 条件”，将多个条件添加到规则中  。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件都由一个隐式 `AND` 子句联接。 如果在多个条件下使用时间聚合，则必须聚合所有遥测值。
 
 ### <a name="configure-actions"></a>配置操作
 
@@ -114,7 +114,7 @@ ms.locfileid: "73958150"
 * 创建基于遥测的规则
 * 添加操作
 
-现在，你已定义了基于阈值的规则，建议执行的下一步是了解如何：
+现在，你已定义了基于阈值的规则，建议接下来学习如何：
 
 > [!div class="nextstepaction"]
 > [配置连续数据导出](./howto-export-data.md)。

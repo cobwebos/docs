@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172328"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703645"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -105,7 +105,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。   
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。   
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。   
-1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.contoso.com*），然后选择“下一步”。  
+1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.aadds.contoso.com*），然后选择“下一步”。  
 1. 在“服务器角色”  页上，单击“下一步”  。
 1. 在“功能”页上，依次展开“远程服务器管理工具”节点和“角色管理工具”节点。   
 
@@ -125,7 +125,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
     ![在服务器上安装的管理工具列表](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. 选择“Active Directory 管理中心”。 
-1. 若要浏览 Azure AD DS 托管域，请在左窗格中选择域名（例如 *contoso.com*）。 列表顶部显示了名为“AADDC 计算机”和“AADDC 用户”的两个容器。  
+1. 若要浏览 Azure AD DS 托管域，请在左窗格中选择域名（例如 *aadds.contoso.com*）。 列表顶部显示了名为“AADDC 计算机”和“AADDC 用户”的两个容器。  
 
     ![列出 Azure AD DS 托管域的可用容器部分](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

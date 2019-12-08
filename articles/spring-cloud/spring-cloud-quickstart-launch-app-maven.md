@@ -1,17 +1,17 @@
 ---
-title: 快速入门：使用 Maven 启动应用程序 - Azure Spring Cloud
-description: 使用 Maven 启动示例应用程序
+title: 快速入门 - 使用 Maven 和 Azure Spring Cloud 启动应用程序
+description: 在本快速入门中，请使用 Maven 启动示例应用程序
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384081"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708866"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入门：使用 Maven 插件启动 Azure Spring Cloud 应用
 

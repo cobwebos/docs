@@ -1,5 +1,5 @@
 ---
-title: 教程：开发适用于 Linux 的 C# 模块 - Azure IoT Edge | Microsoft Docs
+title: 教程 - 使用 Azure IoT Edge 开发用于 Linux 的 C# 模块
 description: 本教程介绍如何使用 C# 代码创建 IoT Edge 模块并将其部署到 Linux IoT Edge 设备。
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cabe30c08d13f0ebeb8e0ce784ea29a0b5d61bec
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 371500a43bf868a154fb813f2b0bbbd4170b7887
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560972"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707045"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C# IoT Edge 模块
 

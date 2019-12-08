@@ -1,24 +1,18 @@
 ---
-title: 将应用服务环境配置为采用强制隧道 - Azure
-description: 在通过强制隧道传输出站流量时，使应用服务环境能够正常运行
-services: app-service
-documentationcenter: na
+title: 配置强制隧道
+description: 了解在虚拟网络中通过强制隧道传输出站流量时，如何使应用服务环境能够正常运行。
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e0164ac3903c63632c97c4a089066cf6ad23b31b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069453"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687175"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 

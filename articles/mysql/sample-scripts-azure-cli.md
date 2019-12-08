@@ -1,5 +1,5 @@
 ---
-title: 用于 MySQL 的 Azure 数据库的 Azure CLI 示例
+title: Azure CLI 示例 - Azure Database for MySQL
 description: 本文列出了可用于与用于 MySQL 的 Azure 数据库交互的 Azure CLI 代码示例。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 12/02/2019
+ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350932"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769755"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>用于 MySQL 的 Azure 数据库的 Azure CLI 示例 
 下表包含指向示例 Azure CLI 脚本的链接，这些脚本针对用于 MySQL 的 Azure 数据库。

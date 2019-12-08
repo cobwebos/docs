@@ -1,17 +1,17 @@
 ---
-title: 如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 | Microsoft Docs
-description: 本文介绍如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
+title: 教程 - 如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
+description: 本教程介绍如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a9911798e42db55d5aaae90c933cfb64945b244c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151121"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708812"
 ---
 # <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>教程：将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 
 
@@ -65,4 +65,3 @@ ms.locfileid: "74151121"
 
 > [!div class="nextstepaction"]
 > [使用 Spring Cloud 服务注册表来启用服务发现和注册](spring-cloud-service-registration.md)
-

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a6ef6c0070642e1c2f762f5cb19f97bd4d1e8cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6b49f7e79b72ff1f8de8ede4b34c8d7de1462b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505193"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817426"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -143,7 +143,7 @@ ms.locfileid: "73505193"
 
 按 F11，或选择“运行” > “调试”。  
 
-1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会转换并转录为文本（在本例中为德语）。 然后，语音服务会将合成的语音和文本发送回应用程序以供显示。
+1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为德语）。 然后，语音服务会将合成的语音和文本发送回应用程序以供显示。
 
 ````
 Say something...

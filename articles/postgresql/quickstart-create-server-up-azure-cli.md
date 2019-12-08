@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 CLI 命令 az postgres up 创建 Azure Database for PostgreSQL - 单一服务器
+title: 快速入门：创建服务器 - az postgres up - Azure Database for PostgreSQL（单一服务器）
 description: 使用 Azure CLI（命令行界面）up 命令创建 Azure Database for PostgreSQL - 单一服务器的快速入门指南。
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fe15c02286223ec0829b31664811b7f589cf16aa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069075"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774826"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -27,13 +27,13 @@ ms.locfileid: "65069075"
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-需要使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性。
+需要使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性  。
 
 ```azurecli
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中   。
 
 ```azurecli
 az account set --subscription <subscription id>

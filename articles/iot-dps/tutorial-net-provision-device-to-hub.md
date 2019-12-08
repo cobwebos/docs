@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure IoT 中心设备预配服务预配设备 (.NET)
-description: 教程 - 使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心 (.NET)
+title: 教程 - 使用 Azure IoT 中心设备预配服务预配设备 (.NET)
+description: 本教程介绍如何使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心 (.NET)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98b2ef05a1abb6ebea8dac073fbf7671ed79c06e
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229479"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701994"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
 

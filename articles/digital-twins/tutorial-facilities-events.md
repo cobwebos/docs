@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383259"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790340"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -118,9 +118,9 @@ ms.locfileid: "74383259"
 
 1. 在逻辑应用资源部署后将其打开，然后打开“逻辑应用设计器”窗格。  
 
-1. 选择“当事件网格资源事件发生时”触发器。  当系统提示时，使用 Azure 帐户登录到租户。 如果系统提示，针对事件网格资源选择“允许访问”  。 选择“继续”。 
+1. 选择“当事件网格资源事件发生时”触发器。  展开“Azure 事件网格”选项，并在系统提示时使用 Azure 帐户登录到租户。  如果系统提示，针对事件网格资源选择“允许访问”  。 选择“继续”。 
 
-1. 在“当资源事件发生时(预览版)”窗口中，执行以下操作：  
+1. 在“当资源事件发生时”窗口中，执行以下操作：  
    
    a. 选择曾经用于创建事件网格主题的**订阅**。
 

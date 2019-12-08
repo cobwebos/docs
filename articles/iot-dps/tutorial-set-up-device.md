@@ -1,6 +1,6 @@
 ---
-title: 教程：针对 Azure IoT 中心设备预配服务设置设备
-description: 教程：在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
+title: 教程 - 针对 Azure IoT 中心设备预配服务设置设备
+description: 本教程介绍如何在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdda46a89fc2bcf8b16b2ce771c6540c9ceaa3e0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112754"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701980"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -212,4 +212,3 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 > [!div class="nextstepaction"]
 > [将设备预配到 IoT 中心](tutorial-provision-device-to-hub.md)
-

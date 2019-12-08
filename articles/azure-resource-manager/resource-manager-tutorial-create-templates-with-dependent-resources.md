@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 61f9ff575c927cdafa4aa26fbad0ebb6e257b010
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325393"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815245"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -111,15 +111,15 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 可通过多种方法来部署模板。  本教程从 Azure 门户使用 Cloud Shell。
 
 1. 登录到 [Cloud Shell](https://shell.azure.com)。
-2. 选择 Cloud Shell 左上角的“PowerShell”  ，然后选择“确认”。   在本教程中，请使用 PowerShell。
-3. 在 Cloud Shell 中选择“上传文件”： 
+1. 选择 Cloud Shell 左上角的“PowerShell”  ，然后选择“确认”。   在本教程中，请使用 PowerShell。
+1. 在 Cloud Shell 中选择“上传文件”： 
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-4. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
+1. 选择前面在本教程中保存的模板。 默认名称为 **azuredeploy.json**。  如果某个文件的文件名相同，则会覆盖旧文件，没有任何通知。
 
     还可以选择使用 ls $HOME  命令和 cat $HOME/azuredeploy.json  命令来验证文件是否已成功上传。
 
-5. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
+1. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -135,18 +135,20 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
-8. 运行以下 PowerShell 命令，列出新建的虚拟机：
+1. 运行以下 PowerShell 命令，列出新建的虚拟机：
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     虚拟机名称在模板中硬编码为 **SimpleWinVM**。
 
-9. 通过 RDP 连接到虚拟机，验证虚拟机是否已成功创建。
+1. 通过 RDP 连接到虚拟机，验证虚拟机是否已成功创建。
 
 ## <a name="clean-up-resources"></a>清理资源
 

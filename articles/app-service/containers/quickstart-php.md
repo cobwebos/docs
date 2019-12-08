@@ -1,25 +1,16 @@
 ---
-title: 在 Linux 上创建 PHP 应用 - Azure 应用服务 | Microsoft Docs
-description: 数分钟内在 Linux 应用服务中部署第一个 PHP Hello World。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 快速入门：在 Linux 上创建 PHP 应用
+description: 将第一个 PHP 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用应用服务上的 Linux 应用。
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 414d34065b78db0f76683752b93d5ed89ebcdf75
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: feab990f1d9b0e26ff134a7232a358fd2bca7cc2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071182"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687544"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 PHP 应用
 

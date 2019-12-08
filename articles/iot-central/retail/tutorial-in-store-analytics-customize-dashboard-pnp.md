@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure IoT Central 中自定义操作员仪表板
+title: 教程 - 在 Azure IoT Central 中自定义操作员仪表板
 description: 本教程介绍如何在 IoT Central 应用程序中自定义操作员仪表板和管理设备。
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112921"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702691"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
 

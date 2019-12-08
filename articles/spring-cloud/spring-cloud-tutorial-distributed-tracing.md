@@ -1,17 +1,17 @@
 ---
-title: 教程：将分布式跟踪与 Azure Spring Cloud 配合使用 | Microsoft Docs
-description: 了解如何通过 Azure Application Insights 使用 Spring Cloud 的分布式跟踪
+title: 教程 - 将分布式跟踪与 Azure Spring Cloud 配合使用
+description: 本教程介绍如何通过 Azure Application Insights 使用 Spring Cloud 的分布式跟踪
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607549"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708757"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>教程：将分布式跟踪与 Azure Spring Cloud 配合使用
 

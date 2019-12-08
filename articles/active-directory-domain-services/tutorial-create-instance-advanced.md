@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208675"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703672"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -73,7 +73,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 >
 > 可以将根 DNS 名称用于 Azure AD DS 托管域，但是可能需要为环境中的其他服务创建一些其他 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
 >
-> 在这些教程和操作指南文章中，使用自定义域 contoso.com  作为简短示例。 在所有命令中，指定你自己的域名，其中可以包含唯一的前缀。
+> 在这些教程和操作指南文章中，我们使用自定义域 *aadds.contoso.com* 作为简短示例。 在所有命令中，指定你自己的域名，其中可以包含唯一的前缀。
 >
 > 有关详细信息，请参阅[为域选择命名前缀][naming-prefix]。
 
@@ -94,7 +94,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
-1. *林*是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关*资源*林的详细信息，包括为何使用资源林以及如何在本地 AD DS 域中创建林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造  。 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]  。
 
     对于本教程，请选择创建用户林  。
 
@@ -167,7 +167,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![Azure 门户中显示的“正在部署”通知](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *contoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
+1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *aadds.contoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
 
     ![预配期间的域服务状态](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 

@@ -10,21 +10,23 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 09e0b6fbfcb8541a0756a855d4548e456a7b5c90
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506377"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819430"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=windows)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -83,6 +85,9 @@ ms.locfileid: "73506377"
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 
 1. 在菜单栏中，选择“文件”   > “全部保存”  。
+
+> [!NOTE]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 

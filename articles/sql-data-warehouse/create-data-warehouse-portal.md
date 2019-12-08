@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839926"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815798"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库
 
@@ -49,18 +49,16 @@ ms.locfileid: "73839926"
 
 3. 使用以下信息填写“SQL 数据仓库”表单：
 
-    | 设置 | 建议的值 | 说明 |
+    | 设置 | 建议的值 | Description |
     | :------ | :-------------- | :---------- |
-    | **数据库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，数据仓库是一种数据库。|
     | **订阅** | 你的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
     | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-    | **选择源** | 示例 | 指定加载一个示例数据库。 请注意，数据仓库是一种数据库。 |
-    | 选择示例  | AdventureWorksDW | 指定加载 AdventureWorksDW 示例数据库。 |
+    | **数据仓库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 请注意，数据仓库是一种数据库。|
     ||||
 
     ![创建数据仓库](media/create-data-warehouse-portal/select-sample.png)
 
-4. 单击“服务器”，为新数据库创建并配置新服务器。  使用以下信息填写“新建服务器”窗体：  
+4. 选择一个现有**服务器**，或者单击“新建”，为新数据库创建并配置新服务器。  使用以下信息填写“新建服务器”窗体：  
 
     | 设置 | 建议的值 | 说明 |
     | :------ | :-------------- | :---------- |
@@ -82,7 +80,7 @@ ms.locfileid: "73839926"
 
 8. 单击“应用”  。
 
-9. 填写 SQL 数据仓库表单后，即可单击“创建”对数据库进行预配  。 预配需要数分钟。
+9. 完成“SQL 数据仓库”表单的“基本信息”选项卡后，即可单击“查看 + 创建”，对数据库进行预配  。 预配需要数分钟。
 
     ![单击“创建”](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 

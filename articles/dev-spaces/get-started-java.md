@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 1dc7005ac0d1cb520e4c0452196a2b47665f9b5c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5888547939759984effb10aa2c7c6b2add135d12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325829"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708389"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Java 与 Azure Dev Spaces 结合使用
 
@@ -43,9 +43,10 @@ az login
 通过运行以下命令可以查看订阅： 
 
 ```cmd
-az account list
+az account list --output table
 ```
-在 JSON 输出中找到具有 `isDefault: true` 的订阅。
+
+找到 *IsDefault* 为 *True* 的订阅。
 如果这不是你想要使用的订阅，可以更改默认订阅：
 
 ```cmd

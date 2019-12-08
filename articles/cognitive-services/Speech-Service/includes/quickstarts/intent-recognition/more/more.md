@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 6afe412c45dd4325224ccbbe2752806f9ab73620
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 522107d1dc7f0a640c4122799002764968923fd6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021042"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815930"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 

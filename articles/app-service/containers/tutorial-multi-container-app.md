@@ -1,24 +1,17 @@
 ---
-title: 在 Web 应用中为容器创建多容器应用 - Azure 应用服务
-description: 了解如何在 Azure 上将多个容器与 Docker Compose、WordPress 和 MySQL 配合使用。
+title: 教程：创建多容器应用
+description: 了解如何在 Azure 应用服务上构建多容器应用（其中包含 WordPress 应用和 MySQL 容器）并配置 WordPress 应用。
 keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, wordpress, azure db for mysql, 包含容器的生产数据库
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554944"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687461"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 

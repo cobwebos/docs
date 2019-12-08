@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182405"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -233,7 +233,7 @@ ms.locfileid: "74182405"
 
     ![F5 (Kerberos) 配置](./media/kerbf5-tutorial/configure04.png)
 
-1. 提供配置名称  。 指定“实体 ID”  （与在 Azure AD 应用程序配置中配置的 ID 相同）。 指定“主机名”  。 添加引用的说明  。 接受其余默认条目，选择并单击“保存并进行下一步”  。
+1. 提供配置名称  。 指定“实体 ID”（与在 Azure AD 应用程序配置中配置的 ID 相同）  。 指定“主机名”  。 添加引用的说明  。 接受其余默认条目，选择并单击“保存并进行下一步”  。
 
     ![F5 (Kerberos) 配置](./media/kerbf5-tutorial/configure05.png) 
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在 IoT 中心启用适用于 IoT 的 Azure 安全中心服务
-description: 在本快速入门中，了解如何在 IoT 中心启用适用于 IoT 的 Azure 安全中心服务。
+description: 了解如何在 Azure IoT 中心启用适用于 IoT 安全服务的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 641ba4c8d3b0e54132c19a493e1e4bf17bb28e13
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0b1f09cfaf107802e1ce6586b3f96b14269aaced
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904111"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664846"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>快速入门：在 IoT 中心启用适用于 IoT 的 Azure 安全中心服务
 

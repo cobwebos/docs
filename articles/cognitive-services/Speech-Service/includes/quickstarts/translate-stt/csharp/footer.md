@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 5804f1375e59341ef5ceaeb738ae6d97332815aa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a80c1c0a9c2790a257ba3c3a39b67a42c564588b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504633"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816900"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 C# 示例](https://aka.ms/speech/github-csharp)

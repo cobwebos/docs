@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720163"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791029"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -116,6 +116,8 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 | 索引器 |  一种爬网程序，它从外部数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段的映射填充索引，以进行文档破解。 针对 AI 扩充，索引器会调用技能组，并包含字段映射，以便将扩充输出关联到索引中的目标字段。 索引器定义包含管道操作的所有说明和引用，运行索引器时会调用管道。 通过附加的配置，可以重复使用现有的处理，并仅执行已更改的步骤和技能。 | 请参阅[索引器](search-indexer-overview.md)和[增量索引（预览版）](cognitive-search-incremental-indexing-conceptual.md)。 |
 | 数据源  | 由索引器用来连接 Azure 中受支持类型的外部数据源的对象。 | 请参阅[索引器概述](search-indexer-overview.md) |
 | 索引 | Azure 认知搜索中的持久化搜索索引，通过一个定义字段结构和用法的索引架构生成。 | 请参阅[创建基本索引](search-what-is-an-index.md) | 
+| 知识存储 | 一个存储帐户，其中的扩充文档可以在搜索索引的基础上整型和投影 | 请参阅[知识存储简介](knowledge-store-concept-intro.md) | 
+| 索引器缓存 | 存储帐户技能输出由索引器缓存。 索引器可以利用缓存，尽量降低编辑技能集时反复处理大量文档的成本。 | 请参阅[增量索引](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 

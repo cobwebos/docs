@@ -1,24 +1,17 @@
 ---
-title: 使用 SSL 绑定保护自定义 DNS 名称 - Azure 应用服务 | Microsoft Docs
-description: 了解如何购买应用服务证书并将其绑定到应用服务应用
-services: app-service
-author: cephalin
-manager: gwallace
+title: 使用 SSL 绑定保护自定义 DNS
+description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进行的 HTTPS 访问。 通过强制实施 HTTPS 或 TLS 1.2 提高网站的安全性。
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509051"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670678"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 

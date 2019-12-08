@@ -1,26 +1,17 @@
 ---
-title: 在 Linux 上对用户进行端到端身份验证和授权 - Azure 应用服务 | Microsoft Docs
-description: 了解如何使用应用服务身份验证和授权来确保 Linux 上运行的应用服务应用的安全性，包括确保访问远程 API 时的安全性。
+title: 教程：对用户进行端到端身份验证 (Linux)
+description: 了解如何使用应用服务身份验证和授权来确保应用服务 Linux 应用端到端的安全性，包括确保访问远程 API 时的安全性。
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a50a1183cb2e57e8e98f1940f1c14284e89088c3
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019297"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688938"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -421,7 +412,7 @@ git push frontend master
 az group delete --name myAuthResourceGroup
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。
 
 <a name="next"></a>
 ## <a name="next-steps"></a>后续步骤

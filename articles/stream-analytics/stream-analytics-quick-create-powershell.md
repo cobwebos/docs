@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 创建流分析作业
+title: 快速入门 - 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
 services: stream-analytics
 author: mamccrea
@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44fe16caf6805819b0d942a02f5138fe766ae99c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117001"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707321"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. 将第 15 行的占位符替换为在上一部分保存的整个 Azure IoT 中心设备连接字符串。
 
-3. 单击“运行”。 输出会显示传感器数据和发送到 IoT 中心的消息。
+3. 单击“运行”  。 输出会显示传感器数据和发送到 IoT 中心的消息。
 
     ![Raspberry Pi Azure IoT 联机模拟器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

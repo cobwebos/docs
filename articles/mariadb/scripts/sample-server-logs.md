@@ -1,19 +1,19 @@
 ---
-title: Azure CLI 脚本 - 下载 Azure Database for MariaDB 中的服务器日志
-description: 此示例 Azure CLI 脚本演示如何启用和下载 Azure Database for MariaDB 服务器的服务器日志。
+title: CLI 脚本 - 下载慢查询日志 - Azure Database for MariaDB
+description: 此示例 Azure CLI 脚本演示如何启用和下载 Azure Database for MariaDB 服务器的慢查询日志。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: da2a8ed610873d957866117a9ef7aab424edd452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: a6d4ed70418f39b24a68362d5006f3f374693cb6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171329"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777342"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 启用和下载 Azure Database for MariaDB 服务器的服务器慢查询日志
 此示例 CLI 脚本可启用和下载单个 Azure Database for MariaDB 服务器的慢查询日志。

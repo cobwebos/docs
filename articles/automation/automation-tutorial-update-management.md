@@ -6,15 +6,15 @@ author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278781"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806552"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>管理 Azure VM 的更新和修补程序
 
@@ -127,6 +127,10 @@ ms.locfileid: "74278781"
 ## <a name="schedule-an-update-deployment"></a>计划更新部署
 
 接下来，请计划一个遵循发布时间和服务窗口的部署，以便安装更新。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
+
+>[!NOTE]
+>计划某个更新部署时，它会创建链接到 **Patch-MicrosoftOMSComputers** runbook 的[计划](shared-resources/schedules.md)资源，以便在目标计算机上处理更新部署。 如果在创建部署后通过 Azure 门户或 PowerShell 删除计划资源，则会破坏计划的更新部署，在你尝试通过门户重新配置它时出现错误。 只能通过删除相应的部署计划来删除计划资源。  
+>
 
 若要为 VM 计划新的更新部署，请转到“更新管理”，然后选择“计划更新部署”   。
 

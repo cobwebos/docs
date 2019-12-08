@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790296"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790312"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
@@ -98,7 +98,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
-
+- [Azure 中的异步消息传送选项](/azure/architecture/guide/technology-choices/messaging)
 - [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)（事件、数据点和消息 - 为数据选择合适的 Azure 消息传递服务）。
 - [存储队列和服务总线队列 - 比较与对照](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
+title: 快速入门 - 在 Azure IoT Central 中配置规则和操作
 description: 本快速入门演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7e2047ee824c3dc8b6387f7879757a1e7be7a4a9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896655"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706723"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作（预览功能）
 
@@ -22,7 +22,7 @@ ms.locfileid: "73896655"
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-在本快速入门中，将创建一个规则，用于在环境传感器设备中的温度超过 90 &deg; F 时发送电子邮件。
+在本快速入门中，将创建一个规则，用于在环境传感器设备中的温度超过 90&deg; F 时发送电子邮件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,9 +36,9 @@ ms.locfileid: "73896655"
 
 1. 输入 **Environmental temperature** 作为规则名称。
 
-1. 在“目标设备”  部分中，选择“环境传感器”  作为设备模板。 此选项根据设备模板类型筛选规则适用的设备。 可以通过选择“+ 筛选器”  添加更多筛选条件。
+1. 在“目标设备”  部分，选择“环境传感器”  作为设备模板。 此选项根据设备模板类型筛选规则适用于的设备。 可以通过选择“+ 筛选器”  添加更多筛选条件。
 
-1. 在“条件”  部分中，定义触发规则的条件。 使用以下信息定义基于温度遥测的条件：
+1. 在“条件”  部分，定义触发规则的条件。 使用以下信息定义基于温度遥测的条件：
 
     | 字段                                        | 值                             |
     | -------------------------------------------- | ------------------------------    |

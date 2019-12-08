@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure IoT Central 中定义新设备类型
+title: 教程 - 在 Azure IoT Central 中定义新设备类型
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新设备类型。 其中介绍了如何为类型定义遥测、状态、属性和设置。
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 3d79e710f2c71d96179ab8774ee89c90cb462ca4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d986ddcf4b8eccfbd4ac1819f96157b5dfe6fe91
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112350"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705888"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 

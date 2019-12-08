@@ -2,15 +2,15 @@
 title: 创建链接模板
 description: 了解如何创建链接的 Azure 资源管理器模板，以便创建虚拟机
 author: mumian
-ms.date: 10/04/2019
+ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e8964335d8c436cc590c36c3ea01fac02ed2280a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325427"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815280"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
 
@@ -45,6 +45,7 @@ ms.locfileid: "74325427"
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
@@ -55,42 +56,46 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 * **链接的模板**：创建存储帐户。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
-3. 选择“打开”以打开该文件。 
-4. 有五个通过此模板定义的资源：
+
+1. 选择“打开”以打开该文件。 
+1. 有六个通过此模板定义的资源：
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/networkSecurityGroups`](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
    * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
      在自定义模板之前，有必要对模板架构进行一些基本的了解。
-5. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
-6. 选择“文件”  >  “另存为”，使用名称 **linkedTemplate.json** 创建文件的另一副本。
+1. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+1. 选择“文件”  >  “另存为”，使用名称 **linkedTemplate.json** 创建文件的另一副本。
 
 ## <a name="create-the-linked-template"></a>创建链接的模板
 
 链接的模板可创建存储帐户。 链接的模板可以用作独立模板来创建存储帐户。 在本教程中，链接的模板采用两个参数，并将值传递给主模板。 此“返回”值在 `outputs` 元素中定义。
 
 1. 在 Visual Studio Code 中打开 linkedTemplate.json（如果此文件尚未打开）  。
-2. 进行以下更改：
+1. 进行以下更改：
 
     * 删除除 location 之外的所有参数  。
     * 添加名为 **storageAccountName** 的参数。
-        ```json
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-              "description": "Azure Storage account name."
-          }
-        },
-        ```
-        存储帐户名称和位置作为参数从主模板传递给链接的模板。
+
+      ```json
+      "storageAccountName":{
+        "type": "string",
+        "metadata": {
+            "description": "Azure Storage account name."
+        }
+      },
+      ```
+
+      存储帐户名称和位置作为参数从主模板传递给链接的模板。
 
     * 删除 **variables** 元素以及所有变量定义。
     * 删除除存储帐户之外的所有资源。 总共删除四个资源。
@@ -110,6 +115,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
             }
         }
         ```
+
        **storageUri** 是主模板中的虚拟机资源定义所需的。  请将该值作为输出值传回主模板。
 
         完成后，模板应如下所示：
@@ -138,7 +144,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
               "type": "Microsoft.Storage/storageAccounts",
               "name": "[parameters('storageAccountName')]",
               "location": "[parameters('location')]",
-              "apiVersion": "2018-07-01",
+              "apiVersion": "2018-11-01",
               "sku": {
                 "name": "Standard_LRS"
               },
@@ -154,7 +160,8 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
           }
         }
         ```
-3. 保存更改。
+
+1. 保存更改。
 
 ## <a name="upload-the-linked-template"></a>上传链接的模板
 
@@ -208,9 +215,10 @@ $templateURI = New-AzStorageBlobSASToken `
     -ExpiryTime (Get-Date).AddHours(8.0) `
     -FullUri
 
-echo "You need the following values later in the tutorial:"
-echo "Resource Group Name: $resourceGroupName"
-echo "Linked template URI with SAS token: $templateURI"
+Write-Host "You need the following values later in the tutorial:"
+Write-Host "Resource Group Name: $resourceGroupName"
+Write-Host "Linked template URI with SAS token: $templateURI"
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 1. 选择“试用”绿色按钮，打开 Azure Cloud Shell 窗格。 
@@ -226,22 +234,7 @@ echo "Linked template URI with SAS token: $templateURI"
 主模板名为 azuredeploy.json。
 
 1. 在 Visual Studio Code 中打开 azuredeploy.json（如果尚未打开）  。
-2. 从模板中删除存储帐户资源定义：
-
-    ```json
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {}
-    },
-    ```
-3. 将以下 json 代码片段添加到保存存储帐户定义的位置。
+1. 将存储帐户资源定义替换为以下 json 代码片段：
 
     ```json
     {
@@ -251,7 +244,7 @@ echo "Linked template URI with SAS token: $templateURI"
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
+              "uri":""
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},
@@ -268,8 +261,8 @@ echo "Linked template URI with SAS token: $templateURI"
     * 调用链接的模板时，只能使用[增量](./deployment-modes.md)部署模式。
     * `templateLink/uri` 包含链接的模板的 URI。 将值更新为在上传链接模板（与 SAS 令牌配合使用的模板）时获取的 URI。
     * 请使用 `parameters` 将值从主模板传递给链接的模板。
-4. 确保已将 `uri` 元素的值更新为在上传链接模板（与 SAS 令牌配合使用的模板）时获取的值。 在实践中，需为 URI 提供一个参数。
-5. 保存修订的模板
+1. 确保已将 `uri` 元素的值更新为在上传链接模板（与 SAS 令牌配合使用的模板）时获取的值。 在实践中，需为 URI 提供一个参数。
+1. 保存修订的模板
 
 ## <a name="configure-dependency"></a>配置依赖项
 
@@ -290,6 +283,7 @@ echo "Linked template URI with SAS token: $templateURI"
             }
     }
     ```
+
     此值是主模板所需的。
 
 1. 在 Visual Studio Code 中打开 azuredeploy.json（如果尚未打开）。

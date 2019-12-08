@@ -1,25 +1,17 @@
 ---
-title: Azure PowerShell 脚本示例 - 创建应用并将代码部署到过渡槽 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：将代码部署到过渡槽位
+description: 了解如何使用 Azure PowerShell 自动部署和管理应用服务。 此示例演示如何将代码部署到过渡环境。
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7d65a5977ff8db8d31fe7a46d4f99569a8c2270a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e8ebe28fa7989997b5d3adfd14c582438a00b1b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087602"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684778"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>创建 Web 应用并将代码部署到过渡环境
 

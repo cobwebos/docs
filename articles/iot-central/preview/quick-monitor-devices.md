@@ -1,6 +1,6 @@
 ---
-title: 在 Azure IoT Central 中监视设备 | Microsoft Docs
-description: 作为操作员，使用 Azure IoT Central 应用程序监视设备。
+title: 快速入门 - 在 Azure IoT Central 中监视设备
+description: 在本快速入门中，我们以操作员身份使用 Azure IoT Central 应用程序监视设备。
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: de83315f38766bc1e2f37ac82452bb023930f241
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896225"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706743"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>快速入门：使用 Azure IoT Central 监视设备（预览功能）
 
@@ -26,7 +26,7 @@ ms.locfileid: "73896225"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应先完成前面的三个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)、[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)和[为设备配置规则和操作](quick-configure-rules.md)。
+在开始之前，应先完成前面的三个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)、[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)以及[为设备配置规则和操作](quick-configure-rules.md)。
 
 ## <a name="receive-a-notification"></a>接收通知
 

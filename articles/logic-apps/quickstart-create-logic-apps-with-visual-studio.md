@@ -1,23 +1,18 @@
 ---
-title: 在 Visual Studio 中自动化任务工作流 - Azure 逻辑应用
+title: 在 Visual Studio 中自动化任务工作流
 description: 使用 Azure 逻辑应用和 Visual Studio 创建、计划和运行用于企业集成的重复执行工作流
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796892"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819167"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -196,11 +191,11 @@ ms.locfileid: "73796892"
 
 1. 使用创建逻辑应用时所使用的帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 主菜单上选择“资源组”  。 选择你的逻辑应用的资源组，然后选择“概述”  。
+1. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 选择逻辑应用的资源组。
 
 1. 在“概述”页上，选择“删除资源组”   。 输入资源组名称作为确认，然后选择“删除”。 
 
-   ![“资源组”>“概览”>“删除资源组”](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![“资源组”>“概览”>“删除资源组”](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. 从本地计算机删除 Visual Studio 解决方案。
 

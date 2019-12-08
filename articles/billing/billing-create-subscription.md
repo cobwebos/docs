@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: 7ca7256cbe42949141bc216ee1cb5c89ceac935c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226371"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665604"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
@@ -36,7 +36,7 @@ ms.locfileid: "74226371"
 |---------|---------|
 |企业协议 (EA) |  企业协议许可登记表上的“帐户所有者”角色。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。    |
 |Microsoft 客户协议 (MCA) |  发票科目、计费对象信息或计费帐户上的所有者或参与者角色。 或发票科目上的 Azure 订阅创建者角色。  有关详细信息，请参阅[订阅计费角色和任务](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks)。    |
-|Microsoft 合作伙伴协议 (MPA) |   合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)  |
+|Microsoft 合作伙伴协议 (MPA) |   CSP 合作伙伴组织中的“全局管理员”和“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。  用户需登录到合作伙伴租户才能创建 Azure 订阅。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 门户中创建订阅
 

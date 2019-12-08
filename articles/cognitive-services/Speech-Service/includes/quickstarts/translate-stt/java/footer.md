@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d9979981d7ea6e82f53c8180b0257b543e8be860
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 201d9b4ead68157dce0190d0fac2dbf95b1339aa
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504993"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816794"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Java 示例](https://aka.ms/speech/github-java)

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建 Azure Database for PostgreSQL - 单一服务器
+title: 快速入门：创建服务器 - Azure 门户 - Azure Database for PostgreSQL（单一服务器）
 description: 使用 Azure 门户用户界面创建和管理 Azure Database for PostgreSQL - 单一服务器的快速入门指南。
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fa4b9fb9be6ac4f541448abef1f676875a7ddcfc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195146"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774977"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 

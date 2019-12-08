@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646138"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708667"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>适用于 Azure SQL 数据仓库的持续集成和部署
 
@@ -25,12 +25,8 @@ ms.locfileid: "73646138"
 
 - 阅读[源代码管理集成教程](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
-- 创建一个[自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install)，其中包含针对 SQL 数据仓库（预览版）安装的 SSDT 预览版软件（16.3 预览版 2 和更高版本）
-
 - 设置并连接到 Azure DevOps
 
-  > [!NOTE]
-  > SSDT 目前为预览版，在其中需要利用自托管代理。 在接下来的几个月，Microsoft 托管代理将会更新。
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>使用 Visual Studio 生成实现持续集成
 
@@ -49,13 +45,13 @@ ms.locfileid: "73646138"
 现已创建一个简单的环境，在其中，只要签入到源代码管理存储库主分支，就会自动触发数据库项目的成功 Visual Studio 生成。 通过在本地数据库项目中做出更改并将该项更改签入到主分支，来验证自动化是否能够自始至终正常运行。
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>使用 Azure SQL 数据库部署任务实现持续部署
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>使用 Azure SQL 数据仓库（或数据库）部署任务实现持续部署
 
-1. 使用 [Azure SQL 数据库部署任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。
+1. 使用 [Azure SQL 数据库部署任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 也可使用 [Azure SQL 数据仓库部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) 
 
       ![部署任务](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "部署任务")
 
-2. 使用自托管代理时，请确保将环境变量设置为对 SQL 数据仓库使用正确的 SqlPackage.exe。 路径应如下所示：
+2. 如果使用自托管代理，请确保将环境变量设置为对 SQL 数据仓库使用正确的 SqlPackage.exe。 路径应如下所示：
 
       ![环境变量](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "环境变量")
 

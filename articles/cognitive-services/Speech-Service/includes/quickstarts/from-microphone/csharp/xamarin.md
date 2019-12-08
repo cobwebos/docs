@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961182"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818723"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请务必：
+准备工作：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。
 
@@ -135,7 +136,7 @@ ms.locfileid: "73961182"
 
    ![麦克风访问权限请求](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. 选择“启动语音识别”，然后对着设备的麦克风讲出英文短语或句子。  你的语音会传输到语音服务并转录为文本，该文本会显示在窗口中。
+1. 选择“启动语音识别”，然后对着设备的麦克风讲出英文短语或句子。  你的语音将传输到语音服务并转录为文本，该文本将显示在窗口中。
 
    ![语音识别用户界面](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

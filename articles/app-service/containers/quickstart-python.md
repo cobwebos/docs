@@ -1,27 +1,17 @@
 ---
-title: 快速入门：在 Linux 上创建 Python 应用 - Azure 应用服务
-description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Python hello world 应用。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 快速入门：创建 Linux Python 应用
+description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用应用服务上的 Linux 应用。
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470823"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687471"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 

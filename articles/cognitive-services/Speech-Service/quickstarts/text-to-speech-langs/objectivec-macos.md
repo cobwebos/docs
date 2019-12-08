@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 27e471bb1b155ab245e68712031eef4efb4d5b34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5758361e1c4de6e824f0df33eacd940cad8eca70
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505505"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817759"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -25,7 +25,7 @@ ms.locfileid: "73505505"
 
 在开始之前，请满足以下一系列先决条件：
 
-* 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)
+* 语音服务的[订阅密钥](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * 装有 [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本以及 macOS 10.13 或更高版本的 macOS 计算机
 
 ## <a name="get-the-speech-sdk-for-macos"></a>获取适用于 macOS 的语音 SDK

@@ -1,24 +1,15 @@
 ---
-title: 运行自定义 Windows 容器（预览）- Azure 应用服务 | Microsoft Docs
-description: 了解如何将自定义 Windows 容器部署到 Azure 应用服务中。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 快速入门：Windows 容器（预览版）
+description: 将第一个自定义 Windows 容器部署到 Azure 应用服务。 利用容器化以自己喜欢的方式自定义 Windows 容器。
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241932"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671349"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure 中运行自定义 Windows 容器（预览版）
 

@@ -1,17 +1,17 @@
 ---
-title: 如何将 Azure Redis 缓存绑定到 Azure Spring Cloud 应用程序 | Microsoft Docs
-description: 了解如何将 Azure Redis 缓存绑定到 Azure Spring Cloud 应用程序
+title: 教程 - 如何将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序
+description: 本教程介绍如何将 Azure Cache for Redis 绑定到 Azure Spring Cloud 应用程序
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607572"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708784"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>教程：将 Azure 服务绑定到 Azure Spring Cloud 应用程序：用于 Redis 的 Azure 缓存
 

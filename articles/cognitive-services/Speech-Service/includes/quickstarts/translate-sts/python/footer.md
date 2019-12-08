@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将语音转换为语音，Python - 语音服务
+title: 快速入门：将语音翻译为语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0816102794e5119e10ebe3d99f529e63608cb437
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ed3bb21fd91bee83f50b59657358732acc4dab89
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505281"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817470"
 ---
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Python 示例](https://aka.ms/speech/github-python)

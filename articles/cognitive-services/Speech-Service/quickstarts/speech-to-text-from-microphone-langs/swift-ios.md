@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53ddf18c0ea102968db03bc4435b7615e724892a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505697"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818503"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -36,7 +36,7 @@ ms.locfileid: "73505697"
 
 本教程不适用于 1.6.0 之前的 SDK 版本。
 
-适用于 iOS 的认知服务语音 SDK 目前以框架捆绑包的形式分发。 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本文使用 CocoaPod。
+适用于 iOS 的认知服务语音 SDK 目前以框架捆绑包的形式分发。 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/iosbinary 下载，然后手动与它建立链接。 本文使用 CocoaPod。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 

@@ -1,7 +1,7 @@
 ---
 title: 快速入门：用于 Python 的语音 SDK 平台设置 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用本指南设置可将 Python 与语音服务 SDK 配合使用的平台。
+description: 根据本指南可设置配合使用 Python 和语音服务 SDK 的平台。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: d4a81c6dd2b44efd432345627e78bb69fff1688d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504329"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816468"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 

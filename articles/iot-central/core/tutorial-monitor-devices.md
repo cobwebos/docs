@@ -1,6 +1,6 @@
 ---
-title: 教程：在 Azure IoT Central 中监视设备
-description: 教程：作为操作员，使用 Azure IoT Central 应用程序监视设备。
+title: 教程 - 在 Azure IoT Central 中监视设备
+description: 本教程介绍作为操作员如何使用 Azure IoT Central 应用程序监视设备。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a07a822e863c5ff5d695a20c02bd8d295721efda
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c04793f22e146491efdffc81f28e1719542af054
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705861"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
 

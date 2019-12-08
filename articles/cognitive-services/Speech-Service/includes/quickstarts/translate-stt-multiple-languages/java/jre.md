@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5228faa7d02bbaa8cfde55c5dcdf76e9417d3d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 556974ceff1e41f1956a358d48cec72a6029b184
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504977"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817051"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
 
@@ -136,7 +136,7 @@ ms.locfileid: "73504977"
 
 按 F11，或选择“运行” > “调试”。  
 
-1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会翻译并转录为文本（在本例中为法语和德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
+1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为法语和德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 
 ````
 Say something...

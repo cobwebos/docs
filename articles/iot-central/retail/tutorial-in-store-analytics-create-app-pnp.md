@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure IoT Central 中创建店内分析应用程序
+title: 教程 - 在 Azure IoT Central 中创建店内分析应用程序
 description: 本教程演示如何在 IoT Central 中创建店内分析零售应用程序。 你将创建该应用程序，对其进行自定义并添加传感器设备。
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112899"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702027"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 

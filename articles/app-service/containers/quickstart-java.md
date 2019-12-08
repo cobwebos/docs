@@ -1,27 +1,19 @@
 ---
-title: 在 Linux 上创建 Java Web 应用 - Azure 应用服务
-description: 本快速入门介绍如何在数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
+title: 快速入门：创建 Linux Java 应用
+description: 将第一个 Java 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用应用服务上的 Linux 应用。
 keywords: azure, 应用服务, web 应用, linux, java, maven, 快速入门
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747728"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689000"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
@@ -53,7 +45,11 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 az login
 ```
 
-然后，可以配置部署，在命令提示符下运行 maven 命令 `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config`，并在出现“确认(Y/N)”  提示符前一直按 **ENTER** 来使用默认配置，然后按“y”  完成配置。
+然后，可以配置部署，在命令提示符下运行 maven 命令，并在出现“确认(Y/N)”  提示前一直按 **ENTER** 来使用默认配置，然后按“y”  完成配置。 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+示例过程如下所示：
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -105,6 +101,9 @@ Confirm (Y/N)? : Y
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | 运行时环境配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)查看详细信息。 | 0.1.0+
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | 部署配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)查看详细信息。 | 0.1.0+
 
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
+
 ## <a name="deploy-the-app"></a>部署应用
 
 使用以下命令将 Java 应用部署到 Azure：
@@ -119,9 +118,12 @@ mvn package azure-webapp:deploy
 
 祝贺你！  现已将第一个 Java 应用部署到 Linux 应用服务。
 
+> [!div class="nextstepaction"]
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令删除资源组：
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请通过门户删除资源组，或在 Cloud Shell 中运行以下命令来这样做：
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -142,3 +144,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 > [!div class="nextstepaction"]
 > [面向 Java 开发人员的其他 Azure 资源](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [详细了解 Azure 的 Maven 插件](https://github.com/microsoft/azure-maven-plugins)

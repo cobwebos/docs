@@ -4,18 +4,17 @@ description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件�
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 209bdb919a505e55bdfb8868d556fa1ad08db2fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a94e67af927365eda2b8b98240285e7cd3079a95
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717945"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688146"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -59,9 +58,11 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
    ![“添加”按钮](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. 在“创建命名空间”页上执行以下步骤  ：
-    1. 输入该命名空间的名称。 系统会立即检查该名称是否可用。
-    2. 选择定价层（基本或标准）。
-    3. 选择要在其中创建命名空间的**订阅**。
+    1. 输入命名空间的**名称**。 系统会立即检查该名称是否可用。
+    2. 选择**定价层**（基本或标准）。
+    3. 请注意，“启用 Kafka”选项是自动启用的。  Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中心命名空间以本机方式了解 [Apache Kafka](https://kafka.apache.org/intro) 消息协议和 API。 使用此功能，可以像与 Kafka 主题通信那样与事件中心通信，而无需更改协议客户端或运行自己的群集。 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html) 及更高版本。
+    4. 选择要在其中创建命名空间的**订阅**。
+    5. 选择现有**资源组**或创建新资源组。 
     4. 选择命名空间所在的**位置**。
     5. 选择“创建”  。 可能需要等待几分钟让系统完全预配资源。
 

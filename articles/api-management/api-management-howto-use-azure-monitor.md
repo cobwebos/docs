@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072347"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707202"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -180,13 +180,13 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 }  
 ```
 
-| properties  | Type | 说明 |
+| properties  | 类型 | 说明 |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | 布尔值 | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
-| time | 日期时间 | 网关接收 HTTP 请求的时间戳 |
+| isRequestSuccess | boolean | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
+| time | 日期时间 | 网关开始处理请求的时间戳 |
 | operationName | 字符串 | 常量值“'Microsoft.ApiManagement/GatewayLogs” |
 | category | 字符串 | 常量值“GatewayLogs” |
-| durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒） |
+| durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒）。 它包括 clienTime、cacheTime 和 backendTime。 |
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
 | location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |

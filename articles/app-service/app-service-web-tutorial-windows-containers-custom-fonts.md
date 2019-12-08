@@ -1,24 +1,15 @@
 ---
-title: 使用 Windows 容器（预览）生成 ASP.NET 应用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何将自定义 Windows 容器部署到 Azure 应用服务中并在容器中部署自定义软件。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.topic: quickstart
+title: 教程：使用容器的旧版应用（预览）
+description: 了解如何将自定义 Windows 容器迁移到 Azure 应用服务中并在容器中部署自定义软件。
+ms.topic: tutorial
 ms.date: 10/22/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6f9005b0e73e60bf479d0d3c059c301668f3b848
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787317"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671982"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）
 

@@ -1,6 +1,6 @@
 ---
-title: 将模拟设备添加到 Azure IoT Central | Microsoft Docs
-description: 创建设备模板并将模拟设备添加到 IoT Central 应用程序中。
+title: 快速入门 - 将模拟设备添加到 Azure IoT Central
+description: 本快速入门介绍如何创建设备模板并将模拟设备添加到 IoT Central 应用程序中。
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8b6720af6328242a1fe297e60c9d413d0b83f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896295"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706700"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>快速入门：将模拟设备添加到 IoT Central 应用程序（预览功能）
 
@@ -21,7 +21,7 @@ ms.locfileid: "73896295"
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-设备模板定义连接到 IoT Central 应用程序的设备的功能。 功能包括设备发送的遥测数据、设备属性以及设备响应的命令。 在设备模板中，构建者或操作员可以将真实设备和模拟设备添加到应用程序中。 在连接真实设备之前，模拟设备对于测试 IoT Central 应用程序的行为非常有用。
+设备模板定义连接到 IoT Central 应用程序的设备的功能。 功能包括设备发送的遥测数据、设备属性以及设备响应的命令。 在设备模板中，构建者或操作员可以将实际设备和模拟设备添加到应用程序中。 在连接实际设备之前，模拟设备对于测试 IoT Central 应用程序的行为非常有用。
 
 在此快速入门中，创建“环境传感器”设备模板并添加模拟设备  。 环境传感器设备：
 
@@ -32,7 +32,7 @@ ms.locfileid: "73896295"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[创建 Azure IoT Central 应用程序（预览版功能）](./quick-deploy-iot-central.md)快速入门，使用“自定义应用 > 预览应用程序”模板创建 IoT Central 应用程序  。
+完成[创建 Azure IoT Central 应用程序（预览功能）](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“预览应用程序”模板创建 IoT Central 应用程序  。
 
 还需要获取包含 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)设备功能模型的 **EnvironmentalSensorInline.capabilitymodel.json** 文件的本地副本。 可以从[此处](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)下载它。 在页面上单击右键，然后选择“另存为”。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "73896295"
 
 1. 若要添加新的设备模板，请在“设备模板”页上选择“+”   。
 
-1. 从自定义设备模板列表中选择“IoT 设备”，选择“下一步：   自定义”，然后选择“下一步：  查看”，然后选择“创建”  。
+1. 从自定义设备模板列表中选择“IoT 设备”，选择“下一步:   自定义”，然后选择“下一步:  查看”，然后选择“创建”  。
 
 1. 输入“环境传感器”作为设备模板的名称。 
 
@@ -94,7 +94,7 @@ ms.locfileid: "73896295"
 * “概述”视图使用图表和指标来显示设备遥测数据。 
 * “关于”视图显示设备属性。 
 
-选择“视图”，然后选择“生成默认视图”   。
+选择“视图”，然后“生成默认视图”   。
 
 ### <a name="configure-a-view-to-visualize-devices"></a>配置用于可视化设备的视图
 
@@ -160,7 +160,7 @@ ms.locfileid: "73896295"
 
 1. 在左窗格中选择“设备模板”，然后选择“环境传感器”模板   。
 
-1. 选择要编辑的任何视图，或创建新视图。 单击“配置预览设备”，然后单击“从正在运行的设备中选择”   。 你可以在此处选择“无预览设备”、“使用可配置用于测试的真实设备”，或者“从已添加到 IoT Central 的现有设备”。
+1. 选择要编辑的任何视图，或创建新视图。 单击“配置预览设备”，然后单击“从正在运行的设备中选择”   。 你可以在此处选择“无预览设备”、“使用可配置用于测试的实际设备”，或者“从已添加到 IoT Central 的现有设备”。
 
 1. 在列表中选择模拟设备。 然后，选择“应用”  。 现在，你可以在设备模板视图构建体验中看到相同的模拟设备。 此视图对于图表和其他可视化效非常有用。
 

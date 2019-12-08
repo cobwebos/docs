@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure IoT Central 中导出数据并直观呈现见解
+title: 教程 - 在 Azure IoT Central 中导出数据并直观呈现见解
 description: 在本教程中，了解如何从 IoT Central 导出数据并在 Power BI 仪表板中可视化见解。
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: ce775f207eaa5df05900ea2e5b6d9fbeab4dc878
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112874"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702017"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 

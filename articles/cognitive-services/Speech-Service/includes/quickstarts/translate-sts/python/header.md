@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: a41339b4aed855b92152534f7be9b4f516045e65
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3f14d874b7448f0c4a835f89689038103098bf80
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505297"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817395"
 ---
 如果希望直入正题，请在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-python">语音 SDK Python 示例</a>。 否则就开始吧！

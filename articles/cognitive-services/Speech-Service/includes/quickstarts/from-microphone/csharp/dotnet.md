@@ -10,32 +10,33 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 88ac0f05bf937af19a0bd6bf3cf2253fd3052f4c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4aee9604df98fbf5fbd18f527c4d40cff044bb9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505537"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818835"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-入门之前，准备工作有：
+准备工作：
 
 > [!div class="checklist"]
-> * [创建 Azure 搜索资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 
-第一步是确保项目在 Visual Studio 中打开。
+第一步是确保在 Visual Studio 中打开项目。
 
 1. 启动 Visual Studio 2019。
 2. 加载项目并打开 `Program.cs`。
 
-## <a name="start-with-some-boilerplate-code"></a>从一些样板代码开始
+## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
-让我们添加一些代码作为项目的主干。 请注意，已创建一个名为 `RecognizeSpeechAsync()` 的异步方法。
+添加一些代码作为项目的框架。 请注意，已创建名为 `RecognizeSpeechAsync()` 的异步方法。
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=5-15,43-52)]
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
@@ -45,6 +46,7 @@ ms.locfileid: "73505537"
 > [!NOTE]
 > 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
+> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
 
@@ -59,9 +61,9 @@ ms.locfileid: "73505537"
 
 ## <a name="display-the-recognition-results-or-errors"></a>显示识别结果（或错误）
 
-如果语音服务返回了识别结果，则需执行一些操作。 我们会简单地将结果输出到控制台。
+语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到控制台。
 
-在 using 语句中 `RecognizeOnceAsync()` 的下面，添加以下代码：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
+在 using 语句中的 `RecognizeOnceAsync()` 下方，添加以下代码：[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
 
 ## <a name="check-your-code"></a>检查代码
 
@@ -69,11 +71,11 @@ ms.locfileid: "73505537"
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 
-现在，已准备好使用语音服务构建应用并测我们的语音识别。
+现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
 2. “启动应用” - 在菜单栏中，选择“调试” > “开始调试”，或按 F5     。
-3. “开始识别”- 它将提示你说英语短语  。 你的语音将发送到语音服务，转录为文本，并在控制台中呈现。
+3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤
 

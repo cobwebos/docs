@@ -1,19 +1,19 @@
 ---
-title: 教程：使用 Azure CLI 设计 Azure Database for MySQL
+title: 教程：设计服务器 - Azure CLI - Azure Database for MySQL
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MySQL 服务器和数据库。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935995"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771206"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 

@@ -1,17 +1,17 @@
 ---
-title: 准备要部署到 Azure Spring Cloud 中的 Spring 应用程序 | Microsoft Docs
-description: 在本快速入门中，我们准备用于部署的 Java Spring 应用程序。
+title: 教程 - 准备要部署到 Azure Spring Cloud 中的 Spring 应用程序
+description: 在本教程中，我们准备用于部署的 Java Spring 应用程序。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721253"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708736"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>教程：准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
@@ -176,4 +176,3 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 
 > [!div class="nextstepaction"]
 > [了解如何设置配置服务器](spring-cloud-tutorial-config-server.md)。
-

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户创建流分析作业 | Microsoft Docs
+title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
 services: stream-analytics
 author: mamccrea
@@ -8,12 +8,12 @@ ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 65114f2ddb7567b47ac3951fbaf6664654e379f0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707375"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -37,8 +37,8 @@ ms.locfileid: "67449231"
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
-   |资源组   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
+   |Subscription  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
    |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
    |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
@@ -89,8 +89,8 @@ ms.locfileid: "67449231"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称   |  MyASAJob   |   输入用于标识流分析作业的名称。 流分析作业名称只能包含字母数字字符、连字符和下划线，其长度必须介于 3 到 63 个字符之间。 |
-   |订阅  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
-   |资源组   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
+   |Subscription  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
    |位置  |  \<选择离用户最近的区域\> | 选择可以在其中托管流分析作业的地理位置。 使用最靠近用户的位置，以便改进性能并减少数据传输成本。 |
    |流式处理单位  | 1  |   流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。   |
    |宿主环境  |  云  |   流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。 |
@@ -114,7 +114,7 @@ ms.locfileid: "67449231"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  IoTHubInput   |  输入一个名称，用于标识作业的输入。   |
-   |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |Subscription   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |IoT 中心  |  MyASAIoTHub |  输入在上一部分创建的 IoT 中心的名称。 |
 
 4. 让其他选项保留默认值，然后选择“保存”以保存设置。   
@@ -132,7 +132,7 @@ ms.locfileid: "67449231"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名 |   BlobOutput   |   输入一个名称，用于标识作业的输出。 |
-   |订阅  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |Subscription  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |存储帐户 |  asaquickstartstorage |   选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。       |
    |容器 |   container1  |  选择你在存储帐户中创建的现有容器。   |
 
@@ -193,4 +193,3 @@ ms.locfileid: "67449231"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)
-

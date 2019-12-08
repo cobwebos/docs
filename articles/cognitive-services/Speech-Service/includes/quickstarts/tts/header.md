@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 263a8e98c4c029728272c020efe00e82be20f5e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d19f779f67cc0dea8cc7f06aa275885d75c3092e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505073"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818351"
 ---
 在本快速入门中，我们将使用[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 将文本转换为合成语音。 满足几个先决条件后，将合成语音呈现到默认扬声器只需四个步骤：
 > [!div class="checklist"]

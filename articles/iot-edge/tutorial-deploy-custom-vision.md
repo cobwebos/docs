@@ -1,5 +1,5 @@
 ---
-title: 教程：将自定义视觉分类器部署到设备 - Azure IoT Edge | Microsoft Docs
+title: 教程 - 使用 Azure IoT Edge 将自定义视觉分类器部署到设备
 description: 本教程介绍如何通过自定义视觉和 IoT Edge 使计算机视觉模型以容器方式运行。
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3418c57493e19580f0d3dbd9ea979b0322d930b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457291"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701880"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 

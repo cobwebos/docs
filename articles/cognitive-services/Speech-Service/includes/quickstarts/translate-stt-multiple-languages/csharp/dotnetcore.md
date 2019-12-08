@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 947c0dd8a15efa8ac296aa598d883951816e759d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ea3c0bd1ab12004b51c3c9b56eb8a8370da6f36
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504753"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817095"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [创建 Azure 语音资源](../../../../get-started.md)
+> * [创建一个 Azure 搜索资源](../../../../get-started.md)
 > * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 > * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnetcore)
 
@@ -117,7 +117,7 @@ ms.locfileid: "73504753"
 
 1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
 
-1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会翻译并转录为文本（在本例中为法语和德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
+1. 说一个英语短语或句子。 应用程序将语音传输到语音服务，该服务会将语音翻译并转录为文本（在本例中为法语和德语）。 然后，语音服务会将该文本发送回应用程序以供显示。
 
 ````
 Say something...

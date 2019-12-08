@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423562"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74813144"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教程：创建和修改 ExpressRoute 线路
 
@@ -45,9 +45,12 @@ ms.locfileid: "74423562"
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 确保连接服务提供商准备好预配线路后就执行此操作。
 
-1. 可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“创建资源” > “网络” > “ExpressRoute”，如下图所示    ：
+可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 
 
-   ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。 选择“网络”   > “ExpressRoute”  ，如下图所示：
+
+   ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+
 2. 单击“ExpressRoute”  即可看到“创建 ExpressRoute 线路”  页。 在此页上填写相应值时，请务必指定正确的 SKU 层（“标准”或“高级”）和数据计量计费模型（“不限流量”或“按流量计费”）。
 
    ![配置 SKU 层和数据计量](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
@@ -146,7 +149,7 @@ ms.locfileid: "74423562"
 
 若要修改 ExpressRoute 线路，请单击“配置”  。
 
-![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
 ## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
 

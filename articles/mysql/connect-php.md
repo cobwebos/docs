@@ -1,18 +1,18 @@
 ---
-title: 通过 PHP 连接到 Azure Database for MySQL
+title: 使用 PHP 进行连接 - Azure Database for MySQL
 description: 本快速入门提供了多个 PHP 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 76d721ca102ae0affeba23c46d5da9fd44743f5b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/02/2019
+ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608760"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770707"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL：使用 PHP 连接和查询数据
 本快速入门演示了如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 PHP 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -41,13 +41,13 @@ ms.locfileid: "53608760"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
 3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。 如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-php/1_server-overview-name-login.png)
 
 ## <a name="connect-and-create-a-table"></a>进行连接并创建表
-使用以下代码进行连接，通过 CREATE TABLE SQL 语句创建表。 
+使用以下代码进行连接，通过 CREATE TABLE  SQL 语句创建表。 
 
 代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码调用 [mysqli_init](https://secure.php.net/manual/mysqli.init.php) 和 [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) 方法连接到 MySQL。 然后，代码调用 [mysqli_query](https://secure.php.net/manual/mysqli.query.php) 方法来运行查询。 然后，代码调用 [mysqli_close](https://secure.php.net/manual/mysqli.close.php) 方法来关闭连接。
 
@@ -86,7 +86,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="insert-data"></a>插入数据
-使用以下代码进行连接，并使用 INSERT SQL 语句插入数据。
+使用以下代码进行连接，并使用 INSERT  SQL 语句插入数据。
 
 代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法来创建已准备的 insert 语句，然后使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法绑定每个已插入列值的参数。 代码使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法运行语句，然后使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法关闭语句。
 
@@ -123,7 +123,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。  代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码使用 [mysqli_query](https://secure.php.net/manual/mysqli.query.php) 方法执行 SQL 查询，并使用 [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) 方法提取生成的行。
+使用以下代码进行连接，并使用 SELECT  SQL 语句读取数据。  代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码使用 [mysqli_query](https://secure.php.net/manual/mysqli.query.php) 方法执行 SQL 查询，并使用 [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) 方法提取生成的行。
 
 将 host、username、password 和 db_name 参数替换为你自己的值。 
 
@@ -154,7 +154,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据。
+使用以下代码进行连接，并使用 UPDATE  SQL 语句更新数据。
 
 代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法来创建已准备的 update 语句，然后使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法绑定每个已更新列值的参数。 代码使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法运行语句，然后使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法关闭语句。
 
@@ -192,7 +192,7 @@ mysqli_close($conn);
 
 
 ## <a name="delete-data"></a>删除数据
-使用以下代码进行连接，并使用 DELETE SQL 语句读取数据。 
+使用以下代码进行连接，并使用 DELETE  SQL 语句读取数据。 
 
 代码使用 PHP 中包括的 **MySQL 改进的扩展** (mysqli) 类。 代码使用 [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) 方法来创建已准备的 delete 语句，然后使用 [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) 方法绑定语句中的 where 子句的参数。 代码使用 [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) 方法运行语句，然后使用 [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) 方法关闭语句。
 
