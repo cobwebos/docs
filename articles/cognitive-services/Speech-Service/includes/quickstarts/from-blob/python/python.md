@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506153"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828844"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "73506153"
 
 1. 转到  https://editor.swagger.io 。
 1. 单击“文件”，然后单击“导入 URL”   。
-1. 输入 swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.ai/docs/v2.0/swagger`。
+1. 输入 Swagger URL，包括语音服务订阅的区域：`https://<your-region>.cris.ai/docs/v2.0/swagger`。
 1. 单击“生成客户端”，然后选择“Python”   。
 1. 保存客户端库。
 1. 将下载的 python-client-generated.zip 提取到文件系统中的某个位置。
@@ -44,11 +44,11 @@ ms.locfileid: "73506153"
 1. 已安装的名为 `swagger_client` 的包。 可以使用命令 `python -c "import swagger_client"` 来检查安装是否正常工作。
 
 > **注意：** 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
-> 这些错误可以通过从已安装的包中删除文件 `swagger_client/models/model.py` 中包含以下内容的行
+> 这些错误可以通过从已安装的包中删除文件 中包含以下内容的行
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> 和文件 `swagger_client/models/inner_error.py` 中包含以下内容的行
+> 和文件 `swagger_client/models/model.py` 中包含以下内容的行
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
@@ -71,7 +71,7 @@ pip install requests
 
 ## <a name="create-and-configure-an-http-client"></a>创建和配置 Http 客户端
 首先，我们需要具有正确的基本 URL 和身份验证集的 Http 客户端。
-将此代码插入 `transcribe`[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
+将此代码插入 `transcribe` [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>生成听录请求
 接下来，我们将生成听录请求。 将此代码添加到 `transcribe`[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
