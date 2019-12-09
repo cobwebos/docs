@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 997c9427883e2a099c2c185b618701fb85cb96a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a96cd537328a1a9edeeb03f81350ed5393806765
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231084"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927582"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -18,18 +18,18 @@ ms.locfileid: "74231084"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 2.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
 > [!NOTE]
-> 版本 2.x 不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 版本 2.x 基于 [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)，但不处理队列管理。
+> 版本2.x 和更高版本不会创建在 `ServiceBusTrigger` 实例中配置的主题或订阅。 这些版本基于不处理队列管理的[Microsoft.](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -105,7 +105,7 @@ public class OutgoingEmail
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -162,7 +162,7 @@ public class Message
 
 ### <a name="java-example"></a>Java 示例
 
-以下示例使用 `@SendGridOutput`Java 函数运行时库[中的 ](/java/api/overview/azure/functions/runtime) 注释来发送使用 SendGrid 输出绑定的电子邮件。
+下面的示例使用[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释，通过 SendGrid 输出绑定发送电子邮件。
 
 ```java
 @FunctionName("SendEmail")
@@ -191,7 +191,7 @@ public class Message
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json 
 {
@@ -229,7 +229,7 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a name="attributes"></a>特性
+## <a name="attributes"></a>属性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 特性。
 
@@ -249,15 +249,15 @@ public static void Run(
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 *function.json* 文件和 `SendGrid` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `SendGrid` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|**类型**|| 必需 - 必须设置为 `sendGrid`。|
-|**direction**|| 必需 - 必须设置为 `out`。|
-|**名称**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|类型|| 必需 - 必须设置为 `sendGrid`。|
+|direction|| 必需 - 必须设置为 `out`。|
+|name|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
 |**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
-|**to**|**To**| 收件人的电子邮件地址。 |
+|**to**|**收件人**| 收件人的电子邮件地址。 |
 |**from**|**From**| 发件人的电子邮件地址。 |
 |**subject**|**主题**| 电子邮件主题。 |
 |**text**|**Text**| 电子邮件内容。 |
@@ -268,7 +268,7 @@ public static void Run(
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍版本 2.x 中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版本设置。 有关版本 2.x 中的全局配置设置的详细信息，请参阅 [Azure Functions 版本 2.x 的 host.json 参考](functions-host-json.md)。
+本部分介绍此绑定在版本2.x 和更高版本中可用的全局配置设置。 下面的示例 host json 文件仅包含此绑定的版本 2.x + 设置。 有关版本2.x 和更高版本中的全局配置设置的详细信息，请参阅[host json reference for Azure Functions](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
@@ -284,7 +284,7 @@ public static void Run(
 }
 ```  
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |from|不适用|所有函数的发件人电子邮件地址。| 
 

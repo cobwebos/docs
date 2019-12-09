@@ -1,30 +1,31 @@
 ---
-title: 使用 Azure 数据工厂从 MongoDB 复制数据
+title: 使用旧版从 MongoDB 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c2c2d9ad78bb09a37faaa5825f8dae3e27370ea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 089064cee68170ab44fc1cc05e630781529b7b60
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680676"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931288"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
+
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [当前版本](connector-mongodb.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
 
 >[!IMPORTANT]
 >ADF 发布了一款新的 MongoDB 连接器，与这个基于 ODBC 的实现相比，该连接器提供更好的本机 MongoDB 支持，详情请参阅 [MongoDB 连接器](connector-mongodb.md)一文。 这一旧版 MongoDB 连接器仍支持向后兼容，但是对于任何新的工作负载，请使用新连接器。
@@ -38,7 +39,7 @@ ms.locfileid: "73680676"
 - MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
 - 使用基本或匿名身份验证复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -54,19 +55,19 @@ ms.locfileid: "73680676"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
-| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
+| 服务器 |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
 | authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
-| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不能。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
-| enableSsl | 指定是否使用 SSL 加密服务器连接。 默认值为 false。  | 否 |
-| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
+| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | No |
+| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | No |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
 
 **示例：**
 
@@ -97,7 +98,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -122,16 +123,16 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB 源支持的属性列表。
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-复制活动**source**部分支持以下属性：
+复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
-| 查询 |使用自定义 SQL-92 查询读取数据。 例如：select * from MyTable。 |否（如果指定了数据集中的“collectionName”） |
+| 查询 |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
 
 **示例：**
 
@@ -179,14 +180,14 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 | MongoDB 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | 二进制 |Byte[] |
-| 布尔值 |布尔值 |
-| Date |DateTime |
+| 布尔 |布尔 |
+| 日期 |日期/时间 |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
-| UUID |Guid |
+| ObjectID |字符串 |
+| 字符串 |字符串 |
+| UUID |GUID |
 | 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
 > [!NOTE]
@@ -230,7 +231,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | 折扣 |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |吐司炉 |456 |0.2 |
-| 1111 |1 |124 |烤箱 |1235 |0.2 |
+| 1111 |第 |124 |烤箱 |1235 |0.2 |
 | 2222 |0 |135 |冰箱 |12543 |0.0 |
 
 **“ExampleTable_Ratings”表：**
@@ -238,9 +239,9 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
 | 1111 |0 |5 |
-| 1111 |1 |6 |
-| 2222 |0 |1 |
-| 2222 |1 |2 |
+| 1111 |第 |6 |
+| 2222 |0 |第 |
+| 2222 |第 |2 |
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

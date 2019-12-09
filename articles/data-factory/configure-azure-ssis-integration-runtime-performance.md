@@ -9,13 +9,13 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681436"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930547"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -76,30 +76,30 @@ AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该辅�
 -   Standard\_D2\_v2
 -   Standard\_D3\_v2
 -   Standard\_D4\_v2
--   Standard\_D2\_v3
--   Standard\_D4\_v3
--   Standard\_D8\_v3
--   Standard\_D16\_v3
--   Standard\_D32\_v3
--   Standard\_D64\_v3
--   Standard\_E2\_v3
--   Standard\_E4\_v3
--   Standard\_E8\_v3
--   Standard\_E16\_v3
--   Standard\_E32\_v3
--   Standard\_E64\_v3
+-   标准\_D2\_v3
+-   标准\_D4\_v3
+-   标准\_D8\_v3
+-   标准\_D16\_v3
+-   标准\_D32\_v3
+-   标准\_D64\_v3
+-   标准\_E2\_v3
+-   标准\_E4\_v3
+-   标准\_E8\_v3
+-   标准\_E16\_v3
+-   标准\_E32\_v3
+-   标准\_E64\_v3
 
 在 SSIS 工程团队进行的非官方内部测试中，D 系列表现得比 A 系列更加适合 SSIS 包执行。
 
--   D 系列的性价比高于 A 系列，v3 系列的性价比高于 v2 系列。
--   D 系列的吞吐量高于相同价格的 A 系列，v3 系列的吞吐量高于相同价格的 v2 系列。
--   Azure-SSIS IR 的 v2 系列节点不适用于自定义设置，因此请改用 v3 系列节点。 如果已使用 v2 系列节点，请尽快改为使用 v3 系列节点。
--   E 系列是内存优化的 VM 大小，提供比其他计算机更高的内存 CPU 比率。如果你的包需要大量内存，可以考虑选择 E 系列 VM。
+-   D 系列的性能/价格比高于 A 系列，而 v3 系列的性能/价格比高于 v2 系列。
+-   D 系列的吞吐量高于同一价格的一系列，并且 v3 系列的吞吐量高于同一价格的 v2 系列。
+-   Azure-SSIS IR 的 v2 系列节点不适用于自定义安装，因此请改用 v3 系列节点。 如果已使用 v2 系列节点，请尽快切换到使用 v3 系列节点。
+-   E 系列是内存优化的 VM 大小，提供比其他计算机更高的内存与 CPU 的比率。如果你的包需要大量内存，则可以考虑选择 E 系列 VM。
 
 ### <a name="configure-for-execution-speed"></a>配置执行速度
 如果没有很多要运行的包并且需要包快速运行，则使用下表中的信息选择一个适合方案的虚拟机类型。
 
-此数据代表单个辅助角色节点上的单个包执行。 此包从 Azure Blob 存储中加载 3 百万个包含名和姓列的记录，生成全名列并将全名超过 20 个字符的记录写到 Azure Blob 存储。
+此数据代表单个辅助角色节点上的单个包执行。 该包使用 Azure Blob 存储中的 "名字" 和 "姓氏" 列加载3000000条记录，生成 "全名" 列，并将全名长度超过20个字符的记录写入 Azure Blob 存储。
 
 ![SSIS Integration Runtime 包执行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
@@ -115,29 +115,29 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
+已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点的最大值（2 x 内核数、8）并行执行数。 如果你希望**AzureSSISMaxParallelExecutionsPerNode**超出我们支持的最大值，可以打开支持票证，我们可以增加你的最大值，在此之后你需要使用 Azure Powershell 来更新**AzureSSISMaxParallelExecutionsPerNode**。
 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
 
-| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
+| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
+| Standard\_D1\_v2 | 第    | 3.5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |
 | Standard\_D3\_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 8/8x500                         | 4 / 3000                                       |
 | Standard\_D4\_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 16/16x500                       | 8 / 6000                                       |
 | Standard\_A4\_v2 | 4    | 8           | 40                     | 4000/80/40                                             | 8/8x500                         | 4 / 1000                                       |
 | Standard\_A8\_v2 | 8    | 16          | 80                     | 8000/160/80                                            | 16/16x500                       | 8 / 2000                                       |
-| Standard\_D2\_v3 | 2    | 8           | 50                     | 3000/46/23                                             | 4 / 6x500                         | 2 / 1000                                       |
-| Standard\_D4\_v3 | 4    | 16          | 100                    | 6000/93/46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| Standard\_D8\_v3 | 8    | 32          | 200                    | 12000/187/93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| Standard\_D16\_v3| 16   | 64          | 400                    | 24000/375/187                                          | 32/ 48x500                        | 8 / 8000                                       |
-| Standard\_D32\_v3| 32   | 128         | 800                    | 48000/750/375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| Standard\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
-| Standard\_E2\_v3 | 2    | 16          | 50                     | 3000/46/23                                             | 4 / 6x500                         | 2 / 1000                                       |
-| Standard\_E4\_v3 | 4    | 32          | 100                    | 6000/93/46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| Standard\_E8\_v3 | 8    | 64          | 200                    | 12000/187/93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| Standard\_E16\_v3| 16   | 128         | 400                    | 24000/375/187                                          | 32 / 48x500                       | 8 / 8000                                       |
-| Standard\_E32\_v3| 32   | 256         | 800                    | 48000/750/375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| Standard\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
+| 标准\_D2\_v3 | 2    | 8           | 50                     | 3000/46/23                                             | 4/6x500                         | 2 / 1000                                       |
+| 标准\_D4\_v3 | 4    | 16          | 100                    | 6000/93/46                                             | 8 / 12x500                        | 2 / 2000                                       |
+| 标准\_D8\_v3 | 8    | 32          | 200                    | 12000/187/93                                           | 16/24x500                       | 4 / 4000                                       |
+| 标准\_D16\_v3| 16   | 64          | 400                    | 24000/375/187                                          | 32/48x500                        | 8 / 8000                                       |
+| 标准\_D32\_v3| 32   | 128         | 800                    | 48000/750/375                                          | 32/96x500                       | 8 / 16000                                      |
+| 标准\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32/192x500                      | 8 / 30000                                      |
+| 标准\_E2\_v3 | 2    | 16          | 50                     | 3000/46/23                                             | 4/6x500                         | 2 / 1000                                       |
+| 标准\_E4\_v3 | 4    | 32          | 100                    | 6000/93/46                                             | 8 / 12x500                        | 2 / 2000                                       |
+| 标准\_E8\_v3 | 8    | 64          | 200                    | 12000/187/93                                           | 16/24x500                       | 4 / 4000                                       |
+| 标准\_E16\_v3| 16   | 128         | 400                    | 24000/375/187                                          | 32/48x500                       | 8 / 8000                                       |
+| 标准\_E32\_v3| 32   | 256         | 800                    | 48000/750/375                                          | 32/96x500                       | 8 / 16000                                      |
+| 标准\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32/192x500                      | 8 / 30000                                      |
 
 以下是为 AzureSSISMaxParallelExecutionsPerNode 属性设置正确值的指南： 
 
@@ -153,7 +153,7 @@ SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的�
 
 -   如果辅助角色节点计数大于 8 或者核心计数大于 50，则选择一个比基本版更强大的数据库。 否则，数据库会成为 Integration Runtime 实例的瓶颈，且整体性能会受到负面影响。
 
--   如果日志记录级别设置为“详细”，则选择更强大的数据库，如 S3。 根据我们的非正式内部测试，S3 定价层可以支持具有 2 个节点、128 个并行计数和详细日志记录级别的 SSIS 包执行。
+-   如果日志记录级别设置为 "详细"，则选择一个功能更强大的数据库，例如 s3。 根据我们的非正式内部测试，s3 定价层可支持包含2个节点、128个并行计数和详细日志记录级别的 SSIS 包执行。
 
 还可以基于 Azure 门户上提供的[数据库事务单元](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用情况信息调整数据库定价层。
 

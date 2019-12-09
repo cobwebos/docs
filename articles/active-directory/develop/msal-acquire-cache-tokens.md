@@ -3,27 +3,23 @@ title: 使用 MSAL 获取和缓存令牌
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df30156cde0244209f5f07c2627887252642525
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e1cb16b5635afcfac51063ec569ca74a0ecd3b6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903022"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917159"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库（MSAL）获取和缓存令牌
 
@@ -52,7 +48,7 @@ Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 （仅适用于 Microsoft Graph API）范围值 `user.read` 将映射为 `https://graph.microsoft.com/User.Read` 格式，两者可以换用。
 
 > [!NOTE]
-> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/)）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
+> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/) ）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>请求增量许可的动态范围
 
@@ -97,7 +93,7 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 ### <a name="confidential-client-applications"></a>机密客户端应用程序
 
 对于机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）：
-- 使用**客户端凭据流**获取[应用程序本身](msal-authentication-flows.md#client-credentials)而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。 
+- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。 
 - 使用适用于 Web API 的[代表流](msal-authentication-flows.md#on-behalf-of)代表用户调用 API。 系统会使用客户端凭据标识应用程序，以根据用户断言（例如 SAML 或 JWT 令牌）获取令牌。 需要在服务到服务调用中访问特定用户的资源的应用程序使用此流。
 - 在用户通过授权请求 URL 登录后，在 Web 应用中使用[授权代码流](msal-authentication-flows.md#authorization-code)获取令牌。 OpenID Connect 应用程序通常使用此机制，可让用户使用 Open ID Connect 登录，然后代表用户访问 Web API。
 

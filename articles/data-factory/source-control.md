@@ -1,23 +1,22 @@
 ---
-title: Azure 数据工厂中的源代码管理
+title: 源代码管理
 description: 了解如何在 Azure 数据工厂中配置源代码管理
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: naF
-ms.topic: conceptual
-ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
+manager: anandsub
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 01/09/2019
+ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703835"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928767"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 
@@ -162,7 +161,7 @@ GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](ht
 
 若要切换到另一个 Git 存储库，请单击 "数据工厂概述" 页右上角的 "Git 存储库**设置**" 图标。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
 
-![Git 图标](media/author-visually/remove-repo.png)
+![“Git”图标](media/author-visually/remove-repo.png)
 
 显示 "存储库设置" 窗格后，选择 "**删除 Git**"。 输入数据工厂名称，并单击 "**确认**" 以删除与数据工厂关联的 Git 存储库。
 

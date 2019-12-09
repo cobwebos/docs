@@ -3,21 +3,20 @@ title: 数据管理网关问题的疑难解答
 description: 提供解决数据管理网关相关问题的提示。
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682322"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931606"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
 本文提供有关解决数据管理网关使用问题的信息。
@@ -36,7 +35,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 由于网络问题，要尝试在其上安装网关的计算机无法从下载中心下载最新的网关安装文件。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 请检查防火墙代理服务器设置，查看是否是设置阻止了从计算机到[下载中心](https://download.microsoft.com/)的网络连接，并相应地更新设置。
 
 也可在其他可以访问下载中心的计算机上从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载最新网关的安装文件。 然后即可将安装程序文件复制到网关主机并以手动方式运行，以便安装和更新网关。
@@ -49,7 +48,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 计算机上已安装有网关。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 卸载计算机上的现有网关，并再次单击“直接安装在此计算机上”链接。
 
 ### <a name="3-problem"></a>3. 问题
@@ -64,7 +63,7 @@ ms.locfileid: "73682322"
 * 网关密钥已失效。
 * 已在门户中重新生成了网关密钥。  
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 在门户中验证是否使用的是正确的网关密钥。 如果需要，可重新生成密钥并使用该密钥注册网关。
 
 ### <a name="4-problem"></a>4. 问题
@@ -79,7 +78,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 输入网关密钥的内容或格式不正确。 其中一个原因可能是仅从门户复制了密钥的一部分，或者使用了无效密钥。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 在门户中生成网关密钥，并使用复制按钮复制整个密钥。 然后将其粘贴在此窗口中，以便注册网关。
 
 ### <a name="5-problem"></a>5. 问题
@@ -92,10 +91,10 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 网关密钥已重新生成或已在 Azure 门户中删除了网关。 如果数据管理网关安装程序不是最新版本，也可能会发生此问题。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 检查数据管理网关安装程序是否是最新版本，可以在 Microsoft [下载中心](https://go.microsoft.com/fwlink/p/?LinkId=271260)找到最新版本。
 
-如果安装程序是最新的且门户上的网关仍然存在，请在 Azure 门户中重新生成网关密钥，使用复制按钮复制整个密钥，并将其粘贴到此窗口中以注册网关。 否则，重新创建网关，然后重新开始。
+如果安装程序是最新的且门户上的网关仍然存在，请在 Azure 门户中重新生成网关密钥，并使用复制按钮复制整个密钥，然后将其粘贴到此窗口中以注册网关。 否则，重新创建网关，然后重新开始。
 
 ### <a name="6-problem"></a>6. 问题
 注册网关时，可能会出现下面的错误消息。
@@ -107,7 +106,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 发生此错误的原因可能是已删除了网关或已重新生成了关联的网关密钥。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 如果网关已被删除，请在门户中重新创建网关，单击“注册”，从门户中复制并粘贴密钥，尝试注册网关。
 
 如果网关仍然存在但已重新生成其密钥，则使用新的密钥注册网关。 如果没有密钥，请在门户中再次重新生成密钥。
@@ -124,7 +123,7 @@ ms.locfileid: "73682322"
 
 在其他主机计算机上还原网关时，注册向导会请求此证书解密先前使用此证书加密的凭据。  如果没有此证书，新网关便无法解密凭据，且与此新网关相关联的后续复制活动执行会失败。  
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 如果已通过使用“数据管理网关配置管理器”的“设置”选项卡上的“导出”按钮，从原始网关计算机中导出了凭据证书，则请在此处使用该证书。
 
 恢复网关时不能跳过此阶段。 如果证书丢失，则需从门户中删除网关，并重新创建新的网关。  此外，需要通过重新输入凭据来更新所有与网关相关的关联服务。
@@ -137,7 +136,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 网关所在环境需要 HTTP 代理来访问 Internet 资源，或代理的身份验证密码已更改但网关中并未相应进行更新时，会发生此错误。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 按照本文“代理服务器注意事项”部分的说明，通过数据管理网关配置管理器配置代理设置。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>网关联机但功能受限
@@ -152,7 +151,7 @@ ms.locfileid: "73682322"
 
 网关联机但功能受限时，可能无法使用数据工厂复制向导创建用于向/从本地数据存储复制数据的数据管道。 解决办法是使用门户、Visual Studio 或 Azure PowerShell 中的数据工厂编辑器。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 此问题（联机但功能受限）的解决方法取决于网关是无法连接到云服务还是云服务无法连接到网关。 以下部分提供相关解决方法。
 
 ### <a name="2-problem"></a>2. 问题
@@ -165,7 +164,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 网关无法通过服务总线连接到云服务。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 请按照这些步骤使网关重新处于联机状态：
 
 1. 允许网关计算机和企业防火墙上的 IP 地址出站规则。 可通过 Windows 事件日志查找 IP 地址 (ID == 401)：尝试了以其访问权限 XX.XX.XX.XX:9350 禁止的方式访问套接字。
@@ -180,7 +179,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 网络连接暂时性错误。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 请按照这些步骤使网关重新处于联机状态：
 
 1. 稍等几分钟，连接会在错误消失后自动恢复。
@@ -201,7 +200,7 @@ ms.locfileid: "73682322"
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 请按照下列步骤来解决此问题：
 
 1. 启动数据管理网关配置管理器。
@@ -222,7 +221,7 @@ ms.locfileid: "73682322"
 #### <a name="cause"></a>原因
 出现此问题的原因有多种，相应地，缓解方法也会不同。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>分辨率
 连接到 SQL 数据库前，在数据管理网关客户端中允许端口 TCP/1433 上的出站 TCP 连接。
 
 如果目标数据库为 Azure SQL 数据库，请一并检查 Azure 的 SQL Server 防火墙设置。

@@ -1,30 +1,30 @@
 ---
-title: 从 SSDT 执行 Azure 数据工厂中的 SSIS 包
+title: 从 SSDT 执行 SSIS 包
 description: 了解如何从 SSDT 在 Azure 中执行 SSIS 包。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 4c89bdddce7b7318e184994ddf627d853e29fd7e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/31/2019
+ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673602"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927710"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>从 SSDT 在 Azure 中执行 SSIS 包
 本文介绍 SQL Server Data Tools （SSDT）上启用了 Azure 的 SQL Server Integration Services （SSIS）项目的功能，该功能允许你在 Azure 数据工厂（ADF）中的 Azure-SSIS Integration Runtime （IR）上运行包。  你可以使用此功能来测试现有 SSIS 包，然后将其 & 提升或迁移到 Azure，或开发新的 SSIS 包以在 Azure 中运行。
 
 利用此功能，你可以创建新的 Azure-SSIS IR，或将现有的一个连接到 SSIS 项目，然后在其上执行包。  我们支持在项目部署模型中将包部署到 SSIS 目录（SSISDB）中，以及要部署到包部署模型中的文件系统/文件共享/Azure 文件中的包。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用此功能，请从[此处](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下载并安装适用于 Visual Studio 的最新 SSDT，并将其作为独立的安装[程序。](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure-启用 SSIS 项目
@@ -52,13 +52,13 @@ ms.locfileid: "73673602"
 3. 在 "**选择 adf 中的 SSIS IR** " 页上，选择现有 ADF 并 Azure-SSIS IR 运行包，或者创建新的 adf （如果没有）。
    - 若要选择现有 Azure-SSIS IR，请先选择相关的 Azure 订阅和 ADF。
    - 如果选择的是没有任何 Azure-SSIS IR 的现有 ADF，请单击 "**创建 SSIS IR** " 按钮，在 adf 门户/应用上创建一个新的。
-   - 如果选择不具有任何 ADF 的现有 Azure 订阅，请单击 "**创建 SSIS IR** " 按钮启动**Integration Runtime 创建向导**，你可以在其中输入用于自动创建新 Azure 的位置和前缀资源组、数据工厂和 SSIS IR，按以下模式命名： **YourPrefix-RG/DF/ir-YourCreationTime**。
+   - 如果选择不具有任何 ADF 的现有 Azure 订阅，请单击 "**创建 SSIS IR** " 按钮启动**Integration Runtime 创建向导**，可以在其中输入用于代表你自动创建新的 Azure 资源组、数据工厂和 SSIS IR 的位置和前缀，按以下模式命名： **YourPrefix/YourCreationTime**。
    
    ![选择 ADF 中的 SSIS IR](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
 4. 在 "**选择 Azure 存储**" 页上，选择现有的 azure 存储帐户，将包上传到 azure 文件中，或创建新的 azure 存储帐户（如果没有）。
    - 若要选择现有的 Azure 存储帐户，请先选择相关的 Azure 订阅。
-   - 如果你选择的 Azure 订阅与你的 Azure-SSIS IR 没有任何 Azure 存储帐户，请单击 "**创建 Azure 存储**" 按钮，以在与你的 Azure-SSIS IR 相同的位置自动创建一个新的订阅，名称为将 Azure-SSIS IR 名称及其创建日期的前缀组合在一起。
+   - 如果你选择的 Azure 订阅与你的 Azure-SSIS IR 没有任何 Azure 存储帐户，请单击 "**创建 Azure 存储**" 按钮，以在与你的 Azure-SSIS IR 相同的位置自动创建一个新的订阅，通过将 Azure-SSIS IR 名称和创建日期的前缀相结合来命名。
    - 如果选择不具有任何 Azure 存储帐户的其他 Azure 订阅，请单击 "**创建 Azure 存储**" 按钮，在 Azure 门户上创建一个新订阅。
    
    ![选择“Azure 存储”](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
@@ -77,18 +77,18 @@ ms.locfileid: "73673602"
    ![在 Azure 中执行包](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> 若要在 Azure 中执行包，需要具有运行的 Azure-SSIS IR，因此，如果 Azure-SSIS IR 已停止，则会弹出一个对话框窗口以启动它。  此过程应在 5 分钟内完成（不包括任何自定义设置时间），但对于加入虚拟网络的 Azure-SSIS IR，此过程可能需要大约 20 - 30 分钟。  在 Azure 中执行包后，可以通过右键单击 SSDT 的 "解决方案资源管理器面板" 中的节点来弹出菜单，然后选择转到 ADF 门户的**Start\Stop\Manage**菜单项，来停止 Azure-SSIS IR 管理其运行成本。用于执行此操作的应用程序。
+> 若要在 Azure 中执行包，需要具有运行的 Azure-SSIS IR，因此，如果 Azure-SSIS IR 已停止，则会弹出一个对话框窗口以启动它。  排除任何自定义设置时间，此过程应在5分钟内完成，但在加入虚拟网络 Azure-SSIS IR 大约需要 20-30 分钟。  在 Azure 中执行包后，可以通过右键单击 SSDT 的 "解决方案资源管理器面板" 中的节点来停止 Azure-SSIS IR 来管理其运行成本，以弹出菜单，然后选择转到 ADF 门户/应用的**Start\Stop\Manage**菜单项来执行此操作。
 
 ### <a name="checking-package-execution-logs"></a>检查包执行日志
 在开始执行包时，会在 SSDT 的 "进度" 窗口中设置格式并显示其日志。  对于长时间运行的包，我们将按分钟定期更新其日志。  可以通过单击 SSDT 工具栏中将立即取消包的 "**停止**" 按钮来停止包执行。  你还可以临时查找其通用命名约定（UNC）路径中的日志原始数据： `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`，但我们会在一天后将其清除。
 
 ### <a name="switching-package-protection-level"></a>切换包保护级别
-在 Azure 中执行 SSIS 包不支持**EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey**保护级别。  因此，如果你的包配置了这些包，我们会在你上载你的 **/** **EncryptSensitiveWithPassword**时，打包到 Azure 文件中，以便在 Azure-SSIS IR 上执行。
+在 Azure 中执行 SSIS 包不支持**EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey**保护级别。  因此，如果对包进行了配置，则在将包上传到 Azure 文件以便在 Azure-SSIS IR 上执行时，我们会将它们分别临时切换为**EncryptSensitiveWithPassword**/**EncryptAllWithPassword**，并随机生成密码。
 
 > [!NOTE]
-> 如果包中包含的执行包任务引用配置了**EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey**保护级别的其他包，则需要手动重新配置那些要使用**的其他包EncryptSensitiveWithPassword**/**EncryptAllWithPassword**，然后在执行包之前执行。
+> 如果包中包含的执行包任务引用配置了**EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey**保护级别的其他包，则需要在执行包之前手动重新配置这些其他包以使用**EncryptSensitiveWithPassword**/**EncryptAllWithPassword**。
 
-如果你的包已配置了**EncryptSensitiveWithPassword**/**EncryptAllWithPassword**保护级别，我们会将其保持不变，但当我们将你的包上传到要在 Azure-SSIS IR 上执行的 Azure 文件。
+如果你的包已配置了**EncryptSensitiveWithPassword**/**EncryptAllWithPassword**保护级别，我们会将其保持不变，但当我们将包上传到 Azure 文件中以供在你的 Azure-SSIS IR 上执行时，仍将使用随机生成的密码。
 
 ### <a name="using-package-configuration-file"></a>使用包配置文件
 如果使用包部署模型中的包配置文件在运行时更改变量值，我们会自动将包含包的这些文件上传到 Azure 文件中，以便在 Azure-SSIS IR 上执行。

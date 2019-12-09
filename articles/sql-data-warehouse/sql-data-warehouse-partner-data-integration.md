@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8dd111017076e4a1a6a93ac7d53c253a85a09376
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d71c4ee7c5d982708c8a3b0a79b453d7196ad02d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890087"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923613"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍了具有支持 Azure SQL 数据仓库的官方数据集成解决方案的 Microsoft 合作伙伴公司。
@@ -37,7 +37,7 @@ ms.locfileid: "74890087"
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 平台使客户能够快速将数据传入和传出 Microsoft Azure SQL 数据仓库。 它可以在一个解决方案中集成数百个应用程序、服务和 IoT 方案。|[产品页][snaplogic_website]<br>[Azure 市场][snaplogic_marketplace]<br> |
 | ![StreamSets][16] |**Streamsets data collector**<br>Streamsets data collector 提供了用于 DataOps 的数据集成平台。 它 operationalizes 将数据集成到 Azure SQL 数据仓库的完整的设计部署-操作生命周期。 你不能通过流式处理、批处理或更改的数据捕获数据交付方法快速引入数据并将其与仓库集成，还可以确保具有智能数据管道的连续操作，这些管道提供端到端的数据流可见性和复原.|[产品页][streamsets_website]|
 | ![Talend][12] |**Talend 云**<br>Talend 云是一个企业数据集成平台，用于在云中或本地连接、访问和转换任何数据。 这是一个集成平台即服务（iPaaS）产品/服务，提供广泛的连接、内置的数据质量以及对最新的大数据和云技术的本机支持。 |[产品页][talend_website]<br> [Azure 市场][talend_marketplace] |
-| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender 的发现中心提供集成的数据管理平台，可帮助公司构建最新的数据，最多可加快10倍的数据见解。 通过在单个平台中提供数据访问、数据建模和合规性的自动化和功能，超越日常提取、转换和加载（ETL）或提取、加载和转换（ELT）。 发现中心为云规模分析提供了一种统一的数据结构，使你能够连接和集成各种数据接收器、目录、模型、移动和文档数据以便进行分析和 AI。 | [产品页][timextender_website] |
+| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender 的发现中心提供集成的数据管理平台，可帮助公司构建最新的数据，最多可加快10倍的数据见解。 通过在单个平台中提供数据访问、数据建模和合规性的自动化和功能，超越日常提取、转换和加载（ETL）或提取、加载和转换（ELT）。 发现中心为云规模分析提供了一种统一的数据结构，使你能够连接和集成各种数据接收器、目录、模型、移动和文档数据以便进行分析和 AI。 | [产品页][timextender_website]<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织浏览各种不同的数据，并将其结合起来进行分析。 Trifacta Wrangler 设计用于处理需要支持大规模数据和大量最终用户的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure 市场][trifacta_marketplace] |
 | ![WhereScape][15] |**Wherescape 红色**<br> WhereScape RED 是一个 IDE，它为团队提供自动化工具来简化 ETL 工作流。 IDE 为常用数据目标提供最佳实践优化的本机代码。 使用 WhereScape RED 缩短开发、部署和操作你的数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure 市场][wherescape_marketplace] |
 

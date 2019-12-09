@@ -7,25 +7,25 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 9ee1dd74384725b3fffbfea7144c3a536b50c531
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174546"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931543"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到 Azure Active Directory 受保护的终结点
 
-本文介绍如何利用 Azure Active Directory 来保护事件订阅和 webhook 终结点之间的连接。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+本文介绍如何利用 Azure Active Directory 来保护事件订阅和 webhook 终结点之间的连接。 有关 Azure AD 应用程序和服务主体的概述，请参阅[Microsoft 标识平台（v2.0）概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
 本文使用 Azure 门户演示，但也可以使用 CLI、PowerShell 或 Sdk 启用此功能。
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-and-azure-ad-application"></a>创建和 Azure AD 应用程序
+## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
 
-首先为受保护的终结点创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview。
-    - 将受保护的 API 配置为通过守护程序应用进行调用。
+首先为受保护的终结点创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
+    - 配置要由后台程序应用调用的受保护 API。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>启用事件网格以使用 Azure AD 应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "74174546"
     
 1. 修改 PowerShell 脚本的 $myTenantId，以使用 Azure AD 租户 ID。
 1. 将 PowerShell 脚本的 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID
-1. 运行修改的脚本。
+1. 运行修改后的脚本。
 
 ```PowerShell
 # This is your Tenant Id. 
@@ -121,7 +121,7 @@ Write-Host $myApp.AppRoles
 * 从脚本的输出中复制 Azure AD 的租户 ID，并将其输入到 AAD 租户 ID 字段。
 * 从脚本的输出中复制 Azure AD 的应用程序 ID，并将其输入到 "AAD 应用程序 ID" 字段中。
 
-    ![保护 Webhook 操作](./media/secure-webhook-delivery/aad-configuration.png)
+    ![安全 Webhook 操作](./media/secure-webhook-delivery/aad-configuration.png)
 
 ## <a name="next-steps"></a>后续步骤
 

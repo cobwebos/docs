@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468408"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931498"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -25,7 +25,7 @@ ms.locfileid: "73468408"
 
 下面是单个虚拟网络的 HBase 复制用例：
 
-* 负载均衡。 例如，可以在目标群集上运行扫描或 MapReduce 作业，在源群集上引入数据。
+* 负载平衡。 例如，可以在目标群集上运行扫描或 MapReduce 作业，在源群集上引入数据。
 * 添加高可用性。
 * 在不同的 HBase 群集之间迁移数据。
 * 将 Azure HDInsight 群集从一个版本升级到另一个版本。
@@ -36,9 +36,9 @@ ms.locfileid: "73468408"
 * 对应用程序进行负载均衡和分区。
 * 添加高可用性。
 
-可以使用 [GitHub](../hdinsight-hadoop-customize-cluster-linux.md) 中的[脚本操作](https://github.com/Azure/hbase-utils/tree/master/replication)脚本复制群集。
+可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始本文之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
@@ -66,9 +66,9 @@ ms.locfileid: "73468408"
 
 **VNet 1**
 
-| 属性 | 值 |
+| properties | Value |
 |----------|-------|
-| 位置 | 美国西部 |
+| Location | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -83,9 +83,9 @@ ms.locfileid: "73468408"
 
 **VNet 2**
 
-| 属性 | 值 |
+| properties | Value |
 |----------|-------|
-| 位置 | 美国东部 |
+| Location | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -182,7 +182,7 @@ ms.locfileid: "73468408"
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后会使用它。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后将使用它。
 
     还必须从其他 DNS 服务器中找出 DNS 后缀。 因为下一步骤需要用到。
 
@@ -273,7 +273,7 @@ sudo service bind9 status
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请遵照 **Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase** 中的说明。[](apache-hbase-tutorial-get-started-linux.md)
+若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。
 
 ## <a name="enable-replication"></a>启用复制
 
@@ -296,12 +296,14 @@ sudo service bind9 status
     
       > [!NOTE]
       > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
+      >
+      > 本演练假设 hn1 为活动头节点。 请检查群集，确定活动头节点。
 
-6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择**创建**。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|名称|说明|
+|名称|描述|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -310,17 +312,17 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|说明|
+|名称|描述|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-t、--table-list | 指定要复制的表。 例如：--table-list="table1;table2;table3"。 如果不指定表，将复制所有现有的 HBase 表。|
-|-m、--machine | 指定要在其中运行脚本操作的头节点。 值为 **hn0** 或 **hn1**，并且应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
+|-m、--machine | 指定要在其中运行脚本操作的头节点。 应根据活动头节点的情况选择值。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请谨慎使用此选项。* 建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |
 |-h、--help | 显示用法信息。 |
 
-该`print_usage()`脚本[的 ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) 节中提供了详细的参数说明。
+该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
 成功部署脚本操作后，可以使用 SSH 连接到目标 HBase 群集，并验证是否已复制数据。
 
@@ -356,7 +358,7 @@ sudo service bind9 status
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-该`print_usage()`脚本[的 ](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) 节中提供了详细的参数说明。
+该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
 ### <a name="scenarios"></a>方案
 
@@ -379,7 +381,7 @@ sudo service bind9 status
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-该`print_usage()`脚本[的 ](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) 节中提供了详细的参数说明。
+该[脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
 ### <a name="scenarios"></a>方案
 
