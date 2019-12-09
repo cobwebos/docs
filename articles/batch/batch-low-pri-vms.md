@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 12/05/2019
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39d332a6d069a4e9fac8545f4d08a986c8984c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095200"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926295"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -27,6 +27,14 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 使用低优先级虚拟机的代价是这些虚拟机可能不可用，并将其分配，或在任何时间，具体取决于可用的容量可能会被抢占。 出于此原因，低优先级 VM 最适合用于某些类型的工作负荷。 对于作业完成时间很灵活且工作分布在多个 VM 上的批处理和异步处理工作负荷，可以使用低优先级 VM。
  
 与专用 VM 相比，以显著低廉的价格提供低优先级 VM。 有关价格详细信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
+
+> [!NOTE]
+> [污点 vm](https://azure.microsoft.com/pricing/spot/)现在可用于[单实例 vm](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms)和[VM 规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)。 污点 Vm 是低优先级 Vm 的演变，但不同之处在于，在分配专色 Vm 时可以设置一个可选的最大价格。
+>
+> Azure Batch 池将开始2020的第一季度的点 Vm，并提供新版本的[批处理 api 和工具](https://docs.microsoft.com/azure/batch/batch-apis-tools)。 低优先级 Vm 将继续受到支持，使用最新的 API 和工具版本，至少需要12个月的时间，才能进行迁移来发现 Vm。 
+>
+> [云服务配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)池不支持污点 vm。 若要使用专色 Vm，需要将云服务池迁移到[虚拟机配置](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)池。
+
 
 ## <a name="use-cases-for-low-priority-vms"></a>低优先级 VM 的用例
 
@@ -42,11 +50,11 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负荷的�
 
 适合使用低优先级 VM 的批处理用例示例包括：
 
--   **开发和测试**：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
+-   开发和测试：具体而言，开发大规模解决方案时可以实现极大的节省。 所有类型的测试都可以受益，但大规模负载测试和回归测试可以获得极大的好处。
 
--   **补充按需容量**：低优先级 VM 可用于补充常规的专用 VM - 如果可用，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果不可用，则仍可遵循专用 VM 的基准。
+-   补充按需容量：低优先级 VM 可用于补充普通的专用 VM - 如果有可用的容量，则作业可以扩展，因而能够以更低的成本、更快的速度完成；如果没有可用的容量，则仍可遵循专用 VM 的基准。
 
--   **灵活的作业执行时间**：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
+-   灵活的作业执行时间：如果作业必须完成的时间比较灵活，则可以容忍潜在的容量下降；但是，增加的低优先级 VM 作业往往能够以更低的成本、更快的速度运行。
 
 可以根据作业执行时间的灵活度，通过多种方式将 Batch 池配置为使用低优先级 VM。
 
@@ -163,7 +171,7 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 -   池将不断地尝试用完低优先级节点的可用目标数量。 如果找到替代容量，节点将保留其 ID 但会被重新初始化，依次经历“正在创建”和“正在启动”状态，然后可供任务计划使用。
 -   Azure 门户以指标形式提供取代计数。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 [Azure 门户](https://portal.azure.com)提供了低优先级节点的新指标。 这些指标是：
 
@@ -183,3 +191,4 @@ VM 有时会被占用；如果发生占用情况，Batch 将执行以下操作�
 
 * 对于准备使用 Batch 的任何人，有必要阅读 [面向开发人员的 Batch 功能概述](batch-api-basics.md)了解基本信息。 本文中包含有关 Batch 服务资源（如池、节点、作业和任务）以及生成 Batch 应用程序时可以使用的许多 API 功能的更多详细信息。
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
+* 开始计划从低优先级 Vm 迁移到发现 Vm。 如果将低优先级 Vm 与**云服务配置**池一起使用，请计划迁移到**虚拟机配置**池。

@@ -1,20 +1,21 @@
 ---
-title: 在 Azure 数据工厂中映射数据流
+title: 映射数据流
 description: 在 Azure 数据工厂中映射数据流的概述
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/7/2019
-ms.openlocfilehash: ed2502ffebbacf5e66e3e4738e2e88ce7fb8a562
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681562"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928288"
 ---
-# <a name="what-are-mapping-data-flows"></a>什么是映射数据流？
+# <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。
 
@@ -34,7 +35,7 @@ ms.locfileid: "73681562"
 
 ![画布](media/data-flow/canvas1.png "画布")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>图形
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 "**添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
 
@@ -42,7 +43,7 @@ ms.locfileid: "73681562"
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 集成运行时数据流属性
 
-![调试按钮](media/data-flow/debugbutton.png "调试按钮")
+![调试按钮](media/data-flow/debugbutton.png "“调试”按钮")
 
 开始在 ADF 中处理数据流时，需要为浏览器 UI 顶部的数据流启用 "调试" 开关。 这会加速用于交互式调试、数据预览和管道调试执行的 Azure Databricks 群集。 可以通过选择自定义[Azure Integration Runtime](concepts-integration-runtime.md)来设置使用的群集的大小。 上次数据预览或上次调试管道执行后，调试会话将保持活动状态长达60分钟。
 
@@ -118,15 +119,15 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 生成一个表达式，该表达式为分区数据列中的值提供固定范围。 若要避免分区歪斜，应在使用此选项之前对数据有充分的了解。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
 
-##### <a name="key"></a>键
+##### <a name="key"></a>密钥
 
 如果您对数据的基数有充分了解，键分区可能是一个不错的策略。 键分区将为列中的每个唯一值创建分区。 不能设置分区数，因为数字将基于数据中的唯一值。
 
-#### <a name="inspect"></a>一下
+#### <a name="inspect"></a>检查
 
 "**检查**" 选项卡可用于查看要转换的数据流的元数据。 您可以查看列计数、更改的列、添加的列、数据类型、列排序和列引用。 **检查**是元数据的只读视图。 不需要启用调试模式即可在 "**检查**" 窗格中查看元数据。
 
-![一下](media/data-flow/inspect1.png "一下")
+![检查](media/data-flow/inspect1.png "检查")
 
 通过转换更改数据形状时，"**检查**" 窗格中会显示元数据更改流。 如果源转换中没有定义的架构，则元数据将不会显示在 "**检查**" 窗格中。 缺少元数据在架构偏移方案中很常见。
 
@@ -134,7 +135,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 如果调试模式为打开状态，则 "**数据预览**" 选项卡将在每次转换时提供数据的交互式快照。 有关详细信息，请参阅[调试模式下的数据预览](concepts-data-flow-debug-mode.md#data-preview)。
 
-### <a name="top-bar"></a>顶部栏
+### <a name="top-bar"></a>上栏
 
 顶部栏包含影响整个数据流的操作，如保存和验证。 还可以通过使用 "**显示关系图**" 和 "**隐藏关系**图" 按钮，在关系图和配置模式间切换。
 

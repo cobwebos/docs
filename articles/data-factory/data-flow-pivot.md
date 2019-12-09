@@ -1,17 +1,18 @@
 ---
-title: Azure 数据工厂映射数据流透视转换
+title: 映射数据流透视转换
 description: 使用 Azure 数据工厂映射数据流透视转换从行向列透视数据
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8f23b5e61e1aee83172a12466fac8d5b5003fea8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387799"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930290"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure 数据工厂透视转换
 

@@ -1,18 +1,20 @@
 ---
-title: 排查 Azure 数据工厂数据流问题
+title: 数据流故障排除
 description: 了解如何对 Azure 数据工厂中的数据流问题进行故障排除。
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721348"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930174"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>排查 Azure 数据工厂数据流问题
 
@@ -83,6 +85,14 @@ ms.locfileid: "73721348"
 - **原因**：从具有多个嵌套行上的单个文档的 JSON 源读取时，无法确定新文档的开始位置和上一个文档的结束位置。
 
 - **解决方法**：在使用 JSON 数据集的源转换上，展开 "JSON 设置" 并打开 "单一文档"。
+
+### <a name="error-message-duplicate-columns-found-in-join"></a>错误消息：联接中找到重复的列
+
+- **症状**：联接转换导致列的左侧和右侧都包含重复的列名称
+
+- **原因**：正在联接的流具有公用列名称
+
+- **解决方法**：在联接后添加 Select transforamtion，并针对输入和输出选择 "删除重复列"。
 
 
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南

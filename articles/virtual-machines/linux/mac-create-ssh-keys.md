@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035916"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930009"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
@@ -38,10 +38,10 @@ ms.locfileid: "74035916"
 
 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 ~/.ssh 目录中创建。 可以指定其他位置，以及访问私钥文件的密码 (passphrase)。 如果给定位置存在具有相同名称的 SSH 密钥对，则这些文件将被覆盖。
 
-以下命令使用 RSA 加密和 2048 位长度创建 SSH 密钥对：
+以下命令使用 RSA 加密创建 SSH 密钥对，并使用位长度4096：
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 密钥文件存储在 ~/.ssh 目录中，除非 `--ssh-dest-key-path` 选项另有规定。 `--generate-ssh-keys` 选项不会覆盖现有密钥文件，而是会返回错误。 在以下命令中，将 VMname 和 RGname 替换为你自己的值：
@@ -72,7 +72,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 如果复制和粘贴要在 Azure 门户或 Resource Manager 模板中使用的公钥文件的内容，请确保不复制尾随空格。 要在 macOS 中复制公钥，可以通过管道将公钥文件传递到 pbcopy。 与此类似，要在 Linux 中复制公钥，可以将公钥文件通过管道传递到 xclip 等程序。
 
-放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub，除非在创建密钥对时指定了其他位置。 要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过使用具有 [ 选项的 ](/cli/azure/vm#az-vm-create)az vm create`--ssh-key-value` 命令来指定此公钥的值或位置。 在以下命令中，将 VMname、RGname 和 keyFile 替换为你自己的值：
+放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub，除非在创建密钥对时指定了其他位置。 要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过使用具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm#az-vm-create) 命令来指定此公钥的值或位置。 在以下命令中，将 VMname、RGname 和 keyFile 替换为你自己的值：
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile

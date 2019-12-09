@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8820818528835df6379c894eb06c154f4120f507
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227304"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926002"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -24,13 +24,13 @@ ms.locfileid: "74227304"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 2.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
+## <a name="packages---functions-1x"></a>包 - Functions 2.x
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 1.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub 存储库中提供了此包的源代码。
 
@@ -48,9 +48,9 @@ ms.locfileid: "74227304"
 
 有关 HTTP 触发器示例，请参阅本文稍后介绍的[如何使用 HTTP 触发器](#use-an-http-trigger-as-an-event-grid-trigger)。
 
-### <a name="c-2x"></a>C# (2.x)
+### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 [ 的 Functions 2.x ](functions-dotnet-class-library.md)C# 函数`EventGridEvent`：
+以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -76,7 +76,7 @@ namespace Company.Function
 
 ### <a name="c-version-1x"></a>C#（版本 1.x）
 
-以下示例演示绑定到 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函数`JObject`：
+以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -101,9 +101,9 @@ namespace Company.Function
 
 ### <a name="c-script-example"></a>C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -118,9 +118,9 @@ namespace Company.Function
 }
 ```
 
-#### <a name="c-script-version-2x"></a>C# 脚本（版本 2.x）
+#### <a name="c-script-version-2x-and-higher"></a>C#脚本（版本2.x 和更高版本）
 
-下面是绑定到 `EventGridEvent` 的 Functions 2.x C# 脚本代码：
+下面是绑定到 `EventGridEvent`的示例：
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -153,9 +153,9 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 ### <a name="javascript-example"></a>JavaScript 示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -186,7 +186,7 @@ module.exports = function (context, eventGridEvent) {
 
 以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -293,7 +293,7 @@ public class EventSchema {
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-## <a name="attributes"></a>特性
+## <a name="attributes"></a>属性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) 特性。
 
@@ -311,22 +311,22 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |说明|
+|function.json 属性 |描述|
 |---------|---------|
-| **类型** | 必需 - 必须设置为 `eventGridTrigger`。 |
-| **direction** | 必需 - 必须设置为 `in`。 |
-| **名称** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| 类型 | 必需 - 必须设置为 `eventGridTrigger`。 |
+| direction | 必需 - 必须设置为 `in`。 |
+| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 的 C# 和 F# 函数中，还可以选择为事件网格触发器使用以下参数类型：
+对于C#和F# Azure Functions 1.x 和更高版本中的和函数，您还可以选择对事件网格触发器使用以下参数类型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
@@ -395,7 +395,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本2.x （及更高版本）运行时
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
@@ -407,7 +407,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 下面是一个订阅 Blob 存储帐户的示例（包含系统密钥的占位符）：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本2.x （及更高版本）运行时
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -435,7 +435,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 可以使用以下 API (HTTP GET) 获取系统密钥：
 
-#### <a name="version-2x-runtime"></a>2\.x 版运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本2.x （及更高版本）运行时
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -522,13 +522,13 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 对于 2.x，请使用以下模式：
+  * 对于2.x 和更高版本，请使用以下模式：
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 对于 1.x，请使用：
+  * 对于1.x 使用：
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -548,7 +548,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
 
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用 [ngrok](https://ngrok.com/) 等工具执行该操作：
+在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作：
 
 1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
 1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。
@@ -559,7 +559,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ### <a name="create-an-ngrok-endpoint"></a>创建 ngrok 终结点
 
-从 *ngrok* 下载 [ngrok.exe](https://ngrok.com/)，然后使用以下命令运行该工具：
+从 [ngrok](https://ngrok.com/) 下载 *ngrok.exe*，然后使用以下命令运行该工具：
 
 ```
 ngrok http -host-header=localhost 7071
@@ -591,7 +591,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 
 创建想要测试的类型的事件网格订阅，并在其中指定你的 ngrok 终结点。
 
-对于 Functions 2.x，请使用以下终结点模式：
+此终结点模式适用于函数1.x 和更高版本：
 
 ```
 https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}

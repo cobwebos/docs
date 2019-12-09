@@ -4,21 +4,20 @@ description: 本文介绍如何通过添加更多节点向外扩展数据管理�
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c3428019fe23e3f206e763249a18e7774bab149b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682704"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932031"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -166,7 +165,7 @@ ms.locfileid: "73682704"
   > [!NOTE]
   > 通过复制向导/Azure 门户安全设置凭据时，使用凭据管理器应用程序。 这可能是从与本地/专用数据存储位于同一网络的任何一台计算机触发。
 - 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 * **.domain.contoso.com** 作为证书的使用者名称。
-- 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
+- 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如， 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
 - 不支持使用 CNG 密钥的证书。
 
@@ -184,10 +183,10 @@ ms.locfileid: "73682704"
 
 可在“网关”页中启用“高级设置”以查看网络（进/出）、角色和凭据状态等高级指标，这有助于调试网关问题以及并发作业数（运行中/上限），可在性能优化期间相应地更改并发作业数。 下表介绍“网关节点”列表中的列：  
 
-监视属性 | 说明
+监视属性 | 描述
 :------------------ | :---------- 
-Name | 逻辑网关和与网关关联的节点的名称。  
-Status | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
+名称 | 逻辑网关和与网关关联的节点的名称。  
+状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
 版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。 
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。 
@@ -201,7 +200,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 下表提供网关节点可能的状态： 
 
-Status  | 注释/方案
+状态  | 注释/方案
 :------- | :------------------
 联机 | 节点连接到数据工厂服务。
 脱机 | 节点处于脱机状态。
@@ -212,7 +211,7 @@ Status  | 注释/方案
 
 下表提供逻辑网关可能的状态。 网关状态取决于网关节点的状态。 
 
-Status | 注释
+状态 | 注释
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
@@ -228,7 +227,7 @@ Azure 门户提供具有粒度节点级别详情的管道监视体验。 例如�
 
 ## <a name="scale-considerations"></a>扩展注意事项
 
-### <a name="scale-out"></a>向外扩展
+### <a name="scale-out"></a>横向扩展
 如果“可用内存较低”且“CPU 使用量较高”，添加新节点有助于跨计算机提高负载。 如果活动因超时或网关节点处于脱机状态而失败，则向网关添加节点会有所作用。
  
 ### <a name="scale-up"></a>纵向扩展

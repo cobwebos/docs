@@ -3,21 +3,21 @@ title: 从 Salesforce 营销云中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Salesforce Marketing Cloud 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.author: jingwang
-ms.openlocfilehash: e69bb4d72d1edfa359967fbbea84e23df26311fe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: aa996ae14276ecf246104d8778fbb6b723448e04
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895609"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931725"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
 

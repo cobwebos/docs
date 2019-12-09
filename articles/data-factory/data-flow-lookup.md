@@ -1,23 +1,24 @@
 ---
-title: Azure 数据工厂映射数据流查找转换
+title: 映射数据流查找转换
 description: Azure 数据工厂映射数据流查找转换
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/03/2019
-ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596579"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930320"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
 
 使用“查找”将其他源的参考数据添加到数据流中。 查找转换需要一个定义的源，它指向你的引用表并匹配关键字段。
 
-![查找转换](media/data-flow/lookup1.png "查找")
+![Lookup Transformation](media/data-flow/lookup1.png "查找")
 
 选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
 
@@ -27,7 +28,7 @@ ms.locfileid: "72596579"
 
 ## <a name="match--no-match"></a>匹配/不匹配
 
-进行查找转换后，可以使用 expression 函数 `isMatch()` 根据查找是否导致行匹配，来检查每个匹配行的结果，以检查每个匹配行的结果。
+进行查找转换后，可以使用 expression 函数通过使用 expression 函数来检查每个匹配行的结果，`isMatch()` 根据查找是否导致行匹配来进行更多的选择。
 
 ![查找模式](media/data-flow/lookup111.png "查找模式")
 

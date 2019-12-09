@@ -2,28 +2,24 @@
 title: 如何使 AppSource 通过 Azure Active Directory 的认证 | Microsoft Docs
 description: 详细说明如何使应用程序 AppSource 通过 Azure Active Directory 的认证。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.reviewer: andret
+ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 789b7d29673bca8a7703349ee46f4595fd24c2ea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374099"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917805"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 

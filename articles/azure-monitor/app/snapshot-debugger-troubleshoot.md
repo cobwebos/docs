@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 应用程序 Insights Snapshot Debugger 的问题 |Microsoft Docs
+title: 排查 Azure 应用程序 Insights Snapshot Debugger
 description: 本文介绍了疑难解答步骤和信息，以帮助在启用或使用 Application Insights Snapshot Debugger 时遇到问题的开发人员。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ec70f202a496ec368a483278994c7c5ccb24f40b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899829"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932088"
 ---
 # <a id="troubleshooting"></a>排查 Application Insights Snapshot Debugger 或查看快照时的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但没有看到用于例外的快照，则可以使用这些说明进行故障排除。 可能有许多不同的原因导致不生成快照。 可以运行快照运行状况检查来确定可能的一些常见原因。
@@ -36,12 +36,12 @@ ms.locfileid: "72899829"
 请确保在发布的应用程序中使用正确的检测密钥。 通常，从 ApplicationInsights.config 文件中读取检测密钥。 请验证该值是否与在门户中看到的 Application Insights 资源的检测密钥相同。
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core 的预览版本
-如果应用程序使用 .NET Core 的预览版本，并且通过门户中的 " [Application Insights" 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则 Snapshot Debugger 可能无法启动。 请按照 "[针对其他环境启用 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) " 中的说明，将[microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包***添加***到应用程序，并通过[Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+如果应用程序使用 .NET Core 的预览版本，并且通过门户中的 " [Application Insights" 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则 Snapshot Debugger 可能无法启动。 按照 "[启用其他环境的 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) " 中的说明操作，[将 microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包***添加***到应用程序，并通过 " [Application Insights" 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用。
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升级到最新版本的 NuGet 包
 
-如果 Snapshot Debugger 是通过[门户中](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的 "Application Insights" 窗格启用的，则应用程序应已在运行最新的 NuGet 包。 如果通过包括[Applicationinsights.config Microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) nuget 包启用了 Snapshot Debugger，请使用 Visual Studio 的 Nuget 包管理器来确保你使用的是最新版本的Applicationinsights.config. Microsoft.applicationinsights.snapshotcollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
+如果 Snapshot Debugger 是通过[门户中](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的 "Application Insights" 窗格启用的，则应用程序应已在运行最新的 NuGet 包。 如果通过包括[Applicationinsights.config Microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) nuget 包启用了 Snapshot Debugger，请使用 Visual Studio 的 Nuget 包管理器，以确保使用最新版本的 applicationinsights.config microsoft.applicationinsights.snapshotcollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
 
 ## <a name="check-the-uploader-logs"></a>检查上传程序日志
 

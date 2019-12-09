@@ -1,17 +1,18 @@
 ---
-title: Azure 数据工厂映射数据流表达式生成器
+title: 映射数据流表达式生成器
 description: 用于 Azure 数据工厂映射数据流的表达式生成器
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672271"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928340"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
 
@@ -50,6 +51,16 @@ ms.locfileid: "74672271"
 使用单行和多行注释语法将注释添加到表达式：
 
 ![注释](media/data-flow/comments.png "注释")
+
+## <a name="string-interpolation"></a>字符串内插
+
+使用双引号将文字字符串文本与表达式一起使用。 可以包括表达式函数、列和参数。 在查询字符串中包含参数时，此方法非常有用，可避免广泛使用字符串串联。
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 ## <a name="regular-expressions"></a>正则表达式
 

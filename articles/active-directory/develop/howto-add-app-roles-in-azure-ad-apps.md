@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 注册的应用中添加应用角色，并在令牌中接收这些角色
+title: 添加应用角色，并从令牌获取它们 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fca807913d2753828d55c095c1a3b380340fd95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843149"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917908"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 

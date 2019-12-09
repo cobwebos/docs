@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546352"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927864"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -159,14 +159,14 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 
 ### <a name="data-deduplication"></a>重复数据删除
 **Windows server 2016 和 Windows server 2019**   
-在 Windows Server 2016 上启用云分层的卷上支持重复数据删除。 启用启用了云分层的卷上的重复数据删除可让你在本地缓存更多文件，而无需预配更多存储。 
+Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 启用启用了云分层的卷上的重复数据删除可让你在本地缓存更多文件，而无需预配更多存储。 
 
 在启用了云分层的卷上启用重复数据删除时，将根据云分层策略设置，将服务器终结点位置中的重复数据删除优化后的文件与普通文件类似。 将重复数据删除优化文件分层后，重复数据删除垃圾回收作业将自动运行，以通过删除卷上的其他文件不再引用的不必要的区块来回收磁盘空间。
 
 请注意，卷节省仅适用于服务器;Azure 文件共享中的数据将不会被重复数据。
 
 > [!Note]  
-> 由于将在将来的更新中修复的 bug，当前不支持在服务器2019上的同一卷上进行重复数据删除和云分层。
+> 若要支持在 Windows Server 2019 上启用云分层的卷上的重复数据删除，则必须安装 Windows update [KB4520062](https://support.microsoft.com/help/4520062) ，并要求 Azure 文件同步代理版本9.0.0.0 或更新版本。
 
 **Windows Server 2012 R2**  
 Azure 文件同步不支持在 Windows Server 2012 R2 上的同一卷上进行重复数据删除和云分层。 如果在卷上启用了重复数据删除，则必须禁用云分层。 
@@ -176,7 +176,7 @@ Azure 文件同步不支持在 Windows Server 2012 R2 上的同一卷上进行�
 - 如果在启用云分层之后在卷上启用了重复数据删除，则初始重复数据删除优化作业将优化尚未分层的卷上的文件，并将对云分层产生以下影响：
     - 可用空间策略将根据卷上的可用空间，使用热度地图继续对文件进行分层。
     - 由于对文件进行重复数据删除优化作业，日期策略将跳过可能已有资格进行分层的文件分层。
-- 对于正在进行的重复[数据删除优化](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)作业，如果尚未对文件进行分层，则使用日期策略的云分层将会延迟。 
+- 对于正在进行的重复数据删除优化作业, 如果尚未对文件进行分层, 则使用日期策略[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)的云分层将会延迟。 
     - 示例：如果 MinimumFileAgeDays 设置为7天，而云分层日期策略为30天，则日期策略将在37天后对文件进行分级。
     - 注意：按 Azure 文件同步对文件进行分层后，重复数据删除优化作业将跳过该文件。
 - 如果运行 Windows Server 2012 R2 的服务器将安装 Azure 文件同步代理升级到 Windows Server 2016 或 Windows Server 2019，则必须执行以下步骤以支持在同一卷上进行重复数据删除和云分层：  

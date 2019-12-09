@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的可配置令牌生存期
+title: 可配置 Azure AD 令牌生存期
 titleSuffix: Microsoft identity platform
 description: 了解如何设置 Azure AD 颁发的令牌的生存期。
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5abd6928ed92b80caabe71dd27dc2db2e53b1abf
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845240"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918383"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 

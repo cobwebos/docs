@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 中配置企业应用程序的角色声明
+title: 配置企业 Azure AD 应用的角色声明 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 services: active-directory
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4657a69347eb2294877e6bd2d7de8e41c0c2ef26
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 702c64fbc4eda2af7132a2117c1b09ca0bf41cff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918587"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 

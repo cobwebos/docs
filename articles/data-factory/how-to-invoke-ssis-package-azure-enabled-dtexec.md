@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/21/2019
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673559"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931704"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>通过启用了 Azure 的 dtexec 实用工具运行 SQL Server Integration Services 包
 本文介绍了支持 Azure 的 dtexec （AzureDTExec）命令提示实用工具。 它用于在 Azure 数据工厂中的 Azure-SSIS Integration Runtime （IR）上运行 SQL Server Integration Services （SSIS）包。
@@ -30,8 +29,8 @@ AzureDTExec 在数据工厂管道中将包作为 "执行 SSIS 包" 活动运行�
 
 可以通过 SSMS 配置 AzureDTExec，以使用在数据工厂中生成管道的 Azure Active Directory （Azure AD）应用程序。 还可将其配置为访问存储包的文件系统、文件共享或 Azure 文件。 根据为其调用选项提供的值，AzureDTExec 将生成并运行一个具有 "执行 SSIS 包" 活动的唯一数据工厂管道。 对其选项调用具有相同值的 AzureDTExec 会重新运行现有管道。
 
-## <a name="prerequisites"></a>先决条件
-若要使用 AzureDTExec，请下载并安装最新版本的 SSMS，它是版本18.3 或更高版本。 从此[网站](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)下载。
+## <a name="prerequisites"></a>必备组件
+若要使用 AzureDTExec，请下载并安装最新版本的 SSMS，它是版本18.3 或更高版本。 从[此网站](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)下载它。
 
 ## <a name="configure-the-azuredtexec-utility"></a>配置 AzureDTExec 实用工具
 在本地计算机上安装 SSMS 还会安装 AzureDTExec。 若要配置其设置，请通过 "以**管理员身份运行**" 选项启动 SSMS。 然后选择 "**工具**" > **迁移到 azure** > **配置启用了 azure 的 DTExec**。
@@ -80,7 +79,7 @@ AzureDTExec 在数据工厂管道中将包作为 "执行 SSIS 包" 活动运行�
   /De MyEncryptionPassword
 ```
 
-调用 AzureDTExec 提供类似于调用 dtexec 的选项。 有关详细信息，请参阅[Dtexec 实用工具](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)。 以下是当前支持的选项：
+调用 AzureDTExec 提供类似于调用 dtexec 的选项。 有关详细信息，请参阅 [dtexec Utility](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)。 以下是当前支持的选项：
 
 - **/F [ile]** ：加载存储在文件系统、文件共享或 Azure 文件中的包。 作为此选项的值，你可以在文件系统、文件共享或 Azure 文件中为包文件指定 UNC 路径，扩展名为 .dtsx。 如果指定的 UNC 路径包含任何空格，请在整个路径的两侧加上引号。
 - **/Conf [igFile]** ：指定要从中提取值的配置文件。 使用此选项，可以为包设置与设计时指定的配置不同的运行时配置。 您可以在 XML 配置文件中存储不同的设置，然后在执行包之前加载这些设置。 有关详细信息，请参阅[SSIS 包配置](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)。 若要指定此选项的值，请将文件系统、文件共享或 Azure 文件中的配置文件的 UNC 路径用于其 Datatransferconfig.dtsconfig 扩展。 如果指定的 UNC 路径包含任何空格，请在整个路径的两侧加上引号。

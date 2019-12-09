@@ -1,5 +1,5 @@
 ---
-title: 在映射数据流功能中设置接收器转换
+title: 在映射数据流中设置接收器转换
 description: 了解如何在映射数据流中设置接收器转换。
 author: kromerm
 ms.author: makromer
@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217927"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930274"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
 
@@ -27,7 +27,7 @@ ms.locfileid: "74217927"
 
 !["映射" 选项卡上的选项](media/data-flow/sink2.png "接收器2")
 
-## <a name="output"></a>Output 
+## <a name="output"></a>输出 
 对于 Azure Blob 存储或 Data Lake Storage 接收器类型，将转换后的数据输出到文件夹中。 Spark 根据接收器转换使用的分区方案生成已分区的输出数据文件。 
 
 可以从 "**优化**" 选项卡设置分区方案。如果希望数据工厂将输出合并到单个文件中，请选择 "**单一分区**"。 如果要维护或创建分区文件夹，请使用**键分区**，并设置要用于分区文件夹结构的键。
@@ -112,7 +112,7 @@ ms.locfileid: "74217927"
 
 当 CosmosDB 中的登陆数据时，需要考虑以下附加选项：
 
-* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例：```/movies/title```
+* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
 * 吞吐量：为此数据流的每次执行，设置要应用于 CosmosDB 集合的 ru 数的可选值。 最小值为400。
 
 ## <a name="next-steps"></a>后续步骤

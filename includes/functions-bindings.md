@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ac6b86b4ad8830bd08c9db28ac0027a5f048c3dd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597401"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935787"
 ---
-下表显示了 Azure Functions 运行时的两个主要版本中支持的绑定：
+下表显示了在 Azure Functions 运行时的主要版本中受支持的绑定：
 
-| Type | 1.x | 2.x<sup>1</sup> | 触发器 | 输入 | 输出 |
+| Type | 1.x | 2.x 和更高版本<sup>1</sup> | 触发器 | 输入 | 输出 |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob 存储](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
@@ -24,7 +24,7 @@ ms.locfileid: "72597401"
 | [Microsoft Graph<br/>Excel 表](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
 | [Microsoft Graph<br/>OneDrive 文件](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
 | [Microsoft Graph<br/>Outlook 电子邮件](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [Microsoft Graph <br/>events](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
+| [Microsoft Graph<br/>事件](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
 | [Microsoft Graph<br/>身份验证令牌](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
 | [移动应用](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [通知中心](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
@@ -36,4 +36,4 @@ ms.locfileid: "72597401"
 | [计时器](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup>在版本2.x 运行时中，HTTP 和计时器除外的所有绑定都必须进行注册。 请参阅[注册绑定扩展](../articles/azure-functions/functions-bindings-register.md)。 除另有说明外，所有受支持的2.x 绑定在版本3.x 中也受支持。   
+<sup>1</sup>从版本2.x 运行时开始，除 HTTP 和计时器之外的所有绑定都必须进行注册。 请参阅[注册绑定扩展](../articles/azure-functions/functions-bindings-register.md)。

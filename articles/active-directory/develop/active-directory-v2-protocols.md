@@ -1,5 +1,5 @@
 ---
-title: 了解 Microsoft 标识平台支持的授权协议 |Microsoft
+title: Microsoft 标识平台支持的授权协议 |Microsoft
 description: Microsoft 标识平台终结点支持的 OAuth 2.0 和 OpenID Connect 协议的指南。
 services: active-directory
 author: rwike77
@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2b4d5da2cdda35de0adc5dc646065f2b64a41
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844696"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918282"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
 

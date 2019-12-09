@@ -1,18 +1,19 @@
 ---
-title: Azure 数据工厂映射数据流中的联接转换
+title: 映射数据流中的联接转换
 description: 使用 Azure 数据工厂映射数据流中的联接转换合并两个数据源中的数据
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/17/2019
-ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122923"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930341"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>映射数据流中的联接转换
 

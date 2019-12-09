@@ -1,30 +1,26 @@
 ---
-title: 如何构建可让任何 Azure AD 用户登录的应用
+title: 生成 Azure AD 用户登录的应用
 titleSuffix: Microsoft identity platform
 description: 演示如何生成一个多租户应用程序，该应用程序可从任何 Azure Active Directory 租户登录用户。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f31e0254ad4963ce6946a108d84c97027f30b
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803935"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917771"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -46,7 +42,7 @@ ms.locfileid: "72803935"
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
 
-Azure AD 中的 Web 应用/API 注册默认为单租户。 可以通过在[Azure 门户][AZURE-portal]中的应用程序注册的 "**身份验证**" 窗格中找到 "**支持的帐户类型**" 开关并将其设置为**任何组织中的帐户来使注册成为多租户注册。目录**。
+Azure AD 中的 Web 应用/API 注册默认为单租户。 你可以通过在[Azure 门户][AZURE-portal]中的应用程序注册的 "**身份验证**" 窗格中找到 "**支持的帐户类型**" 开关并将其设置为**任何组织目录中的帐户**来使注册成为多租户。
 
 在将某个应用程序转换为多租户之前，Azure AD 要求该应用程序的应用 ID URI 全局唯一。 应用 ID URI 是在协议消息中标识应用程序的方式之一。 就单租户应用程序而言，应用 ID URI 在该租户中保持唯一便已足够。 就多租户应用程序而言，该 URI 必须全局唯一，以便 Azure AD 能够在所有租户中找到该应用程序。 系统通过要求应用 ID URI 必须具有与已验证 Azure AD 租户域匹配的主机名，来强制实施全局唯一性。
 

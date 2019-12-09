@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2ec8e2cc09b6deb236bd83cb5cca99fead97279
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683231"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930121"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure 数据工厂复制向导
 > [!NOTE]
@@ -75,7 +74,7 @@ Azure 数据工厂复制向导可简化数据引入过程，这通常是端到�
     2016/03/01/03
     ...
 
-单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 应该会在文本框中看到 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016**、 **{month}** 代替 **03**、 **{day}** 代替 **01**、 **{hour}** 代替 **02**，并按 **Tab** 键。 可以看到用于选择这四个变量格式的下拉列表：
+单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 文本框中应该会显示 `2016/03/01/02`。 现在，请用 **{year}** 代替 **2016**、 **{month}** 代替 **03**、 **{day}** 代替 **01**、 **{hour}** 代替 **02**，并按 **Tab** 键。 可以看到用于选择这四个变量格式的下拉列表：
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

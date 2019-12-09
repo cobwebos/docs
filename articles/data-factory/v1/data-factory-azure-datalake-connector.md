@@ -4,21 +4,20 @@ description: 了解如何使用 Azure 数据工厂向/从 Data Lake Store 复制
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4cafc9cf67255d44e5c89947f3da8a7b7b3e4b5f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683180"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930095"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -49,7 +48,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 建议使用服务主体身份验证，特别是在进行已计划的数据复制时。 使用用户凭据身份验证时可能会出现令牌过期行为。 有关配置详细信息，请参阅[链接服务属性](#linked-service-properties)部分。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始体验
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure Data Lake Store。
 
 通过创建管道来复制数据的最简单方法是使用**复制向导**。 有关使用复制向导创建管道的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
@@ -59,9 +58,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建**链接服务**可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
-2. 创建**数据集**以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-3. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
+2. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-data-lake-store)部分。
 
@@ -70,9 +69,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AzureDataLakeStore** 类型的链接服务，以便将 Data Lake Store 数据链接到数据工厂。 下表描述了特定于 Data Lake Store 链接服务的 JSON 元素。 可以选择服务主体身份验证或用户凭据身份验证。
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
-| **type** | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
+| 类型 | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | **dataLakeStoreUri** | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
 | **subscriptionId** | Data Lake Store 帐户所属的 Azure 订阅 ID。 | 接收器所需 |
 | **resourceGroupName** | Data Lake Store 帐户所属的 Azure 资源组名称。 | 接收器所需 |
@@ -91,7 +90,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
@@ -118,9 +117,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 或者，通过指定以下属性，可使用用户凭据身份验证向/从 Data Lake Store 进行复制：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
-| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **授权** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
 > [!IMPORTANT]
@@ -187,7 +186,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-有关代码中使用的数据工厂类的详细信息，请参阅以下主题：[AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)。 为代码中使用的 `2.9.10826.1824` 类添加对 `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` 版本 `WindowsFormsWebAuthenticationDialog` 的引用。
+有关代码中使用的数据工厂类的详细信息，请参阅以下主题：[AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)。 为代码中使用的 `WindowsFormsWebAuthenticationDialog` 类添加对 `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` 版本 `2.9.10826.1824` 的引用。
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
@@ -204,7 +203,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **解决方法：**
 
-1. 请确保你的 data lake 帐户确实属于链接的服务 `subscriptionId` 中指定的 `resourceGroupName` 和 `typeProperties`。
+1. 请确保你的 data lake 帐户确实属于链接的服务 `typeProperties` 中指定的 `subscriptionId` 和 `resourceGroupName`。
 
 2. 请确保至少向用户或 data lake 帐户上的服务主体授予“读者”的角色。 以下为具体操作：
 
@@ -237,19 +236,19 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStore** 类型的数据集的 **typeProperties** 节包含以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store 中容器和文件夹的路径。 |是 |
-| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>如果没有为输出数据集指定**fileName** ，并且没有在活动接收器中指定**preserveHierarchy** ，则生成的文件的名称将采用格式 `Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
-| **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅“partitionedBy 属性”。 |否 |
-| **format** | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#text-format)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#json-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#orc-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |否 |
-| **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>如果没有为输出数据集指定**fileName** ，并且没有在活动接收器中指定**preserveHierarchy** ，则生成的文件的名称将采用格式 `Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |No |
+| **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅“partitionedBy 属性”。 |No |
+| **format** | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |No |
+| **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |No |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy 属性
 可以使用 **partitionedBy** 属性、数据工厂函数和系统变量指定时序数据的动态 **folderPath** 和 **fileName** 属性。 有关详细信息，请参阅 [Azure 数据工厂 — 函数和系统变量](data-factory-functions-variables.md)一文。
 
 
-在下面的示例中，`{Slice}` 已替换为数据工厂系统变量 `SliceStart` 的值（使用指定格式 `yyyyMMddHH`）。 名称 `SliceStart` 指切片开始时间。 每个切片（比如在 `folderPath` 或 `wikidatagateway/wikisampledataout/2014100103` 中）的 `wikidatagateway/wikisampledataout/2014100104` 属性均不同。
+在下面的示例中，`{Slice}` 已替换为数据工厂系统变量 `SliceStart` 的值（使用指定格式 `yyyyMMddHH`）。 名称 `SliceStart` 指切片开始时间。 每个切片（比如在 `wikidatagateway/wikisampledataout/2014100103` 或 `wikidatagateway/wikisampledataout/2014100104` 中）的 `folderPath` 属性均不同。
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -281,24 +280,24 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStoreSource** 支持 **typeProperties** 节中的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| **recursive** |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
+| **recursive** |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |No |
 
 **AzureDataLakeStoreSink** 支持 **typeProperties** 节中的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| **copyBehavior** |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，会自动生成文件名。 |否 |
+| **copyBehavior** |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，会自动生成文件名。 |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursive 和 copyBehavior 示例
 本节介绍了将 recursive 和 copyBehavior 值进行不同组合所产生的复制操作行为。
 
 | recursive | copyBehavior | 产生的行为 |
 | --- | --- | --- |
-| true |preserveHierarchy |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用与源相同的结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5。 |
-| true |flattenHierarchy |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成名称 |
-| true |mergeFiles |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File 5 的内容将合并到一个文件中，且自动生成文件名 |
+| 是 |preserveHierarchy |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用与源相同的结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5。 |
+| 是 |flattenHierarchy |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成名称 |
+| 是 |mergeFiles |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File 5 的内容将合并到一个文件中，且自动生成文件名 |
 | false |preserveHierarchy |对于具有以下结构的源文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
 | false |flattenHierarchy |对于具有以下结构的源文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成名称<br/><br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
 | false |mergeFiles |对于具有以下结构的源文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>使用以下结构创建目标文件夹 Folder1<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 的内容将合并到一个文件中，且自动生成文件名。 File1 的自动生成名称<br/><br/>不会选取包含 File3、File4 和 File5 的 Subfolder1。 |
@@ -314,8 +313,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 * [AzureDataLakeStore](#linked-service-properties) 类型的链接服务。
-* [AzureBlob](data-factory-create-datasets.md) 类型的输入[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
-* [AzureDataLakeStore](data-factory-create-datasets.md) 类型的输出[数据集](#dataset-properties)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
+* [AzureDataLakeStore](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [AzureDataLakeStoreSink](#copy-activity-properties)。
 
 以下示例每隔一小时将时序数据从 Azure Blob 存储复制到 Data Lake Store。
@@ -498,8 +497,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 * [AzureDataLakeStore](#linked-service-properties) 类型的链接服务。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-* [AzureDataLakeStore](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
-* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
+* [AzureDataLakeStore](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [AzureDataLakeStoreSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 此代码每隔一小时将时序数据从 Data Lake Store 复制到 Azure Blob。
@@ -575,7 +574,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 **Azure Blob 输出数据集**
 
-在下面的示例中，数据写入到新 Blob，每隔一小时进行一次 (`"frequency": "Hour", "interval": 1`)。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+在下面的示例中，数据写入到新 Blob，每隔一小时进行一次 (`"frequency": "Hour", "interval": 1`)。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {

@@ -4,12 +4,13 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 23b10bed3b741ec76167eb5a976bf5737d20b173
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.service: backup
+ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894005"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928243"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -25,8 +26,8 @@ ms.locfileid: "74894005"
 Azure VM 代理可能已停止、过时、处于不一致的状态，或者未安装并且阻止 Azure 备份服务触发快照。
 
 - **打开 Azure 门户 > VM > 设置 "> 属性" 边栏选项 > 卡**，确保 vm**状态**为 "**正在运行**" 且**代理状态**为 "**就绪**"。 如果 VM 代理已停止或处于不一致的状态，请重新启动该代理<br>
-  - 对于 Windows Vm，请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重启来宾代理。<br>
-  - 对于 Linux Vm，请遵循以下[步骤](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重启来宾代理。
+  - 对于 Windows Vm，请按照以下[步骤](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重启来宾代理。<br>
+  - 对于 Linux Vm，请遵循以下[步骤](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重启来宾代理。
 
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态

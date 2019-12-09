@@ -4,7 +4,7 @@ description: 本文介绍如何使用存储过程活动在 Azure 数据工厂管
 services: data-factory
 documentationcenter: ''
 author: swinarko
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
@@ -13,19 +13,19 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 3bfef0d787d8289055ab80e2ac30408dd7a13fb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673764"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932114"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-### <a name="azure-sql-database"></a>Azure SQL 数据库 
+### <a name="azure-sql-database"></a>Azure SQL Database 
 本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 数据库托管实例。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
@@ -49,7 +49,7 @@ ms.locfileid: "73673764"
    Azure 数据工厂的名称必须 **全局唯一**。 如果看到名称字段的以下错误，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
      ![名称不可用 - 错误](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
-3. 选择要在其中创建数据工厂的 Azure 订阅。 
+3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于**资源组**，请执行以下步骤之一：
      
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
@@ -63,7 +63,7 @@ ms.locfileid: "73673764"
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
      ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
      ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。 
@@ -80,10 +80,10 @@ ms.locfileid: "73673764"
 3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 与托管 SSIS 目录（SSIDB 数据库）的 Azure SQL 数据库建立连接。 
    
     ![“新建链接服务”按钮](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
-4. 在“新建链接服务”窗口中执行以下步骤： 
+4. 在“新建链接服务”窗口中，执行以下步骤： 
 
     1. 选择“Azure SQL 数据库”作为“类型”。
-    2. 选择默认的 Azure 集成运行时连接到托管  **数据库的 Azure SQL 数据库**`SSISDB`。
+    2. 选择默认的 Azure 集成运行时连接到托管 `SSISDB` 数据库的 Azure SQL 数据库。
     3. 在“服务器名称”字段中，选择托管 SSISDB 数据库的 Azure SQL 数据库。
     4. 选择“SSISDB”作为“数据库名称”。
     5. 对于“用户名”，输入有权访问数据库的用户的名称。
@@ -182,7 +182,7 @@ ms.locfileid: "73673764"
     $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName -Location $ResGrp.Location -Name $dataFactoryName 
     ```
 
-请注意以下几点：
+注意以下几点：
 
 * Azure 数据工厂的名称必须是全局唯一的。 如果收到以下错误，请更改名称并重试。
 
@@ -275,7 +275,7 @@ ms.locfileid: "73673764"
     ```
 
 ### <a name="create-a-pipeline-run"></a>创建管道运行
-使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行该管道。 此 cmdlet 返回管道运行 ID，用于将来的监视。
+使用**AzDataFactoryV2Pipeline** cmdlet 运行管道。 此 cmdlet 返回管道运行 ID，用于将来的监视。
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name
@@ -332,17 +332,17 @@ while ($True) {
     }    
     ```
 2. 在 Azure PowerShell 中，切换到 C:\ADF\RunSSISPackage 文件夹。
-3. 运行 **Set-AzDataFactoryV2Trigger** cmdlet，以创建触发器。 
+3. 运行 AzDataFactoryV2Trigger cmdlet，这**将**创建触发器。 
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
     ```
-4. 默认情况下，触发器处于停止状态。 运行 **Start-AzDataFactoryV2Trigger** cmdlet 以启动该触发器。 
+4. 默认情况下，触发器处于停止状态。 通过运行**AzDataFactoryV2Trigger** cmdlet 来启动触发器。 
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" 
     ```
-5. 通过运行 **Get-AzDataFactoryV2Trigger** cmdlet 确认该触发器已启动。 
+5. 通过运行**AzDataFactoryV2Trigger** cmdlet 确定触发器是否已启动。 
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"     

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2a3bdeb0ee454185c92c6e49a17bda7e4e5d5f0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083587"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931975"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
 
@@ -20,7 +20,7 @@ ms.locfileid: "74083587"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure 资源管理器模板](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -35,20 +35,7 @@ ms.locfileid: "74083587"
 
 ## <a name="before-you-begin"></a>开始之前
 
-安装最新版本的 Azure 服务管理 (SM) PowerShell 模块和 ExpressRoute 模块。 不能使用 Azure CloudShell 环境来运行 SM 模块。
-
-1. 按照安装[服务管理模块](/powershell/azure/servicemanagement/install-azure-ps)一文中的说明安装 Azure 服务管理模块。 如果已安装 Az 或 RM 模块，请确保使用 "-AllowClobber"。
-2. 导入已安装的模块。 使用以下示例时，请调整路径以反映已安装的 PowerShell 模块的位置。
-
-   ```powershell
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
-   ```
-3. 若要登录到 Azure 帐户，请打开具有提升权限的 PowerShell 控制台，并连接到你的帐户。 使用以下示例来帮助你使用服务管理模块进行连接：
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>获取线路的状态
 
@@ -106,7 +93,7 @@ get-help get-azurededicatedcircuit -detailed
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
 * 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用“允许经典操作”。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
@@ -144,7 +131,7 @@ Status                           : Enabled
 
 #### <a name="to-disable-the-premium-add-on"></a>禁用高级外接程序
 
-可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级外接程序：
+可以使用以下 PowerShell cmdlet 为现有线路禁用 ExpressRoute 高级版外接程序：
 
 ```powershell
 
@@ -173,7 +160,7 @@ Status                           : Enabled
 
 #### <a name="resize-a-circuit"></a>调整线路大小
 
-确定所需的大小后，可以使用以下命令调整线路的大小：
+确定所需的大小后，即可使用以下命令调整线路的大小：
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000

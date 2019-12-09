@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1763b8d6402a6093499f1f06253fe4c7502255
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 54c51a10f950fb5381ab29968a866772dcaec78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842772"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917993"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -42,6 +42,10 @@ ms.locfileid: "74842772"
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保险存储以使单一登录能够按预期方式工作。
 - 你需要一个永久帐户来测试至少注册了两个用户。
 
+**如何为开发人员获取 Azure AD？**
+
+你可以获取免费的测试帐户，其中包含所有高级 Azure AD 功能-90 天免费版，只要你使用它执行开发工作，就可以扩展： https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 
 在测试应用程序集成是否适用于 Azure AD 后，请在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交你的访问请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用您的 Microsoft 帐户（例如 Outlook 或 Hotmail）登录。
@@ -59,6 +63,26 @@ ms.locfileid: "74842772"
 我们的团队将审核详细信息并相应地为你提供访问权限。 批准请求后，可以通过在主页上选择 "**提交请求（ISV）** " 磁贴来登录到门户并提交请求。
 
 ![主页上的提交请求（ISV）磁贴](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>登录到门户的问题
+
+如果在登录时看到此错误，请参阅此问题的详细信息，这是解决该问题的方法。
+
+* 如果登录被阻止，如下所示：
+
+  ![解决库中的应用程序问题](./media/howto-app-gallery-listing/blocked.png)
+
+**发生了什么事情：**
+
+来宾用户与家庭租户联合，这也是 Azure AD。 来宾用户处于高风险状态。 Microsoft 不允许高风险用户访问其资源。 所有高风险用户（员工或来宾/供应商）必须修正/关闭他们访问 Microsoft 资源的风险。 对于来宾用户，此用户面临的风险来自于 home 租户，而策略来自资源租户（在本例中为 Microsoft）。
+ 
+**安全解决方案：**
+
+* MFA 注册的来宾用户修正其自己的用户风险。 这可以由来宾用户执行安全的密码更改或重置（ https://aka.ms/sspr) 在其主租户上，这需要在家庭租户上进行 MFA 和 SSPR）。 必须在 Azure AD 而不是本地上启动安全密码更改或重置。
+
+* 来宾用户的管理员可以纠正他们的风险。 在这种情况下，管理员将执行密码重置（临时密码生成）。 这不需要 Identity Protection。 来宾用户的管理员可以前往 https://aka.ms/RiskyUsers 并单击 "重置密码"。
+
+* 来宾用户的管理员需要关闭/消除其风险。 同样，这不需要 Identity Protection。 管理员可以 https://aka.ms/RiskyUsers ，然后单击 "消除用户风险"。 但是，管理员必须执行 "截止努力"，以确保在关闭用户风险之前，这是误报风险评估。 否则，他们会通过抑制风险评估而不进行调查，使其和 Microsoft 的资源面临风险。
 
 > [!NOTE]
 > 如果访问有任何问题，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
@@ -79,6 +103,7 @@ ms.locfileid: "74842772"
   ![在库中列出 SAML 2.0 或 WS 进纸应用程序](./media/howto-app-gallery-listing/saml.png)
 
   * 如果要使用**SAML 2.0**或**ws-addressing**将应用程序添加到库中，请选择 " **saml 2.0/ws-** 已显示"。
+
   * 如果访问有任何问题，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>使用密码 SSO 实现 SSO

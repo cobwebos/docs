@@ -1,18 +1,19 @@
 ---
-title: Azure 数据工厂映射数据流中的筛选转换
+title: 映射数据流中的筛选转换
 description: 使用 Azure 数据工厂映射数据流中的筛选器转换筛选出行
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 1daff431fc217c08f3bc3c5aeb3b4711691909c0
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 84b935d1646ea4f13d5926fc68797fd8efd03dea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132535"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930360"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>映射数据流中的筛选转换
 

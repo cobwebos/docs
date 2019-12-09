@@ -1,27 +1,26 @@
 ---
-title: 使用 Azure 数据工厂从 ServiceNow 复制数据
+title: 从 ServiceNow 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 ServiceNow 复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.author: jingwang
-ms.openlocfilehash: 933b12f852fcbcc20e50f3c89d597bbe6b84bd8e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dabcc5afe4a092e4919c854071a698c6e6ebf0b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680217"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926170"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 ServiceNow 复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 ServiceNow 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -44,18 +43,18 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ServiceNow 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：“ServiceNow” | 是 |
 | endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
-| authenticationType | 可使用的身份验证类型。 <br/>允许的值是：Basic、OAuth2 | 是 |
+| authenticationType | 要使用的身份验证类型。 <br/>允许的值是：Basic、OAuth2 | 是 |
 | username | 用户名用于连接到 ServiceNow 服务器，进行基本和 OAuth2 身份验证。  | 是 |
 | password | 基本和 OAuth2 身份验证的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| clientId | OAuth2 身份验证的客户端 ID。  | 否 |
-| clientSecret | OAuth2 身份验证的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
+| clientId | OAuth2 身份验证的客户端 ID。  | No |
+| clientSecret | OAuth2 身份验证的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | No |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | No |
+| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | No |
+| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | No |
 
 **示例：**
 
@@ -83,7 +82,7 @@ ServiceNow 链接服务支持以下属性：
 
 要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **ServiceNowObject** | 是 |
 | tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
@@ -107,20 +106,20 @@ ServiceNow 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ServiceNow 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ServiceNow 源支持的属性列表。
 
 ### <a name="servicenow-as-source"></a>以 ServiceNow 作为源
 
-要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动**源**部分支持以下属性：
+要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：ServiceNowSource | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 否（如果指定了数据集中的“tableName”） |
 
-在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的**性能提示[](#performance-tips)** 。
+在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)。
 
-- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 `sysparm_display_value`ServiceNow restful API[ 时可以将其视为参数 ](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)，其值为 true 或 false。 
+- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
 - **列：** `Actual` 架构下实际值的列名是 `[column name]_value`，而 `Display` 架构下显示值的列名为 `[column name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：** 
@@ -170,9 +169,9 @@ ServiceNow 有 2 个不同的架构，一个是“实际”，返回实际数据
 
 ServiceNow 表索引有助于提高查询性能，请参阅[创建表索引](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)。
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

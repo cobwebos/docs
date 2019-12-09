@@ -1,22 +1,24 @@
 ---
 title: 在 Azure Blob 存储中复制和转换数据
 description: 了解如何使用数据工厂将数据复制到 Blob 存储，以及如何转换 Blob 存储中的数据。
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 9116fca28c48803db613eb36fbbbbf4223e6abcb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3c6b6a403919c3545ec000a701ff31044343f73e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891110"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929951"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
+
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-blob-connector.md)
 > * [当前版本](connector-azure-blob-storage.md)

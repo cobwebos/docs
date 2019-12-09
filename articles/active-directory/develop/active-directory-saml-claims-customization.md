@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 中自定义企业应用的 SAML 令牌声明
+title: 自定义 Azure AD 应用 SAML 令牌声明
 titleSuffix: Microsoft identity platform
 description: 了解如何为 Azure AD 中的企业应用程序自定义 SAML 令牌中颁发的声明。
 services: active-directory
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5e9dd48695ab28879b151c4b3a37b72c551f9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 14e1a466902ccb47d57e5f9590ba94bf08c76ec5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844781"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918434"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 

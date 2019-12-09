@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0659e57f5a5b223c199becf492b27c7a70cbdc63
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4532f31eb4a5ed7f2f0ad76f01fdc082421c0c2d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612005"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935867"
 ---
 默认情况下，在将数据保存到云时，Azure 托管磁盘会自动加密数据。 服务器端加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。 Azure 托管磁盘中的数据以透明方式使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强阻止密码之一）进行加密，且符合 FIPS 140-2。   
 
@@ -25,7 +25,7 @@ ms.locfileid: "73612005"
 
 你可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥（公共预览版）管理加密。 如果选择使用自己的密钥管理加密，则可以指定*客户托管的密钥*，用于加密和解密托管磁盘中的所有数据。 
 
-以下部分更详细地介绍了每个密钥管理选项。
+以下部分更详细地介绍了密钥管理的每个选项。
 
 ## <a name="platform-managed-keys"></a>平台托管密钥
 
@@ -40,7 +40,7 @@ ms.locfileid: "73612005"
 ![托管磁盘客户管理的密钥工作流](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
-以下列表解释了示意图中带编号的步骤：
+以下列表说明了图中的编号步骤：
 
 1. Azure Key Vault 管理员创建密钥保管库资源。
 1. Key vault 管理员会将其 RSA 密钥导入 Key Vault 或在 Key Vault 中生成新的 RSA 密钥。
@@ -51,7 +51,7 @@ ms.locfileid: "73612005"
 1. 托管磁盘使用托管标识将请求发送到 Azure Key Vault。
 1. 对于读取或写入数据，托管磁盘会将请求发送到 Azure Key Vault，以便对数据加密密钥进行加密（wrap）和解密（解包），以便对数据进行加密和解密。 
 
-若要撤销对客户管理的密钥的访问权限，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤销访问权限会实际阻止对存储帐户中所有数据的访问，因为 Azure 存储帐户无法访问加密密钥。
+若要撤消对客户管理的密钥的访问权限，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)和[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止对存储帐户中所有数据的访问，因为 Azure 存储无法访问加密密钥。
 
 ### <a name="supported-scenarios-and-restrictions"></a>支持的方案和限制
 
@@ -73,33 +73,31 @@ ms.locfileid: "73612005"
 - Key Vault 必须与客户托管的密钥位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
 
-### <a name="setting-up-your-azure-key-vault"></a>设置 Azure Key Vault
+### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet
 
 1.  创建 Azure Key Vault 和加密密钥的实例。
 
     创建 Key Vault 实例时，必须启用软删除和清除保护。 软删除可确保 Key Vault 在给定的保留期（默认为90天）内保存已删除的密钥。 清除保护确保在保留期结束之前，无法永久删除已删除的密钥。 由于意外删除，这些设置可防止丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
 
     ```powershell
-    $keyVault = New-AzKeyVault -Name myKeyVaultName ` 
-    -ResourceGroupName myRGName ` 
-    -Location westcentralus ` 
-    -EnableSoftDelete ` 
-    -EnablePurgeProtection 
-     
-    $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName ` 
-    -Name myKeyName ` 
-    -Destination Software `  
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="westcentralus"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
 1.  创建 DiskEncryptionSet 的实例。 
     
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName myRGName ` 
-      -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateDiskEncryptionSet.json" ` 
-      -diskEncryptionSetName "myDiskEncryptionSet1" ` 
-      -keyVaultId "/subscriptions/mySubscriptionId/resourceGroups/myRGName/providers/Microsoft.KeyVault/vaults/myKeyVaultName" ` 
-      -keyVaultKeyUrl "https://myKeyVaultName.vault.azure.net/keys/myKeyName/403445136dee4a57af7068cab08f7d42" ` 
-      -region "WestCentralUS"
+    $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
+
+    $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
     ```
 
 1.  向 DiskEncryptionSet 资源授予对密钥保管库的访问权限。
@@ -107,62 +105,75 @@ ms.locfileid: "73612005"
     ```powershell
     $identity = Get-AzADServicePrincipal -DisplayName myDiskEncryptionSet1  
      
-    Set-AzKeyVaultAccessPolicy ` 
-        -VaultName $keyVault.VaultName ` 
-        -ObjectId $identity.Id ` 
-        -PermissionsToKeys wrapkey,unwrapkey,get 
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
      
-    New-AzRoleAssignment ` 
-        -ObjectId $identity.Id ` 
-        -RoleDefinitionName "Reader" ` 
-        -ResourceName $keyVault.VaultName ` 
-        -ResourceType "Microsoft.KeyVault/vaults" ` 
-        -ResourceGroupName myRGName `  
+    New-AzRoleAssignment -ResourceName $keyVaultName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.KeyVault/vaults" -  ObjectId $des.Identity.PrincipalId -RoleDefinitionName "Reader" 
     ```
 
-### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys-via-a-resource-manager-template"></a>使用 marketplace 映像创建 VM，通过资源管理器模板使用客户管理的密钥加密 OS 和数据磁盘
+### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用 marketplace 映像创建 VM，使用客户管理的密钥对 OS 和数据磁盘进行加密
 
-```
-$password=ConvertTo-SecureString -String "myVMPassword" `
-  -AsPlainText -Force
-New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
-  -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateVMWithDisksEncryptedWithCMK.json" `
-  -virtualMachineName "myVMName" `
-  -adminPassword $password `
-  -vmSize "Standard_DS3_V2" `
-  -diskEncryptionSetId "/subscriptions/mySubscriptionId/resourceGroups/myRGName/providers/Microsoft.Compute/diskEncryptionSets/myDiskEncryptionSet1" `
-  -region "westcentralus" 
+```powershell
+$VMLocalAdminUser = "yourVMLocalAdminUserName"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerName = "yourComputerName"
+$VMName = "yourVMName"
+$VMSize = "Standard_DS3_v2"
+$diskEncryptionSetName="yourdiskEncryptionSetName"
+    
+$NetworkName = "yourNetworkName"
+$NICName = "yourNICName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+    
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+    
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $($VMName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage
+
+$VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDisk1") -DiskSizeInGB 128 -StorageAccountType Premium_LRS -CreateOption Empty -Lun 0 -DiskEncryptionSetId $diskEncryptionSet.Id 
+    
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
 ### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>使用客户托管密钥的服务器端加密创建加密的空磁盘，并将其附加到 VM
 
 ```PowerShell
-$vmName = "yourVMName"
-$rgName = "yourRGName"
+$vmName = "yourDiskName"
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
 $diskName = "yourDiskName"
 $diskSKU = "Premium_LRS"
-$diskSizeinGiB = "30"
-$diskEncryptionSetId = "/subscriptions/<subscriptionID>/resourceGroups/yourRGName/providers/Microsoft.Compute/diskEncryptionSets/<yourDiskEncryptionSetName>"
-$region = "westcentralus"
+$diskSizeinGiB = 30
 $diskLUN = 1
+$diskEncryptionSetName="yourDiskEncryptionSetName"
 
-New-AzResourceGroupDeployment -ResourceGroupName $rgName `
-  -TemplateUri "https://raw.githubusercontent.com/ramankumarlive/manageddiskscmkpreview/master/CreateEmptyDataDiskEncryptedWithSSECMK.json" `
-  -diskName $diskName `
-  -diskSkuName $diskSKU `
-  -dataDiskSizeInGb $diskSizeinGiB `
-  -diskEncryptionSetId $diskEncryptionSetId `
-  -region $region 
 
-$vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName 
-$disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
-$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun 1
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $ResourceGroupName 
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB $diskSizeinGiB -StorageAccountType $diskSKU -Lun $diskLUN -DiskEncryptionSetId $diskEncryptionSet.Id 
+
 Update-AzVM -ResourceGroupName $rgName -VM $vm
+
 ```
 
 
 > [!IMPORTANT]
-> 客户托管密钥依赖于 Azure 资源的托管标识，后者是 Azure Active Directory (Azure AD) 的一项功能。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../articles/active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 配置客户管理的密钥时，会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅在[Azure AD 目录之间传输订阅](../articles/active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 
@@ -170,4 +181,5 @@ Update-AzVM -ResourceGroupName $rgName -VM $vm
 
 ## <a name="next-steps"></a>后续步骤
 
+- [探索 Azure 资源管理器模板，以便通过客户托管的密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [什么是 Azure 密钥保管库？](../articles/key-vault/key-vault-overview.md)

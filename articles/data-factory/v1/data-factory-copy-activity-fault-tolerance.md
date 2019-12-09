@@ -4,20 +4,19 @@ description: 了解如何在复制时通过跳过不兼容行向 Azure 数据工
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 84f5cdff72abe210ac1e39234b455e506d52ba5e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682959"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926153"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 
@@ -70,12 +69,12 @@ ms.locfileid: "73682959"
 }
 ```
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | 允许或不允许在复制期间跳过不兼容行。 | True<br/>False（默认值） | 否 |
-| **redirectIncompatibleRowSettings** | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否 |
-| **linkedServiceName** | Azure 存储的链接服务，用于存储包含跳过的行的记录。 | [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，可指代希望用于存储日志文件的存储实例。 | 否 |
-| **路径** | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的 Blob 存储路径。 如果未提供路径，服务会为用户创建一个容器。 | 否 |
+| **enableSkipIncompatibleRow** | 允许或不允许在复制期间跳过不兼容行。 | 正确<br/>False（默认值） | No |
+| **redirectIncompatibleRowSettings** | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | No |
+| **linkedServiceName** | Azure 存储的链接服务，用于存储包含跳过的行的记录。 | [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，可指代希望用于存储日志文件的存储实例。 | No |
+| **路径** | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的 Blob 存储路径。 如果未提供路径，服务会为用户创建一个容器。 | No |
 
 ## <a name="monitoring"></a>监视
 复制活动运行完成后，可以在监视部分看到跳过的行数：

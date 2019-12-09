@@ -6,19 +6,18 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/06/2019
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 0643ce99ce4ba9328abc3f7a8c8e7061026611b9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031776"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926243"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
@@ -32,7 +31,7 @@ ms.locfileid: "74031776"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 > [!IMPORTANT]
-> 按以下说明进行操作之前，必须预先配置ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
+> 按以下说明进行操作之前，必须预先配置 ExpressRoute 线路。 在按以下步骤操作之前，请务必遵循相关指南来[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)和[配置路由](expressroute-howto-routing-classic.md)。
 > 
 > 
 
@@ -71,12 +70,16 @@ ms.locfileid: "74031776"
 
 * 我没有 VNet，需要创建一个。
   
-    如果用户还没有虚拟网络，此过程将指导用户使用经典部署模型创建新的虚拟网络，并创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置，请遵循本文中 [创建新的虚拟网络和并存连接](#new)部分中的步骤。
+    如果还没有虚拟网络，此过程指导使用经典部署模型创建新的虚拟网络，然后创建新的 ExpressRoute 和站点到站点 VPN 连接。 若要配置，请遵循本文中 [创建新的虚拟网络和并存连接](#new)部分中的步骤。
 * 我已有一个经典部署模型 VNet。
   
     可能已在具有现有站点到站点 VPN 连接或 ExpressRoute 连接的位置拥有虚拟网络。 [为现有的 VNet 配置并存连接](#add)部分介绍如何删除网关，然后如何创建新的 ExpressRoute 连接和站点到站点 VPN 连接。 请注意，在创建新连接时，必须按照非常特定的顺序完成步骤。 不要按照其他文章中的说明来创建网关和连接。
   
     在此过程中，创建可以共存的连接将需要你删除网关，然后配置新网关。 这意味着，在删除并重新创建网关和连接时，跨界连接会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。 在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
+
+## <a name="install-powershell-cmdlets"></a>安装 PowerShell cmdlet
+
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="new"></a>创建新的虚拟网络和并存连接
 本过程指导创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
@@ -220,7 +223,7 @@ ms.locfileid: "74031776"
                     </LocalNetworkSiteRef>
                   </ConnectionsToLocalNetwork>
                 </Gateway>
-6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可以在前一组步骤中找到）。
+6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可在前一组步骤中找到）。
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)

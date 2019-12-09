@@ -1,7 +1,7 @@
 ---
-title: 了解如何为 Azure AD 应用提供可选声明
+title: 为 Azure AD 应用提供可选声明 |Microsoft
 titleSuffix: Microsoft identity platform
-description: 有关如何将自定义或附加的声明添加到 Azure Active Directory 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 的指南。
+description: 如何将自定义或附加声明添加到 Azure Active Directory 颁发的 SAML 2.0 和 JSON Web 令牌（JWT）令牌。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1364a491122ae15f86bec98afbfd4e5110e8e07
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 323415c18497f19b4c8f29a303b6ec59dfda1885
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844713"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918264"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：为 Azure AD 应用提供可选声明
 
