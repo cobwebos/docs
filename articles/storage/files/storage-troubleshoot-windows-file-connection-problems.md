@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560133"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927855"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -97,8 +97,7 @@ Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持
 Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 Azure 文件同步在端口443上工作，因此可将其作为一种解决方法，用于从已阻止端口445的客户端访问 Azure 文件。 [了解如何设置 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers)。
 
 #### <a name="solution-2---use-vpn"></a>解决方案 2-使用 VPN
-通过设置特定存储帐户的 VPN，流量将通过安全隧道，而不是通过 internet 传输。 按照[说明设置 VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) ，从 Windows 访问 Azure 文件。
+通过设置特定存储帐户的 VPN，流量将通过安全隧道，而不是通过 internet 传输。 按照[说明设置 VPN](storage-files-configure-p2s-vpn-windows.md) ，从 Windows 访问 Azure 文件。
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口445，帮助你联系 ISP/IT 管理员
 与你的 IT 部门或 ISP 合作，打开到[AZURE IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的出站端口445。
