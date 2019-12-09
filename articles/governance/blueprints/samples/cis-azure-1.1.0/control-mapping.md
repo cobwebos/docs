@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 蓝图示例控件
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544545"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707428"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
@@ -40,6 +40,12 @@ ms.locfileid: "74544545"
 - 应从订阅中删除拥有所有者权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 确保未创建任何自定义订阅所有者角色
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助监视可能需要删除的自定义订阅所有者角色。
+
+- 不应存在自定义订阅所有者角色
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2.1 确保已选择标准定价层
 
@@ -243,11 +249,35 @@ ms.locfileid: "74544545"
 
 - 应为 MySQL 数据库服务器启用“强制 SSL 连接”
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4.12 确保 PostgreSQL 数据库服务器的服务器参数“log_checkpoints”设置为“ON”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 PostgreSQL 数据库服务器记录检查点。
+
+- 应为 PostgreSQL 数据库服务器启用“记录检查点”
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 确保 PostgreSQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 PostgreSQL 数据库服务器强制 SSL 连接。
 
 - 应为 PostgreSQL 数据库服务器启用“强制 SSL 连接”
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4.14 确保 PostgreSQL 数据库服务器的服务器参数“log_connections”设置为“ON”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 PostgreSQL 数据库服务器记录连接。
+
+- 应为 PostgreSQL 数据库服务器启用“记录连接”
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4.15 确保 PostgreSQL 数据库服务器的服务器参数“log_disconnections”设置为“ON”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 PostgreSQL 数据库服务器记录断开连接。
+
+- 应为 PostgreSQL 数据库服务器记录断开连接。
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4.16 确保 PostgreSQL 数据库服务器的服务器参数“log_duration”设置为“ON”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 PostgreSQL 数据库服务器记录已完成语句的持续时间。
+
+- 应为 PostgreSQL 数据库服务器启用“记录持续时间”
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4.17 确保 PostgreSQL 数据库服务器的服务器参数“connection_throttling”设置为“ON”
 
@@ -350,6 +380,71 @@ ms.locfileid: "74544545"
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保只能通过安全连接访问 Web 应用程序。
 
 - 只能通过 HTTPS 访问 Web 应用程序
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9.3 确保 Web 应用使用最新版本的 TLS 加密
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新的 TLS 版本。
+
+- 应在 API 应用中使用最新的 TLS 版本
+- 应在函数应用中使用最新的 TLS 版本
+- 应在 Web 应用中使用最新的 TLS 版本
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9.4 确保 Web 应用的“客户端证书(传入客户端证书)”设置为“打开”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保只有具有有效证书的客户端能够访问 Web 应用。
+
+- 确保 API 应用的“客户端证书(传入客户端证书)”设置为“打开”
+- 确保函数应用的“客户端证书(传入客户端证书)”设置为“打开”
+- 确保 WEB 应用的“客户端证书(传入客户端证书)”设置为“打开”
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9.5 确保在应用服务中启用“注册到 Azure Active Directory”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用托管标识。
+
+- 确保在 API 应用中启用“注册到 Azure Active Directory”
+- 确保在函数应用中启用“注册到 Azure Active Directory”
+- 确保在 WEB 应用中启用“注册到 Azure Active Directory”
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9.6 确保用作 Web 应用一部分的“.Net Framework”版本是最新的
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新版本的 .Net Framework。
+
+- 确保用作 API 应用一部分的“.Net Framework”版本是最新的
+- 确保用作函数应用一部分的“.Net Framework”版本是最新的
+- 确保用作 Web 应用一部分的“.Net Framework”版本是最新的
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9.7 确保用于运行 Web 应用的“PHP 版本”是最新的
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新版本的 PHP。
+
+- 确保用作 API 应用一部分的“PHP 版本”是最新的
+- 确保用作函数应用一部分的“PHP 版本”是最新的
+- 确保用作 WEB 应用一部分的“PHP 版本”是最新的
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9.8 确保用于运行 Web 应用的“Python 版本”是最新的
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新版本的 Python。
+
+- 确保用作 API 应用一部分的“Python 版本”是最新的
+- 确保用作函数应用一部分的“Python 版本”是最新的
+- 确保用作 Web 应用一部分的“Python 版本”是最新的
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9.9 确保用于运行 Web 应用的“Java 版本”是最新的
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新版本的 Java。
+
+- 确保用作 API 应用一部分的“Java 版本”是最新的
+- 确保用作函数应用一部分的“Java 版本”是最新的
+- 确保用作 Web 应用一部分的“Java 版本”是最新的
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9.10 确保用于运行 Web 应用的“HTTP 版本”是最新的
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助确保 Web 应用使用最新版本的 HTTP。
+
+- 确保用于运行 API 应用的“HTTP 版本”是最新的
+- 确保用于运行函数应用的“HTTP 版本”是最新的
+- 确保用于运行 Web 应用的“HTTP 版本”是最新的
+
 
 ## <a name="next-steps"></a>后续步骤
 

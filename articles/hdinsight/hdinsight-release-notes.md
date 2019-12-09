@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 发行说明
-description: Azure HDInsight 的最新发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
+description: Azure HDInsight 的最新发行说明。 获取 Hadoop、Spark、R Server、Hive 等的开发技巧和详细信息。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185603"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926428"
 ---
 # <a name="release-notes"></a>发行说明
 
 本文提供有关**最新** Azure HDInsight 版本更新的信息。 有关较早版本的信息，请参阅 [HDInsight 发行说明存档](hdinsight-release-notes-archive.md)。
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>总结
 
 Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。
 
@@ -41,7 +41,7 @@ HDInsight 标识代理（HIB）可让用户使用多重身份验证（MFA）登�
 
 Kafka Rest API 代理通过安全 AAD 授权和 OAuth 协议，通过 Kafka 群集提供一次单击部署高可用性 REST 代理。 
 
-### <a name="auto-scale"></a>自动缩放
+### <a name="auto-scale"></a>自动扩展
 
 Azure HDInsight 的自动缩放现已在适用于 Apache Spark 和 Hadoop 群集类型的所有区域公开提供。 此功能可让你以更具成本效益和高效的方式管理大数据分析工作负荷。 现在，你可以优化 HDInsight 群集的使用，并且仅为所需的部分付费。
 
@@ -51,7 +51,7 @@ HBase 和 LLAP 工作负荷的自动缩放支持也是公共预览。 有关详�
 
 ### <a name="hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase 的 HDInsight 加速写入 
 
-加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[适用于 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
+加速写入使用 Azure 高级 SSD 托管磁盘，可以改善 Apache HBase 预写日志 (WAL) 的性能。 有关详细信息，请参阅[面向 Apache HBase 的 Azure HDInsight 加速写入](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes)。
 
 ### <a name="custom-ambari-db"></a>自定义 Ambari DB
 
@@ -69,7 +69,7 @@ F 系列虚拟机（Vm）非常适合用于满足轻型处理要求的 HDInsight
 ### <a name="dv1-virtual-machine-deprecation"></a>Dv1 虚拟机弃用
 在此版本中，已弃用将 Dv1 Vm 与 HDInsight 配合使用。 将自动为 Dv1 的任何客户请求提供 Dv2。 Dv1 和 Dv2 Vm 之间没有价格差别。
 
-## <a name="behavior-changes"></a>行为更改
+## <a name="behavior-changes"></a>行为变更
 
 ### <a name="cluster-managed-disk-size-change"></a>群集托管磁盘大小更改
 HDInsight 通过群集提供托管磁盘空间。 在此版本中，新创建的群集中每个节点的托管磁盘大小更改为 128 GB。
@@ -90,4 +90,4 @@ A 系列 Vm 可能会导致 ESP 群集出现问题，因为 CPU 和内存容量�
 HDInsight 继续提高群集的可靠性和性能。 
 
 ## <a name="component-version-change"></a>组件版本更改
-此版本没有更改组件版本。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)找到 HDInsight 4.0 ad HDInsight 3.6 的当前组件版本。
+此版本没有更改组件版本。 可在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)找到 hdinsight 4.0 和 hdinsight 3.6 的当前组件版本。

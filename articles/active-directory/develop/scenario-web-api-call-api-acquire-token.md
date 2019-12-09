@@ -1,6 +1,7 @@
 ---
-title: Web API 调用其他 web 的 Api （获取应用程序的令牌）-Microsoft 标识平台
-description: 了解如何构建 web API 调用其他 web Api （获取应用令牌）。
+title: 获取用于调用 web Api 的 web API 的标记 |Microsoft
+titleSuffix: Microsoft identity platform
+description: 了解如何构建一个可调用 web Api 的 web API，该 API 需要获取应用的令牌。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231110"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919777"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 调用 web Api-获取应用程序的令牌
+# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>用于调用 web Api 的 web API-获取应用的令牌
 
-构建客户端应用程序后对象，请使用它来获取可用来调用 web API 的令牌。
+生成客户端应用程序对象后，使用该对象获取可用于调用 web API 的令牌。
 
-## <a name="code-in-the-controller"></a>在控制器中的代码
+## <a name="code-in-the-controller"></a>控制器中的代码
 
-下面是代码的将调用的调用 （名为 todolist） 的下游 API 的 API 控制器操作中示例。
+下面是一个代码示例，该示例将在 API 控制器的操作中调用，调用下游 API （名为 todolist）。
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` 类似于在本文中所看到的内容[Web API 调用 web Api 的应用配置](scenario-web-api-call-api-app-configuration.md)。 `BuildConfidentialClient()` 实例化`IConfidentialClientApplication`包含仅一个帐户信息的缓存。 该帐户提供的`GetAccountIdentifier`方法。
+`BuildConfidentialClient()` 类似于在[WEB api （用于调用 Web api-应用配置）](scenario-web-api-call-api-app-configuration.md)中看到的内容。 `BuildConfidentialClient()` 使用只包含一个帐户的信息的缓存来实例化 `IConfidentialClientApplication`。 帐户由 `GetAccountIdentifier` 方法提供。
 
-`GetAccountIdentifier`方法使用与 web API 收到的 JWT 的用户的标识关联的声明：
+`GetAccountIdentifier` 方法使用与 web API 收到其 JWT 的用户标识关联的声明：
 
 ```CSharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)

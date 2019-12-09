@@ -1,28 +1,25 @@
 ---
-title: 使用国家/地区云中的 Microsoft 身份验证库（MSAL）-Microsoft 标识平台
+title: 在全国云应用中使用 MSAL |Microsoft
+titleSuffix: Microsoft identity platform
 description: Microsoft 身份验证库（MSAL）使应用程序开发人员能够获取令牌，以便调用受保护的 web Api。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、合作伙伴 web Api 或你自己的 web API。 MSAL 支持多个应用程序体系结构和平台。
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: f1d0d4511b95d56ae41bf9fbb1118318d8374bde
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481863"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916037"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
@@ -32,13 +29,13 @@ ms.locfileid: "74481863"
 
 在以下国家/地区中部署 Azure Active Directory （Azure AD）包括全局云：  
 
-- Azure 政府
+- Azure Government
 - Azure 中国世纪互联
-- Azure Germany
+- Azure 德国
 
 本指南演示如何登录到工作和学校帐户，获取访问令牌，并在[Azure 政府版云](https://azure.microsoft.com/global-infrastructure/government/)环境中调用 Microsoft Graph API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保满足以下先决条件。
 
@@ -81,7 +78,7 @@ ms.locfileid: "74481863"
 1. 如果你的帐户允许你访问多个租户，请在右上角选择你的帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 请参阅面向开发人员的 Microsoft 标识平台上的 "[应用注册](https://aka.ms/ra/ff)" 页。
 1. “注册应用程序”页显示后，请输入应用程序的名称。
-1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。
+1. 在 "**支持的帐户类型**" 下，选择**任何组织目录中的帐户**。
 1. 在 "**重定向 URI** " 部分中，选择**web**平台，并基于你的 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和节点中设置和获取重定向 URL 的说明，请参阅后续部分。
 1. 选择“注册”。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值。
@@ -105,7 +102,7 @@ ms.locfileid: "74481863"
 
 ### <a name="step-4-configure-your-javascript-spa"></a>步骤4：配置 JavaScript SPA
 
-在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `<script></script>` 文件正文的 `index.html` 标记顶部添加以下代码：
+在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文的 `<script></script>` 标记顶部添加以下代码：
 
 ```javascript
 const msalConfig = {
@@ -190,7 +187,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 适用于 iOS 和 macOS 的 MSAL 可用于在国家/地区云中获取令牌，但在创建 `MSALPublicClientApplication`时需要进行额外配置。
 
-例如，如果希望应用程序成为国家/地区云（此处为美国政府）的多租户应用程序，可以编写：
+例如，如果你希望你的应用程序成为国家/地区（美国政府）的多租户应用程序，你可以编写：
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -213,7 +210,7 @@ MSALPublicClientApplication *application =
 
 适用于 iOS 和 macOS 的 MSAL 可用于在国家/地区云中获取令牌，但在创建 `MSALPublicClientApplication`时需要进行额外配置。
 
-例如，如果希望应用程序成为国家/地区云（此处为美国政府）的多租户应用程序，可以编写：
+例如，如果你希望你的应用程序成为国家/地区（美国政府）的多租户应用程序，你可以编写：
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)

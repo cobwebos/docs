@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C （适用于 .NET 的 Microsoft 身份验证库）
+title: Azure AD B2C （MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Azure AD B2C 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175600"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921928"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 登录具有社交标识的用户
 
@@ -170,9 +166,9 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 许多 Azure AD B2C 情况下都缺少这两个声明。 
 
-客户的影响在于，尝试显示 "用户名" 字段时，您是否收到 "令牌响应中缺少" 作为值？ 如果是这样，则这是因为 Azure AD B2C 不会在 preferred_username 中返回 IdToken 的值，因为社交帐户和外部标识提供者（Idp）存在限制。 Azure AD 将返回 preferred_username 的值，因为它知道用户是谁，但对于 Azure AD B2C，因为用户可以使用本地帐户、Facebook、Google、GitHub 等登录，因此没有用于 preferred_username 的 Azure AD B2C 的值。 若要取消阻止 MSAL 与 ADAL 的缓存兼容性，我们决定在处理 Azure AD B2C 帐户时，如果 IdToken 不为 preferred_username 返回任何内容，则会使用最终的 "令牌响应中缺少"。 MSAL 必须返回 preferred_username 的值，以跨库维护缓存兼容性。
+客户的影响在于，尝试显示 "用户名" 字段时，您是否收到 "令牌响应中缺少" 作为值？ 如果是这样，则这是因为 Azure AD B2C 不会在 IdToken 中为 preferred_username 返回值，因为社交帐户和外部标识提供者（Idp）存在限制。 Azure AD 为 preferred_username 返回值，因为它知道用户是谁，但对于 Azure AD B2C，这是因为用户可以使用本地帐户、Facebook、Google、GitHub 等登录，而不是将用于 preferred_username 的 Azure AD B2C 的值保持一致。 若要取消阻止 MSAL 的缓存与 ADAL 的兼容性，我们决定在处理 Azure AD B2C 帐户时，如果 IdToken 不为 preferred_username 返回任何内容，请使用最终的 "令牌响应中缺少"。 MSAL 必须返回 preferred_username 的值才能维护库之间的缓存兼容性。
 
-### <a name="workarounds"></a>之一
+### <a name="workarounds"></a>工作区
 
 #### <a name="mitigation-for-the-missing-tenant-id"></a>缺少的租户 ID 的缓解措施
 
@@ -189,4 +185,4 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 | 示例 | 平台 | 描述|
 |------ | -------- | -----------|
-|[active-directory-b2c-本机](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS，Xamarin Android，UWP | 一个简单的 Xamarin Forms 应用，展示如何使用 MSAL.NET 通过 Azure AD B2C 来对用户进行身份验证，并使用生成的令牌访问一个 Web API。|
+|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS，Xamarin Android，UWP | 一个简单的 Xamarin Forms 应用，展示如何使用 MSAL.NET 通过 Azure AD B2C 来对用户进行身份验证，并使用生成的令牌访问一个 Web API。|

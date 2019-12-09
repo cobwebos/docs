@@ -1,28 +1,24 @@
 ---
-title: 在 Xamarin iOS 和 Android 应用程序上使用 Microsoft Authenticator 或 Microsoft Intune 公司门户
+title: Xamarin 上的中转身份验证、iOS & Android |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何将可使用 Microsoft Authenticator 从适用于 .NET 的 Azure AD 身份验证库（ADAL.NET）的 Xamarin iOS 应用程序迁移到适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554048"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921847"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序上使用 Microsoft Authenticator 或 Microsoft Intune 公司门户
 

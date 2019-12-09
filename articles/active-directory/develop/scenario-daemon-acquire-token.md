@@ -1,5 +1,5 @@
 ---
-title: 应用程序调用 web Api （获取应用程序的令牌）-Microsoft 标识平台
+title: 获取用于调用 web Api 的守护程序应用中的令牌-Microsoft 标识平台 |Microsoft
 description: 了解如何生成可调用 web Api 的后台应用程序（获取令牌）
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175512"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920287"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 web Api 的守护程序应用-获取令牌
 

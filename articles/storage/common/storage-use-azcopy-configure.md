@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786837"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926459"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -99,7 +99,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED`和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
-默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE$\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但你可以根据需要更改该位置。
+默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但你可以根据需要更改该位置。
 
 > [!IMPORTANT]
 > 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可确保 SAS 不会意外地与任何人共享。 可以在日志文件的开头找到经修订的版本。
@@ -151,7 +151,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>更改计划和日志文件的位置
 
-默认情况下，计划和日志文件位于 Windows 的 `%USERPROFILE$\.azcopy` 目录中，或位于 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 你可以更改此位置。
+默认情况下，计划和日志文件位于 Windows 的 `%USERPROFILE%\.azcopy` 目录中，或位于 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 你可以更改此位置。
 
 ### <a name="change-the-location-of-plan-files"></a>更改计划文件的位置
 

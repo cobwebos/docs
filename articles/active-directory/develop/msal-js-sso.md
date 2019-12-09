@@ -1,29 +1,25 @@
 ---
-title: 单一登录（适用于 JavaScript 的 Microsoft 身份验证库）
+title: 单一登录（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）构建单一登录体验。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da39b8435acdd11108a945c6bac5147dc8b6ad50
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150574"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916258"
 ---
 # <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 的单一登录
 
@@ -92,7 +88,7 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 
 **使用登录提示**
 
-如果未配置 SID 声明，或需要在交互式身份验证调用中跳过帐户选择提示，可以通过在请求参数中提供 `login_hint`，并在 MSAL 交互方法中提供 `extraQueryParameters` @no （可选） `domain_hint` 来执行此操作。__t_3_、`loginRedirect`、`acquireTokenPopup` 和 `acquireTokenRedirect`）。 例如：
+如果未配置 SID 声明，或需要在交互式身份验证调用中跳过帐户选择提示，则可以通过在 MSAL 交互式方法（`loginPopup`、`loginRedirect`、`acquireTokenPopup` 和 `acquireTokenRedirect`）中提供 `login_hint`，在请求参数中提供一个，并根据需要提供一个 `extraQueryParameters` `domain_hint`。 例如：
 
 ```javascript
 var request = {
@@ -108,7 +104,7 @@ userAgentApplication.loginRedirect(request);
 
 * 应将**loginHint**设置为 ID 令牌中的 `preferred_username` 声明。
 
-* 仅当使用/common 颁发机构时，才需要**domain_hint** 。 域提示由租户 ID （tid）决定。  如果 ID 令牌中的 `tid` 声明 `9188040d-6c67-4c5b-b112-36a304b66dad` 则使用者。 否则为组织。
+* 只需要在使用/common 机构时传递**domain_hint** 。 域提示由租户 ID （tid）决定。  如果 ID 令牌中的 `tid` 声明 `9188040d-6c67-4c5b-b112-36a304b66dad` 则使用者。 否则为组织。
 
 请参阅[此处](v2-oauth2-implicit-grant-flow.md)，了解有关登录提示和域提示的值的详细信息。
 

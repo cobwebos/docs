@@ -3,27 +3,23 @@ title: MSAL for Java 中的自定义令牌缓存序列化
 titleSuffix: Microsoft identity platform
 description: 了解如何序列化 MSAL for Java 的令牌缓存
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: sagonzal
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7323a47095c58958503cecf16189ed875fac3b4d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e2166cda772c358ed060b0e52a7410c7039fedf5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452600"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916530"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>MSAL for Java 中的自定义令牌缓存序列化
 
@@ -65,6 +61,6 @@ PublicClientApplication app =
 PublicClientApplication.builder("my_client_id").setTokenCacheAccessAspect(persistenceAspect).build();
 ```
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 了解如何[使用 MSAL For Java 从令牌缓存获取和删除帐户](msal-java-get-remove-accounts-token-cache.md)。

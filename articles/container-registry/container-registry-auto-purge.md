@@ -3,12 +3,12 @@ title: 清除标记和清单
 description: 使用 "清除" 命令可根据 age 和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地计划清除操作。
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456480"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923108"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
 
@@ -19,10 +19,10 @@ ms.locfileid: "74456480"
 您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的 ACR 任务示例。 如果要在本地使用，则需要版本2.0.69 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。 
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 > [!WARNING]
-> 使用 `acr purge` 命令时要小心--删除的映像数据不可恢复。 如果系统通过清单摘要（而不是映像名称）提取映像，则不应清除未标记的图像。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用*建议的最佳做法*，即“唯一标记”方案[](container-registry-image-tag-version.md)。
+> 使用 `acr purge` 命令时要小心--删除的映像数据不可恢复。 如果系统通过清单摘要（而不是映像名称）提取映像，则不应清除未标记的图像。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 请考虑采用*唯一的标记*方案（[建议的最佳做法](container-registry-image-tag-version.md)），而不是按清单进行请求。
 
 如果要使用 Azure CLI 命令删除单个映像标记或清单，请参阅[在 Azure 容器注册表中删除容器映像](container-registry-delete.md)。
 
@@ -33,11 +33,10 @@ ms.locfileid: "74456480"
 > [!NOTE]
 > `acr purge` 不会删除 `write-enabled` 属性设置为 `false`的图像标记或存储库。 有关信息，请参阅[在 Azure 容器注册表中锁定容器映像](container-registry-image-lock.md)。
 
-`acr purge` 旨在作为[ACR 任务](container-registry-tasks-overview.md)中的容器命令运行，使其能够在运行任务的注册表中自动进行身份验证。 
+`acr purge` 旨在作为[ACR 任务](container-registry-tasks-overview.md)中的容器命令运行，使其能够在运行任务的注册表中自动进行身份验证，并在其中执行操作。 本文中的任务示例使用 `acr purge` 命令[别名](container-registry-tasks-reference-yaml.md#aliases)来代替完全限定的容器映像命令。
 
 至少在运行 `acr purge`时指定以下内容：
 
-* `--registry`-运行命令的 Azure 容器注册表。 
 * `--filter`-用于筛选存储库中的标记的存储库和*正则表达式*。 示例： `--filter "hello-world:.*"` 匹配 `hello-world` 存储库中的所有标记，并且 `--filter "hello-world:^1.*"` 与以 `1`开头的标记匹配。 传递多个 `--filter` 参数以清除多个存储库。
 * `--ago`-用于指示要在其上删除图像的持续时间的 "离开样式[持续时间" 字符串](https://golang.org/pkg/time/)。 持续时间由一个或多个十进制数字的序列组成，每个数字包含一个单位后缀。 有效的时间单位包括 "d" 表示天，"h" 表示小时，"m" 表示分钟。 例如，`--ago 2d3h6m` 选择上次修改时间超过2天、3小时和6分钟前的所有筛选过的映像，`--ago 1.5h` 选择上次修改时间超过1.5 小时之前的映像。
 
@@ -54,12 +53,10 @@ ms.locfileid: "74456480"
 
 下面的示例使用[az acr run][az-acr-run]命令按需运行 `acr purge` 命令。 此示例将删除*myregistry*中已在1天前修改的 `hello-world` 存储库中的所有图像标记和清单。 使用环境变量传递容器命令。 任务在没有源上下文的情况下运行。
 
-在此示例和以下示例中，使用 `$Registry` 别名指定运行 `acr purge` 命令的注册表，该别名指示运行任务的注册表。
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -83,7 +80,7 @@ az acr task create --name purgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
+运行[az acr task show][az-acr-task-show]命令以查看计时器触发器是否已配置。
 
 ### <a name="purge-large-numbers-of-tags-and-manifests"></a>清除大量标记和清单
 
@@ -93,8 +90,8 @@ az acr task create --name purgeTask \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ Number of deleted manifests: 4
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 
@@ -168,7 +163,7 @@ az acr task create --name weeklyPurgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
+运行[az acr task show][az-acr-task-show]命令以查看计时器触发器是否已配置。
 
 ## <a name="next-steps"></a>后续步骤
 

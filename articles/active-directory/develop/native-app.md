@@ -2,27 +2,23 @@
 title: Azure Active Directory 中的本机应用
 description: 介绍什么是本机应用，以及有关此应用类型的协议流、注册和令牌到期的基础知识。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e7313acd26874f29a587d1c854a5286ed06d3cad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373875"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915126"
 ---
 # <a name="native-apps"></a>本机应用
 

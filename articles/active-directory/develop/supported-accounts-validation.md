@@ -1,5 +1,5 @@
 ---
-title: 受支持的帐户类型的验证差异（SignInAudience）-Microsoft 标识平台/Azure Active Directory
+title: 按帐户类型的验证差异-Microsoft 标识平台 |Microsoft
 description: 在向 Microsoft 标识平台注册应用程序时，了解不同支持的帐户类型的各种属性的验证差异。
 author: SureshJa
 ms.author: sureshja
@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bea6e3ea93e8b630970a8d86fc246eddaf3f56c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 576adc99ef7d794f50efeb61375f3e59f8815033
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392600"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919352"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按支持的帐户类型的验证差异（signInAudience）
 
@@ -34,7 +34,7 @@ ms.locfileid: "72392600"
 
 请参阅下表，了解不同支持的帐户类型的各种属性的验证差异。
 
-| 属性 | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
+| properties | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
 | 应用程序 ID URI （`identifierURIs`）  | 在租户中必须是唯一的 <br><br> 支持 urn://方案 <br><br> 不支持通配符 <br><br> 支持查询字符串和片段 <br><br> 最大长度为255个字符 <br><br> IdentifierURIs 数量没有限制 *  | 必须全局唯一 <br><br> 支持 urn://方案 <br><br> 不支持通配符 <br><br> 支持查询字符串和片段 <br><br> 最大长度为255个字符 <br><br> IdentifierURIs 数量没有限制 * | 必须全局唯一 <br><br> 不支持 urn://方案 <br><br> 不支持通配符、段和查询字符串 <br><br> 最大长度为120个字符 <br><br> 最大 50 identifierURIs |
 | 证书（`keyCredentials`） | 对称签名密钥 | 对称签名密钥 | 加密和非对称签名密钥 | 
@@ -43,7 +43,7 @@ ms.locfileid: "72392600"
 | API 权限（`requiredResourceAccess`） | 无限制 * | 无限制 * | 每个资源最多允许30个权限（例如 Microsoft Graph） | 
 | 此 API 定义的作用域（`oauth2Permissions`） | 最大作用域名称长度为120个字符 <br><br> 定义的作用域数量没有限制 * | 最大作用域名称长度为120个字符 <br><br> 定义的作用域数量没有限制 * |  最大作用域名称长度为40个字符 <br><br> 最多定义100个作用域 | 
 | 授权客户端应用程序（`preautorizedApplications`） | 无限制 * | 无限制 * | 总最大值为500 <br><br> 最多定义100个客户端应用 <br><br> 每个客户端最多定义30个作用域 | 
-| appRoles | 支持 <br> 无限制 * | 支持 <br> 无限制 * | 不支持 | 
+| appRoles | 受支持 <br> 无限制 * | 受支持 <br> 无限制 * | 不支持 | 
 | 注销 URL | 允许 http://localhost <br><br> 最大长度为255个字符 | 允许 http://localhost <br><br> 最大长度为255个字符 | <br><br> https://localhost 允许，MSA http://localhost 失败 <br><br> 最大长度为255个字符 <br><br> 不允许使用 HTTP 方案 <br><br> 不支持通配符 | 
 
 \* 应用对象的所有集合属性的全局限制为大约1000项

@@ -2,34 +2,34 @@
 title: Azure 数据工厂中的 ORC 格式
 description: 本主题介绍如何在 Azure 数据工厂中处理 ORC 格式。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: a5125b53d960ddead063435666de5b26ce0bc291
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5f83e9bbcdfffdd9b19786012295ff5643116551
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674762"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927372"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure 数据工厂中的 ORC 格式
 
 若要**分析 ORC 文件或以 ORC 格式写入数据**，请参阅此文。 
 
-以下连接器支持 ORC 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud存储](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
+以下连接器支持 ORC 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ORC 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ORC 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必选 |
+| properties         | 描述                                                  | 需要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为**Orc**。 | 是      |
-| location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
+| 位置         | 文件的位置设置。 每个基于文件的连接器都具有其自己的位置类型和 `location`下支持的属性。 **请参阅连接器文章-> 数据集属性 "部分中的详细信息**。 | 是      |
 
 下面是 Azure Blob 存储上的 ORC 数据集的示例：
 
@@ -54,7 +54,7 @@ ms.locfileid: "73674762"
 }
 ```
 
-请注意以下几点：
+注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
 * 不支持列名称中的空格。
@@ -62,27 +62,27 @@ ms.locfileid: "73674762"
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ORC 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 ORC 源和接收器支持的属性列表。
 
 ### <a name="orc-as-source"></a>作为源的 ORC
 
-复制活动的 ***\*source\**** 节支持以下属性。
+复制活动***\*源\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| properties      | 描述                                                  | 需要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为**OrcSource**。 | 是      |
-| storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+| storeSettings | 有关如何从数据存储区中读取数据的一组属性。 在 `storeSettings`下，每个基于文件的连接器都有其自己支持的读取设置。 **请参阅连接器文章-> 复制活动属性部分中的详细信息**。 | No       |
 
 ### <a name="orc-as-sink"></a>ORC 作为接收器
 
-复制活动的 ***\*sink\**** 节支持以下属性。
+复制活动***\*接收器\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| properties      | 描述                                                  | 需要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为**OrcSink**。 | 是      |
-| storeSettings | 有关如何将数据写入到数据存储的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自身支持的写入设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+| storeSettings | 如何将数据写入数据存储区的一组属性。 每个基于文件的连接器在 `storeSettings`下有自己的受支持的写入设置。 **请参阅连接器文章-> 复制活动属性部分中的详细信息**。 | No       |
 
-## <a name="using-self-hosted-integration-runtime"></a>使用自承载集成运行时
+## <a name="using-self-hosted-integration-runtime"></a>使用自承载 Integration Runtime
 
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
@@ -93,7 +93,7 @@ ms.locfileid: "73674762"
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 > [!TIP]
-> 如果使用自承载 Integration Runtime 向/从 ORC 格式复制数据，并遇到错误 "调用 java、message： **OutOfMemoryError： java 堆空间**时出错"，则可以在计算机中添加环境变量 `_JAVA_OPTIONS`承载自承载 IR 以调整 JVM 的最小/最大堆大小以提供此类副本，然后重新运行该管道。
+> 如果使用自承载 Integration Runtime 将数据复制到/从 ORC 格式中，并出现错误 "调用 java、message： **OutOfMemoryError： java 堆空间**时出错"，则可以在承载自承载 IR 的计算机中添加一个环境变量 `_JAVA_OPTIONS`，以调整 JVM 的最小/最大堆大小以提供此类副本，然后重新运行该管道。
 
 ![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 

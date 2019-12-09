@@ -1,31 +1,27 @@
 ---
-title: 将 Azure Active Directory 注册的应用程序限制为一组用户
+title: 限制 Azure Active Directory 注册的应用用户 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何将在 Azure AD 中注册的应用限制为仅供所选的一组用户访问。
 services: active-directory
-documentationcenter: ''
 author: kalyankrishna1
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803953"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917618"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>如何：将应用限制为供一组用户使用
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>如何：将 Azure AD 应用程序限制为一组用户
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。
 

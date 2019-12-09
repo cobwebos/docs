@@ -1,33 +1,29 @@
 ---
-title: 了解 Android Microsoft 身份验证库（MSAL）配置文件
+title: Android Microsoft 身份验证库配置文件 |Microsoft
 titleSuffix: Microsoft identity platform
 description: Android Microsoft 身份验证库（MSAL）配置文件概述，它表示 Azure Active Directory 中的应用程序配置。
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803156"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916820"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android Microsoft 身份验证库（MSAL）配置文件
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
 
-MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)，您可以自定义该文件以定义公共客户端应用程序的行为，例如默认的授权机构、您将使用的授权机构等。
+Android Microsoft 身份验证库（MSAL）附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)，您可以自定义该文件以定义公共客户端应用程序的行为，例如默认证书颁发机构、您将使用的授权机构等。
 
 本文将帮助你了解配置文件中的各种设置，以及如何在基于 MSAL 的应用中指定要使用的配置文件。
 
@@ -111,7 +107,7 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 | `type` | 字符串 | 是 | 镜像应用程序的目标受众或帐户类型。 可能的值： `AAD`、`B2C` |
 | `audience` | 对象 | No | 仅当 type =`AAD`时才适用。 指定应用的目标标识。 使用应用注册中的值 |
 | `authority_url` | 字符串 | 是 | 仅当 type =`B2C`时才是必需的。 指定应用应使用的授权 URL 或策略  |
-| `default` | 布尔值 | 是 | 指定一个或多个颁发机构时，需要单个 `"default":true`。 |
+| `default` | boolean | 是 | 指定一个或多个颁发机构时，需要单个 `"default":true`。 |
 
 #### <a name="audience-properties"></a>访问群体属性
 
@@ -154,15 +150,15 @@ MSAL 附带了一个[默认的配置 JSON 文件](https://github.com/AzureAD/mic
 
 | properties | 数据类型  | 需要 | 说明 |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | 布尔值 | No | 是否发出个人数据 |
-| `log_level`   | 布尔值 | No | 要输出的日志消息 |
-| `logcat_enabled` | 布尔值 | No | 除日志记录接口外是否输出到日志 cat |
+| `pii_enabled`  | boolean | No | 是否发出个人数据 |
+| `log_level`   | boolean | No | 要输出的日志消息 |
+| `logcat_enabled` | boolean | No | 除日志记录接口外是否输出到日志 cat |
 
 ### <a name="account_mode"></a>account_mode
 
 指定在应用中一次可以使用的帐户数。 可能的值包括：
 
-- `MULTIPLE` （默认值）
+- `MULTIPLE`（默认）
 - `SINGLE`
 
 使用与此设置不匹配的帐户模式构造 `PublicClientApplication` 将导致异常。

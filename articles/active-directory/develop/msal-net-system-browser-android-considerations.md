@@ -1,29 +1,25 @@
 ---
-title: Xamarin Android 系统浏览器注意事项（适用于 .NET 的 Microsoft 身份验证库）
+title: Xamarin Android 系统浏览器注意事项（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解使用适用于 .NET 的 Microsoft 身份验证库时在 Xamarin Android 上使用系统浏览器时的特定注意事项（MSAL.NET）。
+description: 了解使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）的 Xamarin Android 系统浏览器时的特定注意事项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150355"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915465"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android 系统浏览器注意事项（MSAL.NET）
 
@@ -35,12 +31,12 @@ ms.locfileid: "73150355"
 
 | 支持自定义选项卡的浏览器 | 包名称 |
 |------| ------- |
-|Chrome | .com. chrome|
-|Microsoft Edge | emmx|
+|Chrome | com.android.chrome|
+|Microsoft Edge | com.microsoft.emmx|
 |Firefox | org firefox|
-|Ecosia | ecosia android|
-|猕猴桃 | kiwibrowser|
-|无畏 | 无畏|
+|Ecosia | com.ecosia.android|
+|猕猴桃 | com.kiwibrowser.browser|
+|无畏 | com.brave.browser|
 
 除了使用自定义选项卡的浏览器，根据我们的测试，一些不支持自定义选项卡的浏览器也可以用于身份验证： Opera、Opera 迷你、InBrowser 和 Maxthon。 有关详细信息，请参阅[表中的测试结果](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested)。
 

@@ -2,23 +2,22 @@
 title: 配置 SQL 数据库故障转移 Azure-SSIS Integration Runtime
 description: 本文介绍了如何针对 Azure SQL 数据库异地复制和 SSISDB 数据库的故障转移配置 Azure-SSIS Integration Runtime。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 08/14/2018
+ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681389"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928498"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
 
@@ -72,7 +71,7 @@ ms.locfileid: "73681389"
 
 以下各部分更详细地说明了这些步骤。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 - 确保为 Azure SQL 数据库服务器启用灾难恢复，以防该服务器同时发生服务中断。 有关详细信息，请参阅[使用 Azure SQL 数据库确保业务连续性的相关概述](../sql-database/sql-database-business-continuity.md)。
 
@@ -80,7 +79,7 @@ ms.locfileid: "73681389"
 
 - 如果使用自定义设置，可能需要为存储自定义设置脚本和关联文件的 Blob 容器准备另一个 SAS URI，以便在中断期间可以继续访问该容器。 有关详细信息，请参阅[在 Azure-SSIS 集成运行时中配置自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
 
@@ -101,27 +100,27 @@ ms.locfileid: "73681389"
 
 3. 再次启动 IR。
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>方案 3 - 将现有的 SSISDB（SSIS 目录）附加到新的 Azure-SSIS IR
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>方案 3-将现有 SSISDB （SSIS 目录）附加到新 Azure-SSIS IR
 
-在当前区域中发生 ADF 或 Azure-SSIS IR 灾难时，可以使 SSISDB 在新区域中继续使用新的 Azure-SSIS IR。
+当当前区域发生 ADF 或 Azure-SSIS IR 灾难时，可以使 SSISDB 在新区域中继续使用新的 Azure-SSIS IR。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 - 如果在当前区域中使用虚拟网络，则需要在新区域中使用另一个虚拟网络连接到 Azure-SSIS 集成运行时。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 
 - 如果使用自定义设置，可能需要为存储自定义设置脚本和关联文件的 Blob 容器准备另一个 SAS URI，以便在中断期间可以继续访问该容器。 有关详细信息，请参阅[在 Azure-SSIS 集成运行时中配置自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 遵循以下步骤停止 Azure-SSIS IR，切换到新区域，然后再次启动该 IR。
 
-1. 执行存储过程以使 SSISDB 附加到 **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
+1. 执行存储过程，使 SSISDB 附加到 **\<new_data_factory_name\>** 或 **\<new_integration_runtime_name\>** 。
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. 在新区域中创建名为 **\<new_data_factory_name\>** 的新数据工厂。 有关详细信息，请参阅“创建数据工厂”。
+2. 在新区域中创建名为 **\<new_data_factory_name\>** 的新数据工厂。 有关详细信息，请参阅创建数据工厂。
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -130,7 +129,7 @@ ms.locfileid: "73681389"
      ```
     有关此 PowerShell 命令的详细信息，请参阅[使用 PowerShell 创建 Azure 数据工厂](quickstart-create-data-factory-powershell.md)
 
-3. 使用 Azure PowerShell 在新区域中创建名为 **\<new_integration_runtime_name\>** 的新 Azure-SSIS IR。
+3. 使用 Azure PowerShell 在新区域中创建一个名为\<的新 Azure-SSIS IR **new_integration_runtime_name\>** 。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

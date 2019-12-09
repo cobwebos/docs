@@ -1,5 +1,5 @@
 ---
-title: JavaScript 单页应用程序方案概述-Microsoft 标识平台
+title: JavaScript 单页应用方案-Microsoft 标识平台 |Microsoft
 description: 了解如何使用 Microsoft 标识平台构建单页应用程序（方案概述）。
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f59e8c628d7ba37aaf258541664e40e1d4a2dc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6ab7b0f1e59504eae64422fd4bbaf6f9e0804ed4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764672"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919811"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 

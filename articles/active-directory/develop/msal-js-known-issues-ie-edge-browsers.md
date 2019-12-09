@@ -1,29 +1,25 @@
 ---
-title: Internet Explorer 和 Microsoft Edge 的已知问题（MSAL for JavaScript）
+title: Internet Explorer & Microsoft Edge 上的 MSAL 问题 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）与 Internet Explorer 和 Microsoft Edge 浏览器的已知问题。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b4e24a02bcce372f020833a82b685748432c39
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe9f8ff420698d5afe617973abc7874256efe260
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934842"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916377"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器中具有 MSAL 的已知问题
 

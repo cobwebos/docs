@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024786"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914075"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -28,7 +28,7 @@ ms.locfileid: "73024786"
 
 将某个组设置为过期后：
 
-- 具有用户活动的组在过期时自动续订
+- 具有用户活动的组在快要过期时自动续订
 - 如果组未自动续订，则会通知组的所有者续订组
 - 未续订的任何组将被删除
 - 组所有者或管理员可在 30 日内还原任何被删除的 Office 365 组。
@@ -62,7 +62,7 @@ ms.locfileid: "73024786"
 
 角色 | 权限
 -------- | --------
-全局管理员或用户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
+全局管理员、组管理员或用户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
 用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
 
 有关还原已删除组的权限的详细信息，请参阅[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)。
@@ -88,7 +88,7 @@ ms.locfileid: "73024786"
 > [!NOTE]
 > 首次设置过期时，超过过期时间间隔的任何组都将设置为35天直到过期，除非自动续订了组或所有者续订了组。
 >
-> 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程可能需要长达24小时。
+> 删除并还原动态组时，会将其视为新组，并根据规则重新填充。 此过程最多可能需要 24 小时。
 >
 > 团队中使用的组的过期通知出现在 "团队所有者" 源中。
 

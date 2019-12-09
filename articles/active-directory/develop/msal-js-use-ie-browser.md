@@ -1,29 +1,25 @@
 ---
-title: 使用 Internet Explorer （适用于 JavaScript 的 Microsoft 身份验证库）
+title: 将 Internet Explorer 用于 MSAL |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解如何在 Internet Explorer 浏览器中使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。
+description: 在 Internet Explorer 浏览器中使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15502217edc6f3fd723076eda78d06fcf090aa49
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 715e92a10ca0b4cbe38119931bc66d36c3b9259a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150489"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916275"
 ---
 # <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>通过 MSAL 使用 Internet Explorer 和 Microsoft Edge 浏览器
 

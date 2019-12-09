@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65526fe501b190f9bf76c58ab1c14b5ec35fe49d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376021"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706919"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "70376021"
     > [!NOTE]
     > 这些不是实际值。 需要使用实际的登录 URL 和标识符（稍后在本教程中介绍）来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”    。 选择“下载”以下载证书，并将其保存在计算机上。 
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”    。 
 
    ![“SAML 签名证书”部分的屏幕截图，其中突出显示了“下载”](common/certificatebase64.png)
 
@@ -271,7 +271,7 @@ ms.locfileid: "70376021"
 
           1. 当系统提示你输入凭据时，请输入凭据。 然后，会看到以下页面。 会发生“SSO 注销测试结果”  错误。 忽略此错误，然后选择“激活”  。
 
-             ![“测试结果”页面的屏幕截图](./media/servicenow-tutorial/servicenowactivate.png "配置单一登录")
+             ![“测试结果”页的屏幕截图](./media/servicenow-tutorial/servicenowactivate.png "配置单一登录")
   
 6. 若要手动配置 ServiceNow  ，请执行以下步骤：
 
@@ -279,7 +279,7 @@ ms.locfileid: "70376021"
 
     1. 在左窗格中，选择“标识提供者”  。
 
-        ![多提供程序 SSO 的屏幕截图，其中突出显示了“标识提供者”](./media/servicenow-tutorial/tutorial_servicenow_07.png "配置单一登录")
+        ![“多提供程序 SSO”的屏幕截图，其中突出显示了“标识提供者”](./media/servicenow-tutorial/tutorial_servicenow_07.png "配置单一登录")
 
     1. 在“标识提供者”  对话框中，选择“新建”。 
 
@@ -299,7 +299,7 @@ ms.locfileid: "70376021"
 
     1. 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
-        ![标识提供者的屏幕截图](./media/servicenow-tutorial/ic7694982.png "配置单一登录")
+        ![“标识提供者”的屏幕截图](./media/servicenow-tutorial/ic7694982.png "配置单一登录")
 
         * 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
 
@@ -323,7 +323,7 @@ ms.locfileid: "70376021"
 
         * 当系统提示你输入凭据时，请输入凭据。 然后，会看到以下页面。 会发生“SSO 注销测试结果”  错误。 忽略此错误，然后选择“激活”  。
 
-          ![“测试结果”页面的屏幕截图](./media/servicenow-tutorial/servicenowactivate.png "配置单一登录")
+          ![“测试结果”页的屏幕截图](./media/servicenow-tutorial/servicenowactivate.png "配置单一登录")
 
 ### <a name="create-servicenow-test-user"></a>创建 ServiceNow 测试用户
 
@@ -356,7 +356,7 @@ ms.locfileid: "70376021"
 
 5. 在“X.509 证书”  对话框中，执行以下步骤：
 
-    ![“X.509证书”对话框的屏幕截图](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
+    ![“X.509 证书”对话框的屏幕截图](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
     a. 对于“名称”  ，输入配置名称（例如：TestSAML2.0）  。
 
@@ -376,7 +376,7 @@ ms.locfileid: "70376021"
 
 7. 在“添加新的标识提供者”  对话框的“配置标识提供者”  下，执行以下步骤：
 
-    ![“添加新标识提供者”对话框的屏幕截图](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
+    ![“添加新的标识提供者”对话框的屏幕截图](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
 
     a. 对于“名称”  ，输入配置名称（例如：SAML 2.0）  。
 
@@ -402,7 +402,7 @@ ms.locfileid: "70376021"
 
 9. 在“其他服务提供者属性”  下，执行以下步骤：
 
-    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了各种属性](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
+    ![“添加新标识提供者”对话框的屏幕截图，其中突出显示了各个属性](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
 
     a. 对于“ServiceNow 主页”  ，输入 ServiceNow 实例主页的 URL。
 

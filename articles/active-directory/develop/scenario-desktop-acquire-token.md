@@ -1,5 +1,6 @@
 ---
-title: 桌面应用程序调用 web Api （获取应用程序的令牌）-Microsoft 标识平台
+title: 获取用于调用 web Api 的桌面应用程序的令牌 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何构建一个可调用 web Api （为应用程序获取令牌）的桌面应用程序
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e33eed25f79d90bd513e79b23619fd4c575bc874
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175463"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920220"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>用于调用 web Api 的桌面应用-获取令牌
 
@@ -260,7 +261,7 @@ MSAL 为大多数平台提供 Web UI 实现，但在某些情况下，可能还�
 
 若要使用 `.WithCustomWebUI`，需要执行以下操作：
 
-  1. 实现 `ICustomWebUi` 接口（请参阅[此处](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)。 你基本上需要实现一种方法 `AcquireAuthorizationCodeAsync` 接受授权代码 URL （由 MSAL.NET 计算），让用户经历与标识提供者的交互，然后返回标识提供者所用的 URL重新调用实现（包括授权代码）。 如果遇到问题，则实现应引发 `MsalExtensionException` 异常，以便与 MSAL 完美合作。
+  1. 实现 `ICustomWebUi` 接口（请参阅[此处](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)。 你基本上需要实现一个 `AcquireAuthorizationCodeAsync` 接受授权代码 URL （由 MSAL.NET 计算）的方法，使用户可以经历与标识提供者的交互，然后返回标识提供者将通过其调用实现的 URL （包括授权代码）。 如果遇到问题，则实现应引发 `MsalExtensionException` 异常，以便与 MSAL 完美合作。
   2. 在 `AcquireTokenInteractive` 调用中，可以使用 `.WithCustomUI()` 修饰符传递自定义 web UI 的实例
 
      ```CSharp
@@ -1108,7 +1109,7 @@ if not result:
 
 根据你是为公用客户端应用程序（桌面）还是机密客户端应用程序（web 应用/web API、后台应用）编写令牌缓存序列化，这些策略会有所不同。
 
-由于 MSAL V2. x 可以使用多个选项，具体取决于是否要将缓存仅序列化到 MSAL.NET 格式（与 MSAL 共有的统一格式缓存，以及跨平台），或者是否也要支持[旧](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)的令牌缓存ADAL V3 的序列化。
+由于 MSAL V2，你有多个选项，具体取决于你是要将缓存仅序列化到 MSAL.NET 格式（与 MSAL 共有的统一格式缓存，还可以跨平台使用），还是需要支持 ADAL V3 的[旧](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)令牌缓存序列化。
 
 在以下示例中，将对令牌缓存序列化进行自定义，以共享 ADAL.NET 1.x、ADAL.NET 1.x 和 MSAL.NET 之间的 SSO 状态： [active-dotnet-v1 到 v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
 

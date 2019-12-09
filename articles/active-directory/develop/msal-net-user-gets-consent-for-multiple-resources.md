@@ -1,29 +1,25 @@
 ---
-title: 获取几个资源的同意（适用于 .NET 的 Microsoft 身份验证库）
+title: 获取几个资源的许可（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解用户如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）获取几个资源的预先同意。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a3d50e94f76341dc349eda997d6e25ca96dec0
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 89afdbed6870b4ce739ed51131def686c41a3015
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802704"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921755"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户使用 MSAL.NET 获取几个资源的许可
 Microsoft 标识平台终结点不允许同时为多个资源获取令牌。 使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）时，获取令牌方法中的作用域参数应该只包含单个资源的作用域。 不过，你可以通过使用 `.WithExtraScopeToConsent` builder 方法指定其他作用域来提前预先同意多个资源。

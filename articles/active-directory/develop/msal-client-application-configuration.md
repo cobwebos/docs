@@ -1,29 +1,25 @@
 ---
-title: 客户端应用程序配置（Microsoft 身份验证库）
+title: 客户端应用程序配置（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解 Microsoft 身份验证库（MSAL）中公用客户端应用程序和机密客户端应用程序的配置选项。
+description: 使用 Microsoft 身份验证库（MSAL）了解公用客户端应用程序和机密客户端应用程序的配置选项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9a18f1ab5b86cbdb74a61a9520e89ecf920478
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f3fd70757fe5ce8761fd3444f3f0dd31e2bfcc3b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803186"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917057"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -127,7 +123,7 @@ Azure AD 云机构有两部分：
 
 你可以使用 `RedirectUri` 属性（例如，如果你使用的是代理）来重写重定向 URI。 下面是此方案的重定向 Uri 的一些示例：
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc：//com.microsoft.identity.client.sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $ "msauth。{//Auth ";
 
 有关其他 iOS 详细信息，请参阅[将使用 Microsoft Authenticator 的 ios 应用程序从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration-ios-broker.md) ，并[利用 iOS 上的代理](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)。

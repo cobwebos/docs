@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 6884c8f1bf7a462b5d93f5c9ea23a2f64021fd9e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328490"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925183"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
@@ -22,7 +22,7 @@ ms.locfileid: "74328490"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>包 - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
 需要**3.0.5 或更高**版本的[Microsoft Azure web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions)包。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。 
 
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 
 下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[ C#脚本函数](functions-reference-csharp.md)。
 
 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -111,7 +111,7 @@ public static void Run(ILogger log)
 
 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -142,7 +142,7 @@ module.exports = async function (context, warmupContext) {
 
 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -175,7 +175,7 @@ def main(warmupContext: func.Context) -> None:
 
 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-*function.json* 文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -221,9 +221,9 @@ public void run( ExecutionContext context) {
 
 有关完整示例，请参阅[触发器示例](#trigger---example)。
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-C# 脚本不支持特性。
+C#脚本不支持特性。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -241,13 +241,13 @@ Python 不支持特性。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 *function.json* 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-| **类型** | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
-| **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| **名称** | 不适用| 必需-在函数代码中使用的变量名称。|
+| 类型 | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| direction | 不适用| 必需 - 必须设置为 `in`。 |
+| name | 不适用| 必需-在函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120493"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913717"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -34,9 +34,9 @@ ms.locfileid: "74120493"
 用于存储和检索数据的传统卷作为 Azure 存储支持的 Kubernetes 资源创建。 你可以手动创建这些数据卷并直接分配给 Pod，也可以让 Kubernetes 自动创建它们。 这些数据卷可以使用 Azure 磁盘或 Azure 文件：
 
 - *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘装载为*ReadWriteOnce*，因此仅适用于单个 pod。 对于可以同时由多个 pod 访问的存储卷，请使用 Azure 文件。
-- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的Azure 高级存储。
+- *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 Hdd 支持的 Azure 标准存储，也可以使用由高性能 Ssd 支持的 Azure 高级存储。
 > [!NOTE] 
-> Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储。
+> Azure 文件支持 AKS 群集中运行 Kubernetes 1.13 或更高版本的高级存储。
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
@@ -60,8 +60,8 @@ PersistentVolume 可以由群集管理员*静态*创建，或者由 Kubernetes A
 
 在 AKS 中会创建两个初始 StorageClass：
 
-- *default*：使用 Azure 标准存储创建托管磁盘。 回收策略会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
-- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略同样会指出，在使用基础 Azure 磁盘的 Pod 被删除时，即应删除该磁盘。
+- *default*：使用 Azure 标准存储创建托管磁盘。 回收策略指示在删除使用它的持久卷时，将删除基础 Azure 磁盘。
+- *managed-premium*：使用 Azure 高级存储创建托管磁盘。 回收策略再次指示在删除使用它的持久卷时，将删除基础 Azure 磁盘。
 
 如果没有为永久性卷指定 StorageClass，则会使用默认 StorageClass。 请求永久性卷时应小心，以便它们使用你需要的适当存储。 可使用 `kubectl` 创建 StorageClass 来满足其他需求。 以下示例使用高级托管磁盘并指定在删除 Pod 时应该*保留*基础 Azure 磁盘：
 
@@ -123,14 +123,14 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
+有关相关的最佳实践，请参阅[AKS 中存储和备份的最佳实践][operator-best-practices-storage]。
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 
 - [使用 Azure 磁盘创建静态卷][aks-static-disks]
-- [使用 Azure 文件存储创建静态卷][aks-static-files]
+- [使用 Azure 文件创建静态卷][aks-static-files]
 - [使用 Azure 磁盘创建动态卷][aks-dynamic-disks]
-- [使用 Azure 文件存储创建动态卷][aks-dynamic-files]
+- [使用 Azure 文件创建动态卷][aks-dynamic-files]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -138,7 +138,7 @@ spec:
 - [Kubernetes/AKS 标识][aks-concepts-identity]
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
-- [Kubernetes/AKS 规模][aks-concepts-scale]
+- [Kubernetes/AKS scale][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

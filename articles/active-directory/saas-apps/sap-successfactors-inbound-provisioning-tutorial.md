@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: 85f3c8b9bc4167350b8a56f118128b89df142611
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cc17b8158c847bff5f07d6088a99566dc499d1bf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896917"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914767"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配（预览版）
-本教程的目的是演示将辅助角色数据从 SuccessFactors Employee Central 导入到 Active Directory 和 Azure Active Directory （包括电子邮件地址的可选写回 SuccessFactors）所需执行的步骤。
+本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../manage-apps/sap-successfactors-attribute-reference.md)。
+
+>[!NOTE]
+>如果要从 SuccessFactors 预配的用户需要本地 AD 帐户，并选择性地使用 Azure AD 帐户，请使用本教程。 如果 SuccessFactors 中的用户只需要 Azure AD 帐户（仅限云的用户），则请参阅[配置 SAP SuccessFactors 以 Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)用户预配教程。 
+
 
 ## <a name="overview"></a>概述
 
@@ -69,7 +73,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 4. Azure AD Connect 预配代理使用服务帐户添加/更新 AD 帐户数据。
 5. Azure AD Connect 同步引擎运行增量同步以获取 AD 中的更新。
 6. Active Directory 域服务更新会与 Azure Active Directory 同步。
-7. 如果配置了 SuccessFactors 写回连接器，则它会根据使用的匹配属性将回发电子邮件属性和用户名写到 SuccessFactors。
+7. 如果已配置[SuccessFactors 写回应用程序](sap-successfactors-writeback-tutorial.md)，则它会根据所使用的匹配属性将回发电子邮件属性写入 SuccessFactors。
 
 ## <a name="planning-your-deployment"></a>计划部署
 
@@ -109,6 +113,10 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 * 在同一框中向下滚动，然后选择 "**员工中心 API**"。 添加权限，如下所示，使用 odata api 并使用 ODATA API 进行编辑。 如果你计划使用同一帐户进行写回 SuccessFactors 方案，请选择 "编辑" 选项。 
   > [!div class="mx-imgBorder"]
   > ![读取写入权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+  >[!NOTE]
+  >有关此预配应用检索到的属性的完整列表，请参阅[SuccessFactors 特性引用](../manage-apps/sap-successfactors-attribute-reference.md)
+
 * 单击“完成”。 单击“保存更改”。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
@@ -294,6 +302,10 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 
 1. 在 "**属性映射**" 部分中，可以定义单个 SuccessFactors 属性映射到 Active Directory 属性的方式。
 
+  >[!NOTE]
+  >有关应用程序支持的 SuccessFactors 特性的完整列表，请参阅[SuccessFactors 特性引用](../manage-apps/sap-successfactors-attribute-reference.md)
+
+
 1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
 
       * **映射类型**
@@ -347,20 +359,9 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [详细了解用于入站预配的支持 SuccessFactors 属性](../manage-apps/sap-successfactors-attribute-reference.md)
+* [了解如何配置电子邮件写回 SuccessFactors](sap-successfactors-writeback-tutorial.md)
 * [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
 * [了解如何在 SuccessFactors 与 Azure Active Directory 之间配置单一登录](successfactors-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
 * [了解如何导出和导入预配配置](../manage-apps/export-import-provisioning-configuration.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

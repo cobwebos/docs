@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bff3547456c03ae313e7465238872670965765f1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784606"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927681"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -89,6 +89,19 @@ Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装�
 ## <a name="datasets-and-data-preparation"></a>数据集和数据准备
 
 这些是 Azure 机器学习数据集的已知问题。
+
+### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>TypeError： FileNotFound：没有此类文件或目录
+
+如果您提供的文件路径不在文件所在位置，则会出现此错误。 你需要确保引用文件的方式与你在计算目标上将数据集装载到的位置一致。 为了确保确定状态，我们建议在将数据集装载到计算目标时使用抽象路径。 例如，在下面的代码中，我们将数据集装载到计算目标的文件系统的根目录下，`/tmp`。 
+
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
+
+如果不包含前导正斜杠 "/"，则需要为工作目录添加前缀，例如，在计算目标上 `/mnt/batch/.../tmp/dataset`，以指示要将数据集装载到的位置。 
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>无法从 HTTP 或 ADLS Gen 2 读取 Parquet 文件
 
@@ -213,7 +226,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 
 
 > [!WARNING]
-> 在执行以下操作之前，请检查 Azure Kubernetes Service 群集的版本。 如果群集版本等于或大于1.14，你将无法重新将群集连接到 Azure 机器学习工作区。
+> 在执行以下操作之前，请检查 Azure Kubernetes Service 群集的版本。 如果群集版本等于或大于1.14，你将无法重新连接到 Azure 机器学习工作区。
 
 可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些更新。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
 
@@ -263,7 +276,7 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError （未定义名称），AttributeError （对象没有属性）
 此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保查看训练脚本，并修复错误，然后重试。 
 
-### <a name="horovod-is-shutdown"></a>Horovod 关闭
+### <a name="horovod-is-shut-down"></a>Horovod 已关闭
 在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以方便区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
 
 ## <a name="labeling-projects-issues"></a>标记项目问题
@@ -282,6 +295,6 @@ Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特
 
 若要加载所有标记的图像，请选择**第一个**按钮。 **第一个**按钮将返回到列表的前面，但会加载所有标记的数据。
 
-### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>如果在为对象检测标记时按 Esc 键，则会在左上角创建一个0大小的标签。 提交处于此状态的标签失败。
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>如果在为对象检测标记时按 Esc 键，则会在左上角创建大小为零的标签。 提交处于此状态的标签失败。
 
 单击标签旁边的交叉标记，删除标签。

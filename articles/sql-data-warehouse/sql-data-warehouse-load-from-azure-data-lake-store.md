@@ -7,40 +7,43 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685692"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923627"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>将数据从 Azure Data Lake Storage 加载到 SQL 数据仓库
-使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议将数据导入 SQL 数据仓库以获得最佳性能。
+本指南概述了如何使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议将数据导入 SQL 数据仓库以获得最佳性能。 
 
+> [!NOTE]  
+> 加载的替代方法是当前在公共预览版中的[复制语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。 若要提供有关 COPY 语句的反馈，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com。
+>
 > [!div class="checklist"]
+
 > * 创建从 Data Lake Storage 加载所需的数据库对象。
 > * 连接到 Data Lake Storage 目录。
 > * 将数据载入 Azure SQL 数据仓库。
 
-如果没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 若要运行本教程，需要：
 
-* 用于服务到服务身份验证的 Azure Active Directory 应用程序。 若要创建，请遵循 [Active directory 身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
 * Azure SQL 数据仓库。 请参阅[创建和查询 Azure SQL 数据仓库](create-data-warehouse-portal.md)。
-
-* Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)。 
+* Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)。 对于此存储帐户，你将需要配置或指定以下要加载的凭据之一：存储帐户密钥、Azure 目录应用程序用户，或拥有存储帐户的相应 RBAC 角色的 AAD 用户。 
 
 ##  <a name="create-a-credential"></a>创建凭据
-若要访问你的 Data Lake Storage 帐户，你将需要创建一个数据库主密钥，以加密下一步中使用的凭据机密。 然后创建数据库范围的凭据。 使用服务主体进行身份验证时，数据库范围凭据存储 AAD 中设置的服务主体凭据。 你还可以在 Gen2 的数据库作用域凭据中使用存储帐户密钥。 
+使用 AAD 传递进行身份验证时，可以跳过此部分并继续 "创建外部数据源"。 使用 AAD 传递时，无需创建或指定数据库范围的凭据，但请确保 AAD 用户具有相应的 RBAC 角色（存储 Blob 数据读取器、参与者或所有者角色）到存储帐户。 [此处](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)介绍了更多详细信息。 
+
+若要访问你的 Data Lake Storage 帐户，你将需要创建一个数据库主密钥来加密凭据机密。 然后创建数据库范围的凭据来存储机密。 使用服务主体（Azure Directory 应用程序用户）进行身份验证时，数据库范围的凭据存储 AAD 中设置的服务主体凭据。 你还可以使用数据库范围凭据来存储 Gen2 的存储帐户密钥。
 
 若要使用服务主体连接到 Data Lake Storage，你必须**首先**创建一个 Azure Active Directory 应用程序，创建一个访问密钥，并授予应用程序对 Data Lake Storage 帐户的访问权限。 有关说明，请参阅[使用 Active Directory 对 Azure Data Lake Storage 进行身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>创建外部数据源
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 命令存储数据的位置。 
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 命令存储数据的位置。 如果要使用 AAD 传递进行身份验证，则不需要凭据参数。 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -204,7 +207,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>优化统计信息
 最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
 
-如果决定针对每个表的每个列创建单列统计信息，可以使用 `prc_sqldw_create_stats`statistics[（统计信息）一文中的存储过程代码示例 ](sql-data-warehouse-tables-statistics.md)。
+如果决定针对每个表的每个列创建单列统计信息，可以使用 [statistics](sql-data-warehouse-tables-statistics.md)（统计信息）一文中的存储过程代码示例 `prc_sqldw_create_stats`。
 
 以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 
@@ -216,8 +219,8 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 完成了以下操作：
 > [!div class="checklist"]
-> * 创建需要从 Data Lake Storage Gen1 加载的数据库对象。
-> * 连接到 Data Lake Storage Gen1 目录。
+> * 已创建从 Data Lake Storage 加载所需的数据库对象。
+> * 已连接到 Data Lake Storage 目录。
 > * 将数据加载到了 Azure SQL 数据仓库。
 >
 

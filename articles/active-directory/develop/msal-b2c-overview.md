@@ -1,28 +1,25 @@
 ---
-title: 了解应用程序如何使用 Microsoft 身份验证库与 Azure AD B2C 进行交互
+title: 结合使用 MSAL 与 Azure Active Directory B2CLearn |Microsoft
+titleSuffix: Microsoft identity platform
 description: 借助 Microsoft 身份验证库 (MSAL)，应用程序可以与 Azure AD B2C进行交互，并获取令牌来调用受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、其他来源的 Web API 或你自己的 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eea0fd03b1df49e912a867b0c667ff0fd28c08a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: f080c14cd0aa20bd312b4be8d9eacd8d901b7cef
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097619"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917023"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>使用 Microsoft 身份验证库与 Azure Active Directory B2C 交互
 
@@ -32,7 +29,7 @@ ms.locfileid: "71097619"
 
 本教程演示如何使用 MSAL 与 Azure AD B2C 进行交互。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果尚未创建自己的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)，请立即创建一个。 还可以使用现有的 Azure AD B2C 租户。
 
@@ -44,7 +41,7 @@ ms.locfileid: "71097619"
 
 若要实现身份验证，首先需要注册你的应用程序。 请遵循[注册应用程序](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)来执行详细步骤。
 
-### <a name="step-2-download-the-sample-application"></a>步骤 2：下载示例应用程序
+### <a name="step-2-download-the-sample-application"></a>步骤2：下载示例应用程序
 
 下载示例作为 zip 文件，或从 GitHub 克隆：
 
@@ -52,7 +49,7 @@ ms.locfileid: "71097619"
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>步骤 3：配置身份验证
+### <a name="step-3-configure-authentication"></a>步骤3：配置身份验证
 
 1. 打开示例中的 index.html 文件。
 
@@ -84,7 +81,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 本教程中的[用户流](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)的名称为 B2C_1_signupsignin1。 如果使用了不同的用户流名称，请将 authority 值设置为该名称。
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>步骤 4：将应用程序配置为使用 `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>步骤4：将应用程序配置为使用 `b2clogin.com`
 
 可以使用 `b2clogin.com` 而不是 `login.microsoftonline.com` 作为重定向 URL。 设置标识提供者以进行注册和登录时，会在 Azure AD B2C 应用程序中执行此操作。
 

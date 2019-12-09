@@ -1,5 +1,5 @@
 ---
-title: 使用 "执行 SSIS 包" 活动运行 SSIS 包-Azure
+title: 使用 "执行 SSIS 包" 活动运行 SSIS 包
 description: 本文介绍如何使用 "执行 SSIS 包" 活动在 Azure 数据工厂管道中运行 SQL Server Integration Services （SSIS）包。
 services: data-factory
 documentationcenter: ''
@@ -8,22 +8,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/14/2019
-author: swinarko
 ms.author: sawinark
+author: swinarko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/14/2019
+ms.openlocfilehash: 6027c2d94535ca2ef5c41e7027fe070c6ccb21a0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122963"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926499"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用 "执行 SSIS 包" 活动在 Azure 数据工厂管道中运行 SQL Server Integration Services （SSIS）包。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,9 +56,9 @@ ms.locfileid: "74122963"
 
     或者，你可以使用存储在 Azure 密钥保管库中的机密作为其值。 为此，请选中相关凭据旁边的 " **AZURE 密钥保管库**" 复选框。 选择或编辑现有的 key vault 链接服务，或创建一个新的服务。 然后选择凭据值的机密名称或版本。
 
-    创建或编辑 key vault 链接服务时，可以选择或编辑现有密钥保管库，也可以创建新的密钥保管库。 如果尚未这样做，请确保向数据工厂托管标识授予对密钥保管库的访问权限。 此外，还可以采用以下格式直接输入机密：`<Key vault linked service name>/<secret name>/<secret version>`。 如果你的包需要32位运行时才能运行，请选中 " **32 位运行时**" 复选框。
+    创建或编辑 key vault 链接服务时，可以选择或编辑现有密钥保管库，也可以创建新的密钥保管库。 如果尚未这样做，请确保向数据工厂托管标识授予对密钥保管库的访问权限。 你还可以按以下格式直接输入机密： `<Key vault linked service name>/<secret name>/<secret version>`。 如果你的包需要32位运行时才能运行，请选中 " **32 位运行时**" 复选框。
 
-   对于**包位置**，请选择 " **SSISDB**"、"**文件系统（包）** "、"**文件系统（项目）** " 或 "**嵌入式包**"。 如果你选择**SSISDB**作为包位置，并且如果你的 Azure-SSIS IR 是使用 Azure SQL 数据库服务器或托管实例承载的 SSIS 目录（SSISDB）设置的，则会自动选择到 SSISDB 中。 
+   对于**包位置**，请选择 " **SSISDB**"、"**文件系统（包）** "、"**文件系统（项目）** " 或 "**嵌入式包**"。 如果你选择**SSISDB**作为包位置，并且如果使用 Azure SQL 数据库服务器或托管实例承载的 SSIS 目录（SSISDB）预配了你的 Azure-SSIS IR，则会自动选择该文件。 
 
     如果你的 Azure-SSIS IR 正在运行，并且清除了 "**手动输入**" 复选框，请浏览并从 SSISDB 中选择现有的文件夹、项目、包或环境。 选择 "**刷新**" 可从 SSISDB 中获取新添加的文件夹、项目、包或环境，使其可供浏览和选择。 若要浏览或选择用于执行包的环境，必须事先配置项目以将这些环境添加为 SSISDB 下的相同文件夹中的引用。 有关详细信息，请参阅[创建和映射 SSIS 环境](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)。
 
@@ -69,13 +70,13 @@ ms.locfileid: "74122963"
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   如果选择 "**文件系统（包）** " 作为包位置，并且如果你的 Azure-SSIS IR 是在没有 SSISDB 的情况下设置的，则会自动选择你的包，方法是提供包文件的通用命名约定（UNC）路径（`.dtsx`）。 例如，如果你将包存储在 Azure 文件中，则其包路径 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
+   如果选择 "**文件系统（包）** " 作为包位置，并且如果你的 Azure-SSIS IR 是在没有 SSISDB 的情况下设置的，则会自动选择你的包，方法是在 "**包路径**" 框中提供包文件（`.dtsx`）的通用命名约定（UNC）路径。 例如，如果你将包存储在 Azure 文件中，则其包路径 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`。 
    
    如果将包配置为单独的文件，还需要在 "**配置路径**" 框中提供配置文件（`.dtsConfig`）的 UNC 路径。 例如，如果你将配置存储在 Azure 文件中，则其配置路径将 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`。
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
 
-   如果选择 "**文件系统（项目）** " 作为包位置，请在 "**项目路径**" 框中提供项目文件的 UNC 路径（`.ispac`），并在**包名称**中提供项目的包文件（`.dtsx`），以指定要运行的包。文本框. 例如，如果你将项目存储在 Azure 文件中，则其项目路径将 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
+   如果选择 "**文件系统（项目）** " 作为包位置，请在 "**项目路径**" 框中提供项目`.ispac`文件的 UNC 路径，然后在 "**包名称**" 框中提供项目的包文件（`.dtsx`），以指定要运行的包。 例如，如果你将项目存储在 Azure 文件中，则其项目路径将 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`。
 
    ![在“设置”选项卡上设置属性 - 手动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
@@ -99,17 +100,17 @@ ms.locfileid: "74122963"
    
    对于前面提到的所有 UNC 路径，完全限定的文件名必须少于260个字符。 目录名称必须少于248个字符。
 
-1. 在 "执行 SSIS 包" 活动的 " **SSIS 参数**" 选项卡上，如果 Azure-SSIS IR 正在运行，则选择 " **SSISDB** " 作为 "包位置"，并清除 "**设置**" 选项卡上的 "**手动条目**" 复选框，即现有 SSIS将显示你从 SSISDB 中选择的项目或包中的参数，以便为你分配值。 否则，你可以逐个输入这些值，以手动为其赋值。 请确保它们存在并正确输入，以便成功执行包。 
+1. 在 "执行 SSIS 包" 活动的 " **SSIS 参数**" 选项卡上，如果 Azure-SSIS IR 正在运行，则选择 " **SSISDB** " 作为 "包位置"，并清除 "**设置**" 选项卡上的 "**手动条目**" 复选框，将显示所选项目或包中的现有 SSIS 参数，以便为你分配值。 否则，你可以逐个输入这些值，以手动为其赋值。 请确保它们存在并正确输入，以便成功执行包。 
    
-   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入要在配置文件或此选项卡中向其分配值的敏感参数。 
+   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入敏感参数，以在配置文件或此选项卡上为它们分配值。 
    
    为参数赋值时，可以通过使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量来添加动态内容。 或者，你可以使用存储在密钥保管库中的机密作为它们的值（请参阅上一节）。
 
    ![在“SSIS 参数”选项卡上设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. 在 "执行 SSIS 包" 活动的 "**连接管理器**" 选项卡上，如果 Azure-SSIS IR 正在运行，将选择 " **SSISDB** " 作为包位置，并清除 "**设置**" 选项卡上的 "**手动输入**" 复选框，即现有系统会显示所选项目或包中的连接管理器，以便为其属性分配值。 否则，你可以逐个输入这些值，以手动为其属性赋值。 请确保它们存在并正确输入，以便成功执行包。 
+1. 在 "执行 SSIS 包" 活动的 "**连接管理器**" 选项卡上，如果 Azure-SSIS IR 正在运行，将选择 " **SSISDB** " 作为 "包位置"，并清除 "**设置**" 选项卡上的 "**手动输入**" 复选框，将显示所选项目或包中的现有连接管理器，以便为其属性分配值。 否则，你可以逐个输入这些值，以手动为其属性赋值。 请确保它们存在并正确输入，以便成功执行包。 
    
-   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入要在配置文件或此选项卡上为这些属性分配值的敏感连接管理器属性。 
+   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入敏感的连接管理器属性，以便在配置文件或此选项卡上为这些属性分配值。 
    
    将值分配给连接管理器属性时，可以通过使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量来添加动态内容。 或者，你可以使用存储在密钥保管库中的机密作为它们的值（请参阅上一节）。
 
@@ -117,7 +118,7 @@ ms.locfileid: "74122963"
 
 1. 在 "执行 SSIS 包" 活动的 "**属性替代**" 选项卡上，逐个输入所选包中现有属性的路径，以手动为其赋值。 请确保它们存在并正确输入，以便成功执行包。 例如，若要覆盖用户变量的值，请按以下格式输入其路径： `\Package.Variables[User::<variable name>].Value`。 
    
-   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入要在配置文件或此选项卡中向其分配值的敏感属性。 
+   如果在通过 SQL Server Data Tools 和**文件系统（包）** 或**文件系统（项目）** 创建包时使用了**EncryptSensitiveWithUserKey**保护级别作为包位置，则还需要重新输入敏感属性，以便在配置文件或此选项卡上为这些属性分配值。 
    
    为属性赋值时，可以通过使用表达式、函数、数据工厂系统变量和数据工厂管道参数或变量来添加动态内容。
 
@@ -392,7 +393,7 @@ ms.locfileid: "74122963"
 
 2. 在 Azure PowerShell 中，切换到*C:\ADF\RunSSISPackage*文件夹。
 
-3. 若要创建管道 **RunSSISPackagePipeline**，请运行 **Set-AzDataFactoryV2Pipeline** cmdlet。
+3. 若要创建管道**RunSSISPackagePipeline**，请运行**AzDataFactoryV2Pipeline** cmdlet。
 
    ```powershell
    $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -412,7 +413,7 @@ ms.locfileid: "74122963"
    ```
 
 ### <a name="run-the-pipeline"></a>运行管道
-使用 **Invoke-AzDataFactoryV2Pipeline** cmdlet 运行该管道。 此 cmdlet 返回管道运行 ID，用于将来的监视。
+使用**AzDataFactoryV2Pipeline** cmdlet 运行管道。 此 cmdlet 返回管道运行 ID，用于将来的监视。
 
 ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
@@ -475,21 +476,21 @@ while ($True) {
    ```
     
 1. 在 Azure PowerShell 中，切换到*C:\ADF\RunSSISPackage*文件夹。
-1. 运行 **Set-AzDataFactoryV2Trigger** cmdlet，以创建触发器。 
+1. 运行 AzDataFactoryV2Trigger cmdlet，这**将**创建触发器。 
 
    ```powershell
    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-1. 默认情况下，触发器处于停止状态。 运行 **Start-AzDataFactoryV2Trigger** cmdlet 以启动该触发器。 
+1. 默认情况下，触发器处于停止状态。 通过运行**AzDataFactoryV2Trigger** cmdlet 来启动触发器。 
 
    ```powershell
    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-1. 通过运行 **Get-AzDataFactoryV2Trigger** cmdlet 确认该触发器已启动。 
+1. 通过运行**AzDataFactoryV2Trigger** cmdlet 确定触发器是否已启动。 
 
    ```powershell
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `

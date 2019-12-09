@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228065"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912986"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
@@ -46,7 +46,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 
 专用链接服务指定以下属性： 
 
-|属性 |说明  |
+|properties |说明  |
 |---------|---------|
 |预配状态（provisioningState）  |一个只读属性，其中列出了私有链接服务的当前设置状态。 适用的预配状态为： "删除;因成功正在更新 "。 如果预配状态为 "成功"，则已成功设置专用链接服务。        |
 |别名（别名）     | 别名是服务的全局唯一的只读字符串。 它可帮助你屏蔽服务的客户数据，同时为你的服务创建一个易于共享的名称。 创建专用链接服务时，Azure 将为你的服务生成可与客户共享的别名。 你的客户可以使用此别名请求连接到你的服务。          |
@@ -101,7 +101,6 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 - 仅标准负载均衡器上支持 
 - 仅支持 IPv4 流量
 - 仅支持 TCP 流量
-- 只能从同一区域中的专用终结点访问
 - 不支持创建和管理 Azure 门户的体验
 - 使用代理协议的客户端连接信息对服务提供程序不可用
 

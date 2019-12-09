@@ -9,16 +9,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 4aab699ff0141b648066fae0de445c4467be7509
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048395"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928616"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure 混合权益
 
-在基于 vCore 的购买模型的预配计算机层级中，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。 
+在基于 vCore 的购买模型的预配计算层中，你可以使用[Azure 混合权益 SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)来交换现有许可证，以获得 SQL 数据库的折扣率。 此 Azure 权益使你可以通过使用本地 SQL Server 许可证和软件保障节省多达30% 的 Azure SQL 数据库。 
 
 > [!NOTE]
 > 更改为 Azure 混合权益不需要停机。
@@ -27,30 +27,38 @@ ms.locfileid: "74048395"
 
 ## <a name="choose-a-license-model"></a>选择许可证模型
 
-使用 Azure 混合权益，可以选择仅为底层 Azure 基础结构付费且将现有的 SQL Server 许可证用于 SQL 数据库引擎自身（基本计算定价），或者可以选择同时为底层基础结构和 SQL Server 许可证付费（许可证涵盖的定价）。
+使用 Azure 混合权益，你可以选择仅为基础 Azure 基础结构付费（通过使用 SQL 数据库引擎本身的 SQL Server 许可证（基础计算定价），也可以为底层基础结构和 SQL Server 付费许可证（许可证包括的定价）。
 
-可以使用 Azure 门户或下列 API 之一来选择或更改许可模型：
+您可以通过使用 Azure 门户或使用以下 Api 之一选择或更改许可模式：
 
-- 使用 PowerShell 设置或更新许可证类型：
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+使用 PowerShell 设置或更新许可证类型：
 
-- 使用 Azure CLI 设置或更新许可证类型：
+- [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)
+- [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+- [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
+- [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- 使用 REST API 设置或更新许可证类型：
+使用 Azure CLI 设置或更新许可证类型：
 
-  - [Databases - Create Or Update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+- [az sql db create](/cli/azure/sql/db#az-sql-db-create)
+- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
+- [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create)
+- [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)
+
+# <a name="rest-apitabrest"></a>[REST API](#tab/rest)
+
+使用 REST API 设置或更新许可证类型：
+
+- [数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)
+- [数据库 - 更新](/rest/api/sql/databases/update)
+- [托管实例 - 创建或更新](/rest/api/sql/managedinstances/createorupdate)
+- [托管实例 - 更新](/rest/api/sql/managedinstances/update)
+
+* * *
 
 ## <a name="next-steps"></a>后续步骤
 

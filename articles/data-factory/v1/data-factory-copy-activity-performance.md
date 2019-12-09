@@ -4,21 +4,20 @@ description: 了解使用复制活动时影响 Azure 数据工厂中数据移动
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c1cabbe3587079fa3fa5947eddbcf6cecaff3b98
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682916"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926801"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -141,7 +140,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | --- | --- |
 | 在基于文件的存储（Blob 存储；Data Lake Store；Amazon S3；本地文件系统；本地 HDFS）之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或用于混合复制的网关计算机的物理配置（将数据粘贴到本地数据存储或从本地数据存储复制）。 |
 | 将数据**从任何源数据存储复制到 Azure 表存储** |4 |
-| 所有其他源和接收器对 |1 |
+| 所有其他源和接收器对 |第 |
 
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
@@ -206,12 +205,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| 属性 | 说明 | 默认值 | 必选 |
+| properties | 描述 | 默认值 | 需要 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |不适用 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |不适用 |否 |
-| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
+| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |错误 |No |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |N/A |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |No |
+| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |错误 |No |
 
 以下是具有上表所述属性的复制活动的示例定义：
 
@@ -278,7 +277,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。
 
 ## <a name="considerations-for-the-source"></a>有关源的注意事项
-### <a name="general"></a>常规
+### <a name="general"></a>一般信息
 确保基础数据存储未被在其上运行或针对其运行的其他工作负荷过渡占用。
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)，帮助用户了解数据存储性能特征、尽量缩短响应时间以及最大化吞吐量。
@@ -300,7 +299,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分。
 
 ## <a name="considerations-for-the-sink"></a>有关接收器的注意事项
-### <a name="general"></a>常规
+### <a name="general"></a>一般信息
 确保基础数据存储未被在其上运行或针对其运行的其他工作负荷过渡占用。
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)。 这些主题可帮助用户了解数据存储性能特征、了解如何尽量缩短响应时间以及最大化吞吐量。
@@ -343,7 +342,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 在基于文件的数据存储之间复制文件：
   * 输入和输出数据集具有相同的文件格式设置或没有文件格式设置时，数据移动服务将执行二进制复制，而不进行任何序列化或反序列化。 与源和接收器文件格式设置彼此不同的情况相比，这提供的吞吐量更高。
   * 输入和输出数据集都为文本格式且只有编码类型不同时，数据移动服务仅进行编码转换。 它不进行任何序列化和反序列化，与二进制复制相比，这会产生一些性能开销。
-  * 当输入和输出数据集具有不同的文件格式或不同的配置时（如分隔符），数据移动服务会反序列化源数据，以进行流式传输、转换，并将其序列化为指示的输出格式。 与其他方案相比，此操作会产生更多的性能开销。
+  * 当输入和输出数据集具有不同的文件格式或不同的配置时（如分隔符），数据移动服务会反序列化源数据，以进行流式传输、转换，然后将其序列化为指示的输出格式。 与其他方案相比，此操作会产生更多的性能开销。
 * 向/从不基于文件的数据存储复制文件时（例如，从基于文件的存储到关系存储），需要序列化或反序列化步骤。 此步骤将造成大量的性能开销。
 
 **文件格式**：选择的文件格式可能会影响复制性能。 例如，Avro 是一种将元数据与数据一起存储的压缩二进制格式。 它在 Hadoop 生态系统中对处理和查询具有广泛的支持。 然而，Avro 进行序列化和反序列化的代价更高，这会导致比文本格式更低的复制吞吐量。 在选择整个处理流中使用的文件格式时，应考虑全面。 首先考虑数据存储的格式（源数据存储或从外部系统提取）；存储、分析处理和查询的最佳格式；应将数据导出到数据集市、供报表和可视化工具使用的格式。 有时，读取和写入性能不是最佳的文件格式可能对于整体分析处理来说却是不错的选择。
@@ -414,7 +413,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
 * Azure 存储（包括 Blob 存储和表存储）：[Azure 存储可伸缩性目标](../../storage/common/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)

@@ -4,29 +4,28 @@ titleSuffix: Microsoft identity platform
 description: 了解如何将 Azure Active Directory 身份验证库（ADAL） Java 应用迁移到 Microsoft 身份验证库（MSAL）。
 services: active-directory
 author: sangonzal
-manager: henrikm
-editor: twhitney
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
-ms.date: 11/4/2019
+ms.date: 11/04/2019
 ms.author: sagonzal
-ms.reviewer: navyari.canumalla
+ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fedfbae5c333991e8cfd014cce6882e61bb1a9dc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3e99cee3f21a4e0088fa97dcbec8fdcfdf982d80
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452206"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917380"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
-本文重点介绍需要做出哪些更改，才能迁移使用 Azure Active Directory 身份验证库 (ADAL) 的应用，使之使用 Microsoft 身份验证库 (MSAL)。
+本文重点介绍将使用 Azure Active Directory 身份验证库（ADAL）的应用程序迁移到使用 Microsoft 身份验证库（MSAL）所需的更改。
 
 适用于 Java 的 Microsoft 身份验证库（MSAL4J）和 Java Azure AD 身份验证库（ADAL4J）用于对 Azure AD 实体进行身份验证并从 Azure AD 请求令牌。 到现在为止，大多数开发人员都与 Azure AD 开发人员平台（1.0）合作，通过使用 Azure AD 身份验证库（ADAL）请求令牌来对 Azure AD 标识（工作和学校帐户）进行身份验证。
 

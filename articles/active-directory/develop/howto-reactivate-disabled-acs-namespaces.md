@@ -2,28 +2,25 @@
 title: 如何重新激活已禁用的 Azure 访问控制服务 (ACS) 命名空间
 description: 了解如何查找和启用 Azure 访问控制服务 (ACS) 命名空间，并请求延期启用到 2019 年 2 月 4 日为止。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482711"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917703"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活禁用的访问控制服务命名空间
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
 
 在 2017 年 11 月我们已宣布，Azure Active Directory (Azure AD) 服务 Microsoft Azure 访问控制服务 (ACS) 将在 2018 年 11 月 7 日停用。
 
@@ -93,16 +90,16 @@ ms.locfileid: "67482711"
 1. 登录到 Azure 门户并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
-    | 支持请求字段 | 值 |
+    | 支持请求字段 | Value |
     |-----------------------|--------------------|
     | **问题类型** | `Technical` |
-    | **订阅** | 设置为你的订阅 |
+    | 订阅 | 设置为你的订阅 |
     | **服务** | `All services` |
     | **资源** | `General question/Resource not available` |
     | **问题类型** | `ACS to SAS Migration` |
     | **主题** | 描述问题 |
 
-   ![显示新的技术支持请求的示例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![显示新技术支持请求的示例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 
@@ -127,4 +124,4 @@ ms.locfileid: "67482711"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[如何：从 Azure 访问控制服务迁移](active-directory-acs-migration.md)中，查看有关 ACS 停用的信息。
+- 在[如何：从 Azure 访问控制服务迁移](active-directory-acs-migration.md)中查看有关 ACS 停用的信息。

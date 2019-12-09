@@ -1,29 +1,25 @@
 ---
-title: 适用于 .NET 的 Microsoft 身份验证库中的 Web 浏览器
+title: 使用 MSAL.NET 的 web 浏览器 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802673"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921605"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>在 MSAL.NET 中使用 web 浏览器
 Web 浏览器是交互式身份验证所必需的。 默认情况下，MSAL.NET 在 Xamarin 和 Xamarin 上支持[系统 web 浏览器](#system-web-browser-on-xamarinios-xamarinandroid)。 不过，你也可以根据你的要求（UX，在[xamarin](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)和[xamarin Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)应用中使用单一登录（SSO）、安全性）来[启用嵌入的 Web 浏览器](#enable-embedded-webviews-on-ios-and-android)。 甚至还可以根据 Chrome 的存在或支持 Android 中 Chrome 自定义选项卡的浏览器，[动态地选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)要使用的 web 浏览器。 MSAL.NET 仅支持 .NET Core 桌面应用程序中的系统浏览器。
@@ -49,15 +45,15 @@ MSAL.NET 是一个多框架库，它具有框架特定的代码，用于在 UI �
 
 ### <a name="at-a-glance"></a>概览
 
-| 框架        | 集成 | 系统 | 默认 |
+| 框架        | 嵌入 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |
-| .NET 经典     | 是 | 是 ^ | 集成 |
+| .NET 经典     | 是 | 是 ^ | 嵌入 |
 | .NET Core     | No | 是 ^ | 系统 |
 | .NET Standard | No | 是 ^ | 系统 |
-| UWP | 是 | No | 集成 |
+| UWP | 是 | No | 嵌入 |
 | Xamarin.Android | 是 | 是  | 系统 |
 | Xamarin.iOS | 是 | 是  | 系统 |
-| Xamarin| 是 | No | 集成 |
+| Xamarin.Mac| 是 | No | 嵌入 |
 
 ^ 需要 "http://localhost" 重定向 URI
 
@@ -153,7 +149,7 @@ MSAL.NET 中嵌入的 web 视图与系统浏览器之间有一些视觉差别。
 
 **使用嵌入的 Web 视图进行 MSAL.NET 交互登录：**
 
-![集成](media/msal-net-web-browsers/embedded-webview.png)
+![嵌入](media/msal-net-web-browsers/embedded-webview.png)
 
 **使用系统浏览器通过 MSAL.NET 进行交互式登录：**
 
@@ -211,7 +207,7 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>检测 Xamarin 上的自定义选项卡
 
-如果你想要使用系统 web 浏览器对在浏览器中运行的应用程序启用 SSO，但担心 Android 设备的用户体验没有自定义选项卡支持，你可以选择通过调用中的 `IsSystemWebViewAvailable()` 方法 `IPublicClientApplication`. 如果 PackageManager 检测到自定义选项卡，并且在设备上未检测到它们 `false`，则此方法将返回 `true`。
+如果你想要使用系统 web 浏览器在浏览器中运行应用程序，但担心 Android 设备的用户体验没有自定义选项卡支持，你可以选择在 `IPublicClientApplication`中调用 `IsSystemWebViewAvailable()` 方法。 如果 PackageManager 检测到自定义选项卡，并且在设备上未检测到它们 `false`，则此方法将返回 `true`。
 
 根据此方法返回的值以及您的要求，您可以做出决定：
 

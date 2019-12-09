@@ -4,19 +4,19 @@ description: 使用 Azure 数据工厂从 Office 365 复制数据
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672620"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931421"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "73672620"
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”。
+3. 选择**创建**。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
    ![数据工厂主页](./media/load-office-365-data/data-factory-home-page.png)
@@ -128,7 +128,7 @@ ms.locfileid: "73672620"
 
 ![监视活动](./media/load-office-365-data/activity-status.png) 
 
-如果这是您第一次为此上下文请求数据（要访问的数据表的组合、哪个目标帐户是要加载到的数据以及进行数据访问请求的用户标识），则将看到复制活动状态为 "**正在进行**"，并且仅当你在 "操作" 下单击 "详细信息" 链接时，你才会看到状态 " **RequesetingConsent**"。  在继续执行数据提取之前，数据访问审批者组的成员需要在 Privileged Access Management 中审批该请求。
+如果这是您第一次为此上下文请求数据（要访问的数据表的组合、哪个目标帐户是要加载到的数据以及进行数据访问请求的用户标识），您将看到复制活动状态为 "**正在进行**"，并且仅当您在 "操作" 下单击 "详细信息" 链接时，才会看到状态为 " **RequesetingConsent**"。  在继续执行数据提取之前，数据访问审批者组的成员需要在 Privileged Access Management 中审批该请求。
 
 _正在请求许可状态：_ 
 ![活动执行详细信息 - 请求许可](./media/load-office-365-data/activity-details-request-consent.png) 

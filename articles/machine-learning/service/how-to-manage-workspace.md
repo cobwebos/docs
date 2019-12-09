@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c7ff51c18d4ec41c706518631071e8feb3bafe59
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615179"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912434"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,28 +24,28 @@ ms.locfileid: "73615179"
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-1. 使用 Azure 订阅凭据登录到[Azure 门户](https://portal.azure.com/)。 
+1. 使用 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
 1. 在 Azure 门户的左上角，选择“+ 创建资源”。
 
       ![创建新资源](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. 使用搜索栏查找**机器学习**。
+1. 使用搜索栏查找“机器学习”。
 
-1. 选择**机器学习**。
+1. 选择“机器学习”。
 
-1. 在**机器学习**窗格中，选择 "**创建**" 以开始。
+1. 在“机器学习”窗格中，选择“创建”以开始。
 
 1. 提供以下信息来配置新工作区：
 
-   字段|说明 
+   字段|描述 
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
-   订阅 |选择要使用的 Azure 订阅。
-   资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml。 
-   位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
+   Subscription |选择要使用的 Azure 订阅。
+   Resource group | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml。 
+   Location | 选择离你的用户和数据资源最近的位置来创建工作区。
    工作区版本 | 选择 "**基本**" 或 "**企业**"。  此工作区版本确定你将拥有访问和定价的功能。 了解有关[基本和企业版产品/服务](overview-what-is-azure-ml.md#sku)的详细信息。 
 
     ![配置工作区](media/how-to-manage-workspace/select-edition.png)
@@ -53,7 +53,7 @@ ms.locfileid: "73615179"
 1. 完成工作区配置后，选择“创建”。 
 
    > [!Warning] 
-   > 在云中创建工作区可能需要几分钟的时间。
+   > 在云中创建工作区可能需要几分钟时间。
 
    完成创建后，会显示部署成功消息。 
  
@@ -73,15 +73,15 @@ ms.locfileid: "73615179"
 
 你可以将工作区从 Basic 版本升级到 Enterprise edition，以利用增强功能，如低代码体验和增强的安全功能。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)。
 
 1. 选择要升级的工作区。
 
-1. 选择顶部或升级消息中的 "**升级**"。
+1. 选择页面右上角的 "**了解详细信息**"。
 
-    ![升级工作区](media/how-to-manage-workspace/upgrade.png)
+   [![升级工作区](media/how-to-manage-workspace/upgrade.png)](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. 选择 "**确认更新**"。
+1. 在出现的窗口中选择 "**升级**"。
 
 
 > [!IMPORTANT]
@@ -91,7 +91,7 @@ ms.locfileid: "73615179"
 
 1. 在顶部搜索字段中，键入**机器学习**。  
 
-1. 选择**机器学习**。
+1. 选择“机器学习”。
 
    ![搜索 Azure 机器学习工作区](media/how-to-manage-workspace/find-workspaces.png)
 
