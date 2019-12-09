@@ -385,6 +385,10 @@
           href: functions-for-customizing-application-data.md
         - name: 选择预配方法
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: 云 HR 预配
+      items:
+        - name: SuccessFactors 属性参考
+          href: sap-successfactors-attribute-reference.md
     - name: Azure AD Connect 预配代理
       items:
         - name: 预配代理版本历史记录

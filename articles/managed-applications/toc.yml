@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: 资源载入
       href: concepts-custom-providers-resourceonboarding.md
+    - name: 用于自定义提供程序关联的 Azure Policy
+      href: concepts-custom-providers-built-in-policy.md
+    - name: 用于托管应用程序关联的 Azure Policy
+      href: concepts-managed-applications-built-in-policy.md
 - name: 操作指南
   items:
     - name: 自定义提供程序

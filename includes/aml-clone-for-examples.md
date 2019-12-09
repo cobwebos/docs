@@ -9,11 +9,11 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 12/04/2018
-ms.openlocfilehash: c4b5bd8eaa5ddf636609976ff6ab05d23cf52f7e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: 9063137e85388ee94b1d1a66ba8819e115e5031a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173042"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903052"
 ---
-按照文章[使用 Jupyter Notebook 来探索此服务](../articles/machine-learning/service/samples-notebooks.md)了解如何运行 Notebook。
+阅读[使用 Jupyter 笔记本探索此服务](../articles/machine-learning/service/samples-notebooks.md)一文，了解如何运行笔记本。

@@ -111,7 +111,7 @@
           href: notebooks.md
         - name: 使用书签搜寻
           href: bookmarks.md
-        - name: 使用 Livestream 搜寻
+        - name: 使用实时流搜寻
           href: livestream.md
     - name: 删除 Azure Sentinel
       href: offboard.md

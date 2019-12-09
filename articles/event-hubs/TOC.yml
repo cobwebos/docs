@@ -170,6 +170,8 @@
       items:
         - name: 故障排除指南
           href: event-hubs-messaging-exceptions.md
+        - name: 资源管理器异常
+          href: resource-manager-exceptions.md
 - name: 引用
   items:
     - name: Java
