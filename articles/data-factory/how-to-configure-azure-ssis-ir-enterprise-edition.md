@@ -1,23 +1,21 @@
 ---
-title: '预配 Azure-SSIS 集成运行时企业版 '
+title: 预配 Azure-SSIS 集成运行时企业版
 description: 本文介绍 Azure-SSIS 集成运行时企业版的功能以及如何配置它
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 8c9db18d416d508dd5a98cbacc14b7db6c075a55
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673956"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922648"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
 
@@ -35,8 +33,8 @@ ms.locfileid: "73673956"
 | **企业功能** | **说明** |
 |---|---|
 | CDC 组件 | CDC 源、控制任务和拆分器转换已预装在 Azure-SSIS IR 企业版上。 若要连接到 Oracle，还需要在另一台计算机上安装 CDC 设计器和服务。 |
-| Oracle 连接器 | Oracle 连接管理器、源和目标已预装在 Azure-SSIS IR 企业版上。 还需要在 Azure-SSIS IR 上安装 Oracle 调用接口 (OCI) 驱动程序，并在必要时配置 Oracle 传输网络底层 (TNS)。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
-| Teradata 连接器 | 需要在 Azure-SSIS IR 企业版上安装 Teradata 连接管理器、源、目标，以及 Teradata 并行传输程序 (TPT) API 和 Teradata ODBC 驱动程序。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
+| Oracle 连接器 | Oracle 连接管理器、源和目标已预装在 Azure-SSIS IR 企业版上。 还需要在 Azure-SSIS IR 上安装 Oracle 调用接口 (OCI) 驱动程序，并在必要时配置 Oracle 传输网络底层 (TNS)。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime 的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
+| Teradata 连接器 | 需要在 Azure-SSIS IR 企业版上安装 Teradata 连接管理器、源、目标，以及 Teradata 并行传输程序 (TPT) API 和 Teradata ODBC 驱动程序。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime 的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | SAP BW 连接器 | SAP BW 连接管理器、源和目标已预装在 Azure-SSIS IR 企业版上。 还需要在 Azure-SSIS IR 上安装 SAP BW 驱动程序。 这些连接器支持 SAP BW 7.0 或更低版本。 若要连接到更高版本的 SAP BW 或其他 SAP 产品，可以从第三方 ISV 购买 SAP 连接器并将其安装在 Azure-SSIS IR 上。 有关如何安装附加组件的详细信息，请参阅 [Azure-SSIS 集成运行时的自定义安装](how-to-configure-azure-ssis-ir-custom-setup.md)。 |
 | Analysis Services 组件               | 数据挖掘模型定型目标、维度处理目标、分区处理目标以及数据挖掘查询转换已预装在 Azure-SSIS IR 企业版上。 所有这些组件支持 SQL Server Analysis Services (SSAS)，但只有分区处理目标支持 Azure Analysis Services (AAS)。 若要连接到 SSAS，还需要[在 SSISDB 中配置 Windows 身份验证凭据](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 除了这些组件以外，Analysis Services 执行 DDL 任务、Analysis Services 处理任务和数据挖掘查询任务也已预装在 Azure-SSIS IR 标准/企业版上。 |
 | 模糊分组和模糊查找转换  | 模糊分组和模糊查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |

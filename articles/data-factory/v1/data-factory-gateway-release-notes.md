@@ -3,21 +3,20 @@ title: 数据管理网关的发行说明
 description: 数据管理网关发行说明
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682572"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924259"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -47,7 +46,7 @@ ms.locfileid: "73682572"
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增强功能
--   可将 DNS 条目添加到白名单服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
+-   可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
 -   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
 -   已修复：使用幂等性功能从 Document DB 复制到本地 SQL Server 时发生的索引超出范围问题。
@@ -65,7 +64,7 @@ ms.locfileid: "73682572"
 - 已修复：从 Oracle 作为源读取十进制 null 值不正确。
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>新增功能
+### <a name="whats-new"></a>最新信息
 - 客户可以提供有关网关注册体验的反馈。
 - 支持新的压缩格式：ZIP (Deflate)
 
@@ -82,7 +81,7 @@ ms.locfileid: "73682572"
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>新增功能
+### <a name="whats-new"></a>最新信息
 
 - 现可在本地存储数据源凭据。 这些凭据已加密。 使用可从现有网关导出的备份文件可在本地恢复和还原数据源凭据。
 

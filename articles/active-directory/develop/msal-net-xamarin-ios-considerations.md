@@ -1,35 +1,31 @@
 ---
-title: Xamarin iOS 注意事项（适用于 .NET 的 Microsoft 身份验证库）
+title: Xamarin iOS 注意事项（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc4eb0084e0606251d3fbd80d08723701c6a260
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175617"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921460"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>针对 MSAL.NET 的 Xamarin 特定于 iOS 的注意事项
 在 Xamarin iOS 上，使用 MSAL.NET 时，必须考虑几个注意事项
 
 - [IOS 12 和身份验证的已知问题](#known-issues-with-ios-12-and-authentication)
-- [重写和实现 `AppDelegate`中的 `OpenUrl` 函数](#implement-openurl)
+- [重写和实现 `AppDelegate` 中的 `OpenUrl` 函数](#implement-openurl)
 - [启用密钥链组](#enable-keychain-access)
 - [启用令牌缓存共享](#enable-token-cache-sharing-across-ios-applications)
 - [启用密钥链访问](#enable-keychain-access)
@@ -97,7 +93,7 @@ PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>在 iOS 应用程序上启用令牌缓存共享
 
-在 MSAL 2.x 中，可以指定要用于在多个应用程序中保存令牌缓存的密钥链访问组。 此设置使你可以在具有相同密钥链访问组的多个应用程序之间共享令牌缓存，包括使用[ADAL.NET](https://aka.ms/adal-net)、MSAL.NET Xamarin 应用程序开发的应用程序，以及使用[开发的本机 iOS 应用程序Objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc)或[MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)）。
+在 MSAL 2.x 中，可以指定要用于在多个应用程序中保存令牌缓存的密钥链访问组。 此设置使你可以在具有相同密钥链访问组的多个应用程序之间共享令牌缓存，包括使用[ADAL.NET](https://aka.ms/adal-net)、MSAL.NET Xamarin 应用程序开发的应用程序，以及使用[ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc)或[MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)开发的本机 iOS 应用程序。
 
 共享令牌缓存允许使用同一密钥链访问组的所有应用程序之间进行单一登录。
 

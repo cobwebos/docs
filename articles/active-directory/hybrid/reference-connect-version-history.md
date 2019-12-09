@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461298e4f195d88ced5015af26226a9f7b12f737
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891773"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922292"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -38,9 +38,23 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 在完成此过程时，版本的版本号将以次要版本号位置中的 "X" 显示，如 "1.3. X. 0"-这表明本文档中的发行说明对于以 "1.3" 开头的所有版本都有效。 完成发布过程后，发布版本号将更新到最近发布的版本，并且发布状态将更新为 "已发布以便下载和自动升级"。
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](how-to-connect-install-automatic-upgrade.md)的详细信息
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>版本状态
+12/6/2019：发布以供下载。 无法通过自动升级来使用。
+### <a name="new-features-and-improvements"></a>新增功能和改进
+- 我们为 Azure AD 域服务更新了密码哈希同步，以正确地考虑 Kerberos 哈希中的填充。  这将在从 AAD 到 Azure AD 域服务的密码同步期间提高性能。
+- 添加了对身份验证代理和服务总线之间的可靠会话的支持。
+- 此版本强制执行身份验证代理与云服务之间的通信的 TLS 1.2。
+- 为身份验证代理和云服务之间的 websocket 连接添加了 DNS 缓存。
+- 我们添加了将特定代理从云定位到测试代理连接的功能。
+
+### <a name="fixed-issues"></a>修复的问题
+- Release 1.4.18.0 有一个 bug，其中 DSSO 的 PowerShell cmdlet 使用的是登录 windows 凭据，而不是在运行 ps 时提供的管理员 credentialss。 因此无法通过 AADConnect 用户界面在多个林中启用 DSSO。 
+- 已通过 AADConnect 用户界面在所有林中同时启用了 DSSO
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>版本状态
-11/08/2019：已发布以供下载。 不可用于自动升级
+11/08/2019：已发布以供下载。 无法通过自动升级来使用。
 
 >[!IMPORTANT]
 >由于此版本的 Azure AD Connect 中的内部架构发生了更改，因此，如果你使用 MSOnline PowerShell 管理 ADFS 信任关系配置设置，则必须将 MSOnline PowerShell 模块更新到版本1.1.183.57 或更高版本

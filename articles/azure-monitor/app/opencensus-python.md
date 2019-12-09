@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2114e60b5ed684063ed100279ea19f561bd335ea
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849779"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928975"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -61,7 +61,16 @@ python -m pip install opencensus-ext-azure
 
 SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azure Monitor：跟踪、指标和日志。 有关这些遥测类型的详细信息，请参阅[数据平台概述](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)。 使用以下说明通过三个导出程序发送这些遥测类型。
 
+## <a name="telemetry-type-mappings"></a>遥测类型映射
+
+下面是 OpenCensus 提供的导出程序，它映射到你将在 Azure Monitor 中看到的遥测类型。
+
+![将遥测类型从 OpenCensus 映射到 Azure Monitor 的屏幕截图](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>跟踪
+
+> [!NOTE]
+> OpenCensus 中的 `Trace` 是指[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)。 `AzureExporter` 会将 `requests` 和 `dependency` 遥测发送到 Azure Monitor。
 
 1. 首先，让我们在本地生成某些跟踪数据。 在 Python 空闲或您选择的编辑器中，输入以下代码。
 
@@ -293,7 +302,10 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
         main()
     ```
 
-4. 导出程序会将日志数据发送到 Azure Monitor。 可以在 `traces`下查找数据。
+4. 导出程序会将日志数据发送到 Azure Monitor。 可以在 `traces`下查找数据。 
+
+> [!NOTE]
+> 此上下文中 `traces` 与 `Tracing`不同。 `traces` 是指在使用 `AzureLogHandler`时将在 Azure Monitor 中看到的遥测类型。 `Tracing` 是指 OpenCensus 中的一种概念，并与[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相关。
 
 5. 若要格式化日志消息，可以使用内置 Python[日志记录 API](https://docs.python.org/3/library/logging.html#formatter-objects)中的 `formatters`。
 

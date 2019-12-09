@@ -4,27 +4,26 @@ description: 了解如何在装有自承载集成运行时的计算机上加密�
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 41e353931fb2d9fe26c0a6bd73d5085495ad7b78
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bcca2e6168baafe9f98f663298790841c0f1f450
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675057"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927429"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure 数据工厂中加密本地数据存储的凭据
 可以在装有自承载集成运行时的计算机上加密和存储本地数据存储（包含敏感信息的链接服务）的凭据。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-将包含凭据的 JSON 定义文件传递到 <br/>[**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) cmdlet，以生成包含已加密凭据的输出 JSON 定义文件。 然后，使用更新的 JSON 定义来创建链接服务。
+将包含凭据的 JSON 定义文件传递到 <br/>[**AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) cmdlet，用于生成包含已加密凭据的输出 JSON 定义文件。 然后，使用更新的 JSON 定义来创建链接服务。
 
 ## <a name="author-sql-server-linked-service"></a>创作 SQL Server 链接服务
 在任意文件夹中，创建包含以下内容的名为 **SqlServerLinkedService.json** 的 JSON 文件：  
@@ -51,7 +50,7 @@ ms.locfileid: "73675057"
 ```
 
 ## <a name="encrypt-credentials"></a>加密凭据
-若要在本地自承载集成运行时中加密 JSON 有效负载中的敏感数据，请运行 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** 并传递 JSON 有效负载。 此 cmdlet 可确保使用 DPAPI 加密凭据，并将其存储在自承载集成运行时节点本地。 包含对凭据的加密引用的输出有效负载可以重定向到另一个 JSON 文件（在本例中为“encryptedLinkedService.json”）。
+若要在本地自承载集成运行时中加密 JSON 有效负载中的敏感数据，请运行**AzDataFactoryV2LinkedServiceEncryptedCredential**，并传递 json 有效负载。 此 cmdlet 可确保使用 DPAPI 加密凭据，并将其存储在自承载集成运行时节点本地。 包含凭据加密引用的输出有效负载可以重定向到另一个 JSON 文件（在本例中为 "Encryptedlinkedservice.json"）。
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

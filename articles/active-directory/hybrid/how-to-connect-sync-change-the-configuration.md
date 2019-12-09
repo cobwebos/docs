@@ -1,27 +1,23 @@
 ---
-title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改 | Microsoft 文档
+title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改
 description: 介绍如何对 Azure AD Connect 同步中的配置进行更改。
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7600bffd8d00caa6e9b5fdda03aefe429d4788b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842571"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919063"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
 本文的目的是介绍如何对 Azure Active Directory （Azure AD）连接同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -204,7 +200,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 - Azure AD 只接受 UserType 属性的两个值 – **Member** 和 **Guest**。
 - 如果没有在 Azure AD Connect 中启用 UserType 属性同步，则通过目录同步创建的 Azure AD 用户的 UserType 属性将设置为 **Member**。
-- Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 它只能在创建 Azure AD 用户期间设置，并[通过 Powershell 更改](https://docs.microsoft.com/en-us/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
+- Azure AD 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 它只能在创建 Azure AD 用户期间设置，并[通过 Powershell 更改](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
 
 在启用 UserType 属性同步之前，必须首先确定如何从本地 Active Directory 派生属性。 下面是最常见的方法：
 

@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1299ca9192481c1cc914732d47823c1d8cbd0fae
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849065"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922151"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据（预览版）
 
@@ -244,7 +244,7 @@ Azure 数据资源管理器支持 Parquet 和 ORC 纵栏格式。 由于优化�
  
 ### <a name="file-size"></a>文件大小
  
-最佳文件大小为每个文件数百 Mb （高达 1 Gb）。 避免使用需要不必要开销的许多小文件，如文件枚举过程和有限的列式格式使用。 请注意，文件数必须大于 Azure 数据资源管理器群集中的 CPU 内核数。 
+最佳文件大小为每个文件数百 Mb （高达 1 Gb）。 避免使用需要不必要开销的许多小文件，如文件枚举过程和有限的列式格式使用。 请注意，文件数目应大于 Azure 数据资源管理器群集中的 CPU 内核数。 
  
 ### <a name="compression"></a>压缩
  

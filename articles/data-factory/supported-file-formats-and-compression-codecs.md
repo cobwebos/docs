@@ -2,47 +2,47 @@
 title: Azure 数据工厂中支持的文件格式
 description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48121dabfa4fc56e2f797f715cb3fce3e3be9578
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075536"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928677"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
-*本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud存储](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。*
+*本文适用于以下连接器： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。*
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
 >[!NOTE]
->数据工厂引入了新的基于格式的数据集模型，请参阅上面链接的对应格式文章以及详细信息。 本文中提到的基于文件的数据存储数据集上的以下配置仍支持对后 compabitility。 建议你今后使用新模型。 
+>数据工厂引入了新的基于格式的数据集模型，请参阅上面链接的对应格式文章以及详细信息。 本文中提到的基于文件的数据存储数据集上的以下配置仍支持对后 compabitility。 建议使用新的模型。 
 
 ## <a name="text-format"></a>文本格式
 
 >[!NOTE]
->数据工厂引入了新的带分隔符的文本格式数据集，请参阅[带分隔符的文本格式](format-delimited-text.md)一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的分隔文本格式数据集，请参阅包含详细信息的[分隔文本格式](format-delimited-text.md)文章。 对于基于文件的数据存储数据集，以下配置仍支持对后 compabitility。 建议使用新的模型。
 
-如果想要读取或写入某个文本文件，请将数据集的 `type` 节中的 `format` 属性设置为 **TextFormat**。 也可在  **节指定以下**可选`format`属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
+如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
-| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
-| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：“Hello, world”），可以将“$”定义为转义符，在源中使用字符串“Hello$, world”。 |否 |
-| quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
-| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
-| encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
-| firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
-| skipLineCount |指示从输入文件读取数据时要跳过的非空行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
-| treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
+| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |No |
+| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |No |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：“Hello, world”），可以将“$”定义为转义符，在源中使用字符串“Hello$, world”。 |No |
+| quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |No |
+| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |No |
+| encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |No |
+| firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |正确<br/><b>False（默认值）</b> |No |
+| skipLineCount |指示从输入文件读取数据时要跳过的非空行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |No |
+| treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>错误 |No |
 
 ### <a name="textformat-example"></a>TextFormat 示例
 
@@ -82,22 +82,22 @@ ms.locfileid: "74075536"
 ## <a name="json-format"></a>JSON 格式
 
 >[!NOTE]
->数据工厂引入了新的 JSON 格式数据集，请参阅 [JSON](format-json.md) 一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的 JSON 格式数据集，请参阅包含详细信息的[JSON](format-json.md)文章。 对于基于文件的数据存储数据集，以下配置仍支持对后 compabitility。 建议使用新的模型。
 
 若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 Azure Cosmos DB](connector-azure-cosmos-db.md) 一文中的“导入/导出 JSON 文档”部分。
 
-要分析 JSON 文件或以 JSON 格式写入数据，请将 `type` 节中的 `format` 属性设置为 **JsonFormat**。 也可在  **节指定以下**可选`format`属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
+要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 必选 |
+| properties | 描述 | 需要 |
 | --- | --- | --- |
-| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
-| jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有**从** JSON 文件复制数据时，才支持此属性。 | 否 |
-| jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有**从** JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | 否 |
-| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 属性。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
-| nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
+| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |No |
+| jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有**从** JSON 文件复制数据时，才支持此属性。 | No |
+| jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有**从** JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | No |
+| encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 属性。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |No |
+| nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |No |
 
 >[!NOTE]
->对于将数组中的数据交叉应用到多行的情况（案例 1 -> [JsonFormat 示例](#jsonformat-example)中的示例 2），只能选择使用属性 `jsonNodeReference` 展开单个数组。
+>对于在数组中跨应用数据的情况下为多个行（案例 1-> 示例2的[JsonFormat 示例](#jsonformat-example)），只能选择使用属性 `jsonNodeReference`展开单个数组。
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
 
@@ -222,13 +222,13 @@ ms.locfileid: "74075536"
 }
 ```
 
-并且想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
+并且你想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
 
 | ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体而言：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 `array[x].property` 从 `xth` 对象中提取给定属性的值，或者使用 `array[*].property` 从包含此类属性的任何对象中查找该值。
@@ -303,7 +303,7 @@ ms.locfileid: "74075536"
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体而言：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
 - `jsonNodeReference` 指示进行迭代操作，在**数组**`orderlines`下以同一模式从对象提取数据。
@@ -358,7 +358,7 @@ ms.locfileid: "74075536"
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1 | 20170119 | 2000 | David |
+| 第 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -375,7 +375,7 @@ ms.locfileid: "74075536"
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要根据源列名更改属性名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要将属性名称更改为与源列名不同的名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {
@@ -409,9 +409,9 @@ ms.locfileid: "74075536"
 ## <a name="parquet-format"></a>Parquet 格式
 
 >[!NOTE]
->数据工厂引入了新的 Parquet 格式数据集，请参阅 [Parquet 格式](format-parquet.md)一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的 Parquet 格式数据集，有关详细信息，请参阅[Parquet format](format-parquet.md)文章。 对于基于文件的数据存储数据集，以下配置仍支持对后 compabitility。 建议使用新的模型。
 
-若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为“ParquetFormat”。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -435,7 +435,7 @@ ms.locfileid: "74075536"
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 >[!TIP]
->如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 **，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道**`_JAVA_OPTIONS`。
+>如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。
 
 ![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -445,7 +445,7 @@ ms.locfileid: "74075536"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| Boolean | Boolean | 不适用 | 不适用 |
+| 布尔 | 布尔 | N/A | N/A |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -453,23 +453,23 @@ ms.locfileid: "74075536"
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/二进制 | UInt64 | 小数 |
-| Single | Float | 不适用 | 不适用 |
-| Double | Double | 不适用 | 不适用 |
-| 小数 | 二进制 | 小数 | 小数 |
-| String | 二进制 | Utf8 | Utf8 |
-| DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 不适用 | 不适用 |
-| DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 不适用 |
-| Guid | 二进制 | Utf8 | Utf8 |
+| UInt64 | Int64/二进制 | UInt64 | Decimal |
+| 单一 | Float | N/A | N/A |
+| Double | Double | N/A | N/A |
+| Decimal | 二进制 | Decimal | Decimal |
+| 字符串 | 二进制 | Utf8 | Utf8 |
+| 日期/时间 | Int96 | N/A | N/A |
+| TimeSpan | Int96 | N/A | N/A |
+| DateTimeOffset | Int96 | N/A | N/A |
+| ByteArray | 二进制 | N/A | N/A |
+| GUID | 二进制 | Utf8 | Utf8 |
 | Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 不适用 | 不适用 |
+| CharArray | 不支持 | N/A | N/A |
 
 ## <a name="orc-format"></a>ORC 格式
 
 >[!NOTE]
->数据工厂引入了新的 ORC 格式数据集，有关详细信息，请参阅[ORC format](format-orc.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的 ORC 格式数据集，有关详细信息，请参阅[ORC format](format-orc.md)文章。 对于基于文件的数据存储数据集，以下配置仍支持对后 compabitility。 建议使用新的模型。
 
 若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
@@ -498,32 +498,32 @@ ms.locfileid: "74075536"
 
 | 数据工厂临时数据类型 | ORC 类型 |
 |:--- |:--- |
-| Boolean | Boolean |
+| 布尔 | 布尔 |
 | SByte | Byte |
-| Byte | Short |
-| Int16 | Short |
-| UInt16 | int |
-| Int32 | int |
+| Byte | 短 |
+| Int16 | 短 |
+| UInt16 | Int |
+| Int32 | Int |
 | UInt32 | Long |
 | Int64 | Long |
-| UInt64 | String |
-| Single | Float |
+| UInt64 | 字符串 |
+| 单一 | Float |
 | Double | Double |
-| 小数 | 小数 |
-| String | String |
-| DateTime | Timestamp |
+| Decimal | Decimal |
+| 字符串 | 字符串 |
+| 日期/时间 | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |
 | ByteArray | 二进制 |
-| Guid | String |
+| GUID | 字符串 |
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO 格式
 
 >[!NOTE]
->数据工厂引入了新的 Avro 格式数据集，请参阅 [Avri 格式](format-avro.md)一文了解详细信息。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+>数据工厂引入了新的 Avro 格式数据集，有关详细信息，请参阅[Avri format](format-avro.md)文章。 对于基于文件的数据存储数据集，以下配置仍支持对后 compabitility。 建议使用新的模型。
 
-若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为“AvroFormat”。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
@@ -546,10 +546,10 @@ ms.locfileid: "74075536"
 
 在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
 
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
 * 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 使用值为 ZipDeflate 的 `compression` `type` 属性定义输入 FTP 数据集。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，并将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
 
 若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 
@@ -592,12 +592,12 @@ ms.locfileid: "74075536"
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>不支持的文件类型和压缩格式
 
-可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。
-两个选项包括 Azure Functions 和使用 Azure Batch 的自定义任务。
+可以使用 Azure 数据工厂的扩展性功能转换不受支持的文件。
+两个选项包括使用 Azure Batch Azure Functions 和自定义任务。
 
-可以看到一个示例，它使用 Azure 函数[提取 tar 文件的内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅 [Azure Functions 活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
+你可以看到一个示例，该示例使用 Azure 函数[提取 tar 文件的内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅[Azure Functions 活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
 
-还可以使用自定义 dotnet 活动构建此功能。 更多的信息可以在[这里](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)找到
+你还可以使用自定义 dotnet 活动生成此功能。 [此处](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)提供了详细信息
 
 ## <a name="next-steps"></a>后续步骤
 

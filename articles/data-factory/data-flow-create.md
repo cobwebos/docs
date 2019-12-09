@@ -1,17 +1,18 @@
 ---
-title: 创建 Azure 数据工厂映射数据流
+title: 创建映射数据流
 description: 如何创建 Azure 数据工厂映射数据流
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 31528c0ac7796aafbde74a3814d971138ec4ba2e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2eb455ba6fa40538bfa03018be47232066036c23
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387247"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930425"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
 

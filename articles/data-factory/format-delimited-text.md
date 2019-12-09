@@ -2,19 +2,19 @@
 title: Azure 数据工厂中的分隔文本格式
 description: 本主题介绍如何在 Azure 数据工厂中处理分隔文本格式。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a1a019e7dea2f0c71b40530baaffff79d003774
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548290"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931264"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中的分隔文本格式
 
@@ -103,7 +103,7 @@ ms.locfileid: "74548290"
 | properties      | 描述                                                  | 需要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的类型必须设置为**DelimitedTextWriteSetting**。 | 是                                                   |
-| FileExtension | 用于命名输出文件的文件扩展名，例如 `.csv`、`.txt`。 当未在输出 DelimitedText 数据集中指定 `fileName` 时，必须指定该方法。 | 在输出数据集中未指定文件名时为 "是" |
+| fileExtension | 用于命名输出文件的文件扩展名，例如 `.csv`、`.txt`。 当未在输出 DelimitedText 数据集中指定 `fileName` 时，必须指定该方法。 | 在输出数据集中未指定文件名时为 "是" |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 

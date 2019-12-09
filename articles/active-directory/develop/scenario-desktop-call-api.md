@@ -1,6 +1,6 @@
 ---
-title: 用于调用 web Api 的桌面应用程序（调用 web API）-Microsoft 标识平台
-description: 了解如何构建调用 web Api 的桌面应用程序（调用 web API）
+title: 从桌面应用程序调用 web Api-Microsoft 标识平台 |Microsoft
+description: 了解如何构建调用 web Api 的桌面应用程序
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8160ec489f891764b102b5ba23a687b53376f738
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175358"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920151"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>桌面应用程序调用 web Api-调用 web API
 

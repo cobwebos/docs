@@ -1,6 +1,6 @@
 ---
-title: 用于调用 web Api 的桌面应用程序（代码配置）-Microsoft 标识平台
-description: 了解如何构建一个可调用 web Api 的桌面应用程序（应用程序的代码配置）
+title: 配置用于调用 web Api 的桌面应用-Microsoft 标识平台 |Microsoft
+description: 了解如何配置用于调用 web Api 的桌面应用程序的代码
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175441"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920253"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api 的桌面应用程序-代码配置
 
@@ -33,8 +33,8 @@ ms.locfileid: "73175441"
   MSAL 库 | 描述
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持在多个平台中构建桌面应用程序-Linux、Windows 和 MacOS
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。 正在进行开发-公开预览版
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支持在多个平台中构建桌面应用程序。 正在进行开发-公开预览版
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。 开发中 -目前为公共预览版
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支持在多个平台中构建桌面应用程序。 开发中 -目前为公共预览版
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | 仅支持在 macOS 上运行的桌面应用程序
 
 ## <a name="public-client-application"></a>公共客户端应用程序

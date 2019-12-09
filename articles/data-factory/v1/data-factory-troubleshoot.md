@@ -6,20 +6,19 @@ documentationcenter: ''
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135134"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931582"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "70135134"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误：该订阅未注册，无法使用命名空间 'Microsoft.DataFactory'
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误: 该订阅未注册为使用命名空间 'Microsoft.DataFactory'
 出现此错误表示未在计算机上注册 Azure 数据工厂资源提供程序。 请执行以下操作：
 
 1. 启动 Azure PowerShell。
@@ -50,7 +49,7 @@ ms.locfileid: "70135134"
 
 1. AzAccount-使用正确的用户 ID 和密码
 2. AzSubscription-查看帐户的所有订阅。
-3. AzSubscription &lt;订阅名称&gt; -选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
+3. 选择-AzSubscription &lt;订阅名称&gt;-选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>问题：无法从 Azure 门户启动数据管理网关快速安装
 快速安装数据管理网关需要使用 Internet Explorer 或者与 Microsoft ClickOnce 兼容的 Web 浏览器。 如果快速安装无法启动，请执行以下操作之一：
@@ -65,7 +64,7 @@ ms.locfileid: "70135134"
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>问题：无法连接到本地 SQL Server
 在网关计算机上启动“数据管理网关”，并使用“疑难解答”选项卡测试从网关计算机到 SQL Server 的链接。 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于 Waiting 状态
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于等待状态
 切片处于“等待”状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
 
 有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData** \*。

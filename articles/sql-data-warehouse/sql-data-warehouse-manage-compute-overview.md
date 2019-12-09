@@ -2,21 +2,21 @@
 title: 管理计算资源
 description: 了解 Azure SQL 数据仓库中的性能横向扩展功能。 调整 DWU 可以实现横向扩展，暂停数据仓库可以降低成本。
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039084"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923600"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
 了解如何管理 Azure SQL 数据仓库中的计算资源。 可以通过暂停数据仓库来降低成本，或者根据性能需求缩放数据仓库。 
@@ -35,11 +35,11 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 
 | 数据仓库单位数  | 计算节点数 \# | 每个节点的分布区 \# |
 | -------- | ---------------- | -------------------------- |
-| DW100c   | 1                | 60                         |
-| DW200c   | 1                | 60                         |
-| DW300c   | 1                | 60                         |
-| DW400c   | 1                | 60                         |
-| DW500c   | 1                | 60                         |
+| DW100c   | 第                | 60                         |
+| DW200c   | 第                | 60                         |
+| DW300c   | 第                | 60                         |
+| DW400c   | 第                | 60                         |
+| DW500c   | 第                | 60                         |
 | DW1000c  | 2                | 30                         |
 | DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
@@ -50,7 +50,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 | DW7500c  | 15               | 4                          |
 | DW10000c | 20               | 3                          |
 | DW15000c | 30               | 2                          |
-| DW30000c | 60               | 1                          |
+| DW30000c | 60               | 第                          |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>找到数据仓库单位的适当大小
@@ -59,7 +59,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 
 有关找到最佳数据仓库单位数目的建议：
 
-- 对于正在开发的数据仓库，可以从少量的数据仓库单位开始。  一个好的起点为 DW400 或 DW200。
+- 对于正在开发的数据仓库，可以从少量的数据仓库单位开始。  很好的起点是 DW400c 或 DW200c。
 - 监视应用程序性能，将所选数据仓库单位数目与观测到的性能变化进行比较。
 - 采用线性缩放，确定需要以多大的增量来增加或减少数据仓库单位。 
 - 继续进行调整，直到达到业务要求的最佳性能级别。

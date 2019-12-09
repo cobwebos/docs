@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803727"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919335"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -292,16 +292,16 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 ### <a name="consent-grants"></a>同意授权
 
-在违法许可授权攻击中，攻击者将创建一个 Azure AD 注册的应用程序，该应用程序请求访问数据（如联系信息、电子邮件或文档）。 用户可能会通过网络钓鱼攻击向恶意应用程序授予许可，或在登录恶意网站时不小心。
+在违法许可授权攻击中，攻击者将创建一个 Azure AD 注册的应用程序，该应用程序请求访问数据（如联系信息、电子邮件或文档）。 当登陆到恶意网站时，用户可能会通过网络钓鱼攻击向恶意应用程序授予许可。
 
-下面是你可能想要用于 Microsoft 云服务的权限：
+下面列出了你可能想要通过 Microsoft 云服务进行查看的权限：
 
-- 应用程序或委托 \*的应用程序。ReadWrite 权限
-- 具有委托权限的应用程序可以代表用户读取、发送或管理电子邮件
-- 使用以下权限授予的应用程序：
+- 应用或委托 \*应用。ReadWrite 权限
+- 具有委托权限的应用可以代表用户读取、发送或管理电子邮件
+- 向授予的应用使用以下权限：
 
 | 资源 | 权限 |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | EAS.AccessAsUser |
 | | EWS.AccessAsUser |
 | | Mail。阅读 |
@@ -309,11 +309,19 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 | | Mail. Read. Shared |
 | | Node.js |
 
-若要避免这种情况，应参阅[Office 365 中的 "检测和修正违法许可授权](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)"，以识别和修复具有违法授权的任何应用程序或具有超过所需的授权的应用程序。 计划应用权限的定期审查，并在不需要时将其删除;或者完全删除自助服务并建立管理过程。
+- 已授予已登录用户的完全用户模拟的应用。 例如：
+
+|资源 | 权限 |
+| :- | :- |
+| Azure AD Graph | Directory.AccessAsUser.All |
+| Microsoft Graph | Directory.AccessAsUser.All |
+| Azure REST API | user_impersonation |
+
+若要避免这种情况，应参阅[Office 365 中的 "检测和修正违法许可授权](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)"，以识别和修复具有违法授权的任何应用程序或具有超过所需的授权的应用程序。 接下来，[删除自助服务](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)并[建立管理过程](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。 最后，计划应用权限的定期审查，并在不需要时删除它们。
 
 #### <a name="consent-grants-recommended-reading"></a>同意授予建议阅读
 
-- [Azure Active Directory （AD）图形 API 权限范围](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph 权限](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>用户和组设置
 

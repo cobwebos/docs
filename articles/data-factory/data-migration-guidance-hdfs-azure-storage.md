@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储
+title: 将数据从本地 Hadoop 群集迁移到 Azure 存储
 description: 了解如何使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储。
 services: data-factory
-documentationcenter: ''
-author: dearandyxu
 ms.author: yexu
+author: dearandyxu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675814"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931453"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储 
 
@@ -32,9 +31,9 @@ Azure 数据工厂提供一种功能强大、稳健且经济高效的机制，�
 > [!div class="checklist"]
 > * 性能 
 > * 复制复原能力
-> * 网络安全性
+> * 网络安全
 > * 高级解决方案体系结构 
-> * 有关实现的最佳做法  
+> * 实施最佳实践  
 
 ## <a name="performance"></a>性能
 
@@ -50,7 +49,7 @@ DistCp 使用 MapReduce 来有效地处理其分布、错误处理和恢复以�
 
 有关详细信息，请参阅[复制活动性能指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
 
-## <a name="resilience"></a>复原能力
+## <a name="resilience"></a>恢复能力
 
 在 "数据工厂" DistCp 模式下，你可以使用不同的 DistCp 命令行参数（例如 `-i`、忽略失败或 `-update`、在源文件和目标文件的大小不同时写入数据）以获得不同级别的复原能力。
 
@@ -58,9 +57,9 @@ DistCp 使用 MapReduce 来有效地处理其分布、错误处理和恢复以�
 
 在从本地 HDFS 复制到 Blob 存储以及从本地 HDFS 复制到 Data Lake Store Gen2 时，数据工厂会自动执行对较大范围的检查点操作。 如果复制活动运行失败或超时，则在后续重试时（请确保重试计数为 > 1），副本将从上一个故障点继续，而不是从开头开始。
 
-## <a name="network-security"></a>网络安全性 
+## <a name="network-security"></a>网络安全 
 
-默认情况下，数据工厂将数据从本地 HDFS 传输到 Blob 存储，或使用通过 HTTPS 协议加密的连接 Azure Data Lake Storage Gen2。 HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。 
+默认情况下，数据工厂将数据从本地 HDFS 传输到 Blob 存储，或使用通过 HTTPS 协议加密的连接 Azure Data Lake Storage Gen2。 HTTPS 在传输过程中提供数据加密，并防止窃听和中间人攻击。 
 
 或者，如果你不希望通过公共 internet 传输数据，为了提高安全性，你可以通过 ExpressRoute 通过专用对等互连链接传输数据。 
 
@@ -82,17 +81,17 @@ DistCp 使用 MapReduce 来有效地处理其分布、错误处理和恢复以�
 - 在此体系结构中，通过 Azure ExpressRoute 通过专用对等互连链接来迁移数据。 数据永远不会通过公共 internet 进行遍历。
 - DistCp 工具不支持与 Azure 存储虚拟网络终结点的 ExpressRoute 专用对等互连。 建议你通过集成运行时使用数据工厂的本机功能来迁移数据。
 - 对于此体系结构，必须在 Azure 虚拟网络中的 Windows VM 上安装数据工厂自承载集成运行时。 可以手动增加 VM 或向外扩展到多个 Vm，以充分利用网络和存储 IOPS 或带宽。
-- 为每个 Azure VM （安装了数据工厂自承载集成运行时）启动的建议配置是 Standard_D32s_v3 32 vCPU 和 128 GB 的内存。 可在数据迁移过程中监视 VM 的 CPU 和内存使用情况，以确定是否需要纵向扩展 VM 以获得更好的性能，或缩减 VM 以降低成本。
+- 为每个 Azure VM （安装了数据工厂自承载集成运行时）启动的推荐配置为 Standard_D32s_v3 32 vCPU 和 128 GB 的内存。 可在数据迁移过程中监视 VM 的 CPU 和内存使用情况，以确定是否需要纵向扩展 VM 以获得更好的性能，或缩减 VM 以降低成本。
 - 你还可以通过将最多4个 VM 节点与一个自承载集成运行时关联来向外扩展。 针对自承载集成运行时运行的单个复制作业会自动对文件集进行分区，并使用所有 VM 节点并行复制文件。 为实现高可用性，我们建议从两个 VM 节点开始，避免在数据迁移过程中出现单点故障方案。
 - 使用此体系结构时，可以使用初始快照数据迁移和增量数据迁移。
 
-## <a name="implementation-best-practices"></a>有关实现的最佳做法
+## <a name="implementation-best-practices"></a>实施最佳实践
 
 建议你在实现数据迁移时遵循这些最佳做法。
 
 ### <a name="authentication-and-credential-management"></a>身份验证和凭据管理 
 
-- 若要对 HDFS 进行身份验证，可以使用 [Windows (Kerberos) 或“匿名”](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)。 
+- 若要向 HDFS 进行身份验证，可以使用[Windows （Kerberos）或匿名](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)的。 
 - 支持多种身份验证类型以连接到 Azure Blob 存储。  强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)。 托管标识在 Azure Active Directory （Azure AD）中的自动托管数据工厂标识的基础上构建，使你能够配置管道，而无需在链接的服务定义中提供凭据。 或者，你可以通过使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共享访问签名](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)对 Blob 存储进行身份验证。 
 - 还支持多种身份验证类型以连接到 Data Lake Storage Gen2。  我们强烈建议使用[Azure 资源的托管标识](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)，但也可以使用[服务主体](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[存储帐户密钥](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
 - 如果不使用 Azure 资源的托管标识，强烈建议将[凭据存储在 Azure Key Vault 中](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)，以便更轻松地集中管理和旋转密钥，而无需修改数据工厂链接服务。 这也是[CI/CD 的最佳实践](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)。 
@@ -128,14 +127,14 @@ DistCp 使用 MapReduce 来有效地处理其分布、错误处理和恢复以�
 - 1 PB 分为1000个分区，每个副本移动一个分区。
 - 每个复制活动都配置有一个自承载集成运行时，该运行时与四台计算机关联，并达到 500 MBps 的吞吐量。
 - ForEach concurrency 设置为**4** ，聚合吞吐量为 2 GBps。
-- 完成迁移总共需要花费 146 小时。
+- 总共需要146小时才能完成迁移。
 
 下面是基于假设的预计价格： 
 
 ![显示价格计算的表](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
 
 > [!NOTE]
-> 这是一个虚构的定价示例。 实际价格取决于环境中的实际吞吐量。
+> 这是一个假设的定价示例。 实际定价取决于环境中的实际吞吐量。
 > 不包括 Azure Windows VM 的价格（安装了自承载集成运行时）。
 
 ### <a name="additional-references"></a>其他参考
@@ -143,7 +142,7 @@ DistCp 使用 MapReduce 来有效地处理其分布、错误处理和恢复以�
 - [HDFS 连接器](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
 - [Azure Blob 存储连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2 连接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [复制活动性能和优化指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
+- [复制活动性能优化指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [自承载集成运行时高可用性和可伸缩性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [数据移动安全注意事项](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)

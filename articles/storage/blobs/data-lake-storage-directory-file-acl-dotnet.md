@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931217"
 ---
 # <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>在 Azure Data Lake Storage Gen2 中使用 & Acl 的 .NET 文件（预览）
 
@@ -32,7 +32,7 @@ ms.locfileid: "74534275"
 
 ## <a name="set-up-your-project"></a>设置项目
 
-若要开始，请安装[DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6) NuGet 包。
+若要开始，请安装[DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet 包。
 
 有关如何安装 NuGet 包的详细信息，请参阅[使用 Nuget 包管理器在 Visual Studio 中安装和管理包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio)。
 

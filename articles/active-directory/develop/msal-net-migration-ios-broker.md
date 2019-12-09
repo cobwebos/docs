@@ -1,34 +1,30 @@
 ---
-title: 将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序迁移到 MSAL.NET
+title: 将 Xamarin iOS ADAL 迁移到 MSAL.NET
 titleSuffix: Microsoft identity platform
-description: 了解如何将使用 Microsoft Authenticator 的 Xamarin iOS 应用程序从适用于 .NET 的 Azure AD 身份验证库（ADAL.NET）迁移到适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）。
-documentationcenter: dev-center-name
+description: 了解如何将使用 Microsoft Authenticator 的 Xamarin iOS 应用从 ADAL.NET 迁移到 MSAL.NET。
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c64f9f371424eddc7295b6ec40bda1ebdaaafd5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4e70865c897e408f1cebb7359d0890d27b11243b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175587"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921825"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
 你使用的是适用于 .NET 的 Azure Active Directory 身份验证库（ADAL.NET）和 iOS 代理。 现在可以迁移到适用于 .NET 的[Microsoft 身份验证库](msal-overview.md)（MSAL.NET），它支持从版本4.3 开始的 iOS 上的代理。 
 
-你应从何处着手？ 本文可帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
+我应该从何处着手？ 本文可帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
 
 ## <a name="prerequisites"></a>必备组件
 本文假设已有一个集成了 iOS 代理的 Xamarin iOS 应用。 如果不这样做，请直接转到 MSAL.NET，并在其中开始执行 broker 实现。 有关如何使用新的应用程序在 MSAL.NET 中调用 iOS 代理的信息，请参阅[此文档](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。

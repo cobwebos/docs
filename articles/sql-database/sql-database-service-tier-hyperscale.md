@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805750"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927671"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -196,25 +196,25 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 
 请求在未列出的区域中创建超大规模数据库的功能：
 
-1. 导航到 " [Azure 帮助和支持" 边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+1. 从 "Azure 门户" 菜单中，选择 "**帮助 + 支持**"，或从任意页面搜索并选择 "**帮助和支持**"。
 
-2. 单击 " [**新建支持请求**"](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+2. 在[Azure 帮助和支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中，选择 "[**新建支持请求**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)"。
 
-    ![Azure "帮助和支持" 边栏选项卡](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+3. 对于 "**问题类型**"，请选择 "**服务和订阅限制（配额）** "。
 
-3. 对于 "**问题类型**"，请选择 "**服务和订阅限制（配额）** "
+4. 选择要用于创建数据库的订阅。
 
-4. 选择要用于创建数据库的订阅
+5. 对于 "**配额类型**"，请选择 " **SQL 数据库**"。
 
-5. 对于 "**配额类型**"，选择 " **SQL 数据库**"
+    ![Azure "帮助和支持" 边栏选项卡](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-6. 单击 "**下一步：解决方案**"
+6. 单击 "**下一步：解决方案**"。
 
-1. 单击 "**提供详细信息**"
+7. 单击 "**提供详细信息**"。
 
     ![问题详细信息](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. 选择**SQL 数据库配额类型**：**其他配额请求**
+8. 选择**SQL 数据库配额类型**：**其他配额请求**。
 
 9. 填写以下模板：
 
@@ -227,11 +227,11 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
     > 估计的 TB 数 
     >
 
-10. 选择“严重性 C”
+10. 选择**严重性 C**。
 
 11. 选择适当的联系方法并填写详细信息。
 
-12. 单击 "**保存**并**继续**"
+12. 单击 "**保存**并**继续**"。
 
 ## <a name="known-limitations"></a>已知限制
 这是公开上市后超大规模服务层的当前限制。  我们正在努力尽可能多地删除这些限制。
@@ -240,7 +240,7 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 | :---- | :--------- |
 | 逻辑服务器的 "管理备份" 窗格不显示将从 SQL server 筛选超大规模数据库  | 超大规模具有用于管理备份的单独方法，因此，长期保留期和时间点备份保留设置不适用/无效。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。 |
 | 时间点还原 | 将数据库迁移到超大规模服务层后，不支持在迁移之前还原到某个时间点。|
-| 将非超大规模 DB 还原到 Hypserscale，反之亦然 | 不能将超大规模数据库还原到非超大规模数据库中，也不能将非超大规模数据库还原到超大规模数据库中。|
+| 将非超大规模 DB 还原到超大规模，反之亦然 | 不能将超大规模数据库还原到非超大规模数据库中，也不能将非超大规模数据库还原到超大规模数据库中。|
 | 如果数据库的一个或多个数据文件大于 1 TB，则迁移将失败 | 在某些情况下，可以通过将大文件收缩为小于 1 TB 来解决此问题。 如果迁移在迁移过程中使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`；|
 | 托管实例 | 超大规模数据库当前不支持 Azure SQL 数据库托管实例。 |
 | 弹性池 |  当前不支持对 SQL 数据库超大规模进行弹性池。|
@@ -251,7 +251,8 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 | 数据库复制 | 你还不能使用数据库副本在 Azure SQL 超大规模中创建新数据库。 |
 | TDE/AKV 集成 | 对于 Azure SQL 数据库超大规模，尚不支持使用 Azure Key Vault （通常称为 "自带密钥" 或 BYOK）的透明数据库加密，但是，完全支持具有服务托管密钥的 TDE。 |
 |智能数据库功能 | 除了 "强制计划" 选项外，所有其他自动优化选项在超大规模中尚不受支持：选项可能看起来已启用，但不会有任何建议或操作。 |
-| 收缩数据库 | Azure SQL 超大规模数据库当前不支持 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
+| 收缩数据库 | 超大规模数据库当前不支持 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
+| 数据库完整性检查 | 超大规模数据库当前不支持 DBCC CHECKDB。 有关 Azure SQL 数据库中的数据完整性管理的详细信息，请参阅[AZURE Sql 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。 |
 
 ## <a name="next-steps"></a>后续步骤
 

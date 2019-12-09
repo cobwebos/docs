@@ -3,27 +3,23 @@ title: 适用于 Java 的 Microsoft 身份验证库中的 AD FS 支持
 titleSuffix: Microsoft identity platform
 description: 了解适用于 Java 的 Microsoft 身份验证库（MSAL4j）中的 Active Directory 联合身份验证服务（AD FS）支持。
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/21/2019
 ms.author: sagonzal
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c286ed7467560c90f9cf9594e75af06d6cdcc5d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 665cef55965f6871a654b9baceaad3e4f5d196c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482096"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916649"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java 中的 Active Directory 联合身份验证服务支持
 
@@ -33,14 +29,14 @@ Windows Server 中的 Active Directory 联合身份验证服务（AD FS）使你
 
 适用于 Java 的 MSAL 连接到 Azure AD，这些用户登录 Azure AD （托管用户）或其他标识提供者（例如，AD FS 联合用户）管理的用户。 MSAL for Java 不知道用户是联合的。 它只是与 Azure AD 进行通信。
 
-在本案例中使用的[机构](msal-client-application-configuration.md#authority)是普通的机构（机构主机名 + 租户、通用机构或组织）。
+在这种情况下，您使用的[颁发机构](msal-client-application-configuration.md#authority)是通常的授权机构（颁发机构主机名称 + 租户、公用或组织）。
 
 ## <a name="acquire-a-token-interactively-for-a-federated-user"></a>以交互方式为联合用户获取令牌
 
 当你通过 `AuthorizationCodeParameters` 或 `DeviceCodeParameters`调用 `ConfidentialClientApplication.AcquireToken()` 或 `PublicClientApplication.AcquireToken()` 时，用户体验通常是：
 
 1. 用户输入其帐户 ID。
-2. Azure AD 简短地显示 "将你转到组织的页面"，并将用户重定向到标识提供者的登录页。 登录页通常已使用组织的徽标进行自定义。
+2. Azure AD 简短地显示 "将你转到组织的页面"，并将用户重定向到标识提供者的登录页。 登录页通常是用组织徽标进行自定义的。
 
 此联合方案中受支持的 AD FS 版本如下：
 - Active Directory 联合身份验证服务 FS v2

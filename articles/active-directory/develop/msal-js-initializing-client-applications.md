@@ -1,29 +1,25 @@
 ---
-title: 初始化客户端应用程序（适用于 JavaScript 的 Microsoft 身份验证库）
+title: 初始化 MSAL 客户端应用 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）初始化客户端应用程序。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150669"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916496"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。 用户代理应用程序是公用客户端应用程序的一种形式，其中客户端代码在用户代理（如 web 浏览器）中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
@@ -115,7 +111,7 @@ export type Configuration = {
 - **clientID**：必填。 应用程序的 clientID，你应该从应用程序注册门户获取此应用程序。
 
 - **颁发机构**：可选。 一个 URL，指示 MSAL 可以从其请求令牌的目录。 默认值为 `https://login.microsoftonline.com/common`。
-    * 在 Azure AD 中，它的格式为 https://&lt;instance&gt;/&lt;受众&gt;，其中 &lt;实例&gt; 是标识提供者域（例如 `https://login.microsoftonline.com`），&lt;受众&gt; 是一个标识符表示登录受众的。 这可以是以下值：
+    * 在 Azure AD 中，它的格式为 https://&lt;instance&gt;/&lt;受众&gt;，其中 &lt;实例&gt; 是标识提供者域（例如 `https://login.microsoftonline.com`），&lt;受众&gt; 是表示登录受众的标识符。 这可以是以下值：
         * `https://login.microsoftonline.com/<tenant>`-租户是与租户关联的域（如 contoso.onmicrosoft.com）或 GUID，表示仅用于登录特定组织用户的目录的 `TenantID` 属性。
         * `https://login.microsoftonline.com/common`-用于通过工作和学校帐户或 Microsoft 个人帐户来登录用户。
         * `https://login.microsoftonline.com/organizations/`-用于使用工作和学校帐户登录用户。
@@ -146,4 +142,4 @@ export type Configuration = {
 这些仅适用于从 MSAL 角包装库中向下传递：
 - **unprotectedResources**：可选。  未受保护的资源的 Uri 数组。 MSAL 不会将令牌附加到具有这些 URI 的传出请求。 默认为 `null`。
 
-- **protectedResourceMap**：可选。  这就是将资源映射到 MSAL 使用的作用域，以便在 web API 调用中自动连接访问令牌。 为资源获取单个访问令牌。 因此，可以按如下所示映射特定的资源路径： {"https://graph.microsoft.com/v1.0/me"、["用户读取"]} 或资源的应用 URL： {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 这是 CORS 调用所必需的。 默认为 `null`。
+- **protectedResourceMap**：可选。  这就是将资源映射到 MSAL 使用的作用域，以便在 web API 调用中自动连接访问令牌。 为资源获取单个访问令牌。 因此, 可以按如下所示映射特定的资源路径: "https://graph.microsoft.com/v1.0/me" {""、["用户读取"]} 或资源的应用程序 URL: {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 这是 CORS 调用所必需的。 默认为 `null`。

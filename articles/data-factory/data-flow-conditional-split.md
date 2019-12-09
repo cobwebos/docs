@@ -1,18 +1,19 @@
 ---
-title: Azure 数据工厂映射数据流中的有条件拆分转换
+title: 映射数据流中的有条件拆分转换
 description: 使用 Azure 数据工厂映射数据流中的有条件拆分转换将数据拆分为不同的流
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676812"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930449"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的有条件拆分转换
 

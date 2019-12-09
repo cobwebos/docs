@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2e86c06cca26da2776459f3c20bf921a02ed89b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ee6ab1ada540f4f664e6782a1fffc63cc7df95e4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894712"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928581"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何通过 Azure 机器学习数据存储轻松访问 Azure 存储服务中的数据。 数据存储用于存储连接信息，如订阅 ID 和令牌授权。 使用数据存储可以访问存储，而无需在脚本中对连接信息进行硬编码。 可以从这些[Azure 存储解决方案](#matrix)创建数据存储。 对于不支持的存储解决方案，若要在机器学习试验期间节省数据出口成本，我们建议将数据移动到受支持的 Azure 存储解决方案。 [了解如何移动数据](#move)。 
+本文介绍如何通过 Azure 机器学习数据存储轻松访问 Azure 存储服务中的数据。 数据存储用于存储连接信息，如订阅 ID 和令牌授权。 使用数据存储可以访问存储，而无需在脚本中对连接信息进行硬编码。 可以从这些[Azure 存储解决方案](#matrix)创建数据存储。 对于不支持的存储解决方案，并在机器学习试验期间节省数据出口成本，我们建议将数据移动到受支持的 Azure 存储解决方案。 [了解如何移动数据](#move)。 
 
 本操作说明显示以下任务的示例：
-* [注册数据存储](#access)
-* [从工作区获取数据存储](#get)
-* [使用数据存储上传和下载数据](#up-and-down)
-* [在定型过程中访问数据](#train)
-* [将数据移到 Azure](#move)
+* 注册数据存储
+* 从工作区获取数据存储
+* 使用数据存储上传和下载数据
+* 在定型过程中访问数据
+* 将数据移动到 Azure 存储服务
 
 ## <a name="prerequisites"></a>必备组件
-
+需要具备
 - Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 - 使用[Azure Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或[azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的 azure 存储帐户。
@@ -58,7 +58,13 @@ ms.locfileid: "74894712"
 
 所有寄存器方法都在[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类上，格式为 register_azure_ *。
 
-填充 register （）方法所需的信息可通过[Azure 门户](https://portal.azure.com)找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证信息，如帐户密钥或 SAS 令牌，请在左侧的 "**设置**" 窗格下导航到 "**帐户密钥**"。 
+填充 register （）方法所需的信息可通过[Azure 机器学习 studio](https://ml.azure.com)和这些步骤来查找
+
+1. 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 
+2. "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 
+3. 对于身份验证信息，如帐户密钥或 SAS 令牌，请在左侧的 "**设置**" 窗格下导航到 "**帐户密钥**"。 
+
+>无关紧要如果你的存储帐户在 VNET 中，则仅支持 Azure blob 数据存储创建。 设置参数 `grant_workspace_access` 到 `True`，以便向你的工作区授予对你的存储帐户的访问权限。
 
 以下示例演示如何将 Azure Blob 容器或 Azure 文件共享注册为数据存储。
 
@@ -74,7 +80,6 @@ ms.locfileid: "74894712"
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    如果你的存储帐户在 VNET 中，则仅支持 Azure blob 数据存储创建。 设置参数 `grant_workspace_access` 到 `True`，以便向你的工作区授予对你的存储帐户的访问权限。
 
 + 对于**Azure 文件共享数据存储**，请使用[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)。 
 
@@ -104,7 +109,7 @@ ms.locfileid: "74894712"
   
 填充窗体所需的信息可通过[Azure 门户](https://portal.azure.com)找到。 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了信息，如帐户名和容器或文件共享名。 对于身份验证项（如帐户密钥或 SAS 令牌），请导航到左侧 "**设置**" 窗格下的 "**帐户密钥**"。
 
-下面的示例演示创建 Azure blob 数据存储时窗体的外观。 
+下面的示例演示了在创建 Azure blob 数据存储时窗体的外观。 
     
  ![新数据存储](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-创建工作区时，会将 Azure Blob 容器和 Azure 文件共享注册到名为 `workspaceblobstore` 的工作区，并分别 `workspacefilestore`。 它们存储在附加到工作区的存储帐户中设置的 Blob 容器和文件共享的连接信息。 `workspaceblobstore` 设置为默认数据存储。
+创建工作区时，会自动将 Azure Blob 容器和 Azure 文件共享注册到名为 `workspaceblobstore` 的工作区，并分别 `workspacefilestore`。 这些信息存储在附加到工作区的存储帐户中设置的 Blob 容器和文件共享的连接信息。 `workspaceblobstore` 设置为默认数据存储。
 
 若要获取工作区的默认数据存储：
 
@@ -189,7 +194,7 @@ datastore.download(target_path='your target path',
 
 道路|方法|描述|
 ----|-----|--------
-装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| 用于在计算目标上装载数据存储。
+装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| 用于在计算目标上装载数据存储。 装载后，你的数据存储的所有文件都可供你的计算目标访问。
 下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|使用将数据存储的内容下载到 `path_on_compute`指定的位置。 <br><br> 此下载在运行之前发生。
 上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| 使用将文件从 `path_on_compute` 指定的位置上传到数据存储。 <br><br> 此上传在运行之后发生。
 
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>示例 
 
-下面的代码示例特定于[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类，以便在定型过程中访问数据。 
+下面的代码示例特定于[`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类，以便在定型过程中访问数据。
 
 `script_params` 是包含 entry_script 参数的字典。 使用它传入数据存储，并说明数据在计算目标上如何可用。 通过我们的端到端[教程](tutorial-train-models-with-aml.md)了解更多。
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }

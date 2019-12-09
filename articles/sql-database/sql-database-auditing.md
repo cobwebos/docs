@@ -4,19 +4,17 @@ description: 使用 Azure SQL 数据库审核跟踪写入审核日志的数据�
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 58a446baaf15facab3a85d4d83defdeb5e6d2ef9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851479"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928702"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -154,7 +152,7 @@ ms.locfileid: "74851479"
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 
 > [!NOTE] 
-> 对[只读副本](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out)的审核会自动启用。 有关存储文件夹层次结构、命名约定和日志格式的更多详细信息，请参阅[SQL 数据库审核日志格式](sql-database-audit-log-format.md)。 
+> 对[只读副本](sql-database-read-scale-out.md)的审核会自动启用。 有关存储文件夹层次结构、命名约定和日志格式的更多详细信息，请参阅[SQL 数据库审核日志格式](sql-database-audit-log-format.md)。 
 
 - 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹层次结构、命名约定和日志格式的更多详细信息，请参阅[SQL 数据库审核日志格式](https://go.microsoft.com/fwlink/?linkid=829599)。
 

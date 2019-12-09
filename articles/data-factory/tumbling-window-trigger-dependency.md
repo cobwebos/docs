@@ -1,24 +1,22 @@
 ---
-title: 在 Azure 数据工厂中创建翻转窗口触发器依赖项
+title: 创建翻转窗口触发器依赖项
 description: 了解如何在 Azure 数据工厂中创建翻转窗口触发器上的依赖项。
 services: data-factory
-documentationcenter: ''
+ms.author: daperlov
 author: djpmsft
-manager: craigg
-editor: ''
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.author: daperlov
-ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683707"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926679"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
 
@@ -76,11 +74,11 @@ ms.locfileid: "73683707"
 
 下表提供了定义翻转窗口依赖项所需的属性列表。
 
-| **属性名称** | **说明**  | **类型** | **必需** |
+| **属性名称** | **说明**  | 类型 | **必需** |
 |---|---|---|---|
 | type  | 所有现有翻转窗口触发器将显示在此下拉列表中。 选择要依赖的触发器。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
 | offset | 依赖项触发器的偏移量。 提供一个时间跨度格式的值，同时允许负数和正偏移量。 如果触发器依赖于自身，而在所有其他情况下，此属性是可选的，则此属性是必需的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自依赖项：是<br/>其他：否 |
-| size | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | 否  |
+| size | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | No  |
 
 > [!NOTE]
 > 翻转窗口触发器最多可以有两个其他触发器。

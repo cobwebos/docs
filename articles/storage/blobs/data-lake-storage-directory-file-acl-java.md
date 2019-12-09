@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534252"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930790"
 ---
 # <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 中的 & Acl 使用 Java （预览）
 
@@ -32,17 +32,9 @@ ms.locfileid: "74534252"
 
 ## <a name="set-up-your-project"></a>设置项目
 
-若要开始，请在文本编辑器中打开*pom .xml*文件。 将以下依赖项元素添加到依赖项组。
+若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，并找到最新版本的 Java 库。 然后，在文本编辑器中打开*pom .xml*文件。 添加引用该版本的依赖项元素。
 
-```xml
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-storage-file-datalake</artifactId>
-  <version>12.0.0-preview.6</version>
-</dependency>
-```
-
-然后，将这些 imports 语句添加到代码文件中。
+接下来，将这些 imports 语句添加到代码文件中。
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;

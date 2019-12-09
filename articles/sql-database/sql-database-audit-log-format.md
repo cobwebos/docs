@@ -4,19 +4,17 @@ description: 了解 SQL 数据库审核日志的结构。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b7a3c295d2edd60c70f47ea155a5d747a3bfb03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873754"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928636"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL 数据库审核日志格式
 
@@ -32,16 +30,16 @@ ms.locfileid: "74873754"
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[只读副本](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-read-scale-out)审核日志存储在同一容器中。 容器中的目录层次结构的格式为 `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`。 Blob 文件名共享相同的格式。 只读副本的审核日志存储在同一容器中。
+[只读副本](sql-database-read-scale-out.md)审核日志存储在同一容器中。 容器中的目录层次结构的格式为 `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/`。 Blob 文件名共享相同的格式。 只读副本的审核日志存储在同一容器中。
 
 
 ### <a name="event-hub"></a>事件中心
 
-审核事件将写入审核配置过程中定义的命名空间和事件中心，并在[Apache Avro](https://avro.apache.org/)事件的正文中捕获并使用 utf-8 格式的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools)或处理此格式的类似工具。
+审核事件将写入审核配置过程中定义的命名空间和事件中心，并在[Apache Avro](https://avro.apache.org/)事件的正文中捕获并使用 utf-8 格式的 JSON 格式进行存储。 若要读取审核日志，可以使用 [Avro 工具](../event-hubs/event-hubs-capture-overview.md#use-avro-tools)或处理此格式的类似工具。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-审核事件将写入到在审核配置过程中定义的 Log Analytics 工作区，以及类别 `SQLSecurityAuditEvents`的 `AzureDiagnostics` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)。
+审核事件将写入到在审核配置过程中定义的 Log Analytics 工作区，以及类别 `SQLSecurityAuditEvents`的 `AzureDiagnostics` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](../log-analytics/log-analytics-log-search.md)。
 
 ## <a id="subheading-1"></a>审核日志字段
 

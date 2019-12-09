@@ -1,39 +1,39 @@
 ---
 title: Azure 数据工厂中的 Parquet 格式
-description: 本主题介绍了如何处理 Azure 数据工厂中的 Parquet 格式。
+description: 本主题介绍如何在 Azure 数据工厂中处理 Parquet 格式。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 9047e82713b709027275c75b17eb955877c62f08
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 72b001ada98ecd768cd39fea012a20f2ada466d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674771"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931277"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 
-如果要**分析 Parquet 文件或以 Parquet 格式写入数据**，请遵循此文章中的说明。 
+若要**分析 Parquet 文件或以 Parquet 格式写入数据**，请参阅此文。 
 
-以下连接器支持 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google云存储](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
+以下连接器支持 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供了 Parquet 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Parquet 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必选 |
+| properties         | 描述                                                  | 需要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | 数据集的 type 属性必须设置为 **Parquet**。 | 是      |
-| location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
-| compressionCodec | 写入到 Parquet 文件时要使用的压缩编解码器。 当从 Parquet 文件进行读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“**none**”、“**gzip**”、“**snappy**”（默认值）和“**lzo**”。 注意，复制活动当前不支持 LZO。 | 否       |
+| type             | 数据集的 type 属性必须设置为**Parquet**。 | 是      |
+| 位置         | 文件的位置设置。 每个基于文件的连接器都具有其自己的位置类型和 `location`下支持的属性。 **请参阅连接器文章-> 数据集属性 "部分中的详细信息**。 | 是      |
+| compressionCodec | 写入 Parquet 文件时要使用的压缩编解码器。 从 Parquet 文件中读取数据时，数据工厂会根据文件元数据自动确定压缩编解码器。<br>支持的类型为 "**none**"、"**gzip**"、"**snappy**" （默认值）和 "**lzo**"。 注意当前复制活动不支持 LZO。 | No       |
 
 > [!NOTE]
-> Parquet 文件不支持列名称中包含空格。
+> Parquet 文件不支持列名中的空格。
 
 下面是 Azure Blob 存储上的 Parquet 数据集的示例：
 
@@ -61,25 +61,25 @@ ms.locfileid: "73674771"
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供了 Parquet 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Parquet 源和接收器支持的属性列表。
 
-### <a name="parquet-as-source"></a>Parquet 作为源
+### <a name="parquet-as-source"></a>作为源的 Parquet
 
-复制活动的 ***\*source\**** 节支持以下属性。
+复制活动***\*源\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| properties      | 描述                                                  | 需要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 复制活动源的 type 属性必须设置为 **ParquetSource**。 | 是      |
-| storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+| type          | 复制活动源的 type 属性必须设置为**ParquetSource**。 | 是      |
+| storeSettings | 有关如何从数据存储区中读取数据的一组属性。 在 `storeSettings`下，每个基于文件的连接器都有其自己支持的读取设置。 **请参阅连接器文章-> 复制活动属性部分中的详细信息**。 | No       |
 
 ### <a name="parquet-as-sink"></a>Parquet 作为接收器
 
-复制活动的 ***\*sink\**** 节支持以下属性。
+复制活动***\*接收器\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| properties      | 描述                                                  | 需要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 复制活动源的 type 属性必须设置为 **ParquetSink**。 | 是      |
-| storeSettings | 有关如何将数据写入到数据存储的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自身支持的写入设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+| type          | 复制活动源的 type 属性必须设置为**ParquetSink**。 | 是      |
+| storeSettings | 如何将数据写入数据存储区的一组属性。 每个基于文件的连接器在 `storeSettings`下有自己的受支持的写入设置。 **请参阅连接器文章-> 复制活动属性部分中的详细信息**。 | No       |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
@@ -87,9 +87,9 @@ ms.locfileid: "73674771"
 
 ## <a name="data-type-support"></a>数据类型支持
 
-目前不支持 Parquet 复杂数据类型（例如 MAP、LIST、STRUCT）。
+当前不支持 Parquet 复杂数据类型（例如，MAP、LIST、STRUCT）。
 
-## <a name="using-self-hosted-integration-runtime"></a>使用自承载集成运行时
+## <a name="using-self-hosted-integration-runtime"></a>使用自承载 Integration Runtime
 
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
@@ -100,7 +100,7 @@ ms.locfileid: "73674771"
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 > [!TIP]
-> 如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 **，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道**`_JAVA_OPTIONS`。
+> 如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。
 
 ![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 

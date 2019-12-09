@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682797"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929750"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -36,7 +35,7 @@ ms.locfileid: "73682797"
 
 此教程介绍如何创建包含管道的数据工厂，以将数据从 Blob 存储复制到 SQL 数据库。
 
-复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储之间复制数据。 有关复制活动的详细信息，请参阅 [数据移动活动](data-factory-data-movement-activities.md) 。  
+复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储之间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。  
 
 > [!NOTE]
 > 有关数据工厂服务的详细概述，请参阅 [Azure 数据工厂简介](data-factory-introduction.md)一文。
@@ -86,7 +85,7 @@ ms.locfileid: "73682797"
 ## <a name="prepare-blob-storage-and-sql-database"></a>准备 Blob 存储和 SQL 数据库
 现在，执行以下步骤来准备本教程所需的 Azure Blob 存储和 Azure SQL 数据库：  
 
-1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，并将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
+1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
 
     ```
     John, Doe
