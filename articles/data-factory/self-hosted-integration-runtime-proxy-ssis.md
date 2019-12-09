@@ -5,7 +5,6 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
@@ -13,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/12/2019
-ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fa0f61ed0e280f11e693596f80e79f2e2c110678
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217643"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932037"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>在 ADF 中将自承载 IR 配置为 Azure-SSIS IR 的代理
 
@@ -54,7 +53,7 @@ ms.locfileid: "74217643"
 ![使用自承载 IR 作为代理来配置 Azure-SSIS IR](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-settings-ssisir.png)
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>允许 SSIS 包通过代理进行连接
-将最新的 SSDT 与适用于 Visual Studio 的 SSIS 项目扩展结合使用，可以从[此处](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下载，或将其作为可从[此处](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)下载的独立安装程序，可找到已添加到 OLEDB/平面文件连接管理器中的新**ConnectByProxy**属性。  
+将最新的 SSDT 与适用于 Visual Studio 的 SSIS 项目扩展结合使用, 可以从[此处](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下载, 或[将其作为独立的安装程序](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)下载, 并在其中添加 OLEDB/平面文件连接管理器。  
 
 当使用 OLEDB/平面文件源设计包含数据流任务的新包来访问本地数据库/文件时，可以启用此属性，方法是在相关连接管理器的 "属性" 面板上将其设置为**True** 。
 
@@ -69,7 +68,7 @@ ms.locfileid: "74217643"
   
   ![Enable ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- 重新部署包含这些包的项目以在 SSIS IR 上运行：然后，可以通过提供属性路径、`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并在 "执行包" 弹出窗口的 "**高级**" 选项卡上将其设置为**True**来启用属性。从 SSMS 运行包时。
+- 重新部署包含这些包的项目以在 SSIS IR 上运行：然后，可以通过提供属性路径来启用属性，`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并将其设置为**True** ，以便在运行 SSMS 的包时在 "执行包" 弹出窗口的 "**高级**" 选项卡上进行属性重写。
 
   ![Enable ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
@@ -95,4 +94,4 @@ Azure-SSIS IR 上运行的第二个过渡任务不会单独计费，但正在运
 - 当前不支持在 ODBC/OLEDB/平面文件源和连接管理器的属性中使用 SSIS 参数/变量。
 
 ## <a name="next-steps"></a>后续步骤
-将自承载 IR 配置为你的 Azure-SSIS IR 的代理后，你可以部署和运行你的包，以便在 ADF 管道中的 "执行 SSIS 包" 活动中访问本地数据，请参阅[在 adf 管道中将 ssis 包作为 "执行 Ssis 包" 活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+将你的自承载 IR 配置为你的 Azure-SSIS IR 的代理后，你可以部署和运行你的包，以便在 ADF 管道中作为 "执行 ssis 包" 活动访问本地数据，请参阅[在 adf 管道中将 ssis 包作为 "执行 Ssis 包" 活动运行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
