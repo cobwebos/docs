@@ -47,9 +47,9 @@ ms.locfileid: "74223888"
 
     ![屏幕截图，显示添加新卡。](./media/billing-how-to-change-credit-card/sub-add-new-x.png)
 
-1. 若要将该卡设置为有效付款方式，请勾选窗体上方“将此卡设置为我的有效付款方式”旁边的框。  对于所使用的卡与所选订阅的卡相同的所有订阅，此卡将成为有效付款方式。
+1. 若要将该卡设置为有效付款方式，请勾选窗体上方“将此设置为我的可用付款方式”旁边的框。  对于所使用的卡与所选订阅的卡相同的所有订阅，此卡将成为有效付款方式。
 
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 
 如果添加信用卡后发生错误，请参阅[注册 Azure 时信用卡遭拒](billing-credit-card-fails-during-azure-sign-up.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "74223888"
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
 1. 选择要将其设置为有效付款方式的卡旁边的框。
-1. 单击“设置为有效”。 
+1. 单击“设置为可用”。 
     ![屏幕截图，显示信用卡已选中且设置为有效。](./media/billing-how-to-change-credit-card/sub-change-active-x.png)
 
 ## <a name="remove-a-credit-card-from-the-account"></a>从帐户中删除信用卡
@@ -98,14 +98,14 @@ ms.locfileid: "74223888"
 
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
-1. 在“计费”下，选择“付款方式”。  
+1. 在“账单”下，选择“付款方式”。  
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
 1. 选择要删除的卡旁边的框。
 1. 单击“删除”  。
 
-如果信用卡是任何 Microsoft 订阅的有效付款方式，则无法从 Azure 帐户中将其删除。 更改关联到此信用卡的所有订阅的有效付款方式，然后重试
+如果信用卡是任何 Microsoft 订阅的有效付款方式，则无法从 Azure 帐户中将其删除。 更改关联到此信用卡的所有订阅的有效付款方式，然后重试。
 
 ## <a name="change-payment-method-for-a-billing-profile"></a>更改计费对象信息的付款方式
 
@@ -131,7 +131,7 @@ ms.locfileid: "74223888"
 1. 选择现有卡或添加新卡。
 
 ## <a name="troubleshooting"></a>故障排除
-我们不支持虚拟卡或预付卡。 如果在添加或更新有效信用卡时遇到错误，请尝试以专用模式打开浏览器。
+我们不支持虚拟卡或预付卡。 如果在添加或更新有效信用卡时遇到错误，请尝试以无痕模式打开浏览器。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 以下部分回答了一些有关如何更改信用卡信息的常见问题。
@@ -144,7 +144,7 @@ ms.locfileid: "74223888"
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>为何我总是看到“登录会话已过期。 请单击此处以重新登录”？
 
-如果注销并重新登录后，还是不断收到此错误消息，请尝试使用专用浏览会话再次登录。
+如果注销并重新登录后，还是不断收到此错误消息，请尝试使用无痕浏览会话再次登录。
 
 ### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>如何分别为每个订阅使用不同的卡？
 

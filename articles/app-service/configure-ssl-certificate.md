@@ -68,9 +68,9 @@ ms.locfileid: "74670738"
 
 若要创建免费应用服务托管证书，请执行以下操作：
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书 (.pfx)” > “创建应用服务托管证书”    。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “创建应用服务托管证书”    。
 
 ![在应用服务中创建免费证书](./media/configure-ssl-certificate/create-free-cert.png)
 
@@ -111,10 +111,10 @@ ms.locfileid: "74670738"
 
 | 设置 | 说明 |
 |-|-|
-| Name | 应用服务证书证书的友好名称。 |
+| 名称 | 应用服务证书证书的友好名称。 |
 | 裸域主机名 | 在此处指定根域。 颁发的证书可同时保护根域和 `www` 子域  。 在颁发的证书中，“公用名”字段包含根域，“使用者可选名称”字段包含 `www` 域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
-| Subscription | 托管 Web 应用的数据中心。 |
-| Resource group | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
+| 订阅 | 托管 Web 应用的数据中心。 |
+| 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
 | 法律条款 | 单击以确认你同意法律条款。 证书是从 GoDaddy 获取的。 |
 
@@ -132,12 +132,12 @@ ms.locfileid: "74670738"
 
 | 设置 | 说明 |
 |-|-|
-| Name | 由字母数字字符和短划线组成的唯一名称。 |
-| Resource group | 建议选择与应用服务证书相同的资源组。 |
+| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
+| 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | 位置 | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
 | 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/key-vault-group-permissions-for-apps.md)的步骤进行操作。 |
-| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/key-vault-network-security.md)的步骤进行操作 |
+| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/key-vault-network-security.md)的步骤进行操作。 |
 
 选择保管库后，关闭“Key Vault 存储库”页面  。 “存储”选项应显示绿色选中标记，表示成功  。 保持页面处于打开状态，执行下一步骤。
 
@@ -159,9 +159,9 @@ ms.locfileid: "74670738"
 
 ### <a name="import-certificate-into-app-service"></a>将证书导入到应用服务中
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书 (.pfx)” > “导入应用服务证书”    。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入应用服务证书”    。
 
 ![将应用服务证书导入到应用服务中](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -179,9 +179,9 @@ ms.locfileid: "74670738"
 
 如果使用 Azure Key Vault 管理证书，则可以将 PKCS12 证书从 Key Vault 导入到应用服务中，前提是该证书[满足要求](#private-certificate-requirements)。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书 (.pfx)” > “导入 Key Vault 证书”    。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入 Key Vault 证书”    。
 
 ![将 Key Vault 证书导入到应用服务中](./media/configure-ssl-certificate/import-key-vault-cert.png))
 
@@ -189,7 +189,7 @@ ms.locfileid: "74670738"
 
 | 设置 | 说明 |
 |-|-|
-| Subscription | Key Vault 所属的订阅。 |
+| 订阅 | Key Vault 所属的订阅。 |
 | Key Vault | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
@@ -233,7 +233,7 @@ ms.locfileid: "74670738"
 
 ### <a name="export-certificate-to-pfx"></a>将证书导出为 PFX
 
-导出合并的 SSL 证书（其中包含生成证书请求时所用的私钥）。
+用生成证书请求时所用的私钥导出合并的 SSL 证书。
 
 如果使用 OpenSSL 生成证书请求，则已创建私钥文件。 若要将证书导出为 PFX，请运行以下命令。 将占位符 _&lt;private-key-file>_ 和 _&lt;merged-certificate-file>_ 分别替换为私钥和合并证书文件的路径。
 
@@ -249,9 +249,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 现在可以将证书上传到应用服务了。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书 (.pfx)” > “上传证书”    。
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “上载证书”    。
 
 ![将私有证书上传到应用服务中](./media/configure-ssl-certificate/upload-private-cert.png)
 
@@ -269,13 +269,13 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 支持使用 .cer 格式的公用证书  。 
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
 
-在应用的左侧导航窗格中，单击“TLS/SSL 设置” > “公用证书 (.cer)” > “上传公钥证书”    。
+在应用的左侧导航窗格中，单击“TLS/SSL 设置” > “公用证书(.cer)” > “上传公钥证书”    。
 
 在“名称”  中，键入证书的名称。 在“CER 证书文件”  中，选择 CER 文件。
 
-单击“上传” 。 
+单击“上载” 。 
 
 ![将公用证书上传到应用服务中](./media/configure-ssl-certificate/upload-public-cert.png)
 
@@ -347,7 +347,7 @@ az keyvault secret download \
 
 删除应用服务证书是最终且不可逆的。 此证书的任何应用服务绑定都将变得无效。 为了防止意外删除，Azure 在证书上放置锁定。 若要删除应用服务证书，必须先删除证书上的删除锁定。
 
-选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页的证书，然后选择左侧导航窗格的“锁定”  。
+选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页的证书，然后选择左侧导航窗格的“锁”  。
 
 查找证书上锁定类型为“删除”的锁定  。 在该锁定右侧，选择“删除”  。
 

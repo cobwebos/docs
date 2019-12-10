@@ -23,7 +23,7 @@ ms.locfileid: "74671563"
 
 在本操作指南中，你将了解如何使用 Azure 机器学习以异步方式和并行方式对大量数据进行推理。 此处所述的批处理推理功能在公共预览版中提供。 这是一种用于生成推理和处理数据的高性能和高吞吐量的方式。 它提供现成的异步功能。
 
-通过批处理推理，可以轻松地将离线推理扩展到数 TB 的生产数据的大计算机群集，从而提高工作效率和优化成本。
+通过批处理推理，可以轻松地将离线推理扩展到生产数据 TB 级的大型计算机群集，从而提高工作效率和优化成本。
 
 在本操作指南中，你将学习如何执行以下任务：
 
@@ -151,7 +151,7 @@ else:
 
 ## <a name="prepare-the-model"></a>准备模型
 
-[下载预先训练的映像分类模型](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)，然后将其提取到 `models` 目录。
+[下载预先训练的映像分类模型](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)，然后将其解压缩到 `models` 目录。
 
 ```python
 import os
@@ -261,15 +261,15 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>为批处理推理管道步骤指定参数
 
-`ParallelRunConfig` 是新引入的批处理推理 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括所有以下各项：
+`ParallelRunConfig` 是新引入的批处理推理 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括以下所有各项：
 - `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directly` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
 - `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值为 `1`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
     - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 请注意，`TabularDataset` 中的微型批处理永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
-- `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将停止。 错误阈值适用于整个输入，而不仅适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
+- `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将停止。 错误阈值适用于整个输入，而非适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
 - `output_action`：以下值之一指示将如何组织输出：
     - `summary_only`：用户脚本将存储输出。 `ParallelRunStep` 仅将输出用于错误阈值计算。
-    - `append_row`：对于所有输入文件，将只在输出文件夹中创建一个文件，以追加按行分隔的所有输出。 文件名将为 parallel_run_step.txt。
+    - `append_row`：对于所有输入文件，将只在输出文件夹中创建一个文件，以追加所有按行分隔的输出。 文件名将为 parallel_run_step.txt。
 - `source_directory`：文件夹的路径，这些文件夹包含要在计算目标上执行的所有文件（可选）。
 - `compute_target`：仅支持 `AmlCompute`。
 - `node_count`：用于运行用户脚本的计算节点数。
@@ -300,7 +300,7 @@ parallel_run_config = ParallelRunConfig(
 - `parallel_run_config`：`ParallelRunConfig` 对象，如前文所述。
 - `inputs`：一个或多个单类型 Azure 机器学习数据集。
 - `output`：与输出目录相对应的 `PipelineData` 对象。
-- `arguments`：传递给用户脚本的参数的列表（可选）。
+- `arguments`：传递给用户脚本的参数列表（可选）。
 - `allow_reuse`：当使用相同的设置/输入运行时，该步骤是否应重用以前的结果。 如果此参数为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。 （可选；默认值为 `True`。）
 
 ```python

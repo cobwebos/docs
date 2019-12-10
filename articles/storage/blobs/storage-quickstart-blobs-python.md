@@ -19,7 +19,7 @@ ms.locfileid: "74423973"
 适用于 Python 的 Azure Blob 存储客户端库 v12 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 > [!NOTE]
-> 若要开始使用以前的 SDK 版本，请参阅[快速入门：适用于 Python 的 Azure Blob 存储客户端库](storage-quickstart-blobs-python-legacy.md)。
+> 若要使用之前的 SDK 版本入门，请参阅[快速入门：适用于 Python 的 Azure Blob 存储客户端库](storage-quickstart-blobs-python-legacy.md)。
 
 使用 Azure Blob 存储客户端库完成以下操作：
 
@@ -67,7 +67,7 @@ ms.locfileid: "74423973"
 
 ### <a name="install-the-package"></a>安装包
 
-当仍在应用程序目录中时，使用 `pip install` 命令安装适用于 Python 包的 Azure Blob 存储客户端库。
+仍在应用程序目录中，使用 `pip install` 命令安装适用于 Python 包的 Azure Blob 存储客户端库。
 
 ```console
 pip install azure-storage-blob
@@ -97,13 +97,13 @@ pip install azure-storage-blob
         print(ex)
     ```
 
-1. 将新文件在 blob-quickstart-v12 目录中另存为 blob-quickstart-v12.py   。
+1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py   。
 
 [!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>对象模型
 
-Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义（如文本或二进制数据）的数据。 Blob 存储提供了三种类型的资源：
+Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。 Blob 存储提供了三种类型的资源：
 
 * 存储帐户
 * 存储帐户中的容器
@@ -255,7 +255,7 @@ print("Done")
 
 ## <a name="run-the-code"></a>运行代码
 
-此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对旧文件和新文件进行比较。
+此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
 导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用  。
 
@@ -284,7 +284,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“文档”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“Documents”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
 
 验证文件后，按 Enter 键以删除测试文件并完成演示  。
 

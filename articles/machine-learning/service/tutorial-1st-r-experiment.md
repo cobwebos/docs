@@ -31,7 +31,7 @@ ms.locfileid: "74307287"
 > * 创建计算资源
 > * 训练 caret 模型以预测死亡几率
 > * 部署预测终结点
-> * 从 R 测试模型
+> * 在 R 中测试模型
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
@@ -101,7 +101,7 @@ ws <- load_workspace_from_config()
 ```
 
 ### <a name="create-an-experiment"></a>创建试验
-Azure ML 试验跟踪一组运行（通常是从同一个训练脚本跟踪）。 创建一个试验来跟踪运行，这些运行用于基于事故数据训练 caret 模型。
+Azure ML 试验跟踪一组运行（通常来自相同的训练脚本）。 创建一个试验来跟踪运行，这些运行是基于事故数据训练 caret 模型的。
 
 ```R
 experiment_name <- "accident-logreg"
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>将数据上传到数据存储
-将数据上传到云中，使远程训练环境能够对其进行访问。 每个 Azure ML 工作区附带一个默认的数据存储，其中存储了在附加到工作区的存储帐户中预配的 Azure Blob 容器的连接信息。 以下代码将前面创建的事故数据上传到该数据存储。
+将数据上传到云中，使远程训练环境能够对其进行访问。 每个 Azure ML 工作区附带一个默认的数据存储，其中存储了与 Azure Blob 容器（由附加到工作区的存储帐户预配）的连接信息。 以下代码将前面创建的事故数据上传到该数据存储。
 
 ```R
 ds <- get_default_datastore(ws)
@@ -167,8 +167,8 @@ upload_files_to_datastore(ds,
 本教程的同一目录中已提供了一个名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure ML 服务进行训练：
 
 * 训练脚本采用 `-d` 参数来查找包含训练数据的目录。 稍后定义并提交作业时，需要指向数据存储来获取此参数。 Azure ML 会将存储文件夹装载到训练作业的远程群集。
-* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API 用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在 [Azure 机器学习工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
-* 训练脚本将模型保存到一个名为**outputs** 的目录中。 Azure ML 将对 `./outputs` 文件夹进行特殊的处理。 在训练期间，Azure ML 会自动将写入到 `./outputs` 的文件上传到运行记录，并将其持久保存为项目。 将训练的模型保存到 `./outputs` 后，你可以访问和检索模型文件（即使是运行结束之后），但不再可以访问远程训练环境。
+* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标，记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API，用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在 [Azure 机器学习工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
+* 训练脚本将模型保存到一个名为**outputs** 的目录中。 Azure ML 将对 `./outputs` 文件夹进行特殊的处理。 在训练期间，Azure ML 会自动将写入到 `./outputs` 的文件上传到运行记录，并将其持久保存为项目。 将训练的模型保存到 `./outputs` 即使是在运行结束之后以及不再可以访问远程训练环境的情况下，你仍可以访问和检索模型文件。
 
 ### <a name="create-an-estimator"></a>创建估算器
 
@@ -210,7 +210,7 @@ view_run_details(run)
 wait_for_run_completion(run, show_output = TRUE)
 ```
 
-你以及有权访问工作区的同事可以同时提交多个试验，而 Azure ML 将负责在计算群集上计划任务。 甚至可以将群集配置为自动扩展到多个节点，并在队列中不再存在计算任务时缩减。 此配置可让团队经济高效地共享计算资源。
+You and colleagues with access to the workspace can submit multiple experiments in parallel, and Azure ML will take of scheduling the tasks on the compute cluster. 甚至可以将群集配置为自动扩展到多个节点，并在队列中不再存在计算任务时缩减。 此配置可让团队经济高效地共享计算资源。
 
 ## <a name="retrieve-training-results"></a>检索训练结果
 完成训练后，可以访问已保存到运行记录的作业项目，包括记录的所有指标，以及已训练的最终模型。
@@ -285,7 +285,7 @@ model <- register_model(ws,
 ### <a name="define-the-inference-dependencies"></a>定义推理依赖项
 若要为模型创建 Web 服务，首先需要创建一个评分脚本 (`entry_script`)，这是一个 R 脚本，它会提取输入变量值（采用 JSON 格式）并从模型输出预测结果。 本教程使用随附的评分文件 `accident_predict.R`。 评分脚本必须包含 `init()` 方法，该方法加载模型并返回一个函数，而该函数则使用该模型基于输入数据进行预测。 有关更多详细信息，请参阅[文档](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details)。
 
-接下来，为脚本的包依赖项定义 Azure ML **环境**。 使用环境指定运行脚本所需的 R 包（来自 CRAN 或其他位置）。 还可以提供环境变量的值，脚本可以引用这些值来修改其行为。 默认情况下，Azure ML 会生成用于训练的评估器所用的相同默认 Docker 映像。 由于本教程没有特殊的要求，因此可以创建一个不使用特殊属性的环境。
+接下来，为脚本的包依赖项定义 Azure ML **环境**。 使用环境指定运行脚本所需的 R 包（来自 CRAN 或其他位置）。 还可以提供环境变量的值，脚本可以引用这些值来修改其行为。 默认情况下，Azure ML 会生成为训练的评估器所用的相同默认 Docker 映像。 由于本教程没有特殊的要求，因此可以创建一个不使用特殊属性的环境。
 
 ```R
 r_env <- r_environment(name = "basic_env")
