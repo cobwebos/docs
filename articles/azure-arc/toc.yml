@@ -10,7 +10,7 @@
   items:
     - name: 使用用于服务器的 Azure Arc 将计算机连接到 Azure - 门户
       href: ./servers/quickstart-onboard-portal.md
-    - name: 使用用于服务器的 Azure Arc 将计算机连接到 Azure - PowerShell
+    - name: 使用用于服务器的 Azure Arc 大规模连接计算机 - PowerShell
       href: ./servers/quickstart-onboard-powershell.md
 - name: 引用
   items:

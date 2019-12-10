@@ -1,6 +1,7 @@
 ---
-title: 教程 - 自定义用户界面体验 - Azure Active Directory B2C | Microsoft Docs
-description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面。
+title: 教程：自定义用户界面
+titleSuffix: Azure AD B2C
+description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面（UI）。
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291093"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950861"
 ---
-# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户体验的接口
 
 对于更常见的用户体验，例如注册、登录和配置文件编辑，可以在 Azure Active Directory B2C （Azure AD B2C）中使用[用户流](active-directory-b2c-reference-policies.md)。 本教程中的信息有助于了解如何使用自己的 HTML 和 CSS 文件[自定义用户界面 (UI)](customize-ui-overview.md)。
 
@@ -30,7 +31,7 @@ ms.locfileid: "71291093"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [创建用户流](tutorial-create-user-flows.md)以便用户注册并登录到你的应用程序。
 
@@ -62,21 +63,21 @@ ms.locfileid: "71291093"
  浏览器中的 Azure AD B2C 代码使用新式标准方法从用户流中指定的 URL 加载自定义内容。 跨源资源共享 (CORS) 允许从其他域请求网页上的受限资源。
 
 1. 在菜单中，选择“CORS”。
-2. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如， `https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
-3. 对于**允许的方法**， `GET`请`PUT`选择、 `OPTIONS`和。
+2. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
+3. 对于**允许的方法**，请选择 `GET`、`PUT`和 `OPTIONS`。
 4. 对于“允许的标头”，请输入一个星号 (*)。
 5. 对于“公开的标头”，请输入一个星号 (*)。
 6. 对于“最大期限”，请输入 200。
 
-    ![Azure 门户的 Azure Blob 存储中的 CORS 配置页](./media/tutorial-customize-ui/enable-cors.png)
+    ![Azure 门户中的 Azure Blob 存储中的 CORS 配置页](./media/tutorial-customize-ui/enable-cors.png)
 
 5. 单击“保存”。
 
 ### <a name="create-the-customization-files"></a>创建自定义文件
 
-若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为 `api`。 例如， `<div id="api"></div>` 。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
+若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为 `api`。 例如，`<div id="api"></div>` 。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
 
-1. 在本地文件夹中，创建以下文件，并确保将 `your-storage-account` 更改为存储帐户的名称，并将 `your-container` 更改为所创建容器的名称。 例如， `https://store1.blob.core.windows.net/b2c/style.css` 。
+1. 在本地文件夹中，创建以下文件，并确保将 `your-storage-account` 更改为存储帐户的名称，并将 `your-container` 更改为所创建容器的名称。 例如，`https://store1.blob.core.windows.net/b2c/style.css` 。
 
     ```html
     <!DOCTYPE html>
@@ -130,7 +131,7 @@ ms.locfileid: "71291093"
 2. 选择创建的存储帐户，选择“Blob”，然后选择创建的容器。
 3. 选择“上传”，导航到“custom-ui.html”文件并选择该文件，然后点击“上传”。
 
-    ![门户中突出显示了“上传”按钮和文件的“上传 blob”页](./media/tutorial-customize-ui/upload-blob.png)
+    ![在门户中上传 blob 页面，其中突出显示了 "上传" 按钮和文件](./media/tutorial-customize-ui/upload-blob.png)
 
 4. 复制所上传文件的 URL，以便稍后在本教程中使用。
 5. 对“style.css”文件重复步骤 3 和 4。
@@ -149,11 +150,11 @@ ms.locfileid: "71291093"
 2. 在该页顶部，单击“运行用户流”。
 3. 单击“运行用户流”按钮。
 
-    ![注册或登录用户流的“运行用户流”页](./media/tutorial-customize-ui/run-user-flow.png)
+    ![为注册或登录用户流运行用户流页面](./media/tutorial-customize-ui/run-user-flow.png)
 
     应该会看到类似于以下示例的页面，其中元素基于所创建的 CSS 文件集中在一起：
 
-    ![显示带有自定义 UI 元素的注册或登录页的 Web 浏览器](./media/tutorial-customize-ui/run-now.png)
+    ![显示具有自定义 UI 元素注册或登录页的 Web 浏览器](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>后续步骤
 
