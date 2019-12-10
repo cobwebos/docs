@@ -41,8 +41,8 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
     **设置** | **建议的值** | **字段说明** 
     ---|---|---
     服务器名称 | 唯一的服务器名称 | 输入用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.azure.com* 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
-    Subscription | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
-    Resource group |  myresourcegroup | 提供新的或现有的资源组名称。
+    订阅 | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
+    资源组 |  myresourcegroup | 提供新的或现有的资源组名称。
     选择源 | *空白* | 选择“空白”  可从头开始创建新服务器。 （如果要从现有 Azure Database for MySQL 服务器的异地备份创建服务器，请选择“备份”  ）。
     服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。      
     密码 | *由用户选择* | 为服务器管理员帐户提供新密码。 必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字 (0-9)和非字母数字字符（!, $, #, % 等）。
@@ -194,7 +194,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
     > 默认情况下，SSL 是在服务器上强制实施的，需要额外配置才能成功进行连接。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 就本快速入门来说，若要禁用 SSL，请转到 Azure 门户。 然后选择“连接安全性”页，禁用“强制实施 SSL”连接切换按钮。 
 
 ## <a name="clean-up-resources"></a>清理资源
-可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，其中包括资源组中的所有资源。 若要保持其他资源原封不动，请只删除单服务器资源。
+可以通过两种方式清理在快速入门中创建的资源。 可以删除 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，其中包括资源组中的所有资源。 若要保持其他资源原封不动，请只删除单个服务器资源。
 
 > [!TIP]
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请执行以下步骤，删除通过本快速入门创建的所有资源。

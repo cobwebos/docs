@@ -15,7 +15,7 @@ ms.locfileid: "74670738"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本文介绍如何创建私有证书或公用证书，或将其上传或导入到应用服务中。 
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本文介绍如何创建私有证书或公用证书，或将其上传或导入到应用服务中。 
 
 将证书添加到应用服务应用或[函数应用](https://docs.microsoft.com/azure/azure-functions/)后，即可[使用它来保护自定义 DNS 名称](configure-ssl-bindings.md)或[在应用程序代码中使用它](configure-ssl-certificate-in-code.md)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74670738"
 * 包含长度至少为 2048 位的私钥
 * 包含证书链中的所有中间证书
 
-若要保护 SSL 绑定中的自定义域，证书具有其他要求：
+若要保护 SSL 绑定中的自定义域，证书还有其他要求：
 
 * 包含用于服务器身份验证的[扩展密钥用法](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) (OID = 1.3.6.1.5.5.7.3.1)
 * 已由受信任的证书颁发机构签名
