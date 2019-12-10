@@ -78,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md
-    - name: 采用条件访问
-      href: howto-conditional-access-adoption-kit.md
     - name: 故障排除
       items:
         - name: 使用 What If 工具排查问题

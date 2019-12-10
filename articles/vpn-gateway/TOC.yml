@@ -124,8 +124,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: 创建和安装 VPN 客户端配置文件
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: 关于客户端 VPN 配置文件下载文件
-              href: about-vpn-profile-download.md
         - name: RADIUS 身份验证
           items:
             - name: 配置 P2S VPN
@@ -142,6 +140,8 @@
               href: openvpn-azure-ad-mfa.md
             - name: 配置 VPN 客户端
               href: openvpn-azure-ad-client.md
+            - name: 关于客户端 VPN 配置文件下载文件
+              href: about-vpn-profile-download.md
         - name: OpenVPN
           items:
             - name: 为点到站点连接配置 OpenVPN
