@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: dc842ba0e7ca0f34b7dacb98322c4dc0cd056483
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931991"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941882"
 ---
 # <a name="move-files-with-azure-data-factory"></a>通过 Azure 数据工厂移动文件
 
@@ -36,9 +36,11 @@ ms.locfileid: "74931991"
 - **将**源中的一个文件复制到目标存储区。
 - **Delete**从源存储区中删除相同的文件。
 
-该模板定义两个参数：
-- *FolderPath_SourceStore*是您要从中移动文件的源存储的文件夹路径。 
-- *FolderPath_DestinationStore*是要将文件移动到的目标存储的文件夹路径。 
+该模板定义四个参数：
+- *SourceStore_Location*是您要从中移动文件的源存储的文件夹路径。 
+- *SourceStore_Directory*是您要从中移动文件的源存储的子文件夹路径。
+- *DestinationStore_Location*是要将文件移动到的目标存储的文件夹路径。 
+- *DestinationStore_Directory*是要将文件移动到的目标存储的子文件夹路径。
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
@@ -50,9 +52,7 @@ ms.locfileid: "74931991"
 
     ![与目标建立新的连接](media/solution-template-move-files/move-files2.png)
 
-3. 选择“使用此模板”。
-
-    ![使用此模板](media/solution-template-move-files/move-files3.png)
+3. 选择 "**使用此模板**选项卡"。
     
 4. 你会看到管道，如以下示例中所示：
 

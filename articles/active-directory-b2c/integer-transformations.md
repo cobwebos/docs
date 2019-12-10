@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例。
+title: 自定义策略的整数声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的标识体验框架（IEF）架构的整数声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d82f7fecfb35c63d586993fed73a83209782a890
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064211"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948828"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
 
@@ -27,10 +28,10 @@ ms.locfileid: "71064211"
 
 将 long 数据类型转换为字符串数据类型。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要转换为字符串的 ClaimType。 |
-| OutputClaim | outputClaim | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 在此示例中，值类型为 long 的 `numericUserId` 声明将转换为值类型为字符串的 `UserId` 声明。
 
@@ -48,7 +49,7 @@ ms.locfileid: "71064211"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim**：12334 (long)
+    - **inputClaim**: 12334 (long)
 - 输出声明：
-    - **outputClaim**："12334" (string)
+    - **outputClaim**: "12334" (string)
 

@@ -1,5 +1,6 @@
 ---
-title: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件 | Microsoft Docs
+title: 在自定义策略中定义自断言技术配置文件
+titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4fec742766cebeb5b1d82655e09af77a888c375c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: bfa8982fb49b31540d1926bdeb75a96dc1d79cf0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063693"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950895"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -23,7 +24,7 @@ ms.locfileid: "71063693"
 
 需要用户提供输入的 Azure Active Directory B2C （Azure AD B2C）中的所有交互均为自断言技术配置文件。 例如，注册页面、登录页面或密码重置页面。
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>协议
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 “handler”属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
@@ -65,7 +66,7 @@ ms.locfileid: "71063693"
 <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" AlwaysUseDefaultValue="true" />
 ```
 
-### <a name="use-case"></a>使用案例
+### <a name="use-case"></a>用例
 
 关于输出声明，有四种场景：
 
@@ -127,16 +128,16 @@ ms.locfileid: "71063693"
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.operatingMode | 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
+| setting.showContinueButton | No | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showCancelButton | No | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.operatingMode | No | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
-| EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.showSignupLink | 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
-| SignUpTarget | 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
+| EnforceEmailVerification | No | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
+| setting.showSignupLink | No | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.retryLimit | No | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
+| SignUpTarget | No | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

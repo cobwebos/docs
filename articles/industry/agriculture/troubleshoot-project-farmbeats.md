@@ -5,26 +5,29 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0a4fb337adfb2f4e6b8edb86ac620103e929c3a8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89f364d9246db27276eee6d05e8130e87061feec
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842129"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941586"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>排查 Azure FarmBeats 问题
 
 本文提供常见 Azure FarmBeats 问题的解决方案。
 
-有关更多帮助，请在 farmbeatssupport@microsoft.com与我们联系。 请确保电子邮件中包含 "部署部署*日志*文件"。
+有关更多帮助，请在 farmbeatssupport@microsoft.com与我们联系。 请确保电子邮件中包含 "部署部署**日志**文件"。
 
-若要下载文件*日志*文件，请执行以下操作：
+若要下载文件**日志**文件，请执行以下操作：
 
-1. 选择突出显示的图标，然后在下拉列表中选择 "**下载**"。
+1. 登录到**Azure 门户**并选择你的订阅和 Azure AD 租户。
+2. 从 Azure 门户的顶部导航栏启动 Cloud Shell。
+3. 选择 " **Bash** " 作为首选 Cloud Shell 体验。
+4. 选择突出显示的图标，然后在下拉列表中选择 "**下载**"。
 
     ![项目 FarmBeats](./media/troubleshooting-farmbeats/download-deployer-log-1.png)
 
-1. 在下一窗格中，输入你的部署*日志*文件的路径。 例如，输入**farmbeats-deployer**。
+5. 在下一窗格中，输入你的部署**日志**文件的路径。 例如，输入**farmbeats-deployer**。
 
 ## <a name="sensor-telemetry"></a>传感器遥测
 
@@ -32,7 +35,7 @@ ms.locfileid: "74842129"
 
 **症状**：设备或传感器已部署，并且你已将 FarmBeats 与设备合作伙伴链接，但无法在 FarmBeats 上获取或查看遥测数据。
 
-**纠正操作**： 
+**纠正操作**：
 
 1. 请参阅 FarmBeats Datahub 资源组。   
 1. 选择**事件中心**（DatafeedEventHubNamespace），然后检查传入消息数。
@@ -44,14 +47,14 @@ ms.locfileid: "74842129"
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>没有 Azure 事件中心连接字符串
 
-**纠正操作**： 
+**纠正操作**：
 
 1. 在 Datahub Swagger 中转到合作伙伴 API。
 1. 选择 "获取 ** >  > ** "**执行**"。
 1. 请注意你感兴趣的传感器伙伴的合作伙伴 ID。
 1. 返回到合作伙伴 API，并选择 "**获取/\<ID" >** 。
 1. 指定步骤3中的合作伙伴 ID，然后选择 "**执行**"。
-   
+
    API 响应应包含事件中心连接字符串。
 
 ### <a name="device-appears-offline"></a>设备显示脱机
@@ -128,7 +131,7 @@ ms.locfileid: "74842129"
 **问题**： FarmBeats 加速器不显示最新版本，即使在升级 FarmBeatsDeployment 之后。
 
 **纠正操作**：此错误是由于浏览器中的服务辅助角色持久性导致的。 请执行以下操作：
-1. 关闭所有已打开加速器的浏览器选项卡，然后关闭浏览器窗口。 
+1. 关闭所有已打开加速器的浏览器选项卡，然后关闭浏览器窗口。
 1. 启动浏览器的新实例，并重新加载加速器 URI。 此操作将加载新版本的加速器。
 
 ## <a name="sentinel-imagery-related-issues"></a>Sentinel：与图像相关的问题
@@ -137,7 +140,7 @@ ms.locfileid: "74842129"
 
 **作业失败消息**： "需要完全身份验证才能访问此资源"。
 
-**纠正操作**： 
+**纠正操作**：
 
 执行下列操作之一：
 * 重新运行安装程序，以便升级具有正确用户名和密码的 Datahub。
@@ -207,7 +210,7 @@ ms.locfileid: "74842129"
 
     ![项目 FarmBeats](./media/troubleshooting-farmbeats/collecting-logs-manually-1.png)
 
-### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>在加速器中收集 Azure 数据工厂作业日志 
+### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>在加速器中收集 Azure 数据工厂作业日志
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在**搜索**框中，搜索 FarmBeats 加速器资源组。

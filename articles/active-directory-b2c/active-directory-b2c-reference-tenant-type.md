@@ -1,6 +1,7 @@
 ---
-title: 区域可用性 & 驻留在 Azure Active Directory B2C 中的数据
-description: 有关 Azure Active Directory B2C 租户类型的主题。
+title: 区域可用性和数据驻留
+titleSuffix: Azure AD B2C
+description: 区域可用性、数据驻留以及有关 Azure Active Directory B2C 预览版租户的信息。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bb7a7ef2aabd7f93531d9afa662d7e582e05550
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 1b09eb85df6748fed042731ac90ebbf20c65b702
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273566"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950504"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：上市区域和数据驻留
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 
 区域可用性和数据驻留是两个截然不同的概念，它们以不同方式应用到 Azure AD B2C 和 Azure 的其余部分。 本文介绍这两个概念之间的区别，并比较它们如何应用于 Azure 与 Azure AD B2C。
 
@@ -27,7 +28,7 @@ Azure AD B2C 在**全球范围内公开提供**，在**美国、欧洲或亚太*
 
 [数据驻留](#data-residency)是指存储用户数据的位置。
 
-## <a name="region-availability"></a>上市区域
+## <a name="region-availability"></a>适用区域
 
 Azure AD B2C 可通过 Azure 公有云在全球通用。
 
@@ -47,7 +48,7 @@ Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
 
 对于以下国家/地区，数据驻留在**欧洲**：
 
-> 阿尔及利亚、奥地利、阿塞拜疆、巴林、白俄罗斯、比利时、保加利亚、克罗地亚、塞浦路斯、捷克共和国、丹麦、埃及、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、以色列、芬兰、约旦、哈萨克斯坦、肯尼亚、科威特、拉脱维亚、黎巴嫩、列支敦士登、立陶宛、卢森堡、北马其顿共和国、马耳他、黑山、摩洛哥、荷兰、尼日利亚、挪威、阿曼、巴基斯坦、波兰、葡萄牙、卡塔尔、罗马尼亚、俄罗斯、沙特阿拉伯、塞尔维亚、斯洛伐克、斯洛文尼亚、南非、西班牙、瑞典、瑞士，突尼斯，土耳其，乌克兰，阿拉伯联合酋长国和英国。
+> 阿尔及利亚、奥地利、阿塞拜疆、巴林、白俄罗斯、比利时、保加利亚、克罗地亚、塞浦路斯、捷克共和国、丹麦、埃及、爱沙尼亚、芬兰、法国、德国、希腊、匈牙利、冰岛、爱尔兰、以色列、芬兰、约旦、哈萨克斯坦、肯尼亚、科威特、拉脱维亚、黎巴嫩、列支敦士登、立陶宛、卢森堡、北欧马其顿共和国、马耳他、黑山、摩洛哥、荷兰、尼日利亚、挪威、阿曼、巴基斯坦、波兰、葡萄牙、卡塔尔、罗马尼亚、俄罗斯、沙特阿拉伯、塞尔维亚、斯洛伐克、斯洛文尼亚、南非、西班牙、瑞典、瑞士，突尼斯，土耳其，乌克兰，阿拉伯联合酋长国和英国。
 
 数据驻留在以下国家/地区**亚太**中：
 

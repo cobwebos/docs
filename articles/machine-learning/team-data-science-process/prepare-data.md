@@ -1,5 +1,5 @@
 ---
-title: 清理和准备 Azure 机器学习的数据 - Team Data Science Process
+title: 准备用于 ML Studio （经典）的数据-团队数据科学流程
 description: 预处理和清理数据，使其有效地用于机器学习。
 services: machine-learning
 author: marktab
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
+ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044593"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74936031"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](overview.md) 中概述的步骤。
 
 根据数据存储位置及其格式，可在各种环境（如 SQL、Hive、或 Azure 机器学习工作室）中，使用各种工具和语言（如 R 或 Python）执行预处理和清理任务（如数据浏览任务）。 由于 TDSP 本质上是迭代的，所以这些任务可以在进程工作流中的各个步骤发生。
 
-本文介绍各种数据处理概念，以及可在将数据引入到 Azure 机器学习之前或之后执行的任务。
+本文介绍可在将数据引入 Azure ML Studio （经典）之前或之后执行的各种数据处理概念和任务。
 
-有关在 Azure 机器学习工作室内完成的数据浏览和预处理示例，请参阅 [Pre-processing data in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)（在 Azure 机器学习工作室中预处理数据）视频。
+有关 Azure ML Studio （经典）中的数据浏览和预处理完成的示例，请参阅[预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)视频。
 
 ## <a name="why-pre-process-and-clean-data"></a>为什么要预处理并清理数据？
 实际数据从各种源和进程收集，可能包含违规行为或破坏数，进而影响数据集的之类。 通常引起的数据质量问题包括：
@@ -51,7 +51,7 @@ ms.locfileid: "61044593"
 
 查找数据问题时，需要执行**处理步骤**，通常涉及清理缺失值、数据规范化、离散化、文本处理，以删除和/或替换可能影响数据对齐的嵌入字符、公共字段中的混合数据类型及其他内容。
 
-**Azure 机器学习使用格式正确的表格数据**。  如果数据已经是表格形式，则可在机器学习工作室中直接使用 Azure 机器学习执行数据预处理。  如果数据不是表格形式（如 XML），可能需要进行分析以将数据转换为表格形式。  
+**Azure 机器学习使用格式正确的表格数据**。  如果数据已经是表格形式，则可以直接在机器学习中通过 Azure ML Studio （经典）执行数据预处理。  如果数据不是表格形式（如 XML），可能需要进行分析以将数据转换为表格形式。  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>数据预处理包含有哪些主要任务？
 * **数据清理**：填写缺失值，检测并删除干扰数据和离群值。
@@ -66,7 +66,7 @@ ms.locfileid: "61044593"
 若要处理缺失值，最好先确定缺少值的原因以更好地解决问题。 通常的缺失值处理方法包括：
 
 * **删除**：删除具有缺失值的记录
-* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown 替换分类值，或用 0 替换数值  。
+* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown 替换分类值，或用 0 替换数值。
 * **平均值替换**：如果缺失的数据是数字，则使用平均值替换缺失值。
 * **常用项替换**：如果缺失的是分类数据，则使用最常用的项替换缺失值
 * **回归替换**：使用回归方法，将缺失值替换为回归值。  
@@ -74,7 +74,7 @@ ms.locfileid: "61044593"
 ## <a name="how-to-normalize-data"></a>如何规范化数据？
 数据规范化将数值重新调整到指定范围。 常用的数据规范化方法包括：
 
-* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会将最小值缩放为 0，最大值缩放为 1。
+* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会最小值缩放为 0，最大值缩放为 1。
 * **Z 分数规范化**：基于平均值和标准偏差缩放数据：将数据和平均值之间的差除以标准偏差。
 * **小数缩放**：通过移动属性值的小数点缩放数据。  
 
@@ -97,7 +97,7 @@ ms.locfileid: "61044593"
 **数据浏览**支持提前预览数据。 执行该步骤时会发现多个数据问题，可应用相应的方法解决这些问题。  提问非常重要，例如问题的源是什么以及问题是如何引入的。 这还有助于确定需采取哪些数据处理步骤来解决这些问题。 从数据中获得的见解也可用于确定数据处理操作的优先级。
 
 ## <a name="references"></a>参考
-> 《数据挖掘：  概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
+> 《数据挖掘：概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
 > 
 > 
 

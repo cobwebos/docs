@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d2ac3b0f531b6384643d91fac1cf50a0ea719969
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a3e4f543be2f01e0c649d5f9bcc9287dedc275f1
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900334"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941638"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "74900334"
 > 您必须是管理员才能执行以下步骤。
 
 1. 下载此[脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器上。 Zip 文件内有两个文件。
-2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。 
+2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。
 
     ![Azure 门户工具栏](./media/for-tutorials/navigation-bar-1.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "74900334"
 
     ![PowerShell 设置](./media/for-tutorials/power-shell-new-1.png)
 
-4. 上传你在 Cloud Shell 实例的步骤1中下载的两个文件。 
+4. 上传你在 Cloud Shell 实例的步骤1中下载的两个文件。
 
     ![工具栏上的 "上传" 按钮](./media/for-tutorials/power-shell-two-1.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "74900334"
 
    >[!NOTE]
    > 默认情况下，文件将上传到 home directory/home/username。
-6. 使用以下命令运行该脚本： 
+6. 使用以下命令运行该脚本：
 
     ```azurepowershell-interactive
     ./generateCredentials.ps1
@@ -67,10 +67,10 @@ ms.locfileid: "74900334"
 
  现在，你已拥有所需的凭据，可以定义设备和传感器。 为此，请使用 FarmBeats Api 创建元数据。
 
- FarmBeats Datahub 提供了以下 Api，可用于创建和管理设备或传感器元数据。 
+ FarmBeats Datahub 提供了以下 Api，可用于创建和管理设备或传感器元数据。
 
-- /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。 
-- /**设备**：设备对应于在场上存在的物理设备。 
+- /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
+- /**设备**：设备对应于在场上存在的物理设备。
 - /**SensorModel**： SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器度量，如环境温度和压力。
 - /**传感器**：传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。  
 
@@ -99,7 +99,7 @@ ms.locfileid: "74900334"
 |     ProductCode| 产品代码或型号名称。 例如，RS-N01。 |
 |       SensorMeasures > 名称       | 传感器度量值的名称。 仅支持小写。 对于不同深度的度量，请指定深度。 例如，soil_moisture_15cm。 此名称必须与遥测数据一致。  |
 |          SensorMeasures > 数据类型       |遥测数据类型。 目前支持 double。|
-|    sensorMeasures > 类型    |传感器遥测数据的度量类型。 系统定义类型为 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、压力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要添加更多，请参阅/ExtendedType API。|
+|    SensorMeasures > 类型    |传感器遥测数据的度量类型。 系统定义类型为 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、压力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要添加更多，请参阅/ExtendedType API。|
 |        SensorMeasures > 单元              | 传感器遥测数据的单位。 系统定义的单位为 NoUnit、摄氏度、华氏度、开氏度、Rankine、Pascal、水星、PSI、毫米、厘米、米、英寸、英尺、英里、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、WattsPerSquareMeter、KiloWattsPerSquareMeter、百分比、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、PartsPerMillion、MilliSiemensPerCentiMeter，Centibar，DeciSiemensPerMeter，KiloPascal，VolumetricIonContent，升，MilliLiter，Seconds，UnixTimestamp，MicroMolPerMeterSquaredPerSecond，InchesPerHour 若要添加更多，请参阅/ExtendedType API。|
 |    SensorMeasures > AggregationType    |  值可以为 "无"、"平均值"、"最大值" 或 "StandardDeviation"。  |
 |          名称            | 用于标识资源的名称。 例如，模型名称或产品名称。  |
@@ -107,7 +107,7 @@ ms.locfileid: "74900334"
 |   属性       |  制造商提供的其他属性。  |
 |    **器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。 |
-|  sensorModelId     |    关联的传感器型号的 ID。   |
+|  SensorModelId     |    关联的传感器型号的 ID。   |
 | Location          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
 |    DeviceID  |    传感器连接到的设备的 ID。     |
@@ -269,7 +269,7 @@ SensorModel
   }
 }
 ```
-以下示例请求创建设备。 此请求将输入 JSON 作为带有请求正文的有效负载。 
+以下示例请求创建设备。 此请求将输入 JSON 作为带有请求正文的有效负载。
 
 ```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
@@ -292,7 +292,7 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>将遥测消息作为客户端发送
 
-建立作为事件中心客户端的连接后，可以将消息作为 JSON 发送到事件中心。 
+建立作为事件中心客户端的连接后，可以将消息作为 JSON 发送到事件中心。
 
 下面是将遥测作为客户端发送到指定事件中心的示例 Python 代码：
 
@@ -313,7 +313,7 @@ write_client.stop()
 
 ```
 
-将历史传感器数据格式转换为 Azure FarmBeats 了解的规范格式。 规范消息格式如下所示： 
+将历史传感器数据格式转换为 Azure FarmBeats 了解的规范格式。 规范消息格式如下所示：
 
 ```json
 {

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784708"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941825"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -31,35 +31,45 @@ ms.locfileid: "74784708"
 
 ## <a name="core-tools-versions"></a>Core Tools 版本
 
-Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别：
+有三个版本的 Azure Functions Core Tools。 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别：
 
-+ 1\.x 版：支持 1.x 版运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://docs.npmjs.com/getting-started/what-is-npm)安装。 借助此版本，可以使用不受官方支持的试验性语言创建函数。 有关详细信息，请参阅 [Azure Functions 中支持的语言](supported-languages.md)。
++ **版本**1.X：支持 Azure Functions 运行时的版本1.x。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
-+ [2.x 版](#v2)：支持 [2.x 版运行时](functions-versions.md)。 此版本支持 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)。 使用特定于平台的包管理器或 npm 进行安装。
++ [**版本 2.x/版本**](#v2)x：支持[Azure Functions 运行时的版本2.x 或](functions-versions.md)3.x。 这些版本支持[Windows](#windows-npm)、 [macOS](#brew)和[Linux](#linux) ，并使用特定于平台的包管理器或 npm 进行安装。
 
-除非另有说明，否则本文中的示例适用于版本 2.x。
+除非另有说明，否则本文中的示例适用于版本2.x。
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
 [Azure Functions Core Tools] 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
 
-### <a name="v2"></a>2.x 版
+### <a name="v2"></a>版本1.x 和2。x
 
-2\.x 版工具使用构建在 .NET Core 之上的 Azure Functions 运行时 2.x。 .NET Core 2.x 支持的所有平台（包括 [Windows](#windows-npm)、[macOS](#brew) 和 [Linux](#linux)）都支持此版本。 
+版本 2.x/版本的工具使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括[Windows](#windows-npm)、 [macOS](#brew)和[Linux](#linux)）都支持此版本。 
 
 > [!IMPORTANT]
-> 可以通过使用[扩展捆绑]来绕过安装 .net CORE 2.x SDK 的要求。
+> 您可以通过使用[扩展捆绑]来绕过安装 .NET Core SDK 的要求。
 
 #### <a name="windows-npm"></a>Windows
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 安装 [Node.js]，其中包括 npm。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
+1. 安装 [Node.js]，其中包括 npm。
+    - 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。
+    - 对于版本2.x 的工具，仅支持节点10和更高版本。
 
 1. 安装 Core Tools 包：
 
+    ##### <a name="v2x"></a>v2.x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3. x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    Npm 下载和安装核心工具包可能需要几分钟时间。
@@ -74,13 +84,21 @@ Azure Functions Core Tools 有两个版本。 使用的版本取决于本地开�
 
 1. 安装 Core Tools 包：
 
+    ##### <a name="v2x"></a>v2.x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. 如果不打算使用[扩展捆绑]，请安装[适用于 MacOS 的 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos)。
+    ##### <a name="v3x"></a>v3. x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a> 带 APT 的 Linux (Ubuntu/Debian)
 
@@ -212,7 +230,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 即使在使用存储仿真器进行开发时，你也可能希望使用实际的存储连接进行测试。 假设已[创建了存储帐户](../storage/common/storage-create-storage-account.md)，则可以通过下列方式之一获取有效的存储连接字符串：
 
 - 在[Azure 门户]中，搜索并选择 "**存储帐户**"。 
-  ![从 Azure 门户中选择存储 polybase 帐户](./media/functions-run-local/select-storage-accounts.png)
+  ![从 Azure 门户中选择存储帐户](./media/functions-run-local/select-storage-accounts.png)
   
   选择存储帐户，在 "**设置**" 中选择 "**访问密钥**"，然后复制其中一个**连接字符串**值。
   从 Azure 门户中复制连接字符串 ![](./media/functions-run-local/copy-storage-connection-portal.png)
@@ -526,5 +544,5 @@ func deploy
 [Azure 门户]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
 [扩展捆绑]: functions-bindings-register.md#extension-bundles

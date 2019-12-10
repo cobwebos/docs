@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: c7db5d7d8963702f6039af3cfd51d6d916755abb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931939"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941843"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>排查 Azure 数据工厂中的 SSIS Integration Runtime 管理问题
 
@@ -156,3 +156,38 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 此错误发生在 IR 运行时，这意味着 IR 已变得不正常。 此错误始终是由 DNS 服务器或 NSG 配置中的更改引起的，该更改阻止 SSIS IR 连接到必要服务。 由于 DNS 服务器和 NSG 的配置由客户控制，因此客户必须自行修复阻止问题。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
+
+## <a name="static-public-ip-addresses-configuration"></a>静态公共 IP 地址配置
+
+将 Azure-SSIS IR 加入到 Azure 虚拟网络时，还可以为 IR 引入自己的静态公共 IP 地址，以便 IR 可以访问限制对特定 IP 地址进行访问的数据源。 有关详细信息，请参阅[将 Azure-SSIS Integration Runtime 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+
+除了以上虚拟网络问题之外，你还可以满足与静态公共 IP 地址相关的问题。 请查看以下错误以获得帮助。
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+当你启动 Azure-SSIS IR 时，可能会出现以下各种原因：
+
+| 错误消息 | 解决方案|
+|:--- |:--- |
+| 提供的静态公共 IP 地址已被使用，请为你的 Azure-SSIS Integration Runtime 提供两个未使用的公共 IP 地址。 | 应选择两个未使用的静态公共 IP 地址，或删除对指定公共 IP 地址的当前引用，然后重新启动 Azure-SSIS IR。 |
+| 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个 dns 名称。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下：（1）打开 Azure 门户并转到此公共 IP 地址的资源页;（2）选择 "**配置**" 部分并设置 DNS 名称，然后单击 "**保存**" 按钮;（3）重新启动 Azure-SSIS IR。 |
+| 为 Azure-SSIS Integration Runtime 提供的 VNet 和静态公共 IP 地址必须位于同一位置。 | 根据 Azure 网络的要求，静态公共 IP 地址和虚拟网络应位于同一位置和订阅中。 请提供两个有效的静态公共 IP 地址，然后重新启动 Azure-SSIS IR。 |
+| 提供的静态公共 IP 地址是基本 IP 地址，请为 Azure-SSIS Integration Runtime 提供两个标准公共 IP 地址。 | 有关帮助，请参阅[公共 IP 地址的 sku](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) 。 |
+
+![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+如果 Azure-SSIS IR 预配失败，则会删除创建的所有资源。 但是，如果订阅或资源组（包含静态公共 IP 地址）级别的资源删除锁定，则不会按预期方式删除网络资源。 若要修复此错误，请删除删除锁定并重新启动 IR。
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+停止 Azure-SSIS IR 时，将删除在包含公共 IP 地址的资源组中创建的所有网络资源。 但如果在订阅或资源组（包含静态公共 IP 地址）级别存在资源删除锁定，则删除可能会失败。 请删除删除锁定并重新启动 IR。
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Azure-SSIS IR 会定期自动更新。 新的 IR 节点是在升级期间创建的，旧节点会被删除。 此外，将删除旧节点的已创建网络资源（例如负载均衡器和网络安全组），并在订阅下创建新的网络资源。 此错误表示由于订阅或资源组（包含静态公共 IP 地址）级别的删除锁定，删除旧节点的网络资源失败。 请删除删除锁定，以便可以清理旧节点并释放旧节点的静态公共 IP 地址。 否则，无法释放静态公共 IP 地址，我们将无法进一步升级 IR。
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+如果要引入自己的静态公共 IP 地址，应提供两个公共 IP 地址。 其中一个将用于立即创建 IR 节点，并且在升级 IR 期间将使用另一个节点。 如果在升级过程中其他公共 IP 地址不可用，则会出现此错误。 有关可能的原因，请参阅[InvalidPublicIPSpecified](#InvalidPublicIPSpecified) 。

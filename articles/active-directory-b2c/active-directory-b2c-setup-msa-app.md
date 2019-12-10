@@ -1,5 +1,6 @@
 ---
-title: 设置使用 Microsoft 帐户的注册和登录-Azure Active Directory B2C
+title: 设置使用 Microsoft 帐户的注册和登录
+titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C 向客户提供应用程序中的 Microsoft 帐户的注册和登录。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc79211f55edb471eb95fc55fe8519d228ca192e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642076"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949315"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 

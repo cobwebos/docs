@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中使用客户端证书保护 RESTful 服务 | Microsoft Docs
+title: 使用客户端证书保护 RESTful 服务
+titleSuffix: Azure AD B2C
 description: 使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1690adfe5336ea85328e16755c5e3bc82b6d240a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1d396de57a12285fb6cc682510fa6f95585465d0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835615"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949851"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -23,7 +24,7 @@ ms.locfileid: "67835615"
 
 在相关的文章中，我们已[创建一个 RESTful 服务](active-directory-b2c-custom-rest-api-netfw.md)，该服务可与 Azure Active Directory B2C (Azure AD B2C) 交互。
 
-本文介绍如何使用客户端证书来限制对 Azure Web 应用 (RESTful API) 的访问。 此机制称为 TLS 相互身份验证或客户端证书身份验证。  只有包含适当证书的服务（例如 Azure AD B2C）能够访问你的服务。
+本文介绍如何使用客户端证书来限制对 Azure Web 应用 (RESTful API) 的访问。 此机制称为 TLS 相互身份验证或客户端证书身份验证。 只有包含适当证书的服务（例如 Azure AD B2C）能够访问你的服务。
 
 >[!NOTE]
 >也可以[使用 HTTP 基本身份验证](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)保护 RESTful 服务。 但是，HTTP 基本身份验证的安全性被认为比客户端证书要低。 我们建议按本文中所述，使用客户端证书身份验证保护 RESTful 服务。
@@ -33,12 +34,12 @@ ms.locfileid: "67835615"
 * 将证书上传到 Azure AD B2C 策略密钥。
 * 将自定义策略配置为使用客户端证书。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 完成[集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
 * 获取有效的证书（包含私钥的 .pfx 文件）。
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>步骤 1：将 Web 应用配置为使用客户端证书身份验证
-若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此更改，请在 Azure 门户中打开 Web 应用页。 在左侧导航栏中的“设置”  下，选择“SSL 设置”  。 在“客户端证书”  部分中，启用“传入客户端证书”  选项。
+若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此更改，请在 Azure 门户中打开 Web 应用页。 在左侧导航栏中的“设置”下，选择“SSL 设置”。 在“客户端证书”部分中，启用“传入客户端证书”选项。
 
 >[!NOTE]
 >确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)。
@@ -48,27 +49,27 @@ ms.locfileid: "67835615"
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>步骤 2：将证书上传到 Azure AD B2C 策略密钥
 将 `clientCertEnabled` 设置为 *true* 之后，与 RESTful API 之间的通信需要客户端证书。 若要获取、上传以及在 Azure AD B2C 租户中存储客户端证书，请执行以下操作：
-1. 在 Azure AD B2C 租户中，选择“B2C 设置”   > “标识体验框架”  。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
 
-2. 若要查看租户中的可用密钥，请选择“策略密钥”。 
+2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
 3. 选择 **添加** 。
-    此时会打开“创建密钥”窗口。 
+    此时会打开“创建密钥”窗口。
 
-4. 在“选项”框中，选择“上传”。  
+4. 在“选项”框中，选择“上传”。
 
-5. 在“名称”框中，键入 **B2cRestClientCertificate**。 
+5. 在“名称”框中，键入 **B2cRestClientCertificate**。
     前缀 *B2C_1A_* 会自动添加。
 
-6. 在“文件上传”框中，选择包含私钥的证书 .pfx 文件。 
+6. 在“文件上传”框中，选择包含私钥的证书 .pfx 文件。
 
-7. 在“密码”框中，键入证书的密码  。
+7. 在“密码”框中，键入证书的密码。
 
-    ![上传在创建在 Azure 门户中密钥页上的策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![在 Azure 门户中的 "创建密钥" 页上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. 选择“创建”  。
+7. 选择**创建**。
 
-8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。 
+8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。
 
 ## <a name="step-3-change-the-technical-profile"></a>步骤 3：更改技术配置文件
 若要支持自定义策略中的客户端证书身份验证，请执行以下操作来更改技术配置文件：
@@ -99,32 +100,32 @@ ms.locfileid: "67835615"
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>步骤 4：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到[你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后选择“Azure AD B2C”。
 
-2. 选择“标识体验框架”  。
+2. 选择“标识体验框架”。
 
-3. 选择“所有策略”。 
+3. 选择“所有策略”。
 
-4. 选择“上传策略”  。
+4. 选择“上传策略”。
 
-5. 选中“覆盖策略(如果存在)”  复选框。
+5. 选中“覆盖策略(如果存在)”复选框。
 
 6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>步骤 5：使用“立即运行”测试自定义策略
-1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。  
+1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。
 
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
 
-3. 在“名”框中键入 **Test** 来测试该过程。 
+3. 在“名”框中键入 **Test** 来测试该过程。
     Azure AD B2C 会在窗口顶部显示一条错误消息。
 
-    ![给定名称文本框中突出显示和输入显示验证错误](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![突出显示了 "给定名称" 文本框并显示输入验证错误](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。 
+4. 在“名”框中键入一个名称（不要键入“Test”）。
     Azure AD B2C 会注册该用户，然后将会员号发送到应用程序。 请注意此 JWT 示例中的编号：
 
    ```
@@ -149,7 +150,7 @@ ms.locfileid: "67835615"
    ```
 
    >[!NOTE]
-   >如果收到“名称无效，请提供有效名称”错误消息，表示 Azure AD B2C 在提供客户端证书时已成功调用 RESTful 服务。  下一步是验证证书。
+   >如果收到“名称无效，请提供有效名称”错误消息，表示 Azure AD B2C 在提供客户端证书时已成功调用 RESTful 服务。 下一步是验证证书。
 
 ## <a name="step-6-add-certificate-validation"></a>步骤 6：添加证书验证
 由 Azure AD B2C 发送到 RESTful 服务的客户端证书不会在 Azure 应用服务平台中经历验证，系统只会检查该证书是否存在。 验证该证书是 Web 应用的责任。
@@ -168,7 +169,7 @@ ms.locfileid: "67835615"
 <add key="ClientCertificate:Thumbprint" value="Certificate thumbprint" />
 ```
 
-将证书的“使用者名称”、“颁发者名称”和“证书指纹”值替换为自己的证书值。   
+将证书的“使用者名称”、“颁发者名称”和“证书指纹”值替换为自己的证书值。
 
 ### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2：添加 IsValidClientCertificate 函数
 打开 *Controllers\IdentityController.cs* 文件，将以下函数添加到 `Identity` 控制器类：
@@ -287,7 +288,7 @@ if (IsValidClientCertificate() == false)
 ![添加证书验证代码](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
 ## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>步骤 7：将项目发布到 Azure 并对其进行测试
-1. 在“解决方案资源管理器”中右键单击“Contoso.AADB2C.API”项目，选择“发布”。   
+1. 在“解决方案资源管理器”中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
 
 2. 重复“步骤 6”，使用证书验证再次测试自定义策略。 尝试运行该策略，确保添加验证后一切正常。
 
@@ -298,5 +299,5 @@ if (IsValidClientCertificate() == false)
 如果需要对此步骤进行故障排除，请参阅[使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)用于参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)供你参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。

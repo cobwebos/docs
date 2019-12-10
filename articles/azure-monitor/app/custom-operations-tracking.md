@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: dabdfa43a87aadadbd6c22b886b8bfe08aa69f02
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872649"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951337"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -289,9 +289,9 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     }
     catch (StorageException e)
     {
-        telemetry.Properties.Add("AzureServiceRequestID", e.RequestInformation.ServiceRequestID);
-        telemetry.Success = false;
-        telemetry.ResultCode = e.RequestInformation.HttpStatusCode.ToString();
+        operation.telemetry.Properties.Add("AzureServiceRequestID", e.RequestInformation.ServiceRequestID);
+        operation.telemetry.Success = false;
+        operation.telemetry.ResultCode = e.RequestInformation.HttpStatusCode.ToString();
         telemetryClient.TrackException(e);
     }
     finally

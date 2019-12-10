@@ -1,5 +1,6 @@
 ---
-title: 通过 Azure Active Directory B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
+title: 跟踪 Application Insights 的用户行为
+titleSuffix: Azure AD B2C
 description: 了解如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志（预览版）。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066186"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948940"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -28,7 +29,7 @@ ms.locfileid: "71066186"
 * 衡量性能。
 * 通过 Application Insights 创建通知。
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`。 它使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。
 
@@ -36,7 +37,7 @@ Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.P
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 本文假设使用的是自定义策略初学者包。 但是，初学者包不是必需的。
 

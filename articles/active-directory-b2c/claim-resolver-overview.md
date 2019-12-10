@@ -1,6 +1,7 @@
 ---
-title: 关于 Azure Active Directory B2C 自定义策略中的声明解析程序 | Microsoft Docs
-description: 了解声明解析程序如何用于 Azure Active Directory B2C 中的自定义策略。
+title: 自定义策略中的声明解析程序
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 中使用自定义策略中的声明解析程序。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064403"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949868"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -47,8 +48,8 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 
 | 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | 语言的两字母 ISO 代码。 | zh-CN |
-| {Culture:LCID}   | 语言代码的 LCID。 | 4 |
+| {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
+| {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
 | {Culture:RegionName} | 区域的两字母 ISO 代码。 | 美国 |
 | {Culture:RFC5646} | RFC5646 语言代码。 | en-US |
 
@@ -61,18 +62,18 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 | {Policy:TenantObjectId} | 信赖方策略的租户对象 ID。 | 00000000-0000-0000-0000-000000000000 |
 | {Policy:TrustFrameworkTenantId} | 信任框架的租户 ID。 | your-tenant.onmicrosoft.com |
 
-### <a name="openid-connect"></a>OpenID 连接
+### <a name="openid-connect"></a>OpenID Connect
 
 | 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不可用 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | N/A |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`。 | 不可用 |
+| {OIDC:MaxAge} | `max_age`。 | N/A |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
-| {OIDC:Resource} |`resource` 查询字符串参数。 | 不可用 |
+| {OIDC:Resource} |`resource` 查询字符串参数。 | N/A |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
 
 ### <a name="context"></a>上下文
@@ -95,13 +96,13 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
-| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不可用 |
+| {OAUTH-KV:any custom query string} | 查询字符串参数。 | N/A |
 
 ### <a name="oauth2"></a>OAuth2
 
 | 声明 | 描述 | 示例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 访问令牌。 | 不可用 |
+| {oauth2:access_token} | 访问令牌。 | N/A |
 
 ## <a name="how-to-use-claim-resolvers"></a>如何使用声明解析程序
 

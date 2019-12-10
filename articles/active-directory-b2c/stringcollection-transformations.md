@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的 StringCollection 声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的 StringCollection 声明转换示例。
+title: 自定义策略的 StringCollection 声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的标识体验框架（IEF）架构的 StringCollection 声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063317"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950997"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -27,11 +28,11 @@ ms.locfileid: "71063317"
 
 将字符串声明添加到新的 stringCollection 声明。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
-| InputClaim | 集合 | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
-| OutputClaim | 集合 | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
+| InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
+| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId 技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail 声明转换会读取 ClaimType，并将值添加到 otherMails ClaimType。
 
@@ -61,11 +62,11 @@ ms.locfileid: "71063317"
 
 将字符串参数添加到新的 stringCollection 声明。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 集合 | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
-| InputParameter | item | string | 要添加到输出声明的值。 |
-| OutputClaim | 集合 | stringCollection | 调用此 ClaimsTransformation 后将生成的 ClaimTypes。 |
+| InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
+| InputParameter | item | 字符串 | 要添加到输出声明的值。 |
+| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后将生成的 ClaimTypes。 |
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。
 
@@ -96,10 +97,10 @@ ms.locfileid: "71063317"
 
 从提供的字符串集合中获取第一项。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 集合 | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
-| OutputClaim | extractedItem | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
+| InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
+| OutputClaim | extractedItem | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
 
 以下示例读取 otherMails 声明，并将第一项返回到 email 声明中。
 

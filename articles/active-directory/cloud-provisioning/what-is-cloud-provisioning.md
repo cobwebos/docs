@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333a3b93d872c1a99d1ec18d4941adc8986d4a03
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914567"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951116"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>什么是 Azure AD Connect 云预配？
 Azure AD Connect 云预配是一种新的 Microsoft 代理，旨在满足和实现混合标识目标，以便同步用户、组和联系人以 Azure AD。  它可以与 Azure AD Connect 同步一起使用，并且具有以下优势：
@@ -60,6 +60,7 @@ Azure AD Connect 云预配是一种新的 Microsoft 代理，旨在满足和实�
 | 允许对属性流进行高级自定义 |● | |
 | 支持写回（密码、设备、组） |● | |
 | Azure AD 域服务支持|● | |
+| Exchange 混合配置 |● | |
 
 ## <a name="next-steps"></a>后续步骤 
 

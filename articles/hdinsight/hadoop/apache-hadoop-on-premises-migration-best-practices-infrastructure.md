@@ -2,18 +2,18 @@
 title: 基础结构：本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的基础结构最佳做法。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499219"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951507"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -23,10 +23,17 @@ ms.locfileid: "73499219"
 
 在 HDInsight 群集容量规划方面要做出的重要选择如下：
 
-- **选择区域** - Azure 区域确定了群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
-- **选择存储位置和大小** - 默认存储必须与群集位于同一区域。 对于48节点的群集，建议使用4到8个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
-- **选择 VM 大小和类型（现在支持 G 系列）** - 每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
-- **选择工作节点数** - 可以使用模拟工作负荷来确定初始的工作节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 以后不再需要额外的工作节点时，可以缩减群集。
+**区域**  
+Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化，群集应与数据位于同一区域。
+
+**存储位置和大小**  
+默认存储必须与群集位于同一区域。 对于48节点的群集，建议使用4到8个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
+
+**VM 大小和类型（现在支持 G 系列）**  
+每个群集类型具有一组节点类型，每个节点类型在 VM 大小和类型方面提供特定的选项。 VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定。 可以使用模拟工作负荷来确定每个节点类型的最佳 VM 大小和类型。
+
+**辅助角色节点数**  
+可以使用模拟工作负荷来确定初始工作节点数。 以后可以通过添加更多工作节点来扩展群集，以满足峰值负载需求。 当不需要额外的工作节点时，可以在以后缩减群集。
 
 有关详细信息，请参阅 [HDInsight 群集的容量规划](../hdinsight-capacity-planning.md)一文。
 
@@ -36,7 +43,7 @@ ms.locfileid: "73499219"
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>检查 HDInsight 中 Hadoop 组件的可用性
 
-每个 HDInsight 版本都是一组 Hadoop 生态系统组件的云分发版。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
+每个 HDInsight 版本都是一组 Hadoop 生态系统组件的云分发。 有关所有 HDInsight 组件及其最新版本的详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。
 
 还可以使用 Apache Ambari UI 或 Ambari REST API 来检查 HDInsight 中的 Hadoop 组件和版本。
 
@@ -102,7 +109,7 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 配置
 
-可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 Powershell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 的示例：
+可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 Powershell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的示例：
 
 ```powershell
 # hive-site.xml configuration
@@ -127,7 +134,7 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-有关详细信息，请参阅 [使用 Bootstrap 自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-bootstrap.md)一文。  另请参阅 [使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)。
+有关详细信息，请参阅 [使用 Bootstrap 自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-bootstrap.md)一文。  另请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 ## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>从 HDInsight Hadoop 群集边缘节点访问客户端工具
 
@@ -160,7 +167,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 - 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
-可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止发往 HDInsight 服务正在使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
+可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支持强制隧道。 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 在将 HDInsight 安装到子网之前删除强制隧道，或者为 HDInsight 创建新的子网。 此外，HDInsight 不支持限制出站网络连接。
@@ -191,6 +198,4 @@ HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-netw
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列的下一篇文章：
-
-- [有关从本地迁移到 Azure HDInsight Hadoop 的存储最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)
+阅读本系列文章中的下一篇文章：[本地到 Azure HDInsight Hadoop 迁移的存储最佳实践](apache-hadoop-on-premises-migration-best-practices-storage.md)。

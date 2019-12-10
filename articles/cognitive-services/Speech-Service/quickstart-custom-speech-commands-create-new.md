@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 081327e7c70128dad764d66942f1703a889f77fd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815818"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951190"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>快速入门：创建自定义命令（预览）
 
@@ -28,16 +28,6 @@ ms.locfileid: "74815818"
 
   > [!NOTE]
   > 在预览期间，订阅密钥仅支持 westus2 区域。
-
-- [语言理解](https://www.luis.ai/home)（LUIS）创作密钥：
-  1. 打开 web 浏览器并导航到[Azure 门户](https://portal.azure.com)
-  1. 选择创建资源
-  1. 搜索并选择[语言理解](https://aka.ms/sc-luis-all)
-  1. 选择创建选项中的创作
-  1. 部署资源后，请从 "快速启动" 或 "密钥" 部分中转到资源并复制该密钥。
-
-      > [!div class="mx-imgBorder"]
-      > ![创建创作资源](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>转到 Speech Studio 以获取自定义命令
 
@@ -58,11 +48,21 @@ ms.locfileid: "74815818"
 1. 选择 "**新建项目**" 以创建新项目
 
    > [!div class="mx-imgBorder"]
-   > ![创建新项目](media/custom-speech-commands/create-new-project.png)
+   > ![创建项目](media/custom-speech-commands/create-new-project.png)
 
-1. 输入项目名称和语言，然后选择 "**下一步**" 继续
-1. 输入 LUIS 创作密钥
-1. 创建后，选择你的项目
+1. 输入项目名称和语言。
+1. 选择创作资源。 如果没有有效的创作资源，请选择 "**创建新资源**" 创建一个。
+
+   > [!div class="mx-imgBorder"]
+   > ![创建资源](media/custom-speech-commands/create-new-resource.png)
+
+   1. 输入资源名称、组、位置和定价层。
+
+         > [!NOTE]
+         > 可以通过在 "资源组" 字段中输入所需的资源组名称来创建资源组。 选择 "**创建**" 后，将创建资源组。
+
+1. 单击 "**创建**" 以创建项目。
+1. 创建后，选择你的项目。
 
 现在，你的视图应为自定义命令应用程序的概述。
 
@@ -99,25 +99,41 @@ turn on the tv
 
 现在，添加一个完成规则以响应用户指示正在执行某一操作。
 
+1. 通过选择 "完成规则" 旁边的 "`+`" 图标来创建新的完成规则
+1. 输入规则名称
+1. 添加操作
+   1. 通过选择 "操作" 旁边的 `+` 图标来创建新的语音响应操作，然后选择 "`SpeechResponse`
+   1. 输入响应
+
+   > [!NOTE]
+   > 常规文本必须以破折号开头。 有关更多详细信息，请参阅[此处](https://aka.ms/sc-lg-format)
+
+   > [!div class="mx-imgBorder"]
+   > ![创建语音响应](media/custom-speech-commands/create-speech-response-action.png)
+
+1. 单击 "**保存**" 以保存规则
+
 > [!div class="mx-imgBorder"]
 > ![创建完成规则](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | 设置    | 建议的值                        | 描述                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | 规则名称  | "ConfirmationResponse"                 | 描述规则用途的名称          |
 | 条件 | None                                   | 确定何时可以运行规则的条件    |
-| 操作    | SpeechResponse "确定，打开电视" | 规则条件为 true 时要执行的操作 |
+| 操作    | SpeechResponse "-正常，启用电视" | 规则条件为 true 时要执行的操作 |
 
 ## <a name="try-it-out"></a>试试看
 
 使用 "测试聊天" 面板测试行为。
 
 > [!div class="mx-imgBorder"]
-> ![测试与 webchat](media/custom-speech-commands/create-basic-test-chat.png)
+> 通过 web 聊天](media/custom-speech-commands/create-basic-test-chat.png) ![测试
 
 - 键入 "打开电视"
 - 预期响应： "正常，打开电视"
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"]
 > [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)

@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory B2C 中使用 iOS 应用程序的 AppAuth | Microsoft Docs
-description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 iOS 应用。
+title: 在 iOS 应用程序中使用 AppAuth
+titleSuffix: Azure AD B2C
+description: 如何创建使用 AppAuth 与 Azure Active Directory B2C 的 iOS 应用程序来管理用户标识和验证用户身份。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a61b97ade6513785c1cd298f33a5158a14efad82
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469155"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948192"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -37,9 +38,9 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-记录**应用程序（客户端） ID** ，以便在后面的步骤中使用。
+记下“应用程序(客户端) ID”，以便在后续步骤中使用。
 
-还应记录自定义重定向 URI，以便在后面的步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
+还应记录自定义重定向 URI，以便在后面的步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
@@ -91,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
-* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
+* 之前记录的客户端 ID （应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000` 。
+* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 
@@ -122,7 +123,7 @@ appDelegate.currentAuthorizationFlow =
 
 要将应用程序设置为处理重定向到使用自定义方案的 URI，需要在 Info.pList 中更新“URL 方案”列表：
 * 打开 Info.pList。
-* 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，并单击 \+ 符号。
+* 将鼠标悬停在带有“BBundle OS 类型代码”字样的行上，然后单击 \+ 符号。
 * 将新行重命名为“URL 类型”。
 * 单击“URL 类型”左侧的箭头打开该树。
 * 单击“项目 0”左侧的箭头打开该树。

@@ -1,6 +1,7 @@
 ---
-title: Predicates 和 PredicateValidations - Azure Active Directory B2C | Microsoft Docs
-description: 针对 Azure Active Directory B2C 标识体验框架架构的社交帐户声明转换示例。
+title: Predicates 和 PredicateValidations
+titleSuffix: Azure AD B2C
+description: 使用 Azure Active Directory B2C 中的自定义策略防止将格式不正确的数据添加到 Azure AD B2C 租户。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099705"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951014"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 

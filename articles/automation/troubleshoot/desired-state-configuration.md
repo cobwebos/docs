@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a45ed90b2b2c4a3a4f8eb11c4618c11e6d66761
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849354"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951456"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -89,6 +89,68 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 #### <a name="resolution"></a>分辨率
 
 验证你的计算机是否可以访问适用于 Azure Automation DSC 的正确终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>方案：状态报告返回响应代码 "未授权"
+
+#### <a name="issue"></a>问题
+
+当注册具有状态配置（DSC）的节点时，会收到以下错误消息之一：
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>原因
+
+此问题是由证书损坏或过期引起的。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)。
+
+### <a name="resolution"></a>分辨率
+
+请按照下面列出的步骤重新注册失败的 DSC 节点。
+
+首先，使用以下步骤取消注册该节点。
+
+1. 在 Azure 门户中，在 "**家庭** -> **自动化**帐户" 下，> {你的自动化帐户}->**状态配置（DSC）**
+2. 单击 "节点"，然后单击有问题的节点。
+3. 单击 "取消注册" 以取消注册该节点。
+
+其次，从节点中卸载 DSC 扩展。
+
+1. 在 Azure 门户中，在 "**主页**" 下 -> **虚拟机**-> {失败的节点}->**扩展**
+2. 单击 ""。
+3. 单击 "卸载" 以卸载 PowerShell DSC 扩展。
+
+第三，从节点中删除所有错误或过期的证书。
+
+在权限提升的 Powershell 提示符下，运行以下命令：
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+最后，使用以下步骤重新注册失败的节点。
+
+1. 在 Azure 门户中，在 "**家庭** -> **自动化**帐户" 下，> {你的自动化帐户}->**状态配置（DSC）**
+2. 单击 "节点"。
+3. 单击 "添加" 按钮。
+4. 选择 "失败" 节点。
+5. 单击 "连接"，然后选择所需的选项。
 
 ### <a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
 
@@ -187,6 +249,49 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 * 请确保为节点分配的节点配置名称与服务中的名称完全匹配。
 * 你可以选择不包括节点配置名称，这将导致加入该节点但不分配节点配置
+
+### <a name="cross-subscription"></a>方案：使用 PowerShell 注册节点会返回错误 "发生了一个或多个错误"
+
+#### <a name="issue"></a>问题
+
+使用 `Register-AzAutomationDSCNode` 或 `Register-AzureRMAutomationDSCNode`注册节点时，会收到以下错误。
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>原因
+
+当你尝试注册与自动化帐户位于不同订阅中的节点时，会发生此错误。
+
+#### <a name="resolution"></a>分辨率
+
+处理跨订阅节点，就好像它驻留在单独的云或本地。
+
+按照以下步骤注册节点。
+
+* Windows-[本地或 Azure/AWS 以外的云中](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)的 windows 计算机。
+* Linux-[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+
+### <a name="agent-has-a-problem"></a>方案：错误消息-"预配失败"
+
+#### <a name="issue"></a>问题
+
+注册节点时，会看到以下错误：
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>原因
+
+当节点与 Azure 之间存在连接问题时，将出现此消息。
+
+#### <a name="resolution"></a>分辨率
+
+确定节点是否处于专用虚拟网络中，或者在连接到 Azure 时是否存在其他问题。
+
+有关详细信息，请参阅[载入解决方案时解决错误](onboarding.md)。
 
 ### <a name="failure-linux-temp-noexec"></a>方案：在 Linux 中应用配置，出现失败，出现常规错误
 

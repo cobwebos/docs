@@ -1,6 +1,7 @@
 ---
-title: 使用隐式流的单页登录-Azure Active Directory B2C
-description: 了解如何在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流添加单页面登录。
+title: 使用隐式流的单页登录
+titleSuffix: Azure AD B2C
+description: 了解如何使用 Azure Active Directory B2C 的 OAuth 2.0 隐式流添加单页面登录。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c8ac3b2ada99634f8f35c211f2dd7695f9174ce9
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9a7d6a0a4e341158b37de73a74390d87a135d65f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667977"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947975"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流的单页登录
 
@@ -53,7 +54,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 |组织| 是 | Azure AD B2C 租户的名称|
-|政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
+|政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up`或`b2c_1_edit_profile`。 |
 | client_id | 是 | [Azure 门户](https://portal.azure.com/)分配给应用程序的应用程序 ID。 |
 | response_type | 是 | 必须包含 OpenID Connect 登录的 `id_token`。 也可以包含响应类型 `token`。 如果使用 `token`，则应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri | No | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全匹配在门户中注册的其中一个重定向 URI，但必须经 URL 编码。 |
@@ -166,7 +167,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | 参数 | 必需？ | 描述 |
 | --- | --- | --- |
 |组织| 需要 | Azure AD B2C 租户的名称|
-政策| 需要| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
+政策| 需要| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up`或`b2c_1_edit_profile`。 |
 | client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |需要 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
 | redirect_uri |推荐 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |

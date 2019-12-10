@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件 | Microsoft Docs
+title: 定义声明转换技术配置文件
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fd2f77200741c54d1ed10f0a0eec1da76462b0a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511614"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949417"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 
@@ -23,9 +24,9 @@ ms.locfileid: "66511614"
 
 使用声明转换技术配置文件，可以通过调用输出声明转换针对一组输出声明来操作声明值、验证声明或设置默认值。
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个声明转换技术配置文件：
 
@@ -81,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表   。
+使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表。
 
 ```XML
 <UserJourney Id="AccountUnLink">

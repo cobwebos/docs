@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 77019d6a99e41bb5fb9233aa95836bd4bc8dd877
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2ee1de9899dfe091e8f6f79bcd42c75fe67ed67
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926889"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942183"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 使用 Azure 数据工厂中的 SQL Server Integration Services （SSIS）时，应在以下情况下将 Azure SSIS 集成运行时（IR）加入 Azure 虚拟网络： 
@@ -26,6 +26,8 @@ ms.locfileid: "74926889"
 - 要从在 Azure-SSIS IR 上运行的 SSIS 包连接到支持虚拟网络服务终结点的 Azure 服务资源。
 
 - 你将在 Azure SQL 数据库中承载包含虚拟网络服务终结点或虚拟网络中的托管实例的 SSIS 目录数据库（SSISDB）。 
+
+- 你想要连接到仅允许从 Azure-SSIS IR 上运行的 SSIS 包访问特定静态公共 IP 地址的数据源或资源。
 
 利用数据工厂，你可以将 Azure-SSIS IR 加入通过经典部署模型或 Azure 资源管理器部署模型创建的虚拟网络。 
 
@@ -48,6 +50,10 @@ ms.locfileid: "74926889"
 ## <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 如果你的 SSIS 包访问了[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)支持的 Azure 服务资源，并且你想要 Azure-SSIS IR 保护这些资源，则可以将 Azure-SSIS IR 加入到配置了虚拟网络服务终结点的虚拟网络子网。 同时，将虚拟网络规则添加到 Azure 服务资源，以允许来自同一子网的访问。
 
+## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>对受 IP 防火墙规则保护的数据源的访问权限
+
+如果你想要通过仅允许来自特定静态公共 IP 地址的访问来保护数据源或资源，则可以在将 Azure-SSIS IR 加入到虚拟网络子网时，使用自己的[公共 ip 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)。 在这种情况下，Azure-SSIS IR 的 IP 地址将固定到提供的地址。 然后，将 IP 地址防火墙规则添加到数据源或资源，以允许来自这些 IP 地址的访问。
+
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>在 SQL 数据库中承载 SSIS 目录
 如果将 SSIS 目录承载在具有虚拟网络服务终结点的 Azure SQL 数据库中，请确保将 Azure-SSIS IR 加入到同一虚拟网络和子网中。
 
@@ -67,13 +73,15 @@ ms.locfileid: "74926889"
 
 -   选择合适的子网，承载 Azure-SSIS IR。 有关详细信息，请参阅[选择子网](#subnet)。 
 
+-   如果为 Azure-SSIS IR 提供了自己的公共 IP 地址，请参阅[选择静态公共 ip 地址](#publicIP)
+
 -   如果在虚拟网络上使用自己的域名系统（DNS）服务器，请参阅[设置 DNS 服务器](#dns_server)。 
 
 -   如果在子网上使用网络安全组（NSG），请参阅[设置 NSG](#nsg)。 
 
 -   如果使用 Azure ExpressRoute 或用户定义的路由（UDR），请参阅[使用 Azure expressroute 或 UDR](#route)。 
 
--   请确保虚拟网络的资源组可以创建和删除某些 Azure 网络资源。 有关详细信息，请参阅[设置资源组](#resource-group)。 
+-   如果你引入自己的公共 IP 地址，请确保虚拟网络的资源组（或公共 IP 地址的资源组）可以创建和删除某些 Azure 网络资源。 有关详细信息，请参阅[设置资源组](#resource-group)。 
 
 -   如果自定义[Azure-SSIS IR 的自定义安装](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)中所述的 Azure-SSIS IR，Azure-SSIS IR 节点将从172.31.255.255 的预定义范围中获取专用 IP 地址。 因此，请确保虚拟网络或本地网络的专用 IP 地址范围不会与此范围发生冲突。
 
@@ -89,7 +97,7 @@ ms.locfileid: "74926889"
 
   - 使用内置的 "网络参与者" 角色。 此角色具有 _Microsoft.Network/\*_ 权限，具有比所需作用域更大的作用域。
 
-  - 创建仅包括必需的 _Microsoft.Network/virtualNetworks/\*/join/action_ 权限的一个自定义角色。 
+  - 创建仅包括必需的 _Microsoft.Network/virtualNetworks/\*/join/action_ 权限的一个自定义角色。 如果还想要为 SSIS IR 引入自己的公共 IP 地址，而不是将其加入 Azure 资源管理器虚拟网络，请在角色中加入_publicIPAddresses/*/join/action_权限。
 
 - 如果要将 SSIS IR 加入经典虚拟网络，我们建议使用内置的经典虚拟机参与者角色。 否则，你必须定义包含加入虚拟网络权限的自定义角色。
 
@@ -102,6 +110,19 @@ ms.locfileid: "74926889"
 -   确保所选的子网具有足够的可用地址空间，以便 Azure-SSIS IR 使用。 将可用 IP 地址保留为 IR 节点编号的至少两倍。 Azure 会保留每个子网中的某些 IP 地址。 不能使用这些地址。 子网的第一个和最后一个 IP 地址是为协议一致性而保留的，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) 
 
 -   请勿使用由其他 Azure 服务独占使用的子网（例如，SQL 数据库托管实例、应用服务等）。 
+
+### <a name="publicIP"></a>选择静态公共 IP 地址
+如果要在将其加入虚拟网络的同时为 Azure-SSIS IR 提供自己的静态公共 IP 地址，请确保它们满足以下要求：
+
+-   提供两个未使用的静态公共 IP 地址，它们尚未与其他 Azure 服务资源关联。 升级 Azure-SSIS IR 时将使用额外的帐户。
+
+-   公共 IP 地址应为静态和标准地址。 有关更多详细信息，请参阅[公共 IP 地址的 sku](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) 。
+
+-   静态公共 IP 地址应同时具有 DNS 名称。 如果在创建公共 IP 地址时未设置 DNS 名称，也可以在 Azure 门户中设置此项。
+
+![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+-   静态公共 IP 地址和虚拟网络应位于相同的订阅和同一区域中。
 
 ### <a name="dns_server"></a>设置 DNS 服务器 
 如果需要在由 Azure-SSIS IR 联接的虚拟网络中使用自己的 DNS 服务器，请确保它可以解析全局 Azure 主机名（例如，名为 `<your storage account>.blob.core.windows.net`的 Azure 存储 blob）。 
@@ -151,11 +172,14 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
    -   一个 Azure 公共 IP 地址，名称 *\<Guid >-azurebatch-cloudservicepublicip*。
    -   网络工作安全组，名称 *\<Guid >-cloudservicenetworksecuritygroup*。 
 
-当 IR 启动时，将创建这些资源。 当 IR 停止时，它们将被删除。 若要避免阻止 IR 停止，请不要在其他资源中重复使用这些网络资源。 
+> [!NOTE]
+> 现在，你可以为你的 Azure-SSIS IR 提供自己的静态公共 IP 地址。 在此方案中，我们将仅为你创建 Azure 负载均衡器和网络安全组。 此外，将在与公共 IP 地址相同的资源组中创建资源，而不是在虚拟网络中创建资源。
 
-请确保在虚拟网络所属的资源组或订阅上没有资源锁。 如果配置只读锁定或删除锁定，则启动和停止 IR 可能会失败，否则 IR 可能会停止响应。 
+当 IR 启动时，将创建这些资源。 当 IR 停止时，它们将被删除。 请注意，如果你引入自己的公共 IP 地址，则在 IR 停止后不会删除公共 IP 地址。 若要避免阻止 IR 停止，请不要在其他资源中重复使用这些网络资源。 
 
-请确保没有 Azure 策略阻止在虚拟网络所属的资源组或订阅下创建以下资源： 
+请确保在资源组或订阅中没有资源锁（如果你拥有自己的虚拟网络，则为公共 IP 地址）。 如果配置只读锁定或删除锁定，则启动和停止 IR 可能会失败，否则 IR 可能会停止响应。 
+
+请确保你没有 Azure 策略，阻止在虚拟网络（或公共 IP 地址，如果你自带的 IP 地址可供你使用）所属的资源组或订阅下创建以下资源： 
    -   Microsoft.Network/LoadBalancers 
    -   Microsoft.Network/NetworkSecurityGroups 
    -   Microsoft.Network/PublicIPAddresses 
@@ -169,11 +193,22 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
     如果你不希望公开公共 IP 地址，请考虑将[自承载 IR 配置为 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)而不是虚拟网络的代理（如果这适用于你的方案）。
  
 - 是否可以将 Azure-SSIS IR 的静态 IP 地址添加到数据源的防火墙允许列表中？
- 
+
+    你现在可以为 Azure-SSIS IR 自带静态公共 IP 地址。 在这种情况下，可以将提供的 IP 地址添加到防火墙的允许列表中的数据源。 你还可以考虑以下选项，以允许 Azure-SSIS IR 根据你的情况访问数据源：
+
     - 如果数据源位于本地，则将虚拟网络连接到本地网络并将 Azure-SSIS IR 加入虚拟网络子网后，即可将该子网的 IP 范围添加到允许列表中。
     - 如果你的数据源是支持虚拟网络服务终结点的 Azure 服务，则可以在虚拟网络上配置虚拟网络服务点，并将 Azure-SSIS IR 加入到该虚拟网络子网中。 然后，你可以使用 Azure 服务的虚拟网络规则而不是 IP 范围来允许访问。
     - 如果你的数据源是不同类型的云数据源，则可以使用 UDR 将出站流量从 Azure-SSIS IR 路由到 NVA 或 Azure 防火墙，方法是使用静态公共 IP 地址。 可以将 NVA 或 Azure 防火墙的公共 IP 地址添加到允许列表。
     - 如果以前的答案无法满足你的需求，请考虑通过将[自承载 IR 配置为 Azure-SSIS IR 的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)来提供数据源访问。 然后，可以将承载自承载 IR 的计算机的 IP 地址添加到允许列表中，而不是将 Azure-SSIS IR 加入虚拟网络。
+
+- 如果我想要为 Azure-SSIS IR 引入自己的公共 IP 地址，为什么需要提供两个静态公用地址？
+
+    Azure-SSIS IR 会定期自动更新。 新的 IR 节点是在升级期间创建的，旧节点会被删除。 但是，为了避免停机，在新节点准备就绪之前，不会删除旧节点。 因此，旧节点使用的第一个公共 IP 地址无法立即释放，我们需要另一个公共 IP 地址来创建新的 IR 节点。
+- 我已经为 Azure-SSIS IR 提供了自己的静态公共 IP 地址，但 IR 仍无法访问数据源或资源。
+
+    - 确认两个静态公共 IP 地址都已添加到数据源或资源的允许列表中。 升级 Azure-SSIS IR 之后，IR 的公共 IP 地址将切换到辅助公共 IP 地址。 如果只将其中一项添加到允许列表中，则在升级后，访问可能会断开。
+
+    - 如果你的数据源是 Azure 服务，请检查你是否已设置具有服务终结点的虚拟网络子网。 如果设置了服务终结点，则当从虚拟网络访问 Azure 服务时，服务流量会切换为使用由 Azure 服务管理的专用地址作为源 IP 地址。 在这种情况下，将自己的公共 IP 地址添加到允许列表将不会生效。
 
 ## <a name="azure-portal-data-factory-ui"></a>Azure 门户（数据工厂 UI）
 本部分说明如何使用 Azure 门户和数据工厂 UI 将现有 Azure-SSIS IR 加入虚拟网络（经典或 Azure 资源管理器）。 
@@ -301,9 +336,11 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
 
    d.单击“下一步”。 对于“子网名称”，请选择虚拟网络中的子网。 
 
-   e. 如果还想要配置或管理自承载 IR 作为 Azure-SSIS IR 的代理，请选中 "**设置自承载**" 复选框。 有关详细信息，请参阅[将自承载 IR 配置为 Azure-SSIS IR 的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)。
+   e. 如果要为 Azure-SSIS IR 提供自己的静态公共 IP 地址，请选中 "**引入静态公共 ip 地址**" 复选框。 然后，请为你的 Azure-SSIS IR 提供第一个和第二个静态公共 IP 地址。 还**可以单击 "新建"** 按钮以创建新的公共 ip 地址，请参阅为公共 ip 地址的要求[选择静态公共 ip 地址](#publicIP)。
 
-   f. 选择 " **VNet 验证**" 按钮。 如果验证成功，请选择 "**下一步**" 按钮。 
+   f. 如果还想要配置或管理自承载 IR 作为 Azure-SSIS IR 的代理，请选中 "**设置自承载**" 复选框。 有关详细信息，请参阅[将自承载 IR 配置为 Azure-SSIS IR 的代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)。
+
+   g. 选择 " **VNet 验证**" 按钮。 如果验证成功，请选择 "**下一步**" 按钮。 
 
    ![IR 安装的高级设置](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-advanced-settings.png)
 

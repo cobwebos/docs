@@ -1,5 +1,6 @@
 ---
-title: 设置使用 Facebook 帐户的注册和登录-Azure Active Directory B2C
+title: 设置使用 Facebook 帐户的注册和登录
+titleSuffix: Azure AD B2C
 description: 使用 Azure Active Directory B2C，为应用程序中的客户提供通过 Facebook 帐户注册与登录的功能。
 services: active-directory-b2c
 author: mmacy
@@ -10,18 +11,18 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 77b2fccaeba3cd1d164a3ce428c04083fd69fb5a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c85ba3079fe09078d3e68eab070317c199242d81
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264216"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947671"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Facebook 帐户注册与登录
 
 ## <a name="create-a-facebook-application"></a>创建 Facebook 应用程序
 
-若要在 Azure Active Directory B2C （Azure AD B2C）中使用 Facebook 帐户作为[标识提供者](active-directory-b2c-reference-oauth-code.md)，需要在租户中创建表示它的应用程序。 如果还没有 Facebook 帐户，可以在[https://www.facebook.com/](https://www.facebook.com/)注册。
+若要在 Azure Active Directory B2C （Azure AD B2C）中使用 Facebook 帐户作为[标识提供者](active-directory-b2c-reference-oauth-code.md)，需要在租户中创建表示它的应用程序。 如果还没有 Facebook 帐户，可以[https://www.facebook.com/](https://www.facebook.com/)进行注册。
 
 1. 使用 Facebook 帐户凭据登录 [Facebook 开发人员](https://developers.facebook.com/)。
 1. 如果以前没有登录过，需要注册为 Facebook 开发人员。 为此，请选择页面右上角的 "**入门**"，接受 Facebook 的策略，并完成注册步骤。
@@ -48,5 +49,5 @@ ms.locfileid: "71264216"
 1. 选择 "**标识提供者**"，然后选择 " **Facebook**"。
 1. 输入“名称”。 例如*Facebook*。
 1. 对于 "**客户端 ID**"，请输入之前创建的 Facebook 应用程序的应用 ID。
-1. 对于**客户端密码**，输入你记录的应用机密。
+1. 对于**客户端密码**，请输入你记录的应用密码。
 1. 选择“保存”。

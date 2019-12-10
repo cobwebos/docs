@@ -1,5 +1,6 @@
 ---
-title: REST API 声明交换作为 Azure Active Directory B2C 中的验证
+title: REST API 声明交换作为验证
+titleSuffix: Azure AD B2C
 description: 用于创建与 RESTful services 交互的 Azure AD B2C 用户旅程的演练。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8730870bfae9f704ee43594497f79942b70a6181
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644973"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949366"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -36,7 +37,7 @@ IEF 在声明中发送数据，同时也在声明中接收数据。 与 API 的�
 
 我们可以验证用户在配置文件编辑中提供的名称是否为排除列表的一部分。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 根据[入门](active-directory-b2c-get-started-custom.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
 - 要交互的 REST API 终结点。 对于本演练，我们设置了一个名为 [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) 且包含 REST API 服务的演示站点。
@@ -113,7 +114,7 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 
 `InputClaims` 元素定义要从 IEF 发送到 REST 服务的声明。 在本示例中，声明 `givenName` 的内容将以 `playerTag` 的形式发送到 REST 服务。 本示例中，IEF 不需要返回的声明。 相反，它等待来自 REST 服务的响应并根据所接收的状态代码执行操作。
 
-上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api, 请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
+上述注释 `AuthenticationType` 和 `AllowInsecureAuthInProduction` 指定在迁移到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api，请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
 
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>步骤 3：在要验证用户输入的自我断言技术配置文件中包含 RESTful 服务声明交换
 
@@ -137,9 +138,9 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 
 [演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](active-directory-b2c-rest-api-step-custom.md)
 
-[参考：RESTful 技术配置文件](restful-technical-profile.md)
+[参考： RESTful 技术配置文件](restful-technical-profile.md)
 
-若要了解如何保护 Api, 请参阅以下文章:
+若要了解如何保护 Api，请参阅以下文章：
 
 * [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

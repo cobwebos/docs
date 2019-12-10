@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中的客户注册期间禁用电子邮件验证
+title: 在客户注册过程中禁用电子邮件验证
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中的客户注册过程中禁用电子邮件验证。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a7adc04991dd4a472bdaf1aa47aacaf6cdeb190
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c5b3598e33dac131c8881248a5f4b740a6302e20
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256934"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948141"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中的客户注册期间禁用电子邮件验证
 
@@ -27,7 +28,7 @@ ms.locfileid: "71256934"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
 1. 使用顶部菜单中的 "**目录 + 订阅**" 筛选器选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“用户流”。
 1. 选择要禁用电子邮件验证的用户流。 例如， *B2C_1_signinsignup*。
 1. 选择**页面布局**。

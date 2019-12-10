@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略配置密码更改 | Microsoft Docs
+title: 使用自定义策略配置密码更改
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自定义策略让用户更改其密码。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fd1f623eecdd855dbfb8e27795f813db4d099f53
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065539"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950572"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码更改
 
@@ -23,7 +24,7 @@ ms.locfileid: "71065539"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，你可以让使用本地帐户登录的用户更改其密码，而不必通过电子邮件验证来证明其真实性。 如果会话在用户到达密码更改流时已过期，则系统会提示用户重新登录。 本文介绍如何在[自定义策略](active-directory-b2c-overview-custom.md)中配置密码更改。 还有可能为用户流配置[自助密码重置](active-directory-b2c-reference-sspr.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 
@@ -154,7 +155,7 @@ ms.locfileid: "71065539"
 5. 复制随初学者包下载的 *ProfileEdit.xml* 文件，并将其命名为 *ProfileEditPasswordChange.xml*。
 6. 打开新文件，并使用唯一值更新 **PolicyId** 属性。 此值是策略的名称。 例如，*B2C_1A_profile_edit_password_change*。
 7. 修改 `<DefaultUserJourney>` 中的 **ReferenceId** 属性，使其与创建的新用户旅程的 ID 匹配。 例如，*PasswordChange*。
-8. 保存更改。
+8. 保存所做更改。
 
 可在[此处](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)找到示例策略。
 
@@ -170,7 +171,7 @@ ms.locfileid: "71065539"
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
 6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
-7. 单击“上传” 。
+7. 单击“上传”。
 8. 针对信赖方文件（例如 *ProfileEditPasswordChange.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略

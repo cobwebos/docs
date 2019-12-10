@@ -1,5 +1,6 @@
 ---
-title: 自定义用户界面 Azure Active Directory B2C
+title: 自定义用户界面
+titleSuffix: Azure AD B2C
 description: 了解如何自定义使用 Azure Active Directory B2C 的应用程序的用户界面。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258172"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949400"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义用户界面 Azure Active Directory B2C
 
@@ -53,13 +54,13 @@ ms.locfileid: "71258172"
 
 在左侧菜单中的 "**自定义**" 下，选择 "**页面布局**"，然后选择 "**模板**"。
 
-![Azure 门户的用户流页中的模板选择下拉列表](media/customize-ui-overview/template-selection.png)
+![Azure 门户的 "用户流" 页中的 "模板选择" 下拉](media/customize-ui-overview/template-selection.png)
 
 接下来，从列表中选择一个模板。 下面是每个模板的登录页面示例：
 
-| 海蓝 | 石板灰 | 经典 |
+| 海蓝 | 石板灰色 | 经典 |
 |:-:|:-:|:-:|
-|![注册登录页上呈现的“海蓝”模板的示例](media/customize-ui-overview/template-ocean-blue.png)|![在注册登录页上呈现的石板灰色模板的示例](media/customize-ui-overview/template-slate-gray.png)|![在注册登录页上呈现的经典模板的示例](media/customize-ui-overview/template-classic.png)|
+|!["注册登录" 页上呈现的海蓝色模板的示例](media/customize-ui-overview/template-ocean-blue.png)|![在注册登录页上呈现的石板灰色模板的示例](media/customize-ui-overview/template-slate-gray.png)|![在注册登录页上呈现的经典模板的示例](media/customize-ui-overview/template-classic.png)|
 
 选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
 
@@ -145,11 +146,11 @@ Azure AD B2C 使用称为[跨域资源共享（CORS）](https://www.w3.org/TR/co
 | 社交帐户注册 | 使用社交标识提供者（如 Facebook 或 Google+）的现有帐户进行注册时，可能会显示此页面。 当必须使用注册窗体从客户收集其他信息时，可使用此方法。 |
 | 统一注册或登录 | 处理客户的注册和登录，这些客户可以使用社交标识提供者（Facebook、Google）的帐户或本地帐户。 |
 | 多重身份验证 | 用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
-| Error | 向客户提供错误信息。 |
+| 错误 | 向客户提供错误信息。 |
 
 ## <a name="localize-content"></a>本地化内容
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能将允许 Azure AD B2C 将 OpenID connect 参数`ui-locales`转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](active-directory-b2c-reference-language-customization.md)来本地化 HTML 内容。 启用此功能可允许 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 

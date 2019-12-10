@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C 中的用户迁移方法
+title: 用户迁移方法
+titleSuffix: Azure AD B2C
 description: 讨论使用 Azure AD 图形 API 的用户迁移的核心和高级概念，并选择性地使用 Azure AD B2C 自定义策略。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c5b7d477b0704db3f23919281fd61328be114dae
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322917"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950215"
 ---
 # <a name="migrate-users-to-azure-active-directory-b2c"></a>将用户迁移到 Azure Active Directory B2C
 
@@ -131,7 +132,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 可以看到，该文件包含用户实体的列表。 每个用户实体包含以下属性：
 
-- email
+- 电子邮件
 - displayName
 - firstName
 - lastName
@@ -160,7 +161,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 ### <a name="step-23-run-the-pre-migration-process"></a>步骤 2.3：运行预迁移过程
 
-右键单击 `AADB2C.UserMigration` 解决方案并重新生成示例。 如果成功，则现在 `UserMigration.exe` 中应该有一个可执行文件 `AADB2C.UserMigration\bin\Debug\net461`。 若要运行迁移过程，请使用以下命令行参数之一：
+右键单击 `AADB2C.UserMigration` 解决方案并重新生成示例。 如果成功，则现在 `AADB2C.UserMigration\bin\Debug\net461` 中应该有一个可执行文件 `UserMigration.exe`。 若要运行迁移过程，请使用以下命令行参数之一：
 
 - 若要**使用密码迁移用户**，请使用 `UserMigration.exe 1` 命令。
 
@@ -264,7 +265,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>步骤 4.3：将技术配置文件和技术配置文件验证添加到策略
 
 1. 在解决方案资源管理器中，展开“解决方案项目”，然后打开 TrustFrameworkExtensions.xml 策略文件。
-1. 将 `TenantId` 中的 `PublicPolicyUri`、`<TenantId>` 和 `yourtenant.onmicrosoft.com` 字段更改为租户的名称。
+1. 将 `yourtenant.onmicrosoft.com` 中的 `TenantId`、`PublicPolicyUri` 和 `<TenantId>` 字段更改为租户的名称。
 1. 在 `<TechnicalProfile Id="login-NonInteractive">` 元素下，将 `ProxyIdentityExperienceFrameworkAppId` 和 `IdentityExperienceFrameworkAppId` 的所有实例替换为[自定义策略][B2C-GetStartedCustom]入门中配置的应用程序 id。
 1. 在 `<ClaimsProviders>` 节点下，找到以下 XML 代码片段。 将 `ServiceUrl` 的值更改为指向 Azure 应用服务 URL。
 
@@ -320,7 +321,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>步骤 4.4：将策略上传到租户
 
-1. 在 [Azure 门户][Portal]中，切换到 [Azure AD B2C 租户的上下文][B2C-NavContext]，选择“Azure AD B2C”。
+1. 在 [Azure 门户][Portal]中，切换到[你的 Azure AD B2C 租户的上下文][B2C-NavContext]，然后选择“Azure AD B2C”。
 1. 选择“标识体验框架”。
 1. 选择“所有策略”。
 1. 选择“上传策略”。
@@ -330,7 +331,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>步骤 4.5：使用“立即运行”测试自定义策略
 
 1. 选择 " **Azure AD B2C**"，然后选择 "**标识体验框架**"。
-1. 打开上传的信赖方 (RP) 自定义策略 *B2C_1A_signup_signin*，选择“立即运行”。
+1. 打开已上传的信赖方 (RP) 自定义策略 *B2C_1A_signup_signin*，然后选择“立即运行”。
 1. 输入某个已迁移用户的凭据，然后选择 "**登录**"。 REST API 应会引发以下错误消息：
 
     ![显示 "更改密码" 错误消息的登录注册页](media/active-directory-b2c-user-migration/pre-migration-error-message.png)

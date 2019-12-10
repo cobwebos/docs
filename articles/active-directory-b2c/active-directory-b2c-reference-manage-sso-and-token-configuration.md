@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义 | Microsoft Docs
+title: 使用自定义策略管理 SSO 和令牌自定义
+titleSuffix: Azure AD B2C
 description: 了解在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: de125bf61b5b0ff658f095077eab3ea20742368c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296407"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950607"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -25,7 +26,7 @@ ms.locfileid: "72296407"
 
 若要更改令牌生存期的设置，需要在想要影响的策略的信赖方文件中添加 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子代。
 
-在信赖方文件的 BasePolicy 元素和 RelyingParty 元素之间插入 ClaimsProviders 元素。
+在 BasePolicy 元素和信赖方文件的 RelyingParty 元素之间插入 ClaimsProviders 元素。
 
 在该元素中，需要放置影响令牌生存期的信息。 XML 如以下示例所示：
 

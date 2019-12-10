@@ -1,5 +1,6 @@
 ---
-title: 集成 Azure Active Directory B2C 用户旅程中的 REST API 声明交换
+title: 在用户旅程中集成 REST API 声明交换
+titleSuffix: Azure AD B2C
 description: 将 Azure AD B2C 用户旅程中的 REST API 声明交换集成为用户输入验证。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 49cd049c56e0c1d80318f9323aefe2d128774f3f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 3bea04ba077aebe9a52400a1292c5cd27c15b72e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69645127"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950912"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -27,19 +28,19 @@ ms.locfileid: "69645127"
 
 使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。 使用 RESTful 服务集成，可以：
 
-* **验证用户输入数据**：此操作可防止将格式不正确的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
+* **验证用户输入数据**：此操作防止将格式不当的数据保存到 Azure AD。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
 * **覆盖输入声明**：例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。
 * **通过进一步与企业业务线应用程序集成来丰富用户数据**：RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可以存储在用户 Azure AD 帐户中、在后续的业务流程步骤中进行评估，或包含在访问令牌中。
 * **运行自定义业务逻辑**：可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行其他操作。
 
 可通过以下方式来设计与 RESTful 服务的集成：
 
-* **验证技术配置文件**：对 RESTful 服务的调用在指定技术配置文件的验证技术配置文件中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
+* **验证技术配置文件**：对 RESTful 服务的调用在指定的技术配置文件的验证技术配置文件中发生。 在用户旅程推进之前，验证技术配置文件会验证用户提供的数据。 使用验证技术配置文件，可以：
   * 发送输入声明。
   * 验证输入声明并引发自定义错误消息。
   * 发回输出声明。
 
-* **声明交换**：此设计与验证技术配置文件类似，但它在业务流程步骤中发生。 此定义仅限于：
+* **声明交换**：此设计与验证技术配置文件类似，不过它在业务流程步骤中发生。 此定义仅限于：
   * 发送输入声明。
   * 发回输出声明。
 
@@ -49,14 +50,14 @@ ms.locfileid: "69645127"
 
 概述：
 
-* 开发 RESTful 服务 (.NET Framework web API)
+* 开发 RESTful 服务（.NET Framework web API）
 * 在用户旅程中使用 RESTful 服务
-* 发送输入声明, 并在代码中读取这些声明
+* 发送输入声明，并在代码中读取这些声明
 * 验证用户的名字
 * 发回会员号
-* 将会员号添加到 JSON Web 令牌 (JWT)
+* 将会员号添加到 JSON Web 令牌（JWT）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
@@ -114,7 +115,7 @@ ms.locfileid: "69645127"
     }
     ```
 
-1. 再创建一个模型, `B2CResponseContent`用于引发输入验证错误消息。 将以下属性添加到 `B2CResponseContent` 类，提供缺少的引用，并保存文件：
+1. 再创建一个模型，`B2CResponseContent`，用于引发输入验证错误消息。 将以下属性添加到 `B2CResponseContent` 类，提供缺少的引用，并保存文件：
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -305,7 +306,7 @@ ms.locfileid: "69645127"
 </ClaimsProvider>
 ```
 
-上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api, 请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
+上述注释 `AuthenticationType` 和 `AllowInsecureAuthInProduction` 指定在迁移到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api，请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
 
 ## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>步骤 6：将 `loyaltyNumber` 声明添加到信赖方策略文件，以便将该声明发送到应用程序
 
@@ -359,7 +360,7 @@ ms.locfileid: "69645127"
 
 2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
 
-    ![Azure 门户中的 "B2C_1A_signup_signin 自定义策略" 页](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![Azure 门户中的 B2C_1A_signup_signin 自定义策略页](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
 3. 在“名”框中键入 **Test** 来测试该过程。
     Azure AD B2C 会在窗口顶部显示一条错误消息。
@@ -392,15 +393,15 @@ ms.locfileid: "69645127"
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 
-* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)用于参考。
+* 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们提供了[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)供你参考。
 
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)下载完整代码。
 
 ## <a name="next-steps"></a>后续步骤
 
-下一个任务是使用基本或客户端证书身份验证保护 RESTful API。 若要了解如何保护 Api, 请参阅以下文章:
+下一个任务是使用基本或客户端证书身份验证保护 RESTful API。 若要了解如何保护 Api，请参阅以下文章：
 
 * [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 
-有关 RESTful 技术配置文件中可用的所有元素的信息, 请[参阅参考:RESTful 技术配置](restful-technical-profile.md)文件。
+有关 RESTful 技术配置文件中可用的所有元素的信息，请参阅[参考： RESTful 技术配置文件](restful-technical-profile.md)。

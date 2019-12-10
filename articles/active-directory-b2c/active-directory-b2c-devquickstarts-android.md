@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory B2C 中使用 Android 应用程序获取令牌 | Microsoft Docs
-description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 Android 应用。
+title: 在 Android 应用程序中获取令牌
+titleSuffix: Azure AD B2C
+description: 如何创建将 AppAuth 与 Azure Active Directory B2C 结合使用来管理用户身份和对用户进行身份验证的 Android 应用。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7da403eff6a8b96e5fbfc6a6acda48fa397e74b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468959"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948194"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 
@@ -38,9 +39,9 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-记录**应用程序（客户端） ID** ，以便在后面的步骤中使用。
+记下“应用程序(客户端) ID”，以便在后续步骤中使用。
 
-还应记录自定义重定向 URI，以便在后面的步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
+还应记录自定义重定向 URI，以便在后面的步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 
@@ -119,8 +120,8 @@ AuthorizationServiceConfiguration config =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
-* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
+* 之前记录的客户端 ID （应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000` 。
+* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 

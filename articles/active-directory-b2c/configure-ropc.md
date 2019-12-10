@@ -1,6 +1,7 @@
 ---
-title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
-description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
+title: 配置资源所有者密码凭据流
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure AD B2C 中配置 ROPC 流。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023733"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949178"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -39,7 +40,7 @@ ms.locfileid: "72023733"
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
 3. 单击“用户流”，然后选择“新建用户流”。
-4. 单击“全部”选项卡，然后选择“使用 ROPC 登录”。
+4. 单击 "**全部**" 选项卡，然后选择 "**使用 ROPC 登录**"。
 5. 提供用户流名称，例如 ROPC_Auth。
 6. 在“应用程序声明”下，单击“显示更多”。
 7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
@@ -64,7 +65,7 @@ ms.locfileid: "72023733"
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | ReplTest1 |
+| 密钥 | Value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -104,7 +105,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | ReplTest1 |
+| 密钥 | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -132,7 +133,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 }
 ```
 > [!NOTE]
-> 通过图形 API 创建用户时，应用程序需要具有 Microsoft Graph 的“openid”、“offline_access”和“profile”权限。
+> 通过图形 API 创建用户时，应用程序需要从 Microsoft Graph "openid"、"offline_access" 和 "配置文件" 权限。
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>使用首选本机 SDK 实现或使用 AppAuth
 

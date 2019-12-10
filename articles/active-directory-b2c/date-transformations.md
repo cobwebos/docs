@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的日期声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的日期声明转换示例。
+title: 自定义策略的日期声明转换示例
+description: Azure Active Directory B2C 的标识体验框架（IEF）架构的日期声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936785"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949110"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -27,10 +27,10 @@ ms.locfileid: "71936785"
 
 检查一个日期和时间声明（字符串数据类型）是否晚于另一个日期和时间声明（字符串数据类型），然后引发异常。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | string | 第一个声明的类型，应晚于第二个声明。 |
-| InputClaim | rightOperand | string | 第二个声明的类型，应早于第一个声明。 |
+| InputClaim | leftOperand | 字符串 | 第一个声明的类型，应晚于第二个声明。 |
+| InputClaim | rightOperand | 字符串 | 第二个声明的类型，应早于第一个声明。 |
 | InputParameter | AssertIfEqualTo | boolean | 指定如果左操作数等于右操作数，是否应传递此断言。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |
@@ -89,7 +89,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 
 将 Date ClaimType 转换为 DateTime ClaimType。 该声明转换会转换时间格式并向日期添加 12:00:00 AM。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | date | 要转换的 ClaimType。 |
 | OutputClaim | outputClaim | dateTime | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -110,15 +110,15 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim**：2019-06-01
+    - inputClaim：2019-06-01
 - 输出声明：
-    - **outputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
+    - outputClaim：1559347200（2019 年 6 月 1 日中午 12:00:00）
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 获取当前 UTC 日期和时间，并将值添加到 ClaimType。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
@@ -139,11 +139,11 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 
 确定一个日期/时间是晚于、早于还是等于另一个日期/时间。 结果是值为 `true` 或 `false` 的新布尔 ClaimType 布尔值。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 第一个日期/时间，用于比较它是在第二个日期/时间之前还是之后。 Null 值会引发异常。 |
 | InputClaim | secondDateTime | dateTime | 第二个日期/时间，用于比较它是在第一个日期/时间之前还是之后。 NULL 值被视为当前日期/时间。 |
-| InputParameter | 运算符 | string | 以下值之一：same、later than 或 earlier than。 |
+| InputParameter | operator | 字符串 | 以下值之一：same、later than 或 earlier than。 |
 | InputParameter | timeSpanInSeconds | int | 向第一个日期/时间添加的时间范围。 |
 | OutputClaim | 结果 | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 

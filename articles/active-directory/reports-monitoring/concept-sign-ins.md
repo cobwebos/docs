@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/03/2019
+ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805108"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951167"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
-显示其他字段或删除已显示的字段。
+"**列**" 对话框提供对可选择属性的访问权限。 在登录报表中，只能有与其他属性为列具有一对多关系的属性。
 
 ![登录活动](./media/concept-sign-ins/columns.png "登录活动")
 

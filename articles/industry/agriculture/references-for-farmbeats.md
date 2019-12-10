@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8efc98ad2785a9052244556bddc60a5ba34bd3d8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 501e5bc1b2de91e0dd74ae0f0d9163d74dcb06f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900393"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941553"
 ---
 # <a name="references"></a>参考
 
@@ -23,7 +23,7 @@ Azure FarmBeats Api 为农业企业提供了标准化的 RESTful 接口，并提
 - 用于获取传感器、照相机、无人机、天气、卫星和特选地面数据的 Api。
 - 跨通用数据提供程序的数据的规范化和 contextualization。
 - 架构化对所有引入数据进行访问和查询。
-- 自动生成可根据 agronomic 功能查询的元数据。 
+- 自动生成可根据 agronomic 功能查询的元数据。
 - 自动生成的用于快速构建模型的时间序列聚合。
 - 集成的 Azure 数据工厂引擎，可轻松构建自定义数据处理管道。
 
@@ -102,7 +102,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 ### <a name="query-parameters"></a>查询参数
 
 对于 REST GET 调用，你可以通过在请求 URI 上包含一个或多个查询参数来筛选、限制的大小，并对数据进行排序。 有关查询参数的详细说明，请参阅 API 文档和单个 GET 调用。
-例如，在查询设备列表时（/Device 上的 GET 调用），可以指定以下查询参数： 
+例如，在查询设备列表时（/Device 上的 GET 调用），可以指定以下查询参数：
 
 ![设备列表](./media/for-references/query-parameters-device-1.png)
 
@@ -163,12 +163,12 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 
 4. 中转到[Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) ，并执行以下操作：
     - 请参阅**ROLEASSIGNMENT API**。
-    - 执行 POST，为刚创建的**对象 ID**创建**RoleAssignment**对象。 
+    - 执行 POST，为刚创建的**对象 ID**创建**RoleAssignment**对象。
 
   > [!NOTE]
   > 有关如何添加用户和 Active Directory 注册的详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-完成前面的步骤后，应用注册（客户端）可以通过使用者身份验证通过使用访问令牌来调用 Azure FarmBeats Api。 
+完成前面的步骤后，应用注册（客户端）可以通过使用者身份验证通过使用访问令牌来调用 Azure FarmBeats Api。
 
 在标头部分中，使用访问令牌将其发送到后续 API 请求，如下所示：
 

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762696"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947580"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -70,7 +70,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 >
 ## <a name="building-custom-rbac-roles"></a>生成自定义 RBAC 角色
 
-除了、或而不是使用内置 RBAC 角色，你还可以为 Azure Sentinel 创建自定义 RBAC 角色。 Azure Sentinel 的自定义 RBAC 角色的创建方式与创建其他[自定义 AZURE RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)角色的方式相同，具体取决于 azure sentinel 资源的特定权限。
+除了、或而不是使用内置 RBAC 角色，你还可以为 Azure Sentinel 创建自定义 RBAC 角色。 Azure Sentinel 的自定义 RBAC 角色的创建方式与创建其他[自定义 AZURE RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)角色的方式相同，具体取决于 azure Sentinel 和[azure Log Analytics 资源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定权限](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)。
 
 ## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>在 Azure Sentinel 中存储的数据的高级 RBAC
   

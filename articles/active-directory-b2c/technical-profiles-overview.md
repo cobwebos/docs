@@ -1,6 +1,7 @@
 ---
-title: 关于 Azure Active Directory B2C 自定义策略中的技术配置文件 | Microsoft Docs
-description: 了解技术配置文件如何用于 Azure Active Directory B2C 中的自定义策略。
+title: 自定义策略中的技术配置文件概述
+titleSuffix: Azure AD B2C
+description: 了解如何在 Azure Active Directory B2C 中的自定义策略中使用技术配置文件。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063323"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951031"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -44,7 +45,7 @@ ms.locfileid: "71063323"
 
 所有类型的技术配置文件都具有相同的概念。 你发送输入声明、运行声明转换以及与已配置的参与方（例如标识提供者、REST API 或 Azure AD 目录服务）进行通信。 在该过程完成后，技术配置文件返回输出声明并可能运行输出声明转换。 下图显示了如何处理技术配置文件中引用的转换和映射。 无论技术配置文件与哪个参与方交互，在执行任意声明转换后，技术配置文件的输出声明都会立即存储在声明包中。
 
-![说明技术配置文件流的示意图](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
+![阐释技术配置文件流的示意图](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
 1. InputClaimsTransformation - 从声明包中提取每个输入[声明转换](claimstransformations.md)的输入声明，并在执行后，将输出声明放回到声明包中。 输入声明转换的输出声明可以是后续输入声明转换的输入声明。
 2. InputClaims - 声明从声明包中提取并用于技术配置文件。 例如，[自断言技术配置文件](self-asserted-technical-profile.md)使用输入声明来预填充用户提供的输出声明。 REST API 技术配置文件使用输入声明将输入参数发送到 REST API 终结点。 Azure Active Directory 使用输入声明作为读取、更新或删除帐户的唯一标识符。

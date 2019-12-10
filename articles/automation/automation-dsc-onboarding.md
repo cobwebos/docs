@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 80038cf5fba18eca4fbbe1405df2a76cfc84e2db
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850323"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951405"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -305,6 +305,15 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 为了提高安全性，可随时重新生成自动化帐户的主密钥和辅助密钥（在“管理密钥”页上），以避免将来的节点注册使用以前的密钥。
 
+## <a name="certificate-expiration-and-re-registration"></a>证书过期和重新注册
+
+在将计算机注册为 Azure 自动化状态配置中的 DSC 节点之后，有多种原因会导致将来需要重新注册该节点：
+
+- 对于 Windows Server 2019 之前的 Windows Server 版本，每个节点会自动协商唯一的身份验证证书，该证书将在一年后过期。 目前，当证书即将过期时，PowerShell DSC 注册协议无法自动续订证书，因此需要在一年之后重新注册这些节点。 重新注册之前，请确保每个节点正在运行 Windows Management Framework 5.0 RTM。 如果节点的身份验证证书过期，且未重新注册该节点，则该节点将无法与 Azure 自动化通信，并将标记为 "无响应"。 重新注册从证书过期时间（或在证书过期时间之后的任何时间）执行了90天或更短时间，将导致生成并使用新证书。  Windows Server 2019 和更高版本中包含对此问题的解决方法。
+- 更改在节点初始注册期间设置的任何 [PowerShell DSC 本地配置管理器值](/powershell/scripting/dsc/managing-nodes/metaConfig4)，例如 ConfigurationMode。 目前，只能通过重新注册来更改这些 DSC 代理值。 一种例外情况是分配给节点的节点配置 - 可以在 Azure 自动化 DSC 中直接更改。
+
+可以使用本文档中所述的任何载入方法，按最初注册节点的相同方式执行重新注册。 重新注册节点之前，不需要从 Azure 自动化状态配置中注销该节点。
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>排查 Azure 虚拟机登记问题
 
 Azure Automation State Configuration 可让你轻松加入 Azure Windows VM 以进行配置管理。 在幕后，Azure VM Desired State Configuration 扩展用于向 Azure Automation State Configuration 注册 VM。 由于 Azure VM 所需状态配置扩展以异步方式运行，跟踪其进度和排查其执行问题可能很重要。
@@ -314,14 +323,7 @@ Azure Automation State Configuration 可让你轻松加入 Azure Windows VM 以�
 
 若要查看 Azure VM 所需状态配置扩展的状态或对其进行故障排除，请在 Azure 门户中，导航到正在登记的 VM，并单击“设置”下的“扩展”。 然后单击 **DSC** 或 **DSCForLinux**，具体取决于操作系统。 有关详细信息，可以单击“查看详细状态”。
 
-## <a name="certificate-expiration-and-reregistration"></a>证书过期和重新注册
-
-在将计算机注册为 Azure Automation State Configuration 中的 DSC 节点之后，有多种原因可能使需要在将来重新注册该节点：
-
-- 对于 Windows Server 2019 之前的 Windows Server 版本，每个节点会自动协商唯一的身份验证证书，该证书将在一年后过期。 目前，当证书即将过期时，PowerShell DSC 注册协议无法自动续订证书，因此需要在一年之后重新注册这些节点。 在重新注册之前，请确保每个节点正在运行 Windows Management Framework 5.0 RTM。 如果节点的身份验证证书过期并且该节点尚未注册，则该节点将无法与 Azure 自动化通信，并将标记为“无响应”。 与证书过期时间相距 90 天或更短时间内执行的注册，或者在证书过期时间之后任何时间点执行的注册，将生成新的证书并提供使用。  Windows Server 2019 和更高版本中包含对此问题的解决方法。
-- 更改在节点初始注册期间设置的任何 [PowerShell DSC 本地配置管理器值](/powershell/scripting/dsc/managing-nodes/metaConfig4)，例如 ConfigurationMode。 目前，只可以通过重新注册更改这些 DSC 代理值。 一种例外情况是分配给节点的节点配置 - 可以在 Azure 自动化 DSC 中直接更改。
-
-可以使用本文档中所述的任何登记方法，按照初始注册节点的相同方法执行重新注册。 重新注册节点之前，不需要从 Azure Automation State Configuration 中注销节点。
+有关故障排除的详细信息，请参阅[排查 Azure 自动化所需状态配置（DSC）中的问题](./troubleshoot/desired-state-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

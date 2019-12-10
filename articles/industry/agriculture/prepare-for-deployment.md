@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c29bba81132df15fcea9ff0df7be6a8cea94c9a0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27bf62cb328273db1f7bdd44117853b00feca9ae
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851122"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941570"
 ---
 # <a name="deploy-azure-farmbeats"></a>部署 Azure FarmBeats
 
@@ -33,7 +33,7 @@ Azure FarmBeats 的快速部署应花费不到一小时。 Datahub 和加速器�
 
 Azure FarmBeats 部署在订阅中创建以下资源：
 
-| 序列 编号  | 资源名称  | FarmBeats 组件  |
+| 串行. 编号  | 资源名称  | FarmBeats 组件  |
 |---------|---------|---------|
 |第  |       Azure Cosmos DB   |  Datahub       |
 |2  |    Application Insights      |     Datahub/加速器     |
@@ -49,7 +49,6 @@ Azure FarmBeats 部署在订阅中创建以下资源：
 |12|      Azure App Service      |  Datahub/加速器       |
 |13 |    应用服务计划        |     Datahub/加速器      |
 |14 |Azure Maps 帐户     |加速器    |
-|15 |       Azure 时序见解      |  Datahub     |
 
 可从 Azure Marketplace 下载 azure FarmBeats，可以直接从 Azure 门户访问。  
 
@@ -83,7 +82,7 @@ Azure FarmBeats 部署在订阅中创建以下资源：
 
 带有 Sentinel 的帐户可帮助你从其官方网站下载指向你的设备的 Sentinel 卫星电视。 若要创建免费帐户，请执行以下操作：
 
-1. 请参阅 " [Sentinel 帐户注册" 页](https://scihub.copernicus.eu/dhus/#/self-registration)。 
+1. 请参阅 " [Sentinel 帐户注册" 页](https://scihub.copernicus.eu/dhus/#/self-registration)。
 1. 在注册窗体上，提供名字、姓氏、用户名、密码和电子邮件地址。
 
 验证电子邮件将发送到已注册的电子邮件地址进行确认。 选择用于确认电子邮件地址的链接。 注册过程已完成。
@@ -211,7 +210,7 @@ Azure FarmBeats 部署在订阅中创建以下资源：
     > 令牌将在60分钟后过期。 如果它过期，你可以重新键入部署命令来重新启动。
 
 1. 在提示符下，输入你的 Sentinel 帐户密码。
-   
+
    安装程序将验证并启动部署，这可能需要大约20分钟的时间。
 
    部署成功完成后，将收到以下输出链接：
@@ -282,12 +281,8 @@ Azure FarmBeats 部署在订阅中创建以下资源：
 Datahub 安装完成后，将收到 URL，以便通过 Swagger 接口访问 Azure FarmBeats Api，格式为 https://\<yourdatahub-name >. appname>.azurewebsites.net/Swagger。
 
 1. 若要通过 Swagger 登录，请在浏览器中复制并粘贴该 URL。
-1. 用 Azure 门户凭据登录。
-1. 可有可无尝试此 "健全测试"： 
-
-     - 使用 Datahub 链接成功登录到 Swagger 门户，并将其作为输出发送到成功的部署。
-     - 扩展类型获取 API-选择 "试用/Execute"
-     - 应该会收到服务器响应代码200，而不是异常，如 "403 未经授权的用户"。
+2. 用 Azure 门户凭据登录。
+3. 可以在 Azure FarmBeats Api 上查看 swagger 并执行所有 REST 操作。 这表示成功部署 Azure FarmBeats。
 
 ### <a name="accelerator"></a>加速器
 

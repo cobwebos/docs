@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C 中的使用情况报表 API 示例和定义 | Microsoft Docs
+title: 使用情况报表 API 示例和定义
+titleSuffix: Azure AD B2C
 description: 获取有关 Azure AD B2C 租户用户、身份验证和多重身份验证报表的指南和示例。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f81acf28b502965f896cd8b38767e7c2e925156c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508709"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949332"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>通过报告 API 访问 Azure AD B2C 中的使用情况报表
 
@@ -29,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供了基于用户登录名的身�
 
 
 ## <a name="prerequisites"></a>必备组件
-开始前，需要先完成[访问 Azure AD 报表 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。 创建应用程序、获取它的密码，并授予它访问 Azure AD B2C 租户报表的权限。 此处还提供 *Bash 脚本*和 *Python 脚本*示例。 
+开始前，需要先完成[访问 Azure AD 报表 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。 创建应用程序、获取它的密码，并授予它访问 Azure AD B2C 租户报表的权限。 此处还提供 *Bash 脚本*和 *Python 脚本*示例。
 
 ## <a name="powershell-script"></a>PowerShell 脚本
 此脚本演示了使用 `TimeStamp` 参数和 `ApplicationId` 筛选器创建四个使用情况报表的过程。
@@ -38,10 +39,10 @@ Azure Active Directory B2C (Azure AD B2C) 提供了基于用户登录名的身�
 # This script will require the Web Application and permissions setup in Azure Active Directory
 
 # Constants
-$ClientID      = "your-client-application-id-here"  
+$ClientID      = "your-client-application-id-here"
 $ClientSecret  = "your-client-application-secret-here"
 $loginURL      = "https://login.microsoftonline.com"
-$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"  
+$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"
 # Get an Oauth 2 access token based on client id, secret and tenant domain
 $body          = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth         = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
@@ -97,16 +98,16 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>使用情况报表定义
-* **tenantUserCount**：过去 30 天，每天租户中的用户数（按标识提供者的类型分类）。 （或者，`TimeStamp` 筛选器提供从指定日期到当前日期的用户计数）。 报表提供：
+* **tenantUserCount**：过去 30 天，每天租户中的用户数计数（按标识提供者的类型分类）。 （或者，`TimeStamp` 筛选器提供从指定日期到当前日期的用户计数）。 报表提供：
   * **TotalUserCount**：所有用户对象数。
   * **OtherUserCount**：Azure Active Directory 用户（而非 Azure AD B2C 用户）数。
   * **LocalUserCount**：使用 Azure AD B2C 租户的本地凭据创建的 Azure AD B2C 用户帐户数。
 
-* **AlternateIdUserCount**：使用外部标识提供者（例如，Facebook、Microsoft 帐户或其他 Azure Active Directory 租户，也称为 `OrgId`）注册的 Azure AD B2C 用户数。
+* **AlternateIdUserCount**：使用外部标识提供程序（例如，Facebook、Microsoft 帐户或其他 Azure Active Directory 租户，也称为 `OrgId`）注册的 Azure AD B2C 用户数。
 
 * **b2cAuthenticationCountSummary**：过去 30 天内，可计费身份验证的日计数总和（按天和身份验证流的类型分类）。
 
-* **b2cAuthenticationCount**：某个时间段内的身份验证数。 默认值为过去 30 天。  （可选：`TimeStamp` 参数的开头和结尾定义特定时间段。）输出包括 `StartTimeStamp`（此租户活动的最早日期）和 `EndTimeStamp`（最新更新）。
+* **b2cAuthenticationCount**：某个时间段内的身份验证数。 默认值为过去 30 天。  （可选：开始和结束 `TimeStamp` 参数定义特定时间段。）输出包括 `StartTimeStamp` （此租户的最早活动日期）和 `EndTimeStamp` （最新更新）。
 
 * **b2cMfaRequestCountSummary**：多重身份验证的日计数总和，按天和类型（短信或语音）分类。
 

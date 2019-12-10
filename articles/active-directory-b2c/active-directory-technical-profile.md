@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件 | Microsoft Docs
+title: 在自定义策略中定义 Azure AD 技术配置文件
+titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064624"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949552"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -23,7 +24,7 @@ ms.locfileid: "71064624"
 
 Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory 用户管理的支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>协议
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
@@ -69,7 +70,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory �
 
 **OutputClaims** 元素包含 Azure AD 技术配置文件返回的声明列表。 可能需要将策略中定义的声明名称映射到 Azure Active Directory 中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含 Azure Active Directory 不会返回的声明。
 
-**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
+“OutputClaimsTransformations”元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”元素的一个集合。
 
 例如，**AAD-UserWriteUsingLogonEmail** 技术配置文件可创建本地帐户并返回以下声明：
 
@@ -252,15 +253,15 @@ Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory �
 ```
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必填 | 描述 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| 操作 | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
-| RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
-| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
-| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)。 |
-| ClientId | 否 | 作为第三方访问租户的客户端标识符。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
+| Operation | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
+| UserMessageIfClaimsPrincipalAlreadyExists | No | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
+| ApplicationObjectId | No | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)。 |
+| ClientId | No | 作为第三方访问租户的客户端标识符。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md) |
 
 
 

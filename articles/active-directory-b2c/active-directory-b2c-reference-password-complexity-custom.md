@@ -1,5 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性 | Microsoft Docs
+title: 使用自定义策略配置密码复杂性
+titleSuffix: Azure AD B2C
 description: 如何在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性要求。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e8718a04f9d63897b2d2472dd0cdffb196c41435
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065522"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949783"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性
 
@@ -23,7 +24,7 @@ ms.locfileid: "71065522"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，你可以为用户在创建帐户时提供的密码配置复杂性要求。 默认情况下，Azure AD B2C 使用“强”密码。 本文介绍如何在[自定义策略](active-directory-b2c-overview-custom.md)中配置密码复杂性。 还有可能在[用户流](active-directory-b2c-reference-password-complexity.md)中配置密码复杂性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 
@@ -117,7 +118,7 @@ ms.locfileid: "71065522"
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
 6. 选择“覆盖策略(若存在)”，然后搜索并选择 *SingUpOrSignInPasswordComplexity.xml* 文件。
-7. 单击“上传” 。
+7. 单击“上传”。
 
 ### <a name="run-the-policy"></a>运行策略
 

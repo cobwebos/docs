@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C 标识体验框架架构的社交帐户声明转换示例 | Microsoft Docs
-description: Azure Active Directory B2C 标识体验框架架构的社交帐户声明转换示例。
+title: 自定义策略的社交帐户声明转换示例
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 的标识体验框架（IEF）架构的社交帐户声明转换示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +11,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9df00eea79b5dedc3211de02b17fe8f396d7b8a5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258152"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951048"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，社会帐户标识存储在`userIdentities` **alternativeSecurityIdCollection**声明类型的属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
+在 Azure Active Directory B2C （Azure AD B2C）中，社会帐户标识存储在**alternativeSecurityIdCollection**声明类型的 `userIdentities` 属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
 
 ```JSON
 "userIdentities": [{
@@ -40,11 +41,11 @@ ms.locfileid: "71258152"
 
 创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId 的架构](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type)。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 钥 | string | 用于指定社交标识提供者所用唯一用户标识符的 ClaimType。 |
-| InputClaim | identityProvider | string | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
-| OutputClaim | alternativeSecurityId | string | 调用 ClaimsTransformation 后生成的 ClaimType。 包含社交帐户用户的标识信息。 **issuer** 是 `identityProvider` 声明的值。 **issuerUserId** 是 `key` 声明的值，采用 base64 格式。 |
+| InputClaim | key | 字符串 | 用于指定社交标识提供者所用唯一用户标识符的 ClaimType。 |
+| InputClaim | identityProvider | 字符串 | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
+| OutputClaim | alternativeSecurityId | 字符串 | 调用 ClaimsTransformation 后生成的 ClaimType。 包含社交帐户用户的标识信息。 **issuer** 是 `identityProvider` 声明的值。 **issuerUserId** 是 `key` 声明的值，采用 base64 格式。 |
 
 使用此声明转换可以生成 `alternativeSecurityId` ClaimType。 此 ClaimType 由所有社交标识提供者技术配置文件（例如 `Facebook-OAUTH`）使用。 以下声明转换接收用户社交帐户 ID 和标识提供者名称。 此技术配置文件的输出是可在 Azure AD 目录服务中使用的 JSON 字符串格式。
 
@@ -63,18 +64,18 @@ ms.locfileid: "71258152"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **key**：12334
-    - **identityProvider**：Facebook.com
+    - **key**: 12334
+    - **identityProvider**: Facebook.com
 - 输出声明：
-    - **alternativeSecurityId**：{ "issuer": "facebook.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
+    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
 将 `AlternativeSecurityId` 添加到 `alternativeSecurityIdCollection` 声明。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 项 | string | 要添加到输出声明的 ClaimType。 |
+| InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes（如果在策略中可用）。 如果已提供，则声明转换将在集合末尾添加 `item`。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 包含 `collection` 和 `item` 输入中的项的集合。 |
 
@@ -100,16 +101,16 @@ ms.locfileid: "71258152"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **item**：{ "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" }
-    - **collection**：[ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **item**: { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" }
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
 - 输出声明：
-    - **collection**：[ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
 在新的 **stringCollection** 声明中返回 **alternativeSecurityIdCollection** 声明中的颁发者列表。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | 用于获取标识提供者（颁发者）列表的 ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 与 alternativeSecurityIdCollection 输入声明关联的标识提供者列表 |
@@ -128,7 +129,7 @@ ms.locfileid: "71258152"
 ```
 
 - 输入声明：
-    - **alternativeSecurityIdCollection**：[ { "issuer": "google.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
+    - **alternativeSecurityIdCollection**: [ { "issuer": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - 输出声明：
     - **identityProvidersCollection**: [ "facebook.com", "google.com" ]
 
@@ -136,9 +137,9 @@ ms.locfileid: "71258152"
 
 从 **alternativeSecurityIdCollection** 声明中删除 **AlternativeSecurityId**。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | identityProvider | string | 包含要从集合中删除的标识提供者名称的 ClaimType。 |
+| InputClaim | identityProvider | 字符串 | 包含要从集合中删除的标识提供者名称的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes。 声明转换从集合中删除 identityProvider。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 从集合中删除 identityProvider 后的新集合。 |
 
@@ -165,6 +166,6 @@ ms.locfileid: "71258152"
 
 - 输入声明：
     - **identityProvider**: facebook.com
-    - **collection**：[ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId":"MTIzNDU=" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" }, { "issuer": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - 输出声明：
-    - **collection**：[ { "issuer": "live.com", "issuerUserId":"MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]
+    - **collection**: [ { "issuer": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw" } ]

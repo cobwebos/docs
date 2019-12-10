@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ba95723e62cec9708684665a9d141b1e39ccb831
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816403"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951830"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音的数据
 
@@ -62,6 +62,9 @@ ms.locfileid: "74816403"
 | 存档格式 | .zip |
 | 最大存档大小 | 2GB |
 
+> [!TIP]
+> 上传定型和测试数据时，.zip 文件的大小不能超过 2 GB。 如果需要更多的数据来进行定型和测试，请将其划分为多个 .zip 文件并分别上传它们。 稍后，你可以选择从*多个*数据集进行定型和测试。
+
 如果您的音频不满足这些属性，或者您想要检查它是否有，我们建议您下载[sox](http://sox.sourceforge.net)来检查或转换音频。 下面的示例演示如何通过命令行完成每个活动：
 
 | 活动 | 描述 | Sox 命令 |
@@ -71,7 +74,7 @@ ms.locfileid: "74816403"
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>音频 + 用人标记的脚本数据进行测试/培训
 
-若要在处理音频文件时测量 Microsoft 语音到文本准确性的准确性，必须提供人机标记的转录（单词字词）进行比较。 尽管人为标记的脚本通常非常耗时，但还是需要评估准确性并为用例定型模型。 请记住，识别的改进仅适用于所提供的数据。 出于此原因，仅上传高质量的脚本很重要。  
+若要在处理音频文件时测量 Microsoft 语音到文本准确性的准确性，必须提供人机标记的转录（单词字词）进行比较。 尽管人为标记的脚本通常非常耗时，但还是需要评估准确性并为用例定型模型。 请记住，识别的改进仅适用于所提供的数据。 出于此原因，仅上传高质量的脚本很重要。
 
 | properties | Value |
 |----------|-------|
@@ -82,6 +85,9 @@ ms.locfileid: "74816403"
 | 示例格式 | PCM，16 位 |
 | 存档格式 | .zip |
 | 最大 zip 大小 | 2GB |
+
+> [!TIP]
+> 上传定型和测试数据时，.zip 文件的大小不能超过 2 GB。 如果需要更多的数据来进行定型和测试，请将其划分为多个 .zip 文件并分别上传它们。 稍后，你可以选择从*多个*数据集进行定型和测试。
 
 若要解决 word 删除或替换等问题，需要大量数据来改善识别。 通常，建议提供大约10到1000小时的音频的单词转录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
