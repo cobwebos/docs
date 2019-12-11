@@ -1,5 +1,5 @@
 ---
-title: 使用门户创建适用于 Linux 的共享 Azure 虚拟机映像
+title: 使用门户创建适用于 Linux 的共享 Azure VM 映像
 description: 了解如何使用 Azure 门户来创建和共享虚拟机映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 9dff10848c42fd730f0bc77fd325f00cec554c9d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892866"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978690"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>使用 Azure 门户创建共享映像库
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 

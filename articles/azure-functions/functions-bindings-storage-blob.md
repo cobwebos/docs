@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 65775a9c7a6d66a088eccdfdb22ce7d6b01829d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6a17322c360040b8fa77ac243a1b568f0d10c1f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925407"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996487"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -463,7 +463,7 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="trigger---polling"></a>触发器 - 轮询
 
-如果被监视的 blob 容器包含10000个以上的 blob （跨所有容器），则函数运行时将扫描日志文件，以监视新的或更改的 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。
+轮询在检查日志和运行定期容器扫描之间起到混合作用。 Blob 在每次以10000组进行扫描，并在间隔之间使用继续标记。
 
 > [!WARNING]
 > 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。

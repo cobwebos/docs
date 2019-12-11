@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972330"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -43,9 +43,9 @@ ms.locfileid: "73748359"
 
 - **建议**：在 Databricks 活动中指定笔记本路径。
 
-<br/>    
-              
-- **消息**： `Cluster   ... does not exist.`
+<br/>  
+
+- **消息**： `Cluster... does not exist.`
 
 - **原因**： `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ ms.locfileid: "73748359"
 
 <br/>  
 
-- **消息**： `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **消息**： `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **原因**： `Bad authoring.`
 
@@ -225,7 +225,7 @@ ms.locfileid: "73748359"
 
 - **消息**： `Response Content is not a valid JObject.`
 
-- **原因**：调用的 Azure 函数未在响应中返回 JSON 有效负载。 ADF Azure 函数活动仅支持 JSON 响应内容。
+- **原因**：调用的 Azure 函数未在响应中返回 JSON 有效负载。 ADF Azure function 活动仅支持 JSON 响应内容。
 
 - **建议**：更新 Azure function 以返回有效的 JSON 有效负载，例如C# ，函数可能返回（ActionResult） new OkObjectResult （"{\"Id\"：\"123\"}"）;
 
@@ -334,56 +334,56 @@ ms.locfileid: "73748359"
 
 ### <a name="error-code--4121"></a>错误代码：4121
 
-- **消息**： `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **消息**： `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**：用于访问 Azure ML 服务的凭据已过期。
+- **原因**：用于访问 Azure 机器学习的凭据已过期。
 
 - **建议**：请验证凭据是否有效，然后重试
 
 
 ### <a name="error-code--4122"></a>错误代码：4122
 
-- **消息**： `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **消息**： `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**： Azure ML 服务链接服务中提供的凭据无效或没有操作的权限。
+- **原因**： Azure 机器学习链接服务中提供的凭据无效或没有操作的权限。
 
-- **建议**：请验证链接服务中的凭据是否有效，以及是否有权访问 Azure ML 服务。
+- **建议**：请验证链接服务中的凭据是否有效，以及是否有权访问 Azure 机器学习。
 
 
 ### <a name="error-code--4123"></a>错误代码：4123
 
-- **消息**： `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **消息**： `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**： `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **原因**：活动的属性（例如 pipelineparameters.json）对于 Azure ML 管道无效。
 
 - **建议**：请检查活动属性的值，以匹配链接服务中指定的已发布 Azure ML 管道的预期负载。
 
 
 ### <a name="error-code--4124"></a>错误代码：4124
 
-- **消息**： `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **消息**： `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **原因**：已发布的 Azure ML 管道终结点不存在。
 
-- **建议**：请验证 Azure ml 服务中是否存在链接的服务中指定的已发布 Azure ml 管道终结点。
+- **建议**：请验证 Azure 机器学习中是否存在链接服务中指定的已发布 Azure 机器学习管道终结点。
 
 
 ### <a name="error-code--4125"></a>错误代码：4125
 
-- **消息**： `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **消息**： `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**： Azure ML 服务上出现服务器错误。
+- **原因**： Azure 机器学习上出现服务器错误。
 
-- **建议**：请稍后重试。 如果问题仍然存在，请联系 Azure ML 服务团队以获得帮助。
+- **建议**：请稍后重试。 如果问题仍然存在，请与 Azure 机器学习团队联系以获取帮助。
 
 
 ### <a name="error-code--4126"></a>错误代码：4126
 
-- **消息**： `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **消息**： `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **原因**： Azure ML 管道运行失败。
 
-- **建议**：请查看 Azure ML 服务以获得更多错误日志，并修复 ML 管道
+- **建议**：请查看 Azure 机器学习以获取更多错误日志，并修复 ML 管道。
 
 
 
@@ -422,7 +422,7 @@ ms.locfileid: "73748359"
 
 - **原因**：存储的连接字符串无效或格式不正确。
 
-- **建议**：请中转到 Azure 门户，找到你的存储，复制连接字符串，然后粘贴到你的链接服务中，然后重试。
+- **建议**：请参阅 Azure 门户，找到你的存储，复制连接字符串，然后粘贴到你的链接服务中，然后重试。
 
 
 ### <a name="error-code--2108"></a>错误代码：2108
@@ -471,7 +471,7 @@ ms.locfileid: "73748359"
 
 
 
-## <a name="custom"></a>“自定义”
+## <a name="custom"></a>自定义
 
 下表适用于 Azure Batch。
       
@@ -522,7 +522,7 @@ ms.locfileid: "73748359"
 
 ### <a name="error-code--2507"></a>错误代码：2507
 
-- **消息**： `The folder path does not exist or is empty: ....`
+- **消息**： `The folder path does not exist or is empty: ...`
 
 - **原因**：存储帐户中指定路径处没有文件。
 
@@ -648,7 +648,7 @@ ms.locfileid: "73748359"
 - **原因**：错误消息中包含类似于 "无法解析远程名称" 的消息。这可能意味着提供的群集 URI 无效。
 
 
-- **建议**：请确保未删除群集，并且提供的 URI 是正确的。 在浏览器中打开 URI 时，应会看到 Ambari UI。 如果群集位于虚拟网络中，则 URI 应为专用 URI。 若要打开它，请使用同一虚拟网络中的 VM。 有关详细信息，请参阅[此](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)内容。
+- **建议**：请确保未删除群集，并且提供的 URI 是正确的。 在浏览器中打开 URI 时，应会看到 Ambari UI。 如果群集位于虚拟网络中，则 URI 应为专用 URI。 若要打开它，请使用同一虚拟网络中的 VM。 有关详细信息，请参阅 [this](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)。
                   
 
 <br>
@@ -668,12 +668,12 @@ ms.locfileid: "73748359"
 - **原因**：如果错误消息包含类似于 "502-Web 服务器在充当网关或代理服务器时收到了无效响应" 的消息，则 HDInsight 服务将返回此错误。
 
 
-- **建议**：查看 Azure HDInsight 故障排除文档，例如 https://hdinsight.github.io/ambari/ambari-ui-502-error.html、 https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502。
+- **建议**：查看 Azure HDInsight 故障排除文档，例如 https://hdinsight.github.io/ambari/ambari-ui-502-error.html 、 https://hdinsight.github.io/spark/spark-thriftserver-errors.htmlhttps://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502 。
                   
 
 <br>
 
-- **原因**：当错误消息包含类似于 "无法处理提交作业请求，因为 templeton 服务正忙，因为有太多提交作业请求" 或 "500 joblauncher" 的消息时，无法接受提交应用程序 '，这意味着同时提交到 HDInsight 的作业过多。
+- **原因**：当错误消息包含类似于 "无法处理提交作业请求，因为 templeton 服务正忙，因为有太多提交作业请求" 或 "Queue root. joblauncher 已有500应用程序，无法接受应用程序的提交" 的消息时，这意味着同时提交到 HDInsight 的作业太多。
 
 - **建议**：考虑限制提交到 HDInsight 的并发作业的数目。 如果作业正在由同一活动提交，则请参阅数据工厂活动并发性。 更改触发器，使并发管道运行随时间而分散。 有关错误的建议，请参阅 HDInsight 文档以调整 templeton。
 
@@ -685,7 +685,7 @@ ms.locfileid: "73748359"
 - **原因**： HDInsight 群集或服务有问题。
 
 
-- **建议**：当你尝试获取正在运行的作业的状态时，ADF 不会从 HDInsight 群集获得响应，则会发生此错误。 此问题可能是由群集本身的问题引起的，也可能是 HDInsight 服务中断。 请参阅 https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide上的 HDInsight 故障排除文档，或联系支持人员以获得进一步帮助。
+- **建议**：当你尝试获取正在运行的作业的状态时，ADF 不会从 HDInsight 群集获得响应，则会发生此错误。 此问题可能是由群集本身的问题引起的，也可能是 HDInsight 服务中断。 请参阅 https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide 上的 HDInsight 故障排除文档，或联系支持人员以获得进一步帮助。
                 
 
 
@@ -732,7 +732,7 @@ ms.locfileid: "73748359"
 - **原因**：为脚本操作提供的 json 无效。
 
 
-- **建议**：错误消息应有助于识别问题。 请修复 json 配置，然后重试。 有关详细信息，请查看 https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service。
+- **建议**：错误消息应有助于识别问题。 请修复 json 配置，然后重试。 有关详细信息，请查看 https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service 。
                 
 
 
@@ -816,7 +816,7 @@ ms.locfileid: "73748359"
 
 - **建议**：  
       1. 通过在浏览器中打开 HDInsight 群集的 Ambari UI，验证凭据是否正确。
-      2. 如果群集在 VNet 中并且正在使用自我托管 IR，则的 HDI URL 应为 Vnet 中的专用 URL，这意味着在群集名称后，该 url 应包含 "-int"。 例如，"https://mycluster.azurehdinsight.net/" 应更改为 "https://mycluster-int.azurehdinsight.net/"。
+      2. 如果群集在 VNet 中并且正在使用自我托管 IR，则的 HDI URL 应为 Vnet 中的专用 URL，这意味着在群集名称后，该 url 应包含 "-int"。 例如，"https://mycluster.azurehdinsight.net/ " 应更改为 "https://mycluster-int.azurehdinsight.net/ "。
       2. 如果群集在 VNet 中，使用的是自承载 IR 并且使用的是专用 URL，而且连接仍然失败，则安装 IR 的 VM 在连接到 HDI 时出现问题。 连接到安装了 IR 的 VM，并在浏览器中打开 Ambari UI。 使用群集的专用 URL。 此连接应在浏览器中工作。 如果没有，请与 HDInsight 支持团队联系以获得进一步的帮助。
       3. 如果未使用自承载 IR，则应公开访问 HDI 群集。 在浏览器中打开 Ambari UI，并确保它已打开。 如果群集或其上的服务有任何问题，请与 HDInsight 支持团队联系以获取帮助。
       一般来说，在 ADF 链接服务中使用的 HDI 群集 URL 必须可供 ADF IR （自承载或 Azure）访问，以便测试连接通过，并且运行正常。 通过从 VM 或任何公共计算机打开浏览器中的 URL，可以轻松地对其进行验证。
@@ -977,7 +977,7 @@ ms.locfileid: "73748359"
 
 - **原因**：群集创建失败，并且 ADF 没有从 HDInsight 服务返回错误。
 
-- **建议**：打开 Azure 门户，尝试查找具有所提供名称的 HDI 资源，并检查预配状态。 请联系 HDInsight 支持团队以获得进一步的帮助。
+- **建议**：打开 Azure 门户，然后尝试查找具有所提供名称的 HDI 资源，并检查预配状态。 请联系 HDInsight 支持团队以获得进一步的帮助。
 
 
 ### <a name="error-code--2362"></a>错误代码：2362
@@ -1018,7 +1018,7 @@ ms.locfileid: "73748359"
 
 1. 如果你的 web 应用程序使用 HTTPS，请跳到 "**工具**" > **Fiddler Options** > **HTTPS**"。 选择 "**捕获 Https 连接**" 和 "**解密 https 通信**"。
 
-![Fiddler 选项](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Fiddler 选项](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. 如果你的应用程序使用 SSL 证书，请将 Fiddler 证书添加到你的设备。 请参阅 "**工具**" > **Fiddler Options** > **HTTPS** > **操作** > "**将根证书导出到桌面**"。
 
@@ -1028,17 +1028,17 @@ ms.locfileid: "73748359"
 
 1. 创建请求：
 
-a. 选择 "**编辑器**" 选项卡。
+   1. 选择 "**编辑器**" 选项卡。
 
-b. 设置 HTTP 方法和 URL。
+   1. 设置 HTTP 方法和 URL。
+   
+   1. 如果需要，请添加标头和请求正文。
 
-c. 如果需要，请添加标头和请求正文。
+   1. 选择“执行”。
 
-d. 选择”**执行**“。
+1. 再次打开流量捕获，并在页面上完成有问题的事务。
 
-9. 再次打开流量捕获，并在页面上完成有问题的事务。
-
-10. 请参阅**文件** > **保存** > **所有会话**。
+1. 请参阅**文件** > **保存** > **所有会话**。
 
 有关详细信息，请参阅[Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)入门。
 

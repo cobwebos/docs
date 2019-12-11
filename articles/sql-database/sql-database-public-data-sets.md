@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821286"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973537"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -26,7 +26,7 @@ ms.locfileid: "73821286"
 
 | 数据源 | 关于数据 | 关于文件 |
 |---|---|---|
-| [美国政府数据](https://www.census.gov/data.html) | 超过 190,000 个数据集，涵盖了美国的农业、气候、消费者、生态系统、教育、能源、金融、保健、地方政府、制造业、海运、海洋、公共安全和科研方面的数据。 | 各种格式各种大小的文件，包括 HTML、XML、CSV、JSON、Excel 等。 可按文件格式筛选可用数据集。 |
+| [美国政府数据](https://catalog.data.gov/dataset) | 超过250000个数据集，涵盖了农业、气候、消费者、生态系统、教育、能源、财务、健康、本地政府、制造业、海事 | 各种格式各种大小的文件，包括 HTML、XML、CSV、JSON、Excel 等。 可按文件格式筛选可用数据集。 |
 | [美国人口普查数据](https://www.census.gov/data.html) | 美国人口的统计数据 | 各种格式的数据集。 |
 | [来自 NASA 的地球科学数据](https://earthdata.nasa.gov/) | 32,000 多个数据集，涵盖了农业、大气、生物圈、气候、低温层、人文领域、水圈、地表、海洋、太阳与地球相互作用等方面的数据。 | 各种格式的数据集。 |
 | [航班延迟和其他交通数据](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "美国交通部（点）运输统计信息（BTS）跟踪大型通风管运营的国内航班的时间业绩。 可在此网站发布的汇总表中了解准时的、延迟的和取消的航班及转机航班数的汇总信息。” | 文件为 CSV 格式。 |

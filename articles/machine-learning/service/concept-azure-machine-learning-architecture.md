@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1e67fc3a2f878e5e04834f67027c98e0b37e9059
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580617"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973588"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -59,21 +59,21 @@ ms.locfileid: "73580617"
 + <a href="#compute-instance">笔记本 VM</a>
 + <a href="#compute-targets">计算目标</a>
 + <a href="#datasets-and-datastores">数据集 & 数据存储</a>
-+ <a href="#endpoints">Endpoints</a>
-+ <a href="#environments">情形</a>
++ <a href="#endpoints">EndPoints</a>
++ <a href="#environments">环境</a>
 + [估算](#estimators)
 + <a href="#experiments">试验</a>
 + <a href="#github-tracking-and-integration">Git 跟踪</a>
 + <a href="#iot-module-endpoints">IoT 模块</a>
 + <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML 管道</a>
-+ <a href="#models">机型</a>
++ <a href="#models">模型</a>
 + <a href="#runs">Run</a>
 + <a href="#run-configurations">运行配置</a>
 + <a href="#snapshots">快照</a>
 + <a href="#training-scripts">训练脚本</a>
 + <a href="#web-service-endpoint">Web 服务</a>
-+ <a href="#workspaces">空间</a>
++ <a href="#workspaces">工作区</a>
 
 ### <a name="activities"></a>活动
 
@@ -197,7 +197,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何主流�
 
 有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
 
-### <a name="runs"></a>运行次数
+### <a name="runs"></a>运行
 
 "运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息：
 

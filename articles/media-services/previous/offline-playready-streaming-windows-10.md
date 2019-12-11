@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 3f742d4cd2a5285c7c52611a0c4c4735dedc2f19
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844779"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970442"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理  
 
-> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本:"]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本："]
 > * [第 3 版](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [第 2 版](offline-playready-streaming-windows-10.md)
 
@@ -39,9 +39,9 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 
 本节介绍有关脱机模式播放的一些背景，特别是以下问题的原因：
 
-* 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
+* 在某些国家/地区，Internet 可用性和/或带宽仍然受到限制。 用户可以选择先下载，以便能够观看高分辨率的内容以获得令人满意的观看体验。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
 * 在 Netflix 2016 年第 3 季度股东大会上，Netflix 首席执行官 Reed Hastings 表示，下载内容是“经常请求的功能”，“我们对此持开放态度”。
-* 某些内容提供程序可能不允许在某个国家/地区的边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
+* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想在国外旅行期间查看内容，需要脱机下载。
  
 实现脱机模式所面临的挑战如下：
 
@@ -125,6 +125,10 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * 内容可以托管在 Azure 媒体服务或 Azure 存储中，用于渐进式下载；
 * PlayReady 许可证交付可以来自 Azure 媒体服务或其他位置；
 * 已准备好的平滑流式处理内容仍然可以通过 DASH 用作联机流式处理或作为 DRM 使用 PlayReady 进行平滑处理。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

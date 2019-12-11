@@ -1,6 +1,6 @@
 ---
-title: Web API 调用 web Api （Api 调用）-Microsoft 标识平台
-description: 了解如何构建 web API 的调用下游 web Api （调用 web API）。
+title: 用于调用 web Api 的 web API-Microsoft 标识平台 |Microsoft
+description: 了解如何生成可调用 web Api 的 web API。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074720"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965205"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API 调用 web Api 的调用的 API
+# <a name="web-api-that-calls-web-apis---call-an-api"></a>用于调用 web Api 的 web API-调用 API
 
-一旦您有一个令牌，就可以调用受保护的 web API。 这是从 ASP.NET/ASP.NET Core web API 控制器。
+获得令牌后，可以调用受保护的 web API。 这是从 ASP.NET/ASP.NET Core web API 的控制器中完成的。
 
 ## <a name="controller-code"></a>控制器代码
 
-下面是示例代码中所示的延续[受保护 web API 调用 web Api-获取令牌](scenario-web-api-call-api-acquire-token.md)、 被调用的 API 控制器操作，调用下游 API （名为 todolist）。
+下面是受保护的 web API 中所示的示例代码的继续符，[用于调用 Web api-获取](scenario-web-api-call-api-acquire-token.md)在 API 控制器的操作中调用的令牌（名为 todolist）。
 
-获取令牌后, 将其用作持有者令牌以调用下游 API。
+获取令牌后，将其用作持有者令牌以调用下游 API。
 
 ```CSharp
 private async Task GetTodoList(bool isAppStarting)
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到生产环境](scenario-web-api-call-api-production.md)
+> [转到生产](scenario-web-api-call-api-production.md)

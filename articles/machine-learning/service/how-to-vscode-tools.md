@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824357"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975986"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -25,9 +25,9 @@ ms.locfileid: "73824357"
 + 对于培训，它为在本地或远程运行试验提供支持。 对于每个试验，可以记录多个运行的自定义指标来微调超参数
 + 你还可以使用 Azure 机器学习轻松部署机器学习模型，以满足测试和生产需求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-+ 如果还没有 Azure 订阅，请在开始前创建免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
++ 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 + 安装[Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)，这是在 Windows、Mac 和 Linux 上运行的轻型代码编辑器。
 
@@ -94,8 +94,8 @@ ms.locfileid: "73824357"
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ ms.locfileid: "73824357"
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ ms.locfileid: "73824357"
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>在 Azure 中运行脚本
-就这么简单！ 现在只需使用扩展即可在云中运行你的脚本！ 请注意，下面的演练视频会让你自由地压缩创建新的 Azure ML 工作区和计算所需的时间，以及运行训练脚本所需的时间。
+就这么简单！ 现在只需使用扩展即可在云中运行你的脚本！ 请注意，下面的演练视频会让你自由地压缩创建新 Azure 机器学习工作区和计算所需的时间，以及运行训练脚本所需的时间。
 
    [![开始 Azure ML 试验](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 单击 "运行试验" 按钮后，按如下所示回答提示：
 
-1. 选择自己的 Azure 订阅
-1. 选择创建*新*的 Azure ML 工作区
+1. 选择自己的 Azure 订阅。
+1. 选择创建*新*的 Azure 机器学习工作区。
 1. 从一组预配置的模板中进行选择，以便初始化运行的 Python 环境。 这些模板提供了一个起始点，并包括以下各内容的设置：
     1. **PyTorch**、 **TensorFlow**或**scikit-learn-了解**
     1. **单个**或**分布式**计算培训
@@ -155,7 +155,7 @@ ms.locfileid: "73824357"
 
     [![在云中定型](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-几秒钟后，将会通知你实验已提交到 Azure，此时你 Azure 机器学习可以通过单击 VS Code 通知中的 "**查看试验运行**" 链接，或在 VS Code按 "Azure" 选项卡中的 "刷新" 按钮。
+几秒钟后，将会通知你实验已提交到 Azure，此时你可以通过单击 VS Code 通知中的 "**查看试验运行**" 链接在 Azure 机器学习 studio 中查看它的进度，或者通过按 "Azure" 选项卡中的 "刷新" 按钮在 VS Code 中查看进度。
 
 目前，在工作室中仅支持查看运行度量值。 上面提到的 "**查看试验运行**" 链接会将你转到运行，你会在其中看到你记录的度量值。
 [在门户中运行 ![试验](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)

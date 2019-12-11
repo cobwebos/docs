@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083211"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978162"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -33,11 +33,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="overview"></a>概述
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
-若要开始使用 Azure 媒体服务，应该具备以下条件：
+要开始使用 Azure 媒体服务，应该具备以下条件：
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
@@ -65,7 +65,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
     建议向输出资产应用存储加密选项，以便保护静态内容。
 3. 配置资产传送策略（由动态打包使用）。
 
-    如果资产已经过存储加密，则 **必须** 配置资产传送策略。
+    如果资产已经过存储加密，则**必须**配置资产传送策略。
 4. 通过创建 OnDemand 定位符来发布资产。
 5. 流式传输已发布的内容。
 
@@ -119,7 +119,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用从本地编码器（直通）接收多比特率实时流的频道
 
-下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分。
+下图显示的是**直通**工作流中涉及的 AMS 平台的主要组成部分。
 
 ![实时工作流](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
@@ -137,7 +137,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
+Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
 
 ## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
@@ -169,7 +169,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
+若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/ ，并滚动到 MEDIA 表。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -179,8 +179,8 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 |名称|状态|数据中心
 |---|---|---|
-|标准|GA|All|
-|高级|GA|All|
+|标准版|GA|所有|
+|高级|GA|所有|
 
 ### <a name="live-encoding"></a>实时编码
 
@@ -196,7 +196,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Media Encoder Standard|GA|All|
+|媒体编码器标准版|GA|所有|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -207,12 +207,12 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|All|
-|Azure Media Indexer|GA|All|
-|Azure Media Motion Detector|预览|All|
-|Azure 媒体 OCR|预览|All|
-|Azure 媒体修订|预览|All|
-|Azure 媒体视频缩略图|预览|All|
+|Azure 媒体面部检测器|预览|所有|
+|Azure 媒体索引器|GA|所有|
+|Azure Media Motion Detector|预览|所有|
+|Azure 媒体 OCR|预览|所有|
+|Azure 媒体编修器|预览|所有|
+|Azure 媒体视频缩略图|预览|所有|
 |Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
@@ -221,12 +221,12 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 #### <a name="availability"></a>可用性
 
-|Encryption|状态|数据中心|
+|加密|状态|数据中心|
 |---|---|---| 
-|存储|GA|All|
-|AES-128 密钥|GA|All|
-|Fairplay|GA|All|
-|PlayReady|GA|All|
+|存储空间|GA|所有|
+|AES-128 密钥|GA|所有|
+|Fairplay|GA|所有|
+|PlayReady|GA|所有|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -249,9 +249,13 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|All|
+|S1|GA|所有|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

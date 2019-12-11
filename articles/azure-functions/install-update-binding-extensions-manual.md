@@ -3,16 +3,16 @@ title: 手动安装或更新 Azure Functions 绑定扩展
 description: 了解如何为已部署的函数应用安装或更新 Azure Functions 绑定扩展。
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226511"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977482"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>从门户手动安装或更新 Azure Functions 绑定扩展
 
-Azure Functions 版本 2.x 运行时使用绑定扩展来实现触发器和绑定的代码。 NuGet 包中提供了绑定扩展。 注册一个扩展，实际上是安装一个包。 在开发函数时，安装绑定扩展的方式取决于开发环境。 有关详细信息，请参阅触发器和绑定文章中的[注册绑定扩展](./functions-bindings-register.md)。
+从版本2.x 开始，Azure Functions 运行时使用绑定扩展来实现触发器和绑定的代码。 NuGet 包中提供了绑定扩展。 注册一个扩展，实际上是安装一个包。 在开发函数时，安装绑定扩展的方式取决于开发环境。 有关详细信息，请参阅触发器和绑定文章中的[注册绑定扩展](./functions-bindings-register.md)。
 
 有时，需要在 Azure 门户中手动安装或更新绑定扩展。 例如，可能需要将已注册的绑定更新为一个较新的版本。 可能还需要注册一个无法在门户的“集成”选项卡中安装的支持的绑定。
 

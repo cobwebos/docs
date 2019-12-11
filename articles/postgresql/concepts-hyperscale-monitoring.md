@@ -1,23 +1,23 @@
 ---
-title: 监视和优化 Azure Database for PostgreSQL-超大规模（Citus）
+title: 监视和优化-超大规模（Citus）-Azure Database for PostgreSQL
 description: 本文介绍 Azure Database for PostgreSQL-超大规模（Citus）中的监视和优化功能
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6c9bf7a427c0d3d26c3accd1d0d7098413916993
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512686"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975510"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>监视和优化 Azure Database for PostgreSQL-超大规模（Citus）
 
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 超大规模（Citus）提供了多种监视选项，可让你深入了解服务器组中节点的行为。
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 
 超大规模（Citus）为服务器组中的每个节点提供指标。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
 
@@ -27,16 +27,16 @@ ms.locfileid: "73512686"
 
 这些指标适用于超大规模（Citus）节点：
 
-|指标|指标显示名称|计价单位|说明|
+|指标|指标显示名称|计价单位|描述|
 |---|---|---|---|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |iops|IOPS|计数|查看[IOPS 定义](../virtual-machines/linux/premium-storage-performance.md#iops)和[超大规模吞吐量](concepts-hyperscale-configuration-options.md)|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
-|network_bytes_egress|Network Out|字节|跨活动连接数的网络传出。|
+|network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
+|network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
-|storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
+|storage_used|已用存储|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 
 Azure 不提供整体群集的聚合指标，但可以将多个节点的指标放置在同一图形上。
 

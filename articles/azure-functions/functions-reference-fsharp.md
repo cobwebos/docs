@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226755"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975000"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。 
 
 >[!IMPORTANT]
->仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 如果要将 F# 与版本 2.x 运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
+>仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 如果要使用F#版本 2. x 和更高版本的运行时，则必须使用预编译F#的类库项目（. fs）。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
 
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.fsx) 和绑定配置文件 (function.json)。
 
-[2.x 版](functions-versions.md) Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+在 `extensions.csproj` 文件中定义了[版本2.x 和更高版本](functions-versions.md)的函数运行时中所需的绑定扩展，其中实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 对于每个绑定支持某些参数，请参阅 [Azure 函数触发器和绑定开发人员参考](functions-triggers-bindings.md)。 例如，blob 触发器支持的其中一个参数绑定是 POCO，可以使用 F # 记录来表示。 例如：
@@ -63,7 +63,7 @@ let Run(blob: string, output: byref<Item>) =
 
 F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
 
-在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `byref<>`，请使用 `output` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
+在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
 作为输入类型使用 F # 记录时，必须使用 `[<CLIMutable>]`标记的记录定义，以便在记录传递给函数之前让 Azure 功能框架设置相应字段。 实质上， `[<CLIMutable>]` 生成记录属性的 setter。 例如：
 
@@ -225,7 +225,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
 1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问将要显示程序包安装输出位置的流式传输日志。
-2. 若要上传 `project.json` 文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
+2. 若要上传  `project.json`文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 
 ```
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>重用.fsx 代码
-可以通过 `.fsx` 指令使用其他 `#load` 文件中的代码。 例如：
+可以通过 `#load` 指令使用其他 `.fsx` 文件中的代码。 例如：
 
 `run.fsx`
 
@@ -280,7 +280,7 @@ let mylog(log: ILogger, text: string) =
 
 * `#load "logger.fsx"` 加载函数文件夹中的文件。
 * `#load "package\logger.fsx"` 加载文件 `package` 函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `shared` 的正下方）加载 `wwwroot` 文件夹中的文件，使其成为函数文件夹。
+* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `wwwroot` 的正下方）加载 `shared` 文件夹中的文件，使其成为函数文件夹。
 
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 

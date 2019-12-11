@@ -1,7 +1,7 @@
 ---
 title: 什么是 ML 管道
 titleSuffix: Azure Machine Learning
-description: 本文介绍可通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道的优点。 机器学习 (ML) 管道由数据科学家用来生成、优化和管理其机器学习工作流。
+description: 本文介绍可通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习（ML）管道的优点。 数据科学家可以使用机器学习管道来构建、优化和管理其机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 84a01597570a488652e3db2345bdf68b52d4bf5b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112399"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973571"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
 Azure 机器学习管道使你可以在机器学习项目中创建工作流。 这些工作流有多个优点： 
 
 + 简易性
-+ Speed
++ 速度
 + 可重复性
 + 灵活性
 + 版本控制和跟踪
 + 模块化 
-+ 质量保证
++ 质量保证测试
 + 成本控制
 
 当你的机器学习项目超出了纯粹的探索和迭代后，这些优势就变得非常明显。 即使是简单的单步管道也很有价值。 机器学习项目通常处于一种复杂的状态，这可能会使单个工作流的精确成就成为一个非常简单的过程。
@@ -40,7 +40,7 @@ Azure 机器学习管道使你可以在机器学习项目中创建工作流。 �
 
 Azure 云提供多个其他管道，每个都有不同的用途。 下表列出了不同的管道以及它们的用途：
 
-| 管道 | 作用 | 规范管道 |
+| 管道 | 它的作用 | 规范管道 |
 | ---- | ---- | ---- |
 | Azure 机器学习管道 | 定义可重复使用的机器学习工作流，可用作机器学习方案的模板。 | 数据 > 模型 |
 | [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 对执行任务所需的数据移动、转换和控制活动进行分组。  | 数据 > 数据 |
@@ -185,7 +185,7 @@ pipeline_run.wait_for_completion()
 
 * 管道步骤间的繁重耦合。 如果重构依赖步骤通常需要修改上一个步骤的输出，则可能是单独的步骤的成本要低于权益。 步骤过于耦合的另一个提示是不是数据的步骤的参数，而是用于控制处理的标志。 
 
-* 提前优化计算资源。 例如，有几个阶段可用于进行数据准备，其中一阶段经常会出现 "哦，这里，我可以将 `MpiStep` 用于并行编程，但此处可以使用具有不太强大计算目标的 `PythonScriptStep`"等。 而且，在很长一段时间内，创建如这样的细化步骤可能会很有价值，尤其是在有可能使用缓存的结果而不是始终重新计算时。 但管道并不旨在代替 `multiprocessing` 模块。 
+* 提前优化计算资源。 例如，有几个阶段用于数据准备，一阶段通常会看到 "哦，这里就是可以使用 `MpiStep` 进行并行编程的位置，但在这里，我可以将 `PythonScriptStep` 用于不太强大的计算目标，等等。 而且，在很长一段时间内，创建如这样的细化步骤可能会很有价值，尤其是在有可能使用缓存的结果而不是始终重新计算时。 但管道并不旨在代替 `multiprocessing` 模块。 
 
 在项目很大或更接近部署之前，您的管道应该更粗糙，而不是细化。 如果你将 ML 项目视为涉及_阶段_和管道，以提供完整的工作流来使你逐步完成某个特定阶段，则会出现正确的路径。 
 
@@ -193,7 +193,7 @@ pipeline_run.wait_for_completion()
 
 为机器学习工作流使用管道的主要优点是：
 
-|主要优点|说明|
+|主要优点|描述|
 |:-------:|-----------|
 |**无人参与&nbsp;运行**|计划以可靠且无人参与的方式并行运行或按顺序运行的步骤。 数据准备和建模可以过去几天或几周，而管道可用于在进程运行时将精力集中在其他任务上。 |
 |**异类计算**|使用跨异类和可缩放计算资源和存储位置可靠协调的多个管道。 通过在不同的计算目标（例如 HDInsight、GPU 数据科学 Vm 和 Databricks）上运行单个管道步骤来有效地使用可用计算资源。|

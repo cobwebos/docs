@@ -1,17 +1,17 @@
 ---
-title: 缩放 Azure Database for PostgreSQL 超大规模（Citus）服务器组
+title: Scale server 组-超大规模（Citus）-Azure Database for PostgreSQL
 description: 调整服务器组内存、磁盘和 CPU 资源来处理增加的负载
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/17/2019
-ms.openlocfilehash: 6053ba37bf330f6b59e291dade822a5ca9de8c85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492296"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977550"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模（Citus）服务器组
 
@@ -36,7 +36,7 @@ Azure Database for PostgreSQL 超大规模（Citus）提供了自助扩展，以
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-`rebalance_table_shards` 函数间重新平衡其参数中命名的表的[归置](concepts-hyperscale-colocation.md)组中的所有表。 因此，您不必为每个分布式表调用函数，只需在每个归置组的代表性表中调用它。
+`rebalance_table_shards`函数间重新平衡其参数中命名的表的[归置](concepts-hyperscale-colocation.md)组中的所有表。 因此，您不必为每个分布式表调用函数，只需在每个归置组的代表性表中调用它。
 
 ## <a name="increase-vcores-or-storage-space"></a>增加 Vcore 或存储空间
 

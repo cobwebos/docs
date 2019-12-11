@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773562"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972347"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
@@ -29,7 +29,7 @@ ms.locfileid: "74773562"
 - `audit_log_events`：控制要记录的事件。 有关特定审核事件，请参阅下表。
 - `audit_log_include_users`：要包含在日志记录中的 MySQL 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此优先级高于 `audit_log_exclude_users`。 参数的最大长度为512个字符。
 > [!Note]
-> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users` 例如，audit_log_include_users = `demouser`，audit_log_exclude_users = `demouser`，则它将审核日志，因为 `audit_log_include_users` 具有更高的优先级。
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级较高。
 - `audit_log_exclude_users`：要从日志记录中排除的 MySQL 用户。 参数的最大长度为512个字符。
 
 > [!Note]
@@ -38,7 +38,7 @@ ms.locfileid: "74773562"
 | **事件** | **说明** |
 |---|---|
 | `CONNECTION` | -连接启动（成功或不成功） <br> -会话过程中用不同用户/密码进行的用户重新进行身份验证 <br> -连接终止 |
-| `DML_SELECT`| 选择查询 |
+| `DML_SELECT`| SELECT 查询 |
 | `DML_NONSELECT` | 插入/删除/更新查询 |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
 | `DDL` | 类似于 "删除数据库" 的查询 |
@@ -129,7 +129,7 @@ ms.locfileid: "74773562"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`、`INSERT`、`UPDATE`或 `DELETE` |
+| `event_subclass_s` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
 | `connection_id_d` | MySQL 生成的唯一连接 ID |
 | `db_s` | 访问的数据库的名称 |
 | `table_s` | 访问的表的名称 |

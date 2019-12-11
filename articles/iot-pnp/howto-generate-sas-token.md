@@ -1,27 +1,27 @@
 ---
 title: 生成安全令牌以访问 IoT 即插即用预览存储库 |Microsoft Docs
-description: 在以编程方式访问 IoT 即插即用预览模型存储库时, 生成要使用的共享访问签名令牌。
-author: YasinMSFT
-ms.author: yahajiza
+description: 在以编程方式访问 IoT 即插即用预览模型存储库时，生成要使用的共享访问签名令牌。
+author: Philmea
+ms.author: philmea
 ms.date: 08/06/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e5d6e7087a7e3d5f4a001e16c5cfa19a6df6a68e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880535"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976020"
 ---
-# <a name="generate-sas-token"></a>生成 SAS 标记
+# <a name="generate-sas-token"></a>生成 SAS 令牌
 
-本操作方法指南演示了如何以编程方式生成用于 IoT 即插即用预览模型存储库 Api 的共享访问签名 (SAS) 令牌。
+本操作方法指南演示了如何以编程方式生成用于 IoT 即插即用预览模型存储库 Api 的共享访问签名（SAS）令牌。
 
 ## <a name="python"></a>Python
 
-以下代码片段演示如何使用 Python 生成 SAS 令牌:
+以下代码片段演示如何使用 Python 生成 SAS 令牌：
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-以下代码片段演示了如何使用 C\#生成 SAS 令牌:
+以下代码片段演示如何使用 C\#生成 SAS 令牌：
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -74,14 +74,14 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>使用 SAS 令牌
 
-生成 SAS 令牌后, 可以使用它发出 HTTP POST 请求。 例如：
+生成 SAS 令牌后，可以使用它发出 HTTP POST 请求。 例如：
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-如果为客户端分配 SAS 令牌, 则客户端不会具有该资源的主键, 并且不能反向哈希来获取它。 SAS 令牌使你可以控制客户端可以访问的内容以及多长时间。 当你更改策略中的主密钥时, 从该密钥创建的所有 SAS 令牌都将失效。
+如果为客户端分配 SAS 令牌，则客户端不会具有该资源的主键，并且不能反向哈希来获取它。 SAS 令牌使你可以控制客户端可以访问的内容以及多长时间。 当你更改策略中的主密钥时，从该密钥创建的所有 SAS 令牌都将失效。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在, 你已了解如何生成用于访问模型 IoT 的安全令牌即插即用预览模型存储库, 建议下一步是在[IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)中了解详细信息。
+现在，你已了解如何生成用于访问模型 IoT 的安全令牌即插即用预览模型存储库，建议下一步是在[IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)中了解详细信息。

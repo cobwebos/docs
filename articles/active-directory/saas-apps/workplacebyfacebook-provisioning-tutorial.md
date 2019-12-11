@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574263"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996929"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Workplace by Facebook 以及取消其预配而需要在 Workplace by Facebook 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
@@ -34,7 +34,7 @@ ms.locfileid: "73574263"
 - 已启用 Workplace by Facebook 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 测试本教程中的步骤时，建议不要使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workplace by Facebook。 此自动同步使 Workplace by Facebook 能够在用户首次尝试登录之前获取对用户进行访问授权所需的数据。 在 Azure AD 中撤销访问权限后，它还可以从 Workplace by Facebook 取消预配用户。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” **“企业应用”** “所有应用程序”部分 >  > 。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory” > “企业应用” > “所有应用程序”部分。
 
 2. 如果已为 Workplace by Facebook 配置单一登录，请使用搜索字段搜索 Workplace by Facebook 实例。 否则，请选择“添加”并在应用程序库中搜索“Workplace by Facebook”。 从搜索结果中选择 Workplace by Facebook，并将其添加到应用程序列表。
 
@@ -99,10 +99,10 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 现可创建测试帐户。 等待最多 20 分钟即可验证该帐户是否已同步到 Workplace by Facebook。
 
 > [!NOTE]
-> 我们正在与 Workplace by Facebook 团队紧密合作，以确保 Azure AD 的应用程序获得批准并满足其新指导原则。 Workplace by Facebook 截止时间为12月16日，我们希望满足这一要求。 当时，客户不需要任何工作。 X 年2月28日-2020，客户将需要过渡到新的集成。 迁移路径可用时，我们将立即发布。    
+> 已批准 Workplace by Facebook 中的 Azure AD 第三方应用程序。 客户在12月16日不会出现服务中断。 当你需要过渡到新应用程序时，将在 Workplace by Facebook 管理员控制台中看到一个说明截止时间为 28-2-2020 的截止时间。 我们正在努力保持过渡尽可能简单，并在此处提供有关转换的更新。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](workplacebyfacebook-tutorial.md)

@@ -1,5 +1,5 @@
 ---
-title: Microsoft 标识平台中的身份验证（1.0 版） |Microsoft
+title: Microsoft 标识平台身份验证（1.0 版） |Microsoft
 description: 了解有关 Microsoft 标识平台中身份验证的基础知识-应用模型、API、预配和 Microsoft 标识平台支持的最常见身份验证方案。
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149179"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966769"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
@@ -64,7 +64,7 @@ Microsoft 标识平台通过以下方式简化了对应用程序开发人员的�
 
 根据客户端的构建方式，它可以使用 Microsoft 标识平台支持的身份验证流中的一个（或多个）。  这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供了概述：
 
-|Flow | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
+|Flow | 要求 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授权代码流](v1-protocols-oauth-code.md) | | 不可以 | 不可以 | 不可以 | 不可以|  
 |[隐式流](v1-oauth2-implicit-grant-flow.md) | | 不可以        | 不可以    |      |                    |

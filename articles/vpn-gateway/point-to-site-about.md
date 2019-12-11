@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1e014bb14b2b5c1ae924f4371e08aa8bf8698f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056468"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975085"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -22,9 +22,9 @@ ms.locfileid: "67056468"
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN® 协议**，SSL/TLS 基于 VPN 协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙打开 TCP 端口 443 出站，SSL 使用。 OpenVPN 可以用于 Android、 iOS 从连接 (版本 11.0 和更高版本)，Windows、 Linux 和 Mac 设备 (OSX 版本 10.13 及更高版本)。
+* **OpenVPN®协议**，一种基于 SSL/TLS 的 VPN 协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 SSL 使用的 TCP 端口443出站。 OpenVPN 可用于从 Android、iOS （版本11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 版本10.13 及更高版本）进行连接。
 
-* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙打开 TCP 端口 443 出站，SSL 使用。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 SSL 使用的 TCP 端口443出站。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -43,6 +43,21 @@ ms.locfileid: "67056468"
 
 客户端证书的验证由 VPN 网关执行，在建立 P2S VPN 连接期间发生。 验证时需要使用根证书，必须将该证书上传到 Azure。
 
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用本机 Azure Active Directory 身份验证进行身份验证
+
+Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 仅 OpenVPN 协议和 Windows 10 支持本机 Azure AD 身份验证，并且需要使用[AZURE VPN 客户端（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)。
+
+使用本机 Azure AD 身份验证，可以利用 Azure AD 的条件性访问和 VPN 的多重身份验证（MFA）功能。
+
+在高级别上，你需要执行以下步骤来配置 Azure AD 身份验证：
+
+[1. 配置 Azure AD 租户](openvpn-azure-ad-tenant.md)
+
+[2. 在网关上启用 Azure AD 身份验证](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+
+[3. 下载并配置 Azure VPN 客户端（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+
+
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
 
 AD 域身份验证可让用户使用其组织域凭据连接到 Azure。 它需要一台与 AD 服务器集成的 RADIUS 服务器。 组织也可以利用其现有的 RADIUS 部署。   
@@ -54,7 +69,7 @@ RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADI
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。
 
 >[!NOTE]
->**OpenVPN® 协议**不支持 RADIUS 身份验证。
+>RADIUS 身份验证不支持**OpenVPN®协议**。
 >
 
 ![点到站点](./media/point-to-site-about/p2s.png "点到站点")
@@ -86,12 +101,12 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 >基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
 >
 
-## <a name="IKE/IPsec policies"></a>IKE/IPsec 策略对 P2S VPN 网关上配置？
+## <a name="IKE/IPsec policies"></a>哪些 IKE/IPsec 策略在 P2S 的 VPN 网关上进行了配置？
 
 
 **IKEv2**
 
-|**Cipher** | **完整性** | **PRF** | **DH 组** |
+|**密码** | **完整性** | **PRF** | **DH 组** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -113,7 +128,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 
 **IPsec**
 
-|**Cipher** | **完整性** | **PFS 组** |
+|**密码** | **完整性** | **PFS 组** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |
@@ -127,7 +142,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>对 P2S VPN 网关上配置哪些 TLS 策略？
+## <a name="TLS policies"></a>在 P2S 的 VPN 网关上配置了哪些 TLS 策略？
 **TLS**
 
 |**策略** |
@@ -158,7 +173,7 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 * [配置 OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>如何删除 P2S 连接的配置？
+## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>如何实现删除 P2S 连接的配置吗？
 
 可以使用 az cli 和以下命令删除 P2S 配置： 
 
@@ -178,4 +193,4 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 * [配置 P2S 连接 - Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**"OpenVPN"是 OpenVPN Inc.的商标**
+**"OpenVPN" 是 OpenVPN Inc. 的商标。**

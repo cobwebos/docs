@@ -1,18 +1,18 @@
 ---
 title: 在 Azure IoT 中心设备预配服务中滚动 x.509 证书
-description: 如何使用设备预配服务实例滚动更新 X.509 证书
+description: 如何将 x.509 证书与设备预配服务（DPS）实例一起滚动
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228757"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974881"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -94,7 +94,7 @@ ms.locfileid: "74228757"
 
 1. 单击“单独注册”，然后单击列表中的注册 ID 条目。 
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“保存”。
 
     ![使用辅助证书管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "74228757"
 
 1. 单击“注册组”，然后在列表中单击组名称。 
 
-2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“ **保存**”。
+2. 单击“辅助证书”，然后单击文件夹图标选择注册条目的待上传新证书。 单击“保存”。
 
     此新中间证书应由已添加到预配服务的已验证根 CA 证书签名。 有关详细信息，请参阅 [X.509 证书](concepts-security.md#x509-certificates)。
 

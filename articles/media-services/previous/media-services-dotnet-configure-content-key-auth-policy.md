@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a2d978a68f6f654e3bdeea07c931cd7103f5850c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 386b49698ca6b8ded2972aba14c1968620fcbb08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015527"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974489"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -43,14 +43,14 @@ ms.locfileid: "69015527"
 - [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 ### <a name="some-considerations-apply"></a>需要注意的一些事项
-* 创建媒体服务帐户时，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
+* 创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
 * 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 使用 AssetCreationOptions.StorageEncrypted 选项上传资产并对其进行编码。
 * 如果打算创建需要相同策略配置的多个内容密钥，建议创建单个授权策略，并将其重复用于多个内容密钥。
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到策略的开放版本之前，此过程需要花费大约 15 分钟。
 * 如果添加或更新资产的传送策略，则必须删除现有的定位符并创建新的定位符。
 * 目前，无法对渐进式下载进行加密。
-* 媒体服务流式处理终结点将预检响应中 CORS 的“Access-Control-Allow-Origin”标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dashjs 的播放器，因为将凭据模式设置为“包含”之后，dashjs 中的 XMLHttpRequest 不允许将通配符“\*”作为“Access-Control-Allow-Origin”的值。 作为 dashjs 中这一限制的解决办法，如果将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户开具支持票证。
+* 媒体服务流式处理终结点将预检响应中 CORS 的“Access-Control-Allow-Origin”标头的值设置为通配符“\*”。 此值适用于大多数播放器，其中包括 Azure Media Player、Roku、JWPlayer 等。 但是，这不适用于一些使用 dashjs 的播放器，因为将凭据模式设置为“包含”之后，dashjs 中的 XMLHttpRequest 不允许将通配符“\*”作为“Access-Control-Allow-Origin”的值。 作为 dashjs 中这一限制的解决办法，如果将客户端承载在单个域中，则媒体服务可以指定预检响应标头中的域。 若需帮助，请通过 Azure 门户打开支持票证。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 动态加密
 ### <a name="open-restriction"></a>开放限制
@@ -425,6 +425,10 @@ ms.locfileid: "69015527"
         JWT = 2,
     }
 ```
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

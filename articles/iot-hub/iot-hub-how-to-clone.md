@@ -2,18 +2,17 @@
 title: 如何克隆 Azure IoT 中心
 description: 如何克隆 Azure IoT 中心
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083271"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976139"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
@@ -73,9 +72,7 @@ ms.locfileid: "74083271"
    1. 添加未导出到模板的任何内容。 
    
        例如，使用者组不会导出到模板。 需要手动将使用者组添加到模板，或者在创建了中心后使用[Azure 门户](https://portal.azure.com)。 [使用 Azure 资源管理器模板来配置 IoT 中心消息路由](tutorial-routing-config-message-routing-rm-template.md)一文中的模板中添加了一个使用者组的示例。
-
-       [消息根据](iot-hub-message-enrichments-overview.md)也不会导出到模板。 它们与路由消息结合使用，并且在更新消息路由配置时，必须在新的中心上手动更新。
-
+       
    1. 将设备从原始中心复制到克隆。 这将在[管理注册到 IoT 中心的设备](#managing-the-devices-registered-to-the-iot-hub)部分中介绍。
 
 ## <a name="how-to-handle-message-routing"></a>如何处理消息路由
@@ -103,9 +100,6 @@ ms.locfileid: "74083271"
    * 集线器仍引用原始路由资源，并按配置将消息路由到这些资源。
 
    * 由于中心和路由终结点资源不在同一位置，因此会降低性能。
-
-> [!NOTE]
-> 如果中心使用[消息增强功能](iot-hub-message-enrichments-overview.md)，则必须在新的 IoT 中心上手动设置这些功能，因为它们不会使用资源管理器模板导出。
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>准备将中心迁移到另一个区域
 
@@ -359,7 +353,7 @@ ms.locfileid: "74083271"
 
 1. 在搜索框中，放入 "模板部署"，然后选择 Enter。
 
-1. 选择 "**模板部署" （使用自定义模板进行部署）** 。 这会将你带到模板部署的屏幕上。 选择“创建”。 你会看到此屏幕：
+1. 选择 "**模板部署" （使用自定义模板进行部署）** 。 这会将你带到模板部署的屏幕上。 选择**创建**。 你会看到如下屏幕：
 
    ![显示用于构建你自己的模板的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -491,7 +485,7 @@ ms.locfileid: "74083271"
 
 ### <a name="running-the-sample-application-and-using-command-line-arguments"></a>运行示例应用程序并使用命令行参数
 
-1. 打开“命令提示符”窗口。 选择 "Windows"，然后键入 `command prompt` 以获取命令提示符窗口。
+1. 打开命令提示符窗口。 选择 "Windows"，然后键入 `command prompt` 以获取命令提示符窗口。
 
 1. 复制设置环境变量的命令，并将其粘贴到命令提示符窗口，然后选择 Enter。 完成后，在 "命令提示符" 窗口中键入 `SET` 以查看环境变量及其值。 一旦将这些文件复制到命令提示符窗口中，就不必再次复制它们，除非您打开新的命令提示符窗口。
 

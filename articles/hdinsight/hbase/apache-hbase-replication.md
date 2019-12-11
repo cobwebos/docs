@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5b1b85a0c600871cbedc478f3a56cf71ef8c2ca4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931498"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995909"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -275,6 +275,10 @@ sudo service bind9 status
 
 若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。
 
+> [!NOTE]
+> 如果要从自定义命名空间复制表，则需要确保在目标群集上定义适当的自定义命名空间。
+>
+
 ## <a name="enable-replication"></a>启用复制
 
 以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 经典 CLI 运行脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
@@ -395,6 +399,10 @@ sudo service bind9 status
 - **对指定的表（table1、table2 和 table3）禁用复制**：
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> 如果要删除目标群集，请确保将其从源群集的对等列表中删除。 可以通过在源群集上的 hbase shell 中运行命令 remove_peer "1" 来完成此操作。 如果失败，源群集可能无法正常工作。
+>
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,22 +7,22 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227974"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995841"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明数据加密与客户托管的密钥
 
 Azure SQL[透明数据加密（TDE）](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)与客户托管的密钥可用于静态数据保护的创建自己的密钥（BYOK）方案，并使组织能够在密钥和数据的管理中实现职责分离。 通过客户托管的透明数据加密，客户负责和完全控制密钥生命周期管理（密钥创建、上传、旋转、删除）、密钥使用权限，以及对密钥的操作进行审核。
 
-在此方案中，用于加密数据库加密密钥（DEK）（称为 TDE 保护程序）的密钥是客户托管的非对称密钥，存储在客户拥有和客户管理的[Azure Key Vault （AKV）](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中，后者是基于云的外部密钥管理主板. Key Vault 是适用于 RSA 加密密钥的高度可用且可缩放的安全存储，可选择通过 FIPS 140-2 第2级验证的硬件安全模块（Hsm）进行支持。 它不允许直接访问存储的密钥，但使用授权实体的密钥提供加密/解密服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或[传输到密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
+在此方案中，用于加密数据库加密密钥（DEK）（称为 TDE 保护程序）的密钥是客户托管的非对称密钥，存储在客户拥有的和客户管理的[Azure Key Vault （AKV）](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中，后者是基于云的外部密钥管理系统。 Key Vault 是适用于 RSA 加密密钥的高度可用且可缩放的安全存储，可选择通过 FIPS 140-2 第2级验证的硬件安全模块（Hsm）进行支持。 它不允许直接访问存储的密钥，但使用授权实体的密钥提供加密/解密服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或[传输到密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 
 对于 Azure SQL 数据库和 Azure SQL 数据仓库，将在逻辑服务器级别设置 TDE 保护程序，并将其继承给与该服务器关联的所有加密数据库。 对于 Azure SQL 托管实例，TDE 保护程序在实例级别设置，并由该实例上的所有加密数据库继承。 在整个文档中，术语 "*服务器*" 同时引用 SQL 数据库逻辑服务器和托管实例，除非另行说明。 
 

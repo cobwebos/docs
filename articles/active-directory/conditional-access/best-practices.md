@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175776"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963930"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问的最佳做法
 
@@ -45,17 +45,18 @@ ms.locfileid: "73175776"
 
 ### <a name="how-are-conditional-access-policies-applied"></a>如何应用条件性访问策略？
 
-访问云应用时可能应用多个条件性访问策略。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要 MFA，并且另一个策略需要符合标准的设备，则你必须通过 MFA 并使用符合标准的设备。 
+访问云应用时可能应用多个条件性访问策略。 在这种情况下，必须满足所应用的所有策略。 例如，如果一个策略需要多重身份验证（MFA），而另一个策略需要相容设备，则必须完成 MFA，并使用兼容的设备。 
 
 所有策略都是在两个阶段中强制实施的：
 
-- 在**第一个**阶段中，将对所有策略进行评估并收集不满足的所有访问控制。 
-
-- 在**第二个**阶段中，将提示你去满足尚未满足的要求。 如果任何一个策略阻止访问，则会阻止并且不会提示你满足其他策略控制。 如果没有任何策略阻止你，则系统会提示你按以下顺序满足其他策略控制：
-
-   ![订单](./media/best-practices/06.png)
-    
-   接下来，接下来将提供外部 MFA 提供程序和使用条款。
+- 阶段 1： 
+   - 详细信息集合：收集详细信息以确定已满足的策略。
+   - 在此阶段，如果设备符合性是你的条件性访问策略的一部分，则用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会出现此提示。
+   - 针对 "[仅报告" 模式下](concept-conditional-access-report-only.md)的所有已启用策略和策略进行策略评估的阶段1。
+- 阶段 2：
+   - 强制：考虑在第1阶段收集的详细信息，请求用户满足任何尚未满足的其他要求。
+   - 将结果应用于会话。 
+   - 所有已启用的策略的策略评估阶段2。
 
 ### <a name="how-are-assignments-evaluated"></a>如何计算分配？
 

@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心设备预配服务-安全概念
-description: 介绍安全性预配概念，特定于使用设备预配服务和 IoT 中心的设备
+description: 介绍专用于具有设备预配服务（DPS）和 IoT 中心的设备的安全设置概念
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: ad392d9d979986723c17b43f210959e2504a8fb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228828"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973452"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
@@ -28,7 +28,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 设备预配服务支持以下证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。
 * 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 此证明形式不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
-* 基于共享访问签名 (SAS) **安全令牌**的对“称密钥”[](../iot-hub/iot-hub-devguide-security.md#security-tokens)，包括哈希签名和嵌入的过期。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的对“称密钥”，包括哈希签名和嵌入的过期。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 
 ## <a name="hardware-security-module"></a>硬件安全模块
@@ -78,7 +78,7 @@ TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供
 
 分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。
 
-与[单个注册](./concepts-service.md#individual-enrollment)条目配合使用的页证书有一个要求：必须将“所有者名称”设置为“单个注册”条目的注册 ID。 与[注册组](./concepts-service.md#enrollment-group)条目配合使用的页证书应该将“所有者名称”设置为所需的设备 ID，该 ID 将显示在注册组中经身份验证的设备的“注册记录”中。
+与[单个注册](./concepts-service.md#individual-enrollment)条目一起使用的叶证书要求必须将 "**使用者名称**" 设置为单个注册条目的 "注册 ID"。 与[注册组](./concepts-service.md#enrollment-group)条目一起使用的叶证书应将 "**使用者名称**" 设置为所需的设备 ID，该 ID 将显示在注册组中经过身份验证的设备的**注册记录**中。
 
 有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 

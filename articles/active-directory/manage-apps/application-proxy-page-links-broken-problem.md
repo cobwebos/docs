@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 570699fe83197a1b5442909d8b89e285a1dfa73b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 268775d125e783b0c640e565c5f63e416cb197fd
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275432"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996946"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>页面上的链接对应用程序代理应用程序不起作用
 
@@ -38,7 +38,11 @@ ms.locfileid: "74275432"
 
 1.  请确保内部 URL 是包含应用程序所有相关链接的根 URL。 这会允许所有链接解析为同一应用程序内发布的内容。
 
-    如果更改了内部 URL，但不想更改用户的登陆页面，则将主页 URL 更改为以前发布的内部 URL。 这可以通过转到“Azure Active Directory”-&gt;“应用注册”-&gt; 选择应用程序 -&gt;“属性”来实现。 在此属性选项卡上，会看到“主页 URL”字段，可将其调整为所需的登陆页面。
+    如果更改了内部 URL，但不想更改用户的登陆页面，则将主页 URL 更改为以前发布的内部 URL。 若要完成此操作，请转到 "Azure Active Directory"-&gt; 应用注册-&gt; 选择 "应用程序&gt; 品牌"。 在 "品牌" 部分中，你将看到 "主页 URL" 字段，你可以将其调整为所需的登陆页面。 如果仍在使用旧的应用注册体验，"属性" 选项卡将显示 "主页 URL" 详细信息。 
+    
+    > [!IMPORTANT]
+    > 若要进行上述更改，你需要在 Azure AD 中修改应用程序对象的权限。需要向用户分配 "[应用程序管理员](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/roles-delegate-app-roles#assign-built-in-application-admin-roles)" 角色，以便向用户授予 Azure AD 的应用程序 modificaion 权限。 
+    >
 
 2.  如果应用程序使用完全限定的域名 (FQDN)，则使用[自定义域](application-proxy-configure-custom-domain.md)发布应用程序。 此功能允许相同 URL 同时在内部和外部使用。
 

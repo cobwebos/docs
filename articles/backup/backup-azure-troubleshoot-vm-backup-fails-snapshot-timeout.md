@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5e435d1169d5f148bfa2910174bf1f2835806c8b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928243"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996266"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -29,7 +29,6 @@ Azure VM 代理可能已停止、过时、处于不一致的状态，或者未�
   - 对于 Windows Vm，请按照以下[步骤](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)重启来宾代理。<br>
   - 对于 Linux Vm，请遵循以下[步骤](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)重启来宾代理。
 
-
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态
 
 **错误代码**：GuestAgentSnapshotTaskStatusError<br>
@@ -44,6 +43,8 @@ Azure VM 代理可能已停止、过时、处于不一致的状态，或者未�
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**
+
+**原因5：[未设置 VM 代理配置选项（适用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM 处于失败预配状态
 
@@ -196,6 +197,11 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 在 /etc/waagent.conf 文件中，找到以下行：**Enable verbose logging (y|n)**
 2. 将 **Logs.Verbose** 值从 n 更改为 y。
 3. 保存更改，然后遵循本部分前面所述的步骤重启 waagent。
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-未设置代理配置选项（适用于 Linux Vm）
+
+配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 配置文件选项**扩展。启用**和**预配。代理**应设置为**y** ，以便备份工作。
+有关 VM 代理配置文件选项的完整列表，请参阅 <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法创建快照
 

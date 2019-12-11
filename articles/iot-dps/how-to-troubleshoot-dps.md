@@ -1,6 +1,6 @@
 ---
 title: 诊断和排查与 Azure IoT 中心 DPS 断开连接的问题
-description: 了解如何诊断和排查 Azure IoT 中心 DPS 设备连接的常见错误
+description: 了解如何诊断和排查 Azure IoT 中心设备预配服务（DPS）设备连接的常见错误
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: b596a09e2185b38e6161ea4af2aa109e80faf248
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963416"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974813"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT 中心设备预配服务疑难解答
 
@@ -69,7 +69,7 @@ IoT 设备的连接问题可能难以排查，因为有许多可能的故障点�
 
 8. 单击 "**运行**" 以查看最近事件。
 
-9. 如果有结果， `OperationName`请查找`ResultSignature`、 `ResultType`、和`ResultDescription` （错误消息）以获取有关错误的更多详细信息。
+9. 如果有结果，请查找 `OperationName`、`ResultType`、`ResultSignature`和 `ResultDescription` （错误消息）以获取有关错误的更多详细信息。
 
 
 ## <a name="common-error-codes"></a>常见错误代码

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ab9725dd50487cf9df9d6fb967959b276f39979f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162459"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978384"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述 
 可以使用 Azure 媒体服务允许配置和请求 Google Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
@@ -189,6 +189,9 @@ Widevine 许可证请求将格式化为 JSON 消息。
         return configuration;
     }
 
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

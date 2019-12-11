@@ -1,0 +1,260 @@
+---
+title: 商业应用商店付出汇总 |Azure Marketplace
+description: "\"费用摘要\" 显示了你在产品/服务中获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。"
+author: qianw211
+manager: evansma
+ms.author: v-qiwe
+ms.service: marketplace
+ms.topic: guide
+ms.date: 12/10/2019
+ms.openlocfilehash: 0d05802c9d5d80f91913291d710b674369f0ff17
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980265"
+---
+# <a name="payout-reporting"></a>付款报告
+
+费用**摘要**显示了你在 Microsoft 获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。
+
+如果你在 Azure Marketplace 中销售产品/服务，你**还将看到**有关付款的信息。 有关 Azure Marketplace 支付的详细信息，请参阅[Microsoft Azure 市场参与策略](https://go.microsoft.com/fwlink/p/?LinkId=722436)和[Microsoft Azure 市场发行者协议](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
+
+> [!NOTE]
+> 为了满足付出的条件，你的继续必须达到[支付阈值](payment-thresholds-methods-timeframes.md)$50。 有关付款阈值的详细信息，请参阅此页并查看[Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/p/?LinkID=699560)。
+
+- [支出报表：云合作伙伴门户和合作伙伴中心之间的差异](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
+- [客户类型](#customer-types)
+- [支出与使用量之间的相关](#corelation-between-payout-and-usage)
+- [事务历史记录下载](#transaction-history-download-export)
+- [计费问题和支持](#billing-questions-and-support)
+
+## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>支出报表：云合作伙伴门户和合作伙伴中心之间的差异
+
+| | 云合作伙伴门户 | 合作伙伴中心 |
+|---------|---------|---------|
+| 链接 | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| 导航 | Insights 付出的支出报告 | 合作伙伴中心提供的支出报告-支出支出 |
+| 范围 | <ul> <li>每行的事务项是可见的，表示正在进行收集、收集和支付 </li> <li>报告–在创建采购订单后显示所有行项，包括正在进行的收集和正在进行的计费，以及尚未获得资格支付的集合状态和行项。 </li> </ul> | <ul> <li>将行项视为符合条件后显示。</li> <li>客户首先向 Microsoft 支付费用，然后 Isv 可以看到付出的费用报告。</li> <li>支出报表将不会显示正在进行的收集和正在进行的计费。  </li> </ul>  |
+| 事务未准备好进行支出 | 正在进行计费 | 下一次估计付款：支出状态为 "未处理" 状态。  |
+| 支出状态 |  | 尚未 <br> 收益有资格支付。 它在激励计划的收视指南中定义的冷却周期处于此状态。 <br> <br> 到来 <br> 支付订单-在处理付款之前生成的待定内部审查。 <br> <br> 发送时间: <br> 已将付款发送到银行。 |
+
+## <a name="customer-types"></a>客户类型 
+
+### <a name="enterprise-agreement"></a>企业协议
+
+将对没有企业协议的客户就市场软件许可证按月计费。 通过每季度显示的发票对具有企业协议的客户按月计费。
+
+### <a name="credit-cards-and-monthly-invoice"></a>信用卡和月度发票
+
+客户还可以使用信用卡和每月发票进行付款。 在这种情况下，软件许可证费用将按月计费。
+
+### <a name="csp-and-direct-pay-users"></a>CSP 和直接支付用户
+
+例如，如果客户是使用信用卡购买的。
+
+## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关 
+
+|描述    |    日期  | 订单/使用情况  | 付款 |
+|----------|----------|-----------|-------------|
+|订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>客户 ID</li> </ul> <br> **使用情况** <br> <ul> <li>客户 ID </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估算的付款金额 (PC) </li> </ul> |  |
+|期限结束（月）   | 8月30日，2019 | | |
+|计费日期 | 9月1日，2019 | | |
+|客户付款日期 | 9月1日，2019 | | |
+|代管期（仅限信用卡，30 天） | 9月1日，2019-9 月30日，2019 | | **相关属性订单：** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 尚未 |
+|费用收集期开始 | 9月1日，2019 | | |
+|费用收集期结束（最大值，30 天） | 9月30日，2019 | | |
+|付款计算日期（每月第 15 天） | 10月1日，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 到来 |
+|付款日期 | 十月15，2019 | | **相关属性** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **支出状态：** 已发送付款 |
+
+### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
+
+| 描述 |    日期  | 使用情况 | 付款 |
+|----------|----------|---------|-----------|
+|订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>订单 ID</li> <li>客户 ID</li> </ul> <br> **使用情况报告** <br> <ul> <li>客户 ID </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估算的付款金额 (PC) </li> </ul> | |
+|期限结束（季度） | 9月30日，2019 | | |
+|计费日期 | 十月15，2019 | | |
+|代管期（仅限信用卡，30 天） | 不适用 | | |
+|费用收集期开始 | 十月15，2019 | | |
+|信用卡仅限30天 | 11月1日，2019-11 月30日，2019 | | |
+|费用收集期结束（最大值，90 天） | 2020年1月15日 | | |
+|客户付款日期 | 2019年12月30日 | | |
+|支出计算 | 2020年1月15日 | | |
+|付款日期 | 2020年2月15日 | | **对于基于季度的客户** <br> <br> **订单报表** <br> <ul><li>AssetId</li> <li>客户 ID</li> <li> 客户名称</li> </ul> <br> **使用情况** <br> <ul> <li>AssetId</li> <li>客户 ID</li> <li>客户名称</li> <li>订单 ID</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **付出状态：** 已发送 |
+
+<!---
+## Billing
+
+Depending on the transaction option used, the publisher’s software license fees can be presented as follows:
+
+* Free: No charge for software licenses.
+* **Bring the own license (BYOL)**: Any applicable charges for software licenses are managed directly between the publisher and customer. Microsoft only passes through Azure infrastructure usage fees. (Virtual Machines and Azure Applications only).
+* **Pay-as-you-go**: Software license fees are presented as a per-hour, per-core (VCPU) pricing rate based on the Azure infrastructure used. This only applies to Virtual Machines and Azure Applications. 
+* **Subscription pricing**: Software license fees are presented as a monthly or annual recurring fee billed as a flat rate or per-seat. This only applies to SaaS Apps and Azure Applications - Managed Apps.
+
+### Pay as you go
+
+If you enable the Pay-As-You-Go option, then you have the following cost structure. 
+
+* If you enable the Pay-As-You-Go option, then you have the following cost structure.
+
+|Your license cost  | $1.00 per hour  |
+|---------|---------|
+|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
+|*Customer is billed by Microsoft*    |  *$1.14 per hour*       |
+
+* In this scenario, Microsoft bills $1.14 per hour for use of your published VM image.
+
+|Microsoft bills  | $1.14 per hour  |
+|---------|---------|
+|Microsoft pays you 80% of your license cost|   $0.80 per hour     |
+|Microsoft keeps 20% of your license cost  |  $0.20 per hour       |
+|Microsoft keeps 100% of the Azure usage cost | $0.14 per hour |
+
+### Bring Your Own License (BYOL)
+
+* If you enable the BYOL option, then you have the following cost structure.
+
+|Your license cost  | License fee negotiated and billed by you  |
+|---------|---------|
+|Azure usage cost (D1/1-Core)    |   $0.14 per hour     |
+|*Customer is billed by Microsoft*    |  *$0.14 per hour*       |
+
+* In this scenario, Microsoft bills $0.14 per hour for use of your published VM image.
+
+|Microsoft bills  | $0.14 per hour  |
+|---------|---------|
+|Microsoft keeps the Azure usage cost    |   $0.14 per hour     |
+|Microsoft keeps 0% of your license cost   |  $0.00 per hour       |
+
+### SaaS App subscription
+
+This option must be configured to sell through Microsoft and can be priced at a flat rate or per user on a monthly or annual basis.
+•   If you enable the Sell through Microsoft option for a SaaS offer, then you have the following cost structure.
+
+|Your license cost       | $100.00 per month  |
+|--------------|---------|
+|Azure usage cost (D1/1-Core)    | Billed directly to the publisher, not the customer |
+|*Customer is billed by Microsoft*    |  *$100.00 per month (note: publisher must account for any incurred or pass-through infrastructure costs in the license fee)*  |
+
+* In this scenario, Microsoft bills $100.00 for your software license and pays out $80.00 to the publisher.
+* Partners who have qualified for the Reduced Marketplace Service Fee will see a reduced transaction fee on the SaaS offers from May 2019 until June 2020. In this scenario, Microsoft bills $100.00 for your software license and pays out $90.00 to the publisher.
+
+|Microsoft bills  | $100.00 per month  |
+|---------|---------|
+|Microsoft pays you 80% of your license cost <br> \* Microsoft pays you 90% of your license cost for any qualified SaaS apps   |   $80.00 per month <br> \* $90.00 per month    |
+|Microsoft keeps 20% of your license cost <br> \* Microsoft keeps 10% of your license cost for any qualified SaaS apps.  |  $20.00 per month <br> \* $10.00     |
+
+**Reduced Marketplace Service Fee:** For certain SaaS Products that you publish on our Commercial Marketplace, Microsoft will reduce its Marketplace Service Fee from 20% (as described in the Microsoft Publisher Agreement) to 10%.  In order for your Product to qualify, at least one of your products must be designated by Microsoft as either IP co-sell ready or IP co-sell prioritized. To receive this reduced Marketplace Service Fee for the month, eligibility must be met at least five (5) business days before the end of the previous calendar month. Reduced Marketplace Service fee will not apply to VMs, Managed Apps or any other products made available through our Commercial Marketplace.  This Reduced Marketplace Service Fee will be available to qualified offers, with license charges collected by Microsoft between May 1, 2019 and June 30, 2020.  After that time, the Marketplace Service Fee will return to its normal amount.
+
+### Customer invoicing, payment, billing, and collections
+
+**Invoicing and payment**
+
+Publisher can use the customer's preferred invoicing method to deliver subscription or PAYGO software license fees.
+
+**Enterprise agreement** 
+
+If the customer's preferred invoicing method is the Microsoft Enterprise Agreement, your software license fees will be billed using this invoicing method as an itemized cost, separate from any Azure-specific usage costs.
+
+**Credit cards and monthly invoice** 
+
+Customers can also pay using a credit card and a monthly invoice. In this case, your software license fees will be billed just like the Enterprise Agreement scenario, as an itemized cost, separate from any Azure-specific usage costs.
+
+
+
+**Billing and collections** 
+
+Publisher software license billing is presented using the customer selected method of invoicing and follows the invoicing timeline. Customers without an Enterprise Agreement in place are billed monthly for marketplace software licenses. Customers with an Enterprise Agreement are billed monthly via an invoice that is presented quarterly.
+
+When subscription or Pay-as-You-Go pricing models are selected, Microsoft acts as the agent of the publisher and is responsible for all aspects of billing, payment, and collection.
+
+### Publisher payout and reporting
+
+* Any software licensing fees collected by Microsoft as an agent are subject to a 20% transaction fee unless otherwise specified and are deducted at the time of publisher payout.
+
+* Customers typically purchase using the Enterprise Agreement or a credit-card enabled pay-as-you-go agreement. The agreement type determines billing, invoicing, collection, and payout timing.
+--->
+
+## <a name="transaction-history-download-export"></a>事务历史记录下载导出
+
+此选项提供了在交易历史记录页中看到的每个收益行项的下载、收入类型、日期、关联的交易金额、客户、产品和其他适用于激励计划的事务详细信息。 
+
+| 列名称     | 描述    | 
+|-------------|-------------------------------|
+| earningId                      | 每个收益的唯一标识符                                                                                                       |
+| participantId                  | 计划下合作伙伴收益的主要标识                                                                            | 
+| participantIdType              | 应用商店计划和 Azure Marketplace 的激励计划和卖方的主要计划 ID                                          | 
+| participantName                | 收益伙伴的名称                                                                                                              | 
+| partnerCountryCode             | 收益合作伙伴所在国家/地区                                                                                                  |
+| programName                    | 激励/存储程序名称                                                                                                             | 
+| transactionId                  | 事务的唯一标识符                                                                                                    | 
+| transactionCurrency            | 原始客户交易发生的币种（不是合作伙伴位置货币）                                     | 
+| transactionDate                | 交易日期。 适用于多个事务贡献给一个收益的程序                                           | 
+| transactionExchangeRate        | 用于显示对应交易金额的汇率                                                                 | 
+| transactionAmount              | 基于所生成收益的原始交易币种的交易金额                                              | 
+| transactionAmountUSD           | 交易金额（美元）                                                                                                                | 
+| 断裂                          | 指示收入的业务规则                                                                                                  | 
+| earningRate                    | 应用于交易金额以生成收入的激励率                                                                      | 
+| quantity                       | 根据程序而异。 指示交易计划的计费数量                                                            | 
+| quantityType                   | 指示数量的类型，例如：计费数量、MAU                                                                                     |
+| earningType                    | 指示是费用、回扣、市场活动、销售等。                                                                                          | 
+| earningAmount                  | 按原始交易币种的收入金额                                                                                      |
+| earningAmountUSD               | 收入金额（美元）                                                                                                                    |
+| earningDate                    | 收益日期                                                                                                                      |
+| calculationDate                | 在系统中计算收入的日期                                                                                            |
+| earningExchangeRate            | 用于显示相应 USD 金额的汇率                                                                                  |
+| exchangeRateDate               | 用于计算 EarningAmount USD 的汇率日期                                                                                   | 
+| paymentAmountWOTax             | 仅为 "已发送" 付款支付的金额（不含税）                                                                 |
+| paymentCurrency                | 支付给伙伴在付款配置文件中选择的货币。 仅显示已发送的付款                                                   |
+| paymentExchangeRate            | 用于使用 ExchangeRateDate 计算 paymentAmountWOTax 的汇率                                            |
+| paymentId            | 付款的唯一标识符。 此数字在银行报表中可见                                            |
+| paymentStatus            | 付款状态                                            |
+| paymentStatusDescription            | 付款状态的友好说明                                            |
+| customerId                     | 始终为空                                                                                                                     |
+| customerName                   | 始终为空                                                                                                                     |
+| partNumber                     | 始终为空                                                                                                                     |
+| productName                    | 链接到事务的产品名称                                                                                                       |
+| productId                      | 唯一产品标识符                                                                                                                |
+| ParentProductID                | 唯一的父产品标识符。 注意：如果没有适用于事务的父产品，则父产品 ID = 产品 ID。 |
+| parentProductName              | 父产品的名称。 注意：如果没有适用于事务的父产品，则父产品名称 = 产品名称。   |
+| productType                    | 产品的类型（如应用、加载项、游戏等）                                                                                        |
+| invoiceNumber                  | 发票编号（仅适用于 EA）                                                                                                  |
+| resellerId                     | 经销商标识符                                                                                                                      |
+| resellerName                   | 经销商名称                                                                                                                            |
+| transactionType                | 交易的类型（如购买、退款、冲销、拒付等）                                                               |
+| localProviderSeller            | 本地提供商/记录的卖方                                                                                                          |
+| taxRemitted                    | 免除的税收额（销售税、使用税或 VAT/GST 税）。                                                                                   |
+| taxRemitModel                  | 负责代缴税款（销售税、使用税或 VAT/GST 税）的一方。                                                                    |
+| storeFee                       | Microsoft 为使应用或外接程序在应用商店中可用而保留的金额。                                            |
+| transactionPaymentMethod       | 客户用于交易的付款方式（如信用卡、移动运营商结算、PayPal 等）                                |
+| tpan                           | 指示第三方 ad 网络                                                                                                     |
+| customerCountry                | 客户所在国家/地区                                                                                                                         |
+| customerCity                   | 客户城市                                                                                                                            |
+| customerState                  | 客户状态                                                                                                                           |
+| customerZip                    | 客户邮政编码                                                                                                                 |
+| TenantID                       |                                                                                                                                          |
+| externalReferenceId            | 程序的唯一标识符                                                                                                        |
+| externalReferenceIdLabel       | 唯一标识符标签                                                                                                                  |
+| transactionCountryCode       | 交易发生的国家/地区代码                                                                                                                  |
+| taxCountry       | 销售给客户国家/地区                                                                                                                  |
+| taxState       | 销售到客户状态                                                                                                                  |
+| taxCity       | 销售给 Customer City                                                                                                                  |
+| taxZipCode       | 销售给客户 Zip                                                                                                                  |
+| LicensingProgramName       |                                                                                                                   |
+| 程序代码       | 要与程序名称一起映射的字符串                                                                                                                   |
+| earningAmountInLastPaymentCurrency       | 按上一付款币种计算的数量（如果没有支付以前的付款，则字段将为空）                                                                                                                   |
+| lastPaymentCurrency       | 上次支付的货币（如果尚未支付以前的付款，则字段将为空）                                                                                                                   |
+| AssetId       | 适用于 marketplace 服务的客户订单的唯一标识符。  它表示交易记录的采购订单行项。 可以有多个资产。                                                                                                                   |
+| 订单 ID       | 与客户的发票相关                                                                                                                   |
+| LineItemId       | 客户发票中的单个行                                                                                                                   |
+| 客户所在国家/地区       | 客户提供的国家/地区名称。  这可能不同于客户的 Azure 订阅中的国家/地区。                                                                                                                   |
+| 客户 EmailAddress       | 最终客户提供的电子邮件地址。  这可能与客户的 Azure 订阅中的电子邮件地址不同。                                                                                                                   |
+| SkuId       | 在发布过程中定义的 SKU ID。 产品/服务可能有许多 Sku，但 SKU 只能与单个产品/服务相关联。                                                                                                                   |
+
+>[!Note]
+>对于 "事务发布" 选项的所有报告和见解，均可通过合作伙伴中心的 "云合作伙伴门户或分析" 部分的 "见解" 部分获得。
+
+## <a name="billing-questions-and-support"></a>计费问题和支持
+
+若要获取有关计费问题的帮助，请联系[商业 marketplace 发布者支持](https://aka.ms/marketplacepublishersupport)。

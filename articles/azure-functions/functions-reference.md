@@ -4,12 +4,12 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226662"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974217"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -40,14 +40,14 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
-| 属性 | 值/类型 | 注释 |
+| properties | 值/类型 | 注释 |
 | --- | --- | --- |
-| `type` |字符串 |绑定类型。 例如，`queueTrigger`。 |
+| `type` |字符串 |绑定类型。 例如，`queueTrigger` 。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
 | `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
-函数应用在 Azure 中提供用于运行函数的执行上下文。 因此，它是函数的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md)。 
+函数应用在 Azure 中提供用于运行函数的执行上下文。 因此，它是功能的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息，请参阅[如何管理 function app](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
 > 函数应用中的所有函数必须使用相同的语言编写。 在 Azure Functions 运行时的[先前版本](functions-versions.md)中，这不是必需的。
@@ -58,7 +58,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 以上是 Function app 的默认（和推荐）文件夹结构。 如果要更改函数代码的文件位置，请修改 function.json 文件的 `scriptFile` 部分。 我们还建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 也可以使用现有工具，比如[持续集成和部署](functions-continuous-deployment.md)以及 Azure DevOps。
 
 > [!NOTE]
-> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到  _文件夹_`wwwroot`。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
+> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到 `wwwroot` 文件夹。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
 
 #### <a name="use-local-tools-and-publishing"></a>使用本地工具和发布
 可以使用各种工具创作和发布各种函数应用，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 和 [Azure Functions Core Tools](./functions-develop-local.md)。 有关详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)。
@@ -73,7 +73,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值“~2”表示 Function App 将使用 2.x 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值 "~ 3" 表示 Function App 将使用1.x 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：

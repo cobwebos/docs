@@ -1,7 +1,7 @@
 ---
 title: 训练 scikit-learn-了解机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习的 Spark-sklearn 估计器类在企业级上了解培训脚本的运行情况。 示例脚本对 iris 花卉图像进行分类，以便基于 scikit-learn 的 iris 数据集构建机器学习模型。
+description: 了解如何使用 Azure 机器学习 Spark-sklearn 估计器类在企业范围内运行 scikit-learn-了解培训脚本。 示例脚本对 iris 花卉图像进行分类，以便基于 scikit-learn 的 iris 数据集构建机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,29 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a85d33a804c8aaf3081439806bf69dab5263dcf2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b6cdf9350d95de901e8a0f1e875d90513b33f1a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224842"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976105"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 Azure 机器学习的[spark-sklearn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类在企业范围内运行 scikit-learn-了解培训脚本。 
+本文介绍如何使用 Azure 机器学习[spark-sklearn 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)类在企业范围内运行 scikit-learn-了解培训脚本。 
 
 本文中的示例脚本用于对 iris 花卉图像进行分类，以便基于 scikit-learn 的[iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)构建机器学习模型。
 
 无论你是要从头开始培训机器学习 scikit-learn 模型，还是将现有模型引入到云中，都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源培训作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在以下任一环境中运行此代码：
  - Azure 机器学习笔记本 VM-无需下载或安装
 
     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本： **scikit-learn >->-了解 > 培训 > 超参数--spark-sklearn**文件夹。
+    - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本 **>： scikit-learn >-了解 > 培训 > spark-sklearn**文件夹中的 "超参数"。
 
  - 你自己的 Jupyter 笔记本服务器
 
@@ -89,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 在本教程中，已为你提供训练脚本**train_iris。** 在实践中，您应该能够按原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改您的代码。
 
-若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**train_iris。 py**演示了如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
+若要使用 Azure ML 跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**train_iris。 py**演示了如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
 提供的训练脚本使用 `iris = datasets.load_iris()` 函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 

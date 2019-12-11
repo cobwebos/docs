@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566214"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981179"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -66,6 +66,7 @@ ms.locfileid: "74566214"
     | --- | --- |
     | **特定连接的组织** | 如果要从管理员之前添加的组织列表中进行选择，请选择此选项。 所选组织中的所有用户都可以请求此访问包。 |
     | **所有连接的组织** | 如果所有连接的组织中的所有用户都可以请求此访问包，请选择此选项。 |
+    | **所有用户（所有连接的组织 + 任何新的外部用户）** | 如果所有连接的组织中的所有用户都可以请求此访问包，并且 B2B 允许或拒绝列表设置应优先于任何新的外部用户，请选择此选项。 |
 
     连接的组织是您与之有关系的外部 Azure AD 目录或域。
 

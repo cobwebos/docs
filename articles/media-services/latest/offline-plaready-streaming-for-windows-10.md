@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0798cffdca8d5876373c35f3f5fd657551586d43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845507"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974047"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理
 
@@ -35,9 +35,9 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 
 本节介绍有关脱机模式播放的一些背景，特别是以下问题的原因：
 
-* 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
+* 在某些国家/地区，Internet 可用性和/或带宽仍然受到限制。 用户可以选择先下载，以便能够观看高分辨率的内容以获得令人满意的观看体验。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
 * 在 Netflix 2016 年第 3 季度股东大会上，Netflix 首席执行官 Reed Hastings 表示，下载内容是“经常请求的功能”，“我们对此持开放态度”。
-* 某些内容提供程序可能不允许在某个国家/地区的边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
+* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想在国外旅行期间查看内容，需要脱机下载。
  
 实现脱机模式所面临的挑战如下：
 
@@ -66,7 +66,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 资产 #2：
 
 * 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL （本地）：[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA_URL （本地）： [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 对于播放测试，我们在 Windows 10 上使用了通用 Windows 应用程序。 在 [Windows 10 通用示例](https://github.com/Microsoft/Windows-universal-samples)中，有一个名为 [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)（自适应流式处理示例）的基础播放器示例。 我们只需要添加代码，选择下载的视频并将其用作源，而不是用作自适应流式处理源。 按钮单击事件处理程序中的更改：
 
@@ -113,7 +113,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 
 ![脱机模式下播放受 PlayReady 保护的 fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
 
-
 由于视频受 PlayReady 保护，屏幕截图将不能包含该视频。
 
 概括起来，我们在 Azure 媒体服务上实现了脱机模式：
@@ -122,6 +121,10 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * 内容可以托管在 Azure 媒体服务或 Azure 存储中，用于渐进式下载；
 * PlayReady 许可证交付可以来自 Azure 媒体服务或其他位置；
 * 已准备好的平滑流式处理内容仍然可以通过 DASH 用作联机流式处理或作为 DRM 使用 PlayReady 进行平滑处理。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

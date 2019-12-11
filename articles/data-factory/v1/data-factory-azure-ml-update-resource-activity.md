@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 数据工厂更新机器学习模型
-description: 描述如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道
+description: 介绍如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683123"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978707"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
@@ -24,7 +24,7 @@ ms.locfileid: "73683123"
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
-> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
+> * [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
@@ -41,8 +41,8 @@ ms.locfileid: "73683123"
 ## <a name="overview"></a>概述
 随着时间推移，需要使用新的输入数据集重新定型 Azure 机器学习评分实验中的预测模型。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 通过 Web 服务重新定型和更新 Azure 机器学习模型的常规步骤如下：
 
-1. 在 [Azure 机器学习工作室](https://studio.azureml.net)中创建实验。
-2. 对模型满意后，使用 Azure 机器学习工作室对**训练实验**和评分/**预测实验**发布 Web 服务。
+1. 在[Azure 机器学习 Studio （经典）](https://studio.azureml.net)中创建试验。
+2. 如果对模型感到满意，请使用 Azure 机器学习 Studio （经典）发布 web 服务，以进行**训练试验**和评分/预测性**实验**。
 
 下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新定型机器学习模型](../../machine-learning/machine-learning-retrain-models-programmatically.md)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "73683123"
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。 新类型的更新资源终结点要求 AAD (Azure Active Directory) 令牌。 指定 AzureML 链接服务中的 **servicePrincipalId** 和 **servicePrincipalKey**。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../../active-directory/develop/howto-create-service-principal-portal.md)。 此处为一示例 AzureML 链接服务定义： 
+在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。 新类型的更新资源终结点要求 AAD (Azure Active Directory) 令牌。 在 Azure 机器学习链接的服务中指定**servicePrincipalId**和**servicePrincipalKey** 。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../../active-directory/develop/howto-create-service-principal-portal.md)。 此处为一示例 AzureML 链接服务定义： 
 
 ```json
 {
@@ -138,7 +138,7 @@ Azure 存储保留以下数据：
 ```
 
 ### <a name="training-input-dataset"></a>定型输入数据集：
-以下数据集表示 Azure 机器学习定型 Web 服务的输入定型数据。 Azure 机器学习批处理执行活动采用此数据集作为输入。
+以下数据集表示 Azure 机器学习定型 web 服务的输入定型数据。 Azure 机器学习批处理执行活动采用此数据集作为输入。
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Azure 存储保留以下数据：
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Azure 机器学习定型终结点的链接服务
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure 机器学习培训端点的链接服务
 以下 JSON 片段定义指向定型 Web 服务默认终结点的 Azure 机器学习链接服务。
 
 ```JSON
@@ -208,12 +208,12 @@ Azure 存储保留以下数据：
 }
 ```
 
-在 **Azure 机器学习工作室**中，执行以下操作以获取 **mlEndpoint** 和 **apiKey** 的值：
+在**Azure 机器学习 Studio （经典）** 中，执行以下操作以获取**mlEndpoint**和**apiKey**的值：
 
 1. 在左侧菜单上，单击“Web 服务”。
 2. 在 Web 服务列表中，单击“定型 Web 服务”。
 3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 **Azure 机器学习工作室**中，单击“批处理执行”链接。
+4. 在**Azure 机器学习 Studio （经典）** 中，单击 "**批处理执行**" 链接。
 5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure 机器学习可更新评分终结点的链接服务：

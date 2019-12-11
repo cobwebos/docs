@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123208"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997235"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -42,9 +42,9 @@ ms.locfileid: "74123208"
 
 请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* **Azure 订阅帐户**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
@@ -282,7 +282,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-注意：通过  **调用返回错误消息应仅用于调试目的**`run(input_data)`。 出于安全原因，不应在生产环境中以这种方式返回错误消息。
+注意：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，不应在生产环境中以这种方式返回错误消息。
 
 ## <a name="http-status-code-503"></a>HTTP 状态代码503
 
@@ -505,7 +505,7 @@ myregistry.azurecr.io/myimage:1
     docker exec -it debug /bin/bash
     ```
 
-1. 若要查找服务使用的文件，请在容器中使用 bash shell 中的以下命令：
+1. 若要查找服务使用的文件，请在容器中使用 bash shell 中的以下命令（如果默认目录不同于 `/var/azureml-app`）：
 
     ```bash
     cd /var/azureml-app

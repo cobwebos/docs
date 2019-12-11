@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c70226ef58ed60a7be556b88366953796ed6fff1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ddcf97a8c7ae6000c14638a8292bc8b4f39ed87d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580567"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978333"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -108,7 +108,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 轻松地将数据从静态文件或 URL 源传输到工作区
 * 在云计算资源上运行时，使数据可用于训练脚本
 
-有关使用 [ 类将数据装载到计算目标的示例，请参阅](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)操作方法`Dataset`。
+有关使用 `Dataset` 类将数据装载到计算目标的示例，请参阅[操作方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
@@ -171,7 +171,7 @@ automl_config = AutoMLConfig(task = "classification")
         n_cross_validations=5)
     ```
 
-三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用与 `regression` 任务相同的算法池）确定要应用的模型的列表。 使用 "`whitelist`" 或 "`blacklist` 参数" 可以进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
+三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的模型的列表。 使用 "`whitelist`" 或 "`blacklist` 参数" 可以进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标用于确定要在模型定型期间用于优化的指标。 您可以选择的可用指标由您选择的任务类型决定，下表显示了每种任务类型的有效主要指标。
@@ -326,7 +326,7 @@ run = experiment.submit(automl_config, show_output=True)
 + 自动功能设计（如果预处理 = True）
 + 缩放/规范化和具有超参数值的算法
 
-我们使它从自动 ML 的 fitted_model 输出中获取此信息是透明的。
+我们使它成为从自动 ML 的 fitted_model 输出获取此信息的透明方法。
 
 ```python
 automl_config = AutoMLConfig(…)
@@ -396,13 +396,13 @@ best_run, fitted_model = automl_run.get_output()
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   其中：
+   地点：
 
    |输出|定义|
    |----|--------|
    |RawFeatureName|提供的数据集中的输入功能/列名称。|
    |TypeDetected|检测到输入功能的数据类型。|
-   |删除|指示输入功能是否已删除或已被使用。|
+   |Dropped|指示输入功能是否已删除或已被使用。|
    |EngineeringFeatureCount|通过自动功能工程转换生成的功能的数量。|
    |转换|应用于输入功能以生成工程功能的转换的列表。|
    

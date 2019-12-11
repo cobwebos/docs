@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438634"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997218"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
 
@@ -169,7 +169,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置，以便强化 OS。 这些规则适用于防火墙、审核、密码策略等。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 "[编辑安全配置" 屏幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允许客户在安全中心自定义默认 OS 安全配置。
 
-我们已停用此预览版功能。 若要在停用日期之后将安全配置重置为其默认值，请按照[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)通过 API 或 Powershell 执行此操作
+我们已停用此预览版功能。 若要在停用日期之后将安全配置重置为其默认值，请按照[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)通过 API 或 Powershell 执行此操作。
 
 ![编辑安全配置][17]
 

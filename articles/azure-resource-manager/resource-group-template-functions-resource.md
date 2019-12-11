@@ -2,13 +2,13 @@
 title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 10/26/2019
-ms.openlocfilehash: 6457bafeeb0b241171311dc3dcea30b7b6993791
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: ee88e939030650111acafec6c3b9906507176f48
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150685"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978843"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -34,16 +34,16 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 返回[扩展资源](extension-resource-types.md)的资源 ID，它是应用于要添加到其功能的其他资源的资源类型。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceId |是 |字符串 |应用扩展资源的资源的资源 ID。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceName2 |No |字符串 |下一个资源名称段（如果需要）。 |
 
-如果资源类型包含更多段，则继续添加资源名称作为参数。
+当资源类型包括更多段时，继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -114,17 +114,17 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys` 和 `listSecrets`。 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
 | apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| functionValues |否 |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
+| functionValues |No |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
 
 ### <a name="valid-uses"></a>有效使用
 
-list 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用 `input` 的 list 函数，因为表达式已分配给资源属性。 不能将它们与 `count` 一起使用，因为必须在解析 list 函数之前确定计数。
+只能在资源定义的属性和模板或部署的输出部分中使用 list 函数。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用 list 函数进行 `input`，因为该表达式被分配到资源属性。 不能将它们与 `count` 一起使用，因为必须在解决列表函数之前确定计数。
 
 ### <a name="implementations"></a>实现形式
 
@@ -268,13 +268,13 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 
 使用资源名称或 [resourceId 函数](#resourceid)来指定资源。 在部署被引用资源的同一模板中使用列表函数时，请使用资源名称。
 
-如果在有条件部署的资源中使用 **list** 函数，则会对该函数进行评估，即使资源尚未部署。 如果 **list** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](resource-group-template-functions-logical.md#if)，该模板将 if 和 list 用于进行条件部署的资源。
+如果在有条件部署的资源中使用**列表**函数，则即使未部署资源，也会计算该函数。 如果**列表**函数引用的资源不存在，则会出现错误。 使用**if**函数可确保仅在部署资源时计算函数。 请参阅[if 函数](resource-group-template-functions-logical.md#if)以获取一个示例模板，该模板使用 if 和 list with 有条件地部署资源。
 
-### <a name="list-example"></a>List 示例
+### <a name="list-example"></a>列表示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。 它还为存储帐户返回 SAS 令牌。 
 
-若要获取 SAS 令牌，请针对到期时间传递对象。 到期时间必须是将来的时间。 此示例旨在演示如何使用列表函数。 通常情况下，在资源值中使用 SAS 令牌，而不是将其作为输出值返回。 输出值存储在部署历史记录中并不安全。
+若要获取 SAS 令牌，请在过期时间传递对象。 到期时间必须是将来的时间。 此示例旨在演示如何使用列表函数。 通常情况下，在资源值中使用 SAS 令牌，而不是将其作为输出值返回。 输出值存储在部署历史记录中并不安全。
 
 ```json
 {
@@ -347,12 +347,12 @@ providers(providerNamespace, [resourceType])
 
 返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
+| resourceType |No |字符串 |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -368,7 +368,7 @@ providers(providerNamespace, [resourceType])
 
 不保证返回值的数组排序。
 
-### <a name="providers-example"></a>Provider 示例
+### <a name="providers-example"></a>提供程序示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json)演示如何使用 provider 函数：
 
@@ -424,13 +424,13 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源时，请提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，请提供资源 ID。 |
+| apiVersion |No |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |No |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -481,31 +481,31 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 ### <a name="valid-uses"></a>有效使用
 
-reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。 不能将其与 `count` 一起使用，因为必须在解析 reference 函数之前确定计数。
+reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](resource-group-create-multiple.md#property-iteration)一起使用时，可以使用 reference 函数进行 `input`，因为该表达式被分配到资源属性。 不能将其与 `count` 一起使用，因为必须先确定计数，然后才能解析引用函数。
 
-不能在[嵌套模板](resource-group-linked-templates.md#nested-template)的输出中使用引用函数返回已在嵌套模板中部署的资源， 只能使用[链接模板](resource-group-linked-templates.md#external-template)。
+不能在[嵌套模板](resource-group-linked-templates.md#nested-template)的输出中使用 reference 函数来返回已在嵌套模板中部署的资源。 而是使用[链接的模板](resource-group-linked-templates.md#external-template)。
 
-如果在有条件部署的资源中使用 **reference** 函数，则会对该函数进行评估，即使资源尚未部署。  如果 **reference** 函数引用某个不存在的资源，则会出现错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请查看示例模板的 [if 函数](resource-group-template-functions-logical.md#if)，该模板将 if 和 reference 用于进行条件部署的资源。
+如果在有条件部署的资源中使用**reference**函数，则即使未部署资源，也会计算该函数。  如果**引用**函数引用的资源不存在，则会出现错误。 使用**if**函数可确保仅在部署资源时计算函数。 请参阅[if 函数](resource-group-template-functions-logical.md#if)以获取一个示例模板，该模板使用 if，并使用有条件部署的资源引用。
 
-### <a name="implicit-dependency"></a>隐式依赖项
+### <a name="implicit-dependency"></a>隐式依赖关系
 
 如果在同一模板内预配了被引用资源且通过其名称（而非资源 ID）引用该资源，则使用 reference 函数会隐式声明一个资源依赖于另一个资源。 也不需要同时使用 dependsOn 属性。 只有当引用的资源已完成部署后，才会对函数求值。
 
 ### <a name="resource-name-or-identifier"></a>资源名称或标识符
 
-引用部署在同一模板中的资源时，请提供资源的名称。
+引用同一模板中部署的资源时，请提供该资源的名称。
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-引用没有部署在同一模板中的资源时，请提供资源 ID。
+引用未部署在同一模板中的资源时，请提供资源 ID。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-为了避免对你要引用的资源产生误解，可以提供完全限定的资源名称。
+若要避免对所引用的资源有歧义，可以提供完全限定的资源名称。
 
 ```json
 "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
@@ -513,13 +513,13 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
 
-**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
+**{resource provider-namespace}/{parent-resource-type}/{parent-resource-name} [/{child-resource-type}/{child-resource-name}]**
 
 例如：
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
-### <a name="reference-example"></a>Reference 示例
+### <a name="reference-example"></a>参考示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json)部署一个资源并引用该资源。
 
@@ -666,27 +666,26 @@ resourceGroup()
 }
 ```
 
-只有在资源组包含的资源由另一服务托管时，才会返回 **managedBy** 属性。 对于托管应用程序、Databricks 和 AKS，属性的值是管理资源的资源 ID。
+仅为包含由其他服务托管的资源的资源组返回**managedBy**属性。 对于托管应用程序、Databricks 和 AKS，属性的值是管理资源的资源 ID。
 
 ### <a name="remarks"></a>备注
 
 `resourceGroup()` 函数不能用于[在订阅级别部署的](deploy-to-subscription.md)模板中。 它只能用于部署到资源组的模板中。
 
-resourceGroup 函数的一个常见用途是在与资源组相同的位置中创建资源。 以下示例使用资源组位置来分配网站的位置。
+resourceGroup 函数的一个常见用途是在与资源组相同的位置中创建资源。 下面的示例使用资源组位置作为默认参数值。
 
 ```json
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "type": "Microsoft.Web/sites",
-      "name": "[parameters('siteName')]",
-      "location": "[resourceGroup().location]",
-      ...
-   }
-]
+"parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+}
 ```
 
-也可使用 resourceGroup 函数将资源组提供的标记应用到资源。 有关详细信息，请参阅[应用资源组提供的标记](resource-group-using-tags.md#apply-tags-from-resource-group)。
+还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息，请参阅[从资源组应用标记](resource-group-using-tags.md#apply-tags-from-resource-group)。
+
+使用嵌套模板部署到多个资源组时，可以指定用于评估 resourceGroup 函数的作用域。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](resource-manager-cross-resource-group-deployment.md)。
 
 ### <a name="resource-group-example"></a>资源组示例
 
@@ -728,17 +727,17 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
+| subscriptionId |No |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| resourceGroupName |No |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceName2 |No |字符串 |下一个资源名称段（如果需要）。 |
 
-如果资源类型包含更多段，则继续添加资源名称作为参数。
+当资源类型包括更多段时，继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -762,27 +761,27 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ### <a name="remarks"></a>备注
 
-提供的参数数目各不相同，具体取决于资源是父资源还是子资源，以及资源是否位于同一订阅或资源组中。
+提供的参数数目因资源是否为父资源或子资源而异，并且该资源是否在相同的订阅或资源组中。
 
-若要获取同一订阅和资源组中父资源的资源 ID，请提供资源的类型和名称。
+若要获取同一订阅和资源组中父资源的资源 ID，请提供该资源的类型和名称。
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-若要获取子资源的资源 ID，请注意资源类型中段的数目。 请提供资源类型的每个段的资源名称。 段的名称对应于针对层次结构的该部分存在的资源。
+若要获取子资源的资源 ID，请注意资源类型中的段数。 提供资源类型的每个段的资源名称。 段的名称对应于该层次结构中存在的资源。
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-对于属于同一订阅但属于不同资源组的资源，若要获取其资源 ID，请提供资源组名称。
+若要获取同一订阅但不同资源组中的资源的资源 ID，请提供资源组名称。
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-对于属于不同订阅和资源组的资源，若要获取其资源 ID，请提供订阅 ID 和资源组名称。
+若要获取不同订阅和资源组中的资源的资源 ID，请提供订阅 ID 和资源组名称。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
@@ -864,12 +863,12 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | Value |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 
@@ -891,6 +890,10 @@ subscription()
     "displayName": "{name-of-subscription}"
 }
 ```
+
+### <a name="remarks"></a>备注
+
+使用嵌套模板部署到多个订阅时，可以指定用于评估订阅函数的作用域。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](resource-manager-cross-resource-group-deployment.md)。
 
 ### <a name="subscription-example"></a>订阅示例
 
@@ -918,16 +921,16 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 返回在订阅级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| subscriptionId |No |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceName2 |No |字符串 |下一个资源名称段（如果需要）。 |
 
-如果资源类型包含更多段，则继续添加资源名称作为参数。
+当资源类型包括更多段时，继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -1002,15 +1005,15 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceName2 |No |字符串 |下一个资源名称段（如果需要）。 |
 
-如果资源类型包含更多段，则继续添加资源名称作为参数。
+当资源类型包括更多段时，继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 

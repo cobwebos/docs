@@ -1,19 +1,19 @@
 ---
 title: 修复 Azure 导入/导出服务的导出作业 - v1 | Microsoft Docs
 description: 了解如何使用 Azure 导入/导出服务修复已创建和运行的导出作业。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477937"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978009"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
 在完成导出作业后，可以在本地运行 Microsoft Azure 导入/导出工具来执行以下操作：  
@@ -51,7 +51,7 @@ ms.locfileid: "61477937"
   
 -   传输过程中更改了存储帐户密钥  
   
-要在 **RepairExport** 模式下运行该工具，首先需要将包含已导出文件的驱动器连接到计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行运行该工具，修复未能导出的所有文件：  
+要在 **RepairExport** 模式下运行该工具，首先需要将包含已导出文件的驱动器连接到计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行将运行该工具，修复未能导出的所有文件：  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  

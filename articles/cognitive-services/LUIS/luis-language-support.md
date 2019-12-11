@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904210"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970536"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -30,20 +30,21 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 LUIS 理解以下语言：
 
-| 语言 |区域设置  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
+| 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
+| 阿拉伯语（预览版-新式标准阿拉伯语） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |✔|  -   |-|✔|
-| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
+| 法语(法国) |`fr-FR` |✔| ✔ |✔ |✔|
 | 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
 | 印地语 | `hi-IN`|-|-|-|-|
 | 意大利语 |`it-IT` |✔| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
 | 韩语 |`ko-KR` |✔|   -   |-|仅关键短语|
-| 葡萄牙语(巴西) |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
-| 西班牙语（西班牙） |`es-ES` |✔| ✔ |✔|✔|
+| 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
+| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
 | 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
@@ -66,7 +67,7 @@ LUIS 理解以下语言：
 请参阅必应拼写检查[支持的语言](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)，了解支持的语言和状态。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>应用程序中的罕见字词或外来字词
-在 `en-us` 区域性中，LUIS 可学习区分大多数英文字词，包括俚语。 在 `zh-cn` 区域性中，LUIS 可学习区分大多数中文字符。 如果在 `en-us` 或 `zh-cn` 中使用一个罕见字词或字符，并且 LUIS 似乎无法识别该字词或字符，则可将该字词或字符添加到[短语列表功能](luis-how-to-add-features.md)。 例如，应将超出应用程序区域性的字词（即外来字词）添加到短语列表功能。 
+在 `en-us` 区域性中，LUIS 可学习区分大多数英文字词，包括俚语。 在 `zh-cn` 区域性中，LUIS 可学习区分大多数中文字符。 如果在 `en-us` 或 `zh-cn` 中使用一个罕见字词或字符，并且 LUIS 似乎无法识别该字词或字符，则可将该字词或字符添加到[短语列表功能](luis-how-to-add-features.md)。 例如，应将超出应用程序区域性的字词（即外来字词）添加到短语列表功能。
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -78,6 +79,7 @@ LUIS 理解以下语言：
 
 |语言|  每个空格或特殊字符 | 字符级|复合词|[返回的切分后的实体](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
+|阿拉伯语|||||
 |中文||✔||✔|
 |荷兰语|||✔|✔|
 |美国英语|✔ ||||
@@ -88,24 +90,24 @@ LUIS 理解以下语言：
 |意大利语|✔||||
 |日语||||✔|
 |韩语||✔||✔|
-|葡萄牙语(巴西)|✔||||
+|葡萄牙语（巴西）|✔||||
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>自定义 tokenizer 版本
+### <a name="custom-tokenizer-versions"></a>自定义标记器版本
 
-以下区域性具有自定义 tokenizer 版本：
+以下区域性具有自定义标记器版本：
 
-|环境|版本|目的|
+|区域性|版本|用途|
 |--|--|--|
-|德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
-|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 作为话语，则它仍然是单个标记。 因此 `krankenwagen` 标记为单个实体。 |
+|德语<br>`de-de`|1.0.0|使用尝试将组合词分解为其单个组件的基于机器学习的标记器来切分单词。<br>如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，则会将其转换为 `Ich fahre einen kranken wagen`。 允许标记 `kranken` 和 `wagen` 独立于不同的实体。|
+|德语<br>`de-de`|1.0.2|通过将单词拆分在空格上来切分。<br> 如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，它将保持为单个令牌。 因此 `krankenwagen` 被标记为单个实体。 |
 
-### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之间迁移
+### <a name="migrating-between-tokenizer-versions"></a>在标记器版本之间迁移
 <!--
-Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
-Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -154,7 +156,7 @@ Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`.
 }
 ```
 
-Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`.
 
 ```JSON
 {
@@ -204,6 +206,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-在应用级别进行词汇切分。 不支持版本级别的词汇切分。 
+在应用程序级别进行词汇切分。 不支持版本级别的词汇切分。
 
-[将文件导入为新应用](luis-how-to-start-new-app.md)，而不是版本。 此操作意味着新应用具有不同的应用 ID，但使用文件中指定的 tokenizer 版本。 
+将[该文件作为新应用程序](luis-how-to-start-new-app.md)而不是版本导入。 此操作意味着新应用程序具有不同的应用程序 ID，但使用文件中指定的标记器版本。

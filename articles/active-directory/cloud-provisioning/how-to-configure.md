@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794297"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997116"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect 云预配新配置
 
@@ -32,8 +32,7 @@ ms.locfileid: "74794297"
 
 4.  单击 "**新建配置**"。
 5.  在 "配置" 屏幕上，将预填充本地域
-6. 输入**通知电子邮件**。 将通知此电子邮件 
-7. 如果预配不正常。  
+6. 输入**通知电子邮件**。 设置不正常时，此电子邮件将收到通知。  
 8. 将选择器移动到 "**启用**"，然后单击 "**保存**"。
 ![](media/tutorial-single-forest/configure2.png)
 

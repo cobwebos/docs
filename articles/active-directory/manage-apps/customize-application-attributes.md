@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d76a11fc41fd964ff4e43518aee34aad3ecffd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922671"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997048"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -139,7 +139,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
    1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)，选择 "**企业应用程序**"，选择应用程序，然后选择 "**设置**"。
    2. 在 "**映射**" 下，选择要为其添加自定义属性的对象（用户或组）。
    3. 在页面底部，选择 "**显示高级选项**"。
-   4. 选择 "*为 AppName 编辑属性列表*"。
+   4. 选择 "**编辑 AppName 的属性列表**"。
    5. 在属性列表的底部，在提供的字段中输入自定义属性的相关信息。 然后选择 "**添加属性**"。
 
 对于 SCIM 应用程序，属性名称必须遵循以下示例中所示的模式。 可以根据应用程序的要求自定义 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架构：扩展：2.0： CustomExtensionName： CustomAttribute

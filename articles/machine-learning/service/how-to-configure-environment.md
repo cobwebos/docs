@@ -11,25 +11,25 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19045b54b97fdb69f9fdab3d17066faa5dbcc435
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cba77b89ac9a9a93a2a3d889d4faca32708fd719
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580721"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997252"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何配置开发环境以使用 Azure 机器学习。 Azure 机器学习不可知平台。 开发环境的唯一硬性要求是 Python 3。 还建议使用独立的环境，如 Anaconda 或 Virtualenv。
 
-下表显示了本文中所述的每个开发环境以及优点和缺点。
+下表显示本文介绍的各个开发环境及其优缺点。
 
 | 环境 | 优点 | 缺点 |
 | --- | --- | --- |
 | [基于云的 Azure 机器学习笔记本 VM](#notebookvm) | 入门的最简单方法。 整个 SDK 已安装到你的工作区 VM 中，笔记本教程已预克隆并可随时运行。 | 缺乏对开发环境和依赖项的控制。 Linux VM 产生的额外成本（VM 可以在不使用时停止，以避免收费）。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本地环境](#local) | 完全控制开发环境和依赖项。 在您选择的任何生成工具、环境或 IDE 中运行。 | 需要更长的时间才能开始。 必须安装必需的 SDK 包，并且还必须安装环境（如果尚未安装）。 |
-| [Azure Databricks](#aml-databricks) | 适用于在可缩放的 Apache Spark 平台上运行大规模密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
+| [Azure Databricks](#aml-databricks) | 非常适合在可缩放的 Apache Spark 平台上大规模运行密集型机器学习工作流。 | 用于试验机器学习或小规模试验和工作流的多余。 Azure Databricks 产生的额外成本。 请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/databricks/)。 |
 | [Data Science Virtual Machine （DSVM）](#dsvm) | 类似于基于云的笔记本 VM （已预装 Python，并且已预装 SDK），但预安装了其他热门数据科学和机器学习工具。 易于缩放，并与其他自定义工具和工作流组合。 | 与基于云的笔记本 VM 相比，较慢的入门体验。 |
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "73580721"
 
 * [Visual Studio Code](#vscode)：如果你使用 Visual Studio Code，则[Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)包含对 Python 的广泛语言支持以及用于使使用 Azure 机器学习更方便、更有效的功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 工作区是您开始使用自己的[基于云的笔记本服务器](#notebookvm)、 [DSVM](#dsvm)或[Azure Databricks](#aml-databricks)所需的所有工作区。
 
@@ -158,7 +158,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
     此示例使用 python 3.6.5 创建一个环境，但可以选择任何特定的 subversions。 对于某些主要版本（建议使用 3.5 +），SDK 兼容性可能不会得到保证，如果遇到错误，建议在 Anaconda 环境中尝试不同版本。 下载组件和包时，创建环境需要花费几分钟。
 
-1. 在新环境中运行以下命令，以启用环境特定的 ipython 内核。 当在 Anaconda 环境中使用 Jupyter 笔记本时，这将确保预期内核和包导入行为：
+1. 在新环境中运行以下命令，以启用环境特定的 IPython 内核。 当在 Anaconda 环境中使用 Jupyter 笔记本时，这将确保预期内核和包导入行为：
 
     ```shell
     conda install notebook ipykernel
@@ -167,7 +167,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
     然后运行以下命令以创建内核：
 
     ```shell
-    ipython kernel install --user
+    ipython kernel install --user --name myenv --display-name "Python (myenv)"
     ```
 
 1. 使用以下命令安装包：
@@ -183,7 +183,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * 从 macOS Catalina 开始，zsh （Z shell）是默认的登录 shell 和交互式 shell。 在 zsh 中，使用以下命令，该命令使用 "\\" （反斜杠）对括号进行转义：
+   > * 从 macOS Catalina 开始，zsh (Z shell) 是默认的登录 shell 和交互式 shell。 在 zsh 中，运行以下命令以使用“\\”（反斜杠）来转义方括号：
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -287,16 +287,16 @@ Azure Databricks 如何处理 Azure 机器学习：
 创建[Databricks 群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 某些设置仅适用于在 Databricks 上安装用于自动机器学习的 SDK。
 **创建群集需要几分钟时间。**
 
-使用以下设置：
+使用这些设置：
 
-| 设置 |适用于| 值 |
+| 设置 |适用于| Value |
 |----|---|---|
-| 群集名称 |始终| yourclustername |
-| Databricks 运行时 |始终|非 ML 运行时6.0 （scala 2.11，spark 2.4.3） |
-| Python 版本 |始终| 3 |
-| 工作节点 |始终| 2 个或以上 |
-| 工作节点 VM 类型 <br>（确定并发迭代的最大数目） |自动化机器学习<br>仅供参考| 首选内存优化的 VM |
-| 启用自动缩放 |自动化机器学习<br>仅供参考| 取消选中 |
+| 群集名称 |always| yourclustername |
+| Databricks 运行时 |always|非 ML 运行时6.0 （scala 2.11，spark 2.4.3） |
+| Python 版本 |always| 3 |
+| 工作节点 |always| 2 个或以上 |
+| 工作节点 VM 类型 <br>（确定并发迭代的最大数目） |自动化 ML<br>仅限| 首选内存优化的 VM |
+| 启用自动缩放 |自动化 ML<br>仅限| 取消选中 |
 
 请等待群集运行完成，然后继续操作。
 
@@ -307,7 +307,7 @@ Azure Databricks 如何处理 Azure 机器学习：
 
 1. **仅选择一个**选项（不支持其他 SDK 安装）
 
-   |SDK&nbsp;包&nbsp;额外内容|源|PyPi&nbsp;名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;包&nbsp;额外内容|Source|PyPi&nbsp;名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |对于 Databricks| 上传 Python Egg 或 PyPI | azureml-sdk[databricks]|
    |对于 Databricks-<br> 自动 ML 功能| 上传 Python Egg 或 PyPI | azureml-sdk [automl]|
@@ -339,7 +339,7 @@ SDK for Databricks **_无需_** 自动机器学习 ![Azure 机器学习 Sdk for 
 
 ### <a name="start-exploring"></a>开始浏览
 
-试用：
+进行试用：
 + 虽然有许多示例笔记本可用，但**仅[这些示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)适用于 Azure Databricks。**
 
 + 直接从工作区导入这些示例。 请参阅以下内容： ![选择导入](media/how-to-configure-environment/azure-db-screenshot.png)
@@ -365,7 +365,7 @@ SDK for Databricks **_无需_** 自动机器学习 ![Azure 机器学习 Sdk for 
 
 可通过三种方式创建配置文件：
 
-* **使用[write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** ：编写一个*配置*文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
+* **使用[ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** ：写入一个*配置*文件。 该文件含包含工作区的配置信息。 可以下载 *config.json* 或将其复制到其他开发环境。
 
 * **下载文件**：在[Azure 门户](https://ms.portal.azure.com)中，从工作区的 "**概述**" 部分选择 "**下载配置**文件"。
 

@@ -4,22 +4,22 @@ description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230380"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972228"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例，需要[启用公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 新C#函数是基于 Visual Studio 2019 中预定义的计时器触发器模板创建的。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例需要[启用公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-+ 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
++ 完成[使用 Visual Studio 创建第一个函数一](functions-create-your-first-function-visual-studio.md)文中的步骤，创建面向版本2.x 或更高版本的运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 
 + 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作。 若要创建 AdventureWorksLT 示例数据库，请按[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文中的步骤进行操作。
 
@@ -33,7 +33,7 @@ ms.locfileid: "74230380"
 
 1. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
 
-1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。 对于 Azure SQL 托管实例，复制公共终结点的连接字符串。
+1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。 对于 Azure SQL 托管实例为公用终结点复制连接字符串。
 
     ![复制 ADO.NET 连接字符串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -47,7 +47,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
     ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 **和** 占位符替换为实际值`{your_username}``{your_password}`。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”。
+1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”。
 
     ![添加 SQL 连接字符串设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -57,13 +57,13 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
 
-1. 在 Visual Studio 2019 中打开本地函数应用项目。
+1. 在 Visual Studio 2019 中打开本地 function app 项目。
 
 1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“管理 NuGet 包”。
 
 1. 转到“浏览”选项卡，搜索 ```System.Data.SqlClient```，找到后将其选中。
 
-1. 在“System.Data.SqlClient”页面，选择版本 **，然后单击“安装”** `4.5.1`。
+1. 在“System.Data.SqlClient”页面，选择版本 `4.5.1`，然后单击“安装”。
 
 1. 安装完成后，查看所做的更改，然后单击“确定”以关闭“预览”窗口。
 
@@ -73,9 +73,9 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 ## <a name="add-a-timer-triggered-function"></a>添加计时器触发的函数
 
-1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” **“新 Azure 函数”**  > 。
+1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” > “新 Azure 函数”。
 
-1. 选择“Azure Functions”模板后，请按照类似  **的格式命名新项目并选择“添加”** `DatabaseCleanup.cs`。
+1. 选择“Azure Functions”模板后，请按照类似 `DatabaseCleanup.cs` 的格式命名新项目并选择“添加”。
 
 1. 在“新 Azure 函数”对话框中选择“计时器触发器”，然后选择“确认”。 此对话框为定时器触发器函数创建代码文件。
 

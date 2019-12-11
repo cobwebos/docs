@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心设备预配服务 - 对称密钥证明
-description: 本文以概念的方式概述了使用 IoT 设备预配服务的对称密钥证明。
+description: 本文简要概述了使用 IoT 设备预配服务（DPS）的对称密钥证明。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348355"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975289"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -46,7 +46,7 @@ SAS 令牌的格式如下：
 
 下面是每个令牌的组成元素：
 
-| ReplTest1 | 描述 |
+| Value | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要说明**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
 | {resourceURI} |以设备预配服务实例的范围 ID 开头、可通过此令牌访问的注册终结点的 URI。 例如： `{Scope ID}/registrations/{Registration ID}` |

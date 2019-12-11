@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155edf72a60e079a609853e953e3cf66024cc83c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f033563bbd7888e53d910773cd1e0c501eaad098
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794245"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997099"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配的先决条件
 本主题提供有关选择和使用 Azure AD Connect 云预配作为标识解决方案的指南。
@@ -48,7 +48,7 @@ ms.locfileid: "74794245"
      | --- | --- |
      | **80** | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
-     | **8080**（可选） | 如果443端口8080不可用，代理将通过端口每十分钟报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
+     | **8080**（可选） | 如果443端口8080不可用，代理将通过端口每十分钟报告其状态。 此状态显示在 Azure AD 门户上。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
    - 如果你的防火墙或代理允许你指定安全后缀，则将连接添加到 **\*msappproxy.net**和 **\*。** 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。

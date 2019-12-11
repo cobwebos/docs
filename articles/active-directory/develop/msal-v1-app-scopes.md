@@ -1,5 +1,5 @@
 ---
-title: v1.0 应用程序的范围（Microsoft 身份验证库）| Azure
+title: MSAL 1.0 应用程序的作用域 |Microsoft
 description: 了解使用 Microsoft 身份验证库 (MSAL) 的 v1.0 应用程序的范围。
 services: active-directory
 author: TylerMSFT
@@ -13,12 +13,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395b5105fdb067977f8414fe5675170032262fe0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921392"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963250"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -26,7 +26,7 @@ OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客�
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如，Azure AD 关系图是 https：\//graph.windows.net），需要使用该资源的所需 OAuth2 权限连接所需的资源标识符来创建作用域。
+若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如 Azure AD 图，请 https://graph.windows.net) 将所需的资源标识符与该资源的所需 OAuth2 权限串联起来，以创建作用域。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 

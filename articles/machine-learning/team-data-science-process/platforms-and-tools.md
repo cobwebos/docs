@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626380"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978503"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
-Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
+Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此过程的数据科学团队处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
 可让数据科学团队配合 TDSP 使用的数据和分析服务包括：
 
@@ -44,7 +44,7 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 - 适用于 Windows 的 Power BI Desktop
 - Windows/Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-它还包括**机器学习和 AI 工具**，如 xgboost、 mxnet 和 Vowpal Wabbit。
+它还包括**ML 和 AI 工具**，如 xgboost、Mxnet 和 Vowpal Wabbit。
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 
@@ -59,7 +59,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述  ：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -73,7 +73,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azu
 
 Azure Data Lake 是在施加任何正式要求或架构之前，在单个位置收集的每种数据的企业级存储库。 这种灵活性允许将每种数据保留在 Data Lake 中，而不管数据的大小或结构或引入速度如何。 然后，组织可以使用 Hadoop 或高级分析功能在这些 Data Lake 中查找模式。 在策划数据并其转移到数据仓库之前，Data Lake 还可以充当较低成本的数据准备工作的存储库。
 
-有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅 [Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
+有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 若要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅[Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) 群集
@@ -94,7 +94,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 能够创建一个 Azure 文件存储作为与项目团队成员共享项目数据的位置，对于数据科学项目特别有用。 然后，每个成员可以访问 Azure 文件存储中的相同数据副本。 他们还可使用此文件存储来共享执行项目期间生成的特征集。 如果项目是客户参与项目，则客户可以在其自己的 Azure 订阅下创建一个 Azure 文件存储，用来与你共享项目数据和特征。 这样，客户便可以完全控制项目数据资产。 有关 Azure 文件存储的详细信息，请参阅 [在 Windows 上开始使用 Azure 文件存储](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)和[如何通过 Linux 使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R 服务
 
 R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 
@@ -124,28 +124,30 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 如果使用 Linux (CentOS) 计算机运行 git 命令，需要将计算机的公共 SSH 密钥添加到 Azure DevOps Services，使 Azure DevOps Services 能够识别此计算机。 首先，需要生成公共 SSH 密钥，并在 Azure DevOps Services 安全设置页中将该密钥添加到 SSH 公钥。 
 
-- 若要生成 SSH 密钥，请运行以下两条命令： 
+1. 若要生成 SSH 密钥，请运行以下两条命令： 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![生成 SSH 密钥的命令](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![生成 SSH 密钥的命令](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- 复制整个 SSH 密钥，包括 *ssh-rsa*。 
-- 登录到 Azure DevOps Services。 
-- 单击页面右上角的“<你的姓名\>”，再单击“安全性”。   
+1. 复制整个 SSH 密钥，包括 *ssh-rsa*。 
+1. 登录到 Azure DevOps Services。 
+1. 单击页面右上角的“<你的姓名\>”，再单击“安全性”。 
     
-    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- 依次单击“SSH 公钥”、“+添加”。   
+1. 依次单击“SSH 公钥”、“+添加”。 
 
-    ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- 将刚刚复制的 SSH 密钥粘贴到文本框中并保存。
+1. 将刚刚复制的 SSH 密钥粘贴到文本框中并保存。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
+还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 
-有关在团队数据科学过程中执行使用 Azure 机器学习工作室的步骤的示例，请参阅[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 学习路径。
+有关演示如何使用 Azure 机器学习 Studio （经典）在团队数据科学过程中执行步骤的示例，请参阅[使用 AZURE ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)学习路径。

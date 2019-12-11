@@ -1,6 +1,6 @@
 ---
-title: 后台应用程序调用 web Api （调用 web Api）-Microsoft 标识平台
-description: 了解如何生成可调用 web Api 的后台应用程序（调用 web Api）
+title: 从后台应用程序调用 web API-Microsoft 标识平台 |Microsoft
+description: 了解如何生成可调用 web Api 的守护程序应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 46f1676ab1bdcf2b23907824bb9bf543b5f28ce6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175380"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962604"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>用于调用 web Api 的后台应用程序-从应用程序调用 web API
 
@@ -29,7 +29,7 @@ ms.locfileid: "73175380"
 
 ## <a name="calling-a-web-api-daemon-application"></a>调用 web API 后台程序应用程序
 
-下面介绍如何使用令牌来调用 API
+下面介绍如何使用令牌来调用 API：
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -68,7 +68,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>调用多个 Api
 
-对于后台应用程序，你调用的 web Api 需要预先批准。 守护程序应用不会有任何增量许可（无用户交互）。 租户管理员需要预先同意该应用程序和所有 API 权限。 如果要调用多个 Api，则每次调用 `AcquireTokenForClient` 时，都需要为每个资源获取令牌。 MSAL 将使用应用程序令牌缓存，以避免不必要的服务调用。
+对于后台应用程序，你调用的 web Api 需要预先批准。 守护程序应用不会有任何增量许可（无用户交互）。 租户管理员需要预先同意该应用程序和所有 API 权限。 如果要调用多个 Api，则每次调用 `AcquireTokenForClient`时，都需要为每个资源获取令牌。 MSAL 将使用应用程序令牌缓存，以避免不必要的服务调用。
 
 ## <a name="next-steps"></a>后续步骤
 

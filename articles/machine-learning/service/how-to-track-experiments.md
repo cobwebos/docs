@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a60691222c6f5f31a5b5c97df029790c1fd690ed
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3de34c1da20df17fb5fb65cef28669fb73ff33a5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978554"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -263,11 +263,11 @@ ms.locfileid: "74873858"
 
    ![Jupyter 笔记本小组件的屏幕截图](./media/how-to-track-experiments/run-details-widget.png)
 
-你还可以获取工作区中的相同显示的链接。
+   你还可以获取工作区中的相同显示的链接。
 
-```python
-print(run.get_portal_url())
-```
+   ```python
+   print(run.get_portal_url())
+   ```
 
 2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 将 `<<experiment_name>>` 替换为适当的试验名称：
 

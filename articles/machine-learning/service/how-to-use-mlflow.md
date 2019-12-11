@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c06eb4043e0e7de886ef8180845464a6be554fd1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276635"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976547"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>跟踪指标并通过 MLflow 和 Azure 机器学习部署模型（预览）
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "74276635"
 |监视模型性能||✓|  |   |
 | 检测数据偏差 |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [安装 MLflow。](https://mlflow.org/docs/latest/quickstart.html)
 * 在本地计算机上[安装 AZURE 机器学习 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 。 Sdk 为 MLflow 提供连接以访问工作区。
@@ -217,7 +217,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 不要在群集上的每个后续试验笔记本会话中手动设置跟踪 URI，而是使用此[Azure 机器学习跟踪群集初始化脚本](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)来自动执行此操作。
 
-正确配置后，可以通过 MLflow 用户界面或使用 MLflow 客户端在 Azure 机器学习的 REST API 和所有客户 Azure Databricks 端中查看 MLflow 跟踪数据。
+正确配置后，可以通过 MLflow 用户界面或使用 MLflow 客户端查看 Azure 机器学习 REST API 和所有客户端中的 MLflow 跟踪数据，以及 Azure Databricks 中的跟踪数据。
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>查看工作区中的指标和项目
 
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK [deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-然后，使用 Azure 机器学习 SDK 的[deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
+然后，使用 Azure 机器学习 SDK [deploy_from_image （）](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-)方法部署该映像。 
 
 ```python
 # Webservice creation using single command

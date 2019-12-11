@@ -1,19 +1,19 @@
 ---
 title: Azure 区块链工作台配置元数据参考
 description: Azure 区块链工作台预览应用程序配置元数据概述。
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 2ee1d1da1a9a5d8e890a6578eaec42cc6bf9f3ed
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326067"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972436"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 配置参考
 
-Azure Blockchain Workbench 应用程序是由配置元数据和智能合约代码定义的多方工作流。 配置元数据定义区块链应用程序的高级工作流和交互模型。 智能合同定义区块链应用程序的业务逻辑。 Workbench 使用配置和智能合约代码生成区块链应用程序用户体验。
+Azure Blockchain Workbench 应用程序是由配置元数据和智能合约代码定义的多方工作流。 配置元数据定义区块链应用程序的高级工作流和交互模型。 智能合约定义区块链应用程序的业务逻辑。 Workbench 使用配置和智能合约代码生成区块链应用程序用户体验。
 
 配置元数据指定每个区块链应用程序的以下信息：
 
@@ -27,17 +27,17 @@ Azure Blockchain Workbench 应用程序是由配置元数据和智能合约代�
 * 工作流的状态。  每种状态是业务逻辑控制流中的一个阶段。 
 * 用于转换到下一状态的操作
 * 有权启动每个操作的用户角色
-* 表示代码文件中业务逻辑的智能合同
+* 表示代码文件中业务逻辑的智能合约
 
-## <a name="application"></a>应用程序
+## <a name="application"></a>Application
 
 区块链应用程序包含配置元数据、工作流，以及可以操作或参与应用程序的用户角色。
 
-| 字段 | 说明 | 必需 |
+| 字段 | 描述 | 需要 |
 |-------|-------------|:--------:|
-| ApplicationName | 唯一的应用程序名称。 相应的智能合同必须对适用的合同类使用相同的 **ApplicationName**。  | 是 |
+| ApplicationName | 唯一的应用程序名称。 相应的智能合约必须对适用的合约类使用相同的 **ApplicationName**。  | 是 |
 | DisplayName | 应用程序的友好显示名称。 | 是 |
-| 说明 | 应用程序的说明。 | 否 |
+| 描述 | 应用程序的说明。 | No |
 | ApplicationRoles | [ApplicationRoles](#application-roles) 的集合。 可以操作或参与应用程序的用户角色。  | 是 |
 | 工作流 | [工作流](#workflows)的集合。 每个工作流充当用于控制业务逻辑流的状态机。 | 是 |
 
@@ -45,30 +45,30 @@ Azure Blockchain Workbench 应用程序是由配置元数据和智能合约代�
 
 ## <a name="workflows"></a>工作流
 
-可将应用程序的业务逻辑建模为状态机，在其中执行某些操作会导致业务逻辑流从一种状态转为另一种状态。 工作流是此类状态和操作的集合。 每个工作流包括一个或多个智能合约，这些合约表示代码文件中的业务逻辑。 可执行合同是工作流的实例。
+可将应用程序的业务逻辑建模为状态机，在其中执行某些操作会导致业务逻辑流从一种状态转为另一种状态。 工作流是此类状态和操作的集合。 每个工作流包括一个或多个智能合约，这些合约表示代码文件中的业务逻辑。 可执行合约是工作流的实例。
 
-| 字段 | 说明 | 必需 | 最大长度 |
+| 字段 | 描述 | 需要 | 最大长度 |
 |-------|-------------|:--------:|-----------:|
-| 名称 | 唯一的工作流名称。 相应的智能合同必须对适用的合同类使用相同的 **Name**。 | 是 | 50 |
+| 名称 | 唯一的工作流名称。 相应的智能合约必须对适用的合约类使用相同的 **Name**。 | 是 | 50 |
 | DisplayName | 工作流的友好显示名称。 | 是 | 255 |
-| 说明 | 工作流的说明。 | 否 | 255 |
-| Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创建合同的用户分配的角色。 | 是 | |
+| 描述 | 工作流的说明。 | No | 255 |
+| Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创建合约的用户分配的角色。 | 是 | |
 | StartState | 工作流初始状态的名称。 | 是 | |
 | 属性 | [标识符](#identifiers)的集合。 表示可在链外读取，或者在用户体验工具中可视化的数据。 | 是 | |
 | 构造函数 | 定义用于创建工作流实例的输入参数。 | 是 | |
-| 函数 | 可在工作流中执行的[函数](#functions)集合。 | 是 | |
+| Functions | 可在工作流中执行的[函数](#functions)集合。 | 是 | |
 | States | 工作流[状态](#states)的集合。 | 是 | |
 
 有关示例，请参阅[配置文件示例](#configuration-file-example)。
 
-## <a name="type"></a>类型
+## <a name="type"></a>Type
 
 支持的数据类型
 
-| 类型 | 说明 |
+| Type | 描述 |
 |-------|-------------|
 | 地址  | 区块链地址类型，例如 contracts 或 users。 |
-| array    | 整数、布尔、货币或时间类型的单级数组。 可以是静态数组或动态数组。 使用 ElementType 指定数组中元素的数据类型。 请参阅[示例配置](#example-configuration-of-type-array)。 |
+| 数组    | 整数、布尔、货币或时间类型的单级数组。 可以是静态数组或动态数组。 使用 ElementType 指定数组中元素的数据类型。 请参阅[示例配置](#example-configuration-of-type-array)。 |
 | bool     | 布尔数据类型。 |
 | contract | contract 类型的地址。 |
 | 枚举     | 枚举的命名值集。 使用枚举类型时，还可以指定 EnumValues 列表。 每个值限制为 255 个字符。 有效值字符包括大写和小写字母（A-Z、a-z）和数字 (0-9)。 请参阅[示例配置和 Solidity 中的使用](#example-configuration-of-type-enum)。 |
@@ -168,9 +168,9 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 定义工作流实例的输入参数。
 
-| 字段 | 说明 | 必需 |
+| 字段 | 描述 | 需要 |
 |-------|-------------|:--------:|
-| 参数 | 启动智能合同所需的[标识符](#identifiers)集合。 | 是 |
+| parameters | 启动智能合约所需的[标识符](#identifiers)集合。 | 是 |
 
 ### <a name="constructor-example"></a>构造函数示例
 
@@ -197,16 +197,16 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 }
 ```
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
 定义可在工作流中执行的函数。
 
-| 字段 | 说明 | 必需 | 最大长度 |
+| 字段 | 描述 | 需要 | 最大长度 |
 |-------|-------------|:--------:|-----------:|
-| 名称 | 函数的唯一名称。 相应的智能合同必须对适用的函数使用相同的 **Name**。 | 是 | 50 |
+| 名称 | 函数的唯一名称。 相应的智能合约必须对适用的函数使用相同的 **Name**。 | 是 | 50 |
 | DisplayName | 函数的友好显示名称。 | 是 | 255 |
-| 说明 | 函数的说明 | 否 | 255 |
-| 参数 | 对应于函数参数的[标识符](#identifiers)集合。 | 是 | |
+| 描述 | 函数的说明 | No | 255 |
+| parameters | 对应于函数参数的[标识符](#identifiers)集合。 | 是 | |
 
 ### <a name="functions-example"></a>函数示例
 
@@ -249,14 +249,14 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 工作流中唯一状态的集合。 每种状态捕获业务逻辑控制流中的一个步骤。 
 
-| 字段 | 说明 | 必需 | 最大长度 |
+| 字段 | 描述 | 需要 | 最大长度 |
 |-------|-------------|:--------:|-----------:|
-| 名称 | 状态的唯一名称。 相应的智能合同必须对适用的状态使用相同的 **Name**。 | 是 | 50 |
+| 名称 | 状态的唯一名称。 相应的智能合约必须对适用的状态使用相同的 **Name**。 | 是 | 50 |
 | DisplayName | 状态的友好显示名称。 | 是 | 255 |
-| 说明 | 状态的说明。 | 否 | 255 |
+| 描述 | 状态的说明。 | No | 255 |
 | PercentComplete | 在 Blockchain Workbench 用户界面中显示的整数值，用于显示业务逻辑控制流中的进度。 | 是 | |
 | Style | 视觉提示，指示状态是表示成功还是失败。 有两个有效值：`Success` 或 `Failure`。 | 是 | |
-| Transitions | 从当前状态到下一组状态的可用[转换](#transitions)集合。 | 否 | |
+| Transitions | 从当前状态到下一组状态的可用[转换](#transitions)集合。 | No | |
 
 ### <a name="states-example"></a>状态示例
 
@@ -318,12 +318,12 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 用于转换到下一状态的操作。 一个或多个用户角色可在每种状态下执行某个操作，其中的操作可将工作流中的一种状态转换为另一种状态。 
 
-| 字段 | 说明 | 必需 |
+| 字段 | 描述 | 需要 |
 |-------|-------------|:--------:|
-| AllowedRoles | 有权启动转换的应用程序角色列表。 具有指定角色的所有用户可以执行操作。 | 否 |
-| AllowedInstanceRoles | 智能合同中参与或指定的、有权启动转换的用户角色列表。 实例角色在工作流中的“属性”内定义。 AllowedInstanceRoles 表示参与智能合约实例的用户。 AllowedInstanceRoles 允许你在合约实例中限制对用户角色执行操作。  例如，如果你在 AllowedRoles 中指定了角色，你可能只想允许创建合约的用户（InstanceOwner），而不是角色类型 (Owner) 中的所有用户能够终止。 | 否 |
+| AllowedRoles | 有权启动转换的应用程序角色列表。 具有指定角色的所有用户可以执行操作。 | No |
+| AllowedInstanceRoles | 智能合约中参与或指定的、有权启动转换的用户角色列表。 实例角色在工作流中的“属性”内定义。 AllowedInstanceRoles 表示参与智能合约实例的用户。 AllowedInstanceRoles 允许你在合约实例中限制对用户角色执行操作。  例如，如果你在 AllowedRoles 中指定了角色，你可能只想允许创建合约的用户（InstanceOwner），而不是角色类型 (Owner) 中的所有用户能够终止。 | No |
 | DisplayName | 转换的友好显示名称。 | 是 |
-| 说明 | 转换的说明。 | 否 |
+| 描述 | 转换的说明。 | No |
 | 函数 | 用于启动转换的函数的名称。 | 是 |
 | NextStates | 成功转换后的潜在后续状态集合。 | 是 |
 
@@ -363,10 +363,10 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 应用程序角色定义一组角色，这些角色可分配到想要操作或参与应用程序的用户。 应用程序角色可用于限制区块链应用程序和相应工作流中的操作和参与。 
 
-| 字段 | 说明 | 必需 | 最大长度 |
+| 字段 | 描述 | 需要 | 最大长度 |
 |-------|-------------|:--------:|-----------:|
 | 名称 | 应用程序角色的唯一名称。 相应的智能合约必须对适用的角色使用相同的 **Name**。 基类型名称被系统保留。 不能使用 [Type](#type) 的名称来命名应用程序角色| 是 | 50 |
-| 说明 | 应用程序角色的说明。 | 否 | 255 |
+| 描述 | 应用程序角色的说明。 | No | 255 |
 
 ### <a name="application-roles-example"></a>应用程序角色示例
 
@@ -386,11 +386,12 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 标识符表示用于描述工作流属性、构造函数和函数参数的信息集合。 
 
-| 字段 | 说明 | 必需 | 最大长度 |
+| 字段 | 描述 | 需要 | 最大长度 |
 |-------|-------------|:--------:|-----------:|
-| 名称 | 属性或参数的唯一名称。 相应的智能合同必须对适用的属性或参数使用相同的 **Name**。 | 是 | 50 |
+| 名称 | 属性或参数的唯一名称。 相应的智能合约必须对适用的属性或参数使用相同的 **Name**。 | 是 | 50 |
 | DisplayName | 属性或参数的友好显示名称。 | 是 | 255 |
-| 说明 | 属性或参数的说明。 | 否 | 255 |
+| 描述 | 属性或参数的说明。 | No | 255 |
+| Type | 属性[数据类型](#type)。 | 是 |
 
 ### <a name="identifiers-example"></a>标识符示例
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 3572d2dffc38f18cbf02aa2e9de98b74ee8ff939
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 81f17de7627658b756edd19438a80fb32add859d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930970"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974081"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习结果
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -266,4 +266,4 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 ## <a name="next-steps"></a>后续步骤
 
 + 详细了解 Azure 机器学习中的[自动 ml](concept-automated-ml.md) 。
-+ 试用[自动机器学习模型解释](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)示例笔记本。
++ 尝试[自动机器学习模型说明](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)示例笔记本。

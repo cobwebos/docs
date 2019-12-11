@@ -1,22 +1,22 @@
 ---
-title: 管理 Azure Database for PostgreSQL-超大规模（Citus）中的防火墙规则
+title: 管理防火墙规则-超大规模（Citus）-Azure Database for PostgreSQL
 description: 使用 Azure 门户创建和管理 Azure Database for PostgreSQL-超大规模（Citus）的防火墙规则
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273708"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977533"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>管理 Azure Database for PostgreSQL 的防火墙规则-超大规模（Citus）
 服务器级防火墙规则可用于从指定的 IP 地址或 IP 地址范围管理对超大规模（Citus）协调器节点的访问。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要：
 - 服务器组[创建 Azure Database for PostgreSQL –超大规模（Citus）服务器组](quickstart-create-hyperscale-portal.md)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "71273708"
 
 > [!NOTE]
 > 在创建 Azure Database for PostgreSQL 超大规模（Citus）服务器组的过程中，还可以访问这些设置。 在 "**网络**" 选项卡下，单击 "**公用终结点**"。
-> ![Azure 门户-网络 "选项卡](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
+> ![Azure 门户网络 "选项卡](./media/howto-hyperscale-manage-firewall-using-portal/0-create-public-access.png)
 
 1. 在 "PostgreSQL 服务器组" 页上的 "安全" 标题下，单击 "**网络**" 打开防火墙规则。
 

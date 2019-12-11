@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: ce774868acc281f769e7f2991472e7d2a5da9739
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930393"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972245"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射数据流中的派生列转换
 
@@ -27,6 +27,16 @@ ms.locfileid: "74930393"
 若要添加其他派生列，请将鼠标悬停在现有的派生列上，并单击加号图标。 选择 "**添加列**" 或 "**添加列模式**"。 如果列名称是来自源的变量，则列模式可能会很方便。 有关详细信息，请参阅[列模式](concepts-data-flow-column-pattern.md)。
 
 ![新的派生列选择](media/data-flow/columnpattern.png "新的派生列选择")
+
+## <a name="build-schemas-in-output-schema-pane"></a>在输出架构窗格中生成架构
+
+要修改并添加到架构中的列列在 "输出架构" 窗格中。 可在此处以交互方式生成简单复杂的数据结构。 若要添加其他字段，请选择 "**添加列**"。 若要生成层次结构，请选择 "**添加 subcolumn**"。
+
+![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
+
+有关处理数据流中的复杂类型的详细信息，请参阅[映射数据流中的 JSON 处理](concepts-data-flow-json.md)
+
+![添加复杂列](media/data-flow/complexcolumn.png "添加列")
 
 ## <a name="data-flow-script"></a>数据流脚本
 

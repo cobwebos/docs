@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL-超大规模（Citus）中的防火墙规则
+title: 防火墙规则-超大规模（Citus）-Azure Database for PostgreSQL
 description: 本文介绍 Azure Database for PostgreSQL-超大规模（Citus）的防火墙规则。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975561"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模（Citus）中的防火墙规则
 在指定哪些计算机具有权限之前，Azure Database for PostgreSQL 服务器防火墙阻止对超大规模（Citus）协调器节点的所有访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -31,19 +31,19 @@ ms.locfileid: "71273740"
 
 当防火墙阻止连接时，可能会导致应用程序错误。 例如，使用 PostgreSQL JDBC 驱动程序会引发错误，如下所示：
 
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:严重：\_对于主机 "123.45.67.890"，用户 "citus"，数据库 "citus"，SSL
+> util： Java.util.concurrent.executionexception： RuntimeException：：：： no： no pg\_主机 "util"，用户 "org.postgresql.util.psqlexception"，数据库 "123.45.67.890"，SSL 的
 
 有关如何定义规则的详细说明，请参阅[创建和管理防火墙规则](howto-hyperscale-manage-firewall-using-portal.md)。
 
 ## <a name="troubleshooting-the-database-server-firewall"></a>数据库服务器防火墙故障排除
 当对 PostgreSQL-超大规模（Citus）服务的 Microsoft Azure 数据库的访问无法按预期方式工作时，请考虑以下要点：
 
-* **对允许列表的更改尚未生效：** 对于超大规模（Citus）防火墙配置的更改生效，可能需要长达五分钟的延迟。
+* 对**允许列表的更改尚未生效：** 对于超大规模（Citus）防火墙配置的更改生效，可能需要长达五分钟的延迟。
 
 * **用户未经授权或使用了错误的密码：** 如果用户对服务器没有权限或者使用的密码不正确，则会拒绝与服务器的连接。 创建防火墙设置，仅向客户端提供尝试连接到服务器的机会；每个客户端必须提供必需的安全凭据。
 
 例如，使用 JDBC 客户端可能会出现以下错误。
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:致命错误: 用户 "yourusername" 的密码验证失败
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "yourusername"
 
 * **动态 IP 地址：** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 

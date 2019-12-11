@@ -1,17 +1,17 @@
 ---
 title: 慢速查询日志-Azure Database for MariaDB
 description: 介绍了 Azure Database for MariaDB 中提供的日志，以及用于启用不同日志记录级别的可用参数。
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9b9babc9db9dd7fa225b9649d4ac96b15debec2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772098"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976309"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的查询日志缓慢
 在 Azure Database for MariaDB 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -24,6 +24,8 @@ ms.locfileid: "74772098"
 在 Azure 门户中，选择 Azure Database for MariaDB 服务器。 在“监视”标题下，选择“服务器日志”页面。
 
 有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-cli.md)。
+
+同样，你可以使用诊断日志通过管道将日志传递给 Azure Monitor。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
 
 ## <a name="log-retention"></a>日志保留期
 日志从其创建时开始算起，最多可保留七天。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
@@ -39,6 +41,7 @@ ms.locfileid: "74772098"
 - **log_slow_admin_statements**：如果为 ON，则会在写入到 slow_query_log 的语句中包括管理性语句，例如 ALTER_TABLE 和 ANALYZE_TABLE。
 - **log_queries_not_using_indexes**：确定是否将未使用索引的查询记录到 slow_query_log 中
 - **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
+- **log_output**：如果为 "File"，则允许将慢速查询日志同时写入本地服务器存储和 Azure Monitor 诊断日志。 如果为 "无"，则慢速查询日志将仅写入本地服务器存储。 
 
 有关慢查询日志参数的完整说明，请参阅 MariaDB [慢查询日志文档](https://mariadb.com/kb/en/library/slow-query-log-overview/)。
 

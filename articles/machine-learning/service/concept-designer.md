@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707690"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973622"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览）？ 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -93,7 +93,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 | Azure 机器学习计算 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
-计算目标会附加到机器学习[工作区](concept-workspace.md)。 在[Azure 机器学习 studio](https://ml.azure.com)中的工作区中管理计算目标。
+计算目标会附加到[Azure 机器学习工作区](concept-workspace.md)。 在[Azure 机器学习 Studio （经典）](https://ml.azure.com)中的工作区中管理计算目标。
 
 ## <a name="deploy"></a>部署
 

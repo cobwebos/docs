@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806690"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976598"
 ---
 # <a name="scenes-shots-and-keyframes"></a>场景、镜头和关键帧
 
@@ -36,7 +36,7 @@ ms.locfileid: "74806690"
 
 ## <a name="keyframe-detection"></a>关键帧检测
 
-选择最能表示快照的帧。 关键帧是基于美观属性从整个视频中选择的代表帧（例如，对比度和 stableness）。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以提取关键帧缩略图。 
+视频索引器选择最能表示每个拍摄的帧。 关键帧是基于美观属性从整个视频中选择的代表帧（例如，对比度和 stableness）。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以将关键帧作为高分辨率图像提取。  
 
 ### <a name="extracting-keyframes"></a>提取关键帧
 

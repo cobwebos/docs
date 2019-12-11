@@ -3,17 +3,17 @@ title: 导出 Azure IoT Central 应用程序 |Microsoft Docs
 description: 作为解决方案经理，我想要导出应用程序模板以便能够重用它。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 9870b18be9fb75e25941a7e1d05e4164239aacbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480351"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977516"
 ---
 # <a name="export-your-application-preview-features"></a>导出应用程序（预览功能）
 
@@ -30,7 +30,7 @@ ms.locfileid: "74480351"
 
 可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 该副本是将向你收费的即用即付应用程序。 不能通过复制应用程序来创建试用应用程序。
 
-选择 "**复制**"。 在对话框中，输入新的即用即付应用程序的详细信息。 然后选择 "**复制**"，确认是否要继续。 若要了解有关窗体中的字段的详细信息，请参阅[创建应用程序](quick-deploy-iot-central.md)快速入门。
+选择“复制”。 在对话框中，输入新的即用即付应用程序的详细信息。 然后选择 "**复制**"，确认是否要继续。 若要了解有关窗体中的字段的详细信息，请参阅[创建应用程序](quick-deploy-iot-central.md)快速入门。
 
 > [!NOTE]
 > 你只能**将应用程序复制**到**欧洲**和**美国**位置。
@@ -54,7 +54,7 @@ ms.locfileid: "74480351"
 
 - 默认应用程序仪表板，包括仪表板布局和你定义的所有磁贴。
 - 设备模板，包括度量、设置、属性、命令和仪表板。
-- 原则. 包括所有规则定义。 但不包括电子邮件操作以外的操作。
+- 规则。 包括所有规则定义。 但不包括电子邮件操作以外的操作。
 - 设备集，包括其条件和仪表板。
 
 > [!WARNING]

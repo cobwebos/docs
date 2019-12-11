@@ -1,6 +1,6 @@
 ---
 title: Azure 设备预配中的设备概念 | Microsoft Docs
-description: 介绍设备预配概念，特定于使用设备预配服务和 IoT 中心的设备
+description: 介绍设备预配概念，特定于具有设备预配服务（DPS）和 IoT 中心的设备
 author: nberdy
 ms.author: nberdy
 ms.date: 11/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f5f931622f793a1146c04403e8c5e1a5ef7a7d62
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720528"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975306"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT 中心设备预配服务设备概念
 
@@ -31,7 +31,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 设备预配服务支持以下证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。
 * 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
-* 基于共享访问签名 (SAS) **安全令牌**的“对称密钥”[](../iot-hub/iot-hub-devguide-security.md#security-tokens)，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
+* 基于共享访问签名 (SAS) [安全令牌](../iot-hub/iot-hub-devguide-security.md#security-tokens)的“对称密钥”，包括哈希签名和嵌入的到期期限。 有关详细信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 

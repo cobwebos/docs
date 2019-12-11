@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958634"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997065"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
 
@@ -30,16 +30,16 @@ ms.locfileid: "71958634"
 * 如果将***SkipOutOfScopeDeletions***设置为0（false），则将在目标中禁用超出范围的帐户
 * 如果将***SkipOutOfScopeDeletions***设置为1（true），则不会在目标中禁用超出范围的帐户，此标志在*预配应用*级别设置，可以使用图形 API 进行配置。 
 
-由于此配置广泛用于*workday Active Directory 用户预配*应用，下面的步骤包括 Workday 应用程序的屏幕截图。 但这也可用于其他预配应用。
+由于此配置广泛用于*workday Active Directory 用户预配*应用，下面的步骤包括 Workday 应用程序的屏幕截图。 但这也可用于**所有其他应用**，如 ServiceNow、Salesforce、Dropbox 等。
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤 1：检索预配应用服务主体 ID （对象 ID）
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID （对象 ID）
 
 1. 启动[Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将*Workday 导出到 AD 用户预配应用程序*映射，请导航到该应用的 "属性" 部分。 
 1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值。 此值也称为应用的 ServicePrincipalId，它将用于 Graph 浏览器操作。
 
    ![Workday 应用服务主体 ID](./media/export-import-provisioning-mappings/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>步骤 2：登录到 Microsoft Graph 浏览器
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>步骤2：登录 Microsoft Graph 资源管理器
 
 1. 启动 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)
 1. 单击“使用 Microsoft 登录”按钮，然后使用 Azure AD 全局管理员或应用管理员凭据登录。
@@ -48,7 +48,7 @@ ms.locfileid: "71958634"
 
 1. 成功登录后，你将在左侧窗格中看到用户帐户详细信息。
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>步骤 3：获取现有应用凭据和连接详细信息
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>步骤3：获取现有应用凭据和连接详细信息
 
 在 Microsoft Graph 浏览器中，运行以下 GET 查询，将 [servicePrincipalId] 替换为从[步骤 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) 中提取的 ServicePrincipalId。
 
@@ -71,7 +71,7 @@ ms.locfileid: "71958634"
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>步骤 4：用 SkipOutOfScopeDeletions 标志更新机密终结点
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>步骤4：用 SkipOutOfScopeDeletions 标志更新机密终结点
 
 在图形资源管理器中运行以下命令，以通过***SkipOutOfScopeDeletions***标志更新机密终结点。 
 
@@ -90,7 +90,7 @@ ms.locfileid: "71958634"
 
    ![PUT 响应](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>步骤 5：确认超出范围的用户不会被禁用
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>步骤5：验证超出范围的用户是否未被禁用
 
 你可以通过更新范围规则以跳过特定用户来测试此标志的行为。 在下面的示例中，通过添加新的范围规则，排除 ID 为21173的员工（作用域之前）： 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113729"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978111"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 
@@ -72,7 +72,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 下表详述了启用软删除后的预期行为：
 
-| REST API 操作 | 资源类型 | 说明 | 行为更改 |
+| REST API 操作 | 资源类型 | 描述 | 行为更改 |
 |--------------------|---------------|-------------|--------------------|
 | [删除](/rest/api/storagerp/StorageAccounts/Delete) | 帐户 | 删除存储帐户，包括它包含的所有容器和 blob。                           | 无更改。 已删除帐户中的容器和 blob 不可恢复。 |
 | [删除容器](/rest/api/storageservices/delete-container) | 容器 | 删除容器，包括它包含的所有 blob。 | 无更改。 已删除容器中的 blob 不可恢复。 |
@@ -146,13 +146,23 @@ Copy a snapshot over the base blob:
 
 初次启用软删除时，建议使用较短的保持期，以便更好地了解因该功能产生的费用变动。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始体验
 
 以下步骤说明了如何开始执行软删除。
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-若要启用软删除，请导航至“Blob 服务”下的“软删除”选项。 然后单击“已启用”并输入要保留软删除数据的天数。
+使用 Azure 门户为存储帐户上的 blob 启用软删除：
+
+1. 在[Azure 门户](https://portal.azure.com/)中，选择存储帐户。 
+
+2. 导航到 " **Blob 服务**" 下的 "**数据保护**" 选项。
+
+3. 在**Blob 软删除**下单击**启用**
+
+4. 输入要在**保留策略**下*保留*的天数
+
+5. 选择 "**保存**" 按钮以确认数据保护设置
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
@@ -295,9 +305,9 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="special-considerations"></a>特殊注意事项
 
-如果某个应用程序或其他存储帐户用户意外修改或删除了数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致在列出 Blob 时存储容量费用增加且延迟增加。 你可以通过将经常覆盖的数据存储在禁用软删除的单独存储帐户中来降低这种额外的成本和延迟。 
+如果某个应用程序或其他存储帐户用户意外修改或删除了数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致存储容量收费，并在列出 blob 时增加延迟。 你可以通过将经常覆盖的数据存储在禁用软删除的单独存储帐户中来降低这种额外的成本和延迟。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="for-which-storage-services-can-i-use-soft-delete"></a>对于哪些存储服务，可以使用软删除？
 
@@ -311,35 +321,35 @@ blockBlob.StartCopy(copySource);
 
 是的，软删除适用于所有存储层，包括热、冷和存档。 但是，软删除对存档层中的 blob 不提供覆盖保护。
 
-### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>是否可以使用“设置 Blob 层 API”将 Blob 与软删除的快照置于一层？
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>是否可以使用设置 Blob 层 API 将 blob 与软删除快照进行分层？
 
 可以。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
 
-### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>高级存储帐户每个 Blob 的快照上限为 100。 软删除快照是否计入此限制？
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>高级存储帐户的每个 blob 快照限制为100。 软删除的快照计数是否达到此限制？
 
 不，软删除快照不记入此限制。
 
-### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>是否可以对现有存储帐户启用软删除？
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>能否对现有存储帐户启用软删除？
 
 可以，对现有和新存储帐户均可配置软删除。
 
-### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果在启用软删除的情况下删除整个帐户或容器，是否会保存所有相关 Blob？
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果在启用软删除的情况下删除整个帐户或容器，是否将保存所有关联的 blob？
 
 不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 有关防止意外删除存储帐户的详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/resource-group-lock-resources.md)。
 
-### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>能否查看已删除数据的容量指标？
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>能否查看已删除数据的容量度量值？
 
 软删除数据属于存储帐户总容量的一部分。 有关跟踪和监视存储容量的详细信息，请参阅[存储分析](../common/storage-analytics.md)。
 
-### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>如果关闭软删除，是否仍然能够访问软删除数据？
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>如果关闭软删除，是否仍可以访问软删除的数据？
 
 可以，关闭软删除后，仍能访问和恢复未过期的软删除数据。
 
-### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>能否读取和复制 Blob 的软删除快照？  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>是否可以读取和复制 blob 的软删除快照？  
 
 可以，但必须首先对该 blob 调用撤销删除。
 
-### <a name="is-soft-delete-available-for-all-blob-types"></a>软删除是否适用于所有 Blob 类型？
+### <a name="is-soft-delete-available-for-all-blob-types"></a>软删除是否适用于所有 blob 类型？
 
 是的，软删除适用于块 blob、追加 blob 和页 blob。
 

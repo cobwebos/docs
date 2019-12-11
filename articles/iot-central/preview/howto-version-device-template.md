@@ -3,17 +3,17 @@ title: 了解 Azure IoT Central 应用的设备模板版本控制 | Microsoft Do
 description: 通过创建新版本循环访问设备模板，不影响实时连接设备
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 666c3030d91fba3c3bdfe23f808c4e830dff6ec1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f2ecb37ebe156b1eb092bda95f296c39c9e2baf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895587"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974958"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>创建新的设备模板版本（预览功能）
 

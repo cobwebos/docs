@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 5b473af780bdd68b8fc0dd3dc0430c4f4fd3255b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927671"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978622"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -245,7 +245,7 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 | 托管实例 | 超大规模数据库当前不支持 Azure SQL 数据库托管实例。 |
 | 弹性池 |  当前不支持对 SQL 数据库超大规模进行弹性池。|
 | 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从超大规模迁移到非超大规模的唯一方法是使用 BACPAC 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。|
-| 迁移具有持久性内存中对象的数据库 | 超大规模仅支持非持久性内存中对象（表类型、本机 Sp 和函数）。  在将数据库迁移到超大规模服务层之前，必须删除持久性内存中表和其他对象，并将其重新创建为非内存对象。|
+| 迁移具有内存中 OLTP 对象的数据库 | 超大规模仅支持内存中 OLTP 对象类型的子集，包括内存优化表类型、本机编译的存储过程和函数。 但是，如果数据库中存在任何内存中 OLTP 对象，则不支持从高级和业务关键服务层直接迁移到超大规模。 将此类数据库迁移到超大规模需要三个步骤：（1）删除所有内存中 OLTP 对象及其依赖项。 若要在持久的内存优化表中保留数据，请将数据转换为磁盘表。 （2）将数据库的服务层更改为超大规模。 （3）重新创建以前删除的对象。 超大规模当前不支持持久和非持久的内存优化表，必须保留磁盘表。 支持内存优化表变量。 |
 | 更改跟踪 | 更改跟踪当前为公共预览版，可以在新的或现有的超大规模数据库上启用。 |
 | 异地复制  | 你尚未配置 Azure SQL 数据库超大规模的异地复制。 |
 | 数据库复制 | 你还不能使用数据库副本在 Azure SQL 超大规模中创建新数据库。 |

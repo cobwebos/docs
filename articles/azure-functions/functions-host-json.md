@@ -3,23 +3,23 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323081"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975442"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host json 引用 
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
-> * [第 1 版](functions-host-json-v1.md)
+> * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v2 运行时的设置。  
+*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了从 Azure Functions 运行时的版本2.x 开始可用的设置。  
 
 > [!NOTE]
-> 本文适用于 Azure Functions 2.x。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
+> 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
@@ -111,7 +111,7 @@ ms.locfileid: "74323081"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。| 
@@ -153,7 +153,7 @@ ms.locfileid: "74323081"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+指示所有函数的超时持续时间。 它遵循 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
 
 在高级计划中，有效范围介于1秒到60分钟之间，默认值为30分钟。
 
@@ -181,9 +181,9 @@ ms.locfileid: "74323081"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
-|enabled|是|指定是否启用此功能。 | 
+|已启用|是|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -213,10 +213,10 @@ ms.locfileid: "74323081"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
-|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本2.x 和更高版本按照 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
 |console|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
@@ -236,7 +236,7 @@ ms.locfileid: "74323081"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
@@ -280,7 +280,7 @@ ms.locfileid: "74323081"
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -288,7 +288,7 @@ ms.locfileid: "74323081"
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
 |lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
 
-## <a name="version"></a>version
+## <a name="version"></a>版本
 
 对于面向 v2 运行时的函数应用，版本字符串 `"version": "2.0"` 是必需的。
 

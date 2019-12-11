@@ -2,26 +2,24 @@
 title: 部署资源跨订阅 & 资源组
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/09/2019
+ms.openlocfilehash: 0754895215384f76b1cb44224f3ba06c80181827
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149549"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978758"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-通常情况下，将模板中的所有资源部署到单个[资源组](resource-group-overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器允许使用嵌套的模板将不同于父模板所用订阅和资源组的多个不同订阅和资源组作为目标。
+通常情况下，将模板中的所有资源部署到单个[资源组](resource-group-overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器使你可以使用嵌套模板来针对多个订阅和资源组。
 
 > [!NOTE]
 > 在单个部署中可以仅部署到五个资源组。 通常情况下，此限制意味着，在嵌套或链接的部署中可以部署到为父模板指定的一个资源组和最多四个资源组。 但是，如果父模板仅包含嵌套或链接的模板，并且本身不部署任何资源，则在嵌套或链接的部署中最多可包含五个资源组。
 
-## <a name="specify-a-subscription-and-resource-group"></a>指定订阅和资源组
+## <a name="specify-subscription-and-resource-group"></a>指定订阅和资源组
 
-若要将不同的资源作为目标，请使用嵌套模板或链接模板。 `Microsoft.Resources/deployments` 资源类型提供 `subscriptionId` 和 `resourceGroup` 的参数。 使用这些属性可为嵌套部署指定不同的订阅和资源组。 在运行部署之前，所有资源组都必须存在。 如果未指定订阅 ID 或资源组，将使用父模板中的订阅和资源组。
+若要针对其他资源组或订阅，请使用[嵌套模板或链接模板](resource-group-linked-templates.md)。 `Microsoft.Resources/deployments` 资源类型为 `subscriptionId` 和 `resourceGroup`提供参数，这使你可以为嵌套部署指定订阅和资源组。 如果未指定订阅 ID 或资源组，则使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
 
 用于部署模板的帐户必须有权部署到指定的订阅 ID。 如果指定的订阅存在于不同的 Azure Active Directory 租户中，则必须[从另一个目录添加来宾用户](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
 
@@ -42,7 +40,7 @@ ms.locfileid: "74149549"
 
 如果资源组位于同一订阅中，则可以删除“subscriptionId”值。
 
-以下示例部署两个存储帐户 - 一个在部署期间指定的资源组中，另一个在 `secondResourceGroup` 参数指定的资源组中：
+下面的示例部署两个存储帐户。 第一个存储帐户部署到部署期间指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
 
 ```json
 {
@@ -70,6 +68,18 @@ ms.locfileid: "74149549"
         "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
     },
     "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('firstStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {
+            }
+        },
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
@@ -100,73 +110,18 @@ ms.locfileid: "74149549"
                 },
                 "parameters": {}
             }
-        },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('firstStorageName')]",
-            "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",
-            "sku":{
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
         }
     ]
 }
 ```
 
-如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署会失败。
+如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署将失败。
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>使用 resourceGroup() 和 subscription() 函数
+若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-对于跨资源组部署，[resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) 和 [subscription()](resource-group-template-functions-resource.md#subscription) 函数根据指定嵌套模板的方式以不同的方式解析。 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如果在一个模板内嵌入另一个模板，嵌套模板中的函数会解析到父资源组和订阅。 被嵌入的模板使用以下格式：
-
-```json
-"apiVersion": "2017-05-10",
-"name": "embeddedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "template": {
-        ...
-        resourceGroup() and subscription() refer to parent resource group/subscription
-    }
-}
-```
-
-如果链接到单独的模板，则链接模板中的函数会解析到嵌套资源组和订阅。 链接模板使用以下格式：
-
-```json
-"apiVersion": "2017-05-10",
-"name": "linkedTemplate",
-"type": "Microsoft.Resources/deployments",
-"resourceGroup": "crossResourceGroupDeployment",
-"properties": {
-    "mode": "Incremental",
-    "templateLink": {
-        ...
-        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
-    }
-}
-```
-
-## <a name="example-templates"></a>示例模板
-
-以下模板演示多个资源组部署。 部署模板的脚本显示在表格之后。
-
-|模板  |说明  |
-|---------|---------|
-|[跨订阅模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |将一个存储帐户部署到一个资源组，将另一个存储帐户部署到第二个资源组。 如果第二个资源组位于其他订阅，请包含该订阅的 ID 值。 |
-|[跨资源组模板属性](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |演示如何解析 `resourceGroup()` 函数。 此模板不部署任何资源。 |
-
-### <a name="powershell"></a>PowerShell
-
-对于 PowerShell，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
+若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -183,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-对于 PowerShell，若要将两个存储帐户部署到两个订阅，请使用：
+若要将两个存储帐户部署到**两个订阅**，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -207,52 +162,9 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-对于 PowerShell，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name parentGroup -Location southcentralus
-New-AzResourceGroup -Name inlineGroup -Location southcentralus
-New-AzResourceGroup -Name linkedGroup -Location southcentralus
-
-New-AzResourceGroupDeployment `
-  -ResourceGroupName parentGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
-```
-
-在前面的示例中，**parentRG** 和 **inlineRG** 都解析为 **parentGroup**。 **linkedRG** 解析为 **linkedGroup**。 前述示例的输出为：
-
-```powershell
- Name             Type                       Value
- ===============  =========================  ==========
- parentRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- inlineRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-                                               "name": "parentGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
- linkedRG         Object                     {
-                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-                                               "name": "linkedGroup",
-                                               "location": "southcentralus",
-                                               "properties": {
-                                                 "provisioningState": "Succeeded"
-                                               }
-                                             }
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-对于 Azure CLI，若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
+若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -267,7 +179,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-对于 Azure CLI，若要将两个存储帐户部署到两个订阅，请使用：
+若要将两个存储帐户部署到**两个订阅**，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -289,7 +201,146 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-对于 Azure CLI，若要测试如何解析父模板、内联模板和链接模板的资源组对象，请使用：
+---
+
+## <a name="use-functions"></a>使用函数
+
+根据你指定模板的方式， [resourceGroup （）](resource-group-template-functions-resource.md#resourcegroup)和[订阅（）](resource-group-template-functions-resource.md#subscription)函数的解析方式有所不同。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为要 `inner` 解析为嵌套模板的范围。 将属性设置为要 `outer` 解析为父模板的作用域。
+
+下表显示了函数是解析为父资源组还是嵌入资源组和订阅。
+
+| 模板类型 | 范围 | 分辨率 |
+| ------------- | ----- | ---------- |
+| 嵌套        | 外部（默认值） | 父资源组 |
+| 嵌套        | 内部 | 子资源组 |
+| 链表        | N/A   | 子资源组 |
+
+下面的[示例模板]((https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json))显示：
+
+* 具有默认（外部）范围的嵌套模板
+* 具有内部范围的嵌套模板
+* 链接模板
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "defaultScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "name": "innerScopeTemplate",
+            "apiVersion": "2017-05-10",
+            "resourceGroup": "inlineGroup",
+            "properties": {
+                "expressionEvaluationOptions": {
+                    "scope": "inner"
+                },
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                    ],
+                    "outputs": {
+                        "resourceGroupOutput": {
+                            "type": "string",
+                            "value": "[resourceGroup().name]"
+                        }
+                    }
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "apiVersion": "2017-05-10",
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "linkedGroup",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "contentVersion": "1.0.0.0",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
+                },
+                "parameters": {}
+            }
+        }
+    ],
+    "outputs": {
+        "parentRG": {
+            "type": "string",
+            "value": "[concat('Parent resource group is ', resourceGroup().name)]"
+        },
+        "defaultScopeRG": {
+            "type": "string",
+            "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "innerScopeRG": {
+            "type": "string",
+            "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
+        },
+        "linkedRG": {
+            "type": "string",
+            "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
+        }
+    }
+}
+```
+
+若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name parentGroup -Location southcentralus
+New-AzResourceGroup -Name inlineGroup -Location southcentralus
+New-AzResourceGroup -Name linkedGroup -Location southcentralus
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName parentGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+前述示例的输出为：
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         String                     Parent resource group is parentGroup
+ defaultScopeRG   String                     Default scope resource group is parentGroup
+ innerScopeRG     String                     Inner scope resource group is inlineGroup
+ linkedRG         String                     Linked resource group is linkedgroup
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -302,47 +353,30 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-在前面的示例中，**parentRG** 和 **inlineRG** 都解析为 **parentGroup**。 **linkedRG** 解析为 **linkedGroup**。 前述示例的输出为：
+前述示例的输出为：
 
 ```azurecli
-...
 "outputs": {
-  "inlineRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+  "defaultScopeRG": {
+    "type": "String",
+    "value": "Default scope resource group is parentGroup"
+  },
+  "innerScopeRG": {
+    "type": "String",
+    "value": "Inner scope resource group is inlineGroup"
   },
   "linkedRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
-      "location": "southcentralus",
-      "name": "linkedGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Linked resource group is linkedGroup"
   },
   "parentRG": {
-    "type": "Object",
-    "value": {
-      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
-      "location": "southcentralus",
-      "name": "parentGroup",
-      "properties": {
-        "provisioningState": "Succeeded"
-      }
-    }
+    "type": "String",
+    "value": "Parent resource group is parentGroup"
   }
 },
-...
 ```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

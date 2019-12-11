@@ -11,19 +11,19 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10a150a64a058a4bf346f07e2ef298c974641256
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4ef1249a601334cc198662b90da95623247190e7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901299"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978179"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
-> Azure 机器学习监视 SDK 即将停用。 SDK 仍适用于监视模型中数据偏移的开发人员。 但大多数开发人员应使用 Application Insights 的简化[数据监视](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)。
+> Azure 机器学习监视 SDK 即将停用。 SDK 仍适用于当前使用 SDK 监视模型中数据偏移的开发人员。 但对于新客户，建议对 Application Insights 使用简化的[数据监视](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)。
 
 本文介绍如何从 Azure 机器学习收集输入模型数据。 它还演示了如何将输入数据部署到 Azure Kubernetes Service （AKS）群集并将输出数据存储在 Azure Blob 存储中。
 

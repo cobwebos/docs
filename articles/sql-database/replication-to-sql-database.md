@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815767"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997269"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
@@ -32,14 +32,17 @@ ms.locfileid: "73815767"
 
 ## <a name="versions"></a>版本  
 
-- 发布服务器和分发服务器必须至少使用以下版本之一：  
-- SQL Server 2017 (14.x)
-- SQL Server 2016 (13.x)
-- SQL Server 2014 (12.x) SP1 CU3
-- SQL Server 2014 (12.x) RTM CU10
-- SQL Server 2012 (11.x) SP2 CU8 或 SP3
-- 尝试使用旧版来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQL_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败）。  
-- 若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
+本地 SQL Server 发布服务器和分发服务器必须至少使用以下版本之一：  
+
+- SQL Server 2016 及更高版本
+- SQL Server 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> 尝试使用不受支持的版本配置复制可能导致错误号 MSSQL_REPL20084 （进程无法连接到订阅服务器。）和 MSSQL_REPL40532 （无法打开登录名 > 请求的服务器 \<名称。 登录失败）。  
+
+若要使用 Azure SQL 数据库的所有功能，必须使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
+
   
 ## <a name="remarks"></a>备注
 
@@ -51,7 +54,7 @@ ms.locfileid: "73815767"
 - SQL Server 上的单一发布可以支持 Azure SQL 数据库和 SQL Server（本地的以及 Azure 虚拟机中的 SQL Server）订阅服务器。  
 - 复制管理、监视和故障排除必须从本地 SQL Server 执行。  
 - 仅支持推送订阅 Azure SQL 数据库。  
-- 在适用于 SQL 数据库的 `@subscriber_type = 0`sp_addsubscription**中，仅** 受支持。  
+- 在适用于 SQL 数据库的 **sp_addsubscription** 中，仅 `@subscriber_type = 0` 受支持。  
 - Azure SQL 数据库不支持双向、即时、可更新或对等复制。
 
 ## <a name="replication-architecture"></a>复制体系结构  

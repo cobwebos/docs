@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498111"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978486"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -56,13 +56,13 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>使用 Studio 代码片段以访问数据集
+## <a name="datasetAccess"></a>使用代码段访问数据集
 通过 Python 客户端库，能够以编程方式从已运行的实验中访问现有的数据集。
 
-从 Studio Web 界面，可生成代码片段，其中包括下载和反序列化数据集作为本地计算机上 pandas DataFrame 对象的所有必要信息。
+在 Azure 机器学习 Studio （经典） web 界面中，你可以生成代码段，其中包含在本地计算机上下载数据集并将其反序列化为 pandas 数据帧对象所需的所有必要信息。
 
 ### <a name="security"></a>数据访问的安全
-Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
+Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代码段包括你的工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
 
 出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 你的角色会显示在 "**用户**" 页上的 "**设置**" 中 Azure 机器学习 Studio （经典） "。
 
@@ -72,18 +72,18 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 若要获取授权令牌，可以执行以下任一操作：
 
-* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
+* 向所有者请求令牌。 所有者可以在 Azure 机器学习 Studio （经典）中从其工作区的 "设置" 页访问其授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
-![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先将用户从工作区中删除，然后重新邀请用户作为所有者加入。
+* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
 
-开发人员获取工作区 ID 和授权令牌之后，能够使用代码片段访问工作区，无论其角色是什么。
+开发人员获取工作区 ID 和授权令牌后，就可以使用代码片段访问工作区，而不考虑其角色。
 
 在“设置”下的“授权令牌”上托管授权令牌。 可以撤销它们，但是此过程会撤销上一个令牌的访问权限。
 
 ### <a name="accessingDatasets"></a>从本地 Python 应用程序访问数据集
-1. 在机器学习工作室中，单击左侧导航栏中的“数据集”。
+1. 在机器学习 Studio （经典）中，单击左侧导航栏中的 "**数据集**"。
 2. 选择想要访问的数据集。 可以从“我的数据集”列表或“示例”列表中选择任一数据集。
 3. 从底部工具栏，单击“生成数据访问代码”。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
    
@@ -96,7 +96,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ![将代码粘贴到笔记本中][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
-在机器学习工作室中运行实验之后，就可以从模块的输出节点中访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
+在机器学习 Studio 的经典版本中运行试验后，可以从模块的输出节点访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
 
 只要数据格式符合 Python 客户端库，就可以访问中间数据集。
 
@@ -141,7 +141,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 ## <a name="clientApis"></a>使用机器学习 Python 客户端库来访问、读取、创建和管理数据集
 ### <a name="workspace"></a>工作区
-工作区是 Python 客户端库的入口点。 提供具有工作区 ID 和授权令牌的 `Workspace` 类以创建实例：
+工作区是 Python 客户端库的入口点。 向 `Workspace` 类提供工作区 ID 和授权令牌来创建实例：
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -172,7 +172,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ds = ws.datasets[0]
 
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 除了内容，数据集还具有元数据。 （中间数据集是例外，它不具有任何元数据。）
 
 某些元数据值在创建时由用户分配：

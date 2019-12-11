@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170022"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976241"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -29,20 +29,20 @@ ms.locfileid: "71170022"
 
 下表描述了 Azure NetApp 文件的资源限制：
 
-|  Resource  |  默认限制  |  可通过支持请求进行调整  |
+|  资源  |  默认限制  |  可通过支持请求进行调整  |
 |----------------|---------------------|--------------------------------------|
-|  每个 Azure 订阅的 NetApp 帐户数   |  10    |  是   |
+|  每个 Azure 区域的 NetApp 帐户数   |  10    |  是   |
 |  每个 NetApp 帐户的容量池数   |    25     |   是   |
 |  每个容量池的卷数量     |    500   |    是     |
-|  每个卷的快照数       |    255     |    否        |
-|  每个 Azure 虚拟网络委托给 Azure NetApp 文件（Microsoft NetApp/卷）的子网数    |   1   |    否    |
+|  每个卷的快照数       |    255     |    No        |
+|  每个 Azure 虚拟网络委托给 Azure NetApp 文件（Microsoft NetApp/卷）的子网数    |   第   |    No    |
 |  可以访问 Azure NetApp 文件的 VNet 中的 Ip 数（包括对等互连 Vnet）   |    1000   |    是   |
-|  单个容量池的最小大小   |  4 TiB     |    否  |
-|  单个容量池的最大大小    |  500 TiB   |   否   |
-|  单个卷的最小大小    |    100 GiB    |    否    |
-|  单个卷的最大大小     |    100 TiB    |    否    |
+|  单个容量池的最小大小   |  4 TiB     |    No  |
+|  单个容量池的最大大小    |  500 TiB   |   No   |
+|  单个卷的最小大小    |    100 GiB    |    No    |
+|  单个卷的最大大小     |    100 TiB    |    No    |
 |  每个卷的最大文件数（[maxfiles](#maxfiles)）     |    1 亿    |    是    |    
-|  单个文件的最大大小     |    16 TiB    |    否    |    
+|  单个文件的最大大小     |    16 TiB    |    No    |    
 
 ## Maxfiles 限制<a name="maxfiles"></a> 
 
@@ -70,22 +70,22 @@ Azure NetApp 文件卷具有称为*maxfiles*的限制。 Maxfiles 限制是卷�
 2. 单击 " **+ 新建支持请求**"。
 3. 在 "基本信息" 选项卡上，提供以下信息： 
     1. 问题类型：选择**服务和订阅限制（配额）** 。
-    2. 订阅选择需要增加配额的资源的订阅。
-    3. 配额类型：选择**存储：Azure NetApp 文件限制**。
-    4. 单击“下一步:**解决方法**。
+    2. 订阅：选择需要增加配额的资源的订阅。
+    3. 配额类型：选择 "**存储"： Azure NetApp 文件限制**。
+    4. 单击 "**下一步：解决方案**"。
 4. 在 "详细信息" 选项卡上：
     1. 在 "说明" 框中，为相应的资源类型提供以下信息：
 
-        |  Resource  |    父资源      |    请求的新限制     |    配额增加的原因       |
+        |  资源  |    父资源      |    请求的新限制     |    配额增加的原因       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  *请求的新的最大**帐户**编号*    |  *哪个方案或用例提示请求？*  |
         |  池    |  *订阅 ID，帐户 URI*  |  *请求的新的最大**池**编号*   |  *哪个方案或用例提示请求？*  |
-        |  卷  |  *订阅 ID、帐户 URI、池 URI*   |  *请求的新的最大**卷**号*     |  *哪个方案或用例提示请求？*  |
+        |  数据量(Volume)  |  *订阅 ID、帐户 URI、池 URI*   |  *请求的新的最大**卷**号*     |  *哪个方案或用例提示请求？*  |
         |  Maxfiles  |  *订阅 ID、帐户 URI、池 URI、卷 URI*   |  *请求的新的最大**maxfiles**数*     |  *哪个方案或用例提示请求？*  |    
 
     2. 指定相应的支持方法并提供你的协定信息。
 
-    3. 单击“下一步:**查看 + create**以创建请求。 
+    3. 单击 "**下一步"：查看 + 创建**以创建请求。 
 
 
 ## <a name="next-steps"></a>后续步骤  

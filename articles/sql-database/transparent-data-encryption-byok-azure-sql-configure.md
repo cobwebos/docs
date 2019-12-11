@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e60b83f8eb1e95733512180417bb2a1be679b0a0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e647725c5d30f35f39263757508bdd1725552731
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422465"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997303"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 的客户托管密钥启用透明数据加密
 
@@ -43,7 +43,7 @@ ms.locfileid: "74422465"
 有关 Key Vault 的详细信息，请参阅[Key Vault 中的 PowerShell 说明](../key-vault/quick-create-powershell.md)以及[如何使用 powershell Key Vault 软删除](../key-vault/key-vault-soft-delete-powershell.md)。
 
 > [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
+> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令的参数完全相同。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 
@@ -53,7 +53,7 @@ ms.locfileid: "74422465"
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
    ```
 
-如果正在创建服务器，请在创建服务器期间，结合 -Identity 标记使用 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) cmdlet 来添加 Azure AD 标识：
+如果正在创建服务器，请在服务器创建过程中使用带有标记标识的[AzSqlServer](/powershell/module/az.sql/new-azsqlserver) cmdlet 添加 Azure AD 标识：
 
    ```powershell
    $server = New-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -Location <RegionName> `
@@ -62,7 +62,7 @@ ms.locfileid: "74422465"
 
 ## <a name="grant-key-vault-permissions-to-your-server"></a>向服务器授予 Key Vault 权限
 
-将 Key Vault 中的密钥用于 TDE 之前，请使用 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 向服务器授权 Key Vault 的访问权限。
+使用[AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 向服务器授予对密钥保管库的访问权限，然后再使用该密钥保管库中的密钥用于 TDE。
 
    ```powershell
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
@@ -71,10 +71,10 @@ ms.locfileid: "74422465"
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
-- 使用 [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 从密钥保管库中检索密钥 ID
-- 使用 [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 将 Key Vault 中的密钥添加到服务器。
-- 使用 [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 将密钥设置为所有服务器资源的 TDE 保护器。
-- 使用 [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 确认已按预期配置了 TDE 保护器。
+- 使用[AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 从 key vault 中检索密钥 ID
+- 使用[AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 将 Key Vault 中的密钥添加到服务器。
+- 使用[AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 将密钥设置为所有服务器资源的 TDE 保护程序。
+- 使用[AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 确认已按预期配置了 TDE 保护程序。
 
 > [!NOTE]
 > Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
@@ -96,7 +96,7 @@ Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName <SQLDatabas
 
 ## <a name="turn-on-tde"></a>启用 TDE
 
-使用 [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 来启用 TDE。
+使用[AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) CMDLET 打开 TDE。
 
 ```powershell
 Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResourceGroupName> `
@@ -107,7 +107,7 @@ Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResour
 
 ## <a name="check-the-encryption-state-and-encryption-activity"></a>检查加密状态和加密活动
 
-使用 [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 获取加密状态，使用 [Get- AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) 检查数据库或数据仓库的加密进度。
+使用[AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)获取加密状态，并使用[AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity)检查数据库或数据仓库的加密进度。
 
 ```powershell
 # get the encryption state
@@ -184,21 +184,21 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-- 使用 [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 来禁用 TDE。
+- 使用[AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) CMDLET 关闭 TDE。
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName> `
       -DatabaseName <DatabaseName> -State "Disabled”
    ```
 
-- 使用 [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 可返回已添加到服务器的 Key Vault 密钥列表。
+- 使用[AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 可以返回已添加到服务器的 Key Vault 项的列表。
 
    ```powershell
    # KeyId is an optional parameter, to return a specific key version
    Get-AzSqlServerKeyVaultKey -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-- 使用 [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) 可从服务器中删除 Key Vault 密钥。
+- 使用[AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey)从服务器中删除 Key Vault 密钥。
 
    ```powershell
    # the key set as the TDE Protector cannot be removed

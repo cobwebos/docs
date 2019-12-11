@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心设备预配服务的自定义分配策略
-description: 如何使用 Azure IoT 中心设备预配服务中的自定义分配策略
+description: 如何在 Azure IoT 中心设备预配服务（DPS）中使用自定义分配策略
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2a17cc6c9f2211de31d4551bd12e6c832d4eee38
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228735"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974864"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -39,9 +39,9 @@ ms.locfileid: "74228735"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 启用了[“使用 C++ 的桌面开发”](https://visualstudio.microsoft.com/vs/)工作负荷的 [Visual Studio](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) 2015 或更高版本。
+* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -72,7 +72,7 @@ ms.locfileid: "74228735"
 
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 **az iot hub create** 命令创建 Contoso 烤箱分区[](/cli/azure/iot/hub#az-iot-hub-create) IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 烤箱分区 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
 
     以下示例在*westus*位置创建名为*1098 烤面包机*的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
@@ -82,7 +82,7 @@ ms.locfileid: "74228735"
 
     此命令可能需要花费几分钟时间完成。
 
-4. 在 Azure Cloud Shell 中，使用 **az iot hub create** 命令创建 Contoso 热泵分区[](/cli/azure/iot/hub#az-iot-hub-create) IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
+4. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 Contoso 热泵分区 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
 
     以下示例在*westus*位置创建名为*1098 heatpumps*的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098 位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
@@ -406,7 +406,7 @@ ms.locfileid: "74228735"
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行  **安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负载）** `CMake`。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负载）。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
 
@@ -464,7 +464,7 @@ ms.locfileid: "74228735"
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 *Provision*Samples **文件夹。\_** 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov**dev**client\_sample.c\_。\_**
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
 
 4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
 
@@ -481,11 +481,11 @@ ms.locfileid: "74228735"
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 右键单击“prov**dev\_client\_sample”项目，\_** 然后选择“设为启动项目”。
+6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。
 
 ### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
 
-1. 若要模拟烤箱设备，请在 `prov_dev_set_symmetric_key_info()`prov**dev\_client\_sample.c\_ 中找到已注释掉的对**  的调用。
+1. 若要模拟烤箱设备，请在 **prov\_dev\_client\_sample.c** 中找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -501,7 +501,7 @@ ms.locfileid: "74228735"
 
     保存文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” **“开始执行(不调试)”以运行该解决方案。**  >  在提示重新生成项目时，选择 **"是**，在运行前重新生成项目"。
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目。
 
     以下输出为模拟 toaster 设备的一个示例，它成功启动并连接到预配服务实例，以便通过自定义分配策略分配给烤面包机 IoT 中心：
 
@@ -521,7 +521,7 @@ ms.locfileid: "74228735"
 
 ### <a name="simulate-the-contoso-heat-pump-device"></a>模拟 Contoso 热泵设备
 
-1. 若要模拟热泵设备，请使用热泵注册 ID 和之前生成的派生设备密钥更新 `prov_dev_set_symmetric_key_info()`prov**dev\_client\_sample.c\_ 中的**  调用。 下面显示的密钥值 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** 也仅作为示例提供。
+1. 若要模拟热泵设备，请使用热泵注册 ID 和之前生成的派生设备密钥更新 **prov\_dev\_client\_sample.c** 中的 `prov_dev_set_symmetric_key_info()` 调用。 下面显示的密钥值 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** 也仅作为示例提供。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -530,7 +530,7 @@ ms.locfileid: "74228735"
 
     保存文件。
 
-2. 在 Visual Studio 菜单中，选择“调试” **“开始执行(不调试)”以运行该解决方案。**  >  在提示重新生成项目时，选择 **"是"** 以在运行前重新生成项目。
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在提示重新生成项目时，选择 **"是"** 以在运行前重新生成项目。
 
     下面的输出是一个模拟的热交换设备的示例，该设备已成功启动并连接到预配服务实例，可通过自定义分配策略分配给 Contoso 热度泵 IoT 中心：
 
@@ -552,7 +552,7 @@ ms.locfileid: "74228735"
 
 下表显示了预期的方案以及可能会收到的结果错误代码。 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
 
-| 应用场景 | 预配服务的注册结果 | 预配 SDK 结果 |
+| 场景 | 预配服务的注册结果 | 预配 SDK 结果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 返回 200 OK，其中“iotHubHostName”被设置为有效的 IoT 中心主机名 | 结果状态：已分配  | SDK 返回 PROV_DEVICE_RESULT_OK 和中心信息 |
 | Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
@@ -583,5 +583,5 @@ ms.locfileid: "74228735"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+* 若要了解更多重新设置，请参阅[IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
 * 若要了解更多取消设置，请参阅如何取消预[配以前 autoprovisioned 的设备](how-to-unprovision-devices.md) 

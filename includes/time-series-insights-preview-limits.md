@@ -4,17 +4,17 @@ description: include 文件
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 12/06/2019
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: dfe16b4e965670d115cfa92f1cb3ca812d6375ad
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: be46a0dda24dc990e895a3e983c730337f9cf31d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990862"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981034"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>公开上市和预览比较
 
@@ -25,11 +25,11 @@ ms.locfileid: "72990862"
 | 第一类公民 | 以事件为中心 | 时间系列-中心 |
 | 语义推理 | 低级别（引用数据） | 高级（模型） |
 | 数据 contextualization | 非设备级别 | 设备和非设备级别 |
-| 计算逻辑存储 | 否 | 存储在模型的类型变量中 |
-| 存储和访问控制 | 否 | 已通过模型启用 |
-| 聚合/采样 | 否 | 事件加权和时间加权 |
-| 信号重建 | 否 | 评估 |
-| 衍生时序的生产 | 否 | 是，合并和联接 |
+| 计算逻辑存储 | No | 存储在模型的类型变量中 |
+| 存储和访问控制 | No | 已通过模型启用 |
+| 聚合/采样 | No | 事件加权和时间加权 |
+| 信号重建 | No | 插值 |
+| 衍生时序的生产 | No | 是，合并和联接 |
 | 语言灵活性 | 不可组合 | 组合 |
 | 表达式语言 | 谓词字符串 | 时序表达式（谓词字符串、值、表达式和函数） |
 
@@ -48,7 +48,7 @@ ms.locfileid: "72990862"
 每个实例最多支持两个事件源。 
 
 * 了解如何[添加事件中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
-* 配置 [IoT 中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
+* 配置[IoT 中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
 
 ### <a name="api-limits"></a>API 限制
 

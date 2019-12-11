@@ -1,6 +1,6 @@
 ---
-title: 登录用户的 Web 应用（应用注册）-Microsoft 标识平台
-description: 了解如何构建用于登录用户的 web 应用（应用注册）
+title: 注册登录用户的 web 应用-Microsoft 标识平台 |Microsoft
+description: 了解如何注册登录用户的 web 应用
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766066"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964814"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登录用户的 Web 应用：应用注册
 
@@ -58,7 +58,7 @@ ms.locfileid: "74766066"
 1. 选择“身份验证”菜单，然后添加以下信息：
    1. 对于 "**答复 URL**"，添加类型为 " **Web**" 的 **https://localhost:44321/signin-oidc** 。
    1. 在 "**高级设置**" 部分中，将 "**注销 URL** " 设置为 **https://localhost:44321/signout-oidc** 。
-   1. 在 "**隐式授予**" 下，选择 " **ID 令牌**"。
+   1. 选择“隐式授权”下的“ID 令牌”。
    1. 选择“保存”。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)

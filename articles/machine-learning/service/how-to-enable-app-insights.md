@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 19dba88bf04ee84459ebd9ef0279f125724d7522
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: f4bb399e24b2c480023eba6bf5b71990f6d39c8c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406434"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978367"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视和收集 ML web 服务终结点中的数据
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,21 +25,21 @@ ms.locfileid: "74406434"
 
 * 请求速率、响应时间和失败率
 * 依赖项速率、响应时间和失败率
-* 异常
+* 例外
 
 [详细了解 Azure 应用程序 Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
+* 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
 
 * 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何获取这些必备组件，请参阅[如何配置开发环境](how-to-configure-environment.md)
 * 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
 
 ## <a name="web-service-input-and-response-data"></a>Web 服务输入和响应数据
 
-服务的输入和响应-与 ML 模型的输入及其预测相对应，记录到消息 `"model_data_collection"`下的 Azure 应用程序 Insights 跟踪。 可以直接查询 Azure 应用程序 Insights 以访问此数据，或设置[连续导出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)到存储帐户，以便进行更长的保留或进一步处理。 然后，可以在 Azure ML 服务中使用模型数据来设置标签、重新训练、explainability、数据分析或其他用途。 
+服务的输入和响应-与 ML 模型的输入及其预测相对应，记录到消息 `"model_data_collection"`下的 Azure 应用程序 Insights 跟踪。 可以直接查询 Azure 应用程序 Insights 以访问此数据，或设置[连续导出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)到存储帐户，以便进行更长的保留或进一步处理。 然后，可以在 Azure 机器学习中使用模型数据来设置标签、重新训练、explainability、数据分析或其他用途。 
 
 ## <a name="use-the-azure-portal-to-configure"></a>使用 Azure 门户配置
 
@@ -121,7 +121,7 @@ ms.locfileid: "74406434"
 你的服务数据存储在与 Azure 机器学习相同的资源组中的 Azure 应用程序 Insights 帐户中。
 查看数据：
 
-1. 在[Azure 机器学习 studio](https://ml.azure.com)中转到机器学习服务工作区，然后单击 Application Insights 链接
+1. 在[Azure 机器学习 studio](https://ml.azure.com)中转到 Azure 机器学习工作区，然后单击 Application Insights 链接
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

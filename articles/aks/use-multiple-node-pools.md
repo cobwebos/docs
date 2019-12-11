@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382993"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996725"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -38,7 +38,7 @@ ms.locfileid: "74382993"
 * 不能使用与大多数操作一样的现有资源管理器模板来添加或删除节点池。 请改用[单独的资源管理器模板](#manage-node-pools-using-a-resource-manager-template)来更改 AKS 群集中的节点池。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
 * AKS 群集最多可以有8个节点池。
-* AKS 群集在这八个节点池中最多可以有400个节点。
+* AKS 群集在这八个节点池中最多可以有800个节点。
 * 所有节点池必须位于同一子网中。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
@@ -131,7 +131,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>升级节点池
  
 > [!NOTE]
-> 如果尝试返回错误，则无法同时在群集或节点池上执行升级和缩放操作。 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 有关详细信息，请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
+> 如果尝试返回错误，则无法同时在群集或节点池上执行升级和缩放操作。 相反，每个操作类型必须在目标资源上完成，然后才能在该相同资源上发出下一个请求。 有关详细信息，请参阅[故障排除指南](https://aka.ms/aks-pending-upgrade)。
 
 当 AKS 群集最初是在第一步中创建的时，指定了*1.13.10* `--kubernetes-version`。 这会为控制平面和默认节点池设置 Kubernetes 版本。 本部分中的命令介绍如何升级单个特定节点池。
 
@@ -191,7 +191,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>升级具有多个节点池的群集控制平面
 
 > [!NOTE]
-> Kubernetes 使用标准的[语义化版本控制](https://semver.org/)方案。 版本号表示为*x.x*，其中*x*是主要版本， *y*是次版本， *z*是修补程序版本。 例如，在版本*1.12.6*中，1表示主版本，12表示次版本，6表示修补程序版本。 在群集创建过程中，会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时，将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同。
+> Kubernetes 使用标准[语义版本](https://semver.org/)控制方案。 版本号表示为*x.x*，其中*x*是主要版本， *y*是次版本， *z*是修补程序版本。 例如，在版本*1.12.6*中，1表示主版本，12表示次版本，6表示修补程序版本。 在群集创建过程中，会设置控制平面和初始节点池的 Kubernetes 版本。 将所有其他节点池添加到群集时，将设置其 Kubernetes 版本。 Kubernetes 版本可能在节点池之间以及节点池和控制平面之间有所不同。
 
 AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。
 

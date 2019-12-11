@@ -1,5 +1,5 @@
 ---
-title: 从 Windows Azure 媒体编码器迁移到 Media Encoder Standard | Microsoft Docs
+title: 从 Windows Azure 媒体编码器迁移到 Media Encoder Standard |Microsoft Docs
 description: 本主题介绍如何从 Azure 媒体编码器迁移到 Media Encoder Standard 媒体处理器。
 services: media-services
 documentationcenter: ''
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 862643cb4eb26d7d88aa81d05433066a927a69aa
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 068b8b0a6e248caa70a8f88ea55d07c30a9437f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424039"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997160"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>从 Windows Azure 媒体编码器迁移到 Media Encoder Standard
 
-本文介绍了从2020年3月1日停用的旧 Windows Azure 媒体编码器（WAME）媒体处理器迁移到 Media Encoder Standard 媒体处理器的步骤。
+本文介绍了在2020年3月31日停用的旧 Windows Azure 媒体编码器（WAME）媒体处理器迁移到 Media Encoder Standard 媒体处理器的步骤。
 
-使用 WAME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 WAME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
+使用 WAME 对文件进行编码时，客户通常使用命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 若要迁移，你的代码需要进行更新，以便使用**Media Encoder Standard**媒体处理器而不是 WAME，以及 `H264 Multiple Bitrate 1080p`等等效[系统预设](media-services-mes-presets-overview.md)之一。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>迁移到 Media Encoder Standard
 
-下面是使用旧组件的典型 C# 代码示例。 
+下面是使用旧C#组件的典型代码示例。 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-下面是使用 Media Encoder Standard 的已更新版本。
+下面是使用 Media Encoder Standard 的更新版本。
 
 ```csharp
 // Declare a new job. 
@@ -64,15 +64,15 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>高级方案 
 
-如果已使用 WAME 的架构为 WAME 创建了自己的编码预设，则会有一个[用于 Media Encoder Standard 的等效架构](media-services-mes-schema.md)。
+如果已使用其架构为 WAME 创建了自己的编码预设，则会有一个[等效的架构用于 Media Encoder Standard](media-services-mes-schema.md)。
 
 ## <a name="known-differences"></a>已知差异 
 
-与旧的 WAME 编码器相比，Media Encoder Standard 更强大、更可靠、性能更好且输出质量更好。 另外： 
+Media Encoder Standard 更可靠、更可靠，具有更好的性能，并产生比旧 WAME 编码器更好的输出质量。 另外： 
 
-* Media Encoder Standard 生成的输出文件的命名约定与 WAME 不同。
-* Media Encoder Standard 生成项目，例如包含[输入文件元数据](media-services-input-metadata-schema.md)和[输出文件元数据](media-services-output-metadata-schema.md)的文件。
-* 如[定价页](https://azure.microsoft.com/pricing/details/media-services/#encoding)（特别是“常见问题解答”部分）所述，使用 Media Encoder Standard 对视频进行编码时，将根据作为输出产生的文件的持续时间进行计费。 使用 WAME，将根据输入视频文件和输出视频文件的大小进行计费。
+* Media Encoder Standard 生成的输出文件的命名约定不同于 WAME。
+* Media Encoder Standard 生成包含[输入文件元数据](media-services-input-metadata-schema.md)和[输出文件元数据](media-services-output-metadata-schema.md)的项目（如文件）。
+* 如 "定价"[页](https://azure.microsoft.com/pricing/details/media-services/#encoding)上所述（尤其是在 "常见问题解答" 部分中），当你使用 Media Encoder Standard 对视频进行编码时，将基于作为输出生成的文件的持续时间进行计费。 对于 WAME，将根据输入视频文件的大小和输出视频文件的大小计费。
 
 ## <a name="need-help"></a>需要帮助？
 

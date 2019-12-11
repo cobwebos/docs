@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048987"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977125"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 预测性维护 (**PdM**) 是一种流行的预测分析应用程序，可帮助多个行业中的企业实现较高的资产利用率和运营成本节省。 本指南提供业务和分析准则与最佳做法，介绍如何使用 [Microsoft Azure AI 平台](https://azure.microsoft.com/overview/ai-platform)技术成功开发和部署 PdM 解决方案。
 
@@ -203,7 +203,9 @@ BDM 内容并不要求读者事先拥有数据科学方面的知识。 若要学
 #### <a name="rolling-aggregates"></a>滚动聚合
 对于每条资产记录，选择大小为“W”的滚动窗口作为时间单位数来计算聚合。 然后，使用该记录日期之前的 W 时段来计算延隔特征。 在图 1 中，蓝线显示在每个时间单位针对资产记录的传感器值。 它们表示在窗口大小 W = 3 时，特征值的滚动平均值。 滚动平均值是根据 t<sub>1</sub>（橙色）到 t<sub>2</sub>（绿色）范围内包含时间戳的所有记录计算得出的。 W 值通常以分钟或小时为单位，具体取决于数据的性质。 但对于某些问题，选择较大的 W（假设 12 个月）能够提供记录时间之前某个资产的整个历史记录。
 
-![图 1. 滚动聚合特征](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) 图 1. 滚动聚合功能
+![图 1. 滚动聚合功能](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+图 1. 滚动聚合功能
 
 基于时间窗口的滚动聚合的示例包括计数、平均、CUMESUM（累计和）度量、最小/最大值。 此外，经常会使用方差、标准偏差和超过 N 标准偏差的离群值计数。 下面列出了可能适用于本指南所述[用例](#sample-pdm-use-cases)的聚合示例。 
 - 航班延误：过去一天/一周的错误代码计数。
@@ -217,7 +219,9 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 #### <a name="tumbling-aggregates"></a>翻转聚合
 对于资产的每个标记记录，将定义大小为_w-<sub>k</sub>_ 的窗口，其中_k_为大小为_w_的窗口数。然后，在记录的时间戳之前的时间段内，在_k_ _翻转的 windows_ _w-k，w-<sub>（k-1）</sub>，...，w-<sub>2</sub>，w-<sub>1</sub>_ 创建聚合。 _k_ 可以是较小数字（以捕获短期效应），也可以是较大数字（以捕获长期降级模式）。 （参阅图 2）。
 
-![图 2. 翻转聚合特征](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) 图 2. 翻转聚合特性
+![图 2： 翻转聚合特性](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+图 2： 翻转聚合特性
 
 例如，可以使用 W=1 和 k=3 创建风力涡轮机用例的延隔特征。 这些特征使用顶部和底部离群值表示过去三个月每个月的延隔时间。
 
@@ -227,14 +231,14 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 完成上面所述的数据准备工作后，接下来应该可以根据下面所述对数据进行组织。 训练、测试和验证数据应具有此逻辑架构（此示例中的时间单位为“天”）。
 
-| 资产 ID | 时间 | \<特征列 > | 标签 |
+| 资产 ID | 时间 | \<特征列 > | Label |
 | ---- | ---- | --- | --- |
-| A123 |第 1 天 | 。 。 。 | 。 |
-| A123 |第 2 天 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
-| B234 |第 1 天 | 。 。 。 | 。 |
-| B234 |第 2 天 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
+| A123 |第 1 天 | . . . | . |
+| A123 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |第 1 天 | . . . | . |
+| B234 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
 
 特征工程的最后一个步骤是将目标变量加上**标签**。 此过程依赖于建模技术。 而建模技术又依赖于业务问题和可用数据的性质。 下一部分将介绍标签。
 
@@ -262,7 +266,9 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 #### <a name="label-construction-for-binary-classification"></a>二元分类的标签构造
 此处的问题是：“资产在将来的 X 个时间单位内发生故障的概率是多少？” 若要回答此问题，请将资产故障前面的 X 条记录标记为“即将发生故障”（标签 = 1），并将其他记录全部标记为“正常”（标签 = 0）。 （参阅图 3）。
 
-![图 3. 二元分类的标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) 图 3. 为二进制分类标记
+![图 3： 为二进制分类标记](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+图 3： 为二进制分类标记
 
 下面列出了某些用例的标签策略示例。
 - 航班延误：可将 X 选择为 1 天，以预测未来 24 小时的延误。 然后，将故障发生前 24 小时内的所有航班标记为 1。
@@ -277,7 +283,9 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 #### <a name="label-construction-for-regression"></a>回归的标签构造
 此处的问题是：“设备的剩余使用寿命 (RUL) 有多久？” 对于故障之前的每条记录，将标签计算为下一次故障之前剩余的时间单位数。 在此方法中，标签是连续变量。 （参阅图 4）
 
-![图 4. 回归的标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) 图 4. 回归标记
+![图 4： 回归标记](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+图 4： 回归标记
 
 对于回归，可以参照故障点完成标签操作。 如果不知道资产在故障之前已保留之久，则无法计算标签值。 因此，与二元分类相比，在数据中没有任何故障的资产不可用于建模。 最好是通过另一种称作[生存分析](https://en.wikipedia.org/wiki/Survival_analysis)的统计技术来解决此问题。 但是，对涉及到随时变化且间隔频繁的数据的 PdM 用例运用这种技术可能存在一定的难度。 有关生存分析的详细信息，请参阅[此单页指南](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf)。
 
@@ -289,11 +297,15 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 #### <a name="label-construction-for-multi-class-classification"></a>多类分类的标签构造
 此处的问题是：“资产在将来的 _nZ_（其中的 _n_ 是时段数目）个时间单位内发生故障的概率是多少？” 若要回答此问题，请使用时间桶 (3Z, 2Z, Z) 标记资产故障之前的 nZ 条记录。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，目标变量保存分类值。 （参阅图 5）。
 
-![图 5. 多类分类的故障时间预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 图 5. 用于故障时间预测的多类分类的标签
+![图 5： 多类分类的故障时间预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+图 5： 用于故障时间预测的多类分类的标签
 
 此处的问题是：“根本原因/问题 _P<sub>i</sub>_ 导致资产在将来的 X 个时间单位内发生故障的概率是多少？” 其中的 _i_ 是可能根本原因的数目。 若要回答此问题，请将资产故障前面的 X 条记录标记为“根本原因 _P<sub>i</sub>_ 即将导致故障”（标签 = _P<sub>i</sub>_ ）。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，标签也可分类（参阅图 6）。
 
-![图 6. 多类分类的根本原因预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 图 6. 用于根本原因预测的多类分类的标签
+![图 6： 多类分类的根本原因预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+图 6： 用于根本原因预测的多类分类的标签
 
 模型根据每个 _P<sub>i</sub>_ 分配故障概率以及不发生故障的概率。 这些概率可以按度量值排序，以允许预测最可能在未来发生的问题。
 
@@ -327,9 +339,11 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 假设各种传感器发送了带有时间戳的事件流（例如测量值）。 定义特定时间范围内包含多个事件的训练和测试示例的特征与标签。 例如，对于二元分类，请基于过去的事件创建特征，并基于“X”个时间单位内的未来事件创建标签（请参阅有关[特征工程](#feature-engineering)和建模技术的部分）。 因此，示例的标签时间范围比其特征的时间范围要晚。
 
-对于时间相关的拆分，请选择训练截止时间 T_c<sub>，到该时间点时，将使用通过截至 T</sub>c_ 的历史数据进行优化的超参数来训练模型。<sub></sub> 为了防止超过 T<sub>c</sub> 的未来标签泄漏到训练数据，请选择最新的时间将训练示例标记为 T<sub>c</sub> 之前的 X 个单位。 在图 7 所示的示例中，每个方块表示数据集中的一条记录，该数据集中的特征和标签已按前文所述进行计算。 图中显示，当 X = 2 且 W = 3 时应进入训练和测试集的记录：
+对于时间相关的拆分，请选择训练截止时间 T<sub>c</sub>，到该时间点时，将使用通过截至 T<sub>c</sub> 的历史数据进行优化的超参数来训练模型。 为了防止超过 T<sub>c</sub> 的未来标签泄漏到训练数据，请选择最新的时间将训练示例标记为 T<sub>c</sub> 之前的 X 个单位。 在图 7 所示的示例中，每个方块表示数据集中的一条记录，该数据集中的特征和标签已按前文所述进行计算。 图中显示，当 X = 2 且 W = 3 时应进入训练和测试集的记录：
 
-![图 7. 二元分类的时间相关拆分](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 图 7. 适用于二进制分类的依赖于时间的拆分
+![图 7： 适用于二进制分类的依赖于时间的拆分](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+图 7： 适用于二进制分类的依赖于时间的拆分
 
 绿色方块表示属于时间单位的可用于训练的记录。 在考虑到过去三个特征生成时段，以及 T<sub>c</sub> 之前两个未来标签时段的情况下，生成每个训练示例。 如果两个未来时段的任何部分超过 T<sub>c</sub>，则从训练数据集中排除该示例，因为不会假设可见性超过 T<sub>c</sub>。
 
@@ -382,7 +396,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 对于二元分类：
 - [接收方操作曲线 (ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 也是一个常用的指标。 在 ROC 曲线中，模型性能根据 ROC 上的固定操作点来解释。
-- 但对于 PdM 问题， _decile 表_和_提升图_更具信息性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
+- 但对于 PdM 问题，十分位表和提升图更具参考性。 它们只注重正类（故障），提供的算法性能图比 ROC 曲线更复杂。
   - 十分位表是使用文本示例根据故障概率的降序创建的。 然后，将排序的示例分组成十分位（具有最高概率的样本的 10%、20%、30%，依此类推）。 每个十分位的比率（真实正比率）/（随机基线）可帮助估计每个十分位的算法性能。 随机基线采用值 0.1、0.2，依此类推。
   - [提升图](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html)绘制十分位的真实正比率，而不是所有十分位的随机真实正比率。 最前面的十分位是结果的重点，因为它们展示了最大增益。 用于 PdM 时，也可以将最前面的十分位视为“有风险”的代表。
 
@@ -409,13 +423,13 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 本指南的最后一部分提供可在 Azure 中实现的 PdM 解决方案模板、教程和试验的列表。 在某些情况下，只需片刻时间即可将这些 PdM 应用程序部署到 Azure 订阅。 可将它们用作概念证明演示、用于试验替代方案的沙盒，或者用于实际生产实施项目的加速器。 这些模板在 [Azure AI 库](https://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure) 中提供。 这些不同的示例会逐渐部署到此解决方案模板。
 
-| # | 标题 | 说明 |
+| # | 标题 | 描述 |
 |--:|:------|-------------|
-| 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 开放源代码解决方案模板，用于演示机器学习建模和完整的 Azure 基础结构，该结构可支持 IoT 远程监视环境中的预测性维护方案。 |
+| 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 一个开源解决方案模板，它演示了 Azure ML 建模和一个能够在 IoT 远程监视上下文中支持预测性维护方案的完整 Azure 基础结构。 |
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
 | 4 | [预测性维护的 R 建模指南](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | 有关使用 R 脚本进行 PdM 建模的指南|
 | 5 | [面向航天工业的 Azure 预测性维护](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 基于 Azure ML v1.0 的首批 PdM 解决方案模板之一，适用于飞机维护。 本指南源于此项目。 |
-| 6 | [Azure AI Toolkit for IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | IoT Edge 中使用 TensorFlow 的 AI；该工具包在与 Azure IoT Edge 兼容的 Docker 容器中打包了深度学习模型，并以 REST API 的形式公开这些模型。
+| 6 | [Azure AI Toolkit for IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | 使用 TensorFlow 的 IoT Edge 中的 AI;工具包在 Azure IoT Edge 兼容的 Docker 容器中打包深度学习模型，并将这些模型公开为 REST Api。
 | 7 | [Azure IoT 预测性维护](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT 套件 PCS - 预配置解决方案。 包含 IoT 套件的飞机维护 PdM 模板。 与同一个项目相关的[另一个文档](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)和[演练](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)。 |
 | 8 | [使用 SQL R Services 的预测性维护模板](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | 基于 R Services 演示剩余使用寿命的场景。 |
 | 9 | [预测性维护建模指南](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | 结合[试验](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)和[数据集](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)，以及 AzureML v1.0 中的 [Azure Notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) 和[试验](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)，使用 R 设计的飞机维护数据集特征|

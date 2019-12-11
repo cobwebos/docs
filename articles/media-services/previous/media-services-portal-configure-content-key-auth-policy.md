@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 64f5afdc8eb24758fac6faa0cc6d1e4e1002b5db
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895849"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968784"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -79,6 +79,10 @@ ms.locfileid: "74895849"
         </PlayReadyLicenseResponseTemplate>
 
 可以选择“导入策略 xml”按钮并提供遵循在[媒体服务 PlayReady 许可证模板概述](media-services-playready-license-template-overview.md)中定义的 XML 架构的一个不同 XML。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

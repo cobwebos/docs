@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/26/2019
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fcb3885446e534a2a6a5153545fd39fb14a02776
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850153"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996504"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -30,7 +30,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
 * [运行方式帐户](manage-runas-account.md)
-* 确保已在自动化帐户中安装[最新的 Azure 模块](automation-update-azure-modules.md)
+* 确保在自动化帐户中具有[最新的 Azure 模块](automation-update-azure-modules.md)，包括**AzureRM**模块。 
 
 > [!NOTE]
 > 源代码管理同步作业以自动化帐户用户身份运行，并且按与其他自动化作业相同的费率计费。

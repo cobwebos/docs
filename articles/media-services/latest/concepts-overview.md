@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910323"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970030"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
 
@@ -32,7 +32,7 @@ ms.locfileid: "70910323"
 
 本部分介绍如何将一些常见的行业条款映射到媒体服务 v3 API。
 
-### <a name="live-event"></a>直播事件
+### <a name="live-event"></a>实时活动
 
 **实时事件**表示引入、转码（可选）和打包视频、音频和实时元数据的管道。
 
@@ -40,7 +40,7 @@ ms.locfileid: "70910323"
 
 ### <a name="streaming-endpoint-packaging-and-origin"></a>流式处理终结点（打包和源）
 
-**流式处理终结点**表示动态（实时）打包和源服务，它可以使用常用的流式处理媒体协议（HLS 或短划线）将实时内容和点播内容直接传送到客户端播放器应用程序。 此外,**流式处理终结点**提供对业界领先 drm 的动态 (实时) 加密。
+**流式处理终结点**表示动态（实时）打包和源服务，它可以使用常用的流式处理媒体协议（HLS 或短划线）将实时内容和点播内容直接传送到客户端播放器应用程序。 此外，**流式处理终结点**提供对业界领先 drm 的动态（实时）加密。
 
 在媒体流行业，此服务通常称为**包装**器或**源**。  此功能行业中的其他常见术语包括 JITP （实时包装程序）或 JITE （实时加密）。 
  
@@ -78,7 +78,7 @@ ms.locfileid: "70910323"
 
 ![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-借助媒体服务，你可以通过高级加密标准（AES-128）或/以及以下三个主要数字版权管理（DRM）系统中的任何一种，提供动态加密的实时和点播内容：内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。
+借助媒体服务，你可以通过高级加密标准（AES-128）或/以及三个主要数字版权管理（DRM）系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任意一个，提供动态加密的实时和点播内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。
 
 如果在流上指定加密选项，请创建**内容密钥策略**，并将其与**流式处理定位符**相关联。 利用**内容密钥策略**，你可以配置如何将内容密钥传递到最终客户端。
 
@@ -88,7 +88,7 @@ ms.locfileid: "70910323"
 
 &#42;动态加密支持 128 "明文密钥"、CBC 和 CENC。 
 
-你可以使用媒体服务**动态清单**仅流式传输视频的特定格式副本或子剪辑。 以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以动态打包成以下任一流式处理协议：HLS、MPEG DASH 和平滑流式处理。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1 Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定删除分辨率大于 720p 的再现内容，因此会剥除两个 1080p 再现内容。
+你可以使用媒体服务**动态清单**仅流式传输视频的特定格式副本或子剪辑。 以下示例使用编码器将夹层资产编码成七个 ISO MP4 视频再现内容（从 180p 到 1080p）。 编码的资产可以动态打包成以下任一流协议：HLS、MPEG DASH 和平滑流。  图表顶部显示了不包含筛选器的资产的 HLS 清单（包含全部七个再现内容）。  左下角显示名为“ott”的筛选器已应用到 HLS 清单。 “ott”筛选器指定要删除所有不低于 1 Mbps 的比特率，因此将最差的两个质量级别从响应中剥除。 在右下角显示已应用名为“mobile”的筛选器的 HLS 清单。 “mobile”筛选器指定要删除分辨率大于 720p 的再现内容，因此将剥除两个 1080p 再现内容。
 
 ![再现内容筛选](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
@@ -100,6 +100,9 @@ ms.locfileid: "70910323"
 - [内容保护](content-protection-overview.md)
 - [动态清单](filters-dynamic-manifest-overview.md)
 - [筛选器](filters-concept.md)
+
+> [!NOTE]
+> Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="live-streaming"></a>实时传送视频流
 
@@ -116,7 +119,7 @@ ms.locfileid: "70910323"
 
 ### <a name="event-grid"></a>事件网格
 
-若要查看作业的进度，应使用**事件网格**。 媒体服务还会发出实时事件类型。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 
+若要查看作业的进度，应使用**事件网格**。 媒体服务还会发出实时事件类型。 使用事件网格，应用可以侦听和响应几乎来自所有 Azure 服务和自定义源的事件。 
 
 - [处理事件网格事件](reacting-to-media-services-events.md)
 - [架构](media-services-event-schemas.md)

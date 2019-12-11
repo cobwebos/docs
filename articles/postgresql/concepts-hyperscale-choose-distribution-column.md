@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Database for PostgreSQL 中选择分布列–超大规模（Citus）
+title: 选择分布列–超大规模（Citus）-Azure Database for PostgreSQL
 description: 了解如何在 Azure Database for PostgreSQL 中选择常见超大规模方案中的分布列。
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482861"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975663"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>在 Azure Database for PostgreSQL 中选择分布列–超大规模（Citus）
 
@@ -35,7 +35,7 @@ ms.locfileid: "73482861"
 若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见实例包括公司、帐户、组织或客户。 列名如 `company_id` 或 `customer_id`。 检查每个查询并问自己，如果它有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
 多租户模型中的查询的作用域限定为租户。 例如，针对销售或库存的查询在特定商店内的范围内。
 
-#### <a name="best-practices"></a>最佳实践
+#### <a name="best-practices"></a>最佳做法
 
 -   **按常见租户\_id 列分区分布式表。** 例如，在租户为公司的 SaaS 应用程序中，租户\_id 可能是公司\_id。
 -   **将小型跨租户表转换为引用表。** 当多个租户共享一个较小的信息表时，将它作为引用表进行分发。
@@ -51,7 +51,7 @@ ms.locfileid: "73482861"
 
 实时查询通常要求按日期或类别分组的数值聚合。 超大规模（Citus）将这些查询发送到部分结果的每个分片，并将最终答案汇编到协调器节点。 当尽可能多的节点，并且没有单个节点必须执行不相称的工作量时，查询运行速度最快。
 
-#### <a name="best-practices"></a>最佳实践
+#### <a name="best-practices"></a>最佳做法
 
 -   **选择一个具有高基数的列作为分布列。** 为了进行比较，具有 "新"、"已支付" 和 "发货" 值的 "订单" 表的状态字段不是分布列的选择。 它仅假定这几个值，它们限制了可容纳数据的分片的数目，以及可处理数据的节点数。 在具有高基数的列中，选择那些经常在 group by 子句中使用的列或联接键也是不错的选择。
 -   **选择包含 "分布" 的列。** 如果在与特定公用值歪斜的列上分发表，则表中的数据往往会在某些分片中累积。 保存这些分片的节点最终比其他节点更多。
@@ -67,7 +67,7 @@ ms.locfileid: "73482861"
 
 在超大规模（Citus）中对时间系列信息进行建模时，最常见的错误是使用时间戳本身作为分布列。 基于时间分布的哈希分布时间似乎随机进入不同的分片，而不是在分片中同时保留时间范围。 涉及时间的查询通常引用时间范围，例如，最新的数据。 这种类型的哈希分布会导致网络开销。
 
-#### <a name="best-practices"></a>最佳实践
+#### <a name="best-practices"></a>最佳做法
 
 -   **不要选择时间戳作为分布列。** 选择其他分布列。 在多租户应用中，使用租户 ID，或在实时应用中使用实体 ID。
 -   **改为使用 PostgreSQL 表分区。** 使用表分区可将大量有时间排序的数据分解成多个继承表，其中每个表都包含不同的时间范围。 在超大规模（Citus）中分发 Postgres 分区的表会为继承的表创建分片。

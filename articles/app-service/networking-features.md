@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672334"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971751"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -46,7 +46,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 使用服务终结点的应用程序网关上的入站专用 IP |
 | 使用 WAF 保护我的应用程序 | 应用程序网关 + ILB ASE </br> 具有服务终结点的应用程序网关 </br> 具有访问限制的 Azure 前门 |
 | 对不同区域中的应用的流量进行负载均衡 | 具有访问限制的 Azure 前门 | 
-| 在同一区域对流量进行负载均衡 | 具有服务终结点的应用程序网关 | 
+| 在同一区域对流量进行负载均衡 | [具有服务终结点的应用程序网关][appgwserviceendpoints] | 
 
 以下出站用例建议如何使用应用服务网络功能来解决应用的出站访问需求。 
 
@@ -63,7 +63,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 
 Azure App Service 扩展单元支持每个部署中的多个客户。 免费和共享 SKU 计划在多租户辅助角色上托管客户工作负荷。 基本和更高计划仅托管专用于一个应用服务计划（ASP）的客户工作负荷。 如果你有标准的应用服务计划，则该计划中的所有应用都将在同一辅助角色上运行。 如果横向扩展辅助角色，则将在 ASP 中的每个实例的新辅助角色上复制该 ASP 中的所有应用。 用于 Premiumv2 的辅助角色不同于用于其他计划的工作线程。 每个应用服务部署都有一个 IP 地址，该地址用于发送到该应用服务部署中的应用的所有入站流量。 但在任何位置均可用于进行出站调用。 这些地址由该应用服务部署中的所有应用共享。 根据不同的辅助角色类型，出站地址有所不同。 这意味着，免费、共享、基本、标准和高级 Asp 使用的地址不同于 Premiumv2 Asp 中用于出站调用的地址。 如果查看应用的属性，可以看到应用使用的入站和出站地址。 如果需要锁定与 IP ACL 的依赖项，请使用 possibleOutboundAddresses。 
 
-![应用属性](media/networking-features/app-properties.png)
+![应用程序属性](media/networking-features/app-properties.png)
 
 应用服务有多个用于管理服务的终结点。  这些地址发布在单独的文档中，并且也在 AppServiceManagement IP 服务标记中。 AppServiceManagement 标记仅与需要允许此类流量的应用服务环境（ASE）一起使用。 在 AppService IP 服务标记中跟踪应用服务的入站地址。 没有 IP 服务标记包含应用服务使用的出站地址。 
 
@@ -222,3 +222,4 @@ ASE 提供有关隔离和专用应用程序托管的最佳故事，但仍有一�
 [vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints

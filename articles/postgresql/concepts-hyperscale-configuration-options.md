@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL –超大规模（Citus）性能选项
+title: 性能选项–超大规模（Citus）-Azure Database for PostgreSQL
 description: 超大规模（Citus）服务器组的选项，包括节点计算、存储和区域。
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 2b848827d3d2017e5e787989553c0bf1e26d48e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482629"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975629"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL –超大规模（Citus）性能选项
 
@@ -29,7 +29,7 @@ ms.locfileid: "73482629"
 | IOPS                  | 最多 3 IOPS/GiB      | 最多 3 IOPS/GiB      |
 
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>区域
 超大规模（Citus）服务器组在以下 Azure 区域中提供：
 
 * 美洲：
@@ -40,7 +40,7 @@ ms.locfileid: "73482629"
     * 美国西部 2
 * 亚太：
     * 澳大利亚东部 *
-    * 东南亚
+    * 亚洲东南部
 * 东欧
     * 北欧
     * 英国南部
@@ -48,7 +48,7 @@ ms.locfileid: "73482629"
 
 带有星号（\*）的区域尚不支持[高可用性](concepts-hyperscale-high-availability.md)。
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
 若要查看所需配置的开销， [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)会根据所选选项，在 "**配置**" 选项卡上显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在[Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择 **"添加项**"，展开 "**数据库**" 类别，然后选择 " **Azure Database for PostgreSQL –超大规模（Citus）** " 以自定义选项。
  
