@@ -222,6 +222,8 @@
       items:
         - name: 创建恢复服务保管库
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: 更新恢复服务保管库配置
+          href: use-restapi-update-vault-properties.md
         - name: 创建和更新备份策略
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: 备份 Azure VM
