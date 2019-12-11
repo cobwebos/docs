@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: 使用 Azure AD 进行基于证书的身份验证
           href: certificate-based-authentication.md
+        - name: 将用户访问权限仅限于数据操作
+          href: how-to-restrict-user-data.md
     - name: 企业就绪情况
       items:
         - name: 从备份还原数据

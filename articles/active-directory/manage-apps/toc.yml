@@ -389,6 +389,8 @@
       items:
         - name: SuccessFactors 属性参考
           href: sap-successfactors-attribute-reference.md
+        - name: Workday 属性参考
+          href: workday-attribute-reference.md
     - name: Azure AD Connect 预配代理
       items:
         - name: 预配代理版本历史记录

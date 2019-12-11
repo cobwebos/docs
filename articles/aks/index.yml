@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">缩放应用程序和 Kubernetes 基础结构</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">更新 Kubernetes 中运行的应用程序</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">升级 AKS 群集</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">了解并实现微服务参考体系结构</a>
   - title: 利用 Microsoft Learn 掌握技能
     items:
       - type: list

@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: SAP HANA 备份支持矩阵
           href: sap-hana-backup-support-matrix.md
+        - name: Azure Policy 支持的 VM SKU
+          href: backup-azure-policy-supported-skus.md
     - name: 安全
       items:
         - name: 基于角色的访问控制
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: 还原已加密 VM 的密钥和机密
               href: backup-azure-restore-key-secret.md
+    - name: Azure 备份的内置 Azure Policy
+      items:
+        - name: 使用 Azure Policy 在创建 VM 时自动启用备份
+          href: backup-azure-auto-enable-backup.md
     - name: 恢复服务保管库的诊断事件
       items:
         - name: 使用恢复服务保管库的诊断设置

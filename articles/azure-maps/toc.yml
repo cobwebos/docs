@@ -29,6 +29,8 @@
           href: tutorial-iot-hub-maps.md
         - name: 使用 Azure Notebooks 进行 EV 路线规划 (Python)
           href: tutorial-ev-routing.md
+        - name: 使用 Azure Notebooks 分析天气数据 (Python)
+          href: weather-service-tutorial.md
 - name: 概念
   items:
     - name: 使用 Azure Maps 进行身份验证

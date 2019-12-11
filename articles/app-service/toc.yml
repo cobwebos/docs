@@ -82,7 +82,11 @@
         - name: 安全概述
           href: overview-security.md
     - name: 网络功能
-      href: networking-features.md
+      items:
+        - name: 概述
+          href: networking-features.md
+        - name: 包含服务终结点的应用程序网关
+          href: networking/app-gateway-with-service-endpoints.md
     - name: 入站和出站 IP
       href: overview-inbound-outbound-ips.md
     - name: 虚拟网络集成

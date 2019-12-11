@@ -3,7 +3,7 @@ documentType: LandingData
 title: 虚拟机文档
 metadata:
   document_id: na
-  title: Azure 虚拟机文档 - 教程和 API 参考 | Microsoft Docs
+  title: Azure 虚拟机文档 - 教程和 API 参考
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: 了解如何创建 Azure 虚拟机。 教程、API 参考和其他文档介绍了如何创建及部署 Windows 与 Linux 虚拟机和 VM 模板。
+  description: 了解如何在 Azure 中创建与部署 Windows 和 Linux 虚拟机。
 sections:
   - title: null
     items:
