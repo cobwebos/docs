@@ -1,7 +1,7 @@
 ---
-title: 自定义浏览器和 WebView
+title: 自定义浏览器 & Webview |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解如何自定义 MSAL for iOS 和 macOS 用来登录用户的浏览器体验
+description: 了解如何自定义 MSAL iOS/macOS 浏览器体验来登录用户。
 services: active-directory
 author: tylermsft
 manager: CelesteDG
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b1e217bfa64ad08136e2763716d455332c5ba4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d5dbdadc6afa3a6822a76fdcecdfcaa6f2ad8c98
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843319"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963709"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 Webview
 

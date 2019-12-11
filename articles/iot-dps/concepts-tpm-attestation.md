@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心设备预配服务 - TPM 证明
-description: 本文以概念的方式概述了使用 IoT 设备预配服务的 TPM 证明流。
+description: 本文提供了有关使用 IoT 设备预配服务（DPS）的 TPM 证明流的概念性概述。
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746371"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975272"
 ---
 # <a name="tpm-attestation"></a>TPM 证明
 
@@ -21,7 +21,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 本文介绍使用 [TPM](./concepts-device.md) 时的标识证明过程。 TPM 表示受信任的平台模块，是一类硬件安全模块 (HSM)。 本文假定你使用单独的、固件式的或集成式的 TPM。 软件模拟 TPM 适用于原型制作或测试，但其提供的安全级别不同于单独的、固件式的或集成式的 TPM。 建议不要在生产中使用软件 TPM。 有关 TPM 类型的详细信息，请参阅 [TPM 简介](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)。
 
-本文仅适用于特定的设备，这些设备使用提供 HMAC 密钥支持的 TPM 2.0，同时使用认可密钥。 本文不适用于使用 X.509 证书进行身份验证的设备。 TPM 是一种行业通用的 ISO 标准，由 Trusted Computing Group 提出。有关 TPM 的详细信息，可参阅[完整的 TPM 2.0 规范](https://trustedcomputinggroup.org/tpm-library-specification/)或 [ISO/IEC 11889 规范](https://www.iso.org/standard/66510.html)。本文还假定你熟悉公钥和私钥对以及如何将其用于加密。
+本文仅适用于特定的设备，这些设备使用提供 HMAC 密钥支持的 TPM 2.0，同时使用认可密钥。 本文不适用于使用 X.509 证书进行身份验证的设备。 TPM 是受信任的计算组中的行业范围 ISO 标准，你可以在[完整的 tpm 2.0 规范](https://trustedcomputinggroup.org/tpm-library-specification/)或[ISO/IEC 11889 规范](https://www.iso.org/standard/66510.html)中阅读有关 tpm 的详细信息。本文还假定你熟悉公钥和私钥对，以及如何使用它们进行加密。
 
 设备预配服务设备 SDK 处理本文中为你介绍的所有事项。 如果是在自己的设备上使用 SDK，则不需实现任何其他的项目。 本文以概念的方式介绍设备预配时在 TPM 安全芯片上发生的情况，并说明了其安全性高的原因。
 

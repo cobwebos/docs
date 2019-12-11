@@ -1,5 +1,5 @@
 ---
-title: 后台应用程序调用 web Api （应用注册）-Microsoft 标识平台
+title: 注册一个可调用 web Api 的后台应用程序-Microsoft 标识平台 |Microsoft
 description: 了解如何构建一个可调用 web Api-应用注册的守护程序应用
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d0d88f72cca45280bd76ac7bb9d7a6e0a1d37fb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bcdad9b1ea56a41613c5d8d815d1418783fea4ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175452"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965579"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>用于调用 web Api 的守护程序应用-应用注册
 
@@ -47,7 +47,7 @@ ms.locfileid: "73175452"
 > [!NOTE]
 > 要调用的 Web API 需要定义**应用程序权限（应用角色）** ，而不是委托的权限。 有关如何公开此类 API 的详细信息，请参阅[受保护的 WEB api：应用注册-当你的 WEB API 被后台程序应用调用时](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
 
-后台应用程序要求将租户管理员预先同意调用 web API 的应用程序。 此许可在同一**API 权限**页面中提供，租户管理员选择 "向**我们的*组织*授予管理员许可**"
+后台应用程序要求将租户管理员预先同意调用 web API 的应用程序。 在同一个提供此许可 **API 的权限** 页上，通过租户管理员选择 **授予管理员同意 *我们的组织***
 
 如果你是构建多租户应用程序的 ISV，则需要检查[多租户后台程序应用的部署案例](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps)。
 

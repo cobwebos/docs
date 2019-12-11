@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420067"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973554"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -116,10 +116,9 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 
 Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详细信息，请参阅[Power BI （预览版）中的 Azure 机器学习集成](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获捕获端到端 ML 生命周期所需的管理数据
 
-Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是在下列情况下：
+Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体如下：
 
 - Azure ML[与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，以跟踪有关代码来源的存储库/分支/提交的信息。
 - [AZURE ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析和版本数据。 
@@ -129,6 +128,7 @@ Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 尤其是
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知、自动执行和警报
 Azure ML 将关键事件发布到 Azure EventGrid，可用于在 ML 生命周期中通知和自动执行事件。 有关详细信息，请参阅[此文档](how-to-use-event-grid.md)。
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>监视操作 & ML 问题
 
 利用监视功能，您可以了解要发送到您的模型的数据以及返回的预测。
@@ -136,7 +136,6 @@ Azure ML 将关键事件发布到 Azure EventGrid，可用于在 ML 生命周期
 此信息可帮助你了解模型的使用方式。 收集的输入数据在训练模型的未来版本时也可能会很有用。
 
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
-
 
 ## <a name="automate-the-ml-lifecycle"></a>自动执行 ML 生命周期 
 

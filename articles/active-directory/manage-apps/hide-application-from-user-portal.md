@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/26/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274008"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970629"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>在 Azure Active Directory 中向最终用户隐藏应用程序
 
 有关如何在最终用户的 MyApps 面板或 Office 365 启动器中隐藏应用程序的说明。 当应用程序隐藏后，用户仍然拥有对应用程序的权限。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在 MyApps 面板和 Office 365 启动器中隐藏应用程序需要应用程序管理员权限。
 
@@ -40,8 +40,21 @@ ms.locfileid: "74274008"
 5.  搜索要隐藏的应用程序，然后单击该应用程序。  此时会打开应用程序的概述。
 6.  单击“属性”。 
 7.  对于“对用户可见?”问题，单击“否”。
-8.  单击“ **保存**”。
+8.  单击“保存”。
 
+## <a name="use-azure-ad-powershell-to-hide-an-application"></a>使用 Azure AD PowerShell 隐藏应用程序
+
+若要从 MyApps 面板中隐藏应用程序，可以手动将 HideApp 标记添加到应用程序的服务主体。 运行以下[AzureAD PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals)命令，将应用程序的 **"对用户可见"** 属性设置为 "**否**"。 
+
+```PowerShell
+Connect-AzureAD
+
+$objectId = "<objectId>"
+$servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
+$tags = $servicePrincipal.tags
+$tags.Add("HideApp")
+Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
+```
 
 ## <a name="hide-office-365-applications-from-the-myapps-panel"></a>在 MyApps 面板中隐藏 Office 365 应用程序
 
@@ -52,8 +65,7 @@ ms.locfileid: "74274008"
 3.  选择“用户设置”。
 4.  在“企业应用程序”下，单击“管理最终用户启动和查看其应用程序的方式”。
 5.  对于“用户只能在 Office 365 门户中查看 Office 365 应用”，单击“是”。
-6.  单击“ **保存**”。
-
+6.  单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 * [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)

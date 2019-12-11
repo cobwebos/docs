@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 472c4a75f5a4253220383ae79d88d5b90cec4795
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555045"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973962"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -74,7 +74,7 @@ ms.locfileid: "74555045"
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
 | 未能将字段映射应用于字段 | 无法将映射函数 `'functionName'` 应用于字段 `'fieldName'`。 数组不能为 null。 参数名称：字节 | 仔细检查在索引器上定义的[字段映射](search-indexer-field-mappings.md)，并将与已失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
-| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
+| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 (访问接口: TCP 访问接口，错误: 0 - 现有连接已被远程主机强行关闭。) | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-execute-skill"/>
 
@@ -147,7 +147,7 @@ ms.locfileid: "74555045"
 | 文档包含集合中的对象太多 | 文档中的集合超出了[所有复杂集合限制的最大元素数](search-limits-quotas-capacity.md#index-limits) | 建议将文档中的复杂集合大小减小到低于限制，并避免高存储利用率。
 | 连接到目标索引时出现问题（重试后仍存在），因为该服务处于其他负载下，如查询或索引。 | 未能建立与更新索引的连接。 搜索服务负载过重。 | [向上缩放搜索服务](search-capacity-planning.md)
 | 搜索服务正在为服务更新进行修补，或者正在重新配置拓扑。 | 未能建立与更新索引的连接。 搜索服务当前处于关闭状态，搜索服务正在进行转换。 | 为服务配置至少3个副本，每个[SLA 文档](https://azure.microsoft.com/support/legal/sla/search/v1_0/)99.9% 的可用性
-| 基础计算/网络资源失败（极少） | 未能建立与更新索引的连接。 出现未知错误。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。
+| 基础计算/网络资源失败（极少） | 未能建立与更新索引的连接。 发生未知故障。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。
 | 由于网络问题，在超时期限内未确认对目标索引进行的索引请求。 | 未能及时建立与搜索索引的连接。 | 将索引器配置为[按计划运行](search-howto-schedule-indexers.md)以从失败状态中选取。 此外，如果此错误情况持续存在，请尝试降低索引器[批处理大小](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)。
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
@@ -307,3 +307,9 @@ ms.locfileid: "74555045"
 如果不存在字节顺序标记，则假定文本编码为 UTF-8。
 
 若要解决此警告，请确定此 blob 的文本编码，并添加相应的字节顺序标记。
+
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+
+## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告： Cosmos DB 集合 "X" 具有延迟索引策略。 某些数据可能丢失
+
+不能一致地查询具有[延迟](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode)索引策略的集合，导致索引器丢失数据。 若要解决此警告，请将索引策略更改为 "一致"。

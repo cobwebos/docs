@@ -1,5 +1,5 @@
 ---
-title: 登录用户的 Web 应用（登录）-Microsoft 标识平台
+title: 编写用于登录用户的 web 应用-Microsoft 标识平台 |Microsoft
 description: 了解如何构建登录用户的 web 应用（登录）
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b41e46401d600ebaba1febb86aafbd55c8399a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c8d7d5737a8332416a225154709ab7d66e447764
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482566"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961975"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登录用户的 Web 应用：登录和注销
 
@@ -33,7 +33,7 @@ ms.locfileid: "74482566"
 - HTML 页上的 "登录" 按钮
 - 控制器的代码隐藏中的登录操作
 
-### <a name="sign-in-button"></a>登录按钮
+### <a name="sign-in-button"></a>"登录" 按钮
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -94,7 +94,7 @@ else
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Python 快速入门中没有登录按钮。 代码隐藏在到达 web 应用程序的根时，会自动提示用户进行登录。 请参阅[py # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18)。
+Python 快速入门中没有 "登录" 按钮。 代码隐藏在到达 web 应用程序的根时，会自动提示用户进行登录。 请参阅[py # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18)。
 
 ```Python
 @app.route("/")
@@ -106,17 +106,17 @@ def index():
 
 ---
 
-### <a name="signin-action-of-the-controller"></a>控制器的 `SignIn` 操作
+### <a name="signin-action-of-the-controller"></a>控制器 `SignIn` 操作
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET 中，选择 web 应用中的 "**登录**" 按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。 在以前版本的 ASP.NET core 模板中，`Account` 控制器已嵌入到 web 应用中。 这并不是因为控制器现在是 ASP.NET Core 框架的一部分。
 
-`AccountController` 的代码可从[AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs)中的 ASP.NET Core 存储库获取。 帐户控件通过重定向到 Microsoft 标识平台终结点来对用户提出质询。 有关详细信息，请参阅 ASP.NET Core 中提供的[登录](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31)方法。
+`AccountController` 的代码可从[AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs)中的 ASP.NET Core 存储库获取。 帐户控制通过重定向到 Microsoft 标识平台终结点来质询用户。 有关详细信息，请参阅 ASP.NET Core 中提供的[登录](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31)方法。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，从控制器上的 `SignOut()` 方法（例如， [AccountController # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）触发注销。 此方法不是 ASP.NET 框架的一部分（与 ASP.NET Core 中的情况相反）。 建议在建议重定向 URI 后发送 OpenID 登录质询。
+在 ASP.NET 中，从控制器上的 `SignOut()` 方法（例如， [AccountController # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）触发注销。 此方法不是 ASP.NET 框架的一部分（与 ASP.NET Core 中发生的情况相反）。 建议在建议重定向 URI 后发送 OpenID 登录质询。
 
 ```CSharp
 public void SignIn()
@@ -209,9 +209,9 @@ def _get_token_from_cache(scope=None):
 ## <a name="sign-out"></a>注销
 
 从 web 应用注销只涉及从 web 应用的状态中删除有关登录帐户的信息。
-该 Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。 
+Web 应用还必须将用户重定向到 Microsoft 标识平台 `logout` 终结点才能注销。 
 
-当 Web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果你的应用未进入 `logout` 终结点，则用户将重新对你的应用进行身份验证，而无需再次输入其凭据。 原因是它们将与 Microsoft 标识平台终结点建立有效的单一登录会话。
+当你的 web 应用将用户重定向到 `logout` 终结点时，此终结点将从浏览器中清除用户的会话。 如果你的应用未进入 `logout` 终结点，则用户将重新对你的应用进行身份验证，而无需再次输入其凭据。 原因是它们将与 Microsoft 标识平台终结点建立有效的单一登录会话。
 
 若要了解详细信息，请参阅 Microsoft 标识平台中的[发送注销请求](v2-protocols-oidc.md#send-a-sign-out-request)部分[和 OpenID connect 协议](v2-protocols-oidc.md)文档。
 
@@ -235,7 +235,7 @@ def _get_token_from_cache(scope=None):
 
 ---
 
-### <a name="sign-out-button"></a>注销按钮
+### <a name="sign-out-button"></a>"注销" 按钮
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -320,7 +320,7 @@ else
 
 ---
 
-### <a name="signout-action-of-the-controller"></a>控制器的 `SignOut` 操作
+### <a name="signout-action-of-the-controller"></a>控制器 `SignOut` 操作
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -336,7 +336,7 @@ else
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，从控制器上的 `SignOut()` 方法（例如， [AccountController # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）触发注销。 此方法不是 ASP.NET 框架的一部分，这与 ASP.NET Core 中发生的情况相反。 该方法：
+在 ASP.NET 中，从控制器上的 `SignOut()` 方法（例如， [AccountController # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）触发注销。 此方法不是 ASP.NET 框架的一部分，这与 ASP.NET Core 中发生的情况相反。 以便
 
 - 发送 OpenID 注销质询。
 - 清除缓存。
@@ -438,4 +438,4 @@ public class AccountController : Controller
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [转移到生产环境](scenario-web-app-sign-user-production.md)
+> [转到生产](scenario-web-app-sign-user-production.md)

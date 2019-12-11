@@ -11,12 +11,12 @@ ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d8c3e3c272ce12200ab7506fd7c9759a8cb3aa64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975425"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -36,7 +36,7 @@ ms.locfileid: "74851734"
 
 资源类使用并发性槽位来测量资源消耗。  本文稍后将介绍[并发性槽位](#concurrency-slots)。
 
-- 若要查看资源类的资源利用率，请参阅 [内存和并发限制] 内存-limits.md）。
+- 若要查看资源类的资源利用率，请参阅[内存和并发性限制](memory-concurrency-limits.md)。
 - 若要调整资源类，可以使用不同的用户身份运行查询，或[更改当前用户的资源类](#change-a-users-resource-class)成员身份。
 
 ### <a name="static-resource-classes"></a>静态资源类

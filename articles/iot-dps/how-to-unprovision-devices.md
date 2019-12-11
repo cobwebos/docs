@@ -1,18 +1,18 @@
 ---
 title: 取消预配通过 Azure IoT 中心设备预配服务预配的设备
-description: 如何取消预配使用 Azure IoT 中心设备预配服务预配的设备
+description: 如何取消预配使用 Azure IoT 中心设备预配服务（DPS）预配的设备
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 60d0647522fbce2fea43531e164e0a6d1b0de144
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229693"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974830"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 

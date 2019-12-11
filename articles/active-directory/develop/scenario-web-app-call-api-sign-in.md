@@ -1,6 +1,6 @@
 ---
-title: 用于调用 web Api 的 web 应用（登录）-Microsoft 标识平台
-description: 了解如何生成可调用 web Api 的 Web 应用（登录）
+title: 注销时从缓存中删除帐户-Microsoft 标识平台 |Microsoft
+description: 了解如何在注销时从令牌缓存中删除帐户
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596367"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961652"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>用于调用 web Api 的 web 应用-登录
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>在全局注销时从缓存中删除帐户
 
 你已经了解如何将登录添加到 web 应用。 你将在登录[用户-添加登录的 Web 应用](scenario-web-app-sign-user-sign-in.md)中了解相关情况。
 

@@ -3,12 +3,12 @@ title: 如何通过 PowerShell 管理分配
 description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图管理蓝图分配。
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 5e91197cac97475aa20df8fef8649d98d762d920
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873176"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973639"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
 
@@ -246,6 +246,8 @@ ResourceGroups    : ResourceGroup
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+有关用户分配的托管标识的 JSON 分配定义文件的示例，请参阅[示例正文：示例：使用用户分配的托管标识](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity)对 REST API 进行分配。
 
 ## <a name="update-blueprint-assignments"></a>更新蓝图分配
 

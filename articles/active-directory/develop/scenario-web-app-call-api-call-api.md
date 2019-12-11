@@ -1,5 +1,5 @@
 ---
-title: 用于调用 web Api 的 web 应用程序（调用 web API）-Microsoft 标识平台
+title: 从 web 应用调用 web api-Microsoft 标识平台 |Microsoft
 description: 了解如何生成可调用 web Api 的 Web 应用（调用 web API）
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: de972c4efcfa544227649581d7c3441aae0bfb4f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175304"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964933"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>用于调用 web Api 的 web 应用-调用 web API
 

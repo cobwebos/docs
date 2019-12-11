@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4549ee0f50c06040b70307c96b5ca96cd4162214
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581235"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974271"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>通过浏览器连接到你的虚拟机 
 
@@ -26,10 +26,9 @@ ms.locfileid: "73581235"
 
 启用*浏览器连接*后，实验室用户可以通过浏览器访问虚拟机。  
 
-
 ## <a name="create-a-lab-virtual-machine"></a>创建实验室虚拟机
 
-首先需要在配置了堡垒的 VNet 中创建实验室虚拟机。 可以通过转到 "**高级设置**" 选项卡，在虚拟机创建过程中选择 VNet。
+首先需要在虚拟网络中创建在其上配置了堡垒的实验室虚拟机。 选择创建的第二**个子网**，而不是 AzureBastionSubnet。 可以通过转到 "**高级设置**" 选项卡，在虚拟机创建过程中选择虚拟网络。
 
 ![创建虚拟机](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 

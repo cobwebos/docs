@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure AD 中的 OpenID Connect 授权代码流 | Microsoft Docs
+title: 使用 OpenID Connect & Azure AD 授权 web 应用访问 |Microsoft Docs
 description: 本文介绍如何使用 Azure Active Directory 和 OpenID Connect，通过 HTTP 消息来授权访问租户中的 Web 应用程序和 Web API。
 services: active-directory
 documentationcenter: .net
@@ -18,19 +18,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 67f9107e352f1ae52158d09caea4ba8118a3c515
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389792"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964423"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 是构建在 OAuth 2.0 协议顶层的简单标识层。 OAuth 2.0 定义了一些机制用于获取和使用[**访问令牌**](access-tokens.md)来访问受保护资源，但未定义用于提供标识信息的标准方法。 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 它以 [`id_token`](id-tokens.md) 的形式提供有关最终用户的信息，可验证用户的标识，并提供有关用户的基本配置文件信息。
 
 如果要构建的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。
-
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
@@ -47,7 +46,7 @@ OpenID Connect 描述了元数据文档，该文档包含了应用执行登录�
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net)对该代码段的内容进行了完整描述。 请注意，提供租户 ID 而不是用 `common` 代替上面的 {tenant} 将导致在 JSON 对象中返回特定于租户的 URI。
+元数据是简单的 JavaScript 对象表示法 (JSON) 文档。 有关示例，请参阅下面的代码段。 [OpenID Connect 规范](https://openid.net)对该代码段的内容进行了完整描述。 请注意，提供租户 ID，而不是在上面的 {租户} `common` 来代替，会导致返回 JSON 对象中特定于租户的 Uri。
 
 ```
 {
@@ -65,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 }
 ```
 
-如果应用因使用[声明映射](active-directory-claims-mapping.md)功能而具有自定义签名密钥，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`。 例如：`https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
+如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 `appid` 查询参数，才能获取指向应用的签名密钥信息 `jwks_uri`。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
 
 ## <a name="send-the-sign-in-request"></a>发送登录请求
 
@@ -92,22 +91,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| 租户 |必需 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
-| client_id |必需 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 依次单击“Azure Active Directory”和“应用注册”，选择应用程序并在应用程序页上找到应用程序 ID。 |
-| response_type |必需 |必须包含 OpenID Connect 登录的 `id_token`。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
-| 范围 | 建议 | OpenID Connect 规范要求范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 在 v1.0 终结点上，此范围和其他 OIDC 范围会被忽略，但对符合标准的客户端而言仍是最佳做法。 |
-| nonce |必需 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
-| redirect_uri | 建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 如果缺失，则会将用户代理随机发送回某个为应用注册的重定向 URI。 最大长度为 255 字节 |
+| tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击 " **Azure Active Directory**"，单击 "**应用注册**"，选择应用程序，并在应用程序页上找到应用程序 ID。 |
+| response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
+| scope | 建议 | OpenID Connect 规范要求范围 `openid`，这会在同意 UI 中转换为 "登录" 权限。 此和其他 OIDC 范围在 v1.0 终结点上会被忽略，但对于符合标准的客户端仍是最佳实践。 |
+| nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
+| redirect_uri | 建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 如果缺少此项，则会将用户代理发送回随机注册应用程序的重定向 Uri 之一。 最大长度为255字节 |
 | response_mode |可选 |指定将生成的 authorization_code 送回到应用程序所应该使用的方法。 HTTP 窗体发布支持的值为 `form_post`，URL 片段支持的值为 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 包含 id_token 的任何流的默认值为 `fragment`。|
-| 省/自治区/直辖市 |建议 |随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该 state 也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
+| state |建议 |随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | prompt |可选 |表示需要的用户交互类型。 当前唯一有效的值为“login”、“none”和“consent”。 `prompt=login` 强制用户在该请求上输入其凭据，从而使单一登录无效。 `prompt=none` 完全相反，它会确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，则终结点将返回一个错误。 `prompt=consent` 在用户登录后触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
 
-此时，系统会要求用户输入凭据并完成身份验证。
+此时，系统将要求用户输入凭据并完成身份验证。
 
 ### <a name="sample-response"></a>示例响应
 
-在用户进行身份验证后发送到登录请求中指定的 `redirect_uri` 的示例响应可能如下所示：
+发送到用户经过身份验证后在登录请求中指定的 `redirect_uri` 的示例响应如下所示：
 
 ```
 POST / HTTP/1.1
@@ -120,7 +119,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | 参数 | 描述 |
 | --- | --- |
 | id_token |应用请求的 `id_token`。 可以使用 `id_token` 验证用户的标识，并以用户身份开始会话。 |
-| 省/自治区/直辖市 |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
+| state |同时随令牌响应返回的请求中所包含的值。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 
 ### <a name="error-response"></a>错误响应
 
@@ -136,7 +135,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | 参数 | 描述 |
 | --- | --- |
-| 错误 |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>授权终结点错误的错误代码
@@ -149,7 +148,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | unauthorized_client |不允许客户端应用程序请求授权代码。 |客户端应用程序未注册到 Azure AD 中或者未添加到用户的 Azure AD 租户时，通常会出现这种情况。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 | access_denied |资源所有者拒绝了许可 |客户端应用程序可以通知用户除非用户许可，否则无法继续。 |
 | unsupported_response_type |授权服务器不支持请求中的响应类型。 |修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
-| server_error |服务器遇到意外的错误。 |重试请求。 这些错误可能是临时状况导致的。 客户端应用程序可能向用户说明，其响应由于临时错误而延迟。 |
+| server_error |服务器遇到意外的错误。 |重试请求。 这些错误可能是临时状态导致的。 客户端应用程序可能向用户说明，其响应由于临时错误而延迟。 |
 | temporarily_unavailable |服务器暂时繁忙，无法处理请求。 |重试请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
 | invalid_resource |目标资源无效，原因是它不存在，Azure AD 找不到它，或者未正确配置。 |这表示未在租户中配置该资源（如果存在）。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
 
@@ -162,16 +161,16 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 可能还希望根据自己的方案验证其他声明。 一些常见的验证包括：
 
 * 确保用户/组织已注册应用。
-* 使用 `wids` 或 `roles` 声明，确保用户拥有正确的授权/权限。 
+* 使用 `wids` 或 `roles` 声明确保用户具有适当的授权/特权。 
 * 确保身份验证具有一定的强度，例如多重身份验证。
 
-验证 `id_token` 后，即可开始与用户的会话，并使用 `id_token` 中的声明来获取应用中的用户相关信息。 此信息可用于显示、记录和个性化等。有关 `id_tokens` 和声明的详细信息，请阅读 [AAD id_tokens](id-tokens.md)。
+验证 `id_token` 后，即可开始与用户的会话，并使用 `id_token` 中的声明来获取应用中的用户相关信息。 此信息可用于显示、记录、个性化等。有关 `id_tokens` 和声明的详细信息，请参阅[AAD id_tokens](id-tokens.md)。
 
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 
-如果希望用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到 `end_session_endpoint` 才能注销。如果不这样做，用户可能不需要再次输入凭据就能重新通过应用的身份验证，因为他们与 Azure AD 终结点之间仍然存在有效的单一登录会话。
+如果希望用户从应用中注销，仅仅是清除应用的 Cookie 或结束用户会话并不足够。 还必须将用户重定向到用于注销的 `end_session_endpoint`。如果无法执行此操作，用户将能够重新向应用程序进行身份验证，而无需再次输入凭据，因为它们将与 Azure AD 终结点建立有效的单一登录会话。
 
-只需将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint` ：
+只需将用户重定向到 OpenID Connect 元数据文档中所列的 `end_session_endpoint`：
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/logout?
@@ -181,7 +180,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。  如果不包含*post_logout_redirect_uri* ，则会向用户显示一般消息。 |
+| post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 Uri 之一匹配。  如果未包括*post_logout_redirect_uri* ，则将向用户显示一般消息。 |
 
 ## <a name="single-sign-out"></a>单一登录
 
@@ -216,7 +215,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 ### <a name="successful-response"></a>成功的响应
 
-使用 `response_mode=form_post` 发送到 `redirect_uri` 的成功响应如下所示：
+使用 `response_mode=form_post`发送到 `redirect_uri` 的成功响应如下所示：
 
 ```
 POST /myapp/ HTTP/1.1
@@ -229,8 +228,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | 参数 | 描述 |
 | --- | --- |
 | id_token |应用请求的 `id_token`。 可以使用 `id_token` 验证用户的标识，并以用户身份开始会话。 |
-| code |应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_codes 的生存期较短，通常约 10 分钟后即过期。 |
-| 省/自治区/直辖市 |如果请求中包含状态参数，响应中就应该出现相同的值。 应用应该验证请求和响应中的 state 值是否完全相同。 |
+| 代码 |应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_codes 的生存期较短，通常约 10 分钟后即过期。 |
+| state |如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
 
 ### <a name="error-response"></a>错误响应
 
@@ -246,7 +245,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | 参数 | 描述 |
 | --- | --- |
-| 错误 |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 有关可能的错误代码的描述及其建议的客户端操作，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fc89b6233602c81ea622a528c223adf2003f0f68
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772490"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969541"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -23,17 +23,17 @@ ms.locfileid: "74772490"
 |---|---|---|
 |基本| 第| 50|
 |基本| 2| 100|
-|常规用途| 2| 300|
-|常规用途| 4| 625|
-|常规用途| 8| 1250|
-|常规用途| 16| 2500|
-|常规用途| 32| 5000|
-|常规用途| 64| 10000|
-|内存优化| 2| 600|
-|内存优化| 4| 1250|
-|内存优化| 8| 2500|
-|内存优化| 16| 5000|
-|内存优化| 32| 10000|
+|常规用途| 2| 600|
+|常规用途| 4| 1250|
+|常规用途| 8| 2500|
+|常规用途| 16| 5000|
+|常规用途| 32| 10000|
+|常规用途| 64| 20000|
+|内存优化| 2| 800|
+|内存优化| 4| 2500|
+|内存优化| 8| 5000|
+|内存优化| 16| 10000|
+|内存优化| 32| 20000|
 
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004): 连接过多

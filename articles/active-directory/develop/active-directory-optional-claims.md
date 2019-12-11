@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/03/2019
+ms.date: 12/08/2019
 ms.author: ryanwi
-ms.reviewer: paulgarn, hirsin
+ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 323415c18497f19b4c8f29a303b6ec59dfda1885
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bcaf347eb91f8777b56bb2ea4d26985b2d75f645
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918264"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967182"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：为 Azure AD 应用提供可选声明
 
@@ -69,11 +69,11 @@ ms.locfileid: "74918264"
 | `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
 | `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA，Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。| 
-| `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置结合使用，该设置也必须设置。 有关详细信息，请参阅下面的[组声明](#Configuring-group-optional claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
+| `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置结合使用，该设置也必须设置。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
 | `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
 
-### <a name="v20-optional-claims"></a>v2.0 可选声明
+## <a name="v20-specific-optional-claims-set"></a>v2.0 特定的可选声明集
 
 这些声明始终包含在 v1.0 Azure AD 令牌中，但不包括在 v2.0 令牌中，除非已请求。 这些声明仅适用于 Jwt （ID 令牌和访问令牌）。 
 
@@ -105,126 +105,166 @@ ms.locfileid: "74918264"
 
 #### <a name="additional-properties-example"></a>附加属性示例
 
-```json
- "optionalClaims": 
-   {
-       "idToken": [ 
-             { 
-                "name": "upn", 
-            "essential": false,
-                "additionalProperties": [ "include_externally_authenticated_upn"]  
-              }
-        ]
-}
-```
+    ```json
+        "optionalClaims": 
+         {
+             "idToken": [ 
+            { 
+                      "name": "upn", 
+                      "essential": false,
+                  "additionalProperties": [ "include_externally_authenticated_upn"]  
+                    }
+                 ]
+        }
+    ```
 
 此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，这才会更改令牌中的 `upn` 声明。 
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
-可以通过修改应用程序清单来配置应用程序的可选声明 （请参阅下面的示例）。 有关详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)。
-
 > [!IMPORTANT]
 > **始终**使用资源的清单而不是客户端生成访问令牌。  因此在请求中 `...scope=https://graph.microsoft.com/user.read...` 资源为 Graph。  因此，访问令牌是使用图形清单创建的，而不是客户端的清单。  更改应用程序的清单永远不会导致图形的标记看上去不同。  为了验证你的 `accessToken` 更改是否有效，请为你的应用程序请求一个令牌，而不是向其他应用请求。  
 
-**示例架构：**
+可以通过 UI 或应用程序清单为应用程序配置可选声明。
 
-```json
-"optionalClaims":  
-   {
-      "idToken": [
-            {
-                  "name": "auth_time", 
-                  "essential": false
-             }
-      ],
-      "accessToken": [
-             {
-                    "name": "ipaddr", 
-                    "essential": false
-              }
-      ],
-      "saml2Token": [
-              {
-                    "name": "upn", 
-                    "essential": false
-               },
-               {
-                    "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
-                    "source": "user", 
-                    "essential": false
-               }
-       ]
-   }
-```
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
+1. 从左侧菜单中选择 " **Azure Active Directory** "。
+1. 从 "**管理**" 部分中，选择**应用注册**。
+1. 在列表中选择要为其配置可选声明的应用程序。
 
-### <a name="optionalclaims-type"></a>OptionalClaims 类型
+**通过 UI 配置可选声明：**
 
-声明应用程序请求的可选声明。 应用程序可以配置为要在它能够从安全令牌服务收到的每种令牌（共三种，即 ID 令牌、访问令牌和 SAML 2 令牌）中返回可选声明。 应用程序可以配置为要在每种令牌类型中返回一组不同的可选声明。 Application 实体的 OptionalClaims 属性是一个 OptionalClaims 对象。
+[![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-**表5： OptionalClaims 类型属性**
+1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
+2. 选择 "**添加可选声明**"。
+3. 选择要配置的令牌类型。
+4. 选择要添加的可选声明。
+5. 单击“添加”。
 
-| 名称        | Type                       | 描述                                           |
+**通过应用程序清单配置可选声明：**
+
+[![演示如何使用应用程序清单配置可选声明](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
+
+1. 从 "**管理**" 部分选择 "**清单**"。 此时将打开一个基于 web 的清单编辑器，您可以在其中编辑清单。 （可选）可以选择“下载”并在本地编辑清单，然后使用“上传”将清单重新应用到应用程序。 有关应用程序清单的详细信息，请参阅[了解 Azure AD 应用程序清单](reference-app-manifest.md)。
+
+    以下应用程序清单条目将 auth_time、ipaddr 和 upn 可选声明添加到 ID、访问和 SAML 令牌。
+
+    ```json
+        "optionalClaims":  
+           {
+              "idToken": [
+                    {
+                          "name": "auth_time", 
+                          "essential": false
+                     }
+              ],
+              "accessToken": [
+                     {
+                            "name": "ipaddr", 
+                            "essential": false
+                      }
+              ],
+              "saml2Token": [
+                      {
+                            "name": "upn", 
+                            "essential": false
+                       },
+                       {
+                            "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
+                            "source": "user", 
+                            "essential": false
+                       }
+               ]
+           }
+       ```
+
+2. When finished, click **Save**. Now the specified optional claims will be included in the tokens for your application.    
+
+
+### OptionalClaims type
+
+Declares the optional claims requested by an application. An application can configure optional claims to be returned in each of three types of tokens (ID token, access token, SAML 2 token) it can receive from the security token service. The application can configure a different set of optional claims to be returned in each token type. The OptionalClaims property of the Application entity is an OptionalClaims object.
+
+**Table 5: OptionalClaims type properties**
+
+| Name        | Type                       | Description                                           |
 |-------------|----------------------------|-------------------------------------------------------|
-| `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。 |
-| `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
-| `saml2Token`  | 集合 (OptionalClaim) | 在 SAML 令牌中返回的可选声明。   |
+| `idToken`     | Collection (OptionalClaim) | The optional claims returned in the JWT ID token. |
+| `accessToken` | Collection (OptionalClaim) | The optional claims returned in the JWT access token. |
+| `saml2Token`  | Collection (OptionalClaim) | The optional claims returned in the SAML token.   |
 
-### <a name="optionalclaim-type"></a>OptionalClaim 类型
+### OptionalClaim type
 
-包含与应用程序或服务主体关联的可选声明。 [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) 类型的 IdToken、accessToken 和 saml2Token 属性是一个 OptionalClaim 集合。
-如果特定的声明支持这样做，则还可以使用 AdditionalProperties 字段修改 OptionalClaim 的行为。
+Contains an optional claim associated with an application or a service principal. The idToken, accessToken, and saml2Token properties of the [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) type is a collection of OptionalClaim.
+If supported by a specific claim, you can also modify the behavior of the OptionalClaim using the AdditionalProperties field.
 
-**表6： OptionalClaim 类型属性**
+**Table 6: OptionalClaim type properties**
 
-| 名称                 | Type                    | 描述                                                                                                                                                                                                                                                                                                   |
+| Name                 | Type                    | Description                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
-| `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
-| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                             |
-| `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
-## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
+| `name`                 | Edm.String              | The name of the optional claim.                                                                                                                                                                                                                                                                           |
+| `source`               | Edm.String              | The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object. |
+| `essential`            | Edm.Boolean             | If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.                                                                                                             |
+| `additionalProperties` | Collection (Edm.String) | Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.                                                                                                                                               |
+## Configuring directory extension optional claims
 
-除了标准的可选声明集外，还可以将令牌配置为包括目录架构扩展。 有关详细信息，请参阅[目录架构扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 
+In addition to the standard optional claims set, you can also configure tokens to include directory schema extensions. For more info, see [Directory schema extensions](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). This feature is useful for attaching additional user information that your app can use – for example, an additional identifier or important configuration option that the user has set. See the bottom of this page for an example.
 
-> [!Note]
-> - 目录架构扩展是一项仅限 Azure AD 的功能，因此，如果应用程序清单请求自定义扩展插件，并且 MSA 用户登录到应用，则将不会返回这些扩展。
-> - Azure AD 可选声明仅适用于 Azure AD 扩展，不适用于 Microsoft Graph 目录扩展。 这两个 Api 都需要 `Directory.ReadWriteAll` 的权限，该权限只能由管理员同意。
+> [!NOTE]
+> - Directory schema extensions are an Azure AD-only feature, so if your application manifest requests a custom extension and an MSA user logs into your app, these extensions will not be returned.
+> - Azure AD optional claims only work with Azure AD Graph extensions and do not work with Microsoft Graph directory extensions. Both APIs require the `Directory.ReadWriteAll` permission, which can only be consented by admins.
 
-### <a name="directory-extension-formatting"></a>目录扩展格式
+### Directory extension formatting
 
-对于扩展属性，请在应用程序清单中使用扩展的完整名称（格式：`extension_<appid>_<attributename>`）。 `<appid>` 必须与请求声明的应用程序的 ID 匹配。 
+When configuring directory extension optional claims using the application manifest, use the full name of the extension (in the format: `extension_<appid>_<attributename>`). The `<appid>` must match the ID of the application requesting the claim. 
 
-在 JWT 中，将使用以下命名格式发出这些声明：`extn.<attributename>`。
+Within the JWT, these claims will be emitted with the following name format:  `extn.<attributename>`.
 
-在 SAML 令牌中，将使用以下 URI 格式发出这些声明：`http://schemas.microsoft.com/identity/claims/extn.<attributename>`。
+Within the SAML tokens, these claims will be emitted with the following URI format: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
-## <a name="configuring-group-optional-claims"></a>配置组可选声明
+## Configuring groups optional claims
 
    > [!NOTE]
-   > 为从本地同步的用户和组发出组名的功能是公共预览。
+   > The ability to emit group names for users and groups synced from on-premises is Public Preview.
 
-本部分介绍了可选声明下的配置选项，用于将组声明中使用的组属性从默认组 objectID 更改为从本地 Windows Active Directory 同步的属性。
+This section covers the configuration options under optional claims for changing the group attributes used in group claims from the default group objectID to attributes synced from on-premises Windows Active Directory. You can configure groups optional claims for your application through the UI or application manifest.
 
 > [!IMPORTANT]
-> 有关更多详细信息，请参阅为[应用 Azure AD 程序配置组声明](../hybrid/how-to-connect-fed-group-claims.md)，其中包括有关本地属性中组声明的公共预览版的重要注意事项。
+> See [Configure group claims for applications with Azure AD](../hybrid/how-to-connect-fed-group-claims.md) for more details including important caveats for the public preview of group claims from on-premises attributes.
 
-1. 在门户中 > Azure Active Directory > 应用程序注册-> 选择 "应用程序 > 清单"
+**Configuring groups optional claims through the UI:**
+1. Sign in to the [Azure portal](https://portal.azure.com)
+1. After you've authenticated, choose your Azure AD tenant by selecting it from the top right corner of the page
+1. Select **Azure Active Directory** from the left hand menu
+1. Under the **Manage** section, select **App registrations**
+1. Select the application you want to configure optional claims for in the list
+1. Under the **Manage** section, select **Token configuration (preview)**
+2. Select **Add groups claim**
+3. Select the group types to return (**All Groups**, **SecurityGroup** or **DirectoryRole**). The **All Groups** option includes **SecurityGroup**, **DirectoryRole** and **DistributionList**
+4. Optional: click on the specific token type properties to modify the groups claim value to contain on premises group attributes or to change the claim type to a role
+5. Click **Save**
 
-2. 通过更改 groupMembershipClaim 启用组成员身份声明
+**Configuring groups optional claims through the application manifest:**
+1. Sign in to the [Azure portal](https://portal.azure.com)
+1. After you've authenticated, choose your Azure AD tenant by selecting it from the top right corner of the page
+1. Select **Azure Active Directory** from the left hand menu
+1. Select the application you want to configure optional claims for in the list
+1. Under the **Manage** section, select **Manifest**
+3. Add the following entry using the manifest editor:
 
-   有效值包括：
+   The valid values are:
 
-   - “全部”
+   - "All" (this option includes SecurityGroup, DirectoryRole and DistributionList)
    - "SecurityGroup"
-   - DistributionList
-   - DirectoryRole
+   - "DirectoryRole"
 
-   例如：
+   For example:
 
-   ```json
-   "groupMembershipClaims": "SecurityGroup"
-   ```
+    ```json
+        "groupMembershipClaims": "SecurityGroup"
+    ```
 
    默认情况下，将在组声明值中发出组 ObjectIDs。  若要修改声明值以包含本地组属性，或者要将声明类型更改为 role，请按如下所示使用 OptionalClaims 配置：
 
@@ -241,14 +281,14 @@ ms.locfileid: "74918264"
 
    对于每个相关的标记类型，请修改组声明以使用清单中的 OptionalClaims 节。 OptionalClaims 架构如下所示：
 
-   ```json
-   {
-   "name": "groups",
-   "source": null,
-   "essential": false,
-   "additionalProperties": []
-   }
-   ```
+    ```json
+       {
+       "name": "groups",
+       "source": null,
+       "essential": false,
+       "additionalProperties": []
+       }
+    ```
 
    | 可选声明架构 | Value |
    |----------|-------------|
@@ -264,84 +304,124 @@ ms.locfileid: "74918264"
    > [!NOTE]
    > 如果使用 "emit_as_roles"，则配置了用户分配的任何应用程序角色都不会出现在角色声明中
 
-**示例：** 以 dnsDomainName\sAMAccountName 格式将组作为 OAuth 访问令牌中的组名发出
+**示例：**
 
-```json
-"optionalClaims": {
-    "accessToken": [{
-        "name": "groups",
-        "additionalProperties": ["dns_domain_and_sam_account_name"]
-    }]
-}
- ```
+1) 以 dnsDomainName\sAMAccountName 格式将组作为 OAuth 访问令牌中的组名发出
 
-若要发出以 netbiosDomain\sAMAccountName 格式返回的组名作为 SAML 和 OIDC ID 令牌中的角色声明：
+    
+    **UI 配置：**
 
-```json
-"optionalClaims": {
-    "saml2Token": [{
-        "name": "groups",
-        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
-    }],
+    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
-    "idToken": [{
-        "name": "groups",
-        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
-    }]
- }
 
- ```
+    **应用程序清单条目：**
+    ```json
+        "optionalClaims": {
+            "accessToken": [{
+            "name": "groups",
+            "additionalProperties": ["dns_domain_and_sam_account_name"]
+            }]
+        }
+    ```
+
+ 
+    
+2) 发出要以 netbiosDomain\sAMAccountName 格式返回的组名称作为 SAML 和 OIDC ID 令牌中的角色声明
+
+    **UI 配置：**
+
+    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+
+    **应用程序清单条目：**
+    
+    ```json
+        "optionalClaims": {
+        "saml2Token": [{
+            "name": "groups",
+            "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+        }],
+        "idToken": [{
+            "name": "groups",
+            "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+        }]
+    ``` 
+     
 
 ## <a name="optional-claims-example"></a>可选声明示例
 
 本部分通过一个场景来演练如何对应用程序使用可选声明功能。
 可以使用多个选项来更新应用程序标识配置中的属性，以启用和配置可选声明：
--   可以修改应用程序清单。 下面的示例将使用此方法来完成配置。 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
+-    你可以使用**令牌配置（预览）** UI （请参阅以下示例）
+-    你可以使用**清单**（请参阅下面的示例）。 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
 -   也可以编写使用[图形 API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) 的应用程序来更新应用程序。 图形 API 参考指南中的[实体和复杂类型参考](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)可帮助你配置可选声明。
 
-**示例：** 在以下示例中，我们将修改某个应用程序的清单，以便将声明添加到用于该应用程序的访问、ID 和 SAML 令牌。
+**示例：** 在下面的示例中，你将使用**令牌配置（预览）** UI 和**清单**将可选声明添加到适用于你的应用程序的访问、ID 和 SAML 令牌。 不同的可选声明将添加到应用程序可以接收的每个令牌类型中：
+-    ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。
+-    其他客户端向此应用程序请求的访问令牌现在将包括 auth_time 声明
+-    SAML 令牌现在会包含 skypeId 目录架构扩展（在本例中，此应用的应用 ID 为 ab603c56068041afb2f6832e2a17e237）。 SAML 令牌会将 Skype ID 公开为 `extension_skypeId`。
 
+**UI 配置：**
+
+1. 登录到 [Azure 门户](https://portal.azure.com)
+
+1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
+
+1. 从左侧菜单中选择 " **Azure Active Directory** "。
+
+1. 在 "**管理**" 部分下，选择**应用注册**。
+
+1. 在列表中找到要为其配置可选声明的应用程序并单击它。
+
+1. 在 "**管理**" 部分下，单击 "**令牌配置（预览）** "。
+
+1. 选择 "**添加可选声明**"，选择**ID**令牌类型，从声明列表中选择**Upn** ，然后单击 "**添加**"。
+
+1. 选择 "**添加可选声明**"，从声明列表中选择 " **auth_time** **"，** 然后单击 "**添加**"。
+
+1. 从 "令牌配置概述" 屏幕中，单击 " **upn**" 旁边的铅笔图标，单击 "**已验证外部**" 切换，然后单击 "**保存**"。
+
+1. 选择 "**添加可选声明**"，选择 " **SAML**令牌类型"，从声明列表中选择 " **extn** " （仅适用于已创建 Azure AD 名为 skypeID 的用户对象），然后单击 "**添加**"。
+
+    [![演示如何使用 UI 配置可选声明](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+
+**清单配置：**
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 选择左侧的“应用注册”。
+1. 从左侧菜单中选择 " **Azure Active Directory** "。
 1. 在列表中找到要为其配置可选声明的应用程序并单击它。
-1. 在应用程序页面中，单击“清单”打开内联清单编辑器。 
-1. 可使用此编辑器直接编辑清单。 该清单遵循 [Application 实体](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)的架构，保存后会自动设置格式。 新元素将添加到 `OptionalClaims` 属性。
+1. 在 "**管理**" 部分下，单击 "**清单**" 打开内联清单编辑器。
+1. 可使用此编辑器直接编辑清单。 清单遵循 [Application entity] 的架构。（ https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) ，并在保存后自动格式化清单。 新元素将添加到 `OptionalClaims` 属性。
 
     ```json
-      "optionalClaims": 
-      {
-            "idToken": [ 
-                  { 
+            "optionalClaims": {
+                "idToken": [ 
+                     { 
                         "name": "upn", 
                         "essential": false, 
                         "additionalProperties": [ "include_externally_authenticated_upn"]  
-                  }
-            ],
-            "accessToken": [ 
-                  {
+                     }
+                     ],
+                "accessToken": [ 
+                      {
                         "name": "auth_time", 
                         "essential": false
-                  }
-            ],
+                      }
+                     ],
             "saml2Token": [ 
                   { 
-                        "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
-                        "source": "user", 
-                        "essential": true
+                    "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
+                    "source": "user", 
+                    "essential": true
                   }
-            ]
-      }
+                 ]
+        ``` 
 
-    ```
 
-    在本例中，已将不同的可选声明添加到应用程序可以接收的每种令牌。 ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。 其他客户端请求此应用程序的访问令牌现在将包含 auth_time 声明。 SAML 令牌现在会包含 skypeId 目录架构扩展（在本例中，此应用的应用 ID 为 ab603c56068041afb2f6832e2a17e237）。 SAML 令牌会将 Skype ID 公开为 `extension_skypeId`。
+1. When you're finished updating the manifest, click **Save** to save the manifest.
 
-1. 更新完清单后，请单击“保存”以保存清单
+## Next steps
 
-## <a name="next-steps"></a>后续步骤
+Learn more about the standard claims provided by Azure AD.
 
-详细了解 Azure AD 提供的标准声明。
-
-- [ID 令牌](id-tokens.md)
-- [访问令牌](access-tokens.md)
+- [ID tokens](id-tokens.md)
+- [Access tokens](access-tokens.md)

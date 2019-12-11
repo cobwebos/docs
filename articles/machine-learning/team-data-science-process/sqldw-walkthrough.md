@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b32e2abcffda24fa82d3911575fe48acfc294ccc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669407"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973163"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](https://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -43,7 +43,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-用于联接 trip**data 和 trip**fare 的\_唯一键\_由以下三个字段组成︰
+用于联接 trip\_data 和 trip\_fare 的**唯一键**由以下三个字段组成︰
 
 * medallion、
 * hack\_license 和
@@ -105,7 +105,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
 
 > [!NOTE]
-> 如果 **DestDir** 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，可能需要*以管理员身份运行*。
+> 如果 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，可能需要**以管理员身份运行**。
 >
 >
 
@@ -326,7 +326,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含数据的本地目录。
 
 > [!TIP]
-> 如果数据是现实生活应用程序中的，已经处于专用 Azure blob 存储中，那么可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这会需要对脚本进行额外的编辑，使其适合数据的格式。
+> 如果你的数据是现实生活应用程序中的，已经处于你的专用 Azure blob 存储中，那么你可以在 PowerShell 脚本中跳过 AzCopy 步骤，并直接将数据上传到 Azure SQL DW。 这会需要对脚本进行额外的编辑，使其适合数据的格式。
 >
 >
 
@@ -413,7 +413,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 **输出︰** 查询应返回 2013 年度的以下小费频率︰90,447,622 个已付小费的和 82,264,709 个未付小费的。
 
 ### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
-此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是标签类的分布，会在以后用于多类分类建模。
+此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -431,7 +431,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 | tip_class | tip_freq |
 | --- | --- |
-| 1 |82230915 |
+| 第 |82230915 |
 | 2 |6198803 |
 | 3 |1932223 |
 | 0 |82264625 |
@@ -535,12 +535,12 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
-| 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
+| 第 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据
-下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio](https://studio.azureml.net) [导入数据][import-data]模块中，以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio （经典）](https://studio.azureml.net) [导入数据][import-data]模块中，以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -567,15 +567,15 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 已下载到本地计算机的示例 IPython Notebook 和 Python 脚本文件中所需的 Azure SQL DW 信息此前已通过 PowerShell 脚本接入。 它们是可执行文件，无需任何修改。
 
-如果已设置好 AzureML 工作区，可以直接将示例 IPython Notebook 上传到 AzureML IPython Notebook 服务，并开始运行。 下面是上传到 AzureML IPython Notebook 服务的步骤：
+如果已设置 Azure 机器学习工作区，则可以直接将示例 IPython 笔记本上载到 AzureML IPython 笔记本服务，并开始运行它。 以下是上传到 AzureML IPython 笔记本服务的步骤：
 
-1. 登录 AzureML 工作区、单击顶部的“工作室”，并单击网页左侧的“NOTEBOOKS”。
+1. 登录到 Azure 机器学习工作区，单击顶部的 **"工作室"** ，并单击网页左侧的 "**笔记本**"。
 
     ![依次单击“Studio”和“笔记本”][22]
-2. 单击网页左下角的“新建”，并选择“Python 2”。 然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
+2. 单击网页左下角的 "**新建**"，然后选择 " **Python 2**"。 然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
 
     ![单击“新建”，然后选择“Python 2”][23]
-3. 单击新 IPython Notebook 左上角的“Jupyter”符号。
+3. 单击新 IPython 笔记本的左上角的**Jupyter**符号。
 
     ![单击 Jupyter 符号][24]
 4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上传”。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
@@ -590,7 +590,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 - pyodbc
 - PyTables
 
-在 AzureML 上使用大型数据生成高级分析解决方案的建议顺序如下：
+在包含大型数据 Azure 机器学习上生成高级分析解决方案时，推荐的顺序如下：
 
 * 将小型数据示例读入到内存中的数据帧。
 * 使用抽样数据执行一些可视化效果和浏览。
@@ -711,7 +711,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 ![条形图输出][3]
 
-和
+and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
@@ -811,14 +811,14 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 若要开始建模练习，请登录到**Azure 机器学习（经典）** 工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure 机器学习 Studio （经典）工作](../studio/create-workspace.md)区。
 
-1. 要开始使用 Azure 机器学习，请参阅[什么是 Azure 机器学习工作室？](../studio/what-is-ml-studio.md)
-2. 登录 [Azure 机器学习工作室](https://studio.azureml.net)。
-3. 工作室主页上提供丰富的信息、视频、教程、指向模块参考链接及其他资源。 有关 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
+1. 若要开始 Azure 机器学习，请参阅[什么是 Azure 机器学习 Studio （经典）？](../studio/what-is-ml-studio.md)
+2. 登录到[Azure 机器学习 Studio （经典）](https://studio.azureml.net)。
+3. 机器学习 Studio （经典）主页提供丰富的信息、视频、教程、指向模块参考的链接和其他资源。 有关 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 典型的训练实验由以下步骤组成：
 
 1. “**新建 +** ”实验。
-2. 将数据导入 Azure 机器学习工作室。
+2. 将数据导入 Azure 机器学习 Studio （经典）。
 3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
 5. 将数据拆分为训练/验证/测试数据集（或每个类具有单独的数据集）。
@@ -828,7 +828,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 9. 评估模型来计算针对学习问题的相关指标。
 10. 微调模型，并选择最佳模型进行部署。
 
-在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure 机器学习工作室中的样本大小。 下面是构建一个或多个预测模型的过程：
+在此练习中，我们已经研究并设计了 SQL 数据仓库中的数据，并决定了要在 Azure 机器学习 Studio （经典）中引入的示例大小。 下面是构建一个或多个预测模型的过程：
 
 1. 使用 "**数据输入和输出**" 部分中的 "[导入数据][import-data]" 模块，将数据导入 Azure 机器学习 Studio （经典）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
 
@@ -836,7 +836,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在相应字段中输入**数据库名称**。
-5. 在“服务器用户帐户名”中输入 **SQL 用户名**，在“服务器用户帐户密码”中输入**密码**。
+5. 在“服务器用户帐户名”中输入 *SQL 用户名*，在“服务器用户帐户密码”中输入*密码*。
 7. 在**数据库查询**编辑文本区域，粘贴提取必要数据库字段（包括任何计算的字段，例如标签）的查询，并向下采样数据至所需样本大小。
 
 下图是二元分类实验直接从 SQL 数据仓库数据库读取数据的一个示例（建议按演练中所用的架构名称和表名称替换表名称 nyctaxi_trip 和 nyctaxi_fare）。 可以针对多类分类和回归问题构建类似实验。
@@ -874,14 +874,16 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 
 ![Azure ML 发布][11]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 简单概括一下我们在此演练教程中完成的任务，已创建 Azure 数据科学环境，并使用大型公共数据集，从而将它的用法贯穿整个数据团队科学过程，从数据采集到 Azure 机器学习 Web 服务的模型训练，再到部署等多项工作。
 
 ### <a name="license-information"></a>许可证信息
 此示例演练和及其附带脚本和 IPython notebook 是在 MIT 许可证下由 Microsoft 共享。 如需更多详细信息，请查看 GitHub 上示例代码目录中的 LICENSE.txt 文件。
 
 ## <a name="references"></a>参考
-•    [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)•    [由 Chris Whong 提供的 FOILing NYC 出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)•    [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+- [Andrés Monroy NYC 出租车行程下载页](https://www.andresmh.com/nyctaxitrips/)
+- [丽丽 Whong) FOILing NYC 的出租车行程数据](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [NYC 出租车和礼车委员会研究和统计信息](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

@@ -1,24 +1,24 @@
 ---
 title: 了解 Azure IoT 设备预配服务 MQTT 支持 |Microsoft Docs
-description: 开发人员指南-支持设备使用 MQTT 协议连接到 Azure IoT 设备预配服务面向设备的终结点。
+description: 开发人员指南-支持设备使用 MQTT 协议连接到 Azure IoT 设备预配服务（DPS）面向设备的终结点。
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
-ms.openlocfilehash: fb39979e321c4815aec74c801cd2d04e81b7e533
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093899"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973367"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与你的 DPS 通信
 
 DPS 使设备能够使用以下内容与 DPS 设备终结点进行通信：
 
-* 在端口 8883 上使用 [MQTT v3.1.1](https://mqtt.org/)
+* 端口8883上的[MQTT v 3.1.1](https://mqtt.org/)
 * [MQTT v 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) over 端口443上的 WebSocket。
 
 DPS 不是功能完备的 MQTT broker，不支持 MQTT v 3.1.1 标准中指定的所有行为。 本文介绍如何使用支持的 MQTT 行为与 DPS 通信。
@@ -33,7 +33,7 @@ DPS 不是功能完备的 MQTT broker，不支持 MQTT v 3.1.1 标准中指定�
 设备可以使用 MQTT 协议通过以下任意选项连接到 DPS。
 
 * [Azure IoT 预配 sdk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)中的库。
-* 直接通过 MQTT 协议。
+* MQTT 协议。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
@@ -79,7 +79,7 @@ DPS 不是功能完备的 MQTT broker，不支持 MQTT v 3.1.1 标准中指定�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/documentation)。
+若要了解有关 MQTT 协议的详细信息，请参阅[MQTT 文档](https://mqtt.org/documentation)。
 
 若要进一步探索 DPS 的功能，请参阅：
 

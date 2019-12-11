@@ -1,5 +1,5 @@
 ---
-title: 如何为自定义开发的应用程序查找所需的特定 API | Microsoft Docs
+title: 查找适用于自定义开发的应用的 API |Microsoft
 description: 如何配置访问自定义开发的 Azure AD 应用程序中的特定 API 所需的权限
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c223df28f8082125d48f1e3619088de5cf2687
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c2b88ef00a8a40134462fdc285f1e4c3f12a0b0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844594"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963896"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
 

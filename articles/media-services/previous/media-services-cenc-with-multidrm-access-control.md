@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 6004e08f5f30c7f3c63bb87437147db15da5e335
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016766"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969422"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
 
@@ -131,11 +131,11 @@ DRM 子系统可能包含以下组件：
 
 如果针对许可证传送使用公有云，持久性和非持久性许可证对于许可证传送成本有直接影响。 下面演示了两种不同的设计方案：
 
-* 月度订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
+* 每月订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = 1
 
-* 月度订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
+* 每月订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = [观看影片数] x [会话数]
 
@@ -257,7 +257,7 @@ DRM 子系统可能包含以下组件：
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
-    "groupMembershipClaims":"All"   （默认值为 null）
+    "groupMembershipClaims": "All"（默认值为 null）
 
 * 创建限制要求时，请设置适当的 TokenType。
 
@@ -336,7 +336,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 2. 为资源应用添加新的密钥。
 
-3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims":"All"。
+3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims": "All"。
 
 4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
 
@@ -374,7 +374,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 > [!NOTE]
 > 如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
 > 
-> IDX10630:用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
+> IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
 
 ## <a name="the-completed-system-and-test"></a>完成的系统和测试
 本部分逐步讲解如何在完成的端到端系统中完成以下方案，让读者在获取登录帐户之前对该行为有个基本印象。
@@ -463,11 +463,16 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
 ## <a name="summary"></a>总结
+
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 
 * 文中提供了一个参考设计，其中包含 DRM/CENC 子系统中的所有必要组件。
 * 已提供 Azure、媒体服务和媒体播放器的参考实现。
 * 同时还讨论了直接涉及到设计和实现的某些主题。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186077"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974166"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>教程：使用 AES-128 加密视频并使用密钥传送服务
 
 > [!NOTE]
 > 尽管本教程使用了 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 示例，但 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支持的 [SDK](media-services-apis-overview.md#sdks) 的常规步骤是相同的。
 
-借助媒体服务，可以传送使用 AES 通过 128 位加密密钥加密的 HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果希望媒体服务动态加密视频，请将加密密钥与流式处理定位符相关联，同时配置内容密钥策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES-128 动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
+借助媒体服务，可以传送使用 AES 通过 128 位加密密钥加密的 HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果希望媒体服务动态加密视频，请将加密密钥与流式处理定位符相关联，同时配置内容密钥策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES-128 动态加密你的内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
-可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)，以了解有效的组合方式。 另请参阅[如何使用 DRM 进行保护](protect-with-drm.md)。
+可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)，以了解有效的组合方式。 另请参阅[如何用 DRM 进行保护](protect-with-drm.md)。
 
-本文中示例的输出包括 Azure Media Player 的 URL、清单 URL，以及播放内容所需的 AES 令牌。 此示例将 JSON Web Token （JWT）令牌的到期时间设置为1小时。 可以打开浏览器并粘贴生成的 URL 来启动 Azure Media Player 演示页，其中已经填充了该 URL 和令牌（采用以下格式：```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```）。
+此示例的输出包含用于播放内容所需的 Azure Media Player、清单 URL 和 AES 令牌的 URL。 此示例将 JSON Web Token （JWT）令牌的到期时间设置为1小时。 可以打开浏览器并粘贴生成的 URL 来启动 Azure Media Player 演示页，其中已经填充了该 URL 和令牌（采用以下格式：```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```）。
 
 本教程演示如何：
 
@@ -51,7 +51,7 @@ ms.locfileid: "74186077"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 以下是完成本教程所需具备的条件。
 
@@ -87,7 +87,7 @@ ms.locfileid: "74186077"
 
 ## <a name="get-or-create-an-encoding-transform"></a>获取或创建编码转换
 
-创建新转换实例时，需要指定希望生成的输出内容[](https://docs.microsoft.com/rest/api/media/transforms)。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 预设根据输入分辨率和比特率将输入视频编码为自动生成的比特率阶梯（比特率-分辨率对），然后使用与每个比特率解析对相对应的 H-p 视频和 AAC 音频生成 ISO 个文件。
+创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象，如以下代码所示。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 预设根据输入分辨率和比特率将输入视频编码为自动生成的比特率阶梯（比特率-分辨率对），然后使用与每个比特率解析对相对应的 H-p 视频和 AAC 音频生成 ISO 个文件。
 
 在创建新转换之前，请先使用**Get**方法检查是否已存在一个[转换](https://docs.microsoft.com/rest/api/media/transforms)，如下面的代码所示。 在 Media Services v3**获取**实体上的方法返回**null**如果实体不存在 （不区分大小写的名称检查）。
 
@@ -95,7 +95,7 @@ ms.locfileid: "74186077"
 
 ## <a name="submit-job"></a>提交作业
 
-如上所述，转换对象为脚本，作业则是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容[](https://docs.microsoft.com/rest/api/media/transforms)[](https://docs.microsoft.com/rest/api/media/jobs)。 **作业**指定输入视频位置和输出位置等信息。
+如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则](https://docs.microsoft.com/rest/api/media/jobs)是对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 Job 指定输入视频位置和输出位置等信息。
 
 在本教程中，我们将基于直接从[HTTPs 源 URL](job-input-from-http-how-to.md)引入的文件创建作业的输入。
 
@@ -103,15 +103,15 @@ ms.locfileid: "74186077"
 
 ## <a name="wait-for-the-job-to-complete"></a>等待作业完成
 
-作业需要一些时间才能完成。 在此情况下，你希望获得通知。 以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 有关详细信息，请参阅[将事件路由到自定义 web 终结点](job-state-events-cli-how-to.md)。
+该作业需要一些时间才能完成操作。 在该过程中，你应能够接收通知。 以下代码示例显示如何轮询服务以获取[作业](https://docs.microsoft.com/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。 有关详细信息，请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业发生了错误，则会出现**错误**状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
+作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
 ## <a name="create-a-content-key-policy"></a>创建内容密钥策略
 
-内容密钥提供对资产的安全访问。 需要创建一个**内容密钥策略**，用于配置如何将内容密钥传送到终端客户端。 内容密钥与**流式处理定位符**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
+内容密钥提供对资产的安全访问。 你需要创建一个**内容密钥策略**，用于配置如何将内容密钥传递到最终客户端。 内容密钥与**流式处理定位符**相关联。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。
 
 当播放器请求流时，媒体服务将使用指定的密钥来动态加密你的内容（在这种情况下，使用 AES 加密。）为了解密流，播放器将从密钥传送服务请求密钥。 为了确定是否已授权用户获取密钥，服务将评估你为密钥指定的内容密钥策略。
 
@@ -124,7 +124,7 @@ ms.locfileid: "74186077"
 1. 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)。
 2. 生成客户端可以使用的流式处理 URL。
 
-创建**流定位器**的过程称为发布。 默认情况下，**流式处理定位符**将在你进行 API 调用后立即生效。 除非你配置了可选的开始和结束时间，否则它会一直持续到删除。
+创建**流式处理定位符**的过程称为发布。 默认情况下，**流式处理定位符**将在你进行 API 调用后立即生效。 除非你配置了可选的开始和结束时间，否则它会一直持续到删除。
 
 创建[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)时，需要指定所需的**StreamingPolicyName**。 在本教程中，我们将使用 PredefinedStreamingPolicies 中的一个，它告知 Azure 媒体服务如何发布内容以进行流式处理。 在此示例中，应用 AES 信封加密（此加密也称为 ClearKey 加密，因为密钥通过 HTTPS 传递到播放客户端，而不是 DRM 许可证）。
 
@@ -137,19 +137,19 @@ ms.locfileid: "74186077"
 
 本教程在内容密钥策略中指定使用令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用[JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)格式的令牌，这就是我们在示例中配置的内容。
 
-**内容密钥策略**中使用了 ContentKeyIdentifierClaim，这意味着，提供给密钥传送服务的令牌必须包含内容密钥的标识符。 本示例未指定内容密钥，在创建流定位器时，系统创建了一个随机内容密钥。 若要生成测试令牌，必须获取 ContentKeyId 以放入 ContentKeyIdentifierClaim 声明。
+ContentKeyIdentifierClaim 用于**内容密钥策略**，这意味着提供给密钥传送服务的令牌必须具有内容密钥的标识符。 在此示例中，我们在创建流式处理定位符时未指定内容密钥，系统为我们创建了一个随机密钥。 若要生成测试令牌，必须获取 ContentKeyId 以放入 ContentKeyIdentifierClaim 声明。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetToken)]
 
 ## <a name="build-a-dash-streaming-url"></a>生成 DASH 流 URL
 
-创建[流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)后，即可获取流式处理 URL。 若要生成 URL，需要连接 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 主机名称和流定位器路径。 此示例使用默认的*流式处理终结点*。 首次创建媒体服务帐户时，默认的*流式处理终结点*处于停止状态，因此需要调用 **Start**。
+现在已经创建了[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)，可以获取流式处理 url。 若要生成 URL，需要连接[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和**流式处理定位符**路径。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清理媒体服务帐户中的资源
 
-通常情况下，您应清理您计划重用的对象之外的所有内容（通常情况下，您将重复使用转换、流式处理定位符等）。 如果希望在试验后让帐户干净整洁，请删除不打算重复使用的资源。 例如，以下代码可删除作业：
+通常情况下，您应清理您计划重用的对象之外的所有内容（通常情况下，您将重复使用转换、流式处理定位符等）。 如果希望帐户在试验后保持干净状态，则删除不打算重复使用的资源。 例如，以下代码可删除作业：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
@@ -166,6 +166,10 @@ az group delete --name amsResourceGroup
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

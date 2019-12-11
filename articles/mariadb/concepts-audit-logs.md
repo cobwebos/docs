@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773067"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978043"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的审核日志
 
@@ -27,12 +27,15 @@ ms.locfileid: "74773067"
 可以调整的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 有关特定审核事件，请参阅下表。
+- `audit_log_include_users`：要包含在日志记录中的 MariaDB 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此优先级高于 `audit_log_exclude_users`。 参数的最大长度为512个字符。
+> [!Note]
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级较高。
 - `audit_log_exclude_users`：要从日志记录中排除的 MariaDB 用户。 最多允许四个用户。 参数的最大长度为256个字符。
 
 | **事件** | **说明** |
 |---|---|
 | `CONNECTION` | -连接启动（成功或不成功） <br> -会话过程中用不同用户/密码进行的用户重新进行身份验证 <br> -连接终止 |
-| `DML_SELECT`| 选择查询 |
+| `DML_SELECT`| SELECT 查询 |
 | `DML_NONSELECT` | 插入/删除/更新查询 |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
 | `DDL` | 类似于 "删除数据库" 的查询 |
@@ -121,7 +124,7 @@ ms.locfileid: "74773067"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`、`INSERT`、`UPDATE`或 `DELETE` |
+| `event_subclass_s` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
 | `connection_id_d` | MariaDB 生成的唯一连接 ID |
 | `db_s` | 访问的数据库的名称 |
 | `table_s` | 访问的表的名称 |

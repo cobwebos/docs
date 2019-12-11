@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d15bfcfbae3b24e1a9b29dc74f9b41a979e63ae9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014686"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975187"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
 
@@ -69,8 +69,8 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ### <a name="drm-license-delivery"></a>DRM 许可证传送
 
-* AMS：DRM 许可证由 AMS 许可证传送服务提供。
-* 第三方：DRM 许可证由 AMS 外部的第三方 DRM 许可证服务器提供。
+* AMS：DRM 许可证由 AMS 许可证传送服务传送。
+* 第三方：DRM 许可证由 AMS 外部的第三方 DRM 许可证服务器传送。
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>根据混合方案进行配置
 
@@ -99,9 +99,9 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|是|是|示例 1|
 |AMS|AMS|第三方|是|是|示例 2|
-|AMS|第三方|AMS|是|否|示例 3|
-|AMS|第三方|外部|否|否|示例 4|
-|第三方|第三方|AMS|是|否|    
+|AMS|第三方|AMS|是|No|示例 3|
+|AMS|第三方|外部|No|No|示例 4|
+|第三方|第三方|AMS|是|No|    
 
 在示例中，PlayReady 保护适用于 DASH 和平滑流式处理。 以下视频 URL 是平滑流式处理 URL。 若要获取相应的 DASH URL，只需追加“(format=mpd-time-csf)”。 可以使用 [azure media test player](https://aka.ms/amtest) 在浏览器中进行测试。 这样就可以配置要在哪种技术下使用哪个流式处理协议。 Windows 10 上的 IE11 和 Microsoft Edge 支持通过 EME 使用 PlayReady。 有关详细信息，请参阅[有关测试工具的详细信息](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)。
 
@@ -126,6 +126,10 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 * 源 URL： https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL（DASH 和平滑流式处理）： https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="summary"></a>总结
 

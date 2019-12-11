@@ -1,6 +1,6 @@
 ---
 title: 使用对称密钥预配旧设备-Azure IoT 中心设备预配服务
-description: 如何使用对称密钥通过设备预配服务实例预配旧设备
+description: 如何使用对称密钥为设备预配服务（DPS）实例预配旧设备
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9beda9c271c755c9ea61498b24a9e40bde35a7e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209915"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975102"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>使用对称密钥预配旧设备
 
@@ -28,7 +28,7 @@ ms.locfileid: "74209915"
 本文面向基于 Windows 的工作站。 但是，你也可以在 Linux 上执行过程。 对于 Linux 示例，请参阅[如何进行多租户预配](how-to-provision-multitenant.md)。
 
 > [!NOTE]
-> 本文中使用的示例是用 C 编写的。还有一个可用的 [C# 设备预配对称密钥示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)。 若要使用此示例，请下载或克隆 [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) 存储库，并按照示例代码中的行说明进行操作。 可以按照本文中的说明使用门户创建对称密钥注册组，并查找运行示例所需的 ID 范围和注册组主密钥和辅助密钥。 还可以使用示例创建单个注册。
+> 本文中使用的示例用 C 编写。还有一个[ C#设备预配对称密钥示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)可用。 若要使用此示例，请下载或克隆[azure iot-samples](https://github.com/Azure-Samples/azure-iot-samples-csharp)存储库，并按照示例代码中的行说明进行操作。 你可以按照本文中的说明使用门户创建对称密钥注册组，以及查找运行示例所需的 ID 范围和注册组主要和辅助密钥。 你还可以使用示例创建单个注册。
 
 ## <a name="overview"></a>概述
 
@@ -41,10 +41,10 @@ ms.locfileid: "74209915"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门。
-* 启用了[“使用 C++ 的桌面开发”](https://visualstudio.microsoft.com/vs/)工作负荷的 [Visual Studio](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) 2015 或更高版本。
+* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -56,7 +56,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
 
 1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
-    在进行  **安装**之前`CMake`，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令来克隆 Azure IoT C SDK GitHub 存储库：
     
@@ -195,7 +195,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="create-a-device-image-to-provision"></a>创建用于预配的设备映像
 
-在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov**dev\_client\_sample\_** 的预配示例。 
+在本部分，你将更新你在较早前设置的位于 Azure IoT C SDK 中的名为 prov\_dev\_client\_sample 的预配示例。 
 
 此示例代码模拟将预配请求发送到你的设备预配服务实例的设备启动序列。 启动序列将会使设备被识别并分配到你在注册组上配置的 IoT 中心。
 
@@ -209,7 +209,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 *Provision*Samples **文件夹。\_** 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov**dev**client\_sample.c\_。\_**
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
 
 4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
 
@@ -226,7 +226,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. 在“prov`prov_dev_set_symmetric_key_info()`dev**client\_sample.c”中，查找对 \_ 的调用\_** 并添加注释。
+6. 在“prov\_dev\_client\_sample.c”中，查找对 `prov_dev_set_symmetric_key_info()` 的调用并添加注释。
 
     ```c
     // Set the symmetric key if using they auth type
@@ -242,9 +242,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     保存文件。
 
-7. 右键单击“prov**dev\_client\_sample”项目，\_** 然后选择“设为启动项目”。 
+7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
 
-8. 在 Visual Studio 菜单中，选择“调试” **“开始执行(不调试)”以运行该解决方案。**  >  在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
     以下输出是模拟设备成功启动并连接到要分配到 IoT 中心的预配服务实例的示例：
 
@@ -279,9 +279,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关重新预配的详细信息，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+* 若要了解更多重新设置，请参阅[IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
 * [快速入门：使用对称密钥预配模拟设备](quick-create-simulated-device-symm-key.md)
-* 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
+* 若要了解更多取消设置，请参阅[如何取消预配以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 身份验证和授权错误代码 | Microsoft Docs
+title: Azure AD 身份验证和授权错误代码 |Microsoft
 description: 了解 Azure AD 安全令牌服务 (STS) 返回的 AADSTS 错误代码。
 services: active-directory
 documentationcenter: ''
@@ -17,30 +17,30 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193166"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965800"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>身份验证和授权错误代码
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
 想要查找有关 Azure Active Directory (Azure AD) 安全令牌服务 (STS) 返回的 AADSTS 错误代码的信息？ 请阅读本文档来查找 AADSTS 错误说明、修复方法和一些建议的解决方法。
 
 > [!NOTE]
 > 本文中的信息属于初步信息，随时可能更改。 遇到了问题或者找不到所需的内容？ 请创建 GitHub 问题，或查看[面向开发人员的支持和帮助选项](active-directory-develop-help-support.md)来了解其他可以获得帮助和支持的方法。
 >
-> 本文档是为开发者和管理员提供的指导，但决不应当被客户自己使用。 错误代码可能会随时更改，以便提供更详细的错误消息，以在开发者构建应用程序时为其提供帮助。 依赖于文本或错误代码的应用程序随着时间的推移将会损坏。
+> 此文档是为开发人员和管理员指南提供的，但客户端本身绝不应使用该文档。 错误代码随时会更改，以提供更详细的错误消息，这些错误消息旨在帮助开发人员在构建应用程序时使用。 依赖于文本或错误代码号的应用会随着时间的推移而发生中断。
 
 ## <a name="lookup-current-error-code-information"></a>查找当前错误代码信息
-错误代码和消息可能会更改。  有关最新信息，请查看 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 页，以查找 AADSTS 错误说明、修复程序和一些建议的解决方法。  
+错误代码和消息可能会更改。  有关最新信息，请查看[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)页面，查找 AADSTS 错误说明、修补程序和一些建议的解决方法。  
 
-针对返回的错误代码的数字部分进行搜索。  例如，如果收到错误代码“AADSTS16000”，则在 [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) 中搜索“16000”。  还可以通过将错误代码编号添加到 URL [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000) 来直接链接到特定错误。
+搜索返回的错误代码的数字部分。  例如，如果收到错误代码 "AADSTS16000"，则在 "16000" [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)中执行搜索。  还可以通过将错误代码号添加到 URL 中来直接链接到特定错误： [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | 说明 |
+| 错误 | 描述 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -58,12 +58,12 @@ ms.locfileid: "70193166"
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 请查看 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) 中所述的解决方法。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
-| AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
+| AADSTS50005 | DevicePolicyError-用户试图从当前不受条件访问策略支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 未找到此应用的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50008 | InvalidSamlToken - SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。 |
 | AADSTS50010 | AudienceUriValidationFailed - 由于未配置令牌受众，应用的受众 URI 验证失败。 |
-| AADSTS50011 | InvalidReplyTo - 回复地址缺失、配置错误或者与为应用配置的回复地址不匹配。  作为一种解决方法，请确保将此缺失的回复地址添加到 Azure Active Directory 应用程序，或者让有权在 Active Directory 中管理你的应用程序的人为你执行此操作。|
+| AADSTS50011 | InvalidReplyTo - 回复地址缺失、配置错误或者与为应用配置的回复地址不匹配。  作为一种解决方法，请确保将此缺少的答复地址添加到 Azure Active Directory 应用程序，或让某人拥有管理应用程序的权限，Active Directory 为你执行此操作。|
 | AADSTS50012 | AuthenticationFailed - 身份验证由于以下原因之一而失败：<ul><li>未授权签名证书的使用者名称</li><li>找不到与已授权使用者名称匹配的受信任颁发机构策略</li><li>证书链无效</li><li>签名证书无效</li><li>未在租户中配置策略</li><li>未授权签名证书的指纹</li><li>客户端断言包含无效的签名</li></ul> |
 | AADSTS50013 | InvalidAssertion - 多种原因导致断言无效 - 令牌颁发者与令牌有效时间范围内的 API 版本不匹配 - 已过期 - 格式不正确 - 断言中的刷新令牌不是主要刷新令牌。 |
 | AADSTS50014 | GuestUserInPendingState - 用户兑换处于挂起状态。 尚未完全创建来宾用户帐户。 |
@@ -75,7 +75,7 @@ ms.locfileid: "70193166"
 | AADSTS50032 | WeakRsaKey - 指示错误的用户尝试使用弱 RSA 密钥。 |
 | AADSTS50033 | RetryableError - 指示与数据库操作不相关的暂时性错误。 |
 | AADSTS50034 | UserAccountNotFound - 若要登录到此应用程序，必须将帐户添加到目录中。 |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt - 原则中缺少用于生成成对标识符的盐。 请联系租户管理员。 |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt-主体中缺少生成成对标识符所需的 salt。 请联系租户管理员。 |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer - 使用者与客户端断言中的颁发者声明不匹配。 请联系租户管理员。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 未知或无效的实例。 |
@@ -110,7 +110,7 @@ ms.locfileid: "70193166"
 | AADSTS50127 | BrokerAppNotInstalled - 用户需要安装中转站应用才能访问此内容。 |
 | AADSTS50128 | 域名无效 - 未在请求中找到或提供的任何凭据均未暗示任何租户标识信息。 |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined - 需要加入工作区才能注册设备。 |
-| AADSTS50131 | ConditionalAccessFailed - 指示各种条件访问错误，例如，Windows 设备状态不正确，请求因活动可疑、访问策略和安全策略决策而被阻止。 |
+| AADSTS50131 | ConditionalAccessFailed-指示各种条件访问错误，如错误的 Windows 设备状态、由于可疑活动、访问策略或安全策略决策而被阻止的请求。 |
 | AADSTS50132 | SsoArtifactInvalidOrExpired - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50133 | SsoArtifactRevoked - 会话由于密码过期或最近更改了密码而无效。 |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter - 错误的数据中心。 若要授权 OAuth 2.0 设备流中的应用发起的请求，授权方必须与原始请求位于同一数据中心。 |
@@ -139,10 +139,10 @@ ms.locfileid: "70193166"
 | AADSTS51005 | TemporaryRedirect - 等效于 HTTP 状态 307，表示请求的信息位于 location 标头中指定的 URI 处。 如果收到此状态，请遵循与响应关联的 location 标头操作。 如果原始请求方法是 POST，则重定向的请求也会使用 POST 方法。 |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth - 需要 Windows 集成身份验证。 用户已使用缺少 Windows 集成身份验证声明的会话令牌登录。 请求用户重新登录。 |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn - 用户未许可访问 LinkedIn 资源。 |
-| AADSTS53000 | DeviceNotCompliant - 条件访问策略需要合规的设备，该设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
-| AADSTS53001 | DeviceNotDomainJoined - 条件访问策略需要已加入域的设备，而该设备未加入域。 让用户使用已加入域的设备。 |
-| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用的应用不是批准用于条件访问的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
-| AADSTS53003 | BlockedByConditionalAccess - 条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
+| AADSTS53000 | DeviceNotCompliant-条件性访问策略需要相容设备，并且设备不合规。 用户必须使用已批准的 MDM 提供程序（例如 Intune）注册其设备。 |
+| AADSTS53001 | DeviceNotDomainJoined-条件性访问策略需要加入域的设备，且设备未加入域。 让用户使用已加入域的设备。 |
+| AADSTS53002 | ApplicationUsedIsNotAnApprovedApp-使用的应用不是用于条件性访问的已批准应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
+| AADSTS53003 | BlockedByConditionalAccess-条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
@@ -199,7 +199,7 @@ ms.locfileid: "70193166"
 | AADSTS90019 | MissingTenantRealm - Azure AD 无法确定请求中的租户标识符。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - 主体名称格式无效，或者不符合预期的 `name[/host][@realm]` 格式。 主体名称是必需的，而主机和领域是可选的，可设置为 null。 |
 | AADSTS90023 | InvalidRequest - 身份验证服务请求无效。 |
-| AADSTS9002313 | InvalidRequest - 请求格式错误或无效。 - 这里的问题是对某个终结点的请求出了问题。 对此问题的建议是获取发生的错误的 fiddler 跟踪，并查看请求的格式是否确实正确。 |
+| AADSTS9002313 | InvalidRequest-请求格式不正确或无效。 -这里的问题是由于请求与特定终结点发生错误。 此问题的建议是获取发生的错误的 fiddler 跟踪，并查看请求的格式是否确实正确。 |
 | AADSTS90024 | RequestBudgetExceededError - 发生了暂时性错误。 重试。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) 不可用。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS 托管的 WCF 服务发生意外的不可重试错误。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，获取有关该错误的更多详细信息。 |
@@ -264,14 +264,14 @@ ms.locfileid: "70193166"
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource - 资源未配置为接受仅限设备的令牌。 |
 | AADSTS240001 | BulkAADJTokenUnauthorized - 未授权用户在 Azure AD 中注册设备。 |
 | AADSTS240002 | RequiredClaimIsMissing - 无法将 id_token 用作 `urn:ietf:params:oauth:grant-type:jwt-bearer` 授予。|
-| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy - 租户管理员已配置了阻止此请求的安全策略。 检查在租户级别定义的安全策略来确定你的请求是否满足策略要求。 |
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-租户管理员已配置阻止此请求的安全策略。 检查租户级别上定义的安全策略，以确定你的请求是否符合策略要求。 |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest - 应用程序中找不到目录/租户。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能错误配置了应用程序的标识符值，或者将身份验证请求发送到了错误的租户。 |
 | AADSTS700020 | InteractionRequired - 访问权限授予需要交互。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
-| AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled-应用程序被禁用。 |
 
 ## <a name="next-steps"></a>后续步骤
 

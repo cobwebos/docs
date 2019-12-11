@@ -4,12 +4,12 @@ description: Azure 备份允许使用 Azure 导入/导出服务从网络中发�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173252"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996317"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 
@@ -43,7 +43,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 > * 使用 System Center Data Protection Manager (SC DPM) 备份所有工作负荷和文件
 > * 使用 Microsoft Azure 备份服务器备份所有工作负荷和文件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 确保在启动脱机备份工作流之前已满足以下先决条件
 
@@ -60,7 +60,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
   ![创建经典存储帐户](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
-* 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少）。
+* 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
 * 对于将发送到 Azure 的磁盘，请确保仅使用 2.5 英寸 SSD 或 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
 * SATA 驱动器必须连接到一台计算机（称为“副本计算机”），在这台计算机中完成将备份数据从暂存位置复制到 SATA 驱动器。 请确保已在“副本计算机”上启用 BitLocker
 
@@ -121,10 +121,10 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
-    | s:&lt;*Staging Location Path*&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
-    | p:&lt;*Path to PublishSettingsFile*&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
+    | s:&lt;&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
+    | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
 
     > [!NOTE]
     > 复制计算机与源计算机不同时，&lt;AzurePublishSettingFile 的路径&gt; 值是必需的。
@@ -135,7 +135,7 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
     ![Azure 磁盘准备工具输入](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
 
-3. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。 出现提示时，确认格式化驱动器。
+3. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。 出现提示时，请确认格式化驱动器。
 
     工具随后便开始准备磁盘和复制备份数据。 可能需要工具的提示附加其他磁盘，以免提供的磁盘没有足够空间来容纳备份数据。 <br/>
 
@@ -162,11 +162,11 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | u: | 用于更新 Azure 导入作业的寄送详情的必需输入 |
-    | s:&lt;*Staging Location Path*&gt; | 命令不在源计算机上运行时的必需输入。 用于提供在“启动脱机备份”工作流中所输入的暂存位置路径。 |
-    | p:&lt;*Path to PublishSettingsFile*&gt; | 命令不在源计算机上运行时的必需输入。 用于提供在“启动脱机备份”工作流中所输入的“Azure 发布设置”文件路径。 |
+    | s:&lt;&gt; | 命令不在源计算机上运行时的必需输入。 用于提供在“启动脱机备份”工作流中所输入的暂存位置路径。 |
+    | p:&lt;发布设置文件的路径&gt; | 命令不在源计算机上运行时的必需输入。 用于提供在“启动脱机备份”工作流中所输入的“Azure 发布设置”文件路径。 |
 
     该实用工具会自动检测到源计算机正在等待的导入作业，或在另一台计算机上运行命令时，与暂存位置相关的导入作业。 随后它通过一系列输入提供更新寄送信息的选项，如下所示：
 
@@ -218,4 +218,4 @@ Azure 备份的脱机种子设定与 [Azure 导入/导出服务](../storage/comm
 ## <a name="next-steps"></a>后续步骤
 
 * 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/common/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
-* 如有工作流方面的任何问题，请参阅 Azure 备份 [FAQ](backup-azure-backup-faq.md)（常见问题）的“脱机备份”部分。
+

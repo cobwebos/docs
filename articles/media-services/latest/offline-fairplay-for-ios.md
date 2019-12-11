@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 83fa8c9c6d98728d48ff4ed8993963cdbd522724
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341043"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974115"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
 
@@ -28,6 +28,8 @@ ms.locfileid: "67341043"
 
 - Microsoft PlayReady
 - Google Widevine
+    
+    Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 - Apple FairPlay
 - AES-128 加密
 
@@ -36,13 +38,13 @@ ms.locfileid: "67341043"
 除通过各种流式处理协议对联机流式处理的内容提供保护外，通常还要求提供受保护内容的脱机模式功能。 以下情况需要脱机模式支持：
 
 * 在 Internet 连接不可用（如旅行期间）时播放。
-* 某些内容提供程序可能会禁止国家/地区的边界之外的 DRM 许可证传送。 如果用户想要的国家/地区/区域之外旅行期间查看内容，需要脱机下载。
-* 在某些国家/地区，internet 可用性和/或带宽是仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
+* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想要在国家/地区之外观看内容，则需要脱机下载。
+* 在某些国家/地区，internet 可用性和/或带宽仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
 
 本文介绍 FairPlay Streaming (FPS) 脱机模式支持，适用于运行 iOS 10 或更高版本的设备。 此功能不支持其他 Apple 平台，例如 watchOS、tvOS 或 macOS 上的 Safari。
 
 > [!NOTE]
-> 脱机 DRM 仅计费下载内容时发出单个请求许可证。 不计费的任何错误。
+> 脱机 DRM 仅计费，以便在下载内容时发出许可证的单个请求。 任何错误都不收费。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -52,7 +54,7 @@ ms.locfileid: "67341043"
 
     - [Apple FairPlay 许可要求和配置](fairplay-license-overview.md)
     - [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
-    - 包含联机 FPS 流式处理配置的 .NET 示例：[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - 包含配置联机 FPS 流式处理的 .NET 示例： [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * 从 Apple Developer Network 获取 FPS SDK。 FPS SDK 包含两个组件：
 
     - FPS Server SDK，该组件包含密钥安全模块 (KSM)、客户端示例、规格和一组测试矢量。
@@ -121,7 +123,7 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 FPS 脱机模式支持仅适用于 iOS 10 及更高版本。 FPS Server SDK（3.0 或更高版本）包含 FPS 脱机模式文档和示例。 具体而言，FPS Server SDK（3.0 或更高版本）包含以下与脱机模式相关的两项：
 
 * 文档：“使用 FairPlay Streaming 和 HTTP Live Streaming 的脱机播放”。 2016 年 9 月 14 日由 Apple 提供。 在 FPS Server SDK 版本 4.0 中，此文档已合并到主要 FPS 文档。
-* 示例代码：\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中 FPS 脱机模式的 HLSCatalog 示例（Apple 的 FPS Server SDK 的一部分）。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
+* 示例代码： \FairPlay 流式处理服务器 SDK 版本 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. 中的 FPS 脱机模式的 HLSCatalog 示例（Apple 的 FPS Server SDK 的一部分） 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
 
     - AssetPersistenceManager.swift 代码文件：AssetPersistenceManager 是此示例中的主类，演示如何：
 
@@ -203,9 +205,9 @@ func requestApplicationCertificate() throws -> Data {
 
 以下常见问题解答提供故障排除帮助：
 
-- **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
+- **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 在脱机模式下出现备用音频轨（这是 HLS）时，iOS 10 和 iOS 11 默认为备用音频轨迹。若要补偿 FPS 脱机模式的此行为，请从流中删除备用音频轨。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
 - **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
-- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
+- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 可以。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
 - **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
 - **iOS 设备上的已下载/脱机文件结构是什么？** iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
 

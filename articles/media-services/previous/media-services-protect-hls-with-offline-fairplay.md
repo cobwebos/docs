@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871642"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968691"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
 
-> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本:"]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本："]
 > * [第 3 版](../latest/offline-fairplay-for-ios.md)
 > * [第 2 版](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -43,8 +43,8 @@ Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.
 除通过各种流式处理协议对联机流式处理的内容提供保护外，通常还要求提供受保护内容的脱机模式功能。 以下情况需要脱机模式支持：
 
 * 在 Internet 连接不可用（如旅行期间）时播放。
-* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想要在国家/地区之外观看内容, 则需要脱机下载。
-* 在某些国家/地区, internet 可用性和/或带宽仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
+* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想要在国家/地区之外观看内容，则需要脱机下载。
+* 在某些国家/地区，internet 可用性和/或带宽仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
 
 本文介绍 FairPlay Streaming (FPS) 脱机模式支持，适用于运行 iOS 10 或更高版本的设备。 此功能不支持其他 Apple 平台，例如 watchOS、tvOS 或 macOS 上的 Safari。
 
@@ -124,7 +124,7 @@ if (objDRMSettings.EnableOfflineMode)
 FPS 脱机模式支持仅适用于 iOS 10 及更高版本。 FPS Server SDK（3.0 或更高版本）包含 FPS 脱机模式文档和示例。 具体而言，FPS Server SDK（3.0 或更高版本）包含以下与脱机模式相关的两项：
 
 * 文档：“使用 FairPlay Streaming 和 HTTP Live Streaming 的脱机播放”。 2016 年 9 月 14 日由 Apple 提供。 在 FPS Server SDK 版本 4.0 中，此文档已合并到主要 FPS 文档。
-* 示例代码：FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中的 FPS 脱机模式的 HLSCatalog 示例。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
+* 示例代码：\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中的 FPS 脱机模式的 HLSCatalog 示例。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
 
     - AssetPersistenceManager.swift 代码文件：AssetPersistenceManager 是此示例中的主类，演示如何：
 
@@ -204,9 +204,9 @@ func requestApplicationCertificate() throws -> Data {
 ## <a name="faq"></a>常见问题解答
 以下常见问题解答提供故障排除帮助：
 
-- **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
+- **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 在脱机模式下出现备用音频轨（这是 HLS）时，iOS 10 和 iOS 11 默认为备用音频轨迹。若要补偿 FPS 脱机模式的此行为，请从流中删除备用音频轨。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
 - **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
-- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
+- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 可以。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
 - **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
 - **FPS 脱机模式的以下 API 中最后一个参数代表什么？** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
@@ -245,6 +245,10 @@ func requestApplicationCertificate() throws -> Data {
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+
 ## <a name="summary"></a>总结
 本文档包含以下步骤，并提供了可用于实现 FPS 脱机模式的信息：
 
@@ -252,3 +256,7 @@ func requestApplicationCertificate() throws -> Data {
 * 基于 FPS Server SDK 中的示例的 iOS 播放器设置可以在联机流式处理模式或脱机模式中播放 FPS 内容的 iOS 播放器。
 * 用于测试脱机模式和联机流式处理的示例 FPS 视频。
 * 有关 FPS 脱机模式的常见问题解答。
+
+## <a name="next-steps"></a>后续步骤
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

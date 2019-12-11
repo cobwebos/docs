@@ -1,5 +1,5 @@
 ---
-title: 如何为自定义开发的应用程序更改令牌生存期默认设置 |Microsoft 文档
+title: 更改自定义 Azure AD 应用的令牌生存期默认值 |Microsoft Docs
 description: 如何为在 Azure AD 上开发的应用程序更新令牌生存期策略
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dd69ff41c890c654fc41bb601b17d135ff0e984
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a603be6d57581541c0868b9f48a0bf9997cadd71
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320939"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962825"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>如何为自定义开发的应用程序更改令牌生存期默认设置
 
@@ -36,4 +36,3 @@ ms.locfileid: "68320939"
 
 * 请参阅 [Azure AD 中的可配置令牌生存期](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes)，了解如何配置 Azure AD 颁发的令牌生存期，包括如何为组织中的所有应用、多租户应用或组织中的特定服务主体设置令牌生存期。 
 * [Azure AD 令牌参考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
-

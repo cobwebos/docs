@@ -1,5 +1,5 @@
 ---
-title: 单页应用程序（应用程序注册）-Microsoft 标识平台
+title: 注册单页应用程序-Microsoft 标识平台 |Microsoft
 description: 了解如何生成单页面应用程序（应用程序注册）
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 03115db0ad286c7a5c24590906d8e3715e43bac7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764689"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962434"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 

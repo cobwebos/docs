@@ -1,6 +1,6 @@
 ---
-title: 如何重新激活已禁用的 Azure 访问控制服务 (ACS) 命名空间
-description: 了解如何查找和启用 Azure 访问控制服务 (ACS) 命名空间，并请求延期启用到 2019 年 2 月 4 日为止。
+title: 重新激活已禁用的 Azure 访问控制服务（ACS）命名空间
+description: 查找并启用 Azure 访问控制服务（ACS）命名空间，并请求扩展，使其保持启用到2019年2月4日。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590fc99861035ce1a5219a3cfd788159c6c2a19b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966939"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
 

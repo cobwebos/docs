@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555407"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974625"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL 数据仓库工作负荷组隔离（预览）
 
@@ -24,13 +24,13 @@ ms.locfileid: "74555407"
 
 ## <a name="workload-groups"></a>工作负荷组
 
-工作负荷组是一组请求的容器，是在系统上配置工作负荷管理（包括工作负荷隔离）的基础。  使用 "[创建工作负荷组](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)" 语法创建工作负荷组。  简单的工作负荷管理配置可以管理数据加载和用户查询。  例如，名为 `wgDataLoads` 的工作负荷组将定义加载到系统中的数据的工作负荷部分。 此外，名为 `wgUserQueries` 的工作负荷组将为运行查询的用户定义工作负荷方面，以便从系统读取数据。
+工作负荷组是一组请求的容器，是在系统上配置工作负荷管理（包括工作负荷隔离）的基础。  使用 "[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)" 语法创建工作负荷组。  简单的工作负荷管理配置可以管理数据加载和用户查询。  例如，名为 `wgDataLoads` 的工作负荷组将定义加载到系统中的数据的工作负荷部分。 此外，名为 `wgUserQueries` 的工作负荷组将为运行查询的用户定义工作负荷方面，以便从系统读取数据。
 
 以下各部分将重点介绍工作负荷组如何提供定义隔离、包含、请求资源定义以及遵循执行规则的功能。
 
 ## <a name="workload-isolation"></a>工作负载隔离
 
-工作负荷隔离意味着工作负荷组仅保留资源。  通过在[创建工作负荷组](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零，实现工作负荷隔离。  对于需要遵守严格 Sla 的连续执行工作负荷，隔离确保资源始终可用于工作负荷组。 
+工作负荷隔离意味着工作负荷组仅保留资源。  通过在[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零，实现工作负荷隔离。  对于需要遵守严格 Sla 的连续执行工作负荷，隔离确保资源始终可用于工作负荷组。 
 
 配置工作负荷隔离会隐式定义保证的并发级别。  将 MIN_PERCENTAGE_RESOURCE 设置为30%，并将 REQUEST_MIN_RESOURCE_GRANT_PERCENT 设置为2%，工作负荷组将保证15并发级别。  请考虑以下方法来确定有保证的并发：
 
@@ -50,7 +50,7 @@ ms.locfileid: "74555407"
 
 ## <a name="workload-containment"></a>工作负荷包含
 
-工作负荷包含关系是指限制工作负荷组可以使用的资源量。  通过在[创建工作负荷组](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中将 CAP_PERCENTAGE_RESOURCE 参数配置为小于100，可以实现工作负荷包容。  考虑到用户需要系统的读取访问权限，以便他们可以通过即席查询运行假设分析。  这些类型的请求可能会对系统上运行的其他工作负荷产生负面影响。  配置包容可以确保资源量的限制。
+工作负荷包含关系是指限制工作负荷组可以使用的资源量。  通过在[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中将 CAP_PERCENTAGE_RESOURCE 参数配置为小于100，可以实现工作负荷包容。  考虑到用户需要系统的读取访问权限，以便他们可以通过即席查询运行假设分析。  这些类型的请求可能会对系统上运行的其他工作负荷产生负面影响。  配置包容可以确保资源量的限制。
 
 配置工作负荷包含隐式定义并发的最高级别。  将 CAP_PERCENTAGE_RESOURCE 设置为60%，并将 REQUEST_MIN_RESOURCE_GRANT_PERCENT 设置为1%，则工作负荷组允许最多60并发级别。  请考虑下面包含的方法来确定最大并发性：
 
@@ -61,7 +61,7 @@ ms.locfileid: "74555407"
 
 ## <a name="resources-per-request-definition"></a>每个请求定义的资源
 
-工作负荷组提供一种机制，用于使用[CREATE 工作负荷组](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中的 REQUEST_MIN_RESOURCE_GRANT_PERCENT 和 REQUEST_MAX_RESOURCE_GRANT_PERCENT 参数来定义每个请求分配的最小和最大资源量。  在这种情况下，资源是 CPU 和内存。  配置这些值决定了在系统上可以实现的资源量和并发级别。
+工作负荷组提供一种机制，用于使用[CREATE 工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中的 REQUEST_MIN_RESOURCE_GRANT_PERCENT 和 REQUEST_MAX_RESOURCE_GRANT_PERCENT 参数来定义每个请求分配的最小和最大资源量。  在这种情况下，资源是 CPU 和内存。  配置这些值决定了在系统上可以实现的资源量和并发级别。
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT 是一个可选参数，默认值为为 REQUEST_MIN_RESOURCE_GRANT_PERCENT 指定的相同值。
@@ -75,7 +75,7 @@ ms.locfileid: "74555407"
 
 ## <a name="execution-rules"></a>执行规则
 
-在即席报表系统上，客户可能会意外地执行失控的查询，这会严重影响他人的工作效率。  系统管理员被迫花费时间终止失控的查询以释放系统资源。  工作负荷组提供配置查询执行超时规则以取消超过指定值的查询的功能。  规则是通过在[CREATE 工作负荷组](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中设置 `QUERY_EXECUTION_TIMEOUT_SEC` 参数来配置的。
+在即席报表系统上，客户可能会意外地执行失控的查询，这会严重影响他人的工作效率。  系统管理员被迫花费时间终止失控的查询以释放系统资源。  工作负荷组提供配置查询执行超时规则以取消超过指定值的查询的功能。  规则是通过在[CREATE 工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中设置 `QUERY_EXECUTION_TIMEOUT_SEC` 参数来配置的。
 
 ## <a name="shared-pool-resources"></a>共享池资源
 
@@ -88,5 +88,5 @@ ms.locfileid: "74555407"
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：配置工作负荷隔离](quickstart-configure-workload-isolation-tsql.md)
-- [创建工作负荷组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [将资源类转换为工作负荷组](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)。

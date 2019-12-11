@@ -4,16 +4,16 @@ description: 从单个 IoT Central 规则运行多个操作，并创建可从多
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929905"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974353"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>将多个操作分组，以从一个或多个规则运行（预览功能）
 
@@ -21,7 +21,7 @@ ms.locfileid: "73929905"
 
 在 Azure IoT Central 中，可以创建规则以在满足条件时运行操作。 规则基于设备遥测或事件。 例如，当设备温度超过阈值时，可以通知操作员。 本文介绍如何使用[Azure Monitor](../../azure-monitor/overview.md) *操作组*将多个操作附加到 IoT Central 规则。 可以将操作组附加到多个规则。 [操作组](../../azure-monitor/platform/action-groups.md)是 Azure 订阅的所有者定义的通知首选项的集合。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 即用即付应用程序
 - 用于创建和管理 Azure Monitor 操作组的 Azure 帐户和订阅
@@ -59,8 +59,8 @@ ms.locfileid: "73929905"
 
 | 操作类型 | 输出格式 |
 | ----------- | -------------- |
-| Email       | 标准 IoT Central 电子邮件模板 |
-| SMS         | Azure IoT Central 警报： $ {applicationName}-"$ {ruleName}" 在 $ {triggerDate} $ {triggerTime} 的 "$ {deviceName}" 上触发 |
+| 电子邮件       | 标准 IoT Central 电子邮件模板 |
+| 短信         | Azure IoT Central 警报： $ {applicationName}-"$ {ruleName}" 在 $ {triggerDate} $ {triggerTime} 的 "$ {deviceName}" 上触发 |
 | 语音       | Azure i-o Central 警报：在应用程序 $ {applicationName} 的 $ {triggerDate} $ {triggerTime} 上，在设备 "$ {deviceName}" 上触发的规则 "$ {ruleName}" |
 | Webhook     | {"schemaId"： "AzureIoTCentralRuleWebhook"，"data"： {[regular webhook 负载](howto-create-webhooks.md#payload)}} |
 

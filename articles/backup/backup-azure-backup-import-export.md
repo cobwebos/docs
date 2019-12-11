@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173290"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997354"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -42,7 +42,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
   > [!NOTE]
   > 以下先决条件和工作流仅适用于使用[最新的 MARS 代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 若要使用 System Center DPM 或 Azure 备份服务器执行工作负荷脱机备份，请参阅[此文](backup-azure-backup-server-import-export-.md)。
@@ -61,7 +61,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     3. 在订阅菜单中，单击“资源提供程序”查看提供程序列表。
     4. 在提供程序列表中，向下滚动到“Microsoft.ImportExport”。 如果“Status”为“NotRegistered”，请单击“注册”。
     ![注册资源提供程序](./media/backup-azure-backup-import-export/registerimportexport.png)
-* 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少）。
+* 创建了一个暂存位置，它可以是计算机上的网络共享或任何其他内部或外部驱动器，并且有足够的磁盘空间来保存初始副本。 例如，如果尝试备份 500 GB 文件服务器，请确保暂存区域至少有 500 GB 空间。 （由于压缩，实际使用量更少。）
 * 将磁盘寄送到 Azure 时，请仅使用 2.5 英寸 SSD，或者 2.5 英寸或 3.5 英寸 SATA II/III 内部硬盘驱动器。 可以使用容量最高为 10 TB 的硬盘驱动器。 查看 [Azure 导入/导出服务文档](../storage/common/storage-import-export-requirements.md#supported-hardware)，了解服务支持的最新驱动器集。
 * SATA 驱动器必须连接到一台计算机（称为“副本计算机”），在这台计算机中完成将备份数据从暂存位置复制到 SATA 驱动器。 请确保已在*副本计算机*上启用 BitLocker。
 
@@ -95,7 +95,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 4. 在向导的“确认”页上，单击“备份”。 初始备份将写入到设置过程中指定的暂存区域。
 
-   ![确认已准备好立即备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
+   ![确认你现在已准备好进行备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     操作完成后，暂存位置已准备就绪，可用于准备磁盘。
 
@@ -122,17 +122,17 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
-    | s:&lt;*Staging Location Path*&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
-    | p:&lt;*Path to PublishSettingsFile*&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
+    | s:&lt;&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
+    | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |
 
     运行该命令时，该实用工具将请求选择需要准备的驱动器对应的 Azure 导入作业。 如果只有一个与提供的暂存位置关联的导入作业，会显示如下所示的屏幕。
 
     ![Azure 磁盘准备工具输入](./media/backup-azure-backup-import-export/diskprepconsole0_1.png) <br/>
 
 3. 输入想要准备传输到 Azure 的已装载磁盘的驱动器号（不要包含尾部的冒号）。
-4. 出现提示时，确认格式化驱动器。
+4. 出现提示时，请确认格式化驱动器。
 5. 系统会提示登录到 Azure 订阅。 提供凭据。
 
     ![Azure 磁盘准备工具输入](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
@@ -206,4 +206,4 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 ## <a name="next-steps"></a>后续步骤
 
 * 如有任何关于 Azure 导入/导出工作流的问题，请参阅 [Use the Microsoft Azure Import/Export service to transfer data to Blob storage](../storage/common/storage-import-export-service.md)（使用 Microsoft Azure 导入/导出服务可将数据传输到 Blob 存储中）。
-* 如有工作流方面的任何问题，请参阅 Azure 备份 [FAQ](backup-azure-backup-faq.md)（常见问题）的“脱机备份”部分。
+

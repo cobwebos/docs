@@ -1,5 +1,5 @@
 ---
-title: Azure AD 中的证书凭据
+title: Azure AD 证书凭据
 titleSuffix: Microsoft identity platform
 description: 本文讨论注册和使用证书凭据进行应用程序身份验证
 services: active-directory
@@ -15,20 +15,21 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0dd42aeaa8a7a5d9f1cc28b409a8d8dbf92304
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963862"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD 应用程序身份验证证书凭据
 
 Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流（[v1.0](v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)）和代理流（[v1.0](v1-oauth2-on-behalf-of-flow.md)、[v2.0](v2-oauth2-on-behalf-of-flow.md)）中就是如此。
 
 应用程序可用于身份验证的凭据的一种形式使用应用程序拥有的证书进行签名的 JSON Web 令牌 (JWT) 断言。
 
 ## <a name="assertion-format"></a>断言格式
+
 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
 ### <a name="header"></a>标头

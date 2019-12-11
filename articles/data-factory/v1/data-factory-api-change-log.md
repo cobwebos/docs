@@ -1,6 +1,6 @@
 ---
 title: 数据工厂-.NET API 更改日志
-description: 描述 Azure 数据工厂的 .NET API 的特定版本中的重大更改、新增功能、Bug 修复等。
+description: 介绍适用于 Azure 数据工厂的 .NET API 的特定版本中的重大更改、功能添加、bug 修复等。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683194"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978996"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "73683194"
 * 向 CopyActivity 添加了 [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) 和 [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) 属性。 有关此功能的详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 
 ### <a name="bug-fix"></a>Bug 修复
-* 引入 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 实例。
+* 引入了 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的重载，该方法采用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 实例。
 * 在 CopySink 中将 [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) 和 [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) 标记为可选。
 
 ## <a name="version-480"></a>版本 4.8.0
@@ -182,4 +182,4 @@ ms.locfileid: "73683194"
 
 ### <a name="feature-additions"></a>新增功能
 * [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) 类支持两个新属性（即 **SliceIdentifierColumnName** 和 **SqlWriterCleanupScript**），以支持到 Azure SQL 数据仓库的幂等复制。 有关这些属性的详细信息，请参阅 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md)一文。
-* 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource) 和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  
+* 当前支持针对 Azure SQL 数据库和 Azure SQL 数据仓库源作为复制活动的一部分运行存储过程。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) 和 [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) 类具有以下属性：**SqlReaderStoredProcedureName** 和 **StoredProcedureParameters**。 有关这些属性的详细信息，请参阅 Azure.com 上的 [Azure SQL 数据库](data-factory-azure-sql-connector.md#sqlsource)和 [Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource)文章。  

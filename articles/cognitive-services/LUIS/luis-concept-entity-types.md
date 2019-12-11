@@ -1,7 +1,7 @@
 ---
-title: 实体类型 - LUIS
+title: 实体类型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 实体从话语中提取数据。 实体类型为你提供可预测的数据提取。 有两种类型的实体：机器学习的和非机器学习的。 请务必知道你在话语中使用的是哪种类型的实体。
+description: 实体从查询文本中提取数据。 实体类型使你可以预测的数据提取。 有两种类型的实体：机器学习和非计算机学习。 了解要在最谈话中使用的实体类型很重要。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422581"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976955"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 
@@ -58,10 +58,10 @@ ms.locfileid: "74422581"
 
 |话语|预测的意向|提取的实体|说明|
 |--|--|--|--|
-|Help|help|-|没有要提取的内容。|
+|帮助|help|-|没有要提取的内容。|
 |发送内容|sendSomething|-|没有要提取的内容。 尚未训练该模型来提取此上下文中 `something`，并且不存在任何接收方。|
-|发送小明|sendSomething|`Bob`、`present`|该模型已通过[personName](luis-reference-prebuilt-person.md)预先生成的实体进行定型，该实体已提取 `Bob`的名称。 已使用计算机学习的实体提取 `present`。|
-|向 Bob 发送甜蜜的框|sendSomething|`Bob`、`box of chocolates`|两个重要的数据段（`Bob` 和 `box of chocolates`）已由实体提取。|
+|发送小明|sendSomething|`Bob`，`present`|该模型已通过[personName](luis-reference-prebuilt-person.md)预先生成的实体进行定型，该实体已提取 `Bob`的名称。 已使用计算机学习的实体提取 `present`。|
+|向 Bob 发送甜蜜的框|sendSomething|`Bob`，`box of chocolates`|两个重要的数据段（`Bob` 和 `box of chocolates`）已由实体提取。|
 
 ## <a name="design-entities-for-decomposition"></a>为分解设计实体
 
@@ -75,7 +75,7 @@ ms.locfileid: "74422581"
 
 计算机获知的实体基于通过定型最谈话获知的上下文触发。 **约束**是适用于机器学习的实体的可选规则，这些规则基于未获知计算机的实体（如[列表](reference-entity-list.md)或[Regex](reference-entity-regular-expression.md)）的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习的实体可以具有 `sizeList` 列表实体的约束，该限制仅在遇到 `sizeList` 实体内包含的值时才会触发 `size` 实体。
 
-[**描述符**](luis-concept-feature.md)是应用的功能，用于提高预测的单词或短语的相关性。 它们被称为*描述符*，因为它们用于*描述*意向或实体。 描述符描述了数据的特征或属性，例如重要的词或短语。 LUIS 观察和学习。
+[**描述符**](luis-concept-feature.md)是应用的功能，用于提高预测的单词或短语的相关性。 它们被称为*描述符*，因为它们用于*描述*意向或实体。 描述符描述了数据的特征或特性，例如 LUIS 观察和学习的重要字词或短语。
 
 当你在 LUIS 应用程序中创建短语列表功能时，默认情况下它将在全局范围内启用并在所有意向和实体之间平均应用。 但是，如果您将短语列表作为计算机学习的实体（或*模型*）的描述符（功能）应用，则其作用域将减少为仅应用于该模型，而不再与所有其他模型一起使用。 使用短语列表作为模型的描述符有助于分解应用到的模型的准确性。
 
@@ -90,9 +90,9 @@ ms.locfileid: "74422581"
 
 请根据数据的提取方式以及提取后的数据表示方式，来选择实体。
 
-|实体类型|目的|
+|实体类型|用途|
 |--|--|
-|[**计算机学习**](tutorial-machine-learned-entity.md)|机器学习实体从话语的上下文学习。 实体的父分组，与实体类型无关。 这使得示例话语中的位置差异变得显著。 |
+|[**计算机学习**](tutorial-machine-learned-entity.md)|计算机学习的实体从查询文本中的上下文学习。 实体的父分组，与实体类型无关。 这会使最谈话的位置变体变得很重要。 |
 |[**列表**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|
 |[**Pattern.any**](reference-entity-pattern-any.md)|难以确定末尾部分的实体。 |
 |[**预生成**](luis-reference-prebuilt-entities.md)|已经过培训，可以提取特定类型的数据，例如 URL 或电子邮件。 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。|
@@ -128,7 +128,7 @@ ms.locfileid: "74422581"
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>如果所需实体数超过最大实体数
 
-如果你需要超过此限制，请联系支持人员。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。
+如果你需要超过此限制，请联系支持人员。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。
 
 ## <a name="entity-prediction-status"></a>实体预测状态
 
@@ -138,6 +138,7 @@ LUIS 门户显示了当实体（在示例中为查询文本）具有不同于所
 
 了解关于优良[话语](luis-concept-utterance.md)的概念。
 
-请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
+请参阅[添加实体](luis-how-to-add-entities.md)，了解如何将实体添加到 LUIS 应用的详细信息。
 
 请参阅[教程：从用户查询文本中提取结构化数据和语言理解（LUIS）中的机器学习的实体](tutorial-machine-learned-entity.md)，了解如何使用机器学习的实体从查询文本提取结构化数据。
+ 

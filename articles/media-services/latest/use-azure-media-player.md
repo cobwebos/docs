@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 8f1639a21e3783f587904c2a8085fd2f555ff5b8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900352"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967518"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -50,6 +50,10 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 ## <a name="set-up-azure-media-player-in-your-html"></a>在 HTML 中设置 Azure Media Player
 
 Azure Media Player 易于设置。 只需要片刻时间便可实现媒体服务帐户中的媒体内容的基本播放。 请参阅 [Azure Media Player 文档](https://aka.ms/ampdocs)来了解有关如何设置和配置 Azure Media Player 的详细信息。 
+
+## <a name="additional-notes"></a>附加说明
+
+* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

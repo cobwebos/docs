@@ -1,7 +1,7 @@
 ---
-title: 应用注册门户帮助主题
+title: 应用注册门户参考 |Microsoft
 titleSuffix: Microsoft identity platform
-description: 介绍 Microsoft 应用注册门户中的各种功能。
+description: Microsoft 应用注册门户中的功能的说明。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15df5a5c655ac92d4f89eb5f9cdcdea94783a46e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1699aad41d8a5da153199f79f65af67bd04c6b2c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844611"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966089"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 

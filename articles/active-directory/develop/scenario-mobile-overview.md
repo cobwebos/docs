@@ -1,5 +1,5 @@
 ---
-title: 用于调用 web Api 的移动应用程序-概述
+title: 构建调用 web Api 的移动应用 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何构建调用 web Api 的移动应用程序（概述）
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965460"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：调用 web Api 的移动应用程序
 
-了解生成调用 web Api 的移动应用程序所需的全部知识。
+了解如何构建调用 web Api 的移动应用程序。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -34,7 +34,7 @@ ms.locfileid: "72803750"
 
 ## <a name="getting-started"></a>入门
 
-创建你的第一个移动应用程序并试用快速入门！
+创建你的第一个移动应用程序并试用快速入门。
 
 > [!div class="nextstepaction"]
 > [快速入门：从 Android 应用获取令牌并调用 Microsoft Graph API](./quickstart-v2-android.md)

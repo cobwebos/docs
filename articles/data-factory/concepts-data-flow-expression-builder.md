@@ -1,60 +1,66 @@
 ---
-title: 映射数据流表达式生成器
-description: 用于 Azure 数据工厂映射数据流的表达式生成器
+title: 映射数据流中的表达式生成器
+description: 在 Azure 数据工厂中映射数据流时使用表达式生成器生成表达式
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: 7d8f02647224c971c44bff51f09315c53c53e9a3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/9/2019
+ms.openlocfilehash: 01aa2574ac6edd1ce5e1b209eac3e43bbed82fce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928340"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969325"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
+# <a name="building-expressions-in-mapping-data-flow"></a>在映射数据流中构建表达式
 
+在映射数据流中，许多转换属性都作为表达式输入。 这些表达式由列值、参数、函数、运算符和在运行时计算为 spark 数据类型的文本组成。
 
+## <a name="opening-the-expression-builder"></a>打开表达式生成器
 
-在 Azure 数据工厂映射数据流中，你将找到表达式框，可在其中输入用于数据转换的表达式。 请在这些框中使用数据流中的列、字段、变量、参数和函数。 若要生成表达式，请使用表达式生成器。单击转换中的表达式文本框即可启动表达式生成器。 选择转换的列时，有时还会看到“计算列”选项。 单击该选项也会启动表达式生成器。
+数据工厂 UX 中的表达式编辑接口称为 "**表达式生成器**"。 当你在表达式逻辑中输入时，数据工厂使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)代码完成来突出显示、语法检查和完成。
 
 ![表达式生成器](media/data-flow/xpb1.png "表达式生成器")
 
-表达式生成器工具默认使用文本编辑器选项。 自动填写功能从整个 Azure 数据工厂数据流对象模型读取数据，并支持语法检查和突出显示。
+在转换（如派生列和筛选器）中，如果表达式是必需的，则通过单击蓝色表达式框打开表达式生成器。
 
-![表达式生成器自动完成](media/data-flow/expb1.png "表达式生成器自动完成")
+![表达式生成器](media/data-flow/expressionbox.png "表达式生成器")
 
-## <a name="build-schemas-in-output-schema-pane"></a>在输出架构窗格中生成架构
+引用匹配或分组依据条件中的列时，表达式可以从列中提取值。 若要创建表达式，请选择 "计算列" 选项。
 
-![添加复杂列](media/data-flow/complexcolumn.png "添加列")
+![表达式生成器](media/data-flow/computedcolumn.png "表达式生成器")
 
-在左侧的输出架构窗格中，你将看到正在修改的列并将其添加到你的架构。 可在此处以交互方式生成简单复杂的数据结构。 使用 "添加列" 添加其他字段，并使用 "添加 subcolumn" 生成层次结构。
+如果表达式或文本值为有效输入，"添加动态内容" 将允许您生成一个计算结果为文本的表达式。
 
-![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
+![表达式生成器](media/data-flow/add-dynamic-content.png "表达式生成器")
 
-## <a name="data-preview-in-debug-mode"></a>调试模式下的数据预览
+## <a name="expression-language-reference"></a>表达式语言参考
+
+映射数据流具有可在表达式中使用的内置函数和运算符。 可用函数的列表可在 "[映射数据流表达式语言](data-flow-expression-functions.md)参考" 页中找到。
+
+## <a name="column-names-with-special-characters"></a>带有特殊字符的列名称
+
+如果列名称包含特殊字符或空格，请使用大括号将该名称括起来，以便在表达式中引用它们。
+
+```{[dbo].this_is my complex name$$$}```
+
+## <a name="previewing-expression-results"></a>预览表达式结果
+
+如果打开了[调试模式](concepts-data-flow-debug-mode.md)，则可以使用实时 spark 群集来查看表达式的计算结果。 构建逻辑时，可以实时调试表达式。 
 
 ![表达式生成器](media/data-flow/exp4b.png "表达式数据预览")
 
-在处理数据流表达式时，请从 Azure 数据工厂数据流设计图面切换调试模式，从而启用正在生成的表达式中的数据结果的实时预览。 为表达式启用实时调试。
-
-![调试模式](media/data-flow/debugbutton.png "调试按钮")
-
-单击 "刷新" 按钮以实时更新您的源的实时示例。
+单击 "刷新" 按钮，根据源的实时示例更新表达式的结果。
 
 ![表达式生成器](media/data-flow/exp5.png "表达式数据预览")
 
-## <a name="comments"></a>注释
-
-使用单行和多行注释语法将注释添加到表达式：
-
-![注释](media/data-flow/comments.png "注释")
-
 ## <a name="string-interpolation"></a>字符串内插
 
-使用双引号将文字字符串文本与表达式一起使用。 可以包括表达式函数、列和参数。 在查询字符串中包含参数时，此方法非常有用，可避免广泛使用字符串串联。
+使用双引号将文字字符串文本与表达式一起使用。 可以包括表达式函数、列和参数。 在查询字符串中包含参数时，字符串内插有助于避免大量使用字符串串联。 若要使用表达式语法，请将其括在大括号中，
+
+字符串内插的一些示例：
 
 * ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
 
@@ -62,9 +68,28 @@ ms.locfileid: "74928340"
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
+## <a name="commenting-expressions"></a>注释表达式
+
+使用单行和多行注释语法将注释添加到表达式：
+
+![注释](media/data-flow/comments.png "注释")
+
+下面是有效注释的示例：
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+如果在表达式的顶部放置注释，它将显示在 "转换" 文本框中以记录转换表达式：
+
+![注释](media/data-flow/comments2.png "注释")
+
 ## <a name="regular-expressions"></a>正则表达式
 
-Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试将反斜杠（\\）解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在计时周期（\`）或使用双反斜杠。
+许多表达式语言函数使用正则表达式语法。 使用正则表达式函数时，表达式生成器将尝试将反斜杠（\\）解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在计时周期（\`）或使用双反斜杠。
 
 使用居中圆点符号的示例
 
@@ -84,50 +109,26 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ![表达式生成器数组](media/data-flow/expb2.png "表达式数据预览")
 
-## <a name="handling-names-with-special-characters"></a>处理带有特殊字符的名称
-
-如果列名称包含特殊字符或空格，请使用大括号将该名称括起来。
-* ```{[dbo].this_is my complex name$$$}```
-
 ## <a name="keyboard-shortcuts"></a>键盘快捷方式
 
 * ```Ctrl-K Ctrl-C```：注释整行
 * ```Ctrl-K Ctrl-U```：取消注释
 * ```F1```：提供编辑器帮助命令
 * ```Alt-Down Arrow```：向下移动当前行
-* ```Alt-Up Arrow```：向上移动当前行
+* ```Alt-Up Arrow```：上移当前行
 * ```Cntrl-Space```：显示上下文帮助
-
-## <a name="manual-comments"></a>手动注释
-
-* ```/* This is my comment */```
-
-* ```/* This is a```
-*   ```multi-line comment */```
-   
-* ```// This is a single line comment```
-
-如果在表达式的顶部放置注释，它将显示在 "转换" 文本框中以记录转换表达式：
-
-![注释](media/data-flow/comments2.png "注释")
 
 ## <a name="convert-to-dates-or-timestamps"></a>转换为日期或时间戳
 
+若要在时间戳输出中包含字符串文本，需要将转换打包到 ```toString()```中。
+
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-请注意，若要在时间戳输出中包含字符串文本，需要将转换打包到 ```toString()```中。
-
-下面介绍如何将时间从 Epoch 转换为日期或时间戳：
+若要将毫秒数从 Epoch 转换为日期或时间戳，请使用 `toTimestamp(<number of milliseconds>)`。 如果时间以秒为单位，乘以1000。
 
 ```toTimestamp(1574127407*1000l)```
 
-请注意上面表达式末尾的尾部 "l"。 表示转换为长整型语法的。
-
-## <a name="handling-column-names-with-special-characters"></a>处理带有特殊字符的列名称
-
-如果列名称包含特殊字符或空格，请使用大括号将该名称括起来。
-
-```{[dbo].this_is my complex name$$$}```
+上面表达式末尾的尾部 "l" 表示转换为 long 类型的 "内联" 语法。
 
 ## <a name="next-steps"></a>后续步骤
 

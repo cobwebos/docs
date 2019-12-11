@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 条件性访问的开发人员指南
+title: Azure AD 条件访问开发人员指南
 description: Azure AD 条件性访问的开发人员指南和方案
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69fcb50cb8273fa9e6606e1d071249ed17c78786
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f6bd060e0c627e8183f8d7f7b449f8d6f19c951b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843727"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967041"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件性访问的开发人员指南
 

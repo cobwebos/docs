@@ -1,7 +1,7 @@
 ---
-title: 受保护的 web API-应用代码配置
+title: 配置受保护的 web API 应用 |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解如何生成受保护的 Web API 和配置应用程序的代码。
+description: 了解如何构建受保护的 web API 并配置你的应用程序代码。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,31 +17,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882630"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965392"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 web API：代码配置
 
-若要为受保护的 Web API 配置代码，需要了解 API 受保护的含义、如何配置持有者令牌，以及如何验证令牌。
+若要为受保护的 web API 配置代码，你需要了解哪些内容将 Api 定义为受保护，如何配置持有者令牌，以及如何验证令牌。
 
-## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>ASP.NET/ASP.NET Core API 受保护是什么意思？
+## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>什么定义受保护的 ASP.NET/ASP.NET 核心 Api？
 
-与 Web 应用一样，ASP.NET/ASP.NET Core Web API 也“受到保护”，因为它们的控制器操作以 `[Authorize]` 属性为前缀。 因此，仅当使用已授权标识调用 API 时，才能调用控制器操作。
+与 web 应用一样，ASP.NET/ASP.NET Core web Api 是 "受保护的"，因为其控制器操作以 `[Authorize]` 属性为前缀。 因此，仅当使用授权的身份调用 API 时，才能调用控制器操作。
 
-考虑以下问题：
+请考虑下列问题：
 
-- Web API 如何识别调用它的应用的标识？ （只有应用可以调用 Web API。）
-- 如果应用代表某个用户调用 Web API，该用户的标识是什么？
+- Web API 如何识别调用它的应用的标识？ （仅应用可以调用 web API。）
+- 如果应用代表用户调用 web API，用户的标识是什么？
 
 ## <a name="bearer-token"></a>持有者令牌
 
-有关应用标识以及有关用户标识（除非 Web 应用程序接受守护程序应用发出的服务到服务调用）的信息保存于调用应用时在标头中设置的持有者令牌内。
+有关应用标识和用户的信息（除非 web 应用接受来自后台应用的服务到服务调用）保存在调用应用时在标头中设置的持有者令牌中。
 
-以下 C# 代码示例演示了某个客户端在使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获取令牌后调用 API：
+下面是一个C#代码示例，该示例演示了在使用适用于 .Net 的 Microsoft 身份验证库（MSAL.NET）获取令牌后调用 API 的客户端：
 
 ```CSharp
 var scopes = new[] {$"api://.../access_as_user}";
@@ -56,7 +56,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> 持有者令牌是客户端应用程序向 *Web API 的* Microsoft 标识平台终结点请求的。 Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。 （Web API 将来可能要求加密令牌。 这项要求会阻止可以查看访问令牌的客户端应用进行访问。）
+> 客户端应用程序向*WEB API*的 Microsoft 标识平台终结点请求持有者令牌。 Web API 是唯一应该验证令牌并查看其包含的声明的应用程序。 客户端应用程序不应尝试检查令牌中的声明。 （将来，web API 可能需要加密令牌。 此要求会阻止对可以查看访问令牌的客户端应用的访问。）
 
 ## <a name="jwtbearer-configuration"></a>JwtBearer 配置
 
@@ -92,21 +92,21 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 ### <a name="code-initialization"></a>代码初始化
 
-对包含 `[Authorize]` 属性的控制器操作调用某个应用时，ASP.NET/ASP.NET Core 将会查看调用方请求的 Authorization 标头中的持有者令牌，并提取访问令牌。 然后，该令牌将转发到 JwtBearer 中间件，而该中间件会调用适用于 .NET 的 Microsoft IdentityModel 扩展。
+当在承载 `[Authorize]` 特性的控制器操作上调用应用程序时，ASP.NET/ASP.NET Core 将在调用请求的 Authorization 标头中查看持有者令牌并提取访问令牌。 然后，将令牌转发到 JwtBearer 中间件，该中间件会调用 Microsoft System.identitymodel Extensions for .NET。
 
-在 ASP.NET Core 中，该中间件在 Startup.cs 文件中初始化。
+在 ASP.NET Core 中，将在 Startup.cs 文件中初始化该中间件：
 
 ```CSharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-该中间件由以下指令添加到 Web API：
+此指令将中间件添加到 web API：
 
 ```CSharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- 目前，ASP.NET Core 模板创建了 Azure Active Directory （Azure AD） web Api，这些 Api 在组织或任何组织中登录用户，而不是通过个人帐户登录。 但是，你可以通过在 Startup.cs 文件中添加以下代码，轻松将这些模板更改为使用 Microsoft 标识平台终结点：
+ 目前，ASP.NET Core 模板创建了 Azure Active Directory （Azure AD） web Api，这些 Api 在组织或任何组织中登录用户，而不是通过个人帐户登录。 但你可以通过将以下代码添加到 Startup.cs 文件，轻松地将其更改为使用 Microsoft 标识平台终结点：
 
 ```CSharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
@@ -132,32 +132,32 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>令牌验证
 
-与 Web 应用中的 OpenID Connect 中间件一样，JwtBearer 中间件将由 `TokenValidationParameters` 定向以验证令牌。 将解密该令牌（如果需要），提取声明，并验证签名。 然后，该中间件将通过检查以下数据来验证该令牌：
+JwtBearer 中间件（如 web apps 中的 OpenID Connect 中间件）由 `TokenValidationParameters` 定向来验证令牌。 令牌已解密（根据需要），提取声明，并验证签名。 然后，中间件通过检查此数据来验证令牌：
 
-- 它面向 Web API（受众）。
-- 它是针对可以调用 Web API 的应用颁发的（使用者）。
-- 它是由受信任的安全令牌服务器 (STS) 颁发的（颁发者）。
-- 它的生存期在有效范围内（过期时间）。
+- 它的目标是 web API （受众）。
+- 它是为允许调用 web API （sub）的应用程序颁发的。
+- 它是由受信任的 security token service （STS）（颁发者）颁发的。
+- 其生存期处于范围（到期）中。
 - 它未被篡改（签名）。
 
-此外还可以执行特殊验证。 例如，可以验证（嵌入在令牌中的）签名密钥是否受信任，以及令牌是否未重放。 最后，某些协议需要特定的验证。
+还可以进行特殊验证。 例如，可以验证签名密钥（嵌入到令牌中时）是否受信任，以及令牌是否未被重播。 最后，某些协议需要进行特定验证。
 
 ### <a name="validators"></a>验证程序
 
 验证步骤是在验证器中捕获的，它们全都位于 .NET 开源库的[Microsoft System.identitymodel 扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)中，位于一个源文件中： [system.identitymodel/验证器。](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)
 
-下表描述了验证程序：
+此表描述了验证程序：
 
-| 验证程序 | 说明 |
+| 基值 | 描述 |
 |---------|---------|
-| `ValidateAudience` | 确保该令牌适用于对它进行验证的应用程序（供我使用）。 |
-| `ValidateIssuer` | 确保令牌由受信任的 STS 颁发（来自我信任的一方）。 |
-| `ValidateIssuerSigningKey` | 确保验证令牌的应用程序信任用于签署令牌的密钥。 （适用于密钥嵌入在令牌中的特殊情况。 通常不需要满足此要求。） |
-| `ValidateLifetime` | 确保令牌仍然（或已经）生效。 验证程序将检查令牌的生存期（`notbefore` 和 `expires` 声明）是否在范围内。 |
-| `ValidateSignature` | 确保令牌未被篡改。 |
-| `ValidateTokenReplay` | 确保令牌未重放。 （适用于某些一次性协议的特殊情况。） |
+| `ValidateAudience` | 确保令牌适用于验证令牌的应用程序（适用于我）。 |
+| `ValidateIssuer` | 确保令牌由受信任的 STS （来自我信任的人）颁发。 |
+| `ValidateIssuerSigningKey` | 确保验证令牌的应用程序信任用于对令牌进行签名的密钥。 （密钥嵌入令牌中的特例。 通常不需要。） |
+| `ValidateLifetime` | 确保标记仍然有效。 验证程序将检查令牌的生存期（`notbefore` 和 `expires` 声明）是否在范围内。 |
+| `ValidateSignature` | 确保标记未被篡改。 |
+| `ValidateTokenReplay` | 确保标记不会重播。 （某些一次性使用协议的特殊情况。） |
 
-所有验证程序与 `TokenValidationParameters` 类的属性相关联，其本身已从 ASP.NET/ASP.NET Core 配置初始化。 在大多数情况下，无需更改参数。 有一种情况例外，非单租户应用不适用上述过程。 （即，接受来自任何组织或个人 Microsoft 帐户的用户的 web 应用。）在这种情况下，必须验证颁发者。
+验证程序均与 `TokenValidationParameters` 类的属性关联，这些属性本身是从 ASP.NET/ASP.NET 核心配置中初始化的。 在大多数情况下，无需更改参数。 对于不是单租户的应用程序，有一个例外情况。 （即，接受来自任何组织或个人 Microsoft 帐户的用户的 web 应用。）在这种情况下，必须验证颁发者。
 
 ## <a name="token-validation-in-azure-functions"></a>Azure Functions 中的令牌验证
 
@@ -166,4 +166,4 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [验证代码中的范围和应用角色](scenario-protected-web-api-verification-scope-app-roles.md)
+> [验证代码中的作用域和应用程序角色](scenario-protected-web-api-verification-scope-app-roles.md)

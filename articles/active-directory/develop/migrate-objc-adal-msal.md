@@ -1,8 +1,7 @@
 ---
-let application: MSALPublicClientApplication!
-title: 将应用迁移到 MSAL。ObjectiveC
+title: 将应用迁移到 MSAL （iOS/macOS） |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解适用于 ObjectiveC 的 Microsoft 身份验证库（适用于 iOS 和 macOS 的 MSAL）和用于 ObjectiveC 的 Azure AD 身份验证库（ADAL）之间的差异。ObjC）以及如何迁移到适用于 iOS 和 macOS 的 MSAL。
+description: 了解适用于 iOS/macOS 的 MSAL 与 ObjectiveC 的 Azure AD 身份验证库之间的差异（ADAL）。ObjC）以及如何迁移到适用于 iOS/macOS 的 MSAL。
 services: active-directory
 author: TylerMSFT
 manager: CelesteDG
@@ -15,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0fdb2ec3ab3deb8798aa7dbfc0c3e4e25f377
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963590"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 

@@ -1,17 +1,17 @@
 ---
-title: 配置 Azure Database for PostgreSQL-超大规模（Citus）的指标警报
+title: 配置警报-超大规模（Citus）-Azure Database for PostgreSQL
 description: 本文介绍如何配置和访问 Azure Database for PostgreSQL-超大规模（Citus）的指标警报
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5f45df16ac294f50e99cc7e05ab6eba43c0ae85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516014"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977601"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户为 Azure Database for PostgreSQL 超大规模（Citus）的指标设置警报
 
@@ -24,7 +24,7 @@ ms.locfileid: "73516014"
 * 将电子邮件发送到指定的其他电子邮件。
 * 调用 Webhook。
 
-可使用以下项配置并获取有关警报规则的信息：
+可使用以下项配置并获取预警规则相关信息：
 * [Azure 门户](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure 监视器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
@@ -36,7 +36,7 @@ ms.locfileid: "73516014"
 
    ![选择“警报规则”](./media/howto-hyperscale-alert-on-metric/2-alert-rules.png)
 
-3. 选择“新建警报规则”（+ 图标）。
+3. 选择 "**新建警报规则**" （+ 图标）。
 
 4. 随即打开“创建规则”页面，如下所示。 填写所需信息：
 
@@ -91,4 +91,4 @@ ms.locfileid: "73516014"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

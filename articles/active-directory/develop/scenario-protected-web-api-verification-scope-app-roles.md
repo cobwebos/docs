@@ -1,5 +1,5 @@
 ---
-title: 通过受保护的 web API 验证范围和应用角色
+title: 验证范围和应用角色 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何构建受保护的 web API 并配置你的应用程序代码。
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4340d92bdfe871010021edcbefcde62ab8202462
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149233"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965375"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 web API：验证范围和应用角色
 

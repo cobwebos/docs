@@ -1,5 +1,5 @@
 ---
-title: 处理 Azure AD 身份验证库（ADAL）客户端的最佳实践时出错
+title: ADAL 客户端应用错误处理最佳做法 |Microsoft
 description: 提供适用于 ADAL 客户端应用程序的错误处理指南和最佳做法。
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ffeb85dc424396593d13f2cdc2681e26bd2db3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f4e0f434831f624dbd8c9c1302aab6816cd3d148
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845189"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966157"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 

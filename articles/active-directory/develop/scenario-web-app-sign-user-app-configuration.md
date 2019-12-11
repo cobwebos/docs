@@ -1,6 +1,6 @@
 ---
-title: 用于登录用户的 Web 应用（代码配置）- Microsoft 标识平台
-description: 了解如何构建用于登录用户的 Web 应用（代码配置）
+title: 配置登录用户的 web 应用-Microsoft 标识平台 |Microsoft
+description: 了解如何生成用于登录用户的 web 应用（代码配置）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b7032f8568cc944fb95d2e56a84a3d475c3994
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b077a71a541d29c9b93778babc096ea40c3b43cb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964865"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登录用户的 Web 应用：代码配置
 
@@ -31,7 +31,7 @@ ms.locfileid: "74482740"
 <!-- This section can be in an include for Web App and Web APIs -->
 用于保护 web 应用（和 web API）的库包括：
 
-| 平台 | 库 | 说明 |
+| 平台 | 库 | 描述 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 适用于 .NET Framework .NET 的 Microsoft 标识模型扩展，可由 ASP.NET 和 ASP.NET Core 直接使用。 从 ASP.NET 或 ASP.NET Core web 应用，可以使用**TokenValidationParameters**类（特别是在某些合作伙伴方案中）控制令牌验证。 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 适用于 Java 的 Microsoft 身份验证库（MSAL）。 当前在公共预览版中。 |
@@ -43,31 +43,31 @@ ms.locfileid: "74482740"
 
 本文中的代码片段和以下文章摘自[ASP.NET Core web 应用增量教程第1章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)。
 
-你可能需要参考该教程来了解完整的实现细节。
+有关完整的实现的详细信息，请参阅本教程。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 本文中的代码片段和以下文章摘自[ASP.NET web 应用示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)。
 
-你可能需要参考此示例来了解完整的实现细节。
+你可能想要参考此示例以获取完整的实现细节。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 本文中的代码片段和下面的代码片段从 MSAL Java 中[调用 Microsoft graph 示例的 java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)中提取。
 
-你可能需要参考此示例来了解完整的实现细节。
+你可能想要参考此示例以获取完整的实现细节。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 本文中的代码片段和以下代码片段从 MSAL Python 中[调用 Microsoft graph 示例的 Python web 应用程序](https://github.com/Azure-Samples/ms-identity-python-webapp)中提取。
 
-你可能需要参考此示例来了解完整的实现细节。
+你可能想要参考此示例以获取完整的实现细节。
 
 ---
 
 ## <a name="configuration-files"></a>配置文件
 
-使用 Microsoft 标识平台登录用户的 Web 应用程序通常是通过配置文件配置的。 需填充的设置为：
+使用 Microsoft 标识平台登录用户的 Web 应用程序通常是通过配置文件配置的。 需要填写的设置如下：
 
 - 如果希望应用在全国云中运行，则为云实例（`Instance`），例如
 - 租户 ID 中的受众（`TenantId`）
@@ -138,7 +138,7 @@ ms.locfileid: "74482740"
 
 在 Azure 门户中，需要在应用程序的**身份验证**页上注册的答复 uri 需要匹配这些 url。 对于上述两个配置文件，这些文件将被 `https://localhost:44321/signin-oidc`。 原因是 `applicationUrl` `http://localhost:3110`，但指定了 `sslPort` （44321）。 `CallbackPath` 是 `/signin-oidc`的，如 `appsettings.json`中所定义。
 
-注销 URI 将采用相同方式设置为 `https://localhost:44321/signout-callback-oidc`。
+同样，注销 URI 也将设置为 `https://localhost:44321/signout-callback-oidc`。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -194,7 +194,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 ```
 
 > [!NOTE]
-> 本快速入门建议在配置文件中存储客户端机密，以方便操作。 在生产应用中，需要使用其他方法来存储机密，如[Flask 的文档](https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables)中所述的密钥保管库或环境变量。
+> 本快速入门建议在配置文件中存储客户端机密，以便简单起见。 在生产应用中，需要使用其他方法来存储机密，如[Flask 的文档](https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables)中所述的密钥保管库或环境变量。
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -206,13 +206,13 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初始化代码
 
-初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，将用户登录到 OpenID Connect 中间件。 ASP.NET 或 ASP.NET Core 模板为 Azure Active Directory （Azure AD） v1.0 终结点生成 web 应用程序。 需要进行一些配置才能适应 Microsoft 标识平台（v2.0）终结点。 对于 Java，初始化由 Spring 在应用程序的配合下进行处理。
+初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，将用户登录到 OpenID Connect 中间件。 ASP.NET 或 ASP.NET Core 模板为 Azure Active Directory （Azure AD） v1.0 终结点生成 web 应用程序。 需要进行一些配置才能适应 Microsoft 标识平台（v2.0）终结点。 对于 Java，它是通过与应用程序的协作进行弹簧处理的。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core web 应用（和 web Api）中，应用程序受到保护，因为控制器或控制器操作具有 `[Authorize]` 属性。 此属性检查是否已对用户进行身份验证。 正在初始化该应用程序的代码位于 Startup.cs 文件中。 
+在 ASP.NET Core web 应用（和 web Api）中，应用程序受到保护，因为控制器或控制器操作具有 `[Authorize]` 属性。 此属性检查是否对用户进行了身份验证。 正在初始化该应用程序的代码位于 Startup.cs 文件中。 
 
-若要通过 Microsoft 标识平台（以前称为 Azure AD v2.0）添加身份验证，则需要添加以下代码。 代码中的注释应该浅显易懂。
+若要通过 Microsoft 标识平台（以前称为 Azure AD v2.0）添加身份验证，则需要添加以下代码。 代码中的注释应一目了然。
 
 > [!NOTE]
 > 如果使用 Visual studio 中的默认 ASP.NET Core web 项目或通过使用 `dotnet new mvc`启动项目，则默认情况下会提供 `AddAzureAD` 方法。 这是因为会自动加载相关的包。
@@ -244,7 +244,7 @@ public class Startup
     }
 ```
 
-`AddMicrosoftIdentityPlatformAuthentication` 扩展方法是在 WebAppServiceCollectionExtensions [/L23 #](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)中定义的。 该方法：
+`AddMicrosoftIdentityPlatformAuthentication` 扩展方法是在 WebAppServiceCollectionExtensions [/L23 #](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)中定义的。 以便
 
 - 添加身份验证服务。
 - 配置用于读取配置文件的选项。
@@ -345,7 +345,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-该 Java 示例使用 Spring 框架。 应用程序受到保护，因为你实现了一个筛选器，该筛选器会截获每个 HTTP 响应。 在 Java web 应用快速入门中，此筛选器在 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`中 `AuthFilter`。 
+Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了一个筛选器，该筛选器会截获每个 HTTP 响应。 在 Java web 应用快速入门中，此筛选器在 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`中 `AuthFilter`。 
 
 筛选器处理 OAuth 2.0 授权代码流，并检查用户是否已通过身份验证（`isAuthenticated()` 方法）。 如果用户未通过身份验证，则会计算 Azure AD 授权终结点的 URL，并将浏览器重定向到此 URI。
 
@@ -354,13 +354,13 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 有关详细信息，请参阅[AuthFilter](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)中的 `doFilter()` 方法。
 
 > [!NOTE]
-> `doFilter()` 的代码以略微不同的顺序编写，但流与上述相同。
+> 以略微不同的顺序编写 `doFilter()` 的代码，但流是所述的。
 
 有关此方法触发的授权代码流的详细信息，请参阅[Microsoft 标识平台和 OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-该 Python 示例使用 Flask。 Flask 和 MSAL Python 的初始化是在[py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28)中完成的。
+Python 示例使用 Flask。 Flask 和 MSAL Python 的初始化是在[py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28)中完成的。
 
 ```Python
 import uuid

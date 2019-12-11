@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
-description: 介绍服务预配概念，特定于使用设备预配服务和 IoT 中心的设备
+description: 描述特定于具有设备预配服务（DPS）和 IoT 中心的设备的服务预配概念
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104367"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975595"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
@@ -31,7 +31,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 设备预配终结点是单一终结点，所有设备都使用它进行自动预配。 此 URL 对于所有预配服务实例都是相同 ，因而无需使用供应链方案中的新连接信息来刷新设备。 ID 范围可确保租户隔离。
 
-## <a name="linked-iot-hubs"></a>链接的 IoT 中心
+## <a name="linked-iot-hubs"></a>链接 IoT 中心
 
 设备预配服务只能将设备预配到已链接到它的 IoT 中心。 将 IoT 中心链接到设备预配服务实例可以为 IoT 中心的设备注册表提供服务读/写权限；通过该链接，设备预配服务可以注册设备 ID 并在设备孪生中设置初始配置。 链接 IoT 中心可能位于任何 Azure 区域。 可将其他订阅中的中心链接到预配服务。
 
@@ -73,6 +73,6 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 注册是设备通过设备预配服务成功注册/预配到 IoT 中心的记录。 注册记录自动创建，可以删除，但不能更新。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>Operations
 
 操作是设备预配服务的计费单位。 成功完成到服务的一条指令即为一次操作。 操作包括设备注册和重新注册，还包括服务侧更改（例如添加注册列表条目和更新注册列表条目）。

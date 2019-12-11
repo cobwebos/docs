@@ -3,17 +3,17 @@ title: 使用 Azure IoT Central 应用程序中的设备组 |Microsoft Docs
 description: 作为操作员，了解如何使用设备组分析 Azure IoT Central 应用程序中的设备的遥测数据。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895431"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976207"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>教程：使用设备组分析设备遥测（预览功能）
 
@@ -23,7 +23,7 @@ ms.locfileid: "73895431"
 
 设备组是组合在一起的设备列表，因为它们与某些指定的条件相匹配。 设备组通过将设备分组为较小的逻辑组，帮助你按比例管理、可视化和分析设备。 例如，你可以创建一个设备组来列出西雅图的所有 air 空调设备，以使技术人员能够查找其所负责的设备。
 
-本教程介绍如何执行下列操作：
+本教程介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建设备组
@@ -31,7 +31,7 @@ ms.locfileid: "73895431"
 
 ## <a name="prerequisites"></a>必备组件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)，并[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，创建要使用的**环境传感器**设备模板。
+在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的环境传感器设备模板。
 
 ## <a name="create-simulated-devices"></a>创建模拟设备
 
@@ -49,7 +49,7 @@ ms.locfileid: "73895431"
 
 1. 选择左窗格中的 "**设备组**"。
 
-1. 选择 " **+ 新建**"。
+1. 选择“+ 新建”。
 
     ![新设备组](media/tutorial-use-device-groups/image1.png)
 

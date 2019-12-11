@@ -1,7 +1,7 @@
 ---
 title: 训练深度学习 Chainer 模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习的 Chainer 估计器类在企业规模上运行 PyTorch 训练脚本。  示例脚本使用在 numpy 上运行的 Chainer Python 库来分类手写数字图像，以生成深度学习神经网络。
+description: 了解如何使用 Azure 机器学习 Chainer 估计器类在企业范围内运行 PyTorch 训练脚本。  示例脚本使用在 numpy 上运行的 Chainer Python 库来分类手写数字图像，以生成深度学习神经网络。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224981"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969167"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>大规模定型并注册 Chainer 模型 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，了解如何使用 Azure 机器学习的[Chainer 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类在企业范围内运行[Chainer](https://chainer.org/)训练脚本。 本文中的示例训练脚本使用常见的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/)，通过使用在[numpy](https://www.numpy.org/)顶部运行的 Chainer Python 库生成的深度神经网络（DNN）对手写数字进行分类。
+本文介绍如何使用 Azure 机器学习[Chainer 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类在企业范围内运行[Chainer](https://chainer.org/)训练脚本。 本文中的示例训练脚本使用常见的[MNIST 数据集](http://yann.lecun.com/exdb/mnist/)，通过使用在[numpy](https://www.numpy.org/)顶部运行的 Chainer Python 库生成的深度神经网络（DNN）对手写数字进行分类。
 
 无论是从头开始训练深度学习 Chainer 模型，还是将现有模型引入云中，都可以使用 Azure 机器学习来使用弹性云计算资源来横向扩展开源定型作业。 可以通过 Azure 机器学习来构建、部署、版本和监视生产级模型。 
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在以下任一环境中运行此代码：
 
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 在本教程中，已为你提供训练脚本**chainer_mnist。** 在实践中，您应该能够按原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改您的代码。
 
-若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示了如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
+若要使用 Azure ML 跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示了如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
 提供的训练脚本使用 chainer `datasets.mnist.get_mnist` 函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 

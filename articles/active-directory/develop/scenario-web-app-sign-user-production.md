@@ -1,6 +1,6 @@
 ---
-title: 登录用户的 Web 应用（转到生产）-Microsoft 标识平台
-description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
+title: 将登录用户的 web 应用移动到生产-Microsoft 标识平台 |Microsoft
+description: 了解如何构建用于登录用户的 web 应用（转到生产环境）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcc7ed4f80d0e3e9750d19ff95d010052a08b87
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c49782a6e1e86320b508875e2bf931cc1cc19b4e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481890"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964764"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>登录用户的 Web 应用：移至生产环境
 
@@ -32,7 +32,7 @@ ms.locfileid: "74481890"
 
 ### <a name="scenario-for-calling-web-apis"></a>用于调用 web Api 的方案
 
-Web 应用在用户登录后，可以代表已登录用户调用 web Api。 从 Web 应用调用 Web API 是以下方案的目标：
+Web 应用在用户登录后，可以代表已登录用户调用 web Api。 从 web 应用调用 web Api 是以下方案的对象：
 
 > [!div class="nextstepaction"]
 > [用于调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)
@@ -50,7 +50,7 @@ Web 应用在用户登录后，可以代表已登录用户调用 web Api。 从 
 - 多个组织
 - 工作或学校帐户或个人 Microsoft 帐户
 - [Azure AD B2C](https://aka.ms/aadb2c)
-- 国家云
+- 国家/地区云
 
 ### <a name="sample-code-java-web-app"></a>示例代码： Java web 应用
 

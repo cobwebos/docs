@@ -4,22 +4,22 @@ description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894859"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974455"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>导出 Azure IoT Central 数据（预览功能）
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-本主题适用于管理员。
+*本主题适用于管理员。*
 
 本文介绍如何使用 Azure IoT Central 中的连续数据导出功能将数据导出到**Azure 事件中心**、 **azure 服务总线**或**azure Blob 存储**实例。 数据是以 JSON 格式导出的，可以包括遥测、设备信息和设备模板信息。 使用导出的数据进行以下操作：
 
@@ -58,7 +58,7 @@ ms.locfileid: "73894859"
 
 选择 "服务总线" 作为导出目标时，队列和主题不得启用会话或重复检测。 如果启用了其中任一选项，则某些消息不会到达队列或主题中。
 
-### <a name="create-storage-account"></a>创建存储帐户
+### <a name="create-storage-account"></a>创建存储器帐户
 
 如果没有要导出到的现有 Azure 存储帐户，请执行以下步骤：
 
@@ -193,7 +193,7 @@ ms.locfileid: "73894859"
 
 - IoT Central 中设备的 `@id`
 - 设备的 `name`
-- `deviceId`设备预配服务[中的 ](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
+- [设备预配服务](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)中的 `deviceId`
 - 设备模板信息
 - 属性值
 

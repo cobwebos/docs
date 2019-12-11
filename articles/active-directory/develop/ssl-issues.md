@@ -1,5 +1,5 @@
 ---
-title: 解决 MSAL 问题
+title: 排查 SSL 问题（MSAL iOS/macOS） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用带有 MSAL 的 SSL 证书应对各种问题。目标-C 库。
 services: active-directory
@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4cfb530deab0cce12247c2ec87e3efb3ce61810b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803669"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964712"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>如何：对 iOS 和 macOS SSL 问题的 MSAL 进行故障排除
 
@@ -45,7 +45,7 @@ ms.locfileid: "72803669"
 
 使用 SHA-1 哈希的证书具有已知的漏洞。 大多数新式 web 浏览器不允许具有 SHA-1 哈希的证书。
 
-## <a name="captive-portals"></a>捕获门户
+## <a name="captive-portals"></a>强制网络门户
 
 当用户首次访问 Wi-fi 网络但尚未获得对该网络的访问权限时，它会向用户显示一个网页。 它会截获其 internet 流量，直到用户满足门户的要求。 网络错误，因为在用户通过门户连接之前，用户无法连接到网络资源。
 
