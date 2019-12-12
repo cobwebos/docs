@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 685c928a20e9bfb47365b5ffa769f1a223d2c563
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ecdde4ef12c6991fad53f2286ee462fec31606ae
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561505"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846277"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>教程：完成 Azure AD 自助密码重置试点推广
 
@@ -25,14 +25,14 @@ ms.locfileid: "69561505"
 对自助式密码重置进行的任何测试都必须使用非管理员帐户。 Microsoft 管理管理员帐户的密码重置策略，需要使用更严格的身份验证方法。 此策略不允许使用安全性问题和回答，而要求使用两种重置方法。
 
 > [!div class="checklist"]
-> * 启用自助服务密码重置
+> * 启用自助式密码重置
 > * 以用户身份测试 SSPR
 
 ## <a name="prerequisites"></a>先决条件
 
 * 全局管理员帐户
 
-## <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
+## <a name="enable-self-service-password-reset"></a>启用自助式密码重置
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到“Azure Active Directory”，然后选择“密码重置”。  
