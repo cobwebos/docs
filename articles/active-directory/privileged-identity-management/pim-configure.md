@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023019"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899966"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -46,7 +46,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 
 设置 Privileged Identity Management 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
 
-![Azure 门户中 Privileged Identity Management 的屏幕截图](./media/pim-configure/pim-overview.png)
+![Azure 门户中 Privileged Identity Management 的屏幕截图](./media/pim-configure/pim-quickstart.png)
 
 ## <a name="who-can-do-what"></a>用户及其权限
 

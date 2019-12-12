@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 09/15/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 14871aa790bd94dbd23dea30c8a229eac7945c75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 2cec7fdae1d3a2a336decc11347ef9bd1039ce7f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683564"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926556"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -112,7 +113,7 @@ ms.locfileid: "73683564"
 
    g. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：  “是”或“否”。   如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。  
 
-   h. 选择“**下一步**”。 
+   h. 选择“**下一页**”。 
 
 1. 在“SQL 设置”页上完成以下步骤。  
 
@@ -158,7 +159,7 @@ ms.locfileid: "73683564"
    
    d. 选中“将自承载集成运行时安装为 Azure-SSIS 集成运行时的代理”复选框，选择是否要将自承载 IR 配置为 Azure-SSIS IR 的代理。  有关详细信息，请参阅[将自承载 IR 设置为代理](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)。   
 
-1. 选择“**下一步**”。 
+1. 选择“**下一页**”。 
 
 1. 在“摘要”页上检查所有预配设置，将建议的文档链接添加为书签，然后选择“完成”开始创建集成运行时。   
 

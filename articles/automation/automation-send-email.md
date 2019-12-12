@@ -4,17 +4,17 @@ description: 了解如何使用 SendGrid 从 runbook 中发送电子邮件。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: ce05aadb53cc3ad24ed65ea139594010e1aef047
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235088"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849609"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
 
@@ -96,13 +96,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 使用此示例创建名为 **Send-GridMailMessage** 的 Runbook。 可以修改此 PowerShell 脚本，并将其重用于不同的方案。
 
 1. 转到 Azure 自动化帐户。
-2. 在“过程自动化”下，选择“Runbook”。
-3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 Runbook”页上，输入 **Send-GridMailMessage** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。
+2. 在“过程自动化”下，选择“Runbook”。  
+3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。 
+4. 在“添加 Runbook”  页上，输入 **Send-GridMailMessage** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”  。 然后选择“创建”  。
    ![创建 Runbook](./media/automation-send-email/automation-send-email-runbook.png)
-5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页面。
+5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页面。 
    ![编辑 Runbook](./media/automation-send-email/automation-send-email-edit.png)
-6. 将以下 PowerShell 示例复制到“编辑”页中。 确保 `$VaultName` 是在创建 KeyVault 时指定的名称。
+6. 将以下 PowerShell 示例复制到“编辑”页中。  确保 `$VaultName` 是在创建 KeyVault 时指定的名称。
 
     ```powershell-interactive
     Param(
@@ -151,14 +151,14 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
     $response = Invoke-RestMethod -Uri https://api.sendgrid.com/v3/mail/send -Method Post -Headers $headers -Body $bodyJson
     ```
 
-7. 选择“发布”以保存并发布 Runbook。
+7. 选择“发布”  以保存并发布 Runbook。
 
 若要验证 runbook 是否成功执行，可以按[测试 runbook](manage-runbooks.md#test-a-runbook) 或[启动 runbook](start-runbooks.md) 下的步骤操作。
 如果一开始看不到测试电子邮件，请检查 **Junk** 和 **Spam** 文件夹。
 
 ## <a name="clean-up"></a>清理
 
-不再需要 Runbook 时，即可将其删除。 为此，请在 Runbook 列表中选择 Runbook，然后单击“删除”。
+不再需要 Runbook 时，即可将其删除。 为此，请在 Runbook 列表中选择 Runbook，然后单击“删除”。 
 
 使用 [Remove-AzureRMKeyVault](/powershell/module/azurerm.keyvault/remove-azurermkeyvault?view=azurermps) cmdlet 删除密钥保管库。
 
