@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a51a8e02ec08b9a4ee353c2c45345c4d01246894
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 199ead07e499575de21c6878cd348e648f604171
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981835"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972653"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的计算机视觉客户端库
 
@@ -83,7 +83,7 @@ npm install azure-cognitiveservices-computervision ms-rest-azure
 
 以下类和接口将处理计算机视觉 Node.js SDK 的某些主要功能。
 
-|Name|说明|
+|名称|说明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | 所有计算机视觉功能都需要此类。 可以使用订阅信息实例化此类，然后使用它来执行大多数图像操作。|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| 此枚举定义可在标准分析操作中执行的不同类型的图像分析。 请根据需求指定一组 **VisualFeatureTypes** 值。 |
@@ -266,5 +266,5 @@ node index.js
 > [!div class="nextstepaction"]
 >[计算机视觉 API 参考 (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
-* [什么是计算机视觉 API？](../Home.md)
+* [什么是计算机视觉？](../Home.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上找到此示例的源代码。

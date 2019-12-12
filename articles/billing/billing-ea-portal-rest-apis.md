@@ -4,16 +4,16 @@ description: 本文介绍可用于 Azure 企业注册的 REST API。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 721166b1403ae5fd62478956c84c2d54ab926691
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226307"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841415"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 

@@ -4,16 +4,16 @@ description: 本文介绍 Azure EA 客户如何使用 Azure EA 门户。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/07/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: d5fe93f1d3297fbdfb879a515c502025b49eab1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223994"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841364"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Azure EA 门户入门
 
@@ -486,7 +486,7 @@ EA 门户为企业客户提供两类订阅：
 为了跟踪成本中心产生的费用，你需要在以下任一级别定义成本中心：
 - 部门
 - 帐户
-- Subscription
+- 订阅
 
 你可以根据需求使用同一个成本中心来跟踪与特定成本中心相关的使用情况和费用。
 

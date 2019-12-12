@@ -3,18 +3,18 @@ title: 教程 - 在 Azure IoT Central 中定义新的 Azure IoT Edge 设备类�
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中创建新的 Azure IoT Edge 设备。 其中介绍了如何为类型定义遥测、状态、属性和命令。
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 97bfd2b1e8b571f44c0b782459567f5677dd36a7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702791"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979081"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中定义新的 Azure IoT Edge 设备类型（预览功能）
 

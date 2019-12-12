@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b5a4cd36f204dfe708e5acd8818d9925b5accc30
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 85aa1bda395240d0f11b0654ee48b9f1a0401eaa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034698"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930597"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应图像搜索 SDK 搜索图像
 
@@ -25,7 +25,6 @@ ms.locfileid: "70034698"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)  。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 * [Python 2.7 或 3.4](https://www.python.org/) 以及更高版本。
 

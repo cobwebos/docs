@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a450a91f29a9118c9e4c83f6bb964bac2d6ffb3c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595554"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975748"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 

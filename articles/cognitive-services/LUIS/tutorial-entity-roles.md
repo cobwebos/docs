@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488738"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894612"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
-在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。  
+在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。
 
-角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。 
+角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
 > * 创建新应用
-> * 添加意向 
+> * 添加意向
 > * 使用角色获取来源和目标信息
 > * 定型
 > * 发布
@@ -57,9 +57,9 @@ ms.locfileid: "73488738"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 选择“创建新意向”  。 
+1. 选择“创建新意向”  。
 
-1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。  
+1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。 
 
     ![“创建新意向”对话框的屏幕截图](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ ms.locfileid: "73488738"
 
 1. 在左侧导航栏中选择“实体”  。
 
-1. 选择“添加预生成实体”，然后在搜索栏中选择 `geo` 来筛选预生成实体。  
+1. 选择“添加预生成实体”，然后在搜索栏中选择 `geo` 来筛选预生成实体。 
 
     ![将 geographyV2 预生成实体添加到应用](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. 选中该复选框，然后选择“完成”。 
-1. 在“实体”列表中，选择“geographyV2”打开新实体。   
-1. 添加两个角色：`Origin` 和 `Destination`。 
+1. 在“实体”列表中，选择“geographyV2”打开新实体。  
+1. 添加两个角色：`Origin` 和 `Destination`。
 
     ![将角色添加到预生成实体](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. 在左侧导航栏中选择“意向”，然后选择“MoveEmployeeToCity”意向。   请注意，城市名称标有预生成实体 **geographyV2**。
 1. 在列表的第一个言语中，选择来源位置。 此时会显示一个下拉菜单。 在列表中选择“geographyV2”，然后在弹出的菜单中选择“来源”。  
-1. 使用上一步骤中所述的方法来标记所有言语中位置的所有角色。 
+1. 使用上一步骤中所述的方法来标记所有言语中位置的所有角色。
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
+## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ ms.locfileid: "73488738"
       ]
     }
     ```
-    
+
     预测了正确的意向，并且实体数组在对应的 **entities** 属性中同时具有来源和目标角色。
-    
+
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ ms.locfileid: "73488738"
 
 在本教程中，已创建了一个新的意向，并为源位置和目标位置的根据上下文学习的数据添加了示例陈述。 在训练并发布应用后，客户端应用程序可以使用该信息来创建包含相关信息的移动票证。
 
-> [!div class="nextstepaction"] 
-> [了解如何添加复合实体](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [了解如何添加复合实体](luis-tutorial-composite-entity.md)

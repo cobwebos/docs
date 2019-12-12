@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: yulili
-ms.openlocfilehash: 805193c08e57ddc18dfca0a78c6b58cf895baec1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: c5f0a0fe032d18cd4f01aebe9a5c736d6d511a74
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817595"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981031"
 ---
 在本快速入门中，我们将使用[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 以交互方式将一种语言的语音翻译为另一种语言的语音。 在满足几项先决条件后，将语音翻译为语音只需六个步骤：
 > [!div class="checklist"]

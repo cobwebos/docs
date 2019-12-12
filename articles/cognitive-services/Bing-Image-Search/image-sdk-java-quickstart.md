@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0a9e9a4ee42d36e0ae6da3e92e12ae4144f7b670
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cb25f6be358ae8aed18bf392ad933eab87332dcb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034461"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930613"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>快速入门：通过适用于 Java 的必应图像搜索 SDK 搜索图像
 
@@ -25,7 +25,6 @@ ms.locfileid: "70034461"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)  。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 最新版的 [Java 开发工具包](https://aka.ms/azure-jdks) (JDK)
 

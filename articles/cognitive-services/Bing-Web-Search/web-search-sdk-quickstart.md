@@ -8,22 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 5e893fda5a0e71703eb867c045de19d391c012ed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 2c55aaa0843574981a7643b11161700992ea0b09
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018215"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976445"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 
 可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
@@ -33,6 +29,8 @@ ms.locfileid: "71018215"
   * [适用于 Visual Studio Code 的 C#](https://visualstudio.microsoft.com/downloads/)
   * [NuGet 包管理器](https://github.com/jmrog/vscode-nuget-package-manager)
 * [.NET Core SDK](https://www.microsoft.com/net/download)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>创建项目并安装依赖项
 

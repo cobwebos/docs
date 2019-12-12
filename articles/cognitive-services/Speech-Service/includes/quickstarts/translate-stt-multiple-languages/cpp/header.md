@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: e0330e37dd2f69bc418a9146c5fdcec05592668c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 6e7b53aac43b653e2fd4627b6ebab9422504f079
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817266"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980686"
 ---
 如果希望直入正题，请在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-cpp">语音 SDK C++ 示例</a>。 否则就开始吧！

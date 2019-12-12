@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076877"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951558"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight：.NET 示例
 
@@ -29,11 +29,11 @@ ms.locfileid: "71076877"
 
 可以[激活 Visual Studio 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 
-## <a name="prerequisites"></a>先决条件
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisite"></a>先决条件
+
+[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>群集管理 - 创建
 

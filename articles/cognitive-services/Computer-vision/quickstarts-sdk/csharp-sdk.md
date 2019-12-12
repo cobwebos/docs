@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 72c66241965db1264cb508ed1f8f4c76a07883be
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931778"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974983"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>快速入门：适用于 .NET 的计算机视觉客户端库
 
@@ -91,7 +91,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 以下类和接口将处理计算机视觉 .NET SDK 的某些主要功能。
 
-|Name|说明|
+|名称|说明|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) | 所有计算机视觉功能都需要此类。 可以使用订阅信息实例化此类，然后使用它来执行大多数图像操作。|
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| 此类包含 ComputerVisionClient  的其他方法。|
@@ -270,5 +270,5 @@ dotnet run
 > [!div class="nextstepaction"]
 >[计算机视觉 API 参考 (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
-* [什么是计算机视觉 API？](../Home.md)
+* [什么是计算机视觉？](../Home.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs) 上找到此示例的源代码。

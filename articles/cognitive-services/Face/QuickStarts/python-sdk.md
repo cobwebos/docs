@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9728ff86de8561c463886847494ecc4c1c007851
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743198"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977805"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 以下类和接口将处理人脸 Python SDK 的某些主要功能。
 
-|Name|说明|
+|名称|说明|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | 此类代表使用人脸服务的授权，使用所有人脸功能时都需要用到它。 请使用你的订阅信息实例化此类，然后使用它来生成其他类的实例。 |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|此类处理可对人脸执行的基本检测和识别任务。 |
