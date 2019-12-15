@@ -1,5 +1,6 @@
 ---
-title: 快速入门 - 使用 Azure Active Directory B2C 为单页应用设置登录
+title: 快速入门：为单页应用 (SPA) 设置登录
+titleSuffix: Azure AD B2C
 description: 在本快速入门中，运行一个使用 Azure Active Directory B2C 提供帐户登录的示例单页应用程序。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7dc3a52ca9f227f8476cf74286be917b5b6ba021
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ef6fd46ef51cff9823c93e2297a738f95494f577
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420184"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948313"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
@@ -29,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google 或 Microsoft 中的社交帐户
 - GitHub 中的代码示例：[active-directory-b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
-    
+
     可以[下载 zip 存档](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆存储库：
 
     ```

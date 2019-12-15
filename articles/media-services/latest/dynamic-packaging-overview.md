@@ -1,7 +1,7 @@
 ---
 title: 媒体服务中的动态打包
 titleSuffix: Azure Media Services
-description: Azure 媒体服务中动态打包的概述。
+description: 本文概述了 Azure 媒体服务中的动态打包。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574892"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977754"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>媒体服务中的动态打包
 
@@ -269,6 +269,9 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ## <a name="dynamic-encryption"></a>动态加密
 
 可以使用动态加密借助 AES-128 或三种主要数字版权管理 (DRM) 系统中的任何一种对实时或按需内容进行动态加密  ：内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
+
+> [!NOTE]
+> Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="more-information"></a>详细信息
 

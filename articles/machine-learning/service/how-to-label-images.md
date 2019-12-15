@@ -1,18 +1,18 @@
 ---
-title: 如何使用 Azure 机器学习数据标记工具
+title: 在标记项目中标记图像
 title.suffix: Azure Machine Learning
-description: 本文介绍如何在 Azure 机器学习标签项目中使用数据标记工具。
+description: 了解如何在 Azure 机器学习标记项目中使用数据标记工具。
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: bc7eaeefcef042417b29eb7c887cc19acf8c5c02
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: b36eed1918be2c769bcf74c0d8dee09a5bd62756
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688222"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978128"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
@@ -108,7 +108,7 @@ ms.locfileid: "74688222"
 
 ## <a name="finish-up"></a>完成
 
-提交已标记数据的页时，Azure 会从工作队列为你分配新的未标记数据。 如果没有其他未标记的数据，你将看到一条消息，其中包含门户主页的链接。
+当你提交已标记数据的页时，Azure 会从工作队列为你分配新的未标记数据。 如果没有其他未标记的数据，你将看到一条消息，其中包含门户主页的链接。
 
 完成标记操作后，请在标记门户的右上角选择自己的姓名，然后选择“注销”。  如果未注销，最终 Azure 会“超时”并将数据分配给另一个做标签的人。
 

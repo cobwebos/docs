@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706147"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849269"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>教程：使用 Azure Key Vault 从 Azure Databricks 访问 Azure Blob 存储
 
@@ -76,9 +76,9 @@ ms.locfileid: "74706147"
 
    |属性|说明|
    |--------|-----------|
-   |Name|Key Vault 的唯一名称。|
-   |Subscription|选择订阅。|
-   |Resource group|选择一个资源组，或创建新的资源组。|
+   |名称|Key Vault 的唯一名称。|
+   |订阅|选择订阅。|
+   |资源组|选择一个资源组，或创建新的资源组。|
    |位置|选择一个位置。|
 
    ![Azure Key Vault 属性](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
@@ -94,7 +94,7 @@ ms.locfileid: "74706147"
    |属性|值|
    |--------|-----------|
    |上传选项|手动|
-   |Name|存储帐户密钥的易记名称。|
+   |名称|存储帐户密钥的易记名称。|
    |值|存储帐户中的密钥 1。|
 
    ![新 Key Vault 机密的属性](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -114,8 +114,8 @@ ms.locfileid: "74706147"
    |属性  |说明  |
    |---------|---------|
    |工作区名称     | 提供 Databricks 工作区的名称        |
-   |Subscription     | 从下拉列表中选择自己的 Azure 订阅。        |
-   |Resource group     | 选择包含你的 Key Vault 的同一资源组。 |
+   |订阅     | 从下拉列表中选择自己的 Azure 订阅。        |
+   |资源组     | 选择包含你的 Key Vault 的同一资源组。 |
    |位置     | 选择 Azure Key Vault 所在的同一位置。 有关所有可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
    |定价层     |  选择“标准”或“高级”。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
@@ -129,7 +129,8 @@ ms.locfileid: "74706147"
 
 4. 在另一个窗口中打开 Azure Databricks 工作区后，将 **#secrets/createScope** 追加到 URL 中。 该 URL 应采用以下格式： 
 
-   https://<\location>.azuredatabricks.net/#secrets/createScope  。
+   **https://<\location>.azuredatabricks.net/?o=<\orgID>#secrets/createScope**。
+   
 
 5. 输入范围名称，然后输入前面保存的 Azure Key Vault DNS 名称和资源 ID。 在文本编辑器中保存范围名称，供稍后在本教程中使用。 然后选择“创建”  。
 

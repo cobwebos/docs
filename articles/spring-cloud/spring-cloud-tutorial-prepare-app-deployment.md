@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708736"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890308"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>教程：准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
@@ -176,3 +176,5 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 
 > [!div class="nextstepaction"]
 > [了解如何设置配置服务器](spring-cloud-tutorial-config-server.md)。
+
+GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)。

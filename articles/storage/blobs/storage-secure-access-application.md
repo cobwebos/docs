@@ -1,22 +1,23 @@
 ---
-title: 使用 Azure 存储安全访问云中的应用程序数据 |Microsoft Docs
+title: 安全访问应用程序数据
+titleSuffix: Azure Storage
 description: 使用 SAS 令牌、加密和 HTTPS 保护云中的应用程序数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986687"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892424"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>安全访问云中的应用程序数据
+# <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
 本教程是一个系列中的第三部分。 你将了解如何安全访问存储帐户。 
 
@@ -31,7 +32,7 @@ ms.locfileid: "68986687"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须先完成上一存储教程：[使用事件网格自动调整上传图像的大小][previous-tutorial]。 
+若要完成本教程，必须先完成上一存储教程：[使用事件网格自动调整上传图像的大小][previous-tutorial]。
 
 ## <a name="set-container-public-access"></a>设置容器公共访问权限
 

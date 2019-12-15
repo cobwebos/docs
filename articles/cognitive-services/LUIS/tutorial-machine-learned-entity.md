@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 1d05df454e3d7a4f54e7451b81dd2a6470a8200b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806400"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885771"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器习得实体从用户言语中提取结构化数据
 
@@ -221,7 +221,7 @@ ms.locfileid: "74806400"
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction--from-http-endpoint"></a>从 HTTP 终结点获取意向和实体预测结果
+## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>从 HTTP 终结点获取意向和实体预测结果
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca0f64fe67865e18c47009779cf8bd307a21c961
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581541"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978724"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "73581541"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 在开始本教程之前完成[教程：开始创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
+* 在开始本教程之前完成[教程：开始创建第一个 Azure ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
     * 创建工作区
     * 将教程笔记本克隆到工作区中的文件夹。
     * 创建基于云的笔记本 VM。
@@ -430,7 +430,7 @@ print(model.name, model.id, model.version, sep='\t')
 此外可以只删除 Azure 机器学习计算群集。 但是，自动缩放已打开，并且群集最小值为零。 因此，未使用此特定资源时，便不会产生额外计算费用：
 
 ```python
-# optionally, delete the Azure Machine Learning Compute cluster
+# Optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 

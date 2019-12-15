@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 79e57f21445ab8074fc15a2757d37f55d29f2316
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b62868a2306d1a86fb337f505e02966a83567c76
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932203"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974794"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -157,6 +157,10 @@ Windows 上的 Azure Kinect DK 仅支持 **Intel**、**Texas Instruments (TI)** 
 ## <a name="depth-camera-auto-powers-down"></a>深度相机自动关机
 
 深度相机用来计算图像深度数据的激光的寿命有限。 为了最大限度地提高激光寿命，深度相机会检测何时不会使用深度数据。 如果设备流式传输了数据几分钟，但主机电脑并未读取数据，则深度相机将会关机。 这也会影响多设备同步。此时，附属设备启动时所处的状态是深度相机正在流式传输数据，而深度帧已有效挂起，正在等待主设备开始同步捕获内容。 为避免在多设备捕获方案中出现此问题，请确保主设备在第一个附属设备启动后的一分钟内启动。 
+
+## <a name="using-body-tracking-sdk-with-unreal"></a>将人体跟踪 SDK 与 Unreal 配合使用
+
+若要将人体跟踪 SDK 与 Unreal 配合使用，请确保已将 `<SDK Installation Path>\tools` 添加到环境变量路径，并将 `dnn_model_2_0.onnx` 和 `cudnn64_7.dll` 复制到 `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64`。
 
 ## <a name="next-steps"></a>后续步骤
 

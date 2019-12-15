@@ -10,19 +10,22 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/06/2019
-ms.openlocfilehash: 47c0ecb5674f821d3034fb5f165df08f176c2e93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.date: 12/06/2019
+ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646939"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890685"
 ---
 # <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户（预览版）在混合模式下创建 Azure 数据库迁移服务实例
 
 Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色以及云中运行的 Azure 数据库迁移服务的实例来管理数据库迁移。 混合模式特别适用于在本地网络与 Azure 之间缺乏站点到站点连接的情况，或站点到站点连接带宽有限的情况。
 
 在本快速入门中，你将使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例。 然后，在本地网络中下载、安装和设置混合辅助角色。 预览期间，可以使用 Azure 数据库迁移服务混合模式将数据从本地 SQL Server 实例迁移到 Azure SQL 数据库。
+
+> [!IMPORTANT]
+> Azure 数据库迁移服务混合安装程序需要 .NET 4.7.2 或更高版本。 若要查找最新版本的 .NET，请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 页。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -111,6 +114,9 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
 3. 提取将托管 Azure 数据库迁移服务混合辅助角色的服务器上的 ZIP 文件。
 
+    > [!IMPORTANT]
+    > Azure 数据库迁移服务混合安装程序需要 .NET 4.7.2 或更高版本。 若要查找最新版本的 .NET，请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 页。
+
 4. 在安装文件夹中，找到并打开“dmsSettings.json”文件，指定“ApplicationId”和“resourceId”，然后保存文件    。
 
     ![Azure 数据库迁移服务混合辅助角色设置](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
@@ -125,7 +131,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
     ![Azure 数据库迁移服务混合辅助角色证书](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. 在 Azure 门户中，导航到“管理”下的“应用程序 ID”，选择“证书和机密”，然后选择“上传证书”以选择刚刚生成的公共证书    。
+6. 在 Azure 门户中，导航到“管理”下的“应用 ID”，选择“证书和机密”，然后选择“上传证书”以选择生成的公共证书    。
 
     ![Azure 数据库迁移服务混合辅助角色证书上传](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

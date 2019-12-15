@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670678"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849745"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
@@ -107,6 +107,8 @@ ms.locfileid: "74670678"
 在不同的浏览器中，导航到 `https://<your.custom.domain>` 以核实其是否适合应用。
 
 ![在门户中导航到 Azure 应用](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+
+应用程序代码可以通过“x-appservice-proto”标头检查协议。 该标头的值将为 `http` 或 `https`。 
 
 > [!NOTE]
 > 如果应用显示证书验证错误，可能是因为使用自签名证书。

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858972"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977788"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 Android 应用
 
-在本教程中，你将创建一个简单的 Android 应用程序，它使用 Azure 人脸 API 通过 Java SDK 来检测图像中的人脸。 此应用程序显示一个选定的图像，然后围绕每个检测到的人脸绘制一个框。
+本教程将创建一个 Android 应用程序，它使用 Azure 人脸 API 通过 Java SDK 来检测图像中的人脸。 此应用程序显示一个选定的图像，然后围绕每个检测到的人脸绘制一个框。
 
 本教程演示如何：
 
@@ -103,7 +103,7 @@ ms.locfileid: "70858972"
 
 返回的每张**人脸**均包含一个指示其位置的矩形，以及一系列可选的人脸特性。 在本示例中，只请求了人脸矩形。
 
-将以下两个方法插入到 **MainActivity** 类中。 请注意，当人脸检测完成后，应用会调用 **drawFaceRectanglesOnBitmap** 方法，以便修改 **ImageView**。 接下来将定义此方法。
+将以下两个方法插入到 **MainActivity** 类中。 当人脸检测完成后，该应用会调用 **drawFaceRectanglesOnBitmap** 方法修改 **ImageView**。 接下来将定义此方法。
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 

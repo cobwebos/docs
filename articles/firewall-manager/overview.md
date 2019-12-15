@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267955"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869555"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什么是 Azure 防火墙管理器预览版？
 
@@ -70,12 +70,13 @@ Azure 防火墙管理器预览版存在以下已知问题：
 
 |问题  |说明  |缓解措施  |
 |---------|---------|---------|
-|不支持手动创建的中央 VNet|当前，Azure 防火墙管理器支持通过虚拟中心创建的网络。 尚不支持使用自己手动创建的中心 VNet。|目前，Azure 防火墙管理器支持通过虚拟中心创建的中心辐射型网络。<br>当前正在调查。
+|不支持手动创建的中央 VNet|当前，Azure 防火墙管理器支持通过虚拟中心创建的网络。 尚不支持使用自己手动创建的中心 VNet。|目前，Azure 防火墙管理器支持通过虚拟中心创建的中心辐射型网络。<br>正在修复。
 |第三方筛选限制|Azure 防火墙 B2V 和 V2V 不支持使用第三方提供程序筛选 V2I 流量。|当前正在调查。|
 |当前不支持流量拆分|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|当前正在调查中心的流量拆分。
 |每个区域一个中心|每个区域最多只有一个中心|可在一个区域中创建多个虚拟 WAN。|
 |基本策略必须与本地策略位于同一区域中|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|当前正在调查。|
 |中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|当前正在调查。|
+|共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
 
 ## <a name="next-steps"></a>后续步骤
 

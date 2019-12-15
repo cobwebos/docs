@@ -1,5 +1,6 @@
 ---
-title: 教程 - 从单页应用程序授予对 ASP.NET Core Web API 的访问权限 - Azure Active Directory B2C
+title: 教程：从单页应用授予对 ASP.NET Core Web API 的访问权限
+titleSuffix: Azure AD B2C
 description: 本教程介绍如何使用 Active Directory B2C 保护 .NET Core Web API，并从单页 Node.js 应用程序调用该 API。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7dae8bb552fe12d1cdf1f3d8a5fe124491933a87
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e5ced0c3e4ad05c33866548acb09189e03ed22f4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420323"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949698"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420449"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970340"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -217,8 +217,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 测试应用程序登录：
 
-1. 在浏览器中，导航到在发布步骤中配置的外部 URL。 应会看到启动屏幕。
-1. 使用在上一部分创建的用户身份登录。
+1. 从要测试的应用程序中，选择“应用程序代理”  。
+2. 在页面顶部，选择“测试应用程序”  以对应用程序运行测试并检查是否存在任何配置问题。
+3. 请确保首先启动应用程序以测试登录到应用程序，然后下载诊断报告以查看有关任何检测到的问题的解决方案指南。
 
 有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](application-proxy-troubleshoot.md)。
 

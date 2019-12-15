@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio 添加输出绑定，以将 C# 类
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: bd899c5cc7aafc5b3349cf4cec9098a849665a2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227429"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849201"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
 
@@ -23,7 +23,7 @@ ms.locfileid: "74227429"
 
 在开始学习本文之前，必须： 
 
- - 完成 [Visual Studio 快速入门的第 1 部分][./functions-create-first-function-vs-code.md]。 
+ - 完成 [Visual Studio 快速入门的第 1 部分](./functions-create-first-function-vs-code.md)。 
 
 - 从 Visual Studio 登录到 Azure 订阅。
 

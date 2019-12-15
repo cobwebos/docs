@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f45b6ce402a5f61faeabd1534d7e3562af81294c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834483"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973860"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>快速入门：使用必应 Web 搜索 REST API 和 Node.js 搜索网页
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>创建函数来发出请求
 
-此函数将发出安全的 GET 请求，并将搜索查询保存为路径中的一个查询参数。 `encodeURIComponent` 用来对无效字符进行转义，订阅密钥是在标头中传递的。 回调将收到一个[响应](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)，该响应订阅 `data` 事件来聚合 JSON 正文，订阅 `error` 事件来记录任何问题，订阅 `end` 事件来了解何时应当将消息视为已完成。 完成后，应用将打印感兴趣的标头和消息正文。 你可以随意使用各种颜色并设置深度来满足你的偏好，深度为 `1` 将提供响应的良好摘要。
+此函数将发出安全的 GET 请求，并将搜索查询保存为路径中的一个查询参数。 `hostname` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。  `encodeURIComponent` 用来对无效字符进行转义，订阅密钥是在标头中传递的。 回调将收到一个[响应](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)，该响应订阅 `data` 事件来聚合 JSON 正文，订阅 `error` 事件来记录任何问题，订阅 `end` 事件来了解何时应当将消息视为已完成。 完成后，应用将打印感兴趣的标头和消息正文。 你可以随意使用各种颜色并设置深度来满足你的偏好，深度为 `1` 将提供响应的良好摘要。
 
 ```javascript
 function bingWebSearch(query) {

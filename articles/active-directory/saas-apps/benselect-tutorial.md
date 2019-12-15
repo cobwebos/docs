@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 BenSelect 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 BenSelect 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 BenSelect 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ca12f89615cd4b3110b0d67268c048b8e44561
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4a027a4038d806b7c19dc45ea5b6da74acb802b2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879719"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893114"
 ---
-# <a name="tutorial-integrate-benselect-with-azure-active-directory"></a>教程：将 BenSelect 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenSelect 的集成
 
 本教程介绍如何将 BenSelect 与 Azure Active Directory (Azure AD) 集成。 将 BenSelect 与 Azure AD 集成后，可以：
 
@@ -44,7 +44,11 @@ ms.locfileid: "68879719"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
+
 * BenSelect 支持 **IDP** 发起的 SSO
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-benselect-from-the-gallery"></a>从库中添加 BenSelect
 
@@ -58,26 +62,26 @@ ms.locfileid: "68879719"
 1. 在结果面板中选择“BenSelect”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-benselect"></a>配置并测试 BenSelect 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置并测试 BenSelect 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 BenSelect 中的相关用户之间建立链接关系。
 
 若要配置并测试 BenSelect 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 BenSelect SSO](#configure-benselect-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 BenSelect 测试用户](#create-benselect-test-user)** - 在 BenSelect 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 BenSelect SSO](#configure-benselect-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 BenSelect 测试用户](#create-benselect-test-user)** - 在 BenSelect 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“BenSelect”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -88,7 +92,7 @@ ms.locfileid: "68879719"
     > [!NOTE]
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [BenSelect 客户端支持团队](mailto:support@selerix.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. BenSelect 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
+1. BenSelect 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
     ![image](common/edit-attribute.png)
 
@@ -108,20 +112,13 @@ ms.locfileid: "68879719"
 
     d. 单击“ **保存**”。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificateraw.png)
 
 1. 在“设置 BenSelect”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
-
-### <a name="configure-benselect-sso"></a>配置 BenSelect SSO
-
-若要在 **BenSelect** 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [BenSelect 支持团队](mailto:support@selerix.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
-
-> [!NOTE]
-> 需要声明，此集成需要 SHA256 算法（SHA1 不受支持）才能在相应服务器（例如 app2101 等）上设置 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -145,19 +142,26 @@ ms.locfileid: "68879719"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-benselect-sso"></a>配置 BenSelect SSO
+
+若要在 **BenSelect** 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [BenSelect 支持团队](mailto:support@selerix.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+
+> [!NOTE]
+> 需要声明，此集成需要 SHA256 算法（SHA1 不受支持）才能在相应服务器（例如 app2101 等）上设置 SSO。
 
 ### <a name="create-benselect-test-user"></a>创建 BenSelect 测试用户
 
 本部分需在 BenSelect 中创建名为 Britta Simon 的用户。 在  [BenSelect 支持团队](mailto:support@selerix.com)的配合下，将用户添加到 BenSelect 平台。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -170,4 +174,6 @@ ms.locfileid: "68879719"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [在 Azure AD 中试用 BenSelect](https://aad.portal.azure.com/)
 

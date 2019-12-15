@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991621"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977210"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>快速入门：使用用于 Python 的必应 Web 搜索 SDK
 
@@ -23,16 +23,14 @@ ms.locfileid: "65991621"
 
 想要马上查看代码？ GitHub 上提供了[适用于 Python 示例的必应 Web 搜索 SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-
 ## <a name="prerequisites"></a>先决条件
 必应 Web 搜索 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。 建议在本快速入门中使用虚拟环境。
 
 * Python 2.7、3.3、3.4、3.5 或 3.6
 * 适用于 Python 2.7 的 [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * 适用于 Python 3.x 的 [venv](https://pypi.python.org/pypi/virtualenv)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>创建并配置虚拟环境
 
@@ -82,7 +80,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 1. 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。
 
-1. 将以下示例代码复制到项目中：  
+1. 将此示例代码复制到项目中。 `endpoint` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。  
 
     ```python
     # Import required modules.

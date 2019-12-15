@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304703"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893342"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
 
@@ -70,7 +70,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 ## <a name="route-resource-data-to-the-storage-account"></a>将资源数据路由到存储帐户
 
-接下来，通过设置资源诊断设置来配置要路由到存储帐户的资源级别数据（资源指标和诊断日志）  。
+接下来，通过设置资源诊断设置来配置要路由到存储帐户的资源级别数据（资源指标和资源日志）  。
 
 1. 单击左侧导航列表中的“监视器”按钮，然后单击“诊断设置”   。 在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。 如果此列表中没有任何资源，可在处理前[创建逻辑应用](../../logic-apps/quickstart-create-first-logic-app-workflow.md)，以拥有可在其中配置诊断设置的资源。
 
@@ -162,7 +162,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 5. 通过单击容器中的资源 ID、日期和时间，导航到 PT1H.json 文件。 单击 PT1H.json 文件，再单击“下载”  。 每个 PT1H.json blob 都包含一个 JSON blob，其中的事件为在 blob URL 中指定的小时（例如 h=12）内发生的。 在当前的小时内发生的事件将附加到 PT1H.json 文件。 分钟值始终为 00 (m=00)，因为日志事件按小时细分成单个 blob。
 
-   现可查看存储帐户中存储的 JSON 事件。 资源诊断日志的 blob 格式为：
+   现可查看存储帐户中存储的 JSON 事件。 对于资源诊断日志，blob 的格式为：
 
    insights-logs-{日志类别名称}/resourceId=/{资源 ID}/y={4 位数年份}/m={2 位数月份}/d={2 位数日期}/h={2 位数 24 小时制小时}/m=00/PT1H.json
 

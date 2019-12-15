@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63cc4b902c0bd0281228e23076be6e0a18461597
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241415"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Salesforce 集成
 
@@ -46,9 +46,9 @@ ms.locfileid: "72241415"
 
 * Salesforce 支持 SP 发起的 SSO 
 
-* Salesforce 支持实时用户预配 
+* Salesforce 支持[**自动**用户预配和取消预配](salesforce-provisioning-tutorial.md)（推荐）
 
-* Salesforce 支持[自动用户预配](salesforce-provisioning-tutorial.md) 
+* Salesforce 支持实时用户预配 
 
 * 现在可以为 Salesforce 移动应用程序配置 Azure AD 以启用 SSO。 本教程在测试环境中配置并测试 Azure AD SSO。
 

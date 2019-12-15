@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671563"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851598"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本操作指南中，你将了解如何使用 Azure 机器学习以异步方式和并行方式对大量数据进行推理。 此处所述的批处理推理功能在公共预览版中提供。 这是一种用于生成推理和处理数据的高性能和高吞吐量的方式。 它提供现成的异步功能。
+介绍如何使用 Azure 机器学习以异步方式和并行方式对大量数据进行推理。 此处所述的批处理推理功能在公共预览版中提供。 这是一种用于生成推理和处理数据的高性能和高吞吐量的方式。 它提供现成的异步功能。
 
 通过批处理推理，可以轻松地将离线推理扩展到生产数据 TB 级的大型计算机群集，从而提高工作效率和优化成本。
 
-在本操作指南中，你将学习如何执行以下任务：
+本文介绍如何执行以下任务：
 
 > * 创建远程计算资源。
 > * 编写自定义推理脚本。
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 脚本必须包含  两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
-    -  `mini_batch`：批处理推理将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 如果输入是 FileDataset，则 min_batch 中的每个条目都将为-filepath，如果输入为 TabularDataset，则为 Pandas 数据帧。
+    -  `mini_batch`：批处理推理将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 min_batch 中的每个条目是文件路径（如果输入是 FileDataset）或 Pandas 数据帧（如果输入是 TabularDataset）。
     -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一个成功推理。 用户应确保推理结果中包含足够的数据，以便将输入映射到推理。 推理输出将写入输出文件中，并且不保证按顺序写入，用户应使用输出中的某些键将其映射到输入。
 
 ```python
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>如何在 `init()` 或 `run()` 函数中访问其他文件
+
+如果推理脚本所在的同一目录中包含另一个文件或文件夹，可以通过查找当前工作目录来引用此文件或文件夹。
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>生成并运行批处理推理管道
 
 现在，你有了生成管道所需的一切。
@@ -261,11 +270,11 @@ batch_env.spark.precache_packages = False
 
 ### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>为批处理推理管道步骤指定参数
 
-`ParallelRunConfig` 是新引入的批处理推理 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括以下所有各项：
+`ParallelRunConfig` 是新引入的批处理推理 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括以下所有参数：
 - `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directly` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
 - `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值为 `1`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
-    - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 请注意，`TabularDataset` 中的微型批处理永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
+    - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 `TabularDataset` 中的微批永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
 - `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将停止。 错误阈值适用于整个输入，而非适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
 - `output_action`：以下值之一指示将如何组织输出：
     - `summary_only`：用户脚本将存储输出。 `ParallelRunStep` 仅将输出用于错误阈值计算。
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>后续步骤
 
 若要了解此过程的端到端运行机制，请尝试[批处理推理笔记本](https://aka.ms/batch-inference-notebooks)。 
+
+有关 ParallelRunStep 的调试和故障排除指导，请参阅[操作指南](how-to-debug-batch-predictions.md)。
 
 有关管道的调试和故障排除指南，请参阅[操作指南](how-to-debug-pipelines.md)。
 

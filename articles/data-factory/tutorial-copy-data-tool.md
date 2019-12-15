@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure 复制数据工具复制数据
+title: 使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.author: jingwang
-ms.openlocfilehash: 4646d7429dc4b3286f6af8861eaf7f1e6e27a760
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e71fc869a08192b756c37e5106568bdd36361bd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683601"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926582"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
+
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](tutorial-copy-data-tool.md)
@@ -128,7 +130,7 @@ ms.locfileid: "73683601"
 
     b. 单击“下一步”转到下一步骤。 
 
-1. 在“文件格式设置”页中，注意该工具会自动检测列与行的分隔符。  选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。
+1. 在“文件格式设置”页中，注意该工具会自动检测列与行的分隔符。  选择“**下一页**”。 还可以在此页中预览数据，以及查看输入数据的架构。
 
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. 在“目标数据存储”  页上，完成以下步骤：
@@ -147,7 +149,7 @@ ms.locfileid: "73683601"
 
 1. 在“表映射”页中，选择 **[dbo].[emp]** 表，然后选择“下一步”。  
 
-1. 在“架构映射”页中，注意输入文件中的第一个和第二个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。  选择“**下一步**”。
+1. 在“架构映射”页中，注意输入文件中的第一个和第二个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。  选择“**下一页**”。
 
     ![“架构映射”页](./media/tutorial-copy-data-tool/schema-mapping.png)
 1. 在“设置”页中，选择“下一步”。  

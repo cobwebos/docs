@@ -1,6 +1,6 @@
 ---
 title: 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心
-description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C# 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 0513884e7869bc14627259ea98a85f4966147d9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276336"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976513"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 
@@ -74,9 +74,9 @@ Azure IoT 设备预配服务支持两类注册：
 
 4. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开预配服务  。
 
-5. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮。   
+5. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
-6. 在“添加注册”面板中  ，输入以下信息：
+6. 在“添加注册”面板中，输入以下信息  ：
    - 选择“X.509”  作为标识证明机制  。
    - 在“主要证书 .pem 或 .cer 文件”下，选择“选择文件”选择在前述步骤中创建的证书文件 certificate.cer    。
    - 将“设备 ID”保留为空。  对设备进行预配时，其设备 ID 将设置为 X.509 证书 **iothubx509device1** 中的公用名称 (CN)。 此名称也会是用于单个注册项的注册 ID 的名称。 

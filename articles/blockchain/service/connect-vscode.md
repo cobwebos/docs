@@ -1,15 +1,15 @@
 ---
 title: 使用 Visual Studio Code 连接到 Azure 区块链服务
 description: 在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展连接到 Azure 区块链服务联盟网络
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455983"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977045"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>快速入门：使用 Visual Studio Code 连接到 Azure 区块链服务联盟网络
 
@@ -59,12 +59,12 @@ Azure 区块链开发工具包将运行一个验证脚本，完成验证大约�
 如果无权访问 Azure 区块链服务联盟成员，请根据以下教程中所述满足先决条件：[快速入门：使用 Azure 门户创建区块链成员](create-member.md)或[快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员](create-member-cli.md)。
 
 1. 在 VS Code 的资源管理器窗格中，展开“Azure 区块链”扩展  。
-1. 选择“连接到联盟”。 
+1. 选择“连接到网络”  。
 
-   ![连接到联盟](./media/connect-vscode/connect-consortium.png)
+   ![连接到网络](./media/connect-vscode/connect-consortium.png)
 
     如果系统提示你进行 Azure 身份验证，请遵照提示使用浏览器进行身份验证。
-1. 在命令面板下拉列表中选择“连接到 Azure 区块链服务联盟”。 
+1. 在命令面板下拉列表中选择“Azure 区块链服务”。 
 1. 选择与 Azure 区块链服务联盟成员相关联的订阅和资源组。
 1. 从列表中选择你的联盟。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158305"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964183"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>教程：将 Dropbox for Business 与 Azure Active Directory 集成
 
@@ -44,7 +44,7 @@ ms.locfileid: "73158305"
 
 * 本教程在测试环境中配置并测试 Azure AD SSO。 Dropbox for Business 支持 SP 发起的 SSO 
 
-* Dropbox for Business 支持实时用户预配 
+* Dropbox for Business 支持[自动用户预配和取消预配](dropboxforbusiness-tutorial.md)
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>从库中添加 Dropbox for Business
 

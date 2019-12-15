@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: quickstart
-ms.date: 09/17/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7d1a7b2cdba082c78a1753ea0dcce6ead02ab036
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f0a3008dace4e9382bbb6b6d9465ce1c9b4ddc6c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148318"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976054"
 ---
 # <a name="quickstart-bing-custom-search-client-library-for-java"></a>快速入门：适用于 Java 的必应自定义搜索客户端库
 
@@ -102,7 +102,7 @@ public class BingCustomSearchSample {
 }
 ```
 
-在类中创建一个 `main` 方法，并为资源的 Azure 终结点和密钥创建变量。 如果在启动应用程序后创建了环境变量，请关闭再重新打开运行该应用程序的编辑器、IDE 或 shell，然后才能访问该变量。 稍后将定义方法。
+在该类中创建一个 `main` 方法，并为资源的密钥创建变量。 如果在启动应用程序后创建了环境变量，请关闭再重新打开运行该应用程序的编辑器、IDE 或 shell，然后才能访问该变量。 稍后将定义方法。
 
 [!code-java[main method](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=main)]
 

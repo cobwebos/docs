@@ -1,6 +1,7 @@
 ---
-title: 教程 - 在单页应用程序中启用身份验证 - Azure Active Directory B2C
-description: 在本教程中，了解如何使用 Azure Active Directory B2C 为单页应用程序 (JavaScript) 提供用户登录功能。
+title: 教程：在单页应用中启用身份验证
+titleSuffix: Azure AD B2C
+description: 本教程介绍如何使用 Azure Active Directory B2C 为基于 JavaScript 的单页应用程序 (SPA) 提供用户登录功能。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420344"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950147"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>教程：使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序中启用身份验证
 

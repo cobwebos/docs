@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564691"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973503"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>快速入门：使用 Java 调用必应自定义搜索终结点
 
@@ -50,7 +50,7 @@ ms.locfileid: "68564691"
     import com.google.gson.JsonParser;
     ```
 
-2. 创建名为 `CustomSrchJava` 的类，然后为订阅密钥、自定义搜索终结点和搜索实例的自定义配置 ID 创建变量。 
+2. 创建名为 `CustomSrchJava` 的类，然后为订阅密钥、自定义搜索终结点和搜索实例的自定义配置 ID 创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";

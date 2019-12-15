@@ -1,6 +1,6 @@
 ---
-title: Android 入门 - Microsoft 标识平台 | Azure
-description: Android 应用如何从 Microsoft 标识平台获取访问令牌并调用 Microsoft 图形 API 或需要访问令牌的 API。
+title: 登录用户并调用 Microsoft Graph (Android) - Microsoft 标识平台 | Azure
+description: 从 Microsoft 标识平台 (Android) 获取访问令牌并调用需要访问令牌的 Microsoft Graph 或 API
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242218"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961551"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>教程：从 Android 应用将用户登录并调用 Microsoft Graph
 

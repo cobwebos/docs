@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868264"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930699"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "67868264"
 
 ## <a name="manage-and-store-user-subscription-keys"></a>管理和存储用户订阅密钥
 
-此应用程序使用 Web 浏览器的一致性存储来存储 API 订阅密钥。 如果尚未存储任何密钥，网页将提示用户输入其密钥进行存储，以备后用。 如果密钥在之后被 API 拒绝，应用会将其从存储中删除。
+此应用程序使用 Web 浏览器的一致性存储来存储 API 订阅密钥。 如果尚未存储任何密钥，网页将提示用户输入其密钥进行存储，以备后用。 如果密钥在之后被 API 拒绝，应用会将其从存储中删除。 此示例使用全局终结点。 也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 
 定义 `storeValue` 和 `retrieveValue` 函数以使用 `localStorage` 对象（如果浏览器支持它）或 Cookie。

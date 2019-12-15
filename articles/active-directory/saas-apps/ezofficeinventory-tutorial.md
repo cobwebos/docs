@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377279"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EZOfficeInventory 的集成
 
@@ -94,11 +94,11 @@ ms.locfileid: "72377279"
 
 1. EZOfficeInventory 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. 除了上述属性，EZOfficeInventory 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |
     | First_name | user.givenname |
     | Last_name | user.surname |
@@ -144,13 +144,21 @@ ms.locfileid: "72377279"
 
 ## <a name="configure-ezofficeinventory-sso"></a>配置 EZOfficeInventory SSO
 
-1. 打开新的 Web 浏览器窗口，以管理员身份登录到 EZOfficeInventory 公司站点。
+1. 若要在 EZOfficeInventory 中自动执行配置，需要通过单击“安装扩展”  来安装“我的应用安全登录浏览器扩展”  。
 
-2. 在页面的右上角，单击“ **个人资料**”，然后导航至“ **设置**” > “**加载项**”。 
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将该扩展添加到浏览器后，单击“设置 EZOfficeInventory”会定向到 EZOfficeInventory 应用程序。  在此处，请提供管理员凭据登录到 EZOfficeInventory。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 EZOfficeInventory，请打开新的 Web 浏览器窗口，以管理员身份登录到 EZOfficeInventory 公司站点，并执行以下步骤：
+
+1. 在页面的右上角，单击“个人资料”，然后导航到“设置” > “加载项”    。
 
     ![EZOfficeInventory 配置](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. 向下滚动至“SAML 集成”部分，执行以下步骤  ：
+1. 向下滚动至“SAML 集成”部分，执行以下步骤  ：
 
     ![EZOfficeInventory 配置](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,7 +184,7 @@ ms.locfileid: "72377279"
 
 在本部分中，我们将在 EZOfficeInventory 中创建一个名为 Britta Simon 的用户。 EZOfficeInventory 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 EZOfficeInventory 中不存在用户，则会在身份验证后创建一个新用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -191,4 +199,3 @@ ms.locfileid: "72377279"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [在 Azure AD 中试用 EZOfficeInventory](https://aad.portal.azure.com/)
-

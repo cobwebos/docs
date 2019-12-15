@@ -1,24 +1,24 @@
 ---
-title: 教程：在 Azure 存储中使用 Azure Key Vault 加密和解密 blob | Microsoft Docs
-description: 如何将 Microsoft Azure 存储的客户端加密与 Azure Key Vault 配合使用来加密和解密 blob。
+title: 教程 - 使用 Azure 密钥保管库加密和解密 blob
+titleSuffix: Azure Storage
+description: 了解如何通过客户端加密使用 Azure 密钥保管库来加密和解密 blob。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
-ms.translationtype: MT
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003434"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892883"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
-## <a name="introduction"></a>介绍
 本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 其中将引导完成如何在控制台应用程序中使用这些技术加密和解密 blob。
 
 **估计完成时间：** 20 分钟
@@ -29,7 +29,7 @@ ms.locfileid: "71003434"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须具备以下项目：
+要完成本教程，必须准备好以下各项：
 
 * Azure 存储帐户
 * Visual Studio 2013 或更高版本
@@ -48,7 +48,7 @@ ms.locfileid: "71003434"
 
 ## <a name="set-up-your-azure-key-vault"></a>设置 Azure 密钥保管库
 
-若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密](../../key-vault/quick-create-net.md)中所述的以下步骤：
+若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure 密钥保管库中设置和检索机密](../../key-vault/quick-create-net.md)中所述的以下步骤：
 
 * 创建密钥保管库。
 * 将密钥或密码添加到密钥保管库。
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>在程序中访问存储和密钥保管库
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>在程序中访问 Azure 存储和密钥保管库
 
 在 Main() 方法中，添加以下代码。
 
@@ -181,7 +181,7 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 
 当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此，没有理由检索该密钥，请记住密钥与 blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。   
 
-RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 Blob 元数据的加密密钥会发送到密钥保管库进行解密。
+RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 blob 元数据的加密密钥将发送到密钥保管库进行解密。
 
 添加以下代码以解密刚刚上传的 blob。
 
@@ -207,7 +207,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 * 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
 
 以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
-请注意，硬编码值 $key 仅用于演示目的。 请在自己的代码中生成此密钥。
+请注意，硬编码值 $key 仅用于演示目的。 在自己的代码中需要生成此密钥。
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -229,11 +229,12 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 就这么简单。 请尽情享受其中的乐趣！
 
 ## <a name="next-steps"></a>后续步骤
 
-若要深入了解如何将 Microsoft Azure 存储与 C# 配合使用，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+要深入了解如何将 Microsoft Azure 存储与 C# 配合使用，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 有关 Blob REST API 的详细信息，请参阅 [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Blob 服务 REST API）。
 

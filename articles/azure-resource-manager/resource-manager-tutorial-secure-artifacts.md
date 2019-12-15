@@ -2,19 +2,19 @@
 title: 保护模板中的项目
 description: 了解如何保护 Azure 资源管理器模板中使用的项目。
 author: mumian
-ms.date: 10/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1a9d209e843d8e9a1735a3c6907b00d85be6580b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326442"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971719"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
-了解如何使用 Azure 存储帐户和共享访问签名 (SAS) 保护 Azure 资源管理器模板中使用的项目。 部署项目是指完成部署所需的任何文件以及主模板文件。 例如，在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)中，主模板创建 Azure SQL 数据库；它还调用一个 BACPAC 文件来创建表和插入数据。 BACPAC 文件是一个项目。 该项目存储在具有公共访问权限的 Azure 存储帐户中。 在本教程中，你将使用 SAS 来授予对自己 Azure 存储帐户中 BACPAC 文件的有限访问权限。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+了解如何使用 Azure 存储帐户和共享访问签名 (SAS) 保护 Azure 资源管理器模板中使用的项目。 部署项目是指完成部署所需的任何文件以及主模板文件。 例如，在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)中，主模板创建 Azure SQL 数据库；它还调用一个 BACPAC 文件来创建表和插入数据。 BACPAC 文件是存储在 Azure 存储帐户中的项目。 存储帐户密钥用于访问该项目。 在本教程中，你将使用 SAS 来授予对自己 Azure 存储帐户中 BACPAC 文件的有限访问权限。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
 若要了解如何保护链接的模板，请参阅[教程：创建链接的 Azure 资源管理器模板](./resource-manager-tutorial-create-linked-templates.md)。
 
@@ -40,6 +40,7 @@ ms.locfileid: "74326442"
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="prepare-a-bacpac-file"></a>准备 BACPAC 文件
@@ -52,77 +53,63 @@ ms.locfileid: "74326442"
 * 将 BACPAC 文件上传到该容器。
 * 检索 BACPAC 文件的 SAS 令牌。
 
-若要使用 PowerShell 脚本自动完成这些步骤，请参阅[上传链接的模板](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template)中的脚本。
+1. 选择“试用”，以打开 Cloud Shell，然后将以下 PowerShell 脚本粘贴到 shell 窗口中  。
 
-### <a name="download-the-bacpac-file"></a>下载 BACPAC 文件
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name"   # This name is used to generate names for Azure resources, such as storage account name.
+    $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
 
-下载 [BACPAC 文件](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)，并以相同的名称 **SQLDatabaseExtension.bacpac** 将其保存到本地计算机。
+    $resourceGroupName = $projectName + "rg"
+    $storageAccountName = $projectName + "store"
+    $containerName = "bacpacfile" # The name of the Blob container to be created.
 
-### <a name="create-a-storage-account"></a>创建存储帐户
+    $bacpacURL = "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac"
+    $bacpacFileName = "SQLDatabaseExtension.bacpac" # A file name used for downloading and uploading the BACPAC file.
 
-1. 选择以下映像在 Azure 门户中打开一个资源管理器模板。
+    # Download the bacpac file
+    Invoke-WebRequest -Uri $bacpacURL -OutFile "$home/$bacpacFileName"
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 输入以下属性：
+    # Create a resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-    * **订阅**：选择 Azure 订阅。
-    * **资源组**：选择“新建”并指定名称。  资源组是 Azure 资源的容器，用于实现管理目的。 在本教程中，可为存储帐户和 Azure SQL 数据库使用同一个资源组。 请记下此资源组名称，因为稍后在本教程中创建 Azure SQL 数据库时需要用到。
-    * **位置**：选择区域。 例如“美国中部”。 
-    * **存储帐户类型**：使用默认值“Standard_LRS”。 
-    * **位置**：使用默认值“[resourceGroup().location]”。  这意味着，要使用存储帐户的资源组位置。
-    * **我同意上述条款和条件**：（选中）
-3. 选择“购买”。 
-4. 选择门户右上角的通知图标（钟形图标）查看部署状态。
+    # Create a storage account
+    $storageAccount = New-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName `
+        -Location $location `
+        -SkuName "Standard_LRS"
 
-    ![资源管理器教程门户通知窗格](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. 成功部署存储帐户后，在通知窗格中选择“转到资源组”打开该资源组。 
+    $context = $storageAccount.Context
 
-### <a name="create-a-blob-container"></a>创建 Blob 容器
+    # Create a container
+    New-AzStorageContainer -Name $containerName -Context $context
 
-在上传任何文件之前，需要创建一个 Blob 容器。
+    # Upload the bacpac file
+    Set-AzStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$bacpacFileName" `
+        -Blob $bacpacFileName `
+        -Context $context
 
-1. 选择存储帐户以将其打开。 应会看到，资源组中只列出了一个存储帐户。 你的存储帐户名称不同于以下屏幕截图所示的名称。
+    # Generate a SAS token
+    $bacpacURI = New-AzStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $bacpacFileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(8.0) `
+        -FullUri
 
-    ![资源管理器教程存储帐户](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    $str = $bacpacURI.split("?")
 
-2. 选择“Blob”磁贴。 
+    Write-Host "You need the blob url and the SAS token later in the tutorial:"
+    Write-Host $str[0]
+    Write-Host (-join ("?", $str[1]))
 
-    ![资源管理器教程 Blob](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. 选择顶部的“+ 容器”创建新容器。 
-4. 输入以下值：
+    Write-Host "Press [ENTER] to continue ..."
+    ```
 
-    * **名称**：输入 **sqlbacpac**。
-    * **公共访问级别**：使用默认值“专用(不允许匿名访问)”。 
-5. 选择“确定”  。
-6. 选择“sqlbacpac”打开新建的容器。 
-
-### <a name="upload-the-bacpac-file-to-the-container"></a>将 BACPAC 文件上传到容器
-
-1. 选择“上传”。 
-2. 输入以下值：
-
-    * **文件**：遵照说明选择前面下载的 BACPAC 文件。 默认名称为 **SQLDatabaseExtension.bacpac**。
-    * **身份验证类型**：选择“SAS”。   “SAS”是默认值。 
-3. 选择“上传”。   成功上传文件后，容器中应会列出其文件名。
-
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />生成 SAS 令牌
-
-1. 右键单击容器中的“SQLDatabaseExtension.bacpac”，并选择“生成 SAS”。  
-2. 输入以下值：
-
-    * **权限**：使用默认值“读取”。 
-    * **开始和过期日期/时间**：默认值为使用 SAS 令牌八小时。 如果需要更多的时间来完成本教程，请更新“过期时间”。 
-    * **允许的 IP 地址**：将此字段留空。
-    * **允许的协议**：使用默认值“HTTPS”。 
-    * **签名密钥**：使用默认值“密钥 1”。 
-3. 选择“生成 Blob SAS 令牌和 URL”。 
-4. 复制“Blob SAS URL”。  URL 的中间是文件名 **SQLDatabaseExtension.bacpac**。  文件名将 URL 划分为三个部分：
-
-   - **项目位置**： https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 。 请确保位置以“/”结尾。
-   - **BACPAC 文件名**：SQLDatabaseExtension.bacpac。
-   - **项目位置 SAS 令牌**：请确保该令牌的前面带有“?”。
-
-     [部署模板](#deploy-the-template)时需要使用这三个值。
+1. 请记下 BACPAC 文件 URL 和 SAS 令牌。 部署模板时需要这些值。
 
 ## <a name="open-an-existing-template"></a>打开现有模板
 
@@ -132,15 +119,15 @@ ms.locfileid: "74326442"
 2. 在“文件名”中粘贴以下 URL： 
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy2.json
     ```
+
 3. 选择“打开”以打开该文件。 
 
-    该模板中定义了五个资源：
+    该模板中定义了四个资源：
 
    * `Microsoft.Sql/servers`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)。
-   * `Microsoft.SQL/servers/securityAlertPolicies`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies)。
-   * `Microsoft.SQL/servers/filewallRules`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)。
+   * `Microsoft.SQL/servers/firewallRules`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)。
    * `Microsoft.SQL/servers/databases`。  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
    * `Microsoft.SQL/server/databases/extensions`。  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)。
 
@@ -149,39 +136,30 @@ ms.locfileid: "74326442"
 
 ## <a name="edit-the-template"></a>编辑模板
 
-添加以下附加参数：
+1. 将 storageAccountKey 参数定义替换为以下参数定义：
 
-```json
-"_artifactsLocation": {
-    "type": "string",
-    "metadata": {
-        "description": "The base URI where artifacts required by this template are located."
-    }
-},
-"_artifactsLocationSasToken": {
-    "type": "securestring",
-    "metadata": {
-        "description": "The sasToken required to access _artifactsLocation."
+    ```json
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the SAS token required to access the artifact location."
+      }
     },
-    "defaultValue": ""
-},
-"bacpacFileName": {
-    "type": "string",
-    "defaultValue": "SQLDatabaseExtension.bacpac",
-    "metadata": {
-        "description": "The bacpac for configure the database and tables."
-    }
-}
-```
+    ```
 
-![资源管理器教程安全项目参数](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+    ![资源管理器教程安全项目参数](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-更新以下两个元素的值：
+2. 更新 SQL 扩展资源的以下三个元素值：
 
-```json
-"storageKey": "[parameters('_artifactsLocationSasToken')]",
-"storageUri": "[uri(parameters('_artifactsLocation'), parameters('bacpacFileName'))]",
-```
+    ```json
+    "storageKeyType": "SharedAccessKey",
+    "storageKey": "[parameters('_artifactsLocationSasToken')]",
+    "storageUri": "[parameters('bacpacUrl')]",
+    ```
+
+已完成的模板如下所示：
+
+[!code-json[](~/resourcemanager-templates/tutorial-sql-extension/azuredeploy3.json?range=1-106&highlight=38-43,95-97)]
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -190,27 +168,29 @@ ms.locfileid: "74326442"
 有关部署过程，请参阅[部署模板](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)部分。 改用以下 PowerShell 部署脚本：
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$projectName = Read-Host -Prompt "Enter the project name that is used earlier"   # This name is used to generate names for Azure resources, such as storage account name.
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the sql database admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
-$artifactsLocation = Read-Host -Prompt "Enter the artifacts location"
+$bacpacUrl = Read-Host -Prompt "Enter the BACPAC url"
 $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS token" -AsSecureString
-$bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+$resourceGroupName = $projectName + "rg"
+
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
-    -bacpacFileName $bacpacFileName `
+    -bacpacUrl $bacpacUrl `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 使用生成的密码。 请参阅[先决条件](#prerequisites)。
-有关 _artifactsLocation、_artifactsLocationSasToken 和 bacpacFileName 的值，请参阅[生成 SAS 令牌](#generate-a-sas-token)。
+有关 _artifactsLocation、_artifactsLocationSasToken 和 bacpacFileName 的值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
 
 ## <a name="verify-the-deployment"></a>验证部署
 

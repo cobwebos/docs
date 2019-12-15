@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743699"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961533"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
@@ -35,7 +35,7 @@ Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸
 
 ## <a name="face-verification"></a>人脸验证
 
-验证 API 针对检测到的两个人脸执行身份验证，或由一个检测到的人脸对一个人员对象执行身份验证。 实际上，它会评估两张脸是否属于同一个人。 此功能可能适用于安全方案。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 参考文档。
+验证 API 针对检测到的两个人脸执行身份验证，或从一个检测到的人脸对一个人员对象执行身份验证。 实际上，它会评估两张脸是否属于同一个人。 此功能可能适用于安全方案。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[验证 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 参考文档。
 
 ## <a name="find-similar-faces"></a>查找相似人脸
 
@@ -45,11 +45,11 @@ Azure 认知服务人脸 API 提供用于检测、识别和分析图像中人脸
 
 ![一位微笑的女士](./Images/FaceFindSimilar.QueryFace.jpg)
 
-下面是候选人脸：
+这些图像是候选人脸：
 
 ![五位微笑的人的图像。 图像 a 和 b 显示同一人。](./Images/FaceFindSimilar.Candidates.jpg)
 
-为了查找四张相似人脸，matchPerson 模式会返回 a 和 b，其中显示与目标人脸相同的人。 matchFace 模式返回 a、b、c 和 d，恰好四个候选项，即使某些选项与目标不是同一人或者相似度低，也是如此。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[查找相似人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 参考文档。
+为了查找四张相似人脸，matchPerson 模式会返回 a 和 b，其中显示与目标人脸相同的人。 matchFace 模式返回 a、b、c 和 d&mdash;恰好四个候选项，即使某些选项与目标不是同一人或者相似度低，也是如此。 有关详细信息，请参阅[人脸识别](concepts/face-recognition.md)概念指南或[查找相似人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 参考文档。
 
 ## <a name="face-grouping"></a>人脸分组
 

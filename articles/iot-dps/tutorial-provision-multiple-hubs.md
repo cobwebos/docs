@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Azure IoT 中心设备预配服务跨负载均衡中心预配设备
-description: 本教程演示如何在 Azure 门户中跨负载均衡的 IoT 中心通过设备预配服务自动预配设备
+description: 本教程演示如何在 Azure 门户中跨负载均衡的 IoT 中心通过设备预配服务 (DPS) 自动预配设备
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: cf1246862a455cfa71f3e170478736e5e07ee6f7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701955"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976734"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教程：跨负载均衡的 IoT 中心预配设备
 

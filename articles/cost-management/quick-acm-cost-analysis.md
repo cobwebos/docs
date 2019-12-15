@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 858672a7fcfcfd5f50c91eb769fdd0d42578195f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 36b8a3bba82a338f3aab526d505c4d1e96061ddf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229997"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849116"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -101,7 +101,9 @@ ms.locfileid: "74229997"
 
  “分组依据”通用属性，用于细分成本并确定排名靠前的贡献因素。 例如，若要按资源标记分组，请选择要按其分组的标记键。 成本按每个标记值进行细分，并且有一个额外的段，用于未应用该标记的资源。
 
-大部分[Azure 资源都支持标记](../azure-resource-manager/tag-support.md)。 但某些标记在“成本管理”和“计费”中不可用。 此外，不支持资源组标记。 成本管理仅自标记直接应用到资源之日起支持资源标记。 观看 [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw)（如何通过 Azure 成本管理查看标记策略）视频，了解如何使用 Azure 标记策略来改进成本数据可见性。
+大部分[Azure 资源都支持标记](../azure-resource-manager/tag-support.md)。 但某些标记在“成本管理”和“计费”中不可用。 此外，不支持资源组标记。 对标记的支持适用于在将标记应用于资源后报告的使用情况  。 标记不会逆向应用于成本汇总。
+
+观看 [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw)（如何通过 Azure 成本管理查看标记策略）视频，了解如何使用 Azure 标记策略来改进成本数据可见性。
 
 下面是当前月份的 Azure 服务成本视图。
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/04/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4974f4e39b0b16971d0d666134618d5a1f64e11
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424318"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893716"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>教程：将 productboard 与 Azure Active Directory 集成
 
@@ -65,11 +65,11 @@ ms.locfileid: "68424318"
 若要配置并测试 productboard 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 productboard SSO](#configure-productboard-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 productboard 测试用户](#create-productboard-test-user)** - 在 productboard 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 productboard SSO](#configure-productboard-sso)** - 在应用程序端配置单一登录设置。
+    * **[创建 productboard 测试用户](#create-productboard-test-user)** - 在 EZOfficeInventory 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -81,24 +81,20 @@ ms.locfileid: "68424318"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 若要在“IDP”发起模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值：  
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<projectname>.productboard.com/users/auth/saml/callback` 
 
-1. 若要在“SP”发起模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤：  
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<projectname>.productboard.com/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [productboard 客户端支持团队](mailto:support@productboard.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，单击“复制”按钮以复制“应用联合元数据 URL”，并将其保存在计算机上。   
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮以复制“应用联合元数据 URL”并将其保存在计算机上。   
 
     ![证书下载链接](common/copy-metadataurl.png)
-
-### <a name="configure-productboard-sso"></a>配置 productboard SSO
-
-若要在 **productboard** 端配置单一登录，需要将下载的“应用联合元数据 URL”发送给 [productboard 支持团队](mailto:support@productboard.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -122,17 +118,29 @@ ms.locfileid: "68424318"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-productboard-sso"></a>配置 productboard SSO
+
+1. 若要在 productboard 中自动执行配置，需要通过单击“安装扩展”  来安装**我的应用安全登录浏览器扩展**。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将该扩展添加到浏览器后，单击“设置 productboard”  ，随后会定向到 productboard 应用程序。 在此处，提供管理员凭据以登录到 productboard。 该浏览器扩展会自动配置该应用程序。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要在 **productboard** 中手动设置单一登录，需将“应用联合元数据 URL”发送到 [productboard 支持团队](mailto:support@productboard.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-productboard-test-user"></a>创建 productboard 测试用户
 
-在本部分，你将在 productboard 中创建名为 B.Simon 的用户。 productboard 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 productboard 中尚不存在用户，身份验证后会创建一个新用户。
+在本部分，你将在 productboard 中创建名为 Britta Simon 的用户。 productboard 支持默认已启用的实时用户预配。 此部分不存在任何操作项。 如果 productboard 中尚不存在用户，身份验证后会创建一个新用户。
 
 ### <a name="test-sso"></a>测试 SSO
 
@@ -144,6 +152,8 @@ ms.locfileid: "68424318"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [在 Azure AD 中试用 productboard](https://aad.portal.azure.com/)

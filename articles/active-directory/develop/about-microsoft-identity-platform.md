@@ -2,27 +2,23 @@
 title: Microsoft 标识平台的发展 - Azure
 description: 了解 Microsoft 标识平台，该平台由 Azure Active Directory (Azure AD) 标识服务和开发人员平台演变而来。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533105"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996980"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展
 
@@ -30,13 +26,13 @@ Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台�
 
 到现在为止，许多开发人员已经使用过 Azure AD v1.0 平台来对工作和学校帐户（由 Azure AD 预配）进行身份验证，方法是使用 Azure AD 身份验证库 (ADAL)、用于应用程序注册和配置的 Azure 门户，以及用于编程应用程序配置的 Azure AD Graph API，从 Azure AD v1.0 终结点请求令牌。
 
-借助 Microsoft 标识平台 (v2.0)，将覆盖范围扩展到以下类型的用户：
+借助 Microsoft 统一标识平台 (v2.0)，可以一次性编写代码，然后将任何 Microsoft 标识身份验证到应用程序。 对于多个平台，我们建议针对标识平台终结点使用完全受支持的开源 Microsoft 身份验证库 (MSAL)。 MSAL 易于使用，为用户提供出色的单一登录 (SSO) 体验，帮助你实现高可靠性和性能，采用 Microsoft 安全开发生命周期 (SDL) 开发。 调用 API 时，可以将应用程序配置为使用递增同意，这允许你延迟对同意的请求以实现更广的范围，直到应用程序的使用在运行时对此作出保证。  MSAL 还支持 Azure Active Directory B2C，因此，客户可使用其首选的社交、企业或本地帐户标识对应用程序和 API 进行单一登录访问。
+
+借助 Microsoft 标识平台，可将覆盖范围扩展到以下类型的用户：
 
 - 工作和学校帐户（Azure AD 预配帐户）
 - 个人帐户（例如 Outlook.com 或 Hotmail.com）
-- 通过 Azure AD B2C 产品/服务使用自己的电子邮件或社交身份（如 LinkedIn、Facebook、Google）的客户
-
-借助 Microsoft 统一标识平台，可以一次性编写代码，然后将任何 Microsoft 标识身份验证到应用程序。 对于多个平台，存在完全受支持的开源库，称为 Microsoft 身份验证库 (MSAL)。 MSAL 易于使用，为用户提供出色的单一登录 (SSO) 体验，帮助你实现高可靠性和性能，采用 Microsoft 安全开发生命周期 (SDL) 开发。 调用 API 时，可以将应用程序配置为使用递增同意，这允许你延迟对同意的请求以实现更广的范围，直到应用程序的使用在运行时对此作出保证。
+- 通过 MSAL 和 Azure AD B2C 使用自己的电子邮件或社交标识（如 LinkedIn、Facebook、Google）的客户
 
 可以使用 Azure 门户注册和配置应用程序，并将 Microsoft Graph API 用于编程应用程序配置。
 

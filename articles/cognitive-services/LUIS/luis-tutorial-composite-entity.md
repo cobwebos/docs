@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498981"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893173"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 
-复合实体的目的是将相关实体分组为父类别实体。 在创建复合实体之前，这些现有信息都是单独的实体。 
+复合实体的目的是将相关实体分组为父类别实体。 在创建复合实体之前，这些现有信息都是单独的实体。
 
 复合实体非常适合此类数据，因为此类数据：
 
-* 彼此相关。 
+* 彼此相关。
 * 使用各种实体类型。
 * 需要由客户端应用作为一个信息单元进行分组和处理。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **本教程介绍如何执行下列操作：**
 
@@ -37,7 +37,7 @@ ms.locfileid: "73498981"
 > [!div class="checklist"]
 > * 导入示例应用
 > * 创建意向
-> * 添加复合实体 
+> * 添加复合实体
 > * 定型
 > * 发布
 > * 从终结点获取意向和实体
@@ -54,9 +54,9 @@ ms.locfileid: "73498981"
 
 ## <a name="composite-entity"></a>复合实体
 
-在此应用中，部门名称是在 **Department** 列表实体中定义的并且包括同义词。 
+在此应用中，部门名称是在 **Department** 列表实体中定义的并且包括同义词。
 
-**TransferEmployeeToDepartment** 意向具有请求将员工移动到新部门的示例话语。 
+**TransferEmployeeToDepartment** 意向具有请求将员工移动到新部门的示例话语。
 
 此意向的示例话语包括：
 
@@ -64,12 +64,12 @@ ms.locfileid: "73498981"
 |--|
 |将 John W. Smith 转到会计部门|
 |将 Jill Jones 转到研发部门|
- 
-移动请求应当包括部门名称和员工姓名。 
+
+移动请求应当包括部门名称和员工姓名。
 
 ## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>添加 PersonName 预构建实体以帮助提取常见数据类型
 
-LUIS 为常见数据提取提供多个预生成的实体。 
+LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从顶部导航栏中选择“生成”  ，然后从左侧导航菜单中选择“实体”  。
 
@@ -87,11 +87,11 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从意向列表中选择“TransferEmployeeToDepartment”  。
 
-1. 在话语 `place John Jackson in engineering` 中，选择 personName 实体 `John Jackson`，然后从以下话语的弹出菜单列表中选择“包装进复合实体”  。 
+1. 在话语 `place John Jackson in engineering` 中，选择 personName 实体 `John Jackson`，然后从以下话语的弹出菜单列表中选择“包装进复合实体”  。
 
     ![在下拉对话框中选择包装复合的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. 然后立即选择最后一个实体，话语中的 `engineering`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `TransferEmployeeInfo`，然后选择 Enter。 
+1. 然后立即选择最后一个实体，话语中的 `engineering`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `TransferEmployeeInfo`，然后选择 Enter。
 
     ![在下拉对话框中输入复合名称的屏幕截图](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
@@ -103,11 +103,11 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”  .
 
-1. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“TransferEmployeeInfo”  。 
+1. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“TransferEmployeeInfo”  。
 
-1. 验证意向中的所有话语都已使用复合实体进行标记。 
+1. 验证意向中的所有话语都已使用复合实体进行标记。
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -115,11 +115,11 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `Move Jill Jones to DevOps`。 最后一个查询字符串参数为 `q`，表示话语查询。 
+2. 将光标定位到地址中 URL 的末尾，并输入 `Move Jill Jones to DevOps`。 最后一个查询字符串参数为 `q`，表示话语查询。
 
     由于此测试是为了验证是否正确提取复合，因此测试可以包括现有的示例话语或新话语。 一个有效的测试是在复合实体中包含所有子实体。
 
@@ -185,7 +185,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
     }
     ```
 
-   此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。  
+   此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -202,7 +202,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程创建了一个复合实体来封装现有实体。 这使得客户端应用程序能够发现一组不同数据类型的相关数据以便继续进行对话。 此人力资源应用的客户端应用程序可能会询问需要在哪一天的什么时间开始和结束搬迁。 它还可能会询问有关本次搬迁的其他后勤信息，例如实际电话。 
+本教程创建了一个复合实体来封装现有实体。 这使得客户端应用程序能够发现一组不同数据类型的相关数据以便继续进行对话。 此人力资源应用的客户端应用程序可能会询问需要在哪一天的什么时间开始和结束搬迁。 它还可能会询问有关本次搬迁的其他后勤信息，例如实际电话。
 
-> [!div class="nextstepaction"] 
-> [了解如何使用短语列表添加简单实体](luis-quickstart-primary-and-secondary-data.md)  
+> [!div class="nextstepaction"]
+> [通过查看终结点话语来修复不确定的预测](luis-tutorial-review-endpoint-utterances.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718419"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969833"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教程：运行以 Python 编写的 TensorFlow 模型
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>为预测准备图像
 
-准备图像需要几个步骤，以便它具有预测的正确形状。 这些步骤模拟在定型过程中执行的图像处理：
+你需要执行几个步骤来准备要预测的图像。 这些步骤模拟在定型过程中执行的图像处理：
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>打开文件并在 BGR 颜色空间中创建图像
 

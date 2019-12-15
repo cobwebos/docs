@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406999"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901002"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -268,7 +268,7 @@ ms.locfileid: "74406999"
 
 ## <a name="next-steps"></a>后续步骤
 
-该门户对于初始探索和小任务非常有用，而尽早查看 API 有助于更深入地了解概念和工作流：
+使用门户向导生成在浏览器中运行的即用型 Web 应用。 可以在刚刚创建的小索引上尝试使用此向导，也可以使用内置的示例数据集之一来获得更丰富的搜索体验。
 
 > [!div class="nextstepaction"]
-> [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [在门户中创建搜索应用](search-create-app-portal.md)

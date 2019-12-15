@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 门户中设置 IoT 中心设备预配服务
-description: 快速入门 - 在 Azure 门户中设置 Azure IoT 中心设备预配服务
+description: 快速入门 - 在 Azure 门户中设置 Azure IoT 中心设备预配服务 (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b983a9591743b1fda79e23aedc1aca88add2a3e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 32199623c6b3198f37854986745872aafa6747eb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228528"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969612"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>快速入门：使用 Azure 门户设置 IoT 中心设备预配服务
 

@@ -1,17 +1,17 @@
 ---
 title: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
-description: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
+description: 获取用于在 Azure Cosmos DB 表 API 帐户中执行各种常见任务的 Azure PowerShell 示例
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 95cd55bd3f87ddb4d37bfc527c8dcd28bdfa42da
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 56d8eaa0c89f5ad8edf1a44ebae682c99c94f194
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155199"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873550"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
 

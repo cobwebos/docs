@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307287"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974251"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>教程：使用 Azure 机器学习在 R 中训练和部署第一个模型
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>将数据上传到数据存储
-将数据上传到云中，使远程训练环境能够对其进行访问。 每个 Azure ML 工作区附带一个默认的数据存储，其中存储了与 Azure Blob 容器（由附加到工作区的存储帐户预配）的连接信息。 以下代码将前面创建的事故数据上传到该数据存储。
+将数据上传到云中，使远程训练环境能够对其进行访问。 每个 Azure 机器学习工作区均附带一个默认的数据存储，其中存储了与 Azure Blob 容器（在附加到工作区的存储帐户中预配）的连接信息。 以下代码将前面创建的事故数据上传到该数据存储。
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ upload_files_to_datastore(ds,
 * 提交作业
 
 ### <a name="prepare-the-training-script"></a>准备训练脚本
-本教程的同一目录中已提供了一个名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure ML 服务进行训练：
+本教程的同一目录中已提供了一个名为 `accidents.R` 的训练脚本。 请注意**训练脚本中**的以下详细信息，这些操作的目的是利用 Azure 机器学习进行训练：
 
 * 训练脚本采用 `-d` 参数来查找包含训练数据的目录。 稍后定义并提交作业时，需要指向数据存储来获取此参数。 Azure ML 会将存储文件夹装载到训练作业的远程群集。
-* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标，记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API，用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在 [Azure 机器学习工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
+* 训练脚本使用 `log_metric_to_run()` 将最终准确度作为指标，记录到 Azure ML 中的运行记录。 Azure ML SDK 提供一组日志记录 API，用于在训练运行期间记录各种指标。 这些指标将记录到试验运行记录中，并在其中持久保存。 以后随时可以访问这些指标，或者在[工作室](https://ml.azure.com)的运行详细信息页中查看这些指标。 参阅有关整套日志记录方法 `log_*()` 的[参考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
 * 训练脚本将模型保存到一个名为**outputs** 的目录中。 Azure ML 将对 `./outputs` 文件夹进行特殊的处理。 在训练期间，Azure ML 会自动将写入到 `./outputs` 的文件上传到运行记录，并将其持久保存为项目。 将训练的模型保存到 `./outputs` 即使是在运行结束之后以及不再可以访问远程训练环境的情况下，你仍可以访问和检索模型文件。
 
 ### <a name="create-an-estimator"></a>创建估算器

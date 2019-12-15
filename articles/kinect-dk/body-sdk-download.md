@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 5bc586eb90edc20a63a555971f496a8113253b59
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: de2910408d817b5f0eb21d3af4b0f4473182253b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932220"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928863"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -28,6 +28,7 @@ ms.locfileid: "73932220"
 
 版本       | 下载
 --------------|----------
+0.9.5 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100636) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.5)
 0.9.4 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100415) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.4)
 0.9.3 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100307) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.3)
 0.9.2 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100128) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.2)
@@ -50,9 +51,16 @@ ms.locfileid: "73932220"
 如果该命令成功，则表示 SDK 可供使用。
 
 > [!NOTE]
-> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.4”。 你将要在此路径中查找文章中参考的示例。
+> 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.5”。 你将要在此路径中查找文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v095"></a>v0.9.5
+* [功能] C# 支持。 C# 包装器已打包在 nuget 包中。
+* [功能] 多跟踪器支持 允许创建多个跟踪器。 现在，用户可以创建多个跟踪器，以从不同的 Azure Kinect 设备跟踪人体。
+* [功能] CPU 模式的多线程处理支持。 在 CPU 模式下运行时，将使用所有核心来最大程度地提高速度。
+* [功能] 将 `gpu_device_id` 添加到 `k4abt_tracker_configuration_t` 结构。 允许用户指定非默认的 GPU 设备来运行人体跟踪算法。
+* [Bug 修复/中断性变更] 修正了关节名称的拼写错误。 将关节名称从 `K4ABT_JOINT_SPINE_NAVAL` 更改为 `K4ABT_JOINT_SPINE_NAVEL`。
 
 ### <a name="v094"></a>v0.9.4
 * [功能] 添加手关节支持。 SDK 将为每只手提供三个附加关节的信息：手、手指尖、拇指。

@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133099"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900440"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
 
@@ -24,18 +24,8 @@ ms.locfileid: "74133099"
 
 连接数据源后，从熟练地创建的工作簿的库中进行选择，这些工作簿基于你的数据呈现见解。 可以根据需要轻松地自定义这些工作簿。
 
->[!NOTE] 
-> [Azure Sentinel 定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)基于引入关联的 Azure Monitor Log analytics 工作区中的数据量。 以下某些数据连接器不收取引入费用，但当你使用存储在 Log analytics 工作区中的引入数据生成任意类型的警报时，会产生一些关联服务，具体收费将参照 [Azure Monitor Log analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)。 
-  > - Azure 活动（Azure 操作的活动日志）
-  > - Azure Active Directory 标识保护（适用于具有 AAD P2 许可证的租户）
-  > - Azure 信息保护
-  > - Azure 高级威胁防护（警报）
-  > - Azure 安全中心（警报）
-  > - Microsoft Cloud App Security（仅限警报）
-  > - Microsoft Defender 高级威胁防护（监视代理警报）
-  > - Office 365（Exchange 和 Sharepoint 日志）
->
-> Azure AD/Office365 审核日志不是免费的并作为高级层提供，因此，此数据的引入将按每 GB 的价格收费。 
+>[!IMPORTANT] 
+> 有关使用 Azure Sentinel 时产生的费用的信息，请参阅 [Azure Sentinel 定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
   
 
 ## <a name="global-prerequisites"></a>全局先决条件
@@ -44,7 +34,7 @@ ms.locfileid: "74133099"
 
 - Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 有关 Log Analytics 工作区的详细信息，请参阅[设计 Azure 监视日志部署](../azure-monitor/platform/design-logs-deployment.md)。
 
--  若要启用 Azure Sentinel，需要获取 Azure Sentinel 工作区所在订阅的参与者权限。 
+- 若要启用 Azure Sentinel，需要获取 Azure Sentinel 工作区所在订阅的参与者权限。 
 - 若要使用 Azure Sentinel，需要获取工作区所属资源组的“参与者”或“读取者”权限。
 - 连接特定数据源可能需要其他权限。
 - Azure Sentinel 是付费服务。 有关定价信息，请参阅[关于 Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)。

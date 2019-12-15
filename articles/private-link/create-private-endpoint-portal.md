@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419763"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899869"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -41,10 +41,10 @@ ms.locfileid: "74419763"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *MyVirtualNetwork*。 |
+    | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
-    | Subscription | 选择订阅。|
-    | Resource group | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
     | 位置 | 选择“WestCentralUS”。 |
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
@@ -61,8 +61,8 @@ ms.locfileid: "74419763"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
     | 区域 | 选择“WestCentralUS”。  |
@@ -110,8 +110,8 @@ ms.locfileid: "74419763"
     | 设置 | 值 |
     | ------- | ----- |
     | **数据库详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。  已在上一部分创建此内容。|
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 数据库名称  | 输入 *mydatabase*。 如果此名称已被使用，请创建唯一的名称。 |
     |||
@@ -141,10 +141,10 @@ ms.locfileid: "74419763"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。  已在上一部分创建此内容。|
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
     | **实例详细信息** |  |
-    | Name | 输入 * myPrivateEndpoint*。 如果此名称已被使用，请创建唯一的名称。 |
+    | 名称 | 输入“myPrivateEndpoint”  。 如果此名称已被使用，请创建唯一的名称。 |
     |区域|选择“WestCentralUS”。 |
     |||
 5. 在完成时选择“下一步:  资源”。
@@ -153,7 +153,7 @@ ms.locfileid: "74419763"
     | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
-    | Subscription| 选择订阅。 |
+    | 订阅| 选择订阅。 |
     | 资源类型 | 选择“Microsoft.Sql/servers”  。 |
     | 资源 |选择“myServer” |
     |目标子资源 |选择“sqlServer” |
@@ -177,7 +177,7 @@ ms.locfileid: "74419763"
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
 
-创建 **myVm* 后，按如下所述从 Internet 连接到该 VM： 
+创建 **myVm** 后，按如下所述从 Internet 连接到该 VM： 
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
@@ -185,7 +185,7 @@ ms.locfileid: "74419763"
 
 1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开下载的 .rdp* 文件。
+1. 打开 downloaded.rdp  文件。
 
     1. 出现提示时，选择“连接”  。
 

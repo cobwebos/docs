@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483907"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851020"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -24,7 +24,7 @@ Azure Key Vault 有助于解决以下问题：
 - **机密管理** - Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥和其他机密，并对其访问进行严格控制
 - **密钥管理** - Azure Key Vault 也可用作密钥管理解决方案。 可以通过 Azure Key Vault 轻松创建和控制用于加密数据的加密密钥。 
 - **证书管理** - Azure Key Vault 也是一项服务，可以用来轻松地预配、管理和部署公用和专用安全套接字层/传输层安全性 (SSL/TLS) 证书，这些证书可以与 Azure 以及你的内部连接资源配合使用。 
-- **存储由硬件安全模块提供支持的机密** - 这些机密和密钥可以通过软件或 FIPS 140-2 级别 2 验证 HSM 进行保护
+- **存储由硬件安全模块提供支持的机密** - 这些机密和密钥可以通过软件或 FIPS 140-2 级别 2 验证的 HSM 进行保护
 
 ## <a name="why-use-azure-key-vault"></a>为何使用 Azure Key Vault？
 
@@ -58,9 +58,9 @@ Azure Key Vault 有助于解决以下问题：
 
 ### <a name="simplified-administration-of-application-secrets"></a>简化应用程序机密的管理
 
-存储有价值的数据时，必须执行多项步骤。 安全信息必须受到保护，必须遵循某个生命周期，必须高度可用。 Azure Key Vault 可通过以下操作简化满足这些要求的过程：
+存储有价值的数据时，必须执行多项步骤。 安全信息必须受到保护，必须遵循某个生命周期，并必须高度可用。 Azure Key Vault 可通过以下操作简化满足这些要求的过程：
 
-- 无需内部硬件安全模块知识
+- 无需了解硬件安全模块的内部知识。
 - 收到通知后很快就可以进行纵向扩展，满足组织的使用高峰需求。
 - 在某个区域内复制 Key Vault 的内容，并将其复制到次要区域。 数据复制可确保高可用性，不需管理员操作即可触发故障转移。
 - 通过门户、Azure CLI 和 PowerShell 提供标准的 Azure 管理选项。

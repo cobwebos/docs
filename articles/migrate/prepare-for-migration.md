@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196421"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974778"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -99,7 +99,7 @@ ms.locfileid: "74196421"
 1. 在本地计算机（而不是主机服务器）上，以提升的权限打开命令提示符。
 2. 键入 **diskpart**。
 3. 键入 **SAN**。 如果未保留来宾操作系统的驱动器号，则会返回 **Offline All** 或 **Offline Shared**。
-4. 在 **DISKPART** 提示符下，键入 **SANPOLICY=ONLINEALL**。 此设置可确保磁盘处于联机状态，并且可读写。
+4. 在 **DISKPART** 提示符下，键入 **SAN Policy=OnlineAll**。 此设置可确保磁盘处于联机状态，并且可读写。
 5. 在测试迁移期间，可以验证驱动器号是否已保留。
 
 

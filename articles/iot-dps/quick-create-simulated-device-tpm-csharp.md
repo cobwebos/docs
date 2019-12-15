@@ -1,6 +1,6 @@
 ---
 title: 快速入门 - 使用 C# 将模拟的 TPM 设备预配到 Azure IoT 中心
-description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
+description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C# 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 51249a8ac2f0fd0ed00d63ab60a2ab88b56e4304
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276453"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976989"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -90,7 +90,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 在命令窗口（显示“认可密钥”、“注册 ID”和建议的“设备 ID”）中按 Enter，以登记模拟设备。     请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 
 
-1. 验证设备是否已预配。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上。  
+1. 验证设备是否已预配。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 

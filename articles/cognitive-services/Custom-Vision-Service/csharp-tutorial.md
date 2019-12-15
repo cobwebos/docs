@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: ca21bbd77b269e3034fd69cc4685311e91295f36
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73519098"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978639"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建图像分类项目
 
@@ -41,7 +41,7 @@ ms.locfileid: "73519098"
 
 ## <a name="understand-the-code"></a>了解代码
 
-打开 _Program.cs_ 文件并检查代码。 分别为称作 `CUSTOM_VISION_TRAINING_KEY` 和 `CUSTOM_VISION_PREDICTION_KEY` 的训练和预测键[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 脚本将查找这些变量。
+打开 _Program.cs_ 文件并检查代码。 分别为称作 `CUSTOM_VISION_TRAINING_KEY` 和 `CUSTOM_VISION_PREDICTION_KEY` 的训练和预测键[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 该脚本将查找这些变量。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
@@ -69,7 +69,7 @@ ms.locfileid: "73519098"
 
 ### <a name="train-the-classifier-and-publish"></a>训练分类器和发布
 
-此代码在项目中创建第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
+此代码在项目中创建第一个迭代，然后将该迭代发布到预测终结点。 可以使用迭代的名称发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
@@ -81,7 +81,7 @@ ms.locfileid: "73519098"
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>将图像提交到默认预测终结点
 
-在此脚本中，测试图像加载到 **LoadImagesFromDisk** 方法中，模型的预测输出将显示在控制台中。 publishedModelName 变量的值应该对应于自定义视觉门户的“性能”  选项卡上的“已发布为”值。 
+在此脚本中，测试图像加载到 **LoadImagesFromDisk** 方法中，模型的预测输出将显示在控制台中。 `publishedModelName` 变量的值应该对应于自定义视觉门户的“性能”选项卡上的“已发布为”值  。 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
 

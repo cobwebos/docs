@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384210"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851683"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教程：使用 Azure 数据工厂将数据从 SQL Database Edge 同步到 Azure Blob 存储
 
@@ -177,7 +177,7 @@ ms.locfileid: "74384210"
 
 27. 转到 SinkDataset 的“连接”选项卡，然后完成以下步骤  ：
 
-    1. 在“文件路径”下，输入 asdedatasync/incrementalcopy，其中 adftutorial 是 Blob 容器名称，incrementalcopy 是文件夹名称     。 创建容器（如果不存在），或者使用现有容器的名称。 Azure 数据工厂自动创建输出文件夹 incrementalcopy（如果不存在）  。 对于“文件路径”，也可使用“浏览”按钮导航到 Blob 容器中的某个文件夹。  
+    1. 在“文件路径”下，输入“asdedatasync/incrementalcopy”，其中“asdedatasync”是 Blob 容器名称，“incrementalcopy”是文件夹名称     。 创建容器（如果不存在），或者使用现有容器的名称。 Azure 数据工厂自动创建输出文件夹 incrementalcopy（如果不存在）  。 对于“文件路径”，也可使用“浏览”按钮导航到 Blob 容器中的某个文件夹。  
 
     2. 对于“文件路径”的“文件”部分，选择“添加动态内容 [Alt+P]”，然后在打开的窗口中输入 @CONCAT('Incremental-', pipeline().RunId, '.txt')     。 选择“完成”。  文件名是使用表达式动态生成的。 每次管道运行都有唯一的 ID。 “复制”活动使用运行 ID 生成文件名。
 
@@ -195,7 +195,7 @@ ms.locfileid: "74384210"
 
     2. 若要指定存储过程参数的值，选择“导入参数”，然后为参数输入以下值  ：
 
-    |Name|类型|值|
+    |名称|类型|值|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
     |TableName|String|@{activity('OldWaterMark').output.firstRow.TableName}|

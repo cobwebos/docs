@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Java 和注册组将模拟的 X.509 设备预配到 Azure IoT 中心
-description: 在本教程中，请使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与登记组来创建和预配模拟的 X.509 设备
+description: 本教程使用适用于 IoT 中心设备预配服务 (DPS) 的 Java 设备和服务 SDK 与注册组来创建和预配模拟的 X.509 设备
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 28cb37ad4fcd41818c3dfc18925ec65b04dddd00
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d6cb3af134ff272d79cfc440047a3d90733ee9e8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702461"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976799"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教程：使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 

@@ -1,20 +1,20 @@
 ---
-title: 获取数据标签
+title: 创建数据标记项目
 titleSuffix: Azure Machine Learning
-description: 本文介绍如何创建和运行标记项目，以标记用于机器学习的数据。
+description: 了解如何创建和运行标记项目，以标记用于机器学习的数据。
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689295"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978230"
 ---
-# <a name="get-labels-for-data"></a>获取数据标签
+# <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
 在机器学习项目中标记大量的数据通常让人感到头疼。 包含计算机视觉组件的项目（例如图像分类或对象检测）通常需要为数千个图像提供标签。
  
@@ -24,6 +24,9 @@ ms.locfileid: "74689295"
 
 在机器学习中，可以启动和停止项目，添加和删除人员与团队，以及监视进度。 可以使用 COCO 格式导出已标记的数据，或将其导出为 Azure 机器学习数据集。
 
+> [!Important]
+> 目前仅支持图像分类和对象识别标记项目。 此外，数据图像必须在 Azure Blob 数据存储中提供。 （如果没有现有的数据存储，可以在创建项目过程中上传图像。） 
+
 本文将介绍如何执行以下操作：
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ ms.locfileid: "74689295"
 > * 管理处理项目的团队和人员
 > * 运行和监视项目
 > * 导出标签
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,7 +79,7 @@ ms.locfileid: "74689295"
     * 将“/**”追加到路径中可以包括所选路径的子文件夹中的所有文件。
     * 追加“* */* .*”可以包括当前容器及其子文件夹中的所有数据。
 1. 提供数据集的说明。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>基于上传的数据创建数据集
@@ -88,7 +92,7 @@ ms.locfileid: "74689295"
 1. *可选：* 选择“高级设置”可以自定义数据存储、容器，以及数据的路径。 
 1. 选择“浏览”选择要上传的本地文件。 
 1. 提供数据集的说明。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。  
 
 数据将上传到机器学习工作区的默认 Blob 存储（“workspaceblobstore”）。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 370ccd2508e9dda35ccc5815dce42a7b7089c07e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7acd4b8014aad7b70f1a67c91368477599a97901
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160019"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 集成
 
@@ -47,6 +47,7 @@ ms.locfileid: "73160019"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Snowflake 支持 **SP 和 IDP** 发起的 SSO
+* Snowflake 支持[自动用户预配和取消预配](snowflake-provisioning-tutorial.md)（推荐）
 
 ## <a name="adding-snowflake-from-the-gallery"></a>从库中添加 Snowflake
 

@@ -1,16 +1,13 @@
 ---
-title: 从 .NET 桌面 (WPF) 应用将用户登录并调用 Microsoft Graph API | Microsoft Docs
+title: 从 .NET 桌面 (WPF) 将用户登录并调用 Microsoft Graph API | Azure
 description: 了解如何生成一个 .NET Windows 桌面应用程序，使其与 Azure AD 集成以方便登录，并使用 OAuth 2.0 调用 Azure AD 保护的 API。
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/17/2019
@@ -18,12 +15,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946d376ef8af7d08b7924bd5b126c8b04e555668
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0f1aca48c547fc8c298128b35d9c571512fcbdf8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324416"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965936"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>快速入门：从 .NET 桌面 (WPF) 应用将用户登录并调用 Microsoft Graph API
 

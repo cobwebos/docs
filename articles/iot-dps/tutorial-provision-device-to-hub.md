@@ -1,6 +1,6 @@
 ---
 title: 教程 - 使用 Azure IoT 中心设备预配服务预配设备
-description: 本教程介绍如何使用 Azure IoT 中心设备预配服务将设备预配到单个 IoT 中心
+description: 本教程介绍如何使用 Azure IoT 中心设备预配服务 (DPS) 将设备预配到单个 IoT 中心
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 358fa1fdc767919720ecb26497c818f4945badb6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702466"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975034"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 

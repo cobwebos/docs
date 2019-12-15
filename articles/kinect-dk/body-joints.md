@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
-ms.openlocfilehash: 2285c62526fbb22dc61557c079507cff840f1c53
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931766"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978314"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect 人体跟踪关节
 
@@ -26,6 +26,9 @@ Azure Kinect 人体跟踪可以同时跟踪多个人体。 每个人体包括帧
 ## <a name="joint-coordinates"></a>关节坐标
 
 每个关节的位置和方向构成了其自身的关节坐标系。 所有关节坐标系是相对于深度相机 3D 坐标系的绝对坐标系。
+
+> [!NOTE]
+> 关节坐标位于轴方向。 轴方向广泛用于商业头像、游戏引擎和渲染软件。 使用轴方向可以简化镜像运动，例如将双臂抬起 20 度。
 
 ![关节坐标](./media/concepts/joint-coordinates.png)
 

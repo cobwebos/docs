@@ -1,21 +1,22 @@
 ---
-title: 教程：在 Azure 中模拟访问读取访问冗余存储时发生的故障 | Microsoft Docs
-description: 模拟访问读取访问异地冗余存储时发生的错误
+title: 教程 - 模拟从主要区域读取数据时出现的故障
+titleSuffix: Azure Storage
+description: 如果为存储帐户启用了读取访问权限异地冗余存储 (RA-GRS)，则模拟从主要区域读取数据时出现的错误。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508097"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892441"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>教程：模拟访问读取访问冗余存储时发生的故障
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
 本教程是一个系列中的第二部分。 本教程通过模拟一个故障，介绍[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 的优点。
 
@@ -102,15 +103,15 @@ route delete <destination_ip>
 
 ### <a name="launch-fiddler"></a>启动 fiddler
 
-打开 Fiddler，依次选择“规则”和“自定义规则”。
+打开 Fiddler，依次选择“规则”  和“自定义规则”  。
 
 ![自定义 Fiddler 规则](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
-此时，Fiddler ScriptEditor 会启动，并显示 SampleRules.js 文件。 此文件用于自定义 Fiddler。
+此时，Fiddler ScriptEditor 会启动，并显示 SampleRules.js  文件。 此文件用于自定义 Fiddler。
 
 在 `OnBeforeResponse` 函数中粘贴以下代码示例（请将 `STORAGEACCOUNTNAME` 替换为存储帐户的名称）。 根据示例，可能还需要将 `HelloWorld` 替换为所要下载的测试文件的名称（或类似于 `sampleFile` 的前缀）。 新代码已注释掉，以确保它不会立即运行。
 
-完成后，依次选择“文件”和“保存”，保存所做的更改。 将 ScriptEditor 窗口保持打开，以执行后续步骤。
+完成后，依次选择“文件”  和“保存”  ，保存所做的更改。 将 ScriptEditor 窗口保持打开，以执行后续步骤。
 
 ```javascript
     /*
@@ -136,13 +137,13 @@ route delete <destination_ip>
 
 ### <a name="simulate-failure"></a>模拟故障
 
-当应用程序处于暂停状态时，切换回到 Fiddler，并取消注释在 `OnBeforeResponse` 函数中保存的自定义规则。 请务必选择“文件”、“保存”来保存更改，使规则生效。 此代码查找对 RA-GRS 存储帐户发出的请求，如果路径包含示例文件的名称，则返回响应代码 `503 - Service Unavailable`。
+当应用程序处于暂停状态时，切换回到 Fiddler，并取消注释在 `OnBeforeResponse` 函数中保存的自定义规则。 请务必选择“文件”、“保存”来保存更改，使规则生效。   此代码查找对 RA-GRS 存储帐户发出的请求，如果路径包含示例文件的名称，则返回响应代码 `503 - Service Unavailable`。
 
 在运行示例的窗口中恢复应用程序，或者按下相应的键下载示例文件，并确认该文件来自辅助存储。 然后可以再次暂停示例或等待出现提示。
 
 ### <a name="simulate-primary-endpoint-restoration"></a>模拟主终结点还原
 
-在 Fiddler 中删除或再次注释掉自定义规则。 选择“文件”、“保存”，确保该规则不再生效。
+在 Fiddler 中删除或再次注释掉自定义规则。 选择“文件”、“保存”，确保该规则不再生效。  
 
 在运行示例的窗口中恢复应用程序，或者按下相应的键下载示例文件，并再次确认该文件来自主存储。 然后可以退出示例。
 

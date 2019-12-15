@@ -1,6 +1,6 @@
 ---
 title: 如何查询 Azure Cosmos DB 中的表数据？
-description: 了解如何查询 Azure Cosmos DB 中的表数据
+description: 了解如何使用 OData 筛选器和 LINQ 查询来查询 Azure Cosmos DB 表 API 帐户中存储的数据
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978770"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869912"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 

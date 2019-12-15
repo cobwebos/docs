@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121282"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951541"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -101,7 +101,7 @@ ms.locfileid: "74121282"
     除以下值外，接受其他所有默认值：
 
    * 输入群集的名称。
-   * 在本文中，请创建运行时为 *6.0 的群集  。
+   * 在本文中，请创建运行时为 **6.0** 的群集。
    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
    选择适合你的技术标准和[预算](https://azure.microsoft.com/pricing/details/databricks/)的群集辅助角色和驱动程序节点大小。
@@ -138,14 +138,10 @@ ms.locfileid: "74121282"
 
    ![“添加库”对话框](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "添加库新安装")
 
-2. 在“新建库”  页中，选择“Maven”作为“源”  。 对于“坐标”  ，请单击“搜索包”  以查找要添加的包。 下面是本教程中使用的库的 Maven 坐标：
+2. 在“新建库”  页中，选择“Maven”作为“源”  。 将 Spark 事件中心连接器和 Twitter API 的以下坐标分别输入“坐标”  中。
 
-   * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Spark 事件中心连接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![提供 Maven 坐标](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "提供 Maven 坐标")
-
-     ![提供 Maven 坐标](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "搜索 Maven 坐标")
 
 3. 选择“安装”  。
 

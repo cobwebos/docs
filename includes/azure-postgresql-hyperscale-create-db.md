@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73987376"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973402"
 ---
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -46,7 +46,7 @@ ms.locfileid: "73987376"
    ![已添加客户端 IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 若是如此，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门启用了端口 5432。
+   > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则除非 IT 部门打开端口 5432，否则无法连接到超大规模 (Citus) 群集。
    >
 
 9. 单击“查看 + 创建”，然后单击“创建”，预配服务器   。 预配需要数分钟。
@@ -57,10 +57,10 @@ ms.locfileid: "73987376"
 
 创建 Azure Database for PostgreSQL 服务器时，会创建名为 **citus** 的默认数据库。 若要连接到你的数据库服务器，需要具有连接字符串和管理员密码。
 
-1. 获取连接字符串值。 在服务器组页面中，单击“连接字符串”  菜单项。 （它位于“设置”  下。）查找标为 **C++ (libpq)** 的字符串。 它的形式如下：
+1. 获取连接字符串值。 在服务器组页面中，单击“连接字符串”  菜单项。 （它位于“设置”  下。）查找标记为“psql”  的字符串。 它的形式如下：
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    复制此字符串。 你需要将“{your\_password}”替换为你之前选择的管理员密码。 系统不存储你的纯文本密码，因此无法在连接字符串中为你显示密码。
@@ -69,7 +69,7 @@ ms.locfileid: "73987376"
 
 3. 在提示符下，使用 [psql](https://www.postgresql.org/docs/current/app-psql.html) 实用工具连接到你的 Azure Database for PostgreSQL 服务器。 将连接字符串放在引号中传递，请确保其中包含密码：
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    例如，以下命令连接到服务器组 **mydemoserver** 的协调器节点：

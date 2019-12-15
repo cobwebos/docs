@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 54aea9fac946713ee6c1709e952e3962bb7288e9
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669131"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951762"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -34,7 +34,7 @@ Azure Migrate 有助于将企业从本地迁移到 Azure。 Azure Migrate 提供
 Azure Migrate 服务当前有两个版本：
 
 - **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
-- **以前版本**：如果使用的是以前的 Azure Migrate 版本（仅支持评估本地 VMware VM），则现在应使用当前版本。 你无法再使用以前版本创建 Azure Migrate 项目，建议不要执行新的发现。 若要访问现有项目，请在 Azure 门户中选择“所有服务”，然后搜索 Azure Migrate   。 Azure Migrate 仪表板上提供了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
+- **以前版本**：如果使用的是以前的 Azure Migrate 版本（仅支持评估本地 VMware VM），则现在应使用当前版本。 你无法再使用以前版本创建 Azure Migrate 项目，建议不要执行新的发现。 若要访问现有项目，请在 Azure 门户中搜索并选择“Azure Migrate”  。 “Azure Migrate”  仪表板上显示了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
 
 
 

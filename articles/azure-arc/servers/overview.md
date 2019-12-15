@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122838"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951422"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>什么是用于服务器的 Azure Arc
 
@@ -108,6 +108,40 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 此外，还可以按照 [Azure 门户](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)下的步骤，使用门户注册资源提供程序。
+
+## <a name="machine-changes-after-installing-the-agent"></a>安装代理后的计算机更改
+
+如果已在环境中部署了更改跟踪解决方案，则可以使用以下列表来跟踪、识别和允许 **Azure Connected Machine Agent (AzCMAgent)** 安装包所做的更改。
+
+安装该代理之后，将看到对服务器所做的以下更改。
+
+### <a name="windows"></a>Windows
+
+已安装的服务：
+
+* `Himds` - **Azure Connected Machine Agent** 服务。
+* `Dscservice` 或 `gcd` - **Guest Configuration** 服务。
+
+已添加到服务器的文件：
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` - **Azure Connected Machine Agent** 文件的位置。
+* `%ProgramData%\GuestConfig\*.*` - **Guest Configuration** 日志。
+
+注册表项位置：
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` - **Azure Connected Machine Agent** 的注册表项。
+
+### <a name="linux"></a>Linux
+
+已安装的服务：
+
+* `Himdsd` - **Azure Connected Machine Agent** 服务。
+* `dscd` 或 `gcd` - **Guest Configuration** 服务。
+
+已添加到服务器的文件：
+
+* `/var/opt/azcmagent/**` - **Azure Connected Machine Agent** 文件的位置。
+* `/var/lib/GuestConfig/**` - **Guest Configuration** 日志。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
