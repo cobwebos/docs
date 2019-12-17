@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面 | Microsoft Docs
+title: 使用自定义策略自定义应用的用户界面
+titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure Active Directory B2C 中的自定义策略自定义用户界面。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209447"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949620"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -23,7 +24,7 @@ ms.locfileid: "74209447"
 
 完成本文后，你将拥有一个带有品牌和外观的注册和登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
@@ -37,7 +38,7 @@ ms.locfileid: "74209447"
 
 在标题中创建包含产品的品牌名称的 HTML 内容。
 
-1. 复制以下 HTML 代码段。 它是格式正确的 HTML5， *\<body\>\< 标记内包含名为 \>* div id="api" *\</div\>* 的空元素。 此元素指示要在何处插入 Azure AD B2C 内容。
+1. 复制以下 HTML 代码段。 它是格式正确的 HTML5， *\<body\>* 标记内包含名为 *\<div id="api"\>\</div\>* 的空元素。 此元素指示要在何处插入 Azure AD B2C 内容。
 
    ```html
    <!DOCTYPE html>
@@ -64,7 +65,7 @@ ms.locfileid: "74209447"
 若要在 Blob 存储中托管此 HTML 内容，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在“中心”菜单上，选择“新建” **“存储”** “存储帐户”。 >  > 
+1. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。
 1. 为存储帐户选择一个**订阅**。
 1. 创建一个**资源组**或选择现有的资源组。
 1. 为存储帐户输入唯一的**名称**。
@@ -100,12 +101,12 @@ ms.locfileid: "74209447"
 通过执行以下步骤，将 Blob 存储配置为跨域资源共享：
 
 1. 在菜单中，选择“CORS”。
-1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
-1. 对于“允许的方法”，请同时选择 **和**`GET``OPTIONS`。
+1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
+1. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
 1. 对于“允许的标头”，请输入一个星号 (*)。
 1. 对于“公开的标头”，请输入一个星号 (*)。
 1. 对于“最大期限”，请输入 200。
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
 ## <a name="test-cors"></a>测试 CORS
 
@@ -123,8 +124,8 @@ ms.locfileid: "74209447"
 1. 搜索并复制 ContentDefinitions 元素的全部内容。
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。
-1. 在复制的 XML 中搜索包含  **的 ContentDefinition**`Id="api.signuporsignin"` 元素。
-1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
+1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
+1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
 
     自定义策略应如下所示：
 
@@ -171,7 +172,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | 说明 |
+| HTML5 模板 | 描述 |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -185,14 +186,14 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 1. 按照前面几节中所述，将 `css`、`fonts`和 `images` 文件夹下的所有文件上传到 Blob 存储。
 1. 接下来，在 `wingtip` 或 `contoso` （在第一步中选择）的根目录中打开每个 \*.html 文件，并将 "http://localhost" 的所有实例替换为在步骤2中上载的 css、图像和字体文件的 Url。
 1. 保存 \*.html 文件并将其上传到 Blob 存储。
-1. 现在，如上文所述[修改扩展文件](#modify-the-extensions-file)来修改扩展文件。
+1. 现在, 如上文所述[修改扩展文件](#modify-the-extensions-file)来修改扩展文件。
 1. 如果发现缺少字体、图像或 CSS，请检查扩展策略和 \*.html 文件中的引用。
 
 ### <a name="content-definition-ids"></a>内容定义 ID
 
 在“修改注册或登录自定义策略”部分中，你已配置了 `api.idpselections` 的内容定义。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | 说明 |
+| 内容定义 ID | 描述 |
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
