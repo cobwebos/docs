@@ -38,7 +38,7 @@ ms.locfileid: "74150536"
     ![创建 Azure 存储帐户](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. 输入以下信息：
 
-    |Name|值|
+    |名称|值|
     |----|----|
     |**资源组**|选择“新建”  ，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
     |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”   。 有关详细信息，请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)。|
@@ -152,7 +152,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 8. 选择“保存”。 
 9. 输入以下值：
 
-    |Name|值|
+    |名称|值|
     |----|----|
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**位置**|选择存储帐户的位置。 例如“美国中部”。  |
