@@ -32,7 +32,7 @@ Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月�
 若要了解按区域划分的 Azure 服务可用性，请参阅[各区域的产品可用性](https://azure.microsoft.com/regions/services/)。
 
 ## <a name="create-multiple-service-instances-in-allowed-limits"></a>在允许的限制内创建多个服务实例
-只要使用率总和不超过使用率限制，就可以创建服务的多个免费实例。 例如，通过 Azure 免费帐户获得每月 750 小时的免费 B1S Windows 虚拟机。 这 750 小时可以按所需的任意组合使用。 例如，可以创建 5 个 B1S Windows 虚拟机，每个虚拟机使用 150 小时。
+只要使用率总和不超过使用率限制，就可以创建服务的多个免费实例。 例如，通过 Azure 免费帐户获得每月 750 小时的免费 B1S Windows 虚拟机。 这 750 小时可以按任意组合使用。 例如，可以创建 5 个 B1S Windows 虚拟机，每个虚拟机使用 150 小时。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
