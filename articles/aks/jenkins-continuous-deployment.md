@@ -33,17 +33,17 @@ ms.locfileid: "72263932"
 
 - 基本了解 Kubernetes、Git、CI/CD 和容器映像
 
-- 使用[AKS 群集凭据][aks-credentials]配置的[AKS 群集][aks-quickstart]和 @no__t
+- 已配置 [AKS 群集凭据][aks-quickstart]的 `kubectl`AKS 群集[和 ][aks-credentials]
 
-- [Azure 容器注册表（acr）注册表][acr-quickstart]、ACR 登录服务器名称和配置为[使用 ACR 注册表进行身份验证][acr-authentication]的 AKS 群集
+- [Azure 容器注册表 (ACR) 注册表][acr-quickstart]、ACR 登录服务器名称，以及已配置为[使用 ACR 注册表进行身份验证][acr-authentication]的 AKS 群集
 
 - 已安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-- 开发系统上[安装的 Docker][docker-install]
+- 在开发系统上[安装的 Docker][docker-install]
 
-- 在开发系统上安装的 GitHub 帐户、 [github 个人访问令牌][git-access-token]和 Git 客户端
+- GitHub 帐户、[GitHub 个人访问令牌][git-access-token]，以及在开发系统上安装的 Git 客户端
 
-- 如果您提供自己的 Jenkins 实例而不是此示例脚本化的方法来部署 Jenkins，则 Jenkins 实例将需要[安装和配置 Docker][docker-install] ，并[kubectl][kubectl-install]。
+- 如果你提供自己的 Jenkins 实例而不是以此示例脚本方式来部署 Jenkins，那么你的 Jenkins 实例需要[安装和配置 Docker][docker-install] 和 [kubectl][kubectl-install]。
 
 ## <a name="prepare-your-app"></a>准备应用程序
 
@@ -72,7 +72,7 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-此时，系统拉取所需的基础映像，并生成应用程序容器。 然后，可以使用[docker images][docker-images]命令查看创建的映像。 已下载或创建三个映像。 `azure-vote-front` 映像包含应用程序，并以 `nginx-flask` 映像为依据。 `redis` 映像用于启动 Redis 实例：
+此时，系统拉取所需的基础映像，并生成应用程序容器。 然后，可运行 [docker images][docker-images] 命令，以查看创建的映像。 已下载或创建三个映像。 `azure-vote-front` 映像包含应用程序，并以 `nginx-flask` 映像为依据。 `redis` 映像用于启动 Redis 实例：
 
 ```
 $ docker images
@@ -83,13 +83,13 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-将*azure 投票前*容器映像推送到 acr 之前，请通过[az ACR LIST][az-acr-list]命令获取 acr 登录服务器。 下面的示例为 myResourceGroup 资源组中的注册表获取 ACR 登录服务器地址：
+必须先运行 [az acr list][az-acr-list] 命令来获取 ACR 登录服务器，然后才能将 azure-vote-front 容器映像推送到 ACR。 下面的示例为 myResourceGroup 资源组中的注册表获取 ACR 登录服务器地址：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-使用[docker tag][docker-tag]命令，使用 ACR 登录服务器名称和 `v1` 的版本号来标记映像。 提供在上一步中获取的你自己的 `<acrLoginServer>` 名称：
+运行 [docker tag][docker-tag] 命令，以为映像标记 ACR 登录服务器名称和版本号 `v1`。 提供在上一步中获取的你自己的 `<acrLoginServer>` 名称：
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -103,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-the-sample-application-to-aks"></a>将示例应用程序部署到 AKS
 
-若要将示例应用程序部署到 AKS 群集，可使用 Azure 投票存储库根目录中的 Kubernetes 清单文件。 使用 `vi` 等编辑器打开 azure-vote-all-in-one-redis.yaml 清单文件。 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47 行：
+若要将示例应用程序部署到 AKS 群集，可使用 Azure 投票存储库根目录中的 Kubernetes 清单文件。 使用  *等编辑器打开 azure-vote-all-in-one-redis.yaml*`vi` 清单文件。 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47 行：
 
 ```yaml
 containers:
@@ -111,13 +111,13 @@ containers:
   image: microsoft/azure-vote-front:v1
 ```
 
-接下来，使用[kubectl apply][kubectl-apply]命令将该应用程序部署到 AKS 群集：
+接下来，使用 [kubectl apply][kubectl-apply] 命令将应用程序部署到 AKS 群集：
 
 ```console
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-此时，系统创建 Kubernetes 负载均衡器服务，向 Internet 公开应用程序。 此过程可能需要几分钟。 若要监视负载均衡器部署的进度，请将[kubectl get service][kubectl-get]命令与 `--watch` 参数一起使用。 EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `Control + C` 停止 kubectl 监视进程。
+此时，系统创建 Kubernetes 负载均衡器服务，向 Internet 公开应用程序。 此过程可能需要几分钟。 若要监视负载均衡器部署进度，请结合使用 [kubectl get service][kubectl-get] 命令和 `--watch` 参数。 EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `Control + C` 停止 kubectl 监视进程。
 
 ```console
 $ kubectl get service azure-vote-front --watch
@@ -179,7 +179,7 @@ Jenkins 环境变量用于保留 ACR 登录服务器名称。 此变量在 Jenki
 
 ### <a name="create-a-service-principal-for-jenkins-to-use-acr"></a>创建供 Jenkins 使用 ACR 的服务主体
 
-首先，使用[az ad sp create for rbac][az-ad-sp-create-for-rbac]命令创建服务主体：
+首先，使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体：
 
 ```azurecli
 $ az ad sp create-for-rbac --skip-assignment
@@ -195,7 +195,7 @@ $ az ad sp create-for-rbac --skip-assignment
 
 记下输出中显示的 appId 和 password。 在后续步骤中，需要用到这些值在 Jenkins 中配置凭据资源。
 
-使用[az ACR show][az-acr-show]命令获取 ACR 注册表的资源 ID，并将其存储为变量。 提供资源组名称和 ACR 名称：
+使用 [az acr show][az-acr-show] 命令获取 ACR 注册表的资源 ID，并将它存储为变量。 提供资源组名称和 ACR 名称：
 
 ```azurecli
 ACR_ID=$(az acr show --resource-group myResourceGroup --name <acrLoginServer> --query "id" --output tsv)
@@ -230,13 +230,13 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 在 Jenkins 门户主页的左侧，选择“新建项”：
 
 1. 输入“azure-vote”作为作业名称。 依次选择“自由风格项目”和“确定”
-1. 在“常规”部分下面，选择“GitHub 项目”并输入分叉的存储库的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis*
-1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https:\//github.com/\<your-github-account\>/azure-voting-app-redis.git*
+1. 在“常规”部分下面，选择“GitHub 项目”并输入分叉的存储库的 URL，例如 **https:** /github.com/**your-github-account**/azure-voting-app-redis *\/\<\>*
+1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 **.git** 的 URL，例如 **https:** /github.com/*your-github-account*/azure-voting-app-redis.git *\/\<\>*
 
 1. 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”
 1. 在“生成环境”下，选择“使用机密文本或文件”
 1. 在“绑定”下，依次选择“添加” > “用户名和密码(已分隔)”
-   - 在“用户名变量”中输入 `ACR_ID`，并在“密码变量”中输入 `ACR_PASSWORD`
+   - 在“用户名变量”`ACR_ID`**中输入** ，并在“密码变量”`ACR_PASSWORD`**中输入**
 
      ![Jenkins 绑定](media/aks-jenkins/bindings.png)
 

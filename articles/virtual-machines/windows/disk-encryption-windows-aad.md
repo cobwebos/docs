@@ -16,7 +16,7 @@ ms.locfileid: "72245001"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>适用于 Windows Vm 的 Azure 磁盘 Azure AD 加密（以前的版本）（& a）
 
-**新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Windows VMS 的 Azure 磁盘加密](disk-encryption-windows.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
+**新版本的 Azure 磁盘加密消除了提供 Azure AD 应用程序参数来启用 VM 磁盘加密的要求。在新版本中，你不再需要在启用加密步骤时提供 Azure AD 凭据。在不使用新版本的 Azure AD 应用程序参数的情况下，必须对所有新的 Vm 进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 WINDOWS vm 的 Azure 磁盘加密](disk-encryption-windows.md)。仍支持已通过 Azure AD 应用程序参数加密的 Vm，并应继续通过 AAD 语法进行维护。**
 
 
 可启用多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows IaaS VM 的方案。 在使用磁盘加密之前，需要先完成 [Azure 磁盘加密先决条件](disk-encryption-overview-aad.md)。 
@@ -48,11 +48,11 @@ ms.locfileid: "72245001"
          ```
 
      -  在门户中选择 VM，然后单击“设置”标题下面的“磁盘”验证加密状态。 在“加密”下面的图表中，可以看到是否已启用加密。 
-           @no__t 0Azure 门户-已启用磁盘加密 @ no__t-1
+           ![Azure 门户启用磁盘加密](../media/disk-encryption/disk-encryption-fig2.png)
 
 下表列出了市场方案中使用 Azure AD 客户端 ID 的新 VM 的资源管理器模板参数：
 
-| 参数 | 描述 | 
+| 参数 | 说明 | 
 | --- | --- |
 | adminUserName | 虚拟机的管理员用户名。 |
 | adminPassword | 虚拟机的管理员用户密码。 |
@@ -75,7 +75,7 @@ ms.locfileid: "72245001"
 ### <a name="bkmk_RunningWinVMPSH"></a>使用 Azure PowerShell 在现有或正在运行的 VM 上启用加密 
 使用[AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Cmdlet 在 Azure 中正在运行的 IaaS 虚拟机上启用加密。 若要了解如何使用 PowerShell cmdlet 通过 Azure 磁盘加密启用加密，请参阅博客文章 [Explore Azure Disk Encryption with Azure PowerShell - Part 1](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx)（了解如何使用 Azure PowerShell 启用 Azure 磁盘加密 - 第 1 部分）和 [Explore Azure Disk Encryption with Azure PowerShell - Part 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)（了解如何使用 Azure PowerShell 启用 Azure 磁盘加密 - 第 2 部分）。
 
--  **使用客户端机密加密正在运行的 VM：** 下面的脚本初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。
+-  **使用客户端机密对正在运行的 VM 进行加密：** 下面的脚本初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
       $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -161,7 +161,7 @@ ms.locfileid: "72245001"
 
 下表列出了使用 Azure AD 客户端 ID 的现有或正在运行的 VM 的 资源管理器模板参数：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | AADClientID | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端 ID。 |
 | AADClientSecret | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端机密。 |
@@ -196,7 +196,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
  使用 Powershell 加密 Windows VM 的新磁盘时，应指定新的序列版本。 序列版本必须唯一。 以下脚本生成序列版本的 GUID。 在某些情况下，Azure 磁盘加密扩展可能会自动加密新添加的数据磁盘。 新磁盘处于联机状态后，在 VM 重新启动时，通常会出现自动加密的情况。 这通常是由于之前在 VM 上运行磁盘加密时将卷类型指定为“全部”。 如果在新添加的数据磁盘上进行自动加密，我们建议使用新的序列版本再次运行 AzVmDiskEncryptionExtension cmdlet。 如果新数据磁盘已自动加密，但并不希望进行加密，请先解密所有驱动器，然后使用为卷类型指定 OS 的新序列版本重新进行加密。 
  
 
--  **使用客户端机密加密正在运行的 VM：** 下面的脚本初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。 本示例使用“All”作为 -VolumeType 参数，其中包含 OS 卷和 Data 卷。 如果只想加密 OS 卷，请使用“OS”作为 -VolumeType 参数。 
+-  **使用客户端机密对正在运行的 VM 进行加密：** 下面的脚本初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。 本示例使用“All”作为 -VolumeType 参数，其中包含 OS 卷和 Data 卷。 如果只想加密 OS 卷，请使用“OS”作为 -VolumeType 参数。 
 
      ```azurepowershell
       $sequenceVersion = [Guid]::NewGuid();
