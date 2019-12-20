@@ -89,7 +89,7 @@ VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入
 如果你在 HDInsight 子网中使用网络安全组（NSG）规则，则应该允许入站和出站流量[所需的 ip](../hdinsight-management-ip-addresses.md) 。
 
 若要测试网络连接设置是否正确，将 windows VM 加入到 HDInsight VNET/子网并对域名执行 ping 操作（它应解析为 IP），然后运行 ldp.exe 以访问 Azure AD-DS 域。 然后将此 windows VM 加入到域以确认客户端和服务器之间所有所需的 RPC 调用均已成功。 此外可以使用 nslookup 来确认对存储帐户或任何可能使用的外部数据库（例如，外部 Hive 元存储或 Ranger DB）的网络访问。
-如果 AAD-DS 由 NSG 提供保护，应确保所有[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)均在 AAD-DS 子网网络安全组规则的白名单中。 如果此 windows VM 的域加入成功，则可以继续执行下一步，并创建 ESP 群集。
+如果 AAD-DS 由 NSG 提供保护，应确保所有[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)均在 AAD-DS 子网网络安全组规则的允许列表中。 如果此 windows VM 的域加入成功，则可以继续执行下一步，并创建 ESP 群集。
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>创建具有 ESP 的 HDInsight 群集
 

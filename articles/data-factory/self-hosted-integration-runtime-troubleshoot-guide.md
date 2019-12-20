@@ -79,7 +79,7 @@ ms.locfileid: "73907277"
 
             > [!NOTE] 
             > 代理注意事项：
-            > * 检查代理服务器是否需要允许列表。 如果是这样，请将[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)列入白名单。
+            > * 检查代理服务器是否需要允许列表。 如果是这样，请将[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)列入允许列表。
             > * 在代理服务器上检查 "wu2.frontend.clouddatahub.net/" 的 TLS/SSL 证书是否受信任。
             > * 如果你使用的是代理中的 active directory 身份验证，则将服务帐户更改为可访问代理的用户帐户 "Integration Runtime 服务"。
 

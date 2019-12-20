@@ -26,7 +26,7 @@ ms.locfileid: "73572338"
 ## <a name="design-the-logic-app"></a>设计逻辑应用
 
 > [!IMPORTANT]
-> 以下示例假设已禁用 Azure Analysis Services 防火墙。  如果启用了防火墙，则必须将请求发起方的公共 IP 地址列入 Azure Analysis Services 防火墙的白名单。 若要详细了解每个区域的逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses)。
+> 以下示例假设已禁用 Azure Analysis Services 防火墙。  如果启用了防火墙，则必须将请求发起方的公共 IP 地址列入 Azure Analysis Services 防火墙的允许列表。 若要详细了解每个区域的逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses)。
 
 ### <a name="prerequisites"></a>先决条件
 

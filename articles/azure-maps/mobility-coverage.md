@@ -56,8 +56,8 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 |--------|---------|
 | 澳大利亚      | <p>阿德莱德，Alice 弹簧，Bowen，布里斯班，Bundaberg QLD，Burnie，Cairns，堪培拉，达尔文，Gladstone，霍巴特，Innisfail，Launceston，Mercer-mackay，磁芯，Maryborough-Hervey Bay，墨尔本，新南威尔士，RockHampton，Queensland，南东，悉尼、Toowoomba、Townsville、维多利亚、Warwick、Yeppoon</p> |
 | 中国 | <p> Changchun，Changsha，Chengdu，重庆，Dalian，Datong，Dongguan，杭州，Jiangyin，Jinan，南京，Nantong，Ningbo，Pingdingshan，Qingdao，Shenyang，Suzhou，Tangshan，Tianjin，Weifang，Wuhan，Wuxi，Yantai，Yixing，Zhuhai，，，，，上海，北京，广州、Shenzhen、Zhengzhou</P>| 
-| 中国香港特别行政区 | 香港特别行政区 *|
-| 澳门特别行政区 | 中国澳门特别行政区 *|
+| 香港特别行政区 | 香港特别行政区 *|
+| 澳门特别行政区 | 澳门特别行政区 *|
 | 印度 | Ahmedabad，Bengaluru，新德里，孟买，Mysuru|
 | 印度尼西亚 | 万隆、Banyuwangi、巴淡岛、Denpasar、雅加达、Kediri、Malang、Palembang、Semarang、Surabaya、Surakarta、Yogyakarta |
 | 日本 | Shizuoka 县、东京、Wakkanai、Yamanashi 县 |

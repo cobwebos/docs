@@ -54,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-cli"></a>在 Azure CLI 中预配服务实例
 
-1. 登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 白名单的有效订阅
+1. 登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 允许列表的有效订阅
 
     ```azurecli
         az login
