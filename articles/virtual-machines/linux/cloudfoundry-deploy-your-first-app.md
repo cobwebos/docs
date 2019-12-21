@@ -78,7 +78,7 @@ cf target -o testorg -s dev
 
 使用名为 Hello Spring Cloud 的示例 Cloud Foundry 应用程序，该应用程序基于 [Spring Framework](https://spring.io) 及 [Spring Boot](https://projects.spring.io/spring-boot/) 并以 Java 语言编写。
 
-### <a name="clone-the-hello-spring-cloud-repository"></a>克隆 Hello Spring 云存储库
+### <a name="clone-the-hello-spring-cloud-repository"></a>克隆 Hello Spring Cloud 存储库
 
 GitHub 中提供了 Hello Spring Cloud 示例云应用程序。 将其克隆到你的环境，并将其更改到新的目录中：
 

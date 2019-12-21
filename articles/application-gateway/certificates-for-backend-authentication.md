@@ -106,5 +106,5 @@ ms.locfileid: "74048173"
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建采用 Base-64 编码的 X.509(.CER) 格式身份验证证书/受信任的根证书。 可将此证书添加到应用程序网关，以将后端服务器加入白名单进行端到端的 SSL 加密。 参阅[如何配置端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
+现已创建采用 Base-64 编码的 X.509(.CER) 格式身份验证证书/受信任的根证书。 可将此证书添加到应用程序网关，以将后端服务器加入允许列表进行端到端的 SSL 加密。 参阅[如何配置端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)。
 

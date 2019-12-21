@@ -73,7 +73,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 希腊                              | GR        | EUR          |
 | 危地马拉                           | GT        | USD          |
 | 洪都拉斯                            | HN        | USD          |
-| 中国香港特别行政区                       | HK        | USD          |
+| 香港特别行政区                       | HK        | USD          |
 | 匈牙利                             | HU        | EUR          |
 | 冰岛                             | IS        | EUR          |
 | 印度                               | IN        | INR          |

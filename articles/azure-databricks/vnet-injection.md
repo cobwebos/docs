@@ -59,7 +59,7 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-本部分介绍如何在 Azure 门户中创建 Azure Databricks 工作区，并将其部署到自己的现有虚拟网络。 Azure Databricks 使用您提供的 CIDR 范围、白名单入站和出站子网流量更新具有两个新子网和网络安全组的虚拟网络，并将该工作区部署到更新的虚拟网络。
+本部分介绍如何在 Azure 门户中创建 Azure Databricks 工作区，并将其部署到自己的现有虚拟网络。 Azure Databricks 使用您提供的 CIDR 范围、允许列表入站和出站子网流量更新具有两个新子网和网络安全组的虚拟网络，并将该工作区部署到更新的虚拟网络。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -131,7 +131,7 @@ Azure Databricks 的默认部署是 Azure 上完全托管的服务：所有数�
 |出站|\*|\*|\*|存储（服务标记）|\*|
 |出站|\*|\*|\*|VirtualNetwork|\*|
 
-使用以下 IP 地址的白名单子网流量。 对于 SQL （元存储）和存储（项目和日志存储），应使用 Sql 和存储[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+使用以下 IP 地址的允许列表子网流量。 对于 SQL （元存储）和存储（项目和日志存储），应使用 Sql 和存储[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 |Azure Databricks 区域|服务|公共 IP|
 |-----------------------|-------|---------|

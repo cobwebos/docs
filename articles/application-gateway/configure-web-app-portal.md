@@ -59,7 +59,7 @@ ms.locfileid: "74075161"
 3. 根据用例选择“HTTP”或“HTTPS”作为协议。 
 
    > [!NOTE]
-   > 如果选择“HTTPS”，则无需上传任何身份验证证书或受信任的根证书即可将应用服务后端加入白名单，因为应用服务是受信任的 Azure 服务。
+   > 如果选择“HTTPS”，则无需上传任何身份验证证书或受信任的根证书即可将应用服务后端加入允许列表，因为应用服务是受信任的 Azure 服务。
 
 4. 选中“用于应用服务”对应的框。 请注意，开关 `Create a probe with pick host name from backend address` 和 `Pick host name from backend address` 会自动启用。`Pick host name from backend address` 会在将请求从应用程序网关路由到后端时，使用后端的主机名来替代请求中的主机标头。  
 

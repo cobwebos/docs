@@ -238,7 +238,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 | GR | 希腊|
 | GT | 危地马拉|
 | GY | 圭亚那|
-| HK | 中国香港特别行政区|
+| HK | 香港特别行政区|
 | HN | 洪都拉斯|
 | HR | 克罗地亚|
 | HT | 海地|

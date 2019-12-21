@@ -42,7 +42,7 @@ ms.locfileid: "74075181"
 
 ### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>多租户服务的 SSL 终止和端到端 SSL
 
-多租户服务支持 SSL 终止和端到端 SSL 加密。 要在应用程序网关上实现 SSL 终止，仍然需要将 SSL 证书添加到应用程序网关侦听器。 但是，在实现端到端 SSL 时，受信任的 Azure 服务（例如 Azure 应用服务 Web 应用）不需要在应用程序网关中将后端加入白名单。 因此，无需添加任何身份验证证书。 
+多租户服务支持 SSL 终止和端到端 SSL 加密。 要在应用程序网关上实现 SSL 终止，仍然需要将 SSL 证书添加到应用程序网关侦听器。 但是，在实现端到端 SSL 时，受信任的 Azure 服务（例如 Azure 应用服务 Web 应用）不需要在应用程序网关中将后端加入允许列表。 因此，无需添加任何身份验证证书。 
 
 ![端到端 SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
