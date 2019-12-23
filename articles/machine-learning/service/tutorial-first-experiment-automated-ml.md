@@ -22,13 +22,13 @@ ms.locfileid: "74270723"
 
 本教程介绍如何在不编写任何代码行的情况下，通过 Azure 机器学习工作室创建第一个自动化机器学习试验。 本示例将创建一个分类模型来预测某家金融机构的客户是否会认购定期存款产品。
 
-利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
+利用自动化机器学习，可以自动完成耗时的任务。 自动化机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
 本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
 > * 创建 Azure 机器学习工作区。
-> * 运行自动机器学习试验。
+> * 运行自动化机器学习试验。
 > * 查看试验详细信息。
 > * 部署模型。
 
@@ -88,10 +88,10 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         文件格式|定义文件中存储的数据的布局和类型。| 带分隔符
         分隔符|一个或多个字符，用于指定纯文本或其他数据流中不同的独立区域之间的边界。&nbsp; |逗号
         编码|指定字符架构表中用于读取数据集的位。| UTF-8
-        列标题| 指示如何处理数据集的标头（如果有）。| 所有文件都具有相同的标题
+        列标题| 指示如何处理数据集的标题（如果有）。| 所有文件都具有相同的标题
         跳过行 | 指示要跳过数据集中的多少行（如果有）。| 无
 
-    1. 通过“架构”窗体，可以进一步为此试验配置数据。  对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含在内  。 选择“**下一步**”。
+    1. 通过“架构”窗体，可以进一步为此试验配置数据。  对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含它  。 选择“**下一步**”。
 
         ![“预览”选项卡中的配置](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
@@ -133,12 +133,12 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         ------|---------|---
         主要指标| 对机器学习算法进行度量时依据的评估指标。|AUC_weighted
         自动特征化| 启用预处理。 这包括自动化数据清理、准备和转换，以生成合成特征。| 启用
-        阻止的算法 | 要从训练作业中排除的算法| 无
+        阻止的算法 | Algorithms you want to exclude from the training job.| 无
         退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业时间（小时）：&nbsp;&nbsp;1 <br> 指标分数阈值：&nbsp;&nbsp;无
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
-        并发| 已执行并行迭代的最大次数和每次迭代使用的最大内核数| 最大并发迭代次数：&nbsp;&nbsp;5<br> 最大内核数/迭代：&nbsp;&nbsp;&nbsp;无
+        并发| 执行并行迭代的最大次数和每次迭代使用的最大内核数。| 最大并发迭代次数：&nbsp;&nbsp;5<br> 最大内核数/迭代：&nbsp;&nbsp;&nbsp;无
         
-        选择“确定”  。
+        Select **OK**.
 
 1. 选择“创建”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并显示“运行状态”  。
 
@@ -193,7 +193,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-部署文件比数据文件和试验文件更大，因此它们的存储成本也更大。 仅当你想要最大程度地降低帐户成本，或者想要保留工作区和试验文件时，才删除部署文件。 否则，如果你不打算使用任何文件，请删除整个资源组。  
+部署文件比数据文件和试验文件更大，因此它们的存储成本也更大。 当你想要最大程度地降低帐户成本，或者想要保留工作区和试验文件时，请仅删除部署文件。 否则，如果你不打算使用任何文件，请删除整个资源组。  
 
 ### <a name="delete-the-deployment-instance"></a>删除部署实例
 
@@ -222,5 +222,5 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
 
 >[!NOTE]
-> 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中提供。<br><br>
+> 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中可用。<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, June 2014.

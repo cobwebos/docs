@@ -22,7 +22,7 @@ ms.locfileid: "74223910"
 
 注册 Azure 时，可以采取几种措施来更好地了解自己的支出：
 
-- 在添加服务之前通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)、Azure 价目表获取估算的成本，也可在添加服务时通过 Azure 门户这样做。
+- 在添加服务之前通过[定价计算器](https://azure.microsoft.com/pricing/calculator/)、Azure 价目表获取估计成本，也可在添加服务时通过 Azure 门户这样做。
 - 通过[预算](../cost-management/tutorial-acm-create-budgets.md)、[警报](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)和[成本分析](../cost-management/quick-acm-cost-analysis.md)监视成本。
 - 通过与[详细的使用情况文件](billing-download-azure-invoice-daily-usage-date.md)进行比较，查看发票上的费用。
 - 使用[计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 将计费和成本数据与你自己的报表系统集成。
@@ -40,11 +40,11 @@ ms.locfileid: "74223910"
 
 ### <a name="estimate-cost-online-using-the-pricing-calculator"></a>使用定价计算器在线估计成本
 
-查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)，获取要添加的服务的每月估算成本。 可以更改货币，以本地货币进行估算。
+查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)，获取要添加的服务的每月估计成本。 可以更改货币，以本地货币进行估算。
 
 ![定价计算器菜单的屏幕截图](./media/billing-getting-started/pricing-calc.png)
 
-可以查看任何第一方 Azure 服务的估算成本。 例如，在下面的屏幕截图中，如果 A1 Windows 虚拟机 (VM) 一直在运行，则其成本预计为 66.96 美元/月（按计算小时数算）：
+可以查看任何第一方 Azure 服务的估计成本。 例如，在下面的屏幕截图中，如果 A1 Windows 虚拟机 (VM) 一直在运行，则其成本预计为 66.96 美元/月（按计算小时数算）：
 
 ![定价计算器的屏幕截图，其中显示了 A1 Windows VM 的每月预算成本](./media/billing-getting-started/pricing-calcvm.png)
 
@@ -54,9 +54,9 @@ ms.locfileid: "74223910"
 
 如果通过企业协议 (EA) 或 Microsoft 客户协议 (MCA) 访问 Azure，则可查看和下载 Azure 帐户的价目表。 价目表是一个 Excel 文件，其中包含所有 Azure 服务的价格。 有关详细信息，请参阅[查看和下载 Azure 定价](billing-ea-pricing.md)。
 
-### <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估算成本
+### <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估计成本
 
-可以在通过 Azure 门户添加服务时查看每月估算成本。 例如，选择 Windows VM 的大小时，可看到计算小时数的每月估计成本：
+可以在通过 Azure 门户添加服务时查看每月估计成本。 例如，选择 Windows VM 的大小时，可看到计算小时数的每月估计成本：
 
 ![示例：A1 Windows VM 及其每月估算成本](./media/billing-getting-started/vm-size-cost.png)
 
@@ -76,13 +76,13 @@ ms.locfileid: "74223910"
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
-2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](../cost-management/understand-work-scopes.md#scopes)
+2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 For more information about scopes, see [Understand and work with scopes](../cost-management/understand-work-scopes.md#scopes)
 
     ![Azure 门户中成本分析视图的屏幕截图](./media/billing-getting-started/cost-analysis.png)
 
 4. 可按各种属性（例如标记、资源类型和时间跨度）进行筛选。 单击“添加筛选器”，添加某个属性的筛选器，然后选择要筛选的值。  选择“导出”  ，将视图导出为逗号分隔值 (.csv) 文件。
 
-5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 例如：在下面的屏幕截图中，单击虚拟机会显示运行 VM 的每日成本。
+5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 For example:In the screenshot below, clicking on virtual machines displays the daily cost of running your VMs.
 
     ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/costhistory.png)
 
@@ -145,14 +145,14 @@ ms.locfileid: "74223910"
 - 如果未看到成本，可能是以下几种原因之一所致：
     - 你在订阅级别没有权限。 若要查看企业成本视图，必须在订阅级别是账单读者、读者、参与者或所有者。
     - 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  请联系你的注册管理员以获取费用访问权限。
-    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。   联系你的注册管理员以获取访问权限。
+    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。   请联系你的注册管理员以获取访问权限。
     - 你是从某个渠道合作伙伴购买的 Azure，而该合作伙伴未发布定价信息。  
 - 如果在企业门户中更新与成本、访问相关的设置，则更改过几分钟后才会显示在 Azure 门户中。
 - 支出限制和发票指南不适用于 EA 订阅。
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 
-若要查看成本，必须具有对成本或账单信息的帐户或订阅级别访问权限。 此访问权限因计费帐户的类型而异。 若要详细了解计费帐户并检查计费帐户的类型，请参阅[在 Azure 门户中查看计费帐户](billing-view-all-accounts.md)。
+若要查看成本，必须对成本或账单信息的帐户或订阅级别具有访问权限。 此访问权限因计费帐户的类型而异。 若要详细了解计费帐户并检查计费帐户的类型，请参阅[在 Azure 门户中查看计费帐户](billing-view-all-accounts.md)。
 
 如果通过 Microsoft Online Service 计划 (MOSP) 计费帐户访问 Azure，请参阅[管理对 Azure 账单信息的访问权限](billing-manage-access.md)。
 
@@ -162,14 +162,14 @@ ms.locfileid: "74223910"
 
 ### <a name="request-a-service-level-agreement-credit-for-a-service-incident"></a>请求服务事件的服务级别协议额度
 
-服务级别协议 (SLA) 描述 Microsoft 关于运行时间和连接性方面的承诺。 当 Azure 服务遇到影响运行时间或连接的问题（通常称为“服务中断”）时，会报告一个服务事件。  如果我们未根据 SLA 中所述达到并保持每个服务的服务级别，则你有权请求一定的额度并扣除每月服务费的一部分。
+服务级别协议 (SLA) 描述 Microsoft 关于运行时间和连接性方面的承诺。 当 Azure 服务遇到影响运行时间或连接的问题（通常称为“服务中断”）时，会报告一个服务事件。  如果我们未达到并保持 SLA 中所述的每个服务的服务级别，则你有权请求扣除每月服务费的一部分。
 
 若要请求额度：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 如果你有多个帐户，请确保使用受 Azure 停机影响的帐户。
 2. 创建新的支持请求。
 3. 在“问题类型”下，选择“计费”。  
-4. 在“请求类型”下，选择“退款请求”。  
+4. 在“问题类型”下，选择“退款请求”。  
 5. 添加详细信息，指出你要请求 SLA 额度，并指定日期/时间/时区以及受影响的服务（VM、网站等）
 6. 确认你的联系详细信息，然后选择“创建”以提交请求。 
 
