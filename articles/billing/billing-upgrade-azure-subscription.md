@@ -32,7 +32,7 @@ ms.locfileid: "74225680"
 
 升级 Azure 免费帐户时，将保留你在注册后 30 天内剩余额度。 例如：如果在 11 月 1 日注册并在 11 月 5 日升级，则所有未使用的额度将在 11 月 30 日之前可用。 升级后的 12 个月内，你还可以访问免费服务。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
+1. Sign in to the [Azure portal](https://portal.azure.com)
 1. 搜索“订阅”。 
 
     ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
@@ -42,7 +42,7 @@ ms.locfileid: "74225680"
 
     ![显示“升级”按钮的屏幕截图](./media/billing-upgrade-azure-subscription/free-upgrade-button.png)
 
-1. 如果帐户没有付款方法，系统将提示你添加一个。
+1. 如果帐户没有付款方式，系统将提示你添加一个。
 
 1. 你可能需要输入电话号码来验证身份。
 
@@ -62,7 +62,7 @@ ms.locfileid: "74225680"
 
 如果符合条件，请使用以下步骤升级到 Azure 免费帐户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
+1. Sign in to the [Azure portal](https://portal.azure.com)
 1. 搜索“订阅”。 
 
     ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
