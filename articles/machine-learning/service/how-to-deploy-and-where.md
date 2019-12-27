@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: bb86d551d83668a3558cf63827a64a481cf87e02
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276797"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926967"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "74276797"
 
 有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -417,7 +417,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLRequest` 类在 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
+> `AMLRequest` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
 >
 > 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装组件：
 >
@@ -427,7 +427,7 @@ def run(request):
 
 <a id="cors"></a>
 
-#### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
+#### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享（CORS）
 
 跨域资源共享是一种允许网页上的资源从另一个域请求的方式。 CORS 通过客户端请求发送的 HTTP 标头进行工作，并随服务响应一起返回。 有关 CORS 和有效标头的详细信息，请参阅维基百科中的[跨域资源共享](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
@@ -463,7 +463,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLResponse` 类在 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
+> `AMLResponse` 类位于 `azureml.contrib` 命名空间中。 此命名空间中的实体会在我们改进服务时经常更改。 此命名空间中的任何内容都应被视为 Microsoft 不完全支持的预览。
 >
 > 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装组件：
 >
@@ -530,7 +530,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
-| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -852,7 +852,7 @@ Azure 机器学习通过 Azure 机器学习创建和管理计算目标。 它们
 ## <a name="download-a-model"></a>下载模型
 如果要下载模型以便在自己的执行环境中使用它，则可以使用以下 SDK/CLI 命令执行此操作：
 
-SDK
+SDK：
 ```python
 model_path = Model(ws,'mymodel').download()
 ```
@@ -867,6 +867,9 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 无代码模型部署目前处于预览阶段，支持以下机器学习框架：
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
+需要以**SavedModel 格式**注册 Tensorflow 模型，才能使用无代码模型部署。
+
+请参阅[此链接](https://www.tensorflow.org/guide/saved_model)，了解有关如何创建 SavedModel 的信息。
 
 ```python
 from azureml.core import Model
@@ -902,7 +905,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-### <a name="scikit-learn-models"></a>Scikit-learn-了解模型
+### <a name="scikit-learn-models"></a>Scikit-learn 模型
 
 并非所有内置 scikit-learn 模型类型都支持代码模型部署。
 
