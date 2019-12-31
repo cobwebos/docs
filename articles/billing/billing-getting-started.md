@@ -76,13 +76,13 @@ ms.locfileid: "74223910"
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)。
 
-2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 For more information about scopes, see [Understand and work with scopes](../cost-management/understand-work-scopes.md#scopes)
+2. 单击屏幕左侧的“成本分析”，  按各种透视图（例如服务、位置和订阅）查看当前的成本细分。 添加服务或进行购买后，请等待 24 小时，以便系统显示数据。 默认情况下，成本分析显示你所在范围的成本。 例如，在下面的屏幕截图中，显示的是 Contoso 计费帐户的成本。 使用“范围”框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](../cost-management/understand-work-scopes.md#scopes)
 
     ![Azure 门户中成本分析视图的屏幕截图](./media/billing-getting-started/cost-analysis.png)
 
 4. 可按各种属性（例如标记、资源类型和时间跨度）进行筛选。 单击“添加筛选器”，添加某个属性的筛选器，然后选择要筛选的值。  选择“导出”  ，将视图导出为逗号分隔值 (.csv) 文件。
 
-5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 For example:In the screenshot below, clicking on virtual machines displays the daily cost of running your VMs.
+5. 此外，还可以单击图表的标签，查看该标签的每日支出历史记录。 例如：在下面的屏幕截图中，单击虚拟机将显示运行 VM 的每日成本。
 
     ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/costhistory.png)
 
