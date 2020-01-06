@@ -25,7 +25,7 @@
   items:
     - name: FQDN 标记
       href: fqdn-tags.md
-    - name: 基础设施 FQDN
+    - name: 基础结构 FQDN
       href: infrastructure-fqdns.md
     - name: 日志和指标
       href: logs-and-metrics.md
@@ -35,7 +35,7 @@
       href: rule-processing.md
     - name: 服务标记
       href: service-tags.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
@@ -53,7 +53,7 @@
       href: integrate-lb.md
     - name: 带有 SQL FQDN 的应用程序规则
       href: sql-fqdn-filtering.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
@@ -70,13 +70,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure 资源管理器
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
     - name: 常见问题解答
       href: firewall-faq.md
     - name: 创作模板
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

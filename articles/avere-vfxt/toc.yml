@@ -10,7 +10,7 @@
       href: avere-vfxt-deploy-plan.md
     - name: Avere vFXT 部署概述
       href: avere-vfxt-deploy-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 准备创建 Avere vFXT
       href: avere-vfxt-prereqs.md

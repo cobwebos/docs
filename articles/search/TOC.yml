@@ -13,9 +13,9 @@
       href: search-create-service-portal.md
     - name: 门户
       items:
-        - name: 创建搜索索引
+        - name: 创建索引
           href: search-get-started-portal.md
-        - name: 创建应用（预览版）
+        - name: 创建应用
           href: search-create-app-portal.md
         - name: 创建认知技能组
           href: cognitive-search-quickstart-blob.md
@@ -95,7 +95,7 @@
       href: knowledge-store-projection-overview.md
     - name: 增量索引
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 规划
       items:
@@ -109,7 +109,7 @@
           href: search-performance-optimization.md
         - name: 多租户体系结构
           href: search-modeling-multitenant-saas-applications.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全概述
           href: search-security-overview.md
@@ -313,7 +313,7 @@
           href: search-indexer-troubleshooting.md
         - name: 索引器错误和警告
           href: cognitive-search-common-errors-warnings.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'

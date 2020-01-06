@@ -32,7 +32,7 @@
       href: pim-azure-resource.md
     - name: 用于 Azure 管理的条件访问
       href: conditional-access-azure-management.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 列出角色定义
       items:
@@ -94,12 +94,12 @@
       href: classic-administrators.md
     - name: 故障排除
       href: troubleshooting.md
-- name: 引用
+- name: 参考
   items:
     - name: 资源提供程序操作
       href: resource-provider-operations.md
     - name: RBAC 限制
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

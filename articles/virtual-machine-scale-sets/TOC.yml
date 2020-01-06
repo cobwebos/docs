@@ -64,7 +64,7 @@
 - name: 概念
   items:
     - name: Azure 资源管理器
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: 区域
       href: ../virtual-machines/windows/regions.md
@@ -152,7 +152,7 @@
     - name: 基础结构自动化
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全和策略
           href: ../virtual-machines/windows/security-policy.md
@@ -286,7 +286,7 @@
         - name: 自动缩放规模集
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/azure/overview

@@ -130,7 +130,7 @@
               href: parallel-load-sql-partitioned-tables.md
             - name: 从本地 SQL 移动
               href: move-sql-azure-adf.md
-        - name: 浏览和可视化数据
+        - name: 浏览并可视化数据
           items:
             - name: 准备数据
               href: prepare-data.md
@@ -144,7 +144,7 @@
                   href: explore-data-sql-server.md
                 - name: 探索 Hive 表
                   href: explore-data-hive-tables.md
-            - name: 样本数据
+            - name: 示例数据
               items:
                 - name: 概述
                   href: sample-data.md
@@ -193,7 +193,7 @@
 - name: 相关内容
   items:
     - name: Azure 机器学习
-      href: ../service/
+      href: ../
     - name: Azure AI 库
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics

@@ -46,7 +46,7 @@
       href: forced-tunnel-support.md
     - name: 防火墙集成
       href: firewall-integration.md
-- name: 引用
+- name: 参考
   items:
     - name: 管理地址
       href: management-addresses.md
@@ -83,7 +83,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: 配额信息
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: 最佳做法

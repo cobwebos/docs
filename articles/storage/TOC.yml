@@ -16,7 +16,7 @@
 - name: 队列
   href: ./queues/index.yml?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: 表
-  href: ./tables/table-storage-overview.md
+  href: ./tables/index.yml?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: 磁盘
   items:
     - name: Windows

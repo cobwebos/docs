@@ -160,7 +160,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss'
         - name: 缩放 Windows VM
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss'
-- name: 引用
+- name: 参考
   items:
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/'
@@ -189,7 +189,7 @@
 - name: 资源
   items:
     - name: Azure 限制和配额
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure 区域
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure 路线图

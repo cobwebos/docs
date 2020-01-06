@@ -4,8 +4,6 @@
   items:
     - name: Azure IoT Central 是什么
       href: overview-iot-central.md
-    - name: IoT 解决方案选项
-      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - name: UI 教程
       href: overview-iot-central-tour.md
     - name: 建立连接
@@ -53,7 +51,7 @@
       href: concepts-architecture.md
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 建立连接
       items:

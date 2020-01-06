@@ -4,7 +4,7 @@
   items:
     - name: 关于应用程序网关
       href: overview.md
-    - name: 新增功能
+    - name: 新增功能？
       href: whats-new.md
 - name: 快速入门
   expanded: true
@@ -83,7 +83,7 @@
       href: application-gateway-websocket.md
     - name: 常见问题解答
       href: application-gateway-faq.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 托管单一站点
       items:
@@ -227,7 +227,7 @@
           href: application-gateway-backend-health-troubleshooting.md
     - name: 从 v1 迁移到 v2
       href: migrate-v1-v2.md
-- name: 引用
+- name: 参考
   items:
     - name: 用于 AKS 批注的入口
       href: ingress-controller-annotations.md
@@ -247,7 +247,7 @@
       href: /rest/api/applicationgateway
     - name: Azure 资源管理器
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
     - name: 资源管理器模板
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
@@ -255,7 +255,7 @@
   items:
     - name: 创作模板
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板

@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
+    - name: 强制执行 TLS 1.2
+      href: tls-1.2-everywhere.md
     - name: 消息扩充概述
       href: iot-hub-message-enrichments-overview.md
     - name: 设备管理概述
@@ -164,13 +166,13 @@
           href: iot-hub-amqp-support.md
         - name: 术语表
           href: iot-hub-devguide-glossary.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 建议
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 安全基础知识
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
-        - name: 安全最佳实践
+        - name: 安全最佳做法
           href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
         - name: 安全体系结构
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
@@ -182,7 +184,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 证书安全性概念
           href: iot-hub-x509ca-concept.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -370,7 +372,7 @@
       items:
         - name: 设备断开连接
           href: iot-hub-troubleshoot-connectivity.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/iot

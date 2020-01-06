@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74842300"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443464"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -53,7 +53,7 @@ conceptualContent:
       text: 本地应用的应用程序代理
     footerLink:
       url: ./manage-apps/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: Authentication
     links:
     - url: ./authentication/concept-mfa-howitworks.md
@@ -67,7 +67,7 @@ conceptualContent:
       text: Azure AD 密码保护
     footerLink:
       url: ./authentication/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 企业对企业 (B2B)
     links:
     - url: ./b2b/what-is-b2b.md
@@ -81,7 +81,7 @@ conceptualContent:
       text: B2B 和 Office 365 共享
     footerLink:
       url: ./b2b/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 企业对客户 (B2C)
     links:
     - url: ../active-directory-b2c/active-directory-b2c-overview.md
@@ -95,7 +95,7 @@ conceptualContent:
       text: Azure AD B2C 中的自定义策略
     footerLink:
       url: ../active-directory-b2c/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 云预配
     links:
     - url: ./cloud-provisioning/what-is-cloud-provisioning.md
@@ -109,7 +109,7 @@ conceptualContent:
       text: 安装 Azure AD Connect 云预配代理
     footerLink:
       url: ./cloud-provisioning/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 条件性访问
     links:
     - url: ./conditional-access/overview.md
@@ -123,7 +123,7 @@ conceptualContent:
       text: 基于位置的条件
     footerLink:
       url: ./conditional-access/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 开发人员
     links:
     - url: ./develop/about-microsoft-identity-platform.md
@@ -137,7 +137,7 @@ conceptualContent:
       text: 将应用注册到 Microsoft 标识平台
     footerLink:
       url: ./develop/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 设备管理
     links:
     - url: ./devices/overview.md
@@ -151,7 +151,7 @@ conceptualContent:
       text: 计划 Azure AD 加入
     footerLink:
       url: ./devices/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 域服务
     links:
     - url: ../active-directory-domain-services/active-directory-ds-overview.md
@@ -165,7 +165,7 @@ conceptualContent:
       text: 管理组策略
     footerLink:
       url: ../active-directory-domain-services/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 企业用户
     links:
     - url: ./users-groups-roles/groups-create-rule.md
@@ -179,7 +179,7 @@ conceptualContent:
       text: Azure AD 服务限制和局限性
     footerLink:
       url: ./users-groups-roles/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 混合标识
     links:
     - url: ./hybrid/whatis-hybrid-identity.md
@@ -193,7 +193,7 @@ conceptualContent:
       text: Azure AD Connect 自定义安装
     footerLink:
       url: ./hybrid/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 标识治理
     links:
     - url: ./governance/create-access-review.md
@@ -207,21 +207,21 @@ conceptualContent:
       text: 需要使用条款
     footerLink:
       url: ./governance/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 标识保护
     links:
-    - url: ./identity-protection/overview.md
+    - url: ./identity-protection/overview-identity-protection.md
       itemType: overview
       text: 什么是“标识保护”？
-    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
-      itemType: quickstart
-      text: 检测到会话风险时阻止访问
-    - url: ./identity-protection/howto-unblock-user.md
+    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+      itemType: how-to-guide
+      text: 配置风险策略
+    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
       itemType: how-to-guide
       text: 如何取消阻止用户
     footerLink:
       url: ./identity-protection/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: Azure 资源的托管标识
     links:
     - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
@@ -235,7 +235,7 @@ conceptualContent:
       text: 支持托管标识的服务
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: Privileged Identity Management (PIM)
     links:
     - url: ./privileged-identity-management/pim-getting-started.md
@@ -249,7 +249,7 @@ conceptualContent:
       text: 分配目录角色
     footerLink:
       url: ./privileged-identity-management/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 报表和监视
     links:
     - url: ./reports-monitoring/concept-audit-logs.md
@@ -263,7 +263,7 @@ conceptualContent:
       text: 登录错误代码参考
     footerLink:
       url: ./reports-monitoring/index.yml
-      text: 另请参阅
+      text: 查看详细信息
 additionalContent:
   sections:
   - items:

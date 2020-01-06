@@ -49,6 +49,8 @@
           href: concept-mfa-authprovider.md
         - name: 安全指南
           href: multi-factor-authentication-security-best-practices.md
+        - name: 数据驻留
+          href: concept-mfa-data-residency.md
         - name: 用于 Office 365 的 MFA
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: MFA 常见问题解答
@@ -61,7 +63,7 @@
           href: concept-password-ban-bad-on-premises.md
     - name: 可复原的访问控制
       href: concept-resilient-controls.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 自助式密码重置
       items:
@@ -150,7 +152,7 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: iOS 设备上的 CBA
               href: active-directory-certificate-based-authentication-ios.md
-    - name: 报告
+    - name: 报表
       items:
         - name: 使用情况和见解
           href: howto-authentication-methods-usage-insights.md
@@ -210,7 +212,7 @@
           href: multi-factor-authentication-faq.md
         - name: NPS 扩展
           href: howto-mfa-nps-extension-errors.md
-- name: 引用
+- name: 参考
   items:
     - name: MFA 用户指南
       href: ./end-user/current/multi-factor-authentication-end-user.md

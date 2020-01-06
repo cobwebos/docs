@@ -48,6 +48,7 @@ sections:
               - href: /azure/iot-hub/quickstart-send-telemetry-ios
           - title: 控制设备
             values:
+              - href: null
               - href: /azure/iot-hub/quickstart-control-device-node
               - href: /azure/iot-hub/quickstart-control-device-dotnet
               - href: /azure/iot-hub/quickstart-control-device-java
@@ -55,6 +56,7 @@ sections:
               - href: /azure/iot-hub/quickstart-control-device-android
           - title: 使用设备流进行通信（预览版）
             values:
+              - href: null
               - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
               - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
               - href: null
@@ -64,6 +66,7 @@ sections:
               - href: null
           - title: 使用设备流发送 SSH/RDP 流量（预览版）
             values:
+              - href: null
               - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
               - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
               - href: null
@@ -80,7 +83,7 @@ sections:
           - html: <a href="/azure/iot-hub/tutorial-device-twins">从后端服务配置设备</a>
           - html: <a href="/azure/iot-hub/tutorial-firmware-update">实现设备固件更新过程</a>
           - html: <a href="/azure/iot-hub/tutorial-connectivity">使用模拟设备测试 IoT 中心的连接</a>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

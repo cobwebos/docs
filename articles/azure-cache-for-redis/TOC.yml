@@ -1,5 +1,5 @@
 - name: “用于 Redis 的 Azure 缓存”文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 关于用于 Redis 的 Azure 缓存
@@ -39,7 +39,7 @@
       href: cache-best-practices.md
     - name: 针对缓存的体系结构最佳做法
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 计划
       items:
@@ -113,7 +113,7 @@
           href: cache-how-to-scale.md
         - name: 使用 Redis 群集进行缩减/扩展
           href: cache-how-to-premium-clustering.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'

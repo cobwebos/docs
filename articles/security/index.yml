@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: c3f75decc72cbc314309b8cfb0bd81d9c0be2774
-  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+  ms.openlocfilehash: a25189e75bcf313a5e2e8eee410a581d50f70584
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73686325"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563745"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -46,7 +46,7 @@ conceptualContent:
       text: Azure 服务的安全控制
     footerLink:
       url: ./fundamentals/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 开发人员
     links:
     - url: ./develop/secure-dev-overview.md
@@ -60,20 +60,23 @@ conceptualContent:
       text: Microsoft 威胁建模工具
     footerLink:
       url: ./develop/index.yml
-      text: 另请参阅
+      text: 查看详细信息
   - title: 基准和建议
     links:
-    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+    - url: ./benchmarks/introduction.md
       itemType: download
       text: Azure 云安全性基准
     - url: ../security-center/security-center-using-recommendations.md
       itemType: overview
       text: Azure 安全中心建议
+    footerLink:
+      url: ./benchmarks/index.yml
+      text: 查看详细信息
   - title: 机密和密钥
     links:
     - url: ../key-vault/key-vault-overview.md
       itemType: overview
-      text: 什么是 Azure 密钥保管库？
+      text: 什么是 Azure Key Vault？
     - url: ../key-vault/quick-create-cli.md
       itemType: quickstart
       text: 设置和检索机密
@@ -82,7 +85,7 @@ conceptualContent:
       text: 什么是 Azure 专用 HSM？
     footerLink:
       url: /azure/key-vault/
-      text: 另请参阅
+      text: 查看详细信息
   - title: 数据保护
     links:
     - url: ./fundamentals/encryption-atrest.md
@@ -96,7 +99,7 @@ conceptualContent:
       text: 存储安全
     footerLink:
       url: ./fundamentals/encryption-overview.md
-      text: 另请参阅
+      text: 查看详细信息
   - title: 身份管理
     links:
     - url: ./fundamentals/choose-ad-authn.md
@@ -107,10 +110,10 @@ conceptualContent:
       text: 保护标识基础结构
     - url: ./fundamentals/identity-management-best-practices.md
       itemType: concept
-      text: 安全最佳实践
+      text: 安全最佳做法
     footerLink:
       url: ./fundamentals/identity-management-overview.md
-      text: 另请参阅
+      text: 查看详细信息
   - title: 安全监视
     links:
     - url: ../security-center/security-center-get-started.md
@@ -124,7 +127,7 @@ conceptualContent:
       text: 使用安全策略
     footerLink:
       url: /azure/security-center/
-      text: 另请参阅
+      text: 查看详细信息
   - title: IoT 安全监视
     links:
     - url: ../asc-for-iot/overview.md
@@ -138,7 +141,7 @@ conceptualContent:
       text: 适用于 IoT 的 Azure 安全中心入门
     footerLink:
       url: /azure/asc-for-iot/
-      text: 另请参阅
+      text: 查看详细信息
   - title: 安全分析
     links:
     - url: ../sentinel/overview.md
@@ -152,7 +155,7 @@ conceptualContent:
       text: Azure Sentinel 预览版入门
     footerLink:
       url: /azure/sentinel/
-      text: 另请参阅
+      text: 查看详细信息
   - title: 威胁防护
     links:
     - url: ../security-center/security-center-alerts-overview.md
@@ -166,7 +169,7 @@ conceptualContent:
       text: Azure SQL 数据库的高级威胁防护
     footerLink:
       url: ./fundamentals/threat-detection.md
-      text: 另请参阅
+      text: 查看详细信息
   - title: 日志记录和审核
     links:
     - url: ./fundamentals/log-audit.md
@@ -185,7 +188,7 @@ conceptualContent:
       text: 安全概述
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
-      text: 安全最佳实践
+      text: 安全最佳做法
     - url: ./fundamentals/ddos-best-practices.md
       itemType: concept
       text: DDoS 保护
@@ -202,7 +205,7 @@ conceptualContent:
       text: 客户数据保护
     footerLink:
       url: ./fundamentals/infrastructure.md
-      text: 另请参阅
+      text: 查看详细信息
   - title: 虚拟机安全
     links:
     - url: ./fundamentals/virtual-machines-overview.md
@@ -221,7 +224,7 @@ conceptualContent:
       text: 安全概述
     - url: ./fundamentals/database-best-practices.md
       itemType: concept
-      text: 安全最佳实践
+      text: 安全最佳做法
     - url: ./fundamentals/database-security-checklist.md
       itemType: concept
       text: 安全清单
@@ -235,4 +238,4 @@ conceptualContent:
       text: Azure 蓝图服务
     footerLink:
       url: /azure/governance/
-      text: 另请参阅
+      text: 查看详细信息

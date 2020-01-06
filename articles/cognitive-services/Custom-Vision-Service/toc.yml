@@ -48,7 +48,7 @@
       href: iot-visual-alerts-tutorial.md
     - name: 识别移动设备上的徽标
       href: logo-detector-mobile.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 测试模型
       href: test-your-model.md
@@ -68,11 +68,9 @@
           href: export-model-python.md
     - name: 导出或删除帐户数据
       href: ./export-delete-data.md
-    - name: 将有限试用版项目移到 Azure
-      href: ./move-your-project-to-azure.md
     - name: 经应用更新到 3.0 API
       href: ./update-application-to-3.0-sdk.md
-- name: 引用
+- name: 参考
   items:
     - name: 自定义视觉训练 API
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'

@@ -19,13 +19,15 @@
       href: terminology.md
     - name: 角色和要求
       href: concepts-roles-permissions.md
+    - name: 灾难恢复
+      href: disaster-recovery.md
 - name: 示例
   items:
     - name: 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure Powershell
       href: samples-powershell.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 监视
       href: how-to-monitor.md
@@ -41,7 +43,7 @@
       href: how-to-delete-invitation.md
     - name: 撤销共享订阅
       href: how-to-revoke-share-subscription.md
-- name: 引用
+- name: 参考
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
