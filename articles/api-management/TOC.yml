@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: API 管理功能可用性
       href: api-management-features.md
+    - name: 管理在 AKS 中部署的微服务
+      href: api-management-kubernetes.md
 - name: 快速入门
   expanded: true
   items:
@@ -49,7 +51,7 @@
           href: api-management-howto-policies.md
         - name: 策略参考索引
           href: api-management-policies.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 内置安全控件
           href: api-management-security-controls.md
@@ -63,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: 自托管网关概述
       href: self-hosted-gateway-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 定义 API
       items:
@@ -231,7 +233,7 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: 教程
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/?view=azps-2.6.0

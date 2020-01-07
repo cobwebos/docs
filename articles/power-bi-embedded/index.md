@@ -1,5 +1,5 @@
 ---
-title: Azure Power BI Embedded 文档 - 教程和 API 参考 | Microsoft 文档
+title: Azure Power BI Embedded 文档
 description: 了解如何在应用中嵌入 Power BI 数据可视化和交互式报表。 教程、API 参考和其他文档。
 services: power-bi-embedded
 author: rkarlin
@@ -9,12 +9,12 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: decbe7c59f46ea77b1f5088bab8daf64722f2a8c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bdc609735380a280b754841009d2706c245af961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727727"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427099"
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
 
@@ -97,7 +97,7 @@ ms.locfileid: "64727727"
 
 ---
 
-<h2>引用</h2>
+<h2>参考</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

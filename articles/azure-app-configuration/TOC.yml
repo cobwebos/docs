@@ -15,7 +15,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET framework
+        - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: 支持 .NET Core 的 Azure Functions
           href: quickstart-azure-functions-csharp.md
@@ -25,7 +25,7 @@
       items:
         - name: ASP.NET Core
           href: quickstart-feature-flag-aspnet-core.md
-        - name: .NET framework
+        - name: .NET Framework
           href: quickstart-feature-flag-dotnet.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
@@ -67,7 +67,7 @@
       items:
         - name: 复原能力和灾难恢复
           href: concept-disaster-recovery.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 与 Azure 托管标识集成
       href: howto-integrate-azure-managed-service-identity.md
@@ -77,7 +77,7 @@
       href: howto-app-configuration-event.md
     - name: 最佳做法
       href: howto-best-practices.md
-- name: 引用
+- name: 参考
   items:
     - name: 配置
       items:
@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework 生成器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: 用于 .Net 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring 提供程序
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: 用于 Java 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: 用于 Python 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: 用于 JavaScript 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

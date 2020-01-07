@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: “用于 Redis 的 Azure 缓存”文档
+summary: 了解如何使用用于 Redis 的 Azure 缓存（安全的数据缓存和消息传送中转站，可让应用程序以较高的吞吐量、较低的延迟访问数据）。 教程、API 参考和其他文档介绍了如何从 Azure 上的任何应用程序使用用于 Redis 的 Azure 缓存。
+metadata:
+  title: “用于 Redis 的 Azure 缓存”文档
+  description: 了解如何使用用于 Redis 的 Azure 缓存（安全的数据缓存和消息传送中转站，可让应用程序快速访问数据）。 教程、API 参考和其他资源。
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470026"
+landingContent:
+- title: 关于用于 Redis 的 Azure 缓存
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Redis 缓存？
+      url: cache-overview.md
+    - text: 了解用于 Redis 的 Azure 缓存高级层
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: 管理选项
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: 安全缓存
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: 最佳做法
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: 改善性能
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: 常见问题
+      url: cache-faq.md
+    - text: 针对 Azure Cache for Redis 的最佳做法
+      url: cache-best-practices.md
+    - text: Azure Redis 缓存的 ASP.NET 会话状态提供程序
+      url: cache-aspnet-session-state-provider.md
+- title: 快速入门：用于 Redis 的 Azure 缓存
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 编码 .NET Framework 应用
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: 编码 .NET Core 应用
+      url: cache-dotnet-core-quickstart.md
+    - text: 编码 ASP.NET Web 应用
+      url: cache-web-app-howto.md
+    - text: 编码 Java 应用
+      url: cache-java-get-started.md
+    - text: 编码 Node.js 应用
+      url: cache-nodejs-get-started.md
+    - text: 编码 Python 应用
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: 在 ASP.NET 中创建缓存端排行榜
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: 示例
+      url: cache-redis-samples.md
+- title: SDK 和命令行
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Redis 客户端
+      url: https://redis.io/clients
+    - text: Redis 命令
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: 故障排除
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 排查客户端问题
+      url: cache-troubleshoot-client.md
+    - text: 排查服务器端问题
+      url: cache-troubleshoot-server.md
+    - text: 排查超时问题
+      url: cache-troubleshoot-timeouts.md
+    - text: 排查数据丢失问题
+      url: cache-troubleshoot-data-loss.md
