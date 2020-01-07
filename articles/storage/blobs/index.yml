@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
-  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+  ms.openlocfilehash: 8b08503be49c3052312d28bc1f65d1be5c775cd9
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73646820"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75553046"
 landingContent:
 - title: 关于 Blob 存储
   linkLists:
@@ -91,10 +91,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 使用 .NET
+    - text: 适用于 .NET 的 Azure Blob 存储
       url: storage-quickstart-blobs-dotnet.md
-    - text: 使用 Python
+    - text: 适用于 Java 的 Azure Blob 存储
+      url: storage-quickstart-blobs-java.md
+    - text: 适用于 Python 的 Azure Blob 存储
       url: storage-quickstart-blobs-python.md
+    - text: 适用于 JavaScript 的 Azure Blob 存储
+      url: storage-quickstart-blobs-nodejs.md
     - text: 将事件路由到 Web 终结点
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: 托管静态网站
@@ -144,9 +148,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: 可伸缩性和性能
-      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: 性能和可伸缩性清单
-      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: 针对性能和可伸缩性进行优化

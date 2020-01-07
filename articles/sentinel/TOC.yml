@@ -27,75 +27,83 @@
       href: roles.md
     - name: 高级多阶段攻击检测
       href: fusion.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 连接数据源
       href: connect-data-sources.md
       items:
-        - name: 连接 Microsoft 服务
+        - name: 进行服务到服务连接
           items:
-            - name: 连接 Azure AD
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: 连接 Office 365
+            - name: Office 365
               href: connect-office-365.md
-            - name: 连接 Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: 连接 Azure 活动日志
+            - name: Azure 活动日志
               href: connect-azure-activity.md
-            - name: 连接 Azure AD 标识保护
+            - name: Azure AD 标识保护
               href: connect-azure-ad-identity-protection.md
-            - name: 连接 Azure 信息保护
+            - name: Azure 信息保护
               href: connect-azure-information-protection.md
-            - name: 连接 Microsoft Defender ATP
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: 连接 Azure ATP
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: 连接 Azure 安全中心
+            - name: Azure 安全中心
               href: connect-azure-security-center.md
-            - name: 连接域名服务器
+            - name: 域名服务器
               href: connect-dns.md
-            - name: 连接 Microsoft Web 应用程序防火墙
+            - name: Microsoft Web 应用程序防火墙
               href: connect-microsoft-waf.md
-            - name: 连接 Windows 防火墙
+            - name: Windows 防火墙
               href: connect-windows-firewall.md
-            - name: 连接 Windows 安全事件
+            - name: Windows 安全事件
               href: connect-windows-security-events.md
         - name: 连接外部解决方案
           items:
-            - name: 连接通用 CEF
-              href: connect-common-event-format.md
-            - name: 连接 AWS
-              href: connect-aws.md
-            - name: 连接 Barracuda
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: 连接检查点
-              href: connect-checkpoint.md
-            - name: 连接 Palo Alto Networks
-              href: connect-paloalto.md
-            - name: 连接 Fortinet
-              href: connect-fortinet.md
-            - name: 连接 F5
-              href: connect-f5.md
-            - name: 连接 F5 BIG-IP
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: 连接 Syslog
+            - name: Syslog
               href: connect-syslog.md
-            - name: 连接 Symantec ICDX
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: 连接 Cisco
-              href: connect-cisco.md
-            - name: 连接 Barracuda CloudGen 防火墙
+            - name: Barracuda CloudGen 防火墙
               href: connect-barracuda-cloudgen-firewall.md
-            - name: 连接 Citrix Analytics（安全）
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: 连接 ExtraHop Reveal(x)
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: 连接 Zscaler
-              href: connect-zscaler.md
+            - name: 基于 CEF 的解决方案
+              href: connect-common-event-format.md
+              items:
+                - name: 步骤 1 部署代理
+                  href: connect-cef-agent.md
+                - name: 步骤 2 配置安全解决方案
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: 检查点
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: 步骤 3 验证连接性
+                  href: connect-cef-verify.md
         - name: 连接威胁智能
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM

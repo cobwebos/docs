@@ -7,18 +7,34 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建设备 - Windows
-      href: quickstart-create-pnp-device.md
-    - name: 创建设备 - Linux
-      href: quickstart-create-pnp-device-linux.md
-    - name: 将设备连接到 IoT 中心 - Windows
-      href: quickstart-connect-pnp-device.md
-    - name: 将设备连接到 IoT 中心 - Linux
-      href: quickstart-connect-pnp-device-linux.md
+    - name: 创建设备
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: 将设备连接到 IoT 中心
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
     - name: 将设备连接到 IoT Central
-      href: ../iot-central/preview/quick-create-pnp-device.md
+      href: ../iot-central/preview/tutorial-connect-pnp-device.md
     - name: 连接到解决方案中的设备
-      href: quickstart-connect-pnp-device-solution.md
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
 - name: 教程
   items:
     - name: 使用 VS Code 创建设备
@@ -39,7 +55,7 @@
       href: concepts-model-discovery.md
     - name: 限制和配额
       href: concepts-limits-quotas.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Visual Studio 和 Visual Studio Code 进行开发
       href: howto-develop-with-vs-vscode.md
@@ -53,7 +69,7 @@
       href: howto-manage-models.md
     - name: 连接到设备并与之交互
       href: howto-develop-solution.md
-- name: 引用
+- name: 参考
   items:
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'

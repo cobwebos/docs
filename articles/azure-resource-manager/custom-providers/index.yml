@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure Custom Providers 文档
+summary: 定义用于扩展 Azure 体验的自定义 API
+metadata:
+  title: Azure Custom Providers 文档
+  description: Azure Custom Providers 是 Azure 的可扩展性平台，用于定义自定义 API
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648338"
+landingContent:
+- title: 关于 Azure Custom Providers
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Custom Providers？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 用于自定义提供程序关联的 Azure Policy
+      url: concepts-built-in-policy.md
+    - text: 资源载入概述
+      url: concepts-resource-onboarding.md
+- title: 创建自定义提供程序
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建自定义资源提供程序
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: 自定义提供程序入门
+      url: tutorial-get-started-with-custom-providers.md
+    - text: 设置 Azure Functions
+      url: tutorial-custom-providers-function-setup.md
+    - text: 创建 RESTful 终结点
+      url: tutorial-custom-providers-function-authoring.md
+    - text: 创建和利用自定义提供程序
+      url: tutorial-custom-providers-create.md
+    - text: 扩展资源
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: 将自定义操作添加到 Azure
+      url: custom-providers-action-endpoint-how-to.md
+    - text: 将自定义资源添加到 Azure
+      url: custom-providers-resources-endpoint-how-to.md
+- title: 示例
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 自定义资源代理参考
+      url: proxy-resource-endpoint-reference.md
+    - text: 自定义资源缓存参考
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: 自定义提供程序 RESTful 终结点参考
+      url: reference-custom-providers-csharp-endpoint.md

@@ -22,7 +22,7 @@
       href: code-hosting-services.md
     - name: DevOps
       items:
-        - name: 什么是 DevOps
+        - name: 什么是 DevOps？
           href: devops.md
         - name: 持续构建和集成
           href: continuous-integration.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: 分析使用情况和用户行为
       href: analytics.md
-    - name: 实时崩溃报告
+    - name: 实时故障报告
       href: diagnostics.md
     - name: 推送通知
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure 内容分发网络
       href: azure-cdn.md
     - name: Azure 认知搜索
       href: azure-search.md

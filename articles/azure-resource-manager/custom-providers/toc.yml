@@ -1,0 +1,57 @@
+- name: Azure Custom Providers 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure Custom Providers？
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 创建自定义资源提供程序
+      href: create-custom-provider.md
+- name: 教程
+  items:
+    - name: 自定义提供程序入门
+      href: tutorial-get-started-with-custom-providers.md
+    - name: 设置 Azure Functions
+      href: tutorial-custom-providers-function-setup.md
+    - name: 创建 RESTful 终结点
+      href: tutorial-custom-providers-function-authoring.md
+    - name: 创建和利用自定义提供程序
+      href: tutorial-custom-providers-create.md
+    - name: 扩展资源
+      href: tutorial-resource-onboarding.md
+- name: 概念
+  items:
+    - name: 用于关联的 Azure Policy
+      href: concepts-built-in-policy.md
+    - name: 资源载入
+      href: concepts-resource-onboarding.md
+- name: 操作方法指南
+  items:
+    - name: 将自定义操作添加到 Azure
+      href: custom-providers-action-endpoint-how-to.md
+    - name: 将自定义资源添加到 Azure
+      href: custom-providers-resources-endpoint-how-to.md
+- name: 参考
+  items:
+    - name: 自定义资源代理参考
+      href: proxy-resource-endpoint-reference.md
+    - name: 自定义资源缓存参考
+      href: proxy-cache-resource-endpoint-reference.md
+    - name: 自定义提供程序 RESTful 终结点参考
+      href: reference-custom-providers-csharp-endpoint.md
+    - name: REST
+      href: /rest/api/customproviders/
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 资源管理器模板最佳做法
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

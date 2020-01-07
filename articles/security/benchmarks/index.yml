@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure 安全基准文档
+summary: 了解如何通过我们的最佳做法和指导来保护 Azure 上的云解决方案。
+metadata:
+  title: Azure 安全基准
+  description: Azure 安全控制基准包含的建议可帮助你改进 Azure 上的应用程序和数据的安全性。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 97f5463ee4348f8e17b8cf571262c361908d7265
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563856"
+landingContent:
+- title: 关于 Azure 安全基准
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 概述
+      url: overview.md
+    - text: 安全控制简介
+      url: introduction.md
+    - text: 云中责任分担
+      url: ../fundamentals/shared-responsibility.md
+- title: 安全控制
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 网络安全
+      url: security-control-network-security.md
+    - text: 日志记录和监视
+      url: security-control-logging-monitoring.md
+    - text: 标识和访问控制
+      url: security-control-identity-access-control.md
+    - text: 数据保护
+      url: security-control-data-protection.md
+    - text: 漏洞管理
+      url: security-control-vulnerability-management.md
+    - text: 查看详细信息
+      url: security-control-inventory-asset-management.md
+- title: 更多 Azure 安全信息
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 安全基础知识
+      url: ../fundamentals/index.yml
+    - text: Azure 安全中心
+      url: ../../security-center/index.yml
+    - text: Azure Key Vault
+      url: ../../key-vault/index.yml

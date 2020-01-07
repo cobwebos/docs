@@ -277,7 +277,7 @@
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 适用于 VS Code 的 Azure Policy 扩展
       displayName: visual studio code
@@ -300,6 +300,11 @@
     - name: 修正不符合资源
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Azure 密钥保管库集成
+      items:
+        - name: 将 Key Vault 与 Azure Policy 集成
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure Lighthouse 集成
       items:
         - name: 大规模部署策略
@@ -313,7 +318,7 @@
         - name: 启用用于 VM 的 Azure Monitor（预览版）
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/policy
@@ -341,7 +346,7 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: 活动
+        - name: 事件
           href: /rest/api/policy-insights/policyevents
         - name: States
           href: /rest/api/policy-insights/policystates
