@@ -3,19 +3,15 @@ title: Azure 自动化中基于角色的访问控制
 description: 基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行访问管理。 本文介绍如何设置 Azure 自动化中的 RBAC。
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 122e1f69e952acc00aba3cad2d75cb87b8fd08ee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850782"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421593"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -27,7 +23,7 @@ ms.locfileid: "74850782"
 
 | **角色** | **说明** |
 |:--- |:--- |
-| 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
+| “所有者” |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
 | 读取器 |“读者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
 | 自动化运算符 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
@@ -43,11 +39,11 @@ ms.locfileid: "74850782"
 
 下表描述授予每个角色的特定权限。 这可能包括授予权限的操作和限制权限的不操作。
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>“所有者”
 
 所有者可管理所有内容，包括访问权限。 下表显示了授予角色的权限：
 
-|操作|描述|
+|操作|Description|
 |---|---|
 |Microsoft.Automation/automationAccounts/|创建和管理所有类型的资源。|
 
@@ -214,14 +210,14 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="onboarding-from-a-virtual-machine"></a>从虚拟机加入
 
-|**Action**  |权限  |**最小范围**  |
+|**Action**  |**权限**  |**最小范围**  |
 |---------|---------|---------|
-|写入新部署      | Microsoft.Resources/deployments/*          |Subscription          |
-|写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | Subscription          |
-|创建新的默认工作区      | Microsoft.OperationalInsights/workspaces/write         | Resource group         |
-|创建新帐户      |  Microsoft.Automation/automationAccounts/write        |Resource group         |
+|写入新部署      | Microsoft.Resources/deployments/*          |订阅          |
+|写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | 订阅          |
+|创建新的默认工作区      | Microsoft.OperationalInsights/workspaces/write         | 资源组         |
+|创建新帐户      |  Microsoft.Automation/automationAccounts/write        |资源组         |
 |链接工作区和帐户      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|工作区</br>自动化帐户
-|创建解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Resource group          |
+|创建解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |资源组          |
 |创建 MMA 扩展      | Microsoft.Compute/virtualMachines/write         | 虚拟机         |
 |创建保存的搜索      | Microsoft.OperationalInsights/workspaces/write          | 工作区         |
 |创建范围配置      | Microsoft.OperationalInsights/workspaces/write          | 工作区         |
@@ -231,18 +227,18 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |加入状态检查 - 读取解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | 解决方案         |
 |加入状态检查 - 读取 VM      | Microsoft.Compute/virtualMachines/read         | 虚拟机         |
 |加入状态检查 - 读取帐户      | Microsoft.Automation/automationAccounts/read  |  自动化帐户   |
-| VM<sup>1</sup>的加入工作区检查       | Microsoft.OperationalInsights/workspaces/read         | Subscription         |
-| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | Subscription|
+| VM<sup>1</sup>的加入工作区检查       | Microsoft.OperationalInsights/workspaces/read         | 订阅         |
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
 
 <sup>1</sup>需要此权限才能通过 VM 门户体验。
 
 ### <a name="onboarding-from-automation-account"></a>从自动化帐户加入
 
-|**Action**  |权限 |**最小范围**  |
+|**Action**  |**权限** |**最小范围**  |
 |---------|---------|---------|
-|新建部署     | Microsoft.Resources/deployments/*        | Subscription         |
-|新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | Subscription        |
-|AutomationOnboarding 边栏选项卡 - 创建新工作区     |Microsoft.OperationalInsights/workspaces/write           | Resource group        |
+|新建部署     | Microsoft.Resources/deployments/*        | 订阅         |
+|新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | 订阅        |
+|AutomationOnboarding 边栏选项卡 - 创建新工作区     |Microsoft.OperationalInsights/workspaces/write           | 资源组        |
 |AutomationOnboarding 边栏选项卡 - 读取链接的工作区     | Microsoft.Automation/automationAccounts/read        | 自动化帐户       |
 |AutomationOnboarding 边栏选项卡 - 读取解决方案     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | 解决方案        |
 |AutomationOnboarding 边栏选项卡 - 读取工作区     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | 工作区        |
@@ -252,7 +248,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |创建/编辑范围配置     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |将解决方案链接到范围配置      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解决方案         |
-| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | Subscription|
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
 |**步骤 2 - 加入多个 VM**     |         |         |
 |VMOnboarding 边栏选项卡 - 创建 MMA 扩展     | Microsoft.Compute/virtualMachines/write           | 虚拟机        |
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write           | 工作区        |
@@ -267,7 +263,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |自动化帐户     | Log Analytics 参与者       | 自动化帐户        |
 |自动化帐户    | 虚拟机参与者        | 帐户的资源组        |
 |Log Analytics 工作区     | Log Analytics 参与者| Log Analytics 工作区        |
-|Log Analytics 工作区 |Log Analytics 读者| Subscription|
+|Log Analytics 工作区 |Log Analytics 读者| 订阅|
 |解决方案     |Log Analytics 参与者         | 解决方案|
 |虚拟机     | 虚拟机参与者        | 虚拟机        |
 

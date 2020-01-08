@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920253"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423896"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api 的桌面应用程序-代码配置
 
@@ -30,11 +30,11 @@ ms.locfileid: "74920253"
 
 支持桌面应用程序的 Microsoft 库包括：
 
-  MSAL 库 | 描述
+  MSAL 库 | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持在多个平台中构建桌面应用程序-Linux、Windows 和 MacOS
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。 开发中 -目前为公共预览版
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支持在多个平台中构建桌面应用程序。 开发中 -目前为公共预览版
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支持在多个平台中构建桌面应用程序。
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | 仅支持在 macOS 上运行的桌面应用程序
 
 ## <a name="public-client-application"></a>公共客户端应用程序
@@ -51,14 +51,14 @@ ms.locfileid: "74920253"
 
 下面的代码实例化一个公共客户端应用程序，在 Microsoft Azure 公有云中使用工作和学校帐户或个人 Microsoft 帐户来登录用户。
 
-```CSharp
+```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
 如果要使用交互式身份验证或设备代码流（如上所示），请使用 `.WithRedirectUri` 修饰符：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -69,7 +69,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 下面的代码从一个配置对象中实例化一个公共客户端应用程序，该配置对象可以以编程方式填充或从配置文件中读取。
 
-```CSharp
+```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
         .WithDefaultRedirectUri()
@@ -80,7 +80,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 
 你可以通过添加多个修饰符来详细阐述应用程序生成。 例如，如果你希望你的应用程序成为国家/地区（美国政府）的多租户应用程序，你可以编写：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithDefaultRedirectUri()
@@ -91,7 +91,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET 还包含 ADFS 2019 的修饰符：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithAdfsAuthority("https://consoso.com/adfs")
@@ -100,7 +100,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 最后，如果要获取 Azure AD B2C 租户的令牌，可以指定租户，如以下代码片段所示：
 
-```CSharp
+```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
@@ -134,7 +134,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 你没有用 .NET 提供的配置框架读取此文件的代码，
 
-```CSharp
+```csharp
 public class SampleConfiguration
 {
  /// <summary>
@@ -177,7 +177,7 @@ public class SampleConfiguration
 
 现在，若要创建应用程序，只需编写以下代码：
 
-```CSharp
+```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .WithDefaultRedirectUri()

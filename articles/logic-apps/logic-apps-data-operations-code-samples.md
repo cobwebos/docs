@@ -1,17 +1,17 @@
 ---
-title: 数据操作示例
-description: Azure 逻辑应用中的数据操作操作的代码示例
+title: 使用数据操作的代码示例
+description: 尝试这些代码示例，这些代码示例演示了如何在使用 Azure 逻辑应用创建的自动工作流中使用数据操作
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: d59e461fab52bddf9cb1f881d52a751931c7312b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793086"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428695"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
 
@@ -322,7 +322,7 @@ ms.locfileid: "74793086"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Select
+## <a name="select"></a>选择
 
 若要尝试[**选择**操作示例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，可使用以下操作定义：
 

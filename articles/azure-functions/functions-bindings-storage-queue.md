@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3e72bd366cdbba1d73bc05f98d3848e2d4f0ca6c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5164e47c9c93653bfcd01093c01142b69c0bd57f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433250"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -19,7 +19,7 @@ ms.locfileid: "74925336"
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 包 2.x 版中提供了队列存储绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub 存储库中提供了此包的源代码。
 
@@ -291,13 +291,13 @@ def main(msg: func.QueueMessage):
 
 下表解释了在 function.json 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|类型 | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |name | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -318,7 +318,7 @@ def main(msg: func.QueueMessage):
 
 [队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 类的属性。
 
-|properties|Type|描述|
+|属性|类型|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -336,7 +336,18 @@ def main(msg: func.QueueMessage):
 
 ## <a name="trigger---polling-algorithm"></a>触发器 - 轮询算法
 
-队列触发器实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，运行时将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 可以通过 [host.json 文件](functions-host-json.md#queues)中的 `maxPollingInterval` 属性配置最大等待时间。
+队列触发器实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。
+
+算法使用以下逻辑：
+
+- 当发现消息时，运行时将等待两秒钟，然后检查另一条消息
+- 如果未找到任何消息，它将等待大约四秒，然后重试。
+- 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。
+- 可以通过 [host.json 文件](functions-host-json.md#queues)中的 `maxPollingInterval` 属性配置最大等待时间。
+
+对于本地开发，最大轮询间隔默认为两秒。
+
+对于计费，运行时所用的时间是 "免费" 的，不会根据你的帐户进行计数。
 
 ## <a name="trigger---concurrency"></a>触发器 - 并发
 
@@ -608,13 +619,13 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 下表解释了在 function.json 文件和 `Queue` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |Description|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |name | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
-|**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -670,7 +681,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 ```
 
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为00：00：00.100 （100 ms），增加到00:01:00 （1分钟）。  在1.x 中，数据类型为毫秒，在2.x 和更高版本中为 TimeSpan。|
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |

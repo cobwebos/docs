@@ -4,15 +4,15 @@ description: 若要保持 System Center Operations Manager 中的现有投资并
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162239"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363653"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -81,7 +81,7 @@ ms.locfileid: "73162239"
 |\*.service.opinsights.azure.com| 443||  
 |\*.blob.core.windows.net| 443| 是|  
 |\*.ods.opinsights.azure.com| 443| 是|  
-|*.azure-automation.net | 443| 是|  
+|\* .azure-automation.net | 443| 是|  
 |**将控制台 Operations Manager 到 Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -105,8 +105,8 @@ ms.locfileid: "73162239"
 首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“启动”，然后键入“cmd”。
-   b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 转到“启动”，然后键入“cmd”。
+   b.保留“数据库类型”设置，即设置为“共享”。 右键单击“命令提示符”然后选择“以管理员身份运行”**。
 1. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -248,7 +248,7 @@ ms.locfileid: "73162239"
     > 如果没有从连接的管理组中检测到活动，“移除”链接在 14 天后才可用。  
     >
 
-1. 将出现一个窗口，要求确认是否继续进行移除。  单击“**是**”继续。
+1. 将出现一个窗口，要求确认是否继续进行移除。  单击“是” 继续。
 
 要删除两个连接器 - Microsoft.SystemCenter.Advisor.DataConnector 和 Advisor Connector，请将以下 PowerShell 脚本保存到计算机，并使用以下示例执行删除：
 

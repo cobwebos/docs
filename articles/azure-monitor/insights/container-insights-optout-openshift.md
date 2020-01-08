@@ -1,18 +1,14 @@
 ---
 title: 如何停止监视 Azure Red Hat OpenShift 群集 |Microsoft Docs
 description: 本文介绍如何通过 Azure Monitor 容器来停止监视 Azure Red Hat OpenShift 群集。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: f769749532a05260bf3c2c9f99483c5607d985a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e726d2d8254598869f1c6305421c674c870e3d31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384326"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404290"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-cluster-with-azure-monitor-for-containers"></a>如何停止监视包含 Azure Monitor 容器的 Azure Red Hat OpenShift 群集
 

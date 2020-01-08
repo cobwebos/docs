@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364112"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -25,9 +25,9 @@ ms.locfileid: "74286186"
 
 将它们存储在此位置可以访问平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
@@ -285,7 +285,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”
 
-7. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。
+7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44392882a7d3e1816b952969dbadb518e2762142
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919947"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423794"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>用于调用 web Api-代码配置的移动应用
 
@@ -30,7 +30,7 @@ ms.locfileid: "74919947"
 
 支持移动应用的 Microsoft 库包括：
 
-  MSAL 库 | 描述
+  MSAL 库 | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 开发可移植应用程序。 用于构建移动应用程序的 MSAL.NET 支持平台为 UWP、Xamarin 和 Xamarin。
   ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用客观-C 或 Swift 开发本机 iOS 应用程序
@@ -77,7 +77,7 @@ if let application = try? MSALPublicClientApplication(configuration: config){ /*
 
 在 Xamarin 或 UWP 中，实例化应用程序的最简单方法如下，其中 `ClientId` 是已注册应用的 Guid。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
@@ -88,7 +88,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 在 Android 上，你需要在进行交互式身份验证之前传递父活动。 在 iOS 上，使用 broker 时，需要传递 ViewController 中的。 对于 UWP，你可能想要传入父窗口。 这在获取令牌时是可能的，但也可以在应用创建时指定返回 UIParent 的委托。
 
-```CSharp
+```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
   .ParentActivityOrWindowFunc(() => parentUi)
   .Build();
@@ -96,7 +96,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
 
 在 Android 上，我们建议你在[此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)使用 `CurrentActivityPlugin`。  然后，`PublicClientApplication` 生成器代码将如下所示：
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -175,7 +175,7 @@ var pca = PublicClientApplicationBuilder
 
 代理支持基于每个`PublicClientApplication` 启用。 此项默认禁用。 通过 `PublicClientApplicationBuilder`创建 `PublicClientApplication` 时，必须使用 `WithBroker()` 参数（默认设置为 true）。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -187,7 +187,7 @@ var app = PublicClientApplicationBuilder
 
 当 MSAL.NET 调用代理时，代理将转而通过 `AppDelegate.OpenUrl` 方法返回到应用程序。 由于 MSAL 将等待来自代理的响应，因此应用程序需要合作才能调用 MSAL.NET。 为此，请更新 `AppDelegate.cs` 文件以重写以下方法。
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
                              string sourceApplication,
                              NSObject annotation)
@@ -219,16 +219,16 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 例如：
 
 在 `App.cs` 中：
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 在 `AppDelegate.cs` 中：
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 在获取令牌调用中：
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();

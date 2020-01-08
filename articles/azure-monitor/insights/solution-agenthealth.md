@@ -4,15 +4,15 @@ description: 本文旨在帮助你了解如何使用此解决方案来监视代�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555335"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402433"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor 中直接向 Log Analytics 工作区进行报告的所有代理，或连接到 Azure Monitor 的 System Center Operations Manager 管理组，这是无响应的，正在提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -32,14 +32,14 @@ Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor �
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
 ## <a name="configuration"></a>配置
-执行[添加解决方案](solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步配置。
+执行[添加解决方案](solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="supported-agents"></a>支持的代理
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 受支持 | Description |
 | --- | --- | --- |
 | Windows 代理 | 是 | 检测信号事件从直接的 Windows 代理收集。|
 | System Center Operations Manager 管理组 | 是 | 检测信号事件从向管理组报告的代理每60秒收集一次，并转发到 Azure Monitor。 不需要从 Operations Manager 代理到 Azure Monitor 的直接连接。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
@@ -49,7 +49,7 @@ Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor �
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”或单击列标题来运行提供整个列表的日志搜索。
 
-| 柱形图​​ | 描述 |
+| 柱形图​​ | Description |
 |--------|-------------|
 | 某个时段的代理计数 | 在七天时段内的代理计数趋势（针对 Linux 和 Windows 代理）。|
 | 无响应代理的计数 | 在过去 24 小时内未发送检测信号的代理的列表。|
@@ -68,7 +68,7 @@ Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor �
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。  这些记录的属性在下表中列出。  
 
-| properties | 描述 |
+| 属性 | Description |
 | --- | --- |
 | `Type` | Heartbeat|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
@@ -86,12 +86,12 @@ Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor �
 | `RemoteIPLongitude` | 计算机的地理位置的经度。|
 | `RemoteIPLatitude` | 计算机的地理位置的纬度。|
 
-向 Operations Manager 管理服务器报告的每个代理都将发送两个检测信号，SCAgentChannel 属性的值将包括**Direct**和**SCManagementServer** ，具体取决于你拥有的数据源和监视解决方案已在订阅中启用。 如果您想起，解决方案中的数据将从 Operations Manager 管理服务器直接发送到 Azure Monitor，或者因为在代理上收集的数据量而从代理直接发送到 Azure Monitor。 对于值为 SCManagementServer 的检测信号事件，ComputerIP 值为管理服务器的 IP 地址，因为数据实际上是通过其上传的。  对于 SCAgentChannel 设置为 Direct 的检测信号，该值为代理的公共 IP 地址。  
+向 Operations Manager 管理服务器报告的每个代理都将发送两个检测信号，SCAgentChannel 属性的值将包括**Direct**和**SCManagementServer** ，具体取决于订阅中启用了哪些数据源和监视解决方案。 如果您想起，解决方案中的数据将从 Operations Manager 管理服务器直接发送到 Azure Monitor，或者因为在代理上收集的数据量而从代理直接发送到 Azure Monitor。 对于值为 SCManagementServer 的检测信号事件，ComputerIP 值为管理服务器的 IP 地址，因为数据实际上是通过其上传的。  对于 SCAgentChannel 设置为 Direct 的检测信号，该值为代理的公共 IP 地址。  
 
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的记录的示例日志搜索。
 
-| Query | 描述 |
+| 查询 | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |代理总数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |

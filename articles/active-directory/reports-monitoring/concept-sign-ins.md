@@ -17,12 +17,12 @@ ms.date: 12/09/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc996c7b5d8a63834f548689c83f7a72685120d2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429743"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -57,9 +57,15 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-从[Azure 门户](https://portal.azure.com)开始。 若要访问登录报告，请选择 "**登录**"，继续进行**监视。** 某些登录记录可能需要长达两个小时才能在门户中显示。
+在 " [Azure 门户](https://portal.azure.com)" 菜单上，选择 " **Azure Active Directory**"，或从任意页面搜索并选择 " **Azure Active Directory** "。
 
-![登录活动](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "登录活动")
+![选择 Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+
+在 "**监视**" 下，选择 "**登录**" 以打开 "[登录" 报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+
+![登录活动](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
+
+某些登录记录可能需要长达两个小时才能在门户中显示。
 
 > [!IMPORTANT]
 > 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
@@ -79,7 +85,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
-"**列**" 对话框提供对可选择属性的访问权限。 在登录报表中，只能有与其他属性为列具有一对多关系的属性。
+"**列**" 对话框提供对可选择属性的访问权限。 在登录报表中，对于给定的登录请求为列，不能有多个值。 例如，对于身份验证详细信息、条件性访问数据和网络位置均为 true。   
 
 ![登录活动](./media/concept-sign-ins/columns.png "登录活动")
 
@@ -189,11 +195,11 @@ Azure AD 和 Azure 门户均提供额外的登录数据入口点：
 - 用户
 - 用户名
 - 应用程序 ID
-- Application
+- 应用程序
 - Client
-- Location
+- 位置
 - IP 地址
-- 日期
+- Date
 - 需要 MFA
 - 登录状态
 
@@ -222,7 +228,7 @@ Azure AD 和 Azure 门户均提供额外的登录数据入口点：
 
 如果需要，可以将焦点设置在特定应用程序上。
 
-![报告](./media/concept-sign-ins/single-app-usage-graph.png "报告")
+![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "报告")
 
 单击应用程序使用情况图中的某一天时，可以获取登录活动的详细列表。
 

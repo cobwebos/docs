@@ -1,18 +1,15 @@
 ---
 title: 使用 REST API 获取 Azure 资源运行状况事件 | Microsoft Docs
 description: 使用 Azure REST API 以获取 Azure 资源的运行状况事件。
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451394"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>使用 REST API 获取资源运行状况 
 
@@ -32,14 +29,14 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 以下标头是必需的： 
 
-|请求标头|描述|  
+|请求标头|Description|  
 |--------------------|-----------------|  
-|Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type：|必需。 设置为 `application/json`。|  
+|Authorization：|必需。 设置为有效 `Bearer`[访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 描述 |
+| 名称 | Description |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2015-04-01`，包含于上述 URL 中。  |

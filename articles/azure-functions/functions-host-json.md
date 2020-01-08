@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 374d00a75423274d03320b9c1299a2c2dae080ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975442"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433178"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host json 引用 
 
@@ -95,11 +95,15 @@ ms.locfileid: "74975442"
 
 此设置是[日志记录](#logging)的子项。
 
-控制 [Application Insights 中的采样功能](./functions-monitoring.md#configure-sampling)。
+控制 Application Insights 的选项，包括[采样选项](./functions-monitoring.md#configure-sampling)。
 
 ```json
 {
-    "applicationInsights": {
+    "applicationInsights": {        
+        "enableDependencyTracking": true,
+        "enablePerformanceCountersCollection": true,
+        "samplingExcludedTypes": "Trace;Exception",
+        "samplingIncludedTypes": "Request;Dependency",
         "samplingSettings": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 20
@@ -111,13 +115,14 @@ ms.locfileid: "74975442"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
-|isEnabled|是|启用或禁用采样。| 
-|maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。| 
-|EnableLiveMetrics |是|启用实时指标收集。|
-|EnableDependencyTracking|是|启用依赖项跟踪。|
-|EnablePerformanceCountersCollection|是|启用 Kudu 性能计数器集合。|
+|enableDependencyTracking|true|启用依赖项跟踪。|
+|enablePerformanceCountersCollection|true|启用性能计数器收集。|
+|samplingExcludedTypes|Null|不要采样的分号分隔类型列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 指定类型的所有实例都会传输；对未指定的类型进行采样。| 
+|samplingIncludedTypes|Null|要采样的分号分隔类型列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 将对指定的类型进行采样；其他类型的所有实例始终都会传输。|
+|samplingSettings. isEnabled|true|启用或禁用采样。| 
+|samplingSettings.maxTelemetryItemsPerSecond|20|开始采样所要达到的阈值。|
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -181,9 +186,9 @@ ms.locfileid: "74975442"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
-|已启用|是|指定是否启用此功能。 | 
+|已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -213,7 +218,7 @@ ms.locfileid: "74975442"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本2.x 和更高版本按照 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
@@ -236,7 +241,7 @@ ms.locfileid: "74975442"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
@@ -280,7 +285,7 @@ ms.locfileid: "74975442"
 }
 ```
 
-|properties  |默认 | 描述 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

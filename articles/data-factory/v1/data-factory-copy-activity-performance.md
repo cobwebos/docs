@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926801"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438921"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -205,12 +205,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| properties | 描述 | 默认值 | 需要 |
+| 属性 | Description | 默认值 | 需要 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |错误 |No |
+| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |错误 |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |N/A |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |No |
-| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |错误 |No |
+| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |否 |
+| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |错误 |否 |
 
 以下是具有上表所述属性的复制活动的示例定义：
 
@@ -263,7 +263,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
      * [暂存复制](#staged-copy)
      * [数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [数据管理网关](#considerations-for-data-management-gateway)
-   * [源](#considerations-for-the-source)
+   * [数据源](#considerations-for-the-source)
    * [接收器](#considerations-for-the-sink)
    * [序列化和反序列化](#considerations-for-serialization-and-deserialization)
    * [压缩](#considerations-for-compression)
@@ -277,7 +277,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。
 
 ## <a name="considerations-for-the-source"></a>有关源的注意事项
-### <a name="general"></a>一般信息
+### <a name="general"></a>常规
 确保基础数据存储未被在其上运行或针对其运行的其他工作负荷过渡占用。
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)，帮助用户了解数据存储性能特征、尽量缩短响应时间以及最大化吞吐量。
@@ -299,7 +299,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分。
 
 ## <a name="considerations-for-the-sink"></a>有关接收器的注意事项
-### <a name="general"></a>一般信息
+### <a name="general"></a>常规
 确保基础数据存储未被在其上运行或针对其运行的其他工作负荷过渡占用。
 
 有关 Microsoft 数据存储的信息，请参阅特定于数据存储的[监视和优化主题](#performance-reference)。 这些主题可帮助用户了解数据存储性能特征、了解如何尽量缩短响应时间以及最大化吞吐量。
@@ -416,7 +416,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure 存储（包括 Blob 存储和表存储）：[Azure 存储可伸缩性目标](../../storage/common/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)
+* Azure Blob 存储： [blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)，以及[Blob 存储的性能和可伸缩性清单](../../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：表存储[的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)，以及[表存储的性能和可伸缩性清单](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)

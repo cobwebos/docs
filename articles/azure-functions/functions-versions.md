@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 977d0cb445369cbc51ce3b90712d58ce8b6ebdc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433080"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -26,7 +26,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 
 本文详细介绍了不同版本之间的一些差异，如何创建每个版本，以及如何更改版本。
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>语言
 
 从版本2.x 开始，运行时使用语言扩展性模型，函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在[\_WORKER\_运行时](functions-app-settings.md#functions_worker_runtime)设置的函数中维护。 
 
@@ -104,7 +104,7 @@ Azure Functions 1.x 的实验性语言不能使用新模型，因此在2.x 中�
 
 Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) 应用程序设置指定。 支持以下主要运行时版本值：
 
-| Value | 运行时目标 |
+| 值 | 运行时目标 |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |
@@ -115,7 +115,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 
 ### <a name="locally-developed-application-versions"></a>本地开发的应用程序版本
 
-你可以在本地更改目标版本中进行以下更新。
+你可以进行以下更新来使函数应用在本地更改目标版本。
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio 运行时版本
 
@@ -135,7 +135,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-##### <a name="version-3x"></a>版本 3.x
+##### <a name="version-3x"></a>3\.x 版
 
 ```xml
 <TargetFramework>netcoreapp3.1</TargetFramework>

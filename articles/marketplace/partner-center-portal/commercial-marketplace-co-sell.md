@@ -1,50 +1,69 @@
 ---
 title: 合作伙伴中心的共同销售选项 |Azure Marketplace
 description: Microsoft 销售团队将使用你在产品/服务的 "共同销售" 选项卡上提供的信息来详细了解你的解决方案是否适合客户需求。
-author: qianw211
+author: ChJenk
 manager: evansma
-ms.author: v-qiwe
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/06/2019
+ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431957"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的共同销售选项
 
 提供有关共同销售选项卡的信息是完全可选的。 需要实现合作销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息来了解有关您的解决方案的详细信息。 不会直接向客户提供此功能。 有关详细信息，请参阅[通过 Microsoft 进行销售](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)。
 
-## <a name="applicable-products"></a>适用的产品
+合作伙伴中心的共同销售选项目前可用于某些产品/服务类型。 随着时间的推移，将提供对其他产品/服务类型的支持。
 
-选择您的产品/服务基于或旨在使用的任何 Microsoft 产品。
+| **产品/服务类型** | **合作伙伴中心提供的共同销售页面** |
+|    -----------------------    |    -----------------------------  |
+| 软件即服务（SaaS） |     大约2020年2月公开上市      |
+| Dynamics 365 for Customer Engagement & PowerApps      |     现可用      |
+| Dynamics 365 for Operations     |     现可用       |
+| Dynamics 365 Business Central      |  大约2020年2月公开上市     |
+| Azure 应用程序     |     大约2020年2月公开上市     |
+| Azure 虚拟机      |     待公布地区       |
+| Azure 容器     |     待公布地区       |
+| 咨询服务      |     待公布地区       |
+| IoT Edge 模块      |     待公布地区       |
+| Power BI 服务应用     |     待公布地区       |
+|  |
 
-## <a name="customer-segments"></a>客户段
+## <a name="listing"></a>商品
 
-选择产品/服务的目标企业大小。
+共同销售列表将帮助 Microsoft 销售团队向更广泛的受众推销你的解决方案。
 
-## <a name="offer-type"></a>产品/服务类型
+- 选择产品/服务的构建方式、扩展或集成的 Microsoft 平台。
+- 选择产品/服务面向的市场细分。
+- 选择产品/服务的[解决方案类型](#solution-type)。
+- 选择最多三个[解决方案区域](#solution-areas)和子区域。
 
-选择产品/服务类型：
+### <a name="solution-type"></a>解决方案类型
 
-| **产品/服务类型**    | **说明**  |
+解决方案类型可帮助定义产品/服务的设计方案。
+
+| **解决方案类型**    | **说明**  |
 | :------------------- | :-------------------|
-| 设备 | 一种包括从设备制造商处构建或销售硬件的产品/服务。 |
-| IP | 授权客户使用的应用或其他 copyrightable 材料。 例如：可以在本地授权和安装的 CRM 计划。 |
+| 设备（硬件） | 一种包括从设备制造商处构建或销售硬件的产品/服务。 |
+| IP （应用程序） | 授权客户使用的应用或其他 copyrightable 材料。 例如：可以在本地授权和安装的 CRM 计划。 |
 | 服务 | 针对特定的一次性项目的动手技能，通常通过顾问提供。 例如：为客户端设置客户数据库（在客户端假定在传递后负责处理数据库的客户端）。 |
 | 托管服务 | 基于云的项目的动手技术，通常是持续的。 例如：提供运行联机数据库的平台和工具，并提供托管服务提供商提供的持续管理。 |
 
-## <a name="solution-areas"></a>解决方案领域
+### <a name="solution-areas"></a>解决方案领域
 
-最多可为产品/服务添加三个解决方案区域。  对于每个解决方案区域，最多可以选择两个解决方案子区域。 若要选择多个子类别，请使用 `Ctrl` 键（在 Windows 上）或命令键（在 Mac OS 上）。
+解决方案领域有助于进一步定义您的解决方案。
 
-解决方案领域有助于定义产品/服务的设计方案。
+最多可为产品/服务添加三个解决方案区域。 对于每个解决方案区域，最多可以选择两个解决方案子区域。 若要选择多个子类别，请使用 `Ctrl` 键（在 Windows 上）或命令键（在 Mac OS 上）。
 
 ## <a name="documents"></a>文档
+
+你可以为 Microsoft 提供可用于评估你的客户需求的宣传品。
 
 | 文档    | **说明**  |
 | :------------------- | :-------------------|
@@ -60,7 +79,7 @@ ms.locfileid: "73812715"
 
 ## <a name="contacts"></a>联系人
 
-你的联系信息允许 Microsoft 销售团队和渠道经销商请求你组织中的相应资源的其他信息。 联系人信息适用于所有 Microsoft 销售团队。 如果你选择在 CSP 计划中提供你的产品/服务，则此联系信息也可用于通道经销商。 
+你的联系信息允许 Microsoft 销售团队和渠道经销商请求你组织中的相应资源的其他信息。 联系人信息适用于所有 Microsoft 销售团队。 如果你选择在 CSP 计划中提供你的产品/服务，则此联系信息也可用于通道经销商。
 
 本文档提供有关合作伙伴的不同角色以及如何在它们之间进行选择的指导。 你可以通过以下方式提供联系人：从合作伙伴中心下载 CSV 模板，使用联系人信息填充每一行，并导入此 CSV 文件。 导入 CSV 文件将覆盖现有的联系人。
 

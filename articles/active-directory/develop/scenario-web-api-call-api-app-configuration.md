@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423593"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>用于调用 web Api 的 web API-代码配置
 
@@ -33,7 +33,7 @@ ms.locfileid: "74919743"
 
 在任何受保护的 web Api 的代码配置的基础上，你需要订阅在调用 API 时收到的持有者令牌的验证：
 
-```CSharp
+```csharp
 /// <summary>
 /// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
@@ -79,7 +79,7 @@ AddAccountToCacheFromJwt （）方法需要：
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
-```CSharp
+```csharp
 IConfidentialClientApplication app;
 
 #if !VariationWithCertificateCredentials
@@ -108,7 +108,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 在实践中，OBO 流通常用于获取下游 API 的令牌并将其存储在 MSAL.NET 用户令牌缓存中，以便 web API 的其他部分以后可以调用 ``AcquireTokenOnSilent`` 的[替代](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)来调用下游 api。 如果需要，此调用会对标记进行刷新。
 
-```CSharp
+```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
     try

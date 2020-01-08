@@ -4,15 +4,15 @@ description: 了解 Log Analytics 如何保护隐私和数据安全。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 3ff69928f4d6aa1692cdb1d4fd7e846b3a6b7a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4ad762cc3a7388628b7385afb07b45819ef882b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363840"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/fundamentals/trust-center.md)的信息。  
@@ -67,7 +67,7 @@ Log Analytics 服务引入数据后，数据将在该服务的每个组件上都
 
 下表显示了数据类型的示例：
 
-| **数据类型** | **字段** |
+| **Data type** | **Fields** |
 | --- | --- |
 | 警报 |Alert Name、Alert Description、BaseManagedEntityId、Problem ID、IsMonitorAlert、RuleId、ResolutionState、Priority、Severity、Category、Owner、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
 | 配置 |CustomerID、AgentID、EntityID、 ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
@@ -149,9 +149,9 @@ Azure Log Analytics 满足以下要求：
 
 会对已连接系统与 Log Analytics 服务之间的所有通信进行加密。 TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
 
-每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），然后再移到选定的任何代理。 然后，该代理收集数据。
+每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
 
-## <a name="2-send-data-from-agents"></a>2. 从代理发送数据
+## <a name="2-send-data-from-agents"></a>2.从代理发送数据
 将所有代理类型注册到加密密钥，会在代理和 Log Analytics 之间使用基于证书的身份验证和 SSL 以及端口 443 建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
 
 借助 Operations Manager，注册到 Log Analytics 工作区的管理组可与 Operations Manager 管理服务器建立安全 HTTPS 连接。

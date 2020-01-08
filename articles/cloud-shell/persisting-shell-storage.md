@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385550"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
 
 > [!NOTE]
 > Bash 和 PowerShell 共享相同的文件共享。 只能有一个文件共享与 Cloud Shell 中的自动装载相关联。
+
+> [!NOTE]
+> Cloud shell 存储帐户不支持 Azure 存储防火墙。
 
 ## <a name="create-new-storage"></a>创建新存储
 
@@ -36,7 +39,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 
 ![订阅设置](media/persisting-shell-storage/basic-storage.png)
 
-文件共享在 `clouddrive` 目录中装载为 `$Home`。 这是一次性操作，文件共享会自动装载在后续会话中。 
+文件共享在 `$Home` 目录中装载为 `clouddrive`。 这是一次性操作，文件共享会自动装载在后续会话中。 
 
 文件共享还包含一个为你创建的 5-GB 映像，该映像自动将数据持久保存在 `$Home` 目录中。 对于 Bash 和 PowerShell 都是这样。
 
@@ -66,8 +69,8 @@ Cloud Shell 计算机位于以下区域中：
 |区域|地区|
 |---|---|
 |美洲|美国东部、美国中南部、美国西部|
-|欧洲|欧洲北部、欧洲西部|
-|亚太区|印度中部、亚洲东南部|
+|欧洲|北欧、西欧|
+|亚太|印度中部、亚洲东南部|
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
 在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../azure-policy/json-samples.md)。
@@ -75,7 +78,7 @@ Cloud Shell 计算机位于以下区域中：
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 存储的工作原理 
 Cloud Shell 通过以下两种方法持久保存文件： 
 * 创建 `$Home` 目录的磁盘映像来持久保持目录中所有内容。 磁盘映像将作为 `acc_<User>.img` 保存在指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`，并会自动同步更改。 
-* 将指定的文件共享装载为 `clouddrive` 目录中的 `$Home` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
+* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
 > [!NOTE]
 > `$Home` 目录中的所有文件（如 SSH 密钥）将持久保存用户磁盘映像（存储于已装载的文件共享中）中。 在 `$Home` 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
@@ -89,7 +92,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
 
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如 `//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df

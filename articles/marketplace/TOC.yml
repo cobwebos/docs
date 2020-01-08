@@ -76,6 +76,8 @@
 - name: 云合作伙伴门户
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: 通过云合作伙伴门户迁移到合作伙伴中心
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: 门户教程
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -171,7 +173,7 @@
         - name: Azure 应用程序产品/服务
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: 创建 Azure 应用程序套餐
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -197,7 +199,7 @@
         - name: 咨询服务
           href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
             - name: 创建咨询服务套餐
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
@@ -211,7 +213,7 @@
         - name: 容器套餐
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/containers/cpp-prerequisites.md
             - name: 创建容器套餐
               href: ./cloud-partner-portal/containers/cpp-create-offer.md
@@ -248,7 +250,7 @@
         - name: Dynamics 365 for Customer Engagement 产品/服务
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: 创建客户参与套餐
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -270,7 +272,7 @@
         - name: Dynamics 365 for Operations 套餐
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: 如何发布
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -287,7 +289,7 @@
         - name: IoT Edge 模块套餐
           href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
             - name: 创建 IoT Edge 模块套餐
               href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
@@ -309,7 +311,7 @@
         - name: Power BI 应用套餐
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
             - name: 创建 Power BI 应用套餐
               href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
@@ -333,7 +335,7 @@
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
             - name: 创建 VM 套餐
               href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
@@ -397,7 +399,7 @@
       items:
         - name: 概述
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 先决条件
+        - name: 必备条件
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: 注意事项
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: 处理评审反馈
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: 用于载入的 API
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Dynamics 365 产品/服务
           items:
             - name: 创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
@@ -512,13 +516,33 @@
     - name: 支持选项
       href: ./partner-center-portal/support.md
     - name: 合作伙伴中心分析
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: 用于商业市场的分析
+          href: ./partner-center-portal/analytics.md
+        - name: “摘要”仪表板
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: 订单仪表板
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: 使用情况仪表板
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: 客户仪表板
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: 市场见解仪表板
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: 下载仪表板
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: 评分和评价仪表板
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: 常见问题和术语
+          href: ./partner-center-portal/faq-terminology.md
     - name: 收取付款
       items:
         - name: 收取付款
           href: ./partner-center-portal/get-paid.md
         - name: 设置付款帐户和纳税表单
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 计费详细信息
+          href: ./partner-center-portal/billing-details.md
         - name: 付款阈值、方法和时间范围
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: 付款摘要

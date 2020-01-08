@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/09/2019
-ms.openlocfilehash: e8029b957fedc07ba571b61f1211c020b706bea3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1eb8644faf6693a2a33ded489830cf4106df222
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444401"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -60,10 +60,10 @@ ms.locfileid: "74929653"
 
 Azure SQL 数据库托管实例链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为**AzureSqlMI**。 | 是 |
-| connectionString |此属性指定使用 SQL 身份验证连接到托管实例所需的**connectionString**信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 Azure SQL 数据库托管实例与公共终结点一起使用，请显式指定端口3342。<br>将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中。 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |此属性指定使用 SQL 身份验证连接到托管实例所需的**connectionString**信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 Azure SQL 数据库托管实例与公共终结点一起使用，请显式指定端口3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
 | tenant | 指定应用程序所驻留的租户信息，例如域名或租户 ID。 通过将鼠标悬停在 Azure 门户的右上角来检索它。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
@@ -85,10 +85,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -106,10 +103,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -167,10 +161,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -188,7 +179,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 ### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 你可以使用此托管标识进行 Azure SQL 数据库托管实例身份验证。 指定工厂可使用此标识访问数据库数据并向其/从中复制数据。
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 你可以使用此托管标识进行 Azure SQL 数据库托管实例身份验证。 指定的工厂可以使用此标识访问数据库数据或从/向数据库复制数据。
 
 若要使用托管标识身份验证，请执行以下步骤。
 
@@ -222,10 +213,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -241,10 +229,10 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 若要将数据复制到 Azure SQL 数据库托管实例，还支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**AzureSqlMITable**。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -277,12 +265,12 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 若要从 Azure SQL 数据库托管实例复制数据，复制活动源部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为**SqlMISource**。 | 是 |
-| sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |No |
-| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |No |
-| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |No |
+| sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 |否 |
+| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
+| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
 **请注意以下几点：**
 
@@ -383,17 +371,17 @@ GO
 
 若要将数据复制到 Azure SQL 数据库托管实例，请在复制活动接收器部分中支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为**SqlMISink**。 | 是 |
-| writeBatchSize |*每批*插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。  |No |
-| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值为 timespan。 例如，“00:30:00”表示 30 分钟。 |No |
-| preCopyScript |此属性指定在将数据写入到托管实例之前要运行的复制活动的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |No |
-| sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 对于仅运行一次并且与源数据不执行任何操作（例如，删除或截断）的操作，请使用 `preCopyScript` 属性。 | No |
-| storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |No |
-| sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |No |
-| storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | No |
-| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置了 sink 指定存储过程或暂存副本时，不支持创建自动表。 允许的值为： `none` （默认值），`autoCreate`。 |No |
+| writeBatchSize |*每批*插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。  |否 |
+| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值为 timespan。 例如，“00:30:00”表示 30 分钟。 |否 |
+| preCopyScript |此属性指定在将数据写入到托管实例之前要运行的复制活动的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
+| sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用。 对于仅运行一次并且与源数据不执行任何操作（例如，删除或截断）的操作，请使用 `preCopyScript` 属性。 | 否 |
+| storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
+| sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
+| storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
+| tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 在复制活动中配置了 sink 指定存储过程或暂存副本时，不支持创建自动表。 允许的值为： `none` （默认值），`autoCreate`。 |否 |
 
 **示例1：追加数据**
 
@@ -588,7 +576,7 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
 | date |日期/时间 |
 | Datetime |日期/时间 |

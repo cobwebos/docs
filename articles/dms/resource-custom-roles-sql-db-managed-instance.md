@@ -1,6 +1,7 @@
 ---
-title: 适用于 SQL 数据库托管实例联机迁移 SQL Server 的自定义角色 |Microsoft Docs
-description: 了解如何使用自定义角色 SQL Server 到 SQL 数据库托管实例在线迁移。
+title: 自定义角色： Online SQL Server SQL 托管实例迁移
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用自定义角色 SQL Server 到 Azure SQL 数据库托管实例在线迁移。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 8148e029bf343613a230b20d0397fa7851c96712
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 85c70968eb0f8a5752bbfa338918a8bba2fe7794
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952350"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437693"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>适用于 SQL 数据库托管实例联机迁移的自定义角色 SQL Server
 
@@ -31,7 +32,7 @@ Azure 数据库迁移服务使用应用 ID 与 Azure 服务进行交互。 应�
 > [!NOTE]
 > 最后一个自定义角色要求可能最终会被删除，因为新的 SQL 数据库托管实例代码部署到 Azure。
 
-**应用 ID 的自定义角色**。 此角色是在*资源*或*资源组*级别的 Azure 数据库迁移服务迁移所必需的（有关应用 ID 的详细信息，请参阅文章[使用门户创建 Azure AD 应用程序和服务主体）可以访问资源](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)）。
+**应用 ID 的自定义角色**。 此角色是在*资源*或*资源组*级别的 Azure 数据库迁移服务迁移所必需的（有关应用 ID 的详细信息，请参阅[使用门户创建可访问资源 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)）。
 
 ```json
 {

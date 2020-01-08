@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 workspace() 表达式 | Microsoft Docs
 description: workspace 表达式用于 Azure Monitor 日志查询中，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364945"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
 
@@ -27,7 +26,7 @@ ms.locfileid: "72932842"
 
 - 标识符：使用下表中的某种格式标识工作区。
 
-| 标识符 | 描述 | 示例
+| 标识符 | Description | 示例
 |:---|:---|:---|
 | 资源名称 | 人工可读的工作区名称（又称“组件名称”） | workspace("contosoretail") |
 | 限定的名称 | 窗体中工作区的完整名称：“subscriptionName/resourceGroup/componentName” | workspace('Contoso/ContosoResource/ContosoWorkspace') |

@@ -1,17 +1,17 @@
 ---
-title: 了解如何在 Azure Cosmos DB 中配置和管理生存时间
+title: 在 Azure Cosmos DB 中配置和管理生存时间
 description: 了解如何配置和管理容器中的生存时间和 Azure Cosmos DB 中的项
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 51022956ad32059771b8d56f0ae177fb5165b450
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 55f94257b604a87460caa279fc0995f1434ac92c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441782"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -21,7 +21,7 @@ ms.locfileid: "74873601"
 
 通过以下步骤在没有到期时间的容器上启用生存时间。 启用此项即可在项级别重写 TTL。 也可通过输入非零值（代表秒）来设置 TTL。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -133,7 +133,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 使用以下步骤在项上启用生存时间：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 

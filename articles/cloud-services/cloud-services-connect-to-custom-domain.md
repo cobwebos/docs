@@ -2,17 +2,17 @@
 title: 将云服务连接到自定义域控制器 | Microsoft Docs
 description: 了解如何使用 PowerShell 和 AD 域扩展将 Web/辅助角色连接到自定义 AD 域
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359184"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75387014"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。
@@ -141,7 +141,7 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-这就是所有的操作。
+就是这么简单。
 
 云服务应已加入自定义域控制器。 如果你想要深入了解用于配置 AD 域扩展的其他选项，请使用 PowerShell 帮助。 下面是一些示例：
 
@@ -149,3 +149,6 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

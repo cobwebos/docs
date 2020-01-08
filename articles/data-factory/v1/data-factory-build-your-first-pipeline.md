@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 90084864f9a93117a0f94dc1d36e6119e88ee335
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bb77182489e08795e5eb482740eed6c67d2f1627
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438950"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建用于转换数据的第一个管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-> * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+> * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
@@ -76,13 +76,13 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 如上所示的示例行中，第行（具有 2016-01-01）会写入 month = 1 文件夹中的 000000_0 文件。 同样，第二行会写入 month = 2 文件夹中的文件，第三行会写入 month = 3 文件夹中的文件。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始本教程之前，必须具有以下先决条件：
 
-1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文了解如何获取免费试用帐户。
-2. **Azure 存储** - 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，记下**帐户名称**和**访问键**。 请参阅[查看、复制和重新生成存储访问密钥](../../storage/common/storage-account-manage.md#access-keys)。
-3. 下载并查看位于[ 的 Hive 查询文件 (HQL)https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql)。 此查询转换输入数据以生成输出数据。 
-4. 下载并查看位于[ 的示例输入文件 (input.log)https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)。
+1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
+2. **Azure 存储** - 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 有关如何检索存储帐户访问密钥的信息，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) 的 Hive 查询文件 (HQL)。 此查询转换输入数据以生成输出数据。 
+4. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) 的示例输入文件 (input.log)。
 5. 在 Azure Blob 存储中创建一个名为 **adfgetstarted** 的 blob 容器。 
 6. 将 **partitionweblogs.hql** 文件上传到 **adfgetstarted** 容器中的 **script** 文件夹。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具。 
 7. 将 **input.log** 文件上传到 **adfgetstarted** 容器中的 **inputdata** 文件夹。 
@@ -91,7 +91,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
+- [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 Visual Studio 提供了一种 GUI 方式来构建你的数据工厂。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。

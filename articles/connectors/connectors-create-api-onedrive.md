@@ -1,22 +1,22 @@
 ---
-title: 连接到 OneDrive
-description: 使用 OneDrive REST API 和 Azure 逻辑应用上传和管理文件
+title: 访问和管理 Microsoft OneDrive 中的文件
+description: 通过在 Azure 逻辑应用中创建自动化工作流，在 OneDrive 中上载和管理文件
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 93528e257ab45644a79c58fbf600dca10317eb0b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378426"
 ---
-# <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
+# <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
 
-连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 利用 OneDrive，你可以执行以下任务：
+通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[OneDrive 连接器](/connectors/onedriveconnector/)，你可以创建自动化任务和工作流来管理文件，包括上传、获取、删除文件等。 利用 OneDrive，你可以执行以下任务：
 
 * 通过在 OneDrive 中存储文件生成工作流，或更新 OneDrive 中的现有文件。 
 * 在 OneDrive 内创建或更新文件时，使用触发器启动工作流。
@@ -38,7 +38,7 @@ ms.locfileid: "74789676"
 
 触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 在逻辑应用中，键入“onedrive”获取触发器列表：  
+1. 在逻辑应用设计器中，键入 `onedrive` 以获取触发器列表：  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "74789676"
 
 ## <a name="use-an-action"></a>使用操作
 
-操作是指在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
 1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
 
@@ -66,7 +66,7 @@ ms.locfileid: "74789676"
 
 2. 选择“添加操作”。
 
-3. 在文本框中，键入“onedrive”获取所有可用操作的列表。
+3. 在 "搜索" 框中，键入 `onedrive` 以获取所有可用操作的列表。
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364078"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -23,9 +23,9 @@ ms.locfileid: "74286122"
 
 本文介绍将 Windows 虚拟机规模集的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自 Windows Azure 诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 将它们存储在此位置可以访问可用于平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，Windows Azure 诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。  
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。  
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
@@ -286,7 +286,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。 
 
-1. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。  
+1. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。  
 
 然后，还可以选择使用此指标中的维度，来为特定的 VM 绘制此指标的图表，或者绘制规模集中每个 VM 的图表。 
 

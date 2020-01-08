@@ -9,14 +9,14 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352874"
 ---
-# <a name="service-bus-faq"></a>服务总线常见问题解答
+# <a name="service-bus-faq"></a>服务总线常见问题
 
 本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)了解常规的 Azure 定价和支持信息。
 
@@ -42,46 +42,46 @@ ms.locfileid: "73748446"
 
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
-可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
+可以将以下协议与 Azure 服务总线配合使用来发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
 - 服务总线邮件协议 (SBMP)
 - HTTP
 
-请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
+请参阅下表，了解需要打开的出站端口，才能使用这些协议与 Azure 事件中心通信。 
 
 | 协议 | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| AMQP | 5671和5672 | 请参阅[AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350至9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
-若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行白名单？
+若要查找连接的空白列表的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下 `Non-authoritative answer`中返回的 IP 地址。 此 IP 地址是静态的。 只有将命名空间还原到其他群集时，它才会更改。
 
-如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
+如果对命名空间使用区域冗余，则需要执行一些附加步骤： 
 
-1. 首先，在命名空间中运行 nslookup。
+1. 首先，在命名空间上运行 nslookup。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
+2. 记下**非权威答案**部分中的名称，其格式为以下格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
+3. 为带有后缀 s1、s2 和 s3 的每个实例运行 nslookup，以获取三个可用性区域中运行的所有三个实例的 IP 地址。 
 
 
 ## <a name="best-practices"></a>最佳实践
@@ -96,7 +96,7 @@ ms.locfileid: "73748446"
 * 重复检测
 * 快速实体
 
-## <a name="pricing"></a>定价
+## <a name="pricing"></a>价格
 本部分回答了一些关于服务总线定价结构的常见问题解答。
 
 [服务总线定价和计费](https://azure.microsoft.com/pricing/details/service-bus/)译文介绍了服务总线中的计费标准。 有关服务总线定价选项的具体信息，请参阅[服务总线定价详细信息](https://azure.microsoft.com/pricing/details/service-bus/)。
@@ -113,7 +113,7 @@ ms.locfileid: "73748446"
 否，服务总线不对存储收费。 但是，对于每个队列/主题的最大可保留数据量，有配额限制。 请参阅下一个常见问题。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一个服务总线标准命名空间。 为什么在资源组 "$system" 下看不到收费？
-Azure 服务总线最近升级了计费组件。 出于此原因，如果你有一个 Service Bus 标准命名空间，则可能会在资源组中看到资源 "/subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" 的行项系统 '。
+Azure 服务总线最近升级了计费组件。 出于此原因，如果你有一个 Service Bus 标准命名空间，则在资源组 "$system" 下，你可能会看到资源 "/subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" 的行项。
 
 这些费用表示预配了服务总线标准命名空间的每个 Azure 订阅的基本费用。 
 
@@ -128,7 +128,7 @@ Azure 服务总线最近升级了计费组件。 出于此原因，如果你有�
 
 虽然 Microsoft 保留禁用在给定月份超过使用配额的客户帐户的权利，但仍然会在采取任何措施前发送电子邮件通知，并多次尝试与客户联系。 超过这些配额的客户仍需负责超出配额的费用。
 
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
+至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 你可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
@@ -150,7 +150,7 @@ Azure 服务总线最近升级了计费组件。 出于此原因，如果你有�
 
 #### <a name="portal"></a>门户
 
-要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)的说明操作。 
+要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)的说明操作。 
 
 #### <a name="powershell"></a>PowerShell
 

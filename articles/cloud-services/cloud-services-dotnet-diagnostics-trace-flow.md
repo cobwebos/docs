@@ -1,20 +1,21 @@
 ---
-title: 使用 Azure 诊断跟踪云服务应用程序中的流 | Microsoft Docs
+title: 通过 Azure 诊断跟踪云服务应用程序中的流
+titleSuffix: Azure Cloud Services
 description: 将跟踪消息添加到 Azure 应用程序中，以协作进行调试、性能度量、监视、流量分析等。
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: gwallace
-ms.openlocfilehash: b8d195fba934ceae98af383b96a8c0d9a9b88c5f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.author: tagore
+ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386504"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务应用程序的流
 跟踪是在应用程序运行时监视其执行情况的一种方式。 可以使用 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) 和 [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) 类在日志、文本文件或其他设备中记录与错误及应用程序执行情况相关的信息，供以后进行分析。 有关跟踪的详细信息，请参阅[跟踪和检测应用程序](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)。
@@ -71,4 +72,7 @@ Trace、Debug 和 TraceSource 都要求设置“侦听器”来收集和记录�
     ```
 3. 添加 Trace 语句，以便捕获有关应用程序状态的信息。 可以使用多种方法来来格式化 Trace 语句的输出。 有关详细信息，请参阅[如何：向应用程序代码添加 Trace 语句](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code)。
 4. 保存源文件。
+
+
+
 

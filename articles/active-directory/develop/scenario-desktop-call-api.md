@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8cf2d75257bb3d751de1c3b251a9a3326bce0a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423873"
 ---
 # <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>桌面应用程序调用 web Api-调用 web API
 
@@ -100,7 +100,7 @@ task.resume()
 
 如果需要为同一个用户调用多个 Api，则在获取第一个 API 的令牌后，只需调用 `AcquireTokenSilent`，就会在大多数情况下，在大多数情况下，自动获取其他 Api 的令牌。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -113,7 +113,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 - 用户同意第一个 API，但现在需要同意更多作用域（增量许可）
 - 第一个 API 不需要多重身份验证，而是下一个 API。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 

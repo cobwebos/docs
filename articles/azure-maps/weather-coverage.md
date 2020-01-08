@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407635"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps 天气范围
 
@@ -110,7 +110,7 @@ ms.locfileid: "74769024"
 | 中非共和国    | ✓               |                              |        ✓| 
 | 乍得                        | ✓               |                              |        ✓| 
 | 科摩罗联盟                     | ✓               |                              |        ✓| 
-| 刚果（金）                 | ✓               |                              |        ✓|
+| 刚果（民主共和国）                 | ✓               |                              |        ✓|
 | 科特迪瓦               | ✓               |                              |        ✓| 
 | 吉布提                    | ✓               |                              |        ✓| 
 | 埃及                       | ✓               |                              |        ✓| 
@@ -226,7 +226,7 @@ ms.locfileid: "74769024"
 | 新加坡                         | ✓ |   |  ✓| 
 | 所罗门群岛                   | ✓ |   |  ✓| 
 | 斯里兰卡                         | ✓ |   |  ✓| 
-| 中国台湾                            | ✓ |   |  ✓| 
+| 台湾                            | ✓ |   |  ✓| 
 | 塔吉克斯坦                        | ✓ |   |  ✓| 
 | 泰国                          | ✓ |   |  ✓| 
 | 东帝汶                       | ✓ |   |  ✓| 

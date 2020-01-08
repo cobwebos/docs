@@ -3,17 +3,17 @@ title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
 description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: gwallace
-ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: tagore
+ms.openlocfilehash: 16b0727a78ad8ad582535fa1f5b0e57079cc4c05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68358932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385580"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -103,7 +103,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 Application Insights 会自动收集以下性能计数器：
 
-* \Process(??APP_WIN32_PROC??)\%处理器时间
+* \Process （？？APP_WIN32_PROC？？）\% 处理器时间
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -292,3 +292,6 @@ counterServiceUsed.Increment();
 - [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
 - [指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+
+
+

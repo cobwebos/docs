@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: d8dd6392cf22852a10c1dc2600edcbc647f3c510
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441255"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 
@@ -64,7 +64,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 - **OrderBy**和**OrderByDescending**：转换为 ORDER BY with ASC 或 DESC。
 - 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
 - **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比较。
-- **Take**：转换为 SQL TOP，用于限制查询中的结果。
+- **Skip**和**Take**：转换为 SQL 偏移和限制，以限制查询中的结果并执行分页。
 - **数学函数**：支持从 .net `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`和 `Truncate` 转换为等效的 SQL 内置函数。
 - **字符串函数**：支持从 .net `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`和 `TrimStart` 转换为等效的 SQL 内置函数。
 - **数组函数**：支持从 .net `Concat`、`Contains`和 `Count` 转换为等效的 SQL 内置函数。

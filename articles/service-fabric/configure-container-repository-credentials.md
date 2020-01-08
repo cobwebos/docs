@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric-配置容器存储凭据 |Microsoft Docs
+title: Azure Service Fabric-配置容器存储凭据
 description: 配置存储库凭据以从容器注册表下载映像
-services: service-fabric
-documentationcenter: .net
 author: arya
-manager: gkhanna
-ms.assetid: b93d31e5-9e4c-4405-b266-c0efa4643d97
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
-ms.date: 8/1/2019
+ms.date: 12/09/2019
 ms.author: arya
-ms.openlocfilehash: c415739934e2318ea5287d5eed9f8235029b666f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 25fe3c69b19d397137d1e1802e941e0433a1b160
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351659"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>配置应用程序的存储库凭据以下载容器映像
 
@@ -65,7 +57,7 @@ Service Fabric 允许你配置群集范围的凭据，这些凭据可由应用�
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType (string) --- 从 6.4 版运行时起受支持
 
-下面是可以在 ClusterManifestTemplate 文件的 `Hosting` 部分中添加的内容的示例。 可以在群集创建时或配置升级后期添加 `Hosting` 节。 有关详细信息，请参阅[更改 Azure Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)和[管理 Azure Service Fabric 应用程序机密](service-fabric-application-secret-management.md)
+下面是可以在 ClusterManifestTemplate 文件的 `Hosting` 部分中添加的内容的示例。 可以在创建群集时或稍后在配置升级中添加 `Hosting` 部分。 有关详细信息，请参阅[更改 Azure Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)和[管理 Azure Service Fabric 应用程序机密](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [

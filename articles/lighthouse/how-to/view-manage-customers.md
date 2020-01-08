@@ -1,22 +1,24 @@
 ---
 title: 查看和管理客户及委派资源
 description: 作为使用 Azure 委派资源管理的服务提供商，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的客户资源和订阅。
-ms.date: 10/23/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456837"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>查看和管理客户及委派资源
 
-使用 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)的服务提供商可以使用 **Azure 门户**中“我的客户”页来查看委派的客户资源和订阅[](https://portal.azure.com)。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
+使用 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)的服务提供商可以使用 [Azure 门户](https://portal.azure.com)中“我的客户”页来查看委派的客户资源和订阅。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
 
 若要访问 Azure 门户中“我的客户”页，请选择“所有服务”，然后搜索“我的客户”并选择它。 还可以通过在 Azure 门户顶部附近的搜索框中输入“我的客户”来找到它。
 
-请记住，“我的客户”页顶部仅显示关于已具有委派订阅或资源组的客户的信息。 如果你与其他客户（例如[云解决方案提供商](https://docs.microsoft.com/partner-center/csp-overview)）合作，则不会在此看到关于这些客户的信息，除非载入其资源以进行委派资源管理。 在页面下方，无论客户是否已加入 Azure 授权资源管理，“云解决方案提供商(预览)”部分都会显示**签署了 Microsoft 客户协议 (MCA)** 并加入了 Azure 计划的 CSP 客户的账单信息和资源[](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](https://docs.microsoft.com/azure/billing/mpa-overview)。
+请记住，"**我的客户**" 页的 "顶级**客户**" 部分仅显示有关已委派订阅或资源组的客户的信息。 如果你与其他客户（例如通过[云解决方案提供商计划](https://docs.microsoft.com/partner-center/csp-overview)）合作，则在 "**客户**" 部分中将不会显示有关这些客户的信息，除非你已将其资源载入 Azure 委派的资源管理。
+
+在此页上，名为 "**云解决方案提供商（预览版）** " 的单独部分会显示已[签署 Microsoft 客户协议（MCA）](https://docs.microsoft.com/partner-center/confirm-customer-agreement)且处于[Azure 计划下](https://docs.microsoft.com/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../billing/mpa-overview.md)。 请注意，此部分中将显示此类 CSP 客户，无论是否还载入它们进行 Azure 委派的资源管理。 同样，CSP 客户无需显示在 "**我的客户**的**云解决方案提供商（预览版）** " 部分中，即可将它们加入 Azure 委托资源管理。
 
 > [!NOTE]
 > 你的客户可以通过导航到 Azure 门户中的“我的客户”来查看有关服务提供商的信息。 有关详细信息，请参阅[查看和管理服务提供商](view-manage-service-providers.md)。
@@ -28,7 +30,7 @@ ms.locfileid: "74463822"
 对于每位客户，你将看到客户姓名、客户 ID（租户 ID）以及与用户参与相关联的产品/服务。 在“委派”列中，你将看到委派订阅数和/或委派资源组数。
 
 > [!IMPORTANT]
-> 若要查看委派，必须在加入过程中向用户授予[读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)角色（或其他内置角色，其中包括读者访问权限）。
+> 若要查看委派，必须在加入过程中向用户授予[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或其他内置角色，其中包括读者访问权限）。
 
 可通过页面顶部的筛选器对客户信息进行排序和分组，或者按特定的客户、产品/服务或关键字进行筛选。
 

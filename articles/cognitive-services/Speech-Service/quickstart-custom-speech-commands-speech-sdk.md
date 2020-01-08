@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381097"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "74976751"
 
 本文介绍如何执行以下操作：
 
-- 发布自定义命令应用程序并获取应用程序标识符（应用程序 id）
+- 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
 - 使用语音 SDK 创建一个客户端应用，以允许你与自定义命令应用程序对话
 
 ## <a name="prerequisites"></a>必备组件
@@ -49,7 +49,7 @@ ms.locfileid: "74976751"
    > [!div class="mx-imgBorder"] 
    > ![发布应用程序](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. 复制发布通知中的应用 id 供以后使用
+1. 复制发布通知中的应用 ID 供以后使用
 
 ## <a name="step-2-create-a-visual-studio-project"></a>步骤2：创建 Visual Studio 项目
 
@@ -309,7 +309,7 @@ ms.locfileid: "74976751"
    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
    const string region = "YourServiceRegion"; // The subscription service region. Note: only 'westus2' is currently supported
 
-   var speechCommandsConfig = DialogServiceConfig.FromSpeechCommandsAppId(speechCommandsApplicationId, speechSubscriptionKey, region);
+   var speechCommandsConfig = CustomCommandsConfig.FromSubscription(speechCommandsApplicationId, speechSubscriptionKey, region);
    speechCommandsConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-us");
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```

@@ -4,15 +4,15 @@ description: 用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 12/05/2019
-ms.openlocfilehash: ec0580d3360a56fc6b779b8c0a69eb2a09b007db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928925"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450705"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 

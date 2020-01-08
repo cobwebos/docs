@@ -2,19 +2,15 @@
 title: Azure 自动化的 Runbook 和模块库
 description: 可以安装并在 Azure 自动化环境中使用 Microsoft 和社区提供的 Runbook 与模块。  本文介绍如何访问这些资源，以及在库中补充 Runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850714"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421487"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 
@@ -70,7 +66,7 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 4. 在“浏览库”页，可以按以下字段进行搜索：
 
    * 模块名称
-   * Tags
+   * 标记
    * 作者
    * Cmdlet/DSC 资源名称
 

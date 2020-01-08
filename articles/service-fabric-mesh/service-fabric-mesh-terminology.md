@@ -1,20 +1,16 @@
 ---
-title: Azure Service Fabric 网格术语 | Microsoft Docs
+title: 适用于 Azure Service Fabric 网格的术语
 description: 本文详细介绍 Azure Service Fabric 网格所使用的术语，以帮助你更好地了解文档中使用的术语。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6df7a6b708bca81f1390ac879f24ea4c22c38bee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351972"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric 网格术语
 
@@ -46,7 +42,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 若要部署服务，需要描述服务的运行方式。 Service Fabric 支持 3 种不同的部署模型：
 
 ### <a name="resource-model"></a>资源模型
-Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，包括应用程序、服务、网络和卷。 资源是使用可以部署到集群终结点的 JSON 文件定义的。  对于 Service Fabric 网格，使用 Azure 资源模型架构。 还可以使用 YAML 文件架构更轻松地创作定义文件。 可将资源部署到 Service Fabric 运行的任何位置。 资源模型是用来描述 Service Fabric 应用程序的最简单方法。 其主要重点在于容器化服务的简单部署和管理。 要了解详细信息，请参阅 [Service Fabric 资源模型简介](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)。
+Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，包括应用程序、服务、网络和卷。 资源是使用可以部署到集群终结点的 JSON 文件定义的。  对于 Service Fabric 网格，使用 Azure 资源模型架构。 YAML 文件架构还可用于更轻松地创作定义文件。 可将资源部署到 Service Fabric 运行的任何位置。 资源模型是用来描述 Service Fabric 应用程序的最简单方法。 其主要重点在于容器化服务的简单部署和管理。 要了解详细信息，请参阅 [Service Fabric 资源模型简介](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)。
 
 ### <a name="native-model"></a>本机模块
 本机应用程序模型为应用程序提供对 Service Fabric 的完整低级别访问权限。 应用程序和服务被定义为 XML 清单文件中的已注册类型。
@@ -72,15 +68,15 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 
 | 应用程序类型 | 介绍依据 | Azure Service Fabric 网格 | Azure Service Fabric 群集（任何 OS）| 本地群集 | 独立群集 |
 |---|---|---|---|---|---|
-| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 支持|支持|Windows - 支持|
+| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 受支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
+|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 受支持|受支持|Windows - 支持|
 
 下表介绍了不同的应用模型以及针对 Service Fabric 为它们提供的工具。
 
-| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
 | Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不支持|
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 支持|支持|支持|支持|
+|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 受支持|受支持|受支持|受支持|
 
 ## <a name="next-steps"></a>后续步骤
 

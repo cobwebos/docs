@@ -1,5 +1,5 @@
 ---
-title: 获取用于在移动应用中调用 web Api 的令牌 |Microsoft
+title: 获取用于调用 web API （移动应用）的令牌 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 web Api （获取应用的令牌）的移动应用
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1101a1923e094c22e9f6a82853f4dec4deb089a1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5d584dc2eef27747627133511af3defe085068ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423823"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>用于调用 web Api 的移动应用-获取令牌
 
@@ -45,7 +45,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 #### <a name="xamarin"></a>Xamarin
-```CSharp 
+```csharp 
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -200,7 +200,7 @@ MSAL for iOS 和 macOS 支持以交互方式或无提示方式获取令牌时使
 
 下面的示例演示了使用 Microsoft Graph 以交互方式获取用于读取用户配置文件的令牌的最小代码。
 
-```CSharp
+```csharp
 string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
@@ -243,7 +243,7 @@ catch(MsalUiRequiredException)
 
 此修饰符用于您希望用户提前预先同意多个资源的高级方案（并且不想使用通常与 MSAL.NET/Microsoft identity platform v2.0 一起使用的增量许可）。 有关详细信息，请参阅[操作方法：为多个资源提前许可用户](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .WithExtraScopeToConsent(scopesForVendorApi)
                      .ExecuteAsync();

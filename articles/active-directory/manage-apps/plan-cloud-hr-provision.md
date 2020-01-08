@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 5d55aafc29b3b022d1023077d2d8f459b0608ae7
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 6f72371077aab813cc22c9bbbe755fdfaa9ac00a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433822"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -53,7 +53,7 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 - 需要根据在云 HR 应用中检测到的更改信息，加入、移动和离开用户以同步到一个或多个 AD 林、域和 Ou
 - 使用 Office 365 发送电子邮件
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>学习
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -96,7 +96,7 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 | | [如何在 Active Azure Directory 中部署用户预配？](https://youtu.be/pKzyts6kfrw) |
 | 教程 | 请参阅[教程列表，了解如何将 SaaS 应用与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) |
 | | [教程：为 Workday 配置自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| 常见问题解答 | [自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#frequently-asked-questions) |
+| 常见问题 | [自动用户预配](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [从 Workday 预配到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -319,14 +319,14 @@ SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方�
 
 ## <a name="plan-for-initial-cycle"></a>规划初始周期
 
-首次运行 Azure AD 预配服务时，它会对 cloud HR 应用执行[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning)，以创建 cloud hr 应用中所有用户对象的快照。 初始周期所用的时间直接取决于源系统中有多少用户。 使用超过100000个用户的某些云 HR 应用租户的初始周期可能需要较长时间。
+首次运行 Azure AD 预配服务时，它会对 cloud HR 应用执行[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)，以创建 cloud hr 应用中所有用户对象的快照。 初始周期所用的时间直接取决于源系统中有多少用户。 使用超过100000个用户的某些云 HR 应用租户的初始周期可能需要较长时间。
 
 **对于大型云 HR 应用租户（> 30000 用户），我们建议**你在渐进阶段中运行初始循环，并仅在验证在 AD 中为不同用户预配方案设置了正确属性后启动增量更新。 按照以下顺序进行操作：
 
 1. 通过设置[范围筛选器](#plan-scoping-filters-and-attribute-mapping)，仅为一组有限的用户运行初始周期。
 2. 验证为首次运行选择的用户设置的 AD 帐户预配和属性值。 如果结果满足您的预期，请展开范围筛选器以逐步包含更多用户，并验证第二次运行的结果。
 
-对测试用户初始周期的结果感到满意后，即可启动[增量更新](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#incremental-cycles)。
+对测试用户初始周期的结果感到满意后，即可启动[增量更新](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles)。
 
 ## <a name="plan-testing-and-security"></a>规划测试和安全
 
@@ -358,7 +358,7 @@ SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方�
 
 如果云 HR 用户预配实现在生产环境中不能按预期方式工作，以下回滚步骤可以帮助你恢复到以前已知的良好状态：
 
-1. 查看[预配摘要报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#getting-provisioning-reports-from-the-azure-management-portal)和[预配日志](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#provisioning-audit-logs)（请参阅[管理 cloud HR 应用用户预配](#manage-your-configuration)），确定对受影响的用户和/或组执行了哪些错误操作。
+1. 查看[预配摘要报告](check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal)和[预配日志](check-status-user-account-provisioning.md#provisioning-logs-preview)（请参阅[管理 cloud HR 应用用户预配](#manage-your-configuration)），确定对受影响的用户和/或组执行了哪些错误操作。
 2. 可以通过预配审核日志或查看目标系统（Azure AD 或 AD）来确定受影响的用户和/或组的最后已知良好状态。
 3. 与应用所有者合作，使用上一次已知的良好状态值更新直接受应用影响的用户和/或组。
 
@@ -374,7 +374,7 @@ Azure AD 可以通过审核日志和报告，进一步深入了解你的组织�
 
 ### <a name="gain-insights-from-reports-and-logs"></a>从报表和日志获取见解
 
-在成功完成[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning)后，Azure AD 预配服务将继续按特定于每个应用的教程中定义的时间间隔，无限期地运行回回增量更新，直到发生以下事件之一：
+在成功完成[初始循环](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)后，Azure AD 预配服务将继续按特定于每个应用的教程中定义的时间间隔，无限期地运行回回增量更新，直到发生以下事件之一：
 
 - 手动停止该服务，并使用[Azure 门户](https://portal.azure.com/)或使用适当的[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)命令触发了新的初始周期。
 - 由于属性映射或范围筛选器发生更改，将触发新的初始周期。

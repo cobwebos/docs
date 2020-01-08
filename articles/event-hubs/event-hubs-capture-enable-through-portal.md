@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户捕获流式处理事件 - Azure事件中心 | Microsoft Docs
+title: 事件中心-使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
 services: event-hubs
 documentationcenter: ''
@@ -13,26 +13,26 @@ ms.tgt_pltfrm: na
 ms.custom: seodec18
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 12/20/2019
 ms.author: shvija
-ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 267f7c47d101406463378ad12c295ace80aecb7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437234"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
-使用 azure[事件中心捕获][capture-overview], 可以自动将事件中心内的流数据传送到[Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或所选的[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)帐户。
+使用 azure[事件中心捕获][capture-overview]，可以自动将事件中心内的流数据传送到[Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或所选的[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)帐户。
 
 可以使用 [Azure 门户](https://portal.azure.com)在创建事件中心时配置捕获。 可以将数据捕获到 Azure [Blob 存储](https://azure.microsoft.com/services/storage/blobs/)容器或 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) 帐户。
 
-有关详细信息, 请参阅[事件中心捕获概述][capture-overview]。
+有关详细信息，请参阅[事件中心捕获概述][capture-overview]。
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>将数据捕获到 Azure 存储帐户  
 
-创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。   然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。   由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure 资源管理器，必须以字符串形式显式提供此 URI。
+创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。 然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。 由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure 资源管理器，必须以字符串形式显式提供此 URI。
 
 默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
@@ -54,15 +54,15 @@ ms.locfileid: "68320308"
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 
-1. 注意，事件中心与刚创建的Azure Data Lake Store 必须属于同一 Azure 订阅。 创建事件中心，在“创建事件中心”门户页中单击“捕获”下的“启用”按钮。    
-2. 在“创建事件中心”  门户页的“捕获提供程序”框中选择“Azure Data Lake Store”。  
-3. 在“选择 Data Lake Store”中指定此前创建的 Data Lake Store 帐户，并在“Data Lake 路径”字段中输入已创建的数据文件夹的路径。  
+1. 注意，事件中心与刚创建的Azure Data Lake Store 必须属于同一 Azure 订阅。 创建事件中心，在“创建事件中心”门户页中单击“捕获”下的“启用”按钮。 
+2. 在“创建事件中心”门户页的“捕获提供程序”框中选择“Azure Data Lake Store”。
+3. 在“选择 Data Lake Store”中指定此前创建的 Data Lake Store 帐户，并在“Data Lake 路径”字段中输入已创建的数据文件夹的路径。
 
     ![选择 Data Lake Storage 帐户][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>在现有的事件中心添加或配置捕获
 
-可以在事件中心命名空间中的现有事件中心配置捕获。 若要对现有的事件中心启用“捕获”功能，或者要更改“捕获”设置，请单击命名空间以加载概览屏幕，然后单击要启用或更改“捕获”设置的事件中心。 最后，单击已打开页面左侧的“捕获”  选项，然后编辑设置，如以下各图所示：
+可以在事件中心命名空间中的现有事件中心配置捕获。 若要对现有的事件中心启用“捕获”功能，或者要更改“捕获”设置，请单击命名空间以加载概览屏幕，然后单击要启用或更改“捕获”设置的事件中心。 最后，单击已打开页面左侧的“捕获”选项，然后编辑设置，如以下各图所示：
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -79,7 +79,7 @@ ms.locfileid: "68320308"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[事件中心捕获概述][capture-overview], 了解有关事件中心捕获的详细信息。
+- 阅读[事件中心捕获概述][capture-overview]，了解有关事件中心捕获的详细信息。
 - 还可以通过 Azure 资源管理器模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure 资源管理器模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
 - [了解如何创建使用事件中心命名空间作为源的 Azure 事件网格订阅](store-captured-data-data-warehouse.md)
 - [Azure Data Lake Store 入门（使用 Azure 门户）](../data-lake-store/data-lake-store-get-started-portal.md)

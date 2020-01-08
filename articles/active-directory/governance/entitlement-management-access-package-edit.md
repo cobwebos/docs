@@ -1,5 +1,5 @@
 ---
-title: 在 Azure AD 的权利管理中隐藏或删除访问包-Azure Active Directory
+title: 在授权管理中隐藏或删除访问包-Azure AD
 description: 了解如何在 Azure Active Directory 权限管理中隐藏或删除访问包。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf410db5a483fc4f5d9efc1a6bd5c6202694ef4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422622"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中隐藏或删除访问包
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428884"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
@@ -133,7 +133,7 @@ ms.locfileid: "74792643"
 
 1. 在解决方案资源管理器中，打开项目快捷菜单，然后选择 "**部署** > "**新建**"。 如果出现系统提示，请使用 Azure 帐户登录。
 
-1. 出现提示时，确认要用于部署的 Azure 订阅、Azure 资源组和其他任何设置，如用于传递模板参数值的[参数文件](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)，然后选择 "**部署**"。
+1. 出现提示时，确认要用于部署的 Azure 订阅、Azure 资源组和其他任何设置，如用于传递模板参数值的[参数文件](../azure-resource-manager/templates/parameter-files.md)，然后选择 "**部署**"。
 
    ![确认部署设置](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

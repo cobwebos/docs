@@ -1,31 +1,20 @@
 ---
-title: Service Fabric 服务分区 | Microsoft 文档
+title: Service Fabric 服务分区
 description: 介绍如何对 Service Fabric 有状态服务进行分区。 分区在本地计算机上启用数据存储，以便一起扩展数据和计算。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/30/2017
-ms.author: atsenthi
-ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434067"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
 
 ## <a name="partitioning"></a>分区
-分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 一种众所周知的分区形式是[数据分区][wikipartition]，也称为分片。
+分区并不是 Service Fabric 所独有的。 事实上，它是构建可缩放服务的核心模式。 从更广泛的意义来说，分区就是将状态（数据）和计算划分为更小的可访问单元，以提高伸缩性和性能的一个概念。 一种众所周知的分区形式是[数据分区][wikipartition]，也称为分片。
 
 ### <a name="partition-service-fabric-stateless-services"></a>Service Fabric 无状态服务分区
 对于无状态服务，可以将分区视为包含服务的一个或多个实例的逻辑单元。 图 1 显示一个无状态服务，其五个实例使用一个分区在群集中分布。
@@ -36,7 +25,7 @@ ms.locfileid: "60711840"
 
 在任一情况下，对无状态服务进行分区都是非常少见的方案 — 通常通过添加更多实例来实现可伸缩性和可用性。 对于无状态服务实例要考虑多个分区的唯一情况是在需要满足特殊路由请求时。
 
-例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可对无状态服务进行分区的情况的另一个示例是在用户具有真正分区的后端（例如分片 SQL 数据库）并且要控制哪个服务实例应写入数据库分片（或是在无状态服务中执行的其他准备工作需要的分区信息与后端中使用的信息相同）时。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
+例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可以对无状态服务进行分区的情况的另一个示例是在具有真正分区后端（例如分片 SQL 数据库）并且要控制哪个服务实例应写入数据库分片（或是在无状态服务中执行的其他准备工作需要的分区信息与后端中使用的信息相同）时。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
 
 本演练的其余部分侧重于有状态服务。
 
@@ -45,8 +34,8 @@ ms.locfileid: "60711840"
 
 在 Service Fabric 有状态服务的上下文中进行分区是指确定特定服务分区负责服务完整状态的某个部分的过程。 （如前所述，分区是一组[副本](service-fabric-availability-services.md)）。 Service Fabric 的一大优点是它将分区置于不同节点上。 这使它们可以按照节点的资源限制来增长。 随着数据需求的增长，分区也会增长，Service Fabric 会在节点间重新平衡分区。 这可确保硬件资源的持续高效使用。
 
-例如，假设开始时拥有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。 在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](service-fabric-availability-services.md)。
-如果现在需要将群集扩大到 10 个节点，则 Service Fabric 会在所有 10 个节点间重新均衡主[副本](service-fabric-availability-services.md)。 同样，如果重新缩小为 5 个节点，则 Service Fabric 会在 5 个节点间重新平衡所有副本。  
+为了提供一个示例，假设你开始时有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。 在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](service-fabric-availability-services.md)。
+如果现在需要将群集扩大到 10 个节点，则 Service Fabric 会在所有 10 个节点间重新平衡主[副本](service-fabric-availability-services.md)。 同样，如果重新缩小为 5 个节点，则 Service Fabric 会在 5 个节点间重新平衡所有副本。  
 
 图 2 显示缩放群集之前和之后的 10 个分区的分布。
 
@@ -55,11 +44,11 @@ ms.locfileid: "60711840"
 这样，便因为来自客户端的请求在计算机间进行分布而实现了扩大，提高了应用程序的整体性能，并减少了对数据区块的访问争用。
 
 ## <a name="plan-for-partitioning"></a>规划分区
-实现服务之前，应始终考虑扩大所需的分区策略。可使用不同方式，但所有方式都注重应用程序需要实现的功能。 由于本文的背景，我们来考虑一些更重要的方面。
+在实现服务之前，应始终考虑横向扩展所需的分区策略。有多种不同的方法，但所有这些方法都专注于应用程序需要实现的目标。 由于本文的背景，我们来考虑一些更重要的方面。
 
 一个不错的方法是将需要进行分区的状态的结构视为第一步。
 
-我们来看一个简单的示例。 如果您打算构建县级轮询服务，可以县中创建的分区，为每个城市。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
+我们来看一个简单的示例。 如果要为县内的投票生成服务，可以为县中的每个城市创建一个分区。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
 
 ![简单分区屏幕截图](./media/service-fabric-concepts-partitioning/cities.png)
 
@@ -70,7 +59,7 @@ ms.locfileid: "60711840"
 为避免出现这种情况，从分区的角度来看，应做两件事：
 
 * 尝试对状态进行分区，以便状态在所有分区间均匀分布。
-* 从服务的每个副本报告负载。 （有关操作方法的信息，请查看这篇有关[指标和负载](service-fabric-cluster-resource-manager-metrics.md)的文章）。 Service Fabric 可以报告服务消耗的负载，例如内存量或记录数。 根据报告的指标，Service Fabric 会检测到某些分区处理的负载高于其他分区，并通过将副本移动到更合适的节点来重新平衡群集，以便在整体上不会有节点超载。
+* 从服务的每个副本报告负载。 （有关操作方法的信息，请查看这篇有关[指标和负载](service-fabric-cluster-resource-manager-metrics.md)的文章）。 Service Fabric 可以报告服务消耗的负载，例如内存量或记录数。 根据报告的指标，Service Fabric 会检测到某些分区处理的负载高于其他分区，并通过将副本移动到更合适的节点来重新平衡群集，以便在整体上不会有节点过载。
 
 有时，无法知道将处于给定分区中的数据量。 因此，常规建议是执行以下两种操作：首先是采用在分区间均匀分布数据的分区策略，其次是报告负载。  第一种方法可防止投票示例中描述的情况，而第二种方法可帮助随时间推移而消除访问或负载的中的临时差异。
 
@@ -80,7 +69,7 @@ ms.locfileid: "60711840"
 
 在极少数情况下，可能最终需要比最初选择更多的分区。 因为无法在事后更改分区计数，所以需要应用一些高级分区方法，如创建相同服务类型的新服务实例。 还需要实现某种可基于客户端代码必须维护的客户端知识，将请求路由到正确服务实例的客户端逻辑。
 
-分区规划的另一个注意事项是可用计算机资源。 由于需要访问和存储状态，因此你一定会遵循以下各项：
+分区规划的另一个注意事项是可用计算机资源。 因为需要对状态进行访问和存储，所以一定要遵循以下各项：
 
 * 网络带宽限制
 * 系统内存限制
@@ -102,7 +91,7 @@ Service Fabric 提供了三个分区方案可供选择：
 命名和单独分区方案是范围分区的特殊形式。 默认情况下，用于 Service Fabric 的 Visual Studio 模板会使用范围分区，因为它是最常用且最有用的分区。 本文的其余部分重点介绍范围分区方案。
 
 ### <a name="ranged-partitioning-scheme"></a>范围分区方案
-此方案用于指定整数范围（由低键和高键标识）和分区数目 (n)。 它会创建 n 个分区，每个分区负责整个分区键范围的未重叠子范围。 例如，一个采用低键 0、高键 99 和计数 4 的范围分区方案将创建如下所示的 4 个分区。
+此方案用于指定整数范围（由低键和高键标识）和分区数目 (n)。 它将创建 n 个分区，每个分区负责整个分区键范围的未重叠子范围。 例如，一个采用低键 0、高键 99 和计数 4 的范围分区方案将创建如下所示的 4 个分区。
 
 ![范围分区](./media/service-fabric-concepts-partitioning/range-partitioning.png)
 
@@ -116,7 +105,7 @@ Service Fabric 提供了三个分区方案可供选择：
 有关选择常规哈希代码算法的良好资源是[哈希函数的维基百科网页](https://en.wikipedia.org/wiki/Hash_function)。
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>构建具有多个分区的有状态服务
-我们来创建具有多个分区的第一个可靠有状态服务。 在此示例中，会生成一个非常简单的应用程序，在其中要以相同字母开头的所有姓氏存储在相同分区中。
+我们来创建具有多个分区的第一个可靠有状态服务。 在此示例中，会构建一个非常简单的应用程序，在其中要以相同字母开头的所有姓氏存储在相同分区中。
 
 编写任何代码之前，需要考虑分区和分区键。 需要 26 个分区（字母表中的每个字母各一个分区），但是低键和高键是怎样的呢？
 因为我们确实是对每个字母使用一个分区，所以可以使用 0 作为低键，使用 25 作为高键，因为每个字母都是自己的键。
@@ -129,7 +118,7 @@ Service Fabric 提供了三个分区方案可供选择：
 1. 打开“**Visual Studio**” > “**文件**” > “**新建**” > “**项目**”。
 2. 在“**新建项目**”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”  对话框中，选择“有状态”  服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml
@@ -163,9 +152,9 @@ Service Fabric 提供了三个分区方案可供选择：
    
     可以在同一台计算机上承载此服务的多个副本，因此此地址需要是副本独有的。 这就是 URL 中包含分区 ID 和副本 ID 的原因。 HttpListener 可以在同一端口上侦听多个地址，只要 URL 前缀是唯一的。
    
-    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 “+”在此处用作地址，以便副本在所有可用主机（IP、FQDN、localhost 等）上进行侦听下面的代码演示一个示例。
+    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 "+" 在此处用作地址，以便副本在所有可用主机（IP、FQDN、localhost 等）上进行侦听下面的代码显示了一个示例。
    
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
          return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
@@ -193,7 +182,7 @@ Service Fabric 提供了三个分区方案可供选择：
     该侦听 URL 提供给 HttpListener。 发布的 URL 是发布到 Service Fabric 命名服务（用于服务发现）的 URL。 客户端会通过该发现服务请求此地址。 客户端获取的地址需要具有节点的实际 IP 或 FQDN 才能连接。 因此需要将“+”替换为节点的 IP 或 FQDN，如上所示。
 9. 最后一步是将处理逻辑添加到服务，如下所示。
    
-    ```CSharp
+    ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         string output = null;
@@ -235,13 +224,13 @@ Service Fabric 提供了三个分区方案可供选择：
     }
     ```
    
-    `ProcessInternalRequest` 会读取用于调用分区的查询字符串参数值，并调用 `AddUserAsync` 将姓氏添加到可靠字典 `dictionary`。
-10. 让我们将一个无状态服务添加到项目，以查看如何调用特定分区。
+    `ProcessInternalRequest` 会读取用于调用分区的查询字符串参数值，并调用 `AddUserAsync` 以将姓氏添加到可靠字典 `dictionary`。
+10. 我们来将一个无状态服务添加到项目，以查看如何调用特定分区。
     
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，然后将它发送到 Alphabet.Processing 服务进行处理。
 11. 在“**创建服务**”对话框中，选择“**无状态**”服务并将它称为“Alphabet.Web”，如下所示。
     
-    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)上获取。
+    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
     
     ```xml
@@ -249,7 +238,7 @@ Service Fabric 提供了三个分区方案可供选择：
     ```
 13. 需要在 Web 类中返回 ServiceInstanceListeners 的集合。 同样，可以选择实现简单 HttpCommunicationListener。
     
-    ```CSharp
+    ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
@@ -265,7 +254,7 @@ Service Fabric 提供了三个分区方案可供选择：
     ```
 14. 现在需要实现处理逻辑。 HttpCommunicationListener 在请求进入时调用 `ProcessInputRequest`。 那么，我们来继续进行，添加下面的代码。
     
-    ```CSharp
+    ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
     {
         String output = null;
@@ -309,9 +298,9 @@ Service Fabric 提供了三个分区方案可供选择：
     }
     ```
     
-    让我们逐步演练其步骤。 此代码将查询字符串参数 `lastname` 的第一个字母读入一个字符中。 随后，它通过从姓氏第一个字母的十六进制值减去 `A` 的十六进制值，来确定字母的分区键。
+    让我们逐步演练其步骤。 代码将查询字符串参数 `lastname` 的第一个字母为读入到一个字符中。 随后，它通过从姓氏第一个字母的十六进制值减去 `A` 的十六进制值，来确定字母的分区键。
     
-    ```CSharp
+    ```csharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
@@ -320,19 +309,19 @@ Service Fabric 提供了三个分区方案可供选择：
     请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。
     接下来，我们通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `partition`。 `servicePartitionResolver` 定义为
     
-    ```CSharp
+    ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
     `ResolveAsync` 方法采用服务 URI、分区键和取消标记作为参数。 处理服务的服务 URI 是 `fabric:/AlphabetPartitions/Processing`。 接下来，我们会获取分区的终结点。
     
-    ```CSharp
+    ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
     最后，我们会构建终结点 URL 以及查询字符串，并调用处理服务。
     
-    ```CSharp
+    ```csharp
     JObject addresses = JObject.Parse(ep.Address);
     string primaryReplicaAddress = (string)addresses["Endpoints"].First();
     

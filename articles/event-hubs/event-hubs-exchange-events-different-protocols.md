@@ -1,5 +1,5 @@
 ---
-title: 使用不同协议的应用之间的交换事件 - Azure 事件中心 | Microsoft Docs
+title: Azure 事件中心-使用不同协议的 Exchange 事件
 description: 本文介绍使用不同协议（AMQP、Apache Kafka 和 HTTPS）的使用者和生成者在使用 Azure 事件中心时如何交换事件。
 services: event-hubs
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/20/2019
 ms.author: bahariri
-ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aecde0c36fc48f75e5174ca3e1ab9e2b3476d08a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437188"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>使用不同协议的使用者与生成者之间的交换事件：AMQP、Kafka 和 HTTPS
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同协议（AMQP、Kafka 和 HTTPS）的使用者与生成者之间交换事件
 Azure 事件中心支持使用者和生成者的三种协议：AMQP、Kafka 和 HTTPS。 其中每个协议使用自身的方式来表示消息，因此，自然而然引出了以下问题：如果应用程序通过一种协议将事件发送到事件中心，并通过另一种协议来使用事件，那么，当事件抵达使用者时，事件的各个组成部分和值是怎样的？ 本文介绍有关生产者和使用者的最佳做法，确保使用方应用程序正确解释事件中的值。
 
 具体而言，本文中的建议涵盖以下客户端（开发代码片段时使用了所列的版本）：
@@ -344,5 +344,5 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 * [了解事件中心](event-hubs-what-is-event-hubs.md)
 * [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 * [在适用于 Kafka 的事件中心 GitHub 上浏览更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) [将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)。
+* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)[将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)。
 * 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心

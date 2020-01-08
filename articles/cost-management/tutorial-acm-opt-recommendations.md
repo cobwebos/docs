@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用优化建议降低 Azure 成本 | Microsoft Docs
+title: 教程-通过建议减少 Azure 成本
 description: 本教程帮助你使用优化建议来降低 Azure 成本。
 services: cost-management
 keywords: ''
@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a9dbb121cab49024aaf0dc65bbac938764d9f8b2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c3fc60ca623649a175fb1078efc6903ebde2811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444589"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：通过建议优化成本
 
 Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看成本优化建议，以查看潜在的低效使用情况。
 > * 实施建议，以将虚拟机的大小调整为更具成本效益的选项
 > * 验证操作，确保成功调整虚拟机的大小
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 建议适用于各种范围和 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 订阅
@@ -98,7 +98,7 @@ Azure Advisor 会监视你的虚拟机使用情况七天，然后识别使用不
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看成本优化建议，以查看潜在的低效使用情况。

@@ -8,18 +8,18 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555288"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402045"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
-> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。
+> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。
 
-[管理解决方案]( solutions.md)提供打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，然后在要求提高以后利用相关概念生成更复杂的解决方案。
+[管理解决方案]( solutions.md)提供打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，并在要求提高以后利用相关概念生成更复杂的解决方案。
 
 ## <a name="what-is-a-management-solution"></a>管理解决方案是什么？
 
@@ -60,7 +60,7 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 
 
 ## <a name="create-solution-file"></a>创建解决方案文件
-配置并测试将要成为解决方案一部分的组件以后，即可[创建解决方案文件]( solutions-solution-file.md)。  可在 [Resource Manager 模板](../../azure-resource-manager/resource-group-authoring-templates.md)中实现解决方案组件。该模板包含一个与文件中的其他资源存在多项关系的[解决方案资源]( solutions-solution-file.md#solution-resource)。  
+配置并测试将要成为解决方案一部分的组件以后，即可[创建解决方案文件]( solutions-solution-file.md)。  可在 [Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)中实现解决方案组件。该模板包含一个与文件中的其他资源存在多项关系的[解决方案资源]( solutions-solution-file.md#solution-resource)。  
 
 
 ## <a name="test-your-solution"></a>测试解决方案
@@ -76,5 +76,5 @@ Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何为管理解决方案[创建解决方案文件]( solutions-solution-file.md)。
-* 了解[创作 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息。
+* 了解[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息。
 * 在 [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates)中搜索不同 Resource Manager 模板的示例。

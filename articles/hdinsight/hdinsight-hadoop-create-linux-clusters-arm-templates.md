@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435537"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 
@@ -23,14 +23,14 @@ ms.locfileid: "74279279"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 一个 [Azure 订阅](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * Azure PowerShell 和/或 Azure CLI。
 
-### <a name="resource-manager-templates"></a>Resource Manager 模板
+### <a name="resource-manager-templates"></a>资源管理器模板
 
-通过资源管理器模板，可轻松地通过单个协调操作为应用程序创建以下资源：
+使用资源管理器模板可以轻松地通过单个协调的操作为应用程序创建以下资源：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）。
 * 其他资源（例如要使用 [Apache Sqoop](https://sqoop.apache.org/) 的 Azure SQL 数据库）。
 
@@ -40,20 +40,20 @@ ms.locfileid: "74279279"
 
 有关资源管理器模板的详细信息，请参阅以下文章和示例：
 
-* [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
+* [创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)
 * [使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) 模板引用
 * [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>生成模板
 
-使用资源管理器可利用不同工具从订阅中的现有资源导出资源管理器模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。 有关详细信息，请参阅[导出模板](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)。
+使用资源管理器可利用不同工具从订阅中的现有资源导出资源管理器模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。 有关详细信息，请参阅[导出模板](../azure-resource-manager/templates/export-template-portal.md)。
 
 ## <a name="deploy-using-the-portal"></a>使用门户进行部署
 
-可以使用 Azure 门户部署资源管理器模板。 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)。
+可以使用 Azure 门户部署资源管理器模板。 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-## <a name="deploy-using-powershell"></a>使用 PowerShell 进行部署
+## <a name="deploy-using-powershell"></a>使用 PowerShell 部署
 
 可以使用 Azure PowerShell 部署资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/resource-manager-powershell-sas-token.md)。
 
@@ -77,11 +77,11 @@ ms.locfileid: "74279279"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解更多信息，请参阅下列文章：
+在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解详细信息，请参阅以下文章：
 
 * 有关 HDInsight 相关模板的详细信息，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../solution-dev-test-environments.md)。
-* 若要了解 Azure 资源管理器模板的节，请参阅[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+* 若要了解 Azure 资源管理器模板的节，请参阅[创作模板](../azure-resource-manager/templates/template-syntax.md)。
 * 有关可在 Azure 资源管理器模板中使用的函数列表，请参阅[模板函数](../azure-resource-manager/resource-group-template-functions.md)。

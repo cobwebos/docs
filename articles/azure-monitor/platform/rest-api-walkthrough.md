@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551829"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363500"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -97,7 +97,7 @@ $authHeader = @{
 
 **方法**：GET
 
-**请求 URI**： https： \/ \/management Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/{*resourceGroupName}* /Providers/ *{resourceProviderNamespace* } / *{resourceType}* / *{/providers/microsoft.insights/metricDefinitions}* 的？ api 版本 = *{apiVersion}*
+**请求 URI**： https：\/\/Management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{* }/providers/microsoft.insights/metricDefinitions？ api 版本 = *{apiVersion}*
 
 例如，若要检索 Azure 存储帐户的指标定义，请求将如下所示：
 
@@ -241,7 +241,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**： https \://Management.azure.com/subscriptions/ *{* /resourceGroups/}/providers/ *{资源提供程序-命名空间* *} /* *{资源类型}* / *{resource name}* /providers/microsoft.insights/metrics？ metricnames = *{公制}* & timespan = *{starttime/endtime}* & $Filter = *{filter}* & resultType = metadata & api 版本 = *{apiVersion}*
+**请求 URI**： https\://Management.azure.com/subscriptions/ *{* /resourceGroups/ *}* /providers/ *{resource provider-namespace* }/ *{resource type}* / *{resource name*}/providers/microsoft.insights/metrics？ metricnames = *{公制}* & Timespan = *{starttime/endtime}* & $filter = *{filter}* & resultType = metadata & api 版本 = *{apiVersion}*
 
 例如，若要检索为“事务”指标的“API 名称维度”发出的维度值列表，其中在指定时间范围内 GeoType 维度为“Primary”，则请求将如下所示：
 
@@ -393,7 +393,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**： https： \/ \/management Azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/{*resourceGroupName}* /Providers/ *{resourceProviderNamespace* } / *{resourceType}* / *{/providers/microsoft.insights/metricDefinitions}* 的？ api 版本 = *{apiVersion}*
+**请求 URI**： https：\/\/Management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /Providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{* }/providers/microsoft.insights/metricDefinitions？ api 版本 = *{apiVersion}*
 
 例如，若要检索某个 Azure 逻辑应用的指标定义，请求将如下所示：
 

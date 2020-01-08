@@ -2,19 +2,15 @@
 title: Azure 自动化中的 Runbook 输出和消息
 description: 介绍如何在 Azure 自动化中从 runbook 创建和检索输出和错误消息。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421041"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 
@@ -22,13 +18,13 @@ ms.locfileid: "74849643"
 
 下表简要介绍了 Azure 门户中的每个流及其对已发布的 runbook 的行为以及[测试 runbook](automation-testing-runbook.md) 的时间。 后面的部分将提供有关每个流的更多详细信息。
 
-| 流 | 描述 | 已发布 | 测试 |
+| 流 | Description | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 错误 |面向用户的错误消息。 与发生异常时不同，默认情况下，在出现错误消息后，Runbook 会继续执行。 |写入作业历史记录。 |显示在测试输出窗格中。 |
-| 详细 |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录。 |仅当在 Runbook 中将 $VerbosePreference 设置为 Continue 时，才显示在“测试输出”窗格中。 |
-| Progress |完成 Runbook 中每个活动之前和之后自动生成的记录。 由于 runbook 面向交互式用户，因此不应尝试创建自身的进度记录。 |仅当为 Runbook 启用了进度日志记录时，才写入作业历史记录。 |不显示在测试输出窗格中。 |
+| “详细” |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录。 |仅当在 Runbook 中将 $VerbosePreference 设置为 Continue 时，才显示在“测试输出”窗格中。 |
+| 进度 |完成 Runbook 中每个活动之前和之后自动生成的记录。 由于 runbook 面向交互式用户，因此不应尝试创建自身的进度记录。 |仅当为 Runbook 启用了进度日志记录时，才写入作业历史记录。 |不显示在测试输出窗格中。 |
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录。 |不会写入测试输出窗格。 |
 
 ## <a name="output-stream"></a>输出流
@@ -178,7 +174,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 
 下表列出了在 Runbook 中有效的 preference 变量值的行为。
 
-| Value | 行为 |
+| 值 | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |

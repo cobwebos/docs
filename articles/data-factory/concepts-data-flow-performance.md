@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 10/07/2019
-ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444510"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -67,7 +67,7 @@ ms.locfileid: "74928535"
 * 通过设置查询，可以在源中的行到达数据流进行处理之前对其进行筛选。 这可以使初始数据采集更快。 如果使用查询，可以为 Azure SQL DB 添加可选的查询提示，如 "未提交读"。
 * 未提交读将提供更快的源转换查询结果
 
-![源](media/data-flow/source4.png "Source")
+![数据源](media/data-flow/source4.png "源")
 
 ### <a name="sink-batch-size"></a>接收器批大小
 
@@ -81,7 +81,7 @@ ms.locfileid: "74928535"
 
 ### <a name="disable-indexes-on-write"></a>在写入时禁用索引
 
-在管道中，将 "[存储过程" 活动](transform-data-using-stored-procedure.md)添加到 "数据流" 活动之前，该活动会在从接收器写入的目标表上禁用索引。 在 "数据流" 活动之后，添加另一个启用这些索引的存储过程活动。
+在管道中，将 "[存储过程" 活动](transform-data-using-stored-procedure.md)添加到 "数据流" 活动之前，该活动会在从接收器写入的目标表上禁用索引。 在 "数据流" 活动之后，添加另一个启用这些索引的存储过程活动。 或在数据库接收器中使用预处理脚本和后处理脚本。
 
 ### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>增加 Azure SQL DB 和 DW 的大小
 
@@ -114,7 +114,7 @@ ms.locfileid: "74928535"
 
 ### <a name="looping-through-file-lists"></a>遍历文件列表
 
-当源转换循环访问多个文件而不是循环访问每个活动的时，映射数据流将更好地执行。 建议在源转换中使用通配符或文件列表。 通过允许在 Spark 群集内发生循环，可以更快地执行数据流进程。 有关详细信息，请参阅[源转换中的通配符](data-flow-source.md#file-based-source-options)。
+当源转换循环访问多个文件而不是循环访问每个活动的时，映射数据流将更好地执行。 建议在源转换中使用通配符或文件列表。 通过允许在 Spark 群集内发生循环，可以更快地执行数据流进程。 有关详细信息，请参阅[源转换中的通配符](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
 例如，如果您的数据文件列表是您希望在 Blob 存储中的文件夹中处理的数据2019文件，下面是可以在源转换中使用的通配符。
 
@@ -127,8 +127,8 @@ ms.locfileid: "74928535"
 在 CosmosDB 接收器上设置吞吐量和批属性仅在从管道数据流活动执行该数据流时生效。 在数据流执行之后，原始集合设置将被 CosmosDB。
 
 * 批大小：计算数据的粗略行大小，并确保行大小 * 批大小小于2000000。 如果是，请增加批大小以获得更好的吞吐量
-* 吞吐量：在此处设置更高的吞吐量设置，以允许文档更快写入 CosmosDB。 请记住，基于高吞吐量设置的 RU 成本较高。
-*   写入吞吐量预算：使用小于每分钟的总 ru 数的值。 如果有大量 Spark partitiongs 的数据流，则设置预算吞吐量会允许对这些分区进行更多的均衡。
+* 吞吐量：在此处设置较高的吞吐量设置，以允许文档更快写入 CosmosDB。 请记住，基于高吞吐量设置的 RU 成本较高。
+*   写入吞吐量预算：使用小于每分钟的总 ru 数的值。 如果具有大量 Spark 分区的数据流，则设置预算吞吐量会允许对这些分区进行更多的均衡。
 
 ## <a name="next-steps"></a>后续步骤
 

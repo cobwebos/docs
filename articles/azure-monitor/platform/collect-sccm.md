@@ -4,15 +4,15 @@ description: 本文介绍了将 Configuration Manager 连接到 Azure Monitor �
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364044"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可以将 System Center Configuration Manager 环境连接到 Azure Monitor，以便同步设备集合数据并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
@@ -22,7 +22,7 @@ ms.locfileid: "72932638"
 Azure Monitor 支持 System Center Configuration Manager 当前分支，版本1606及更高版本。
 
 >[!NOTE]
->使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 使用此功能之前，必须先启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)。
+>使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>配置概述
 
@@ -80,8 +80,8 @@ Azure Monitor 支持 System Center Configuration Manager 当前分支，版本16
 
 4. 在 Azure 服务向导的 "Azure 服务" 页上：
 
-    1. 为 Configuration Manager 中的对象指定**名称**。
-    2. 指定可选**描述**，以帮助你标识服务。
+    1. 指定 Configuration Manager 中的对象名称。
+    2. 指定可选说明以帮助标识服务。
     3. 选择 Azure 服务**OMS 连接器**。
 
     >[!NOTE]
@@ -109,7 +109,7 @@ Azure Monitor 支持 System Center Configuration Manager 当前分支，版本16
 
     8. 选择 "**验证**"，结果应显示为 "**成功验证"！** 。
 
-8. 在 "**配置**" 页上，查看有关 " **azure 订阅**"、" **azure 资源组**" 和 " **Operations Management Suite 工作区**" 字段是否预先填充的信息，指示 Azure AD 的应用程序资源组中有足够的权限。 如果字段为空，则表示您的应用程序没有所需的权限。 选择要收集并转发到工作区的设备集合，然后选择 "**添加**"。
+8. 在 "**配置**" 页上，查看用于验证**azure 订阅**、 **Azure 资源组**和**Operations Management Suite 工作区**字段的信息，以表明 Azure AD 应用程序在资源组中具有足够的权限。 如果字段为空，则表示您的应用程序没有所需的权限。 选择要收集并转发到工作区的设备集合，然后选择 "**添加**"。
 
 9. 查看 "**确认设置"** 页上的选项，然后选择 "**下一步**" 以开始创建和配置连接。
 

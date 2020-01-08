@@ -1,5 +1,5 @@
 ---
-title: 配置用于调用 web Api 的移动应用 |Microsoft
+title: 注册调用 web Api 的移动应用 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何生成调用 web Api 的移动应用（应用的代码配置）
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c5160d88e390f9bfe905dfee0684983a7a49365
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0684b8002dad8e0cb29bb1b7afb6ac5a2bd4d685
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423776"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>用于调用 web Api 的移动应用-应用注册
 
@@ -66,7 +66,7 @@ ms.locfileid: "74919879"
    ![映像"](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. 将为你计算重定向 URI。
-   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![图像](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 如果希望手动配置重定向 URI，可以通过应用程序清单执行此操作。 建议的格式如下所示：
 

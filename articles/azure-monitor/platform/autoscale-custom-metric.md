@@ -1,32 +1,28 @@
 ---
 title: 使用自定义指标在 Azure 中自动缩放
 description: 了解如何在 Azure 中根据自定义指标缩放资源。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: f83c68dd2f2ddbb73974a2ea4e91e746308945c6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364537"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>在 Azure 中根据自定义指标自动缩放入门
 本文介绍如何在 Azure 门户中根据自定义指标缩放资源。
 
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
-## <a name="lets-get-started"></a>让我们开始
-本文假定已有一个配了 Application Insights 的 Web 应用。 如果还没有，则可以[为 ASP.NET 网站设置 Application Insights][1]
+## <a name="lets-get-started"></a>入门
+本文假定已有一个配了 Application Insights 的 Web 应用。 如果还没有，可以[为 ASP.NET 网站设置 Application Insights][1]
 
-- 打开 [Azure 门户][2]
+- 打开[Azure 门户][2]
 - 单击左侧导航窗格中的 Azure Monitor 图标。
   ![启动 Azure Monitor][3]
-- 单击“自动缩放设置”可查看自动缩放所适用于的所有资源及其当前的自动缩放状态 ![在 Azure Monitor 中发现自动缩放][4]
+- 单击“自动缩放设置”可查看适用自动缩放的所有资源及其当前自动缩放状态![在 Azure Monitor 中发现自动缩放][4]
 - 在 Azure Monitor 中打开“自动缩放”边栏选项卡，并选择要缩放的资源
   > 注意：以下步骤使用的应用服务计划与某个已配置 Application Insights 的 Web 应用相关联。
 - 在资源的“缩放设置”边栏选项卡中，请注意当前实例计数为 1。 单击“启用自动缩放”。
@@ -41,7 +37,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 祝贺。 现在已成功创建缩放设置，以基于自定义指标自动缩放 Web 应用。
 
-> 注意：若要开始使用 VMSS 或云服务角色，相同的步骤也适用。
+> 注意：若要开始使用 VMSS 或云服务角色，也可以运用相同的步骤。
 
 <!--Reference-->
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net

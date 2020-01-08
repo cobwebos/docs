@@ -1,25 +1,16 @@
 ---
-title: Reliable Services WCF 通信堆栈 | Microsoft 文档
+title: Reliable Services WCF 通信堆栈
 description: Service Fabric 中的内置 WCF 通信堆栈为 Service Services 提供客户端到服务的 WCF 通信。
-services: service-fabric
-documentationcenter: .net
 author: BharatNarasimman
-manager: chackdan
-editor: vturecek
-ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: ae8a0ab0382083ebfca0834d2238403668efa71d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433866"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services 基于 WCF 的通信堆栈
 Reliable services 框架使服务创作者能够选择他们要用于其服务的通信堆栈。 他们可以通过从 [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) 方法返回的 **ICommunicationListener** 来插入所选的通信堆栈。 对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。

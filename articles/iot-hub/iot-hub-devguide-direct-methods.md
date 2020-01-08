@@ -6,13 +6,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rezas
+ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327748"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429273"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "61327748"
 
 每个设备方法针对一个设备。 [在多个设备上计划作业](iot-hub-devguide-jobs.md)展示了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
-只要拥有 IoT 中心的“服务连接”  权限，任何人都可以调用设备上的方法。
+只要拥有 IoT 中心的“服务连接”权限，任何人都可以调用设备上的方法。
 
 直接方法遵循请求-响应模式，适用于需要立即确认其结果的通信。 例如对设备的交互式控制，如打开风扇。
 
@@ -36,7 +36,7 @@ ms.locfileid: "61327748"
 > 调用设备上的直接方法时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列组中的任一项除外：``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 300 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
+直接方法是同步的，在超时期限（默认：30秒，可设置为300秒）后成功或失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
 直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 
@@ -50,17 +50,17 @@ ms.locfileid: "61327748"
 
 设备上的直接方法调用是 HTTPS 调用，它由以下项构成：
 
-* 特定于设备的请求 URI 以及 [API 版本](/rest/api/iothub/service/invokedevicemethod)  ：
+* 特定于设备的请求 URI 以及 [API 版本](/rest/api/iothub/service/invokedevicemethod)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* POST 方法 
+* POST 方法
 
-* 标头  ，包含身份验证、请求 ID、内容类型和内容编码。
+* 标头，包含身份验证、请求 ID、内容类型和内容编码。
 
-* 采用以下格式的透明 JSON 正文  ：
+* 采用以下格式的透明 JSON 正文：
 
     ```json
     {
@@ -98,11 +98,11 @@ curl -X POST \
 
 后端应用接收响应，响应由以下项构成：
 
-* HTTP 状态代码  ，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）。
+* HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）。
 
-* 标头  ，包含 ETag、请求 ID、内容类型和内容编码。
+* 标头，包含 ETag、请求 ID、内容类型和内容编码。
 
-* 采用以下格式的 JSON 正文  ：
+* 采用以下格式的 JSON 正文：
 
     ```json
     {

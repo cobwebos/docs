@@ -2,19 +2,15 @@
 title: Azure 自动化中的图形创作
 description: 图形创作可以让你在不使用代码的情况下，为 Azure 自动化创建 Runbook。 本文介绍了图形创作以及开始创建图形 Runbook 所需的所有详细信息。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850289"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450747"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -36,7 +32,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 ### <a name="canvas"></a>画布
 
-画布是设计 Runbook 的地方。 可以将库控件中节点的活动添加到 Runbook，然后将其通过链接进行连接，以便定义 Runbook 的逻辑。
+画布是设计 Runbook 的地方。 可以将库控件中节点的活动添加到 Runbook，并将其通过链接进行连接，以便定义 Runbook 的逻辑。
 
 可以使用画布底部的控件来放大和缩小。
 
@@ -44,7 +40,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 库控件是你选择要添加到 Runbook 的[活动](#activities)的地方。 可以将活动添加到画布，再将它们连接到其他活动。 它包括下表中描述的四个部分：
 
-| 部分 | 描述 |
+| 部分 | Description |
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | Runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
@@ -109,7 +105,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源将取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | 描述 |
+| 数据源 | Description |
 |:--- |:--- |
 | 常量值 |键入参数的值。 这仅适用于以下数据类型：Int32、Int64、字符串、布尔值、DateTime、开关。 |
 | 活动输出 |工作流中某个位于当前活动前面的活动的输出。 将列出所有有效的活动。 只选择要将其输出用于参数值的活动。 如果该活动输出的对象具有多个属性，可以在选择活动之后键入属性的名称。 |
@@ -139,7 +135,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 重试条件可以使用名为 $RetryData 的变量提供活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | NumberOfAttempts |活动已运行的次数。 |
 | 输出 |活动上次运行的输出。 |
@@ -191,7 +187,7 @@ $DateTimeStart
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 这种情况下，会包括下表中描述的链接类型。
 
-| 链接类型 | 描述 |
+| 链接类型 | Description |
 |:--- |:--- |
 | 管道 |对于源活动中的每个对象输出，目标活动都将运行一次。 如果源活动没有生成任何输出，目标活动将不会运行。 源活动的输出可用作对象。 |
 | 序列 |目标活动只运行一次。 它会接收来自源活动的对象数组。 源活动的输出可用作对象数组。 |
@@ -204,7 +200,7 @@ $DateTimeStart
 
 指定链接的条件时，目标活动仅在该条件解析为 true 的情况下运行。 通常会在条件中使用 $ActivityOutput 变量来检索源活动的输出
 
-对于管道链接，可以为一个对象指定一个条件，然后针对源活动的每个对象输出对条件进行评估。 然后会针对符合条件的每个对象运行目标活动。 例如，通过 Get-AzureRmVm 源活动，可以将以下语法用于条件管道链接，以便只检索名为 *Group1* 的资源组中的虚拟机。
+对于管道链接，可以为一个对象指定一个条件，并针对源活动的每个对象输出对条件进行评估。 然后会针对符合条件的每个对象运行目标活动。 例如，通过 Get-AzureRmVm 源活动，可以将以下语法用于条件管道链接，以便只检索名为 *Group1* 的资源组中的虚拟机。
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
@@ -245,7 +241,7 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 ![交接点](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### <a name="cycles"></a>周期
+### <a name="cycles"></a>Cycles
 
 一个周期是指目标活动需要多长时间才能通过链接回到其源活动，或者回到最终会通过链接回到其源活动的其他活动。 目前不允许使用周期来进行图形创作。 如果 Runbook 有一个周期，可以正常保存它，但在运行它时会收到一个错误。
 
@@ -272,7 +268,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 可以通过在任何活动上选择*检查点 Runbook*，在图形 PowerShell 工作流 Runbook 中设置[检查点](automation-powershell-workflow.md#checkpoints)。 这会导致在运行活动之后设置检查点。
 
-![检查点](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 检查点仅在图形 PowerShell 工作流 Runbook 中启用，在图形 Runbook 中不可用。 如果 Runbook 使用 Azure cmdlet，当 Runbook 暂停并且在不同的辅助角色上从此检查点重新开始时，应使用 Connect-AzureRmAccount 遵循任何检查点活动。
 
@@ -297,7 +293,7 @@ Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进
 
 为了确保后向兼容性，以便使用 [Azure AD 用户帐户](automation-create-aduser-account.md)创建了自动化帐户的订户能够管理 Azure 经典部署或 Azure 资源管理器资源，身份验证的方法是带有[凭据资产](automation-credentials.md)的 Add-AzureAccount cmdlet，该资产代表具有 Azure 帐户访问权限的 Active Directory 用户。
 
-可以将此功能添加到图形 Runbook，只需将凭据资产添加到画布，然后完成 Add-AzureAccount 活动即可。 Add-AzureAccount 使用凭据活动作为其输入。 以下示例对此进行了演示：
+可以将此功能添加到图形 Runbook，只需将凭据资产添加到画布，并完成 Add-AzureAccount 活动即可。 Add-AzureAccount 使用凭据活动作为其输入。 以下示例对此进行了演示：
 
 ![身份验证活动](media/automation-graphical-authoring-intro/authentication-activities.png)
 
@@ -322,11 +318,11 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 
 按下表中的属性定义每个输入参数：
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | 名称 |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
-| 描述 |针对输入参数的可选说明。 |
-| Type |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
+| Description |针对输入参数的可选说明。 |
+| 类型 |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
 | 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，将无法启动 Runbook。 |
 | 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
 

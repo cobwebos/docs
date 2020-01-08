@@ -2,17 +2,17 @@
 title: 云服务角色配置 XPath 速查表 | Microsoft Docs
 description: 可在云服务角色配置中用来将设置公开为环境变量的各种 XPath 设置。
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386079"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>使用 XPath 将角色配置设置公共为环境变量
 在云服务辅助角色或 Web 角色服务定义文件中，可以将运行时配置值公开为环境变量。 支持以下 XPath 值（分别对应于 API 值）。
@@ -102,7 +102,7 @@ ms.locfileid: "68359003"
 ## <a name="endpoint-ip"></a>终结点 IP
 获取指定终结点的 IP 地址。
 
-| type | 示例 |
+| 类型 | 示例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
 | 代码 |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
@@ -161,4 +161,7 @@ ms.locfileid: "68359003"
 创建 [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) 包。
 
 为角色启用[远程桌面](cloud-services-role-enable-remote-desktop-new-portal.md)。
+
+
+
 

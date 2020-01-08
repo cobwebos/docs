@@ -1,6 +1,7 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例 | Microsoft Docs
-description: 了解使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库或 Azure SQL 数据库托管实例的联机迁移操作。
+title: 教程：将 RDS SQL Server 联机迁移到 SQL 数据库
+titleSuffix: Azure Database Migration Service
+description: 了解如何使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库单一数据库或托管实例的联机迁移。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,20 +9,20 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 982ead69ba3d206e1aa2538597927dcbeaab70e9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2c10bde323f3611047fe5c5a0c06a1f2786f642a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437581"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)或 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建 Azure SQL 数据库的实例，或 Azure SQL 数据库托管实例。 
 > * 通过使用数据迁移助手迁移示例架构。
@@ -41,7 +42,7 @@ ms.locfileid: "65416106"
 
 本文介绍如何从 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要完成本教程，需要：
 
 * 创建 [RDS SQL Server 数据库](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。
@@ -62,7 +63,7 @@ ms.locfileid: "65416106"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。 
 
-* 请确保 VNet 网络安全组规则未阻止到 Azure 数据库迁移服务以下入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+* 确保 VNet 网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445、12000。 有关 Azure VNet NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 为 Azure SQL 数据库服务器创建服务器级[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的 VNET 子网范围。
@@ -246,7 +247,7 @@ ms.locfileid: "65416106"
 
 4. 设置以下“高级联机迁移设置”后，选择“保存”。
 
-    | 设置 | 说明 |
+    | 设置 | Description |
     | ------------- | ------------- |
     | **可并行加载的最大表数目** | 指定 DMS 在迁移期间并行执行的表数。 默认值为 5，但可以根据任何 POC 迁移方案的具体迁移需求，将其设置为最佳值。 |
     | **截断源表时** | 指定 DMS 在迁移期间是否截断目标表。 如果在迁移过程中截断了一个或多个表，此设置可能有所帮助。 |

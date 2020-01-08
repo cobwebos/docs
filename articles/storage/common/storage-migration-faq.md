@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 8b805f01722c58d60e994a3a6b2440bb115b1bfa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351277"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
 本文回答了有关 Azure 存储迁移的常见问题。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 如何创建一个脚本来将文件从一个容器复制到另一个容器？
 
@@ -69,7 +69,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 如何将数据从一个存储容器复制到另一个？
 
-执行以下步骤：
+执行以下步骤:
 
 1.  在目标 blob 中创建容器（文件夹）。
 
@@ -121,7 +121,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-执行以下步骤：
+执行以下步骤:
 
 1.  停止托管磁盘附加到的虚拟机。
 
@@ -202,7 +202,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **如何从高级存储帐户移动到标准存储帐户？**
 
-执行以下步骤：
+执行以下步骤:
 
 1.  创建标准存储帐户。 （或在订阅中使用现有标准存储帐户。）
 
@@ -259,7 +259,7 @@ Azure 文件共享上不允许使用高级存储。
 
 -   使用共享访问签名 (SAS) 令牌提供资源的访问权限。 
 
--   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户](storage-account-manage.md#access-keys)。
+-   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
 
 -   更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
@@ -275,7 +275,7 @@ AzCopy 安装在什么位置？
 
 -   如果使用的是区域冗余存储空间或异地冗余存储，除非对该区域启动故障转移，否则无法从次要区域访问数据。 有关故障转移过程的详细信息，请参阅 [Azure 存储中的灾难恢复和存储帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)。
 
--   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用以下方法之一：  
+-   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用下列方法之一：  
       
     - **AzCopy**：为 URL 中的存储帐户名追加 -secondary 以访问辅助终结点。 例如：  
      

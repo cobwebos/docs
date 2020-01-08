@@ -1,5 +1,6 @@
 ---
-title: Microsoft Azure 云服务连接性和网络问题的常见问题解答 | Microsoft 文档
+title: 连接和网络问题
+titleSuffix: Azure Cloud Services
 description: 本文列出了一些关于 Microsoft Azure 云服务连接性和网络的常见问题解答。
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154870"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386742"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的连接和网络问题：常见问题 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
 
 本文包括一些关于 [Azure 云服务](https://azure.microsoft.com/services/cloud-services)连接性和网络问题的常见问题解答。 有关大小信息，请参阅[云服务 VM 大小页](cloud-services-sizes-specs.md)。
 
@@ -71,7 +72,7 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何阻止/禁用发往云服务的默认 URL 的传入流量？
 
-可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 按照如下所示，将主机标头设置为云服务定义\.（* MyCloudService.com）文件中的 "站点绑定配置" 下的自定义 DNS 名称（例如 www）：
+可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 按照如下所示，将主机标头设置为云服务定义（* MyCloudService.com）文件中的 "站点绑定配置" 下的自定义 DNS 名称（例如 www\.）：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

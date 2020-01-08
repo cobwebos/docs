@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 57d30803f20d17ee31c3d42d9a26e04c1b0832b6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460582"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 分配用于访问 blob 和队列数据的 RBAC 角色
 
@@ -57,7 +57,7 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-security-principal"></a>向安全主体分配 RBAC 角色
 
-若要将 RBAC 角色分配到安全主体，请使用[AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)命令。 根据分配的范围，命令的格式可能有所不同。 下面的示例演示如何将角色分配给不同范围内的用户，但你可以使用相同的命令为任何安全主体分配角色。
+若要将 RBAC 角色分配到安全主体，请使用[AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)命令。 根据分配的范围，命令的格式可能有所不同。 若要运行此命令，需要在相应的范围内分配 "所有者" 或 "参与者" 角色。 下面的示例演示如何将角色分配给不同范围内的用户，但你可以使用相同的命令为任何安全主体分配角色。
 
 ### <a name="container-scope"></a>容器范围
 

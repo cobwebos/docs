@@ -1,5 +1,5 @@
 ---
-title: 管理解决方案中的已保存搜索 | Microsoft Docs
+title: 管理解决方案中已保存的搜索 |Microsoft Docs
 description: 管理解决方案通常包括保存的日志查询，用于分析解决方案收集的数据。 本文介绍如何在资源管理器模板中定义 Log Analytics 保存的搜索。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304920"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401766"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -28,8 +28,8 @@ ms.locfileid: "74304920"
 > [!NOTE]
 > 本文中的示例使用管理解决方案所需或通用的参数和变量，[在 Azure 中设计和构建管理解决方案](solutions-creating.md)中对它们进行了介绍
 
-## <a name="prerequisites"></a>先决条件
-本文假设你已经熟悉如何[创建管理解决方案](solutions-creating.md)以及[资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)和解决方案文件的结构。
+## <a name="prerequisites"></a>必备组件
+本文假设你已经熟悉如何[创建管理解决方案](solutions-creating.md)以及[资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
@@ -71,14 +71,14 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 下表介绍了保存的搜索的各个属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | category | 保存的搜索的类别。  同一解决方案中所有保存的搜索常共享一个类别，因此他们在控制台中组合在一起。 |
 | displayname | 保存的搜索在门户中显示的名称。 |
-| 查询 | 要运行的查询。 |
+| query | 要运行的查询。 |
 
 > [!NOTE]
-> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"，应在解决方案文件中将它编写为 AzureActivity | OperationName:/**Microsoft.Compute/virtualMachines/write\"\"** 。
+> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。 例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"，应在解决方案文件中将它编写为 AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"。
 
 ## <a name="alerts"></a>警报
 [Azure 日志警报](../../azure-monitor/platform/alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。 如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../../azure-monitor/platform/action-groups.md)运行一个或多个操作。
@@ -112,9 +112,9 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
     }
 下表介绍了计划资源的属性。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
-| enabled       | 是 | 说明创建警报后该警报是否启用。 |
+| 已启用       | 是 | 说明创建警报后该警报是否启用。 |
 | interval      | 是 | 查询运行的频率（以分钟为单位）。 |
 | queryTimeSpan | 是 | 用于评估结果的时长（以分钟为单位）。 |
 
@@ -164,7 +164,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 下表介绍了 Alert 操作资源的属性。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
 | `type` | 是 | 操作的类型。  警报操作的类型是 Alert。 |
 | `name` | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
@@ -174,7 +174,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 #### <a name="threshold"></a>阈值
 本部分是必需的。 它定义警报阈值的属性。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
 | `Operator` | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
 | `Value` | 是 | 要比较结果的值。 |
@@ -182,7 +182,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 ##### <a name="metricstrigger"></a>MetricsTrigger
 本部分为可选。 将其包含在指标度量警报中。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
 | `TriggerCondition` | 是 | 以下值指定该阈值是总违规次数还是连续违规次数：<br><br>**总次数<br>连续次数** |
 | `Operator` | 是 | 比较运算符包括以下值：<br><br>**gt = 大于<br>lt = 小于** |
@@ -192,7 +192,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 #### <a name="throttling"></a>限制
 本部分为可选。 创建警报后，若希望在一定时间内阻止通过同一规则创建的警报，请包含此部分。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
 | DurationInMinutes | 如果包含了限制元素，则为必需 | 从同一警报规则创建警报后，阻止警报的分钟数。 |
 
@@ -201,7 +201,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 
 对于已将其警报扩展到 Azure 中的用户- 一个计划现在应当将操作组详细信息与阈值一起传递，以便能够创建警报。 在创建警报前，需要先在操作组中定义电子邮件详细信息、Webhook URL、Runbook 自动化详细信息以及其他操作；可以在门户中[通过 Azure Monitor 创建操作组](../../azure-monitor/platform/action-groups.md)，也可以使用[操作组 - 资源模板](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
 
-| 元素名称 | 必需 | 说明 |
+| 元素名称 | 需要 | Description |
 |:--|:--|:--|
 | AzNsNotification | 是 | Azure 操作组的资源 ID 应与警报相关联，以在满足警报条件时执行必要操作。 |
 | CustomEmailSubject | 否 | 将邮件的自定义主题行发送到关联操作组中指定的所有地址。 |

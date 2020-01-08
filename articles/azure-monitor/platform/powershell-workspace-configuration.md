@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 9404bbf0ad79df41b0b5960977d6605697da5df5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363517"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
 
@@ -177,6 +177,10 @@ New-AzOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroupName 
 New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
 
 ```
+
+> [!NOTE]
+> 用于定义自定义日志配置的**CustomLogRawJson**参数的格式可能很复杂。 使用[AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0)检索现有自定义日志的配置。 **Properties**属性是**CustomLogRawJson**参数所需的配置。
+
 在上面的示例中，regexDelimiter 定义为“\\n”表示换行符。 日志分隔符也可能是时间戳。  以下是支持的格式：
 
 | 格式 | Json 正则表达式格式使用两个 \\ 表示标准正则表达式中的每个 \，因此，如果在正则表达式应用中测试，请将 \\ 减少为 \ | | |
@@ -196,7 +200,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>配置 Log Analytics 以发送 Azure 诊断
 要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到工作区，不需要将数据写入存储帐户。 支持的资源包括：
 
-| 资源类型 | 日志 | 指标 |
+| 资源类型 | 日志 | 度量值 |
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |

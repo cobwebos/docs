@@ -27,7 +27,7 @@
       href: databricks-stream-from-eventhubs.md
     - name: 使用认知服务进行情绪分析
       href: databricks-sentiment-analysis-cognitive-services.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 入门
       items:
@@ -123,6 +123,9 @@
         - name: 配置群集
           href: /azure/databricks/clusters/configure
           maintainContext: true
+        - name: 自定义容器
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
         - name: 初始化群集节点
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
@@ -152,7 +155,7 @@
             - name: 使用池
               href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
               maintainContext: true
-    - name: Notebooks
+    - name: 笔记本
       items:
         - name: 笔记本概述
           href: /azure/databricks/notebooks/index
@@ -221,7 +224,7 @@
     - name: 库
       href: /azure/databricks/libraries
       maintainContext: true
-    - name: 数据
+    - name: data
       items:
         - name: 数据库和表
           href: /azure/databricks/data/tables
@@ -564,7 +567,7 @@
             - name: 函数
               href: /azure/databricks/spark/latest/spark-sql/language-manual/functions
               maintainContext: true
-            - name: 插入
+            - name: Insert
               href: /azure/databricks/spark/latest/spark-sql/language-manual/insert
               maintainContext: true
             - name: 加载数据
@@ -585,7 +588,7 @@
             - name: Select
               href: /azure/databricks/spark/latest/spark-sql/language-manual/select
               maintainContext: true
-            - name: 设置
+            - name: Set
               href: /azure/databricks/spark/latest/spark-sql/language-manual/set
               maintainContext: true
             - name: 显示列
@@ -772,6 +775,14 @@
             - name: 使用 TensorFlow 将数据保存到 TFRecord 文件
               href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
+            - name: 特征化
+              items:
+                - name: 特征化概述
+                  href: /azure/databricks/applications/deep-learning/featurization/index
+                  maintainContext: true
+                - name: 迁移学习
+                  href: /azure/databricks/applications/deep-learning/featurization/transfer-learning-keras
+                  maintainContext: true
         - name: 单节点训练
           items:
             - name: 单节点训练概述
@@ -826,9 +837,12 @@
             - name: 使用 TensorFlow 进行模型推理
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: 分布式图像模型推理的参考解决方案
-              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+            - name: 模型推理性能调优
+              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
               maintainContext: true
+        - name: 分布式图像模型推理的参考解决方案
+          href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+          maintainContext: true
     - name: MLflow
       items:
         - name: MLflow 概述
@@ -1062,6 +1076,9 @@
           items:
             - name: 群集配置概述
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: 启用容器服务
+              href: /azure/databricks/administration-guide/clusters/container-services
               maintainContext: true
             - name: 启用用于基因组学的 Databricks Runtime
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
@@ -1355,7 +1372,7 @@
             - name: 使用 Apache Spark 指标
               href: /azure/databricks/kb/metrics/spark-metrics
               maintainContext: true
-        - name: Notebooks
+        - name: 笔记本
           items:
             - name: 检查是否可以修改 Spark 属性
               href: /azure/databricks/kb/notebooks/check-spark-property-modifiable
@@ -1463,7 +1480,7 @@
         - name: 管理数据管道中的依赖项
           href: /azure/databricks/dev-tools/data-pipelines
           maintainContext: true
-- name: 引用
+- name: 参考
   items:
     - name: Databricks REST API
       items:
@@ -1518,11 +1535,37 @@
       href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks CLI
-      href: /azure/databricks/dev-tools/databricks-cli
-      maintainContext: true
-    - name: Stack CLI
-      href: /azure/databricks/dev-tools/stack
-      maintainContext: true
+      items:
+        - name: Databricks CLI 概述
+          href: /azure/databricks/dev-tools/cli/index
+          maintainContext: true
+        - name: 群集
+          href: /azure/databricks/dev-tools/cli/clusters-cli
+          maintainContext: true
+        - name: DBFS
+          href: /azure/databricks/dev-tools/cli/dbfs-cli
+          maintainContext: true
+        - name: 组
+          href: /azure/databricks/dev-tools/cli/groups-cli
+          maintainContext: true
+        - name: 实例池
+          href: /azure/databricks/dev-tools/cli/instance-pools-cli
+          maintainContext: true
+        - name: 作业
+          href: /azure/databricks/dev-tools/cli/jobs-cli
+          maintainContext: true
+        - name: 库
+          href: /azure/databricks/dev-tools/cli/libraries-cli
+          maintainContext: true
+        - name: 机密
+          href: /azure/databricks/dev-tools/cli/secrets-cli
+          maintainContext: true
+        - name: Stack
+          href: /azure/databricks/dev-tools/cli/stack-cli
+          maintainContext: true
+        - name: 工作区
+          href: /azure/databricks/dev-tools/cli/workspace-cli
+          maintainContext: true
     - name: Azure Databricks REST API
       href: /rest/api/databricks
     - name: 资源管理器模板
@@ -1554,7 +1597,7 @@
             - name: 2019 年 7 月
               href: /azure/databricks/release-notes/product/2019/july
               maintainContext: true
-            - name: 2019 年 7 月
+            - name: 2019 年 6 月
               href: /azure/databricks/release-notes/product/2019/june
               maintainContext: true
             - name: 2019 年 5 月
@@ -1599,7 +1642,7 @@
             - name: 2018 年 4 月
               href: /azure/databricks/release-notes/product/2018/april
               maintainContext: true
-            - name: 2018 年 3 月
+            - name: 2018 年 3月
               href: /azure/databricks/release-notes/product/2018/march
               maintainContext: true
             - name: 2018 年 2 月
@@ -1620,6 +1663,9 @@
                   maintainContext: true
                 - name: Databricks Runtime 6.2 ML
                   href: /azure/databricks/release-notes/runtime/6.2ml
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 基因组学
+                  href: /azure/databricks/release-notes/runtime/6.2genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

@@ -1,39 +1,35 @@
 ---
 title: 使用自动缩放发送电子邮件和 Webhook 警报通知
-description: '了解如何在 Azure 监视器中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。 '
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+description: 了解如何在 Azure Monitor 中使用自动缩放操作来调用 web Url 或发送电子邮件通知。
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: c1386f4058f9490bad0161b680005db6031bace1
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364197"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
 
 ## <a name="webhooks"></a>Webhook
-通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可以处理传入 web 请求的服务，以便使用聊天或消息服务等来发送 SMS、记录 bug、通知团队。Webhook URI 必须是有效 HTTP 或 HTTPS 终结点。
+通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可处理传入 web 请求的服务，以发送短信、记录 bug、使用聊天或消息服务通知团队等。Webhook URI 必须是有效的 HTTP 或 HTTPS 终结点。
 
-## <a name="email"></a>Email
+## <a name="email"></a>电子邮件
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
 ## <a name="cloud-services-and-web-apps"></a>云服务和 Web 应用
 可以从 Azure 门户选择加入云服务和服务器场 (Web 应用)。
 
-* 选择“缩放依据”  指标。
+* 选择“缩放依据”指标。
 
 ![缩放依据](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 对于使用 Resource Manager（虚拟机规模集）创建的较新虚拟机，可以使用REST API、Resource Manager 模板、PowerShell 和 CLI 进行配置。 门户界面尚不可用。
-使用 REST API 或 Resource Manager 模板时，包括具有以下选项的通知元素。
+使用 REST API 或资源管理器模板时，请在[autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包含以下选项的通知元素。
 
 ```
 "notifications": [
@@ -60,7 +56,7 @@ ms.locfileid: "67491533"
     ]
 ```
 
-| 字段 | 必需？ | 描述 |
+| 字段 | 必需？ | Description |
 | --- | --- | --- |
 | operation |是 |值必须是“规模” |
 | sendToSubscriptionAdministrator |是 |值必须是“true”或“false” |
@@ -71,7 +67,7 @@ ms.locfileid: "67491533"
 | properties |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
-webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https: \/ /mysamplealert/webcallback？ tokenid = sometokenid someparameter = somevalue
+webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https：\//mysamplealert/webcallback？ tokenid = sometokenid & someparameter = somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：
@@ -103,15 +99,15 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 ```
 
 
-| 字段 | 必需？ | 描述 |
+| 字段 | 必需？ | Description |
 | --- | --- | --- |
 | status |是 |指示生成自动缩放操作的状态 |
 | operation |是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In” |
-| context |是 |自动缩放操作上下文 |
+| 上下文 |是 |自动缩放操作上下文 |
 | timestamp |是 |触发自动缩放操作时的时间戳 |
 | id |是 |自动缩放设置的 Resource Manager ID |
 | name |是 |自动缩放设置的名称 |
-| details |是 |自动缩放服务执行的操作和实例计数的更改的说明 |
+| 详细信息 |是 |自动缩放服务执行的操作和实例计数的更改的说明 |
 | subscriptionId |是 |所缩放的目标资源的订阅 ID |
 | resourceGroupName |是 |所缩放的目标资源的资源组名 |
 | resourceName |是 |所缩放的目标资源的名称 |

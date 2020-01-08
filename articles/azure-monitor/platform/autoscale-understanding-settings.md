@@ -1,19 +1,15 @@
 ---
 title: 了解 Azure Monitor 中的自动缩放设置
 description: 自动缩放设置的详细步骤及其工作原理。 适用于虚拟机、云服务、Web 应用
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364299"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。
@@ -89,28 +85,28 @@ ms.locfileid: "60787489"
 }
 ```
 
-| 部分 | 元素名称 | 描述 |
+| 部分 | 元素名称 | Description |
 | --- | --- | --- |
-| 设置 | id | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
+| 设置 | ID | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
 | 设置 | name | 自动缩放设置的名称。 |
 | 设置 | location | 自动缩放设置的位置。 此位置可与缩放的资源所在的位置不同。 |
 | properties | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
-| properties | profiles | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
-| profile | name | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
-| profile | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
-| profile | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
-| profile | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
-| profile | rules | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
-| rules | metricTrigger | 定义规则的指标条件。 |
+| properties | 配置文件 | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
+| 个人资料 | name | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
+| 个人资料 | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
+| 个人资料 | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
+| 个人资料 | Capacity.default | 如果读取资源指标（在本例中，为“vmss1”的 CPU）时出现问题，且当前容量低于默认容量，则自动缩放将扩展到默认值。 这是为了确保资源可用性。 如果当前容量已大于默认容量，则自动缩放不会缩减。 |
+| 个人资料 | 规则 | 自动缩放使用配置文件中的规则在最大和最小容量之间自动缩放。 可以在一个配置文件中包含多个规则。 通常包含两个规则：一个用于确定何时扩展，另一个用于确定何时缩减。 |
+| 规则 (rule) | metricTrigger | 定义规则的指标条件。 |
 | metricTrigger | metricName | 指标的名称。 |
 | metricTrigger |  metricResourceUri | 发出指标的资源的资源 ID。 在大多数情况下，它与缩放的资源相同。 在某些情况下，它可能不同。 例如，可以基于存储队列中的消息数缩放虚拟机规模集。 |
 | metricTrigger | timeGrain | 指标采样持续时间。 例如，**TimeGrain = "PT1M"** 表示应使用 statistic 元素中指定的聚合方法每分钟聚合一次指标。 |
 | metricTrigger | statistic | timeGrain 时间段内的聚合方法。 例如，**statistic = "Average"** 且 **timeGrain = "PT1M"** 表示每分钟取平均值来聚合指标。 此属性规定指标的采样方式。 |
 | metricTrigger | timeWindow | 查找指标的时间范围。 例如，**timeWindow = "PT10M"** 表示自动缩放每次运行时，都会查询过去 10 分钟的指标。 使用该时间范围可将指标规范化，避免对暂时性的峰值作出反应。 |
 | metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"** ，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
-| rules | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
+| 规则 (rule) | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
 | scaleAction | direction | “Increase”表示扩展，“Decrease”表示缩减。|
-| scaleAction | value | 要将资源容量增大或减小多少。 |
+| scaleAction | 值 | 要将资源容量增大或减小多少。 |
 | scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"** ，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
 
 ## <a name="autoscale-profiles"></a>自动缩放配置文件
@@ -154,7 +150,7 @@ ms.locfileid: "60787489"
     ]
     ```
     
-- **重复配置文件：** 使用此类配置文件可以确保始终在特定的星期几使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
+- **重复配置文件：** 使用此类配置文件可以确保始终在特定的星期日期使用此配置文件。 重复配置文件只包含开始时间。 它们会一直运行到下一个重复配置文件或固定日期配置文件设置为启动为止。 只包含一个重复配置文件的自动缩放设置只会运行该配置文件，即使相同的设置中定义了常规配置文件。 以下两个示例演示了此配置文件的用法：
 
     **示例 1：工作日与周末**
     
@@ -217,7 +213,7 @@ ms.locfileid: "60787489"
 
     例如，在上面的设置中，“weekdayProfile”设置为在星期一午夜 12 点启动。 这意味着，此配置文件将在星期一午夜 12 点开始运行。 它会持续到星期六午夜 12 点，即“weekendProfile”计划开始运行的时间。
 
-    **示例 2：营业时间**
+    **示例 2 - 营业时间**
     
     假设你要在营业时间上午 9 点到下午 5 点使用一个指标阈值，并其他所有时间使用另一个指标阈值。 该设置如下所示：
     

@@ -12,20 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 12/17/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 0725b4fc80fc3a41491bdb9ed084d33b36b490b8
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378256"
 ---
 # <a name="registration-management"></a>注册管理
-
-## <a name="overview"></a>概述
 
 本主题介绍如何使用通知中心注册设备，以接收推送通知。 本主题概括介绍了注册，并引入两种主要的注册设备模式：从设备直接注册到通知中心和通过应用程序后端注册。
 
@@ -35,22 +33,22 @@ ms.locfileid: "71213089"
 
 ### <a name="registrations"></a>注册
 
-注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可以是 ChannelURI、设备令牌或 FCM 注册 ID。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可能是 ChannelURI、设备令牌或 FCM 注册 id。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
 > [!NOTE]
-> Azure 通知中心支持每个设备注册最多 60 个标记。
+> Azure 通知中心每个设备最多支持60个标记。
 
 ### <a name="installations"></a>安装
 
-安装是增强型的注册，包含推送相关的属性包。 它是最新且最佳的设备注册方式。 但是，客户端 .NET SDK（[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)）目前不支持安装。  这意味着，如果要从客户端设备本身注册，则必须使用[通知中心 REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) 方法来支持安装。 如果使用后端服务，则应能够使用[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+安装是增强型的注册，包含推送相关的属性包。 它是最新且最佳的设备注册方式。 但是，客户端 .NET SDK（[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)）目前不支持安装。  这意味着，如果要从客户端设备本身注册，则必须使用[通知中心 REST API](/rest/api/notificationhubs/create-overwrite-installation) 方法来支持安装。 如果使用后端服务，则应能够使用[用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 以下是使用安装的一些主要优点：
 
 - 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-- 此安装模型支持特殊的标记格式 (`$InstallationId:{INSTALLATION_ID}`)，该格式允许将通知直接发送到特定的设备。 例如，如果应用的代码为此特定设备设置了安装 ID `joe93developer`，则开发人员在向 `$InstallationId:{joe93developer}` 标记发送通知时，可以将此设备作为目标。 这样，无需编写任何额外的代码，就能将特定设备作为目标。
+- 安装模型支持特殊标记格式（`$InstallationId:{INSTALLATION_ID}`），该格式允许将通知直接发送到特定设备。 例如，如果应用程序的代码为此特定设备设置了 `joe93developer` 的安装 ID，则当向 `$InstallationId:{joe93developer}` 标记发送通知时，开发人员可以将此设备设定为目标。 这使你可以针对特定设备，而无需进行任何其他编码。
 - 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法很有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
-安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)或[安装属性](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation)。
+安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](/rest/api/notificationhubs/create-overwrite-installation)或[安装属性](/dotnet/api/microsoft.azure.notificationhubs.installation)。
 
 ```json
 // Example installation format to show some supported properties
@@ -94,13 +92,13 @@ ms.locfileid: "71213089"
 注册与安装必须包含每个设备/通道的有效 PNS 句柄。 由于只能在设备上的客户端应用中获取 PNS 句柄，因此有一种模式是直接在该设备上使用客户端应用进行注册。 另一方面，与标记相关的安全性考虑和业务逻辑可能要求在应用后端管理设备注册。
 
 > [!NOTE]
-> 安装 API 不支持百度服务（尽管注册 API 支持）。 
+> 安装 API 不支持百度服务（尽管注册 API 确实会这样做）。 
 
 ### <a name="templates"></a>模板
 
 如果要使用[模板](notification-hubs-templates-cross-platform-push-messages.md)，则设备安装还会保存与设备关联的、采用 JSON 格式的所有模板（请参阅上面的示例）。 模板名称有助于将目标指向相同设备的不同模板。
 
-每个模板名称会映射到一个模板主体和一组可选标记。 此外，每个平台可能有附加的模板属性。 对于 Windows 应用商店（使用 WNS）和 Windows Phone 8（使用 MPNS），模板中还可能会有一组附加标头。 对于 APNs，可以将过期属性设为常量或模板表达式。 有关完整的安装属性列表，请参阅[使用 REST 创建或覆盖安装](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)主题。
+每个模板名称会映射到一个模板主体和一组可选标记。 此外，每个平台可能有附加的模板属性。 对于 Windows 应用商店（使用 WNS）和 Windows Phone 8（使用 MPNS），模板中还可能会有一组附加标头。 对于 APNs，可以将过期属性设为常量或模板表达式。 有关完整的安装属性列表，请参阅[使用 REST 创建或覆盖安装](/rest/api/notificationhubs/create-overwrite-installation)主题。
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Windows 应用商店应用的辅助磁贴
 
@@ -112,7 +110,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 从客户端应用管理设备注册时，后端只负责发送通知。 客户端应用使 PNS 句柄保持最新状态，并且会注册标记。 下图演示了此模式。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![从设备注册](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 设备先从 PNS 中检索 PNS 句柄，然后直接注册到通知中心。 注册成功之后，应用后端即可发送以该注册为目标的通知。 有关如何发送通知的详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
@@ -125,11 +123,11 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安装从设备向通知中心注册的示例代码
 
-此时，仅支持使用[通知中心 REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) 执行此操作。
+此时，仅支持使用[通知中心 REST API](/rest/api/notificationhubs/create-overwrite-installation) 执行此操作。
 
-也可以使用 [JSON-Patch standard ](https://tools.ietf.org/html/rfc6902)以 PATCH 方法更新安装。
+也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
-```
+```csharp
 class DeviceInstallation
 {
     public string installationId { get; set; }
@@ -210,7 +208,7 @@ else
 
 这些方法为调用它们的设备创建或更新注册。 这意味着，若要更新句柄或标记，必须覆盖整个注册。 请记住，注册是暂时性的，因此，始终应使用具有特定设备所需的当前标记的可靠存储。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -263,19 +261,19 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 ## <a name="registration-management-from-a-backend"></a>从后端管理注册
 
-从后端管理注册需要编写附加代码。 每次设备中的应用启动时，该应用都必须为后端提供已更新的 PNS 句柄（以及标记和模板），然后后端必须在通知中心上更新此句柄。 下图演示了此设计。
+从后端管理注册需要编写附加代码。 每次设备中的应用启动时，该应用都必须为后端提供已更新的 PNS 句柄（以及标记和模板），后端必须在通知中心上更新此句柄。 下图演示了此设计。
 
-![](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
+![注册管理](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
 从后端管理注册的优点是即使在设备上的相应应用处于非活动状态也能修改注册标记，并且在向其注册添加标记之前能够对客户端应用进行身份验证。
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>使用安装从后端向通知中心注册的示例代码
 
-客户端设备仍会像前面一样获取其 PNS 句柄及相关的安装属性，然后在可以执行注册和授权标记等的后端上调用自定义 API。后端可以利用[适用于后端操作的通知中心 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+客户端设备仍会像前面一样获取其 PNS 句柄及相关的安装属性，并在可以执行注册和授权标记等的后端上调用自定义 API。后端可以利用[通知中心 SDK 进行后端操作](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
-```
+```csharp
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
@@ -321,7 +319,7 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 
 从应用后端可以对注册执行基本 CRUDS 操作。 例如：
 
-```
+```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
 
 // create a registration description object of the correct type, e.g.

@@ -1,7 +1,7 @@
 ---
 title: 评分 SVD 推荐器： Module reference
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的评分 SVD 推荐器模块来评分数据集的建议预测。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习中的评分 SVD 推荐器模块来评分数据集的建议预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: be590ba04de5c8ee671e7e865d04b4ea6c638c00
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456338"
 ---
-# <a name="score-svd-recommender"></a>评分 SVD 推荐器
+# <a name="score-svd-recommender"></a>为 SVD 推荐器评分
 
 本文介绍如何在 Azure 机器学习设计器（预览版）中使用评分 SVD 推荐器模块。 使用此模块可以通过基于单值分解（SVD）算法的定型建议模型创建预测。
 
@@ -123,4 +123,4 @@ SVD 推荐器可以生成两种不同类型的预测：
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

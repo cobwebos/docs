@@ -8,28 +8,28 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429178"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用资源提供程序 REST API 创建 IoT 中心 (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-可以通过编程方式使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 创建和管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
+可以使用[IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)以编程方式创建和管理 Azure IoT 中心。 本教程介绍如何使用 IoT 中心资源提供程序 REST API 通过 C# 程序创建 IoT 中心。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * Visual Studio。
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或更高版本。
+* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps)或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "73890480"
     using System.Threading;
     ```
 
-6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 资源组名称是创建 IoT 中心时要使用的资源组名称。 可以使用现有的资源组或新资源组。 “IoT 中心名称”是你创建的 IoT 中心的名称，例如“MyIoTHub”。 IoT 中心的名称必须全局唯一。 **部署名称**是部署的名称，例如 **Deployment_01**。
+6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 资源组名称是创建 IoT 中心时要使用的资源组名称。 可以使用现有的资源组或新资源组。 “IoT 中心名称”是你创建的 IoT 中心的名称，例如“MyIoTHub”。 IoT 中心的名称必须是全局唯一的。 **部署名称**是部署的名称，例如 **Deployment_01**。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -77,7 +77,7 @@ ms.locfileid: "73890480"
 
 ## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>使用资源提供程序 REST API 创建 IoT 中心
 
-在资源组中使用 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 创建 IoT 中心。 还可以使用资源提供程序 REST API 更改现有的 IoT 中心。
+使用[IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource)在资源组中创建 IoT 中心。 还可以使用资源提供程序 REST API 更改现有的 IoT 中心。
 
 1. 将以下方法添加到 Program.cs：
 
@@ -88,14 +88,14 @@ ms.locfileid: "73890480"
     }
     ```
 
-2. 将以下代码添加到 **CreateIoTHub** 方法中。 该代码创建一个 **HttpClient** 对象，在标头中使用身份验证令牌：
+2. 将以下代码添加到 **CreateIoTHub** 方法中。 该代码使用标头中的身份验证令牌创建 **HttpClient** 对象：
 
     ```csharp
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. 将以下代码添加到 **CreateIoTHub** 方法中。 此代码描述要创建的 IoT 中心，并生成 JSON 表示形式。 有关支持 IoT 中心的位置的最新列表，请参阅 [Azure 状态](https://azure.microsoft.com/status/)：
+3. 将以下代码添加到 **CreateIoTHub** 方法中。 此代码描述要创建的 IoT 中心，并生成 JSON 表示形式。 有关支持 IoT 中心的位置的最新列表，请参阅[Azure 状态](https://azure.microsoft.com/status/)：
 
     ```csharp
     var description = new
@@ -154,7 +154,7 @@ ms.locfileid: "73890480"
 
 现在，可以调用 CreateIoTHub 方法来完成应用程序，然后生成并运行该应用程序。
 
-1. 在 **Main** 方法末尾添加以下代码：
+1. 将以下代码添加到 **Main** 方法末尾：
 
     ```csharp
     CreateIoTHub(token.AccessToken);
@@ -165,18 +165,18 @@ ms.locfileid: "73890480"
 
 3. 单击“**调试**”，并单击“**开始调试**”以运行应用程序。 运行部署可能需要几分钟时间。
 
-4. 若要验证应用程序是否添加了新的 IoT 中心，请访问 [Azure 门户](https://portal.azure.com/)并查看资源列表。 另外，也可以使用 **Get-AzResource** PowerShell cmdlet。
+4. 若要验证应用程序是否添加了新的 IoT 中心，请访问[Azure 门户](https://portal.azure.com/)并查看资源列表。 或者，使用**AzResource** PowerShell cmdlet。
 
 > [!NOTE]
-> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 在完成任务后，可以通过 [Azure 门户](https://portal.azure.com/)或者使用 **Remove-AzResource** PowerShell cmdlet 删除该 IoT 中心。
+> 本示例应用程序将添加用于对你计费的 S1 标准 IoT 中心。 完成后，可以通过[Azure 门户](https://portal.azure.com/)删除 IoT 中心，或者在完成后使用**AzResource** PowerShell cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，已使用资源提供程序 REST API 部署了一个 IoT 中心，接下来可以进一步进行探索：
 
-* 阅读了解 [IoT 中心资源提供程序 REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) 的相关功能。
+* 了解[IoT 中心资源提供程序](https://docs.microsoft.com/rest/api/iothub/iothubresource)的功能 REST API。
 
-* 若要详细了解 Azure 资源管理器功能，请阅读 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
+* 阅读[azure 资源管理器概述](../azure-resource-manager/management/overview.md)，了解有关 Azure 资源管理器功能的详细信息。
 
 若要详细了解如何开发 IoT 中心，请参阅以下文章：
 

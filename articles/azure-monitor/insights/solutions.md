@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: b5304f2f9af3f3dac5a1259669cdd78548c2e832
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7ea7051b24deeddea25b1db771b73a226f650067
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401154"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
@@ -22,18 +22,17 @@ ms.locfileid: "72933728"
 
 监视解决方案通常收集日志数据并提供查询和视图，用于分析收集的数据。 这些解决方案还可以利用 Azure 自动化等其他服务来执行与应用程序或服务相关的操作。
 
-可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案是免费提供的，但收集数据可能会产生使用费。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
+可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 它们通常是免费提供的，但会收集可以调用使用费用的数据。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 打开 Azure Monitor 的“概述”页来为该工作区中安装的每个解决方案显示一个磁贴。 
 
-1. 登录到 Azure 门户。
-1. 打开“所有服务”并找到“监视器”。
+1. 转到 [Azure 门户](https://ms.portal.azure.com)。 搜索并选择 "**监视器**"。
 1. 在“见解”菜单下选择“更多”。
 1. 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。
-1. 单击解决方案的磁贴会打开其视图，其中包含该解决方案收集的数据的更详细分析。
+1. 单击该磁贴可打开该解决方案的视图，其中包括对其收集的数据进行更详细的分析。
 
 ![概述](media/solutions/overview.png)
 
@@ -42,9 +41,8 @@ ms.locfileid: "72933728"
 ## <a name="list-installed-monitoring-solutions"></a>列出已安装的监视解决方案 
 使用以下过程列出订阅中安装的监视解决方案。
 
-1. 登录到 Azure 门户。
-1. 打开“所有服务”并找到“解决方案”。
-4. 将列出所有工作区中安装的解决方案。 解决方案名称的后面是在其中安装该解决方案的工作区的名称。
+1. 转到 [Azure 门户](https://ms.portal.azure.com)。 搜索并选择 "**解决方案**"。
+1. 将列出所有工作区中安装的解决方案。 解决方案名称的后面是在其中安装该解决方案的工作区的名称。
 1. 使用屏幕顶部的下拉框可按订阅或资源组进行筛选。
 
 
@@ -89,7 +87,7 @@ ms.locfileid: "72933728"
 ### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>在 Log Analytics 工作区和自动化帐户之间创建链接
 如何指定 Log Analytics 工作区和自动化帐户取决于解决方案的安装方法。
 
-* 通过 Azure 市场安装解决方案时，系统会提示提供一个工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
+* 通过 Azure Marketplace 安装解决方案时，系统将提示你输入工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
 * 对于 Azure 市场外的解决方案，必须在安装解决方案之前链接 Log Analytics 工作区和自动化帐户。 为此，可以在 Azure 市场中选择任何解决方案，并选择 Log Analytics 工作区和自动化帐户。 无需实际安装解决方案，因为只要选择了 Log Analytics 工作区和自动化帐户，就会创建链接。 创建链接后，可以对任何解决方案使用该 Log Analytics 工作区和自动化帐户。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接

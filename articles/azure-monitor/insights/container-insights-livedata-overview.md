@@ -1,24 +1,14 @@
 ---
 title: 查看容器 Azure Monitor 的实时数据（预览） |Microsoft Docs
 description: 本文介绍 Kubernetes 日志、事件和 pod 指标的实时视图，而无需在容器 Azure Monitor 中使用 kubectl。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514415"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404757"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 pod 指标
 
@@ -40,7 +30,7 @@ ms.locfileid: "73514415"
 
 ![实时数据控制台窗格筛选器示例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
-实时数据（预览）功能包括搜索功能。 在**搜索**字段中，可以通过键入关键字或字词来筛选结果，并突出显示任何匹配结果以允许快速查看。 在查看事件时，可以进一步对结果进行限制，只需使用在搜索栏右侧发现的“筛选器”药丸图标即可。 根据所选的资源，欣然会列出要从中选择的 Pod、命名空间或群集。  
+实时数据（预览）功能包括搜索功能。 在**搜索**字段中，可以通过键入关键字或字词来筛选结果，并突出显示任何匹配结果以允许快速查看。 查看事件时，还可以使用搜索栏右侧的**筛选器**欣然来限制结果。 根据所选的资源，欣然会列出要从中选择的 Pod、命名空间或群集。  
 
 ### <a name="scroll-lock-and-pause"></a>滚动锁定和暂停 
 
@@ -67,17 +57,17 @@ ms.locfileid: "73514415"
 4. 从 "性能" 网格中选择一个对象，然后在右侧的 "属性" 窗格中选择 "**查看实时数据（预览）** " 选项。 如果使用 Azure AD 将 AKS 群集配置为使用单一登录，则在浏览器会话过程中首次使用时，系统将提示你进行身份验证。 选择帐户，然后使用 Azure 完成身份验证。  
 
     >[!NOTE]
-    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示**节点**、**守护程序集**、**副本集**、**作业**可能不再存在**的**Cron 作业、pod 和**容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
+    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示可能不再存在的**节点**、**守护程序集**、**副本集**、**作业**、 **Cron 作业** **、pod 和** **容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
 
 成功进行身份验证后，"实时数据（预览）" 控制台窗格将显示在 "性能" 数据网格下，你可以在其中查看连续流中的日志数据。 如果提取状态指示器显示一个绿色复选标记，该标记位于窗格的最右侧，则表示可检索数据，并开始流式传输到控制台。  
 
 ![节点属性窗格查看数据选项](./media/container-insights-livedata-overview/node-properties-pane.png)  
 
-窗格标题会显示进行容器分组时所使用的 Pod 的名称。
+窗格标题显示容器的分组容器的名称。
 
-## <a name="view-events"></a>查看事件
+## <a name="view-events"></a>查看活动
 
-当容器、pod、node、ReplicaSet、DaemonSet、job、CronJob 或中的容器引擎从 "**节点**"、"**控制器**"、"**容器**" 和 "**部署（预览）** " 视图生成实时事件数据时，可以查看这些数据已选择 "部署"。 若要查看事件，请执行以下步骤。
+如果选择了容器、pod、node、ReplicaSet、DaemonSet、作业、CronJob 或部署，则可以在容器引擎从**节点**、**控制器**、**容器**和**部署（预览）** 视图中生成实时事件数据。 若要查看事件，请执行以下步骤。
 
 1. 在 Azure 门户中，浏览到 "AKS" 群集资源组，然后选择 "AKS" 资源。
 
@@ -88,7 +78,7 @@ ms.locfileid: "73514415"
 4. 从 "性能" 网格中选择一个对象，然后在右侧的 "属性" 窗格中选择 "**查看实时数据（预览）** " 选项。 如果使用 Azure AD 将 AKS 群集配置为使用单一登录，则在浏览器会话过程中首次使用时，系统将提示你进行身份验证。 选择帐户，然后使用 Azure 完成身份验证。  
 
     >[!NOTE]
-    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示**节点**、**守护程序集**、**副本集**、**作业**可能不再存在**的**Cron 作业、pod 和**容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
+    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示可能不再存在的**节点**、**守护程序集**、**副本集**、**作业**、 **Cron 作业** **、pod 和** **容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
 
 成功进行身份验证后，"实时数据（预览）" 控制台窗格将显示在 "性能" 数据网格下方。 如果提取状态指示器显示一个绿色复选标记，该标记位于窗格的最右侧，则表示可检索数据，并开始流式传输到控制台。 
     
@@ -100,7 +90,7 @@ ms.locfileid: "73514415"
 
 ### <a name="filter-events"></a>筛选事件 
 
-在查看事件时，可以进一步对结果进行限制，只需使用在搜索栏右侧发现的“筛选器”药丸图标即可。 根据所选的资源，欣然会列出要从中选择的 Pod、命名空间或群集。  
+查看事件时，还可以使用搜索栏右侧的**筛选器**欣然来限制结果。 根据所选的资源，欣然会列出要从中选择的 Pod、命名空间或群集。  
 
 ## <a name="view-metrics"></a>查看指标 
 
@@ -115,9 +105,9 @@ ms.locfileid: "73514415"
 4. 从 "性能" 网格中选择一个**Pod**对象，然后在右侧的 "属性" 窗格中选择 "**查看实时数据（预览）** " 选项。 如果使用 Azure AD 将 AKS 群集配置为使用单一登录，则在浏览器会话过程中首次使用时，系统将提示你进行身份验证。 选择帐户，然后使用 Azure 完成身份验证。  
 
     >[!NOTE]
-    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示**节点**、**守护程序集**、**副本集**、**作业**可能不再存在**的**Cron 作业、pod 和**容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
+    >通过在 "属性" 窗格中选择 "**在分析中查看**" 选项查看 Log Analytics 工作区中的数据时，日志搜索结果可能会显示可能不再存在的**节点**、**守护程序集**、**副本集**、**作业**、 **Cron 作业** **、pod 和** **容器**。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看 "[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)" 功能，了解有关查看历史日志、事件和指标的详细信息。  
 
-成功进行身份验证后，"实时数据（预览）" 控制台窗格将显示在 "性能" 数据网格下方。 检索度量值数据并开始流式传输到控制台，以便在两个图表中进行演示。 窗格标题会显示进行容器分组时所使用的 Pod 的名称。
+成功进行身份验证后，"实时数据（预览）" 控制台窗格将显示在 "性能" 数据网格下方。 检索度量值数据并开始流式传输到控制台，以便在两个图表中进行演示。 窗格标题显示容器的分组容器的名称。
 
 ![查看 Pod 指标示例](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)  
 

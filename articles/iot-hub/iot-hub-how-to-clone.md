@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429150"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域
 
@@ -29,7 +29,7 @@ ms.locfileid: "74976139"
 若要克隆集线器，你需要具有对原始集线器的管理访问权限的订阅。 你可以将新的中心放在与原始集线器相同的订阅中，或者甚至在新的订阅中。 你不能使用相同的名称，因为中心名称必须是全局唯一的。
 
 > [!NOTE]
-> 目前，没有用于克隆 IoT 中心的一流功能。 它主要是一个手动过程，因此非常容易出错。 克隆集线器的复杂性与中心的复杂程度直接成比例。 例如，克隆没有消息路由的 IoT 中心非常简单。 如果只是将消息路由添加为一个复杂性，则克隆中心就会成为至少一个数量级。 如果还移动用于路由终结点的资源，则 magniture 的另一顺序就是另一种。 
+> 目前，没有任何功能可用于自动克隆 IoT 中心。 它主要是一个手动过程，因此非常容易出错。 克隆集线器的复杂性与中心的复杂程度直接成比例。 例如，克隆没有消息路由的 IoT 中心非常简单。 如果只是将消息路由添加为一个复杂性，则克隆中心就会成为至少一个数量级。 如果还移动用于路由终结点的资源，则 magniture 的另一顺序就是另一种。 
 
 ## <a name="things-to-consider"></a>注意事项
 
@@ -353,7 +353,7 @@ ms.locfileid: "74976139"
 
 1. 在搜索框中，放入 "模板部署"，然后选择 Enter。
 
-1. 选择 "**模板部署" （使用自定义模板进行部署）** 。 这会将你带到模板部署的屏幕上。 选择**创建**。 你会看到如下屏幕：
+1. 选择 "**模板部署" （使用自定义模板进行部署）** 。 这会将你带到模板部署的屏幕上。 选择“创建”。 你会看到如下屏幕：
 
    ![显示用于构建你自己的模板的命令的屏幕截图](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 

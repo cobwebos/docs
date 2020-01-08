@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927204"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439464"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "74927204"
 在此步骤中，您将创建一个数据工厂，并打开数据工厂 UX，以在数据工厂中创建管道。 
 
 1. 打开 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “Analytics” > “数据工厂”： 
+2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”： 
   
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -53,14 +53,14 @@ ms.locfileid: "74927204"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。 
 5. 对于“资源组”，请执行以下步骤之一：
      
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
-    b. 选择“新建”，并输入资源组的名称。 
+    b.保留“数据库类型”设置，即设置为“共享”。 选择“新建”，并输入资源组的名称。 
          
-    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。 
+    若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
 6. 在“版本”下选择“V2”。
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算（例如，Azure HDInsight）可以位于其他区域。
-8. 选择**创建**。 
+8. 选择“创建”。 
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
 10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
@@ -138,23 +138,23 @@ ms.locfileid: "74927204"
     ![筛选](media/tutorial-data-flow/filter3.png)
 1. 要添加的下一个转换是**架构修饰符**下的**聚合**转换。
     
-    ![聚合](media/tutorial-data-flow/agg1.png)
+    ![Aggregate](media/tutorial-data-flow/agg1.png)
 1. 将聚合转换命名为**AggregateComedyRatings**。 在 "**分组依据**" 选项卡中，从下拉列表中选择 "**年**"，以便按电影的年份对聚合分组。
     
-    ![聚合](media/tutorial-data-flow/agg2.png)
+    ![Aggregate](media/tutorial-data-flow/agg2.png)
 1. 请参阅 "**聚合**" 选项卡。在左侧文本框中，将聚合列命名为**AverageComedyRating**。 单击右侧的 "表达式" 框，通过表达式生成器输入聚合表达式。
     
-    ![聚合](media/tutorial-data-flow/agg3.png)
+    ![Aggregate](media/tutorial-data-flow/agg3.png)
 1. 若要获取列**分级**的平均值，请使用 ```avg()``` 聚合函数。 由于 "**分级**" 是字符串并且 ```avg()``` 采用数字输入，因此必须通过 ```toInteger()``` 函数将该值转换为数字。 表达式如下所示：
 
     ```avg(toInteger(Rating))```
     
     完成后，单击 "**保存并完成**"。 
 
-    ![聚合](media/tutorial-data-flow/agg4.png)
+    ![Aggregate](media/tutorial-data-flow/agg4.png)
 1. 转到 "**数据预览**" 选项卡以查看转换输出。 请注意，只有两列是 "**年**" 和 " **AverageComedyRating**"。
     
-    ![聚合](media/tutorial-data-flow/agg3.png)
+    ![Aggregate](media/tutorial-data-flow/agg3.png)
 1. 接下来，您需要在 "**目标**" 下添加**接收器**转换。
     
     ![接收器](media/tutorial-data-flow/sink1.png)
@@ -194,7 +194,7 @@ ms.locfileid: "74927204"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程中的管道运行一个数据流，该数据流将 comedies 的平均评级从1910聚合到2000，并将数据写入 ADLS。 你已了解如何：
+本教程中的管道运行一个数据流，该数据流将 comedies 的平均评级从1910聚合到2000，并将数据写入 ADLS。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/5/2019
+ms.date: 12/13/2019
 ms.author: raiye
-ms.openlocfilehash: 027fb5176ecf1fdb32119c933d1b44eaf9f82bb8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 742f54ffb6c77d9f84582d6a68dff936fdbbe99c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386198"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 对于在中引入的特定[系列][family-explain]，更新始终会继续进行。
+
+## <a name="december-2019-guest-os"></a>2019年12月来宾 OS
+
+>[!NOTE]
+>目前，我们正在将 12 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 12 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+| 产品目录 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-12  |  [4530692]  |  Windows 安全性  | 2.93 | 12月10日，2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 2.93 | 12月10日，2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 3.80 | 12月10日，2019 |
+|  Rel 19-12  |  [4530698]  |  Windows 安全性  | 3.80 | 12月10日，2019 |
+|  Rel 19-12  |  [4530730]  |  Windows 安全性  | 4.73 | 12月10日，2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | 4.73 | 12月10日，2019 |
+|  Rel 19-12  |  [4530689]  |  最新累积更新  | 5.38 | 12月10日，2019 |
+|  Rel 19-12  |  [4530715]  |  最新累积更新  | 6.14 | 12月10日，2019 |
+|  Rel 19-12  |  [4525235]  |  非安全性  | 2.93 | 11月12日，2019 |
+|  Rel 19-12  |  [4531786]  |  服务堆栈更新  | 2.93 | 12月10日，2019 |
+|  Rel 19-12  |  [4525246]  |  非安全性  | 3.80 | 11月12日，2019 |
+|  Rel 19-12  |  [4523208]  |  服务堆栈更新  | 3.8 | 11月12日，2019 |
+|  Rel 19-12  |  [4525243]  |  非安全性  | 4.73 | 11月12日，2019 |
+|  Rel 19-12  |  [4524445]  |  服务堆栈更新  | 4.73 | 11月12日，2019 |
+|  Rel 19-12  |  [4520724]  |  服务堆栈更新  | 5.38 | 11月12日，2019 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | 6.14 | 11月12日，2019 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+
 
 ## <a name="november-2019-guest-os"></a>2019年11月来宾操作系统
 
@@ -1250,7 +1292,7 @@ ms.locfileid: "74894645"
 | MS15-075 |[3072633] |OLE 中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-076 |[3067505] |Windows 远程过程调用中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 | MS15-077 |[3077657] |ATM 字体驱动程序中的漏洞可能导致提升权限 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
-| NA |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
+| 不可用 |[3057154] |更新为限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
 
 ## <a name="june-2015-guest-os"></a>2015 年 6 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -1283,7 +1325,7 @@ ms.locfileid: "74894645"
 | MS15-040 |[3045711] |ADFS 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-041 |[3048010] |.NET Framework 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows Hyper-V 中的漏洞可能导致拒绝服务 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| NA |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| 不可用 |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

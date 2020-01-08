@@ -1,25 +1,14 @@
 ---
-title: 升级 Azure Service Fabric 独立群集 | Microsoft Docs
-description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  T
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 升级 Azure Service Fabric 独立群集
+description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  万亿项
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451825"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
 

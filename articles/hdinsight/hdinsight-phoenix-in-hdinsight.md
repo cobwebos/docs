@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435501"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) 是构建在 [Apache HBase](hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库层。 Phoenix 允许通过 HBase 使用类似于 SQL 的查询。 Phoenix 在幕后使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，可让用户在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 此方法可将客户端/服务器数据传输延迟降到最低。
 
 非开发人员可以借助 Apache Phoenix 创建大数据查询，并在其中使用类似于 SQL 的语法，而无需编程。 与 [Apache Hive](hadoop/hdinsight-use-hive.md) 和 Apache Spark SQL 等其他工具不同，Phoenix 已针对 HBase 高度优化。 开发人员可以利用它来编写高性能的查询，同时大大减少代码量。
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 提交 SQL 查询时，Phoenix 会将该查询编译到 HBase 本机调用，然后并行运行扫描（或计划）以进行优化。 此抽象层使得开发人员无需编写 MapReduce 作业，让他们专注于围绕 Phoenix 的大数据存储构建应用程序的业务逻辑和工作流。
 
@@ -38,9 +37,9 @@ HBase 使用根据主行键按字典顺序排序的单个索引。 只能通过�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是**涵盖索引**，包含查询中包括的所有列。 因此，不需要执行表查找，索引能够满足整个查询的需求。
+与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是**涵盖索引**，包含查询中包括的所有列。 因此，表查找不是必需的，并且索引满足整个查询的要求。
 
-### <a name="views"></a>Views
+### <a name="views"></a>视图
 
 Phoenix 视图可以克服一项 HBase 限制：创建 100 个以上的物理表时，性能开始下降。 Phoenix 视图可让多个虚拟表共享一个 HBase 基础物理表。
 
@@ -51,8 +50,8 @@ Phoenix 视图可以克服一项 HBase 限制：创建 100 个以上的物理表
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -71,7 +70,7 @@ WHERE metric_type = 'm';
 
 跳过扫描使用组合索引的一个或多个列来查找非重复值。 与范围扫描不同，跳过扫描实施行内扫描，因此可以[提高性能](https://phoenix.apache.org/performance.html#Skip-Scan)。 扫描时，将会连同索引一起跳过第一个匹配值，直到找到下一个值。
 
-跳过扫描使用 HBase 筛选器的 `SEEK_NEXT_USING_HINT` 枚举。 跳过扫描使用 `SEEK_NEXT_USING_HINT` 来跟踪在每个列中搜索的键集或键范围。 然后，跳过扫描在评估筛选器期间使用传递给它的键，并确定该键是否为组合之一。 如果不是，则跳过扫描会评估要跳转到的下一个最高键。
+跳过扫描使用 HBase 筛选器的 `SEEK_NEXT_USING_HINT` 枚举。 跳过扫描使用 `SEEK_NEXT_USING_HINT` 来跟踪在每个列中搜索的键集或键范围。 然后，跳过扫描将使用在筛选器评估期间传递给它的键，并确定它是否为组合之一。 如果不是，则跳过扫描会评估要跳转到的下一个最高键。
 
 ### <a name="transactions"></a>事务
 
@@ -98,7 +97,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>加盐表
 
-将包含有序键的记录写入 HBase 时，可能会发生区域服务器热点。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域具有预定义的最大大小，当某个区域达到该大小限制时，它将会拆分为两个较小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
+将包含有序键的记录写入 HBase 时，可能会发生区域服务器热点。 即使群集中包含多个区域服务器，也只会在一个服务器中进行写入。 这种集中化会产生热点问题，即，写入工作负荷不会分散在所有可用的区域服务器之间，而是只有一个服务器处理该负载。 由于每个区域都具有预定义的最大大小，因此当某个区域达到该大小限制时，它将被拆分为两个小区域。 在这种情况下，其中一个新区域会接收所有新记录，因而变成了新的热点。
 
 若要缓解此问题并提高性能，请预先拆分表，以便均衡使用所有的区域服务器。 Phoenix 提供加盐表，以透明方式将加盐字节添加到特定表的行键。 该表已在加盐字节边界上预先拆分，确保在表的初始阶段，在区域服务器之间均衡分配负载。 此方法可在所有可用的区域服务器之间分配写入工作负荷，从而提高了写入和读取性能。 若要给表加盐，请在创建表时指定 `SALT_BUCKETS` 表属性：
 
@@ -135,6 +134,8 @@ HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用�
 
     ![Ambari“Phoenix SQL”配置部分](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [将 Apache Phoenix 与 HDInsight 中基于 Linux 的 HBase 群集配合使用](hbase/apache-hbase-query-with-phoenix.md)
+
+* [使用 Apache Zeppelin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询](./hbase/apache-hbase-phoenix-zeppelin.md)

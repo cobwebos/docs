@@ -4,15 +4,15 @@ description: 使用 HDInsight 服务标记允许来自 HDInsight 运行状况和
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/19/2019
-ms.openlocfilehash: 7e3ce33bdf0773ababe5eb190877a9288c094c5c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.custom: hdinsightactive
+ms.date: 12/05/2019
+ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435422"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>适用于 Azure HDInsight 的网络安全组（NSG）服务标记
 
@@ -30,9 +30,19 @@ ms.locfileid: "74187080"
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>使用单个全局 HDInsight 服务标记
 
-若要在 HDInsight 群集中开始使用服务标记，最简单的方法是将全局标记 `HDInsight` 添加到网络安全组规则。 有关如何将服务标记添加到网络安全组的说明，请参阅[安全组：服务标记](../virtual-network/security-overview.md#service-tags)。
+若要在 HDInsight 群集中开始使用服务标记，最简单的方法是将全局标记 `HDInsight` 添加到网络安全组规则。
 
-此标记包含 HDInsight 可用的所有区域的运行状况和管理服务的 IP 地址，并确保无论在何处创建群集，群集都可以与必要的运行状况和管理服务通信。
+1. 在[Azure 门户](https://portal.azure.com/)中，选择网络安全组。
+
+1. 在 "**设置**" 下，选择 "**入站安全规则**"，然后选择 " **+ 添加**"。
+
+1. 从 "**源**" 下拉列表中，选择 "**服务标记**"。
+
+1. 从 "**源服务标记**" 下拉列表中，选择 " **HDInsight**"。
+
+    ![Azure 门户添加服务标记](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+
+此标记包含 HDInsight 可用的所有区域的运行状况和管理服务的 IP 地址，并确保在创建群集时，群集可以与必要的运行状况和管理服务通信。
 
 ## <a name="use-regional-hdinsight-service-tags"></a>使用区域 HDInsight 服务标记
 
@@ -63,17 +73,17 @@ ms.locfileid: "74187080"
 | 日本 | 日本西部 | JapanWest |
 | 法国 | 法国中部| FranceCentral |
 | 英国 | 英国南部 | UKSouth |
-| Azure 政府版（Fairfax） | USDoD 中部   | USDoDCentral |
+| Azure Government | USDoD 中部   | USDoDCentral |
 | &nbsp; | 美国德克萨斯州政府 | USGovTexas |
 | &nbsp; | UsDoD 东部 | USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域服务标记
 
-如果你更愿意使用服务标记选项2，并且上面未列出在其中创建群集的区域，则需要允许多个区域服务标记。 使用多个的需要是因为不同区域的资源提供程序的排列方式存在差异。
+如果你更愿意使用服务标记选项2，并且上面未列出创建群集的区域，则需要允许多个区域服务标记。 使用多个的需要是因为不同区域的资源提供程序的排列方式存在差异。
 
 其余区域根据它们所使用的区域服务标记划分为多个组。
 
-#### <a name="group-1"></a>组1
+#### <a name="group-1"></a>组 1
 
 如果你的群集是在下表的其中一个区域中创建的，则除了列出的区域服务标记外，还允许 `HDInsight.WestUS` 和 `HDInsight.EastUS` 服务标记。 本部分中的区域需要三个服务标记。
 
@@ -92,25 +102,25 @@ ms.locfileid: "74187080"
 | &nbsp; | 美国东部 | EastUS |
 | &nbsp; | 美国西部 | WestUS |
 | 日本 | 日本东部 | JapanEast |
-| 欧洲 | 北欧 | NorthEurope |
-| &nbsp; | 西欧| WestEurope |
-| 亚洲 | 东亚 | EastAsia |
-| &nbsp; | 东南亚 | SoutheastAsia |
+| 欧洲 | 欧洲北部 | NorthEurope |
+| &nbsp; | 欧洲西部| WestEurope |
+| 亚洲 | 亚洲东部 | EastAsia |
+| &nbsp; | 亚洲东南部 | SoutheastAsia |
 | 澳大利亚 | 澳大利亚东部 | AustraliaEast |
 
-#### <a name="group-2"></a>组2
+#### <a name="group-2"></a>组 2
 
 **中国北部**和**中国东部**区域中的群集需要允许两个服务标记： `HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast`。
 
-#### <a name="group-3"></a>组3
+#### <a name="group-3"></a>组 3
 
 **US Gov 爱荷华州**和**US Gov 弗吉尼亚州**区域中的群集需要允许两个服务标记： `HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia`。
 
-#### <a name="group-4"></a>组4
+#### <a name="group-4"></a>组 4
 
 **德国中部**和**德国**北部地区的群集需要允许两个服务标记： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNorthEast`。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [网络安全组-服务标记](../virtual-network/security-overview.md#security-rules)
-* [为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)
+- [网络安全组-服务标记](../virtual-network/security-overview.md#security-rules)
+- [为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB
+title: 使用 Studio 3T 连接到 Azure Cosmos DB 的适用于 MongoDB 的 API
 description: 了解如何使用 Studio 3T 连接到 Azure Cosmos DB 的 API for MongoDB。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,12 +8,12 @@ ms.date: 11/01/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c9be9893d28439fdcff9f33f0303a816bd94c7b8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 533917e4cc39a1f4885a1604c11480fe09870c61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441614"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
 
@@ -31,14 +31,14 @@ ms.locfileid: "73584423"
 
 1. 按照将[mongodb 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)一文中的说明，检索 AZURE COSMOS DB 的 API for MongoDB 帐户的连接信息。
 
-    ![连接字符串页的屏幕截图](./media/mongodb-mongochef/ConnectionStringBlade.png)
+    !["连接字符串" 页的屏幕截图](./media/mongodb-mongochef/ConnectionStringBlade.png)
 
 2. 单击“连接”以打开“连接管理器”，并单击“新建连接”
 
     ![Studio 3T 连接管理器的屏幕截图](./media/mongodb-mongochef/ConnectionManager.png)
 3. 在 "**新建连接**" 窗口中的 "**服务器**" 选项卡上，输入 AZURE Cosmos 帐户的主机（FQDN）和端口。
 
-    ![Studio 3T 连接管理器服务器选项卡的屏幕截图](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+    ![Studio 3T 连接管理器服务器选项卡屏幕截图](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. 在“新建连接”窗口中的“身份验证”选项卡上，选择“基本(MONGODB-CR 或 SCARM-SHA-1)”身份验证模式，并输入用户名和密码。  接受默认的身份验证数据库（管理员），或提供自己的值。
 
     ![Studio 3T 连接管理器身份验证选项卡的屏幕截图](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
@@ -57,13 +57,13 @@ ms.locfileid: "73584423"
     ![Studio 3T 连接管理器的屏幕截图](./media/mongodb-mongochef/ConnectToAccount.png)
 2. 右键单击主机，并选择“添加数据库”。  提供数据库名称，并单击“确定”。
 
-    ![Studio 3T“添加数据库”选项的屏幕截图](./media/mongodb-mongochef/AddDatabase1.png)
+    ![Studio 3T Add Database 选项的屏幕截图](./media/mongodb-mongochef/AddDatabase1.png)
 3. 右键单击数据库，并选择“添加集合”。  提供集合名称，并单击“创建”。
 
-    ![Studio 3T“添加集合”选项的屏幕截图](./media/mongodb-mongochef/AddCollection.png)
+    ![Studio 3T Add Collection 选项的屏幕截图](./media/mongodb-mongochef/AddCollection.png)
 4. 单击“集合”菜单项，并单击“添加文档”。
 
-    ![Studio 3T“添加文档”菜单项的屏幕截图](./media/mongodb-mongochef/AddDocument1.png)
+    ![Studio 3T "添加文档" 菜单项的屏幕截图](./media/mongodb-mongochef/AddDocument1.png)
 5. 在“添加文档”对话框中粘贴以下内容，并单击“添加文档”。
 
         {

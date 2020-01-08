@@ -9,18 +9,21 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: a0b0d0d95e1ffd50faba19f1665ea5dae737b124
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379617"
 ---
 # <a name="configure-form-recognizer-containers"></a>配置表单识别器容器
 
 可以使用 Azure 表单识别器容器构建经过优化的应用程序体系结构，以利用强大的云功能和边缘位置。
 
 可以使用 `docker run` 命令参数配置表单识别器容器运行时环境。 此容器有多个必需设置和一些可选设置。 有关示例，请查看[“Docker 运行命令示例”](#example-docker-run-commands)部分。 容器专用设置是帐单设置。
+
+> [!IMPORTANT]
+> 窗体识别器容器当前使用版本1.0 的窗体识别器 API。 可以改为使用托管服务访问 API 的最新版本。
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,7 +34,7 @@ ms.locfileid: "73796133"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 ApiKey 的值必须是表单识别器资源的有效密钥，该资源是在“Billing 配置设置”部分为  _指定的。_ `Billing`
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 ApiKey 的值必须是表单识别器资源的有效密钥，该资源是在“Billing 配置设置”部分为 `Billing` 指定的。
 
 可以在 Azure 门户的“表单识别器资源管理”的“密钥”下找到此设置。
 
@@ -45,7 +48,7 @@ ms.locfileid: "73796133"
 
 可以在 Azure 门户的“表单识别器概览”的“终结点”下找到此设置。
 
-|必选| 名称 | 数据类型 | 说明 |
+|需要| 名称 | 数据类型 | Description |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](form-recognizer-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
@@ -68,16 +71,16 @@ ms.locfileid: "73796133"
 
 ## <a name="mount-settings"></a>装载设置
 
-使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 `--mount`[ 命令`docker run`中指定 ](https://docs.docker.com/engine/reference/commandline/run/) 选项来指定输入装载或输出装载。
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [`docker run` 命令](https://docs.docker.com/engine/reference/commandline/run/)中指定 `--mount` 选项来指定输入装载或输出装载。
 
 表单识别器容器需要输入装载和输出装载。 输入装入点可以是只读的，需要使用它来访问用于训练和评分的数据。 输出装入点必须是可写的，用于存储模型和临时数据。
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](form-recognizer-container-howto.md#the-host-computer)的装载位置。
 
-|可选| 名称 | 数据类型 | 说明 |
+|可选| 名称 | 数据类型 | Description |
 |-------|------|-----------|-------------|
-|必选| `Input` | String | 输入装入点的目标。 默认值为 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|必选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|需要| `Input` | String | 输入装入点的目标。 默认值是 `/input`。    <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|需要| `Output` | String | 输出装入点的目标。 默认值是 `/output`。  <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 

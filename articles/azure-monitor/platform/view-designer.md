@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: a1a4dbffed37480178d1b94a77587ca251396db6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363194"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>使用 Azure Monitor 中的视图设计器创建自定义视图
 通过使用 Azure Monitor 中的视图设计器，你可以在 Azure 门户中创建各种自定义视图，这些视图可帮助你可视化 Log Analytics 工作区中的数据。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
@@ -32,7 +32,7 @@ ms.locfileid: "72931940"
 
 使用视图设计器创建的视图所包含的元素在下表中进行了说明：
 
-| 部分 | 描述 |
+| 组成部分 | Description |
 |:--- |:--- |
 | 磁贴 | 显示在 Azure Monitor "**概述**" 页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
@@ -49,7 +49,7 @@ ms.locfileid: "72931940"
 
 下表描述了这些选项：
 
-| 选项 | 描述 |
+| 选项 | Description |
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
 | 日志      | 打开[Log Analytics](../log-query/portals.md)用日志查询分析数据。 |
@@ -95,13 +95,13 @@ ms.locfileid: "72931940"
 
 ![编辑菜单](media/view-designer/edit-menu.png)
 
-| 选项 | 描述 |
+| 选项 | Description |
 |:--|:--|
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |
 | 删除视图 | 删除视图。 |
-| 导出      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
-| 导入      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
+| 导出      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
+| Import      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
 | 克隆       | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 
 ## <a name="next-steps"></a>后续步骤

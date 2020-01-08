@@ -8,18 +8,18 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457461"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
 将源位置复制到目标位置。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>摘要
 
 上次修改时间用于比较。 如果目标中的上次修改时间较新，则将跳过该文件。
 
@@ -106,8 +106,9 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+```
 
-Sync a virtual directory:
+同步虚拟目录：
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
@@ -138,6 +139,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-** attribute string （仅限 Windows）排除其属性与属性列表匹配的文件。 例如： A;些迅驰
 
+**--排除-路径**字符串在复制时排除这些路径。 此选项不支持通配符（*）。 检查相对路径前缀（例如： myFolder; myFolder/subDirName/file .pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
+
 **--排除模式**字符串排除名称与模式列表匹配的文件。 例如： *.jpg;* 。pdf; exactName
 
 **-h，--帮助**帮助进行同步
@@ -154,7 +157,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|说明|
+|选项|Description|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 每分钟的吞吐量可能与 cap 略有不同。 如果将此选项设置为零，或省略此选项，则不会限制吞吐量。|
 |--output 类型字符串|命令输出的格式。 选项包括：文本、json。 默认值为 "text"。|

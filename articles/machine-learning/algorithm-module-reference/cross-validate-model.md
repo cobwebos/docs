@@ -1,7 +1,7 @@
 ---
 title: 交叉验证模型：模块引用
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务中的 "交叉验证模型" 模块通过对数据进行分区来交叉验证分类或回归模型的参数估算。
+titleSuffix: Azure Machine Learning
+description: 了解如何在 Azure 机器学习中使用交叉验证模型模块，通过对数据进行分区来交叉验证分类或回归模型的参数估算值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717240"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428558"
 ---
 # <a name="cross-validate-model"></a>交叉验证模型
 
@@ -28,7 +28,7 @@ ms.locfileid: "73717240"
 
 1. 交叉验证会将定型数据随机分成折叠。 
 
-   如果之前未对数据集进行分区，则该算法默认为10个折叠。 若要将数据集划分为不同数量的折叠，可以使用[分区和示例](partition-and-sample.md)模块，指示要使用的折叠数。  
+   如果你以前未对数据集进行分区，则该算法将默认为 10 个折叠。 若要将数据集划分为不同数量的折叠，可以使用[分区和示例](partition-and-sample.md)模块，指示要使用的折叠数。  
 
 2.  该模块将留出折叠1中的数据以用于验证。 （这有时称为*维持折叠*。）模块使用剩余的折叠来训练模型。 
 
@@ -82,13 +82,13 @@ ms.locfileid: "73717240"
 
 所有迭代完成后，交叉验证模型将为整个数据集创建分数。 它还会创建性能指标，可用于评估模型的质量。
 
-### <a name="scored-results"></a>评分结果
+### <a name="scored-results"></a>评分的结果
 
 模块的第一个输出为每一行提供源数据以及一些预测值和相关的概率。 
 
 若要查看这些结果，请在管道中右键单击 "交叉验证模型" 模块。 选择**评分结果**，然后选择 "**可视化**"。
 
-| 新列名称      | 说明                              |
+| 新列名称      | Description                              |
 | -------------------- | ---------------------------------------- |
 | 评分标签        | 此列将添加到数据集的末尾。 它包含每行的预测值。 |
 | 评分概率 | 此列将添加到数据集的末尾。 它指示**评分标签**中的值的预计概率。 |
@@ -103,7 +103,7 @@ ms.locfileid: "73717240"
 若要查看这些结果，请在管道中右键单击 "交叉验证模型" 模块。 依次选择 "**评估结果**"、"**可视化**"。
 
 
-|列名称| 说明|
+|列名称| Description|
 |----|----|
 |折叠编号| 每个折叠的标识符。 如果创建了五个折叠，则会有五个数据子集，编号为0到4。
 |折叠中的示例数|分配给每个折叠的行数。 它们应该大致相等。 |
@@ -127,5 +127,5 @@ ms.locfileid: "73717240"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看可用于 Azure 机器学习服务[的模块集](module-reference.md)。 
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 
 

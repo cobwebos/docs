@@ -4,15 +4,15 @@ description: 性能计数器由 Azure Monitor 收集，用于分析 Windows 和 
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932445"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363823"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -26,7 +26,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
-| 实例名称 | 描述 |
+| 实例名称 | Description |
 | --- | --- |
 | \_Total |所有实例的总计 |
 | \* |所有实例 |
@@ -74,7 +74,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 下表介绍了此元素中的参数。
 
-| parameters | 描述 |
+| 参数 | Description |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
 | instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
@@ -116,9 +116,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 网络 | Rx 错误数总计 |
 | 网络 | Tx 错误数总计 |
 | 网络 | 冲突数总计 |
-| 物理磁盘 | Avg. Disk sec/Read |
+| 物理磁盘 | 每次读取的平均磁盘扇区数 |
 | 物理磁盘 | Avg. Disk sec/Transfer |
-| 物理磁盘 | Avg. Disk sec/Write |
+| 物理磁盘 | 每次写入的平均磁盘扇区数 |
 | 物理磁盘 | 物理磁盘字节数/秒 |
 | 流程 | 特权时间百分比 |
 | 流程 | 用户时间百分比 |
@@ -181,7 +181,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | CounterName |性能计数器的名称 |
@@ -200,12 +200,12 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
 下表提供了检索性能记录的不同日志查询的示例。
 
-| Query | 描述 |
+| 查询 | Description |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |
 | Perf &#124; where CounterName == "Current Disk Queue Length" |特定计数器的所有性能数据 |
-| Perf &#124; where ObjectName = = "Processor" and CounterName = = "% Processor Time" and InstanceName = = "_total" &#124;汇总 AVGCPU = avg （CounterValue） by Computer |所有计算机的平均 CPU 使用率 |
+| Perf &#124; where ObjectName = = "Processor" and CounterName = = "% Processor Time" and InstanceName = = "_Total" &#124;按计算机汇总 AVGCPU = avg （CounterValue） |所有计算机的平均 CPU 使用率 |
 | Perf &#124; ，其中 CounterName = = "% Processor Time &#124; " 汇总 AggregatedValue = max （CounterValue） by Computer |所有计算机的最大 CPU 使用率 |
 | Perf &#124; where ObjectName = = "逻辑磁盘"，CounterName = = "当前磁盘队列长度" 和 Computer = = "MyComputerName" &#124;汇总 AggregatedValue = avg （CounterValue） by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
 | Perf &#124; ，其中 CounterName = = "Disk 传输/sec &#124; " 汇总 AggregatedValue = 百分位（CounterValue，95） by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552812"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364792"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -55,7 +55,7 @@ ms.locfileid: "72552812"
 
      > [!NOTE]
      > 
-     > 只能选择[Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)跟踪的资源、资源组或活动日志信号的整个订阅。 
+     > 只能选择[Azure 资源管理器](../../azure-resource-manager/management/overview.md)跟踪的资源、资源组或活动日志信号的整个订阅。 
 
      **警报目标示例视图**
 
@@ -92,7 +92,7 @@ ms.locfileid: "72552812"
 5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建一个新的操作组](../../azure-monitor/platform/action-groups.md)，并将其分配给新规则。 若要创建新组，请选择 " **+ 新建组**"。
 
 6. 若要在创建规则后启用规则，请在 "**创建时启用规则**" 选项中选择 **"是"** 。
-7. 选择 "**创建警报规则**"。
+7. 选择“创建预警规则”。
 
     将创建活动日志的新警报规则，并在窗口的右上角出现一条确认消息。
 
@@ -130,7 +130,7 @@ ms.locfileid: "72552812"
 
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
-若要使用 Azure 资源管理器模板创建活动日志警报，请创建 `microsoft.insights/activityLogAlerts` 类型的资源。 然后，填充所有相关属性。 下面是创建活动日志警报的模板：
+若要使用 Azure 资源管理器模板创建活动日志警报，请创建 `microsoft.insights/activityLogAlerts`类型的资源。 然后，填充所有相关属性。 下面是创建活动日志警报的模板：
 
 ```json
 {

@@ -3,19 +3,19 @@ title: Azure Cosmos DB 的高级威胁防护
 description: 了解 Azure Cosmos DB 如何提供静态数据的加密以及如何实现。
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445534"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB 的高级威胁防护
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的高级威胁防护（预览版）
 
 适用于 Azure Cosmos DB 的高级威胁防护提供额外的安全智能层，用于检测访问或利用 Azure Cosmos DB 帐户的异常和潜在有害尝试。 利用这一层保护，你可以解决威胁，甚至无需成为安全专家，还可以将它们与中心安全监视系统集成。
 
@@ -27,6 +27,14 @@ ms.locfileid: "74555027"
 > * Azure Cosmos DB 的高级威胁防护目前不适用于 Azure 政府版和主权的云区域。
 
 为了获得安全警报的完整调查体验，建议[在 Azure Cosmos DB 中启用诊断日志记录](https://docs.microsoft.com/azure/cosmos-db/logging)，这会在数据库本身上记录操作，包括对所有文档、容器和数据库的 CRUD 操作。
+
+## <a name="threat-types"></a>威胁类型
+
+适用于 Azure Cosmos DB 的高级威胁防护可检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试。 它当前可以触发以下警报：
+
+- **从异常位置访问**：在访问模式发生更改时，将会触发此警报，其中有人从异常的地理位置连接到 Azure Cosmos DB 终结点。 在某些情况下，警报会检测合法操作，即新应用程序或开发人员的维护操作。 在其他情况下，警报会检测以前的员工、外部攻击者等的恶意操作。
+
+- **异常数据提取**：当客户端从 Azure Cosmos DB 帐户提取异常数据量时，将触发此警报。 这可能是为了将帐户中存储的所有数据传输到外部数据存储而执行的一些数据渗透的症状。
 
 ## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护
 
@@ -101,5 +109,5 @@ ms.locfileid: "74555027"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[诊断日志记录 Azure Cosmos DB](monitor-cosmos-db.md#diagnostic-settings)
+* 详细了解[诊断日志记录 Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
 * 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息

@@ -1,19 +1,15 @@
 ---
 title: 自动缩放的常用指标
 description: 了解自动缩放云服务、虚拟机和 Web 应用时常用的指标。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129731"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364588"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
 
@@ -51,35 +47,35 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 可以针对下列指标创建警报：
 
-| 指标名称 | 单位 |
+| 标准名称 | 单位 |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor(_Total)\% Privileged Time |Percent |
-| \Processor(_Total)\% User Time |Percent |
-| \Processor Information(_Total)\Processor Frequency |Count |
-| \System\Processes |Count |
-| \Process(_Total)\Thread Count |Count |
-| \Process(_Total)\Handle Count |Count |
-| \Memory\% Committed Bytes In Use |Percent |
+| \Processor(_Total)\% 处理器时间 |百分比 |
+| \Processor(_Total)\% Privileged Time |百分比 |
+| \Processor(_Total)\% User Time |百分比 |
+| \Processor Information(_Total)\Processor Frequency |计数 |
+| \System\Processes |计数 |
+| \Process(_Total)\Thread Count |计数 |
+| \Process(_Total)\Handle Count |计数 |
+| \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |字节 |
 | \Memory\Committed Bytes |字节 |
 | \Memory\Commit Limit |字节 |
 | \Memory\Pool Paged Bytes |字节 |
 | \Memory\Pool Nonpaged Bytes |字节 |
-| \PhysicalDisk(_Total)\% Disk Time |Percent |
-| \PhysicalDisk(_Total)\% Disk Read Time |Percent |
-| \PhysicalDisk(_Total)\% Disk Write Time |Percent |
+| \PhysicalDisk(_Total)\% Disk Time |百分比 |
+| \PhysicalDisk(_Total)\% Disk Read Time |百分比 |
+| \PhysicalDisk(_Total)\% Disk Write Time |百分比 |
 | \PhysicalDisk(_Total)\Disk Transfers/sec |每秒计数 |
 | \PhysicalDisk(_Total)\Disk Reads/sec |每秒计数 |
 | \PhysicalDisk(_Total)\Disk Writes/sec |每秒计数 |
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒字节数 |
-| \PhysicalDisk(_Total)\Avg.磁盘队列长度 |Count |
-| \PhysicalDisk(_Total)\Avg.磁盘读取队列长度 |Count |
-| \PhysicalDisk(_Total)\Avg.磁盘写入队列长度 |Count |
-| \LogicalDisk(_Total)\% Free Space |Percent |
-| \LogicalDisk(_Total)\Free Megabytes |Count |
+| \PhysicalDisk （_Total） \Avg. 磁盘队列长度 |计数 |
+| \PhysicalDisk （_Total） \Avg. 磁盘读取队列长度 |计数 |
+| \PhysicalDisk （_Total） \Avg. 磁盘写入队列长度 |计数 |
+| \LogicalDisk(_Total)\% Free Space |百分比 |
+| \LogicalDisk(_Total)\Free Megabytes |计数 |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Linux VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会默认启用诊断。
@@ -92,46 +88,46 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  可以针对下列指标创建警报：
 
-| 指标名称 | 计价单位 |
+| 标准名称 | 单位 |
 | --- | --- |
 | \Memory\AvailableMemory |字节 |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |百分比 |
 | \Memory\UsedMemory |字节 |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
+| \Memory\PercentUsedMemory |百分比 |
+| \Memory\PercentUsedByCache |百分比 |
 | \Memory\PagesPerSec |每秒计数 |
 | \Memory\PagesReadPerSec |每秒计数 |
 | \Memory\PagesWrittenPerSec |每秒计数 |
 | \Memory\AvailableSwap |字节 |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |百分比 |
 | \Memory\UsedSwap |字节 |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |百分比 |
+| \Processor\PercentIdleTime |百分比 |
+| \Processor\PercentUserTime |百分比 |
+| \Processor\PercentNiceTime |百分比 |
+| \Processor\PercentPrivilegedTime |百分比 |
+| \Processor\PercentInterruptTime |百分比 |
+| \Processor\PercentDPCTime |百分比 |
+| \Processor\PercentProcessorTime |百分比 |
+| \Processor\PercentIOWaitTime |百分比 |
 | \PhysicalDisk\BytesPerSecond |每秒字节数 |
 | \PhysicalDisk\ReadBytesPerSecond |每秒字节数 |
 | \PhysicalDisk\WriteBytesPerSecond |每秒字节数 |
 | \PhysicalDisk\TransfersPerSecond |每秒计数 |
 | \PhysicalDisk\ReadsPerSecond |每秒计数 |
 | \PhysicalDisk\WritesPerSecond |每秒计数 |
-| \PhysicalDisk\AverageReadTime |秒 |
-| \PhysicalDisk\AverageWriteTime |秒 |
-| \PhysicalDisk\AverageTransferTime |秒 |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageReadTime |秒数 |
+| \PhysicalDisk\AverageWriteTime |秒数 |
+| \PhysicalDisk\AverageTransferTime |秒数 |
+| \PhysicalDisk\AverageDiskQueueLength |计数 |
 | \NetworkInterface\BytesTransmitted |字节 |
 | \NetworkInterface\BytesReceived |字节 |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |计数 |
+| \NetworkInterface\PacketsReceived |计数 |
 | \NetworkInterface\BytesTotal |字节 |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |计数 |
+| \NetworkInterface\TotalTxErrors |计数 |
+| \NetworkInterface\TotalCollisions |计数 |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>常用的 Web（服务器场）指标
 也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名为 **HttpQueueLength**。  以下部分列出了可用的服务器场（Web 应用）指标。
@@ -145,19 +141,19 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 可以针对这些指标发出警报或以其为缩放依据。
 
-| 指标名称 | 单位 |
+| 标准名称 | 单位 |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| CpuPercentage |百分比 |
+| MemoryPercentage |百分比 |
+| DiskQueueLength |计数 |
+| HttpQueueLength |计数 |
 | BytesReceived |字节 |
 | BytesSent |字节 |
 
 ## <a name="commonly-used-storage-metrics"></a>常用的存储指标
 可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-在 Azure 门户的“设置”  边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
+在 Azure 门户的“设置”边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
 
 例如，对于经典存储帐户，自动缩放设置 metricTrigger 将包括：
 
@@ -178,7 +174,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服务总线指标
 可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName  用作 ApproximateMessageCount  ，并传递存储队列的 ID 作为 metricResourceUri  。
+若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
 
 ```
 "metricName": "MessageCount",

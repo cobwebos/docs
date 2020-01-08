@@ -7,14 +7,14 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468562"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436777"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>什么是受信任的安全合作伙伴（预览版）？
+# <a name="what-are-trusted-security-partners-preview"></a>什么是信任的安全合作伙伴（预览版）？
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -23,11 +23,11 @@ Azure 防火墙管理器中的*受信任安全合作伙伴（预览版）* 可�
 
 通过快速配置，你可以使用受支持的安全合作伙伴保护集线器，并从虚拟网络（Vnet）或区域中的分支机构路由和筛选 Internet 流量。 这是使用自动路由管理实现的，无需设置和管理用户定义的路由（Udr）。
 
-你可以在多个 Azure 区域中部署配置有所选安全合作伙伴的安全中心，以便在这些区域中的任何位置获得用户的连接和安全。 由于能够使用安全合作伙伴提供的 Internet/SaaS 应用程序流量和 Azure Firewall，在受保护的中心获取专用流量，因此，你现在可以在 Azure 上开始构建接近全球分布式用户的安全边缘，应用程序.
+你可以在多个 Azure 区域中部署配置有所选安全合作伙伴的安全中心，以便在这些区域中的任何位置获得用户的连接和安全。 由于能够使用安全合作伙伴提供的 Internet/SaaS 应用程序流量和 Azure Firewall，在受保护的中心获取专用流量，因此，你现在可以在 Azure 上开始构建接近全球分布式用户和应用程序的安全边缘。
 
 对于此预览版，支持的安全合作伙伴是**ZScaler**和**iboss**。 支持的区域包括： WestCentralUS、NorthCentralUS、WestUS、WestUS2 和 EastUS。
 
-![受信任的安全合作伙伴](media/trusted-security-partners/trusted-security-partners.png)
+![信任的安全合作伙伴](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>关键方案
 
@@ -35,7 +35,7 @@ Azure 防火墙管理器中的*受信任安全合作伙伴（预览版）* 可�
 
 - 虚拟网络（VNet）到 Internet
 
-   为在 Azure 上运行的云工作负荷利用高级用户感知 Internet 保护。
+   为在 Azure 上运行的云工作负荷提供高级用户感知型 Internet 保护。
 
 - 分支到 Internet
 
@@ -75,7 +75,7 @@ Internet 流量通常包含 web 流量。 但它还包括目标为 SaaS 应用�
 
 [Office 365 网络连接原则](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles)调用，将从用户分支或移动设备本地路由的关键 Office 365 网络连接，并直接通过 Internet 连接到最接近的 Microsoft 网络状态点。
 
-此外，出于性能方面的考虑，Office 365 连接出于隐私目的进行了强加密，并使用有效的专用协议。 这会使它不切实际，并有影响力这些与传统网络级别安全解决方案的连接。 出于此原因，我们强烈建议客户在通过 Azure 发送其他流量之前，直接从分支发送 Office 365 流量。 Microsoft 已与多个与 Azure 和 Office 365 集成的 SD WAN 解决方案提供商合作，使客户能够轻松实现 Office 365 的直接和本地 Internet 分类。 有关详细信息，请参阅[通过虚拟 WAN 设置我的 O365 策略如何实现？](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan)
+此外，出于性能方面的考虑，Office 365 连接出于隐私目的进行了强加密，并使用有效的专用协议。 这会使它不切实际，并有影响力这些与传统网络级别安全解决方案的连接。 出于此原因，我们强烈建议客户在通过 Azure 发送其他流量之前，直接从分支发送 Office 365 流量。 Microsoft 已与多个与 Azure 和 Office 365 集成的 SD WAN 解决方案提供商合作，使客户能够轻松实现 Office 365 的直接和本地 Internet 分类。 有关详细信息，请参阅[通过虚拟 WAN 设置我的 O365 策略如何实现？](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 
 ## <a name="next-steps"></a>后续步骤

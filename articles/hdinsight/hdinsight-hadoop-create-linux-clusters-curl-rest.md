@@ -2,18 +2,18 @@
 title: 使用 Azure REST API 创建 Apache Hadoop 群集 - Azure
 description: 了解如何通过将 Azure 资源管理器模板提交到 Azure REST API 来创建 HDInsight 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435531"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -343,16 +343,15 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
 ## <a name="next-steps"></a>后续步骤
 
-成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集。
+现在已成功创建 HDInsight 群集，请使用以下方法了解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集

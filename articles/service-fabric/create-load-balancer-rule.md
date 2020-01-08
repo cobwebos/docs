@@ -1,24 +1,14 @@
 ---
 title: 为群集创建 Azure 负载均衡器规则
 description: 配置 Azure 负载均衡器，为 Azure Service Fabric 群集打开端口。
-services: service-fabric
-documentationcenter: na
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
-ms.author: atsenthi
-ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351485"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 
@@ -60,7 +50,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 Azure CLI 命令具有下表中所述的几个参数：
 
-| 参数 | 描述 |
+| 参数 | Description |
 | --------- | ----------- |
 | `--backend-port`  | Service Fabric 应用程序正在侦听的端口。 |
 | `--frontend-port` | 负载均衡器针对外部连接公开的端口。 |

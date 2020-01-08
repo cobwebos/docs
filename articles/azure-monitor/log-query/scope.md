@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900239"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365200"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor 中的日志查询范围和时间范围 Log Analytics
 当你在[Azure 门户中 Log Analytics](get-started-portal.md)运行[日志查询](log-query-overview.md)时，查询计算的数据集取决于所选范围和时间范围。 本文介绍范围和时间范围，以及如何根据需要设置每个范围和时间范围。 还介绍了不同类型的作用域的行为。
@@ -31,9 +31,9 @@ ms.locfileid: "72900239"
 |:---|:---|:---|:---|
 | Log Analytics 工作区 | Log Analytics 工作区中的所有记录。 | 从 " **Azure Monitor** " 菜单或 " **Log Analytics 工作区**" 菜单中选择 "**日志**"。  | 可将作用域更改为任何其他资源类型。 |
 | Application Insights 应用程序 | Application Insights 应用程序中的所有记录。 | 从 Application Insights 的 "**概述**" 页中选择 "**分析**"。 | 只能将作用域更改为另一个 Application Insights 应用程序。 |
-| Resource group | 资源组中的所有资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。 | 从 "资源组" 菜单中选择 "**日志**"。 | 无法更改范围。|
-| Subscription | 订阅中的所有资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。 | 从 "订阅" 菜单中选择 "**日志**"。   | 无法更改范围。 |
-| 其他 Azure 资源 | 由资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。  | 从 "资源" 菜单中选择 "**日志**"。<br>或<br>从 " **Azure Monitor** " 菜单中选择 "**日志**"，然后选择新的作用域。 | 只能将作用域更改为同一资源类型。 |
+| 资源组 | 资源组中的所有资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。 | 从 "资源组" 菜单中选择 "**日志**"。 | 无法更改范围。|
+| 订阅 | 订阅中的所有资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。 | 从 "订阅" 菜单中选择 "**日志**"。   | 无法更改范围。 |
+| 其他 Azure 资源 | 由资源创建的记录。 可能包含来自多个 Log Analytics 工作区的数据。  | 从 "资源" 菜单中选择 "**日志**"。<br>或者<br>从 " **Azure Monitor** " 菜单中选择 "**日志**"，然后选择新的作用域。 | 只能将作用域更改为同一资源类型。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>作用域限定为资源的限制
 
@@ -66,7 +66,7 @@ ms.locfileid: "72900239"
 ## <a name="time-range"></a>时间范围
 时间范围指定根据创建记录时针对查询计算的记录集。 这是根据下表中指定的工作区或应用程序中每条记录的标准属性定义的。
 
-| Location | properties |
+| 位置 | 属性 |
 |:---|:---|
 | Log Analytics 工作区          | TimeGenerated |
 | Application Insights 应用程序 | timestamp     |

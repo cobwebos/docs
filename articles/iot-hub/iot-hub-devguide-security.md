@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429309"
 ---
-# <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
+# <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
 
 本文介绍用于保护 IoT 中心的选项。 IoT 中心使用*权限*向每个 IoT 中心终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
@@ -37,7 +37,7 @@ ms.locfileid: "70773178"
 
 * **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](/rest/api/iothub/iothubresource) 或使用 [az iot 中心策略](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户](https://portal.azure.com)中定义策略。 新建的 IoT 中心有以下默认策略：
   
-  | 共享的访问策略 | 权限 |
+  | 共享访问策略 | 权限 |
   | -------------------- | ----------- |
   | iothubowner | 所有权限 |
   | 服务 | **ServiceConnect** 权限 |
@@ -64,7 +64,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 安全凭据（例如对称密钥）永远不会通过网络发送。
 
 > [!NOTE]
-> 如同 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
+> 如同 [Azure 资源管理器](../azure-resource-manager/management/overview.md)中的所有提供程序一样，Azure IoT 中心资源提供程序也通过 Azure 订阅受到保护。
 
 有关如何构造和使用安全令牌的详细信息，请参阅 [IoT 中心安全令牌](iot-hub-devguide-security.md#security-tokens)。
 
@@ -134,15 +134,15 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 以下是预期值：
 
-| ReplTest1 | 描述 |
+| 值 | Description |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
 
-**有关前缀的说明**：URI 前缀是按分段而不是按字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
+**有关前缀的说明**：URI 前缀是根据分段而不是字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
 
 以下 Node.js 代码片段显示名为 **generateSasToken** 的函数，该函数通过输入 `resourceUri, signingKey, policyName, expiresInMins` 计算令牌。 以下各节将详细讲解如何初始化不同令牌用例的不同输入。
 
@@ -195,7 +195,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-下面是必备组件的安装说明。
+下面是先决条件的安装说明。
 
 [!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -258,7 +258,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 例如，创建的用于访问所有设备功能的令牌应具有以下参数：
 
-* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`{device id}` 标识的任何对称密钥，
 * 无策略名称；
 * 任何过期时间。
@@ -292,7 +292,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 例如，使用名为 **device** 的预创建共享访问策略的令牌服务会使用以下参数创建令牌：
 
-* 资源 URI： `{IoT hub name}.azure-devices.net/devices/{device id}`，
+* 资源 URI：`{IoT hub name}.azure-devices.net/devices/{device id}`，
 * 签名密钥：`device` 策略的密钥之一，
 * 策略名称：`device`，
 * 任何过期时间。

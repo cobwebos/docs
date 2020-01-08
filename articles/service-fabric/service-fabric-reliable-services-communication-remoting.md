@@ -1,25 +1,16 @@
 ---
-title: 在 Service Fabric 中使用 C# 进行服务远程处理 | Microsoft Docs
+title: 使用C# Service Fabric 中的服务远程处理
 description: Service Fabric 远程处理允许客户端和服务使用远程过程调用来与 C# 服务进行通信。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: BharatNarasimman
-ms.assetid: abfaf430-fea0-4974-afba-cfc9f9f2354b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 1654a7be8c3aba4efa6fcf96024ea987e2957e73
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433880"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -202,7 +193,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 1. 使用以下属性将 V1 服务升级到 V2 服务。
 此项更改可确保服务在 V1 和 V2 侦听器上侦听。
 
-    a. 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>
@@ -211,7 +202,7 @@ string message = await helloWorldClient.HelloWorldAsync();
       </Resources>
       ```
 
-    b. 使用以下扩展方法创建远程处理侦听器。
+    b.保留“数据库类型”设置，即设置为“共享”。 使用以下扩展方法创建远程处理侦听器。
 
     ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -239,7 +230,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>使用远程处理 V2（接口兼容）堆栈
 
- 远程处理 V2（接口兼容，称为 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不与 V2 和 V1 向后兼容。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循“从 V1 升级到 V2（接口兼容）”一文中的步骤。
+ 远程处理 V2（与接口兼容，称为 V2_1）堆栈具有 V2 远程处理堆栈的所有功能。 其接口堆栈与远程处理 V1 堆栈兼容，但不与 V2 和 V1 向后兼容。 若要从 V1 升级到 V2_1 且不影响服务可用性，请遵循“从 V1 升级到 V2（接口兼容）”一文中的步骤。
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>通过程序集属性使用远程处理 V2（接口兼容）堆栈
@@ -277,7 +268,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用显式远程处理类为 V2（接口兼容）版本创建侦听器/客户端工厂。
 
-请执行以下步骤：
+执行以下步骤:
 
 1. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
 
@@ -322,14 +313,14 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要从 V1 升级到 V2（接口兼容，称为 V2_1），必须执行双步升级。 请按顺序执行以下步骤。
 
 > [!NOTE]
-> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 例如：'Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`
+> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 例如： "ServiceFabric" （"FabricTransport"）
 >
 >
 
 1. 使用以下属性将 V1 服务升级到 V2_1 服务。
 此项更改可确保服务在 V1 和 V2_1 侦听器上侦听。
 
-    a. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>
@@ -338,7 +329,7 @@ string message = await helloWorldClient.HelloWorldAsync();
       </Resources>
       ```
 
-    b. 使用以下扩展方法创建远程处理侦听器。
+    b.保留“数据库类型”设置，即设置为“共享”。 使用以下扩展方法创建远程处理侦听器。
 
     ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -366,7 +357,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>在远程处理包装消息中使用自定义序列化
 
 对于远程处理包装消息，我们将创建一个包装对象，并将所有参数作为其中的一个字段。
-请执行以下步骤：
+执行以下步骤:
 
 1. 实现 `IServiceRemotingMessageSerializationProvider` 接口，以提供自定义序列化的实现。
     此代码片段演示该实现的大致形式。

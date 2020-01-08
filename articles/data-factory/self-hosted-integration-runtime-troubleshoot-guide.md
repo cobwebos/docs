@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
-ms.openlocfilehash: 9adbc3d7d30aeb8c7cb2b89c326ac2b39a2e8d2b
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439880"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>自承载集成运行时故障排除
 
@@ -20,114 +20,120 @@ ms.locfileid: "73907277"
 
 ## <a name="common-errors-and-resolutions"></a>常见错误和解决方法
 
-### <a name="error-message-self-hosted-integration-runtime-is-unable-to-connect-to-cloud-service"></a>错误消息：自承载集成运行时无法连接到云服务。
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>错误消息：自承载集成运行时无法连接到云服务
 
-- **症状**： 
+![自承载 IR 连接问题](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
-    ![自承载 IR 连接问题](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+#### <a name="cause"></a>原因 
 
-- **原因**：自承载集成运行时无法连接到数据工厂服务（后端）。 通常是由于防火墙中的网络设置导致的。
+自承载集成运行时无法连接到数据工厂服务（后端）。 此问题通常是由于防火墙中的网络设置导致的。
 
-- **解决方法**： 
+#### <a name="resolution"></a>分辨率
 
-    1. 检查 windows 服务 "Integration Runtime 服务" 是否正在运行。
+1. 检查集成运行时服务是否正在运行。
     
-        ![自承载 IR 服务运行状态](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![自承载 IR 服务运行状态](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-    2. 如果 [1] 中所示的 windows 服务正在运行，请根据需要执行以下说明：
+1. 如果服务正在运行，请继续执行步骤3。
 
-        1. 如果未在自承载集成运行时上配置 "proxy" （默认设置为 "无代理配置"），请在安装了自承载集成运行时的计算机上运行以下 PowerShell 命令： 
-            
-            ```powershell
-            (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-            ```
-            > [!NOTE] 
-            > 服务 URL 根据数据工厂位置的不同而异。 可以在 ADF UI > 连接-> Integration runtime-> 编辑自托管 IR > 节点-> 查看服务 Url 下找到服务 URL。
-            
-            下面是预期的响应：
-            
-            ![Powershell 命令响应](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
-            
-            如果响应不同，请根据需要执行以下说明：
-            
-            * 如果收到错误消息 "无法解析远程名称"，则 DNS 出现问题。 请与网络团队联系，以解决 DNS 解析问题！ 
-            * 如果收到错误 "ssl/tls 证书不受信任"，请检查计算机上是否信任 "https://wu2.frontend.clouddatahub.net/" 的证书，使用证书管理器安装公共证书，该证书应缓解此问题。
-            * 检查 Windows > 事件查看器（日志）-> 的应用程序和服务日志-> Integration Runtime 以了解是否存在任何故障，这通常是由 DNS、防火墙规则和公司的网络设置（Forcedly 关闭连接）引起的。 对于此问题，请与网络小组合作进行进一步的故障排除，因为每个公司都自定义了网络设置。
+1. 如果自承载集成运行时（这是默认设置）上没有配置代理，请在安装了自承载集成运行时的计算机上运行以下 PowerShell 命令：
 
-        2. 如果在自承载集成运行时上配置了 "proxy"，请验证代理服务器是否能够访问我们的服务终结点。 有关示例命令，请参阅[此](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)示例。    
+    ```powershell
+    (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
+    ```
+        
+   > [!NOTE]     
+   > 服务 URL 可能会有所不同，具体取决于你的数据工厂位置。 可以在 " **ADF UI** > **连接**" > **集成运行时**"中找到服务 URL， > **编辑自托管 IR** > **节点** > **查看服务 url**。
+            
+    下面是预期的响应：
+            
+    ![PowerShell 命令响应](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+            
+1. 如果未收到预期的响应，请根据您的情况使用以下方法之一：
+            
+    * 如果收到 "无法解析远程名称" 消息，则表明存在域名系统（DNS）问题。 请与网络团队联系以解决此问题。
+    * 如果收到 "ssl/tls 证书不受信任" 消息，请检查计算机上是否信任 https://wu2.frontend.clouddatahub.net/ 的证书，然后使用证书管理器安装公共证书。 此操作应缓解此问题。
+    * 请参阅**Windows** > **事件查看器（日志）**  > **应用程序和服务日志** > **Integration Runtime**并检查由 DNS、防火墙规则或公司网络设置导致的任何故障。 （如果发现此类故障，请强行关闭连接。）由于每个公司都有自定义的网络设置，因此请与网络小组联系以解决这些问题。
+
+1. 如果在自承载集成运行时上配置了 "proxy"，请验证代理服务器是否可以访问服务终结点。 有关示例命令，请参阅[PowerShell、web 请求和代理](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)。    
                 
-            ```powershell
-            $user = $env:username
-            $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
-            Settings').ProxyServer
-            $pwd = Read-Host "Password?" -assecurestring
-            $proxy = new-object System.Net.WebProxy
-            $proxy.Address = $webproxy
-            $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
-            $proxy.credentials = $account
-            $url = "https://wu2.frontend.clouddatahub.net/"
-            $wc = new-object system.net.WebClient
-            $wc.proxy = $proxy
-            $webpage = $wc.DownloadData($url)
-            $string = [System.Text.Encoding]::ASCII.GetString($webpage)
-            $string
-            ```
+    ```powershell
+    $user = $env:username
+    $webproxy = (get-itemproperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet
+    Settings').ProxyServer
+    $pwd = Read-Host "Password?" -assecurestring
+    $proxy = new-object System.Net.WebProxy
+    $proxy.Address = $webproxy
+    $account = new-object System.Net.NetworkCredential($user,[Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($pwd)), "")
+    $proxy.credentials = $account
+    $url = "https://wu2.frontend.clouddatahub.net/"
+    $wc = new-object system.net.WebClient
+    $wc.proxy = $proxy
+    $webpage = $wc.DownloadData($url)
+    $string = [System.Text.Encoding]::ASCII.GetString($webpage)
+    $string
+    ```
 
-            下面是预期的响应：
+下面是预期的响应：
             
-            ![Powershell 命令响应2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Powershell 命令响应2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
-            > [!NOTE] 
-            > 代理注意事项：
-            > * 检查代理服务器是否需要允许列表。 如果是这样，请将[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)列入允许列表。
-            > * 在代理服务器上检查 "wu2.frontend.clouddatahub.net/" 的 TLS/SSL 证书是否受信任。
-            > * 如果你使用的是代理中的 active directory 身份验证，则将服务帐户更改为可访问代理的用户帐户 "Integration Runtime 服务"。
+> [!NOTE] 
+> 代理注意事项：
+> * 检查是否需要将代理服务器放在 "安全收件人" 列表中。 如果是这样，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位于 "安全收件人" 列表中。
+> * 检查 TLS/SSL 证书 "wu2.frontend.clouddatahub.net/" 是否在代理服务器上受信任。
+> * 如果在代理上使用 Active Directory 身份验证，请将服务帐户更改为可作为 "Integration Runtime 服务" 访问该代理的用户帐户。
 
 ### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>错误消息：自承载集成运行时节点/逻辑 SHIR 处于非活动/"正在运行（受限）" 状态
 
-- **原因**：你可能会看到处于非活动状态的自承载 IR 节点，如以下屏幕截图中所示：
+#### <a name="cause"></a>原因 
 
-    ![不活动的自承载 IR 节点](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+自承载集成运行时节点可能具有**非活动**状态，如以下屏幕截图所示：
 
-    如果节点不能相互通信，则会发生这种情况。 
+![不活动的自承载 IR 节点](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-- **解决方法**： 
+当节点无法相互通信时，会出现此行为。
 
-    登录到节点托管 VM，并在 "应用程序和服务日志->" Integration Runtime 下打开 "事件视图"，筛选所有错误日志。 
+#### <a name="resolution"></a>分辨率
 
-     1. 如果错误日志包含： 
+1. 登录到节点托管的 VM。 在 "**应用程序和服务日志** > **Integration Runtime**，打开事件查看器，并筛选所有错误日志。
+
+1. 检查错误日志是否包含以下错误： 
     
-        **错误日志**： System.servicemodel.endpointnotfoundexception：无法连接到 net.tcp：//xxxxxxx.bwld.com： 8060/ExternalService/WorkerManager。 连接尝试持续时间为00：00：00.9940994。 TCP 错误代码10061：无法建立连接，因为目标计算机主动拒绝了它10.2.4.10：8060。  ---> SocketException：无法建立连接，因为目标计算机主动拒绝10.2.4.10：8060
-    
-           在系统 DoConnect （终结点 endPointSnapshot，SocketAddress socketAddress）
-           
-           在系统 .Net. Socket （终结点 remoteEP）上
-           
-           在 SocketConnectionInitiator （Uri uri，TimeSpan 超时）
-    
-        **解决方案：** 启动命令行： telnet 10.2.4.10 8060
+    ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
+    System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 
+    10.2.4.10:8060
         
-        如果出现以下错误，请与 IT 专家联系，以获取解决此问题的帮助。 成功登录后，如果你仍遇到 IR 节点状态问题，请联系 Microsoft 支持部门。
+    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+               
+    at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+               
+    at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+       
+1. If you see this error, run the following on a command line: 
+
+   **telnet 10.2.4.10 8060**.
+1. If you receive the following error, contact your IT department for help with fixing this issue. After you can successfully telnet, contact Microsoft Support if you still have issues with the integrative runtime node status.
         
-        ![命令行错误](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![Command-line error](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-     2. 如果错误日志包含：
-     
-        **错误日志：** 无法连接到 worker 管理器： net.tcp：//xxxxxx： 8060/ExternalService/对于主机 azranlcir01r1，不存在 DNS 条目。 此主机不存在已知异常详细信息： System.servicemodel.endpointnotfoundexception：主机 xxxxx 不存在 DNS 条目。 ---> SocketException：在系统 GetAddrInfo （字符串名称）处，在系统（string）上找不到此类主机。 System.net.dns.gethostentry 上的系统 includeIPv6 （string hostNameOrAddress）在 DnsCache （Uri uri）---内部异常堆栈跟踪的末尾---服务器堆栈跟踪：在 DnsCache （Uri uri）上进行分析。 
+1.  Check whether the error log contains the following:
+
+    ```Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)```
     
-        **解决方案：** 以下两项操作之一可帮助解决此问题：
-         1. 将所有节点置于同一域中。
-         2. 在所有托管 VM 的 hosts 文件中，将 IP 添加到主机映射。
+1. To resolve the issue, try one or both of the following methods:
+    - Put all the nodes in the same domain.
+    - Add the IP to host mapping in all the hosted VM's host files.
 
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
-有关故障排除的详细信息，请尝试以下资源：
+For more help with troubleshooting, try the following resources:
 
-*  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [用于数据工厂的 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [有关数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
-*  [ADF 映射数据流性能指南](concepts-data-flow-performance.md)
+*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory feature requests](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [MSDN forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
+*  [Stack overflow forum for Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [Twitter information about Data Factory](https://twitter.com/hashtag/DataFactory)
+*  [Mapping data flows performance guide](concepts-data-flow-performance.md)

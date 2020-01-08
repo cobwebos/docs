@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 19496d88c1e77a6f6b18ae6f73c289f8617a3c29
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ac2426bbfa074e58aa5c4a213f3ecbee20052358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444367"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Couchbase 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Couchbase 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前以预览版提供。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -50,11 +50,11 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Couchbase 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Couchbase** | 是 |
-| connectionString | 用于连接到 Couchbase 的 ODBC 连接字符串。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将凭据字符串放在 Azure 密钥保管库中，并从连接字符串中拉取 `credString` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密匙保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| connectionString | 用于连接到 Couchbase 的 ODBC 连接字符串。 <br/>还可以将凭据字符串放在 Azure 密钥保管库中，并从连接字符串中拉取 `credString` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -64,10 +64,7 @@ Couchbase 链接服务支持以下属性：
     "properties": {
         "type": "Couchbase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
-            }
+            "connectionString": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -85,10 +82,7 @@ Couchbase 链接服务支持以下属性：
     "properties": {
         "type": "Couchbase",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>; Port=<port>;AuthMech=1;"
-            },
+            "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
             "credString": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -112,10 +106,10 @@ Couchbase 链接服务支持以下属性：
 
 要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”。 支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **CouchbaseTable** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 
 **示例**
@@ -143,10 +137,10 @@ Couchbase 链接服务支持以下属性：
 
 要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”。 复制活动源部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：CouchbaseSource | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -185,4 +179,4 @@ Couchbase 链接服务支持以下属性：
 若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

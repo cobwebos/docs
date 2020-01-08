@@ -1,5 +1,5 @@
 ---
-title: 使用逻辑应用自动执行 Azure Application Insights 过程。
+title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407520"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -20,14 +20,14 @@ ms.locfileid: "72677600"
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
-你也可以添加其他操作。 Azure 应用服务的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Azure DevOps 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)帮助加快逻辑应用的创建过程。 
+也可以添加其他操作。 Azure 应用服务的逻辑应用功能提供数百个操作。 例如，可使用逻辑应用在 Azure DevOps 中自动发送电子邮件通知或创建 bug。 还可使用多个可用[模板](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)帮助加快逻辑应用的创建过程。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>为 Application Insights 创建逻辑应用
 
 本教程介绍如何创建使用 Analytics autocluster 算法对 Web 应用程序的数据中的属性进行分组的逻辑应用。 此流自动通过电子邮件发送结果，这只是如何结合使用 Application Insights Analytics 和逻辑应用的一个示例。 
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -96,9 +96,9 @@ ms.locfileid: "72677600"
 
 1. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入收件人的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 键入收件人的电子邮件地址。
 
-   b. 键入电子邮件的主题。
+   b.保留“数据库类型”设置，即设置为“共享”。 键入电子邮件的主题。
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
     
@@ -110,13 +110,13 @@ ms.locfileid: "72677600"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“附件名称”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“附件名称”。
 
-    b. 选择“附件内容”。
+    b.保留“数据库类型”设置，即设置为“共享”。 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 
-      ![Office 365 电子邮件配置屏幕](./media/automate-with-logic-apps/12emailattachment.png)
+      ![“Office 365 电子邮件配置”屏幕](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步骤 7：保存并测试逻辑应用
 * 单击“保存”以保存更改。
@@ -131,7 +131,7 @@ ms.locfileid: "72677600"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)的详细信息。
+- 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
 - 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的详细信息。
 
 

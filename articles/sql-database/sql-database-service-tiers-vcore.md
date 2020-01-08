@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c5c7883295a30aa217e722abd905f54b982761d3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547559"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351410"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -131,6 +131,52 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 对于池，请在 "概述" 页上选择 "**配置**"。
 
 按照上述步骤更改配置，并按前面的步骤中所述选择硬件生成。
+
+**创建托管实例时选择硬件生成**
+
+有关详细信息，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
+
+在 "**基本**信息" 选项卡上，选择 "**计算 + 存储**" 部分中的 "**配置数据库**" 链接，然后选择 "所需的硬件生成"：
+
+  ![配置托管实例](media/sql-database-service-tiers-vcore/configure-managed-instance.png)
+  
+**更改现有托管实例的硬件生成**
+
+使用以下 PowerShell 脚本：
+
+```powershell-interactive
+$subscriptionId = "**************"
+Select-AzSubscription -Subscription $subscriptionId
+
+$instanceName = "********"
+$resourceGroup = "****"
+
+# THIS IS IMPORTANT PARAMETER:
+$sku = @{name = "GP_Gen5" }
+
+# NOTE: These properties are not necessary, but it would be good to set them to the current values:
+# You might want to change vCores or storage with hardware generation
+# $admin_login = "******"
+# $admin_pass = "******"
+# $location = "***** # for example: ""northeurope"
+# $vCores = 8
+# $maxStorage = 1024
+# $license = "BasePrice"
+# $subnetId = "/subscriptions/****/subnets/*******"
+
+## NOTE: Uncomment some of the properties below if you have set them.
+$properties = New-Object System.Object
+# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
+# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
+# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
+# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
+# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
+# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
+
+Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+```
+
+请确保输入托管实例的订阅 id、名称和资源组。
 
 ### <a name="hardware-availability"></a>硬件可用性
 

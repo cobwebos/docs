@@ -1,17 +1,17 @@
 ---
-title: 了解如何在 Azure Cosmos DB 中管理一致性
+title: 管理 Azure Cosmos DB 中的一致性
 description: 了解如何使用 Azure 门户、.Net SDK、Java SDK 和其他各种 Sdk 在 Azure Cosmos DB 中配置和管理一致性级别
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445369"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -65,7 +65,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
 
-## <a name="override-the-default-consistency-level"></a>重写默认一致性级别
+## <a name="override-the-default-consistency-level"></a>替代默认一致性级别
 
 客户端可以重写由服务设置的默认一致性级别。 可以在每个请求上设置一致性级别，这将替代在帐户级别设置的默认一致性级别。
 
@@ -229,7 +229,7 @@ options = {
 item = client.ReadItem(doc_link, options)
 ```
 
-## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期性 (PBS) 指标
+## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期 (PBS) 指标
 
 最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开 "**度量值**" 窗格，并选择 "**一致性**" 选项卡。根据工作负荷，查看名为**严格一致读取的关系图（请参阅 PBS）** 。
 
