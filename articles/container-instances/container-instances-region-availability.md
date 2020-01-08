@@ -2,13 +2,14 @@
 title: 按区域的资源可用性
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
-ms.date: 05/14/2019
-ms.openlocfilehash: aef66a9fdbe73ccd4da79ce972b7beb061e9fe35
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 456b9754d7a6e88705853d4c4d701110e4841eb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445851"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -25,24 +26,23 @@ ms.locfileid: "74533470"
 
 以下区域和资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
 
-| Location | OS | CPU | 内存 (GB) |
+| 区域 | OS | 最大 CPU | 最大内存（GB） |
 | -------- | -- | :---: | :-----------: |
-| 加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部 2、北欧、美国中南部、东南亚、英国南部、美国西部 | Linux | 4 | 16 |
-| 西欧、美国西部 2 | Linux | 4 | 14 |
+| 巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部2、北欧、美国中南部、东南亚、印度、英国南部、西欧、美国西部、美国西部2 | Linux | 4 | 16 |
 | 澳大利亚东部、日本东部 | Linux | 2 | 8 |
-| 美国中北部、印度南部 | Linux | 2 | 3.5 |
-| 欧洲西部 | Windows | 4 | 16 |
+| 美国中北部 | Linux | 2 | 3.5 |
+| 巴西南部、日本东部、西欧 | Windows | 4 | 16 |
 | 美国东部、美国西部 | Windows | 4 | 14 |
-| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部 2、日本东部、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、美国西部 2 | Windows | 2 | 3.5 |
+| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部2、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、美国西部2 | Windows | 2 | 3.5 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
 
 以下区域和资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
 
-| Location | OS | CPU | 内存 (GB) |
+| 区域 | OS | 最大 CPU | 最大内存（GB） |
 | -------- | -- | :---: | :-----------: |
-| 东南亚、北欧、西欧、美国中部、美国东部、美国西部、美国西部 2 | Windows | 4 | 16 |
-| 美国东部 2 | Windows | 2 | 3.5 |
+| 澳大利亚东部、巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、日本东部、美国中北部、北欧、美国中南部、东南亚、印度、英国南部、西欧 | Windows | 4 | 16 |
+| 美国东部2、美国西部2 | Windows | 2 | 3.5 |
 
 
 ## <a name="availability---virtual-network-deployment-preview"></a>可用性 - 虚拟网络部署（预览版）

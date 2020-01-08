@@ -1,18 +1,18 @@
 ---
 title: 使用渲染应用程序 - Azure Batch
-description: 如何配合 Azure Batch 使用渲染应用程序
+description: 如何在 Azure Batch 中使用呈现应用程序。 本文简要介绍如何运行每个渲染应用程序。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390483"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
 
@@ -39,14 +39,14 @@ ms.locfileid: "60775383"
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
 ```
 
-说明：
+注意：
 
-* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用 `-bitmapPath` 参数。 
+* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用 `-bitmapPath` 参数。
 * 运行任务时检查 3ds Max 写入的 `stdout.txt` 文件，查看渲染器是否有问题，例如，找不到资产。
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
 
 ## <a name="rendering-with-autodesk-maya"></a>使用 Autodesk Maya 进行渲染
 
@@ -81,7 +81,7 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
 
 ## <a name="next-steps"></a>后续步骤
 

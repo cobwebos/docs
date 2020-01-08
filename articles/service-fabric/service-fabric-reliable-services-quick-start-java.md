@@ -1,27 +1,18 @@
 ---
-title: 使用 Java 创建第一个 Azure Service Fabric 可靠服务 | Microsoft Docs
+title: 在 Java 中创建第一个可靠服务
 description: 介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130120"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614207"
 ---
-# <a name="get-started-with-reliable-services"></a>Reliable Services 入门
+# <a name="get-started-with-reliable-services-in-java"></a>Java 中的 Reliable Services 入门
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
@@ -39,7 +30,7 @@ ms.locfileid: "62130120"
 
 * **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
 * **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 事实上，服务实例是编写的服务类的对象实例化。
-* **服务主机**：创建的命名服务实例需在主机中运行。 服务宿主是可以运行服务实例的进程。
+* **服务宿主**：创建的命名服务实例需在宿主中运行。 服务宿主是可以运行服务实例的进程。
 * **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
@@ -124,7 +115,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 * 应用程序或系统升级。
 * 基础硬件遇到中断。
 
-Service Fabric 会管理此业务流程，以便保持服务的高度可用和适当均衡。
+Service Fabric 将管理此业务流程，以便保持服务的高度可用和适当均衡。
 
 `runAsync()` 不应阻止同步。 runAsync 的实现应返回一个 CompletableFuture，以允许运行时继续执行。 如果工作负荷需要实现一个应该在 CompletableFuture 内完成的、长期运行的任务。
 
@@ -192,7 +183,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表用户执行额外的工作，再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
+`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表你执行额外的工作，然后再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠集合与可靠状态管理器
 ```java
@@ -203,7 +194,7 @@ ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddRelia
 
 Reliable Collections 可以存储任何 Java 类型（包括自定义类型），但需要注意以下几点：
 
-* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。  这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。  
+* Service Fabric 通过跨节点复制状态，使状态具备高可用性；而 Reliable HashMap 会将数据存储到每个副本上的本地磁盘中。 这意味着 Reliable HashMaps 中存储的所有内容都必须可序列化。 
 * 在 Reliable HashMaps 上提交事务时，将复制对象以实现高可用性。 存储在 Reliable HashMaps 中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
   
    切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
@@ -231,7 +222,7 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 
 Reliable HashMaps 上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-Reliable HashMap 操作是事务性的，因此可以跨多个 Reliable HashMaps 和操作保持状态一致。  例如，可以在单个事务中，从一个可靠字典中获取工作项、对其执行操作并将结果保存在另一个 Reliable HashMap 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
+Reliable HashMap 操作是事务性的，因此可以跨多个 Reliable HashMaps 和操作保持状态一致。 例如，可以在单个事务中，从一个可靠字典中获取工作项、对其执行操作并将结果保存在另一个 Reliable HashMap 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
 
 
 ## <a name="build-the-application"></a>构建应用程序
@@ -264,7 +255,7 @@ $ gradle
 
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
-应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”  节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  

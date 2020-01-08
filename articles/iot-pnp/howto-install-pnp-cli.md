@@ -3,17 +3,17 @@ title: 使用适用于 Azure CLI 的 Azure IoT 扩展与 IoT 即插即用 Previe
 description: 安装适用于 Azure CLI 的 Azure IoT 扩展，并使用它与连接到 IoT 中心的 IoT 即插即用设备进行交互。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571018"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529569"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>安装并使用适用于 Azure CLI 的 Azure IoT 扩展
 
@@ -26,7 +26,7 @@ ms.locfileid: "73571018"
 - 使用设备属性。
 - 调用设备命令。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 为 Azure CLI 安装和配置 Azure IoT 扩展。
 - 使用该扩展与设备交互并对其进行测试。
@@ -44,7 +44,7 @@ ms.locfileid: "73571018"
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>将 Azure IoT 扩展用于 Azure CLI
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 若要登录到 Azure 订阅，请运行以下命令：
 
@@ -57,10 +57,10 @@ az login
 
 若要将 Azure IoT 扩展用于 Azure CLI，需要：
 
-- Azure IoT 中心。 可以通过多种方式将 IoT 中心添加到 Azure 订阅，如[使用 Azure CLI 创建 iot 中心](../iot-hub/iot-hub-create-using-cli.md)。 需要 IoT 中心的连接字符串来运行 Azure IoT 扩展命令。 如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure IoT 中心。 可以通过多种方式将 IoT 中心添加到 Azure 订阅，如[使用 Azure CLI 创建 iot 中心](../iot-hub/iot-hub-create-using-cli.md)。 需要 IoT 中心的连接字符串来运行 Azure IoT 扩展命令。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
     > [!NOTE]
-    > 在公共预览版期间，IoT 即插即用功能仅适用于在**美国中部**、**北欧**和**日本东部**区域中创建的 iot 中心。
+    > 在公共预览版期间，IoT 即插即用功能仅适用于在美国中部、欧洲北部和日本东部区域中创建的 IoT 中心。
 
 - 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令注册设备，请确保将 `{YourIoTHubName}` 和 `{YourDeviceID}` 占位符替换为你的值：
 

@@ -1,6 +1,6 @@
 ---
-title: 从模板创建工作流
-description: 使用 Azure 逻辑应用中的逻辑应用模板，可以更快地构建工作流
+title: 使用预构建的模板更快地创建逻辑应用工作流
+description: 使用 Azure 逻辑应用提供的预构建模板快速构建逻辑应用工作流
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793181"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666816"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -21,7 +21,7 @@ ms.locfileid: "74793181"
 
 此处有一些模板类别：
 
-| 模板类型 | 描述 | 
+| 模板类型 | Description | 
 | ------------- | ----------- | 
 | 企业云模板 | 用于集成 Azure Blob、Dynamics CRM、Salesforce、Box 以及其他连接器来满足企业云需求。 例如，可以使用这些模板组织业务领导方式或备份公司文件数据。 | 
 | 个人工作效率模板 | 通过设置日常提醒、将重要工作项目添加为待办事项，以及通过自动化将耗时较长的任务缩减为单个用户同意的步骤，有助于提高个人工作效率。 | 
@@ -44,12 +44,12 @@ ms.locfileid: "74793181"
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 设置 | Value | 描述 | 
+   | 设置 | 值 | Description | 
    | ------- | ----- | ----------- | 
-   | 名称 | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
-   | 订阅 | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
-   | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，以便组织与此应用相关联的所有资源。 | 
-   | 位置 | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
+   | **名称** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
+   | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
+   | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)，以便组织与此应用相关联的所有资源。 | 
+   | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
    | **Log Analytics** | 关闭（默认）或者打开 | 通过[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为逻辑应用启用[诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)。 需要已具有 Log Analytics 工作区。 | 
    |||| 
 

@@ -2,19 +2,15 @@
 title: 在 Azure 中配置更新管理部署的前脚本和后脚本
 description: 本文介绍如何配置和管理更新部署的前脚本和后脚本。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417803"
 ---
 # <a name="manage-pre-and-post-scripts"></a>管理预处理脚本和后脚本
 
@@ -72,7 +68,7 @@ ms.locfileid: "74850238"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称。        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |

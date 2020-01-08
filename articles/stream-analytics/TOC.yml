@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: 引用数据输入
           href: stream-analytics-use-reference-data.md
-        - name: 编写 .NET 自定义反序列化程序
+        - name: 使用自定义反序列化程序读取任何格式的输入
           href: custom-deserializer-examples.md
     - name: 作业的输出类型
       items:
@@ -67,7 +67,7 @@
       href: stream-analytics-window-functions.md
     - name: 地理空间函数
       href: stream-analytics-geospatial-functions.md
-    - name: 兼容性级别
+    - name: 兼容级别
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
@@ -79,7 +79,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: 错误策略
       href: stream-analytics-output-error-policy.md
-- name: 操作方法指南
+- name: 操作方式指南
   items:
     - name: 管理
       items:
@@ -154,7 +154,7 @@
           href: stream-analytics-streaming-unit-consumption.md
         - name: 利用并行化进行缩放
           items:
-            - name: 查询并行化
+            - name: 查询并行性
               href: stream-analytics-parallelization.md
             - name: 提高吞吐量
               href: stream-analytics-scale-jobs.md
@@ -174,9 +174,9 @@
       items:
         - name: 安装工具
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: 使用示例数据进行测试
+        - name: 使用示例数据在本地进行测试
           href: stream-analytics-vs-tools-local-run.md
-        - name: 使用实时数据进行测试
+        - name: 使用实时数据在本地进行测试
           href: stream-analytics-live-data-local-testing.md
         - name: 在 Visual Studio 中查看作业
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: 使用示例数据进行测试
-          href: vscode-local-run.md
+        - name: 使用示例数据在本地进行测试
+          href: visual-studio-code-local-run.md
+        - name: 使用实时数据在本地进行测试
+          href: visual-studio-code-local-run-live-input.md
         - name: 设置 CI/CD 管道
           href: setup-cicd-vs-code.md
         - name: 探索作业
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: 故障排除
       items:
         - name: 输入
@@ -551,7 +553,7 @@
     - name: 事件传递保证
       href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
       maintainContext: true
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.streamanalytics

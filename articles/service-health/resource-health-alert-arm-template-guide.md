@@ -1,17 +1,14 @@
 ---
-title: 使用资源管理器模板创建 Azure 资源运行运行状况警报 | Microsoft Docs
+title: 建立 Azure 资源运行状况警报-资源管理器模板
 description: 以编程方式创建在 Azure 资源不可用时发出通知的警报。
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023917"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551709"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -31,7 +28,7 @@ ms.locfileid: "73023917"
 1. 需要安装[Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
         Login-AzAccount

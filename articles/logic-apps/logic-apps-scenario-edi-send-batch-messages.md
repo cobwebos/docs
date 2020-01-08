@@ -1,20 +1,20 @@
 ---
 title: 批处理将 EDI 消息作为一个组进行处理
-description: 在 Azure 逻辑应用中以批处理、组或集合的形式发送和接收 EDI 消息
+description: 在 Azure 逻辑应用中使用批处理来发送和接收 EDI 消息作为批、组或集合
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792999"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666663"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>使用 Azure 逻辑应用将 EDI 消息以批的形式发送到参与方
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>在 Azure 逻辑应用中将 EDI 消息作为交易伙伴的批或组进行交换
 
 在企业到企业 (B2B) 方案中，合作伙伴通常以组或批的形式交换消息。 使用逻辑应用生成批处理解决方案时，可将消息发送到参与方，然后以批的形式统一处理这些消息。 本文以 X12 为例，介绍如何通过创建“批发送方”逻辑应用和“批接收方”逻辑应用来批处理 EDI 消息。 
 
@@ -64,7 +64,7 @@ ms.locfileid: "74792999"
 
 4. 设置批接收方属性： 
 
-   | properties | Value | 说明 | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------|
    | **批处理模式** | 内联 |  |  
    | **批名称** | TestBatch | 仅适用于“内联”批处理模式 | 
@@ -93,7 +93,7 @@ ms.locfileid: "74792999"
 
    4. 设置批编码器操作的以下属性：
 
-      | properties | 描述 |
+      | 属性 | Description |
       |----------|-------------|
       | **X12 协议的名称** | 打开列表，并选择现有的协议。 <p>如果该列表为空，请确保[将逻辑应用链接到包含所需协议的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 | 
       | **BatchName** | 在此框中单击，显示动态内容列表后，选择“批名称”标记。 | 
@@ -123,7 +123,7 @@ ms.locfileid: "74792999"
 
 3. 为 HTTP 操作设置属性：
 
-   | properties | 描述 | 
+   | 属性 | Description | 
    |----------|-------------|
    | **方法** | 在此列表中选择“POST”。 | 
    | **Uri** | 生成请求 bin 的 URI，然后在此框中输入该 URI。 | 
@@ -173,7 +173,7 @@ ms.locfileid: "74792999"
 
 4. 设置批发送方的属性。
 
-   | properties | 描述 | 
+   | 属性 | Description | 
    |----------|-------------| 
    | **批名称** | 接收方逻辑应用定义的批名称，在本示例中为“TestBatch” <p>**重要说明**：批名称在运行时将接受验证，必须与接收方逻辑应用指定的名称相匹配。 更改批名称会导致批发送方失败。 | 
    | **消息内容** | 要发送的消息内容，在本示例中为“正文”标记 | 

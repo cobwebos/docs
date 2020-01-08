@@ -1,25 +1,16 @@
 ---
-title: 在 Azure Service Fabric 群集中使用 EventStore API 查询群集事件 | Microsoft Docs
+title: 使用 EventStore Api 查询群集事件
 description: 了解如何使用 Azure Service Fabric EventStore API 查询平台事件
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392868"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614394"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
 
@@ -184,7 +175,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 群集升级问题：
 
-同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚起始时的事件和相应的运行状况事件。 以下查询可用于此种情况：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚开始时的事件和相应的运行状况事件。 以下查询可用于此种情况：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
 节点状态更改：
 

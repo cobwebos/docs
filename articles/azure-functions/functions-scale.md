@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6520f205d0a9c1a33d0cb4911a58a5e680bdadb7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929730"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409106"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -126,7 +126,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 在任何计划中，函数应用都需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉。
 
-用于存储应用程序数据的函数应用使用的相同存储帐户也可由触发器和绑定使用。 但是，对于存储密集型操作，应使用单独的存储帐户。   
+用于存储应用程序数据的函数应用使用的相同存储帐户也可由触发器和绑定使用。 但是，对于存储密集型操作，应使用单独的存储帐户。  
+
+有可能多个函数应用共享相同的存储帐户，而不会出现任何问题。 （这是一种很好的例子，即，当你使用 Azure 存储模拟器在本地环境中开发多个应用时，它的作用类似于一个存储帐户。） 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
@@ -161,6 +163,8 @@ Azure Functions 的小数位数是 function app。 横向扩展函数应用时�
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
+
+有关 Python 和 node.js 中的缩放的其他信息，请参阅[Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-concurrency)和[Azure Functions node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 

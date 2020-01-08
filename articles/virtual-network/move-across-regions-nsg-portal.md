@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219187"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647180"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组（NSG）移动到另一个区域
 
 在各种情况下，你想要将现有的 Nsg 从一个区域移到另一个区域。 例如，你可能想要使用相同的配置和安全规则来创建 NSG，以便进行测试。 在灾难恢复规划过程中，你可能还需要将 NSG 移动到另一个区域。
 
-Azure 安全组不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出 NSG 的现有配置和安全规则。  然后，你可以通过将 NSG 导出到模板来暂存另一个区域中的资源，修改参数以匹配目标区域，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请[参阅快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 安全组不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出 NSG 的现有配置和安全规则。  然后，你可以通过将 NSG 导出到模板来暂存另一个区域中的资源，修改参数以匹配目标区域，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 请确保 Azure 网络安全组在要移动的 Azure 区域中。
 
@@ -32,7 +32,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 - 验证 Azure 订阅是否允许在使用的目标区域中创建 Nsg。 请联系支持部门，启用所需配额。
 
-- 请确保订阅中有足够的资源，以支持为此过程添加 Nsg。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 请确保订阅中有足够的资源，以支持为此过程添加 Nsg。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>准备并移动
@@ -43,9 +43,9 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
 2. 找到包含源 NSG 的资源组，然后单击该资源组。
-3. 选择 >**设置** > ""**导出模板**"。
+3. 选择 "**导出模板** > **设置**。
 4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
-5. 单击 "**模板** > " "**编辑参数**"，在联机编辑器中打开 "参数文件" **。**
+5. 单击 "**模板** > **编辑参数**"，在联机编辑器中打开 "参数文件" **。**
 6. 若要编辑 NSG 名称的参数，请在 "**参数**" 下更改**值**属性：
 
     ```json
@@ -64,7 +64,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 8.  在编辑器中单击 "**保存**"。
 
-9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。
+9.  单击 "**模板** > "**编辑模板**"，在联机编辑器中打开**模板**文件。
 
 10. 若要编辑 NSG 配置和安全规则将移动到的目标区域，请在 "联机编辑器" 中的 "**资源**" 下更改 "**位置**" 属性：
 
@@ -84,7 +84,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
     ```
 
-11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不带空格的区域名称，"**美国中部** = **centralus**"。
 
 12. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
 
@@ -155,9 +155,9 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 14. 单击 "**基础** > **订阅**" 以选择将在其中部署目标 NSG 的订阅。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 NSG 的资源组。  可以单击 "**新建**" 为目标 NSG 创建新的资源组。  确保名称与现有 NSG 的源资源组不同。
+15. 单击 "**基本**" > **资源组**"以选择将在其中部署目标 NSG 的资源组。  可以单击 "**新建**" 为目标 NSG 创建新的资源组。  确保名称与现有 NSG 的源资源组不同。
 
-16. 验证**基本** > **位置**是否设置为要在其中部署 NSG 的目标位置。
+16. 验证**基础** > **位置**设置为要在其中部署 NSG 的目标位置。
 
 17. 在 "**设置**" 下验证名称是否与上述 "参数编辑器" 中输入的名称相匹配。
 
@@ -169,7 +169,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 如果希望放弃目标 NSG，请删除包含目标 NSG 的资源组。  为此，请在门户的 "仪表板" 中选择资源组，并选择 "概述" 页顶部的 "**删除**"。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成 NSG 的移动，请删除源 NSG 或资源组。 为此，请在门户的 "仪表板" 中选择网络安全组或资源组，并在每个页面顶部选择 "**删除**"。
 

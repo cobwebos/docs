@@ -1,18 +1,18 @@
 ---
 title: 渲染功能 - Azure Batch
-description: Azure Batch 中的特定渲染功能
+description: 标准 Azure Batch 功能用于运行呈现工作负荷和应用。 Batch 包含支持呈现工作负荷的特定功能。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350048"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449727"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -30,10 +30,10 @@ ms.locfileid: "71350048"
 
 有关示例池配置，请参阅 [Azure CLI 渲染教程](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)。  Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
 
-| 发布者 | 套餐 | SKU | Version |
+| 发布者 | 产品 | Sku | 版本 |
 |---------|---------|---------|--------|
-| 或批处理 | rendering-centos73 | 呈现 | latest |
-| 或批处理 | rendering-windows2016 | 呈现 | latest |
+| batch | rendering-centos73 | 呈现 | 最新 |
+| batch | rendering-windows2016 | 呈现 | 最新 |
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 

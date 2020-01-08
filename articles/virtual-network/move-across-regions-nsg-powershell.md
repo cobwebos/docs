@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038948"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641462"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 网络安全组（NSG）移动到另一个区域
 
@@ -20,7 +20,7 @@ ms.locfileid: "71038948"
 Azure 安全组不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出 NSG 的现有配置和安全规则。  然后，你可以通过将 NSG 导出到模板来暂存另一个区域中的资源，修改参数以匹配目标区域，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[将资源组导出到模板](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 请确保 Azure 网络安全组在要移动的 Azure 区域中。
 
@@ -32,7 +32,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 - 验证 Azure 订阅是否允许在使用的目标区域中创建 Nsg。 请联系支持部门，启用所需配额。
 
-- 请确保订阅中有足够的资源，以支持为此过程添加 Nsg。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 请确保订阅中有足够的资源，以支持为此过程添加 Nsg。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>准备并移动
@@ -61,7 +61,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. 下载的文件将命名为从中导出资源的资源组。  找到从名为 **\<"资源组-名称 >** " 的命令中导出的文件，并在所选的编辑器中将其打开：
+4. 下载的文件将命名为从中导出资源的资源组。  找到从名为 **\<资源组-name >** 的命令中导出的文件，并在所选的编辑器中将其打开：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
     Get-AzLocation | format-table
     
     ```
-8. 你还可以根据你的要求，更改 **\<资源组-名称 >** 中的其他参数，并且是可选的：
+8. 你还可以根据你的要求，更改 **\<资源组名称 > json**中的其他参数：
 
-    * **安全规则**-可以通过将规则添加到 NSG 文件的**securityRules**  **\<** 部分或删除规则，来编辑部署到目标 > 中的规则。
+    * **安全规则**-你可以通过在 **\<资源组 > json**文件中的 " **securityRules** " 部分中添加或删除规则，来编辑要部署到目标 NSG 的规则：
 
         ```json
            "resources": [
@@ -171,7 +171,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
             }
         ```
 
-9. 将资源**组名称保存>json文件。\<**
+9. 将 **\<的资源组名称保存 > json**文件。
 
 10. 在目标区域中创建一个资源组，以使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)部署目标 NSG：
     
@@ -179,7 +179,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 使用[AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将已编辑 **\<的资源组名称 > json**文件部署到上一步骤中创建的资源组：
+11. 使用[AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)将已编辑的已编辑 **\<资源组名称 > json**文件部署到上一步骤中创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -211,7 +211,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成 NSG 的移动，请删除源 NSG 或资源组，使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)或[AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0)：
 

@@ -1,35 +1,26 @@
 ---
-title: Azure Service Fabric CLI- sfctl is | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl is 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理基础结构的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c3c98e8da0c2a5449296a0fd108977ec0633f83d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901572"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639116"
 ---
 # <a name="sfctl-is"></a>sfctl is
 查询并向基础结构服务发送命令。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | command | 针对给定基础结构服务实例调用管理命令。 |
-| 查询 | 针对给定基础结构服务实例调用只读查询。 |
+| query | 针对给定基础结构服务实例调用只读查询。 |
 
 ## <a name="sfctl-is-command"></a>sfctl is command
 针对给定基础结构服务实例调用管理命令。
@@ -38,7 +29,7 @@ ms.locfileid: "72901572"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
 | --service-id | 基础结构服务标识。 <br><br> 这是不包含“fabric\:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
@@ -46,13 +37,13 @@ ms.locfileid: "72901572"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-is-query"></a>sfctl is query
 针对给定基础结构服务实例调用只读查询。
@@ -61,7 +52,7 @@ ms.locfileid: "72901572"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --command [必需] | 将调用的命令文本。 命令内容特定于基础结构。 |
 | --service-id | 基础结构服务标识。 <br><br> 这是不包含“fabric\:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。 |
@@ -69,15 +60,15 @@ ms.locfileid: "72901572"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

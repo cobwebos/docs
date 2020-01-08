@@ -1,6 +1,7 @@
 ---
-title: 有关联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制的文章 | Microsoft Docs
-description: 了解在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制。
+title: 已知问题：联机迁移到 Azure Database for MySQL
+titleSuffix: Azure Database Migration Service
+description: 了解使用 Azure 数据库迁移服务时，联机迁移到 Azure Database for MySQL 的已知问题和迁移限制。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,24 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom:
+- seo-lt-2019
+- seo-dt-2019
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437845"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>联机迁移问题 & azure DB for MySQL 与 Azure 数据库迁移服务的限制
 
 以下部分描述了在从 MySQL 联机迁移到 Azure Database for MySQL 时存在的已知问题和限制。
 
 ## <a name="online-migration-configuration"></a>联机迁移配置
+
 
 - 源 MySQL 服务器版本必须是 5.6.35、5.7.18 或以上
 - Azure Database for MySQL 支持：
@@ -31,7 +35,7 @@ ms.locfileid: "73902781"
 - 相同版本的迁移。 不支持将 MySQL 5.6 迁移到 Azure Database for MySQL 5.7。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中启用二进制日志记录
   - 将 Server_id 设为大于或等于 1 的任意数字，例如 Server_id=1（仅适用于 MySQL 5.6）
-  - 设置 log-bin = \<path>（仅适用于 MySQL 5.6）
+  - 设置日志-bin = \<路径 > （仅适用于 MySQL 5.6）
   - 设置 binlog_format = row
   - Expire_logs_days = 5（建议 - 仅适用于 MySQL 5.6）
 - 用户必须具有 ReplicationAdmin 角色。
@@ -72,7 +76,7 @@ ms.locfileid: "73902781"
 
 ## <a name="lob-limitations"></a>LOB 限制
 
-大型对象 (LOB) 列可能会增大。 MySQL、中等长度文本、长文本、Blob、中等 Blob、长 Blob 等都属于 LOB 数据类型。
+大型对象 (LOB) 列可能会增大。 对于 MySQL，中文本、Longtext、Blob、Mediumblob、Longblob 等，都是 LOB 的某些数据类型。
 
 - **限制**：如果将 LOB 数据类型用作主键，迁移将会失败。
 
@@ -85,11 +89,11 @@ ms.locfileid: "73902781"
 
     **解决方法**：如果 LOB 对象大于 32 KB，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
 
-## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 联机迁移时的限制
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 在线迁移时的限制
 
-尝试从 AWS RDS MySQL 联机迁移到 Azure Database for MySQL 时，你可能会遇到以下错误。
+尝试执行从 AWS RDS MySQL 到 Azure Database for MySQL 的联机迁移时，可能会遇到以下错误。
 
-- **错误：** 数据库 "{0}" 在目标上具有外键。 修复目标并启动新的数据迁移活动。 在目标上执行以下脚本以列出外键
+- **错误：** 数据库 "{0}" 在目标上具有外键。 修复目标并启动新的数据迁移活动。 在 target 上执行以下脚本以列出外键
 
   **限制**：如果你在架构中有外键，则迁移的初始负载和连续同步将会失败。
   **解决方法**：在 MySQL 工作台中执行以下脚本，提取删除外键脚本并添加外键脚本：
@@ -100,7 +104,7 @@ ms.locfileid: "73902781"
 
 - **错误：** 服务器上不存在数据库 "{0}"。 提供的 MySQL 源服务器区分大小写。 请检查数据库名称。
 
-  **限制**：使用命令行接口（CLI）将 MySQL 数据库迁移到 Azure 时，用户可能会遇到此错误。 服务在源服务器上找不到该数据库，原因可能是提供了错误的数据库名称，或者该数据库不存在于所列的服务器上。 请注意，数据库名称区分大小写。
+  **限制**：使用命令行接口（CLI）将 MySQL 数据库迁移到 Azure 时，用户可能会遇到此错误。 服务找不到源服务器上的数据库，这可能是因为你提供的数据库名称不正确，或者所列出的服务器上没有该数据库。 注意数据库名称区分大小写。
 
   **解决方法**：提供准确的数据库名称，然后重试。
 

@@ -8,7 +8,17 @@
       href: terminology.md
 - name: 快速入门
   items:
-    - name: 应用程序
+    - name: 监视 Azure 资源
+      href: learn/quick-monitor-azure-resource.md
+    - name: 监视虚拟机
+      items:
+        - name: 收集 - Azure VM
+          href: learn/quick-collect-azurevm.md
+        - name: 收集 - Linux 计算机
+          href: learn/quick-collect-linux-computer.md
+        - name: 收集 - Windows 计算机
+          href: learn/quick-collect-windows-computer.md
+    - name: 监视应用程序
       items:
         - name: .NET 应用程序
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Web 应用程序
           href: app/website-monitoring.md
-    - name: 虚拟机
-      items:
-        - name: 收集 - Azure VM
-          href: learn/quick-collect-azurevm.md
-        - name: 收集 - Linux 计算机
-          href: learn/quick-collect-linux-computer.md
-        - name: 收集 - Windows 计算机
-          href: learn/quick-collect-windows-computer.md
 - name: 教程
   items:
-    - name: 日志
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: 日志查询
-          href: log-query/get-started-queries.md
-        - name: 包含日志数据的仪表板
-          href: learn/tutorial-logs-dashboards.md
-        - name: 根据日志数据发出警报
-          href: learn/tutorial-response.md
+    - name: 创建指标图表
+      href: learn/tutorial-metrics-explorer.md
+    - name: 从 Azure 资源收集日志
+      href: learn/tutorial-resource-logs.md
+    - name: 编写日志查询
+      href: log-query/get-started-queries.md
+    - name: 通过日志查询创建仪表板
+      href: learn/tutorial-logs-dashboards.md
+    - name: 通过日志查询创建警报
+      href: learn/tutorial-response.md
+    - name: 根据性能和计划自动缩放
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: 查找应用程序运行时异常
@@ -52,10 +56,6 @@
           href: learn/tutorial-users.md
         - name: 包含应用程序数据的仪表板
           href: learn/tutorial-app-dashboards.md
-    - name: 存档平台指标和日志数据
-      href: learn/tutorial-archive-data.md
-    - name: 根据性能和计划自动缩放
-      href: learn/tutorial-autoscale-performance-schedule.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -117,7 +117,7 @@
         - name: Application Insights
           displayName: FAQ
           href: app/troubleshoot-faq.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理 Azure Monitor
       items:
@@ -449,7 +449,7 @@
                   href: app/separate-resources.md
                 - name: 如何在 Application Insights 中执行...？
                   href: app/how-do-i.md
-        - name: 导出
+        - name: Export
           items:
             - name: 连续导出
               href: app/export-telemetry.md
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: 监视资源组
           href: insights/resource-group-insights.md
-        - name: 平台日志概述
-          href: platform/platform-logs-overview.md
-        - name: 资源日志
+        - name: 平台日志
           items:
             - name: 概述
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: 在 Azure Monitor 日志中收集
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: 存档到存储
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: 流式传输到事件中心
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: 活动日志
-          items:
-            - name: 概述
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: 通过诊断设置收集
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: 查看和检索
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: 查看活动日志
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: 收集和分析
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: 在租户之间收集
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: 导出
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: 架构
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: 发送到目标
+              items:
+                - name: Log Analytics 工作区
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure 存储
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: 事件中心
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: 旧活动日志收集
+              items:
+                - name: 概述
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: 收集和分析
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: 在租户之间收集
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Export
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: 诊断设置
           items:
             - name: 创建诊断设置
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: 使用资源管理器创建诊断设置
+            - name: 使用资源管理器创建
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: 更改为 Blob 存储格式
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Windows 代理
                   href: platform/agent-windows.md
+                - name: Linux 代理
+                  href: platform/agent-linux.md
                 - name: 适用于 Windows 的 VM 扩展
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: 适用于 Linux 的 VM 扩展
@@ -755,7 +753,7 @@
               items:
                 - name: 解决方案概述
                   href: insights/network-performance-monitor.md
-                - name: 性能监视
+                - name: 性能监视器
                   href: insights/network-performance-monitor-performance-monitor.md
                 - name: 服务连接监视器
                   href: insights/network-performance-monitor-service-connectivity.md
@@ -1121,7 +1119,7 @@
           href: insights/scom-assessment.md
         - name: 连接 Configuration Manager
           href: platform/collect-sccm.md
-- name: 引用
+- name: 参考
   items:
     - name: 服务限制
       href: service-limits.md
@@ -1161,10 +1159,16 @@
       items:
         - name: 支持的指标
           href: platform/metrics-supported.md
+        - name: 可通过“诊断设置”导出的指标
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: 较新的警报支持的指标
           href: platform/alerts-metric-near-real-time.md
-    - name: 平台日志服务、类别和架构
-      href: platform/diagnostic-logs-schema.md
+    - name: 平台日志
+      items:
+        - name: 资源日志服务、类别和架构
+          href: platform/diagnostic-logs-schema.md
+        - name: 活动日志架构
+          href: platform/activity-log-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights（预览版）

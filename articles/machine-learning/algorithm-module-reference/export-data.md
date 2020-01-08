@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497891"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529586"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
@@ -29,7 +29,7 @@ ms.locfileid: "73497891"
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-导出数据之前，首先需要先在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../service/how-to-access-data.md)。
+导出数据之前，首先需要先在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../how-to-access-data.md)。
 
 ## <a name="how-to-configure-export-data"></a>如何配置导出数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "73497891"
 
 1. 选择 "**导出数据**" 以打开 "**属性**" 窗格。
 
-1. 对于**数据存储**，请从下拉列表中选择现有的数据存储。 你还可以创建新的数据存储。 查看如何访问操作[方法](../service/how-to-access-data.md)
+1. 对于**数据存储**，请从下拉列表中选择现有的数据存储。 你还可以创建新的数据存储。 查看如何访问操作[方法](../how-to-access-data.md)
 
 1. 定义数据存储中要将数据写入到的路径。 
 

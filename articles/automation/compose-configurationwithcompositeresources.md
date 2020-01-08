@@ -3,19 +3,15 @@ title: 使用复合资源在 Azure Automation State Configuration (DSC) 中编�
 description: 了解如何使用复合资源在 Azure Automation State Configuration (DSC) 中撰写配置
 keywords: powershell dsc, 所需状态配置, powershell dsc azure, 复合资源
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/21/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e9552adad1f15422eb60c34f2548324aeb03ee74
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418728"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>使用复合资源在 Azure Automation State Configuration (DSC) 中编译 DSC 配置
 
@@ -28,7 +24,7 @@ Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md#com
 
 必须先撰写配置，才能分配从 Azure 门户的复合资源撰写的配置。 使用“状态配置 (DSC)”页面上的“配置”或“已编译配置”选项卡的“撰写配置”，即可完成此操作。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)”。
 1. 在“状态配置 (DSC)”页面上，单击“配置”或“已编译配置”选项卡，然后单击页面顶部菜单中的“撰写配置”。
@@ -45,7 +41,7 @@ Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md#com
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用，请参阅 [Azure 自动化状态配置入门](automation-dsc-getting-started.md)
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)
 - 要了解如何登记节点，请参阅[登记由 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)

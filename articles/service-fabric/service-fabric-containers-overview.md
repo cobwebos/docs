@@ -1,25 +1,14 @@
 ---
-title: Service Fabric 和容器概述 | Microsoft 文档
+title: Service Fabric 和容器概述
 description: 概述 Service Fabric，以及如何使用容器部署微服务应用程序。 本文概述容器的用法以及 Service Fabric 提供的功能。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599763"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458226"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -48,10 +37,10 @@ Service Fabric 是用于跨计算机群集部署微服务的 Microsoft [容器�
 
 相比于虚拟机，容器具有以下优势：
 
-* **小型**：容器使用单个存储空间和层的版本与更新提高了效率。
-* **快**：容器无需启动整个操作系统, 因此它们可以更快地启动 (通常以秒为单位)。
+* 小：容器使用单个存储空间和层的版本与更新，提高了效率。
+* **快**：容器无需启动整个操作系统，因此启动速度更快，通常在几秒内即可启动。
 * **可移植性**：容器化的应用程序映像可以移植到云中或本地运行、移植到虚拟机中运行，或者直接在物理机上运行。
-* **资源调控**：容器可限制在其主机上消耗的物理资源。
+* **资源监管**：可以限制容器可在其主机上消耗的物理资源的容器。
 
 ### <a name="container-types-and-supported-environments"></a>容器类型和受支持的环境
 
@@ -78,9 +67,9 @@ Windows Server 2016 提供两种不同类型的容器，它们的隔离程度有
 
 * **IIS 直接迁移**：可将现有 [ASP.NET MVC](https://www.asp.net/mvc) 应用放在容器中，而无需将其迁移到 ASP.NET Core。 这些 ASP.NET MVC 应用都依赖于 Internet Information Services (IIS)。 可以从预先创建的 IIS 映像中将这些应用程序打包成容器映像，然后再使用 Service Fabric 部署。 有关 Windows 容器的信息，请参阅 [Windows Server 上的容器映像](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)。
 
-* **将容器与 Service Fabric 微服务混合使用**：将现有容器映像用于应用程序的一部分。 例如，对于应用程序的 Web 前端，可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)；对于更密集的后端计算，可以使用有状态服务。
+* **将容器和 Service Fabric 微服务混合**：可将现有容器映像用作应用程序的一部分。 例如，对于应用程序的 Web 前端，可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)；对于更密集的后端计算，可以使用有状态服务。
 
-* **减少“噪声邻居”服务的影响**：可以使用容器的资源监管功能来限制服务在主机上使用的资源。 如果某些服务可能会消耗许多资源，因而影响其他服务的性能（例如，长时间运行的类似于查询的操作），请考虑将这些服务放入具有资源监管功能的容器中。
+* **降低“干扰性邻居”服务的影响**：可以使用容器的资源调控能力来限制服务在主机上使用的资源。 如果某些服务可能会消耗许多资源，因而影响其他服务的性能（例如，长时间运行的类似于查询的操作），请考虑将这些服务放入具有资源监管功能的容器中。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 对容器的支持
 

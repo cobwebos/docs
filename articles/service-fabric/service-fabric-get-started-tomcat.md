@@ -1,31 +1,22 @@
 ---
-title: 在 Linux 上为 Apache Tomcat 服务器创建 Azure Service Fabric 容器 | Microsoft Docs
+title: 为 Linux 上的 Apache Tomcat 创建容器
 description: 创建 Linux 容器，以在 Azure Service Fabric 上公开 Apache Tomcat 服务器上运行的应用程序。 生成包含应用程序和 Apache Tomcat 服务器的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170606"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614411"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
 Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 本文介绍如何使用 Apache Tomcat 和简单的 Web 应用程序生成容器，然后将该容器部署到运行 Linux 的 Service Fabric 群集并连接到 Web 应用程序。  
 
 若要了解有关 Apache Tomcat 的详细信息，请参阅 [Apache Tomcat 主页](https://tomcat.apache.org/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * 一台运行以下软件的开发计算机：
   * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
   * [适用于 Linux 的 Docker CE](https://docs.docker.com/engine/installation/#prior-releases)。 
@@ -110,7 +101,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>将 Tomcat 映像推送到容器注册表
 现在，已确认 Tomcat 映像在在开发计算机上的容器中运行，将其推送到容器注册表中的存储库中。 本文使用 Azure 容器注册表来存储图像，但是，只需对步骤稍作修改即可使用所选的任何容器注册表。 本文中的注册表名称假定为 myregistry，完整注册表名称为 myregistry.azurecr.io。 可根据自己的方案相应更改上述内容。 
 
-1. 运行 `docker login`，以使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
+1. 运行 `docker login`，通过[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
 
    以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
 
@@ -141,10 +132,10 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    系统提示时输入以下值：
 
    * 命名应用程序：ServiceFabricTomcat
-   * 应用程序服务的名称：TomcatService
-   * 输入映像名称：提供容器映像在容器注册表中的 URL;例如，myregistry.azurecr.io/samples/tomcattest。
-   * 命令：将此项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
-   * 来宾容器应用程序的实例数：第
+   * 应用程序服务名称：TomcatService
+   * 输入映像名称：提供容器注册表中容器映像的 URL（例如，myregistry.azurecr.io/samples/tomcattest）。
+   * 命令：将此选项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
+   * 来宾容器应用程序的实例数：1
 
    ![适用于容器的 Service Fabric Yeoman 生成器](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
@@ -161,7 +152,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    </Resources>
    ```
 
-11. 在应用程序清单 (ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml) 中的 ServiceManifestImport 标记下，添加以下 XML。 将 RepositoryCredentials 标记中的 AccountName 和 Password 替换为登录所需的容器注册表名称和密码。
+11. 在应用程序清单 (ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml) 中的 ServiceManifestImport 标记下，添加以下 XML。 将**RepositoryCredentials**标记中的**AccountName**和**Password**替换为容器注册表的名称，将密码替换为登录密码所需的密码。
 
    ```xml
    <Policies>
@@ -224,7 +215,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 使用模板中提供的卸载脚本从群集中删除应用程序实例并注销应用程序类型。
 
 ```bash

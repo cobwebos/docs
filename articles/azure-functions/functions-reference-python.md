@@ -2,13 +2,13 @@
 title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409092"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -18,9 +18,9 @@ ms.locfileid: "74226652"
 
 ## <a name="programming-model"></a>编程模型
 
-Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理输入并生成输出。 默认情况下，运行时期望此方法在 `main()` 文件中作为名为 `__init__.py` 的全局方法实现。 还可以[指定备用入口点](#alternate-entry-point)。
+Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理输入并生成输出。 默认情况下，运行时需要将方法实现为 `__init__.py` 文件中 `main()` 名为的全局方法。 还可以[指定备用入口点](#alternate-entry-point)。
 
-来自触发器和绑定的数据使用在 `name`function.json*配置文件中定义的* 属性，通过方法特性绑定到函数。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
+通过使用*函数 json*文件中定义的 `name` 属性，可通过方法属性将触发器和绑定中的数据绑定到函数。 例如，下面的_函数。 json_描述了一个简单的函数，该函数由名为 `req`的 HTTP 请求触发：
 
 ```json
 {
@@ -63,7 +63,7 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="alternate-entry-point"></a>备用入口点
 
-您可以根据需要指定函数的默认行为，方法是在*函数 json*文件中指定 `scriptFile` 和 `entryPoint` 属性。 例如，下面的 _function.json_ 指示运行时使用 `customentry()`main.py_文件中的_ 方法作为 Azure 函数的入口点。
+您可以根据需要指定函数的默认行为，方法是在*函数 json*文件中指定 `scriptFile` 和 `entryPoint` 属性。 例如，下面的_函数_会通知运行时在_main.py_文件中使用 `customentry()` 方法，作为 Azure 函数的入口点。
 
 ```json
 {
@@ -121,9 +121,9 @@ from . import example
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
-在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 虽然它们在 `function.json` 文件中并不相同，但它们在 Python 代码中的使用方法却是相同的。  在本地运行时，触发器和输入源的连接字符串或机密应映射到 `local.settings.json` 文件中的值，以及在 Azure 中运行时的应用程序设置。 
+在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 尽管它们在 `function.json` 文件中有所不同，但在 Python 代码中的用法是相同的。  当在 Azure 中运行时，触发器和输入源的连接字符串或机密会映射到 `local.settings.json` 文件中的值。 
 
-例如，以下代码演示了这两个类别之间的差异：
+例如，下面的代码演示了这两种情况之间的差异：
 
 ```json
 // function.json
@@ -171,16 +171,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-调用函数时，HTTP 请求作为 `req` 传递给函数。 将基于路由 URL 中的 _ID_ 从 Azure Blob 存储检索一个条目，并在函数体中将其用作 `obj`。  此处指定的存储帐户是在中找到的连接字符串，它是函数应用使用的相同存储帐户。
+调用函数时，HTTP 请求作为 `req` 传递给函数。 将根据路由 URL 中的_ID_从 Azure Blob 存储中检索一个条目，并在函数体中将其作为 `obj` 提供。  此处指定的存储帐户是在中找到的连接字符串，它是函数应用使用的相同存储帐户。
 
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Outputs
 
 输出可以在返回值和输出参数中进行表示。 如果只有一个输出，则建议使用返回值。 对于多个输出，必须使用输出参数。
 
-若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `$return` 中设置为 `function.json`。
+若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `function.json` 中设置为 `$return`。
 
-若要生成多个输出，请使用 `set()`[`azure.functions.Out` 接口提供的 ](/python/api/azure-functions/azure.functions.out?view=azure-python) 方法将值分配给绑定。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
+若要生成多个输出，请使用[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)接口提供的 `set()` 方法为绑定分配值。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
 
 ```json
 {
@@ -222,7 +222,7 @@ def main(req: func.HttpRequest,
 
 ## <a name="logging"></a>日志记录
 
-可在函数应用中通过根 [`logging` ](https://docs.python.org/3/library/logging.html#module-logging) 处理程序来访问 Azure Functions 运行时记录器。 此记录器绑定到 Application Insights，并允许标记在函数执行期间遇到的警告和错误。
+可在函数应用中通过根 [`logging`](https://docs.python.org/3/library/logging.html#module-logging) 处理程序来访问 Azure Functions 运行时记录器。 此记录器绑定到 Application Insights，并允许标记在函数执行期间遇到的警告和错误。
 
 下面的示例在通过 HTTP 触发器调用函数时记录信息消息。
 
@@ -236,7 +236,7 @@ def main(req):
 
 有其他日志记录方法可用于在不同跟踪级别向控制台进行写入：
 
-| 方法                 | 说明                                |
+| 方法                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
 | **`error(_message_)`**   | 在根记录器中写入具有 ERROR 级别的消息。    |
@@ -248,7 +248,7 @@ def main(req):
 
 ## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP 触发器在函数 jon 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。 在前面的示例中，使用了一个绑定名称 `req`。 此参数是一个[HttpRequest]对象，并返回一个[httpresponse.cache]对象。
+HTTP 触发器在函数 jon 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。 在前面的示例中，使用了一个绑定名称 `req`。 此参数是一个[HttpRequest]对象，并返回一个[HttpResponse]对象。
 
 通过[HttpRequest]对象，可以获取请求标头、查询参数、路由参数和消息正文。 
 
@@ -278,30 +278,32 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在此函数中，`name` 查询参数的值是从[HttpRequest]对象的 `params` 参数获取的。 使用 `get_json` 方法读取 JSON 编码的消息正文。 
 
-同样，也可以在返回的[httpresponse.cache]对象中设置响应消息的 `status_code` 和 `headers`。
+同样，也可以在返回的[HttpResponse]对象中设置响应消息的 `status_code` 和 `headers`。
 
-## <a name="concurrency"></a>并发
+## <a name="scaling-and-concurrency"></a>缩放和并发
 
-默认情况下，Python 运行时一次只能处理一个函数调用。 在下列一种或多种情况下，此并发级别可能不足：
+默认情况下，Azure Functions 会自动监视应用程序上的负载，并根据需要为 Python 创建更多主机实例。 函数使用不同触发器类型的内置（而非用户可配置）阈值来决定何时添加实例，如 QueueTrigger 的消息和队列大小的期限。 有关详细信息，请参阅[消耗和高级计划的工作](functions-scale.md#how-the-consumption-and-premium-plans-work)原理。
 
-+ 正在尝试处理同时进行的多个调用。
-+ 正在处理大量 i/o 事件。
-+ 您的应用程序受 i/o 限制。
+这种缩放行为足以满足许多应用程序的需求。 但是，具有以下任何特征的应用程序可能无法有效地缩放：
 
-在这些情况下，你可以通过异步运行和使用多个语言工作进程来提高性能。  
+- 应用程序需要处理多个并发调用。
+- 应用程序处理大量 i/o 事件。
+- 应用程序受 i/o 约束。
+
+在这种情况下，你可以通过使用异步模式和使用多个语言辅助进程进一步提高性能。
 
 ### <a name="async"></a>异步
 
-建议使用 `async def` 语句，使函数以异步协同程序运行。
+由于 Python 是单线程运行时，因此用于 Python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来提高性能。
+
+若要异步运行函数，请使用 `async def` 语句，该语句直接使用[asyncio](https://docs.python.org/3/library/asyncio.html)运行函数：
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-当 `main()` 函数同步时（没有 `async` 限定符），该函数将自动在 `asyncio` 线程池中运行。
+不带 `async` 关键字的函数在 asyncio 的线程池中自动运行：
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,11 +314,13 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>使用多个语言辅助进程
 
-默认情况下，每个函数主机实例都有一个语言辅助进程。 但是，对于每个主机实例，都支持具有多个语言工作进程。 然后，可以在这些语言工作进程之间平均分配函数调用。 使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)应用程序设置更改此值。 
+默认情况下，每个函数主机实例都有一个语言辅助进程。 可以通过使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)应用程序设置来增加每个主机的工作进程数（最多10个）。 然后 Azure Functions 尝试在这些辅助角色之间平均分配并行函数调用。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT 适用于在扩展应用程序以满足需求时创建的每个宿主。 
 
 ## <a name="context"></a>上下文
 
-若要在执行过程中获取函数的调用上下文，请在其签名中包含 [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 参数。 
+若要在执行过程中获取函数的调用上下文，请在其签名中包含[`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)参数。 
 
 例如：
 
@@ -342,7 +346,7 @@ def main(req: azure.functions.HttpRequest,
 
 ## <a name="global-variables"></a>全局变量
 
-不保证应用的状态可保留到将来的执行。 不过，Azure Functions 运行时通常会重复使用同一个进程来多次执行同一个应用。 为了缓存高开销计算的结果，请将其声明为全局变量。 
+不保证应用的状态将保留以供将来执行。 不过，Azure Functions 运行时通常会对同一应用的多个执行重复运行相同的过程。 为了缓存昂贵计算的结果，请将其声明为全局变量。 
 
 ```python
 CACHED_DATA = None
@@ -360,7 +364,7 @@ def main(req):
 
 在函数中，[应用程序设置](functions-app-settings.md)（如服务连接字符串）在执行过程中公开为环境变量。 可以通过声明 `import os` 然后使用 `setting = os.environ["setting-name"]`来访问这些设置。
 
-以下示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其键名为 `myAppSetting`：
+下面的示例获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其密钥名为 `myAppSetting`：
 
 ```python
 import logging
@@ -450,9 +454,9 @@ func azure functionapp publish <APP_NAME> --no-build
 
 ## <a name="unit-testing"></a>单元测试
 
-可以使用标准测试框架，像测试其他 Python 代码一样测试以 Python 编写的函数。 对于大多数绑定，可以通过创建 `azure.functions` 包中相应类的实例来创建模拟输入对象。 由于[`azure.functions`](https://pypi.org/project/azure-functions/)包不会立即可用，因此请务必通过 `requirements.txt` 文件安装，如[上文所述](#package-management)。 
+使用标准测试框架，可以像使用其他 Python 代码那样测试使用 Python 编写的函数。 对于大多数绑定，可以通过从 `azure.functions` 包创建适当类的实例来创建 mock 输入对象。 由于[`azure.functions`](https://pypi.org/project/azure-functions/)包不会立即可用，因此请务必通过 `requirements.txt` 文件安装，如[上文所述](#package-management)。 
 
-例如，下面是 HTTP 触发的函数的模拟测试：
+例如，下面是 HTTP 触发函数的模拟测试：
 
 ```json
 {
@@ -530,7 +534,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-下面是使用队列触发的函数的另一个示例：
+下面是另一个示例，其中包含队列触发的函数：
 
 ```json
 {
@@ -578,7 +582,7 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
-## <a name="temporary-files"></a>临时文件
+## <a name="temporary-files"></a>“临时文件”
 
 `tempfile.gettempdir()` 方法返回一个临时文件夹，在 Linux 上 `/tmp`该文件夹。 应用程序可以使用此目录来存储在执行期间由函数生成和使用的临时文件。 
 
@@ -653,4 +657,4 @@ Chrome 浏览器使用此方法来协商允许的来源列表。
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[Httpresponse.cache]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

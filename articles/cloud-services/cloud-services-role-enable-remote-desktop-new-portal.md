@@ -1,5 +1,6 @@
 ---
-title: 使用门户为角色启用远程桌面（Azure 云服务）
+title: 使用门户为角色启用远程桌面
+titleSuffix: Azure Cloud Services
 description: 如何配置 Azure 云服务应用程序以允许远程桌面连接
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360593"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
 
@@ -22,7 +23,7 @@ ms.locfileid: "72298443"
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-可以通过远程桌面访问在 Azure 中运行的角色的桌面。 也可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
+可以通过远程桌面访问在 Azure 中运行的角色的桌面。 你可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
 可以在开发过程中通过在服务定义中加入远程桌面模块来在角色中启用远程桌面连接，也可以通过远程桌面扩展选择启用远程桌面。 首选方法是使用远程桌面扩展，因为即使在部署应用程序后，也能启用远程桌面，而不必重新部署应用程序。
 
@@ -34,7 +35,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
     ![云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
-2. 选择希望为单个角色还是所有角色启用远程桌面，并将切换器的值更改为“已启用”。
+2. 选择想要为单个角色还是所有角色启用远程桌面，然后将切换器的值更改为“已启用”。
 
 3. 填写用户名、密码、到期时间和证书必填字段。
 

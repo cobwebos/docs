@@ -3,7 +3,7 @@ title: Xamarin iOS 注意事项（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin iOS 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04074dfd9055fa4791f6fdce6bcf296aae8ff61
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f74c1f515df23a89af7cf50a208a9965865f6edf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921460"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424115"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>针对 MSAL.NET 的 Xamarin 特定于 iOS 的注意事项
 在 Xamarin iOS 上，使用 MSAL.NET 时，必须考虑几个注意事项
@@ -30,18 +30,11 @@ ms.locfileid: "74921460"
 - [启用令牌缓存共享](#enable-token-cache-sharing-across-ios-applications)
 - [启用密钥链访问](#enable-keychain-access)
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>IOS 12 和身份验证的已知问题
-Microsoft 发布了一个[安全建议](https://github.com/aspnet/AspNetCore/issues/4647)，以提供有关 iOS12 与某些类型的身份验证之间的不兼容性的信息。 不兼容性中断社会、WSFed 和 OIDC 登录。 此咨询还提供了有关开发人员可以执行哪些操作来删除 ASP.NET 添加到其应用程序的当前安全限制以与 iOS12 兼容的指导。  
-
-在 Xamarin iOS 上开发 MSAL.NET 应用程序时，尝试从 iOS 12 登录到网站时可能会出现无限循环（类似于此[ADAL 问题](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)）。 
-
-如此[WebKit 问题](https://bugs.webkit.org/show_bug.cgi?id=188165)中所述，使用 IOS 12 SAFARI ASP.NET Core OIDC authentication 可能会出现中断。
-
 ## <a name="implement-openurl"></a>实现 OpenUrl
 
 首先，需要重写 `FormsApplicationDelegate` 派生类的 `OpenUrl` 方法，并调用 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`。
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
     AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
@@ -56,40 +49,28 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 若要启用密钥链访问，应用程序必须具有密钥链访问组。
 创建应用程序时，可以使用 `WithIosKeychainSecurityGroup()` api 设置密钥链访问组，如下所示：
 
-若要启用单一登录，需要在所有应用程序中将 `PublicClientApplication.iOSKeychainSecurityGroup` 属性设置为相同的值。
+若要从缓存和单一登录中获益，需要在所有应用程序中将 "密钥链" 访问组设置为相同的值。
 
-使用 MSAL v3. x 的一个示例是：
+使用 MSAL v4. x 的一个示例是：
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-     .WithIosKeychainSecurityGroup("com.microsoft.msalrocks")
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
-
-应将 info.plist 更新为类似于以下 XML 片段：
 
 此更改是*在*`Entitlements.plist` 文件中使用以下访问组或你自己的访问权限来启用密钥链访问的补充：
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
 <dict>
   <key>keychain-access-groups</key>
   <array>
-    <string>$(AppIdentifierPrefix)com.microsoft.msalrocks</string>
+    <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
   </array>
 </dict>
-</plist>
 ```
 
-使用 MSAL v4. x 的一个示例是：
-
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-使用 `WithIosKeychainSecurityGroup()` api 时，MSAL 会自动将安全组附加到应用程序的 "团队 ID" （AppIdentifierPrefix）的末尾，因为当你使用 xcode 构建应用程序时，它将执行相同的操作。 [有关更多详细信息，请参阅 iOS 权利文档](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 这就是为什么需要在 info.plist 中的密钥链 access 组之前将权利更新为包括 $ （AppIdentifierPrefix）的原因。
+当你使用 `WithIosKeychainSecurityGroup()` api 时，MSAL 会自动在应用程序的*团队 ID* （AppIdentifierPrefix）的末尾追加安全组，因为当你使用 xcode 构建应用程序时，它将执行相同的操作。 有关详细信息，请参阅[iOS 权利文档](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 这就是权利需要在 `Entitlements.plist`中的密钥链访问组之前包含 `$(AppIdentifierPrefix)` 的原因。
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>在 iOS 应用程序上启用令牌缓存共享
 
@@ -123,8 +104,15 @@ PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
 
 以下示例的 readme.md 文件的[IOS 特定注意事项](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)段落中提供了更多详细信息：
 
-示例 | 平台 | 描述
+示例 | 平台 | Description
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个简单的 Xamarin Forms 应用，展示如何通过 Azure AD v2.0 终结点使用 MSAL 对 MSA 和 Azure AD 进行身份验证，并使用生成的令牌访问 Microsoft Graph。
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->
+
+## <a name="known-issues-with-ios-12-and-authentication"></a>IOS 12 和身份验证的已知问题
+Microsoft 发布了一个[安全建议](https://github.com/aspnet/AspNetCore/issues/4647)，以提供有关 iOS12 与某些类型的身份验证之间的不兼容性的信息。 不兼容性中断社会、WSFed 和 OIDC 登录。 此咨询还提供了有关开发人员可以执行哪些操作来删除 ASP.NET 添加到其应用程序的当前安全限制以与 iOS12 兼容的指导。  
+
+在 Xamarin iOS 上开发 MSAL.NET 应用程序时，尝试从 iOS 12 登录到网站时可能会出现无限循环（类似于此[ADAL 问题](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)）。 
+
+如此[WebKit 问题](https://bugs.webkit.org/show_bug.cgi?id=188165)中所述，使用 IOS 12 SAFARI ASP.NET Core OIDC authentication 可能会出现中断。

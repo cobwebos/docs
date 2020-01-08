@@ -1,7 +1,6 @@
 ---
 title: Azure 流分析输入故障排除
 description: 本文介绍对 Azure 流分析作业中的输入连接进行故障排除的技巧。
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,32 +8,32 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354288"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
 此页介绍输入连接的常见问题和如何解决这些问题。
 
 ## <a name="input-events-not-received-by-job"></a>作业未收到输入事件 
-1.  测试连接。 使用每项输入和输出对应的“测试连接”  按钮来验证与输入和输出的连接。
+1.  测试连接。 使用每项输入和输出对应的“测试连接”按钮来验证与输入和输出的连接。
 
 2.  检查输入数据。
 
     若要验证输入数据是否流入事件中心，请使用[服务总线资源管理器](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)连接到 Azure 事件中心（如果使用了事件中心输入）。
         
-    使用每项输入对应的[“示例数据”  ](stream-analytics-sample-data-input.md)按钮，并下载输入示例数据。
+    使用每项输入对应的[“示例数据”](stream-analytics-sample-data-input.md)按钮，并下载输入示例数据。
         
     检查示例数据，以了解数据的形式：架构和[数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正确的输入事件导致反序列化错误 
 当流分析作业的输入流包含格式不当的消息时，会导致反序列化问题。 例如，JSON 对象中缺少圆括号或大括号，或者时间字段中的时间戳格式不当，都可能导致消息格式不当。 
  
-当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知你。 流分析作业的“输入”磁贴上会显示一个警告符号  。 只要作业处于运行状态，此警告符号就存在：
+当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知你。 流分析作业的“输入”磁贴上会显示一个警告符号。 只要作业处于运行状态，此警告符号就存在：
 
 ![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -73,13 +72,13 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 
 2. 找到你的事件中心。
 
-3. 选择“实体”标题下的“事件中心”。  
+3. 选择“实体”标题下的“事件中心”。
 
 4. 通过名称选择事件中心。
 
-5. 在“事件中心实例”页面上，在“实体”标题下，选择“使用者组”。    此时将列出名为 **$Default** 的使用者组。
+5. 在“事件中心实例”页面上，在“实体”标题下，选择“使用者组”。 此时将列出名为 **$Default** 的使用者组。
 
-6. 选择“+ 使用者组”添加新的使用者组  。 
+6. 选择“+ 使用者组”添加新的使用者组。 
 
    ![在事件中心内添加使用者组](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
@@ -92,9 +91,9 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 
 每个分区的读取器数超过数据中心限制（5 个）的情况如下：
 
-* 多个 SELECT 语句：如果使用引用“同一个”事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器  。
-* UNION：使用 UNION 时，可能存在引用“同一个”事件中心或使用者组的多个输入  。
-* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用“同一个”事件中心  。
+* 多个 SELECT 语句：如果使用引用同一个事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器。
+* UNION：使用 UNION 时，可能存在引用同一个事件中心或使用者组的多个输入。
+* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用同一个事件中心。
 
 下列最佳做法可帮助缓解每个分区的读取器数超过数据中心限制（5 个）的情况。
 
@@ -138,7 +137,7 @@ FROM data
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

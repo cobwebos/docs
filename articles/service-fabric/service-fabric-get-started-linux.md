@@ -1,25 +1,14 @@
 ---
-title: 在 Linux 上设置开发环境 | Microsoft Docs
+title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 6471d3f58fbe0e19910f39e9527f193d00a228be
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457892"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -36,7 +25,7 @@ ms.locfileid: "72170623"
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 支持使用以下操作系统版本进行开发。
 
@@ -178,8 +167,8 @@ SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | latest |
-RHEL | - | OpenJDK 1.8 | Implicit from npm | latest |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
+RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
 安装完成后，启动本地群集。
@@ -272,7 +261,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看已安装组件的版本。 可以按照[Eclipse Buildship： Eclipse 插件 For Gradle][buildship-update]中的说明更新 Buildship。
 
 2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”。
 
@@ -286,7 +275,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 6. 执行安装步骤。 然后接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看。 然后，在已安装插件的列表中搜索 Service Fabric。如果可以使用更新的版本，请选择“更新”。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” > “关于 Eclipse” > “安装详细信息”查看。 然后，在已安装的插件列表中搜索 Service Fabric。如果有较新版本可用，请选择 "**更新**"。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 

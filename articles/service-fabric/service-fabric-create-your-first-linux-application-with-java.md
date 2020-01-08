@@ -1,25 +1,14 @@
 ---
-title: 在 Linux 上创建 Azure Service Fabric Reliable Actors 应用程序 | Microsoft Docs
+title: 在 Linux 上创建 Azure Service Fabric 可靠参与者 Java 应用程序
 description: 了解如何在五分钟内创建并部署一个 Java Service Fabric Reliable Actors 应用程序。
-services: service-fabric
-documentationcenter: java
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/18/2018
-ms.author: atsenthi
-ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458162"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
 > [!div class="op_single_selector"]
@@ -30,7 +19,7 @@ ms.locfileid: "68599679"
 
 借助本快速入门，只需几分钟即可在 Linux 开发环境中创建第一个 Azure Service Fabric Java 应用程序。  完成后，即拥有一个在本地开发群集上运行的简单 Java 单一服务应用程序。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始之前，请安装 Service Fabric SDK、Service Fabric CLI、Yeoman，设置 Java 开发环境，并在 [Linux 开发环境](service-fabric-get-started-linux.md)中设置开发群集。 如果使用 Mac OS X，则可[使用 Docker 在 Mac 上设置开发环境](service-fabric-get-started-mac.md)。
 
 另请安装 [Service Fabric CLI](service-fabric-cli.md)。
@@ -243,7 +232,7 @@ Service Fabric Java 依赖项从 Maven 提取。 若要生成和使用 Service F
     watch -n 1 ./testclient.sh
     ```
 
-2. 在 Service Fabric Explorer 中，找到托管角色服务的主要副本的节点。 以下屏幕截图中显示的是节点 3。 主要服务副本处理读写操作。  然后, 将服务状态更改复制到辅助副本, 在下面的屏幕截图的节点0和1上运行。
+2. 在 Service Fabric Explorer 中，找到托管角色服务的主要副本的节点。 以下屏幕截图中显示的是节点 3。 主要服务副本处理读写操作。  然后，将服务状态更改复制到辅助副本，在下面的屏幕截图的节点0和1上运行。
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
 
@@ -282,7 +271,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   }
   ```
 
-### <a name="services"></a>Services
+### <a name="services"></a>服务
 
 针对应用程序的 Service Fabric Reliable Services 支持。
 
@@ -304,7 +293,7 @@ Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 
   ```
 
 ### <a name="others"></a>其他
-#### <a name="transport"></a>传输
+#### <a name="transport"></a>交通
 
 针对 Service Fabric Java 应用程序的传输层支持。 不需向 Reliable Actor 或 Service 应用程序显式添加此依赖项，除非在传输层编程。
 

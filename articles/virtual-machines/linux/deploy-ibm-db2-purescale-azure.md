@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe6e581963753cac33092285fee0c8d16959bde8
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083446"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530096"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -27,7 +27,7 @@ ms.locfileid: "70083446"
 
 要按照迁移使用的步骤进行操作，请参阅 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的安装脚本。 这些脚本基于典型的中型联机事务处理 (OLTP) 工作负载所用的体系结构。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>开始体验
 
 要部署此体系结构，请下载并运行 GitHub 上 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的 deploy.sh 脚本。
 
@@ -40,33 +40,35 @@ ms.locfileid: "70083446"
 
 deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会提示输入目标环境中使用的 Azure 订阅和虚拟机，然后执行以下操作：
 
--   在 Azure 上设置资源组、虚拟网络和子网以进行安装
+-   在 Azure 上设置资源组、虚拟网络和子网以进行安装。
 
--   为环境设置网络安全组和 SSH
+-   为环境设置网络安全组和 SSH。
 
--   在 GlusterFS 和 DB2 pureScale 虚拟机上设置 NIC
+-   在共享存储和 DB2 pureScale 虚拟机上设置多个 Nic。
 
--   创建 GlusterFS 存储虚拟机
+-   创建共享存储虚拟机。 如果使用存储空间直通或其他存储解决方案，请参阅[存储空间直通概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
 
--   创建 jumpbox 虚拟机
+-   创建 jumpbox 虚拟机。
 
--   创建 DB2 pureScale 虚拟机
+-   创建 DB2 pureScale 虚拟机。
 
--   创建 DB2 pureScale ping 的见证虚拟机
+-   创建 DB2 pureScale ping 的见证虚拟机。 如果 Db2 pureScale 的版本不需要见证服务器，请跳过此部分部署。
 
--   创建用于测试的 Windows 虚拟机，但不在其上安装任何内容
+-   创建用于测试的 Windows 虚拟机，但不会在其上安装任何内容。
 
-接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到 GlusterFS。 此解决方案还提供了将 iSCSI 目标安装为单个 Windows 节点的选项。 iSCSI 通过 TCP/IP 提供共享块存储接口，允许 DB2 pureScale 设置过程使用设备接口连接到共享存储。 有关 GlusterFS 的基本信息，请参阅 Gluster Docs 中的 [Architecture:Types of volumes](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/)（体系结构：卷的类型）主题。
+接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到共享存储群集。 在原始客户解决方案中，使用了 GlusterFS。 然而，IBM 不再支持此方法。 若要维持 IBM 的支持，需要使用受支持的 iSCSI 兼容文件系统。 Microsoft 提供存储空间直通（S2D）作为选项。
+
+此解决方案还提供了将 iSCSI 目标安装为单个 Windows 节点的选项。 iSCSI 通过 TCP/IP 提供共享块存储接口，允许 DB2 pureScale 设置过程使用设备接口连接到共享存储。
 
 部署脚本运行以下常规步骤：
 
-1.  使用 GlusterFS 在 Azure 上设置共享存储群集。 此步骤涉及至少两个 Linux 节点。 有关设置详细信息，请参阅 Red Hat Gluster 文档中的[在 Microsoft Azure 中设置 Red Hat Gluster 存储](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/deployment_guide_for_public_cloud/chap-documentation-deployment_guide_for_public_cloud-azure-setting_up_rhgs_azure)。
+1.  在 Azure 上设置共享存储群集。 此步骤涉及至少两个 Linux 节点。
 
-2.  在目标 Linux 服务器上为 GlusterFS 设置 iSCSI 直接接口。 有关设置详细信息，请参阅 GlusterFS 管理指南中的 [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)。
+2.  在目标 Linux 服务器上为共享存储群集设置 iSCSI 直接接口。
 
-3.  在 Linux 虚拟机上设置 iSCSI 发起程序。 该启动程序会使用 iSCSI 目标访问 GlusterFS 群集。 有关设置详细信息，请参阅 RootUsers 文档中的[如何在 Linux 中配置 iSCSI 目标和发起程序](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)。
+3.  在 Linux 虚拟机上设置 iSCSI 发起程序。 发起程序将使用 iSCSI 目标访问共享存储群集。 有关设置详细信息，请参阅 RootUsers 文档中的[如何在 Linux 中配置 iSCSI 目标和发起程序](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)。
 
-4.  安装 GlusterFS 作为 iSCSI 接口的存储层。
+4.  安装 iSCSI 接口的共享存储层。
 
 脚本创建 iSCSI 设备后，最后一步是安装 DB2 pureScale。 在 DB2 pureScale 设置过程中，将在 GlusterFS 群集上编译并安装 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html)（以前称为 GPFS）。 通过此群集文件系统，DB2 pureScale 可在运行 DB2 pureScale 引擎的虚拟机之间共享数据。 有关更多信息，请参阅 IBM 网站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文档。
 
@@ -77,13 +79,13 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 > [!NOTE]
 > 示例响应文件 DB2server.rsp 包含在 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
 
-| 屏幕名称               | 字段                                        | ReplTest1                                                                                                 |
+| 屏幕名称               | 字段                                        | 值                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| 欢迎使用                   |                                              | 新安装                                                                                           |
+| 欢迎                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
 | 配置             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
-|                           | 我同意 IBM 条款                     | 已选中                                                                                               |
+|                           | 我同意 IBM 条款                     | 已勾选                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |
 | 防护用户               | 现有用户、用户名称                     | DB2sdfe1                                                                                              |
 | 群集文件系统       | 共享磁盘分区设备路径            | /dev/dm-2                                                                                             |
@@ -141,8 +143,6 @@ GitHub 存储库包括由创建者维护的知识库。 该知识库列出了可
 
 ## <a name="next-steps"></a>后续步骤
 
--   [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
-
 -   [创建所需用户以安装 DB2 pureScale 功能](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
 -   [DB2icrt - 创建实例命令](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
@@ -151,6 +151,6 @@ GitHub 存储库包括由创建者维护的知识库。 该知识库列出了可
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [平台现代化联盟：Azure 上的 IBM DB2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [平台现代化联盟： Azure 上的 IBM DB2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)（Azure 虚拟数据中心提升和迁移指南）

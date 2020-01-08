@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432547"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -28,7 +28,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -43,11 +43,11 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    此时会显示配置对话框，请使用下表填写输入字段。
 
-    | 设置        | Value           | 描述  |
+   | 设置        | 值           | Description  |
    | ------------- |:-------------|:-----|
-   | 名称      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | 位置 | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 单击“创建”。
 

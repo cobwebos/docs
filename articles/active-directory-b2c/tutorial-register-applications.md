@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76d38e4b35111cd2c09685653fb4948f98387132
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425487"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
 
@@ -40,8 +40,9 @@ ms.locfileid: "74950776"
 
 #### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 1. 选择“应用程序”，然后选择“添加”。
 1. 输入应用程序的名称。 例如，“webapp1”。
 1. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。
@@ -54,13 +55,13 @@ ms.locfileid: "74950776"
     * 回复 URL 必须以方案 `https`开头。
     * 回复 URL 区分大小写。 它的大小写必须与正在运行的应用程序的 URL 路径匹配。 例如，如果你的应用程序将作为其路径 `.../abc/response-oidc`的一部分包含，请不要在回复 URL 中指定 `.../ABC/response-oidc`。 由于 web 浏览器将路径视为区分大小写，因此在重定向到不匹配的 `.../ABC/response-oidc` URL 时，可能会排除与 `.../abc/response-oidc` 关联的 cookie。
 
-1. 单击 "**创建**" 以完成应用程序注册。
+1. 选择 "**创建**" 以完成应用程序注册。
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择 " **Azure AD B2C**"。
 1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 输入应用程序的“名称”。 例如，“webapp1”。
 1. 选择**任何组织目录或任何标识提供者中的帐户**。

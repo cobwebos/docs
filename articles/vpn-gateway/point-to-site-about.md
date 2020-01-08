@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353558"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -51,11 +51,11 @@ Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接�
 
 在高级别上，你需要执行以下步骤来配置 Azure AD 身份验证：
 
-[1. 配置 Azure AD 租户](openvpn-azure-ad-tenant.md)
+1. [配置 Azure AD 租户](openvpn-azure-ad-tenant.md)
 
-[2. 在网关上启用 Azure AD 身份验证](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [在网关上启用 Azure AD 身份验证](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. 下载并配置 Azure VPN 客户端（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [下载和配置 Azure VPN 客户端（预览版）](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
@@ -67,10 +67,6 @@ AD 域身份验证可让用户使用其组织域凭据连接到 Azure。 它需�
 RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADIUS 服务器以及用于 P2S 证书身份验证的企业证书部署，作为 Azure 证书身份验证的替代方法。 此方法的优点是不需要将根证书和吊销的证书上传到 Azure。
 
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。
-
->[!NOTE]
->RADIUS 身份验证不支持**OpenVPN®协议**。
->
 
 ![点到站点](./media/point-to-site-about/p2s.png "点到站点")
 

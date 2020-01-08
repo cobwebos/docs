@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440445"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
 Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
@@ -59,13 +59,13 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | Description | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 name | Execute Pipeline 活动的名称。 | String | 是
 type | 必须设置为：**ExecutePipeline**。 | String | 是
 管道 | 管道引用此管道调用的依赖管道。 管道引用对象具有两个属性：**referenceName** 和 **type**。 referenceName 属性指定引用管道的名称。 type 属性必须设置为 PipelineReference。 | PipelineReference | 是
-参数 | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
-waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默认值为 false。 | 布尔值 | 否
+parameters | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
+waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默认值为 false。 | Boolean | 否
 
 ## <a name="sample"></a>示例
 此方案具有两个管道：
@@ -168,10 +168,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }
@@ -255,7 +252,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
 
 ```
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
 - [For Each 活动](control-flow-for-each-activity.md)
 - [Get Metadata 活动](control-flow-get-metadata-activity.md)

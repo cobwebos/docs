@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/17/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 14c4ddd5d95abb223fb30e2ce07496e7f2773257
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 29aab4437b7d77b9a00b5745d68dcb5c44a4efe6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666012"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434227"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -51,13 +51,7 @@ ms.locfileid: "74666012"
             "settings": {
               "minDockerVersion": "v1.25",
               "loggingOptions": "",
-              "registryCredentials": {
-                "registryName": {
-                  "username": "",
-                  "password": "",
-                  "address": ""
-                }
-              }
+              "registryCredentials": {}
             }
           },
           "systemModules": {
@@ -74,7 +68,7 @@ ms.locfileid: "74666012"
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-                "createOptions": "{}"
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
           },
@@ -96,7 +90,7 @@ ms.locfileid: "74666012"
         "properties.desired": {
           "schemaVersion": "1.0",
           "routes": {
-            "route": "FROM /* INTO $upstream"
+            "upstream": "FROM /messages/* INTO $upstream"
           },
           "storeAndForwardConfiguration": {
             "timeToLiveSecs": 7200
@@ -104,16 +98,72 @@ ms.locfileid: "74666012"
         }
       },
       "SimulatedTemperatureSensor": {
-        "properties.desired": {}
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
       }
     }
   }
 }
 ```
 
+## <a name="layered-deployment"></a>分层部署
+
+分层部署是一种自动部署类型，可以彼此重叠。 有关分层部署的详细信息，请参阅[了解 IoT Edge 单个设备的自动部署或大规模部署](module-deployment-monitoring.md)。 
+
+可以使用与任何自动部署相同的 Azure CLI 创建和管理分层部署，只需几个差异。 创建分层部署后，同一个 Azure CLI 适用于分层部署，这与任何部署相同。 若要创建分层部署，请将 `--layered` 标志添加到 create 命令。 
+
+第二个区别在于部署清单的构造。 尽管标准自动部署除了包含任何用户模块外，还必须包含系统运行时模块，但分层部署只能包含用户模块。 相反，分层部署还需要在设备上进行标准自动部署，以便提供每个 IoT Edge 设备（如系统运行时模块）的必需组件。 
+
+下面是一个基本分层部署清单，其中包含一个模块作为示例： 
+
+```json
+{
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired.modules.SimulatedTemperatureSensor": {
+          "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": ""
+          },
+          "type": "docker",
+          "status": "running",
+          "restartPolicy": "always",
+          "version": "1.0"
+        }
+      },
+      "$edgeHub": {
+        "properties.desired.routes.upstream": "FROM /messages/* INTO $upstream"
+      },
+      "SimulatedTemperatureSensor": {
+        "properties.desired": {
+          "SendData": true,
+          "SendInterval": 5
+        }
+      }
+    }
+  }
+}
+```
+
+前面的示例显示了一个分层部署设置模块的 `properties.desired`。 如果此分层部署针对已应用相同模块的设备，则会覆盖任何现有的所需属性。 若要更新，而不是覆盖所需的属性，可以定义新的子节。 例如： 
+
+```json
+"SimulatedTEmperatureSensor": {
+  "properties.desired.layeredProperties": {
+    "SendData": true,
+    "SendInterval": 5
+  }
+}
+```
+
+有关在分层部署中配置 module 孪生的详细信息，请参阅[分层部署](module-deployment-monitoring.md#layered-deployment)
+
 ## <a name="identify-devices-using-tags"></a>使用标记标识设备
 
-创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备都可以有多个标记，您可以使用这些标记来定义解决方案。 例如，如果管理有智能楼宇的校园，可能要将以下标记添加到设备：
+创建部署之前，必须能够指定想要影响的设备。 Azure IoT Edge 标识使用设备孪生中的标记标识设备。 每个设备都可以有多个标记，您可以使用这些标记来定义解决方案。 例如，如果管理有智能楼宇的校园，可将以下标记添加到设备：
 
 ```json
 "tags":{
@@ -138,14 +188,18 @@ ms.locfileid: "74666012"
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
+使用与 `--layered` 标志相同的命令创建分层部署。
+
 部署 create 命令采用以下参数： 
 
-* **--deployment-id** - 将在 IoT 中心创建的部署的名称。 为部署命名唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
+* **--分层**-用于将部署标识为分层部署的可选标志。
+* **--deployment-id** - 将在 IoT 中心创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。 必需的参数。 
+* **--content** - 部署清单 JSON 的文件路径。 必需的参数。 
 * **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 通过 `az account set -s [subscription name]` 命令更改当前订阅。
-* **--content** - 部署清单 JSON 的文件路径。 
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
 * **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。 此条件基于设备克隆标记或设备克隆报告的属性，并且应与表达式格式匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。 
-* **--priority** - 一个正整数。 如果在同一台设备上定目标到两个或多个部署，将会应用优先级数值最高的部署。
+* **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
+* **--指标**-创建查询 edgeHub 报告属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。 
 
 ## <a name="monitor-a-deployment"></a>监视部署
 
@@ -156,7 +210,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 ```
 
 Deployment show 命令采用以下参数：
-* **--deployment-id** - IoT 中心存在的部署的名称。
+* **--deployment-id** - IoT 中心存在的部署的名称。 必需的参数。 
 * **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
 在命令窗口中检查部署。 "**指标**" 属性列出每个中心计算的每个指标的计数：
@@ -174,8 +228,8 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 
 Deployment show-公制命令采用以下参数： 
 * **--deployment-id** - IoT 中心存在的部署的名称。
-* **--metric-id** - 需要查看设备 ID 列表时所对应指标的名称，例如 `reportedFailedCount`
-* **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
+* **--公制**-要查看其设备 id 列表的指标的名称，例如 `reportedFailedCount`。
+* **--hub-name** - 部署所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅。
 
 ## <a name="modify-a-deployment"></a>修改部署
 
@@ -186,6 +240,8 @@ Deployment show-公制命令采用以下参数：
 * 如果设备虽然不满足旧的目标条件，但满足新的目标条件，且此部署是此设备的最高优先级，则此部署将应用到设备。 
 * 如果当前运行此部署的设备不再满足目标条件，则它将卸载此部署并采用下一个最高优先级部署。 
 * 如果当前运行此部署的设备不再满足目标条件且不满足任何其他部署的目标条件，则此设备上不会发生任何更改。 设备在当前状态下继续运行当前模块，但不再作为此部署的一部分被托管。 一旦它满足任何其他部署的目标条件，将卸载此部署并采用新的部署。 
+
+你无法更新部署的内容，其中包括在部署清单中定义的模块和路由。 如果你想要更新部署的内容，则可以通过创建以较高优先级为目标相同设备的新部署来实现此目的。 您可以修改现有模块的某些属性，包括目标条件、标签、指标和优先级。 
 
 使用[az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update)命令更新部署：
 
@@ -200,6 +256,8 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
   * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
   * 标签 
   * priority
+* **--add** -向部署添加新属性，包括目标条件或标签。 
+* **--remove** -删除现有的属性，包括目标条件或标签。 
 
 
 ## <a name="delete-a-deployment"></a>删除部署

@@ -7,13 +7,13 @@ ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 6aa256f026033a8b204b3c2ab1080f9f63ef63d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432786"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>桌面
+## <a name="desktop"></a>桌面型
 
 Azure Maps Web SDK 支持以下桌面浏览器：
 
@@ -40,7 +40,7 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 
 另请参阅本文后面的[面向旧版浏览器](#Target-Legacy-Browsers)。
 
-## <a name="mobile"></a>移动电话
+## <a name="mobile"></a>移动
 
 Azure Maps Web SDK 支持以下移动浏览器：
 
@@ -63,12 +63,12 @@ Node.js 还支持以下 Web SDK 模块：
 
 ## <a name="Target-Legacy-Browsers"></a>定位旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 以下是一个示例：
+你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 下面是一个示例：
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a> by<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps （）。
+请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 

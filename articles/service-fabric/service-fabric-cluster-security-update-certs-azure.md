@@ -1,25 +1,14 @@
 ---
-title: 管理 Azure Service Fabric 群集中的证书 | Microsoft Docs
+title: 在 Azure Service Fabric 群集中管理证书
 description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chakdan
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/13/2018
-ms.author: atsenthi
-ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458350"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -29,7 +18,7 @@ Azure Service Fabric SDK 的默认证书加载行为是部署并使用过期日�
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
 > [!NOTE]
-> 对于安全群集，始终至少需要部署一个有效的（未吊销或过期）群集证书（主证书或辅助证书），否则，群集无法正常运行。 在所有有效证书过期前的 90 天，系统将针对节点生成警告跟踪和警告运行状况事件。 Service Fabric 当前不会针对此文发送电子邮件或其他任何通知。 
+> 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 在所有有效证书过期前的 90 天，系统将针对节点生成警告跟踪和警告运行状况事件。 Service Fabric 当前不会针对此文发送电子邮件或其他任何通知。 
 > 
 > 
 
@@ -37,7 +26,7 @@ Azure Service Fabric SDK 的默认证书加载行为是部署并使用过期日�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用门户添加辅助群集证书
-无法通过 Azure 门户使用 Azure powershell 添加辅助群集证书。 本文档稍后将概述该过程。
+无法通过 Azure 门户使用 Azure powershell 添加辅助群集证书。 稍后在本文档中对该过程进行概述。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用门户删除群集证书
 对安全群集，始终需要至少一个有效（未撤销且未过期）证书。 使用最远的未来过期日期进行部署的证书将被使用，删除它将使群集停止运行;请确保仅删除已过期的证书或过期算起的未使用证书。
@@ -48,7 +37,7 @@ Azure Service Fabric SDK 的默认证书加载行为是部署并使用过期日�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 > [!TIP]
-> 现在有一种更好、更简单的方法来使用 [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 添加辅助证书。 无需执行本部分中的其余步骤。  此外，使用 [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 时，不需要使用最初用来创建和部署群集的模板。
+> 现在，使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 可以更好地添加辅助证书。 无需执行本部分中的其余步骤。  此外，在使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 时，不需要最初用于创建和部署群集的模板。
 
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
@@ -57,7 +46,7 @@ Azure Service Fabric SDK 的默认证书加载行为是部署并使用过期日�
 > 
 > 
 
-### <a name="edit-your-resource-manager-template"></a>编辑 Resource Manager 模板
+### <a name="edit-your-resource-manager-template"></a>编辑 资源管理器模板
 
 为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)。
 
@@ -195,7 +184,7 @@ Azure Service Fabric SDK 的默认证书加载行为是部署并使用过期日�
 ### <a name="deploy-the-template-to-azure"></a>将模板部署到 Azure
 
 - 现在，可以将模板部署到 Azure。 请打开 Azure PS 版本 1（或更高版本）的命令提示符。
-- 登录到 Azure 帐户，选择特定的 Azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
+- 登录到 Azure 帐户，选择特定的 azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
 
 ```powershell
 Connect-AzAccount
@@ -210,7 +199,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行 New-AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
+将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行 AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
 
 > [!NOTE]
 > 如果将 Mode 设置为 Complete，可能会无意中删除不在模板中的资源。 因此请不要在此方案中使用该模式。
@@ -271,20 +260,20 @@ Get-ServiceFabricClusterHealth
 
 除群集证书外，还可添加客户端证书来执行 Service Fabric 群集上的管理操作。
 
-可以添加两种类型的客户端证书 - 管理证书或只读证书。 然后，可以使用这些证书在群集上控制对管理操作和查询操作的访问。 默认情况下，群集证书将添加到允许的管理员证书列表中。
+可以添加两种客户端证书 - 管理员或只读。 这些证书稍后可用于在群集上控制对管理员操作和查询操作的访问。 默认情况下，群集证书将添加到允许的管理员证书列表中。
 
 可以指定任意数量的客户端证书。 每次执行添加/删除操作都会导致对 Service Fabric 群集的配置进行更新
 
 
-### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>通过门户添加管理或只读客户端证书
+### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>通过门户添加客户端证书 - 管理员或只读
 
 1. 导航到“安全性”部分，并选择“安全性”部分顶部的“+ 身份验证”按钮。
 2. 在“添加身份验证”部分中，选择“身份验证类型”-“只读客户端”或“管理员客户端”
-3. 现在选择授权方法。 向 Service Fabric 指出是要使用使用者名称还是指纹来查找此证书。 一般来说，使用使用者名称授权方法并不是一种良好的安全做法。 
+3. 现在选择授权方法。 向 Service Fabric 指出是要使用使用者名称还是指纹来查找此证书。 通常情况下，采用使用者名称的授权方法并不是很好的安全做法。 
 
 ![添加客户端证书][Add_Client_Cert]
 
-### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>使用门户删除管理或只读客户端证书
+### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>使用门户删除客户端证书 - 管理员或只读
 
 若要删除辅助证书，以防将其用于群集安全，请导航到“安全性”部分，并从特定证书的上下文菜单中选择“删除”选项。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: 732d5d170ee647dc0dfdbf4d09a12617c8c9bcce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05e87258576bceee2e1bbba7ec5ef6ea5ead4924
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440257"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据
 
@@ -55,11 +55,11 @@ ms.locfileid: "74931507"
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadSQLDWDemo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
    ![数据工厂主页](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
@@ -77,11 +77,11 @@ ms.locfileid: "74931507"
 
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“+ 创建新连接”：
 
     ![“源数据存储”页](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
 
-    b. 从库中选择“Azure SQL 数据库”，然后选择“继续”。 可以在搜索框中键入“SQL”以筛选连接器。
+    b.保留“数据库类型”设置，即设置为“共享”。 从库中选择“Azure SQL 数据库”，然后选择“继续”。 可以在搜索框中键入“SQL”以筛选连接器。
 
     ![选择 Azure SQL DB](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "74931507"
 
 1. 在“目标数据存储”页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”来添加连接
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“+ 创建新连接”来添加连接
 
     ![接收器数据存储页](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
 
-    b. 从库中选择“Azure SQL 数据仓库”，然后选择“下一步”。
+    b.保留“数据库类型”设置，即设置为“共享”。 从库中选择“Azure SQL 数据仓库”，然后选择“下一步”。
 
     ![选择 Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
@@ -128,11 +128,11 @@ ms.locfileid: "74931507"
 
 1. 在“设置”页上，完成以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“暂存设置”部分，单击“+ 新建”，新建临时存储。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“暂存设置”部分，单击“+ 新建”，新建临时存储。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。 
 
     ![配置暂存](./media/load-azure-sql-data-warehouse/configure-staging.png)
 
-    b. 在“新链接服务”页上，选择存储帐户，然后选择“完成”。
+    b.保留“数据库类型”设置，即设置为“共享”。 在“新链接服务”页上，选择存储帐户，然后选择“完成”。
    
     ![配置 Azure 存储](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
 

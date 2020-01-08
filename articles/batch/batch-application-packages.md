@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e8fdafc3e8f83cb529718993ffe9d0f7383c10c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70095690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449829"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
 
@@ -94,7 +94,7 @@ Batch 服务使用关联的存储帐户存储应用程序包。 链接两个帐�
 > 目前无法将应用程序包用于配置有[防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户。
 > 
 
-Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 blob 数据[按正常方式收费][storage_pricing]，并且每个包的大小不能超过[最大块 blob 大小](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
+Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 blob 数据[按正常方式收费][storage_pricing]，并且每个包的大小不能超过最大块 blob 大小。 有关详细信息，请参阅[存储帐户的 Azure 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。 请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
 > 
 > 
 
@@ -182,7 +182,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 
 ![在 Azure 门户中更新或删除包][7]
 
-**更新**
+**Update**
 
 单击“更新”时，“更新包”窗口随即出现。 此窗口与“新建应用程序包”窗口相似，只不过包选择字段已启用，因此可以指定要上传的新 ZIP 文件。
 

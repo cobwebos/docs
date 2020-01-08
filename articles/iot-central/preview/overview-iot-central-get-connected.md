@@ -3,17 +3,17 @@ title: Azure IoT Central 中的设备连接 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 中的设备连接相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434932"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>连接到 Azure IoT Central （预览功能）
 
@@ -60,7 +60,7 @@ Azure IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](https://do
 > [!NOTE]
 > 若要了解如何在不先将设备注册 IoT Central 的情况下连接设备，请参阅 "[连接而不先注册设备](#connect-without-registering-devices)"。
 
-### <a name="set-up-your-devices"></a>设置设备
+### <a name="set-up-your-devices"></a>设置你的设备
 
 使用设备代码中的导出文件中的连接信息，使设备能够连接到 IoT Central 应用程序并将数据发送到 IoT。 有关连接设备的详细信息，请参阅[后续步骤](#next-steps)。
 
@@ -177,7 +177,7 @@ IoT Central 支持以下证明机制
 > [!NOTE]
 > 请注意，应启用自动批准选项，使设备能够自动连接，发现模型并开始发送数据。
 
-## <a name="device-status"></a>服务状态
+## <a name="device-status"></a>设备状态
 
 当真实设备连接到 IoT Central 应用程序时，其设备状态如下所示：
 
@@ -215,7 +215,7 @@ Azure 设备 Sdk 为实现设备代码提供了最简单的方法。 以下设�
 
 下表对 Azure IoT Central 设备功能映射到 IoT 中心功能的具体情况进行了汇总：
 
-| Azure IoT Central | Azure IoT 中心 |
+| Azure IoT 中心 | Azure IoT 中心 |
 | ----------- | ------- |
 | 度量：遥测 | 设备到云的消息传递 |
 | 设备属性 | 设备孪生报告属性 |
@@ -235,7 +235,7 @@ Azure 设备 Sdk 为实现设备代码提供了最简单的方法。 以下设�
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](../../iot-hub/iot-hub-devguide-security.md)。
 

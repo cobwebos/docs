@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 09/19/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671753"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666443"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -23,16 +23,20 @@ ms.locfileid: "74671753"
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 在不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动执行整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
-每种应用服务计划层支持不同数量的部署槽。 使用部署槽位不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)。 
+每种应用服务计划层支持不同数量的部署槽。 使用部署槽位不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)。 
 
 若要将应用扩展到其他层，请确保目标层支持应用已使用的槽数。 例如，如果您的应用程序具有五个以上的槽，则无法将其缩小到**标准**层，因为**标准**级别仅支持五个部署槽。 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>添加槽
+## <a name="add-a-slot"></a>添加槽位
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源页](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+
+1. 在[Azure 门户](https://portal.azure.com/)中，搜索并选择 "**应用服务**" 并选择应用。 
+   
+    ![搜索应用服务](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. 在左窗格中，选择 "**部署槽**" > "**添加槽**"。
    
@@ -206,7 +210,7 @@ ms.locfileid: "74671753"
 
 你还可以通过以下一个或两个[应用设置](configure-common.md)自定义预热行为：
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于预热站点的 ping 的路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如 `/statuscheck`。 默认值为 `/`。 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于预热站点的 ping 的路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 示例为 `/statuscheck`。 默认值是 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 `200,202` 的示例。 如果返回的状态代码不在列表中，则预热和交换操作将停止。 默认情况下，所有响应代码都是有效的。
 
 > [!NOTE]
@@ -241,7 +245,7 @@ ms.locfileid: "74671753"
 将客户端自动路由到特定的槽后，它将在该客户端会话的生命周期内 "固定" 到该槽。 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
 
    > [!NOTE]
-   > 在 Azure 门户旁边，还可以使用 Azure CLI 中的 " [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) " 命令，设置 DevOps 管道或其他自动化系统等 CI/CD 工具中的路由百分比。
+   > 在 Azure 门户旁边，还可以使用 Azure CLI 中的[`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set)命令，设置 DevOps 管道或其他自动化系统等 CI/CD 工具中的路由百分比。
    > 
 
 ### <a name="route-production-traffic-manually"></a>手动路由生产流量
@@ -268,7 +272,7 @@ ms.locfileid: "74671753"
 
 ## <a name="delete-a-slot"></a>删除槽
 
-中转到应用的资源页。 选择要删除 > **概述** * > \<槽的***部署槽位**。 在命令栏上选择 "**删除**"。  
+搜索并选择应用。 选择要删除 > **概述** * > \<槽的***部署槽位**。 在命令栏上选择 "**删除**"。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -327,16 +331,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>通过 ARM 模板自动执行
+## <a name="automate-with-resource-manager-templates"></a>资源管理器模板自动执行
 
-[ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)是声明性的 JSON 文件，用于自动部署和配置 Azure 资源。 若要使用 ARM 模板交换槽，请在 " *microsoft/站点/槽*" 和 " *microsoft 网站/站点*" 资源上设置两个属性：
+[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)是声明性的 JSON 文件，用于自动部署和配置 Azure 资源。 若要通过使用资源管理器模板来交换槽，你将在 " *microsoft/站点/槽*" 和 " *microsoft 网站/站点*" 资源上设置两个属性：
 
 - `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如： "v1"、"1.0.0.1" 或 "20T11：53： 25.2887393-07： 00"。
 - `targetBuildVersion`：这是一个字符串属性，它指定了槽应使用的 `buildVersion`。 如果 targetBuildVersion 不等于当前 `buildVersion`，则会通过查找具有指定 `buildVersion`的槽来触发交换操作。
 
-### <a name="example-arm-template"></a>ARM 模板示例
+### <a name="example-resource-manager-template"></a>示例资源管理器模板
 
-以下 ARM 模板将更新过渡槽的 `buildVersion`，并在生产槽上设置 `targetBuildVersion`。 这将交换两个槽。 该模板假设已有使用名为 "过渡" 的槽创建的 webapp。
+以下资源管理器模板将更新过渡槽的 `buildVersion` 并在生产槽上设置 `targetBuildVersion`。 这将交换两个槽。 该模板假设已有使用名为 "过渡" 的槽创建的 webapp。
 
 ```json
 {
@@ -380,7 +384,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 }
 ```
 
-此 ARM 模板是幂等的，这意味着它可以重复执行，并生成相同的槽状态。 第一次执行后，`targetBuildVersion` 将与当前 `buildVersion`匹配，因此不会触发交换。
+此资源管理器模板是幂等的，这意味着它可以重复执行，并生成相同的槽状态。 第一次执行后，`targetBuildVersion` 将与当前 `buildVersion`匹配，因此不会触发交换。
 
 <!-- ======== Azure CLI =========== -->
 

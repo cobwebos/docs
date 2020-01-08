@@ -1,5 +1,5 @@
 ---
-title: Azure AD 身份验证和授权错误代码 |Microsoft
+title: Azure AD 身份验证 & 授权错误代码
 description: 了解 Azure AD 安全令牌服务 (STS) 返回的 AADSTS 错误代码。
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/30/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423964"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -40,7 +40,7 @@ ms.locfileid: "74965800"
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | 描述 |
+| 错误 | Description |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -133,6 +133,8 @@ ms.locfileid: "74965800"
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
+| AADSTS50196 | LoopDetected-检测到客户端循环。 检查应用程序的逻辑，以确保已实现令牌缓存，并正确处理错误条件。  该应用程序在一段时间内发出了太多的相同请求，这表示它处于错误状态或 abusively 请求令牌。 |
+| AADSTS50199 | CmsiInterrupt-此身份验证需要用户交互。  由于这是一个 "interaction_required" 错误，客户端应进行交互式身份验证。 之所以发生这种情况，是因为系统 web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为要登录的应用。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |

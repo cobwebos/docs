@@ -1,25 +1,16 @@
 ---
-title: 在 Azure Service Fabric 中与服务建立连接和通信 | Microsoft 文档
+title: 与 Azure 中的服务建立连接和通信 Service Fabric
 description: 了解如何在 Service Fabric 中解析服务、建立连接以及与之通信。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: msfussell
-ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 55a0a1a8097ea46c7a3407b5f42824973edcf1a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458242"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
 在 Service Fabric 中，服务在 Service Fabric 群集（通常分布在多个 VM 间）中的某个位置运行。 它可以从一个位置移动到另一个位置（由服务所有者移动或由 Service Fabric 自动移动）。 服务不以静态方式绑定到特定计算机或地址。
@@ -32,7 +23,7 @@ Service Fabric 可帮助管理服务的生命周期，但是它不会制定有�
 ![服务终结点][1]
 
 ## <a name="service-discovery-and-resolution"></a>服务发现和解析
-在分布式系统中，服务可能随时间推移从一台计算机移动到另一台计算机。 发生这种情况可能是由于各种原因，包括资源平衡、升级、故障转移或扩大。这意味着服务终结点地址会在服务移动到具有不同 IP 地址的节点时发生更改，并且可能在不同端口上打开（如果服务使用动态选择的端口）。
+在分布式系统中，服务可能随时间推移从一台计算机移动到另一台计算机。 发生这种情况的原因有多种，包括资源平衡、升级、故障转移或扩大。这意味着服务终结点地址会在服务移动到具有不同 IP 地址的节点时更改，如果服务使用动态选择的端口，则可能会在不同的端口上打开。
 
 ![服务分发][7]
 
@@ -67,16 +58,16 @@ Service Fabric 提供一种服务发现和解析服务，称为“命名服务�
 有关如何使用反向代理服务的更多详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)一文。
 
 ## <a name="connections-from-external-clients"></a>来自外部客户端的连接
-在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但是在某些环境中，群集可能位于通过一组有限端口对外部入口流量进行路由的负载均衡器之后。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
+在群集内相互连接的服务通常可以直接访问其他服务的终结点，因为群集中的节点处于相同的本地网络上。 但是在某些环境中，群集可能位于通过一组有限端口对外部传入流量进行路由的负载均衡器之后。 在这些情况下，服务仍可以使用命名服务相互通信和解析地址，但必须执行额外步骤才能允许外部客户端连接到服务。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
 Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送到群集的所有外部流量都必须穿过该负载均衡器。 该负载均衡器会自动在给定端口上将入站流量转发到打开了相同端口的随机*节点*。 Azure 负载均衡器只了解*节点*上打开的端口，它不了解各个*服务*打开的端口。
 
 ![Azure 负载均衡器和 Service Fabric 拓扑][3]
 
-例如，若要在端口 **80**上接受外部流量，必须配置以下项：
+例如，若要在端口 **80** 上接受外部流量，必须配置以下内容：
 
-1. 编写侦听端口 80 的服务。 在服务的 ServiceManifest.xml 中配置端口 80，并在服务中打开一个侦听器，例如自托管的 Web 服务器。
+1. 编写侦听端口 80 的服务。 在服务的 ServiceManifest.xml 中配置端口 80，并在服务中打开一个侦听器，例如自承载的 Web 服务器。
 
     ```xml
     <Resources>
@@ -156,7 +147,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
             ...
         }
     ```
-2. 在 Azure 中创建 Service Fabric 群集，并将端口 **80** 指定为要承载服务的节点类型的自定义终结点端口。 如果具有多种节点类型，则可以对服务设置*放置约束*，以确保它只在打开了自定义终结点端口的节点类型上运行。
+2. 在 Azure 中创建 Service Fabric 群集，并将端口 **80** 指定为将承载服务的节点类型的自定义终结点端口。 如果具有多种节点类型，则可以对服务设置*放置约束*，以确保它只在打开了自定义终结点端口的节点类型上运行。
 
     ![在节点类型上打开端口][4]
 3. 创建了群集之后，在群集的资源组中配置 Azure 负载均衡器以在端口 80 上转发流量。 通过 Azure 门户创建群集时，会为每个已配置的自定义终结点端口自动设置此项。
@@ -179,7 +170,7 @@ Reliable Services 框架附带几个预建的通信选项。 可以根据所选�
 服务可以使用任何协议或框架进行通信，无论它是 TCP 套接字上的自定义二进制协议，还是通过 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)实现的流式处理事件。 Service Fabric 提供了通信 API，可以将通信堆栈插入其中，同时将用于发现和连接的所有工作与你分离。 有关更多详细信息，请参阅这篇有关 [Reliable Service 通信模型](service-fabric-reliable-services-communication.md)的文章。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Reliable Services 通信模型](service-fabric-reliable-services-communication.md)中可用的概念和 API 的详细信息，然后快速开始使用[服务远程处理](service-fabric-reliable-services-communication-remoting.md)或深入了解如何使用[具有 OWIN 自承载的 Web API](service-fabric-reliable-services-communication-webapi.md) 编写通信侦听器。
+了解有关 [Reliable Services 通信模型](service-fabric-reliable-services-communication.md)中可用的概念和 API 的详细信息，并快速开始使用[服务远程处理](service-fabric-reliable-services-communication-remoting.md)或深入了解如何使用[具有 OWIN 自承载的 Web API](service-fabric-reliable-services-communication-webapi.md) 编写通信侦听器。
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

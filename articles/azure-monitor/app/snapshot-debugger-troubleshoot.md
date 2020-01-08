@@ -8,12 +8,12 @@ author: brahmnes
 ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ded4a1a718d2cb061aba5f0d27565633e6cb603a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432324"
 ---
 # <a id="troubleshooting"></a>排查 Application Insights Snapshot Debugger 或查看快照时的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但没有看到用于例外的快照，则可以使用这些说明进行故障排除。 可能有许多不同的原因导致不生成快照。 可以运行快照运行状况检查来确定可能的一些常见原因。
@@ -202,7 +202,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
 
 1. 在 Azure 门户中浏览到 Application Insights 资源。
-2. 单击“搜索”。
+2. 单击 **“搜索”** 。
 3. 在“搜索”文本框中输入 `ai.snapshot.id`，然后按 Enter。
 
 ![在门户中使用快照 ID 搜索遥测](./media/snapshot-debugger/search-snapshot-portal.png)
@@ -219,4 +219,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 
-如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 下面是 [Snapshot Debugger 所使用的 IP 地址和端口列表](../../azure-monitor/app/ip-addresses.md#snapshot-debugger)。
+如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 Snapshot Debugger 使用的 Ip 包含在 Azure Monitor 服务标记中。

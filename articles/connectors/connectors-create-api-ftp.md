@@ -1,18 +1,18 @@
 ---
 title: 连接到 FTP 服务器
-description: 使用 Azure 逻辑应用创建、监视和管理 FTP 服务器上的文件
+description: 使用 Azure 逻辑应用自动创建、监视和管理 FTP 服务器上的文件的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: c7b8c1ac94fd35a4a0cb30ad32d8c6ce39edc058
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446094"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -23,9 +23,9 @@ ms.locfileid: "74789784"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 * FTP 连接器仅支持显式 FTP over SSL （FTPS），并且不兼容隐式 FTPS。
 
@@ -65,81 +65,107 @@ FTP 触发器的工作方式是轮询 FTP 文件系统，并查找自上次轮�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到[Azure 门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用。
 
-1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择所需的触发器。
+1. 对于 "空白逻辑应用"，请在 "搜索" 框中输入 "`ftp`" 作为筛选器。 从 "**触发器**" 列表中，选择所需的触发器。
 
    -或-
 
-   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”，然后选择“添加操作”。 在搜索框中，输入“ftp”作为筛选器。 在操作列表下，选择所需的操作。
+   对于现有的逻辑应用，在要添加操作的最后一个步骤下，选择 "**新建步骤**"，然后选择 "**添加操作**"。 在搜索框中，输入 `ftp` 作为筛选器。 从 "**操作**" 列表中，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
 
-1. 为连接提供所需的详细信息，然后选择“创建”。
+1. 提供连接信息，并选择 "**创建**"。
 
-1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
+1. 提供选定触发器或操作的信息，并继续生成逻辑应用的工作流。
 
 ## <a name="examples"></a>示例
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP 触发器：添加或修改文件时
+### <a name="add-ftp-trigger"></a>添加 FTP 触发器
 
-当此触发器检测到 FTP 服务器上添加或更改了文件时，将会启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件，来确定是否要获取该内容。 最后可以添加一个操作，用于获取文件内容并将该内容放在 SFTP 服务器上的某个文件夹中。
+**添加或修改文件时（仅限属性）** 触发器在 FTP 服务器上检测到已添加或更改文件时启动逻辑应用工作流。 例如，你可以添加一个条件，用于检查文件的内容，并根据该内容是否满足指定的条件来决定是否获取该内容。 最后，你可以添加一个操作来获取文件的内容，并将该内容放入 SFTP 服务器上的另一个文件夹中。
 
-**企业示例**：可以使用此触发器监视 FTP 文件夹中的新文件来描述客户订单。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+例如，您可以使用此触发器监视 FTP 文件夹中是否有描述客户订单的新文件。 然后，你可以使用 FTP 操作（如**获取文件元数据**）获取该新文件的属性，然后使用 "**获取文件内容**" 获取该文件的内容以进行进一步处理，并将该订单存储在 orders 数据库中。
 
-以下是演示此触发器的示例：“添加或修改文件时”
+下面的示例演示如何**在添加或修改文件时使用（仅限属性）** 触发器。
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择以下触发器：“添加或修改字段时 - FTP”
+1. 对于 "空白逻辑应用"，请在 "搜索" 框中输入 "`ftp`" 作为筛选器。 在 "触发器" 列表下，选择 "此触发器：**添加或修改存档时" （仅属性）**
 
-   ![查找和选择 FTP 触发器](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+   ![查找并选择 FTP 触发器](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
-1. 为连接提供所需的详细信息，然后选择“创建”。
+1. 提供连接所需的详细信息，然后选择 "**创建**"。
 
-   默认情况下，此连接器将以文本格式传输文件。 若要以二进制格式传输文件（例如，使用编码时使用和），请选择 "**二进制传输**"。
+   默认情况下，此连接器将以文本格式传输文件。 若要以二进制格式传输文件，例如，在使用了编码的情况下，请选择“二进制传输”。
 
-   ![创建 FTP 服务器连接](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+   ![创建与 FTP 服务器的连接](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. 选择“文件夹”框旁边的文件夹图标，列表将随即显示。 若想查找要监视其中是否有新文件或已编辑文件的文件夹，请选择右箭头 (>)，浏览到该文件夹并将其选中。
+1. 在 "**文件夹**" 框中，选择文件夹图标，以便显示列表。 若想查找要监视其中是否有新文件或已编辑文件的文件夹，请选择右箭头 (>)，浏览到该文件夹并将其选中。
 
-   ![查找并选择要监视的文件夹](./media/connectors-create-api-ftp/select-folder.png)  
+   ![查找并选择要监视的文件夹](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
    所选文件夹将出现在“文件夹”框中。
 
-   ![所选的文件夹](./media/connectors-create-api-ftp/selected-folder.png)  
+   ![所选文件夹出现在 "文件夹" 属性中](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
+
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 现在，逻辑应用已具有一个触发器，请添加在逻辑应用找到新文件或已编辑文件时要运行的操作。 对于此示例，可以添加获取新内容或更新内容的 FTP 操作。
 
 <a name="get-content"></a>
 
-### <a name="ftp-action-get-content"></a>FTP 操作：获取内容
+### <a name="add-ftp-action"></a>添加 FTP 操作
 
-添加或更新文件时，此操作将通过 FTP 服务器获取该文件的内容。 例如，可通过前面的示例添加触发器，然后添加操作，用于在添加或编辑文件后获取该文件内容。
+"**获取文件元数据**" 操作获取 ftp 服务器上的文件的属性，"**获取文件内容**" 操作将基于 FTP 服务器上该文件的相关信息获取文件内容。 例如，你可以添加上一个示例中的触发器和这些操作，以便在添加或编辑该文件后获取该文件的内容。
 
-以下示例演示了此操作：**获取内容**
+1. 在触发器或任何其他操作下，选择 "**新建步骤**"。
 
-1. 在该触发器或其他任何操作下，选择“新建步骤”。
+1. 在搜索框中，输入 `ftp` 作为筛选器。 在 "操作" 列表中，选择此操作：**获取文件元数据**
 
-1. 在搜索框中，输入“ftp”作为筛选器。 在操作列表下，选择此操作：“获取文件内容 - FTP”
+   ![选择 "获取文件元数据" 操作](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 
-   ![选择 FTP 操作](./media/connectors-create-api-ftp/select-ftp-action.png)  
-
-1. 如果已有到 FTP 服务器和帐户的连接，请转到下一步。 如果没有，请为连接提供所需的详细信息，然后选择“创建”。
+1. 如果已有到 FTP 服务器和帐户的连接，请转到下一步。 否则，请提供该连接的必要详细信息，然后选择 "**创建**"。
 
    ![创建 FTP 服务器连接](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
-1. 打开“获取文件内容”操作后，在“文件”框内部单击，以便显示动态内容列表。 现可为先前步骤的输出结果选择属性。 在动态内容列表中，选择“文件内容”属性，该属性包含已添加或已更新文件的内容。  
+1. 出现 "**获取文件元数据**" 操作后，在 "**文件**" 框中单击，以便显示 "动态内容" 列表。 现可为先前步骤的输出结果选择属性。 在 "动态内容" 列表中的 "**获取文件元数据**" 下，选择 "**文件 Id** " 属性，该属性引用添加或更新文件的集合。
 
-   ![查找并选择文件](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+   ![查找并选择 "文件的列表 Id" 属性](./media/connectors-create-api-ftp/select-list-of-files-id-output.png)
 
-   “文件内容”属性现将显示在“文件”框中。
+   文件**Id 属性列表**现在显示在 "**文件**" 框中。
 
-   ![所选的“文件内容”属性](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+   ![已选择 "文件列表 Id" 属性](./media/connectors-create-api-ftp/selected-list-file-ids-ftp-action.png)
 
-1. 保存逻辑应用。 要测试工作流，请将文件添加到逻辑应用现在监视的 FTP 文件夹中。
+1. 现在添加此 FTP 操作：**获取文件内容**
+
+   ![查找并选择 "获取文件内容" 操作](./media/connectors-create-api-ftp/select-get-file-content-ftp-action.png)
+
+1. 出现 "**获取文件内容**" 操作后，在 "**文件**" 框中单击，以便显示 "动态内容" 列表。 现可为先前步骤的输出结果选择属性。 在 "动态内容" 列表中的 "**获取文件元数据**" 下，选择 " **Id** " 属性，该属性引用已添加或更新的文件。
+
+   ![查找并选择 "Id" 属性](./media/connectors-create-api-ftp/get-file-content-id-output.png)
+
+   **Id**属性现在显示在 "**文件**" 框中。
+
+   ![选定的 "Id" 属性](./media/connectors-create-api-ftp/selected-get-file-content-id-ftp-action.png)
+
+1. 保存逻辑应用。
+
+## <a name="test-your-logic-app"></a>测试逻辑应用
+
+若要检查工作流是否返回了所需的内容，请添加另一个操作，从上传或更新的文件发送内容。
+
+1. 在 "**获取文件内容**" 操作下，添加一个可向你发送文件内容的操作。 此示例为 Office 365 Outlook 添加 "**发送电子邮件**" 操作。
+
+   ![添加用于发送电子邮件的操作](./media/connectors-create-api-ftp/select-send-email-action.png)
+
+1. 操作出现后，提供信息并包含要测试的属性。 例如，在 "**获取文件内容**" 部分中选择 "**查看更多**" 后，在 "动态内容" 列表中显示 "**文件内容**" 属性。
+
+   ![提供关于电子邮件操作的信息](./media/connectors-create-api-ftp/selected-send-email-action.png)
+
+1. 保存逻辑应用。 若要运行和触发逻辑应用，请在工具栏上选择 "**运行**"，然后将文件添加到逻辑应用现在所监视的 FTP 文件夹中。
 
 ## <a name="connector-reference"></a>连接器参考
 

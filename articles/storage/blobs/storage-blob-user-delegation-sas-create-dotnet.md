@@ -1,27 +1,27 @@
 ---
 title: 使用 .NET 为容器或 blob 创建用户委托 SAS
 titleSuffix: Azure Storage
-description: 了解如何使用适用于 Azure 存储的 .NET 客户端库创建具有 Azure Active Directory 凭据的用户委托 SAS （预览版）。
+description: 了解如何使用适用于 Azure 存储的 .NET 客户端库创建具有 Azure Active Directory 凭据的用户委托 SAS。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 385d2c3b88bc2e4d653dae2dc9670cb9e9388faf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371830"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>使用 .NET （预览版）为容器或 blob 创建用户委托 SAS
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建用户委托 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用 Azure Active Directory （Azure AD）凭据为带有用于 .NET 的 Azure 存储客户端库的容器或 blob 创建用户委托 SAS （预览版）。
+本文介绍如何使用 Azure Active Directory （Azure AD）凭据为带有用于 .NET 的 Azure 存储客户端库的容器或 blob 创建用户委托 SAS。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -215,7 +215,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
     }
     catch (RequestFailedException e)
     {
-        // Check for a 403 (Forbidden) error. If the SAS is invalid, 
+        // Check for a 403 (Forbidden) error. If the SAS is invalid,
         // Azure Storage returns this error.
         if (e.Status == 403)
         {

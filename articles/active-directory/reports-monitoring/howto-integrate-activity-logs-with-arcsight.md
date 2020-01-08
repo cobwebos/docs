@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008029"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608374"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 
@@ -30,13 +30,13 @@ ms.locfileid: "74008029"
 
 在本文中，你会了解如何使用 Azure Monitor 将 Azure AD 日志路由到 ArcSight。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * ArcSight Syslog NG 守护程序 SmartConnector (SmartConnector) 或 ArcSight 负载均衡器的已配置实例。 如果事件发送到 ArcSight 负载均衡器，则它们会因此由负载均衡器发送到 SmartConnector。
 
-下载并打开[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)。 本指南包含安装和配置适用于 Azure Monitor 的 ArcSight SmartConnector 所需的步骤。 
+下载并打开[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)。 本指南包含安装和配置适用于 Azure Monitor 的 ArcSight SmartConnector 所需的步骤。 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>将 Azure AD 日志与 ArcSight 集成
 
@@ -47,7 +47,7 @@ ms.locfileid: "74008029"
 
 2. 按照配置指南“部署连接器”部分中的步骤来部署连接器。 此部分会演示如何下载和提取连接器、配置应用程序属性以及从提取的文件夹运行部署脚本。 
 
-3. 按照“在 Azure 中验证部署”部分中的步骤来确保连接器已设置并正常工作。 验证以下各项：
+3. 按照“在 Azure 中验证部署”部分中的步骤来确保连接器已设置并正常工作。 检查下列各项：
     * 在 Azure 订阅中创建了必要的 Azure 函数。
     * Azure AD 日志流式传输到正确的目标。 
     * 部署中的应用程序设置保留在 Azure Function App 的“应用程序设置”中。 
@@ -59,4 +59,4 @@ ms.locfileid: "74008029"
 
 ## <a name="next-steps"></a>后续步骤
 
-[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

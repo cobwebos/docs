@@ -1,275 +1,150 @@
 ---
 title: 连接到 IBM Informix 数据库
-description: 使用 IBM Informix REST API 和 Azure 逻辑应用管理资源
+description: 使用 Azure 逻辑应用自动管理在 IBM Informix 中存储的资源的任务和工作流
 services: logic-apps
 ms.suite: integration
 author: gplarsen
 ms.author: plarsen
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: d6f768bc76d19c0aa21a245c008a4b05588f8f43
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789730"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665816"
 ---
-# <a name="get-started-with-the-informix-connector"></a>Informix 连接器入门
-Microsoft Informix 连接器可将逻辑应用连接到存储在 IBM Informix 数据库中的资源。 Informix 连接器包括要在 TCP/IP 网络上与远程 Informix 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Informix）和使用本地数据网关的本地数据库。 请参阅 IBM Informix 平台和版本（在本主题中）的[受支持列表](connectors-create-api-informix.md#supported-informix-platforms-and-versions)。
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM Informix 数据库资源
 
-此连接器支持以下数据库操作：
-
-* 列出数据库表
-* 使用 SELECT 读取一行
-* 使用 SELECT 读取全部行
-* 使用 INSERT 添加一行
-* 使用 UPDATE 更改一行
-* 使用 DELETE 删除一行
-
-本主题介绍了如何在逻辑应用中使用连接器来处理数据库操作。
-
-若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
-
-## <a name="available-actions"></a>可用操作
-此连接器支持以下逻辑应用操作：
-
-* Getables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
-
-## <a name="list-tables"></a>列出表
-为任何操作创建逻辑应用包含通过 Microsoft Azure 门户执行的许多步骤。
-
-在逻辑应用中，可以将操作添加到 Informix 数据库中的列出表。 此操作指示连接器处理 Informix 架构语句，如 `CALL SYSIBM.SQLTABLES`。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixgetTables`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。  
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取表(预览)”。
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. 在“Informix - 获取表”配置窗格中，选中“复选框”以启用“通过本地数据网关连接”。 请注意，这些设置从云更改到本地。
-   
-   * 以地址或别名冒号端口号的形式键入“服务器”的值。 例如，键入 `ibmserver01:9089`。
-   * 键入“数据库”的值。 例如，键入 `nwind`。
-   * 选择“身份验证”的值。 例如，选择“Basic”。
-   * 键入“用户名”的值。 例如，键入 `informix`。
-   * 键入“密码”的值。 例如，键入 `Password1`。
-   * 选择“网关”的值。 例如，选择“datagateway01”。
-7. 选择“创建”，并选择“保存”。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. 在“InformixgetTables”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-9. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_tables”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括表列表。
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
-
-## <a name="create-the-connections"></a>创建连接
-此连接器支持使用以下连接属性连接到本地数据库和云中。 
-
-| properties | 描述 |
-| --- | --- |
-| 服务器 |必需。 接受表示 TCP/IP 地址或别名的字符串值，该地址或别名采用 IPv4 或 IPv6 格式，后跟（冒号分隔）TCP/IP 端口号。 |
-| 数据库 |必需。 接受表示 DRDA 相关数据库名称 (RDBNAM) 的字符串值。 Informix 接受 128 个字节字符串（数据库称为 IBM Informix 数据库名称 (dbname)）。 |
-| authentication |可选。 接受 Basic 或 Windows (kerberos) 列表项值。 |
-| username |必需。 接受字符串值。 |
-| password |必需。 接受字符串值。 |
-| gateway |必需。 接受列表项值，表示已在存储组内定义为逻辑应用的本地数据网关。 |
-
-## <a name="create-the-on-premises-gateway-connection"></a>创建本地网关连接
-此连接器可以使用本地数据网关访问本地 Informix 数据库。 有关详细信息，请参阅网关主题。 
-
-1. 在“网关”配置窗格中，选中“复选框”以启用“通过网关连接”。 请参阅这些设置从云更改到本地。
-2. 以地址或别名冒号端口号的形式键入“服务器”的值。 例如，键入 `ibmserver01:9089`。
-3. 键入“数据库”的值。 例如，键入 `nwind`。
-4. 选择“身份验证”的值。 例如，选择“Basic”。
-5. 键入“用户名”的值。 例如，键入 `informix`。
-6. 键入“密码”的值。 例如，键入 `Password1`。
-7. 选择“网关”的值。 例如，选择“datagateway01”。
-8. 选择“创建”继续操作。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-
-## <a name="create-the-cloud-connection"></a>创建云连接
-此连接器可访问云 Informix 数据库。 
-
-1. 在“网关”配置窗格中，使“复选框”保持禁用（未单击）“通过网关连接”状态。 
-2. 键入“连接名称”的值。 例如，键入 `hisdemo2`。
-3. 以地址或别名冒号端口号的形式键入“Informix 服务器名称”的值。 例如，键入 `hisdemo2.cloudapp.net:9089`。
-4. 键入“Informix 数据库名称”的值。 例如，键入 `nwind`。
-5. 键入“用户名”的值。 例如，键入 `informix`。
-6. 键入“密码”的值。 例如，键入 `Password1`。
-7. 选择“创建”继续操作。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-
-## <a name="fetch-all-rows-using-select"></a>使用 SELECT 获取全部行
-可创建逻辑应用操作，获取 Informix 表中的全部行。 该操作指示连接器处理 Informix SELECT 语句（如 `SELECT * FROM AREA`）。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入**名称**（例如 "**InformixgetRows**"）、**订阅**、**资源组**、**位置**和**应用服务计划**。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。
-7. 在“连接”配置窗格中，选择“新建”。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. 在“网关”配置窗格中，使“复选框”保持禁用（未单击）“通过网关连接”状态。
-   
-   * 键入“连接名称”的值。 例如，键入 `HISDEMO2`。
-   * 以地址或别名冒号端口号的形式键入“Informix 服务器名称”的值。 例如，键入 `HISDEMO2.cloudapp.net:9089`。
-   * 键入“Informix 数据库名称”的值。 例如，键入 `NWIND`。
-   * 键入“用户名”的值。 例如，键入 `informix`。
-   * 键入“密码”的值。 例如，键入 `Password1`。
-9. 选择“创建”继续操作。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-11. 可以选择“显示高级选项”指定查询选项。
-12. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. 在“InformixgetRows”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-14. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括行列表。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
-
-## <a name="add-one-row-using-insert"></a>使用 INSERT 添加一行
-可以创建逻辑应用操作，在 Informix 表中添加一行。 此操作指示连接器处理 Informix INSERT 语句，如 `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixinsertRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 插入行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Area 99999` 并键入“REGIONID”的 `102`。 
-10. 选择“保存”。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. 在“InformixinsertRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括新行。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
-
-## <a name="fetch-one-row-using-select"></a>使用 SELECT 获取一行
-你可以创建逻辑应用操作，以获取 Informix 表中的一行。 此操作指示连接器处理 Informix SELECT WHERE 语句，如 `SELECT FROM AREA WHERE AREAID = '99999'`。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixgetRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 获取行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
-10. 可以选择“显示高级选项”指定查询选项。
-11. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. 在“InformixgetRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-13. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括行。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>使用 UPDATE 更改一行
-可以创建逻辑应用操作，以更改 Informix 表中的一行。 此操作指示连接器处理 Informix UPDATE 语句，如 `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixupdateRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 更新行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`、键入 `Updated 99999` 并键入“REGIONID”的 `102`。 
-10. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. 在“InformixupdateRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括新行。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>使用 DELETE 删除一行
-可以创建逻辑应用操作，在 Informix 表中删除一行。 此操作指示连接器处理 Informix DELETE 语句，如 `DELETE FROM AREA WHERE AREAID = '99999'`。
-
-### <a name="create-a-logic-app"></a>创建逻辑应用
-1. 在 **Azure 开始面板**中，依次选择“+”（加号）、“Web + 移动”和“逻辑应用”。
-2. 输入“名称”（例如 `InformixdeleteRow`）、“订阅”、“资源组”、“位置”和“应用服务计划”。 选择“固定到仪表板”，并选择“创建”。
-
-### <a name="add-a-trigger-and-action"></a>添加触发器和操作
-1. 在“逻辑应用设计器”中的“模板”列表中，选择“空白逻辑应用”。
-2. 在“触发器”列表中，选择“定期”。 
-3. 在“定期”触发器中，选择“编辑”，再选择“频率”下拉列表以选择“天”，然后选择“间隔”以键入“7”。 
-4. 选择“+ 新步骤”框，并选择“添加操作”。
-5. 在“操作”列表中，在“搜索更多操作”编辑框中键入 **informix**，并选择“Informix - 删除行(预览)”。
-6. 在“获取行(预览)”操作中，选择“更改连接”。 
-7. 在“连接”配置窗格中，选择一个现有连接。 例如，选择“hisdemo2”。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在“表单名称”列表中，选择“下拉箭头”，并选择“AREA”。
-9. 输入所有所需列的值（查看红色星号）。 例如，键入“AREAID”的 `99999`。 
-10. 选择“保存”。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. 在“InformixdeleteRow”边栏选项卡中，在“摘要”下面的“所有运行”列表中，选择第一个列出项（最近运行）。
-12. 在“逻辑应用运行”边栏选项卡中，选择“运行详细信息”。 在“操作”列表内，选择“Get_rows”。 设置“状态”的值，该值应为 **Succeeded**。 选择“输入链接”查看输入。 选择“输出链接”并查看输出；其中应包括删除的行。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
-
-## <a name="supported-informix-platforms-and-versions"></a>支持的 Informix 平台和版本
-当配置为支持分布式关系数据库结构 (DRDA) 客户端连接时，此连接器支持以下 IBM Informix 版本。
+使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Informix 连接器](/connectors/informix/)，可以创建管理 IBM Informix 数据库中的资源的自动化任务和工作流。 此连接器包括通过 TCP/IP 网络与远程 Informix 服务器计算机通信的 Microsoft 客户端，包括基于云的数据库，例如，在使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)时，Azure 虚拟化中运行的 WINDOWS 的 IBM Informix 和本地数据库。 如果配置为支持分布式关系数据库体系结构（DRDA）客户端连接，则可以连接到这些 Informix 平台和版本：
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
+本主题介绍了如何在逻辑应用中使用连接器来处理数据库操作。
+
+## <a name="prerequisites"></a>必备组件
+
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+
+* 对于本地数据库，请在本地计算机上[下载并安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)，然后[在 Azure 门户中创建 Azure 数据网关资源](../logic-apps/logic-apps-gateway-connection.md)。
+
+* 需要访问 Informix 数据库的逻辑应用。 此连接器仅提供操作，因此逻辑应用必须已以触发器开头，例如，[重复执行触发器](../connectors/connectors-native-recurrence.md)。 
+
+## <a name="add-an-informix-action"></a>添加 Informix 操作
+
+1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+
+1. 在要添加 Informix 操作的步骤下，选择 "**新建步骤**"。
+
+   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
+
+1. 在搜索框中，输入 `informix` 作为筛选器。 从 "操作" 列表中，选择所需的操作，例如：
+
+   ![选择要运行的 Informix 操作](./media/connectors-create-api-informix/select-informix-connector-action.png)
+
+   连接器提供这些操作，这些操作将运行相应的数据库操作：
+
+   * 获取表-使用 `CALL` 语句列出数据库表
+   * 获取行-通过使用 `SELECT *` 语句读取所有行
+   * 使用 `SELECT WHERE` 语句获取行读取行
+   * 使用 `INSERT` 语句添加行
+   * 使用 `UPDATE` 语句编辑行
+   * 使用 `DELETE` 语句删除行
+
+1. 如果系统提示你提供 Informix 数据库的连接详细信息，请按照[创建连接的步骤进行](#create-connection)操作，然后继续下一步。
+
+1. 提供选定操作的信息：
+
+   | 行动 | Description | 属性和说明 |
+   |--------|-------------|-----------------------------|
+   | **获取表** | 通过运行 Informix CALL 语句列出数据库表。 | 无 |
+   | **获取行** | 通过运行 Informix `SELECT *` 语句获取指定表中的所有行。 | **表名**：所需的 Informix 表的名称 <p><p>若要向此操作添加其他属性，请从 "**添加新参数**" 列表中选择它们。 有关详细信息，请参阅[连接器的参考主题](/connectors/informix/)。 |
+   | **获取行** | 通过运行 Informix `SELECT WHERE` 语句从指定的表中提取行。 | - **表名称**：所需的 Informix 表的名称 <br>- **行 id**：行的唯一 ID，如 `9999` |
+   | **插入行** | 通过运行 Informix `INSERT` 语句，将行添加到指定的 Informix 表中。 | - **表名称**：所需的 Informix 表的名称 <br>- **项**：包含要添加的值的行 |
+   | **更新行** | 通过运行 Informix `UPDATE` 语句来更改指定 Informix 表中的行。 | - **表名称**：所需的 Informix 表的名称 <br>- **行 ID**：要更新的行的唯一 ID，例如 `9999` <br>- **行**：具有更新值的行，例如 `102` |
+   | **删除行** | 通过运行 Informix `DELETE` 语句从指定的 Informix 表中删除行。 | - **表名称**：所需的 Informix 表的名称 <br>- **行 ID**：要删除的行的唯一 ID，例如 `9999` |
+   ||||
+
+1. 保存逻辑应用。 现在，请[测试逻辑应用](#test-logic-app)或继续构建逻辑应用。
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-informix"></a>连接到 Informix
+
+1. 如果逻辑应用连接到本地数据库，请选择 "**通过本地数据网关连接**"。
+
+1. 提供此连接信息，然后选择 "**创建**"。
+
+   | 属性 | JSON 属性 | 需要 | 示例值 | Description |
+   |----------|---------------|----------|---------------|-------------|
+   | 连接名称 | `name` | 是 | `informix-demo-connection` | 用于连接到 Informix 数据库的名称 |
+   | 服务器 | `server` | 是 | -Cloud： `informixdemo.cloudapp.net:9089` <br>-本地： `informixdemo:9089` | 采用 IPv4 或 IPv6 格式的 TCP/IP 地址或别名，后跟冒号和 TCP/IP 端口号 |
+   | 数据库 | `database` | 是 | `nwind` | DRDA 关系数据库名称（RDBNAM）或 Informix 数据库名称（dbname）。 Informix 接受128字节的字符串。 |
+   | 身份验证 | `authentication` | 仅本地 | **Basic**或**Windows** （kerberos） | Informix 数据库所需的身份验证类型。 仅当选择 **"通过本地数据网关连接"** 时，才会显示此属性。 |
+   | 用户名 | `username` | 否 | <*数据库-* 用户名> | 数据库的用户名 |
+   | 密码 | `password` | 否 | <*数据库-密码*> | 数据库的密码 |
+   | 网关 | `gateway` | 仅本地 | -<*Azure-订阅*> <br>-<*Azure-本地-网关-资源*> | 在 Azure 门户中创建的本地数据网关的 Azure 订阅和 Azure 资源名称。 仅当选择 "**通过本地数据网关连接**" 时，才会显示**网关**属性和子属性。 |
+   ||||||
+
+   例如：
+
+   * **云数据库**
+
+     ![云数据库连接信息](./media/connectors-create-api-informix/informix-cloud-connection.png)
+
+   * **本地数据库**
+
+     ![本地数据库连接信息](./media/connectors-create-api-informix/informix-on-premises-connection.png)
+
+1. 保存逻辑应用。
+
+<a name="test-logic-app"></a>
+
+## <a name="test-your-logic-app"></a>测试逻辑应用
+
+1. 在逻辑应用设计器工具栏上，选择 "**运行**"。 逻辑应用运行后，你可以从该运行中查看输出。
+
+1. 从逻辑应用的菜单中，选择 "**概述**"。 在 "概述" 窗格中的 "**摘要** > **运行历史记录**" 下，选择最近运行的。
+
+1. 在 "**逻辑应用运行**" 下，选择 "**运行详细信息**"。
+
+1. 从 "操作" 列表中，选择包含要查看的输出的操作，例如**Get_tables**。
+
+   如果操作成功，则会将其 "**状态**" 属性标记为 "**成功**"。
+
+1. 若要查看输入，请在 "**输入链接**" 下，选择 "URL" 链接。 若要查看输出，请在 "**输出链接**" 链接下，选择 "URL" 链接。 下面是一些示例输出：
+
+   * **获取表**显示表的列表：
+
+     !["获取表" 操作的输出](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+
+   * **Get_rows**显示行列表：
+
+     !["获取行" 操作的输出](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+
+   * **Get_row**显示指定行：
+
+     !["获取行" 操作的输出](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+
+   * **Insert_row**显示新行：
+
+     !["插入行" 操作的输出](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+
+   * **Update_row**显示更新的行：
+
+     !["更新行" 操作的输出](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+
+   * **Delete_row**显示已删除的行：
+
+     !["删除行" 操作的输出](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
+
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-在[连接器详细信息](/connectors/informix/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
+有关由连接器的 Swagger 说明描述的触发器、操作和限制的技术详细信息，请查看[连接器的参考页](/connectors/informix/)。
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 
+* 了解其他[逻辑应用连接器](apis-list.md)

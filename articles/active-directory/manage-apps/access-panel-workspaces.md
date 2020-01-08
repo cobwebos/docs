@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443450"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>在 "我的应用" （预览版）门户中创建工作区
 
@@ -45,7 +45,7 @@ ms.locfileid: "73199823"
    ![用户预览功能](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> 若要打开 "我的应用" 门户，用户可以使用链接 `https://myapps.microsoft.com` 或组织的自定义链接，如 `https://myapps.microsoft.com/contoso.com`。 如果用户未重定向到 "我的应用" 预览版，用户应尝试 `https://myapplications.microsoft.com` 或 `https://myapplications.microsoft.com/contoso.com`。
+> 若要打开 "我的应用" 门户，用户可以使用链接 `https://myapps.microsoft.com` 或组织的自定义链接，如 `https://myapps.microsoft.com/contoso.com`。 启用新的 "我的应用" 体验后，已**更新的 "我的应用程序体验**" 将显示在 "我的应用" 页的顶部，用户可以选择 "**试用**" 以查看新体验。 若要停止使用新体验，用户可以从页面顶部的 "**离开新体验**" 横幅中选择 **"是"** 。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -98,6 +98,15 @@ ms.locfileid: "73199823"
 
    ![向用户和组分配角色](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>获取我的帐户页面支持
+
+在 "我的应用" 页中，用户可以选择 **"我的帐户**" > **查看我的帐户 "** ，打开其帐户设置。 在 "Azure AD**我的帐户**" 页上，用户可以管理其安全信息、设备、密码等。 他们还可以访问其 Office 帐户设置。
+
+如果需要针对 Azure AD 帐户 "页或" Office 帐户 "页上的问题提交支持请求，请按照以下步骤进行操作，以便正确路由你的请求： 
+
+* 对于**Azure AD "我的帐户"** 页中的问题，请从 Azure 门户内打开支持请求。 请**Azure Active Directory** > **新的支持请求**中转到**Azure 门户** > 。
+
+* 有关**Office "我的帐户"** 页的问题，请从 Microsoft 365 管理中心内打开支持请求。 请参阅**Microsoft 365 管理中心** > **支持**。 
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 中的应用程序的最终用户体验](end-user-experiences.md)

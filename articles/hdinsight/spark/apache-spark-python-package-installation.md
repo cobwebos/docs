@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215559"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529637"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -22,9 +22,9 @@ ms.locfileid: "74215559"
 
 HDInsight 在 Spark 群集中有两个内置的 Python 安装，Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，如安装外部 Python 包或其他 Python 版本。 本文介绍如何安全地管理 HDInsight 上的[Apache Spark](https://spark.apache.org/)群集的 Python 环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -43,7 +43,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!IMPORTANT]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，帮助进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如 [Hadoop](https://hadoop.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在[https://apache.org](https://apache.org)上有项目站点，例如[Hadoop](https://hadoop.apache.org/)。
 
 ## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
@@ -51,9 +51,9 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 | |Python 2.7|Python 3.5|
 |----|----|----|
-|Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|默认设置为2。7|不适用|
-|Livy|默认设置为2。7|不适用|
+|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|默认设置为2。7|N/A|
+|Livy|默认设置为2。7|N/A|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -81,7 +81,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    如果不知道虚拟环境名称，可以通过 SSH 连接到群集的标头节点并运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
+    如果不知道虚拟环境名称，可以通过 SSH 连接到群集的头节点并运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
 
 3. 更改 Spark 和 Livy 配置，并指向创建的虚拟环境。
 
@@ -146,7 +146,7 @@ Anaconda 版本4.7.11 和4.7.12 有一个已知的 bug。 如果你的脚本操�
 
 * [在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter 笔记本配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Apache Spark applications remotely（使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序）](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)

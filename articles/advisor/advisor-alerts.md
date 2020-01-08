@@ -1,20 +1,14 @@
 ---
-title: 为新建议创建 Azure 顾问警报 |Microsoft Docs
+title: 为新建议创建 Azure 顾问警报
 description: 为新建议创建 Azure 顾问警报
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443160"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>根据新建议创建 Azure 顾问警报 
 
@@ -274,11 +268,11 @@ ms.locfileid: "71326617"
 }
 ```
 
-在任一架构中，你都可以通过查找**eventSource** `Recommendation` is， **operationName**是`Microsoft.Advisor/recommendations/available/action`，来确定顾问建议事件。
+在这两个架构中，都可以通过查找**eventSource** `Recommendation` 和**operationName** `Microsoft.Advisor/recommendations/available/action`来确定顾问建议事件。
 
 你可能想要使用的一些其他重要字段是： 
 
-* *alertTargetIDs*（在公用架构中）或*resourceId* （旧架构）
+* *alertTargetIDs* （在公用架构中）或*resourceId* （旧架构）
 * *recommendationType*
 * *recommendationName*
 * *recommendationCategory*

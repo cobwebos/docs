@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 12/28/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 79891f6a4036a21be8edc70044a29cfb9cca4755
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4ff398c6e4208b7e55affe3fe8d6dd5efdce7bf7
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891059"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528226"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商业应用商店政策和条款
 
@@ -26,13 +26,13 @@ Marketplace 中的产品/服务必须符合我们的政策和条款。 我们会
 
 ## <a name="policies-and-terms"></a>策略和条款
 
-* [商业应用商店认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)
+* [商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
 * [参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)
 
 * [分级和评审策略](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
 
-* [Azure Marketplace 条款](https://docs.microsoft.com/legal/marketplace/terms)
+* [Azure 市场条款](https://docs.microsoft.com/legal/marketplace/terms)
 
 ## <a name="next-steps"></a>后续步骤
 

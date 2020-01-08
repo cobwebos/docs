@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932540c830940ec18c439352d54f671db7387b94
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7e0339f5118d4745b6abe0268f021f8284a5f11f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379164"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689119"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74379164"
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
-- 基于设备的条件性访问
+- 基于设备的条件访问
 - [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
@@ -102,7 +102,8 @@ WamDefaultAuthority: organizations
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined : YES  
 
-此字段指示设备是否已加入 Azure AD。 如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。 
+此字段指示设备是否已加入。 如果设备是 Azure AD 联接设备或混合 Azure AD 加入设备，则该值为**YES** 。
+如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。 
 
 继续执行后续步骤，进一步进行故障排除。
 
@@ -385,7 +386,7 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤5：收集日志并联系 Microsoft 支持部门
 
-在此处获取公共脚本： [https://1drv.ms/u/s！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+在此处获取公共脚本： [https://1drv.ms/u/s ！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
 1. 打开管理员命令提示符并运行 `start_ngc_tracing_public.cmd`。
 2. 执行步骤来重现问题。

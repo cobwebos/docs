@@ -3,16 +3,18 @@ title: 注册最佳做法
 description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容器注册表。
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445790"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
 通过遵循这些最佳做法，可帮助最大化性能并在 Azure 中经济、高效地利用私有 Docker 注册表。
+
+另请参阅[用于标记和版本管理容器映像的建议](container-registry-image-tag-version.md)，了解如何在注册表中标记和版本映像。 
 
 ## <a name="network-close-deployment"></a>临近网络部署
 
@@ -31,7 +33,7 @@ ms.locfileid: "74455317"
 
 通过利用存储库命名空间，可以在组织中的多个组之间共享单个注册表。 可在部署和团队之间共享注册表。 Azure 容器注册表支持嵌套的命名空间，可实现组隔离。
 
-例如，考虑以下容器映像标记。 在公司范围内使用的映像（如 `aspnetcore`）位于根命名空间中，而生产和营销组拥有的容器映像都使用其自己的命名空间。
+例如，考虑以下容器映像标记。 企业范围内使用的图像（如 `aspnetcore`）位于根命名空间中，而产品和市场营销组拥有的容器映像均使用自己的命名空间。
 
 ```
 contoso.azurecr.io/aspnetcore:2.0
@@ -61,7 +63,7 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 
 每个[容器注册表 SKU][container-registry-skus]的存储约束旨在与典型方案保持一致：**基本**为入门，适用于大多数生产应用程序的**标准**，以及超大规模性能和[异地复制][container-registry-geo-replication]的**高级**。 在注册表的整个生命周期中，应定期删除未使用的内容，管理注册表大小。
 
-使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 显示注册表的当前大小：
+使用 Azure CLI 命令[az acr show][az-acr-show-usage] ：显示注册表的当前大小：
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table

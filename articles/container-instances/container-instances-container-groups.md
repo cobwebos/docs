@@ -4,12 +4,12 @@ description: 了解 Azure 容器实例中的容器组，它是共享生命周期
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ca160c62160bc5233139dccc650474811c4cd784
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442293"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -44,21 +44,19 @@ Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定�
 
 ## <a name="resource-allocation"></a>资源分配
 
-Azure 容器实例通过在组中添加实例的[资源请求][resource-requests]，将 cpu、内存和可选[gpu][gpus] （预览版）等资源分配到容器组。 取 CPU 资源示例：如果创建包含两个实例的容器组，每个实例请求1个 CPU，则会为该容器组分配2个 cpu。
+Azure 容器实例通过在组中添加实例的[资源请求][resource-requests]，将 cpu、内存和可选[gpu][gpus] （预览版）等资源分配给多容器组。 取 CPU 资源示例：如果创建包含两个实例的容器组，每个实例请求1个 CPU，则会为该容器组分配2个 cpu。
 
 ### <a name="resource-usage-by-instances"></a>按实例的资源使用情况
 
-为每个容器实例分配其资源请求中指定的资源。 但是，组中的容器实例的资源使用情况取决于配置其可选的[资源限制][resource-limits]属性的方式。 资源限制必须小于必需的[资源请求][resource-requests]属性。
+组中的每个容器实例都分配了其资源请求中指定的资源。 但是，如果配置其可选的[资源限制][resource-limits]属性，则组中的实例所使用的最大资源可能会不同。 实例的资源限制必须大于或等于必需的[资源请求][resource-requests]属性。
 
 * 如果未指定资源限制，则实例的最大资源使用率与资源请求相同。
 
-* 如果为实例指定资源限制，则可以调整实例的资源使用情况，从而减少或增加相对于资源请求的使用量。 可设置的最大资源限制是分配给组的资源总数。
+* 如果为实例指定限制，则实例的最大使用量可能大于请求，直至达到所设置的限制。 同样，组中其他实例的资源使用可能会降低。 可为实例设置的最大资源限制是分配给组的总资源数。
     
-例如，在包含两个请求1个 CPU 的实例的组中，其中一个容器可能运行的工作负荷需要更多的 Cpu 才能运行。
+例如，在包含两个实例的组中，每个请求1个 CPU，其中一个容器可能运行的工作负荷需要更多的 Cpu 才能运行。
 
-在这种情况下，你可以将一个实例的资源限制设置为 0.5 CPU，为第二个实例设置2个 Cpu 的限制。 此配置将第一个容器的资源使用率限制为 0.5 CPU，允许第二个容器最多使用完整2个 Cpu （如果可用）。
-
-有关详细信息，请参阅 REST API 容器组中的[ResourceRequirements][resource-requirements]属性。
+在这种情况下，可以为实例设置2个 Cpu 的资源限制。 此配置允许容器使用最多满2个 Cpu （如果可用）。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
@@ -66,7 +64,7 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 * 有关容器组中的**最大**资源，请参阅部署区域中 Azure 容器实例的[资源可用性][region-availability]。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 容器组可以在该 IP 地址上共享面向外部的 IP 地址和端口命名空间。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 
 

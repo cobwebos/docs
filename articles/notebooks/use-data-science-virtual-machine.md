@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 数据科学虚拟机
-description: 连接到 Azure Data Science Virtual Machine （DSVM）以将计算能力扩展到 Azure Notebooks。
+description: 了解如何连接到 Azure Data Science Virtual Machine （DSVM）以将计算能力扩展到 Azure Notebooks 预览版。
 author: getroyer
 manager: andneil
 ms.author: getroyer
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277403"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646988"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 数据科学虚拟机
 
@@ -19,6 +19,8 @@ ms.locfileid: "74277403"
 
 > [!Note]
 > 仅在用 Linux Ubuntu 映像上创建的 Dsvm 支持 Azure Notebooks。 笔记本在 Windows 2012、Windows 2016 或 Linux CentOS 映像上不受支持。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>创建 DSVM 实例
 
@@ -56,7 +58,7 @@ DSVM 版本19.06.15 或更高版本支持文件系统访问。 若要检查版�
 
 如果多个用户共享了 DSVM，则可以通过为每个笔记本用户创建和使用 DSVM 用户，避免彼此阻止：
 
-1. 在[Azure 门户](https://portal.azure.com)中，导航到你的虚拟机。
+1. 在[Azure 门户](https://portal.azure.com)上，导航到你的虚拟机。
 1. 在左边距中的 "**支持 + 故障排除**" 下，选择 "**重置密码**"。
 1. 输入新的用户名和密码，然后选择 "**更新**"。 （现有的用户名不受影响。）
 1. 对任何其他用户重复前面的步骤。

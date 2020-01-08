@@ -1,25 +1,14 @@
 ---
-title: 了解 Azure Service Fabric 应用程序安全性 | Microsoft Docs
+title: 了解 Azure Service Fabric 应用程序安全性
 description: 有关如何在 Service Fabric 中安全运行微服务应用程序的概述。 了解如何以不同的安全帐户运行服务和启动脚本、对用户进行身份验证和授权、管理应用程序机密、保护服务通信、使用 API 网关，以及保护应用程序的静态数据。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452257"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
 微服务体系结构可以带来[诸多好处](service-fabric-overview-microservices.md)。 但是，管理微服务的安全性有一定的难度，比管理传统单体式应用程序的安全性更复杂。 
@@ -36,9 +25,9 @@ ms.locfileid: "68600074"
 
 如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
 
-对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  此外还支持外部身份验证提供程序, 因此用户可以使用 Microsoft、Google、Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。
+对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  此外还支持外部身份验证提供程序，因此用户可以使用 Microsoft、Google、Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>授权
 完成身份验证后，服务需要为用户访问授权，或确定哪些用户可以访问。 此过程可让服务将 API 提供给某些经过身份验证的用户使用，而不是提供给所有用户使用。 授权是正交性的，它独立于身份验证，是认定用户身份的过程。 身份验证可为当前用户创建一个或多个标识。
 
 可以根据用户的角色或者根据自定义策略（可能包括检查声明或其他试探方法）实现 [ASP.NET Core 授权](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)。
@@ -66,7 +55,7 @@ API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路
 3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
 
-[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
+此处[Azure Key Vault][key-vault-get-started]用作证书的安全存储位置，也可作为一种方法，用于获取在 Azure 中的 Service Fabric 群集上安装的证书。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
 
 有关示例，请参阅[管理应用程序机密](service-fabric-application-secret-management.md)。
 

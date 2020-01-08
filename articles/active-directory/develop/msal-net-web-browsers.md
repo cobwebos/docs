@@ -1,5 +1,5 @@
 ---
-title: 使用 MSAL.NET 的 web 浏览器 |Microsoft
+title: 使用 web 浏览器（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
@@ -14,14 +14,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5b8c8e78c554994b71f9e246f8bacc39828b17f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424175"
 ---
-# <a name="using-web-browsers-in-msalnet"></a>在 MSAL.NET 中使用 web 浏览器
+# <a name="using-web-browsers-msalnet"></a>使用 web 浏览器（MSAL.NET）
+
 Web 浏览器是交互式身份验证所必需的。 默认情况下，MSAL.NET 在 Xamarin 和 Xamarin 上支持[系统 web 浏览器](#system-web-browser-on-xamarinios-xamarinandroid)。 不过，你也可以根据你的要求（UX，在[xamarin](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)和[xamarin Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)应用中使用单一登录（SSO）、安全性）来[启用嵌入的 Web 浏览器](#enable-embedded-webviews-on-ios-and-android)。 甚至还可以根据 Chrome 的存在或支持 Android 中 Chrome 自定义选项卡的浏览器，[动态地选择](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)要使用的 web 浏览器。 MSAL.NET 仅支持 .NET Core 桌面应用程序中的系统浏览器。
 
 ## <a name="web-browsers-in-msalnet"></a>MSAL.NET 中的 Web 浏览器
@@ -48,12 +49,12 @@ MSAL.NET 是一个多框架库，它具有框架特定的代码，用于在 UI �
 | 框架        | 嵌入 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |
 | .NET 经典     | 是 | 是 ^ | 嵌入 |
-| .NET Core     | No | 是 ^ | 系统 |
-| .NET Standard | No | 是 ^ | 系统 |
-| UWP | 是 | No | 嵌入 |
+| .NET Core     | 否 | 是 ^ | 系统 |
+| .NET Standard | 否 | 是 ^ | 系统 |
+| UWP | 是 | 否 | 嵌入 |
 | Xamarin.Android | 是 | 是  | 系统 |
 | Xamarin.iOS | 是 | 是  | 系统 |
-| Xamarin.Mac| 是 | No | 嵌入 |
+| Xamarin.Mac| 是 | 否 | 嵌入 |
 
 ^ 需要 "http://localhost" 重定向 URI
 

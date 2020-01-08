@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679706"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440484"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 
@@ -53,11 +53,11 @@ ms.locfileid: "73679706"
 
 ## <a name="type-properties"></a>Type 属性
 
-Name | 说明 | 类型 | 必需？
+名称 | Description | 类型 | 必需？
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
-源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
-firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔值 | 不能。 默认为 `true`。
+source | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
+firstRowOnly | 指示仅返回第一行还是返回所有行。 | Boolean | 不。 默认为 `true`。
 
 > [!NOTE]
 > 
@@ -81,7 +81,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔值 | �
     }
     ```
 
-* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `value` 模式将 `items` 数组传递给 ForEach 活动 `@activity('MyLookupActivity').output.value` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 例如 `@{activity('lookupActivity').output.value[0].tablename}`。
+* **当 `firstRowOnly` 设置为 `false` 时**，输出格式如以下代码所示。 `count` 字段指示返回的记录数。 详细值显示在固定的 `value` 数组下。 在这种情况下，查找活动后跟 [Foreach 活动](control-flow-for-each-activity.md)。 使用 `@activity('MyLookupActivity').output.value` 模式将 `value` 数组传递给 ForEach 活动 `items` 字段。 若要访问 `value` 数组中的元素，请使用以下语法：`@{activity('lookupActivity').output.value[zero based index].propertyname}`。 示例为 `@{activity('lookupActivity').output.value[0].tablename}`。
 
     ```json
     {
@@ -238,10 +238,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔值 | �
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -258,10 +255,7 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔值 | �
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }
@@ -301,13 +295,13 @@ firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔值 | �
 
 以下是 Lookup 活动的一些限制以及建议的解决方法。
 
-| 升级到 V12 | 解决方法 |
+| 限制 | 解决方法 |
 |---|---|
 | Lookup 活动最多有 5,000 行，最大大小为 2 MB。 | 设计一个外部管道对内部管道进行迭代的两级管道，该管道会检索不超过最大行数或大小的数据。 |
 | | |
 
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
 - [执行管道活动](control-flow-execute-pipeline-activity.md)
 - [ForEach 活动](control-flow-for-each-activity.md)

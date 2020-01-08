@@ -7,26 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604785"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659774"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
-默认情况下，AKS 群集使用 [kubenet][kubenet]，系统会为你创建虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
+默认情况下，AKS 群集使用[kubenet][kubenet]，并为你创建一个虚拟网络和子网。 使用 *kubenet*，节点从虚拟网络子网获取 IP 地址。 然后会在节点上配置网络地址转换 (NAT)，并且 Pod 将接收“隐藏”在节点 IP 背后的 IP 地址。 这种方法减少了需要在网络空间中保留供 Pod 使用的 IP 地址数量。
 
-借助 [Azure 容器网络接口 (CNI)][cni-networking]，每个 Pod 都可以从子网获得 IP 地址，并且可供直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 此方法需要更多的计划，并且经常会耗尽 IP 地址或者在应用程序需求增长时需要在更大的子网中重新生成群集。
+使用[Azure 容器网络接口（CNI）][cni-networking]，每个 pod 都从子网中获取 IP 地址，并且可以直接访问。 这些 IP 地址在网络空间中必须唯一，并且必须事先计划。 每个节点都有一个配置参数来表示它支持的最大 Pod 数。 这样，就会为每个节点预留相应的 IP 地址数。 使用此方法需要经过更详细的规划，并且经常会耗尽 IP 地址，或者在应用程序需求增长时需要在更大的子网中重建群集。
 
-本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
+本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅[Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
-* 不要在同一子网中创建多个 AKS 群集。
-* AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24`。
+* AKS 群集不能将 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围。
 * AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -55,34 +54,34 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 | 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 子网大小还应考虑到帐户升级操作或将来的缩放需求。<p />若要计算最小子网大小，包括用于升级操作的其他节点：`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 个节点群集的示例：`(51) + (51  * 30 (default)) = 1,581`（/21 或更大）<p/>50 节点群集的示例，其中还包括纵向扩展额外 10 个节点的预配：`(61) + (61 * 30 (default)) = 1,891`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
 | Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址。 |
-| Docker 桥地址 | Docker 桥网络地址表示所有 Docker 安装中都存在的默认 docker0 桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0桥，但必须设置此地址以继续支持 AKS 群集内的 docker build 等方案。 需要为 Docker 桥网络地址选择 CIDR，否则 Docker 会自动选择一个可能与其他 CIDR 冲突的子网。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。 默认地址为 172.17.0.1/16。 |
+| Docker 桥地址 | Docker 桥网络地址表示在所有 Docker 安装中都存在的默认*docker0*桥网络地址。 尽管 AKS 群集或 pod 本身不使用*docker0*桥，但必须将此地址设置为在 AKS 群集中继续支持*docker build*等方案。 由于 Docker 会自动选取可能与其他 CIDRs 冲突的子网，因此需要为 Docker 桥网络地址选择 CIDR。 你必须选择一个地址空间，该地址空间不会与网络上的其余 CIDRs 发生冲突，包括群集的服务 CIDR 和 pod CIDR。 默认地址为 172.17.0.1/16。 |
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
-AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
+AKS 群集中每个节点的最大 pod 数为250。 每个节点的默认最大 Pod 数因 *kubenet* 和 *Azure CNI* 网络以及群集部署方法而异。
 
 | 部署方法 | Kubenet 默认值 | Azure CNI 默认值 | 可在部署时配置 |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | 是（最大 250） |
-| 资源管理器模板 | 110 | 30 | 是（最大 250） |
+| Azure CLI | 110 | 30 | 是（最多250） |
+| 资源管理器模板 | 110 | 30 | 是（最多250） |
 | 门户 | 110 | 30 | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 
-只能在群集部署时配置每个节点的最大 Pod 数。 如果使用 Azure CLI 或资源管理器模板进行部署，则可以设置每个节点的最大 Pod 数，最高可以设置为 250。
+只能在群集部署时配置每个节点的最大 Pod 数。 如果使用 Azure CLI 或资源管理器模板进行部署，则可以将每个节点的最大 pod 数设置为250。
 
 强制执行每个节点最大 pod 的最小值，以保证对于群集运行状况而言至关重要的系统箱。 当且仅当每个节点池的配置至少具有30个 pod 的空间时，可以为每个节点的最大 pod 数设置为10。 例如，将每个节点的最大 pod 数设置为10时，要求每个单独的节点池至少有3个节点。 此要求同样适用于创建的每个新节点池，因此，如果10被定义为每个节点的最大 pod 数，则每个添加的下一个节点池必须至少具有3个节点。
 
-| 网络 | 最小值 | 最大值 |
+| 联网 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |
 
 > [!NOTE]
-> 上表中的最小值由 AKS 服务严格强制实施。 不能将 maxPods 值设置为低于所示的最小值，因为这样做可能会阻止群集启动。
+> 上表中的最小值严格由 AKS 服务强制执行。 不能将 maxPods 值设置为低于最小显示的值，因为这样做会阻止群集启动。
 
-* **Azure CLI**：使用[az aks create][az-aks-create]命令部署群集时指定 `--max-pods` 参数。 最大值为 250。
-* **资源管理器模板**：使用资源管理器模板部署群集时，在 `maxPods`ManagedClusterAgentPoolProfile[ManagedClusterAgentPoolProfile] 属性。 最大值为 250。
+* **Azure CLI**：使用[az aks create][az-aks-create]命令部署群集时指定 `--max-pods` 参数。 最大值为250。
+* **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
@@ -93,7 +92,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 
 创建 AKS 群集时，可为 Azure CNI 网络配置以下参数：
 
-**虚拟网络**：要将 Kubernetes 群集部署到的虚拟网络。 要为群集创建新的虚拟网络，请选择“新建”，并按照“创建虚拟网络”部分中的步骤操作。 有关 Azure 虚拟网络的限制和配额的信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
+**虚拟网络**：要将 Kubernetes 群集部署到的虚拟网络。 要为群集创建新的虚拟网络，请选择“新建”，并按照“创建虚拟网络”部分中的步骤操作。 有关 Azure 虚拟网络的限制和配额的信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)。
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
@@ -102,13 +101,13 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
 * 不得与任何本地 IP 重叠
-* 不得在范围 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24` 中
+* 不能在 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`或 `192.0.2.0/24` 范围内
 
-虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes 服务的详细信息，请参阅 Kubernetes 文档中的[服务][services]。
+虽然从技术上来说可以在群集所在的虚拟网络中指定一个服务地址范围，但建议不要这样做。 如果使用重叠的 IP 范围，则可能导致不可预测的行为。 有关详细信息，请参阅本文中的[常见问题解答](#frequently-asked-questions)部分。 有关 Kubernetes services 的详细信息，请参阅 Kubernetes 文档中的[服务][services]。
 
 **Kubernetes DNS 服务 IP 地址**：群集 DNS 服务的 IP 地址。 此地址必须在 Kubernetes 服务地址范围内。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址。
 
-**Docker 桥接地址**： docker 桥网络地址表示在所有 Docker 安装中都存在的默认*docker0*桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0桥，但必须设置此地址以继续支持 AKS 群集内的 docker build 等方案。 需要为 Docker 桥网络地址选择 CIDR，否则 Docker 会自动选择一个可能与其他 CIDR 冲突的子网。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。
+**Docker 桥接地址**： docker 桥网络地址表示在所有 Docker 安装中都存在的默认*docker0*桥网络地址。 尽管 AKS 群集或 pod 本身不使用*docker0*桥，但必须将此地址设置为在 AKS 群集中继续支持*docker build*等方案。 由于 Docker 会自动选取可能与其他 CIDRs 冲突的子网，因此需要为 Docker 桥网络地址选择 CIDR。 你必须选择一个地址空间，该地址空间不会与网络上的其余 CIDRs 发生冲突，包括群集的服务 CIDR 和 pod CIDR。
 
 ## <a name="configure-networking---cli"></a>配置网络 - CLI
 
@@ -125,7 +124,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-使用带有 [ 参数的 ][az-aks-create]az aks create`--network-plugin azure` 命令创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
+使用带有 `--network-plugin azure` 参数的[az aks create][az-aks-create]命令创建具有高级网络的群集。 使用上一步中收集的子网 ID 更新 `--vnet-subnet-id` 值：
 
 ```azurecli-interactive
 az aks create \
@@ -151,7 +150,7 @@ az aks create \
 
 * 是否可以在群集子网中部署 VM？
 
-  不能。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
+  不。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
 
 * *是否可以配置基于 Pod 的网络策略？*
 
@@ -167,7 +166,7 @@ az aks create \
 
   可以在 Azure 门户的标准虚拟网络配置页中，配置创建 AKS 群集期间创建的虚拟网络和子网的完整属性列表。
 
-* 是否可以在我的群集虚拟网络中将另一子网用于 Kubernetes 服务地址范围？
+* *能否在群集虚拟网络中为* **Kubernetes 服务地址范围**使用其他子网？
 
   此配置是可以的，但建议不要这样做。 该服务地址范围是 Kubernetes 分配给群集中的内部服务的虚拟 IP (VIP) 的集合。 Azure 网络无法查看 Kubernetes 群集的服务 IP 范围。 由于无法查看群集的服务地址范围，因此有可能以后会在群集虚拟网络中创建新的子网，该子网与服务地址范围重叠。 如果出现这种形式的重叠，则 Kubernetes 为服务分配的 IP 可能是子网中另一资源正在使用的，导致不可预测的行为或故障。 如果能够确保所用地址范围不在群集的虚拟网络中，则可避免这种重叠风险。
 
@@ -181,14 +180,14 @@ az aks create \
 - [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 - [启用 HTTP 应用程序路由外接程序][aks-http-app-routing]
 - [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
-- [使用动态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-tls]
-- [使用静态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-static-tls]
+- [使用动态公共 IP 创建入口控制器，并配置让我们进行加密以自动生成 TLS 证书][aks-ingress-tls]
+- [使用静态公共 IP 创建入口控制器，并配置让我们进行加密以自动生成 TLS 证书][aks-ingress-static-tls]
 
 ### <a name="aks-engine"></a>AKS 引擎
 
-[Azure Kubernetes 服务引擎（AKS 引擎）][aks-engine]是一个开源项目，它能够生成 Azure 资源管理器模板用于在 Azure 上部署 Kubernetes 群集。
+[Azure Kubernetes 服务引擎（AKS 引擎）][aks-engine]是一个开源项目，可生成可用于在 azure 上部署 Kubernetes 群集的 azure 资源管理器模板。
 
-使用 AKS 引擎创建的 Kubernetes 群集支持 [kubenet][kubenet] 和 [Azure CNI][cni-networking] 插件。 因此，AKS 引擎同时支持这两种网络方案。
+通过 AKS 引擎创建的 Kubernetes 群集支持[kubenet][kubenet]和[Azure CNI][cni-networking]插件。 因此，AKS 引擎同时支持这两种网络方案。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png

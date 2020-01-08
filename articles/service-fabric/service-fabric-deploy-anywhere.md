@@ -1,25 +1,16 @@
 ---
-title: Azure 和独立 Service Fabric 群集的概述 | Microsoft Docs
+title: Azure 和独立 Service Fabric 群集概述
 description: 可以在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组互连 Windows Server 或 Linux 计算机（无论是本地计算机、Microsoft Azure 计算机还是任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 71f3858fed43465f646ccbe1e78ccac9cba237f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458204"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>将 Azure Service Fabric 群集与 Windows Server 和 Linux 上的独立 Service Fabric 群集进行比较
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -33,7 +24,7 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 * **Azure 资源管理器：** 使用 Azure 资源管理器可以单元的形式方便地管理群集使用的所有资源，并简化了成本跟踪和计费。
 * **用作 Azure 资源的 Service Fabric 群集** Service Fabric 群集是一种 Azure 资源，因此可以像在 Azure 中对其他资源建模一样为它建模。
 * **与 Azure 基础结构集成** Service Fabric 与适用于 OS、网络和其他升级的 Azure 基础结构相协调，以提高应用程序的可用性与可靠性。  
-* **诊断：** 在 Azure 上，我们提供的集成与 Azure 诊断和 Azure Monitor 日志。
+* **诊断：** 在 Azure 上，我们提供与 Azure 诊断和 Azure Monitor 日志的集成。
 * **自动缩放：** 对于 Azure 上的群集，我们借助虚拟机缩放集提供内置自动缩放功能。 在本地和其他云环境中，必须构建自己的自动调整规模功能或使用 Service Fabric 为调整群集规模而公开的 API 来手动调整规模。
 
 ## <a name="benefits-of-standalone-clusters"></a>独立群集的优点

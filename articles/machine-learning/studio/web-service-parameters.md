@@ -12,12 +12,12 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 984d2e02ff75df459275fd10e313a4950c8d79c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432179"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习 Studio （经典） web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
@@ -38,14 +38,14 @@ ms.locfileid: "73466982"
 Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服务时如何以编程方式指定 Web 服务参数的信息。
 
 > [!NOTE]
-> 经典 web 服务的 API 文档通过机器学习 Studio （经典）中 web 服务**仪表板**上的**api 帮助页**链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”[](https://services.azureml.net/Quickstart)和“Swagger API”页上的 **Azure 机器学习 Web 服务**门户提供。
+> 经典 web 服务的 API 文档通过机器学习 Studio （经典）中 web 服务**仪表板**上的**api 帮助页**链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
 > 
 > 
 
 ## <a name="example"></a>示例
 例如，假设我们有一个用于将信息发送到 Azure blob 存储的[导出数据][writer]模块的实验。 我们将定义名为“Blob 路径”的 Web 服务参数，该参数允许 Web 服务用户在服务受访问时更改指向 Blob 存储的路径。
 
-1. 在经典版本的机器学习 Studio 中，单击 "[导出数据][writer]" 模块将其选中。 属性显示在实验画布右侧的“属性”窗格中。
+1. 在机器学习 Studio （经典）中，单击 "[导出数据][writer]" 模块将其选中。 属性显示在实验画布右侧的“属性”窗格中。
 2. 指定存储类型：
    
    * 在“请指定数据目标”下，选择“Azure Blob 存储”。
@@ -63,7 +63,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 5. 要提供 Web 服务参数的默认值，请单击名称右侧的图标、选择“提供默认值”、输入值（例如“container1/output1.csv”），并按“Enter”键。
    
    ![Web 服务参数](./media/web-service-parameters/parameter.png)
-6. 单击“**运行**”。 
+6. 单击 **“运行”** 。 
 7. 单击“部署 Web 服务”时，并选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”，部署 Web 服务。
 
 > [!NOTE] 
@@ -72,7 +72,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 Web 服务的用户现在可以在访问 web 服务时为[导出数据][writer]模块指定新目标。
 
 ## <a name="more-information"></a>详细信息
-有关更详细的示例，请参阅[机器学习博客](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)中的“Web 服务参数”[](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)条目。
+有关更详细的示例，请参阅 [机器学习博客](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服务参数](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 条目。
 
 有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 

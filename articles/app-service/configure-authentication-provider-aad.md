@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: b85c68b19a44021710dbc9143e255600b43b2cba
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670889"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666136"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 
@@ -27,11 +27,11 @@ ms.locfileid: "74670889"
 - 将每个应用服务应用程序配置为自己的注册。
 - 避免在环境之间通过单独的部署槽位使用单独的应用注册来共享权限。 测试新代码时，这种做法可帮助防止问题影响生产应用。
 
-## <a name="express"> </a>使用快速设置进行配置
+## <a name="express"></a>用快速设置进行配置
 
-1. 在[Azure 门户]中转到应用服务应用。
-1. 在左窗格中选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
-1. 选择“Azure Active Directory”，然后选择“管理模式”下的“快速”。
+1. 在[Azure 门户]中，搜索并选择 "**应用服务**"，然后选择应用。
+1. 在左窗格中的 "**设置**" 下，选择 "**身份验证/授权**"，并确保已**启用** **应用服务身份验证**。
+1. 选择 " **Azure Active Directory**"，然后在 "**管理模式**" 下选择 "**快速**"。
 1. 选择“确定”，在 Azure Active Directory 中注册应用服务应用。 创建新的应用注册。
 
    如果要改为选择现有应用注册：
@@ -47,7 +47,7 @@ ms.locfileid: "74670889"
     > 以这种方式限制访问权限适用于对应用的所有调用，对于具有公开可用主页的应用，与在许多单页应用程序中一样，这可能并不理想。 对于此类应用程序，"**允许匿名请求（无操作）** " 可能是首选，应用程序会手动开始登录。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 1. 选择“保存”。
 
-## <a name="advanced"> </a>使用高级设置进行配置
+## <a name="advanced"></a>配置高级设置
 
 如果要使用的 Azure AD 租户不同于用于登录到 Azure 的租户，可以手动配置应用设置。 若要完成此自定义配置，你需要：
 
@@ -65,13 +65,13 @@ ms.locfileid: "74670889"
 
 执行以下步骤：
 
-1. 登录到[Azure 门户]并中转到应用服务应用。 记下应用程序的**URL**。 将使用它来配置 Azure Active Directory 应用注册。
+1. 登录到[Azure 门户]，搜索并选择 "**应用服务**"，然后选择应用。 记下应用程序的**URL**。 将使用它来配置 Azure Active Directory 应用注册。
 1. 选择 " **Azure Active Directory** > **应用注册**" > "**新注册**"。
 1. 在 "**注册应用程序**" 页中，输入应用注册的**名称**。
 1. 在 "**重定向 URI**" 中，选择 " **Web** "，然后输入应用服务应用的 URL，并将路径 `/.auth/login/aad/callback`追加。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。 
-1. 选择**创建**。
+1. 选择“创建”。
 1. 创建应用注册后，请复制**应用程序（客户端） id**和**目录（租户） id** ，以备稍后之用。
-1. 选择 "**品牌**"。 在 "**主页 url**" 中，输入应用服务应用的 url，然后选择 "**保存**"。
+1. 选择“品牌”。 在 "**主页 url**" 中，输入应用服务应用的 url，然后选择 "**保存**"。
 1. 选择 "**公开 API** > **集**"。 粘贴到应用服务应用的 URL，然后选择 "**保存**"。
 
    > [!NOTE]
@@ -84,15 +84,15 @@ ms.locfileid: "74670889"
 1. 可有可无若要创建客户端密钥，请选择 "**证书" & 机密** > **新的客户端密钥** > "**添加**"。 复制页面中显示的 "客户端机密" 值。 它不会再次显示。
 1. 可有可无若要添加多个**回复 url**，请选择 "**身份验证**"。
 
-### <a name="secrets"> </a>将 Azure Active Directory 信息添加到应用服务应用
+### <a name="secrets"></a>将 Azure Active Directory 信息添加到应用服务应用
 
-1. 在[Azure 门户]中转到应用服务应用。 
-1. 在左窗格中选择 "**设置" > "身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
+1. 在[Azure 门户]中，搜索并选择 "**应用服务**"，然后选择应用。 
+1. 在左窗格中的 "**设置**" 下，选择 "**身份验证/授权**"，并确保已**启用 "** **应用服务身份验证**"。
 1. 可有可无默认情况下，应用服务身份验证允许未经身份验证的应用访问。 若要强制执行用户身份验证，请**在请求未经过身份验证时**，将操作设置为**使用 Azure Active Directory 进行登录**。
 1. 在 "身份验证提供程序" 下，选择**Azure Active Directory**。
 1. 在 "**管理模式**" 中，选择 "**高级**"，并根据下表配置应用服务身份验证：
 
-    |字段|描述|
+    |字段|Description|
     |-|-|
     |客户端 ID| 使用应用注册的**应用程序（客户端） ID** 。 |
     |颁发者 ID| 使用 `https://login.microsoftonline.com/<tenant-id>`，并将 *\<租户 id >* 替换为应用注册的**目录（租户） id** 。 |
@@ -112,7 +112,7 @@ ms.locfileid: "74670889"
 1. 在[Azure 门户]中，选择 " **Active Directory** > **应用注册**" > **新注册**"。
 1. 在 "**注册应用程序**" 页中，输入应用注册的**名称**。
 1. 在 "**重定向 URI**" 中，选择 "**公用客户端（移动 & 桌面）** "，输入应用服务应用的 URL 并将路径追加 `/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
-1. 选择**创建**。
+1. 选择“创建”。
 
     > [!NOTE]
     > 对于 Windows 应用程序，请改用[包 SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid)作为 URI。

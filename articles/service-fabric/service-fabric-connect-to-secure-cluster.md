@@ -1,25 +1,14 @@
 ---
-title: 安全连接 Azure Service Fabric 群集 | Microsoft Docs
+title: 安全地连接到 Azure Service Fabric 群集
 description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/29/2019
-ms.author: atsenthi
-ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458271"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -79,7 +68,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 ### <a name="connect-to-an-unsecure-cluster"></a>连接到不安全的群集
 
-若要连接到不安全群集，请向 **Connect-ServiceFabricCluster** 命令提供群集终结点地址：
+要连接到不安全的群集，请将群集终结点地址提供给 **Connect-ServiceFabricCluster** 命令：
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 
@@ -135,7 +124,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-*ServerCertThumbprint* 是群集节点上安装的服务器证书的指纹。 *FindValue* 是管理客户端证书的指纹。  填充参数时，命令如以下示例所示：
+*ServerCertThumbprint* 是群集节点上安装的服务器证书的指纹。 *FindValue* 是管理客户端证书的指纹。  填充参数以后，命令将如以下示例所示：
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
@@ -174,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 
-群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上设置的 [RemoteCommonNames 属性](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)中。 按照此流程操作可在客户端与群集节点之间进行相互身份验证。
+群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上设置的 [RemoteCommonNames 属性](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)中。 按此过程操作就可以在客户端与群集节点之间进行相互身份验证。
 
 ```csharp
 using System.Fabric;
@@ -216,7 +205,7 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 
 以下示例针对客户端标识使用 Azure Active Directory，针对服务器标识使用服务器证书。
 
-连接到群集时，对话框窗口自动弹出，以便进行交互式登录。
+连接到群集后，会自动弹出一个用于交互式登录的对话框窗口。
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -297,7 +286,7 @@ static string GetAccessToken(
 
 ### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>使用 Azure Active Directory 在不预先了解元数据的情况下连接到安全群集
 
-以下示例使用非交互式令牌获取过程，但可以相同的方法构建自定义交互式令牌获取体验。 从群集配置中读取令牌获取所需的 Azure Active Directory 元数据。
+以下示例使用非交互式令牌获取过程，但可以相同的方法构建自定义交互式令牌获取体验。 将从群集配置中读取令牌获取过程所需的 Azure Active Directory 元数据。
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -341,7 +330,7 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 <a id="connectsecureclustersfx"></a>
 
 ## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>使用 Service Fabric Explorer 连接到安全群集
-若要访问给定群集的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，请将浏览器指向：
+要访问给定群集的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，请将浏览器指向：
 
 `http://<your-cluster-endpoint>:19080/Explorer`
 
@@ -359,7 +348,7 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 
-要连接到使用证书保护的群集，请将浏览器指向：
+要连接到使用证书进行保护的群集，请将浏览器指向：
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
@@ -367,7 +356,7 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 <a id="connectsecureclustersetupclientcert"></a>
 
-## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>在远程计算机上设置客户端证书
+## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>设置远程计算机上的客户端证书
 
 至少应有两个证书用于保护群集，一个用于保护群集和服务器证书，另一个用于保护客户端访问。  建议还使用其他辅助证书和客户端访问证书。  若要使用证书安全性来保护客户端与与群集节点之间的通信，必须先获取并安装客户端证书。 证书可以安装到本地计算机或当前用户的个人（我的）存储。  还需要服务器证书的指纹，以便客户端可以对群集进行身份验证。
 

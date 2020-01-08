@@ -1,19 +1,19 @@
 ---
 title: 设备连接和遥测入口-Azure 数字孪生 |Microsoft Docs
-description: 了解如何在 Azure 数字孪生中连接和载入设备。
+description: 了解如何通过 Azure 数字孪生中的 IoT 设备连接、载入和发送遥测数据。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 529baf6a3eedf1d7490e8138642e90928a209876
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 01/03/2020
+ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010128"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660335"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>设备连接与遥测数据入口
 
@@ -67,12 +67,12 @@ YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 
  **消息**的有效负载内容可以是最大为 256 KB 的任意数据。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 类型的属性预期需要满足几项要求。 下表显示了系统支持的必需和可选属性。
 
-| 属性名 | 值 | 必选 | 说明 |
+| 属性名称 | 值 | 需要 | Description |
 |---|---|---|---|
 | DigitalTwins-Telemetry | 1.0 | 是 | 在系统中标识消息的常量值。 |
-| DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如，`00FF0643BE88-CO2`。 |
-| CreationTimeUtc | `string` | 否 | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 格式的日期字符串，用于标识有效负载的采样时间。 例如，`2018-09-20T07:35:00.8587882-07:00`。 |
-| **CorrelationId** | `string` | 否 | 用于跟踪整个系统中的事件的 UUID。 例如，`cec16751-ab27-405d-8fe6-c68e1412ce1f`。
+| DigitalTwins-SensorHardwareId | `string(72)` | 是 | 发送**消息**的传感器的唯一标识符。 该值必须与对象的 HardwareId 属性匹配，以便系统可以处理它。 例如，`00FF0643BE88-CO2` 。 |
+| CreationTimeUtc | `string` | 否 | [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式的日期字符串，用于标识有效负载的采样时间。 例如，`2018-09-20T07:35:00.8587882-07:00` 。 |
+| **CorrelationId** | `string` | 否 | 用于跟踪整个系统中的事件的 UUID。 例如，`cec16751-ab27-405d-8fe6-c68e1412ce1f` 。
 
 ### <a name="send-your-message-to-digital-twins"></a>将消息发送到数字孪生
 

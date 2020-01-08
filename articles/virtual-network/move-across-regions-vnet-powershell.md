@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828987"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646704"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
 
@@ -20,7 +20,7 @@ ms.locfileid: "71828987"
 你可以使用 Azure 资源管理器模板来完成将虚拟网络移动到另一个区域。 为此，可将虚拟网络导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[将资源组导出到模板](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 确保你的虚拟网络位于要移动的 Azure 区域中。
 
@@ -32,7 +32,7 @@ ms.locfileid: "71828987"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需的配额，请联系支持人员。
 
-- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
+- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-for-the-move"></a>准备移动
@@ -98,7 +98,7 @@ ms.locfileid: "71828987"
 
     ```
   
-1. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+1. 若要获取区域位置代码，可以通过运行以下命令使用 Azure PowerShell cmdlet [AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) ：
 
     ```azurepowershell-interactive
 
@@ -193,7 +193,7 @@ ms.locfileid: "71828987"
          ]
         ```
 
-1. 保存 *\<resource-group-name>.json* 文件。
+1. 将 *\<的资源组名称保存 > json*文件。
 
 1. 在目标区域中创建一个资源组，以使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)部署目标虚拟网络：
     
@@ -224,14 +224,14 @@ ms.locfileid: "71828987"
 
 部署虚拟网络后，若要在目标区域中重新开始或放弃虚拟网络，请删除在目标区域中创建的资源组，移动的虚拟网络将被删除。 
 
-若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+若要删除资源组，请使用[AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成虚拟网络移动，请执行以下操作之一：
 

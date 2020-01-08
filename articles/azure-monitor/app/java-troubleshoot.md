@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432541"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 [Java 中的 Azure 应用程序 Insights][java]的问题或问题？ 请参考下面的提示。
@@ -22,7 +22,7 @@ ms.locfileid: "72820808"
 
 * 如果依赖项 `<version>` 元素使用包含通配符的模式（例如 (Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`），请尝试改为指定特定版本（例如 `2.0.1`）。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java/releases)。
 
-## <a name="no-data"></a>没有数据
+## <a name="no-data"></a>无数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
@@ -52,7 +52,6 @@ ms.locfileid: "72820808"
 * 是否已按照[配置 Java 代理](java-agent.md)配置 Java 代理？
 * 请确保 java 代理 jar 和 AI-Agent.xml 文件放置在同一文件夹中。
 * 请确保自动收集功能支持你尝试自动收集的依赖项。 目前我们仅支持 MySQL、MsSQL、Oracle DB 和 用于 Redis 的 Azure 缓存依赖项收集。
-* 使用的是 JDK 1.7 还是 JDK 1.8？ 目前我们在 JDK 9 中不支持依赖项收集。
 
 ## <a name="no-usage-data"></a>无使用情况数据
 **我看到了请求和响应时间的相关数据，但没有看到页面视图、浏览器或用户数据。**
@@ -75,7 +74,7 @@ ms.locfileid: "72820808"
     config.setTrackingIsDisabled(true);
 ```
 
-**或**
+**Or**
 
 更新 ApplicationInsights.xml（位于项目的 resources 文件夹中）。 在根节点下添加以下代码：
 

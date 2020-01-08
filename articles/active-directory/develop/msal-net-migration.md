@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9aa2bf2bb2e77f5e543b53b583ddeeacd46de243
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915673"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424196"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -70,7 +70,7 @@ MSAL.NET 2.x 现在定义了帐户的概念（通过 IAccount 接口）。 这�
 
 有关 IUser 与 IAccount 之间的差异的详细信息，请参阅 [MSAL.NET 2.x](https://aka.ms/msal-net-2-released)。
 
-### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>异常
 
 #### <a name="interaction-required-exceptions"></a>“需要交互”异常
 
@@ -119,7 +119,7 @@ catch(MsalUiRequiredException exception)
 
 下面是适用于桌面和移动应用程序的 ADAL.NET 与 MSAL.NET 支持的授权
 
-授权 | ADAL.NET | MSAL.NET
+授予 | ADAL.NET | MSAL.NET
 ----- |----- | -----
 交互 | [交互式身份验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以交互方式获取令牌](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication)
@@ -130,7 +130,7 @@ Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https
 
 下面是适用于 Web 应用程序、Web API 和守护程序应用程序的 ADAL.NET 与 MSAL.NET 支持的授权：
 
-应用类型 | 授权 | ADAL.NET | MSAL.NET
+应用类型 | 授予 | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web 应用、Web API、守护程序 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](msal-authentication-flows.md#client-credentials)
 Web API | 代表 | [代表用户使用 ADAL.NET 进行服务到服务的调用](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [在 MSAL.NET 中代表](msal-authentication-flows.md#on-behalf-of)
@@ -223,7 +223,7 @@ ADAL.NET v2.X 中公开了刷新令牌，使你能够通过缓存这些令牌并
 
 幸运的是，MSAL.NET 现在有一个 API，可让你将以前的刷新令牌（通过 ADAL 获取）迁移到 `IConfidentialClientApplication`中：
 
-```CSharp
+```csharp
 /// <summary>
 /// Acquires an access token from an existing refresh token and stores it and the refresh token into 
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.

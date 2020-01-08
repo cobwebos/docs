@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: f36906bfa6bbef43c0e3133bfa1e8a163810086f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 450f40c8ba49028d99143d7cf2b2995eb354f8fd
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928702"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551618"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -73,17 +73,17 @@ ms.locfileid: "74928702"
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“SQL 数据库/服务器”窗格中“安全性”标题下的“审核”。
 
-    <a id="auditing-screenshot"></a> ![导航窗格][1]
+    <a id="auditing-screenshot"></a>![导航窗格][1]
 
 3. 如果想设置服务器审核策略，可以选择数据库审核页中的“查看服务器设置”链接。 然后，可查看或修改服务器审核设置。 服务器审核策略应用于此服务器上所有现有和新建数据库。
 
-    ![导航窗格][2]
+    ![“导航”窗格][2]
 
 4. 如果希望在数据库级别启用审核，请将“审核”切换到“启用”。
 
     如果启用了服务器审核，数据库配置的审核将与服务器审核并存。
 
-    ![导航窗格][3]
+    ![“导航”窗格][3]
 
 5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区，或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
 
@@ -108,7 +108,7 @@ ms.locfileid: "74928702"
 
     ![事件中心](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. 单击“保存”。
+9. 单击“ **保存**”。
 10. 若要自定义已审核的事件，可通过 [PowerShell cmdlet](#subheading-7) 或 [REST API](#subheading-9) 执行此操作。
 11. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 
@@ -158,7 +158,7 @@ ms.locfileid: "74928702"
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
-    ![导航窗格][7]
+    ![“导航”窗格][7]
 
     此时会打开“审核记录”，可在其中查看日志。
 
@@ -166,14 +166,14 @@ ms.locfileid: "74928702"
   - 可以通过切换“审核源”在服务器审核策略和数据库审核策略创建的审核记录之间进行切换。
   - 通过选中“仅显示 SQL 注入的审核记录”复选框，可以仅查看与 SQL 注入相关的审核记录。
 
-       ![导航窗格][8]
+       ![“导航”窗格][8]
 
 - 使用系统函数 **sys.fn_get_audit_file** (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio 中的“合并审核文件”选项（从 SSMS 17 开始）：
     1. 在 SSMS 菜单中，选择“文件” > “打开” > “合并审核文件”。
 
-        ![导航窗格][9]
+        ![“导航”窗格][9]
     2. 此时会打开“添加审核文件”对话框。 通过“添加”选项，选择是合并本地磁盘中的审核文件还是从 Azure 存储中导入。 需要提供 Azure 存储详细信息和帐户密钥。
 
     3. 添加要合并的所有文件后，单击“确定”完成合并操作。
@@ -210,14 +210,14 @@ ms.locfileid: "74928702"
 
 ### <a id="subheading-6">重新生成存储密钥</a>
 
-在生产环境中，可能会定期刷新存储密钥。 如果向 Azure 存储写入审核日志，则需在刷新密钥时重新保存审核策略。 过程如下：
+在生产环境中，可能会定期刷新存储密钥。 如果向 Azure 存储写入审核日志，则需在刷新密钥时重新保存审核策略。 该过程如下所示：
 
 1. 打开“存储详细信息”。 在“存储访问密钥”框中，选择“辅助”并单击“确定”。 然后单击“审核配置”页顶部的“保存”。
 
-    ![导航窗格][5]
+    ![“导航”窗格][5]
 2. 转到存储配置页，重新生成主访问密钥。
 
-    ![导航窗格][6]
+    ![“导航”窗格][6]
 3. 返回“审核配置”页，将“存储访问密钥”从“辅助”切换为“主要”，然后单击“确定”。 然后单击“审核配置”页顶部的“保存”。
 4. 返回“存储配置”页并重新生成辅助访问密钥（为下一个密钥刷新周期做好准备）。
 
@@ -243,7 +243,7 @@ ms.locfileid: "74928702"
 - 使用 AAD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
 
 
-## <a id="subheading-7"></a>使用 Azure PowerShell 管理 SQL 数据库审核
+## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL Server 和数据库审核
 
 **PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）** ：
 
@@ -256,7 +256,7 @@ ms.locfileid: "74928702"
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
-## <a id="subheading-9"></a>使用 REST API 管理 SQL 数据库审核
+## <a id="subheading-8"></a>使用 REST API 管理 Azure SQL Server 和数据库审核
 
 **REST API**：
 
@@ -272,7 +272,7 @@ ms.locfileid: "74928702"
 - [获取数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [获取服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>使用 Azure 资源管理器模板管理 SQL 数据库审核
+## <a id="subheading-9"></a>使用 Azure 资源管理器模板管理 Azure SQL Server 和数据库审核
 
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模板管理 Azure SQL 数据库审核，如以下示例所示：
 
@@ -289,10 +289,9 @@ ms.locfileid: "74928702"
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Manage SQL database auditing using Azure PowerShell]: #subheading-7
-[Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
-[Manage SQL database auditing using REST API]: #subheading-9
-[Manage SQL database auditing using ARM templates]: #subheading-10
+[Manage Azure SQL Server and Database auditing using Azure PowerShell]: #subheading-7
+[Manage SQL database auditing using REST API]: #subheading-8
+[Manage Azure SQL Server and Database auditing using ARM templates]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

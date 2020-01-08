@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure 流分析中的时间处理
 description: 了解如何在 Azure 流分析中使用时间处理，如如何选择最佳开始时间、如何处理延迟和早期事件以及时间处理指标。
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354650"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理
 
@@ -128,7 +128,7 @@ ms.locfileid: "72901425"
 
 可以通过[流分析作业指标](stream-analytics-monitoring.md)观察一系列的事件排序时间容错效应。 以下指标是相关的：
 
-|指标  | 描述  |
+|度量值  | Description  |
 |---------|---------|
 | **无序事件数** | 表示收到的无序事件的数目，这些事件或已删除，或已为其提供调整后的时间戳。 此指标直接受 Azure 门户中作业的“事件排序”页面上“无序事件”设置的配置影响。 |
 | **延迟输入事件数** | 表示从源延迟到达的事件数目。 此指标包括已删除或者已调整其时间戳的事件。 此指标直接受 Azure 门户中作业的“事件排序”页面上的“延迟到达的事件”设置的配置影响。 |

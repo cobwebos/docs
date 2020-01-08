@@ -22,13 +22,15 @@
   items:
     - name: Oracle 应用程序体系结构
       href: oracle-oci-applications.md
+    - name: Oracle 数据库体系结构
+      href: oracle-reference-architecture.md
     - name: 设计 Oracle DB
       href: oracle-design.md
     - name: Oracle DB 的备份策略
       href: oracle-backup-recovery.md
     - name: Oracle 灾难恢复选项
       href: oracle-disaster-recovery.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 将 Azure 和 OCI 互连 - 预览版
       href: configure-azure-oci-networking.md

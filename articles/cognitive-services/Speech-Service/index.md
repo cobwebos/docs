@@ -4,12 +4,12 @@ ms.date: 11-21-2019
 ms.topic: hub-page
 title: 语音服务文档
 description: 开始使用语音服务。 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
-ms.openlocfilehash: df90416b9ef046d68b5785b1fcb203159831e8fd
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7ae8f33e949519cc32d81b591503a159e045178b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381267"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -51,7 +51,7 @@ ms.locfileid: "74885781"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>识别来自音频文件的语音</h3>
+                                                    <h3>识别音频文件中的语音</h3>
                                                     <p>使用语音 SDK 识别来自单个文件的语音并听录输出。</p>
                                                 </div>
                                             </div>
@@ -590,7 +590,7 @@ ms.locfileid: "74885781"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>使用自定义命令</h3>
-                                                    <p>了解如何构建简单可靠的命令并通过语言理解和纠错来控制交互。</p>
+                                                    <p>了解如何轻松构建强大的命令和控制语音应用程序，使用户能够通过其语音完成任务。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -603,7 +603,7 @@ ms.locfileid: "74885781"
                         <a href="#support">支持</a>
                         <ul id="support" class="cardsC">
                             <li>
-                                <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=">
+                                <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -622,7 +622,7 @@ ms.locfileid: "74885781"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://stackoverflow.com/questions/tagged/microsoft-cognitive">
+                                <a href="https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

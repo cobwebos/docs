@@ -1,18 +1,18 @@
 ---
-title: 智能检测 - Azure Application Insights 中跟踪严重性比下降 | Microsoft Docs
-description: 使用 Azure Application Insights 监视应用程序跟踪，了解跟踪遥测数据的异常模式。
+title: 跟踪严重性比率降级-Azure 应用程序 Insights
+description: 通过智能检测来监视跟踪遥测中的异常模式 Azure 应用程序的应用程序跟踪。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: 83c1296beabaaae78289a653c6b30f6665f725c2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432420"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）
 
@@ -20,16 +20,16 @@ ms.locfileid: "72820527"
 
 此功能需要为应用配置跟踪日志（请参见如何为 [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) 或 [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs) 配置跟踪日志侦听器），除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>我何时会收到此类型的智能检测通知？
-如果 "良好" 跟踪（记录有*信息*级别或*详细*级别的跟踪）和 "错误" 跟踪（使用*警告*、*错误*或*严重*级别记录的跟踪）的比率降级，则可能会收到此类型的通知。特定日期，与前七天计算的基线比较。
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
+与前七天计算的基线相比，如果 "良好" 跟踪（带有*信息*级别或*详细*级别的跟踪日志）和 "错误" 跟踪（使用*警告*、*错误*或*严重*级别记录的跟踪）之间的比率降级，则可能会收到此类型的通知。
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>收到通知是否意味着我的应用肯定有问题？
 不是，通知并不意味着应用肯定有问题。 虽然“良好”和“错误”跟踪之间的比率降低可能指示应用程序出现问题，但这种比率的变化也可能是良性的。 例如，如果应用程序中的新流发出的“错误”跟踪多于现有流，则可能带来比率的增加。
 
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 通知包括诊断信息，以在诊断进程中提供支持：
-1. **会审**。 通知会显示有多少操作受到影响。 这可以帮助你对问题分配优先级。
-2. **范围**。 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
-3. **诊断**。 可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。
+1. **会审。** 通知会显示有多少操作受到影响。 这可以帮助你对问题分配优先级。
+2. **划分范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
+3. **诊断。** 可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。
 
 

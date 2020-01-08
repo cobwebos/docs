@@ -1,20 +1,20 @@
 ---
 title: 连接到必应搜索
-description: 使用必应搜索 REST API 和 Azure 逻辑应用查找新闻
+description: 使用 Azure 逻辑应用自动执行查找结果的任务和工作流必应搜索
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789946"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665881"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>使用必应搜索和 Azure 逻辑应用查找新闻
+# <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用查找必应搜索中的结果
 
 本文演示如何使用必应搜索连接器从逻辑应用中通过必应搜索查找新闻、视频和其他项。 通过这样的方式可以创建逻辑应用，自动执行处理搜索结果的任务和工作流，并使这些项可用于其他操作。 
 
@@ -50,13 +50,13 @@ ms.locfileid: "74789946"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <search-words> | 输入要使用的搜索关键字。 |
    | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | 计数 | No | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | No | <skip-value> | 返回结果前要跳过的结果数 |
+   | 计数 | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如：
@@ -101,13 +101,13 @@ ms.locfileid: "74789946"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
    | 搜索查询 | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
-   | 计数 | No | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | Offset | No | <skip-value> | 返回结果前要跳过的结果数 |
+   | 计数 | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如，假设需要类别名称包含单词“tech”的结果。
@@ -148,7 +148,7 @@ ms.locfileid: "74789946"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <connection-name> | 为连接创建的名称 |
    | API 版本 | 是 | <API-version> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |
@@ -163,7 +163,7 @@ ms.locfileid: "74789946"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/bingsearch/)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/bingsearch/)。
 
 ## <a name="next-steps"></a>后续步骤
 

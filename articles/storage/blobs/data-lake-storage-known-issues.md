@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793363"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689141"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -50,12 +50,13 @@ Blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
 
 ## <a name="filesystem-support-in-sdks"></a>Sdk 中的文件系统支持
 
-- .NET、Java 和 Python 均为公共预览版。 当前不支持其他 Sdk。
-- Get 和 Set Acl 操作当前不是递归的。
+- [.Net](data-lake-storage-directory-file-acl-dotnet.md)、 [Java](data-lake-storage-directory-file-acl-java.md)和[Python](data-lake-storage-directory-file-acl-python.md)支持提供公共预览版。 当前不支持其他 Sdk。
+- Get 和 set ACL 操作当前不是递归的。
 
 ## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell 和 Azure CLI 中的文件系统支持
 
-Get 和 Set Acl 操作当前不是递归的。
+- [PowerShell](data-lake-storage-directory-file-acl-powershell.md)和[Azure CLI](data-lake-storage-directory-file-acl-cli.md)支持公共预览版。
+- Get 和 set ACL 操作当前不是递归的。
 
 ## <a name="support-for-other-blob-storage-features"></a>支持其他 Blob 存储功能
 
@@ -63,11 +64,12 @@ Get 和 Set Acl 操作当前不是递归的。
 
 | 功能/工具    | 详细信息    |
 |--------|-----------|
+| **帐户故障转移** |尚不支持|
 | **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy （[AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)）。 不支持早期版本的 AzCopy （如 AzCopy）。|
 | **Azure Blob 存储生命周期管理策略** | 支持生命周期管理策略（预览版）。  支持所有访问层。 存档访问层目前处于预览阶段。 尚不支持删除 blob 快照。 <br><br> 当前有一些影响生命周期管理策略和存档访问层的 bug。  在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)注册生命周期管理策略的预览并存档访问层。   |
-| **Azure 内容分发网络（CDN）** | 尚不支持|
+| **Azure 内容交付网络 (CDN)** | 尚不支持|
 | **Azure 搜索** |支持（预览）|
-| **Azure 存储空间资源管理器** | 特定于版本的支持。 <br><br>仅使用 `1.6.0` 或更高版本的版本。 <br> 当前存在影响版本 `1.11.0` 的存储 bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但作为一种解决方法，我们建议你使用可[免费下载](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)的版本 `1.10.x`。 `1.10.x` 不受存储 bug 的影响。|
+| **Azure 存储浏览器** | 特定于版本的支持。 <br><br>仅使用 `1.6.0` 或更高版本的版本。 <br> 当前存在影响版本 `1.11.0` 的存储 bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但作为一种解决方法，我们建议你使用可[免费下载](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)的版本 `1.10.x`。 `1.10.x` 不受存储 bug 的影响。|
 | **Blob 容器 Acl** |尚不支持|
 | **Blobfuse** |尚不支持|
 | **自定义域** |尚不支持|

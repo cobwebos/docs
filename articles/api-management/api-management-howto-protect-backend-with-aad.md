@@ -1,5 +1,6 @@
 ---
-title: 结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API | Microsoft Docs
+title: 使用 OAuth 2.0 和 AAD 和 API 管理保护 API
+titleSuffix: Azure API Management
 description: 了解如何结合使用 Azure Active Directory 和 API 管理来保护 Web API 后端。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442511"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -26,7 +27,7 @@ ms.locfileid: "70806324"
 > [!NOTE]
 > 此功能适用于 API 管理的**开发人员** **版、标准**层和**高级**层。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -60,9 +61,7 @@ ms.locfileid: "70806324"
 
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用。
 
-创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
-
-1. 选择 "**公开 API** "，然后单击 "**保存并继续**" 创建应用程序 ID URI。
+1. 选择 "**公开 API** "，并使用默认值设置**应用程序 ID URI** 。 稍后记下此值。
 
 1. 在 "**添加作用域**" 页中，创建 API 支持的新作用域。 （例如，读取），然后单击 "*添加作用域*" 以创建作用域。 重复此步骤以添加 API 支持的所有范围。
 
@@ -80,7 +79,7 @@ ms.locfileid: "70806324"
     - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `client-app`。 
     - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
 
-1. 在“重定向 URI”部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`
+1. 在 "**重定向 URI** " 部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`
 
 1. 选择“注册”以创建应用程序。 
 
@@ -88,9 +87,9 @@ ms.locfileid: "70806324"
 
 现在，请创建此应用程序的客户端机密，以便在后续步骤中使用。
 
-1. 从客户端应用的页面列表中，选择“证书和机密”，然后选择“新建客户端密码”。
+1. 在客户端应用的页面列表中，选择 "**证书" & "机密**"，然后选择 "**新建客户端密钥**"。
 
-1. 在“添加客户端密码”下，提供**说明**。 选择密钥过期时间，然后选择“添加”。
+1. 在 "**添加客户端机密**" 下提供**说明**。 选择密钥的过期时间，然后选择 "**添加**"。
 
 创建机密后，记下 "密钥" 值，以便在后续步骤中使用。 
 
@@ -98,15 +97,15 @@ ms.locfileid: "70806324"
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 导航到“应用注册”。 
+1. 导航到**应用注册**。 
 
-1. 选择 `client-app`，然后在应用的页面列表中转到“API 权限”。
+1. 选择 "`client-app`"，然后在应用的页面列表中转到 " **API 权限**"。
 
-1. 选择“添加权限”。
+1. 选择 "**添加权限**"。
 
-1. 在“选择 API”下，找到并选择 `backend-app`。
+1. 在 "**选择 API**" 下，找到并选择 "`backend-app`"。
 
-1. 在 "**委派的权限**" 下，选择`backend-app`适当的权限，然后单击 "**添加权限**"。
+1. 在 "**委派的权限**" 下，选择要 `backend-app` 的相应权限，然后单击 "**添加权限**"。
 
 1. （可选）在 " **API 权限**" 页上，单击页面底部的 "**授予管理员同意 < 你的租户-名称 >** ，以代表此目录中的所有用户授予同意。 
 
@@ -150,9 +149,9 @@ ms.locfileid: "70806324"
 
 1. 选择“创建”。
 
-1. 返回客户端应用的“设置”页。
+1. 返回到客户端应用并选择 "**身份验证**"。
 
-1. 选择“回复 URL”，并在第一行中粘贴 **redirect_url**。 在本示例中，我们已将 `https://localhost` 替换为第一行中的 URL。  
+1. 在 "**重定向 uri**" 下，选择 " **Web**" 类型，将**Redirect_url**粘贴到 "**重定向 URI**" 下，然后单击 "保存"。
 
 配置 OAuth 2.0 授权服务器后，开发人员控制台可从 Azure AD 获取访问令牌。 
 
@@ -160,13 +159,13 @@ ms.locfileid: "70806324"
 
 1. 浏览到 API 管理实例，并转到“API”。
 
-2. 选择要保护的 API。 例如，你可以使用`Echo API`。
+2. 选择要保护的 API。 例如，可以使用 `Echo API`。
 
 3. 转到“设置”。
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。 
 
-5. 选择**保存**。
+5. 选择“保存”。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 
@@ -194,16 +193,16 @@ ms.locfileid: "70806324"
 
 此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录。 开发人员控制台代表用户获取访问令牌，并在向 API 发出的请求中包含该令牌。
 
-但是，如果有人调用你的 API 而不使用令牌或令牌无效，该怎么办？ 例如，尝试在不使用`Authorization`标头的情况下调用 API，调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
+但是，如果有人调用你的 API 而不使用令牌或令牌无效，该怎么办？ 例如，尝试在没有 `Authorization` 标头的情况下调用 API，调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
 
-可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，将以下策略添加到的`<inbound>` `Echo API`"策略" 部分。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
+可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，将以下策略添加到 `Echo API`的 "`<inbound>` 策略" 部分。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID of backend-app}</value>
+            <value>{Application ID URI of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

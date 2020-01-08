@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: 重启、关闭或停止服务
+      href: boot-error-troubleshoot-windows.md
 - name: 设备名称已更改
   href: troubleshoot-device-names-problems.md
 - name: VM 恢复方法

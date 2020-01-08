@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9004e74d1b42a2b50ef57da58d9a79497e17f1ed
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e921059caa0d34c9ba1e303ff7f4a8de027a021
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434981"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览功能）
 
@@ -152,9 +152,9 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-[管理员可以使用预定义的角色定义适用于 Azure IoT Central 应用程序的访问规则](howto-administer.md)。 管理员可以通过为用户分配角色来决定用户可以访问的应用程序的具体区域。
+管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的[访问规则](howto-manage-users-roles.md)。 角色确定用户有权访问的应用程序区域以及可执行的操作。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 Azure IoT Central 中的安全功能包括：
 

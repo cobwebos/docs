@@ -64,11 +64,13 @@
       href: sql-database-features.md
     - name: 操作指南
       href: sql-database-howto.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 安全概述
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: 安全最佳做法
+          href: sql-database-security-best-practice.md
         - name: 访问管理
           items:
             - name: 访问控制
@@ -212,7 +214,7 @@
               href: sql-database-automated-backups.md
             - name: 使用备份进行恢复
               href: sql-database-recovery-using-backups.md
-            - name: 加速的数据库恢复
+            - name: 加速数据库恢复
               href: sql-database-accelerated-database-recovery.md
             - name: 长期备份保留
               href: sql-database-long-term-retention.md
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: 术语表
               href: sql-database-elastic-scale-glossary.md
-            - name: 弹性客户端库 - 合并
+            - name: 弹性客户端库
               href: sql-database-elastic-database-client-library.md
             - name: 分片映射
               href: sql-database-elastic-scale-shard-map-management.md
@@ -683,15 +685,16 @@
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 托管实例
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: 托管实例文档
-      href: sql-database-managed-instance-index.yml
     - name: 概述
-      href: sql-database-managed-instance.md
-    - name: 实例池
-      href: sql-database-instance-pools.md
-    - name: 常见问题解答
-      href: sql-database-managed-instance-faq.md
+      items:
+        - name: 托管实例
+          href: sql-database-managed-instance.md
+        - name: 实例池
+          href: sql-database-instance-pools.md
+        - name: 常见问题解答
+          href: sql-database-managed-instance-faq.md
     - name: 快速入门
       items:
         - name: 创建
@@ -718,14 +721,18 @@
       items:
         - name: 使用 DMS 迁移
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: 配置事务复制
-          href: replication-with-sql-database-managed-instance.md
         - name: 配置安全性
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: 将托管实例添加到故障转移组
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: 迁移本地用户和组
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: 事务复制
+          items:
+            - name: MI 公网到 MI 子网
+              href: replication-with-sql-database-managed-instance.md
+            - name: MI 公网、MI 区域、SQL 子网
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: 概念
       items:
         - name: 管理 API 参考
@@ -738,7 +745,7 @@
           href: sql-database-managed-instance-transact-sql-information.md
         - name: 功能
           items:
-            - name: 链接的服务器
+            - name: 链接服务器
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
             - name: Service Broker
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
@@ -788,7 +795,7 @@
           href: sql-database-resource-manager-samples.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/sql

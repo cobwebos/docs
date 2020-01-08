@@ -1,7 +1,7 @@
 ---
 title: 本地 SQL Server
 titleSuffix: ML Studio (classic) - Azure
-description: 使用本地 SQL Server 数据库中的数据，通过经典版 Azure 机器学习 Studio 执行高级分析。
+description: 使用本地 SQL Server 数据库中的数据通过 Azure 机器学习 Studio （经典）执行高级分析。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 074a3e4521660f8f1ea905ddab1d3b13f48a0680
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 97ab0bd275178a080af3491ba8219d4217e233aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432211"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>使用本地 SQL Server 数据库通过 Azure 机器学习 Studio （经典）执行分析
 
-通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习 Studio （经典）现在支持从本地 SQL Server 数据库读取数据，然后使用此数据对模型进行定型和评分。 再也不必在云和本地服务器之间手动复制并同步数据。 Azure 机器学习 Studio 中的 "**导入数据**" 模块现在可以直接从本地 SQL Server 数据库中读取，以便进行定型和评分工作。
+通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习 Studio （经典）现在支持从本地 SQL Server 数据库读取数据，然后使用此数据对模型进行定型和评分。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习 Studio （经典）中的 "**导入数据**" 模块现在可以直接从本地 SQL Server 数据库中读取，以便进行定型和评分工作。
 
-本文概述了如何将本地 SQL server 数据引入经典版本的 Azure 机器学习 Studio。 它假定你熟悉 Studio 概念的经典版本，如工作区、模块、数据集、*试验等。*
+本文概述了如何将本地 SQL server 数据引入 Azure 机器学习 Studio （经典）。 它假定你熟悉 Studio （经典）概念，如工作区、模块、数据集、*试验等。*
 
 > [!NOTE]
 > 此功能不适用于免费工作区。 有关机器学习定价和层级的详细信息，请参阅 [Azure 机器学习定价](https://azure.microsoft.com/pricing/details/machine-learning/)。
@@ -33,7 +33,7 @@ ms.locfileid: "73839510"
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>安装数据工厂自承载集成运行时
-若要在经典版 Azure 机器学习 Studio 中访问本地 SQL Server 数据库，需要下载并安装数据工厂自承载 Integration Runtime，以前称为数据管理网关。 在机器学习 Studio （经典）中配置连接时，可以使用下面所述的 "**下载并注册数据网关**" 对话框下载并安装 INTEGRATION RUNTIME （IR）。
+若要在 Azure 机器学习 Studio （经典）中访问本地 SQL Server 数据库，需要下载并安装数据工厂自承载 Integration Runtime，以前称为数据管理网关。 在机器学习 Studio （经典）中配置连接时，可以使用下面所述的 "**下载并注册数据网关**" 对话框下载并安装 INTEGRATION RUNTIME （IR）。
 
 
 还可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 安装包来提前安装 IR。MSI 也可用于将现有 IR 升级至最新版本，并会保留所有设置。
@@ -44,7 +44,7 @@ ms.locfileid: "73839510"
 * 支持的 Windows 操作系统版本有 Windows 10、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。 
 * IR 计算机的推荐配置至少为：2 GHz、4 核 CPU、8 GB RAM 和 80 GB 磁盘。
 * 如果主机计算机进入休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
-* 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率很大程度上还取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
+* 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
 
 在设置并使用数据工厂自承载集成运行时的时候，请注意以下几点：
 
@@ -54,13 +54,13 @@ ms.locfileid: "73839510"
 * 一次只能为一个工作区配置一个 IRs。 目前不能跨工作区共享 IR。
 * 可以为单个工作区配置多个 IR。 例如，你可能想要在开发期间使用连接到测试数据源的 IR，并在准备好操作时使用生产 IR。
 * IR 不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议不要在托管本地数据源的计算机上安装 IR，从而避免 IR 和数据源之间的资源争用。
-* 如果计算机上已安装 IR 作为 Power BI 或 Azure 数据工厂方案，请在另一台计算机上安装经典版 Azure 机器学习 Studio 的单独 IR。
+* 如果计算机上已安装 IR 作为 Power BI 或 Azure 数据工厂方案，请在另一台计算机上安装 Azure 机器学习 Studio （经典）的单独 IR。
 
   > [!NOTE]
   > 数据工厂自承载集成运行时和 Power BI Gateway 不能在同一台计算机上运行。
   >
   >
-* 即使对其他数据使用 Azure ExpressRoute，也需要使用适用于经典版 Azure 机器学习 Studio 的数据工厂自承载 Integration Runtime。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据工厂自承载集成运行时建立机器学习和数据源之间的连接性。
+* 即使对其他数据使用 Azure ExpressRoute，也需要将数据工厂自承载 Integration Runtime 用于 Azure 机器学习 Studio （经典）。 即使使用 ExpressRoute，也应将数据源视为本地数据源（位于防火墙之后）。 使用数据工厂自承载集成运行时建立机器学习和数据源之间的连接性。
 
 若要详细了解安装先决条件、安装步骤和故障排除提示，请参阅[数据工厂中的集成运行时](../../data-factory/concepts-integration-runtime.md)一文。
 
@@ -102,7 +102,7 @@ ms.locfileid: "73839510"
 
       ![数据管理网关管理器](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-      注册成功后，经典版的 Azure 机器学习 Studio 也会更新。
+      注册成功后，Azure 机器学习 Studio （经典）也会更新。
 
     ![网关注册成功](./media/use-data-from-an-on-premises-sql-server/gateway-registered.png)
 11. 在“下载并注册数据网关”对话框中，单击核选标记以完成设置。 “设置”页将网关状态显示为“联机”。 在右侧窗格中，可查看状态和其他有用信息。
@@ -111,14 +111,14 @@ ms.locfileid: "73839510"
 12. 在 Microsoft 数据管理网关 Configuration Manager 切换到 "**证书**" 选项卡。在此选项卡上指定的证书用于对你在门户中指定的本地数据存储的凭据进行加密/解密。 此证书是默认证书。 Microsoft 建议将此证书更改为在证书管理系统中备份的自己的证书。 单击“更改”以改为使用自己的证书。
 
     ![更改网关证书](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. （可选）如果想要启用用于排查网关问题的详细日志记录，请在 Microsoft 数据管理网关配置管理中，切换到“诊断”选项卡，并选中“启用详细日志记录以进行疑难解答”选项。 可在“应用程序和服务日志” -&gt;“数据管理网关”节点下的“Windows 事件查看器”中找到该日志记录信息。 还可以使用“诊断”选项卡对使用网关连接本地数据源进行测试。
+13. （可选）如果想要启用用于排查网关问题的详细日志记录，请在 Microsoft 数据管理网关配置管理中，切换到“诊断”选项卡，并选中“启用详细日志记录以进行疑难解答”选项。 日志记录信息可在 "**应用程序和服务日志**" 下的 "Windows 事件查看器" -&gt;**数据管理网关**"节点下找到。 还可以使用“诊断”选项卡对使用网关连接本地数据源进行测试。
 
     ![启用详细日志记录](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-这将完成经典版 Azure 机器学习 Studio 中的网关设置过程。
+这将完成 Azure 机器学习 Studio （经典）中的网关设置过程。
 现在，已可以使用本地数据。
 
-可以为每个工作区创建并设置 Studio （经典）中的多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习 Studio 的经典版使你可以灵活地根据你的公司环境设置多个网关。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
+可以为每个工作区创建并设置 Studio （经典）中的多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习 Studio （经典）提供了根据公司环境设置多个网关的灵活性。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步骤 2：使用网关从本地数据源读取数据
 在完成设置网关后，可以将“导入数据”模块添加到从本地 SQL Server 数据库输入数据的实验。
@@ -137,7 +137,7 @@ ms.locfileid: "73839510"
 
    ![输入数据库凭据](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   消息“必填值”将更改为带有绿色复选标记的“值已设置”。 只需输入凭据一次，除非数据库信息或密码发生更改。 Azure 机器学习 Studio 的经典版使用安装网关时提供的证书来加密云中的凭据。 Azure 从不存储未加密的本地凭据。
+   消息“必填值”将更改为带有绿色复选标记的“值已设置”。 只需输入凭据一次，除非数据库信息或密码发生更改。 Azure 机器学习 Studio （经典）使用在安装网关时提供的证书来加密云中的凭据。 Azure 从不存储未加密的本地凭据。
 
    ![导入数据模块属性](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. 若要运行实验，请单击“运行”。

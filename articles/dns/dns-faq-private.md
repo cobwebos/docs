@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212012"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642142"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -30,11 +30,11 @@ ms.locfileid: "74212012"
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>专用区域是否需要在虚拟网络与 Internet 之间建立连接？
 
-否。 专用区域配合虚拟网络工作。 你可以使用它们来管理虚拟机中的虚拟机或其他资源的域以及跨虚拟网络的其他资源。 无需建立 Internet 连接即可进行名称解析。
+不。 专用区域配合虚拟网络工作。 你可以使用它们来管理虚拟机中的虚拟机或其他资源的域以及跨虚拟网络的其他资源。 无需建立 Internet 连接即可进行名称解析。
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>是否可将同一专用区域用于解析多个虚拟网络？
 
-可以。 可以将专用 DNS 区域链接到成千上万个虚拟网络。 有关详细信息，请参阅[Azure DNS 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+可以。 可以将专用 DNS 区域链接到成千上万个虚拟网络。 有关详细信息，请参阅[Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>属于不同订阅的虚拟网络是否可以链接到专用区域？
 
@@ -58,7 +58,7 @@ ms.locfileid: "74212012"
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>删除链接到专用区域的链接虚拟网络时会发生什么情况？ 是否必须手动更新专用区域，以将虚拟网络从区域中取消链接为链接的虚拟网络？
 
-否。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除指向 DNS 区域的链接。
+不。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除指向 DNS 区域的链接。
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>即使专用区域（例如 private.contoso.com）已链接到虚拟网络，使用默认 FQDN （internal.cloudapp.net）的 DNS 解析仍有效？
 
@@ -66,12 +66,12 @@ ms.locfileid: "74212012"
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？
 
-否。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
+不。 链接的虚拟网络中虚拟机上的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.cloudapp.net”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
 有关如何更改此后缀的指导，请参阅[使用动态 DNS 在自己的 DNS 服务器中注册主机名](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 专用区域的使用限制是什么？
 
-有关 Azure DNS 专用区域使用限制的详细信息，请参阅[Azure DNS 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)。
+有关 Azure DNS 专用区域使用限制的详细信息，请参阅[Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)。
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>为什么现有的专用 DNS 区域未显示在新的门户体验中？
 

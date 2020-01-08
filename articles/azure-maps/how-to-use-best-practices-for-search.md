@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: de9e484e43c87375c2fdf9b34dd2efce3bb8aa8c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408716"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure Maps 搜索服务的最佳实践
 
-Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括具有各种功能的 api，例如，从地址搜索，到围绕特定位置搜索兴趣点（POI）数据。 本文介绍如何通过 Azure Maps 搜索服务来调用数据的最佳做法。 将了解如何执行以下操作：
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括具有各种功能的 api，例如，从地址搜索，到围绕特定位置搜索兴趣点（POI）数据。 本文介绍如何通过 Azure Maps 搜索服务来调用数据的最佳做法。 你将了解如何执行以下操作：
 
 * 生成查询以返回相关的匹配项
 * 限制搜索结果
@@ -25,9 +25,9 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 * 阅读地址搜索响应结构
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户的信息，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明进行操作，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤检索帐户的主要订阅密钥。
+若要调用任何 Maps 服务 API，需要具有 Maps 帐户和密钥。 有关创建帐户的信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明进行操作，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤来检索帐户的主密钥（订阅）。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
 
 > [!Tip]
 > 若要查询搜索服务，可以使用[Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用，也可以使用所需的任何 API 开发环境。
@@ -684,7 +684,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 }
 ```
 
-### <a name="geometry"></a>几何结构
+### <a name="geometry"></a>Geometry
 
 当响应类型为**Geometry**时，它可以包括在 "geometry" 和 "ID" 下的数据**源**对象中返回的 geometry ID。 例如，"[获取多边形服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)" 允许您以 GeoJSON 格式请求几何数据，例如一组实体的 "城市" 或 "机场" 大纲。 可以将此边界数据用于[地理围栏](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或在[几何图形内搜索 poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
 

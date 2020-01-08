@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: MT
+ms.openlocfilehash: ef7d78b292561e87eac12200bc0b9d68299759d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443617"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>可视化 Power BI 中时序见解的数据
 
@@ -70,7 +70,7 @@ Azure 时序见解是一种平台，用于在云中存储、管理、查询和�
 
    1. 如果尚未为**热商店**配置时序见解实例，则会收到警告。
 
-       [![连接](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [![热存储警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > 可以在 Azure 门户中为**热存储**配置现有实例。

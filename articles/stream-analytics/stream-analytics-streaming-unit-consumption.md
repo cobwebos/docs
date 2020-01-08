@@ -1,24 +1,22 @@
 ---
 title: Azure 流分析中的流式处理单元
 description: 本文介绍 Azure 流分析中的流单元设置和影响性能的其他因素。
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369841"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
-流单元 (SU) 表示分配用于执行流分析作业的计算资源。 SU 的数量越多，为作业分配的 CPU 和 内存资源就越多。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
+流式处理单位（SUs）表示分配用于执行流分析作业的计算资源。 SU 的数量越多，为作业分配的 CPU 和 内存资源就越多。 此容量使你能够专注于查询逻辑，并且无需管理及时运行流分析作业所需的硬件。
 
 为了实现低延迟流式处理，Azure 流分析作业将在内存中执行所有处理。 内存不足时，流式处理作业会失败。 因此，对于生产作业，请务必监视流式处理作业的资源使用情况，并确保分配有足够的资源来保持作业的全天候运行。
 
@@ -47,7 +45,7 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 
 为特定作业选择所需的 SU 数量时，需要根据输入的分区配置以及在作业内定义的查询来决定。 可以使用“缩放”页设置正确的 SU 数量。 分配的 SU 数最好超过所需的数量。 流分析处理引擎会针对延迟和吞吐量进行优化，不过，代价是需要分配额外的内存。
 
-通常情况下，最佳做法是一开始为未使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
+通常情况下，最佳做法是一开始为不使用 PARTITION BY 的查询分配 6 个 SU。 然后，在传递了具有代表性的数据量并检查了 SU 利用率指标后，使用修改 SU 数量的试用和错误方法来确定最佳数量。 流分析作业所能使用的最大流单元数取决于为作业定义的查询中的步骤数，以及每一步中的分区数。 可在[此处](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)了解更多有关限制的信息。
 
 有关选择适当数量 SU 的详细信息，请参阅此页：[缩放 Azure 流分析作业以增加吞吐量](stream-analytics-scale-jobs.md)
 
@@ -86,7 +84,7 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-若要缓解前面查询中由高基数导致的任何问题，可以将事件发送到按 `clusterid` 分区的事件中心，并通过允许系统使用 **PARTITION BY** 分别处理每个输入分区来横向扩展查询，如以下示例所示：
+为了缓解上一个查询中由高基数引起的任何问题，你可以将事件发送到通过 `clusterid`分区的事件中心，并通过允许系统使用**PARTITION by**分别处理每个输入分区来横向扩展查询，如以下示例中所示：
 
    ```sql
    SELECT count(*) 

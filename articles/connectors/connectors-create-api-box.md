@@ -1,20 +1,20 @@
 ---
 title: 连接到 Box
-description: 使用 Box REST API 和 Azure 逻辑应用创建和管理文件
+description: 使用 Azure 逻辑应用自动执行创建和管理 Box 中的文件的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789865"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666765"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Box 中创建和管理文件
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Box 中创建和管理文件
 
 本文介绍如何使用 Box 连接器从逻辑应用内部创建和管理 Box 中的文件。 这样，你就可以创建逻辑应用来自动执行用于管理文件和其他操作的任务和工作流，例如：
 

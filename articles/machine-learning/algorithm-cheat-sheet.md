@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: 10714e155bebdd7acc5d7febb345c17fa81bab13
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516287"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530776"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
@@ -56,10 +56,10 @@ Azure 机器学习具有大型算法库，来自***分类***、***推荐器系�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解 Azure 机器学习和 Azure 门户中的 studio](service/overview-what-is-azure-ml.md)。
+* [了解 Azure 机器学习和 Azure 门户中的 studio](overview-what-is-azure-ml.md)。
 
 * 请参阅[算法和模块参考](algorithm-module-reference/module-reference.md)中的算法和模块列表。
 
 * [教程：在 Azure 机器学习设计器中构建预测模型](service/ui-tutorial-automobile-price-train-score.md)。
 
-* [了解深度学习和机器学习](service/concept-deep-learning-vs-machine-learning.md)。
+* [了解深度学习和机器学习](concept-deep-learning-vs-machine-learning.md)。

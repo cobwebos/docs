@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: 2a22039b3499f1ba0f2d7acb2e86a1991d35a380
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202117"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665762"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>管理 Azure 安全中心的安全事件
 
@@ -55,9 +55,9 @@ ms.locfileid: "71202117"
 以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测，以便为 Azure 上部署的资源应用其他保护层：
 
 * [服务层警报](security-center-alerts-service-layer.md)
-* [与 Azure 安全产品集成](security-center-alerts-integration.md)
+* [Azure WAF 和 Azure DDoS 保护的威胁检测](security-center-alerts-integration.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 在本文档中，已经学习了如何在安全中心使用安全事件功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Azure 安全中心的安全警报](security-center-alerts-overview.md)。

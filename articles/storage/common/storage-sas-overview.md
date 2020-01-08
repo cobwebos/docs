@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371813"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名（SAS）授予对 Azure 存储资源的有限访问权限
 
@@ -25,7 +25,7 @@ ms.locfileid: "74895157"
 
 Azure 存储支持三种类型的共享访问签名：
 
-- **用户委托 SAS （预览版）。** 用户委托 SAS 使用 Azure Active Directory （Azure AD）凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 仅适用于 Blob 存储。
+- **用户委托 SAS。** 用户委托 SAS 使用 Azure Active Directory （Azure AD）凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 仅适用于 Blob 存储。
 
     有关用户委托 SAS 的详细信息，请参阅[创建用户委托 sas （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -122,9 +122,9 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 
 ### <a name="user-delegation-sas"></a>用户委托 SAS
 
-- [使用 PowerShell （预览版）为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [使用 Azure CLI （预览版）为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [使用 .NET （预览版）为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [使用 PowerShell 为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [为具有 Azure CLI 的容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [使用 .NET 为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>服务 SAS
 

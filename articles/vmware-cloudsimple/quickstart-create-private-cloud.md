@@ -1,5 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple 快速入门）-创建私有云
+title: 快速入门：创建私有云
+titleSuffix: Azure VMware Solution by CloudSimple
 description: 了解如何通过 CloudSimple 使用 Azure VMware 解决方案创建和配置私有云
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452394"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -157,7 +158,7 @@ CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure �
 
     ![启动 vSphere 客户端](media/launch-vcenter-from-cloudsimple-portal.png)
 
-2. 选择首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码进行登录。  默认值为：
+2. 选择首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码进行登录。  默认值如下：
     * 用户名： **CloudOwner@cloudsimple.local**
     * 密码： **CloudSimple123！**  
 

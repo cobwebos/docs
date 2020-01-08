@@ -4,16 +4,16 @@ description: 本文介绍如何将 Azure 中存储的数据还原到带有 Micro
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450025"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
-本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 可以：
+本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 你可以：
 
 * 将数据还原到备份时所在的同一台计算机。
 * 将数据还原到备用计算机。
@@ -21,10 +21,10 @@ ms.locfileid: "74172790"
 使用“即时还原”功能可将可写入的恢复点快照作为恢复卷装载。 然后，可以浏览恢复卷，并将文件复制到本地计算机，从而选择性地还原文件。
 
 > [!NOTE]
-> 如果想要使用“即时还原”来还原数据，请安装 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528?preview)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528?preview)以获取支持“即时还原”的区域的最新列表。
+> 如果想要使用“即时还原”来还原数据，请安装 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar)。 此外，必须在支持文章所列的区域中的保管库内保护备份数据。 请查阅 [Azure 备份更新（2017 年 1 月）](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar)以获取支持“即时还原”的区域的最新列表。
 >
 
-在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用“即时还原”，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
+在 Azure 门户中将“即时还原”与恢复服务保管库配合使用。 如果在备份保管库中存储了数据，则这些保管库已转换为恢复服务保管库。 如果要使用即时还原，请下载 MARS 更新，并按照提及即时还原的过程进行操作。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "74172790"
 
 如果意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
 
-1. 打开“Microsoft Azure 备份”管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”。
+1. 打开“Microsoft Azure 备份”管理单元。 如果不知道管理单元的安装位置，请在计算机或服务器中搜索“Microsoft Azure 备份”。
 
     该桌面应用应该会显示在搜索结果中。
 
@@ -40,11 +40,11 @@ ms.locfileid: "74172790"
 
     ![Azure 备份的屏幕截图，其中突出显示了“恢复数据”](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器( **)”** “下一步”。 **`<server name>`**  > 
+3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器(`<server name>`)” > “下一步”。
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. 在“选择恢复模式”页上，选择“单个文件和文件夹” **“下一步”。** >
+4. 在 "**选择恢复模式**" 页上，选择 "**下一步**" >**单个文件和文件夹**。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
@@ -81,7 +81,7 @@ ms.locfileid: "74172790"
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到另一台计算机
 
-如果整个服务器断开连接，仍可将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。
+如果整个服务器断开连接，仍可以将 Azure 备份中的数据恢复到另一台计算机。 下面的步骤演示了工作流。
 
 这些步骤使用了以下术语：
 
@@ -114,7 +114,7 @@ ms.locfileid: "74172790"
 
     ![恢复数据向导“选择备份服务器”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在“选择恢复模式”页上，选择“单个文件和文件夹” **“下一步”。**  > 
+7. 在“选择恢复模式”页上，选择“单个文件和文件夹” > “下一步”。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

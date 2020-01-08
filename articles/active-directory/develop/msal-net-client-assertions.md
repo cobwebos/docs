@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424244"
 ---
 # <a name="confidential-client-assertions"></a>机密客户端断言
 
@@ -42,7 +42,7 @@ MSAL.NET 有四种方法可向机密客户端应用提供凭据或断言：
 
 已签名的客户端断言采用带签名的 JWT 的格式，其中包含 Azure AD、Base64 编码的所需的身份验证声明。 使用方式：
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -51,7 +51,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD 所需的声明如下：
 
-声明类型 | Value | 描述
+声明类型 | 值 | Description
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "Aud" （受众）声明标识 JWT 适用的收件人（此处 Azure AD），请参阅 [RFC 7519，Section 4.1.3]
 exp | Thu 六月 27 2019 15:04:17 GMT + 0200 （罗马夏令时） | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519，Section 4.1.4]
@@ -62,7 +62,7 @@ sub | ClientID | "Sub" （subject）声明标识 JWT 的使用者。 JWT 中的�
 
 下面是如何创建这些声明的示例：
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 下面介绍如何创建签名的客户端断言：
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 你还可以选择使用[system.identitymodel](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/)为你创建断言。 此代码将更优雅，如以下示例中所示：
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ string GetSignedClientAssertion()
 
 获得签名的客户端断言后，可以将其与 MSAL api 一起使用，如下所示。
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ string GetSignedClientAssertion()
 
 默认情况下，`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` 将生成一个包含 Azure AD 所需声明的签名断言以及要发送的其他客户端声明。 下面是有关如何执行此操作的代码片段。
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

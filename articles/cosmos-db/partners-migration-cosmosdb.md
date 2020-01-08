@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
+title: Azure Cosmos DB 的迁移和应用程序开发合作伙伴
 description: 列出提供支持 Azure Cosmos DB 的迁移解决方案的 Microsoft 合作伙伴。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 2ba6b04efbce5b7911037fbc5f14373cc962035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257358"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530691"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 
@@ -21,8 +21,8 @@ ms.locfileid: "66257358"
 
 |**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | 从 MongoDB 到 Azure Cosmos DB 的[数据迁移](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)。 <br/> Imanis Data 使全球企业能够快速轻松地将其本地或云 MongoDB 数据库迁移到 Azure Cosmos DB。 Imanis Data 为 MongoDB 数据存储提供无代理、永久增量的云迁移方法，可简化迁移并显著减少停机时间。|  USA  |   [网站](http://www.imanisdata.com/)      |
-|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了实时的集合和从各种本地源，包括企业版文档和关系数据库、 传感器和日志文件更改为 Azure Cosmos DB 的数据移动。 |   USA   |  [网站](https://www.striim.com/)       |
+|![ImanisData][1]   | 从 MongoDB 迁移到 Azure Cosmos DB 的数据。 <br/> Imanis Data 使全球企业能够快速轻松地将其本地或云 MongoDB 数据库迁移到 Azure Cosmos DB。 Imanis Data 为 MongoDB 数据存储提供无代理、永久增量的云迁移方法，可简化迁移并显著减少停机时间。|  USA  |   [网站](https://www.cohesity.com/products/imanis-data/)      |
+|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了将数据从各种本地源（包括企业文档和关系数据库、传感器和日志文件）实时收集和移动到 Azure Cosmos DB。 |   USA   |  [网站](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>系统集成商合作伙伴
 
@@ -37,7 +37,7 @@ ms.locfileid: "66257358"
 | ![Capgemini][14] | NoSQL 迁移、应用创新（现有应用）、新应用开发 | 美国、法国、英国、荷兰、芬兰  | [网站](https://www.capgemini.com/) | 
 |![Coeo][7]     |   应用创新（现有应用）、 <br/> 新应用开发 |    英国     |  [网站](https://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL 迁移 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 | [网站](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL 迁移       |    全局     |  [网站](https://www.infosys.com/)       |
+|![Infosys][8]     |  NoSQL 迁移       |    全球     |  [网站](https://www.infosys.com/)       |
 | ![Lagash][16] | NoSQL 迁移、 <br/> 新应用开发 | 阿根廷、智利、哥伦比亚、墨西哥| [网站](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL 迁移、 <br/> 新应用开发 | 巴西| [网站](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     应用开发（新应用）    |    USA     |  [网站](https://www.nealanalytics.com/)       |

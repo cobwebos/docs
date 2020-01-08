@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: c780ee973c1dabb15c37b2519eb8253d2371080a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932302"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530028"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性写回（预览版）
 本教程的目的是说明从 Azure AD 到 SuccessFactors Employee Central 需要执行写回属性所需执行的步骤。 写回当前支持的唯一特性是 email 特性。 
@@ -63,7 +63,7 @@ ms.locfileid: "74932302"
 * 在同一框中向下滚动，然后选择 "**员工中心 API**"。 添加权限，如下所示，使用 odata api 并使用 ODATA API 进行编辑。 如果你计划使用同一帐户进行写回 SuccessFactors 方案，请选择 "编辑" 选项。 
   > [!div class="mx-imgBorder"]
   > ![读取写入权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* 单击“完成”。 单击“保存更改”。
+* 单击“完成”。 单击 **“保存更改”** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
@@ -92,7 +92,7 @@ ms.locfileid: "74932302"
 * 查看权限角色授予权限组。 
   > [!div class="mx-imgBorder"]
   > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击“保存更改”。
+* 单击 **“保存更改”** 。
 
 ## <a name="configuring-successfactors-writeback"></a>配置 SuccessFactors 写回
 
@@ -118,7 +118,7 @@ ms.locfileid: "74932302"
 
 6. 添加应用并显示应用详细信息屏幕后，请选择“预配”
 
-7. 将“预配模式”更改为“自动”
+7. 将**设置** **模式**更改为**自动**
 
 8. 按如下所述完成“管理员凭据”部分：
 
@@ -129,8 +129,8 @@ ms.locfileid: "74932302"
    * **租户 URL –** 输入 SuccessFactors OData API 服务终结点的名称。 仅输入不带 http 或 https 的服务器的主机名。 此值应类似于： **api-server-name.successfactors.com**。
 
    * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
-         > [!NOTE]
-         > The Azure AD Provisioning Service sends email notification if the provisioning job goes into a [quarantine](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) state.
+    > [!NOTE]
+    > 如果预配作业进入[隔离](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状态，Azure AD 预配服务将发送电子邮件通知。
 
    * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果失败，请仔细检查 SuccessFactors 凭据和 URL 是否有效。
     >[!div class="mx-imgBorder"]
@@ -170,7 +170,7 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于 SuccessFactors 租户中的用户数量。 您可以查看进度栏，以跟踪同步周期的进度。 
 

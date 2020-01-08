@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793116"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666731"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -29,23 +29,23 @@ ms.locfileid: "74793116"
 
 这些操作帮助处理数组中的数据。
 
-| 行动 | 描述 |
+| 行动 | Description |
 |--------|-------------|
 | [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 |
 | [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 |
 | [**筛选数组**](#filter-array-action) | 基于指定的筛选器或条件从数组创建数组子集。 |
-| [**联接**](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 |
-| [**选择**](#select-action) | 从不同数组中所有项的指定属性创建一个数组。 |
+| [Join](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 |
+| [Select](#select-action) | 从不同数组中所有项的指定属性创建一个数组。 |
 ||| 
 
 **JSON 操作**
 
 这些操作帮助处理采用 JavaScript 对象表示法 (JSON) 格式的数据。
 
-| 行动 | 描述 |
+| 行动 | Description |
 |--------|-------------|
-| [**撰写**](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
-| [**分析 JSON**](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
+| [Compose](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
+| [Parse JSON](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
 |||
 
 若要创建更复杂的 JSON 转换，请参阅[使用 Liquid 模板执行高级 JSON 转换](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
@@ -443,6 +443,9 @@ Oranges,2
 > 在条件中使用的任何筛选器文本区分大小写。 此外，此操作无法更改数组中项的格式或组成部分。 
 > 
 > 要使操作使用“筛选数组”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。
+> 
+> 如果调用 HTTP 终结点并接收 JSON 响应，请使用**PARSE json**操作来处理 json 响应。 
+> 否则，**筛选器数组**操作只能读取响应正文，而不能读取 JSON 有效负载的结构。
 
 如果你偏好使用代码视图编辑器，可将本文中的示例“筛选数组”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
@@ -505,7 +508,7 @@ Oranges,2
 
 <a name="join-action"></a>
 
-## <a name="join-action"></a>“联接”操作
+## <a name="join-action"></a>Join 操作
 
 若要创建一个包含数组中所有项的字符串，并使用特定分隔符字符分隔这些项，请使用**联接**操作。 然后，可以在“联接”操作后面的操作中使用该字符串。
 
@@ -565,7 +568,7 @@ Oranges,2
 
 <a name="parse-json-action"></a>
 
-## <a name="parse-json-action"></a>“分析 JSON”操作
+## <a name="parse-json-action"></a>Parse JSON 操作
 
 若要引用或访问 JavaScript 对象表示法（JSON）内容中的属性，可以通过使用**PARSE JSON**操作为这些属性创建用户友好的字段或令牌。 这样，在为逻辑应用指定输入时，便可以从动态内容列表中选择这些属性。 对于此操作，可以提供 JSON 架构，或者从示例 JSON 内容或有效负载生成 JSON 架构。
 

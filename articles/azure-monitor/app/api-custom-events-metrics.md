@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432673"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -22,7 +22,7 @@ ms.locfileid: "74893376"
 
 核心 API 在所有平台中是统一的，只有少许差异，例如 `GetMetric`（仅限 .NET）。
 
-| 方法 | 用途 |
+| 方法 | 用于 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |页面、屏幕、边栏选项卡或窗体。 |
 | [`TrackEvent`](#trackevent) |用户操作和其他事件。 用于跟踪用户行为或监视性能。 |
@@ -50,7 +50,7 @@ ms.locfileid: "74893376"
 
     *C#：* `using Microsoft.ApplicationInsights;`
 
-    Visual Basic：`Imports Microsoft.ApplicationInsights`
+    *Visual Basic：* `Imports Microsoft.ApplicationInsights`
 
     *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
 
@@ -574,7 +574,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 记录诊断事件，例如进入或离开某个方法。
 
- 参数 | 描述
+ 参数 | Description
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
 `properties` | 字符串到字符串的映射：用于筛选门户中的[异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
@@ -656,7 +656,7 @@ finally {
 }
 ```
 
-*JavaScript*
+*Node.js*
 
 ```javascript
 var success = false;
@@ -1011,7 +1011,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 可以先通过编写代码来处理遥测数据，再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
-通过实现 `ITelemetryInitializer` [将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
+通过实现 `ITelemetryInitializer`[将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
 [筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
 
@@ -1168,7 +1168,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
 * **User**：用户信息。
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
+title: 将图形批量执行器 .NET 库与 Azure Cosmos DB Gremlin API 一起使用
 description: 了解如何使用批量执行程序库将图数据大规模导入 Azure Cosmos DB Gremlin API 容器中。
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442168"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 此存储库包含的 GraphBulkExecutor 示例包含以下文件：
 
-文件|描述
+文件|Description
 ---|---
 `App.config`|在这里指定特定于应用程序和数据库的参数。 在连接到目标数据库和集合之前，应先修改此文件。
 `Program.cs`| 此文件包含在创建 `DocumentClient` 集合、处理清理和发送批量执行程序请求背后的逻辑。
@@ -136,7 +136,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 在 `App.config` 文件中，以下项是可以提供的配置值：
 
-设置|描述
+设置|Description
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)

@@ -2,19 +2,15 @@
 title: 管理多个 Azure 虚拟机的更新
 description: 本文介绍如何管理 Azure 和非 Azure 虚拟机的更新。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417830"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -99,12 +95,12 @@ ms.locfileid: "74806501"
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 受支持 | Description |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
 | Operations Manager 管理组 |是 |“更新管理”从已连接的管理组中的代理收集有关系统更新的信息。 |
-| Azure 存储器帐户 |No |Azure 存储不包含有关系统更新的信息。 |
+| Azure 存储器帐户 |否 |Azure 存储不包含有关系统更新的信息。 |
 
 ### <a name="collection-frequency"></a>收集频率
 
@@ -121,7 +117,7 @@ ms.locfileid: "74806501"
 若要安装更新，请计划一个遵循你的发布时间和服务窗口的部署。 可选择在部署中包括哪种更新类型。 例如，可包括关键或安全更新，排除更新汇总。
 
 >[!NOTE]
->计划更新部署时，它将创建一个链接到**MicrosoftOMSComputers** runbook 的[计划](shared-resources/schedules.md)资源，该 runbook 用于处理目标计算机上的更新部署。 如果你从 Azure 门户删除计划资源，或在创建部署后使用 PowerShell，则会中断计划的更新部署，并在你尝试从门户中重新配置它时显示错误。 仅可通过删除相应的部署计划来删除计划资源。
+>计划某个更新部署时，它会创建链接到 **Patch-MicrosoftOMSComputers** runbook 的[计划](shared-resources/schedules.md)资源，以便在目标计算机上处理更新部署。 如果在创建部署后通过 Azure 门户或 PowerShell 删除计划资源，则会破坏计划的更新部署，在你尝试通过门户重新配置它时出现错误。 只能通过删除相应的部署计划来删除计划资源。
 >
 
 若要为一台或多台虚拟机计划新的更新部署，请在“更新管理”下选择“计划更新部署”。
@@ -136,7 +132,7 @@ ms.locfileid: "74806501"
    >[!NOTE]
    >选择 "保存的搜索" 选项不会返回计算机标识，只返回其名称。 如果多个资源组中有多个具有相同名称的 Vm，则会在结果中返回它们。 建议使用 "**要更新的组**" 选项，以确保包括与条件相匹配的唯一 vm。
 
-   如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
+   如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
@@ -163,12 +159,12 @@ ms.locfileid: "74806501"
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|描述|
+   |选项|Description|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
-   |始终重新启动|无论是否需要重启，都会开始重启。 |
-   |从不重新启动|无论是否需要重启，都会禁止重启。|
-   |仅重新启动 - 不会安装更新|此选项忽略安装更新，仅开始重启。|
+   |永远重启|无论是否需要重启，都会开始重启。 |
+   |永不重启|无论是否需要重启，都会禁止重启。|
+   |仅重启 - 不安装更新|此选项忽略安装更新，仅开始重启。|
 
 配置完计划后，选择“创建”按钮以返回到状态仪表板。 “已计划”表会显示你创建的部署计划。
 

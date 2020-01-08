@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1191fb5c9aefb55896d5c44714f1061ff2674a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64415235"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659638"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD 服务限制和局限性
-本文介绍 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。 如果正在查找 Microsoft Azure 服务限制全集，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)。
+本文介绍 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。 如果正在查找 Microsoft Azure 服务限制全集，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

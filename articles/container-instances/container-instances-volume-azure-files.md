@@ -2,18 +2,18 @@
 title: 将 Azure 文件卷装载到容器组
 description: 了解如何装载 Azure 文件卷以保持 Azure 容器实例的状态
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: a258a96f5fbc0d54b6a85a780288fb9317cb1a1b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533258"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561331"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
-默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 如本文所示，Azure 容器实例可以装载使用[Azure 文件](../storage/files/storage-files-introduction.md)创建的 azure 文件共享。 Azure 文件在云端提供完全托管的文件共享，这些共享项可通过行业标准的服务器消息块 (SMB) 协议进行访问。 将 Azure 文件共享与 Azure 容器实例配合使用可以提供文件共享功能，类似于将 Azure 文件共享与 Azure 虚拟机配合使用。
+默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 如本文所示，Azure 容器实例可以装载使用[Azure 文件](../storage/files/storage-files-introduction.md)创建的 azure 文件共享。 Azure 文件提供 Azure 存储中托管的完全托管文件共享，这些共享可通过行业标准的服务器消息块（SMB）协议进行访问。 将 Azure 文件共享与 Azure 容器实例配合使用可以提供文件共享功能，类似于将 Azure 文件共享与 Azure 虚拟机配合使用。
 
 > [!NOTE]
 > 当前只有 Linux 容器能装载 Azure 文件共享。 在[概述](container-instances-overview.md#linux-and-windows-containers)中查找当前的平台差异。
@@ -40,29 +40,33 @@ az storage account create \
     --sku Standard_LRS
 
 # Create the file share
-az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
+az storage share create \
+  --name $ACI_PERS_SHARE_NAME \
+  --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 ## <a name="get-storage-credentials"></a>获取存储凭据
 
 若要在 Azure 容器实例中将 Azure 文件共享装载为卷，需要 3 个值：存储帐户名、共享名和存储访问密钥。
 
-如果使用了以上脚本，则存储帐户名称存储在 $ACI_PERS_STORAGE_ACCOUNT_NAME 变量中。 若要查看帐户名称，请键入以下命令：
+* **存储帐户名称**-如果使用上述脚本，则存储帐户名称存储在 `$ACI_PERS_STORAGE_ACCOUNT_NAME` 变量中。 若要查看帐户名称，请键入以下命令：
 
-```console
-echo $ACI_PERS_STORAGE_ACCOUNT_NAME
-```
+  ```console
+  echo $ACI_PERS_STORAGE_ACCOUNT_NAME
+  ```
 
-共享名已知（在上述脚本中定义为 acishare），因此剩下的就是找到存储帐户密钥，可使用以下命令：
+* **共享名称**-已知道此值（在前面的脚本中定义为 `acishare`）
 
-```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
-echo $STORAGE_KEY
-```
+* **存储帐户密钥**-可以使用以下命令找到此值：
+
+  ```azurecli-interactive
+  STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
+  echo $STORAGE_KEY
+  ```
 
 ## <a name="deploy-container-and-mount-volume---cli"></a>部署容器和装入卷-CLI
 
-若要使用 Azure CLI 将 Azure 文件共享装载为容器中的卷，请在使用[az container create][az-container-create]创建容器时指定共享和卷装入点。 如果已执行前面的步骤，则可以使用以下命令装载先前创建的共享以创建容器：
+若要使用 Azure CLI 将 Azure 文件共享装载为容器中的卷，请在使用[az container create][az-container-create]创建容器时指定共享和卷装入点。 如果按照前面的步骤操作，则可以使用以下命令创建容器，以便装载先前创建的共享：
 
 ```azurecli-interactive
 az container create \
@@ -84,14 +88,15 @@ az container create \
 启动容器后，可以使用通过 Microsoft [aci-hellofiles][aci-hellofiles]映像部署的简单 web 应用，在 Azure 文件共享中创建指定位置的小型文本文件。 用[az container show][az-container-show]命令获取 web 应用的完全限定的域名（FQDN）：
 
 ```azurecli-interactive
-az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP \
+  --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-使用应用保存文本后，可以使用[Azure 门户][portal]或类似于[Microsoft Azure 存储资源管理器][storage-explorer]的工具来检索和检查写入到文件共享中的文件。
+使用应用保存文本后，可以使用[Azure 门户][portal]或类似于[Microsoft Azure 存储资源管理器][storage-explorer]的工具来检索和检查写入文件共享的文件。
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>部署容器和装入卷-YAML
 
-还可以部署容器组，并使用 Azure CLI 和[YAML 模板](container-instances-multi-container-yaml.md)在容器中装载卷。 在部署由多个容器组成的容器组时，通过 YAML 模板进行部署是首选方法。
+还可以部署容器组，并使用 Azure CLI 和[YAML 模板](container-instances-multi-container-yaml.md)在容器中装载卷。 部署包含多个容器的容器组时，通过 YAML 模板进行部署是一个首选方法。
 
 以下 YAML 模板定义容器组，其中一个容器使用 `aci-hellofiles` 映像创建。 容器将以前创建的 Azure 文件共享*acishare*装载为卷。 如果指示，请输入托管文件共享的存储帐户的名称和存储密钥。 
 
@@ -228,7 +233,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>装载多个卷
 
-若要将多个卷装载到容器实例中，必须使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)或 YAML 文件进行部署。 若要使用模板或 YAML 文件，请在模板的 `properties` 部分中填充 `volumes` 数组，提供共享详细信息并定义卷。 
+若要在容器实例中装载多个卷，必须使用[Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)、YAML 文件或其他编程方法进行部署。 若要使用模板或 YAML 文件，请通过在文件的 `properties` 部分填充 `volumes` 数组，提供共享详细信息并定义卷。 
 
 例如，如果在存储帐户*myStorageAccount*中创建了两个名为*share1*和*share2*的 Azure 文件共享，则资源管理器模板中的 `volumes` 数组将如下所示：
 

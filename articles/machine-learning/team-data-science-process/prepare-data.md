@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936031"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432137"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](overview.md) 中概述的步骤。
 
-根据数据存储位置及其格式，可在各种环境（如 SQL、Hive、或 Azure 机器学习工作室）中，使用各种工具和语言（如 R 或 Python）执行预处理和清理任务（如数据浏览任务）。 由于 TDSP 本质上是迭代的，所以这些任务可以在进程工作流中的各个步骤发生。
+预处理和清理任务（如数据浏览任务）可以在各种环境（如 SQL 或 Hive 或 Azure 机器学习 Studio （经典））中执行，也可以使用各种工具和语言（如 R 或 Python），这取决于您的数据的存储和格式化方式。 由于 TDSP 本质上是迭代的，所以这些任务可以在进程工作流中的各个步骤发生。
 
-本文介绍可在将数据引入 Azure ML Studio （经典）之前或之后执行的各种数据处理概念和任务。
+本文介绍可在将数据引入到 Azure 机器学习 Studio （经典）之前或之后执行的各种数据处理概念和任务。
 
-有关 Azure ML Studio （经典）中的数据浏览和预处理完成的示例，请参阅[预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)视频。
+有关在 Azure 机器学习 Studio （经典）内进行数据浏览和预处理的示例。请参阅[预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)视频。
 
 ## <a name="why-pre-process-and-clean-data"></a>为什么要预处理并清理数据？
 实际数据从各种源和进程收集，可能包含违规行为或破坏数，进而影响数据集的之类。 通常引起的数据质量问题包括：
@@ -51,7 +51,7 @@ ms.locfileid: "74936031"
 
 查找数据问题时，需要执行**处理步骤**，通常涉及清理缺失值、数据规范化、离散化、文本处理，以删除和/或替换可能影响数据对齐的嵌入字符、公共字段中的混合数据类型及其他内容。
 
-**Azure 机器学习使用格式正确的表格数据**。  如果数据已经是表格形式，则可以直接在机器学习中通过 Azure ML Studio （经典）执行数据预处理。  如果数据不是表格形式（如 XML），可能需要进行分析以将数据转换为表格形式。  
+**Azure 机器学习使用格式正确的表格数据**。  如果数据已经是表格形式，则可以直接在机器学习中 Azure 机器学习 Studio （经典）执行数据预处理。  如果数据不是表格形式（如 XML），可能需要进行分析以将数据转换为表格形式。  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>数据预处理包含有哪些主要任务？
 * **数据清理**：填写缺失值，检测并删除干扰数据和离群值。

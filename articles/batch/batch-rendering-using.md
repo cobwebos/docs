@@ -1,18 +1,18 @@
 ---
-title: 渲染功能 - Azure Batch
-description: 如何使用 Azure Batch 的渲染功能
+title: 使用呈现功能-Azure Batch
+description: 如何使用 Azure Batch 呈现功能。 尝试使用从客户端应用程序插件直接或调用的 Batch Explorer 应用程序。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449667"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 
@@ -32,7 +32,7 @@ ms.locfileid: "60337591"
 
 对于非开发人员或者非 Azure 专家级的最终用户而言，体验 Azure Batch 渲染的最佳、最简单的方法是直接使用或者从客户端应用程序插件调用 Batch Explorer 应用程序。
 
-## <a name="using-batch-explorer"></a>使用 Batch Explorer
+## <a name="using-batch-explorer"></a>使用批处理资源管理器
 
 有关使用 Batch Explorer 执行渲染的分步教程，请参阅 [Blender 教程](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)。
 

@@ -93,7 +93,7 @@
       href: offline-capabilities.md
     - name: 使用 IoT Edge 设备作为网关
       href: iot-edge-as-gateway.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: 确保 Azure IoT Edge 安全
           href: security.md
@@ -107,7 +107,7 @@
       href: production-checklist.md
     - name: IoT Edge 术语表
       href: iot-edge-glossary.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 注册 IoT Edge 设备
       href: how-to-register-device.md
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: 安装生产证书
+          href: how-to-install-production-certificates.md
+        - name: 创建测试证书
+          href: how-to-create-test-certificates.md
         - name: 更新运行时版本
           href: how-to-update-iot-edge.md
     - name: 使用 DPS 进行自动预配

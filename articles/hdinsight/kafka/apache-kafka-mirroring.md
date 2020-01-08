@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767698"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552196"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -63,10 +63,10 @@ ms.locfileid: "74767698"
 
 1. 创建两个新的资源组：
 
-    |资源组 | Location |
+    |资源组 | 位置 |
     |---|---|
     | kafka | 美国中部 |
-    | kafka-从属 | 美国中北部 |
+    | kafka-secondary-rg | 美国中北部 |
 
 1. 在**kafka**中创建新的虚拟网络**kafka** 。 保留默认设置。
 1. 在**kafka**中创建新的虚拟网络**kafka-vnet** ，还可以使用默认设置。
@@ -75,8 +75,8 @@ ms.locfileid: "74767698"
 
     | 群集名称 | 资源组 | 虚拟网络 | 存储器帐户 |
     |---|---|---|---|
-    | kafka-群集 | kafka | kafka-vnet | kafkaprimarystorage |
-    | kafka | kafka-从属 | kafka-vnet | kafkasecondarystorage |
+    | kafka-群集 | kafka | kafka-primary-vnet | kafkaprimarystorage |
+    | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
 
 1. 创建虚拟网络对等互连。 此步骤将创建两个对等互连：一个从**kafka--vnet**到**kafka** ，另一个从 kafka 到**kafka**的 。
     1. 选择**kafka**虚拟网络。
@@ -86,36 +86,41 @@ ms.locfileid: "74767698"
 
         ![HDInsight Kafka 添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
-1. 配置 IP 广告：
-    1. 请参阅主要群集的 Ambari 仪表板： `https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
-    1.  > **Kafka**中选择 "**服务**"。 CliSelectck "**配置" 选项卡**。
-    1. 将以下配置行添加到**kafka-env 模板**部分。 选择“保存”。
+### <a name="configure-ip-advertising"></a>配置 IP 广告
 
-        ```
-        # Configure Kafka to advertise IP addresses instead of FQDN
-        IP_ADDRESS=$(hostname -i)
-        echo advertised.listeners=$IP_ADDRESS
-        sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-        echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
-        ```
+配置 IP 播发，使客户端能够使用 broker IP 地址而不是域名来进行连接。
 
-    1. 在 "**保存配置**" 屏幕上输入备注，然后单击 "**保存**"。
-    1. 如果系统提示你提供配置警告，请单击 "**继续**"。
-    1. 在**保存配置更改**时选择 **"确定"** 。
-    1. 选择 "**重新**启动" > **重**启**所需**的重启通知。 选择“确认全部重启”。
+1. 请参阅主要群集的 Ambari 仪表板： `https://PRIMARYCLUSTERNAME.azurehdinsight.net`。
+1.  > **Kafka**中选择 "**服务**"。 CliSelectck "**配置" 选项卡**。
+1. 将以下配置行添加到**kafka-env 模板**部分。 选择“保存”。
 
-        ![Apache Ambari 重新启动所有受影响的](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    ```
+    # Configure Kafka to advertise IP addresses instead of FQDN
+    IP_ADDRESS=$(hostname -i)
+    echo advertised.listeners=$IP_ADDRESS
+    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    ```
 
-1. 配置 Kafka 以侦听所有网络接口。
-    1. 请在 "**服务** > **Kafka**" 下的 "配置 **" 选项卡**上。 在 " **Kafka Broker** " 部分中，将 "**侦听器**" 属性设置为 `PLAINTEXT://0.0.0.0:9092`。
-    1. 选择“保存”。
-    1. 选择 "**重新启动**"，并**确认 "全部重启**"。
+1. 在 "**保存配置**" 屏幕上输入备注，然后单击 "**保存**"。
+1. 如果系统提示你提供配置警告，请单击 "**继续**"。
+1. 在**保存配置更改**时选择 **"确定"** 。
+1. 选择 "**重新**启动" > **重**启**所需**的重启通知。 选择“确认全部重启”。
 
-1. 记录主群集的 Broker IP 地址和 Zookeeper 地址。
-    1. 在 Ambari 仪表板上选择 "**主机**"。
-    1. 记下代理和 Zookeeper 的 IP 地址。 代理节点将**w)** 作为主机名的前两个字母，zookeeper 节点将**zk**作为主机名的前两个字母。
+    ![Apache Ambari 重新启动所有受影响的](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
-        ![Apache Ambari 查看节点 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>配置 Kafka 以侦听所有网络接口。
+    
+1. 请在 "**服务** > **Kafka**" 下的 "配置 **" 选项卡**上。 在 " **Kafka Broker** " 部分中，将 "**侦听器**" 属性设置为 `PLAINTEXT://0.0.0.0:9092`。
+1. 选择“保存”。
+1. 选择 "**重新启动**"，并**确认 "全部重启**"。
+
+### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>记录主群集的 Broker IP 地址和 Zookeeper 地址。
+
+1. 在 Ambari 仪表板上选择 "**主机**"。
+1. 记下代理和 Zookeeper 的 IP 地址。 代理节点将**w)** 作为主机名的前两个字母，zookeeper 节点将**zk**作为主机名的前两个字母。
+
+    ![Apache Ambari 查看节点 ip 地址](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. 对于第二个群集，请重复上述三个步骤**kafka**：配置 IP 播发，设置侦听器，并记下 "Broker" 和 "ZOOKEEPER" IP 地址。
 
@@ -263,7 +268,7 @@ ms.locfileid: "74767698"
 
     此示例中使用的参数有：
 
-    |参数 |描述 |
+    |参数 |Description |
     |---|---|
     |--使用者 .config|指定包含使用者属性的文件。 这些属性用于创建从*主*Kafka 群集读取的使用者。|
     |--生成程序 .config|指定包含创建者属性的文件。 这些属性用于创建写入*辅助*Kafka 群集的制造者。|

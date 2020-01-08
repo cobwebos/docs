@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372324"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -124,7 +124,7 @@ SQL 缓存的增长，因为数据是以相同的方式从磁盘中提取的，�
 
 如果以下任一条件为 true，则会触发 Autoresuming：
 
-|Feature|自动恢复触发器|
+|功能|自动恢复触发器|
 |---|---|
 |身份验证和授权|登录|
 |威胁检测|启用/禁用数据库或服务器级别的威胁检测设置。<br>修改数据库或服务器级别的威胁检测设置。|
@@ -177,30 +177,27 @@ SQL 缓存的增长，因为数据是以相同的方式从磁盘中提取的，�
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在无服务器计算层中创建新数据库 
 
+以下示例在无服务器计算层中创建新数据库。 这些示例显式指定 min Vcore、max Vcore 和 autopause delay。
+
 #### <a name="use-azure-portal"></a>使用 Azure 门户
 
 请参阅[快速入门：使用 Azure 门户在 AZURE SQL 数据库中创建单个数据库](sql-database-single-database-get-started.md)。
 
+
 #### <a name="use-powershell"></a>使用 PowerShell
-
-以下示例在无服务器计算层中创建新数据库。  此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```powershell
+```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
   -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql （T-sql）
 
@@ -215,11 +212,10 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
+下面的示例将数据库从预配的计算层移到无服务器计算层。 这些示例显式指定 min Vcore、max Vcore 和 autopause delay。
+
 #### <a name="use-powershell"></a>使用 PowerShell
 
-下面的示例将数据库从预配的计算层移到无服务器计算层。 此示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -227,14 +223,13 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
-```powershell
+```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-* * *
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-sql （T-sql）
 
@@ -253,15 +248,14 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ## <a name="modifying-serverless-configuration"></a>修改无服务器配置
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="use-powershell"></a>使用 PowerShell
 
 通过使用 `MaxVcore`、`MinVcore`和 `AutoPauseDelayInMinutes` 参数，在 PowerShell 中使用[AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)命令修改最大值或最小值 vcore 和 autopause 延迟。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="use-azure-cli"></a>使用 Azure CLI
 
 通过使用 `capacity`、`min-capacity`和 `auto-pause-delay` 参数在 Azure CLI 中使用[az sql db update](/cli/azure/sql/db#az-sql-db-update)命令来修改最大值或最小值 vcore 和 autopause 延迟。
 
-* * *
 
 ## <a name="monitoring"></a>监视
 
@@ -277,11 +271,11 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 用户资源池是数据库最内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池通过 DDL 查询生成的用户工作负荷（例如，SELECT、INSERT、UPDATE 和 DELETE 等）生成的 CPU 和 IO。 这些查询通常表示应用包中最重要的使用率比例。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 下表列出了用于监视应用包和无服务器数据库的用户池资源使用情况的指标：
 
-|实体|指标|描述|单位|
+|实体|度量值|Description|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了将 CPU 与内存进行比较以便于计费，将内存中的内存量（以 GB 为单位）重新调整为每个 vCore 的 Vcore，以将内存标准化为多个单元。|vCore 秒|
@@ -296,22 +290,21 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 在 Azure 门户中，服务器的概述窗格列出了它所包含的数据库的状态。 数据库状态还显示在该数据库的概述窗格中。
 
-使用以下 PowerShell 命令查询数据库的暂停和恢复状态：
+使用以下命令查询数据库的暂停和恢复状态：
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="use-powershell"></a>使用 PowerShell
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
-```powershell
+```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
 
-* * *
 
 ## <a name="resource-limits"></a>资源限制
 

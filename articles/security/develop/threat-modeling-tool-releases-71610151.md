@@ -1,25 +1,17 @@
 ---
-title: Threat Modeling Tool 发行版 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 记录威胁建模工具的发行说明
-services: security
-documentationcenter: na
+title: Microsoft Threat Modeling Tool 版本 10/16/2019-Azure
+description: 阐述 Threat Modeling Tool 的发行说明
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: jegeib
-ms.openlocfilehash: ba18989b72f0c3f44099031a6949acc54ce41db0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 452b44653775a1bcb9456b62e1587b5ff2dff874
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233826"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552043"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新版 7.1.61015.1 - 2019/10/16
 
@@ -57,12 +49,12 @@ ms.locfileid: "74233826"
 
 ## <a name="system-requirements"></a>系统要求
 
-- 支持的操作系统
+- 受支持的操作系统
   - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
   - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更高版本
 - 其他要求
-  - 需要 Internet 连接才能接收工具和模板的更新。
+  - 需要建立 Internet 连接才能接收工具和模板的更新。
 
 ## <a name="documentation-and-feedback"></a>文档和反馈
 

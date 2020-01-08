@@ -372,6 +372,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie 定义
       href: cookie-definitions.md
+    - name: 错误代码
+      href: error-codes.md
     - name: 上市区域和数据驻留
       href: active-directory-b2c-reference-tenant-type.md
     - name: 启用计费

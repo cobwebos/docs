@@ -1,5 +1,5 @@
 ---
-title: 适用于 Java 的 Microsoft 身份验证库中的 AD FS 支持
+title: AD FS 支持（Java 的 MSAL）
 titleSuffix: Microsoft identity platform
 description: 了解适用于 Java 的 Microsoft 身份验证库（MSAL4j）中的 Active Directory 联合身份验证服务（AD FS）支持。
 services: active-directory
@@ -14,16 +14,16 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 665cef55965f6871a654b9baceaad3e4f5d196c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 04079a6e284deac076d7e296cc44774c97462534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424350"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java 中的 Active Directory 联合身份验证服务支持
 
-Windows Server 中的 Active Directory 联合身份验证服务（AD FS）使你能够将基于 OpenID Connect 和 OAuth 2.0 的身份验证和授权添加到适用于 Java 的 Microsoft 身份验证库（MSAL for Java）应用。 集成后，你的应用可以通过 Azure AD 在 AD FS 中对用户进行身份验证。 有关方案的详细信息，请参阅面向[开发人员的 AD FS 方案](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)。
+Windows Server 中的 Active Directory 联合身份验证服务（AD FS）使你能够将基于 OpenID Connect 和 OAuth 2.0 的身份验证和授权添加到适用于 Java 的 Microsoft 身份验证库（MSAL for Java）应用。 集成后，你的应用可以通过 Azure AD 在 AD FS 中对用户进行身份验证。 有关方案的详细信息，请参阅面向[开发人员的 AD FS 方案](/windows-server/identity/ad-fs/ad-fs-development)。
 
 使用 MSAL for Java 的应用程序将与 Azure Active Directory （Azure AD）通信，后者随后将每家到 AD FS 中。
 

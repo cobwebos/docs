@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424501"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -36,7 +36,7 @@ ms.locfileid: "74917908"
 
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶栏中选择帐户，然后选择“切换目录”。
 1. “目录 + 订阅”窗格打开后，请从“收藏夹”或“所有目录”列表中选择要在其中注册应用程序的 Active Directory 租户。
 1. 选择左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
@@ -125,7 +125,7 @@ ms.locfileid: "74917908"
 
 - [使用 Azure AD 应用程序角色在 Web 应用中授权 &amp; 角色声明（示例）](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)（在应用中使用安全组和应用程序角色（视频））
-- [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
+- [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD 访问令牌](access-tokens.md)
 - [AAD `id_tokens`](id-tokens.md)

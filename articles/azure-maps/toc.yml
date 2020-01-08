@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: 使用 Azure Notebooks 分析天气数据 (Python)
           href: weather-service-tutorial.md
+    - name: 从 Google Maps 迁移
+      items:
+        - name: 从 Google Maps 迁移
+          href: migrate-from-google-maps.md
+        - name: 迁移 Web 应用
+          href: migrate-from-google-maps-web-app.md
+        - name: 迁移 Android 应用
+          href: migrate-from-google-maps-android-app.md
+        - name: 迁移 Web 服务
+          href: migrate-from-google-maps-web-services.md
 - name: 概念
   items:
     - name: 使用 Azure Maps 进行身份验证
@@ -63,7 +73,7 @@
       href: mobility-service-data-structure.md
     - name: 天气服务概念
       href: weather-services-concepts.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理 Maps 帐户
       items:
@@ -103,44 +113,48 @@
               href: create-data-source-web-sdk.md
             - name: 添加符号层
               href: map-add-pin.md
+            - name: 添加弹出项
+              href: map-add-popup.md
             - name: 添加气泡层
               href: map-add-bubble-layer.md
+            - name: 添加 HTML 标记
+              href: map-add-custom-html.md
             - name: 添加线条层
               href: map-add-line-layer.md
             - name: 添加多边形层
               href: map-add-shape.md
-            - name: 添加挤压多边形层
+            - name: 添加多边形挤压层
               href: map-extruded-polygon.md
             - name: 添加热度地图层
               href: map-add-heat-map-layer.md
-            - name: 添加弹出项
-              href: map-add-popup.md
+            - name: 添加图像层
+              href: map-add-image-layer.md
+            - name: 添加图块层
+              href: map-add-tile-layer.md
+            - name: 显示交通情况
+              href: map-show-traffic.md
             - name: 群集点数据
               href: clustering-point-data-web-sdk.md
             - name: 使用数据驱动样式表达式
               href: data-driven-style-expressions-web-sdk.md
             - name: 如何使用图像模板
               href: how-to-use-image-templates-web-sdk.md
-            - name: 添加图像层
-              href: map-add-image-layer.md
-            - name: 添加图块层
-              href: map-add-tile-layer.md
-            - name: HTML 标记
-              href: map-add-custom-html.md
-            - name: 显示交通情况
-              href: map-show-traffic.md
             - name: 对事件做出响应
               href: map-events.md
             - name: 使应用可供访问
               href: map-accessibility.md
         - name: 绘图工具
           items:
+            - name: 使用绘图工具模块
+              href: set-drawing-options.md
             - name: 添加绘图工具栏
               href: map-add-drawing-toolbar.md
-            - name: 设置绘图选项
-              href: set-drawing-options.md
             - name: 获取形状数据
               href: map-get-shape-data.md
+            - name: 对绘图事件做出反应
+              href: drawing-tools-events.md
+            - name: 交互类型和键盘快捷键
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: 服务模块
           items:
             - name: 使用服务模块
@@ -169,7 +183,7 @@
           href: how-to-add-tile-layer-android-map.md
     - name: 提供数据反馈
       href: how-to-use-feedback-tool.md
-- name: 引用
+- name: 参考
   items:
     - name: API 和参数扩展
       items:
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps 视频
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: 开放源代码项目
+      href: open-source-projects.md
     - name: Azure Maps 案例研究
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps 术语表

@@ -1,25 +1,14 @@
 ---
-title: 远程连接 Azure Service Fabric 群集节点 | Microsoft Docs
+title: 远程连接到 Azure Service Fabric 群集节点
 description: 了解如何远程连接到规模集实例（Service Fabric 群集节点）。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458312"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>远程连接到虚拟机规模集实例或群集节点
 在 Azure 中运行的 Service Fabric 群集中，定义的每个群集节点类型都会[设置虚拟机单独规模](service-fabric-cluster-nodetypes.md)。  可以远程连接到特定规模集实例（群集节点）。  不同于单实例 VM，规模集实例本身没有虚拟 IP 地址。 可能很难找到可用来远程连接到特定实例的 IP 地址和端口。
@@ -28,7 +17,7 @@ ms.locfileid: "68599930"
 
 1. 获取远程桌面协议 (RDP) 的入站 NAT 规则。
 
-    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下, 使用以下格式命名节点类型的负载均衡器:*LB-{cluster-name}-{node type}* ;例如, *mycluster-前端*。 
+    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，节点类型的负载均衡器以以下格式命名：LB-{节点名称}-{节点类型}；例如，LB-mycluster-FrontEnd。 
     
     在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”： 
 

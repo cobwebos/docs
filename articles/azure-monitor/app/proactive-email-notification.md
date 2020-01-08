@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights 智能检测 - 即将对默认通知收件人进行的更改 | Microsoft Docs
-description: 使用 Azure Application Insights 监视应用程序跟踪，了解跟踪遥测数据的异常模式。
+title: 智能检测通知更改-Azure 应用程序 Insights
+description: 从智能检测更改为默认通知收件人。 通过智能检测，可以监视应用程序跟踪的跟踪遥测中的异常模式 Azure 应用程序。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa1f98b5a9ee592a4c702e87e365eff7941194d4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432455"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
 

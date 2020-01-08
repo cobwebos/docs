@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 编程缩放 | Microsoft Docs
+title: Azure Service Fabric 编程缩放
 description: 根据自定义触发器以编程方式缩减或扩展 Azure Service Fabric 群集
-services: service-fabric
-documentationcenter: .net
 author: mjrousos
-manager: jonjung
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458288"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
@@ -29,16 +20,16 @@ ms.locfileid: "66306935"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>管理凭据
-编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)附带[Azure CLI](https://github.com/azure/azure-cli)。
+编写服务来处理缩放的难题之一是，该服务必须能够在无需交互式登录的情况下访问虚拟机规模集资源。 如果缩放服务可修改自身的 Service Fabric 应用程序，则访问 Service Fabric 群集的过程就很轻松，但访问规模集则需要提供凭据。 若要登录，可以使用[Azure CLI](https://github.com/azure/azure-cli)创建的[服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 可以使用以下步骤创建服务主体：
 
-1. 登录到 Azure CLI (`az login`) 作为用户有权访问虚拟机规模集
+1. 以有权访问虚拟机规模集的用户身份登录到 Azure CLI （`az login`）
 2. 使用 `az ad sp create-for-rbac` 创建服务主体
     1. 记下 appId（在某些文档中称为“客户端 ID”）、名称、密码和租户供稍后使用。
     2. 还需要准备好订阅 ID（可使用 `az account list` 查看）
 
-Fluent 计算库可以按如下所示使用这些凭据登录 (请注意，核心 fluent Azure 类型类似于`IAzure`位于[Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)包):
+熟知计算库可以按如下所示使用这些凭据进行登录（请注意，`IAzure` 中的 core 流畅 Azure 类型位于[Microsoft.](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -74,7 +65,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ## <a name="scaling-in"></a>缩减
 
-缩减过程类似于扩展。实际的虚拟机规模集更改几乎是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，并删除其状态。
+中的缩放类似于横向扩展。实际的虚拟机规模集更改实际上是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，并删除其状态。
 
 关闭节点的准备工作涉及查找要删除的节点（最近添加的虚拟机规模集实例）并将其停用。 虚拟机规模集实例按其添加顺序编号，因此，可以通过比较节点名称中的数字后缀（它与基础虚拟机规模集实例名称相匹配）来查找较新的节点。 
 

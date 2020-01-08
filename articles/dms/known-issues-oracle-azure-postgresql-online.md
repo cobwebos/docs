@@ -1,6 +1,7 @@
 ---
-title: 有关从 Oracle 到 Azure Database for PostgreSQL-单服务器的联机迁移的已知问题/迁移限制的文章 |Microsoft Docs
-description: 了解从 Oracle 到 Azure Database for PostgreSQL 的联机迁移的已知问题/迁移限制。
+title: 已知问题：从 Oracle 迁移到 Azure Database for PostgreSQL
+titleSuffix: Azure Database Migration Service
+description: 了解使用 Azure 数据库迁移服务从 Oracle 在线迁移到 Azure Database for PostgreSQL 单服务器的已知问题和迁移限制。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0a1f46698ddb966c315d08a794dd710a74295f97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437821"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>从 Oracle 到 Azure DB for PostgreSQL 的联机迁移的已知问题/迁移限制-单服务器
 
@@ -46,7 +47,7 @@ Azure 数据库迁移服务支持迁移到 Azure Database for PostgreSQL-单服�
 - ANYDATA
 - SDO_GEOMETRY
 - 嵌套表
-- 用户定义的数据类型
+- 用户定义数据类型
 - 说明
 - 虚拟列
 - 基于 ROWID 列的具体化视图

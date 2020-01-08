@@ -1,5 +1,5 @@
 ---
-title: 将 Internet Explorer 用于 MSAL |Microsoft
+title: Internet Explorer （MSAL）上的问题 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 在 Internet Explorer 浏览器中使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。
 services: active-directory
@@ -14,14 +14,14 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e92a10ca0b4cbe38119931bc66d36c3b9259a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4de918d87abca521f3b573f831f8bfd6a7e17728
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916275"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424291"
 ---
-# <a name="use-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>通过 MSAL 使用 Internet Explorer 和 Microsoft Edge 浏览器
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器（MSAL）中的已知问题
 
 将为[JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29)生成适用于 javascript 的 Microsoft 身份验证库（MSAL），以便它可以在 Internet Explorer 中运行。 但有一些需要注意的事项。
 
@@ -48,7 +48,7 @@ ms.locfileid: "74916275"
 
     1. 单击 "Internet Explorer**工具**" （齿轮图标）。
     1. 选择 " **Internet 选项**"，然后选择 "**安全**" 选项卡。
-    1. 单击 " **Internet** " 区域，然后取消选中 "**启用保护模式" （需要重新启动 Internet Explorer）** 。 Internet Explorer 警告您的计算机不再受保护。 单击 **“确定”** 。
+    1. 单击 " **Internet** " 区域，然后取消选中 "**启用保护模式" （需要重新启动 Internet Explorer）** 。 Internet Explorer 警告您的计算机不再受保护。 单击“确定”。
     1. 重新启动 Internet Explorer。
     1. 运行和调试应用程序。
 

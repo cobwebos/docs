@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425531"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
-随着 Azure Active Directory 域服务（AD DS）向其他应用程序和工作负荷提供身份验证和管理服务，网络连接是一个关键组件。 如果没有适当配置的虚拟网络资源，应用程序和工作负荷无法与 Azure AD DS 提供的功能通信，并使用这些功能。 如果你正确规划虚拟网络，请确保 Azure AD DS 可以根据需要为你的应用程序和工作负荷提供服务。
+随着 Azure Active Directory 域服务（AD DS）向其他应用程序和工作负荷提供身份验证和管理服务，网络连接是一个关键组件。 如果未正确配置虚拟网络资源，则应用程序和工作负荷无法与通信，并使用 Azure AD DS 提供的功能。 如果你正确规划虚拟网络，请确保 Azure AD DS 可以根据需要为你的应用程序和工作负荷提供服务。
 
 本文概述支持 Azure AD DS 的 Azure 虚拟网络的设计注意事项和要求。
 
@@ -60,7 +60,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 可以使用以下方法之一来连接其他 Azure 虚拟网络中托管的应用程序工作负荷：
 
 * 虚拟网络对等互连
-* 虚拟专用网络（VPN）
+* 虚拟专用网络 (VPN)
 
 ### <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -88,7 +88,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 在部署过程中，Azure AD DS 托管域会创建一些网络资源。 这些资源是成功操作和管理 Azure AD DS 托管域所必需的，不应进行手动配置。
 
-| Azure 资源                          | 描述 |
+| Azure 资源                          | Description |
 |:----------------------------------------|:---|
 | 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 上作为 Azure Vm 运行的两个域控制器（Dc）上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
 | 动态标准公共 IP 地址         | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
@@ -105,12 +105,12 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则。 请勿编辑或删除 Azure AD DS 托管域部署到的虚拟网络子网的这些网络安全组规则。
 
-| 端口号 | 协议 | Source                             | 目标 | 行动 | 需要 | 用途 |
+| 端口号 | 协议 | 源                             | 目标 | 行动 | 需要 | 用途 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 与 Azure AD 租户同步。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | 允许  | 是      | 域的管理。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 域的管理。 |
-| 636         | TCP      | 任意                                | 任意         | 允许  | No       | 仅在配置安全 LDAP （LDAPS）时启用。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | 允许  | 是      | 与 Azure AD 租户同步。 |
+| 3389        | TCP      | CorpNetSaw                         | Any         | 允许  | 是      | 域的管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | 允许  | 是      | 域的管理。 |
+| 636         | TCP      | Any                                | Any         | 允许  | 否       | 仅在配置安全 LDAP （LDAPS）时启用。 |
 
 > [!WARNING]
 > 请不要手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与在其中部署 Azure AD DS 的子网相关联时，可能会中断 Microsoft 提供的服务和管理功能。 Azure AD 租户与 Azure AD DS 托管域之间的同步也会中断。
@@ -142,7 +142,7 @@ Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则�
 * 用于在 Azure AD DS 托管域中使用 PowerShell 远程处理执行管理任务。
 * 如果不访问此端口，则无法更新、配置、备份或监视 Azure AD DS 托管域。
 * 对于使用基于资源管理器的虚拟网络 Azure AD DS 托管域，你可以将此端口的入站访问限制为*AzureActiveDirectoryDomainServices*服务标记。
-    * 对于使用基于经典的虚拟网络的旧式 Azure AD DS 托管域，你可以将此端口的入站访问限制为以下源 IP 地址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
+    * 对于使用基于经典的虚拟网络的旧式 Azure AD DS 托管域，你可以限制对此端口的入站访问以下源 IP 地址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
 
 ## <a name="user-defined-routes"></a>用户定义的路由
 

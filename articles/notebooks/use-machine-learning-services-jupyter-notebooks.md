@@ -1,18 +1,20 @@
 ---
-title: 使用 Azure Notebooks 中的 Azure 机器学习
-description: 概述了可用于 Azure Notebooks Azure 机器学习的示例笔记本。
-ms.topic: article
+title: 使用 Azure Notebooks 预览版中的 Azure 机器学习
+description: Azure 机器学习的示例笔记本概述，可与 Azure Notebooks 预览版一起使用。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e3c4fbdf35bf7ea1f4dddbceb9d7235c67ed13a4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277462"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646946"
 ---
-# <a name="use-azure-machine-learning-in-a-notebook"></a>使用笔记本中的 Azure 机器学习
+# <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>使用 Azure Notebooks 预览版中的 Azure 机器学习
 
 Azure Notebooks 已预先配置为使用[Azure 机器学习](/azure/machine-learning/service/)所需的环境。 可以轻松地将示例项目复制到 Notebook 帐户，以浏览各种机器学习场景。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="clone-the-sample-into-your-account"></a>将示例克隆到帐户
 

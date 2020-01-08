@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中编辑、比较、搜索字符串以及对其执行其他各种操作。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397472"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
@@ -47,34 +46,34 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-运算符       |描述                         |区分大小写|示例（生成 `true`）
+操作员       |Description                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
-`=~`           |等于                              |No            |`"abc" =~ "ABC"`
-`!~`           |不等于                          |No            |`"aBc" !~ "xyz"`
-`has`          |右侧是左侧的整个字词 |No|`"North America" has "america"`
-`!has`         |右侧不是左侧的完整字词       |No            |`"North America" !has "amer"` 
+`=~`           |等于                              |否            |`"abc" =~ "ABC"`
+`!~`           |不等于                          |否            |`"aBc" !~ "xyz"`
+`has`          |右侧是左侧的整个字词 |否|`"North America" has "america"`
+`!has`         |右侧不是左侧的完整字词       |否            |`"North America" !has "amer"` 
 `has_cs`       |右侧是左侧的整个字词 |是|`"North America" has_cs "America"`
 `!has_cs`      |右侧不是左侧的完整字词       |是            |`"North America" !has_cs "amer"` 
-`hasprefix`    |右侧是左侧的字词前缀         |No            |`"North America" hasprefix "ame"`
-`!hasprefix`   |右侧不是左侧的字词前缀     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix`    |右侧是左侧的字词前缀         |否            |`"North America" hasprefix "ame"`
+`!hasprefix`   |右侧不是左侧的字词前缀     |否            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |右侧是左侧的字词前缀         |是            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |右侧不是左侧的字词前缀     |是            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |右侧是左侧的字词后缀         |No            |`"North America" hassuffix "ica"`
-`!hassuffix`   |右侧不是左侧的字词后缀     |No            |`"North America" !hassuffix "americ"`
+`hassuffix`    |右侧是左侧的字词后缀         |否            |`"North America" hassuffix "ica"`
+`!hassuffix`   |右侧不是左侧的字词后缀     |否            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |右侧是左侧的字词后缀         |是            |`"North America" hassuffix_cs "ica"`
 `!hassuffix_cs`   |右侧不是左侧的字词后缀     |是            |`"North America" !hassuffix_cs "icA"`
-`contains`     |右侧作为左侧的子序列出现  |No            |`"FabriKam" contains "BRik"`
-`!contains`    |右侧不会在左侧出现           |No            |`"Fabrikam" !contains "xyz"`
+`contains`     |右侧作为左侧的子序列出现  |否            |`"FabriKam" contains "BRik"`
+`!contains`    |右侧不会在左侧出现           |否            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |右侧作为左侧的子序列出现  |是           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |右侧不会在左侧出现           |是           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |右侧是左侧的初始子序列|No            |`"Fabrikam" startswith "fab"`
-`!startswith`  |右侧不是左侧的初始子序列|No        |`"Fabrikam" !startswith "kam"`
+`startswith`   |右侧是左侧的初始子序列|否            |`"Fabrikam" startswith "fab"`
+`!startswith`  |右侧不是左侧的初始子序列|否        |`"Fabrikam" !startswith "kam"`
 `startswith_cs`   |右侧是左侧的初始子序列|是            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |右侧不是左侧的初始子序列|是        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |右侧是左侧的结束子序列|No             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |右侧不是左侧的结束子序列|No         |`"Fabrikam" !endswith "brik"`
+`endswith`     |右侧是左侧的结束子序列|否             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |右侧不是左侧的结束子序列|否         |`"Fabrikam" !endswith "brik"`
 `endswith_cs`     |右侧是左侧的结束子序列|是             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |右侧不是左侧的结束子序列|是         |`"Fabrikam" !endswith "brik"`
 `matches regex`|左侧包含右侧的匹配项        |是           |`"Fabrikam" matches regex "b.*k"`
@@ -96,7 +95,7 @@ countof(text, search [, kind])
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
 - `kind` - _normal_ | _regex_（默认值：normal）。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 
 搜索字符串可在容器中匹配的次数。 纯字符串匹配项可能重叠，而正则表达式匹配项则不会。
 
@@ -138,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` - 要搜索的字符串。
 - `typeLiteral` - 可选的类型文本（例如 typeof(long)）。 （如果支持）提取的子字符串将转换成此类型。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 与指定捕获组 captureGroup 匹配的子字符串可转换为 typeLiteral（可选）。
 如果没有匹配项或类型转换失败，则返回 null。
 
@@ -244,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` - 由匹配正则表达式匹配的任何匹配项的替换正则表达式。 使用 \0 引用整个匹配项，使用 \1 引用第一个捕获组，使用 \2 等引用后续捕获组。
 - `input_text` - 要在其中搜索的输入字符串。
 
-### <a name="returns"></a>返回值
+### <a name="returns"></a>返回
 使用 rewrite 计算结果替换正则表达式的所有匹配项后面的文本。 匹配项不会重叠。
 
 ### <a name="examples"></a>示例

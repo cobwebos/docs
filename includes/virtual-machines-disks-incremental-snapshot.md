@@ -5,23 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
-ms.translationtype: MT
+ms.openlocfilehash: b936c3a320a99d0853cb331fcd0bc44718527b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469883"
 ---
 增量快照（预览版）是托管磁盘的时间点备份，在这种情况下，只包含自上一次快照以来所做的所有更改。 尝试下载或使用增量快照时，将使用完整的 VHD。 托管磁盘快照的这一新功能可能会使它们更加经济高效，因为你不再需要在每个单独的快照中存储整个磁盘，除非你选择。 与常规快照一样，增量快照可用于创建完全托管的磁盘，或创建一个常规快照。
 
 增量快照和常规快照之间存在一些差异。 增量快照始终使用标准 Hdd 存储，而不考虑磁盘的存储类型，而常规快照可以使用高级 Ssd。 如果你在高级存储上使用常规快照来扩展 VM 部署，我们建议你在[共享映像库](../articles/virtual-machines/linux/shared-image-galleries.md)中的标准存储上使用自定义映像。 它将帮助你以较低的成本实现更大的规模。 此外，增量快照可能会通过[区域冗余存储](../articles/storage/common/storage-redundancy-zrs.md)（ZRS）提供更好的可靠性。 如果 ZRS 在所选区域中可用，则增量快照将自动使用 ZRS。 如果 ZRS 在区域中不可用，则快照将默认为[本地冗余存储](../articles/storage/common/storage-redundancy-lrs.md)（LRS）。 您可以重写此行为，并手动选择一个，但我们不建议这样做。
 
 增量快照还提供了独特的功能，可用于托管磁盘。 它们使你能够在相同的托管磁盘的两个增量快照之间进行更改，减小到块级别。 跨区域复制快照时，可以使用此功能来减少数据占用量。
-
-如果尚未注册预览，并且想要开始使用增量快照，请通过电子邮件向我们发送 AzureDisks@microsoft.com 以访问公共预览版。
 
 ## <a name="restrictions"></a>限制
 
@@ -43,7 +41,8 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 安装之后，请登录到 PowerShell 会话并 `az login`。
 
-若要使用 Azure PowerShell 创建增量快照，请使用 AzSnapshot 参数将 `-Incremental` [AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0)设置为，并通过 `-Snapshot` 参数将其作为变量传递到[](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) 。
+若要使用 Azure PowerShell 创建增量快照，请使用 AzSnapshot 参数将 `-Incremental` [AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0)设置为，并通过 [`-Snapshot`](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) 参数将其作为变量传递到 。
+
 
 将 `<yourDiskNameHere>`、`<yourResourceGroupNameHere>`和 `<yourDesiredSnapShotNameHere>` 替换为你的值，然后可以使用以下脚本创建增量快照：
 
@@ -118,7 +117,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 | jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
-## <a name="resource-manager-template"></a>Resource Manager 模板
+## <a name="resource-manager-template"></a>资源管理器模板
 
 还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为**2019-03-01** ，并且增量属性也设置为 true。 以下代码片段举例说明了如何使用资源管理器模板创建增量快照：
 
@@ -156,8 +155,4 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="next-steps"></a>后续步骤
 
-1. 如果尚未注册预览，并且想要开始使用增量快照，请通过电子邮件向我们发送 AzureDisks@microsoft.com 以访问公共预览版。 
-
-2. 使用差分功能浏览增量快照跨区域副本的以下示例   
-
-    - [使用 Azure .Net Sdk](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+若要查看演示增量快照的差异功能的示例代码，请参阅使用 .NET，请参阅[将 Azure 托管磁盘备份复制到另一个区域，其差异功能为增量快照](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。

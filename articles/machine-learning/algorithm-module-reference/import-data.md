@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497781"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529603"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
@@ -23,22 +23,22 @@ ms.locfileid: "73497781"
 使用此模块将数据从现有的云数据服务加载到机器学习管道。 
 
 > [!Note]
-> 此模块提供的所有功能都可以通过工作区登陆页面上的**数据存储**和**数据集**来完成。 建议使用包含其他功能（例如数据监视）的**数据存储**和**数据集**。 若要了解详细信息，请参阅[如何访问数据](../service/how-to-access-data.md)和[如何注册数据集](../service/how-to-create-register-datasets.md)一文。
+> 此模块提供的所有功能都可以通过工作区登陆页面上的**数据存储**和**数据集**来完成。 建议使用包含其他功能（例如数据监视）的**数据存储**和**数据集**。 若要了解详细信息，请参阅[如何访问数据](../how-to-access-data.md)和[如何注册数据集](../how-to-create-register-datasets.md)一文。
 > 注册数据集后，可以在设计器界面**中 -> "** 我的**数据**集" 类别中找到它。 此模块是为 Studio （经典）用户保留的，以获得熟悉的体验。 
 >
 
 首先，选择要从中进行读取的源，并完成其他设置。 **导入数据**模块支持从以下源读取数据：
 
 - 通过 HTTP 的 URL
-- 通过[**数据存储**](../service/how-to-access-data.md)的 Azure 云存储）
+- 通过[**数据存储**](../how-to-access-data.md)的 Azure 云存储）
     - Azure Blob 容器
     - Azure 文件共享
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Azure SQL 数据库
+    - Azure SQL Database
     - Azure PostgreSQL    
 
-使用云存储之前，需要先在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../service/how-to-access-data.md)。 
+使用云存储之前，需要先在 Azure 机器学习工作区中注册数据存储。 有关详细信息，请参阅[如何访问数据](../how-to-access-data.md)。 
 
 定义所需的数据并连接到源后， **[导入数据](./import-data.md)** 会根据其包含的值推断每个列的数据类型，并将数据加载到设计器管道。 **导入数据**的输出是一个可与任何设计器管道一起使用的数据集。
 
@@ -70,7 +70,7 @@ ms.locfileid: "73497781"
 
     当导入数据将数据加载到设计器中时，它将根据它包含的值（数字或分类）推断每一列的数据类型。
 
-    如果标头存在，则使用标头来命名输出数据集的列。
+    如果存在标头，则使用该标头来命名输出数据集的列。
 
     如果数据中没有现有列标题，将使用格式 col1、col2,... 生成新的列名称。 , coln*.
 

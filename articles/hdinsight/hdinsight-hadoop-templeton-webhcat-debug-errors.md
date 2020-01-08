@@ -2,18 +2,18 @@
 title: 了解并解决 HDInsight 上的 WebHCat 错误 - Azure
 description: 了解 HDInsight 上的 WebHCat 返回的常见错误以及如何解决它们。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.custom: hdinsightactive
+ms.date: 01/01/2020
+ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555018"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638844"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解和解决从 HDInsight 上的 WebHCat 收到的错误
 
@@ -21,17 +21,11 @@ ms.locfileid: "74555018"
 
 ## <a name="what-is-webhcat"></a>什么是 WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 是适用于 [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 的 REST API，是针对 Apache Hadoop 的表和存储管理层。 WebHCat 默认情况下在 HDInsight 群集上处于启用状态，可供各种工具在执行提交作业、获取作业状态等操作时使用，无需登录到群集中。
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 是适用于 [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 的 REST API，是针对 Apache Hadoop 的表和存储管理层。 默认情况下，在 HDInsight 群集上启用 WebHCat，并由各种工具用来提交作业、获取作业状态等，而无需登录到群集。
 
 ## <a name="modifying-configuration"></a>修改配置
 
-> [!IMPORTANT]  
-> 本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到可以更改一个值时，必须使用下列选项之一来执行更改：
-
-* 对于 **Windows** 群集：使用脚本操作在群集创建过程中配置值。 有关详细信息，请参阅[开发脚本操作](hdinsight-hadoop-script-actions-linux.md)。
-
-* 对于**Linux**群集：使用 Apache Ambari （web 或 REST API）修改此值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
-
+本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到可以更改一个值时，请使用 Apache Ambari （web 或 REST API）修改该值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
 ### <a name="default-configuration"></a>默认配置
 
@@ -49,7 +43,7 @@ ms.locfileid: "74555018"
 
 | 原因 | 分辨率 |
 | --- | --- |
-| 已超过 WebHCat 每分钟能够处理的最大并发请求数（默认值为 20） |减少工作负载以确保提交的数量没有超出最大并发请求数，或者通过修改 `templeton.exec.max-procs` 来提高并发请求限制。 有关详细信息，请参阅[修改配置](#modifying-configuration) |
+| 已超过 WebHCat 每分钟提供的最大并发请求数（默认值为20） |减少工作负荷，以确保不会提交超过最大并发请求数，或者通过修改 `templeton.exec.max-procs`增加并发请求限制。 有关详细信息，请参阅[修改配置](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>服务器不可用
 
@@ -77,7 +71,7 @@ ms.locfileid: "74555018"
 | --- | --- |
 | WebHCat 进程内发生内部垃圾回收 |等待垃圾回收完成或重新启动 WebHCat 服务 |
 | 等待 ResourceManager 服务的响应超时。 当活动应用程序的数量达到配置的最大值（默认为 10,000）时，可能会发生此错误 |等待当前正在运行的作业完成，或者通过修改 `yarn.scheduler.capacity.maximum-applications` 来提高并发作业限制。 有关详细信息，请参阅[修改配置](#modifying-configuration)部分。 |
-| 在 `Fields` 设置为 `*` 时，尝试通过 [GET /jobs ](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 调用来检索所有作业 |不检索全部作业详细信息。 请改用 `jobid` 来检索仅大于特定作业 ID 的作业的详细信息。 或者，不使用 `Fields` |
+| 在 `Fields` 设置为 `*` 时，尝试通过 [GET /jobs ](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 调用来检索所有作业 |不检索*所有*作业详细信息。 请改用 `jobid` 来检索仅大于特定作业 ID 的作业的详细信息。 或者不使用 `Fields` |
 | 在 HeadNode 故障转移期间 WebHCat 服务关闭 |等待两分钟，并重试该操作 |
 | 通过 WebHCat 提交的作业有超过 500 个处于挂起状态 |等到当前挂起的作业完成再提交更多作业 |
 

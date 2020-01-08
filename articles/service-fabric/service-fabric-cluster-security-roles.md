@@ -1,25 +1,14 @@
 ---
-title: Service Fabric 群集安全性：客户端角色 | Microsoft Docs
+title: Service Fabric 群集安全：客户端角色
 description: 本文介绍两个客户端角色以及提供给这些角色的权限。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 38656d286cae631cb5def0e0c8b171268e4cf428
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451904"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
 Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  
@@ -52,7 +41,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **RecoverSystemPartitions**：恢复系统服务分区                             
 
 ### <a name="cluster-operations"></a>群集操作
-* **ProvisionFabric**：MSI 和/或群集清单预配                             
+* **ProvisionFabric**：预配 MSI 和/或群集清单                             
 * **UpgradeFabric**：启动群集升级                             
 * **UnprovisionFabric**：取消预配 MSI 和/或群集清单                         
 * **MoveNextFabricUpgradeDomain**：使用显式更新域恢复群集升级                             

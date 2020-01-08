@@ -2,19 +2,15 @@
 title: Runbook 输入参数
 description: Runbook 输入参数可让你将数据传递到启动的 Runbook，以增加 Runbook 的弹性。 本文介绍在 Runbook 中使用输入参数的不同方案。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: be7d244f5aa422b2083d35fc56a52318a4379b79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b16219c34ea30b4229195c8f019dfa8e1f147d8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417588"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -73,7 +69,7 @@ Param
 ```
 
 > [!NOTE]
-> 如果没有将值传递到具有的默认值 `\$null` 的可选 `[String]` 类型参数，则参数的值将为空字符串，而不是 `\$null`。
+> 如果将没有值传递到_默认值_为 `\$null`的可选 `[String]` 类型参数，则参数的值将为_空字符串_，**而不**是 `\$null`。
 
 ## <a name="configure-input-parameters-in-graphical-runbooks"></a>在图形 Runbook 中配置输入参数
 

@@ -3,7 +3,7 @@ title: Xamarin Android 注意事项（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915511"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424151"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>适用于 MSAL.NET 的 Xamarin 特定于 Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 还可以通过回调在 PublicClientApplication 级别（在 MSAL 4.2 + 中）设置此项。
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 建议在[此处](https://github.com/jamesmontemagno/CurrentActivityPlugin)使用 CurrentActivityPlugin。  然后，PublicClientApplication 生成器代码将如下所示：
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -82,6 +82,23 @@ protected override void OnActivityResult(int requestCode,
          </intent-filter>
 </activity>
 ```
+
+或者，你可以[在代码中创建活动](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而不是手动编辑 `AndroidManifest.xml`。 为此，你必须创建一个具有 `Activity` 和 `IntentFilter` 属性的类。 表示上述 xml 相同值的类应为：
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X 清单
+
+XamarinForms 4.3 生成的代码将 `package` 特性设置为 `AndroidManifest.xml`中 `com.companyname.{appName}`。 如果你使用 `DataScheme` 作为 `msal{client_id}`，则你可能需要将此值更改为与 `MainActivity.cs` 命名空间相同。
 
 ## <a name="use-the-embedded-web-view-optional"></a>使用嵌入的 web 视图（可选）
 
@@ -125,6 +142,6 @@ var authResult = AcquireTokenInteractive(scopes)
 
 以下示例的 readme.md 文件的[Android 特定注意事项](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)段落中提供了更多详细信息和示例：
 
-| 示例 | 平台 | 描述 |
+| 示例 | 平台 | Description |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个简单的 Xamarin Forms 应用，展示如何通过 AADD v2.0 终结点使用 MSAL 对 MSA 和 Azure AD 进行身份验证，并使用生成的令牌访问 Microsoft Graph。 <br>![拓扑](media/msal-net-xamarin-android-considerations/topology.png) |

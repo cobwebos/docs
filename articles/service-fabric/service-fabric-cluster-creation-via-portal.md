@@ -1,25 +1,14 @@
 ---
-title: 在 Azure 门户中创建 Service Fabric 群集 | Microsoft Docs
+title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452303"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -79,7 +68,7 @@ ms.locfileid: "72934055"
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>搜索 Service Fabric 群集资源
 
-登录到 [Azure 门户][azure-portal]。
+登录 [Azure 门户][azure-portal]。
 单击“创建资源”以添加新的资源模板。 在“全部”下面的“市场”中搜索 Service Fabric 群集模板。
 从列表中选择“**Service Fabric 群集**”。
 
@@ -126,7 +115,7 @@ ms.locfileid: "72934055"
 10. 选择要为群集设置的 **Fabric 升级模式**。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。 有关结构升级模式的更多详细信息，请参阅[Service Fabric 群集升级文档。][service-fabric-cluster-upgrade]
 
 > [!NOTE]
-> 我们仅支持运行受支持的 Service Fabric 版本的群集。 选择“手动”模式，表示将负责将群集升级到受支持的版本。
+> 我们仅支持运行受支持的 Service Fabric 版本的群集。 通过选择“**手动**”模式，由你负责将群集升级到受支持的版本。
 > 
 
 ### <a name="3-security"></a>3. 安全性
@@ -184,7 +173,7 @@ ms.locfileid: "72934055"
 
 若要完成群集创建，请单击“创建”。 还可以选择性下载模板。
 
-![Summary]
+![摘要]
 
 可以在通知栏中查看群集创建进度。 （单击屏幕右上角的状态栏旁边的 "电铃" 图标。）如果在创建群集时单击了 "**固定到启动板**"，则会看到 "**部署" Service Fabric 群集**固定到 "**开始**" 面板。 此过程将需要一些时间才能完成。 
 
@@ -241,7 +230,7 @@ ms.locfileid: "72934055"
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[摘要]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

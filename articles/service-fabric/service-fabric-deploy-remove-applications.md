@@ -1,37 +1,26 @@
 ---
 title: 通过 PowerShell 部署 Azure Service Fabric
-description: 如何在 Service Fabric 中使用 PowerShell 部署和删除应用程序。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
+description: 了解如何在 Azure 中删除和部署应用程序 Service Fabric 以及如何在 Powershell 中执行这些操作。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: 0080ba0807a4cb31fedeb132932e2e08137dd40b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013276"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614496"
 ---
-# <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署和删除应用程序
+# <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
 
 > [!div class="op_single_selector"]
-> * [Resource Manager](service-fabric-application-arm-resource.md)
+> * [资源管理器](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 <br/>
 
-[打包应用程序类型][10]后，即可部署到 Azure Service Fabric 群集中。 部署涉及以下三个步骤：
+[打包应用程序类型][10]后，即可部署到 Azure Service Fabric 群集。 部署涉及以下三个步骤：
 
 1. 将应用程序包上传到映像存储区。
 2. 使用映像存储区相对路径注册应用程序类型。
@@ -58,7 +47,7 @@ ms.locfileid: "74013276"
 
  
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 在运行本文中的任何 PowerShell 命令之前，请始终先使用 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) 连接到 Service Fabric 群集。 若要连接到本地部署群集，请运行以下命令：
 
@@ -68,9 +57,9 @@ Connect-ServiceFabricCluster
 
 有关连接到远程群集或连接到使用 Azure Active Directory、X509 证书或 Windows Active Directory 保护的群集的示例，请参阅[连接到安全群集](service-fabric-connect-to-secure-cluster.md)。
 
-## <a name="upload-the-application-package"></a>上传应用程序包
+## <a name="upload-the-application-package"></a>上载应用程序包
 
-上传应用程序包时会将该包放在一个可由内部 Service Fabric 组件访问的位置。
+上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。
 如果要在本地验证应用程序包，请使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) cmdlet。
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令用来将应用程序包上传到群集映像存储。
@@ -114,7 +103,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 附带作用是加快注册和注销应用程序类型。 上传时间目前可能会降低，尤其是当包含压缩包的时间时。 
 
 若要压缩包，请使用同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令。 可以使用 `SkipCopy` 标记独立于上传进行压缩，也可以与上传操作配合使用进行压缩。 对压缩包应用压缩不会执行任何操作。
-若要解压缩压缩包，请将同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令与 `UncompressPackage` 切换配合使用。
+要解压缩压缩包，请将同一 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令与 `UncompressPackage` 切换配合使用。
 
 以下 cmdlet 可压缩包，而不会将包复制到映像存储区。 此包中现在包括 `Code` 包和 `Config` 包的压缩文件。 不会压缩应用程序和服务清单，因为许多内部操作均需要使用它们（例如，包共享、应用程序类型名称和某些验证的版本提取）。 压缩清单会使这些操作无效。
 
@@ -140,16 +129,16 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 
 |初始大小 (MB)|文件计数|压缩时间|压缩包大小 (MB)|
 |----------------:|---------:|---------------:|---------------------------:|
-|100 个|100 个|00:00:03.3547592|60|
-|512|100 个|00:00:16.3850303|307|
+|100|100|00:00:03.3547592|60|
+|512|100|00:00:16.3850303|307|
 |1024|500|00:00:32.5907950|615|
 |2048|1000|00:01:04.3775554|1231|
-|5012|100 个|00:02:45.2951288|3074|
+|5012|100|00:02:45.2951288|3074|
 
 对包进行压缩后，便可根据需要将其上传到一个或多个 Service Fabric 群集。 压缩包和未压缩包的部署机制相同。 压缩包同样存储在群集映像存储区中。 运行应用程序之前，包在节点上未压缩。
 
 
-以下示例将包上传到映像存储区中名为“MyApplicationV1”的文件夹中：
+以下示例将包上传到映像存储中名为“MyApplicationV1”的文件夹中：
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -TimeoutSec 1800
@@ -280,7 +269,7 @@ HealthState            : Ok
 
 ## <a name="remove-an-application"></a>删除应用程序
 
-当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 按名称将其永久删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还会自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
+当不再需要某个应用程序实例时，可以使用 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) cmdlet 通过指定其名称将其删除。 [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) 还会自动删除属于该应用程序的所有服务，永久删除所有服务状态。 
 
 > [!WARNING]
 > 此操作无法撤消，并且无法恢复应用程序状态。
@@ -327,7 +316,7 @@ Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
 
-Service Fabric SDK 环境应已默认设置正确。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
+Service Fabric SDK 环境应该已经设置了正确的默认设置。 若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。 可以在使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) 和 Get-ImageStoreConnectionStringFromClusterManifest 命令检索到的群集清单中找到 ImageStoreConnectionString：
 
 ```powershell
 Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
@@ -359,16 +348,16 @@ ImageStoreConnectionString 可在群集清单中找到：
 
 问题：大型应用程序包（GB 级别）的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 超时。
 请尝试：
-- 通过 [ 参数为 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`TimeoutSec` 命令指定更长的超时。 此超时默认为 30 分钟。
+- 通过 `TimeoutSec` 参数为 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令指定更长的超时。 此超时默认为 30 分钟。
 - 检查源计算机和群集之间的网络连接。 如果连接缓慢，请考虑使用一台网络连接状况更好的计算机。
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
-- 检查是否已达到外部限制。 例如，将映像存储区配置为使用 Azure 存储时，可能会限制上传。
+- 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
 
 问题：上传包已成功完成，但[register-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)超时。然后
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
-- 通过 [ 参数为 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)Register-ServiceFabricApplicationType`TimeoutSec` 指定更长的超时。
-- 为 `Async`Register-ServiceFabricApplicationType[ 指定 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 开关。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+- 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
+- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -386,9 +375,9 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 问题：具有多个文件（上千个）的应用程序包的 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。
 请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。 压缩可以减少文件数量。
-- 通过 [ 参数为 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)Register-ServiceFabricApplicationType`TimeoutSec` 指定更长的超时。
-- 为 `Async`Register-ServiceFabricApplicationType[ 指定 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 开关。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
-因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+- 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
+- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
+因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 Get-ServiceFabricApplicationType

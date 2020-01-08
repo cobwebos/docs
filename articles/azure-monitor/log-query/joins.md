@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900285"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397839"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
 
@@ -80,7 +80,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>联接类型
 使用 kind 参数来指定联接类型。 如下表所述，每种类型在给定表的记录之间执行不同的匹配。
 
-| 联接类型 | 描述 |
+| 联接类型 | Description |
 |:---|:---|
 | innerunique | 这是默认的联接模式。 首先找到左表中匹配列的值，并删除重复值。  然后将该组唯一值集与右表匹配。 |
 | 内部 | 结果中只包括在两个表中匹配的记录。 |
@@ -89,7 +89,7 @@ SecurityEvent
 | leftsemi | 结果中包含左表中具有右表匹配项的记录。 结果表只包含左表中的列。 |
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 要实现最佳性能，请注意以下几点：
 

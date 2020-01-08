@@ -1,25 +1,16 @@
 ---
-title: 配置 Azure Service Fabric 独立群集 | Microsoft Docs
+title: 配置 Azure Service Fabric 独立群集
 description: 了解如何配置独立的或本地 Azure Service Fabric 群集。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458378"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
 本文介绍可使用 ClusterConfig.json 文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -110,7 +101,7 @@ metadata 用于描述群集诊断，可以根据具体的情况进行设置。 �
 }
 ```
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全性
 对于安全的 Service Fabric 独立群集，必须使用 security 节。 以下代码片段显示了该部分的一部分内容：
 
 ```json

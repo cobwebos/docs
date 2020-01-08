@@ -51,6 +51,9 @@
           items:
             - name: 套餐列出最佳做法
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: 类别
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: 如何成为特别推荐的应用
               href: ./gtm-how-to-get-featured.md
             - name: 市场内容验证

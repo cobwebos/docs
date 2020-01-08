@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67056482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353576"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
@@ -35,6 +35,12 @@ ms.locfileid: "67056482"
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+
+### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>如果在连接时收到证书不匹配，我该怎么办？
+
+取消选中 **"通过验证证书来验证服务器的标识"** ，或者在手动创建配置文件时**添加服务器 FQDN 以及证书**。 为此，可以从命令提示符运行**rasphone** ，并从下拉列表中选择配置文件。
+
+![点到站点](./media/vpn-gateway-faq-p2s-all-include/servercert.png "服务器证书")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>能否使用点到站点功能穿越代理和防火墙？
 
@@ -78,7 +84,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 1. 安装更新。
 
-   | OS 版本 | 日期 | 编号/链接 |
+   | OS 版本 | Date | 编号/链接 |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

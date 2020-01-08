@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff8956d942aa54500a08cac4ebd94127b14b0bd4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931765"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529977"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
@@ -111,14 +111,14 @@ ms.locfileid: "74931765"
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | properties | 需要 | 描述 |
+    | 属性 | 需要 | Description |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
-    | StorageAccountId |No |应将活动日志保存到其中的存储帐户的资源 ID。 |
-    | serviceBusRuleId |No |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是一个字符串，格式为： `{service bus resource ID}/authorizationrules/{key name}`。 |
-    | Location |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
+    | StorageAccountId |否 |应将活动日志保存到其中的存储帐户的资源 ID。 |
+    | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 这是一个字符串，格式为： `{service bus resource ID}/authorizationrules/{key name}`。 |
+    | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
     | RetentionInDays |是 |事件在存储帐户中的保留天数，介于1到365之间。 值为零时，将无限期存储日志。 |
-    | 类别 |No |应收集的事件类别的逗号分隔列表。 可能的值包括 "_写入_"、"_删除_" 和 "_操作_"。 |
+    | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能的值包括 "_写入_"、"_删除_" 和 "_操作_"。 |
 
 ### <a name="example-script"></a>示例脚本
 下面是一个示例 PowerShell 脚本，用于创建将活动日志写入存储帐户和事件中心的日志配置文件。
@@ -154,7 +154,7 @@ ms.locfileid: "74931765"
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | properties | 需要 | 描述 |
+    | 属性 | 需要 | Description |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |
@@ -162,91 +162,6 @@ ms.locfileid: "74931765"
     | days |是 |事件应保留的天数，介于1到365之间。 值为零时，将无限期（永久）存储日志。  如果为零，则 enabled 参数应设置为 false。 |
     |已启用 | 是 |True 或 False。  用于启用或禁用保留策略。  如果为 True，则 days 参数必须为大于 0 的值。
     | categories |是 |应收集的事件类别的空格分隔列表。 可能值包括：Write、Delete 和 Action。 |
-
-
-
-## <a name="activity-log-schema"></a>活动日志架构
-无论是发送到 Azure 存储还是事件中心，活动日志数据都将写入以下格式的 JSON。
-
-
-> 写入存储帐户的活动日志数据的格式更改为2018年11月1日的 JSON 行。 有关此格式更改的详细信息，请参阅[准备将格式更改 Azure Monitor 资源日志存档到存储帐户](diagnostic-logs-append-blobs.md)。
-
-``` JSON
-{
-    "records": [
-        {
-            "time": "2015-01-21T22:14:26.9792776Z",
-            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-            "operationName": "microsoft.support/supporttickets/write",
-            "category": "Write",
-            "resultType": "Success",
-            "resultSignature": "Succeeded.Created",
-            "durationMs": 2826,
-            "callerIpAddress": "111.111.111.11",
-            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
-            "identity": {
-                "authorization": {
-                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-                    "action": "microsoft.support/supporttickets/write",
-                    "evidence": {
-                        "role": "Subscription Admin"
-                    }
-                },
-                "claims": {
-                    "aud": "https://management.core.windows.net/",
-                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-                    "iat": "1421876371",
-                    "nbf": "1421876371",
-                    "exp": "1421880271",
-                    "ver": "1.0",
-                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-                    "puid": "20030000801A118C",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-                    "name": "John Smith",
-                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-                    "appidacr": "2",
-                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-                }
-            },
-            "level": "Information",
-            "location": "global",
-            "properties": {
-                "statusCode": "Created",
-                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
-            }
-        }
-    ]
-}
-```
-下表描述了此 JSON 中的元素。
-
-| 元素名称 | 描述 |
-| --- | --- |
-| time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
-| resourceId |受影响资源的资源 ID。 |
-| operationName |操作的名称。 |
-| category |操作的类别，例如 写入、读取和操作。 |
-| resultType |结果的类型，例如 成功、失败和启动 |
-| resultSignature |取决于资源类型。 |
-| durationMs |操作持续时间，以毫秒为单位 |
-| callerIpAddress |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的 IP 地址。 |
-| correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
-| 标识 |描述授权和声明的 JSON blob。 |
-| authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
-| 级别 |事件的级别。 以下值之一： "_严重_"、"_错误_"、"_警告_"、"_信息_" 和 "_详细_" |
-| 位置 |位置所在的区域（或全局）。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
-
-> [!NOTE]
-> 这些属性的属性和使用情况可能因资源而异。
 
 
 

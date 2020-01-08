@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816451"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608602"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -27,16 +27,16 @@ ms.locfileid: "73816451"
 当然！ 请参阅[有关此功能的博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 有关如何自定义组织登录页的详细信息，请参阅[在登录页和访问面板页中添加公司品牌](../fundamentals/customize-branding.md)。
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>B2B 协作用户能否访问 SharePoint Online 和 OneDrive？
-是的。 不过，在 SharePoint Online 中使用人员选取器搜索现有来宾用户的功能默认已**关闭**。 要启用该选项来搜索现有来宾用户，请将 **ShowPeoplePickerSuggestionsForGuestUsers** 为 **On**。 可以在租户级别或站点集合级别启用此设置。 可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 更改此设置。 使用这些 cmdlet，成员可以搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
+可以。 不过，在 SharePoint Online 中使用人员选取器搜索现有来宾用户的功能默认已**关闭**。 要启用该选项来搜索现有来宾用户，请将 **ShowPeoplePickerSuggestionsForGuestUsers** 为 **On**。 可以在租户级别或站点集合级别启用此设置。 可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 更改此设置。 使用这些 cmdlet，成员可以搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>是否仍支持 CSV 上传功能？
-是的。 有关使用 .csv 文件上传功能的详细信息，请参阅[此 PowerShell 示例](code-samples.md)。
+可以。 有关使用 .csv 文件上传功能的详细信息，请参阅[此 PowerShell 示例](code-samples.md)。
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>我能否自定义邀请电子邮件？
 使用 [B2B 邀请 API](customize-invitation-api.md)，几乎可以自定义有关邀请者过程的所有内容。
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>来宾用户是否可以重置其多重身份验证方法？
-是的。 来宾用户可以像普通用户一样重置其多重身份验证方法。
+可以。 来宾用户可以像普通用户一样重置其多重身份验证方法。
 
 ### <a name="which-organization-is-responsible-for-multi-factor-authentication-licenses"></a>哪家组织负责提供多重身份验证许可证？
 邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
@@ -45,20 +45,20 @@ ms.locfileid: "73816451"
 当前不支持此功能。 如果访问组织的资源需要多重身份验证，则合作伙伴组织将需要在（邀请）组织中注册多重身份验证。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>如何使用延迟的邀请？
-某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，并发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
+某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表（GAL）中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 请参阅可否[使来宾对象在全局地址列表中可见？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+可以。 默认情况下，来宾对象在组织的全局地址列表（GAL）中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 请参阅可否[使来宾对象在全局地址列表中可见？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>是否可将来宾用户指定为受限制的管理员？
-绝对是。 有关详细信息，请参阅[将来宾用户添加到角色](add-guest-to-role.md)。
+正是如此。 有关详细信息，请参阅[将来宾用户添加到角色](add-guest-to-role.md)。
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B 协作是否允许 B2B 用户访问 Azure 门户？
 除非为用户分配了受限管理员角色，否则 B2B 协作用户不需要访问 Azure 门户。 不过，分配有有限管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
 
-能！ 你可以创建一个条件性访问策略，阻止所有来宾和外部用户访问 Azure 门户。 配置此策略时请小心，避免意外阻止成员和管理员的访问。
+可以！ 你可以创建一个条件性访问策略，阻止所有来宾和外部用户访问 Azure 门户。 配置此策略时请小心，避免意外阻止成员和管理员的访问。
 
 1. 以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户中，选择“Azure Active Directory”。 
@@ -74,7 +74,7 @@ ms.locfileid: "73816451"
 13. 在 "**云应用或操作**" 页上，选择 "**完成**"。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B 协作是否支持多重身份验证和使用者电子邮件帐户？
-是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
+可以。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>是否支持 Azure AD B2B 协作用户的密码重置？
 如果 Azure AD 租户是用户的主目录，则可以从 Azure 门户[重置用户的密码](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal)。 但是，对于使用由其他 Azure AD 目录或外部标识提供者管理的帐户登录的来宾用户，无法直接重置其密码。 只有用户主目录中的来宾用户或管理员可以重置密码。 以下示例演示来宾用户如何重置密码：
@@ -117,10 +117,10 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 所有 Azure AD 集成的应用程序都可以支持 Azure B2B 来宾用户，但他们必须使用设置为租户的终结点来对来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>如果合作伙伴未启用多重身份验证，我们是否可以强制 B2B 来宾用户使用多重身份验证？
-是的。 有关详细信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。
+可以。 有关详细信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>在 SharePoint 中，可以为外部用户定义“允许”和“拒绝”列表。 在 Azure 中是否可以执行此操作？
-是的。 Azure AD B2B 协作支持允许列表和拒绝列表。 
+可以。 Azure AD B2B 协作支持允许列表和拒绝列表。 
 
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>使用 Azure AD B2B 需要哪些许可证？
 有关组织需要哪些许可证才能使用 Azure AD B2B 的信息，请参阅 [Azure Active Directory B2B 协作许可指南](licensing-guidance.md)。

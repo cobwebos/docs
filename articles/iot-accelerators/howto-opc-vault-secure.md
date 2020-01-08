@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454195"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保管库证书管理服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "71203692"
 > [!IMPORTANT]
 > 注册应用程序需要编写者角色。
 
-1. 在 `https://myResourceGroup-app.azurewebsites.net` 打开证书服务，并登录。
+1. 在 `https://myResourceGroup-app.azurewebsites.net`打开证书服务，并登录。
 2. 请参阅**注册新**。 对于应用程序注册，用户需要至少分配编写者角色。
 2. 条目窗体遵循 OPC UA 中的命名约定。 例如，在以下屏幕截图中，会显示 OPC UA .NET Standard 堆栈中的[OPC Ua 引用服务器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference)示例的设置：
 
@@ -57,7 +57,7 @@ ms.locfileid: "71203692"
 
 3. 选择 "**请求新的密钥对和证书**" 请求私钥，并使用应用程序的公钥来请求新的签名证书。
 
-   ![生成新的密钥对和证书的屏幕截图](media/howto-opc-vault-secure/generate-new-key-pair.png "生成新的密钥对")
+   ![生成新的密钥对和证书的屏幕截图](media/howto-opc-vault-secure/generate-new-key-pair.png "生成新密钥对")
 
 4. 使用主题和域名填写表单。 对于私钥，选择 PEM 或具有密码的 PFX。 选择 "**生成新的密钥**对" 以创建证书申请。
 
@@ -98,7 +98,7 @@ ms.locfileid: "71203692"
 
 现在，它依赖于 OPC UA 设备如何应用新证书。 通常会将 CA 证书和 CRL 复制到 `trusted` 文件夹中，同时应用程序证书应用于证书存储中的 `own` 文件夹。 某些设备可能已支持服务器推送以实现证书更新。 请参阅 OPC UA 设备的文档。
 
-### <a name="step-4-device-secured"></a>步骤4：设备安全
+### <a name="step-3-device-secured"></a>步骤3：设备安全
 
 OPC UA 设备现在已准备好与受 CA 签名证书保护的其他 OPC UA 设备通信，无需进一步配置。
 

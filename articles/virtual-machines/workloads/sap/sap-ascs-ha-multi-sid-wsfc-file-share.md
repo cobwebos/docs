@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00c38c5c8140bffe0767ebe69470285bb15f5fc6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5638d71748c485c593dde8d9876400a40821ca28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098719"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643145"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -39,9 +39,9 @@ ms.locfileid: "70098719"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 [sap-installation-guides-file-share]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -189,7 +189,7 @@ ms.locfileid: "70098719"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -215,15 +215,15 @@ ms.locfileid: "70098719"
 > 本文档中介绍的配置尚不支持用于 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
+有关负载均衡器限制的详细信息，请参阅[网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]中的 "每个负载均衡器的专用前端 IP" 部分。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
 
 ![图 1：在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS][sap-ha-guide-figure-8007]
 
-_**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
+_图 1：在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
@@ -238,9 +238,9 @@ _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 ![图 2：两个群集中的 SAP 多 SID 配置][sap-ha-guide-figure-8008]
 
-_**图 2：** 两个群集中的 SAP 多 SID 配置_
+_图 2：两个群集中的 SAP 多 SID 配置_
 
-安装其他 **\<SAP SID2 >** 系统与安装一个\<SID > 系统相同。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
+安装其他**SAP \<SID2 >** 系统与安装一个 \<SID > 系统完全相同。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>为 SAP 多 SID 方案准备基础结构
 
@@ -260,17 +260,17 @@ _**图 2：** 两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>通过使用现有的 SAP 全局主机在 SOFS 群集上准备基础结构
 
-你可以重复使用第\<一个 SAP \<SID1 > 系统的现有 SAPGlobalHost > 和 Volume1。
+你可以重复使用第一个 SAP \<SID1 > 系统的现有 \<SAPGlobalHost > 和 Volume1。
 
 ![图 3：多 SID SOFS 使用相同的 SAP 全局主机名][sap-ha-guide-figure-8014]
 
-_**图 3：** 多 SID SOFS 使用相同的 SAP 全局主机名_
+_图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 
 > [!IMPORTANT]
 >对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称。
 >因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 \<SAPGlobalHost> 网络名称，则必须使用相同 Volume1.
 >
->\<SID2 > 全局主机的文件路径为 C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>\<SID2 > 全局主机的文件路径是 C:\ClusterStorage\\**Volume1**\USR\SAP\<SID2 > \SYS\.
 >
 
 对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\. SOFS 群集上的文件夹。
@@ -330,7 +330,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ![图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2][sap-ha-guide-figure-8015]
 
-_**图 4：** 多 SID SOFS 使用相同的 SAP 全局主机名 2_
+_图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2_
 
 若要创建使用 \<SAPGlobalHost2> 的第二个 SOFS 角色，请执行此 PowerShell 脚本：
 
@@ -346,9 +346,9 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![图 5：故障转移群集管理器中的第二个 Volume2][sap-ha-guide-figure-8016]
+![图5：故障转移群集管理器中的第二个 Volume2][sap-ha-guide-figure-8016]
 
-_**图 5：** 故障转移群集管理器中的第二个 Volume2_
+_图 5：故障转移群集管理器中的第二个 Volume2_
 
 为第二个 \<SID2> 创建 SAP 全局文件夹，并设置文件安全性。
 
@@ -399,31 +399,31 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ![图 6：启动“添加文件共享”向导][sap-ha-guide-figure-8017]
 
-_**图 6：** 启动“添加文件共享”向导_
+图 6：启动“添加文件共享”向导
 
 <br>
 
-![图 7："选择 SMB 共享-快速"][sap-ha-guide-figure-8018]
+![图7： "选择 SMB 共享-快速"][sap-ha-guide-figure-8018]
 
-_**图 7：** 选择“SMB 共享 - 快速”_
-
-<br>
-
-![图 8：选择 "sapglobalhost2", 并在 Volume2 上指定路径][sap-ha-guide-figure-8019]
-
-_**图 8：** 选择“sapglobalhost2”，并指定 Volume2 上的路径_
+_图 7：选择“SMB 共享 - 快速”_
 
 <br>
 
-![图 9：将文件共享名设置为 "sapmnt"][sap-ha-guide-figure-8020]
+![图8：选择 "sapglobalhost2"，并在 Volume2 上指定路径][sap-ha-guide-figure-8019]
 
-_**图 9：** 将文件共享名设置为“sapmnt”_
+_图 8：选择“sapglobalhost2”，并指定 Volume2 上的路径_
+
+<br>
+
+![图9：将文件共享名设置为 "sapmnt"][sap-ha-guide-figure-8020]
+
+_图 9：将文件共享名设置为“sapmnt”_
 
 <br>
 
 ![图 10：禁用所有设置][sap-ha-guide-figure-8021]
 
-_**图 10：** 禁用所有设置_
+图 10：禁用所有设置
 
 <br>
 
@@ -433,19 +433,19 @@ _**图 10：** 禁用所有设置_
 
 ![图 11：为用户组和计算机帐户分配完全控制权限][sap-ha-guide-figure-8022]
 
-_**图 11：** 为用户组和计算机帐户分配“完全控制”权限_
+_图 11：为用户组和计算机帐户分配“完全控制”权限_
 
 <br>
 
-![图 12：选择“创建”][sap-ha-guide-figure-8023]
+![图12：选择 "创建"][sap-ha-guide-figure-8023]
 
-_**图 12：** 选择“创建”_
+_图 12：选择“创建”_
 
 <br>
 
-![图 13：已创建绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt][sap-ha-guide-figure-8024]
+![图 13：绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建][sap-ha-guide-figure-8024]
 
-_**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建_
+_图 13：绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建_
 
 <br>
 
@@ -460,7 +460,7 @@ _**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在没有共享磁盘的故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]:HA 文件共享的官方 SAP 指南
+* [在没有共享磁盘的故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]： HA 文件共享的官方 SAP 指南
 
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 

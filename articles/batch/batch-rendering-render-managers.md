@@ -1,18 +1,18 @@
 ---
 title: 渲染器管理器支持 - Azure Batch
-description: 通过 Azure Batch 渲染器管理器集成将 Azure 用于渲染
+description: 使用 Azure Batch 呈现管理器集成。 了解适用于常用呈现管理器的内置支持或加载项。
 services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 246907b16534d1a91833cab633a1973c97429f47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449684"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>将 Azure Batch 与渲染器场管理器配合使用
 
@@ -26,7 +26,7 @@ Azure 为常用的渲染器管理器提供内置支持或加载项。 然后，�
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
-## <a name="azure-render-hub"></a>Azure 呈现中心
+## <a name="azure-render-hub"></a>Azure Render Hub
 
 Azure 渲染中心简化了 Azure 渲染场的创建和管理。  呈现中心提供对 PipelineFx Qube 和截止时间10的本机支持。  有关详细信息和详细说明，请参阅[GitHub 存储库](https://github.com/Azure/azure-render-hub)。
 

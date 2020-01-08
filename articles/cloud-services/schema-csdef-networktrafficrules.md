@@ -1,5 +1,5 @@
 ---
-title: Azure 云服务定义NetworkTrafficRules 架构 | Microsoft Docs
+title: Azure 云服务定义 NetworkTrafficRules 架构 |Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,15 +10,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
 caps.latest.revision: 17
-author: georgewallace
-ms.author: gwallace
-manager: gwallace
-ms.openlocfilehash: e99b9f0f601841fe6ff32eba0a43bfafd652e941
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: e6d156810b9fdee69ddac122eec06db7267ddf36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449039"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 云服务定义 NetworkTrafficRules 架构
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
@@ -76,7 +75,7 @@ AllowAllTraffic 元素
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 元素
 `RoleEndpoint` 元素描述角色上允许与之进行通信的终结点。 如果角色上有多个终结点，可以指定多个 `RoleEndpoint` 元素。
 
-| 特性      | 类型     | 描述 |
+| Attribute      | 类型     | Description |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必需。 允许将流量发送到的终结点的名称。|
 | `roleName`     | `string` | 必需。 允许与之进行通信的 web 角色的名称。|
@@ -87,16 +86,20 @@ AllowAllTraffic 元素
 ##  <a name="WhenSource"></a> WhenSource 元素
 `WhenSource` 元素描述可以与 `Destinations` 节点中定义的终结点进行通信的角色的集合。
 
-| 特性 | 类型     | 描述 |
+| Attribute | 类型     | Description |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必需。 指定允许通信时要应用的规则。 目前唯一有效的值是 `AnyRule`。|
   
 ##  <a name="FromRole"></a> FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
-| 特性  | 类型     | 描述 |
+| Attribute  | 类型     | Description |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [云服务（经典）定义架构](schema-csdef-file.md)
+
+
+
+

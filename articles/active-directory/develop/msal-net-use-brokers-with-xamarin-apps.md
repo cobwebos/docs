@@ -1,5 +1,5 @@
 ---
-title: Xamarin 上的中转身份验证、iOS & Android |Microsoft
+title: 将代理与 Xamarin、iOS、& Android 配合使用 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何将可使用 Microsoft Authenticator 从适用于 .NET 的 Azure AD 身份验证库（ADAL.NET）的 Xamarin iOS 应用程序迁移到适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 49198909da103debd77fcf0d630e0fa16c1e4448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424225"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序上使用 Microsoft Authenticator 或 Microsoft Intune 公司门户
 
@@ -37,7 +37,7 @@ ms.locfileid: "74921847"
 ### <a name="step-1-enable-broker-support"></a>步骤1：启用代理支持
 代理支持基于每个 PublicClientApplication 启用。 此项默认禁用。 通过 PublicClientApplicationBuilder 创建 PublicClientApplication 时，请使用 `WithBroker()` 参数（默认设置为 true）。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -45,10 +45,24 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 
-### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>步骤2：更新 AppDelegate 以处理回调
+### <a name="step-2-enable-keychain-access"></a>步骤2：启用密钥链访问
+
+若要启用密钥链访问，应用程序必须具有密钥链访问组。 创建应用程序时，可以使用 `WithIosKeychainSecurityGroup()` API 设置密钥链访问组：
+
+```csharp
+var builder = PublicClientApplicationBuilder
+     .Create(ClientId)
+      
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
+     .Build();
+```
+
+有关详细信息，请参阅[启用密钥链访问](msal-net-xamarin-ios-considerations.md#enable-keychain-access)。
+
+### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>步骤3：更新 AppDelegate 以处理回调
 当适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）调用代理时，代理反过来会通过 `AppDelegate` 类的 `OpenUrl` 方法返回到你的应用程序。 由于 MSAL 会等待来自代理的响应，因此，你的应用程序需要通过合作来调用 MSAL.NET。 若要启用此协作，请更新 `AppDelegate.cs` 文件以重写以下方法。
 
-```CSharp
+```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
                              string sourceApplication,
                              NSObject annotation)
@@ -70,7 +84,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 每次启动应用程序时，都会调用此方法。 它用作处理来自代理的响应并完成 MSAL.NET 启动的身份验证过程的机会。
 
-### <a name="step-3-set-a-uiviewcontroller"></a>步骤3：设置 UIViewController （）
+### <a name="step-4-set-a-uiviewcontroller"></a>步骤4：设置 UIViewController （）
 仍在 `AppDelegate.cs`中，需要设置对象窗口。 通常，在 Xamarin iOS 中，无需设置 "对象" 窗口。 若要发送和接收来自代理的响应，需要对象窗口。 
 
 为此，您需要执行两项操作。 
@@ -80,22 +94,22 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 例如：
 
 在 `App.cs` 中：
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 在 `AppDelegate.cs` 中：
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 在获取令牌调用中：
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
 ```
 
-### <a name="step-4-register-a-url-scheme"></a>步骤4：注册 URL 方案
+### <a name="step-5-register-a-url-scheme"></a>步骤5：注册 URL 方案
 MSAL.NET 使用 Url 调用 broker，然后将 broker 响应返回到应用。 若要完成往返行程，请在 `Info.plist` 文件中注册应用的 URL 方案。
 
 `CFBundleURLSchemes` 名称必须包括 `msauth.` 作为前缀，后跟 `CFBundleURLName`。
@@ -125,7 +139,7 @@ MSAL.NET 使用 Url 调用 broker，然后将 broker 响应返回到应用。 �
     </array>
 ```
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步骤5：将 broker 标识符添加到 LSApplicationQueriesSchemes 部分
+### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>步骤6：将 broker 标识符添加到 LSApplicationQueriesSchemes 部分
 MSAL 使用 `–canOpenURL:` 来检查设备上是否安装了 broker。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 
 
 将 `msauthv2` 添加到 `Info.plist` 文件的 `LSApplicationQueriesSchemes` 部分。
@@ -134,21 +148,22 @@ MSAL 使用 `–canOpenURL:` 来检查设备上是否安装了 broker。 在 iOS
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
+      <string>msauthv3</string>
     </array>
 ```
 
-### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>步骤6：在应用程序门户中注册重定向 URI
+### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>步骤7：在应用程序门户中注册重定向 URI
 使用 broker 会对重定向 URI 增加额外的要求。 重定向 URI_必须_采用以下格式：
-```CSharp
+```csharp
 $"msauth.{BundleId}://auth"
 ```
 例如：
-```CSharp
+```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 请注意，重定向 URI 与 `Info.plist` 文件中包含的 `CFBundleURLSchemes` 名称匹配。
 
-### <a name="step-7-make-sure-the-redirect-uri-is-registered-with-your-app"></a>步骤7：确保重定向 URI 已注册到你的应用
+### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>步骤8：确保重定向 URI 已注册到你的应用
 
 需要在应用注册门户上注册此重定向 URI （ https://portal.azure.com) 作为应用程序的有效重定向 URI。 
 

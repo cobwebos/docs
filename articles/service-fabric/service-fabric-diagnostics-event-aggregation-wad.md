@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 事件聚合与 Microsoft Azure 诊断 | Microsoft Docs
+title: 包含 Windows Azure 诊断的事件聚合
 description: 了解使用 WAD 监视和诊断 Azure Service Fabric 群集的聚合和收集事件。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242972"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614513"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -38,7 +29,7 @@ ms.locfileid: "73242972"
 ## <a name="prerequisites"></a>必备组件
 本文中使用了以下工具：
 
-* [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
+* [Azure 资源管理器](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Resource Manager 模板](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

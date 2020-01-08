@@ -1,42 +1,33 @@
 ---
-title: Azure Service Fabric 中的按需备份 | Microsoft Docs
+title: Azure Service Fabric 中的按需备份
 description: 使用 Service Fabric 中的备份和还原功能来实现应用程序数据的按需备份。
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 02DA262A-EEF6-4F90-842E-FFC4A09003E5
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 88698a7a0f78987dc96bf7f39831ec1a7560a359
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458418"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的按需备份
 
 可将可靠有状态服务和 Reliable Actors 的数据进行备份，以解决灾难或数据丢失的情况。
 
-Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreservice-quickstart-azurecluster.md)和按需备份数据的功能。 按需备份很有用，因为它可防止由于在基础服务或其环境中的计划更改而导致的数据丢失_数据损坏。_ /
+Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreservice-quickstart-azurecluster.md)和按需备份数据的功能。 按需备份很有用，因为它可防止由于在基础服务或其环境中的计划更改而导致的数据丢失/数据损坏。
 
 在手动触发服务或服务环境操作之前，按需备份功能有助于捕获服务的状态。 例如，如果你在升级或降级服务时对服务二进制文件做出了更改。 在这种情况下，按需备份可以帮助防止应用程序代码 bug 导致数据损坏。
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
+- 安装 ServiceFabric 模块 [In Preview]，以便进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
+- 使用 ServiceFabric 模块进行任何配置请求之前，请确保使用 `Connect-SFCluster` 命令连接群集。
 
 ```powershell
 
@@ -55,7 +46,7 @@ Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreserv
 
 以下用例是[为可靠有状态服务和 Reliable Actors 启用定期备份](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)中的方案的延续。 在本例中，你启用了一个备份策略，以使用某个分区，并按设置的频率在 Azure 存储中创建备份。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 
@@ -80,7 +71,7 @@ Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -Certif
 可以请求可靠有状态服务或 Reliable Actor 的分区的按需备份。 请在按需备份请求中提供存储信息。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 
@@ -129,7 +120,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 不同的分区可以同时触发按需备份请求。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
 
 ```powershell
 

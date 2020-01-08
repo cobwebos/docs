@@ -1,18 +1,18 @@
 ---
 title: 与 Azure 服务总线交换消息
-description: 在 Azure 逻辑应用中使用 Azure 服务总线发送和接收消息
+description: 通过在 Azure 逻辑应用中使用 Azure 服务总线，创建用于发送和接收消息的自动任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789388"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445891"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -45,7 +45,7 @@ ms.locfileid: "74789388"
 
 确认逻辑应用有权访问服务总线命名空间。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 转到服务总线的命名空间。 在命名空间页上的“设置”下，选择“共享访问策略”。 在“声明”下，检查你是否有该命名空间的“管理”权限。
 

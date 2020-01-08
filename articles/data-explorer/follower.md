@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440970"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
 
@@ -28,7 +28,7 @@ ms.locfileid: "74667352"
 
 ## <a name="prerequisites"></a>必备组件
 
-1. 如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+1. 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 1. 为领导和执行程序[创建群集和 DB](/azure/data-explorer/create-cluster-database-portal) 。
 1. 使用[引入概述](/azure/data-explorer/ingest-data-overview)中讨论的各种方法之一将[数据](/azure/data-explorer/ingest-sample-data)引入到领导者数据库。
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板附加数据库
 
-本部分介绍如何使用[Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md)附加数据库。 
+本部分介绍如何使用[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)附加数据库。 
 
 ```json
 {
@@ -222,7 +222,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 |数据库名称     |      要遵循的数据库的名称。 如果要跟踪领导的所有数据库，请使用 "*"。   |
 |领导群集资源 ID    |   领导者群集的资源 ID。      |
 |默认主体修改种类    |   默认主体修改类型。 可以是 `Union`、`Replace` 或 `None`。 有关默认主体修改类型的详细信息，请参阅[principal 修改 kind control 命令](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)。      |
-|Location   |   所有资源的位置。 领导者和从动者必须位于同一位置。       |
+|位置   |   所有资源的位置。 领导者和从动者必须位于同一位置。       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>验证数据库是否已成功附加
 
@@ -376,8 +376,8 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 |**种类** |**说明**  |
 |---------|---------|
-|**交集**     |   附加的数据库主体将始终包含原始数据库主体以及添加到该数据源数据库的额外新主体。      |
-|**Replace**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新的主体。     |
+|**Union**     |   附加的数据库主体将始终包含原始数据库主体以及添加到该数据源数据库的额外新主体。      |
+|**替换**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新的主体。     |
 |无   |   附加的数据库主体只包含原始数据库的主体，而没有其他主体。      |
 
 有关使用控制命令配置授权主体的详细信息，请参阅[用于管理使用者群集的控制命令](/azure/kusto/management/cluster-follower)。

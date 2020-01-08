@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178186"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689374"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -57,17 +57,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 在[多区域部署](api-management-howto-deploy-multi-region.md)中，每个区域部署都有一个公共 IP 地址。
 
-## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNET 中 API 管理服务的 IP 地址
+## <a name="ip-addresses-of-api-management-service-in-vnet"></a>VNet 中 API 管理服务的 IP 地址
 
 如果 API 管理服务在虚拟网络中，则会有两种类型的 IP 地址：公用和专用。
 
-公共 IP 地址用于端口`3443`上的内部通信，用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNET 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众的（面向 Internet）后端时，公共 IP 地址将显示为请求的源。
+公共 IP 地址用于端口 `3443` 上的内部通信-用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNet 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众的（面向 Internet）后端时，公共 IP 地址将显示为请求的源。
 
 专用虚拟 IP （VIP）地址用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 你可以使用它们来设置网络中的 DNS 记录。
 
 你将在 Azure 门户和 API 调用的响应中看到两种类型的地址：
 
-![VNET IP 地址中的 API 管理](media/api-management-howto-ip-addresses/vnet-ip.png)
+![VNet IP 地址中的 API 管理](media/api-management-howto-ip-addresses/vnet-ip.png)
 
 
 ```json
@@ -89,6 +89,8 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
+对于 vnet 外的连接，API 管理使用公共 IP 地址和 VNet 中的连接的专用 IP 地址。
+
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>消耗层 API 管理服务的 IP 地址
 
 如果 API 管理服务是消耗层服务，则没有专用 IP 地址。 消耗层服务在共享基础结构上运行，没有确定性的 IP 地址。 
@@ -102,6 +104,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 * 服务被删除，然后重新创建。
 * 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
 * Azure 虚拟网络将添加到服务或从服务中删除。
-* API 管理服务在外部和内部 Vnet 部署模式间切换。
+* API 管理服务在外部和内部 VNet 部署模式间切换。
 
 在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域已空出然后恢复，则区域 IP 地址会发生更改。

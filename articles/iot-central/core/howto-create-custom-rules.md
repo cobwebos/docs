@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8c0328c1d82af5e96afca29f05a065450eab9ae4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435006"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
@@ -38,19 +38,19 @@ ms.locfileid: "72950738"
 
 使用以下设置在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建 IoT Central 应用程序：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 付款计划 | 现用现付 |
-| 应用程序模板 | 示例 Contoso |
+| 应用程序模板 | 旧版应用程序 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 地区 | 美国东部 |
+| 地区 | 美国 |
 
-本文中的示例和屏幕截图使用**美国东部**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
+本文中的示例和屏幕截图使用**美国**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>资源组
 
 使用 Azure 门户创建名为**DetectStoppedDevices**的[资源组](https://portal.azure.com/#create/Microsoft.ResourceGroup)，以包含您创建的其他资源。 在 IoT Central 应用程序所在的同一位置创建 Azure 资源。
 
@@ -58,25 +58,25 @@ ms.locfileid: "72950738"
 
 使用 Azure 门户创建具有以下设置的[事件中心命名空间](https://portal.azure.com/#create/Microsoft.EventHub)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
-| Subscription | 你的订阅 |
-| Resource group | DetectStoppedDevices |
-| Location | 美国东部 |
+| 订阅 | 订阅 |
+| 资源组 | DetectStoppedDevices |
+| 位置 | 美国东部 |
 | 吞吐量单位 | 第 |
 
 ### <a name="stream-analytics-job"></a>流分析作业
 
 使用 Azure 门户创建具有以下设置的[流分析作业](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择作业名称 |
-| Subscription | 你的订阅 |
-| Resource group | DetectStoppedDevices |
-| Location | 美国东部 |
+| 订阅 | 订阅 |
+| 资源组 | DetectStoppedDevices |
+| 位置 | 美国东部 |
 | 宿主环境 | 云 |
 | 流式处理单元 | 3 |
 
@@ -84,14 +84,14 @@ ms.locfileid: "72950738"
 
 使用 Azure 门户创建具有以下设置的[函数应用](https://portal.azure.com/#create/Microsoft.FunctionApp)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 应用程序名称    | 选择函数应用名称 |
-| Subscription | 你的订阅 |
-| Resource group | DetectStoppedDevices |
+| 订阅 | 订阅 |
+| 资源组 | DetectStoppedDevices |
 | OS | Windows |
 | 托管计划 | 消耗计划 |
-| Location | 美国东部 |
+| 位置 | 美国东部 |
 | 运行时堆栈 | .NET |
 | 存储空间 | 新建 |
 
@@ -99,12 +99,12 @@ ms.locfileid: "72950738"
 
 使用 Azure 门户创建具有以下设置的[SendGrid 帐户](https://portal.azure.com/#create/Sendgrid.sendgrid)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择你的 SendGrid 帐户名称 |
 | 密码 | 创建密码 |
-| Subscription | 你的订阅 |
-| Resource group | DetectStoppedDevices |
+| 订阅 | 订阅 |
+| 资源组 | DetectStoppedDevices |
 | 定价层 | F1 免费 |
 | 联系人信息 | 填写所需信息 |
 
@@ -240,20 +240,20 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 在 Azure 门户中，导航到流分析作业，在 "**作业拓扑**" 下，选择 "**输入**"，选择 " **+ 添加流输入**"，然后选择 "**事件中心**"。
 1. 使用下表中的信息，使用之前创建的事件中心配置输入，然后选择 "**保存**"：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 输入别名 | centraltelemetry |
-    | Subscription | 你的订阅 |
+    | 订阅 | 订阅 |
     | 事件中心命名空间 | 事件中心命名空间 |
     | 事件中心名称 | 使用现有- **centralexport** |
 
 1. 在 "**作业拓扑**" 下，选择 "**输出**"，选择 " **+ 添加**"，然后选择 " **Azure 函数**"。
 1. 使用下表中的信息来配置输出，然后选择 "**保存**"：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 输出别名 | emailnotification |
-    | Subscription | 你的订阅 |
+    | 订阅 | 订阅 |
     | 函数应用 | 函数应用 |
     | 函数  | HttpTrigger1 |
 
@@ -310,7 +310,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 导航到 "**连续数据导出**" 页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出，然后选择 "**保存**"：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
     | 已启用 | 开 |

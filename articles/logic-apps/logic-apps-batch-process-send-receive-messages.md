@@ -1,6 +1,6 @@
 ---
 title: 批处理消息作为组
-description: 在 Azure 逻辑应用中以批的形式发送和接收消息
+description: 在 Azure 逻辑应用中使用批处理，在工作流之间的组中发送和接收消息
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e48d2bb2ffce0dd4f9293417534165165d426784
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791571"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666748"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -55,14 +55,14 @@ ms.locfileid: "74791571"
 
 3. 为批接收方设置以下属性： 
 
-   | properties | 描述 | 
+   | 属性 | Description | 
    |----------|-------------|
    | **批处理模式** | - **内联**：用于在批处理触发器中定义发布条件 <br>- **集成帐户**：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
    | **批名称** | 批的名称（在本示例中为“TestBatch”），仅适用于“内联”批处理模式 |  
    | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件： <p>**基于 - 消息计数**：根据批处理收集的消息数释放批处理。 <br>**基于 - 大小**：根据该批处理收集的所有消息的总大小（以字节为单位）释放该批。 <br>- **计划**：根据定期计划发布批处理，该计划指定时间间隔和频率。 在高级选项中，还可以选择时区，并提供开始日期和时间。 <br>- **全选**：使用所有指定的条件。 | 
    | **消息计数** | 要在批中收集的消息数，例如 10 条消息。 批的限制为 8,000 条消息。 | 
    | **批大小** | 批中要收集的总大小（以字节为单位），例如10 MB。 批的大小上限是 80 MB。 | 
-   | **计划** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 要指定时区或开始日期和时间，请选择“显示高级选项”。 | 
+   | **“计划”** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 要指定时区或开始日期和时间，请选择“显示高级选项”。 | 
    ||| 
 
    > [!NOTE]
@@ -168,7 +168,7 @@ ms.locfileid: "74791571"
 
 3. 设置批发送方的属性：
 
-   | properties | 描述 | 
+   | 属性 | Description | 
    |----------|-------------| 
    | **批名称** | 接收方逻辑应用定义的批名称，在本示例中为“TestBatch” <p>**重要说明**：批名称在运行时将接受验证，必须与接收方逻辑应用指定的名称相匹配。 更改批名称会导致批发送方失败。 | 
    | **消息内容** | 要发送的消息内容 | 
@@ -186,7 +186,7 @@ ms.locfileid: "74791571"
 
 4. 现在为批设置分区。 在“BatchReceiver”操作中，选择“显示高级选项”并设置以下属性：
 
-   | properties | 描述 | 
+   | 属性 | Description | 
    |----------|-------------| 
    | **分区名称** | 可选的唯一分区键，用于将目标批分割为逻辑子集，并基于该键收集消息 | 
    | **消息 ID** | 可选的消息标识符，为空时是系统生成的全局唯一标识符 (GUID) | 

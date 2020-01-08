@@ -1,25 +1,14 @@
 ---
-title: 保护 Azure Service Fabric 群集 | Microsoft Docs
+title: 保护 Azure Service Fabric 群集
 description: 了解有关 Azure Service Fabric 群集的安全性方案，以及用于实现它们的各种技术。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/14/2018
-ms.author: atsenthi
-ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: f00a356a948a6bb76d12b39a03cd156fcb975d4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451878"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 可以创建不安全的群集，但是，如果群集向公共 internet 公开管理终结点，则匿名用户可以连接到该群集。 生产工作负荷不支持不安全群集。 
@@ -66,7 +55,7 @@ Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止�
 若要了解如何在群集中为独立 Windows Server 群集设置证书安全性，请参阅[通过使用 X.509 证书在 Windows 上保护独立群集](service-fabric-windows-cluster-x509-security.md)。
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Azure 上客户端到节点的 Azure Active Directory 安全性
-通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 应用程序分为采用基于 Web 的登录 UI 的应用程序和采用本地客户端体验的应用程序。 如果尚未创建租户，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
+通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 应用程序分为采用基于 Web 的登录 UI 的应用程序和采用本地客户端体验的应用程序。 如果尚未创建租户，请首先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
 
 Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 的 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio]。 因此，需要创建两个 Azure AD 应用程序来控制对群集的访问：一个 Web 应用程序和一个本机应用程序。
 
@@ -112,8 +101,8 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 
 其他注意事项：
 
-* “使用者”字段可有多个值。 每个值都以名称首字母为前缀，指示值的类型。 常见的名称首字母是“CN”（表示公用名），例如 **CN = www**contoso.com **\.** 。 
-* “使用者”字段可为空。 
+* “使用者”字段可有多个值。 每个值都以名称首字母为前缀，指示值的类型。 通常，初始化为**CN** （适用于*公用名*）;例如， **CN = www\.contoso.com**。 
+* "**使用者**" 字段可以为空。 
 * 如果可选的“使用者可选名称”字段已填充数据，则此字段必须包含证书的公用名，以及每个 SAN 的一个条目。 这些内容作为“DNS 名称”值输入。 要了解如何生成具有 SAN 的证书，请参阅[如何向安全 LDAP 证书添加使用者可选名称](https://support.microsoft.com/kb/931351)。
 * 证书的“预期目的”字段值应包含适当的值，例如“服务器身份验证”或“客户端身份验证”。
 

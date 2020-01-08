@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582228"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646721"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>将数据移动到 Azure Blob 存储
 
@@ -21,7 +21,7 @@ ms.locfileid: "73582228"
 
 请记住以下事实：
 
-* Azure HPC 缓存使用专用存储格式在 Blob 存储中组织数据。 这就是 Blob 存储目标必须是新的空容器或以前用于 Azure HPC 缓存数据的 Blob 容器的原因。 （[适用于 Azure 的 Avere vFXT](https://azure.microsoft.com/services/storage/avere-vfxt/)也使用此云文件系统。）
+* Azure HPC 缓存使用专用存储格式在 Blob 存储中组织数据。 这就是 Blob 存储目标必须是新的空容器或以前用于 Azure HPC 缓存数据的 Blob 容器的原因。 <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * 当使用多个客户端和并行操作时，通过 Azure HPC 缓存将数据复制到后端存储目标更有效。 一台客户端的简单复制命令会慢慢地移动数据。
 
@@ -31,7 +31,7 @@ ms.locfileid: "73582228"
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>在 Blob 存储中通过 CLFSLoad 预加载数据
 
-你可以使用 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad 实用程序，可将数据复制到新的 Blob 存储容器，然后将其添加为存储目标。 此实用程序在单个 Linux 系统上运行，并以 Azure HPC 缓存所需的专用格式写入数据。 CLFSLoad 是最有效的方法来填充用于缓存的 Blob 存储容器。
+您可以使用 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Avere CLFSLoad 实用程序，可将数据复制到新的 Blob 存储容器，然后将其添加为存储目标。 此实用程序在单个 Linux 系统上运行，并以 Azure HPC 缓存所需的专用格式写入数据。 CLFSLoad 是最有效的方法来填充用于缓存的 Blob 存储容器。
 
 Azure HPC 缓存团队发出的请求提供了 Avere CLFSLoad 实用程序。 [向你](hpc-cache-support-ticket.md)的团队联系以获取帮助。
 

@@ -1,32 +1,23 @@
 ---
-title: Azure Service Fabric CLI- sfctl chaos schedule | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl chaos schedule 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl 混乱计划
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于混乱计划的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897545"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639167"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 获取和设置 Chaos Schedule。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|命令|Description|
 | --- | --- |
 | get | 获取定义何时以及如何运行 Chaos 的 Chaos Schedule。 |
 | set | 设置 Chaos 使用的计划。 |
@@ -38,19 +29,19 @@ ms.locfileid: "72897545"
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 设置 Chaos 使用的计划。
@@ -59,24 +50,24 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
 
 ### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
 | --chaos-parameters-dictionary | 一个 JSON 编码列表，表示字符串名称到 Jobs 要使用的 ChaosParameters 的映射。 |
 | --expiry-date-utc | 停止使用 Schedule 来计划 Chaos 的日期和时间。  默认值\: 9999-12-31T23\:59\:59.999Z。 |
 | --jobs | ChaosScheduleJobs 的 JSON 编码列表，表示何时运行 Chaos 以及使用哪些参数运行 Chaos。 |
-| --start-date-utc | 开始使用 Schedule 来计划 Chaos 的日期和时间。  默认值：1601-01-01T00\:00\:00.000Z。 |
+| --start-date-utc | 开始使用 Schedule 来计划 Chaos 的日期和时间。  默认值\: 1601-01-01T00\:00\:00.000Z。 |
 | --timeout -t | 默认值\: 60。 |
 | --version | Schedule 的版本号。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|Description|
 | --- | --- |
-| --debug | 提高日志记录详细程度，以显示所有调试日志。 |
+| --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ### <a name="examples"></a>示例
 
@@ -146,5 +137,5 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md) Service Fabric CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

@@ -1,5 +1,5 @@
 ---
-title: JavaScript 示例 - Azure Active Directory B2C | Microsoft Docs
+title: JavaScript 示例-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
 author: mmacy
@@ -10,25 +10,29 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 996893f95b11d716feb4253688d3ab1d62d140ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064186"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659519"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-您可以将自己的 JavaScript 客户端代码添加到您的 Azure Active Directory B2C （Azure AD B2C）应用程序中。 若要为应用程序启用 JavaScript, 则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md), 选择[页面布局](page-layout.md), 并在请求中使用[b2clogin.com](b2clogin.md) 。 本文介绍如何更改自定义策略以启用脚本执行。
+您可以将自己的 JavaScript 客户端代码添加到您的 Azure Active Directory B2C （Azure AD B2C）应用程序中。 若要为应用程序启用 JavaScript，则必须将元素添加到[自定义策略](active-directory-b2c-overview-custom.md)，选择[页面布局](page-layout.md)，并在请求中使用[b2clogin.com](b2clogin.md) 。 本文介绍如何更改自定义策略以启用脚本执行。
 
 > [!NOTE]
-> 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面布局版本](user-flow-javascript-overview.md)。
+> 如果要为用户流启用 JavaScript，请参阅[Azure Active Directory B2C 中的 javascript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-为应用程序的用户界面元素选择页面布局。 如果打算使用 Javascript，需要为自定义策略中的所有内容定义定义一个页面布局版本。
+### <a name="select-a-page-layout"></a>选择页面布局
+
+* 为应用程序的用户界面元素[选择页面布局](page-layout.md)。
+
+    如果打算使用 JavaScript，则需要为自定义策略中的*所有*内容定义[定义页面布局版本](page-layout.md#replace-datauri-values)。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
@@ -143,7 +147,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建一个名为 **termsOfUse** 的新用户属性，然后包括 **termsOfUse** 作为用户属性。
+在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于目录，创建名为 " **termsOfUse** " 的新用户属性，然后将 " **termsOfUse** " 作为用户属性。
 
 ## <a name="next-steps"></a>后续步骤
 

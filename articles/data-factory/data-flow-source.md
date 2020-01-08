@@ -7,15 +7,15 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/06/2019
-ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 12/12/2019
+ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702041"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440220"
 ---
-# <a name="source-transformation-for-mapping-data-flow"></a>映射数据流的源转换 
+# <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换 
 
 源转换为数据流配置数据源。 在设计数据流时，第一步将始终配置源转换。 若要添加源，请在数据流画布中单击 "**添加源**" 框。
 
@@ -23,18 +23,20 @@ ms.locfileid: "74702041"
 
 每个源转换只与一个数据工厂数据集相关联。 数据集定义要写入或读取的数据的形状和位置。 如果使用基于文件的数据集，则可以使用源中的通配符和文件列表一次处理多个文件。
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>映射数据流中支持的连接器
+## <a name="supported-source-connectors-in-mapping-data-flow"></a>映射数据流中支持的源连接器
 
 映射数据流遵循提取、加载和转换（ELT）方法，并且适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
     
-* Azure Blob 存储（JSON、Avro、Text、Parquet）
-* Azure Data Lake Storage Gen1 （JSON，Avro，Text，Parquet）
-* Azure Data Lake Storage Gen2 （JSON，Avro，Text，Parquet）
-* Azure SQL 数据仓库
-* Azure SQL Database
-* Azure CosmosDB
+* [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)（JSON、Avro、Text、Parquet）
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
+* [Azure Synapse 分析](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
+特定于这些连接器的设置位于 "**源选项**" 选项卡中。有关这些设置的信息位于连接器文档中。 
+
+Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
 
 ## <a name="source-settings"></a>源设置
 
@@ -54,95 +56,12 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 **采样：** 启用采样以限制源中的行数。 当你在源中测试数据或对数据进行采样以便进行调试时，请使用此设置。
 
-**多行行：** 如果源文本文件包含跨多行的字符串值（即值中的换行符），请选择多行行。
+**多行行：** 如果源文本文件包含跨多行的字符串值（即值中的换行符），请选择多行行。 此设置仅可用于 DelimitedText 数据集。
 
 若要验证是否正确配置了源，请打开调试模式并提取数据预览。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
 > [!NOTE]
 > 当调试模式处于打开状态时，"调试" 设置中的行限制配置将覆盖数据预览期间源中的采样设置。
-
-## <a name="file-based-source-options"></a>基于文件的源选项
-
-如果你使用的是基于文件的数据集（例如 Azure Blob 存储或 Azure Data Lake Storage），则 "**源选项**" 选项卡可让你管理源读取文件的方式。
-
-![源选项](media/data-flow/sourceOPtions1.png "源选项")
-
-**通配符路径：** 使用通配符模式将指示 ADF 通过单个源转换循环遍历每个匹配的文件夹和文件。 这是在单个流中处理多个文件的有效方法。 添加多个通配符匹配模式，并在将鼠标悬停在现有通配符模式上时显示的 + 符号。
-
-从源容器中，选择与模式匹配的一系列文件。 只能在数据集中指定容器。 因此，你的通配符路径必须包含根文件夹中的文件夹路径。
-
-通配符示例：
-
-* ```*``` 表示任意字符集
-* ```**``` 表示递归目录嵌套
-* ```?``` 替换一个字符
-* ```[]``` 匹配括号中的一个或多个字符
-
-* ```/data/sales/**/*.csv``` 获取/data/sales 下的所有 csv 文件。
-* ```/data/sales/20??/**``` 获取20世纪的所有文件
-* ```/data/sales/2004/*/12/[XY]1?.csv``` 获取2004年12月开始的所有 csv 文件，以两位数作为前缀的 X 或 Y
-
-**分区根路径：** 如果文件源中的分区文件夹的格式 ```key=value``` （例如年 = 2019），则可以将该分区文件夹树的顶层分配给数据流数据流中的列名称。
-
-首先，设置一个通配符，以包括所有作为分区文件夹的路径，以及要读取的叶文件。
-
-![分区源文件设置](media/data-flow/partfile2.png "分区文件设置")
-
-使用 "分区根路径" 设置来定义文件夹结构的顶层。 通过数据预览查看数据的内容时，会看到 ADF 会添加在每个文件夹级别中找到的已解析分区。
-
-![分区根路径](media/data-flow/partfile1.png "分区根路径预览")
-
-**文件列表：** 这是一个文件集。 创建一个文本文件，其中包含要处理的相对路径文件的列表。 指向此文本文件。
-
-**要存储文件名的列：** 将源文件的名称存储在数据中的列中。 在此处输入新的列名来存储文件名字符串。
-
-**完成后：** 选择在数据流运行后对源文件执行任何操作、删除源文件或移动源文件。 移动的路径是相对路径。
-
-若要将源文件移到其他位置，请先选择 "移动" 进行文件操作。 然后，设置 "从" 目录。 如果没有为路径使用任何通配符，则 "源" 设置将是与源文件夹相同的文件夹。
-
-如果源路径带有通配符，则语法如下所示：
-
-```/data/sales/20??/**/*.csv```
-
-你可以指定 "from" 作为
-
-```/data/sales```
-
-和 "to" as
-
-```/backup/priorSales```
-
-在这种情况下，/data/sales 下的所有文件都将移动到/backup/priorSales。
-
-> [!NOTE]
-> 仅当您从管道运行（管道调试或执行运行）中的数据流开始使用管道中的 "执行数据流" 活动时，才运行文件操作。 文件操作*不会*在数据流调试模式下运行。
-
-**按上次修改时间筛选：** 您可以通过指定上次修改的日期范围来筛选处理的文件。 所有日期时间都采用 UTC 格式。 
-
-### <a name="add-dynamic-content"></a>添加动态内容
-
-所有源设置都可以使用[映射数据流的转换表达式语言](data-flow-expression-functions.md)指定为表达式。 若要添加动态内容，请在 "设置" 面板中的字段内单击或悬停。 单击 "**添加动态内容**" 的超链接。 这将启动表达式生成器，可在其中使用表达式、静态文本值或参数动态设置值。
-
-![参数](media/data-flow/params6.png "parameters")
-
-## <a name="sql-source-options"></a>SQL 源选项
-
-如果源在 SQL 数据库或 SQL 数据仓库中，则 "**源选项**" 选项卡中还提供了其他特定于 SQL 的设置。 
-
-**输入：** 选择是将源指向某个表（等效于 ```Select * from <table-name>```）还是输入自定义 SQL 查询。
-
-**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 示例： ```Select * from MyTable where customerId > 1000 and customerId < 2000```
-
-**批大小**：输入用于将大型数据拆分为读取的批大小。
-
-**隔离级别**：映射数据流中 SQL 源的默认值为 "未提交读"。 可以将此处的隔离级别更改为以下值之一：
-* 已提交读
-* 未提交读
-* 可重复的读取
-* 序列
-* 无（忽略隔离级别）
-
-![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
 
 ## <a name="projection"></a>投影
 
@@ -157,15 +76,6 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 ### <a name="import-schema"></a>导入架构
 
 支持复杂数据结构的 Avro 和 CosmosDB 之类的数据集不需要架构定义存在于数据集中。 因此，你将能够在这些类型的源的 "**投影**" 选项卡上单击 "**导入架构**" 按钮。
-
-## <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
-
-使用 CosmosDB 作为源类型时，需要考虑以下几个选项：
-
-* 包含系统列：如果选中此项，则会将 ```id```、```_ts```和其他系统列包含在 CosmosDB 的数据流元数据中。 更新集合时，必须包括此项，以便能够获取现有行 id。
-* 页面大小：查询结果每页的文档数。 默认值为 "-1"，它使用最多为1000的服务动态页。
-* 吞吐量：对于在读取操作过程中每次执行此数据流时要应用到 CosmosDB 集合的 ru 数，请设置一个可选值。 最小值为400。
-* 首选区域：可以选择此进程的首选读取区域。
 
 ## <a name="optimize-the-source-transformation"></a>优化源转换
 

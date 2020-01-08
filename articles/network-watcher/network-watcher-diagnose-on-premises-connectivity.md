@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531830"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454296"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
-使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置正确，则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
+使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置不正确，则连接中断，并且在现在解决这些问题并不重要，并且通常需要花费几个小时来识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
@@ -85,13 +85,13 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
-| GatewayNotFound | 找不到网关，或网关未预配。 |No|
-| PlannedMaintenance |  网关实例处于维护状态。  |No|
-| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。 | No |
-| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | No |
-| PlatformInActive | 平台出现问题。 | No|
-| ServiceNotRunning | 底层服务未运行。 | No|
-| NoConnectionsFoundForGateway | 网关未建立连接。 这只是一条警告。| No|
+| GatewayNotFound | 找不到网关，或网关未预配。 |否|
+| PlannedMaintenance |  网关实例处于维护状态。  |否|
+| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。 | 否 |
+| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | 否 |
+| PlatformInActive | 平台出现问题。 | 否|
+| ServiceNotRunning | 底层服务未运行。 | 否|
+| NoConnectionsFoundForGateway | 网关未建立连接。 这只是一条警告。| 否|
 | ConnectionsNotConnected | 未连接任何连接设备。 这只是一条警告。| 是|
 | GatewayCPUUsageExceeded | 当前网关 CPU 使用率超过 95%。 | 是 |
 
@@ -100,15 +100,15 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误。 |是|
-| GatewayNotFound | 找不到网关，或网关未预配。 |No|
-| PlannedMaintenance | 网关实例处于维护状态。  |No|
-| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。  | No |
-| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | No |
-| ConnectionEntityNotFound | 缺少连接配置。 | No |
-| ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |No|
+| GatewayNotFound | 找不到网关，或网关未预配。 |否|
+| PlannedMaintenance | 网关实例处于维护状态。  |否|
+| UserDrivenUpdate | 用户更新正在进行。 可能是正在执行大小调整操作。  | 否 |
+| VipUnResponsive | 无法访问网关的主实例。 运行状况探测失败时会发生这种情况。 | 否 |
+| ConnectionEntityNotFound | 缺少连接配置。 | 否 |
+| ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |否|
 | ConnectionNotConfiguredOnGateway | 未在底层服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| Authentication | 预共享密钥不匹配。 | 是|
+| 身份验证 | 预共享密钥不匹配。 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|

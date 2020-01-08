@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461094"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -79,7 +79,7 @@ ms.locfileid: "74065600"
     VM_NAME = 'myVM'
     ```
 
-    将 **subscription-id** 替换为你的订阅标识符。
+    将“subscription-id”替换为你的订阅标识符。
 
 4. 若要创建进行请求所需的 Active Directory 凭据，请在 .py 文件中将此函数添加到变量之后：
 
@@ -94,7 +94,7 @@ ms.locfileid: "74065600"
         return credentials
     ```
 
-    将 **application-id**、**authentication-key** 和 **tenant-id** 替换为先前在创建 Azure Active Directory 服务主体时收集的值。
+    将“application-id”、“authentication-key”和“tenant-id”替换为先前创建 Azure Active Directory 服务主体时搜集的值。
 
 5. 若要调用先前添加的函数，请将此代码添加在 .py 文件末尾的 if语句下：
 
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>创建 VM 和支持资源
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+必须在[资源组](../../azure-resource-manager/management/overview.md)中包含所有资源。
 
 1. 若要创建资源组，请在 .py 文件中将此函数添加到变量之后：
 
@@ -297,7 +297,7 @@ compute_client = ComputeManagementClient(
     input('Press enter to continue...')
     ```
 
-创建所有支持资源后，即可创建虚拟机。
+创建所有支持的资源后，可以创建虚拟机。
 
 1. 若要创建虚拟机，请在 .py 文件中将此函数添加在变量之后：
    
@@ -565,9 +565,9 @@ compute_client = ComputeManagementClient(
 
 1. 若要运行控制台应用程序，在 Visual Studio 中单击“开始”。
 
-2. 返回每个资源的状态后，请按 **Enter**。 在状态信息中会看到“成功”预配状态。 创建虚拟机后，就有机会删除创建的所有资源。 按 Enter开始删除资源之前，可能需要花几分钟在 Azure 门户中验证创建。 如果已打开 Azure 门户，可能需要刷新边栏选项卡以查看新的资源。  
+2. 所有资源的状态返回后按 Enter。 在状态信息中会看到“成功”预配状态。 创建虚拟机后，就有机会删除创建的所有资源。 按 Enter开始删除资源之前，可能需要花几分钟在 Azure 门户中验证创建。 如果已打开 Azure 门户，可能需要刷新边栏选项卡以查看新的资源。  
 
-    完整运行该控制台应用程序大约需要 5 分钟。 应用程序完成运行之后，可能需要花费几分钟时间来删除所有资源和资源组。
+    控制台应用程序从头到尾完成运行大约需要五分钟时间。 在应用程序完成后可能需要几分钟才能看到所有资源和资源组被删除。
 
 
 ## <a name="next-steps"></a>后续步骤

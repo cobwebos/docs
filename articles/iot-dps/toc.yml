@@ -2,32 +2,26 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 IoT 设备预配服务
+    - name: 什么是 IoT 中心设备预配服务？
       href: about-iot-dps.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 设置自动预配 - Azure CLI
-      href: quick-setup-auto-provision-cli.md
-    - name: 设置自动预配 - 门户
-      href: quick-setup-auto-provision.md
-    - name: 设置自动预配 - 模板
-      href: quick-setup-auto-provision-rm.md
-    - name: 自动预配模拟设备
+    - name: 设置 DPS
       items:
-        - name: TPM 证明
+        - name: Azure 门户
+          href: quick-setup-auto-provision.md
+        - name: Azure CLI
+          href: quick-setup-auto-provision-cli.md
+        - name: Azure RM 模板
+          href: quick-setup-auto-provision-rm.md
+    - name: 预配单个模拟设备
+      items:
+        - name: 对称密钥证明
           items:
             - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
-        - name: X.509 证明
+              href: quick-create-simulated-device-symm-key.md
+        - name: X.509 证书证明
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,23 +33,21 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-        - name: 对称密钥证明
+        - name: 模拟 TPM 设备证明
           items:
             - name: C
-              href: quick-create-simulated-device-symm-key.md
-    - name: 使用预配服务 API 注册设备
-      items:
-        - name: TPM 证明
-          items:
+              href: quick-create-simulated-device.md
             - name: Java
-              href: quick-enroll-device-tpm-java.md
+              href: quick-create-simulated-device-tpm-java.md
             - name: 'C#'
-              href: quick-enroll-device-tpm-csharp.md
+              href: quick-create-simulated-device-tpm-csharp.md
             - name: Node.js
-              href: quick-enroll-device-tpm-node.md
+              href: quick-create-simulated-device-tpm-node.md
             - name: Python
-              href: quick-enroll-device-tpm-python.md
-        - name: X.509 证明
+              href: quick-create-simulated-device-tpm-python.md
+    - name: 使用 DPS API 创建设备注册
+      items:
+        - name: 使用 X.509 证书证明进行组注册
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -65,6 +57,16 @@
               href: quick-enroll-device-x509-node.md
             - name: Python
               href: quick-enroll-device-x509-python.md
+        - name: 使用 TPM 证明进行单设备注册
+          items:
+            - name: Java
+              href: quick-enroll-device-tpm-java.md
+            - name: 'C#'
+              href: quick-enroll-device-tpm-csharp.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
+            - name: Python
+              href: quick-enroll-device-tpm-python.md
 - name: 教程
   items:
     - name: 1 - 设置云资源
@@ -79,7 +81,7 @@
           href: tutorial-net-provision-device-to-hub.md
     - name: 4 - 将设备预配到多个中心
       href: tutorial-provision-multiple-hubs.md
-    - name: 5 - 预配组注册
+    - name: 5 - 设置组注册
       href: tutorial-group-enrollments.md
 - name: 概念
   items:
@@ -89,7 +91,7 @@
       href: concepts-device-reprovision.md
     - name: 设备
       href: concepts-device.md
-    - name: 安全
+    - name: 安全性
       href: concepts-security.md
     - name: 服务
       href: concepts-service.md
@@ -97,7 +99,7 @@
       href: concepts-tpm-attestation.md
     - name: 对称密钥证明
       href: concepts-symmetric-key-attestation.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 将 MXChip IoT DevKit 连接到 IoT 中心
       href: how-to-connect-mxchip-iot-devkit.md
@@ -147,7 +149,7 @@
       href: how-to-troubleshoot-dps.md
     - name: 使用 MQTT 协议与 DPS 通信
       href: iot-dps-mqtt-support.md
-- name: 引用
+- name: 参考
   items:
     - name: REST API
       href: /rest/api/iot-dps

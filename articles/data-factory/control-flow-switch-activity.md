@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679404"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440382"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>在 Azure 数据工厂中切换活动
 
@@ -65,7 +65,7 @@ Switch 活动提供了相同的功能，即 switch 语句提供的编程语言�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | Description | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 name | 切换活动的名称。 | String | 是
 type | 必须设置为*Switch** | String | 是
@@ -236,10 +236,7 @@ defaultActivities | 在表达式计算不满足时执行的一组活动。 | 活
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -332,7 +329,7 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)

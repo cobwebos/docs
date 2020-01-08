@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408670"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -29,14 +29,14 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - 或者，使用[Azure Maps-rest](https://www.npmjs.com/package/azure-maps-rest) npm 包在本地加载 Azure Maps 的 Web SDK 源代码，并将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
+    - 或者，通过使用[Azure Maps-rest](https://www.npmjs.com/package/azure-maps-rest) npm 包在本地加载 AZURE MAPS Web SDK 源代码的服务模块，然后将其托管在应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
     
-        > **npm 安装 azure-地图-rest**
+        > npm install azure-maps-rest
     
         然后，将脚本引用添加到该文件的 `<head>` 元素：
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
 1. 创建身份验证管道。 必须先创建管道，然后才能初始化服务 URL 客户端终结点。 使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory （Azure AD）凭据对 Azure Maps 搜索服务客户端进行身份验证。 在此示例中，将创建搜索服务 URL 客户端。 
@@ -162,6 +162,28 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用服务模块" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用 "服务" 模块</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
+
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Azure 政府版云支持
+
+Azure Maps Web SDK 支持 Azure 政府云。 用于访问 Azure Maps Web SDK 的所有 JavaScript 和 CSS Url 保持不变，但需要执行以下任务来连接到 Azure Maps 平台的 Azure 政府版云版本。
+
+使用交互式地图控件时，请在创建 `Map` 类的实例之前添加以下代码行。 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+验证地图和服务时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
+
+使用 "服务" 模块时，需要在创建 API URL 端点的实例时设置服务的域。 例如，下面的代码创建 `SearchURL` 类的实例，并将该域指向 Azure 政府云。
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+如果直接访问 Azure Maps REST 服务，请将 URL 域更改为 `atlas.azure.us`。 例如，如果使用搜索 API 服务，请将 URL 域从 `https://atlas.microsoft.com/search/` 更改为 `https://atlas.azure.us/search/`。
 
 ## <a name="next-steps"></a>后续步骤
 

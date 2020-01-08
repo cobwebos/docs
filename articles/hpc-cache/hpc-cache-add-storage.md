@@ -4,14 +4,14 @@ description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166686"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647200"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -33,6 +33,8 @@ ms.locfileid: "74166686"
 
 新的 Blob 存储目标需要空的 Blob 容器或使用 Azure HPC 缓存云文件系统格式的数据进行填充的容器。 详细了解如何在[将数据移入 Azure blob 存储](hpc-cache-ingest.md)中预加载 Blob 容器。
 
+可以在添加之前从此页面创建新的容器。
+
 要定义 Azure Blob 容器，请输入此信息。
 
 !["添加存储目标" 页的屏幕截图，其中填充了新的 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
@@ -41,13 +43,15 @@ ms.locfileid: "74166686"
 
 * **存储目标名称**-设置在 Azure HPC 缓存中标识此存储目标的名称。
 * **目标类型**-选择 " **Blob**"。
-* **存储帐户**-选择包含要使用的容器的帐户。
+* **存储帐户**-选择要使用的帐户。
 
   如[添加访问角色](#add-the-access-control-roles-to-your-account)中所述，你将需要授权缓存实例访问存储帐户。
 
   有关可使用的存储帐户类型的信息，请参阅[Blob 存储要求](hpc-cache-prereqs.md#blob-storage-requirements)。
 
-* **存储容器**-选择此目标的 Blob 容器。
+* **存储容器**-选择此目标的 Blob 容器，或单击 "**新建**"。
+
+  ![用于为新容器指定名称和访问级别（私有）的对话框屏幕截图](media/add-blob-new-container.png)
 
 * **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 

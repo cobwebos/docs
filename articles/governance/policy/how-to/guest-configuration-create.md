@@ -1,14 +1,14 @@
 ---
 title: 如何创建来宾配置策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux Vm 的 Azure 策略来宾配置策略。
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: d31c03f05f3a27207eb4c184b78cb531f8bb43d6
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873074"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608518"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -25,11 +25,14 @@ ms.locfileid: "74873074"
 
 若要创建来宾配置策略，必须添加资源模块。 此资源模块可用于本地安装的 PowerShell、 [Azure Cloud Shell](https://shell.azure.com)或[Azure PowerShell 核心 Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell-core)。
 
+> [!NOTE]
+> 当**GuestConfiguration**模块在上述环境中工作时，必须在 Windows PowerShell 5.1 中完成用于编译 DSC 配置的步骤。
+
 ### <a name="base-requirements"></a>基本要求
 
 来宾配置资源模块需要以下软件：
 
-- “PowerShell”。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
+- PowerShell。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
 
 ### <a name="install-the-module"></a>安装模块
@@ -59,6 +62,12 @@ ms.locfileid: "74873074"
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>来宾配置自定义资源的要求
 
 当来宾配置审核计算机时，它会首先运行 `Test-TargetResource` 以确定其是否处于正确的状态。 函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是否应符合或不符合。 如果为配置中的任何资源 `$false` 了布尔值，则该提供程序将运行 `Get-TargetResource`。 如果布尔值为 `$true` 则 `Get-TargetResource` 不会调用。
+
+#### <a name="configuration-requirements"></a>配置要求
+
+来宾配置使用自定义配置的唯一要求是，要在使用它的任何地方保持一致的配置名称。  这包括内容包的 .zip 文件的名称、存储在内容包内的 mof 文件中的配置名称，以及 ARM 中用作来宾分配名称的配置名称。
+
+#### <a name="get-targetresource-requirements"></a>Test-targetresource 要求
 
 函数 `Get-TargetResource` 对来宾配置具有特定的要求，这些要求对于 Windows Desired 状态配置没有必要。
 
@@ -96,7 +105,7 @@ return @{
 
 以下示例创建名为 "**基线**" 的配置，导入**GuestConfiguration**资源模块，并使用 `ChefInSpecResource` 资源将 InSpec 定义的名称设置为 " **linux-修补程序-基线**"：
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration baseline
 {
@@ -120,7 +129,7 @@ baseline
 
 以下示例创建名为**AuditBitLocker**的配置，导入**GuestConfiguration**资源模块，并使用 `Service` 资源审核正在运行的服务：
 
-```azurepowershell-interactive
+```powershell
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {
@@ -298,7 +307,7 @@ New-GuestConfigurationPolicy
 
 对于 Linux 策略，请在配置中包含属性**AttributesYmlContent** ，并相应地覆盖值。 来宾配置代理会自动创建 InSpec 用于存储属性的 YaML 文件。 请参阅以下示例。
 
-```azurepowershell-interactive
+```powershell
 Configuration FirewalldEnabled {
 
     Import-DscResource -ModuleName 'GuestConfiguration'
@@ -403,7 +412,7 @@ GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GP
 
 发布内容后，将名为 `GuestConfigPolicyCertificateValidation` 和值 `enabled` 的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 完成此标记后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>效果来宾配置策略分配疑难解答
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>来宾配置策略分配故障排除（预览版）
 
 预览中提供了一个工具，用于帮助排查 Azure 策略来宾配置分配问题。 该工具处于预览阶段，已作为模块名称 "[来宾配置疑难解答](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)" 发布到 PowerShell 库。
 

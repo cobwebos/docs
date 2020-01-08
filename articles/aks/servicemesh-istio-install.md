@@ -7,23 +7,23 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170801"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561732"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
 
 [Istio][istio-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括流量管理、服务标识和安全性、策略执行以及可观察性。 有关 Istio 的详细信息，请参阅官方文档[什么是 Istio？][istio-docs-concepts]。
 
-本文介绍如何安装 Istio。 Istio `istioctl` 客户端二进制文件已安装到客户端计算机上，Istio 组件将安装到 AKS 上的 Kubernetes 群集中。
+本文介绍如何安装 Istio。 Istio `istioctl` 客户端二进制文件安装在客户端计算机上，Istio 组件安装在 AKS 上的 Kubernetes 群集。
 
 > [!NOTE]
 > 以下说明引用 Istio 版本 `1.4.0`。
 >
-> Istio 团队已针对 Kubernetes 版本 `1.4.x`、`1.13` 和 `1.14` 测试了 `1.15` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
+> Istio 团队针对 Kubernetes 版本（`1.13`、`1.14``1.15`）测试了 Istio `1.4.x` 版本。 可在[GitHub-Istio 版本][istio-github-releases]中找到其他 Istio 版本、 [Istio 新闻][istio-release-notes]中每个版本的相关信息，以及[Istio][istio-faq]的支持 Kubernetes 版本。
 
 在本文中，学习如何：
 
@@ -31,16 +31,16 @@ ms.locfileid: "74170801"
 > * 下载并安装 Istio istioctl 客户端二进制文件
 > * 在 AKS 上安装 Istio
 > * 验证 Istio 安装
-> * 访问加载项
-> * 从 AKS 中卸载 Istio
+> * 访问外接程序
+> * 从 AKS 卸载 Istio
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
+本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]。
 
-请确保已阅读[Istio 性能和可扩展性](https://istio.io/docs/concepts/performance-and-scalability/)文档，以了解在 AKS 群集中运行 Istio 所需的其他资源要求。 核心和内存要求将因特定工作负荷而异。 选择适当数量的节点和 VM 大小以适合你的设置。
+请确保已阅读[Istio 性能和可扩展性](https://istio.io/docs/concepts/performance-and-scalability/)文档，以了解在 AKS 群集中运行 Istio 所需的其他资源要求。 核心和内存要求将因你的特定工作负荷而异。 选择适当数量的节点和 VM 大小，以适合您的设置。
 
-本文将 Istio 安装指南分为多个独立步骤。 最终结果的结构与官方 Istio 安装[指南][istio-install-istioctl]相同。
+本文将 Istio 安装指南分为多个独立步骤。 最终结果在结构上与正式 Istio 安装[指南][istio-install-istioctl]相同。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -62,9 +62,9 @@ ms.locfileid: "74170801"
 
 ## <a name="install-the-istio-components-on-aks"></a>在 AKS 上安装 Istio 组件
 
-我们将安装 [Grafana][grafana] 和 [Kiali][kiali] 作为 Istio 安装的一部分。 Grafana 提供分析和监视仪表板，Kiali 提供服务网格观察仪表板。 在设置中，上述每个组件都需要凭据，必须以[机密][kubernetes-secrets]的形式提供这些凭据。
+我们会将[Grafana][grafana]和[Kiali][kiali]作为 Istio 安装的一部分进行安装。 Grafana 提供分析和监视仪表板，Kiali 提供服务网格可观察性仪表板。 在我们的设置中，其中每个组件都需要提供为[机密][kubernetes-secrets]的凭据。
 
-在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建命名空间。 在通过 `kubectl create` 创建命名空间时，需要使用 `--save-config` 选项，以便 Istio 安装程序以后可以在此对象上运行 `kubectl apply`。
+在我们可以安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建命名空间。 在通过 `kubectl create` 创建命名空间时，需要使用 `--save-config` 选项，以便 Istio 安装程序以后可以在此对象上运行 `kubectl apply`。
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -90,15 +90,15 @@ kubectl create namespace istio-system --save-config
 
 ### <a name="install-istio-components"></a>安装 Istio 组件
 
-在 AKS 群集中成功创建 Grafana 和 Kiali 机密后，可以开始安装 Istio 组件了。 
+现在，我们已在 AKS 群集中成功创建了 Grafana 和 Kiali 机密，可以安装 Istio 组件了。 
 
 以后将不再推荐使用 Istio 的[Helm][helm]安装方法。 新的 Istio 安装方法利用 `istioctl` 客户端二进制[文件、Istio 配置文件][istio-configuration-profiles]和新的[Istio 控制平面规范和 api][istio-control-plane]。 这种新方法是我们将用于安装 Istio 的方法。
 
 > [!NOTE]
-> Istio 目前必须计划在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Istio Pod 仅计划在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 Pod 调度到相应的节点。
+> Istio 目前必须计划在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Istio pod 仅计划在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 pod 安排到正确的节点。
 
 > [!CAUTION]
-> [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。 另外，[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume] Kubernetes 功能（SDS 所必需的）在当前的 AKS 版本中未启用。
+> [SDS （机密发现服务）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能当前采用[Alpha][istio-feature-stages]，因此应在启用之前提供。 此外，在当前 AKS 版本中未启用[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的要求）。
 
 使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保存用于配置 Istio 的[Istio 控制平面规范][istio-control-plane]详细信息。
 
@@ -136,7 +136,7 @@ spec:
 使用 `istioctl apply` 命令和上述 `istio.aks.yaml` Istio 控制平面规范文件安装 istio，如下所示：
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 安装程序将部署多个[CRDs][kubernetes-crd] ，然后管理依赖项，以便安装为 Istio 的此配置定义的所有相关对象。 应会看到类似于以下输出代码段的内容。
@@ -234,11 +234,11 @@ service/istio-ingressgateway created
 ...
 ```
 
-此时，已将 Istio 部署到 AKS 群集。 为确保成功部署 Istio，让我们转到[验证 Istio 安装](#validate-the-istio-installation)部分。
+此时，已将 Istio 部署到 AKS 群集。 若要确保已成功部署 Istio，请转到下一节，[验证 Istio 安装](#validate-the-istio-installation)。
 
 ## <a name="validate-the-istio-installation"></a>验证 Istio 安装
 
-首先，确认已创建所需的服务。 使用 [kubectl get svc][kubectl-get] 命令查看正在运行的服务。 查询 `istio-system` 命名空间，`istio` Helm 图表在其中已安装了 Istio 和加载项组件：
+首先，确认已创建所需的服务。 使用[kubectl 获取 svc][kubectl-get]命令查看正在运行的服务。 查询 `istio-system` 命名空间，其中 Istio 和外接程序组件由 `istio` Helm 图安装：
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -247,10 +247,10 @@ kubectl get svc --namespace istio-system --output wide
 以下示例输出显示了现在应正在运行的服务：
 
 - `istio-*` 服务
-- `jaeger-*`、`tracing` 和 `zipkin` 加载项跟踪服务
+- `jaeger-*`、`tracing`和 `zipkin` 外接程序跟踪服务
 - `prometheus` 加载项指标服务
-- `grafana` 加载项分析和监视仪表板服务
-- `kiali` 加载项服务网格仪表板服务
+- `grafana` 加载项分析和监视面板服务
+- `kiali` 外接程序服务网格面板服务
 
 如果 `istio-ingressgateway` 显示 `<pending>` 的外部 IP，请在 Azure 网络分配 IP 地址之前等待几分钟。
 
@@ -273,7 +273,7 @@ tracing                  ClusterIP      10.0.249.95    <none>           9411/TCP
 zipkin                   ClusterIP      10.0.154.89    <none>           9411/TCP                                                                                                                     94s   app=jaeger
 ```
 
-接下来，确认已创建所需的 Pod。 使用 [kubectl get pods][kubectl-get] 命令，然后再次查询 `istio-system` 命名空间：
+接下来，确认已创建所需的 Pod。 使用[kubectl get][kubectl-get] pod 命令，并再次查询 `istio-system` 命名空间：
 
 ```console
 kubectl get pods --namespace istio-system
@@ -281,10 +281,10 @@ kubectl get pods --namespace istio-system
 
 以下示例输出显示了正在运行的 Pod：
 
-- `istio-*` pod
-- `prometheus-*` 加载项指标 pod
+- `istio-*` 箱
+- `prometheus-*` 外接程序指标 pod
 - `grafana-*` 加载项分析和监视仪表板 pod
-- `kiali` 加载项服务网格仪表板 pod
+- `kiali` 外接程序服务网格仪表板 pod
 
 ```console
 NAME                                          READY   STATUS    RESTARTS   AGE
@@ -301,19 +301,19 @@ kiali-59b7fd7f68-92zrh                        1/1     Running   0          95s
 prometheus-7c7cf9dbd6-rjxcv                   1/1     Running   0          94s
 ```
 
-所有 pod 应显示 `Running` 状态。 如果 Pod 没有这些状态，请在运行之前等待一两分钟。 如果任何 Pod 报告问题，请使用 [kubectl describe pod][kubectl-describe] 命令查看其输出和状态。
+所有 pod 都应显示 `Running`状态。 如果 Pod 没有这些状态，请在运行之前等待一两分钟。 如果任何 pod 报告了问题，请使用[kubectl 说明 pod][kubectl-describe]命令查看其输出和状态。
 
 ## <a name="accessing-the-add-ons"></a>访问加载项
 
-上述安装程序中由 Istio 安装了大量提供附加功能的加载项。 加载项 Web 应用程序**不**通过外部 IP 地址公开。 
+在上面的设置中，Istio 安装了许多外接程序，它们提供附加功能。 外接程序的 web 应用程序**不**会通过外部 ip 地址公开公开。 
 
-若要访问加载项用户界面，请使用 `istioctl dashboard` 命令。 此命令利用 [kubectl port-forward][kubectl-port-forward] 和一个随机端口在客户端计算机与 AKS 群集中相关 Pod 之间建立安全连接。 然后，它会在默认浏览器中自动打开加载项 Web 应用程序。
+若要访问外接程序用户界面，请使用 `istioctl dashboard` 命令。 此命令利用[kubectl 端口转发][kubectl-port-forward]和随机端口，在你的客户端计算机与 AKS 群集中的相关 pod 之间创建安全连接。 然后，它会自动在默认浏览器中打开外接程序 web 应用程序。
 
-在本文的前面部分，我们已通过为 Grafana 和 Kiali 指定凭据，为其添加了额外的安全层。
+为 Grafana 和 Kiali 添加了额外的安全层，只需要在本文前面指定凭据即可。
 
 ### <a name="grafana"></a>Grafana
 
-Istio 的分析和监视仪表板由 [Grafana][grafana] 提供。 出现提示时，请记得使用前面通过 Grafana 机密创建的凭据。 以安全方式打开 Grafana 仪表板，如下所示：
+Istio 的分析和监视仪表板由[Grafana][grafana]提供。 请记住，在出现提示时，请使用通过 Grafana 机密创建的凭据。 安全地打开 Grafana 仪表板，如下所示：
 
 ```console
 istioctl dashboard grafana
@@ -321,7 +321,7 @@ istioctl dashboard grafana
 
 ### <a name="prometheus"></a>Prometheus
 
-Istio 的指标由 [Prometheus][prometheus] 提供。 以安全方式打开 Prometheus 仪表板，如下所示：
+Istio 的指标由[Prometheus][prometheus]提供。 安全地打开 Prometheus 仪表板，如下所示：
 
 ```console
 istioctl dashboard prometheus
@@ -329,7 +329,7 @@ istioctl dashboard prometheus
 
 ### <a name="jaeger"></a>Jaeger
 
-Istio 中的跟踪由 [Jaeger][jaeger] 提供。 以安全方式打开 Jaeger 仪表板，如下所示：
+Istio 中的跟踪由[Jaeger][jaeger]提供。 安全地打开 Jaeger 仪表板，如下所示：
 
 ```console
 istioctl dashboard jaeger
@@ -337,7 +337,7 @@ istioctl dashboard jaeger
 
 ### <a name="kiali"></a>Kiali
 
-服务网格可观察性仪表板由 [Kiali][kiali] 提供。 出现提示时，请记得使用前面通过 Kiali 机密创建的凭据。 以安全方式打开 Kiali 仪表板，如下所示：
+服务网格可观察性仪表板由[Kiali][kiali]提供。 请记住，在出现提示时，请使用通过 Kiali 机密创建的凭据。 安全地打开 Kiali 仪表板，如下所示：
 
 ```console
 istioctl dashboard kiali
@@ -345,26 +345,28 @@ istioctl dashboard kiali
 
 ### <a name="envoy"></a>Envoy
 
-提供一个简单的连接 [Envoy][envoy] 代理的接口。 它提供 Envoy 代理在指定 Pod 中运行所需的配置信息和指标。 以安全方式打开 Envoy 接口，如下所示：
+[Envoy][envoy]代理的简单接口可用。 它为在指定的 pod 中运行的 Envoy 代理提供配置信息和指标。 安全地打开 Envoy 接口，如下所示：
 
 ```console
 istioctl dashboard envoy <pod-name>.<namespace>
 ```
 
-## <a name="uninstall-istio-from-aks"></a>从 AKS 中卸载 Istio
+## <a name="uninstall-istio-from-aks"></a>从 AKS 卸载 Istio
 
 > [!WARNING]
-> 从正在运行的系统中删除 Istio 可能会导致服务之间出现流量相关的问题。 在继续之前，请确保对系统进行预配，以便在没有 Istio 的情况下系统仍可正常运行。
+> 删除正在运行的系统中的 Istio 可能会导致服务之间出现与流量相关的问题。 在继续操作之前，请确保您的系统的预配仍可正常运行，而无需 Istio。
 
 ### <a name="remove-istio-components-and-namespace"></a>删除 Istio 组件和命名空间
 
 若要从 AKS 群集中删除 Istio，请将 `istioctl manifest generate` 命令与 `istio.aks.yaml` Istio 控制平面规范文件一起使用。 这会生成已部署清单，我们将通过管道将其传递到 `kubectl delete`，以便删除所有已安装的组件和 `istio-system` 命名空间。
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
-### <a name="remove-istio-crds-and-secrets"></a>删除 Istio CRD 和机密
+### <a name="remove-istio-crds-and-secrets"></a>删除 Istio CRDs 和机密
 
 上述命令将删除所有 Istio 组件和命名空间，但仍保留生成的 Istio 机密。 
 
@@ -388,7 +390,7 @@ istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文档介绍了如何使用 Istio 提供智能路由，以推出 canary 版本：
+以下文档介绍了如何使用 Istio 来提供智能路由，以推出不确定的版本：
 
 > [!div class="nextstepaction"]
 > [AKS Istio 智能路由方案][istio-scenario-routing]
@@ -397,11 +399,11 @@ istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
 
 - [Istio-安装指南][istio-installation-guides]
 
-也可使用以下项按照其他方案操作：
+你还可以使用以下方案：
 
 - [Istio Bookinfo 应用程序示例][istio-bookinfo-example]
 
-若要了解如何使用 Application Insights 和 Istio 来监视 AKS 应用程序，请参阅以下 Azure Monitor 文档：
+若要了解如何使用 Application Insights 和 Istio 监视 AKS 应用程序，请参阅下面的 Azure Monitor 文档：
 
 - [Kubernetes 托管应用程序的零检测应用程序监视][app-insights]
 

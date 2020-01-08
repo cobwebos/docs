@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7a55cc9398cc511ced0a43f0d7a0c1aa6e37f155
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/20/2019
+ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372697"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展-单服务器
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展将多个相关的 SQL 对象组合在一起，可以使用单个命令在数据库中加载或删除单个包。 在数据库中加载后，扩展功能类似于内置功能。
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 支持下面列出的一小部分关键扩展。 �
 以下扩展在 Postgres 版本为11的 Azure Database for PostgreSQL 服务器中可用。 
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US dataset 示例|
@@ -71,7 +71,7 @@ Azure Database for PostgreSQL 支持下面列出的一小部分关键扩展。 �
 具有 Postgres 版本10的 Azure Database for PostgreSQL 服务器中提供以下扩展。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US dataset 示例|
@@ -117,7 +117,7 @@ Azure Database for PostgreSQL 支持下面列出的一小部分关键扩展。 �
 具有 Postgres 版本9.6 的 Azure Database for PostgreSQL 服务器中提供了以下扩展。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US dataset 示例|
@@ -163,7 +163,7 @@ Azure Database for PostgreSQL 支持下面列出的一小部分关键扩展。 �
 具有 Postgres 版本9.5 的 Azure Database for PostgreSQL 服务器中提供了以下扩展。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US dataset 示例|
@@ -252,6 +252,26 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 > 如果出现错误，请确认在保存后[重新启动了服务器](howto-restart-server-portal.md)shared_preload_libraries。 
 
 现在，你可以[从头](https://docs.timescale.com/getting-started/creating-hypertables)开始创建 TimescaleDB hypertable 或迁移[PostgreSQL 中现有的时序数据](https://docs.timescale.com/getting-started/migrating-data)。
+
+### <a name="restoring-a-timescale-database"></a>还原时间刻度数据库
+若要使用 pg_dump 和 pg_restore 还原时间刻度数据库，需要在目标数据库中运行两个帮助器过程： `timescaledb_pre_restore()` 和 `timescaledb_post restore()`。
+
+首先准备目标数据库：
+
+```SQL
+--create the new database where you'll perform the restore
+CREATE DATABASE tutorial;
+\c tutorial --connect to the database 
+CREATE EXTENSION timescaledb;
+
+SELECT timescaledb_pre_restore();
+```
+
+现在，可以在原始数据库上运行 pg_dump，然后 pg_restore。 还原后，请确保在还原的数据库中运行以下命令：
+
+```SQL
+SELECT timescaledb_post_restore();
+```
 
 
 ## <a name="next-steps"></a>后续步骤

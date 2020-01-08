@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325419"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659553"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
 Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 另请参阅：
 
-* [Microsoft Azure 和 Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) -定义的 Azure 服务和及其 AWS 对等项。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* Azure 服务及其 AWS 对应项的[Microsoft Azure 和 Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)定义。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [云计算术语](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 常规行业云术语。
 
-## <a name="account"></a>帐户
+## <a name="account"></a>account
 用于访问和管理 Azure 订阅的帐户。 它通常被称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户，或 Office 365 用户名和密码。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
 请参阅[使用 Office 365 帐户注册 Azure 订阅](billing/billing-use-existing-office-365-account-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -44,7 +44,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅[管理 Windows 虚拟机的可用性](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="classic-model"></a>Azure 经典部署模型
-用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持资源管理器部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
+用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
 
 ## <a name="cli"></a>Azure 命令行接口 (CLI)
 一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI](/cli/azure)
@@ -75,7 +75,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="limits"></a>限制
 可以创建的资源数目或可实现的性能基准。 限制通常与订阅、服务和产品关联。  
-请参阅 [Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)
+请参阅 [Azure 订阅和服务限制、配额和约束](azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>负载均衡器
 在网络中的计算机之间分散传入流量的资源。 在 Azure 中，负载均衡器将流量分散到负载均衡器集内定义的虚拟机。 [负载均衡器](load-balancer/load-balancer-overview.md)可以面向 Internet，也可以是内部的。  
@@ -95,7 +95,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅 [Azure 区域](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
-属于 Azure 解决方案的一部分的项。 每个 Azure 服务允许部署不同类型的资源，例如数据库或虚拟机。   
+属于 Azure 解决方案的一部分的项。 每个 Azure 服务可让你部署不同类型的资源，例如数据库或虚拟机。   
 请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
 ## <a name="resource-group"></a>资源组
@@ -110,7 +110,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 一种服务，提供可以通过 Resource Manager 进行部署和管理的资源。 每个资源提供程序提供用于处理所部署资源的操作。 可以通过 Azure 门户、Azure PowerShell 和多个编程 SDK 来访问资源提供程序。  
 请参阅 [Azure 资源管理器概述](azure-resource-manager/resource-group-overview.md)
 
-## <a name="role"></a>role
+## <a name="role"></a>角色 (role)
 用于控制可分配给用户、组和服务的访问权限的方式。 角色能够对 Azure 资源执行创建、管理和读取等操作。  
 请参阅 [RBAC：内置角色](role-based-access-control/built-in-roles.md)
 
@@ -121,7 +121,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 ## <a name="sas"></a>共享访问签名 (SAS)
 使用该签名能够在不公开帐户密钥的情况下，授予对资源的有限访问权限。 例如，[Azure 存储使用 SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 授予客户端对 Blob 等对象的访问权限。 [IoT 中心使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授予设备发送遥测数据的权限。
 
-## <a name="storage-account"></a>存储帐户
+## <a name="storage-account"></a>存储器帐户
 该帐户可授予对 Azure 存储中的 Azure Blob、队列、表和文件服务的访问权限。 存储帐户名称定义 Azure 存储数据对象的唯一命名空间。  
 请参阅[关于 Azure 存储帐户](storage/common/storage-create-storage-account.md)
 
@@ -147,7 +147,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅[关于虚拟机扩展和功能 (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[关于虚拟机扩展和功能 (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>虚拟网络
-在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 [Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，便可以建立虚拟网络之间以及虚拟网络与本地网络之间的连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
+在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 通过[AZURE VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，你可以在虚拟网络之间以及虚拟网络与本地网络之间建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
 请参阅[虚拟网络概述](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web 应用

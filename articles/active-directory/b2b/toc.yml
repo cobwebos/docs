@@ -28,6 +28,8 @@
     - name: 概念
       expanded: false
       items:
+        - name: B2B 最佳做法
+          href: b2b-fundamentals.md
         - name: B2B 许可
           href: licensing-guidance.md
         - name: B2B 和 Office 365 外部共享
@@ -48,7 +50,7 @@
           href: hybrid-organizations.md
         - name: 当前限制
           href: current-limitations.md
-    - name: 操作指南
+    - name: 操作方法指南
       expanded: true
       items:
         - name: 管理 B2B 共享
@@ -95,7 +97,7 @@
           href: auditing-and-reporting.md
         - name: 对 B2B 进行故障排除
           href: troubleshoot.md
-    - name: 引用
+    - name: 参考
       items:
         - name: 邀请管理器 API
           href: customize-invitation-api.md

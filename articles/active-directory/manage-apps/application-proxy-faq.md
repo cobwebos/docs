@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 47c1ce3391129525237566fb92cec2e9b33ca08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832214"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443420"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）应用程序代理常见问题
 
@@ -53,9 +53,9 @@ ms.locfileid: "73832214"
 
 不，不支持此方案。 只有连接器和更新服务可以配置为使用转发代理，以将出站流量发往 Azure。 请参阅[使用现有的本地代理服务器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
-### <a name="is-ssl-termination-sslhhtps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>是否支持从连接器服务器到 Azure 的流量进行 SSL 终止（SSL/HHTPS 检查或加速）？
+### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>是否支持从连接器服务器到 Azure 的流量进行 SSL 终止（SSL/HTTPS 检查或加速）？
 
-应用程序代理连接器对 Azure 执行基于证书的身份验证。 SSL 终止（SSL/HHTPS 检查或加速）将中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 SSL 终止的设备。  
+应用程序代理连接器对 Azure 执行基于证书的身份验证。 SSL 终止（SSL/HTTPS 检查或加速）将中断此身份验证方法，并且不受支持。 从连接器到 Azure 的流量必须绕过任何正在执行 SSL 终止的设备。  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>我是否应该创建专用帐户来向 Azure AD 应用程序代理注册连接器？
 
@@ -63,7 +63,7 @@ ms.locfileid: "73832214"
 
 ### <a name="how-can-i-monitor-the-performance-of-the-azure-ad-application-proxy-connector"></a>如何监视 Azure AD 应用程序代理连接器的性能？
 
-与连接器一起安装了性能监视器计数器。 查看它们：  
+与连接器一起安装了性能监视器计数器。 查看管理共享：  
 
 1. 选择 "**开始**"，键入 "Perfmon"，然后按 enter。
 2. 选择 "**性能监视器**"，然后单击绿色 **+** 图标。
@@ -139,7 +139,7 @@ ms.locfileid: "73832214"
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>能否使用 Azure AD 应用程序代理作为 AD FS 代理（如 Web 应用程序代理）？
 
-不能。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
@@ -151,7 +151,7 @@ ms.locfileid: "73832214"
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用链接转换是否会影响性能？
 
-是的。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
+可以。 链接转换会影响性能。 应用程序代理服务会扫描应用程序以查找硬编码的链接，并将其替换为其相应的已发布外部 Url，然后将其呈现给用户。 
 
 为了获得最佳性能，我们建议通过配置[自定义域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)来使用相同的内部和外部 url。 如果无法使用自定义域，则可以使用移动设备上的 "我的应用安全登录扩展" 或 "Microsoft Edge 浏览器" 改进链接转换性能。 [有关 Azure AD 应用程序代理发布的应用，请参阅重定向硬编码的链接](application-proxy-configure-hard-coded-link-translation.md)。
 

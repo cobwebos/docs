@@ -1,18 +1,18 @@
 ---
 title: 连接到 Facebook
-description: 使用 Facebook REST API 和 Azure 逻辑应用管理时间线和页面
+description: 使用 Azure 逻辑应用自动管理 Facebook 时间线和页面的任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 1aa936f902dc17c9a401959c19824f6c581547b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789841"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665796"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Facebook 时间线和页面
 

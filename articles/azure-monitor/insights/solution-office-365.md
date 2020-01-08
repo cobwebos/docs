@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: aff6be1a6abf2550013b752ba4f796ffe255499f
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 12/27/2019
+ms.openlocfilehash: 1c482166ffe27bde900a102c39def400728c102f
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539042"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529705"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -532,7 +532,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 柱形图​​ | 描述 |
+| 柱形图​​ | Description |
 |:--|:--|
 | Operations | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | 交换 | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
@@ -546,29 +546,29 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
 
-### <a name="common-properties"></a>通用属性
+### <a name="common-properties"></a>公共属性
 
 以下属性对于所有 Office 365 记录通用。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
-| Type | OfficeActivity |
+| 类型 | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
 | OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>交换<br>SharePoint|
-| Operation | 用户或管理员活动的名称。  |
+| 操作 | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>Application<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -580,7 +580,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -594,7 +594,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -612,7 +612,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -628,7 +628,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | 交换 |
 | RecordType     | ExchangeAdmin |
@@ -636,14 +636,14 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ModifiedObjectResolvedName |  这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| 参数 | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | 交换 |
 | RecordType     | ExchangeItem |
@@ -652,7 +652,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ClientMachineName | 托管 Outlook 客户端的计算机名称。 |
 | ClientProcessName | 用于访问邮箱的电子邮件客户端。 |
 | ClientVersion | 电子邮件客户端的版本。 |
-| InternalLogonType | 保留供内部使用。 |
+| InternalLogonType | 保留以供内部使用。 |
 | Logon_Type | 表示访问邮箱并执行所记录的操作的用户类型。 |
 | LogonUserDisplayName |    执行操作的用户的用户友好名称。 |
 | LogonUserSid | 执行操作的用户的 SID。 |
@@ -666,11 +666,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | 交换 |
 | RecordType     | ExchangeItem |
-| Item | 表示对其执行操作的项 | 
+| 项目 | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |
@@ -681,7 +681,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | 交换 |
 | OfficeWorkload | ExchangeItemGroup |
@@ -700,7 +700,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -717,7 +717,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -730,7 +730,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| properties | 描述 |
+| 属性 | Description |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -751,7 +751,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 下表提供了此解决方案收集的更新记录的示例日志搜索。
 
-| Query | 描述 |
+| 查询 | Description |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload = ~ "sharepoint" &#124;汇总 Count （） By SiteUrl \| 按计数 asc 排序|

@@ -1,25 +1,16 @@
 ---
-title: 将 Azure 云服务应用转换为 Service Fabric | Microsoft Docs
+title: 将 Azure 云服务应用转换为 Service Fabric
 description: 本指南将云服务 Web 角色和辅助角色与 Service Fabric 无状态服务进行比较，以帮助你从云服务迁移到 Service Fabric。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550390"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463340"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -32,7 +23,7 @@ ms.locfileid: "67550390"
 ![Service Fabric 与云服务项目的比较][3]
 
 ## <a name="worker-role-to-stateless-service"></a>辅助角色到无状态服务
-从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 对工作负荷进行操作的状态由外部状态存储，例如 Azure 表存储或 Azure Cosmos DB 管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
+从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 工作负荷的运行状态由外部状态存储（例如 Azure 表存储或 Azure Cosmos DB）进行管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
 
 ![辅助角色到无状态服务][4]
 
@@ -44,17 +35,17 @@ ms.locfileid: "67550390"
 | ASP.NET Web 窗体 |否 |转换为 ASP.NET Core 1 MVC |
 | ASP.NET MVC |使用迁移 |升级到 ASP.NET Core 1 MVC |
 | ASP.NET Web API |使用迁移 |使用自托管服务器或 ASP.NET Core 1 |
-| ASP.NET Core 1 |是 |不适用 |
+| ASP.NET Core 1 |是 |N/A |
 
 ## <a name="entry-point-api-and-lifecycle"></a>入口点 API 和生命周期
 辅助角色和 Service Fabric 服务 API 提供类似的入口点： 
 
 | **入口点** | **辅助角色** | **Service Fabric 服务** |
 | --- | --- | --- |
-| 正在处理 |`Run()` |`RunAsync()` |
-| VM 启动 |`OnStart()` |不适用 |
-| VM 停止 |`OnStop()` |不适用 |
-| 为客户端请求打开侦听器 |不适用 |<ul><li> 适用于无状态服务的 `CreateServiceInstanceListener()`</li><li>适用于有状态服务的 `CreateServiceReplicaListener()`</li></ul> |
+| Processing |`Run()` |`RunAsync()` |
+| VM 启动 |`OnStart()` |N/A |
+| VM 停止 |`OnStop()` |N/A |
+| 为客户端请求打开侦听器 |N/A |<ul><li> 适用于无状态服务的 `CreateServiceInstanceListener()`</li><li>适用于有状态服务的 `CreateServiceReplicaListener()`</li></ul> |
 
 ### <a name="worker-role"></a>辅助角色
 ```csharp
@@ -110,8 +101,8 @@ namespace Stateless1
 
 辅助角色和 Service Fabric 服务的生命周期与生存期之间有几个主要差异：
 
-* **生命周期：** 最大的区别是辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
-* **生存期：** 如果辅助角色实例将回收`Run`方法退出。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
+* **生命周期：** 最大的差异为辅助角色是 VM，因此其生命周期绑定到 VM，且包含 VM 启动和停止时的事件。 Service Fabric 服务的生命周期与 VM 的生命周期不同，因此不包含主机 VM 或计算机启动和停止时的事件，因为它们彼此不相关。
+* **生存期：** 如果 `Run` 方法退出，辅助角色实例将回收。 但是，Service Fabric 服务中的 `RunAsync` 方法可以运行到完成为止，服务实例将保持运行状态。 
 
 Service Fabric 为侦听客户端请求的服务提供可选的通信设置入口点。 RunAsync 和通信入口点都是 Service Fabric 服务中的可选重写（服务可选择只侦听客户端请求和/或只运行处理循环），这就是 RunAsync 方法无需重新启动服务实例就可退出的原因，因为它可以继续侦听客户端请求。
 
@@ -123,8 +114,8 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 | 配置设置和更改通知 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 本地存储 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 终结点信息 |`RoleInstance` <ul><li>当前实例：`RoleEnvironment.CurrentRoleInstance`</li><li>其他角色和实例：`RoleEnvironment.Roles`</li> |<ul><li>适用于当前节点地址的 `NodeContext`</li><li>适用于服务终结点发现的 `FabricClient` 和 `ServicePartitionResolver`</li> |
-| 环境模拟 |`RoleEnvironment.IsEmulated` |不适用 |
-| 同时更改事件 |`RoleEnvironment` |不适用 |
+| 环境模拟 |`RoleEnvironment.IsEmulated` |N/A |
+| 同时更改事件 |`RoleEnvironment` |N/A |
 
 ## <a name="configuration-settings"></a>配置设置
 云服务中的配置设置是针对 VM 角色设置的，将应用到该 VM 角色的所有实例。 这些设置是 ServiceConfiguration.*.cscfg 文件中设置的键-值对，可直接通过 RoleEnvironment 进行访问。 在 Service Fabric 中，设置单独应用到每个服务和每个应用程序，而不是应用到 VM，因为 VM 可以托管多个服务和应用程序。 服务由三个包组成：

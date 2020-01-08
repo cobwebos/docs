@@ -3,23 +3,23 @@ title: 安装和使用 Azure IoT 浏览器 |Microsoft Docs
 description: 安装 Azure IoT 资源管理器工具，并使用它与连接到 IoT 中心的 IoT 即插即用 Preview 设备进行交互。
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679850"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529620"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
 
 Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用预览版设备进行交互和测试。 在本地计算机上安装该工具后，可以使用它来连接到设备。 您可以使用该工具查看设备正在发送的遥测数据，使用设备属性和调用命令。
 
-本文介绍以下操作：
+本文介绍如何：
 
 - 安装和配置 Azure IoT 资源管理器工具。
 - 使用该工具与设备交互并对其进行测试。
@@ -73,7 +73,7 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 
 - 选择 "**添加**" 以向中心注册新设备。 然后输入设备 ID。 使用默认设置自动生成身份验证密钥，并启用与中心的连接。
 - 选择一个设备，然后选择 "**删除**" 以删除设备标识。 请在完成此操作之前查看设备详细信息，以确保删除正确的设备标识。
-- 通过 `capabilityID` 和 `interfaceID` 进行查询。 将 `capabilityID` 或 `interfaceID` 作为参数添加到查询设备。
+- 通过 `capabilityID` 和 `interfaceID`进行查询。 将 `capabilityID` 或 `interfaceID` 作为参数添加到查询设备。
 
 ## <a name="interact-with-a-device"></a>与设备交互
 

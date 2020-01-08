@@ -3,12 +3,12 @@ title: Azure 备份服务器可备份哪些内容
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449892"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 
@@ -16,7 +16,7 @@ ms.locfileid: "74996147"
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 
-|工作负荷|版本|Azure 备份服务器</br> installation|支持的 Azure 备份服务器|保护和恢复|
+|工作负载|版本|Azure 备份服务器</br> installation|支持的 Azure 备份服务器|保护和恢复|
 |------------|-----------|---------------|--------------|--------------|
 |客户端计算机（64 位和 32 位）|Windows 10|物理服务器<br /><br />Hyper-V 虚拟机<br /><br />VMware 虚拟机|V3，V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
 |客户端计算机（64 位和 32 位）|Windows 8.1|物理服务器<br /><br />Hyper-V 虚拟机|V3，V2|文件<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
@@ -82,9 +82,23 @@ ms.locfileid: "74996147"
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
-如果使用私有或 Microsoft 对等互连配置了 Azure ExpressRoute，则无法使用它将数据备份到 Azure。
+可以通过公共对等互连（适用于旧线路）和 Microsoft 对等互连在 Azure ExpressRoute 上备份数据。 不支持通过专用对等互连进行备份。
 
-如果使用公共对等互连配置了 Azure ExpressRoute，则可以使用它将数据备份到 Azure。
+使用公共对等互连：确保访问以下域/地址：
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+对于 Microsoft 对等互连，请选择以下服务/区域和相关团体值：
+
+* Azure Active Directory （12076:5060）
+* Microsoft Azure 区域（根据恢复服务保管库的位置）
+* Azure 存储（根据恢复服务保管库的位置）
+
+有关更多详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
 
 >[!NOTE]
 >新线路不推荐使用公共对等互连。
@@ -93,17 +107,17 @@ ms.locfileid: "74996147"
 
 Azure 备份服务器可保护以下群集应用程序中的数据：
 
-- 文件服务器
+* 文件服务器
 
-- SQL Server
+* SQL Server
 
-- Hyper-v-如果使用向外扩展 MABS 保护代理保护 Hyper-v 群集，则无法为受保护的 Hyper-v 工作负荷添加辅助保护。
+* Hyper-v-如果使用向外扩展 MABS 保护代理保护 Hyper-v 群集，则无法为受保护的 Hyper-v 工作负荷添加辅助保护。
 
     如果在 Windows Server 2008 R2 上运行 Hyper-V，请务必安装知识库 [975354](https://support.microsoft.com/kb/975354) 中描述的更新。
     如果在群集配置中的 Windows Server 2008 R2 上运行 Hyper-V，请务必安装 SP2 和知识库 [971394](https://support.microsoft.com/kb/971394)。
 
-- Exchange Server - Azure 备份服务器可保护受支持 Exchange Server 版本的非共享磁盘群集（群集连续的复制），还可保护针对本地连续复制配置的 Exchange Server。
+* Exchange Server - Azure 备份服务器可保护受支持 Exchange Server 版本的非共享磁盘群集（群集连续的复制），还可保护针对本地连续复制配置的 Exchange Server。
 
-- SQL Server - Azure 备份服务器不支持备份托管在群集共享卷 (CSV) 上的 SQL Server 数据库。
+* SQL Server - Azure 备份服务器不支持备份托管在群集共享卷 (CSV) 上的 SQL Server 数据库。
 
 Azure 备份服务器可以保护位于与 MABS 服务器相同的域中、子域或受信任域中的群集工作负荷。 如果要保护不受信任域或工作组中的数据源，请针对单个服务器使用 NTLM 或证书身份验证，或针对群集仅使用证书身份验证。

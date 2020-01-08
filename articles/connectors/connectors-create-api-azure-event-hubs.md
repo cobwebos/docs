@@ -1,18 +1,18 @@
 ---
 title: 连接到 Azure 事件中心
-description: 使用 Azure 事件中心和 Azure 逻辑应用管理和监视事件
+description: 使用 Azure 事件中心和 Azure 逻辑应用创建监视和管理事件的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446171"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
 
@@ -33,7 +33,7 @@ ms.locfileid: "74789935"
 
 若要确保逻辑应用可以访问事件中心，请检查你的权限，并获取事件中心命名空间的连接字符串。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 转到事件中心命名空间，而不是特定的事件中心。 
 
@@ -74,25 +74,25 @@ ms.locfileid: "74789935"
 
    ![触发器属性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | properties | 需要 | 描述 |
+   | 属性 | 需要 | Description |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要监视的事件中心的名称 |
-   | **内容类型** | No | 事件的内容类型。 默认为 `application/octet-stream`。 |
-   | **使用者组名称** | No | 用于读取事件的[事件中心使用者组的名称](../event-hubs/event-hubs-features.md#consumer-groups)。 如果未指定，则使用默认使用者组。 |
-   | **最大事件计数** | No | 最大事件数。 触发器返回的事件数至少为 1，至多为此属性指定的事件数。 |
+   | **内容类型** | 否 | 事件的内容类型。 默认为 `application/octet-stream`。 |
+   | **使用者组名称** | 否 | 用于读取事件的[事件中心使用者组的名称](../event-hubs/event-hubs-features.md#consumer-groups)。 如果未指定，则使用默认使用者组。 |
+   | **最大事件计数** | 否 | 最大事件数。 触发器返回的事件数至少为 1，至多为此属性指定的事件数。 |
    | 间隔 | 是 | 一个正整数，用于描述工作流基于频率运行的频率 |
    | **频率** | 是 | 重复周期的时间单位 |
    ||||
 
    **其他属性**
 
-   | properties | 需要 | 描述 |
+   | 属性 | 需要 | Description |
    |----------|----------|-------------|
-   | **内容架构** | No | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只能为与架构匹配的事件触发逻辑应用。 |
-   | **最小分区键** | No | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
-   | **最大分区键** | No | 输入要读取的最大[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
-   | **时区** | No | 仅当指定开始时间时才适用，因为此触发器不接受 UTC 偏移量。 选择要应用的时区。 <p>有关详细信息，请参阅[在 Azure 逻辑应用中创建和运行定期任务和工作流](../connectors/connectors-native-recurrence.md)。 |
-   | **开始时间** | No | 按以下格式提供开始时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss<p>-或-<p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ<p>有关详细信息，请参阅[在 Azure 逻辑应用中创建和运行定期任务和工作流](../connectors/connectors-native-recurrence.md)。 |
+   | **内容架构** | 否 | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只能为与架构匹配的事件触发逻辑应用。 |
+   | **最小分区键** | 否 | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
+   | **最大分区键** | 否 | 输入要读取的最大[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
+   | **时区** | 否 | 仅当指定开始时间时才适用，因为此触发器不接受 UTC 偏移量。 选择要应用的时区。 <p>有关详细信息，请参阅[在 Azure 逻辑应用中创建和运行定期任务和工作流](../connectors/connectors-native-recurrence.md)。 |
+   | **开始时间** | 否 | 按以下格式提供开始时间： <p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss<p>-或-<p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ<p>有关详细信息，请参阅[在 Azure 逻辑应用中创建和运行定期任务和工作流](../connectors/connectors-native-recurrence.md)。 |
    ||||
 
 1. 完成后，请在设计器工具栏上选择“保存”。
@@ -130,12 +130,12 @@ ms.locfileid: "74789935"
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | properties | 需要 | 描述 |
+   | 属性 | 需要 | Description |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要在其中发送事件的事件中心 |
-   | **内容** | No | 要发送的事件内容 |
-   | **属性** | No | 要发送的应用属性和值 |
-   | **分区键** | No | 要将事件发送到的位置的[分区](../event-hubs/event-hubs-features.md#partitions)ID |
+   | **内容** | 否 | 要发送的事件内容 |
+   | **属性** | 否 | 要发送的应用属性和值 |
+   | **分区键** | 否 | 要将事件发送到的位置的[分区](../event-hubs/event-hubs-features.md#partitions)ID |
    ||||
 
    例如，可以将事件中心触发器的输出发送到另一个事件中心：
@@ -152,7 +152,7 @@ ms.locfileid: "74789935"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | properties | 需要 | Value | 描述 |
+   | 属性 | 需要 | 值 | Description |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <connection-name> | 为连接创建的名称 |
    | **事件中心命名空间** | 是 | <event-hubs-namespace> | 选择要使用的事件中心命名空间。 |

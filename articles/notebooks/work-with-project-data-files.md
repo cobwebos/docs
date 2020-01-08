@@ -1,18 +1,20 @@
 ---
-title: 使用 Azure Notebooks 项目导入和导出数据
-description: 如何将数据从外部源导入 Azure Notebooks 项目，以及如何从项目中导出数据。
-ms.topic: article
+title: 通过 Azure Notebooks 预览在项目中导入和导出数据
+description: 了解如何从外部源将数据引入 Azure Notebooks 预览项目，以及如何从项目中导出数据。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: bd7ba27859e9d05c0d57c2f78b6449c2bc48ca33
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277380"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646970"
 ---
-# <a name="work-with-data-files-in-azure-notebook-projects"></a>使用 Azure Notebooks 项目中的数据文件
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>处理 Azure Notebooks 预览项目中的数据文件
 
 数据是许多 Jupyter Notebooks 的命脉，尤其是用于数据科学的笔记本。 使用 Azure Notebooks，可轻松从各种源导入项目，然后在笔记本中使用这些数据。 还可让笔记本生成存储在项目中的数据，然后下载这些数据供其他地方使用。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 正在运行的笔记本中的“数据”菜单还提供“上传”和“下载”命令，这些命令处理项目中的文件以及当前笔记本会话的临时文件。
 
@@ -24,7 +26,7 @@ ms.locfileid: "74277380"
 
 ## <a name="import-data"></a>导入数据
 
-可使用“数据”菜单或诸如  **之类的命令，从项目仪表板或正在运行的笔记本中将文件导入项目**`curl`。
+可使用“数据”菜单或诸如 `curl` 之类的命令，从项目仪表板或正在运行的笔记本中将文件导入项目。
 
 ### <a name="import-files-from-the-project-dashboard"></a>从项目仪表板导入文件
 
@@ -44,7 +46,7 @@ ms.locfileid: "74277380"
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>从笔记本中的“文件”菜单导入文件
 
-1. 在正在运行的笔记本中，选择“文件” **“上传”命令** > ：
+1. 在正在运行的笔记本中，选择“文件” > “上传”命令：
 
     ![笔记本中的文件“上传”菜单命令](media/file-menu-upload.png)
 
@@ -98,7 +100,7 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>从笔记本中的“数据”菜单导出文件
 
-1. 选择“文件” **“下载”菜单命令** > ：
+1. 选择“文件” > “下载”菜单命令：
 
     ![笔记本中的“数据下载”菜单命令](media/file-menu-download.png)
 

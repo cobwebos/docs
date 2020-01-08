@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor Azure 应用程序 Insights 覆盖默认 SDK 终结点 |Microsoft Docs
-description: 修改 Azure 政府等区域的默认 Azure 应用程序 Insights SDK 终结点。
+title: Azure 应用程序 Insights 覆盖默认 SDK 终结点
+description: 为 Azure 政府等区域修改默认 Azure Monitor Application Insights SDK 终结点。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677480"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432590"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights 重写默认终结点
 
-若要将数据从 Application Insights 发送到特定区域，需要重写默认终结点地址。 每个 SDK 都需要略有不同的修改，本文介绍了所有这些内容。 这些更改需要调整示例代码，并将 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address` 和 `Profile_Query_Endpoint_address` 的占位符值替换为特定区域的实际终结点地址。 本文末尾包含的链接指向需要此配置的区域的终结点地址。
+若要将数据从 Application Insights 发送到特定区域，需要重写默认终结点地址。 每个 SDK 都需要略有不同的修改，本文介绍了所有这些内容。 这些更改需要调整示例代码，并将 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address`和 `Profile_Query_Endpoint_address` 的占位符值替换为特定区域的实际终结点地址。 本文末尾包含的链接指向需要此配置的区域的终结点地址。
 
 ## <a name="sdk-code-changes"></a>SDK 代码更改
 
@@ -195,7 +195,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 目前，只有[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)版和[azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)版才需要修改终结点。
 
-|地区 |  终结点名称 | Value |
+|地区 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | 遥测通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中国 | QuickPulse （实时指标） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +207,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 如果你当前使用的是通常通过 "api.applicationinsights.io" 访问的[Application Insights REST API](https://dev.applicationinsights.io/
 ) ，你将需要使用区域的本地终结点：
 
-|地区 |  终结点名称 | Value |
+|地区 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

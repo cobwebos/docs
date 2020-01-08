@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric 反向代理安全通信 | Microsoft Docs
-description: 将反向代理配置为启用安全端到端通信。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 反向代理安全通信
+description: 配置反向代理以在 Azure Service Fabric 应用程序中启用安全的端到端通信。
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: e915e689f09ba7f5c92958ebf8531aa67eef4493
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933956"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639388"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -30,7 +22,7 @@ ms.locfileid: "72933956"
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理和服务之间建立安全连接 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>向服务进行反向代理身份验证：
-反向代理使用其证书向服务标识自己。 对于 Azure 群集，证书使用资源管理器模板 [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [资源类型部分](../azure-resource-manager/resource-group-authoring-templates.md)中的 reverseProxyCertificate 属性指定。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向代理使用其证书向服务标识自己。 对于 Azure 群集，该证书是用 "资源管理器" 模板的 " [**ServiceFabric/群集**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters)"[资源类型部分](../azure-resource-manager/templates/template-syntax.md)中的***reverseProxyCertificate***属性指定的。 对于独立群集，证书使用 ClusterConfig.json“安全”部分中的 ReverseProxyCertificate 或 ReverseProxyCertificateCommonNames 属性指定。 若要了解详细信息，请参阅[在独立群集上启用反向代理](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服务可以通过实现逻辑验证反向代理提供的证书。 服务可以将接受的客户端证书详细信息指定为配置包中的配置设置。 此信息可在运行时读取，并可用于验证反向代理提供的证书。 若要添加配置设置，请参阅[管理应用程序参数](service-fabric-manage-multiple-environment-app-configuration.md)。 
 

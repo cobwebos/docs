@@ -1,5 +1,5 @@
 ---
-title: 使用 MSAL for Java 从令牌缓存获取和删除帐户（MSAL4j）
+title: 获取 & 删除令牌缓存中的帐户（MSAL4j） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 Java 的 Microsoft 身份验证库查看和删除令牌缓存中的帐户。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40c5f2e272a44727d4da91600093e8dc691a95f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2f800d8d8665667c51ee57e3fe1c556c3a2d8eb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424349"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>使用 MSAL for Java 从令牌缓存获取和删除帐户
 

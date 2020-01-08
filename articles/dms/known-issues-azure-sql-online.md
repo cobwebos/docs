@@ -1,6 +1,7 @@
 ---
-title: 有关联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制的文章 | Microsoft Docs
-description: 了解在联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制。
+title: 已知问题：联机迁移到 SQL 数据库
+titleSuffix: Azure Database Migration Service
+description: 了解使用 Azure 数据库迁移服务在线迁移到 Azure SQL Database 时的已知问题/迁移限制。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,22 +9,22 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 07/27/2019
-ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561500"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437826"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>联机迁移到 Azure SQL Database 时的已知问题/迁移限制
 
 下面描述了从 SQL Server 联机迁移到 Azure SQL 数据库时存在的已知问题和限制。
 
 > [!IMPORTANT]
-> 将 SQL Server 联机迁移到 Azure SQL 数据库时，不支持迁移 SQL_variant 数据类型。
+> 通过联机 SQL Server 到 Azure SQL 数据库的迁移，不支持 SQL_variant 数据类型的迁移。
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>不支持迁移时态表
 
@@ -105,29 +106,29 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **解决方法**
 
-如果 LOB 列大于 32 KB, 请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
+如果 LOB 列大于 32 KB，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
 
 ### <a name="issues-with-timestamp-columns"></a>时间戳列的问题
 
 **症状**
 
-Azure 数据库迁移服务不迁移源时间戳值;相反, Azure 数据库迁移服务在目标表中生成新的时间戳值。
+Azure 数据库迁移服务不迁移源时间戳值;相反，Azure 数据库迁移服务在目标表中生成新的时间戳值。
 
 **解决方法**
 
-如果需要 Azure 数据库迁移服务来迁移存储在源表中的确切时间戳值, 请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
+如果需要 Azure 数据库迁移服务来迁移存储在源表中的确切时间戳值，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>数据迁移错误不提供数据库详细状态边栏选项卡上的其他详细信息
 
 **症状**
 
-如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。
+跨数据库的 "详细信息" 状态视图中的迁移故障时，选择顶部功能区上的 "**数据迁移错误**" 链接可能无法提供特定于迁移失败的其他详细信息。
 
 ![发生数据迁移错误时不提供详细信息的示例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **解决方法**
 
-若要获取特定的失败详细信息, 请使用以下步骤。
+若要获取特定的失败详细信息，请使用以下步骤。
 
 1. 关闭“数据库详细状态”边栏选项卡以显示“迁移活动”屏幕。
 
@@ -139,22 +140,22 @@ Azure 数据库迁移服务不迁移源时间戳值;相反, Azure 数据库迁�
 
 **症状**
 
-迁移失败, 并出现一条错误消息, 其中包含以下文本:
+迁移失败，并出现一条错误消息，其中包含以下文本：
 
      “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
 
 **解决方法**
 
-虽然 Azure 数据库迁移服务支持 Geography 数据类型以便脱机迁移到 Azure SQL 数据库, 但对于联机迁移, 不支持地理数据类型。 尝试使用 Azure 数据库迁移服务将源中的数据类型更改为支持的类型, 然后再尝试使用 Azure 数据库迁移服务进行此数据库的联机迁移。
+虽然 Azure 数据库迁移服务支持 Geography 数据类型以便脱机迁移到 Azure SQL 数据库，但对于联机迁移，不支持地理数据类型。 尝试使用 Azure 数据库迁移服务将源中的数据类型更改为支持的类型，然后再尝试使用 Azure 数据库迁移服务进行此数据库的联机迁移。
 
 ### <a name="supported-editions"></a>支持的版本
 
 **症状**
 
-迁移失败, 并出现一条错误消息, 其中包含以下文本:
+迁移失败，并出现一条错误消息，其中包含以下文本：
 
     Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
 
 **解决方法**
 
-支持使用 Azure 数据库迁移服务对 Azure SQL 数据库进行联机迁移仅适用于企业版、标准版和开发人员版。 在开始迁移过程之前, 请确保使用的是受支持的版本。
+支持使用 Azure 数据库迁移服务对 Azure SQL 数据库进行联机迁移仅适用于企业版、标准版和开发人员版。 在开始迁移过程之前，请确保使用的是受支持的版本。

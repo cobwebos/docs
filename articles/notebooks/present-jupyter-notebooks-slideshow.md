@@ -1,18 +1,20 @@
 ---
-title: 以幻灯片放映形式在 Azure 上提供 Jupyter 笔记本
-description: 如何在 Jupyter 笔记本中为幻灯片放映模式配置单元格，然后使用 RISE 扩展呈现幻灯片放映。
-ms.topic: article
+title: 在 Azure Notebooks 预览中提供 Jupyter 笔记本作为幻灯片
+description: 了解如何在 Jupyter 笔记本中配置幻灯片放映模式的单元格，然后使用放大扩展显示幻灯片。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277595"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647112"
 ---
-# <a name="run-a-notebook-slideshow"></a>运行笔记本幻灯片放映
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览中运行笔记本幻灯片
 
 Azure Notebooks 使用 Jupyter/IPython 幻灯片放映扩展 (RISE) 进行预配置，该扩展使你可以直接以幻灯片放映形式呈现笔记本。 在幻灯片放映中，单元格通常使用适合在大屏幕上呈现的字号一次显示一个，并且你仍可以运行代码而不是切换到单独的演示计算机。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 下图显示标准笔记本视图，在其中可以一起查看 Markdown 和代码单元格：
 
@@ -50,7 +52,7 @@ Azure Notebooks 使用 Jupyter/IPython 幻灯片放映扩展 (RISE) 进行预配
     | 幻灯片 | 单元格是主幻灯片，使用导航控件的向左和向右箭头进行导航。 |
     | 子幻灯片 | 单元处于主幻灯片“下方”，使用导航控件的向下箭头进行导航。 向上箭头可返回到主幻灯片。 子幻灯片用于可以在演示文稿主路径中跳过，但是在需要时已准备好使用的辅助材料。 |
     | 片段 | 在使用向下导航箭头时，单元格内容出现在上一张幻灯片或子幻灯片的上下文中（在使用向上箭头时，会删除片段）。 可以将片段与代码单元格一起使用，使该代码出现在幻灯片中，也可以使用多个片段使文本项目符号逐个出现（请参阅下一节中的示例）。 因为片段基于当前幻灯片而构建，所有多余碎片在浏览器窗口底部不可见。 |
-    | Skip | 单元格不显示在幻灯片放映中。 |
+    | 跳过 | 单元格不显示在幻灯片放映中。 |
     | 说明 | 单元格包含不显示在幻灯片放映中的演讲者备注。 |
 
 1. 在开始时，对每个单元格选择“幻灯片”会很有帮助。 随后可以运行幻灯片放映并进行相应调整。

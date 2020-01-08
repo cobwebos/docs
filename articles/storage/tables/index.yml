@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure 表存储文档
+summary: Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，通过无架构设计提供键/属性存储。
+metadata:
+  title: Azure 表存储文档
+  description: Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，通过无架构设计提供键/属性存储。
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551890"
+landingContent:
+- title: 关于表存储
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 表存储？
+      url: table-storage-overview.md
+    - text: 选择表存储或表 API
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: 表设计指南
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 通过设计提高读取和写入效率
+      url: table-storage-design-guidelines.md
+    - text: 针对查询的设计
+      url: table-storage-design-for-query.md
+    - text: 针对数据修改的设计
+      url: table-storage-design-for-modification.md
+    - text: 表设计模式
+      url: table-storage-design-patterns.md
+- title: 性能、缩放和成本优化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 表存储的性能清单
+      url: storage-performance-checklist.md
+    - text: 通过设计优化性能
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: 表存储的可伸缩性目标
+      url: scalability-targets.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 门户中创建表
+      url: table-storage-quickstart-portal.md

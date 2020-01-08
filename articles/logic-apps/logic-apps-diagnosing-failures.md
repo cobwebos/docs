@@ -1,17 +1,17 @@
 ---
-title: 排查和诊断故障
-description: 了解如何在 Azure 逻辑应用中排查和诊断工作流故障
+title: 排查和诊断工作流故障
+description: 了解如何在 Azure 逻辑应用中对工作流中的问题、错误和失败进行故障排除和诊断
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790766"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666799"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>在 Azure 逻辑应用中排查和诊断工作流故障
 
@@ -34,11 +34,11 @@ ms.locfileid: "74790766"
 
    触发器尝试可能的状态如下：
 
-   | 状态 | 描述 | 
+   | 状态 | Description | 
    | ------ | ----------- | 
    | 成功 | 触发器已检查终结点并找到可用数据。 通常，此状态还会伴随出现“已触发”状态。 如果没有，触发器定义可能未满足某一条件或 `SplitOn` 命令。 <p>此状态可应用于手动触发器、定期触发器或轮询触发器。 如果操作生成未处理的错误，尽管可以成功运行触发器，但运行本身可能仍会失败。 | 
    | 已跳过 | 触发器已检查终结点，但未找到任何数据。 | 
-   | 失败 | 发生错误。 若要查看失败触发器生成的任何错误消息，请选择该触发器尝试并选择“输出”。 例如，你可能发现输入无效。 | 
+   | 失败 | 出现了错误。 若要查看失败触发器生成的任何错误消息，请选择该触发器尝试并选择“输出”。 例如，你可能发现输入无效。 | 
    ||| 
 
    你可能具有日期和事件相同的多条触发器记录，当逻辑应用找到多个项目时将发生这一情况。 
@@ -75,7 +75,7 @@ ms.locfileid: "74790766"
 
    运行可能的状态如下：
 
-   | 状态 | 描述 | 
+   | 状态 | Description | 
    | ------ | ----------- | 
    | 成功 | 所有操作成功。 <p>如果特定操作发生故障，工作流中下面的操作将处理该故障。 | 
    | 失败 | 至少一个操作失败，并且工作流中未设置任何后续操作来处理该故障。 | 

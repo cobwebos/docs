@@ -3,24 +3,24 @@ title: 在 Azure 云服务角色上安装 .NET | Microsoft Docs
 description: 本文介绍如何在云服务 Web 角色和辅助角色上手动安装 .NET Framework
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360984"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
 
-例如，可在来宾 OS 系列 4 上安装 .NET 4.6.2（它不随 .NET 4.6 的任何版本一起提供）。 （来宾 OS 系列 5 随 .NET 4.6 一起提供。）有关最新的 Azure 来宾 OS 版本信息，请参阅 [Azure 来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)。 
+例如，可在来宾 OS 系列 4 上安装 .NET 4.6.2（它不随 .NET 4.6 的任何版本一起提供）。 （来宾操作系统系列5随附 .NET 4.6。）有关 Azure 来宾 OS 版本的最新信息，请参阅[Azure 来宾 os 发行新闻](cloud-services-guestos-update-matrix.md)。 
 
 >[!IMPORTANT]
 >Azure SDK 2.9 包含一个限制，限制将 .NET 4.6 部署到来宾 OS 系列 4 或更早版本。 有关此限制的修复方法可在 [Microsoft 文档](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)站点上找到。
@@ -30,7 +30,7 @@ ms.locfileid: "68359630"
 ## <a name="add-the-net-installer-to-your-project"></a>将 .NET 安装程序添加到项目
 若要下载 .NET Framework 的 Web 安装程序，请选择想要安装的版本：
 
-* [.NET 4.8 Web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET 4.8 web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
 * [.NET 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -234,3 +234,6 @@ ms.locfileid: "68359630"
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

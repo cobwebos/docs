@@ -1,17 +1,17 @@
 ---
 title: 将应用迁移到最新架构
-description: 如何将逻辑应用迁移到最新架构版本
+description: 如何将逻辑应用工作流 JSON 定义迁移到最新的工作流定义语言架构版本
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: dc967c90f28b29a63a1f26d0aae86b6d769c1ccf
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786922"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666782"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>将逻辑应用迁移到最新架构版本
 
@@ -28,7 +28,7 @@ ms.locfileid: "74786922"
 
    此时将显示“更新架构”页，并显示指向描述新架构中的改进的文档的链接。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 下面是将逻辑应用迁移到最新架构版本的一些最佳做法：
 

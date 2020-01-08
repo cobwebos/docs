@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832708"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608714"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>为外部用户管理对 Azure AD 权限管理的访问权限
 
@@ -105,7 +105,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ### <a name="review-your-office-365-group-sharing-settings"></a>查看 Office 365 组共享设置
 
-- 如果你想要在你的外部用户的访问包中包含 Office 365 组，请确保将 "**允许用户向组织添加新来宾"** 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[管理对 Office 365 组的来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups)。
+- 如果你想要在你的外部用户的访问包中包含 Office 365 组，请确保将 "**允许用户向组织添加新来宾"** 设置为 **"开**" 以允许来宾访问。 有关详细信息，请参阅[管理对 Office 365 组的来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)。
 
 - 如果希望外部用户能够访问与 Office 365 组关联的 SharePoint Online 网站和资源，请确保启用 SharePoint Online 外部共享。 有关详细信息，请参阅[打开或关闭外部共享](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
@@ -123,9 +123,9 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
 
-1. 在“权利管理”部分的左侧菜单中，单击“设置”。
+1. 在左侧菜单的 "**权利管理**" 部分中，单击 "**设置**"。
 
-1. 单击“编辑”。
+1. 单击 **“编辑”** 。
 
     ![用于管理外部用户生命周期的设置](./media/entitlement-management-external-users/settings-external-users.png)
 
@@ -143,7 +143,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 如果要删除此目录中的来宾用户帐户，可以设置删除之前的天数。 如果要在来宾用户帐户丢失其最后一次分配到任何访问包时立即将其删除，请设置将**此目录中的外部用户删除到0前的天数**。
 
-1. 单击“保存”。
+1. 单击“ **保存**”。
 
 ## <a name="next-steps"></a>后续步骤
 

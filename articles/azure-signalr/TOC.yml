@@ -25,6 +25,10 @@
   items:
     - name: 生成带身份验证的无服务器实时应用
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: 监视
+      items:
+        - name: 使用诊断日志监视 SignalR 服务
+          href: signalr-tutorial-diagnostic-logs.md
 - name: 示例
   items:
     - name: 代码示例
@@ -57,7 +61,7 @@
       href: signalr-concept-authenticate-oauth.md
     - name: 事件处理
       href: signalr-concept-event-grid-integration.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 缩放
       items:
@@ -100,7 +104,7 @@
     - name: 常见问题解答
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: 视频

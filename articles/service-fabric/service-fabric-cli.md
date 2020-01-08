@@ -1,19 +1,16 @@
 ---
 title: Azure Service Fabric CLI 入门
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何连接到群集以及如何管理应用程序。
-services: service-fabric
 author: jeffj6123
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4c3a41fe4dba351c10ad8488d4d339bc797597ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463388"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 

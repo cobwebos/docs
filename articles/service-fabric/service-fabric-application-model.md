@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric 应用程序模型 | Microsoft Docs
-description: 如何在 Service Fabric 中建模和描述应用程序。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric 应用程序模型
+description: 如何使用应用程序和服务清单文件在 Azure Service Fabric 中对应用程序和服务进行建模和描述。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 750970233cbcb14d901dbb5fa94f649f6ff8ae6c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60621394"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551873"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
 本文概述 Azure Service Fabric 应用程序模型以及如何通过清单文件定义应用程序和服务。
@@ -37,7 +26,7 @@ ms.locfileid: "60621394"
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 
-群集中可以有一个或多个服务类型实例处于活动状态。 例如，有状态服务实例（或称副本）通过在群集中不同节点上的副本之间复制状态实现高可靠性。 复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
+群集中可以有一个或多个服务类型实例处于活动状态。 例如，有状态服务实例或副本通过复制位于群集中不同节点上的副本之间的状态实现高可靠性。 复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
 
 下图显示应用程序和服务实例、分区与副本之间的关系。
 

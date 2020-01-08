@@ -2,19 +2,15 @@
 title: Azure 自动化中的源代码管理集成
 description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 837ebd71886e9435a44080b06c079623c3936c69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417068"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -45,7 +41,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 在“源代码管理摘要”页上，填写信息并单击“保存”。 下表显示了可用字段的说明。
 
-|properties  |描述  |
+|属性  |Description  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的友好名称。 *此名称只能包含字母和数字。*        |
 |源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure Repos （Git）</br> Azure Repos （TFVC）        |
@@ -54,7 +50,7 @@ Azure 自动化支持三种类型的源代码管理：
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*仅同步指定的文件夹中的 runbook。不支持递归。*        |
 |自动同步<sup>1</sup>     | 在源代码管理存储库中提交时打开或关闭自动同步         |
 |发布 Runbook     | 如果设置为**On**，则在 runbook 从源代码管理同步后，它们将自动发布。         |
-|描述     | 用于提供其他详细信息的一个文本字段        |
+|Description     | 用于提供其他详细信息的一个文本字段        |
 
 <sup>1</sup>若要在配置与 Azure Repos 的源代码管理集成时启用自动同步，您必须是项目管理员。
 
@@ -93,7 +89,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 有关在 GitHub 中创建个人访问令牌的详细信息，请访问[创建用于命令行的个人访问令牌](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。
 
-|范围  |描述  |
+|范围  |Description  |
 |---------|---------|
 |**存储库**     |         |
 |repo:status     | 访问提交状态         |

@@ -8,7 +8,7 @@
       href: overview.md
     - name: 什么是 Geo AI DSVM？
       href: geo-ai-dsvm-overview.md
-    - name: DSVM 上包含的工具
+    - name: DSVM 中包含的工具
       href: tools-included.md
 - name: 快速入门
   expanded: true
@@ -24,24 +24,24 @@
 - name: 概念
   items:
     - name: 深度学习和人工智能框架
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: 编程语言
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: 开发工具
       href: dsvm-tools-development.md
     - name: 机器学习和数据科学工具
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: 数据平台
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: 数据引入工具
       href: dsvm-tools-ingestion.md
-    - name: 数据探索和可视化工具
-      href: dsvm-tools-explore-and-visualize.md
+    - name: 生产力工具
+      href: dsvm-tools-productivity.md
     - name: 企业安全与指南
       href: dsvm-enterprise-overview.md
 - name: 示例
   href: dsvm-samples-and-walkthroughs.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Windows DSVM
       href: vm-do-ten-things.md
@@ -63,7 +63,7 @@
       href: 'https://stackoverflow.com/search?q=dsvm'
     - name: R 开发人员指南
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
-- name: 引用
+- name: 参考
   items:
     - name: Ubuntu DSVM
       href: reference-ubuntu-vm.md

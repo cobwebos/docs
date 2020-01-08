@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559980"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408902"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在光栅地图上呈现自定义数据
 
@@ -22,12 +22,14 @@ ms.locfileid: "74559980"
 
 若要呈现自定义图钉、标签和几何叠加，可以使用 Postman 应用程序。 您可以使用 Azure Maps[数据服务 api](https://docs.microsoft.com/rest/api/maps/data)来存储和渲染覆盖区。
 
+> [!Tip]
+> 使用 Azure Maps Web SDK 在网页上显示简单的映射比使用静态图像服务通常更具成本效益。 Web SDK 使用地图磁贴，除非用户平移并缩放地图，否则他们通常只为每个地图负载生成一小部分事务。 请注意，Azure Maps web SDK 提供了用于禁用平移和缩放的选项。 此外，Azure Maps web SDK 提供了一组更丰富的数据可视化选项，而不是静态地图 web 服务。  
 
 ## <a name="prerequisites"></a>必备组件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
-若要完成本文中的过程，首先需要按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明创建 Azure Maps 帐户，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤来检索帐户的主要订阅密钥。
+若要完成本文中的过程，首先需要创建一个 Azure Maps 帐户，并获取 Maps 帐户密钥。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>使用标签和自定义图像渲染图钉

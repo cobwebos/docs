@@ -1,14 +1,14 @@
 ---
 title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892594"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664592"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
@@ -84,27 +84,27 @@ ms.locfileid: "74892594"
 
 假设已备份 SDC HANA 实例 "H21"。 "备份项" 页面会将备份项名称显示为 **"h21 （sdc）"** 。 如果尝试将此数据库还原到另一个目标 SDC （如 H11），则需要提供以下输入。
 
-![SDC 还原输入](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+![还原的 SDC 数据库名称](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-注意以下几点：
+请注意以下几点：
 
-- 默认情况下，还原的数据库名称将用备份项名称（即 h21 （sdc））填充。
+- 默认情况下，还原的数据库名称将用备份项名称填充。 在本例中为 h21 （sdc）。
 - 选择目标为 "H11" 不会自动更改还原的数据库名称。 **应将其编辑为 h11 （sdc）** 。 对于 SDC，还原的数据库名称将是带有小写字母的目标实例 ID，并在括号中追加了 "SDC"。
 - 由于 SDC 只能有一个数据库，因此还需要单击该复选框以允许使用恢复点数据覆盖现有的数据库数据。
-- Linux 区分大小写。 因此，请注意保留大小写。
+- Linux 区分大小写。 因此请小心保留这种情况。
 
 ### <a name="multiple-container-database-mdc-restore"></a>多容器数据库（MDC）还原
 
-在 HANA 的多个容器数据库中，标准配置为 SYSTEMDB + 1 个或更多租户数据库。 还原整个 SAP HANA 实例意味着还原 SYSTEMDB 和租户数据库。 首先还原 SYSTEMDB，然后继续进行租户数据库。 系统 DB 实质上是指覆盖所选目标上的系统信息。 此还原还会替代目标实例中的与 BackInt 相关的信息。 因此，将系统数据库还原到目标实例后，需要再次运行预注册脚本。 只有这样，随后的租户数据库还原才会成功。
+在 HANA 的多个容器数据库中，标准配置为 SYSTEMDB + 1 个或更多租户数据库。 还原整个 SAP HANA 实例意味着还原 SYSTEMDB 和租户数据库。 首先还原 SYSTEMDB，然后继续进行租户数据库。 系统 DB 实质上是指覆盖所选目标上的系统信息。 此还原还会替代目标实例中的与 BackInt 相关的信息。 因此，在将系统数据库还原到目标实例之后，请再次运行预注册脚本。 只有这样，随后的租户数据库还原才会成功。
 
 ## <a name="upgrading-from-sap-hana-10-to-20"></a>从 SAP HANA 1.0 升级到2。0
 
-如果要保护 SAP HANA 1.0 数据库，并希望升级到2.0，请执行下面所述的步骤：
+如果要保护 SAP HANA 1.0 数据库，并希望升级到2.0，请执行以下步骤：
 
 - 对于旧的 SDC 数据库，[停止保护](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)并保留数据。
 - 执行升级。 完成后，HANA 现在是包含系统 DB 和租户数据库的 MDC
 - 重新运行具有（sid 和 mdc）详细信息的[预注册脚本](https://aka.ms/scriptforpermsonhana)。
-- 在 Azure 门户中为同一台计算机重新注册扩展（备份 > 视图详细信息-> 选择相关的 Azure VM > 重新注册）。
+- 在 Azure 门户中为同一计算机重新注册扩展（备份 > 视图详细信息-> 选择相关的 Azure VM-> 重新注册）。
 - 单击 "重新发现同一 VM 的数据库"。 此操作应显示第2步中的新数据库，其中包含正确的详细信息（SYSTEMDB 和租户 DB，而不是 SDC）。
 - 配置这些新数据库的备份。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559167"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454273"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -36,7 +36,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
 
-适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 2147483647 天。 如果未设置保留策略，日志将一直保留。
+适用于其他日志的保留策略也适用于流日志。 可以将日志保留策略从1天设置为365天。 如果未设置保留策略，日志将一直保留。
 
 > [!NOTE] 
 > 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
@@ -95,14 +95,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 3. 无服务终结点：由于当前限制，只能通过服务终结点将日志直接发送到存储帐户。 请参阅[如何实现将 NSG Flow 日志与服务终结点一起使用？](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) ，帮助删除现有服务终结点。
 4. 自我管理密钥轮替：如果更改/轮换存储帐户的访问密钥，NSG 流日志将停止工作。 若要解决此问题，必须禁用并重新启用 NSG 流日志。
 
-**对附加到资源的所有 Nsg 启用 NSG 流日志记录**： Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关网络安全组的详细信息，请参阅[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。 
+**对附加到资源的所有 Nsg 启用 NSG 流日志记录**： Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。
 
-**流日志记录成本**： NSG 流日志记录在生成的日志量上计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关更多详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
-
-> [!IMPORTANT]
-> 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
+**流日志记录成本**： NSG 流日志记录在生成的日志量上计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)了解更多详细信息。
 
 **从 Internet ip 记录到无公共 ip 的 vm 的入站流**：没有通过公共 ip 地址分配公共 ip 地址的 vm 作为实例级公共 ip，或者作为基本的负载均衡器后端池的一部分，请使用[默认的 SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) ，并使用 Azure 分配的 IP 地址来促进出站连接。 因此，如果流发送到分配给 SNAT 的端口范围内的端口，则可能会看到流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但会记录尝试，并按设计在网络观察程序的 NSG 流日志中显示。 建议通过 NSG 显式阻止不需要的入站 internet 流量。
+
+**无状态流的字节和数据包计数不正确**：[网络安全组（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)作为有[状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现。 但是，许多用于控制流量的默认/内部规则都是以无状态方式实现的。 由于平台限制，不会记录无状态流的字节和数据包计数（也就是说，流量流经无状态规则），只记录有状态流。 因此，NSG Flow 日志中报告的字节数和数据包数（和流量分析）可能与实际流不同。 此限制计划于6月2020。
 
 ## <a name="sample-log-records"></a>示例日志记录
 

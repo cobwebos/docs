@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: c5622f32dbf849b9a21a1fd2e458f35b8aa1d098
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 1051ea91378cc2e2facec7e34f6d303297b91ce8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454064"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
 
@@ -21,9 +21,9 @@ ms.locfileid: "74480383"
 
 你可以使用[Azure CLI](/cli/azure/)来管理你的应用程序，而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -50,28 +50,26 @@ az iotcentral app create \
 
 这些命令首先在 "美国东部" 位置为应用程序创建一个资源组。 下表描述了用于**az iotcentral app create**命令的参数：
 
-| 参数         | 说明 |
+| 参数         | Description |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
 | location          | 默认情况下，此命令使用来自资源组的位置。 目前，可以在**美国**、**澳大利亚**、**亚太**或**欧洲**位置创建 IoT Central 应用程序。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
-| 域名         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
+| 域名         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
 | sku               | 目前，唯一的值是 **S1**（标准层）。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-| 模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
+| template          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
 | display-name      | UI 中显示的应用程序名称。 |
 
 **具有正式可用功能的应用程序模板**
 
-| 模板名称            | 说明 |
+| 模板名            | Description |
 | ------------------------ | ----------- |
-| iotc-default@1.0.0       | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。 |
-| iotc-demo@1.0.0          | 创建一个应用程序，其中包含已为冷藏食品贩卖机创建的设备模板。 通过此模板来完成 Azure IoT Central 的入门。 |
-| iotc-devkit-sample@1.0.0 | 创建一个应用程序，其中的设备模板可以用来连接 MXChip 或 Raspberry Pi 设备。 如果你是在其中任一设备上进行试验的设备开发人员，请使用此模板。 |
+| iotc-default@1.0.0       | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。
 
 
 **具有公共预览功能的应用程序模板**
 
-| 模板名称            | 说明 |
+| 模板名            | Description |
 | ------------------------ | ----------- |
 | iotc-pnp-preview@1.0.0   | 创建一个空的即插即用预览应用程序，以使用自己的设备模板和设备进行填充。 |
 | iotc-condition@1.0.0     | 使用 "存储内分析-条件监视" 模板创建应用程序。 使用此模板来连接和监视存储环境。 |

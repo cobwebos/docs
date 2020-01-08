@@ -1,22 +1,22 @@
 ---
-title: 连接到 Excel Online
-description: 使用 Excel Online REST API 和 Azure 逻辑应用管理数据
+title: 管理 Excel Online 中的数据、工作表和表
+description: 使用 Azure 逻辑应用在 Excel Online for business 或 Excel Online 中管理工作表和表中的数据
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: a4356b4f88df3fc457917be563a79e9054a1638e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789802"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445880"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
 
-使用 Azure 逻辑应用和 Excel Online 连接器，可以基于 Excel Online for Business 或 Excel Online for OneDrive 中的数据创建自动化任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[Excel online](/connectors/excelonlinebusiness/) For Business 连接器或[excel online for onedrive](/connectors/excelonline/)连接器，你可以基于 Excel online for business 或 onedrive 中的数据创建自动任务和工作流。 此连接器提供了可以帮助你处理数据以及管理电子表格的操作，例如：
 
 * 创建新的工作表和表。
 * 获取和管理工作表、表和行。
@@ -24,7 +24,7 @@ ms.locfileid: "74789802"
 
 然后，你可以将来自这些操作的输出用于其他服务的操作。 例如，如果你使用一个每周创建工作表的操作，则可以使用另一个操作通过 Office 365 Outlook 连接器发送确认电子邮件。
 
-如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
 > [Excel Online for Business](/connectors/excelonlinebusiness/) 和 [Excel Online for OneDrive](/connectors/excelonline/) 连接器可以与 Azure 逻辑应用一起工作，不同于[适用于 PowerApps 的 Excel 连接器](/connectors/excel/)。
@@ -44,7 +44,7 @@ ms.locfileid: "74789802"
 
 ## <a name="add-excel-action"></a>添加 Excel 操作
 
-1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
 1. 在触发器下，选择“新建步骤”。
 

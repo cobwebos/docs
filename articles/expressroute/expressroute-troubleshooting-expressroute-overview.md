@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 833e7788a5b17b12ad883f705d56f660c2f1d832
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033790"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551975"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 通过专用连接将本地网络扩展到 Microsoft 云，此连接通常由连接提供商提供。 通常，ExpressRoute 连接涉及三个不同的网络区域，如下所示：
@@ -23,7 +23,7 @@ ms.locfileid: "74033790"
 -   Microsoft 数据中心
 
 > [!NOTE]
-> 在 ExpressRoute 直接连接模型（10/100 Gbps 带宽提供）中，cusomters 可以直接连接到 Microsoft 企业边缘（MSEE）路由器的端口。 因此，在直接连接模式下，只有客户和 Microsoft 网络区域。
+> 在 ExpressRoute 直接连接模型（10/100 Gbps 带宽提供）中，客户可以直接连接到 Microsoft 企业边缘（MSEE）路由器的端口。 因此，在直接连接模式下，只有客户和 Microsoft 网络区域。
 >
 
 

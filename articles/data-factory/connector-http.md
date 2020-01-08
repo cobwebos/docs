@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c942661beea34e7a49223f4a8e4a4d6c0eb66e1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7532db883b6267c402e380d865c917d16a7052da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440622"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "74929322"
 此 HTTP 连接器、[REST 连接器](connector-rest.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
 - **REST 连接器**专门支持从 RESTful API 复制数据。 
-- **HTTP 连接器**是通用的，用于从任何 HTTP 终结点检索数据，例如下载文件。 在 REST 连接器可用之前，你可能偶然使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能较少。
+- **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在 REST 连接器可用之前，你可能偶然使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但与 REST 连接器相比功能较少。
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -64,19 +64,19 @@ ms.locfileid: "74929322"
 
 HTTP 链接的服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 HttpServer。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
-| enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false。 | No<br /> （默认值为 true） |
+| enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false。 | 否<br /> （默认值为 true） |
 | authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
-| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |No |
+| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 身份验证
 
 将 authenticationType 属性设置为 Basic、Digest 或 Windows。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -109,11 +109,11 @@ HTTP 链接的服务支持以下属性：
 
 若要使用 ClientCertificate 身份验证，将 authenticationType 属性设置为ClientCertificate。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 编码的证书数据。 | 指定是 embeddedCertData，还是 certThumbprint。 |
 | certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 属性中指定自承载类型的 Integration Runtime 时适用。 | 指定是 embeddedCertData，还是 certThumbprint。 |
-| password | 与证书关联的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | No |
+| password | 与证书关联的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 
 如果使用 certThumbprint 进行身份验证，并在本地计算机的个人存储中安装了证书，则需要授予对自承载集成运行时的读取权限：
 
@@ -174,10 +174,10 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| properties    | 描述                                                  | 需要 |
+| 属性    | Description                                                  | 需要 |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | Dataset 中 `location` 下的 type 属性必须设置为**HttpServerLocation**。 | 是      |
-| relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。   | No       |
+| relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。   | 否       |
 
 > [!NOTE]
 > 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
@@ -208,20 +208,88 @@ HTTP 链接的服务支持以下属性：
 }
 ```
 
-### <a name="legacy-dataset-model"></a>旧数据集模型
+## <a name="copy-activity-properties"></a>复制活动属性
+
+本部分提供 HTTP 源支持的属性列表。
+
+有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
+
+### <a name="http-as-source"></a>HTTP 作为源
+
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+
+基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
+
+| 属性                 | Description                                                  | 需要 |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | `storeSettings` 下的 type 属性必须设置为**HttpReadSetting**。 | 是      |
+| requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | 否       |
+| addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
+| requestBody              | HTTP 请求的正文。                               | 否       |
+| httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | 否       |
+| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
+
+**示例：**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSetting",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
+## <a name="legacy-models"></a>传统模型
 
 >[!NOTE]
->对于向后兼容性，仍支持以下数据集模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
+>对于向后兼容性，仍支持以下模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
 
-| properties | 描述 | 需要 |
+### <a name="legacy-dataset-model"></a>旧数据集模型
+
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 HttpFile。 | 是 |
-| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | No |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | No |
-| additionalHeaders | 附加的 HTTP 请求标头。 | No |
-| requestBody | HTTP 请求的正文。 | No |
-| format | 如果要在未经分析的情况下从 HTTP 终结点按原样检索数据，并将其复制到基于文件的存储，请跳过输入和输出数据集定义中的格式部分。<br/><br/>如果要在复制期间分析 HTTP 响应内容，下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅 [JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)。 |No |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/><br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |No |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| requestBody | HTTP 请求的正文。 | 否 |
+| format | 如果要在未经分析的情况下从 HTTP 终结点按原样检索数据，并将其复制到基于文件的存储，请跳过输入和输出数据集定义中的格式部分。<br/><br/>如果要在复制期间分析 HTTP 响应内容，下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅 [JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)。 |否 |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/><br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |否 |
 
 > [!NOTE]
 > 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
@@ -265,77 +333,12 @@ HTTP 链接的服务支持以下属性：
 }
 ```
 
-## <a name="copy-activity-properties"></a>复制活动属性
+### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-本部分提供 HTTP 源支持的属性列表。
-
-有关可用于定义活动的各个部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)。 
-
-### <a name="http-as-source"></a>HTTP 作为源
-
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
-
-基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
-
-| properties                 | 描述                                                  | 需要 |
-| ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为**HttpReadSetting**。 | 是      |
-| requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | No       |
-| addtionalHeaders         | 附加的 HTTP 请求标头。                             | No       |
-| requestBody              | HTTP 请求的正文。                               | No       |
-| httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | No       |
-| maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | No       |
-
-**示例：**
-
-```json
-"activities":[
-    {
-        "name": "CopyFromHTTP",
-        "type": "Copy",
-        "inputs": [
-            {
-                "referenceName": "<Delimited text input dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "outputs": [
-            {
-                "referenceName": "<output dataset name>",
-                "type": "DatasetReference"
-            }
-        ],
-        "typeProperties": {
-            "source": {
-                "type": "DelimitedTextSource",
-                "formatSettings":{
-                    "type": "DelimitedTextReadSetting",
-                    "skipLineCount": 10
-                },
-                "storeSettings":{
-                    "type": "HttpReadSetting",
-                    "requestMethod": "Post",
-                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
-                    "requestBody": "<body for POST HTTP request>"
-                }
-            },
-            "sink": {
-                "type": "<sink type>"
-            }
-        }
-    }
-]
-```
-
-#### <a name="legacy-source-model"></a>旧源模型
-
->[!NOTE]
->以下复制源模型仍受支持，以便向后兼容。 建议使用前面提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
-
-| properties | 描述 | 需要 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：HttpSource。 | 是 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | No |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
 
 **示例**
 
@@ -368,11 +371,6 @@ HTTP 链接的服务支持以下属性：
     }
 ]
 ```
-
-## <a name="lookup-activity-properties"></a>查找活动属性
-
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

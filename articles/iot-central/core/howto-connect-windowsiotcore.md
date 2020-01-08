@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 452d18908406214bb7e1253363a42d8ba8287d96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454037"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -25,19 +25,24 @@ ms.locfileid: "73930206"
 
 若要完成本文中的步骤，需要以下各项：
 
-- 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+- 从**旧应用**程序应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 
 - 运行 Windows 10 IoT Core 操作系统的设备。 有关详细信息，请参阅[设置 Windows 10 IoT Core 设备](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
-- 安装[了 node.js 8.0.0 版或](https://nodejs.org/)更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种不同的操作系统。
+- 安装[了 node.js 8.0.0 版或](https://nodejs.org/)更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 
-## <a name="the-sample-devkits-application"></a>示例 Devkits 应用程序
+## <a name="add-a-device-template"></a>添加设备模板
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
+在 Azure IoT Central 应用程序中，添加具有以下特征的新**Windows IoT Core**设备模板：
 
 - 设备的遥测度量：**湿度**、**温度**和**压力**。
 - 用于控制**风扇速度**的设置。
 - 设备属性**模具编号**和云属性**位置**。
+
+1. 在设备模板 ![设备模板 "中选择" **+ 新建**"](media/howto-connect-windowsiotcore/adddevicetemplate.png)
+   
+
+2. 选择 " **Windows Iot core** " 并创建 Windows iot core 设备模板 ![添加设备模板](media/howto-connect-windowsiotcore/newdevicetemplate.png)
 
 有关设备模板配置的完整详细信息，请参阅[Windows IoT Core 设备模板详细信息](#device-template-details)。
 
@@ -104,26 +109,26 @@ ms.locfileid: "73930206"
 
 ### <a name="telemetry-measurements"></a>遥测数据度量
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
-| 压强       | hPa    | 260     | 1260    | 0              |
+| 压力       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>设置
 
 数字设置
 
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>属性
 
-| 类型            | 显示名称 | 字段名称 | 数据类型 |
+| 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
-| 文本            | 位置     | location   | 不适用       |
+| 文本            | 位置     | location   | N/A       |
 
 ## <a name="next-steps"></a>后续步骤
 

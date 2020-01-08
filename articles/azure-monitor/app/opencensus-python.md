@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928975"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432487"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -26,7 +26,7 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>在 Azure Monitor 中创建 Application Insights 资源
 
@@ -38,13 +38,13 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
 1. 此时将显示一个配置框。 使用下表填写输入字段。
 
-   | 设置        | Value           | 描述  |
+   | 设置        | 值           | Description  |
    | ------------- |:-------------|:-----|
-   | 名称      | 全局唯一值 | 标识要监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识要监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于承载 Application Insights 数据的新资源组的名称 |
-   | 位置 | 美国东部 | 附近的位置或应用托管位置附近 |
+   | **位置** | 美国东部 | 附近的位置或应用托管位置附近 |
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>用于 Azure Monitor 的 OpenCensus Python SDK 检测
 
@@ -140,7 +140,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
 
 6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的度量值，用于跟踪用户按 Enter 的次数。
 
@@ -353,7 +353,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
     ```
 
-7. 有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)。
+7. 有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
 
 ## <a name="view-your-data-with-queries"></a>通过查询查看数据
 

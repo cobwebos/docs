@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371388"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -56,16 +56,21 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 | **语法** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **示例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
+> [!TIP]
+> 此示例将路径参数括在单引号（' '）内。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
+
 此命令通过将测试数据上传到指定目标来运行性能基准测试。 在测试完成后，将在内存中生成测试数据，将其上传到目标，然后从目标中删除这些数据。 可以通过使用可选的命令参数来指定要生成的文件数以及要使用的文件大小。
+
+有关详细的参考文档，请参阅[azcopy 工作台](storage-ref-azcopy-bench.md)。
 
 若要查看此命令的详细帮助指南，请键入 `azcopy bench -h`，然后按 ENTER 键。
 
 ### <a name="optimize-throughput"></a>优化吞吐量
 
-您可以使用 `cap-mbps` 标志将上限设置为吞吐量数据速率。 例如，以下命令的大写吞吐量为每秒 `10` 兆字节（MB）。
+你可以使用命令中的 `cap-mbps` 标志来对吞吐量数据速率施加上限。 例如，以下命令恢复作业和 cap 吞吐量，每秒 `10` 兆字节（MB）。 
 
 ```azcopy
-azcopy --cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 传输小文件时吞吐量可能会下降。 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量来提高吞吐量。 此变量指定可能发生的并发请求数。  
@@ -146,6 +151,9 @@ azcopy jobs show <job-id> --with-status=Failed
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
+
+> [!TIP]
+> 用单引号（' '）将路径参数（如 SAS 令牌）括起来。 在所有命令 shell 中使用单引号（Windows 命令行界面（cmd.exe）除外）。 如果使用的是 Windows 命令行界面（cmd.exe），请用双引号（""）而不是单引号（' '）将路径参数引起来。
 
 恢复作业时，AzCopy 会查看作业计划文件。 计划文件列出了在首次创建作业时标识为要处理的所有文件。 恢复作业时，AzCopy 将尝试传输尚未传输的计划文件中列出的所有文件。
 

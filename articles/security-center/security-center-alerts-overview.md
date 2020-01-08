@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: bd538d436d1c900a370f522bccf724eaf87210b4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd3cef4d70ea3f78d7e135ad01e0e00b38c60b9
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582606"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666272"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
 在 Azure 安全中心，许多不同的资源类型都有多种不同的警报。 安全中心为部署在 Azure 上的资源以及部署在本地和混合云环境中的资源生成警报。
 
-Azure 安全中心的标准层提供高级检测功能。 免费试用版已提供。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://azure.microsoft.com/pricing/details/security-center/) ，了解详细的定价情况。
+Azure 安全中心的标准层提供高级检测功能。 有免费试用版可用。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://azure.microsoft.com/pricing/details/security-center/) ，了解详细的定价情况。
 
 ## 应对今天的威胁<a name="respond-threats"></a>
 
@@ -35,7 +35,7 @@ Azure 安全中心的标准层提供高级检测功能。 免费试用版已提�
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 
-警报是安全中心检测到对资源的威胁时生成的通知。 安全中心划分优先级并列出警报，以及快速调查问题所需的信息。 安全中心还提供了有关如何修正攻击的建议。
+警报是安全中心在检测到资源威胁时生成的通知。 安全中心划分优先级并列出警报，以及快速调查问题所需的信息。 安全中心还提供有关如何针对攻击采取补救措施的建议。
 
 ## 安全中心如何检测威胁？ <a name="detect-threats"> </a>
 
@@ -105,13 +105,17 @@ Azure 安全中心的优势在于，在 Microsoft 的整个过程中，会持续
 以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测，以便为 Azure 上部署的资源应用其他保护层：
 
 * [服务层警报](security-center-alerts-service-layer.md)
-* [与 Azure 安全产品集成](security-center-alerts-integration.md)
+* [Azure WAF 和 Azure DDoS 保护的威胁检测](security-center-alerts-integration.md)
 
 ## <a name="what-are-security-incidents"></a>什么是安全事件？
 
 安全事件是相关警报的集合，而不是单独列出每个警报。 安全中心使用[云智能警报相关](security-center-alerts-cloud-smart.md)，将不同的警报和低保真信号关联到安全事件。
 
 通过使用事件，安全中心可提供攻击活动的单一视图和所有相关警报。 利用此视图，您可以快速了解攻击者采取的操作以及受影响的资源。 有关详细信息，请参阅[云智能警报相关性](security-center-alerts-cloud-smart.md)。
+
+## <a name="security-alerts-in-azure-activity-log"></a>Azure 活动日志中的安全警报
+
+除了在 Azure 门户或以编程方式提供的安全警报和事件外，还会在[Azure 活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中将其作为事件进行审核。 有关事件架构的详细信息，请参阅[Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)。
 
 ## <a name="next-steps"></a>后续步骤
 

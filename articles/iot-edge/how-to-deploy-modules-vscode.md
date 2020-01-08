@@ -1,6 +1,6 @@
 ---
-title: 通过 Visual Studio Code 部署模块 - Azure IoT Edge | Microsoft Docs
-description: 使用 Visual Studio Code 将模块部署至 IoT Edge 设备
+title: 从 Visual Studio Code 部署模块 Azure IoT Edge
+description: 使用 Azure IoT 工具 Visual Studio Code 将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备，如部署清单所配置。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 415494fed0870a855a20314816bcebbe22680a98
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
-ms.translationtype: MT
+ms.openlocfilehash: d1c5897240f627d52af056767943b59d85dd2d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457413"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434294"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 
 使用业务逻辑创建 IoT Edge 模块后，需要将其部署到设备后才能在边缘操作。 如果多个模块共同协作来收集和处理数据，可同时部署它们并声明用于连接它们的路由规则。
 
-本文介绍如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
+本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
@@ -31,11 +31,11 @@ ms.locfileid: "74457413"
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
 
-若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一节中运行命令来将配置应用到设备时，会用到这个文件路径。
+若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 在下一部分通过运行命令将配置应用到设备时，会用到这个文件路径。
 
-下面是一个基本的部署清单示例，其中具有一个模块：
+下面是一个基本的部署清单示例，其中有一个模块：
 
    ```json
    {

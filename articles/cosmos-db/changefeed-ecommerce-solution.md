@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Cosmos DB 更改源将实时数据分析可视化
-description: 本文介绍零售公司如何使用更改源来了解用户模式，以及执行实时数据分析和可视化。
+description: 本文介绍零售公司如何使用更改源来了解用户模式、执行实时数据分析和可视化
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616948"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442075"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
-Azure Cosmos DB 更改源是一种机制, 用于从 Azure Cosmos 容器获取记录的连续和增量源, 因为正在创建或修改这些记录。 更改源支持的工作原理是侦听容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 若要详细了解更改源，请参阅[使用更改源](change-feed.md)一文。 
+Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取记录的连续和增量源，因为正在创建或修改这些记录。 更改源支持的工作原理是侦听容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 若要详细了解更改源，请参阅[使用更改源](change-feed.md)一文。 
 
 本文介绍了电商企业如何通过变化信息了解用户模式并执行实时数据分析和可视化。 我们将分析各种事件，例如，用户查看某个商品、将商品添加到购物车，或购买商品。 发生其中一个事件时，将创建一个新记录，而更改源将会记录该记录。 然后，更改源触发一系列步骤，从而生成用于分析公司绩效和活动的指标的可视化效果。 可以可视化的示例指标包括收入、唯一的站点访客、最受欢迎的商品，以及查看的商品、添加到购物车的商品与购买的商品的平均价格。 这些示例指标可帮助电子商务公司评估其站点热门度、制定其广告和定价策略，并做出投资哪些存货的决策。
 
@@ -47,13 +47,13 @@ Azure Cosmos DB 更改源是一种机制, 用于从 Azure Cosmos 容器获取记
 
 4. **Azure 函数：** Azure 函数处理新数据，并将其发送到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。  
 
-5. **事件中心：** Azure 事件中心存储这些事件，并将其发送到 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)以执行进一步分析。  
+5. **事件中心：** Azure 事件中心存储这些事件，并将其发送到 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)以执行进一步的分析。  
 
 6. **Azure 流分析：** Azure 流分析定义查询来处理事件和执行实时数据分析。 然后，将此数据发送到 [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop)。  
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -143,7 +143,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>将 Azure 函数设置为读取更改源
 
-创建新文档或在 Cosmos 容器中修改当前文档时, 更改源会自动将修改后的文档添加到其集合更改的历史记录中。 现在，我们生成并运行一个用于处理更改源的 Azure 函数。 在创建的集合中创建或修改文档时，更改源会触发该 Azure 函数。 然后，该 Azure 函数会将修改后的文档发送到事件中心。
+创建新文档或在 Cosmos 容器中修改当前文档时，更改源会自动将修改后的文档添加到其集合更改的历史记录中。 现在，我们生成并运行一个用于处理更改源的 Azure 函数。 在创建的集合中创建或修改文档时，更改源会触发该 Azure 函数。 然后，该 Azure 函数会将修改后的文档发送到事件中心。
 
 1. 返回到在设备上克隆的存储库。  
 
@@ -208,7 +208,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 5. 导航回到流分析作业页，并选择“输出”。  
 
-6. 选择 **+ 添加**。 然后，从下拉菜单中选择“Power BI”。  
+6. 选择“+ 添加”。 然后，从下拉菜单中选择“Power BI”。  
 
 7. 若要创建新的 Power BI 输出来可视化平均价格，请执行以下操作：
 
@@ -250,12 +250,12 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
  
 5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”。  
 
-6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 在名为“值”的下一个部分下面，添加“avg”。选择“下一步”，为图表指定标题，然后选择“应用”。 仪表板上应会出现一个新图表！  
+6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 然后，在下一个名为**Value**的节下，添加**avg**。选择 "**下一步**"，然后为图表标题，并选择 "**应用**"。 仪表板上应会出现一个新图表！  
 
 7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。
 
-   a. **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
-   b. **输出别名：** top5Output；数据集名称：top5；表名称：top5  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
+   b.保留“数据库类型”设置，即设置为“共享”。 **输出别名：** top5Output；数据集名称：top5；表名称：top5  
    c. **输出别名：** uniqueVisitorCountOutput；数据集名称：uniqueVisitorCount；表名称：uniqueVisitorCount
 
    然后选择“编辑查询”，并将以下查询粘贴到所编写的查询的上面。
@@ -318,7 +318,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>可选：在电子商务站点中进行可视化
 
-现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站, 请使用 Azure Cosmos 数据库来存储产品类别列表 (女性、男士、中性)、产品目录和最受欢迎的项目列表。
+现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 为了构建电子商务网站，请使用 Azure Cosmos 数据库来存储产品类别列表（女性、男士、中性）、产品目录和最受欢迎的项目列表。
 
 1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
 

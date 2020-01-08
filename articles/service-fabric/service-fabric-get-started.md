@@ -1,25 +1,15 @@
 ---
-title: 设置 Azure 微服务的 Windows 开发环境 | Microsoft Docs
+title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 1eb8e5893d93ef0261d68df4629b072876096711
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: 9e055a0674804a15d307a879fd8cb609e3c2631d
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185675"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614377"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -31,7 +21,7 @@ ms.locfileid: "74185675"
 
 若要在 Windows 开发计算机上生成并运行[Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 支持使用以下操作系统版本进行开发：
 
@@ -53,8 +43,8 @@ Web 平台安装程序 (WebPI) 是安装 SDK 和工具的建议方法。 如果�
 > [!NOTE]
 > 不支持本地 Service Fabric 开发群集升级。
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>使用 Visual Studio 2017 或 2019
-Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
+### <a name="to-use-visual-studio-2017-or-2019"></a>使用 Visual Studio 2017 或2019
+Service Fabric 工具是 Visual Studio 2017 和2019中的 Azure 开发工作负荷的一部分。 在 Visual Studio 安装过程中启用此工作负荷。
 此外还需使用 Web 平台安装程序安装 Microsoft Azure Service Fabric SDK 和运行时。
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]

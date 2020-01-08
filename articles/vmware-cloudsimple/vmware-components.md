@@ -1,5 +1,6 @@
 ---
-title: Azure VMware 解决方案（按 CloudSimple）-私有云 VMware 组件
+title: 私有云 VMware 组件
+titleSuffix: Azure VMware Solution by CloudSimple
 description: 介绍如何在私有云上安装 VMware 组件
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452318"
 ---
 # <a name="private-cloud-vmware-components"></a>私有云 VMware 组件
 
@@ -28,11 +29,11 @@ ms.locfileid: "70814569"
 
 使用以下软件版本部署私有云 VMware 堆栈。
 
-| 组件 | Version | 许可版本 |
+| 组件 | 版本 | 许可版本 |
 |-----------|---------|------------------|
-| ESXi | 6.7 U2 | 企业 Plus |
-| vCenter | 6.7 U2 | vCenter 标准版 |
-| vSAN | 6.7 | 企业 |
+| ESXi | 6.7 u2 | 企业 Plus |
+| vCenter | 6.7 u2 | vCenter 标准版 |
+| vSAN | 6.7 | Enterprise 版 |
 | NSX 数据中心 | 2.4.1 | 高级 |
 
 ## <a name="esxi"></a>ESXi
@@ -47,13 +48,13 @@ vCenter server 设备（VCSA）通过 CloudSimple 为 VMware 解决方案提供�
 
 ### <a name="vcenter-single-sign-on"></a>vCenter 单一登录
 
-VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  系统会创建 **CloudOwner@cloudsimple.com** 一个默认用户以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](set-vcenter-identity.md)。
+VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  将为你创建一个默认用户 **CloudOwner@cloudsimple.com** 以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](set-vcenter-identity.md)。
 
 ## <a name="vsan-storage"></a>vSAN 存储
 
 私有云是在群集的本地完全配置的所有闪存 vSAN 存储中创建的。  使用 vSAN 数据存储创建 vSphere 群集需要使用同一 SKU 的至少三个节点。  默认情况下，会在 vSAN 数据存储上启用重复数据删除和压缩。  在 vSphere 群集的每个节点上创建两个磁盘组。 每个磁盘组都包含一个缓存磁盘和三个容量磁盘。
 
-在 vSphere 群集上创建一个默认的 vSAN 存储策略，并将其应用于 vSAN 数据存储。  此策略确定如何在数据存储中设置和分配 VM 存储对象，以确保所需的服务级别。  存储策略定义了 "**容错（FTT）** " 和 "**失败" 容错方法**。  你可以创建新的存储策略并将其应用到 Vm。 若要维护 SLA，必须在 vSAN 数据存储上维护 25% 的备用容量。  
+在 vSphere 群集上创建一个默认的 vSAN 存储策略，并将其应用于 vSAN 数据存储。  此策略确定如何在数据存储中设置和分配 VM 存储对象，以确保所需的服务级别。  存储策略定义了 "**容错（FTT）** " 和 "**失败" 容错方法**。  你可以创建新的存储策略并将其应用到 Vm。 若要维护 SLA，必须在 vSAN 数据存储上维护25% 的备用容量。  
 
 ### <a name="default-vsan-storage-policy"></a>默认 vSAN 存储策略
 
@@ -61,7 +62,7 @@ VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联
 
 | VSphere 群集中的节点数 | FTT | 故障容错方法 |
 |------------------------------------|-----|--------------------------|
-| 3和4节点 | 1 | RAID 1 （镜像）-创建2个副本 |
+| 3和4节点 | 第 | RAID 1 （镜像）-创建2个副本 |
 | 5到16个节点 | 2 | RAID 1 （镜像）-创建3个副本 |
 
 ## <a name="nsx-data-center"></a>NSX 数据中心
@@ -81,11 +82,11 @@ NSX 数据中心在私有云上提供网络虚拟化、微分段和网络安全�
 
 ## <a name="vsphere-cluster"></a>vSphere 群集
 
-将 ESXi 主机配置为群集，以确保私有云的高可用性。  在创建私有云时，将在第一个群集上部署 vSphere 的管理组件。  为管理组件创建了资源池，并在此资源池中部署了所有管理 Vm。 无法删除第一个群集来压缩私有云。  vSphere 群集使用**VSPHERE HA**为 vm 提供高可用性。  容错失败基于群集中的可用节点数。  您可以使用公式```Number of nodes = 2N+1``` ，其中```N```是可容忍的失败次数。
+将 ESXi 主机配置为群集，以确保私有云的高可用性。  在创建私有云时，将在第一个群集上部署 vSphere 的管理组件。  为管理组件创建了资源池，并在此资源池中部署了所有管理 Vm。 无法删除第一个群集来压缩私有云。  vSphere 群集使用**VSPHERE HA**为 vm 提供高可用性。  容错失败基于群集中的可用节点数。  您可以使用公式 ```Number of nodes = 2N+1``` 其中 ```N``` 是可容忍的失败次数。
 
 ### <a name="vsphere-cluster-limits"></a>vSphere 群集限制
 
-| Resource | 限制 |
+| 资源 | 限制 |
 |----------|-------|
 | 要创建私有云的最小节点数（第一个 vSphere 群集） | 3 |
 | 私有云上的 vSphere 群集中的最大节点数 | 16 |

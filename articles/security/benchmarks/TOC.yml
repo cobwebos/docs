@@ -1,0 +1,30 @@
+- name: Azure 安全基准
+  href: index.yml
+- name: 介绍
+  href: introduction.md
+- name: 安全控制
+  items:
+    - name: 概述
+      href: overview.md
+    - name: 网络安全
+      href: security-control-network-security.md
+    - name: 日志记录和监视
+      href: security-control-logging-monitoring.md
+    - name: 标识和访问控制
+      href: security-control-identity-access-control.md
+    - name: 数据保护
+      href: security-control-data-protection.md
+    - name: 漏洞管理
+      href: security-control-vulnerability-management.md
+    - name: 清单和资产管理
+      href: security-control-inventory-asset-management.md
+    - name: 安全配置
+      href: security-control-secure-configuration.md
+    - name: 恶意软件防护
+      href: security-control-malware-defense.md
+    - name: 数据恢复
+      href: security-control-data-recovery.md
+    - name: 事件响应
+      href: security-control-incident-response.md
+    - name: 渗透测试和红队练习
+      href: security-control-penetration-tests-red-team-exercises.md

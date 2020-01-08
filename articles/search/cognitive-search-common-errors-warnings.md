@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1e11c5a570f899a5ac18673a71fe79db95de0f80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461073"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -32,7 +32,7 @@ ms.locfileid: "74973962"
 
 从 API 版本 `2019-05-06`开始，会构建项级索引器错误和警告，使其更清晰地围绕原因和后续步骤。 它们包含以下属性：
 
-| properties | 描述 | 示例 |
+| 属性 | Description | 示例 |
 | --- | --- | --- |
 | key | 受错误或警告影响的文档的文档 ID。 | https：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | 描述错误或警告出现位置的操作名称。 这是由以下结构生成的： [category]。[子类别]。[resourceType]。ResourceName | DocumentExtraction myBlobContainerName 扩充. WebApiSkill mySkillName SearchIndex OutputFieldMapping myOutputFieldName SearchIndex MergeOrUpload myIndexName.KnowledgeStore. myTableName |
@@ -54,15 +54,15 @@ ms.locfileid: "74973962"
 
 <a name="could-not-extract-document-content"/>
 
-## <a name="error-could-not-extract-document-content"></a>错误：无法提取文档内容
-具有 Blob 数据源的索引器无法从文档中提取内容（例如，PDF 文件）。 这可能是由于以下原因导致的：
+## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>错误：无法从文档中提取内容或元数据
+具有 Blob 数据源的索引器无法从文档中提取内容或元数据（例如，PDF 文件）。 这可能是由于以下原因导致的：
 
 | 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
 | blob 大于大小限制 | 文档是 `'150441598'` 字节，超过了当前服务层的文档提取的最大大小 `'134217728'` 字节。 | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 的内容类型不受支持 | 文档具有不受支持的内容类型 `'image/png'` | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 已加密 | 无法处理文档-它可能已加密或受密码保护。 | 可以跳过 blob[设置](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)。 |
-| 暂时性问题 | 处理 blob 时出错：请求已中止：请求已取消。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
+| 暂时性问题 | "处理 blob 时出错：请求已中止：请求已取消。" "在处理过程中文档超时"。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-parse-document"/>
 
@@ -158,7 +158,7 @@ ms.locfileid: "74973962"
 
 | 原因 | 详细信息/示例
 | --- | ---
-| 索引器提取的字段的数据类型与相应目标索引字段的数据模型不兼容。 | 带有键 "_data_" 的文档中的数据字段 "_data_" 具有无效值 "" 的类型 "Edm. 字符串"。 预期类型为 "Collection （Edm）"。 |
+| 索引器提取的字段的数据类型与相应目标索引字段的数据模型不兼容。 | 具有键 "888" 的文档中的数据字段 "_data_" 包含无效的值 "Edm. 字符串" "。 预期类型为 "Collection （Edm）"。 |
 | 未能从字符串值中提取任何 JSON 实体。 | 无法将字段 "_data_" 的类型 "Edm. 字符串" "的值" 分析为 JSON 对象。 错误：在分析值后，遇到意外的字符： ""。 路径 "_path_"，第1行，位置3162。 |
 | 未能从字符串值提取 JSON 实体的集合。  | 无法将字段 "_data_" 的类型 "Edm. 字符串" "的值" 分析为 JSON 数组。 错误：在分析值后，遇到意外的字符： ""。 路径 "[0]"、第1行、位置27。 |
 | 在源文档中发现未知类型。 | 无法为未知类型 "_unknown_" 建立索引 |
@@ -174,10 +174,18 @@ ms.locfileid: "74973962"
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>警告：无法执行技能，因为技能输入无效
-由于缺少技能的输入、错误的类型或无效，索引器无法在技能组合中运行技能。
+## <a name="warning-skill-input-was-invalid"></a>警告：技能输入无效
+缺少技能的输入、错误的类型或其他无效类型。 警告消息将指示影响：
+1) 无法执行技能
+2) 已执行的技能，但可能产生意外结果
 
-认知技能需要输入和可选输入。 例如，[关键短语提取技能](cognitive-search-skill-keyphrases.md)`text`、`languageCode`和无可选输入提供两个必需的输入。 如果任何必需的输入无效，则会跳过该技能，并生成警告。 跳过的技能不会生成任何输出，因此，如果其他技能使用跳过的技能的输出，则他们可能会生成其他警告。
+认知技能需要输入和可选输入。 例如，[关键短语提取技能](cognitive-search-skill-keyphrases.md)`text`、`languageCode`和无可选输入提供两个必需的输入。 自定义技能输入都被视为可选输入。
+
+如果缺少任何必需的输入，或者任何输入不是正确的类型，则会跳过该技能，并生成警告。 跳过的技能不会生成任何输出，因此，如果其他技能使用跳过的技能的输出，则他们可能会生成其他警告。
+
+如果缺少可选输入，则该技能仍将运行，但由于缺少输入，可能会产生意外的输出。
+
+在这两种情况下，此警告可能是由于你的数据形状所致。 例如，如果有一个文档包含 `firstName`、`middleName`和 `lastName`字段的人员的相关信息，则可能有一些文档没有 `middleName`的条目。 如果你将 `middleName` 作为输入传递给管道中的技能，则预期此项技术输入可能会丢失一些时间。 你将需要评估你的数据和方案，以确定此警告是否需要任何操作。
 
 如果要在缺少输入的情况下提供默认值，则可以使用[条件技能](cognitive-search-skill-conditional.md)生成默认值，然后使用[条件技能](cognitive-search-skill-conditional.md)的输出作为技能输入。
 
@@ -197,8 +205,8 @@ ms.locfileid: "74973962"
 
 | 原因 | 详细信息/示例 | 分辨率 |
 | --- | --- | --- |
-| 技能输入的类型错误 | 所需的技能输入 `X` 不是所需的类型 `String`。 所需的技能输入 `X` 未采用预期格式。 | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 是一个字符串。 如果输入指定非字符串值，则不会执行技能，也不会生成任何输出。 确保你的数据集在类型中具有一致的输入值，或使用[自定义的 WEB API 技能](cognitive-search-custom-skill-web-api.md)对输入进行预处理。 如果要在数组上循环访问技能，请检查技能上下文和输入在正确位置 `*`。 通常，上下文和输入源都应以数组的 `*` 结束。 |
-| 缺少技能输入 | 缺少必需的技能输入 `X`。 | 如果你的所有文档均收到此警告，则很可能是输入路径中有一个拼写错误，你应仔细检查属性名称大小写、路径中的多余或缺失 `*`，以及来自数据源的文档定义所需的输入。 |
+| 技能输入的类型错误 | "所需的技能输入不属于预期的类型 `String`。 名称： `text`，源： `/document/merged_content`。 "  "所需的技能输入不是预期的格式。 名称： `text`，源： `/document/merged_content`。 "  "无法循环访问非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。"  "无法在非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`中选择 `0`" | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 是一个字符串。 如果输入指定非字符串值，则不会执行技能，也不会生成任何输出。 确保你的数据集在类型中具有一致的输入值，或使用[自定义的 WEB API 技能](cognitive-search-custom-skill-web-api.md)对输入进行预处理。 如果要在数组上循环访问技能，请检查技能上下文和输入在正确位置 `*`。 通常，上下文和输入源都应以数组的 `*` 结束。 |
+| 缺少技能输入 | "缺少所需的技能输入。 名称： `text`，源： `/document/merged_content`"" 缺少值 `/document/normalized_images/0/imageTags`"。  "无法在 `/document/pages` 长度 `0`的数组中选择 `0`。" | 如果你的所有文档均收到此警告，则很可能是输入路径中有一个拼写错误，你应仔细检查属性名称大小写、在路径中有多余的或缺失的 `*`，并确保数据源中的文档提供所需的输入。 |
 | 技能语言代码输入无效 | 技能输入 `languageCode` 具有以下语言代码 `X,Y,Z`，其中至少有一个是无效的。 | 请参阅[下面](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)的详细信息 |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>

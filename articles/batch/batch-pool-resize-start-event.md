@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 池调整大小开始事件 | Microsoft Docs
-description: 批处理池调整大小开始事件参考。
+title: Azure Batch 池调整大小开始事件
+description: 批处理池调整大小开始事件参考。 示例显示了池调整大小开始事件的正文，池的大小从0到2节点的大小调整为手动调整大小。
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 965c1181399b76523b624d53dc47e59de0208ecb
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 89f4b04f4ef86ffa3978cadb997d6bfb8dae31c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449754"
 ---
 # <a name="pool-resize-start-event"></a>池调整大小开始事件
 

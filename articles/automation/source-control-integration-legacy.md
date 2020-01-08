@@ -2,19 +2,15 @@
 title: Azure 自动化中的源代码管理集成 - 传统
 description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 74d4cb80fbac41294b57bf13f23c2c63babb71ef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 651b97dabfd3cce858ea1f905a39c10bd7d81c41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417441"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自动化中的源代码管理集成 - 传统
 
@@ -28,7 +24,7 @@ ms.locfileid: "74849439"
 > [!NOTE]
 > 源代码管理支持提取和推送 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks) 以及 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks)。 目前不支持[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。
 
-为自动化帐户设置源代码管理时，需要执行两个简单的步骤；如果已有 GitHub 帐户，则只需要执行一个步骤。 它们具有以下特点：
+为自动化帐户设置源代码管理时，需要执行两个简单的步骤；如果已有 GitHub 帐户，则只需要执行一个步骤。 它们分别是：
 
 ## <a name="step-1--create-a-github-repository"></a>步骤 1 – 创建 GitHub 存储库
 
@@ -65,7 +61,7 @@ ms.locfileid: "74849439"
      | **Parameter** | **值** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
-     | `Type`  |字符串 |
+     | `Type`  |String |
      | `Value` |{"Branch":\<分支名称>,"RunbookFolderPath":\<Runbook 文件夹路径>,"ProviderType":\<GitHub 具有值 1>,"Repository":\<存储库名称>,"Username":\< GitHub 用户名称>} |
 
    * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  

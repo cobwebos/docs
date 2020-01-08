@@ -1,34 +1,26 @@
 ---
-title: Azure Service Fabric CLI - sfctl settings | Microsoft Docs
-description: 介绍 Service Fabric CLI sfctl settings 命令。
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric sfctl 设置
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于配置本地 sfctl 设置的命令的列表。
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: ace4c28ad04b684e7e1e38fe099d095d408c081a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4920409e0d37a6cbb64e011fd9cd5f08fb39d30c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900968"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639037"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 配置此 sfctl 实例的本地设置。
 
 ## <a name="subgroups"></a>子组
-|子组|描述|
+|子组|Description|
 | --- | --- |
 | [遥测](service-fabric-sfctl-settings-telemetry.md) | 配置此 sfctl 实例的本地遥测设置。 |
 
 
 ## <a name="next-steps"></a>后续步骤   
-- [设置](service-fabric-cli.md) Service Fabric CLI。   
+- [安装](service-fabric-cli.md) Service Fabric CLI。   
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

@@ -2,17 +2,17 @@
 title: 在门户中自动缩放云服务 | Microsoft Docs
 description: 了解如何使用门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359619"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360831"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
@@ -41,7 +41,7 @@ ms.locfileid: "68359619"
 选择云服务之后，应会看到云服务边栏选项卡。
 
 1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
-   **重要说明**：请确保单击 "云服务" 角色, 而不是角色下的角色实例。
+   **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. 选择“缩放”磁贴。
@@ -63,7 +63,7 @@ ms.locfileid: "68359619"
 
 配置了配置文件和规则之后，请选择顶部的“保存”图标。
 
-#### <a name="profile"></a>配置文件
+#### <a name="profile"></a>个人资料
 配置文件可设置缩放的实例数下限和上限，以及此缩放范围生效的时间。
 
 * **始终**
@@ -105,3 +105,6 @@ ms.locfileid: "68359619"
 3. 要缩放的角色实例。
 
 配置缩放设置后，请选择顶部的 **保存** 图标。
+
+
+

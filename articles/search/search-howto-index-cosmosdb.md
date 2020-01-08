@@ -1,20 +1,20 @@
 ---
 title: 搜索 Azure Cosmos DB 的数据
 titleSuffix: Azure Cognitive Search
-description: 对 Azure Cosmos DB 数据源进行爬网，并将数据引入 Azure 认知搜索中的全文可搜索索引。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
+description: 将 Azure Cosmos DB 中的数据导入 Azure 认知搜索中的可搜索索引。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
 author: mgottein
 manager: nitinme
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 616e5dc5ac6416d2efe1d9338b99c2b400fe572a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/02/2020
+ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977108"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642159"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用索引器对 Cosmos DB 数据编制索引认知搜索 
 
@@ -173,10 +173,10 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-| 字段   | 描述 |
+| 字段   | Description |
 |---------|-------------|
 | name | 必需。 选择任意名称来表示数据源对象。 |
-|类型| 必需。 必须是 `cosmosdb`。 |
+|type| 必需。 必须是 `cosmosdb`。 |
 |**凭据** | 必需。 必须是 Cosmos DB 的连接字符串。<br/>对于 SQL 集合，连接字符串采用以下格式： `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>对于 MongoDB 集合，请将 **/apikind/= MongoDB**添加到连接字符串：<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>对于 Gremlin 关系图和 Cassandra 表，注册 "[封闭索引器预览](https://aka.ms/azure-cognitive-search/indexer-preview)" 以获取对预览版的访问权限，以及有关如何设置凭据格式的信息。<br/><br/>避免在终结点 URL 中包含端口号。 如果包含端口号，Azure 认知搜索将无法为你的 Azure Cosmos DB 数据库编制索引。|
 | **容器** | 包含下列元素： <br/>**名称**：必需。 指定要编制索引的数据库集合的 ID。<br/>**查询**：可选。 可以指定查询，将任意 JSON 文档平展成 Azure 认知搜索可以为其编制索引的平面架构。<br/>对于 MongoDB API、Gremlin API 和 Cassandra API，不支持查询。 |
 | **dataChangeDetectionPolicy** | 推荐。 请参阅[为已更改的文档编制索引](#DataChangeDetectionPolicy)部分。|
@@ -257,7 +257,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 | Bool |Edm.Boolean、Edm.String |
 | 类似于整数的数字 |Edm.Int32、Edm.Int64、Edm.String |
 | 类似于浮点的数字 |Edm.Double、Edm.String |
-| 字符串 |Edm.String |
+| String |Edm.String |
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 对象，如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |

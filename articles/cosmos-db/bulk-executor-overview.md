@@ -1,5 +1,5 @@
 ---
-title: 使用批量执行程序库在 Azure Cosmos DB 中批量导入和更新数据
+title: Azure Cosmos DB 批量执行程序库概述
 description: 通过批量执行程序库提供的批量导入和批量更新 API 功能，在 Azure Cosmos DB 中执行批量操作。
 author: tknandu
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442154"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -32,7 +32,7 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 
 * 它可以在库中高效地处理请求限制、请求超时以及其他暂时性异常，因此用户不需要执行繁冗的编写应用程序逻辑任务来处理这些内容。  
 
-* 它为执行批量操作的应用程序提供简化的横向扩展机制。单个运行在 Azure VM 上的批量执行程序实例的消耗可以大于 50 万 RU/秒，并且可以通过在单个客户端 VM 上添加更多的实例来实现更高的吞吐率。  
+* 它为执行大容量操作进行横向扩展的应用程序提供了一种简化的机制。在 Azure VM 上运行的单个批量执行器实例可以使用大于50万个 RU/s，并且可以通过在各个客户端 Vm 上添加更多实例来实现更高的吞吐量速率。  
  
 * 它可以通过横向扩展体系结构在一小时内批量导入 1 TB 以上的数据。  
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 
 ## <a name="next-steps"></a>后续步骤 
   
-* 通过尝试使用[.net](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中的批量执行程序库的示例应用程序, 了解详细信息。  
+* 通过尝试使用[.net](bulk-executor-dot-net.md)和[Java](bulk-executor-java.md)中的批量执行程序库的示例应用程序，了解详细信息。  
 * 在 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql-api-sdk-bulk-executor-java.md) 中查看批量执行程序 SDK 信息和发行说明。
-* 大容量执行程序库已集成到 Cosmos DB Spark 连接器, 若要了解详细信息, 请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
+* 大容量执行程序库已集成到 Cosmos DB Spark 连接器，若要了解详细信息，请参阅[Azure Cosmos DB Spark 连接器](spark-connector.md)一文。  
 * 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](https://aka.ms/bulkexecutor-adf-v2)中，可供 Azure 数据工厂复制数据。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/11/2019
-ms.openlocfilehash: 356c8389ed486246ce55b5006e1e489ac7c3c1e3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a647dda21855f754754f76682e5c00443eaac55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884786"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432608"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -20,7 +20,7 @@ ms.locfileid: "73884786"
 
 ## <a name="default-behavior"></a>默认行为
 
-默认情况下，将暂时收集 IP 地址，但不会将其存储在 Application Insights 中。 基本过程如下所示：
+默认情况下，将暂时收集 IP 地址，但不会将其存储在 Application Insights 中。 基本流程如下所示：
 
 IP 地址将作为遥测数据的一部分发送到 Application Insights。 到达 Azure 中的引入终结点后，IP 地址将用于通过[MaxMind 中的 GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)执行地理位置查找。 此查找的结果用于填充 `client_City`、`client_StateOrProvince``client_CountryOrRegion`的以下字段。 此时，将丢弃 IP 地址，并将 `0.0.0.0` 写入 `client_IP` 字段。
 
@@ -154,7 +154,7 @@ namespace MyWebApp
 > [!NOTE]
 > 如果你无法访问 `ISupportProperties`，请检查并确保你运行的是 Application Insights SDK 的最新稳定版本。 `ISupportProperties` 适用于高基数值，而 `GlobalProperties` 更适用于较低基数值，如区域名称、环境名称等。 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>为启用遥测初始值设定项。ASP.NET
+### <a name="enable-telemetry-initializer-for-aspnet"></a>为 ASP.NET 启用遥测初始值设定项
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

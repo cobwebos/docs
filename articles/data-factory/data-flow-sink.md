@@ -1,119 +1,61 @@
 ---
-title: 在映射数据流中设置接收器转换
-description: 了解如何在映射数据流中设置接收器转换。
+title: 映射数据流中的接收器转换
+description: 了解如何在映射数据流中配置接收器转换。
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/03/2019
-ms.openlocfilehash: 828487aba651d10e5c906050dab544c097b49762
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/12/2019
+ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440265"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>数据流的接收器转换
+# <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
-转换数据流后，可以将数据接收到目标数据集。 在接收器转换中，选择目标输出数据的数据集定义。 您可以根据数据流需要任意数量的接收器转换。
+转换数据后，可以将数据接收到目标数据集。 每个数据流都需要至少一个接收器转换，但你可以根据需要写入任意多个接收器来完成转换流。 若要写入其他接收器，请通过新的分支和条件拆分创建新的流。
 
-若要考虑架构偏移和传入数据的更改，请将输出数据接收到输出数据集中没有定义的架构的文件夹。 还可以通过选择源中的 "**允许架构偏移**" 来考虑源中的列更改。 然后自动映射接收器中的所有字段。
+每个接收器转换只与一个数据工厂数据集相关联。 数据集定义要写入的数据的形状和位置。
 
-!["接收器" 选项卡上的选项，包括自动映射选项](media/data-flow/sink1.png "接收器1")
+## <a name="supported-sink-connectors-in-mapping-data-flow"></a>映射数据流中支持的接收器连接器
 
-若要接收所有传入字段，请打开**自动地图**。 若要选择要接收到目标的字段，或要更改目标中字段的名称，请关闭 "**自动映射**"。 然后打开 "**映射**" 选项卡以映射输出字段。
+当前，以下数据集可用于接收器转换：
+    
+* [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)（JSON、Avro、Text、Parquet）
+* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
+* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
+* [Azure Synapse 分析](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
+* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
+* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-!["映射" 选项卡上的选项](media/data-flow/sink2.png "接收器2")
+特定于这些连接器的设置位于 "**设置**" 选项卡中。有关这些设置的信息位于连接器文档中。 
 
-## <a name="output"></a>输出 
-对于 Azure Blob 存储或 Data Lake Storage 接收器类型，将转换后的数据输出到文件夹中。 Spark 根据接收器转换使用的分区方案生成已分区的输出数据文件。 
+Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)。 若要将数据写入数据流中的其他源，请使用复制活动在数据流完成后从支持的暂存区域中加载数据。
 
-可以从 "**优化**" 选项卡设置分区方案。如果希望数据工厂将输出合并到单个文件中，请选择 "**单一分区**"。 如果要维护或创建分区文件夹，请使用**键分区**，并设置要用于分区文件夹结构的键。
+## <a name="sink-settings"></a>接收器设置
 
-!["优化" 选项卡上的选项](media/data-flow/opt001.png "接收器选项")
+添加接收器后，通过 "**接收器**" 选项卡进行配置。可在此处选取或创建接收器写入的数据集 
+
+![接收器设置](media/data-flow/sink-settings.png "接收器设置")
+
+**架构偏差：** [架构偏差](concepts-data-flow-schema-drift.md)是指数据工厂本机处理数据流中的灵活架构的能力，无需显式定义列更改。 启用 "**允许架构偏移**" 可以在接收器数据架构中定义的内容的基础上写入其他列。
+
+**验证架构：** 如果选择了 "验证架构"，则在找不到数据集的已定义架构中的任何列时，数据流将失败。
 
 ## <a name="field-mapping"></a>字段映射
-在接收器转换的 "**映射**" 选项卡上，您可以将左侧的传入列映射到右侧的目标。 将数据流接收到文件时，数据工厂将始终向文件夹写入新文件。 映射到数据库数据集时，将选择要插入、更新、upsert 或删除的 "数据库表操作" 选项。
 
-!["映射" 选项卡](media/data-flow/sink2.png "接收器")
+与选择转换类似，在接收器的 "**映射**" 选项卡中，您可以决定写入哪些传入列。 默认情况下，映射所有输入列，包括偏移列。 这就是所谓的**自动映射**。
 
-在映射表中，您可以将多个列链接到多个列，解除链接陈旧多个列，或者将多个行映射到相同的列名称。
+关闭自动映射时，可以选择添加基于列的固定映射或基于规则的映射。 基于规则的映射允许您编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。 有关基于规则的映射的详细信息，请参阅[映射数据流中的列模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
 
-若要始终将传入字段集映射到目标并完全接受灵活的架构定义，请选择 "**允许架构偏移**"。
+## <a name="data-preview-in-sink"></a>接收器中的数据预览
 
-!["映射" 选项卡，显示映射到数据集中的列的字段](media/data-flow/multi1.png "多个选项")
-
-若要重置列映射，请选择 "**重新映射**"。
-
-![接收器选项卡](media/data-flow/sink1.png "接收一个")
-
-如果架构发生更改，请选择 "**验证架构**" 以使接收器失败。
-
-选择**清除该文件夹**以截断接收器文件夹的内容，然后再在该目标文件夹中写入目标文件。
-
-## <a name="fixed-mapping-vs-rule-based-mapping"></a>固定映射与基于规则的映射
-关闭自动映射时，可以选择添加基于列的映射（固定映射）或基于规则的映射。 利用基于规则的映射，你可以编写具有模式匹配的表达式，而固定映射将映射逻辑列名和物理列名。
-
-![基于规则的映射](media/data-flow/rules4.png "基于规则的映射")
-
-当你选择 "基于规则的映射" 时，将指示 ADF 评估匹配的表达式，以匹配传入模式规则并定义传出字段名称。 可以添加基于字段和基于规则的映射的任意组合。 然后，在运行时，将基于源传入的元数据在运行时生成字段名称。 在调试过程中，可以使用 "数据预览" 窗格查看生成的字段的名称。
-
-有关模式匹配的详细信息位于[列模式文档](concepts-data-flow-column-pattern.md)中。
-
-通过展开行并在 "名称匹配：" 旁边输入正则表达式，还可以输入正则表达式模式。
-
-![Regex 映射](media/data-flow/scdt1g4.png "Regex 映射")
-
-基于规则的映射的一个非常基本的常见示例与固定映射，这是你希望将所有传入字段映射到目标中的相同名称的情况。 对于固定映射，你将列出表中的每个单独的列。 对于基于规则的映射，你可以使用一个规则，将使用 ```true()``` 的所有字段映射到 ```$$```所表示的相同传入字段名称。
-
-### <a name="sink-association-with-dataset"></a>接收器与 dataset 的关联
-
-你为接收器选择的数据集可能包含也可能不具有在数据集定义中定义的架构。 如果没有已定义的架构，则必须允许架构偏移。 定义固定映射后，将在接收器转换中保留逻辑到物理名称映射。 如果更改数据集的架构定义，则可能会中断接收器映射。 若要避免这种情况，请使用基于规则的映射。 基于规则的映射是通用化的，这意味着数据集上的架构更改不会中断映射。
-
-## <a name="file-name-options"></a>文件名选项
-
-设置文件命名： 
-
-   * **默认**：允许 SPARK 基于部分默认值命名文件。
-   * **模式**：输入输出文件的模式。 例如，**贷款 [n]** 将创建 loans1、loans2，依此类推。
-   * **每个分区**：每个分区输入一个文件名。
-   * **As 列中的数据**：将输出文件设置为列的值。
-   * **输出到单个文件**：使用此选项时，ADF 会将已分区的输出文件合并为单个命名文件。 若要使用此选项，你的数据集应解析为文件夹名称。 另外，请注意，根据节点大小，此合并操作可能会失败。
-
-> [!NOTE]
-> 仅当你运行 "执行数据流" 活动时，文件操作才开始。 它们不会在数据流调试模式下启动。
-
-## <a name="database-options"></a>数据库选项
-
-选择数据库设置：
-
-![显示 SQL 接收器选项的 "设置" 选项卡](media/data-flow/alter-row2.png "SQL 选项")
-
-* **Update 方法**：默认为允许插入。 如果要停止从源插入新行，请清除 "**允许插入**"。 若要更新、upsert 或删除行，请首先添加一个更改行转换，以标记这些操作的行。 
-* **重新创建表**：在数据流结束之前删除或创建目标表。
-* **截断表**：在数据流完成之前，从目标表中删除所有行。
-* **批大小**：输入要将数据桶写入到区块中的数字。 对于大型数据加载，请使用此选项。 
-* **启用暂存**：作为接收器数据集加载 Azure 数据仓库时使用 PolyBase。
-* **Pre 和 POST sql 脚本**：输入将在之前（预处理）和之后（后处理）数据写入接收器数据库时执行的多行 sql 脚本
-
-![pre 和 post SQL 处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
-
-> [!NOTE]
-> 在 "数据流" 中，可以将数据工厂定向到在目标数据库中创建新的表定义。 若要创建表定义，请在接收器转换中设置具有新表名称的数据集。 在 SQL 数据集的表名称下方，选择 "**编辑**"，然后输入新的表名称。 然后，在接收器转换中启用 "**允许架构偏移**"。 将 "**导入架构**" 设置为 "**无**"。
-
-![SQL 数据集设置，显示在何处编辑表名称](media/data-flow/dataset2.png "SQL 架构")
-
-> [!NOTE]
-> 在数据库接收器中更新或删除行时，必须设置键列。 此设置允许更改行转换来确定数据移动库（DML）中的唯一行。
-
-### <a name="cosmosdb-specific-settings"></a>CosmosDB 特定设置
-
-当 CosmosDB 中的登陆数据时，需要考虑以下附加选项：
-
-* 分区键：这是必填字段。 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
-* 吞吐量：为此数据流的每次执行，设置要应用于 CosmosDB 集合的 ru 数的可选值。 最小值为400。
+在调试群集上提取数据预览时，不会将任何数据写入接收器。 将返回数据的外观的快照，但不会向目标写入任何内容。 若要测试将数据写入接收器，请从管道画布运行管道调试。
 
 ## <a name="next-steps"></a>后续步骤
 创建数据流后，请将数据流[活动添加到管道](concepts-data-flow-overview.md)。

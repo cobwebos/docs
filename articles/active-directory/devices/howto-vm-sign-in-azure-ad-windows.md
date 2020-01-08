@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8f4f715856538b9555b1bcb8c8a812503fabd2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842401"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561144"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "74842401"
 
 |     |
 | --- |
-| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 使用 Azure AD 身份验证登录到 Azure 中的 Windows Vm 有很多好处，包括：
@@ -36,6 +36,9 @@ ms.locfileid: "74842401"
    - 多重身份验证
    - 登录风险检查
 - 自动执行和缩放 Azure AD 加入适用于你的 VDI 部署的 Azure Windows Vm。
+
+> [!NOTE]
+> 启用此功能后，将 Azure AD 加入 Azure 中的 Windows Vm。 不能将其加入其他域，如本地 AD 或 Azure AD DS。 如果需要执行此操作，需要通过卸载扩展将 VM 从 Azure AD 租户断开连接。
 
 ## <a name="requirements"></a>要求
 
@@ -120,7 +123,7 @@ az vm create \
 > [!NOTE]
 > 必须先在虚拟机上启用系统分配的托管标识，然后才能安装 Azure AD 登录 VM 扩展。
 
-创建 VM 和支持的资源需要几分钟时间。
+创建 VM 和支持资源需要几分钟时间。
 
 最后，安装 Azure AD 登录 VM 扩展，以便为 Windows VM 启用 Azure AD 登录。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 使用[az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 资源组中名为 MYVM 的 vm 上安装 AADLoginForWindows 扩展：
 
@@ -200,7 +203,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 
 > [!IMPORTANT]
-> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的**同一**目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。
+> 仅允许从 Azure AD 加入或混合 Azure AD 加入到 VM 的**同一**目录中的 Windows 10 电脑连接到连接到 Azure AD 的 vm 的远程连接。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 目前，Azure 堡垒不能用于使用 AADLoginForWindows 扩展进行 Azure Active Directory 身份验证登录。 仅支持直接 RDP。
 
 使用 Azure AD 登录到 Windows Server 2019 虚拟机： 
 

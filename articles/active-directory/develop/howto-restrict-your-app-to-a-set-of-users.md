@@ -1,5 +1,5 @@
 ---
-title: 限制 Azure Active Directory 注册的应用用户 |Microsoft
+title: 将 Azure AD 应用限制为一组用户 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何将在 Azure AD 中注册的应用限制为仅供所选的一组用户访问。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917618"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424458"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>如何：将 Azure AD 应用程序限制为一组用户
 
@@ -46,7 +46,7 @@ ms.locfileid: "74917618"
 
 可以通过两种方法创建启用了用户分配的应用程序。 它需要**全局管理员**角色，但第二个角色不需要。
 
-### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>企业应用程序（需要全局管理员角色）
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企业应用程序（需要全局管理员角色）
 
 1. 中转到[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份**登录。
 1. 在顶栏中选择登录的帐户。 

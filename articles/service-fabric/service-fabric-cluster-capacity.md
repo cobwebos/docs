@@ -1,25 +1,15 @@
 ---
-title: 规划 Service Fabric 群集容量 | Microsoft 文档
+title: 规划 Service Fabric 群集容量
 description: Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463313"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -76,9 +66,9 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 | 持续性层  | 所需 VM 数量下限 | 受支持的 VM SKU                                                                  | 你对虚拟机规模集所做的更新                               | Azure 启动的更新和维护                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| 金牌服务             | 5                              | 专用于单个客户的完整节点 SKU（例如 L32s、GS5、G5、DS15_v2、D15_v2） | 可延迟到 Service Fabric 群集批准 | 每个 UD 可以暂停 2 小时，提供额外的时间让副本从之前的故障中恢复 |
-| 银牌服务           | 5                              | 具有至少 50 GB 本地 SSD 的单核或更高的 Vm                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
-| Bronze           | 第                              | 至少具有 50 GB 本地 SSD 的 Vm                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
+| 金卡             | 5                              | 专用于单个客户的完整节点 SKU（例如 L32s、GS5、G5、DS15_v2、D15_v2） | 可延迟到 Service Fabric 群集批准 | 每个 UD 可以暂停 2 小时，提供额外的时间让副本从之前的故障中恢复 |
+| 银卡           | 5                              | 具有至少 50 GB 本地 SSD 的单核或更高的 Vm                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
+| 铜卡           | 第                              | 至少具有 50 GB 本地 SSD 的 Vm                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
 
 > [!WARNING]
 > 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，影响状态工作负荷的基础结构作业不会停止或延迟，这可能会影响工作负荷。 对仅运行无状态工作负荷的节点类型仅使用“青铜”。 对于生产工作负荷，建议运行“白银”或以上级别。 
@@ -142,9 +132,9 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 | **群集节点数** | 可靠性层 |
 | --- | --- |
 | 第 |不要指定“可靠性层”参数，系统会计算该参数 |
-| 3 |Bronze |
-| 5 或 6|银牌服务 |
-| 7 或 8 |金牌服务 |
+| 3 |铜卡 |
+| 5 或 6|银卡 |
+| 7 或 8 |金卡 |
 | 9 及以上 |白金 |
 
 ## <a name="primary-node-type---capacity-guidance"></a>主节点类型 - 容量指导
@@ -161,7 +151,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 - 建议将群集的主要节点类型提供给系统服务，使用位置约束将应用程序部署到辅助节点类型。
 - 建议的 VM SKU 为标准 D2_V2 或等效项，最少 50 GB 的本地 SSD。
-- 支持的最低使用 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或等效，最少为 50 GB 的本地 SSD。 
+- 支持的最小 VM SKU 为 Standard_D2_V3 或标准 D1_V2 或等效，最少为 50 GB 的本地 SSD。 
 - 建议至少为 50 GB。 对于你的工作负荷，尤其是在运行 Windows 容器时，需要更大的磁盘。 
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
 - 出于性能方面的考虑，生产工作负荷不支持系列 VM Sku。
@@ -183,7 +173,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 对于生产工作负荷 
 
 - 建议的 VM SKU 为标准 D2_V2 或等效项，最少 50 GB 的本地 SSD。
-- 支持的最低使用 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或等效，最少为 50 GB 的本地 SSD。 
+- 支持的最小 VM SKU 为 Standard_D2_V3 或标准 D1_V2 或等效，最少为 50 GB 的本地 SSD。 
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
 - 出于性能方面的考虑，生产工作负荷不支持系列 VM Sku。
 

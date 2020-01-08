@@ -1,29 +1,20 @@
 ---
-title: 监视 Azure Service Fabric 上使用 Azure Monitor 日志的容器 |Microsoft Docs
-description: 使用 Azure Monitor 日志进行监视 Azure Service Fabric 群集上运行的容器。
-services: service-fabric
-documentationcenter: .net
+title: 用 Azure Monitor 日志监视容器
+description: 使用 Azure Monitor 日志监视 Azure Service Fabric 群集上运行的容器。
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: d03d68560502821b9c343be983d9f7b5a83ed977
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60321870"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614428"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视容器
+# <a name="monitor-containers-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视容器
  
-本文介绍如何设置 Azure Monitor 日志容器监视解决方案，以查看容器事件所需的步骤。 若要将群集设置为收集容器事件，请参阅此[分步教程](service-fabric-tutorial-monitoring-wincontainers.md)。 
+本文介绍设置 Azure Monitor 日志容器监视解决方案以查看容器事件所需的步骤。 若要将群集设置为收集容器事件，请参阅此[分步教程](service-fabric-tutorial-monitoring-wincontainers.md)。 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
@@ -32,11 +23,11 @@ ms.locfileid: "60321870"
 ## <a name="set-up-the-container-monitoring-solution"></a>设置容器监视解决方案
 
 > [!NOTE]
-> 需要具有 Azure Monitor 日志为你的群集设置，以及在节点上部署了 Log Analytics 代理。 如果不这样做，请按照中的步骤[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)并[向群集中添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)第一个。
+> 需要为群集设置 Azure Monitor 日志，并在节点上部署 Log Analytics 代理。 如果不这样做，请按照[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)中的步骤操作，并首先[将 Log Analytics 代理添加到群集](service-fabric-diagnostics-oms-agent.md)。
 
-1. 一旦你的群集通过 Azure Monitor 日志和 Log Analytics 代理设置，请部署容器。 待容器部署完毕后，再执行下一步。
+1. 设置群集并 Azure Monitor 日志和 Log Analytics 代理后，请部署容器。 待容器部署完毕后，再执行下一步。
 
-2. 在 Azure 市场中搜索“容器监视解决方案”，并单击“监视 + 管理”类别下显示的“容器监视解决方案”资源   。
+2. 在 Azure 市场中搜索“容器监视解决方案”，并单击“监视 + 管理”类别下显示的“容器监视解决方案”资源。
 
     ![添加容器解决方案](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
@@ -44,7 +35,7 @@ ms.locfileid: "60321870"
 
     ![基本 Log Analytics 仪表板](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-代理启用几个特定于容器的日志可在 Azure Monitor 日志中查询或用于可视化性能指标的收集。 收集的日志类型：
+代理允许收集几个容器特定的日志，这些日志可在 Azure Monitor 日志中查询，或用于可视化性能指标。 收集的日志类型：
 
 * ContainerInventory：显示有关容器位置、名称和图像的信息
 * ContainerImageInventory：有关已部署映像的信息，包括 ID 或大小
@@ -55,7 +46,7 @@ ms.locfileid: "60321870"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 详细了解如何[Azure Monitor 日志的容器解决方案](../azure-monitor/insights/containers.md)。
+* 了解有关[Azure Monitor 日志容器解决方案](../azure-monitor/insights/containers.md)的详细信息。
 * 深入了解 Service Fabric 上容器业务流程 - [Service Fabric 和容器](service-fabric-containers-overview.md)
-* 掌握[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)作为 Azure Monitor 日志的一部分提供的功能
-* 配置 Azure Monitor 日志来设置[自动警报](../log-analytics/log-analytics-alerts.md)规则，以辅助检测和诊断
+* 获取熟悉，其中包含作为 Azure Monitor 日志一部分提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
+* 配置 Azure Monitor 日志以设置[自动警报](../log-analytics/log-analytics-alerts.md)规则，以帮助检测和诊断

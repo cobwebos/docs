@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5703db90307f679ff4728386dc24647437f9f9ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434742"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -93,7 +93,7 @@ ms.locfileid: "74974949"
 
     组名称：输入 contoso-us-devices。
 
-    证明类型：选择“对称密钥”。
+    **证明类型**：选择**对称密钥**。
 
     自动生成密钥：此复选框应已处于选中状态。
 
@@ -191,20 +191,21 @@ ms.locfileid: "74974949"
 
 在这一部分，你将克隆每个 VM 上的 Azure IoT C SDK。 SDK 包含将从每个区域模拟租户的设备预配的示例。
 
-
-1. 对于每个 VM，使用以下命令安装 Cmake 、g++ 、gcc 和 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)：
+1. 对于每个 VM，请使用以下命令安装**CMake**、 **g + +** 、 **gcc**和[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ：
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. 查找 SDK[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest)的标记名称。
 
-1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
+1. 在这两个 VM 上克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。  使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     应该预料到此操作需要几分钟才能完成。

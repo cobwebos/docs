@@ -4,36 +4,66 @@
   items:
     - name: 什么是表单识别器？
       href: overview.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   expaned: true
   items:
+    - name: 使用示例标记工具
+      items:
+        - name: 使用标签训练自定义模型
+          href: quickstarts/label-tool.md
     - name: 使用 REST API
       items:
-        - name: 训练自定义模型并提取数据
+        - name: 在没有标签的情况下训练和使用自定义模型
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: 在有标签的情况下训练和使用自定义模型
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: 使用预生成的回执模型
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: 获取文本布局信息
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: 使用 .NET SDK
       href: quickstarts/dotnet-sdk.md
 - name: 教程
   items:
     - name: 将表单识别器与逻辑应用搭配使用
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 生成训练数据集
       href: build-training-data-set.md
     - name: 使用容器
       items:
-        - name: 安装并运行容器
+        - name: 安装和运行容器
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: form-recognizer-container-howto.md
         - name: 配置容器
@@ -41,10 +71,12 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器实例
           href: deploy-form-recognizer-on-container-instances.md
-- name: 引用
+- name: 参考
   items:
-    - name: 表单识别器 API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: 表单识别器 API v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: 表单识别器 API v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK
       items:
         - name: .NET

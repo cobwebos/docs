@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353515"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -26,9 +26,11 @@ VPN 网关数据包捕获可在网关或特定连接上运行，具体取决于�
 
 使用5元组筛选器（源子网、目标子网、源端口、目标端口、协议）和 TCP 标志（SYN、ACK、FIN、URG、PSH、RST）在隔离大量流量的问题时非常有用。
 
+运行数据包捕获时，每个属性只能使用一个选项。
+
 ## <a name="setup-packet-capture-using-powershell"></a>使用 PowerShell 安装数据包捕获
 
-请参阅以下示例，了解用于启动和停止数据包捕获的 PowerShell 命令。 有关参数选项（如如何创建筛选器）的详细信息，请参阅此 PowerShell[文档](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
+请参阅以下示例，了解用于启动和停止数据包捕获的 PowerShell 命令。 有关参数选项（例如，如何创建筛选器）的详细信息，请参阅此 PowerShell[文档](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>启动 VPN 网关的数据包捕获
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - 运行数据包捕获可能会影响性能。 请记得在不需要时停止数据包捕获。
 - 建议的最小数据包捕获持续时间为600秒。 由于在路径上的多个组件之间同步问题，导致更短的数据包捕获持续时间可能无法提供完整的数据。
-- 数据包捕获数据文件以 PCAP 或 ETL 格式生成。 可能需要 Netmon 分析器来理解数据。
+- 数据包捕获数据文件是以 PCAP 格式生成的。 使用 Wireshark 或其他常用的应用程序打开 PCAP 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

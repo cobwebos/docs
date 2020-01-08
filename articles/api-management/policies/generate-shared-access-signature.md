@@ -1,5 +1,6 @@
 ---
-title: Azure API 管理策略示例 - 生成共享访问签名 | Microsoft Docs
+title: API 管理策略示例-生成共享访问签名
+titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何使用表达式生成共享访问签名并使用 rewrite-uri 策略将请求转发到 Azure 存储。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 45e29673e264f64c976cce664eaf749636400c7f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0f003bc268af6b7f8bd6b046ae84734dbefeac28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442461"
 ---
 # <a name="generate-shared-access-signature"></a>生成共享访问签名
 

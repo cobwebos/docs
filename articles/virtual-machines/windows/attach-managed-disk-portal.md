@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d98fdab6dcd0abb70967d1e17d138a860a31da5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039318"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463431"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 门户将托管数据磁盘附加到 Windows VM
 
@@ -21,7 +21,7 @@ ms.locfileid: "74039318"
 
 ## <a name="add-a-data-disk"></a>添加数据磁盘
 
-1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“虚拟机”。
+1. 请参阅[Azure 门户](https://portal.azure.com)以添加数据磁盘。 搜索并选择 "**虚拟机**"。
 2. 从列表中选择虚拟机。
 3. 在“虚拟机”页上选择“磁盘”。
 4. 在“磁盘”页上选择“添加数据磁盘”。

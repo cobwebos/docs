@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: 893ef88647824398ec106a964cbacf118bb14308
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440346"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -49,15 +49,13 @@ ms.locfileid: "74927546"
 
 ### <a name="supported-file-formats"></a>受支持的文件格式
 
-您可以使用复制活动在两个基于文件的数据存储之间按原样复制文件。 在这种情况下，无需任何序列化或反序列化即可有效地复制数据。
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-例如，你可以执行以下复制活动：
+您可以使用复制活动在两个基于文件的数据存储之间按原样复制文件，在这种情况下，将在不进行任何序列化或反序列化的情况下有效地复制数据。 此外，还可以分析或生成给定格式的文件，例如，可以执行以下操作：
 
-* 复制本地 SQL Server 数据库中的数据，并以 Parquet 格式将数据写入 Azure Data Lake Storage Gen2。
+* 复制本地 SQL Server 数据库中的数据，并以 Parquet 格式写入 Azure Data Lake Storage Gen2。
 * 从本地文件系统中复制文本（CSV）格式的文件，并使用 Avro 格式写入 Azure Blob 存储。
-* 从本地文件系统中复制压缩文件，将其解压缩，并将其写入 Azure Data Lake Storage Gen2。
+* 从本地文件系统中复制压缩文件，将其解压缩，然后将提取的文件写入 Azure Data Lake Storage Gen2。
 * 从 Azure Blob 存储复制 Gzip 压缩文本（CSV）格式的数据，并将其写入 Azure SQL 数据库。
 * 需要序列化/反序列化或压缩/解压缩的更多活动。
 
@@ -125,19 +123,20 @@ ms.locfileid: "74927546"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| properties | 描述 | 必需？ |
+| 属性 | Description | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，将设置为 `Copy` | 是 |
 | inputs | 指定你创建的指向源数据的数据集。 复制活动仅支持一个输入。 | 是 |
 | outputs | 指定你创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 指定用于配置复制活动的属性。 | 是 |
-| source | 指定复制源类型和用于检索数据的相应属性。<br/><br/>有关详细信息，请参阅[支持的数据存储和格式](#supported-data-stores-and-formats)中列出的连接器文章中的 "复制活动属性" 部分。 | 是 |
-| 接收器 | 指定复制接收器类型和用于写入数据的相应属性。<br/><br/>有关详细信息，请参阅[支持的数据存储和格式](#supported-data-stores-and-formats)中列出的连接器文章中的 "复制活动属性" 部分。 | 是 |
-| 转换器 | 指定从源到接收器的显式列映射。 当默认的复制行为不能满足您的需求时，此属性适用。<br/><br/>有关详细信息，请参阅[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)。 | No |
-| dataIntegrationUnits | 指定一个度量值，该度量值表示[Azure 集成运行时](concepts-integration-runtime.md)用于数据复制的电源量。 这些单位以前称为云数据移动单元（DMU）。 <br/><br/>有关详细信息，请参阅[数据集成单元](copy-activity-performance.md#data-integration-units)。 | No |
-| parallelCopies | 指定在从源读取数据并将数据写入接收器时希望复制活动使用的并行度。<br/><br/>有关详细信息，请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | No |
-| enableStaging<br/>stagingSettings | 指定是否在 Blob 存储中暂存临时数据，而不是直接将数据从源复制到接收器。<br/><br/>有关有用方案和配置详细信息的信息，请参阅[暂存复制](copy-activity-performance.md#staged-copy)。 | No |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择在将数据从源复制到接收器时如何处理不兼容的行。<br/><br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | No |
+| source | 指定复制源类型和用于检索数据的相应属性。<br/>有关详细信息，请参阅[支持的数据存储和格式](#supported-data-stores-and-formats)中列出的连接器文章中的 "复制活动属性" 部分。 | 是 |
+| 接收器 | 指定复制接收器类型和用于写入数据的相应属性。<br/>有关详细信息，请参阅[支持的数据存储和格式](#supported-data-stores-and-formats)中列出的连接器文章中的 "复制活动属性" 部分。 | 是 |
+| 转换器 | 指定从源到接收器的显式列映射。 当默认的复制行为不能满足您的需求时，此属性适用。<br/>有关详细信息，请参阅[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
+| dataIntegrationUnits | 指定一个度量值，该度量值表示[Azure 集成运行时](concepts-integration-runtime.md)用于数据复制的电源量。 这些单位以前称为云数据移动单元（DMU）。 <br/>有关详细信息，请参阅[数据集成单元](copy-activity-performance.md#data-integration-units)。 | 否 |
+| parallelCopies | 指定在从源读取数据并将数据写入接收器时希望复制活动使用的并行度。<br/>有关详细信息，请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
+| 保护区 | 指定在数据复制期间是否保留元数据/Acl。 <br/>有关详细信息，请参阅[保留元数据](copy-activity-preserve-metadata.md)。 |否 |
+| enableStaging<br/>stagingSettings | 指定是否在 Blob 存储中暂存临时数据，而不是直接将数据从源复制到接收器。<br/>有关有用方案和配置详细信息的信息，请参阅[暂存复制](copy-activity-performance.md#staged-copy)。 | 否 |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择在将数据从源复制到接收器时如何处理不兼容的行。<br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | 否 |
 
 ## <a name="monitoring"></a>监视
 
@@ -168,7 +167,7 @@ ms.locfileid: "74927546"
 
 复制活动执行详细信息和性能特征也会在 "**复制活动运行结果** > **输出**" 部分中返回。 下面是可能返回的属性的完整列表。 你将仅看到适用于你的复制方案的属性。 有关如何监视活动运行的信息，请参阅[监视管道运行](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)。
 
-| 属性名称  | 描述 | 计价单位 |
+| 属性名称  | Description | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据量。 | Int64 值（以字节为单位） |
 | DataWritten | 写入接收器的数据量。 | Int64 值（以字节为单位） |
@@ -183,9 +182,9 @@ ms.locfileid: "74927546"
 | throughput | 数据传输速率。 | 浮点数（以 KBps 为单位） |
 | sourcePeakConnections | 复制活动运行期间为源数据存储建立的并发连接的峰值数量。 | Int32 值（无单位） |
 | sinkPeakConnections| 复制活动运行期间，建立到接收器数据存储的并发连接的峰值数量。| Int32 值（无单位） |
-| sqlDwPolyBase | 将数据复制到 SQL 数据仓库时是否使用 PolyBase。 | 布尔 |
-| redshiftUnload | 从 Redshift 复制数据时是否使用 UNLOAD。 | 布尔 |
-| hdfsDistcp | 从 HDFS 复制数据时是否使用 DistCp。 | 布尔 |
+| sqlDwPolyBase | 将数据复制到 SQL 数据仓库时是否使用 PolyBase。 | Boolean |
+| redshiftUnload | 从 Redshift 复制数据时是否使用 UNLOAD。 | Boolean |
+| hdfsDistcp | 从 HDFS 复制数据时是否使用 DistCp。 | Boolean |
 | effectiveIntegrationRuntime | 用于使活动运行通电的集成运行时（IR）或运行时，格式为 `<IR name> (<region if it's Azure IR>)`。 | 文本（字符串） |
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值 |
@@ -238,13 +237,9 @@ ms.locfileid: "74927546"
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>架构和数据类型映射
+## <a name="incremental-copy"></a>增量复制
 
-有关复制活动如何将源数据映射到接收器的信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
-
-## <a name="fault-tolerance"></a>容错
-
-默认情况下，复制活动将停止复制数据，并在源数据行与接收器数据行不兼容时返回失败。 若要使复制成功，你可以将复制活动配置为跳过和记录不兼容的行并仅复制兼容的数据。 有关详细信息，请参阅[复制活动容错](copy-activity-fault-tolerance.md)。
+利用数据工厂，你可以以增量方式将源数据存储中的增量数据复制到接收器数据存储。 有关详细信息，请参阅[教程：增量复制数据](tutorial-incremental-copy-overview.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 
@@ -256,10 +251,19 @@ ms.locfileid: "74927546"
 
 在此示例中，在运行复制的过程中，数据工厂会跟踪接收器 Azure SQL 数据库中的高 DTU 使用率。 这种情况会减缓写入操作的速度。 建议在 Azure SQL 数据库层上增加 Dtu：
 
-![使用性能调优技巧进行复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>增量复制
-利用数据工厂，你可以以增量方式将源数据存储中的增量数据复制到接收器数据存储。 有关详细信息，请参阅[教程：增量复制数据](tutorial-incremental-copy-overview.md)。
+## <a name="preserve-metadata-along-with-data"></a>保留元数据以及数据
+
+在将数据从源复制到接收器的情况下，在进行 data lake 迁移的情况下，你还可以选择使用复制活动来保存元数据和 Acl 以及数据。 有关详细信息，请参阅[保留元数据](copy-activity-preserve-metadata.md)。
+
+## <a name="schema-and-data-type-mapping"></a>架构和数据类型映射
+
+有关复制活动如何将源数据映射到接收器的信息，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+
+## <a name="fault-tolerance"></a>容错
+
+默认情况下，复制活动将停止复制数据，并在源数据行与接收器数据行不兼容时返回失败。 若要使复制成功，你可以将复制活动配置为跳过和记录不兼容的行并仅复制兼容的数据。 有关详细信息，请参阅[复制活动容错](copy-activity-fault-tolerance.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：

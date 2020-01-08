@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440979"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -45,7 +45,7 @@ Azure 支持三个作用域进行资源管理。 每个作用域都支持管理�
 
     资源类型： [Microsoft. 资源/订阅](/rest/api/resources/subscriptions)
 
-- [**资源组**](../azure-resource-manager/resource-group-overview.md#resource-groups)-共享相同生命周期的 Azure 解决方案的相关资源的逻辑分组。 例如，同时部署和删除的资源。
+- [**资源组**](../azure-resource-manager/management/overview.md#resource-groups)-共享相同生命周期的 Azure 解决方案的相关资源的逻辑分组。 例如，同时部署和删除的资源。
 
     资源类型： [Microsoft .resources/订阅/resourceGroups](/rest/api/resources/resourcegroups)
 

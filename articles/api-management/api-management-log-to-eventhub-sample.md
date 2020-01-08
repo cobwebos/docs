@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure API 管理、事件中心和 Moesif 监视 API | Microsoft Docs
+title: 通过 Azure API 管理、事件中心和 Moesif 监视 Api
+titleSuffix: Azure API Management
 description: 通过连接 Azure API 管理、Azure 事件中心以及适用于 HTTP 日志记录与监视的 Moesif，演示 log-to-eventhub 策略的示例应用程序
 services: api-management
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442530"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>使用 Azure API 管理、事件中心和 Moesif 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
@@ -31,7 +32,7 @@ ms.locfileid: "60656723"
 ## <a name="why-send-from-api-management-service"></a>为何要从 API 管理服务发送？
 可以编写能够插入到 HTTP API 框架中的 HTTP 中间件，以捕获 HTTP 请求和响应并将其馈送到日志记录和监视系统。 此方法的缺点是 HTTP 中间件必须集成到后端 API，并且必须与 API 的平台匹配。 如果有多个 API，每个 API 都必须部署中间件。 后端 API 无法升级往往是有原因的。
 
-使用 Azure API 管理服务来与日志记录基础结构集成提供了一个集中的、独立于平台的解决方案。 此外，还可以借助 Azure API 管理的[异地复制](api-management-howto-deploy-multi-region.md)功能进行缩放。
+使用 Azure API 管理服务来与日志记录基础结构集成提供了一个集中的、平台独立的解决方案。 此外，还可以借助 Azure API 管理的[异地复制](api-management-howto-deploy-multi-region.md)功能进行缩放。
 
 ## <a name="why-send-to-an-azure-event-hub"></a>为何要发送到 Azure 事件中心？
 一个合理的问题是，为何要创建特定于 Azure 事件中心的策略？ 在许多不同的场合下，我可能想要记录我的请求。 为何不能直接将请求发送到最终目标？  这只是一个选项。 但是，从 API 管理服务发出日志记录请求时，必须考虑日志记录消息对 API 性能造成的影响。 增加系统组件的可用实例或使用异地复制功能，可以处理逐渐增加的负载。 但是，如果日志记录基础结构在低负载状态下开始变慢，则短期的流量高峰可能导致请求延迟。
@@ -78,7 +79,7 @@ Azure 事件中心旨在引入大量数据，它能够处理的事件数目远�
 ### <a name="policy-declaration"></a>策略声明
 此策略表达式有一些值得一提的特别之处。 log-to-eventhub 策略有一个名为 logger-id 的属性，该属性引用在 API 管理服务中创建的记录器名称。 [如何在 Azure API 管理中将事件记录到 Azure 事件中心](api-management-howto-log-event-hubs.md)文档中提供了有关如何在 API 管理服务中设置事件中心记录器的详细信息。 第二个属性是一个可选参数，指明事件中心要在哪个分区中存储消息。 事件中心使用分区实现可伸缩性，并且需要至少两个分区。 只保证一个分区内的消息依次传递。 如果未指明事件中心要在哪个分区中放置消息，它将使用循环算法来分配负载。 但是，这可能会导致一些消息不按顺序处理。
 
-### <a name="partitions"></a>分区
+### <a name="partitions"></a>“度量值组”
 为了确保消息依次传递给使用者并使用分区的负载分配功能，我已选择将 HTTP 请求消息发送到一个分区，将 HTTP 响应消息发送到另一个分区。 这可以确保负载平均分配，并且按顺序使用所有请求和所有响应。 响应有可能在相应请求之前使用，但这不成问题，因为我们有不同的机制能使请求与响应相互关联，并且我们知道请求始终出现在响应之前。
 
 ### <a name="http-payloads"></a>HTTP 有效负载
@@ -293,7 +294,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要拥有帐户和应用程序 ID。可通过在 [Moesif 网站](https://www.moesif.com)上创建帐户，然后转到_右上方菜单_ -> “应用设置”来获取 Moesif 应用程序 ID。
+`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要一个帐户和应用程序 Id。可以通过在[Moesif 的网站](https://www.moesif.com)上创建帐户来获取 Moesif 应用程序 Id，然后转到 -> _应用安装_程序的_右上方菜单_。
 
 ## <a name="complete-sample"></a>完整示例
 GitHub 上提供了本示例的[源代码](https://github.com/dgilling/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](get-started-create-service-instance.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   

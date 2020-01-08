@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438058"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
@@ -36,13 +36,13 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 属性 | 名称 | 必选 | 类型 | 说明 |
+| Attribute | 名称 | 需要 | 类型 | Description |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
 | objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
 | objectIdType | 对象标识符类型 | 是 | String | 使用的对象标识符类型。 请参阅下面的**支持的 ObjectIdType**。 |
-| path | 空间路径 | 是 | String | `Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 始终遵循最小特权原则。 |
-| tenantId | 租户标识符 | 多种多样 | String | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
+| 路径 | 空间路径 | 是 | String | `Space` 对象的完整访问路径。 示例为 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 请始终遵循最低权限原则。 |
+| tenantId | 租户标识符 | 不定 | String | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
 
 ### <a name="supported-role-definition-identifiers"></a>支持的角色定义标识符
 
@@ -161,12 +161,12 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **参数值** | **必需** |  **类型** |  **说明** |
+| **参数值** | **必需** |  类型 |  **说明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
-| YOUR_PATH | True | String |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  True | String |   *读取*、*创建*、*更新*或*删除* |
-| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_USER_ID |  正确 | String |   UserId objectIdType 的 objectId。 |
+| YOUR_PATH | 正确 | String |   要检查访问权限的所选路径。 |
+| YOUR_ACCESS_TYPE |  正确 | String |   *读取*、*创建*、*更新*或*删除* |
+| YOUR_RESOURCE_TYPE | 正确 | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 

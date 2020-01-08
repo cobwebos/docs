@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 618216208b61051d5446f96fb5b28a451b188c35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435036"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
@@ -37,19 +37,19 @@ ms.locfileid: "72954105"
 
 使用以下设置在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建 IoT Central 应用程序：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 付款计划 | 现用现付 |
-| 应用程序模板 | 示例 Contoso |
+| 应用程序模板 | 旧版应用程序 |
 | 应用程序名称 | 接受默认值或选择自己的名称 |
 | URL | 接受默认值或选择自己的唯一 URL 前缀 |
 | 目录 | 你的 Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 地区 | 美国东部 |
+| 地区 | 美国 |
 
-本文中的示例和屏幕截图使用**美国东部**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
+本文中的示例和屏幕截图使用**美国**区域。 选择靠近你的位置，并确保在同一区域中创建所有资源。
 
-### <a name="resource-group"></a>Resource group
+### <a name="resource-group"></a>资源组
 
 使用 Azure 门户创建名为**IoTCentralAnalysis**的[资源组](https://portal.azure.com/#create/Microsoft.ResourceGroup)，以包含您创建的其他资源。 在 IoT Central 应用程序所在的同一位置创建 Azure 资源。
 
@@ -57,26 +57,26 @@ ms.locfileid: "72954105"
 
 使用 Azure 门户创建具有以下设置的[事件中心命名空间](https://portal.azure.com/#create/Microsoft.EventHub)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
-| Subscription | 你的订阅 |
-| Resource group | IoTCentralAnalysis |
-| Location | 美国东部 |
+| 订阅 | 订阅 |
+| 资源组 | IoTCentralAnalysis |
+| 位置 | 美国东部 |
 | 吞吐量单位 | 第 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks 工作区
 
 使用 Azure 门户创建具有以下设置的[Azure Databricks 服务](https://portal.azure.com/#create/Microsoft.Databricks)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 工作区名称    | 选择工作区名称 |
-| Subscription | 你的订阅 |
-| Resource group | IoTCentralAnalysis |
-| Location | 美国东部 |
-| 定价层 | 标准版 |
+| 订阅 | 订阅 |
+| 资源组 | IoTCentralAnalysis |
+| 位置 | 美国东部 |
+| 定价层 | 标准 |
 
 创建所需的资源后， **IoTCentralAnalysis**资源组将如以下屏幕截图所示：
 
@@ -104,7 +104,7 @@ ms.locfileid: "72954105"
 1. 导航到 "**连续数据导出**" 页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
 1. 使用以下设置配置导出，然后选择 "**保存**"：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
     | 已启用 | 开 |
@@ -128,17 +128,17 @@ ms.locfileid: "72954105"
 
 使用下表中的信息创建群集：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 群集名称 | centralanalysis |
-| 群集模式 | 标准版 |
+| 群集模式 | 标准 |
 | Databricks Runtime 版本 | 5.3 （Scala 2.11，Spark 2.4.0） |
 | Python 版本 | 3 |
-| 启用自动缩放 | No |
+| 启用自动缩放 | 否 |
 | 在处于非活动状态分钟后终止 | 30 |
-| 辅助角色类型 | Standard_DS3_v2 |
+| 辅助进程类型 | Standard_DS3_v2 |
 | 工作节点 | 第 |
-| 驱动程序类型 | 与辅助角色相同 |
+| 驱动程序类型 | 与辅助进程相同 |
 
 创建群集可能需要几分钟时间，请等待群集创建完成，然后再继续。
 

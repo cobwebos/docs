@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e551159ad2d41af37b1f400e91680c49117498d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423612"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的 Web 应用 - 代码配置
 
@@ -35,11 +35,11 @@ ms.locfileid: "74964979"
 
 支持 web 应用的授权代码流的库有：
 
-| MSAL 库 | 描述 |
+| MSAL 库 | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持的平台包括 .NET Framework 和 .NET Core 平台（不包括 UWP、Xamarin.iOS 和 Xamarin.Android，因为这些平台用于生成公共客户端应用程序） |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 开发中 -目前为公共预览版 |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 开发中 -目前为公共预览版 |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持 Python web 应用程序 |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 对 Java web 应用程序的支持 |
 
 选择与你感兴趣的平台相对应的选项卡：
 
@@ -92,7 +92,7 @@ ms.locfileid: "74964979"
 
 下面是[启动 .cs # L40 L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42)代码，它提供对 `AddMicrosoftIdentityPlatformAuthentication` 方法的调用，该方法将身份验证添加到 web 应用，以及添加调用 web api 的功能 `AddMsal`。 对 `AddInMemoryTokenCaches` 的调用涉及到在可能的中选择令牌缓存实现：
 
-```CSharp
+```csharp
 public class Startup
 {
   // Code not show here
@@ -112,7 +112,7 @@ public class Startup
 
 `Constants.ScopeUserRead` 在常量中定义[。 cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
-```CSharp
+```csharp
 public static class Constants
 {
     public const string ScopeUserRead = "User.Read";
@@ -125,7 +125,7 @@ public static class Constants
 
 `AddMsal` 的代码位于 WebAppServiceCollectionExtensions [/L108 #-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)中。
 
-```CSharp
+```csharp
 
 /// <summary>
 /// Extensions for IServiceCollection for startup initialization.
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 `GetOrBuildConfidentialClientApplication()` 方法的代码位于 TokenAcquisition [/# L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)中。 它使用由依赖关系注入注入的成员（在 TokenAcquisition [/TokenAcquisition # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59)中传递到的构造函数中）
 
-```CSharp
+```csharp
 public class TokenAcquisition : ITokenAcquisition
 {
   // Code omitted here for clarity
@@ -314,7 +314,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ```
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 
 若要求和，`AcquireTokenByAuthorizationCode` 确实兑换了 ASP.NET 请求的授权代码，并获取添加到 MSAL.NET 用户令牌缓存中的令牌。 然后在 ASP.NET Core 控制器中使用这些令牌。
 
@@ -322,7 +322,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ASP.NET 处理内容的方式与 ASP.NET Core 类似，不同之处在于 OpenIdConnect [\startup.auth.cs 文件 App_Start](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs)中发生了的配置以及对 `OnAuthorizationCodeReceived` 事件的订阅。 你将找到类似于 ASP.NET Core 中的类似概念，只是在 ASP.NET 中，你需要在[web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)中指定 RedirectUri。 此配置比 ASP.NET Core 中所执行的配置低一点，因为你需要在部署应用程序时对其进行更改。
 
-```CSharp
+```csharp
 public partial class Startup
 {
   public void ConfigureAuth(IAppBuilder app)
@@ -573,7 +573,8 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)中提供了 `SessionManagementHelper` 类的详细信息
+[中提供了](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java) `SessionManagementHelper` 类的详细信息
+
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

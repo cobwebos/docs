@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848130"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608748"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -30,9 +30,6 @@ ms.locfileid: "74848130"
 > 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 ## <a name="plan-your-deployment"></a>计划部署
-
-> [!WARNING]
-> 2019年3月开始的 MFA 服务器下载仅适用于付费租户。 免费/试用租户将无法再下载或生成和使用激活凭据。
 
 在下载 Azure 多重身份验证服务器之前，请考虑一下你的负载和高可用性要求是什么。 使用该信息来决定部署方法和位置。
 
@@ -54,7 +51,7 @@ ms.locfileid: "74848130"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | 描述 |
+| Azure 多重身份验证服务器要求 | Description |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
 | 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
@@ -96,9 +93,6 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="download-the-mfa-server"></a>下载 MFA 服务器
 
-> [!WARNING]
-> 2019年3月开始的 MFA 服务器下载仅适用于付费租户。 免费/试用租户将无法再下载或生成和使用激活凭据。
-
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
@@ -122,6 +116,9 @@ Azure MFA 服务器由三个 Web 组件组成：
    ![跳过使用身份验证配置向导](./media/howto-mfaserver-deploy/skip2.png)
 
 5. 返回下载服务器的页面，单击“生成激活凭据”按钮。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活”。
+
+> [!NOTE]
+> 只有全局管理员才能在 Azure 门户中生成激活凭据。
 
 ## <a name="send-users-an-email"></a>向用户发送电子邮件
 
@@ -164,7 +161,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure 多重身份验证服务器如何处理用户数据
 
-如果你在本地使用多重身份验证 (MFA) 服务器，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
+如果在本地使用多重身份验证 (MFA) 服务器，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
 
 * 唯一 ID - 用户名或内部 MFA 服务器 ID
 * 名字和姓名（可选）

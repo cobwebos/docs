@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: 0748047581945d513300d929c2d34d20099bf4d6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888778"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529688"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>利用 Azure Monitor 监视 Azure 资源
 如果你有依赖于 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure 资源生成的监视数据，以及如何使用 Azure Monitor 的功能对此数据进行分析和发出警报。
@@ -61,7 +61,7 @@ Azure 中的资源生成的[日志](../platform/data-platform-logs.md)和[指标
 - [活动日志](../platform/activity-logs-overview.md)-提供对外部（管理平面）订阅中每个 Azure 资源的操作的见解，例如创建新资源或启动虚拟机。 这是有关对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的信息。
 
 
-## <a name="configuration-requirements"></a>配置需求
+## <a name="configuration-requirements"></a>配置要求
 
 ### <a name="configure-monitoring"></a>配置监视
 某些监视数据是自动收集的，但您可能需要根据您的要求执行一些配置。 有关每种类型的监视数据的特定信息，请参阅下面的信息。
@@ -103,13 +103,13 @@ Azure 中的资源生成的[日志](../platform/data-platform-logs.md)和[指标
 
 ![见解](media/monitor-azure-resource/insights.png)
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 使用[指标资源管理器](../platform/metrics-getting-started.md)分析 Azure 门户中的度量值，可通过大多数服务的 "**指标**" 菜单项获得。 此工具允许你使用单个度量值或将多个度量值组合在一起，以确定相关与趋势。 
 
 - 有关使用指标资源管理器的基本知识，请参阅[Azure 指标资源管理器](../platform/metrics-getting-started.md)入门。
 - 请参阅[Azure 指标资源管理器的高级功能](../platform/metrics-charts.md)，了解指标资源管理器的高级功能，如使用多个度量值以及应用筛选器和拆分。
 
-![指标](media/monitor-azure-resource/metrics.png)
+![度量值](media/monitor-azure-resource/metrics.png)
 
 
 ### <a name="activity-log"></a>活动日志 
@@ -127,7 +127,7 @@ Azure Monitor 日志合并了来自多个服务和其他数据源的日志和指
 
 - 有关使用用于写入日志查询的查询语言的教程，请参阅[Azure Monitor 中的日志查询入门](../log-query/get-started-queries.md)。
 - 有关如何在 Azure Monitor 日志中收集资源日志的信息以及如何在查询中访问资源日志的详细信息，请参阅在[Azure Monitor 中收集 Azure 资源日志 Log Analytics 工作区](../platform/resource-logs-collect-workspace.md)。
-- 有关如何在 Azure Monitor 日志中构建资源日志数据的说明，请参阅[收集模式](../platform/resource-logs-collect-workspace.md#collection-mode)。
+- 有关如何在 Azure Monitor 日志中构建资源日志数据的说明，请参阅[收集模式](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode)。
 - 有关 Azure Monitor 日志中的表的详细信息，请参阅每个 Azure 服务的文档。
 
 ![日志](media/monitor-azure-resource/logs.png)

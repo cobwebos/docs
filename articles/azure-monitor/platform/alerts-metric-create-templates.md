@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872938"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397339"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建度量警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
 > 用于创建资源类型的指标警报的资源模板： Azure Log Analytics 工作区（即） `Microsoft.OperationalInsights/workspaces`，需要额外的步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
-基本步骤如下所示：
+基本步骤如下所述：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
@@ -3552,6 +3552,11 @@ az group deployment create \
 ```
 
 参数的值可以在命令行上设置，也可以通过参数文件设置。 下面提供一个示例参数文件。
+
+
+> [!NOTE]
+>
+> `&amp`;是 & 的 HTML 实体引用。 URL 参数仍由单个 & 分隔，但如果在 HTML 中提到了 URL，则需要对其进行编码。 因此，如果 pingURL 参数值中有任何 "&"，则必须使用 "`&amp`;" 将其转义。
 
 将下面的 json 保存为 availabilityalert，并根据需要进行修改。
 

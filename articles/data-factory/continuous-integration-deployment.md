@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440547"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
@@ -56,11 +56,11 @@ ms.locfileid: "73680027"
 
 在测试和生产数据工厂中，选择 "**导入 ARM 模板**"。 此操作会将你转到 Azure 门户，可以在其中导入已导出的模板。 选择 **"在编辑器中生成自己的模板**" 以打开 "资源管理器模板编辑器"。
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![自定义部署构建你自己的模板](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 单击 "**加载文件**"，然后选择生成的资源管理器模板。
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![自定义部署编辑模板](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 在 "设置" 窗格中，输入配置值，例如链接的服务凭据。 完成后，单击 "**购买**" 以部署资源管理器模板。
 
@@ -108,21 +108,21 @@ ms.locfileid: "73680027"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在 "阶段" 视图中，单击 "**查看阶段任务**" 链接。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  在 "阶段" 视图中，单击 "**查看阶段任务**" 链接。
 
     ![](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  创建新的任务。 搜索 " **Azure 资源组部署**"，然后单击 "**添加**"。
+    b.保留“数据库类型”设置，即设置为“共享”。  创建新任务。 搜索 " **Azure 资源组部署**"，然后单击 "**添加**"。
 
     c.  在部署任务中选择目标数据工厂对应的订阅、资源组和位置，然后根据需要提供凭据。
 
-    d.  在 "操作" 下拉列表中，选择 "**创建或更新资源组**"。
+    d.单击“下一步”。  在 "操作" 下拉列表中，选择 "**创建或更新资源组**"。
 
-    e.  在“模板”字段中 选择“…”。 通过为[每个环境创建资源管理器模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中的 "**导入 ARM 模板**" 步骤，浏览 Azure 资源管理器模板创建。 在 `<FactoryName>` 分支的文件夹 `adf_publish` 中查找该文件。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。  在“替代模板参数”字段旁边 选择“…”。 通过为[每个环境创建资源管理器模板](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)中的 "**导入 ARM 模板**" 步骤，浏览 Azure 资源管理器模板创建。 在 `adf_publish` 分支的文件夹 `<FactoryName>` 中查找该文件。
 
-    f.  在“模板”字段中 在 "**模板参数" 字段中。** 选择参数文件。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
+    f.  在“替代模板参数”字段旁边 在 "**模板参数" 字段中。** 选择参数文件。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
-    g.  在“模板”字段中 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为 `cred1`，请输入 `"$(cred1)"`作为其值。
+    g.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为 `cred1`，请输入 `"$(cred1)"`作为其值。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -424,7 +424,7 @@ else {
 #### <a name="triggers"></a>触发器
 
 * 在 `typeProperties`下，参数化两个属性。 第一个是 `maxConcurrency`，它指定为具有默认值，并且为`string`类型。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
-* `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 一个例外情况是 `interval` 属性，该属性参数化为数值类型，参数名称后缀为 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性是字符串，参数化为字符串。 但是，不使用默认值对 `freq` 属性进行参数化。 名称将被缩短并带有后缀。 例如，`<entityName>_freq`。
+* `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 一个例外情况是 `interval` 属性，该属性参数化为数值类型，参数名称后缀为 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性是字符串，参数化为字符串。 但是，不使用默认值对 `freq` 属性进行参数化。 名称将被缩短并带有后缀。 例如，`<entityName>_freq` 。
 
 #### <a name="linkedservices"></a>LinkedServices
 

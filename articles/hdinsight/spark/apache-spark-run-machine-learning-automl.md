@@ -6,23 +6,22 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 12/13/2019
+ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806909"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638873"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中 Apache Spark 上通过自动机器学习运行 Azure 机器学习工作负荷
 
 Azure 机器学习简化并加速了机器学习模型的构建、培训和部署。 在自动机器学习（AutoML）中，您从具有定义的目标功能的训练数据开始，然后循环访问算法和特征选择的组合，根据定型评分自动为您的数据选择最佳模型。 HDInsight 允许客户设置具有数百个节点的群集。 在 HDInsight 群集中的 Spark 上运行的 AutoML 允许用户在这些节点上使用计算容量，以向外扩展的方式运行定型作业，以及并行运行多个定型作业。 这样，用户便可以运行 AutoML 试验，同时将计算与其他大数据工作负荷共享。
- 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>在 HDInsight 群集上安装 Azure 机器学习
 
-有关自动机器学习的一般教程，请参阅[教程：使用自动机器学习构建回归模型](../../machine-learning/service/tutorial-auto-train-models.md)。
-所有新的 HDInsight-Spark 群集都预装了 AutoML SDK。 可以通过此[示例 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)开始 AutoML on HDInsight。 此 Jupyter Notebook 演示如何使用自动化机器学习分类器来解决一个简单的分类问题。
+有关自动机器学习的一般教程，请参阅[教程：使用自动机器学习构建回归模型](../../machine-learning/tutorial-auto-train-models.md)。
+所有新的 HDInsight-Spark 群集都预装了 AutoML SDK。
 
 > [!Note]
 > Azure 机器学习包将安装到 Python3 conda 环境中。 应使用 PySpark3 内核运行安装的 Jupyter Notebook。
@@ -46,6 +45,7 @@ auth_sp = ServicePrincipalAuthentication(
     service_principal_password='<Azure AD Application Key>'
 )
 ```
+
 以下代码片段使用 **Azure AD 用户**创建身份验证令牌。
 
 ```python
@@ -76,5 +76,5 @@ dataflow_with_token = dprep.read_csv(
 ## <a name="next-steps"></a>后续步骤
 
 * 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 的自动机器学习在步调上发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* 有关使用 Azure ML 自动 ML ML 功能的更多详细信息，请参阅[中的新自动机器学习功能 Azure 机器学习](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* 有关使用 Azure ML 自动 ML ML 功能的详细信息，请参阅[中的新的自动机器学习功能 Azure 机器学习](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 提供的 AutoML 项目](https://www.microsoft.com/research/project/automl/)

@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012044"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469448"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 **Azure 存储链接服务**可让你使用**帐户密钥**（为数据工厂提供 Azure 存储的全局访问权限）将 Azure 存储帐户链接到 Azure 数据工厂。 下表提供 Azure 存储链接服务专属 JSON 元素的描述。
 
-| 属性 | 说明 | 必选 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorage** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
-请参阅以下部分, 了解查看/复制 Azure 存储帐户密钥的步骤:[访问密钥](../articles/storage/common/storage-account-manage.md#access-keys)。
+有关如何检索存储帐户访问密钥的信息，请参阅[管理存储帐户访问密钥](../articles/storage/common/storage-account-keys-manage.md)。
 
 **示例：**  
 
@@ -36,7 +36,7 @@ ms.locfileid: "69012044"
 ```
 
 ### <a name="azure-storage-sas-linked-service"></a>Azure 存储 SAS 链接服务
-共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 这样便可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。 有关 SAS 的详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../articles/storage/common/storage-sas-overview.md)。
+共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 这样便可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../articles/storage/common/storage-sas-overview.md)。
 
 > [!IMPORTANT]
 > Azure 数据工厂现仅支持**服务 SAS**，而不支持帐户 SAS。 请注意，通过 Azure 门户或存储资源管理器生成的 SAS URL 是不受支持的帐户 SAS。
@@ -47,7 +47,7 @@ ms.locfileid: "69012044"
 
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 下表提供了 Azure 存储 SAS 链接服务特定的 JSON 元素的描述。 
 
-| 属性 | 说明 | 必选 |
+| 属性 | Description | 需要 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorageSas** |是 |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。  |是 |

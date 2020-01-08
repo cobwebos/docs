@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 8136e65636561079603986f0d6ff30bcbd68258f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370759"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -545,7 +545,8 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
   "Actions": [
     "Microsoft.Compute/*/read",
     "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action"
+    "Microsoft.Compute/virtualMachines/start/action", 
+    "Microsoft.Compute/virtualMachines/powerOff/action" 
   ],
   "NotActions": [
   ],
@@ -567,7 +568,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 单击“添加角色分配”
 1. 选择角色“Linux 隔离代理角色”
 1. 输入前面创建的应用程序名称
-1. 点击“保存”
+1. 单击“保存”。
 
 为第二个群集节点重复上述步骤。
 

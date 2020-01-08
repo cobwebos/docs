@@ -1,44 +1,42 @@
 ---
 title: 知识存储（预览版）简介
 titleSuffix: Azure Cognitive Search
-description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。 此功能目前以公共预览版提供。
+description: 将丰富的文档发送到 Azure 存储，可在其中查看、重设和使用 Azure 认知搜索中和其他应用程序中丰富的文档。 此功能目前以公共预览版提供。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
-ms.translationtype: MT
+ms.date: 12/11/2019
+ms.openlocfilehash: 2cde70579e61d1911008f7c8126ad7bda132eac1
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790026"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563490"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-"知识库" 是 Azure 认知搜索的一项功能，可保留[AI 扩充管道](cognitive-search-concept-intro.md)的输出以供以后分析或其他下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
+"知识库" 是 Azure 认知搜索的一项功能，可保留[AI 扩充管道](cognitive-search-concept-intro.md)的输出以进行独立的分析或下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
 
-如果你以前曾经在 Azure 认知搜索中用过认知技能，则已经知道技能集会通过一系列扩充来迁移文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两种输出共享相同的内容，但以非常不同的方式存储和使用。
+如果你过去使用过认知技能，你已经知道*技能集*通过一系列根据移动文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 两个输出，搜索索引和知识存储都是同一管道的产品;派生自相同的输入，但会生成以非常不同的方式进行结构化、存储和使用的输出。
 
 在物理上，知识存储是一个 [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可以是 Azure 表存储和/或 Azure Blob 存储。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
 
 ![管道中的知识存储示意图](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "管道中的知识存储示意图")
 
-若要使用知识存储，请将 `knowledgeStore` 元素添加到在索引管道中定义步进式操作的技能集。 在执行期间，Azure 认知搜索会在 Azure 存储帐户中创建一个空间，并根据配置将扩充文档投影为 Blob 或表。
-
 ## <a name="benefits-of-knowledge-store"></a>知识存储的优势
 
-知识存储提供了结构、上下文和实际内容，这些收集自非结构化和半结构化数据文件（如 Blob）、已经过分析的图像文件，或甚至收集自已整形到新表单中的结构化数据。 在分步[演练](knowledge-store-howto.md)中，你可以看到密集 JSON 文档如何分区到子结构中、重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷。
+知识存储为您提供了结构、上下文和实际内容-从非结构化和半结构化数据文件（如 blob、已经历过分析的图像文件，甚至是结构化数据）的搜集。 在分步[演练](knowledge-store-howto.md)中，你可以看到密集 JSON 文档如何分区到子结构中、重建为新结构，并以其他方式提供给下游流程，如机器学习和数据科学工作负荷。
 
-尽管了解 AI 扩充管道可以生成什么十分有用，但知识存储的真正强大之处是能够整形数据。 你可以从基本技能集入手，然后循环访问它以添加越来越多的结构级别，这样就能将它们合并成新结构，可用于除 Azure 认知搜索以外的其他应用。
+尽管查看 AI 扩充管道可产生的功能非常有用，但知识存储的实际潜能就是能够改变数据的形状。 你可以从基本技能集入手，然后循环访问它以添加越来越多的结构级别，这样就能将它们合并成新结构，可用于除 Azure 认知搜索以外的其他应用。
 
 知识存储的优势已枚举如下：
 
-+ 在除搜索以外的[分析和报表工具](#tools-and-apps)中使用扩充文档。 含 Power Query 的 Power BI 就是个极具吸引力的选择，但只要是能连接到 Azure 存储，任何工具或应用都可以从你创建的知识存储中拉取文档。
++ 在除搜索以外的[分析和报表工具](#tools-and-apps)中使用扩充文档。 使用 Power Query 的 Power BI 是一个极具吸引力的选择，但任何可以连接到 Azure 存储的工具或应用都可以从你创建的知识存储中拉取。
 
 + 优化 AI 索引管道，同时调试步骤和技能集定义。 知识存储展示 AI 索引管道中的技能集定义的结果。 这些结果可用于设计更好的技能集，因为你可以清楚地看到扩充是什么样的。 可以使用 Azure 存储中的[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)来查看知识存储的内容。
 
@@ -47,153 +45,241 @@ ms.locfileid: "74790026"
 > [!Note]
 > 熟悉 AI 扩充和认知技能？ Azure 认知搜索与认知服务视觉和语言功能集成，以对图像文件使用光学字符识别 (OCR)、对文本文件使用实体识别和关键短语提取等来提取和扩充源数据。 有关详细信息，请参阅 [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)。
 
-## <a name="creating-a-knowledge-store"></a>创建知识存储
+## <a name="physical-storage"></a>物理存储
 
-知识存储是[技能集](cognitive-search-working-with-skillsets.md)的一部分，而后者是[索引器](search-indexer-overview.md)的一部分。 
+通过技能组合中 `knowledgeStore` 定义的 `projections` 元素，清楚了解了知识存储的物理表达式。 投影定义输出的结构，使其与预期用途匹配。
 
-在此预览版中，可以使用 REST API 和 `api-version=2019-05-06-Preview`，或者通过门户中的“导入数据”向导来创建知识存储。
+可以将投影表述为表、对象或文件。
 
-### <a name="json-representation-of-a-knowledge-store"></a>知识存储的 JSON 表示形式
+```json
+"knowledgeStore": { 
+    "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+    "projections": [ 
+        { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        },
+                { 
+            "tables": [ ], 
+            "objects": [ ], 
+            "files": [ ]
+        }
+```
 
-以下 JSON 指定 `knowledgeStore`，它是技能集的一部分，可由索引器（未显示）调用。 如果你已熟悉 AI 扩充，便知道技能集决定了每个扩充文档的创建、组织和物质。 技能集必须至少包含一个技能，如果调制的是数据结构，则该技能很可能是整形程序技能。
+在此结构中指定的投影类型确定了知识存储使用的存储类型。
 
-`knowledgeStore` 由连接和投影组成。 
++ 在定义 `tables`时，将使用表存储。 当需要用于分析工具输入的表格报告结构或作为数据帧导出到其他数据存储区时，定义表投影。 可以指定多个 `tables` 以获取已进行的文档的子集或交叉部分。 在同一投影组内，将保留表关系，以便可以使用它们。
 
-+ 连接到 Azure 认知搜索所在的同一区域中的存储帐户。 
++ 在定义 `objects` 或 `files`时，将使用 Blob 存储。 `object` 的物理表示形式是一个表示已扩充文档的层次结构 JSON 结构。 `file` 是从文档中提取的图像，已原样传输到 Blob 存储。
 
-+ 投影可以是表格、JSON 对象或文件。 `Tables` 定义扩充文档在 Azure 表存储中的物理表达形式。 `Objects` 在 Azure Blob 存储中定义物理 JSON 对象。 `Files` 是从要保存的文档中提取的二进制文件，例如图像。
+单个投影对象包含一组 `tables`、`objects`、`files`，在许多情况下，创建一个投影可能就足够了。 
 
-+ 投影是投影对象的集合，每个投影对象可以包含 `tables`、`objects` 和 `files`。 即使在类型（表、对象或文件）中投影时，根据中的投影也是相关的。 跨投影对象的投影不相关并且是独立的。 同一形状可以投影碰到多个投影对象。
+但是，可以创建多组 `table`-`object`-`file` 投影，并且如果需要不同的数据关系，也可以这样做。 在集内，数据是相关的，假设这些关系存在并且可以检测到它们。 如果创建其他集，则每个组中的文档将永远不相关。 使用多个投影组的一个示例可能是，如果你想要将相同的数据与你的在线系统一起使用，并且需要以特定的方式表示，则还需要在表示的数据科学管道中使用相同的数据做事.
+
+## <a name="requirements"></a>要求 
+
+需要[Azure 存储空间](https://docs.microsoft.com/azure/storage/)。 它提供物理存储。 你可以使用 Blob 存储和/或表存储。 Blob 存储用于不完整的已进行的文档，通常在输出转到下游进程时使用。 表存储用于已丰富的文档的切片，通常用于分析和报告。
+
+[技能组合](cognitive-search-working-with-skillsets.md)是必需的。 它包含 `knowledgeStore` 定义，并确定已扩充文档的结构和组合。 不能使用空的技能组合创建知识库。 技能组合中必须至少有一项技能。
+
+需要[索引器](search-indexer-overview.md)。 技能组合由索引器调用，该索引器驱动执行。 索引器附带其自己的要求和属性集。 其中的一些属性对知识店有直接的关系：
+
++ 索引器需要[受支持的 azure 数据源](search-indexer-overview.md#supported-data-sources)（最终创建知识库的管道将通过从 Azure 支持的源中提取数据开始）。 
+
++ 索引器需要搜索索引。 索引器需要提供索引架构，即使您从未计划使用它也是如此。 最小索引具有一个指定为键的字符串字段。
+
++ 索引器提供可选的字段映射，用于将源字段别名为目标字段。 如果需要修改默认字段映射（若要使用其他名称或类型），可以在索引器中创建[字段映射](search-indexer-field-mappings.md)。 对于知识存储输出，目标可以是 blob 对象或表中的字段。
+
++ 索引器具有计划和其他属性（如各种数据源提供的更改检测机制），也可应用于知识存储。 例如，可以按固定间隔[计划](search-howto-schedule-indexers.md)扩充以刷新内容。 
+
+## <a name="how-to-create-a-knowledge-store"></a>如何创建知识库
+
+若要创建知识库，请使用门户或预览 REST API （`api-version=2019-05-06-Preview`）。
+
+### <a name="use-the-azure-portal"></a>使用 Azure 门户
+
+**导入数据**向导包含用于创建知识库的选项。 对于初始探索，请[在四个步骤中创建第一个知识库](knowledge-store-connect-power-bi.md)。
+
+1. 选择受支持的数据源。
+
+1. 指定 "扩充：附加资源"、"选择技能" 和 "指定知识存储"。 
+
+1. 创建索引架构。 向导需要它，可以为您推断一个。
+
+1. 运行该向导。 在最后一步中，将进行提取、扩充和存储操作。
+
+### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用 Create 技能组合和 preview REST API
+
+`knowledgeStore` 是在[技能组合](cognitive-search-working-with-skillsets.md)中定义的，后者又由[索引器](search-indexer-overview.md)调用。 在扩充期间，Azure 认知搜索会在你的 Azure 存储帐户中创建一个空间，并将已扩充的文档作为 blob 或表投影，具体取决于你的配置。
+
+目前，预览版 REST API 是可通过编程方式创建知识库的唯一机制。 一种简单的浏览方法是[使用 Postman 和 REST API 创建您的第一个知识存储](knowledge-store-create-rest.md)。
+
+此预览功能的参考内容位于本文的[API 参考](#kstore-rest-api)部分。 
+
+<a name="tools-and-apps"></a>
+
+## <a name="how-to-connect-with-tools-and-apps"></a>如何与工具和应用程序连接
+
+只要扩充存在于存储中，连接到 Azure Blob 存储或表存储的任何工具或技术，都可用于浏览、分析或使用内容。 请从以下列表入手：
+
++ [存储资源管理器](knowledge-store-view-storage-explorer.md)：用于查看扩充文档的结构和内容。 将这视为用于查看知识存储内容的基线工具。
+
++ 用于报告和分析的[Power BI](knowledge-store-connect-power-bi.md) 。 
+
++ [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)：用于进一步操作。
+
+<a name="kstore-rest-api"></a>
+
+## <a name="api-reference"></a>API 参考
+
+本部分是[Create 技能组合（REST API）](https://docs.microsoft.com/rest/api/searchservice/create-skillset)参考文档的一个版本，已修改为包括 `knowledgeStore` 定义。 
+
+### <a name="example---knowledgestore-embedded-in-a-skillset"></a>示例-嵌入在技能组合中的 knowledgeStore
+
+下面的示例演示技能组合定义底部的 `knowledgeStore`。 
+
+* 使用**POST**或**PUT**来表述请求。
+* 使用 REST API 的 `api-version=2019-05-06-Preview` 版本来访问知识存储功能。 
+
+```http
+POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
+api-key: [admin key]
+Content-Type: application/json
+```
+
+请求正文是一个 JSON 文档，用于定义技能组合，其中包括 `knowledgeStore`。
 
 ```json
 {
-  "name": "my-new-skillset",
-  "description": "Example showing knowledgeStore placement in a skillset.",
+  "name": "my-skillset-name",
+  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
   "skills":
   [
     {
-    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
-    "context": "/document/content/phrases/*",
-    "inputs": [
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "categories": [ "Organization" ],
+      "defaultLanguageCode": "en",
+      "inputs": [
         {
-        "name": "text",
-        "source": "/document/content/phrases/*"
-        },
-        {
-        "name": "sentiment",
-        "source": "/document/content/phrases/*/sentiment"
+          "name": "text",
+          "source": "/document/content"
         }
-    ],
-    "outputs": [
+      ],
+      "outputs": [
         {
-        "name": "output",
-        "targetName": "analyzedText"
+          "name": "organizations",
+          "targetName": "organizations"
         }
-    ]
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "score",
+          "targetName": "mySentiment"
+        }
+      ]
     },
   ],
   "cognitiveServices": 
     {
     "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
     "description": "mycogsvcs resource in West US 2",
-    "key": "<your key goes here>"
+    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
     },
-  "knowledgeStore": { 
-    "storageConnectionString": "<your connection string goes here>", 
-    "projections": [ 
-        { 
-            "tables": [  
-            { "tableName": "Reviews", "generatedKeyName": "ReviewId", "source": "/document/Review" , "sourceContext": null, "inputs": []}, 
-            { "tableName": "Sentences", "generatedKeyName": "SentenceId", "source": "/document/Review/Sentences/*", "sourceContext": null, "inputs": []}, 
-            { "tableName": "KeyPhrases", "generatedKeyName": "KeyPhraseId", "source": "/document/Review/Sentences/*/KeyPhrases", "sourceContext": null, "inputs": []}, 
-            { "tableName": "Entities", "generatedKeyName": "EntityId", "source": "/document/Review/Sentences/*/Entities/*" ,"sourceContext": null, "inputs": []} 
-
-            ], 
-            "objects": [ 
-               
-            ], 
-            "files": [
-
-            ]  
-        },
-        { 
-            "tables": [ 
-            ], 
-            "objects": [ 
-                { 
-                "storageContainer": "Reviews", 
-                "format": "json", 
-                "source": "/document/Review", 
-                "key": "/document/Review/Id" 
-                } 
-            ],
-            "files": [
-                
-            ]  
-        }        
-    ]     
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [  
+                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
+                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
+                ], 
+                "objects": [ ], 
+                "files": [  ]       
+            }    
+        ]     
     } 
 }
 ```
 
-此示例不包含任何图像，有关如何使用文件预测的示例，请参见使用[投影](knowledge-store-projection-overview.md)。
-### <a name="sources-of-data-for-a-knowledge-store"></a>知识存储的数据源
+### <a name="request-body-syntax"></a>请求正文语法  
 
-如果知识存储是 AI 扩充管道的输出，那么输入是什么？ 要提取、扩充并最终保存到知识存储的原始数据可能源自于搜索索引器支持的任何 Azure 数据源： 
+下面的 JSON 指定 `knowledgeStore`，它是由 `indexer` （未显示）调用[`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset)的一部分。 如果已熟悉 AI 扩充，则技能组合会确定已扩充文档的构成。 技能集必须至少包含一个技能，如果调制的是数据结构，则该技能很可能是整形程序技能。
 
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+构造请求负载的语法如下。
 
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
+```json
+{   
+    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
+    "description" : "Optional. Anything you want, or null",  
+    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
+    "cognitiveServices": "A key to Cognitive Services, used for billing.",
+    "knowledgeStore": { 
+        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
+        "projections": [ 
+            { 
+                "tables": [ 
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
+                    . . .
+                ], 
+                "objects": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
+                    "source": "<DOCUMENT-PATH>", 
+                    }
+                ], 
+                "files": [ 
+                    {
+                    "storageContainer": "<BLOB-CONTAINER-NAME>",
+                    "source": "/document/normalized_images/*"
+                    }
+                ]  
+            },
+            {
+                "tables": [ ],
+                "objects": [ ],
+                "files":  [ ]
+            }  
+        ]     
+    } 
+}
+```
 
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
+`knowledgeStore` 有两个属性： Azure 存储帐户 `storageConnectionString` 和定义物理存储的 `projections`。 你可以使用任何存储帐户，但在同一区域中使用服务是经济高效的。
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+`projections` 集合包含投影对象。 每个投影对象都必须具有 `tables`、`objects``files` （每个都是指定的或 null）。 上述语法显示了两个对象，一个完全指定，另一个完全为空。 在投影对象中，在存储后，数据中的任何关系（如果检测到）都将保留。 
 
-创建的索引器和技能集将提取并扩充此内容，或将其转换为索引工作负荷的一部分，然后将结果保存到知识存储。
+根据需要创建任意数量的投影对象，以支持隔离和特定方案（例如，用于浏览的数据结构，与数据科学工作负荷中所需的相同）。 你可以通过将 `source` 和 `storageContainer` 或 `table` 设置为对象中的不同值，来针对特定方案获取隔离和自定义。 有关详细信息和示例，请参阅[在知识存储中使用投影](knowledge-store-projection-overview.md)。
 
-### <a name="rest-apis-used-in-creation-of-a-knowledge-store"></a>用于创建知识存储的 REST API
+|属性      | 适用于 | Description|  
+|--------------|------------|------------|  
+|`storageConnectionString`| `knowledgeStore` | 必需。 采用以下格式： `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
+|`projections`| `knowledgeStore` | 必需。 由 `tables`、`objects`、`files` 及其各自的属性组成的属性对象的集合。 未使用的投影可以设置为 null。|  
+|`source`| 所有投影| 扩充树的节点的路径，该节点是投影的根。 此节点是技能组合中任何技能的输出。 路径从 `/document/`开始，表示扩充的文档，但可扩展到 `/document/content/` 或文档树中的节点。 示例： `/document/countries/*` （所有国家/地区）或 `/document/countries/*/states/*` （所有国家/地区中的所有州）。 有关文档路径的详细信息，请参阅[技能组合概念和组合](cognitive-search-working-with-skillsets.md)。|
+|`tableName`| `tables`| 要在 Azure 表存储中创建的表。 |
+|`storageContainer`| `objects`，`files`| 要在 Azure Blob 存储中创建的容器的名称。 |
+|`generatedKeyName`| `tables`| 在表中创建的、用于唯一标识文档的列。 扩充管道用生成的值填充此列。|
 
-只有两个 API 具有创建知识存储所需的扩展（“创建技能集”和“创建索引器”）。 其他 API 按原样使用。
 
-| 对象 | REST API | 描述 |
-|--------|----------|-------------|
-| 数据源 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部 Azure 数据源的资源，数据源提供用于创建扩充文档的源数据。  |
-| 技能集 | [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在编制索引期间协调扩充管道中所用[内置技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的资源。 技能集使用 `knowledgeStore` 定义作为子元素。 |
-| 索引 | [创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)  | 表示搜索索引的架构。 索引中的字段映射到源数据中的字段，或扩充阶段生成的字段（例如，实体识别创建的组织名称的字段）。 |
-| 索引器 | [创建索引器 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 定义索引编制期间使用的组件（包括数据源、技能、从源和中间数据结构到目标索引的字段关联，以及索引本身）的资源。 运行索引器会触发数据引入和扩充。 输出是基于索引架构的搜索索引，其中填充有源数据，并通过技能集进行了扩充。  |
+### <a name="response"></a>响应  
 
-### <a name="physical-composition-of-a-knowledge-store"></a>知识存储的物理组合
-
- 投影（`knowledgeStore` 定义的元素）阐述输出的架构和结构，使其与目标用途相符。 如果你的应用程序使用不同格式和形状的数据，则可以定义多个投影。 
-
-投影可以表述为对象或表：
-
-+ 作为对象，投影映射到 Blob 存储，在存储内投影保存到容器中，其中包含数据科学管道等方案的对象或分层表示形式（采用 JSON 格式）。
-
-+ 作为表，投影映射到表存储。 表格表示形式为数据分析或导出为数据帧以用于机器学习等方案保留关系。 然后，可以将扩充投影轻松导入其他数据存储中。 
-
-为了适应组织中的各种顾客，可以在知识存储中创建多个投影。 开发人员可能需要访问扩充文档的完整 JSON 表示形式，而数据科学家或分析师可能则需要技能集塑形的具体或模块化数据结构。
-
-例如，如果扩充过程的目标之一是还要创建用于定型模型的数据集，将数据投影到对象存储是使用数据科学管道中数据的一种方法。 或者，若要根据扩充文档创建快速 Power BI 仪表板，使用表格投影的效果会很好。
-
-<a name="tools-and-apps"></a>
-
-## <a name="connecting-with-tools-and-apps"></a>与工具和应用进行连接
-
-只要扩充存在于存储中，连接到 Azure Blob 存储或表存储的任何工具或技术，都可用于浏览、分析或使用内容。 请从以下列表入手：
-
-+ [存储资源管理器](knowledge-store-view-storage-explorer.md)：用于查看扩充文档的结构和内容。 将这视为用于查看知识存储内容的基线工具。
-
-+ [Power BI](knowledge-store-connect-power-bi.md)：处理数字数据时使用的报告和分析工具。
-
-+ [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)：用于进一步操作。
+ 对于成功的请求，应看到状态代码“201 Created”。 默认情况下，响应正文将包含已创建的技能组合定义的 JSON。 请注意，在调用引用此技能组合的索引器之前，不会创建知识库。
 
 ## <a name="next-steps"></a>后续步骤
 
 知识存储提供扩充文档的持久性，在设计技能集，或者在创建新的结构和内容供可访问 Azure 存储帐户的任何客户端应用程序使用时，知识存储非常有用。
 
-创建扩充文档的最简单方法是使用“导入数据”向导，但也可以使用 Postman 和 REST API，想要深入了解对象的创建和引用方式时，这两个工具更有用。
+最简单的方法是[通过门户](knowledge-store-create-portal.md)创建丰富的文档，但您也可以使用 Postman 和 REST API，这在您希望深入了解如何创建和引用对象时更有用。
 
 > [!div class="nextstepaction"]
-> [使用门户创建知识存储](knowledge-store-create-portal.md)
-> [使用 Postman 和 REST API 创建知识存储](knowledge-store-create-rest.md)
+> [使用 Postman 和 REST 创建知识库](knowledge-store-create-rest.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ba903d75707be91bb8af1271b52eb260ffcde306
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d27f792b39a1809cde0f27186f343af7d7aef60a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454154"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -27,12 +27,12 @@ ms.locfileid: "72951232"
 
 若要完成本文中的步骤，需要以下组件：
 
-* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 从**旧应用**程序应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 Raspberry Pi 必须能够连接到 internet。 有关详细信息，请参阅[设置 Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)。
 
-## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
+## <a name="add-a-device-template"></a>添加设备模板
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
+在 Azure IoT Central 应用程序中，添加具有以下特征的新**Raspberry Pi**设备模板：
 
 * 遥测数据，包括设备将收集的以下度量值：
   * 湿度
@@ -49,6 +49,11 @@ ms.locfileid: "72951232"
 * 属性
   * “模具编号”设备属性
   * “位置”云属性
+
+1. 在设备模板 ![设备模板 "中选择" **+ 新建**"](media/howto-connect-raspberry-pi-csharp/adddevicetemplate.png)
+   
+
+2. 选择**Raspberry pi**并创建 Raspberry pi 设备模板 ![添加设备模板](media/howto-connect-raspberry-pi-csharp/newdevicetemplate.png)
 
 有关设备模板配置的完整详细信息，请参阅[Raspberry Pi 设备模板详细信息](#raspberry-pi-device-template-details)。
 
@@ -363,10 +368,10 @@ ms.locfileid: "72951232"
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名 | 数据类型                              |
+| 类型            | 显示名称 | 字段名 | 数据类型                              |
 | --------------- | ------------ | ---------- | -------------------------------------- |
 | 设备属性 | 模具号   | dieNumber  | 数字                                 |
-| Location        | Location     | 位置   | {lat： float，long： float，alt？： float} |
+| 位置        | 位置     | location   | {lat： float，long： float，alt？： float} |
 
 ## <a name="next-steps"></a>后续步骤
 

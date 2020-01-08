@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035520"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561314"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "74035520"
  
 ## <a name="deploy-using-the-marketplace-offer"></a>使用 Marketplace 产品/服务进行部署
 
-若要将自助托管的 OpenShift 容器平台3.11 群集部署到 Azure 中，最简单的方法是使用[Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)。
+若要将自助托管的 OpenShift 容器平台3.11 群集部署到 Azure 中，最简单的方法是使用[Azure Marketplace 产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)。
 
 这是最简单的方法，但它也具有有限的自定义功能。 Marketplace 产品/服务将部署 OpenShift 容器平台3.11.82，并包含以下配置选项：
 

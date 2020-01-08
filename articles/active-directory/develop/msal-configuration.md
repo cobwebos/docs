@@ -1,5 +1,5 @@
 ---
-title: Android Microsoft 身份验证库配置文件 |Microsoft
+title: Android MSAL 配置文件 |Microsoft
 titleSuffix: Microsoft identity platform
 description: Android Microsoft 身份验证库（MSAL）配置文件概述，它表示 Azure Active Directory 中的应用程序配置。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e2d366a48adf536276697959be3418f36e10d8ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424391"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
 
@@ -31,14 +31,14 @@ Android Microsoft 身份验证库（MSAL）附带了一个[默认的配置 JSON 
 
 ### <a name="general-settings"></a>常规设置
 
-| properties | 数据类型 | 需要 | 说明 |
+| 属性 | 数据类型 | 需要 | 说明 |
 |-----------|------------|-------------|-------|
-| `client_id` | 字符串 | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用的客户端 ID |
-| `redirect_uri`   | 字符串 | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)的重定向 URI |
-| `authorities` | 列出\<颁发机构 > | No | 应用所需的权限列表 |
-| `authorization_user_agent` | AuthorizationAgent （enum） | No | 可能的值： `DEFAULT`、`BROWSER``WEBVIEW` |
-| `http` | HttpConfiguration | No | 配置 `HttpUrlConnection` `connect_timeout` 和 `read_timeout` |
-| `logging` | LoggingConfiguration | No | 指定日志记录的详细级别。 可选配置包括： `pii_enabled`，它采用布尔值，`log_level`，它采用 `ERROR`、`WARNING`、`INFO`或 `VERBOSE`。 |
+| `client_id` | String | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的应用的客户端 ID |
+| `redirect_uri`   | String | 是 | [应用程序注册页](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)的重定向 URI |
+| `authorities` | 列出\<颁发机构 > | 否 | 应用所需的权限列表 |
+| `authorization_user_agent` | AuthorizationAgent （enum） | 否 | 可能的值： `DEFAULT`、`BROWSER``WEBVIEW` |
+| `http` | HttpConfiguration | 否 | 配置 `HttpUrlConnection` `connect_timeout` 和 `read_timeout` |
+| `logging` | LoggingConfiguration | 否 | 指定日志记录的详细级别。 可选配置包括： `pii_enabled`，它采用布尔值，`log_level`，它采用 `ERROR`、`WARNING`、`INFO`或 `VERBOSE`。 |
 
 ### <a name="client_id"></a>client_id
 
@@ -87,7 +87,7 @@ Android Microsoft 身份验证库（MSAL）附带了一个[默认的配置 JSON 
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>将 AAD 颁发机构 & 受众映射到 Microsoft 标识平台终结点
 
-| Type | 受众 | 租户 ID | Authority_Url | 生成的终结点 | 说明 |
+| 类型 | 受众 | 租户 ID | Authority_Url | 生成的终结点 | 说明 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | https://login.microsoftonline.com/common | `common` 是帐户所在位置的租户别名。 如特定的 Azure Active Directory 租户或 Microsoft 帐户系统。 |
 | AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | 只有 contoso.com 中的帐户才能获取令牌。 任何经过验证的域或租户 GUID 都可以用作租户 ID。 |
@@ -102,19 +102,19 @@ Android Microsoft 身份验证库（MSAL）附带了一个[默认的配置 JSON 
 
 #### <a name="authority-properties"></a>颁发机构属性
 
-| properties | 数据类型  | 需要 | 说明 |
+| 属性 | 数据类型  | 需要 | 说明 |
 |-----------|-------------|-----------|--------|
-| `type` | 字符串 | 是 | 镜像应用程序的目标受众或帐户类型。 可能的值： `AAD`、`B2C` |
-| `audience` | 对象 | No | 仅当 type =`AAD`时才适用。 指定应用的目标标识。 使用应用注册中的值 |
-| `authority_url` | 字符串 | 是 | 仅当 type =`B2C`时才是必需的。 指定应用应使用的授权 URL 或策略  |
+| `type` | String | 是 | 镜像应用程序的目标受众或帐户类型。 可能的值： `AAD`、`B2C` |
+| `audience` | 对象 | 否 | 仅当 type =`AAD`时才适用。 指定应用的目标标识。 使用应用注册中的值 |
+| `authority_url` | String | 是 | 仅当 type =`B2C`时才是必需的。 指定应用应使用的授权 URL 或策略  |
 | `default` | boolean | 是 | 指定一个或多个颁发机构时，需要单个 `"default":true`。 |
 
 #### <a name="audience-properties"></a>访问群体属性
 
-| properties | 数据类型  | 需要 | 说明 |
+| 属性 | 数据类型  | 需要 | 说明 |
 |-----------|-------------|------------|-------|
-| `type` | 字符串 | 是 | 指定应用要以其为目标的受众。 可能的值： `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs``AzureADMyOrg` |
-| `tenant_id` | 字符串 | 是 | 仅在 `"type":"AzureADMyOrg"`时是必需的。 对于其他 `type` 值是可选的。 这可以是租户域（如 `contoso.com`）或租户 ID （如 `72f988bf-86f1-41af-91ab-2d7cd011db46`） |
+| `type` | String | 是 | 指定应用要以其为目标的受众。 可能的值： `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs``AzureADMyOrg` |
+| `tenant_id` | String | 是 | 仅在 `"type":"AzureADMyOrg"`时是必需的。 对于其他 `type` 值是可选的。 这可以是租户域（如 `contoso.com`）或租户 ID （如 `72f988bf-86f1-41af-91ab-2d7cd011db46`） |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -139,20 +139,20 @@ Android Microsoft 身份验证库（MSAL）附带了一个[默认的配置 JSON 
 
 配置 HTTP 超时的全局设置，例如：
 
-| properties | 数据类型 | 需要 | 说明 |
+| 属性 | 数据类型 | 需要 | 说明 |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | No | 时间（毫秒） |
-| `read_timeout` | int | No | 时间（毫秒） |
+| `connect_timeout` | int | 否 | 时间（毫秒） |
+| `read_timeout` | int | 否 | 时间（毫秒） |
 
 ### <a name="logging"></a>logging
 
 以下全局设置用于日志记录：
 
-| properties | 数据类型  | 需要 | 说明 |
+| 属性 | 数据类型  | 需要 | 说明 |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | No | 是否发出个人数据 |
-| `log_level`   | boolean | No | 要输出的日志消息 |
-| `logcat_enabled` | boolean | No | 除日志记录接口外是否输出到日志 cat |
+| `pii_enabled`  | boolean | 否 | 是否发出个人数据 |
+| `log_level`   | boolean | 否 | 要输出的日志消息 |
+| `logcat_enabled` | boolean | 否 | 除日志记录接口外是否输出到日志 cat |
 
 ### <a name="account_mode"></a>account_mode
 

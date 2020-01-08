@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f5346f2f11df2282a1cd2592db930f7ff829a2d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416783"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -187,7 +187,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>分辨率
 
-如果适用，请使用[动态组](../automation-update-management-groups.md)作为更新部署。 另外：
+如果适用，请使用[动态组](../automation-update-management-groups.md)作为更新部署。 此外：
 
 * 验证计算机是否仍然存在并且可以访问。 如果它不存在，请编辑部署并删除计算机。
 * 请参阅[网络规划](../automation-update-management.md#ports)部分，了解更新管理所需的端口和地址列表，并验证计算机是否满足这些要求。
@@ -253,9 +253,13 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
+```error
+Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
+```
+
 ### <a name="cause"></a>原因
 
-代理、网关或防火墙可能会阻止网络通信。
+代理、网关或防火墙可能会阻止网络通信。 
 
 ### <a name="resolution"></a>分辨率
 
@@ -325,9 +329,10 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |`0x8024402C`     | 如果你使用的是 WSUS 服务器，请确保 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 注册表项下的 `WUServer` 和 `WUStatusServer` 的注册表值指定正确的 WSUS 服务器。        |
 |`0x80072EE2`|与已配置的 WSUS 服务器通信时出现网络连接问题或问题。 检查 WSUS 设置，并确保可以从客户端访问该服务。|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务（wuauserv）正在运行且未禁用。        |
+|`0x80070005`| 拒绝访问错误可能是由以下任一原因导致的：<br> 感染的计算机<br> Windows 更新设置配置不正确<br> %WinDir%\SoftwareDistribution 文件夹的文件权限错误<br> 系统驱动器上的磁盘空间不足（C：）。
 |任何其他一般异常     | 针对可能的解决方案在 internet 上运行搜索，并与本地 IT 支持部门合作。         |
 
-查看 Windowsupdate.log 文件还可以帮助你确定可能的原因。 有关如何读取日志的详细信息，请参阅[如何读取 windowsupdate.log 文件](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)。
+查看%Windir%\Windowsupdate.log 文件还可以帮助你确定可能的原因。 有关如何读取日志的详细信息，请参阅[如何读取 windowsupdate.log 文件](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)。
 
 你还可以下载并运行[Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)，检查计算机上 Windows 更新是否有任何问题。
 

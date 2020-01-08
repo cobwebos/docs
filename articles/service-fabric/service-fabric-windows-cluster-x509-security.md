@@ -1,25 +1,16 @@
 ---
-title: 使用证书保护 Windows 上的 Azure Service Fabric 群集 | Microsoft Docs
+title: 使用证书保护 Windows 上的群集
 description: 保护 Azure Service Fabric 独立群集或本地群集内部的通信，以及客户端与群集之间的通信。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: fe0ed74c-9af5-44e9-8d62-faf1849af68c
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ee2ce03fccc3e6556f9d261687edb050c8cfa1cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628143"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613918"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
 本文介绍如何保护独立 Windows 群集的不同节点之间的通信。 此外，还介绍如何使用 X.509 证书针对连接到此群集的客户端进行身份验证。 身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。 创建群集时，应在该群集上启用证书安全性。  
@@ -262,14 +253,14 @@ ms.locfileid: "60628143"
 对于用于测试的群集，可以选择使用自签名证书。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>可选：创建自签名证书
-创建能够得到适当保护的自签名证书的一种方法是，使用位于 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目录的 Service Fabric SDK 文件夹中的 CertSetup.ps1 脚本。 编辑此文件以更改证书的默认名称。 （查找值 CN=ServiceFabricDevClusterCert。）以 `.\CertSetup.ps1 -Install` 的方式运行此脚本。
+创建能够得到适当保护的自签名证书的一种方法是，使用位于 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目录的 Service Fabric SDK 文件夹中的 CertSetup.ps1 脚本。 编辑此文件以更改证书的默认名称。 （查找值 CN = ServiceFabricDevClusterCert。）以 `.\CertSetup.ps1 -Install`运行此脚本。
 
 现在，请将证书导出到使用受保护密码的 .pfx 文件。 首先获取证书的指纹。 
-1. 从“开始”  菜单，运行“管理计算机证书”  。 
+1. 从“开始”菜单，运行“管理计算机证书”。 
 
 2. 转到 **Local Computer\Personal** 文件夹，找到创建的证书。 
 
-3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段   。 
+3. 双击证书将其打开，选择“详细信息”选项卡，然后向下滚动到“指纹”字段。 
 
 4. 删除空格，将指纹值复制到以下 PowerShell 命令中。 
 
@@ -301,7 +292,7 @@ ms.locfileid: "60628143"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 接下来，通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及**网络服务**。 可检查证书上的 ACL 是否正确，方法是在“开始”   > “管理计算机证书”  中打开证书，并查看“所有任务”   > “管理私钥”  。
+3. 接下来，通过运行以下脚本设置对此证书的访问控制，以便在网络服务帐户下运行的 Service Fabric 进程可以使用它。 为服务帐户提供证书指纹以及**网络服务**。 可检查证书上的 ACL 是否正确，方法是在“开始” > “管理计算机证书”中打开证书，并查看“所有任务” > “管理私钥”。
    
     ```powershell
     param

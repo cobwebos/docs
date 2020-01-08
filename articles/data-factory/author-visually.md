@@ -9,17 +9,19 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 01/09/2019
-ms.openlocfilehash: 734a9de3eaa44a149c10d1a268d09024f3ef279d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/19/2019
+ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440939"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。
+
+目前，Microsoft Edge 和 Google Chrome 仅支持 Azure 数据工厂 UX。
 
 ## <a name="authoring-canvas"></a>创作画布
 

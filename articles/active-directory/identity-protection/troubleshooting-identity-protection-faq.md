@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 12/13/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d22973867782ddb64ced2ac95e84c0b27a3addd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443568"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
 
@@ -42,6 +42,14 @@ username 字段上的查询区分大小写，而 Name 字段上的查询不区�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
+### <a name="why-is-a-user-is-at-risk"></a>为什么用户面临风险？
+
+如果你是 Azure AD Identity Protection 的客户，请前往有风险的[用户](howto-identity-protection-investigate-risk.md#risky-users)视图，并单击 "有风险的用户"。 在底部的抽屉中，选项卡 "风险历史记录" 将显示导致用户风险更改的所有事件。 若要查看用户的所有有风险的登录，请单击 "用户的危险登录"。 若要查看此用户的所有风险检测，请单击 "用户的风险检测"。
+
+### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何获取特定类型检测的报告？
+
+中转到风险检测视图并按 "检测类型" 筛选。 然后，你可以在中下载此报表。CSV 或。JSON 格式使用顶部的 "**下载**" 按钮。 有关详细信息，请参阅文章[如何：调查风险](howto-identity-protection-investigate-risk.md#risk-detections)。
+
 ### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>为什么不能为每个风险检测设置自己的风险级别？
 
 “标识保护”中的风险级别依赖于检测的精度，并由我们的监督式机器学习提供支持。 若要自定义用户体验，管理员可以在用户风险和登录风险策略中包含/排除某些用户/组。
@@ -49,6 +57,20 @@ username 字段上的查询区分大小写，而 Name 字段上的查询不区�
 ### <a name="why-does-the-location-of-a-sign-in-not-match-where-the-user-truly-signed-in-from"></a>为什么登录位置与用户真正登录的位置不匹配？
 
 IP 地理位置映射是整个行业面临的挑战。 如果你认为登录报告中列出的位置与实际位置不匹配，请联系 Microsoft 支持部门。 
+
+### <a name="how-can-i-close-specific-risk-detections-like-i-did-in-the-old-ui"></a>如何关闭特定的风险检测（如我在旧 UI 中执行的操作）？
+
+您可以通过确认链接的登录为已泄露或安全来提供有关风险检测的反馈。 登录时提供的反馈 trickles 对该登录上发出的所有检测。 如果要关闭未链接到登录的检测，可以在用户级别上提供相应的反馈。 有关详细信息，请参阅文章[如何：在 Azure AD Identity Protection 中提供风险反馈](howto-identity-protection-risk-feedback.md)。
+
+### <a name="how-far-can-i-go-back-in-time-to-understand-whats-going-on-with-my-user"></a>我可以在多长时间后回来来了解我的用户会发生什么情况呢？
+
+- "有[风险的用户](howto-identity-protection-investigate-risk.md#risky-users)" 视图根据过去的所有登录显示用户的风险。 
+- 有风险的[登录](howto-identity-protection-investigate-risk.md#risky-sign-ins)视图在过去30天内显示了风险标志。 
+- "[风险检测](howto-identity-protection-investigate-risk.md#risk-detections)" 视图显示在过去90天内进行的风险检测。
+
+### <a name="how-can-i-learn-more-about-a-specific-detection"></a>如何了解有关特定检测的详细信息？
+
+所有风险检测都记录在项目中有[什么风险](concept-identity-protection-risks.md#risk-types-and-detection)。 您可以将鼠标悬停在 Azure 门户上检测旁边的 "（i）" 符号，以了解有关检测的详细信息。
 
 ### <a name="how-do-the-feedback-mechanisms-in-identity-protection-work"></a>“标识保护”中的反馈机制是如何工作的？
 

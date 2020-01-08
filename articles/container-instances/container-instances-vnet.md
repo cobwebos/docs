@@ -2,13 +2,14 @@
 title: 将容器组部署到 Azure 虚拟网络
 description: 了解如何将容器组部署到新的或现有的 Azure 虚拟网络。
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442264"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -45,8 +46,8 @@ ms.locfileid: "74533269"
 ### <a name="unsupported-networking-scenarios"></a>不支持的网络方案 
 
 * **Azure 负载均衡器**-不支持在网络容器组中的容器实例前面放置 Azure 负载均衡器
-* **虚拟网络对等互连**-不能将包含委派给 Azure 容器实例的子网的虚拟网络对等互连到另一个虚拟网络
-* **路由表**-无法在委托给 Azure 容器实例的子网中设置用户定义的路由
+* **虚拟网络对等互连**-如果 aci VNet 要对等互连的网络使用公共 IP 空间，VNet 对等互连将不能用于 aci。 要使对等互连工作，对等互连网络需要 RFC1918 专用 IP 空间。 此外，你当前只能将 VNet 附加到另一个 VNet
+* **虚拟网络流量路由**-不能围绕公共 ip 设置客户路由。 可以在部署了 ACI 资源的委托子网的专用 IP 空间内设置路由 
 * **网络安全组**-应用于委托给 Azure 容器实例的子网的 nsg 中的出站安全规则当前未强制执行 
 * **公共 ip 或 DNS 标签**-部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 internet 公开容器
 * **内部名称解析**-不支持通过内部 Azure DNS 对虚拟网络中的 Azure 资源进行名称解析
@@ -292,8 +293,8 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 本文简要介绍了多个虚拟网络资源和功能。 Azure 虚拟网络文档全面介绍了这些主题：
 
-* 虚拟网络[](../virtual-network/manage-virtual-network.md)
-* 子网[](../virtual-network/virtual-network-manage-subnet.md)
+* [虚拟网络](../virtual-network/manage-virtual-network.md)
+* [子网](../virtual-network/virtual-network-manage-subnet.md)
 * [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
 * [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 * [ExpressRoute](../expressroute/expressroute-introduction.md)

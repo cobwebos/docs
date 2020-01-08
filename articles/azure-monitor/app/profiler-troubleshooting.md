@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure Application Insights Profiler 的问题 | Microsoft Docs
+title: Azure 应用程序 Insights Profiler 疑难解答
 description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights Profiler 时遇到的难题。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899981"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432390"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -65,7 +65,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * Web 应用必须已启用 Application Insights。
 * Web 应用必须具有以下应用设置：
 
-    |应用设置    | Value    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -97,7 +97,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 将“Always On”设置为“打开”。
 1. 创建以下应用设置：
 
-    |应用设置    | Value    |
+    |应用设置    | 值    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -163,6 +163,11 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
     如果在应用程序收到请求时探查器正在运行，则会显示以下消息： " *iKey 中检测到的活动*"。 
 
     上传跟踪时，将显示以下消息： "*开始上传" 跟踪*。 
+
+
+## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
+
+如果你的应用程序通过代理或防火墙连接到 Internet，你可能需要编辑规则以允许你的应用程序与 Application Insights Profiler 服务通信。 Application Insights Profiler 使用的 Ip 包含在 Azure Monitor 服务标记中。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

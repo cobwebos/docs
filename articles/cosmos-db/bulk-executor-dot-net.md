@@ -1,5 +1,5 @@
 ---
-title: 使用大容量执行器 .NET 库在 Azure Cosmos DB 中执行批量导入和更新操作
+title: 在 Azure Cosmos DB 中使用批量执行程序 .NET 库进行大容量导入和更新操作
 description: 使用大容量执行器 .NET 库大容量导入和更新 Azure Cosmos DB 文档。
 author: tknandu
 ms.service: cosmos-db
@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218407"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442194"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大容量执行器 .NET 库在 Azure Cosmos DB 中执行批量操作
 
-本教程提供有关使用批量执行器 .NET 库将文档导入和更新到 Azure Cosmos 容器的说明。 若要了解批量执行器库以及它如何帮助你充分利用大规模吞吐量和存储，请参阅[批量执行程序库概述](bulk-executor-overview.md)一文。 本教程将讲解一个示例 .NET 应用程序，该应用程序可将随机生成的文档批量导入 Azure Cosmos 容器。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。
+本教程提供有关使用批量执行器 .NET 库将文档导入和更新到 Azure Cosmos 容器的说明。 若要了解批量执行器库以及它如何帮助你充分利用大规模吞吐量和存储，请参阅[批量执行程序库概述](bulk-executor-overview.md)一文。 在本教程中，你将看到一个将随机生成的文档大容量导入到 Azure Cosmos 容器中的 .NET 应用程序示例。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。
 
 目前，Azure Cosmos DB SQL API 和 Gremlin API 帐户仅支持批量执行程序库。 本文介绍如何将批量执行器 .NET 库与 SQL API 帐户一起使用。 若要了解如何使用 Gremlin API 帐户的批量执行器 .NET 库，请参阅[Azure Cosmos DB GREMLIN api 中的执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用[Visual studio 2019 社区版](https://www.visualstudio.com/downloads/)。 请确保在安装 Visual Studio 期间启用了 "Azure 开发"。
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以将[Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)与`https://localhost:8081`终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
+* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以将[Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)与 `https://localhost:8081` 终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
 
 * 使用 .NET 快速入门文章的[创建数据库帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
@@ -40,7 +40,7 @@ ms.locfileid: "71218407"
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-克隆的存储库包含两个示例：“BulkImportSample”和“BulkUpdateSample”。 可以打开任一示例应用程序，使用 Azure Cosmos DB 帐户的连接字符串更新 App.config 文件中的连接字符串，生成解决方案，然后运行它。
+克隆的存储库包含两个示例 "BulkImportSample" 和 "BulkUpdateSample"。 可以打开任一示例应用程序，使用 Azure Cosmos DB 帐户的连接字符串更新 App.config 文件中的连接字符串，生成解决方案，然后运行它。
 
 "BulkImportSample" 应用程序生成随机文档，并将它们批量导入到 Azure Cosmos 帐户。 “BulkUpdateSample”应用程序通过指定要对特定文档字段执行的修补操作，来批量更新导入的文档。 在后续部分，我们将查看其中每个示例应用中的代码。
 
@@ -72,7 +72,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    connectionPolicy)
    ```
 
-4. 根据等待时间和限制请求使用较大重试值初始化 BulkExecutor 对象。 然后，这些值将设置为 0，以将阻塞控制权传递给 BulkExecutor（在其生存期内都会保留此控制权）。  
+4. 使用等待时间和限制请求的重试值初始化 BulkExecutor 对象。 然后，这些值将设置为 0，以将阻塞控制权传递给 BulkExecutor（在其生存期内都会保留此控制权）。  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -115,15 +115,15 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |NumberOfDocumentsImported (long)   |  已成功导入到提供给大容量导入 API 调用的总文档数的文档总数。       |
    |TotalRequestUnitsConsumed (double)   |   批量导入 API 调用消耗的请求单位 (RU) 总数。      |
    |TotalTimeTaken (TimeSpan)    |   大容量导入 API 调用完成执行所花费的总时间。      |
-   |BadInputDocuments (List\<object>)   |     未在批量导入 API 调用中成功导入的格式不当文档列表。 修复返回的文档，然后重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。    |
+   |BadInputDocuments （List\<对象 >）   |     未在批量导入 API 调用中成功导入的格式不当文档列表。 修复返回的文档，然后重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。    |
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>批量更新 Azure Cosmos 帐户中的数据
 
-可以使用 BulkUpdateAsync API 更新现有文档。 在此示例中，您将`Name`字段设置为一个新值，并从现有文档中删除该`Description`字段。 有关支持的更新操作的完整集合，请参阅[API 文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
+可以使用 BulkUpdateAsync API 更新现有文档。 在此示例中，您将 `Name` 字段设置为一个新值，并从现有文档中删除 `Description` 字段。 有关支持的更新操作的完整集合，请参阅[API 文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
 
 1. 导航到“BulkUpdateSample”文件夹并打开“BulkUpdateSample.sln”文件。  
 
-2. 定义更新项以及相应的字段更新操作。 在此示例中，您将`SetUpdateOperation`使用来`Name`更新字段以及`UnsetUpdateOperation`从所有文档`Description`中删除该字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
+2. 定义更新项以及相应的字段更新操作。 在此示例中，您将使用 `SetUpdateOperation` 更新 `Name` 字段，并 `UnsetUpdateOperation` 从所有文档中删除 `Description` 字段。 还可以执行其他操作，例如，根据特定的值递增文档字段、将特定的值推送到数组字段，或者从数组字段中删除特定的值。 若要了解批量更新 API 提供的不同方法，请参阅 [API 文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet)。
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -171,11 +171,11 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 * 为了获得最佳性能，请从与 Azure Cosmos 帐户的写入区域位于同一区域的 Azure 虚拟机中运行应用程序。  
 
-* 建议在对应于特定 Azure Cosmos 容器`BulkExecutor`的单个虚拟机中实例化整个应用程序的单个对象。  
+* 建议为单个虚拟机中的整个应用程序实例化单个 `BulkExecutor` 对象，该对象对应于特定的 Azure Cosmos 容器。  
 
 * 由于单个大容量操作 API 执行会占用大量的客户端计算机的 CPU 和网络 IO （这会在内部生成多个任务）。 避免在应用程序进程内生成执行批量操作 API 调用的多个并发任务。 如果在单个虚拟机上运行的单个大容量操作 API 调用无法使用整个容器的吞吐量（如果容器的吞吐量 > 1000000 RU/s），则最好创建单独的虚拟机以同时执行大容量操作 API 调用。  
 
-* 请确保`InitializeAsync()`在实例化 BulkExecutor 对象之后调用该方法，以便提取目标 Cosmos 容器的分区映射。  
+* 请确保在实例化 BulkExecutor 对象后调用 `InitializeAsync()` 方法，以便提取目标 Cosmos 容器的分区映射。  
 
 * 在应用程序的 App.Config 中，确保启用 **gcServer** 以获得更好的性能
   ```xml  

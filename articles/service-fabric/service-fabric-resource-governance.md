@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric 容器和服务的资源治理 | Microsoft Docs
+title: 容器和服务的资源调控
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242922"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609446"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -56,7 +45,7 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 
 不过，在两种情况下，其他进程可能会争用 CPU。 在这种情况下，示例中的进程和容器可能会遇到邻近干扰问题：
 
-* 混用治理和非治理服务和容器：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 此问题有两种解决方案。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
+* 混用治理和非治理服务和容器：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 有两种解决方案可以解决这种问题。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
 
 * 其他进程在 Service Fabric 外的节点上启动（例如，OS 服务）：在这种情况下，Service Fabric 外的进程也会与现有服务争用 CPU。 此问题的解决方案是，考虑 OS 开销以正确设置节点容量，如下一部分中所示。
 
@@ -206,7 +195,7 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 * 节点以不正常状态结束
 * 群集管理 Api Service Fabric 无响应
 
-若要防止出现这种情况，Service Fabric 允许对 *节点上运行的所有 Service Fabric 用户服务强制执行资源限制*（控制和 ungoverned），以确保用户服务将从不使用超过指定的资源量。 为此，可将 Clustermanifest.xml 的 PlacementAndLoadBalancing 部分中的 EnforceUserServiceMetricCapacities config 的值设置为 true。 默认情况下，此设置处于关闭状态。
+若要防止出现这种情况，Service Fabric 允许对 *节点上运行的所有 Service Fabric 用户服务强制执行资源限制*（控制和 ungoverned），以确保用户服务永远不会使用超过指定的资源量。 为此，可将 Clustermanifest.xml 的 PlacementAndLoadBalancing 部分中的 EnforceUserServiceMetricCapacities config 的值设置为 true。 默认情况下，此设置处于关闭状态。
 
 ```xml
 <SectionName="PlacementAndLoadBalancing">
@@ -217,7 +206,7 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 其他备注：
 
 * 资源限制强制仅适用于 `servicefabric:/_CpuCores` 和 `servicefabric:/_MemoryInMB` 资源度量值
-* 仅当资源指标的节点容量可通过自动检测机制 Service Fabric，或通过用户手动指定节点容量（如[群集设置中的 "启用" 中所述）时，才可以执行资源限制。资源调控](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分）。 如果未配置节点容量，则无法使用资源限制强制功能，因为 Service Fabric 无法知道要为用户服务保留多少资源。 如果 "EnforceUserServiceMetricCapacities" 为 true，但未配置节点容量，Service Fabric 将发出运行状况警告。
+* 仅当资源指标的节点容量可通过自动检测机制 Service Fabric，或通过用户手动指定节点容量（如[群集设置中的启用资源调控](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance)部分所述）时，才可执行资源限制。 如果未配置节点容量，则无法使用资源限制强制功能，因为 Service Fabric 无法知道要为用户服务保留多少资源。 如果 "EnforceUserServiceMetricCapacities" 为 true，但未配置节点容量，Service Fabric 将发出运行状况警告。
 
 ## <a name="other-resources-for-containers"></a>容器的其他资源
 

@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.date: 01/03/2020
+ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889694"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660318"
 ---
-# <a name="routing-events-and-messages"></a>路由事件和消息
+# <a name="routing-iot-events-and-messages"></a>路由 IoT 事件和消息
 
-IoT 解决方案通常将多种强大的服务（包括存储和分析等）结合在一起。 本文介绍如何将 Azure 数字孪生应用连接到 Azure分析、AI 和存储服务，以便为它们提供更深入的见解和功能。
+物联网解决方案通常会合并几项功能强大的服务，其中包括存储、分析等。 本文介绍如何将 Azure 数字孪生应用连接到 Azure分析、AI 和存储服务，以便为它们提供更深入的见解和功能。
 
 ## <a name="route-types"></a>路由类型  
 

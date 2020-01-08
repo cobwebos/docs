@@ -1,25 +1,14 @@
 ---
-title: 查看 Azure Service Fabric 中的容器日志 | Microsoft Docs
+title: 查看 Azure 中的容器日志 Service Fabric
 description: 介绍在使用 Service Fabric Explorer 运行 Service Fabric 容器服务时，如何查看相应的容器日志。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/15/2018
-ms.author: atsenthi
-ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458181"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>查看 Service Fabric 容器服务的日志
 Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和 Windows 容器](service-fabric-containers-overview.md)。  本文介绍如何查看正在运行的容器服务或无响应容器的容器日志，以便诊断和排查问题。
@@ -37,14 +26,14 @@ Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和
 从 v6.2 开始，还可以使用 [REST API](/rest/api/servicefabric/sfclient-index) 或 [Service Fabric CLI (SFCTL)](service-fabric-cli.md) 命令提取无响应容器或故障容器的日志。
 
 ### <a name="set-container-retention-policy"></a>设置容器保留策略
-为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在 **ApplicationManifest.xml** 文件中设置，如以下代码片段所示：
+为了帮助诊断容器启动故障，Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的容器。 此策略可以在ApplicationManifest.xml 文件中设置，如以下代码片段所示：
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
  ```
 
 ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定ContainersRetentionCount 属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
-设置 **RunInteractive** 与 Docker 的 `--interactive` 和 `tty` [标志](https://docs.docker.com/engine/reference/commandline/run/#options)相对应。 在清单文件中将此设置设为 true 时，这些标志用于启动容器。  
+设置**RunInteractive**对应于 Docker 的 `--interactive` 和 `tty`[标志](https://docs.docker.com/engine/reference/commandline/run/#options)。 在清单文件中将此设置设为 true 时，这些标志用于启动容器。  
 
 ### <a name="rest"></a>REST
 使用[获取部署在节点上的容器日志](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作来获取故障容器的日志。 指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中无响应容器的容器日志。

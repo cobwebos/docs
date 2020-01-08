@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: c3134988452efe16044ab7b7740cafd02e8cf27a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201918"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666289"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 
@@ -28,7 +28,7 @@ ms.locfileid: "71201918"
 * 有关安全中心如何生成警报的概述，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
 
 > [!NOTE]
-> 若要启用高级检测，请升级到 Azure 安全中心标准版。 免费试用版已提供。 要升级，请选择 [安全策略](tutorial-security-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
+> 若要启用高级检测，请升级到 Azure 安全中心标准版。 有免费试用版可用。 要升级，请选择 [安全策略](tutorial-security-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
@@ -65,7 +65,7 @@ ms.locfileid: "71201918"
     > [!NOTE]
     >在某些情况下，源 IP 地址不可用，某些 Windows 安全事件日志不包含 IP 地址。
 
-1. 安全中心建议的补救步骤根据安全警报而有所不同。 对于每个警报，请遵循它们。 在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
+1. 安全中心建议的修正步骤因安全警报而异。 对于每个警报，请遵循它们。 在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
 
     以下主题将指导你根据资源类型来完成不同的警报：
     
@@ -76,14 +76,14 @@ ms.locfileid: "71201918"
     以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测，以便为 Azure 上部署的资源应用其他保护层：
     
     * [服务层警报](security-center-alerts-service-layer.md)
-    * [与 Azure 安全产品集成](security-center-alerts-integration.md)
+    * [Azure WAF 和 Azure DDoS 保护的威胁检测](security-center-alerts-integration.md)
     
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 本文档中已经介绍了如何在安全中心配置安全策略。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Azure 安全中心的安全警报](security-center-alerts-overview.md)。
 * [处理安全事件](security-center-incident.md)
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
-* [Azure 安全中心常见问题解答](security-center-faq.md) — 查找有关使用该服务的常见问题解答。
+* [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

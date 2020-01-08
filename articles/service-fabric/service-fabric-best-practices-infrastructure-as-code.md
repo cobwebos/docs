@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 基础结构即代码最佳做法 | Microsoft Docs
-description: 用于管理 Service Fabric 基础结构即代码的最佳做法。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 基础结构即代码最佳做法
+description: 作为基础结构作为代码管理 Azure Service Fabric 的最佳实践和设计注意事项。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 83439a913989875c5e26ee51901f10558e5debd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955616"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551805"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -100,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虚拟机操作系统自动升级配置 
-升级虚拟机是用户启动的操作，建议使用[虚拟机规模集操作系统自动升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)进行 Azure Service Fabric 群集主机修补程序管理；修补业务流程应用程序是替代解决方案，适用于在 Azure 外部托管的情况。虽然 POA 可以在 Azure 中使用，但考虑到在 Azure 中托管 POA 的开销，通常会首选虚拟机操作系统自动升级而不是 POA。 下面是计算虚拟机规模集资源管理器模板属性，用于启用 OS 自动升级：
+升级虚拟机是用户启动的操作，建议对 Azure Service Fabric 群集主机修补程序管理使用[虚拟机规模集自动操作系统升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade);修补业务流程应用程序是一种备选解决方案，适用于在 azure 外部托管的情况，虽然 POA 可以在 azure 中使用，但在 Azure 中托管 POA 的开销会导致更倾向于通过 POA 进行虚拟机操作系统的自动升级。 下面是计算虚拟机规模集资源管理器模板属性，用于启用自动 OS 升级：
 
 ```json
 "upgradePolicy": {
@@ -111,11 +102,11 @@ microservices_sfpkg.close()
     }
 },
 ```
-使用带 Service Fabric 的 OS 自动升级时，将推出新的 OS 映像（每次一个更新域），以维持 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。
+将自动 OS 升级与 Service Fabric 一起使用时，新 OS 映像会一次推出一个更新域，以维持在 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。
 
-确保将以下注册表项设置为 false，防止 Windows 主机启动不协调的更新：HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+确保将以下注册表项设置为 false，以防止 windows 主机启动不协调更新： HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
 
-下面是计算虚拟机规模集资源管理器模板属性，用于将 WindowsUpdate 注册表项设置为 false：
+下面是计算虚拟机规模集资源管理器模板属性，用于将 Windowsupdate.log 注册表项设置为 false：
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -129,11 +120,11 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric 群集升级配置
-下面是 Service Fabric 群集资源管理模板属性，用于启用自动升级：
+下面是 Service Fabric 群集资源管理器模板属性，用于启用自动升级：
 ```json
 "upgradeMode": "Automatic",
 ```
-若要手动升级群集，请将 cab/deb 发行版下载到群集虚拟机，然后调用以下 PowerShell：
+若要手动升级群集，请将 cab/deb 分发下载到群集虚拟机，然后调用以下 PowerShell：
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 39535a895dd0ec4a851f0576acf8696ae99e3259
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766476"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454215"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -24,38 +24,30 @@ Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合
 
 客户可以在 Azure Marketplace 中或从 MSP 直接购买 MSP 托管服务产品/服务。 Msp 可以使用[Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)在客户的订阅和资源组中部署和管理 Azure 网络资源。
 
-## <a name="msp"></a>Azure 网络 MSP 合作伙伴
+## <a name="msp"></a>Azure Marketplace 提供的 azure 网络 MSP 合作伙伴
 
 使用此部分中的链接，了解有关 Azure 网络 MSP 合作伙伴提供的托管云网络服务的详细信息。 如果你的云网络服务合作伙伴未在以下部分中列出，请提供提供商联系我们。 他们可以通过向 ManagedVirtualWAN@microsoft.com 发送电子邮件来与我们联系。 
 
-| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** | **托管网络安全服务** |**托管的多访问边缘计算** |
-| ---| ---| ---| ---| ---| ---|
-|[Amdocs](https://www.amdocs.com/)|||||是|
-|[ANS 组 UK](https://www.ans.co.uk/)|是|是||||
-|[Aryaka networks、网络](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|是 |是 |是 | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|是|是|是|||
-|[Coevolve](https://www.coevolve.com/services/azure-networking-services/)|是||是|是||
-|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|是|||||
-|[维度数据](https://www.dimensiondata.com/)|是|||||
-|[Equinix](https://www.equinix.com/)|是|是||||
-|[IIJ](https://www.iij.ad.jp/biz/cloudex/)|是|是||||
-|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|是||||是|
-|[InterCloud](https://intercloud.com/partners/microsoft-azure/)|是|是||||
-|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|是|是||||
-|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)|是|是||||
-|[KINX](https://www.kinx.net/service/cloud/?lang=en)|是|||||
-|[液体电信](https://liquidcloud.africa/azure-networking)|是|是||||
-|[Macquarie 电信](https://macquariecloudservices.com/azure-managed-services/)|是|是|是|||
-|[Megaport](https://www.megaport.com/services/microsoft-expressroute/)|是|是||||
-|[OmniClouds](https://omniclouds.com/services/)|是|是||||
-|[Oncore 云服务]( https://www.oncore.cloud/services/ue-for-expressroute/)|是|是||||
-|[Orixcom]( https://www.orixcom.com/cloud-solutions/)|是|是||||
-|[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|是|是||||
-|[Tata 通信](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|是|是|是|是||
-|[TCTS](https://www.tatacommunications-ts.com/index.php)|是|是|是|||
-|[技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|是||||是|
-|[Vandis](https://www.vandis.com/microsoft-azure-practice/)|是|是|是|||
-|[警惕 IT](https://vigilant.it/manage-cloud-service/)|是|是||||
+| **MSP** | **云网络转换服务** | **托管 ExpressRoute** | **托管虚拟 WAN** |
+| ---| ---| ---| ---|
+|[ANS 组 UK](https://www.ans.co.uk/)|[Azure 托管 Svc + ANS 玻璃10wk 实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+|[Aryaka networks、网络](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka networks、Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka networks、Azure 虚拟 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[网络转换咨询： 1-Hr 评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure 上的网络搜索引擎优化： 2-hr 评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
+|[NTT 数据](https://us.nttdata.com/en/digital/cloud-transformation)|[托管服务：10周实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
+|[Equinix](https://www.equinix.com/)|[云优化 WAN Engagement：4天评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute 连接策略：3天研讨会](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
+|[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute 实现： 1-Hr 简报](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute： 2-Wk 实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[适用于 Azure 的 Infosys 集成 +](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
+|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure 网络评估-5 天](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
+|[液体电信](https://liquidcloud.africa/azure-networking)|[云就绪-2 小时评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
+|[Macquarie 电信](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie 云服务咨询： 2-hr 研讨会](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-通过 Macquarie 云安装的广域网虚拟边缘](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Oncore 云服务]( https://www.oncore.cloud/services/ue-for-expressroute/)||[适用于 Azure ExpressRoute 的 UniversalEdge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
+|[Orixcom]( https://www.orixcom.com/cloud-solutions/)|||[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
+|[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure 迁移：3周评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
+|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview);[Palo Alto 网络提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|||
+|[警惕 IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5天评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5天实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
+
+Azure Marketplace 产品/服务包括新的托管安全服务，以及以下 Azure 网络 MSP 合作伙伴提供的托管 MEC 服务： [Amdocs](https://www.amdocs.com/); [Coevolve](https://www.coevolve.com/services/azure-networking-services/); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Softbank](https://www.softbank.jp/biz/cloud/microsoft/azure/); [Tata 通信](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/); [技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 
 ## <a name="expressroute"></a>ExpressRoute 合作伙伴
 
