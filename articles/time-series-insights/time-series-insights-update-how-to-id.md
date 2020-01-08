@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452747"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -23,23 +23,28 @@ ms.locfileid: "74012494"
 
 ## <a name="choose-a-time-series-id"></a>选择时间序列 ID
 
-选择时序 ID 与为数据库选择分区键相同。 在创建时序见解预览环境时，需要选择此选项。 它是*不可变*的属性。 也就是说，在使用时序 ID 创建时序见解预览环境后，将无法更改该环境。 
+选择适当的时序 ID 是至关重要的。 选择时序 ID 与为数据库选择分区键相同。 创建时序见解预览环境时，需要使用此方法。 
 
 > [!IMPORTANT]
-> 时序 ID 区分大小写。
+> 时序 Id 如下：
+> * *区分大小写*的属性：字母和字符大小写用于在搜索、比较、更新和分区时使用。
+> * *不可变*属性：创建后将无法更改。
 
-选择适当的时序 ID 是至关重要的。 下面是一些可遵循的最佳实践：
+> [!TIP]
+> 如果事件源是 IoT 中心，则时序 ID 可能是***iothub***的。
+
+要遵循的关键最佳实践包括：
 
 * 选择包含多个非重复值的分区键（例如，成百上千个）。 在许多情况下，这可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
-* 如果事件源是 IoT 中心，则时序 ID 最可能是*iothub*的。
 * 时序 ID 的属性名称字符串的字符限制为128。 对于时序 ID 的属性值，字符限制为1024。
 * 如果缺少时序 ID 的唯一属性值，则将其视为 null 值并遵循相同的唯一性约束规则。
 * 你还可以选择最多*三个*键属性作为时序 ID。 它们的组合将是表示时序 ID 的组合键。  
-
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 您必须一次对此复合键（而不是一个属性）进行查询。
+
+## <a name="select-more-than-one-key-property"></a>选择多个键属性
 
 以下方案说明了如何选择多个键属性作为时序 ID。  
 
@@ -67,9 +72,11 @@ ms.locfileid: "74012494"
 }
 ```
 
-在 Azure 门户中，可以输入以下组合键： 
+在 Azure 门户中，可以输入组合键，如下所示： 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
 ## <a name="next-steps"></a>后续步骤
 

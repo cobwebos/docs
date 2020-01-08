@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786429"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430205"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>配置管理员许可工作流（预览）
 
@@ -118,7 +118,7 @@ ms.locfileid: "74786429"
 > 当前所有方案中都缺少 audit 参与者的用户上下文。 这是预览版本中的一个已知限制。
 
 
-|场景  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
+|方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|
 |启用同意请求工作流的管理员        |访问评审           |UserManagement           |创建调控策略模板          |应用上下文            |当前找不到用户上下文            |
 |管理员禁用同意请求工作流       |访问评审           |UserManagement           |删除调控策略模板          |应用上下文            |当前找不到用户上下文           |
@@ -127,7 +127,7 @@ ms.locfileid: "74786429"
 |审批管理员同意请求的审阅者       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            |目前找不到已授予管理员许可的用户上下文或应用 ID。           |
 |审阅者拒绝管理员同意请求       |访问评审           |UserManagement           |批准业务流中的所有请求          |应用上下文            | 当前找不到拒绝管理员同意请求的执行组件的用户上下文          |
 
-## <a name="faq"></a>常见问题解答 
+## <a name="faq"></a>常见问题 
 
 **我打开了此工作流，但在测试功能时，为什么看不到允许我请求访问的新 "需要审批" 提示？**
 
@@ -153,8 +153,10 @@ ms.locfileid: "74786429"
 
 有关许可应用程序的详细信息，请参阅 [Azure Active Directory 许可框架](../develop/consent-framework.md)。
 
-[同意并将应用集成到 AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[配置最终用户同意应用程序的方式](configure-user-consent.md)
 
-[同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
+[向应用程序授予租户范围的管理员许可](grant-admin-consent.md)
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
+
+[StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)

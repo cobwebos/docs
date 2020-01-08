@@ -1,6 +1,6 @@
 ---
 title: 规划 GA 环境-Azure 时序见解 |Microsoft Docs
-description: 了解在规划 GA 环境时应遵循的最佳做法。
+description: 准备、配置和部署 Azure 时序见解 GA 环境的最佳实践。
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75c84aeb1893008832635cf93cd634d96653dd3
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561541"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452867"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解 GA 环境
 
@@ -28,7 +28,7 @@ ms.locfileid: "74561541"
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 若要开始使用 Azure 时序见解，最好知道要在一分钟内推送的数据量以及存储数据所需的时间。  
 

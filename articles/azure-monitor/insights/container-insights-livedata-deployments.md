@@ -1,19 +1,14 @@
 ---
 title: 查看容器部署 Azure Monitor （预览版） |Microsoft Docs
 description: 本文介绍 Kubernetes 部署的实时视图，而无需在容器 Azure Monitor 中使用 kubectl。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404770"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>如何实时查看部署（预览）
 
@@ -27,7 +22,7 @@ ms.locfileid: "73514376"
 
 若要了解详细信息，请查看有关[部署](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)的 Kubernetes 文档。 
 
-## <a name="how-it-works"></a>工作原理
+## <a name="how-it-works"></a>如何运作
 
 实时数据（预览版）功能直接访问 Kubernetes API，还可以在[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到有关身份验证模型的其他信息。 
 

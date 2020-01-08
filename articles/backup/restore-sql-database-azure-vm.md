@@ -3,12 +3,12 @@ title: 在 Azure VM 上还原 SQL Server 数据库
 description: 本文介绍如何还原在 Azure VM 上运行并且使用 Azure 备份进行备份的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0dbf5c48884dc665355d2806ff343facfbeffc29
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390759"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -23,7 +23,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 - 使用事务日志备份还原到特定的日期或时间（到第二个）。 Azure 备份会自动根据所选时间确定所需的完整差异备份和日志备份链。
 - 还原特定的完整备份或差异备份以还原到特定恢复点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在还原数据库之前，请注意以下事项：
 
@@ -110,7 +110,15 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 
 1. 在 "**还原配置**" 菜单中的 "**还原位置**" 下，选择 "**还原为文件**"。
 2. 选择要将备份文件还原到的 SQL Server 名称。
-3. 在**服务器上的 "目标路径**" 中，输入在步骤2中选择的服务器上的文件夹路径。 此位置是服务将转储所有必要备份文件的位置。 通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，则会使同一网络中的其他计算机或其上装载的 Azure 文件共享更加轻松地访问这些文件。
+3. 在**服务器上的 "目标路径**" 中，输入在步骤2中选择的服务器上的文件夹路径。 此位置是服务将转储所有必要备份文件的位置。 通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，则会使同一网络中的其他计算机或其上装载的 Azure 文件共享更加轻松地访问这些文件。<BR>
+
+>若要将数据库备份文件还原到安装在目标注册 VM 上的 Azure 文件共享上，请确保 NT AUTHORITY\SYSTEM 有权访问该文件共享。 你可以执行以下步骤来向 VM 上装载的 AFS 授予读取/写入权限：
+>- 运行 `PsExec -s cmd` 进入 NT AUTHORITY\SYSTEM shell
+>   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
+>   - 使用 `dir \\<storageacct>.file.core.windows.net\<filesharename>` 验证访问权限
+>- 以文件形式从备份保管库中作为文件进行还原，作为路径 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
+可以通过 <https://docs.microsoft.com/sysinternals/downloads/psexec> 下载 Psexec
+
 4. 选择“确定”。
 
 ![选择还原为文件](./media/backup-azure-sql-database/restore-as-files.png)

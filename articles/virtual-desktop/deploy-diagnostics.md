@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167432"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452431"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -256,3 +256,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - [每个会话的用户输入延迟（\*）\\最大输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
 
     - 阈值：大于 2000 ms 被标记为不正常。
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何[使用 Log Analytics 监视使用情况诊断时的](diagnostics-log-analytics.md)活动日志。
+- 阅读有关常见错误方案以及如何在[识别和诊断问题](diagnostics-role-service.md)时对其进行修复的信息。

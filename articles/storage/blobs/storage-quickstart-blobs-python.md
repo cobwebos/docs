@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d589215cf79154bcc8aead1d6695bd4cf870fc0a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423973"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443738"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure Blob 存储客户端库 v12
 
@@ -33,7 +33,7 @@ ms.locfileid: "74423973"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -99,7 +99,7 @@ pip install azure-storage-blob
 
 1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py   。
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>对象模型
 
@@ -139,11 +139,11 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 ```python
 # Retrieve the connection string for use with the application. The storage
 # connection string is stored in an environment variable on the machine
-# running the application called CONNECT_STR. If the environment variable is
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
 # created after the application is launched in a console or with Visual Studio,
 # the shell or application needs to be closed and reloaded to take the
 # environment variable into account.
-connect_str = os.getenv('CONNECT_STR')
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
 ### <a name="create-a-container"></a>创建容器

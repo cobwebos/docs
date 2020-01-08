@@ -4,16 +4,16 @@ description: 本文介绍 Azure EA 协议和修订如何影响 Azure EA 门户�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 78fda5785d85b728c897bf758bc2a3cdee768d02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1f421abf1c9cff545c77a9fcbbb4acfd76d1e1d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849898"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644403"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -145,7 +145,7 @@ LSP 在 EA 门户中提供一个百分数。  门户中的所有商业信息都
 | Microsoft Azure 托管服务 | 6 个托管服务 | 一个订阅所含的托管服务的上限不能超过 6 个。 如果需要额外的托管服务，请额外添加订阅。 |
 | Microsoft Azure 存储 | 5 个存储帐户，每个帐户的最大大小为 100 TB。 | 每个订阅的存储帐户数最多可增加到 20 个。 如果需要额外的存储帐户，请额外添加订阅。 |
 | SQL Azure | 149 个两种类型（即 Web 版或商业版）的数据库。 |   |
-| Access Control | 每个帐户 50 个命名空间。 每月 1 亿个访问控制事务 |   |
+| 访问控制 | 每个帐户 50 个命名空间。 每月 1 亿个访问控制事务 |   |
 | 服务总线 | 每个帐户 50 个命名空间。 40 个服务总线连接 | 通过连接包购买服务总线连接的客户拥有的配额等于所买连接包与下一个更大的连接包量的中值。 如果客户选择的是一个 500 的连接包，他将拥有的配额为 750。 |
 
 ## <a name="resource-commitment"></a>资源承诺
@@ -272,4 +272,4 @@ Operations Management Suite (OMS) 订阅正是一个例子。 OMS 提供一种�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用 Azure EA 门户，请参阅 [Azure EA 门户入门](billing-ea-portal-get-started.md)。
-- Azure EA 门户管理员应阅读 [Azure EA 门户管理](billing-ea-portal-administration.md)来了解常见的管理任务。
+- Azure EA 门户管理员应阅读 [Azure EA portal administration](billing-ea-portal-administration.md)（Azure EA 门户管理）来了解常见的管理任务。

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/6/2019
+ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc919cabab94e078b8a212feec40047639a36341
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931068"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452911"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,8 @@ ms.locfileid: "74931068"
 
 | 里程碑 | 代理版本号 | 发行日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V9.x 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支持-试验 |
+| 2019年12月更新汇总- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 受支持 |
+| V9.x 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 受支持 |
 | V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 受支持 |
 | 2019年7月更新汇总- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | 受支持 |
 | 2019年7月更新汇总- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 受支持 |
@@ -43,6 +44,15 @@ ms.locfileid: "74931068"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-9100"></a>代理版本9.1.0。0
+以下发行说明适用于2019年12月12日发布的 Azure 文件同步代理的版本9.1.0.0。 除了为版本9.0.0.0 列出的发行说明外，还提供了这些说明。
+
+此版本中已修复的问题：  
+- 升级到 Azure 文件同步代理版本9.0 后，同步失败，并出现以下错误之一：
+    - 0x8e5e044e （JET_errWriteConflict）
+    - 0x8e5e0450 （JET_errInvalidSesid）
+    - 0x8e5e0442 （JET_errInstanceUnavailable）
 
 ## <a name="agent-version-9000"></a>代理版本9.0.0。0
 以下发行说明适用于 Azure 文件同步代理的版本9.0.0.0 （发布时间为2019年12月2日）。
@@ -416,7 +426,7 @@ ms.locfileid: "74931068"
 - 支持 Azure 政府云
   - 我们增加了针对 Azure 政府云的预览版支持。 这需要将订阅加入允许列表，并从 Microsoft 下载特殊代理。 若要访问预览版，请将电子邮件直接发送至 [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)。
 - 支持重复数据删除
-    - Windows Server 2016 和 Windows Server 2019 现在完全支持重复数据删除并启用了云分层功能。 在启用了云分层的卷上启用重复数据删除以后，即可在本地缓存更多的文件，不需预配更多的存储。
+    - Windows Server 2016 和 Windows Server 2019 现在完全支持重复数据删除并启用了云分层功能。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。
 - 支持脱机数据传输（例如，通过 Data Box 进行的脱机数据传输）
     - 轻松地通过任何所选手段将大量数据迁移到 Azure 文件同步。 您可以选择 Azure Data Box、AzCopy 甚至第三方迁移服务。 不需消耗大量带宽将数据传输到 Azure。如果使用 Data Box，只需直接将其邮寄过去就可以了！ 若要了解详细信息，请参阅[脱机数据传输文档](https://aka.ms/AFS/OfflineDataTransfer)。
 - 改进同步性能
@@ -426,7 +436,7 @@ ms.locfileid: "74931068"
         - 已同步的文件数
         - 已传输数据的大小
         - 未同步文件的数目
-        - 回调数据的大小
+        - 回调的数据的大小
         - 服务器连接状态
     - 若要了解详细信息，请参阅[监视 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring)。
 - 提高了可伸缩性和可靠性

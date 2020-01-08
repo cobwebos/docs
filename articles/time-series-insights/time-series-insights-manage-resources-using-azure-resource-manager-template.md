@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901464"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452845"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "74901464"
 
 时序见解支持以下资源：
 
-   | 资源 | 描述 |
+   | 资源 | Description |
    | --- | --- |
    | 环境 | 时序见解环境是从事件代理读取、存储并可用于查询的事件的逻辑分组。 有关详细信息，请参阅[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
@@ -59,7 +59,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
    * 必需的参数
 
-     | 参数 | 描述 |
+     | 参数 | Description |
      | --- | --- |
      | eventHubNamespaceName | 源事件中心的命名空间。 |
      | eventHubName | 源事件中心的名称。 |
@@ -71,7 +71,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
    * 可选参数
 
-     | 参数 | 描述 |
+     | 参数 | Description |
      | --- | --- |
      | existingEventHubResourceId | 要通过事件源连接到时序见解环境的现有事件中心的可选资源 ID。 **注意：** 部署模板的用户必须有权对事件中心执行 listkeys 操作。 如果未传递任何值，则模板会创建新的事件中心。 |
      | environmentDisplayName | 要在工具或用户界面中显示的可选友好名称，而不是环境名称。 |
@@ -119,7 +119,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
      }
      ```
   
-    * 有关详细信息，请参阅[参数](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)一文。
+    * 有关详细信息，请参阅[参数](../azure-resource-manager/templates/parameter-files.md)一文。
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>使用 PowerShell 在本地部署快速入门模板
 

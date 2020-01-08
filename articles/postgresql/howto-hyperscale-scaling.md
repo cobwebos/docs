@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 9/17/2019
-ms.openlocfilehash: 5d8bbe493887c5340f0943a585eb6ff250bd3728
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/17/2019
+ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453053"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模（Citus）服务器组
 
-Azure Database for PostgreSQL 超大规模（Citus）提供了自助扩展，以处理增加的负载。 Azure 门户可以轻松地添加新的辅助角色节点，以及增加现有节点的容量。
+Azure Database for PostgreSQL 超大规模（Citus）提供了自助扩展，以处理增加的负载。 Azure 门户可以轻松地添加新的辅助角色节点，以及增加现有节点的 Vcore。
 
 ## <a name="add-worker-nodes"></a>添加辅助角色节点
 
@@ -38,9 +38,9 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 `rebalance_table_shards`函数间重新平衡其参数中命名的表的[归置](concepts-hyperscale-colocation.md)组中的所有表。 因此，您不必为每个分布式表调用函数，只需在每个归置组的代表性表中调用它。
 
-## <a name="increase-vcores-or-storage-space"></a>增加 Vcore 或存储空间
+## <a name="increase-vcores"></a>增加 Vcore
 
-除了添加新节点以外，还可以增加现有节点的功能。 转到超大规模（Citus）服务器组中的 "**配置**" 选项卡，并拖动 " **vcore** " 和 "**存储**" 滑块以更改所有工作节点的这些值。 请确保单击 "**保存**" 应用所做的更改。
+除了添加新节点以外，还可以增加现有节点的功能。 此功能目前以预览版提供，若要请求增加服务器组中节点的 Vcore，请[联系 Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ## <a name="next-steps"></a>后续步骤
 

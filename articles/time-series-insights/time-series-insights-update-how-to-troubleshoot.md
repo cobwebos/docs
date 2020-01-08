@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452535"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>诊断和排查预览版环境问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "74014777"
 
 如果无权访问时序见解环境，则可能会发生此问题。 用户需要读者级别访问角色才能查看其时序见解环境。 若要验证当前访问级别并授予其他访问权限，请访问[Azure 门户](https://portal.azure.com/)中时序见解资源的 "**数据访问策略**" 部分。
 
-  [![环境](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![验证数据访问策略。](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览资源管理器中未显示数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "74014777"
 
     验证事件源（即事件中心或 IoT 中心）是否从标记或实例接收数据。 若要进行验证，请转到 Azure 门户中资源的概览页。
 
-    [![Dashboard-insights](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![查看仪表板指标概述。](media/preview-troubleshoot/verify-dashboard-metrics.png)](media/preview-troubleshoot/verify-dashboard-metrics.png#lightbox)
 
 - 事件源数据不是 JSON 格式。
 
@@ -45,14 +45,15 @@ ms.locfileid: "74014777"
 
   * 对于 IoT 中心，需提供具有“服务连接”权限的密钥。
 
-    [![配置](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
+    [![验证 IoT 中心权限。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-  * 如上图所示，“iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限。
+    * 策略**iothubowner**和**服务**工作，因为它们具有**服务连接**权限。
+
   * 对于事件中心，需提供具有“侦听”权限的密钥。
   
-    [![权限](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![查看事件中心权限。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-  * 如上图所示，“读取”和“管理”策略均可使用，因为两者都具有“侦听”权限。
+    * "**读取**" 和 "**管理**" 策略均工作，因为它们具有**侦听**权限。
 
 - 提供的使用者组并非时序见解所独有。
 
@@ -98,7 +99,7 @@ ms.locfileid: "74014777"
 
    时序模型仅在即用即付环境中受支持。 有关如何从时序见解预览浏览器访问 S1 或 S2 环境的详细信息，请参阅[在资源管理器中显示数据](./time-series-insights-update-explorer.md)。
 
-   [![访问](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![环境中没有事件。](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
 - 你可能无权查看和编辑此模型。
 
@@ -108,10 +109,12 @@ ms.locfileid: "74014777"
 
 如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请参阅[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 
-  [![时序模型](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [![Unparented 实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
+
 - 了解[支持的 JSON 形状](./how-to-shape-query-json.md)。
+
 - 查看 Azure 时序见解预览版中的[计划和限制](./time-series-insights-update-plan.md)。

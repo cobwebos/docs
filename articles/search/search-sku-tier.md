@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427034"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -26,8 +26,6 @@ ms.locfileid: "74534482"
 > [!NOTE] 
 > 特征奇偶校验的例外是[索引器](search-indexer-overview.md)，在 S3 HD 上不可用。
 >
-
-<!-- For Basic tier and up, you can [adjust replica and partition resources](search-capacity-planning.md) to increase or decrease scale. You could start with one or two of each and then temporarily raise your computational power for a heavy indexing workload. The ability to tune resource levels within a tier adds flexibility, but also slightly complicates your analysis. You might have to experiment to see whether a lower tier with more resources/replicas offers better value and performance than a higher tier with fewer resources. To learn more about when and why you would adjust capacity, see [Performance and optimization considerations](search-performance-optimization.md). -->
 
 ## <a name="available-tiers"></a>可用层
 
@@ -78,7 +76,7 @@ ms.locfileid: "74534482"
 
 对于[AI 扩充](cognitive-search-concept-intro.md)，应计划将可[计费的 azure 认知服务资源附加](cognitive-search-attach-cognitive-services.md)到位于 Azure 认知搜索的同一区域中，以实现即用即付处理。 附加认知服务没有相关的固定成本。 只需为所需的处理付费。
 
-| Operation | 计费影响 |
+| 操作 | 计费影响 |
 |-----------|----------------|
 | 文档破解，文本提取 | 免费 |
 | 文档破解，图像提取 | 根据从文档中提取的图像数量进行计费。 在[索引器配置](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)中， **imageAction**是触发图像提取的参数。 如果将**imageAction**设置为 "none" （默认值），则不会为图像提取付费。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上介绍了图像提取速率。|
@@ -124,35 +122,6 @@ SU 是服务使用的*副本*和*分区*的产品： **（R x P = SU）** 。
 > [!NOTE]
 > 所有标准和存储优化层都支持[灵活的副本和分区组合](search-capacity-planning.md#chart)，因此，你可以通过更改平衡来[优化系统的速度或存储](search-performance-optimization.md)。 基本层最多提供三个副本以实现高可用性，但只有一个分区。 免费层不提供专用资源：计算资源由多个订阅者共享。
 
-<!-- ## Consumption patterns
-
-On the low and high ends, Basic and S3 HD are for important but atypical consumption patterns. Basic is for small production workloads. It offers SLAs, dedicated resources, and high availability, but it provides modest storage, topping out at 2 GB total. This tier was engineered for customers that consistently underutilize available capacity. At the high end, S3 HD is for workloads typical of ISVs, partners, [multitenant solutions](search-modeling-multitenant-saas-applications.md), or any configuration that calls for a large number of small indexes. It's often clear when Basic or S3 HD is the right tier. If you want confirmation, you can post to [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) or [contact Azure support](https://azure.microsoft.com/support/options/) for guidance.
-
-The more commonly used standard tiers, S1 through S3, make up a progression of increasing levels of capacity. There are inflection points on partition size and limits on numbers of indexes, indexers, and corollary resources:
-
-|  | S1 | S2 | S3 |  |  |  |  |
-|--|----|----|----|--|--|--|--|
-| Partition size|  25 GB | 100 GB | 200 GB |  |  |  |  |
-| Index and indexer limits| 50 | 200 | 200 |  |  |  |  |
-
-S1 is a common choice for customers that need dedicated resources and multiple partitions. S1 offers partitions of 25 GB and up to 12 partitions, providing a per-service limit of 300 GB if you maximize partitions over replicas. (See [Allocate partitions and replicas](search-capacity-planning.md#chart) for more balanced allocations.)
-
-The portal and pricing pages put the focus on partition size and storage, but, for each tier, all compute capabilities (disk capacity, speed, CPUs) generally increase linearly with price. An S2 replica is faster than S1, and S3 is faster than S2. S3 tiers break from the linear compute-pricing pattern with disproportionately faster I/O. If you expect I/O to be the bottleneck, keep in mind that you can get much more IOPS with S3 than you can get with lower tiers.
-
-S3 and S3 HD are backed by identical high-capacity infrastructure, but they reach their maximum limits in different ways. S3 targets a smaller number of very large indexes, so its maximum limit is resource-bound (2.4 TB for each service). S3 HD targets a large number of very small indexes. At 1,000 indexes, S3 HD reaches its limits in the form of index constraints. If you're an S3 HD customer and you need more than 1,000 indexes, contact Microsoft Support for information about how to proceed.
-
-> [!NOTE]
-> Document limits were a consideration at one time, but they're no longer applicable for new services. For information about conditions in which document limits still apply, see [Document limits](search-limits-quotas-capacity.md#document-limits).
->
-
-Storage Optimized tiers, L1 and L2, are ideal for applications with large data requirements but a relatively low number of end users, when minimizing query latency isn't the top priority.  
-
-|  | L1 | L2 |  |  |  |  |  |
-|--|----|----|--|--|--|--|--|
-| Partition size|  1 TB | 2 TB |  |  |  |  |  |
-| Index and indexer limits| 10 | 10 |  |  |  |  |  |
-
-L2 offers twice the overall storage capacity of L1.  Choose your tier based on the maximum amount of data that you think your index needs. The L1 tier partitions scale up in 1-TB increments to a maximum of 12 TB. The L2 partitions increase by 2 TBs per partition up to a maximum of 24 TB. -->
 
 ### <a name="evaluating-capacity"></a>计算容量
 
@@ -160,7 +129,9 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 业务要求通常规定了所需的索引数目。 例如，你可能需要大容量的文档存储库的全局索引。 或者，您可能需要基于区域、应用程序或业务小用户的多个索引。
 
-若要确定索引大小，必须[生成一个索引](search-create-index-portal.md)。 Azure 认知搜索中的数据结构主要是一种[反转索引](https://en.wikipedia.org/wiki/Inverted_index)结构，其特征不同于源数据。 对于反向索引，大小和复杂性由内容决定，而不一定是您向其中送进的数据量。 具有高冗余的大型数据源可能会导致索引比包含高度可变内容的小型数据集更小。 因此，很少可以基于原始数据集的大小推断索引大小。
+若要确定索引大小，必须[生成一个索引](search-create-index-portal.md)。 其大小取决于导入的数据和索引配置，例如是否启用建议器、筛选和排序。 有关配置对大小的影响的详细信息，请参阅[创建基本索引](search-what-is-an-index.md)。
+
+对于全文搜索，主数据结构是一个[反转索引](https://en.wikipedia.org/wiki/Inverted_index)结构，其特征不同于源数据。 对于反向索引，大小和复杂性由内容决定，而不一定是您向其中送进的数据量。 具有高冗余的大型数据源可能会导致索引比包含高度可变内容的小型数据集更小。 因此，很少可以基于原始数据集的大小推断索引大小。
 
 > [!NOTE] 
 > 即使估计索引和存储的未来需求，也可能会喜欢进行猜测，不过这一点很有价值。 如果层容量过低，则需要在更高的层预配新服务，并[重新加载索引](search-howto-reindex.md)。 不会将服务从一个 SKU 就地升级到另一个 SKU。
@@ -172,7 +143,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 + [创建免费服务](search-create-service-portal.md)。
 + 准备小型的、代表性的数据集。
-+ [在门户中生成初始索引](search-create-index-portal.md)，并记下其大小。 功能和特性会影响存储。 例如，添加建议器（typeahead）将增加存储需求。 使用相同的数据集，您可以尝试创建索引的多个版本，每个字段都有不同的属性，以了解存储要求的变化情况。 有关详细信息，请参阅[创建基本索引中的 "存储影响"](search-what-is-an-index.md#storage-implications)。
++ [在门户中生成初始索引](search-create-index-portal.md)，并记下其大小。 功能和特性会影响存储。 例如，添加建议器（typeahead）将增加存储需求。 使用相同的数据集，您可以尝试创建索引的多个版本，每个字段都有不同的属性，以了解存储要求的变化情况。 有关详细信息，请参阅[创建基本索引中的 "存储影响"](search-what-is-an-index.md#index-size)。
 
 使用粗略估计时，可以将两个索引（开发和生产）的预算翻倍，然后相应地选择层。
 

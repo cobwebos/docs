@@ -2,17 +2,17 @@
 title: 管理 Azure 中的专用终结点连接
 description: 了解如何管理 Azure 中的专用终结点连接
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452967"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理专用终结点连接
 Azure 专用链接适用于审批调用流模型，其中，专用链接服务使用者可以请求连接到服务提供商以使用该服务。 然后，服务提供商可以决定是否允许使用者进行连接。 通过 Azure 专用链接，服务提供商可以管理其资源上的专用终结点连接。 本文提供了有关如何管理专用终结点连接的说明。
@@ -26,12 +26,12 @@ Azure 专用链接适用于审批调用流模型，其中，专用链接服务�
 下表显示了不同的服务提供程序操作以及专用终结点的生成的连接状态。  服务提供商还可以在以后无需用户干预的情况下更改专用终结点连接的连接状态。 操作将更新使用者端上终结点的状态。 
 
 
-|服务提供商操作   |服务使用者专用终结点状态   |说明   |
+|服务提供商操作   |服务使用者专用终结点状态   |Description   |
 |---------|---------|---------|
-|无    |    挂起     |    手动创建连接，并等待专用链接资源所有者批准。       |
+|无    |    Pending     |    手动创建连接，并等待专用链接资源所有者批准。       |
 |审批    |  已批准       |  连接已自动或已手动批准，并已准备好使用。     |
 |拒绝     | 已拒绝        | 专用链接资源所有者拒绝了连接。        |
-|删除    |  式       | 连接已被专用链接资源所有者删除，专用终结点将变为信息性，应删除进行清理。        |
+|移除    |  已断开连接       | 连接已被专用链接资源所有者删除，专用终结点将变为信息性，应删除进行清理。        |
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>管理 Azure PaaS 资源上的专用终结点连接

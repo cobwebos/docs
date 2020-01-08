@@ -1,5 +1,5 @@
 ---
-title: Azure 文件可伸缩性和性能目标 | Microsoft Docs
+title: Azure 文件可伸缩性和性能目标
 description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容量、请求速率以及入站和出站带宽限制。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 060b4a8992ab1c48cceb9506b4f556d9098b9be0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452953"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -24,29 +24,29 @@ ms.locfileid: "73615778"
 
 Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure 中的一个存储池，该存储池可供包括 Azure 文件在内多个存储服务用来存储数据。 在存储帐户中存储数据的其他服务有 Azure Blob 存储、Azure 队列存储和 Azure 表存储。 以下目标适用于在存储帐户中存储数据的所有存储服务：
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 > [!Important]  
-> 其他存储服务的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
+> 其他存储服务中的常规用途存储帐户利用率会影响存储帐户中的 Azure 文件共享。 例如，如果由于 Azure Blob 存储而达到了最大存储帐户容量，则将无法在 Azure 文件共享上创建新文件，即使 Azure 文件共享低于最大共享大小。
 
-## <a name="azure-files-scale-targets"></a>Azure 文件缩放目标
+## <a name="azure-files-scale-targets"></a>Azure 文件规模目标
 
-对于 Azure 文件存储，需要考虑三类限制：存储帐户、共享和文件。
+对于 Azure 文件，有三种类别的限制：存储帐户、共享和文件。
 
-例如：使用高级文件共享时，一个共享可以实现 100000 IOPS，一个文件最多可以扩展到 5000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为 15,000。
+例如：使用高级文件共享时，一个共享可以实现 100000 IOPS，一个文件最多可以扩展到 5000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为15000。
 
 ### <a name="standard-storage-account-limits"></a>标准存储帐户限制
 
-有关这些限制，请参阅 [Azure 存储帐户规模目标](#azure-storage-account-scale-targets)部分。
+有关这些限制，请参阅[Azure 存储帐户缩放目标](#azure-storage-account-scale-targets)部分。
 
 ### <a name="premium-filestorage-account-limits"></a>高级 FileStorage 帐户限制
 
 [!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现 FileStorage 帐户的最大扩展。
+> 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现最大 FileStorage 帐户数。
 
 ### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
 

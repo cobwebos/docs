@@ -4,16 +4,16 @@ description: 本文介绍可用于 Azure 企业注册的 REST API。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841415"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644522"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -75,7 +75,7 @@ Microsoft 企业 Azure 客户可以通过 REST API 获取使用情况和计费�
 
 ### <a name="swagger"></a>Swagger
 
-[企业报告 v3 API](https://consumption.azure.com/swagger/ui/index) 中的以下 API 提供 Swagger 终结点。 Swagger 可帮助检查 API。 使用 Swagger 可以通过 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](http://swagger.io/swagger-codegen/) 生成客户端 SDK。 可以通过 API 使用 2014 年 5 月 1 日之后提供的数据。
+[企业报告 v3 API](https://consumption.azure.com/swagger/ui/index) 中的以下 API 提供 Swagger 终结点。 Swagger 可帮助检查 API。 使用 Swagger 可以通过 [AutoRest](https://github.com/Azure/AutoRest) 或 [Swagger CodeGen](https://swagger.io/swagger-codegen/) 生成客户端 SDK。 可以通过 API 使用 2014 年 5 月 1 日之后提供的数据。
 
 ### <a name="api-response-codes"></a>API 响应代码
 
@@ -145,7 +145,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | 部门名称 | DepartmentName | DepartmentName |   |
 | 成本中心 | CostCenter | CostCenter |   |
 | 计量单位 | UnitOfMeasure | UnitOfMeasure | 示例值：小时、GB、事件、推送、单位、单位小时、MB、日单位 |
-| resourceGroup | resourceGroup | resourceGroup |   |
+| ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure 市场报告
 
@@ -174,7 +174,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 | 订单编号 | OrderNumber | OrderNumber |
 | 部门名称 | DepartmentNames | DepartmentName |
 | 成本中心 | CostCenters |  CostCenter |
-| 资源组 | resourceGroup |  resourceGroup |
+| 资源组 | ResourceGroup |  ResourceGroup |
 
 #### <a name="price-sheet"></a>价目表
 
@@ -210,5 +210,5 @@ API 密钥每隔六个月过期。 如果已过期，则需要重新生成密钥
 
 ## <a name="next-steps"></a>后续步骤
 
-- Azure EA 门户管理员应阅读 [Azure EA 门户管理](billing-ea-portal-administration.md)来了解常见的管理任务。
+- Azure EA 门户管理员应阅读 [Azure EA portal administration](billing-ea-portal-administration.md)（Azure EA 门户管理）来了解常见的管理任务。
 - 在排查 Azure EA 门户问题时如需帮助，请参阅[排查 Azure EA 门户访问问题](billing-ea-portal-troubleshoot.md)。
